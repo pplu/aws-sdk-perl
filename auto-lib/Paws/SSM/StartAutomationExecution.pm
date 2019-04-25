@@ -8,6 +8,8 @@ package Paws::SSM::StartAutomationExecution;
   has MaxErrors => (is => 'ro', isa => 'Str');
   has Mode => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
+  has TargetLocations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetLocation]');
+  has TargetMaps => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetMap]');
   has TargetParameterName => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 
@@ -26,17 +28,64 @@ Paws::SSM::StartAutomationExecution - Arguments for method StartAutomationExecut
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StartAutomationExecution on the 
-Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
+This class represents the parameters used for calling the method StartAutomationExecution on the
+L<Amazon Simple Systems Manager (SSM)|Paws::SSM> service. Use the attributes of this class
 as arguments to method StartAutomationExecution.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartAutomationExecution.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartAutomationExecution(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $StartAutomationExecutionResult = $ssm->StartAutomationExecution(
+      DocumentName    => 'MyDocumentARN',
+      ClientToken     => 'MyIdempotencyToken',    # OPTIONAL
+      DocumentVersion => 'MyDocumentVersion',     # OPTIONAL
+      MaxConcurrency  => 'MyMaxConcurrency',      # OPTIONAL
+      MaxErrors       => 'MyMaxErrors',           # OPTIONAL
+      Mode            => 'Auto',                  # OPTIONAL
+      Parameters      => {
+        'MyAutomationParameterKey' => [
+          'MyAutomationParameterValue', ...       # min: 1, max: 512
+        ],    # key: min: 1, max: 30, value: max: 10
+      },    # OPTIONAL
+      TargetLocations => [
+        {
+          Accounts => [ 'MyAccount', ... ],    # min: 1, max: 50; OPTIONAL
+          ExecutionRoleName =>
+            'MyExecutionRoleName',             # min: 1, max: 64; OPTIONAL
+          Regions => [ 'MyRegion', ... ],      # min: 1, max: 50; OPTIONAL
+          TargetLocationMaxConcurrency => 'MyMaxConcurrency',   # min: 1, max: 7
+          TargetLocationMaxErrors      => 'MyMaxErrors',        # min: 1, max: 7
+        },
+        ...
+      ],                                                        # OPTIONAL
+      TargetMaps => [
+        {
+          'MyTargetMapKey' => [
+            'MyTargetMapValue', ...    # min: 1, max: 50
+          ],                           # key: min: 1, max: 50, value: max: 25
+        },
+        ...                            # min: 1, max: 20
+      ],                               # OPTIONAL
+      TargetParameterName => 'MyAutomationParameterKey',    # OPTIONAL
+      Targets             => [
+        {
+          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
+        },
+        ...
+      ],                                         # OPTIONAL
+    );
+
+    # Results:
+    my $AutomationExecutionId =
+      $StartAutomationExecutionResult->AutomationExecutionId;
+
+    # Returns a L<Paws::SSM::StartAutomationExecutionResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/StartAutomationExecution>
 
 =head1 ATTRIBUTES
 
@@ -103,10 +152,29 @@ parameters in the Automation document.
 
 
 
+=head2 TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]
+
+A location is a combination of AWS Regions and/or AWS accounts where
+you want to execute the Automation. Use this action to start an
+Automation in multiple Regions and multiple accounts. For more
+information, see Concurrently Executing Automations in Multiple AWS
+Regions and Accounts
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)
+in the I<AWS Systems Manager User Guide>.
+
+
+
+=head2 TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]
+
+A key-value mapping of document parameters to target resources. Both
+Targets and TargetMaps cannot be specified together.
+
+
+
 =head2 TargetParameterName => Str
 
 The name of the parameter used as the target resource for the
-rate-controlled execution. Required if you specify Targets.
+rate-controlled execution. Required if you specify targets.
 
 
 

@@ -19,17 +19,27 @@ Paws::CloudTrail::DescribeTrails - Arguments for method DescribeTrails on L<Paws
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeTrails on the 
-AWS CloudTrail service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeTrails on the
+L<AWS CloudTrail|Paws::CloudTrail> service. Use the attributes of this class
 as arguments to method DescribeTrails.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTrails.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeTrails(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudtrail = Paws->service('CloudTrail');
+    my $DescribeTrailsResponse = $cloudtrail->DescribeTrails(
+      IncludeShadowTrails => 1,                # OPTIONAL
+      TrailNameList => [ 'MyString', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $TrailList = $DescribeTrailsResponse->TrailList;
+
+    # Returns a L<Paws::CloudTrail::DescribeTrailsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudtrail/DescribeTrails>
 
 =head1 ATTRIBUTES
 
@@ -38,7 +48,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Specifies whether to include shadow trails in the response. A shadow
 trail is the replication in a region of a trail that was created in a
-different region. The default is true.
+different region, or in the case of an organization trail, the
+replication of an organization trail in member accounts. If you do not
+include shadow trails, organization trails in a member account and
+region replication trails will not be returned. The default is true.
 
 
 
@@ -47,7 +60,7 @@ different region. The default is true.
 Specifies a list of trail names, trail ARNs, or both, of the trails to
 describe. The format of a trail ARN is:
 
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 If an empty list is specified, information for the trail in the current
 region is returned.

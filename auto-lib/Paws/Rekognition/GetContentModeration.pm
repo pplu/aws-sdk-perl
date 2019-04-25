@@ -21,17 +21,33 @@ Paws::Rekognition::GetContentModeration - Arguments for method GetContentModerat
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetContentModeration on the 
-Amazon Rekognition service. Use the attributes of this class
+This class represents the parameters used for calling the method GetContentModeration on the
+L<Amazon Rekognition|Paws::Rekognition> service. Use the attributes of this class
 as arguments to method GetContentModeration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetContentModeration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetContentModeration(Att1 => $value1, Att2 => $value2, ...);
+    my $rekognition = Paws->service('Rekognition');
+    my $GetContentModerationResponse = $rekognition->GetContentModeration(
+      JobId      => 'MyJobId',
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyPaginationToken',    # OPTIONAL
+      SortBy     => 'NAME',                 # OPTIONAL
+    );
+
+    # Results:
+    my $JobStatus        = $GetContentModerationResponse->JobStatus;
+    my $ModerationLabels = $GetContentModerationResponse->ModerationLabels;
+    my $NextToken        = $GetContentModerationResponse->NextToken;
+    my $StatusMessage    = $GetContentModerationResponse->StatusMessage;
+    my $VideoMetadata    = $GetContentModerationResponse->VideoMetadata;
+
+    # Returns a L<Paws::Rekognition::GetContentModerationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition/GetContentModeration>
 
 =head1 ATTRIBUTES
 
@@ -45,8 +61,9 @@ the job in a subsequent call to C<GetContentModeration>.
 
 =head2 MaxResults => Int
 
-Maximum number of content moderation labels to return. The default is
-1000.
+Maximum number of results to return per paginated call. The largest
+value you can specify is 1000. If you specify a value greater than
+1000, a maximum of 1000 results is returned. The default value is 1000.
 
 
 

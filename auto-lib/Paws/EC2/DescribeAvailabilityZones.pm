@@ -3,6 +3,7 @@ package Paws::EC2::DescribeAvailabilityZones;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has ZoneIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ZoneId' );
   has ZoneNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ZoneName' );
 
   use MooseX::ClassAttribute;
@@ -20,17 +21,27 @@ Paws::EC2::DescribeAvailabilityZones - Arguments for method DescribeAvailability
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeAvailabilityZones on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeAvailabilityZones on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeAvailabilityZones.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAvailabilityZones.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeAvailabilityZones(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe your Availability Zones
+    # This example describes the Availability Zones that are available to you.
+    # The response includes Availability Zones only for the current region.
+    my $DescribeAvailabilityZonesResult = $ec2->DescribeAvailabilityZones();
+
+    # Results:
+    my $AvailabilityZones = $DescribeAvailabilityZonesResult->AvailabilityZones;
+
+    # Returns a L<Paws::EC2::DescribeAvailabilityZonesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeAvailabilityZones>
 
 =head1 ATTRIBUTES
 
@@ -66,11 +77,22 @@ C<information> | C<impaired> | C<unavailable>).
 
 =item *
 
+C<zone-id> - The ID of the Availability Zone (for example,
+C<use1-az1>).
+
+=item *
+
 C<zone-name> - The name of the Availability Zone (for example,
 C<us-east-1a>).
 
 =back
 
+
+
+
+=head2 ZoneIds => ArrayRef[Str|Undef]
+
+The IDs of one or more Availability Zones.
 
 
 

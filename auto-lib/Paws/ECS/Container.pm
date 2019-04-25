@@ -1,8 +1,13 @@
 package Paws::ECS::Container;
   use Moose;
   has ContainerArn => (is => 'ro', isa => 'Str', request_name => 'containerArn', traits => ['NameInRequest']);
+  has Cpu => (is => 'ro', isa => 'Str', request_name => 'cpu', traits => ['NameInRequest']);
   has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
+  has GpuIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'gpuIds', traits => ['NameInRequest']);
+  has HealthStatus => (is => 'ro', isa => 'Str', request_name => 'healthStatus', traits => ['NameInRequest']);
   has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
+  has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
+  has MemoryReservation => (is => 'ro', isa => 'Str', request_name => 'memoryReservation', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', request_name => 'networkBindings', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
@@ -48,14 +53,43 @@ A Docker container that is part of a task.
   The Amazon Resource Name (ARN) of the container.
 
 
+=head2 Cpu => Str
+
+  The number of CPU units set for the container. The value will be C<0>
+if no value was specified in the container definition when the task
+definition was registered.
+
+
 =head2 ExitCode => Int
 
   The exit code returned from the container.
 
 
+=head2 GpuIds => ArrayRef[Str|Undef]
+
+  The IDs of each GPU assigned to the container.
+
+
+=head2 HealthStatus => Str
+
+  The health status of the container. If health checks are not configured
+for this container in its task definition, then it reports the health
+status as C<UNKNOWN>.
+
+
 =head2 LastStatus => Str
 
   The last known status of the container.
+
+
+=head2 Memory => Str
+
+  The hard limit (in MiB) of memory set for the container.
+
+
+=head2 MemoryReservation => Str
+
+  The soft limit (in MiB) of memory set for the container.
 
 
 =head2 Name => Str

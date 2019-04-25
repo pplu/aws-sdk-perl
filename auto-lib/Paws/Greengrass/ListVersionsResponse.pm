@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-List of versions response
+A list of versions.
 
 =head1 ATTRIBUTES
 
@@ -45,7 +45,7 @@ additional results.
 
 =head2 Versions => ArrayRef[L<Paws::Greengrass::VersionInformation>]
 
-  Versions
+  Information about a version.
 
 
 

@@ -24,17 +24,44 @@ Paws::CodeCommit::PostCommentForPullRequest - Arguments for method PostCommentFo
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PostCommentForPullRequest on the 
-AWS CodeCommit service. Use the attributes of this class
+This class represents the parameters used for calling the method PostCommentForPullRequest on the
+L<AWS CodeCommit|Paws::CodeCommit> service. Use the attributes of this class
 as arguments to method PostCommentForPullRequest.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PostCommentForPullRequest.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PostCommentForPullRequest(Att1 => $value1, Att2 => $value2, ...);
+    my $codecommit = Paws->service('CodeCommit');
+    my $PostCommentForPullRequestOutput =
+      $codecommit->PostCommentForPullRequest(
+      AfterCommitId      => 'MyCommitId',
+      BeforeCommitId     => 'MyCommitId',
+      Content            => 'MyContent',
+      PullRequestId      => 'MyPullRequestId',
+      RepositoryName     => 'MyRepositoryName',
+      ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
+      Location           => {
+        FilePath            => 'MyPath',    # OPTIONAL
+        FilePosition        => 1,           # OPTIONAL
+        RelativeFileVersion => 'BEFORE',    # values: BEFORE, AFTER; OPTIONAL
+      },    # OPTIONAL
+      );
+
+    # Results:
+    my $AfterBlobId    = $PostCommentForPullRequestOutput->AfterBlobId;
+    my $AfterCommitId  = $PostCommentForPullRequestOutput->AfterCommitId;
+    my $BeforeBlobId   = $PostCommentForPullRequestOutput->BeforeBlobId;
+    my $BeforeCommitId = $PostCommentForPullRequestOutput->BeforeCommitId;
+    my $Comment        = $PostCommentForPullRequestOutput->Comment;
+    my $Location       = $PostCommentForPullRequestOutput->Location;
+    my $PullRequestId  = $PostCommentForPullRequestOutput->PullRequestId;
+    my $RepositoryName = $PostCommentForPullRequestOutput->RepositoryName;
+
+    # Returns a L<Paws::CodeCommit::PostCommentForPullRequestOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codecommit/PostCommentForPullRequest>
 
 =head1 ATTRIBUTES
 

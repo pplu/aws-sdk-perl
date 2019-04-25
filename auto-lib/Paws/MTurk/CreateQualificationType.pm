@@ -27,17 +27,36 @@ Paws::MTurk::CreateQualificationType - Arguments for method CreateQualificationT
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateQualificationType on the 
-Amazon Mechanical Turk service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateQualificationType on the
+L<Amazon Mechanical Turk|Paws::MTurk> service. Use the attributes of this class
 as arguments to method CreateQualificationType.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateQualificationType.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateQualificationType(Att1 => $value1, Att2 => $value2, ...);
+    my $mturk-requester = Paws->service('MTurk');
+    my $CreateQualificationTypeResponse =
+      $mturk -requester->CreateQualificationType(
+      Description             => 'MyString',
+      Name                    => 'MyString',
+      QualificationTypeStatus => 'Active',
+      AnswerKey               => 'MyString',    # OPTIONAL
+      AutoGranted             => 1,             # OPTIONAL
+      AutoGrantedValue        => 1,             # OPTIONAL
+      Keywords                => 'MyString',    # OPTIONAL
+      RetryDelayInSeconds     => 1,             # OPTIONAL
+      Test                    => 'MyString',    # OPTIONAL
+      TestDurationInSeconds   => 1,             # OPTIONAL
+      );
+
+    # Results:
+    my $QualificationType = $CreateQualificationTypeResponse->QualificationType;
+
+    # Returns a L<Paws::MTurk::CreateQualificationTypeResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mturk-requester/CreateQualificationType>
 
 =head1 ATTRIBUTES
 

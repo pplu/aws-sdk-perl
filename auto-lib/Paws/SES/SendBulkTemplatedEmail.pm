@@ -28,17 +28,61 @@ Paws::SES::SendBulkTemplatedEmail - Arguments for method SendBulkTemplatedEmail 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SendBulkTemplatedEmail on the 
-Amazon Simple Email Service service. Use the attributes of this class
+This class represents the parameters used for calling the method SendBulkTemplatedEmail on the
+L<Amazon Simple Email Service|Paws::SES> service. Use the attributes of this class
 as arguments to method SendBulkTemplatedEmail.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendBulkTemplatedEmail.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SendBulkTemplatedEmail(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    my $SendBulkTemplatedEmailResponse = $email->SendBulkTemplatedEmail(
+      Destinations => [
+        {
+          Destination => {
+            BccAddresses => [ 'MyAddress', ... ],    # OPTIONAL
+            CcAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
+            ToAddresses  => [ 'MyAddress', ... ],    # OPTIONAL
+          },
+          ReplacementTags => [
+            {
+              Name  => 'MyMessageTagName',
+              Value => 'MyMessageTagValue',
+
+            },
+            ...
+          ],                                         # OPTIONAL
+          ReplacementTemplateData => 'MyTemplateData',   # max: 262144; OPTIONAL
+        },
+        ...
+      ],
+      Source               => 'MyAddress',
+      Template             => 'MyTemplateName',
+      ConfigurationSetName => 'MyConfigurationSetName',    # OPTIONAL
+      DefaultTags          => [
+        {
+          Name  => 'MyMessageTagName',
+          Value => 'MyMessageTagValue',
+
+        },
+        ...
+      ],                                                   # OPTIONAL
+      DefaultTemplateData => 'MyTemplateData',             # OPTIONAL
+      ReplyToAddresses    => [ 'MyAddress', ... ],         # OPTIONAL
+      ReturnPath          => 'MyAddress',                  # OPTIONAL
+      ReturnPathArn       => 'MyAmazonResourceName',       # OPTIONAL
+      SourceArn           => 'MyAmazonResourceName',       # OPTIONAL
+      TemplateArn         => 'MyAmazonResourceName',       # OPTIONAL
+    );
+
+    # Results:
+    my $Status = $SendBulkTemplatedEmailResponse->Status;
+
+    # Returns a L<Paws::SES::SendBulkTemplatedEmailResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/SendBulkTemplatedEmail>
 
 =head1 ATTRIBUTES
 

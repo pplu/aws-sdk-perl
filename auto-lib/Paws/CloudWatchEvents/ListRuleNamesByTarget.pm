@@ -20,17 +20,29 @@ Paws::CloudWatchEvents::ListRuleNamesByTarget - Arguments for method ListRuleNam
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListRuleNamesByTarget on the 
-Amazon CloudWatch Events service. Use the attributes of this class
+This class represents the parameters used for calling the method ListRuleNamesByTarget on the
+L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method ListRuleNamesByTarget.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListRuleNamesByTarget.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListRuleNamesByTarget(Att1 => $value1, Att2 => $value2, ...);
+    my $events = Paws->service('CloudWatchEvents');
+    my $ListRuleNamesByTargetResponse = $events->ListRuleNamesByTarget(
+      TargetArn => 'MyTargetArn',
+      Limit     => 1,                # OPTIONAL
+      NextToken => 'MyNextToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $ListRuleNamesByTargetResponse->NextToken;
+    my $RuleNames = $ListRuleNamesByTargetResponse->RuleNames;
+
+    # Returns a L<Paws::CloudWatchEvents::ListRuleNamesByTargetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/events/ListRuleNamesByTarget>
 
 =head1 ATTRIBUTES
 

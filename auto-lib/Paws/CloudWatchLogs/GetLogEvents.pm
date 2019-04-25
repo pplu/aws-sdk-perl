@@ -24,17 +24,34 @@ Paws::CloudWatchLogs::GetLogEvents - Arguments for method GetLogEvents on L<Paws
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetLogEvents on the 
-Amazon CloudWatch Logs service. Use the attributes of this class
+This class represents the parameters used for calling the method GetLogEvents on the
+L<Amazon CloudWatch Logs|Paws::CloudWatchLogs> service. Use the attributes of this class
 as arguments to method GetLogEvents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLogEvents.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetLogEvents(Att1 => $value1, Att2 => $value2, ...);
+    my $logs = Paws->service('CloudWatchLogs');
+    my $GetLogEventsResponse = $logs->GetLogEvents(
+      LogGroupName  => 'MyLogGroupName',
+      LogStreamName => 'MyLogStreamName',
+      EndTime       => 1,                   # OPTIONAL
+      Limit         => 1,                   # OPTIONAL
+      NextToken     => 'MyNextToken',       # OPTIONAL
+      StartFromHead => 1,                   # OPTIONAL
+      StartTime     => 1,                   # OPTIONAL
+    );
+
+    # Results:
+    my $Events            = $GetLogEventsResponse->Events;
+    my $NextBackwardToken = $GetLogEventsResponse->NextBackwardToken;
+    my $NextForwardToken  = $GetLogEventsResponse->NextForwardToken;
+
+    # Returns a L<Paws::CloudWatchLogs::GetLogEventsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/logs/GetLogEvents>
 
 =head1 ATTRIBUTES
 
@@ -42,8 +59,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 EndTime => Int
 
 The end of the time range, expressed as the number of milliseconds
-after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than
-this time are not included.
+after Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to or
+later than this time are not included.
 
 
 
@@ -85,8 +102,9 @@ default value is false.
 =head2 StartTime => Int
 
 The start of the time range, expressed as the number of milliseconds
-after Jan 1, 1970 00:00:00 UTC. Events with a time stamp earlier than
-this time are not included.
+after Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to this
+time or later than this time are included. Events with a timestamp
+earlier than this time are not included.
 
 
 

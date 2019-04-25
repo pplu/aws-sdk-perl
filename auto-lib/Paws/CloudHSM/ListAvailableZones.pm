@@ -17,17 +17,24 @@ Paws::CloudHSM::ListAvailableZones - Arguments for method ListAvailableZones on 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListAvailableZones on the 
-Amazon CloudHSM service. Use the attributes of this class
+This class represents the parameters used for calling the method ListAvailableZones on the
+L<Amazon CloudHSM|Paws::CloudHSM> service. Use the attributes of this class
 as arguments to method ListAvailableZones.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAvailableZones.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListAvailableZones(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudhsm = Paws->service('CloudHSM');
+    my $ListAvailableZonesResponse = $cloudhsm->ListAvailableZones();
+
+    # Results:
+    my $AZList = $ListAvailableZonesResponse->AZList;
+
+    # Returns a L<Paws::CloudHSM::ListAvailableZonesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudhsm/ListAvailableZones>
 
 =head1 ATTRIBUTES
 

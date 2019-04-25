@@ -23,37 +23,39 @@ Paws::Greengrass::CreateLoggerDefinitionResponse
 
 =head2 Arn => Str
 
-Arn of the definition.
+The ARN of the definition.
 
 
 =head2 CreationTimestamp => Str
 
-Timestamp of when the definition was created.
+The time, in milliseconds since the epoch, when the definition was
+created.
 
 
 =head2 Id => Str
 
-Id of the definition.
+The ID of the definition.
 
 
 =head2 LastUpdatedTimestamp => Str
 
-Last updated timestamp of the definition.
+The time, in milliseconds since the epoch, when the definition was last
+updated.
 
 
 =head2 LatestVersion => Str
 
-Last version of the definition.
+The latest version of the definition.
 
 
 =head2 LatestVersionArn => Str
 
-Latest version arn of the definition.
+The ARN of the latest version of the definition.
 
 
 =head2 Name => Str
 
-Name of the definition.
+The name of the definition.
 
 
 =head2 _request_id => Str

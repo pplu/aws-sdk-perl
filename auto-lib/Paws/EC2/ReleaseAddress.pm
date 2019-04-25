@@ -20,17 +20,36 @@ Paws::EC2::ReleaseAddress - Arguments for method ReleaseAddress on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ReleaseAddress on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method ReleaseAddress on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ReleaseAddress.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReleaseAddress.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ReleaseAddress(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To release an Elastic IP address for EC2-VPC
+    # This example releases an Elastic IP address for use with instances in a
+    # VPC.
+    $ec2->ReleaseAddress(
+      {
+        'AllocationId' => 'eipalloc-64d5890a'
+      }
+    );
+
+    # To release an Elastic IP addresses for EC2-Classic
+    # This example releases an Elastic IP address for use with instances in
+    # EC2-Classic.
+    $ec2->ReleaseAddress(
+      {
+        'PublicIp' => '198.51.100.0'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ReleaseAddress>
 
 =head1 ATTRIBUTES
 

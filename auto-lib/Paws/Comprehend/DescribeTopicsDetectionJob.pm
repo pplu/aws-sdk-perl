@@ -18,17 +18,29 @@ Paws::Comprehend::DescribeTopicsDetectionJob - Arguments for method DescribeTopi
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeTopicsDetectionJob on the 
-Amazon Comprehend service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeTopicsDetectionJob on the
+L<Amazon Comprehend|Paws::Comprehend> service. Use the attributes of this class
 as arguments to method DescribeTopicsDetectionJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTopicsDetectionJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeTopicsDetectionJob(Att1 => $value1, Att2 => $value2, ...);
+    my $comprehend = Paws->service('Comprehend');
+    my $DescribeTopicsDetectionJobResponse =
+      $comprehend->DescribeTopicsDetectionJob(
+      JobId => 'MyJobId',
+
+      );
+
+    # Results:
+    my $TopicsDetectionJobProperties =
+      $DescribeTopicsDetectionJobResponse->TopicsDetectionJobProperties;
+
+    # Returns a L<Paws::Comprehend::DescribeTopicsDetectionJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend/DescribeTopicsDetectionJob>
 
 =head1 ATTRIBUTES
 

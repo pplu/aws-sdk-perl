@@ -29,17 +29,37 @@ Paws::DeviceFarm::CreateNetworkProfile - Arguments for method CreateNetworkProfi
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateNetworkProfile on the 
-AWS Device Farm service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateNetworkProfile on the
+L<AWS Device Farm|Paws::DeviceFarm> service. Use the attributes of this class
 as arguments to method CreateNetworkProfile.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateNetworkProfile.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateNetworkProfile(Att1 => $value1, Att2 => $value2, ...);
+    my $devicefarm = Paws->service('DeviceFarm');
+    my $CreateNetworkProfileResult = $devicefarm->CreateNetworkProfile(
+      Name                  => 'MyName',
+      ProjectArn            => 'MyAmazonResourceName',
+      Description           => 'MyMessage',              # OPTIONAL
+      DownlinkBandwidthBits => 1,                        # OPTIONAL
+      DownlinkDelayMs       => 1,                        # OPTIONAL
+      DownlinkJitterMs      => 1,                        # OPTIONAL
+      DownlinkLossPercent   => 1,                        # OPTIONAL
+      Type                  => 'CURATED',                # OPTIONAL
+      UplinkBandwidthBits   => 1,                        # OPTIONAL
+      UplinkDelayMs         => 1,                        # OPTIONAL
+      UplinkJitterMs        => 1,                        # OPTIONAL
+      UplinkLossPercent     => 1,                        # OPTIONAL
+    );
+
+    # Results:
+    my $NetworkProfile = $CreateNetworkProfileResult->NetworkProfile;
+
+    # Returns a L<Paws::DeviceFarm::CreateNetworkProfileResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm/CreateNetworkProfile>
 
 =head1 ATTRIBUTES
 

@@ -20,44 +20,68 @@ Paws::Lambda::GetPolicy - Arguments for method GetPolicy on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetPolicy on the 
-AWS Lambda service. Use the attributes of this class
+This class represents the parameters used for calling the method GetPolicy on the
+L<AWS Lambda|Paws::Lambda> service. Use the attributes of this class
 as arguments to method GetPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # To retrieve a Lambda function policy
+    # This operation retrieves a Lambda function policy
+    my $GetPolicyResponse = $lambda->GetPolicy(
+      {
+        'FunctionName' => 'myFunction',
+        'Qualifier'    => 1
+      }
+    );
+
+    # Results:
+    my $Policy = $GetPolicyResponse->Policy;
+
+    # Returns a L<Paws::Lambda::GetPolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/GetPolicy>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-Function name whose resource policy you want to retrieve.
+The name of the Lambda function, version, or alias.
 
-You can specify the function name (for example, C<Thumbnail>) or you
-can specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). If you are
-using versioning, you can also provide a qualified function ARN (ARN
-that is qualified with function version or alias name as suffix). AWS
-Lambda also allows you to specify only the function name with the
-account ID qualifier (for example, C<account-id:Thumbnail>). Note that
-the length constraint applies only to the ARN. If you specify only the
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<my-function> (name-only), C<my-function:v1> (with
+alias).
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:my-function>.
+
+=back
+
+You can append a version number or alias to any of the formats. The
+length constraint applies only to the full ARN. If you specify only the
 function name, it is limited to 64 characters in length.
 
 
 
 =head2 Qualifier => Str
 
-You can specify this optional query parameter to specify a function
-version or an alias name in which case this API will return all
-permissions associated with the specific qualified ARN. If you don't
-provide this parameter, the API will return permissions that apply to
-the unqualified function ARN.
+Specify a version or alias to get the policy for that resource.
 
 
 

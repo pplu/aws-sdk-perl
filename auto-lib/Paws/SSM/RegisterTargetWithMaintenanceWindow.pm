@@ -24,17 +24,40 @@ Paws::SSM::RegisterTargetWithMaintenanceWindow - Arguments for method RegisterTa
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RegisterTargetWithMaintenanceWindow on the 
-Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
+This class represents the parameters used for calling the method RegisterTargetWithMaintenanceWindow on the
+L<Amazon Simple Systems Manager (SSM)|Paws::SSM> service. Use the attributes of this class
 as arguments to method RegisterTargetWithMaintenanceWindow.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterTargetWithMaintenanceWindow.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RegisterTargetWithMaintenanceWindow(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $RegisterTargetWithMaintenanceWindowResult =
+      $ssm->RegisterTargetWithMaintenanceWindow(
+      ResourceType => 'INSTANCE',
+      Targets      => [
+        {
+          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
+        },
+        ...
+      ],
+      WindowId         => 'MyMaintenanceWindowId',
+      ClientToken      => 'MyClientToken',                     # OPTIONAL
+      Description      => 'MyMaintenanceWindowDescription',    # OPTIONAL
+      Name             => 'MyMaintenanceWindowName',           # OPTIONAL
+      OwnerInformation => 'MyOwnerInformation',                # OPTIONAL
+      );
+
+    # Results:
+    my $WindowTargetId =
+      $RegisterTargetWithMaintenanceWindowResult->WindowTargetId;
+
+    # Returns a L<Paws::SSM::RegisterTargetWithMaintenanceWindowResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/RegisterTargetWithMaintenanceWindow>
 
 =head1 ATTRIBUTES
 
@@ -73,10 +96,17 @@ Valid values are: C<"INSTANCE">
 
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::SSM::Target>]
 
-The targets (either instances or tags). Instances are specified using
-Key=instanceids,Values=E<lt>instanceid1E<gt>,E<lt>instanceid2E<gt>.
-Tags are specified using Key=E<lt>tag nameE<gt>,Values=E<lt>tag
-valueE<gt>.
+The targets (either instances or tags).
+
+Specify instances using the following format:
+
+C<Key=InstanceIds,Values=E<lt>instance-id-1E<gt>,E<lt>instance-id-2E<gt>>
+
+Specify tags using either of the following formats:
+
+C<Key=tag:E<lt>tag-keyE<gt>,Values=E<lt>tag-value-1E<gt>,E<lt>tag-value-2E<gt>>
+
+C<Key=tag-key,Values=E<lt>tag-key-1E<gt>,E<lt>tag-key-2E<gt>>
 
 
 

@@ -38,7 +38,7 @@ An IPv4 CIDR to whitelist.
 
 =head2 Cidr => Str
 
-  The IPv4 CIDR to whitelist
+  The IPv4 CIDR to whitelist.
 
 
 

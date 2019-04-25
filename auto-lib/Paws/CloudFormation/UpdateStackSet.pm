@@ -1,11 +1,15 @@
 
 package Paws::CloudFormation::UpdateStackSet;
   use Moose;
+  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Description => (is => 'ro', isa => 'Str');
+  has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackSetName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str');
@@ -27,83 +31,242 @@ Paws::CloudFormation::UpdateStackSet - Arguments for method UpdateStackSet on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateStackSet on the 
-AWS CloudFormation service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateStackSet on the
+L<AWS CloudFormation|Paws::CloudFormation> service. Use the attributes of this class
 as arguments to method UpdateStackSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateStackSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateStackSet(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudformation = Paws->service('CloudFormation');
+    my $UpdateStackSetOutput = $cloudformation->UpdateStackSet(
+      StackSetName          => 'MyStackSetName',
+      Accounts              => [ 'MyAccount', ... ],    # OPTIONAL
+      AdministrationRoleARN => 'MyRoleARN',             # OPTIONAL
+      Capabilities          => [
+        'CAPABILITY_IAM',
+        ... # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND
+      ],    # OPTIONAL
+      Description          => 'MyDescription',           # OPTIONAL
+      ExecutionRoleName    => 'MyExecutionRoleName',     # OPTIONAL
+      OperationId          => 'MyClientRequestToken',    # OPTIONAL
+      OperationPreferences => {
+        FailureToleranceCount      => 1,    # OPTIONAL
+        FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
+        MaxConcurrentCount         => 1,    # min: 1; OPTIONAL
+        MaxConcurrentPercentage    => 1,    # min: 1, max: 100; OPTIONAL
+        RegionOrder => [ 'MyRegion', ... ], # OPTIONAL
+      },    # OPTIONAL
+      Parameters => [
+        {
+          ParameterKey     => 'MyParameterKey',      # OPTIONAL
+          ParameterValue   => 'MyParameterValue',    # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',    # OPTIONAL
+          UsePreviousValue => 1,                     # OPTIONAL
+        },
+        ...
+      ],                                             # OPTIONAL
+      Regions => [ 'MyRegion', ... ],                # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',                       # min: 1, max: 128
+          Value => 'MyTagValue',                     # min: 1, max: 256
+
+        },
+        ...
+      ],                                             # OPTIONAL
+      TemplateBody        => 'MyTemplateBody',       # OPTIONAL
+      TemplateURL         => 'MyTemplateURL',        # OPTIONAL
+      UsePreviousTemplate => 1,                      # OPTIONAL
+    );
+
+    # Results:
+    my $OperationId = $UpdateStackSetOutput->OperationId;
+
+    # Returns a L<Paws::CloudFormation::UpdateStackSetOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/UpdateStackSet>
 
 =head1 ATTRIBUTES
 
 
+=head2 Accounts => ArrayRef[Str|Undef]
+
+The accounts in which to update associated stack instances. If you
+specify accounts, you must also specify the regions in which to update
+stack set instances.
+
+To update I<all> the stack instances associated with this stack set, do
+not specify the C<Accounts> or C<Regions> properties.
+
+If the stack set update includes changes to the template (that is, if
+the C<TemplateBody> or C<TemplateURL> properties are specified), or the
+C<Parameters> property, AWS CloudFormation marks all stack instances
+with a status of C<OUTDATED> prior to updating the stack instances in
+the specified accounts and regions. If the stack set update does not
+include changes to the template or parameters, AWS CloudFormation
+updates the stack instances in the specified accounts and regions,
+while leaving all other stack instances with their existing stack
+instance status.
+
+
+
+=head2 AdministrationRoleARN => Str
+
+The Amazon Resource Number (ARN) of the IAM role to use to update this
+stack set.
+
+Specify an IAM role only if you are using customized administrator
+roles to control which users or groups can manage specific stack sets
+within the same administrator account. For more information, see Define
+Permissions for Multiple Administrators
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+in the I<AWS CloudFormation User Guide>.
+
+If you specify a customized administrator role, AWS CloudFormation uses
+that role to update the stack. If you do not specify a customized
+administrator role, AWS CloudFormation performs the update using the
+role previously associated with the stack set, so long as you have
+permissions to perform operations on the stack set.
+
+
+
 =head2 Capabilities => ArrayRef[Str|Undef]
 
-A list of values that you must specify before AWS CloudFormation can
-create certain stack sets. Some stack set templates might include
-resources that can affect permissions in your AWS accountE<mdash>for
-example, by creating new AWS Identity and Access Management (IAM)
-users. For those stack sets, you must explicitly acknowledge their
-capabilities by specifying this parameter.
+In some cases, you must explicity acknowledge that your stack template
+contains certain capabilities in order for AWS CloudFormation to update
+the stack set and its associated stack instances.
 
-The only valid values are CAPABILITY_IAM and CAPABILITY_NAMED_IAM. The
-following resources require you to specify this parameter:
+=over
+
+=item *
+
+C<CAPABILITY_IAM> and C<CAPABILITY_NAMED_IAM>
+
+Some stack templates might include resources that can affect
+permissions in your AWS account; for example, by creating new AWS
+Identity and Access Management (IAM) users. For those stacks sets, you
+must explicitly acknowledge this by specifying one of these
+capabilities.
+
+The following IAM resources require you to specify either the
+C<CAPABILITY_IAM> or C<CAPABILITY_NAMED_IAM> capability.
+
+=over
+
+=item *
+
+If you have IAM resources, you can specify either capability.
+
+=item *
+
+If you have IAM resources with custom names, you I<must> specify
+C<CAPABILITY_NAMED_IAM>.
+
+=item *
+
+If you don't specify either of these capabilities, AWS CloudFormation
+returns an C<InsufficientCapabilities> error.
+
+=back
+
+If your stack template contains these resources, we recommend that you
+review all permissions associated with them and edit their permissions
+if necessary.
 
 =over
 
 =item *
 
 AWS::IAM::AccessKey
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 
 =item *
 
 AWS::IAM::Group
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 
 =item *
 
 AWS::IAM::InstanceProfile
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 
 =item *
 
 AWS::IAM::Policy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
 
 =item *
 
 AWS::IAM::Role
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 
 =item *
 
 AWS::IAM::User
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
 
 =item *
 
 AWS::IAM::UserToGroupAddition
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 
 =back
 
-If your stack template contains these resources, we recommend that you
-review all permissions that are associated with them and edit their
-permissions if necessary.
-
-If you have IAM resources, you can specify either capability. If you
-have IAM resources with custom names, you must specify
-CAPABILITY_NAMED_IAM. If you don't specify this parameter, this action
-returns an C<InsufficientCapabilities> error.
-
 For more information, see Acknowledging IAM Resources in AWS
-CloudFormation Templates.
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities)
+CloudFormation Templates
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+
+=item *
+
+C<CAPABILITY_AUTO_EXPAND>
+
+Some templates contain macros. If your stack template contains one or
+more macros, and you choose to update a stack directly from the
+processed template, without first reviewing the resulting changes in a
+change set, you must acknowledge this capability. For more information,
+see Using AWS CloudFormation Macros to Perform Custom Processing on
+Templates
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+
+Stack sets do not currently support macros in stack templates. (This
+includes the AWS::Include
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+and AWS::Serverless
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+transforms, which are macros hosted by AWS CloudFormation.) Even if you
+specify this capability, if you include a macro in your template the
+stack set operation will fail.
+
+=back
+
 
 
 
 =head2 Description => Str
 
 A brief description of updates that you are making.
+
+
+
+=head2 ExecutionRoleName => Str
+
+The name of the IAM execution role to use to update the stack set. If
+you do not specify an execution role, AWS CloudFormation uses the
+C<AWSCloudFormationStackSetExecutionRole> role for the stack set
+operation.
+
+Specify an IAM role only if you are using customized execution roles to
+control which stack resources users and groups can include in their
+stack sets.
+
+If you specify a customized execution role, AWS CloudFormation uses
+that role to update the stack. If you do not specify a customized
+execution role, AWS CloudFormation performs the update using the role
+previously associated with the stack set, so long as you have
+permissions to perform operations on the stack set.
 
 
 
@@ -135,6 +298,27 @@ operation.
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
 A list of input parameters for the stack set template.
+
+
+
+=head2 Regions => ArrayRef[Str|Undef]
+
+The regions in which to update associated stack instances. If you
+specify regions, you must also specify accounts in which to update
+stack set instances.
+
+To update I<all> the stack instances associated with this stack set, do
+not specify the C<Accounts> or C<Regions> properties.
+
+If the stack set update includes changes to the template (that is, if
+the C<TemplateBody> or C<TemplateURL> properties are specified), or the
+C<Parameters> property, AWS CloudFormation marks all stack instances
+with a status of C<OUTDATED> prior to updating the stack instances in
+the specified accounts and regions. If the stack set update does not
+include changes to the template or parameters, AWS CloudFormation
+updates the stack instances in the specified accounts and regions,
+while leaving all other stack instances with their existing stack
+instance status.
 
 
 

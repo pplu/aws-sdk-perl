@@ -56,7 +56,7 @@ request.
 
 =item *
 
-B<PENDING>: Amazon Route 53 is performing the operation.
+B<PENDING>: AWS Cloud Map is performing the operation.
 
 =item *
 

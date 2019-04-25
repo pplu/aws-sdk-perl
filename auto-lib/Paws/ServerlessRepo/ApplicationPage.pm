@@ -1,6 +1,6 @@
 package Paws::ServerlessRepo::ApplicationPage;
   use Moose;
-  has Applications => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationSummary]', request_name => 'applications', traits => ['NameInRequest']);
+  has Applications => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationSummary]', request_name => 'applications', traits => ['NameInRequest'], required => 1);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
 1;
 
@@ -32,14 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessR
 
 =head1 DESCRIPTION
 
-List of application details.
+A list of application details.
 
 =head1 ATTRIBUTES
 
 
-=head2 Applications => ArrayRef[L<Paws::ServerlessRepo::ApplicationSummary>]
+=head2 B<REQUIRED> Applications => ArrayRef[L<Paws::ServerlessRepo::ApplicationSummary>]
 
-  Array of application summaries.
+  An array of application summaries.
 
 
 =head2 NextToken => Str

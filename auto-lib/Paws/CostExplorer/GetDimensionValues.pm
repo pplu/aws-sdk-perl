@@ -22,17 +22,37 @@ Paws::CostExplorer::GetDimensionValues - Arguments for method GetDimensionValues
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetDimensionValues on the 
-AWS Cost Explorer Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetDimensionValues on the
+L<AWS Cost Explorer Service|Paws::CostExplorer> service. Use the attributes of this class
 as arguments to method GetDimensionValues.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDimensionValues.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetDimensionValues(Att1 => $value1, Att2 => $value2, ...);
+    my $ce = Paws->service('CostExplorer');
+    my $GetDimensionValuesResponse = $ce->GetDimensionValues(
+      Dimension  => 'AZ',
+      TimePeriod => {
+        End   => 'MyYearMonthDay',
+        Start => 'MyYearMonthDay',
+
+      },
+      Context       => 'COST_AND_USAGE',     # OPTIONAL
+      NextPageToken => 'MyNextPageToken',    # OPTIONAL
+      SearchString  => 'MySearchString',     # OPTIONAL
+    );
+
+    # Results:
+    my $DimensionValues = $GetDimensionValuesResponse->DimensionValues;
+    my $NextPageToken   = $GetDimensionValuesResponse->NextPageToken;
+    my $ReturnSize      = $GetDimensionValuesResponse->ReturnSize;
+    my $TotalSize       = $GetDimensionValuesResponse->TotalSize;
+
+    # Returns a L<Paws::CostExplorer::GetDimensionValuesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/GetDimensionValues>
 
 =head1 ATTRIBUTES
 
@@ -40,101 +60,138 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Context => Str
 
 The context for the call to C<GetDimensionValues>. This can be
-C<RESERVED_INSTANCE> or C<COST_AND_USAGE>. The default value is
-C<COST_AND_USAGE>. If the context is set to C<RESERVED_INSTANCE>, the
+C<RESERVATIONS> or C<COST_AND_USAGE>. The default value is
+C<COST_AND_USAGE>. If the context is set to C<RESERVATIONS>, the
 resulting dimension values can be used in the
-C<GetReservationUtilization> action. If the context is set to
-C<COST_AND_USAGE>, , the resulting dimension values can be used in the
+C<GetReservationUtilization> operation. If the context is set to
+C<COST_AND_USAGE>, the resulting dimension values can be used in the
 C<GetCostAndUsage> operation.
 
-If you set the context to C<CostAndUsage>, you can use the following
+If you set the context to C<COST_AND_USAGE>, you can use the following
 dimensions for searching:
 
 =over
 
 =item *
 
-AZ - The Availability Zone. An example is us-east-1a.
+AZ - The Availability Zone. An example is C<us-east-1a>.
 
 =item *
 
-InstanceType - The type of EC2 instance. An example is m4.xlarge.
+DATABASE_ENGINE - The Amazon Relational Database Service database.
+Examples are Aurora or MySQL.
 
 =item *
 
-LinkedAccount - The description in the attribute map that includes the
+INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
+C<m4.xlarge>.
+
+=item *
+
+LEGAL_ENTITY_NAME - The name of the organization that sells you AWS
+services, such as Amazon Web Services.
+
+=item *
+
+LINKED_ACCOUNT - The description in the attribute map that includes the
 full name of the member account. The value field contains the AWS ID of
-the member account
+the member account.
 
 =item *
 
-Operation - The action performed. Examples include RunInstance and
-CreateBucket.
+OPERATING_SYSTEM - The operating system. Examples are Windows or Linux.
 
 =item *
 
-PurchaseType - The reservation type of the purchase to which this usage
-is related. Examples include: On Demand Instances and Standard Reserved
-Instances
+OPERATION - The action performed. Examples include C<RunInstance> and
+C<CreateBucket>.
 
 =item *
 
-Service - The AWS service such as DynamoDB.
+PLATFORM - The Amazon EC2 operating system. Examples are Windows or
+Linux.
 
 =item *
 
-UsageType -The type of usage. An example is DataTransfer-In-Bytes. The
-response for the GetDimensionValues action includes a unit attribute,
-examples of which include GB and Hrs.
+PURCHASE_TYPE - The reservation type of the purchase to which this
+usage is related. Examples include On-Demand Instances and Standard
+Reserved Instances.
 
 =item *
 
-UsageTypeGroup - The grouping of common usage types. An example is EC2:
-CloudWatch E<ndash> Alarms. The response for this action includes a
-unit attribute.
+SERVICE - The AWS service such as Amazon DynamoDB.
 
 =item *
 
-RecordType - The different types of charges such as RI fees, usage
-costs, tax refunds, and credits
+USAGE_TYPE - The type of usage. An example is DataTransfer-In-Bytes.
+The response for the C<GetDimensionValues> operation includes a unit
+attribute. Examples include GB and Hrs.
+
+=item *
+
+USAGE_TYPE_GROUP - The grouping of common usage types. An example is
+Amazon EC2: CloudWatch E<ndash> Alarms. The response for this operation
+includes a unit attribute.
+
+=item *
+
+RECORD_TYPE - The different types of charges such as RI fees, usage
+costs, tax refunds, and credits.
 
 =back
 
-If you set the context to C<ReservedInstance>, you can use the
-following dimensions for searching:
+If you set the context to C<RESERVATIONS>, you can use the following
+dimensions for searching:
 
 =over
 
 =item *
 
-AZ - The Availability Zone. An example is us-east-1a.
+AZ - The Availability Zone. An example is C<us-east-1a>.
 
 =item *
 
-InstanceType - The type of EC2 instance. An example is m4.xlarge.
+CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are
+Windows or Linux.
 
 =item *
 
-LinkedAccount - The description in the attribute map that includes the
+DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service
+deployments. Valid values are C<SingleAZ> and C<MultiAZ>.
+
+=item *
+
+INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
+C<m4.xlarge>.
+
+=item *
+
+LINKED_ACCOUNT - The description in the attribute map that includes the
 full name of the member account. The value field contains the AWS ID of
-the member account
+the member account.
 
 =item *
 
-Platform - The operating system. Examples are Windows or Linux.
+PLATFORM - The Amazon EC2 operating system. Examples are Windows or
+Linux.
 
 =item *
 
-Region - The AWS region.
+REGION - The AWS Region.
 
 =item *
 
-Scope - The scope of a reserved instance (RI). Values are regional or a
-single availability zone.
+SCOPE (Utilization only) - The scope of a Reserved Instance (RI).
+Values are regional or a single Availability Zone.
 
 =item *
 
-Tenancy - The tenancy of a resource. Examples are shared or dedicated.
+TAG (Coverage only) - The tags that are associated with a Reserved
+Instance (RI).
+
+=item *
+
+TENANCY - The tenancy of a resource. Examples are shared or dedicated.
 
 =back
 
@@ -143,10 +200,10 @@ Valid values are: C<"COST_AND_USAGE">, C<"RESERVATIONS">
 
 =head2 B<REQUIRED> Dimension => Str
 
-The name of the dimension. Different C<Dimensions>are available for
-different C<Context>s. For more information, see C<Context>.
+The name of the dimension. Each C<Dimension> is available for a
+different C<Context>. For more information, see C<Context>.
 
-Valid values are: C<"AZ">, C<"INSTANCE_TYPE">, C<"LINKED_ACCOUNT">, C<"OPERATION">, C<"PURCHASE_TYPE">, C<"REGION">, C<"SERVICE">, C<"USAGE_TYPE">, C<"USAGE_TYPE_GROUP">, C<"RECORD_TYPE">, C<"OPERATING_SYSTEM">, C<"TENANCY">, C<"SCOPE">, C<"PLATFORM">, C<"SUBSCRIPTION_ID">
+Valid values are: C<"AZ">, C<"INSTANCE_TYPE">, C<"LINKED_ACCOUNT">, C<"OPERATION">, C<"PURCHASE_TYPE">, C<"REGION">, C<"SERVICE">, C<"USAGE_TYPE">, C<"USAGE_TYPE_GROUP">, C<"RECORD_TYPE">, C<"OPERATING_SYSTEM">, C<"TENANCY">, C<"SCOPE">, C<"PLATFORM">, C<"SUBSCRIPTION_ID">, C<"LEGAL_ENTITY_NAME">, C<"DEPLOYMENT_OPTION">, C<"DATABASE_ENGINE">, C<"CACHE_ENGINE">, C<"INSTANCE_TYPE_FAMILY">, C<"BILLING_ENTITY">, C<"RESERVATION_ID">
 
 =head2 NextPageToken => Str
 

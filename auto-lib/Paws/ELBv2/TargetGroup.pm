@@ -1,5 +1,6 @@
 package Paws::ELBv2::TargetGroup;
   use Moose;
+  has HealthCheckEnabled => (is => 'ro', isa => 'Bool');
   has HealthCheckIntervalSeconds => (is => 'ro', isa => 'Int');
   has HealthCheckPath => (is => 'ro', isa => 'Str');
   has HealthCheckPort => (is => 'ro', isa => 'Str');
@@ -34,20 +35,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ELBv2::TargetGroup object:
 
-  $service_obj->Method(Att1 => { HealthCheckIntervalSeconds => $value, ..., VpcId => $value  });
+  $service_obj->Method(Att1 => { HealthCheckEnabled => $value, ..., VpcId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::TargetGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->HealthCheckIntervalSeconds
+  $result->Att1->HealthCheckEnabled
 
 =head1 DESCRIPTION
 
 Information about a target group.
 
 =head1 ATTRIBUTES
+
+
+=head2 HealthCheckEnabled => Bool
+
+  Indicates whether health checks are enabled.
 
 
 =head2 HealthCheckIntervalSeconds => Int

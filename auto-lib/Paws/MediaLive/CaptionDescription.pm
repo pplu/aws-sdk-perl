@@ -1,10 +1,10 @@
 package Paws::MediaLive::CaptionDescription;
   use Moose;
-  has CaptionSelectorName => (is => 'ro', isa => 'Str', request_name => 'captionSelectorName', traits => ['NameInRequest']);
+  has CaptionSelectorName => (is => 'ro', isa => 'Str', request_name => 'captionSelectorName', traits => ['NameInRequest'], required => 1);
   has DestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::CaptionDestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +41,7 @@ about where streams should be distributed.
 =head1 ATTRIBUTES
 
 
-=head2 CaptionSelectorName => Str
+=head2 B<REQUIRED> CaptionSelectorName => Str
 
   Specifies which input caption selector to use as a caption source when
 generating output captions. This field should match a captionSelector
@@ -65,7 +65,7 @@ destination type.
 (eg. English, or Spanish).
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
   Name of the caption description. Used to associate a caption
 description with an output. Names must be unique within an event.

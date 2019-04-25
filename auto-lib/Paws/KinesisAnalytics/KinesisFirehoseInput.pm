@@ -33,23 +33,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 Identifies an Amazon Kinesis Firehose delivery stream as the streaming
-source. You provide the Firehose delivery stream's Amazon Resource Name
-(ARN) and an IAM role ARN that enables Amazon Kinesis Analytics to
-access the stream on your behalf.
+source. You provide the delivery stream's Amazon Resource Name (ARN)
+and an IAM role ARN that enables Amazon Kinesis Analytics to access the
+stream on your behalf.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-  ARN of the input Firehose delivery stream.
+  ARN of the input delivery stream.
 
 
 =head2 B<REQUIRED> RoleARN => Str
 
   ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-the stream on your behalf. You need to make sure the role has necessary
-permissions to access the stream.
+the stream on your behalf. You need to make sure that the role has the
+necessary permissions to access the stream.
 
 
 

@@ -19,17 +19,39 @@ Paws::MediaLive::StopChannel - Arguments for method StopChannel on L<Paws::Media
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StopChannel on the 
-AWS Elemental MediaLive service. Use the attributes of this class
+This class represents the parameters used for calling the method StopChannel on the
+L<AWS Elemental MediaLive|Paws::MediaLive> service. Use the attributes of this class
 as arguments to method StopChannel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StopChannel.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StopChannel(Att1 => $value1, Att2 => $value2, ...);
+    my $medialive = Paws->service('MediaLive');
+    my $StopChannelResponse = $medialive->StopChannel(
+      ChannelId => 'My__string',
+
+    );
+
+    # Results:
+    my $Arn                   = $StopChannelResponse->Arn;
+    my $Destinations          = $StopChannelResponse->Destinations;
+    my $EgressEndpoints       = $StopChannelResponse->EgressEndpoints;
+    my $EncoderSettings       = $StopChannelResponse->EncoderSettings;
+    my $Id                    = $StopChannelResponse->Id;
+    my $InputAttachments      = $StopChannelResponse->InputAttachments;
+    my $InputSpecification    = $StopChannelResponse->InputSpecification;
+    my $LogLevel              = $StopChannelResponse->LogLevel;
+    my $Name                  = $StopChannelResponse->Name;
+    my $PipelinesRunningCount = $StopChannelResponse->PipelinesRunningCount;
+    my $RoleArn               = $StopChannelResponse->RoleArn;
+    my $State                 = $StopChannelResponse->State;
+    my $Tags                  = $StopChannelResponse->Tags;
+
+    # Returns a L<Paws::MediaLive::StopChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/medialive/StopChannel>
 
 =head1 ATTRIBUTES
 

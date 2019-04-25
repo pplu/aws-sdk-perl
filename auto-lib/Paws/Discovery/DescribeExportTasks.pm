@@ -21,17 +21,38 @@ Paws::Discovery::DescribeExportTasks - Arguments for method DescribeExportTasks 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeExportTasks on the 
-AWS Application Discovery Service service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeExportTasks on the
+L<AWS Application Discovery Service|Paws::Discovery> service. Use the attributes of this class
 as arguments to method DescribeExportTasks.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeExportTasks.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeExportTasks(Att1 => $value1, Att2 => $value2, ...);
+    my $discovery = Paws->service('Discovery');
+    my $DescribeExportTasksResponse = $discovery->DescribeExportTasks(
+      ExportIds => [ 'MyConfigurationsExportId', ... ],    # OPTIONAL
+      Filters   => [
+        {
+          Condition => 'MyCondition',
+          Name      => 'MyFilterName',
+          Values    => [ 'MyFilterValue', ... ],
+
+        },
+        ...
+      ],                                                   # OPTIONAL
+      MaxResults => 1,                                     # OPTIONAL
+      NextToken  => 'MyNextToken',                         # OPTIONAL
+    );
+
+    # Results:
+    my $ExportsInfo = $DescribeExportTasksResponse->ExportsInfo;
+    my $NextToken   = $DescribeExportTasksResponse->NextToken;
+
+    # Returns a L<Paws::Discovery::DescribeExportTasksResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/discovery/DescribeExportTasks>
 
 =head1 ATTRIBUTES
 

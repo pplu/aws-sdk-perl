@@ -4,6 +4,7 @@ package Paws::LexModels::PutIntent;
   has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
   has ConclusionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'conclusionStatement');
   has ConfirmationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'confirmationPrompt');
+  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DialogCodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook', traits => ['NameInRequest'], request_name => 'dialogCodeHook');
   has FollowUpPrompt => (is => 'ro', isa => 'Paws::LexModels::FollowUpPrompt', traits => ['NameInRequest'], request_name => 'followUpPrompt');
@@ -30,17 +31,152 @@ Paws::LexModels::PutIntent - Arguments for method PutIntent on L<Paws::LexModels
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutIntent on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method PutIntent on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method PutIntent.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutIntent.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutIntent(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $PutIntentResponse = $models . lex->PutIntent(
+      Name                => 'MyIntentName',
+      Checksum            => 'MyString',       # OPTIONAL
+      ConclusionStatement => {
+        Messages => [
+          {
+            Content => 'MyContentString',      # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
+          },
+          ...
+        ],                              # min: 1, max: 15
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+      },    # OPTIONAL
+      ConfirmationPrompt => {
+        MaxAttempts => 1,    # min: 1, max: 5
+        Messages    => [
+          {
+            Content => 'MyContentString',    # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
+          },
+          ...
+        ],                              # min: 1, max: 15
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+      },    # OPTIONAL
+      CreateVersion  => 1,                  # OPTIONAL
+      Description    => 'MyDescription',    # OPTIONAL
+      DialogCodeHook => {
+        MessageVersion => 'MyMessageVersion',    # min: 1, max: 5
+        Uri            => 'MyLambdaARN',         # min: 20, max: 2048
+
+      },    # OPTIONAL
+      FollowUpPrompt => {
+        Prompt => {
+          MaxAttempts => 1,    # min: 1, max: 5
+          Messages    => [
+            {
+              Content => 'MyContentString',    # min: 1, max: 1000
+              ContentType =>
+                'PlainText',    # values: PlainText, SSML, CustomPayload
+              GroupNumber => 1, # min: 1, max: 5; OPTIONAL
+            },
+            ...
+          ],                    # min: 1, max: 15
+          ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        },
+        RejectionStatement => {
+          Messages => [
+            {
+              Content => 'MyContentString',    # min: 1, max: 1000
+              ContentType =>
+                'PlainText',    # values: PlainText, SSML, CustomPayload
+              GroupNumber => 1, # min: 1, max: 5; OPTIONAL
+            },
+            ...
+          ],                    # min: 1, max: 15
+          ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+        },
+
+      },    # OPTIONAL
+      FulfillmentActivity => {
+        Type     => 'ReturnIntent',    # values: ReturnIntent, CodeHook
+        CodeHook => {
+          MessageVersion => 'MyMessageVersion',    # min: 1, max: 5
+          Uri            => 'MyLambdaARN',         # min: 20, max: 2048
+
+        },
+      },    # OPTIONAL
+      ParentIntentSignature => 'MyBuiltinIntentSignature',    # OPTIONAL
+      RejectionStatement    => {
+        Messages => [
+          {
+            Content => 'MyContentString',    # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
+          },
+          ...
+        ],                              # min: 1, max: 15
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+      },    # OPTIONAL
+      SampleUtterances => [
+        'MyUtterance', ...    # min: 1, max: 200
+      ],                      # OPTIONAL
+      Slots => [
+        {
+          Name             => 'MySlotName',       # min: 1, max: 100
+          SlotConstraint   => 'Required',         # values: Required, Optional
+          Description      => 'MyDescription',    # max: 200
+          Priority         => 1,                  # max: 100; OPTIONAL
+          ResponseCard     => 'MyResponseCard',   # min: 1, max: 50000; OPTIONAL
+          SampleUtterances => [
+            'MyUtterance', ...                    # min: 1, max: 200
+          ],                                      # max: 10; OPTIONAL
+          SlotType =>
+            'MyCustomOrBuiltinSlotTypeName',      # min: 1, max: 100; OPTIONAL
+          SlotTypeVersion        => 'MyVersion',  # min: 1, max: 64; OPTIONAL
+          ValueElicitationPrompt => {
+            MaxAttempts => 1,                     # min: 1, max: 5
+            Messages    => [
+              {
+                Content => 'MyContentString',     # min: 1, max: 1000
+                ContentType =>
+                  'PlainText',    # values: PlainText, SSML, CustomPayload
+                GroupNumber => 1, # min: 1, max: 5; OPTIONAL
+              },
+              ...
+            ],                    # min: 1, max: 15
+            ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+          },
+        },
+        ...
+      ],                                         # OPTIONAL
+    );
+
+    # Results:
+    my $Checksum              = $PutIntentResponse->Checksum;
+    my $ConclusionStatement   = $PutIntentResponse->ConclusionStatement;
+    my $ConfirmationPrompt    = $PutIntentResponse->ConfirmationPrompt;
+    my $CreateVersion         = $PutIntentResponse->CreateVersion;
+    my $CreatedDate           = $PutIntentResponse->CreatedDate;
+    my $Description           = $PutIntentResponse->Description;
+    my $DialogCodeHook        = $PutIntentResponse->DialogCodeHook;
+    my $FollowUpPrompt        = $PutIntentResponse->FollowUpPrompt;
+    my $FulfillmentActivity   = $PutIntentResponse->FulfillmentActivity;
+    my $LastUpdatedDate       = $PutIntentResponse->LastUpdatedDate;
+    my $Name                  = $PutIntentResponse->Name;
+    my $ParentIntentSignature = $PutIntentResponse->ParentIntentSignature;
+    my $RejectionStatement    = $PutIntentResponse->RejectionStatement;
+    my $SampleUtterances      = $PutIntentResponse->SampleUtterances;
+    my $Slots                 = $PutIntentResponse->Slots;
+    my $Version               = $PutIntentResponse->Version;
+
+    # Returns a L<Paws::LexModels::PutIntentResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/PutIntent>
 
 =head1 ATTRIBUTES
 
@@ -88,6 +224,12 @@ for confirmation before providing the information.
 
 You you must provide both the C<rejectionStatement> and the
 C<confirmationPrompt>, or neither.
+
+
+
+=head2 CreateVersion => Bool
+
+
 
 
 

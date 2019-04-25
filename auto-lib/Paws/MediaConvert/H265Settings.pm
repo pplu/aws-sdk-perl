@@ -5,6 +5,7 @@ package Paws::MediaConvert::H265Settings;
   has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
   has CodecLevel => (is => 'ro', isa => 'Str', request_name => 'codecLevel', traits => ['NameInRequest']);
   has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
+  has DynamicSubGop => (is => 'ro', isa => 'Str', request_name => 'dynamicSubGop', traits => ['NameInRequest']);
   has FlickerAdaptiveQuantization => (is => 'ro', isa => 'Str', request_name => 'flickerAdaptiveQuantization', traits => ['NameInRequest']);
   has FramerateControl => (is => 'ro', isa => 'Str', request_name => 'framerateControl', traits => ['NameInRequest']);
   has FramerateConversionAlgorithm => (is => 'ro', isa => 'Str', request_name => 'framerateConversionAlgorithm', traits => ['NameInRequest']);
@@ -25,6 +26,7 @@ package Paws::MediaConvert::H265Settings;
   has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
   has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
   has QualityTuningLevel => (is => 'ro', isa => 'Str', request_name => 'qualityTuningLevel', traits => ['NameInRequest']);
+  has QvbrSettings => (is => 'ro', isa => 'Paws::MediaConvert::H265QvbrSettings', request_name => 'qvbrSettings', traits => ['NameInRequest']);
   has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
   has SampleAdaptiveOffsetFilterMode => (is => 'ro', isa => 'Str', request_name => 'sampleAdaptiveOffsetFilterMode', traits => ['NameInRequest']);
   has SceneChangeDetect => (is => 'ro', isa => 'Str', request_name => 'sceneChangeDetect', traits => ['NameInRequest']);
@@ -36,6 +38,7 @@ package Paws::MediaConvert::H265Settings;
   has TemporalIds => (is => 'ro', isa => 'Str', request_name => 'temporalIds', traits => ['NameInRequest']);
   has Tiles => (is => 'ro', isa => 'Str', request_name => 'tiles', traits => ['NameInRequest']);
   has UnregisteredSeiTimecode => (is => 'ro', isa => 'Str', request_name => 'unregisteredSeiTimecode', traits => ['NameInRequest']);
+  has WriteMp4PackagingType => (is => 'ro', isa => 'Str', request_name => 'writeMp4PackagingType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +58,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::H265Settings object:
 
-  $service_obj->Method(Att1 => { AdaptiveQuantization => $value, ..., UnregisteredSeiTimecode => $value  });
+  $service_obj->Method(Att1 => { AdaptiveQuantization => $value, ..., WriteMp4PackagingType => $value  });
 
 =head3 Results returned from an API call
 
@@ -83,10 +86,9 @@ Settings for H265 codec
 
 =head2 Bitrate => Int
 
-  Average bitrate in bits/second. Required for VBR, CBR, and ABR. Five
-megabits can be entered as 5000000 or 5m. Five hundred kilobits can be
-entered as 500000 or 0.5m. For MS Smooth outputs, bitrates must be
-unique when rounded down to the nearest multiple of 1000.
+  Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth
+outputs, bitrates must be unique when rounded down to the nearest
+multiple of 1000.
 
 
 =head2 CodecLevel => Str
@@ -97,6 +99,16 @@ unique when rounded down to the nearest multiple of 1000.
 =head2 CodecProfile => Str
 
   
+
+
+=head2 DynamicSubGop => Str
+
+  Choose Adaptive to improve subjective video quality for high-motion
+content. This will cause the service to use fewer B-frames (which infer
+information based on other frames) for high-motion portions of the
+video and more B-frames for low-motion portions. The maximum number of
+B-frames is limited by the value you provide for the setting B frames
+between reference frames (numberBFramesBetweenReferenceFrames).
 
 
 =head2 FlickerAdaptiveQuantization => Str
@@ -116,12 +128,12 @@ unique when rounded down to the nearest multiple of 1000.
 
 =head2 FramerateDenominator => Int
 
-  Framerate denominator.
+  Frame rate denominator.
 
 
 =head2 FramerateNumerator => Int
 
-  Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 =
+  Frame rate numerator - frame rate is a fraction, e.g. 24000 / 1001 =
 23.976 fps.
 
 
@@ -157,8 +169,8 @@ model).
 
 =head2 HrdBufferSize => Int
 
-  Size of buffer (HRD buffer model). Five megabits can be entered as
-5000000 or 5m. Five hundred kilobits can be entered as 500000 or 0.5m.
+  Size of buffer (HRD buffer model) in bits. For example, enter five
+megabits as 5000000.
 
 
 =head2 InterlaceMode => Str
@@ -168,9 +180,8 @@ model).
 
 =head2 MaxBitrate => Int
 
-  Maximum bitrate in bits/second (for VBR mode only). Five megabits can
-be entered as 5000000 or 5m. Five hundred kilobits can be entered as
-500000 or 0.5m.
+  Maximum bitrate in bits/second. For example, enter five megabits per
+second as 5000000. Required when Rate control mode is QVBR.
 
 
 =head2 MinIInterval => Int
@@ -213,6 +224,14 @@ requested if using B-frames and/or interlaced encoding.
 =head2 QualityTuningLevel => Str
 
   
+
+
+=head2 QvbrSettings => L<Paws::MediaConvert::H265QvbrSettings>
+
+  Settings for quality-defined variable bitrate encoding with the H.265
+codec. Required when you set Rate control mode to QVBR. Not valid when
+you set Rate control mode to a value other than QVBR, or when you don't
+define Rate control mode.
 
 
 =head2 RateControlMode => Str
@@ -268,6 +287,11 @@ half the number of macroblock rows for interlaced pictures.
 
 
 =head2 UnregisteredSeiTimecode => Str
+
+  
+
+
+=head2 WriteMp4PackagingType => Str
 
   
 

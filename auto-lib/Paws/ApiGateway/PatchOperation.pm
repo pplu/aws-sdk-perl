@@ -83,7 +83,7 @@ C<add> or C<replace> operation. When using AWS CLI to update a property
 of a JSON value, enclose the JSON object with a pair of single quotes
 in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see Using
 JSON for Parameters
-(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json).
+(https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json).
 
 
 

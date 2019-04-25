@@ -39,7 +39,7 @@ a comma (",") as the column delimiter:
 
 C<"name1", "address1">
 
-C<"name2, "address2">
+C<"name2", "address2">
 
 =head1 ATTRIBUTES
 

@@ -73,8 +73,7 @@ not changed. To remove the badge, set the value of this key to 0.
 
 =head2 Body => Str
 
-  The message body of the notification, the email body or the text
-message.
+  The message body of the notification.
 
 
 =head2 Category => Str
@@ -86,9 +85,11 @@ one of your app's registered categories.
 
 =head2 CollapseId => Str
 
-  Multiple notifications with the same collapse identifier are displayed
-to the user as a single notification. The value of this key must not
-exceed 64 bytes.
+  An ID that, if assigned to multiple messages, causes APNs to coalesce
+the messages into a single push notification instead of delivering each
+message individually. The value must not exceed 64 bytes. Amazon
+Pinpoint uses this value to set the apns-collapse-id request header
+when it sends the message to APNs.
 
 
 =head2 Data => L<Paws::Pinpoint::MapOf__string>
@@ -99,7 +100,8 @@ notifications' data.pinpoint.jsonBody' object
 
 =head2 MediaUrl => Str
 
-  The URL that points to a video used in the push notification.
+  A URL that refers to the location of an image or video that you want to
+display in the push notification.
 
 
 =head2 PreferredAuthenticationMethod => Str
@@ -109,7 +111,17 @@ notifications' data.pinpoint.jsonBody' object
 
 =head2 Priority => Str
 
-  Is this a transaction priority message or lower priority.
+  The message priority. Amazon Pinpoint uses this value to set the
+apns-priority request header when it sends the message to APNs. Accepts
+the following values: "5" - Low priority. Messages might be delayed,
+delivered in groups, and throttled. "10" - High priority. Messages are
+sent immediately. High priority messages must cause an alert, sound, or
+badge on the receiving device. The default value is "10". The
+equivalent values for FCM or GCM messages are "normal" and "high".
+Amazon Pinpoint accepts these values for APNs messages and converts
+them. For more information about the apns-priority parameter, see
+Communicating with APNs in the APNs Local and Remote Notification
+Programming Guide.
 
 
 =head2 RawContent => Str
@@ -149,11 +161,11 @@ notifications together.
 
 =head2 TimeToLive => Int
 
-  This parameter specifies how long (in seconds) the message should be
-kept if APNS is unable to deliver the notification the first time. If
-the value is 0, APNS treats the notification as if it expires
-immediately and does not store the notification or attempt to redeliver
-it. This value is converted to the expiration field when sent to APNS
+  The length of time (in seconds) that APNs stores and attempts to
+deliver the message. If the value is 0, APNs does not store the message
+or attempt to deliver it more than once. Amazon Pinpoint uses this
+value to set the apns-expiration request header when it sends the
+message to APNs.
 
 
 =head2 Title => Str

@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Resour
 
 =head1 DESCRIPTION
 
-Contains the result of the simulation of a single API action call on a
-single resource.
+Contains the result of the simulation of a single API operation call on
+a single resource.
 
 This data type is used by a member of the EvaluationResult data type.
 
@@ -54,7 +54,7 @@ resource-based policy and the caller's IAM policy must grant access.
 
 =head2 B<REQUIRED> EvalResourceDecision => Str
 
-  The result of the simulation of the simulated API action on the
+  The result of the simulation of the simulated API operation on the
 resource specified in C<EvalResourceName>.
 
 
@@ -68,9 +68,9 @@ format.
 
   A list of the statements in the input policies that determine the
 result for this part of the simulation. Remember that even if multiple
-statements allow the action on the resource, if I<any> statement denies
-that action, then the explicit deny overrides any allow, and the deny
-statement is the only entry included in the result.
+statements allow the operation on the resource, if I<any> statement
+denies that operation, then the explicit deny overrides any allow. In
+addition, the deny statement is the only entry included in the result.
 
 
 =head2 MissingContextValues => ArrayRef[Str|Undef]

@@ -19,17 +19,34 @@ Paws::IoT::DescribeThing - Arguments for method DescribeThing on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeThing on the 
-AWS IoT service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeThing on the
+L<AWS IoT|Paws::IoT> service. Use the attributes of this class
 as arguments to method DescribeThing.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeThing.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeThing(Att1 => $value1, Att2 => $value2, ...);
+    my $iot = Paws->service('IoT');
+    my $DescribeThingResponse = $iot->DescribeThing(
+      ThingName => 'MyThingName',
+
+    );
+
+    # Results:
+    my $Attributes       = $DescribeThingResponse->Attributes;
+    my $BillingGroupName = $DescribeThingResponse->BillingGroupName;
+    my $DefaultClientId  = $DescribeThingResponse->DefaultClientId;
+    my $ThingArn         = $DescribeThingResponse->ThingArn;
+    my $ThingId          = $DescribeThingResponse->ThingId;
+    my $ThingName        = $DescribeThingResponse->ThingName;
+    my $ThingTypeName    = $DescribeThingResponse->ThingTypeName;
+    my $Version          = $DescribeThingResponse->Version;
+
+    # Returns a L<Paws::IoT::DescribeThingResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/DescribeThing>
 
 =head1 ATTRIBUTES
 

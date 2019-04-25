@@ -29,17 +29,65 @@ Paws::OpsWorks::CreateApp - Arguments for method CreateApp on L<Paws::OpsWorks>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateApp on the 
-AWS OpsWorks service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateApp on the
+L<AWS OpsWorks|Paws::OpsWorks> service. Use the attributes of this class
 as arguments to method CreateApp.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateApp.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateApp(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks = Paws->service('OpsWorks');
+    my $CreateAppResult = $opsworks->CreateApp(
+      Name      => 'MyString',
+      StackId   => 'MyString',
+      Type      => 'aws-flow-ruby',
+      AppSource => {
+        Password => 'MyString',
+        Revision => 'MyString',
+        SshKey   => 'MyString',
+        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
+        Url      => 'MyString',
+        Username => 'MyString',
+      },    # OPTIONAL
+      Attributes => {
+        'DocumentRoot' => 'MyString'
+        , # key: values: DocumentRoot, RailsEnv, AutoBundleOnDeploy, AwsFlowRubySettings
+      },    # OPTIONAL
+      DataSources => [
+        {
+          Arn          => 'MyString',
+          DatabaseName => 'MyString',
+          Type         => 'MyString',
+        },
+        ...
+      ],    # OPTIONAL
+      Description => 'MyString',             # OPTIONAL
+      Domains     => [ 'MyString', ... ],    # OPTIONAL
+      EnableSsl   => 1,                      # OPTIONAL
+      Environment => [
+        {
+          Key    => 'MyString',
+          Value  => 'MyString',
+          Secure => 1,
+        },
+        ...
+      ],                                     # OPTIONAL
+      Shortname        => 'MyString',        # OPTIONAL
+      SslConfiguration => {
+        Certificate => 'MyString',
+        PrivateKey  => 'MyString',
+        Chain       => 'MyString',
+      },                                     # OPTIONAL
+    );
+
+    # Results:
+    my $AppId = $CreateAppResult->AppId;
+
+    # Returns a L<Paws::OpsWorks::CreateAppResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks/CreateApp>
 
 =head1 ATTRIBUTES
 

@@ -1,9 +1,9 @@
 
 package Paws::LexModels::GetUtterancesView;
   use Moose;
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
-  has BotVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'botVersions', required => 1);
-  has StatusType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'statusType', required => 1);
+  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botname', required => 1);
+  has BotVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'bot_versions', required => 1);
+  has StatusType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status_type', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -21,17 +21,32 @@ Paws::LexModels::GetUtterancesView - Arguments for method GetUtterancesView on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetUtterancesView on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetUtterancesView on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method GetUtterancesView.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUtterancesView.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetUtterancesView(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetUtterancesViewResponse = $models . lex->GetUtterancesView(
+      BotName     => 'MyBotName',
+      BotVersions => [
+        'MyVersion', ...    # min: 1, max: 64
+      ],
+      StatusType => 'Detected',
+
+    );
+
+    # Results:
+    my $BotName    = $GetUtterancesViewResponse->BotName;
+    my $Utterances = $GetUtterancesViewResponse->Utterances;
+
+    # Returns a L<Paws::LexModels::GetUtterancesViewResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/GetUtterancesView>
 
 =head1 ATTRIBUTES
 

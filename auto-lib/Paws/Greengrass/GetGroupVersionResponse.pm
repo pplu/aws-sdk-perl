@@ -21,27 +21,28 @@ Paws::Greengrass::GetGroupVersionResponse
 
 =head2 Arn => Str
 
-Arn of the group version.
+The ARN of the group version.
 
 
 =head2 CreationTimestamp => Str
 
-Timestamp when the group version was created.
+The time, in milliseconds since the epoch, when the group version was
+created.
 
 
 =head2 Definition => L<Paws::Greengrass::GroupVersion>
 
-Information on the definition
+Information about the group version definition.
 
 
 =head2 Id => Str
 
-Id of the group version.
+The ID of the group version.
 
 
 =head2 Version => Str
 
-Unique Id for a version of the Group.
+The unique ID for the version of the group.
 
 
 =head2 _request_id => Str

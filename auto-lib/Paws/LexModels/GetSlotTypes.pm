@@ -21,17 +21,29 @@ Paws::LexModels::GetSlotTypes - Arguments for method GetSlotTypes on L<Paws::Lex
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetSlotTypes on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetSlotTypes on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method GetSlotTypes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSlotTypes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetSlotTypes(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetSlotTypesResponse = $models . lex->GetSlotTypes(
+      MaxResults   => 1,                   # OPTIONAL
+      NameContains => 'MySlotTypeName',    # OPTIONAL
+      NextToken    => 'MyNextToken',       # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $GetSlotTypesResponse->NextToken;
+    my $SlotTypes = $GetSlotTypesResponse->SlotTypes;
+
+    # Returns a L<Paws::LexModels::GetSlotTypesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/GetSlotTypes>
 
 =head1 ATTRIBUTES
 

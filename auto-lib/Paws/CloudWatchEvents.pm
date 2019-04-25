@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents;
   use Moose;
   sub service { 'events' }
+  sub signing_name { 'events' }
   sub version { '2015-10-07' }
   sub target_prefix { 'AWSEvents' }
   sub json_version { "1.1" }
@@ -90,6 +91,75 @@ package Paws::CloudWatchEvents;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllRuleNamesByTarget {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRuleNamesByTarget(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListRuleNamesByTarget(@_, NextToken => $next_result->NextToken);
+        push @{ $result->RuleNames }, @{ $next_result->RuleNames };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'RuleNames') foreach (@{ $result->RuleNames });
+        $result = $self->ListRuleNamesByTarget(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'RuleNames') foreach (@{ $result->RuleNames });
+    }
+
+    return undef
+  }
+  sub ListAllRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListRules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Rules }, @{ $next_result->Rules };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+        $result = $self->ListRules(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+    }
+
+    return undef
+  }
+  sub ListAllTargetsByRule {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTargetsByRule(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTargetsByRule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Targets }, @{ $next_result->Targets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+        $result = $self->ListTargetsByRule(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteRule DescribeEventBus DescribeRule DisableRule EnableRule ListRuleNamesByTarget ListRules ListTargetsByRule PutEvents PutPermission PutRule PutTargets RemovePermission RemoveTargets TestEventPattern / }
@@ -124,7 +194,7 @@ Amazon CloudWatch Events helps you to respond to state changes in your
 AWS resources. When your resources change state, they automatically
 send events into an event stream. You can create rules that match
 selected events in the stream and route them to targets to take action.
-You can also use rules to take action on a pre-determined schedule. For
+You can also use rules to take action on a predetermined schedule. For
 example, you can configure rules to:
 
 =over
@@ -137,8 +207,9 @@ state.
 
 =item *
 
-Direct specific API records from CloudTrail to an Amazon Kinesis stream
-for detailed analysis of potential security or availability risks.
+Direct specific API records from AWS CloudTrail to an Amazon Kinesis
+data stream for detailed analysis of potential security or availability
+risks.
 
 =item *
 
@@ -151,9 +222,21 @@ For more information about the features of Amazon CloudWatch Events,
 see the Amazon CloudWatch Events User Guide
 (http://docs.aws.amazon.com/AmazonCloudWatch/latest/events).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/cloudwatch/>
+
+
 =head1 METHODS
 
-=head2 DeleteRule(Name => Str)
+=head2 DeleteRule
+
+=over
+
+=item Name => Str
+
+=item [Force => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::DeleteRule>
 
@@ -161,15 +244,25 @@ Returns: nothing
 
 Deletes the specified rule.
 
-You must remove all targets from a rule using RemoveTargets before you
-can delete the rule.
+Before you can delete the rule, you must remove all targets, using
+RemoveTargets.
 
 When you delete a rule, incoming events might continue to match to the
-deleted rule. Please allow a short period of time for changes to take
-effect.
+deleted rule. Allow a short period of time for changes to take effect.
+
+Managed rules are rules created and managed by another AWS service on
+your behalf. These rules are created by those other AWS services to
+support functionality in those services. You can delete these rules
+using the C<Force> option, but you should do so only if you are sure
+the other service is not still using that rule.
 
 
-=head2 DescribeEventBus()
+=head2 DescribeEventBus
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::DescribeEventBus>
 
@@ -181,7 +274,14 @@ policy. To enable your account to receive events from other accounts,
 use PutPermission.
 
 
-=head2 DescribeRule(Name => Str)
+=head2 DescribeRule
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::DescribeRule>
 
@@ -189,8 +289,18 @@ Returns: a L<Paws::CloudWatchEvents::DescribeRuleResponse> instance
 
 Describes the specified rule.
 
+DescribeRule does not list the targets of a rule. To see the targets
+associated with a rule, use ListTargetsByRule.
 
-=head2 DisableRule(Name => Str)
+
+=head2 DisableRule
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::DisableRule>
 
@@ -200,11 +310,17 @@ Disables the specified rule. A disabled rule won't match any events,
 and won't self-trigger if it has a schedule expression.
 
 When you disable a rule, incoming events might continue to match to the
-disabled rule. Please allow a short period of time for changes to take
-effect.
+disabled rule. Allow a short period of time for changes to take effect.
 
 
-=head2 EnableRule(Name => Str)
+=head2 EnableRule
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::EnableRule>
 
@@ -214,11 +330,22 @@ Enables the specified rule. If the rule does not exist, the operation
 fails.
 
 When you enable a rule, incoming events might not immediately start
-matching to a newly enabled rule. Please allow a short period of time
-for changes to take effect.
+matching to a newly enabled rule. Allow a short period of time for
+changes to take effect.
 
 
-=head2 ListRuleNamesByTarget(TargetArn => Str, [Limit => Int, NextToken => Str])
+=head2 ListRuleNamesByTarget
+
+=over
+
+=item TargetArn => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::ListRuleNamesByTarget>
 
@@ -229,7 +356,18 @@ rules in Amazon CloudWatch Events can invoke a specific target in your
 account.
 
 
-=head2 ListRules([Limit => Int, NamePrefix => Str, NextToken => Str])
+=head2 ListRules
+
+=over
+
+=item [Limit => Int]
+
+=item [NamePrefix => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::ListRules>
 
@@ -238,8 +376,22 @@ Returns: a L<Paws::CloudWatchEvents::ListRulesResponse> instance
 Lists your Amazon CloudWatch Events rules. You can either list all the
 rules or you can provide a prefix to match to the rule names.
 
+ListRules does not list the targets of a rule. To see the targets
+associated with a rule, use ListTargetsByRule.
 
-=head2 ListTargetsByRule(Rule => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListTargetsByRule
+
+=over
+
+=item Rule => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::ListTargetsByRule>
 
@@ -248,7 +400,14 @@ Returns: a L<Paws::CloudWatchEvents::ListTargetsByRuleResponse> instance
 Lists the targets assigned to the specified rule.
 
 
-=head2 PutEvents(Entries => ArrayRef[L<Paws::CloudWatchEvents::PutEventsRequestEntry>])
+=head2 PutEvents
+
+=over
+
+=item Entries => ArrayRef[L<Paws::CloudWatchEvents::PutEventsRequestEntry>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::PutEvents>
 
@@ -258,29 +417,70 @@ Sends custom events to Amazon CloudWatch Events so that they can be
 matched to rules.
 
 
-=head2 PutPermission(Action => Str, Principal => Str, StatementId => Str)
+=head2 PutPermission
+
+=over
+
+=item Action => Str
+
+=item Principal => Str
+
+=item StatementId => Str
+
+=item [Condition => L<Paws::CloudWatchEvents::Condition>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::PutPermission>
 
 Returns: nothing
 
-Running C<PutPermission> permits the specified AWS account to put
-events to your account's default I<event bus>. CloudWatch Events rules
-in your account are triggered by these events arriving to your default
-event bus.
+Running C<PutPermission> permits the specified AWS account or AWS
+organization to put events to your account's default I<event bus>.
+CloudWatch Events rules in your account are triggered by these events
+arriving to your default event bus.
 
 For another account to send events to your account, that external
 account must have a CloudWatch Events rule with your account's default
 event bus as a target.
 
 To enable multiple AWS accounts to put events to your default event
-bus, run C<PutPermission> once for each of these accounts.
+bus, run C<PutPermission> once for each of these accounts. Or, if all
+the accounts are members of the same AWS organization, you can run
+C<PutPermission> once specifying C<Principal> as "*" and specifying the
+AWS organization ID in C<Condition>, to grant permissions to all
+accounts in that organization.
 
-The permission policy on the default event bus cannot exceed 10KB in
+If you grant permissions using an organization, then accounts in that
+organization must specify a C<RoleArn> with proper permissions when
+they use C<PutTarget> to add your account's event bus as a target. For
+more information, see Sending and Receiving Events Between AWS Accounts
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
+in the I<Amazon CloudWatch Events User Guide>.
+
+The permission policy on the default event bus cannot exceed 10 KB in
 size.
 
 
-=head2 PutRule(Name => Str, [Description => Str, EventPattern => Str, RoleArn => Str, ScheduleExpression => Str, State => Str])
+=head2 PutRule
+
+=over
+
+=item Name => Str
+
+=item [Description => Str]
+
+=item [EventPattern => Str]
+
+=item [RoleArn => Str]
+
+=item [ScheduleExpression => Str]
+
+=item [State => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::PutRule>
 
@@ -289,9 +489,14 @@ Returns: a L<Paws::CloudWatchEvents::PutRuleResponse> instance
 Creates or updates the specified rule. Rules are enabled by default, or
 based on value of the state. You can disable a rule using DisableRule.
 
+If you are updating an existing rule, the rule is replaced with what
+you specify in this C<PutRule> command. If you omit arguments in
+C<PutRule>, the old values for those arguments are not kept. Instead,
+they are replaced with null values.
+
 When you create or update a rule, incoming events might not immediately
-start matching to new or updated rules. Please allow a short period of
-time for changes to take effect.
+start matching to new or updated rules. Allow a short period of time
+for changes to take effect.
 
 A rule must contain at least an EventPattern or ScheduleExpression.
 Rules with EventPatterns are triggered when a matching event is
@@ -306,8 +511,34 @@ in event patterns and rules. Be sure to use the correct ARN characters
 when creating event patterns so that they match the ARN syntax in the
 event you want to match.
 
+In CloudWatch Events, it is possible to create rules that lead to
+infinite loops, where a rule is fired repeatedly. For example, a rule
+might detect that ACLs have changed on an S3 bucket, and trigger
+software to change them to the desired state. If the rule is not
+written carefully, the subsequent change to the ACLs fires the rule
+again, creating an infinite loop.
 
-=head2 PutTargets(Rule => Str, Targets => ArrayRef[L<Paws::CloudWatchEvents::Target>])
+To prevent this, write the rules so that the triggered actions do not
+re-fire the same rule. For example, your rule could fire only if ACLs
+are found to be in a bad state, instead of after any change.
+
+An infinite loop can quickly cause higher than expected charges. We
+recommend that you use budgeting, which alerts you when charges exceed
+your specified limit. For more information, see Managing Your Costs
+with Budgets
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html).
+
+
+=head2 PutTargets
+
+=over
+
+=item Rule => Str
+
+=item Targets => ArrayRef[L<Paws::CloudWatchEvents::Target>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::PutTargets>
 
@@ -328,15 +559,23 @@ EC2 instances
 
 =item *
 
+SSM Run Command
+
+=item *
+
+SSM Automation
+
+=item *
+
 AWS Lambda functions
 
 =item *
 
-Streams in Amazon Kinesis Streams
+Data streams in Amazon Kinesis Data Streams
 
 =item *
 
-Delivery streams in Amazon Kinesis Firehose
+Data delivery streams in Amazon Kinesis Data Firehose
 
 =item *
 
@@ -348,7 +587,15 @@ AWS Step Functions state machines
 
 =item *
 
-Pipelines in Amazon Code Pipeline
+AWS Batch jobs
+
+=item *
+
+AWS CodeBuild projects
+
+=item *
+
+Pipelines in AWS CodePipeline
 
 =item *
 
@@ -360,7 +607,7 @@ Amazon SNS topics
 
 =item *
 
-Amazon SQS queues
+Amazon SQS queues, including FIFO queues
 
 =item *
 
@@ -368,19 +615,21 @@ The default event bus of another AWS account
 
 =back
 
-Note that creating rules with built-in targets is supported only in the
-AWS Management Console.
+Creating rules with built-in targets is supported only in the AWS
+Management Console. The built-in targets are C<EC2 CreateSnapshot API
+call>, C<EC2 RebootInstances API call>, C<EC2 StopInstances API call>,
+and C<EC2 TerminateInstances API call>.
 
 For some target types, C<PutTargets> provides target-specific
-parameters. If the target is an Amazon Kinesis stream, you can
-optionally specify which shard the event goes to by using the
-C<KinesisParameters> argument. To invoke a command on multiple EC2
-instances with one rule, you can use the C<RunCommandParameters> field.
+parameters. If the target is a Kinesis data stream, you can optionally
+specify which shard the event goes to by using the C<KinesisParameters>
+argument. To invoke a command on multiple EC2 instances with one rule,
+you can use the C<RunCommandParameters> field.
 
 To be able to make API calls against the resources that you own, Amazon
 CloudWatch Events needs the appropriate permissions. For AWS Lambda and
 Amazon SNS resources, CloudWatch Events relies on resource-based
-policies. For EC2 instances, Amazon Kinesis streams, and AWS Step
+policies. For EC2 instances, Kinesis data streams, and AWS Step
 Functions state machines, CloudWatch Events relies on IAM roles that
 you specify in the C<RoleARN> argument in C<PutTargets>. For more
 information, see Authentication and Access Control
@@ -389,19 +638,27 @@ in the I<Amazon CloudWatch Events User Guide>.
 
 If another AWS account is in the same region and has granted you
 permission (using C<PutPermission>), you can send events to that
-account by setting that account's event bus as a target of the rules in
-your account. To send the matched events to the other account, specify
-that account's event bus as the C<Arn> when you run C<PutTargets>. If
+account. Set that account's event bus as a target of the rules in your
+account. To send the matched events to the other account, specify that
+account's event bus as the C<Arn> value when you run C<PutTargets>. If
 your account sends events to another account, your account is charged
-for each sent event. Each event sent to antoher account is charged as a
+for each sent event. Each event sent to another account is charged as a
 custom event. The account receiving the event is not charged. For more
-information on pricing, see Amazon CloudWatch Pricing
+information, see Amazon CloudWatch Pricing
 (https://aws.amazon.com/cloudwatch/pricing/).
+
+If you are setting the event bus of another account as the target, and
+that account granted permission to your account through an organization
+instead of directly by the account ID, then you must specify a
+C<RoleArn> with proper permissions in the C<Target> structure. For more
+information, see Sending and Receiving Events Between AWS Accounts
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
+in the I<Amazon CloudWatch Events User Guide>.
 
 For more information about enabling cross-account events, see
 PutPermission.
 
-B<Input>, B<InputPath> and B<InputTransformer> are mutually exclusive
+B<Input>, B<InputPath>, and B<InputTransformer> are mutually exclusive
 and optional parameters of a target. When a rule is triggered due to a
 matched event:
 
@@ -410,9 +667,9 @@ matched event:
 =item *
 
 If none of the following arguments are specified for a target, then the
-entire event is passed to the target in JSON form (unless the target is
-Amazon EC2 Run Command or Amazon ECS task, in which case nothing from
-the event is passed to the target).
+entire event is passed to the target in JSON format (unless the target
+is Amazon EC2 Run Command or Amazon ECS task, in which case nothing
+from the event is passed to the target).
 
 =item *
 
@@ -434,12 +691,12 @@ that you specify as the input to the target.
 
 =back
 
-When you specify C<Input>, C<InputPath>, or C<InputTransformer>, you
-must use JSON dot notation, not bracket notation.
+When you specify C<InputPath> or C<InputTransformer>, you must use JSON
+dot notation, not bracket notation.
 
 When you add targets to a rule and the associated rule triggers soon
-after, new or updated targets might not be immediately invoked. Please
-allow a short period of time for changes to take effect.
+after, new or updated targets might not be immediately invoked. Allow a
+short period of time for changes to take effect.
 
 This action can partially fail if too many requests are made at the
 same time. If that happens, C<FailedEntryCount> is non-zero in the
@@ -447,7 +704,14 @@ response and each entry in C<FailedEntries> provides the ID of the
 failed target and the error code.
 
 
-=head2 RemovePermission(StatementId => Str)
+=head2 RemovePermission
+
+=over
+
+=item StatementId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::RemovePermission>
 
@@ -460,7 +724,18 @@ granted it permission with C<PutPermission>. You can find the
 C<StatementId> by using DescribeEventBus.
 
 
-=head2 RemoveTargets(Ids => ArrayRef[Str|Undef], Rule => Str)
+=head2 RemoveTargets
+
+=over
+
+=item Ids => ArrayRef[Str|Undef]
+
+=item Rule => Str
+
+=item [Force => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::RemoveTargets>
 
@@ -470,8 +745,8 @@ Removes the specified targets from the specified rule. When the rule is
 triggered, those targets are no longer be invoked.
 
 When you remove a target, when the associated rule triggers, removed
-targets might continue to be invoked. Please allow a short period of
-time for changes to take effect.
+targets might continue to be invoked. Allow a short period of time for
+changes to take effect.
 
 This action can partially fail if too many requests are made at the
 same time. If that happens, C<FailedEntryCount> is non-zero in the
@@ -479,7 +754,16 @@ response and each entry in C<FailedEntries> provides the ID of the
 failed target and the error code.
 
 
-=head2 TestEventPattern(Event => Str, EventPattern => Str)
+=head2 TestEventPattern
+
+=over
+
+=item Event => Str
+
+=item EventPattern => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::TestEventPattern>
 
@@ -499,6 +783,42 @@ event you want to match.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllRuleNamesByTarget(sub { },TargetArn => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllRuleNamesByTarget(TargetArn => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RuleNames, passing the object as the first parameter, and the string 'RuleNames' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchEvents::ListRuleNamesByTargetResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRules(sub { },[Limit => Int, NamePrefix => Str, NextToken => Str])
+
+=head2 ListAllRules([Limit => Int, NamePrefix => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Rules, passing the object as the first parameter, and the string 'Rules' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchEvents::ListRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTargetsByRule(sub { },Rule => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllTargetsByRule(Rule => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Targets, passing the object as the first parameter, and the string 'Targets' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchEvents::ListTargetsByRuleResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

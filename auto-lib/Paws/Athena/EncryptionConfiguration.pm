@@ -32,8 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Athena::Enc
 
 =head1 DESCRIPTION
 
-If query results are encrypted in Amazon S3, indicates the Amazon S3
-encryption option used.
+If query results are encrypted in Amazon S3, indicates the encryption
+option used (for example, C<SSE-KMS> or C<CSE-KMS>) and key
+information.
 
 =head1 ATTRIBUTES
 

@@ -15,8 +15,10 @@ package Paws::AutoScaling::AutoScalingGroup;
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
+  has MixedInstancesPolicy => (is => 'ro', isa => 'Paws::AutoScaling::MixedInstancesPolicy');
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
+  has ServiceLinkedRoleARN => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SuspendedProcesses => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::SuspendedProcess]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::TagDescription]');
@@ -96,8 +98,9 @@ before another scaling activity can start.
 
 =head2 HealthCheckGracePeriod => Int
 
-  The amount of time, in seconds, that Auto Scaling waits before checking
-the health status of an EC2 instance that has come into service.
+  The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
+before checking the health status of an EC2 instance that has come into
+service.
 
 
 =head2 B<REQUIRED> HealthCheckType => Str
@@ -136,6 +139,11 @@ and C<ELB>.
   The minimum size of the group.
 
 
+=head2 MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>
+
+  The mixed instances policy for the group.
+
+
 =head2 NewInstancesProtectedFromScaleIn => Bool
 
   Indicates whether newly launched instances are protected from
@@ -144,10 +152,16 @@ termination by Auto Scaling when scaling in.
 
 =head2 PlacementGroup => Str
 
-  The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups
+  The name of the placement group into which to launch your instances, if
+any. For more information, see Placement Groups
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 ServiceLinkedRoleARN => Str
+
+  The Amazon Resource Name (ARN) of the service-linked role that the Auto
+Scaling group uses to call other AWS services on your behalf.
 
 
 =head2 Status => Str

@@ -20,17 +20,28 @@ Paws::RDS::ModifyDBSnapshot - Arguments for method ModifyDBSnapshot on L<Paws::R
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyDBSnapshot on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyDBSnapshot on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method ModifyDBSnapshot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyDBSnapshot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyDBSnapshot(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    my $ModifyDBSnapshotResult = $rds->ModifyDBSnapshot(
+      DBSnapshotIdentifier => 'MyString',
+      EngineVersion        => 'MyString',    # OPTIONAL
+      OptionGroupName      => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $DBSnapshot = $ModifyDBSnapshotResult->DBSnapshot;
+
+    # Returns a L<Paws::RDS::ModifyDBSnapshotResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBSnapshot>
 
 =head1 ATTRIBUTES
 
@@ -87,7 +98,8 @@ You can specify this parameter when you upgrade an Oracle DB snapshot.
 The same option group considerations apply when upgrading a DB snapshot
 as when upgrading a DB instance. For more information, see Option Group
 Considerations
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Oracle.html#USER_UpgradeDBInstance.Oracle.OGPG.OG).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Oracle.html#USER_UpgradeDBInstance.Oracle.OGPG.OG)
+in the I<Amazon RDS User Guide.>
 
 
 

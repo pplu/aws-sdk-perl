@@ -22,17 +22,40 @@ Paws::Rekognition::StartContentModeration - Arguments for method StartContentMod
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StartContentModeration on the 
-Amazon Rekognition service. Use the attributes of this class
+This class represents the parameters used for calling the method StartContentModeration on the
+L<Amazon Rekognition|Paws::Rekognition> service. Use the attributes of this class
 as arguments to method StartContentModeration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartContentModeration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartContentModeration(Att1 => $value1, Att2 => $value2, ...);
+    my $rekognition = Paws->service('Rekognition');
+    my $StartContentModerationResponse = $rekognition->StartContentModeration(
+      Video => {
+        S3Object => {
+          Bucket  => 'MyS3Bucket',           # min: 3, max: 255; OPTIONAL
+          Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
+          Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
+        },    # OPTIONAL
+      },
+      ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
+      JobTag              => 'MyJobTag',                # OPTIONAL
+      MinConfidence       => 1.0,                       # OPTIONAL
+      NotificationChannel => {
+        RoleArn     => 'MyRoleArn',
+        SNSTopicArn => 'MySNSTopicArn',
+
+      },                                                # OPTIONAL
+    );
+
+    # Results:
+    my $JobId = $StartContentModerationResponse->JobId;
+
+    # Returns a L<Paws::Rekognition::StartContentModerationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition/StartContentModeration>
 
 =head1 ATTRIBUTES
 
@@ -60,14 +83,16 @@ order to return a moderated content label. Confidence represents how
 certain Amazon Rekognition is that the moderated content is correctly
 identified. 0 is the lowest confidence. 100 is the highest confidence.
 Amazon Rekognition doesn't return any moderated content labels with a
-confidence level lower than this specified value.
+confidence level lower than this specified value. If you don't specify
+C<MinConfidence>, C<GetContentModeration> returns labels with
+confidence values greater than or equal to 50 percent.
 
 
 
 =head2 NotificationChannel => L<Paws::Rekognition::NotificationChannel>
 
-The Amazon SNS topic ARN that you want Rekognition Video to publish the
-completion status of the content moderation analysis to.
+The Amazon SNS topic ARN that you want Amazon Rekognition Video to
+publish the completion status of the content moderation analysis to.
 
 
 

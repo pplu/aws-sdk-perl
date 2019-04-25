@@ -19,30 +19,43 @@ Paws::Organizations::ListAWSServiceAccessForOrganization - Arguments for method 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListAWSServiceAccessForOrganization on the 
-AWS Organizations service. Use the attributes of this class
+This class represents the parameters used for calling the method ListAWSServiceAccessForOrganization on the
+L<AWS Organizations|Paws::Organizations> service. Use the attributes of this class
 as arguments to method ListAWSServiceAccessForOrganization.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAWSServiceAccessForOrganization.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListAWSServiceAccessForOrganization(Att1 => $value1, Att2 => $value2, ...);
+    my $organizations = Paws->service('Organizations');
+    my $ListAWSServiceAccessForOrganizationResponse =
+      $organizations->ListAWSServiceAccessForOrganization(
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
+      );
+
+    # Results:
+    my $EnabledServicePrincipals =
+      $ListAWSServiceAccessForOrganizationResponse->EnabledServicePrincipals;
+    my $NextToken = $ListAWSServiceAccessForOrganizationResponse->NextToken;
+
+# Returns a L<Paws::Organizations::ListAWSServiceAccessForOrganizationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations/ListAWSServiceAccessForOrganization>
 
 =head1 ATTRIBUTES
 
 
 =head2 MaxResults => Int
 
-(Optional) Use this to limit the number of results you want included in
-the response. If you do not include this parameter, it defaults to a
-value that is specific to the operation. If additional items exist
-beyond the maximum you specify, the C<NextToken> response element is
-present and has a value (is not null). Include that value as the
-C<NextToken> request parameter in the next call to the operation to get
-the next part of the results. Note that Organizations might return
+(Optional) Use this to limit the number of results you want included
+per page in the response. If you do not include this parameter, it
+defaults to a value that is specific to the operation. If additional
+items exist beyond the maximum you specify, the C<NextToken> response
+element is present and has a value (is not null). Include that value as
+the C<NextToken> request parameter in the next call to the operation to
+get the next part of the results. Note that Organizations might return
 fewer results than the maximum even when there are more results
 available. You should check C<NextToken> after every operation to
 ensure that you receive all of the results.

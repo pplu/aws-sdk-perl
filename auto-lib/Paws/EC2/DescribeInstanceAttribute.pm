@@ -20,17 +20,65 @@ Paws::EC2::DescribeInstanceAttribute - Arguments for method DescribeInstanceAttr
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeInstanceAttribute on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeInstanceAttribute on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeInstanceAttribute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstanceAttribute.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeInstanceAttribute(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe the instance type
+    # This example describes the instance type of the specified instance.
+
+    my $InstanceAttribute = $ec2->DescribeInstanceAttribute(
+      {
+        'Attribute'  => 'instanceType',
+        'InstanceId' => 'i-1234567890abcdef0'
+      }
+    );
+
+    # Results:
+    my $InstanceId   = $InstanceAttribute->InstanceId;
+    my $InstanceType = $InstanceAttribute->InstanceType;
+
+    # Returns a L<Paws::EC2::InstanceAttribute> object.
+    # To describe the disableApiTermination attribute
+    # This example describes the ``disableApiTermination`` attribute of the
+    # specified instance.
+
+    my $InstanceAttribute = $ec2->DescribeInstanceAttribute(
+      {
+        'Attribute'  => 'disableApiTermination',
+        'InstanceId' => 'i-1234567890abcdef0'
+      }
+    );
+
+    # Results:
+    my $DisableApiTermination = $InstanceAttribute->DisableApiTermination;
+    my $InstanceId            = $InstanceAttribute->InstanceId;
+
+    # Returns a L<Paws::EC2::InstanceAttribute> object.
+    # To describe the block device mapping for an instance
+    # This example describes the ``blockDeviceMapping`` attribute of the
+    # specified instance.
+
+    my $InstanceAttribute = $ec2->DescribeInstanceAttribute(
+      {
+        'Attribute'  => 'blockDeviceMapping',
+        'InstanceId' => 'i-1234567890abcdef0'
+      }
+    );
+
+    # Results:
+    my $BlockDeviceMappings = $InstanceAttribute->BlockDeviceMappings;
+    my $InstanceId          = $InstanceAttribute->InstanceId;
+
+    # Returns a L<Paws::EC2::InstanceAttribute> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeInstanceAttribute>
 
 =head1 ATTRIBUTES
 

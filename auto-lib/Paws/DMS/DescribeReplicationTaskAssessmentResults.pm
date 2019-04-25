@@ -20,17 +20,34 @@ Paws::DMS::DescribeReplicationTaskAssessmentResults - Arguments for method Descr
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeReplicationTaskAssessmentResults on the 
-AWS Database Migration Service service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeReplicationTaskAssessmentResults on the
+L<AWS Database Migration Service|Paws::DMS> service. Use the attributes of this class
 as arguments to method DescribeReplicationTaskAssessmentResults.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReplicationTaskAssessmentResults.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeReplicationTaskAssessmentResults(Att1 => $value1, Att2 => $value2, ...);
+    my $dms = Paws->service('DMS');
+    my $DescribeReplicationTaskAssessmentResultsResponse =
+      $dms->DescribeReplicationTaskAssessmentResults(
+      Marker             => 'MyString',    # OPTIONAL
+      MaxRecords         => 1,             # OPTIONAL
+      ReplicationTaskArn => 'MyString',    # OPTIONAL
+      );
+
+    # Results:
+    my $BucketName =
+      $DescribeReplicationTaskAssessmentResultsResponse->BucketName;
+    my $Marker = $DescribeReplicationTaskAssessmentResultsResponse->Marker;
+    my $ReplicationTaskAssessmentResults =
+      $DescribeReplicationTaskAssessmentResultsResponse
+      ->ReplicationTaskAssessmentResults;
+
+# Returns a L<Paws::DMS::DescribeReplicationTaskAssessmentResultsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms/DescribeReplicationTaskAssessmentResults>
 
 =head1 ATTRIBUTES
 

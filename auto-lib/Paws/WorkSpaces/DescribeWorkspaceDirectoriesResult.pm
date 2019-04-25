@@ -17,15 +17,13 @@ Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult
 
 =head2 Directories => ArrayRef[L<Paws::WorkSpaces::WorkspaceDirectory>]
 
-An array of structures that contain information about the directories.
+Information about the directories.
 
 
 =head2 NextToken => Str
 
-If not null, more results are available. Pass this value for the
-C<NextToken> parameter in a subsequent call to this operation to
-retrieve the next set of items. This token is valid for one day and
-must be used within that time frame.
+The token to use to retrieve the next set of results, or null if no
+more results are available.
 
 
 =head2 _request_id => Str

@@ -22,7 +22,7 @@ Paws::ECR::GetLifecyclePolicyPreviewResponse
 
 =head2 LifecyclePolicyText => Str
 
-The JSON repository policy text.
+The JSON lifecycle policy text.
 
 
 =head2 NextToken => Str

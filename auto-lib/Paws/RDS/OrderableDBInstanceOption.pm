@@ -1,6 +1,7 @@
 package Paws::RDS::OrderableDBInstanceOption;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AvailabilityZone]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
+  has AvailableProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AvailableProcessorFeature]', request_name => 'AvailableProcessorFeature', traits => ['NameInRequest']);
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -14,6 +15,7 @@ package Paws::RDS::OrderableDBInstanceOption;
   has MultiAZCapable => (is => 'ro', isa => 'Bool');
   has ReadReplicaCapable => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
+  has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportsEnhancedMonitoring => (is => 'ro', isa => 'Bool');
   has SupportsIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has SupportsIops => (is => 'ro', isa => 'Bool');
@@ -61,6 +63,12 @@ DescribeOrderableDBInstanceOptions action.
 =head2 AvailabilityZones => ArrayRef[L<Paws::RDS::AvailabilityZone>]
 
   A list of Availability Zones for a DB instance.
+
+
+=head2 AvailableProcessorFeatures => ArrayRef[L<Paws::RDS::AvailableProcessorFeature>]
+
+  A list of the available processor features for the DB instance class of
+a DB instance.
 
 
 =head2 DBInstanceClass => Str
@@ -126,6 +134,11 @@ DescribeOrderableDBInstanceOptions action.
 =head2 StorageType => Str
 
   Indicates the storage type for a DB instance.
+
+
+=head2 SupportedEngineModes => ArrayRef[Str|Undef]
+
+  A list of the supported DB engine modes.
 
 
 =head2 SupportsEnhancedMonitoring => Bool

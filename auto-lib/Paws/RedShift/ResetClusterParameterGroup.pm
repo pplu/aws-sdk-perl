@@ -20,17 +20,45 @@ Paws::RedShift::ResetClusterParameterGroup - Arguments for method ResetClusterPa
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ResetClusterParameterGroup on the 
-Amazon Redshift service. Use the attributes of this class
+This class represents the parameters used for calling the method ResetClusterParameterGroup on the
+L<Amazon Redshift|Paws::RedShift> service. Use the attributes of this class
 as arguments to method ResetClusterParameterGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ResetClusterParameterGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ResetClusterParameterGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $ClusterParameterGroupNameMessage =
+      $redshift->ResetClusterParameterGroup(
+      ParameterGroupName => 'MyString',
+      Parameters         => [
+        {
+          AllowedValues        => 'MyString',
+          ApplyType            => 'static',  # values: static, dynamic; OPTIONAL
+          DataType             => 'MyString',
+          Description          => 'MyString',
+          IsModifiable         => 1,         # OPTIONAL
+          MinimumEngineVersion => 'MyString',
+          ParameterName        => 'MyString',
+          ParameterValue       => 'MyString',
+          Source               => 'MyString',
+        },
+        ...
+      ],                                     # OPTIONAL
+      ResetAllParameters => 1,               # OPTIONAL
+      );
+
+    # Results:
+    my $ParameterGroupName =
+      $ClusterParameterGroupNameMessage->ParameterGroupName;
+    my $ParameterGroupStatus =
+      $ClusterParameterGroupNameMessage->ParameterGroupStatus;
+
+    # Returns a L<Paws::RedShift::ClusterParameterGroupNameMessage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/ResetClusterParameterGroup>
 
 =head1 ATTRIBUTES
 

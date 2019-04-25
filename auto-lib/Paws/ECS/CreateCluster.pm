@@ -2,6 +2,7 @@
 package Paws::ECS::CreateCluster;
   use Moose;
   has ClusterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clusterName' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -18,17 +19,30 @@ Paws::ECS::CreateCluster - Arguments for method CreateCluster on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateCluster on the 
-Amazon EC2 Container Service service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateCluster on the
+L<Amazon EC2 Container Service|Paws::ECS> service. Use the attributes of this class
 as arguments to method CreateCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+    # To create a new cluster
+    # This example creates a cluster in your default region.
+    my $CreateClusterResponse = $ecs->CreateCluster(
+      {
+        'ClusterName' => 'my_cluster'
+      }
+    );
+
+    # Results:
+    my $cluster = $CreateClusterResponse->cluster;
+
+    # Returns a L<Paws::ECS::CreateClusterResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/CreateCluster>
 
 =head1 ATTRIBUTES
 
@@ -39,6 +53,16 @@ The name of your cluster. If you do not specify a name for your
 cluster, you create a cluster named C<default>. Up to 255 letters
 (uppercase and lowercase), numbers, hyphens, and underscores are
 allowed.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+The metadata that you apply to the cluster to help you categorize and
+organize them. Each tag consists of a key and an optional value, both
+of which you define. Tag keys can have a maximum character length of
+128 characters, and tag values can have a maximum length of 256
+characters.
 
 
 

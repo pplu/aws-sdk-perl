@@ -20,17 +20,29 @@ Paws::CodeBuild::ListProjects - Arguments for method ListProjects on L<Paws::Cod
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListProjects on the 
-AWS CodeBuild service. Use the attributes of this class
+This class represents the parameters used for calling the method ListProjects on the
+L<AWS CodeBuild|Paws::CodeBuild> service. Use the attributes of this class
 as arguments to method ListProjects.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListProjects.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListProjects(Att1 => $value1, Att2 => $value2, ...);
+    my $codebuild = Paws->service('CodeBuild');
+    my $ListProjectsOutput = $codebuild->ListProjects(
+      NextToken => 'MyNonEmptyString',    # OPTIONAL
+      SortBy    => 'NAME',                # OPTIONAL
+      SortOrder => 'ASCENDING',           # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $ListProjectsOutput->NextToken;
+    my $Projects  = $ListProjectsOutput->Projects;
+
+    # Returns a L<Paws::CodeBuild::ListProjectsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codebuild/ListProjects>
 
 =head1 ATTRIBUTES
 
@@ -56,18 +68,16 @@ include:
 
 =item *
 
-C<CREATED_TIME>: List the build project names based on when each build
-project was created.
+C<CREATED_TIME>: List based on when each build project was created.
 
 =item *
 
-C<LAST_MODIFIED_TIME>: List the build project names based on when
-information about each build project was last changed.
+C<LAST_MODIFIED_TIME>: List based on when information about each build
+project was last changed.
 
 =item *
 
-C<NAME>: List the build project names based on each build project's
-name.
+C<NAME>: List based on each build project's name.
 
 =back
 
@@ -84,11 +94,11 @@ The order in which to list build projects. Valid values include:
 
 =item *
 
-C<ASCENDING>: List the build project names in ascending order.
+C<ASCENDING>: List in ascending order.
 
 =item *
 
-C<DESCENDING>: List the build project names in descending order.
+C<DESCENDING>: List in descending order.
 
 =back
 

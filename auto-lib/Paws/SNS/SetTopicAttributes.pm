@@ -20,27 +20,53 @@ Paws::SNS::SetTopicAttributes - Arguments for method SetTopicAttributes on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SetTopicAttributes on the 
-Amazon Simple Notification Service service. Use the attributes of this class
+This class represents the parameters used for calling the method SetTopicAttributes on the
+L<Amazon Simple Notification Service|Paws::SNS> service. Use the attributes of this class
 as arguments to method SetTopicAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetTopicAttributes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetTopicAttributes(Att1 => $value1, Att2 => $value2, ...);
+    my $sns = Paws->service('SNS');
+    $sns->SetTopicAttributes(
+      AttributeName  => 'MyattributeName',
+      TopicArn       => 'MytopicARN',
+      AttributeValue => 'MyattributeValue',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns/SetTopicAttributes>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AttributeName => Str
 
-The name of the attribute you want to set. Only a subset of the topic's
-attributes are mutable.
+A map of attributes with their corresponding values.
 
-Valid values: C<Policy> | C<DisplayName> | C<DeliveryPolicy>
+The following lists the names, descriptions, and values of the special
+request parameters that the C<SetTopicAttributes> action uses:
+
+=over
+
+=item *
+
+C<DeliveryPolicy> E<ndash> The policy that defines how Amazon SNS
+retries failed deliveries to HTTP/S endpoints.
+
+=item *
+
+C<DisplayName> E<ndash> The display name to use for a topic with SMS
+subscriptions.
+
+=item *
+
+C<Policy> E<ndash> The policy that defines who can access your topic.
+By default, only the topic owner can publish or subscribe to the topic.
+
+=back
+
 
 
 

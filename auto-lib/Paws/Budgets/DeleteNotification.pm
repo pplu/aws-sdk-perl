@@ -20,36 +20,52 @@ Paws::Budgets::DeleteNotification - Arguments for method DeleteNotification on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteNotification on the 
-AWS Budgets service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteNotification on the
+L<AWS Budgets|Paws::Budgets> service. Use the attributes of this class
 as arguments to method DeleteNotification.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteNotification.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteNotification(Att1 => $value1, Att2 => $value2, ...);
+    my $budgets = Paws->service('Budgets');
+    my $DeleteNotificationResponse = $budgets->DeleteNotification(
+      AccountId    => 'MyAccountId',
+      BudgetName   => 'MyBudgetName',
+      Notification => {
+        ComparisonOperator =>
+          'GREATER_THAN',    # values: GREATER_THAN, LESS_THAN, EQUAL_TO
+        NotificationType  => 'ACTUAL',    # values: ACTUAL, FORECASTED
+        Threshold         => 1,           # max: 1000000000
+        NotificationState => 'OK',        # values: OK, ALARM; OPTIONAL
+        ThresholdType =>
+          'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
+      },
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/budgets/DeleteNotification>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AccountId => Str
 
-
+The C<accountId> that is associated with the budget whose notification
+you want to delete.
 
 
 
 =head2 B<REQUIRED> BudgetName => Str
 
-
+The name of the budget whose notification you want to delete.
 
 
 
 =head2 B<REQUIRED> Notification => L<Paws::Budgets::Notification>
 
-
+The notification that you want to delete.
 
 
 

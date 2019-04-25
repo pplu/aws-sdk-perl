@@ -27,17 +27,36 @@ Paws::EC2::CreateVpcEndpoint - Arguments for method CreateVpcEndpoint on L<Paws:
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateVpcEndpoint on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateVpcEndpoint on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method CreateVpcEndpoint.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateVpcEndpoint.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateVpcEndpoint(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $CreateVpcEndpointResult = $ec2->CreateVpcEndpoint(
+      ServiceName       => 'MyString',
+      VpcId             => 'MyString',
+      ClientToken       => 'MyString',             # OPTIONAL
+      DryRun            => 1,                      # OPTIONAL
+      PolicyDocument    => 'MyString',             # OPTIONAL
+      PrivateDnsEnabled => 1,                      # OPTIONAL
+      RouteTableIds     => [ 'MyString', ... ],    # OPTIONAL
+      SecurityGroupIds  => [ 'MyString', ... ],    # OPTIONAL
+      SubnetIds         => [ 'MyString', ... ],    # OPTIONAL
+      VpcEndpointType   => 'Interface',            # OPTIONAL
+    );
+
+    # Results:
+    my $ClientToken = $CreateVpcEndpointResult->ClientToken;
+    my $VpcEndpoint = $CreateVpcEndpointResult->VpcEndpoint;
+
+    # Returns a L<Paws::EC2::CreateVpcEndpointResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateVpcEndpoint>
 
 =head1 ATTRIBUTES
 
@@ -46,7 +65,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. For more information, see How to Ensure Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 
@@ -83,7 +102,7 @@ To use a private hosted zone, you must set the following VPC attributes
 to C<true>: C<enableDnsHostnames> and C<enableDnsSupport>. Use
 ModifyVpcAttribute to set the VPC attributes.
 
-Default: C<true>
+Default: C<false>
 
 
 
@@ -103,7 +122,8 @@ with the endpoint network interface.
 =head2 B<REQUIRED> ServiceName => Str
 
 The service name. To get a list of available services, use the
-DescribeVpcEndpointServices request.
+DescribeVpcEndpointServices request, or get the name from the service
+provider.
 
 
 

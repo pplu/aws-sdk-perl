@@ -19,17 +19,48 @@ Paws::MQ::DescribeBroker - Arguments for method DescribeBroker on L<Paws::MQ>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeBroker on the 
-AmazonMQ service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeBroker on the
+L<AmazonMQ|Paws::MQ> service. Use the attributes of this class
 as arguments to method DescribeBroker.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBroker.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeBroker(Att1 => $value1, Att2 => $value2, ...);
+    my $mq = Paws->service('MQ');
+    my $DescribeBrokerResponse = $mq->DescribeBroker(
+      BrokerId => 'My__string',
+
+    );
+
+    # Results:
+    my $AutoMinorVersionUpgrade =
+      $DescribeBrokerResponse->AutoMinorVersionUpgrade;
+    my $BrokerArn        = $DescribeBrokerResponse->BrokerArn;
+    my $BrokerId         = $DescribeBrokerResponse->BrokerId;
+    my $BrokerInstances  = $DescribeBrokerResponse->BrokerInstances;
+    my $BrokerName       = $DescribeBrokerResponse->BrokerName;
+    my $BrokerState      = $DescribeBrokerResponse->BrokerState;
+    my $Configurations   = $DescribeBrokerResponse->Configurations;
+    my $Created          = $DescribeBrokerResponse->Created;
+    my $DeploymentMode   = $DescribeBrokerResponse->DeploymentMode;
+    my $EngineType       = $DescribeBrokerResponse->EngineType;
+    my $EngineVersion    = $DescribeBrokerResponse->EngineVersion;
+    my $HostInstanceType = $DescribeBrokerResponse->HostInstanceType;
+    my $Logs             = $DescribeBrokerResponse->Logs;
+    my $MaintenanceWindowStartTime =
+      $DescribeBrokerResponse->MaintenanceWindowStartTime;
+    my $PendingEngineVersion = $DescribeBrokerResponse->PendingEngineVersion;
+    my $PubliclyAccessible   = $DescribeBrokerResponse->PubliclyAccessible;
+    my $SecurityGroups       = $DescribeBrokerResponse->SecurityGroups;
+    my $SubnetIds            = $DescribeBrokerResponse->SubnetIds;
+    my $Tags                 = $DescribeBrokerResponse->Tags;
+    my $Users                = $DescribeBrokerResponse->Users;
+
+    # Returns a L<Paws::MQ::DescribeBrokerResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/DescribeBroker>
 
 =head1 ATTRIBUTES
 

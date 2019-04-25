@@ -35,37 +35,38 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Contains default WorkSpace creation information.
+Describes the default values used to create a WorkSpace.
 
 =head1 ATTRIBUTES
 
 
 =head2 CustomSecurityGroupId => Str
 
-  The identifier of any custom security groups that are applied to the
-WorkSpaces when they are created.
+  The identifier of any security groups to apply to WorkSpaces when they
+are created.
 
 
 =head2 DefaultOu => Str
 
-  The organizational unit (OU) in the directory that the WorkSpace
-machine accounts are placed in.
+  The organizational unit (OU) in the directory for the WorkSpace machine
+accounts.
 
 
 =head2 EnableInternetAccess => Bool
 
-  A public IP address will be attached to all WorkSpaces that are created
-or rebuilt.
+  The public IP address to attach to all WorkSpaces that are created or
+rebuilt.
 
 
 =head2 EnableWorkDocs => Bool
 
-  Specifies if the directory is enabled for Amazon WorkDocs.
+  Specifies whether the directory is enabled for Amazon WorkDocs.
 
 
 =head2 UserEnabledAsLocalAdministrator => Bool
 
-  The WorkSpace user is an administrator on the WorkSpace.
+  Specifies whether the WorkSpace user is an administrator on the
+WorkSpace.
 
 
 

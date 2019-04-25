@@ -18,17 +18,34 @@ Paws::SageMaker::DescribeModel - Arguments for method DescribeModel on L<Paws::S
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeModel on the 
-Amazon SageMaker Service service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeModel on the
+L<Amazon SageMaker Service|Paws::SageMaker> service. Use the attributes of this class
 as arguments to method DescribeModel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeModel.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeModel(Att1 => $value1, Att2 => $value2, ...);
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $DescribeModelOutput = $api . sagemaker->DescribeModel(
+      ModelName => 'MyModelName',
+
+    );
+
+    # Results:
+    my $Containers             = $DescribeModelOutput->Containers;
+    my $CreationTime           = $DescribeModelOutput->CreationTime;
+    my $EnableNetworkIsolation = $DescribeModelOutput->EnableNetworkIsolation;
+    my $ExecutionRoleArn       = $DescribeModelOutput->ExecutionRoleArn;
+    my $ModelArn               = $DescribeModelOutput->ModelArn;
+    my $ModelName              = $DescribeModelOutput->ModelName;
+    my $PrimaryContainer       = $DescribeModelOutput->PrimaryContainer;
+    my $VpcConfig              = $DescribeModelOutput->VpcConfig;
+
+    # Returns a L<Paws::SageMaker::DescribeModelOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/DescribeModel>
 
 =head1 ATTRIBUTES
 

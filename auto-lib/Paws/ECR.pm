@@ -1,6 +1,7 @@
 package Paws::ECR;
   use Moose;
   sub service { 'ecr' }
+  sub signing_name { 'ecr' }
   sub version { '2015-09-21' }
   sub target_prefix { 'AmazonEC2ContainerRegistry_V20150921' }
   sub json_version { "1.1" }
@@ -99,6 +100,11 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::ListImages', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::PutImage', @_);
@@ -117,6 +123,16 @@ package Paws::ECR;
   sub StartLifecyclePolicyPreview {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::StartLifecyclePolicyPreview', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UploadLayerPart {
@@ -196,7 +212,7 @@ package Paws::ECR;
   }
 
 
-  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages PutImage PutLifecyclePolicy SetRepositoryPolicy StartLifecyclePolicyPreview UploadLayerPart / }
+  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages ListTagsForResource PutImage PutLifecyclePolicy SetRepositoryPolicy StartLifecyclePolicyPreview TagResource UntagResource UploadLayerPart / }
 
 1;
 
@@ -224,17 +240,31 @@ Paws::ECR - Perl Interface to AWS Amazon EC2 Container Registry
 
 =head1 DESCRIPTION
 
-Amazon EC2 Container Registry (Amazon ECR) is a managed Docker registry
-service. Customers can use the familiar Docker CLI to push, pull, and
-manage images. Amazon ECR provides a secure, scalable, and reliable
-registry. Amazon ECR supports private Docker repositories with
+Amazon Elastic Container Registry (Amazon ECR) is a managed Docker
+registry service. Customers can use the familiar Docker CLI to push,
+pull, and manage images. Amazon ECR provides a secure, scalable, and
+reliable registry. Amazon ECR supports private Docker repositories with
 resource-based permissions using IAM so that specific users or Amazon
 EC2 instances can access repositories and images. Developers can use
 the Docker CLI to author and manage images.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21>
+
+
 =head1 METHODS
 
-=head2 BatchCheckLayerAvailability(LayerDigests => ArrayRef[Str|Undef], RepositoryName => Str, [RegistryId => Str])
+=head2 BatchCheckLayerAvailability
+
+=over
+
+=item LayerDigests => ArrayRef[Str|Undef]
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::BatchCheckLayerAvailability>
 
@@ -248,7 +278,18 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
-=head2 BatchDeleteImage(ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], RepositoryName => Str, [RegistryId => Str])
+=head2 BatchDeleteImage
+
+=over
+
+=item ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::BatchDeleteImage>
 
@@ -265,7 +306,20 @@ You can completely delete an image (and all of its tags) by specifying
 the image's digest in your request.
 
 
-=head2 BatchGetImage(ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], RepositoryName => Str, [AcceptedMediaTypes => ArrayRef[Str|Undef], RegistryId => Str])
+=head2 BatchGetImage
+
+=over
+
+=item ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]
+
+=item RepositoryName => Str
+
+=item [AcceptedMediaTypes => ArrayRef[Str|Undef]]
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::BatchGetImage>
 
@@ -276,7 +330,20 @@ repository. Images are specified with either C<imageTag> or
 C<imageDigest>.
 
 
-=head2 CompleteLayerUpload(LayerDigests => ArrayRef[Str|Undef], RepositoryName => Str, UploadId => Str, [RegistryId => Str])
+=head2 CompleteLayerUpload
+
+=over
+
+=item LayerDigests => ArrayRef[Str|Undef]
+
+=item RepositoryName => Str
+
+=item UploadId => Str
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::CompleteLayerUpload>
 
@@ -292,7 +359,16 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
-=head2 CreateRepository(RepositoryName => Str)
+=head2 CreateRepository
+
+=over
+
+=item RepositoryName => Str
+
+=item [Tags => ArrayRef[L<Paws::ECR::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::CreateRepository>
 
@@ -301,7 +377,16 @@ Returns: a L<Paws::ECR::CreateRepositoryResponse> instance
 Creates an image repository.
 
 
-=head2 DeleteLifecyclePolicy(RepositoryName => Str, [RegistryId => Str])
+=head2 DeleteLifecyclePolicy
+
+=over
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::DeleteLifecyclePolicy>
 
@@ -310,7 +395,18 @@ Returns: a L<Paws::ECR::DeleteLifecyclePolicyResponse> instance
 Deletes the specified lifecycle policy.
 
 
-=head2 DeleteRepository(RepositoryName => Str, [Force => Bool, RegistryId => Str])
+=head2 DeleteRepository
+
+=over
+
+=item RepositoryName => Str
+
+=item [Force => Bool]
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::DeleteRepository>
 
@@ -320,7 +416,16 @@ Deletes an existing image repository. If a repository contains images,
 you must use the C<force> option to delete it.
 
 
-=head2 DeleteRepositoryPolicy(RepositoryName => Str, [RegistryId => Str])
+=head2 DeleteRepositoryPolicy
+
+=over
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::DeleteRepositoryPolicy>
 
@@ -329,7 +434,24 @@ Returns: a L<Paws::ECR::DeleteRepositoryPolicyResponse> instance
 Deletes the repository policy from a specified repository.
 
 
-=head2 DescribeImages(RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 DescribeImages
+
+=over
+
+=item RepositoryName => Str
+
+=item [Filter => L<Paws::ECR::DescribeImagesFilter>]
+
+=item [ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::DescribeImages>
 
@@ -345,7 +467,20 @@ return a larger image size than the image sizes returned by
 DescribeImages.
 
 
-=head2 DescribeRepositories([MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str|Undef]])
+=head2 DescribeRepositories
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [RegistryId => Str]
+
+=item [RepositoryNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::DescribeRepositories>
 
@@ -354,7 +489,14 @@ Returns: a L<Paws::ECR::DescribeRepositoriesResponse> instance
 Describes image repositories in a registry.
 
 
-=head2 GetAuthorizationToken([RegistryIds => ArrayRef[Str|Undef]])
+=head2 GetAuthorizationToken
+
+=over
+
+=item [RegistryIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::GetAuthorizationToken>
 
@@ -371,7 +513,18 @@ command to authenticate to a registry. The AWS CLI offers an C<aws ecr
 get-login> command that simplifies the login process.
 
 
-=head2 GetDownloadUrlForLayer(LayerDigest => Str, RepositoryName => Str, [RegistryId => Str])
+=head2 GetDownloadUrlForLayer
+
+=over
+
+=item LayerDigest => Str
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::GetDownloadUrlForLayer>
 
@@ -386,7 +539,16 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
-=head2 GetLifecyclePolicy(RepositoryName => Str, [RegistryId => Str])
+=head2 GetLifecyclePolicy
+
+=over
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::GetLifecyclePolicy>
 
@@ -395,7 +557,24 @@ Returns: a L<Paws::ECR::GetLifecyclePolicyResponse> instance
 Retrieves the specified lifecycle policy.
 
 
-=head2 GetLifecyclePolicyPreview(RepositoryName => Str, [Filter => L<Paws::ECR::LifecyclePolicyPreviewFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 GetLifecyclePolicyPreview
+
+=over
+
+=item RepositoryName => Str
+
+=item [Filter => L<Paws::ECR::LifecyclePolicyPreviewFilter>]
+
+=item [ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::GetLifecyclePolicyPreview>
 
@@ -405,7 +584,16 @@ Retrieves the results of the specified lifecycle policy preview
 request.
 
 
-=head2 GetRepositoryPolicy(RepositoryName => Str, [RegistryId => Str])
+=head2 GetRepositoryPolicy
+
+=over
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::GetRepositoryPolicy>
 
@@ -414,7 +602,16 @@ Returns: a L<Paws::ECR::GetRepositoryPolicyResponse> instance
 Retrieves the repository policy for a specified repository.
 
 
-=head2 InitiateLayerUpload(RepositoryName => Str, [RegistryId => Str])
+=head2 InitiateLayerUpload
+
+=over
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::InitiateLayerUpload>
 
@@ -427,7 +624,22 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
-=head2 ListImages(RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 ListImages
+
+=over
+
+=item RepositoryName => Str
+
+=item [Filter => L<Paws::ECR::ListImagesFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::ListImages>
 
@@ -443,7 +655,36 @@ them. Or, you can filter your results to return only C<TAGGED> images
 to list all of the tags in your repository.
 
 
-=head2 PutImage(ImageManifest => Str, RepositoryName => Str, [ImageTag => Str, RegistryId => Str])
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::ListTagsForResource>
+
+Returns: a L<Paws::ECR::ListTagsForResourceResponse> instance
+
+List the tags for an Amazon ECR resource.
+
+
+=head2 PutImage
+
+=over
+
+=item ImageManifest => Str
+
+=item RepositoryName => Str
+
+=item [ImageTag => Str]
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::PutImage>
 
@@ -457,16 +698,42 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
-=head2 PutLifecyclePolicy(LifecyclePolicyText => Str, RepositoryName => Str, [RegistryId => Str])
+=head2 PutLifecyclePolicy
+
+=over
+
+=item LifecyclePolicyText => Str
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::PutLifecyclePolicy>
 
 Returns: a L<Paws::ECR::PutLifecyclePolicyResponse> instance
 
-Creates or updates a lifecycle policy.
+Creates or updates a lifecycle policy. For information about lifecycle
+policy syntax, see Lifecycle Policy Template
+(http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
 
 
-=head2 SetRepositoryPolicy(PolicyText => Str, RepositoryName => Str, [Force => Bool, RegistryId => Str])
+=head2 SetRepositoryPolicy
+
+=over
+
+=item PolicyText => Str
+
+=item RepositoryName => Str
+
+=item [Force => Bool]
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::SetRepositoryPolicy>
 
@@ -476,7 +743,18 @@ Applies a repository policy on a specified repository to control access
 permissions.
 
 
-=head2 StartLifecyclePolicyPreview(RepositoryName => Str, [LifecyclePolicyText => Str, RegistryId => Str])
+=head2 StartLifecyclePolicyPreview
+
+=over
+
+=item RepositoryName => Str
+
+=item [LifecyclePolicyText => Str]
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::StartLifecyclePolicyPreview>
 
@@ -486,7 +764,62 @@ Starts a preview of the specified lifecycle policy. This allows you to
 see the results before creating the lifecycle policy.
 
 
-=head2 UploadLayerPart(LayerPartBlob => Str, PartFirstByte => Int, PartLastByte => Int, RepositoryName => Str, UploadId => Str, [RegistryId => Str])
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::ECR::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::TagResource>
+
+Returns: a L<Paws::ECR::TagResourceResponse> instance
+
+Adds specified tags to a resource with the specified ARN. Existing tags
+on a resource are not changed if they are not specified in the request
+parameters.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::UntagResource>
+
+Returns: a L<Paws::ECR::UntagResourceResponse> instance
+
+Deletes specified tags from a resource.
+
+
+=head2 UploadLayerPart
+
+=over
+
+=item LayerPartBlob => Str
+
+=item PartFirstByte => Int
+
+=item PartLastByte => Int
+
+=item RepositoryName => Str
+
+=item UploadId => Str
+
+=item [RegistryId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECR::UploadLayerPart>
 

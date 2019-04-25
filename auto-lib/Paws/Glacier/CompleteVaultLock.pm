@@ -21,17 +21,29 @@ Paws::Glacier::CompleteVaultLock - Arguments for method CompleteVaultLock on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CompleteVaultLock on the 
-Amazon Glacier service. Use the attributes of this class
+This class represents the parameters used for calling the method CompleteVaultLock on the
+L<Amazon Glacier|Paws::Glacier> service. Use the attributes of this class
 as arguments to method CompleteVaultLock.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CompleteVaultLock.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CompleteVaultLock(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To complete a vault lock
+    # The example completes the vault locking process by transitioning the vault
+    # lock from the InProgress state to the Locked state.
+    $glacier->CompleteVaultLock(
+      {
+        'AccountId' => '-',
+        'LockId'    => 'AE863rKkWZU53SLW5be4DUcW',
+        'VaultName' => 'example-vault'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/CompleteVaultLock>
 
 =head1 ATTRIBUTES
 

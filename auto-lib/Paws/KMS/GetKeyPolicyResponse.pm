@@ -16,7 +16,7 @@ Paws::KMS::GetKeyPolicyResponse
 
 =head2 Policy => Str
 
-A policy document in JSON format.
+A key policy document in JSON format.
 
 
 =head2 _request_id => Str

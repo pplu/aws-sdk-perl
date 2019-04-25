@@ -1,6 +1,7 @@
 package Paws::SNS;
   use Moose;
   sub service { 'sns' }
+  sub signing_name { 'sns' }
   sub version { '2010-03-31' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -187,6 +188,29 @@ package Paws::SNS;
 
     return undef
   }
+  sub ListAllPhoneNumbersOptedOut {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPhoneNumbersOptedOut(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPhoneNumbersOptedOut(@_, nextToken => $next_result->nextToken);
+        push @{ $result->phoneNumbers }, @{ $next_result->phoneNumbers };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'phoneNumbers') foreach (@{ $result->phoneNumbers });
+        $result = $self->ListPhoneNumbersOptedOut(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'phoneNumbers') foreach (@{ $result->phoneNumbers });
+    }
+
+    return undef
+  }
   sub ListAllPlatformApplications {
     my $self = shift;
 
@@ -327,9 +351,25 @@ your service requests, retrying requests, and handling error responses.
 For a list of available SDKs, go to Tools for Amazon Web Services
 (http://aws.amazon.com/tools/).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31>
+
+
 =head1 METHODS
 
-=head2 AddPermission(ActionName => ArrayRef[Str|Undef], AWSAccountId => ArrayRef[Str|Undef], Label => Str, TopicArn => Str)
+=head2 AddPermission
+
+=over
+
+=item ActionName => ArrayRef[Str|Undef]
+
+=item AWSAccountId => ArrayRef[Str|Undef]
+
+=item Label => Str
+
+=item TopicArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::AddPermission>
 
@@ -339,7 +379,14 @@ Adds a statement to a topic's access control policy, granting access
 for the specified AWS accounts to the specified actions.
 
 
-=head2 CheckIfPhoneNumberIsOptedOut(PhoneNumber => Str)
+=head2 CheckIfPhoneNumberIsOptedOut
+
+=over
+
+=item PhoneNumber => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::CheckIfPhoneNumberIsOptedOut>
 
@@ -353,7 +400,18 @@ To resume sending messages, you can opt in the number by using the
 C<OptInPhoneNumber> action.
 
 
-=head2 ConfirmSubscription(Token => Str, TopicArn => Str, [AuthenticateOnUnsubscribe => Str])
+=head2 ConfirmSubscription
+
+=over
+
+=item Token => Str
+
+=item TopicArn => Str
+
+=item [AuthenticateOnUnsubscribe => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::ConfirmSubscription>
 
@@ -366,7 +424,18 @@ its Amazon Resource Name (ARN). This call requires an AWS signature
 only when the C<AuthenticateOnUnsubscribe> flag is set to "true".
 
 
-=head2 CreatePlatformApplication(Attributes => L<Paws::SNS::MapStringToString>, Name => Str, Platform => Str)
+=head2 CreatePlatformApplication
+
+=over
+
+=item Attributes => L<Paws::SNS::MapStringToString>
+
+=item Name => Str
+
+=item Platform => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::CreatePlatformApplication>
 
@@ -409,7 +478,20 @@ Getting Started with WNS
 (http://docs.aws.amazon.com/sns/latest/dg/mobile-push-wns.html).
 
 
-=head2 CreatePlatformEndpoint(PlatformApplicationArn => Str, Token => Str, [Attributes => L<Paws::SNS::MapStringToString>, CustomUserData => Str])
+=head2 CreatePlatformEndpoint
+
+=over
+
+=item PlatformApplicationArn => Str
+
+=item Token => Str
+
+=item [Attributes => L<Paws::SNS::MapStringToString>]
+
+=item [CustomUserData => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::CreatePlatformEndpoint>
 
@@ -435,7 +517,16 @@ for Baidu
 (http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html).
 
 
-=head2 CreateTopic(Name => Str)
+=head2 CreateTopic
+
+=over
+
+=item Name => Str
+
+=item [Attributes => L<Paws::SNS::TopicAttributesMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::CreateTopic>
 
@@ -448,7 +539,14 @@ idempotent, so if the requester already owns a topic with the specified
 name, that topic's ARN is returned without creating a new topic.
 
 
-=head2 DeleteEndpoint(EndpointArn => Str)
+=head2 DeleteEndpoint
+
+=over
+
+=item EndpointArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::DeleteEndpoint>
 
@@ -463,7 +561,14 @@ When you delete an endpoint that is also subscribed to a topic, then
 you must also unsubscribe the endpoint from the topic.
 
 
-=head2 DeletePlatformApplication(PlatformApplicationArn => Str)
+=head2 DeletePlatformApplication
+
+=over
+
+=item PlatformApplicationArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::DeletePlatformApplication>
 
@@ -475,7 +580,14 @@ Using Amazon SNS Mobile Push Notifications
 (http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
-=head2 DeleteTopic(TopicArn => Str)
+=head2 DeleteTopic
+
+=over
+
+=item TopicArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::DeleteTopic>
 
@@ -487,7 +599,14 @@ to subscribers. This action is idempotent, so deleting a topic that
 does not exist does not result in an error.
 
 
-=head2 GetEndpointAttributes(EndpointArn => Str)
+=head2 GetEndpointAttributes
+
+=over
+
+=item EndpointArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::GetEndpointAttributes>
 
@@ -499,7 +618,14 @@ see Using Amazon SNS Mobile Push Notifications
 (http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
-=head2 GetPlatformApplicationAttributes(PlatformApplicationArn => Str)
+=head2 GetPlatformApplicationAttributes
+
+=over
+
+=item PlatformApplicationArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::GetPlatformApplicationAttributes>
 
@@ -511,7 +637,14 @@ information, see Using Amazon SNS Mobile Push Notifications
 (http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
-=head2 GetSMSAttributes([Attributes => ArrayRef[Str|Undef]])
+=head2 GetSMSAttributes
+
+=over
+
+=item [Attributes => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::GetSMSAttributes>
 
@@ -522,7 +655,14 @@ Returns the settings for sending SMS messages from your account.
 These settings are set with the C<SetSMSAttributes> action.
 
 
-=head2 GetSubscriptionAttributes(SubscriptionArn => Str)
+=head2 GetSubscriptionAttributes
+
+=over
+
+=item SubscriptionArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::GetSubscriptionAttributes>
 
@@ -531,7 +671,14 @@ Returns: a L<Paws::SNS::GetSubscriptionAttributesResponse> instance
 Returns all of the properties of a subscription.
 
 
-=head2 GetTopicAttributes(TopicArn => Str)
+=head2 GetTopicAttributes
+
+=over
+
+=item TopicArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::GetTopicAttributes>
 
@@ -541,7 +688,16 @@ Returns all of the properties of a topic. Topic properties returned
 might differ based on the authorization of the user.
 
 
-=head2 ListEndpointsByPlatformApplication(PlatformApplicationArn => Str, [NextToken => Str])
+=head2 ListEndpointsByPlatformApplication
+
+=over
+
+=item PlatformApplicationArn => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::ListEndpointsByPlatformApplication>
 
@@ -559,8 +715,17 @@ return, NextToken will be null. For more information, see Using Amazon
 SNS Mobile Push Notifications
 (http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
+This action is throttled at 30 transactions per second (TPS).
 
-=head2 ListPhoneNumbersOptedOut([NextToken => Str])
+
+=head2 ListPhoneNumbersOptedOut
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::ListPhoneNumbersOptedOut>
 
@@ -578,7 +743,14 @@ received from the previous call. When there are no more records to
 return, C<NextToken> will be null.
 
 
-=head2 ListPlatformApplications([NextToken => Str])
+=head2 ListPlatformApplications
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::ListPlatformApplications>
 
@@ -595,8 +767,17 @@ more records to return, NextToken will be null. For more information,
 see Using Amazon SNS Mobile Push Notifications
 (http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
+This action is throttled at 15 transactions per second (TPS).
 
-=head2 ListSubscriptions([NextToken => Str])
+
+=head2 ListSubscriptions
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::ListSubscriptions>
 
@@ -607,8 +788,19 @@ limited list of subscriptions, up to 100. If there are more
 subscriptions, a C<NextToken> is also returned. Use the C<NextToken>
 parameter in a new C<ListSubscriptions> call to get further results.
 
+This action is throttled at 30 transactions per second (TPS).
 
-=head2 ListSubscriptionsByTopic(TopicArn => Str, [NextToken => Str])
+
+=head2 ListSubscriptionsByTopic
+
+=over
+
+=item TopicArn => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::ListSubscriptionsByTopic>
 
@@ -620,8 +812,17 @@ subscriptions, a C<NextToken> is also returned. Use the C<NextToken>
 parameter in a new C<ListSubscriptionsByTopic> call to get further
 results.
 
+This action is throttled at 30 transactions per second (TPS).
 
-=head2 ListTopics([NextToken => Str])
+
+=head2 ListTopics
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::ListTopics>
 
@@ -632,8 +833,17 @@ list of topics, up to 100. If there are more topics, a C<NextToken> is
 also returned. Use the C<NextToken> parameter in a new C<ListTopics>
 call to get further results.
 
+This action is throttled at 30 transactions per second (TPS).
 
-=head2 OptInPhoneNumber(PhoneNumber => Str)
+
+=head2 OptInPhoneNumber
+
+=over
+
+=item PhoneNumber => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::OptInPhoneNumber>
 
@@ -645,17 +855,41 @@ enables you to resume sending SMS messages to the number.
 You can opt in a phone number only once every 30 days.
 
 
-=head2 Publish(Message => Str, [MessageAttributes => L<Paws::SNS::MessageAttributeMap>, MessageStructure => Str, PhoneNumber => Str, Subject => Str, TargetArn => Str, TopicArn => Str])
+=head2 Publish
+
+=over
+
+=item Message => Str
+
+=item [MessageAttributes => L<Paws::SNS::MessageAttributeMap>]
+
+=item [MessageStructure => Str]
+
+=item [PhoneNumber => Str]
+
+=item [Subject => Str]
+
+=item [TargetArn => Str]
+
+=item [TopicArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::Publish>
 
 Returns: a L<Paws::SNS::PublishResponse> instance
 
-Sends a message to all of a topic's subscribed endpoints. When a
-C<messageId> is returned, the message has been saved and Amazon SNS
-will attempt to deliver it to the topic's subscribers shortly. The
-format of the outgoing message to each subscribed endpoint depends on
-the notification protocol.
+Sends a message to an Amazon SNS topic or sends a text message (SMS
+message) directly to a phone number.
+
+If you send a message to a topic, Amazon SNS delivers the message to
+each endpoint that is subscribed to the topic. The format of the
+message depends on the notification protocol for each subscribed
+endpoint.
+
+When a C<messageId> is returned, the message has been saved and Amazon
+SNS will attempt to deliver it shortly.
 
 To use the C<Publish> action for sending a message to a mobile
 endpoint, such as an app on a Kindle device or mobile phone, you must
@@ -667,7 +901,16 @@ Platform-Specific Payloads in Messages to Mobile Devices
 (http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html).
 
 
-=head2 RemovePermission(Label => Str, TopicArn => Str)
+=head2 RemovePermission
+
+=over
+
+=item Label => Str
+
+=item TopicArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::RemovePermission>
 
@@ -676,7 +919,16 @@ Returns: nothing
 Removes a statement from a topic's access control policy.
 
 
-=head2 SetEndpointAttributes(Attributes => L<Paws::SNS::MapStringToString>, EndpointArn => Str)
+=head2 SetEndpointAttributes
+
+=over
+
+=item Attributes => L<Paws::SNS::MapStringToString>
+
+=item EndpointArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::SetEndpointAttributes>
 
@@ -688,7 +940,16 @@ information, see Using Amazon SNS Mobile Push Notifications
 (http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
-=head2 SetPlatformApplicationAttributes(Attributes => L<Paws::SNS::MapStringToString>, PlatformApplicationArn => Str)
+=head2 SetPlatformApplicationAttributes
+
+=over
+
+=item Attributes => L<Paws::SNS::MapStringToString>
+
+=item PlatformApplicationArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::SetPlatformApplicationAttributes>
 
@@ -703,7 +964,14 @@ Using Amazon SNS Application Attributes for Message Delivery Status
 (http://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html).
 
 
-=head2 SetSMSAttributes(Attributes => L<Paws::SNS::MapStringToString>)
+=head2 SetSMSAttributes
+
+=over
+
+=item Attributes => L<Paws::SNS::MapStringToString>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::SetSMSAttributes>
 
@@ -719,17 +987,39 @@ parameter. For more information, see Sending an SMS Message
 the I<Amazon SNS Developer Guide>.
 
 
-=head2 SetSubscriptionAttributes(AttributeName => Str, SubscriptionArn => Str, [AttributeValue => Str])
+=head2 SetSubscriptionAttributes
+
+=over
+
+=item AttributeName => Str
+
+=item SubscriptionArn => Str
+
+=item [AttributeValue => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::SetSubscriptionAttributes>
 
 Returns: nothing
 
-Allows a subscription owner to set an attribute of the topic to a new
-value.
+Allows a subscription owner to set an attribute of the subscription to
+a new value.
 
 
-=head2 SetTopicAttributes(AttributeName => Str, TopicArn => Str, [AttributeValue => Str])
+=head2 SetTopicAttributes
+
+=over
+
+=item AttributeName => Str
+
+=item TopicArn => Str
+
+=item [AttributeValue => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::SetTopicAttributes>
 
@@ -738,7 +1028,22 @@ Returns: nothing
 Allows a topic owner to set an attribute of the topic to a new value.
 
 
-=head2 Subscribe(Protocol => Str, TopicArn => Str, [Endpoint => Str])
+=head2 Subscribe
+
+=over
+
+=item Protocol => Str
+
+=item TopicArn => Str
+
+=item [Attributes => L<Paws::SNS::SubscriptionAttributesMap>]
+
+=item [Endpoint => Str]
+
+=item [ReturnSubscriptionArn => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::Subscribe>
 
@@ -749,8 +1054,17 @@ confirmation message. To actually create a subscription, the endpoint
 owner must call the C<ConfirmSubscription> action with the token from
 the confirmation message. Confirmation tokens are valid for three days.
 
+This action is throttled at 100 transactions per second (TPS).
 
-=head2 Unsubscribe(SubscriptionArn => Str)
+
+=head2 Unsubscribe
+
+=over
+
+=item SubscriptionArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SNS::Unsubscribe>
 
@@ -763,6 +1077,8 @@ call does not require authentication and the requester is not the
 subscription owner, a final cancellation message is delivered to the
 endpoint, so that the endpoint owner can easily resubscribe to the
 topic if the C<Unsubscribe> request was unintended.
+
+This action is throttled at 100 transactions per second (TPS).
 
 
 
@@ -781,6 +1097,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Endpoints, passing the object as the first parameter, and the string 'Endpoints' as the second parameter 
 
 If not, it will return a a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPhoneNumbersOptedOut(sub { },[NextToken => Str])
+
+=head2 ListAllPhoneNumbersOptedOut([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - phoneNumbers, passing the object as the first parameter, and the string 'phoneNumbers' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListPhoneNumbersOptedOutResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllPlatformApplications(sub { },[NextToken => Str])

@@ -1,9 +1,11 @@
 package Paws::Inspector::AssessmentTemplate;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
+  has AssessmentRunCount => (is => 'ro', isa => 'Int', request_name => 'assessmentRunCount', traits => ['NameInRequest'], required => 1);
   has AssessmentTargetArn => (is => 'ro', isa => 'Str', request_name => 'assessmentTargetArn', traits => ['NameInRequest'], required => 1);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
   has DurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'durationInSeconds', traits => ['NameInRequest'], required => 1);
+  has LastAssessmentRunArn => (is => 'ro', isa => 'Str', request_name => 'lastAssessmentRunArn', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest'], required => 1);
   has UserAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'userAttributesForFindings', traits => ['NameInRequest'], required => 1);
@@ -49,6 +51,12 @@ DescribeAssessmentTemplates action.
   The ARN of the assessment template.
 
 
+=head2 B<REQUIRED> AssessmentRunCount => Int
+
+  The number of existing assessment runs associated with this assessment
+template. This value can be zero or a positive integer.
+
+
 =head2 B<REQUIRED> AssessmentTargetArn => Str
 
   The ARN of the assessment target that corresponds to this assessment
@@ -62,9 +70,16 @@ template.
 
 =head2 B<REQUIRED> DurationInSeconds => Int
 
-  The duration in seconds specified for this assessment tempate. The
+  The duration in seconds specified for this assessment template. The
 default value is 3600 seconds (one hour). The maximum value is 86400
 seconds (one day).
+
+
+=head2 LastAssessmentRunArn => Str
+
+  The Amazon Resource Name (ARN) of the most recent assessment run
+associated with this assessment template. This value exists only when
+the value of assessmentRunCount is greaterpa than zero.
 
 
 =head2 B<REQUIRED> Name => Str

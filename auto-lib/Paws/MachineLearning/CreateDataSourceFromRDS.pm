@@ -22,17 +22,53 @@ Paws::MachineLearning::CreateDataSourceFromRDS - Arguments for method CreateData
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDataSourceFromRDS on the 
-Amazon Machine Learning service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateDataSourceFromRDS on the
+L<Amazon Machine Learning|Paws::MachineLearning> service. Use the attributes of this class
 as arguments to method CreateDataSourceFromRDS.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDataSourceFromRDS.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDataSourceFromRDS(Att1 => $value1, Att2 => $value2, ...);
+    my $machinelearning = Paws->service('MachineLearning');
+    my $CreateDataSourceFromRDSOutput =
+      $machinelearning->CreateDataSourceFromRDS(
+      DataSourceId => 'MyEntityId',
+      RDSData      => {
+        DatabaseCredentials => {
+          Password => 'MyRDSDatabasePassword',    # min: 8, max: 128
+          Username => 'MyRDSDatabaseUsername',    # min: 1, max: 128
+
+        },
+        DatabaseInformation => {
+          DatabaseName       => 'MyRDSDatabaseName',          # min: 1, max: 64
+          InstanceIdentifier => 'MyRDSInstanceIdentifier',    # min: 1, max: 63
+
+        },
+        ResourceRole      => 'MyEDPResourceRole',             # min: 1, max: 64
+        S3StagingLocation => 'MyS3Url',                       # max: 2048
+        SecurityGroupIds  => [
+          'MyEDPSecurityGroupId', ...                         # min: 1, max: 255
+        ],
+        SelectSqlQuery    => 'MyRDSSelectSqlQuery',    # min: 1, max: 16777216
+        ServiceRole       => 'MyEDPServiceRole',       # min: 1, max: 64
+        SubnetId          => 'MyEDPSubnetId',          # min: 1, max: 255
+        DataRearrangement => 'MyDataRearrangement',    # OPTIONAL
+        DataSchema        => 'MyDataSchema',           # max: 131071; OPTIONAL
+        DataSchemaUri     => 'MyS3Url',                # max: 2048
+      },
+      RoleARN           => 'MyRoleARN',
+      ComputeStatistics => 1,                          # OPTIONAL
+      DataSourceName    => 'MyEntityName',             # OPTIONAL
+      );
+
+    # Results:
+    my $DataSourceId = $CreateDataSourceFromRDSOutput->DataSourceId;
+
+    # Returns a L<Paws::MachineLearning::CreateDataSourceFromRDSOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/machinelearning/CreateDataSourceFromRDS>
 
 =head1 ATTRIBUTES
 

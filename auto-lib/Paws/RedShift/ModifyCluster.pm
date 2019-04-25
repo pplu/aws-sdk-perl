@@ -9,9 +9,13 @@ package Paws::RedShift::ModifyCluster;
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
+  has Encrypted => (is => 'ro', isa => 'Bool');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NewClusterIdentifier => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -35,17 +39,47 @@ Paws::RedShift::ModifyCluster - Arguments for method ModifyCluster on L<Paws::Re
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyCluster on the 
-Amazon Redshift service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyCluster on the
+L<Amazon Redshift|Paws::RedShift> service. Use the attributes of this class
 as arguments to method ModifyCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $ModifyClusterResult = $redshift->ModifyCluster(
+      ClusterIdentifier                => 'MyString',
+      AllowVersionUpgrade              => 1,                      # OPTIONAL
+      AutomatedSnapshotRetentionPeriod => 1,                      # OPTIONAL
+      ClusterParameterGroupName        => 'MyString',             # OPTIONAL
+      ClusterSecurityGroups            => [ 'MyString', ... ],    # OPTIONAL
+      ClusterType                      => 'MyString',             # OPTIONAL
+      ClusterVersion                   => 'MyString',             # OPTIONAL
+      ElasticIp                        => 'MyString',             # OPTIONAL
+      Encrypted                        => 1,                      # OPTIONAL
+      EnhancedVpcRouting               => 1,                      # OPTIONAL
+      HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
+      HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
+      KmsKeyId                         => 'MyString',             # OPTIONAL
+      MaintenanceTrackName             => 'MyString',             # OPTIONAL
+      ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
+      MasterUserPassword               => 'MyString',             # OPTIONAL
+      NewClusterIdentifier             => 'MyString',             # OPTIONAL
+      NodeType                         => 'MyString',             # OPTIONAL
+      NumberOfNodes                    => 1,                      # OPTIONAL
+      PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
+      PubliclyAccessible               => 1,                      # OPTIONAL
+      VpcSecurityGroupIds              => [ 'MyString', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $Cluster = $ModifyClusterResult->Cluster;
+
+    # Returns a L<Paws::RedShift::ModifyClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/ModifyCluster>
 
 =head1 ATTRIBUTES
 
@@ -171,6 +205,17 @@ in the Amazon Redshift Cluster Management Guide.
 
 
 
+=head2 Encrypted => Bool
+
+Indicates whether the cluster is encrypted. If the cluster is encrypted
+and you provide a value for the C<KmsKeyId> parameter, we will encrypt
+the cluster with the provided C<KmsKeyId>. If you don't provide a
+C<KmsKeyId>, we will encrypt with the default key. In the China region
+we will use legacy encryption if you specify that the cluster is
+encrypted.
+
+
+
 =head2 EnhancedVpcRouting => Bool
 
 An option that specifies whether to create the cluster with enhanced
@@ -198,6 +243,37 @@ cluster uses to retrieve the data encryption keys stored in an HSM.
 Specifies the name of the HSM configuration that contains the
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
+
+
+
+=head2 KmsKeyId => Str
+
+The AWS Key Management Service (KMS) key ID of the encryption key that
+you want to use to encrypt data in the cluster.
+
+
+
+=head2 MaintenanceTrackName => Str
+
+The name for the maintenance track that you want to assign for the
+cluster. This name change is asynchronous. The new track name stays in
+the C<PendingModifiedValues> for the cluster until the next maintenance
+window. When the maintenance track changes, the cluster is switched to
+the latest cluster release available for the maintenance track. At this
+point, the maintenance track name is applied.
+
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+The default for number of days that a newly created manual snapshot is
+retained. If the value is -1, the manual snapshot is retained
+indefinitely. This value doesn't retroactively change the retention
+periods of existing manual snapshots.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.
 
 
 
@@ -292,8 +368,8 @@ connection is switched to the new cluster. When the new connection is
 complete, the original access permissions for the cluster are restored.
 You can use DescribeResize to track the progress of the resize request.
 
-Valid Values: C< ds1.xlarge> | C<ds1.8xlarge> | C< ds2.xlarge> |
-C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge>.
+Valid Values: C<ds2.xlarge> | C<ds2.8xlarge> | C<dc1.large> |
+C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge>
 
 
 
@@ -345,7 +421,8 @@ clusters in VPCs can be set to be publicly available.
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A list of virtual private cloud (VPC) security groups to be associated
-with the cluster.
+with the cluster. This change is asynchronously applied as soon as
+possible.
 
 
 

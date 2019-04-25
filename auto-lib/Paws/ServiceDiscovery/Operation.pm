@@ -46,12 +46,48 @@ A complex type that contains information about a specified operation.
 =head2 CreateDate => Str
 
   The date and time that the request was submitted, in Unix date/time
-format and Coordinated Universal Time (UTC).
+format and Coordinated Universal Time (UTC). The value of C<CreateDate>
+is accurate to milliseconds. For example, the value C<1516925490.087>
+represents Friday, January 26, 2018 12:11:30.087 AM.
 
 
 =head2 ErrorCode => Str
 
-  The code associated with C<ErrorMessage>.
+  The code associated with C<ErrorMessage>. Values for C<ErrorCode>
+include the following:
+
+=over
+
+=item *
+
+C<ACCESS_DENIED>
+
+=item *
+
+C<CANNOT_CREATE_HOSTED_ZONE>
+
+=item *
+
+C<EXPIRED_TOKEN>
+
+=item *
+
+C<HOSTED_ZONE_NOT_FOUND>
+
+=item *
+
+C<INTERNAL_FAILURE>
+
+=item *
+
+C<INVALID_CHANGE_BATCH>
+
+=item *
+
+C<THROTTLED_REQUEST>
+
+=back
+
 
 
 =head2 ErrorMessage => Str
@@ -78,7 +114,7 @@ request.
 
 =item *
 
-B<PENDING>: Amazon Route 53 is performing the operation.
+B<PENDING>: AWS Cloud Map is performing the operation.
 
 =item *
 
@@ -125,6 +161,9 @@ B<INSTANCE>: The instance ID is returned in the C<ResourceId> property.
 
   The date and time that the value of C<Status> changed to the current
 value, in Unix date/time format and Coordinated Universal Time (UTC).
+The value of C<UpdateDate> is accurate to milliseconds. For example,
+the value C<1516925490.087> represents Friday, January 26, 2018
+12:11:30.087 AM.
 
 
 

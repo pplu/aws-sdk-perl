@@ -24,17 +24,31 @@ Paws::Glacier::ListJobs - Arguments for method ListJobs on L<Paws::Glacier>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListJobs on the 
-Amazon Glacier service. Use the attributes of this class
+This class represents the parameters used for calling the method ListJobs on the
+L<Amazon Glacier|Paws::Glacier> service. Use the attributes of this class
 as arguments to method ListJobs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListJobs.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListJobs(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To list jobs for a vault
+    # The example lists jobs for the vault named my-vault.
+    my $ListJobsOutput = $glacier->ListJobs(
+      {
+        'AccountId' => '-',
+        'VaultName' => 'my-vault'
+      }
+    );
+
+    # Results:
+    my $JobList = $ListJobsOutput->JobList;
+
+    # Returns a L<Paws::Glacier::ListJobsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/ListJobs>
 
 =head1 ATTRIBUTES
 
@@ -57,9 +71,9 @@ The state of the jobs to return. You can specify C<true> or C<false>.
 
 =head2 Limit => Str
 
-The maximum number of jobs to be returned. The default limit is 1000.
-The number of jobs returned might be fewer than the specified limit,
-but the number of returned jobs never exceeds the limit.
+The maximum number of jobs to be returned. The default limit is 50. The
+number of jobs returned might be fewer than the specified limit, but
+the number of returned jobs never exceeds the limit.
 
 
 

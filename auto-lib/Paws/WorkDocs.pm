@@ -1,6 +1,7 @@
 package Paws::WorkDocs;
   use Moose;
   sub service { 'workdocs' }
+  sub signing_name { 'workdocs' }
   sub version { '2016-05-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -178,6 +179,11 @@ package Paws::WorkDocs;
     my $call_object = $self->new_with_coercions('Paws::WorkDocs::GetFolderPath', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetResources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkDocs::GetResources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub InitiateDocumentVersionUpload {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkDocs::InitiateDocumentVersionUpload', @_);
@@ -214,6 +220,52 @@ package Paws::WorkDocs;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllActivities {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeActivities(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeActivities(@_, Marker => $next_result->Marker);
+        push @{ $result->UserActivities }, @{ $next_result->UserActivities };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'UserActivities') foreach (@{ $result->UserActivities });
+        $result = $self->DescribeActivities(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'UserActivities') foreach (@{ $result->UserActivities });
+    }
+
+    return undef
+  }
+  sub DescribeAllComments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeComments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeComments(@_, Marker => $next_result->Marker);
+        push @{ $result->Comments }, @{ $next_result->Comments };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Comments') foreach (@{ $result->Comments });
+        $result = $self->DescribeComments(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Comments') foreach (@{ $result->Comments });
+    }
+
+    return undef
+  }
   sub DescribeAllDocumentVersions {
     my $self = shift;
 
@@ -263,6 +315,98 @@ package Paws::WorkDocs;
 
     return undef
   }
+  sub DescribeAllGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->Groups }, @{ $next_result->Groups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+        $result = $self->DescribeGroups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+    }
+
+    return undef
+  }
+  sub DescribeAllNotificationSubscriptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeNotificationSubscriptions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeNotificationSubscriptions(@_, Marker => $next_result->Marker);
+        push @{ $result->Subscriptions }, @{ $next_result->Subscriptions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+        $result = $self->DescribeNotificationSubscriptions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+    }
+
+    return undef
+  }
+  sub DescribeAllResourcePermissions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeResourcePermissions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeResourcePermissions(@_, Marker => $next_result->Marker);
+        push @{ $result->Principals }, @{ $next_result->Principals };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Principals') foreach (@{ $result->Principals });
+        $result = $self->DescribeResourcePermissions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Principals') foreach (@{ $result->Principals });
+    }
+
+    return undef
+  }
+  sub DescribeAllRootFolders {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeRootFolders(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeRootFolders(@_, Marker => $next_result->Marker);
+        push @{ $result->Folders }, @{ $next_result->Folders };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Folders') foreach (@{ $result->Folders });
+        $result = $self->DescribeRootFolders(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Folders') foreach (@{ $result->Folders });
+    }
+
+    return undef
+  }
   sub DescribeAllUsers {
     my $self = shift;
 
@@ -288,7 +432,7 @@ package Paws::WorkDocs;
   }
 
 
-  sub operations { qw/AbortDocumentVersionUpload ActivateUser AddResourcePermissions CreateComment CreateCustomMetadata CreateFolder CreateLabels CreateNotificationSubscription CreateUser DeactivateUser DeleteComment DeleteCustomMetadata DeleteDocument DeleteFolder DeleteFolderContents DeleteLabels DeleteNotificationSubscription DeleteUser DescribeActivities DescribeComments DescribeDocumentVersions DescribeFolderContents DescribeGroups DescribeNotificationSubscriptions DescribeResourcePermissions DescribeRootFolders DescribeUsers GetCurrentUser GetDocument GetDocumentPath GetDocumentVersion GetFolder GetFolderPath InitiateDocumentVersionUpload RemoveAllResourcePermissions RemoveResourcePermission UpdateDocument UpdateDocumentVersion UpdateFolder UpdateUser / }
+  sub operations { qw/AbortDocumentVersionUpload ActivateUser AddResourcePermissions CreateComment CreateCustomMetadata CreateFolder CreateLabels CreateNotificationSubscription CreateUser DeactivateUser DeleteComment DeleteCustomMetadata DeleteDocument DeleteFolder DeleteFolderContents DeleteLabels DeleteNotificationSubscription DeleteUser DescribeActivities DescribeComments DescribeDocumentVersions DescribeFolderContents DescribeGroups DescribeNotificationSubscriptions DescribeResourcePermissions DescribeRootFolders DescribeUsers GetCurrentUser GetDocument GetDocumentPath GetDocumentVersion GetFolder GetFolderPath GetResources InitiateDocumentVersionUpload RemoveAllResourcePermissions RemoveResourcePermission UpdateDocument UpdateDocumentVersion UpdateFolder UpdateUser / }
 
 1;
 
@@ -360,9 +504,23 @@ to any user. This allows developers to perform the three use cases
 above, as well as give users the ability to grant access on a selective
 basis using the IAM model.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workdocs-2016-05-01>
+
+
 =head1 METHODS
 
-=head2 AbortDocumentVersionUpload(DocumentId => Str, VersionId => Str, [AuthenticationToken => Str])
+=head2 AbortDocumentVersionUpload
+
+=over
+
+=item DocumentId => Str
+
+=item VersionId => Str
+
+=item [AuthenticationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::AbortDocumentVersionUpload>
 
@@ -374,7 +532,16 @@ call only when it no longer intends to upload the document version, or
 fails to do so.
 
 
-=head2 ActivateUser(UserId => Str, [AuthenticationToken => Str])
+=head2 ActivateUser
+
+=over
+
+=item UserId => Str
+
+=item [AuthenticationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::ActivateUser>
 
@@ -384,7 +551,20 @@ Activates the specified user. Only active users can access Amazon
 WorkDocs.
 
 
-=head2 AddResourcePermissions(Principals => ArrayRef[L<Paws::WorkDocs::SharePrincipal>], ResourceId => Str, [AuthenticationToken => Str, NotificationOptions => L<Paws::WorkDocs::NotificationOptions>])
+=head2 AddResourcePermissions
+
+=over
+
+=item Principals => ArrayRef[L<Paws::WorkDocs::SharePrincipal>]
+
+=item ResourceId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [NotificationOptions => L<Paws::WorkDocs::NotificationOptions>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::AddResourcePermissions>
 
@@ -395,7 +575,28 @@ resource permissions are overwritten if the principals already have
 different permissions.
 
 
-=head2 CreateComment(DocumentId => Str, Text => Str, VersionId => Str, [AuthenticationToken => Str, NotifyCollaborators => Bool, ParentId => Str, ThreadId => Str, Visibility => Str])
+=head2 CreateComment
+
+=over
+
+=item DocumentId => Str
+
+=item Text => Str
+
+=item VersionId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [NotifyCollaborators => Bool]
+
+=item [ParentId => Str]
+
+=item [ThreadId => Str]
+
+=item [Visibility => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::CreateComment>
 
@@ -404,7 +605,20 @@ Returns: a L<Paws::WorkDocs::CreateCommentResponse> instance
 Adds a new comment to the specified document version.
 
 
-=head2 CreateCustomMetadata(CustomMetadata => L<Paws::WorkDocs::CustomMetadataMap>, ResourceId => Str, [AuthenticationToken => Str, VersionId => Str])
+=head2 CreateCustomMetadata
+
+=over
+
+=item CustomMetadata => L<Paws::WorkDocs::CustomMetadataMap>
+
+=item ResourceId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [VersionId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::CreateCustomMetadata>
 
@@ -414,7 +628,18 @@ Adds one or more custom properties to the specified resource (a folder,
 document, or version).
 
 
-=head2 CreateFolder(ParentFolderId => Str, [AuthenticationToken => Str, Name => Str])
+=head2 CreateFolder
+
+=over
+
+=item ParentFolderId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::CreateFolder>
 
@@ -423,7 +648,18 @@ Returns: a L<Paws::WorkDocs::CreateFolderResponse> instance
 Creates a folder with the specified name and parent folder.
 
 
-=head2 CreateLabels(Labels => ArrayRef[Str|Undef], ResourceId => Str, [AuthenticationToken => Str])
+=head2 CreateLabels
+
+=over
+
+=item Labels => ArrayRef[Str|Undef]
+
+=item ResourceId => Str
+
+=item [AuthenticationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::CreateLabels>
 
@@ -433,21 +669,57 @@ Adds the specified list of labels to the given resource (a document or
 folder)
 
 
-=head2 CreateNotificationSubscription(Endpoint => Str, OrganizationId => Str, Protocol => Str, SubscriptionType => Str)
+=head2 CreateNotificationSubscription
+
+=over
+
+=item Endpoint => Str
+
+=item OrganizationId => Str
+
+=item Protocol => Str
+
+=item SubscriptionType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::CreateNotificationSubscription>
 
 Returns: a L<Paws::WorkDocs::CreateNotificationSubscriptionResponse> instance
 
-Configure WorkDocs to use Amazon SNS notifications.
+Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint
+receives a confirmation message, and must confirm the subscription.
 
-The endpoint receives a confirmation message, and must confirm the
-subscription. For more information, see Confirm the Subscription
-(http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html#SendMessageToHttp.confirm)
-in the I<Amazon Simple Notification Service Developer Guide>.
+For more information, see Subscribe to Notifications
+(http://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html)
+in the I<Amazon WorkDocs Developer Guide>.
 
 
-=head2 CreateUser(GivenName => Str, Password => Str, Surname => Str, Username => Str, [AuthenticationToken => Str, EmailAddress => Str, OrganizationId => Str, StorageRule => L<Paws::WorkDocs::StorageRuleType>, TimeZoneId => Str])
+=head2 CreateUser
+
+=over
+
+=item GivenName => Str
+
+=item Password => Str
+
+=item Surname => Str
+
+=item Username => Str
+
+=item [AuthenticationToken => Str]
+
+=item [EmailAddress => Str]
+
+=item [OrganizationId => Str]
+
+=item [StorageRule => L<Paws::WorkDocs::StorageRuleType>]
+
+=item [TimeZoneId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::CreateUser>
 
@@ -457,7 +729,16 @@ Creates a user in a Simple AD or Microsoft AD directory. The status of
 a newly created user is "ACTIVE". New users can access Amazon WorkDocs.
 
 
-=head2 DeactivateUser(UserId => Str, [AuthenticationToken => Str])
+=head2 DeactivateUser
+
+=over
+
+=item UserId => Str
+
+=item [AuthenticationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DeactivateUser>
 
@@ -467,7 +748,20 @@ Deactivates the specified user, which revokes the user's access to
 Amazon WorkDocs.
 
 
-=head2 DeleteComment(CommentId => Str, DocumentId => Str, VersionId => Str, [AuthenticationToken => Str])
+=head2 DeleteComment
+
+=over
+
+=item CommentId => Str
+
+=item DocumentId => Str
+
+=item VersionId => Str
+
+=item [AuthenticationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DeleteComment>
 
@@ -476,7 +770,22 @@ Returns: nothing
 Deletes the specified comment from the document version.
 
 
-=head2 DeleteCustomMetadata(ResourceId => Str, [AuthenticationToken => Str, DeleteAll => Bool, Keys => ArrayRef[Str|Undef], VersionId => Str])
+=head2 DeleteCustomMetadata
+
+=over
+
+=item ResourceId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [DeleteAll => Bool]
+
+=item [Keys => ArrayRef[Str|Undef]]
+
+=item [VersionId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DeleteCustomMetadata>
 
@@ -485,7 +794,16 @@ Returns: a L<Paws::WorkDocs::DeleteCustomMetadataResponse> instance
 Deletes custom metadata from the specified resource.
 
 
-=head2 DeleteDocument(DocumentId => Str, [AuthenticationToken => Str])
+=head2 DeleteDocument
+
+=over
+
+=item DocumentId => Str
+
+=item [AuthenticationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DeleteDocument>
 
@@ -494,7 +812,16 @@ Returns: nothing
 Permanently deletes the specified document and its associated metadata.
 
 
-=head2 DeleteFolder(FolderId => Str, [AuthenticationToken => Str])
+=head2 DeleteFolder
+
+=over
+
+=item FolderId => Str
+
+=item [AuthenticationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DeleteFolder>
 
@@ -503,7 +830,16 @@ Returns: nothing
 Permanently deletes the specified folder and its contents.
 
 
-=head2 DeleteFolderContents(FolderId => Str, [AuthenticationToken => Str])
+=head2 DeleteFolderContents
+
+=over
+
+=item FolderId => Str
+
+=item [AuthenticationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DeleteFolderContents>
 
@@ -512,7 +848,20 @@ Returns: nothing
 Deletes the contents of the specified folder.
 
 
-=head2 DeleteLabels(ResourceId => Str, [AuthenticationToken => Str, DeleteAll => Bool, Labels => ArrayRef[Str|Undef]])
+=head2 DeleteLabels
+
+=over
+
+=item ResourceId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [DeleteAll => Bool]
+
+=item [Labels => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DeleteLabels>
 
@@ -521,7 +870,16 @@ Returns: a L<Paws::WorkDocs::DeleteLabelsResponse> instance
 Deletes the specified list of labels from a resource.
 
 
-=head2 DeleteNotificationSubscription(OrganizationId => Str, SubscriptionId => Str)
+=head2 DeleteNotificationSubscription
+
+=over
+
+=item OrganizationId => Str
+
+=item SubscriptionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DeleteNotificationSubscription>
 
@@ -530,7 +888,16 @@ Returns: nothing
 Deletes the specified subscription from the specified organization.
 
 
-=head2 DeleteUser(UserId => Str, [AuthenticationToken => Str])
+=head2 DeleteUser
+
+=over
+
+=item UserId => Str
+
+=item [AuthenticationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DeleteUser>
 
@@ -539,7 +906,32 @@ Returns: nothing
 Deletes the specified user from a Simple AD or Microsoft AD directory.
 
 
-=head2 DescribeActivities([AuthenticationToken => Str, EndTime => Str, Limit => Int, Marker => Str, OrganizationId => Str, StartTime => Str, UserId => Str])
+=head2 DescribeActivities
+
+=over
+
+=item [ActivityTypes => Str]
+
+=item [AuthenticationToken => Str]
+
+=item [EndTime => Str]
+
+=item [IncludeIndirectActivities => Bool]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+=item [OrganizationId => Str]
+
+=item [ResourceId => Str]
+
+=item [StartTime => Str]
+
+=item [UserId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeActivities>
 
@@ -548,7 +940,22 @@ Returns: a L<Paws::WorkDocs::DescribeActivitiesResponse> instance
 Describes the user activities in a specified time period.
 
 
-=head2 DescribeComments(DocumentId => Str, VersionId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str])
+=head2 DescribeComments
+
+=over
+
+=item DocumentId => Str
+
+=item VersionId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeComments>
 
@@ -557,7 +964,24 @@ Returns: a L<Paws::WorkDocs::DescribeCommentsResponse> instance
 List all the comments for the specified document version.
 
 
-=head2 DescribeDocumentVersions(DocumentId => Str, [AuthenticationToken => Str, Fields => Str, Include => Str, Limit => Int, Marker => Str])
+=head2 DescribeDocumentVersions
+
+=over
+
+=item DocumentId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [Fields => Str]
+
+=item [Include => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeDocumentVersions>
 
@@ -568,7 +992,28 @@ Retrieves the document versions for the specified document.
 By default, only active versions are returned.
 
 
-=head2 DescribeFolderContents(FolderId => Str, [AuthenticationToken => Str, Include => Str, Limit => Int, Marker => Str, Order => Str, Sort => Str, Type => Str])
+=head2 DescribeFolderContents
+
+=over
+
+=item FolderId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [Include => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+=item [Order => Str]
+
+=item [Sort => Str]
+
+=item [Type => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeFolderContents>
 
@@ -583,16 +1028,43 @@ a marker that you can use to request the next set of results. You can
 also request initialized documents.
 
 
-=head2 DescribeGroups(SearchQuery => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, OrganizationId => Str])
+=head2 DescribeGroups
+
+=over
+
+=item SearchQuery => Str
+
+=item [AuthenticationToken => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+=item [OrganizationId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeGroups>
 
 Returns: a L<Paws::WorkDocs::DescribeGroupsResponse> instance
 
-Describes the groups specified by query.
+Describes the groups specified by the query. Groups are defined by the
+underlying Active Directory.
 
 
-=head2 DescribeNotificationSubscriptions(OrganizationId => Str, [Limit => Int, Marker => Str])
+=head2 DescribeNotificationSubscriptions
+
+=over
+
+=item OrganizationId => Str
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeNotificationSubscriptions>
 
@@ -601,7 +1073,22 @@ Returns: a L<Paws::WorkDocs::DescribeNotificationSubscriptionsResponse> instance
 Lists the specified notification subscriptions.
 
 
-=head2 DescribeResourcePermissions(ResourceId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, PrincipalId => Str])
+=head2 DescribeResourcePermissions
+
+=over
+
+=item ResourceId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+=item [PrincipalId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeResourcePermissions>
 
@@ -610,7 +1097,18 @@ Returns: a L<Paws::WorkDocs::DescribeResourcePermissionsResponse> instance
 Describes the permissions of a specified resource.
 
 
-=head2 DescribeRootFolders(AuthenticationToken => Str, [Limit => Int, Marker => Str])
+=head2 DescribeRootFolders
+
+=over
+
+=item AuthenticationToken => Str
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeRootFolders>
 
@@ -621,8 +1119,40 @@ C<RecycleBin>. C<RootFolder> is the root of user's files and folders
 and C<RecycleBin> is the root of recycled items. This is not a valid
 action for SigV4 (administrative API) clients.
 
+This action requires an authentication token. To get an authentication
+token, register an application with Amazon WorkDocs. For more
+information, see Authentication and Access Control for User
+Applications
+(http://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html)
+in the I<Amazon WorkDocs Developer Guide>.
 
-=head2 DescribeUsers([AuthenticationToken => Str, Fields => Str, Include => Str, Limit => Int, Marker => Str, Order => Str, OrganizationId => Str, Query => Str, Sort => Str, UserIds => Str])
+
+=head2 DescribeUsers
+
+=over
+
+=item [AuthenticationToken => Str]
+
+=item [Fields => Str]
+
+=item [Include => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+=item [Order => Str]
+
+=item [OrganizationId => Str]
+
+=item [Query => Str]
+
+=item [Sort => Str]
+
+=item [UserIds => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeUsers>
 
@@ -636,7 +1166,14 @@ users. If there are more results, the response includes a marker that
 you can use to request the next set of results.
 
 
-=head2 GetCurrentUser(AuthenticationToken => Str)
+=head2 GetCurrentUser
+
+=over
+
+=item AuthenticationToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::GetCurrentUser>
 
@@ -647,7 +1184,18 @@ was generated. This is not a valid action for SigV4 (administrative
 API) clients.
 
 
-=head2 GetDocument(DocumentId => Str, [AuthenticationToken => Str, IncludeCustomMetadata => Bool])
+=head2 GetDocument
+
+=over
+
+=item DocumentId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [IncludeCustomMetadata => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::GetDocument>
 
@@ -656,7 +1204,22 @@ Returns: a L<Paws::WorkDocs::GetDocumentResponse> instance
 Retrieves details of a document.
 
 
-=head2 GetDocumentPath(DocumentId => Str, [AuthenticationToken => Str, Fields => Str, Limit => Int, Marker => Str])
+=head2 GetDocumentPath
+
+=over
+
+=item DocumentId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [Fields => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::GetDocumentPath>
 
@@ -671,7 +1234,22 @@ folders in the path. You can limit the maximum number of levels. You
 can also request the names of the parent folders.
 
 
-=head2 GetDocumentVersion(DocumentId => Str, VersionId => Str, [AuthenticationToken => Str, Fields => Str, IncludeCustomMetadata => Bool])
+=head2 GetDocumentVersion
+
+=over
+
+=item DocumentId => Str
+
+=item VersionId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [Fields => Str]
+
+=item [IncludeCustomMetadata => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::GetDocumentVersion>
 
@@ -680,7 +1258,18 @@ Returns: a L<Paws::WorkDocs::GetDocumentVersionResponse> instance
 Retrieves version metadata for the specified document.
 
 
-=head2 GetFolder(FolderId => Str, [AuthenticationToken => Str, IncludeCustomMetadata => Bool])
+=head2 GetFolder
+
+=over
+
+=item FolderId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [IncludeCustomMetadata => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::GetFolder>
 
@@ -689,7 +1278,22 @@ Returns: a L<Paws::WorkDocs::GetFolderResponse> instance
 Retrieves the metadata of the specified folder.
 
 
-=head2 GetFolderPath(FolderId => Str, [AuthenticationToken => Str, Fields => Str, Limit => Int, Marker => Str])
+=head2 GetFolderPath
+
+=over
+
+=item FolderId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [Fields => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::GetFolderPath>
 
@@ -704,7 +1308,53 @@ folders in the path. You can limit the maximum number of levels. You
 can also request the parent folder names.
 
 
-=head2 InitiateDocumentVersionUpload(ParentFolderId => Str, [AuthenticationToken => Str, ContentCreatedTimestamp => Str, ContentModifiedTimestamp => Str, ContentType => Str, DocumentSizeInBytes => Int, Id => Str, Name => Str])
+=head2 GetResources
+
+=over
+
+=item [AuthenticationToken => Str]
+
+=item [CollectionType => Str]
+
+=item [Limit => Int]
+
+=item [Marker => Str]
+
+=item [UserId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkDocs::GetResources>
+
+Returns: a L<Paws::WorkDocs::GetResourcesResponse> instance
+
+Retrieves a collection of resources, including folders and documents.
+The only C<CollectionType> supported is C<SHARED_WITH_ME>.
+
+
+=head2 InitiateDocumentVersionUpload
+
+=over
+
+=item ParentFolderId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [ContentCreatedTimestamp => Str]
+
+=item [ContentModifiedTimestamp => Str]
+
+=item [ContentType => Str]
+
+=item [DocumentSizeInBytes => Int]
+
+=item [Id => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::InitiateDocumentVersionUpload>
 
@@ -721,7 +1371,16 @@ call UpdateDocumentVersion.
 To cancel the document upload, call AbortDocumentVersionUpload.
 
 
-=head2 RemoveAllResourcePermissions(ResourceId => Str, [AuthenticationToken => Str])
+=head2 RemoveAllResourcePermissions
+
+=over
+
+=item ResourceId => Str
+
+=item [AuthenticationToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::RemoveAllResourcePermissions>
 
@@ -730,7 +1389,20 @@ Returns: nothing
 Removes all the permissions from the specified resource.
 
 
-=head2 RemoveResourcePermission(PrincipalId => Str, ResourceId => Str, [AuthenticationToken => Str, PrincipalType => Str])
+=head2 RemoveResourcePermission
+
+=over
+
+=item PrincipalId => Str
+
+=item ResourceId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [PrincipalType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::RemoveResourcePermission>
 
@@ -740,7 +1412,22 @@ Removes the permission for the specified principal from the specified
 resource.
 
 
-=head2 UpdateDocument(DocumentId => Str, [AuthenticationToken => Str, Name => Str, ParentFolderId => Str, ResourceState => Str])
+=head2 UpdateDocument
+
+=over
+
+=item DocumentId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [Name => Str]
+
+=item [ParentFolderId => Str]
+
+=item [ResourceState => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::UpdateDocument>
 
@@ -750,7 +1437,20 @@ Updates the specified attributes of a document. The user must have
 access to both the document and its parent folder, if applicable.
 
 
-=head2 UpdateDocumentVersion(DocumentId => Str, VersionId => Str, [AuthenticationToken => Str, VersionStatus => Str])
+=head2 UpdateDocumentVersion
+
+=over
+
+=item DocumentId => Str
+
+=item VersionId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [VersionStatus => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::UpdateDocumentVersion>
 
@@ -763,7 +1463,22 @@ last step in a document upload, after the client uploads the document
 to an S3-presigned URL returned by InitiateDocumentVersionUpload.
 
 
-=head2 UpdateFolder(FolderId => Str, [AuthenticationToken => Str, Name => Str, ParentFolderId => Str, ResourceState => Str])
+=head2 UpdateFolder
+
+=over
+
+=item FolderId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [Name => Str]
+
+=item [ParentFolderId => Str]
+
+=item [ResourceState => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::UpdateFolder>
 
@@ -773,7 +1488,30 @@ Updates the specified attributes of the specified folder. The user must
 have access to both the folder and its parent folder, if applicable.
 
 
-=head2 UpdateUser(UserId => Str, [AuthenticationToken => Str, GivenName => Str, GrantPoweruserPrivileges => Str, Locale => Str, StorageRule => L<Paws::WorkDocs::StorageRuleType>, Surname => Str, TimeZoneId => Str, Type => Str])
+=head2 UpdateUser
+
+=over
+
+=item UserId => Str
+
+=item [AuthenticationToken => Str]
+
+=item [GivenName => Str]
+
+=item [GrantPoweruserPrivileges => Str]
+
+=item [Locale => Str]
+
+=item [StorageRule => L<Paws::WorkDocs::StorageRuleType>]
+
+=item [Surname => Str]
+
+=item [TimeZoneId => Str]
+
+=item [Type => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::WorkDocs::UpdateUser>
 
@@ -788,6 +1526,30 @@ revokes administrative privileges to the Amazon WorkDocs site.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllActivities(sub { },[ActivityTypes => Str, AuthenticationToken => Str, EndTime => Str, IncludeIndirectActivities => Bool, Limit => Int, Marker => Str, OrganizationId => Str, ResourceId => Str, StartTime => Str, UserId => Str])
+
+=head2 DescribeAllActivities([ActivityTypes => Str, AuthenticationToken => Str, EndTime => Str, IncludeIndirectActivities => Bool, Limit => Int, Marker => Str, OrganizationId => Str, ResourceId => Str, StartTime => Str, UserId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserActivities, passing the object as the first parameter, and the string 'UserActivities' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeActivitiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllComments(sub { },DocumentId => Str, VersionId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str])
+
+=head2 DescribeAllComments(DocumentId => Str, VersionId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Comments, passing the object as the first parameter, and the string 'Comments' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeCommentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllDocumentVersions(sub { },DocumentId => Str, [AuthenticationToken => Str, Fields => Str, Include => Str, Limit => Int, Marker => Str])
 
@@ -813,6 +1575,54 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Documents, passing the object as the first parameter, and the string 'Documents' as the second parameter 
 
 If not, it will return a a L<Paws::WorkDocs::DescribeFolderContentsResponse> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllGroups(sub { },SearchQuery => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, OrganizationId => Str])
+
+=head2 DescribeAllGroups(SearchQuery => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, OrganizationId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllNotificationSubscriptions(sub { },OrganizationId => Str, [Limit => Int, Marker => Str])
+
+=head2 DescribeAllNotificationSubscriptions(OrganizationId => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Subscriptions, passing the object as the first parameter, and the string 'Subscriptions' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeNotificationSubscriptionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllResourcePermissions(sub { },ResourceId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, PrincipalId => Str])
+
+=head2 DescribeAllResourcePermissions(ResourceId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str, PrincipalId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Principals, passing the object as the first parameter, and the string 'Principals' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeResourcePermissionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllRootFolders(sub { },AuthenticationToken => Str, [Limit => Int, Marker => Str])
+
+=head2 DescribeAllRootFolders(AuthenticationToken => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Folders, passing the object as the first parameter, and the string 'Folders' as the second parameter 
+
+If not, it will return a a L<Paws::WorkDocs::DescribeRootFoldersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllUsers(sub { },[AuthenticationToken => Str, Fields => Str, Include => Str, Limit => Int, Marker => Str, Order => Str, OrganizationId => Str, Query => Str, Sort => Str, UserIds => Str])

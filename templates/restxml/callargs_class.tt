@@ -1,0 +1,39 @@
+[%- operation = c.operation(op_name) %]
+[%- shape = c.input_for_operation(op_name) %]
+package [% c.api %]::[% op_name %];
+  use Moose;
+[% FOREACH param_name IN shape.members.keys.sort -%]
+  [%- member = c.shape(shape.members.$param_name.shape) -%]
+  [%- traits = [] -%]
+  has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
+  [%- IF (shape.members.$param_name.location == 'header') %], header_name => '[% shape.members.$param_name.locationName %]'
+    [%- IF (param_name == 'ContentMD5'); traits.push('AutoInHeader') %], auto => 'MD5'
+    [%- ELSE; traits.push('ParamInHeader') %]
+  [%- END %]
+  [%- ELSIF (shape.members.$param_name.location == 'headers');     traits.push('ParamInHeaders') %], header_prefix => '[% shape.members.$param_name.locationName %]'
+  [%- ELSIF (shape.members.$param_name.location == 'querystring'); traits.push('ParamInQuery') %], query_name => '[% shape.members.$param_name.locationName %]'
+  [%- ELSIF (shape.members.$param_name.location == 'uri');         traits.push('ParamInURI') %], uri_name => '[% shape.members.$param_name.locationName %]'
+  [%- ELSIF (shape.members.$param_name.streaming == 1);            traits.push('ParamInBody'); %][% stream_param = param_name -%]
+  [%- ELSE %][% IF (shape.members.$param_name.locationName != '') -%]
+               [%- IF (shape.members.$param_name.locationName == 'x-amz-meta-') %]
+               [%- ELSIF (shape.members.$param_name.locationName != param_name); traits.push('NameInRequest'); %], request_name => '[% shape.members.$param_name.locationName -%]'
+               [%- END -%]
+             [%- END -%]
+  [%- END -%]
+  [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% ',' IF (NOT loop.last) %][% END %]][% END -%]
+  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+[% END %]
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '[% operation.http.requestUri %]');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => '[% operation.http.method %]');
+  class_has _returns => (isa => 'Str', is => 'ro', default => '
+    [%- IF (operation.output.keys.size) -%]
+      [%- c.api %]::[% c.shapename_for_operation_output(op_name) -%]
+    [%- ELSE -%]Paws::API::Response[% END -%]');
+  class_has _result_key => (isa => 'Str', is => 'ro');
+  [% IF (stream_param) %]class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(stream_param) %]');[% END %]
+1;
+
+[% INCLUDE 'callclass_documentation.tt' %]

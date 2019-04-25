@@ -27,35 +27,69 @@ Paws::IAM::SimulateCustomPolicy - Arguments for method SimulateCustomPolicy on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SimulateCustomPolicy on the 
-AWS Identity and Access Management service. Use the attributes of this class
+This class represents the parameters used for calling the method SimulateCustomPolicy on the
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method SimulateCustomPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SimulateCustomPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SimulateCustomPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    my $SimulatePolicyResponse = $iam->SimulateCustomPolicy(
+      ActionNames => [
+        'MyActionNameType', ...    # min: 3, max: 128
+      ],
+      PolicyInputList => [
+        'MypolicyDocumentType', ...    # min: 1, max: 131072
+      ],
+      CallerArn      => 'MyResourceNameType',    # OPTIONAL
+      ContextEntries => [
+        {
+          ContextKeyName => 'MyContextKeyNameType', # min: 5, max: 256; OPTIONAL
+          ContextKeyType => 'string'
+          , # values: string, stringList, numeric, numericList, boolean, booleanList, ip, ipList, binary, binaryList, date, dateList; OPTIONAL
+          ContextKeyValues => [ 'MyContextKeyValueType', ... ],    # OPTIONAL
+        },
+        ...
+      ],                                                           # OPTIONAL
+      Marker       => 'MymarkerType',                              # OPTIONAL
+      MaxItems     => 1,                                           # OPTIONAL
+      ResourceArns => [
+        'MyResourceNameType', ...    # min: 1, max: 2048
+      ],                             # OPTIONAL
+      ResourceHandlingOption => 'MyResourceHandlingOptionType',    # OPTIONAL
+      ResourceOwner          => 'MyResourceNameType',              # OPTIONAL
+      ResourcePolicy         => 'MypolicyDocumentType',            # OPTIONAL
+    );
+
+    # Results:
+    my $EvaluationResults = $SimulatePolicyResponse->EvaluationResults;
+    my $IsTruncated       = $SimulatePolicyResponse->IsTruncated;
+    my $Marker            = $SimulatePolicyResponse->Marker;
+
+    # Returns a L<Paws::IAM::SimulatePolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/SimulateCustomPolicy>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ActionNames => ArrayRef[Str|Undef]
 
-A list of names of API actions to evaluate in the simulation. Each
-action is evaluated against each resource. Each action must include the
-service identifier, such as C<iam:CreateUser>.
+A list of names of API operations to evaluate in the simulation. Each
+operation is evaluated against each resource. Each operation must
+include the service identifier, such as C<iam:CreateUser>.
 
 
 
 =head2 CallerArn => Str
 
 The ARN of the IAM user that you want to use as the simulated caller of
-the APIs. C<CallerArn> is required if you include a C<ResourcePolicy>
-so that the policy's C<Principal> element has a value to use in
-evaluating the policy.
+the API operations. C<CallerArn> is required if you include a
+C<ResourcePolicy> so that the policy's C<Principal> element has a value
+to use in evaluating the policy.
 
 You can specify only the ARN of an IAM user. You cannot specify the ARN
 of an assumed role, federated user, or a service principal.
@@ -81,16 +115,15 @@ indicate where the next call should start.
 
 =head2 MaxItems => Int
 
-(Optional) Use this only when paginating results to indicate the
-maximum number of items you want in the response. If additional items
-exist beyond the maximum you specify, the C<IsTruncated> response
-element is C<true>.
+Use this only when paginating results to indicate the maximum number of
+items you want in the response. If additional items exist beyond the
+maximum you specify, the C<IsTruncated> response element is C<true>.
 
-If you do not include this parameter, it defaults to 100. Note that IAM
-might return fewer results, even when there are more results available.
-In that case, the C<IsTruncated> response element returns C<true> and
-C<Marker> contains a value to include in the subsequent call that tells
-the service where to continue from.
+If you do not include this parameter, the number of items defaults to
+100. Note that IAM might return fewer results, even when there are more
+results available. In that case, the C<IsTruncated> response element
+returns C<true>, and C<Marker> contains a value to include in the
+subsequent call that tells the service where to continue from.
 
 
 
@@ -105,23 +138,38 @@ policies, such as you could include in a call to GetFederationToken
 (http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html)
 or one of the AssumeRole
 (http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html)
-APIs to restrict what a user can do while using the temporary
-credentials.
+API operations. In other words, do not use policies designed to
+restrict what a user can do while using the temporary credentials.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
-this parameter is a string of characters consisting of any printable
-ASCII character ranging from the space character (\u0020) through end
-of the ASCII character range as well as the printable characters in the
-Basic Latin and Latin-1 Supplement character set (through \u00FF). It
-also includes the special characters tab (\u0009), line feed (\u000A),
-and carriage return (\u000D).
+this parameter is a string of characters consisting of the following:
+
+=over
+
+=item *
+
+Any printable ASCII character ranging from the space character (\u0020)
+through the end of the ASCII character range
+
+=item *
+
+The printable characters in the Basic Latin and Latin-1 Supplement
+character set (through \u00FF)
+
+=item *
+
+The special characters tab (\u0009), line feed (\u000A), and carriage
+return (\u000D)
+
+=back
+
 
 
 
 =head2 ResourceArns => ArrayRef[Str|Undef]
 
 A list of ARNs of AWS resources to include in the simulation. If this
-parameter is not provided then the value defaults to C<*> (all
+parameter is not provided, then the value defaults to C<*> (all
 resources). Each API in the C<ActionNames> parameter is evaluated for
 each resource in this list. The simulation determines the access result
 (allowed or denied) of each combination and reports it in the response.
@@ -144,12 +192,12 @@ in the I<AWS General Reference>.
 
 =head2 ResourceHandlingOption => Str
 
-Specifies the type of simulation to run. Different APIs that support
-resource-based policies require different combinations of resources. By
-specifying the type of simulation to run, you enable the policy
-simulator to enforce the presence of the required resources to ensure
-reliable simulation results. If your simulation does not match one of
-the following scenarios, then you can omit this parameter. The
+Specifies the type of simulation to run. Different API operations that
+support resource-based policies require different combinations of
+resources. By specifying the type of simulation to run, you enable the
+policy simulator to enforce the presence of the required resources to
+ensure reliable simulation results. If your simulation does not match
+one of the following scenarios, then you can omit this parameter. The
 following list shows each of the supported scenario values and the
 resources that you must define to run the simulation.
 
@@ -161,7 +209,7 @@ it includes an IP subnet, then you must specify the subnet resource.
 For more information on the EC2 scenario options, see Supported
 Platforms
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
-in the I<AWS EC2 User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 =over
 
@@ -208,16 +256,21 @@ instance, image, security-group, network-interface, subnet, volume
 
 =head2 ResourceOwner => Str
 
-An AWS account ID that specifies the owner of any simulated resource
-that does not identify its owner in the resource ARN, such as an S3
-bucket or object. If C<ResourceOwner> is specified, it is also used as
-the account owner of any C<ResourcePolicy> included in the simulation.
-If the C<ResourceOwner> parameter is not specified, then the owner of
-the resources and the resource policy defaults to the account of the
-identity provided in C<CallerArn>. This parameter is required only if
-you specify a resource-based policy and account that owns the resource
-is different from the account that owns the simulated calling user
-C<CallerArn>.
+An ARN representing the AWS account ID that specifies the owner of any
+simulated resource that does not identify its owner in the resource
+ARN, such as an S3 bucket or object. If C<ResourceOwner> is specified,
+it is also used as the account owner of any C<ResourcePolicy> included
+in the simulation. If the C<ResourceOwner> parameter is not specified,
+then the owner of the resources and the resource policy defaults to the
+account of the identity provided in C<CallerArn>. This parameter is
+required only if you specify a resource-based policy and account that
+owns the resource is different from the account that owns the simulated
+calling user C<CallerArn>.
+
+The ARN for an account uses the following syntax:
+C<arn:aws:iam::I<AWS-account-ID>:root>. For example, to represent the
+account with the 112233445566 ID, use the following ARN:
+C<arn:aws:iam::112233445566-ID:root>.
 
 
 
@@ -229,12 +282,27 @@ policy attached. You can include only one resource-based policy in a
 simulation.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
-this parameter is a string of characters consisting of any printable
-ASCII character ranging from the space character (\u0020) through end
-of the ASCII character range as well as the printable characters in the
-Basic Latin and Latin-1 Supplement character set (through \u00FF). It
-also includes the special characters tab (\u0009), line feed (\u000A),
-and carriage return (\u000D).
+this parameter is a string of characters consisting of the following:
+
+=over
+
+=item *
+
+Any printable ASCII character ranging from the space character (\u0020)
+through the end of the ASCII character range
+
+=item *
+
+The printable characters in the Basic Latin and Latin-1 Supplement
+character set (through \u00FF)
+
+=item *
+
+The special characters tab (\u0009), line feed (\u000A), and carriage
+return (\u000D)
+
+=back
+
 
 
 

@@ -50,7 +50,8 @@ FrameCaptureSettings
 
 =head2 Codec => Str
 
-  
+  Specifies the video codec. This must be equal to one of the enum values
+defined by the object VideoCodec.
 
 
 =head2 FrameCaptureSettings => L<Paws::MediaConvert::FrameCaptureSettings>

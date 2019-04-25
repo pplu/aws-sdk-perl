@@ -24,17 +24,38 @@ Paws::LexRuntime::PostText - Arguments for method PostText on L<Paws::LexRuntime
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PostText on the 
-Amazon Lex Runtime Service service. Use the attributes of this class
+This class represents the parameters used for calling the method PostText on the
+L<Amazon Lex Runtime Service|Paws::LexRuntime> service. Use the attributes of this class
 as arguments to method PostText.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PostText.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PostText(Att1 => $value1, Att2 => $value2, ...);
+    my $runtime.lex = Paws->service('LexRuntime');
+    my $PostTextResponse = $runtime . lex->PostText(
+      BotAlias          => 'MyBotAlias',
+      BotName           => 'MyBotName',
+      InputText         => 'MyText',
+      UserId            => 'MyUserId',
+      RequestAttributes => { 'MyString' => 'MyString', },    # OPTIONAL
+      SessionAttributes => { 'MyString' => 'MyString', },    # OPTIONAL
+    );
+
+    # Results:
+    my $DialogState       = $PostTextResponse->DialogState;
+    my $IntentName        = $PostTextResponse->IntentName;
+    my $Message           = $PostTextResponse->Message;
+    my $MessageFormat     = $PostTextResponse->MessageFormat;
+    my $ResponseCard      = $PostTextResponse->ResponseCard;
+    my $SessionAttributes = $PostTextResponse->SessionAttributes;
+    my $SlotToElicit      = $PostTextResponse->SlotToElicit;
+    my $Slots             = $PostTextResponse->Slots;
+
+    # Returns a L<Paws::LexRuntime::PostTextResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/runtime.lex/PostText>
 
 =head1 ATTRIBUTES
 

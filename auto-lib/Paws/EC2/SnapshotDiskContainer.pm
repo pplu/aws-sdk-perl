@@ -48,7 +48,7 @@ This class has no description
 
   The format of the disk image being imported.
 
-Valid values: C<RAW> | C<VHD> | C<VMDK> | C<OVA>
+Valid values: C<VHD> | C<VMDK>
 
 
 =head2 Url => Str

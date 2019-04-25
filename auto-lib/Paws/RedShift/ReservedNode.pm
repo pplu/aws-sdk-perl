@@ -9,6 +9,7 @@ package Paws::RedShift::ReservedNode;
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::RecurringCharge]', request_name => 'RecurringCharge', traits => ['NameInRequest']);
   has ReservedNodeId => (is => 'ro', isa => 'Str');
   has ReservedNodeOfferingId => (is => 'ro', isa => 'Str');
+  has ReservedNodeOfferingType => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
@@ -95,6 +96,11 @@ reserved node offering.
   The identifier for the reserved node offering.
 
 
+=head2 ReservedNodeOfferingType => Str
+
+  
+
+
 =head2 StartTime => Str
 
   The time the reservation started. You purchase a reserved node offering
@@ -122,6 +128,15 @@ use.
 =item *
 
 payment-failed-Payment failed for the purchase attempt.
+
+=item *
+
+retired-The reserved node is no longer available.
+
+=item *
+
+exchanging-The owner is exchanging the reserved node for another
+reserved node.
 
 =back
 

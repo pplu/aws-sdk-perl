@@ -23,17 +23,34 @@ Paws::CloudWatch::DescribeAlarms - Arguments for method DescribeAlarms on L<Paws
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeAlarms on the 
-Amazon CloudWatch service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeAlarms on the
+L<Amazon CloudWatch|Paws::CloudWatch> service. Use the attributes of this class
 as arguments to method DescribeAlarms.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAlarms.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeAlarms(Att1 => $value1, Att2 => $value2, ...);
+    my $monitoring = Paws->service('CloudWatch');
+    my $DescribeAlarmsOutput = $monitoring->DescribeAlarms(
+      ActionPrefix    => 'MyActionPrefix',       # OPTIONAL
+      AlarmNamePrefix => 'MyAlarmNamePrefix',    # OPTIONAL
+      AlarmNames      => [
+        'MyAlarmName', ...                       # min: 1, max: 255
+      ],                                         # OPTIONAL
+      MaxRecords => 1,                           # OPTIONAL
+      NextToken  => 'MyNextToken',               # OPTIONAL
+      StateValue => 'OK',                        # OPTIONAL
+    );
+
+    # Results:
+    my $MetricAlarms = $DescribeAlarmsOutput->MetricAlarms;
+    my $NextToken    = $DescribeAlarmsOutput->NextToken;
+
+    # Returns a L<Paws::CloudWatch::DescribeAlarmsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/monitoring/DescribeAlarms>
 
 =head1 ATTRIBUTES
 

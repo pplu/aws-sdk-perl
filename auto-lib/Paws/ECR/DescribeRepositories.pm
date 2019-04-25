@@ -21,17 +21,27 @@ Paws::ECR::DescribeRepositories - Arguments for method DescribeRepositories on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeRepositories on the 
-Amazon EC2 Container Registry service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeRepositories on the
+L<Amazon EC2 Container Registry|Paws::ECR> service. Use the attributes of this class
 as arguments to method DescribeRepositories.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRepositories.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeRepositories(Att1 => $value1, Att2 => $value2, ...);
+    my $ecr = Paws->service('ECR');
+   # To describe all repositories in the current account
+   # The following example obtains a list and description of all repositories in
+   # the default registry to which the current user has access.
+    my $DescribeRepositoriesResponse = $ecr->DescribeRepositories();
+
+    # Results:
+    my $repositories = $DescribeRepositoriesResponse->repositories;
+
+    # Returns a L<Paws::ECR::DescribeRepositoriesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr/DescribeRepositories>
 
 =head1 ATTRIBUTES
 
@@ -44,9 +54,10 @@ used, C<DescribeRepositories> only returns C<maxResults> results in a
 single page along with a C<nextToken> response element. The remaining
 results of the initial request can be seen by sending another
 C<DescribeRepositories> request with the returned C<nextToken> value.
-This value can be between 1 and 100. If this parameter is not used,
+This value can be between 1 and 1000. If this parameter is not used,
 then C<DescribeRepositories> returns up to 100 results and a
-C<nextToken> value, if applicable.
+C<nextToken> value, if applicable. This option cannot be used when you
+specify repositories with C<repositoryNames>.
 
 
 
@@ -56,7 +67,9 @@ The C<nextToken> value returned from a previous paginated
 C<DescribeRepositories> request where C<maxResults> was used and the
 results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<nextToken> value.
-This value is C<null> when there are no more results to return.
+This value is C<null> when there are no more results to return. This
+option cannot be used when you specify repositories with
+C<repositoryNames>.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

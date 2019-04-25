@@ -19,17 +19,30 @@ Paws::ApiGateway::GenerateClientCertificate - Arguments for method GenerateClien
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GenerateClientCertificate on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method GenerateClientCertificate on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GenerateClientCertificate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GenerateClientCertificate.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GenerateClientCertificate(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $ClientCertificate = $apigateway->GenerateClientCertificate(
+      Description => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $ClientCertificateId   = $ClientCertificate->ClientCertificateId;
+    my $CreatedDate           = $ClientCertificate->CreatedDate;
+    my $Description           = $ClientCertificate->Description;
+    my $ExpirationDate        = $ClientCertificate->ExpirationDate;
+    my $PemEncodedCertificate = $ClientCertificate->PemEncodedCertificate;
+
+    # Returns a L<Paws::ApiGateway::ClientCertificate> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GenerateClientCertificate>
 
 =head1 ATTRIBUTES
 

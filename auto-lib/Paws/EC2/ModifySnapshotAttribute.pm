@@ -24,26 +24,50 @@ Paws::EC2::ModifySnapshotAttribute - Arguments for method ModifySnapshotAttribut
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifySnapshotAttribute on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifySnapshotAttribute on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ModifySnapshotAttribute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifySnapshotAttribute.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifySnapshotAttribute(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To modify a snapshot attribute
+    # This example modifies snapshot ``snap-1234567890abcdef0`` to remove the
+    # create volume permission for a user with the account ID ``123456789012``.
+    # If the command succeeds, no output is returned.
+    $ec2->ModifySnapshotAttribute(
+      {
+        'Attribute'     => 'createVolumePermission',
+        'OperationType' => 'remove',
+        'SnapshotId'    => 'snap-1234567890abcdef0',
+        'UserIds'       => [123456789012]
+      }
+    );
+
+    # To make a snapshot public
+    # This example makes the snapshot ``snap-1234567890abcdef0`` public.
+    $ec2->ModifySnapshotAttribute(
+      {
+        'Attribute'     => 'createVolumePermission',
+        'GroupNames'    => ['all'],
+        'OperationType' => 'add',
+        'SnapshotId'    => 'snap-1234567890abcdef0'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifySnapshotAttribute>
 
 =head1 ATTRIBUTES
 
 
 =head2 Attribute => Str
 
-The snapshot attribute to modify.
-
-Only volume creation permissions may be modified at the customer level.
+The snapshot attribute to modify. Only volume creation permissions can
+be modified.
 
 Valid values are: C<"productCodes">, C<"createVolumePermission">
 

@@ -50,13 +50,13 @@ This class has no description
 
 =item *
 
-C<Server.InsufficientInstanceCapacity>: There was insufficient instance
-capacity to satisfy the launch request.
+C<Server.InsufficientInstanceCapacity>: There was insufficient capacity
+available to satisfy the launch request.
 
 =item *
 
-C<Server.InternalError>: An internal error occurred during instance
-launch, resulting in termination.
+C<Server.InternalError>: An internal error caused the instance to
+terminate during launch.
 
 =item *
 
@@ -65,13 +65,17 @@ retirement.
 
 =item *
 
-C<Server.SpotInstanceTermination>: A Spot Instance was terminated due
-to an increase in the Spot price.
+C<Server.SpotInstanceShutdown>: The instance was stopped because the
+number of Spot requests with a maximum price equal to or higher than
+the Spot price exceeded available capacity or because of an increase in
+the Spot price.
 
 =item *
 
-C<Client.InternalError>: A client error caused the instance to
-terminate on launch.
+C<Server.SpotInstanceTermination>: The instance was terminated because
+the number of Spot requests with a maximum price equal to or higher
+than the Spot price exceeded available capacity or because of an
+increase in the Spot price.
 
 =item *
 
@@ -85,6 +89,21 @@ during AMI creation.
 
 =item *
 
+C<Client.InternalError>: A client error caused the instance to
+terminate during launch.
+
+=item *
+
+C<Client.InvalidSnapshot.NotFound>: The specified snapshot was not
+found.
+
+=item *
+
+C<Client.UserInitiatedHibernate>: Hibernation was initiated on the
+instance.
+
+=item *
+
 C<Client.UserInitiatedShutdown>: The instance was shut down using the
 Amazon EC2 API.
 
@@ -92,12 +111,7 @@ Amazon EC2 API.
 
 C<Client.VolumeLimitExceeded>: The limit on the number of EBS volumes
 or total storage was exceeded. Decrease usage or request an increase in
-your limits.
-
-=item *
-
-C<Client.InvalidSnapshot.NotFound>: The specified snapshot was not
-found.
+your account limits.
 
 =back
 

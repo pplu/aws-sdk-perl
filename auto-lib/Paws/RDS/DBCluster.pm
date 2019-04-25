@@ -3,10 +3,14 @@ package Paws::RDS::DBCluster;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AssociatedRoles => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterRole]', request_name => 'DBClusterRole', traits => ['NameInRequest']);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
+  has BacktrackConsumedChangeRecords => (is => 'ro', isa => 'Int');
+  has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
+  has Capacity => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has CloneGroupId => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
+  has CustomEndpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterArn => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
@@ -15,11 +19,16 @@ package Paws::RDS::DBCluster;
   has DBClusterParameterGroup => (is => 'ro', isa => 'Str');
   has DbClusterResourceId => (is => 'ro', isa => 'Str');
   has DBSubnetGroup => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has EarliestBacktrackTime => (is => 'ro', isa => 'Str');
   has EarliestRestorableTime => (is => 'ro', isa => 'Str');
+  has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
+  has EngineMode => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str');
+  has HttpEndpointEnabled => (is => 'ro', isa => 'Bool');
   has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
@@ -32,6 +41,7 @@ package Paws::RDS::DBCluster;
   has ReaderEndpoint => (is => 'ro', isa => 'Str');
   has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ReadReplicaIdentifier', traits => ['NameInRequest']);
   has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
+  has ScalingConfigurationInfo => (is => 'ro', isa => 'Paws::RDS::ScalingConfigurationInfo');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
@@ -65,10 +75,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
 =head1 DESCRIPTION
 
-Contains the details of an Amazon RDS DB cluster.
+Contains the details of an Amazon Aurora DB cluster.
 
-This data type is used as a response element in the DescribeDBClusters
-action.
+This data type is used as a response element in the DescribeDBClusters,
+StopDBCluster, and StartDBCluster actions.
 
 =head1 ATTRIBUTES
 
@@ -76,7 +86,7 @@ action.
 =head2 AllocatedStorage => Int
 
   For all database engines except Amazon Aurora, C<AllocatedStorage>
-specifies the allocated storage size in gigabytes (GB). For Aurora,
+specifies the allocated storage size in gibibytes (GiB). For Aurora,
 C<AllocatedStorage> always returns 1, because Aurora DB cluster storage
 size is not fixed, but instead automatically adjusts as needed.
 
@@ -95,10 +105,33 @@ AWS services on your behalf.
 cluster can be created in.
 
 
+=head2 BacktrackConsumedChangeRecords => Int
+
+  The number of change records stored for Backtrack.
+
+
+=head2 BacktrackWindow => Int
+
+  The target backtrack window, in seconds. If this value is set to 0,
+backtracking is disabled for the DB cluster. Otherwise, backtracking is
+enabled.
+
+
 =head2 BackupRetentionPeriod => Int
 
   Specifies the number of days for which automatic DB snapshots are
 retained.
+
+
+=head2 Capacity => Int
+
+  The current capacity of an Aurora Serverless DB cluster. The capacity
+is 0 (zero) when the cluster is paused.
+
+For more information about Aurora Serverless, see Using Amazon Aurora
+Serverless
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+in the I<Amazon Aurora User Guide>.
 
 
 =head2 CharacterSetName => Str
@@ -116,6 +149,11 @@ is associated with.
 
   Specifies the time when the DB cluster was created, in Universal
 Coordinated Time (UTC).
+
+
+=head2 CustomEndpoints => ArrayRef[Str|Undef]
+
+  Identifies all custom endpoints associated with the cluster.
 
 
 =head2 DatabaseName => Str
@@ -166,10 +204,32 @@ cluster, including the name, description, and subnets in the subnet
 group.
 
 
+=head2 DeletionProtection => Bool
+
+  Indicates if the DB cluster has deletion protection enabled. The
+database can't be deleted when this value is set to true.
+
+
+=head2 EarliestBacktrackTime => Str
+
+  The earliest time to which a DB cluster can be backtracked.
+
+
 =head2 EarliestRestorableTime => Str
 
-  Specifies the earliest time to which a database can be restored with
+  The earliest time to which a database can be restored with
 point-in-time restore.
+
+
+=head2 EnabledCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+  A list of log types that this DB cluster is configured to export to
+CloudWatch Logs.
+
+Log types vary by DB engine. For information about the log types for
+each DB engine, see Amazon RDS Database Log Files
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html)
+in the I<Amazon Aurora User Guide.>
 
 
 =head2 Endpoint => Str
@@ -184,6 +244,12 @@ cluster.
 cluster.
 
 
+=head2 EngineMode => Str
+
+  The DB engine mode of the DB cluster, either C<provisioned>,
+C<serverless>, or C<parallelquery>.
+
+
 =head2 EngineVersion => Str
 
   Indicates the database engine version.
@@ -193,6 +259,25 @@ cluster.
 
   Specifies the ID that Amazon Route 53 assigns when you create a hosted
 zone.
+
+
+=head2 HttpEndpointEnabled => Bool
+
+  HTTP endpoint functionality is in beta for Aurora Serverless and is
+subject to change.
+
+Value that is C<true> if the HTTP endpoint for an Aurora Serverless DB
+cluster is enabled and C<false> otherwise.
+
+When enabled, the HTTP endpoint provides a connectionless web service
+API for running SQL queries on the Aurora Serverless DB cluster. You
+can also query your database from inside the RDS console with the query
+editor.
+
+For more information about Aurora Serverless, see Using Amazon Aurora
+Serverless
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+in the I<Amazon Aurora User Guide>.
 
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
@@ -272,6 +357,11 @@ this DB cluster.
 
   Contains the identifier of the source DB cluster if this DB cluster is
 a Read Replica.
+
+
+=head2 ScalingConfigurationInfo => L<Paws::RDS::ScalingConfigurationInfo>
+
+  
 
 
 =head2 Status => Str

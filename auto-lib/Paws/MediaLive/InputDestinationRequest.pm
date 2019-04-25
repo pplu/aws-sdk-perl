@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Endpoint settings for a PUSH type input
+Endpoint settings for a PUSH type input.
 
 =head1 ATTRIBUTES
 

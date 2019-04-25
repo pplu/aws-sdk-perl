@@ -7,6 +7,7 @@ package Paws::IoT::JobProcessDetails;
   has NumberOfRejectedThings => (is => 'ro', isa => 'Int', request_name => 'numberOfRejectedThings', traits => ['NameInRequest']);
   has NumberOfRemovedThings => (is => 'ro', isa => 'Int', request_name => 'numberOfRemovedThings', traits => ['NameInRequest']);
   has NumberOfSucceededThings => (is => 'ro', isa => 'Int', request_name => 'numberOfSucceededThings', traits => ['NameInRequest']);
+  has NumberOfTimedOutThings => (is => 'ro', isa => 'Int', request_name => 'numberOfTimedOutThings', traits => ['NameInRequest']);
   has ProcessingTargets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'processingTargets', traits => ['NameInRequest']);
 1;
 
@@ -80,9 +81,16 @@ was a target of the job.
   The number of things which successfully completed the job.
 
 
+=head2 NumberOfTimedOutThings => Int
+
+  The number of things whose job execution status is C<TIMED_OUT>.
+
+
 =head2 ProcessingTargets => ArrayRef[Str|Undef]
 
-  The devices on which the job is executing.
+  The target devices to which the job execution is being rolled out. This
+value will be null after the job execution has finished rolling out to
+all the target devices.
 
 
 

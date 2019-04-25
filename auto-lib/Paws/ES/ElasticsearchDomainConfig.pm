@@ -2,11 +2,13 @@ package Paws::ES::ElasticsearchDomainConfig;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Paws::ES::AccessPoliciesStatus');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptionsStatus');
+  has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptionsStatus');
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptionsStatus');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfigStatus');
   has ElasticsearchVersion => (is => 'ro', isa => 'Paws::ES::ElasticsearchVersionStatus');
   has EncryptionAtRestOptions => (is => 'ro', isa => 'Paws::ES::EncryptionAtRestOptionsStatus');
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptionsStatus');
+  has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptionsStatus');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptionsStatus');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfoStatus');
 1;
@@ -57,6 +59,13 @@ Advanced Options
 for more information.
 
 
+=head2 CognitoOptions => L<Paws::ES::CognitoOptionsStatus>
+
+  The C<CognitoOptions> for the specified domain. For more information,
+see Amazon Cognito Authentication for Kibana
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
+
+
 =head2 EBSOptions => L<Paws::ES::EBSOptionsStatus>
 
   Specifies the C<EBSOptions> for the Elasticsearch domain.
@@ -81,6 +90,12 @@ domain.
 =head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptionsStatus>
 
   Log publishing options for the given domain.
+
+
+=head2 NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptionsStatus>
+
+  Specifies the C<NodeToNodeEncryptionOptions> for the Elasticsearch
+domain.
 
 
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptionsStatus>

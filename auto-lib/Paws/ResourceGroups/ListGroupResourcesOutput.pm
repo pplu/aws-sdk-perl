@@ -2,6 +2,7 @@
 package Paws::ResourceGroups::ListGroupResourcesOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
+  has QueryErrors => (is => 'ro', isa => 'ArrayRef[Paws::ResourceGroups::QueryError]');
   has ResourceIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::ResourceGroups::ResourceIdentifier]');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -20,6 +21,14 @@ Paws::ResourceGroups::ListGroupResourcesOutput
 
 The NextToken value to include in a subsequent C<ListGroupResources>
 request, to get more results.
+
+
+=head2 QueryErrors => ArrayRef[L<Paws::ResourceGroups::QueryError>]
+
+A list of C<QueryError> objects. Each error is an object that contains
+C<ErrorCode> and C<Message> structures. Possible values for
+C<ErrorCode> are C<CLOUDFORMATION_STACK_INACTIVE> and
+C<CLOUDFORMATION_STACK_NOT_EXISTING>.
 
 
 =head2 ResourceIdentifiers => ArrayRef[L<Paws::ResourceGroups::ResourceIdentifier>]

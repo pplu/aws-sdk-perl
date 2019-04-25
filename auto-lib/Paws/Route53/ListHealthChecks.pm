@@ -22,17 +22,31 @@ Paws::Route53::ListHealthChecks - Arguments for method ListHealthChecks on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListHealthChecks on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method ListHealthChecks on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method ListHealthChecks.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListHealthChecks.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListHealthChecks(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $ListHealthChecksResponse = $route53->ListHealthChecks(
+      Marker   => 'MyPageMarker',      # OPTIONAL
+      MaxItems => 'MyPageMaxItems',    # OPTIONAL
+    );
+
+    # Results:
+    my $HealthChecks = $ListHealthChecksResponse->HealthChecks;
+    my $IsTruncated  = $ListHealthChecksResponse->IsTruncated;
+    my $Marker       = $ListHealthChecksResponse->Marker;
+    my $MaxItems     = $ListHealthChecksResponse->MaxItems;
+    my $NextMarker   = $ListHealthChecksResponse->NextMarker;
+
+    # Returns a L<Paws::Route53::ListHealthChecksResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/ListHealthChecks>
 
 =head1 ATTRIBUTES
 
@@ -57,7 +71,7 @@ there are no more health checks to get.
 The maximum number of health checks that you want C<ListHealthChecks>
 to return in response to the current request. Amazon Route 53 returns a
 maximum of 100 items. If you set C<MaxItems> to a value greater than
-100, Amazon Route 53 returns only the first 100 health checks.
+100, Route 53 returns only the first 100 health checks.
 
 
 

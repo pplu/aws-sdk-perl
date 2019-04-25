@@ -23,17 +23,42 @@ Paws::EC2::DescribeInstanceStatus - Arguments for method DescribeInstanceStatus 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeInstanceStatus on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeInstanceStatus on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeInstanceStatus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstanceStatus.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeInstanceStatus(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeInstanceStatusResult = $ec2->DescribeInstanceStatus(
+      DryRun  => 1,    # OPTIONAL
+      Filters => [
+        {
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
+        },
+        ...
+      ],                           # OPTIONAL
+      IncludeAllInstances => 1,    # OPTIONAL
+      InstanceIds         => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $InstanceStatuses = $DescribeInstanceStatusResult->InstanceStatuses;
+    my $NextToken        = $DescribeInstanceStatusResult->NextToken;
+
+    # Returns a L<Paws::EC2::DescribeInstanceStatusResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeInstanceStatus>
 
 =head1 ATTRIBUTES
 
@@ -80,9 +105,9 @@ C<event.not-before> - The earliest start time for the scheduled event
 =item *
 
 C<instance-state-code> - The code for the instance state, as a 16-bit
-unsigned integer. The high byte is an opaque internal value and should
-be ignored. The low byte is set based on the state represented. The
-valid values are 0 (pending), 16 (running), 32 (shutting-down), 48
+unsigned integer. The high byte is used for internal purposes and
+should be ignored. The low byte is set based on the state represented.
+The valid values are 0 (pending), 16 (running), 32 (shutting-down), 48
 (terminated), 64 (stopping), and 80 (stopped).
 
 =item *

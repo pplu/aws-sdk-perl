@@ -38,7 +38,7 @@ This class has no description
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of Elastic GPU.
+  The type of Elastic Graphics accelerator.
 
 
 

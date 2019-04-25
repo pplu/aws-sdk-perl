@@ -1,5 +1,6 @@
 package Paws::DynamoDB::SourceTableDetails;
   use Moose;
+  has BillingMode => (is => 'ro', isa => 'Str');
   has ItemCount => (is => 'ro', isa => 'Int');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]', required => 1);
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput', required => 1);
@@ -27,20 +28,42 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDB::SourceTableDetails object:
 
-  $service_obj->Method(Att1 => { ItemCount => $value, ..., TableSizeBytes => $value  });
+  $service_obj->Method(Att1 => { BillingMode => $value, ..., TableSizeBytes => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::SourceTableDetails object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ItemCount
+  $result->Att1->BillingMode
 
 =head1 DESCRIPTION
 
 Contains the details of the table when the backup was created.
 
 =head1 ATTRIBUTES
+
+
+=head2 BillingMode => Str
+
+  Controls how you are charged for read and write throughput and how you
+manage capacity. This setting can be changed later.
+
+=over
+
+=item *
+
+C<PROVISIONED> - Sets the read/write capacity mode to C<PROVISIONED>.
+We recommend using C<PROVISIONED> for predictable workloads.
+
+=item *
+
+C<PAY_PER_REQUEST> - Sets the read/write capacity mode to
+C<PAY_PER_REQUEST>. We recommend using C<PAY_PER_REQUEST> for
+unpredictable workloads.
+
+=back
+
 
 
 =head2 ItemCount => Int

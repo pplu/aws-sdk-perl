@@ -2,6 +2,7 @@ package Paws::EC2::DhcpOptions;
   use Moose;
   has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DhcpConfiguration]', request_name => 'dhcpConfigurationSet', traits => ['NameInRequest']);
   has DhcpOptionsId => (is => 'ro', isa => 'Str', request_name => 'dhcpOptionsId', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
@@ -46,6 +47,11 @@ This class has no description
 =head2 DhcpOptionsId => Str
 
   The ID of the set of DHCP options.
+
+
+=head2 OwnerId => Str
+
+  The ID of the AWS account that owns the DHCP options set.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]

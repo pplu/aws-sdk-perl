@@ -82,6 +82,10 @@ MESSAGE_LOG: The message log type.
 
 =item *
 
+VIDEO_LOG: The video log type.
+
+=item *
+
 RESULT_LOG: The result log type.
 
 =item *
@@ -156,6 +160,22 @@ APPLICATION_CRASH_REPORT: The application crash report output type.
 =item *
 
 XCTEST_LOG: The XCode test output type.
+
+=item *
+
+VIDEO: The Video output type.
+
+=item *
+
+CUSTOMER_ARTIFACT:The Customer Artifact output type.
+
+=item *
+
+CUSTOMER_ARTIFACT_LOG: The Customer Artifact Log output type.
+
+=item *
+
+TESTSPEC_OUTPUT: The Test Spec Output type.
 
 =back
 

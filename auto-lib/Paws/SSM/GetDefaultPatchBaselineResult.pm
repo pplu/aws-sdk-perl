@@ -24,7 +24,7 @@ The ID of the default patch baseline.
 
 The operating system for the returned patch baseline.
 
-Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"AMAZON_LINUX_2">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">, C<"CENTOS">
 =head2 _request_id => Str
 
 

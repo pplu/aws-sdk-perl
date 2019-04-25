@@ -4,7 +4,7 @@ package Paws::MediaLive::MsSmoothGroupSettings;
   has AudioOnlyTimecodeControl => (is => 'ro', isa => 'Str', request_name => 'audioOnlyTimecodeControl', traits => ['NameInRequest']);
   has CertificateMode => (is => 'ro', isa => 'Str', request_name => 'certificateMode', traits => ['NameInRequest']);
   has ConnectionRetryInterval => (is => 'ro', isa => 'Int', request_name => 'connectionRetryInterval', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest']);
+  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
   has EventId => (is => 'ro', isa => 'Str', request_name => 'eventId', traits => ['NameInRequest']);
   has EventIdMode => (is => 'ro', isa => 'Str', request_name => 'eventIdMode', traits => ['NameInRequest']);
   has EventStopBehavior => (is => 'ro', isa => 'Str', request_name => 'eventStopBehavior', traits => ['NameInRequest']);
@@ -72,8 +72,7 @@ write timecodes to the audio elementary stream.
 
   If set to verifyAuthenticity, verify the https certificate chain to a
 trusted Certificate Authority (CA). This will cause https outputs to
-self-signed certificates to fail unless those certificates are manually
-added to the OS trusted keystore.
+self-signed certificates to fail.
 
 
 =head2 ConnectionRetryInterval => Int
@@ -84,7 +83,7 @@ the cache will be be delivered to the IIS server once the connection is
 re-established.
 
 
-=head2 Destination => L<Paws::MediaLive::OutputLocationRef>
+=head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
 
   Smooth Streaming publish point on an IIS server. Elemental Live acts as
 a "Push" encoder to IIS.
@@ -142,22 +141,13 @@ filecacheDuration.
 
 =head2 SegmentationMode => Str
 
-  When set to useInputSegmentation, the output segment or fragment points
-are set by the RAI markers from the input streams.
+  useInputSegmentation has been deprecated. The configured segment size
+is always used.
 
 
 =head2 SendDelayMs => Int
 
-  Outputs that are "output locked" can use this delay. Assign a delay to
-the output that is "secondary". Do not assign a delay to the "primary"
-output. The delay means that the primary output will always reach the
-downstream system before the secondary, which helps ensure that the
-downstream system always uses the primary output. (If there were no
-delay, the downstream system might flip-flop between whichever output
-happens to arrive first.) If the primary fails, the downstream system
-will switch to the secondary output. When the primary is restarted, the
-downstream system will switch back to the primary (because once again
-it is always arriving first)
+  Number of milliseconds to delay the output from the second pipeline.
 
 
 =head2 SparseTrackType => Str

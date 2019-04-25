@@ -24,7 +24,7 @@ additional results.
 
 =head2 Versions => ArrayRef[L<Paws::Greengrass::VersionInformation>]
 
-Versions
+Information about a version.
 
 
 =head2 _request_id => Str

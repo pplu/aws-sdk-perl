@@ -16,7 +16,7 @@ Paws::Glue::CreateTriggerResponse
 
 =head2 Name => Str
 
-The name assigned to the new trigger.
+The name of the trigger.
 
 
 =head2 _request_id => Str

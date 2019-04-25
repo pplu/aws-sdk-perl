@@ -7,10 +7,13 @@ package Paws::MediaLive::DescribeChannelResponse;
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
+  has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', traits => ['NameInRequest'], request_name => 'inputSpecification');
+  has LogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logLevel');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'pipelinesRunningCount');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
   has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -56,6 +59,16 @@ The unique id of the channel.
 List of input attachments for channel.
 
 
+=head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
+
+
+
+
+=head2 LogLevel => Str
+
+The log level being written to CloudWatch Logs.
+
+Valid values are: C<"ERROR">, C<"WARNING">, C<"INFO">, C<"DEBUG">, C<"DISABLED">
 =head2 Name => Str
 
 The name of the channel. (user-mutable)
@@ -77,6 +90,11 @@ Channel.
 
 
 Valid values are: C<"CREATING">, C<"CREATE_FAILED">, C<"IDLE">, C<"STARTING">, C<"RUNNING">, C<"RECOVERING">, C<"STOPPING">, C<"DELETING">, C<"DELETED">
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs.
+
+
 =head2 _request_id => Str
 
 

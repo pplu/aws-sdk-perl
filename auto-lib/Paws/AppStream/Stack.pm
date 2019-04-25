@@ -1,12 +1,16 @@
 package Paws::AppStream::Stack;
   use Moose;
+  has ApplicationSettings => (is => 'ro', isa => 'Paws::AppStream::ApplicationSettingsResponse');
   has Arn => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has FeedbackURL => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has RedirectURL => (is => 'ro', isa => 'Str');
   has StackErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StackError]');
   has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
+  has UserSettings => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::UserSetting]');
 1;
 
 ### main pod documentation begin ###
@@ -26,20 +30,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppStream::Stack object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., StorageConnectors => $value  });
+  $service_obj->Method(Att1 => { ApplicationSettings => $value, ..., UserSettings => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::Stack object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Arn
+  $result->Att1->ApplicationSettings
 
 =head1 DESCRIPTION
 
 Describes a stack.
 
 =head1 ATTRIBUTES
+
+
+=head2 ApplicationSettings => L<Paws::AppStream::ApplicationSettingsResponse>
+
+  The persistent application settings for users of the stack.
 
 
 =head2 Arn => Str
@@ -54,17 +63,29 @@ Describes a stack.
 
 =head2 Description => Str
 
-  The description for display.
+  The description to display.
 
 
 =head2 DisplayName => Str
 
-  The stack name for display.
+  The stack name to display.
+
+
+=head2 FeedbackURL => Str
+
+  The URL that users are redirected to after they click the Send Feedback
+link. If no URL is specified, no Send Feedback link is displayed.
 
 
 =head2 B<REQUIRED> Name => Str
 
   The name of the stack.
+
+
+=head2 RedirectURL => Str
+
+  The URL that users are redirected to after their streaming session
+ends.
 
 
 =head2 StackErrors => ArrayRef[L<Paws::AppStream::StackError>]
@@ -75,6 +96,12 @@ Describes a stack.
 =head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
 
   The storage connectors to enable.
+
+
+=head2 UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]
+
+  The actions that are enabled or disabled for users during their
+streaming sessions. By default these actions are enabled.
 
 
 

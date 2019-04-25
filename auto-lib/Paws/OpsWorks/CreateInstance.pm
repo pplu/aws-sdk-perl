@@ -35,17 +35,57 @@ Paws::OpsWorks::CreateInstance - Arguments for method CreateInstance on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateInstance on the 
-AWS OpsWorks service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateInstance on the
+L<AWS OpsWorks|Paws::OpsWorks> service. Use the attributes of this class
 as arguments to method CreateInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks = Paws->service('OpsWorks');
+    my $CreateInstanceResult = $opsworks->CreateInstance(
+      InstanceType        => 'MyString',
+      LayerIds            => [ 'MyString', ... ],
+      StackId             => 'MyString',
+      AgentVersion        => 'MyString',            # OPTIONAL
+      AmiId               => 'MyString',            # OPTIONAL
+      Architecture        => 'x86_64',              # OPTIONAL
+      AutoScalingType     => 'load',                # OPTIONAL
+      AvailabilityZone    => 'MyString',            # OPTIONAL
+      BlockDeviceMappings => [
+        {
+          DeviceName => 'MyString',
+          Ebs        => {
+            DeleteOnTermination => 1,               # OPTIONAL
+            Iops                => 1,               # OPTIONAL
+            SnapshotId          => 'MyString',
+            VolumeSize          => 1,               # OPTIONAL
+            VolumeType => 'gp2',    # values: gp2, io1, standard; OPTIONAL
+          },    # OPTIONAL
+          NoDevice    => 'MyString',
+          VirtualName => 'MyString',
+        },
+        ...
+      ],        # OPTIONAL
+      EbsOptimized         => 1,             # OPTIONAL
+      Hostname             => 'MyString',    # OPTIONAL
+      InstallUpdatesOnBoot => 1,             # OPTIONAL
+      Os                   => 'MyString',    # OPTIONAL
+      RootDeviceType       => 'ebs',         # OPTIONAL
+      SshKeyName           => 'MyString',    # OPTIONAL
+      SubnetId             => 'MyString',    # OPTIONAL
+      Tenancy              => 'MyString',    # OPTIONAL
+      VirtualizationType   => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $InstanceId = $CreateInstanceResult->InstanceId;
+
+    # Returns a L<Paws::OpsWorks::CreateInstanceResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks/CreateInstance>
 
 =head1 ATTRIBUTES
 
@@ -175,8 +215,9 @@ following.
 =item *
 
 A supported Linux operating system: An Amazon Linux version, such as
-C<Amazon Linux 2017.03>, C<Amazon Linux 2016.09>, C<Amazon Linux
-2016.03>, C<Amazon Linux 2015.09>, or C<Amazon Linux 2015.03>.
+C<Amazon Linux 2017.09>, C<Amazon Linux 2017.03>, C<Amazon Linux
+2016.09>, C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon
+Linux 2015.03>.
 
 =item *
 
@@ -204,7 +245,7 @@ A custom AMI: C<Custom>.
 
 =back
 
-For more information on the supported operating systems, see AWS
+For more information about the supported operating systems, see AWS
 OpsWorks Stacks Operating Systems
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
@@ -212,9 +253,9 @@ The default option is the current Amazon Linux version. If you set this
 parameter to C<Custom>, you must use the CreateInstance action's AmiId
 parameter to specify the custom AMI that you want to use. Block device
 mappings are not supported if the value is C<Custom>. For more
-information on the supported operating systems, see Operating Systems
+information about supported operating systems, see Operating Systems
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html)For
-more information on how to use custom AMIs with AWS OpsWorks Stacks,
+more information about how to use custom AMIs with AWS OpsWorks Stacks,
 see Using Custom AMIs
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 

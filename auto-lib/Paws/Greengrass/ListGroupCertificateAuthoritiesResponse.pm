@@ -17,7 +17,7 @@ Paws::Greengrass::ListGroupCertificateAuthoritiesResponse
 
 =head2 GroupCertificateAuthorities => ArrayRef[L<Paws::Greengrass::GroupCertificateAuthorityProperties>]
 
-List of certificate authorities associated with the group.
+A list of certificate authorities associated with the group.
 
 
 =head2 _request_id => Str

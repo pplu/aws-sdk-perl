@@ -60,7 +60,7 @@ Describes a layer.
 
 =head2 Arn => Str
 
-  
+  The Amazon Resource Number (ARN) of a layer.
 
 
 =head2 Attributes => L<Paws::OpsWorks::LayerAttributes>

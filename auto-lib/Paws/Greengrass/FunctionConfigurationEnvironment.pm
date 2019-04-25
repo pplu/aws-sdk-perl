@@ -1,8 +1,9 @@
 package Paws::Greengrass::FunctionConfigurationEnvironment;
   use Moose;
   has AccessSysfs => (is => 'ro', isa => 'Bool');
+  has Execution => (is => 'ro', isa => 'Paws::Greengrass::FunctionExecutionConfig');
   has ResourceAccessPolicies => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ResourceAccessPolicy]');
-  has Variables => (is => 'ro', isa => 'Paws::Greengrass::MapOf__string');
+  has Variables => (is => 'ro', isa => 'Paws::Greengrass::__mapOf__string');
 1;
 
 ### main pod documentation begin ###
@@ -33,24 +34,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Environment of the function configuration
+The environment configuration of the function.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccessSysfs => Bool
 
-  Flag to allow lambda access sys filesystem.
+  If true, the Lambda function is allowed to access the host's /sys
+folder. Use this when the Lambda function needs to read device
+information from /sys. This setting applies only when you run the
+Lambda function in a Greengrass container.
+
+
+=head2 Execution => L<Paws::Greengrass::FunctionExecutionConfig>
+
+  Configuration related to executing the Lambda function
 
 
 =head2 ResourceAccessPolicies => ArrayRef[L<Paws::Greengrass::ResourceAccessPolicy>]
 
-  Policies for the function to access resources.
+  A list of the resources, with their permissions, to which the Lambda
+function will be granted access. A Lambda function can have at most 10
+resources. ResourceAccessPolicies apply only when you run the Lambda
+function in a Greengrass container.
 
 
-=head2 Variables => L<Paws::Greengrass::MapOf__string>
+=head2 Variables => L<Paws::Greengrass::__mapOf__string>
 
-  Environment variables for the lambda function.
+  Environment variables for the Lambda function's configuration.
 
 
 

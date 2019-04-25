@@ -18,17 +18,27 @@ Paws::SES::VerifyEmailIdentity - Arguments for method VerifyEmailIdentity on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method VerifyEmailIdentity on the 
-Amazon Simple Email Service service. Use the attributes of this class
+This class represents the parameters used for calling the method VerifyEmailIdentity on the
+L<Amazon Simple Email Service|Paws::SES> service. Use the attributes of this class
 as arguments to method VerifyEmailIdentity.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to VerifyEmailIdentity.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->VerifyEmailIdentity(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    # VerifyEmailIdentity
+    # The following example starts the email address verification process with
+    # Amazon SES:
+    my $VerifyEmailIdentityResponse = $email->VerifyEmailIdentity(
+      {
+        'EmailAddress' => 'user@example.com'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/VerifyEmailIdentity>
 
 =head1 ATTRIBUTES
 

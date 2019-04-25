@@ -23,34 +23,115 @@ Paws::ELBv2::CreateListener - Arguments for method CreateListener on L<Paws::ELB
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateListener on the 
-Elastic Load Balancing service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateListener on the
+L<Elastic Load Balancing|Paws::ELBv2> service. Use the attributes of this class
 as arguments to method CreateListener.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateListener.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateListener(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELBv2');
+    # To create an HTTP listener
+    # This example creates an HTTP listener for the specified load balancer that
+    # forwards requests to the specified target group.
+    my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
+      {
+        'DefaultActions' => [
+
+          {
+            'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
+            'Type' => 'forward'
+          }
+        ],
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+        'Port'     => 80,
+        'Protocol' => 'HTTP'
+      }
+    );
+
+    # Results:
+    my $Listeners = $CreateListenerOutput->Listeners;
+
+   # Returns a L<Paws::ELBv2::CreateListenerOutput> object.
+   # To create an HTTPS listener
+   # This example creates an HTTPS listener for the specified load balancer that
+   # forwards requests to the specified target group. Note that you must specify
+   # an SSL certificate for an HTTPS listener. You can create and manage
+   # certificates using AWS Certificate Manager (ACM). Alternatively, you can
+   # create a certificate using SSL/TLS tools, get the certificate signed by a
+   # certificate authority (CA), and upload the certificate to AWS Identity and
+   # Access Management (IAM).
+    my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
+      {
+        'Certificates' => [
+
+          {
+            'CertificateArn' =>
+              'arn:aws:iam::123456789012:server-certificate/my-server-cert'
+          }
+        ],
+        'DefaultActions' => [
+
+          {
+            'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
+            'Type' => 'forward'
+          }
+        ],
+        'LoadBalancerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
+        'Port'      => 443,
+        'Protocol'  => 'HTTPS',
+        'SslPolicy' => 'ELBSecurityPolicy-2015-05'
+      }
+    );
+
+    # Results:
+    my $Listeners = $CreateListenerOutput->Listeners;
+
+    # Returns a L<Paws::ELBv2::CreateListenerOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/CreateListener>
 
 =head1 ATTRIBUTES
 
 
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
-[HTTPS listeners] The SSL server certificate. You must provide exactly
-one certificate.
+[HTTPS and TLS listeners] The default SSL server certificate. You must
+provide exactly one certificate. Set C<CertificateArn> to the
+certificate ARN but do not set C<IsDefault>.
+
+To create a certificate list, use AddListenerCertificates.
 
 
 
 =head2 B<REQUIRED> DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The default action for the listener. For Application Load Balancers,
-the protocol of the specified target group must be HTTP or HTTPS. For
-Network Load Balancers, the protocol of the specified target group must
-be TCP.
+The actions for the default rule. The rule must include one forward
+action or one or more fixed-response actions.
+
+If the action type is C<forward>, you specify a target group. The
+protocol of the target group must be HTTP or HTTPS for an Application
+Load Balancer. The protocol of the target group must be TCP or TLS for
+a Network Load Balancer.
+
+[HTTPS listeners] If the action type is C<authenticate-oidc>, you
+authenticate users through an identity provider that is OpenID Connect
+(OIDC) compliant.
+
+[HTTPS listeners] If the action type is C<authenticate-cognito>, you
+authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is C<redirect>, you
+redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is C<fixed-response>,
+you drop specified client requests and return a custom HTTP response.
 
 
 
@@ -70,15 +151,15 @@ The port on which the load balancer is listening.
 
 The protocol for connections from clients to the load balancer. For
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
-For Network Load Balancers, the supported protocol is TCP.
+For Network Load Balancers, the supported protocols are TCP and TLS.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">
 
 =head2 SslPolicy => Str
 
-[HTTPS listeners] The security policy that defines which ciphers and
-protocols are supported. The default is the current predefined security
-policy.
+[HTTPS and TLS listeners] The security policy that defines which
+ciphers and protocols are supported. The default is the current
+predefined security policy.
 
 
 

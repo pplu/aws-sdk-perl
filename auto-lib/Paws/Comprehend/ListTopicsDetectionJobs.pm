@@ -20,17 +20,36 @@ Paws::Comprehend::ListTopicsDetectionJobs - Arguments for method ListTopicsDetec
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListTopicsDetectionJobs on the 
-Amazon Comprehend service. Use the attributes of this class
+This class represents the parameters used for calling the method ListTopicsDetectionJobs on the
+L<Amazon Comprehend|Paws::Comprehend> service. Use the attributes of this class
 as arguments to method ListTopicsDetectionJobs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTopicsDetectionJobs.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListTopicsDetectionJobs(Att1 => $value1, Att2 => $value2, ...);
+    my $comprehend = Paws->service('Comprehend');
+    my $ListTopicsDetectionJobsResponse = $comprehend->ListTopicsDetectionJobs(
+      Filter => {
+        JobName   => 'MyJobName',    # min: 1, max: 256; OPTIONAL
+        JobStatus => 'SUBMITTED'
+        , # values: SUBMITTED, IN_PROGRESS, COMPLETED, FAILED, STOP_REQUESTED, STOPPED; OPTIONAL
+        SubmitTimeAfter  => '1970-01-01T01:00:00',    # OPTIONAL
+        SubmitTimeBefore => '1970-01-01T01:00:00',    # OPTIONAL
+      },    # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $ListTopicsDetectionJobsResponse->NextToken;
+    my $TopicsDetectionJobPropertiesList =
+      $ListTopicsDetectionJobsResponse->TopicsDetectionJobPropertiesList;
+
+    # Returns a L<Paws::Comprehend::ListTopicsDetectionJobsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend/ListTopicsDetectionJobs>
 
 =head1 ATTRIBUTES
 
@@ -45,7 +64,8 @@ one filter at a time.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return in each page.
+The maximum number of results to return in each page. The default is
+100.
 
 
 

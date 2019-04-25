@@ -50,10 +50,14 @@ This class has no description
 =head2 Encrypted => Bool
 
   Indicates whether the EBS volume is encrypted. Encrypted volumes can
-only be attached to instances that support Amazon EBS encryption. If
-you are creating a volume from a snapshot, you can't specify an
+only be attached to instances that support Amazon EBS encryption.
+
+If you are creating a volume from a snapshot, you cannot specify an
 encryption value. This is because only blank volumes can be encrypted
-on creation.
+on creation. If you are creating a snapshot from an existing EBS
+volume, you cannot specify an encryption value that differs from that
+of the EBS volume. We recommend that you omit the encryption value from
+the block device mappings when creating an image from an instance.
 
 
 =head2 Iops => Int
@@ -65,11 +69,16 @@ performance of the volume and the rate at which the volume accumulates
 I/O credits for bursting. For more information about General Purpose
 SSD baseline performance, I/O credits, and bursting, see Amazon EBS
 Volume Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-Constraint: Range is 100-20000 IOPS for C<io1> volumes and 100-10000
-IOPS for C<gp2> volumes.
+Constraints: Range is 100-16,000 IOPS for C<gp2> volumes and 100 to
+64,000IOPS for C<io1> volumes in most Regions. Maximum C<io1>IOPS of
+64,000 is guaranteed only on Nitro-based instances. Other instance
+families guarantee performance up to 32,000 IOPS. For more information,
+see Amazon EBS Volume Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Condition: This parameter is required for requests to create C<io1>
 volumes; it is not used in requests to create C<gp2>, C<st1>, C<sc1>,
@@ -78,15 +87,16 @@ or C<standard> volumes.
 
 =head2 KmsKeyId => Str
 
-  ID for a user-managed CMK under which the EBS volume is encrypted.
+  Identifier (key ID, key alias, ID ARN, or alias ARN) for a user-managed
+CMK under which the EBS volume is encrypted.
 
-Note: This parameter is only supported on C<BlockDeviceMapping> objects
+This parameter is only supported on C<BlockDeviceMapping> objects
 called by RunInstances
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html),
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html),
 RequestSpotFleet
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html),
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html),
 and RequestSpotInstances
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotInstances.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotInstances.html).
 
 
 =head2 SnapshotId => Str

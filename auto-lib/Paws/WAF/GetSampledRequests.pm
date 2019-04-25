@@ -21,17 +21,41 @@ Paws::WAF::GetSampledRequests - Arguments for method GetSampledRequests on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetSampledRequests on the 
-AWS WAF service. Use the attributes of this class
+This class represents the parameters used for calling the method GetSampledRequests on the
+L<AWS WAF|Paws::WAF> service. Use the attributes of this class
 as arguments to method GetSampledRequests.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSampledRequests.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetSampledRequests(Att1 => $value1, Att2 => $value2, ...);
+    my $waf = Paws->service('WAF');
+    # To get a sampled requests
+    # The following example returns detailed information about 100 requests --a
+    # sample-- that AWS WAF randomly selects from among the first 5,000 requests
+    # that your AWS resource received between the time period 2016-09-27T15:50Z
+    # to 2016-09-27T15:50Z.
+    my $GetSampledRequestsResponse = $waf->GetSampledRequests(
+      {
+        'MaxItems'   => 100,
+        'RuleId'     => 'WAFRule-1-Example',
+        'TimeWindow' => {
+          'EndTime'   => '2016-09-27T15:50Z',
+          'StartTime' => '2016-09-27T15:50Z'
+        },
+        'WebAclId' => 'createwebacl-1472061481310'
+      }
+    );
+
+    # Results:
+    my $PopulationSize  = $GetSampledRequestsResponse->PopulationSize;
+    my $SampledRequests = $GetSampledRequestsResponse->SampledRequests;
+    my $TimeWindow      = $GetSampledRequestsResponse->TimeWindow;
+
+    # Returns a L<Paws::WAF::GetSampledRequestsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf/GetSampledRequests>
 
 =head1 ATTRIBUTES
 

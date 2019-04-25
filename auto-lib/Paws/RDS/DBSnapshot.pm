@@ -3,6 +3,7 @@ package Paws::RDS::DBSnapshot;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has DbiResourceId => (is => 'ro', isa => 'Str');
   has DBSnapshotArn => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
@@ -17,6 +18,7 @@ package Paws::RDS::DBSnapshot;
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PercentProgress => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]', request_name => 'ProcessorFeature', traits => ['NameInRequest']);
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
   has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
@@ -66,7 +68,7 @@ action.
 
 =head2 AllocatedStorage => Int
 
-  Specifies the allocated storage size in gigabytes (GB).
+  Specifies the allocated storage size in gibibytes (GiB).
 
 
 =head2 AvailabilityZone => Str
@@ -79,6 +81,12 @@ in at the time of the DB snapshot.
 
   Specifies the DB instance identifier of the DB instance this DB
 snapshot was created from.
+
+
+=head2 DbiResourceId => Str
+
+  The identifier for the source DB instance, which can't be changed and
+which is unique to an AWS Region.
 
 
 =head2 DBSnapshotArn => Str
@@ -154,6 +162,12 @@ DB snapshot.
 
   Specifies the port that the database engine was listening on at the
 time of the snapshot.
+
+
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+  The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance when the DB snapshot was created.
 
 
 =head2 SnapshotCreateTime => Str

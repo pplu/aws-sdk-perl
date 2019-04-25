@@ -5,6 +5,7 @@ package Paws::Batch::JobSummary;
   has CreatedAt => (is => 'ro', isa => 'Int', request_name => 'createdAt', traits => ['NameInRequest']);
   has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest'], required => 1);
   has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest'], required => 1);
+  has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodePropertiesSummary', request_name => 'nodeProperties', traits => ['NameInRequest']);
   has StartedAt => (is => 'ro', isa => 'Int', request_name => 'startedAt', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
@@ -57,10 +58,10 @@ with the job.
 
 =head2 CreatedAt => Int
 
-  The Unix time stamp for when the job was created. For non-array jobs
-and parent array jobs, this is when the job entered the C<SUBMITTED>
-state (at the time SubmitJob was called). For array child jobs, this is
-when the child job was spawned by its parent and entered the C<PENDING>
+  The Unix timestamp for when the job was created. For non-array jobs and
+parent array jobs, this is when the job entered the C<SUBMITTED> state
+(at the time SubmitJob was called). For array child jobs, this is when
+the child job was spawned by its parent and entered the C<PENDING>
 state.
 
 
@@ -74,9 +75,14 @@ state.
   The name of the job.
 
 
+=head2 NodeProperties => L<Paws::Batch::NodePropertiesSummary>
+
+  The node properties for a single node in a job summary list.
+
+
 =head2 StartedAt => Int
 
-  The Unix time stamp for when the job was started (when the job
+  The Unix timestamp for when the job was started (when the job
 transitioned from the C<STARTING> state to the C<RUNNING> state).
 
 
@@ -93,7 +99,7 @@ current status of the job.
 
 =head2 StoppedAt => Int
 
-  The Unix time stamp for when the job was stopped (when the job
+  The Unix timestamp for when the job was stopped (when the job
 transitioned from the C<RUNNING> state to a terminal state, such as
 C<SUCCEEDED> or C<FAILED>).
 

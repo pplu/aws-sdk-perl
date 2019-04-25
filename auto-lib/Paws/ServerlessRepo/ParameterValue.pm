@@ -1,7 +1,7 @@
 package Paws::ServerlessRepo::ParameterValue;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,14 +37,14 @@ Parameter value of the application.
 =head1 ATTRIBUTES
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
   The key associated with the parameter. If you don't specify a key and
-value for a particular parameter, AWS CloudFormation\n uses the default
+value for a particular parameter, AWS CloudFormation uses the default
 value that is specified in your template.
 
 
-=head2 Value => Str
+=head2 B<REQUIRED> Value => Str
 
   The input value associated with the parameter.
 

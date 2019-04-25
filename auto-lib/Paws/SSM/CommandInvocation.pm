@@ -1,9 +1,11 @@
 package Paws::SSM::CommandInvocation;
   use Moose;
+  has CloudWatchOutputConfig => (is => 'ro', isa => 'Paws::SSM::CloudWatchOutputConfig');
   has CommandId => (is => 'ro', isa => 'Str');
   has CommandPlugins => (is => 'ro', isa => 'ArrayRef[Paws::SSM::CommandPlugin]');
   has Comment => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str');
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has InstanceName => (is => 'ro', isa => 'Str');
   has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
@@ -33,14 +35,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::CommandInvocation object:
 
-  $service_obj->Method(Att1 => { CommandId => $value, ..., TraceOutput => $value  });
+  $service_obj->Method(Att1 => { CloudWatchOutputConfig => $value, ..., TraceOutput => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::CommandInvocation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CommandId
+  $result->Att1->CloudWatchOutputConfig
 
 =head1 DESCRIPTION
 
@@ -52,6 +54,12 @@ requested instance ID. A command invocation returns status and detail
 information about a command you executed.
 
 =head1 ATTRIBUTES
+
+
+=head2 CloudWatchOutputConfig => L<Paws::SSM::CloudWatchOutputConfig>
+
+  CloudWatch Logs information where you want Systems Manager to send the
+command output.
 
 
 =head2 CommandId => Str
@@ -73,6 +81,11 @@ description of what the command should do.
 =head2 DocumentName => Str
 
   The document name that was requested for execution.
+
+
+=head2 DocumentVersion => Str
+
+  The SSM document version.
 
 
 =head2 InstanceId => Str
@@ -132,10 +145,11 @@ the command, and the Amazon S3 bucket was defined for the command.
 instance targeted by the command). StatusDetails includes more
 information than Status because it includes states resulting from error
 and concurrency control parameters. StatusDetails can show different
-results than Status. For more information about these statuses, see Run
-Command Status
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html).
-StatusDetails can be one of the following values:
+results than Status. For more information about these statuses, see
+Understanding Command Statuses
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html)
+in the I<AWS Systems Manager User Guide>. StatusDetails can be one of
+the following values:
 
 =over
 

@@ -20,17 +20,25 @@ Paws::KinesisAnalytics::DeleteApplicationInputProcessingConfiguration - Argument
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteApplicationInputProcessingConfiguration on the 
-Amazon Kinesis Analytics service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteApplicationInputProcessingConfiguration on the
+L<Amazon Kinesis Analytics|Paws::KinesisAnalytics> service. Use the attributes of this class
 as arguments to method DeleteApplicationInputProcessingConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApplicationInputProcessingConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteApplicationInputProcessingConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $kinesisanalytics = Paws->service('KinesisAnalytics');
+    my $DeleteApplicationInputProcessingConfigurationResponse =
+      $kinesisanalytics->DeleteApplicationInputProcessingConfiguration(
+      ApplicationName             => 'MyApplicationName',
+      CurrentApplicationVersionId => 1,
+      InputId                     => 'MyId',
+
+      );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics/DeleteApplicationInputProcessingConfiguration>
 
 =head1 ATTRIBUTES
 
@@ -50,8 +58,8 @@ The version ID of the Kinesis Analytics application.
 =head2 B<REQUIRED> InputId => Str
 
 The ID of the input configuration from which to delete the input
-configuration. You can get a list of the input IDs for an application
-using the DescribeApplication operation.
+processing configuration. You can get a list of the input IDs for an
+application by using the DescribeApplication operation.
 
 
 

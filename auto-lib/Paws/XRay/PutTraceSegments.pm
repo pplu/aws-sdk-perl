@@ -19,17 +19,28 @@ Paws::XRay::PutTraceSegments - Arguments for method PutTraceSegments on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutTraceSegments on the 
-AWS X-Ray service. Use the attributes of this class
+This class represents the parameters used for calling the method PutTraceSegments on the
+L<AWS X-Ray|Paws::XRay> service. Use the attributes of this class
 as arguments to method PutTraceSegments.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutTraceSegments.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutTraceSegments(Att1 => $value1, Att2 => $value2, ...);
+    my $xray = Paws->service('XRay');
+    my $PutTraceSegmentsResult = $xray->PutTraceSegments(
+      TraceSegmentDocuments => [ 'MyTraceSegmentDocument', ... ],
+
+    );
+
+    # Results:
+    my $UnprocessedTraceSegments =
+      $PutTraceSegmentsResult->UnprocessedTraceSegments;
+
+    # Returns a L<Paws::XRay::PutTraceSegmentsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/xray/PutTraceSegments>
 
 =head1 ATTRIBUTES
 

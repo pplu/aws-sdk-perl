@@ -35,6 +35,72 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppSync::Ap
 
 Describes an API key.
 
+Customers invoke AWS AppSync GraphQL API operations with API keys as an
+identity mechanism. There are two key versions:
+
+B<da1>: This version was introduced at launch in November 2017. These
+keys always expire after 7 days. Key expiration is managed by Amazon
+DynamoDB TTL. The keys ceased to be valid after February 21, 2018 and
+should not be used after that date.
+
+=over
+
+=item *
+
+C<ListApiKeys> returns the expiration time in milliseconds.
+
+=item *
+
+C<CreateApiKey> returns the expiration time in milliseconds.
+
+=item *
+
+C<UpdateApiKey> is not available for this key version.
+
+=item *
+
+C<DeleteApiKey> deletes the item from the table.
+
+=item *
+
+Expiration is stored in Amazon DynamoDB as milliseconds. This results
+in a bug where keys are not automatically deleted because DynamoDB
+expects the TTL to be stored in seconds. As a one-time action, we will
+delete these keys from the table after February 21, 2018.
+
+=back
+
+B<da2>: This version was introduced in February 2018 when AppSync added
+support to extend key expiration.
+
+=over
+
+=item *
+
+C<ListApiKeys> returns the expiration time in seconds.
+
+=item *
+
+C<CreateApiKey> returns the expiration time in seconds and accepts a
+user-provided expiration time in seconds.
+
+=item *
+
+C<UpdateApiKey> returns the expiration time in seconds and accepts a
+user-provided expiration time in seconds. Key expiration can only be
+updated while the key has not expired.
+
+=item *
+
+C<DeleteApiKey> deletes the item from the table.
+
+=item *
+
+Expiration is stored in Amazon DynamoDB as seconds.
+
+=back
+
+
 =head1 ATTRIBUTES
 
 
@@ -45,7 +111,8 @@ Describes an API key.
 
 =head2 Expires => Int
 
-  The time when the API key expires.
+  The time after which the API key expires. The date is represented as
+seconds since the epoch, rounded down to the nearest hour.
 
 
 =head2 Id => Str

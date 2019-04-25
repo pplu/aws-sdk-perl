@@ -299,6 +299,7 @@ $request = $s3->PutObject(
 );
 
 my $md5_r1 = $request->headers->header('Content-MD5');
+ok(defined $md5_r1, "Content-MD5 header is defined $md5_r1");
 
 $request = $s3->PutObject(
   Bucket => 'test_bucket',
@@ -307,6 +308,7 @@ $request = $s3->PutObject(
 );
 
 my $md5_r2 = $request->headers->header('Content-MD5');
+ok(defined $md5_r2, "Content-MD5 header is defined $md5_r2");
 
 cmp_ok($md5_r1, 'ne', $md5_r2, 'Content-MD5 of different values is different');
 
@@ -580,9 +582,6 @@ $request = $batch->SubmitJob(
   Parameters => { P1 => 1, P2 => 2 }
 );
 
-use Data::Dumper;
-print Dumper($request);
-
 $test_params = {
   jobDefinition => 'X',
   jobName => 'jname',
@@ -625,5 +624,24 @@ $request = $r53->ChangeResourceRecordSets(
 $ref = XMLin($request->content);
 
 like($request->url, qr|hostedzone/A999AAA999AAA/rrset|, 'URL has the HostedZoneId');
+
+my $glacier = $aws->service('Glacier');
+
+$request = $glacier->ListVaults(AccountId => '-');
+
+cmp_ok($request->header('x-amz-glacier-version'), 'eq', $glacier->version, 'The API version is in the correct header');
+
+$request = $glacier->InitiateMultipartUpload(
+  AccountId => '1234',
+  ArchiveDescription => 'Desc',
+  VaultName => 'myvault',
+  PartSize => 34
+);  
+
+like($request->url, qr|/myvault/|);
+like($request->url, qr|/1234/|);
+cmp_ok($request->header('x-amz-part-size'), 'eq', '34', 'The PartSize is in the correct header');
+cmp_ok($request->header('x-amz-archive-description'), 'eq', 'Desc', 'The ArchiveDescripiton is in the correct header');
+
 
 done_testing;

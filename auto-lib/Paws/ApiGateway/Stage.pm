@@ -14,7 +14,10 @@ package Paws::ApiGateway::Stage;
   has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
   has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings', traits => ['NameInRequest'], request_name => 'methodSettings');
   has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
+  has TracingEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'tracingEnabled');
   has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'variables');
+  has WebAclArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'webAclArn');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -97,11 +100,27 @@ The name of the stage is the first path segment in the Uniform Resource
 Identifier (URI) of a call to API Gateway.
 
 
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The collection of tags. Each tag element is associated with a given
+resource.
+
+
+=head2 TracingEnabled => Bool
+
+Specifies whether active tracing with X-ray is enabled for the Stage.
+
+
 =head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
 
 A map that defines the stage variables for a Stage resource. Variable
 names can have alphanumeric and underscore characters, and the values
 must match C<[A-Za-z0-9-._~:/?&num;&=,]+>.
+
+
+=head2 WebAclArn => Str
+
+The ARN of the WebAcl associated with the Stage.
 
 
 =head2 _request_id => Str

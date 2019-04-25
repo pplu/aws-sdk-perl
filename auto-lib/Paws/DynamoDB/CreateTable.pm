@@ -2,10 +2,12 @@
 package Paws::DynamoDB::CreateTable;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]', required => 1);
+  has BillingMode => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndex]');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]', required => 1);
   has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndex]');
-  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput', required => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+  has SSESpecification => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -24,17 +26,58 @@ Paws::DynamoDB::CreateTable - Arguments for method CreateTable on L<Paws::Dynamo
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateTable on the 
-Amazon DynamoDB service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateTable on the
+L<Amazon DynamoDB|Paws::DynamoDB> service. Use the attributes of this class
 as arguments to method CreateTable.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTable.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateTable(Att1 => $value1, Att2 => $value2, ...);
+    my $dynamodb = Paws->service('DynamoDB');
+    # To create a table
+    # This example creates a table named Music.
+    my $CreateTableOutput = $dynamodb->CreateTable(
+      {
+        'AttributeDefinitions' => [
+
+          {
+            'AttributeName' => 'Artist',
+            'AttributeType' => 'S'
+          },
+
+          {
+            'AttributeName' => 'SongTitle',
+            'AttributeType' => 'S'
+          }
+        ],
+        'KeySchema' => [
+
+          {
+            'AttributeName' => 'Artist',
+            'KeyType'       => 'HASH'
+          },
+
+          {
+            'AttributeName' => 'SongTitle',
+            'KeyType'       => 'RANGE'
+          }
+        ],
+        'ProvisionedThroughput' => {
+          'ReadCapacityUnits'  => 5,
+          'WriteCapacityUnits' => 5
+        },
+        'TableName' => 'Music'
+      }
+    );
+
+    # Results:
+    my $TableDescription = $CreateTableOutput->TableDescription;
+
+    # Returns a L<Paws::DynamoDB::CreateTableOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/CreateTable>
 
 =head1 ATTRIBUTES
 
@@ -46,11 +89,33 @@ indexes.
 
 
 
+=head2 BillingMode => Str
+
+Controls how you are charged for read and write throughput and how you
+manage capacity. This setting can be changed later.
+
+=over
+
+=item *
+
+C<PROVISIONED> - Sets the billing mode to C<PROVISIONED>. We recommend
+using C<PROVISIONED> for predictable workloads.
+
+=item *
+
+C<PAY_PER_REQUEST> - Sets the billing mode to C<PAY_PER_REQUEST>. We
+recommend using C<PAY_PER_REQUEST> for unpredictable workloads.
+
+=back
+
+
+Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
+
 =head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]
 
-One or more global secondary indexes (the maximum is five) to be
-created on the table. Each global secondary index in the array includes
-the following:
+One or more global secondary indexes (the maximum is 20) to be created
+on the table. Each global secondary index in the array includes the
+following:
 
 =over
 
@@ -99,7 +164,7 @@ C<ALL> - All of the table attributes are projected into the index.
 C<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
 attributes provided in C<NonKeyAttributes>, summed across all of the
-secondary indexes, must not exceed 20. If you project the same
+secondary indexes, must not exceed 100. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
 
@@ -175,10 +240,10 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]
 
-One or more local secondary indexes (the maximum is five) to be created
-on the table. Each index is scoped to a given partition key value.
-There is a 10 GB size limit per partition key value; otherwise, the
-size of a local secondary index is unconstrained.
+One or more local secondary indexes (the maximum is 5) to be created on
+the table. Each index is scoped to a given partition key value. There
+is a 10 GB size limit per partition key value; otherwise, the size of a
+local secondary index is unconstrained.
 
 Each local secondary index in the array includes the following:
 
@@ -230,7 +295,7 @@ C<ALL> - All of the table attributes are projected into the index.
 C<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
 attributes provided in C<NonKeyAttributes>, summed across all of the
-secondary indexes, must not exceed 20. If you project the same
+secondary indexes, must not exceed 100. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
 
@@ -241,15 +306,25 @@ attributes when determining the total.
 
 
 
-=head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
+=head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
 Represents the provisioned throughput settings for a specified table or
 index. The settings can be modified using the C<UpdateTable> operation.
+
+If you set BillingMode as C<PROVISIONED>, you must specify this
+property. If you set BillingMode as C<PAY_PER_REQUEST>, you cannot
+specify this property.
 
 For current minimum and maximum provisioned throughput values, see
 Limits
 (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 in the I<Amazon DynamoDB Developer Guide>.
+
+
+
+=head2 SSESpecification => L<Paws::DynamoDB::SSESpecification>
+
+Represents the settings used to enable server-side encryption.
 
 
 

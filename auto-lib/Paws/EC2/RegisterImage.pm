@@ -30,17 +30,55 @@ Paws::EC2::RegisterImage - Arguments for method RegisterImage on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RegisterImage on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method RegisterImage on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method RegisterImage.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterImage.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RegisterImage(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $RegisterImageResult = $ec2->RegisterImage(
+      Name                => 'MyString',
+      Architecture        => 'i386',                 # OPTIONAL
+      BillingProducts     => [ 'MyString', ... ],    # OPTIONAL
+      BlockDeviceMappings => [
+        {
+          DeviceName => 'MyString',
+          Ebs        => {
+            DeleteOnTermination => 1,                # OPTIONAL
+            Encrypted           => 1,                # OPTIONAL
+            Iops                => 1,                # OPTIONAL
+            KmsKeyId            => 'MyString',
+            SnapshotId          => 'MyString',
+            VolumeSize          => 1,                # OPTIONAL
+            VolumeType =>
+              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
+          },    # OPTIONAL
+          NoDevice    => 'MyString',
+          VirtualName => 'MyString',
+        },
+        ...
+      ],        # OPTIONAL
+      Description        => 'MyString',    # OPTIONAL
+      DryRun             => 1,             # OPTIONAL
+      EnaSupport         => 1,             # OPTIONAL
+      ImageLocation      => 'MyString',    # OPTIONAL
+      KernelId           => 'MyString',    # OPTIONAL
+      RamdiskId          => 'MyString',    # OPTIONAL
+      RootDeviceName     => 'MyString',    # OPTIONAL
+      SriovNetSupport    => 'MyString',    # OPTIONAL
+      VirtualizationType => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $ImageId = $RegisterImageResult->ImageId;
+
+    # Returns a L<Paws::EC2::RegisterImageResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/RegisterImage>
 
 =head1 ATTRIBUTES
 
@@ -52,7 +90,7 @@ The architecture of the AMI.
 Default: For Amazon EBS-backed AMIs, C<i386>. For instance store-backed
 AMIs, the architecture specified in the manifest file.
 
-Valid values are: C<"i386">, C<"x86_64">
+Valid values are: C<"i386">, C<"x86_64">, C<"arm64">
 
 =head2 BillingProducts => ArrayRef[Str|Undef]
 

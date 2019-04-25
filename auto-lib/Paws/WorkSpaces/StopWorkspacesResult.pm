@@ -16,7 +16,7 @@ Paws::WorkSpaces::StopWorkspacesResult
 
 =head2 FailedRequests => ArrayRef[L<Paws::WorkSpaces::FailedWorkspaceChangeRequest>]
 
-The failed requests.
+Information about the WorkSpaces that could not be stopped.
 
 
 =head2 _request_id => Str

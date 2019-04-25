@@ -43,7 +43,7 @@ DescribeValidDBInstanceModifications action.
 
 =head2 IopsToStorageRatio => ArrayRef[L<Paws::RDS::DoubleRange>]
 
-  The valid range of Provisioned IOPS to gigabytes of storage multiplier.
+  The valid range of Provisioned IOPS to gibibytes of storage multiplier.
 For example, 3-10, which means that provisioned IOPS can be between 3
 and 10 times storage.
 
@@ -55,7 +55,7 @@ and 10 times storage.
 
 =head2 StorageSize => ArrayRef[L<Paws::RDS::Range>]
 
-  The valid range of storage in gigabytes. For example, 100 to 6144.
+  The valid range of storage in gibibytes. For example, 100 to 16384.
 
 
 =head2 StorageType => Str

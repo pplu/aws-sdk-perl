@@ -2,6 +2,7 @@ package Paws::CodeCommit::PullRequestSourceReferenceUpdatedEventMetadata;
   use Moose;
   has AfterCommitId => (is => 'ro', isa => 'Str', request_name => 'afterCommitId', traits => ['NameInRequest']);
   has BeforeCommitId => (is => 'ro', isa => 'Str', request_name => 'beforeCommitId', traits => ['NameInRequest']);
+  has MergeBase => (is => 'ro', isa => 'Str', request_name => 'mergeBase', traits => ['NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
 1;
 
@@ -48,6 +49,12 @@ of the branch at the time the pull request was updated.
 
   The full commit ID of the commit in the destination branch that was the
 tip of the branch at the time the pull request was updated.
+
+
+=head2 MergeBase => Str
+
+  The commit ID of the most recent commit that the source branch and the
+destination branch have in common.
 
 
 =head2 RepositoryName => Str

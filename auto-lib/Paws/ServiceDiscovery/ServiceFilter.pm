@@ -58,6 +58,10 @@ C<IN>: When you specify C<IN>, specify a list of the IDs for the
 namespaces that you want C<ListServices> to return a list of services
 for.
 
+=item *
+
+C<BETWEEN>: Not applicable.
+
 =back
 
 

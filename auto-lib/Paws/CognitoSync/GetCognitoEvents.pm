@@ -19,17 +19,27 @@ Paws::CognitoSync::GetCognitoEvents - Arguments for method GetCognitoEvents on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetCognitoEvents on the 
-Amazon Cognito Sync service. Use the attributes of this class
+This class represents the parameters used for calling the method GetCognitoEvents on the
+L<Amazon Cognito Sync|Paws::CognitoSync> service. Use the attributes of this class
 as arguments to method GetCognitoEvents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCognitoEvents.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetCognitoEvents(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-sync = Paws->service('CognitoSync');
+    my $GetCognitoEventsResponse = $cognito -sync->GetCognitoEvents(
+      IdentityPoolId => 'MyIdentityPoolId',
+
+    );
+
+    # Results:
+    my $Events = $GetCognitoEventsResponse->Events;
+
+    # Returns a L<Paws::CognitoSync::GetCognitoEventsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-sync/GetCognitoEvents>
 
 =head1 ATTRIBUTES
 

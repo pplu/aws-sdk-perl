@@ -1,6 +1,7 @@
 package Paws::DeviceFarm::Device;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Availability => (is => 'ro', isa => 'Str', request_name => 'availability', traits => ['NameInRequest']);
   has Carrier => (is => 'ro', isa => 'Str', request_name => 'carrier', traits => ['NameInRequest']);
   has Cpu => (is => 'ro', isa => 'Paws::DeviceFarm::CPU', request_name => 'cpu', traits => ['NameInRequest']);
   has FleetName => (is => 'ro', isa => 'Str', request_name => 'fleetName', traits => ['NameInRequest']);
@@ -8,9 +9,11 @@ package Paws::DeviceFarm::Device;
   has FormFactor => (is => 'ro', isa => 'Str', request_name => 'formFactor', traits => ['NameInRequest']);
   has HeapSize => (is => 'ro', isa => 'Int', request_name => 'heapSize', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
+  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DeviceInstance]', request_name => 'instances', traits => ['NameInRequest']);
   has Manufacturer => (is => 'ro', isa => 'Str', request_name => 'manufacturer', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has Model => (is => 'ro', isa => 'Str', request_name => 'model', traits => ['NameInRequest']);
+  has ModelId => (is => 'ro', isa => 'Str', request_name => 'modelId', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Os => (is => 'ro', isa => 'Str', request_name => 'os', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
@@ -56,6 +59,12 @@ Represents a device type that an app is tested against.
 =head2 Arn => Str
 
   The device's ARN.
+
+
+=head2 Availability => Str
+
+  Reflects how likely a device will be available for a test run. It is
+currently available in the ListDevices and GetDevice API methods.
 
 
 =head2 Carrier => Str
@@ -109,6 +118,11 @@ TABLET: The tablet form factor.
   The device's image name.
 
 
+=head2 Instances => ArrayRef[L<Paws::DeviceFarm::DeviceInstance>]
+
+  The instances belonging to this device.
+
+
 =head2 Manufacturer => Str
 
   The device's manufacturer name.
@@ -122,6 +136,11 @@ TABLET: The tablet form factor.
 =head2 Model => Str
 
   The device's model name.
+
+
+=head2 ModelId => Str
+
+  The device's model ID.
 
 
 =head2 Name => Str

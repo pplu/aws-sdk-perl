@@ -5,6 +5,7 @@ package Paws::DeviceFarm::Job;
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', request_name => 'device', traits => ['NameInRequest']);
   has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', request_name => 'deviceMinutes', traits => ['NameInRequest']);
+  has InstanceArn => (is => 'ro', isa => 'Str', request_name => 'instanceArn', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
@@ -12,6 +13,8 @@ package Paws::DeviceFarm::Job;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has VideoCapture => (is => 'ro', isa => 'Bool', request_name => 'videoCapture', traits => ['NameInRequest']);
+  has VideoEndpoint => (is => 'ro', isa => 'Str', request_name => 'videoEndpoint', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::Job object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., VideoEndpoint => $value  });
 
 =head3 Results returned from an API call
 
@@ -70,6 +73,11 @@ Represents a device.
 =head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
 
   Represents the total (metered or unmetered) minutes used by the job.
+
+
+=head2 InstanceArn => Str
+
+  The Amazon Resource Name (ARN) of the instance.
 
 
 =head2 Message => Str
@@ -212,15 +220,31 @@ APPIUM_PYTHON: The Appium Python type.
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.
+APPIUM_NODE: The Appium Node.js type.
 
 =item *
 
-APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.
+APPIUM_RUBY: The Appium Ruby type.
 
 =item *
 
-APPIUM_WEB_PYTHON: The Appium Python type for Web apps.
+APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for web apps.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for web apps.
+
+=item *
+
+APPIUM_WEB_PYTHON: The Appium Python type for web apps.
+
+=item *
+
+APPIUM_WEB_NODE: The Appium Node.js type for web apps.
+
+=item *
+
+APPIUM_WEB_RUBY: The Appium Ruby test type for web apps.
 
 =item *
 
@@ -248,6 +272,17 @@ XCTEST_UI: The XCode UI test type.
 
 =back
 
+
+
+=head2 VideoCapture => Bool
+
+  This value is set to true if video capture is enabled; otherwise, it is
+set to false.
+
+
+=head2 VideoEndpoint => Str
+
+  The endpoint for streaming device video.
 
 
 

@@ -49,7 +49,7 @@ two values, depending on which is less frequent:
 The value for the C<deliveryFrequency> parameter within the delivery
 channel configuration, which sets how often AWS Config delivers
 configuration snapshots. This value also sets how often AWS Config
-invokes evaluations for Config rules.
+invokes evaluations for AWS Config rules.
 
 =item *
 

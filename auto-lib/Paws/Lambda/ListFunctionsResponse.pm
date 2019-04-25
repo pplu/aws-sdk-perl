@@ -23,7 +23,7 @@ A list of Lambda functions.
 
 =head2 NextMarker => Str
 
-A string, present if there are more functions.
+Pagination token included if more results are available.
 
 
 =head2 _request_id => Str

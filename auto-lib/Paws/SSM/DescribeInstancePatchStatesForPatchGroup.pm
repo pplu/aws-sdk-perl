@@ -21,17 +21,40 @@ Paws::SSM::DescribeInstancePatchStatesForPatchGroup - Arguments for method Descr
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeInstancePatchStatesForPatchGroup on the 
-Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeInstancePatchStatesForPatchGroup on the
+L<Amazon Simple Systems Manager (SSM)|Paws::SSM> service. Use the attributes of this class
 as arguments to method DescribeInstancePatchStatesForPatchGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstancePatchStatesForPatchGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeInstancePatchStatesForPatchGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $DescribeInstancePatchStatesForPatchGroupResult =
+      $ssm->DescribeInstancePatchStatesForPatchGroup(
+      PatchGroup => 'MyPatchGroup',
+      Filters    => [
+        {
+          Key => 'MyInstancePatchStateFilterKey',    # min: 1, max: 200
+          Type => 'Equal',    # values: Equal, NotEqual, LessThan, GreaterThan
+          Values => [ 'MyInstancePatchStateFilterValue', ... ], # min: 1, max: 1
+
+        },
+        ...
+      ],                                                        # OPTIONAL
+      MaxResults => 1,                                          # OPTIONAL
+      NextToken  => 'MyNextToken',                              # OPTIONAL
+      );
+
+    # Results:
+    my $InstancePatchStates =
+      $DescribeInstancePatchStatesForPatchGroupResult->InstancePatchStates;
+    my $NextToken = $DescribeInstancePatchStatesForPatchGroupResult->NextToken;
+
+# Returns a L<Paws::SSM::DescribeInstancePatchStatesForPatchGroupResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/DescribeInstancePatchStatesForPatchGroup>
 
 =head1 ATTRIBUTES
 

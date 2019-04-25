@@ -20,17 +20,28 @@ Paws::SNS::ConfirmSubscription - Arguments for method ConfirmSubscription on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ConfirmSubscription on the 
-Amazon Simple Notification Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ConfirmSubscription on the
+L<Amazon Simple Notification Service|Paws::SNS> service. Use the attributes of this class
 as arguments to method ConfirmSubscription.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ConfirmSubscription.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ConfirmSubscription(Att1 => $value1, Att2 => $value2, ...);
+    my $sns = Paws->service('SNS');
+    my $ConfirmSubscriptionResponse = $sns->ConfirmSubscription(
+      Token                     => 'Mytoken',
+      TopicArn                  => 'MytopicARN',
+      AuthenticateOnUnsubscribe => 'MyauthenticateOnUnsubscribe',    # OPTIONAL
+    );
+
+    # Results:
+    my $SubscriptionArn = $ConfirmSubscriptionResponse->SubscriptionArn;
+
+    # Returns a L<Paws::SNS::ConfirmSubscriptionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns/ConfirmSubscription>
 
 =head1 ATTRIBUTES
 

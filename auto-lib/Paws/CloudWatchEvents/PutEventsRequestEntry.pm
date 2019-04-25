@@ -42,8 +42,8 @@ Represents an event to be submitted.
 
 =head2 Detail => Str
 
-  In the JSON sense, an object containing fields, which may also contain
-nested subobjects. No constraints are imposed on its contents.
+  A valid JSON string. There is no other schema imposed. The JSON string
+may contain fields and nested subobjects.
 
 
 =head2 DetailType => Str
@@ -60,14 +60,14 @@ event primarily concerns. Any number, including zero, may be present.
 
 =head2 Source => Str
 
-  The source of the event.
+  The source of the event. This field is required.
 
 
 =head2 Time => Str
 
-  The timestamp of the event, per RFC3339
-(https://www.rfc-editor.org/rfc/rfc3339.txt). If no timestamp is
-provided, the timestamp of the PutEvents call is used.
+  The time stamp of the event, per RFC3339
+(https://www.rfc-editor.org/rfc/rfc3339.txt). If no time stamp is
+provided, the time stamp of the PutEvents call is used.
 
 
 

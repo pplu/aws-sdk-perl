@@ -22,17 +22,92 @@ Paws::CognitoIdp::SetRiskConfiguration - Arguments for method SetRiskConfigurati
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SetRiskConfiguration on the 
-Amazon Cognito Identity Provider service. Use the attributes of this class
+This class represents the parameters used for calling the method SetRiskConfiguration on the
+L<Amazon Cognito Identity Provider|Paws::CognitoIdp> service. Use the attributes of this class
 as arguments to method SetRiskConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetRiskConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetRiskConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $SetRiskConfigurationResponse = $cognito -idp->SetRiskConfiguration(
+      UserPoolId                       => 'MyUserPoolIdType',
+      AccountTakeoverRiskConfiguration => {
+        Actions => {
+          HighAction => {
+            EventAction => 'BLOCK'
+            ,    # values: BLOCK, MFA_IF_CONFIGURED, MFA_REQUIRED, NO_ACTION
+            Notify => 1,
+
+          },    # OPTIONAL
+          LowAction => {
+            EventAction => 'BLOCK'
+            ,    # values: BLOCK, MFA_IF_CONFIGURED, MFA_REQUIRED, NO_ACTION
+            Notify => 1,
+
+          },    # OPTIONAL
+          MediumAction => {
+            EventAction => 'BLOCK'
+            ,    # values: BLOCK, MFA_IF_CONFIGURED, MFA_REQUIRED, NO_ACTION
+            Notify => 1,
+
+          },    # OPTIONAL
+        },
+        NotifyConfiguration => {
+          SourceArn  => 'MyArnType',    # min: 20, max: 2048
+          BlockEmail => {
+            Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
+            HtmlBody =>
+              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
+            TextBody =>
+              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
+          },    # OPTIONAL
+          From     => 'MyStringType',    # OPTIONAL
+          MfaEmail => {
+            Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
+            HtmlBody =>
+              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
+            TextBody =>
+              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
+          },    # OPTIONAL
+          NoActionEmail => {
+            Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
+            HtmlBody =>
+              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
+            TextBody =>
+              'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
+          },    # OPTIONAL
+          ReplyTo => 'MyStringType',    # OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      ClientId                                => 'MyClientIdType',    # OPTIONAL
+      CompromisedCredentialsRiskConfiguration => {
+        Actions => {
+          EventAction => 'BLOCK',    # values: BLOCK, NO_ACTION
+
+        },
+        EventFilter => [
+          'SIGN_IN', ...             # values: SIGN_IN, PASSWORD_CHANGE, SIGN_UP
+        ],                           # OPTIONAL
+      },    # OPTIONAL
+      RiskExceptionConfiguration => {
+        BlockedIPRangeList => [
+          'MyStringType', ...    # OPTIONAL
+        ],                       # max: 20; OPTIONAL
+        SkippedIPRangeList => [
+          'MyStringType', ...    # OPTIONAL
+        ],                       # max: 20; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $RiskConfiguration = $SetRiskConfigurationResponse->RiskConfiguration;
+
+    # Returns a L<Paws::CognitoIdp::SetRiskConfigurationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/SetRiskConfiguration>
 
 =head1 ATTRIBUTES
 

@@ -31,15 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Tra
 
 =head1 DESCRIPTION
 
-Parent object of the tracing information associated with your Lambda
-function.
+The function's AWS X-Ray tracing configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 Mode => Str
 
-  The tracing mode associated with your Lambda function.
+  The tracing mode.
 
 
 

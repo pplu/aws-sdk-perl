@@ -20,26 +20,41 @@ Paws::EC2::CreateEgressOnlyInternetGateway - Arguments for method CreateEgressOn
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateEgressOnlyInternetGateway on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateEgressOnlyInternetGateway on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method CreateEgressOnlyInternetGateway.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateEgressOnlyInternetGateway.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateEgressOnlyInternetGateway(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $CreateEgressOnlyInternetGatewayResult =
+      $ec2->CreateEgressOnlyInternetGateway(
+      VpcId       => 'MyString',
+      ClientToken => 'MyString',    # OPTIONAL
+      DryRun      => 1,             # OPTIONAL
+      );
+
+    # Results:
+    my $ClientToken = $CreateEgressOnlyInternetGatewayResult->ClientToken;
+    my $EgressOnlyInternetGateway =
+      $CreateEgressOnlyInternetGatewayResult->EgressOnlyInternetGateway;
+
+    # Returns a L<Paws::EC2::CreateEgressOnlyInternetGatewayResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateEgressOnlyInternetGateway>
 
 =head1 ATTRIBUTES
 
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see How to Ensure Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
 
 
 
@@ -54,7 +69,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> VpcId => Str
 
-The ID of the VPC for which to create the egress-only Internet gateway.
+The ID of the VPC for which to create the egress-only internet gateway.
 
 
 

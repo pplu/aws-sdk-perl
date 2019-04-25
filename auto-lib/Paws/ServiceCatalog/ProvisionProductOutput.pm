@@ -16,7 +16,7 @@ Paws::ServiceCatalog::ProvisionProductOutput
 
 =head2 RecordDetail => L<Paws::ServiceCatalog::RecordDetail>
 
-Information about the result of ProvisionProduct.
+Information about the result of provisioning the product.
 
 
 =head2 _request_id => Str

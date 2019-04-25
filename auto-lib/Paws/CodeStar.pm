@@ -1,6 +1,7 @@
 package Paws::CodeStar;
   use Moose;
   sub service { 'codestar' }
+  sub signing_name { 'codestar' }
   sub version { '2017-04-19' }
   sub target_prefix { 'CodeStar_20170419' }
   sub json_version { "1.1" }
@@ -105,6 +106,98 @@ package Paws::CodeStar;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllProjects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProjects(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListProjects(@_, nextToken => $next_result->nextToken);
+        push @{ $result->projects }, @{ $next_result->projects };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'projects') foreach (@{ $result->projects });
+        $result = $self->ListProjects(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'projects') foreach (@{ $result->projects });
+    }
+
+    return undef
+  }
+  sub ListAllResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListResources(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resources }, @{ $next_result->resources };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'resources') foreach (@{ $result->resources });
+        $result = $self->ListResources(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'resources') foreach (@{ $result->resources });
+    }
+
+    return undef
+  }
+  sub ListAllTeamMembers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTeamMembers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTeamMembers(@_, nextToken => $next_result->nextToken);
+        push @{ $result->teamMembers }, @{ $next_result->teamMembers };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'teamMembers') foreach (@{ $result->teamMembers });
+        $result = $self->ListTeamMembers(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'teamMembers') foreach (@{ $result->teamMembers });
+    }
+
+    return undef
+  }
+  sub ListAllUserProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUserProfiles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListUserProfiles(@_, nextToken => $next_result->nextToken);
+        push @{ $result->userProfiles }, @{ $next_result->userProfiles };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'userProfiles') foreach (@{ $result->userProfiles });
+        $result = $self->ListUserProfiles(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'userProfiles') foreach (@{ $result->userProfiles });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateTeamMember CreateProject CreateUserProfile DeleteProject DeleteUserProfile DescribeProject DescribeUserProfile DisassociateTeamMember ListProjects ListResources ListTagsForProject ListTeamMembers ListUserProfiles TagProject UntagProject UpdateProject UpdateTeamMember UpdateUserProfile / }
@@ -237,9 +330,27 @@ C<UpdateUserProfile>, which updates the profile for a user.
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codestar-2017-04-19>
+
+
 =head1 METHODS
 
-=head2 AssociateTeamMember(ProjectId => Str, ProjectRole => Str, UserArn => Str, [ClientRequestToken => Str, RemoteAccessAllowed => Bool])
+=head2 AssociateTeamMember
+
+=over
+
+=item ProjectId => Str
+
+=item ProjectRole => Str
+
+=item UserArn => Str
+
+=item [ClientRequestToken => Str]
+
+=item [RemoteAccessAllowed => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::AssociateTeamMember>
 
@@ -248,17 +359,51 @@ Returns: a L<Paws::CodeStar::AssociateTeamMemberResult> instance
 Adds an IAM user to the team for an AWS CodeStar project.
 
 
-=head2 CreateProject(Id => Str, Name => Str, [ClientRequestToken => Str, Description => Str])
+=head2 CreateProject
+
+=over
+
+=item Id => Str
+
+=item Name => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Description => Str]
+
+=item [SourceCode => ArrayRef[L<Paws::CodeStar::Code>]]
+
+=item [Tags => L<Paws::CodeStar::Tags>]
+
+=item [Toolchain => L<Paws::CodeStar::Toolchain>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::CreateProject>
 
 Returns: a L<Paws::CodeStar::CreateProjectResult> instance
 
-Reserved for future use. To create a project, use the AWS CodeStar
-console.
+Creates a project, including project resources. This action creates a
+project based on a submitted project request. A set of source code
+files and a toolchain template file can be included with the project
+request. If these are not provided, an empty project is created.
 
 
-=head2 CreateUserProfile(DisplayName => Str, EmailAddress => Str, UserArn => Str, [SshPublicKey => Str])
+=head2 CreateUserProfile
+
+=over
+
+=item DisplayName => Str
+
+=item EmailAddress => Str
+
+=item UserArn => Str
+
+=item [SshPublicKey => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::CreateUserProfile>
 
@@ -271,7 +416,18 @@ user profile is displayed wherever the user's information appears to
 other users in AWS CodeStar.
 
 
-=head2 DeleteProject(Id => Str, [ClientRequestToken => Str, DeleteStack => Bool])
+=head2 DeleteProject
+
+=over
+
+=item Id => Str
+
+=item [ClientRequestToken => Str]
+
+=item [DeleteStack => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::DeleteProject>
 
@@ -282,7 +438,14 @@ associated with the project, but does delete the IAM roles that allowed
 access to the project.
 
 
-=head2 DeleteUserProfile(UserArn => Str)
+=head2 DeleteUserProfile
+
+=over
+
+=item UserArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::DeleteUserProfile>
 
@@ -294,7 +457,14 @@ email address. It does not delete the history of that user, for example
 the history of commits made by that user.
 
 
-=head2 DescribeProject(Id => Str)
+=head2 DescribeProject
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::DescribeProject>
 
@@ -303,7 +473,14 @@ Returns: a L<Paws::CodeStar::DescribeProjectResult> instance
 Describes a project and its resources.
 
 
-=head2 DescribeUserProfile(UserArn => Str)
+=head2 DescribeUserProfile
+
+=over
+
+=item UserArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::DescribeUserProfile>
 
@@ -313,7 +490,16 @@ Describes a user in AWS CodeStar and the user attributes across all
 projects.
 
 
-=head2 DisassociateTeamMember(ProjectId => Str, UserArn => Str)
+=head2 DisassociateTeamMember
+
+=over
+
+=item ProjectId => Str
+
+=item UserArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::DisassociateTeamMember>
 
@@ -326,7 +512,16 @@ that user's profile from AWS CodeStar. It does not remove the user from
 IAM.
 
 
-=head2 ListProjects([MaxResults => Int, NextToken => Str])
+=head2 ListProjects
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::ListProjects>
 
@@ -335,7 +530,18 @@ Returns: a L<Paws::CodeStar::ListProjectsResult> instance
 Lists all projects in AWS CodeStar associated with your AWS account.
 
 
-=head2 ListResources(ProjectId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListResources
+
+=over
+
+=item ProjectId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::ListResources>
 
@@ -344,7 +550,18 @@ Returns: a L<Paws::CodeStar::ListResourcesResult> instance
 Lists resources associated with a project in AWS CodeStar.
 
 
-=head2 ListTagsForProject(Id => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTagsForProject
+
+=over
+
+=item Id => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::ListTagsForProject>
 
@@ -353,7 +570,18 @@ Returns: a L<Paws::CodeStar::ListTagsForProjectResult> instance
 Gets the tags for a project.
 
 
-=head2 ListTeamMembers(ProjectId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTeamMembers
+
+=over
+
+=item ProjectId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::ListTeamMembers>
 
@@ -362,7 +590,16 @@ Returns: a L<Paws::CodeStar::ListTeamMembersResult> instance
 Lists all team members associated with a project.
 
 
-=head2 ListUserProfiles([MaxResults => Int, NextToken => Str])
+=head2 ListUserProfiles
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::ListUserProfiles>
 
@@ -372,7 +609,16 @@ Lists all the user profiles configured for your AWS account in AWS
 CodeStar.
 
 
-=head2 TagProject(Id => Str, Tags => L<Paws::CodeStar::Tags>)
+=head2 TagProject
+
+=over
+
+=item Id => Str
+
+=item Tags => L<Paws::CodeStar::Tags>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::TagProject>
 
@@ -381,7 +627,16 @@ Returns: a L<Paws::CodeStar::TagProjectResult> instance
 Adds tags to a project.
 
 
-=head2 UntagProject(Id => Str, Tags => ArrayRef[Str|Undef])
+=head2 UntagProject
+
+=over
+
+=item Id => Str
+
+=item Tags => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::UntagProject>
 
@@ -390,7 +645,18 @@ Returns: a L<Paws::CodeStar::UntagProjectResult> instance
 Removes tags from a project.
 
 
-=head2 UpdateProject(Id => Str, [Description => Str, Name => Str])
+=head2 UpdateProject
+
+=over
+
+=item Id => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::UpdateProject>
 
@@ -399,7 +665,20 @@ Returns: a L<Paws::CodeStar::UpdateProjectResult> instance
 Updates a project in AWS CodeStar.
 
 
-=head2 UpdateTeamMember(ProjectId => Str, UserArn => Str, [ProjectRole => Str, RemoteAccessAllowed => Bool])
+=head2 UpdateTeamMember
+
+=over
+
+=item ProjectId => Str
+
+=item UserArn => Str
+
+=item [ProjectRole => Str]
+
+=item [RemoteAccessAllowed => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::UpdateTeamMember>
 
@@ -410,7 +689,20 @@ example, you can change a team member's role in the project, or change
 whether they have remote access to project resources.
 
 
-=head2 UpdateUserProfile(UserArn => Str, [DisplayName => Str, EmailAddress => Str, SshPublicKey => Str])
+=head2 UpdateUserProfile
+
+=over
+
+=item UserArn => Str
+
+=item [DisplayName => Str]
+
+=item [EmailAddress => Str]
+
+=item [SshPublicKey => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeStar::UpdateUserProfile>
 
@@ -426,6 +718,54 @@ the user's information appears to other users in AWS CodeStar.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllProjects(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllProjects([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - projects, passing the object as the first parameter, and the string 'projects' as the second parameter 
+
+If not, it will return a a L<Paws::CodeStar::ListProjectsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResources(sub { },ProjectId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllResources(ProjectId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resources, passing the object as the first parameter, and the string 'resources' as the second parameter 
+
+If not, it will return a a L<Paws::CodeStar::ListResourcesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTeamMembers(sub { },ProjectId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTeamMembers(ProjectId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - teamMembers, passing the object as the first parameter, and the string 'teamMembers' as the second parameter 
+
+If not, it will return a a L<Paws::CodeStar::ListTeamMembersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUserProfiles(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllUserProfiles([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - userProfiles, passing the object as the first parameter, and the string 'userProfiles' as the second parameter 
+
+If not, it will return a a L<Paws::CodeStar::ListUserProfilesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

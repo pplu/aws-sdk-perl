@@ -20,25 +20,53 @@ Paws::CodeDeploy::RegisterApplicationRevision - Arguments for method RegisterApp
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RegisterApplicationRevision on the 
-AWS CodeDeploy service. Use the attributes of this class
+This class represents the parameters used for calling the method RegisterApplicationRevision on the
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method RegisterApplicationRevision.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterApplicationRevision.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RegisterApplicationRevision(Att1 => $value1, Att2 => $value2, ...);
+    my $codedeploy = Paws->service('CodeDeploy');
+    $codedeploy->RegisterApplicationRevision(
+      ApplicationName => 'MyApplicationName',
+      Revision        => {
+        AppSpecContent => {
+          Content => 'MyRawStringContent',    # OPTIONAL
+          Sha256  => 'MyRawStringSha256',     # OPTIONAL
+        },    # OPTIONAL
+        GitHubLocation => {
+          CommitId   => 'MyCommitId',      # OPTIONAL
+          Repository => 'MyRepository',    # OPTIONAL
+        },    # OPTIONAL
+        RevisionType =>
+          'S3',    # values: S3, GitHub, String, AppSpecContent; OPTIONAL
+        S3Location => {
+          Bucket => 'MyS3Bucket',    # OPTIONAL
+          BundleType => 'tar',     # values: tar, tgz, zip, YAML, JSON; OPTIONAL
+          ETag       => 'MyETag',  # OPTIONAL
+          Key        => 'MyS3Key', # OPTIONAL
+          Version => 'MyVersionId',    # OPTIONAL
+        },    # OPTIONAL
+        String => {
+          Content => 'MyRawStringContent',    # OPTIONAL
+          Sha256  => 'MyRawStringSha256',     # OPTIONAL
+        },    # OPTIONAL
+      },
+      Description => 'MyDescription',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codedeploy/RegisterApplicationRevision>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of an AWS CodeDeploy application associated with the
-applicable IAM user or AWS account.
+The name of an AWS CodeDeploy application associated with the IAM user
+or AWS account.
 
 
 

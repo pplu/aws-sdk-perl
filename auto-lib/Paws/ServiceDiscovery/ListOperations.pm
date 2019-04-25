@@ -20,17 +20,39 @@ Paws::ServiceDiscovery::ListOperations - Arguments for method ListOperations on 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListOperations on the 
-Amazon Route 53 Auto Naming service. Use the attributes of this class
+This class represents the parameters used for calling the method ListOperations on the
+L<AWS Cloud Map|Paws::ServiceDiscovery> service. Use the attributes of this class
 as arguments to method ListOperations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListOperations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListOperations(Att1 => $value1, Att2 => $value2, ...);
+    my $servicediscovery = Paws->service('ServiceDiscovery');
+    my $ListOperationsResponse = $servicediscovery->ListOperations(
+      Filters => [
+        {
+          Name => 'NAMESPACE_ID'
+          ,    # values: NAMESPACE_ID, SERVICE_ID, STATUS, TYPE, UPDATE_DATE
+          Values => [
+            'MyFilterValue', ...    # min: 1, max: 255
+          ],
+          Condition => 'EQ',        # values: EQ, IN, BETWEEN; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
+      MaxResults => 1,              # OPTIONAL
+      NextToken  => 'MyNextToken',  # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken  = $ListOperationsResponse->NextToken;
+    my $Operations = $ListOperationsResponse->Operations;
+
+    # Returns a L<Paws::ServiceDiscovery::ListOperationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicediscovery/ListOperations>
 
 =head1 ATTRIBUTES
 
@@ -48,9 +70,9 @@ filters to be returned by C<ListOperations>.
 
 =head2 MaxResults => Int
 
-The maximum number of items that you want Amazon Route 53 to return in
+The maximum number of items that you want AWS Cloud Map to return in
 the response to a C<ListOperations> request. If you don't specify a
-value for C<MaxResults>, Amazon Route 53 returns up to 100 operations.
+value for C<MaxResults>, AWS Cloud Map returns up to 100 operations.
 
 
 
@@ -58,10 +80,15 @@ value for C<MaxResults>, Amazon Route 53 returns up to 100 operations.
 
 For the first C<ListOperations> request, omit this value.
 
-If more than C<MaxResults> operations match the specified criteria, you
-can submit another C<ListOperations> request to get the next group of
-results. Specify the value of C<NextToken> from the previous response
-in the next request.
+If the response contains C<NextToken>, submit another C<ListOperations>
+request to get the next group of results. Specify the value of
+C<NextToken> from the previous response in the next request.
+
+AWS Cloud Map gets C<MaxResults> operations and then filters them based
+on the specified criteria. It's possible that no operations in the
+first C<MaxResults> operations matched the specified criteria but that
+subsequent groups of C<MaxResults> operations do contain operations
+that match the criteria.
 
 
 

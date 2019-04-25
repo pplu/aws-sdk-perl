@@ -10,7 +10,8 @@ package Paws::AppStream::Fleet;
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has FleetErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::FleetError]');
   has FleetType => (is => 'ro', isa => 'Str');
-  has ImageName => (is => 'ro', isa => 'Str', required => 1);
+  has ImageArn => (is => 'ro', isa => 'Str');
+  has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -46,7 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Contains the parameters for a fleet.
+Describes the parameters for a fleet.
 
 =head1 ATTRIBUTES
 
@@ -68,7 +69,7 @@ Contains the parameters for a fleet.
 
 =head2 Description => Str
 
-  The description for display.
+  The description to display.
 
 
 =head2 DisconnectTimeoutInSeconds => Int
@@ -81,12 +82,13 @@ Specify a value between 60 and 57600.
 
 =head2 DisplayName => Str
 
-  The fleet name for display.
+  The fleet name to display.
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-  The information needed to join a Microsoft Active Directory domain.
+  The name of the directory and organizational unit (OU) to use to join
+the fleet to a Microsoft Active Directory domain.
 
 
 =head2 EnableDefaultInternetAccess => Bool
@@ -122,7 +124,12 @@ streaming apps.
 
 
 
-=head2 B<REQUIRED> ImageName => Str
+=head2 ImageArn => Str
+
+  The ARN for the public, private, or shared image.
+
+
+=head2 ImageName => Str
 
   The name of the image used to create the fleet.
 

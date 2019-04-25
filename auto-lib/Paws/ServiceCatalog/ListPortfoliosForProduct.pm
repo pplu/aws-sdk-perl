@@ -21,17 +21,31 @@ Paws::ServiceCatalog::ListPortfoliosForProduct - Arguments for method ListPortfo
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListPortfoliosForProduct on the 
-AWS Service Catalog service. Use the attributes of this class
+This class represents the parameters used for calling the method ListPortfoliosForProduct on the
+L<AWS Service Catalog|Paws::ServiceCatalog> service. Use the attributes of this class
 as arguments to method ListPortfoliosForProduct.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPortfoliosForProduct.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListPortfoliosForProduct(Att1 => $value1, Att2 => $value2, ...);
+    my $servicecatalog = Paws->service('ServiceCatalog');
+    my $ListPortfoliosForProductOutput =
+      $servicecatalog->ListPortfoliosForProduct(
+      ProductId      => 'MyId',
+      AcceptLanguage => 'MyAcceptLanguage',    # OPTIONAL
+      PageSize       => 1,                     # OPTIONAL
+      PageToken      => 'MyPageToken',         # OPTIONAL
+      );
+
+    # Results:
+    my $NextPageToken    = $ListPortfoliosForProductOutput->NextPageToken;
+    my $PortfolioDetails = $ListPortfoliosForProductOutput->PortfolioDetails;
+
+    # Returns a L<Paws::ServiceCatalog::ListPortfoliosForProductOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog/ListPortfoliosForProduct>
 
 =head1 ATTRIBUTES
 

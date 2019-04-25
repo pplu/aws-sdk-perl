@@ -8,7 +8,7 @@ requires 'URI';
 requires 'Net::Amazon::Signature::V3';
 requires 'Net::Amazon::Signature::V4';
 requires 'JSON::MaybeXS';
-requires 'XML::Simple';
+requires 'XML::Simple' => '2.21';
 requires 'IO::Socket::SSL';
 requires 'DateTime';
 requires 'DateTime::Format::ISO8601';
@@ -18,7 +18,7 @@ requires 'URI::Template';
 requires 'Config::INI';
 requires 'Digest::SHA';
 # For the paws CLI
-requires 'Hash::Flatten';
+requires 'DataStruct::Flat';
 requires 'MooseX::Getopt';
 requires 'ARGV::Struct';
 requires 'Module::Find';
@@ -32,17 +32,7 @@ suggests "Future::Mojo";
 on 'develop' => sub {
   requires 'Template';
   requires 'Pod::HTML2Pod';
-  requires 'Dist::Zilla';
-  requires 'Dist::Zilla::Plugin::Prereqs::FromCPANfile';
-  requires 'Dist::Zilla::Plugin::VersionFromMainModule';
-  requires 'Dist::Zilla::PluginBundle::Git';
-  requires 'Dist::Zilla::Plugin::UploadToCPAN';
-  requires 'Dist::Zilla::Plugin::RunExtraTests';
-  requires 'Dist::Zilla::Plugin::Test::Compile';
-  requires 'Dist::Zilla::Plugin::Git::Check';
-  requires 'Dist::Zilla::Plugin::Git::GatherDir';
-  requires 'Dist::Zilla::Plugin::Git::Push';
-  requires 'Dist::Zilla::Plugin::Git::Tag';
+  requires 'Perl::Tidy';
   requires 'Carp::Always';
   requires 'Devel::Cover';
   requires 'Data::Printer';
@@ -52,16 +42,22 @@ on 'develop' => sub {
   # For developing / testing the pluggable callers
   requires 'Mojolicious';
   requires 'Future::Mojo', '>= 0.003';
+  requires 'Mojo::Promise::Role::Futurify';
   requires 'EV';
   requires 'LWP::UserAgent';
   requires 'Furl';
+  requires 'Pod::Checker';
+  requires 'Pod::Escapes';
+  requires 'Data::Munge';
 };
+
 on 'test' => sub {
-  requires 'File::Slurper';
+  requires 'Path::Class';
   requires 'YAML';
   requires 'Test::More';
   requires 'Test::Timer';
   requires 'Test::Exception';
   requires 'Test::Warnings';
   requires 'Class::Unload';
+  requires 'File::Slurper';
 };

@@ -23,49 +23,63 @@ Paws::Greengrass::CreateDeployment - Arguments for method CreateDeployment on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDeployment on the 
-AWS Greengrass service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateDeployment on the
+L<AWS Greengrass|Paws::Greengrass> service. Use the attributes of this class
 as arguments to method CreateDeployment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeployment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDeployment(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $CreateDeploymentResponse = $greengrass->CreateDeployment(
+      GroupId         => 'My__string',
+      AmznClientToken => 'My__string',       # OPTIONAL
+      DeploymentId    => 'My__string',       # OPTIONAL
+      DeploymentType  => 'NewDeployment',    # OPTIONAL
+      GroupVersionId  => 'My__string',       # OPTIONAL
+    );
+
+    # Results:
+    my $DeploymentArn = $CreateDeploymentResponse->DeploymentArn;
+    my $DeploymentId  = $CreateDeploymentResponse->DeploymentId;
+
+    # Returns a L<Paws::Greengrass::CreateDeploymentResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateDeployment>
 
 =head1 ATTRIBUTES
 
 
 =head2 AmznClientToken => Str
 
-The client token used to request idempotent operations.
+A client token used to correlate requests and responses.
 
 
 
 =head2 DeploymentId => Str
 
-Id of the deployment if you wish to redeploy a previous deployment.
+The ID of the deployment if you wish to redeploy a previous deployment.
 
 
 
 =head2 DeploymentType => Str
 
-Type of deployment. When used in CreateDeployment, only NewDeployment
-and Redeployment are valid.
+The type of deployment. When used in ''CreateDeployment'', only
+''NewDeployment'' and ''Redeployment'' are valid.
 
 Valid values are: C<"NewDeployment">, C<"Redeployment">, C<"ResetDeployment">, C<"ForceResetDeployment">
 
 =head2 B<REQUIRED> GroupId => Str
 
-The unique Id of the AWS Greengrass Group
+The ID of the Greengrass group.
 
 
 
 =head2 GroupVersionId => Str
 
-Group Version you wish to deploy.
+The ID of the group version to be deployed.
 
 
 

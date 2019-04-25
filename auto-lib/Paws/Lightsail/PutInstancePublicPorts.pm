@@ -19,17 +19,35 @@ Paws::Lightsail::PutInstancePublicPorts - Arguments for method PutInstancePublic
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutInstancePublicPorts on the 
-Amazon Lightsail service. Use the attributes of this class
+This class represents the parameters used for calling the method PutInstancePublicPorts on the
+L<Amazon Lightsail|Paws::Lightsail> service. Use the attributes of this class
 as arguments to method PutInstancePublicPorts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutInstancePublicPorts.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutInstancePublicPorts(Att1 => $value1, Att2 => $value2, ...);
+    my $lightsail = Paws->service('Lightsail');
+    my $PutInstancePublicPortsResult = $lightsail->PutInstancePublicPorts(
+      InstanceName => 'MyResourceName',
+      PortInfos    => [
+        {
+          FromPort => 1,        # max: 65535; OPTIONAL
+          Protocol => 'tcp',    # values: tcp, all, udp; OPTIONAL
+          ToPort   => 1,        # max: 65535; OPTIONAL
+        },
+        ...
+      ],
+
+    );
+
+    # Results:
+    my $Operation = $PutInstancePublicPortsResult->Operation;
+
+    # Returns a L<Paws::Lightsail::PutInstancePublicPortsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/PutInstancePublicPorts>
 
 =head1 ATTRIBUTES
 

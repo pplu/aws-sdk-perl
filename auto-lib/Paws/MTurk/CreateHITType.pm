@@ -24,17 +24,50 @@ Paws::MTurk::CreateHITType - Arguments for method CreateHITType on L<Paws::MTurk
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateHITType on the 
-Amazon Mechanical Turk service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateHITType on the
+L<Amazon Mechanical Turk|Paws::MTurk> service. Use the attributes of this class
 as arguments to method CreateHITType.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateHITType.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateHITType(Att1 => $value1, Att2 => $value2, ...);
+    my $mturk-requester = Paws->service('MTurk');
+    my $CreateHITTypeResponse = $mturk -requester->CreateHITType(
+      AssignmentDurationInSeconds => 1,
+      Description                 => 'MyString',
+      Reward                      => 'MyCurrencyAmount',
+      Title                       => 'MyString',
+      AutoApprovalDelayInSeconds  => 1,                    # OPTIONAL
+      Keywords                    => 'MyString',           # OPTIONAL
+      QualificationRequirements   => [
+        {
+          Comparator => 'LessThan'
+          , # values: LessThan, LessThanOrEqualTo, GreaterThan, GreaterThanOrEqualTo, EqualTo, NotEqualTo, Exists, DoesNotExist, In, NotIn
+          QualificationTypeId => 'MyString',
+          ActionsGuarded      => 'Accept'
+          , # values: Accept, PreviewAndAccept, DiscoverPreviewAndAccept; OPTIONAL
+          IntegerValues => [ 1, ... ],    # OPTIONAL
+          LocaleValues => [
+            {
+              Country     => 'MyCountryParameters',    # min: 2, max: 2
+              Subdivision => 'MyCountryParameters',    # min: 2, max: 2
+            },
+            ...
+          ],                                           # OPTIONAL
+          RequiredToPreview => 1,                      # OPTIONAL
+        },
+        ...
+      ],                                               # OPTIONAL
+    );
+
+    # Results:
+    my $HITTypeId = $CreateHITTypeResponse->HITTypeId;
+
+    # Returns a L<Paws::MTurk::CreateHITTypeResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mturk-requester/CreateHITType>
 
 =head1 ATTRIBUTES
 
@@ -77,8 +110,11 @@ commas. These words are used in searches to find HITs.
 
 =head2 QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]
 
-A condition that a Worker's Qualifications must meet before the Worker
-is allowed to accept and complete the HIT.
+Conditions that a Worker's Qualifications must meet in order to accept
+the HIT. A HIT can have between zero and ten Qualification
+requirements. All requirements must be met in order for a Worker to
+accept the HIT. Additionally, other actions can be restricted using the
+C<ActionsGuarded> field on each C<QualificationRequirement> structure.
 
 
 

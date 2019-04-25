@@ -3,6 +3,7 @@ package Paws::CloudDirectory::ListObjectParents;
   use Moose;
   has ConsistencyLevel => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-consistency-level');
   has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
+  has IncludeAllLinksToEachParent => (is => 'ro', isa => 'Bool');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
@@ -23,17 +24,35 @@ Paws::CloudDirectory::ListObjectParents - Arguments for method ListObjectParents
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListObjectParents on the 
-Amazon CloudDirectory service. Use the attributes of this class
+This class represents the parameters used for calling the method ListObjectParents on the
+L<Amazon CloudDirectory|Paws::CloudDirectory> service. Use the attributes of this class
 as arguments to method ListObjectParents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListObjectParents.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListObjectParents(Att1 => $value1, Att2 => $value2, ...);
+    my $clouddirectory = Paws->service('CloudDirectory');
+    my $ListObjectParentsResponse = $clouddirectory->ListObjectParents(
+      DirectoryArn    => 'MyArn',
+      ObjectReference => {
+        Selector => 'MySelectorObjectReference',    # OPTIONAL
+      },
+      ConsistencyLevel            => 'SERIALIZABLE',    # OPTIONAL
+      IncludeAllLinksToEachParent => 1,                 # OPTIONAL
+      MaxResults                  => 1,                 # OPTIONAL
+      NextToken                   => 'MyNextToken',     # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken   = $ListObjectParentsResponse->NextToken;
+    my $ParentLinks = $ListObjectParentsResponse->ParentLinks;
+    my $Parents     = $ListObjectParentsResponse->Parents;
+
+    # Returns a L<Paws::CloudDirectory::ListObjectParentsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clouddirectory/ListObjectParents>
 
 =head1 ATTRIBUTES
 
@@ -50,6 +69,13 @@ Valid values are: C<"SERIALIZABLE">, C<"EVENTUAL">
 
 The Amazon Resource Name (ARN) that is associated with the Directory
 where the object resides. For more information, see arns.
+
+
+
+=head2 IncludeAllLinksToEachParent => Bool
+
+When set to True, returns all ListObjectParentsResponse$ParentLinks.
+There could be multiple links between a parent-child pair.
 
 
 

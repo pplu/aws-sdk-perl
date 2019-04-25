@@ -32,14 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-List of definition responses
+A list of definitions.
 
 =head1 ATTRIBUTES
 
 
 =head2 Definitions => ArrayRef[L<Paws::Greengrass::DefinitionInformation>]
 
-  Definitions
+  Information about a definition.
 
 
 =head2 NextToken => Str

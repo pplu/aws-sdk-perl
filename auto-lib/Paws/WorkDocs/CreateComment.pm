@@ -26,17 +26,33 @@ Paws::WorkDocs::CreateComment - Arguments for method CreateComment on L<Paws::Wo
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateComment on the 
-Amazon WorkDocs service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateComment on the
+L<Amazon WorkDocs|Paws::WorkDocs> service. Use the attributes of this class
 as arguments to method CreateComment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateComment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateComment(Att1 => $value1, Att2 => $value2, ...);
+    my $workdocs = Paws->service('WorkDocs');
+    my $CreateCommentResponse = $workdocs->CreateComment(
+      DocumentId          => 'MyResourceIdType',
+      Text                => 'MyCommentTextType',
+      VersionId           => 'MyDocumentVersionIdType',
+      AuthenticationToken => 'MyAuthenticationHeaderType',    # OPTIONAL
+      NotifyCollaborators => 1,                               # OPTIONAL
+      ParentId            => 'MyCommentIdType',               # OPTIONAL
+      ThreadId            => 'MyCommentIdType',               # OPTIONAL
+      Visibility          => 'PUBLIC',                        # OPTIONAL
+    );
+
+    # Results:
+    my $Comment = $CreateCommentResponse->Comment;
+
+    # Returns a L<Paws::WorkDocs::CreateCommentResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workdocs/CreateComment>
 
 =head1 ATTRIBUTES
 

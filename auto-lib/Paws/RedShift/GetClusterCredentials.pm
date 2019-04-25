@@ -23,17 +23,33 @@ Paws::RedShift::GetClusterCredentials - Arguments for method GetClusterCredentia
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetClusterCredentials on the 
-Amazon Redshift service. Use the attributes of this class
+This class represents the parameters used for calling the method GetClusterCredentials on the
+L<Amazon Redshift|Paws::RedShift> service. Use the attributes of this class
 as arguments to method GetClusterCredentials.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetClusterCredentials.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetClusterCredentials(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $ClusterCredentials = $redshift->GetClusterCredentials(
+      ClusterIdentifier => 'MyString',
+      DbUser            => 'MyString',
+      AutoCreate        => 1,                      # OPTIONAL
+      DbGroups          => [ 'MyString', ... ],    # OPTIONAL
+      DbName            => 'MyString',             # OPTIONAL
+      DurationSeconds   => 1,                      # OPTIONAL
+    );
+
+    # Results:
+    my $DbPassword = $ClusterCredentials->DbPassword;
+    my $DbUser     = $ClusterCredentials->DbUser;
+    my $Expiration = $ClusterCredentials->Expiration;
+
+    # Returns a L<Paws::RedShift::ClusterCredentials> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/GetClusterCredentials>
 
 =head1 ATTRIBUTES
 
@@ -153,7 +169,8 @@ Constraints:
 
 =item *
 
-Must be 1 to 64 alphanumeric characters or hyphens
+Must be 1 to 64 alphanumeric characters or hyphens. The user name can't
+be C<PUBLIC>.
 
 =item *
 

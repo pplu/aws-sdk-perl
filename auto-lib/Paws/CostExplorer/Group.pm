@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-One level of grouped data within the results.
+One level of grouped data in the results.
 
 =head1 ATTRIBUTES
 
 
 =head2 Keys => ArrayRef[Str|Undef]
 
-  The keys included in this group.
+  The keys that are included in this group.
 
 
 =head2 Metrics => L<Paws::CostExplorer::Metrics>
 
-  The metrics included in this group.
+  The metrics that are included in this group.
 
 
 

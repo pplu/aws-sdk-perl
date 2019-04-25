@@ -5,6 +5,7 @@ package Paws::LexModels::PutIntentResponse;
   has ConclusionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'conclusionStatement');
   has ConfirmationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'confirmationPrompt');
   has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DialogCodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook', traits => ['NameInRequest'], request_name => 'dialogCodeHook');
   has FollowUpPrompt => (is => 'ro', isa => 'Paws::LexModels::FollowUpPrompt', traits => ['NameInRequest'], request_name => 'followUpPrompt');
@@ -49,6 +50,11 @@ intent before fulfilling it.
 =head2 CreatedDate => Str
 
 The date that the intent was created.
+
+
+=head2 CreateVersion => Bool
+
+
 
 
 =head2 Description => Str

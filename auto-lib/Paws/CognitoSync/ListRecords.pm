@@ -25,17 +25,41 @@ Paws::CognitoSync::ListRecords - Arguments for method ListRecords on L<Paws::Cog
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListRecords on the 
-Amazon Cognito Sync service. Use the attributes of this class
+This class represents the parameters used for calling the method ListRecords on the
+L<Amazon Cognito Sync|Paws::CognitoSync> service. Use the attributes of this class
 as arguments to method ListRecords.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListRecords.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListRecords(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-sync = Paws->service('CognitoSync');
+    my $ListRecordsResponse = $cognito -sync->ListRecords(
+      DatasetName      => 'MyDatasetName',
+      IdentityId       => 'MyIdentityId',
+      IdentityPoolId   => 'MyIdentityPoolId',
+      LastSyncCount    => 1,                       # OPTIONAL
+      MaxResults       => 1,                       # OPTIONAL
+      NextToken        => 'MyString',              # OPTIONAL
+      SyncSessionToken => 'MySyncSessionToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $Count = $ListRecordsResponse->Count;
+    my $DatasetDeletedAfterRequestedSyncCount =
+      $ListRecordsResponse->DatasetDeletedAfterRequestedSyncCount;
+    my $DatasetExists      = $ListRecordsResponse->DatasetExists;
+    my $DatasetSyncCount   = $ListRecordsResponse->DatasetSyncCount;
+    my $LastModifiedBy     = $ListRecordsResponse->LastModifiedBy;
+    my $MergedDatasetNames = $ListRecordsResponse->MergedDatasetNames;
+    my $NextToken          = $ListRecordsResponse->NextToken;
+    my $Records            = $ListRecordsResponse->Records;
+    my $SyncSessionToken   = $ListRecordsResponse->SyncSessionToken;
+
+    # Returns a L<Paws::CognitoSync::ListRecordsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-sync/ListRecords>
 
 =head1 ATTRIBUTES
 

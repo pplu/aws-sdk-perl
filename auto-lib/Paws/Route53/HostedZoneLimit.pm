@@ -51,7 +51,7 @@ create in the specified hosted zone.
 
 =item *
 
-B<MAX_VPCS_ASSOCIATED_BY_TYPE>: The maximum number of Amazon VPCs that
+B<MAX_VPCS_ASSOCIATED_BY_ZONE>: The maximum number of Amazon VPCs that
 you can associate with the specified private hosted zone.
 
 =back

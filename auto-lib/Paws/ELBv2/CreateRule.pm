@@ -21,25 +21,74 @@ Paws::ELBv2::CreateRule - Arguments for method CreateRule on L<Paws::ELBv2>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateRule on the 
-Elastic Load Balancing service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateRule on the
+L<Elastic Load Balancing|Paws::ELBv2> service. Use the attributes of this class
 as arguments to method CreateRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRule.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateRule(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELBv2');
+    # To create a rule
+    # This example creates a rule that forwards requests to the specified target
+    # group if the URL contains the specified pattern (for example, /img/*).
+    my $CreateRuleOutput = $elasticloadbalancing->CreateRule(
+      {
+        'Actions' => [
+
+          {
+            'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
+            'Type' => 'forward'
+          }
+        ],
+        'Conditions' => [
+
+          {
+            'Field'  => 'path-pattern',
+            'Values' => ['/img/*']
+          }
+        ],
+        'ListenerArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2',
+        'Priority' => 10
+      }
+    );
+
+    # Results:
+    my $Rules = $CreateRuleOutput->Rules;
+
+    # Returns a L<Paws::ELBv2::CreateRuleOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/CreateRule>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Actions => ArrayRef[L<Paws::ELBv2::Action>]
 
-An action. Each action has the type C<forward> and specifies a target
-group.
+The actions. Each rule must include exactly one of the following types
+of actions: C<forward>, C<fixed-response>, or C<redirect>.
+
+If the action type is C<forward>, you specify a target group. The
+protocol of the target group must be HTTP or HTTPS for an Application
+Load Balancer. The protocol of the target group must be TCP or TLS for
+a Network Load Balancer.
+
+[HTTPS listeners] If the action type is C<authenticate-oidc>, you
+authenticate users through an identity provider that is OpenID Connect
+(OIDC) compliant.
+
+[HTTPS listeners] If the action type is C<authenticate-cognito>, you
+authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is C<redirect>, you
+redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is C<fixed-response>,
+you drop specified client requests and return a custom HTTP response.
 
 
 
@@ -51,7 +100,7 @@ value.
 If the field name is C<host-header>, you can specify a single host name
 (for example, my.example.com). A host name is case insensitive, can be
 up to 128 characters in length, and can contain any of the following
-characters. Note that you can include up to three wildcard characters.
+characters. You can include up to three wildcard characters.
 
 =over
 
@@ -74,9 +123,9 @@ A-Z, a-z, 0-9
 =back
 
 If the field name is C<path-pattern>, you can specify a single path
-pattern. A path pattern is case sensitive, can be up to 128 characters
-in length, and can contain any of the following characters. Note that
-you can include up to three wildcard characters.
+pattern. A path pattern is case-sensitive, can be up to 128 characters
+in length, and can contain any of the following characters. You can
+include up to three wildcard characters.
 
 =over
 
@@ -113,8 +162,8 @@ The Amazon Resource Name (ARN) of the listener.
 
 =head2 B<REQUIRED> Priority => Int
 
-The priority for the rule. A listener can't have multiple rules with
-the same priority.
+The rule priority. A listener can't have multiple rules with the same
+priority.
 
 
 

@@ -23,17 +23,39 @@ Paws::Comprehend::StartTopicsDetectionJob - Arguments for method StartTopicsDete
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StartTopicsDetectionJob on the 
-Amazon Comprehend service. Use the attributes of this class
+This class represents the parameters used for calling the method StartTopicsDetectionJob on the
+L<Amazon Comprehend|Paws::Comprehend> service. Use the attributes of this class
 as arguments to method StartTopicsDetectionJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartTopicsDetectionJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartTopicsDetectionJob(Att1 => $value1, Att2 => $value2, ...);
+    my $comprehend = Paws->service('Comprehend');
+    my $StartTopicsDetectionJobResponse = $comprehend->StartTopicsDetectionJob(
+      DataAccessRoleArn => 'MyIamRoleArn',
+      InputDataConfig   => {
+        S3Uri       => 'MyS3Uri',           # max: 1024
+        InputFormat => 'ONE_DOC_PER_FILE'
+        ,    # values: ONE_DOC_PER_FILE, ONE_DOC_PER_LINE; OPTIONAL
+      },
+      OutputDataConfig => {
+        S3Uri => 'MyS3Uri',    # max: 1024
+
+      },
+      ClientRequestToken => 'MyClientRequestTokenString',    # OPTIONAL
+      JobName            => 'MyJobName',                     # OPTIONAL
+      NumberOfTopics     => 1,                               # OPTIONAL
+    );
+
+    # Results:
+    my $JobId     = $StartTopicsDetectionJobResponse->JobId;
+    my $JobStatus = $StartTopicsDetectionJobResponse->JobStatus;
+
+    # Returns a L<Paws::Comprehend::StartTopicsDetectionJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend/StartTopicsDetectionJob>
 
 =head1 ATTRIBUTES
 
@@ -49,7 +71,9 @@ request token, Amazon Comprehend generates one.
 
 The Amazon Resource Name (ARN) of the AWS Identity and Access
 Management (IAM) role that grants Amazon Comprehend read access to your
-input data.
+input data. For more information, see
+https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
+(https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions).
 
 
 
@@ -73,7 +97,10 @@ The number of topics to detect.
 
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
 
-Specifies where to send the output files.
+Specifies where to send the output files. The output is a compressed
+archive with two files, C<topic-terms.csv> that lists the terms
+associated with each topic, and C<doc-topics.csv> that lists the
+documents associated with each topic
 
 
 

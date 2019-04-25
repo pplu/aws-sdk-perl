@@ -21,60 +21,37 @@ Paws::SQS::AddPermission - Arguments for method AddPermission on L<Paws::SQS>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method AddPermission on the 
-Amazon Simple Queue Service service. Use the attributes of this class
+This class represents the parameters used for calling the method AddPermission on the
+L<Amazon Simple Queue Service|Paws::SQS> service. Use the attributes of this class
 as arguments to method AddPermission.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddPermission.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AddPermission(Att1 => $value1, Att2 => $value2, ...);
+    my $sqs = Paws->service('SQS');
+    $sqs->AddPermission(
+      AWSAccountIds => [ 'MyString', ... ],
+      Actions       => [ 'MyString', ... ],
+      Label         => 'MyString',
+      QueueUrl      => 'MyString',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs/AddPermission>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Actions => ArrayRef[Str|Undef]
 
-The action the client wants to allow for the specified principal. The
-following values are valid:
+The action the client wants to allow for the specified principal. Valid
+values: the name of any action or C<*>.
 
-=over
-
-=item *
-
-C<*>
-
-=item *
-
-C<ChangeMessageVisibility>
-
-=item *
-
-C<DeleteMessage>
-
-=item *
-
-C<GetQueueAttributes>
-
-=item *
-
-C<GetQueueUrl>
-
-=item *
-
-C<ReceiveMessage>
-
-=item *
-
-C<SendMessage>
-
-=back
-
-For more information about these actions, see Understanding Permissions
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/acp-overview.html#PermissionTypes)
+For more information about these actions, see Overview of Managing
+Access Permissions to Your Amazon Simple Queue Service Resource
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-overview-of-managing-access.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 Specifying C<SendMessage>, C<DeleteMessage>, or
@@ -92,7 +69,7 @@ The AWS account number of the principal
 given permission. The principal must have an AWS account, but does not
 need to be signed up for Amazon SQS. For information about locating the
 AWS account identification, see Your AWS Identifiers
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AWSCredentials.html)
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 
@@ -110,7 +87,7 @@ underscores (C<_>).
 
 The URL of the Amazon SQS queue to which permissions are added.
 
-Queue URLs are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 

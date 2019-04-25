@@ -24,17 +24,39 @@ Paws::ServiceCatalog::CopyProduct - Arguments for method CopyProduct on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CopyProduct on the 
-AWS Service Catalog service. Use the attributes of this class
+This class represents the parameters used for calling the method CopyProduct on the
+L<AWS Service Catalog|Paws::ServiceCatalog> service. Use the attributes of this class
 as arguments to method CopyProduct.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyProduct.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CopyProduct(Att1 => $value1, Att2 => $value2, ...);
+    my $servicecatalog = Paws->service('ServiceCatalog');
+    my $CopyProductOutput = $servicecatalog->CopyProduct(
+      IdempotencyToken => 'MyIdempotencyToken',
+      SourceProductArn => 'MyProductArn',
+      AcceptLanguage   => 'MyAcceptLanguage',     # OPTIONAL
+      CopyOptions      => [
+        'CopyTags', ...                           # values: CopyTags
+      ],                                          # OPTIONAL
+      SourceProvisioningArtifactIdentifiers => [
+        {
+          'Id' => 'MyProvisioningArtifactPropertyValue',    # key: values: Id
+        },
+        ...
+      ],                                                    # OPTIONAL
+      TargetProductId   => 'MyId',                          # OPTIONAL
+      TargetProductName => 'MyProductViewName',             # OPTIONAL
+    );
+
+    # Results:
+    my $CopyProductToken = $CopyProductOutput->CopyProductToken;
+
+    # Returns a L<Paws::ServiceCatalog::CopyProductOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog/CopyProduct>
 
 =head1 ATTRIBUTES
 

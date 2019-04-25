@@ -22,17 +22,36 @@ Paws::KMS::GenerateDataKey - Arguments for method GenerateDataKey on L<Paws::KMS
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GenerateDataKey on the 
-AWS Key Management Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GenerateDataKey on the
+L<AWS Key Management Service|Paws::KMS> service. Use the attributes of this class
 as arguments to method GenerateDataKey.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GenerateDataKey.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GenerateDataKey(Att1 => $value1, Att2 => $value2, ...);
+    my $kms = Paws->service('KMS');
+    # To generate a data key
+    # The following example generates a 256-bit symmetric data encryption key
+    # (data key) in two formats. One is the unencrypted (plainext) data key, and
+    # the other is the data key encrypted with the specified customer master key
+    # (CMK).
+    my $GenerateDataKeyResponse = $kms->GenerateDataKey(
+      {
+        'KeyId'   => 'alias/ExampleAlias',
+        'KeySpec' => 'AES_256'
+      }
+    );
+
+    # Results:
+    my $CiphertextBlob = $GenerateDataKeyResponse->CiphertextBlob;
+    my $KeyId          = $GenerateDataKeyResponse->KeyId;
+    my $Plaintext      = $GenerateDataKeyResponse->Plaintext;
+
+    # Returns a L<Paws::KMS::GenerateDataKeyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/GenerateDataKey>
 
 =head1 ATTRIBUTES
 

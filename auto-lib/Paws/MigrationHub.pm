@@ -1,6 +1,7 @@
 package Paws::MigrationHub;
   use Moose;
   sub service { 'mgh' }
+  sub signing_name { 'mgh' }
   sub version { '2017-05-31' }
   sub target_prefix { 'AWSMigrationHub' }
   sub json_version { "1.1" }
@@ -95,6 +96,98 @@ package Paws::MigrationHub;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllCreatedArtifacts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCreatedArtifacts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCreatedArtifacts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CreatedArtifactList }, @{ $next_result->CreatedArtifactList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CreatedArtifactList') foreach (@{ $result->CreatedArtifactList });
+        $result = $self->ListCreatedArtifacts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CreatedArtifactList') foreach (@{ $result->CreatedArtifactList });
+    }
+
+    return undef
+  }
+  sub ListAllDiscoveredResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDiscoveredResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDiscoveredResources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DiscoveredResourceList }, @{ $next_result->DiscoveredResourceList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DiscoveredResourceList') foreach (@{ $result->DiscoveredResourceList });
+        $result = $self->ListDiscoveredResources(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DiscoveredResourceList') foreach (@{ $result->DiscoveredResourceList });
+    }
+
+    return undef
+  }
+  sub ListAllMigrationTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMigrationTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListMigrationTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MigrationTaskSummaryList }, @{ $next_result->MigrationTaskSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MigrationTaskSummaryList') foreach (@{ $result->MigrationTaskSummaryList });
+        $result = $self->ListMigrationTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MigrationTaskSummaryList') foreach (@{ $result->MigrationTaskSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllProgressUpdateStreams {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProgressUpdateStreams(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListProgressUpdateStreams(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ProgressUpdateStreamSummaryList }, @{ $next_result->ProgressUpdateStreamSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ProgressUpdateStreamSummaryList') foreach (@{ $result->ProgressUpdateStreamSummaryList });
+        $result = $self->ListProgressUpdateStreams(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ProgressUpdateStreamSummaryList') foreach (@{ $result->ProgressUpdateStreamSummaryList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateCreatedArtifact AssociateDiscoveredResource CreateProgressUpdateStream DeleteProgressUpdateStream DescribeApplicationState DescribeMigrationTask DisassociateCreatedArtifact DisassociateDiscoveredResource ImportMigrationTask ListCreatedArtifacts ListDiscoveredResources ListMigrationTasks ListProgressUpdateStreams NotifyApplicationState NotifyMigrationTaskState PutResourceAttributes / }
@@ -125,11 +218,29 @@ Paws::MigrationHub - Perl Interface to AWS AWS Migration Hub
 
 =head1 DESCRIPTION
 
+The AWS Migration Hub API methods help to obtain server and application
+migration status and integrate your resource-specific migration tool by
+providing a programmatic interface to Migration Hub.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/migrationhub/>
 
 
 =head1 METHODS
 
-=head2 AssociateCreatedArtifact(CreatedArtifact => L<Paws::MigrationHub::CreatedArtifact>, MigrationTaskName => Str, ProgressUpdateStream => Str, [DryRun => Bool])
+=head2 AssociateCreatedArtifact
+
+=over
+
+=item CreatedArtifact => L<Paws::MigrationHub::CreatedArtifact>
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::AssociateCreatedArtifact>
 
@@ -161,7 +272,20 @@ EC2 instance, or DMS endpoint, etc.
 
 
 
-=head2 AssociateDiscoveredResource(DiscoveredResource => L<Paws::MigrationHub::DiscoveredResource>, MigrationTaskName => Str, ProgressUpdateStream => Str, [DryRun => Bool])
+=head2 AssociateDiscoveredResource
+
+=over
+
+=item DiscoveredResource => L<Paws::MigrationHub::DiscoveredResource>
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::AssociateDiscoveredResource>
 
@@ -171,7 +295,16 @@ Associates a discovered resource ID from Application Discovery Service
 (ADS) with a migration task.
 
 
-=head2 CreateProgressUpdateStream(ProgressUpdateStreamName => Str, [DryRun => Bool])
+=head2 CreateProgressUpdateStream
+
+=over
+
+=item ProgressUpdateStreamName => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::CreateProgressUpdateStream>
 
@@ -185,7 +318,16 @@ it does not need to be unique for each AWS account because it is scoped
 to the AWS account.
 
 
-=head2 DeleteProgressUpdateStream(ProgressUpdateStreamName => Str, [DryRun => Bool])
+=head2 DeleteProgressUpdateStream
+
+=over
+
+=item ProgressUpdateStreamName => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::DeleteProgressUpdateStream>
 
@@ -204,9 +346,9 @@ stream name (same as a C<CreateProgressUpdateStream> call).
 
 =item *
 
-The call will return, and a background process will asynchronously be
-doing the actual delete of the stream and all of its resources (tasks,
-associated resources, resource attributes, created artifacts).
+The call will return, and a background process will asynchronously
+delete the stream and all of its resources (tasks, associated
+resources, resource attributes, created artifacts).
 
 =item *
 
@@ -231,7 +373,14 @@ succeed, and that stream will be an entirely new logical resource
 
 
 
-=head2 DescribeApplicationState(ApplicationId => Str)
+=head2 DescribeApplicationState
+
+=over
+
+=item ApplicationId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::DescribeApplicationState>
 
@@ -240,7 +389,16 @@ Returns: a L<Paws::MigrationHub::DescribeApplicationStateResult> instance
 Gets the migration status of an application.
 
 
-=head2 DescribeMigrationTask(MigrationTaskName => Str, ProgressUpdateStream => Str)
+=head2 DescribeMigrationTask
+
+=over
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::DescribeMigrationTask>
 
@@ -250,7 +408,20 @@ Retrieves a list of all attributes associated with a specific migration
 task.
 
 
-=head2 DisassociateCreatedArtifact(CreatedArtifactName => Str, MigrationTaskName => Str, ProgressUpdateStream => Str, [DryRun => Bool])
+=head2 DisassociateCreatedArtifact
+
+=over
+
+=item CreatedArtifactName => Str
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::DisassociateCreatedArtifact>
 
@@ -282,7 +453,20 @@ EC2 instance, or RDS instance, etc.
 
 
 
-=head2 DisassociateDiscoveredResource(ConfigurationId => Str, MigrationTaskName => Str, ProgressUpdateStream => Str, [DryRun => Bool])
+=head2 DisassociateDiscoveredResource
+
+=over
+
+=item ConfigurationId => Str
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::DisassociateDiscoveredResource>
 
@@ -292,7 +476,18 @@ Disassociate an Application Discovery Service (ADS) discovered resource
 from a migration task.
 
 
-=head2 ImportMigrationTask(MigrationTaskName => Str, ProgressUpdateStream => Str, [DryRun => Bool])
+=head2 ImportMigrationTask
+
+=over
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::ImportMigrationTask>
 
@@ -306,7 +501,20 @@ API as the migration tool must first register the migration task with
 Migration Hub.
 
 
-=head2 ListCreatedArtifacts(MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListCreatedArtifacts
+
+=over
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::ListCreatedArtifacts>
 
@@ -334,7 +542,20 @@ Lists created artifacts in a paginated interface.
 
 
 
-=head2 ListDiscoveredResources(MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListDiscoveredResources
+
+=over
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::ListDiscoveredResources>
 
@@ -343,7 +564,18 @@ Returns: a L<Paws::MigrationHub::ListDiscoveredResourcesResult> instance
 Lists discovered resources associated with the given C<MigrationTask>.
 
 
-=head2 ListMigrationTasks([MaxResults => Int, NextToken => Str, ResourceName => Str])
+=head2 ListMigrationTasks
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::ListMigrationTasks>
 
@@ -372,7 +604,16 @@ Lists migration tasks in a paginated interface.
 
 
 
-=head2 ListProgressUpdateStreams([MaxResults => Int, NextToken => Str])
+=head2 ListProgressUpdateStreams
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::ListProgressUpdateStreams>
 
@@ -382,7 +623,18 @@ Lists progress update streams associated with the user account making
 this call.
 
 
-=head2 NotifyApplicationState(ApplicationId => Str, Status => Str, [DryRun => Bool])
+=head2 NotifyApplicationState
+
+=over
+
+=item ApplicationId => Str
+
+=item Status => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::NotifyApplicationState>
 
@@ -394,7 +646,24 @@ or updated by passing one of three values to C<Status>: C<NOT_STARTED |
 IN_PROGRESS | COMPLETED>.
 
 
-=head2 NotifyMigrationTaskState(MigrationTaskName => Str, NextUpdateSeconds => Int, ProgressUpdateStream => Str, Task => L<Paws::MigrationHub::Task>, UpdateDateTime => Str, [DryRun => Bool])
+=head2 NotifyMigrationTaskState
+
+=over
+
+=item MigrationTaskName => Str
+
+=item NextUpdateSeconds => Int
+
+=item ProgressUpdateStream => Str
+
+=item Task => L<Paws::MigrationHub::Task>
+
+=item UpdateDateTime => Str
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::NotifyMigrationTaskState>
 
@@ -424,7 +693,20 @@ namespace for each migration tool.
 
 
 
-=head2 PutResourceAttributes(MigrationTaskName => Str, ProgressUpdateStream => Str, ResourceAttributeList => ArrayRef[L<Paws::MigrationHub::ResourceAttribute>], [DryRun => Bool])
+=head2 PutResourceAttributes
+
+=over
+
+=item MigrationTaskName => Str
+
+=item ProgressUpdateStream => Str
+
+=item ResourceAttributeList => ArrayRef[L<Paws::MigrationHub::ResourceAttribute>]
+
+=item [DryRun => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MigrationHub::PutResourceAttributes>
 
@@ -435,15 +717,28 @@ can be associated in the Application Discovery Service (ADS)'s
 repository. This association occurs asynchronously after
 C<PutResourceAttributes> returns.
 
+=over
+
+=item *
+
 Keep in mind that subsequent calls to PutResourceAttributes will
 override previously stored attributes. For example, if it is first
 called with a MAC address, but later, it is desired to I<add> an IP
 address, it will then be required to call it with I<both> the IP and
 MAC addresses to prevent overiding the MAC address.
 
+=item *
+
+Note the instructions regarding the special use case of the
+C<ResourceAttributeList>
+(https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#migrationhub-PutResourceAttributes-request-ResourceAttributeList)
+parameter when specifying any "VM" related value.
+
+=back
+
 Because this is an asynchronous call, it will always return 200,
 whether an association occurs or not. To confirm if an association was
-found based on the provided details, call C<ListAssociatedResource>.
+found based on the provided details, call C<ListDiscoveredResources>.
 
 
 
@@ -451,6 +746,54 @@ found based on the provided details, call C<ListAssociatedResource>.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllCreatedArtifacts(sub { },MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllCreatedArtifacts(MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CreatedArtifactList, passing the object as the first parameter, and the string 'CreatedArtifactList' as the second parameter 
+
+If not, it will return a a L<Paws::MigrationHub::ListCreatedArtifactsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDiscoveredResources(sub { },MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDiscoveredResources(MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DiscoveredResourceList, passing the object as the first parameter, and the string 'DiscoveredResourceList' as the second parameter 
+
+If not, it will return a a L<Paws::MigrationHub::ListDiscoveredResourcesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMigrationTasks(sub { },[MaxResults => Int, NextToken => Str, ResourceName => Str])
+
+=head2 ListAllMigrationTasks([MaxResults => Int, NextToken => Str, ResourceName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MigrationTaskSummaryList, passing the object as the first parameter, and the string 'MigrationTaskSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::MigrationHub::ListMigrationTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProgressUpdateStreams(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllProgressUpdateStreams([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProgressUpdateStreamSummaryList, passing the object as the first parameter, and the string 'ProgressUpdateStreamSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::MigrationHub::ListProgressUpdateStreamsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

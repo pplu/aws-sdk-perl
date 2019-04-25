@@ -1,6 +1,6 @@
 package Paws::ServerlessRepo::ApplicationPolicy;
   use Moose;
-  has Statements => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationPolicyStatement]', request_name => 'statements', traits => ['NameInRequest']);
+  has Statements => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationPolicyStatement]', request_name => 'statements', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -36,9 +36,9 @@ Policy statements applied to the application.
 =head1 ATTRIBUTES
 
 
-=head2 Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]
+=head2 B<REQUIRED> Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]
 
-  Array of policy statements applied to the application.
+  An array of policy statements applied to the application.
 
 
 

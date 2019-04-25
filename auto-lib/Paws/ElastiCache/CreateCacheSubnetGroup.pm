@@ -20,17 +20,29 @@ Paws::ElastiCache::CreateCacheSubnetGroup - Arguments for method CreateCacheSubn
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateCacheSubnetGroup on the 
-Amazon ElastiCache service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateCacheSubnetGroup on the
+L<Amazon ElastiCache|Paws::ElastiCache> service. Use the attributes of this class
 as arguments to method CreateCacheSubnetGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheSubnetGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCacheSubnetGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticache = Paws->service('ElastiCache');
+    my $CreateCacheSubnetGroupResult = $elasticache->CreateCacheSubnetGroup(
+      CacheSubnetGroupDescription => 'MyString',
+      CacheSubnetGroupName        => 'MyString',
+      SubnetIds                   => [ 'MyString', ... ],
+
+    );
+
+    # Results:
+    my $CacheSubnetGroup = $CreateCacheSubnetGroupResult->CacheSubnetGroup;
+
+    # Returns a L<Paws::ElastiCache::CreateCacheSubnetGroupResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/CreateCacheSubnetGroup>
 
 =head1 ATTRIBUTES
 

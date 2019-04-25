@@ -23,34 +23,39 @@ Paws::MediaStoreData::PutObject - Arguments for method PutObject on L<Paws::Medi
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutObject on the 
-AWS Elemental MediaStore Data Plane service. Use the attributes of this class
+This class represents the parameters used for calling the method PutObject on the
+L<AWS Elemental MediaStore Data Plane|Paws::MediaStoreData> service. Use the attributes of this class
 as arguments to method PutObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutObject(Att1 => $value1, Att2 => $value2, ...);
+    my $data.mediastore = Paws->service('MediaStoreData');
+    my $PutObjectResponse = $data . mediastore->PutObject(
+      Body         => 'BlobPayloadBlob',
+      Path         => 'MyPathNaming',
+      CacheControl => 'MyStringPrimitive',    # OPTIONAL
+      ContentType  => 'MyContentType',        # OPTIONAL
+      StorageClass => 'TEMPORAL',             # OPTIONAL
+    );
+
+    # Results:
+    my $ContentSHA256 = $PutObjectResponse->ContentSHA256;
+    my $ETag          = $PutObjectResponse->ETag;
+    my $StorageClass  = $PutObjectResponse->StorageClass;
+
+    # Returns a L<Paws::MediaStoreData::PutObjectResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/data.mediastore/PutObject>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Body => Str
 
-The path to the file outside of the container. The file name can
-include or omit an extension.
-
-Example 1: If the file is stored on a remote server that has been
-mounted to the workstation on which the REST API command is being run,
-the path could be the absolute path C< \mount\assets\mlaw.avi> or the
-relative path C<..\..\mount\assets\movies\premium\mlaw.avi>.
-
-Example 2: If the file is stored on a remote server that is not
-mounted, the path could be
-C<https:\\192.0.2.15\movies\premium\mlaw.avi>.
+The bytes to be stored.
 
 
 

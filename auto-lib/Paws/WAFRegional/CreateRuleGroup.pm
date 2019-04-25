@@ -20,17 +20,30 @@ Paws::WAFRegional::CreateRuleGroup - Arguments for method CreateRuleGroup on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateRuleGroup on the 
-AWS WAF Regional service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateRuleGroup on the
+L<AWS WAF Regional|Paws::WAFRegional> service. Use the attributes of this class
 as arguments to method CreateRuleGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRuleGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateRuleGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $waf-regional = Paws->service('WAFRegional');
+    my $CreateRuleGroupResponse = $waf -regional->CreateRuleGroup(
+      ChangeToken => 'MyChangeToken',
+      MetricName  => 'MyMetricName',
+      Name        => 'MyResourceName',
+
+    );
+
+    # Results:
+    my $ChangeToken = $CreateRuleGroupResponse->ChangeToken;
+    my $RuleGroup   = $CreateRuleGroupResponse->RuleGroup;
+
+    # Returns a L<Paws::WAFRegional::CreateRuleGroupResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf-regional/CreateRuleGroup>
 
 =head1 ATTRIBUTES
 

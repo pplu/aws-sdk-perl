@@ -1,6 +1,7 @@
 package Paws::IAM;
   use Moose;
   sub service { 'iam' }
+  sub signing_name { 'iam' }
   sub version { '2010-05-08' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -214,6 +215,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteRole', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteRolePermissionsBoundary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteRolePermissionsBoundary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRolePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteRolePolicy', @_);
@@ -254,6 +260,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteUserPermissionsBoundary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteUserPermissionsBoundary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteUserPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteUserPolicy', @_);
@@ -287,6 +298,11 @@ package Paws::IAM;
   sub GenerateCredentialReport {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::GenerateCredentialReport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GenerateServiceLastAccessedDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::GenerateServiceLastAccessedDetails', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetAccessKeyLastUsed {
@@ -379,6 +395,16 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::GetServerCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetServiceLastAccessedDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetServiceLastAccessedDetails', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetServiceLastAccessedDetailsWithEntities {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetServiceLastAccessedDetailsWithEntities', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetServiceLinkedRoleDeletionStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::GetServiceLinkedRoleDeletionStatus', @_);
@@ -469,6 +495,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListPoliciesGrantingServiceAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListPoliciesGrantingServiceAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListPolicyVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListPolicyVersions', @_);
@@ -482,6 +513,11 @@ package Paws::IAM;
   sub ListRoles {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListRoles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListRoleTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListRoleTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListSAMLProviders {
@@ -519,6 +555,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListUsers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListUserTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListUserTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListVirtualMFADevices {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListVirtualMFADevices', @_);
@@ -529,9 +570,19 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::PutGroupPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutRolePermissionsBoundary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::PutRolePermissionsBoundary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutRolePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::PutRolePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutUserPermissionsBoundary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::PutUserPermissionsBoundary', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutUserPolicy {
@@ -579,6 +630,26 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::SimulatePrincipalPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::TagRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::TagUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::UntagRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::UntagUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateAccessKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::UpdateAccessKey', @_);
@@ -607,6 +678,11 @@ package Paws::IAM;
   sub UpdateOpenIDConnectProviderThumbprint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::UpdateOpenIDConnectProviderThumbprint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateRole', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateRoleDescription {
@@ -1275,7 +1351,7 @@ package Paws::IAM;
   }
 
 
-  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceLinkedRole DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetServiceLinkedRoleDeletionStatus GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
+  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePermissionsBoundary DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceLinkedRole DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPermissionsBoundary DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GenerateServiceLastAccessedDetails GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetServiceLastAccessedDetails GetServiceLastAccessedDetailsWithEntities GetServiceLinkedRoleDeletionStatus GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPoliciesGrantingServiceAccess ListPolicyVersions ListRolePolicies ListRoles ListRoleTags ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListUserTags ListVirtualMFADevices PutGroupPolicy PutRolePermissionsBoundary PutRolePolicy PutUserPermissionsBoundary PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy TagRole TagUser UntagRole UntagUser UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRole UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
 
 1;
 
@@ -1379,9 +1455,21 @@ using an access key ID and secret access key.
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08>
+
+
 =head1 METHODS
 
-=head2 AddClientIDToOpenIDConnectProvider(ClientID => Str, OpenIDConnectProviderArn => Str)
+=head2 AddClientIDToOpenIDConnectProvider
+
+=over
+
+=item ClientID => Str
+
+=item OpenIDConnectProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AddClientIDToOpenIDConnectProvider>
 
@@ -1391,11 +1479,20 @@ Adds a new client ID (also known as audience) to the list of client IDs
 already registered for the specified IAM OpenID Connect (OIDC) provider
 resource.
 
-This action is idempotent; it does not fail or return an error if you
-add an existing client ID to the provider.
+This operation is idempotent; it does not fail or return an error if
+you add an existing client ID to the provider.
 
 
-=head2 AddRoleToInstanceProfile(InstanceProfileName => Str, RoleName => Str)
+=head2 AddRoleToInstanceProfile
+
+=over
+
+=item InstanceProfileName => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AddRoleToInstanceProfile>
 
@@ -1403,10 +1500,18 @@ Returns: nothing
 
 Adds the specified IAM role to the specified instance profile. An
 instance profile can contain only one role, and this limit cannot be
-increased.
+increased. You can remove the existing role and then add a different
+role to an instance profile. You must then wait for the change to
+appear across all of AWS because of eventual consistency
+(https://en.wikipedia.org/wiki/Eventual_consistency). To force the
+change, you must disassociate the instance profile
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html)
+and then associate the instance profile
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html),
+or you can stop your instance and then restart it.
 
 The caller of this API must be granted the C<PassRole> permission on
-the IAM role by a permission policy.
+the IAM role by a permissions policy.
 
 For more information about roles, go to Working with Roles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
@@ -1415,7 +1520,16 @@ Profiles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
 
-=head2 AddUserToGroup(GroupName => Str, UserName => Str)
+=head2 AddUserToGroup
+
+=over
+
+=item GroupName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AddUserToGroup>
 
@@ -1424,7 +1538,16 @@ Returns: nothing
 Adds the specified user to the specified group.
 
 
-=head2 AttachGroupPolicy(GroupName => Str, PolicyArn => Str)
+=head2 AttachGroupPolicy
+
+=over
+
+=item GroupName => Str
+
+=item PolicyArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AttachGroupPolicy>
 
@@ -1441,7 +1564,16 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 AttachRolePolicy(PolicyArn => Str, RoleName => Str)
+=head2 AttachRolePolicy
+
+=over
+
+=item PolicyArn => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AttachRolePolicy>
 
@@ -1462,7 +1594,16 @@ policies, see Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 AttachUserPolicy(PolicyArn => Str, UserName => Str)
+=head2 AttachUserPolicy
+
+=over
+
+=item PolicyArn => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::AttachUserPolicy>
 
@@ -1479,14 +1620,23 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 ChangePassword(NewPassword => Str, OldPassword => Str)
+=head2 ChangePassword
+
+=over
+
+=item NewPassword => Str
+
+=item OldPassword => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ChangePassword>
 
 Returns: nothing
 
-Changes the password of the IAM user who is calling this action. The
-root account password is not affected by this action.
+Changes the password of the IAM user who is calling this operation. The
+AWS account root user password is not affected by this operation.
 
 To change the password for a different user, see UpdateLoginProfile.
 For more information about modifying passwords, see Managing Passwords
@@ -1494,7 +1644,14 @@ For more information about modifying passwords, see Managing Passwords
 in the I<IAM User Guide>.
 
 
-=head2 CreateAccessKey([UserName => Str])
+=head2 CreateAccessKey
+
+=over
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateAccessKey>
 
@@ -1504,10 +1661,10 @@ Creates a new AWS secret access key and corresponding AWS access key ID
 for the specified user. The default status for new keys is C<Active>.
 
 If you do not specify a user name, IAM determines the user name
-implicitly based on the AWS access key ID signing the request. Because
-this action works for access keys under the AWS account, you can use
-this action to manage root credentials even if the AWS account has no
-associated users.
+implicitly based on the AWS access key ID signing the request. This
+operation works for access keys under the AWS account. Consequently,
+you can use this operation to manage AWS account root user credentials.
+This is true even if the AWS account has no associated users.
 
 For information about limits on the number of keys you can create, see
 Limitations on IAM Entities
@@ -1521,7 +1678,14 @@ again. If a secret key is lost, you can delete the access keys for the
 associated user and then create new keys.
 
 
-=head2 CreateAccountAlias(AccountAlias => Str)
+=head2 CreateAccountAlias
+
+=over
+
+=item AccountAlias => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateAccountAlias>
 
@@ -1533,7 +1697,16 @@ AWS account alias, see Using an Alias for Your AWS Account ID
 the I<IAM User Guide>.
 
 
-=head2 CreateGroup(GroupName => Str, [Path => Str])
+=head2 CreateGroup
+
+=over
+
+=item GroupName => Str
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateGroup>
 
@@ -1547,7 +1720,16 @@ Limitations on IAM Entities
 in the I<IAM User Guide>.
 
 
-=head2 CreateInstanceProfile(InstanceProfileName => Str, [Path => Str])
+=head2 CreateInstanceProfile
+
+=over
+
+=item InstanceProfileName => Str
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateInstanceProfile>
 
@@ -1563,7 +1745,18 @@ see Limitations on IAM Entities
 in the I<IAM User Guide>.
 
 
-=head2 CreateLoginProfile(Password => Str, UserName => Str, [PasswordResetRequired => Bool])
+=head2 CreateLoginProfile
+
+=over
+
+=item Password => Str
+
+=item UserName => Str
+
+=item [PasswordResetRequired => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateLoginProfile>
 
@@ -1576,7 +1769,18 @@ information about managing passwords, see Managing Passwords
 in the I<IAM User Guide>.
 
 
-=head2 CreateOpenIDConnectProvider(ThumbprintList => ArrayRef[Str|Undef], Url => Str, [ClientIDList => ArrayRef[Str|Undef]])
+=head2 CreateOpenIDConnectProvider
+
+=over
+
+=item ThumbprintList => ArrayRef[Str|Undef]
+
+=item Url => Str
+
+=item [ClientIDList => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateOpenIDConnectProvider>
 
@@ -1586,24 +1790,51 @@ Creates an IAM entity to describe an identity provider (IdP) that
 supports OpenID Connect (OIDC) (http://openid.net/connect/).
 
 The OIDC provider that you create with this operation can be used as a
-principal in a role's trust policy to establish a trust relationship
-between AWS and the OIDC provider.
+principal in a role's trust policy. Such a policy establishes a trust
+relationship between AWS and the OIDC provider.
 
-When you create the IAM OIDC provider, you specify the URL of the OIDC
-identity provider (IdP) to trust, a list of client IDs (also known as
-audiences) that identify the application or applications that are
-allowed to authenticate using the OIDC provider, and a list of
-thumbprints of the server certificate(s) that the IdP uses. You get all
-of this information from the OIDC IdP that you want to use for access
-to AWS.
+When you create the IAM OIDC provider, you specify the following:
 
-Because trust for the OIDC provider is ultimately derived from the IAM
-provider that this action creates, it is a best practice to limit
-access to the CreateOpenIDConnectProvider action to highly-privileged
-users.
+=over
+
+=item *
+
+The URL of the OIDC identity provider (IdP) to trust
+
+=item *
+
+A list of client IDs (also known as audiences) that identify the
+application or applications that are allowed to authenticate using the
+OIDC provider
+
+=item *
+
+A list of thumbprints of the server certificate(s) that the IdP uses.
+
+=back
+
+You get all of this information from the OIDC IdP that you want to use
+to access AWS.
+
+Because trust for the OIDC provider is derived from the IAM provider
+that this operation creates, it is best to limit access to the
+CreateOpenIDConnectProvider operation to highly privileged users.
 
 
-=head2 CreatePolicy(PolicyDocument => Str, PolicyName => Str, [Description => Str, Path => Str])
+=head2 CreatePolicy
+
+=over
+
+=item PolicyDocument => Str
+
+=item PolicyName => Str
+
+=item [Description => Str]
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreatePolicy>
 
@@ -1623,7 +1854,18 @@ Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 CreatePolicyVersion(PolicyArn => Str, PolicyDocument => Str, [SetAsDefault => Bool])
+=head2 CreatePolicyVersion
+
+=over
+
+=item PolicyArn => Str
+
+=item PolicyDocument => Str
+
+=item [SetAsDefault => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreatePolicyVersion>
 
@@ -1645,14 +1887,33 @@ Managed Policies
 in the I<IAM User Guide>.
 
 
-=head2 CreateRole(AssumeRolePolicyDocument => Str, RoleName => Str, [Description => Str, Path => Str])
+=head2 CreateRole
+
+=over
+
+=item AssumeRolePolicyDocument => Str
+
+=item RoleName => Str
+
+=item [Description => Str]
+
+=item [MaxSessionDuration => Int]
+
+=item [Path => Str]
+
+=item [PermissionsBoundary => Str]
+
+=item [Tags => ArrayRef[L<Paws::IAM::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateRole>
 
 Returns: a L<Paws::IAM::CreateRoleResponse> instance
 
 Creates a new role for your AWS account. For more information about
-roles, go to Working with Roles
+roles, go to IAM Roles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
 For information about limitations on role names and the number of roles
 you can create, go to Limitations on IAM Entities
@@ -1660,7 +1921,16 @@ you can create, go to Limitations on IAM Entities
 in the I<IAM User Guide>.
 
 
-=head2 CreateSAMLProvider(Name => Str, SAMLMetadataDocument => Str)
+=head2 CreateSAMLProvider
+
+=over
+
+=item Name => Str
+
+=item SAMLMetadataDocument => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateSAMLProvider>
 
@@ -1670,13 +1940,14 @@ Creates an IAM resource that describes an identity provider (IdP) that
 supports SAML 2.0.
 
 The SAML provider resource that you create with this operation can be
-used as a principal in an IAM role's trust policy to enable federated
-users who sign-in using the SAML IdP to assume the role. You can create
-an IAM role that supports Web-based single sign-on (SSO) to the AWS
-Management Console or one that supports API access to AWS.
+used as a principal in an IAM role's trust policy. Such a policy can
+enable federated users who sign-in using the SAML IdP to assume the
+role. You can create an IAM role that supports Web-based single sign-on
+(SSO) to the AWS Management Console or one that supports API access to
+AWS.
 
-When you create the SAML provider resource, you upload an a SAML
-metadata document that you get from your IdP and that includes the
+When you create the SAML provider resource, you upload a SAML metadata
+document that you get from your IdP. That document includes the
 issuer's name, expiration information, and keys that can be used to
 validate the SAML authentication response (assertions) that the IdP
 sends. You must generate the metadata document using the identity
@@ -1693,7 +1964,18 @@ and About SAML 2.0-based Federation
 in the I<IAM User Guide>.
 
 
-=head2 CreateServiceLinkedRole(AWSServiceName => Str, [CustomSuffix => Str, Description => Str])
+=head2 CreateServiceLinkedRole
+
+=over
+
+=item AWSServiceName => Str
+
+=item [CustomSuffix => Str]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateServiceLinkedRole>
 
@@ -1705,18 +1987,25 @@ deleted. This helps ensure that the service is not broken by an
 unexpectedly changed or deleted role, which could put your AWS
 resources into an unknown state. Allowing the service to control the
 role helps improve service stability and proper cleanup when a service
-and its role are no longer needed.
-
-The name of the role is autogenerated by combining the string that you
-specify for the C<AWSServiceName> parameter with the string that you
-specify for the C<CustomSuffix> parameter. The resulting name must be
-unique in your account or the request fails.
+and its role are no longer needed. For more information, see Using
+Service-Linked Roles
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)
+in the I<IAM User Guide>.
 
 To attach a policy to this service-linked role, you must make the
 request using the AWS service that depends on this role.
 
 
-=head2 CreateServiceSpecificCredential(ServiceName => Str, UserName => Str)
+=head2 CreateServiceSpecificCredential
+
+=over
+
+=item ServiceName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateServiceSpecificCredential>
 
@@ -1741,7 +2030,20 @@ with AWS CodeCommit: Git Credentials, SSH Keys, and AWS Access Keys
 in the I<IAM User Guide>.
 
 
-=head2 CreateUser(UserName => Str, [Path => Str])
+=head2 CreateUser
+
+=over
+
+=item UserName => Str
+
+=item [Path => Str]
+
+=item [PermissionsBoundary => Str]
+
+=item [Tags => ArrayRef[L<Paws::IAM::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateUser>
 
@@ -1755,7 +2057,16 @@ create, see Limitations on IAM Entities
 in the I<IAM User Guide>.
 
 
-=head2 CreateVirtualMFADevice(VirtualMFADeviceName => Str, [Path => Str])
+=head2 CreateVirtualMFADevice
+
+=over
+
+=item VirtualMFADeviceName => Str
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::CreateVirtualMFADevice>
 
@@ -1780,7 +2091,16 @@ virtual device, you should ensure that the information is destroyed
 following secure procedures.
 
 
-=head2 DeactivateMFADevice(SerialNumber => Str, UserName => Str)
+=head2 DeactivateMFADevice
+
+=over
+
+=item SerialNumber => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeactivateMFADevice>
 
@@ -1790,12 +2110,22 @@ Deactivates the specified MFA device and removes it from association
 with the user name for which it was originally enabled.
 
 For more information about creating and working with virtual MFA
-devices, go to Using a Virtual MFA Device
+devices, go to Enabling a Virtual Multi-factor Authentication (MFA)
+Device
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html)
 in the I<IAM User Guide>.
 
 
-=head2 DeleteAccessKey(AccessKeyId => Str, [UserName => Str])
+=head2 DeleteAccessKey
+
+=over
+
+=item AccessKeyId => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteAccessKey>
 
@@ -1804,13 +2134,20 @@ Returns: nothing
 Deletes the access key pair associated with the specified IAM user.
 
 If you do not specify a user name, IAM determines the user name
-implicitly based on the AWS access key ID signing the request. Because
-this action works for access keys under the AWS account, you can use
-this action to manage root credentials even if the AWS account has no
-associated users.
+implicitly based on the AWS access key ID signing the request. This
+operation works for access keys under the AWS account. Consequently,
+you can use this operation to manage AWS account root user credentials
+even if the AWS account has no associated users.
 
 
-=head2 DeleteAccountAlias(AccountAlias => Str)
+=head2 DeleteAccountAlias
+
+=over
+
+=item AccountAlias => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteAccountAlias>
 
@@ -1822,7 +2159,14 @@ AWS account alias, see Using an Alias for Your AWS Account ID
 the I<IAM User Guide>.
 
 
-=head2 DeleteAccountPasswordPolicy( => )
+=head2 DeleteAccountPasswordPolicy
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteAccountPasswordPolicy>
 
@@ -1832,7 +2176,14 @@ Deletes the password policy for the AWS account. There are no
 parameters.
 
 
-=head2 DeleteGroup(GroupName => Str)
+=head2 DeleteGroup
+
+=over
+
+=item GroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteGroup>
 
@@ -1842,7 +2193,16 @@ Deletes the specified IAM group. The group must not contain any users
 or have any attached policies.
 
 
-=head2 DeleteGroupPolicy(GroupName => Str, PolicyName => Str)
+=head2 DeleteGroupPolicy
+
+=over
+
+=item GroupName => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteGroupPolicy>
 
@@ -1859,7 +2219,14 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 DeleteInstanceProfile(InstanceProfileName => Str)
+=head2 DeleteInstanceProfile
+
+=over
+
+=item InstanceProfileName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteInstanceProfile>
 
@@ -1868,17 +2235,24 @@ Returns: nothing
 Deletes the specified instance profile. The instance profile must not
 have an associated role.
 
-Make sure you do not have any Amazon EC2 instances running with the
-instance profile you are about to delete. Deleting a role or instance
-profile that is associated with a running instance will break any
-applications running on the instance.
+Make sure that you do not have any Amazon EC2 instances running with
+the instance profile you are about to delete. Deleting a role or
+instance profile that is associated with a running instance will break
+any applications running on the instance.
 
 For more information about instance profiles, go to About Instance
 Profiles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
 
-=head2 DeleteLoginProfile(UserName => Str)
+=head2 DeleteLoginProfile
+
+=over
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteLoginProfile>
 
@@ -1890,12 +2264,19 @@ Console.
 
 Deleting a user's password does not prevent a user from accessing AWS
 through the command line interface or the API. To prevent all user
-access you must also either make any access keys inactive or delete
+access, you must also either make any access keys inactive or delete
 them. For more information about making keys inactive or deleting them,
 see UpdateAccessKey and DeleteAccessKey.
 
 
-=head2 DeleteOpenIDConnectProvider(OpenIDConnectProviderArn => Str)
+=head2 DeleteOpenIDConnectProvider
+
+=over
+
+=item OpenIDConnectProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteOpenIDConnectProvider>
 
@@ -1908,11 +2289,18 @@ Deleting an IAM OIDC provider resource does not update any roles that
 reference the provider as a principal in their trust policies. Any
 attempt to assume a role that references a deleted provider fails.
 
-This action is idempotent; it does not fail or return an error if you
-call the action for a provider that does not exist.
+This operation is idempotent; it does not fail or return an error if
+you call the operation for a provider that does not exist.
 
 
-=head2 DeletePolicy(PolicyArn => Str)
+=head2 DeletePolicy
+
+=over
+
+=item PolicyArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeletePolicy>
 
@@ -1921,9 +2309,9 @@ Returns: nothing
 Deletes the specified managed policy.
 
 Before you can delete a managed policy, you must first detach the
-policy from all users, groups, and roles that it is attached to, and
-you must delete all of the policy's versions. The following steps
-describe the process for deleting a managed policy:
+policy from all users, groups, and roles that it is attached to. In
+addition, you must delete all the policy's versions. The following
+steps describe the process for deleting a managed policy:
 
 =over
 
@@ -1931,8 +2319,8 @@ describe the process for deleting a managed policy:
 
 Detach the policy from all users, groups, and roles that the policy is
 attached to, using the DetachUserPolicy, DetachGroupPolicy, or
-DetachRolePolicy APIs. To list all the users, groups, and roles that a
-policy is attached to, use ListEntitiesForPolicy.
+DetachRolePolicy API operations. To list all the users, groups, and
+roles that a policy is attached to, use ListEntitiesForPolicy.
 
 =item *
 
@@ -1955,7 +2343,16 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 DeletePolicyVersion(PolicyArn => Str, VersionId => Str)
+=head2 DeletePolicyVersion
+
+=over
+
+=item PolicyArn => Str
+
+=item VersionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeletePolicyVersion>
 
@@ -1974,7 +2371,14 @@ Managed Policies
 in the I<IAM User Guide>.
 
 
-=head2 DeleteRole(RoleName => Str)
+=head2 DeleteRole
+
+=over
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteRole>
 
@@ -1984,13 +2388,42 @@ Deletes the specified role. The role must not have any policies
 attached. For more information about roles, go to Working with Roles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
 
-Make sure you do not have any Amazon EC2 instances running with the
-role you are about to delete. Deleting a role or instance profile that
-is associated with a running instance will break any applications
+Make sure that you do not have any Amazon EC2 instances running with
+the role you are about to delete. Deleting a role or instance profile
+that is associated with a running instance will break any applications
 running on the instance.
 
 
-=head2 DeleteRolePolicy(PolicyName => Str, RoleName => Str)
+=head2 DeleteRolePermissionsBoundary
+
+=over
+
+=item RoleName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::DeleteRolePermissionsBoundary>
+
+Returns: nothing
+
+Deletes the permissions boundary for the specified IAM role.
+
+Deleting the permissions boundary for a role might increase its
+permissions by allowing anyone who assumes the role to perform all the
+actions granted in its permissions policies.
+
+
+=head2 DeleteRolePolicy
+
+=over
+
+=item PolicyName => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteRolePolicy>
 
@@ -2006,7 +2439,14 @@ about policies, refer to Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 DeleteSAMLProvider(SAMLProviderArn => Str)
+=head2 DeleteSAMLProvider
+
+=over
+
+=item SAMLProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteSAMLProvider>
 
@@ -2023,7 +2463,14 @@ This operation requires Signature Version 4
 (http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
-=head2 DeleteServerCertificate(ServerCertificateName => Str)
+=head2 DeleteServerCertificate
+
+=over
+
+=item ServerCertificateName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteServerCertificate>
 
@@ -2031,11 +2478,11 @@ Returns: nothing
 
 Deletes the specified server certificate.
 
-For more information about working with server certificates, including
-a list of AWS services that can use the server certificates that you
-manage with IAM, go to Working with Server Certificates
+For more information about working with server certificates, see
+Working with Server Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html)
-in the I<IAM User Guide>.
+in the I<IAM User Guide>. This topic also includes a list of AWS
+services that can use the server certificates that you manage with IAM.
 
 If you are using a server certificate with Elastic Load Balancing,
 deleting the certificate could have implications for your application.
@@ -2049,7 +2496,14 @@ information, go to DeleteLoadBalancerListeners
 in the I<Elastic Load Balancing API Reference>.
 
 
-=head2 DeleteServiceLinkedRole(RoleName => Str)
+=head2 DeleteServiceLinkedRole
+
+=over
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteServiceLinkedRole>
 
@@ -2066,12 +2520,13 @@ then the C<DeletionTaskId> of the earlier request is returned.
 If you submit a deletion request for a service-linked role whose linked
 service is still accessing a resource, then the deletion task fails. If
 it fails, the GetServiceLinkedRoleDeletionStatus API operation returns
-the reason for the failure, including the resources that must be
-deleted. To delete the service-linked role, you must first remove those
-resources from the linked service and then submit the deletion request
-again. Resources are specific to the service that is linked to the
-role. For more information about removing resources from a service, see
-the AWS documentation (http://docs.aws.amazon.com/) for your service.
+the reason for the failure, usually including the resources that must
+be deleted. To delete the service-linked role, you must first remove
+those resources from the linked service and then submit the deletion
+request again. Resources are specific to the service that is linked to
+the role. For more information about removing resources from a service,
+see the AWS documentation (http://docs.aws.amazon.com/) for your
+service.
 
 For more information about service-linked roles, see Roles Terms and
 Concepts: AWS Service-Linked Role
@@ -2079,7 +2534,16 @@ Concepts: AWS Service-Linked Role
 in the I<IAM User Guide>.
 
 
-=head2 DeleteServiceSpecificCredential(ServiceSpecificCredentialId => Str, [UserName => Str])
+=head2 DeleteServiceSpecificCredential
+
+=over
+
+=item ServiceSpecificCredentialId => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteServiceSpecificCredential>
 
@@ -2088,7 +2552,16 @@ Returns: nothing
 Deletes the specified service-specific credential.
 
 
-=head2 DeleteSigningCertificate(CertificateId => Str, [UserName => Str])
+=head2 DeleteSigningCertificate
+
+=over
+
+=item CertificateId => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteSigningCertificate>
 
@@ -2097,13 +2570,22 @@ Returns: nothing
 Deletes a signing certificate associated with the specified IAM user.
 
 If you do not specify a user name, IAM determines the user name
-implicitly based on the AWS access key ID signing the request. Because
-this action works for access keys under the AWS account, you can use
-this action to manage root credentials even if the AWS account has no
-associated IAM users.
+implicitly based on the AWS access key ID signing the request. This
+operation works for access keys under the AWS account. Consequently,
+you can use this operation to manage AWS account root user credentials
+even if the AWS account has no associated IAM users.
 
 
-=head2 DeleteSSHPublicKey(SSHPublicKeyId => Str, UserName => Str)
+=head2 DeleteSSHPublicKey
+
+=over
+
+=item SSHPublicKeyId => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteSSHPublicKey>
 
@@ -2111,7 +2593,7 @@ Returns: nothing
 
 Deletes the specified SSH public key.
 
-The SSH public key deleted by this action is used only for
+The SSH public key deleted by this operation is used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS
 CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
@@ -2119,17 +2601,54 @@ CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
 in the I<AWS CodeCommit User Guide>.
 
 
-=head2 DeleteUser(UserName => Str)
+=head2 DeleteUser
+
+=over
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteUser>
 
 Returns: nothing
 
 Deletes the specified IAM user. The user must not belong to any groups
-or have any access keys, signing certificates, or attached policies.
+or have any access keys, signing certificates, MFA devices enabled for
+AWS, or attached policies.
 
 
-=head2 DeleteUserPolicy(PolicyName => Str, UserName => Str)
+=head2 DeleteUserPermissionsBoundary
+
+=over
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::DeleteUserPermissionsBoundary>
+
+Returns: nothing
+
+Deletes the permissions boundary for the specified IAM user.
+
+Deleting the permissions boundary for a user might increase its
+permissions by allowing the user to perform all the actions granted in
+its permissions policies.
+
+
+=head2 DeleteUserPolicy
+
+=over
+
+=item PolicyName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteUserPolicy>
 
@@ -2145,7 +2664,14 @@ about policies, refer to Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 DeleteVirtualMFADevice(SerialNumber => Str)
+=head2 DeleteVirtualMFADevice
+
+=over
+
+=item SerialNumber => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DeleteVirtualMFADevice>
 
@@ -2158,7 +2684,16 @@ it. For information about deactivating MFA devices, see
 DeactivateMFADevice.
 
 
-=head2 DetachGroupPolicy(GroupName => Str, PolicyArn => Str)
+=head2 DetachGroupPolicy
+
+=over
+
+=item GroupName => Str
+
+=item PolicyArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DetachGroupPolicy>
 
@@ -2173,7 +2708,16 @@ policies, see Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 DetachRolePolicy(PolicyArn => Str, RoleName => Str)
+=head2 DetachRolePolicy
+
+=over
+
+=item PolicyArn => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DetachRolePolicy>
 
@@ -2188,7 +2732,16 @@ policies, see Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 DetachUserPolicy(PolicyArn => Str, UserName => Str)
+=head2 DetachUserPolicy
+
+=over
+
+=item PolicyArn => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::DetachUserPolicy>
 
@@ -2203,7 +2756,20 @@ policies, see Managed Policies and Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 EnableMFADevice(AuthenticationCode1 => Str, AuthenticationCode2 => Str, SerialNumber => Str, UserName => Str)
+=head2 EnableMFADevice
+
+=over
+
+=item AuthenticationCode1 => Str
+
+=item AuthenticationCode2 => Str
+
+=item SerialNumber => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::EnableMFADevice>
 
@@ -2214,7 +2780,14 @@ IAM user. When enabled, the MFA device is required for every subsequent
 login by the IAM user associated with the device.
 
 
-=head2 GenerateCredentialReport( => )
+=head2 GenerateCredentialReport
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GenerateCredentialReport>
 
@@ -2226,7 +2799,92 @@ about the credential report, see Getting Credential Reports
 in the I<IAM User Guide>.
 
 
-=head2 GetAccessKeyLastUsed(AccessKeyId => Str)
+=head2 GenerateServiceLastAccessedDetails
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::GenerateServiceLastAccessedDetails>
+
+Returns: a L<Paws::IAM::GenerateServiceLastAccessedDetailsResponse> instance
+
+Generates a request for a report that includes details about when an
+IAM resource (user, group, role, or policy) was last used in an attempt
+to access AWS services. Recent activity usually appears within four
+hours. IAM reports activity for the last 365 days, or less if your
+region began supporting this feature within the last year. For more
+information, see Regions Where Data Is Tracked
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period).
+
+The service last accessed data includes all attempts to access an AWS
+API, not just the successful ones. This includes all attempts that were
+made using the AWS Management Console, the AWS API through any of the
+SDKs, or any of the command line tools. An unexpected entry in the
+service last accessed data does not mean that your account has been
+compromised, because the request might have been denied. Refer to your
+CloudTrail logs as the authoritative source for information about all
+API calls and whether they were successful or denied access. For more
+information, see Logging IAM Events with CloudTrail
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html)
+in the I<IAM User Guide>.
+
+The C<GenerateServiceLastAccessedDetails> operation returns a C<JobId>.
+Use this parameter in the following operations to retrieve the
+following details from your report:
+
+=over
+
+=item *
+
+GetServiceLastAccessedDetails E<ndash> Use this operation for users,
+groups, roles, or policies to list every AWS service that the resource
+could access using permissions policies. For each service, the response
+includes information about the most recent access attempt.
+
+=item *
+
+GetServiceLastAccessedDetailsWithEntities E<ndash> Use this operation
+for groups and policies to list information about the associated
+entities (users or roles) that attempted to access a specific AWS
+service.
+
+=back
+
+To check the status of the C<GenerateServiceLastAccessedDetails>
+request, use the C<JobId> parameter in the same operations and test the
+C<JobStatus> response parameter.
+
+For additional information about the permissions policies that allow an
+identity (user, group, or role) to access specific services, use the
+ListPoliciesGrantingServiceAccess operation.
+
+Service last accessed data does not use other policy types when
+determining whether a resource could access a service. These other
+policy types include resource-based policies, access control lists, AWS
+Organizations policies, IAM permissions boundaries, and AWS STS assume
+role policies. It only applies permissions policy logic. For more about
+the evaluation of policy types, see Evaluating Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics)
+in the I<IAM User Guide>.
+
+For more information about service last accessed data, see Reducing
+Policy Scope by Viewing User Activity
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
+in the I<IAM User Guide>.
+
+
+=head2 GetAccessKeyLastUsed
+
+=over
+
+=item AccessKeyId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetAccessKeyLastUsed>
 
@@ -2238,7 +2896,18 @@ with the AWS service and region that were specified in the last request
 made with that key.
 
 
-=head2 GetAccountAuthorizationDetails([Filter => ArrayRef[Str|Undef], Marker => Str, MaxItems => Int])
+=head2 GetAccountAuthorizationDetails
+
+=over
+
+=item [Filter => ArrayRef[Str|Undef]]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetAccountAuthorizationDetails>
 
@@ -2249,12 +2918,26 @@ in your AWS account, including their relationships to one another. Use
 this API to obtain a snapshot of the configuration of IAM permissions
 (users, groups, roles, and policies) in your account.
 
+Policies returned by this API are URL-encoded compliant with RFC 3986
+(https://tools.ietf.org/html/rfc3986). You can use a URL decoding
+method to convert the policy back to plain JSON text. For example, if
+you use Java, you can use the C<decode> method of the
+C<java.net.URLDecoder> utility class in the Java SDK. Other languages
+and SDKs provide similar functionality.
+
 You can optionally filter the results using the C<Filter> parameter.
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 GetAccountPasswordPolicy( => )
+=head2 GetAccountPasswordPolicy
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetAccountPasswordPolicy>
 
@@ -2265,7 +2948,14 @@ about using a password policy, go to Managing an IAM Password Policy
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html).
 
 
-=head2 GetAccountSummary( => )
+=head2 GetAccountSummary
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetAccountSummary>
 
@@ -2280,7 +2970,14 @@ IAM Entities
 in the I<IAM User Guide>.
 
 
-=head2 GetContextKeysForCustomPolicy(PolicyInputList => ArrayRef[Str|Undef])
+=head2 GetContextKeysForCustomPolicy
+
+=over
+
+=item PolicyInputList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetContextKeysForCustomPolicy>
 
@@ -2292,24 +2989,33 @@ To get the context keys from policies associated with an IAM user,
 group, or role, use GetContextKeysForPrincipalPolicy.
 
 Context keys are variables maintained by AWS and its services that
-provide details about the context of an API query request, and can be
-evaluated by testing against a value specified in an IAM policy. Use
-GetContextKeysForCustomPolicy to understand what key names and values
-you must supply when you call SimulateCustomPolicy. Note that all
-parameters are shown in unencoded form here for clarity, but must be
+provide details about the context of an API query request. Context keys
+can be evaluated by testing against a value specified in an IAM policy.
+Use C<GetContextKeysForCustomPolicy> to understand what key names and
+values you must supply when you call SimulateCustomPolicy. Note that
+all parameters are shown in unencoded form here for clarity but must be
 URL encoded to be included as a part of a real HTML request.
 
 
-=head2 GetContextKeysForPrincipalPolicy(PolicySourceArn => Str, [PolicyInputList => ArrayRef[Str|Undef]])
+=head2 GetContextKeysForPrincipalPolicy
+
+=over
+
+=item PolicySourceArn => Str
+
+=item [PolicyInputList => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetContextKeysForPrincipalPolicy>
 
 Returns: a L<Paws::IAM::GetContextKeysForPolicyResponse> instance
 
-Gets a list of all of the context keys referenced in all of the IAM
-policies attached to the specified IAM entity. The entity can be an IAM
-user, group, or role. If you specify a user, then the request also
-includes all of the policies attached to groups that the user is a
+Gets a list of all of the context keys referenced in all the IAM
+policies that are attached to the specified IAM entity. The entity can
+be an IAM user, group, or role. If you specify a user, then the request
+also includes all of the policies attached to groups that the user is a
 member of.
 
 You can optionally include a list of one or more additional policies,
@@ -2322,13 +3028,20 @@ permissions, then consider allowing them to use
 GetContextKeysForCustomPolicy instead.
 
 Context keys are variables maintained by AWS and its services that
-provide details about the context of an API query request, and can be
-evaluated by testing against a value in an IAM policy. Use
+provide details about the context of an API query request. Context keys
+can be evaluated by testing against a value in an IAM policy. Use
 GetContextKeysForPrincipalPolicy to understand what key names and
 values you must supply when you call SimulatePrincipalPolicy.
 
 
-=head2 GetCredentialReport( => )
+=head2 GetCredentialReport
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetCredentialReport>
 
@@ -2340,7 +3053,18 @@ about the credential report, see Getting Credential Reports
 in the I<IAM User Guide>.
 
 
-=head2 GetGroup(GroupName => Str, [Marker => Str, MaxItems => Int])
+=head2 GetGroup
+
+=over
+
+=item GroupName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetGroup>
 
@@ -2351,7 +3075,16 @@ can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 GetGroupPolicy(GroupName => Str, PolicyName => Str)
+=head2 GetGroupPolicy
+
+=over
+
+=item GroupName => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetGroupPolicy>
 
@@ -2378,7 +3111,14 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 GetInstanceProfile(InstanceProfileName => Str)
+=head2 GetInstanceProfile
+
+=over
+
+=item InstanceProfileName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetInstanceProfile>
 
@@ -2391,18 +3131,32 @@ about instance profiles, see About Instance Profiles
 in the I<IAM User Guide>.
 
 
-=head2 GetLoginProfile(UserName => Str)
+=head2 GetLoginProfile
+
+=over
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetLoginProfile>
 
 Returns: a L<Paws::IAM::GetLoginProfileResponse> instance
 
 Retrieves the user name and password-creation date for the specified
-IAM user. If the user has not been assigned a password, the action
+IAM user. If the user has not been assigned a password, the operation
 returns a 404 (C<NoSuchEntity>) error.
 
 
-=head2 GetOpenIDConnectProvider(OpenIDConnectProviderArn => Str)
+=head2 GetOpenIDConnectProvider
+
+=over
+
+=item OpenIDConnectProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetOpenIDConnectProvider>
 
@@ -2412,7 +3166,14 @@ Returns information about the specified OpenID Connect (OIDC) provider
 resource object in IAM.
 
 
-=head2 GetPolicy(PolicyArn => Str)
+=head2 GetPolicy
+
+=over
+
+=item PolicyArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetPolicy>
 
@@ -2437,7 +3198,16 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 GetPolicyVersion(PolicyArn => Str, VersionId => Str)
+=head2 GetPolicyVersion
+
+=over
+
+=item PolicyArn => Str
+
+=item VersionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetPolicyVersion>
 
@@ -2470,7 +3240,14 @@ Managed Policies
 in the I<IAM User Guide>.
 
 
-=head2 GetRole(RoleName => Str)
+=head2 GetRole
+
+=over
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetRole>
 
@@ -2490,7 +3267,16 @@ C<java.net.URLDecoder> utility class in the Java SDK. Other languages
 and SDKs provide similar functionality.
 
 
-=head2 GetRolePolicy(PolicyName => Str, RoleName => Str)
+=head2 GetRolePolicy
+
+=over
+
+=item PolicyName => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetRolePolicy>
 
@@ -2521,7 +3307,14 @@ Permissions and Federate Identities
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html).
 
 
-=head2 GetSAMLProvider(SAMLProviderArn => Str)
+=head2 GetSAMLProvider
+
+=over
+
+=item SAMLProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetSAMLProvider>
 
@@ -2534,7 +3327,14 @@ This operation requires Signature Version 4
 (http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
-=head2 GetServerCertificate(ServerCertificateName => Str)
+=head2 GetServerCertificate
+
+=over
+
+=item ServerCertificateName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetServerCertificate>
 
@@ -2543,14 +3343,146 @@ Returns: a L<Paws::IAM::GetServerCertificateResponse> instance
 Retrieves information about the specified server certificate stored in
 IAM.
 
-For more information about working with server certificates, including
-a list of AWS services that can use the server certificates that you
-manage with IAM, go to Working with Server Certificates
+For more information about working with server certificates, see
+Working with Server Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html)
+in the I<IAM User Guide>. This topic includes a list of AWS services
+that can use the server certificates that you manage with IAM.
+
+
+=head2 GetServiceLastAccessedDetails
+
+=over
+
+=item JobId => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::GetServiceLastAccessedDetails>
+
+Returns: a L<Paws::IAM::GetServiceLastAccessedDetailsResponse> instance
+
+After you generate a user, group, role, or policy report using the
+C<GenerateServiceLastAccessedDetails> operation, you can use the
+C<JobId> parameter in C<GetServiceLastAccessedDetails>. This operation
+retrieves the status of your report job and a list of AWS services that
+the resource (user, group, role, or managed policy) can access.
+
+Service last accessed data does not use other policy types when
+determining whether a resource could access a service. These other
+policy types include resource-based policies, access control lists, AWS
+Organizations policies, IAM permissions boundaries, and AWS STS assume
+role policies. It only applies permissions policy logic. For more about
+the evaluation of policy types, see Evaluating Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics)
 in the I<IAM User Guide>.
 
+For each service that the resource could access using permissions
+policies, the operation returns details about the most recent access
+attempt. If there was no attempt, the service is listed without details
+about the most recent attempt to access the service. If the operation
+fails, the C<GetServiceLastAccessedDetails> operation returns the
+reason that it failed.
 
-=head2 GetServiceLinkedRoleDeletionStatus(DeletionTaskId => Str)
+The C<GetServiceLastAccessedDetails> operation returns a list of
+services that includes the number of entities that have attempted to
+access the service and the date and time of the last attempt. It also
+returns the ARN of the following entity, depending on the resource ARN
+that you used to generate the report:
+
+=over
+
+=item *
+
+B<User> E<ndash> Returns the user ARN that you used to generate the
+report
+
+=item *
+
+B<Group> E<ndash> Returns the ARN of the group member (user) that last
+attempted to access the service
+
+=item *
+
+B<Role> E<ndash> Returns the role ARN that you used to generate the
+report
+
+=item *
+
+B<Policy> E<ndash> Returns the ARN of the user or role that last used
+the policy to attempt to access the service
+
+=back
+
+By default, the list is sorted by service namespace.
+
+
+=head2 GetServiceLastAccessedDetailsWithEntities
+
+=over
+
+=item JobId => Str
+
+=item ServiceNamespace => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::GetServiceLastAccessedDetailsWithEntities>
+
+Returns: a L<Paws::IAM::GetServiceLastAccessedDetailsWithEntitiesResponse> instance
+
+After you generate a group or policy report using the
+C<GenerateServiceLastAccessedDetails> operation, you can use the
+C<JobId> parameter in C<GetServiceLastAccessedDetailsWithEntities>.
+This operation retrieves the status of your report job and a list of
+entities that could have used group or policy permissions to access the
+specified service.
+
+=over
+
+=item *
+
+B<Group> E<ndash> For a group report, this operation returns a list of
+users in the group that could have used the groupE<rsquo>s policies in
+an attempt to access the service.
+
+=item *
+
+B<Policy> E<ndash> For a policy report, this operation returns a list
+of entities (users or roles) that could have used the policy in an
+attempt to access the service.
+
+=back
+
+You can also use this operation for user or role reports to retrieve
+details about those entities.
+
+If the operation fails, the
+C<GetServiceLastAccessedDetailsWithEntities> operation returns the
+reason that it failed.
+
+By default, the list of associated entities is sorted by date, with the
+most recent access listed first.
+
+
+=head2 GetServiceLinkedRoleDeletionStatus
+
+=over
+
+=item DeletionTaskId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetServiceLinkedRoleDeletionStatus>
 
@@ -2561,10 +3493,21 @@ use the DeleteServiceLinkedRole API operation to submit a
 service-linked role for deletion, you can use the C<DeletionTaskId>
 parameter in C<GetServiceLinkedRoleDeletionStatus> to check the status
 of the deletion. If the deletion fails, this operation returns the
-reason that it failed.
+reason that it failed, if that information is returned by the service.
 
 
-=head2 GetSSHPublicKey(Encoding => Str, SSHPublicKeyId => Str, UserName => Str)
+=head2 GetSSHPublicKey
+
+=over
+
+=item Encoding => Str
+
+=item SSHPublicKeyId => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetSSHPublicKey>
 
@@ -2573,7 +3516,7 @@ Returns: a L<Paws::IAM::GetSSHPublicKeyResponse> instance
 Retrieves the specified SSH public key, including metadata about the
 key.
 
-The SSH public key retrieved by this action is used only for
+The SSH public key retrieved by this operation is used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS
 CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
@@ -2581,7 +3524,14 @@ CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
 in the I<AWS CodeCommit User Guide>.
 
 
-=head2 GetUser([UserName => Str])
+=head2 GetUser
+
+=over
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetUser>
 
@@ -2595,7 +3545,16 @@ implicitly based on the AWS access key ID used to sign the request to
 this API.
 
 
-=head2 GetUserPolicy(PolicyName => Str, UserName => Str)
+=head2 GetUserPolicy
+
+=over
+
+=item PolicyName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::GetUserPolicy>
 
@@ -2622,30 +3581,50 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 ListAccessKeys([Marker => Str, MaxItems => Int, UserName => Str])
+=head2 ListAccessKeys
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListAccessKeys>
 
 Returns: a L<Paws::IAM::ListAccessKeysResponse> instance
 
 Returns information about the access key IDs associated with the
-specified IAM user. If there are none, the action returns an empty
+specified IAM user. If there is none, the operation returns an empty
 list.
 
 Although each user is limited to a small number of keys, you can still
 paginate the results using the C<MaxItems> and C<Marker> parameters.
 
-If the C<UserName> field is not specified, the UserName is determined
+If the C<UserName> field is not specified, the user name is determined
 implicitly based on the AWS access key ID used to sign the request.
-Because this action works for access keys under the AWS account, you
-can use this action to manage root credentials even if the AWS account
-has no associated users.
+This operation works for access keys under the AWS account.
+Consequently, you can use this operation to manage AWS account root
+user credentials even if the AWS account has no associated users.
 
 To ensure the security of your AWS account, the secret access key is
 accessible only during key and user creation.
 
 
-=head2 ListAccountAliases([Marker => Str, MaxItems => Int])
+=head2 ListAccountAliases
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListAccountAliases>
 
@@ -2658,7 +3637,20 @@ Using an Alias for Your AWS Account ID
 the I<IAM User Guide>.
 
 
-=head2 ListAttachedGroupPolicies(GroupName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListAttachedGroupPolicies
+
+=over
+
+=item GroupName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListAttachedGroupPolicies>
 
@@ -2677,10 +3669,23 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. You can use the C<PathPrefix> parameter to limit the list
 of policies to only those matching the specified path prefix. If there
 are no policies attached to the specified group (or none that match the
-specified path prefix), the action returns an empty list.
+specified path prefix), the operation returns an empty list.
 
 
-=head2 ListAttachedRolePolicies(RoleName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListAttachedRolePolicies
+
+=over
+
+=item RoleName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListAttachedRolePolicies>
 
@@ -2698,10 +3703,23 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. You can use the C<PathPrefix> parameter to limit the list
 of policies to only those matching the specified path prefix. If there
 are no policies attached to the specified role (or none that match the
-specified path prefix), the action returns an empty list.
+specified path prefix), the operation returns an empty list.
 
 
-=head2 ListAttachedUserPolicies(UserName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListAttachedUserPolicies
+
+=over
+
+=item UserName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListAttachedUserPolicies>
 
@@ -2719,10 +3737,27 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. You can use the C<PathPrefix> parameter to limit the list
 of policies to only those matching the specified path prefix. If there
 are no policies attached to the specified group (or none that match the
-specified path prefix), the action returns an empty list.
+specified path prefix), the operation returns an empty list.
 
 
-=head2 ListEntitiesForPolicy(PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListEntitiesForPolicy
+
+=over
+
+=item PolicyArn => Str
+
+=item [EntityFilter => Str]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+=item [PolicyUsageFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListEntitiesForPolicy>
 
@@ -2740,7 +3775,18 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListGroupPolicies(GroupName => Str, [Marker => Str, MaxItems => Int])
+=head2 ListGroupPolicies
+
+=over
+
+=item GroupName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListGroupPolicies>
 
@@ -2758,10 +3804,21 @@ in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. If there are no inline policies embedded with the specified
-group, the action returns an empty list.
+group, the operation returns an empty list.
 
 
-=head2 ListGroups([Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListGroups
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListGroups>
 
@@ -2773,7 +3830,18 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListGroupsForUser(UserName => Str, [Marker => Str, MaxItems => Int])
+=head2 ListGroupsForUser
+
+=over
+
+=item UserName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListGroupsForUser>
 
@@ -2785,29 +3853,25 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListInstanceProfiles([Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListInstanceProfiles
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListInstanceProfiles>
 
 Returns: a L<Paws::IAM::ListInstanceProfilesResponse> instance
 
 Lists the instance profiles that have the specified path prefix. If
-there are none, the action returns an empty list. For more information
-about instance profiles, go to About Instance Profiles
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
-
-You can paginate the results using the C<MaxItems> and C<Marker>
-parameters.
-
-
-=head2 ListInstanceProfilesForRole(RoleName => Str, [Marker => Str, MaxItems => Int])
-
-Each argument is described in detail in: L<Paws::IAM::ListInstanceProfilesForRole>
-
-Returns: a L<Paws::IAM::ListInstanceProfilesForRoleResponse> instance
-
-Lists the instance profiles that have the specified associated IAM
-role. If there are none, the action returns an empty list. For more
+there are none, the operation returns an empty list. For more
 information about instance profiles, go to About Instance Profiles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
@@ -2815,23 +3879,65 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListMFADevices([Marker => Str, MaxItems => Int, UserName => Str])
+=head2 ListInstanceProfilesForRole
+
+=over
+
+=item RoleName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::ListInstanceProfilesForRole>
+
+Returns: a L<Paws::IAM::ListInstanceProfilesForRoleResponse> instance
+
+Lists the instance profiles that have the specified associated IAM
+role. If there are none, the operation returns an empty list. For more
+information about instance profiles, go to About Instance Profiles
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
+
+You can paginate the results using the C<MaxItems> and C<Marker>
+parameters.
+
+
+=head2 ListMFADevices
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListMFADevices>
 
 Returns: a L<Paws::IAM::ListMFADevicesResponse> instance
 
 Lists the MFA devices for an IAM user. If the request includes a IAM
-user name, then this action lists all the MFA devices associated with
-the specified user. If you do not specify a user name, IAM determines
-the user name implicitly based on the AWS access key ID signing the
-request for this API.
+user name, then this operation lists all the MFA devices associated
+with the specified user. If you do not specify a user name, IAM
+determines the user name implicitly based on the AWS access key ID
+signing the request for this API.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListOpenIDConnectProviders()
+=head2 ListOpenIDConnectProviders
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IAM::ListOpenIDConnectProviders>
 
@@ -2841,7 +3947,24 @@ Lists information about the IAM OpenID Connect (OIDC) provider resource
 objects defined in the AWS account.
 
 
-=head2 ListPolicies([Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, Scope => Str])
+=head2 ListPolicies
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [OnlyAttached => Bool]
+
+=item [PathPrefix => Str]
+
+=item [PolicyUsageFilter => Str]
+
+=item [Scope => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListPolicies>
 
@@ -2866,7 +3989,86 @@ Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 ListPolicyVersions(PolicyArn => Str, [Marker => Str, MaxItems => Int])
+=head2 ListPoliciesGrantingServiceAccess
+
+=over
+
+=item Arn => Str
+
+=item ServiceNamespaces => ArrayRef[Str|Undef]
+
+=item [Marker => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::ListPoliciesGrantingServiceAccess>
+
+Returns: a L<Paws::IAM::ListPoliciesGrantingServiceAccessResponse> instance
+
+Retrieves a list of policies that the IAM identity (user, group, or
+role) can use to access each specified service.
+
+This operation does not use other policy types when determining whether
+a resource could access a service. These other policy types include
+resource-based policies, access control lists, AWS Organizations
+policies, IAM permissions boundaries, and AWS STS assume role policies.
+It only applies permissions policy logic. For more about the evaluation
+of policy types, see Evaluating Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics)
+in the I<IAM User Guide>.
+
+The list of policies returned by the operation depends on the ARN of
+the identity that you provide.
+
+=over
+
+=item *
+
+B<User> E<ndash> The list of policies includes the managed and inline
+policies that are attached to the user directly. The list also includes
+any additional managed and inline policies that are attached to the
+group to which the user belongs.
+
+=item *
+
+B<Group> E<ndash> The list of policies includes only the managed and
+inline policies that are attached to the group directly. Policies that
+are attached to the groupE<rsquo>s user are not included.
+
+=item *
+
+B<Role> E<ndash> The list of policies includes only the managed and
+inline policies that are attached to the role.
+
+=back
+
+For each managed policy, this operation returns the ARN and policy
+name. For each inline policy, it returns the policy name and the entity
+to which it is attached. Inline policies do not have an ARN. For more
+information about these policy types, see Managed Policies and Inline
+Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
+in the I<IAM User Guide>.
+
+Policies that are attached to users and roles as permissions boundaries
+are not returned. To view which managed policy is currently used to set
+the permissions boundary for a user or role, use the GetUser or GetRole
+operations.
+
+
+=head2 ListPolicyVersions
+
+=over
+
+=item PolicyArn => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListPolicyVersions>
 
@@ -2882,7 +4084,18 @@ Inline Policies
 in the I<IAM User Guide>.
 
 
-=head2 ListRolePolicies(RoleName => Str, [Marker => Str, MaxItems => Int])
+=head2 ListRolePolicies
+
+=over
+
+=item RoleName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListRolePolicies>
 
@@ -2900,17 +4113,28 @@ in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. If there are no inline policies embedded with the specified
-role, the action returns an empty list.
+role, the operation returns an empty list.
 
 
-=head2 ListRoles([Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListRoles
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListRoles>
 
 Returns: a L<Paws::IAM::ListRolesResponse> instance
 
 Lists the IAM roles that have the specified path prefix. If there are
-none, the action returns an empty list. For more information about
+none, the operation returns an empty list. For more information about
 roles, go to Working with Roles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
 
@@ -2918,7 +4142,36 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListSAMLProviders()
+=head2 ListRoleTags
+
+=over
+
+=item RoleName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::ListRoleTags>
+
+Returns: a L<Paws::IAM::ListRoleTagsResponse> instance
+
+Lists the tags that are attached to the specified role. The returned
+list of tags is sorted by tag key. For more information about tagging,
+see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+
+=head2 ListSAMLProviders
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::IAM::ListSAMLProviders>
 
@@ -2930,34 +4183,54 @@ This operation requires Signature Version 4
 (http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
-=head2 ListServerCertificates([Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListServerCertificates
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListServerCertificates>
 
 Returns: a L<Paws::IAM::ListServerCertificatesResponse> instance
 
 Lists the server certificates stored in IAM that have the specified
-path prefix. If none exist, the action returns an empty list.
+path prefix. If none exist, the operation returns an empty list.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
-For more information about working with server certificates, including
-a list of AWS services that can use the server certificates that you
-manage with IAM, go to Working with Server Certificates
+For more information about working with server certificates, see
+Working with Server Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html)
-in the I<IAM User Guide>.
+in the I<IAM User Guide>. This topic also includes a list of AWS
+services that can use the server certificates that you manage with IAM.
 
 
-=head2 ListServiceSpecificCredentials([ServiceName => Str, UserName => Str])
+=head2 ListServiceSpecificCredentials
+
+=over
+
+=item [ServiceName => Str]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListServiceSpecificCredentials>
 
 Returns: a L<Paws::IAM::ListServiceSpecificCredentialsResponse> instance
 
 Returns information about the service-specific credentials associated
-with the specified IAM user. If there are none, the action returns an
-empty list. The service-specific credentials returned by this action
+with the specified IAM user. If none exists, the operation returns an
+empty list. The service-specific credentials returned by this operation
 are used only for authenticating the IAM user to a specific service.
 For more information about using service-specific credentials to
 authenticate to an AWS service, see Set Up service-specific credentials
@@ -2965,15 +4238,26 @@ authenticate to an AWS service, see Set Up service-specific credentials
 in the AWS CodeCommit User Guide.
 
 
-=head2 ListSigningCertificates([Marker => Str, MaxItems => Int, UserName => Str])
+=head2 ListSigningCertificates
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListSigningCertificates>
 
 Returns: a L<Paws::IAM::ListSigningCertificatesResponse> instance
 
 Returns information about the signing certificates associated with the
-specified IAM user. If there are none, the action returns an empty
-list.
+specified IAM user. If there none exists, the operation returns an
+empty list.
 
 Although each user is limited to a small number of signing
 certificates, you can still paginate the results using the C<MaxItems>
@@ -2981,22 +4265,33 @@ and C<Marker> parameters.
 
 If the C<UserName> field is not specified, the user name is determined
 implicitly based on the AWS access key ID used to sign the request for
-this API. Because this action works for access keys under the AWS
-account, you can use this action to manage root credentials even if the
-AWS account has no associated users.
+this API. This operation works for access keys under the AWS account.
+Consequently, you can use this operation to manage AWS account root
+user credentials even if the AWS account has no associated users.
 
 
-=head2 ListSSHPublicKeys([Marker => Str, MaxItems => Int, UserName => Str])
+=head2 ListSSHPublicKeys
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListSSHPublicKeys>
 
 Returns: a L<Paws::IAM::ListSSHPublicKeysResponse> instance
 
 Returns information about the SSH public keys associated with the
-specified IAM user. If there are none, the action returns an empty
-list.
+specified IAM user. If there none exists, the operation returns an
+empty list.
 
-The SSH public keys returned by this action are used only for
+The SSH public keys returned by this operation are used only for
 authenticating the IAM user to an AWS CodeCommit repository. For more
 information about using SSH keys to authenticate to an AWS CodeCommit
 repository, see Set up AWS CodeCommit for SSH Connections
@@ -3007,7 +4302,18 @@ Although each user is limited to a small number of keys, you can still
 paginate the results using the C<MaxItems> and C<Marker> parameters.
 
 
-=head2 ListUserPolicies(UserName => Str, [Marker => Str, MaxItems => Int])
+=head2 ListUserPolicies
+
+=over
+
+=item UserName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListUserPolicies>
 
@@ -3025,39 +4331,96 @@ in the I<IAM User Guide>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters. If there are no inline policies embedded with the specified
-user, the action returns an empty list.
+user, the operation returns an empty list.
 
 
-=head2 ListUsers([Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListUsers
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PathPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListUsers>
 
 Returns: a L<Paws::IAM::ListUsersResponse> instance
 
 Lists the IAM users that have the specified path prefix. If no path
-prefix is specified, the action returns all users in the AWS account.
-If there are none, the action returns an empty list.
+prefix is specified, the operation returns all users in the AWS
+account. If there are none, the operation returns an empty list.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListVirtualMFADevices([AssignmentStatus => Str, Marker => Str, MaxItems => Int])
+=head2 ListUserTags
+
+=over
+
+=item UserName => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::ListUserTags>
+
+Returns: a L<Paws::IAM::ListUserTagsResponse> instance
+
+Lists the tags that are attached to the specified user. The returned
+list of tags is sorted by tag key. For more information about tagging,
+see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+
+=head2 ListVirtualMFADevices
+
+=over
+
+=item [AssignmentStatus => Str]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ListVirtualMFADevices>
 
 Returns: a L<Paws::IAM::ListVirtualMFADevicesResponse> instance
 
 Lists the virtual MFA devices defined in the AWS account by assignment
-status. If you do not specify an assignment status, the action returns
-a list of all virtual MFA devices. Assignment status can be
+status. If you do not specify an assignment status, the operation
+returns a list of all virtual MFA devices. Assignment status can be
 C<Assigned>, C<Unassigned>, or C<Any>.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 PutGroupPolicy(GroupName => Str, PolicyDocument => Str, PolicyName => Str)
+=head2 PutGroupPolicy
+
+=over
+
+=item GroupName => Str
+
+=item PolicyDocument => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::PutGroupPolicy>
 
@@ -3085,7 +4448,50 @@ the Query API with IAM, go to Making Query Requests
 in the I<IAM User Guide>.
 
 
-=head2 PutRolePolicy(PolicyDocument => Str, PolicyName => Str, RoleName => Str)
+=head2 PutRolePermissionsBoundary
+
+=over
+
+=item PermissionsBoundary => Str
+
+=item RoleName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::PutRolePermissionsBoundary>
+
+Returns: nothing
+
+Adds or updates the policy that is specified as the IAM role's
+permissions boundary. You can use an AWS managed policy or a customer
+managed policy to set the boundary for a role. Use the boundary to
+control the maximum permissions that the role can have. Setting a
+permissions boundary is an advanced feature that can affect the
+permissions for the role.
+
+You cannot set the boundary for a service-linked role.
+
+Policies used as permissions boundaries do not provide permissions. You
+must also attach a permissions policy to the role. To learn how the
+effective permissions for a role are evaluated, see IAM JSON Policy
+Evaluation Logic
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+in the IAM User Guide.
+
+
+=head2 PutRolePolicy
+
+=over
+
+=item PolicyDocument => Str
+
+=item PolicyName => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::PutRolePolicy>
 
@@ -3121,7 +4527,48 @@ the Query API with IAM, go to Making Query Requests
 in the I<IAM User Guide>.
 
 
-=head2 PutUserPolicy(PolicyDocument => Str, PolicyName => Str, UserName => Str)
+=head2 PutUserPermissionsBoundary
+
+=over
+
+=item PermissionsBoundary => Str
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::PutUserPermissionsBoundary>
+
+Returns: nothing
+
+Adds or updates the policy that is specified as the IAM user's
+permissions boundary. You can use an AWS managed policy or a customer
+managed policy to set the boundary for a user. Use the boundary to
+control the maximum permissions that the user can have. Setting a
+permissions boundary is an advanced feature that can affect the
+permissions for the user.
+
+Policies that are used as permissions boundaries do not provide
+permissions. You must also attach a permissions policy to the user. To
+learn how the effective permissions for a user are evaluated, see IAM
+JSON Policy Evaluation Logic
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+in the IAM User Guide.
+
+
+=head2 PutUserPolicy
+
+=over
+
+=item PolicyDocument => Str
+
+=item PolicyName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::PutUserPolicy>
 
@@ -3149,7 +4596,16 @@ the Query API with IAM, go to Making Query Requests
 in the I<IAM User Guide>.
 
 
-=head2 RemoveClientIDFromOpenIDConnectProvider(ClientID => Str, OpenIDConnectProviderArn => Str)
+=head2 RemoveClientIDFromOpenIDConnectProvider
+
+=over
+
+=item ClientID => Str
+
+=item OpenIDConnectProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::RemoveClientIDFromOpenIDConnectProvider>
 
@@ -3159,11 +4615,20 @@ Removes the specified client ID (also known as audience) from the list
 of client IDs registered for the specified IAM OpenID Connect (OIDC)
 provider resource object.
 
-This action is idempotent; it does not fail or return an error if you
-try to remove a client ID that does not exist.
+This operation is idempotent; it does not fail or return an error if
+you try to remove a client ID that does not exist.
 
 
-=head2 RemoveRoleFromInstanceProfile(InstanceProfileName => Str, RoleName => Str)
+=head2 RemoveRoleFromInstanceProfile
+
+=over
+
+=item InstanceProfileName => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::RemoveRoleFromInstanceProfile>
 
@@ -3171,10 +4636,10 @@ Returns: nothing
 
 Removes the specified IAM role from the specified EC2 instance profile.
 
-Make sure you do not have any Amazon EC2 instances running with the
-role you are about to remove from the instance profile. Removing a role
-from an instance profile that is associated with a running instance
-might break any applications running on the instance.
+Make sure that you do not have any Amazon EC2 instances running with
+the role you are about to remove from the instance profile. Removing a
+role from an instance profile that is associated with a running
+instance might break any applications running on the instance.
 
 For more information about IAM roles, go to Working with Roles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
@@ -3183,7 +4648,16 @@ Profiles
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html).
 
 
-=head2 RemoveUserFromGroup(GroupName => Str, UserName => Str)
+=head2 RemoveUserFromGroup
+
+=over
+
+=item GroupName => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::RemoveUserFromGroup>
 
@@ -3192,7 +4666,16 @@ Returns: nothing
 Removes the specified user from the specified group.
 
 
-=head2 ResetServiceSpecificCredential(ServiceSpecificCredentialId => Str, [UserName => Str])
+=head2 ResetServiceSpecificCredential
+
+=over
+
+=item ServiceSpecificCredentialId => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ResetServiceSpecificCredential>
 
@@ -3204,7 +4687,20 @@ by the user. Resetting the password immediately invalidates the
 previous password associated with this user.
 
 
-=head2 ResyncMFADevice(AuthenticationCode1 => Str, AuthenticationCode2 => Str, SerialNumber => Str, UserName => Str)
+=head2 ResyncMFADevice
+
+=over
+
+=item AuthenticationCode1 => Str
+
+=item AuthenticationCode2 => Str
+
+=item SerialNumber => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::ResyncMFADevice>
 
@@ -3219,7 +4715,16 @@ devices, go to Using a Virtual MFA Device
 in the I<IAM User Guide>.
 
 
-=head2 SetDefaultPolicyVersion(PolicyArn => Str, VersionId => Str)
+=head2 SetDefaultPolicyVersion
+
+=over
+
+=item PolicyArn => Str
+
+=item VersionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::SetDefaultPolicyVersion>
 
@@ -3228,7 +4733,7 @@ Returns: nothing
 Sets the specified version of the specified policy as the policy's
 default (operative) version.
 
-This action affects all users, groups, and roles that the policy is
+This operation affects all users, groups, and roles that the policy is
 attached to. To list the users, groups, and roles that the policy is
 attached to, use the ListEntitiesForPolicy API.
 
@@ -3238,20 +4743,45 @@ Policies
 in the I<IAM User Guide>.
 
 
-=head2 SimulateCustomPolicy(ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateCustomPolicy
+
+=over
+
+=item ActionNames => ArrayRef[Str|Undef]
+
+=item PolicyInputList => ArrayRef[Str|Undef]
+
+=item [CallerArn => Str]
+
+=item [ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [ResourceArns => ArrayRef[Str|Undef]]
+
+=item [ResourceHandlingOption => Str]
+
+=item [ResourceOwner => Str]
+
+=item [ResourcePolicy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::SimulateCustomPolicy>
 
 Returns: a L<Paws::IAM::SimulatePolicyResponse> instance
 
 Simulate how a set of IAM policies and optionally a resource-based
-policy works with a list of API actions and AWS resources to determine
-the policies' effective permissions. The policies are provided as
-strings.
+policy works with a list of API operations and AWS resources to
+determine the policies' effective permissions. The policies are
+provided as strings.
 
-The simulation does not perform the API actions; it only checks the
+The simulation does not perform the API operations; it only checks the
 authorization to determine if the simulated policies allow or deny the
-actions.
+operations.
 
 If you want to simulate existing policies attached to an IAM user,
 group, or role, use SimulatePrincipalPolicy instead.
@@ -3266,17 +4796,44 @@ If the output is long, you can use C<MaxItems> and C<Marker> parameters
 to paginate the results.
 
 
-=head2 SimulatePrincipalPolicy(ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulatePrincipalPolicy
+
+=over
+
+=item ActionNames => ArrayRef[Str|Undef]
+
+=item PolicySourceArn => Str
+
+=item [CallerArn => Str]
+
+=item [ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]]
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [PolicyInputList => ArrayRef[Str|Undef]]
+
+=item [ResourceArns => ArrayRef[Str|Undef]]
+
+=item [ResourceHandlingOption => Str]
+
+=item [ResourceOwner => Str]
+
+=item [ResourcePolicy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::SimulatePrincipalPolicy>
 
 Returns: a L<Paws::IAM::SimulatePolicyResponse> instance
 
 Simulate how a set of IAM policies attached to an IAM entity works with
-a list of API actions and AWS resources to determine the policies'
+a list of API operations and AWS resources to determine the policies'
 effective permissions. The entity can be an IAM user, group, or role.
 If you specify a user, then the simulation also includes all of the
-policies that are attached to groups that the user belongs to .
+policies that are attached to groups that the user belongs to.
 
 You can optionally include a list of one or more additional policies
 specified as strings to include in the simulation. If you want to
@@ -3286,9 +4843,9 @@ instead.
 You can also optionally include one resource-based policy to be
 evaluated with each of the resources included in the simulation.
 
-The simulation does not perform the API actions, it only checks the
+The simulation does not perform the API operations, it only checks the
 authorization to determine if the simulated policies allow or deny the
-actions.
+operations.
 
 B<Note:> This API discloses information about the permissions granted
 to other users. If you do not want users to see other user's
@@ -3305,28 +4862,245 @@ If the output is long, you can use the C<MaxItems> and C<Marker>
 parameters to paginate the results.
 
 
-=head2 UpdateAccessKey(AccessKeyId => Str, Status => Str, [UserName => Str])
+=head2 TagRole
+
+=over
+
+=item RoleName => Str
+
+=item Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::TagRole>
+
+Returns: nothing
+
+Adds one or more tags to an IAM role. The role can be a regular role or
+a service-linked role. If a tag with the same key name already exists,
+then that tag is overwritten with the new value.
+
+A tag consists of a key name and an associated value. By assigning tags
+to your resources, you can do the following:
+
+=over
+
+=item *
+
+B<Administrative grouping and discovery> - Attach tags to resources to
+aid in organization and search. For example, you could search for all
+resources with the key name I<Project> and the value
+I<MyImportantProject>. Or search for all resources with the key name
+I<Cost Center> and the value I<41200>.
+
+=item *
+
+B<Access control> - Reference tags in IAM user-based and resource-based
+policies. You can use tags to restrict access to only an IAM user or
+role that has a specified tag attached. You can also restrict access to
+only those resources that have a certain tag attached. For examples of
+policies that show how to use tags to control access, see Control
+Access Using IAM Tags
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html) in
+the I<IAM User Guide>.
+
+=item *
+
+B<Cost allocation> - Use tags to help track which individuals and teams
+are using which AWS resources.
+
+=back
+
+=over
+
+=item *
+
+Make sure that you have no invalid tags and that you do not exceed the
+allowed number of tags per role. In either case, the entire request
+fails and I<no> tags are added to the role.
+
+=item *
+
+AWS always interprets the tag C<Value> as a single string. If you need
+to store an array, you can store comma-separated values in the string.
+However, you must interpret the value in your code.
+
+=back
+
+For more information about tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+
+=head2 TagUser
+
+=over
+
+=item Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::TagUser>
+
+Returns: nothing
+
+Adds one or more tags to an IAM user. If a tag with the same key name
+already exists, then that tag is overwritten with the new value.
+
+A tag consists of a key name and an associated value. By assigning tags
+to your resources, you can do the following:
+
+=over
+
+=item *
+
+B<Administrative grouping and discovery> - Attach tags to resources to
+aid in organization and search. For example, you could search for all
+resources with the key name I<Project> and the value
+I<MyImportantProject>. Or search for all resources with the key name
+I<Cost Center> and the value I<41200>.
+
+=item *
+
+B<Access control> - Reference tags in IAM user-based and resource-based
+policies. You can use tags to restrict access to only an IAM requesting
+user or to a role that has a specified tag attached. You can also
+restrict access to only those resources that have a certain tag
+attached. For examples of policies that show how to use tags to control
+access, see Control Access Using IAM Tags
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html) in
+the I<IAM User Guide>.
+
+=item *
+
+B<Cost allocation> - Use tags to help track which individuals and teams
+are using which AWS resources.
+
+=back
+
+=over
+
+=item *
+
+Make sure that you have no invalid tags and that you do not exceed the
+allowed number of tags per role. In either case, the entire request
+fails and I<no> tags are added to the role.
+
+=item *
+
+AWS always interprets the tag C<Value> as a single string. If you need
+to store an array, you can store comma-separated values in the string.
+However, you must interpret the value in your code.
+
+=back
+
+For more information about tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+
+=head2 UntagRole
+
+=over
+
+=item RoleName => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::UntagRole>
+
+Returns: nothing
+
+Removes the specified tags from the role. For more information about
+tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+
+=head2 UntagUser
+
+=over
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+=item UserName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::UntagUser>
+
+Returns: nothing
+
+Removes the specified tags from the user. For more information about
+tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+
+=head2 UpdateAccessKey
+
+=over
+
+=item AccessKeyId => Str
+
+=item Status => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateAccessKey>
 
 Returns: nothing
 
 Changes the status of the specified access key from Active to Inactive,
-or vice versa. This action can be used to disable a user's key as part
-of a key rotation work flow.
+or vice versa. This operation can be used to disable a user's key as
+part of a key rotation workflow.
 
-If the C<UserName> field is not specified, the UserName is determined
+If the C<UserName> field is not specified, the user name is determined
 implicitly based on the AWS access key ID used to sign the request.
-Because this action works for access keys under the AWS account, you
-can use this action to manage root credentials even if the AWS account
-has no associated users.
+This operation works for access keys under the AWS account.
+Consequently, you can use this operation to manage AWS account root
+user credentials even if the AWS account has no associated users.
 
 For information about rotating keys, see Managing Keys and Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html)
 in the I<IAM User Guide>.
 
 
-=head2 UpdateAccountPasswordPolicy([AllowUsersToChangePassword => Bool, HardExpiry => Bool, MaxPasswordAge => Int, MinimumPasswordLength => Int, PasswordReusePrevention => Int, RequireLowercaseCharacters => Bool, RequireNumbers => Bool, RequireSymbols => Bool, RequireUppercaseCharacters => Bool])
+=head2 UpdateAccountPasswordPolicy
+
+=over
+
+=item [AllowUsersToChangePassword => Bool]
+
+=item [HardExpiry => Bool]
+
+=item [MaxPasswordAge => Int]
+
+=item [MinimumPasswordLength => Int]
+
+=item [PasswordReusePrevention => Int]
+
+=item [RequireLowercaseCharacters => Bool]
+
+=item [RequireNumbers => Bool]
+
+=item [RequireSymbols => Bool]
+
+=item [RequireUppercaseCharacters => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateAccountPasswordPolicy>
 
@@ -3334,10 +5108,19 @@ Returns: nothing
 
 Updates the password policy settings for the AWS account.
 
-This action does not support partial updates. No parameters are
+=over
+
+=item *
+
+This operation does not support partial updates. No parameters are
 required, but if you do not specify a parameter, that parameter's value
 reverts to its default value. See the B<Request Parameters> section for
-each parameter's default value.
+each parameter's default value. Also note that some parameters do not
+allow the default parameter to be explicitly set. Instead, to invoke
+the default value, do not include that parameter when you invoke the
+operation.
+
+=back
 
 For more information about using a password policy, see Managing an IAM
 Password Policy
@@ -3345,7 +5128,16 @@ Password Policy
 in the I<IAM User Guide>.
 
 
-=head2 UpdateAssumeRolePolicy(PolicyDocument => Str, RoleName => Str)
+=head2 UpdateAssumeRolePolicy
+
+=over
+
+=item PolicyDocument => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateAssumeRolePolicy>
 
@@ -3358,7 +5150,18 @@ and Federate Identities
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html).
 
 
-=head2 UpdateGroup(GroupName => Str, [NewGroupName => Str, NewPath => Str])
+=head2 UpdateGroup
+
+=over
+
+=item GroupName => Str
+
+=item [NewGroupName => Str]
+
+=item [NewPath => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateGroup>
 
@@ -3371,16 +5174,28 @@ name. For more information, see Renaming Users and Groups
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html)
 in the I<IAM User Guide>.
 
-To change an IAM group name the requester must have appropriate
-permissions on both the source object and the target object. For
-example, to change "Managers" to "MGRs", the entity making the request
-must have permission on both "Managers" and "MGRs", or must have
-permission on all (*). For more information about permissions, see
-Permissions and Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html).
+The person making the request (the principal), must have permission to
+change the role group with the old name and the new name. For example,
+to change the group named C<Managers> to C<MGRs>, the principal must
+have a policy that allows them to update both groups. If the principal
+has permission to update the C<Managers> group, but not the C<MGRs>
+group, then the update fails. For more information about permissions,
+see Access Management
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html).
 
 
-=head2 UpdateLoginProfile(UserName => Str, [Password => Str, PasswordResetRequired => Bool])
+=head2 UpdateLoginProfile
+
+=over
+
+=item UserName => Str
+
+=item [Password => Str]
+
+=item [PasswordResetRequired => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateLoginProfile>
 
@@ -3394,7 +5209,16 @@ more information about modifying passwords, see Managing Passwords
 in the I<IAM User Guide>.
 
 
-=head2 UpdateOpenIDConnectProviderThumbprint(OpenIDConnectProviderArn => Str, ThumbprintList => ArrayRef[Str|Undef])
+=head2 UpdateOpenIDConnectProviderThumbprint
+
+=over
+
+=item OpenIDConnectProviderArn => Str
+
+=item ThumbprintList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateOpenIDConnectProviderThumbprint>
 
@@ -3404,7 +5228,7 @@ Replaces the existing list of server certificate thumbprints associated
 with an OpenID Connect (OIDC) provider resource object with a new list
 of thumbprints.
 
-The list that you pass with this action completely replaces the
+The list that you pass with this operation completely replaces the
 existing list of thumbprints. (The lists are not merged.)
 
 Typically, you need to update a thumbprint only when the identity
@@ -3413,23 +5237,64 @@ provider's certificate I<does> change, any attempt to assume an IAM
 role that specifies the OIDC provider as a principal fails until the
 certificate thumbprint is updated.
 
-Because trust for the OIDC provider is ultimately derived from the
-provider's certificate and is validated by the thumbprint, it is a best
-practice to limit access to the
-C<UpdateOpenIDConnectProviderThumbprint> action to highly-privileged
-users.
+Trust for the OIDC provider is derived from the provider's certificate
+and is validated by the thumbprint. Therefore, it is best to limit
+access to the C<UpdateOpenIDConnectProviderThumbprint> operation to
+highly privileged users.
 
 
-=head2 UpdateRoleDescription(Description => Str, RoleName => Str)
+=head2 UpdateRole
+
+=over
+
+=item RoleName => Str
+
+=item [Description => Str]
+
+=item [MaxSessionDuration => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::UpdateRole>
+
+Returns: a L<Paws::IAM::UpdateRoleResponse> instance
+
+Updates the description or maximum session duration setting of a role.
+
+
+=head2 UpdateRoleDescription
+
+=over
+
+=item Description => Str
+
+=item RoleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateRoleDescription>
 
 Returns: a L<Paws::IAM::UpdateRoleDescriptionResponse> instance
 
-Modifies the description of a role.
+Use UpdateRole instead.
+
+Modifies only the description of a role. This operation performs the
+same function as the C<Description> parameter in the C<UpdateRole>
+operation.
 
 
-=head2 UpdateSAMLProvider(SAMLMetadataDocument => Str, SAMLProviderArn => Str)
+=head2 UpdateSAMLProvider
+
+=over
+
+=item SAMLMetadataDocument => Str
+
+=item SAMLProviderArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateSAMLProvider>
 
@@ -3442,7 +5307,18 @@ This operation requires Signature Version 4
 (http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
-=head2 UpdateServerCertificate(ServerCertificateName => Str, [NewPath => Str, NewServerCertificateName => Str])
+=head2 UpdateServerCertificate
+
+=over
+
+=item ServerCertificateName => Str
+
+=item [NewPath => Str]
+
+=item [NewServerCertificateName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateServerCertificate>
 
@@ -3451,11 +5327,11 @@ Returns: nothing
 Updates the name and/or the path of the specified server certificate
 stored in IAM.
 
-For more information about working with server certificates, including
-a list of AWS services that can use the server certificates that you
-manage with IAM, go to Working with Server Certificates
+For more information about working with server certificates, see
+Working with Server Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html)
-in the I<IAM User Guide>.
+in the I<IAM User Guide>. This topic also includes a list of AWS
+services that can use the server certificates that you manage with IAM.
 
 You should understand the implications of changing a server
 certificate's path or name. For more information, see Renaming a Server
@@ -3463,17 +5339,30 @@ Certificate
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs_manage.html#RenamingServerCerts)
 in the I<IAM User Guide>.
 
-To change a server certificate name the requester must have appropriate
-permissions on both the source object and the target object. For
-example, to change the name from "ProductionCert" to "ProdCert", the
-entity making the request must have permission on "ProductionCert" and
-"ProdCert", or must have permission on all (*). For more information
-about permissions, see Access Management
+The person making the request (the principal), must have permission to
+change the server certificate with the old name and the new name. For
+example, to change the certificate named C<ProductionCert> to
+C<ProdCert>, the principal must have a policy that allows them to
+update both certificates. If the principal has permission to update the
+C<ProductionCert> group, but not the C<ProdCert> certificate, then the
+update fails. For more information about permissions, see Access
+Management
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html) in the
 I<IAM User Guide>.
 
 
-=head2 UpdateServiceSpecificCredential(ServiceSpecificCredentialId => Str, Status => Str, [UserName => Str])
+=head2 UpdateServiceSpecificCredential
+
+=over
+
+=item ServiceSpecificCredentialId => Str
+
+=item Status => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateServiceSpecificCredential>
 
@@ -3481,30 +5370,52 @@ Returns: nothing
 
 Sets the status of a service-specific credential to C<Active> or
 C<Inactive>. Service-specific credentials that are inactive cannot be
-used for authentication to the service. This action can be used to
-disable a userE<rsquo>s service-specific credential as part of a
-credential rotation work flow.
+used for authentication to the service. This operation can be used to
+disable a user's service-specific credential as part of a credential
+rotation work flow.
 
 
-=head2 UpdateSigningCertificate(CertificateId => Str, Status => Str, [UserName => Str])
+=head2 UpdateSigningCertificate
+
+=over
+
+=item CertificateId => Str
+
+=item Status => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateSigningCertificate>
 
 Returns: nothing
 
 Changes the status of the specified user signing certificate from
-active to disabled, or vice versa. This action can be used to disable
-an IAM user's signing certificate as part of a certificate rotation
-work flow.
+active to disabled, or vice versa. This operation can be used to
+disable an IAM user's signing certificate as part of a certificate
+rotation work flow.
 
-If the C<UserName> field is not specified, the UserName is determined
+If the C<UserName> field is not specified, the user name is determined
 implicitly based on the AWS access key ID used to sign the request.
-Because this action works for access keys under the AWS account, you
-can use this action to manage root credentials even if the AWS account
-has no associated users.
+This operation works for access keys under the AWS account.
+Consequently, you can use this operation to manage AWS account root
+user credentials even if the AWS account has no associated users.
 
 
-=head2 UpdateSSHPublicKey(SSHPublicKeyId => Str, Status => Str, UserName => Str)
+=head2 UpdateSSHPublicKey
+
+=over
+
+=item SSHPublicKeyId => Str
+
+=item Status => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateSSHPublicKey>
 
@@ -3512,10 +5423,10 @@ Returns: nothing
 
 Sets the status of an IAM user's SSH public key to active or inactive.
 SSH public keys that are inactive cannot be used for authentication.
-This action can be used to disable a user's SSH public key as part of a
-key rotation work flow.
+This operation can be used to disable a user's SSH public key as part
+of a key rotation work flow.
 
-The SSH public key affected by this action is used only for
+The SSH public key affected by this operation is used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS
 CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
@@ -3523,7 +5434,18 @@ CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
 in the I<AWS CodeCommit User Guide>.
 
 
-=head2 UpdateUser(UserName => Str, [NewPath => Str, NewUserName => Str])
+=head2 UpdateUser
+
+=over
+
+=item UserName => Str
+
+=item [NewPath => Str]
+
+=item [NewUserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UpdateUser>
 
@@ -3538,7 +5460,7 @@ and Renaming an IAM Group
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html)
 in the I<IAM User Guide>.
 
-To change a user name the requester must have appropriate permissions
+To change a user name, the requester must have appropriate permissions
 on both the source object and the target object. For example, to change
 Bob to Robert, the entity making the request must have permission on
 Bob and Robert, or must have permission on all (*). For more
@@ -3546,7 +5468,22 @@ information about permissions, see Permissions and Policies
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html).
 
 
-=head2 UploadServerCertificate(CertificateBody => Str, PrivateKey => Str, ServerCertificateName => Str, [CertificateChain => Str, Path => Str])
+=head2 UploadServerCertificate
+
+=over
+
+=item CertificateBody => Str
+
+=item PrivateKey => Str
+
+=item ServerCertificateName => Str
+
+=item [CertificateChain => Str]
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UploadServerCertificate>
 
@@ -3557,18 +5494,18 @@ certificate entity includes a public key certificate, a private key,
 and an optional certificate chain, which should all be PEM-encoded.
 
 We recommend that you use AWS Certificate Manager
-(https://aws.amazon.com/certificate-manager/) to provision, manage, and
-deploy your server certificates. With ACM you can request a
+(http://docs.aws.amazon.com/certificate-manager/) to provision, manage,
+and deploy your server certificates. With ACM you can request a
 certificate, deploy it to AWS resources, and let ACM handle certificate
 renewals for you. Certificates provided by ACM are free. For more
 information about using ACM, see the AWS Certificate Manager User Guide
 (http://docs.aws.amazon.com/acm/latest/userguide/).
 
-For more information about working with server certificates, including
-a list of AWS services that can use the server certificates that you
-manage with IAM, go to Working with Server Certificates
+For more information about working with server certificates, see
+Working with Server Certificates
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html)
-in the I<IAM User Guide>.
+in the I<IAM User Guide>. This topic includes a list of AWS services
+that can use the server certificates that you manage with IAM.
 
 For information about the number of server certificates you can upload,
 see Limitations on IAM Entities and Objects
@@ -3588,7 +5525,16 @@ Requests
 the I<IAM User Guide>.
 
 
-=head2 UploadSigningCertificate(CertificateBody => Str, [UserName => Str])
+=head2 UploadSigningCertificate
+
+=over
+
+=item CertificateBody => Str
+
+=item [UserName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UploadSigningCertificate>
 
@@ -3601,11 +5547,11 @@ When you upload the certificate, its default status is C<Active>.
 
 If the C<UserName> field is not specified, the IAM user name is
 determined implicitly based on the AWS access key ID used to sign the
-request. Because this action works for access keys under the AWS
-account, you can use this action to manage root credentials even if the
-AWS account has no associated users.
+request. This operation works for access keys under the AWS account.
+Consequently, you can use this operation to manage AWS account root
+user credentials even if the AWS account has no associated users.
 
-Because the body of a X.509 certificate can be large, you should use
+Because the body of an X.509 certificate can be large, you should use
 POST rather than GET when calling C<UploadSigningCertificate>. For
 information about setting up signatures and authorization through the
 API, go to Signing AWS API Requests
@@ -3616,7 +5562,16 @@ the Query API with IAM, go to Making Query Requests
 in the I<IAM User Guide>.
 
 
-=head2 UploadSSHPublicKey(SSHPublicKeyBody => Str, UserName => Str)
+=head2 UploadSSHPublicKey
+
+=over
+
+=item SSHPublicKeyBody => Str
+
+=item UserName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IAM::UploadSSHPublicKey>
 
@@ -3625,7 +5580,7 @@ Returns: a L<Paws::IAM::UploadSSHPublicKeyResponse> instance
 Uploads an SSH public key and associates it with the specified IAM
 user.
 
-The SSH public key uploaded by this action can be used only for
+The SSH public key uploaded by this operation can be used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS
 CodeCommit repository, see Set up AWS CodeCommit for SSH Connections
@@ -3729,9 +5684,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IAM::ListAttachedUserPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllEntitiesForPolicy(sub { },PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListAllEntitiesForPolicy(sub { },PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str, PolicyUsageFilter => Str])
 
-=head2 ListAllEntitiesForPolicy(PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
+=head2 ListAllEntitiesForPolicy(PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str, PolicyUsageFilter => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -3817,9 +5772,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IAM::ListMFADevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllPolicies(sub { },[Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, Scope => Str])
+=head2 ListAllPolicies(sub { },[Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, PolicyUsageFilter => Str, Scope => Str])
 
-=head2 ListAllPolicies([Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, Scope => Str])
+=head2 ListAllPolicies([Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, PolicyUsageFilter => Str, Scope => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

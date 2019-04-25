@@ -3,6 +3,7 @@ package Paws::ES::ElasticsearchDomainStatus;
   has AccessPolicies => (is => 'ro', isa => 'Str');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
   has ARN => (is => 'ro', isa => 'Str', required => 1);
+  has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
   has Created => (is => 'ro', isa => 'Bool');
   has Deleted => (is => 'ro', isa => 'Bool');
   has DomainId => (is => 'ro', isa => 'Str', required => 1);
@@ -14,8 +15,11 @@ package Paws::ES::ElasticsearchDomainStatus;
   has Endpoint => (is => 'ro', isa => 'Str');
   has Endpoints => (is => 'ro', isa => 'Paws::ES::EndpointsMap');
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
+  has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptions');
   has Processing => (is => 'ro', isa => 'Bool');
+  has ServiceSoftwareOptions => (is => 'ro', isa => 'Paws::ES::ServiceSoftwareOptions');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
+  has UpgradeProcessing => (is => 'ro', isa => 'Bool');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCDerivedInfo');
 1;
 
@@ -68,6 +72,13 @@ The current status of an Elasticsearch domain.
 Identifiers for IAM Entities
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html)
 in I<Using AWS Identity and Access Management> for more information.
+
+
+=head2 CognitoOptions => L<Paws::ES::CognitoOptions>
+
+  The C<CognitoOptions> for the specified domain. For more information,
+see Amazon Cognito Authentication for Kibana
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
 
 
 =head2 Created => Bool
@@ -138,6 +149,11 @@ C<'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'>.
   Log publishing options for the given domain.
 
 
+=head2 NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptions>
+
+  Specifies the status of the C<NodeToNodeEncryptionOptions>.
+
+
 =head2 Processing => Bool
 
   The status of the Elasticsearch domain configuration. C<True> if Amazon
@@ -145,9 +161,21 @@ Elasticsearch Service is processing configuration changes. C<False> if
 the configuration is active.
 
 
+=head2 ServiceSoftwareOptions => L<Paws::ES::ServiceSoftwareOptions>
+
+  The current status of the Elasticsearch domain's service software.
+
+
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
 
   Specifies the status of the C<SnapshotOptions>
+
+
+=head2 UpgradeProcessing => Bool
+
+  The status of an Elasticsearch domain version upgrade. C<True> if
+Amazon Elasticsearch Service is undergoing a version upgrade. C<False>
+if the configuration is active.
 
 
 =head2 VPCOptions => L<Paws::ES::VPCDerivedInfo>

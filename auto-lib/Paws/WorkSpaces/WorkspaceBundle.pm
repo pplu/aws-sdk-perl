@@ -5,6 +5,7 @@ package Paws::WorkSpaces::WorkspaceBundle;
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
+  has RootStorage => (is => 'ro', isa => 'Paws::WorkSpaces::RootStorage');
   has UserStorage => (is => 'ro', isa => 'Paws::WorkSpaces::UserStorage');
 1;
 
@@ -36,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Contains information about a WorkSpace bundle.
+Describes a WorkSpace bundle.
 
 =head1 ATTRIBUTES
 
@@ -48,12 +49,13 @@ Contains information about a WorkSpace bundle.
 
 =head2 ComputeType => L<Paws::WorkSpaces::ComputeType>
 
-  A ComputeType object that specifies the compute type for the bundle.
+  The compute type. For more information, see Amazon WorkSpaces Bundles
+(http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles).
 
 
 =head2 Description => Str
 
-  The bundle description.
+  A description.
 
 
 =head2 Name => Str
@@ -63,14 +65,18 @@ Contains information about a WorkSpace bundle.
 
 =head2 Owner => Str
 
-  The owner of the bundle. This contains the owner's account identifier,
+  The owner of the bundle. This is the account identifier of the owner,
 or C<AMAZON> if the bundle is provided by AWS.
+
+
+=head2 RootStorage => L<Paws::WorkSpaces::RootStorage>
+
+  The size of the root volume.
 
 
 =head2 UserStorage => L<Paws::WorkSpaces::UserStorage>
 
-  A UserStorage object that specifies the amount of user storage that the
-bundle contains.
+  The size of the user storage.
 
 
 

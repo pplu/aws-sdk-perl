@@ -39,7 +39,7 @@ are stored.
 
 =head2 S3 => L<Paws::Glacier::S3Location>
 
-  Describes an S3 location that will receive the results of the restore
+  Describes an S3 location that will receive the results of the job
 request.
 
 

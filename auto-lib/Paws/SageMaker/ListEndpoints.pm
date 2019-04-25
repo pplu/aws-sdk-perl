@@ -27,17 +27,36 @@ Paws::SageMaker::ListEndpoints - Arguments for method ListEndpoints on L<Paws::S
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListEndpoints on the 
-Amazon SageMaker Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ListEndpoints on the
+L<Amazon SageMaker Service|Paws::SageMaker> service. Use the attributes of this class
 as arguments to method ListEndpoints.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListEndpoints.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListEndpoints(Att1 => $value1, Att2 => $value2, ...);
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $ListEndpointsOutput = $api . sagemaker->ListEndpoints(
+      CreationTimeAfter      => '1970-01-01T01:00:00',       # OPTIONAL
+      CreationTimeBefore     => '1970-01-01T01:00:00',       # OPTIONAL
+      LastModifiedTimeAfter  => '1970-01-01T01:00:00',       # OPTIONAL
+      LastModifiedTimeBefore => '1970-01-01T01:00:00',       # OPTIONAL
+      MaxResults             => 1,                           # OPTIONAL
+      NameContains           => 'MyEndpointNameContains',    # OPTIONAL
+      NextToken              => 'MyPaginationToken',         # OPTIONAL
+      SortBy                 => 'Name',                      # OPTIONAL
+      SortOrder              => 'Ascending',                 # OPTIONAL
+      StatusEquals           => 'OutOfService',              # OPTIONAL
+    );
+
+    # Results:
+    my $Endpoints = $ListEndpointsOutput->Endpoints;
+    my $NextToken = $ListEndpointsOutput->NextToken;
+
+    # Returns a L<Paws::SageMaker::ListEndpointsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/ListEndpoints>
 
 =head1 ATTRIBUTES
 
@@ -107,7 +126,7 @@ Valid values are: C<"Ascending">, C<"Descending">
 
 A filter that returns only endpoints with the specified status.
 
-Valid values are: C<"OutOfService">, C<"Creating">, C<"Updating">, C<"RollingBack">, C<"InService">, C<"Deleting">, C<"Failed">
+Valid values are: C<"OutOfService">, C<"Creating">, C<"Updating">, C<"SystemUpdating">, C<"RollingBack">, C<"InService">, C<"Deleting">, C<"Failed">
 
 
 =head1 SEE ALSO

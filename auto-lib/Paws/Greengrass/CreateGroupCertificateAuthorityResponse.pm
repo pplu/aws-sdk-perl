@@ -17,7 +17,7 @@ Paws::Greengrass::CreateGroupCertificateAuthorityResponse
 
 =head2 GroupCertificateAuthorityArn => Str
 
-Arn of the group certificate authority.
+The ARN of the group certificate authority.
 
 
 =head2 _request_id => Str

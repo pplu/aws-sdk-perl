@@ -1,6 +1,7 @@
 package Paws::CodeBuild;
   use Moose;
   sub service { 'codebuild' }
+  sub signing_name { 'codebuild' }
   sub version { '2016-10-06' }
   sub target_prefix { 'CodeBuild_20161006' }
   sub json_version { "1.1" }
@@ -44,9 +45,19 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteSourceCredentials {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteSourceCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteWebhook {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteWebhook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ImportSourceCredentials {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ImportSourceCredentials', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub InvalidateProjectCache {
@@ -74,6 +85,11 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListProjects', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListSourceCredentials {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListSourceCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartBuild {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::StartBuild', @_);
@@ -87,6 +103,11 @@ package Paws::CodeBuild;
   sub UpdateProject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::UpdateProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateWebhook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::UpdateWebhook', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -161,7 +182,7 @@ package Paws::CodeBuild;
   }
 
 
-  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject CreateWebhook DeleteProject DeleteWebhook InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects StartBuild StopBuild UpdateProject / }
+  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject CreateWebhook DeleteProject DeleteSourceCredentials DeleteWebhook ImportSourceCredentials InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects ListSourceCredentials StartBuild StopBuild UpdateProject UpdateWebhook / }
 
 1;
 
@@ -199,9 +220,8 @@ prepackaged build environments for the most popular programming
 languages and build tools, such as Apache Maven, Gradle, and more. You
 can also fully customize build environments in AWS CodeBuild to use
 your own build tools. AWS CodeBuild scales automatically to meet peak
-build requests, and you pay only for the build time you consume. For
-more information about AWS CodeBuild, see the I<AWS CodeBuild User
-Guide>.
+build requests. You pay only for the build time you consume. For more
+information about AWS CodeBuild, see the I<AWS CodeBuild User Guide>.
 
 AWS CodeBuild supports these operations:
 
@@ -214,13 +234,13 @@ C<BatchDeleteBuilds>: Deletes one or more builds.
 =item *
 
 C<BatchGetProjects>: Gets information about one or more build projects.
-A I<build project> defines how AWS CodeBuild will run a build. This
+A I<build project> defines how AWS CodeBuild runs a build. This
 includes information such as where to get the source code to build, the
 build environment to use, the build commands to run, and where to store
-the build output. A I<build environment> represents a combination of
+the build output. A I<build environment> is a representation of
 operating system, programming language runtime, and tools that AWS
-CodeBuild will use to run a build. Also, you can add tags to build
-projects to help manage your resources and costs.
+CodeBuild uses to run a build. You can add tags to build projects to
+help manage your resources and costs.
 
 =item *
 
@@ -229,9 +249,13 @@ C<CreateProject>: Creates a build project.
 =item *
 
 C<CreateWebhook>: For an existing AWS CodeBuild build project that has
-its source code stored in a GitHub repository, enables AWS CodeBuild to
-begin automatically rebuilding the source code every time a code change
+its source code stored in a GitHub or Bitbucket repository, enables AWS
+CodeBuild to start rebuilding the source code every time a code change
 is pushed to the repository.
+
+=item *
+
+C<UpdateWebhook>: Changes the settings of an existing webhook.
 
 =item *
 
@@ -240,8 +264,8 @@ C<DeleteProject>: Deletes a build project.
 =item *
 
 C<DeleteWebhook>: For an existing AWS CodeBuild build project that has
-its source code stored in a GitHub repository, stops AWS CodeBuild from
-automatically rebuilding the source code every time a code change is
+its source code stored in a GitHub or Bitbucket repository, stops AWS
+CodeBuild from rebuilding the source code every time a code change is
 pushed to the repository.
 
 =item *
@@ -280,12 +304,40 @@ C<StopBuild>: Attempts to stop running a build.
 C<ListCuratedEnvironmentImages>: Gets information about Docker images
 that are managed by AWS CodeBuild.
 
+=item *
+
+C<DeleteSourceCredentials>: Deletes a set of GitHub, GitHub Enterprise,
+or Bitbucket source credentials.
+
+=item *
+
+C<ImportSourceCredentials>: Imports the source repository credentials
+for an AWS CodeBuild project that has its source code stored in a
+GitHub, GitHub Enterprise, or Bitbucket repository.
+
+=item *
+
+C<ListSourceCredentials>: Returns a list of C<SourceCredentialsInfo>
+objects. Each C<SourceCredentialsInfo> object includes the
+authentication type, token ARN, and type of source provider for one set
+of credentials.
+
 =back
+
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06>
 
 
 =head1 METHODS
 
-=head2 BatchDeleteBuilds(Ids => ArrayRef[Str|Undef])
+=head2 BatchDeleteBuilds
+
+=over
+
+=item Ids => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::BatchDeleteBuilds>
 
@@ -294,7 +346,14 @@ Returns: a L<Paws::CodeBuild::BatchDeleteBuildsOutput> instance
 Deletes one or more builds.
 
 
-=head2 BatchGetBuilds(Ids => ArrayRef[Str|Undef])
+=head2 BatchGetBuilds
+
+=over
+
+=item Ids => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::BatchGetBuilds>
 
@@ -303,7 +362,14 @@ Returns: a L<Paws::CodeBuild::BatchGetBuildsOutput> instance
 Gets information about builds.
 
 
-=head2 BatchGetProjects(Names => ArrayRef[Str|Undef])
+=head2 BatchGetProjects
+
+=over
+
+=item Names => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::BatchGetProjects>
 
@@ -312,7 +378,44 @@ Returns: a L<Paws::CodeBuild::BatchGetProjectsOutput> instance
 Gets information about build projects.
 
 
-=head2 CreateProject(Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, Environment => L<Paws::CodeBuild::ProjectEnvironment>, Name => Str, Source => L<Paws::CodeBuild::ProjectSource>, [BadgeEnabled => Bool, Cache => L<Paws::CodeBuild::ProjectCache>, Description => Str, EncryptionKey => Str, ServiceRole => Str, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int, VpcConfig => L<Paws::CodeBuild::VpcConfig>])
+=head2 CreateProject
+
+=over
+
+=item Artifacts => L<Paws::CodeBuild::ProjectArtifacts>
+
+=item Environment => L<Paws::CodeBuild::ProjectEnvironment>
+
+=item Name => Str
+
+=item ServiceRole => Str
+
+=item Source => L<Paws::CodeBuild::ProjectSource>
+
+=item [BadgeEnabled => Bool]
+
+=item [Cache => L<Paws::CodeBuild::ProjectCache>]
+
+=item [Description => Str]
+
+=item [EncryptionKey => Str]
+
+=item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
+
+=item [QueuedTimeoutInMinutes => Int]
+
+=item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+
+=item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
+
+=item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
+
+=item [TimeoutInMinutes => Int]
+
+=item [VpcConfig => L<Paws::CodeBuild::VpcConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::CreateProject>
 
@@ -321,30 +424,45 @@ Returns: a L<Paws::CodeBuild::CreateProjectOutput> instance
 Creates a build project.
 
 
-=head2 CreateWebhook(ProjectName => Str)
+=head2 CreateWebhook
+
+=over
+
+=item ProjectName => Str
+
+=item [BranchFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::CreateWebhook>
 
 Returns: a L<Paws::CodeBuild::CreateWebhookOutput> instance
 
 For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub repository, enables AWS CodeBuild to begin
-automatically rebuilding the source code every time a code change is
-pushed to the repository.
+stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
+start rebuilding the source code every time a code change is pushed to
+the repository.
 
 If you enable webhooks for an AWS CodeBuild project, and the project is
-used as a build step in AWS CodePipeline, then two identical builds
-will be created for each commit. One build is triggered through
-webhooks, and one through AWS CodePipeline. Because billing is on a
-per-build basis, you will be billed for both builds. Therefore, if you
-are using AWS CodePipeline, we recommend that you disable webhooks in
-CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For
-more information, see step 9 in Change a Build ProjectE<rsquo>s
-Settings
+used as a build step in AWS CodePipeline, then two identical builds are
+created for each commit. One build is triggered through webhooks, and
+one through AWS CodePipeline. Because billing is on a per-build basis,
+you are billed for both builds. Therefore, if you are using AWS
+CodePipeline, we recommend that you disable webhooks in AWS CodeBuild.
+In the AWS CodeBuild console, clear the Webhook box. For more
+information, see step 5 in Change a Build Project's Settings
 (http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 
 
-=head2 DeleteProject(Name => Str)
+=head2 DeleteProject
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::DeleteProject>
 
@@ -353,19 +471,74 @@ Returns: a L<Paws::CodeBuild::DeleteProjectOutput> instance
 Deletes a build project.
 
 
-=head2 DeleteWebhook(ProjectName => Str)
+=head2 DeleteSourceCredentials
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::DeleteSourceCredentials>
+
+Returns: a L<Paws::CodeBuild::DeleteSourceCredentialsOutput> instance
+
+Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source
+credentials.
+
+
+=head2 DeleteWebhook
+
+=over
+
+=item ProjectName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::DeleteWebhook>
 
 Returns: a L<Paws::CodeBuild::DeleteWebhookOutput> instance
 
 For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub repository, stops AWS CodeBuild from automatically
+stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
 rebuilding the source code every time a code change is pushed to the
 repository.
 
 
-=head2 InvalidateProjectCache(ProjectName => Str)
+=head2 ImportSourceCredentials
+
+=over
+
+=item AuthType => Str
+
+=item ServerType => Str
+
+=item Token => Str
+
+=item [Username => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::ImportSourceCredentials>
+
+Returns: a L<Paws::CodeBuild::ImportSourceCredentialsOutput> instance
+
+Imports the source repository credentials for an AWS CodeBuild project
+that has its source code stored in a GitHub, GitHub Enterprise, or
+Bitbucket repository.
+
+
+=head2 InvalidateProjectCache
+
+=over
+
+=item ProjectName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::InvalidateProjectCache>
 
@@ -374,7 +547,16 @@ Returns: a L<Paws::CodeBuild::InvalidateProjectCacheOutput> instance
 Resets the cache for a project.
 
 
-=head2 ListBuilds([NextToken => Str, SortOrder => Str])
+=head2 ListBuilds
+
+=over
+
+=item [NextToken => Str]
+
+=item [SortOrder => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::ListBuilds>
 
@@ -384,7 +566,18 @@ Gets a list of build IDs, with each build ID representing a single
 build.
 
 
-=head2 ListBuildsForProject(ProjectName => Str, [NextToken => Str, SortOrder => Str])
+=head2 ListBuildsForProject
+
+=over
+
+=item ProjectName => Str
+
+=item [NextToken => Str]
+
+=item [SortOrder => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::ListBuildsForProject>
 
@@ -394,7 +587,12 @@ Gets a list of build IDs for the specified build project, with each
 build ID representing a single build.
 
 
-=head2 ListCuratedEnvironmentImages()
+=head2 ListCuratedEnvironmentImages
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::CodeBuild::ListCuratedEnvironmentImages>
 
@@ -403,7 +601,18 @@ Returns: a L<Paws::CodeBuild::ListCuratedEnvironmentImagesOutput> instance
 Gets information about Docker images that are managed by AWS CodeBuild.
 
 
-=head2 ListProjects([NextToken => Str, SortBy => Str, SortOrder => Str])
+=head2 ListProjects
+
+=over
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::ListProjects>
 
@@ -413,7 +622,80 @@ Gets a list of build project names, with each build project name
 representing a single build project.
 
 
-=head2 StartBuild(ProjectName => Str, [ArtifactsOverride => L<Paws::CodeBuild::ProjectArtifacts>, BuildspecOverride => Str, EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>], SourceVersion => Str, TimeoutInMinutesOverride => Int])
+=head2 ListSourceCredentials
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::CodeBuild::ListSourceCredentials>
+
+Returns: a L<Paws::CodeBuild::ListSourceCredentialsOutput> instance
+
+Returns a list of C<SourceCredentialsInfo> objects.
+
+
+=head2 StartBuild
+
+=over
+
+=item ProjectName => Str
+
+=item [ArtifactsOverride => L<Paws::CodeBuild::ProjectArtifacts>]
+
+=item [BuildspecOverride => Str]
+
+=item [CacheOverride => L<Paws::CodeBuild::ProjectCache>]
+
+=item [CertificateOverride => Str]
+
+=item [ComputeTypeOverride => Str]
+
+=item [EnvironmentTypeOverride => Str]
+
+=item [EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]]
+
+=item [GitCloneDepthOverride => Int]
+
+=item [IdempotencyToken => Str]
+
+=item [ImageOverride => Str]
+
+=item [ImagePullCredentialsTypeOverride => Str]
+
+=item [InsecureSslOverride => Bool]
+
+=item [LogsConfigOverride => L<Paws::CodeBuild::LogsConfig>]
+
+=item [PrivilegedModeOverride => Bool]
+
+=item [QueuedTimeoutInMinutesOverride => Int]
+
+=item [RegistryCredentialOverride => L<Paws::CodeBuild::RegistryCredential>]
+
+=item [ReportBuildStatusOverride => Bool]
+
+=item [SecondaryArtifactsOverride => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+
+=item [SecondarySourcesOverride => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
+
+=item [SecondarySourcesVersionOverride => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]]
+
+=item [ServiceRoleOverride => Str]
+
+=item [SourceAuthOverride => L<Paws::CodeBuild::SourceAuth>]
+
+=item [SourceLocationOverride => Str]
+
+=item [SourceTypeOverride => Str]
+
+=item [SourceVersion => Str]
+
+=item [TimeoutInMinutesOverride => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::StartBuild>
 
@@ -422,7 +704,14 @@ Returns: a L<Paws::CodeBuild::StartBuildOutput> instance
 Starts running a build.
 
 
-=head2 StopBuild(Id => Str)
+=head2 StopBuild
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::StopBuild>
 
@@ -431,13 +720,72 @@ Returns: a L<Paws::CodeBuild::StopBuildOutput> instance
 Attempts to stop running a build.
 
 
-=head2 UpdateProject(Name => Str, [Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, BadgeEnabled => Bool, Cache => L<Paws::CodeBuild::ProjectCache>, Description => Str, EncryptionKey => Str, Environment => L<Paws::CodeBuild::ProjectEnvironment>, ServiceRole => Str, Source => L<Paws::CodeBuild::ProjectSource>, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int, VpcConfig => L<Paws::CodeBuild::VpcConfig>])
+=head2 UpdateProject
+
+=over
+
+=item Name => Str
+
+=item [Artifacts => L<Paws::CodeBuild::ProjectArtifacts>]
+
+=item [BadgeEnabled => Bool]
+
+=item [Cache => L<Paws::CodeBuild::ProjectCache>]
+
+=item [Description => Str]
+
+=item [EncryptionKey => Str]
+
+=item [Environment => L<Paws::CodeBuild::ProjectEnvironment>]
+
+=item [LogsConfig => L<Paws::CodeBuild::LogsConfig>]
+
+=item [QueuedTimeoutInMinutes => Int]
+
+=item [SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+
+=item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
+
+=item [ServiceRole => Str]
+
+=item [Source => L<Paws::CodeBuild::ProjectSource>]
+
+=item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
+
+=item [TimeoutInMinutes => Int]
+
+=item [VpcConfig => L<Paws::CodeBuild::VpcConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CodeBuild::UpdateProject>
 
 Returns: a L<Paws::CodeBuild::UpdateProjectOutput> instance
 
 Changes the settings of a build project.
+
+
+=head2 UpdateWebhook
+
+=over
+
+=item ProjectName => Str
+
+=item [BranchFilter => Str]
+
+=item [RotateSecret => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::UpdateWebhook>
+
+Returns: a L<Paws::CodeBuild::UpdateWebhookOutput> instance
+
+Updates the webhook associated with an AWS CodeBuild build project.
+
+If you use Bitbucket for your repository, C<rotateSecret> is ignored.
 
 
 

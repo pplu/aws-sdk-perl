@@ -1,7 +1,7 @@
 
 package Paws::GuardDuty::CreateMembers;
   use Moose;
-  has AccountDetails => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::AccountDetail]', traits => ['NameInRequest'], request_name => 'accountDetails');
+  has AccountDetails => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::AccountDetail]', traits => ['NameInRequest'], request_name => 'accountDetails', required => 1);
   has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
 
   use MooseX::ClassAttribute;
@@ -20,22 +20,40 @@ Paws::GuardDuty::CreateMembers - Arguments for method CreateMembers on L<Paws::G
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateMembers on the 
-Amazon GuardDuty service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateMembers on the
+L<Amazon GuardDuty|Paws::GuardDuty> service. Use the attributes of this class
 as arguments to method CreateMembers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateMembers.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateMembers(Att1 => $value1, Att2 => $value2, ...);
+    my $guardduty = Paws->service('GuardDuty');
+    my $CreateMembersResponse = $guardduty->CreateMembers(
+      AccountDetails => [
+        {
+          AccountId => 'MyAccountId',
+          Email     => 'MyEmail',
+
+        },
+        ...
+      ],
+      DetectorId => 'My__string',
+
+    );
+
+    # Results:
+    my $UnprocessedAccounts = $CreateMembersResponse->UnprocessedAccounts;
+
+    # Returns a L<Paws::GuardDuty::CreateMembersResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/CreateMembers>
 
 =head1 ATTRIBUTES
 
 
-=head2 AccountDetails => ArrayRef[L<Paws::GuardDuty::AccountDetail>]
+=head2 B<REQUIRED> AccountDetails => ArrayRef[L<Paws::GuardDuty::AccountDetail>]
 
 A list of account ID and email address pairs of the accounts that you
 want to associate with the master GuardDuty account.

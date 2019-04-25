@@ -20,17 +20,27 @@ Paws::ResourceGroups::UpdateGroup - Arguments for method UpdateGroup on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateGroup on the 
-AWS Resource Groups service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateGroup on the
+L<AWS Resource Groups|Paws::ResourceGroups> service. Use the attributes of this class
 as arguments to method UpdateGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $resource-groups = Paws->service('ResourceGroups');
+    my $UpdateGroupOutput = $resource -groups->UpdateGroup(
+      GroupName   => 'MyGroupName',
+      Description => 'MyGroupDescription',    # OPTIONAL
+    );
+
+    # Results:
+    my $Group = $UpdateGroupOutput->Group;
+
+    # Returns a L<Paws::ResourceGroups::UpdateGroupOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/resource-groups/UpdateGroup>
 
 =head1 ATTRIBUTES
 

@@ -30,7 +30,7 @@ C<NONE>: Do not encrypt the records.
 =item *
 
 C<KMS>: Use server-side encryption on the records using a
-customer-managed KMS key.
+customer-managed AWS KMS key.
 
 =back
 

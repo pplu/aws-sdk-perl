@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Batch
 
 =head1 DESCRIPTION
 
-Details about the job run which is submitted successfully for stopping.
+Records a successful request to stop a specified JobRun.
 
 =head1 ATTRIBUTES
 
 
 =head2 JobName => Str
 
-  The name of the job.
+  The name of the job definition used in the job run that was stopped.
 
 
 =head2 JobRunId => Str
 
-  The job run Id.
+  The JobRunId of the job run that was stopped.
 
 
 

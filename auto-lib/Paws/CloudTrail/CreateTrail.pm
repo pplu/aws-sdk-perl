@@ -6,6 +6,7 @@ package Paws::CloudTrail::CreateTrail;
   has EnableLogFileValidation => (is => 'ro', isa => 'Bool');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
+  has IsOrganizationTrail => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
@@ -27,17 +28,51 @@ Paws::CloudTrail::CreateTrail - Arguments for method CreateTrail on L<Paws::Clou
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateTrail on the 
-AWS CloudTrail service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateTrail on the
+L<AWS CloudTrail|Paws::CloudTrail> service. Use the attributes of this class
 as arguments to method CreateTrail.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTrail.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateTrail(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudtrail = Paws->service('CloudTrail');
+    my $CreateTrailResponse = $cloudtrail->CreateTrail(
+      Name                       => 'MyString',
+      S3BucketName               => 'MyString',
+      CloudWatchLogsLogGroupArn  => 'MyString',    # OPTIONAL
+      CloudWatchLogsRoleArn      => 'MyString',    # OPTIONAL
+      EnableLogFileValidation    => 1,             # OPTIONAL
+      IncludeGlobalServiceEvents => 1,             # OPTIONAL
+      IsMultiRegionTrail         => 1,             # OPTIONAL
+      IsOrganizationTrail        => 1,             # OPTIONAL
+      KmsKeyId                   => 'MyString',    # OPTIONAL
+      S3KeyPrefix                => 'MyString',    # OPTIONAL
+      SnsTopicName               => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $CloudWatchLogsLogGroupArn =
+      $CreateTrailResponse->CloudWatchLogsLogGroupArn;
+    my $CloudWatchLogsRoleArn = $CreateTrailResponse->CloudWatchLogsRoleArn;
+    my $IncludeGlobalServiceEvents =
+      $CreateTrailResponse->IncludeGlobalServiceEvents;
+    my $IsMultiRegionTrail  = $CreateTrailResponse->IsMultiRegionTrail;
+    my $IsOrganizationTrail = $CreateTrailResponse->IsOrganizationTrail;
+    my $KmsKeyId            = $CreateTrailResponse->KmsKeyId;
+    my $LogFileValidationEnabled =
+      $CreateTrailResponse->LogFileValidationEnabled;
+    my $Name         = $CreateTrailResponse->Name;
+    my $S3BucketName = $CreateTrailResponse->S3BucketName;
+    my $S3KeyPrefix  = $CreateTrailResponse->S3KeyPrefix;
+    my $SnsTopicARN  = $CreateTrailResponse->SnsTopicARN;
+    my $SnsTopicName = $CreateTrailResponse->SnsTopicName;
+    my $TrailARN     = $CreateTrailResponse->TrailARN;
+
+    # Returns a L<Paws::CloudTrail::CreateTrailResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudtrail/CreateTrail>
 
 =head1 ATTRIBUTES
 
@@ -89,6 +124,16 @@ regions. The default is false.
 
 
 
+=head2 IsOrganizationTrail => Bool
+
+Specifies whether the trail is created for all accounts in an
+organization in AWS Organizations, or only for the current AWS account.
+The default is false, and cannot be true unless the call is made on
+behalf of an AWS account that is the master account for an organization
+in AWS Organizations.
+
+
+
 =head2 KmsKeyId => Str
 
 Specifies the KMS key ID to use to encrypt the logs delivered by
@@ -106,11 +151,11 @@ alias/MyAliasName
 
 =item *
 
-arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
+arn:aws:kms:us-east-2:123456789012:alias/MyAliasName
 
 =item *
 
-arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =item *
 

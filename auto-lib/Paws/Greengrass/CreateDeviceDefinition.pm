@@ -21,36 +21,64 @@ Paws::Greengrass::CreateDeviceDefinition - Arguments for method CreateDeviceDefi
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDeviceDefinition on the 
-AWS Greengrass service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateDeviceDefinition on the
+L<AWS Greengrass|Paws::Greengrass> service. Use the attributes of this class
 as arguments to method CreateDeviceDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeviceDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDeviceDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $CreateDeviceDefinitionResponse = $greengrass->CreateDeviceDefinition(
+      AmznClientToken => 'My__string',    # OPTIONAL
+      InitialVersion  => {
+        Devices => [
+          {
+            CertificateArn => 'My__string',
+            Id             => 'My__string',
+            SyncShadow     => 1,              # OPTIONAL
+            ThingArn       => 'My__string',
+          },
+          ...
+        ],                                    # OPTIONAL
+      },    # OPTIONAL
+      Name => 'My__string',    # OPTIONAL
+    );
+
+    # Results:
+    my $Arn               = $CreateDeviceDefinitionResponse->Arn;
+    my $CreationTimestamp = $CreateDeviceDefinitionResponse->CreationTimestamp;
+    my $Id                = $CreateDeviceDefinitionResponse->Id;
+    my $LastUpdatedTimestamp =
+      $CreateDeviceDefinitionResponse->LastUpdatedTimestamp;
+    my $LatestVersion    = $CreateDeviceDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $CreateDeviceDefinitionResponse->LatestVersionArn;
+    my $Name             = $CreateDeviceDefinitionResponse->Name;
+
+    # Returns a L<Paws::Greengrass::CreateDeviceDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateDeviceDefinition>
 
 =head1 ATTRIBUTES
 
 
 =head2 AmznClientToken => Str
 
-The client token used to request idempotent operations.
+A client token used to correlate requests and responses.
 
 
 
 =head2 InitialVersion => L<Paws::Greengrass::DeviceDefinitionVersion>
 
-Information on the initial version
+Information about the initial version of the device definition.
 
 
 
 =head2 Name => Str
 
-name of the device definition
+The name of the device definition.
 
 
 

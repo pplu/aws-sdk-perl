@@ -20,17 +20,48 @@ Paws::EC2::CancelSpotFleetRequests - Arguments for method CancelSpotFleetRequest
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CancelSpotFleetRequests on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method CancelSpotFleetRequests on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method CancelSpotFleetRequests.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CancelSpotFleetRequests.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CancelSpotFleetRequests(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To cancel a Spot fleet request
+    # This example cancels the specified Spot fleet request and terminates its
+    # associated Spot Instances.
+    my $CancelSpotFleetRequestsResponse = $ec2->CancelSpotFleetRequests(
+      {
+        'SpotFleetRequestIds' => ['sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'],
+        'TerminateInstances'  => 1
+      }
+    );
+
+    # Results:
+    my $SuccessfulFleetRequests =
+      $CancelSpotFleetRequestsResponse->SuccessfulFleetRequests;
+
+    # Returns a L<Paws::EC2::CancelSpotFleetRequestsResponse> object.
+    # To cancel a Spot fleet request without terminating its Spot Instances
+    # This example cancels the specified Spot fleet request without terminating
+    # its associated Spot Instances.
+    my $CancelSpotFleetRequestsResponse = $ec2->CancelSpotFleetRequests(
+      {
+        'SpotFleetRequestIds' => ['sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'],
+        'TerminateInstances'  => 0
+      }
+    );
+
+    # Results:
+    my $SuccessfulFleetRequests =
+      $CancelSpotFleetRequestsResponse->SuccessfulFleetRequests;
+
+    # Returns a L<Paws::EC2::CancelSpotFleetRequestsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CancelSpotFleetRequests>
 
 =head1 ATTRIBUTES
 

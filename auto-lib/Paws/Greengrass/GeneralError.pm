@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-General Error
+General error information.
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorDetails => ArrayRef[L<Paws::Greengrass::ErrorDetail>]
 
-  Error Details
+  Details about the error.
 
 
 =head2 Message => Str
 
-  Message containing information about the error
+  A message containing information about the error.
 
 
 

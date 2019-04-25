@@ -25,17 +25,65 @@ Paws::CloudDirectory::ListIncomingTypedLinks - Arguments for method ListIncoming
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListIncomingTypedLinks on the 
-Amazon CloudDirectory service. Use the attributes of this class
+This class represents the parameters used for calling the method ListIncomingTypedLinks on the
+L<Amazon CloudDirectory|Paws::CloudDirectory> service. Use the attributes of this class
 as arguments to method ListIncomingTypedLinks.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListIncomingTypedLinks.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListIncomingTypedLinks(Att1 => $value1, Att2 => $value2, ...);
+    my $clouddirectory = Paws->service('CloudDirectory');
+    my $ListIncomingTypedLinksResponse =
+      $clouddirectory->ListIncomingTypedLinks(
+      DirectoryArn    => 'MyArn',
+      ObjectReference => {
+        Selector => 'MySelectorObjectReference',    # OPTIONAL
+      },
+      ConsistencyLevel      => 'SERIALIZABLE',      # OPTIONAL
+      FilterAttributeRanges => [
+        {
+          Range => {
+            EndMode => 'FIRST'
+            , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
+            StartMode => 'FIRST'
+            , # values: FIRST, LAST, LAST_BEFORE_MISSING_VALUES, INCLUSIVE, EXCLUSIVE
+            EndValue => {
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+            },    # OPTIONAL
+            StartValue => {
+              BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+              BooleanValue  => 1,                             # OPTIONAL
+              DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+              NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+              StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+            },    # OPTIONAL
+          },
+          AttributeName => 'MyAttributeName',    # min: 1, max: 230; OPTIONAL
+        },
+        ...
+      ],                                         # OPTIONAL
+      FilterTypedLink => {
+        SchemaArn     => 'MyArn',
+        TypedLinkName => 'MyTypedLinkName',
+
+      },                                         # OPTIONAL
+      MaxResults => 1,                           # OPTIONAL
+      NextToken  => 'MyNextToken',               # OPTIONAL
+      );
+
+    # Results:
+    my $LinkSpecifiers = $ListIncomingTypedLinksResponse->LinkSpecifiers;
+    my $NextToken      = $ListIncomingTypedLinksResponse->NextToken;
+
+    # Returns a L<Paws::CloudDirectory::ListIncomingTypedLinksResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clouddirectory/ListIncomingTypedLinks>
 
 =head1 ATTRIBUTES
 

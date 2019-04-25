@@ -33,17 +33,46 @@ Paws::DynamoDB::Scan - Arguments for method Scan on L<Paws::DynamoDB>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method Scan on the 
-Amazon DynamoDB service. Use the attributes of this class
+This class represents the parameters used for calling the method Scan on the
+L<Amazon DynamoDB|Paws::DynamoDB> service. Use the attributes of this class
 as arguments to method Scan.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Scan.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->Scan(Att1 => $value1, Att2 => $value2, ...);
+    my $dynamodb = Paws->service('DynamoDB');
+    # To scan a table
+    # This example scans the entire Music table, and then narrows the results to
+    # songs by the artist "No One You Know". For each item, only the album title
+    # and song title are returned.
+    my $ScanOutput = $dynamodb->Scan(
+      {
+        'ExpressionAttributeNames' => {
+          'AT' => 'AlbumTitle',
+          'ST' => 'SongTitle'
+        },
+        'ExpressionAttributeValues' => {
+          ':a' => {
+            'S' => 'No One You Know'
+          }
+        },
+        'FilterExpression'     => 'Artist = :a',
+        'ProjectionExpression' => '#ST, #AT',
+        'TableName'            => 'Music'
+      }
+    );
+
+    # Results:
+    my $ConsumedCapacity = $ScanOutput->ConsumedCapacity;
+    my $Count            = $ScanOutput->Count;
+    my $Items            = $ScanOutput->Items;
+    my $ScannedCount     = $ScanOutput->ScannedCount;
+
+    # Returns a L<Paws::DynamoDB::ScanOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/Scan>
 
 =head1 ATTRIBUTES
 

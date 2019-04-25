@@ -20,17 +20,28 @@ Paws::Glue::GetTable - Arguments for method GetTable on L<Paws::Glue>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetTable on the 
-AWS Glue service. Use the attributes of this class
+This class represents the parameters used for calling the method GetTable on the
+L<AWS Glue|Paws::Glue> service. Use the attributes of this class
 as arguments to method GetTable.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTable.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetTable(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $GetTableResponse = $glue->GetTable(
+      DatabaseName => 'MyNameString',
+      Name         => 'MyNameString',
+      CatalogId    => 'MyCatalogIdString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Table = $GetTableResponse->Table;
+
+    # Returns a L<Paws::Glue::GetTableResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/GetTable>
 
 =head1 ATTRIBUTES
 
@@ -44,13 +55,15 @@ supplied, the AWS account ID is used by default.
 
 =head2 B<REQUIRED> DatabaseName => Str
 
-The name of the database in the catalog in which the table resides.
+The name of the database in the catalog in which the table resides. For
+Hive compatibility, this name is entirely lowercase.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the table for which to retrieve the definition.
+The name of the table for which to retrieve the definition. For Hive
+compatibility, this name is entirely lowercase.
 
 
 

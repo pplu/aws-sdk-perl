@@ -22,17 +22,73 @@ Paws::EC2::RunScheduledInstances - Arguments for method RunScheduledInstances on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RunScheduledInstances on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method RunScheduledInstances on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method RunScheduledInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RunScheduledInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RunScheduledInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To launch a Scheduled Instance in a VPC
+    # This example launches the specified Scheduled Instance in a VPC.
+    my $RunScheduledInstancesResult = $ec2->RunScheduledInstances(
+      {
+        'InstanceCount'       => 1,
+        'LaunchSpecification' => {
+          'IamInstanceProfile' => {
+            'Name' => 'my-iam-role'
+          },
+          'ImageId'           => 'ami-12345678',
+          'InstanceType'      => 'c4.large',
+          'KeyName'           => 'my-key-pair',
+          'NetworkInterfaces' => [
+
+            {
+              'AssociatePublicIpAddress' => 1,
+              'DeviceIndex'              => 0,
+              'Groups'                   => ['sg-12345678'],
+              'SubnetId'                 => 'subnet-12345678'
+            }
+          ]
+        },
+        'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012'
+      }
+    );
+
+    # Results:
+    my $InstanceIdSet = $RunScheduledInstancesResult->InstanceIdSet;
+
+    # Returns a L<Paws::EC2::RunScheduledInstancesResult> object.
+    # To launch a Scheduled Instance in EC2-Classic
+    # This example launches the specified Scheduled Instance in EC2-Classic.
+    my $RunScheduledInstancesResult = $ec2->RunScheduledInstances(
+      {
+        'InstanceCount'       => 1,
+        'LaunchSpecification' => {
+          'IamInstanceProfile' => {
+            'Name' => 'my-iam-role'
+          },
+          'ImageId'      => 'ami-12345678',
+          'InstanceType' => 'c4.large',
+          'KeyName'      => 'my-key-pair',
+          'Placement'    => {
+            'AvailabilityZone' => 'us-west-2b'
+          },
+          'SecurityGroupIds' => ['sg-12345678']
+        },
+        'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012'
+      }
+    );
+
+    # Results:
+    my $InstanceIdSet = $RunScheduledInstancesResult->InstanceIdSet;
+
+    # Returns a L<Paws::EC2::RunScheduledInstancesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/RunScheduledInstances>
 
 =head1 ATTRIBUTES
 
@@ -41,7 +97,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Unique, case-sensitive identifier that ensures the idempotency of the
 request. For more information, see Ensuring Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 

@@ -21,17 +21,33 @@ Paws::KinesisAnalytics::AddApplicationInputProcessingConfiguration - Arguments f
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method AddApplicationInputProcessingConfiguration on the 
-Amazon Kinesis Analytics service. Use the attributes of this class
+This class represents the parameters used for calling the method AddApplicationInputProcessingConfiguration on the
+L<Amazon Kinesis Analytics|Paws::KinesisAnalytics> service. Use the attributes of this class
 as arguments to method AddApplicationInputProcessingConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddApplicationInputProcessingConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AddApplicationInputProcessingConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $kinesisanalytics = Paws->service('KinesisAnalytics');
+    my $AddApplicationInputProcessingConfigurationResponse =
+      $kinesisanalytics->AddApplicationInputProcessingConfiguration(
+      ApplicationName              => 'MyApplicationName',
+      CurrentApplicationVersionId  => 1,
+      InputId                      => 'MyId',
+      InputProcessingConfiguration => {
+        InputLambdaProcessor => {
+          ResourceARN => 'MyResourceARN',    # min: 1, max: 2048
+          RoleARN     => 'MyRoleARN',        # min: 1, max: 2048
+
+        },
+
+      },
+
+      );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics/AddApplicationInputProcessingConfiguration>
 
 =head1 ATTRIBUTES
 
@@ -55,9 +71,9 @@ returned.
 
 =head2 B<REQUIRED> InputId => Str
 
-The ID of the input configuration to which to add the input
-configuration. You can get a list of the input IDs for an application
-using the DescribeApplication operation.
+The ID of the input configuration to add the input processing
+configuration to. You can get a list of the input IDs for an
+application using the DescribeApplication operation.
 
 
 

@@ -22,17 +22,30 @@ Paws::AutoScaling::CompleteLifecycleAction - Arguments for method CompleteLifecy
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CompleteLifecycleAction on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method CompleteLifecycleAction on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method CompleteLifecycleAction.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CompleteLifecycleAction.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CompleteLifecycleAction(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To complete the lifecycle action
+    # This example notifies Auto Scaling that the specified lifecycle action is
+    # complete so that it can finish launching or terminating the instance.
+    my $CompleteLifecycleActionAnswer = $autoscaling->CompleteLifecycleAction(
+      {
+        'AutoScalingGroupName'  => 'my-auto-scaling-group',
+        'LifecycleActionResult' => 'CONTINUE',
+        'LifecycleActionToken'  => 'bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635',
+        'LifecycleHookName'     => 'my-lifecycle-hook'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/CompleteLifecycleAction>
 
 =head1 ATTRIBUTES
 
@@ -59,9 +72,9 @@ C<CONTINUE> or C<ABANDON>.
 =head2 LifecycleActionToken => Str
 
 A universally unique identifier (UUID) that identifies a specific
-lifecycle action associated with an instance. Auto Scaling sends this
-token to the notification target you specified when you created the
-lifecycle hook.
+lifecycle action associated with an instance. Amazon EC2 Auto Scaling
+sends this token to the notification target you specified when you
+created the lifecycle hook.
 
 
 

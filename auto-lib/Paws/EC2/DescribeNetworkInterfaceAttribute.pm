@@ -20,17 +20,87 @@ Paws::EC2::DescribeNetworkInterfaceAttribute - Arguments for method DescribeNetw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeNetworkInterfaceAttribute on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeNetworkInterfaceAttribute on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeNetworkInterfaceAttribute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeNetworkInterfaceAttribute.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeNetworkInterfaceAttribute(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe the attachment attribute of a network interface
+    # This example describes the attachment attribute of the specified network
+    # interface.
+    my $DescribeNetworkInterfaceAttributeResult =
+      $ec2->DescribeNetworkInterfaceAttribute(
+      {
+        'Attribute'          => 'attachment',
+        'NetworkInterfaceId' => 'eni-686ea200'
+      }
+      );
+
+    # Results:
+    my $Attachment = $DescribeNetworkInterfaceAttributeResult->Attachment;
+    my $NetworkInterfaceId =
+      $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
+
+    # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
+    # To describe the description attribute of a network interface
+    # This example describes the description attribute of the specified network
+    # interface.
+    my $DescribeNetworkInterfaceAttributeResult =
+      $ec2->DescribeNetworkInterfaceAttribute(
+      {
+        'Attribute'          => 'description',
+        'NetworkInterfaceId' => 'eni-686ea200'
+      }
+      );
+
+    # Results:
+    my $Description = $DescribeNetworkInterfaceAttributeResult->Description;
+    my $NetworkInterfaceId =
+      $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
+
+    # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
+    # To describe the groupSet attribute of a network interface
+    # This example describes the groupSet attribute of the specified network
+    # interface.
+    my $DescribeNetworkInterfaceAttributeResult =
+      $ec2->DescribeNetworkInterfaceAttribute(
+      {
+        'Attribute'          => 'groupSet',
+        'NetworkInterfaceId' => 'eni-686ea200'
+      }
+      );
+
+    # Results:
+    my $Groups = $DescribeNetworkInterfaceAttributeResult->Groups;
+    my $NetworkInterfaceId =
+      $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
+
+    # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
+    # To describe the sourceDestCheck attribute of a network interface
+    # This example describes the sourceDestCheck attribute of the specified
+    # network interface.
+    my $DescribeNetworkInterfaceAttributeResult =
+      $ec2->DescribeNetworkInterfaceAttribute(
+      {
+        'Attribute'          => 'sourceDestCheck',
+        'NetworkInterfaceId' => 'eni-686ea200'
+      }
+      );
+
+    # Results:
+    my $NetworkInterfaceId =
+      $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
+    my $SourceDestCheck =
+      $DescribeNetworkInterfaceAttributeResult->SourceDestCheck;
+
+    # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeNetworkInterfaceAttribute>
 
 =head1 ATTRIBUTES
 

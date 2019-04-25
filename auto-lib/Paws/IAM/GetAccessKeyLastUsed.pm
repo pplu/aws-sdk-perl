@@ -18,17 +18,28 @@ Paws::IAM::GetAccessKeyLastUsed - Arguments for method GetAccessKeyLastUsed on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetAccessKeyLastUsed on the 
-AWS Identity and Access Management service. Use the attributes of this class
+This class represents the parameters used for calling the method GetAccessKeyLastUsed on the
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method GetAccessKeyLastUsed.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAccessKeyLastUsed.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetAccessKeyLastUsed(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    my $GetAccessKeyLastUsedResponse = $iam->GetAccessKeyLastUsed(
+      AccessKeyId => 'MyaccessKeyIdType',
+
+    );
+
+    # Results:
+    my $AccessKeyLastUsed = $GetAccessKeyLastUsedResponse->AccessKeyLastUsed;
+    my $UserName          = $GetAccessKeyLastUsedResponse->UserName;
+
+    # Returns a L<Paws::IAM::GetAccessKeyLastUsedResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/GetAccessKeyLastUsed>
 
 =head1 ATTRIBUTES
 
@@ -37,7 +48,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The identifier of an access key.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters that can
 consist of any upper or lowercased letter or digit.
 

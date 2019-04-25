@@ -25,17 +25,31 @@ Paws::AutoScaling::PutLifecycleHook - Arguments for method PutLifecycleHook on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutLifecycleHook on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method PutLifecycleHook on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method PutLifecycleHook.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutLifecycleHook.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutLifecycleHook(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To create a lifecycle hook
+    # This example creates a lifecycle hook.
+    my $PutLifecycleHookAnswer = $autoscaling->PutLifecycleHook(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'LifecycleHookName'    => 'my-lifecycle-hook',
+        'LifecycleTransition'  => 'autoscaling:EC2_INSTANCE_LAUNCHING',
+        'NotificationTargetARN' =>
+          'arn:aws:sns:us-west-2:123456789012:my-sns-topic --role-arn',
+        'RoleARN' => 'arn:aws:iam::123456789012:role/my-auto-scaling-role'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/PutLifecycleHook>
 
 =head1 ATTRIBUTES
 
@@ -61,9 +75,9 @@ The maximum time, in seconds, that can elapse before the lifecycle hook
 times out. The range is from 30 to 7200 seconds. The default is 3600
 seconds (1 hour).
 
-If the lifecycle hook times out, Auto Scaling performs the default
-action. You can prevent the lifecycle hook from timing out by calling
-RecordLifecycleActionHeartbeat.
+If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the
+default action. You can prevent the lifecycle hook from timing out by
+calling RecordLifecycleActionHeartbeat.
 
 
 
@@ -75,8 +89,20 @@ The name of the lifecycle hook.
 
 =head2 LifecycleTransition => Str
 
-The instance state to which you want to attach the lifecycle hook. For
-a list of lifecycle hook types, see DescribeLifecycleHookTypes.
+The instance state to which you want to attach the lifecycle hook. The
+possible values are:
+
+=over
+
+=item *
+
+autoscaling:EC2_INSTANCE_LAUNCHING
+
+=item *
+
+autoscaling:EC2_INSTANCE_TERMINATING
+
+=back
 
 This parameter is required for new lifecycle hooks, but optional when
 updating existing hooks.
@@ -85,25 +111,25 @@ updating existing hooks.
 
 =head2 NotificationMetadata => Str
 
-Contains additional information that you want to include any time Auto
-Scaling sends a message to the notification target.
+Contains additional information that you want to include any time
+Amazon EC2 Auto Scaling sends a message to the notification target.
 
 
 
 =head2 NotificationTargetARN => Str
 
-The ARN of the notification target that Auto Scaling will use to notify
-you when an instance is in the transition state for the lifecycle hook.
-This target can be either an SQS queue or an SNS topic. If you specify
-an empty string, this overrides the current ARN.
+The ARN of the notification target that Amazon EC2 Auto Scaling uses to
+notify you when an instance is in the transition state for the
+lifecycle hook. This target can be either an SQS queue or an SNS topic.
+If you specify an empty string, this overrides the current ARN.
 
 This operation uses the JSON format when sending notifications to an
-Amazon SQS queue, and an email key/value pair format when sending
+Amazon SQS queue, and an email key-value pair format when sending
 notifications to an Amazon SNS topic.
 
-When you specify a notification target, Auto Scaling sends it a test
-message. Test messages contains the following additional key/value
-pair: C<"Event": "autoscaling:TEST_NOTIFICATION">.
+When you specify a notification target, Amazon EC2 Auto Scaling sends
+it a test message. Test messages contain the following additional
+key-value pair: C<"Event": "autoscaling:TEST_NOTIFICATION">.
 
 
 

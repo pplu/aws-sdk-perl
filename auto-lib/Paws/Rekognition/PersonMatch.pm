@@ -33,11 +33,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Information about a person whose face matches a face(s) in a Amazon
+Information about a person whose face matches a face(s) in an Amazon
 Rekognition collection. Includes information about the faces in the
-Amazon Rekognition collection (,information about the person
-(PersonDetail) and the timestamp for when the person was detected in a
-video. An array of C<PersonMatch> objects is returned by .
+Amazon Rekognition collection (FaceMatch), information about the person
+(PersonDetail), and the time stamp for when the person was detected in
+a video. An array of C<PersonMatch> objects is returned by
+GetFaceSearch.
 
 =head1 ATTRIBUTES
 

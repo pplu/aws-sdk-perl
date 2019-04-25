@@ -26,22 +26,23 @@ Arn of the resource definition version.
 
 =head2 CreationTimestamp => Str
 
-Timestamp of when the resource definition version was created.
+The time, in milliseconds since the epoch, when the resource definition
+version was created.
 
 
 =head2 Definition => L<Paws::Greengrass::ResourceDefinitionVersion>
 
-Information on definition.
+Information about the definition.
 
 
 =head2 Id => Str
 
-Id of the resource definition the version belongs to.
+The ID of the resource definition version.
 
 
 =head2 Version => Str
 
-Version of the resource definition version.
+The version of the resource definition version.
 
 
 =head2 _request_id => Str

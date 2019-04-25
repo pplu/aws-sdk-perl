@@ -22,17 +22,33 @@ Paws::Discovery::ListServerNeighbors - Arguments for method ListServerNeighbors 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListServerNeighbors on the 
-AWS Application Discovery Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ListServerNeighbors on the
+L<AWS Application Discovery Service|Paws::Discovery> service. Use the attributes of this class
 as arguments to method ListServerNeighbors.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListServerNeighbors.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListServerNeighbors(Att1 => $value1, Att2 => $value2, ...);
+    my $discovery = Paws->service('Discovery');
+    my $ListServerNeighborsResponse = $discovery->ListServerNeighbors(
+      ConfigurationId          => 'MyConfigurationId',
+      MaxResults               => 1,                               # OPTIONAL
+      NeighborConfigurationIds => [ 'MyConfigurationId', ... ],    # OPTIONAL
+      NextToken                => 'MyString',                      # OPTIONAL
+      PortInformationNeeded    => 1,                               # OPTIONAL
+    );
+
+    # Results:
+    my $KnownDependencyCount =
+      $ListServerNeighborsResponse->KnownDependencyCount;
+    my $Neighbors = $ListServerNeighborsResponse->Neighbors;
+    my $NextToken = $ListServerNeighborsResponse->NextToken;
+
+    # Returns a L<Paws::Discovery::ListServerNeighborsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/discovery/ListServerNeighbors>
 
 =head1 ATTRIBUTES
 

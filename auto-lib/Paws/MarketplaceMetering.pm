@@ -1,6 +1,7 @@
 package Paws::MarketplaceMetering;
   use Moose;
   sub service { 'metering.marketplace' }
+  sub signing_name { 'aws-marketplace' }
   sub version { '2016-01-14' }
   sub target_prefix { 'AWSMPMeteringService' }
   sub json_version { "1.1" }
@@ -24,6 +25,11 @@ package Paws::MarketplaceMetering;
     my $call_object = $self->new_with_coercions('Paws::MarketplaceMetering::MeterUsage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RegisterUsage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MarketplaceMetering::RegisterUsage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ResolveCustomer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MarketplaceMetering::ResolveCustomer', @_);
@@ -32,7 +38,7 @@ package Paws::MarketplaceMetering;
   
 
 
-  sub operations { qw/BatchMeterUsage MeterUsage ResolveCustomer / }
+  sub operations { qw/BatchMeterUsage MeterUsage RegisterUsage ResolveCustomer / }
 
 1;
 
@@ -99,10 +105,47 @@ obtain a CustomerIdentifier and Product Code.
 
 =back
 
+B<Entitlement and Metering for Paid Container Products>
+
+=over
+
+=item *
+
+Paid container software products sold through AWS Marketplace must
+integrate with the AWS Marketplace Metering Service and call the
+RegisterUsage operation for software entitlement and metering. Calling
+RegisterUsage from containers running outside of Amazon Elastic
+Container Service (Amazon ECR) isn't supported. Free and BYOL products
+for ECS aren't required to call RegisterUsage, but you can do so if you
+want to receive usage data in your seller reports. For more information
+on using the RegisterUsage operation, see Container-Based Products
+(https://docs.aws.amazon.com/latest/userguide/entitlement-and-metering-for-paid-products.html).
+
+=back
+
+BatchMeterUsage API calls are captured by AWS CloudTrail. You can use
+Cloudtrail to verify that the SaaS metering records that you sent are
+accurate by searching for records with the eventName of
+BatchMeterUsage. You can also use CloudTrail to audit records over
+time. For more information, see the I< AWS CloudTrail User Guide
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html)
+>.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplacemetering/latest/APIReference/Welcome.html>
+
 
 =head1 METHODS
 
-=head2 BatchMeterUsage(ProductCode => Str, UsageRecords => ArrayRef[L<Paws::MarketplaceMetering::UsageRecord>])
+=head2 BatchMeterUsage
+
+=over
+
+=item ProductCode => Str
+
+=item UsageRecords => ArrayRef[L<Paws::MarketplaceMetering::UsageRecord>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceMetering::BatchMeterUsage>
 
@@ -121,7 +164,22 @@ BatchMeterUsage.
 BatchMeterUsage can process up to 25 UsageRecords at a time.
 
 
-=head2 MeterUsage(DryRun => Bool, ProductCode => Str, Timestamp => Str, UsageDimension => Str, UsageQuantity => Int)
+=head2 MeterUsage
+
+=over
+
+=item DryRun => Bool
+
+=item ProductCode => Str
+
+=item Timestamp => Str
+
+=item UsageDimension => Str
+
+=item UsageQuantity => Int
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceMetering::MeterUsage>
 
@@ -134,7 +192,76 @@ MeterUsage is authenticated on the buyer's AWS account, generally when
 running from an EC2 instance on the AWS Marketplace.
 
 
-=head2 ResolveCustomer(RegistrationToken => Str)
+=head2 RegisterUsage
+
+=over
+
+=item ProductCode => Str
+
+=item PublicKeyVersion => Int
+
+=item [Nonce => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MarketplaceMetering::RegisterUsage>
+
+Returns: a L<Paws::MarketplaceMetering::RegisterUsageResult> instance
+
+Paid container software products sold through AWS Marketplace must
+integrate with the AWS Marketplace Metering Service and call the
+RegisterUsage operation for software entitlement and metering. Calling
+RegisterUsage from containers running outside of ECS is not currently
+supported. Free and BYOL products for ECS aren't required to call
+RegisterUsage, but you may choose to do so if you would like to receive
+usage data in your seller reports. The sections below explain the
+behavior of RegisterUsage. RegisterUsage performs two primary
+functions: metering and entitlement.
+
+=over
+
+=item *
+
+I<Entitlement>: RegisterUsage allows you to verify that the customer
+running your paid software is subscribed to your product on AWS
+Marketplace, enabling you to guard against unauthorized use. Your
+container image that integrates with RegisterUsage is only required to
+guard against unauthorized use at container startup, as such a
+CustomerNotSubscribedException/PlatformNotSupportedException will only
+be thrown on the initial call to RegisterUsage. Subsequent calls from
+the same Amazon ECS task instance (e.g. task-id) will not throw a
+CustomerNotSubscribedException, even if the customer unsubscribes while
+the Amazon ECS task is still running.
+
+=item *
+
+I<Metering>: RegisterUsage meters software use per ECS task, per hour,
+with usage prorated to the second. A minimum of 1 minute of usage
+applies to tasks that are short lived. For example, if a customer has a
+10 node ECS cluster and creates an ECS service configured as a Daemon
+Set, then ECS will launch a task on all 10 cluster nodes and the
+customer will be charged: (10 * hourly_rate). Metering for software use
+is automatically handled by the AWS Marketplace Metering Control Plane
+-- your software is not required to perform any metering specific
+actions, other than call RegisterUsage once for metering of software
+use to commence. The AWS Marketplace Metering Control Plane will also
+continue to bill customers for running ECS tasks, regardless of the
+customers subscription state, removing the need for your software to
+perform entitlement checks at runtime.
+
+=back
+
+
+
+=head2 ResolveCustomer
+
+=over
+
+=item RegistrationToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceMetering::ResolveCustomer>
 

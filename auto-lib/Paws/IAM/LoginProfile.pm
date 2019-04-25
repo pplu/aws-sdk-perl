@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::LoginP
 Contains the user name and password create date for a user.
 
 This data type is used as a response element in the CreateLoginProfile
-and GetLoginProfile actions.
+and GetLoginProfile operations.
 
 =head1 ATTRIBUTES
 

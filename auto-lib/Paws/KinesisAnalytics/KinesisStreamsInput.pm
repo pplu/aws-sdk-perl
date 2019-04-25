@@ -33,8 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 Identifies an Amazon Kinesis stream as the streaming source. You
-provide the stream's ARN and an IAM role ARN that enables Amazon
-Kinesis Analytics to access the stream on your behalf.
+provide the stream's Amazon Resource Name (ARN) and an IAM role ARN
+that enables Amazon Kinesis Analytics to access the stream on your
+behalf.
 
 =head1 ATTRIBUTES
 

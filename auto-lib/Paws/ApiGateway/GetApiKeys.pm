@@ -4,7 +4,7 @@ package Paws::ApiGateway::GetApiKeys;
   has CustomerId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'customerId');
   has IncludeValues => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeValues');
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameQuery');
+  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
   has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
 
   use MooseX::ClassAttribute;
@@ -23,17 +23,32 @@ Paws::ApiGateway::GetApiKeys - Arguments for method GetApiKeys on L<Paws::ApiGat
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetApiKeys on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method GetApiKeys on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GetApiKeys.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetApiKeys.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetApiKeys(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $ApiKeys = $apigateway->GetApiKeys(
+      CustomerId    => 'MyString',    # OPTIONAL
+      IncludeValues => 1,             # OPTIONAL
+      Limit         => 1,             # OPTIONAL
+      NameQuery     => 'MyString',    # OPTIONAL
+      Position      => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Items    = $ApiKeys->Items;
+    my $Position = $ApiKeys->Position;
+    my $Warnings = $ApiKeys->Warnings;
+
+    # Returns a L<Paws::ApiGateway::ApiKeys> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetApiKeys>
 
 =head1 ATTRIBUTES
 
@@ -54,7 +69,8 @@ result contains key values.
 
 =head2 Limit => Int
 
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is
+25 and the maximum value is 500.
 
 
 

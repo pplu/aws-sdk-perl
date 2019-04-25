@@ -1,5 +1,6 @@
 package Paws::Greengrass::FunctionConfiguration;
   use Moose;
+  has EncodingType => (is => 'ro', isa => 'Str');
   has Environment => (is => 'ro', isa => 'Paws::Greengrass::FunctionConfigurationEnvironment');
   has ExecArgs => (is => 'ro', isa => 'Str');
   has Executable => (is => 'ro', isa => 'Str');
@@ -25,53 +26,61 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Greengrass::FunctionConfiguration object:
 
-  $service_obj->Method(Att1 => { Environment => $value, ..., Timeout => $value  });
+  $service_obj->Method(Att1 => { EncodingType => $value, ..., Timeout => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass::FunctionConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Environment
+  $result->Att1->EncodingType
 
 =head1 DESCRIPTION
 
-Configuration of the function
+The configuration of the Lambda function.
 
 =head1 ATTRIBUTES
 
 
+=head2 EncodingType => Str
+
+  The expected encoding type of the input payload for the function. The
+default is ''json''.
+
+
 =head2 Environment => L<Paws::Greengrass::FunctionConfigurationEnvironment>
 
-  Environment of the function configuration
+  The environment configuration of the function.
 
 
 =head2 ExecArgs => Str
 
-  Execution Arguments
+  The execution arguments.
 
 
 =head2 Executable => Str
 
-  Executable
+  The name of the function executable.
 
 
 =head2 MemorySize => Int
 
-  The memory size, in KB, you configured for the function.
+  The memory size, in KB, which the function requires. This setting is
+not applicable and should be cleared when you run the Lambda function
+without containerization.
 
 
 =head2 Pinned => Bool
 
-  Whether the function is pinned or not. Pinned means the function is
-long-lived and starts when the core starts.
+  True if the function is pinned. Pinned means the function is long-lived
+and starts when the core starts.
 
 
 =head2 Timeout => Int
 
-  The function execution time at which Lambda should terminate the
-function. This timeout still applies to pinned lambdas for each
-request.
+  The allowed function execution time, after which Lambda should
+terminate the function. This timeout still applies to pinned Lambda
+functions for each request.
 
 
 

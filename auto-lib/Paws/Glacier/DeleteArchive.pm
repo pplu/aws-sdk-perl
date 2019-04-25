@@ -21,17 +21,29 @@ Paws::Glacier::DeleteArchive - Arguments for method DeleteArchive on L<Paws::Gla
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteArchive on the 
-Amazon Glacier service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteArchive on the
+L<Amazon Glacier|Paws::Glacier> service. Use the attributes of this class
 as arguments to method DeleteArchive.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteArchive.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteArchive(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To delete an archive
+    # The example deletes the archive specified by the archive ID.
+    $glacier->DeleteArchive(
+      {
+        'AccountId' => '-',
+        'ArchiveId' =>
+'NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLHy8pTl5nfCFJmDl2yEZONi5L26Omw12vcs01MNGntHEQL8MBfGlqrEXAMPLEArchiveId',
+        'VaultName' => 'examplevault'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/DeleteArchive>
 
 =head1 ATTRIBUTES
 

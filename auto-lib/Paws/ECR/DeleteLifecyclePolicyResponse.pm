@@ -24,7 +24,7 @@ The time stamp of the last time that the lifecycle policy was run.
 
 =head2 LifecyclePolicyText => Str
 
-The JSON repository policy text.
+The JSON lifecycle policy text.
 
 
 =head2 RegistryId => Str

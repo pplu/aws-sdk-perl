@@ -19,17 +19,27 @@ Paws::IoTData::GetThingShadow - Arguments for method GetThingShadow on L<Paws::I
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetThingShadow on the 
-AWS IoT Data Plane service. Use the attributes of this class
+This class represents the parameters used for calling the method GetThingShadow on the
+L<AWS IoT Data Plane|Paws::IoTData> service. Use the attributes of this class
 as arguments to method GetThingShadow.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetThingShadow.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetThingShadow(Att1 => $value1, Att2 => $value2, ...);
+    my $data.iot = Paws->service('IoTData');
+    my $GetThingShadowResponse = $data . iot->GetThingShadow(
+      ThingName => 'MyThingName',
+
+    );
+
+    # Results:
+    my $Payload = $GetThingShadowResponse->Payload;
+
+    # Returns a L<Paws::IoTData::GetThingShadowResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/data.iot/GetThingShadow>
 
 =head1 ATTRIBUTES
 

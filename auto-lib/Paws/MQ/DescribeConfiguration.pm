@@ -19,17 +19,35 @@ Paws::MQ::DescribeConfiguration - Arguments for method DescribeConfiguration on 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeConfiguration on the 
-AmazonMQ service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeConfiguration on the
+L<AmazonMQ|Paws::MQ> service. Use the attributes of this class
 as arguments to method DescribeConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $mq = Paws->service('MQ');
+    my $DescribeConfigurationResponse = $mq->DescribeConfiguration(
+      ConfigurationId => 'My__string',
+
+    );
+
+    # Results:
+    my $Arn            = $DescribeConfigurationResponse->Arn;
+    my $Created        = $DescribeConfigurationResponse->Created;
+    my $Description    = $DescribeConfigurationResponse->Description;
+    my $EngineType     = $DescribeConfigurationResponse->EngineType;
+    my $EngineVersion  = $DescribeConfigurationResponse->EngineVersion;
+    my $Id             = $DescribeConfigurationResponse->Id;
+    my $LatestRevision = $DescribeConfigurationResponse->LatestRevision;
+    my $Name           = $DescribeConfigurationResponse->Name;
+    my $Tags           = $DescribeConfigurationResponse->Tags;
+
+    # Returns a L<Paws::MQ::DescribeConfigurationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/DescribeConfiguration>
 
 =head1 ATTRIBUTES
 

@@ -1,7 +1,7 @@
 
 package Paws::RDS::FailoverDBCluster;
   use Moose;
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
+  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -19,22 +19,33 @@ Paws::RDS::FailoverDBCluster - Arguments for method FailoverDBCluster on L<Paws:
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method FailoverDBCluster on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method FailoverDBCluster on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method FailoverDBCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to FailoverDBCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->FailoverDBCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To perform a failover for a DB cluster
+    # This example performs a failover for the specified DB cluster to the
+    # specified DB instance.
+    my $FailoverDBClusterResult = $rds->FailoverDBCluster(
+      {
+        'DBClusterIdentifier'        => 'myaurorainstance-cluster',
+        'TargetDBInstanceIdentifier' => 'myaurorareplica'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/FailoverDBCluster>
 
 =head1 ATTRIBUTES
 
 
-=head2 DBClusterIdentifier => Str
+=head2 B<REQUIRED> DBClusterIdentifier => Str
 
 A DB cluster identifier to force a failover for. This parameter is not
 case-sensitive.

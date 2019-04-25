@@ -20,17 +20,32 @@ Paws::AutoScaling::EnterStandby - Arguments for method EnterStandby on L<Paws::A
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method EnterStandby on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method EnterStandby on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method EnterStandby.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnterStandby.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->EnterStandby(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To move instances into standby mode
+    # This example puts the specified instance into standby mode.
+    my $EnterStandbyAnswer = $autoscaling->EnterStandby(
+      {
+        'AutoScalingGroupName'           => 'my-auto-scaling-group',
+        'InstanceIds'                    => ['i-93633f9b'],
+        'ShouldDecrementDesiredCapacity' => 1
+      }
+    );
+
+    # Results:
+    my $Activities = $EnterStandbyAnswer->Activities;
+
+    # Returns a L<Paws::AutoScaling::EnterStandbyAnswer> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/EnterStandby>
 
 =head1 ATTRIBUTES
 
@@ -43,17 +58,14 @@ The name of the Auto Scaling group.
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-One or more instances to move into C<Standby> mode. You must specify at
-least one instance ID.
+The IDs of the instances. You can specify up to 20 instances.
 
 
 
 =head2 B<REQUIRED> ShouldDecrementDesiredCapacity => Bool
 
-Specifies whether the instances moved to C<Standby> mode count as part
-of the Auto Scaling group's desired capacity. If set, the desired
-capacity for the Auto Scaling group decrements by the number of
-instances moved to C<Standby> mode.
+Indicates whether to decrement the desired capacity of the Auto Scaling
+group by the number of instances moved to C<Standby> mode.
 
 
 

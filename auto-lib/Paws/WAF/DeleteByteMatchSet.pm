@@ -19,17 +19,32 @@ Paws::WAF::DeleteByteMatchSet - Arguments for method DeleteByteMatchSet on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteByteMatchSet on the 
-AWS WAF service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteByteMatchSet on the
+L<AWS WAF|Paws::WAF> service. Use the attributes of this class
 as arguments to method DeleteByteMatchSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteByteMatchSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteByteMatchSet(Att1 => $value1, Att2 => $value2, ...);
+    my $waf = Paws->service('WAF');
+    # To delete a byte match set
+    # The following example deletes a byte match set with the ID
+    # exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
+    my $DeleteByteMatchSetResponse = $waf->DeleteByteMatchSet(
+      {
+        'ByteMatchSetId' => 'exampleIDs3t-46da-4fdb-b8d5-abc321j569j5',
+        'ChangeToken'    => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
+      }
+    );
+
+    # Results:
+    my $ChangeToken = $DeleteByteMatchSetResponse->ChangeToken;
+
+    # Returns a L<Paws::WAF::DeleteByteMatchSetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf/DeleteByteMatchSet>
 
 =head1 ATTRIBUTES
 

@@ -1,6 +1,7 @@
 
 package Paws::ELBv2::ModifyTargetGroup;
   use Moose;
+  has HealthCheckEnabled => (is => 'ro', isa => 'Bool');
   has HealthCheckIntervalSeconds => (is => 'ro', isa => 'Int');
   has HealthCheckPath => (is => 'ro', isa => 'Str');
   has HealthCheckPort => (is => 'ro', isa => 'Str');
@@ -26,27 +27,53 @@ Paws::ELBv2::ModifyTargetGroup - Arguments for method ModifyTargetGroup on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyTargetGroup on the 
-Elastic Load Balancing service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyTargetGroup on the
+L<Elastic Load Balancing|Paws::ELBv2> service. Use the attributes of this class
 as arguments to method ModifyTargetGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyTargetGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyTargetGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELBv2');
+    # To modify the health check configuration for a target group
+    # This example changes the configuration of the health checks used to
+    # evaluate the health of the targets for the specified target group.
+    my $ModifyTargetGroupOutput = $elasticloadbalancing->ModifyTargetGroup(
+      {
+        'HealthCheckPort'     => 443,
+        'HealthCheckProtocol' => 'HTTPS',
+        'TargetGroupArn' =>
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https-targets/2453ed029918f21f'
+      }
+    );
+
+    # Results:
+    my $TargetGroups = $ModifyTargetGroupOutput->TargetGroups;
+
+    # Returns a L<Paws::ELBv2::ModifyTargetGroupOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/ModifyTargetGroup>
 
 =head1 ATTRIBUTES
+
+
+=head2 HealthCheckEnabled => Bool
+
+Indicates whether health checks are enabled.
+
 
 
 =head2 HealthCheckIntervalSeconds => Int
 
 The approximate amount of time, in seconds, between health checks of an
-individual target. For Application Load Balancers, the range is 5 to
-300 seconds. For Network Load Balancers, the supported values are 10 or
-30 seconds.
+individual target. For Application Load Balancers, the range is
+5E<ndash>300 seconds. For Network Load Balancers, the supported values
+are 10 or 30 seconds.
+
+If the protocol of the target group is TCP, you can't modify this
+setting.
 
 
 
@@ -67,15 +94,22 @@ targets.
 =head2 HealthCheckProtocol => Str
 
 The protocol the load balancer uses when performing health checks on
-targets. The TCP protocol is supported only if the protocol of the
-target group is TCP.
+targets. The TCP protocol is supported for health checks only if the
+protocol of the target group is TCP or TLS. The TLS protocol is not
+supported for health checks.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
+If the protocol of the target group is TCP, you can't modify this
+setting.
+
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">
 
 =head2 HealthCheckTimeoutSeconds => Int
 
 [HTTP/HTTPS health checks] The amount of time, in seconds, during which
 no response means a failed health check.
+
+If the protocol of the target group is TCP, you can't modify this
+setting.
 
 
 
@@ -90,6 +124,9 @@ considering an unhealthy target healthy.
 
 [HTTP/HTTPS health checks] The HTTP codes to use when checking for a
 successful response from a target.
+
+If the protocol of the target group is TCP, you can't modify this
+setting.
 
 
 

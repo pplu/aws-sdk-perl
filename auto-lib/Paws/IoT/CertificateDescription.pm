@@ -5,11 +5,14 @@ package Paws::IoT::CertificateDescription;
   has CertificateId => (is => 'ro', isa => 'Str', request_name => 'certificateId', traits => ['NameInRequest']);
   has CertificatePem => (is => 'ro', isa => 'Str', request_name => 'certificatePem', traits => ['NameInRequest']);
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
+  has CustomerVersion => (is => 'ro', isa => 'Int', request_name => 'customerVersion', traits => ['NameInRequest']);
+  has GenerationId => (is => 'ro', isa => 'Str', request_name => 'generationId', traits => ['NameInRequest']);
   has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
   has OwnedBy => (is => 'ro', isa => 'Str', request_name => 'ownedBy', traits => ['NameInRequest']);
   has PreviousOwnedBy => (is => 'ro', isa => 'Str', request_name => 'previousOwnedBy', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TransferData => (is => 'ro', isa => 'Paws::IoT::TransferData', request_name => 'transferData', traits => ['NameInRequest']);
+  has Validity => (is => 'ro', isa => 'Paws::IoT::CertificateValidity', request_name => 'validity', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +32,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::CertificateDescription object:
 
-  $service_obj->Method(Att1 => { CaCertificateId => $value, ..., TransferData => $value  });
+  $service_obj->Method(Att1 => { CaCertificateId => $value, ..., Validity => $value  });
 
 =head3 Results returned from an API call
 
@@ -70,6 +73,16 @@ Describes a certificate.
   The date and time the certificate was created.
 
 
+=head2 CustomerVersion => Int
+
+  The customer version of the certificate.
+
+
+=head2 GenerationId => Str
+
+  The generation ID of the certificate.
+
+
 =head2 LastModifiedDate => Str
 
   The date and time the certificate was last modified.
@@ -93,6 +106,11 @@ Describes a certificate.
 =head2 TransferData => L<Paws::IoT::TransferData>
 
   The transfer data.
+
+
+=head2 Validity => L<Paws::IoT::CertificateValidity>
+
+  When the certificate is valid.
 
 
 

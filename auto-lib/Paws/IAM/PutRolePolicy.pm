@@ -20,17 +20,30 @@ Paws::IAM::PutRolePolicy - Arguments for method PutRolePolicy on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutRolePolicy on the 
-AWS Identity and Access Management service. Use the attributes of this class
+This class represents the parameters used for calling the method PutRolePolicy on the
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method PutRolePolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRolePolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutRolePolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    # To attach a permissions policy to an IAM role
+    # The following command adds a permissions policy to the role named
+    # Test-Role.
+    $iam->PutRolePolicy(
+      {
+        'PolicyDocument' =>
+'{"Version":"2012-10-17","Statement":{"Effect":"Allow","Action":"s3:*","Resource":"*"}}',
+        'PolicyName' => 'S3AccessPolicy',
+        'RoleName'   => 'S3Access'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/PutRolePolicy>
 
 =head1 ATTRIBUTES
 
@@ -40,12 +53,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The policy document.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
-this parameter is a string of characters consisting of any printable
-ASCII character ranging from the space character (\u0020) through end
-of the ASCII character range as well as the printable characters in the
-Basic Latin and Latin-1 Supplement character set (through \u00FF). It
-also includes the special characters tab (\u0009), line feed (\u000A),
-and carriage return (\u000D).
+this parameter is a string of characters consisting of the following:
+
+=over
+
+=item *
+
+Any printable ASCII character ranging from the space character (\u0020)
+through the end of the ASCII character range
+
+=item *
+
+The printable characters in the Basic Latin and Latin-1 Supplement
+character set (through \u00FF)
+
+=item *
+
+The special characters tab (\u0009), line feed (\u000A), and carriage
+return (\u000D)
+
+=back
+
 
 
 
@@ -53,10 +81,10 @@ and carriage return (\u000D).
 
 The name of the policy document.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-+
+also include any of the following characters: _+=,.@-
 
 
 
@@ -64,7 +92,7 @@ also include any of the following characters: =,.@-+
 
 The name of the role to associate the policy with.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

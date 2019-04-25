@@ -2,6 +2,7 @@
 package Paws::CodeDeploy::ContinueDeployment;
   use Moose;
   has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' );
+  has DeploymentWaitType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentWaitType' );
 
   use MooseX::ClassAttribute;
 
@@ -18,27 +19,41 @@ Paws::CodeDeploy::ContinueDeployment - Arguments for method ContinueDeployment o
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ContinueDeployment on the 
-AWS CodeDeploy service. Use the attributes of this class
+This class represents the parameters used for calling the method ContinueDeployment on the
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method ContinueDeployment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ContinueDeployment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ContinueDeployment(Att1 => $value1, Att2 => $value2, ...);
+    my $codedeploy = Paws->service('CodeDeploy');
+    $codedeploy->ContinueDeployment(
+      DeploymentId       => 'MyDeploymentId',    # OPTIONAL
+      DeploymentWaitType => 'READY_WAIT',        # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codedeploy/ContinueDeployment>
 
 =head1 ATTRIBUTES
 
 
 =head2 DeploymentId => Str
 
-The deployment ID of the blue/green deployment for which you want to
-start rerouting traffic to the replacement environment.
+The unique ID of a blue/green deployment for which you want to start
+rerouting traffic to the replacement environment.
 
 
+
+=head2 DeploymentWaitType => Str
+
+The status of the deployment's waiting period. READY_WAIT indicates the
+deployment is ready to start shifting traffic. TERMINATION_WAIT
+indicates the traffic is shifted, but the original target is not
+terminated.
+
+Valid values are: C<"READY_WAIT">, C<"TERMINATION_WAIT">
 
 
 =head1 SEE ALSO

@@ -22,17 +22,74 @@ Paws::Route53::ChangeResourceRecordSets - Arguments for method ChangeResourceRec
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ChangeResourceRecordSets on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method ChangeResourceRecordSets on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method ChangeResourceRecordSets.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ChangeResourceRecordSets.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ChangeResourceRecordSets(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
+      ChangeBatch => {
+        Changes => [
+          {
+            Action            => 'CREATE',    # values: CREATE, DELETE, UPSERT
+            ResourceRecordSet => {
+              Name => 'MyDNSName',            # max: 1024
+              Type => 'SOA'
+              , # values: SOA, A, TXT, NS, CNAME, MX, NAPTR, PTR, SRV, SPF, AAAA, CAA
+              AliasTarget => {
+                DNSName              => 'MyDNSName',       # max: 1024
+                EvaluateTargetHealth => 1,
+                HostedZoneId         => 'MyResourceId',    # max: 32
+
+              },    # OPTIONAL
+              Failover    => 'PRIMARY',   # values: PRIMARY, SECONDARY; OPTIONAL
+              GeoLocation => {
+                ContinentCode =>
+                  'MyGeoLocationContinentCode',    # min: 2, max: 2; OPTIONAL
+                CountryCode =>
+                  'MyGeoLocationCountryCode',      # min: 1, max: 2; OPTIONAL
+                SubdivisionCode =>
+                  'MyGeoLocationSubdivisionCode',    # min: 1, max: 3; OPTIONAL
+              },    # OPTIONAL
+              HealthCheckId    => 'MyHealthCheckId',    # max: 64; OPTIONAL
+              MultiValueAnswer => 1,                    # OPTIONAL
+              Region           => 'us-east-1'
+              , # values: us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, eu-west-1, eu-west-2, eu-west-3, eu-central-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, eu-north-1, sa-east-1, cn-north-1, cn-northwest-1, ap-south-1min: 1, max: 64; OPTIONAL
+              ResourceRecords => [
+                {
+                  Value => 'MyRData',    # max: 4000
+
+                },
+                ...
+              ],                         # min: 1; OPTIONAL
+              SetIdentifier =>
+                'MyResourceRecordSetIdentifier',    # min: 1, max: 128; OPTIONAL
+              TTL => 1,                             # max: 2147483647; OPTIONAL
+              TrafficPolicyInstanceId =>
+                'MyTrafficPolicyInstanceId',        # min: 1, max: 36; OPTIONAL
+              Weight => 1,                          # max: 255; OPTIONAL
+            },
+
+          },
+          ...
+        ],                                          # min: 1
+        Comment => 'MyResourceDescription',         # max: 256; OPTIONAL
+      },
+      HostedZoneId => 'MyResourceId',
+
+    );
+
+    # Results:
+    my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
+
+    # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/ChangeResourceRecordSets>
 
 =head1 ATTRIBUTES
 

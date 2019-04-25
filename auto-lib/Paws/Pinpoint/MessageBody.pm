@@ -39,7 +39,7 @@ Simple message object.
 
 =head2 Message => Str
 
-  The error message returned from the API.
+  The error message that's returned from the API.
 
 
 =head2 RequestID => Str

@@ -2,9 +2,9 @@
 package Paws::EC2::ModifyVpcEndpointServiceConfiguration;
   use Moose;
   has AcceptanceRequired => (is => 'ro', isa => 'Bool');
-  has AddNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'addNetworkLoadBalancerArn' );
+  has AddNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddNetworkLoadBalancerArn' );
   has DryRun => (is => 'ro', isa => 'Bool');
-  has RemoveNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'removeNetworkLoadBalancerArn' );
+  has RemoveNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveNetworkLoadBalancerArn' );
   has ServiceId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -22,17 +22,31 @@ Paws::EC2::ModifyVpcEndpointServiceConfiguration - Arguments for method ModifyVp
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyVpcEndpointServiceConfiguration on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyVpcEndpointServiceConfiguration on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ModifyVpcEndpointServiceConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyVpcEndpointServiceConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyVpcEndpointServiceConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $ModifyVpcEndpointServiceConfigurationResult =
+      $ec2->ModifyVpcEndpointServiceConfiguration(
+      ServiceId                     => 'MyString',
+      AcceptanceRequired            => 1,                      # OPTIONAL
+      AddNetworkLoadBalancerArns    => [ 'MyString', ... ],    # OPTIONAL
+      DryRun                        => 1,                      # OPTIONAL
+      RemoveNetworkLoadBalancerArns => [ 'MyString', ... ],    # OPTIONAL
+      );
+
+    # Results:
+    my $Return = $ModifyVpcEndpointServiceConfigurationResult->Return;
+
+   # Returns a L<Paws::EC2::ModifyVpcEndpointServiceConfigurationResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyVpcEndpointServiceConfiguration>
 
 =head1 ATTRIBUTES
 

@@ -3,6 +3,7 @@ package Paws::AppSync::CreateApiKey;
   use Moose;
   has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has Expires => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'expires');
 
   use MooseX::ClassAttribute;
 
@@ -20,17 +21,28 @@ Paws::AppSync::CreateApiKey - Arguments for method CreateApiKey on L<Paws::AppSy
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateApiKey on the 
-AWS AppSync service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateApiKey on the
+L<AWS AppSync|Paws::AppSync> service. Use the attributes of this class
 as arguments to method CreateApiKey.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateApiKey.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateApiKey(Att1 => $value1, Att2 => $value2, ...);
+    my $appsync = Paws->service('AppSync');
+    my $CreateApiKeyResponse = $appsync->CreateApiKey(
+      ApiId       => 'MyString',
+      Description => 'MyString',    # OPTIONAL
+      Expires     => 1,             # OPTIONAL
+    );
+
+    # Results:
+    my $ApiKey = $CreateApiKeyResponse->ApiKey;
+
+    # Returns a L<Paws::AppSync::CreateApiKeyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appsync/CreateApiKey>
 
 =head1 ATTRIBUTES
 
@@ -44,6 +56,15 @@ The ID for your GraphQL API.
 =head2 Description => Str
 
 A description of the purpose of the API key.
+
+
+
+=head2 Expires => Int
+
+The time from creation time after which the API key expires. The date
+is represented as seconds since the epoch, rounded down to the nearest
+hour. The default value for this parameter is 7 days from creation
+time. For more information, see .
 
 
 

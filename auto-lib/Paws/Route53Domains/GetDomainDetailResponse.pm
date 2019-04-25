@@ -54,10 +54,12 @@ Provides details about the domain administrative contact.
 
 =head2 AdminPrivacy => Bool
 
-Specifies whether contact information for the admin contact is
-concealed from WHOIS queries. If the value is C<true>, WHOIS ("who is")
-queries will return contact information for our registrar partner,
-Gandi, instead of the contact information that you enter.
+Specifies whether contact information is concealed from WHOIS queries.
+If the value is C<true>, WHOIS ("who is") queries return contact
+information either for Amazon Registrar (for .com, .net, and .org
+domains) or for our registrar associate, Gandi (for all other TLDs). If
+the value is C<false>, WHOIS queries return the information that you
+entered for the admin contact.
 
 
 =head2 AutoRenew => Bool
@@ -69,7 +71,7 @@ automatically.
 =head2 CreationDate => Str
 
 The date when the domain was created as found in the response to a
-WHOIS query. The date format is Unix time.
+WHOIS query. The date and time is in Coordinated Universal time (UTC).
 
 
 =head2 DnsSec => Str
@@ -85,7 +87,7 @@ The name of a domain.
 =head2 ExpirationDate => Str
 
 The date when the registration for the domain is set to expire. The
-date format is Unix time.
+date and time is in Coordinated Universal time (UTC).
 
 
 =head2 B<REQUIRED> Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]
@@ -100,17 +102,21 @@ Provides details about the domain registrant.
 
 =head2 RegistrantPrivacy => Bool
 
-Specifies whether contact information for the registrant contact is
-concealed from WHOIS queries. If the value is C<true>, WHOIS ("who is")
-queries will return contact information for our registrar partner,
-Gandi, instead of the contact information that you enter.
+Specifies whether contact information is concealed from WHOIS queries.
+If the value is C<true>, WHOIS ("who is") queries return contact
+information either for Amazon Registrar (for .com, .net, and .org
+domains) or for our registrar associate, Gandi (for all other TLDs). If
+the value is C<false>, WHOIS queries return the information that you
+entered for the registrant contact (domain owner).
 
 
 =head2 RegistrarName => Str
 
 Name of the registrar of the domain as identified in the registry.
-Amazon Route 53 domains are registered by registrar Gandi. The value is
-C<"GANDI SAS">.
+Domains with a .com, .net, or .org TLD are registered by Amazon
+Registrar. All other domains are registered by our registrar associate,
+Gandi. The value for domains that are registered by Gandi is C<"GANDI
+SAS">.
 
 
 =head2 RegistrarUrl => Str
@@ -154,16 +160,18 @@ Provides details about the domain technical contact.
 
 =head2 TechPrivacy => Bool
 
-Specifies whether contact information for the tech contact is concealed
-from WHOIS queries. If the value is C<true>, WHOIS ("who is") queries
-will return contact information for our registrar partner, Gandi,
-instead of the contact information that you enter.
+Specifies whether contact information is concealed from WHOIS queries.
+If the value is C<true>, WHOIS ("who is") queries return contact
+information either for Amazon Registrar (for .com, .net, and .org
+domains) or for our registrar associate, Gandi (for all other TLDs). If
+the value is C<false>, WHOIS queries return the information that you
+entered for the technical contact.
 
 
 =head2 UpdatedDate => Str
 
 The last updated date of the domain as found in the response to a WHOIS
-query. The date format is Unix time.
+query. The date and time is in Coordinated Universal time (UTC).
 
 
 =head2 WhoIsServer => Str

@@ -19,24 +19,34 @@ Paws::Greengrass::AssociateServiceRoleToAccount - Arguments for method Associate
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method AssociateServiceRoleToAccount on the 
-AWS Greengrass service. Use the attributes of this class
+This class represents the parameters used for calling the method AssociateServiceRoleToAccount on the
+L<AWS Greengrass|Paws::Greengrass> service. Use the attributes of this class
 as arguments to method AssociateServiceRoleToAccount.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssociateServiceRoleToAccount.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AssociateServiceRoleToAccount(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $AssociateServiceRoleToAccountResponse =
+      $greengrass->AssociateServiceRoleToAccount(
+      RoleArn => 'My__string',    # OPTIONAL
+      );
+
+    # Results:
+    my $AssociatedAt = $AssociateServiceRoleToAccountResponse->AssociatedAt;
+
+  # Returns a L<Paws::Greengrass::AssociateServiceRoleToAccountResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/AssociateServiceRoleToAccount>
 
 =head1 ATTRIBUTES
 
 
 =head2 RoleArn => Str
 
-Role arn you wish to associate with this account.
+The ARN of the service role you wish to associate with your account.
 
 
 

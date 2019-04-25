@@ -18,17 +18,26 @@ Paws::KMS::EnableKey - Arguments for method EnableKey on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method EnableKey on the 
-AWS Key Management Service service. Use the attributes of this class
+This class represents the parameters used for calling the method EnableKey on the
+L<AWS Key Management Service|Paws::KMS> service. Use the attributes of this class
 as arguments to method EnableKey.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnableKey.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->EnableKey(Att1 => $value1, Att2 => $value2, ...);
+    my $kms = Paws->service('KMS');
+    # To enable a customer master key (CMK)
+    # The following example enables the specified CMK.
+    $kms->EnableKey(
+      {
+        'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/EnableKey>
 
 =head1 ATTRIBUTES
 

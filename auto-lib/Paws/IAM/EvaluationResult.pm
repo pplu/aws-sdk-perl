@@ -48,7 +48,7 @@ SimulateCustomPolicy > and C< SimulatePrincipalPolicy >.
 
 =head2 B<REQUIRED> EvalActionName => Str
 
-  The name of the API action tested on the indicated resource.
+  The name of the API operation tested on the indicated resource.
 
 
 =head2 B<REQUIRED> EvalDecision => Str
@@ -69,16 +69,16 @@ See How IAM Roles Differ from Resource-based Policies
 
 =head2 EvalResourceName => Str
 
-  The ARN of the resource that the indicated API action was tested on.
+  The ARN of the resource that the indicated API operation was tested on.
 
 
 =head2 MatchedStatements => ArrayRef[L<Paws::IAM::Statement>]
 
   A list of the statements in the input policies that determine the
 result for this scenario. Remember that even if multiple statements
-allow the action on the resource, if only one statement denies that
-action, then the explicit deny overrides any allow, and the deny
-statement is the only entry included in the result.
+allow the operation on the resource, if only one statement denies that
+operation, then the explicit deny overrides any allow. Inaddition, the
+deny statement is the only entry included in the result.
 
 
 =head2 MissingContextValues => ArrayRef[Str|Undef]
@@ -102,8 +102,8 @@ simulated user's account is part of an organization.
 
 =head2 ResourceSpecificResults => ArrayRef[L<Paws::IAM::ResourceSpecificResult>]
 
-  The individual results of the simulation of the API action specified in
-EvalActionName on each resource.
+  The individual results of the simulation of the API operation specified
+in EvalActionName on each resource.
 
 
 

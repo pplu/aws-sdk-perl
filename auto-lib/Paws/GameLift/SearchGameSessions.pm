@@ -23,17 +23,32 @@ Paws::GameLift::SearchGameSessions - Arguments for method SearchGameSessions on 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SearchGameSessions on the 
-Amazon GameLift service. Use the attributes of this class
+This class represents the parameters used for calling the method SearchGameSessions on the
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method SearchGameSessions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SearchGameSessions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SearchGameSessions(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $SearchGameSessionsOutput = $gamelift->SearchGameSessions(
+      AliasId          => 'MyAliasId',                # OPTIONAL
+      FilterExpression => 'MyNonZeroAndMaxString',    # OPTIONAL
+      FleetId          => 'MyFleetId',                # OPTIONAL
+      Limit            => 1,                          # OPTIONAL
+      NextToken        => 'MyNonZeroAndMaxString',    # OPTIONAL
+      SortExpression   => 'MyNonZeroAndMaxString',    # OPTIONAL
+    );
+
+    # Results:
+    my $GameSessions = $SearchGameSessionsOutput->GameSessions;
+    my $NextToken    = $SearchGameSessionsOutput->NextToken;
+
+    # Returns a L<Paws::GameLift::SearchGameSessionsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/SearchGameSessions>
 
 =head1 ATTRIBUTES
 
@@ -60,8 +75,8 @@ condition consists of the following:
 =item *
 
 B<Operand> -- Name of a game session attribute. Valid values are
-C<gameSessionName>, C<gameSessionId>, C<creationTimeMillis>,
-C<playerSessionCount>, C<maximumSessions>,
+C<gameSessionName>, C<gameSessionId>, C<gameSessionProperties>,
+C<maximumSessions>, C<creationTimeMillis>, C<playerSessionCount>,
 C<hasAvailablePlayerSessions>.
 
 =item *
@@ -71,13 +86,13 @@ C<E<gt>>, C<E<lt>=>, C<E<gt>=>.
 
 =item *
 
-B<Value> -- Value to be searched for. Values can be numbers, boolean
-values (true/false) or strings. String values are case sensitive,
-enclosed in single quotes. Special characters must be escaped. Boolean
-and string values can only be used with the comparators C<=> and
-C<E<lt>E<gt>>. For example, the following filter expression searches on
-C<gameSessionName>: "C<FilterExpression": "gameSessionName = 'Matt\\'s
-Awesome Game 1'">.
+B<Value> -- Value to be searched for. Values may be numbers, boolean
+values (true/false) or strings depending on the operand. String values
+are case sensitive and must be enclosed in single quotes. Special
+characters must be escaped. Boolean and string values can only be used
+with the comparators C<=> and C<E<lt>E<gt>>. For example, the following
+filter expression searches on C<gameSessionName>: "C<FilterExpression":
+"gameSessionName = 'Matt\\'s Awesome Game 1'">.
 
 =back
 
@@ -153,8 +168,8 @@ expression consists of the following elements:
 =item *
 
 B<Operand> -- Name of a game session attribute. Valid values are
-C<gameSessionName>, C<gameSessionId>, C<creationTimeMillis>,
-C<playerSessionCount>, C<maximumSessions>,
+C<gameSessionName>, C<gameSessionId>, C<gameSessionProperties>,
+C<maximumSessions>, C<creationTimeMillis>, C<playerSessionCount>,
 C<hasAvailablePlayerSessions>.
 
 =item *

@@ -19,17 +19,28 @@ Paws::SES::ListTemplates - Arguments for method ListTemplates on L<Paws::SES>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListTemplates on the 
-Amazon Simple Email Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ListTemplates on the
+L<Amazon Simple Email Service|Paws::SES> service. Use the attributes of this class
 as arguments to method ListTemplates.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTemplates.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListTemplates(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    my $ListTemplatesResponse = $email->ListTemplates(
+      MaxItems  => 1,                # OPTIONAL
+      NextToken => 'MyNextToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken         = $ListTemplatesResponse->NextToken;
+    my $TemplatesMetadata = $ListTemplatesResponse->TemplatesMetadata;
+
+    # Returns a L<Paws::SES::ListTemplatesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/ListTemplates>
 
 =head1 ATTRIBUTES
 
@@ -45,7 +56,8 @@ return up to 10 results.
 
 =head2 NextToken => Str
 
-The token to use for pagination.
+A token returned from a previous call to C<ListTemplates> to indicate
+the position in the list of email templates.
 
 
 

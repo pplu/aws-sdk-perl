@@ -42,40 +42,51 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Use the HDR master display (Hdr10Metadata) settings to provide values
-for HDR color. These values vary depending on the input video and must
-be provided by a color grader. Range is 0 to 50,000, each increment
-represents 0.00002 in CIE1931 color coordinate.
+Use the "HDR master display information" (Hdr10Metadata) settings to
+correct HDR metadata or to provide missing metadata. These values vary
+depending on the input video and must be provided by a color grader.
+Range is 0 to 50,000; each increment represents 0.00002 in CIE1931
+color coordinate. Note that these settings are not color correction.
+Note that if you are creating HDR outputs inside of an HLS CMAF
+package, to comply with the Apple specification, you must use the
+following settings. Set "MP4 packaging type" (writeMp4PackagingType) to
+HVC1 (HVC1). Set "Profile" (H265Settings E<gt> codecProfile) to
+Main10/High (MAIN10_HIGH). Set "Level" (H265Settings E<gt> codecLevel)
+to 5 (LEVEL_5).
 
 =head1 ATTRIBUTES
 
 
 =head2 BluePrimaryX => Int
 
-  HDR Master Display Information comes from the color grader and the
-color grading tools. Range is 0 to 50,000, each increment represents
-0.00002 in CIE1931 color coordinate.
+  HDR Master Display Information must be provided by a color grader,
+using color grading tools. Range is 0 to 50,000, each increment
+represents 0.00002 in CIE1931 color coordinate. Note that this setting
+is not for color correction.
 
 
 =head2 BluePrimaryY => Int
 
-  HDR Master Display Information comes from the color grader and the
-color grading tools. Range is 0 to 50,000, each increment represents
-0.00002 in CIE1931 color coordinate.
+  HDR Master Display Information must be provided by a color grader,
+using color grading tools. Range is 0 to 50,000, each increment
+represents 0.00002 in CIE1931 color coordinate. Note that this setting
+is not for color correction.
 
 
 =head2 GreenPrimaryX => Int
 
-  HDR Master Display Information comes from the color grader and the
-color grading tools. Range is 0 to 50,000, each increment represents
-0.00002 in CIE1931 color coordinate.
+  HDR Master Display Information must be provided by a color grader,
+using color grading tools. Range is 0 to 50,000, each increment
+represents 0.00002 in CIE1931 color coordinate. Note that this setting
+is not for color correction.
 
 
 =head2 GreenPrimaryY => Int
 
-  HDR Master Display Information comes from the color grader and the
-color grading tools. Range is 0 to 50,000, each increment represents
-0.00002 in CIE1931 color coordinate.
+  HDR Master Display Information must be provided by a color grader,
+using color grading tools. Range is 0 to 50,000, each increment
+represents 0.00002 in CIE1931 color coordinate. Note that this setting
+is not for color correction.
 
 
 =head2 MaxContentLightLevel => Int
@@ -104,30 +115,34 @@ candelas per square meter
 
 =head2 RedPrimaryX => Int
 
-  HDR Master Display Information comes from the color grader and the
-color grading tools. Range is 0 to 50,000, each increment represents
-0.00002 in CIE1931 color coordinate.
+  HDR Master Display Information must be provided by a color grader,
+using color grading tools. Range is 0 to 50,000, each increment
+represents 0.00002 in CIE1931 color coordinate. Note that this setting
+is not for color correction.
 
 
 =head2 RedPrimaryY => Int
 
-  HDR Master Display Information comes from the color grader and the
-color grading tools. Range is 0 to 50,000, each increment represents
-0.00002 in CIE1931 color coordinate.
+  HDR Master Display Information must be provided by a color grader,
+using color grading tools. Range is 0 to 50,000, each increment
+represents 0.00002 in CIE1931 color coordinate. Note that this setting
+is not for color correction.
 
 
 =head2 WhitePointX => Int
 
-  HDR Master Display Information comes from the color grader and the
-color grading tools. Range is 0 to 50,000, each increment represents
-0.00002 in CIE1931 color coordinate.
+  HDR Master Display Information must be provided by a color grader,
+using color grading tools. Range is 0 to 50,000, each increment
+represents 0.00002 in CIE1931 color coordinate. Note that this setting
+is not for color correction.
 
 
 =head2 WhitePointY => Int
 
-  HDR Master Display Information comes from the color grader and the
-color grading tools. Range is 0 to 50,000, each increment represents
-0.00002 in CIE1931 color coordinate.
+  HDR Master Display Information must be provided by a color grader,
+using color grading tools. Range is 0 to 50,000, each increment
+represents 0.00002 in CIE1931 color coordinate. Note that this setting
+is not for color correction.
 
 
 

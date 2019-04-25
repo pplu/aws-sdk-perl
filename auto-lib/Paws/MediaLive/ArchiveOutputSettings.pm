@@ -1,6 +1,6 @@
 package Paws::MediaLive::ArchiveOutputSettings;
   use Moose;
-  has ContainerSettings => (is => 'ro', isa => 'Paws::MediaLive::ArchiveContainerSettings', request_name => 'containerSettings', traits => ['NameInRequest']);
+  has ContainerSettings => (is => 'ro', isa => 'Paws::MediaLive::ArchiveContainerSettings', request_name => 'containerSettings', traits => ['NameInRequest'], required => 1);
   has Extension => (is => 'ro', isa => 'Str', request_name => 'extension', traits => ['NameInRequest']);
   has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
 1;
@@ -38,7 +38,7 @@ Placeholder documentation for ArchiveOutputSettings
 =head1 ATTRIBUTES
 
 
-=head2 ContainerSettings => L<Paws::MediaLive::ArchiveContainerSettings>
+=head2 B<REQUIRED> ContainerSettings => L<Paws::MediaLive::ArchiveContainerSettings>
 
   Settings specific to the container type of the file.
 

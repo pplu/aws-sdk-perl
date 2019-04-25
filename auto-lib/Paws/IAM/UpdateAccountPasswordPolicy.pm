@@ -26,17 +26,28 @@ Paws::IAM::UpdateAccountPasswordPolicy - Arguments for method UpdateAccountPassw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateAccountPasswordPolicy on the 
-AWS Identity and Access Management service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateAccountPasswordPolicy on the
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method UpdateAccountPasswordPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAccountPasswordPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateAccountPasswordPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    # To set or change the current account password policy
+    # The following command sets the password policy to require a minimum length
+    # of eight characters and to require one or more numbers in the password:
+    $iam->UpdateAccountPasswordPolicy(
+      {
+        'MinimumPasswordLength' => 8,
+        'RequireNumbers'        => 1
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/UpdateAccountPasswordPolicy>
 
 =head1 ATTRIBUTES
 
@@ -49,25 +60,33 @@ Users Change Their Own Passwords
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html)
 in the I<IAM User Guide>.
 
-Default value: false
+If you do not specify a value for this parameter, then the operation
+uses the default value of C<false>. The result is that IAM users in the
+account do not automatically have permissions to change their own
+password.
 
 
 
 =head2 HardExpiry => Bool
 
 Prevents IAM users from setting a new password after their password has
-expired.
+expired. The IAM user cannot be accessed until an administrator resets
+the password.
 
-Default value: false
+If you do not specify a value for this parameter, then the operation
+uses the default value of C<false>. The result is that IAM users can
+change their passwords after they expire and continue to sign in as the
+user.
 
 
 
 =head2 MaxPasswordAge => Int
 
-The number of days that an IAM user password is valid. The default
-value of 0 means IAM user passwords never expire.
+The number of days that an IAM user password is valid.
 
-Default value: 0
+If you do not specify a value for this parameter, then the operation
+uses the default value of C<0>. The result is that IAM user passwords
+never expire.
 
 
 
@@ -75,17 +94,19 @@ Default value: 0
 
 The minimum number of characters allowed in an IAM user password.
 
-Default value: 6
+If you do not specify a value for this parameter, then the operation
+uses the default value of C<6>.
 
 
 
 =head2 PasswordReusePrevention => Int
 
 Specifies the number of previous passwords that IAM users are prevented
-from reusing. The default value of 0 means IAM users are not prevented
-from reusing previous passwords.
+from reusing.
 
-Default value: 0
+If you do not specify a value for this parameter, then the operation
+uses the default value of C<0>. The result is that IAM users are not
+prevented from reusing previous passwords.
 
 
 
@@ -94,7 +115,9 @@ Default value: 0
 Specifies whether IAM user passwords must contain at least one
 lowercase character from the ISO basic Latin alphabet (a to z).
 
-Default value: false
+If you do not specify a value for this parameter, then the operation
+uses the default value of C<false>. The result is that passwords do not
+require at least one lowercase character.
 
 
 
@@ -103,7 +126,9 @@ Default value: false
 Specifies whether IAM user passwords must contain at least one numeric
 character (0 to 9).
 
-Default value: false
+If you do not specify a value for this parameter, then the operation
+uses the default value of C<false>. The result is that passwords do not
+require at least one numeric character.
 
 
 
@@ -114,7 +139,9 @@ following non-alphanumeric characters:
 
 ! @ # $ % ^ & * ( ) _ + - = [ ] { } | '
 
-Default value: false
+If you do not specify a value for this parameter, then the operation
+uses the default value of C<false>. The result is that passwords do not
+require at least one symbol character.
 
 
 
@@ -123,7 +150,9 @@ Default value: false
 Specifies whether IAM user passwords must contain at least one
 uppercase character from the ISO basic Latin alphabet (A to Z).
 
-Default value: false
+If you do not specify a value for this parameter, then the operation
+uses the default value of C<false>. The result is that passwords do not
+require at least one uppercase character.
 
 
 

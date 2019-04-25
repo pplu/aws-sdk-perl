@@ -19,17 +19,24 @@ Paws::GameLift::DeleteVpcPeeringAuthorization - Arguments for method DeleteVpcPe
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteVpcPeeringAuthorization on the 
-Amazon GameLift service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteVpcPeeringAuthorization on the
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method DeleteVpcPeeringAuthorization.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteVpcPeeringAuthorization.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteVpcPeeringAuthorization(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $DeleteVpcPeeringAuthorizationOutput =
+      $gamelift->DeleteVpcPeeringAuthorization(
+      GameLiftAwsAccountId => 'MyNonZeroAndMaxString',
+      PeerVpcId            => 'MyNonZeroAndMaxString',
+
+      );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/DeleteVpcPeeringAuthorization>
 
 =head1 ATTRIBUTES
 
@@ -46,9 +53,10 @@ Management Console under account settings.
 
 Unique identifier for a VPC with resources to be accessed by your
 Amazon GameLift fleet. The VPC must be in the same region where your
-fleet is deployed. To get VPC information, including IDs, use the
-Virtual Private Cloud service tools, including the VPC Dashboard in the
-AWS Management Console.
+fleet is deployed. Look up a VPC ID using the VPC Dashboard
+(https://console.aws.amazon.com/vpc/) in the AWS Management Console.
+Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 
 

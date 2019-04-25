@@ -1,6 +1,7 @@
 package Paws::MediaStore;
   use Moose;
   sub service { 'mediastore' }
+  sub signing_name { 'mediastore' }
   sub version { '2017-09-01' }
   sub target_prefix { 'MediaStore_20170901' }
   sub json_version { "1.1" }
@@ -29,6 +30,16 @@ package Paws::MediaStore;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteContainerPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteCorsPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteCorsPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeContainer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::DescribeContainer', @_);
@@ -37,6 +48,16 @@ package Paws::MediaStore;
   sub GetContainerPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::GetContainerPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetCorsPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::GetCorsPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::GetLifecyclePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListContainers {
@@ -49,10 +70,43 @@ package Paws::MediaStore;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::PutContainerPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutCorsPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::PutCorsPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::PutLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
+  sub ListAllContainers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListContainers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListContainers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Containers }, @{ $next_result->Containers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Containers') foreach (@{ $result->Containers });
+        $result = $self->ListContainers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Containers') foreach (@{ $result->Containers });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DescribeContainer GetContainerPolicy ListContainers PutContainerPolicy / }
+  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DeleteCorsPolicy DeleteLifecyclePolicy DescribeContainer GetContainerPolicy GetCorsPolicy GetLifecyclePolicy ListContainers PutContainerPolicy PutCorsPolicy PutLifecyclePolicy / }
 
 1;
 
@@ -84,9 +138,19 @@ An AWS Elemental MediaStore container is a namespace that holds folders
 and objects. You use a container endpoint to create, read, and delete
 objects.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediastore-2017-09-01>
+
+
 =head1 METHODS
 
-=head2 CreateContainer(ContainerName => Str)
+=head2 CreateContainer
+
+=over
+
+=item ContainerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::CreateContainer>
 
@@ -96,7 +160,14 @@ Creates a storage container to hold objects. A container is similar to
 a bucket in the Amazon S3 service.
 
 
-=head2 DeleteContainer(ContainerName => Str)
+=head2 DeleteContainer
+
+=over
+
+=item ContainerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::DeleteContainer>
 
@@ -107,7 +178,14 @@ request, delete any objects in the container or in any folders in the
 container. You can delete only empty containers.
 
 
-=head2 DeleteContainerPolicy(ContainerName => Str)
+=head2 DeleteContainerPolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::DeleteContainerPolicy>
 
@@ -117,19 +195,73 @@ Deletes the access policy that is associated with the specified
 container.
 
 
-=head2 DescribeContainer([ContainerName => Str])
+=head2 DeleteCorsPolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::DeleteCorsPolicy>
+
+Returns: a L<Paws::MediaStore::DeleteCorsPolicyOutput> instance
+
+Deletes the cross-origin resource sharing (CORS) configuration
+information that is set for the container.
+
+To use this operation, you must have permission to perform the
+C<MediaStore:DeleteCorsPolicy> action. The container owner has this
+permission by default and can grant this permission to others.
+
+
+=head2 DeleteLifecyclePolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::DeleteLifecyclePolicy>
+
+Returns: a L<Paws::MediaStore::DeleteLifecyclePolicyOutput> instance
+
+Removes an object lifecycle policy from a container.
+
+
+=head2 DescribeContainer
+
+=over
+
+=item [ContainerName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::DescribeContainer>
 
 Returns: a L<Paws::MediaStore::DescribeContainerOutput> instance
 
-Retrieves the properties of the requested container. This returns a
-single C<Container> object based on C<ContainerName>. To return all
-C<Container> objects that are associated with a specified AWS account,
-use ListContainers.
+Retrieves the properties of the requested container. This request is
+commonly used to retrieve the endpoint of a container. An endpoint is a
+value assigned by the service when a new container is created. A
+container's endpoint does not change after it has been assigned. The
+C<DescribeContainer> request returns a single C<Container> object based
+on C<ContainerName>. To return all C<Container> objects that are
+associated with a specified AWS account, use ListContainers.
 
 
-=head2 GetContainerPolicy(ContainerName => Str)
+=head2 GetContainerPolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::GetContainerPolicy>
 
@@ -141,7 +273,53 @@ the AWS Identity and Access Management User Guide
 (https://aws.amazon.com/documentation/iam/).
 
 
-=head2 ListContainers([MaxResults => Int, NextToken => Str])
+=head2 GetCorsPolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::GetCorsPolicy>
+
+Returns: a L<Paws::MediaStore::GetCorsPolicyOutput> instance
+
+Returns the cross-origin resource sharing (CORS) configuration
+information that is set for the container.
+
+To use this operation, you must have permission to perform the
+C<MediaStore:GetCorsPolicy> action. By default, the container owner has
+this permission and can grant it to others.
+
+
+=head2 GetLifecyclePolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::GetLifecyclePolicy>
+
+Returns: a L<Paws::MediaStore::GetLifecyclePolicyOutput> instance
+
+Retrieves the object lifecycle policy that is assigned to a container.
+
+
+=head2 ListContainers
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::ListContainers>
 
@@ -160,7 +338,16 @@ still more containers to receive.
 See also DescribeContainer, which gets the properties of one container.
 
 
-=head2 PutContainerPolicy(ContainerName => Str, Policy => Str)
+=head2 PutContainerPolicy
+
+=over
+
+=item ContainerName => Str
+
+=item Policy => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStore::PutContainerPolicy>
 
@@ -176,11 +363,73 @@ container. If you enter C<PutContainerPolicy> twice, the second command
 modifies the existing policy.
 
 
+=head2 PutCorsPolicy
+
+=over
+
+=item ContainerName => Str
+
+=item CorsPolicy => ArrayRef[L<Paws::MediaStore::CorsRule>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::PutCorsPolicy>
+
+Returns: a L<Paws::MediaStore::PutCorsPolicyOutput> instance
+
+Sets the cross-origin resource sharing (CORS) configuration on a
+container so that the container can service cross-origin requests. For
+example, you might want to enable a request whose origin is
+http://www.example.com to access your AWS Elemental MediaStore
+container at my.example.container.com by using the browser's
+XMLHttpRequest capability.
+
+To enable CORS on a container, you attach a CORS policy to the
+container. In the CORS policy, you configure rules that identify
+origins and the HTTP methods that can be executed on your container.
+The policy can contain up to 398,000 characters. You can add up to 100
+rules to a CORS policy. If more than one rule applies, the service uses
+the first applicable rule listed.
+
+
+=head2 PutLifecyclePolicy
+
+=over
+
+=item ContainerName => Str
+
+=item LifecyclePolicy => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::PutLifecyclePolicy>
+
+Returns: a L<Paws::MediaStore::PutLifecyclePolicyOutput> instance
+
+Writes an object lifecycle policy to a container. If the container
+already has an object lifecycle policy, the service replaces the
+existing policy with the new policy.
+
+
 
 
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllContainers(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllContainers([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Containers, passing the object as the first parameter, and the string 'Containers' as the second parameter 
+
+If not, it will return a a L<Paws::MediaStore::ListContainersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

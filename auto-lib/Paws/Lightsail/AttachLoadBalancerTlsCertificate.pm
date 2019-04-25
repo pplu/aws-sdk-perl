@@ -19,31 +19,43 @@ Paws::Lightsail::AttachLoadBalancerTlsCertificate - Arguments for method AttachL
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method AttachLoadBalancerTlsCertificate on the 
-Amazon Lightsail service. Use the attributes of this class
+This class represents the parameters used for calling the method AttachLoadBalancerTlsCertificate on the
+L<Amazon Lightsail|Paws::Lightsail> service. Use the attributes of this class
 as arguments to method AttachLoadBalancerTlsCertificate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AttachLoadBalancerTlsCertificate.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AttachLoadBalancerTlsCertificate(Att1 => $value1, Att2 => $value2, ...);
+    my $lightsail = Paws->service('Lightsail');
+    my $AttachLoadBalancerTlsCertificateResult =
+      $lightsail->AttachLoadBalancerTlsCertificate(
+      CertificateName  => 'MyResourceName',
+      LoadBalancerName => 'MyResourceName',
+
+      );
+
+    # Results:
+    my $Operations = $AttachLoadBalancerTlsCertificateResult->Operations;
+
+  # Returns a L<Paws::Lightsail::AttachLoadBalancerTlsCertificateResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/AttachLoadBalancerTlsCertificate>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CertificateName => Str
 
-The name of your TLS/SSL certificate.
+The name of your SSL/TLS certificate.
 
 
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
 The name of the load balancer to which you want to associate the
-TLS/SSL certificate.
+SSL/TLS certificate.
 
 
 

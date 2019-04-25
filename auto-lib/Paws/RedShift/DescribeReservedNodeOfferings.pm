@@ -20,17 +20,30 @@ Paws::RedShift::DescribeReservedNodeOfferings - Arguments for method DescribeRes
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeReservedNodeOfferings on the 
-Amazon Redshift service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeReservedNodeOfferings on the
+L<Amazon Redshift|Paws::RedShift> service. Use the attributes of this class
 as arguments to method DescribeReservedNodeOfferings.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReservedNodeOfferings.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeReservedNodeOfferings(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $ReservedNodeOfferingsMessage = $redshift->DescribeReservedNodeOfferings(
+      Marker                 => 'MyString',    # OPTIONAL
+      MaxRecords             => 1,             # OPTIONAL
+      ReservedNodeOfferingId => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Marker = $ReservedNodeOfferingsMessage->Marker;
+    my $ReservedNodeOfferings =
+      $ReservedNodeOfferingsMessage->ReservedNodeOfferings;
+
+    # Returns a L<Paws::RedShift::ReservedNodeOfferingsMessage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/DescribeReservedNodeOfferings>
 
 =head1 ATTRIBUTES
 

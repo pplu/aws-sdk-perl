@@ -26,17 +26,33 @@ Paws::AutoScaling::PutScheduledUpdateGroupAction - Arguments for method PutSched
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutScheduledUpdateGroupAction on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method PutScheduledUpdateGroupAction on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method PutScheduledUpdateGroupAction.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutScheduledUpdateGroupAction.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutScheduledUpdateGroupAction(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To add a scheduled action to an Auto Scaling group
+    # This example adds the specified scheduled action to the specified Auto
+    # Scaling group.
+    $autoscaling->PutScheduledUpdateGroupAction(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'DesiredCapacity'      => 4,
+        'EndTime'              => '2014-05-12T08:00:00Z',
+        'MaxSize'              => 6,
+        'MinSize'              => 2,
+        'ScheduledActionName'  => 'my-scheduled-action',
+        'StartTime'            => '2014-05-12T08:00:00Z'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/PutScheduledUpdateGroupAction>
 
 =head1 ATTRIBUTES
 
@@ -55,8 +71,8 @@ The number of EC2 instances that should be running in the group.
 
 =head2 EndTime => Str
 
-The time for the recurring schedule to end. Auto Scaling does not
-perform the action after this time.
+The time for the recurring schedule to end. Amazon EC2 Auto Scaling
+does not perform the action after this time.
 
 
 
@@ -75,8 +91,7 @@ The minimum size for the Auto Scaling group.
 =head2 Recurrence => Str
 
 The recurring schedule for this action, in Unix cron syntax format. For
-more information, see Cron (http://en.wikipedia.org/wiki/Cron) in
-Wikipedia.
+more information about this format, see Crontab (http://crontab.org).
 
 
 
@@ -91,12 +106,12 @@ The name of this scaling action.
 The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in
 UTC/GMT only (for example, C<2014-06-01T00:00:00Z>).
 
-If you specify C<Recurrence> and C<StartTime>, Auto Scaling performs
-the action at this time, and then performs the action based on the
-specified recurrence.
+If you specify C<Recurrence> and C<StartTime>, Amazon EC2 Auto Scaling
+performs the action at this time, and then performs the action based on
+the specified recurrence.
 
-If you try to schedule your action in the past, Auto Scaling returns an
-error message.
+If you try to schedule your action in the past, Amazon EC2 Auto Scaling
+returns an error message.
 
 
 

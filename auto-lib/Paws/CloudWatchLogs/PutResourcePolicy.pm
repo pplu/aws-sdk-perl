@@ -19,17 +19,27 @@ Paws::CloudWatchLogs::PutResourcePolicy - Arguments for method PutResourcePolicy
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutResourcePolicy on the 
-Amazon CloudWatch Logs service. Use the attributes of this class
+This class represents the parameters used for calling the method PutResourcePolicy on the
+L<Amazon CloudWatch Logs|Paws::CloudWatchLogs> service. Use the attributes of this class
 as arguments to method PutResourcePolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutResourcePolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutResourcePolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $logs = Paws->service('CloudWatchLogs');
+    my $PutResourcePolicyResponse = $logs->PutResourcePolicy(
+      PolicyDocument => 'MyPolicyDocument',    # OPTIONAL
+      PolicyName     => 'MyPolicyName',        # OPTIONAL
+    );
+
+    # Results:
+    my $ResourcePolicy = $PutResourcePolicyResponse->ResourcePolicy;
+
+    # Returns a L<Paws::CloudWatchLogs::PutResourcePolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/logs/PutResourcePolicy>
 
 =head1 ATTRIBUTES
 
@@ -45,10 +55,10 @@ service to put DNS query logs in to the specified log group. Replace
 "logArn" with the ARN of your CloudWatch Logs resource, such as a log
 group or log stream.
 
-{ "Version": "2012-10-17" "Statement": [ { "Sid":
+C<{ "Version": "2012-10-17", "Statement": [ { "Sid":
 "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": {
 "Service": [ "route53.amazonaws.com" ] }, "Action":"logs:PutLogEvents",
-"Resource": logArn } ] }
+"Resource": "logArn" } ] }>
 
 
 

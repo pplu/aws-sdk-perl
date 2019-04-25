@@ -3,6 +3,7 @@ package Paws::RedShift::DeleteCluster;
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has FinalClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
+  has FinalClusterSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has SkipFinalClusterSnapshot => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
@@ -20,17 +21,29 @@ Paws::RedShift::DeleteCluster - Arguments for method DeleteCluster on L<Paws::Re
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteCluster on the 
-Amazon Redshift service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteCluster on the
+L<Amazon Redshift|Paws::RedShift> service. Use the attributes of this class
 as arguments to method DeleteCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $DeleteClusterResult = $redshift->DeleteCluster(
+      ClusterIdentifier                   => 'MyString',
+      FinalClusterSnapshotIdentifier      => 'MyString',    # OPTIONAL
+      FinalClusterSnapshotRetentionPeriod => 1,             # OPTIONAL
+      SkipFinalClusterSnapshot            => 1,             # OPTIONAL
+    );
+
+    # Results:
+    my $Cluster = $DeleteClusterResult->Cluster;
+
+    # Returns a L<Paws::RedShift::DeleteClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/DeleteCluster>
 
 =head1 ATTRIBUTES
 
@@ -88,6 +101,17 @@ Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
+
+
+
+=head2 FinalClusterSnapshotRetentionPeriod => Int
+
+The number of days that a manual snapshot is retained. If the value is
+-1, the manual snapshot is retained indefinitely.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+The default value is -1.
 
 
 

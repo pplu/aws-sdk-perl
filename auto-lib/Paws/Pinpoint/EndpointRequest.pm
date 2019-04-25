@@ -41,43 +41,53 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Endpoint update request
+An endpoint update request.
 
 =head1 ATTRIBUTES
 
 
 =head2 Address => Str
 
-  The address or token of the endpoint as provided by your push provider
-(e.g. DeviceToken or RegistrationId).
+  The destination for messages that you send to this endpoint. The
+address varies by channel. For mobile push channels, use the token
+provided by the push notification service, such as the APNs device
+token or the FCM registration token. For the SMS channel, use a phone
+number in E.164 format, such as +12065550100. For the email channel,
+use an email address.
 
 
 =head2 Attributes => L<Paws::Pinpoint::MapOfListOf__string>
 
-  Custom attributes that your app reports to Amazon Pinpoint. You can use
-these attributes as selection criteria when you create a segment.
+  Custom attributes that describe the endpoint by associating a name with
+an array of values. For example, an attribute named "interests" might
+have the values ["science", "politics", "travel"]. You can use these
+attributes as selection criteria when you create a segment of users to
+engage with a messaging campaign. The following characters are not
+recommended in attribute names: # : ? \ /. The Amazon Pinpoint console
+does not display attributes that include these characters in the name.
+This limitation does not apply to attribute values.
 
 
 =head2 ChannelType => Str
 
-  The channel type. Valid values: GCM | APNS | SMS | EMAIL
+  The channel type. Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP |
+APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
 
 
 =head2 Demographic => L<Paws::Pinpoint::EndpointDemographic>
 
-  The endpoint demographic attributes.
+  Demographic attributes for the endpoint.
 
 
 =head2 EffectiveDate => Str
 
-  The last time the endpoint was updated. Provided in ISO 8601 format.
+  The date and time when the endpoint was updated, shown in ISO 8601
+format.
 
 
 =head2 EndpointStatus => Str
 
-  The endpoint status. Can be either ACTIVE or INACTIVE. Will be set to
-INACTIVE if a delivery fails. Will be set to ACTIVE if the address is
-updated.
+  Unused.
 
 
 =head2 Location => L<Paws::Pinpoint::EndpointLocation>

@@ -24,7 +24,7 @@ if no errors are encountered during the operation.
 =head2 Plaintext => Str
 
 Decrypted plaintext data. When you use the HTTP API or the AWS CLI, the
-value is Base64-encoded. Otherwise, it is not encoded.
+value is Base64-encdoded. Otherwise, it is not encoded.
 
 
 =head2 _request_id => Str

@@ -17,8 +17,8 @@ Paws::CodeDeploy::ListApplicationRevisionsOutput
 
 =head2 NextToken => Str
 
-If a large amount of information is returned, an identifier will also
-be returned. It can be used in a subsequent list application revisions
+If a large amount of information is returned, an identifier is also
+returned. It can be used in a subsequent list application revisions
 call to return the next set of application revisions in the list.
 
 

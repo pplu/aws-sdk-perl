@@ -23,17 +23,37 @@ Paws::CloudFormation::DeleteStackInstances - Arguments for method DeleteStackIns
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteStackInstances on the 
-AWS CloudFormation service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteStackInstances on the
+L<AWS CloudFormation|Paws::CloudFormation> service. Use the attributes of this class
 as arguments to method DeleteStackInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteStackInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteStackInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudformation = Paws->service('CloudFormation');
+    my $DeleteStackInstancesOutput = $cloudformation->DeleteStackInstances(
+      Accounts     => [ 'MyAccount', ... ],
+      Regions      => [ 'MyRegion',  ... ],
+      RetainStacks => 1,
+      StackSetName => 'MyStackSetName',
+      OperationId          => 'MyClientRequestToken',    # OPTIONAL
+      OperationPreferences => {
+        FailureToleranceCount      => 1,    # OPTIONAL
+        FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
+        MaxConcurrentCount         => 1,    # min: 1; OPTIONAL
+        MaxConcurrentPercentage    => 1,    # min: 1, max: 100; OPTIONAL
+        RegionOrder => [ 'MyRegion', ... ],
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $OperationId = $DeleteStackInstancesOutput->OperationId;
+
+    # Returns a L<Paws::CloudFormation::DeleteStackInstancesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/DeleteStackInstances>
 
 =head1 ATTRIBUTES
 

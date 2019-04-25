@@ -25,17 +25,33 @@ Paws::EC2::CopyImage - Arguments for method CopyImage on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CopyImage on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method CopyImage on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method CopyImage.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyImage.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CopyImage(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $CopyImageResult = $ec2->CopyImage(
+      Name          => 'MyString',
+      SourceImageId => 'MyString',
+      SourceRegion  => 'MyString',
+      ClientToken   => 'MyString',    # OPTIONAL
+      Description   => 'MyString',    # OPTIONAL
+      DryRun        => 1,             # OPTIONAL
+      Encrypted     => 1,             # OPTIONAL
+      KmsKeyId      => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $ImageId = $CopyImageResult->ImageId;
+
+    # Returns a L<Paws::EC2::CopyImageResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CopyImage>
 
 =head1 ATTRIBUTES
 
@@ -44,7 +60,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see How to Ensure Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -67,27 +83,58 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 Encrypted => Bool
 
 Specifies whether the destination snapshots of the copied image should
-be encrypted. The default CMK for EBS is used unless a non-default AWS
-Key Management Service (AWS KMS) CMK is specified with C<KmsKeyId>. For
-more information, see Amazon EBS Encryption
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+be encrypted. You can encrypt a copy of an unencrypted snapshot, but
+you cannot create an unencrypted copy of an encrypted snapshot. The
+default CMK for EBS is used unless you specify a non-default AWS Key
+Management Service (AWS KMS) CMK using C<KmsKeyId>. For more
+information, see Amazon EBS Encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
 =head2 KmsKeyId => Str
 
-The full ARN of the AWS Key Management Service (AWS KMS) CMK to use
-when encrypting the snapshots of an image during a copy operation. This
+An identifier for the AWS Key Management Service (AWS KMS) customer
+master key (CMK) to use when creating the encrypted volume. This
 parameter is only required if you want to use a non-default CMK; if
-this parameter is not specified, the default CMK for EBS is used. The
-ARN contains the C<arn:aws:kms> namespace, followed by the region of
-the CMK, the AWS account ID of the CMK owner, the C<key> namespace, and
-then the CMK ID. For example,
+this parameter is not specified, the default CMK for EBS is used. If a
+C<KmsKeyId> is specified, the C<Encrypted> flag must also be set.
+
+The CMK identifier may be provided in any of the following formats:
+
+=over
+
+=item *
+
+Key ID
+
+=item *
+
+Key alias, in the form C<alias/I<ExampleAlias>>
+
+=item *
+
+ARN using key ID. The ID ARN contains the C<arn:aws:kms> namespace,
+followed by the region of the CMK, the AWS account ID of the CMK owner,
+the C<key> namespace, and then the CMK ID. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
+
+=item *
+
+ARN using key alias. The alias ARN contains the C<arn:aws:kms>
+namespace, followed by the region of the CMK, the AWS account ID of the
+CMK owner, the C<alias> namespace, and then the CMK alias. For example,
+arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
+
+=back
+
+AWS parses C<KmsKeyId> asynchronously, meaning that the action you call
+may appear to complete even though you provided an invalid identifier.
+This action will eventually report failure.
+
 The specified CMK must exist in the region that the snapshot is being
-copied to. If a C<KmsKeyId> is specified, the C<Encrypted> flag must
-also be set.
+copied to.
 
 
 

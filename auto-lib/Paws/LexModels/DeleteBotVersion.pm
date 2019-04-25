@@ -20,17 +20,23 @@ Paws::LexModels::DeleteBotVersion - Arguments for method DeleteBotVersion on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteBotVersion on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteBotVersion on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method DeleteBotVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteBotVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteBotVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    $models . lex->DeleteBotVersion(
+      Name    => 'MyBotName',
+      Version => 'MyNumericalVersion',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/DeleteBotVersion>
 
 =head1 ATTRIBUTES
 

@@ -22,17 +22,31 @@ Paws::SSM::GetInventorySchema - Arguments for method GetInventorySchema on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetInventorySchema on the 
-Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
+This class represents the parameters used for calling the method GetInventorySchema on the
+L<Amazon Simple Systems Manager (SSM)|Paws::SSM> service. Use the attributes of this class
 as arguments to method GetInventorySchema.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetInventorySchema.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetInventorySchema(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $GetInventorySchemaResult = $ssm->GetInventorySchema(
+      Aggregator => 1,                                  # OPTIONAL
+      MaxResults => 1,                                  # OPTIONAL
+      NextToken  => 'MyNextToken',                      # OPTIONAL
+      SubType    => 1,                                  # OPTIONAL
+      TypeName   => 'MyInventoryItemTypeNameFilter',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $GetInventorySchemaResult->NextToken;
+    my $Schemas   = $GetInventorySchemaResult->Schemas;
+
+    # Returns a L<Paws::SSM::GetInventorySchemaResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/GetInventorySchema>
 
 =head1 ATTRIBUTES
 

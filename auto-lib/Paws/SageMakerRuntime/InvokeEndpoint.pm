@@ -4,6 +4,7 @@ package Paws::SageMakerRuntime::InvokeEndpoint;
   has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Accept');
   has Body => (is => 'ro', isa => 'Str', required => 1);
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
+  has CustomAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-SageMaker-Custom-Attributes');
   has EndpointName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'EndpointName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -22,17 +23,34 @@ Paws::SageMakerRuntime::InvokeEndpoint - Arguments for method InvokeEndpoint on 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method InvokeEndpoint on the 
-Amazon SageMaker Runtime service. Use the attributes of this class
+This class represents the parameters used for calling the method InvokeEndpoint on the
+L<Amazon SageMaker Runtime|Paws::SageMakerRuntime> service. Use the attributes of this class
 as arguments to method InvokeEndpoint.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to InvokeEndpoint.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->InvokeEndpoint(Att1 => $value1, Att2 => $value2, ...);
+    my $runtime.sagemaker = Paws->service('SageMakerRuntime');
+    my $InvokeEndpointOutput = $runtime . sagemaker->InvokeEndpoint(
+      Body             => 'BlobBodyBlob',
+      EndpointName     => 'MyEndpointName',
+      Accept           => 'MyHeader',                    # OPTIONAL
+      ContentType      => 'MyHeader',                    # OPTIONAL
+      CustomAttributes => 'MyCustomAttributesHeader',    # OPTIONAL
+    );
+
+    # Results:
+    my $Body             = $InvokeEndpointOutput->Body;
+    my $ContentType      = $InvokeEndpointOutput->ContentType;
+    my $CustomAttributes = $InvokeEndpointOutput->CustomAttributes;
+    my $InvokedProductionVariant =
+      $InvokeEndpointOutput->InvokedProductionVariant;
+
+    # Returns a L<Paws::SageMakerRuntime::InvokeEndpointOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/runtime.sagemaker/InvokeEndpoint>
 
 =head1 ATTRIBUTES
 
@@ -49,11 +67,21 @@ Provides input data, in the format specified in the C<ContentType>
 request header. Amazon SageMaker passes all of the data in the body to
 the model.
 
+For information about the format of the request body, see Common Data
+FormatsE<mdash>Inference
+(http://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html).
+
 
 
 =head2 ContentType => Str
 
 The MIME type of the input data in the request body.
+
+
+
+=head2 CustomAttributes => Str
+
+
 
 
 

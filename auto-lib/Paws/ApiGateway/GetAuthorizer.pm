@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::GetAuthorizer;
   use Moose;
-  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizerId', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizer_id', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -20,30 +20,52 @@ Paws::ApiGateway::GetAuthorizer - Arguments for method GetAuthorizer on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetAuthorizer on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method GetAuthorizer on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GetAuthorizer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAuthorizer.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetAuthorizer(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $Authorizer = $apigateway->GetAuthorizer(
+      AuthorizerId => 'MyString',
+      RestApiId    => 'MyString',
+
+    );
+
+    # Results:
+    my $AuthType              = $Authorizer->AuthType;
+    my $AuthorizerCredentials = $Authorizer->AuthorizerCredentials;
+    my $AuthorizerResultTtlInSeconds =
+      $Authorizer->AuthorizerResultTtlInSeconds;
+    my $AuthorizerUri  = $Authorizer->AuthorizerUri;
+    my $Id             = $Authorizer->Id;
+    my $IdentitySource = $Authorizer->IdentitySource;
+    my $IdentityValidationExpression =
+      $Authorizer->IdentityValidationExpression;
+    my $Name         = $Authorizer->Name;
+    my $ProviderARNs = $Authorizer->ProviderARNs;
+    my $Type         = $Authorizer->Type;
+
+    # Returns a L<Paws::ApiGateway::Authorizer> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetAuthorizer>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AuthorizerId => Str
 
-The identifier of the Authorizer resource.
+[Required] The identifier of the Authorizer resource.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Datab
 
 =head1 DESCRIPTION
 
-The structure used to create or updata a database.
+The structure used to create or update a database.
 
 =head1 ATTRIBUTES
 
@@ -51,13 +51,13 @@ The structure used to create or updata a database.
 
 =head2 B<REQUIRED> Name => Str
 
-  Name of the database.
+  Name of the database. For Hive compatibility, this is folded to
+lowercase when it is stored.
 
 
 =head2 Parameters => L<Paws::Glue::ParametersMap>
 
-  A list of key-value pairs that define parameters and properties of the
-database.
+  Thes key-value pairs define parameters and properties of the database.
 
 
 

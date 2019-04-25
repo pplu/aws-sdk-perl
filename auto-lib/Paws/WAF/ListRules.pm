@@ -19,17 +19,30 @@ Paws::WAF::ListRules - Arguments for method ListRules on L<Paws::WAF>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListRules on the 
-AWS WAF service. Use the attributes of this class
+This class represents the parameters used for calling the method ListRules on the
+L<AWS WAF|Paws::WAF> service. Use the attributes of this class
 as arguments to method ListRules.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListRules.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListRules(Att1 => $value1, Att2 => $value2, ...);
+    my $waf = Paws->service('WAF');
+    # To list rules
+    # The following example returns an array of up to 100 rules.
+    my $ListRulesResponse = $waf->ListRules(
+      {
+        'Limit' => 100
+      }
+    );
+
+    # Results:
+    my $Rules = $ListRulesResponse->Rules;
+
+    # Returns a L<Paws::WAF::ListRulesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf/ListRules>
 
 =head1 ATTRIBUTES
 

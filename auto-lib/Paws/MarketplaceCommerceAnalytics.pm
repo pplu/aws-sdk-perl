@@ -1,6 +1,7 @@
 package Paws::MarketplaceCommerceAnalytics;
   use Moose;
   sub service { 'marketplacecommerceanalytics' }
+  sub signing_name { 'marketplacecommerceanalytics' }
   sub version { '2015-07-01' }
   sub target_prefix { 'MarketplaceCommerceAnalytics20150701' }
   sub json_version { "1.1" }
@@ -57,9 +58,31 @@ Paws::MarketplaceCommerceAnalytics - Perl Interface to AWS AWS Marketplace Comme
 
 Provides AWS Marketplace business intelligence data on-demand.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplace/latest/userguide/commerce-analytics-service.html>
+
+
 =head1 METHODS
 
-=head2 GenerateDataSet(DataSetPublicationDate => Str, DataSetType => Str, DestinationS3BucketName => Str, RoleNameArn => Str, SnsTopicArn => Str, [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>, DestinationS3Prefix => Str])
+=head2 GenerateDataSet
+
+=over
+
+=item DataSetPublicationDate => Str
+
+=item DataSetType => Str
+
+=item DestinationS3BucketName => Str
+
+=item RoleNameArn => Str
+
+=item SnsTopicArn => Str
+
+=item [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>]
+
+=item [DestinationS3Prefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceCommerceAnalytics::GenerateDataSet>
 
@@ -79,7 +102,26 @@ following actions: s3:PutObject, s3:GetBucketLocation,
 sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 
 
-=head2 StartSupportDataExport(DataSetType => Str, DestinationS3BucketName => Str, FromDate => Str, RoleNameArn => Str, SnsTopicArn => Str, [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>, DestinationS3Prefix => Str])
+=head2 StartSupportDataExport
+
+=over
+
+=item DataSetType => Str
+
+=item DestinationS3BucketName => Str
+
+=item FromDate => Str
+
+=item RoleNameArn => Str
+
+=item SnsTopicArn => Str
+
+=item [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>]
+
+=item [DestinationS3Prefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceCommerceAnalytics::StartSupportDataExport>
 

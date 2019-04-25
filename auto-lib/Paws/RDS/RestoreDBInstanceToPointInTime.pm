@@ -6,9 +6,12 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
   has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
+  has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
@@ -16,15 +19,19 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has RestoreTime => (is => 'ro', isa => 'Str');
-  has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has SourceDbiResourceId => (is => 'ro', isa => 'Str');
   has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -41,17 +48,69 @@ Paws::RDS::RestoreDBInstanceToPointInTime - Arguments for method RestoreDBInstan
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RestoreDBInstanceToPointInTime on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method RestoreDBInstanceToPointInTime on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method RestoreDBInstanceToPointInTime.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBInstanceToPointInTime.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RestoreDBInstanceToPointInTime(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    my $RestoreDBInstanceToPointInTimeResult =
+      $rds->RestoreDBInstanceToPointInTime(
+      TargetDBInstanceIdentifier      => 'MyString',
+      AutoMinorVersionUpgrade         => 1,                      # OPTIONAL
+      AvailabilityZone                => 'MyString',             # OPTIONAL
+      CopyTagsToSnapshot              => 1,                      # OPTIONAL
+      DBInstanceClass                 => 'MyString',             # OPTIONAL
+      DBName                          => 'MyString',             # OPTIONAL
+      DBParameterGroupName            => 'MyString',             # OPTIONAL
+      DBSubnetGroupName               => 'MyString',             # OPTIONAL
+      DeletionProtection              => 1,                      # OPTIONAL
+      Domain                          => 'MyString',             # OPTIONAL
+      DomainIAMRoleName               => 'MyString',             # OPTIONAL
+      EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
+      EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
+      Engine                          => 'MyString',             # OPTIONAL
+      Iops                            => 1,                      # OPTIONAL
+      LicenseModel                    => 'MyString',             # OPTIONAL
+      MultiAZ                         => 1,                      # OPTIONAL
+      OptionGroupName                 => 'MyString',             # OPTIONAL
+      Port                            => 1,                      # OPTIONAL
+      ProcessorFeatures               => [
+        {
+          Name  => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                         # OPTIONAL
+      PubliclyAccessible         => 1,                           # OPTIONAL
+      RestoreTime                => '1970-01-01T01:00:00',       # OPTIONAL
+      SourceDBInstanceIdentifier => 'MyString',                  # OPTIONAL
+      SourceDbiResourceId        => 'MyString',                  # OPTIONAL
+      StorageType                => 'MyString',                  # OPTIONAL
+      Tags                       => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                         # OPTIONAL
+      TdeCredentialArn            => 'MyString',                 # OPTIONAL
+      TdeCredentialPassword       => 'MyString',                 # OPTIONAL
+      UseDefaultProcessorFeatures => 1,                          # OPTIONAL
+      UseLatestRestorableTime     => 1,                          # OPTIONAL
+      VpcSecurityGroupIds         => [ 'MyString', ... ],        # OPTIONAL
+      );
+
+    # Results:
+    my $DBInstance = $RestoreDBInstanceToPointInTimeResult->DBInstance;
+
+    # Returns a L<Paws::RDS::RestoreDBInstanceToPointInTimeResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/RestoreDBInstanceToPointInTime>
 
 =head1 ATTRIBUTES
 
@@ -91,7 +150,7 @@ all AWS Regions, or for all database engines. For the full list of DB
 instance classes, and availability for your engine, see DB Instance
 Class
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-in the Amazon RDS User Guide.
+in the I<Amazon RDS User Guide.>
 
 Default: The same DBInstanceClass as the original DB instance.
 
@@ -102,6 +161,37 @@ Default: The same DBInstanceClass as the original DB instance.
 The database name for the restored DB instance.
 
 This parameter is not used for the MySQL or MariaDB engines.
+
+
+
+=head2 DBParameterGroupName => Str
+
+The name of the DB parameter group to associate with this DB instance.
+If this argument is omitted, the default DBParameterGroup for the
+specified engine is used.
+
+Constraints:
+
+=over
+
+=item *
+
+If supplied, must match the name of an existing DBParameterGroup.
+
+=item *
+
+Must be 1 to 255 letters, numbers, or hyphens.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Can't end with a hyphen or contain two consecutive hyphens.
+
+=back
+
 
 
 
@@ -116,6 +206,15 @@ Example: C<mySubnetgroup>
 
 
 
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false. For more information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+
+
+
 =head2 Domain => Str
 
 Specify the Active Directory Domain to restore the instance in.
@@ -126,6 +225,17 @@ Specify the Active Directory Domain to restore the instance in.
 
 Specify the name of the IAM role to be used when making API calls to
 the Directory Service.
+
+
+
+=head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+The list of logs that the restored DB instance is to export to
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -147,10 +257,6 @@ For MySQL 5.6, minor version 5.6.34 or higher
 
 For MySQL 5.7, minor version 5.7.16 or higher
 
-=item *
-
-Aurora 5.6 or higher.
-
 =back
 
 Default: C<false>
@@ -168,14 +274,6 @@ Constraint: Must be compatible with the engine of the source
 Valid Values:
 
 =over
-
-=item *
-
-C<aurora>
-
-=item *
-
-C<aurora-postgresql>
 
 =item *
 
@@ -280,35 +378,20 @@ Default: The same port as the original DB instance.
 
 
 
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance.
+
+
+
 =head2 PubliclyAccessible => Bool
 
 Specifies the accessibility options for the DB instance. A value of
 true specifies an Internet-facing instance with a publicly resolvable
 DNS name, which resolves to a public IP address. A value of false
 specifies an internal instance with a DNS name that resolves to a
-private IP address.
-
-Default: The default behavior varies depending on whether a VPC has
-been requested or not. The following list shows the default behavior in
-each case.
-
-=over
-
-=item *
-
-B<Default VPC:>true
-
-=item *
-
-B<VPC:>false
-
-=back
-
-If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance is publicly
-accessible. If a specific DB subnet group has been specified as part of
-the request and the PubliclyAccessible value has not been set, the DB
-instance is private.
+private IP address. For more information, see CreateDBInstance.
 
 
 
@@ -329,7 +412,7 @@ Must be before the latest restorable time for the DB instance
 
 =item *
 
-Cannot be specified if UseLatestRestorableTime parameter is true
+Can't be specified if UseLatestRestorableTime parameter is true
 
 =back
 
@@ -337,7 +420,7 @@ Example: C<2009-09-07T23:45:00Z>
 
 
 
-=head2 B<REQUIRED> SourceDBInstanceIdentifier => Str
+=head2 SourceDBInstanceIdentifier => Str
 
 The identifier of the source DB instance from which to restore.
 
@@ -347,10 +430,16 @@ Constraints:
 
 =item *
 
-Must match the identifier of an existing DBInstance.
+Must match the identifier of an existing DB instance.
 
 =back
 
+
+
+
+=head2 SourceDbiResourceId => Str
+
+The resource ID of the source DB instance from which to restore.
 
 
 
@@ -392,7 +481,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -413,6 +502,13 @@ the device.
 
 
 
+=head2 UseDefaultProcessorFeatures => Bool
+
+A value that specifies that the DB instance class of the DB instance
+uses its default processor features.
+
+
+
 =head2 UseLatestRestorableTime => Bool
 
 Specifies whether (C<true>) or not (C<false>) the DB instance is
@@ -420,7 +516,16 @@ restored from the latest backup time.
 
 Default: C<false>
 
-Constraints: Cannot be specified if RestoreTime parameter is provided.
+Constraints: Can't be specified if RestoreTime parameter is provided.
+
+
+
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
+
+A list of EC2 VPC security groups to associate with this DB instance.
+
+Default: The default EC2 VPC security group for the DB subnet group's
+VPC.
 
 
 

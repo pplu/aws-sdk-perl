@@ -24,17 +24,32 @@ Paws::IoT::ListJobs - Arguments for method ListJobs on L<Paws::IoT>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListJobs on the 
-AWS IoT service. Use the attributes of this class
+This class represents the parameters used for calling the method ListJobs on the
+L<AWS IoT|Paws::IoT> service. Use the attributes of this class
 as arguments to method ListJobs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListJobs.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListJobs(Att1 => $value1, Att2 => $value2, ...);
+    my $iot = Paws->service('IoT');
+    my $ListJobsResponse = $iot->ListJobs(
+      MaxResults      => 1,                     # OPTIONAL
+      NextToken       => 'MyNextToken',         # OPTIONAL
+      Status          => 'IN_PROGRESS',         # OPTIONAL
+      TargetSelection => 'CONTINUOUS',          # OPTIONAL
+      ThingGroupId    => 'MyThingGroupId',      # OPTIONAL
+      ThingGroupName  => 'MyThingGroupName',    # OPTIONAL
+    );
+
+    # Results:
+    my $Jobs      = $ListJobsResponse->Jobs;
+    my $NextToken = $ListJobsResponse->NextToken;
+
+    # Returns a L<Paws::IoT::ListJobsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/ListJobs>
 
 =head1 ATTRIBUTES
 
@@ -56,7 +71,7 @@ The token to retrieve the next set of results.
 An optional filter that lets you search for jobs that have the
 specified status.
 
-Valid values are: C<"IN_PROGRESS">, C<"CANCELED">, C<"COMPLETED">
+Valid values are: C<"IN_PROGRESS">, C<"CANCELED">, C<"COMPLETED">, C<"DELETION_IN_PROGRESS">
 
 =head2 TargetSelection => Str
 

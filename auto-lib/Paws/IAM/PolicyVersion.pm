@@ -38,7 +38,7 @@ Contains information about a version of a managed policy.
 
 This data type is used as a response element in the
 CreatePolicyVersion, GetPolicyVersion, ListPolicyVersions, and
-GetAccountAuthorizationDetails actions.
+GetAccountAuthorizationDetails operations.
 
 For more information about managed policies, refer to Managed Policies
 and Inline Policies
@@ -62,6 +62,13 @@ The policy document is returned in the response to the GetPolicyVersion
 and GetAccountAuthorizationDetails operations. It is not returned in
 the response to the CreatePolicyVersion or ListPolicyVersions
 operations.
+
+The policy document returned in this structure is URL-encoded compliant
+with RFC 3986 (https://tools.ietf.org/html/rfc3986). You can use a URL
+decoding method to convert the policy back to plain JSON text. For
+example, if you use Java, you can use the C<decode> method of the
+C<java.net.URLDecoder> utility class in the Java SDK. Other languages
+and SDKs provide similar functionality.
 
 
 =head2 IsDefaultVersion => Bool

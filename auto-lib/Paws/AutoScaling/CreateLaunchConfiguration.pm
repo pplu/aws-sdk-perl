@@ -35,17 +35,30 @@ Paws::AutoScaling::CreateLaunchConfiguration - Arguments for method CreateLaunch
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateLaunchConfiguration on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateLaunchConfiguration on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method CreateLaunchConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLaunchConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateLaunchConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To create a launch configuration
+    # This example creates a launch configuration.
+    $autoscaling->CreateLaunchConfiguration(
+      {
+        'IamInstanceProfile'      => 'my-iam-role',
+        'ImageId'                 => 'ami-12345678',
+        'InstanceType'            => 'm3.medium',
+        'LaunchConfigurationName' => 'my-launch-config',
+        'SecurityGroups'          => ['sg-eb2af88e']
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/CreateLaunchConfiguration>
 
 =head1 ATTRIBUTES
 
@@ -56,17 +69,15 @@ Used for groups that launch instances into a virtual private cloud
 (VPC). Specifies whether to assign a public IP address to each
 instance. For more information, see Launching Auto Scaling Instances in
 a VPC
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 If you specify this parameter, be sure to specify at least one subnet
 when you create your group.
 
 Default: If the instance is launched into a default subnet, the default
-is C<true>. If the instance is launched into a nondefault subnet, the
-default is C<false>. For more information, see Supported Platforms
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+is to assign a public IP address. If the instance is launched into a
+nondefault subnet, the default is not to assign a public IP address.
 
 
 
@@ -118,13 +129,13 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 The name or the Amazon Resource Name (ARN) of the instance profile
 associated with the IAM role for the instance.
 
-EC2 instances launched with an IAM role will automatically have AWS
-security credentials available. You can use IAM roles with Auto Scaling
-to automatically enable applications running on your EC2 instances to
-securely access other AWS resources. For more information, see Launch
-Auto Scaling Instances with an IAM Role
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html)
-in the I<Auto Scaling User Guide>.
+EC2 instances launched with an IAM role automatically have AWS security
+credentials available. You can use IAM roles with Amazon EC2 Auto
+Scaling to automatically enable applications running on your EC2
+instances to securely access other AWS resources. For more information,
+see Launch Auto Scaling Instances with an IAM Role
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -144,8 +155,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =head2 InstanceId => Str
 
 The ID of the instance to use to create the launch configuration. The
-new launch configuration derives attributes from the instance, with the
-exception of the block device mapping.
+new launch configuration derives attributes from the instance, except
+for the block device mapping.
 
 If you do not specify C<InstanceId>, you must specify both C<ImageId>
 and C<InstanceType>.
@@ -156,8 +167,8 @@ same request.
 
 For more information, see Create a Launch Configuration Using an EC2
 Instance
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -208,16 +219,16 @@ the scope of your AWS account.
 The tenancy of the instance. An instance with a tenancy of C<dedicated>
 runs on single-tenant hardware and can only be launched into a VPC.
 
-You must set the value of this parameter to C<dedicated> if want to
-launch Dedicated Instances into a shared tenancy VPC (VPC with instance
-placement tenancy attribute set to C<default>).
+To launch Dedicated Instances into a shared tenancy VPC (a VPC with the
+instance placement tenancy attribute set to C<default>), you must set
+the value of this parameter to C<dedicated>.
 
 If you specify this parameter, be sure to specify at least one subnet
 when you create your group.
 
 For more information, see Launching Auto Scaling Instances in a VPC
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 Valid values: C<default> | C<dedicated>
 
@@ -234,8 +245,8 @@ The ID of the RAM disk associated with the AMI.
 One or more security groups with which to associate the instances.
 
 If your instances are launched in EC2-Classic, you can either specify
-security group names or the security group IDs. For more information
-about security groups for EC2-Classic, see Amazon EC2 Security Groups
+security group names or the security group IDs. For more information,
+see Amazon EC2 Security Groups
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -252,8 +263,8 @@ The maximum hourly price to be paid for any Spot Instance launched to
 fulfill the request. Spot Instances are launched when the price you
 specify exceeds the current Spot market price. For more information,
 see Launching Spot Instances in Your Auto Scaling Group
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 

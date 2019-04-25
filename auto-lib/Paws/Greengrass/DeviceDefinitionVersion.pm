@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on device definition version
+Information about a device definition version.
 
 =head1 ATTRIBUTES
 
 
 =head2 Devices => ArrayRef[L<Paws::Greengrass::Device>]
 
-  Devices in the definition version.
+  A list of devices in the definition version.
 
 
 

@@ -41,17 +41,17 @@ The result that is associated with a time period.
 
 =head2 Estimated => Bool
 
-  Whether or not this result is estimated.
+  Whether the result is estimated.
 
 
 =head2 Groups => ArrayRef[L<Paws::CostExplorer::Group>]
 
-  The groups that are included in this time period.
+  The groups that this time period includes.
 
 
 =head2 TimePeriod => L<Paws::CostExplorer::DateInterval>
 
-  The time period covered by a result.
+  The time period that the result covers.
 
 
 =head2 Total => L<Paws::CostExplorer::Metrics>

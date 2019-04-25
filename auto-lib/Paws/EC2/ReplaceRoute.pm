@@ -10,6 +10,7 @@ package Paws::EC2::ReplaceRoute;
   has NatGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'natGatewayId' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
+  has TransitGatewayId => (is => 'ro', isa => 'Str');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcPeeringConnectionId' );
 
   use MooseX::ClassAttribute;
@@ -27,17 +28,30 @@ Paws::EC2::ReplaceRoute - Arguments for method ReplaceRoute on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ReplaceRoute on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method ReplaceRoute on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ReplaceRoute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReplaceRoute.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ReplaceRoute(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+   # To replace a route
+   # This example replaces the specified route in the specified table table. The
+   # new route matches the specified CIDR and sends the traffic to the specified
+   # virtual private gateway.
+    $ec2->ReplaceRoute(
+      {
+        'DestinationCidrBlock' => '10.0.0.0/16',
+        'GatewayId'            => 'vgw-9a4cacf3',
+        'RouteTableId'         => 'rtb-22574640'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ReplaceRoute>
 
 =head1 ATTRIBUTES
 
@@ -45,14 +59,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 DestinationCidrBlock => Str
 
 The IPv4 CIDR address block used for the destination match. The value
-you provide must match the CIDR of an existing route in the table.
+that you provide must match the CIDR of an existing route in the table.
 
 
 
 =head2 DestinationIpv6CidrBlock => Str
 
 The IPv6 CIDR address block used for the destination match. The value
-you provide must match the CIDR of an existing route in the table.
+that you provide must match the CIDR of an existing route in the table.
 
 
 
@@ -67,13 +81,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 EgressOnlyInternetGatewayId => Str
 
-[IPv6 traffic only] The ID of an egress-only Internet gateway.
+[IPv6 traffic only] The ID of an egress-only internet gateway.
 
 
 
 =head2 GatewayId => Str
 
-The ID of an Internet gateway or virtual private gateway.
+The ID of an internet gateway or virtual private gateway.
 
 
 
@@ -98,6 +112,12 @@ The ID of a network interface.
 =head2 B<REQUIRED> RouteTableId => Str
 
 The ID of the route table.
+
+
+
+=head2 TransitGatewayId => Str
+
+The ID of a transit gateway.
 
 
 

@@ -20,17 +20,34 @@ Paws::LexModels::GetBotAlias - Arguments for method GetBotAlias on L<Paws::LexMo
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetBotAlias on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetBotAlias on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method GetBotAlias.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetBotAlias.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetBotAlias(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetBotAliasResponse = $models . lex->GetBotAlias(
+      BotName => 'MyBotName',
+      Name    => 'MyAliasName',
+
+    );
+
+    # Results:
+    my $BotName         = $GetBotAliasResponse->BotName;
+    my $BotVersion      = $GetBotAliasResponse->BotVersion;
+    my $Checksum        = $GetBotAliasResponse->Checksum;
+    my $CreatedDate     = $GetBotAliasResponse->CreatedDate;
+    my $Description     = $GetBotAliasResponse->Description;
+    my $LastUpdatedDate = $GetBotAliasResponse->LastUpdatedDate;
+    my $Name            = $GetBotAliasResponse->Name;
+
+    # Returns a L<Paws::LexModels::GetBotAliasResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/GetBotAlias>
 
 =head1 ATTRIBUTES
 

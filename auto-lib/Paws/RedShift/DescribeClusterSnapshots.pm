@@ -1,6 +1,7 @@
 
 package Paws::RedShift::DescribeClusterSnapshots;
   use Moose;
+  has ClusterExists => (is => 'ro', isa => 'Bool');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -8,6 +9,7 @@ package Paws::RedShift::DescribeClusterSnapshots;
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
+  has SortingEntities => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotSortingEntity]');
   has StartTime => (is => 'ro', isa => 'Str');
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -27,19 +29,56 @@ Paws::RedShift::DescribeClusterSnapshots - Arguments for method DescribeClusterS
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeClusterSnapshots on the 
-Amazon Redshift service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeClusterSnapshots on the
+L<Amazon Redshift|Paws::RedShift> service. Use the attributes of this class
 as arguments to method DescribeClusterSnapshots.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeClusterSnapshots.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeClusterSnapshots(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $SnapshotMessage = $redshift->DescribeClusterSnapshots(
+      ClusterExists      => 1,                        # OPTIONAL
+      ClusterIdentifier  => 'MyString',               # OPTIONAL
+      EndTime            => '1970-01-01T01:00:00',    # OPTIONAL
+      Marker             => 'MyString',               # OPTIONAL
+      MaxRecords         => 1,                        # OPTIONAL
+      OwnerAccount       => 'MyString',               # OPTIONAL
+      SnapshotIdentifier => 'MyString',               # OPTIONAL
+      SnapshotType       => 'MyString',               # OPTIONAL
+      SortingEntities    => [
+        {
+          Attribute =>
+            'SOURCE_TYPE',    # values: SOURCE_TYPE, TOTAL_SIZE, CREATE_TIME
+          SortOrder => 'ASC', # values: ASC, DESC; OPTIONAL
+        },
+        ...
+      ],                      # OPTIONAL
+      StartTime => '1970-01-01T01:00:00',    # OPTIONAL
+      TagKeys   => [ 'MyString', ... ],      # OPTIONAL
+      TagValues => [ 'MyString', ... ],      # OPTIONAL
+    );
+
+    # Results:
+    my $Marker    = $SnapshotMessage->Marker;
+    my $Snapshots = $SnapshotMessage->Snapshots;
+
+    # Returns a L<Paws::RedShift::SnapshotMessage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/DescribeClusterSnapshots>
 
 =head1 ATTRIBUTES
+
+
+=head2 ClusterExists => Bool
+
+A value that indicates whether to return snapshots only for an existing
+cluster. Table-level restore can be performed only using a snapshot of
+an existing cluster, that is, a cluster that has not been deleted. If
+C<ClusterExists> is set to C<true>, C<ClusterIdentifier> is required.
+
 
 
 =head2 ClusterIdentifier => Str
@@ -107,6 +146,12 @@ The type of snapshots for which you are requesting information. By
 default, snapshots of all types are returned.
 
 Valid Values: C<automated> | C<manual>
+
+
+
+=head2 SortingEntities => ArrayRef[L<Paws::RedShift::SnapshotSortingEntity>]
+
+
 
 
 

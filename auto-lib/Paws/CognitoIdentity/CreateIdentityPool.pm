@@ -24,17 +24,56 @@ Paws::CognitoIdentity::CreateIdentityPool - Arguments for method CreateIdentityP
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateIdentityPool on the 
-Amazon Cognito Identity service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateIdentityPool on the
+L<Amazon Cognito Identity|Paws::CognitoIdentity> service. Use the attributes of this class
 as arguments to method CreateIdentityPool.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateIdentityPool.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateIdentityPool(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-identity = Paws->service('CognitoIdentity');
+    my $IdentityPool = $cognito -identity->CreateIdentityPool(
+      AllowUnauthenticatedIdentities => 1,
+      IdentityPoolName               => 'MyIdentityPoolName',
+      CognitoIdentityProviders       => [
+        {
+          ClientId =>
+            'MyCognitoIdentityProviderClientId',    # min: 1, max: 128; OPTIONAL
+          ProviderName =>
+            'MyCognitoIdentityProviderName',        # min: 1, max: 128; OPTIONAL
+          ServerSideTokenCheck => 1,                # OPTIONAL
+        },
+        ...
+      ],                                            # OPTIONAL
+      DeveloperProviderName     => 'MyDeveloperProviderName',    # OPTIONAL
+      OpenIdConnectProviderARNs => [
+        'MyARNString', ...    # min: 20, max: 2048
+      ],                      # OPTIONAL
+      SamlProviderARNs => [
+        'MyARNString', ...    # min: 20, max: 2048
+      ],                      # OPTIONAL
+      SupportedLoginProviders => {
+        'MyIdentityProviderName' => 'MyIdentityProviderId'
+        ,                     # key: min: 1, max: 128, value: min: 1, max: 128
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $AllowUnauthenticatedIdentities =
+      $IdentityPool->AllowUnauthenticatedIdentities;
+    my $CognitoIdentityProviders  = $IdentityPool->CognitoIdentityProviders;
+    my $DeveloperProviderName     = $IdentityPool->DeveloperProviderName;
+    my $IdentityPoolId            = $IdentityPool->IdentityPoolId;
+    my $IdentityPoolName          = $IdentityPool->IdentityPoolName;
+    my $OpenIdConnectProviderARNs = $IdentityPool->OpenIdConnectProviderARNs;
+    my $SamlProviderARNs          = $IdentityPool->SamlProviderARNs;
+    my $SupportedLoginProviders   = $IdentityPool->SupportedLoginProviders;
+
+    # Returns a L<Paws::CognitoIdentity::IdentityPool> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-identity/CreateIdentityPool>
 
 =head1 ATTRIBUTES
 

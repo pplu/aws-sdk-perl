@@ -21,6 +21,10 @@ Paws::ElasticBeanstalk::DescribeInstancesHealthResult
 
 Detailed health information about each instance.
 
+The output differs slightly between Linux and Windows environments.
+There is a difference in the members that are supported under the
+C<E<lt>CPUUtilizationE<gt>> type.
+
 
 =head2 NextToken => Str
 

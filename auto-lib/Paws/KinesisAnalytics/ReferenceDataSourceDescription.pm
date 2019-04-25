@@ -48,7 +48,9 @@ application using the AddApplicationReferenceDataSource operation.
 
 =head2 ReferenceSchema => L<Paws::KinesisAnalytics::SourceSchema>
 
-  
+  Describes the format of the data in the streaming source, and how each
+data element maps to corresponding columns created in the
+in-application stream.
 
 
 =head2 B<REQUIRED> S3ReferenceDataSourceDescription => L<Paws::KinesisAnalytics::S3ReferenceDataSourceDescription>

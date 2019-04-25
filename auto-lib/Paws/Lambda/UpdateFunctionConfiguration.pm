@@ -7,7 +7,9 @@ package Paws::Lambda::UpdateFunctionConfiguration;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Handler => (is => 'ro', isa => 'Str');
   has KMSKeyArn => (is => 'ro', isa => 'Str');
+  has Layers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MemorySize => (is => 'ro', isa => 'Int');
+  has RevisionId => (is => 'ro', isa => 'Str');
   has Role => (is => 'ro', isa => 'Str');
   has Runtime => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
@@ -30,25 +32,61 @@ Paws::Lambda::UpdateFunctionConfiguration - Arguments for method UpdateFunctionC
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateFunctionConfiguration on the 
-AWS Lambda service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateFunctionConfiguration on the
+L<AWS Lambda|Paws::Lambda> service. Use the attributes of this class
 as arguments to method UpdateFunctionConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateFunctionConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateFunctionConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # To update a Lambda function's configuration
+    # This operation updates a Lambda function's configuration
+    my $FunctionConfiguration = $lambda->UpdateFunctionConfiguration(
+      {
+        'Description'  => '',
+        'FunctionName' => 'myFunction',
+        'Handler'      => 'index.handler',
+        'MemorySize'   => 128,
+        'Role'      => 'arn:aws:iam::123456789012:role/lambda_basic_execution',
+        'Runtime'   => 'python2.7',
+        'Timeout'   => 123,
+        'VpcConfig' => {
+
+        }
+      }
+    );
+
+    # Results:
+    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+    my $CodeSize     = $FunctionConfiguration->CodeSize;
+    my $Description  = $FunctionConfiguration->Description;
+    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $FunctionName = $FunctionConfiguration->FunctionName;
+    my $Handler      = $FunctionConfiguration->Handler;
+    my $LastModified = $FunctionConfiguration->LastModified;
+    my $MemorySize   = $FunctionConfiguration->MemorySize;
+    my $Role         = $FunctionConfiguration->Role;
+    my $Runtime      = $FunctionConfiguration->Runtime;
+    my $Timeout      = $FunctionConfiguration->Timeout;
+    my $Version      = $FunctionConfiguration->Version;
+    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+
+    # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/UpdateFunctionConfiguration>
 
 =head1 ATTRIBUTES
 
 
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
 
-The parent object that contains the target ARN (Amazon Resource Name)
-of an Amazon SQS queue or Amazon SNS topic.
+A dead letter queue configuration that specifies the queue or topic
+where Lambda sends asynchronous events when they fail processing. For
+more information, see Dead Letter Queues
+(http://docs.aws.amazon.com/lambda/latest/dg/dlq.html).
 
 
 
@@ -70,13 +108,27 @@ settings.
 
 The name of the Lambda function.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-character in length.
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<my-function>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:my-function>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
@@ -95,6 +147,14 @@ default service key, pass in an empty string ("") for this parameter.
 
 
 
+=head2 Layers => ArrayRef[Str|Undef]
+
+A list of function layers
+(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+to add to the function's execution environment.
+
+
+
 =head2 MemorySize => Int
 
 The amount of memory, in MB, your Lambda function is given. AWS Lambda
@@ -103,6 +163,14 @@ function. Your function use-case determines your CPU and memory
 requirements. For example, a database operation might need less memory
 compared to an image processing function. The default value is 128 MB.
 The value must be a multiple of 64 MB.
+
+
+
+=head2 RevisionId => Str
+
+Only update the function if the revision ID matches the ID specified.
+Use this option to avoid modifying a function that has changed since
+you last read it.
 
 
 
@@ -115,41 +183,29 @@ when it executes your function.
 
 =head2 Runtime => Str
 
-The runtime environment for the Lambda function.
+The runtime version for the function.
 
-To use the Python runtime v3.6, set the value to "python3.6". To use
-the Python runtime v2.7, set the value to "python2.7". To use the
-Node.js runtime v6.10, set the value to "nodejs6.10". To use the
-Node.js runtime v4.3, set the value to "nodejs4.3". To use the Python
-runtime v3.6, set the value to "python3.6".
-
-Node v0.10.42 is currently marked as deprecated. You must migrate
-existing functions to the newer Node.js runtime versions available on
-AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. Failure to do
-so will result in an invalid parameter error being returned. Note that
-you will have to follow this procedure for each region that contains
-functions written in the Node v0.10.42 runtime.
-
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
 
 =head2 Timeout => Int
 
-The function execution time at which AWS Lambda should terminate the
-function. Because the execution time has cost implications, we
-recommend you set this value based on your expected execution time. The
-default is 3 seconds.
+The amount of time that Lambda allows a function to run before
+terminating it. The default is 3 seconds. The maximum allowed value is
+900 seconds.
 
 
 
 =head2 TracingConfig => L<Paws::Lambda::TracingConfig>
 
-The parent object that contains your function's tracing settings.
+Set C<Mode> to C<Active> to sample and trace a subset of incoming
+requests with AWS X-Ray.
 
 
 
 =head2 VpcConfig => L<Paws::Lambda::VpcConfig>
 
-
+Specify security groups and subnets in a VPC to which your Lambda
+function needs access.
 
 
 

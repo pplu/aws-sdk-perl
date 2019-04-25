@@ -20,17 +20,28 @@ Paws::RDS::ResetDBParameterGroup - Arguments for method ResetDBParameterGroup on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ResetDBParameterGroup on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ResetDBParameterGroup on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method ResetDBParameterGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ResetDBParameterGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ResetDBParameterGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To reset the values of a DB parameter group
+    # This example resets all parameters for the specified DB parameter group to
+    # their default values.
+    my $DBParameterGroupNameMessage = $rds->ResetDBParameterGroup(
+      {
+        'DBParameterGroupName' => 'mydbparametergroup',
+        'ResetAllParameters'   => 1
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ResetDBParameterGroup>
 
 =head1 ATTRIBUTES
 

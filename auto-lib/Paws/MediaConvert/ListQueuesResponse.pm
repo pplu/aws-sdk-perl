@@ -23,7 +23,7 @@ Use this string to request the next batch of queues.
 
 =head2 Queues => ArrayRef[L<Paws::MediaConvert::Queue>]
 
-List of queues
+List of queues.
 
 
 =head2 _request_id => Str

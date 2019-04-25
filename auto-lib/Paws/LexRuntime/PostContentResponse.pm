@@ -2,14 +2,15 @@
 package Paws::LexRuntime::PostContentResponse;
   use Moose;
   has AudioStream => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'audioStream');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType');
-  has DialogState => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'dialogState');
-  has InputTranscript => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'inputTranscript');
-  has IntentName => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'intentName');
-  has Message => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'message');
-  has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'sessionAttributes');
-  has Slots => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'slots');
-  has SlotToElicit => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'slotToElicit');
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
+  has DialogState => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-dialog-state');
+  has InputTranscript => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-input-transcript');
+  has IntentName => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-intent-name');
+  has Message => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message');
+  has MessageFormat => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-message-format');
+  has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-session-attributes');
+  has Slots => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-slots');
+  has SlotToElicit => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-lex-slot-to-elicit');
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'AudioStream');
   has _request_id => (is => 'ro', isa => 'Str');
@@ -121,21 +122,54 @@ Current user intent that Amazon Lex is aware of.
 
 =head2 Message => Str
 
-Message to convey to the user. It can come from the bot's configuration
-or a code hook (Lambda function). If the current intent is not
-configured with a code hook or if the code hook returned C<Delegate> as
-the C<dialogAction.type> in its response, then Amazon Lex decides the
-next course of action and selects an appropriate message from the bot
-configuration based on the current user interaction context. For
-example, if Amazon Lex is not able to understand the user input, it
-uses a clarification prompt message (For more information, see the
-Error Handling section in the Amazon Lex console). Another example: if
-the intent requires confirmation before fulfillment, then Amazon Lex
-uses the confirmation prompt message in the intent configuration. If
-the code hook returns a message, Amazon Lex passes it as-is in its
-response to the client.
+The message to convey to the user. The message can come from the bot's
+configuration or from a Lambda function.
+
+If the intent is not configured with a Lambda function, or if the
+Lambda function returned C<Delegate> as the C<dialogAction.type> its
+response, Amazon Lex decides on the next course of action and selects
+an appropriate message from the bot's configuration based on the
+current interaction context. For example, if Amazon Lex isn't able to
+understand user input, it uses a clarification prompt message.
+
+When you create an intent you can assign messages to groups. When
+messages are assigned to groups Amazon Lex returns one message from
+each group in the response. The message field is an escaped JSON string
+containing the messages. For more information about the structure of
+the JSON string returned, see msg-prompts-formats.
+
+If the Lambda function returns a message, Amazon Lex passes it to the
+client in its response.
 
 
+=head2 MessageFormat => Str
+
+The format of the response message. One of the following values:
+
+=over
+
+=item *
+
+C<PlainText> - The message contains plain UTF-8 text.
+
+=item *
+
+C<CustomPayload> - The message is a custom format for the client.
+
+=item *
+
+C<SSML> - The message contains text formatted for voice output.
+
+=item *
+
+C<Composite> - The message contains an escaped JSON object containing
+one or more messages from the groups that messages were assigned to
+when the intent was created.
+
+=back
+
+
+Valid values are: C<"PlainText">, C<"CustomPayload">, C<"SSML">, C<"Composite">
 =head2 SessionAttributes => Str
 
 Map of key/value pairs representing the session-specific context

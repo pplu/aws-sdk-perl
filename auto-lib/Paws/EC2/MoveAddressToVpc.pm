@@ -19,17 +19,31 @@ Paws::EC2::MoveAddressToVpc - Arguments for method MoveAddressToVpc on L<Paws::E
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method MoveAddressToVpc on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method MoveAddressToVpc on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method MoveAddressToVpc.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to MoveAddressToVpc.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->MoveAddressToVpc(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To move an address to EC2-VPC
+    # This example moves the specified Elastic IP address to the EC2-VPC
+    # platform.
+    my $MoveAddressToVpcResult = $ec2->MoveAddressToVpc(
+      {
+        'PublicIp' => '54.123.4.56'
+      }
+    );
+
+    # Results:
+    my $Status = $MoveAddressToVpcResult->Status;
+
+    # Returns a L<Paws::EC2::MoveAddressToVpcResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/MoveAddressToVpc>
 
 =head1 ATTRIBUTES
 

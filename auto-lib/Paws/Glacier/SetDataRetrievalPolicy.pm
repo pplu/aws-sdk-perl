@@ -20,17 +20,35 @@ Paws::Glacier::SetDataRetrievalPolicy - Arguments for method SetDataRetrievalPol
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SetDataRetrievalPolicy on the 
-Amazon Glacier service. Use the attributes of this class
+This class represents the parameters used for calling the method SetDataRetrievalPolicy on the
+L<Amazon Glacier|Paws::Glacier> service. Use the attributes of this class
 as arguments to method SetDataRetrievalPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetDataRetrievalPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetDataRetrievalPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To set and then enact a data retrieval policy
+    # The example sets and then enacts a data retrieval policy.
+    $glacier->SetDataRetrievalPolicy(
+      {
+        'Policy' => {
+          'Rules' => [
+
+            {
+              'BytesPerHour' => 10737418240,
+              'Strategy'     => 'BytesPerHour'
+            }
+          ]
+        },
+        'AccountId' => '-'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/SetDataRetrievalPolicy>
 
 =head1 ATTRIBUTES
 

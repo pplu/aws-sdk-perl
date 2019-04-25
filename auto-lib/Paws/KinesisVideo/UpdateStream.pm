@@ -23,17 +23,25 @@ Paws::KinesisVideo::UpdateStream - Arguments for method UpdateStream on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateStream on the 
-Amazon Kinesis Video Streams service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateStream on the
+L<Amazon Kinesis Video Streams|Paws::KinesisVideo> service. Use the attributes of this class
 as arguments to method UpdateStream.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateStream.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateStream(Att1 => $value1, Att2 => $value2, ...);
+    my $kinesisvideo = Paws->service('KinesisVideo');
+    my $UpdateStreamOutput = $kinesisvideo->UpdateStream(
+      CurrentVersion => 'MyVersion',
+      DeviceName     => 'MyDeviceName',     # OPTIONAL
+      MediaType      => 'MyMediaType',      # OPTIONAL
+      StreamARN      => 'MyResourceARN',    # OPTIONAL
+      StreamName     => 'MyStreamName',     # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesisvideo/UpdateStream>
 
 =head1 ATTRIBUTES
 
@@ -60,7 +68,7 @@ content that the stream contains to the consumers of the stream. For
 more information about media types, see Media Types
 (http://www.iana.org/assignments/media-types/media-types.xhtml). If you
 choose to specify the C<MediaType>, see Naming Requirements
-(https://tools.sietf.org/html/rfc6838#section-4.2).
+(https://tools.ietf.org/html/rfc6838#section-4.2).
 
 To play video on the console, you must specify the correct video type.
 For example, if the video in the stream is H.264, specify C<video/h264>

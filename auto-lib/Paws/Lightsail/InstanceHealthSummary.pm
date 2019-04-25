@@ -45,7 +45,96 @@ Describes information about the health of the instance.
 
 =head2 InstanceHealthReason => Str
 
-  More information about the instance health. Valid values are below.
+  More information about the instance health. If the C<instanceHealth> is
+C<healthy>, then an C<instanceHealthReason> value is not provided.
+
+If B< C<instanceHealth> > is C<initial>, the B< C<instanceHealthReason>
+> value can be one of the following:
+
+=over
+
+=item *
+
+B<C<Lb.RegistrationInProgress> > - The target instance is in the
+process of being registered with the load balancer.
+
+=item *
+
+B<C<Lb.InitialHealthChecking> > - The Lightsail load balancer is still
+sending the target instance the minimum number of health checks
+required to determine its health status.
+
+=back
+
+If B< C<instanceHealth> > is C<unhealthy>, the B<
+C<instanceHealthReason> > value can be one of the following:
+
+=over
+
+=item *
+
+B<C<Instance.ResponseCodeMismatch> > - The health checks did not return
+an expected HTTP code.
+
+=item *
+
+B<C<Instance.Timeout> > - The health check requests timed out.
+
+=item *
+
+B<C<Instance.FailedHealthChecks> > - The health checks failed because
+the connection to the target instance timed out, the target instance
+response was malformed, or the target instance failed the health check
+for an unknown reason.
+
+=item *
+
+B<C<Lb.InternalError> > - The health checks failed due to an internal
+error.
+
+=back
+
+If B< C<instanceHealth> > is C<unused>, the B< C<instanceHealthReason>
+> value can be one of the following:
+
+=over
+
+=item *
+
+B<C<Instance.NotRegistered> > - The target instance is not registered
+with the target group.
+
+=item *
+
+B<C<Instance.NotInUse> > - The target group is not used by any load
+balancer, or the target instance is in an Availability Zone that is not
+enabled for its load balancer.
+
+=item *
+
+B<C<Instance.IpUnusable> > - The target IP address is reserved for use
+by a Lightsail load balancer.
+
+=item *
+
+B<C<Instance.InvalidState> > - The target is in the stopped or
+terminated state.
+
+=back
+
+If B< C<instanceHealth> > is C<draining>, the B<
+C<instanceHealthReason> > value can be one of the following:
+
+=over
+
+=item *
+
+B<C<Instance.DeregistrationInProgress> > - The target instance is in
+the process of being deregistered and the deregistration delay period
+has not expired.
+
+=back
+
 
 
 =head2 InstanceName => Str

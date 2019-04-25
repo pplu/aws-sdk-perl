@@ -2,7 +2,7 @@
 package Paws::LexModels::GetBot;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has VersionOrAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'versionOrAlias', required => 1);
+  has VersionOrAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'versionoralias', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -20,17 +20,42 @@ Paws::LexModels::GetBot - Arguments for method GetBot on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetBot on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetBot on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method GetBot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetBot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetBot(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetBotResponse = $models . lex->GetBot(
+      Name           => 'MyBotName',
+      VersionOrAlias => 'MyString',
+
+    );
+
+    # Results:
+    my $AbortStatement          = $GetBotResponse->AbortStatement;
+    my $Checksum                = $GetBotResponse->Checksum;
+    my $ChildDirected           = $GetBotResponse->ChildDirected;
+    my $ClarificationPrompt     = $GetBotResponse->ClarificationPrompt;
+    my $CreatedDate             = $GetBotResponse->CreatedDate;
+    my $Description             = $GetBotResponse->Description;
+    my $FailureReason           = $GetBotResponse->FailureReason;
+    my $IdleSessionTTLInSeconds = $GetBotResponse->IdleSessionTTLInSeconds;
+    my $Intents                 = $GetBotResponse->Intents;
+    my $LastUpdatedDate         = $GetBotResponse->LastUpdatedDate;
+    my $Locale                  = $GetBotResponse->Locale;
+    my $Name                    = $GetBotResponse->Name;
+    my $Status                  = $GetBotResponse->Status;
+    my $Version                 = $GetBotResponse->Version;
+    my $VoiceId                 = $GetBotResponse->VoiceId;
+
+    # Returns a L<Paws::LexModels::GetBotResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/GetBot>
 
 =head1 ATTRIBUTES
 

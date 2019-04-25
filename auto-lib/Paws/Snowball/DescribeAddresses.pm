@@ -19,17 +19,29 @@ Paws::Snowball::DescribeAddresses - Arguments for method DescribeAddresses on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeAddresses on the 
-Amazon Import/Export Snowball service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeAddresses on the
+L<Amazon ImportE<sol>Export Snowball|Paws::Snowball> service. Use the attributes of this class
 as arguments to method DescribeAddresses.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAddresses.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeAddresses(Att1 => $value1, Att2 => $value2, ...);
+    my $snowball = Paws->service('Snowball');
+    # To describe all the addresses you've created for AWS Snowball
+    # This operation describes all the addresses that you've created for AWS
+    # Snowball. Calling this API in one of the US regions will return addresses
+    # from the list of all addresses associated with this account in all US
+    # regions.
+    my $DescribeAddressesResult = $snowball->DescribeAddresses();
+
+    # Results:
+    my $Addresses = $DescribeAddressesResult->Addresses;
+
+    # Returns a L<Paws::Snowball::DescribeAddressesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/snowball/DescribeAddresses>
 
 =head1 ATTRIBUTES
 

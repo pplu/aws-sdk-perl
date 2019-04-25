@@ -2,6 +2,7 @@ package Paws::MediaPackage::OriginEndpoint;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has ChannelId => (is => 'ro', isa => 'Str', request_name => 'channelId', traits => ['NameInRequest']);
+  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackage::CmafPackage', request_name => 'cmafPackage', traits => ['NameInRequest']);
   has DashPackage => (is => 'ro', isa => 'Paws::MediaPackage::DashPackage', request_name => 'dashPackage', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackage::HlsPackage', request_name => 'hlsPackage', traits => ['NameInRequest']);
@@ -55,6 +56,11 @@ An OriginEndpoint resource configuration.
 =head2 ChannelId => Str
 
   The ID of the Channel the OriginEndpoint is associated with.
+
+
+=head2 CmafPackage => L<Paws::MediaPackage::CmafPackage>
+
+  
 
 
 =head2 DashPackage => L<Paws::MediaPackage::DashPackage>

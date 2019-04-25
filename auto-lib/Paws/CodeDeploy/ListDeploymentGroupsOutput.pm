@@ -23,7 +23,7 @@ The application name.
 
 =head2 DeploymentGroups => ArrayRef[Str|Undef]
 
-A list of corresponding deployment group names.
+A list of deployment group names.
 
 
 =head2 NextToken => Str

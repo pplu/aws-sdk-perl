@@ -22,17 +22,32 @@ Paws::CodeCommit::DescribePullRequestEvents - Arguments for method DescribePullR
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribePullRequestEvents on the 
-AWS CodeCommit service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribePullRequestEvents on the
+L<AWS CodeCommit|Paws::CodeCommit> service. Use the attributes of this class
 as arguments to method DescribePullRequestEvents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribePullRequestEvents.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribePullRequestEvents(Att1 => $value1, Att2 => $value2, ...);
+    my $codecommit = Paws->service('CodeCommit');
+    my $DescribePullRequestEventsOutput =
+      $codecommit->DescribePullRequestEvents(
+      PullRequestId        => 'MyPullRequestId',
+      ActorArn             => 'MyArn',                   # OPTIONAL
+      MaxResults           => 1,                         # OPTIONAL
+      NextToken            => 'MyNextToken',             # OPTIONAL
+      PullRequestEventType => 'PULL_REQUEST_CREATED',    # OPTIONAL
+      );
+
+    # Results:
+    my $NextToken         = $DescribePullRequestEventsOutput->NextToken;
+    my $PullRequestEvents = $DescribePullRequestEventsOutput->PullRequestEvents;
+
+    # Returns a L<Paws::CodeCommit::DescribePullRequestEventsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codecommit/DescribePullRequestEvents>
 
 =head1 ATTRIBUTES
 

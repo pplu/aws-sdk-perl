@@ -43,13 +43,15 @@ Segment import definition.
 
 =head2 ChannelCounts => L<Paws::Pinpoint::MapOf__integer>
 
-  Channel type counts
+  The number of channel types in the imported segment.
 
 
 =head2 ExternalId => Str
 
-  A unique, custom ID assigned to the IAM role that restricts who can
-assume the role.
+  (Deprecated) Your AWS account ID, which you assigned to the ExternalID
+key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM
+role. This requirement is removed, and external IDs are not recommended
+for IAM roles assumed by Amazon Pinpoint.
 
 
 =head2 Format => Str
@@ -66,8 +68,7 @@ Pinpoint access to the endpoints in Amazon S3.
 
 =head2 S3Url => Str
 
-  A URL that points to the Amazon S3 location from which the endpoints
-for this segment were imported.
+  The URL of the S3 bucket that the segment was imported from.
 
 
 =head2 Size => Int

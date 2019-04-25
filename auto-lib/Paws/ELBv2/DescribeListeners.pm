@@ -21,17 +21,32 @@ Paws::ELBv2::DescribeListeners - Arguments for method DescribeListeners on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeListeners on the 
-Elastic Load Balancing service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeListeners on the
+L<Elastic Load Balancing|Paws::ELBv2> service. Use the attributes of this class
 as arguments to method DescribeListeners.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeListeners.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeListeners(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELBv2');
+    # To describe a listener
+    # This example describes the specified listener.
+    my $DescribeListenersOutput = $elasticloadbalancing->DescribeListeners(
+      {
+        'ListenerArns' => [
+'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2'
+        ]
+      }
+    );
+
+    # Results:
+    my $Listeners = $DescribeListenersOutput->Listeners;
+
+    # Returns a L<Paws::ELBv2::DescribeListenersOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/DescribeListeners>
 
 =head1 ATTRIBUTES
 

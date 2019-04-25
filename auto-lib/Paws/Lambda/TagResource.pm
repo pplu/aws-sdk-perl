@@ -20,31 +20,36 @@ Paws::Lambda::TagResource - Arguments for method TagResource on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method TagResource on the 
-AWS Lambda service. Use the attributes of this class
+This class represents the parameters used for calling the method TagResource on the
+L<AWS Lambda|Paws::Lambda> service. Use the attributes of this class
 as arguments to method TagResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TagResource.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->TagResource(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    $lambda->TagResource(
+      Resource => 'MyFunctionArn',
+      Tags     => { 'MyTagKey' => 'MyTagValue', },
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/TagResource>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Resource => Str
 
-The ARN (Amazon Resource Name) of the Lambda function.
+The function's Amazon Resource Name (ARN).
 
 
 
 =head2 B<REQUIRED> Tags => L<Paws::Lambda::Tags>
 
-The list of tags (key-value pairs) you are assigning to the Lambda
-function.
+A list of tags to apply to the function.
 
 
 

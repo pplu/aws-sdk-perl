@@ -29,17 +29,95 @@ Paws::ElasticBeanstalk::UpdateEnvironment - Arguments for method UpdateEnvironme
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateEnvironment on the 
-AWS Elastic Beanstalk service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateEnvironment on the
+L<AWS Elastic Beanstalk|Paws::ElasticBeanstalk> service. Use the attributes of this class
 as arguments to method UpdateEnvironment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateEnvironment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateEnvironment(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
+    # To update an environment to a new version
+    # The following operation updates an environment named "my-env" to version
+    # "v2" of the application to which it belongs:
+    my $EnvironmentDescription = $elasticbeanstalk->UpdateEnvironment(
+      {
+        'EnvironmentName' => 'my-env',
+        'VersionLabel'    => 'v2'
+      }
+    );
+
+    # Results:
+    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $CNAME             = $EnvironmentDescription->CNAME;
+    my $DateCreated       = $EnvironmentDescription->DateCreated;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $EndpointURL       = $EnvironmentDescription->EndpointURL;
+    my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
+    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
+    my $Health            = $EnvironmentDescription->Health;
+    my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
+    my $Status            = $EnvironmentDescription->Status;
+    my $Tier              = $EnvironmentDescription->Tier;
+    my $VersionLabel      = $EnvironmentDescription->VersionLabel;
+
+    # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
+    # To configure option settings
+    # The following operation configures several options in the
+    # aws:elb:loadbalancer namespace:
+    my $EnvironmentDescription = $elasticbeanstalk->UpdateEnvironment(
+      {
+        'EnvironmentName' => 'my-env',
+        'OptionSettings'  => [
+
+          {
+            'Namespace'  => 'aws:elb:healthcheck',
+            'OptionName' => 'Interval',
+            'Value'      => 15
+          },
+
+          {
+            'Namespace'  => 'aws:elb:healthcheck',
+            'OptionName' => 'Timeout',
+            'Value'      => 8
+          },
+
+          {
+            'Namespace'  => 'aws:elb:healthcheck',
+            'OptionName' => 'HealthyThreshold',
+            'Value'      => 2
+          },
+
+          {
+            'Namespace'  => 'aws:elb:healthcheck',
+            'OptionName' => 'UnhealthyThreshold',
+            'Value'      => 3
+          }
+        ]
+      }
+    );
+
+    # Results:
+    my $AbortableOperationInProgress =
+      $EnvironmentDescription->AbortableOperationInProgress;
+    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $CNAME             = $EnvironmentDescription->CNAME;
+    my $DateCreated       = $EnvironmentDescription->DateCreated;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $EndpointURL       = $EnvironmentDescription->EndpointURL;
+    my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
+    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
+    my $Health            = $EnvironmentDescription->Health;
+    my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
+    my $Status            = $EnvironmentDescription->Status;
+    my $Tier              = $EnvironmentDescription->Tier;
+    my $VersionLabel      = $EnvironmentDescription->VersionLabel;
+
+    # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk/UpdateEnvironment>
 
 =head1 ATTRIBUTES
 

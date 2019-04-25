@@ -2,13 +2,13 @@
 package Paws::ApiGateway::PutIntegrationResponse;
   use Moose;
   has ContentHandling => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandling');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId', required => 1);
+  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'http_method', required => 1);
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_id', required => 1);
   has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseParameters');
   has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseTemplates');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
   has SelectionPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'selectionPattern');
-  has StatusCode => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'statusCode', required => 1);
+  has StatusCode => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'status_code', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -26,17 +26,37 @@ Paws::ApiGateway::PutIntegrationResponse - Arguments for method PutIntegrationRe
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutIntegrationResponse on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method PutIntegrationResponse on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method PutIntegrationResponse.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutIntegrationResponse.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutIntegrationResponse(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $IntegrationResponse = $apigateway->PutIntegrationResponse(
+      HttpMethod         => 'MyString',
+      ResourceId         => 'MyString',
+      RestApiId          => 'MyString',
+      StatusCode         => 'MyStatusCode',
+      ContentHandling    => 'CONVERT_TO_BINARY',              # OPTIONAL
+      ResponseParameters => { 'MyString' => 'MyString', },    # OPTIONAL
+      ResponseTemplates  => { 'MyString' => 'MyString', },    # OPTIONAL
+      SelectionPattern   => 'MyString',                       # OPTIONAL
+    );
+
+    # Results:
+    my $ContentHandling    = $IntegrationResponse->ContentHandling;
+    my $ResponseParameters = $IntegrationResponse->ResponseParameters;
+    my $ResponseTemplates  = $IntegrationResponse->ResponseTemplates;
+    my $SelectionPattern   = $IntegrationResponse->SelectionPattern;
+    my $StatusCode         = $IntegrationResponse->StatusCode;
+
+    # Returns a L<Paws::ApiGateway::IntegrationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/PutIntegrationResponse>
 
 =head1 ATTRIBUTES
 
@@ -69,13 +89,14 @@ Valid values are: C<"CONVERT_TO_BINARY">, C<"CONVERT_TO_TEXT">
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-Specifies a put integration response request's HTTP method.
+[Required] Specifies a put integration response request's HTTP method.
 
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-Specifies a put integration response request's resource identifier.
+[Required] Specifies a put integration response request's resource
+identifier.
 
 
 
@@ -103,7 +124,7 @@ Specifies a put integration response's templates.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 
@@ -115,8 +136,8 @@ Specifies the selection pattern of a put integration response.
 
 =head2 B<REQUIRED> StatusCode => Str
 
-Specifies the status code that is used to map the integration response
-to an existing MethodResponse.
+[Required] Specifies the status code that is used to map the
+integration response to an existing MethodResponse.
 
 
 

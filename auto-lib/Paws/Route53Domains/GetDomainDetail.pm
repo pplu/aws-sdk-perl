@@ -18,17 +18,47 @@ Paws::Route53Domains::GetDomainDetail - Arguments for method GetDomainDetail on 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetDomainDetail on the 
-Amazon Route 53 Domains service. Use the attributes of this class
+This class represents the parameters used for calling the method GetDomainDetail on the
+L<Amazon Route 53 Domains|Paws::Route53Domains> service. Use the attributes of this class
 as arguments to method GetDomainDetail.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDomainDetail.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetDomainDetail(Att1 => $value1, Att2 => $value2, ...);
+    my $route53domains = Paws->service('Route53Domains');
+    my $GetDomainDetailResponse = $route53domains->GetDomainDetail(
+      DomainName => 'MyDomainName',
+
+    );
+
+    # Results:
+    my $AbuseContactEmail = $GetDomainDetailResponse->AbuseContactEmail;
+    my $AbuseContactPhone = $GetDomainDetailResponse->AbuseContactPhone;
+    my $AdminContact      = $GetDomainDetailResponse->AdminContact;
+    my $AdminPrivacy      = $GetDomainDetailResponse->AdminPrivacy;
+    my $AutoRenew         = $GetDomainDetailResponse->AutoRenew;
+    my $CreationDate      = $GetDomainDetailResponse->CreationDate;
+    my $DnsSec            = $GetDomainDetailResponse->DnsSec;
+    my $DomainName        = $GetDomainDetailResponse->DomainName;
+    my $ExpirationDate    = $GetDomainDetailResponse->ExpirationDate;
+    my $Nameservers       = $GetDomainDetailResponse->Nameservers;
+    my $RegistrantContact = $GetDomainDetailResponse->RegistrantContact;
+    my $RegistrantPrivacy = $GetDomainDetailResponse->RegistrantPrivacy;
+    my $RegistrarName     = $GetDomainDetailResponse->RegistrarName;
+    my $RegistrarUrl      = $GetDomainDetailResponse->RegistrarUrl;
+    my $RegistryDomainId  = $GetDomainDetailResponse->RegistryDomainId;
+    my $Reseller          = $GetDomainDetailResponse->Reseller;
+    my $StatusList        = $GetDomainDetailResponse->StatusList;
+    my $TechContact       = $GetDomainDetailResponse->TechContact;
+    my $TechPrivacy       = $GetDomainDetailResponse->TechPrivacy;
+    my $UpdatedDate       = $GetDomainDetailResponse->UpdatedDate;
+    my $WhoIsServer       = $GetDomainDetailResponse->WhoIsServer;
+
+    # Returns a L<Paws::Route53Domains::GetDomainDetailResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53domains/GetDomainDetail>
 
 =head1 ATTRIBUTES
 

@@ -1,6 +1,7 @@
 package Paws::RDS::ValidDBInstanceModificationsMessage;
   use Moose;
   has Storage => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ValidStorageOptions]', request_name => 'ValidStorageOptions', traits => ['NameInRequest']);
+  has ValidProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AvailableProcessorFeature]', request_name => 'AvailableProcessorFeature', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::ValidDBInstanceModificationsMessage object:
 
-  $service_obj->Method(Att1 => { Storage => $value, ..., Storage => $value  });
+  $service_obj->Method(Att1 => { Storage => $value, ..., ValidProcessorFeatures => $value  });
 
 =head3 Results returned from an API call
 
@@ -42,6 +43,11 @@ information when you call ModifyDBInstance.
 =head2 Storage => ArrayRef[L<Paws::RDS::ValidStorageOptions>]
 
   Valid storage options for your DB instance.
+
+
+=head2 ValidProcessorFeatures => ArrayRef[L<Paws::RDS::AvailableProcessorFeature>]
+
+  Valid processor features for your DB instance.
 
 
 

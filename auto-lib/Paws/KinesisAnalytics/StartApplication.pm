@@ -19,17 +19,33 @@ Paws::KinesisAnalytics::StartApplication - Arguments for method StartApplication
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StartApplication on the 
-Amazon Kinesis Analytics service. Use the attributes of this class
+This class represents the parameters used for calling the method StartApplication on the
+L<Amazon Kinesis Analytics|Paws::KinesisAnalytics> service. Use the attributes of this class
 as arguments to method StartApplication.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartApplication.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartApplication(Att1 => $value1, Att2 => $value2, ...);
+    my $kinesisanalytics = Paws->service('KinesisAnalytics');
+    my $StartApplicationResponse = $kinesisanalytics->StartApplication(
+      ApplicationName     => 'MyApplicationName',
+      InputConfigurations => [
+        {
+          Id                                 => 'MyId',    # min: 1, max: 50
+          InputStartingPositionConfiguration => {
+            InputStartingPosition =>
+              'NOW',   # values: NOW, TRIM_HORIZON, LAST_STOPPED_POINT; OPTIONAL
+          },
+
+        },
+        ...
+      ],
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics/StartApplication>
 
 =head1 ATTRIBUTES
 

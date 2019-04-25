@@ -14,6 +14,7 @@ package Paws::CloudWatch::MetricAlarm;
   has ExtendedStatistic => (is => 'ro', isa => 'Str');
   has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MetricName => (is => 'ro', isa => 'Str');
+  has Metrics => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MetricDataQuery]');
   has Namespace => (is => 'ro', isa => 'Str');
   has OKActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Period => (is => 'ro', isa => 'Int');
@@ -141,6 +142,11 @@ specified as an Amazon Resource Name (ARN).
 =head2 MetricName => Str
 
   The name of the metric associated with the alarm.
+
+
+=head2 Metrics => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>]
+
+  
 
 
 =head2 Namespace => Str

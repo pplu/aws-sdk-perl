@@ -1,6 +1,7 @@
 package Paws::StepFunctions;
   use Moose;
   sub service { 'states' }
+  sub signing_name { 'states' }
   sub version { '2016-11-23' }
   sub target_prefix { 'AWSStepFunctions' }
   sub json_version { "1.0" }
@@ -79,6 +80,11 @@ package Paws::StepFunctions;
     my $call_object = $self->new_with_coercions('Paws::StepFunctions::ListStateMachines', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StepFunctions::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendTaskFailure {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StepFunctions::SendTaskFailure', @_);
@@ -102,6 +108,16 @@ package Paws::StepFunctions;
   sub StopExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StepFunctions::StopExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StepFunctions::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StepFunctions::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateStateMachine {
@@ -204,7 +220,7 @@ package Paws::StepFunctions;
   }
 
 
-  sub operations { qw/CreateActivity CreateStateMachine DeleteActivity DeleteStateMachine DescribeActivity DescribeExecution DescribeStateMachine DescribeStateMachineForExecution GetActivityTask GetExecutionHistory ListActivities ListExecutions ListStateMachines SendTaskFailure SendTaskHeartbeat SendTaskSuccess StartExecution StopExecution UpdateStateMachine / }
+  sub operations { qw/CreateActivity CreateStateMachine DeleteActivity DeleteStateMachine DescribeActivity DescribeExecution DescribeStateMachine DescribeStateMachineForExecution GetActivityTask GetExecutionHistory ListActivities ListExecutions ListStateMachines ListTagsForResource SendTaskFailure SendTaskHeartbeat SendTaskSuccess StartExecution StopExecution TagResource UntagResource UpdateStateMachine / }
 
 1;
 
@@ -255,16 +271,26 @@ HTTP API. For more information about Step Functions, see the I< AWS
 Step Functions Developer Guide
 (http://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) >.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/step-functions/>
+
+
 =head1 METHODS
 
-=head2 CreateActivity(Name => Str)
+=head2 CreateActivity
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::CreateActivity>
 
 Returns: a L<Paws::StepFunctions::CreateActivityOutput> instance
 
-Creates an activity. An activity is a task which you write in any
-programming language and host on any machine which has access to AWS
+Creates an activity. An activity is a task that you write in any
+programming language and host on any machine that has access to AWS
 Step Functions. Activities must poll Step Functions using the
 C<GetActivityTask> API action and respond using C<SendTask*> API
 actions. This function lets Step Functions know the existence of your
@@ -272,7 +298,18 @@ activity and returns an identifier for use in a state machine and when
 polling from the activity.
 
 
-=head2 CreateStateMachine(Definition => Str, Name => Str, RoleArn => Str)
+=head2 CreateStateMachine
+
+=over
+
+=item Definition => Str
+
+=item Name => Str
+
+=item RoleArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::CreateStateMachine>
 
@@ -285,7 +322,14 @@ transition next (C<Choice> states), stop an execution with an error
 JSON-based, structured language.
 
 
-=head2 DeleteActivity(ActivityArn => Str)
+=head2 DeleteActivity
+
+=over
+
+=item ActivityArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DeleteActivity>
 
@@ -294,7 +338,14 @@ Returns: a L<Paws::StepFunctions::DeleteActivityOutput> instance
 Deletes an activity.
 
 
-=head2 DeleteStateMachine(StateMachineArn => Str)
+=head2 DeleteStateMachine
+
+=over
+
+=item StateMachineArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DeleteStateMachine>
 
@@ -309,7 +360,14 @@ The state machine itself is deleted after all executions are completed
 or deleted.
 
 
-=head2 DescribeActivity(ActivityArn => Str)
+=head2 DescribeActivity
+
+=over
+
+=item ActivityArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DescribeActivity>
 
@@ -317,8 +375,18 @@ Returns: a L<Paws::StepFunctions::DescribeActivityOutput> instance
 
 Describes an activity.
 
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
-=head2 DescribeExecution(ExecutionArn => Str)
+
+=head2 DescribeExecution
+
+=over
+
+=item ExecutionArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DescribeExecution>
 
@@ -326,8 +394,18 @@ Returns: a L<Paws::StepFunctions::DescribeExecutionOutput> instance
 
 Describes an execution.
 
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
-=head2 DescribeStateMachine(StateMachineArn => Str)
+
+=head2 DescribeStateMachine
+
+=over
+
+=item StateMachineArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DescribeStateMachine>
 
@@ -335,8 +413,18 @@ Returns: a L<Paws::StepFunctions::DescribeStateMachineOutput> instance
 
 Describes a state machine.
 
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
-=head2 DescribeStateMachineForExecution(ExecutionArn => Str)
+
+=head2 DescribeStateMachineForExecution
+
+=over
+
+=item ExecutionArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::DescribeStateMachineForExecution>
 
@@ -344,8 +432,20 @@ Returns: a L<Paws::StepFunctions::DescribeStateMachineForExecutionOutput> instan
 
 Describes the state machine associated with a specific execution.
 
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
-=head2 GetActivityTask(ActivityArn => Str, [WorkerName => Str])
+
+=head2 GetActivityTask
+
+=over
+
+=item ActivityArn => Str
+
+=item [WorkerName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::GetActivityTask>
 
@@ -363,8 +463,26 @@ Workers should set their client side socket timeout to at least 65
 seconds (5 seconds higher than the maximum time the service may hold
 the poll request).
 
+Polling with C<GetActivityTask> can cause latency in some
+implementations. See Avoid Latency When Polling for Activity Tasks
+(http://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html)
+in the Step Functions Developer Guide.
 
-=head2 GetExecutionHistory(ExecutionArn => Str, [MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
+
+=head2 GetExecutionHistory
+
+=over
+
+=item ExecutionArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ReverseOrder => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::GetExecutionHistory>
 
@@ -375,13 +493,24 @@ default, the results are returned in ascending order of the
 C<timeStamp> of the events. Use the C<reverseOrder> parameter to get
 the latest events first.
 
-If a C<nextToken> is returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextToken>. Keep all other
-arguments unchanged.
+If C<nextToken> is returned, there are more results available. The
+value of C<nextToken> is a unique pagination token for each page. Make
+the call again using the returned token to retrieve the next page. Keep
+all other arguments unchanged. Each pagination token expires after 24
+hours. Using an expired pagination token will return an I<HTTP 400
+InvalidToken> error.
 
 
-=head2 ListActivities([MaxResults => Int, NextToken => Str])
+=head2 ListActivities
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::ListActivities>
 
@@ -389,28 +518,61 @@ Returns: a L<Paws::StepFunctions::ListActivitiesOutput> instance
 
 Lists the existing activities.
 
-If a C<nextToken> is returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextToken>. Keep all other
-arguments unchanged.
+If C<nextToken> is returned, there are more results available. The
+value of C<nextToken> is a unique pagination token for each page. Make
+the call again using the returned token to retrieve the next page. Keep
+all other arguments unchanged. Each pagination token expires after 24
+hours. Using an expired pagination token will return an I<HTTP 400
+InvalidToken> error.
+
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
 
-=head2 ListExecutions(StateMachineArn => Str, [MaxResults => Int, NextToken => Str, StatusFilter => Str])
+=head2 ListExecutions
+
+=over
+
+=item StateMachineArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [StatusFilter => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::ListExecutions>
 
 Returns: a L<Paws::StepFunctions::ListExecutionsOutput> instance
 
 Lists the executions of a state machine that meet the filtering
-criteria.
+criteria. Results are sorted by time, with the most recent execution
+first.
 
-If a C<nextToken> is returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextToken>. Keep all other
-arguments unchanged.
+If C<nextToken> is returned, there are more results available. The
+value of C<nextToken> is a unique pagination token for each page. Make
+the call again using the returned token to retrieve the next page. Keep
+all other arguments unchanged. Each pagination token expires after 24
+hours. Using an expired pagination token will return an I<HTTP 400
+InvalidToken> error.
+
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
 
-=head2 ListStateMachines([MaxResults => Int, NextToken => Str])
+=head2 ListStateMachines
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::ListStateMachines>
 
@@ -418,13 +580,45 @@ Returns: a L<Paws::StepFunctions::ListStateMachinesOutput> instance
 
 Lists the existing state machines.
 
-If a C<nextToken> is returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextToken>. Keep all other
-arguments unchanged.
+If C<nextToken> is returned, there are more results available. The
+value of C<nextToken> is a unique pagination token for each page. Make
+the call again using the returned token to retrieve the next page. Keep
+all other arguments unchanged. Each pagination token expires after 24
+hours. Using an expired pagination token will return an I<HTTP 400
+InvalidToken> error.
+
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
 
-=head2 SendTaskFailure(TaskToken => Str, [Cause => Str, Error => Str])
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StepFunctions::ListTagsForResource>
+
+Returns: a L<Paws::StepFunctions::ListTagsForResourceOutput> instance
+
+List tags for a given resource.
+
+
+=head2 SendTaskFailure
+
+=over
+
+=item TaskToken => Str
+
+=item [Cause => Str]
+
+=item [Error => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::SendTaskFailure>
 
@@ -434,7 +628,14 @@ Used by workers to report that the task identified by the C<taskToken>
 failed.
 
 
-=head2 SendTaskHeartbeat(TaskToken => Str)
+=head2 SendTaskHeartbeat
+
+=over
+
+=item TaskToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::SendTaskHeartbeat>
 
@@ -456,7 +657,16 @@ This operation is only useful for long-lived tasks to report the
 liveliness of the task.
 
 
-=head2 SendTaskSuccess(Output => Str, TaskToken => Str)
+=head2 SendTaskSuccess
+
+=over
+
+=item Output => Str
+
+=item TaskToken => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::SendTaskSuccess>
 
@@ -466,7 +676,18 @@ Used by workers to report that the task identified by the C<taskToken>
 completed successfully.
 
 
-=head2 StartExecution(StateMachineArn => Str, [Input => Str, Name => Str])
+=head2 StartExecution
+
+=over
+
+=item StateMachineArn => Str
+
+=item [Input => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::StartExecution>
 
@@ -474,8 +695,25 @@ Returns: a L<Paws::StepFunctions::StartExecutionOutput> instance
 
 Starts a state machine execution.
 
+C<StartExecution> is idempotent. If C<StartExecution> is called with
+the same name and input as a running execution, the call will succeed
+and return the same response as the original request. If the execution
+is closed or if the input is different, it will return a 400
+C<ExecutionAlreadyExists> error. Names can be reused after 90 days.
 
-=head2 StopExecution(ExecutionArn => Str, [Cause => Str, Error => Str])
+
+=head2 StopExecution
+
+=over
+
+=item ExecutionArn => Str
+
+=item [Cause => Str]
+
+=item [Error => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::StopExecution>
 
@@ -484,7 +722,54 @@ Returns: a L<Paws::StepFunctions::StopExecutionOutput> instance
 Stops an execution.
 
 
-=head2 UpdateStateMachine(StateMachineArn => Str, [Definition => Str, RoleArn => Str])
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::StepFunctions::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StepFunctions::TagResource>
+
+Returns: a L<Paws::StepFunctions::TagResourceOutput> instance
+
+Add a tag to a Step Functions resource.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StepFunctions::UntagResource>
+
+Returns: a L<Paws::StepFunctions::UntagResourceOutput> instance
+
+Remove a tag from a Step Functions resource
+
+
+=head2 UpdateStateMachine
+
+=over
+
+=item StateMachineArn => Str
+
+=item [Definition => Str]
+
+=item [RoleArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::StepFunctions::UpdateStateMachine>
 
@@ -492,14 +777,14 @@ Returns: a L<Paws::StepFunctions::UpdateStateMachineOutput> instance
 
 Updates an existing state machine by modifying its C<definition> and/or
 C<roleArn>. Running executions will continue to use the previous
-C<definition> and C<roleArn>.
+C<definition> and C<roleArn>. You must include at least one of
+C<definition> or C<roleArn> or you will receive a
+C<MissingRequiredParameter> error.
 
 All C<StartExecution> calls within a few seconds will use the updated
 C<definition> and C<roleArn>. Executions started immediately after
 calling C<UpdateStateMachine> may use the previous state machine
-C<definition> and C<roleArn>. You must include at least one of
-C<definition> or C<roleArn> or you will receive a
-C<MissingRequiredParameter> error.
+C<definition> and C<roleArn>.
 
 
 

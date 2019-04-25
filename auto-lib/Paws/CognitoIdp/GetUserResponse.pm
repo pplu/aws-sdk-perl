@@ -25,7 +25,7 @@ Specifies the options for MFA (e.g., email or phone number).
 
 =head2 PreferredMfaSetting => Str
 
-
+The user's preferred MFA setting.
 
 
 =head2 B<REQUIRED> UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
@@ -38,7 +38,7 @@ attribute name.
 
 =head2 UserMFASettingList => ArrayRef[Str|Undef]
 
-
+The list of the user's MFA settings.
 
 
 =head2 B<REQUIRED> Username => Str

@@ -20,17 +20,34 @@ Paws::STS::GetFederationToken - Arguments for method GetFederationToken on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetFederationToken on the 
-AWS Security Token Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetFederationToken on the
+L<AWS Security Token Service|Paws::STS> service. Use the attributes of this class
 as arguments to method GetFederationToken.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetFederationToken.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetFederationToken(Att1 => $value1, Att2 => $value2, ...);
+    my $sts = Paws->service('STS');
+    # To get temporary credentials for a role by using GetFederationToken
+    my $GetFederationTokenResponse = $sts->GetFederationToken(
+      {
+        'DurationSeconds' => 3600,
+        'Name'            => 'Bob',
+        'Policy' =>
+'{"Version":"2012-10-17","Statement":[{"Sid":"Stmt1","Effect":"Allow","Action":"s3:*","Resource":"*"}]}'
+      }
+    );
+
+    # Results:
+    my $Credentials      = $GetFederationTokenResponse->Credentials;
+    my $FederatedUser    = $GetFederationTokenResponse->FederatedUser;
+    my $PackedPolicySize = $GetFederationTokenResponse->PackedPolicySize;
+
+    # Returns a L<Paws::STS::GetFederationTokenResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sts/GetFederationToken>
 
 =head1 ATTRIBUTES
 

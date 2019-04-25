@@ -1,6 +1,7 @@
 package Paws::RedShift;
   use Moose;
   sub service { 'redshift' }
+  sub signing_name { 'redshift' }
   sub version { '2012-12-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -13,6 +14,11 @@ package Paws::RedShift;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
 
   
+  sub AcceptReservedNodeExchange {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::AcceptReservedNodeExchange', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AuthorizeClusterSecurityGroupIngress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::AuthorizeClusterSecurityGroupIngress', @_);
@@ -21,6 +27,21 @@ package Paws::RedShift;
   sub AuthorizeSnapshotAccess {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::AuthorizeSnapshotAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchDeleteClusterSnapshots {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::BatchDeleteClusterSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchModifyClusterSnapshots {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::BatchModifyClusterSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CancelResize {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CancelResize', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CopyClusterSnapshot {
@@ -73,6 +94,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::CreateSnapshotCopyGrant', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateSnapshotSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateSnapshotSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::CreateTags', @_);
@@ -123,9 +149,24 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteSnapshotCopyGrant', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteSnapshotSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteSnapshotSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAccountAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeAccountAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeClusterDbRevisions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterDbRevisions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusterParameterGroups {
@@ -156,6 +197,11 @@ package Paws::RedShift;
   sub DescribeClusterSubnetGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterSubnetGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeClusterTracks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterTracks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClusterVersions {
@@ -223,6 +269,16 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeSnapshotCopyGrants', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeSnapshotSchedules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeSnapshotSchedules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeStorage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeStorage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTableRestoreStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeTableRestoreStatus', @_);
@@ -258,9 +314,19 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::GetClusterCredentials', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetReservedNodeExchangeOfferings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::GetReservedNodeExchangeOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyClusterDbRevision {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterDbRevision', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyClusterIamRoles {
@@ -268,9 +334,24 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterIamRoles', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyClusterMaintenance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterMaintenance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyClusterParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyClusterSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyClusterSnapshotSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterSnapshotSchedule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyClusterSubnetGroup {
@@ -288,6 +369,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ModifySnapshotCopyRetentionPeriod', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifySnapshotSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifySnapshotSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PurchaseReservedNodeOffering {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::PurchaseReservedNodeOffering', @_);
@@ -301,6 +387,11 @@ package Paws::RedShift;
   sub ResetClusterParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ResetClusterParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ResizeCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ResizeCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RestoreFromClusterSnapshot {
@@ -329,6 +420,29 @@ package Paws::RedShift;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllClusterDbRevisions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusterDbRevisions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeClusterDbRevisions(@_, Marker => $next_result->Marker);
+        push @{ $result->ClusterDbRevisions }, @{ $next_result->ClusterDbRevisions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'ClusterDbRevisions') foreach (@{ $result->ClusterDbRevisions });
+        $result = $self->DescribeClusterDbRevisions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'ClusterDbRevisions') foreach (@{ $result->ClusterDbRevisions });
+    }
+
+    return undef
+  }
   sub DescribeAllClusterParameterGroups {
     my $self = shift;
 
@@ -463,6 +577,29 @@ package Paws::RedShift;
         $result = $self->DescribeClusterSubnetGroups(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'ClusterSubnetGroups') foreach (@{ $result->ClusterSubnetGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllClusterTracks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusterTracks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeClusterTracks(@_, Marker => $next_result->Marker);
+        push @{ $result->MaintenanceTracks }, @{ $next_result->MaintenanceTracks };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'MaintenanceTracks') foreach (@{ $result->MaintenanceTracks });
+        $result = $self->DescribeClusterTracks(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'MaintenanceTracks') foreach (@{ $result->MaintenanceTracks });
     }
 
     return undef
@@ -674,9 +811,124 @@ package Paws::RedShift;
 
     return undef
   }
+  sub DescribeAllSnapshotCopyGrants {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSnapshotCopyGrants(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeSnapshotCopyGrants(@_, Marker => $next_result->Marker);
+        push @{ $result->SnapshotCopyGrants }, @{ $next_result->SnapshotCopyGrants };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'SnapshotCopyGrants') foreach (@{ $result->SnapshotCopyGrants });
+        $result = $self->DescribeSnapshotCopyGrants(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'SnapshotCopyGrants') foreach (@{ $result->SnapshotCopyGrants });
+    }
+
+    return undef
+  }
+  sub DescribeAllSnapshotSchedules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSnapshotSchedules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeSnapshotSchedules(@_, Marker => $next_result->Marker);
+        push @{ $result->SnapshotSchedules }, @{ $next_result->SnapshotSchedules };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'SnapshotSchedules') foreach (@{ $result->SnapshotSchedules });
+        $result = $self->DescribeSnapshotSchedules(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'SnapshotSchedules') foreach (@{ $result->SnapshotSchedules });
+    }
+
+    return undef
+  }
+  sub DescribeAllTableRestoreStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTableRestoreStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeTableRestoreStatus(@_, Marker => $next_result->Marker);
+        push @{ $result->TableRestoreStatusDetails }, @{ $next_result->TableRestoreStatusDetails };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'TableRestoreStatusDetails') foreach (@{ $result->TableRestoreStatusDetails });
+        $result = $self->DescribeTableRestoreStatus(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'TableRestoreStatusDetails') foreach (@{ $result->TableRestoreStatusDetails });
+    }
+
+    return undef
+  }
+  sub DescribeAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTags(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeTags(@_, Marker => $next_result->Marker);
+        push @{ $result->TaggedResources }, @{ $next_result->TaggedResources };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'TaggedResources') foreach (@{ $result->TaggedResources });
+        $result = $self->DescribeTags(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'TaggedResources') foreach (@{ $result->TaggedResources });
+    }
+
+    return undef
+  }
+  sub GetAllReservedNodeExchangeOfferings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetReservedNodeExchangeOfferings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->GetReservedNodeExchangeOfferings(@_, Marker => $next_result->Marker);
+        push @{ $result->ReservedNodeOfferings }, @{ $next_result->ReservedNodeOfferings };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'ReservedNodeOfferings') foreach (@{ $result->ReservedNodeOfferings });
+        $result = $self->GetReservedNodeExchangeOfferings(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'ReservedNodeOfferings') foreach (@{ $result->ReservedNodeOfferings });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials ModifyCluster ModifyClusterIamRoles ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
+  sub operations { qw/AcceptReservedNodeExchange AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess BatchDeleteClusterSnapshots BatchModifyClusterSnapshots CancelResize CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateSnapshotSchedule CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteSnapshotSchedule DeleteTags DescribeAccountAttributes DescribeClusterDbRevisions DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterTracks DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeSnapshotSchedules DescribeStorage DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials GetReservedNodeExchangeOfferings ModifyCluster ModifyClusterDbRevision ModifyClusterIamRoles ModifyClusterMaintenance ModifyClusterParameterGroup ModifyClusterSnapshot ModifyClusterSnapshotSchedule ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod ModifySnapshotSchedule PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup ResizeCluster RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
 
 1;
 
@@ -736,9 +988,45 @@ Guide (http://docs.aws.amazon.com/redshift/latest/dg/welcome.html)
 explains how to design, build, query, and maintain the databases that
 make up your data warehouse.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01>
+
+
 =head1 METHODS
 
-=head2 AuthorizeClusterSecurityGroupIngress(ClusterSecurityGroupName => Str, [CIDRIP => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str])
+=head2 AcceptReservedNodeExchange
+
+=over
+
+=item ReservedNodeId => Str
+
+=item TargetReservedNodeOfferingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::AcceptReservedNodeExchange>
+
+Returns: a L<Paws::RedShift::AcceptReservedNodeExchangeOutputMessage> instance
+
+Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes
+to the configuration (term, payment type, or number of nodes) and no
+additional costs.
+
+
+=head2 AuthorizeClusterSecurityGroupIngress
+
+=over
+
+=item ClusterSecurityGroupName => Str
+
+=item [CIDRIP => Str]
+
+=item [EC2SecurityGroupName => Str]
+
+=item [EC2SecurityGroupOwnerId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::AuthorizeClusterSecurityGroupIngress>
 
@@ -754,7 +1042,7 @@ many as 20 ingress rules to an Amazon Redshift security group.
 If you authorize access to an Amazon EC2 security group, specify
 I<EC2SecurityGroupName> and I<EC2SecurityGroupOwnerId>. The Amazon EC2
 security group and Amazon Redshift cluster must be in the same AWS
-region.
+Region.
 
 If you authorize access to a CIDR/IP address range, specify I<CIDRIP>.
 For an overview of CIDR blocks, see the Wikipedia article on Classless
@@ -769,7 +1057,18 @@ security groups, go to Working with Security Groups
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 AuthorizeSnapshotAccess(AccountWithRestoreAccess => Str, SnapshotIdentifier => Str, [SnapshotClusterIdentifier => Str])
+=head2 AuthorizeSnapshotAccess
+
+=over
+
+=item AccountWithRestoreAccess => Str
+
+=item SnapshotIdentifier => Str
+
+=item [SnapshotClusterIdentifier => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::AuthorizeSnapshotAccess>
 
@@ -784,7 +1083,72 @@ Redshift Snapshots
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CopyClusterSnapshot(SourceSnapshotIdentifier => Str, TargetSnapshotIdentifier => Str, [SourceSnapshotClusterIdentifier => Str])
+=head2 BatchDeleteClusterSnapshots
+
+=over
+
+=item Identifiers => ArrayRef[L<Paws::RedShift::DeleteClusterSnapshotMessage>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::BatchDeleteClusterSnapshots>
+
+Returns: a L<Paws::RedShift::BatchDeleteClusterSnapshotsResult> instance
+
+Deletes a set of cluster snapshots.
+
+
+=head2 BatchModifyClusterSnapshots
+
+=over
+
+=item SnapshotIdentifierList => ArrayRef[Str|Undef]
+
+=item [Force => Bool]
+
+=item [ManualSnapshotRetentionPeriod => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::BatchModifyClusterSnapshots>
+
+Returns: a L<Paws::RedShift::BatchModifyClusterSnapshotsOutputMessage> instance
+
+Modifies the settings for a list of snapshots.
+
+
+=head2 CancelResize
+
+=over
+
+=item ClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::CancelResize>
+
+Returns: a L<Paws::RedShift::ResizeProgressMessage> instance
+
+Cancels a resize operation.
+
+
+=head2 CopyClusterSnapshot
+
+=over
+
+=item SourceSnapshotIdentifier => Str
+
+=item TargetSnapshotIdentifier => Str
+
+=item [ManualSnapshotRetentionPeriod => Int]
+
+=item [SourceSnapshotClusterIdentifier => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::CopyClusterSnapshot>
 
@@ -807,7 +1171,72 @@ Redshift Snapshots
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str|Undef], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str|Undef], KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[L<Paws::RedShift::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 CreateCluster
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item MasterUsername => Str
+
+=item MasterUserPassword => Str
+
+=item NodeType => Str
+
+=item [AdditionalInfo => Str]
+
+=item [AllowVersionUpgrade => Bool]
+
+=item [AutomatedSnapshotRetentionPeriod => Int]
+
+=item [AvailabilityZone => Str]
+
+=item [ClusterParameterGroupName => Str]
+
+=item [ClusterSecurityGroups => ArrayRef[Str|Undef]]
+
+=item [ClusterSubnetGroupName => Str]
+
+=item [ClusterType => Str]
+
+=item [ClusterVersion => Str]
+
+=item [DBName => Str]
+
+=item [ElasticIp => Str]
+
+=item [Encrypted => Bool]
+
+=item [EnhancedVpcRouting => Bool]
+
+=item [HsmClientCertificateIdentifier => Str]
+
+=item [HsmConfigurationIdentifier => Str]
+
+=item [IamRoles => ArrayRef[Str|Undef]]
+
+=item [KmsKeyId => Str]
+
+=item [MaintenanceTrackName => Str]
+
+=item [ManualSnapshotRetentionPeriod => Int]
+
+=item [NumberOfNodes => Int]
+
+=item [Port => Int]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [PubliclyAccessible => Bool]
+
+=item [SnapshotScheduleIdentifier => Str]
+
+=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::CreateCluster>
 
@@ -815,8 +1244,8 @@ Returns: a L<Paws::RedShift::CreateClusterResult> instance
 
 Creates a new cluster.
 
-To create the cluster in Virtual Private Cloud (VPC), you must provide
-a cluster subnet group name. The cluster subnet group identifies the
+To create a cluster in Virtual Private Cloud (VPC), you must provide a
+cluster subnet group name. The cluster subnet group identifies the
 subnets of your VPC that Amazon Redshift uses when creating the
 cluster. For more information about managing clusters, go to Amazon
 Redshift Clusters
@@ -824,7 +1253,20 @@ Redshift Clusters
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateClusterParameterGroup(Description => Str, ParameterGroupFamily => Str, ParameterGroupName => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
+=head2 CreateClusterParameterGroup
+
+=over
+
+=item Description => Str
+
+=item ParameterGroupFamily => Str
+
+=item ParameterGroupName => Str
+
+=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::CreateClusterParameterGroup>
 
@@ -844,7 +1286,18 @@ parameters and parameter groups, go to Amazon Redshift Parameter Groups
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateClusterSecurityGroup(ClusterSecurityGroupName => Str, Description => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
+=head2 CreateClusterSecurityGroup
+
+=over
+
+=item ClusterSecurityGroupName => Str
+
+=item Description => Str
+
+=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::CreateClusterSecurityGroup>
 
@@ -859,7 +1312,20 @@ Cluster Security Groups
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
+=head2 CreateClusterSnapshot
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item SnapshotIdentifier => Str
+
+=item [ManualSnapshotRetentionPeriod => Int]
+
+=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::CreateClusterSnapshot>
 
@@ -874,7 +1340,20 @@ Redshift Snapshots
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateClusterSubnetGroup(ClusterSubnetGroupName => Str, Description => Str, SubnetIds => ArrayRef[Str|Undef], [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
+=head2 CreateClusterSubnetGroup
+
+=over
+
+=item ClusterSubnetGroupName => Str
+
+=item Description => Str
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::CreateClusterSubnetGroup>
 
@@ -890,7 +1369,28 @@ Subnet Groups
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], Severity => Str, SourceIds => ArrayRef[Str|Undef], SourceType => Str, Tags => ArrayRef[L<Paws::RedShift::Tag>]])
+=head2 CreateEventSubscription
+
+=over
+
+=item SnsTopicArn => Str
+
+=item SubscriptionName => Str
+
+=item [Enabled => Bool]
+
+=item [EventCategories => ArrayRef[Str|Undef]]
+
+=item [Severity => Str]
+
+=item [SourceIds => ArrayRef[Str|Undef]]
+
+=item [SourceType => Str]
+
+=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::CreateEventSubscription>
 
@@ -922,7 +1422,16 @@ sources belonging to your AWS account. You must specify a source type
 if you specify a source ID.
 
 
-=head2 CreateHsmClientCertificate(HsmClientCertificateIdentifier => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
+=head2 CreateHsmClientCertificate
+
+=over
+
+=item HsmClientCertificateIdentifier => Str
+
+=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::CreateHsmClientCertificate>
 
@@ -941,7 +1450,26 @@ information, go to Hardware Security Modules
 in the Amazon Redshift Cluster Management Guide.
 
 
-=head2 CreateHsmConfiguration(Description => Str, HsmConfigurationIdentifier => Str, HsmIpAddress => Str, HsmPartitionName => Str, HsmPartitionPassword => Str, HsmServerPublicCertificate => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
+=head2 CreateHsmConfiguration
+
+=over
+
+=item Description => Str
+
+=item HsmConfigurationIdentifier => Str
+
+=item HsmIpAddress => Str
+
+=item HsmPartitionName => Str
+
+=item HsmPartitionPassword => Str
+
+=item HsmServerPublicCertificate => Str
+
+=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::CreateHsmConfiguration>
 
@@ -960,7 +1488,18 @@ Modules
 in the Amazon Redshift Cluster Management Guide.
 
 
-=head2 CreateSnapshotCopyGrant(SnapshotCopyGrantName => Str, [KmsKeyId => Str, Tags => ArrayRef[L<Paws::RedShift::Tag>]])
+=head2 CreateSnapshotCopyGrant
+
+=over
+
+=item SnapshotCopyGrantName => Str
+
+=item [KmsKeyId => Str]
+
+=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::CreateSnapshotCopyGrant>
 
@@ -976,7 +1515,42 @@ Redshift Database Encryption
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateTags(ResourceName => Str, Tags => ArrayRef[L<Paws::RedShift::Tag>])
+=head2 CreateSnapshotSchedule
+
+=over
+
+=item [DryRun => Bool]
+
+=item [NextInvocations => Int]
+
+=item [ScheduleDefinitions => ArrayRef[Str|Undef]]
+
+=item [ScheduleDescription => Str]
+
+=item [ScheduleIdentifier => Str]
+
+=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::CreateSnapshotSchedule>
+
+Returns: a L<Paws::RedShift::SnapshotSchedule> instance
+
+Creates a new snapshot schedule.
+
+
+=head2 CreateTags
+
+=over
+
+=item ResourceName => Str
+
+=item Tags => ArrayRef[L<Paws::RedShift::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::CreateTags>
 
@@ -984,7 +1558,7 @@ Returns: nothing
 
 Adds one or more tags to a specified resource.
 
-A resource can have up to 10 tags. If you try to create more than 10
+A resource can have up to 50 tags. If you try to create more than 50
 tags for a resource, you will receive an error and the attempt will
 fail.
 
@@ -992,7 +1566,20 @@ If you specify a key that already exists for the resource, the value
 for that key will be updated with the new value.
 
 
-=head2 DeleteCluster(ClusterIdentifier => Str, [FinalClusterSnapshotIdentifier => Str, SkipFinalClusterSnapshot => Bool])
+=head2 DeleteCluster
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item [FinalClusterSnapshotIdentifier => Str]
+
+=item [FinalClusterSnapshotRetentionPeriod => Int]
+
+=item [SkipFinalClusterSnapshot => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteCluster>
 
@@ -1020,7 +1607,14 @@ Clusters
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 DeleteClusterParameterGroup(ParameterGroupName => Str)
+=head2 DeleteClusterParameterGroup
+
+=over
+
+=item ParameterGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteClusterParameterGroup>
 
@@ -1031,7 +1625,14 @@ Deletes a specified Amazon Redshift parameter group.
 You cannot delete a parameter group if it is associated with a cluster.
 
 
-=head2 DeleteClusterSecurityGroup(ClusterSecurityGroupName => Str)
+=head2 DeleteClusterSecurityGroup
+
+=over
+
+=item ClusterSecurityGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteClusterSecurityGroup>
 
@@ -1048,7 +1649,16 @@ Cluster Security Groups
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 DeleteClusterSnapshot(SnapshotIdentifier => Str, [SnapshotClusterIdentifier => Str])
+=head2 DeleteClusterSnapshot
+
+=over
+
+=item SnapshotIdentifier => Str
+
+=item [SnapshotClusterIdentifier => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteClusterSnapshot>
 
@@ -1066,7 +1676,14 @@ must revoke all of the authorizations before you can delete the
 snapshot.
 
 
-=head2 DeleteClusterSubnetGroup(ClusterSubnetGroupName => Str)
+=head2 DeleteClusterSubnetGroup
+
+=over
+
+=item ClusterSubnetGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteClusterSubnetGroup>
 
@@ -1075,7 +1692,14 @@ Returns: nothing
 Deletes the specified cluster subnet group.
 
 
-=head2 DeleteEventSubscription(SubscriptionName => Str)
+=head2 DeleteEventSubscription
+
+=over
+
+=item SubscriptionName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteEventSubscription>
 
@@ -1084,7 +1708,14 @@ Returns: nothing
 Deletes an Amazon Redshift event notification subscription.
 
 
-=head2 DeleteHsmClientCertificate(HsmClientCertificateIdentifier => Str)
+=head2 DeleteHsmClientCertificate
+
+=over
+
+=item HsmClientCertificateIdentifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteHsmClientCertificate>
 
@@ -1093,7 +1724,14 @@ Returns: nothing
 Deletes the specified HSM client certificate.
 
 
-=head2 DeleteHsmConfiguration(HsmConfigurationIdentifier => Str)
+=head2 DeleteHsmConfiguration
+
+=over
+
+=item HsmConfigurationIdentifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteHsmConfiguration>
 
@@ -1102,7 +1740,14 @@ Returns: nothing
 Deletes the specified Amazon Redshift HSM configuration.
 
 
-=head2 DeleteSnapshotCopyGrant(SnapshotCopyGrantName => Str)
+=head2 DeleteSnapshotCopyGrant
+
+=over
+
+=item SnapshotCopyGrantName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteSnapshotCopyGrant>
 
@@ -1111,7 +1756,32 @@ Returns: nothing
 Deletes the specified snapshot copy grant.
 
 
-=head2 DeleteTags(ResourceName => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 DeleteSnapshotSchedule
+
+=over
+
+=item ScheduleIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DeleteSnapshotSchedule>
+
+Returns: nothing
+
+Deletes a snapshot schedule.
+
+
+=head2 DeleteTags
+
+=over
+
+=item ResourceName => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteTags>
 
@@ -1121,7 +1791,58 @@ Deletes a tag or tags from a resource. You must provide the ARN of the
 resource from which you want to delete the tag or tags.
 
 
-=head2 DescribeClusterParameterGroups([Marker => Str, MaxRecords => Int, ParameterGroupName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeAccountAttributes
+
+=over
+
+=item [AttributeNames => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeAccountAttributes>
+
+Returns: a L<Paws::RedShift::AccountAttributeList> instance
+
+Returns a list of attributes attached to an account
+
+
+=head2 DescribeClusterDbRevisions
+
+=over
+
+=item [ClusterIdentifier => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeClusterDbRevisions>
+
+Returns: a L<Paws::RedShift::ClusterDbRevisionsMessage> instance
+
+Returns an array of C<ClusterDbRevision> objects.
+
+
+=head2 DescribeClusterParameterGroups
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ParameterGroupName => Str]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterParameterGroups>
 
@@ -1150,7 +1871,20 @@ groups are returned regardless of whether they have tag keys or values
 associated with them.
 
 
-=head2 DescribeClusterParameters(ParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeClusterParameters
+
+=over
+
+=item ParameterGroupName => Str
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [Source => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterParameters>
 
@@ -1172,7 +1906,22 @@ Amazon Redshift Parameter Groups
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 DescribeClusters([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeClusters
+
+=over
+
+=item [ClusterIdentifier => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusters>
 
@@ -1197,7 +1946,22 @@ returned regardless of whether they have tag keys or values associated
 with them.
 
 
-=head2 DescribeClusterSecurityGroups([ClusterSecurityGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeClusterSecurityGroups
+
+=over
+
+=item [ClusterSecurityGroupName => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterSecurityGroups>
 
@@ -1224,7 +1988,36 @@ groups are returned regardless of whether they have tag keys or values
 associated with them.
 
 
-=head2 DescribeClusterSnapshots([ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeClusterSnapshots
+
+=over
+
+=item [ClusterExists => Bool]
+
+=item [ClusterIdentifier => Str]
+
+=item [EndTime => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [OwnerAccount => Str]
+
+=item [SnapshotIdentifier => Str]
+
+=item [SnapshotType => Str]
+
+=item [SortingEntities => ArrayRef[L<Paws::RedShift::SnapshotSortingEntity>]]
+
+=item [StartTime => Str]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterSnapshots>
 
@@ -1250,7 +2043,22 @@ returned regardless of whether they have tag keys or values associated
 with them.
 
 
-=head2 DescribeClusterSubnetGroups([ClusterSubnetGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeClusterSubnetGroups
+
+=over
+
+=item [ClusterSubnetGroupName => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterSubnetGroups>
 
@@ -1273,7 +2081,40 @@ are returned regardless of whether they have tag keys or values
 associated with them.
 
 
-=head2 DescribeClusterVersions([ClusterParameterGroupFamily => Str, ClusterVersion => Str, Marker => Str, MaxRecords => Int])
+=head2 DescribeClusterTracks
+
+=over
+
+=item [MaintenanceTrackName => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeClusterTracks>
+
+Returns: a L<Paws::RedShift::TrackListMessage> instance
+
+Returns a list of all the available maintenance tracks.
+
+
+=head2 DescribeClusterVersions
+
+=over
+
+=item [ClusterParameterGroupFamily => Str]
+
+=item [ClusterVersion => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterVersions>
 
@@ -1287,7 +2128,18 @@ managing clusters, go to Amazon Redshift Clusters
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 DescribeDefaultClusterParameters(ParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
+=head2 DescribeDefaultClusterParameters
+
+=over
+
+=item ParameterGroupFamily => Str
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeDefaultClusterParameters>
 
@@ -1302,7 +2154,14 @@ Amazon Redshift Parameter Groups
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 DescribeEventCategories([SourceType => Str])
+=head2 DescribeEventCategories
+
+=over
+
+=item [SourceType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeEventCategories>
 
@@ -1314,7 +2173,26 @@ types, go to Amazon Redshift Event Notifications
 (http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html).
 
 
-=head2 DescribeEvents([Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeEvents
+
+=over
+
+=item [Duration => Int]
+
+=item [EndTime => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [SourceIdentifier => Str]
+
+=item [SourceType => Str]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeEvents>
 
@@ -1327,7 +2205,22 @@ providing the name as a parameter. By default, the past hour of events
 are returned.
 
 
-=head2 DescribeEventSubscriptions([Marker => Str, MaxRecords => Int, SubscriptionName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeEventSubscriptions
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [SubscriptionName => Str]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeEventSubscriptions>
 
@@ -1349,7 +2242,22 @@ are returned regardless of whether they have tag keys or values
 associated with them.
 
 
-=head2 DescribeHsmClientCertificates([HsmClientCertificateIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeHsmClientCertificates
+
+=over
+
+=item [HsmClientCertificateIdentifier => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeHsmClientCertificates>
 
@@ -1371,7 +2279,22 @@ certificates are returned regardless of whether they have tag keys or
 values associated with them.
 
 
-=head2 DescribeHsmConfigurations([HsmConfigurationIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeHsmConfigurations
+
+=over
+
+=item [HsmConfigurationIdentifier => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeHsmConfigurations>
 
@@ -1393,7 +2316,14 @@ connections are returned regardless of whether they have tag keys or
 values associated with them.
 
 
-=head2 DescribeLoggingStatus(ClusterIdentifier => Str)
+=head2 DescribeLoggingStatus
+
+=over
+
+=item ClusterIdentifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeLoggingStatus>
 
@@ -1403,7 +2333,20 @@ Describes whether information, such as queries and connection attempts,
 is being logged for the specified Amazon Redshift cluster.
 
 
-=head2 DescribeOrderableClusterOptions([ClusterVersion => Str, Marker => Str, MaxRecords => Int, NodeType => Str])
+=head2 DescribeOrderableClusterOptions
+
+=over
+
+=item [ClusterVersion => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [NodeType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeOrderableClusterOptions>
 
@@ -1411,7 +2354,7 @@ Returns: a L<Paws::RedShift::OrderableClusterOptionsMessage> instance
 
 Returns a list of orderable cluster options. Before you create a new
 cluster you can use this operation to find what options are available,
-such as the EC2 Availability Zones (AZ) in the specific AWS region that
+such as the EC2 Availability Zones (AZ) in the specific AWS Region that
 you can specify, and the node types you can request. The node types
 differ by available storage, memory, CPU and price. With the cost
 involved you might want to obtain a list of cluster options in the
@@ -1421,7 +2364,18 @@ information about managing clusters, go to Amazon Redshift Clusters
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 DescribeReservedNodeOfferings([Marker => Str, MaxRecords => Int, ReservedNodeOfferingId => Str])
+=head2 DescribeReservedNodeOfferings
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ReservedNodeOfferingId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeReservedNodeOfferings>
 
@@ -1441,7 +2395,18 @@ Reserved Nodes
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 DescribeReservedNodes([Marker => Str, MaxRecords => Int, ReservedNodeId => Str])
+=head2 DescribeReservedNodes
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ReservedNodeId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeReservedNodes>
 
@@ -1450,7 +2415,14 @@ Returns: a L<Paws::RedShift::ReservedNodesMessage> instance
 Returns the descriptions of the reserved nodes.
 
 
-=head2 DescribeResize(ClusterIdentifier => Str)
+=head2 DescribeResize
+
+=over
+
+=item ClusterIdentifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeResize>
 
@@ -1466,7 +2438,22 @@ A resize operation can be requested using ModifyCluster and specifying
 a different number or type of nodes for the cluster.
 
 
-=head2 DescribeSnapshotCopyGrants([Marker => Str, MaxRecords => Int, SnapshotCopyGrantName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeSnapshotCopyGrants
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [SnapshotCopyGrantName => Str]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeSnapshotCopyGrants>
 
@@ -1481,7 +2468,63 @@ Redshift Database Encryption
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 DescribeTableRestoreStatus([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TableRestoreRequestId => Str])
+=head2 DescribeSnapshotSchedules
+
+=over
+
+=item [ClusterIdentifier => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ScheduleIdentifier => Str]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeSnapshotSchedules>
+
+Returns: a L<Paws::RedShift::DescribeSnapshotSchedulesOutputMessage> instance
+
+Returns a list of snapshot schedules.
+
+
+=head2 DescribeStorage
+
+=over
+
+=item  => 
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeStorage>
+
+Returns: a L<Paws::RedShift::CustomerStorageMessage> instance
+
+Returns the total amount of snapshot usage and provisioned storage for
+a user in megabytes.
+
+
+=head2 DescribeTableRestoreStatus
+
+=over
+
+=item [ClusterIdentifier => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [TableRestoreRequestId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeTableRestoreStatus>
 
@@ -1496,7 +2539,24 @@ order. Otherwise C<DescribeTableRestoreStatus> returns the status of
 the table specified by C<TableRestoreRequestId>.
 
 
-=head2 DescribeTags([Marker => Str, MaxRecords => Int, ResourceName => Str, ResourceType => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeTags
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ResourceName => Str]
+
+=item [ResourceType => Str]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeTags>
 
@@ -1538,7 +2598,14 @@ returned regardless of whether they have tag keys or values associated
 with them.
 
 
-=head2 DisableLogging(ClusterIdentifier => Str)
+=head2 DisableLogging
+
+=over
+
+=item ClusterIdentifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DisableLogging>
 
@@ -1548,7 +2615,14 @@ Stops logging information, such as queries and connection attempts, for
 the specified Amazon Redshift cluster.
 
 
-=head2 DisableSnapshotCopy(ClusterIdentifier => Str)
+=head2 DisableSnapshotCopy
+
+=over
+
+=item ClusterIdentifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::DisableSnapshotCopy>
 
@@ -1563,7 +2637,18 @@ that grants Amazon Redshift permission to the CMK in the destination
 region.
 
 
-=head2 EnableLogging(BucketName => Str, ClusterIdentifier => Str, [S3KeyPrefix => Str])
+=head2 EnableLogging
+
+=over
+
+=item BucketName => Str
+
+=item ClusterIdentifier => Str
+
+=item [S3KeyPrefix => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::EnableLogging>
 
@@ -1573,7 +2658,22 @@ Starts logging information, such as queries and connection attempts,
 for the specified Amazon Redshift cluster.
 
 
-=head2 EnableSnapshotCopy(ClusterIdentifier => Str, DestinationRegion => Str, [RetentionPeriod => Int, SnapshotCopyGrantName => Str])
+=head2 EnableSnapshotCopy
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item DestinationRegion => Str
+
+=item [ManualSnapshotRetentionPeriod => Int]
+
+=item [RetentionPeriod => Int]
+
+=item [SnapshotCopyGrantName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::EnableSnapshotCopy>
 
@@ -1583,7 +2683,24 @@ Enables the automatic copy of snapshots from one region to another
 region for a specified cluster.
 
 
-=head2 GetClusterCredentials(ClusterIdentifier => Str, DbUser => Str, [AutoCreate => Bool, DbGroups => ArrayRef[Str|Undef], DbName => Str, DurationSeconds => Int])
+=head2 GetClusterCredentials
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item DbUser => Str
+
+=item [AutoCreate => Bool]
+
+=item [DbGroups => ArrayRef[Str|Undef]]
+
+=item [DbName => Str]
+
+=item [DurationSeconds => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::GetClusterCredentials>
 
@@ -1618,7 +2735,77 @@ If the C<DbName> parameter is specified, the IAM policy must allow
 access to the resource C<dbname> for the specified database name.
 
 
-=head2 ModifyCluster(ClusterIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str|Undef], ClusterType => Str, ClusterVersion => Str, ElasticIp => Str, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, MasterUserPassword => Str, NewClusterIdentifier => Str, NodeType => Str, NumberOfNodes => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 GetReservedNodeExchangeOfferings
+
+=over
+
+=item ReservedNodeId => Str
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::GetReservedNodeExchangeOfferings>
+
+Returns: a L<Paws::RedShift::GetReservedNodeExchangeOfferingsOutputMessage> instance
+
+Returns an array of DC2 ReservedNodeOfferings that matches the payment
+type, term, and usage price of the given DC1 reserved node.
+
+
+=head2 ModifyCluster
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item [AllowVersionUpgrade => Bool]
+
+=item [AutomatedSnapshotRetentionPeriod => Int]
+
+=item [ClusterParameterGroupName => Str]
+
+=item [ClusterSecurityGroups => ArrayRef[Str|Undef]]
+
+=item [ClusterType => Str]
+
+=item [ClusterVersion => Str]
+
+=item [ElasticIp => Str]
+
+=item [Encrypted => Bool]
+
+=item [EnhancedVpcRouting => Bool]
+
+=item [HsmClientCertificateIdentifier => Str]
+
+=item [HsmConfigurationIdentifier => Str]
+
+=item [KmsKeyId => Str]
+
+=item [MaintenanceTrackName => Str]
+
+=item [ManualSnapshotRetentionPeriod => Int]
+
+=item [MasterUserPassword => Str]
+
+=item [NewClusterIdentifier => Str]
+
+=item [NodeType => Str]
+
+=item [NumberOfNodes => Int]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [PubliclyAccessible => Bool]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyCluster>
 
@@ -1640,7 +2827,37 @@ number of nodes and the node type even if one of the parameters does
 not change.
 
 
-=head2 ModifyClusterIamRoles(ClusterIdentifier => Str, [AddIamRoles => ArrayRef[Str|Undef], RemoveIamRoles => ArrayRef[Str|Undef]])
+=head2 ModifyClusterDbRevision
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item RevisionTarget => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ModifyClusterDbRevision>
+
+Returns: a L<Paws::RedShift::ModifyClusterDbRevisionResult> instance
+
+Modifies the database revision of a cluster. The database revision is a
+unique revision of the database running in a cluster.
+
+
+=head2 ModifyClusterIamRoles
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item [AddIamRoles => ArrayRef[Str|Undef]]
+
+=item [RemoveIamRoles => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyClusterIamRoles>
 
@@ -1652,7 +2869,43 @@ that can be used by the cluster to access other AWS services.
 A cluster can have up to 10 IAM roles associated at any time.
 
 
-=head2 ModifyClusterParameterGroup(ParameterGroupName => Str, Parameters => ArrayRef[L<Paws::RedShift::Parameter>])
+=head2 ModifyClusterMaintenance
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item [DeferMaintenance => Bool]
+
+=item [DeferMaintenanceDuration => Int]
+
+=item [DeferMaintenanceEndTime => Str]
+
+=item [DeferMaintenanceIdentifier => Str]
+
+=item [DeferMaintenanceStartTime => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ModifyClusterMaintenance>
+
+Returns: a L<Paws::RedShift::ModifyClusterMaintenanceResult> instance
+
+Modifies the maintenance settings of a cluster. For example, you can
+defer a maintenance window. You can also update or cancel a deferment.
+
+
+=head2 ModifyClusterParameterGroup
+
+=over
+
+=item ParameterGroupName => Str
+
+=item Parameters => ArrayRef[L<Paws::RedShift::Parameter>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyClusterParameterGroup>
 
@@ -1666,7 +2919,58 @@ Amazon Redshift Parameter Groups
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 ModifyClusterSubnetGroup(ClusterSubnetGroupName => Str, SubnetIds => ArrayRef[Str|Undef], [Description => Str])
+=head2 ModifyClusterSnapshot
+
+=over
+
+=item SnapshotIdentifier => Str
+
+=item [Force => Bool]
+
+=item [ManualSnapshotRetentionPeriod => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ModifyClusterSnapshot>
+
+Returns: a L<Paws::RedShift::ModifyClusterSnapshotResult> instance
+
+Modifies the settings for a snapshot.
+
+
+=head2 ModifyClusterSnapshotSchedule
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item [DisassociateSchedule => Bool]
+
+=item [ScheduleIdentifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ModifyClusterSnapshotSchedule>
+
+Returns: nothing
+
+Modifies a snapshot schedule for a cluster.
+
+
+=head2 ModifyClusterSubnetGroup
+
+=over
+
+=item ClusterSubnetGroupName => Str
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyClusterSubnetGroup>
 
@@ -1677,7 +2981,26 @@ subnets. The operation replaces the existing list of subnets with the
 new list of subnets.
 
 
-=head2 ModifyEventSubscription(SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], Severity => Str, SnsTopicArn => Str, SourceIds => ArrayRef[Str|Undef], SourceType => Str])
+=head2 ModifyEventSubscription
+
+=over
+
+=item SubscriptionName => Str
+
+=item [Enabled => Bool]
+
+=item [EventCategories => ArrayRef[Str|Undef]]
+
+=item [Severity => Str]
+
+=item [SnsTopicArn => Str]
+
+=item [SourceIds => ArrayRef[Str|Undef]]
+
+=item [SourceType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyEventSubscription>
 
@@ -1686,17 +3009,62 @@ Returns: a L<Paws::RedShift::ModifyEventSubscriptionResult> instance
 Modifies an existing Amazon Redshift event notification subscription.
 
 
-=head2 ModifySnapshotCopyRetentionPeriod(ClusterIdentifier => Str, RetentionPeriod => Int)
+=head2 ModifySnapshotCopyRetentionPeriod
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item RetentionPeriod => Int
+
+=item [Manual => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::ModifySnapshotCopyRetentionPeriod>
 
 Returns: a L<Paws::RedShift::ModifySnapshotCopyRetentionPeriodResult> instance
 
-Modifies the number of days to retain automated snapshots in the
-destination region after they are copied from the source region.
+Modifies the number of days to retain snapshots in the destination AWS
+Region after they are copied from the source AWS Region. By default,
+this operation only changes the retention period of copied automated
+snapshots. The retention periods for both new and existing copied
+automated snapshots are updated with the new retention period. You can
+set the manual option to change only the retention periods of copied
+manual snapshots. If you set this option, only newly copied manual
+snapshots have the new retention period.
 
 
-=head2 PurchaseReservedNodeOffering(ReservedNodeOfferingId => Str, [NodeCount => Int])
+=head2 ModifySnapshotSchedule
+
+=over
+
+=item ScheduleDefinitions => ArrayRef[Str|Undef]
+
+=item ScheduleIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ModifySnapshotSchedule>
+
+Returns: a L<Paws::RedShift::SnapshotSchedule> instance
+
+Modifies a snapshot schedule. Any schedule associated with a cluster is
+modified asynchronously.
+
+
+=head2 PurchaseReservedNodeOffering
+
+=over
+
+=item ReservedNodeOfferingId => Str
+
+=item [NodeCount => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::PurchaseReservedNodeOffering>
 
@@ -1715,7 +3083,14 @@ Reserved Nodes
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 RebootCluster(ClusterIdentifier => Str)
+=head2 RebootCluster
+
+=over
+
+=item ClusterIdentifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::RebootCluster>
 
@@ -1731,7 +3106,18 @@ go to Amazon Redshift Clusters
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 ResetClusterParameterGroup(ParameterGroupName => Str, [Parameters => ArrayRef[L<Paws::RedShift::Parameter>], ResetAllParameters => Bool])
+=head2 ResetClusterParameterGroup
+
+=over
+
+=item ParameterGroupName => Str
+
+=item [Parameters => ArrayRef[L<Paws::RedShift::Parameter>]]
+
+=item [ResetAllParameters => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::ResetClusterParameterGroup>
 
@@ -1744,7 +3130,126 @@ I<ResetAllParameters> parameter. For parameter changes to take effect
 you must reboot any associated clusters.
 
 
-=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str|Undef], ClusterSubnetGroupName => Str, ElasticIp => Str, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str|Undef], KmsKeyId => Str, NodeType => Str, OwnerAccount => Str, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, SnapshotClusterIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 ResizeCluster
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item NumberOfNodes => Int
+
+=item [Classic => Bool]
+
+=item [ClusterType => Str]
+
+=item [NodeType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ResizeCluster>
+
+Returns: a L<Paws::RedShift::ResizeClusterResult> instance
+
+Changes the size of the cluster. You can change the cluster's type, or
+change the number or type of nodes. The default behavior is to use the
+elastic resize method. With an elastic resize, your cluster is
+available for read and write operations more quickly than with the
+classic resize method.
+
+Elastic resize operations have the following restrictions:
+
+=over
+
+=item *
+
+You can only resize clusters of the following types:
+
+=over
+
+=item *
+
+dc2.large
+
+=item *
+
+dc2.8xlarge
+
+=item *
+
+ds2.xlarge
+
+=item *
+
+ds2.8xlarge
+
+=back
+
+=item *
+
+The type of nodes that you add must match the node type for the
+cluster.
+
+=back
+
+
+
+=head2 RestoreFromClusterSnapshot
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item SnapshotIdentifier => Str
+
+=item [AdditionalInfo => Str]
+
+=item [AllowVersionUpgrade => Bool]
+
+=item [AutomatedSnapshotRetentionPeriod => Int]
+
+=item [AvailabilityZone => Str]
+
+=item [ClusterParameterGroupName => Str]
+
+=item [ClusterSecurityGroups => ArrayRef[Str|Undef]]
+
+=item [ClusterSubnetGroupName => Str]
+
+=item [ElasticIp => Str]
+
+=item [EnhancedVpcRouting => Bool]
+
+=item [HsmClientCertificateIdentifier => Str]
+
+=item [HsmConfigurationIdentifier => Str]
+
+=item [IamRoles => ArrayRef[Str|Undef]]
+
+=item [KmsKeyId => Str]
+
+=item [MaintenanceTrackName => Str]
+
+=item [ManualSnapshotRetentionPeriod => Int]
+
+=item [NodeType => Str]
+
+=item [OwnerAccount => Str]
+
+=item [Port => Int]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [PubliclyAccessible => Bool]
+
+=item [SnapshotClusterIdentifier => Str]
+
+=item [SnapshotScheduleIdentifier => Str]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::RestoreFromClusterSnapshot>
 
@@ -1769,7 +3274,28 @@ Redshift Snapshots
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 RestoreTableFromClusterSnapshot(ClusterIdentifier => Str, NewTableName => Str, SnapshotIdentifier => Str, SourceDatabaseName => Str, SourceTableName => Str, [SourceSchemaName => Str, TargetDatabaseName => Str, TargetSchemaName => Str])
+=head2 RestoreTableFromClusterSnapshot
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item NewTableName => Str
+
+=item SnapshotIdentifier => Str
+
+=item SourceDatabaseName => Str
+
+=item SourceTableName => Str
+
+=item [SourceSchemaName => Str]
+
+=item [TargetDatabaseName => Str]
+
+=item [TargetSchemaName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::RestoreTableFromClusterSnapshot>
 
@@ -1791,7 +3317,20 @@ C<RestoreTableFromClusterSnapshot>. This way, you can replace the
 original table with the table created from the snapshot.
 
 
-=head2 RevokeClusterSecurityGroupIngress(ClusterSecurityGroupName => Str, [CIDRIP => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str])
+=head2 RevokeClusterSecurityGroupIngress
+
+=over
+
+=item ClusterSecurityGroupName => Str
+
+=item [CIDRIP => Str]
+
+=item [EC2SecurityGroupName => Str]
+
+=item [EC2SecurityGroupOwnerId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::RevokeClusterSecurityGroupIngress>
 
@@ -1806,7 +3345,18 @@ Groups
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 RevokeSnapshotAccess(AccountWithRestoreAccess => Str, SnapshotIdentifier => Str, [SnapshotClusterIdentifier => Str])
+=head2 RevokeSnapshotAccess
+
+=over
+
+=item AccountWithRestoreAccess => Str
+
+=item SnapshotIdentifier => Str
+
+=item [SnapshotClusterIdentifier => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::RevokeSnapshotAccess>
 
@@ -1822,7 +3372,14 @@ Redshift Snapshots
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 RotateEncryptionKey(ClusterIdentifier => Str)
+=head2 RotateEncryptionKey
+
+=over
+
+=item ClusterIdentifier => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::RedShift::RotateEncryptionKey>
 
@@ -1836,6 +3393,18 @@ Rotates the encryption keys for a cluster.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllClusterDbRevisions(sub { },[ClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllClusterDbRevisions([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClusterDbRevisions, passing the object as the first parameter, and the string 'ClusterDbRevisions' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterDbRevisionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllClusterParameterGroups(sub { },[Marker => Str, MaxRecords => Int, ParameterGroupName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
@@ -1885,9 +3454,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RedShift::ClusterSecurityGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllClusterSnapshots(sub { },[ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeAllClusterSnapshots(sub { },[ClusterExists => Bool, ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, SortingEntities => ArrayRef[L<Paws::RedShift::SnapshotSortingEntity>], StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllClusterSnapshots([ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+=head2 DescribeAllClusterSnapshots([ClusterExists => Bool, ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, SortingEntities => ArrayRef[L<Paws::RedShift::SnapshotSortingEntity>], StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1907,6 +3476,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ClusterSubnetGroups, passing the object as the first parameter, and the string 'ClusterSubnetGroups' as the second parameter 
 
 If not, it will return a a L<Paws::RedShift::ClusterSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterTracks(sub { },[MaintenanceTrackName => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllClusterTracks([MaintenanceTrackName => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MaintenanceTracks, passing the object as the first parameter, and the string 'MaintenanceTracks' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::TrackListMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllClusterVersions(sub { },[ClusterParameterGroupFamily => Str, ClusterVersion => Str, Marker => Str, MaxRecords => Int])
@@ -2015,6 +3596,66 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ReservedNodes, passing the object as the first parameter, and the string 'ReservedNodes' as the second parameter 
 
 If not, it will return a a L<Paws::RedShift::ReservedNodesMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSnapshotCopyGrants(sub { },[Marker => Str, MaxRecords => Int, SnapshotCopyGrantName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllSnapshotCopyGrants([Marker => Str, MaxRecords => Int, SnapshotCopyGrantName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SnapshotCopyGrants, passing the object as the first parameter, and the string 'SnapshotCopyGrants' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::SnapshotCopyGrantMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSnapshotSchedules(sub { },[ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, ScheduleIdentifier => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllSnapshotSchedules([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, ScheduleIdentifier => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SnapshotSchedules, passing the object as the first parameter, and the string 'SnapshotSchedules' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::DescribeSnapshotSchedulesOutputMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTableRestoreStatus(sub { },[ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TableRestoreRequestId => Str])
+
+=head2 DescribeAllTableRestoreStatus([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TableRestoreRequestId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TableRestoreStatusDetails, passing the object as the first parameter, and the string 'TableRestoreStatusDetails' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::TableRestoreStatusMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTags(sub { },[Marker => Str, MaxRecords => Int, ResourceName => Str, ResourceType => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTags([Marker => Str, MaxRecords => Int, ResourceName => Str, ResourceType => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TaggedResources, passing the object as the first parameter, and the string 'TaggedResources' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::TaggedResourceListMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllReservedNodeExchangeOfferings(sub { },ReservedNodeId => Str, [Marker => Str, MaxRecords => Int])
+
+=head2 GetAllReservedNodeExchangeOfferings(ReservedNodeId => Str, [Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedNodeOfferings, passing the object as the first parameter, and the string 'ReservedNodeOfferings' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::GetReservedNodeExchangeOfferingsOutputMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

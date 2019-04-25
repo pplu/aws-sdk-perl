@@ -22,17 +22,38 @@ Paws::EC2::DescribeElasticGpus - Arguments for method DescribeElasticGpus on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeElasticGpus on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeElasticGpus on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeElasticGpus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeElasticGpus.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeElasticGpus(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeElasticGpusResult = $ec2->DescribeElasticGpus(
+      DryRun        => 1,                      # OPTIONAL
+      ElasticGpuIds => [ 'MyString', ... ],    # OPTIONAL
+      Filters       => [
+        {
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],       # OPTIONAL
+        },
+        ...
+      ],                                       # OPTIONAL
+      MaxResults => 1,                         # OPTIONAL
+      NextToken  => 'MyString',                # OPTIONAL
+    );
+
+    # Results:
+    my $ElasticGpuSet = $DescribeElasticGpusResult->ElasticGpuSet;
+    my $MaxResults    = $DescribeElasticGpusResult->MaxResults;
+    my $NextToken     = $DescribeElasticGpusResult->NextToken;
+
+    # Returns a L<Paws::EC2::DescribeElasticGpusResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeElasticGpus>
 
 =head1 ATTRIBUTES
 
@@ -48,7 +69,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 ElasticGpuIds => ArrayRef[Str|Undef]
 
-One or more Elastic GPU IDs.
+One or more Elastic Graphics accelerator IDs.
 
 
 
@@ -60,27 +81,28 @@ One or more filters.
 
 =item *
 
-C<availability-zone> - The Availability Zone in which the Elastic GPU
-resides.
+C<availability-zone> - The Availability Zone in which the Elastic
+Graphics accelerator resides.
 
 =item *
 
-C<elastic-gpu-health> - The status of the Elastic GPU (C<OK> |
-C<IMPAIRED>).
+C<elastic-gpu-health> - The status of the Elastic Graphics accelerator
+(C<OK> | C<IMPAIRED>).
 
 =item *
 
-C<elastic-gpu-state> - The state of the Elastic GPU (C<ATTACHED>).
+C<elastic-gpu-state> - The state of the Elastic Graphics accelerator
+(C<ATTACHED>).
 
 =item *
 
-C<elastic-gpu-type> - The type of Elastic GPU; for example,
-C<eg1.medium>.
+C<elastic-gpu-type> - The type of Elastic Graphics accelerator; for
+example, C<eg1.medium>.
 
 =item *
 
-C<instance-id> - The ID of the instance to which the Elastic GPU is
-associated.
+C<instance-id> - The ID of the instance to which the Elastic Graphics
+accelerator is associated.
 
 =back
 

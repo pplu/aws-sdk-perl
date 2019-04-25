@@ -21,17 +21,39 @@ Paws::StorageGateway::DescribeVTLDevices - Arguments for method DescribeVTLDevic
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeVTLDevices on the 
-AWS Storage Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeVTLDevices on the
+L<AWS Storage Gateway|Paws::StorageGateway> service. Use the attributes of this class
 as arguments to method DescribeVTLDevices.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVTLDevices.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeVTLDevices(Att1 => $value1, Att2 => $value2, ...);
+    my $storagegateway = Paws->service('StorageGateway');
+    # To describe virtual tape library (VTL) devices of a single gateway
+    # Returns a description of virtual tape library (VTL) devices for the
+    # specified gateway.
+    my $DescribeVTLDevicesOutput = $storagegateway->DescribeVTLDevices(
+      {
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
+        'Limit'         => 123,
+        'Marker'        => 1,
+        'VTLDeviceARNs' => [
+
+        ]
+      }
+    );
+
+    # Results:
+    my $GatewayARN = $DescribeVTLDevicesOutput->GatewayARN;
+    my $Marker     = $DescribeVTLDevicesOutput->Marker;
+    my $VTLDevices = $DescribeVTLDevicesOutput->VTLDevices;
+
+    # Returns a L<Paws::StorageGateway::DescribeVTLDevicesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/DescribeVTLDevices>
 
 =head1 ATTRIBUTES
 

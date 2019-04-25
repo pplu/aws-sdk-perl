@@ -15,6 +15,8 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has NodeType => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -22,6 +24,7 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has SnapshotScheduleIdentifier => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -39,17 +42,51 @@ Paws::RedShift::RestoreFromClusterSnapshot - Arguments for method RestoreFromClu
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RestoreFromClusterSnapshot on the 
-Amazon Redshift service. Use the attributes of this class
+This class represents the parameters used for calling the method RestoreFromClusterSnapshot on the
+L<Amazon Redshift|Paws::RedShift> service. Use the attributes of this class
 as arguments to method RestoreFromClusterSnapshot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreFromClusterSnapshot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RestoreFromClusterSnapshot(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $RestoreFromClusterSnapshotResult =
+      $redshift->RestoreFromClusterSnapshot(
+      ClusterIdentifier                => 'MyString',
+      SnapshotIdentifier               => 'MyString',
+      AdditionalInfo                   => 'MyString',             # OPTIONAL
+      AllowVersionUpgrade              => 1,                      # OPTIONAL
+      AutomatedSnapshotRetentionPeriod => 1,                      # OPTIONAL
+      AvailabilityZone                 => 'MyString',             # OPTIONAL
+      ClusterParameterGroupName        => 'MyString',             # OPTIONAL
+      ClusterSecurityGroups            => [ 'MyString', ... ],    # OPTIONAL
+      ClusterSubnetGroupName           => 'MyString',             # OPTIONAL
+      ElasticIp                        => 'MyString',             # OPTIONAL
+      EnhancedVpcRouting               => 1,                      # OPTIONAL
+      HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
+      HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
+      IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
+      KmsKeyId                         => 'MyString',             # OPTIONAL
+      MaintenanceTrackName             => 'MyString',             # OPTIONAL
+      ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
+      NodeType                         => 'MyString',             # OPTIONAL
+      OwnerAccount                     => 'MyString',             # OPTIONAL
+      Port                             => 1,                      # OPTIONAL
+      PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
+      PubliclyAccessible               => 1,                      # OPTIONAL
+      SnapshotClusterIdentifier        => 'MyString',             # OPTIONAL
+      SnapshotScheduleIdentifier       => 'MyString',             # OPTIONAL
+      VpcSecurityGroupIds              => [ 'MyString', ... ],    # OPTIONAL
+      );
+
+    # Results:
+    my $Cluster = $RestoreFromClusterSnapshotResult->Cluster;
+
+    # Returns a L<Paws::RedShift::RestoreFromClusterSnapshotResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/RestoreFromClusterSnapshot>
 
 =head1 ATTRIBUTES
 
@@ -232,6 +269,24 @@ shared snapshot.
 
 
 
+=head2 MaintenanceTrackName => Str
+
+The name of the maintenance track for the restored cluster. When you
+take a snapshot, the snapshot inherits the C<MaintenanceTrack> value
+from the cluster. The snapshot might be on a different track than the
+cluster that was the source for the snapshot. For example, suppose that
+you take a snapshot of a cluster that is on the current track and then
+change the cluster to be on the trailing track. In this case, the
+snapshot and the source cluster are on different tracks.
+
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+
+
+
+
 =head2 NodeType => Str
 
 The node type that the restored cluster will be provisioned with.
@@ -240,13 +295,15 @@ Default: The node type of the cluster from which the snapshot was
 taken. You can modify this if you are using any DS node type. In that
 case, you can choose to restore into another DS node type of the same
 size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or
-ds2.xlarge into ds1.xlarge. If you have a DC instance type, you must
+ds1.xlarge into ds2.xlarge. If you have a DC instance type, you must
 restore into that same instance type and size. In other words, you can
 only restore a dc1.large instance type into another dc1.large instance
-type. For more information about node types, see About Clusters and
-Nodes
+type or dc2.large instance type. You can't restore dc1.8xlarge to
+dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a
+dc2.8large cluster. For more information about node types, see About
+Clusters and Nodes
 (http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes)
-in the I<Amazon Redshift Cluster Management Guide>
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 
@@ -308,6 +365,12 @@ The name of the snapshot from which to create the new cluster. This
 parameter isn't case sensitive.
 
 Example: C<my-snapshot-id>
+
+
+
+=head2 SnapshotScheduleIdentifier => Str
+
+A unique identifier for the snapshot schedule.
 
 
 

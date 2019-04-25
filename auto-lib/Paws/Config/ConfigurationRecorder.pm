@@ -48,7 +48,7 @@ change the assigned name.
 
 =head2 RecordingGroup => L<Paws::Config::RecordingGroup>
 
-  Specifies the types of AWS resource for which AWS Config records
+  Specifies the types of AWS resources for which AWS Config records
 configuration changes.
 
 

@@ -21,17 +21,31 @@ Paws::CognitoIdentity::ListIdentities - Arguments for method ListIdentities on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListIdentities on the 
-Amazon Cognito Identity service. Use the attributes of this class
+This class represents the parameters used for calling the method ListIdentities on the
+L<Amazon Cognito Identity|Paws::CognitoIdentity> service. Use the attributes of this class
 as arguments to method ListIdentities.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListIdentities.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListIdentities(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-identity = Paws->service('CognitoIdentity');
+    my $ListIdentitiesResponse = $cognito -identity->ListIdentities(
+      IdentityPoolId => 'MyIdentityPoolId',
+      MaxResults     => 1,
+      HideDisabled   => 1,                    # OPTIONAL
+      NextToken      => 'MyPaginationKey',    # OPTIONAL
+    );
+
+    # Results:
+    my $Identities     = $ListIdentitiesResponse->Identities;
+    my $IdentityPoolId = $ListIdentitiesResponse->IdentityPoolId;
+    my $NextToken      = $ListIdentitiesResponse->NextToken;
+
+    # Returns a L<Paws::CognitoIdentity::ListIdentitiesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-identity/ListIdentities>
 
 =head1 ATTRIBUTES
 

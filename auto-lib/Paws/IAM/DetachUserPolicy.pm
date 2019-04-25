@@ -19,17 +19,23 @@ Paws::IAM::DetachUserPolicy - Arguments for method DetachUserPolicy on L<Paws::I
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DetachUserPolicy on the 
-AWS Identity and Access Management service. Use the attributes of this class
+This class represents the parameters used for calling the method DetachUserPolicy on the
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method DetachUserPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetachUserPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DetachUserPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    $iam->DetachUserPolicy(
+      PolicyArn => 'MyarnType',
+      UserName  => 'MyuserNameType',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/DetachUserPolicy>
 
 =head1 ATTRIBUTES
 
@@ -50,10 +56,10 @@ in the I<AWS General Reference>.
 The name (friendly name, not ARN) of the IAM user to detach the policy
 from.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 

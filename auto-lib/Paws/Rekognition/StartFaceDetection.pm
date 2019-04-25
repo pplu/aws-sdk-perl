@@ -22,17 +22,40 @@ Paws::Rekognition::StartFaceDetection - Arguments for method StartFaceDetection 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StartFaceDetection on the 
-Amazon Rekognition service. Use the attributes of this class
+This class represents the parameters used for calling the method StartFaceDetection on the
+L<Amazon Rekognition|Paws::Rekognition> service. Use the attributes of this class
 as arguments to method StartFaceDetection.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartFaceDetection.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartFaceDetection(Att1 => $value1, Att2 => $value2, ...);
+    my $rekognition = Paws->service('Rekognition');
+    my $StartFaceDetectionResponse = $rekognition->StartFaceDetection(
+      Video => {
+        S3Object => {
+          Bucket  => 'MyS3Bucket',           # min: 3, max: 255; OPTIONAL
+          Name    => 'MyS3ObjectName',       # min: 1, max: 1024; OPTIONAL
+          Version => 'MyS3ObjectVersion',    # min: 1, max: 1024; OPTIONAL
+        },    # OPTIONAL
+      },
+      ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
+      FaceAttributes      => 'DEFAULT',                 # OPTIONAL
+      JobTag              => 'MyJobTag',                # OPTIONAL
+      NotificationChannel => {
+        RoleArn     => 'MyRoleArn',
+        SNSTopicArn => 'MySNSTopicArn',
+
+      },                                                # OPTIONAL
+    );
+
+    # Results:
+    my $JobId = $StartFaceDetectionResponse->JobId;
+
+    # Returns a L<Paws::Rekognition::StartFaceDetectionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition/StartFaceDetection>
 
 =head1 ATTRIBUTES
 
@@ -66,8 +89,8 @@ status published to the Amazon Simple Notification Service topic.
 
 =head2 NotificationChannel => L<Paws::Rekognition::NotificationChannel>
 
-The ARN of the Amazon SNS topic to which you want Rekognition Video to
-publish the completion status of the face detection operation.
+The ARN of the Amazon SNS topic to which you want Amazon Rekognition
+Video to publish the completion status of the face detection operation.
 
 
 

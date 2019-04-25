@@ -28,17 +28,37 @@ Paws::DMS::ModifyReplicationInstance - Arguments for method ModifyReplicationIns
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyReplicationInstance on the 
-AWS Database Migration Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyReplicationInstance on the
+L<AWS Database Migration Service|Paws::DMS> service. Use the attributes of this class
 as arguments to method ModifyReplicationInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyReplicationInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyReplicationInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $dms = Paws->service('DMS');
+    my $ModifyReplicationInstanceResponse = $dms->ModifyReplicationInstance(
+      ReplicationInstanceArn        => 'MyString',
+      AllocatedStorage              => 1,                      # OPTIONAL
+      AllowMajorVersionUpgrade      => 1,                      # OPTIONAL
+      ApplyImmediately              => 1,                      # OPTIONAL
+      AutoMinorVersionUpgrade       => 1,                      # OPTIONAL
+      EngineVersion                 => 'MyString',             # OPTIONAL
+      MultiAZ                       => 1,                      # OPTIONAL
+      PreferredMaintenanceWindow    => 'MyString',             # OPTIONAL
+      ReplicationInstanceClass      => 'MyString',             # OPTIONAL
+      ReplicationInstanceIdentifier => 'MyString',             # OPTIONAL
+      VpcSecurityGroupIds           => [ 'MyString', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $ReplicationInstance =
+      $ModifyReplicationInstanceResponse->ReplicationInstance;
+
+    # Returns a L<Paws::DMS::ModifyReplicationInstanceResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms/ModifyReplicationInstance>
 
 =head1 ATTRIBUTES
 

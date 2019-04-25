@@ -69,7 +69,7 @@ C<Server>).
 
 =head2 TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>
 
-  The configuration specifying how the deployment traffic will be routed.
+  The configuration that specifies how the deployment traffic is routed.
 Only deployments with a Lambda compute platform can specify this.
 
 

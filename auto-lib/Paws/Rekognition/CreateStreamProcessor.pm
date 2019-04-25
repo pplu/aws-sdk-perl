@@ -22,17 +22,44 @@ Paws::Rekognition::CreateStreamProcessor - Arguments for method CreateStreamProc
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateStreamProcessor on the 
-Amazon Rekognition service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateStreamProcessor on the
+L<Amazon Rekognition|Paws::Rekognition> service. Use the attributes of this class
 as arguments to method CreateStreamProcessor.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStreamProcessor.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateStreamProcessor(Att1 => $value1, Att2 => $value2, ...);
+    my $rekognition = Paws->service('Rekognition');
+    my $CreateStreamProcessorResponse = $rekognition->CreateStreamProcessor(
+      Input => {
+        KinesisVideoStream => {
+          Arn => 'MyKinesisVideoArn',    # OPTIONAL
+        },    # OPTIONAL
+      },
+      Name   => 'MyStreamProcessorName',
+      Output => {
+        KinesisDataStream => {
+          Arn => 'MyKinesisDataArn',    # OPTIONAL
+        },    # OPTIONAL
+      },
+      RoleArn  => 'MyRoleArn',
+      Settings => {
+        FaceSearch => {
+          CollectionId       => 'MyCollectionId',   # min: 1, max: 255; OPTIONAL
+          FaceMatchThreshold => 1.0,                # max: 100; OPTIONAL
+        },    # OPTIONAL
+      },
+
+    );
+
+    # Results:
+    my $StreamProcessorArn = $CreateStreamProcessorResponse->StreamProcessorArn;
+
+    # Returns a L<Paws::Rekognition::CreateStreamProcessorResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition/CreateStreamProcessor>
 
 =head1 ATTRIBUTES
 
@@ -49,14 +76,15 @@ C<StreamProcessorInput>.
 
 An identifier you assign to the stream processor. You can use C<Name>
 to manage the stream processor. For example, you can get the current
-status of the stream processor by calling . C<Name> is idempotent.
+status of the stream processor by calling DescribeStreamProcessor.
+C<Name> is idempotent.
 
 
 
 =head2 B<REQUIRED> Output => L<Paws::Rekognition::StreamProcessorOutput>
 
-Kinesis data stream stream to which Rekognition Video puts the analysis
-results. If you are using the AWS CLI, the parameter name is
+Kinesis data stream stream to which Amazon Rekognition Video puts the
+analysis results. If you are using the AWS CLI, the parameter name is
 C<StreamProcessorOutput>.
 
 

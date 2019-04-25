@@ -41,8 +41,6 @@ accounts and the VPC for your Amazon GameLift fleets. This record may
 be for an active peering connection or a pending connection that has
 not yet been established.
 
-VPC peering connection operations include:
-
 =over
 
 =item *
@@ -100,9 +98,10 @@ be created.
 
   Unique identifier for a VPC with resources to be accessed by your
 Amazon GameLift fleet. The VPC must be in the same region where your
-fleet is deployed. To get VPC information, including IDs, use the
-Virtual Private Cloud service tools, including the VPC Dashboard in the
-AWS Management Console.
+fleet is deployed. Look up a VPC ID using the VPC Dashboard
+(https://console.aws.amazon.com/vpc/) in the AWS Management Console.
+Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 
 =head2 Status => L<Paws::GameLift::VpcPeeringConnectionStatus>

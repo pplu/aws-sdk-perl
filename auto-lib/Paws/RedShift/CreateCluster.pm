@@ -19,6 +19,8 @@ package Paws::RedShift::CreateCluster;
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
   has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
   has NodeType => (is => 'ro', isa => 'Str', required => 1);
@@ -26,6 +28,7 @@ package Paws::RedShift::CreateCluster;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+  has SnapshotScheduleIdentifier => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
@@ -44,17 +47,61 @@ Paws::RedShift::CreateCluster - Arguments for method CreateCluster on L<Paws::Re
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateCluster on the 
-Amazon Redshift service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateCluster on the
+L<Amazon Redshift|Paws::RedShift> service. Use the attributes of this class
 as arguments to method CreateCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $CreateClusterResult = $redshift->CreateCluster(
+      ClusterIdentifier                => 'MyString',
+      MasterUserPassword               => 'MyString',
+      MasterUsername                   => 'MyString',
+      NodeType                         => 'MyString',
+      AdditionalInfo                   => 'MyString',             # OPTIONAL
+      AllowVersionUpgrade              => 1,                      # OPTIONAL
+      AutomatedSnapshotRetentionPeriod => 1,                      # OPTIONAL
+      AvailabilityZone                 => 'MyString',             # OPTIONAL
+      ClusterParameterGroupName        => 'MyString',             # OPTIONAL
+      ClusterSecurityGroups            => [ 'MyString', ... ],    # OPTIONAL
+      ClusterSubnetGroupName           => 'MyString',             # OPTIONAL
+      ClusterType                      => 'MyString',             # OPTIONAL
+      ClusterVersion                   => 'MyString',             # OPTIONAL
+      DBName                           => 'MyString',             # OPTIONAL
+      ElasticIp                        => 'MyString',             # OPTIONAL
+      Encrypted                        => 1,                      # OPTIONAL
+      EnhancedVpcRouting               => 1,                      # OPTIONAL
+      HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
+      HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
+      IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
+      KmsKeyId                         => 'MyString',             # OPTIONAL
+      MaintenanceTrackName             => 'MyString',             # OPTIONAL
+      ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
+      NumberOfNodes                    => 1,                      # OPTIONAL
+      Port                             => 1,                      # OPTIONAL
+      PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
+      PubliclyAccessible               => 1,                      # OPTIONAL
+      SnapshotScheduleIdentifier       => 'MyString',             # OPTIONAL
+      Tags                             => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                          # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                 # OPTIONAL
+    );
+
+    # Results:
+    my $Cluster = $CreateClusterResult->Cluster;
+
+    # Returns a L<Paws::RedShift::CreateClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/CreateCluster>
 
 =head1 ATTRIBUTES
 
@@ -336,6 +383,24 @@ you want to use to encrypt data in the cluster.
 
 
 
+=head2 MaintenanceTrackName => Str
+
+An optional parameter for the name of the maintenance track for the
+cluster. If you don't provide a maintenance track name, the cluster is
+assigned to the C<current> track.
+
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+The default number of days to retain a manual snapshot. If the value is
+-1, the snapshot is retained indefinitely. This setting doesn't change
+the retention period of existing snapshots.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+
+
 =head2 B<REQUIRED> MasterUsername => Str
 
 The user name associated with the master user account for the cluster
@@ -347,7 +412,8 @@ Constraints:
 
 =item *
 
-Must be 1 - 128 alphanumeric characters.
+Must be 1 - 128 alphanumeric characters. The user name can't be
+C<PUBLIC>.
 
 =item *
 
@@ -407,8 +473,9 @@ node types, go to Working with Clusters
 (http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
 in the I<Amazon Redshift Cluster Management Guide>.
 
-Valid Values: C<ds1.xlarge> | C<ds1.8xlarge> | C<ds2.xlarge> |
-C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge>.
+Valid Values: C<ds2.xlarge> | C<ds2.8xlarge> | C<ds2.xlarge> |
+C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge> | C<dc2.large> |
+C<dc2.8xlarge>
 
 
 
@@ -469,6 +536,12 @@ Constraints: Minimum 30-minute window.
 =head2 PubliclyAccessible => Bool
 
 If C<true>, the cluster can be accessed from a public network.
+
+
+
+=head2 SnapshotScheduleIdentifier => Str
+
+A unique identifier for the snapshot schedule.
 
 
 

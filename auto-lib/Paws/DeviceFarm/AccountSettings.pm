@@ -4,6 +4,7 @@ package Paws::DeviceFarm::AccountSettings;
   has DefaultJobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'defaultJobTimeoutMinutes', traits => ['NameInRequest']);
   has MaxJobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'maxJobTimeoutMinutes', traits => ['NameInRequest']);
   has MaxSlots => (is => 'ro', isa => 'Paws::DeviceFarm::MaxSlotMap', request_name => 'maxSlots', traits => ['NameInRequest']);
+  has SkipAppResign => (is => 'ro', isa => 'Bool', request_name => 'skipAppResign', traits => ['NameInRequest']);
   has TrialMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::TrialMinutes', request_name => 'trialMinutes', traits => ['NameInRequest']);
   has UnmeteredDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', request_name => 'unmeteredDevices', traits => ['NameInRequest']);
   has UnmeteredRemoteAccessDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', request_name => 'unmeteredRemoteAccessDevices', traits => ['NameInRequest']);
@@ -65,6 +66,17 @@ out.
 Each maximum is expressed as an C<offering-id:number> pair, where the
 C<offering-id> represents one of the IDs returned by the
 C<ListOfferings> command.
+
+
+=head2 SkipAppResign => Bool
+
+  When set to C<true>, for private devices, Device Farm will not sign
+your app again. For public devices, Device Farm always signs your apps
+again and this parameter has no effect.
+
+For more information about how Device Farm re-signs your app(s), see Do
+you modify my app? (https://aws.amazon.com/device-farm/faq/) in the
+I<AWS Device Farm FAQs>.
 
 
 =head2 TrialMinutes => L<Paws::DeviceFarm::TrialMinutes>

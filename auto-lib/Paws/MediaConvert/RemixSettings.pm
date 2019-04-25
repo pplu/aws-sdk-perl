@@ -34,8 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 =head1 DESCRIPTION
 
 Use Manual audio remixing (RemixSettings) to adjust audio levels for
-each output channel. With audio remixing, you can output more or fewer
-audio channels than your input audio source provides.
+each audio channel in each output of your job. With audio remixing, you
+can output more or fewer audio channels than your input audio source
+provides.
 
 =head1 ATTRIBUTES
 

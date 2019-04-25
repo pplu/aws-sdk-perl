@@ -21,25 +21,39 @@ Paws::EC2::ModifyVpcEndpointServicePermissions - Arguments for method ModifyVpcE
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyVpcEndpointServicePermissions on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyVpcEndpointServicePermissions on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ModifyVpcEndpointServicePermissions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyVpcEndpointServicePermissions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyVpcEndpointServicePermissions(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $ModifyVpcEndpointServicePermissionsResult =
+      $ec2->ModifyVpcEndpointServicePermissions(
+      ServiceId               => 'MyString',
+      AddAllowedPrincipals    => [ 'MyString', ... ],    # OPTIONAL
+      DryRun                  => 1,                      # OPTIONAL
+      RemoveAllowedPrincipals => [ 'MyString', ... ],    # OPTIONAL
+      );
+
+    # Results:
+    my $ReturnValue = $ModifyVpcEndpointServicePermissionsResult->ReturnValue;
+
+    # Returns a L<Paws::EC2::ModifyVpcEndpointServicePermissionsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyVpcEndpointServicePermissions>
 
 =head1 ATTRIBUTES
 
 
 =head2 AddAllowedPrincipals => ArrayRef[Str|Undef]
 
-One or more Amazon Resource Names (ARNs) of principals for which to
-allow permission. Specify C<*> to allow all principals.
+The Amazon Resource Names (ARN) of one or more principals. Permissions
+are granted to the principals in this list. To grant permissions to all
+principals, specify an asterisk (*).
 
 
 
@@ -54,8 +68,8 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 RemoveAllowedPrincipals => ArrayRef[Str|Undef]
 
-One or more Amazon Resource Names (ARNs) of principals for which to
-remove permission.
+The Amazon Resource Names (ARN) of one or more principals. Permissions
+are revoked for principals in this list.
 
 
 

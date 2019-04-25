@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Co
 
 =head1 DESCRIPTION
 
-A map that represents the cost filters applied to the budget.
+A map that represents the cost filters that are applied to the budget.
 
 =head1 ATTRIBUTES
 

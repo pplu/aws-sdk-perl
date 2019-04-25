@@ -18,17 +18,28 @@ Paws::Config::DescribeDeliveryChannels - Arguments for method DescribeDeliveryCh
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeDeliveryChannels on the 
-AWS Config service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeDeliveryChannels on the
+L<AWS Config|Paws::Config> service. Use the attributes of this class
 as arguments to method DescribeDeliveryChannels.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDeliveryChannels.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeDeliveryChannels(Att1 => $value1, Att2 => $value2, ...);
+    my $config = Paws->service('Config');
+    my $DescribeDeliveryChannelsResponse = $config->DescribeDeliveryChannels(
+      DeliveryChannelNames => [
+        'MyChannelName', ...    # min: 1, max: 256
+      ],                        # OPTIONAL
+    );
+
+    # Results:
+    my $DeliveryChannels = $DescribeDeliveryChannelsResponse->DeliveryChannels;
+
+    # Returns a L<Paws::Config::DescribeDeliveryChannelsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config/DescribeDeliveryChannels>
 
 =head1 ATTRIBUTES
 

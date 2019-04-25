@@ -19,17 +19,27 @@ Paws::OpsWorks::DescribeRdsDbInstances - Arguments for method DescribeRdsDbInsta
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeRdsDbInstances on the 
-AWS OpsWorks service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeRdsDbInstances on the
+L<AWS OpsWorks|Paws::OpsWorks> service. Use the attributes of this class
 as arguments to method DescribeRdsDbInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRdsDbInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeRdsDbInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks = Paws->service('OpsWorks');
+    my $DescribeRdsDbInstancesResult = $opsworks->DescribeRdsDbInstances(
+      StackId           => 'MyString',
+      RdsDbInstanceArns => [ 'MyString', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $RdsDbInstances = $DescribeRdsDbInstancesResult->RdsDbInstances;
+
+    # Returns a L<Paws::OpsWorks::DescribeRdsDbInstancesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks/DescribeRdsDbInstances>
 
 =head1 ATTRIBUTES
 
@@ -42,8 +52,8 @@ An array containing the ARNs of the instances to be described.
 
 =head2 B<REQUIRED> StackId => Str
 
-The stack ID that the instances are registered with. The operation
-returns descriptions of all registered Amazon RDS instances.
+The ID of the stack with which the instances are registered. The
+operation returns descriptions of all registered Amazon RDS instances.
 
 
 

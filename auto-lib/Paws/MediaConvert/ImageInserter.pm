@@ -31,8 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Enable the Image inserter (ImageInserter) feature to include a graphic
-overlay on your video. Enable or disable this feature for each output
+Enable the image inserter feature to include a graphic overlay on your
+video. Enable or disable this feature for each input or output
 individually. This setting is disabled by default.
 
 =head1 ATTRIBUTES
@@ -40,8 +40,8 @@ individually. This setting is disabled by default.
 
 =head2 InsertableImages => ArrayRef[L<Paws::MediaConvert::InsertableImage>]
 
-  Image to insert. Must be 32 bit windows BMP, PNG, or TGA file. Must not
-be larger than the output frames.
+  Specify the images that you want to overlay on your video. The images
+must be PNG or TGA files.
 
 
 

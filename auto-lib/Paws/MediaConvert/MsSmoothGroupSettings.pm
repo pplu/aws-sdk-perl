@@ -63,8 +63,8 @@ service uses the filename of the first input file.
 =head2 FragmentLength => Int
 
   Use Fragment length (FragmentLength) to specify the mp4 fragment sizes
-in seconds. Fragment length must be compatible with GOP size and
-framerate.
+in seconds. Fragment length must be compatible with GOP size and frame
+rate.
 
 
 =head2 ManifestEncoding => Str

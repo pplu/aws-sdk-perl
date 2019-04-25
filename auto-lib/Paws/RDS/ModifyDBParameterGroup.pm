@@ -19,17 +19,35 @@ Paws::RDS::ModifyDBParameterGroup - Arguments for method ModifyDBParameterGroup 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyDBParameterGroup on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyDBParameterGroup on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method ModifyDBParameterGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyDBParameterGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyDBParameterGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+   # To change DB parameter group settings
+   # This example immediately changes the specified setting for the specified DB
+   # parameter group.
+    my $DBParameterGroupNameMessage = $rds->ModifyDBParameterGroup(
+      {
+        'DBParameterGroupName' => 'mymysqlparametergroup',
+        'Parameters'           => [
+
+          {
+            'ApplyMethod'    => 'immediate',
+            'ParameterName'  => 'time_zone',
+            'ParameterValue' => 'America/Phoenix'
+          }
+        ]
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBParameterGroup>
 
 =head1 ATTRIBUTES
 

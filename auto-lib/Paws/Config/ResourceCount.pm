@@ -44,7 +44,7 @@ An object that contains the resource type and the number of resources.
 
 =head2 ResourceType => Str
 
-  The resource type, for example C<"AWS::EC2::Instance">.
+  The resource type (for example, C<"AWS::EC2::Instance">).
 
 
 

@@ -21,7 +21,7 @@ Paws::CloudFront::CreateStreamingDistributionWithTagsResult
 
 =head2 ETag => Str
 
-
+The current version of the distribution created.
 
 
 

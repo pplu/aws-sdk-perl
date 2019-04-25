@@ -1,5 +1,6 @@
 package Paws::StorageGateway::Tape;
   use Moose;
+  has KMSKey => (is => 'ro', isa => 'Str');
   has Progress => (is => 'ro', isa => 'Num');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str');
@@ -27,20 +28,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::Tape object:
 
-  $service_obj->Method(Att1 => { Progress => $value, ..., VTLDevice => $value  });
+  $service_obj->Method(Att1 => { KMSKey => $value, ..., VTLDevice => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGateway::Tape object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Progress
+  $result->Att1->KMSKey
 
 =head1 DESCRIPTION
 
 Describes a virtual tape object.
 
 =head1 ATTRIBUTES
+
+
+=head2 KMSKey => Str
+
+  
 
 
 =head2 Progress => Num

@@ -58,13 +58,13 @@ reside in a Hive metastore or an RDBMS.
 
 =head2 B<REQUIRED> Name => Str
 
-  Name of the database.
+  Name of the database. For Hive compatibility, this is folded to
+lowercase when it is stored.
 
 
 =head2 Parameters => L<Paws::Glue::ParametersMap>
 
-  A list of key-value pairs that define parameters and properties of the
-database.
+  These key-value pairs define parameters and properties of the database.
 
 
 

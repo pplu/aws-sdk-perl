@@ -3,7 +3,7 @@ package Paws::MediaLive::Output;
   has AudioDescriptionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'audioDescriptionNames', traits => ['NameInRequest']);
   has CaptionDescriptionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'captionDescriptionNames', traits => ['NameInRequest']);
   has OutputName => (is => 'ro', isa => 'Str', request_name => 'outputName', traits => ['NameInRequest']);
-  has OutputSettings => (is => 'ro', isa => 'Paws::MediaLive::OutputSettings', request_name => 'outputSettings', traits => ['NameInRequest']);
+  has OutputSettings => (is => 'ro', isa => 'Paws::MediaLive::OutputSettings', request_name => 'outputSettings', traits => ['NameInRequest'], required => 1);
   has VideoDescriptionName => (is => 'ro', isa => 'Str', request_name => 'videoDescriptionName', traits => ['NameInRequest']);
 1;
 
@@ -57,7 +57,7 @@ output.
   The name used to identify an output.
 
 
-=head2 OutputSettings => L<Paws::MediaLive::OutputSettings>
+=head2 B<REQUIRED> OutputSettings => L<Paws::MediaLive::OutputSettings>
 
   Output type-specific settings.
 

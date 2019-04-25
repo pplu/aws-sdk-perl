@@ -19,17 +19,46 @@ Paws::MachineLearning::GetDataSource - Arguments for method GetDataSource on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetDataSource on the 
-Amazon Machine Learning service. Use the attributes of this class
+This class represents the parameters used for calling the method GetDataSource on the
+L<Amazon Machine Learning|Paws::MachineLearning> service. Use the attributes of this class
 as arguments to method GetDataSource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDataSource.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetDataSource(Att1 => $value1, Att2 => $value2, ...);
+    my $machinelearning = Paws->service('MachineLearning');
+    my $GetDataSourceOutput = $machinelearning->GetDataSource(
+      DataSourceId => 'MyEntityId',
+      Verbose      => 1,              # OPTIONAL
+    );
+
+    # Results:
+    my $ComputeStatistics = $GetDataSourceOutput->ComputeStatistics;
+    my $ComputeTime       = $GetDataSourceOutput->ComputeTime;
+    my $CreatedAt         = $GetDataSourceOutput->CreatedAt;
+    my $CreatedByIamUser  = $GetDataSourceOutput->CreatedByIamUser;
+    my $DataLocationS3    = $GetDataSourceOutput->DataLocationS3;
+    my $DataRearrangement = $GetDataSourceOutput->DataRearrangement;
+    my $DataSizeInBytes   = $GetDataSourceOutput->DataSizeInBytes;
+    my $DataSourceId      = $GetDataSourceOutput->DataSourceId;
+    my $DataSourceSchema  = $GetDataSourceOutput->DataSourceSchema;
+    my $FinishedAt        = $GetDataSourceOutput->FinishedAt;
+    my $LastUpdatedAt     = $GetDataSourceOutput->LastUpdatedAt;
+    my $LogUri            = $GetDataSourceOutput->LogUri;
+    my $Message           = $GetDataSourceOutput->Message;
+    my $Name              = $GetDataSourceOutput->Name;
+    my $NumberOfFiles     = $GetDataSourceOutput->NumberOfFiles;
+    my $RDSMetadata       = $GetDataSourceOutput->RDSMetadata;
+    my $RedshiftMetadata  = $GetDataSourceOutput->RedshiftMetadata;
+    my $RoleARN           = $GetDataSourceOutput->RoleARN;
+    my $StartedAt         = $GetDataSourceOutput->StartedAt;
+    my $Status            = $GetDataSourceOutput->Status;
+
+    # Returns a L<Paws::MachineLearning::GetDataSourceOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/machinelearning/GetDataSource>
 
 =head1 ATTRIBUTES
 

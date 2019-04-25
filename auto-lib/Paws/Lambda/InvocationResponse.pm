@@ -22,39 +22,39 @@ Paws::Lambda::InvocationResponse
 
 =head2 ExecutedVersion => Str
 
-The function version that has been executed. This value is returned
-only if the invocation type is C<RequestResponse>.
+The version of the function that executed. When you invoke a function
+with an alias, indicates which version the alias resolved to.
 
 
 =head2 FunctionError => Str
 
-Indicates whether an error occurred while executing the Lambda
-function. If an error occurred this field will have one of two values;
-C<Handled> or C<Unhandled>. C<Handled> errors are errors that are
-reported by the function while the C<Unhandled> errors are those
-detected and reported by AWS Lambda. Unhandled errors include out of
-memory errors and function timeouts. For information about how to
-report an C<Handled> error, see Programming Model
-(http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html).
+If present, indicates that an error occured during function execution.
+Details about the error are included in the response payload.
+
+=over
+
+=item *
+
+C<Handled> - The runtime caught an error thrown by the function and
+formatted it into a JSON document.
+
+=item *
+
+C<Unhandled> - The runtime did not handle the error. For example, the
+function ran out of memory or timed out.
+
+=back
+
 
 
 =head2 LogResult => Str
 
-It is the base64-encoded logs for the Lambda function invocation. This
-is present only if the invocation type is C<RequestResponse> and the
-logs were requested.
+The last 4 KB of the execution log, base64 encoded.
 
 
 =head2 Payload => Str
 
-It is the JSON representation of the object returned by the Lambda
-function. This is present only if the invocation type is
-C<RequestResponse>.
-
-In the event of a function error this field contains a message
-describing the error. For the C<Handled> errors the Lambda function
-will report this message. For C<Unhandled> errors AWS Lambda reports
-the message.
+The response from the function, or an error object.
 
 
 =head2 StatusCode => Int

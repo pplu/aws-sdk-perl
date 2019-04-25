@@ -20,17 +20,45 @@ Paws::CognitoIdentity::SetIdentityPoolRoles - Arguments for method SetIdentityPo
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SetIdentityPoolRoles on the 
-Amazon Cognito Identity service. Use the attributes of this class
+This class represents the parameters used for calling the method SetIdentityPoolRoles on the
+L<Amazon Cognito Identity|Paws::CognitoIdentity> service. Use the attributes of this class
 as arguments to method SetIdentityPoolRoles.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetIdentityPoolRoles.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetIdentityPoolRoles(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-identity = Paws->service('CognitoIdentity');
+    $cognito -identity->SetIdentityPoolRoles(
+      IdentityPoolId => 'MyIdentityPoolId',
+      Roles          => {
+        'MyRoleType' => 'MyARNString',    # , value: min: 20, max: 2048
+      },
+      RoleMappings => {
+        'MyIdentityProviderName' => {
+          Type => 'Token',                # values: Token, Rules
+          AmbiguousRoleResolution =>
+            'AuthenticatedRole',    # values: AuthenticatedRole, Deny; OPTIONAL
+          RulesConfiguration => {
+            Rules => [
+              {
+                Claim => 'MyClaimName',    # min: 1, max: 64
+                MatchType =>
+                  'Equals',    # values: Equals, Contains, StartsWith, NotEqual
+                RoleARN => 'MyARNString',     # min: 20, max: 2048
+                Value   => 'MyClaimValue',    # min: 1, max: 128
+
+              },
+              ...
+            ],                                # min: 1, max: 25
+
+          },    # OPTIONAL
+        },    # key: min: 1, max: 128
+      },    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-identity/SetIdentityPoolRoles>
 
 =head1 ATTRIBUTES
 

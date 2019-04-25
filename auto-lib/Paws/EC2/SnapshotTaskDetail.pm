@@ -2,7 +2,9 @@ package Paws::EC2::SnapshotTaskDetail;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has DiskImageSize => (is => 'ro', isa => 'Num', request_name => 'diskImageSize', traits => ['NameInRequest']);
+  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest']);
   has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
+  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
   has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
   has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -54,9 +56,20 @@ This class has no description
   The size of the disk in the snapshot, in GiB.
 
 
+=head2 Encrypted => Bool
+
+  Indicates whether the snapshot is encrypted.
+
+
 =head2 Format => Str
 
   The format of the disk image from which the snapshot is created.
+
+
+=head2 KmsKeyId => Str
+
+  The identifier for the AWS Key Management Service (AWS KMS) customer
+master key (CMK) that was used to create the encrypted snapshot.
 
 
 =head2 Progress => Str

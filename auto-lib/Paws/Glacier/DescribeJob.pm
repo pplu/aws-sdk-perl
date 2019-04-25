@@ -21,17 +21,41 @@ Paws::Glacier::DescribeJob - Arguments for method DescribeJob on L<Paws::Glacier
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeJob on the 
-Amazon Glacier service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeJob on the
+L<Amazon Glacier|Paws::Glacier> service. Use the attributes of this class
 as arguments to method DescribeJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeJob(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To get information about a previously initiated job
+    # The example returns information about the previously initiated job
+    # specified by the job ID.
+    my $GlacierJobDescription = $glacier->DescribeJob(
+      {
+        'AccountId' => '-',
+        'JobId' =>
+'zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNHS61dsO4Cn',
+        'VaultName' => 'my-vault'
+      }
+    );
+
+    # Results:
+    my $Action       = $GlacierJobDescription->Action;
+    my $Completed    = $GlacierJobDescription->Completed;
+    my $CreationDate = $GlacierJobDescription->CreationDate;
+    my $InventoryRetrievalParameters =
+      $GlacierJobDescription->InventoryRetrievalParameters;
+    my $JobId      = $GlacierJobDescription->JobId;
+    my $StatusCode = $GlacierJobDescription->StatusCode;
+    my $VaultARN   = $GlacierJobDescription->VaultARN;
+
+    # Returns a L<Paws::Glacier::GlacierJobDescription> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/DescribeJob>
 
 =head1 ATTRIBUTES
 

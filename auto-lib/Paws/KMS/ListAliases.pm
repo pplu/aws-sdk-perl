@@ -1,6 +1,7 @@
 
 package Paws::KMS::ListAliases;
   use Moose;
+  has KeyId => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has Marker => (is => 'ro', isa => 'Str');
 
@@ -19,19 +20,41 @@ Paws::KMS::ListAliases - Arguments for method ListAliases on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListAliases on the 
-AWS Key Management Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ListAliases on the
+L<AWS Key Management Service|Paws::KMS> service. Use the attributes of this class
 as arguments to method ListAliases.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAliases.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListAliases(Att1 => $value1, Att2 => $value2, ...);
+    my $kms = Paws->service('KMS');
+    # To list aliases
+    # The following example lists aliases.
+    my $ListAliasesResponse = $kms->ListAliases();
+
+    # Results:
+    my $Aliases   = $ListAliasesResponse->Aliases;
+    my $Truncated = $ListAliasesResponse->Truncated;
+
+    # Returns a L<Paws::KMS::ListAliasesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/ListAliases>
 
 =head1 ATTRIBUTES
+
+
+=head2 KeyId => Str
+
+Lists only aliases that refer to the specified CMK. The value of this
+parameter can be the ID or Amazon Resource Name (ARN) of a CMK in the
+caller's account and region. You cannot use an alias name or alias ARN
+in this value.
+
+This parameter is optional. If you omit it, C<ListAliases> returns all
+aliases in the account and region.
+
 
 
 =head2 Limit => Int

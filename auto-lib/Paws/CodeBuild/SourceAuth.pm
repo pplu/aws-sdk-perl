@@ -36,8 +36,7 @@ Information about the authorization settings for AWS CodeBuild to
 access the source code to be built.
 
 This information is for the AWS CodeBuild console's use only. Your code
-should not get or set this information directly (unless the build
-project's source C<type> value is C<BITBUCKET> or C<GITHUB>).
+should not get or set this information directly.
 
 =head1 ATTRIBUTES
 
@@ -49,7 +48,9 @@ project's source C<type> value is C<BITBUCKET> or C<GITHUB>).
 
 =head2 B<REQUIRED> Type => Str
 
-  The authorization type to use. The only valid value is C<OAUTH>, which
+  This data type is deprecated and is no longer accurate or used.
+
+The authorization type to use. The only valid value is C<OAUTH>, which
 represents the OAuth authorization type.
 
 

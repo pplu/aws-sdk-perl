@@ -20,22 +20,23 @@ Paws::Greengrass::CreateFunctionDefinitionVersionResponse
 
 =head2 Arn => Str
 
-Arn of the version.
+The ARN of the version.
 
 
 =head2 CreationTimestamp => Str
 
-Timestamp of when the version was created.
+The time, in milliseconds since the epoch, when the version was
+created.
 
 
 =head2 Id => Str
 
-Id of the resource container.
+The ID of the version.
 
 
 =head2 Version => Str
 
-Unique Id of a version.
+The unique ID of the version.
 
 
 =head2 _request_id => Str

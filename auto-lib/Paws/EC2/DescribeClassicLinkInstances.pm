@@ -22,17 +22,41 @@ Paws::EC2::DescribeClassicLinkInstances - Arguments for method DescribeClassicLi
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeClassicLinkInstances on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeClassicLinkInstances on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeClassicLinkInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeClassicLinkInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeClassicLinkInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeClassicLinkInstancesResult = $ec2->DescribeClassicLinkInstances(
+      DryRun  => 1,    # OPTIONAL
+      Filters => [
+        {
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
+        },
+        ...
+      ],                           # OPTIONAL
+      InstanceIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Instances = $DescribeClassicLinkInstancesResult->Instances;
+    my $NextToken = $DescribeClassicLinkInstancesResult->NextToken;
+
+    # Returns a L<Paws::EC2::DescribeClassicLinkInstancesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeClassicLinkInstances>
 
 =head1 ATTRIBUTES
 
@@ -63,25 +87,21 @@ C<instance-id> - The ID of the instance.
 
 =item *
 
-C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. This filter is
-independent of the C<tag-value> filter. For example, if you use both
-the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
-resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of what the tag's key
-is). If you want to list only resources where Purpose is X, see the
-C<tag>:I<key>=I<value> filter.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =item *
 
-C<tag-value> - The value of a tag assigned to the resource. This filter
-is independent of the C<tag-key> filter.
-
-=item *
+C<vpc-id> - The ID of the VPC to which the instance is linked.
 
 C<vpc-id> - The ID of the VPC that the instance is linked to.
 
@@ -102,7 +122,7 @@ ClassicLink.
 The maximum number of results to return for the request in a single
 page. The remaining results of the initial request can be seen by
 sending another request with the returned C<NextToken> value. This
-value can be between 5 and 1000; if C<MaxResults> is given a value
+value can be between 5 and 1000. If C<MaxResults> is given a value
 larger than 1000, only 1000 results are returned. You cannot specify
 this parameter and the instance IDs parameter in the same request.
 

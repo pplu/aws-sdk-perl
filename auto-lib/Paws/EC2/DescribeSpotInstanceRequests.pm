@@ -3,6 +3,8 @@ package Paws::EC2::DescribeSpotInstanceRequests;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
   has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SpotInstanceRequestId' );
 
   use MooseX::ClassAttribute;
@@ -20,17 +22,31 @@ Paws::EC2::DescribeSpotInstanceRequests - Arguments for method DescribeSpotInsta
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeSpotInstanceRequests on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeSpotInstanceRequests on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeSpotInstanceRequests.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSpotInstanceRequests.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeSpotInstanceRequests(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe a Spot Instance request
+    # This example describes the specified Spot Instance request.
+    my $DescribeSpotInstanceRequestsResult = $ec2->DescribeSpotInstanceRequests(
+      {
+        'SpotInstanceRequestIds' => ['sir-08b93456']
+      }
+    );
+
+    # Results:
+    my $SpotInstanceRequests =
+      $DescribeSpotInstanceRequestsResult->SpotInstanceRequests;
+
+    # Returns a L<Paws::EC2::DescribeSpotInstanceRequestsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeSpotInstanceRequests>
 
 =head1 ATTRIBUTES
 
@@ -105,7 +121,11 @@ Magnetic.
 
 =item *
 
-C<launch.group-id> - The security group for the instance.
+C<launch.group-id> - The ID of the security group for the instance.
+
+=item *
+
+C<launch.group-name> - The name of the security group for the instance.
 
 =item *
 
@@ -198,8 +218,8 @@ C<state> - The state of the Spot Instance request (C<open> | C<active>
 | C<closed> | C<cancelled> | C<failed>). Spot request status
 information can help you track your Amazon EC2 Spot Instance requests.
 For more information, see Spot Request Status
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
-in the Amazon Elastic Compute Cloud User Guide.
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =item *
 
@@ -213,26 +233,17 @@ Instance request.
 
 =item *
 
-C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource. Specify the key of the tag in the filter name and the
-value of the tag in the filter value. For example, for the tag
-Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
-filter value.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. This filter is
-independent of the C<tag-value> filter. For example, if you use both
-the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
-resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of what the tag's key
-is). If you want to list only resources where Purpose is X, see the
-C<tag>:I<key>=I<value> filter.
-
-=item *
-
-C<tag-value> - The value of a tag assigned to the resource. This filter
-is independent of the C<tag-key> filter.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =item *
 
@@ -249,6 +260,21 @@ C<valid-until> - The end date of the request.
 
 =back
 
+
+
+
+=head2 MaxResults => Int
+
+The maximum number of results to return in a single call. Specify a
+value between 5 and 1000. To retrieve the remaining results, make
+another call with the returned C<NextToken> value.
+
+
+
+=head2 NextToken => Str
+
+The token to request the next set of results. This value is C<null>
+when there are no more results to return.
 
 
 

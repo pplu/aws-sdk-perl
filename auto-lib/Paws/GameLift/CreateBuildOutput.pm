@@ -23,12 +23,17 @@ The newly created build record, including a unique build ID and status.
 
 =head2 StorageLocation => L<Paws::GameLift::S3Location>
 
-Amazon S3 location specified in the request.
+Amazon S3 location for your game build file, including bucket name and
+key.
 
 
 =head2 UploadCredentials => L<Paws::GameLift::AwsCredentials>
 
-This element is not currently in use.
+This element is returned only when the operation is called without a
+storage location. It contains credentials to use when you are uploading
+a build file to an Amazon S3 bucket that is owned by Amazon GameLift.
+Credentials have a limited life span. To refresh these credentials,
+call RequestUploadCredentials.
 
 
 =head2 _request_id => Str

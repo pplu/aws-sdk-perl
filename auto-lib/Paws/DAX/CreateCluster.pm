@@ -11,6 +11,7 @@ package Paws::DAX::CreateCluster;
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ReplicationFactor => (is => 'ro', isa => 'Int', required => 1);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SSESpecification => (is => 'ro', isa => 'Paws::DAX::SSESpecification');
   has SubnetGroupName => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DAX::Tag]');
 
@@ -29,17 +30,47 @@ Paws::DAX::CreateCluster - Arguments for method CreateCluster on L<Paws::DAX>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateCluster on the 
-Amazon DynamoDB Accelerator (DAX) service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateCluster on the
+L<Amazon DynamoDB Accelerator (DAX)|Paws::DAX> service. Use the attributes of this class
 as arguments to method CreateCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $dax = Paws->service('DAX');
+    my $CreateClusterResponse = $dax->CreateCluster(
+      ClusterName                => 'MyString',
+      IamRoleArn                 => 'MyString',
+      NodeType                   => 'MyString',
+      ReplicationFactor          => 1,
+      AvailabilityZones          => [ 'MyString', ... ],    # OPTIONAL
+      Description                => 'MyString',             # OPTIONAL
+      NotificationTopicArn       => 'MyString',             # OPTIONAL
+      ParameterGroupName         => 'MyString',             # OPTIONAL
+      PreferredMaintenanceWindow => 'MyString',             # OPTIONAL
+      SSESpecification           => {
+        Enabled => 1,
+
+      },                                                    # OPTIONAL
+      SecurityGroupIds => [ 'MyString', ... ],              # OPTIONAL
+      SubnetGroupName  => 'MyString',                       # OPTIONAL
+      Tags             => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                    # OPTIONAL
+    );
+
+    # Results:
+    my $Cluster = $CreateClusterResponse->Cluster;
+
+    # Returns a L<Paws::DAX::CreateClusterResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dax/CreateCluster>
 
 =head1 ATTRIBUTES
 
@@ -178,6 +209,13 @@ cluster. (Each of the security group ID is system-generated.)
 
 If this parameter is not specified, DAX assigns the default VPC
 security group to each node.
+
+
+
+=head2 SSESpecification => L<Paws::DAX::SSESpecification>
+
+Represents the settings used to enable server-side encryption on the
+cluster.
 
 
 

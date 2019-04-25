@@ -26,17 +26,61 @@ Paws::ElasticTranscoder::UpdatePipeline - Arguments for method UpdatePipeline on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdatePipeline on the 
-Amazon Elastic Transcoder service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdatePipeline on the
+L<Amazon Elastic Transcoder|Paws::ElasticTranscoder> service. Use the attributes of this class
 as arguments to method UpdatePipeline.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipeline.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdatePipeline(Att1 => $value1, Att2 => $value2, ...);
+    my $elastictranscoder = Paws->service('ElasticTranscoder');
+    my $UpdatePipelineResponse = $elastictranscoder->UpdatePipeline(
+      Id            => 'MyId',
+      AwsKmsKeyArn  => 'MyKeyArn',    # OPTIONAL
+      ContentConfig => {
+        Bucket      => 'MyBucketName',    # OPTIONAL
+        Permissions => [
+          {
+            Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
+            Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
+            GranteeType => 'MyGranteeType',         # OPTIONAL
+          },
+          ...
+        ],                                          # max: 30; OPTIONAL
+        StorageClass => 'MyStorageClass',           # OPTIONAL
+      },    # OPTIONAL
+      InputBucket   => 'MyBucketName',    # OPTIONAL
+      Name          => 'MyName',          # OPTIONAL
+      Notifications => {
+        Completed   => 'MySnsTopic',      # OPTIONAL
+        Error       => 'MySnsTopic',      # OPTIONAL
+        Progressing => 'MySnsTopic',      # OPTIONAL
+        Warning     => 'MySnsTopic',      # OPTIONAL
+      },    # OPTIONAL
+      Role            => 'MyRole',    # OPTIONAL
+      ThumbnailConfig => {
+        Bucket      => 'MyBucketName',    # OPTIONAL
+        Permissions => [
+          {
+            Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
+            Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
+            GranteeType => 'MyGranteeType',         # OPTIONAL
+          },
+          ...
+        ],                                          # max: 30; OPTIONAL
+        StorageClass => 'MyStorageClass',           # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $Pipeline = $UpdatePipelineResponse->Pipeline;
+    my $Warnings = $UpdatePipelineResponse->Warnings;
+
+    # Returns a L<Paws::ElasticTranscoder::UpdatePipelineResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder/UpdatePipeline>
 
 =head1 ATTRIBUTES
 
@@ -46,12 +90,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The AWS Key Management Service (AWS KMS) key that you want to use with
 this pipeline.
 
-If you use either C<S3> or C<S3-AWS-KMS> as your C<Encryption:Mode>,
+If you use either C<s3> or C<s3-aws-kms> as your C<Encryption:Mode>,
 you don't need to provide a key with your job because a default key,
 known as an AWS-KMS key, is created for you automatically. You need to
 provide an AWS-KMS key only if you want to use a non-default AWS-KMS
-key, or if you are using an C<Encryption:Mode> of C<AES-PKCS7>,
-C<AES-CTR>, or C<AES-GCM>.
+key, or if you are using an C<Encryption:Mode> of C<aes-cbc-pkcs7>,
+C<aes-ctr>, or C<aes-gcm>.
 
 
 
@@ -208,7 +252,7 @@ This is the ARN that Amazon SNS returned when you created the topic.
 
 =item *
 
-B<Completed>: The topic ARN for the Amazon SNS topic that you want to
+B<Complete>: The topic ARN for the Amazon SNS topic that you want to
 notify when Elastic Transcoder has finished processing a job. This is
 the ARN that Amazon SNS returned when you created the topic.
 

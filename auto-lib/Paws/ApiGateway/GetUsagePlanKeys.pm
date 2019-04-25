@@ -2,9 +2,9 @@
 package Paws::ApiGateway::GetUsagePlanKeys;
   use Moose;
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameQuery');
+  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
   has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
-  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usagePlanId', required => 1);
+  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usageplanId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -22,24 +22,38 @@ Paws::ApiGateway::GetUsagePlanKeys - Arguments for method GetUsagePlanKeys on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetUsagePlanKeys on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method GetUsagePlanKeys on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GetUsagePlanKeys.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUsagePlanKeys.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetUsagePlanKeys(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $UsagePlanKeys = $apigateway->GetUsagePlanKeys(
+      UsagePlanId => 'MyString',
+      Limit       => 1,             # OPTIONAL
+      NameQuery   => 'MyString',    # OPTIONAL
+      Position    => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Items    = $UsagePlanKeys->Items;
+    my $Position = $UsagePlanKeys->Position;
+
+    # Returns a L<Paws::ApiGateway::UsagePlanKeys> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetUsagePlanKeys>
 
 =head1 ATTRIBUTES
 
 
 =head2 Limit => Int
 
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is
+25 and the maximum value is 500.
 
 
 
@@ -58,8 +72,9 @@ The current pagination position in the paged result set.
 
 =head2 B<REQUIRED> UsagePlanId => Str
 
-The Id of the UsagePlan resource representing the usage plan containing
-the to-be-retrieved UsagePlanKey resource representing a plan customer.
+[Required] The Id of the UsagePlan resource representing the usage plan
+containing the to-be-retrieved UsagePlanKey resource representing a
+plan customer.
 
 
 

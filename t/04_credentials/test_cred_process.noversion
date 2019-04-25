@@ -1,0 +1,4 @@
+#!/usr/bin/env perl
+
+print '{"AccessKeyId":"PCAccessKey","SecretAccessKey":"PCSecretKey"}';
+

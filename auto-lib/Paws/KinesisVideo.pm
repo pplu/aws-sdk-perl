@@ -1,6 +1,7 @@
 package Paws::KinesisVideo;
   use Moose;
   sub service { 'kinesisvideo' }
+  sub signing_name { 'kinesisvideo' }
   sub version { '2017-09-30' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -64,6 +65,29 @@ package Paws::KinesisVideo;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllStreams {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStreams(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListStreams(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StreamInfoList }, @{ $next_result->StreamInfoList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'StreamInfoList') foreach (@{ $result->StreamInfoList });
+        $result = $self->ListStreams(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'StreamInfoList') foreach (@{ $result->StreamInfoList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateStream DeleteStream DescribeStream GetDataEndpoint ListStreams ListTagsForStream TagStream UntagStream UpdateDataRetention UpdateStream / }
@@ -96,9 +120,27 @@ Paws::KinesisVideo - Perl Interface to AWS Amazon Kinesis Video Streams
 
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesisvideo-2017-09-30>
+
+
 =head1 METHODS
 
-=head2 CreateStream(StreamName => Str, [DataRetentionInHours => Int, DeviceName => Str, KmsKeyId => Str, MediaType => Str])
+=head2 CreateStream
+
+=over
+
+=item StreamName => Str
+
+=item [DataRetentionInHours => Int]
+
+=item [DeviceName => Str]
+
+=item [KmsKeyId => Str]
+
+=item [MediaType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideo::CreateStream>
 
@@ -118,7 +160,16 @@ For information about how the service works, see How it Works
 You must have permissions for the C<KinesisVideo:CreateStream> action.
 
 
-=head2 DeleteStream(StreamARN => Str, [CurrentVersion => Str])
+=head2 DeleteStream
+
+=over
+
+=item StreamARN => Str
+
+=item [CurrentVersion => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideo::DeleteStream>
 
@@ -139,7 +190,16 @@ This operation requires permission for the C<KinesisVideo:DeleteStream>
 action.
 
 
-=head2 DescribeStream([StreamARN => Str, StreamName => Str])
+=head2 DescribeStream
+
+=over
+
+=item [StreamARN => Str]
+
+=item [StreamName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideo::DescribeStream>
 
@@ -149,7 +209,18 @@ Returns the most current information about the specified stream. You
 must specify either the C<StreamName> or the C<StreamARN>.
 
 
-=head2 GetDataEndpoint(APIName => Str, [StreamARN => Str, StreamName => Str])
+=head2 GetDataEndpoint
+
+=over
+
+=item APIName => Str
+
+=item [StreamARN => Str]
+
+=item [StreamName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideo::GetDataEndpoint>
 
@@ -167,7 +238,18 @@ In the request, specify the stream either by C<StreamName> or
 C<StreamARN>.
 
 
-=head2 ListStreams([MaxResults => Int, NextToken => Str, StreamNameCondition => L<Paws::KinesisVideo::StreamNameCondition>])
+=head2 ListStreams
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [StreamNameCondition => L<Paws::KinesisVideo::StreamNameCondition>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideo::ListStreams>
 
@@ -178,7 +260,18 @@ stream. To retrieve only streams that satisfy a specific condition, you
 can specify a C<StreamNameCondition>.
 
 
-=head2 ListTagsForStream([NextToken => Str, StreamARN => Str, StreamName => Str])
+=head2 ListTagsForStream
+
+=over
+
+=item [NextToken => Str]
+
+=item [StreamARN => Str]
+
+=item [StreamName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideo::ListTagsForStream>
 
@@ -190,7 +283,18 @@ In the request, you must specify either the C<StreamName> or the
 C<StreamARN>.
 
 
-=head2 TagStream(Tags => L<Paws::KinesisVideo::ResourceTags>, [StreamARN => Str, StreamName => Str])
+=head2 TagStream
+
+=over
+
+=item Tags => L<Paws::KinesisVideo::ResourceTags>
+
+=item [StreamARN => Str]
+
+=item [StreamName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideo::TagStream>
 
@@ -212,7 +316,18 @@ action.
 Kinesis video streams support up to 50 tags.
 
 
-=head2 UntagStream(TagKeyList => ArrayRef[Str|Undef], [StreamARN => Str, StreamName => Str])
+=head2 UntagStream
+
+=over
+
+=item TagKeyList => ArrayRef[Str|Undef]
+
+=item [StreamARN => Str]
+
+=item [StreamName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideo::UntagStream>
 
@@ -225,7 +340,22 @@ does not exist, it's ignored.
 In the request, you must provide the C<StreamName> or C<StreamARN>.
 
 
-=head2 UpdateDataRetention(CurrentVersion => Str, DataRetentionChangeInHours => Int, Operation => Str, [StreamARN => Str, StreamName => Str])
+=head2 UpdateDataRetention
+
+=over
+
+=item CurrentVersion => Str
+
+=item DataRetentionChangeInHours => Int
+
+=item Operation => Str
+
+=item [StreamARN => Str]
+
+=item [StreamName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideo::UpdateDataRetention>
 
@@ -266,7 +396,22 @@ immediately.
 
 
 
-=head2 UpdateStream(CurrentVersion => Str, [DeviceName => Str, MediaType => Str, StreamARN => Str, StreamName => Str])
+=head2 UpdateStream
+
+=over
+
+=item CurrentVersion => Str
+
+=item [DeviceName => Str]
+
+=item [MediaType => Str]
+
+=item [StreamARN => Str]
+
+=item [StreamName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::KinesisVideo::UpdateStream>
 
@@ -292,6 +437,18 @@ complete.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllStreams(sub { },[MaxResults => Int, NextToken => Str, StreamNameCondition => L<Paws::KinesisVideo::StreamNameCondition>])
+
+=head2 ListAllStreams([MaxResults => Int, NextToken => Str, StreamNameCondition => L<Paws::KinesisVideo::StreamNameCondition>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StreamInfoList, passing the object as the first parameter, and the string 'StreamInfoList' as the second parameter 
+
+If not, it will return a a L<Paws::KinesisVideo::ListStreamsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

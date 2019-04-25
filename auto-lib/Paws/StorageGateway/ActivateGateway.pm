@@ -24,17 +24,36 @@ Paws::StorageGateway::ActivateGateway - Arguments for method ActivateGateway on 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ActivateGateway on the 
-AWS Storage Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method ActivateGateway on the
+L<AWS Storage Gateway|Paws::StorageGateway> service. Use the attributes of this class
 as arguments to method ActivateGateway.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ActivateGateway.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ActivateGateway(Att1 => $value1, Att2 => $value2, ...);
+    my $storagegateway = Paws->service('StorageGateway');
+    # To activate the gateway
+    # Activates the gateway you previously deployed on your host.
+    my $ActivateGatewayOutput = $storagegateway->ActivateGateway(
+      {
+        'ActivationKey'     => '29AV1-3OFV9-VVIUB-NKT0I-LRO6V',
+        'GatewayName'       => 'My_Gateway',
+        'GatewayRegion'     => 'us-east-1',
+        'GatewayTimezone'   => 'GMT-12:00',
+        'GatewayType'       => 'STORED',
+        'MediumChangerType' => 'AWS-Gateway-VTL',
+        'TapeDriveType'     => 'IBM-ULT3580-TD5'
+      }
+    );
+
+    # Results:
+    my $GatewayARN = $ActivateGatewayOutput->GatewayARN;
+
+    # Returns a L<Paws::StorageGateway::ActivateGatewayOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/ActivateGateway>
 
 =head1 ATTRIBUTES
 
@@ -49,6 +68,10 @@ C<activationKey>. It may also include other activation-related
 parameters, however, these are merely defaults -- the arguments you
 pass to the C<ActivateGateway> API call determine the actual
 configuration of your gateway.
+
+For more information, see
+https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html
+in the Storage Gateway User Guide.
 
 
 
@@ -69,7 +92,7 @@ and Endpoints
 the I<Amazon Web Services Glossary>.
 
 Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2",
-"ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2",
+"ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "eu-west-3",
 "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
 "ap-south-1", "sa-east-1"
 
@@ -89,7 +112,7 @@ for scheduling snapshots and your gateway's maintenance schedule.
 
 A value that defines the type of gateway to activate. The type
 specified is critical to all later functions of the gateway and cannot
-be changed after activation. The default value is C<STORED>.
+be changed after activation. The default value is C<CACHED>.
 
 Valid Values: "STORED", "CACHED", "VTL", "FILE_S3"
 

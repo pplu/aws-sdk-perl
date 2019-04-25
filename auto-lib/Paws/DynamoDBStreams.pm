@@ -1,6 +1,7 @@
 package Paws::DynamoDBStreams;
   use Moose;
   sub service { 'streams.dynamodb' }
+  sub signing_name { 'dynamodb' }
   sub version { '2012-08-10' }
   sub target_prefix { 'DynamoDBStreams_20120810' }
   sub json_version { "1.0" }
@@ -73,9 +74,23 @@ with Streams, see Capturing Table Activity with DynamoDB Streams
 (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html)
 in the Amazon DynamoDB Developer Guide.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/dynamodb/>
+
+
 =head1 METHODS
 
-=head2 DescribeStream(StreamArn => Str, [ExclusiveStartShardId => Str, Limit => Int])
+=head2 DescribeStream
+
+=over
+
+=item StreamArn => Str
+
+=item [ExclusiveStartShardId => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDBStreams::DescribeStream>
 
@@ -96,7 +111,16 @@ C<EndingSequenceNumber> are present, then that shard is closed and can
 no longer receive more data.
 
 
-=head2 GetRecords(ShardIterator => Str, [Limit => Int])
+=head2 GetRecords
+
+=over
+
+=item ShardIterator => Str
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDBStreams::GetRecords>
 
@@ -116,7 +140,20 @@ C<GetRecords> can retrieve a maximum of 1 MB of data or 1000 stream
 records, whichever comes first.
 
 
-=head2 GetShardIterator(ShardId => Str, ShardIteratorType => Str, StreamArn => Str, [SequenceNumber => Str])
+=head2 GetShardIterator
+
+=over
+
+=item ShardId => Str
+
+=item ShardIteratorType => Str
+
+=item StreamArn => Str
+
+=item [SequenceNumber => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDBStreams::GetShardIterator>
 
@@ -131,7 +168,18 @@ A shard iterator expires 15 minutes after it is returned to the
 requester.
 
 
-=head2 ListStreams([ExclusiveStartStreamArn => Str, Limit => Int, TableName => Str])
+=head2 ListStreams
+
+=over
+
+=item [ExclusiveStartStreamArn => Str]
+
+=item [Limit => Int]
+
+=item [TableName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDBStreams::ListStreams>
 

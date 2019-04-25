@@ -22,17 +22,30 @@ Paws::LexModels::GetBuiltinSlotTypes - Arguments for method GetBuiltinSlotTypes 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetBuiltinSlotTypes on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetBuiltinSlotTypes on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method GetBuiltinSlotTypes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetBuiltinSlotTypes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetBuiltinSlotTypes(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetBuiltinSlotTypesResponse = $models . lex->GetBuiltinSlotTypes(
+      Locale            => 'en-US',          # OPTIONAL
+      MaxResults        => 1,                # OPTIONAL
+      NextToken         => 'MyNextToken',    # OPTIONAL
+      SignatureContains => 'MyString',       # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $GetBuiltinSlotTypesResponse->NextToken;
+    my $SlotTypes = $GetBuiltinSlotTypesResponse->SlotTypes;
+
+    # Returns a L<Paws::LexModels::GetBuiltinSlotTypesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/GetBuiltinSlotTypes>
 
 =head1 ATTRIBUTES
 
@@ -41,7 +54,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A list of locales that the slot type supports.
 
-Valid values are: C<"en-US">
+Valid values are: C<"en-US">, C<"en-GB">, C<"de-DE">
 
 =head2 MaxResults => Int
 

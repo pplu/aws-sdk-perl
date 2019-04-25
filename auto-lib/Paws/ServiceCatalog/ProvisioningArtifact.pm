@@ -42,7 +42,7 @@ also known as a product version.
 
 =head2 CreatedTime => Str
 
-  The UTC timestamp of the creation time.
+  The UTC time stamp of the creation time.
 
 
 =head2 Description => Str

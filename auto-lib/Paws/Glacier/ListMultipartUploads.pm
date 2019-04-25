@@ -22,17 +22,33 @@ Paws::Glacier::ListMultipartUploads - Arguments for method ListMultipartUploads 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListMultipartUploads on the 
-Amazon Glacier service. Use the attributes of this class
+This class represents the parameters used for calling the method ListMultipartUploads on the
+L<Amazon Glacier|Paws::Glacier> service. Use the attributes of this class
 as arguments to method ListMultipartUploads.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListMultipartUploads.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListMultipartUploads(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+   # To list all the in-progress multipart uploads for a vault
+   # The example lists all the in-progress multipart uploads for the vault named
+   # examplevault.
+    my $ListMultipartUploadsOutput = $glacier->ListMultipartUploads(
+      {
+        'AccountId' => '-',
+        'VaultName' => 'examplevault'
+      }
+    );
+
+    # Results:
+    my $Marker      = $ListMultipartUploadsOutput->Marker;
+    my $UploadsList = $ListMultipartUploadsOutput->UploadsList;
+
+    # Returns a L<Paws::Glacier::ListMultipartUploadsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/ListMultipartUploads>
 
 =head1 ATTRIBUTES
 
@@ -51,7 +67,7 @@ you use an account ID, do not include any hyphens ('-') in the ID.
 
 Specifies the maximum number of uploads returned in the response body.
 If this value is not specified, the List Uploads operation returns up
-to 1,000 uploads.
+to 50 uploads.
 
 
 

@@ -1,13 +1,16 @@
 
 package Paws::SageMaker::ListNotebookInstances;
   use Moose;
+  has AdditionalCodeRepositoryEquals => (is => 'ro', isa => 'Str');
   has CreationTimeAfter => (is => 'ro', isa => 'Str');
   has CreationTimeBefore => (is => 'ro', isa => 'Str');
+  has DefaultCodeRepositoryContains => (is => 'ro', isa => 'Str');
   has LastModifiedTimeAfter => (is => 'ro', isa => 'Str');
   has LastModifiedTimeBefore => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NameContains => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
+  has NotebookInstanceLifecycleConfigNameContains => (is => 'ro', isa => 'Str');
   has SortBy => (is => 'ro', isa => 'Str');
   has SortOrder => (is => 'ro', isa => 'Str');
   has StatusEquals => (is => 'ro', isa => 'Str');
@@ -27,19 +30,49 @@ Paws::SageMaker::ListNotebookInstances - Arguments for method ListNotebookInstan
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListNotebookInstances on the 
-Amazon SageMaker Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ListNotebookInstances on the
+L<Amazon SageMaker Service|Paws::SageMaker> service. Use the attributes of this class
 as arguments to method ListNotebookInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListNotebookInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListNotebookInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $ListNotebookInstancesOutput = $api . sagemaker->ListNotebookInstances(
+      AdditionalCodeRepositoryEquals => 'MyCodeRepositoryNameOrUrl',  # OPTIONAL
+      CreationTimeAfter              => '1970-01-01T01:00:00',        # OPTIONAL
+      CreationTimeBefore             => '1970-01-01T01:00:00',        # OPTIONAL
+      DefaultCodeRepositoryContains  => 'MyCodeRepositoryContains',   # OPTIONAL
+      LastModifiedTimeAfter          => '1970-01-01T01:00:00',        # OPTIONAL
+      LastModifiedTimeBefore         => '1970-01-01T01:00:00',        # OPTIONAL
+      MaxResults                     => 1,                            # OPTIONAL
+      NameContains => 'MyNotebookInstanceNameContains',               # OPTIONAL
+      NextToken    => 'MyNextToken',                                  # OPTIONAL
+      NotebookInstanceLifecycleConfigNameContains =>
+        'MyNotebookInstanceLifecycleConfigName',                      # OPTIONAL
+      SortBy       => 'Name',                                         # OPTIONAL
+      SortOrder    => 'Ascending',                                    # OPTIONAL
+      StatusEquals => 'Pending',                                      # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken         = $ListNotebookInstancesOutput->NextToken;
+    my $NotebookInstances = $ListNotebookInstancesOutput->NotebookInstances;
+
+    # Returns a L<Paws::SageMaker::ListNotebookInstancesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/ListNotebookInstances>
 
 =head1 ATTRIBUTES
+
+
+=head2 AdditionalCodeRepositoryEquals => Str
+
+A filter that returns only notebook instances with associated with the
+specified git repository.
+
 
 
 =head2 CreationTimeAfter => Str
@@ -53,6 +86,15 @@ the specified time (timestamp).
 
 A filter that returns only notebook instances that were created before
 the specified time (timestamp).
+
+
+
+=head2 DefaultCodeRepositoryContains => Str
+
+A string in the name or URL of a Git repository associated with this
+notebook instance. This filter returns only notebook instances
+associated with a git repository with a name that contains the
+specified string.
 
 
 
@@ -96,6 +138,15 @@ sort order in the next request.
 
 
 
+=head2 NotebookInstanceLifecycleConfigNameContains => Str
+
+A string in the name of a notebook instances lifecycle configuration
+associated with this notebook instance. This filter returns only
+notebook instances associated with a lifecycle configuration with a
+name that contains the specified string.
+
+
+
 =head2 SortBy => Str
 
 The field to sort results by. The default is C<Name>.
@@ -113,7 +164,7 @@ Valid values are: C<"Ascending">, C<"Descending">
 A filter that returns only notebook instances with the specified
 status.
 
-Valid values are: C<"Pending">, C<"InService">, C<"Stopping">, C<"Stopped">, C<"Failed">, C<"Deleting">
+Valid values are: C<"Pending">, C<"InService">, C<"Stopping">, C<"Stopped">, C<"Failed">, C<"Deleting">, C<"Updating">
 
 
 =head1 SEE ALSO

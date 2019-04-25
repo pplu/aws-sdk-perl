@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::RoleUs
 =head1 DESCRIPTION
 
 An object that contains details about how a service-linked role is
-used.
+used, if that information is returned by the service.
 
 This data type is used as a response element in the
 GetServiceLinkedRoleDeletionStatus operation.

@@ -40,17 +40,278 @@ Paws::EMR::RunJobFlow - Arguments for method RunJobFlow on L<Paws::EMR>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RunJobFlow on the 
-Amazon Elastic MapReduce service. Use the attributes of this class
+This class represents the parameters used for calling the method RunJobFlow on the
+L<Amazon Elastic MapReduce|Paws::EMR> service. Use the attributes of this class
 as arguments to method RunJobFlow.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RunJobFlow.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RunJobFlow(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticmapreduce = Paws->service('EMR');
+    my $RunJobFlowOutput = $elasticmapreduce->RunJobFlow(
+      Instances => {
+        AdditionalMasterSecurityGroups => [
+          'MyXmlStringMaxLen256', ...    # max: 256; OPTIONAL
+        ],                               # OPTIONAL
+        AdditionalSlaveSecurityGroups => [
+          'MyXmlStringMaxLen256', ...    # max: 256; OPTIONAL
+        ],                               # OPTIONAL
+        Ec2KeyName   => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        Ec2SubnetId  => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        Ec2SubnetIds => [
+          'MyXmlStringMaxLen256', ...              # max: 256; OPTIONAL
+        ],                                         # OPTIONAL
+        EmrManagedMasterSecurityGroup =>
+          'MyXmlStringMaxLen256',                  # max: 256; OPTIONAL
+        EmrManagedSlaveSecurityGroup =>
+          'MyXmlStringMaxLen256',                  # max: 256; OPTIONAL
+        HadoopVersion  => 'MyXmlStringMaxLen256',  # max: 256; OPTIONAL
+        InstanceCount  => 1,                       # OPTIONAL
+        InstanceFleets => [
+          {
+            InstanceFleetType   => 'MASTER',       # values: MASTER, CORE, TASK
+            InstanceTypeConfigs => [
+              {
+                InstanceType => 'MyInstanceType',          # min: 1, max: 256
+                BidPrice     => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+                BidPriceAsPercentageOfOnDemandPrice => 1,
+                Configurations                      => [
+                  {
+                    Classification => 'MyString',
+                    Configurations => <ConfigurationList>,
+                    Properties     => { 'MyString' => 'MyString', },  # OPTIONAL
+                  },
+                  ...
+                ],                                                    # OPTIONAL
+                EbsConfiguration => {
+                  EbsBlockDeviceConfigs => [
+                    {
+                      VolumeSpecification => {
+                        SizeInGB   => 1,                              # OPTIONAL
+                        VolumeType => 'MyString',
+                        Iops       => 1,                              # OPTIONAL
+                      },
+                      VolumesPerInstance => 1,                        # OPTIONAL
+                    },
+                    ...
+                  ],                                                  # OPTIONAL
+                  EbsOptimized => 1,                                  # OPTIONAL
+                },    # OPTIONAL
+                WeightedCapacity => 1,    # OPTIONAL
+              },
+              ...
+            ],                            # OPTIONAL
+            LaunchSpecifications => {
+              SpotSpecification => {
+                TimeoutAction => 'SWITCH_TO_ON_DEMAND'
+                ,    # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
+                TimeoutDurationMinutes => 1,    # OPTIONAL
+                BlockDurationMinutes   => 1,    # OPTIONAL
+              },
+
+            },    # OPTIONAL
+            Name => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+            TargetOnDemandCapacity => 1,       # OPTIONAL
+            TargetSpotCapacity     => 1,       # OPTIONAL
+          },
+          ...
+        ],                                     # OPTIONAL
+        InstanceGroups => [
+          {
+            InstanceCount     => 1,                 # OPTIONAL
+            InstanceRole      => 'MASTER',          # values: MASTER, CORE, TASK
+            InstanceType      => 'MyInstanceType',  # min: 1, max: 256
+            AutoScalingPolicy => {
+              Constraints => {
+                MaxCapacity => 1,                   # OPTIONAL
+                MinCapacity => 1,                   # OPTIONAL
+
+              },
+              Rules => [
+                {
+                  Action => {
+                    SimpleScalingPolicyConfiguration => {
+                      ScalingAdjustment => 1,                     # OPTIONAL
+                      AdjustmentType    => 'CHANGE_IN_CAPACITY'
+                      , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
+                      CoolDown => 1,    # OPTIONAL
+                    },
+                    Market => 'ON_DEMAND',   # values: ON_DEMAND, SPOT; OPTIONAL
+                  },
+                  Name    => 'MyString',
+                  Trigger => {
+                    CloudWatchAlarmDefinition => {
+                      ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
+                      , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
+                      MetricName => 'MyString',
+                      Period     => 1,            # OPTIONAL
+                      Threshold  => 1,
+                      Dimensions => [
+                        {
+                          Key   => 'MyString',
+                          Value => 'MyString',
+                        },
+                        ...
+                      ],                          # OPTIONAL
+                      EvaluationPeriods => 1,               # OPTIONAL
+                      Namespace         => 'MyString',
+                      Statistic         => 'SAMPLE_COUNT'
+                      , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
+                      Unit => 'NONE'
+                      , # values: NONE, SECONDS, MICRO_SECONDS, MILLI_SECONDS, BYTES, KILO_BYTES, MEGA_BYTES, GIGA_BYTES, TERA_BYTES, BITS, KILO_BITS, MEGA_BITS, GIGA_BITS, TERA_BITS, PERCENT, COUNT, BYTES_PER_SECOND, KILO_BYTES_PER_SECOND, MEGA_BYTES_PER_SECOND, GIGA_BYTES_PER_SECOND, TERA_BYTES_PER_SECOND, BITS_PER_SECOND, KILO_BITS_PER_SECOND, MEGA_BITS_PER_SECOND, GIGA_BITS_PER_SECOND, TERA_BITS_PER_SECOND, COUNT_PER_SECOND; OPTIONAL
+                    },
+
+                  },
+                  Description => 'MyString',
+                },
+                ...
+              ],
+
+            },    # OPTIONAL
+            BidPrice       => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+            Configurations => [
+              {
+                Classification => 'MyString',
+                Configurations => <ConfigurationList>,
+                Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+              },
+              ...
+            ],                                                      # OPTIONAL
+            EbsConfiguration => {
+              EbsBlockDeviceConfigs => [
+                {
+                  VolumeSpecification => {
+                    SizeInGB   => 1,                                # OPTIONAL
+                    VolumeType => 'MyString',
+                    Iops       => 1,                                # OPTIONAL
+                  },
+                  VolumesPerInstance => 1,                          # OPTIONAL
+                },
+                ...
+              ],                                                    # OPTIONAL
+              EbsOptimized => 1,                                    # OPTIONAL
+            },    # OPTIONAL
+            Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
+            Name => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+          },
+          ...
+        ],                                     # OPTIONAL
+        KeepJobFlowAliveWhenNoSteps => 1,                   # OPTIONAL
+        MasterInstanceType          => 'MyInstanceType',    # min: 1, max: 256
+        Placement                   => {
+          AvailabilityZone  => 'MyXmlString',    # max: 10280; OPTIONAL
+          AvailabilityZones => [
+            'MyXmlStringMaxLen256', ...          # max: 256; OPTIONAL
+          ],                                     # OPTIONAL
+        },    # OPTIONAL
+        ServiceAccessSecurityGroup =>
+          'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        SlaveInstanceType    => 'MyInstanceType',    # min: 1, max: 256
+        TerminationProtected => 1,                   # OPTIONAL
+      },
+      Name           => 'MyXmlStringMaxLen256',
+      AdditionalInfo => 'MyXmlString',               # OPTIONAL
+      AmiVersion     => 'MyXmlStringMaxLen256',      # OPTIONAL
+      Applications   => [
+        {
+          AdditionalInfo => { 'MyString' => 'MyString', },    # OPTIONAL
+          Args           => [ 'MyString', ... ],              # OPTIONAL
+          Name           => 'MyString',
+          Version        => 'MyString',
+        },
+        ...
+      ],                                                      # OPTIONAL
+      AutoScalingRole  => 'MyXmlString',                      # OPTIONAL
+      BootstrapActions => [
+        {
+          Name                  => 'MyXmlStringMaxLen256',  # max: 256; OPTIONAL
+          ScriptBootstrapAction => {
+            Path => 'MyXmlString',    # max: 10280; OPTIONAL
+            Args => [
+              'MyXmlString', ...      # max: 10280; OPTIONAL
+            ],                        # OPTIONAL
+          },
+
+        },
+        ...
+      ],                              # OPTIONAL
+      Configurations => [
+        {
+          Classification => 'MyString',
+          Configurations => <ConfigurationList>,
+          Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+        },
+        ...
+      ],                                                      # OPTIONAL
+      CustomAmiId        => 'MyXmlStringMaxLen256',           # OPTIONAL
+      EbsRootVolumeSize  => 1,                                # OPTIONAL
+      JobFlowRole        => 'MyXmlString',                    # OPTIONAL
+      KerberosAttributes => {
+        KdcAdminPassword     => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        Realm                => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        ADDomainJoinPassword => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        ADDomainJoinUser     => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+        CrossRealmTrustPrincipalPassword =>
+          'MyXmlStringMaxLen256',                          # max: 256; OPTIONAL
+      },    # OPTIONAL
+      LogUri               => 'MyXmlString',    # OPTIONAL
+      NewSupportedProducts => [
+        {
+          Args => [
+            'MyXmlString', ...                  # max: 10280; OPTIONAL
+          ],                                    # OPTIONAL
+          Name => 'MyXmlStringMaxLen256',       # max: 256; OPTIONAL
+        },
+        ...
+      ],                                        # OPTIONAL
+      ReleaseLabel          => 'MyXmlStringMaxLen256',          # OPTIONAL
+      RepoUpgradeOnBoot     => 'SECURITY',                      # OPTIONAL
+      ScaleDownBehavior     => 'TERMINATE_AT_INSTANCE_HOUR',    # OPTIONAL
+      SecurityConfiguration => 'MyXmlString',                   # OPTIONAL
+      ServiceRole           => 'MyXmlString',                   # OPTIONAL
+      Steps                 => [
+        {
+          HadoopJarStep => {
+            Jar  => 'MyXmlString',    # max: 10280; OPTIONAL
+            Args => [
+              'MyXmlString', ...      # max: 10280; OPTIONAL
+            ],                        # OPTIONAL
+            MainClass  => 'MyXmlString',    # max: 10280; OPTIONAL
+            Properties => [
+              {
+                Key   => 'MyXmlString',     # max: 10280; OPTIONAL
+                Value => 'MyXmlString',     # max: 10280; OPTIONAL
+              },
+              ...
+            ],                              # OPTIONAL
+          },
+          Name            => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
+          ActionOnFailure => 'TERMINATE_JOB_FLOW'
+          , # values: TERMINATE_JOB_FLOW, TERMINATE_CLUSTER, CANCEL_AND_WAIT, CONTINUE; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      SupportedProducts => [
+        'MyXmlStringMaxLen256', ...    # max: 256; OPTIONAL
+      ],                               # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                               # OPTIONAL
+      VisibleToAllUsers => 1,          # OPTIONAL
+    );
+
+    # Results:
+    my $JobFlowId = $RunJobFlowOutput->JobFlowId;
+
+    # Returns a L<Paws::EMR::RunJobFlowOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce/RunJobFlow>
 
 =head1 ATTRIBUTES
 
@@ -63,31 +324,19 @@ A JSON string for selecting additional features.
 
 =head2 AmiVersion => Str
 
-For Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR releases 4.0
-and later, the Linux AMI is determined by the C<ReleaseLabel> specified
-or by C<CustomAmiID>. The version of the Amazon Machine Image (AMI) to
-use when launching Amazon EC2 instances in the job flow. For details
-about the AMI versions currently supported in EMR version 3.x and 2.x,
-see AMI Versions Supported in EMR in the I<Amazon EMR Developer Guide>.
-
-If the AMI supports multiple versions of Hadoop (for example, AMI 1.0
-supports both Hadoop 0.18 and 0.20), you can use the
-JobFlowInstancesConfig C<HadoopVersion> parameter to modify the version
-of Hadoop from the defaults shown above.
-
-Previously, the EMR AMI version API parameter options allowed you to
-use latest for the latest AMI version rather than specify a numerical
-value. Some regions no longer support this deprecated option as they
-only have a newer release label version of EMR, which requires you to
-specify an EMR release label release (EMR 4.x or later).
+Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR
+releases 4.0 and later, C<ReleaseLabel> is used. To specify a custom
+AMI, use C<CustomAmiID>.
 
 
 
 =head2 Applications => ArrayRef[L<Paws::EMR::Application>]
 
-For Amazon EMR releases 4.0 and later. A list of applications for the
-cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and
-"Spark." They are case insensitive.
+Applies to Amazon EMR releases 4.0 and later. A case-insensitive list
+of applications for Amazon EMR to install and configure when launching
+the cluster. For a list of applications available for each Amazon EMR
+release version, see the Amazon EMR Release Guide
+(http://docs.aws.amazon.com/emr/latest/ReleaseGuide/).
 
 
 
@@ -237,8 +486,15 @@ installed.
 
 =head2 ReleaseLabel => Str
 
-The release label for the Amazon EMR release. For Amazon EMR 3.x and
-2.x AMIs, use C<AmiVersion> instead.
+The Amazon EMR release label, which determines the version of
+open-source application packages installed on the cluster. Release
+labels are in the form C<emr-x.x.x>, where x.x.x is an Amazon EMR
+release version, for example, C<emr-5.14.0>. For more information about
+Amazon EMR release versions and included application versions and
+features, see http://docs.aws.amazon.com/emr/latest/ReleaseGuide/
+(http://docs.aws.amazon.com/emr/latest/ReleaseGuide/). The release
+label applies only to Amazon EMR releases versions 4.x and later.
+Earlier versions use C<AmiVersion>.
 
 
 

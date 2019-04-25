@@ -4,6 +4,7 @@ package Paws::LexRuntime::PostTextResponse;
   has DialogState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dialogState');
   has IntentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'intentName');
   has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message');
+  has MessageFormat => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'messageFormat');
   has ResponseCard => (is => 'ro', isa => 'Paws::LexRuntime::ResponseCard', traits => ['NameInRequest'], request_name => 'responseCard');
   has SessionAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'sessionAttributes');
   has Slots => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'slots');
@@ -91,21 +92,55 @@ The current user intent that Amazon Lex is aware of.
 
 =head2 Message => Str
 
-A message to convey to the user. It can come from the bot's
-configuration or a code hook (Lambda function). If the current intent
-is not configured with a code hook or the code hook returned
-C<Delegate> as the C<dialogAction.type> in its response, then Amazon
-Lex decides the next course of action and selects an appropriate
-message from the bot configuration based on the current user
-interaction context. For example, if Amazon Lex is not able to
-understand the user input, it uses a clarification prompt message (for
-more information, see the Error Handling section in the Amazon Lex
-console). Another example: if the intent requires confirmation before
-fulfillment, then Amazon Lex uses the confirmation prompt message in
-the intent configuration. If the code hook returns a message, Amazon
-Lex passes it as-is in its response to the client.
+The message to convey to the user. The message can come from the bot's
+configuration or from a Lambda function.
+
+If the intent is not configured with a Lambda function, or if the
+Lambda function returned C<Delegate> as the C<dialogAction.type> its
+response, Amazon Lex decides on the next course of action and selects
+an appropriate message from the bot's configuration based on the
+current interaction context. For example, if Amazon Lex isn't able to
+understand user input, it uses a clarification prompt message.
+
+When you create an intent you can assign messages to groups. When
+messages are assigned to groups Amazon Lex returns one message from
+each group in the response. The message field is an escaped JSON string
+containing the messages. For more information about the structure of
+the JSON string returned, see msg-prompts-formats.
+
+If the Lambda function returns a message, Amazon Lex passes it to the
+client in its response.
 
 
+=head2 MessageFormat => Str
+
+The format of the response message. One of the following values:
+
+=over
+
+=item *
+
+C<PlainText> - The message contains plain UTF-8 text.
+
+=item *
+
+C<CustomPayload> - The message is a custom format defined by the Lambda
+function.
+
+=item *
+
+C<SSML> - The message contains text formatted for voice output.
+
+=item *
+
+C<Composite> - The message contains an escaped JSON object containing
+one or more messages from the groups that messages were assigned to
+when the intent was created.
+
+=back
+
+
+Valid values are: C<"PlainText">, C<"CustomPayload">, C<"SSML">, C<"Composite">
 =head2 ResponseCard => L<Paws::LexRuntime::ResponseCard>
 
 Represents the options that the user has to respond to the current

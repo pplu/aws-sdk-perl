@@ -20,17 +20,33 @@ Paws::EC2::ReplaceNetworkAclAssociation - Arguments for method ReplaceNetworkAcl
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ReplaceNetworkAclAssociation on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method ReplaceNetworkAclAssociation on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ReplaceNetworkAclAssociation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReplaceNetworkAclAssociation.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ReplaceNetworkAclAssociation(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To replace the network ACL associated with a subnet
+    # This example associates the specified network ACL with the subnet for the
+    # specified network ACL association.
+    my $ReplaceNetworkAclAssociationResult = $ec2->ReplaceNetworkAclAssociation(
+      {
+        'AssociationId' => 'aclassoc-e5b95c8c',
+        'NetworkAclId'  => 'acl-5fb85d36'
+      }
+    );
+
+    # Results:
+    my $NewAssociationId =
+      $ReplaceNetworkAclAssociationResult->NewAssociationId;
+
+    # Returns a L<Paws::EC2::ReplaceNetworkAclAssociationResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ReplaceNetworkAclAssociation>
 
 =head1 ATTRIBUTES
 

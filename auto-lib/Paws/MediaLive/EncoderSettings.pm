@@ -1,14 +1,14 @@
 package Paws::MediaLive::EncoderSettings;
   use Moose;
-  has AudioDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::AudioDescription]', request_name => 'audioDescriptions', traits => ['NameInRequest']);
+  has AudioDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::AudioDescription]', request_name => 'audioDescriptions', traits => ['NameInRequest'], required => 1);
   has AvailBlanking => (is => 'ro', isa => 'Paws::MediaLive::AvailBlanking', request_name => 'availBlanking', traits => ['NameInRequest']);
   has AvailConfiguration => (is => 'ro', isa => 'Paws::MediaLive::AvailConfiguration', request_name => 'availConfiguration', traits => ['NameInRequest']);
   has BlackoutSlate => (is => 'ro', isa => 'Paws::MediaLive::BlackoutSlate', request_name => 'blackoutSlate', traits => ['NameInRequest']);
   has CaptionDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::CaptionDescription]', request_name => 'captionDescriptions', traits => ['NameInRequest']);
   has GlobalConfiguration => (is => 'ro', isa => 'Paws::MediaLive::GlobalConfiguration', request_name => 'globalConfiguration', traits => ['NameInRequest']);
-  has OutputGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputGroup]', request_name => 'outputGroups', traits => ['NameInRequest']);
-  has TimecodeConfig => (is => 'ro', isa => 'Paws::MediaLive::TimecodeConfig', request_name => 'timecodeConfig', traits => ['NameInRequest']);
-  has VideoDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::VideoDescription]', request_name => 'videoDescriptions', traits => ['NameInRequest']);
+  has OutputGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputGroup]', request_name => 'outputGroups', traits => ['NameInRequest'], required => 1);
+  has TimecodeConfig => (is => 'ro', isa => 'Paws::MediaLive::TimecodeConfig', request_name => 'timecodeConfig', traits => ['NameInRequest'], required => 1);
+  has VideoDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::VideoDescription]', request_name => 'videoDescriptions', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +44,7 @@ Placeholder documentation for EncoderSettings
 =head1 ATTRIBUTES
 
 
-=head2 AudioDescriptions => ArrayRef[L<Paws::MediaLive::AudioDescription>]
+=head2 B<REQUIRED> AudioDescriptions => ArrayRef[L<Paws::MediaLive::AudioDescription>]
 
   
 
@@ -74,18 +74,18 @@ Placeholder documentation for EncoderSettings
   Configuration settings that apply to the event as a whole.
 
 
-=head2 OutputGroups => ArrayRef[L<Paws::MediaLive::OutputGroup>]
+=head2 B<REQUIRED> OutputGroups => ArrayRef[L<Paws::MediaLive::OutputGroup>]
 
   
 
 
-=head2 TimecodeConfig => L<Paws::MediaLive::TimecodeConfig>
+=head2 B<REQUIRED> TimecodeConfig => L<Paws::MediaLive::TimecodeConfig>
 
   Contains settings used to acquire and adjust timecode information from
 inputs.
 
 
-=head2 VideoDescriptions => ArrayRef[L<Paws::MediaLive::VideoDescription>]
+=head2 B<REQUIRED> VideoDescriptions => ArrayRef[L<Paws::MediaLive::VideoDescription>]
 
   
 

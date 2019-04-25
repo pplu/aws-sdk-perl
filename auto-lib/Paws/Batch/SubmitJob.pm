@@ -7,8 +7,10 @@ package Paws::Batch::SubmitJob;
   has JobDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinition', required => 1);
   has JobName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobName', required => 1);
   has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
+  has NodeOverrides => (is => 'ro', isa => 'Paws::Batch::NodeOverrides', traits => ['NameInRequest'], request_name => 'nodeOverrides');
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
+  has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', traits => ['NameInRequest'], request_name => 'timeout');
 
   use MooseX::ClassAttribute;
 
@@ -26,17 +28,34 @@ Paws::Batch::SubmitJob - Arguments for method SubmitJob on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SubmitJob on the 
-AWS Batch service. Use the attributes of this class
+This class represents the parameters used for calling the method SubmitJob on the
+L<AWS Batch|Paws::Batch> service. Use the attributes of this class
 as arguments to method SubmitJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SubmitJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SubmitJob(Att1 => $value1, Att2 => $value2, ...);
+    my $batch = Paws->service('Batch');
+    # To submit a job to a queue
+    # This example submits a simple container job called example to the
+    # HighPriority job queue.
+    my $SubmitJobResponse = $batch->SubmitJob(
+      {
+        'JobDefinition' => 'sleep60',
+        'JobName'       => 'example',
+        'JobQueue'      => 'HighPriority'
+      }
+    );
+
+    # Results:
+    my $jobId   = $SubmitJobResponse->jobId;
+    my $jobName = $SubmitJobResponse->jobName;
+
+    # Returns a L<Paws::Batch::SubmitJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/batch/SubmitJob>
 
 =head1 ATTRIBUTES
 
@@ -70,9 +89,9 @@ A list of dependencies for the job. A job can depend upon a maximum of
 20 jobs. You can specify a C<SEQUENTIAL> type dependency without
 specifying a job ID for array jobs so that each child array job
 completes sequentially, starting at index 0. You can also specify an
-C<N_TO_N> type dependency with a job ID for array jobs so that each
-index child of this job must wait for the corresponding index child of
-each dependency to complete before it can begin.
+C<N_TO_N> type dependency with a job ID for array jobs. In that case,
+each index child of this job must wait for the corresponding index
+child of each dependency to complete before it can begin.
 
 
 
@@ -99,6 +118,13 @@ the name or the Amazon Resource Name (ARN) of the queue.
 
 
 
+=head2 NodeOverrides => L<Paws::Batch::NodeOverrides>
+
+A list of node overrides in JSON format that specify the node range to
+target and the container overrides for that node range.
+
+
+
 =head2 Parameters => L<Paws::Batch::ParametersMap>
 
 Additional parameters passed to the job that replace parameter
@@ -114,6 +140,20 @@ from the job definition.
 The retry strategy to use for failed jobs from this SubmitJob
 operation. When a retry strategy is specified here, it overrides the
 retry strategy defined in the job definition.
+
+
+
+=head2 Timeout => L<Paws::Batch::JobTimeout>
+
+The timeout configuration for this SubmitJob operation. You can specify
+a timeout duration after which AWS Batch terminates your jobs if they
+have not finished. If a job is terminated due to a timeout, it is not
+retried. The minimum value for the timeout is 60 seconds. This
+configuration overrides any timeout configuration specified in the job
+definition. For array jobs, child jobs have the same timeout
+configuration as the parent job. For more information, see Job Timeouts
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 

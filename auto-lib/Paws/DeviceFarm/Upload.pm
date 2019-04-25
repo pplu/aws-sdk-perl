@@ -1,6 +1,7 @@
 package Paws::DeviceFarm::Upload;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
   has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
@@ -48,6 +49,24 @@ uploaded.
 =head2 Arn => Str
 
   The upload's ARN.
+
+
+=head2 Category => Str
+
+  The upload's category. Allowed values include:
+
+=over
+
+=item *
+
+CURATED: An upload managed by AWS Device Farm.
+
+=item *
+
+PRIVATE: An upload managed by the AWS Device Farm customer.
+
+=back
+
 
 
 =head2 ContentType => Str
@@ -145,17 +164,36 @@ APPIUM_PYTHON_TEST_PACKAGE: An Appium Python test package upload.
 
 =item *
 
+APPIUM_NODE_TEST_PACKAGE: An Appium Node.js test package upload.
+
+=item *
+
+APPIUM_RUBY_TEST_PACKAGE: An Appium Ruby test package upload.
+
+=item *
+
 APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package
-upload.
+upload for web apps.
 
 =item *
 
 APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package
-upload.
+upload for web apps.
 
 =item *
 
-APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload.
+APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload
+for web apps.
+
+=item *
+
+APPIUM_WEB_NODE_TEST_PACKAGE: An Appium Node.js test package upload for
+web apps.
+
+=item *
+
+APPIUM_WEB_RUBY_TEST_PACKAGE: An Appium Ruby test package upload for
+web apps.
 
 =item *
 
@@ -180,6 +218,59 @@ XCTEST_TEST_PACKAGE: An XCode test package upload.
 =item *
 
 XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.
+
+=item *
+
+APPIUM_JAVA_JUNIT_TEST_SPEC: An Appium Java JUnit test spec upload.
+
+=item *
+
+APPIUM_JAVA_TESTNG_TEST_SPEC: An Appium Java TestNG test spec upload.
+
+=item *
+
+APPIUM_PYTHON_TEST_SPEC: An Appium Python test spec upload.
+
+=item *
+
+APPIUM_NODE_TEST_SPEC: An Appium Node.js test spec upload.
+
+=item *
+
+APPIUM_RUBY_TEST_SPEC: An Appium Ruby test spec upload.
+
+=item *
+
+APPIUM_WEB_JAVA_JUNIT_TEST_SPEC: An Appium Java JUnit test spec upload
+for a web app.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG_TEST_SPEC: An Appium Java TestNG test spec
+upload for a web app.
+
+=item *
+
+APPIUM_WEB_PYTHON_TEST_SPEC: An Appium Python test spec upload for a
+web app.
+
+=item *
+
+APPIUM_WEB_NODE_TEST_SPEC: An Appium Node.js test spec upload for a web
+app.
+
+=item *
+
+APPIUM_WEB_RUBY_TEST_SPEC: An Appium Ruby test spec upload for a web
+app.
+
+=item *
+
+INSTRUMENTATION_TEST_SPEC: An instrumentation test spec upload.
+
+=item *
+
+XCTEST_UI_TEST_SPEC: An XCode UI test spec upload.
 
 =back
 

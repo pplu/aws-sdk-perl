@@ -1,6 +1,6 @@
 package Paws::MediaLive::RemixSettings;
   use Moose;
-  has ChannelMappings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::AudioChannelMapping]', request_name => 'channelMappings', traits => ['NameInRequest']);
+  has ChannelMappings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::AudioChannelMapping]', request_name => 'channelMappings', traits => ['NameInRequest'], required => 1);
   has ChannelsIn => (is => 'ro', isa => 'Int', request_name => 'channelsIn', traits => ['NameInRequest']);
   has ChannelsOut => (is => 'ro', isa => 'Int', request_name => 'channelsOut', traits => ['NameInRequest']);
 1;
@@ -38,7 +38,7 @@ Placeholder documentation for RemixSettings
 =head1 ATTRIBUTES
 
 
-=head2 ChannelMappings => ArrayRef[L<Paws::MediaLive::AudioChannelMapping>]
+=head2 B<REQUIRED> ChannelMappings => ArrayRef[L<Paws::MediaLive::AudioChannelMapping>]
 
   Mapping of input channels to output channels, with appropriate gain
 adjustments.

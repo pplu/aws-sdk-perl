@@ -20,17 +20,42 @@ Paws::LexModels::CreateBotVersion - Arguments for method CreateBotVersion on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateBotVersion on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateBotVersion on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method CreateBotVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateBotVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateBotVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $CreateBotVersionResponse = $models . lex->CreateBotVersion(
+      Name     => 'MyBotName',
+      Checksum => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $AbortStatement      = $CreateBotVersionResponse->AbortStatement;
+    my $Checksum            = $CreateBotVersionResponse->Checksum;
+    my $ChildDirected       = $CreateBotVersionResponse->ChildDirected;
+    my $ClarificationPrompt = $CreateBotVersionResponse->ClarificationPrompt;
+    my $CreatedDate         = $CreateBotVersionResponse->CreatedDate;
+    my $Description         = $CreateBotVersionResponse->Description;
+    my $FailureReason       = $CreateBotVersionResponse->FailureReason;
+    my $IdleSessionTTLInSeconds =
+      $CreateBotVersionResponse->IdleSessionTTLInSeconds;
+    my $Intents         = $CreateBotVersionResponse->Intents;
+    my $LastUpdatedDate = $CreateBotVersionResponse->LastUpdatedDate;
+    my $Locale          = $CreateBotVersionResponse->Locale;
+    my $Name            = $CreateBotVersionResponse->Name;
+    my $Status          = $CreateBotVersionResponse->Status;
+    my $Version         = $CreateBotVersionResponse->Version;
+    my $VoiceId         = $CreateBotVersionResponse->VoiceId;
+
+    # Returns a L<Paws::LexModels::CreateBotVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/CreateBotVersion>
 
 =head1 ATTRIBUTES
 

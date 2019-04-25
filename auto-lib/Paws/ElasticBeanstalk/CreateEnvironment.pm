@@ -30,17 +30,46 @@ Paws::ElasticBeanstalk::CreateEnvironment - Arguments for method CreateEnvironme
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateEnvironment on the 
-AWS Elastic Beanstalk service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateEnvironment on the
+L<AWS Elastic Beanstalk|Paws::ElasticBeanstalk> service. Use the attributes of this class
 as arguments to method CreateEnvironment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateEnvironment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateEnvironment(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
+    # To create a new environment for an application
+    # The following operation creates a new environment for version v1 of a java
+    # application named my-app:
+    my $EnvironmentDescription = $elasticbeanstalk->CreateEnvironment(
+      {
+        'ApplicationName' => 'my-app',
+        'CNAMEPrefix'     => 'my-app',
+        'EnvironmentName' => 'my-env',
+        'SolutionStackName' =>
+          '64bit Amazon Linux 2015.03 v2.0.0 running Tomcat 8 Java 8',
+        'VersionLabel' => 'v1'
+      }
+    );
+
+    # Results:
+    my $ApplicationName   = $EnvironmentDescription->ApplicationName;
+    my $CNAME             = $EnvironmentDescription->CNAME;
+    my $DateCreated       = $EnvironmentDescription->DateCreated;
+    my $DateUpdated       = $EnvironmentDescription->DateUpdated;
+    my $EnvironmentId     = $EnvironmentDescription->EnvironmentId;
+    my $EnvironmentName   = $EnvironmentDescription->EnvironmentName;
+    my $Health            = $EnvironmentDescription->Health;
+    my $SolutionStackName = $EnvironmentDescription->SolutionStackName;
+    my $Status            = $EnvironmentDescription->Status;
+    my $Tier              = $EnvironmentDescription->Tier;
+    my $VersionLabel      = $EnvironmentDescription->VersionLabel;
+
+    # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk/CreateEnvironment>
 
 =head1 ATTRIBUTES
 
@@ -123,6 +152,10 @@ The ARN of the platform.
 This is an alternative to specifying a template name. If specified, AWS
 Elastic Beanstalk sets the configuration values to the default values
 associated with the specified solution stack.
+
+For a list of current solution stacks, see Elastic Beanstalk Supported
+Platforms
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html).
 
 
 

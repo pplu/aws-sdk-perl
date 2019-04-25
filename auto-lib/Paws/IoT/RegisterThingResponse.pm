@@ -18,7 +18,7 @@ Paws::IoT::RegisterThingResponse
 
 =head2 CertificatePem => Str
 
-
+.
 
 
 =head2 ResourceArns => L<Paws::IoT::ResourceArns>

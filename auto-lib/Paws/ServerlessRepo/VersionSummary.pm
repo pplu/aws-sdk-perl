@@ -1,8 +1,8 @@
 package Paws::ServerlessRepo::VersionSummary;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest']);
+  has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest'], required => 1);
+  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest'], required => 1);
+  has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest'], required => 1);
   has SourceCodeUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeUrl', traits => ['NameInRequest']);
 1;
 
@@ -34,24 +34,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessR
 
 =head1 DESCRIPTION
 
-Application version summary.
+An application version summary.
 
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationId => Str
+=head2 B<REQUIRED> ApplicationId => Str
 
   The application Amazon Resource Name (ARN).
 
 
-=head2 CreationTime => Str
+=head2 B<REQUIRED> CreationTime => Str
 
-  The date/time this resource was created.
+  The date and time this resource was created.
 
 
-=head2 SemanticVersion => Str
+=head2 B<REQUIRED> SemanticVersion => Str
 
-  The semantic version of the application:\n\n https://semver.org/
+  The semantic version of the application:
+
+https://semver.org/ (https://semver.org/)
 
 
 =head2 SourceCodeUrl => Str

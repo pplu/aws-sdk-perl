@@ -22,17 +22,34 @@ Paws::MTurk::ListQualificationTypes - Arguments for method ListQualificationType
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListQualificationTypes on the 
-Amazon Mechanical Turk service. Use the attributes of this class
+This class represents the parameters used for calling the method ListQualificationTypes on the
+L<Amazon Mechanical Turk|Paws::MTurk> service. Use the attributes of this class
 as arguments to method ListQualificationTypes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListQualificationTypes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListQualificationTypes(Att1 => $value1, Att2 => $value2, ...);
+    my $mturk-requester = Paws->service('MTurk');
+    my $ListQualificationTypesResponse =
+      $mturk -requester->ListQualificationTypes(
+      MustBeRequestable   => 1,
+      MaxResults          => 1,                      # OPTIONAL
+      MustBeOwnedByCaller => 1,                      # OPTIONAL
+      NextToken           => 'MyPaginationToken',    # OPTIONAL
+      Query               => 'MyString',             # OPTIONAL
+      );
+
+    # Results:
+    my $NextToken  = $ListQualificationTypesResponse->NextToken;
+    my $NumResults = $ListQualificationTypesResponse->NumResults;
+    my $QualificationTypes =
+      $ListQualificationTypesResponse->QualificationTypes;
+
+    # Returns a L<Paws::MTurk::ListQualificationTypesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mturk-requester/ListQualificationTypes>
 
 =head1 ATTRIBUTES
 

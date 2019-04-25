@@ -21,17 +21,35 @@ Paws::GameLift::CreateBuild - Arguments for method CreateBuild on L<Paws::GameLi
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateBuild on the 
-Amazon GameLift service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateBuild on the
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method CreateBuild.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateBuild.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateBuild(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $CreateBuildOutput = $gamelift->CreateBuild(
+      Name            => 'MyNonZeroAndMaxString',    # OPTIONAL
+      OperatingSystem => 'WINDOWS_2012',             # OPTIONAL
+      StorageLocation => {
+        Bucket  => 'MyNonEmptyString',               # min: 1; OPTIONAL
+        Key     => 'MyNonEmptyString',               # min: 1; OPTIONAL
+        RoleArn => 'MyNonEmptyString',               # min: 1; OPTIONAL
+      },    # OPTIONAL
+      Version => 'MyNonZeroAndMaxString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Build             = $CreateBuildOutput->Build;
+    my $StorageLocation   = $CreateBuildOutput->StorageLocation;
+    my $UploadCredentials = $CreateBuildOutput->UploadCredentials;
+
+    # Returns a L<Paws::GameLift::CreateBuildOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/CreateBuild>
 
 =head1 ATTRIBUTES
 
@@ -48,19 +66,20 @@ need to be unique. You can use UpdateBuild to change this value later.
 Operating system that the game server binaries are built to run on.
 This value determines the type of fleet resources that you can use for
 this build. If your game build contains multiple executables, they all
-must run on the same operating system.
+must run on the same operating system. If an operating system is not
+specified when creating a build, Amazon GameLift uses the default value
+(WINDOWS_2012). This value cannot be changed later.
 
 Valid values are: C<"WINDOWS_2012">, C<"AMAZON_LINUX">
 
 =head2 StorageLocation => L<Paws::GameLift::S3Location>
 
-Amazon S3 location of the game build files to be uploaded. The S3
-bucket must be owned by the same AWS account that you're using to
-manage Amazon GameLift. It also must in the same region that you want
-to create a new build in. Before calling C<CreateBuild> with this
-location, you must allow Amazon GameLift to access your Amazon S3
-bucket (see Create a Build with Files in Amazon S3
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build)).
+Information indicating where your game build files are stored. Use this
+parameter only when creating a build with files stored in an Amazon S3
+bucket that you own. The storage location must specify an Amazon S3
+bucket name and key, as well as a role ARN that you set up to allow
+Amazon GameLift to access your Amazon S3 bucket. The S3 bucket must be
+in the same region that you want to create a new build in.
 
 
 

@@ -4,6 +4,7 @@ package Paws::ServerlessRepo::UpdateApplication;
   has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
   has Author => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'author');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has HomePageUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'homePageUrl');
   has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'labels');
   has ReadmeBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeBody');
   has ReadmeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeUrl');
@@ -24,59 +25,102 @@ Paws::ServerlessRepo::UpdateApplication - Arguments for method UpdateApplication
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateApplication on the 
-AWSServerlessApplicationRepository service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateApplication on the
+L<AWSServerlessApplicationRepository|Paws::ServerlessRepo> service. Use the attributes of this class
 as arguments to method UpdateApplication.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApplication.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateApplication(Att1 => $value1, Att2 => $value2, ...);
+    my $serverlessrepo = Paws->service('ServerlessRepo');
+    my $UpdateApplicationResponse = $serverlessrepo->UpdateApplication(
+      ApplicationId => 'My__string',
+      Author        => 'My__string',             # OPTIONAL
+      Description   => 'My__string',             # OPTIONAL
+      HomePageUrl   => 'My__string',             # OPTIONAL
+      Labels        => [ 'My__string', ... ],    # OPTIONAL
+      ReadmeBody    => 'My__string',             # OPTIONAL
+      ReadmeUrl     => 'My__string',             # OPTIONAL
+    );
+
+    # Results:
+    my $ApplicationId = $UpdateApplicationResponse->ApplicationId;
+    my $Author        = $UpdateApplicationResponse->Author;
+    my $CreationTime  = $UpdateApplicationResponse->CreationTime;
+    my $Description   = $UpdateApplicationResponse->Description;
+    my $HomePageUrl   = $UpdateApplicationResponse->HomePageUrl;
+    my $Labels        = $UpdateApplicationResponse->Labels;
+    my $LicenseUrl    = $UpdateApplicationResponse->LicenseUrl;
+    my $Name          = $UpdateApplicationResponse->Name;
+    my $ReadmeUrl     = $UpdateApplicationResponse->ReadmeUrl;
+    my $SpdxLicenseId = $UpdateApplicationResponse->SpdxLicenseId;
+    my $Version       = $UpdateApplicationResponse->Version;
+
+    # Returns a L<Paws::ServerlessRepo::UpdateApplicationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/serverlessrepo/UpdateApplication>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The id of the application to update
+The Amazon Resource Name (ARN) of the application.
 
 
 
 =head2 Author => Str
 
-The name of the author publishing the app.\nMin Length=1. Max
-Length=127.\nPattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
+The name of the author publishing the app.
+
+Minimum length=1. Maximum length=127.
+
+Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
 
 
 =head2 Description => Str
 
-The description of the application.\nMin Length=1. Max Length=256
+The description of the application.
+
+Minimum length=1. Maximum length=256
+
+
+
+=head2 HomePageUrl => Str
+
+A URL with more information about the application, for example the
+location of your GitHub repository for the application.
 
 
 
 =head2 Labels => ArrayRef[Str|Undef]
 
-Labels to improve discovery of apps in search results.\nMin Length=1.
-Max Length=127. Maximum number of labels: 10\nPattern:
-"^[a-zA-Z0-9+\\-_:\\/@]+$";
+Labels to improve discovery of apps in search results.
+
+Minimum length=1. Maximum length=127. Maximum number of labels: 10
+
+Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
 
 
 =head2 ReadmeBody => Str
 
-A raw text Readme file that contains a more detailed description of the
-application and how it works in markdown language.\nMax size 5 MB
+A text readme file in Markdown language that contains a more detailed
+description of the application and how it works.
+
+Maximum size 5 MB
 
 
 
 =head2 ReadmeUrl => Str
 
-A link to the Readme file that contains a more detailed description of
-the application and how it works in markdown language.\nMax size 5 MB
+A link to the readme file in Markdown language that contains a more
+detailed description of the application and how it works.
+
+Maximum size 5 MB
 
 
 

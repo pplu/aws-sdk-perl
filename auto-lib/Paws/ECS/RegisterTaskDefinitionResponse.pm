@@ -1,6 +1,7 @@
 
 package Paws::ECS::RegisterTaskDefinitionResponse;
   use Moose;
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TaskDefinition => (is => 'ro', isa => 'Paws::ECS::TaskDefinition', traits => ['NameInRequest'], request_name => 'taskDefinition' );
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -12,6 +13,11 @@ package Paws::ECS::RegisterTaskDefinitionResponse;
 Paws::ECS::RegisterTaskDefinitionResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+The list of tags associated with the task definition.
 
 
 =head2 TaskDefinition => L<Paws::ECS::TaskDefinition>

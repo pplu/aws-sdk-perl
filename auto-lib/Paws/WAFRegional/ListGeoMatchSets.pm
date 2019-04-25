@@ -19,17 +19,28 @@ Paws::WAFRegional::ListGeoMatchSets - Arguments for method ListGeoMatchSets on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListGeoMatchSets on the 
-AWS WAF Regional service. Use the attributes of this class
+This class represents the parameters used for calling the method ListGeoMatchSets on the
+L<AWS WAF Regional|Paws::WAFRegional> service. Use the attributes of this class
 as arguments to method ListGeoMatchSets.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListGeoMatchSets.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListGeoMatchSets(Att1 => $value1, Att2 => $value2, ...);
+    my $waf-regional = Paws->service('WAFRegional');
+    my $ListGeoMatchSetsResponse = $waf -regional->ListGeoMatchSets(
+      Limit      => 1,                 # OPTIONAL
+      NextMarker => 'MyNextMarker',    # OPTIONAL
+    );
+
+    # Results:
+    my $GeoMatchSets = $ListGeoMatchSetsResponse->GeoMatchSets;
+    my $NextMarker   = $ListGeoMatchSetsResponse->NextMarker;
+
+    # Returns a L<Paws::WAFRegional::ListGeoMatchSetsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf-regional/ListGeoMatchSets>
 
 =head1 ATTRIBUTES
 

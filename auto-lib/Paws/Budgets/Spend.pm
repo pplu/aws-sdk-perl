@@ -32,20 +32,37 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Sp
 
 =head1 DESCRIPTION
 
-A structure that represents either a cost spend or usage spend.
-Contains an amount and a unit.
+The amount of cost or usage that is measured for a budget.
+
+For example, a C<Spend> for C<3 GB> of S3 usage would have the
+following parameters:
+
+=over
+
+=item *
+
+An C<Amount> of C<3>
+
+=item *
+
+A C<unit> of C<GB>
+
+=back
+
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Amount => Str
 
-  
+  The cost or usage amount that is associated with a budget forecast,
+actual spend, or budget threshold.
 
 
 =head2 B<REQUIRED> Unit => Str
 
-  
+  The unit of measurement that is used for the budget forecast, actual
+spend, or budget threshold, such as dollars or GB.
 
 
 

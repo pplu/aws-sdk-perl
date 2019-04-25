@@ -5,6 +5,7 @@ package Paws::Batch::ListJobs;
   has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue');
   has JobStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobStatus');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
+  has MultiNodeJobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'multiNodeJobId');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   use MooseX::ClassAttribute;
@@ -23,17 +24,44 @@ Paws::Batch::ListJobs - Arguments for method ListJobs on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListJobs on the 
-AWS Batch service. Use the attributes of this class
+This class represents the parameters used for calling the method ListJobs on the
+L<AWS Batch|Paws::Batch> service. Use the attributes of this class
 as arguments to method ListJobs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListJobs.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListJobs(Att1 => $value1, Att2 => $value2, ...);
+    my $batch = Paws->service('Batch');
+    # To list running jobs
+    # This example lists the running jobs in the HighPriority job queue.
+    my $ListJobsResponse = $batch->ListJobs(
+      {
+        'JobQueue' => 'HighPriority'
+      }
+    );
+
+    # Results:
+    my $jobSummaryList = $ListJobsResponse->jobSummaryList;
+
+    # Returns a L<Paws::Batch::ListJobsResponse> object.
+    # To list submitted jobs
+    # This example lists jobs in the HighPriority job queue that are in the
+    # SUBMITTED job status.
+    my $ListJobsResponse = $batch->ListJobs(
+      {
+        'JobQueue'  => 'HighPriority',
+        'JobStatus' => 'SUBMITTED'
+      }
+    );
+
+    # Results:
+    my $jobSummaryList = $ListJobsResponse->jobSummaryList;
+
+    # Returns a L<Paws::Batch::ListJobsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/batch/ListJobs>
 
 =head1 ATTRIBUTES
 
@@ -69,6 +97,14 @@ seen by sending another C<ListJobs> request with the returned
 C<nextToken> value. This value can be between 1 and 100. If this
 parameter is not used, then C<ListJobs> returns up to 100 results and a
 C<nextToken> value if applicable.
+
+
+
+=head2 MultiNodeJobId => Str
+
+The job ID for a multi-node parallel job. Specifying a multi-node
+parallel job ID with this parameter lists all nodes that are associated
+with the specified job.
 
 
 

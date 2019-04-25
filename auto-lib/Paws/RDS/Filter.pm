@@ -32,19 +32,52 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Filter
 
 =head1 DESCRIPTION
 
-This type is not currently supported.
+A filter name and value pair that is used to return a more specific
+list of results from a describe operation. Filters can be used to match
+a set of resources by specific criteria, such as IDs. The filters
+supported by a describe operation are documented with the describe
+operation.
+
+Currently, wildcards are not supported in filters.
+
+The following actions can be filtered:
+
+=over
+
+=item *
+
+DescribeDBClusterBacktracks
+
+=item *
+
+DescribeDBClusterEndpoints
+
+=item *
+
+DescribeDBClusters
+
+=item *
+
+DescribeDBInstances
+
+=item *
+
+DescribePendingMaintenanceActions
+
+=back
+
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Name => Str
 
-  This parameter is not currently supported.
+  The name of the filter. Filter names are case-sensitive.
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
-  This parameter is not currently supported.
+  One or more filter values. Filter values are case-sensitive.
 
 
 

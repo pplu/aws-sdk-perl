@@ -1,12 +1,13 @@
 package Paws::MediaConvert::InputTemplate;
   use Moose;
-  has AudioSelectorGroups => (is => 'ro', isa => 'Paws::MediaConvert::MapOfAudioSelectorGroup', request_name => 'audioSelectorGroups', traits => ['NameInRequest']);
-  has AudioSelectors => (is => 'ro', isa => 'Paws::MediaConvert::MapOfAudioSelector', request_name => 'audioSelectors', traits => ['NameInRequest']);
-  has CaptionSelectors => (is => 'ro', isa => 'Paws::MediaConvert::MapOfCaptionSelector', request_name => 'captionSelectors', traits => ['NameInRequest']);
+  has AudioSelectorGroups => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfAudioSelectorGroup', request_name => 'audioSelectorGroups', traits => ['NameInRequest']);
+  has AudioSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfAudioSelector', request_name => 'audioSelectors', traits => ['NameInRequest']);
+  has CaptionSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfCaptionSelector', request_name => 'captionSelectors', traits => ['NameInRequest']);
   has DeblockFilter => (is => 'ro', isa => 'Str', request_name => 'deblockFilter', traits => ['NameInRequest']);
   has DenoiseFilter => (is => 'ro', isa => 'Str', request_name => 'denoiseFilter', traits => ['NameInRequest']);
   has FilterEnable => (is => 'ro', isa => 'Str', request_name => 'filterEnable', traits => ['NameInRequest']);
   has FilterStrength => (is => 'ro', isa => 'Int', request_name => 'filterStrength', traits => ['NameInRequest']);
+  has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
   has InputClippings => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputClipping]', request_name => 'inputClippings', traits => ['NameInRequest']);
   has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
   has PsiControl => (is => 'ro', isa => 'Str', request_name => 'psiControl', traits => ['NameInRequest']);
@@ -47,21 +48,21 @@ Specified video input in a template.
 =head1 ATTRIBUTES
 
 
-=head2 AudioSelectorGroups => L<Paws::MediaConvert::MapOfAudioSelectorGroup>
+=head2 AudioSelectorGroups => L<Paws::MediaConvert::__mapOfAudioSelectorGroup>
 
   Specifies set of audio selectors within an input to combine. An input
 may have multiple audio selector groups. See "Audio Selector
 Group":#inputs-audio_selector_group for more information.
 
 
-=head2 AudioSelectors => L<Paws::MediaConvert::MapOfAudioSelector>
+=head2 AudioSelectors => L<Paws::MediaConvert::__mapOfAudioSelector>
 
   Use Audio selectors (AudioSelectors) to specify a track or set of
 tracks from the input that you will use in your outputs. You can use
 mutiple Audio selectors per input.
 
 
-=head2 CaptionSelectors => L<Paws::MediaConvert::MapOfCaptionSelector>
+=head2 CaptionSelectors => L<Paws::MediaConvert::__mapOfCaptionSelector>
 
   Use Captions selectors (CaptionSelectors) to specify the captions data
 from the input that you will use in your outputs. You can use mutiple
@@ -88,6 +89,13 @@ captions selectors per input.
   Use Filter strength (FilterStrength) to adjust the magnitude the input
 filter settings (Deblock and Denoise). The range is -5 to 5. Default is
 0.
+
+
+=head2 ImageInserter => L<Paws::MediaConvert::ImageInserter>
+
+  Enable the image inserter feature to include a graphic overlay on your
+video. Enable or disable this feature for each input individually. This
+setting is disabled by default.
 
 
 =head2 InputClippings => ArrayRef[L<Paws::MediaConvert::InputClipping>]

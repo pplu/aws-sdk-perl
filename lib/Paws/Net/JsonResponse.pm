@@ -47,18 +47,19 @@ package Paws::Net::JsonResponse;
     my $struct = $self->unserialize_response( $response );
     my ($message, $request_id);
 
+    my $code = $struct->{__type} // 'InvalidContent';
+    if ($code =~ m/#/) {
+      $code = (split /#/, $code)[1];
+    }
+
     if (exists $struct->{message}){
       $message = $struct->{message} // '';
     } elsif (exists $struct->{Message}){
       $message = $struct->{Message} // '';
     } else {
-      $message = 'Unrecognized error format';
+      $message = $code;
     }
 
-    my $code = $struct->{__type} // 'InvalidContent';
-    if ($code =~ m/#/) {
-      $code = (split /#/, $code)[1];
-    }
     $request_id = $response->header('x-amzn-requestid') // '';
 
     Paws::Exception->new(

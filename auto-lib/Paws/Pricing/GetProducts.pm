@@ -22,17 +22,40 @@ Paws::Pricing::GetProducts - Arguments for method GetProducts on L<Paws::Pricing
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetProducts on the 
-AWS Price List Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetProducts on the
+L<AWS Price List Service|Paws::Pricing> service. Use the attributes of this class
 as arguments to method GetProducts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetProducts.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetProducts(Att1 => $value1, Att2 => $value2, ...);
+    my $api.pricing = Paws->service('Pricing');
+    my $GetProductsResponse = $api . pricing->GetProducts(
+      Filters => [
+        {
+          Field => 'MyString',
+          Type  => 'TERM_MATCH',    # values: TERM_MATCH
+          Value => 'MyString',
+
+        },
+        ...
+      ],                            # OPTIONAL
+      FormatVersion => 'MyString',  # OPTIONAL
+      MaxResults    => 1,           # OPTIONAL
+      NextToken     => 'MyString',  # OPTIONAL
+      ServiceCode   => 'MyString',  # OPTIONAL
+    );
+
+    # Results:
+    my $FormatVersion = $GetProductsResponse->FormatVersion;
+    my $NextToken     = $GetProductsResponse->NextToken;
+    my $PriceList     = $GetProductsResponse->PriceList;
+
+    # Returns a L<Paws::Pricing::GetProductsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.pricing/GetProducts>
 
 =head1 ATTRIBUTES
 

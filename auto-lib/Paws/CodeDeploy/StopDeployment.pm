@@ -19,17 +19,28 @@ Paws::CodeDeploy::StopDeployment - Arguments for method StopDeployment on L<Paws
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StopDeployment on the 
-AWS CodeDeploy service. Use the attributes of this class
+This class represents the parameters used for calling the method StopDeployment on the
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method StopDeployment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StopDeployment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StopDeployment(Att1 => $value1, Att2 => $value2, ...);
+    my $codedeploy = Paws->service('CodeDeploy');
+    my $StopDeploymentOutput = $codedeploy->StopDeployment(
+      DeploymentId        => 'MyDeploymentId',
+      AutoRollbackEnabled => 1,                  # OPTIONAL
+    );
+
+    # Results:
+    my $Status        = $StopDeploymentOutput->Status;
+    my $StatusMessage = $StopDeploymentOutput->StatusMessage;
+
+    # Returns a L<Paws::CodeDeploy::StopDeploymentOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codedeploy/StopDeployment>
 
 =head1 ATTRIBUTES
 

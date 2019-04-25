@@ -91,9 +91,9 @@ were terminated.
 
 =item *
 
-C<cancelled_running> - The Spot Fleet is canceled and will not launch
-additional Spot Instances, but its existing Spot Instances continue to
-run until they are interrupted or terminated.
+C<cancelled_running> - The Spot Fleet is canceled and does not launch
+additional Spot Instances. Existing Spot Instances continue to run
+until they are interrupted or terminated.
 
 =item *
 

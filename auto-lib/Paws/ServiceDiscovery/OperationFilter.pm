@@ -62,8 +62,9 @@ response.
 
 =item *
 
-C<BETWEEN>: Specify two values, a start date and an end date. The start
-date must be the first value. C<BETWEEN> is supported for C<U>.
+C<BETWEEN>: Specify a start date and an end date in Unix date/time
+format and Coordinated Universal Time (UTC). The start date must be the
+first value. C<BETWEEN> is supported for C<UPDATE_DATE>.
 
 =back
 

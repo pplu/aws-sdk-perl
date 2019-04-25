@@ -2,7 +2,7 @@
 package Paws::ApiGateway::ImportApiKeys;
   use Moose;
   has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body', required => 1);
-  has FailOnWarnings => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'failOnWarnings');
+  has FailOnWarnings => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'failonwarnings');
   has Format => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'format', required => 1);
 
   use MooseX::ClassAttribute;
@@ -21,17 +21,29 @@ Paws::ApiGateway::ImportApiKeys - Arguments for method ImportApiKeys on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ImportApiKeys on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method ImportApiKeys on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method ImportApiKeys.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ImportApiKeys.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ImportApiKeys(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $ApiKeyIds = $apigateway->ImportApiKeys(
+      Body           => 'BlobBlob',
+      Format         => 'csv',
+      FailOnWarnings => 1,            # OPTIONAL
+    );
+
+    # Results:
+    my $Ids      = $ApiKeyIds->Ids;
+    my $Warnings = $ApiKeyIds->Warnings;
+
+    # Returns a L<Paws::ApiGateway::ApiKeyIds> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/ImportApiKeys>
 
 =head1 ATTRIBUTES
 
@@ -40,7 +52,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The payload of the POST request to import API keys. For the payload
 format, see API Key File Format
-(http://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html).
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html).
 
 
 

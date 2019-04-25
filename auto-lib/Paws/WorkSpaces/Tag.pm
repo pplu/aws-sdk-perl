@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Describes the tag of the WorkSpace.
+Describes a tag.
 
 =head1 ATTRIBUTES
 

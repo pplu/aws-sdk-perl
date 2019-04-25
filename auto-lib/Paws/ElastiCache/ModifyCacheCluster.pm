@@ -34,17 +34,42 @@ Paws::ElastiCache::ModifyCacheCluster - Arguments for method ModifyCacheCluster 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyCacheCluster on the 
-Amazon ElastiCache service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyCacheCluster on the
+L<Amazon ElastiCache|Paws::ElastiCache> service. Use the attributes of this class
 as arguments to method ModifyCacheCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyCacheCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyCacheCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticache = Paws->service('ElastiCache');
+    my $ModifyCacheClusterResult = $elasticache->ModifyCacheCluster(
+      CacheClusterId             => 'MyString',
+      AZMode                     => 'single-az',            # OPTIONAL
+      ApplyImmediately           => 1,                      # OPTIONAL
+      AutoMinorVersionUpgrade    => 1,                      # OPTIONAL
+      CacheNodeIdsToRemove       => [ 'MyString', ... ],    # OPTIONAL
+      CacheNodeType              => 'MyString',             # OPTIONAL
+      CacheParameterGroupName    => 'MyString',             # OPTIONAL
+      CacheSecurityGroupNames    => [ 'MyString', ... ],    # OPTIONAL
+      EngineVersion              => 'MyString',             # OPTIONAL
+      NewAvailabilityZones       => [ 'MyString', ... ],    # OPTIONAL
+      NotificationTopicArn       => 'MyString',             # OPTIONAL
+      NotificationTopicStatus    => 'MyString',             # OPTIONAL
+      NumCacheNodes              => 1,                      # OPTIONAL
+      PreferredMaintenanceWindow => 'MyString',             # OPTIONAL
+      SecurityGroupIds           => [ 'MyString', ... ],    # OPTIONAL
+      SnapshotRetentionLimit     => 1,                      # OPTIONAL
+      SnapshotWindow             => 'MyString',             # OPTIONAL
+    );
+
+    # Results:
+    my $CacheCluster = $ModifyCacheClusterResult->CacheCluster;
+
+    # Returns a L<Paws::ElastiCache::ModifyCacheClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/ModifyCacheCluster>
 
 =head1 ATTRIBUTES
 
@@ -94,7 +119,7 @@ Only newly created nodes are located in different Availability Zones.
 For instructions on how to move existing Memcached nodes to different
 Availability Zones, see the B<Availability Zone Considerations> section
 of Cache Node Considerations for Memcached
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheNode.Memcached.html).
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html).
 
 Valid values are: C<"single-az">, C<"cross-az">
 
@@ -154,7 +179,7 @@ The upgraded version of the cache engine to be run on the cache nodes.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
 a Cache Engine and Version
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement)),
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
 but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing cluster and
 create it anew with the earlier engine version.
@@ -207,7 +232,7 @@ current Availability Zone. Only newly created nodes can be located in
 different Availability Zones. For guidance on how to move existing
 Memcached nodes to different Availability Zones, see the B<Availability
 Zone Considerations> section of Cache Node Considerations for Memcached
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheNode.Memcached.html).
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html).
 
 B<Impact of new add/remove requests upon pending requests>
 

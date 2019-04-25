@@ -5,6 +5,7 @@ package Paws::Lambda::UpdateAlias;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has FunctionVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Name', required => 1);
+  has RevisionId => (is => 'ro', isa => 'Str');
   has RoutingConfig => (is => 'ro', isa => 'Paws::Lambda::AliasRoutingConfiguration');
 
   use MooseX::ClassAttribute;
@@ -23,53 +24,99 @@ Paws::Lambda::UpdateAlias - Arguments for method UpdateAlias on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateAlias on the 
-AWS Lambda service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateAlias on the
+L<AWS Lambda|Paws::Lambda> service. Use the attributes of this class
 as arguments to method UpdateAlias.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAlias.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateAlias(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # To update a Lambda function alias
+    # This operation updates a Lambda function alias
+    my $AliasConfiguration = $lambda->UpdateAlias(
+      {
+        'Description'     => '',
+        'FunctionName'    => 'myFunction',
+        'FunctionVersion' => 1,
+        'Name'            => 'functionAlias'
+      }
+    );
+
+    # Results:
+    my $AliasArn        = $AliasConfiguration->AliasArn;
+    my $Description     = $AliasConfiguration->Description;
+    my $FunctionVersion = $AliasConfiguration->FunctionVersion;
+    my $Name            = $AliasConfiguration->Name;
+
+    # Returns a L<Paws::Lambda::AliasConfiguration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/UpdateAlias>
 
 =head1 ATTRIBUTES
 
 
 =head2 Description => Str
 
-You can change the description of the alias using this parameter.
+A description of the alias.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The function name for which the alias is created. Note that the length
-constraint applies only to the ARN. If you specify only the function
-name, it is limited to 64 characters in length.
+The name of the lambda function.
+
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
 =head2 FunctionVersion => Str
 
-Using this parameter you can change the Lambda function version to
-which the alias points.
+The function version that the alias invokes.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The alias name.
+The name of the alias.
+
+
+
+=head2 RevisionId => Str
+
+Only update the alias if the revision ID matches the ID specified. Use
+this option to avoid modifying an alias that has changed since you last
+read it.
 
 
 
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
 
-Specifies an additional version your alias can point to, allowing you
-to dictate what percentage of traffic will invoke each version. For
-more information, see lambda-traffic-shifting-using-aliases.
+The routing configuration
+(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
+of the alias.
 
 
 

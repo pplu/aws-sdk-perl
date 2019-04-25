@@ -44,7 +44,8 @@ An error record for table operations.
 
 =head2 TableName => Str
 
-  Name of the table.
+  Name of the table. For Hive compatibility, this must be entirely
+lowercase.
 
 
 

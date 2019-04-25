@@ -32,19 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::JobCo
 
 =head1 DESCRIPTION
 
-Specifies code that executes a job.
+Specifies code executed when a job is run.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-  The name of this job command.
+  The name of the job command: this must be C<glueetl>, for an Apache
+Spark ETL job, or C<pythonshell>, for a Python shell job.
 
 
 =head2 ScriptLocation => Str
 
-  Specifies the location of a script that executes a job.
+  Specifies the S3 path to a script that executes a job (required).
 
 
 

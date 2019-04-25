@@ -19,17 +19,45 @@ Paws::SSM::GetMaintenanceWindowExecutionTask - Arguments for method GetMaintenan
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetMaintenanceWindowExecutionTask on the 
-Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
+This class represents the parameters used for calling the method GetMaintenanceWindowExecutionTask on the
+L<Amazon Simple Systems Manager (SSM)|Paws::SSM> service. Use the attributes of this class
 as arguments to method GetMaintenanceWindowExecutionTask.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetMaintenanceWindowExecutionTask.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetMaintenanceWindowExecutionTask(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $GetMaintenanceWindowExecutionTaskResult =
+      $ssm->GetMaintenanceWindowExecutionTask(
+      TaskId            => 'MyMaintenanceWindowExecutionTaskId',
+      WindowExecutionId => 'MyMaintenanceWindowExecutionId',
+
+      );
+
+    # Results:
+    my $EndTime = $GetMaintenanceWindowExecutionTaskResult->EndTime;
+    my $MaxConcurrency =
+      $GetMaintenanceWindowExecutionTaskResult->MaxConcurrency;
+    my $MaxErrors     = $GetMaintenanceWindowExecutionTaskResult->MaxErrors;
+    my $Priority      = $GetMaintenanceWindowExecutionTaskResult->Priority;
+    my $ServiceRole   = $GetMaintenanceWindowExecutionTaskResult->ServiceRole;
+    my $StartTime     = $GetMaintenanceWindowExecutionTaskResult->StartTime;
+    my $Status        = $GetMaintenanceWindowExecutionTaskResult->Status;
+    my $StatusDetails = $GetMaintenanceWindowExecutionTaskResult->StatusDetails;
+    my $TaskArn       = $GetMaintenanceWindowExecutionTaskResult->TaskArn;
+    my $TaskExecutionId =
+      $GetMaintenanceWindowExecutionTaskResult->TaskExecutionId;
+    my $TaskParameters =
+      $GetMaintenanceWindowExecutionTaskResult->TaskParameters;
+    my $Type = $GetMaintenanceWindowExecutionTaskResult->Type;
+    my $WindowExecutionId =
+      $GetMaintenanceWindowExecutionTaskResult->WindowExecutionId;
+
+    # Returns a L<Paws::SSM::GetMaintenanceWindowExecutionTaskResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/GetMaintenanceWindowExecutionTask>
 
 =head1 ATTRIBUTES
 

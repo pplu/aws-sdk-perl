@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-A tag associated with the record, stored as a key-value pair.
+Information about a tag, which is a key-value pair.
 
 =head1 ATTRIBUTES
 

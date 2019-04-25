@@ -1,5 +1,6 @@
 package Paws::CloudFormation::StackResourceSummary;
   use Moose;
+  has DriftInformation => (is => 'ro', isa => 'Paws::CloudFormation::StackResourceDriftInformationSummary');
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
@@ -25,20 +26,30 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudFormation::StackResourceSummary object:
 
-  $service_obj->Method(Att1 => { LastUpdatedTimestamp => $value, ..., ResourceType => $value  });
+  $service_obj->Method(Att1 => { DriftInformation => $value, ..., ResourceType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormation::StackResourceSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->LastUpdatedTimestamp
+  $result->Att1->DriftInformation
 
 =head1 DESCRIPTION
 
 Contains high-level information about the specified stack resource.
 
 =head1 ATTRIBUTES
+
+
+=head2 DriftInformation => L<Paws::CloudFormation::StackResourceDriftInformationSummary>
+
+  Information about whether the resource's actual configuration differs,
+or has I<drifted>, from its expected configuration, as defined in the
+stack template and any values specified as template parameters. For
+more information, see Detecting Unregulated Configuration Changes to
+Stacks and Resources
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 
 
 =head2 B<REQUIRED> LastUpdatedTimestamp => Str

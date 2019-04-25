@@ -12,6 +12,8 @@ package Paws::RDS::RestoreDBInstanceFromS3;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -26,9 +28,11 @@ package Paws::RDS::RestoreDBInstanceFromS3;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
   has S3IngestionRoleArn => (is => 'ro', isa => 'Str', required => 1);
@@ -38,6 +42,7 @@ package Paws::RDS::RestoreDBInstanceFromS3;
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -55,17 +60,80 @@ Paws::RDS::RestoreDBInstanceFromS3 - Arguments for method RestoreDBInstanceFromS
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RestoreDBInstanceFromS3 on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method RestoreDBInstanceFromS3 on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method RestoreDBInstanceFromS3.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBInstanceFromS3.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RestoreDBInstanceFromS3(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    my $RestoreDBInstanceFromS3Result = $rds->RestoreDBInstanceFromS3(
+      DBInstanceClass                    => 'MyString',
+      DBInstanceIdentifier               => 'MyString',
+      Engine                             => 'MyString',
+      S3BucketName                       => 'MyString',
+      S3IngestionRoleArn                 => 'MyString',
+      SourceEngine                       => 'MyString',
+      SourceEngineVersion                => 'MyString',
+      AllocatedStorage                   => 1,                      # OPTIONAL
+      AutoMinorVersionUpgrade            => 1,                      # OPTIONAL
+      AvailabilityZone                   => 'MyString',             # OPTIONAL
+      BackupRetentionPeriod              => 1,                      # OPTIONAL
+      CopyTagsToSnapshot                 => 1,                      # OPTIONAL
+      DBName                             => 'MyString',             # OPTIONAL
+      DBParameterGroupName               => 'MyString',             # OPTIONAL
+      DBSecurityGroups                   => [ 'MyString', ... ],    # OPTIONAL
+      DBSubnetGroupName                  => 'MyString',             # OPTIONAL
+      DeletionProtection                 => 1,                      # OPTIONAL
+      EnableCloudwatchLogsExports        => [ 'MyString', ... ],    # OPTIONAL
+      EnableIAMDatabaseAuthentication    => 1,                      # OPTIONAL
+      EnablePerformanceInsights          => 1,                      # OPTIONAL
+      EngineVersion                      => 'MyString',             # OPTIONAL
+      Iops                               => 1,                      # OPTIONAL
+      KmsKeyId                           => 'MyString',             # OPTIONAL
+      LicenseModel                       => 'MyString',             # OPTIONAL
+      MasterUserPassword                 => 'MyString',             # OPTIONAL
+      MasterUsername                     => 'MyString',             # OPTIONAL
+      MonitoringInterval                 => 1,                      # OPTIONAL
+      MonitoringRoleArn                  => 'MyString',             # OPTIONAL
+      MultiAZ                            => 1,                      # OPTIONAL
+      OptionGroupName                    => 'MyString',             # OPTIONAL
+      PerformanceInsightsKMSKeyId        => 'MyString',             # OPTIONAL
+      PerformanceInsightsRetentionPeriod => 1,                      # OPTIONAL
+      Port                               => 1,                      # OPTIONAL
+      PreferredBackupWindow              => 'MyString',             # OPTIONAL
+      PreferredMaintenanceWindow         => 'MyString',             # OPTIONAL
+      ProcessorFeatures                  => [
+        {
+          Name  => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                            # OPTIONAL
+      PubliclyAccessible => 1,                                      # OPTIONAL
+      S3Prefix           => 'MyString',                             # OPTIONAL
+      StorageEncrypted   => 1,                                      # OPTIONAL
+      StorageType        => 'MyString',                             # OPTIONAL
+      Tags               => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                            # OPTIONAL
+      UseDefaultProcessorFeatures => 1,                             # OPTIONAL
+      VpcSecurityGroupIds         => [ 'MyString', ... ],           # OPTIONAL
+    );
+
+    # Results:
+    my $DBInstance = $RestoreDBInstanceFromS3Result->DBInstance;
+
+    # Returns a L<Paws::RDS::RestoreDBInstanceFromS3Result> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/RestoreDBInstanceFromS3>
 
 =head1 ATTRIBUTES
 
@@ -95,7 +163,8 @@ Default: C<true>
 The Availability Zone that the DB instance is created in. For
 information about AWS Regions and Availability Zones, see Regions and
 Availability Zones
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html)
+in the I<Amazon RDS User Guide.>
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -132,7 +201,7 @@ C<db.m4.large>. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-in the Amazon RDS User Guide.
+in the I<Amazon RDS User Guide.>
 
 Importing from Amazon S3 is not supported on the db.t2.micro DB
 instance class.
@@ -158,7 +227,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -195,6 +264,26 @@ A DB subnet group to associate with this DB instance.
 
 
 
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false. For more information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+
+
+
+=head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+The list of logs that the restored DB instance is to export to
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon RDS User Guide>.
+
+
+
 =head2 EnableIAMDatabaseAuthentication => Bool
 
 True to enable mapping of AWS Identity and Access Management (IAM)
@@ -209,6 +298,10 @@ Default: C<false>
 True to enable Performance Insights for the DB instance, and otherwise
 false.
 
+For more information, see Using Amazon Performance Insights
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
+in the I<Amazon Relational Database Service User Guide>.
+
 
 
 =head2 B<REQUIRED> Engine => Str
@@ -222,7 +315,8 @@ Valid Values: C<mysql>
 =head2 EngineVersion => Str
 
 The version number of the database engine to use. Choose the latest
-minor version of your database engine as specified in CreateDBInstance.
+minor version of your database engine. For information about engine
+versions, see CreateDBInstance, or call DescribeDBEngineVersions.
 
 
 
@@ -232,7 +326,8 @@ The amount of Provisioned IOPS (input/output operations per second) to
 allocate initially for the DB instance. For information about valid
 Iops values, see see Amazon RDS Provisioned IOPS Storage to Improve
 Performance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -278,7 +373,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -315,7 +410,8 @@ The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, see Setting Up and Enabling Enhanced Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling)
+in the I<Amazon RDS User Guide.>
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -345,6 +441,13 @@ identifier, or the KMS key alias for the KMS encryption key.
 
 
 
+=head2 PerformanceInsightsRetentionPeriod => Int
+
+The amount of time, in days, to retain Performance Insights data. Valid
+values are 7 or 731 (2 years).
+
+
+
 =head2 Port => Int
 
 The port number on which the database accepts connections.
@@ -362,7 +465,8 @@ Default: C<3306>
 The time range each day during which automated backups are created if
 automated backups are enabled. For more information, see The Backup
 Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+in the I<Amazon RDS User Guide.>
 
 Constraints:
 
@@ -394,7 +498,8 @@ Must be at least 30 minutes.
 The time range each week during which system maintenance can occur, in
 Universal Coordinated Time (UTC). For more information, see Amazon RDS
 Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance)
+in the I<Amazon RDS User Guide.>
 
 Constraints:
 
@@ -425,10 +530,20 @@ Must be at least 30 minutes.
 
 
 
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance.
+
+
+
 =head2 PubliclyAccessible => Bool
 
-Specifies whether the DB instance is publicly accessible or not. For
-more information, see CreateDBInstance.
+Specifies the accessibility options for the DB instance. A value of
+true specifies an Internet-facing instance with a publicly resolvable
+DNS name, which resolves to a public IP address. A value of false
+specifies an internal instance with a DNS name that resolves to a
+private IP address. For more information, see CreateDBInstance.
 
 
 
@@ -492,7 +607,15 @@ C<standard>
 
 A list of tags to associate with this DB instance. For more
 information, see Tagging Amazon RDS Resources
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html)
+in the I<Amazon RDS User Guide.>
+
+
+
+=head2 UseDefaultProcessorFeatures => Bool
+
+A value that specifies that the DB instance class of the DB instance
+uses its default processor features.
 
 
 

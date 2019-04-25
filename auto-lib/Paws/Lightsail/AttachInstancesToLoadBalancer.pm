@@ -19,17 +19,29 @@ Paws::Lightsail::AttachInstancesToLoadBalancer - Arguments for method AttachInst
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method AttachInstancesToLoadBalancer on the 
-Amazon Lightsail service. Use the attributes of this class
+This class represents the parameters used for calling the method AttachInstancesToLoadBalancer on the
+L<Amazon Lightsail|Paws::Lightsail> service. Use the attributes of this class
 as arguments to method AttachInstancesToLoadBalancer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AttachInstancesToLoadBalancer.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AttachInstancesToLoadBalancer(Att1 => $value1, Att2 => $value2, ...);
+    my $lightsail = Paws->service('Lightsail');
+    my $AttachInstancesToLoadBalancerResult =
+      $lightsail->AttachInstancesToLoadBalancer(
+      InstanceNames    => [ 'MyResourceName', ... ],
+      LoadBalancerName => 'MyResourceName',
+
+      );
+
+    # Results:
+    my $Operations = $AttachInstancesToLoadBalancerResult->Operations;
+
+    # Returns a L<Paws::Lightsail::AttachInstancesToLoadBalancerResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/AttachInstancesToLoadBalancer>
 
 =head1 ATTRIBUTES
 
@@ -38,6 +50,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 An array of strings representing the instance name(s) you want to
 attach to your load balancer.
+
+An instance must be C<running> before you can attach it to your load
+balancer.
+
+There are no additional limits on the number of instances you can
+attach to your load balancer, aside from the limit of Lightsail
+instances you can create in your account (20).
 
 
 

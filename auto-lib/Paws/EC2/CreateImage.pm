@@ -23,24 +23,58 @@ Paws::EC2::CreateImage - Arguments for method CreateImage on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateImage on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateImage on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method CreateImage.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateImage.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateImage(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $CreateImageResult = $ec2->CreateImage(
+      InstanceId          => 'MyString',
+      Name                => 'MyString',
+      BlockDeviceMappings => [
+        {
+          DeviceName => 'MyString',
+          Ebs        => {
+            DeleteOnTermination => 1,            # OPTIONAL
+            Encrypted           => 1,            # OPTIONAL
+            Iops                => 1,            # OPTIONAL
+            KmsKeyId            => 'MyString',
+            SnapshotId          => 'MyString',
+            VolumeSize          => 1,            # OPTIONAL
+            VolumeType =>
+              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
+          },    # OPTIONAL
+          NoDevice    => 'MyString',
+          VirtualName => 'MyString',
+        },
+        ...
+      ],        # OPTIONAL
+      Description => 'MyString',    # OPTIONAL
+      DryRun      => 1,             # OPTIONAL
+      NoReboot    => 1,             # OPTIONAL
+    );
+
+    # Results:
+    my $ImageId = $CreateImageResult->ImageId;
+
+    # Returns a L<Paws::EC2::CreateImageResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateImage>
 
 =head1 ATTRIBUTES
 
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-Information about one or more block device mappings.
+Information about one or more block device mappings. This parameter
+cannot be used to modify the encryption status of existing volumes or
+snapshots. To create an AMI with encrypted snapshots, use the CopyImage
+action.
 
 
 

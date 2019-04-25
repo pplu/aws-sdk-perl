@@ -3,6 +3,8 @@ package Paws::StorageGateway::CreateStorediSCSIVolume;
   use Moose;
   has DiskId => (is => 'ro', isa => 'Str', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
+  has KMSEncrypted => (is => 'ro', isa => 'Bool');
+  has KMSKey => (is => 'ro', isa => 'Str');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has PreserveExistingData => (is => 'ro', isa => 'Bool', required => 1);
   has SnapshotId => (is => 'ro', isa => 'Str');
@@ -23,17 +25,39 @@ Paws::StorageGateway::CreateStorediSCSIVolume - Arguments for method CreateStore
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateStorediSCSIVolume on the 
-AWS Storage Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateStorediSCSIVolume on the
+L<AWS Storage Gateway|Paws::StorageGateway> service. Use the attributes of this class
 as arguments to method CreateStorediSCSIVolume.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStorediSCSIVolume.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateStorediSCSIVolume(Att1 => $value1, Att2 => $value2, ...);
+    my $storagegateway = Paws->service('StorageGateway');
+    # To create a stored iSCSI volume
+    # Creates a stored volume on a specified stored gateway.
+    my $CreateStorediSCSIVolumeOutput =
+      $storagegateway->CreateStorediSCSIVolume(
+      {
+        'DiskId' => 'pci-0000:03:00.0-scsi-0:0:0:0',
+        'GatewayARN' =>
+          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+        'NetworkInterfaceId'   => '10.1.1.1',
+        'PreserveExistingData' => 1,
+        'SnapshotId'           => 'snap-f47b7b94',
+        'TargetName'           => 'my-volume'
+      }
+      );
+
+    # Results:
+    my $TargetARN         = $CreateStorediSCSIVolumeOutput->TargetARN;
+    my $VolumeARN         = $CreateStorediSCSIVolumeOutput->VolumeARN;
+    my $VolumeSizeInBytes = $CreateStorediSCSIVolumeOutput->VolumeSizeInBytes;
+
+    # Returns a L<Paws::StorageGateway::CreateStorediSCSIVolumeOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/CreateStorediSCSIVolume>
 
 =head1 ATTRIBUTES
 
@@ -50,6 +74,21 @@ to list disk IDs for a gateway.
 =head2 B<REQUIRED> GatewayARN => Str
 
 
+
+
+
+=head2 KMSEncrypted => Bool
+
+True to use Amazon S3 server side encryption with your own AWS KMS key,
+or false to use a key managed by Amazon S3. Optional.
+
+
+
+=head2 KMSKey => Str
+
+The Amazon Resource Name (ARN) of the KMS key used for Amazon S3 server
+side encryption. This value can only be set when KMSEncrypted is true.
+Optional.
 
 
 

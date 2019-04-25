@@ -25,7 +25,7 @@ Specifies the event selectors configured for your trail.
 Specifies the ARN of the trail that was updated with event selectors.
 The format of a trail ARN is:
 
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 
 =head2 _request_id => Str

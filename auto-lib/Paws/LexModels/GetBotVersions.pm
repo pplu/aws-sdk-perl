@@ -21,17 +21,29 @@ Paws::LexModels::GetBotVersions - Arguments for method GetBotVersions on L<Paws:
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetBotVersions on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetBotVersions on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method GetBotVersions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetBotVersions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetBotVersions(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetBotVersionsResponse = $models . lex->GetBotVersions(
+      Name       => 'MyBotName',
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $Bots      = $GetBotVersionsResponse->Bots;
+    my $NextToken = $GetBotVersionsResponse->NextToken;
+
+    # Returns a L<Paws::LexModels::GetBotVersionsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/GetBotVersions>
 
 =head1 ATTRIBUTES
 

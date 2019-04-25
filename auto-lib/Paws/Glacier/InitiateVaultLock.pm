@@ -21,17 +21,36 @@ Paws::Glacier::InitiateVaultLock - Arguments for method InitiateVaultLock on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method InitiateVaultLock on the 
-Amazon Glacier service. Use the attributes of this class
+This class represents the parameters used for calling the method InitiateVaultLock on the
+L<Amazon Glacier|Paws::Glacier> service. Use the attributes of this class
 as arguments to method InitiateVaultLock.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to InitiateVaultLock.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->InitiateVaultLock(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To initiate the vault locking process
+    # The example initiates the vault locking process for the vault named
+    # my-vault.
+    my $InitiateVaultLockOutput = $glacier->InitiateVaultLock(
+      {
+        'AccountId' => '-',
+        'Policy'    => {
+          'Policy' =>
+'{"Version":"2012-10-17","Statement":[{"Sid":"Define-vault-lock","Effect":"Deny","Principal":{"AWS":"arn:aws:iam::999999999999:root"},"Action":"glacier:DeleteArchive","Resource":"arn:aws:glacier:us-west-2:999999999999:vaults/examplevault","Condition":{"NumericLessThanEquals":{"glacier:ArchiveAgeinDays":"365"}}}]}'
+        },
+        'VaultName' => 'my-vault'
+      }
+    );
+
+    # Results:
+    my $lockId = $InitiateVaultLockOutput->lockId;
+
+    # Returns a L<Paws::Glacier::InitiateVaultLockOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/InitiateVaultLock>
 
 =head1 ATTRIBUTES
 

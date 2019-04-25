@@ -18,17 +18,22 @@ Paws::OpsWorksCM::DeleteServer - Arguments for method DeleteServer on L<Paws::Op
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteServer on the 
-AWS OpsWorks for Chef Automate service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteServer on the
+L<AWS OpsWorks for Chef Automate|Paws::OpsWorksCM> service. Use the attributes of this class
 as arguments to method DeleteServer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteServer.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteServer(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks-cm = Paws->service('OpsWorksCM');
+    my $DeleteServerResponse = $opsworks -cm->DeleteServer(
+      ServerName => 'MyServerName',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/opsworks-cm/latest/APIReference/API_DeleteServer.html>
 
 =head1 ATTRIBUTES
 

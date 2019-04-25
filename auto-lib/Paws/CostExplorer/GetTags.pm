@@ -21,17 +21,36 @@ Paws::CostExplorer::GetTags - Arguments for method GetTags on L<Paws::CostExplor
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetTags on the 
-AWS Cost Explorer Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetTags on the
+L<AWS Cost Explorer Service|Paws::CostExplorer> service. Use the attributes of this class
 as arguments to method GetTags.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTags.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetTags(Att1 => $value1, Att2 => $value2, ...);
+    my $ce = Paws->service('CostExplorer');
+    my $GetTagsResponse = $ce->GetTags(
+      TimePeriod => {
+        End   => 'MyYearMonthDay',
+        Start => 'MyYearMonthDay',
+
+      },
+      NextPageToken => 'MyNextPageToken',    # OPTIONAL
+      SearchString  => 'MySearchString',     # OPTIONAL
+      TagKey        => 'MyTagKey',           # OPTIONAL
+    );
+
+    # Results:
+    my $NextPageToken = $GetTagsResponse->NextPageToken;
+    my $ReturnSize    = $GetTagsResponse->ReturnSize;
+    my $Tags          = $GetTagsResponse->Tags;
+    my $TotalSize     = $GetTagsResponse->TotalSize;
+
+    # Returns a L<Paws::CostExplorer::GetTagsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/GetTags>
 
 =head1 ATTRIBUTES
 

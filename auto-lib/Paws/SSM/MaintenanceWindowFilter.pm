@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Mainte
 
 =head1 DESCRIPTION
 
-Filter used in the request.
+Filter used in the request. Supported filter keys are Name and Enabled.
 
 =head1 ATTRIBUTES
 

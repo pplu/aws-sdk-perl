@@ -32,17 +32,62 @@ Paws::CognitoIdp::UpdateUserPoolClient - Arguments for method UpdateUserPoolClie
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateUserPoolClient on the 
-Amazon Cognito Identity Provider service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateUserPoolClient on the
+L<Amazon Cognito Identity Provider|Paws::CognitoIdp> service. Use the attributes of this class
 as arguments to method UpdateUserPoolClient.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUserPoolClient.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateUserPoolClient(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $UpdateUserPoolClientResponse = $cognito -idp->UpdateUserPoolClient(
+      ClientId          => 'MyClientIdType',
+      UserPoolId        => 'MyUserPoolIdType',
+      AllowedOAuthFlows => [
+        'code', ...    # values: code, implicit, client_credentials
+      ],               # OPTIONAL
+      AllowedOAuthFlowsUserPoolClient => 1,    # OPTIONAL
+      AllowedOAuthScopes              => [
+        'MyScopeType', ...                     # min: 1, max: 256
+      ],                                       # OPTIONAL
+      AnalyticsConfiguration => {
+        ApplicationId  => 'MyHexStringType',
+        ExternalId     => 'MyStringType',
+        RoleArn        => 'MyArnType',         # min: 20, max: 2048
+        UserDataShared => 1,
+      },    # OPTIONAL
+      CallbackURLs => [
+        'MyRedirectUrlType', ...    # min: 1, max: 1024
+      ],                            # OPTIONAL
+      ClientName         => 'MyClientNameType',     # OPTIONAL
+      DefaultRedirectURI => 'MyRedirectUrlType',    # OPTIONAL
+      ExplicitAuthFlows  => [
+        'ADMIN_NO_SRP_AUTH',
+        ... # values: ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH
+      ],    # OPTIONAL
+      LogoutURLs => [
+        'MyRedirectUrlType', ...    # min: 1, max: 1024
+      ],                            # OPTIONAL
+      ReadAttributes => [
+        'MyClientPermissionType', ...    # min: 1, max: 2048
+      ],                                 # OPTIONAL
+      RefreshTokenValidity       => 1,   # OPTIONAL
+      SupportedIdentityProviders => [
+        'MyProviderNameType', ...        # min: 1, max: 32
+      ],                                 # OPTIONAL
+      WriteAttributes => [
+        'MyClientPermissionType', ...    # min: 1, max: 2048
+      ],                                 # OPTIONAL
+    );
+
+    # Results:
+    my $UserPoolClient = $UpdateUserPoolClientResponse->UserPoolClient;
+
+    # Returns a L<Paws::CognitoIdp::UpdateUserPoolClientResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/UpdateUserPoolClient>
 
 =head1 ATTRIBUTES
 
@@ -81,7 +126,33 @@ this user pool.
 
 =head2 CallbackURLs => ArrayRef[Str|Undef]
 
-A list of allowed callback URLs for the identity providers.
+A list of allowed redirect (callback) URLs for the identity providers.
+
+A redirect URI must:
+
+=over
+
+=item *
+
+Be an absolute URI.
+
+=item *
+
+Be registered with the authorization server.
+
+=item *
+
+Not include a fragment component.
+
+=back
+
+See OAuth 2.0 - Redirection Endpoint
+(https://tools.ietf.org/html/rfc6749#section-3.1.2).
+
+Amazon Cognito requires HTTPS over HTTP except for http://localhost for
+testing purposes only.
+
+App callback URLs such as myapp://example are also supported.
 
 
 
@@ -100,6 +171,32 @@ The client name from the update user pool client request.
 =head2 DefaultRedirectURI => Str
 
 The default redirect URI. Must be in the C<CallbackURLs> list.
+
+A redirect URI must:
+
+=over
+
+=item *
+
+Be an absolute URI.
+
+=item *
+
+Be registered with the authorization server.
+
+=item *
+
+Not include a fragment component.
+
+=back
+
+See OAuth 2.0 - Redirection Endpoint
+(https://tools.ietf.org/html/rfc6749#section-3.1.2).
+
+Amazon Cognito requires HTTPS over HTTP except for http://localhost for
+testing purposes only.
+
+App callback URLs such as myapp://example are also supported.
 
 
 

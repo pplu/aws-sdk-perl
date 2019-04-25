@@ -24,17 +24,32 @@ Paws::CloudWatchLogs::CreateExportTask - Arguments for method CreateExportTask o
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateExportTask on the 
-Amazon CloudWatch Logs service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateExportTask on the
+L<Amazon CloudWatch Logs|Paws::CloudWatchLogs> service. Use the attributes of this class
 as arguments to method CreateExportTask.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateExportTask.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateExportTask(Att1 => $value1, Att2 => $value2, ...);
+    my $logs = Paws->service('CloudWatchLogs');
+    my $CreateExportTaskResponse = $logs->CreateExportTask(
+      Destination         => 'MyExportDestinationBucket',
+      From                => 1,
+      LogGroupName        => 'MyLogGroupName',
+      To                  => 1,
+      DestinationPrefix   => 'MyExportDestinationPrefix',    # OPTIONAL
+      LogStreamNamePrefix => 'MyLogStreamName',              # OPTIONAL
+      TaskName            => 'MyExportTaskName',             # OPTIONAL
+    );
+
+    # Results:
+    my $TaskId = $CreateExportTaskResponse->TaskId;
+
+    # Returns a L<Paws::CloudWatchLogs::CreateExportTaskResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/logs/CreateExportTask>
 
 =head1 ATTRIBUTES
 
@@ -56,7 +71,7 @@ you don't specify a value, the default is C<exportedlogs>.
 =head2 B<REQUIRED> From => Int
 
 The start time of the range for the request, expressed as the number of
-milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp
+milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp
 earlier than this time are not exported.
 
 
@@ -83,7 +98,7 @@ The name of the export task.
 =head2 B<REQUIRED> To => Int
 
 The end time of the range for the request, expressed as the number of
-milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp
+milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp
 later than this time are not exported.
 
 

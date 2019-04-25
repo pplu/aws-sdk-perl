@@ -1,6 +1,7 @@
 package Paws::IoTData;
   use Moose;
   sub service { 'data.iot' }
+  sub signing_name { 'iotdata' }
   sub version { '2015-05-28' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -74,9 +75,19 @@ retrieve, update, and delete thing shadows. A thing shadow is a
 persistent representation of your things and their state in the AWS
 cloud.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/iot/>
+
+
 =head1 METHODS
 
-=head2 DeleteThingShadow(ThingName => Str)
+=head2 DeleteThingShadow
+
+=over
+
+=item ThingName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTData::DeleteThingShadow>
 
@@ -89,7 +100,14 @@ For more information, see DeleteThingShadow
 in the I<AWS IoT Developer Guide>.
 
 
-=head2 GetThingShadow(ThingName => Str)
+=head2 GetThingShadow
+
+=over
+
+=item ThingName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTData::GetThingShadow>
 
@@ -102,7 +120,18 @@ For more information, see GetThingShadow
 in the I<AWS IoT Developer Guide>.
 
 
-=head2 Publish(Topic => Str, [Payload => Str, Qos => Int])
+=head2 Publish
+
+=over
+
+=item Topic => Str
+
+=item [Payload => Str]
+
+=item [Qos => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTData::Publish>
 
@@ -115,7 +144,16 @@ For more information, see HTTP Protocol
 in the I<AWS IoT Developer Guide>.
 
 
-=head2 UpdateThingShadow(Payload => Str, ThingName => Str)
+=head2 UpdateThingShadow
+
+=over
+
+=item Payload => Str
+
+=item ThingName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::IoTData::UpdateThingShadow>
 

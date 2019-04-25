@@ -21,36 +21,48 @@ Paws::Greengrass::ResetDeployments - Arguments for method ResetDeployments on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ResetDeployments on the 
-AWS Greengrass service. Use the attributes of this class
+This class represents the parameters used for calling the method ResetDeployments on the
+L<AWS Greengrass|Paws::Greengrass> service. Use the attributes of this class
 as arguments to method ResetDeployments.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ResetDeployments.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ResetDeployments(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $ResetDeploymentsResponse = $greengrass->ResetDeployments(
+      GroupId         => 'My__string',
+      AmznClientToken => 'My__string',    # OPTIONAL
+      Force           => 1,               # OPTIONAL
+    );
+
+    # Results:
+    my $DeploymentArn = $ResetDeploymentsResponse->DeploymentArn;
+    my $DeploymentId  = $ResetDeploymentsResponse->DeploymentId;
+
+    # Returns a L<Paws::Greengrass::ResetDeploymentsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/ResetDeployments>
 
 =head1 ATTRIBUTES
 
 
 =head2 AmznClientToken => Str
 
-The client token used to request idempotent operations.
+A client token used to correlate requests and responses.
 
 
 
 =head2 Force => Bool
 
-When set to true, perform a best-effort only core reset.
+If true, performs a best-effort only core reset.
 
 
 
 =head2 B<REQUIRED> GroupId => Str
 
-The unique Id of the AWS Greengrass Group
+The ID of the Greengrass group.
 
 
 

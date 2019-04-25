@@ -46,7 +46,7 @@ serves as an extractor and loader.
 
 =head2 Parameters => L<Paws::Glue::ParametersMap>
 
-  A list of initialization parameters for the SerDe, in key-value form.
+  These key-value pairs define initialization parameters for the SerDe.
 
 
 =head2 SerializationLibrary => Str

@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::GetGatewayResponse;
   use Moose;
-  has ResponseType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'responseType', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has ResponseType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'response_type', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -20,22 +20,39 @@ Paws::ApiGateway::GetGatewayResponse - Arguments for method GetGatewayResponse o
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetGatewayResponse on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method GetGatewayResponse on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GetGatewayResponse.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetGatewayResponse.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetGatewayResponse(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $GatewayResponse = $apigateway->GetGatewayResponse(
+      ResponseType => 'DEFAULT_4XX',
+      RestApiId    => 'MyString',
+
+    );
+
+    # Results:
+    my $DefaultResponse    = $GatewayResponse->DefaultResponse;
+    my $ResponseParameters = $GatewayResponse->ResponseParameters;
+    my $ResponseTemplates  = $GatewayResponse->ResponseTemplates;
+    my $ResponseType       = $GatewayResponse->ResponseType;
+    my $StatusCode         = $GatewayResponse->StatusCode;
+
+    # Returns a L<Paws::ApiGateway::GatewayResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetGatewayResponse>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ResponseType => Str
+
+[Required]
 
 The response type of the associated GatewayResponse. Valid values are
 
@@ -79,7 +96,7 @@ The response type of the associated GatewayResponse. Valid values are
 
 =item * UNAUTHORIZED
 
-=item * UNSUPPORTED_MEDIA_TYPES
+=item * UNSUPPORTED_MEDIA_TYPE
 
 =back
 
@@ -88,7 +105,7 @@ Valid values are: C<"DEFAULT_4XX">, C<"DEFAULT_5XX">, C<"RESOURCE_NOT_FOUND">, C
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

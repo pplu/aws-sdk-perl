@@ -3,6 +3,7 @@ package Paws::MediaConvert::CaptionDestinationSettings;
   has BurninDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::BurninDestinationSettings', request_name => 'burninDestinationSettings', traits => ['NameInRequest']);
   has DestinationType => (is => 'ro', isa => 'Str', request_name => 'destinationType', traits => ['NameInRequest']);
   has DvbSubDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DvbSubDestinationSettings', request_name => 'dvbSubDestinationSettings', traits => ['NameInRequest']);
+  has EmbeddedDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::EmbeddedDestinationSettings', request_name => 'embeddedDestinationSettings', traits => ['NameInRequest']);
   has SccDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::SccDestinationSettings', request_name => 'sccDestinationSettings', traits => ['NameInRequest']);
   has TeletextDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::TeletextDestinationSettings', request_name => 'teletextDestinationSettings', traits => ['NameInRequest']);
   has TtmlDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::TtmlDestinationSettings', request_name => 'ttmlDestinationSettings', traits => ['NameInRequest']);
@@ -50,11 +51,15 @@ caption data is Embedded or Teletext.
 
 =head2 DestinationType => Str
 
-  Type of Caption output, including Burn-In, Embedded, SCC, SRT, TTML,
-WebVTT, DVB-Sub, Teletext.
+  
 
 
 =head2 DvbSubDestinationSettings => L<Paws::MediaConvert::DvbSubDestinationSettings>
+
+  
+
+
+=head2 EmbeddedDestinationSettings => L<Paws::MediaConvert::EmbeddedDestinationSettings>
 
   
 
@@ -71,8 +76,7 @@ WebVTT, DVB-Sub, Teletext.
 
 =head2 TtmlDestinationSettings => L<Paws::MediaConvert::TtmlDestinationSettings>
 
-  Settings specific to TTML caption outputs, including Pass style
-information (TtmlStylePassthrough).
+  
 
 
 

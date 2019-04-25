@@ -46,21 +46,23 @@ A complex type that contains information about a specified namespace.
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) that Amazon Route 53 assigns to the
+  The Amazon Resource Name (ARN) that AWS Cloud Map assigns to the
 namespace when you create it.
 
 
 =head2 CreateDate => Str
 
   The date that the namespace was created, in Unix date/time format and
-Coordinated Universal Time (UTC).
+Coordinated Universal Time (UTC). The value of C<CreateDate> is
+accurate to milliseconds. For example, the value C<1516925490.087>
+represents Friday, January 26, 2018 12:11:30.087 AM.
 
 
 =head2 CreatorRequestId => Str
 
-  An optional parameter that you can use to resolve concurrent creation
-requests. C<CreatorRequestId> helps to determine if a specific client
-owns the namespace.
+  A unique string that identifies the request and that allows failed
+requests to be retried without the risk of executing an operation
+twice.
 
 
 =head2 Description => Str

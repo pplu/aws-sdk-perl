@@ -20,17 +20,23 @@ Paws::LexModels::DeleteIntentVersion - Arguments for method DeleteIntentVersion 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteIntentVersion on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteIntentVersion on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method DeleteIntentVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteIntentVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteIntentVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    $models . lex->DeleteIntentVersion(
+      Name    => 'MyIntentName',
+      Version => 'MyNumericalVersion',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/DeleteIntentVersion>
 
 =head1 ATTRIBUTES
 

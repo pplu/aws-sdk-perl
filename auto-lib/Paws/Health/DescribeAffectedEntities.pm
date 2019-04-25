@@ -21,17 +21,56 @@ Paws::Health::DescribeAffectedEntities - Arguments for method DescribeAffectedEn
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeAffectedEntities on the 
-AWS Health APIs and Notifications service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeAffectedEntities on the
+L<AWS Health APIs and Notifications|Paws::Health> service. Use the attributes of this class
 as arguments to method DescribeAffectedEntities.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAffectedEntities.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeAffectedEntities(Att1 => $value1, Att2 => $value2, ...);
+    my $health = Paws->service('Health');
+    my $DescribeAffectedEntitiesResponse = $health->DescribeAffectedEntities(
+      Filter => {
+        EventArns => [
+          'MyeventArn', ...    # max: 1600
+        ],                     # min: 1, max: 10
+        EntityArns => [
+          'MyentityArn', ...    # max: 1600
+        ],                      # min: 1, max: 100; OPTIONAL
+        EntityValues => [
+          'MyentityValue', ...    # max: 256
+        ],                        # min: 1, max: 100; OPTIONAL
+        LastUpdatedTimes => [
+          {
+            From => '1970-01-01T01:00:00',    # OPTIONAL
+            To   => '1970-01-01T01:00:00',    # OPTIONAL
+          },
+          ...
+        ],                                    # min: 1, max: 10; OPTIONAL
+        StatusCodes => [
+          'IMPAIRED', ...    # values: IMPAIRED, UNIMPAIRED, UNKNOWN
+        ],                   # min: 1, max: 3; OPTIONAL
+        Tags => [
+          {
+            'MytagKey' => 'MytagValue',    # key: max: 127, value: max: 255
+          },
+          ...                              # max: 50
+        ],                                 # max: 50; OPTIONAL
+      },
+      Locale     => 'Mylocale',            # OPTIONAL
+      MaxResults => 1,                     # OPTIONAL
+      NextToken  => 'MynextToken',         # OPTIONAL
+    );
+
+    # Results:
+    my $Entities  = $DescribeAffectedEntitiesResponse->Entities;
+    my $NextToken = $DescribeAffectedEntitiesResponse->NextToken;
+
+    # Returns a L<Paws::Health::DescribeAffectedEntitiesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/health/DescribeAffectedEntities>
 
 =head1 ATTRIBUTES
 

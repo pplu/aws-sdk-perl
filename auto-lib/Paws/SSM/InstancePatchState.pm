@@ -4,6 +4,8 @@ package Paws::SSM::InstancePatchState;
   has FailedCount => (is => 'ro', isa => 'Int');
   has InstalledCount => (is => 'ro', isa => 'Int');
   has InstalledOtherCount => (is => 'ro', isa => 'Int');
+  has InstalledRejectedCount => (is => 'ro', isa => 'Int');
+  has InstallOverrideList => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has MissingCount => (is => 'ro', isa => 'Int');
   has NotApplicableCount => (is => 'ro', isa => 'Int');
@@ -74,6 +76,32 @@ instance.
 installed on the instance.
 
 
+=head2 InstalledRejectedCount => Int
+
+  The number of instances with patches installed that are specified in a
+RejectedPatches list. Patches with a status of I<InstalledRejected>
+were typically installed before they were added to a RejectedPatches
+list.
+
+If ALLOW_AS_DEPENDENCY is the specified option for
+RejectedPatchesAction, the value of InstalledRejectedCount will always
+be 0 (zero).
+
+
+=head2 InstallOverrideList => Str
+
+  An https URL or an Amazon S3 path-style URL to a list of patches to be
+installed. This patch installation list, which you maintain in an
+Amazon S3 bucket in YAML format and specify in the SSM document
+C<AWS-RunPatchBaseline>, overrides the patches specified by the default
+patch baseline.
+
+For more information about the C<InstallOverrideList> parameter, see
+About the SSM Document AWS-RunPatchBaseline
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-about-aws-runpatchbaseline.html)
+in the I<AWS Systems Manager User Guide>.
+
+
 =head2 B<REQUIRED> InstanceId => Str
 
   The ID of the managed instance the high-level patch compliance
@@ -111,7 +139,7 @@ instance.
 
 =head2 OwnerInformation => Str
 
-  Placeholder information, this field will always be empty in the current
+  Placeholder information. This field will always be empty in the current
 release of the service.
 
 

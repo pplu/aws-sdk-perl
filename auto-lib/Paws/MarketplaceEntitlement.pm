@@ -1,6 +1,7 @@
 package Paws::MarketplaceEntitlement;
   use Moose;
   sub service { 'entitlement.marketplace' }
+  sub signing_name { 'aws-marketplace' }
   sub version { '2017-01-11' }
   sub target_prefix { 'AWSMPEntitlementService' }
   sub json_version { "1.1" }
@@ -20,6 +21,29 @@ package Paws::MarketplaceEntitlement;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllEntitlements {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetEntitlements(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetEntitlements(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Entitlements }, @{ $next_result->Entitlements };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Entitlements') foreach (@{ $result->Entitlements });
+        $result = $self->GetEntitlements(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Entitlements') foreach (@{ $result->Entitlements });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/GetEntitlements / }
@@ -72,9 +96,25 @@ I<GetEntitlements>- Gets the entitlements for a Marketplace product.
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/Welcome.html>
+
+
 =head1 METHODS
 
-=head2 GetEntitlements(ProductCode => Str, [Filter => L<Paws::MarketplaceEntitlement::GetEntitlementFilters>, MaxResults => Int, NextToken => Str])
+=head2 GetEntitlements
+
+=over
+
+=item ProductCode => Str
+
+=item [Filter => L<Paws::MarketplaceEntitlement::GetEntitlementFilters>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MarketplaceEntitlement::GetEntitlements>
 
@@ -90,6 +130,18 @@ dimensions.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllEntitlements(sub { },ProductCode => Str, [Filter => L<Paws::MarketplaceEntitlement::GetEntitlementFilters>, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllEntitlements(ProductCode => Str, [Filter => L<Paws::MarketplaceEntitlement::GetEntitlementFilters>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Entitlements, passing the object as the first parameter, and the string 'Entitlements' as the second parameter 
+
+If not, it will return a a L<Paws::MarketplaceEntitlement::GetEntitlementsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

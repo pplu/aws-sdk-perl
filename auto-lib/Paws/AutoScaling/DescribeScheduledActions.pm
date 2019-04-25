@@ -23,17 +23,32 @@ Paws::AutoScaling::DescribeScheduledActions - Arguments for method DescribeSched
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeScheduledActions on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeScheduledActions on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method DescribeScheduledActions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeScheduledActions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeScheduledActions(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+   # To describe scheduled actions
+   # This example describes the scheduled actions for the specified Auto Scaling
+   # group.
+    my $ScheduledActionsType = $autoscaling->DescribeScheduledActions(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
+      }
+    );
+
+    # Results:
+    my $ScheduledUpdateGroupActions =
+      $ScheduledActionsType->ScheduledUpdateGroupActions;
+
+    # Returns a L<Paws::AutoScaling::ScheduledActionsType> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/DescribeScheduledActions>
 
 =head1 ATTRIBUTES
 
@@ -67,13 +82,10 @@ from a previous call.)
 
 =head2 ScheduledActionNames => ArrayRef[Str|Undef]
 
-Describes one or more scheduled actions. If you omit this parameter,
-all scheduled actions are described. If you specify an unknown
-scheduled action, it is ignored with no error.
-
-You can describe up to a maximum of 50 instances with a single call. If
-there are more items to return, the call returns a token. To get the
-next set of items, repeat the call with the returned token.
+The names of one or more scheduled actions. You can specify up to 50
+actions. If you omit this parameter, all scheduled actions are
+described. If you specify an unknown scheduled action, it is ignored
+with no error.
 
 
 

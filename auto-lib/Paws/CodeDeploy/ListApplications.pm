@@ -18,17 +18,27 @@ Paws::CodeDeploy::ListApplications - Arguments for method ListApplications on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListApplications on the 
-AWS CodeDeploy service. Use the attributes of this class
+This class represents the parameters used for calling the method ListApplications on the
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method ListApplications.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListApplications.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListApplications(Att1 => $value1, Att2 => $value2, ...);
+    my $codedeploy = Paws->service('CodeDeploy');
+    my $ListApplicationsOutput = $codedeploy->ListApplications(
+      NextToken => 'MyNextToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $Applications = $ListApplicationsOutput->Applications;
+    my $NextToken    = $ListApplicationsOutput->NextToken;
+
+    # Returns a L<Paws::CodeDeploy::ListApplicationsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codedeploy/ListApplications>
 
 =head1 ATTRIBUTES
 

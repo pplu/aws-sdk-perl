@@ -18,17 +18,21 @@ Paws::SES::UpdateAccountSendingEnabled - Arguments for method UpdateAccountSendi
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateAccountSendingEnabled on the 
-Amazon Simple Email Service service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateAccountSendingEnabled on the
+L<Amazon Simple Email Service|Paws::SES> service. Use the attributes of this class
 as arguments to method UpdateAccountSendingEnabled.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAccountSendingEnabled.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateAccountSendingEnabled(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    $email->UpdateAccountSendingEnabled(
+      Enabled => 1,    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/UpdateAccountSendingEnabled>
 
 =head1 ATTRIBUTES
 
@@ -36,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Enabled => Bool
 
 Describes whether email sending is enabled or disabled for your Amazon
-SES account.
+SES account in the current AWS Region.
 
 
 

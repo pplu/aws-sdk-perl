@@ -14,8 +14,10 @@ package Paws::RDS::CreateDBInstance;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -30,9 +32,11 @@ package Paws::RDS::CreateDBInstance;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
   has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
@@ -58,25 +62,38 @@ Paws::RDS::CreateDBInstance - Arguments for method CreateDBInstance on L<Paws::R
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDBInstance on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateDBInstance on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method CreateDBInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDBInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To create a DB instance.
+    # This example creates a DB instance.
+    my $CreateDBInstanceResult = $rds->CreateDBInstance(
+      {
+        'AllocatedStorage'     => 5,
+        'DBInstanceClass'      => 'db.t2.micro',
+        'DBInstanceIdentifier' => 'mymysqlinstance',
+        'Engine'               => 'MySQL',
+        'MasterUserPassword'   => 'MyPassword',
+        'MasterUsername'       => 'MyUser'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateDBInstance>
 
 =head1 ATTRIBUTES
 
 
 =head2 AllocatedStorage => Int
 
-The amount of storage (in gigabytes) to be initially allocated for the
-DB instance.
+The amount of storage (in gibibytes) to allocate for the DB instance.
 
 Type: Integer
 
@@ -95,11 +112,12 @@ following:
 
 =item *
 
-General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+16384.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 
 =item *
 
@@ -116,11 +134,12 @@ following:
 
 =item *
 
-General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+16384.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 
 =item *
 
@@ -137,11 +156,12 @@ following:
 
 =item *
 
-General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+16384.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
 
 =item *
 
@@ -158,12 +178,12 @@ following:
 
 =item *
 
-General Purpose (SSD) storage (gp2): Must be an integer from 10 to
-6144.
+General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+32768.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
 
 =item *
 
@@ -281,7 +301,7 @@ Must be a value from 0 to 35
 
 =item *
 
-Cannot be set to 0 if the DB instance is a source to Read Replicas
+Can't be set to 0 if the DB instance is a source to Read Replicas
 
 =back
 
@@ -324,7 +344,7 @@ C<db.m4.large>. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-in the Amazon RDS User Guide.
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -347,7 +367,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -378,7 +398,7 @@ Must contain 1 to 64 letters or numbers.
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -398,7 +418,7 @@ Must contain 1 to 64 letters or numbers.
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -423,7 +443,7 @@ letters, underscores, or digits (0-9).
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -441,7 +461,7 @@ Constraints:
 
 =item *
 
-Cannot be longer than 8 characters
+Can't be longer than 8 characters
 
 =back
 
@@ -465,7 +485,7 @@ Must contain 1 to 64 letters or numbers.
 
 =item *
 
-Cannot be a word reserved by the specified database engine
+Can't be a word reserved by the specified database engine
 
 =back
 
@@ -492,7 +512,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -515,6 +535,15 @@ If there is no DB subnet group, then it is a non-VPC DB instance.
 
 
 
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false. For more information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+
+
+
 =head2 Domain => Str
 
 Specify the Active Directory Domain to create the instance in.
@@ -525,6 +554,17 @@ Specify the Active Directory Domain to create the instance in.
 
 Specify the name of the IAM role to be used when making API calls to
 the Directory Service.
+
+
+
+=head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+The list of log types that need to be enabled for exporting to
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon Relational Database Service User Guide>.
 
 
 
@@ -564,6 +604,10 @@ Default: C<false>
 True to enable Performance Insights for the DB instance, and otherwise
 false.
 
+For more information, see Using Amazon Performance Insights
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
+in the I<Amazon Relational Database Service User Guide>.
+
 
 
 =head2 B<REQUIRED> Engine => Str
@@ -578,7 +622,11 @@ Valid Values:
 
 =item *
 
-C<aurora>
+C<aurora> (for MySQL 5.6-compatible Aurora)
+
+=item *
+
+C<aurora-mysql> (for MySQL 5.7-compatible Aurora)
 
 =item *
 
@@ -637,9 +685,11 @@ C<sqlserver-web>
 
 The version number of the database engine to use.
 
-The following are the database engines and major and minor versions
-that are available with Amazon RDS. Not every database engine is
-available for every AWS Region.
+For a list of valid engine versions, call DescribeDBEngineVersions.
+
+The following are the database engines and links to information about
+the major and minor versions that are available with Amazon RDS. Not
+every database engine is available for every AWS Region.
 
 B<Amazon Aurora>
 
@@ -649,311 +699,33 @@ CreateDBCluster.
 
 B<MariaDB>
 
-=over
+See MariaDB on Amazon RDS Versions
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt)
+in the I<Amazon RDS User Guide.>
 
-=item *
+B<Microsoft SQL Server>
 
-C<10.1.23> (supported in all AWS Regions)
-
-=item *
-
-C<10.1.19> (supported in all AWS Regions)
-
-=item *
-
-C<10.1.14> (supported in all AWS Regions except us-east-2)
-
-=back
-
-=over
-
-=item *
-
-C<10.0.31> (supported in all AWS Regions)
-
-=item *
-
-C<10.0.28> (supported in all AWS Regions)
-
-=item *
-
-C<10.0.24> (supported in all AWS Regions)
-
-=item *
-
-C<10.0.17> (supported in all AWS Regions except us-east-2,
-ca-central-1, eu-west-2)
-
-=back
-
-B<Microsoft SQL Server 2016>
-
-=over
-
-=item *
-
-C<13.00.4422.0.v1> (supported for all editions, and all AWS Regions)
-
-=item *
-
-C<13.00.2164.0.v1> (supported for all editions, and all AWS Regions)
-
-=back
-
-B<Microsoft SQL Server 2014>
-
-=over
-
-=item *
-
-C<12.00.5546.0.v1> (supported for all editions, and all AWS Regions)
-
-=item *
-
-C<12.00.5000.0.v1> (supported for all editions, and all AWS Regions)
-
-=item *
-
-C<12.00.4422.0.v1> (supported for all editions except Enterprise
-Edition, and all AWS Regions except ca-central-1 and eu-west-2)
-
-=back
-
-B<Microsoft SQL Server 2012>
-
-=over
-
-=item *
-
-C<11.00.6594.0.v1> (supported for all editions, and all AWS Regions)
-
-=item *
-
-C<11.00.6020.0.v1> (supported for all editions, and all AWS Regions)
-
-=item *
-
-C<11.00.5058.0.v1> (supported for all editions, and all AWS Regions
-except us-east-2, ca-central-1, and eu-west-2)
-
-=item *
-
-C<11.00.2100.60.v1> (supported for all editions, and all AWS Regions
-except us-east-2, ca-central-1, and eu-west-2)
-
-=back
-
-B<Microsoft SQL Server 2008 R2>
-
-=over
-
-=item *
-
-C<10.50.6529.0.v1> (supported for all editions, and all AWS Regions
-except us-east-2, ca-central-1, and eu-west-2)
-
-=item *
-
-C<10.50.6000.34.v1> (supported for all editions, and all AWS Regions
-except us-east-2, ca-central-1, and eu-west-2)
-
-=item *
-
-C<10.50.2789.0.v1> (supported for all editions, and all AWS Regions
-except us-east-2, ca-central-1, and eu-west-2)
-
-=back
+See Version and Feature Support on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.FeatureSupport)
+in the I<Amazon RDS User Guide.>
 
 B<MySQL>
 
-=over
-
-=item *
-
-C<5.7.19> (supported in all AWS regions)
-
-=item *
-
-C<5.7.17> (supported in all AWS regions)
-
-=item *
-
-C<5.7.16> (supported in all AWS regions)
-
-=back
-
-=over
-
-=item *
-
-C<5.6.37> (supported in all AWS Regions)
-
-=item *
-
-C<5.6.35> (supported in all AWS Regions)
-
-=item *
-
-C<5.6.34> (supported in all AWS Regions)
-
-=item *
-
-C<5.6.29> (supported in all AWS Regions)
-
-=item *
-
-C<5.6.27> (supported in all AWS Regions except us-east-2, ca-central-1,
-eu-west-2)
-
-=back
-
-=over
-
-=item *
-
-C<5.5.57> (supported in all AWS Regions)
-
-=item *
-
-C<5.5.54> (supported in all AWS Regions)
-
-=item *
-
-C<5.5.53> (supported in all AWS Regions)
-
-=item *
-
-C<5.5.46> (supported in all AWS Regions)
-
-=back
-
-B<Oracle 12c>
-
-=over
-
-=item *
-
-C<12.1.0.2.v9> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v8> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v7> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v6> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v5> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v4> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v3> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v2> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=item *
-
-C<12.1.0.2.v1> (supported for EE in all AWS regions, and SE2 in all AWS
-regions except us-gov-west-1)
-
-=back
-
-B<Oracle 11g>
-
-=over
-
-=item *
-
-C<11.2.0.4.v13> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v12> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v11> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v10> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v9> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v8> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v7> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v6> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v5> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v4> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v3> (supported for EE, SE1, and SE, in all AWS regions)
-
-=item *
-
-C<11.2.0.4.v1> (supported for EE, SE1, and SE, in all AWS regions)
-
-=back
+See MySQL on Amazon RDS Versions
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt)
+in the I<Amazon RDS User Guide.>
+
+B<Oracle>
+
+See Oracle Database Engine Release Notes
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html)
+in the I<Amazon RDS User Guide.>
 
 B<PostgreSQL>
 
-=over
-
-=item *
-
-B<Version 9.6.x:> C< 9.6.5 | 9.6.3 | 9.6.2 | 9.6.1>
-
-=item *
-
-B<Version 9.5.x:> C< 9.5.9 | 9.5.7 | 9.5.6 | 9.5.4 | 9.5.2>
-
-=item *
-
-B<Version 9.4.x:> C< 9.4.14 | 9.4.12 | 9.4.11 | 9.4.9 | 9.4.7>
-
-=item *
-
-B<Version 9.3.x:> C< 9.3.19 | 9.3.17 | 9.3.16 | 9.3.14 | 9.3.12>
-
-=back
-
+See Supported PostgreSQL Database Versions
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -963,12 +735,11 @@ The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance. For information about valid
 Iops values, see see Amazon RDS Provisioned IOPS Storage to Improve
 Performance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+in the I<Amazon RDS User Guide>.
 
-Constraints: Must be a multiple between 3 and 10 of the storage amount
-for the DB instance. Must also be an integer multiple of 1000. For
-example, if the size of your DB instance is 500 GB, then your C<Iops>
-value can be 2000, 3000, 4000, or 5000.
+Constraints: Must be a multiple between 1 and 50 of the storage amount
+for the DB instance.
 
 
 
@@ -1029,7 +800,7 @@ Must be 1 to 16 letters or numbers.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -1053,7 +824,7 @@ The first character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -1077,7 +848,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -1101,7 +872,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -1125,7 +896,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -1183,7 +954,8 @@ The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to Setting Up and Enabling Enhanced Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling)
+in the I<Amazon RDS User Guide>.
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -1192,8 +964,9 @@ supply a C<MonitoringRoleArn> value.
 
 =head2 MultiAZ => Bool
 
-Specifies if the DB instance is a Multi-AZ deployment. You can't set
-the AvailabilityZone parameter if the MultiAZ parameter is set to true.
+A value that specifies whether the DB instance is a Multi-AZ
+deployment. You can't set the AvailabilityZone parameter if the MultiAZ
+parameter is set to true.
 
 
 
@@ -1213,6 +986,13 @@ be removed from a DB instance once it is associated with a DB instance
 The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
 or the KMS key alias for the KMS encryption key.
+
+
+
+=head2 PerformanceInsightsRetentionPeriod => Int
+
+The amount of time, in days, to retain Performance Insights data. Valid
+values are 7 or 731 (2 years).
 
 
 
@@ -1272,7 +1052,8 @@ Type: Integer
 The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter. For more information, see The Backup Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+in the I<Amazon RDS User Guide>.
 
 B<Amazon Aurora>
 
@@ -1282,7 +1063,8 @@ managed by the DB cluster. For more information, see CreateDBCluster.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
 see Adjusting the Preferred DB Instance Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow)
+in the I<Amazon RDS User Guide>.
 
 Constraints:
 
@@ -1328,13 +1110,21 @@ Constraints: Minimum 30-minute window.
 
 
 
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance.
+
+
+
 =head2 PromotionTier => Int
 
 A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance).
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
+in the I<Amazon Aurora User Guide>.
 
 Default: 1
 
@@ -1350,27 +1140,43 @@ DNS name, which resolves to a public IP address. A value of false
 specifies an internal instance with a DNS name that resolves to a
 private IP address.
 
-Default: The default behavior varies depending on whether a VPC has
-been requested or not. The following list shows the default behavior in
-each case.
+Default: The default behavior varies depending on whether
+C<DBSubnetGroupName> is specified.
+
+If C<DBSubnetGroupName> is not specified, and C<PubliclyAccessible> is
+not specified, the following applies:
 
 =over
 
 =item *
 
-B<Default VPC:> true
+If the default VPC in the target region doesnE<rsquo>t have an Internet
+gateway attached to it, the DB instance is private.
 
 =item *
 
-B<VPC:> false
+If the default VPC in the target region has an Internet gateway
+attached to it, the DB instance is public.
 
 =back
 
-If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance is publicly
-accessible. If a specific DB subnet group has been specified as part of
-the request and the PubliclyAccessible value has not been set, the DB
-instance is private.
+If C<DBSubnetGroupName> is specified, and C<PubliclyAccessible> is not
+specified, the following applies:
+
+=over
+
+=item *
+
+If the subnets are part of a VPC that doesnE<rsquo>t have an Internet
+gateway attached to it, the DB instance is private.
+
+=item *
+
+If the subnets are part of a VPC that has an Internet gateway attached
+to it, the DB instance is public.
+
+=back
+
 
 
 
@@ -1431,7 +1237,8 @@ supported only by Microsoft SQL Server
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
-A list of EC2 VPC security groups to associate with this DB instance.
+A list of Amazon EC2 VPC security groups to associate with this DB
+instance.
 
 B<Amazon Aurora>
 

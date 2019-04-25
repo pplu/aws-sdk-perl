@@ -20,17 +20,38 @@ Paws::AutoScaling::SetInstanceProtection - Arguments for method SetInstanceProte
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SetInstanceProtection on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method SetInstanceProtection on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method SetInstanceProtection.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetInstanceProtection.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetInstanceProtection(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To enable instance protection for an instance
+    # This example enables instance protection for the specified instance.
+    my $SetInstanceProtectionAnswer = $autoscaling->SetInstanceProtection(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'InstanceIds'          => ['i-93633f9b'],
+        'ProtectedFromScaleIn' => 1
+      }
+    );
+
+    # To disable instance protection for an instance
+    # This example disables instance protection for the specified instance.
+    my $SetInstanceProtectionAnswer = $autoscaling->SetInstanceProtection(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'InstanceIds'          => ['i-93633f9b'],
+        'ProtectedFromScaleIn' => 0
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/SetInstanceProtection>
 
 =head1 ATTRIBUTES
 
@@ -49,8 +70,8 @@ One or more instance IDs.
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool
 
-Indicates whether the instance is protected from termination by Auto
-Scaling when scaling in.
+Indicates whether the instance is protected from termination by Amazon
+EC2 Auto Scaling when scaling in.
 
 
 

@@ -23,17 +23,31 @@ Paws::CloudHSM::ModifyHsm - Arguments for method ModifyHsm on L<Paws::CloudHSM>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyHsm on the 
-Amazon CloudHSM service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyHsm on the
+L<Amazon CloudHSM|Paws::CloudHSM> service. Use the attributes of this class
 as arguments to method ModifyHsm.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyHsm.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyHsm(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudhsm = Paws->service('CloudHSM');
+    my $ModifyHsmResponse = $cloudhsm->ModifyHsm(
+      HsmArn     => 'MyHsmArn',
+      EniIp      => 'MyIpAddress',     # OPTIONAL
+      ExternalId => 'MyExternalId',    # OPTIONAL
+      IamRoleArn => 'MyIamRoleArn',    # OPTIONAL
+      SubnetId   => 'MySubnetId',      # OPTIONAL
+      SyslogIp   => 'MyIpAddress',     # OPTIONAL
+    );
+
+    # Results:
+    my $HsmArn = $ModifyHsmResponse->HsmArn;
+
+    # Returns a L<Paws::CloudHSM::ModifyHsmResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudhsm/ModifyHsm>
 
 =head1 ATTRIBUTES
 

@@ -20,34 +20,45 @@ Paws::StepFunctions::CreateStateMachine - Arguments for method CreateStateMachin
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateStateMachine on the 
-AWS Step Functions service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateStateMachine on the
+L<AWS Step Functions|Paws::StepFunctions> service. Use the attributes of this class
 as arguments to method CreateStateMachine.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStateMachine.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateStateMachine(Att1 => $value1, Att2 => $value2, ...);
+    my $states = Paws->service('StepFunctions');
+    my $CreateStateMachineOutput = $states->CreateStateMachine(
+      Definition => 'MyDefinition',
+      Name       => 'MyName',
+      RoleArn    => 'MyArn',
+
+    );
+
+    # Results:
+    my $CreationDate    = $CreateStateMachineOutput->CreationDate;
+    my $StateMachineArn = $CreateStateMachineOutput->StateMachineArn;
+
+    # Returns a L<Paws::StepFunctions::CreateStateMachineOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/states/CreateStateMachine>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Definition => Str
 
-The Amazon States Language definition of the state machine.
+The Amazon States Language definition of the state machine. See Amazon
+States Language
+(http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the state machine. This name must be unique for your AWS
-account and region for 90 days. For more information, see Limits
-Related to State Machine Executions
-(http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
-in the I<AWS Step Functions Developer Guide>.
+The name of the state machine.
 
 A name must I<not> contain:
 

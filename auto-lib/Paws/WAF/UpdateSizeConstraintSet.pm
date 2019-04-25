@@ -20,17 +20,46 @@ Paws::WAF::UpdateSizeConstraintSet - Arguments for method UpdateSizeConstraintSe
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateSizeConstraintSet on the 
-AWS WAF service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateSizeConstraintSet on the
+L<AWS WAF|Paws::WAF> service. Use the attributes of this class
 as arguments to method UpdateSizeConstraintSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateSizeConstraintSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateSizeConstraintSet(Att1 => $value1, Att2 => $value2, ...);
+    my $waf = Paws->service('WAF');
+    # To update a size constraint set
+    # The following example deletes a SizeConstraint object (filters) in a size
+    # constraint set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
+    my $UpdateSizeConstraintSetResponse = $waf->UpdateSizeConstraintSet(
+      {
+        'ChangeToken'         => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'SizeConstraintSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
+        'Updates'             => [
+
+          {
+            'Action'         => 'DELETE',
+            'SizeConstraint' => {
+              'ComparisonOperator' => 'GT',
+              'FieldToMatch'       => {
+                'Type' => 'QUERY_STRING'
+              },
+              'Size'               => 0,
+              'TextTransformation' => 'NONE'
+            }
+          }
+        ]
+      }
+    );
+
+    # Results:
+    my $ChangeToken = $UpdateSizeConstraintSetResponse->ChangeToken;
+
+    # Returns a L<Paws::WAF::UpdateSizeConstraintSetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf/UpdateSizeConstraintSet>
 
 =head1 ATTRIBUTES
 

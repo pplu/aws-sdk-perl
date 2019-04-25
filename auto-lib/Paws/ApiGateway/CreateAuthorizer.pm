@@ -9,7 +9,7 @@ package Paws::ApiGateway::CreateAuthorizer;
   has IdentityValidationExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identityValidationExpression');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'providerARNs');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
 
   use MooseX::ClassAttribute;
@@ -28,17 +28,46 @@ Paws::ApiGateway::CreateAuthorizer - Arguments for method CreateAuthorizer on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateAuthorizer on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateAuthorizer on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method CreateAuthorizer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAuthorizer.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateAuthorizer(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $Authorizer = $apigateway->CreateAuthorizer(
+      Name                         => 'MyString',
+      RestApiId                    => 'MyString',
+      Type                         => 'TOKEN',
+      AuthType                     => 'MyString',                  # OPTIONAL
+      AuthorizerCredentials        => 'MyString',                  # OPTIONAL
+      AuthorizerResultTtlInSeconds => 1,                           # OPTIONAL
+      AuthorizerUri                => 'MyString',                  # OPTIONAL
+      IdentitySource               => 'MyString',                  # OPTIONAL
+      IdentityValidationExpression => 'MyString',                  # OPTIONAL
+      ProviderARNs                 => [ 'MyProviderARN', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $AuthType              = $Authorizer->AuthType;
+    my $AuthorizerCredentials = $Authorizer->AuthorizerCredentials;
+    my $AuthorizerResultTtlInSeconds =
+      $Authorizer->AuthorizerResultTtlInSeconds;
+    my $AuthorizerUri  = $Authorizer->AuthorizerUri;
+    my $Id             = $Authorizer->Id;
+    my $IdentitySource = $Authorizer->IdentitySource;
+    my $IdentityValidationExpression =
+      $Authorizer->IdentityValidationExpression;
+    my $Name         = $Authorizer->Name;
+    my $ProviderARNs = $Authorizer->ProviderARNs;
+    my $Type         = $Authorizer->Type;
+
+    # Returns a L<Paws::ApiGateway::Authorizer> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/CreateAuthorizer>
 
 =head1 ATTRIBUTES
 
@@ -79,7 +108,7 @@ C</2015-03-31/functions/[FunctionARN]/invocations>.
 
 =head2 AuthType => Str
 
-Optional customer-defined field, used in Swagger imports and exports
+Optional customer-defined field, used in OpenAPI imports and exports
 without functional impact.
 
 
@@ -90,11 +119,11 @@ The identity source for which authorization is requested.
 
 =over
 
-=item * For a C<TOKEN> authorizer, this is required and specifies the
-request header mapping expression for the custom header holding the
-authorization token submitted by the client. For example, if the token
-header name is C<Auth>, the header mapping expression is
-C<method.request.header.Auth>.
+=item * For a C<TOKEN> or C<COGNITO_USER_POOLS> authorizer, this is
+required and specifies the request header mapping expression for the
+custom header holding the authorization token submitted by the client.
+For example, if the token header name is C<Auth>, the header mapping
+expression is C<method.request.header.Auth>.
 
 =item * For the C<REQUEST> authorizer, this is required when
 authorization caching is enabled. The value is a comma-separated string
@@ -112,9 +141,6 @@ string of comma-separated mapping expressions of the specified request
 parameters. When the authorization caching is not enabled, this
 property is optional.
 
-=item * For a C<COGNITO_USER_POOLS> authorizer, this property is not
-used.
-
 =back
 
 
@@ -124,11 +150,11 @@ used.
 
 A validation expression for the incoming identity token. For C<TOKEN>
 authorizers, this value is a regular expression. API Gateway will match
-the incoming token from the client against the specified regular
-expression. It will invoke the authorizer's Lambda function there is a
-match. Otherwise, it will return a 401 Unauthorized response without
-calling the Lambda function. The validation expression does not apply
-to the C<REQUEST> authorizer.
+the C<aud> field of the incoming token from the client against the
+specified regular expression. It will invoke the authorizer's Lambda
+function when there is a match. Otherwise, it will return a 401
+Unauthorized response without calling the Lambda function. The
+validation expression does not apply to the C<REQUEST> authorizer.
 
 
 
@@ -149,7 +175,7 @@ For a C<TOKEN> or C<REQUEST> authorizer, this is not defined.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

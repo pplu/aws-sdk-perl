@@ -21,17 +21,47 @@ Paws::AlexaForBusiness::SearchDevices - Arguments for method SearchDevices on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SearchDevices on the 
-Alexa For Business service. Use the attributes of this class
+This class represents the parameters used for calling the method SearchDevices on the
+L<Alexa For Business|Paws::AlexaForBusiness> service. Use the attributes of this class
 as arguments to method SearchDevices.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SearchDevices.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SearchDevices(Att1 => $value1, Att2 => $value2, ...);
+    my $a4b = Paws->service('AlexaForBusiness');
+    my $SearchDevicesResponse = $a4b->SearchDevices(
+      Filters => [
+        {
+          Key    => 'MyFilterKey',    # min: 1, max: 500
+          Values => [
+            'MyFilterValue', ...      # min: 1, max: 500
+          ],                          # max: 5
+
+        },
+        ...
+      ],                              # OPTIONAL
+      MaxResults   => 1,              # OPTIONAL
+      NextToken    => 'MyNextToken',  # OPTIONAL
+      SortCriteria => [
+        {
+          Key   => 'MySortKey',       # min: 1, max: 500
+          Value => 'ASC',             # values: ASC, DESC
+
+        },
+        ...
+      ],                              # OPTIONAL
+    );
+
+    # Results:
+    my $Devices    = $SearchDevicesResponse->Devices;
+    my $NextToken  = $SearchDevicesResponse->NextToken;
+    my $TotalCount = $SearchDevicesResponse->TotalCount;
+
+    # Returns a L<Paws::AlexaForBusiness::SearchDevicesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b/SearchDevices>
 
 =head1 ATTRIBUTES
 
@@ -39,8 +69,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]
 
 The filters to use to list a specified set of devices. Supported filter
-keys are DeviceName, DeviceStatus, RoomName, DeviceType,
-DeviceSerialNumber, and UnassociatedOnly.
+keys are DeviceName, DeviceStatus, DeviceStatusDetailCode, RoomName,
+DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus
+(ONLINE and OFFLINE).
 
 
 
@@ -66,7 +97,7 @@ specified by C<MaxResults>.
 
 The sort order to use in listing the specified set of devices.
 Supported sort keys are DeviceName, DeviceStatus, RoomName, DeviceType,
-and DeviceSerialNumber.
+DeviceSerialNumber, and ConnectionStatus.
 
 
 

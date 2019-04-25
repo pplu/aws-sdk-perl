@@ -5,6 +5,7 @@ package Paws::Firehose::S3DestinationConfiguration;
   has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
   has CompressionFormat => (is => 'ro', isa => 'Str');
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::EncryptionConfiguration');
+  has ErrorOutputPrefix => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -44,12 +45,14 @@ Describes the configuration of a destination in Amazon S3.
 
 =head2 B<REQUIRED> BucketARN => Str
 
-  The ARN of the S3 bucket.
+  The ARN of the S3 bucket. For more information, see Amazon Resource
+Names (ARNs) and AWS Service Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 =head2 BufferingHints => L<Paws::Firehose::BufferingHints>
 
-  The buffering option. If no value is specified, B<BufferingHints>
+  The buffering option. If no value is specified, C<BufferingHints>
 object default values are used.
 
 
@@ -74,20 +77,30 @@ Amazon Redshift C<COPY> operation that reads from the S3 bucket.
 no encryption.
 
 
+=head2 ErrorOutputPrefix => Str
+
+  A prefix that Kinesis Data Firehose evaluates and adds to failed
+records before writing them to S3. This prefix appears immediately
+following the bucket name.
+
+
 =head2 Prefix => Str
 
   The "YYYY/MM/DD/HH" time format prefix is automatically used for
-delivered S3 files. You can specify an extra prefix to be added in
-front of the time format prefix. If the prefix ends with a slash, it
+delivered Amazon S3 files. You can specify an extra prefix to be added
+in front of the time format prefix. If the prefix ends with a slash, it
 appears as a folder in the S3 bucket. For more information, see Amazon
 S3 Object Name Format
-(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html) in
-the I<Amazon Kinesis Firehose Developer Guide>.
+(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name)
+in the I<Amazon Kinesis Data Firehose Developer Guide>.
 
 
 =head2 B<REQUIRED> RoleARN => Str
 
-  The ARN of the AWS credentials.
+  The Amazon Resource Name (ARN) of the AWS credentials. For more
+information, see Amazon Resource Names (ARNs) and AWS Service
+Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 

@@ -31,7 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Settings for TTML caption output
+Settings specific to TTML caption outputs, including Pass style
+information (TtmlStylePassthrough).
 
 =head1 ATTRIBUTES
 

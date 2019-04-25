@@ -25,17 +25,37 @@ Paws::Route53::ListResourceRecordSets - Arguments for method ListResourceRecordS
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListResourceRecordSets on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method ListResourceRecordSets on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method ListResourceRecordSets.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListResourceRecordSets.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListResourceRecordSets(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $ListResourceRecordSetsResponse = $route53->ListResourceRecordSets(
+      HostedZoneId          => 'MyResourceId',
+      MaxItems              => 'MyPageMaxItems',                   # OPTIONAL
+      StartRecordIdentifier => 'MyResourceRecordSetIdentifier',    # OPTIONAL
+      StartRecordName       => 'MyDNSName',                        # OPTIONAL
+      StartRecordType       => 'SOA',                              # OPTIONAL
+    );
+
+    # Results:
+    my $IsTruncated = $ListResourceRecordSetsResponse->IsTruncated;
+    my $MaxItems    = $ListResourceRecordSetsResponse->MaxItems;
+    my $NextRecordIdentifier =
+      $ListResourceRecordSetsResponse->NextRecordIdentifier;
+    my $NextRecordName = $ListResourceRecordSetsResponse->NextRecordName;
+    my $NextRecordType = $ListResourceRecordSetsResponse->NextRecordType;
+    my $ResourceRecordSets =
+      $ListResourceRecordSetsResponse->ResourceRecordSets;
+
+    # Returns a L<Paws::Route53::ListResourceRecordSetsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/ListResourceRecordSets>
 
 =head1 ATTRIBUTES
 
@@ -83,9 +103,9 @@ Valid values for basic resource record sets: C<A> | C<AAAA> | C<CAA> |
 C<CNAME> | C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> | C<SRV>
 | C<TXT>
 
-Values for weighted, latency, geo, and failover resource record sets:
-C<A> | C<AAAA> | C<CAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> | C<SPF>
-| C<SRV> | C<TXT>
+Values for weighted, latency, geolocation, and failover resource record
+sets: C<A> | C<AAAA> | C<CAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> |
+C<SPF> | C<SRV> | C<TXT>
 
 Values for alias resource record sets:
 

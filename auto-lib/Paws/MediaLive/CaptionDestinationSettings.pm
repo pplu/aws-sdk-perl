@@ -5,6 +5,7 @@ package Paws::MediaLive::CaptionDestinationSettings;
   has DvbSubDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::DvbSubDestinationSettings', request_name => 'dvbSubDestinationSettings', traits => ['NameInRequest']);
   has EmbeddedDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::EmbeddedDestinationSettings', request_name => 'embeddedDestinationSettings', traits => ['NameInRequest']);
   has EmbeddedPlusScte20DestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::EmbeddedPlusScte20DestinationSettings', request_name => 'embeddedPlusScte20DestinationSettings', traits => ['NameInRequest']);
+  has RtmpCaptionInfoDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpCaptionInfoDestinationSettings', request_name => 'rtmpCaptionInfoDestinationSettings', traits => ['NameInRequest']);
   has Scte20PlusEmbeddedDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte20PlusEmbeddedDestinationSettings', request_name => 'scte20PlusEmbeddedDestinationSettings', traits => ['NameInRequest']);
   has Scte27DestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte27DestinationSettings', request_name => 'scte27DestinationSettings', traits => ['NameInRequest']);
   has SmpteTtDestinationSettings => (is => 'ro', isa => 'Paws::MediaLive::SmpteTtDestinationSettings', request_name => 'smpteTtDestinationSettings', traits => ['NameInRequest']);
@@ -67,6 +68,11 @@ Placeholder documentation for CaptionDestinationSettings
 
 
 =head2 EmbeddedPlusScte20DestinationSettings => L<Paws::MediaLive::EmbeddedPlusScte20DestinationSettings>
+
+  
+
+
+=head2 RtmpCaptionInfoDestinationSettings => L<Paws::MediaLive::RtmpCaptionInfoDestinationSettings>
 
   
 

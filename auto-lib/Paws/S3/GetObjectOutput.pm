@@ -17,6 +17,9 @@ package Paws::S3::GetObjectOutput;
   has LastModified => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Last-Modified');
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', traits => ['ParamInHeaders'], header_prefix => 'x-amz-meta-');
   has MissingMeta => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-missing-meta');
+  has ObjectLockLegalHoldStatus => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-legal-hold');
+  has ObjectLockMode => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-mode');
+  has ObjectLockRetainUntilDate => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-retain-until-date');
   has PartsCount => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-mp-parts-count');
   has ReplicationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-replication-status');
   has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
@@ -152,6 +155,26 @@ HTTP headers.
 
 
 
+=head2 ObjectLockLegalHoldStatus => Str
+
+Indicates whether this object has an active legal hold. This field is
+only returned if you have permission to view an object's legal hold
+status.
+
+Valid values are: C<"ON">, C<"OFF">
+
+=head2 ObjectLockMode => Str
+
+The Object Lock mode currently in place for this object.
+
+Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
+
+=head2 ObjectLockRetainUntilDate => Str
+
+The date and time when this object's Object Lock will expire.
+
+
+
 =head2 PartsCount => Int
 
 The count of parts this object has.
@@ -211,7 +234,7 @@ master encryption key that was used for the object.
 
 
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">
 
 =head2 TagCount => Int
 

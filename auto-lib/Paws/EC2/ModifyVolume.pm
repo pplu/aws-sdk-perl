@@ -22,17 +22,30 @@ Paws::EC2::ModifyVolume - Arguments for method ModifyVolume on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyVolume on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyVolume on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ModifyVolume.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyVolume.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyVolume(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $ModifyVolumeResult = $ec2->ModifyVolume(
+      VolumeId   => 'MyString',
+      DryRun     => 1,             # OPTIONAL
+      Iops       => 1,             # OPTIONAL
+      Size       => 1,             # OPTIONAL
+      VolumeType => 'standard',    # OPTIONAL
+    );
+
+    # Results:
+    my $VolumeModification = $ModifyVolumeResult->VolumeModification;
+
+    # Returns a L<Paws::EC2::ModifyVolumeResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyVolume>
 
 =head1 ATTRIBUTES
 
@@ -48,12 +61,11 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Iops => Int
 
-Target IOPS rate of the volume to be modified.
+The target IOPS rate of the volume.
 
-Only valid for Provisioned IOPS SSD (C<io1>) volumes. For more
-information about C<io1> IOPS configuration, see
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops).
+This is only valid for Provisioned IOPS SSD (C<io1>) volumes. For more
+information, see Provisioned IOPS SSD (io1) Volumes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops).
 
 Default: If no IOPS value is specified, the existing value is retained.
 
@@ -61,11 +73,11 @@ Default: If no IOPS value is specified, the existing value is retained.
 
 =head2 Size => Int
 
-Target size in GiB of the volume to be modified. Target volume size
-must be greater than or equal to than the existing size of the volume.
-For information about available EBS volume sizes, see
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+The target size of the volume, in GiB. The target volume size must be
+greater than or equal to than the existing size of the volume. For
+information about available EBS volume sizes, see Amazon EBS Volume
+Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
 
 Default: If no size is specified, the existing size is retained.
 
@@ -73,16 +85,13 @@ Default: If no size is specified, the existing size is retained.
 
 =head2 B<REQUIRED> VolumeId => Str
 
-
+The ID of the volume.
 
 
 
 =head2 VolumeType => Str
 
-Target EBS volume type of the volume to be modified
-
-The API does not support modifications for volume type C<standard>. You
-also cannot change the type of a volume to C<standard>.
+The target EBS volume type of the volume.
 
 Default: If no type is specified, the existing type is retained.
 

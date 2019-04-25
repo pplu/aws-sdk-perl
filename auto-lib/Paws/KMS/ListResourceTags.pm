@@ -20,17 +20,30 @@ Paws::KMS::ListResourceTags - Arguments for method ListResourceTags on L<Paws::K
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListResourceTags on the 
-AWS Key Management Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ListResourceTags on the
+L<AWS Key Management Service|Paws::KMS> service. Use the attributes of this class
 as arguments to method ListResourceTags.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListResourceTags.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListResourceTags(Att1 => $value1, Att2 => $value2, ...);
+    my $kms = Paws->service('KMS');
+    my $ListResourceTagsResponse = $kms->ListResourceTags(
+      KeyId  => 'MyKeyIdType',
+      Limit  => 1,                 # OPTIONAL
+      Marker => 'MyMarkerType',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextMarker = $ListResourceTagsResponse->NextMarker;
+    my $Tags       = $ListResourceTagsResponse->Tags;
+    my $Truncated  = $ListResourceTagsResponse->Truncated;
+
+    # Returns a L<Paws::KMS::ListResourceTagsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/ListResourceTags>
 
 =head1 ATTRIBUTES
 

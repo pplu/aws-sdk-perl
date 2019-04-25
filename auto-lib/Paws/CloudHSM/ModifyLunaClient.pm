@@ -19,17 +19,28 @@ Paws::CloudHSM::ModifyLunaClient - Arguments for method ModifyLunaClient on L<Pa
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyLunaClient on the 
-Amazon CloudHSM service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyLunaClient on the
+L<Amazon CloudHSM|Paws::CloudHSM> service. Use the attributes of this class
 as arguments to method ModifyLunaClient.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyLunaClient.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyLunaClient(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudhsm = Paws->service('CloudHSM');
+    my $ModifyLunaClientResponse = $cloudhsm->ModifyLunaClient(
+      Certificate => 'MyCertificate',
+      ClientArn   => 'MyClientArn',
+
+    );
+
+    # Results:
+    my $ClientArn = $ModifyLunaClientResponse->ClientArn;
+
+    # Returns a L<Paws::CloudHSM::ModifyLunaClientResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudhsm/ModifyLunaClient>
 
 =head1 ATTRIBUTES
 

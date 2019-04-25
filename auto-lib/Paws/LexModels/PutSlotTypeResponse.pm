@@ -3,6 +3,7 @@ package Paws::LexModels::PutSlotTypeResponse;
   use Moose;
   has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
   has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]', traits => ['NameInRequest'], request_name => 'enumerationValues');
   has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
@@ -30,6 +31,11 @@ Checksum of the C<$LATEST> version of the slot type.
 =head2 CreatedDate => Str
 
 The date that the slot type was created.
+
+
+=head2 CreateVersion => Bool
+
+
 
 
 =head2 Description => Str

@@ -3,6 +3,7 @@ package Paws::Glue::CreateScript;
   use Moose;
   has DagEdges => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenEdge]');
   has DagNodes => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNode]');
+  has Language => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -19,17 +20,51 @@ Paws::Glue::CreateScript - Arguments for method CreateScript on L<Paws::Glue>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateScript on the 
-AWS Glue service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateScript on the
+L<AWS Glue|Paws::Glue> service. Use the attributes of this class
 as arguments to method CreateScript.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateScript.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateScript(Att1 => $value1, Att2 => $value2, ...);
+    my $glue = Paws->service('Glue');
+    my $CreateScriptResponse = $glue->CreateScript(
+      DagEdges => [
+        {
+          Source          => 'MyCodeGenIdentifier',    # min: 1, max: 255
+          Target          => 'MyCodeGenIdentifier',    # min: 1, max: 255
+          TargetParameter => 'MyCodeGenArgName',       # OPTIONAL
+        },
+        ...
+      ],                                               # OPTIONAL
+      DagNodes => [
+        {
+          Args => [
+            {
+              Name  => 'MyCodeGenArgName',             # OPTIONAL
+              Value => 'MyCodeGenArgValue',
+              Param => 1,                              # OPTIONAL
+            },
+            ...
+          ],                                           # max: 50
+          Id         => 'MyCodeGenIdentifier',         # min: 1, max: 255
+          NodeType   => 'MyCodeGenNodeType',
+          LineNumber => 1,                             # OPTIONAL
+        },
+        ...
+      ],                                               # OPTIONAL
+      Language => 'PYTHON',                            # OPTIONAL
+    );
+
+    # Results:
+    my $PythonScript = $CreateScriptResponse->PythonScript;
+    my $ScalaCode    = $CreateScriptResponse->ScalaCode;
+
+    # Returns a L<Paws::Glue::CreateScriptResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/CreateScript>
 
 =head1 ATTRIBUTES
 
@@ -45,6 +80,12 @@ A list of the edges in the DAG.
 A list of the nodes in the DAG.
 
 
+
+=head2 Language => Str
+
+The programming language of the resulting code from the DAG.
+
+Valid values are: C<"PYTHON">, C<"SCALA">
 
 
 =head1 SEE ALSO

@@ -29,7 +29,7 @@ Paws::ApiGateway::TestInvokeAuthorizerResponse
 =head2 Claims => L<Paws::ApiGateway::MapOfStringToString>
 
 The open identity claims
-(http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims),
+(https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims),
 with any supported custom attributes, returned from the Cognito Your
 User Pool configured for the API.
 

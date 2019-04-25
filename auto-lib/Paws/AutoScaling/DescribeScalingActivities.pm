@@ -21,28 +21,42 @@ Paws::AutoScaling::DescribeScalingActivities - Arguments for method DescribeScal
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeScalingActivities on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeScalingActivities on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method DescribeScalingActivities.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeScalingActivities.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeScalingActivities(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To describe the scaling activities for an Auto Scaling group
+    # This example describes the scaling activities for the specified Auto
+    # Scaling group.
+    my $ActivitiesType = $autoscaling->DescribeScalingActivities(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
+      }
+    );
+
+    # Results:
+    my $Activities = $ActivitiesType->Activities;
+
+    # Returns a L<Paws::AutoScaling::ActivitiesType> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/DescribeScalingActivities>
 
 =head1 ATTRIBUTES
 
 
 =head2 ActivityIds => ArrayRef[Str|Undef]
 
-The activity IDs of the desired scaling activities. If you omit this
-parameter, all activities for the past six weeks are described. If you
-specify an Auto Scaling group, the results are limited to that group.
-The list of requested activities cannot contain more than 50 items. If
-unknown activities are requested, they are ignored with no error.
+The activity IDs of the desired scaling activities. You can specify up
+to 50 IDs. If you omit this parameter, all activities for the past six
+weeks are described. If unknown activities are requested, they are
+ignored with no error. If you specify an Auto Scaling group, the
+results are limited to that group.
 
 
 
@@ -55,7 +69,7 @@ The name of the Auto Scaling group.
 =head2 MaxRecords => Int
 
 The maximum number of items to return with this call. The default value
-is 100.
+is 100 and the maximum value is 100.
 
 
 

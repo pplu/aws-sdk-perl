@@ -2,8 +2,8 @@
 package Paws::ApiGateway::GetResource;
   use Moose;
   has Embed => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'embed');
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_id', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -21,17 +21,32 @@ Paws::ApiGateway::GetResource - Arguments for method GetResource on L<Paws::ApiG
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetResource on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method GetResource on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GetResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetResource.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetResource(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $Resource = $apigateway->GetResource(
+      ResourceId => 'MyString',
+      RestApiId  => 'MyString',
+      Embed      => [ 'MyString', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $Id              = $Resource->Id;
+    my $ParentId        = $Resource->ParentId;
+    my $Path            = $Resource->Path;
+    my $PathPart        = $Resource->PathPart;
+    my $ResourceMethods = $Resource->ResourceMethods;
+
+    # Returns a L<Paws::ApiGateway::Resource> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetResource>
 
 =head1 ATTRIBUTES
 
@@ -50,13 +65,13 @@ the C<"methods"> string. For example, C<GET
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The identifier for the Resource resource.
+[Required] The identifier for the Resource resource.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

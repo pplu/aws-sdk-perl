@@ -24,17 +24,56 @@ Paws::EC2::AssociateAddress - Arguments for method AssociateAddress on L<Paws::E
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method AssociateAddress on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method AssociateAddress on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method AssociateAddress.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssociateAddress.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AssociateAddress(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+   # To associate an Elastic IP address in EC2-VPC
+   # This example associates the specified Elastic IP address with the specified
+   # instance in a VPC.
+    my $AssociateAddressResult = $ec2->AssociateAddress(
+      {
+        'AllocationId' => 'eipalloc-64d5890a',
+        'InstanceId'   => 'i-0b263919b6498b123'
+      }
+    );
+
+    # Results:
+    my $AssociationId = $AssociateAddressResult->AssociationId;
+
+   # Returns a L<Paws::EC2::AssociateAddressResult> object.
+   # To associate an Elastic IP address with a network interface
+   # This example associates the specified Elastic IP address with the specified
+   # network interface.
+    my $AssociateAddressResult = $ec2->AssociateAddress(
+      {
+        'AllocationId'       => 'eipalloc-64d5890a',
+        'NetworkInterfaceId' => 'eni-1a2b3c4d'
+      }
+    );
+
+    # Results:
+    my $AssociationId = $AssociateAddressResult->AssociationId;
+
+    # Returns a L<Paws::EC2::AssociateAddressResult> object.
+    # To associate an Elastic IP address in EC2-Classic
+    # This example associates an Elastic IP address with an instance in
+    # EC2-Classic.
+    my $AssociateAddressResult = $ec2->AssociateAddress(
+      {
+        'InstanceId' => 'i-07ffe74c7330ebf53',
+        'PublicIp'   => '198.51.100.0'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/AssociateAddress>
 
 =head1 ATTRIBUTES
 

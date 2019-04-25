@@ -2,6 +2,7 @@ package Paws::SageMaker::ProductionVariantSummary;
   use Moose;
   has CurrentInstanceCount => (is => 'ro', isa => 'Int');
   has CurrentWeight => (is => 'ro', isa => 'Num');
+  has DeployedImages => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::DeployedImage]');
   has DesiredInstanceCount => (is => 'ro', isa => 'Int');
   has DesiredWeight => (is => 'ro', isa => 'Num');
   has VariantName => (is => 'ro', isa => 'Str', required => 1);
@@ -37,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 Describes weight and capacities for a production variant associated
 with an endpoint. If you sent a request to the
-C<UpdateWeightAndCapacities> API and the endpoint status is
+C<UpdateEndpointWeightsAndCapacities> API and the endpoint status is
 C<Updating>, you get different desired and current values.
 
 =head1 ATTRIBUTES
@@ -53,16 +54,23 @@ C<Updating>, you get different desired and current values.
   The weight associated with the variant.
 
 
+=head2 DeployedImages => ArrayRef[L<Paws::SageMaker::DeployedImage>]
+
+  An array of C<DeployedImage> objects that specify the Amazon EC2
+Container Registry paths of the inference images deployed on instances
+of this C<ProductionVariant>.
+
+
 =head2 DesiredInstanceCount => Int
 
-  The number of instances requested in the C<UpdateWeightAndCapacities>
-request.
+  The number of instances requested in the
+C<UpdateEndpointWeightsAndCapacities> request.
 
 
 =head2 DesiredWeight => Num
 
-  The requested weight, as specified in the C<UpdateWeightAndCapacities>
-request.
+  The requested weight, as specified in the
+C<UpdateEndpointWeightsAndCapacities> request.
 
 
 =head2 B<REQUIRED> VariantName => Str

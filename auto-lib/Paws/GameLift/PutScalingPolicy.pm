@@ -1,14 +1,16 @@
 
 package Paws::GameLift::PutScalingPolicy;
   use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
-  has EvaluationPeriods => (is => 'ro', isa => 'Int', required => 1);
+  has ComparisonOperator => (is => 'ro', isa => 'Str');
+  has EvaluationPeriods => (is => 'ro', isa => 'Int');
   has FleetId => (is => 'ro', isa => 'Str', required => 1);
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingAdjustment => (is => 'ro', isa => 'Int', required => 1);
-  has ScalingAdjustmentType => (is => 'ro', isa => 'Str', required => 1);
-  has Threshold => (is => 'ro', isa => 'Num', required => 1);
+  has PolicyType => (is => 'ro', isa => 'Str');
+  has ScalingAdjustment => (is => 'ro', isa => 'Int');
+  has ScalingAdjustmentType => (is => 'ro', isa => 'Str');
+  has TargetConfiguration => (is => 'ro', isa => 'Paws::GameLift::TargetConfiguration');
+  has Threshold => (is => 'ro', isa => 'Num');
 
   use MooseX::ClassAttribute;
 
@@ -25,29 +27,50 @@ Paws::GameLift::PutScalingPolicy - Arguments for method PutScalingPolicy on L<Pa
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutScalingPolicy on the 
-Amazon GameLift service. Use the attributes of this class
+This class represents the parameters used for calling the method PutScalingPolicy on the
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method PutScalingPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutScalingPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutScalingPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $PutScalingPolicyOutput = $gamelift->PutScalingPolicy(
+      FleetId               => 'MyFleetId',
+      MetricName            => 'ActivatingGameSessions',
+      Name                  => 'MyNonZeroAndMaxString',
+      ComparisonOperator    => 'GreaterThanOrEqualToThreshold',    # OPTIONAL
+      EvaluationPeriods     => 1,                                  # OPTIONAL
+      PolicyType            => 'RuleBased',                        # OPTIONAL
+      ScalingAdjustment     => 1,                                  # OPTIONAL
+      ScalingAdjustmentType => 'ChangeInCapacity',                 # OPTIONAL
+      TargetConfiguration   => {
+        TargetValue => 1,
+
+      },                                                           # OPTIONAL
+      Threshold => 1,                                              # OPTIONAL
+    );
+
+    # Results:
+    my $Name = $PutScalingPolicyOutput->Name;
+
+    # Returns a L<Paws::GameLift::PutScalingPolicyOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/PutScalingPolicy>
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ComparisonOperator => Str
+=head2 ComparisonOperator => Str
 
 Comparison operator to use when measuring the metric against the
 threshold value.
 
 Valid values are: C<"GreaterThanOrEqualToThreshold">, C<"GreaterThanThreshold">, C<"LessThanThreshold">, C<"LessThanOrEqualToThreshold">
 
-=head2 B<REQUIRED> EvaluationPeriods => Int
+=head2 EvaluationPeriods => Int
 
 Length of time (in minutes) the metric must be at or beyond the
 threshold before a scaling event is triggered.
@@ -56,50 +79,76 @@ threshold before a scaling event is triggered.
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet to apply this policy to.
+Unique identifier for a fleet to apply this policy to. The fleet cannot
+be in any of the following statuses: ERROR or DELETING.
 
 
 
 =head2 B<REQUIRED> MetricName => Str
 
-Name of the Amazon GameLift-defined metric that is used to trigger an
-adjustment.
+Name of the Amazon GameLift-defined metric that is used to trigger a
+scaling adjustment. For detailed descriptions of fleet metrics, see
+Monitor Amazon GameLift with Amazon CloudWatch
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html).
 
 =over
 
 =item *
 
-B<ActivatingGameSessions> -- number of game sessions in the process of
-being created (game session status = C<ACTIVATING>).
+B<ActivatingGameSessions> -- Game sessions in the process of being
+created.
 
 =item *
 
-B<ActiveGameSessions> -- number of game sessions currently running
-(game session status = C<ACTIVE>).
+B<ActiveGameSessions> -- Game sessions that are currently running.
 
 =item *
 
-B<CurrentPlayerSessions> -- number of active or reserved player
-sessions (player session status = C<ACTIVE> or C<RESERVED>).
+B<ActiveInstances> -- Fleet instances that are currently running at
+least one game session.
 
 =item *
 
-B<AvailablePlayerSessions> -- number of player session slots currently
-available in active game sessions across the fleet, calculated by
-subtracting a game session's current player session count from its
-maximum player session count. This number includes game sessions that
-are not currently accepting players (game session
-C<PlayerSessionCreationPolicy> = C<DENY_ALL>).
+B<AvailableGameSessions> -- Additional game sessions that fleet could
+host simultaneously, given current capacity.
 
 =item *
 
-B<ActiveInstances> -- number of instances currently running a game
-session.
+B<AvailablePlayerSessions> -- Empty player slots in currently active
+game sessions. This includes game sessions that are not currently
+accepting players. Reserved player slots are not included.
 
 =item *
 
-B<IdleInstances> -- number of instances not currently running a game
-session.
+B<CurrentPlayerSessions> -- Player slots in active game sessions that
+are being used by a player or are reserved for a player.
+
+=item *
+
+B<IdleInstances> -- Active instances that are currently hosting zero
+game sessions.
+
+=item *
+
+B<PercentAvailableGameSessions> -- Unused percentage of the total
+number of game sessions that a fleet could host simultaneously, given
+current capacity. Use this metric for a target-based scaling policy.
+
+=item *
+
+B<PercentIdleInstances> -- Percentage of the total number of active
+instances that are hosting zero game sessions.
+
+=item *
+
+B<QueueDepth> -- Pending game session placement requests, in any queue,
+where the current fleet is the top-priority destination.
+
+=item *
+
+B<WaitTime> -- Current wait time for pending game session placement
+requests, in any queue, where the current fleet is the top-priority
+destination.
 
 =back
 
@@ -114,13 +163,24 @@ policy with the same name.
 
 
 
-=head2 B<REQUIRED> ScalingAdjustment => Int
+=head2 PolicyType => Str
+
+Type of scaling policy to create. For a target-based policy, set the
+parameter I<MetricName> to 'PercentAvailableGameSessions' and specify a
+I<TargetConfiguration>. For a rule-based policy set the following
+parameters: I<MetricName>, I<ComparisonOperator>, I<Threshold>,
+I<EvaluationPeriods>, I<ScalingAdjustmentType>, and
+I<ScalingAdjustment>.
+
+Valid values are: C<"RuleBased">, C<"TargetBased">
+
+=head2 ScalingAdjustment => Int
 
 Amount of adjustment to make, based on the scaling adjustment type.
 
 
 
-=head2 B<REQUIRED> ScalingAdjustmentType => Str
+=head2 ScalingAdjustmentType => Str
 
 Type of adjustment to make to a fleet's instance count (see
 FleetCapacity):
@@ -150,7 +210,13 @@ scale up while negative values scale down; for example, a value of
 
 Valid values are: C<"ChangeInCapacity">, C<"ExactCapacity">, C<"PercentChangeInCapacity">
 
-=head2 B<REQUIRED> Threshold => Num
+=head2 TargetConfiguration => L<Paws::GameLift::TargetConfiguration>
+
+Object that contains settings for a target-based scaling policy.
+
+
+
+=head2 Threshold => Num
 
 Metric value used to trigger a scaling event.
 

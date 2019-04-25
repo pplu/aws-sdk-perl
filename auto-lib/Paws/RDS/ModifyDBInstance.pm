@@ -7,6 +7,7 @@ package Paws::RDS::ModifyDBInstance;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CACertificateIdentifier => (is => 'ro', isa => 'Str');
+  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::RDS::CloudwatchLogsExportConfiguration');
   has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -14,6 +15,7 @@ package Paws::RDS::ModifyDBInstance;
   has DBPortNumber => (is => 'ro', isa => 'Int');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
@@ -28,13 +30,16 @@ package Paws::RDS::ModifyDBInstance;
   has NewDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
   has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -52,103 +57,57 @@ Paws::RDS::ModifyDBInstance - Arguments for method ModifyDBInstance on L<Paws::R
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyDBInstance on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyDBInstance on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method ModifyDBInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyDBInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyDBInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To change DB instance settings
+    # This example immediately changes the specified settings for the specified
+    # DB instance.
+    my $ModifyDBInstanceResult = $rds->ModifyDBInstance(
+      {
+        'AllocatedStorage'           => 10,
+        'ApplyImmediately'           => 1,
+        'BackupRetentionPeriod'      => 1,
+        'DBInstanceClass'            => 'db.t2.small',
+        'DBInstanceIdentifier'       => 'mymysqlinstance',
+        'MasterUserPassword'         => 'mynewpassword',
+        'PreferredBackupWindow'      => '04:00-04:30',
+        'PreferredMaintenanceWindow' => 'Tue:05:00-Tue:05:30'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBInstance>
 
 =head1 ATTRIBUTES
 
 
 =head2 AllocatedStorage => Int
 
-The new storage capacity of the RDS instance. Changing this setting
-does not result in an outage and the change is applied during the next
-maintenance window unless C<ApplyImmediately> is set to C<true> for
-this request.
+The new amount of storage (in gibibytes) to allocate for the DB
+instance.
 
-B<MySQL>
+For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be
+at least 10% greater than the current value. Values that are not at
+least 10% greater than the existing value are rounded up so that they
+are 10% greater than the current value.
 
-Default: Uses existing setting
-
-Valid Values: 5-6144
-
-Constraints: Value supplied must be at least 10% greater than the
-current value. Values that are not at least 10% greater than the
-existing value are rounded up so that they are 10% greater than the
-current value.
-
-Type: Integer
-
-B<MariaDB>
-
-Default: Uses existing setting
-
-Valid Values: 5-6144
-
-Constraints: Value supplied must be at least 10% greater than the
-current value. Values that are not at least 10% greater than the
-existing value are rounded up so that they are 10% greater than the
-current value.
-
-Type: Integer
-
-B<PostgreSQL>
-
-Default: Uses existing setting
-
-Valid Values: 5-6144
-
-Constraints: Value supplied must be at least 10% greater than the
-current value. Values that are not at least 10% greater than the
-existing value are rounded up so that they are 10% greater than the
-current value.
-
-Type: Integer
-
-B<Oracle>
-
-Default: Uses existing setting
-
-Valid Values: 10-6144
-
-Constraints: Value supplied must be at least 10% greater than the
-current value. Values that are not at least 10% greater than the
-existing value are rounded up so that they are 10% greater than the
-current value.
-
-B<SQL Server>
-
-Cannot be modified.
-
-If you choose to migrate your DB instance from using standard storage
-to using Provisioned IOPS, or from using Provisioned IOPS to using
-standard storage, the process can take time. The duration of the
-migration depends on several factors such as database load, storage
-size, storage type (standard or Provisioned IOPS), amount of IOPS
-provisioned (if any), and the number of prior scale storage operations.
-Typical migration times are under 24 hours, but the process can take up
-to several days in some cases. During the migration, the DB instance is
-available for use, but might experience performance degradation. While
-the migration takes place, nightly backups for the instance are
-suspended. No other Amazon RDS operations can take place for the
-instance, including modifying the instance, rebooting the instance,
-deleting the instance, creating a Read Replica for the instance, and
-creating a DB snapshot of the instance.
+For the valid values for allocated storage for each engine, see
+CreateDBInstance.
 
 
 
 =head2 AllowMajorVersionUpgrade => Bool
 
 Indicates that major version upgrades are allowed. Changing this
-parameter does not result in an outage and the change is asynchronously
+parameter doesn't result in an outage and the change is asynchronously
 applied as soon as possible.
 
 Constraints: This parameter must be set to true when specifying a value
@@ -170,9 +129,9 @@ cause an outage and are applied on the next call to RebootDBInstance,
 or the next failure reboot. Review the table of parameters in Modifying
 a DB Instance and Using the Apply Immediately Parameter
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
-to see the impact that setting C<ApplyImmediately> to C<true> or
-C<false> has for each modified parameter and to determine when the
-changes are applied.
+in the I<Amazon RDS User Guide.> to see the impact that setting
+C<ApplyImmediately> to C<true> or C<false> has for each modified
+parameter and to determine when the changes are applied.
 
 Default: C<false>
 
@@ -181,9 +140,9 @@ Default: C<false>
 =head2 AutoMinorVersionUpgrade => Bool
 
 Indicates that minor version upgrades are applied automatically to the
-DB instance during the maintenance window. Changing this parameter does
-not result in an outage except in the following case and the change is
-asynchronously applied as soon as possible. An outage will result if
+DB instance during the maintenance window. Changing this parameter
+doesn't result in an outage except in the following case and the change
+is asynchronously applied as soon as possible. An outage will result if
 this parameter is set to C<true> during the maintenance window, and a
 newer minor version is available, and RDS has enabled auto patching for
 that engine version.
@@ -221,7 +180,7 @@ Must be a value from 0 to 35
 =item *
 
 Can be specified for a MySQL Read Replica only if the source is running
-MySQL 5.6
+MySQL 5.6 or later
 
 =item *
 
@@ -230,7 +189,7 @@ running PostgreSQL 9.3.5
 
 =item *
 
-Cannot be set to 0 if the DB instance is a source to Read Replicas
+Can't be set to 0 if the DB instance is a source to Read Replicas
 
 =back
 
@@ -241,6 +200,17 @@ Cannot be set to 0 if the DB instance is a source to Read Replicas
 
 Indicates the certificate that needs to be associated with the
 instance.
+
+
+
+=head2 CloudwatchLogsExportConfiguration => L<Paws::RDS::CloudwatchLogsExportConfiguration>
+
+The configuration setting for the log types to be enabled for export to
+CloudWatch Logs for a specific DB instance.
+
+A change to the C<CloudwatchLogsExportConfiguration> parameter is
+always applied to the DB instance immediately. Therefore, the
+C<ApplyImmediately> parameter has no effect.
 
 
 
@@ -258,7 +228,7 @@ C<db.m4.large>. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-in the Amazon RDS User Guide.
+in the I<Amazon RDS User Guide.>
 
 If you modify the DB instance class, an outage occurs during the
 change. The change is applied during the next maintenance window,
@@ -288,7 +258,7 @@ Must match the identifier of an existing DBInstance.
 =head2 DBParameterGroupName => Str
 
 The name of the DB parameter group to apply to the DB instance.
-Changing this setting does not result in an outage. The parameter group
+Changing this setting doesn't result in an outage. The parameter group
 name itself is changed immediately, but the actual parameter changes
 are not applied until you reboot the instance without failover. The db
 instance will NOT be rebooted automatically and the parameter changes
@@ -356,7 +326,7 @@ Valid Values: C<1150-65535>
 =head2 DBSecurityGroups => ArrayRef[Str|Undef]
 
 A list of DB security groups to authorize on this DB instance. Changing
-this setting does not result in an outage and the change is
+this setting doesn't result in an outage and the change is
 asynchronously applied as soon as possible.
 
 Constraints:
@@ -378,7 +348,8 @@ The new DB subnet group for the DB instance. You can use this parameter
 to move your DB instance to a different VPC. If your DB instance is not
 in a VPC, you can also use this parameter to move your DB instance into
 a VPC. For more information, see Updating the VPC for a DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC)
+in the I<Amazon RDS User Guide.>
 
 Changing the subnet group causes an outage during the change. The
 change is applied during the next maintenance window, unless you
@@ -388,6 +359,15 @@ Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
 Example: C<mySubnetGroup>
+
+
+
+=head2 DeletionProtection => Bool
+
+Indicates if the DB instance has deletion protection enabled. The
+database can't be deleted when this value is set to true. For more
+information, see Deleting a DB Instance
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 
@@ -443,6 +423,10 @@ Default: C<false>
 True to enable Performance Insights for the DB instance, and otherwise
 false.
 
+For more information, see Using Amazon Performance Insights
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
+in the I<Amazon Relational Database Service User Guide>.
+
 
 
 =head2 EngineVersion => Str
@@ -457,32 +441,22 @@ currently in use, a new DB parameter group in the DB parameter group
 family for the new engine version must be specified. The new DB
 parameter group can be the default for that DB parameter group family.
 
-For a list of valid engine versions, see CreateDBInstance.
+For information about valid engine versions, see CreateDBInstance, or
+call DescribeDBEngineVersions.
 
 
 
 =head2 Iops => Int
 
 The new Provisioned IOPS (I/O operations per second) value for the RDS
-instance. Changing this setting does not result in an outage and the
-change is applied during the next maintenance window unless the
-C<ApplyImmediately> parameter is set to C<true> for this request.
+instance.
 
-Default: Uses existing setting
-
-Constraints: Value supplied must be at least 10% greater than the
-current value. Values that are not at least 10% greater than the
-existing value are rounded up so that they are 10% greater than the
-current value. If you are migrating from Provisioned IOPS to standard
-storage, set this value to 0. The DB instance will require a reboot for
-the change in storage type to take effect.
-
-B<SQL Server>
-
-Setting the IOPS value for the SQL Server database engine is not
-supported.
-
-Type: Integer
+Changing this setting doesn't result in an outage and the change is
+applied during the next maintenance window unless the
+C<ApplyImmediately> parameter is set to C<true> for this request. If
+you are migrating from Provisioned IOPS to standard storage, set this
+value to 0. The DB instance will require a reboot for the change in
+storage type to take effect.
 
 If you choose to migrate your DB instance from using standard storage
 to using Provisioned IOPS, or from using Provisioned IOPS to using
@@ -498,6 +472,13 @@ suspended. No other Amazon RDS operations can take place for the
 instance, including modifying the instance, rebooting the instance,
 deleting the instance, creating a Read Replica for the instance, and
 creating a DB snapshot of the instance.
+
+Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value
+supplied must be at least 10% greater than the current value. Values
+that are not at least 10% greater than the existing value are rounded
+up so that they are 10% greater than the current value.
+
+Default: Uses existing setting
 
 
 
@@ -515,7 +496,7 @@ C<general-public-license>
 The new password for the master user. The password can include any
 printable ASCII character except "/", """, or "@".
 
-Changing this parameter does not result in an outage and the change is
+Changing this parameter doesn't result in an outage and the change is
 asynchronously applied as soon as possible. Between the time of the
 request and the completion of the request, the C<MasterUserPassword>
 element exists in the C<PendingModifiedValues> element of the operation
@@ -575,7 +556,8 @@ metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
 Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
+in the I<Amazon RDS User Guide.>
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -585,11 +567,9 @@ supply a C<MonitoringRoleArn> value.
 =head2 MultiAZ => Bool
 
 Specifies if the DB instance is a Multi-AZ deployment. Changing this
-parameter does not result in an outage and the change is applied during
+parameter doesn't result in an outage and the change is applied during
 the next maintenance window unless the C<ApplyImmediately> parameter is
 set to C<true> for this request.
-
-Constraints: Cannot be specified if the DB instance is a Read Replica.
 
 
 
@@ -615,7 +595,7 @@ The first character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -626,7 +606,7 @@ Example: C<mydbinstance>
 =head2 OptionGroupName => Str
 
 Indicates that the DB instance should be associated with the specified
-option group. Changing this parameter does not result in an outage
+option group. Changing this parameter doesn't result in an outage
 except in the following case and the change is applied during the next
 maintenance window unless the C<ApplyImmediately> parameter is set to
 C<true> for this request. If the parameter change results in an option
@@ -648,11 +628,18 @@ or the KMS key alias for the KMS encryption key.
 
 
 
+=head2 PerformanceInsightsRetentionPeriod => Int
+
+The amount of time, in days, to retain Performance Insights data. Valid
+values are 7 or 731 (2 years).
+
+
+
 =head2 PreferredBackupWindow => Str
 
 The daily time range during which automated backups are created if
 automated backups are enabled, as determined by the
-C<BackupRetentionPeriod> parameter. Changing this parameter does not
+C<BackupRetentionPeriod> parameter. Changing this parameter doesn't
 result in an outage and the change is asynchronously applied as soon as
 possible.
 
@@ -689,14 +676,14 @@ Must be at least 30 minutes
 =head2 PreferredMaintenanceWindow => Str
 
 The weekly time range (in UTC) during which system maintenance can
-occur, which might result in an outage. Changing this parameter does
-not result in an outage, except in the following situation, and the
-change is asynchronously applied as soon as possible. If there are
-pending actions that cause a reboot, and the maintenance window is
-changed to include the current time, then changing this parameter will
-cause a reboot of the DB instance. If moving this window to the current
-time, there must be at least 30 minutes between the current time and
-end of the window to ensure pending changes are applied.
+occur, which might result in an outage. Changing this parameter doesn't
+result in an outage, except in the following situation, and the change
+is asynchronously applied as soon as possible. If there are pending
+actions that cause a reboot, and the maintenance window is changed to
+include the current time, then changing this parameter will cause a
+reboot of the DB instance. If moving this window to the current time,
+there must be at least 30 minutes between the current time and end of
+the window to ensure pending changes are applied.
 
 Default: Uses existing setting
 
@@ -708,13 +695,21 @@ Constraints: Must be at least 30 minutes
 
 
 
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance.
+
+
+
 =head2 PromotionTier => Int
 
 A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance).
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
+in the I<Amazon Aurora User Guide>.
 
 Default: 1
 
@@ -745,10 +740,25 @@ Default: false
 
 Specifies the storage type to be associated with the DB instance.
 
-Valid values: C<standard | gp2 | io1>
+If you specify Provisioned IOPS (C<io1>), you must also include a value
+for the C<Iops> parameter.
 
-If you specify C<io1>, you must also include a value for the C<Iops>
-parameter.
+If you choose to migrate your DB instance from using standard storage
+to using Provisioned IOPS, or from using Provisioned IOPS to using
+standard storage, the process can take time. The duration of the
+migration depends on several factors such as database load, storage
+size, storage type (standard or Provisioned IOPS), amount of IOPS
+provisioned (if any), and the number of prior scale storage operations.
+Typical migration times are under 24 hours, but the process can take up
+to several days in some cases. During the migration, the DB instance is
+available for use, but might experience performance degradation. While
+the migration takes place, nightly backups for the instance are
+suspended. No other Amazon RDS operations can take place for the
+instance, including modifying the instance, rebooting the instance,
+deleting the instance, creating a Read Replica for the instance, and
+creating a DB snapshot of the instance.
+
+Valid values: C<standard | gp2 | io1>
 
 Default: C<io1> if the C<Iops> parameter is specified, otherwise
 C<standard>
@@ -766,6 +776,13 @@ encryption.
 
 The password for the given ARN from the key store in order to access
 the device.
+
+
+
+=head2 UseDefaultProcessorFeatures => Bool
+
+A value that specifies that the DB instance class of the DB instance
+uses its default processor features.
 
 
 

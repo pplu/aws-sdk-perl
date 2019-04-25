@@ -21,17 +21,29 @@ Paws::Route53::GetHealthCheckLastFailureReason - Arguments for method GetHealthC
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetHealthCheckLastFailureReason on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method GetHealthCheckLastFailureReason on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method GetHealthCheckLastFailureReason.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetHealthCheckLastFailureReason.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetHealthCheckLastFailureReason(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $GetHealthCheckLastFailureReasonResponse =
+      $route53->GetHealthCheckLastFailureReason(
+      HealthCheckId => 'MyHealthCheckId',
+
+      );
+
+    # Results:
+    my $HealthCheckObservations =
+      $GetHealthCheckLastFailureReasonResponse->HealthCheckObservations;
+
+   # Returns a L<Paws::Route53::GetHealthCheckLastFailureReasonResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/GetHealthCheckLastFailureReason>
 
 =head1 ATTRIBUTES
 
@@ -41,6 +53,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The ID for the health check for which you want the last failure reason.
 When you created the health check, C<CreateHealthCheck> returned the ID
 in the response, in the C<HealthCheckId> element.
+
+If you want to get the last failure reason for a calculated health
+check, you must use the Amazon Route 53 console or the CloudWatch
+console. You can't use C<GetHealthCheckLastFailureReason> for a
+calculated health check.
 
 
 

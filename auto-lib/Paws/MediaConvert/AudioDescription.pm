@@ -5,6 +5,7 @@ package Paws::MediaConvert::AudioDescription;
   has AudioType => (is => 'ro', isa => 'Int', request_name => 'audioType', traits => ['NameInRequest']);
   has AudioTypeControl => (is => 'ro', isa => 'Str', request_name => 'audioTypeControl', traits => ['NameInRequest']);
   has CodecSettings => (is => 'ro', isa => 'Paws::MediaConvert::AudioCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest']);
+  has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has LanguageCodeControl => (is => 'ro', isa => 'Str', request_name => 'languageCodeControl', traits => ['NameInRequest']);
   has RemixSettings => (is => 'ro', isa => 'Paws::MediaConvert::RemixSettings', request_name => 'remixSettings', traits => ['NameInRequest']);
@@ -46,7 +47,7 @@ Description of audio output
 
 =head2 AudioNormalizationSettings => L<Paws::MediaConvert::AudioNormalizationSettings>
 
-  Settings for Audio Normalization
+  
 
 
 =head2 AudioSourceName => Str
@@ -80,6 +81,15 @@ Impaired Commentary, 4-255 = Reserved.
 =head2 CodecSettings => L<Paws::MediaConvert::AudioCodecSettings>
 
   
+
+
+=head2 CustomLanguageCode => Str
+
+  Specify the language for this audio output track, using the ISO 639-2
+or ISO 639-3 three-letter language code. The language specified will be
+used when 'Follow Input Language Code' is not selected or when 'Follow
+Input Language Code' is selected but there is no ISO 639 language code
+specified by the input.
 
 
 =head2 LanguageCode => Str

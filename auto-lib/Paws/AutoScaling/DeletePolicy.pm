@@ -19,17 +19,27 @@ Paws::AutoScaling::DeletePolicy - Arguments for method DeletePolicy on L<Paws::A
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeletePolicy on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method DeletePolicy on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method DeletePolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeletePolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeletePolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To delete an Auto Scaling policy
+    # This example deletes the specified Auto Scaling policy.
+    $autoscaling->DeletePolicy(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'PolicyName'           => 'ScaleIn'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/DeletePolicy>
 
 =head1 ATTRIBUTES
 

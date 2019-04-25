@@ -1,6 +1,7 @@
 package Paws::DynamoDB::TableDescription;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
+  has BillingModeSummary => (is => 'ro', isa => 'Paws::DynamoDB::BillingModeSummary');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexDescription]');
   has ItemCount => (is => 'ro', isa => 'Int');
@@ -10,6 +11,7 @@ package Paws::DynamoDB::TableDescription;
   has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndexDescription]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughputDescription');
   has RestoreSummary => (is => 'ro', isa => 'Paws::DynamoDB::RestoreSummary');
+  has SSEDescription => (is => 'ro', isa => 'Paws::DynamoDB::SSEDescription');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableArn => (is => 'ro', isa => 'Str');
   has TableId => (is => 'ro', isa => 'Str');
@@ -70,6 +72,11 @@ C<AttributeType> - The data type for the attribute.
 
 =back
 
+
+
+=head2 BillingModeSummary => L<Paws::DynamoDB::BillingModeSummary>
+
+  Contains the details for the read/write capacity mode.
 
 
 =head2 CreationDateTime => Str
@@ -370,6 +377,12 @@ decreases.
 =head2 RestoreSummary => L<Paws::DynamoDB::RestoreSummary>
 
   Contains details for the restore.
+
+
+=head2 SSEDescription => L<Paws::DynamoDB::SSEDescription>
+
+  The description of the server-side encryption status on the specified
+table.
 
 
 =head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>

@@ -22,17 +22,30 @@ Paws::AutoScaling::DescribePolicies - Arguments for method DescribePolicies on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribePolicies on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribePolicies on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method DescribePolicies.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribePolicies.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribePolicies(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To describe Auto Scaling policies
+    # This example describes the policies for the specified Auto Scaling group.
+    my $PoliciesType = $autoscaling->DescribePolicies(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
+      }
+    );
+
+    # Results:
+    my $ScalingPolicies = $PoliciesType->ScalingPolicies;
+
+    # Returns a L<Paws::AutoScaling::PoliciesType> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/DescribePolicies>
 
 =head1 ATTRIBUTES
 
@@ -60,7 +73,7 @@ from a previous call.)
 =head2 PolicyNames => ArrayRef[Str|Undef]
 
 The names of one or more policies. If you omit this parameter, all
-policies are described. If an group name is provided, the results are
+policies are described. If a group name is provided, the results are
 limited to that group. This list is limited to 50 items. If you specify
 an unknown policy name, it is ignored with no error.
 

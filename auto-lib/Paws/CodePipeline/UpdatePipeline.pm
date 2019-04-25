@@ -18,17 +18,100 @@ Paws::CodePipeline::UpdatePipeline - Arguments for method UpdatePipeline on L<Pa
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdatePipeline on the 
-AWS CodePipeline service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdatePipeline on the
+L<AWS CodePipeline|Paws::CodePipeline> service. Use the attributes of this class
 as arguments to method UpdatePipeline.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipeline.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdatePipeline(Att1 => $value1, Att2 => $value2, ...);
+    my $codepipeline = Paws->service('CodePipeline');
+    my $UpdatePipelineOutput = $codepipeline->UpdatePipeline(
+      Pipeline => {
+        Name    => 'MyPipelineName',    # min: 1, max: 100
+        RoleArn => 'MyRoleArn',         # max: 1024
+        Stages  => [
+          {
+            Actions => [
+              {
+                ActionTypeId => {
+                  Category => 'Source'
+                  ,    # values: Source, Build, Deploy, Test, Invoke, Approval
+                  Owner => 'AWS',    # values: AWS, ThirdParty, Custom
+                  Provider => 'MyActionProvider',    # min: 1, max: 25
+                  Version  => 'MyVersion',           # min: 1, max: 9
+
+                },
+                Name          => 'MyActionName',     # min: 1, max: 100
+                Configuration => {
+                  'MyActionConfigurationKey' => 'MyActionConfigurationValue'
+                  ,    # key: min: 1, max: 50, value: min: 1, max: 1000
+                },    # OPTIONAL
+                InputArtifacts => [
+                  {
+                    Name => 'MyArtifactName',    # min: 1, max: 100
+
+                  },
+                  ...
+                ],                               # OPTIONAL
+                OutputArtifacts => [
+                  {
+                    Name => 'MyArtifactName',    # min: 1, max: 100
+
+                  },
+                  ...
+                ],                               # OPTIONAL
+                Region   => 'MyAWSRegionName',   # min: 4, max: 30; OPTIONAL
+                RoleArn  => 'MyRoleArn',         # max: 1024
+                RunOrder => 1,                   # min: 1, max: 999; OPTIONAL
+              },
+              ...
+            ],
+            Name     => 'MyStageName',           # min: 1, max: 100
+            Blockers => [
+              {
+                Name => 'MyBlockerName',         # min: 1, max: 100
+                Type => 'Schedule',              # values: Schedule
+
+              },
+              ...
+            ],                                   # OPTIONAL
+          },
+          ...
+        ],
+        ArtifactStore => {
+          Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
+          Type          => 'S3',                         # values: S3
+          EncryptionKey => {
+            Id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
+            Type => 'KMS',                               # values: KMS
+
+          },    # OPTIONAL
+        },    # OPTIONAL
+        ArtifactStores => {
+          'MyAWSRegionName' => {
+            Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
+            Type          => 'S3',                         # values: S3
+            EncryptionKey => {
+              Id   => 'MyEncryptionKeyId',                 # min: 1, max: 100
+              Type => 'KMS',                               # values: KMS
+
+            },    # OPTIONAL
+          },    # key: min: 4, max: 30; OPTIONAL, value: OPTIONAL
+        },    # OPTIONAL
+        Version => 1,    # min: 1; OPTIONAL
+      },
+
+    );
+
+    # Results:
+    my $Pipeline = $UpdatePipelineOutput->Pipeline;
+
+    # Returns a L<Paws::CodePipeline::UpdatePipelineOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline/UpdatePipeline>
 
 =head1 ATTRIBUTES
 

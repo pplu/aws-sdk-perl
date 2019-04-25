@@ -22,17 +22,34 @@ Paws::EC2::PurchaseHostReservation - Arguments for method PurchaseHostReservatio
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PurchaseHostReservation on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method PurchaseHostReservation on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method PurchaseHostReservation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PurchaseHostReservation.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PurchaseHostReservation(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $PurchaseHostReservationResult = $ec2->PurchaseHostReservation(
+      HostIdSet    => [ 'MyString', ... ],
+      OfferingId   => 'MyString',
+      ClientToken  => 'MyString',            # OPTIONAL
+      CurrencyCode => 'USD',                 # OPTIONAL
+      LimitPrice   => 'MyString',            # OPTIONAL
+    );
+
+    # Results:
+    my $ClientToken       = $PurchaseHostReservationResult->ClientToken;
+    my $CurrencyCode      = $PurchaseHostReservationResult->CurrencyCode;
+    my $Purchase          = $PurchaseHostReservationResult->Purchase;
+    my $TotalHourlyPrice  = $PurchaseHostReservationResult->TotalHourlyPrice;
+    my $TotalUpfrontPrice = $PurchaseHostReservationResult->TotalUpfrontPrice;
+
+    # Returns a L<Paws::EC2::PurchaseHostReservationResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/PurchaseHostReservation>
 
 =head1 ATTRIBUTES
 
@@ -41,7 +58,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see How to Ensure Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -56,8 +73,8 @@ Valid values are: C<"USD">
 
 =head2 B<REQUIRED> HostIdSet => ArrayRef[Str|Undef]
 
-The ID/s of the Dedicated Host/s that the reservation will be
-associated with.
+The IDs of the Dedicated Hosts with which the reservation will be
+associated.
 
 
 
@@ -66,10 +83,10 @@ associated with.
 The specified limit is checked against the total upfront cost of the
 reservation (calculated as the offering's upfront cost multiplied by
 the host count). If the total upfront cost is greater than the
-specified price limit, the request will fail. This is used to ensure
-that the purchase does not exceed the expected upfront cost of the
-purchase. At this time, the only supported currency is C<USD>. For
-example, to indicate a limit price of USD 100, specify 100.00.
+specified price limit, the request fails. This is used to ensure that
+the purchase does not exceed the expected upfront cost of the purchase.
+At this time, the only supported currency is C<USD>. For example, to
+indicate a limit price of USD 100, specify 100.00.
 
 
 

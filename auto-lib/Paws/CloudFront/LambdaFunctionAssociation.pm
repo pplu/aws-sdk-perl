@@ -1,7 +1,8 @@
 package Paws::CloudFront::LambdaFunctionAssociation;
   use Moose;
-  has EventType => (is => 'ro', isa => 'Str');
-  has LambdaFunctionARN => (is => 'ro', isa => 'Str');
+  has EventType => (is => 'ro', isa => 'Str', required => 1);
+  has IncludeBody => (is => 'ro', isa => 'Bool');
+  has LambdaFunctionARN => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +38,7 @@ A complex type that contains a Lambda function association.
 =head1 ATTRIBUTES
 
 
-=head2 EventType => Str
+=head2 B<REQUIRED> EventType => Str
 
   Specifies the event type that triggers a Lambda function invocation.
 You can specify the following values:
@@ -63,9 +64,6 @@ response from the origin and before it caches the object in the
 response. When the requested object is in the edge cache, the function
 doesn't execute.
 
-If the origin returns an HTTP status code other than HTTP 200 (OK), the
-function doesn't execute.
-
 =item *
 
 C<viewer-response>: The function executes before CloudFront returns the
@@ -79,7 +77,16 @@ function doesn't execute.
 
 
 
-=head2 LambdaFunctionARN => Str
+=head2 IncludeBody => Bool
+
+  A flag that allows a Lambda function to have read access to the body
+content. For more information, see Accessing the Request Body by
+Choosing the Include Body Option
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-include-body-access.html)
+in the Amazon CloudFront Developer Guide.
+
+
+=head2 B<REQUIRED> LambdaFunctionARN => Str
 
   The ARN of the Lambda function. You must specify the ARN of a function
 version; you can't specify a Lambda alias or $LATEST.

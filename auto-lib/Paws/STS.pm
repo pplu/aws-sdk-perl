@@ -1,6 +1,7 @@
 package Paws::STS;
   use Moose;
   sub service { 'sts' }
+  sub signing_name { 'sts' }
   sub version { '2011-06-15' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -184,9 +185,31 @@ was made, and so on. To learn more about CloudTrail, including how to
 turn it on and find your log files, see the AWS CloudTrail User Guide
 (http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/iam/>
+
+
 =head1 METHODS
 
-=head2 AssumeRole(RoleArn => Str, RoleSessionName => Str, [DurationSeconds => Int, ExternalId => Str, Policy => Str, SerialNumber => Str, TokenCode => Str])
+=head2 AssumeRole
+
+=over
+
+=item RoleArn => Str
+
+=item RoleSessionName => Str
+
+=item [DurationSeconds => Int]
+
+=item [ExternalId => Str]
+
+=item [Policy => Str]
+
+=item [SerialNumber => Str]
+
+=item [TokenCode => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::AssumeRole>
 
@@ -233,9 +256,20 @@ Scenarios for Temporary Credentials
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html#sts-introduction)
 in the I<IAM User Guide>.
 
-The temporary security credentials are valid for the duration that you
-specified when calling C<AssumeRole>, which can be from 900 seconds (15
-minutes) to a maximum of 3600 seconds (1 hour). The default is 1 hour.
+By default, the temporary security credentials created by C<AssumeRole>
+last for one hour. However, you can use the optional C<DurationSeconds>
+parameter to specify the duration of your session. You can provide a
+value from 900 seconds (15 minutes) up to the maximum session duration
+setting for the role. This setting can have a value from 1 hour to 12
+hours. To learn how to view the maximum value for your role, see View
+the Maximum Session Duration Setting for a Role
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+in the I<IAM User Guide>. The maximum session duration limit applies
+when you use the C<AssumeRole*> API operations or the C<assume-role*>
+CLI operations but does not apply when you use those operations to
+create a console URL. For more information, see Using IAM Roles
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
+the I<IAM User Guide>.
 
 The temporary security credentials created by C<AssumeRole> can be used
 to make API calls to any AWS service with the following exception: you
@@ -270,7 +304,13 @@ policy that allows the user to call AssumeRole on the ARN of the role
 in the other account. If the user is in the same account as the role,
 then you can either attach a policy to the user (identical to the
 previous different account user), or you can add the user as a
-principal directly in the role's trust policy
+principal directly in the role's trust policy. In this case, the trust
+policy acts as the only resource-based policy in IAM, and users in the
+same account as the role do not need explicit permission to assume the
+role. For more information about trust policies and resource-based
+policies, see IAM Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
+in the I<IAM User Guide>.
 
 B<Using MFA with AssumeRole>
 
@@ -296,7 +336,22 @@ user's hardware or virtual MFA device. The C<TokenCode> is the
 time-based one-time password (TOTP) that the MFA devices produces.
 
 
-=head2 AssumeRoleWithSAML(PrincipalArn => Str, RoleArn => Str, SAMLAssertion => Str, [DurationSeconds => Int, Policy => Str])
+=head2 AssumeRoleWithSAML
+
+=over
+
+=item PrincipalArn => Str
+
+=item RoleArn => Str
+
+=item SAMLAssertion => Str
+
+=item [DurationSeconds => Int]
+
+=item [Policy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::AssumeRoleWithSAML>
 
@@ -319,11 +374,23 @@ of an access key ID, a secret access key, and a security token.
 Applications can use these temporary security credentials to sign calls
 to AWS services.
 
-The temporary security credentials are valid for the duration that you
-specified when calling C<AssumeRole>, or until the time specified in
-the SAML authentication response's C<SessionNotOnOrAfter> value,
-whichever is shorter. The duration can be from 900 seconds (15 minutes)
-to a maximum of 3600 seconds (1 hour). The default is 1 hour.
+By default, the temporary security credentials created by
+C<AssumeRoleWithSAML> last for one hour. However, you can use the
+optional C<DurationSeconds> parameter to specify the duration of your
+session. Your role session lasts for the duration that you specify, or
+until the time specified in the SAML authentication response's
+C<SessionNotOnOrAfter> value, whichever is shorter. You can provide a
+C<DurationSeconds> value from 900 seconds (15 minutes) up to the
+maximum session duration setting for the role. This setting can have a
+value from 1 hour to 12 hours. To learn how to view the maximum value
+for your role, see View the Maximum Session Duration Setting for a Role
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+in the I<IAM User Guide>. The maximum session duration limit applies
+when you use the C<AssumeRole*> API operations or the C<assume-role*>
+CLI operations but does not apply when you use those operations to
+create a console URL. For more information, see Using IAM Roles
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
+the I<IAM User Guide>.
 
 The temporary security credentials created by C<AssumeRoleWithSAML> can
 be used to make API calls to any AWS service with the following
@@ -399,7 +466,24 @@ in the I<IAM User Guide>.
 
 
 
-=head2 AssumeRoleWithWebIdentity(RoleArn => Str, RoleSessionName => Str, WebIdentityToken => Str, [DurationSeconds => Int, Policy => Str, ProviderId => Str])
+=head2 AssumeRoleWithWebIdentity
+
+=over
+
+=item RoleArn => Str
+
+=item RoleSessionName => Str
+
+=item WebIdentityToken => Str
+
+=item [DurationSeconds => Int]
+
+=item [Policy => Str]
+
+=item [ProviderId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::AssumeRoleWithWebIdentity>
 
@@ -444,9 +528,21 @@ access key ID, a secret access key, and a security token. Applications
 can use these temporary security credentials to sign calls to AWS
 service APIs.
 
-The credentials are valid for the duration that you specified when
-calling C<AssumeRoleWithWebIdentity>, which can be from 900 seconds (15
-minutes) to a maximum of 3600 seconds (1 hour). The default is 1 hour.
+By default, the temporary security credentials created by
+C<AssumeRoleWithWebIdentity> last for one hour. However, you can use
+the optional C<DurationSeconds> parameter to specify the duration of
+your session. You can provide a value from 900 seconds (15 minutes) up
+to the maximum session duration setting for the role. This setting can
+have a value from 1 hour to 12 hours. To learn how to view the maximum
+value for your role, see View the Maximum Session Duration Setting for
+a Role
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+in the I<IAM User Guide>. The maximum session duration limit applies
+when you use the C<AssumeRole*> API operations or the C<assume-role*>
+CLI operations but does not apply when you use those operations to
+create a console URL. For more information, see Using IAM Roles
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
+the I<IAM User Guide>.
 
 The temporary security credentials created by
 C<AssumeRoleWithWebIdentity> can be used to make API calls to any AWS
@@ -517,15 +613,23 @@ temporary security credentials.
 =item *
 
 Web Identity Federation with Mobile Applications
-(http://aws.amazon.com/articles/4617974389850313). This article
-discusses web identity federation and shows an example of how to use
-web identity federation to get access to content in Amazon S3.
+(http://aws.amazon.com/articles/web-identity-federation-with-mobile-applications).
+This article discusses web identity federation and shows an example of
+how to use web identity federation to get access to content in Amazon
+S3.
 
 =back
 
 
 
-=head2 DecodeAuthorizationMessage(EncodedMessage => Str)
+=head2 DecodeAuthorizationMessage
+
+=over
+
+=item EncodedMessage => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::DecodeAuthorizationMessage>
 
@@ -583,7 +687,12 @@ The values of condition keys in the context of the user's request.
 
 
 
-=head2 GetCallerIdentity()
+=head2 GetCallerIdentity
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::STS::GetCallerIdentity>
 
@@ -593,7 +702,18 @@ Returns details about the IAM identity whose credentials are used to
 call the API.
 
 
-=head2 GetFederationToken(Name => Str, [DurationSeconds => Int, Policy => Str])
+=head2 GetFederationToken
+
+=over
+
+=item Name => Str
+
+=item [DurationSeconds => Int]
+
+=item [Policy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::GetFederationToken>
 
@@ -709,7 +829,18 @@ a Custom Identity Broker
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken).
 
 
-=head2 GetSessionToken([DurationSeconds => Int, SerialNumber => Str, TokenCode => Str])
+=head2 GetSessionToken
+
+=over
+
+=item [DurationSeconds => Int]
+
+=item [SerialNumber => Str]
+
+=item [TokenCode => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::STS::GetSessionToken>
 

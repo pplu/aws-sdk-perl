@@ -51,12 +51,12 @@ job results are stored.
 
 =head2 BucketName => Str
 
-  The name of the bucket where the restore results are stored.
+  The name of the Amazon S3 bucket where the job results are stored.
 
 
 =head2 CannedACL => Str
 
-  The canned ACL to apply to the restore results.
+  The canned access control list (ACL) to apply to the job results.
 
 
 =head2 Encryption => L<Paws::Glacier::Encryption>
@@ -67,22 +67,22 @@ in Amazon S3.
 
 =head2 Prefix => Str
 
-  The prefix that is prepended to the restore results for this request.
+  The prefix that is prepended to the results for this request.
 
 
 =head2 StorageClass => Str
 
-  The storage class used to store the restore results.
+  The storage class used to store the job results.
 
 
 =head2 Tagging => L<Paws::Glacier::Hashmap>
 
-  The tag-set that is applied to the restore results.
+  The tag-set that is applied to the job results.
 
 
 =head2 UserMetadata => L<Paws::Glacier::Hashmap>
 
-  A map of metadata to store with the restore results in Amazon S3.
+  A map of metadata to store with the job results in Amazon S3.
 
 
 

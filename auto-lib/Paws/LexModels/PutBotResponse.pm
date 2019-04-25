@@ -6,6 +6,7 @@ package Paws::LexModels::PutBotResponse;
   has ChildDirected => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'childDirected');
   has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'clarificationPrompt');
   has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
   has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
@@ -80,6 +81,11 @@ intent. For more information, see PutBot.
 The date that the bot was created.
 
 
+=head2 CreateVersion => Bool
+
+
+
+
 =head2 Description => Str
 
 A description of the bot.
@@ -112,7 +118,7 @@ creation date and last updated date are the same.
 
 The target locale for the bot.
 
-Valid values are: C<"en-US">
+Valid values are: C<"en-US">, C<"en-GB">, C<"de-DE">
 =head2 Name => Str
 
 The name of the bot.
@@ -130,7 +136,7 @@ C<failureReason> response element.
 When you set C<processBehavior>to C<SAVE>, Amazon Lex sets the status
 code to C<NOT BUILT>.
 
-Valid values are: C<"BUILDING">, C<"READY">, C<"FAILED">, C<"NOT_BUILT">
+Valid values are: C<"BUILDING">, C<"READY">, C<"READY_BASIC_TESTING">, C<"FAILED">, C<"NOT_BUILT">
 =head2 Version => Str
 
 The version of the bot. For a new bot, the version is always

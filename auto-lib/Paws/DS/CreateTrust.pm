@@ -4,6 +4,7 @@ package Paws::DS::CreateTrust;
   has ConditionalForwarderIpAddrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
   has RemoteDomainName => (is => 'ro', isa => 'Str', required => 1);
+  has SelectiveAuth => (is => 'ro', isa => 'Str');
   has TrustDirection => (is => 'ro', isa => 'Str', required => 1);
   has TrustPassword => (is => 'ro', isa => 'Str', required => 1);
   has TrustType => (is => 'ro', isa => 'Str');
@@ -23,17 +24,32 @@ Paws::DS::CreateTrust - Arguments for method CreateTrust on L<Paws::DS>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateTrust on the 
-AWS Directory Service service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateTrust on the
+L<AWS Directory Service|Paws::DS> service. Use the attributes of this class
 as arguments to method CreateTrust.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTrust.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateTrust(Att1 => $value1, Att2 => $value2, ...);
+    my $ds = Paws->service('DS');
+    my $CreateTrustResult = $ds->CreateTrust(
+      DirectoryId                 => 'MyDirectoryId',
+      RemoteDomainName            => 'MyRemoteDomainName',
+      TrustDirection              => 'One-Way: Outgoing',
+      TrustPassword               => 'MyTrustPassword',
+      ConditionalForwarderIpAddrs => [ 'MyIpAddr', ... ],    # OPTIONAL
+      SelectiveAuth               => 'Enabled',              # OPTIONAL
+      TrustType                   => 'Forest',               # OPTIONAL
+    );
+
+    # Results:
+    my $TrustId = $CreateTrustResult->TrustId;
+
+    # Returns a L<Paws::DS::CreateTrustResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ds/CreateTrust>
 
 =head1 ATTRIBUTES
 
@@ -47,7 +63,7 @@ RemoteDomainName.
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-The Directory ID of the Microsoft AD in the AWS cloud for which to
+The Directory ID of the AWS Managed Microsoft AD directory for which to
 establish the trust relationship.
 
 
@@ -58,6 +74,12 @@ The Fully Qualified Domain Name (FQDN) of the external domain for which
 to create the trust relationship.
 
 
+
+=head2 SelectiveAuth => Str
+
+Optional parameter to enable selective authentication for the trust.
+
+Valid values are: C<"Enabled">, C<"Disabled">
 
 =head2 B<REQUIRED> TrustDirection => Str
 
@@ -74,9 +96,9 @@ creating the trust relationship on the external domain.
 
 =head2 TrustType => Str
 
-The trust relationship type.
+The trust relationship type. C<Forest> is the default.
 
-Valid values are: C<"Forest">
+Valid values are: C<"Forest">, C<"External">
 
 
 =head1 SEE ALSO

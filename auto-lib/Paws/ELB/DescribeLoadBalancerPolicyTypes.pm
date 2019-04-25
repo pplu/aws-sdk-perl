@@ -18,17 +18,32 @@ Paws::ELB::DescribeLoadBalancerPolicyTypes - Arguments for method DescribeLoadBa
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeLoadBalancerPolicyTypes on the 
-Elastic Load Balancing service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeLoadBalancerPolicyTypes on the
+L<Elastic Load Balancing|Paws::ELB> service. Use the attributes of this class
 as arguments to method DescribeLoadBalancerPolicyTypes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLoadBalancerPolicyTypes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeLoadBalancerPolicyTypes(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELB');
+    # To describe a load balancer policy type defined by Elastic Load Balancing
+    # This example describes the specified load balancer policy type.
+    my $DescribeLoadBalancerPolicyTypesOutput =
+      $elasticloadbalancing->DescribeLoadBalancerPolicyTypes(
+      {
+        'PolicyTypeNames' => ['ProxyProtocolPolicyType']
+      }
+      );
+
+    # Results:
+    my $PolicyTypeDescriptions =
+      $DescribeLoadBalancerPolicyTypesOutput->PolicyTypeDescriptions;
+
+    # Returns a L<Paws::ELB::DescribeLoadBalancerPolicyTypesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/DescribeLoadBalancerPolicyTypes>
 
 =head1 ATTRIBUTES
 

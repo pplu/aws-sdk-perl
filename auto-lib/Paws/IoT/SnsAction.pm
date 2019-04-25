@@ -40,11 +40,11 @@ Describes an action to publish to an Amazon SNS topic.
 
 =head2 MessageFormat => Str
 
-  The message format of the message to publish. Optional. Accepted values
-are "JSON" and "RAW". The default value of the attribute is "RAW". SNS
-uses this setting to determine if the payload should be parsed and
-relevant platform-specific bits of the payload should be extracted. To
-read more about SNS message formats, see
+  (Optional) The message format of the message to publish. Accepted
+values are "JSON" and "RAW". The default value of the attribute is
+"RAW". SNS uses this setting to determine if the payload should be
+parsed and relevant platform-specific bits of the payload should be
+extracted. To read more about SNS message formats, see
 http://docs.aws.amazon.com/sns/latest/dg/json-formats.html
 (http://docs.aws.amazon.com/sns/latest/dg/json-formats.html) refer to
 their official documentation.

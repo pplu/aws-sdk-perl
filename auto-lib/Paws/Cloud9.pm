@@ -1,6 +1,7 @@
 package Paws::Cloud9;
   use Moose;
   sub service { 'cloud9' }
+  sub signing_name { 'cloud9' }
   sub version { '2017-09-23' }
   sub target_prefix { 'AWSCloud9WorkspaceManagementService' }
   sub json_version { "1.1" }
@@ -65,6 +66,52 @@ package Paws::Cloud9;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllEnvironmentMemberships {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEnvironmentMemberships(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeEnvironmentMemberships(@_, nextToken => $next_result->nextToken);
+        push @{ $result->memberships }, @{ $next_result->memberships };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'memberships') foreach (@{ $result->memberships });
+        $result = $self->DescribeEnvironmentMemberships(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'memberships') foreach (@{ $result->memberships });
+    }
+
+    return undef
+  }
+  sub ListAllEnvironments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEnvironments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListEnvironments(@_, nextToken => $next_result->nextToken);
+        push @{ $result->environmentIds }, @{ $next_result->environmentIds };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'environmentIds') foreach (@{ $result->environmentIds });
+        $result = $self->ListEnvironments(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'environmentIds') foreach (@{ $result->environmentIds });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateEnvironmentEC2 CreateEnvironmentMembership DeleteEnvironment DeleteEnvironmentMembership DescribeEnvironmentMemberships DescribeEnvironments DescribeEnvironmentStatus ListEnvironments UpdateEnvironment UpdateEnvironmentMembership / }
@@ -100,15 +147,8 @@ AWS Cloud9
 AWS Cloud9 is a collection of tools that you can use to code, build,
 run, test, debug, and release software in the cloud.
 
-In the background, these tools are available through development
-environments running on Amazon Elastic Compute Cloud (Amazon EC2)
-instances (known as I<Amazon EC2 environments>), your own servers
-(known as I<SSH environments>), or a combination. This enables you to
-create and switch between multiple environments, with each environment
-set up for a specific development project.
-
-For more information about AWS Cloud9, see the I<AWS Cloud9 User
-Guide>.
+For more information about AWS Cloud9, see the AWS Cloud9 User Guide
+(https://docs.aws.amazon.com/cloud9/latest/user-guide).
 
 AWS Cloud9 supports these operations:
 
@@ -117,8 +157,8 @@ AWS Cloud9 supports these operations:
 =item *
 
 C<CreateEnvironmentEC2>: Creates an AWS Cloud9 development environment,
-launches an Amazon EC2 instance, and then hosts the environment on the
-instance.
+launches an Amazon EC2 instance, and then connects from the instance to
+the environment.
 
 =item *
 
@@ -127,8 +167,8 @@ environment.
 
 =item *
 
-C<DeleteEnvironment>: Deletes an environment. If the environment is
-hosted on an Amazon EC2 instance, also terminates the instance.
+C<DeleteEnvironment>: Deletes an environment. If an Amazon EC2 instance
+is connected to the environment, also terminates the instance.
 
 =item *
 
@@ -165,20 +205,53 @@ environment member for an environment.
 =back
 
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloud9-2017-09-23>
+
+
 =head1 METHODS
 
-=head2 CreateEnvironmentEC2(InstanceType => Str, Name => Str, [AutomaticStopTimeMinutes => Int, ClientRequestToken => Str, Description => Str, OwnerArn => Str, SubnetId => Str])
+=head2 CreateEnvironmentEC2
+
+=over
+
+=item InstanceType => Str
+
+=item Name => Str
+
+=item [AutomaticStopTimeMinutes => Int]
+
+=item [ClientRequestToken => Str]
+
+=item [Description => Str]
+
+=item [OwnerArn => Str]
+
+=item [SubnetId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::CreateEnvironmentEC2>
 
 Returns: a L<Paws::Cloud9::CreateEnvironmentEC2Result> instance
 
 Creates an AWS Cloud9 development environment, launches an Amazon
-Elastic Compute Cloud (Amazon EC2) instance, and then hosts the
-environment on the instance.
+Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
+instance to the environment.
 
 
-=head2 CreateEnvironmentMembership(EnvironmentId => Str, Permissions => Str, UserArn => Str)
+=head2 CreateEnvironmentMembership
+
+=over
+
+=item EnvironmentId => Str
+
+=item Permissions => Str
+
+=item UserArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::CreateEnvironmentMembership>
 
@@ -187,18 +260,33 @@ Returns: a L<Paws::Cloud9::CreateEnvironmentMembershipResult> instance
 Adds an environment member to an AWS Cloud9 development environment.
 
 
-=head2 DeleteEnvironment(EnvironmentId => Str)
+=head2 DeleteEnvironment
+
+=over
+
+=item EnvironmentId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::DeleteEnvironment>
 
 Returns: a L<Paws::Cloud9::DeleteEnvironmentResult> instance
 
-Deletes an AWS Cloud9 development environment. If the environment is
-hosted on an Amazon Elastic Compute Cloud (Amazon EC2) instance, also
-terminates the instance.
+Deletes an AWS Cloud9 development environment. If an Amazon EC2
+instance is connected to the environment, also terminates the instance.
 
 
-=head2 DeleteEnvironmentMembership(EnvironmentId => Str, UserArn => Str)
+=head2 DeleteEnvironmentMembership
+
+=over
+
+=item EnvironmentId => Str
+
+=item UserArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::DeleteEnvironmentMembership>
 
@@ -208,7 +296,22 @@ Deletes an environment member from an AWS Cloud9 development
 environment.
 
 
-=head2 DescribeEnvironmentMemberships([EnvironmentId => Str, MaxResults => Int, NextToken => Str, Permissions => ArrayRef[Str|Undef], UserArn => Str])
+=head2 DescribeEnvironmentMemberships
+
+=over
+
+=item [EnvironmentId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Permissions => ArrayRef[Str|Undef]]
+
+=item [UserArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::DescribeEnvironmentMemberships>
 
@@ -218,7 +321,14 @@ Gets information about environment members for an AWS Cloud9
 development environment.
 
 
-=head2 DescribeEnvironments(EnvironmentIds => ArrayRef[Str|Undef])
+=head2 DescribeEnvironments
+
+=over
+
+=item EnvironmentIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::DescribeEnvironments>
 
@@ -227,7 +337,14 @@ Returns: a L<Paws::Cloud9::DescribeEnvironmentsResult> instance
 Gets information about AWS Cloud9 development environments.
 
 
-=head2 DescribeEnvironmentStatus(EnvironmentId => Str)
+=head2 DescribeEnvironmentStatus
+
+=over
+
+=item EnvironmentId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::DescribeEnvironmentStatus>
 
@@ -236,7 +353,16 @@ Returns: a L<Paws::Cloud9::DescribeEnvironmentStatusResult> instance
 Gets status information for an AWS Cloud9 development environment.
 
 
-=head2 ListEnvironments([MaxResults => Int, NextToken => Str])
+=head2 ListEnvironments
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::ListEnvironments>
 
@@ -245,7 +371,18 @@ Returns: a L<Paws::Cloud9::ListEnvironmentsResult> instance
 Gets a list of AWS Cloud9 development environment identifiers.
 
 
-=head2 UpdateEnvironment(EnvironmentId => Str, [Description => Str, Name => Str])
+=head2 UpdateEnvironment
+
+=over
+
+=item EnvironmentId => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::UpdateEnvironment>
 
@@ -254,7 +391,18 @@ Returns: a L<Paws::Cloud9::UpdateEnvironmentResult> instance
 Changes the settings of an existing AWS Cloud9 development environment.
 
 
-=head2 UpdateEnvironmentMembership(EnvironmentId => Str, Permissions => Str, UserArn => Str)
+=head2 UpdateEnvironmentMembership
+
+=over
+
+=item EnvironmentId => Str
+
+=item Permissions => Str
+
+=item UserArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Cloud9::UpdateEnvironmentMembership>
 
@@ -269,6 +417,30 @@ Cloud9 development environment.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllEnvironmentMemberships(sub { },[EnvironmentId => Str, MaxResults => Int, NextToken => Str, Permissions => ArrayRef[Str|Undef], UserArn => Str])
+
+=head2 DescribeAllEnvironmentMemberships([EnvironmentId => Str, MaxResults => Int, NextToken => Str, Permissions => ArrayRef[Str|Undef], UserArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - memberships, passing the object as the first parameter, and the string 'memberships' as the second parameter 
+
+If not, it will return a a L<Paws::Cloud9::DescribeEnvironmentMembershipsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEnvironments(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllEnvironments([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - environmentIds, passing the object as the first parameter, and the string 'environmentIds' as the second parameter 
+
+If not, it will return a a L<Paws::Cloud9::ListEnvironmentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

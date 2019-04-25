@@ -3,7 +3,9 @@ package Paws::AppSync::GraphqlApi;
   has ApiId => (is => 'ro', isa => 'Str', request_name => 'apiId', traits => ['NameInRequest']);
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has AuthenticationType => (is => 'ro', isa => 'Str', request_name => 'authenticationType', traits => ['NameInRequest']);
+  has LogConfig => (is => 'ro', isa => 'Paws::AppSync::LogConfig', request_name => 'logConfig', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has OpenIDConnectConfig => (is => 'ro', isa => 'Paws::AppSync::OpenIDConnectConfig', request_name => 'openIDConnectConfig', traits => ['NameInRequest']);
   has Uris => (is => 'ro', isa => 'Paws::AppSync::MapOfStringToString', request_name => 'uris', traits => ['NameInRequest']);
   has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::UserPoolConfig', request_name => 'userPoolConfig', traits => ['NameInRequest']);
 1;
@@ -56,9 +58,19 @@ Describes a GraphQL API.
   The authentication type.
 
 
+=head2 LogConfig => L<Paws::AppSync::LogConfig>
+
+  The Amazon CloudWatch Logs configuration.
+
+
 =head2 Name => Str
 
   The API name.
+
+
+=head2 OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>
+
+  The OpenID Connect configuration.
 
 
 =head2 Uris => L<Paws::AppSync::MapOfStringToString>
@@ -68,7 +80,7 @@ Describes a GraphQL API.
 
 =head2 UserPoolConfig => L<Paws::AppSync::UserPoolConfig>
 
-  The Amazon Cognito User Pool configuration.
+  The Amazon Cognito user pool configuration.
 
 
 

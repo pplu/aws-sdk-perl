@@ -59,8 +59,8 @@ C<ContextKeyValues> parameter.
 =head2 ContextKeyValues => ArrayRef[Str|Undef]
 
   The value (or values, if the condition context key supports multiple
-values) to provide to the simulation for use when the key is referenced
-by a C<Condition> element in an input policy.
+values) to provide to the simulation when the key is referenced by a
+C<Condition> element in an input policy.
 
 
 

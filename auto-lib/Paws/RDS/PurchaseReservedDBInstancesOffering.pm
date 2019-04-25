@@ -21,17 +21,30 @@ Paws::RDS::PurchaseReservedDBInstancesOffering - Arguments for method PurchaseRe
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PurchaseReservedDBInstancesOffering on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method PurchaseReservedDBInstancesOffering on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method PurchaseReservedDBInstancesOffering.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PurchaseReservedDBInstancesOffering.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PurchaseReservedDBInstancesOffering(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To purchase a reserved DB instance offering
+    # This example purchases a reserved DB instance offering that matches the
+    # specified settings.
+    my $PurchaseReservedDBInstancesOfferingResult =
+      $rds->PurchaseReservedDBInstancesOffering(
+      {
+        'ReservedDBInstanceId' => 'myreservationid',
+        'ReservedDBInstancesOfferingId' =>
+          'fb29428a-646d-4390-850e-5fe89926e727'
+      }
+      );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/PurchaseReservedDBInstancesOffering>
 
 =head1 ATTRIBUTES
 

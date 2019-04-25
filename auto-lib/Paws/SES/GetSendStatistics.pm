@@ -17,17 +17,26 @@ Paws::SES::GetSendStatistics - Arguments for method GetSendStatistics on L<Paws:
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetSendStatistics on the 
-Amazon Simple Email Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetSendStatistics on the
+L<Amazon Simple Email Service|Paws::SES> service. Use the attributes of this class
 as arguments to method GetSendStatistics.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSendStatistics.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetSendStatistics(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    # GetSendStatistics
+    # The following example returns Amazon SES sending statistics:
+    my $GetSendStatisticsResponse = $email->GetSendStatistics();
+
+    # Results:
+    my $SendDataPoints = $GetSendStatisticsResponse->SendDataPoints;
+
+    # Returns a L<Paws::SES::GetSendStatisticsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/GetSendStatistics>
 
 =head1 ATTRIBUTES
 

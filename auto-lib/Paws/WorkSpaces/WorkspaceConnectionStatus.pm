@@ -41,13 +41,13 @@ Describes the connection status of a WorkSpace.
 
 =head2 ConnectionState => Str
 
-  The connection state of the WorkSpace. Returns UNKOWN if the WorkSpace
-is in a Stopped state.
+  The connection state of the WorkSpace. The connection state is unknown
+if the WorkSpace is stopped.
 
 
 =head2 ConnectionStateCheckTimestamp => Str
 
-  The timestamp of the connection state check.
+  The timestamp of the connection status check.
 
 
 =head2 LastKnownUserConnectionTimestamp => Str
@@ -57,7 +57,7 @@ is in a Stopped state.
 
 =head2 WorkspaceId => Str
 
-  The ID of the WorkSpace.
+  The identifier of the WorkSpace.
 
 
 

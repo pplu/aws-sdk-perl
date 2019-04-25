@@ -22,17 +22,25 @@ Paws::AlexaForBusiness::UpdateRoom - Arguments for method UpdateRoom on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateRoom on the 
-Alexa For Business service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateRoom on the
+L<Alexa For Business|Paws::AlexaForBusiness> service. Use the attributes of this class
 as arguments to method UpdateRoom.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRoom.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateRoom(Att1 => $value1, Att2 => $value2, ...);
+    my $a4b = Paws->service('AlexaForBusiness');
+    my $UpdateRoomResponse = $a4b->UpdateRoom(
+      Description        => 'MyRoomDescription',       # OPTIONAL
+      ProfileArn         => 'MyArn',                   # OPTIONAL
+      ProviderCalendarId => 'MyProviderCalendarId',    # OPTIONAL
+      RoomArn            => 'MyArn',                   # OPTIONAL
+      RoomName           => 'MyRoomName',              # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b/UpdateRoom>
 
 =head1 ATTRIBUTES
 

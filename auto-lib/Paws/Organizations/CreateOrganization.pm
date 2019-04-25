@@ -18,17 +18,26 @@ Paws::Organizations::CreateOrganization - Arguments for method CreateOrganizatio
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateOrganization on the 
-AWS Organizations service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateOrganization on the
+L<AWS Organizations|Paws::Organizations> service. Use the attributes of this class
 as arguments to method CreateOrganization.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateOrganization.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateOrganization(Att1 => $value1, Att2 => $value2, ...);
+    my $organizations = Paws->service('Organizations');
+    my $CreateOrganizationResponse = $organizations->CreateOrganization(
+      FeatureSet => 'ALL',    # OPTIONAL
+    );
+
+    # Results:
+    my $Organization = $CreateOrganizationResponse->Organization;
+
+    # Returns a L<Paws::Organizations::CreateOrganizationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations/CreateOrganization>
 
 =head1 ATTRIBUTES
 
@@ -44,7 +53,7 @@ feature set supports different levels of functionality.
 
 I<CONSOLIDATED_BILLING>: All member accounts have their bills
 consolidated to and paid by the master account. For more information,
-see Consolidated Billing
+see Consolidated billing
 (http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only)
 in the I<AWS Organizations User Guide>.
 

@@ -23,17 +23,38 @@ Paws::AlexaForBusiness::CreateRoom - Arguments for method CreateRoom on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateRoom on the 
-Alexa For Business service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateRoom on the
+L<Alexa For Business|Paws::AlexaForBusiness> service. Use the attributes of this class
 as arguments to method CreateRoom.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRoom.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateRoom(Att1 => $value1, Att2 => $value2, ...);
+    my $a4b = Paws->service('AlexaForBusiness');
+    my $CreateRoomResponse = $a4b->CreateRoom(
+      RoomName           => 'MyRoomName',
+      ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
+      Description        => 'MyRoomDescription',       # OPTIONAL
+      ProfileArn         => 'MyArn',                   # OPTIONAL
+      ProviderCalendarId => 'MyProviderCalendarId',    # OPTIONAL
+      Tags               => [
+        {
+          Key   => 'MyTagKey',                         # min: 1, max: 128
+          Value => 'MyTagValue',                       # max: 256
+
+        },
+        ...
+      ],                                               # OPTIONAL
+    );
+
+    # Results:
+    my $RoomArn = $CreateRoomResponse->RoomArn;
+
+    # Returns a L<Paws::AlexaForBusiness::CreateRoomResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b/CreateRoom>
 
 =head1 ATTRIBUTES
 

@@ -1,6 +1,7 @@
 package Paws::MediaLive::OutputDestinationSettings;
   use Moose;
   has PasswordParam => (is => 'ro', isa => 'Str', request_name => 'passwordParam', traits => ['NameInRequest']);
+  has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
 1;
@@ -41,6 +42,11 @@ Placeholder documentation for OutputDestinationSettings
 =head2 PasswordParam => Str
 
   key used to extract the password from EC2 Parameter store
+
+
+=head2 StreamName => Str
+
+  Stream name for RTMP destinations (URLs of type rtmp://)
 
 
 =head2 Url => Str

@@ -9,9 +9,12 @@ package Paws::Glue::DevEndpoint;
   has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
   has LastUpdateStatus => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
+  has PrivateAddress => (is => 'ro', isa => 'Str');
   has PublicAddress => (is => 'ro', isa => 'Str');
   has PublicKey => (is => 'ro', isa => 'Str');
+  has PublicKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleArn => (is => 'ro', isa => 'Str');
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Status => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
@@ -111,19 +114,51 @@ supported.
 DevEndpoint.
 
 
+=head2 PrivateAddress => Str
+
+  A private IP address to access the DevEndpoint within a VPC, if the
+DevEndpoint is created within one. The PrivateAddress field is present
+only when you create the DevEndpoint within your virtual private cloud
+(VPC).
+
+
 =head2 PublicAddress => Str
 
-  The public address used by this DevEndpoint.
+  The public IP address used by this DevEndpoint. The PublicAddress field
+is present only when you create a non-VPC (virtual private cloud)
+DevEndpoint.
 
 
 =head2 PublicKey => Str
 
-  The public key to be used by this DevEndpoint for authentication.
+  The public key to be used by this DevEndpoint for authentication. This
+attribute is provided for backward compatibility, as the recommended
+attribute to use is public keys.
+
+
+=head2 PublicKeys => ArrayRef[Str|Undef]
+
+  A list of public keys to be used by the DevEndpoints for
+authentication. The use of this attribute is preferred over a single
+public key because the public keys allow you to have a different
+private key per client.
+
+If you previously created an endpoint with a public key, you must
+remove that key to be able to set a list of public keys: call the
+C<UpdateDevEndpoint> API with the public key content in the
+C<deletePublicKeys> attribute, and the list of new keys in the
+C<addPublicKeys> attribute.
 
 
 =head2 RoleArn => Str
 
   The AWS ARN of the IAM role used in this DevEndpoint.
+
+
+=head2 SecurityConfiguration => Str
+
+  The name of the SecurityConfiguration structure to be used with this
+DevEndpoint.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]

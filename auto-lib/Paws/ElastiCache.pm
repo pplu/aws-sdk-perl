@@ -1,6 +1,7 @@
 package Paws::ElastiCache;
   use Moose;
   sub service { 'elasticache' }
+  sub signing_name { 'elasticache' }
   sub version { '2015-02-02' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -56,6 +57,11 @@ package Paws::ElastiCache;
   sub CreateSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DecreaseReplicaCount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DecreaseReplicaCount', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCacheCluster {
@@ -146,6 +152,11 @@ package Paws::ElastiCache;
   sub DescribeSnapshots {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub IncreaseReplicaCount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::IncreaseReplicaCount', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAllowedNodeTypeModifications {
@@ -492,7 +503,7 @@ package Paws::ElastiCache;
   }
 
 
-  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup ModifyReplicationGroupShardConfiguration PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress TestFailover / }
+  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DecreaseReplicaCount DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots IncreaseReplicaCount ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup ModifyReplicationGroupShardConfiguration PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress TestFailover / }
 
 1;
 
@@ -535,9 +546,21 @@ In addition, through integration with Amazon CloudWatch, customers get
 enhanced visibility into the key performance statistics associated with
 their cache and can receive alarms if a part of their cache runs hot.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02>
+
+
 =head1 METHODS
 
-=head2 AddTagsToResource(ResourceName => Str, Tags => ArrayRef[L<Paws::ElastiCache::Tag>])
+=head2 AddTagsToResource
+
+=over
+
+=item ResourceName => Str
+
+=item Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::AddTagsToResource>
 
@@ -554,11 +577,22 @@ and costs aggregated by your tags. You can apply tags that represent
 business categories (such as cost centers, application names, or
 owners) to organize your costs across multiple services. For more
 information, see Using Cost Allocation Tags in Amazon ElastiCache
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Tagging.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html)
 in the I<ElastiCache User Guide>.
 
 
-=head2 AuthorizeCacheSecurityGroupIngress(CacheSecurityGroupName => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str)
+=head2 AuthorizeCacheSecurityGroupIngress
+
+=over
+
+=item CacheSecurityGroupName => Str
+
+=item EC2SecurityGroupName => Str
+
+=item EC2SecurityGroupOwnerId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::AuthorizeCacheSecurityGroupIngress>
 
@@ -572,7 +606,18 @@ You cannot authorize ingress from an Amazon EC2 security group in one
 region to an ElastiCache cluster in another region.
 
 
-=head2 CopySnapshot(SourceSnapshotName => Str, TargetSnapshotName => Str, [TargetBucket => Str])
+=head2 CopySnapshot
+
+=over
+
+=item SourceSnapshotName => Str
+
+=item TargetSnapshotName => Str
+
+=item [TargetBucket => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::CopySnapshot>
 
@@ -588,9 +633,9 @@ it. To control access to your snapshots, use an IAM policy to control
 who has the ability to use the C<CopySnapshot> operation. For more
 information about using IAM to control the use of ElastiCache
 operations, see Exporting Snapshots
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html)
 and Authentication & Access Control
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/IAM.html).
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.html).
 
 You could receive the following error messages.
 
@@ -604,7 +649,7 @@ B<Error Message:> The S3 bucket %s is outside of the region.
 
 B<Solution:> Create an Amazon S3 bucket in the same region as your
 snapshot. For more information, see Step 1: Create an Amazon S3 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
 in the ElastiCache User Guide.
 
 =item *
@@ -613,7 +658,7 @@ B<Error Message:> The S3 bucket %s does not exist.
 
 B<Solution:> Create an Amazon S3 bucket in the same region as your
 snapshot. For more information, see Step 1: Create an Amazon S3 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
 in the ElastiCache User Guide.
 
 =item *
@@ -623,7 +668,7 @@ user.
 
 B<Solution:> Create an Amazon S3 bucket in the same region as your
 snapshot. For more information, see Step 1: Create an Amazon S3 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
 in the ElastiCache User Guide.
 
 =item *
@@ -651,7 +696,7 @@ on the S3 Bucket.
 B<Solution:> Add List and Read permissions on the bucket. For more
 information, see Step 2: Grant ElastiCache Access to Your Amazon S3
 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
 in the ElastiCache User Guide.
 
 =item *
@@ -662,7 +707,7 @@ B<Error Message: > ElastiCache has not been granted WRITE permissions
 B<Solution:> Add Upload/Delete permissions on the bucket. For more
 information, see Step 2: Grant ElastiCache Access to Your Amazon S3
 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
 in the ElastiCache User Guide.
 
 =item *
@@ -672,14 +717,65 @@ permissions %s on the S3 Bucket.
 
 B<Solution:> Add View Permissions on the bucket. For more information,
 see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
 in the ElastiCache User Guide.
 
 =back
 
 
 
-=head2 CreateCacheCluster(CacheClusterId => Str, [AuthToken => Str, AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str|Undef], CacheSubnetGroupName => Str, Engine => Str, EngineVersion => Str, NotificationTopicArn => Str, NumCacheNodes => Int, Port => Int, PreferredAvailabilityZone => Str, PreferredAvailabilityZones => ArrayRef[Str|Undef], PreferredMaintenanceWindow => Str, ReplicationGroupId => Str, SecurityGroupIds => ArrayRef[Str|Undef], SnapshotArns => ArrayRef[Str|Undef], SnapshotName => Str, SnapshotRetentionLimit => Int, SnapshotWindow => Str, Tags => ArrayRef[L<Paws::ElastiCache::Tag>]])
+=head2 CreateCacheCluster
+
+=over
+
+=item CacheClusterId => Str
+
+=item [AuthToken => Str]
+
+=item [AutoMinorVersionUpgrade => Bool]
+
+=item [AZMode => Str]
+
+=item [CacheNodeType => Str]
+
+=item [CacheParameterGroupName => Str]
+
+=item [CacheSecurityGroupNames => ArrayRef[Str|Undef]]
+
+=item [CacheSubnetGroupName => Str]
+
+=item [Engine => Str]
+
+=item [EngineVersion => Str]
+
+=item [NotificationTopicArn => Str]
+
+=item [NumCacheNodes => Int]
+
+=item [Port => Int]
+
+=item [PreferredAvailabilityZone => Str]
+
+=item [PreferredAvailabilityZones => ArrayRef[Str|Undef]]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [ReplicationGroupId => Str]
+
+=item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [SnapshotArns => ArrayRef[Str|Undef]]
+
+=item [SnapshotName => Str]
+
+=item [SnapshotRetentionLimit => Int]
+
+=item [SnapshotWindow => Str]
+
+=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::CreateCacheCluster>
 
@@ -688,12 +784,22 @@ Returns: a L<Paws::ElastiCache::CreateCacheClusterResult> instance
 Creates a cluster. All nodes in the cluster run the same
 protocol-compliant cache engine software, either Memcached or Redis.
 
-Due to current limitations on Redis (cluster mode disabled), this
-operation or parameter is not supported on Redis (cluster mode enabled)
-replication groups.
+This operation is not supported for Redis (cluster mode enabled)
+clusters.
 
 
-=head2 CreateCacheParameterGroup(CacheParameterGroupFamily => Str, CacheParameterGroupName => Str, Description => Str)
+=head2 CreateCacheParameterGroup
+
+=over
+
+=item CacheParameterGroupFamily => Str
+
+=item CacheParameterGroupName => Str
+
+=item Description => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::CreateCacheParameterGroup>
 
@@ -720,14 +826,23 @@ in the ElastiCache API Reference.
 =item *
 
 Parameters and Parameter Groups
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/ParameterGroups.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html)
 in the ElastiCache User Guide.
 
 =back
 
 
 
-=head2 CreateCacheSecurityGroup(CacheSecurityGroupName => Str, Description => Str)
+=head2 CreateCacheSecurityGroup
+
+=over
+
+=item CacheSecurityGroupName => Str
+
+=item Description => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::CreateCacheSecurityGroup>
 
@@ -743,7 +858,18 @@ For more information, see CreateCacheSubnetGroup
 (http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateCacheSubnetGroup.html).
 
 
-=head2 CreateCacheSubnetGroup(CacheSubnetGroupDescription => Str, CacheSubnetGroupName => Str, SubnetIds => ArrayRef[Str|Undef])
+=head2 CreateCacheSubnetGroup
+
+=over
+
+=item CacheSubnetGroupDescription => Str
+
+=item CacheSubnetGroupName => Str
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::CreateCacheSubnetGroup>
 
@@ -755,7 +881,68 @@ Use this parameter only when you are creating a cluster in an Amazon
 Virtual Private Cloud (Amazon VPC).
 
 
-=head2 CreateReplicationGroup(ReplicationGroupDescription => Str, ReplicationGroupId => Str, [AtRestEncryptionEnabled => Bool, AuthToken => Str, AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str|Undef], CacheSubnetGroupName => Str, Engine => Str, EngineVersion => Str, NodeGroupConfiguration => ArrayRef[L<Paws::ElastiCache::NodeGroupConfiguration>], NotificationTopicArn => Str, NumCacheClusters => Int, NumNodeGroups => Int, Port => Int, PreferredCacheClusterAZs => ArrayRef[Str|Undef], PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, ReplicasPerNodeGroup => Int, SecurityGroupIds => ArrayRef[Str|Undef], SnapshotArns => ArrayRef[Str|Undef], SnapshotName => Str, SnapshotRetentionLimit => Int, SnapshotWindow => Str, Tags => ArrayRef[L<Paws::ElastiCache::Tag>], TransitEncryptionEnabled => Bool])
+=head2 CreateReplicationGroup
+
+=over
+
+=item ReplicationGroupDescription => Str
+
+=item ReplicationGroupId => Str
+
+=item [AtRestEncryptionEnabled => Bool]
+
+=item [AuthToken => Str]
+
+=item [AutomaticFailoverEnabled => Bool]
+
+=item [AutoMinorVersionUpgrade => Bool]
+
+=item [CacheNodeType => Str]
+
+=item [CacheParameterGroupName => Str]
+
+=item [CacheSecurityGroupNames => ArrayRef[Str|Undef]]
+
+=item [CacheSubnetGroupName => Str]
+
+=item [Engine => Str]
+
+=item [EngineVersion => Str]
+
+=item [NodeGroupConfiguration => ArrayRef[L<Paws::ElastiCache::NodeGroupConfiguration>]]
+
+=item [NotificationTopicArn => Str]
+
+=item [NumCacheClusters => Int]
+
+=item [NumNodeGroups => Int]
+
+=item [Port => Int]
+
+=item [PreferredCacheClusterAZs => ArrayRef[Str|Undef]]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [PrimaryClusterId => Str]
+
+=item [ReplicasPerNodeGroup => Int]
+
+=item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [SnapshotArns => ArrayRef[Str|Undef]]
+
+=item [SnapshotName => Str]
+
+=item [SnapshotRetentionLimit => Int]
+
+=item [SnapshotWindow => Str]
+
+=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
+
+=item [TransitEncryptionEnabled => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::CreateReplicationGroup>
 
@@ -784,13 +971,24 @@ need to increase or decrease the number of node groups (console:
 shards), you can avail yourself of ElastiCache for Redis' enhanced
 backup and restore. For more information, see Restoring From a Backup
 with Cluster Resizing
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/backups-restoring.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-restoring.html)
 in the I<ElastiCache User Guide>.
 
 This operation is valid for Redis only.
 
 
-=head2 CreateSnapshot(SnapshotName => Str, [CacheClusterId => Str, ReplicationGroupId => Str])
+=head2 CreateSnapshot
+
+=over
+
+=item SnapshotName => Str
+
+=item [CacheClusterId => Str]
+
+=item [ReplicationGroupId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::CreateSnapshot>
 
@@ -802,7 +1000,43 @@ moment in time.
 This operation is valid for Redis only.
 
 
-=head2 DeleteCacheCluster(CacheClusterId => Str, [FinalSnapshotIdentifier => Str])
+=head2 DecreaseReplicaCount
+
+=over
+
+=item ApplyImmediately => Bool
+
+=item ReplicationGroupId => Str
+
+=item [NewReplicaCount => Int]
+
+=item [ReplicaConfiguration => ArrayRef[L<Paws::ElastiCache::ConfigureShard>]]
+
+=item [ReplicasToRemove => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::DecreaseReplicaCount>
+
+Returns: a L<Paws::ElastiCache::DecreaseReplicaCountResult> instance
+
+Dynamically decreases the number of replics in a Redis (cluster mode
+disabled) replication group or the number of replica nodes in one or
+more node groups (shards) of a Redis (cluster mode enabled) replication
+group. This operation is performed with no cluster down time.
+
+
+=head2 DeleteCacheCluster
+
+=over
+
+=item CacheClusterId => Str
+
+=item [FinalSnapshotIdentifier => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DeleteCacheCluster>
 
@@ -819,12 +1053,17 @@ replica of a replication group or node group (shard) that has Multi-AZ
 mode enabled or a cluster from a Redis (cluster mode enabled)
 replication group.
 
-Due to current limitations on Redis (cluster mode disabled), this
-operation or parameter is not supported on Redis (cluster mode enabled)
-replication groups.
+This operation is not valid for Redis (cluster mode enabled) clusters.
 
 
-=head2 DeleteCacheParameterGroup(CacheParameterGroupName => Str)
+=head2 DeleteCacheParameterGroup
+
+=over
+
+=item CacheParameterGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DeleteCacheParameterGroup>
 
@@ -834,7 +1073,14 @@ Deletes the specified cache parameter group. You cannot delete a cache
 parameter group if it is associated with any cache clusters.
 
 
-=head2 DeleteCacheSecurityGroup(CacheSecurityGroupName => Str)
+=head2 DeleteCacheSecurityGroup
+
+=over
+
+=item CacheSecurityGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DeleteCacheSecurityGroup>
 
@@ -846,7 +1092,14 @@ You cannot delete a cache security group if it is associated with any
 clusters.
 
 
-=head2 DeleteCacheSubnetGroup(CacheSubnetGroupName => Str)
+=head2 DeleteCacheSubnetGroup
+
+=over
+
+=item CacheSubnetGroupName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DeleteCacheSubnetGroup>
 
@@ -858,7 +1111,18 @@ You cannot delete a cache subnet group if it is associated with any
 clusters.
 
 
-=head2 DeleteReplicationGroup(ReplicationGroupId => Str, [FinalSnapshotIdentifier => Str, RetainPrimaryCluster => Bool])
+=head2 DeleteReplicationGroup
+
+=over
+
+=item ReplicationGroupId => Str
+
+=item [FinalSnapshotIdentifier => Str]
+
+=item [RetainPrimaryCluster => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DeleteReplicationGroup>
 
@@ -877,7 +1141,14 @@ cannot cancel or revert this operation.
 This operation is valid for Redis only.
 
 
-=head2 DeleteSnapshot(SnapshotName => Str)
+=head2 DeleteSnapshot
+
+=over
+
+=item SnapshotName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DeleteSnapshot>
 
@@ -890,7 +1161,22 @@ snapshot; you cannot cancel or revert this operation.
 This operation is valid for Redis only.
 
 
-=head2 DescribeCacheClusters([CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheClustersNotInReplicationGroups => Bool, ShowCacheNodeInfo => Bool])
+=head2 DescribeCacheClusters
+
+=over
+
+=item [CacheClusterId => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ShowCacheClustersNotInReplicationGroups => Bool]
+
+=item [ShowCacheNodeInfo => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheClusters>
 
@@ -921,7 +1207,24 @@ If cache nodes are currently being removed from the cluster, no
 endpoint information for the removed nodes is displayed.
 
 
-=head2 DescribeCacheEngineVersions([CacheParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Marker => Str, MaxRecords => Int])
+=head2 DescribeCacheEngineVersions
+
+=over
+
+=item [CacheParameterGroupFamily => Str]
+
+=item [DefaultOnly => Bool]
+
+=item [Engine => Str]
+
+=item [EngineVersion => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheEngineVersions>
 
@@ -930,7 +1233,18 @@ Returns: a L<Paws::ElastiCache::CacheEngineVersionMessage> instance
 Returns a list of the available cache engines and their versions.
 
 
-=head2 DescribeCacheParameterGroups([CacheParameterGroupName => Str, Marker => Str, MaxRecords => Int])
+=head2 DescribeCacheParameterGroups
+
+=over
+
+=item [CacheParameterGroupName => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheParameterGroups>
 
@@ -941,7 +1255,20 @@ parameter group name is specified, the list contains only the
 descriptions for that group.
 
 
-=head2 DescribeCacheParameters(CacheParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeCacheParameters
+
+=over
+
+=item CacheParameterGroupName => Str
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [Source => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheParameters>
 
@@ -951,7 +1278,18 @@ Returns the detailed parameter list for a particular cache parameter
 group.
 
 
-=head2 DescribeCacheSecurityGroups([CacheSecurityGroupName => Str, Marker => Str, MaxRecords => Int])
+=head2 DescribeCacheSecurityGroups
+
+=over
+
+=item [CacheSecurityGroupName => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheSecurityGroups>
 
@@ -962,7 +1300,18 @@ security group name is specified, the list contains only the
 description of that group.
 
 
-=head2 DescribeCacheSubnetGroups([CacheSubnetGroupName => Str, Marker => Str, MaxRecords => Int])
+=head2 DescribeCacheSubnetGroups
+
+=over
+
+=item [CacheSubnetGroupName => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheSubnetGroups>
 
@@ -973,7 +1322,18 @@ name is specified, the list contains only the description of that
 group.
 
 
-=head2 DescribeEngineDefaultParameters(CacheParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
+=head2 DescribeEngineDefaultParameters
+
+=over
+
+=item CacheParameterGroupFamily => Str
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeEngineDefaultParameters>
 
@@ -983,7 +1343,26 @@ Returns the default engine and system parameter information for the
 specified cache engine.
 
 
-=head2 DescribeEvents([Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeEvents
+
+=over
+
+=item [Duration => Int]
+
+=item [EndTime => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [SourceIdentifier => Str]
+
+=item [SourceType => Str]
+
+=item [StartTime => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeEvents>
 
@@ -999,7 +1378,18 @@ returned; however, you can retrieve up to 14 days' worth of events if
 necessary.
 
 
-=head2 DescribeReplicationGroups([Marker => Str, MaxRecords => Int, ReplicationGroupId => Str])
+=head2 DescribeReplicationGroups
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ReplicationGroupId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeReplicationGroups>
 
@@ -1012,7 +1402,28 @@ information about all replication groups.
 This operation is valid for Redis only.
 
 
-=head2 DescribeReservedCacheNodes([CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodeId => Str, ReservedCacheNodesOfferingId => Str])
+=head2 DescribeReservedCacheNodes
+
+=over
+
+=item [CacheNodeType => Str]
+
+=item [Duration => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [OfferingType => Str]
+
+=item [ProductDescription => Str]
+
+=item [ReservedCacheNodeId => Str]
+
+=item [ReservedCacheNodesOfferingId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeReservedCacheNodes>
 
@@ -1022,7 +1433,26 @@ Returns information about reserved cache nodes for this account, or
 about a specified reserved cache node.
 
 
-=head2 DescribeReservedCacheNodesOfferings([CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodesOfferingId => Str])
+=head2 DescribeReservedCacheNodesOfferings
+
+=over
+
+=item [CacheNodeType => Str]
+
+=item [Duration => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [OfferingType => Str]
+
+=item [ProductDescription => Str]
+
+=item [ReservedCacheNodesOfferingId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeReservedCacheNodesOfferings>
 
@@ -1031,7 +1461,26 @@ Returns: a L<Paws::ElastiCache::ReservedCacheNodesOfferingMessage> instance
 Lists available reserved cache node offerings.
 
 
-=head2 DescribeSnapshots([CacheClusterId => Str, Marker => Str, MaxRecords => Int, ReplicationGroupId => Str, ShowNodeGroupConfig => Bool, SnapshotName => Str, SnapshotSource => Str])
+=head2 DescribeSnapshots
+
+=over
+
+=item [CacheClusterId => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ReplicationGroupId => Str]
+
+=item [ShowNodeGroupConfig => Bool]
+
+=item [SnapshotName => Str]
+
+=item [SnapshotSource => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeSnapshots>
 
@@ -1045,7 +1494,41 @@ with a particular cache cluster.
 This operation is valid for Redis only.
 
 
-=head2 ListAllowedNodeTypeModifications([CacheClusterId => Str, ReplicationGroupId => Str])
+=head2 IncreaseReplicaCount
+
+=over
+
+=item ApplyImmediately => Bool
+
+=item ReplicationGroupId => Str
+
+=item [NewReplicaCount => Int]
+
+=item [ReplicaConfiguration => ArrayRef[L<Paws::ElastiCache::ConfigureShard>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::IncreaseReplicaCount>
+
+Returns: a L<Paws::ElastiCache::IncreaseReplicaCountResult> instance
+
+Dynamically increases the number of replics in a Redis (cluster mode
+disabled) replication group or the number of replica nodes in one or
+more node groups (shards) of a Redis (cluster mode enabled) replication
+group. This operation is performed with no cluster down time.
+
+
+=head2 ListAllowedNodeTypeModifications
+
+=over
+
+=item [CacheClusterId => Str]
+
+=item [ReplicationGroupId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::ListAllowedNodeTypeModifications>
 
@@ -1060,7 +1543,14 @@ the C<CacheNodeType> parameter must be one of the node types returned
 by this operation.
 
 
-=head2 ListTagsForResource(ResourceName => Str)
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::ListTagsForResource>
 
@@ -1071,13 +1561,54 @@ C<cost allocation tag> is a key-value pair where the key is
 case-sensitive and the value is optional. You can use cost allocation
 tags to categorize and track your AWS costs.
 
+If the cluster is not in the I<available> state, C<ListTagsForResource>
+returns an error.
+
 You can have a maximum of 50 cost allocation tags on an ElastiCache
-resource. For more information, see Using Cost Allocation Tags in
-Amazon ElastiCache
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/BestPractices.html).
+resource. For more information, see Monitoring Costs with Tags
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html).
 
 
-=head2 ModifyCacheCluster(CacheClusterId => Str, [ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeIdsToRemove => ArrayRef[Str|Undef], CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str|Undef], EngineVersion => Str, NewAvailabilityZones => ArrayRef[Str|Undef], NotificationTopicArn => Str, NotificationTopicStatus => Str, NumCacheNodes => Int, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str|Undef], SnapshotRetentionLimit => Int, SnapshotWindow => Str])
+=head2 ModifyCacheCluster
+
+=over
+
+=item CacheClusterId => Str
+
+=item [ApplyImmediately => Bool]
+
+=item [AutoMinorVersionUpgrade => Bool]
+
+=item [AZMode => Str]
+
+=item [CacheNodeIdsToRemove => ArrayRef[Str|Undef]]
+
+=item [CacheNodeType => Str]
+
+=item [CacheParameterGroupName => Str]
+
+=item [CacheSecurityGroupNames => ArrayRef[Str|Undef]]
+
+=item [EngineVersion => Str]
+
+=item [NewAvailabilityZones => ArrayRef[Str|Undef]]
+
+=item [NotificationTopicArn => Str]
+
+=item [NotificationTopicStatus => Str]
+
+=item [NumCacheNodes => Int]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [SnapshotRetentionLimit => Int]
+
+=item [SnapshotWindow => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyCacheCluster>
 
@@ -1088,7 +1619,16 @@ change one or more cluster configuration parameters by specifying the
 parameters and the new values.
 
 
-=head2 ModifyCacheParameterGroup(CacheParameterGroupName => Str, ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>])
+=head2 ModifyCacheParameterGroup
+
+=over
+
+=item CacheParameterGroupName => Str
+
+=item ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyCacheParameterGroup>
 
@@ -1099,7 +1639,18 @@ to 20 parameters in a single request by submitting a list parameter
 name and value pairs.
 
 
-=head2 ModifyCacheSubnetGroup(CacheSubnetGroupName => Str, [CacheSubnetGroupDescription => Str, SubnetIds => ArrayRef[Str|Undef]])
+=head2 ModifyCacheSubnetGroup
+
+=over
+
+=item CacheSubnetGroupName => Str
+
+=item [CacheSubnetGroupDescription => Str]
+
+=item [SubnetIds => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyCacheSubnetGroup>
 
@@ -1108,7 +1659,48 @@ Returns: a L<Paws::ElastiCache::ModifyCacheSubnetGroupResult> instance
 Modifies an existing cache subnet group.
 
 
-=head2 ModifyReplicationGroup(ReplicationGroupId => Str, [ApplyImmediately => Bool, AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str|Undef], EngineVersion => Str, NodeGroupId => Str, NotificationTopicArn => Str, NotificationTopicStatus => Str, PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, ReplicationGroupDescription => Str, SecurityGroupIds => ArrayRef[Str|Undef], SnapshotRetentionLimit => Int, SnapshottingClusterId => Str, SnapshotWindow => Str])
+=head2 ModifyReplicationGroup
+
+=over
+
+=item ReplicationGroupId => Str
+
+=item [ApplyImmediately => Bool]
+
+=item [AutomaticFailoverEnabled => Bool]
+
+=item [AutoMinorVersionUpgrade => Bool]
+
+=item [CacheNodeType => Str]
+
+=item [CacheParameterGroupName => Str]
+
+=item [CacheSecurityGroupNames => ArrayRef[Str|Undef]]
+
+=item [EngineVersion => Str]
+
+=item [NodeGroupId => Str]
+
+=item [NotificationTopicArn => Str]
+
+=item [NotificationTopicStatus => Str]
+
+=item [PreferredMaintenanceWindow => Str]
+
+=item [PrimaryClusterId => Str]
+
+=item [ReplicationGroupDescription => Str]
+
+=item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [SnapshotRetentionLimit => Int]
+
+=item [SnapshottingClusterId => Str]
+
+=item [SnapshotWindow => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyReplicationGroup>
 
@@ -1116,32 +1708,70 @@ Returns: a L<Paws::ElastiCache::ModifyReplicationGroupResult> instance
 
 Modifies the settings for a replication group.
 
-Due to current limitations on Redis (cluster mode disabled), this
-operation or parameter is not supported on Redis (cluster mode enabled)
-replication groups.
+For Redis (cluster mode enabled) clusters, this operation cannot be
+used to change a cluster's node type or engine version. For more
+information, see:
+
+=over
+
+=item *
+
+Scaling for Amazon ElastiCache for RedisE<mdash>Redis (cluster mode
+enabled)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html)
+in the ElastiCache User Guide
+
+=item *
+
+ModifyReplicationGroupShardConfiguration
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyReplicationGroupShardConfiguration.html)
+in the ElastiCache API Reference
+
+=back
 
 This operation is valid for Redis only.
 
 
-=head2 ModifyReplicationGroupShardConfiguration(ApplyImmediately => Bool, NodeGroupCount => Int, ReplicationGroupId => Str, [NodeGroupsToRemove => ArrayRef[Str|Undef], ReshardingConfiguration => ArrayRef[L<Paws::ElastiCache::ReshardingConfiguration>]])
+=head2 ModifyReplicationGroupShardConfiguration
+
+=over
+
+=item ApplyImmediately => Bool
+
+=item NodeGroupCount => Int
+
+=item ReplicationGroupId => Str
+
+=item [NodeGroupsToRemove => ArrayRef[Str|Undef]]
+
+=item [NodeGroupsToRetain => ArrayRef[Str|Undef]]
+
+=item [ReshardingConfiguration => ArrayRef[L<Paws::ElastiCache::ReshardingConfiguration>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyReplicationGroupShardConfiguration>
 
 Returns: a L<Paws::ElastiCache::ModifyReplicationGroupShardConfigurationResult> instance
 
-Performs horizontal scaling on a Redis (cluster mode enabled) cluster
-with no downtime. Requires Redis engine version 3.2.10 or newer. For
-information on upgrading your engine to a newer version, see Upgrading
-Engine Versions
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/VersionManagement.html)
-in the Amazon ElastiCache User Guide.
-
-For more information on ElastiCache for Redis online horizontal
-scaling, see ElastiCache for Redis Horizontal Scaling
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/redis-cluster-resharding-online.html)
+Modifies a replication group's shards (node groups) by allowing you to
+add shards, remove shards, or rebalance the keyspaces among exisiting
+shards.
 
 
-=head2 PurchaseReservedCacheNodesOffering(ReservedCacheNodesOfferingId => Str, [CacheNodeCount => Int, ReservedCacheNodeId => Str])
+=head2 PurchaseReservedCacheNodesOffering
+
+=over
+
+=item ReservedCacheNodesOfferingId => Str
+
+=item [CacheNodeCount => Int]
+
+=item [ReservedCacheNodeId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::PurchaseReservedCacheNodesOffering>
 
@@ -1150,7 +1780,16 @@ Returns: a L<Paws::ElastiCache::PurchaseReservedCacheNodesOfferingResult> instan
 Allows you to purchase a reserved cache node offering.
 
 
-=head2 RebootCacheCluster(CacheClusterId => Str, CacheNodeIdsToReboot => ArrayRef[Str|Undef])
+=head2 RebootCacheCluster
+
+=over
+
+=item CacheClusterId => Str
+
+=item CacheNodeIdsToReboot => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::RebootCacheCluster>
 
@@ -1174,11 +1813,20 @@ Rebooting a cluster is currently supported on Memcached and Redis
 If you make changes to parameters that require a Redis (cluster mode
 enabled) cluster reboot for the changes to be applied, see Rebooting a
 Cluster
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Rebooting.htm)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html)
 for an alternate process.
 
 
-=head2 RemoveTagsFromResource(ResourceName => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 RemoveTagsFromResource
+
+=over
+
+=item ResourceName => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::RemoveTagsFromResource>
 
@@ -1188,7 +1836,18 @@ Removes the tags identified by the C<TagKeys> list from the named
 resource.
 
 
-=head2 ResetCacheParameterGroup(CacheParameterGroupName => Str, [ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>], ResetAllParameters => Bool])
+=head2 ResetCacheParameterGroup
+
+=over
+
+=item CacheParameterGroupName => Str
+
+=item [ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>]]
+
+=item [ResetAllParameters => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::ResetCacheParameterGroup>
 
@@ -1201,7 +1860,18 @@ specify the C<ResetAllParameters> and C<CacheParameterGroupName>
 parameters.
 
 
-=head2 RevokeCacheSecurityGroupIngress(CacheSecurityGroupName => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str)
+=head2 RevokeCacheSecurityGroupIngress
+
+=over
+
+=item CacheSecurityGroupName => Str
+
+=item EC2SecurityGroupName => Str
+
+=item EC2SecurityGroupOwnerId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::RevokeCacheSecurityGroupIngress>
 
@@ -1212,7 +1882,16 @@ disallow access from an Amazon EC2 security group that had been
 previously authorized.
 
 
-=head2 TestFailover(NodeGroupId => Str, ReplicationGroupId => Str)
+=head2 TestFailover
+
+=over
+
+=item NodeGroupId => Str
+
+=item ReplicationGroupId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElastiCache::TestFailover>
 
@@ -1286,7 +1965,7 @@ For more information see:
 =item *
 
 Viewing ElastiCache Events
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/ECEvents.Viewing.html)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html)
 in the I<ElastiCache User Guide>
 
 =item *
@@ -1300,7 +1979,7 @@ in the ElastiCache API Reference
 =back
 
 Also see, Testing Multi-AZ with Automatic Failover
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/AutoFailover.html#auto-failover-test)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test)
 in the I<ElastiCache User Guide>.
 
 

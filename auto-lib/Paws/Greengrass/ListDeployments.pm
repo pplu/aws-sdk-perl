@@ -21,38 +21,49 @@ Paws::Greengrass::ListDeployments - Arguments for method ListDeployments on L<Pa
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListDeployments on the 
-AWS Greengrass service. Use the attributes of this class
+This class represents the parameters used for calling the method ListDeployments on the
+L<AWS Greengrass|Paws::Greengrass> service. Use the attributes of this class
 as arguments to method ListDeployments.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDeployments.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListDeployments(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $ListDeploymentsResponse = $greengrass->ListDeployments(
+      GroupId    => 'My__string',
+      MaxResults => 'My__string',    # OPTIONAL
+      NextToken  => 'My__string',    # OPTIONAL
+    );
+
+    # Results:
+    my $Deployments = $ListDeploymentsResponse->Deployments;
+    my $NextToken   = $ListDeploymentsResponse->NextToken;
+
+    # Returns a L<Paws::Greengrass::ListDeploymentsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/ListDeployments>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> GroupId => Str
 
-The unique Id of the AWS Greengrass Group
+The ID of the Greengrass group.
 
 
 
 =head2 MaxResults => Str
 
-Specifies the maximum number of list results to be returned in this
-page
+The maximum number of results to be returned per request.
 
 
 
 =head2 NextToken => Str
 
-Specifies the pagination token used when iterating through a paginated
-request
+The token for the next set of results, or ''null'' if there are no
+additional results.
 
 
 

@@ -2,6 +2,7 @@ package Paws::AlexaForBusiness::ProfileData;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
   has DistanceUnit => (is => 'ro', isa => 'Str');
+  has IsDefault => (is => 'ro', isa => 'Bool');
   has ProfileArn => (is => 'ro', isa => 'Str');
   has ProfileName => (is => 'ro', isa => 'Str');
   has TemperatureUnit => (is => 'ro', isa => 'Str');
@@ -50,6 +51,11 @@ The data of a room profile.
 =head2 DistanceUnit => Str
 
   The distance unit of a room profile.
+
+
+=head2 IsDefault => Bool
+
+  Retrieves if the profile data is default or not.
 
 
 =head2 ProfileArn => Str

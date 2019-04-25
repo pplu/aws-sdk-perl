@@ -19,24 +19,34 @@ Paws::ServerlessRepo::GetApplicationPolicy - Arguments for method GetApplication
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetApplicationPolicy on the 
-AWSServerlessApplicationRepository service. Use the attributes of this class
+This class represents the parameters used for calling the method GetApplicationPolicy on the
+L<AWSServerlessApplicationRepository|Paws::ServerlessRepo> service. Use the attributes of this class
 as arguments to method GetApplicationPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetApplicationPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetApplicationPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $serverlessrepo = Paws->service('ServerlessRepo');
+    my $GetApplicationPolicyResponse = $serverlessrepo->GetApplicationPolicy(
+      ApplicationId => 'My__string',
+
+    );
+
+    # Results:
+    my $Statements = $GetApplicationPolicyResponse->Statements;
+
+    # Returns a L<Paws::ServerlessRepo::GetApplicationPolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/serverlessrepo/GetApplicationPolicy>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The id of the application to get policy for
+The Amazon Resource Name (ARN) of the application.
 
 
 

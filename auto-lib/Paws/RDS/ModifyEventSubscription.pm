@@ -22,17 +22,30 @@ Paws::RDS::ModifyEventSubscription - Arguments for method ModifyEventSubscriptio
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyEventSubscription on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyEventSubscription on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method ModifyEventSubscription.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyEventSubscription.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyEventSubscription(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To change event notification subscription settings
+    # This example changes the specified setting for the specified event
+    # notification subscription.
+    my $ModifyEventSubscriptionResult = $rds->ModifyEventSubscription(
+      {
+        'Enabled'          => 1,
+        'EventCategories'  => [ 'deletion', 'low storage' ],
+        'SourceType'       => 'db-instance',
+        'SubscriptionName' => 'mymysqleventsubscription'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyEventSubscription>
 
 =head1 ATTRIBUTES
 
@@ -49,7 +62,7 @@ A list of event categories for a SourceType that you want to subscribe
 to. You can see a list of the categories for a given SourceType in the
 Events
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-topic in the Amazon RDS User Guide or by using the
+topic in the I<Amazon RDS User Guide> or by using the
 B<DescribeEventCategories> action.
 
 

@@ -25,17 +25,41 @@ Paws::Route53::CreateHostedZone - Arguments for method CreateHostedZone on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateHostedZone on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateHostedZone on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method CreateHostedZone.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateHostedZone.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateHostedZone(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $CreateHostedZoneResponse = $route53->CreateHostedZone(
+      CallerReference  => 'MyNonce',
+      Name             => 'MyDNSName',
+      DelegationSetId  => 'MyResourceId',    # OPTIONAL
+      HostedZoneConfig => {
+        Comment     => 'MyResourceDescription',    # max: 256; OPTIONAL
+        PrivateZone => 1,                          # OPTIONAL
+      },    # OPTIONAL
+      VPC => {
+        VPCId     => 'MyVPCId',    # max: 1024; OPTIONAL
+        VPCRegion => 'us-east-1'
+        , # values: us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-west-2, eu-west-3, eu-central-1, ap-southeast-1, ap-southeast-2, ap-south-1, ap-northeast-1, ap-northeast-2, ap-northeast-3, eu-north-1, sa-east-1, ca-central-1, cn-north-1min: 1, max: 64; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $ChangeInfo    = $CreateHostedZoneResponse->ChangeInfo;
+    my $DelegationSet = $CreateHostedZoneResponse->DelegationSet;
+    my $HostedZone    = $CreateHostedZoneResponse->HostedZone;
+    my $Location      = $CreateHostedZoneResponse->Location;
+    my $VPC           = $CreateHostedZoneResponse->VPC;
+
+    # Returns a L<Paws::Route53::CreateHostedZoneResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/CreateHostedZone>
 
 =head1 ATTRIBUTES
 
@@ -83,18 +107,17 @@ C<HostedZoneConfig> and the other elements.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the domain. For resource record types that include a domain
-name, specify a fully qualified domain name, for example,
-I<www.example.com>. The trailing dot is optional; Amazon Route 53
-assumes that the domain name is fully qualified. This means that Amazon
+The name of the domain. Specify a fully qualified domain name, for
+example, I<www.example.com>. The trailing dot is optional; Amazon Route
+53 assumes that the domain name is fully qualified. This means that
 Route 53 treats I<www.example.com> (without a trailing dot) and
 I<www.example.com.> (with a trailing dot) as identical.
 
 If you're creating a public hosted zone, this is the name you have
 registered with your DNS registrar. If your domain name is registered
-with a registrar other than Amazon Route 53, change the name servers
-for your domain to the set of C<NameServers> that C<CreateHostedZone>
-returns in C<DelegationSet>.
+with a registrar other than Route 53, change the name servers for your
+domain to the set of C<NameServers> that C<CreateHostedZone> returns in
+C<DelegationSet>.
 
 
 

@@ -31,17 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 
 =head1 DESCRIPTION
 
-A complex type that contains information about changes to the resource
-record sets that Amazon Route 53 creates when you register an instance.
+A complex type that contains information about changes to the Route 53
+DNS records that AWS Cloud Map creates when you register an instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DnsRecords => ArrayRef[L<Paws::ServiceDiscovery::DnsRecord>]
 
-  An array that contains one C<DnsRecord> object for each resource record
-set that you want Amazon Route 53 to create when you register an
-instance.
+  An array that contains one C<DnsRecord> object for each Route 53 record
+that you want AWS Cloud Map to create when you register an instance.
 
 
 

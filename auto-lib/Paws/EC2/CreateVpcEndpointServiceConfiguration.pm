@@ -21,17 +21,32 @@ Paws::EC2::CreateVpcEndpointServiceConfiguration - Arguments for method CreateVp
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateVpcEndpointServiceConfiguration on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateVpcEndpointServiceConfiguration on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method CreateVpcEndpointServiceConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateVpcEndpointServiceConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateVpcEndpointServiceConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $CreateVpcEndpointServiceConfigurationResult =
+      $ec2->CreateVpcEndpointServiceConfiguration(
+      NetworkLoadBalancerArns => [ 'MyString', ... ],
+      AcceptanceRequired      => 1,                     # OPTIONAL
+      ClientToken             => 'MyString',            # OPTIONAL
+      DryRun                  => 1,                     # OPTIONAL
+      );
+
+    # Results:
+    my $ClientToken = $CreateVpcEndpointServiceConfigurationResult->ClientToken;
+    my $ServiceConfiguration =
+      $CreateVpcEndpointServiceConfigurationResult->ServiceConfiguration;
+
+   # Returns a L<Paws::EC2::CreateVpcEndpointServiceConfigurationResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateVpcEndpointServiceConfiguration>
 
 =head1 ATTRIBUTES
 
@@ -48,7 +63,7 @@ AcceptVpcEndpointConnections.
 
 Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. For more information, see How to Ensure Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
 
 
 

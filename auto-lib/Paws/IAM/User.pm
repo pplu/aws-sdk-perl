@@ -4,6 +4,8 @@ package Paws::IAM::User;
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
   has PasswordLastUsed => (is => 'ro', isa => 'Str');
   has Path => (is => 'ro', isa => 'Str', required => 1);
+  has PermissionsBoundary => (is => 'ro', isa => 'Paws::IAM::AttachedPermissionsBoundary');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
   has UserId => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -38,7 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::User o
 
 Contains information about an IAM user entity.
 
-This data type is used as a response element in the following actions:
+This data type is used as a response element in the following
+operations:
 
 =over
 
@@ -84,7 +87,7 @@ capture a user's last sign-in time, see the Credential Reports
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html)
 topic in the I<Using IAM> guide. If a password is used more than once
 in a five-minute span, only the first use is returned in this field. If
-the field is null (no value) then it indicates that they never signed
+the field is null (no value), then it indicates that they never signed
 in with a password. This can be because:
 
 =over
@@ -96,16 +99,16 @@ The user never had a password.
 =item *
 
 A password exists but has not been used since IAM started tracking this
-information on October 20th, 2014.
+information on October 20, 2014.
 
 =back
 
-A null does not mean that the user I<never> had a password. Also, if
-the user does not currently have a password, but had one in the past,
-then this field contains the date and time the most recent password was
-used.
+A null valuedoes not mean that the user I<never> had a password. Also,
+if the user does not currently have a password, but had one in the
+past, then this field contains the date and time the most recent
+password was used.
 
-This value is returned only in the GetUser and ListUsers actions.
+This value is returned only in the GetUser and ListUsers operations.
 
 
 =head2 B<REQUIRED> Path => Str
@@ -114,6 +117,23 @@ This value is returned only in the GetUser and ListUsers actions.
 Identifiers
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
+
+
+=head2 PermissionsBoundary => L<Paws::IAM::AttachedPermissionsBoundary>
+
+  The ARN of the policy used to set the permissions boundary for the
+user.
+
+For more information about permissions boundaries, see Permissions
+Boundaries for IAM Identities in the I<IAM User Guide>.
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+  A list of tags that are associated with the specified user. For more
+information about tagging, see Tagging IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
 
 
 =head2 B<REQUIRED> UserId => Str

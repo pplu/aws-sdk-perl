@@ -24,25 +24,41 @@ Paws::CodeDeploy::ListApplicationRevisions - Arguments for method ListApplicatio
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListApplicationRevisions on the 
-AWS CodeDeploy service. Use the attributes of this class
+This class represents the parameters used for calling the method ListApplicationRevisions on the
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method ListApplicationRevisions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListApplicationRevisions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListApplicationRevisions(Att1 => $value1, Att2 => $value2, ...);
+    my $codedeploy = Paws->service('CodeDeploy');
+    my $ListApplicationRevisionsOutput = $codedeploy->ListApplicationRevisions(
+      ApplicationName => 'MyApplicationName',
+      Deployed        => 'include',             # OPTIONAL
+      NextToken       => 'MyNextToken',         # OPTIONAL
+      S3Bucket        => 'MyS3Bucket',          # OPTIONAL
+      S3KeyPrefix     => 'MyS3Key',             # OPTIONAL
+      SortBy          => 'registerTime',        # OPTIONAL
+      SortOrder       => 'ascending',           # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $ListApplicationRevisionsOutput->NextToken;
+    my $Revisions = $ListApplicationRevisionsOutput->Revisions;
+
+    # Returns a L<Paws::CodeDeploy::ListApplicationRevisionsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codedeploy/ListApplicationRevisions>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of an AWS CodeDeploy application associated with the
-applicable IAM user or AWS account.
+The name of an AWS CodeDeploy application associated with the IAM user
+or AWS account.
 
 
 
@@ -74,7 +90,7 @@ Valid values are: C<"include">, C<"exclude">, C<"ignore">
 
 =head2 NextToken => Str
 
-An identifier returned from the previous list application revisions
+An identifier returned from the previous C<ListApplicationRevisions>
 call. It can be used to return the next set of applications in the
 list.
 
@@ -84,7 +100,7 @@ list.
 
 An Amazon S3 bucket name to limit the search for revisions.
 
-If set to null, all of the user's buckets will be searched.
+If set to null, all of the user's buckets are searched.
 
 
 
@@ -118,7 +134,7 @@ deployment.
 
 =back
 
-If not specified or set to null, the results will be returned in an
+If not specified or set to null, the results are returned in an
 arbitrary order.
 
 Valid values are: C<"registerTime">, C<"firstUsedTime">, C<"lastUsedTime">
@@ -139,9 +155,9 @@ descending: descending order.
 
 =back
 
-If not specified, the results will be sorted in ascending order.
+If not specified, the results are sorted in ascending order.
 
-If set to null, the results will be sorted in an arbitrary order.
+If set to null, the results are sorted in an arbitrary order.
 
 Valid values are: C<"ascending">, C<"descending">
 

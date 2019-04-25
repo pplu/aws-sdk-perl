@@ -26,17 +26,33 @@ Paws::EC2::CreateNetworkInterface - Arguments for method CreateNetworkInterface 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateNetworkInterface on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateNetworkInterface on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method CreateNetworkInterface.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateNetworkInterface.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateNetworkInterface(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To create a network interface
+    # This example creates a network interface for the specified subnet.
+    my $CreateNetworkInterfaceResult = $ec2->CreateNetworkInterface(
+      {
+        'Description'      => 'my network interface',
+        'Groups'           => ['sg-903004f8'],
+        'PrivateIpAddress' => '10.0.2.17',
+        'SubnetId'         => 'subnet-9d4a7b6c'
+      }
+    );
+
+    # Results:
+    my $NetworkInterface = $CreateNetworkInterfaceResult->NetworkInterface;
+
+    # Returns a L<Paws::EC2::CreateNetworkInterfaceResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateNetworkInterface>
 
 =head1 ATTRIBUTES
 
@@ -107,7 +123,7 @@ IP address using C<privateIpAddresses>.
 The number of IP addresses you can assign to a network interface varies
 by instance type. For more information, see IP Addresses Per ENI Per
 Instance Type
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 

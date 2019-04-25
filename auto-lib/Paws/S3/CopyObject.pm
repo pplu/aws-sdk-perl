@@ -24,6 +24,9 @@ package Paws::S3::CopyObject;
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', header_prefix => 'x-amz-meta-', traits => ['ParamInHeaders']);
   has MetadataDirective => (is => 'ro', isa => 'Str', header_name => 'x-amz-metadata-directive', traits => ['ParamInHeader']);
+  has ObjectLockLegalHoldStatus => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-legal-hold', traits => ['ParamInHeader']);
+  has ObjectLockMode => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-mode', traits => ['ParamInHeader']);
+  has ObjectLockRetainUntilDate => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-retain-until-date', traits => ['ParamInHeader']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
@@ -53,17 +56,70 @@ Paws::S3::CopyObject - Arguments for method CopyObject on L<Paws::S3>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CopyObject on the 
-Amazon Simple Storage Service service. Use the attributes of this class
+This class represents the parameters used for calling the method CopyObject on the
+L<Amazon Simple Storage Service|Paws::S3> service. Use the attributes of this class
 as arguments to method CopyObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CopyObject(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $CopyObjectOutput = $s3->CopyObject(
+      Bucket                      => 'MyBucketName',
+      CopySource                  => 'MyCopySource',
+      Key                         => 'MyObjectKey',
+      ACL                         => 'private',                    # OPTIONAL
+      CacheControl                => 'MyCacheControl',             # OPTIONAL
+      ContentDisposition          => 'MyContentDisposition',       # OPTIONAL
+      ContentEncoding             => 'MyContentEncoding',          # OPTIONAL
+      ContentLanguage             => 'MyContentLanguage',          # OPTIONAL
+      ContentType                 => 'MyContentType',              # OPTIONAL
+      CopySourceIfMatch           => 'MyCopySourceIfMatch',        # OPTIONAL
+      CopySourceIfModifiedSince   => '1970-01-01T01:00:00',        # OPTIONAL
+      CopySourceIfNoneMatch       => 'MyCopySourceIfNoneMatch',    # OPTIONAL
+      CopySourceIfUnmodifiedSince => '1970-01-01T01:00:00',        # OPTIONAL
+      CopySourceSSECustomerAlgorithm =>
+        'MyCopySourceSSECustomerAlgorithm',                        # OPTIONAL
+      CopySourceSSECustomerKey    => 'MyCopySourceSSECustomerKey',    # OPTIONAL
+      CopySourceSSECustomerKeyMD5 => 'MyCopySourceSSECustomerKeyMD5', # OPTIONAL
+      Expires                     => '1970-01-01T01:00:00',           # OPTIONAL
+      GrantFullControl            => 'MyGrantFullControl',            # OPTIONAL
+      GrantRead                   => 'MyGrantRead',                   # OPTIONAL
+      GrantReadACP                => 'MyGrantReadACP',                # OPTIONAL
+      GrantWriteACP               => 'MyGrantWriteACP',               # OPTIONAL
+      Metadata          => { 'MyMetadataKey' => 'MyMetadataValue', }, # OPTIONAL
+      MetadataDirective => 'COPY',                                    # OPTIONAL
+      ObjectLockLegalHoldStatus => 'ON',                              # OPTIONAL
+      ObjectLockMode            => 'GOVERNANCE',                      # OPTIONAL
+      ObjectLockRetainUntilDate => '1970-01-01T01:00:00',             # OPTIONAL
+      RequestPayer              => 'requester',                       # OPTIONAL
+      SSECustomerAlgorithm      => 'MySSECustomerAlgorithm',          # OPTIONAL
+      SSECustomerKey            => 'MySSECustomerKey',                # OPTIONAL
+      SSECustomerKeyMD5         => 'MySSECustomerKeyMD5',             # OPTIONAL
+      SSEKMSKeyId               => 'MySSEKMSKeyId',                   # OPTIONAL
+      ServerSideEncryption      => 'AES256',                          # OPTIONAL
+      StorageClass              => 'STANDARD',                        # OPTIONAL
+      Tagging                   => 'MyTaggingHeader',                 # OPTIONAL
+      TaggingDirective          => 'COPY',                            # OPTIONAL
+      WebsiteRedirectLocation   => 'MyWebsiteRedirectLocation',       # OPTIONAL
+    );
+
+    # Results:
+    my $CopyObjectResult     = $CopyObjectOutput->CopyObjectResult;
+    my $CopySourceVersionId  = $CopyObjectOutput->CopySourceVersionId;
+    my $Expiration           = $CopyObjectOutput->Expiration;
+    my $RequestCharged       = $CopyObjectOutput->RequestCharged;
+    my $SSECustomerAlgorithm = $CopyObjectOutput->SSECustomerAlgorithm;
+    my $SSECustomerKeyMD5    = $CopyObjectOutput->SSECustomerKeyMD5;
+    my $SSEKMSKeyId          = $CopyObjectOutput->SSEKMSKeyId;
+    my $ServerSideEncryption = $CopyObjectOutput->ServerSideEncryption;
+    my $VersionId            = $CopyObjectOutput->VersionId;
+
+    # Returns a L<Paws::S3::CopyObjectOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/CopyObject>
 
 =head1 ATTRIBUTES
 
@@ -217,6 +273,25 @@ replaced with metadata provided in the request.
 
 Valid values are: C<"COPY">, C<"REPLACE">
 
+=head2 ObjectLockLegalHoldStatus => Str
+
+Specifies whether you want to apply a Legal Hold to the copied object.
+
+Valid values are: C<"ON">, C<"OFF">
+
+=head2 ObjectLockMode => Str
+
+The Object Lock mode that you want to apply to the copied object.
+
+Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
+
+=head2 ObjectLockRetainUntilDate => Str
+
+The date and time when you want the copied object's Object Lock to
+expire.
+
+
+
 =head2 RequestPayer => Str
 
 
@@ -269,7 +344,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signatur
 
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">
 
 =head2 Tagging => Str
 

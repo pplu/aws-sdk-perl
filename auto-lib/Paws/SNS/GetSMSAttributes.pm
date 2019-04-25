@@ -18,17 +18,26 @@ Paws::SNS::GetSMSAttributes - Arguments for method GetSMSAttributes on L<Paws::S
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetSMSAttributes on the 
-Amazon Simple Notification Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetSMSAttributes on the
+L<Amazon Simple Notification Service|Paws::SNS> service. Use the attributes of this class
 as arguments to method GetSMSAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSMSAttributes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetSMSAttributes(Att1 => $value1, Att2 => $value2, ...);
+    my $sns = Paws->service('SNS');
+    my $GetSMSAttributesResponse = $sns->GetSMSAttributes(
+      Attributes => [ 'MyString', ... ],    # OPTIONAL
+    );
+
+    # Results:
+    my $Attributes = $GetSMSAttributesResponse->Attributes;
+
+    # Returns a L<Paws::SNS::GetSMSAttributesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns/GetSMSAttributes>
 
 =head1 ATTRIBUTES
 

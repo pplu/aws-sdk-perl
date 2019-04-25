@@ -1,8 +1,12 @@
 
 package Paws::RDS::RestoreDBClusterToPointInTime;
   use Moose;
+  has BacktrackWindow => (is => 'ro', isa => 'Int');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
@@ -29,19 +33,53 @@ Paws::RDS::RestoreDBClusterToPointInTime - Arguments for method RestoreDBCluster
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RestoreDBClusterToPointInTime on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method RestoreDBClusterToPointInTime on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method RestoreDBClusterToPointInTime.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBClusterToPointInTime.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RestoreDBClusterToPointInTime(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To restore a DB cluster to a point in time.
+    # The following example restores a DB cluster to a new DB cluster at a point
+    # in time from the source DB cluster.
+    my $RestoreDBClusterToPointInTimeResult =
+      $rds->RestoreDBClusterToPointInTime(
+      {
+        'DBClusterIdentifier'       => 'sample-restored-cluster1',
+        'RestoreToTime'             => '2016-09-13T18:45:00Z',
+        'SourceDBClusterIdentifier' => 'sample-cluster1'
+      }
+      );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/RestoreDBClusterToPointInTime>
 
 =head1 ATTRIBUTES
+
+
+=head2 BacktrackWindow => Int
+
+The target backtrack window, in seconds. To disable backtracking, set
+this value to 0.
+
+Default: 0
+
+Constraints:
+
+=over
+
+=item *
+
+If specified, this value must be set to a number from 0 to 259,200 (72
+hours).
+
+=back
+
+
 
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
@@ -62,7 +100,39 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
+
+=back
+
+
+
+
+=head2 DBClusterParameterGroupName => Str
+
+The name of the DB cluster parameter group to associate with this DB
+cluster. If this argument is omitted, the default DB cluster parameter
+group for the specified engine is used.
+
+Constraints:
+
+=over
+
+=item *
+
+If supplied, must match the name of an existing DB cluster parameter
+group.
+
+=item *
+
+Must be 1 to 255 letters, numbers, or hyphens.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -77,6 +147,25 @@ Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 DeletionProtection => Bool
+
+Indicates if the DB cluster should have deletion protection enabled.
+The database can't be deleted when this value is set to true. The
+default is false.
+
+
+
+=head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+The list of logs that the restored DB cluster is to export to
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon Aurora User Guide>.
 
 
 
@@ -105,8 +194,8 @@ a KMS key that is different than the KMS key used to encrypt the source
 DB cluster. The new DB cluster is encrypted with the KMS key identified
 by the C<KmsKeyId> parameter.
 
-If you do not specify a value for the C<KmsKeyId> parameter, then the
-following will occur:
+If you don't specify a value for the C<KmsKeyId> parameter, then the
+following occurs:
 
 =over
 
@@ -138,9 +227,9 @@ The name of the option group for the new DB cluster.
 
 The port number on which the new DB cluster accepts connections.
 
-Constraints: Value must be C<1150-65535>
+Constraints: A value from C<1150-65535>.
 
-Default: The same port as the original DB cluster.
+Default: The default port for the engine.
 
 
 
@@ -166,11 +255,11 @@ provided
 
 =item *
 
-Cannot be specified if C<UseLatestRestorableTime> parameter is true
+Can't be specified if C<UseLatestRestorableTime> parameter is true
 
 =item *
 
-Cannot be specified if C<RestoreType> parameter is C<copy-on-write>
+Can't be specified if C<RestoreType> parameter is C<copy-on-write>
 
 =back
 
@@ -235,7 +324,7 @@ restorable backup time, and C<false> otherwise.
 
 Default: C<false>
 
-Constraints: Cannot be specified if C<RestoreToTime> parameter is
+Constraints: Can't be specified if C<RestoreToTime> parameter is
 provided.
 
 

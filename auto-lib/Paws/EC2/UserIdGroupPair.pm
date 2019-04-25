@@ -62,6 +62,9 @@ a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
 security group in EC2-Classic or a default VPC only. For a security
 group in a nondefault VPC, use the security group ID.
 
+For a referenced security group in another VPC, this value is not
+returned if the referenced security group is deleted.
+
 
 =head2 PeeringStatus => Str
 
@@ -70,8 +73,11 @@ group in a nondefault VPC, use the security group ID.
 
 =head2 UserId => Str
 
-  The ID of an AWS account. For a referenced security group in another
-VPC, the account ID of the referenced security group is returned.
+  The ID of an AWS account.
+
+For a referenced security group in another VPC, the account ID of the
+referenced security group is returned in the response. If the
+referenced security group is deleted, this value is not returned.
 
 [EC2-Classic] Required when adding or removing rules that reference a
 security group in another AWS account.

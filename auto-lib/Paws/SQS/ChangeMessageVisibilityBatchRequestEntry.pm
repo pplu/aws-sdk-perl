@@ -41,11 +41,11 @@ C<ChangeMessageVisibilityBatchRequestEntry.n>, where C<n> is an integer
 value starting with C<1>. For example, a parameter list for this action
 might look like this:
 
-C<&amp;ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2>
+C<&ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2>
 
-C<&amp;ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=E<lt>replaceableE<gt>Your_Receipt_HandleE<lt>/replaceableE<gt>>
+C<&ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=your_receipt_handle>
 
-C<&amp;ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45>
+C<&ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45>
 
 =head1 ATTRIBUTES
 

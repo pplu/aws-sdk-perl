@@ -3,10 +3,10 @@ package Paws::ApiGateway::GetDocumentationParts;
   use Moose;
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
   has LocationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'locationStatus');
-  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameQuery');
+  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
   has Path => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'path');
   has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
   has Type => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type');
 
   use MooseX::ClassAttribute;
@@ -25,24 +25,41 @@ Paws::ApiGateway::GetDocumentationParts - Arguments for method GetDocumentationP
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetDocumentationParts on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method GetDocumentationParts on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GetDocumentationParts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDocumentationParts.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetDocumentationParts(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $DocumentationParts = $apigateway->GetDocumentationParts(
+      RestApiId      => 'MyString',
+      Limit          => 1,               # OPTIONAL
+      LocationStatus => 'DOCUMENTED',    # OPTIONAL
+      NameQuery      => 'MyString',      # OPTIONAL
+      Path           => 'MyString',      # OPTIONAL
+      Position       => 'MyString',      # OPTIONAL
+      Type           => 'API',           # OPTIONAL
+    );
+
+    # Results:
+    my $Items    = $DocumentationParts->Items;
+    my $Position = $DocumentationParts->Position;
+
+    # Returns a L<Paws::ApiGateway::DocumentationParts> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetDocumentationParts>
 
 =head1 ATTRIBUTES
 
 
 =head2 Limit => Int
 
-The maximum number of returned results per page.
+The maximum number of returned results per page. The default value is
+25 and the maximum value is 500.
 
 
 

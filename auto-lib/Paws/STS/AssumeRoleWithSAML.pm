@@ -22,37 +22,67 @@ Paws::STS::AssumeRoleWithSAML - Arguments for method AssumeRoleWithSAML on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method AssumeRoleWithSAML on the 
-AWS Security Token Service service. Use the attributes of this class
+This class represents the parameters used for calling the method AssumeRoleWithSAML on the
+L<AWS Security Token Service|Paws::STS> service. Use the attributes of this class
 as arguments to method AssumeRoleWithSAML.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssumeRoleWithSAML.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AssumeRoleWithSAML(Att1 => $value1, Att2 => $value2, ...);
+    my $sts = Paws->service('STS');
+    my $AssumeRoleWithSAMLResponse = $sts->AssumeRoleWithSAML(
+      PrincipalArn    => 'MyarnType',
+      RoleArn         => 'MyarnType',
+      SAMLAssertion   => 'MySAMLAssertionType',
+      DurationSeconds => 1,                                # OPTIONAL
+      Policy          => 'MysessionPolicyDocumentType',    # OPTIONAL
+    );
+
+    # Results:
+    my $AssumedRoleUser  = $AssumeRoleWithSAMLResponse->AssumedRoleUser;
+    my $Audience         = $AssumeRoleWithSAMLResponse->Audience;
+    my $Credentials      = $AssumeRoleWithSAMLResponse->Credentials;
+    my $Issuer           = $AssumeRoleWithSAMLResponse->Issuer;
+    my $NameQualifier    = $AssumeRoleWithSAMLResponse->NameQualifier;
+    my $PackedPolicySize = $AssumeRoleWithSAMLResponse->PackedPolicySize;
+    my $Subject          = $AssumeRoleWithSAMLResponse->Subject;
+    my $SubjectType      = $AssumeRoleWithSAMLResponse->SubjectType;
+
+    # Returns a L<Paws::STS::AssumeRoleWithSAMLResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sts/AssumeRoleWithSAML>
 
 =head1 ATTRIBUTES
 
 
 =head2 DurationSeconds => Int
 
-The duration, in seconds, of the role session. The value can range from
-900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the
-value is set to 3600 seconds. An expiration can also be specified in
-the SAML authentication response's C<SessionNotOnOrAfter> value. The
-actual expiration time is whichever value is shorter.
+The duration, in seconds, of the role session. Your role session lasts
+for the duration that you specify for the C<DurationSeconds> parameter,
+or until the time specified in the SAML authentication response's
+C<SessionNotOnOrAfter> value, whichever is shorter. You can provide a
+C<DurationSeconds> value from 900 seconds (15 minutes) up to the
+maximum session duration setting for the role. This setting can have a
+value from 1 hour to 12 hours. If you specify a value higher than this
+setting, the operation fails. For example, if you specify a session
+duration of 12 hours, but your administrator set the maximum session
+duration to 6 hours, your operation fails. To learn how to view the
+maximum value for your role, see View the Maximum Session Duration
+Setting for a Role
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+in the I<IAM User Guide>.
 
-This is separate from the duration of a console session that you might
-request using the returned credentials. The request to the federation
-endpoint for a console sign-in token takes a C<SessionDuration>
-parameter that specifies the maximum length of the console session,
-separately from the C<DurationSeconds> parameter on this API. For more
-information, see Enabling SAML 2.0 Federated Users to Access the AWS
-Management Console
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-saml.html)
+By default, the value is set to 3600 seconds.
+
+The C<DurationSeconds> parameter is separate from the duration of a
+console session that you might request using the returned credentials.
+The request to the federation endpoint for a console sign-in token
+takes a C<SessionDuration> parameter that specifies the maximum length
+of the console session. For more information, see Creating a URL that
+Enables Federated Users to Access the AWS Management Console
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
 in the I<IAM User Guide>.
 
 

@@ -20,45 +20,70 @@ Paws::Lambda::GetFunction - Arguments for method GetFunction on L<Paws::Lambda>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetFunction on the 
-AWS Lambda service. Use the attributes of this class
+This class represents the parameters used for calling the method GetFunction on the
+L<AWS Lambda|Paws::Lambda> service. Use the attributes of this class
 as arguments to method GetFunction.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetFunction.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetFunction(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # To retrieve a Lambda function's event source mapping
+    # This operation retrieves a Lambda function's event source mapping
+    my $GetFunctionResponse = $lambda->GetFunction(
+      {
+        'FunctionName' => 'myFunction',
+        'Qualifier'    => 1
+      }
+    );
+
+    # Results:
+    my $Code          = $GetFunctionResponse->Code;
+    my $Configuration = $GetFunctionResponse->Configuration;
+
+    # Returns a L<Paws::Lambda::GetFunctionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/GetFunction>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The Lambda function name.
+The name of the Lambda function, version, or alias.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<my-function> (name-only), C<my-function:v1> (with
+alias).
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:my-function>.
+
+=back
+
+You can append a version number or alias to any of the formats. The
+length constraint applies only to the full ARN. If you specify only the
+function name, it is limited to 64 characters in length.
 
 
 
 =head2 Qualifier => Str
 
-Use this optional parameter to specify a function version or an alias
-name. If you specify function version, the API uses qualified function
-ARN for the request and returns information about the specific Lambda
-function version. If you specify an alias name, the API uses the alias
-ARN and returns information about the function version to which the
-alias points. If you don't provide this parameter, the API uses
-unqualified function ARN and returns information about the C<$LATEST>
-version of the Lambda function.
+Specify a version or alias to get details about a published version of
+the function.
 
 
 

@@ -8,10 +8,11 @@ package Paws::MediaLive::HlsGroupSettings;
   has ClientCache => (is => 'ro', isa => 'Str', request_name => 'clientCache', traits => ['NameInRequest']);
   has CodecSpecification => (is => 'ro', isa => 'Str', request_name => 'codecSpecification', traits => ['NameInRequest']);
   has ConstantIv => (is => 'ro', isa => 'Str', request_name => 'constantIv', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest']);
+  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
   has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
   has EncryptionType => (is => 'ro', isa => 'Str', request_name => 'encryptionType', traits => ['NameInRequest']);
   has HlsCdnSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsCdnSettings', request_name => 'hlsCdnSettings', traits => ['NameInRequest']);
+  has IFrameOnlyPlaylists => (is => 'ro', isa => 'Str', request_name => 'iFrameOnlyPlaylists', traits => ['NameInRequest']);
   has IndexNSegments => (is => 'ro', isa => 'Int', request_name => 'indexNSegments', traits => ['NameInRequest']);
   has InputLossAction => (is => 'ro', isa => 'Str', request_name => 'inputLossAction', traits => ['NameInRequest']);
   has IvInManifest => (is => 'ro', isa => 'Str', request_name => 'ivInManifest', traits => ['NameInRequest']);
@@ -27,6 +28,7 @@ package Paws::MediaLive::HlsGroupSettings;
   has OutputSelection => (is => 'ro', isa => 'Str', request_name => 'outputSelection', traits => ['NameInRequest']);
   has ProgramDateTime => (is => 'ro', isa => 'Str', request_name => 'programDateTime', traits => ['NameInRequest']);
   has ProgramDateTimePeriod => (is => 'ro', isa => 'Int', request_name => 'programDateTimePeriod', traits => ['NameInRequest']);
+  has RedundantManifest => (is => 'ro', isa => 'Str', request_name => 'redundantManifest', traits => ['NameInRequest']);
   has SegmentationMode => (is => 'ro', isa => 'Str', request_name => 'segmentationMode', traits => ['NameInRequest']);
   has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has SegmentsPerSubdirectory => (is => 'ro', isa => 'Int', request_name => 'segmentsPerSubdirectory', traits => ['NameInRequest']);
@@ -131,7 +133,7 @@ represented by a 32-character text string. If ivSource is set to
 encryption.
 
 
-=head2 Destination => L<Paws::MediaLive::OutputLocationRef>
+=head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
 
   A directory or HTTP destination for the HLS segments, manifest files,
 and encryption keys (if enabled).
@@ -153,11 +155,17 @@ parameter if no encryption is desired.
   Parameters that control interactions with the CDN.
 
 
+=head2 IFrameOnlyPlaylists => Str
+
+  If enabled, writes out I-Frame only playlists in addition to media
+playlists.
+
+
 =head2 IndexNSegments => Int
 
-  Number of segments to keep in the playlist (.m3u8) file. mode must be
-"vod" for this setting to have an effect, and this number should be
-less than or equal to keepSegments.
+  If mode is "live", the number of segments to retain in the manifest
+(.m3u8) file. This number must be less than or equal to keepSegments.
+If mode is "vod", this parameter has no effect.
 
 
 =head2 InputLossAction => Str
@@ -184,8 +192,8 @@ change every segment (to match the segment number). If this is set to
 
 =head2 KeepSegments => Int
 
-  Number of segments to retain in the destination directory. mode must be
-"live" for this setting to have an effect.
+  If mode is "live", the number of TS segments to retain in the
+destination directory. If mode is "vod", this parameter has no effect.
 
 
 =head2 KeyFormat => Str
@@ -226,9 +234,13 @@ size if needed.
 
 =head2 Mode => Str
 
-  If set to "vod", keeps and indexes all segments starting with the first
-segment. If set to "live" segments will age out and only the last
-keepSegments number of segments will be retained.
+  If "vod", all segments are indexed and kept permanently in the
+destination and manifest. If "live", only the number segments specified
+in keepSegments and indexNSegments are kept; newer segments replace
+older segments, which may prevent players from rewinding all the way to
+the beginning of the event. VOD mode uses HLS EXT-X-PLAYLIST-TYPE of
+EVENT while the channel is running, converting it to a "VOD" type
+manifest on completion of the stream.
 
 
 =head2 OutputSelection => Str
@@ -251,10 +263,16 @@ using the timestampOffset.
   Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
 
 
+=head2 RedundantManifest => Str
+
+  When set to "enabled", includes the media playlists from both pipelines
+in the master manifest (.m3u8) file.
+
+
 =head2 SegmentationMode => Str
 
-  When set to useInputSegmentation, the output segment or fragment points
-are set by the RAI markers from the input streams.
+  useInputSegmentation has been deprecated. The configured segment size
+is always used.
 
 
 =head2 SegmentLength => Int

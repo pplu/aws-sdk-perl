@@ -17,9 +17,11 @@ Paws::SNS::SubscribeResponse
 
 =head2 SubscriptionArn => Str
 
-The ARN of the subscription, if the service was able to create a
-subscription immediately (without requiring endpoint owner
-confirmation).
+The ARN of the subscription if it is confirmed, or the string "pending
+confirmation" if the subscription requires confirmation. However, if
+the API request parameter C<ReturnSubscriptionArn> is true, then the
+value is always the subscription ARN, even if the subscription requires
+confirmation.
 
 
 =head2 _request_id => Str

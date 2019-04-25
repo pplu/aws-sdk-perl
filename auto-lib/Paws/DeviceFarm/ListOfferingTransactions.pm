@@ -18,17 +18,33 @@ Paws::DeviceFarm::ListOfferingTransactions - Arguments for method ListOfferingTr
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListOfferingTransactions on the 
-AWS Device Farm service. Use the attributes of this class
+This class represents the parameters used for calling the method ListOfferingTransactions on the
+L<AWS Device Farm|Paws::DeviceFarm> service. Use the attributes of this class
 as arguments to method ListOfferingTransactions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListOfferingTransactions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListOfferingTransactions(Att1 => $value1, Att2 => $value2, ...);
+    my $devicefarm = Paws->service('DeviceFarm');
+    # To get information about device offering transactions
+    # The following example returns information about Device Farm offering
+    # transactions.
+    my $ListOfferingTransactionsResult = $devicefarm->ListOfferingTransactions(
+      {
+        'NextToken' =>
+          'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE='
+      }
+    );
+
+    # Results:
+    my $offeringTransactions =
+      $ListOfferingTransactionsResult->offeringTransactions;
+
+    # Returns a L<Paws::DeviceFarm::ListOfferingTransactionsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devicefarm/ListOfferingTransactions>
 
 =head1 ATTRIBUTES
 

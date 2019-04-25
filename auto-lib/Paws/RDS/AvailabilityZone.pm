@@ -49,7 +49,7 @@ OrderableDBInstanceOption
 
 =head2 Name => Str
 
-  The name of the availability zone.
+  The name of the Availability Zone.
 
 
 

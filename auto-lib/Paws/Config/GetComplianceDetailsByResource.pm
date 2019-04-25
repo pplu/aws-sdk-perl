@@ -21,17 +21,35 @@ Paws::Config::GetComplianceDetailsByResource - Arguments for method GetComplianc
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetComplianceDetailsByResource on the 
-AWS Config service. Use the attributes of this class
+This class represents the parameters used for calling the method GetComplianceDetailsByResource on the
+L<AWS Config|Paws::Config> service. Use the attributes of this class
 as arguments to method GetComplianceDetailsByResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetComplianceDetailsByResource.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetComplianceDetailsByResource(Att1 => $value1, Att2 => $value2, ...);
+    my $config = Paws->service('Config');
+    my $GetComplianceDetailsByResourceResponse =
+      $config->GetComplianceDetailsByResource(
+      ResourceId      => 'MyBaseResourceId',
+      ResourceType    => 'MyStringWithCharLimit256',
+      ComplianceTypes => [
+        'COMPLIANT',
+        ... # values: COMPLIANT, NON_COMPLIANT, NOT_APPLICABLE, INSUFFICIENT_DATA
+      ],    # OPTIONAL
+      NextToken => 'MyString',    # OPTIONAL
+      );
+
+    # Results:
+    my $EvaluationResults =
+      $GetComplianceDetailsByResourceResponse->EvaluationResults;
+    my $NextToken = $GetComplianceDetailsByResourceResponse->NextToken;
+
+    # Returns a L<Paws::Config::GetComplianceDetailsByResourceResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config/GetComplianceDetailsByResource>
 
 =head1 ATTRIBUTES
 
@@ -47,7 +65,7 @@ C<NOT_APPLICABLE>.
 
 =head2 NextToken => Str
 
-The C<NextToken> string returned on a previous page that you use to get
+The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
 
 

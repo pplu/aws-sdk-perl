@@ -20,17 +20,23 @@ Paws::EC2::ResetNetworkInterfaceAttribute - Arguments for method ResetNetworkInt
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ResetNetworkInterfaceAttribute on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method ResetNetworkInterfaceAttribute on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ResetNetworkInterfaceAttribute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ResetNetworkInterfaceAttribute.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ResetNetworkInterfaceAttribute(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    $ec2->ResetNetworkInterfaceAttribute(
+      NetworkInterfaceId => 'MyString',
+      DryRun             => 1,             # OPTIONAL
+      SourceDestCheck    => 'MyString',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ResetNetworkInterfaceAttribute>
 
 =head1 ATTRIBUTES
 

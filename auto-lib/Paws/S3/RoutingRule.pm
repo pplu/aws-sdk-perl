@@ -50,7 +50,7 @@ might process the error.
 
   Container for redirect information. You can redirect requests to
 another host, to another page, or with another protocol. In the event
-of an error, you can can specify a different error code to return.
+of an error, you can specify a different error code to return.
 
 
 

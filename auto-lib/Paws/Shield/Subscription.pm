@@ -1,5 +1,8 @@
 package Paws::Shield::Subscription;
   use Moose;
+  has AutoRenew => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Str');
+  has Limits => (is => 'ro', isa => 'ArrayRef[Paws::Shield::Limit]');
   has StartTime => (is => 'ro', isa => 'Str');
   has TimeCommitmentInSeconds => (is => 'ro', isa => 'Int');
 1;
@@ -21,20 +24,42 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Shield::Subscription object:
 
-  $service_obj->Method(Att1 => { StartTime => $value, ..., TimeCommitmentInSeconds => $value  });
+  $service_obj->Method(Att1 => { AutoRenew => $value, ..., TimeCommitmentInSeconds => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Shield::Subscription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->StartTime
+  $result->Att1->AutoRenew
 
 =head1 DESCRIPTION
 
 Information about the AWS Shield Advanced subscription for an account.
 
 =head1 ATTRIBUTES
+
+
+=head2 AutoRenew => Str
+
+  If C<ENABLED>, the subscription will be automatically renewed at the
+end of the existing subscription period.
+
+When you initally create a subscription, C<AutoRenew> is set to
+C<ENABLED>. You can change this by submitting an C<UpdateSubscription>
+request. If the C<UpdateSubscription> request does not included a value
+for C<AutoRenew>, the existing value for C<AutoRenew> remains
+unchanged.
+
+
+=head2 EndTime => Str
+
+  The date and time your subscription will end.
+
+
+=head2 Limits => ArrayRef[L<Paws::Shield::Limit>]
+
+  Specifies how many protections of a given type you can create.
 
 
 =head2 StartTime => Str

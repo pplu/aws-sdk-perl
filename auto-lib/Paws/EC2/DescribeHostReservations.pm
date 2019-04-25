@@ -21,17 +21,41 @@ Paws::EC2::DescribeHostReservations - Arguments for method DescribeHostReservati
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeHostReservations on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeHostReservations on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeHostReservations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeHostReservations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeHostReservations(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeHostReservationsResult = $ec2->DescribeHostReservations(
+      Filter => [
+        {
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
+        },
+        ...
+      ],                           # OPTIONAL
+      HostReservationIdSet => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $HostReservationSet =
+      $DescribeHostReservationsResult->HostReservationSet;
+    my $NextToken = $DescribeHostReservationsResult->NextToken;
+
+    # Returns a L<Paws::EC2::DescribeHostReservationsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeHostReservations>
 
 =head1 ATTRIBUTES
 
@@ -44,7 +68,7 @@ One or more filters.
 
 =item *
 
-C<instance-family> - The instance family (e.g., C<m4>).
+C<instance-family> - The instance family (for example, C<m4>).
 
 =item *
 
@@ -71,8 +95,8 @@ One or more host reservation IDs.
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned C<nextToken> value. This value can be between 5 and 500;
-if C<maxResults> is given a larger value than 500, you will receive an
+the returned C<nextToken> value. This value can be between 5 and 500.
+If C<maxResults> is given a larger value than 500, you receive an
 error.
 
 

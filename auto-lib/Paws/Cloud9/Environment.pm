@@ -74,12 +74,12 @@ Information about an AWS Cloud9 development environment.
 
 =item *
 
-C<ec2>: An environment hosted on an Amazon Elastic Compute Cloud
-(Amazon EC2) instance.
+C<ec2>: An Amazon Elastic Compute Cloud (Amazon EC2) instance connects
+to the environment.
 
 =item *
 
-C<ssh>: An environment hosted on your own server.
+C<ssh>: Your own server connects to the environment.
 
 =back
 

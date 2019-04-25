@@ -21,30 +21,47 @@ Paws::DirectConnect::CreateInterconnect - Arguments for method CreateInterconnec
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateInterconnect on the 
-AWS Direct Connect service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateInterconnect on the
+L<AWS Direct Connect|Paws::DirectConnect> service. Use the attributes of this class
 as arguments to method CreateInterconnect.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateInterconnect.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateInterconnect(Att1 => $value1, Att2 => $value2, ...);
+    my $directconnect = Paws->service('DirectConnect');
+    my $Interconnect = $directconnect->CreateInterconnect(
+      Bandwidth        => 'MyBandwidth',
+      InterconnectName => 'MyInterconnectName',
+      Location         => 'MyLocationCode',
+      LagId            => 'MyLagId',              # OPTIONAL
+    );
+
+    # Results:
+    my $AwsDevice            = $Interconnect->AwsDevice;
+    my $AwsDeviceV2          = $Interconnect->AwsDeviceV2;
+    my $Bandwidth            = $Interconnect->Bandwidth;
+    my $HasLogicalRedundancy = $Interconnect->HasLogicalRedundancy;
+    my $InterconnectId       = $Interconnect->InterconnectId;
+    my $InterconnectName     = $Interconnect->InterconnectName;
+    my $InterconnectState    = $Interconnect->InterconnectState;
+    my $JumboFrameCapable    = $Interconnect->JumboFrameCapable;
+    my $LagId                = $Interconnect->LagId;
+    my $LoaIssueTime         = $Interconnect->LoaIssueTime;
+    my $Location             = $Interconnect->Location;
+    my $Region               = $Interconnect->Region;
+
+    # Returns a L<Paws::DirectConnect::Interconnect> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect/CreateInterconnect>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Bandwidth => Str
 
-The port bandwidth
-
-Example: 1Gbps
-
-Default: None
-
-Available values: 1Gbps,10Gbps
+The port bandwidth, in Gbps. The possible values are 1 and 10.
 
 
 
@@ -52,25 +69,17 @@ Available values: 1Gbps,10Gbps
 
 The name of the interconnect.
 
-Example: "I<1G Interconnect to AWS>"
-
-Default: None
-
 
 
 =head2 LagId => Str
 
-
+The ID of the LAG.
 
 
 
 =head2 B<REQUIRED> Location => Str
 
-Where the interconnect is located
-
-Example: EqSV5
-
-Default: None
+The location of the interconnect.
 
 
 

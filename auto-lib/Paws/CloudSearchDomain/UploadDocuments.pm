@@ -1,7 +1,7 @@
 
 package Paws::CloudSearchDomain::UploadDocuments;
   use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType', required => 1);
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type', required => 1);
   has Documents => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documents', required => 1);
 
   use MooseX::ClassAttribute;
@@ -20,17 +20,31 @@ Paws::CloudSearchDomain::UploadDocuments - Arguments for method UploadDocuments 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UploadDocuments on the 
-Amazon CloudSearch Domain service. Use the attributes of this class
+This class represents the parameters used for calling the method UploadDocuments on the
+L<Amazon CloudSearch Domain|Paws::CloudSearchDomain> service. Use the attributes of this class
 as arguments to method UploadDocuments.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UploadDocuments.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UploadDocuments(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudsearchdomain = Paws->service('CloudSearchDomain');
+    my $UploadDocumentsResponse = $cloudsearchdomain->UploadDocuments(
+      ContentType => 'application/json',
+      Documents   => 'BlobBlob',
+
+    );
+
+    # Results:
+    my $Adds     = $UploadDocumentsResponse->Adds;
+    my $Deletes  = $UploadDocumentsResponse->Deletes;
+    my $Status   = $UploadDocumentsResponse->Status;
+    my $Warnings = $UploadDocumentsResponse->Warnings;
+
+    # Returns a L<Paws::CloudSearchDomain::UploadDocumentsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudsearchdomain/UploadDocuments>
 
 =head1 ATTRIBUTES
 

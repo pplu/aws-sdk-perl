@@ -5,6 +5,7 @@ package Paws::Lightsail::Region;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has RelationalDatabaseAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AvailabilityZone]', request_name => 'relationalDatabaseAvailabilityZones', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Lightsail::Region object:
 
-  $service_obj->Method(Att1 => { AvailabilityZones => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { AvailabilityZones => $value, ..., RelationalDatabaseAvailabilityZones => $value  });
 
 =head3 Results returned from an API call
 
@@ -65,6 +66,12 @@ to serve users in the eastern United States and eastern Canada>).
 =head2 Name => Str
 
   The region name (e.g., C<us-east-2>).
+
+
+=head2 RelationalDatabaseAvailabilityZones => ArrayRef[L<Paws::Lightsail::AvailabilityZone>]
+
+  The Availability Zones for databases. Follows the format C<us-east-2a>
+(case-sensitive).
 
 
 

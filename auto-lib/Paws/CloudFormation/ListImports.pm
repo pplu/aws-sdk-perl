@@ -19,17 +19,28 @@ Paws::CloudFormation::ListImports - Arguments for method ListImports on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListImports on the 
-AWS CloudFormation service. Use the attributes of this class
+This class represents the parameters used for calling the method ListImports on the
+L<AWS CloudFormation|Paws::CloudFormation> service. Use the attributes of this class
 as arguments to method ListImports.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListImports.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListImports(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudformation = Paws->service('CloudFormation');
+    my $ListImportsOutput = $cloudformation->ListImports(
+      ExportName => 'MyExportName',
+      NextToken  => 'MyNextToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $Imports   = $ListImportsOutput->Imports;
+    my $NextToken = $ListImportsOutput->NextToken;
+
+    # Returns a L<Paws::CloudFormation::ListImportsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/ListImports>
 
 =head1 ATTRIBUTES
 

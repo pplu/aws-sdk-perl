@@ -18,12 +18,12 @@ Paws::Greengrass::UpdateConnectivityInfoResponse
 
 =head2 Message => Str
 
-Response Text
+A message about the connectivity info update request.
 
 
 =head2 Version => Str
 
-New Version
+The new version of the connectivity info.
 
 
 =head2 _request_id => Str

@@ -153,6 +153,19 @@ forwarded to AWS WAF for inspection. To allow or block requests based
 on the length of the body, you can create a size constraint set. For
 more information, see CreateSizeConstraintSet.
 
+=item *
+
+C<SINGLE_QUERY_ARG>: The parameter in the query string that you will
+inspect, such as I<UserName> or I<SalesRegion>. The maximum length for
+C<SINGLE_QUERY_ARG> is 30 characters.
+
+=item *
+
+C<ALL_QUERY_ARGS>: Similar to C<SINGLE_QUERY_ARG>, but instead of
+inspecting a single parameter, AWS WAF inspects all parameters within
+the query string for the value or regex pattern that you specify in
+C<TargetString>.
+
 =back
 
 If C<TargetString> includes alphabetic characters A-Z and a-z, note
@@ -166,7 +179,7 @@ the value before you base64-encode it is 50 bytes.
 For example, suppose the value of C<Type> is C<HEADER> and the value of
 C<Data> is C<User-Agent>. If you want to search the C<User-Agent>
 header for the value C<BadBot>, you base64-encode C<BadBot> using MIME
-base64 encoding and include the resulting value, C<QmFkQm90>, in the
+base64-encoding and include the resulting value, C<QmFkQm90>, in the
 value of C<TargetString>.
 
 B<If you're using the AWS CLI or one of the AWS SDKs>
@@ -182,10 +195,12 @@ attackers use in web requests in an effort to bypass AWS WAF. If you
 specify a transformation, AWS WAF performs the transformation on
 C<TargetString> before inspecting a request for a match.
 
+You can only specify a single type of TextTransformation.
+
 B<CMD_LINE>
 
 When you're concerned that attackers are injecting an operating system
-commandline command and using unusual formatting to disguise some or
+command line command and using unusual formatting to disguise some or
 all of the command, use this option to perform the following
 transformations:
 

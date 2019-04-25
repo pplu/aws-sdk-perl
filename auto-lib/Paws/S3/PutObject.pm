@@ -18,6 +18,9 @@ package Paws::S3::PutObject;
   has GrantWriteACP => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-write-acp', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', header_prefix => 'x-amz-meta-', traits => ['ParamInHeaders']);
+  has ObjectLockLegalHoldStatus => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-legal-hold', traits => ['ParamInHeader']);
+  has ObjectLockMode => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-mode', traits => ['ParamInHeader']);
+  has ObjectLockRetainUntilDate => (is => 'ro', isa => 'Str', header_name => 'x-amz-object-lock-retain-until-date', traits => ['ParamInHeader']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
@@ -46,17 +49,61 @@ Paws::S3::PutObject - Arguments for method PutObject on L<Paws::S3>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutObject on the 
-Amazon Simple Storage Service service. Use the attributes of this class
+This class represents the parameters used for calling the method PutObject on the
+L<Amazon Simple Storage Service|Paws::S3> service. Use the attributes of this class
 as arguments to method PutObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutObject(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $PutObjectOutput = $s3->PutObject(
+      Bucket             => 'MyBucketName',
+      Key                => 'MyObjectKey',
+      ACL                => 'private',                 # OPTIONAL
+      Body               => 'BlobBody',                # OPTIONAL
+      CacheControl       => 'MyCacheControl',          # OPTIONAL
+      ContentDisposition => 'MyContentDisposition',    # OPTIONAL
+      ContentEncoding    => 'MyContentEncoding',       # OPTIONAL
+      ContentLanguage    => 'MyContentLanguage',       # OPTIONAL
+      ContentLength      => 1,                         # OPTIONAL
+      ContentMD5         => 'MyContentMD5',            # OPTIONAL
+      ContentType        => 'MyContentType',           # OPTIONAL
+      Expires            => '1970-01-01T01:00:00',     # OPTIONAL
+      GrantFullControl   => 'MyGrantFullControl',      # OPTIONAL
+      GrantRead          => 'MyGrantRead',             # OPTIONAL
+      GrantReadACP       => 'MyGrantReadACP',          # OPTIONAL
+      GrantWriteACP      => 'MyGrantWriteACP',         # OPTIONAL
+      Metadata => { 'MyMetadataKey' => 'MyMetadataValue', },    # OPTIONAL
+      ObjectLockLegalHoldStatus => 'ON',                        # OPTIONAL
+      ObjectLockMode            => 'GOVERNANCE',                # OPTIONAL
+      ObjectLockRetainUntilDate => '1970-01-01T01:00:00',       # OPTIONAL
+      RequestPayer              => 'requester',                 # OPTIONAL
+      SSECustomerAlgorithm      => 'MySSECustomerAlgorithm',    # OPTIONAL
+      SSECustomerKey            => 'MySSECustomerKey',          # OPTIONAL
+      SSECustomerKeyMD5         => 'MySSECustomerKeyMD5',       # OPTIONAL
+      SSEKMSKeyId               => 'MySSEKMSKeyId',             # OPTIONAL
+      ServerSideEncryption      => 'AES256',                    # OPTIONAL
+      StorageClass              => 'STANDARD',                  # OPTIONAL
+      Tagging                   => 'MyTaggingHeader',           # OPTIONAL
+      WebsiteRedirectLocation   => 'MyWebsiteRedirectLocation', # OPTIONAL
+    );
+
+    # Results:
+    my $ETag                 = $PutObjectOutput->ETag;
+    my $Expiration           = $PutObjectOutput->Expiration;
+    my $RequestCharged       = $PutObjectOutput->RequestCharged;
+    my $SSECustomerAlgorithm = $PutObjectOutput->SSECustomerAlgorithm;
+    my $SSECustomerKeyMD5    = $PutObjectOutput->SSECustomerKeyMD5;
+    my $SSEKMSKeyId          = $PutObjectOutput->SSEKMSKeyId;
+    my $ServerSideEncryption = $PutObjectOutput->ServerSideEncryption;
+    my $VersionId            = $PutObjectOutput->VersionId;
+
+    # Returns a L<Paws::S3::PutObjectOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutObject>
 
 =head1 ATTRIBUTES
 
@@ -167,6 +214,24 @@ A map of metadata to store with the object in S3.
 
 
 
+=head2 ObjectLockLegalHoldStatus => Str
+
+The Legal Hold status that you want to apply to the specified object.
+
+Valid values are: C<"ON">, C<"OFF">
+
+=head2 ObjectLockMode => Str
+
+The Object Lock mode that you want to apply to this object.
+
+Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
+
+=head2 ObjectLockRetainUntilDate => Str
+
+The date and time when you want this object's Object Lock to expire.
+
+
+
 =head2 RequestPayer => Str
 
 
@@ -219,12 +284,12 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signatur
 
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">
 
 =head2 Tagging => Str
 
 The tag-set for the object. The tag-set must be encoded as URL Query
-parameters
+parameters. (For example, "Key1=Value1")
 
 
 

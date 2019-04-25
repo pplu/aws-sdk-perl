@@ -1,11 +1,14 @@
 
 package Paws::ApiGateway::CreateRestApi;
   use Moose;
+  has ApiKeySource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiKeySource');
   has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'binaryMediaTypes');
   has CloneFrom => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cloneFrom');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
+  has MinimumCompressionSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumCompressionSize');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has Policy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policy');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
   use MooseX::ClassAttribute;
@@ -24,20 +27,69 @@ Paws::ApiGateway::CreateRestApi - Arguments for method CreateRestApi on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateRestApi on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateRestApi on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method CreateRestApi.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRestApi.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateRestApi(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $RestApi = $apigateway->CreateRestApi(
+      Name                  => 'MyString',
+      ApiKeySource          => 'HEADER',               # OPTIONAL
+      BinaryMediaTypes      => [ 'MyString', ... ],    # OPTIONAL
+      CloneFrom             => 'MyString',             # OPTIONAL
+      Description           => 'MyString',             # OPTIONAL
+      EndpointConfiguration => {
+        Types => [
+          'REGIONAL', ...    # values: REGIONAL, EDGE, PRIVATE
+        ],                   # OPTIONAL
+      },    # OPTIONAL
+      MinimumCompressionSize => 1,             # OPTIONAL
+      Policy                 => 'MyString',    # OPTIONAL
+      Version                => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $ApiKeySource           = $RestApi->ApiKeySource;
+    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
+    my $CreatedDate            = $RestApi->CreatedDate;
+    my $Description            = $RestApi->Description;
+    my $EndpointConfiguration  = $RestApi->EndpointConfiguration;
+    my $Id                     = $RestApi->Id;
+    my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
+    my $Name                   = $RestApi->Name;
+    my $Policy                 = $RestApi->Policy;
+    my $Version                = $RestApi->Version;
+    my $Warnings               = $RestApi->Warnings;
+
+    # Returns a L<Paws::ApiGateway::RestApi> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/CreateRestApi>
 
 =head1 ATTRIBUTES
 
+
+=head2 ApiKeySource => Str
+
+The source of the API key for metering requests according to a usage
+plan. Valid values are:
+
+=over
+
+=item * C<HEADER> to read the API key from the C<X-API-Key> header of a
+request.
+
+=item * C<AUTHORIZER> to read the API key from the
+C<UsageIdentifierKey> from a custom authorizer.
+
+=back
+
+
+Valid values are: C<"HEADER">, C<"AUTHORIZER">
 
 =head2 BinaryMediaTypes => ArrayRef[Str|Undef]
 
@@ -65,9 +117,27 @@ of the API.
 
 
 
+=head2 MinimumCompressionSize => Int
+
+A nullable integer that is used to enable compression (with
+non-negative between 0 and 10485760 (10M) bytes, inclusive) or disable
+compression (with a null value) on an API. When compression is enabled,
+compression or decompression is not applied on the payload if the
+payload size is smaller than this value. Setting it to zero allows
+compression for any payload size.
+
+
+
 =head2 B<REQUIRED> Name => Str
 
-The name of the RestApi.
+[Required] The name of the RestApi.
+
+
+
+=head2 Policy => Str
+
+A stringified JSON policy document that applies to this RestApi
+regardless of the caller and Method configuration.
 
 
 

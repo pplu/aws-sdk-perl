@@ -22,17 +22,30 @@ Paws::GameLift::UpdateGameSession - Arguments for method UpdateGameSession on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateGameSession on the 
-Amazon GameLift service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateGameSession on the
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method UpdateGameSession.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateGameSession.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateGameSession(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $UpdateGameSessionOutput = $gamelift->UpdateGameSession(
+      GameSessionId               => 'MyArnStringModel',
+      MaximumPlayerSessionCount   => 1,                          # OPTIONAL
+      Name                        => 'MyNonZeroAndMaxString',    # OPTIONAL
+      PlayerSessionCreationPolicy => 'ACCEPT_ALL',               # OPTIONAL
+      ProtectionPolicy            => 'NoProtection',             # OPTIONAL
+    );
+
+    # Results:
+    my $GameSession = $UpdateGameSessionOutput->GameSession;
+
+    # Returns a L<Paws::GameLift::UpdateGameSessionOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/UpdateGameSession>
 
 =head1 ATTRIBUTES
 

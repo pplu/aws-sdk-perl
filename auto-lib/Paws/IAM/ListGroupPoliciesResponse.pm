@@ -24,7 +24,7 @@ results were truncated, you can make a subsequent pagination request
 using the C<Marker> request parameter to retrieve more items. Note that
 IAM might return fewer than the C<MaxItems> number of results even when
 there are more results available. We recommend that you check
-C<IsTruncated> after every call to ensure that you receive all of your
+C<IsTruncated> after every call to ensure that you receive all your
 results.
 
 
@@ -39,10 +39,10 @@ request.
 
 A list of policy names.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-+
+also include any of the following characters: _+=,.@-
 
 
 =head2 _request_id => Str

@@ -129,11 +129,11 @@ Instance.
 
 =head2 State => Str
 
-  The state of the Spot Instance request. Spot status information can
-help you track your Spot Instance requests. For more information, see
-Spot Status
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+  The state of the Spot Instance request. Spot status information helps
+track your Spot Instance requests. For more information, see Spot
+Status
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 Status => L<Paws::EC2::SpotInstanceStatus>

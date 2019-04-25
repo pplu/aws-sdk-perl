@@ -1,6 +1,6 @@
 package Paws::MediaLive::ArchiveGroupSettings;
   use Moose;
-  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest']);
+  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
   has RolloverInterval => (is => 'ro', isa => 'Int', request_name => 'rolloverInterval', traits => ['NameInRequest']);
 1;
 
@@ -37,11 +37,9 @@ Placeholder documentation for ArchiveGroupSettings
 =head1 ATTRIBUTES
 
 
-=head2 Destination => L<Paws::MediaLive::OutputLocationRef>
+=head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
 
-  A directory and base filename where archive files should be written. If
-the base filename portion of the URI is left blank, the base filename
-of the first input will be automatically inserted.
+  A directory and base filename where archive files should be written.
 
 
 =head2 RolloverInterval => Int

@@ -20,17 +20,40 @@ Paws::EC2::ModifyInstanceCreditSpecification - Arguments for method ModifyInstan
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyInstanceCreditSpecification on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyInstanceCreditSpecification on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ModifyInstanceCreditSpecification.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyInstanceCreditSpecification.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyInstanceCreditSpecification(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $ModifyInstanceCreditSpecificationResult =
+      $ec2->ModifyInstanceCreditSpecification(
+      InstanceCreditSpecifications => [
+        {
+          CpuCredits => 'MyString',    # OPTIONAL
+          InstanceId => 'MyString',    # OPTIONAL
+        },
+        ...
+      ],
+      ClientToken => 'MyString',       # OPTIONAL
+      DryRun      => 1,                # OPTIONAL
+      );
+
+    # Results:
+    my $SuccessfulInstanceCreditSpecifications =
+      $ModifyInstanceCreditSpecificationResult
+      ->SuccessfulInstanceCreditSpecifications;
+    my $UnsuccessfulInstanceCreditSpecifications =
+      $ModifyInstanceCreditSpecificationResult
+      ->UnsuccessfulInstanceCreditSpecifications;
+
+    # Returns a L<Paws::EC2::ModifyInstanceCreditSpecificationResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyInstanceCreditSpecification>
 
 =head1 ATTRIBUTES
 
@@ -40,7 +63,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A unique, case-sensitive token that you provide to ensure idempotency
 of your modification request. For more information, see Ensuring
 Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 

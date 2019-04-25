@@ -3,10 +3,13 @@ package Paws::ECS::StartTask;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
+  has EnableECSManagedTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableECSManagedTags' );
   has Group => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'group' );
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
+  has PropagateTags => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'propagateTags' );
   has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -24,17 +27,76 @@ Paws::ECS::StartTask - Arguments for method StartTask on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StartTask on the 
-Amazon EC2 Container Service service. Use the attributes of this class
+This class represents the parameters used for calling the method StartTask on the
+L<Amazon EC2 Container Service|Paws::ECS> service. Use the attributes of this class
 as arguments to method StartTask.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartTask.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartTask(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+    my $StartTaskResponse = $ecs->StartTask(
+      ContainerInstances   => [ 'MyString', ... ],
+      TaskDefinition       => 'MyString',
+      Cluster              => 'MyString',            # OPTIONAL
+      EnableECSManagedTags => 1,                     # OPTIONAL
+      Group                => 'MyString',            # OPTIONAL
+      NetworkConfiguration => {
+        AwsvpcConfiguration => {
+          Subnets => [ 'MyString', ... ],
+          AssignPublicIp => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+          SecurityGroups => [ 'MyString', ... ],
+        },    # OPTIONAL
+      },    # OPTIONAL
+      Overrides => {
+        ContainerOverrides => [
+          {
+            Command     => [ 'MyString', ... ],
+            Cpu         => 1,                     # OPTIONAL
+            Environment => [
+              {
+                Name  => 'MyString',
+                Value => 'MyString',
+              },
+              ...
+            ],                                    # OPTIONAL
+            Memory               => 1,            # OPTIONAL
+            MemoryReservation    => 1,            # OPTIONAL
+            Name                 => 'MyString',
+            ResourceRequirements => [
+              {
+                Type  => 'GPU',                   # values: GPU
+                Value => 'MyString',
+
+              },
+              ...
+            ],                                    # OPTIONAL
+          },
+          ...
+        ],                                        # OPTIONAL
+        ExecutionRoleArn => 'MyString',
+        TaskRoleArn      => 'MyString',
+      },    # OPTIONAL
+      PropagateTags => 'TASK_DEFINITION',    # OPTIONAL
+      StartedBy     => 'MyString',           # OPTIONAL
+      Tags          => [
+        {
+          Key   => 'MyTagKey',               # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',             # max: 256; OPTIONAL
+        },
+        ...
+      ],                                     # OPTIONAL
+    );
+
+    # Results:
+    my $Failures = $StartTaskResponse->Failures;
+    my $Tasks    = $StartTaskResponse->Tasks;
+
+    # Returns a L<Paws::ECS::StartTaskResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/StartTask>
 
 =head1 ATTRIBUTES
 
@@ -55,6 +117,15 @@ up to 10 container instances.
 
 
 
+=head2 EnableECSManagedTags => Bool
+
+Specifies whether to enable Amazon ECS managed tags for the task. For
+more information, see Tagging Your Amazon ECS Resources
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+
+
 =head2 Group => Str
 
 The name of the task group to associate with the task. The default
@@ -66,7 +137,7 @@ family:my-family-name).
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
 The VPC subnet and security group configuration for tasks that receive
-their own Elastic Network Interface by using the C<awsvpc> networking
+their own elastic network interface by using the C<awsvpc> networking
 mode.
 
 
@@ -86,9 +157,17 @@ includes the JSON formatting characters of the override structure.
 
 
 
+=head2 PropagateTags => Str
+
+Specifies whether to propagate the tags from the task definition or the
+service to the task. If no value is specified, the tags are not
+propagated.
+
+Valid values are: C<"TASK_DEFINITION">, C<"SERVICE">
+
 =head2 StartedBy => Str
 
-An optional tag specified when a task is started. For example if you
+An optional tag specified when a task is started. For example, if you
 automatically trigger a task to run a batch process job, you could
 apply a unique identifier for that job to your task with the
 C<startedBy> parameter. You can then identify which tasks belong to
@@ -98,6 +177,16 @@ numbers, hyphens, and underscores are allowed.
 
 If a task is started by an Amazon ECS service, then the C<startedBy>
 parameter contains the deployment ID of the service that starts it.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+The metadata that you apply to the task to help you categorize and
+organize them. Each tag consists of a key and an optional value, both
+of which you define. Tag keys can have a maximum character length of
+128 characters, and tag values can have a maximum length of 256
+characters.
 
 
 

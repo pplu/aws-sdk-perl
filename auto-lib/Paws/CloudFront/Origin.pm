@@ -36,12 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that describes the Amazon S3 bucket or the HTTP server
-(for example, a web server) from which CloudFront gets your files. You
-must create at least one origin.
+A complex type that describes the Amazon S3 bucket, HTTP server (for
+example, a web server), Amazon MediaStore, or other server from which
+CloudFront gets your files. This can also be an origin group, if you've
+created an origin group. You must specify at least one origin or origin
+group.
 
-For the current limit on the number of origins that you can create for
-a distribution, see Amazon CloudFront Limits
+For the current limit on the number of origins or origin groups that
+you can specify for a distribution, see Amazon CloudFront Limits
 (http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront)
 in the I<AWS General Reference>.
 
@@ -65,7 +67,14 @@ instead.
 
   B<Amazon S3 origins>: The DNS name of the Amazon S3 bucket from which
 you want CloudFront to get objects for this origin, for example,
-C<myawsbucket.s3.amazonaws.com>.
+C<myawsbucket.s3.amazonaws.com>. If you set up your bucket to be
+configured as a website endpoint, enter the Amazon S3 static website
+hosting endpoint for the bucket.
+
+For more information about specifying this value for different types of
+origins, see Origin Domain Name
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName)
+in the I<Amazon CloudFront Developer Guide>.
 
 Constraints for Amazon S3 origins:
 
@@ -114,8 +123,8 @@ The name cannot exceed 128 characters.
 
 =head2 B<REQUIRED> Id => Str
 
-  A unique identifier for the origin. The value of C<Id> must be unique
-within the distribution.
+  A unique identifier for the origin or origin group. The value of C<Id>
+must be unique within the distribution.
 
 When you specify the value of C<TargetOriginId> for the default cache
 behavior or for another cache behavior, you indicate the origin to

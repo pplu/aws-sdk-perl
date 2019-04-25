@@ -61,6 +61,11 @@ in the I<AWS Organizations User Guide>.
 example, if your organization has all features enabled, then service
 control policies (SCPs) are included in the list.
 
+Even if a policy type is shown as available in the organization, you
+can separately enable and disable them at the root level by using
+EnablePolicyType and DisablePolicyType. Use ListRoots to see the status
+of a policy type in that root.
+
 
 =head2 FeatureSet => Str
 

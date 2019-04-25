@@ -23,17 +23,56 @@ Paws::CloudDirectory::CreateObject - Arguments for method CreateObject on L<Paws
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateObject on the 
-Amazon CloudDirectory service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateObject on the
+L<Amazon CloudDirectory|Paws::CloudDirectory> service. Use the attributes of this class
 as arguments to method CreateObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateObject(Att1 => $value1, Att2 => $value2, ...);
+    my $clouddirectory = Paws->service('CloudDirectory');
+    my $CreateObjectResponse = $clouddirectory->CreateObject(
+      DirectoryArn => 'MyArn',
+      SchemaFacets => [
+        {
+          FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
+          SchemaArn => 'MyArn',
+        },
+        ...
+      ],
+      LinkName            => 'MyLinkName',    # OPTIONAL
+      ObjectAttributeList => [
+        {
+          Key => {
+            FacetName => 'MyFacetName',        # min: 1, max: 64; OPTIONAL
+            Name      => 'MyAttributeName',    # min: 1, max: 230
+            SchemaArn => 'MyArn',
+
+          },
+          Value => {
+            BinaryValue   => 'BlobBinaryAttributeValue',    # OPTIONAL
+            BooleanValue  => 1,                             # OPTIONAL
+            DatetimeValue => '1970-01-01T01:00:00',         # OPTIONAL
+            NumberValue   => 'MyNumberAttributeValue',      # OPTIONAL
+            StringValue   => 'MyStringAttributeValue',      # OPTIONAL
+          },
+
+        },
+        ...
+      ],                                                    # OPTIONAL
+      ParentReference => {
+        Selector => 'MySelectorObjectReference',            # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $ObjectIdentifier = $CreateObjectResponse->ObjectIdentifier;
+
+    # Returns a L<Paws::CloudDirectory::CreateObjectResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clouddirectory/CreateObject>
 
 =head1 ATTRIBUTES
 

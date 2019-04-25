@@ -19,17 +19,27 @@ Paws::DynamoDB::ListTables - Arguments for method ListTables on L<Paws::DynamoDB
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListTables on the 
-Amazon DynamoDB service. Use the attributes of this class
+This class represents the parameters used for calling the method ListTables on the
+L<Amazon DynamoDB|Paws::DynamoDB> service. Use the attributes of this class
 as arguments to method ListTables.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTables.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListTables(Att1 => $value1, Att2 => $value2, ...);
+    my $dynamodb = Paws->service('DynamoDB');
+    # To list tables
+    # This example lists all of the tables associated with the current AWS
+    # account and endpoint.
+    my $ListTablesOutput = $dynamodb->ListTables();
+
+    # Results:
+    my $TableNames = $ListTablesOutput->TableNames;
+
+    # Returns a L<Paws::DynamoDB::ListTablesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/ListTables>
 
 =head1 ATTRIBUTES
 

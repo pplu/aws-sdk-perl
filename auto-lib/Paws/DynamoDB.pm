@@ -1,6 +1,7 @@
 package Paws::DynamoDB;
   use Moose;
   sub service { 'dynamodb' }
+  sub signing_name { 'dynamodb' }
   sub version { '2012-08-10' }
   sub target_prefix { 'DynamoDB_20120810' }
   sub json_version { "1.0" }
@@ -10,6 +11,7 @@ package Paws::DynamoDB;
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
        sub { $_[0]->code eq 'Crc32Error' },
+       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'TransactionInProgressException' },
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
   ] });
 
@@ -90,9 +92,19 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeContinuousBackups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeGlobalTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeGlobalTable', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeGlobalTableSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeGlobalTableSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLimits {
@@ -150,6 +162,11 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::RestoreTableFromBackup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RestoreTableToPointInTime {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::RestoreTableToPointInTime', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub Scan {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::Scan', @_);
@@ -160,14 +177,34 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::TagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TransactGetItems {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::TransactGetItems', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TransactWriteItems {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::TransactWriteItems', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateContinuousBackups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateContinuousBackups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateGlobalTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateGlobalTable', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateGlobalTableSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateGlobalTableSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateItem {
@@ -186,6 +223,29 @@ package Paws::DynamoDB;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllBackups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBackups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->LastEvaluatedBackupArn) {
+        $next_result = $self->ListBackups(@_, ExclusiveStartBackupArn => $next_result->LastEvaluatedBackupArn);
+        push @{ $result->BackupSummaries }, @{ $next_result->BackupSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->LastEvaluatedBackupArn) {
+        $callback->($_ => 'BackupSummaries') foreach (@{ $result->BackupSummaries });
+        $result = $self->ListBackups(@_, ExclusiveStartBackupArn => $result->LastEvaluatedBackupArn);
+      }
+      $callback->($_ => 'BackupSummaries') foreach (@{ $result->BackupSummaries });
+    }
+
+    return undef
+  }
   sub ListAllTables {
     my $self = shift;
 
@@ -205,6 +265,29 @@ package Paws::DynamoDB;
         $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
       }
       $callback->($_ => 'TableNames') foreach (@{ $result->TableNames });
+    }
+
+    return undef
+  }
+  sub ListAllTagsOfResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsOfResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTagsOfResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsOfResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
     }
 
     return undef
@@ -269,7 +352,7 @@ package Paws::DynamoDB;
   }
 
 
-  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeGlobalTable DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup Scan TagResource UntagResource UpdateGlobalTable UpdateItem UpdateTable UpdateTimeToLive / }
+  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeEndpoints DescribeGlobalTable DescribeGlobalTableSettings DescribeLimits DescribeTable DescribeTimeToLive GetItem ListBackups ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource TransactGetItems TransactWriteItems UntagResource UpdateContinuousBackups UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTimeToLive / }
 
 1;
 
@@ -319,9 +402,21 @@ performance. All of your data is stored on solid state disks (SSDs) and
 automatically replicated across multiple Availability Zones in an AWS
 region, providing built-in high availability and data durability.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10>
+
+
 =head1 METHODS
 
-=head2 BatchGetItem(RequestItems => L<Paws::DynamoDB::BatchGetRequestMap>, [ReturnConsumedCapacity => Str])
+=head2 BatchGetItem
+
+=over
+
+=item RequestItems => L<Paws::DynamoDB::BatchGetRequestMap>
+
+=item [ReturnConsumedCapacity => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::BatchGetItem>
 
@@ -391,7 +486,18 @@ Calculations
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 BatchWriteItem(RequestItems => L<Paws::DynamoDB::BatchWriteItemRequestMap>, [ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str])
+=head2 BatchWriteItem
+
+=over
+
+=item RequestItems => L<Paws::DynamoDB::BatchWriteItemRequestMap>
+
+=item [ReturnConsumedCapacity => Str]
+
+=item [ReturnItemCollectionMetrics => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::BatchWriteItem>
 
@@ -479,6 +585,11 @@ same item in the same C<BatchWriteItem> request.
 
 =item *
 
+Your request contains at least two items with identical hash and range
+keys (which essentially is two put operations).
+
+=item *
+
 There are more than 25 requests in the batch.
 
 =item *
@@ -493,7 +604,16 @@ The total request size exceeds 16 MB.
 
 
 
-=head2 CreateBackup(BackupName => Str, TableName => Str)
+=head2 CreateBackup
+
+=over
+
+=item BackupName => Str
+
+=item TableName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::CreateBackup>
 
@@ -505,25 +625,22 @@ Each time you create an On-Demand Backup, the entire table data is
 backed up. There is no limit to the number of on-demand backups that
 can be taken.
 
+When you create an On-Demand Backup, a time marker of the request is
+cataloged, and the backup is created asynchronously, by applying all
+changes until the time of the request to the last full table snapshot.
+Backup requests are processed instantaneously and become available for
+restore within minutes.
+
 You can call C<CreateBackup> at a maximum rate of 50 times per second.
 
 All backups in DynamoDB work without consuming any provisioned
-throughput on the table. This results in a fast, low-cost, and scalable
-backup process. In general, the larger the table, the more time it
-takes to back up. The backup is stored in an S3 data store that is
-maintained and managed by DynamoDB.
+throughput on the table.
 
-Backups incorporate all writes (delete, put, update) that were
-completed within the last minute before the backup request was
-initiated. Backups might include some writes (delete, put, update) that
-were completed before the backup request was finished.
-
-For example, if you submit the backup request on 2018-12-14 at
-14:25:00, the backup is guaranteed to contain all data committed to the
-table up to 14:24:00, and data committed after 14:26:00 will not be.
-The backup may or may not contain data modifications made between
-14:24:00 and 14:26:00. On-Demand Backup does not support causal
-consistency.
+If you submit a backup request on 2018-12-14 at 14:25:00, the backup is
+guaranteed to contain all data committed to the table up to 14:24:00,
+and data committed after 14:26:00 will not be. The backup may or may
+not contain data modifications made between 14:24:00 and 14:26:00.
+On-Demand Backup does not support causal consistency.
 
 Along with data, the following are also included on the backups:
 
@@ -549,7 +666,16 @@ Provisioned read and write capacity
 
 
 
-=head2 CreateGlobalTable(GlobalTableName => Str, ReplicationGroup => ArrayRef[L<Paws::DynamoDB::Replica>])
+=head2 CreateGlobalTable
+
+=over
+
+=item GlobalTableName => Str
+
+=item ReplicationGroup => ArrayRef[L<Paws::DynamoDB::Replica>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::CreateGlobalTable>
 
@@ -559,32 +685,81 @@ Creates a global table from an existing table. A global table creates a
 replication relationship between two or more DynamoDB tables with the
 same table name in the provided regions.
 
-Tables can only be added as the replicas of a global table group under
-the following conditions:
+If you want to add a new replica table to a global table, each of the
+following conditions must be true:
 
 =over
 
 =item *
 
-The tables must have the same name.
+The table must have the same primary key as all of the other replicas.
 
 =item *
 
-The tables must contain no items.
+The table must have the same name as all of the other replicas.
 
 =item *
 
-The tables must have the same hash key and sort key (if present).
+The table must have DynamoDB Streams enabled, with the stream
+containing both the new and the old images of the item.
 
 =item *
 
-The tables must have DynamoDB Streams enabled (NEW_AND_OLD_IMAGES).
+None of the replica tables in the global table can contain any data.
 
 =back
 
+If global secondary indexes are specified, then the following
+conditions must also be met:
+
+=over
+
+=item *
+
+The global secondary indexes must have the same name.
+
+=item *
+
+The global secondary indexes must have the same hash key and sort key
+(if present).
+
+=back
+
+Write capacity settings should be set consistently across your replica
+tables and secondary indexes. DynamoDB strongly recommends enabling
+auto scaling to manage the write capacity settings for all of your
+global tables replicas and indexes.
+
+If you prefer to manage write capacity settings manually, you should
+provision equal replicated write capacity units to your replica tables.
+You should also provision equal replicated write capacity units to
+matching secondary indexes across your global table.
 
 
-=head2 CreateTable(AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>], KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>], ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>, TableName => Str, [GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>], LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>], StreamSpecification => L<Paws::DynamoDB::StreamSpecification>])
+=head2 CreateTable
+
+=over
+
+=item AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
+
+=item KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
+
+=item TableName => Str
+
+=item [BillingMode => Str]
+
+=item [GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]]
+
+=item [LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]]
+
+=item [ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>]
+
+=item [SSESpecification => L<Paws::DynamoDB::SSESpecification>]
+
+=item [StreamSpecification => L<Paws::DynamoDB::StreamSpecification>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::CreateTable>
 
@@ -610,7 +785,14 @@ C<CREATING> state at any given time.
 You can use the C<DescribeTable> action to check the table status.
 
 
-=head2 DeleteBackup(BackupArn => Str)
+=head2 DeleteBackup
+
+=over
+
+=item BackupArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::DeleteBackup>
 
@@ -621,7 +803,32 @@ Deletes an existing backup of a table.
 You can call C<DeleteBackup> at a maximum rate of 10 times per second.
 
 
-=head2 DeleteItem(Key => L<Paws::DynamoDB::Key>, TableName => Str, [ConditionalOperator => Str, ConditionExpression => Str, Expected => L<Paws::DynamoDB::ExpectedAttributeMap>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str])
+=head2 DeleteItem
+
+=over
+
+=item Key => L<Paws::DynamoDB::Key>
+
+=item TableName => Str
+
+=item [ConditionalOperator => Str]
+
+=item [ConditionExpression => Str]
+
+=item [Expected => L<Paws::DynamoDB::ExpectedAttributeMap>]
+
+=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+
+=item [ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>]
+
+=item [ReturnConsumedCapacity => Str]
+
+=item [ReturnItemCollectionMetrics => Str]
+
+=item [ReturnValues => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::DeleteItem>
 
@@ -644,7 +851,14 @@ conditions are met. If those conditions are met, DynamoDB performs the
 delete. Otherwise, the item is not deleted.
 
 
-=head2 DeleteTable(TableName => Str)
+=head2 DeleteTable
+
+=over
+
+=item TableName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::DeleteTable>
 
@@ -672,7 +886,14 @@ the stream is automatically deleted after 24 hours.
 Use the C<DescribeTable> action to check the status of the table.
 
 
-=head2 DescribeBackup(BackupArn => Str)
+=head2 DescribeBackup
+
+=over
+
+=item BackupArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::DescribeBackup>
 
@@ -684,30 +905,88 @@ You can call C<DescribeBackup> at a maximum rate of 10 times per
 second.
 
 
-=head2 DescribeContinuousBackups(TableName => Str)
+=head2 DescribeContinuousBackups
+
+=over
+
+=item TableName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::DescribeContinuousBackups>
 
 Returns: a L<Paws::DynamoDB::DescribeContinuousBackupsOutput> instance
 
-Checks the status of the backup restore settings on the specified
-table. If backups are enabled, C<ContinuousBackupsStatus> will bet set
-to ENABLED.
+Checks the status of continuous backups and point in time recovery on
+the specified table. Continuous backups are C<ENABLED> on all tables at
+table creation. If point in time recovery is enabled,
+C<PointInTimeRecoveryStatus> will be set to ENABLED.
+
+Once continuous backups and point in time recovery are enabled, you can
+restore to any point in time within C<EarliestRestorableDateTime> and
+C<LatestRestorableDateTime>.
+
+C<LatestRestorableDateTime> is typically 5 minutes before the current
+time. You can restore your table to any point in time during the last
+35 days.
 
 You can call C<DescribeContinuousBackups> at a maximum rate of 10 times
 per second.
 
 
-=head2 DescribeGlobalTable(GlobalTableName => Str)
+=head2 DescribeEndpoints
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::DynamoDB::DescribeEndpoints>
+
+Returns: a L<Paws::DynamoDB::DescribeEndpointsResponse> instance
+
+Returns the regional endpoint information.
+
+
+=head2 DescribeGlobalTable
+
+=over
+
+=item GlobalTableName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::DescribeGlobalTable>
 
 Returns: a L<Paws::DynamoDB::DescribeGlobalTableOutput> instance
 
-Returns information about the global table.
+Returns information about the specified global table.
 
 
-=head2 DescribeLimits()
+=head2 DescribeGlobalTableSettings
+
+=over
+
+=item GlobalTableName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::DescribeGlobalTableSettings>
+
+Returns: a L<Paws::DynamoDB::DescribeGlobalTableSettingsOutput> instance
+
+Describes region specific settings for a global table.
+
+
+=head2 DescribeLimits
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::DynamoDB::DescribeLimits>
 
@@ -801,7 +1080,14 @@ throttling errors if you call it more than once in a minute.
 The C<DescribeLimits> Request element has no content.
 
 
-=head2 DescribeTable(TableName => Str)
+=head2 DescribeTable
+
+=over
+
+=item TableName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::DescribeTable>
 
@@ -819,7 +1105,14 @@ be available at that moment. Wait for a few seconds, and then try the
 C<DescribeTable> request again.
 
 
-=head2 DescribeTimeToLive(TableName => Str)
+=head2 DescribeTimeToLive
+
+=over
+
+=item TableName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::DescribeTimeToLive>
 
@@ -829,7 +1122,26 @@ Gives a description of the Time to Live (TTL) status on the specified
 table.
 
 
-=head2 GetItem(Key => L<Paws::DynamoDB::Key>, TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConsistentRead => Bool, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ProjectionExpression => Str, ReturnConsumedCapacity => Str])
+=head2 GetItem
+
+=over
+
+=item Key => L<Paws::DynamoDB::Key>
+
+=item TableName => Str
+
+=item [AttributesToGet => ArrayRef[Str|Undef]]
+
+=item [ConsistentRead => Bool]
+
+=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+
+=item [ProjectionExpression => Str]
+
+=item [ReturnConsumedCapacity => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::GetItem>
 
@@ -847,7 +1159,24 @@ than an eventually consistent read, it always returns the last updated
 value.
 
 
-=head2 ListBackups([ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
+=head2 ListBackups
+
+=over
+
+=item [BackupType => Str]
+
+=item [ExclusiveStartBackupArn => Str]
+
+=item [Limit => Int]
+
+=item [TableName => Str]
+
+=item [TimeRangeLowerBound => Str]
+
+=item [TimeRangeUpperBound => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::ListBackups>
 
@@ -866,17 +1195,36 @@ requested.
 You can call C<ListBackups> a maximum of 5 times per second.
 
 
-=head2 ListGlobalTables([ExclusiveStartGlobalTableName => Str, Limit => Int, RegionName => Str])
+=head2 ListGlobalTables
+
+=over
+
+=item [ExclusiveStartGlobalTableName => Str]
+
+=item [Limit => Int]
+
+=item [RegionName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::ListGlobalTables>
 
 Returns: a L<Paws::DynamoDB::ListGlobalTablesOutput> instance
 
-Lists all the global tables. Only those global tables that have
-replicas in the region specified as input are returned.
+Lists all global tables that have a replica in the specified region.
 
 
-=head2 ListTables([ExclusiveStartTableName => Str, Limit => Int])
+=head2 ListTables
+
+=over
+
+=item [ExclusiveStartTableName => Str]
+
+=item [Limit => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::ListTables>
 
@@ -887,7 +1235,16 @@ endpoint. The output from C<ListTables> is paginated, with each page
 returning a maximum of 100 table names.
 
 
-=head2 ListTagsOfResource(ResourceArn => Str, [NextToken => Str])
+=head2 ListTagsOfResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::ListTagsOfResource>
 
@@ -901,7 +1258,32 @@ For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 PutItem(Item => L<Paws::DynamoDB::PutItemInputAttributeMap>, TableName => Str, [ConditionalOperator => Str, ConditionExpression => Str, Expected => L<Paws::DynamoDB::ExpectedAttributeMap>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str])
+=head2 PutItem
+
+=over
+
+=item Item => L<Paws::DynamoDB::PutItemInputAttributeMap>
+
+=item TableName => Str
+
+=item [ConditionalOperator => Str]
+
+=item [ConditionExpression => Str]
+
+=item [Expected => L<Paws::DynamoDB::ExpectedAttributeMap>]
+
+=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+
+=item [ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>]
+
+=item [ReturnConsumedCapacity => Str]
+
+=item [ReturnItemCollectionMetrics => Str]
+
+=item [ReturnValues => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::PutItem>
 
@@ -987,7 +1369,46 @@ For more information about C<PutItem>, see Working with Items
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 Query(TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => L<Paws::DynamoDB::KeyConditions>, Limit => Int, ProjectionExpression => Str, QueryFilter => L<Paws::DynamoDB::FilterConditionMap>, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])
+=head2 Query
+
+=over
+
+=item TableName => Str
+
+=item [AttributesToGet => ArrayRef[Str|Undef]]
+
+=item [ConditionalOperator => Str]
+
+=item [ConsistentRead => Bool]
+
+=item [ExclusiveStartKey => L<Paws::DynamoDB::Key>]
+
+=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+
+=item [ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>]
+
+=item [FilterExpression => Str]
+
+=item [IndexName => Str]
+
+=item [KeyConditionExpression => Str]
+
+=item [KeyConditions => L<Paws::DynamoDB::KeyConditions>]
+
+=item [Limit => Int]
+
+=item [ProjectionExpression => Str]
+
+=item [QueryFilter => L<Paws::DynamoDB::FilterConditionMap>]
+
+=item [ReturnConsumedCapacity => Str]
+
+=item [ScanIndexForward => Bool]
+
+=item [Select => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::Query>
 
@@ -1051,14 +1472,24 @@ consistent reads only, so do not specify C<ConsistentRead> when
 querying a global secondary index.
 
 
-=head2 RestoreTableFromBackup(BackupArn => Str, TargetTableName => Str)
+=head2 RestoreTableFromBackup
+
+=over
+
+=item BackupArn => Str
+
+=item TargetTableName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::RestoreTableFromBackup>
 
 Returns: a L<Paws::DynamoDB::RestoreTableFromBackupOutput> instance
 
 Creates a new table from an existing backup. Any number of users can
-execute up to 10 concurrent restores in a given account.
+execute up to 4 concurrent restores (any type of restore) in a given
+account.
 
 You can call C<RestoreTableFromBackup> at a maximum rate of 10 times
 per second.
@@ -1085,13 +1516,145 @@ Tags
 
 =item *
 
+Stream settings
+
+=item *
+
 Time to Live (TTL) settings
 
 =back
 
 
 
-=head2 Scan(TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, Limit => Int, ProjectionExpression => Str, ReturnConsumedCapacity => Str, ScanFilter => L<Paws::DynamoDB::FilterConditionMap>, Segment => Int, Select => Str, TotalSegments => Int])
+=head2 RestoreTableToPointInTime
+
+=over
+
+=item SourceTableName => Str
+
+=item TargetTableName => Str
+
+=item [RestoreDateTime => Str]
+
+=item [UseLatestRestorableTime => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::RestoreTableToPointInTime>
+
+Returns: a L<Paws::DynamoDB::RestoreTableToPointInTimeOutput> instance
+
+Restores the specified table to the specified point in time within
+C<EarliestRestorableDateTime> and C<LatestRestorableDateTime>. You can
+restore your table to any point in time during the last 35 days. Any
+number of users can execute up to 4 concurrent restores (any type of
+restore) in a given account.
+
+When you restore using point in time recovery, DynamoDB restores your
+table data to the state based on the selected date and time
+(day:hour:minute:second) to a new table.
+
+Along with data, the following are also included on the new restored
+table using point in time recovery:
+
+=over
+
+=item *
+
+Global secondary indexes (GSIs)
+
+=item *
+
+Local secondary indexes (LSIs)
+
+=item *
+
+Provisioned read and write capacity
+
+=item *
+
+Encryption settings
+
+All these settings come from the current settings of the source table
+at the time of restore.
+
+=back
+
+You must manually set up the following on the restored table:
+
+=over
+
+=item *
+
+Auto scaling policies
+
+=item *
+
+IAM policies
+
+=item *
+
+Cloudwatch metrics and alarms
+
+=item *
+
+Tags
+
+=item *
+
+Stream settings
+
+=item *
+
+Time to Live (TTL) settings
+
+=item *
+
+Point in time recovery settings
+
+=back
+
+
+
+=head2 Scan
+
+=over
+
+=item TableName => Str
+
+=item [AttributesToGet => ArrayRef[Str|Undef]]
+
+=item [ConditionalOperator => Str]
+
+=item [ConsistentRead => Bool]
+
+=item [ExclusiveStartKey => L<Paws::DynamoDB::Key>]
+
+=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+
+=item [ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>]
+
+=item [FilterExpression => Str]
+
+=item [IndexName => Str]
+
+=item [Limit => Int]
+
+=item [ProjectionExpression => Str]
+
+=item [ReturnConsumedCapacity => Str]
+
+=item [ScanFilter => L<Paws::DynamoDB::FilterConditionMap>]
+
+=item [Segment => Int]
+
+=item [Select => Str]
+
+=item [TotalSegments => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::Scan>
 
@@ -1130,7 +1693,16 @@ consistent copy of the data, as of the time that the C<Scan> begins,
 you can set the C<ConsistentRead> parameter to C<true>.
 
 
-=head2 TagResource(ResourceArn => Str, Tags => ArrayRef[L<Paws::DynamoDB::Tag>])
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::DynamoDB::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::TagResource>
 
@@ -1146,7 +1718,164 @@ For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 UntagResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
+=head2 TransactGetItems
+
+=over
+
+=item TransactItems => ArrayRef[L<Paws::DynamoDB::TransactGetItem>]
+
+=item [ReturnConsumedCapacity => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::TransactGetItems>
+
+Returns: a L<Paws::DynamoDB::TransactGetItemsOutput> instance
+
+C<TransactGetItems> is a synchronous operation that atomically
+retrieves multiple items from one or more tables (but not from indexes)
+in a single account and region. A C<TransactGetItems> call can contain
+up to 10 C<TransactGetItem> objects, each of which contains a C<Get>
+structure that specifies an item to retrieve from a table in the
+account and region. A call to C<TransactGetItems> cannot retrieve items
+from tables in more than one AWS account or region.
+
+DynamoDB rejects the entire C<TransactGetItems> request if any of the
+following is true:
+
+=over
+
+=item *
+
+A conflicting operation is in the process of updating an item to be
+read.
+
+=item *
+
+There is insufficient provisioned capacity for the transaction to be
+completed.
+
+=item *
+
+There is a user error, such as an invalid data format.
+
+=back
+
+
+
+=head2 TransactWriteItems
+
+=over
+
+=item TransactItems => ArrayRef[L<Paws::DynamoDB::TransactWriteItem>]
+
+=item [ClientRequestToken => Str]
+
+=item [ReturnConsumedCapacity => Str]
+
+=item [ReturnItemCollectionMetrics => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::TransactWriteItems>
+
+Returns: a L<Paws::DynamoDB::TransactWriteItemsOutput> instance
+
+C<TransactWriteItems> is a synchronous write operation that groups up
+to 10 action requests. These actions can target items in different
+tables, but not in different AWS accounts or regions, and no two
+actions can target the same item. For example, you cannot both
+C<ConditionCheck> and C<Update> the same item.
+
+The actions are completed atomically so that either all of them
+succeed, or all of them fail. They are defined by the following
+objects:
+
+=over
+
+=item *
+
+C<Put> E<151> Initiates a C<PutItem> operation to write a new item.
+This structure specifies the primary key of the item to be written, the
+name of the table to write it in, an optional condition expression that
+must be satisfied for the write to succeed, a list of the item's
+attributes, and a field indicating whether or not to retrieve the
+item's attributes if the condition is not met.
+
+=item *
+
+C<Update> E<151> Initiates an C<UpdateItem> operation to update an
+existing item. This structure specifies the primary key of the item to
+be updated, the name of the table where it resides, an optional
+condition expression that must be satisfied for the update to succeed,
+an expression that defines one or more attributes to be updated, and a
+field indicating whether or not to retrieve the item's attributes if
+the condition is not met.
+
+=item *
+
+C<Delete> E<151> Initiates a C<DeleteItem> operation to delete an
+existing item. This structure specifies the primary key of the item to
+be deleted, the name of the table where it resides, an optional
+condition expression that must be satisfied for the deletion to
+succeed, and a field indicating whether or not to retrieve the item's
+attributes if the condition is not met.
+
+=item *
+
+C<ConditionCheck> E<151> Applies a condition to an item that is not
+being modified by the transaction. This structure specifies the primary
+key of the item to be checked, the name of the table where it resides,
+a condition expression that must be satisfied for the transaction to
+succeed, and a field indicating whether or not to retrieve the item's
+attributes if the condition is not met.
+
+=back
+
+DynamoDB rejects the entire C<TransactWriteItems> request if any of the
+following is true:
+
+=over
+
+=item *
+
+A condition in one of the condition expressions is not met.
+
+=item *
+
+A conflicting operation is in the process of updating the same item.
+
+=item *
+
+There is insufficient provisioned capacity for the transaction to be
+completed.
+
+=item *
+
+An item size becomes too large (bigger than 400 KB), a Local Secondary
+Index (LSI) becomes too large, or a similar validation error occurs
+because of changes made by the transaction.
+
+=item *
+
+There is a user error, such as an invalid data format.
+
+=back
+
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::UntagResource>
 
@@ -1160,18 +1889,141 @@ For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 UpdateGlobalTable(GlobalTableName => Str, ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicaUpdate>])
+=head2 UpdateContinuousBackups
+
+=over
+
+=item PointInTimeRecoverySpecification => L<Paws::DynamoDB::PointInTimeRecoverySpecification>
+
+=item TableName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::UpdateContinuousBackups>
+
+Returns: a L<Paws::DynamoDB::UpdateContinuousBackupsOutput> instance
+
+C<UpdateContinuousBackups> enables or disables point in time recovery
+for the specified table. A successful C<UpdateContinuousBackups> call
+returns the current C<ContinuousBackupsDescription>. Continuous backups
+are C<ENABLED> on all tables at table creation. If point in time
+recovery is enabled, C<PointInTimeRecoveryStatus> will be set to
+ENABLED.
+
+Once continuous backups and point in time recovery are enabled, you can
+restore to any point in time within C<EarliestRestorableDateTime> and
+C<LatestRestorableDateTime>.
+
+C<LatestRestorableDateTime> is typically 5 minutes before the current
+time. You can restore your table to any point in time during the last
+35 days..
+
+
+=head2 UpdateGlobalTable
+
+=over
+
+=item GlobalTableName => Str
+
+=item ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicaUpdate>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::UpdateGlobalTable>
 
 Returns: a L<Paws::DynamoDB::UpdateGlobalTableOutput> instance
 
-Adds or removes replicas to the specified global table. The global
-table should already exist to be able to use this operation. Currently,
-the replica to be added should be empty.
+Adds or removes replicas in the specified global table. The global
+table must already exist to be able to use this operation. Any replica
+to be added must be empty, must have the same name as the global table,
+must have the same key schema, and must have DynamoDB Streams enabled
+and must have same provisioned and maximum write capacity units.
+
+Although you can use C<UpdateGlobalTable> to add replicas and remove
+replicas in a single request, for simplicity we recommend that you
+issue separate requests for adding or removing replicas.
+
+If global secondary indexes are specified, then the following
+conditions must also be met:
+
+=over
+
+=item *
+
+The global secondary indexes must have the same name.
+
+=item *
+
+The global secondary indexes must have the same hash key and sort key
+(if present).
+
+=item *
+
+The global secondary indexes must have the same provisioned and maximum
+write capacity units.
+
+=back
 
 
-=head2 UpdateItem(Key => L<Paws::DynamoDB::Key>, TableName => Str, [AttributeUpdates => L<Paws::DynamoDB::AttributeUpdates>, ConditionalOperator => Str, ConditionExpression => Str, Expected => L<Paws::DynamoDB::ExpectedAttributeMap>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str, UpdateExpression => Str])
+
+=head2 UpdateGlobalTableSettings
+
+=over
+
+=item GlobalTableName => Str
+
+=item [GlobalTableBillingMode => Str]
+
+=item [GlobalTableGlobalSecondaryIndexSettingsUpdate => ArrayRef[L<Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate>]]
+
+=item [GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>]
+
+=item [GlobalTableProvisionedWriteCapacityUnits => Int]
+
+=item [ReplicaSettingsUpdate => ArrayRef[L<Paws::DynamoDB::ReplicaSettingsUpdate>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::UpdateGlobalTableSettings>
+
+Returns: a L<Paws::DynamoDB::UpdateGlobalTableSettingsOutput> instance
+
+Updates settings for a global table.
+
+
+=head2 UpdateItem
+
+=over
+
+=item Key => L<Paws::DynamoDB::Key>
+
+=item TableName => Str
+
+=item [AttributeUpdates => L<Paws::DynamoDB::AttributeUpdates>]
+
+=item [ConditionalOperator => Str]
+
+=item [ConditionExpression => Str]
+
+=item [Expected => L<Paws::DynamoDB::ExpectedAttributeMap>]
+
+=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+
+=item [ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>]
+
+=item [ReturnConsumedCapacity => Str]
+
+=item [ReturnItemCollectionMetrics => Str]
+
+=item [ReturnValues => Str]
+
+=item [UpdateExpression => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::UpdateItem>
 
@@ -1188,7 +2040,26 @@ You can also return the item's attribute values in the same
 C<UpdateItem> operation using the C<ReturnValues> parameter.
 
 
-=head2 UpdateTable(TableName => Str, [AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>], GlobalSecondaryIndexUpdates => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexUpdate>], ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>, StreamSpecification => L<Paws::DynamoDB::StreamSpecification>])
+=head2 UpdateTable
+
+=over
+
+=item TableName => Str
+
+=item [AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]]
+
+=item [BillingMode => Str]
+
+=item [GlobalSecondaryIndexUpdates => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexUpdate>]]
+
+=item [ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>]
+
+=item [SSESpecification => L<Paws::DynamoDB::SSESpecification>]
+
+=item [StreamSpecification => L<Paws::DynamoDB::StreamSpecification>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::UpdateTable>
 
@@ -1227,7 +2098,16 @@ table returns to the C<ACTIVE> state, the C<UpdateTable> operation is
 complete.
 
 
-=head2 UpdateTimeToLive(TableName => Str, TimeToLiveSpecification => L<Paws::DynamoDB::TimeToLiveSpecification>)
+=head2 UpdateTimeToLive
+
+=over
+
+=item TableName => Str
+
+=item TimeToLiveSpecification => L<Paws::DynamoDB::TimeToLiveSpecification>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::DynamoDB::UpdateTimeToLive>
 
@@ -1271,6 +2151,18 @@ in the Amazon DynamoDB Developer Guide.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 ListAllBackups(sub { },[BackupType => Str, ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
+
+=head2 ListAllBackups([BackupType => Str, ExclusiveStartBackupArn => Str, Limit => Int, TableName => Str, TimeRangeLowerBound => Str, TimeRangeUpperBound => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - BackupSummaries, passing the object as the first parameter, and the string 'BackupSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::DynamoDB::ListBackupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllTables(sub { },[ExclusiveStartTableName => Str, Limit => Int])
 
 =head2 ListAllTables([ExclusiveStartTableName => Str, Limit => Int])
@@ -1281,6 +2173,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - TableNames, passing the object as the first parameter, and the string 'TableNames' as the second parameter 
 
 If not, it will return a a L<Paws::DynamoDB::ListTablesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsOfResource(sub { },ResourceArn => Str, [NextToken => Str])
+
+=head2 ListAllTagsOfResource(ResourceArn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::DynamoDB::ListTagsOfResourceOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 QueryAll(sub { },TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => L<Paws::DynamoDB::KeyConditions>, Limit => Int, ProjectionExpression => Str, QueryFilter => L<Paws::DynamoDB::FilterConditionMap>, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])

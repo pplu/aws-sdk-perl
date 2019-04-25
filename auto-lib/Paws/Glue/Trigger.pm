@@ -55,7 +55,7 @@ Information about a specific trigger.
 
 =head2 Id => Str
 
-  The trigger ID.
+  Reserved for future use.
 
 
 =head2 Name => Str
@@ -65,7 +65,7 @@ Information about a specific trigger.
 
 =head2 Predicate => L<Paws::Glue::Predicate>
 
-  The predicate of this trigger.
+  The predicate of this trigger, which defines when it will fire.
 
 
 =head2 Schedule => Str

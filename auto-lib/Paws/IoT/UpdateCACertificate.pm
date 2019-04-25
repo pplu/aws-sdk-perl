@@ -1,7 +1,7 @@
 
 package Paws::IoT::UpdateCACertificate;
   use Moose;
-  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId', required => 1);
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'caCertificateId', required => 1);
   has NewAutoRegistrationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newAutoRegistrationStatus');
   has NewStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newStatus');
   has RegistrationConfig => (is => 'ro', isa => 'Paws::IoT::RegistrationConfig', traits => ['NameInRequest'], request_name => 'registrationConfig');
@@ -23,17 +23,28 @@ Paws::IoT::UpdateCACertificate - Arguments for method UpdateCACertificate on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateCACertificate on the 
-AWS IoT service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateCACertificate on the
+L<AWS IoT|Paws::IoT> service. Use the attributes of this class
 as arguments to method UpdateCACertificate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateCACertificate.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateCACertificate(Att1 => $value1, Att2 => $value2, ...);
+    my $iot = Paws->service('IoT');
+    $iot->UpdateCACertificate(
+      CertificateId             => 'MyCertificateId',
+      NewAutoRegistrationStatus => 'ENABLE',            # OPTIONAL
+      NewStatus                 => 'ACTIVE',            # OPTIONAL
+      RegistrationConfig        => {
+        RoleArn      => 'MyRoleArn',         # min: 20, max: 2048; OPTIONAL
+        TemplateBody => 'MyTemplateBody',    # OPTIONAL
+      },    # OPTIONAL
+      RemoveAutoRegistration => 1,    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/UpdateCACertificate>
 
 =head1 ATTRIBUTES
 

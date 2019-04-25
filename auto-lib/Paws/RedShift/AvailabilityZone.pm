@@ -1,6 +1,7 @@
 package Paws::RedShift::AvailabilityZone;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
+  has SupportedPlatforms => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SupportedPlatform]', request_name => 'SupportedPlatform', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RedShift::AvailabilityZone object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., SupportedPlatforms => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ Describes an availability zone.
 =head2 Name => Str
 
   The name of the availability zone.
+
+
+=head2 SupportedPlatforms => ArrayRef[L<Paws::RedShift::SupportedPlatform>]
+
+  
 
 
 

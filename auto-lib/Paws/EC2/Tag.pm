@@ -42,7 +42,7 @@ This class has no description
   The key of the tag.
 
 Constraints: Tag keys are case-sensitive and accept a maximum of 127
-Unicode characters. May not begin with C<aws:>
+Unicode characters. May not begin with C<aws:>.
 
 
 =head2 Value => Str

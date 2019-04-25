@@ -83,7 +83,7 @@ The response type of the associated GatewayResponse. Valid values are
 
 =item * UNAUTHORIZED
 
-=item * UNSUPPORTED_MEDIA_TYPES
+=item * UNSUPPORTED_MEDIA_TYPE
 
 =back
 

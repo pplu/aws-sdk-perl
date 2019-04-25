@@ -6,6 +6,7 @@ package Paws::DMS::MongoDbSettings;
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DocsToInvestigate => (is => 'ro', isa => 'Str');
   has ExtractDocId => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has NestingLevel => (is => 'ro', isa => 'Str');
   has Password => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -95,6 +96,15 @@ Must be a positive value greater than 0. Default value is 1000.
 set to NONE.
 
 Default value is false.
+
+
+=head2 KmsKeyId => Str
+
+  The AWS KMS key identifier that is used to encrypt the content on the
+replication instance. If you don't specify a value for the C<KmsKeyId>
+parameter, then AWS DMS uses your default encryption key. AWS KMS
+creates the default encryption key for your AWS account. Your AWS
+account has a different default encryption key for each AWS Region.
 
 
 =head2 NestingLevel => Str

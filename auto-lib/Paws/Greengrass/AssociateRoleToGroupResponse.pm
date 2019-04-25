@@ -17,7 +17,8 @@ Paws::Greengrass::AssociateRoleToGroupResponse
 
 =head2 AssociatedAt => Str
 
-Time the role arn was associated to your group.
+The time, in milliseconds since the epoch, when the role ARN was
+associated with the group.
 
 
 =head2 _request_id => Str

@@ -39,12 +39,12 @@ Returns information about an error.
 
 =head2 ErrorAttribute => Str
 
-  The error attribute.
+  The attribute which caused the error.
 
 
 =head2 Message => Str
 
-  The error message.
+  The explanation of the error.
 
 
 

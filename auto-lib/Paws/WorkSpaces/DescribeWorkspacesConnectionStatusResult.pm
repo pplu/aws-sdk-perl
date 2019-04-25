@@ -17,12 +17,13 @@ Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult
 
 =head2 NextToken => Str
 
-The next token of the result.
+The token to use to retrieve the next set of results, or null if no
+more results are available.
 
 
 =head2 WorkspacesConnectionStatus => ArrayRef[L<Paws::WorkSpaces::WorkspaceConnectionStatus>]
 
-The connection status of the WorkSpace.
+Information about the connection status of the WorkSpace.
 
 
 =head2 _request_id => Str

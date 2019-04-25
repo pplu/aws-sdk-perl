@@ -1,12 +1,12 @@
 package Paws::GuardDuty::Member;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
+  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest'], required => 1);
   has DetectorId => (is => 'ro', isa => 'Str', request_name => 'detectorId', traits => ['NameInRequest']);
-  has Email => (is => 'ro', isa => 'Str', request_name => 'email', traits => ['NameInRequest']);
+  has Email => (is => 'ro', isa => 'Str', request_name => 'email', traits => ['NameInRequest'], required => 1);
   has InvitedAt => (is => 'ro', isa => 'Str', request_name => 'invitedAt', traits => ['NameInRequest']);
-  has MasterId => (is => 'ro', isa => 'Str', request_name => 'masterId', traits => ['NameInRequest']);
-  has RelationshipStatus => (is => 'ro', isa => 'Str', request_name => 'relationshipStatus', traits => ['NameInRequest']);
-  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
+  has MasterId => (is => 'ro', isa => 'Str', request_name => 'masterId', traits => ['NameInRequest'], required => 1);
+  has RelationshipStatus => (is => 'ro', isa => 'Str', request_name => 'relationshipStatus', traits => ['NameInRequest'], required => 1);
+  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ Contains details about the member account.
 =head1 ATTRIBUTES
 
 
-=head2 AccountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
   
 
@@ -52,7 +52,7 @@ Contains details about the member account.
   
 
 
-=head2 Email => Str
+=head2 B<REQUIRED> Email => Str
 
   Member account's email address.
 
@@ -62,17 +62,17 @@ Contains details about the member account.
   Timestamp at which the invitation was sent
 
 
-=head2 MasterId => Str
+=head2 B<REQUIRED> MasterId => Str
 
   
 
 
-=head2 RelationshipStatus => Str
+=head2 B<REQUIRED> RelationshipStatus => Str
 
   The status of the relationship between the member and the master.
 
 
-=head2 UpdatedAt => Str
+=head2 B<REQUIRED> UpdatedAt => Str
 
   
 

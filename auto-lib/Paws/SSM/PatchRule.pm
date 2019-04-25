@@ -2,6 +2,7 @@ package Paws::SSM::PatchRule;
   use Moose;
   has ApproveAfterDays => (is => 'ro', isa => 'Int', required => 1);
   has ComplianceLevel => (is => 'ro', isa => 'Str');
+  has EnableNonSecurity => (is => 'ro', isa => 'Bool');
   has PatchFilterGroup => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup', required => 1);
 1;
 
@@ -41,7 +42,9 @@ Defines an approval rule for a patch baseline.
 =head2 B<REQUIRED> ApproveAfterDays => Int
 
   The number of days after the release date of each patch matched by the
-rule the patch is marked as approved in the patch baseline.
+rule that the patch is marked as approved in the patch baseline. For
+example, a value of C<7> means that patches are approved seven days
+after they are released.
 
 
 =head2 ComplianceLevel => Str
@@ -49,6 +52,14 @@ rule the patch is marked as approved in the patch baseline.
   A compliance severity level for all approved patches in a patch
 baseline. Valid compliance severity levels include the following:
 Unspecified, Critical, High, Medium, Low, and Informational.
+
+
+=head2 EnableNonSecurity => Bool
+
+  For instances identified by the approval rule filters, enables a patch
+baseline to apply non-security updates available in the specified
+repository. The default value is 'false'. Applies to Linux instances
+only.
 
 
 =head2 B<REQUIRED> PatchFilterGroup => L<Paws::SSM::PatchFilterGroup>

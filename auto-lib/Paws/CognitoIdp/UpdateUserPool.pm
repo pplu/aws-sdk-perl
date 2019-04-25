@@ -33,17 +33,96 @@ Paws::CognitoIdp::UpdateUserPool - Arguments for method UpdateUserPool on L<Paws
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateUserPool on the 
-Amazon Cognito Identity Provider service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateUserPool on the
+L<Amazon Cognito Identity Provider|Paws::CognitoIdp> service. Use the attributes of this class
 as arguments to method UpdateUserPool.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUserPool.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateUserPool(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $UpdateUserPoolResponse = $cognito -idp->UpdateUserPool(
+      UserPoolId            => 'MyUserPoolIdType',
+      AdminCreateUserConfig => {
+        AllowAdminCreateUserOnly => 1,    # OPTIONAL
+        InviteMessageTemplate    => {
+          EmailMessage =>
+            'MyEmailVerificationMessageType',    # min: 6, max: 20000; OPTIONAL
+          EmailSubject =>
+            'MyEmailVerificationSubjectType',    # min: 1, max: 140; OPTIONAL
+          SMSMessage =>
+            'MySmsVerificationMessageType',      # min: 6, max: 140; OPTIONAL
+        },    # OPTIONAL
+        UnusedAccountValidityDays => 1,    # max: 365; OPTIONAL
+      },    # OPTIONAL
+      AutoVerifiedAttributes => [
+        'phone_number', ...    # values: phone_number, email
+      ],                       # OPTIONAL
+      DeviceConfiguration => {
+        ChallengeRequiredOnNewDevice     => 1,    # OPTIONAL
+        DeviceOnlyRememberedOnUserPrompt => 1,    # OPTIONAL
+      },    # OPTIONAL
+      EmailConfiguration => {
+        ReplyToEmailAddress => 'MyEmailAddressType',    # OPTIONAL
+        SourceArn => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+      },    # OPTIONAL
+      EmailVerificationMessage => 'MyEmailVerificationMessageType',   # OPTIONAL
+      EmailVerificationSubject => 'MyEmailVerificationSubjectType',   # OPTIONAL
+      LambdaConfig             => {
+        CreateAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        CustomMessage       => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        DefineAuthChallenge => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PostAuthentication  => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PostConfirmation    => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PreAuthentication   => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PreSignUp           => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        PreTokenGeneration  => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        UserMigration       => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        VerifyAuthChallengeResponse =>
+          'MyArnType',                         # min: 20, max: 2048; OPTIONAL
+      },    # OPTIONAL
+      MfaConfiguration => 'OFF',    # OPTIONAL
+      Policies         => {
+        PasswordPolicy => {
+          MinimumLength    => 1,    # min: 6, max: 99; OPTIONAL
+          RequireLowercase => 1,    # OPTIONAL
+          RequireNumbers   => 1,    # OPTIONAL
+          RequireSymbols   => 1,    # OPTIONAL
+          RequireUppercase => 1,    # OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      SmsAuthenticationMessage => 'MySmsVerificationMessageType',    # OPTIONAL
+      SmsConfiguration         => {
+        SnsCallerArn => 'MyArnType',       # min: 20, max: 2048; OPTIONAL
+        ExternalId   => 'MyStringType',    # OPTIONAL
+      },    # OPTIONAL
+      SmsVerificationMessage => 'MySmsVerificationMessageType',    # OPTIONAL
+      UserPoolAddOns         => {
+        AdvancedSecurityMode => 'OFF',    # values: OFF, AUDIT, ENFORCED
+
+      },    # OPTIONAL
+      UserPoolTags => {
+        'MyStringType' => 'MyStringType',    # key: OPTIONAL, value: OPTIONAL
+      },    # OPTIONAL
+      VerificationMessageTemplate => {
+        DefaultEmailOption => 'CONFIRM_WITH_LINK'
+        ,    # values: CONFIRM_WITH_LINK, CONFIRM_WITH_CODE; OPTIONAL
+        EmailMessage =>
+          'MyEmailVerificationMessageType',    # min: 6, max: 20000; OPTIONAL
+        EmailMessageByLink =>
+          'MyEmailVerificationMessageByLinkType', # min: 6, max: 20000; OPTIONAL
+        EmailSubject =>
+          'MyEmailVerificationSubjectType',       # min: 1, max: 140; OPTIONAL
+        EmailSubjectByLink =>
+          'MyEmailVerificationSubjectByLinkType',   # min: 1, max: 140; OPTIONAL
+        SmsMessage =>
+          'MySmsVerificationMessageType',           # min: 6, max: 140; OPTIONAL
+      },    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/UpdateUserPool>
 
 =head1 ATTRIBUTES
 

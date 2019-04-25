@@ -10,6 +10,7 @@ package Paws::EC2::CreateRoute;
   has NatGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'natGatewayId' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
+  has TransitGatewayId => (is => 'ro', isa => 'Str');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcPeeringConnectionId' );
 
   use MooseX::ClassAttribute;
@@ -27,17 +28,30 @@ Paws::EC2::CreateRoute - Arguments for method CreateRoute on L<Paws::EC2>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateRoute on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateRoute on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method CreateRoute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRoute.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateRoute(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To create a route
+    # This example creates a route for the specified route table. The route
+    # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
+    # gateway.
+    my $CreateRouteResult = $ec2->CreateRoute(
+      {
+        'DestinationCidrBlock' => '0.0.0.0/0',
+        'GatewayId'            => 'igw-c0a643a9',
+        'RouteTableId'         => 'rtb-22574640'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateRoute>
 
 =head1 ATTRIBUTES
 
@@ -67,13 +81,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 EgressOnlyInternetGatewayId => Str
 
-[IPv6 traffic only] The ID of an egress-only Internet gateway.
+[IPv6 traffic only] The ID of an egress-only internet gateway.
 
 
 
 =head2 GatewayId => Str
 
-The ID of an Internet gateway or virtual private gateway attached to
+The ID of an internet gateway or virtual private gateway attached to
 your VPC.
 
 
@@ -101,6 +115,12 @@ The ID of a network interface.
 =head2 B<REQUIRED> RouteTableId => Str
 
 The ID of the route table for the route.
+
+
+
+=head2 TransitGatewayId => Str
+
+The ID of a transit gateway.
 
 
 

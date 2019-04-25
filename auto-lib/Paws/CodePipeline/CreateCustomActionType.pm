@@ -24,17 +24,56 @@ Paws::CodePipeline::CreateCustomActionType - Arguments for method CreateCustomAc
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateCustomActionType on the 
-AWS CodePipeline service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateCustomActionType on the
+L<AWS CodePipeline|Paws::CodePipeline> service. Use the attributes of this class
 as arguments to method CreateCustomActionType.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCustomActionType.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCustomActionType(Att1 => $value1, Att2 => $value2, ...);
+    my $codepipeline = Paws->service('CodePipeline');
+    my $CreateCustomActionTypeOutput = $codepipeline->CreateCustomActionType(
+      Category             => 'Source',
+      InputArtifactDetails => {
+        MaximumCount => 1,    # max: 5
+        MinimumCount => 1,    # max: 5
+
+      },
+      OutputArtifactDetails => {
+        MaximumCount => 1,    # max: 5
+        MinimumCount => 1,    # max: 5
+
+      },
+      Provider                => 'MyActionProvider',
+      Version                 => 'MyVersion',
+      ConfigurationProperties => [
+        {
+          Key      => 1,
+          Name     => 'MyActionConfigurationKey',    # min: 1, max: 50
+          Required => 1,
+          Secret   => 1,
+          Description => 'MyDescription',    # min: 1, max: 160; OPTIONAL
+          Queryable   => 1,
+          Type => 'String',    # values: String, Number, Boolean; OPTIONAL
+        },
+        ...
+      ],                       # OPTIONAL
+      Settings => {
+        EntityUrlTemplate    => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
+        ExecutionUrlTemplate => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
+        RevisionUrlTemplate  => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
+        ThirdPartyConfigurationUrl => 'MyUrl',     # min: 1, max: 2048; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $ActionType = $CreateCustomActionTypeOutput->ActionType;
+
+    # Returns a L<Paws::CodePipeline::CreateCustomActionTypeOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline/CreateCustomActionType>
 
 =head1 ATTRIBUTES
 

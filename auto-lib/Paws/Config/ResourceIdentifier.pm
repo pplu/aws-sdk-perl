@@ -48,7 +48,7 @@ name.
 
 =head2 ResourceId => Str
 
-  The ID of the resource (for example., C<sg-xxxxxx>).
+  The ID of the resource (for example, C<sg-xxxxxx>).
 
 
 =head2 ResourceName => Str

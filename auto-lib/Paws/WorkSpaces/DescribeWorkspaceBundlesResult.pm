@@ -17,15 +17,14 @@ Paws::WorkSpaces::DescribeWorkspaceBundlesResult
 
 =head2 Bundles => ArrayRef[L<Paws::WorkSpaces::WorkspaceBundle>]
 
-An array of structures that contain information about the bundles.
+Information about the bundles.
 
 
 =head2 NextToken => Str
 
-If not null, more results are available. Pass this value for the
-C<NextToken> parameter in a subsequent call to this operation to
-retrieve the next set of items. This token is valid for one day and
-must be used within that time frame.
+The token to use to retrieve the next set of results, or null if there
+are no more results available. This token is valid for one day and must
+be used within that time frame.
 
 
 =head2 _request_id => Str

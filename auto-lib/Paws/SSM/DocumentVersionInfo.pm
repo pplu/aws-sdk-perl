@@ -5,6 +5,9 @@ package Paws::SSM::DocumentVersionInfo;
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has IsDefaultVersion => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'Str');
+  has StatusInformation => (is => 'ro', isa => 'Str');
+  has VersionName => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::DocumentVersionInfo object:
 
-  $service_obj->Method(Att1 => { CreatedDate => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { CreatedDate => $value, ..., VersionName => $value  });
 
 =head3 Results returned from an API call
 
@@ -63,6 +66,27 @@ Version information about the document.
 =head2 Name => Str
 
   The document name.
+
+
+=head2 Status => Str
+
+  The status of the Systems Manager document, such as C<Creating>,
+C<Active>, C<Failed>, and C<Deleting>.
+
+
+=head2 StatusInformation => Str
+
+  A message returned by AWS Systems Manager that explains the C<Status>
+value. For example, a C<Failed> status might be explained by the
+C<StatusInformation> message, "The specified S3 bucket does not exist.
+Verify that the URL of the S3 bucket is correct."
+
+
+=head2 VersionName => Str
+
+  The version of the artifact associated with the document. For example,
+"Release 12, Update 6". This value is unique across all versions of a
+document, and cannot be changed.
 
 
 

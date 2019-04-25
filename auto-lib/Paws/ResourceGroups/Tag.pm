@@ -20,17 +20,31 @@ Paws::ResourceGroups::Tag - Arguments for method Tag on L<Paws::ResourceGroups>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method Tag on the 
-AWS Resource Groups service. Use the attributes of this class
+This class represents the parameters used for calling the method Tag on the
+L<AWS Resource Groups|Paws::ResourceGroups> service. Use the attributes of this class
 as arguments to method Tag.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Tag.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->Tag(Att1 => $value1, Att2 => $value2, ...);
+    my $resource-groups = Paws->service('ResourceGroups');
+    my $TagOutput = $resource -groups->Tag(
+      Arn  => 'MyGroupArn',
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },
+
+    );
+
+    # Results:
+    my $Arn  = $TagOutput->Arn;
+    my $Tags = $TagOutput->Tags;
+
+    # Returns a L<Paws::ResourceGroups::TagOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/resource-groups/Tag>
 
 =head1 ATTRIBUTES
 
@@ -45,7 +59,7 @@ The ARN of the resource to which to add tags.
 
 The tags to add to the specified resource. A tag is a string-to-string
 map of key-value pairs. Tag keys can have a maximum character length of
-127 characters, and tag values can have a maximum length of 255
+128 characters, and tag values can have a maximum length of 256
 characters.
 
 

@@ -43,9 +43,8 @@ Describes an Amazon EBS volume.
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the volume is deleted on instance termination.
-
-Default: C<true>
+  Indicates whether the volume is deleted on instance termination. The
+default is C<true>.
 
 
 =head2 Encrypted => Bool
@@ -92,8 +91,6 @@ volume size, the default is the snapshot size.
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Valid values: C<standard> | C<io1> | C<gp2>
-
-Default: C<standard>
 
 
 

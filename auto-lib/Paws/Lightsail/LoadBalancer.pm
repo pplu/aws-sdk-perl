@@ -14,6 +14,7 @@ package Paws::Lightsail::LoadBalancer;
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TlsCertificateSummaries => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::LoadBalancerTlsCertificateSummary]', request_name => 'tlsCertificateSummaries', traits => ['NameInRequest']);
 1;
 
@@ -86,13 +87,16 @@ load balancer.
 
 =head2 InstancePort => Int
 
-  The instance port where the load balancer is listening.
+  The port where the load balancer will direct traffic to your Lightsail
+instances. For HTTP traffic, it's port 80. For HTTPS traffic, it's port
+443.
 
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>
 
-  The AWS Region and Availability Zone where your load balancer was
-created (e.g., C<us-east-2a>).
+  The AWS Region where your load balancer was created (e.g.,
+C<us-east-2a>). Lightsail automatically creates your load balancer
+across Availability Zones.
 
 
 =head2 Name => Str
@@ -105,10 +109,13 @@ created (e.g., C<us-east-2a>).
   The protocol you have enabled for your load balancer. Valid values are
 below.
 
+You can't just have C<HTTP_HTTPS>, but you can have just C<HTTP>.
+
 
 =head2 PublicPorts => ArrayRef[Int]
 
-  An array of public port settings for your load balancer.
+  An array of public port settings for your load balancer. For HTTP, use
+port 80. For HTTPS, use port 443.
 
 
 =head2 ResourceType => Str
@@ -128,10 +135,18 @@ have questions about your Lightsail load balancer. This code enables
 our support team to look up your Lightsail information more easily.
 
 
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+  The tag keys and optional values for the resource. For more information
+about tags in Lightsail, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags).
+
+
 =head2 TlsCertificateSummaries => ArrayRef[L<Paws::Lightsail::LoadBalancerTlsCertificateSummary>]
 
   An array of LoadBalancerTlsCertificateSummary objects that provide
-additional information about the TLS/SSL certificates.
+additional information about the SSL/TLS certificates. For example, if
+C<true>, the certificate is attached to the load balancer.
 
 
 

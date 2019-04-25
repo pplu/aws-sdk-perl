@@ -53,12 +53,14 @@ The destination description in Amazon ES.
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
 
-  The CloudWatch logging options.
+  The Amazon CloudWatch logging options.
 
 
 =head2 DomainARN => Str
 
-  The ARN of the Amazon ES domain.
+  The ARN of the Amazon ES domain. For more information, see Amazon
+Resource Names (ARNs) and AWS Service Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 =head2 IndexName => Str
@@ -83,7 +85,10 @@ The destination description in Amazon ES.
 
 =head2 RoleARN => Str
 
-  The ARN of the AWS credentials.
+  The Amazon Resource Name (ARN) of the AWS credentials. For more
+information, see Amazon Resource Names (ARNs) and AWS Service
+Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 =head2 S3BackupMode => Str

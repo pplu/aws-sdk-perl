@@ -4,6 +4,7 @@ package Paws::Lambda::UpdateFunctionCode;
   has DryRun => (is => 'ro', isa => 'Bool');
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Publish => (is => 'ro', isa => 'Bool');
+  has RevisionId => (is => 'ro', isa => 'Str');
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Key => (is => 'ro', isa => 'Str');
   has S3ObjectVersion => (is => 'ro', isa => 'Str');
@@ -25,84 +26,125 @@ Paws::Lambda::UpdateFunctionCode - Arguments for method UpdateFunctionCode on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateFunctionCode on the 
-AWS Lambda service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateFunctionCode on the
+L<AWS Lambda|Paws::Lambda> service. Use the attributes of this class
 as arguments to method UpdateFunctionCode.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateFunctionCode.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateFunctionCode(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # To update a Lambda function's code
+    # This operation updates a Lambda function's code
+    my $FunctionConfiguration = $lambda->UpdateFunctionCode(
+      {
+        'FunctionName'    => 'myFunction',
+        'Publish'         => 1,
+        'S3Bucket'        => 'myBucket',
+        'S3Key'           => 'myKey',
+        'S3ObjectVersion' => 1,
+        'ZipFile'         => 'fileb://file-path/file.zip'
+      }
+    );
+
+    # Results:
+    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
+    my $CodeSize     = $FunctionConfiguration->CodeSize;
+    my $Description  = $FunctionConfiguration->Description;
+    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
+    my $FunctionName = $FunctionConfiguration->FunctionName;
+    my $Handler      = $FunctionConfiguration->Handler;
+    my $LastModified = $FunctionConfiguration->LastModified;
+    my $MemorySize   = $FunctionConfiguration->MemorySize;
+    my $Role         = $FunctionConfiguration->Role;
+    my $Runtime      = $FunctionConfiguration->Runtime;
+    my $Timeout      = $FunctionConfiguration->Timeout;
+    my $Version      = $FunctionConfiguration->Version;
+    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+
+    # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/UpdateFunctionCode>
 
 =head1 ATTRIBUTES
 
 
 =head2 DryRun => Bool
 
-This boolean parameter can be used to test your request to AWS Lambda
-to update the Lambda function and publish a version as an atomic
-operation. It will do all necessary computation and validation of your
-code but will not upload it or a publish a version. Each time this
-operation is invoked, the C<CodeSha256> hash value of the provided code
-will also be computed and returned in the response.
+Set to true to validate the request parameters and access permissions
+without modifying the function code.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The existing Lambda function name whose code you want to replace.
+The name of the Lambda function.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<my-function>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:my-function>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
 =head2 Publish => Bool
 
-This boolean parameter can be used to request AWS Lambda to update the
-Lambda function and publish a version as an atomic operation.
+Set to true to publish a new version of the function after updating the
+code. This has the same effect as calling PublishVersion separately.
+
+
+
+=head2 RevisionId => Str
+
+Only update the function if the revision ID matches the ID specified.
+Use this option to avoid modifying a function that has changed since
+you last read it.
 
 
 
 =head2 S3Bucket => Str
 
-Amazon S3 bucket name where the .zip file containing your deployment
-package is stored. This bucket must reside in the same AWS Region where
-you are creating the Lambda function.
+An Amazon S3 bucket in the same region as your function. The bucket can
+be in a different AWS account.
 
 
 
 =head2 S3Key => Str
 
-The Amazon S3 object (the deployment package) key name you want to
-upload.
+The Amazon S3 key of the deployment package.
 
 
 
 =head2 S3ObjectVersion => Str
 
-The Amazon S3 object (the deployment package) version you want to
-upload.
+For versioned objects, the version of the deployment package object to
+use.
 
 
 
 =head2 ZipFile => Str
 
-The contents of your zip file containing your deployment package. If
-you are using the web API directly, the contents of the zip file must
-be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the
-SDKs or CLI will do the encoding for you. For more information about
-creating a .zip file, see Execution Permissions
-(http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html)
-in the I<AWS Lambda Developer Guide>.
+The base64-encoded contents of the deployment package. AWS SDK and AWS
+CLI clients handle the encoding for you.
 
 
 

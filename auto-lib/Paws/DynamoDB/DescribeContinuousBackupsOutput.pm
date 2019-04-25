@@ -16,8 +16,8 @@ Paws::DynamoDB::DescribeContinuousBackupsOutput
 
 =head2 ContinuousBackupsDescription => L<Paws::DynamoDB::ContinuousBackupsDescription>
 
-C<ContinuousBackupsDescription> can be one of the following : ENABLED,
-DISABLED.
+Represents the continuous backups and point in time recovery settings
+on the table.
 
 
 =head2 _request_id => Str

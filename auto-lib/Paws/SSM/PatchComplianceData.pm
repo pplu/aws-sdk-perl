@@ -66,8 +66,11 @@ all operating systems provide this level of information.
 
 =head2 B<REQUIRED> State => Str
 
-  The state of the patch on the instance (INSTALLED, INSTALLED_OTHER,
-MISSING, NOT_APPLICABLE or FAILED).
+  The state of the patch on the instance, such as INSTALLED or FAILED.
+
+For descriptions of each patch state, see About Patch Compliance
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-compliance-about.html#sysman-compliance-monitor-patch)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 B<REQUIRED> Title => Str

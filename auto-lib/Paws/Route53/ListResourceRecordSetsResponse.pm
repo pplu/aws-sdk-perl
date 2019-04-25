@@ -36,10 +36,14 @@ The maximum number of records you requested.
 
 =head2 NextRecordIdentifier => Str
 
-I<Weighted, latency, geolocation, and failover resource record sets
-only>: If results were truncated for a given DNS name and type, the
-value of C<SetIdentifier> for the next resource record set that has the
-current DNS name and type.
+I<Resource record sets that have a routing policy other than simple:>
+If results were truncated for a given DNS name and type, the value of
+C<SetIdentifier> for the next resource record set that has the current
+DNS name and type.
+
+For information about routing policies, see Choosing a Routing Policy
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 
 

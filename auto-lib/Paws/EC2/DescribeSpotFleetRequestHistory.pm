@@ -23,17 +23,38 @@ Paws::EC2::DescribeSpotFleetRequestHistory - Arguments for method DescribeSpotFl
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeSpotFleetRequestHistory on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeSpotFleetRequestHistory on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeSpotFleetRequestHistory.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSpotFleetRequestHistory.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeSpotFleetRequestHistory(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe Spot fleet history
+    # This example returns the history for the specified Spot fleet starting at
+    # the specified time.
+    my $DescribeSpotFleetRequestHistoryResponse =
+      $ec2->DescribeSpotFleetRequestHistory(
+      {
+        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
+        'StartTime'          => '2015-05-26T00:00:00Z'
+      }
+      );
+
+    # Results:
+    my $HistoryRecords =
+      $DescribeSpotFleetRequestHistoryResponse->HistoryRecords;
+    my $NextToken = $DescribeSpotFleetRequestHistoryResponse->NextToken;
+    my $SpotFleetRequestId =
+      $DescribeSpotFleetRequestHistoryResponse->SpotFleetRequestId;
+    my $StartTime = $DescribeSpotFleetRequestHistoryResponse->StartTime;
+
+    # Returns a L<Paws::EC2::DescribeSpotFleetRequestHistoryResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeSpotFleetRequestHistory>
 
 =head1 ATTRIBUTES
 

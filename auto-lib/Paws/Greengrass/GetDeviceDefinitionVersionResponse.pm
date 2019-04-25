@@ -5,6 +5,7 @@ package Paws::Greengrass::GetDeviceDefinitionVersionResponse;
   has CreationTimestamp => (is => 'ro', isa => 'Str');
   has Definition => (is => 'ro', isa => 'Paws::Greengrass::DeviceDefinitionVersion');
   has Id => (is => 'ro', isa => 'Str');
+  has NextToken => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -21,27 +22,34 @@ Paws::Greengrass::GetDeviceDefinitionVersionResponse
 
 =head2 Arn => Str
 
-Arn of the device definition version.
+The ARN of the device definition version.
 
 
 =head2 CreationTimestamp => Str
 
-Timestamp of when the device definition version was created.
+The time, in milliseconds since the epoch, when the device definition
+version was created.
 
 
 =head2 Definition => L<Paws::Greengrass::DeviceDefinitionVersion>
 
-Device definition version
+Information about the device definition version.
 
 
 =head2 Id => Str
 
-Id of the device definition the version belongs to.
+The ID of the device definition version.
+
+
+=head2 NextToken => Str
+
+The token for the next set of results, or ''null'' if there are no
+additional results.
 
 
 =head2 Version => Str
 
-Version of the device definition version.
+The version of the device definition version.
 
 
 =head2 _request_id => Str

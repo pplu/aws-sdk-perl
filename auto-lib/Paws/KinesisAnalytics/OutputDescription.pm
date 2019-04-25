@@ -3,6 +3,7 @@ package Paws::KinesisAnalytics::OutputDescription;
   has DestinationSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::DestinationSchema');
   has KinesisFirehoseOutputDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseOutputDescription');
   has KinesisStreamsOutputDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsOutputDescription');
+  has LambdaOutputDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::LambdaOutputDescription');
   has Name => (is => 'ro', isa => 'Str');
   has OutputId => (is => 'ro', isa => 'Str');
 1;
@@ -57,6 +58,12 @@ destination where output is written.
 =head2 KinesisStreamsOutputDescription => L<Paws::KinesisAnalytics::KinesisStreamsOutputDescription>
 
   Describes Amazon Kinesis stream configured as the destination where
+output is written.
+
+
+=head2 LambdaOutputDescription => L<Paws::KinesisAnalytics::LambdaOutputDescription>
+
+  Describes the AWS Lambda function configured as the destination where
 output is written.
 
 

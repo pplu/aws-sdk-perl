@@ -64,14 +64,14 @@ subdivision names for the specified C<geolocation> code.
 
 =head2 SubdivisionCode => Str
 
-  The code for the subdivision, for example, a state in the United States
-or a province in Canada.
+  The code for the subdivision. Route 53 currently supports only states
+in the United States.
 
 
 =head2 SubdivisionName => Str
 
-  The full name of the subdivision, for example, a state in the United
-States or a province in Canada.
+  The full name of the subdivision. Route 53 currently supports only
+states in the United States.
 
 
 

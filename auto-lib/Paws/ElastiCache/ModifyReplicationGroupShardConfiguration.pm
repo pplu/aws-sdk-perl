@@ -4,6 +4,7 @@ package Paws::ElastiCache::ModifyReplicationGroupShardConfiguration;
   has ApplyImmediately => (is => 'ro', isa => 'Bool', required => 1);
   has NodeGroupCount => (is => 'ro', isa => 'Int', required => 1);
   has NodeGroupsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has NodeGroupsToRetain => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
   has ReshardingConfiguration => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ReshardingConfiguration]');
 
@@ -22,17 +23,43 @@ Paws::ElastiCache::ModifyReplicationGroupShardConfiguration - Arguments for meth
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyReplicationGroupShardConfiguration on the 
-Amazon ElastiCache service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyReplicationGroupShardConfiguration on the
+L<Amazon ElastiCache|Paws::ElastiCache> service. Use the attributes of this class
 as arguments to method ModifyReplicationGroupShardConfiguration.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyReplicationGroupShardConfiguration.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyReplicationGroupShardConfiguration(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticache = Paws->service('ElastiCache');
+    my $ModifyReplicationGroupShardConfigurationResult =
+      $elasticache->ModifyReplicationGroupShardConfiguration(
+      ApplyImmediately   => 1,
+      NodeGroupCount     => 1,
+      ReplicationGroupId => 'MyString',
+      NodeGroupsToRemove => [
+        'MyAllowedNodeGroupId', ...    # min: 1, max: 4
+      ],                               # OPTIONAL
+      NodeGroupsToRetain => [
+        'MyAllowedNodeGroupId', ...    # min: 1, max: 4
+      ],                               # OPTIONAL
+      ReshardingConfiguration => [
+        {
+          NodeGroupId => 'MyAllowedNodeGroupId',                # min: 1, max: 4
+          PreferredAvailabilityZones => [ 'MyString', ... ],    # OPTIONAL
+        },
+        ...
+      ],                                                        # OPTIONAL
+      );
+
+    # Results:
+    my $ReplicationGroup =
+      $ModifyReplicationGroupShardConfigurationResult->ReplicationGroup;
+
+# Returns a L<Paws::ElastiCache::ModifyReplicationGroupShardConfigurationResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/ModifyReplicationGroupShardConfiguration>
 
 =head1 ATTRIBUTES
 
@@ -56,8 +83,24 @@ of the shard configuration.
 =head2 NodeGroupsToRemove => ArrayRef[Str|Undef]
 
 If the value of C<NodeGroupCount> is less than the current number of
-node groups (shards), C<NodeGroupsToRemove> is a required list of node
-group ids to remove from the cluster.
+node groups (shards), the C<NodeGroupsToRemove> or
+C<NodeGroupsToRetain> is a required list of node group ids to remove
+from or retain in the cluster.
+
+ElastiCache for Redis will attempt to remove all node groups listed by
+C<NodeGroupsToRemove> from the cluster.
+
+
+
+=head2 NodeGroupsToRetain => ArrayRef[Str|Undef]
+
+If the value of C<NodeGroupCount> is less than the current number of
+node groups (shards), the C<NodeGroupsToRemove> or
+C<NodeGroupsToRetain> is a required list of node group ids to remove
+from or retain in the cluster.
+
+ElastiCache for Redis will attempt to remove all node groups except
+those listed by C<NodeGroupsToRetain> from the cluster.
 
 
 

@@ -18,25 +18,42 @@ Paws::EC2::DescribeIdFormat - Arguments for method DescribeIdFormat on L<Paws::E
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeIdFormat on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeIdFormat on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeIdFormat.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeIdFormat.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeIdFormat(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeIdFormatResult = $ec2->DescribeIdFormat(
+      Resource => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Statuses = $DescribeIdFormatResult->Statuses;
+
+    # Returns a L<Paws::EC2::DescribeIdFormatResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeIdFormat>
 
 =head1 ATTRIBUTES
 
 
 =head2 Resource => Str
 
-The type of resource: C<instance> | C<reservation> | C<snapshot> |
-C<volume>
+The type of resource: C<bundle> | C<conversion-task> |
+C<customer-gateway> | C<dhcp-options> | C<elastic-ip-allocation> |
+C<elastic-ip-association> | C<export-task> | C<flow-log> | C<image> |
+C<import-task> | C<instance> | C<internet-gateway> | C<network-acl> |
+C<network-acl-association> | C<network-interface> |
+C<network-interface-attachment> | C<prefix-list> | C<reservation> |
+C<route-table> | C<route-table-association> | C<security-group> |
+C<snapshot> | C<subnet> | C<subnet-cidr-block-association> | C<volume>
+| C<vpc> | C<vpc-cidr-block-association> | C<vpc-endpoint> |
+C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>
 
 
 

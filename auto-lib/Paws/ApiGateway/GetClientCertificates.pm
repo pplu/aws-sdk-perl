@@ -20,25 +20,36 @@ Paws::ApiGateway::GetClientCertificates - Arguments for method GetClientCertific
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetClientCertificates on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method GetClientCertificates on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GetClientCertificates.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetClientCertificates.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetClientCertificates(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $ClientCertificates = $apigateway->GetClientCertificates(
+      Limit    => 1,             # OPTIONAL
+      Position => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $Items    = $ClientCertificates->Items;
+    my $Position = $ClientCertificates->Position;
+
+    # Returns a L<Paws::ApiGateway::ClientCertificates> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetClientCertificates>
 
 =head1 ATTRIBUTES
 
 
 =head2 Limit => Int
 
-The maximum number of returned results per page. The value is 25 by
-default and could be between 1 - 500.
+The maximum number of returned results per page. The default value is
+25 and the maximum value is 500.
 
 
 

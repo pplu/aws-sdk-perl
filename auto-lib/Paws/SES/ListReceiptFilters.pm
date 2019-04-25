@@ -17,17 +17,27 @@ Paws::SES::ListReceiptFilters - Arguments for method ListReceiptFilters on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListReceiptFilters on the 
-Amazon Simple Email Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ListReceiptFilters on the
+L<Amazon Simple Email Service|Paws::SES> service. Use the attributes of this class
 as arguments to method ListReceiptFilters.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListReceiptFilters.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListReceiptFilters(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+   # ListReceiptFilters
+   # The following example lists the IP address filters that are associated with
+   # an AWS account:
+    my $ListReceiptFiltersResponse = $email->ListReceiptFilters();
+
+    # Results:
+    my $Filters = $ListReceiptFiltersResponse->Filters;
+
+    # Returns a L<Paws::SES::ListReceiptFiltersResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/ListReceiptFilters>
 
 =head1 ATTRIBUTES
 

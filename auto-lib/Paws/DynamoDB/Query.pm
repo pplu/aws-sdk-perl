@@ -34,17 +34,43 @@ Paws::DynamoDB::Query - Arguments for method Query on L<Paws::DynamoDB>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method Query on the 
-Amazon DynamoDB service. Use the attributes of this class
+This class represents the parameters used for calling the method Query on the
+L<Amazon DynamoDB|Paws::DynamoDB> service. Use the attributes of this class
 as arguments to method Query.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Query.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->Query(Att1 => $value1, Att2 => $value2, ...);
+    my $dynamodb = Paws->service('DynamoDB');
+   # To query an item
+   # This example queries items in the Music table. The table has a partition
+   # key and sort key (Artist and SongTitle), but this query only specifies the
+   # partition key value. It returns song titles by the artist named "No One You
+   # Know".
+    my $QueryOutput = $dynamodb->Query(
+      {
+        'ExpressionAttributeValues' => {
+          ':v1' => {
+            'S' => 'No One You Know'
+          }
+        },
+        'KeyConditionExpression' => 'Artist = :v1',
+        'ProjectionExpression'   => 'SongTitle',
+        'TableName'              => 'Music'
+      }
+    );
+
+    # Results:
+    my $ConsumedCapacity = $QueryOutput->ConsumedCapacity;
+    my $Count            = $QueryOutput->Count;
+    my $Items            = $QueryOutput->Items;
+    my $ScannedCount     = $QueryOutput->ScannedCount;
+
+    # Returns a L<Paws::DynamoDB::QueryOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/Query>
 
 =head1 ATTRIBUTES
 
@@ -221,11 +247,12 @@ The condition that specifies the key value(s) for items to be retrieved
 by the C<Query> action.
 
 The condition must perform an equality test on a single partition key
-value. The condition can also perform one of several comparison tests
-on a single sort key value. C<Query> can use C<KeyConditionExpression>
-to retrieve one item with a given partition key value and sort key
-value, or several items that have the same partition key value but
-different sort key values.
+value.
+
+The condition can optionally perform one of several comparison tests on
+a single sort key value. This allows C<Query> to retrieve one item with
+a given partition key value and sort key value, or several items that
+have the same partition key value but different sort key values.
 
 The partition key equality test is required, and must be specified in
 the following format:
@@ -392,8 +419,8 @@ is performed in descending order.
 Items with the same partition key value are stored in sorted order by
 sort key. If the sort key data type is Number, the results are stored
 in numeric order. For type String, the results are stored in order of
-ASCII character code values. For type Binary, DynamoDB treats each byte
-of the binary data as unsigned.
+UTF-8 bytes. For type Binary, DynamoDB treats each byte of the binary
+data as unsigned.
 
 If C<ScanIndexForward> is C<true>, DynamoDB returns the results in the
 order in which they are stored (by sort key value). This is the default

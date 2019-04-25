@@ -1,6 +1,7 @@
 package Paws::CloudWatchEvents::Target;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has BatchParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::BatchParameters');
   has EcsParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::EcsParameters');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Input => (is => 'ro', isa => 'Str');
@@ -9,6 +10,7 @@ package Paws::CloudWatchEvents::Target;
   has KinesisParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::KinesisParameters');
   has RoleArn => (is => 'ro', isa => 'Str');
   has RunCommandParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::RunCommandParameters');
+  has SqsParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::SqsParameters');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchEvents::Target object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., RunCommandParameters => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., SqsParameters => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,10 +41,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 
 =head1 DESCRIPTION
 
-Targets are the resources to be invoked when a rule is triggered.
-Target types include EC2 instances, AWS Lambda functions, Amazon
-Kinesis streams, Amazon ECS tasks, AWS Step Functions state machines,
-Run Command, and built-in targets.
+Targets are the resources to be invoked when a rule is triggered. For a
+complete list of services and resources that can be set as a target,
+see PutTargets.
+
+If you are setting the event bus of another account as the target, and
+that account granted permission to your account through an organization
+instead of directly by the account ID, then you must specify a
+C<RoleArn> with proper permissions in the C<Target> structure. For more
+information, see Sending and Receiving Events Between AWS Accounts
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
+in the I<Amazon CloudWatch Events User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -50,6 +59,14 @@ Run Command, and built-in targets.
 =head2 B<REQUIRED> Arn => Str
 
   The Amazon Resource Name (ARN) of the target.
+
+
+=head2 BatchParameters => L<Paws::CloudWatchEvents::BatchParameters>
+
+  If the event target is an AWS Batch job, this contains the job
+definition, job name, and other parameters. For more information, see
+Jobs (http://docs.aws.amazon.com/batch/latest/userguide/jobs.html) in
+the I<AWS Batch User Guide>.
 
 
 =head2 EcsParameters => L<Paws::CloudWatchEvents::EcsParameters>
@@ -69,9 +86,8 @@ in the I<Amazon EC2 Container Service Developer Guide>.
 =head2 Input => Str
 
   Valid JSON text passed to the target. In this case, nothing from the
-event itself is passed to the target. You must use JSON dot notation,
-not bracket notation. For more information, see The JavaScript Object
-Notation (JSON) Data Interchange Format
+event itself is passed to the target. For more information, see The
+JavaScript Object Notation (JSON) Data Interchange Format
 (http://www.rfc-editor.org/rfc/rfc7159.txt).
 
 
@@ -93,8 +109,8 @@ target.
 
 =head2 KinesisParameters => L<Paws::CloudWatchEvents::KinesisParameters>
 
-  The custom parameter you can use to control shard assignment, when the
-target is an Amazon Kinesis stream. If you do not include this
+  The custom parameter you can use to control the shard assignment, when
+the target is a Kinesis data stream. If you do not include this
 parameter, the default is to use the C<eventId> as the partition key.
 
 
@@ -109,6 +125,14 @@ targets, you can use a different IAM role for each target.
 
   Parameters used when you are using the rule to invoke Amazon EC2 Run
 Command.
+
+
+=head2 SqsParameters => L<Paws::CloudWatchEvents::SqsParameters>
+
+  Contains the message group ID to use when the target is a FIFO queue.
+
+If you specify an SQS FIFO queue as a target, the queue must have
+content-based deduplication enabled.
 
 
 

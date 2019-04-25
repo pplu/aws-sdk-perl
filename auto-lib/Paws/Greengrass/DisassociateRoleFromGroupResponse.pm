@@ -17,7 +17,8 @@ Paws::Greengrass::DisassociateRoleFromGroupResponse
 
 =head2 DisassociatedAt => Str
 
-Time when the role was disassociated from the group.
+The time, in milliseconds since the epoch, when the role was
+disassociated from the group.
 
 
 =head2 _request_id => Str

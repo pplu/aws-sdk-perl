@@ -24,7 +24,7 @@ arn:aws:mediastore:us-west-2:111122223333:container/movies
 
 ContainerName: The container name as specified in the request.
 
-CreationTime: Unix timestamp.
+CreationTime: Unix time stamp.
 
 Status: The status of container creation or deletion. The status is one
 of the following: C<CREATING>, C<ACTIVE>, or C<DELETING>. While the

@@ -21,17 +21,40 @@ Paws::EC2::AssignPrivateIpAddresses - Arguments for method AssignPrivateIpAddres
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method AssignPrivateIpAddresses on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method AssignPrivateIpAddresses on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method AssignPrivateIpAddresses.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssignPrivateIpAddresses.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AssignPrivateIpAddresses(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To assign a specific secondary private IP address to an interface
+    # This example assigns the specified secondary private IP address to the
+    # specified network interface.
+    $ec2->AssignPrivateIpAddresses(
+      {
+        'NetworkInterfaceId' => 'eni-e5aa89a3',
+        'PrivateIpAddresses' => ['10.0.0.82']
+      }
+    );
+
+# To assign secondary private IP addresses that Amazon EC2 selects to an interface
+# This example assigns two secondary private IP addresses to the specified
+# network interface. Amazon EC2 automatically assigns these IP addresses from
+# the available IP addresses in the CIDR block range of the subnet the
+# network interface is associated with.
+    $ec2->AssignPrivateIpAddresses(
+      {
+        'NetworkInterfaceId'             => 'eni-e5aa89a3',
+        'SecondaryPrivateIpAddressCount' => 2
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/AssignPrivateIpAddresses>
 
 =head1 ATTRIBUTES
 

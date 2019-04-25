@@ -22,17 +22,30 @@ Paws::EFS::DescribeMountTargets - Arguments for method DescribeMountTargets on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeMountTargets on the 
-Amazon Elastic File System service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeMountTargets on the
+L<Amazon Elastic File System|Paws::EFS> service. Use the attributes of this class
 as arguments to method DescribeMountTargets.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeMountTargets.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeMountTargets(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticfilesystem = Paws->service('EFS');
+    # To describe the mount targets for a file system
+    # This operation describes all of a file system's mount targets.
+    my $DescribeMountTargetsResponse = $elasticfilesystem->DescribeMountTargets(
+      {
+        'FileSystemId' => 'fs-01234567'
+      }
+    );
+
+    # Results:
+    my $MountTargets = $DescribeMountTargetsResponse->MountTargets;
+
+    # Returns a L<Paws::EFS::DescribeMountTargetsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem/DescribeMountTargets>
 
 =head1 ATTRIBUTES
 

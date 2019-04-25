@@ -47,7 +47,7 @@ Valid values are: C<"IN_PROGRESS">, C<"READY">, C<"FAILED">
 
 The format of the exported data.
 
-Valid values are: C<"ALEXA_SKILLS_KIT">
+Valid values are: C<"ALEXA_SKILLS_KIT">, C<"LEX">
 =head2 FailureReason => Str
 
 If C<status> is C<FAILED>, Amazon Lex provides the reason that it
@@ -63,7 +63,7 @@ The name of the bot being exported.
 
 The type of the exported resource.
 
-Valid values are: C<"BOT">
+Valid values are: C<"BOT">, C<"INTENT">, C<"SLOT_TYPE">
 =head2 Url => Str
 
 An S3 pre-signed URL that provides the location of the exported

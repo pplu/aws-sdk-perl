@@ -6,6 +6,7 @@ package Paws::MediaConvert::BurninDestinationSettings;
   has FontColor => (is => 'ro', isa => 'Str', request_name => 'fontColor', traits => ['NameInRequest']);
   has FontOpacity => (is => 'ro', isa => 'Int', request_name => 'fontOpacity', traits => ['NameInRequest']);
   has FontResolution => (is => 'ro', isa => 'Int', request_name => 'fontResolution', traits => ['NameInRequest']);
+  has FontScript => (is => 'ro', isa => 'Str', request_name => 'fontScript', traits => ['NameInRequest']);
   has FontSize => (is => 'ro', isa => 'Int', request_name => 'fontSize', traits => ['NameInRequest']);
   has OutlineColor => (is => 'ro', isa => 'Str', request_name => 'outlineColor', traits => ['NameInRequest']);
   has OutlineSize => (is => 'ro', isa => 'Int', request_name => 'outlineSize', traits => ['NameInRequest']);
@@ -83,6 +84,15 @@ transparent. All burn-in and DVB-Sub font settings must match.
 
   Font resolution in DPI (dots per inch); default is 96 dpi. All burn-in
 and DVB-Sub font settings must match.
+
+
+=head2 FontScript => Str
+
+  Provide the font script, using an ISO 15924 script code, if the
+LanguageCode is not sufficient for determining the script type. Where
+LanguageCode or CustomLanguageCode is sufficient, use "AUTOMATIC" or
+leave unset. This is used to help determine the appropriate font for
+rendering burn-in captions.
 
 
 =head2 FontSize => Int

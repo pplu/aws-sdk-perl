@@ -18,7 +18,7 @@ Paws::Lambda::ListVersionsByFunctionResponse
 
 =head2 NextMarker => Str
 
-A string, present if there are more function versions.
+Pagination token included if more results are available.
 
 
 =head2 Versions => ArrayRef[L<Paws::Lambda::FunctionConfiguration>]

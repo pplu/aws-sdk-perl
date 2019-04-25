@@ -24,17 +24,52 @@ Paws::SimpleWorkflow::CountClosedWorkflowExecutions - Arguments for method Count
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CountClosedWorkflowExecutions on the 
-Amazon Simple Workflow Service service. Use the attributes of this class
+This class represents the parameters used for calling the method CountClosedWorkflowExecutions on the
+L<Amazon Simple Workflow Service|Paws::SimpleWorkflow> service. Use the attributes of this class
 as arguments to method CountClosedWorkflowExecutions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CountClosedWorkflowExecutions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CountClosedWorkflowExecutions(Att1 => $value1, Att2 => $value2, ...);
+    my $swf = Paws->service('SimpleWorkflow');
+    my $WorkflowExecutionCount = $swf->CountClosedWorkflowExecutions(
+      Domain            => 'MyDomainName',
+      CloseStatusFilter => {
+        Status => 'COMPLETED'
+        , # values: COMPLETED, FAILED, CANCELED, TERMINATED, CONTINUED_AS_NEW, TIMED_OUT
+
+      },    # OPTIONAL
+      CloseTimeFilter => {
+        OldestDate => '1970-01-01T01:00:00',
+        LatestDate => '1970-01-01T01:00:00',
+      },    # OPTIONAL
+      ExecutionFilter => {
+        WorkflowId => 'MyWorkflowId',    # min: 1, max: 256
+
+      },    # OPTIONAL
+      StartTimeFilter => {
+        OldestDate => '1970-01-01T01:00:00',
+        LatestDate => '1970-01-01T01:00:00',
+      },    # OPTIONAL
+      TagFilter => {
+        Tag => 'MyTag',    # max: 256
+
+      },    # OPTIONAL
+      TypeFilter => {
+        Name    => 'MyName',               # min: 1, max: 256
+        Version => 'MyVersionOptional',    # max: 64; OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $Count     = $WorkflowExecutionCount->Count;
+    my $Truncated = $WorkflowExecutionCount->Truncated;
+
+    # Returns a L<Paws::SimpleWorkflow::WorkflowExecutionCount> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf/CountClosedWorkflowExecutions>
 
 =head1 ATTRIBUTES
 

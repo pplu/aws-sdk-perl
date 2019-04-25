@@ -1,6 +1,7 @@
 package Paws::Inspector;
   use Moose;
   sub service { 'inspector' }
+  sub signing_name { 'inspector' }
   sub version { '2016-02-16' }
   sub target_prefix { 'InspectorService' }
   sub json_version { "1.1" }
@@ -27,6 +28,11 @@ package Paws::Inspector;
   sub CreateAssessmentTemplate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Inspector::CreateAssessmentTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateExclusionsPreview {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Inspector::CreateExclusionsPreview', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateResourceGroup {
@@ -69,6 +75,11 @@ package Paws::Inspector;
     my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeCrossAccountAccessRole', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeExclusions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeExclusions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeFindings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeFindings', @_);
@@ -87,6 +98,11 @@ package Paws::Inspector;
   sub GetAssessmentReport {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Inspector::GetAssessmentReport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetExclusionsPreview {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Inspector::GetExclusionsPreview', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetTelemetryMetadata {
@@ -117,6 +133,11 @@ package Paws::Inspector;
   sub ListEventSubscriptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Inspector::ListEventSubscriptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListExclusions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Inspector::ListExclusions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListFindings {
@@ -180,9 +201,216 @@ package Paws::Inspector;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAssessmentRunAgents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssessmentRunAgents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAssessmentRunAgents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->assessmentRunAgents }, @{ $next_result->assessmentRunAgents };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'assessmentRunAgents') foreach (@{ $result->assessmentRunAgents });
+        $result = $self->ListAssessmentRunAgents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'assessmentRunAgents') foreach (@{ $result->assessmentRunAgents });
+    }
+
+    return undef
+  }
+  sub ListAllAssessmentRuns {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssessmentRuns(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAssessmentRuns(@_, nextToken => $next_result->nextToken);
+        push @{ $result->assessmentRunArns }, @{ $next_result->assessmentRunArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'assessmentRunArns') foreach (@{ $result->assessmentRunArns });
+        $result = $self->ListAssessmentRuns(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'assessmentRunArns') foreach (@{ $result->assessmentRunArns });
+    }
+
+    return undef
+  }
+  sub ListAllAssessmentTargets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssessmentTargets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAssessmentTargets(@_, nextToken => $next_result->nextToken);
+        push @{ $result->assessmentTargetArns }, @{ $next_result->assessmentTargetArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'assessmentTargetArns') foreach (@{ $result->assessmentTargetArns });
+        $result = $self->ListAssessmentTargets(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'assessmentTargetArns') foreach (@{ $result->assessmentTargetArns });
+    }
+
+    return undef
+  }
+  sub ListAllAssessmentTemplates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssessmentTemplates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAssessmentTemplates(@_, nextToken => $next_result->nextToken);
+        push @{ $result->assessmentTemplateArns }, @{ $next_result->assessmentTemplateArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'assessmentTemplateArns') foreach (@{ $result->assessmentTemplateArns });
+        $result = $self->ListAssessmentTemplates(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'assessmentTemplateArns') foreach (@{ $result->assessmentTemplateArns });
+    }
+
+    return undef
+  }
+  sub ListAllEventSubscriptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEventSubscriptions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListEventSubscriptions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->subscriptions }, @{ $next_result->subscriptions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'subscriptions') foreach (@{ $result->subscriptions });
+        $result = $self->ListEventSubscriptions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'subscriptions') foreach (@{ $result->subscriptions });
+    }
+
+    return undef
+  }
+  sub ListAllExclusions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListExclusions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListExclusions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->exclusionArns }, @{ $next_result->exclusionArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'exclusionArns') foreach (@{ $result->exclusionArns });
+        $result = $self->ListExclusions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'exclusionArns') foreach (@{ $result->exclusionArns });
+    }
+
+    return undef
+  }
+  sub ListAllFindings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFindings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListFindings(@_, nextToken => $next_result->nextToken);
+        push @{ $result->findingArns }, @{ $next_result->findingArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'findingArns') foreach (@{ $result->findingArns });
+        $result = $self->ListFindings(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'findingArns') foreach (@{ $result->findingArns });
+    }
+
+    return undef
+  }
+  sub ListAllRulesPackages {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRulesPackages(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListRulesPackages(@_, nextToken => $next_result->nextToken);
+        push @{ $result->rulesPackageArns }, @{ $next_result->rulesPackageArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'rulesPackageArns') foreach (@{ $result->rulesPackageArns });
+        $result = $self->ListRulesPackages(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'rulesPackageArns') foreach (@{ $result->rulesPackageArns });
+    }
+
+    return undef
+  }
+  sub PreviewAllAgents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->PreviewAgents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->PreviewAgents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->agentPreviews }, @{ $next_result->agentPreviews };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'agentPreviews') foreach (@{ $result->agentPreviews });
+        $result = $self->PreviewAgents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'agentPreviews') foreach (@{ $result->agentPreviews });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AddAttributesToFindings CreateAssessmentTarget CreateAssessmentTemplate CreateResourceGroup DeleteAssessmentRun DeleteAssessmentTarget DeleteAssessmentTemplate DescribeAssessmentRuns DescribeAssessmentTargets DescribeAssessmentTemplates DescribeCrossAccountAccessRole DescribeFindings DescribeResourceGroups DescribeRulesPackages GetAssessmentReport GetTelemetryMetadata ListAssessmentRunAgents ListAssessmentRuns ListAssessmentTargets ListAssessmentTemplates ListEventSubscriptions ListFindings ListRulesPackages ListTagsForResource PreviewAgents RegisterCrossAccountAccessRole RemoveAttributesFromFindings SetTagsForResource StartAssessmentRun StopAssessmentRun SubscribeToEvent UnsubscribeFromEvent UpdateAssessmentTarget / }
+  sub operations { qw/AddAttributesToFindings CreateAssessmentTarget CreateAssessmentTemplate CreateExclusionsPreview CreateResourceGroup DeleteAssessmentRun DeleteAssessmentTarget DeleteAssessmentTemplate DescribeAssessmentRuns DescribeAssessmentTargets DescribeAssessmentTemplates DescribeCrossAccountAccessRole DescribeExclusions DescribeFindings DescribeResourceGroups DescribeRulesPackages GetAssessmentReport GetExclusionsPreview GetTelemetryMetadata ListAssessmentRunAgents ListAssessmentRuns ListAssessmentTargets ListAssessmentTemplates ListEventSubscriptions ListExclusions ListFindings ListRulesPackages ListTagsForResource PreviewAgents RegisterCrossAccountAccessRole RemoveAttributesFromFindings SetTagsForResource StartAssessmentRun StopAssessmentRun SubscribeToEvent UnsubscribeFromEvent UpdateAssessmentTarget / }
 
 1;
 
@@ -217,9 +445,21 @@ resources and to identify potential security issues. For more
 information, see Amazon Inspector User Guide
 (http://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16>
+
+
 =head1 METHODS
 
-=head2 AddAttributesToFindings(Attributes => ArrayRef[L<Paws::Inspector::Attribute>], FindingArns => ArrayRef[Str|Undef])
+=head2 AddAttributesToFindings
+
+=over
+
+=item Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
+
+=item FindingArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::AddAttributesToFindings>
 
@@ -229,31 +469,92 @@ Assigns attributes (key and value pairs) to the findings that are
 specified by the ARNs of the findings.
 
 
-=head2 CreateAssessmentTarget(AssessmentTargetName => Str, ResourceGroupArn => Str)
+=head2 CreateAssessmentTarget
+
+=over
+
+=item AssessmentTargetName => Str
+
+=item [ResourceGroupArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::CreateAssessmentTarget>
 
 Returns: a L<Paws::Inspector::CreateAssessmentTargetResponse> instance
 
 Creates a new assessment target using the ARN of the resource group
-that is generated by CreateResourceGroup. You can create up to 50
+that is generated by CreateResourceGroup. If resourceGroupArn is not
+specified, all EC2 instances in the current AWS account and region are
+included in the assessment target. If the service-linked role
+(https://docs.aws.amazon.com/inspector/latest/userguide/inspector_slr.html)
+isnE<rsquo>t already registered, this action also creates and registers
+a service-linked role to grant Amazon Inspector access to AWS Services
+needed to perform security assessments. You can create up to 50
 assessment targets per AWS account. You can run up to 500 concurrent
 agents per AWS account. For more information, see Amazon Inspector
 Assessment Targets
 (http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html).
 
 
-=head2 CreateAssessmentTemplate(AssessmentTargetArn => Str, AssessmentTemplateName => Str, DurationInSeconds => Int, RulesPackageArns => ArrayRef[Str|Undef], [UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]])
+=head2 CreateAssessmentTemplate
+
+=over
+
+=item AssessmentTargetArn => Str
+
+=item AssessmentTemplateName => Str
+
+=item DurationInSeconds => Int
+
+=item RulesPackageArns => ArrayRef[Str|Undef]
+
+=item [UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::CreateAssessmentTemplate>
 
 Returns: a L<Paws::Inspector::CreateAssessmentTemplateResponse> instance
 
 Creates an assessment template for the assessment target that is
-specified by the ARN of the assessment target.
+specified by the ARN of the assessment target. If the service-linked
+role
+(https://docs.aws.amazon.com/inspector/latest/userguide/inspector_slr.html)
+isnE<rsquo>t already registered, this action also creates and registers
+a service-linked role to grant Amazon Inspector access to AWS Services
+needed to perform security assessments.
 
 
-=head2 CreateResourceGroup(ResourceGroupTags => ArrayRef[L<Paws::Inspector::ResourceGroupTag>])
+=head2 CreateExclusionsPreview
+
+=over
+
+=item AssessmentTemplateArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Inspector::CreateExclusionsPreview>
+
+Returns: a L<Paws::Inspector::CreateExclusionsPreviewResponse> instance
+
+Starts the generation of an exclusions preview for the specified
+assessment template. The exclusions preview lists the potential
+exclusions (ExclusionPreview) that Inspector can detect before it runs
+the assessment.
+
+
+=head2 CreateResourceGroup
+
+=over
+
+=item ResourceGroupTags => ArrayRef[L<Paws::Inspector::ResourceGroupTag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::CreateResourceGroup>
 
@@ -266,7 +567,14 @@ used to create an Amazon Inspector assessment target. For more
 information, see CreateAssessmentTarget.
 
 
-=head2 DeleteAssessmentRun(AssessmentRunArn => Str)
+=head2 DeleteAssessmentRun
+
+=over
+
+=item AssessmentRunArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DeleteAssessmentRun>
 
@@ -276,7 +584,14 @@ Deletes the assessment run that is specified by the ARN of the
 assessment run.
 
 
-=head2 DeleteAssessmentTarget(AssessmentTargetArn => Str)
+=head2 DeleteAssessmentTarget
+
+=over
+
+=item AssessmentTargetArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DeleteAssessmentTarget>
 
@@ -286,7 +601,14 @@ Deletes the assessment target that is specified by the ARN of the
 assessment target.
 
 
-=head2 DeleteAssessmentTemplate(AssessmentTemplateArn => Str)
+=head2 DeleteAssessmentTemplate
+
+=over
+
+=item AssessmentTemplateArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DeleteAssessmentTemplate>
 
@@ -296,7 +618,14 @@ Deletes the assessment template that is specified by the ARN of the
 assessment template.
 
 
-=head2 DescribeAssessmentRuns(AssessmentRunArns => ArrayRef[Str|Undef])
+=head2 DescribeAssessmentRuns
+
+=over
+
+=item AssessmentRunArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentRuns>
 
@@ -306,7 +635,14 @@ Describes the assessment runs that are specified by the ARNs of the
 assessment runs.
 
 
-=head2 DescribeAssessmentTargets(AssessmentTargetArns => ArrayRef[Str|Undef])
+=head2 DescribeAssessmentTargets
+
+=over
+
+=item AssessmentTargetArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentTargets>
 
@@ -316,7 +652,14 @@ Describes the assessment targets that are specified by the ARNs of the
 assessment targets.
 
 
-=head2 DescribeAssessmentTemplates(AssessmentTemplateArns => ArrayRef[Str|Undef])
+=head2 DescribeAssessmentTemplates
+
+=over
+
+=item AssessmentTemplateArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentTemplates>
 
@@ -326,7 +669,14 @@ Describes the assessment templates that are specified by the ARNs of
 the assessment templates.
 
 
-=head2 DescribeCrossAccountAccessRole( => )
+=head2 DescribeCrossAccountAccessRole
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeCrossAccountAccessRole>
 
@@ -336,7 +686,34 @@ Describes the IAM role that enables Amazon Inspector to access your AWS
 account.
 
 
-=head2 DescribeFindings(FindingArns => ArrayRef[Str|Undef], [Locale => Str])
+=head2 DescribeExclusions
+
+=over
+
+=item ExclusionArns => ArrayRef[Str|Undef]
+
+=item [Locale => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Inspector::DescribeExclusions>
+
+Returns: a L<Paws::Inspector::DescribeExclusionsResponse> instance
+
+Describes the exclusions that are specified by the exclusions' ARNs.
+
+
+=head2 DescribeFindings
+
+=over
+
+=item FindingArns => ArrayRef[Str|Undef]
+
+=item [Locale => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeFindings>
 
@@ -345,7 +722,14 @@ Returns: a L<Paws::Inspector::DescribeFindingsResponse> instance
 Describes the findings that are specified by the ARNs of the findings.
 
 
-=head2 DescribeResourceGroups(ResourceGroupArns => ArrayRef[Str|Undef])
+=head2 DescribeResourceGroups
+
+=over
+
+=item ResourceGroupArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeResourceGroups>
 
@@ -355,7 +739,16 @@ Describes the resource groups that are specified by the ARNs of the
 resource groups.
 
 
-=head2 DescribeRulesPackages(RulesPackageArns => ArrayRef[Str|Undef], [Locale => Str])
+=head2 DescribeRulesPackages
+
+=over
+
+=item RulesPackageArns => ArrayRef[Str|Undef]
+
+=item [Locale => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeRulesPackages>
 
@@ -365,7 +758,18 @@ Describes the rules packages that are specified by the ARNs of the
 rules packages.
 
 
-=head2 GetAssessmentReport(AssessmentRunArn => Str, ReportFileFormat => Str, ReportType => Str)
+=head2 GetAssessmentReport
+
+=over
+
+=item AssessmentRunArn => Str
+
+=item ReportFileFormat => Str
+
+=item ReportType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::GetAssessmentReport>
 
@@ -375,7 +779,40 @@ Produces an assessment report that includes detailed and comprehensive
 results of a specified assessment run.
 
 
-=head2 GetTelemetryMetadata(AssessmentRunArn => Str)
+=head2 GetExclusionsPreview
+
+=over
+
+=item AssessmentTemplateArn => Str
+
+=item PreviewToken => Str
+
+=item [Locale => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Inspector::GetExclusionsPreview>
+
+Returns: a L<Paws::Inspector::GetExclusionsPreviewResponse> instance
+
+Retrieves the exclusions preview (a list of ExclusionPreview objects)
+specified by the preview token. You can obtain the preview token by
+running the CreateExclusionsPreview API.
+
+
+=head2 GetTelemetryMetadata
+
+=over
+
+=item AssessmentRunArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::GetTelemetryMetadata>
 
@@ -385,7 +822,20 @@ Information about the data that is collected for the specified
 assessment run.
 
 
-=head2 ListAssessmentRunAgents(AssessmentRunArn => Str, [Filter => L<Paws::Inspector::AgentFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentRunAgents
+
+=over
+
+=item AssessmentRunArn => Str
+
+=item [Filter => L<Paws::Inspector::AgentFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentRunAgents>
 
@@ -395,7 +845,20 @@ Lists the agents of the assessment runs that are specified by the ARNs
 of the assessment runs.
 
 
-=head2 ListAssessmentRuns([AssessmentTemplateArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentRunFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentRuns
+
+=over
+
+=item [AssessmentTemplateArns => ArrayRef[Str|Undef]]
+
+=item [Filter => L<Paws::Inspector::AssessmentRunFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentRuns>
 
@@ -405,7 +868,18 @@ Lists the assessment runs that correspond to the assessment templates
 that are specified by the ARNs of the assessment templates.
 
 
-=head2 ListAssessmentTargets([Filter => L<Paws::Inspector::AssessmentTargetFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentTargets
+
+=over
+
+=item [Filter => L<Paws::Inspector::AssessmentTargetFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentTargets>
 
@@ -417,7 +891,20 @@ Assessment Targets
 (http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html).
 
 
-=head2 ListAssessmentTemplates([AssessmentTargetArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentTemplateFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentTemplates
+
+=over
+
+=item [AssessmentTargetArns => ArrayRef[Str|Undef]]
+
+=item [Filter => L<Paws::Inspector::AssessmentTemplateFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentTemplates>
 
@@ -427,7 +914,18 @@ Lists the assessment templates that correspond to the assessment
 targets that are specified by the ARNs of the assessment targets.
 
 
-=head2 ListEventSubscriptions([MaxResults => Int, NextToken => Str, ResourceArn => Str])
+=head2 ListEventSubscriptions
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListEventSubscriptions>
 
@@ -438,7 +936,40 @@ specified by the ARN of the assessment template. For more information,
 see SubscribeToEvent and UnsubscribeFromEvent.
 
 
-=head2 ListFindings([AssessmentRunArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::FindingFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListExclusions
+
+=over
+
+=item AssessmentRunArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Inspector::ListExclusions>
+
+Returns: a L<Paws::Inspector::ListExclusionsResponse> instance
+
+List exclusions that are generated by the assessment run.
+
+
+=head2 ListFindings
+
+=over
+
+=item [AssessmentRunArns => ArrayRef[Str|Undef]]
+
+=item [Filter => L<Paws::Inspector::FindingFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListFindings>
 
@@ -448,7 +979,16 @@ Lists findings that are generated by the assessment runs that are
 specified by the ARNs of the assessment runs.
 
 
-=head2 ListRulesPackages([MaxResults => Int, NextToken => Str])
+=head2 ListRulesPackages
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListRulesPackages>
 
@@ -457,7 +997,14 @@ Returns: a L<Paws::Inspector::ListRulesPackagesResponse> instance
 Lists all available Amazon Inspector rules packages.
 
 
-=head2 ListTagsForResource(ResourceArn => Str)
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::ListTagsForResource>
 
@@ -466,7 +1013,18 @@ Returns: a L<Paws::Inspector::ListTagsForResourceResponse> instance
 Lists all tags associated with an assessment template.
 
 
-=head2 PreviewAgents(PreviewAgentsArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 PreviewAgents
+
+=over
+
+=item PreviewAgentsArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::PreviewAgents>
 
@@ -476,18 +1034,33 @@ Previews the agents installed on the EC2 instances that are part of the
 specified assessment target.
 
 
-=head2 RegisterCrossAccountAccessRole(RoleArn => Str)
+=head2 RegisterCrossAccountAccessRole
+
+=over
+
+=item RoleArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::RegisterCrossAccountAccessRole>
 
 Returns: nothing
 
-Registers the IAM role that Amazon Inspector uses to list your EC2
-instances at the start of the assessment run or when you call the
-PreviewAgents action.
+Registers the IAM role that grants Amazon Inspector access to AWS
+Services needed to perform security assessments.
 
 
-=head2 RemoveAttributesFromFindings(AttributeKeys => ArrayRef[Str|Undef], FindingArns => ArrayRef[Str|Undef])
+=head2 RemoveAttributesFromFindings
+
+=over
+
+=item AttributeKeys => ArrayRef[Str|Undef]
+
+=item FindingArns => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::RemoveAttributesFromFindings>
 
@@ -498,7 +1071,16 @@ are specified by the ARNs of the findings where an attribute with the
 specified key exists.
 
 
-=head2 SetTagsForResource(ResourceArn => Str, [Tags => ArrayRef[L<Paws::Inspector::Tag>]])
+=head2 SetTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [Tags => ArrayRef[L<Paws::Inspector::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::SetTagsForResource>
 
@@ -508,7 +1090,16 @@ Sets tags (key and value pairs) to the assessment template that is
 specified by the ARN of the assessment template.
 
 
-=head2 StartAssessmentRun(AssessmentTemplateArn => Str, [AssessmentRunName => Str])
+=head2 StartAssessmentRun
+
+=over
+
+=item AssessmentTemplateArn => Str
+
+=item [AssessmentRunName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::StartAssessmentRun>
 
@@ -519,7 +1110,16 @@ template. For this API to function properly, you must not exceed the
 limit of running up to 500 concurrent agents per AWS account.
 
 
-=head2 StopAssessmentRun(AssessmentRunArn => Str, [StopAction => Str])
+=head2 StopAssessmentRun
+
+=over
+
+=item AssessmentRunArn => Str
+
+=item [StopAction => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::StopAssessmentRun>
 
@@ -529,7 +1129,18 @@ Stops the assessment run that is specified by the ARN of the assessment
 run.
 
 
-=head2 SubscribeToEvent(Event => Str, ResourceArn => Str, TopicArn => Str)
+=head2 SubscribeToEvent
+
+=over
+
+=item Event => Str
+
+=item ResourceArn => Str
+
+=item TopicArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::SubscribeToEvent>
 
@@ -539,7 +1150,18 @@ Enables the process of sending Amazon Simple Notification Service (SNS)
 notifications about a specified event to a specified SNS topic.
 
 
-=head2 UnsubscribeFromEvent(Event => Str, ResourceArn => Str, TopicArn => Str)
+=head2 UnsubscribeFromEvent
+
+=over
+
+=item Event => Str
+
+=item ResourceArn => Str
+
+=item TopicArn => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::UnsubscribeFromEvent>
 
@@ -549,7 +1171,18 @@ Disables the process of sending Amazon Simple Notification Service
 (SNS) notifications about a specified event to a specified SNS topic.
 
 
-=head2 UpdateAssessmentTarget(AssessmentTargetArn => Str, AssessmentTargetName => Str, ResourceGroupArn => Str)
+=head2 UpdateAssessmentTarget
+
+=over
+
+=item AssessmentTargetArn => Str
+
+=item AssessmentTargetName => Str
+
+=item [ResourceGroupArn => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Inspector::UpdateAssessmentTarget>
 
@@ -558,12 +1191,123 @@ Returns: nothing
 Updates the assessment target that is specified by the ARN of the
 assessment target.
 
+If resourceGroupArn is not specified, all EC2 instances in the current
+AWS account and region are included in the assessment target.
+
 
 
 
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAssessmentRunAgents(sub { },AssessmentRunArn => Str, [Filter => L<Paws::Inspector::AgentFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssessmentRunAgents(AssessmentRunArn => Str, [Filter => L<Paws::Inspector::AgentFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - assessmentRunAgents, passing the object as the first parameter, and the string 'assessmentRunAgents' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListAssessmentRunAgentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAssessmentRuns(sub { },[AssessmentTemplateArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentRunFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssessmentRuns([AssessmentTemplateArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentRunFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - assessmentRunArns, passing the object as the first parameter, and the string 'assessmentRunArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListAssessmentRunsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAssessmentTargets(sub { },[Filter => L<Paws::Inspector::AssessmentTargetFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssessmentTargets([Filter => L<Paws::Inspector::AssessmentTargetFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - assessmentTargetArns, passing the object as the first parameter, and the string 'assessmentTargetArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListAssessmentTargetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAssessmentTemplates(sub { },[AssessmentTargetArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentTemplateFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssessmentTemplates([AssessmentTargetArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentTemplateFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - assessmentTemplateArns, passing the object as the first parameter, and the string 'assessmentTemplateArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListAssessmentTemplatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEventSubscriptions(sub { },[MaxResults => Int, NextToken => Str, ResourceArn => Str])
+
+=head2 ListAllEventSubscriptions([MaxResults => Int, NextToken => Str, ResourceArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - subscriptions, passing the object as the first parameter, and the string 'subscriptions' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListEventSubscriptionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllExclusions(sub { },AssessmentRunArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllExclusions(AssessmentRunArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - exclusionArns, passing the object as the first parameter, and the string 'exclusionArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListExclusionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFindings(sub { },[AssessmentRunArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::FindingFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFindings([AssessmentRunArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::FindingFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - findingArns, passing the object as the first parameter, and the string 'findingArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListFindingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRulesPackages(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllRulesPackages([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - rulesPackageArns, passing the object as the first parameter, and the string 'rulesPackageArns' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::ListRulesPackagesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 PreviewAllAgents(sub { },PreviewAgentsArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 PreviewAllAgents(PreviewAgentsArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - agentPreviews, passing the object as the first parameter, and the string 'agentPreviews' as the second parameter 
+
+If not, it will return a a L<Paws::Inspector::PreviewAgentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

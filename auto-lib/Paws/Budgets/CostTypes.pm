@@ -1,6 +1,7 @@
 package Paws::Budgets::CostTypes;
   use Moose;
   has IncludeCredit => (is => 'ro', isa => 'Bool');
+  has IncludeDiscount => (is => 'ro', isa => 'Bool');
   has IncludeOtherSubscription => (is => 'ro', isa => 'Bool');
   has IncludeRecurring => (is => 'ro', isa => 'Bool');
   has IncludeRefund => (is => 'ro', isa => 'Bool');
@@ -8,6 +9,7 @@ package Paws::Budgets::CostTypes;
   has IncludeSupport => (is => 'ro', isa => 'Bool');
   has IncludeTax => (is => 'ro', isa => 'Bool');
   has IncludeUpfront => (is => 'ro', isa => 'Bool');
+  has UseAmortized => (is => 'ro', isa => 'Bool');
   has UseBlended => (is => 'ro', isa => 'Bool');
 1;
 
@@ -39,55 +41,91 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Co
 
 =head1 DESCRIPTION
 
-This includes the options for getting the cost of a budget.
+The types of cost that are included in a C<COST> budget, such as tax
+and subscriptions.
+
+C<USAGE>, C<RI_UTILIZATION>, and C<RI_COVERAGE> budgets do not have
+C<CostTypes>.
 
 =head1 ATTRIBUTES
 
 
 =head2 IncludeCredit => Bool
 
-  A boolean value whether to include credits in the cost budget.
+  Specifies whether a budget includes credits.
+
+The default value is C<true>.
+
+
+=head2 IncludeDiscount => Bool
+
+  Specifies whether a budget includes discounts.
+
+The default value is C<true>.
 
 
 =head2 IncludeOtherSubscription => Bool
 
-  A boolean value whether to include other subscription costs in the cost
-budget.
+  Specifies whether a budget includes non-RI subscription costs.
+
+The default value is C<true>.
 
 
 =head2 IncludeRecurring => Bool
 
-  A boolean value whether to include recurring costs in the cost budget.
+  Specifies whether a budget includes recurring fees such as monthly RI
+fees.
+
+The default value is C<true>.
 
 
 =head2 IncludeRefund => Bool
 
-  A boolean value whether to include refunds in the cost budget.
+  Specifies whether a budget includes refunds.
+
+The default value is C<true>.
 
 
 =head2 IncludeSubscription => Bool
 
-  A boolean value whether to include subscriptions in the cost budget.
+  Specifies whether a budget includes subscriptions.
+
+The default value is C<true>.
 
 
 =head2 IncludeSupport => Bool
 
-  A boolean value whether to include support costs in the cost budget.
+  Specifies whether a budget includes support subscription fees.
+
+The default value is C<true>.
 
 
 =head2 IncludeTax => Bool
 
-  A boolean value whether to include tax in the cost budget.
+  Specifies whether a budget includes taxes.
+
+The default value is C<true>.
 
 
 =head2 IncludeUpfront => Bool
 
-  A boolean value whether to include upfront costs in the cost budget.
+  Specifies whether a budget includes upfront RI costs.
+
+The default value is C<true>.
+
+
+=head2 UseAmortized => Bool
+
+  Specifies whether a budget uses the amortized rate.
+
+The default value is C<false>.
 
 
 =head2 UseBlended => Bool
 
-  A boolean value whether to use blended costs in the cost budget.
+  Specifies whether a budget uses a blended rate.
+
+The default value is C<false>.
 
 
 

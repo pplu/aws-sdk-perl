@@ -21,17 +21,34 @@ Paws::Rekognition::GetLabelDetection - Arguments for method GetLabelDetection on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetLabelDetection on the 
-Amazon Rekognition service. Use the attributes of this class
+This class represents the parameters used for calling the method GetLabelDetection on the
+L<Amazon Rekognition|Paws::Rekognition> service. Use the attributes of this class
 as arguments to method GetLabelDetection.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLabelDetection.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetLabelDetection(Att1 => $value1, Att2 => $value2, ...);
+    my $rekognition = Paws->service('Rekognition');
+    my $GetLabelDetectionResponse = $rekognition->GetLabelDetection(
+      JobId      => 'MyJobId',
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyPaginationToken',    # OPTIONAL
+      SortBy     => 'NAME',                 # OPTIONAL
+    );
+
+    # Results:
+    my $JobStatus         = $GetLabelDetectionResponse->JobStatus;
+    my $LabelModelVersion = $GetLabelDetectionResponse->LabelModelVersion;
+    my $Labels            = $GetLabelDetectionResponse->Labels;
+    my $NextToken         = $GetLabelDetectionResponse->NextToken;
+    my $StatusMessage     = $GetLabelDetectionResponse->StatusMessage;
+    my $VideoMetadata     = $GetLabelDetectionResponse->VideoMetadata;
+
+    # Returns a L<Paws::Rekognition::GetLabelDetectionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rekognition/GetLabelDetection>
 
 =head1 ATTRIBUTES
 
@@ -46,17 +63,18 @@ C<StartlabelDetection>.
 
 =head2 MaxResults => Int
 
-Maximum number of labels you want Amazon Rekognition to return in the
-response. The default is 1000.
+Maximum number of results to return per paginated call. The largest
+value you can specify is 1000. If you specify a value greater than
+1000, a maximum of 1000 results is returned. The default value is 1000.
 
 
 
 =head2 NextToken => Str
 
 If the previous response was incomplete (because there are more labels
-to retrieve), Rekognition Video returns a pagination token in the
-response. You can use this pagination token to retrieve the next set of
-labels.
+to retrieve), Amazon Rekognition Video returns a pagination token in
+the response. You can use this pagination token to retrieve the next
+set of labels.
 
 
 

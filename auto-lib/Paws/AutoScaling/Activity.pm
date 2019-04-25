@@ -2,7 +2,7 @@ package Paws::AutoScaling::Activity;
   use Moose;
   has ActivityId => (is => 'ro', isa => 'Str', required => 1);
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Cause => (is => 'ro', isa => 'Str', required => 1);
+  has Cause => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Details => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
@@ -57,7 +57,7 @@ size or replacing an instance.
   The name of the Auto Scaling group.
 
 
-=head2 B<REQUIRED> Cause => Str
+=head2 Cause => Str
 
   The reason the activity began.
 

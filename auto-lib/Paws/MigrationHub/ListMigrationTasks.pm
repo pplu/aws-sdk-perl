@@ -20,17 +20,30 @@ Paws::MigrationHub::ListMigrationTasks - Arguments for method ListMigrationTasks
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListMigrationTasks on the 
-AWS Migration Hub service. Use the attributes of this class
+This class represents the parameters used for calling the method ListMigrationTasks on the
+L<AWS Migration Hub|Paws::MigrationHub> service. Use the attributes of this class
 as arguments to method ListMigrationTasks.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListMigrationTasks.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListMigrationTasks(Att1 => $value1, Att2 => $value2, ...);
+    my $mgh = Paws->service('MigrationHub');
+    my $ListMigrationTasksResult = $mgh->ListMigrationTasks(
+      MaxResults   => 1,                   # OPTIONAL
+      NextToken    => 'MyToken',           # OPTIONAL
+      ResourceName => 'MyResourceName',    # OPTIONAL
+    );
+
+    # Results:
+    my $MigrationTaskSummaryList =
+      $ListMigrationTasksResult->MigrationTaskSummaryList;
+    my $NextToken = $ListMigrationTasksResult->NextToken;
+
+    # Returns a L<Paws::MigrationHub::ListMigrationTasksResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mgh/ListMigrationTasks>
 
 =head1 ATTRIBUTES
 

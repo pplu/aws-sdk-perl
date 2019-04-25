@@ -99,31 +99,29 @@ sets:
 
 =item *
 
-When the primary resource record set is healthy, Amazon Route 53
-responds to DNS queries with the applicable value from the primary
-resource record set regardless of the health of the secondary resource
-record set.
+When the primary resource record set is healthy, Route 53 responds to
+DNS queries with the applicable value from the primary resource record
+set regardless of the health of the secondary resource record set.
 
 =item *
 
 When the primary resource record set is unhealthy and the secondary
-resource record set is healthy, Amazon Route 53 responds to DNS queries
-with the applicable value from the secondary resource record set.
+resource record set is healthy, Route 53 responds to DNS queries with
+the applicable value from the secondary resource record set.
 
 =item *
 
-When the secondary resource record set is unhealthy, Amazon Route 53
-responds to DNS queries with the applicable value from the primary
-resource record set regardless of the health of the primary resource
-record set.
+When the secondary resource record set is unhealthy, Route 53 responds
+to DNS queries with the applicable value from the primary resource
+record set regardless of the health of the primary resource record set.
 
 =item *
 
 If you omit the C<HealthCheckId> element for the secondary resource
-record set, and if the primary resource record set is unhealthy, Amazon
-Route 53 always responds to DNS queries with the applicable value from
-the secondary resource record set. This is true regardless of the
-health of the associated endpoint.
+record set, and if the primary resource record set is unhealthy, Route
+53 always responds to DNS queries with the applicable value from the
+secondary resource record set. This is true regardless of the health of
+the associated endpoint.
 
 =back
 
@@ -134,14 +132,14 @@ sets.
 For failover alias resource record sets, you must also include the
 C<EvaluateTargetHealth> element and set the value to true.
 
-For more information about configuring failover for Amazon Route 53,
-see the following topics in the I<Amazon Route 53 Developer Guide>:
+For more information about configuring failover for Route 53, see the
+following topics in the I<Amazon Route 53 Developer Guide>:
 
 =over
 
 =item *
 
-Amazon Route 53 Health Checks and DNS Failover
+Route 53 Health Checks and DNS Failover
 (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
 
 =item *
@@ -155,7 +153,7 @@ Configuring Failover in a Private Hosted Zone
 
 =head2 GeoLocation => L<Paws::Route53::GeoLocation>
 
-  I<Geo location resource record sets only:> A complex type that lets you
+  I<Geolocation resource record sets only:> A complex type that lets you
 control how Amazon Route 53 responds to DNS queries based on the
 geographic origin of the query. For example, if you want all queries
 from Africa to be routed to a web server with an IP address of
@@ -182,14 +180,14 @@ sets that have the same values for the C<Name> and C<Type> elements.
 Geolocation works by mapping IP addresses to locations. However, some
 IP addresses aren't mapped to geographic locations, so even if you
 create geolocation resource record sets that cover all seven
-continents, Amazon Route 53 will receive some DNS queries from
-locations that it can't identify. We recommend that you create a
-resource record set for which the value of C<CountryCode> is C<*>,
-which handles both queries that come from locations for which you
-haven't created geolocation resource record sets and queries from IP
-addresses that aren't mapped to a location. If you don't create a C<*>
-resource record set, Amazon Route 53 returns a "no answer" response for
-queries from those locations.
+continents, Route 53 will receive some DNS queries from locations that
+it can't identify. We recommend that you create a resource record set
+for which the value of C<CountryCode> is C<*>, which handles both
+queries that come from locations for which you haven't created
+geolocation resource record sets and queries from IP addresses that
+aren't mapped to a location. If you don't create a C<*> resource record
+set, Route 53 returns a "no answer" response for queries from those
+locations.
 
 You can't create non-geolocation resource record sets that have the
 same values for the C<Name> and C<Type> elements as geolocation
@@ -199,12 +197,12 @@ resource record sets.
 =head2 HealthCheckId => Str
 
   If you want Amazon Route 53 to return this resource record set in
-response to a DNS query only when a health check is passing, include
-the C<HealthCheckId> element and specify the ID of the applicable
-health check.
+response to a DNS query only when the status of a health check is
+healthy, include the C<HealthCheckId> element and specify the ID of the
+applicable health check.
 
-Amazon Route 53 determines whether a resource record set is healthy
-based on one of the following:
+Route 53 determines whether a resource record set is healthy based on
+one of the following:
 
 =over
 
@@ -225,66 +223,11 @@ metric health checks)
 
 =back
 
-For more information, see How Amazon Route 53 Determines Whether an
-Endpoint Is Healthy
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html).
-
-The C<HealthCheckId> element is only useful when Amazon Route 53 is
-choosing between two or more resource record sets to respond to a DNS
-query, and you want Amazon Route 53 to base the choice in part on the
-status of a health check. Configuring health checks only makes sense in
-the following configurations:
-
-=over
-
-=item *
-
-You're checking the health of the resource record sets in a group of
-weighted, latency, geolocation, or failover resource record sets, and
-you specify health check IDs for all of the resource record sets. If
-the health check for one resource record set specifies an endpoint that
-is not healthy, Amazon Route 53 stops responding to queries using the
-value for that resource record set.
-
-=item *
-
-You set C<EvaluateTargetHealth> to true for the resource record sets in
-a group of alias, weighted alias, latency alias, geolocation alias, or
-failover alias resource record sets, and you specify health check IDs
-for all of the resource record sets that are referenced by the alias
-resource record sets.
-
-=back
-
-Amazon Route 53 doesn't check the health of the endpoint specified in
+Route 53 doesn't check the health of the endpoint that is specified in
 the resource record set, for example, the endpoint specified by the IP
 address in the C<Value> element. When you add a C<HealthCheckId>
-element to a resource record set, Amazon Route 53 checks the health of
-the endpoint that you specified in the health check.
-
-For geolocation resource record sets, if an endpoint is unhealthy,
-Amazon Route 53 looks for a resource record set for the larger,
-associated geographic region. For example, suppose you have resource
-record sets for a state in the United States, for the United States,
-for North America, and for all locations. If the endpoint for the state
-resource record set is unhealthy, Amazon Route 53 checks the resource
-record sets for the United States, for North America, and for all
-locations (a resource record set for which the value of C<CountryCode>
-is C<*>), in that order, until it finds a resource record set for which
-the endpoint is healthy.
-
-If your health checks specify the endpoint only by domain name, we
-recommend that you create a separate health check for each endpoint.
-For example, create a health check for each C<HTTP> server that is
-serving content for C<www.example.com>. For the value of
-C<FullyQualifiedDomainName>, specify the domain name of the server
-(such as C<us-east-2-www.example.com>), not the name of the resource
-record sets (example.com).
-
-n this configuration, if you create a health check for which the value
-of C<FullyQualifiedDomainName> matches the name of the resource record
-sets and then associate the health check with those resource record
-sets, health check results will be unpredictable.
+element to a resource record set, Route 53 checks the health of the
+endpoint that you specified in the health check.
 
 For more information, see the following topics in the I<Amazon Route 53
 Developer Guide>:
@@ -293,13 +236,140 @@ Developer Guide>:
 
 =item *
 
-Amazon Route 53 Health Checks and DNS Failover
+How Amazon Route 53 Determines Whether an Endpoint Is Healthy
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+
+=item *
+
+Route 53 Health Checks and DNS Failover
 (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
 
 =item *
 
 Configuring Failover in a Private Hosted Zone
 (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html)
+
+=back
+
+B<When to Specify HealthCheckId>
+
+Specifying a value for C<HealthCheckId> is useful only when Route 53 is
+choosing between two or more resource record sets to respond to a DNS
+query, and you want Route 53 to base the choice in part on the status
+of a health check. Configuring health checks makes sense only in the
+following configurations:
+
+=over
+
+=item *
+
+B<Non-alias resource record sets>: You're checking the health of a
+group of non-alias resource record sets that have the same routing
+policy, name, and type (such as multiple weighted records named
+www.example.com with a type of A) and you specify health check IDs for
+all the resource record sets.
+
+If the health check status for a resource record set is healthy, Route
+53 includes the record among the records that it responds to DNS
+queries with.
+
+If the health check status for a resource record set is unhealthy,
+Route 53 stops responding to DNS queries using the value for that
+resource record set.
+
+If the health check status for all resource record sets in the group is
+unhealthy, Route 53 considers all resource record sets in the group
+healthy and responds to DNS queries accordingly.
+
+=item *
+
+B<Alias resource record sets>: You specify the following settings:
+
+=over
+
+=item *
+
+You set C<EvaluateTargetHealth> to true for an alias resource record
+set in a group of resource record sets that have the same routing
+policy, name, and type (such as multiple weighted records named
+www.example.com with a type of A).
+
+=item *
+
+You configure the alias resource record set to route traffic to a
+non-alias resource record set in the same hosted zone.
+
+=item *
+
+You specify a health check ID for the non-alias resource record set.
+
+=back
+
+If the health check status is healthy, Route 53 considers the alias
+resource record set to be healthy and includes the alias record among
+the records that it responds to DNS queries with.
+
+If the health check status is unhealthy, Route 53 stops responding to
+DNS queries using the alias resource record set.
+
+The alias resource record set can also route traffic to a I<group> of
+non-alias resource record sets that have the same routing policy, name,
+and type. In that configuration, associate health checks with all of
+the resource record sets in the group of non-alias resource record
+sets.
+
+=back
+
+B<Geolocation Routing>
+
+For geolocation resource record sets, if an endpoint is unhealthy,
+Route 53 looks for a resource record set for the larger, associated
+geographic region. For example, suppose you have resource record sets
+for a state in the United States, for the entire United States, for
+North America, and a resource record set that has C<*> for
+C<CountryCode> is C<*>, which applies to all locations. If the endpoint
+for the state resource record set is unhealthy, Route 53 checks for
+healthy resource record sets in the following order until it finds a
+resource record set for which the endpoint is healthy:
+
+=over
+
+=item *
+
+The United States
+
+=item *
+
+North America
+
+=item *
+
+The default resource record set
+
+=back
+
+B<Specifying the Health Check Endpoint by Domain Name>
+
+If your health checks specify the endpoint only by domain name, we
+recommend that you create a separate health check for each endpoint.
+For example, create a health check for each C<HTTP> server that is
+serving content for C<www.example.com>. For the value of
+C<FullyQualifiedDomainName>, specify the domain name of the server
+(such as C<us-east-2-www.example.com>), not the name of the resource
+record sets (C<www.example.com>).
+
+Health check results will be unpredictable if you do the following:
+
+=over
+
+=item *
+
+Create a health check that has the same value for
+C<FullyQualifiedDomainName> as the name of a resource record set.
+
+=item *
+
+Associate that health check with the resource record set.
 
 =back
 
@@ -323,24 +393,23 @@ corresponding IP address only when the health check is healthy.
 =item *
 
 If you don't associate a health check with a multivalue answer record,
-Amazon Route 53 always considers the record to be healthy.
+Route 53 always considers the record to be healthy.
 
 =item *
 
-Amazon Route 53 responds to DNS queries with up to eight healthy
-records; if you have eight or fewer healthy records, Amazon Route 53
-responds to all DNS queries with all the healthy records.
+Route 53 responds to DNS queries with up to eight healthy records; if
+you have eight or fewer healthy records, Route 53 responds to all DNS
+queries with all the healthy records.
 
 =item *
 
-If you have more than eight healthy records, Amazon Route 53 responds
-to different DNS resolvers with different combinations of healthy
-records.
+If you have more than eight healthy records, Route 53 responds to
+different DNS resolvers with different combinations of healthy records.
 
 =item *
 
-When all records are unhealthy, Amazon Route 53 responds to DNS queries
-with up to eight unhealthy records.
+When all records are unhealthy, Route 53 responds to DNS queries with
+up to eight unhealthy records.
 
 =item *
 
@@ -355,14 +424,18 @@ You can't create multivalue answer alias records.
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the domain you want to perform the action on.
+  For C<ChangeResourceRecordSets> requests, the name of the record that
+you want to create, update, or delete. For C<ListResourceRecordSets>
+responses, the name of a record in the specified hosted zone.
+
+B<ChangeResourceRecordSets Only>
 
 Enter a fully qualified domain name, for example, C<www.example.com>.
 You can optionally include a trailing dot. If you omit the trailing
-dot, Amazon Route 53 still assumes that the domain name that you
-specify is fully qualified. This means that Amazon Route 53 treats
-C<www.example.com> (without a trailing dot) and C<www.example.com.>
-(with a trailing dot) as identical.
+dot, Amazon Route 53 assumes that the domain name that you specify is
+fully qualified. This means that Route 53 treats C<www.example.com>
+(without a trailing dot) and C<www.example.com.> (with a trailing dot)
+as identical.
 
 For information about how to specify characters other than C<a-z>,
 C<0-9>, and C<-> (hyphen) and how to specify internationalized domain
@@ -415,10 +488,10 @@ Creating latency and latency alias resource record sets in private
 hosted zones is not supported.
 
 When Amazon Route 53 receives a DNS query for a domain name and type
-for which you have created latency resource record sets, Amazon Route
-53 selects the latency resource record set that has the lowest latency
-between the end user and the associated Amazon EC2 Region. Amazon Route
-53 then returns the value that is associated with the selected resource
+for which you have created latency resource record sets, Route 53
+selects the latency resource record set that has the lowest latency
+between the end user and the associated Amazon EC2 Region. Route 53
+then returns the value that is associated with the selected resource
 record set.
 
 Note the following:
@@ -438,9 +511,9 @@ Region.
 =item *
 
 You aren't required to create latency resource record sets for all
-Amazon EC2 Regions. Amazon Route 53 will choose the region with the
-best latency from among the regions that you create latency resource
-record sets for.
+Amazon EC2 Regions. Route 53 will choose the region with the best
+latency from among the regions that you create latency resource record
+sets for.
 
 =item *
 
@@ -462,26 +535,31 @@ C<ResourceRecords>.
 
 =head2 SetIdentifier => Str
 
-  I<Weighted, Latency, Geo, and Failover resource record sets only:> An
-identifier that differentiates among multiple resource record sets that
-have the same combination of DNS name and type. The value of
-C<SetIdentifier> must be unique for each resource record set that has
-the same combination of DNS name and type. Omit C<SetIdentifier> for
-any other types of record sets.
+  I<Resource record sets that have a routing policy other than simple:>
+An identifier that differentiates among multiple resource record sets
+that have the same combination of name and type, such as multiple
+weighted resource record sets named acme.example.com that have a type
+of A. In a group of resource record sets that have the same name and
+type, the value of C<SetIdentifier> must be unique for each resource
+record set.
+
+For information about routing policies, see Choosing a Routing Policy
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 
 =head2 TrafficPolicyInstanceId => Str
 
   When you create a traffic policy instance, Amazon Route 53
 automatically creates a resource record set. C<TrafficPolicyInstanceId>
-is the ID of the traffic policy instance that Amazon Route 53 created
-this resource record set for.
+is the ID of the traffic policy instance that Route 53 created this
+resource record set for.
 
 To delete the resource record set that is associated with a traffic
-policy instance, use C<DeleteTrafficPolicyInstance>. Amazon Route 53
-will delete the resource record set automatically. If you delete the
-resource record set by using C<ChangeResourceRecordSets>, Amazon Route
-53 doesn't automatically delete the traffic policy instance, and you'll
+policy instance, use C<DeleteTrafficPolicyInstance>. Route 53 will
+delete the resource record set automatically. If you delete the
+resource record set by using C<ChangeResourceRecordSets>, Route 53
+doesn't automatically delete the traffic policy instance, and you'll
 continue to be charged for it even though it's no longer in use.
 
 
@@ -585,6 +663,13 @@ B<Another resource record set in this hosted zone:> Specify the type of
 the resource record set that you're creating the alias for. All values
 are supported except C<NS> and C<SOA>.
 
+If you're creating an alias record that has the same name as the hosted
+zone (known as the zone apex), you can't route traffic to a record for
+which the value of C<Type> is C<CNAME>. This is because the alias
+record must have the same type as the record you're routing traffic to,
+and creating a CNAME record for the zone apex isn't supported even for
+an alias record.
+
 =back
 
 
@@ -594,10 +679,10 @@ are supported except C<NS> and C<SOA>.
   I<Weighted resource record sets only:> Among resource record sets that
 have the same combination of DNS name and type, a value that determines
 the proportion of DNS queries that Amazon Route 53 responds to using
-the current resource record set. Amazon Route 53 calculates the sum of
-the weights for the resource record sets that have the same combination
-of DNS name and type. Amazon Route 53 then responds to queries based on
-the ratio of a resource's weight to the total. Note the following:
+the current resource record set. Route 53 calculates the sum of the
+weights for the resource record sets that have the same combination of
+DNS name and type. Route 53 then responds to queries based on the ratio
+of a resource's weight to the total. Note the following:
 
 =over
 
@@ -625,16 +710,16 @@ the same values for the C<Name> and C<Type> elements.
 =item *
 
 For weighted (but not weighted alias) resource record sets, if you set
-C<Weight> to C<0> for a resource record set, Amazon Route 53 never
-responds to queries with the applicable value for that resource record
-set. However, if you set C<Weight> to C<0> for all resource record sets
-that have the same combination of DNS name and type, traffic is routed
-to all resources with equal probability.
+C<Weight> to C<0> for a resource record set, Route 53 never responds to
+queries with the applicable value for that resource record set.
+However, if you set C<Weight> to C<0> for all resource record sets that
+have the same combination of DNS name and type, traffic is routed to
+all resources with equal probability.
 
 The effect of setting C<Weight> to C<0> is different when you associate
 health checks with weighted resource record sets. For more information,
-see Options for Configuring Amazon Route 53 Active-Active and
-Active-Passive Failover
+see Options for Configuring Route 53 Active-Active and Active-Passive
+Failover
 (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html)
 in the I<Amazon Route 53 Developer Guide>.
 

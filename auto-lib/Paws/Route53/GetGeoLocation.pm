@@ -23,17 +23,28 @@ Paws::Route53::GetGeoLocation - Arguments for method GetGeoLocation on L<Paws::R
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetGeoLocation on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method GetGeoLocation on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method GetGeoLocation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetGeoLocation.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetGeoLocation(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $GetGeoLocationResponse = $route53->GetGeoLocation(
+      ContinentCode   => 'MyGeoLocationContinentCode',      # OPTIONAL
+      CountryCode     => 'MyGeoLocationCountryCode',        # OPTIONAL
+      SubdivisionCode => 'MyGeoLocationSubdivisionCode',    # OPTIONAL
+    );
+
+    # Results:
+    my $GeoLocationDetails = $GetGeoLocationResponse->GeoLocationDetails;
+
+    # Returns a L<Paws::Route53::GetGeoLocationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/GetGeoLocation>
 
 =head1 ATTRIBUTES
 
@@ -89,9 +100,9 @@ ISO standard 3166-1 alpha-2
 
 Amazon Route 53 uses the one- to three-letter subdivision codes that
 are specified in ISO standard 3166-1 alpha-2
-(https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Amazon Route 53
-doesn't support subdivision codes for all countries. If you specify
-C<SubdivisionCode>, you must also specify C<CountryCode>.
+(https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Route 53 doesn't
+support subdivision codes for all countries. If you specify
+C<subdivisioncode>, you must also specify C<countrycode>.
 
 
 

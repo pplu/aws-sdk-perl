@@ -21,17 +21,33 @@ Paws::EC2::DescribeEgressOnlyInternetGateways - Arguments for method DescribeEgr
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeEgressOnlyInternetGateways on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeEgressOnlyInternetGateways on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeEgressOnlyInternetGateways.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEgressOnlyInternetGateways.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeEgressOnlyInternetGateways(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeEgressOnlyInternetGatewaysResult =
+      $ec2->DescribeEgressOnlyInternetGateways(
+      DryRun => 1,    # OPTIONAL
+      EgressOnlyInternetGatewayIds => [ 'MyEgressOnlyInternetGatewayId', ... ]
+      ,               # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
+      );
+
+    # Results:
+    my $EgressOnlyInternetGateways =
+      $DescribeEgressOnlyInternetGatewaysResult->EgressOnlyInternetGateways;
+    my $NextToken = $DescribeEgressOnlyInternetGatewaysResult->NextToken;
+
+    # Returns a L<Paws::EC2::DescribeEgressOnlyInternetGatewaysResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeEgressOnlyInternetGateways>
 
 =head1 ATTRIBUTES
 
@@ -47,7 +63,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 EgressOnlyInternetGatewayIds => ArrayRef[Str|Undef]
 
-One or more egress-only Internet gateway IDs.
+One or more egress-only internet gateway IDs.
 
 
 
@@ -55,8 +71,8 @@ One or more egress-only Internet gateway IDs.
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned C<NextToken> value. This value can be between 5 and 1000;
-if C<MaxResults> is given a value larger than 1000, only 1000 results
+the returned C<NextToken> value. This value can be between 5 and 1000.
+If C<MaxResults> is given a value larger than 1000, only 1000 results
 are returned.
 
 

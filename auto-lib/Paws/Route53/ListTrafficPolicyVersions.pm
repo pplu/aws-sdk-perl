@@ -23,17 +23,32 @@ Paws::Route53::ListTrafficPolicyVersions - Arguments for method ListTrafficPolic
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListTrafficPolicyVersions on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method ListTrafficPolicyVersions on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method ListTrafficPolicyVersions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTrafficPolicyVersions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListTrafficPolicyVersions(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $ListTrafficPolicyVersionsResponse = $route53->ListTrafficPolicyVersions(
+      Id                         => 'MyTrafficPolicyId',
+      MaxItems                   => 'MyPageMaxItems',                 # OPTIONAL
+      TrafficPolicyVersionMarker => 'MyTrafficPolicyVersionMarker',   # OPTIONAL
+    );
+
+    # Results:
+    my $IsTruncated     = $ListTrafficPolicyVersionsResponse->IsTruncated;
+    my $MaxItems        = $ListTrafficPolicyVersionsResponse->MaxItems;
+    my $TrafficPolicies = $ListTrafficPolicyVersionsResponse->TrafficPolicies;
+    my $TrafficPolicyVersionMarker =
+      $ListTrafficPolicyVersionsResponse->TrafficPolicyVersionMarker;
+
+    # Returns a L<Paws::Route53::ListTrafficPolicyVersionsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/ListTrafficPolicyVersions>
 
 =head1 ATTRIBUTES
 
@@ -52,7 +67,7 @@ Route 53 to include in the response body for this request. If the
 specified traffic policy has more than C<MaxItems> versions, the value
 of C<IsTruncated> in the response is C<true>, and the value of the
 C<TrafficPolicyVersionMarker> element is the ID of the first version
-that Amazon Route 53 will return if you submit another request.
+that Route 53 will return if you submit another request.
 
 
 

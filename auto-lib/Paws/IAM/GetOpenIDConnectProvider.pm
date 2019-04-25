@@ -18,17 +18,30 @@ Paws::IAM::GetOpenIDConnectProvider - Arguments for method GetOpenIDConnectProvi
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetOpenIDConnectProvider on the 
-AWS Identity and Access Management service. Use the attributes of this class
+This class represents the parameters used for calling the method GetOpenIDConnectProvider on the
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method GetOpenIDConnectProvider.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetOpenIDConnectProvider.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetOpenIDConnectProvider(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    my $GetOpenIDConnectProviderResponse = $iam->GetOpenIDConnectProvider(
+      OpenIDConnectProviderArn => 'MyarnType',
+
+    );
+
+    # Results:
+    my $ClientIDList   = $GetOpenIDConnectProviderResponse->ClientIDList;
+    my $CreateDate     = $GetOpenIDConnectProviderResponse->CreateDate;
+    my $ThumbprintList = $GetOpenIDConnectProviderResponse->ThumbprintList;
+    my $Url            = $GetOpenIDConnectProviderResponse->Url;
+
+    # Returns a L<Paws::IAM::GetOpenIDConnectProviderResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/GetOpenIDConnectProvider>
 
 =head1 ATTRIBUTES
 
@@ -37,7 +50,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The Amazon Resource Name (ARN) of the OIDC provider resource object in
 IAM to get information for. You can get a list of OIDC provider
-resource ARNs by using the ListOpenIDConnectProviders action.
+resource ARNs by using the ListOpenIDConnectProviders operation.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces

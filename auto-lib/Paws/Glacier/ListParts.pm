@@ -23,17 +23,39 @@ Paws::Glacier::ListParts - Arguments for method ListParts on L<Paws::Glacier>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListParts on the 
-Amazon Glacier service. Use the attributes of this class
+This class represents the parameters used for calling the method ListParts on the
+L<Amazon Glacier|Paws::Glacier> service. Use the attributes of this class
 as arguments to method ListParts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListParts.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListParts(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+ # To list the parts of an archive that have been uploaded in a multipart upload
+ # The example lists all the parts of a multipart upload.
+    my $ListPartsOutput = $glacier->ListParts(
+      {
+        'AccountId' => '-',
+        'UploadId' =>
+'OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYtrN47NBZ-khxOjyEXAMPLE',
+        'VaultName' => 'examplevault'
+      }
+    );
+
+    # Results:
+    my $ArchiveDescription = $ListPartsOutput->ArchiveDescription;
+    my $CreationDate       = $ListPartsOutput->CreationDate;
+    my $Marker             = $ListPartsOutput->Marker;
+    my $MultipartUploadId  = $ListPartsOutput->MultipartUploadId;
+    my $PartSizeInBytes    = $ListPartsOutput->PartSizeInBytes;
+    my $Parts              = $ListPartsOutput->Parts;
+    my $VaultARN           = $ListPartsOutput->VaultARN;
+
+    # Returns a L<Paws::Glacier::ListPartsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/ListParts>
 
 =head1 ATTRIBUTES
 
@@ -50,7 +72,7 @@ you use an account ID, do not include any hyphens ('-') in the ID.
 
 =head2 Limit => Str
 
-The maximum number of parts to be returned. The default limit is 1000.
+The maximum number of parts to be returned. The default limit is 50.
 The number of parts returned might be fewer than the specified limit,
 but the number of returned parts never exceeds the limit.
 

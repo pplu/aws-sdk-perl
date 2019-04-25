@@ -24,17 +24,36 @@ Paws::Lightsail::GetLoadBalancerMetricData - Arguments for method GetLoadBalance
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetLoadBalancerMetricData on the 
-Amazon Lightsail service. Use the attributes of this class
+This class represents the parameters used for calling the method GetLoadBalancerMetricData on the
+L<Amazon Lightsail|Paws::Lightsail> service. Use the attributes of this class
 as arguments to method GetLoadBalancerMetricData.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLoadBalancerMetricData.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetLoadBalancerMetricData(Att1 => $value1, Att2 => $value2, ...);
+    my $lightsail = Paws->service('Lightsail');
+    my $GetLoadBalancerMetricDataResult = $lightsail->GetLoadBalancerMetricData(
+      EndTime          => '1970-01-01T01:00:00',
+      LoadBalancerName => 'MyResourceName',
+      MetricName       => 'ClientTLSNegotiationErrorCount',
+      Period           => 1,
+      StartTime        => '1970-01-01T01:00:00',
+      Statistics       => [
+        'Minimum', ...    # values: Minimum, Maximum, Sum, Average, SampleCount
+      ],
+      Unit => 'Seconds',
+
+    );
+
+    # Results:
+    my $MetricData = $GetLoadBalancerMetricDataResult->MetricData;
+    my $MetricName = $GetLoadBalancerMetricDataResult->MetricName;
+
+    # Returns a L<Paws::Lightsail::GetLoadBalancerMetricDataResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/GetLoadBalancerMetricData>
 
 =head1 ATTRIBUTES
 
@@ -172,7 +191,7 @@ Valid values are: C<"ClientTLSNegotiationErrorCount">, C<"HealthyHostCount">, C<
 
 =head2 B<REQUIRED> Period => Int
 
-The time period duration for your health data request.
+The granularity, in seconds, of the returned data points.
 
 
 
@@ -186,6 +205,42 @@ The start time of the period.
 
 An array of statistics that you want to request metrics for. Valid
 values are listed below.
+
+=over
+
+=item *
+
+B<C<SampleCount> > - The count (number) of data points used for the
+statistical calculation.
+
+=item *
+
+B<C<Average> > - The value of Sum / SampleCount during the specified
+period. By comparing this statistic with the Minimum and Maximum, you
+can determine the full scope of a metric and how close the average use
+is to the Minimum and Maximum. This comparison helps you to know when
+to increase or decrease your resources as needed.
+
+=item *
+
+B<C<Sum> > - All values submitted for the matching metric added
+together. This statistic can be useful for determining the total volume
+of a metric.
+
+=item *
+
+B<C<Minimum> > - The lowest value observed during the specified period.
+You can use this value to determine low volumes of activity for your
+application.
+
+=item *
+
+B<C<Maximum> > - The highest value observed during the specified
+period. You can use this value to determine high volumes of activity
+for your application.
+
+=back
+
 
 
 

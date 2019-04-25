@@ -21,17 +21,31 @@ Paws::MQ::ListConfigurationRevisions - Arguments for method ListConfigurationRev
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListConfigurationRevisions on the 
-AmazonMQ service. Use the attributes of this class
+This class represents the parameters used for calling the method ListConfigurationRevisions on the
+L<AmazonMQ|Paws::MQ> service. Use the attributes of this class
 as arguments to method ListConfigurationRevisions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListConfigurationRevisions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListConfigurationRevisions(Att1 => $value1, Att2 => $value2, ...);
+    my $mq = Paws->service('MQ');
+    my $ListConfigurationRevisionsResponse = $mq->ListConfigurationRevisions(
+      ConfigurationId => 'My__string',
+      MaxResults      => 1,               # OPTIONAL
+      NextToken       => 'My__string',    # OPTIONAL
+    );
+
+    # Results:
+    my $ConfigurationId = $ListConfigurationRevisionsResponse->ConfigurationId;
+    my $MaxResults      = $ListConfigurationRevisionsResponse->MaxResults;
+    my $NextToken       = $ListConfigurationRevisionsResponse->NextToken;
+    my $Revisions       = $ListConfigurationRevisionsResponse->Revisions;
+
+    # Returns a L<Paws::MQ::ListConfigurationRevisionsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/ListConfigurationRevisions>
 
 =head1 ATTRIBUTES
 

@@ -20,17 +20,36 @@ Paws::EC2::DescribeSubnets - Arguments for method DescribeSubnets on L<Paws::EC2
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeSubnets on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeSubnets on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeSubnets.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSubnets.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeSubnets(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe the subnets for a VPC
+    # This example describes the subnets for the specified VPC.
+    my $DescribeSubnetsResult = $ec2->DescribeSubnets(
+      {
+        'Filters' => [
+
+          {
+            'Name'   => 'vpc-id',
+            'Values' => ['vpc-a01106c2']
+          }
+        ]
+      }
+    );
+
+    # Results:
+    my $Subnets = $DescribeSubnetsResult->Subnets;
+
+    # Returns a L<Paws::EC2::DescribeSubnetsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeSubnets>
 
 =head1 ATTRIBUTES
 
@@ -52,8 +71,13 @@ One or more filters.
 
 =item *
 
-C<availabilityZone> - The Availability Zone for the subnet. You can
-also use C<availability-zone> as the filter name.
+C<availability-zone> - The Availability Zone for the subnet. You can
+also use C<availabilityZone> as the filter name.
+
+=item *
+
+C<availability-zone-id> - The ID of the Availability Zone for the
+subnet. You can also use C<availabilityZoneId> as the filter name.
 
 =item *
 
@@ -62,15 +86,15 @@ subnet that are available.
 
 =item *
 
-C<cidrBlock> - The IPv4 CIDR block of the subnet. The CIDR block you
+C<cidr-block> - The IPv4 CIDR block of the subnet. The CIDR block you
 specify must exactly match the subnet's CIDR block for information to
-be returned for the subnet. You can also use C<cidr> or C<cidr-block>
-as the filter names.
+be returned for the subnet. You can also use C<cidr> or C<cidrBlock> as
+the filter names.
 
 =item *
 
-C<defaultForAz> - Indicates whether this is the default subnet for the
-Availability Zone. You can also use C<default-for-az> as the filter
+C<default-for-az> - Indicates whether this is the default subnet for
+the Availability Zone. You can also use C<defaultForAz> as the filter
 name.
 
 =item *
@@ -90,7 +114,15 @@ associated with the subnet.
 
 =item *
 
+C<owner-id> - The ID of the AWS account that owns the subnet.
+
+=item *
+
 C<state> - The state of the subnet (C<pending> | C<available>).
+
+=item *
+
+C<subnet-arn> - The Amazon Resource Name (ARN) of the subnet.
 
 =item *
 
@@ -98,26 +130,17 @@ C<subnet-id> - The ID of the subnet.
 
 =item *
 
-C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource. Specify the key of the tag in the filter name and the
-value of the tag in the filter value. For example, for the tag
-Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
-filter value.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. This filter is
-independent of the C<tag-value> filter. For example, if you use both
-the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
-resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of what the tag's key
-is). If you want to list only resources where Purpose is X, see the
-C<tag>:I<key>=I<value> filter.
-
-=item *
-
-C<tag-value> - The value of a tag assigned to the resource. This filter
-is independent of the C<tag-key> filter.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =item *
 

@@ -35,17 +35,53 @@ Paws::OpsWorks::UpdateStack - Arguments for method UpdateStack on L<Paws::OpsWor
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateStack on the 
-AWS OpsWorks service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateStack on the
+L<AWS OpsWorks|Paws::OpsWorks> service. Use the attributes of this class
 as arguments to method UpdateStack.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateStack.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateStack(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks = Paws->service('OpsWorks');
+    $opsworks->UpdateStack(
+      StackId      => 'MyString',
+      AgentVersion => 'MyString',    # OPTIONAL
+      Attributes   => {
+        'Color' => 'MyString',       # key: values: Color
+      },    # OPTIONAL
+      ChefConfiguration => {
+        BerkshelfVersion => 'MyString',
+        ManageBerkshelf  => 1,            # OPTIONAL
+      },    # OPTIONAL
+      ConfigurationManager => {
+        Name    => 'MyString',
+        Version => 'MyString',
+      },    # OPTIONAL
+      CustomCookbooksSource => {
+        Password => 'MyString',
+        Revision => 'MyString',
+        SshKey   => 'MyString',
+        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
+        Url      => 'MyString',
+        Username => 'MyString',
+      },    # OPTIONAL
+      CustomJson                => 'MyString',    # OPTIONAL
+      DefaultAvailabilityZone   => 'MyString',    # OPTIONAL
+      DefaultInstanceProfileArn => 'MyString',    # OPTIONAL
+      DefaultOs                 => 'MyString',    # OPTIONAL
+      DefaultRootDeviceType     => 'ebs',         # OPTIONAL
+      DefaultSshKeyName         => 'MyString',    # OPTIONAL
+      DefaultSubnetId           => 'MyString',    # OPTIONAL
+      HostnameTheme             => 'MyString',    # OPTIONAL
+      Name                      => 'MyString',    # OPTIONAL
+      ServiceRoleArn            => 'MyString',    # OPTIONAL
+      UseCustomCookbooks        => 1,             # OPTIONAL
+      UseOpsworksSecurityGroups => 1,             # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks/UpdateStack>
 
 =head1 ATTRIBUTES
 
@@ -103,7 +139,7 @@ information, see Create a New Stack
 The configuration manager. When you update a stack, we recommend that
 you use the configuration manager to specify the Chef version: 12,
 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The
-default value for Linux stacks is currently 11.4.
+default value for Linux stacks is currently 12.
 
 
 
@@ -121,8 +157,8 @@ to pass data to recipes. The string should be in the following format:
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
-For more information on custom JSON, see Use Custom JSON to Modify the
-Stack Configuration Attributes
+For more information about custom JSON, see Use Custom JSON to Modify
+the Stack Configuration Attributes
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 
 
@@ -156,8 +192,9 @@ following:
 =item *
 
 A supported Linux operating system: An Amazon Linux version, such as
-C<Amazon Linux 2017.03>, C<Amazon Linux 2016.09>, C<Amazon Linux
-2016.03>, C<Amazon Linux 2015.09>, or C<Amazon Linux 2015.03>.
+C<Amazon Linux 2017.09>, C<Amazon Linux 2017.03>, C<Amazon Linux
+2016.09>, C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon
+Linux 2015.03>.
 
 =item *
 
@@ -182,14 +219,14 @@ Standard>, or C<Microsoft Windows Server 2012 R2 with SQL Server Web>.
 =item *
 
 A custom AMI: C<Custom>. You specify the custom AMI you want to use
-when you create instances. For more information on how to use custom
+when you create instances. For more information about how to use custom
 AMIs with OpsWorks, see Using Custom AMIs
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 =back
 
 The default option is the stack's current operating system. For more
-information on the supported operating systems, see AWS OpsWorks Stacks
+information about supported operating systems, see AWS OpsWorks Stacks
 Operating Systems
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 

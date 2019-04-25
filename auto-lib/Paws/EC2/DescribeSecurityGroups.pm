@@ -23,17 +23,44 @@ Paws::EC2::DescribeSecurityGroups - Arguments for method DescribeSecurityGroups 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeSecurityGroups on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeSecurityGroups on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeSecurityGroups.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSecurityGroups.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeSecurityGroups(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeSecurityGroupsResult = $ec2->DescribeSecurityGroups(
+      DryRun  => 1,    # OPTIONAL
+      Filters => [
+        {
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
+        },
+        ...
+      ],                           # OPTIONAL
+      GroupIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      GroupNames => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken      = $DescribeSecurityGroupsResult->NextToken;
+    my $SecurityGroups = $DescribeSecurityGroupsResult->SecurityGroups;
+
+    # Returns a L<Paws::EC2::DescribeSecurityGroupsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeSecurityGroups>
 
 =head1 ATTRIBUTES
 
@@ -163,11 +190,17 @@ C<owner-id> - The AWS account ID of the owner of the security group.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the security group.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
-C<tag-value> - The value of a tag assigned to the security group.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =item *
 
@@ -203,7 +236,8 @@ Default: Describes all your security groups.
 
 The maximum number of results to return in a single call. To retrieve
 the remaining results, make another request with the returned
-C<NextToken> value. This value can be between 5 and 1000.
+C<NextToken> value. This value can be between 5 and 1000. If this
+parameter is not specified, then all results are returned.
 
 
 

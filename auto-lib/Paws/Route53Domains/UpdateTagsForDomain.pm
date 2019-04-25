@@ -19,17 +19,28 @@ Paws::Route53Domains::UpdateTagsForDomain - Arguments for method UpdateTagsForDo
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateTagsForDomain on the 
-Amazon Route 53 Domains service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateTagsForDomain on the
+L<Amazon Route 53 Domains|Paws::Route53Domains> service. Use the attributes of this class
 as arguments to method UpdateTagsForDomain.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateTagsForDomain.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateTagsForDomain(Att1 => $value1, Att2 => $value2, ...);
+    my $route53domains = Paws->service('Route53Domains');
+    my $UpdateTagsForDomainResponse = $route53domains->UpdateTagsForDomain(
+      DomainName   => 'MyDomainName',
+      TagsToUpdate => [
+        {
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53domains/UpdateTagsForDomain>
 
 =head1 ATTRIBUTES
 

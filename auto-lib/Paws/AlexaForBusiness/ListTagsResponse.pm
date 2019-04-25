@@ -22,7 +22,7 @@ The token returned to indicate that there is more data available.
 
 =head2 Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
 
-The list of tags requested for the specific resource.
+The tags requested for the specified resource.
 
 
 =head2 _request_id => Str

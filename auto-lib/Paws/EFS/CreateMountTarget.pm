@@ -22,17 +22,37 @@ Paws::EFS::CreateMountTarget - Arguments for method CreateMountTarget on L<Paws:
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateMountTarget on the 
-Amazon Elastic File System service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateMountTarget on the
+L<Amazon Elastic File System|Paws::EFS> service. Use the attributes of this class
 as arguments to method CreateMountTarget.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateMountTarget.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateMountTarget(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticfilesystem = Paws->service('EFS');
+    # To create a new mount target
+    # This operation creates a new mount target for an EFS file system.
+    my $MountTargetDescription = $elasticfilesystem->CreateMountTarget(
+      {
+        'FileSystemId' => 'fs-01234567',
+        'SubnetId'     => 'subnet-1234abcd'
+      }
+    );
+
+    # Results:
+    my $FileSystemId       = $MountTargetDescription->FileSystemId;
+    my $IpAddress          = $MountTargetDescription->IpAddress;
+    my $LifeCycleState     = $MountTargetDescription->LifeCycleState;
+    my $MountTargetId      = $MountTargetDescription->MountTargetId;
+    my $NetworkInterfaceId = $MountTargetDescription->NetworkInterfaceId;
+    my $OwnerId            = $MountTargetDescription->OwnerId;
+    my $SubnetId           = $MountTargetDescription->SubnetId;
+
+    # Returns a L<Paws::EFS::MountTargetDescription> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem/CreateMountTarget>
 
 =head1 ATTRIBUTES
 

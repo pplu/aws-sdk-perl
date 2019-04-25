@@ -1,7 +1,9 @@
 
 package Paws::DMS::ModifyReplicationTask;
   use Moose;
+  has CdcStartPosition => (is => 'ro', isa => 'Str');
   has CdcStartTime => (is => 'ro', isa => 'Str');
+  has CdcStopPosition => (is => 'ro', isa => 'Str');
   has MigrationType => (is => 'ro', isa => 'Str');
   has ReplicationTaskArn => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationTaskIdentifier => (is => 'ro', isa => 'Str');
@@ -23,24 +25,75 @@ Paws::DMS::ModifyReplicationTask - Arguments for method ModifyReplicationTask on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ModifyReplicationTask on the 
-AWS Database Migration Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ModifyReplicationTask on the
+L<AWS Database Migration Service|Paws::DMS> service. Use the attributes of this class
 as arguments to method ModifyReplicationTask.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyReplicationTask.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ModifyReplicationTask(Att1 => $value1, Att2 => $value2, ...);
+    my $dms = Paws->service('DMS');
+    my $ModifyReplicationTaskResponse = $dms->ModifyReplicationTask(
+      ReplicationTaskArn        => 'MyString',
+      CdcStartPosition          => 'MyString',               # OPTIONAL
+      CdcStartTime              => '1970-01-01T01:00:00',    # OPTIONAL
+      CdcStopPosition           => 'MyString',               # OPTIONAL
+      MigrationType             => 'full-load',              # OPTIONAL
+      ReplicationTaskIdentifier => 'MyString',               # OPTIONAL
+      ReplicationTaskSettings   => 'MyString',               # OPTIONAL
+      TableMappings             => 'MyString',               # OPTIONAL
+    );
+
+    # Results:
+    my $ReplicationTask = $ModifyReplicationTaskResponse->ReplicationTask;
+
+    # Returns a L<Paws::DMS::ModifyReplicationTaskResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms/ModifyReplicationTask>
 
 =head1 ATTRIBUTES
 
 
+=head2 CdcStartPosition => Str
+
+Indicates when you want a change data capture (CDC) operation to start.
+Use either CdcStartPosition or CdcStartTime to specify when you want a
+CDC operation to start. Specifying both values results in an error.
+
+The value can be in date, checkpoint, or LSN/SCN format.
+
+Date Example: --cdc-start-position E<ldquo>2018-03-08T12:12:12E<rdquo>
+
+Checkpoint Example: --cdc-start-position
+"checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93"
+
+LSN Example: --cdc-start-position
+E<ldquo>mysql-bin-changelog.000024:373E<rdquo>
+
+
+
 =head2 CdcStartTime => Str
 
-The start time for the Change Data Capture (CDC) operation.
+Indicates the start time for a change data capture (CDC) operation. Use
+either CdcStartTime or CdcStartPosition to specify when you want a CDC
+operation to start. Specifying both values results in an error.
+
+Timestamp Example: --cdc-start-time E<ldquo>2018-03-08T12:12:12E<rdquo>
+
+
+
+=head2 CdcStopPosition => Str
+
+Indicates when you want a change data capture (CDC) operation to stop.
+The value can be either server time or commit time.
+
+Server time example: --cdc-stop-position
+E<ldquo>server_time:3018-02-09T12:12:12E<rdquo>
+
+Commit time example: --cdc-stop-position E<ldquo>commit_time:
+3018-02-09T12:12:12 E<ldquo>
 
 
 

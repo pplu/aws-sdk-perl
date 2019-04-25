@@ -1,6 +1,7 @@
 package Paws::Athena;
   use Moose;
   sub service { 'athena' }
+  sub signing_name { 'athena' }
   sub version { '2017-05-18' }
   sub target_prefix { 'AmazonAthena' }
   sub json_version { "1.1" }
@@ -180,13 +181,30 @@ information, see What is Amazon Athena
 (http://docs.aws.amazon.com/athena/latest/ug/what-is.html) in the
 I<Amazon Athena User Guide>.
 
+If you connect to Athena using the JDBC driver, use version 1.1.0 of
+the driver or later with the Amazon Athena API. Earlier version drivers
+do not support the API. For more information and to download the
+driver, see Accessing Amazon Athena with JDBC
+(https://docs.aws.amazon.com/athena/latest/ug/connect-with-jdbc.html).
+
 For code samples using the AWS SDK for Java, see Examples and Code
-Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-in the I<Amazon Athena User Guide>.
+Samples
+(https://docs.aws.amazon.com/athena/latest/ug/code-samples.html) in the
+I<Amazon Athena User Guide>.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/athena-2017-05-18>
+
 
 =head1 METHODS
 
-=head2 BatchGetNamedQuery(NamedQueryIds => ArrayRef[Str|Undef])
+=head2 BatchGetNamedQuery
+
+=over
+
+=item NamedQueryIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Athena::BatchGetNamedQuery>
 
@@ -202,7 +220,14 @@ to get details about each unique query execution, and
 ListQueryExecutions to get a list of query execution IDs.
 
 
-=head2 BatchGetQueryExecution(QueryExecutionIds => ArrayRef[Str|Undef])
+=head2 BatchGetQueryExecution
+
+=over
+
+=item QueryExecutionIds => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Athena::BatchGetQueryExecution>
 
@@ -215,7 +240,22 @@ Query executions are different from named (saved) queries. Use
 BatchGetNamedQuery to get details about named queries.
 
 
-=head2 CreateNamedQuery(Database => Str, Name => Str, QueryString => Str, [ClientRequestToken => Str, Description => Str])
+=head2 CreateNamedQuery
+
+=over
+
+=item Database => Str
+
+=item Name => Str
+
+=item QueryString => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Athena::CreateNamedQuery>
 
@@ -228,7 +268,14 @@ Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 in the I<Amazon Athena User Guide>.
 
 
-=head2 DeleteNamedQuery(NamedQueryId => Str)
+=head2 DeleteNamedQuery
+
+=over
+
+=item NamedQueryId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Athena::DeleteNamedQuery>
 
@@ -241,7 +288,14 @@ Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 in the I<Amazon Athena User Guide>.
 
 
-=head2 GetNamedQuery(NamedQueryId => Str)
+=head2 GetNamedQuery
+
+=over
+
+=item NamedQueryId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Athena::GetNamedQuery>
 
@@ -250,7 +304,14 @@ Returns: a L<Paws::Athena::GetNamedQueryOutput> instance
 Returns information about a single query.
 
 
-=head2 GetQueryExecution(QueryExecutionId => Str)
+=head2 GetQueryExecution
+
+=over
+
+=item QueryExecutionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Athena::GetQueryExecution>
 
@@ -261,7 +322,18 @@ query executes, information about the query execution is saved with a
 unique ID.
 
 
-=head2 GetQueryResults(QueryExecutionId => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetQueryResults
+
+=over
+
+=item QueryExecutionId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Athena::GetQueryResults>
 
@@ -272,7 +344,16 @@ C<QueryExecutionId>. This request does not execute the query but
 returns results. Use StartQueryExecution to run a query.
 
 
-=head2 ListNamedQueries([MaxResults => Int, NextToken => Str])
+=head2 ListNamedQueries
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Athena::ListNamedQueries>
 
@@ -285,7 +366,16 @@ Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 in the I<Amazon Athena User Guide>.
 
 
-=head2 ListQueryExecutions([MaxResults => Int, NextToken => Str])
+=head2 ListQueryExecutions
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Athena::ListQueryExecutions>
 
@@ -298,7 +388,20 @@ Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 in the I<Amazon Athena User Guide>.
 
 
-=head2 StartQueryExecution(QueryString => Str, ResultConfiguration => L<Paws::Athena::ResultConfiguration>, [ClientRequestToken => Str, QueryExecutionContext => L<Paws::Athena::QueryExecutionContext>])
+=head2 StartQueryExecution
+
+=over
+
+=item QueryString => Str
+
+=item ResultConfiguration => L<Paws::Athena::ResultConfiguration>
+
+=item [ClientRequestToken => Str]
+
+=item [QueryExecutionContext => L<Paws::Athena::QueryExecutionContext>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Athena::StartQueryExecution>
 
@@ -312,7 +415,14 @@ Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 in the I<Amazon Athena User Guide>.
 
 
-=head2 StopQueryExecution(QueryExecutionId => Str)
+=head2 StopQueryExecution
+
+=over
+
+=item QueryExecutionId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Athena::StopQueryExecution>
 

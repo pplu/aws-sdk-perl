@@ -19,17 +19,30 @@ Paws::SQS::GetQueueAttributes - Arguments for method GetQueueAttributes on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetQueueAttributes on the 
-Amazon Simple Queue Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetQueueAttributes on the
+L<Amazon Simple Queue Service|Paws::SQS> service. Use the attributes of this class
 as arguments to method GetQueueAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetQueueAttributes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetQueueAttributes(Att1 => $value1, Att2 => $value2, ...);
+    my $sqs = Paws->service('SQS');
+    my $GetQueueAttributesResult = $sqs->GetQueueAttributes(
+      QueueUrl       => 'MyString',
+      AttributeNames => [
+        'SenderId',
+        ... # values: SenderId, SentTimestamp, ApproximateReceiveCount, ApproximateFirstReceiveTimestamp
+      ],    # OPTIONAL
+    );
+
+    # Results:
+    my $Attributes = $GetQueueAttributesResult->Attributes;
+
+    # Returns a L<Paws::SQS::GetQueueAttributesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs/GetQueueAttributes>
 
 =head1 ATTRIBUTES
 
@@ -53,23 +66,21 @@ C<All> - Returns all values.
 =item *
 
 C<ApproximateNumberOfMessages> - Returns the approximate number of
-visible messages in a queue. For more information, see Resources
-Required to Process Messages
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-resources-required-process-messages.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+messages available for retrieval from the queue.
 
 =item *
 
 C<ApproximateNumberOfMessagesDelayed> - Returns the approximate number
-of messages that are waiting to be added to the queue.
+of messages in the queue that are delayed and not available for reading
+immediately. This can happen when the queue is configured as a delay
+queue or when a message has been sent with a delay parameter.
 
 =item *
 
 C<ApproximateNumberOfMessagesNotVisible> - Returns the approximate
-number of messages that have not timed-out and aren't deleted. For more
-information, see Resources Required to Process Messages
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-resources-required-process-messages.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+number of messages that are in flight. Messages are considered to be
+I<in flight> if they have been sent to a client but have not yet been
+deleted or have not yet reached the end of their visibility window.
 
 =item *
 
@@ -130,7 +141,9 @@ C<maxReceiveCount> is exceeded.
 =item *
 
 C<maxReceiveCount> - The number of times a message is delivered to the
-source queue before being moved to the dead-letter queue.
+source queue before being moved to the dead-letter queue. When the
+C<ReceiveCount> for a message exceeds the C<maxReceiveCount> for a
+queue, Amazon SQS moves the message to the dead-letter-queue.
 
 =back
 
@@ -200,7 +213,7 @@ in the I<Amazon Simple Queue Service Developer Guide>.
 The URL of the Amazon SQS queue whose attribute information is
 retrieved.
 
-Queue URLs are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 

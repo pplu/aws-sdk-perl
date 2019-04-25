@@ -47,8 +47,8 @@ volume. The default value is C<false>.
 
 =head2 SourceContainer => Str
 
-  The name of another container within the same task definition to mount
-volumes from.
+  The name of another container within the same task definition from
+which to mount volumes.
 
 
 

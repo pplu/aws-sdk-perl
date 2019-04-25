@@ -20,17 +20,32 @@ Paws::ELB::DescribeLoadBalancers - Arguments for method DescribeLoadBalancers on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeLoadBalancers on the 
-Elastic Load Balancing service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeLoadBalancers on the
+L<Elastic Load Balancing|Paws::ELB> service. Use the attributes of this class
 as arguments to method DescribeLoadBalancers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLoadBalancers.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeLoadBalancers(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELB');
+    # To describe one of your load balancers
+    # This example describes the specified load balancer.
+    my $DescribeAccessPointsOutput =
+      $elasticloadbalancing->DescribeLoadBalancers(
+      {
+        'LoadBalancerNames' => ['my-load-balancer']
+      }
+      );
+
+    # Results:
+    my $LoadBalancerDescriptions =
+      $DescribeAccessPointsOutput->LoadBalancerDescriptions;
+
+    # Returns a L<Paws::ELB::DescribeAccessPointsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/DescribeLoadBalancers>
 
 =head1 ATTRIBUTES
 

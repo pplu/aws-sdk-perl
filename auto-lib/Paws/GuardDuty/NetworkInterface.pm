@@ -1,6 +1,7 @@
 package Paws::GuardDuty::NetworkInterface;
   use Moose;
   has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipv6Addresses', traits => ['NameInRequest']);
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::PrivateIpAddressDetails]', request_name => 'privateIpAddresses', traits => ['NameInRequest']);
@@ -47,6 +48,11 @@ The network interface information of the EC2 instance.
 =head2 Ipv6Addresses => ArrayRef[Str|Undef]
 
   A list of EC2 instance IPv6 address information.
+
+
+=head2 NetworkInterfaceId => Str
+
+  The ID of the network interface
 
 
 =head2 PrivateDnsName => Str

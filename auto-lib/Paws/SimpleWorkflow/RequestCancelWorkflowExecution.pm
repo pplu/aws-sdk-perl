@@ -20,17 +20,23 @@ Paws::SimpleWorkflow::RequestCancelWorkflowExecution - Arguments for method Requ
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RequestCancelWorkflowExecution on the 
-Amazon Simple Workflow Service service. Use the attributes of this class
+This class represents the parameters used for calling the method RequestCancelWorkflowExecution on the
+L<Amazon Simple Workflow Service|Paws::SimpleWorkflow> service. Use the attributes of this class
 as arguments to method RequestCancelWorkflowExecution.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RequestCancelWorkflowExecution.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RequestCancelWorkflowExecution(Att1 => $value1, Att2 => $value2, ...);
+    my $swf = Paws->service('SimpleWorkflow');
+    $swf->RequestCancelWorkflowExecution(
+      Domain     => 'MyDomainName',
+      WorkflowId => 'MyWorkflowId',
+      RunId      => 'MyWorkflowRunIdOptional',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf/RequestCancelWorkflowExecution>
 
 =head1 ATTRIBUTES
 

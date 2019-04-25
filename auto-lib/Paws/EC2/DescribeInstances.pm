@@ -22,17 +22,41 @@ Paws::EC2::DescribeInstances - Arguments for method DescribeInstances on L<Paws:
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeInstances on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeInstances on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribeInstancesResult = $ec2->DescribeInstances(
+      DryRun  => 1,    # OPTIONAL
+      Filters => [
+        {
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
+        },
+        ...
+      ],                           # OPTIONAL
+      InstanceIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken    = $DescribeInstancesResult->NextToken;
+    my $Reservations = $DescribeInstancesResult->Reservations;
+
+    # Returns a L<Paws::EC2::DescribeInstancesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeInstances>
 
 =head1 ATTRIBUTES
 
@@ -110,6 +134,12 @@ EC2-Classic only.
 
 =item *
 
+C<hibernation-options.configured> - A Boolean that indicates whether
+the instance is enabled for hibernation. A value of C<true> means that
+the instance is enabled for hibernation.
+
+=item *
+
 C<host-id> - The ID of the Dedicated Host on which the instance is
 running, if applicable.
 
@@ -138,9 +168,9 @@ Scheduled Instance (C<spot> | C<scheduled>).
 =item *
 
 C<instance-state-code> - The state of the instance, as a 16-bit
-unsigned integer. The high byte is an opaque internal value and should
-be ignored. The low byte is set based on the state represented. The
-valid values are: 0 (pending), 16 (running), 32 (shutting-down), 48
+unsigned integer. The high byte is used for internal purposes and
+should be ignored. The low byte is set based on the state represented.
+The valid values are: 0 (pending), 16 (running), 32 (shutting-down), 48
 (terminated), 64 (stopping), and 80 (stopped).
 
 =item *
@@ -355,6 +385,11 @@ instance.
 
 =item *
 
+C<placement-partition-number> - The partition in which the instance is
+located.
+
+=item *
+
 C<platform> - The platform. Use C<windows> if you have Windows
 instances; otherwise, leave blank.
 
@@ -438,26 +473,17 @@ C<subnet-id> - The ID of the subnet for the instance.
 
 =item *
 
-C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource. Specify the key of the tag in the filter name and the
-value of the tag in the filter value. For example, for the tag
-Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
-filter value.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. This filter is
-independent of the C<tag-value> filter. For example, if you use both
-the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
-resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of the tag's key). If
-you want to list only resources where Purpose is X, see the
-C<tag>:I<key>=I<value> filter.
-
-=item *
-
-C<tag-value> - The value of a tag assigned to the resource. This filter
-is independent of the C<tag-key> filter.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources that have a tag with a specific key, regardless
+of the tag value.
 
 =item *
 
@@ -491,8 +517,7 @@ Default: Describes all your instances.
 The maximum number of results to return in a single call. To retrieve
 the remaining results, make another call with the returned C<NextToken>
 value. This value can be between 5 and 1000. You cannot specify this
-parameter and the instance IDs parameter or tag filters in the same
-call.
+parameter and the instance IDs parameter in the same call.
 
 
 

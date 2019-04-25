@@ -3,8 +3,10 @@ package Paws::Batch::RegisterJobDefinition;
   use Moose;
   has ContainerProperties => (is => 'ro', isa => 'Paws::Batch::ContainerProperties', traits => ['NameInRequest'], request_name => 'containerProperties');
   has JobDefinitionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinitionName', required => 1);
+  has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodeProperties', traits => ['NameInRequest'], request_name => 'nodeProperties');
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
+  has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', traits => ['NameInRequest'], request_name => 'timeout');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
 
   use MooseX::ClassAttribute;
@@ -23,25 +25,49 @@ Paws::Batch::RegisterJobDefinition - Arguments for method RegisterJobDefinition 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RegisterJobDefinition on the 
-AWS Batch service. Use the attributes of this class
+This class represents the parameters used for calling the method RegisterJobDefinition on the
+L<AWS Batch|Paws::Batch> service. Use the attributes of this class
 as arguments to method RegisterJobDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterJobDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RegisterJobDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $batch = Paws->service('Batch');
+    # To register a job definition
+    # This example registers a job definition for a simple container job.
+    my $RegisterJobDefinitionResponse = $batch->RegisterJobDefinition(
+      {
+        'ContainerProperties' => {
+          'Command' => [ 'sleep', 10 ],
+          'Image'   => 'busybox',
+          'Memory'  => 128,
+          'Vcpus'   => 1
+        },
+        'JobDefinitionName' => 'sleep10',
+        'Type'              => 'container'
+      }
+    );
+
+    # Results:
+    my $jobDefinitionArn  = $RegisterJobDefinitionResponse->jobDefinitionArn;
+    my $jobDefinitionName = $RegisterJobDefinitionResponse->jobDefinitionName;
+    my $revision          = $RegisterJobDefinitionResponse->revision;
+
+    # Returns a L<Paws::Batch::RegisterJobDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/batch/RegisterJobDefinition>
 
 =head1 ATTRIBUTES
 
 
 =head2 ContainerProperties => L<Paws::Batch::ContainerProperties>
 
-An object with various properties specific for container-based jobs.
-This parameter is required if the C<type> parameter is C<container>.
+An object with various properties specific to single-node
+container-based jobs. If the job definition's C<type> parameter is
+C<container>, then you must specify either C<containerProperties> or
+C<nodeProperties>.
 
 
 
@@ -50,6 +76,18 @@ This parameter is required if the C<type> parameter is C<container>.
 The name of the job definition to register. Up to 128 letters
 (uppercase and lowercase), numbers, hyphens, and underscores are
 allowed.
+
+
+
+=head2 NodeProperties => L<Paws::Batch::NodeProperties>
+
+An object with various properties specific to multi-node parallel jobs.
+If you specify node properties for a job, it becomes a multi-node
+parallel job. For more information, see Multi-node Parallel Jobs
+(http://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html)
+in the I<AWS Batch User Guide>. If the job definition's C<type>
+parameter is C<container>, then you must specify either
+C<containerProperties> or C<nodeProperties>.
 
 
 
@@ -66,7 +104,22 @@ parameter defaults from the job definition.
 
 The retry strategy to use for failed jobs that are submitted with this
 job definition. Any retry strategy that is specified during a SubmitJob
-operation overrides the retry strategy defined here.
+operation overrides the retry strategy defined here. If a job is
+terminated due to a timeout, it is not retried.
+
+
+
+=head2 Timeout => L<Paws::Batch::JobTimeout>
+
+The timeout configuration for jobs that are submitted with this job
+definition, after which AWS Batch terminates your jobs if they have not
+finished. If a job is terminated due to a timeout, it is not retried.
+The minimum value for the timeout is 60 seconds. Any timeout
+configuration that is specified during a SubmitJob operation overrides
+the timeout configuration defined here. For more information, see Job
+Timeouts
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
@@ -74,7 +127,7 @@ operation overrides the retry strategy defined here.
 
 The type of job definition.
 
-Valid values are: C<"container">
+Valid values are: C<"container">, C<"multinode">
 
 
 =head1 SEE ALSO

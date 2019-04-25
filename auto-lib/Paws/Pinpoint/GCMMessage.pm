@@ -66,8 +66,7 @@ OPEN_APP | DEEP_LINK | URL
 
 =head2 Body => Str
 
-  The message body of the notification, the email body or the text
-message.
+  The message body of the notification.
 
 
 =head2 CollapseKey => Str
@@ -103,7 +102,15 @@ notification content view.
 
 =head2 Priority => Str
 
-  Is this a transaction priority message or lower priority.
+  The message priority. Amazon Pinpoint uses this value to set the FCM or
+GCM priority parameter when it sends the message. Accepts the following
+values: "Normal" - Messages might be delayed. Delivery is optimized for
+battery usage on the receiving device. Use normal priority unless
+immediate delivery is required. "High" - Messages are sent immediately
+and might wake a sleeping device. The equivalent values for APNs
+messages are "5" and "10". Amazon Pinpoint accepts these values here
+and converts them. For more information, see About FCM Messages in the
+Firebase documentation.
 
 
 =head2 RawContent => Str
@@ -146,9 +153,10 @@ substitutions.
 
 =head2 TimeToLive => Int
 
-  This parameter specifies how long (in seconds) the message should be
-kept in GCM storage if the device is offline. The maximum time to live
-supported is 4 weeks, and the default value is 4 weeks.
+  The length of time (in seconds) that FCM or GCM stores and attempts to
+deliver the message. If unspecified, the value defaults to the maximum,
+which is 2,419,200 seconds (28 days). Amazon Pinpoint uses this value
+to set the FCM or GCM time_to_live parameter.
 
 
 =head2 Title => Str

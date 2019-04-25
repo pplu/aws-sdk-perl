@@ -18,17 +18,22 @@ Paws::SNS::SetSMSAttributes - Arguments for method SetSMSAttributes on L<Paws::S
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SetSMSAttributes on the 
-Amazon Simple Notification Service service. Use the attributes of this class
+This class represents the parameters used for calling the method SetSMSAttributes on the
+L<Amazon Simple Notification Service|Paws::SNS> service. Use the attributes of this class
 as arguments to method SetSMSAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetSMSAttributes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetSMSAttributes(Att1 => $value1, Att2 => $value2, ...);
+    my $sns = Paws->service('SNS');
+    my $SetSMSAttributesResponse = $sns->SetSMSAttributes(
+      Attributes => { 'MyString' => 'MyString', },
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns/SetSMSAttributes>
 
 =head1 ATTRIBUTES
 
@@ -48,9 +53,11 @@ crossed. During that interval, if you continue to send SMS messages,
 you will incur costs that exceed your limit.
 
 By default, the spend limit is set to the maximum allowed by Amazon
-SNS. If you want to exceed the maximum, contact AWS Support
-(https://aws.amazon.com/premiumsupport/) or your AWS sales
-representative for a service limit increase.
+SNS. If you want to raise the limit, submit an SNS Limit Increase case
+(https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns).
+For B<New limit value>, enter your desired monthly spend limit. In the
+B<Use Case Description> field, explain that you are requesting an SMS
+monthly spend limit increase.
 
 C<DeliveryStatusIAMRole> E<ndash> The ARN of the IAM role that allows
 Amazon SNS to write logs about SMS deliveries in CloudWatch Logs. For

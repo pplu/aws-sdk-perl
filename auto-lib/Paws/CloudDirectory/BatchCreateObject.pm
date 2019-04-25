@@ -1,9 +1,9 @@
 package Paws::CloudDirectory::BatchCreateObject;
   use Moose;
-  has BatchReferenceName => (is => 'ro', isa => 'Str', required => 1);
-  has LinkName => (is => 'ro', isa => 'Str', required => 1);
+  has BatchReferenceName => (is => 'ro', isa => 'Str');
+  has LinkName => (is => 'ro', isa => 'Str');
   has ObjectAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]', required => 1);
-  has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference');
   has SchemaFacet => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::SchemaFacet]', required => 1);
 1;
 
@@ -40,14 +40,14 @@ Represents the output of a CreateObject operation.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BatchReferenceName => Str
+=head2 BatchReferenceName => Str
 
-  The batch reference name. See Batches
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches)
+  The batch reference name. See Transaction Support
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html)
 for more information.
 
 
-=head2 B<REQUIRED> LinkName => Str
+=head2 LinkName => Str
 
   The name of the link.
 
@@ -58,7 +58,7 @@ for more information.
 attribute value as the map value.
 
 
-=head2 B<REQUIRED> ParentReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 ParentReference => L<Paws::CloudDirectory::ObjectReference>
 
   If specified, the parent reference to which this object will be
 attached.

@@ -44,7 +44,86 @@ Describes a command filter.
 
 =head2 B<REQUIRED> Value => Str
 
-  The filter value.
+  The filter value. Valid values for each filter key are as follows:
+
+=over
+
+=item *
+
+B<InvokedAfter>: Specify a timestamp to limit your results. For
+example, specify C<2018-07-07T00:00:00Z> to see a list of command
+executions occurring July 7, 2018, and later.
+
+=item *
+
+B<InvokedBefore>: Specify a timestamp to limit your results. For
+example, specify C<2018-07-07T00:00:00Z> to see a list of command
+executions from before July 7, 2018.
+
+=item *
+
+B<Status>: Specify a valid command status to see a list of all command
+executions with that status. Status values you can specify include:
+
+=over
+
+=item *
+
+C<Pending>
+
+=item *
+
+C<InProgress>
+
+=item *
+
+C<Success>
+
+=item *
+
+C<Cancelled>
+
+=item *
+
+C<Failed>
+
+=item *
+
+C<TimedOut>
+
+=item *
+
+C<Cancelling>
+
+=back
+
+=item *
+
+B<DocumentName>: Specify name of the SSM document for which you want to
+see command execution results. For example, specify
+C<AWS-RunPatchBaseline> to see command executions that used this SSM
+document to perform security patching operations on instances.
+
+=item *
+
+B<ExecutionStage>: Specify one of the following values:
+
+=over
+
+=item *
+
+C<Executing>: Returns a list of command executions that are currently
+still running.
+
+=item *
+
+C<Complete>: Returns a list of command executions that have already
+completed.
+
+=back
+
+=back
+
 
 
 

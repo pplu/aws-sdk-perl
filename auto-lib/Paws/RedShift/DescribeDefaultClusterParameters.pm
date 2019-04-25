@@ -20,17 +20,30 @@ Paws::RedShift::DescribeDefaultClusterParameters - Arguments for method Describe
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeDefaultClusterParameters on the 
-Amazon Redshift service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeDefaultClusterParameters on the
+L<Amazon Redshift|Paws::RedShift> service. Use the attributes of this class
 as arguments to method DescribeDefaultClusterParameters.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDefaultClusterParameters.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeDefaultClusterParameters(Att1 => $value1, Att2 => $value2, ...);
+    my $redshift = Paws->service('RedShift');
+    my $DescribeDefaultClusterParametersResult =
+      $redshift->DescribeDefaultClusterParameters(
+      ParameterGroupFamily => 'MyString',
+      Marker               => 'MyString',    # OPTIONAL
+      MaxRecords           => 1,             # OPTIONAL
+      );
+
+    # Results:
+    my $DefaultClusterParameters =
+      $DescribeDefaultClusterParametersResult->DefaultClusterParameters;
+
+   # Returns a L<Paws::RedShift::DescribeDefaultClusterParametersResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/redshift/DescribeDefaultClusterParameters>
 
 =head1 ATTRIBUTES
 

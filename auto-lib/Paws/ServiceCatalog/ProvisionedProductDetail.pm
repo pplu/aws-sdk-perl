@@ -6,6 +6,8 @@ package Paws::ServiceCatalog::ProvisionedProductDetail;
   has IdempotencyToken => (is => 'ro', isa => 'Str');
   has LastRecordId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has ProductId => (is => 'ro', isa => 'Str');
+  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
@@ -51,7 +53,7 @@ Information about a provisioned product.
 
 =head2 CreatedTime => Str
 
-  The UTC timestamp of the creation time.
+  The UTC time stamp of the creation time.
 
 
 =head2 Id => Str
@@ -77,6 +79,17 @@ product.
   The user-friendly name of the provisioned product.
 
 
+=head2 ProductId => Str
+
+  The product identifier. For example, C<prod-abcdzk7xy33qa>.
+
+
+=head2 ProvisioningArtifactId => Str
+
+  The identifier of the provisioning artifact. For example,
+C<pa-4abcdjnxjj6ne>.
+
+
 =head2 Status => Str
 
   The current status of the provisioned product.
@@ -90,7 +103,7 @@ recent operation succeeded and completed.
 
 =item *
 
-C<UNDER_CHANGE> - Transitive state, operations performed might not have
+C<UNDER_CHANGE> - Transitive state. Operations performed might not have
 valid results. Wait for an C<AVAILABLE> status before performing
 operations.
 
@@ -103,9 +116,16 @@ the stack rolled back to the current version.
 
 =item *
 
-C<ERROR> - An unexpected error occurred, the provisioned product exists
+C<ERROR> - An unexpected error occurred. The provisioned product exists
 but the stack is not running. For example, CloudFormation received a
 parameter value that was not valid and could not launch the stack.
+
+=item *
+
+C<PLAN_IN_PROGRESS> - Transitive state. The plan operations were
+performed to provision a new product, but resources have not yet been
+created. After reviewing the list of resources to be created, execute
+the plan. Wait for an C<AVAILABLE> status before performing operations.
 
 =back
 
@@ -118,7 +138,8 @@ parameter value that was not valid and could not launch the stack.
 
 =head2 Type => Str
 
-  The type of provisioned product. The supported value is C<CFN_STACK>.
+  The type of provisioned product. The supported values are C<CFN_STACK>
+and C<CFN_STACKSET>.
 
 
 

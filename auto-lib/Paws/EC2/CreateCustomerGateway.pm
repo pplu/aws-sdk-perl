@@ -21,17 +21,33 @@ Paws::EC2::CreateCustomerGateway - Arguments for method CreateCustomerGateway on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateCustomerGateway on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateCustomerGateway on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method CreateCustomerGateway.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCustomerGateway.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCustomerGateway(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To create a customer gateway
+    # This example creates a customer gateway with the specified IP address for
+    # its outside interface.
+    my $CreateCustomerGatewayResult = $ec2->CreateCustomerGateway(
+      {
+        'BgpAsn'   => 65534,
+        'PublicIp' => '12.1.2.3',
+        'Type'     => 'ipsec.1'
+      }
+    );
+
+    # Results:
+    my $CustomerGateway = $CreateCustomerGatewayResult->CustomerGateway;
+
+    # Returns a L<Paws::EC2::CreateCustomerGatewayResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/CreateCustomerGateway>
 
 =head1 ATTRIBUTES
 

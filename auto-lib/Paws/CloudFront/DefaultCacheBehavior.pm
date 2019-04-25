@@ -3,6 +3,7 @@ package Paws::CloudFront::DefaultCacheBehavior;
   has AllowedMethods => (is => 'ro', isa => 'Paws::CloudFront::AllowedMethods');
   has Compress => (is => 'ro', isa => 'Bool');
   has DefaultTTL => (is => 'ro', isa => 'Int');
+  has FieldLevelEncryptionId => (is => 'ro', isa => 'Str');
   has ForwardedValues => (is => 'ro', isa => 'Paws::CloudFront::ForwardedValues', required => 1);
   has LambdaFunctionAssociations => (is => 'ro', isa => 'Paws::CloudFront::LambdaFunctionAssociations');
   has MaxTTL => (is => 'ro', isa => 'Int');
@@ -76,6 +77,13 @@ Errors Stay in a CloudFront Edge Cache (Expiration)
 in the I<Amazon CloudFront Developer Guide>.
 
 
+=head2 FieldLevelEncryptionId => Str
+
+  The value of C<ID> for the field-level encryption configuration that
+you want CloudFront to use for encrypting specific fields of data for a
+cache behavior or for the default cache behavior in your distribution.
+
+
 =head2 B<REQUIRED> ForwardedValues => L<Paws::CloudFront::ForwardedValues>
 
   A complex type that specifies how CloudFront handles query strings and
@@ -122,7 +130,7 @@ value of C<PathPattern>.
 
   The value of C<ID> for the origin that you want CloudFront to route
 requests to when a request matches the path pattern either for a cache
-behavior or for the default cache behavior.
+behavior or for the default cache behavior in your distribution.
 
 
 =head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>

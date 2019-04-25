@@ -19,17 +19,28 @@ Paws::GameLift::GetInstanceAccess - Arguments for method GetInstanceAccess on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetInstanceAccess on the 
-Amazon GameLift service. Use the attributes of this class
+This class represents the parameters used for calling the method GetInstanceAccess on the
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method GetInstanceAccess.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetInstanceAccess.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetInstanceAccess(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $GetInstanceAccessOutput = $gamelift->GetInstanceAccess(
+      FleetId    => 'MyFleetId',
+      InstanceId => 'MyInstanceId',
+
+    );
+
+    # Results:
+    my $InstanceAccess = $GetInstanceAccessOutput->InstanceAccess;
+
+    # Returns a L<Paws::GameLift::GetInstanceAccessOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/GetInstanceAccess>
 
 =head1 ATTRIBUTES
 

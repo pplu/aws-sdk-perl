@@ -23,17 +23,31 @@ Paws::Route53::ListVPCAssociationAuthorizations - Arguments for method ListVPCAs
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListVPCAssociationAuthorizations on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method ListVPCAssociationAuthorizations on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method ListVPCAssociationAuthorizations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListVPCAssociationAuthorizations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListVPCAssociationAuthorizations(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $ListVPCAssociationAuthorizationsResponse =
+      $route53->ListVPCAssociationAuthorizations(
+      HostedZoneId => 'MyResourceId',
+      MaxResults   => 'MyMaxResults',         # OPTIONAL
+      NextToken    => 'MyPaginationToken',    # OPTIONAL
+      );
+
+    # Results:
+    my $HostedZoneId = $ListVPCAssociationAuthorizationsResponse->HostedZoneId;
+    my $NextToken    = $ListVPCAssociationAuthorizationsResponse->NextToken;
+    my $VPCs         = $ListVPCAssociationAuthorizationsResponse->VPCs;
+
+  # Returns a L<Paws::Route53::ListVPCAssociationAuthorizationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/ListVPCAssociationAuthorizations>
 
 =head1 ATTRIBUTES
 
@@ -49,7 +63,7 @@ associated with the hosted zone.
 
 I<Optional>: An integer that specifies the maximum number of VPCs that
 you want Amazon Route 53 to return. If you don't specify a value for
-C<MaxResults>, Amazon Route 53 returns up to 50 VPCs per page.
+C<MaxResults>, Route 53 returns up to 50 VPCs per page.
 
 
 

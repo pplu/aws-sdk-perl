@@ -21,17 +21,29 @@ Paws::RDS::CreateDBClusterParameterGroup - Arguments for method CreateDBClusterP
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDBClusterParameterGroup on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateDBClusterParameterGroup on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method CreateDBClusterParameterGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBClusterParameterGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDBClusterParameterGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To create a DB cluster parameter group
+    # This example creates a DB cluster parameter group.
+    my $CreateDBClusterParameterGroupResult =
+      $rds->CreateDBClusterParameterGroup(
+      {
+        'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
+        'DBParameterGroupFamily'      => 'aurora5.6',
+        'Description'                 => 'My DB cluster parameter group'
+      }
+      );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateDBClusterParameterGroup>
 
 =head1 ATTRIBUTES
 
@@ -46,7 +58,7 @@ Constraints:
 
 =item *
 
-Must match the name of an existing DBClusterParameterGroup.
+Must match the name of an existing DB cluster parameter group.
 
 =back
 
@@ -61,6 +73,14 @@ group can be associated with one and only one DB cluster parameter
 group family, and can be applied only to a DB cluster running a
 database engine and engine version compatible with that DB cluster
 parameter group family.
+
+B<Aurora MySQL>
+
+Example: C<aurora5.6>, C<aurora-mysql5.7>
+
+B<Aurora PostgreSQL>
+
+Example: C<aurora-postgresql9.6>
 
 
 

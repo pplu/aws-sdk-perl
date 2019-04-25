@@ -36,7 +36,7 @@ Contains information about a group that a managed policy is attached
 to.
 
 This data type is used as a response element in the
-ListEntitiesForPolicy action.
+ListEntitiesForPolicy operation.
 
 For more information about managed policies, refer to Managed Policies
 and Inline Policies

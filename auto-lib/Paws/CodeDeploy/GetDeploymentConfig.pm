@@ -18,25 +18,35 @@ Paws::CodeDeploy::GetDeploymentConfig - Arguments for method GetDeploymentConfig
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetDeploymentConfig on the 
-AWS CodeDeploy service. Use the attributes of this class
+This class represents the parameters used for calling the method GetDeploymentConfig on the
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method GetDeploymentConfig.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDeploymentConfig.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetDeploymentConfig(Att1 => $value1, Att2 => $value2, ...);
+    my $codedeploy = Paws->service('CodeDeploy');
+    my $GetDeploymentConfigOutput = $codedeploy->GetDeploymentConfig(
+      DeploymentConfigName => 'MyDeploymentConfigName',
+
+    );
+
+    # Results:
+    my $DeploymentConfigInfo = $GetDeploymentConfigOutput->DeploymentConfigInfo;
+
+    # Returns a L<Paws::CodeDeploy::GetDeploymentConfigOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codedeploy/GetDeploymentConfig>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DeploymentConfigName => Str
 
-The name of a deployment configuration associated with the applicable
-IAM user or AWS account.
+The name of a deployment configuration associated with the IAM user or
+AWS account.
 
 
 

@@ -23,17 +23,32 @@ Paws::GameLift::DescribePlayerSessions - Arguments for method DescribePlayerSess
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribePlayerSessions on the 
-Amazon GameLift service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribePlayerSessions on the
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method DescribePlayerSessions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribePlayerSessions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribePlayerSessions(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $DescribePlayerSessionsOutput = $gamelift->DescribePlayerSessions(
+      GameSessionId             => 'MyArnStringModel',         # OPTIONAL
+      Limit                     => 1,                          # OPTIONAL
+      NextToken                 => 'MyNonZeroAndMaxString',    # OPTIONAL
+      PlayerId                  => 'MyNonZeroAndMaxString',    # OPTIONAL
+      PlayerSessionId           => 'MyPlayerSessionId',        # OPTIONAL
+      PlayerSessionStatusFilter => 'MyNonZeroAndMaxString',    # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken      = $DescribePlayerSessionsOutput->NextToken;
+    my $PlayerSessions = $DescribePlayerSessionsOutput->PlayerSessions;
+
+    # Returns a L<Paws::GameLift::DescribePlayerSessionsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/DescribePlayerSessions>
 
 =head1 ATTRIBUTES
 

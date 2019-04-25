@@ -18,17 +18,28 @@ Paws::SNS::CheckIfPhoneNumberIsOptedOut - Arguments for method CheckIfPhoneNumbe
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CheckIfPhoneNumberIsOptedOut on the 
-Amazon Simple Notification Service service. Use the attributes of this class
+This class represents the parameters used for calling the method CheckIfPhoneNumberIsOptedOut on the
+L<Amazon Simple Notification Service|Paws::SNS> service. Use the attributes of this class
 as arguments to method CheckIfPhoneNumberIsOptedOut.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CheckIfPhoneNumberIsOptedOut.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CheckIfPhoneNumberIsOptedOut(Att1 => $value1, Att2 => $value2, ...);
+    my $sns = Paws->service('SNS');
+    my $CheckIfPhoneNumberIsOptedOutResponse =
+      $sns->CheckIfPhoneNumberIsOptedOut(
+      PhoneNumber => 'MyPhoneNumber',
+
+      );
+
+    # Results:
+    my $IsOptedOut = $CheckIfPhoneNumberIsOptedOutResponse->IsOptedOut;
+
+    # Returns a L<Paws::SNS::CheckIfPhoneNumberIsOptedOutResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns/CheckIfPhoneNumberIsOptedOut>
 
 =head1 ATTRIBUTES
 

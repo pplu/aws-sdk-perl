@@ -20,17 +20,29 @@ Paws::StepFunctions::StartExecution - Arguments for method StartExecution on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StartExecution on the 
-AWS Step Functions service. Use the attributes of this class
+This class represents the parameters used for calling the method StartExecution on the
+L<AWS Step Functions|Paws::StepFunctions> service. Use the attributes of this class
 as arguments to method StartExecution.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartExecution.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartExecution(Att1 => $value1, Att2 => $value2, ...);
+    my $states = Paws->service('StepFunctions');
+    my $StartExecutionOutput = $states->StartExecution(
+      StateMachineArn => 'MyArn',
+      Input           => 'MySensitiveData',    # OPTIONAL
+      Name            => 'MyName',             # OPTIONAL
+    );
+
+    # Results:
+    my $ExecutionArn = $StartExecutionOutput->ExecutionArn;
+    my $StartDate    = $StartExecutionOutput->StartDate;
+
+    # Returns a L<Paws::StepFunctions::StartExecutionOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/states/StartExecution>
 
 =head1 ATTRIBUTES
 
@@ -54,31 +66,6 @@ account and region for 90 days. For more information, see Limits
 Related to State Machine Executions
 (http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
 in the I<AWS Step Functions Developer Guide>.
-
-An execution can't use the name of another execution for 90 days.
-
-When you make multiple C<StartExecution> calls with the same name, the
-new execution doesn't run and the following rules apply:
-
-=over
-
-=item *
-
-When the original execution is open and the execution input from the
-new call is I<different>, the C<ExecutionAlreadyExists> message is
-returned.
-
-=item *
-
-When the original execution is open and the execution input from the
-new call is I<identical>, the C<Success> message is returned.
-
-=item *
-
-When the original execution is closed, the C<ExecutionAlreadyExists>
-message is returned regardless of input.
-
-=back
 
 A name must I<not> contain:
 

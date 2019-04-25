@@ -1,7 +1,7 @@
 package Paws::MediaLive::DvbNitSettings;
   use Moose;
-  has NetworkId => (is => 'ro', isa => 'Int', request_name => 'networkId', traits => ['NameInRequest']);
-  has NetworkName => (is => 'ro', isa => 'Str', request_name => 'networkName', traits => ['NameInRequest']);
+  has NetworkId => (is => 'ro', isa => 'Int', request_name => 'networkId', traits => ['NameInRequest'], required => 1);
+  has NetworkName => (is => 'ro', isa => 'Str', request_name => 'networkName', traits => ['NameInRequest'], required => 1);
   has RepInterval => (is => 'ro', isa => 'Int', request_name => 'repInterval', traits => ['NameInRequest']);
 1;
 
@@ -38,12 +38,12 @@ DVB Network Information Table (NIT)
 =head1 ATTRIBUTES
 
 
-=head2 NetworkId => Int
+=head2 B<REQUIRED> NetworkId => Int
 
   The numeric value placed in the Network Information Table (NIT).
 
 
-=head2 NetworkName => Str
+=head2 B<REQUIRED> NetworkName => Str
 
   The network name text placed in the networkNameDescriptor inside the
 Network Information Table. Maximum length is 256 characters.

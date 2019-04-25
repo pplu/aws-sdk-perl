@@ -1,6 +1,7 @@
 package Paws::SageMakerRuntime;
   use Moose;
   sub service { 'runtime.sagemaker' }
+  sub signing_name { 'sagemaker' }
   sub version { '2017-05-13' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -49,11 +50,29 @@ Paws::SageMakerRuntime - Perl Interface to AWS Amazon SageMaker Runtime
 
 =head1 DESCRIPTION
 
-Amazon SageMaker runtime API.
+The Amazon SageMaker runtime API.
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/runtime.sagemaker-2017-05-13>
+
 
 =head1 METHODS
 
-=head2 InvokeEndpoint(Body => Str, EndpointName => Str, [Accept => Str, ContentType => Str])
+=head2 InvokeEndpoint
+
+=over
+
+=item Body => Str
+
+=item EndpointName => Str
+
+=item [Accept => Str]
+
+=item [ContentType => Str]
+
+=item [CustomAttributes => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SageMakerRuntime::InvokeEndpoint>
 
@@ -64,12 +83,23 @@ services, your client applications use this API to get inferences from
 the model hosted at the specified endpoint.
 
 For an overview of Amazon SageMaker, see How It Works
-(http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html)
+(http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 
 Amazon SageMaker strips all POST headers except those supported by the
 API. Amazon SageMaker might add additional headers. You should not rely
 on the behavior of headers outside those enumerated in the request
 syntax.
+
+Cals to C<InvokeEndpoint> are authenticated by using AWS Signature
+Version 4. For information, see Authenticating Requests (AWS Signature
+Version 4)
+(http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
+in the I<Amazon S3 API Reference>.
+
+Endpoints are scoped to an individual account, and are not public. The
+URL does not contain the account ID, but Amazon SageMaker determines
+the account ID from the authentication token that is supplied by the
+caller.
 
 
 

@@ -24,17 +24,34 @@ Paws::ServiceCatalog::CreateConstraint - Arguments for method CreateConstraint o
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateConstraint on the 
-AWS Service Catalog service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateConstraint on the
+L<AWS Service Catalog|Paws::ServiceCatalog> service. Use the attributes of this class
 as arguments to method CreateConstraint.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateConstraint.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateConstraint(Att1 => $value1, Att2 => $value2, ...);
+    my $servicecatalog = Paws->service('ServiceCatalog');
+    my $CreateConstraintOutput = $servicecatalog->CreateConstraint(
+      IdempotencyToken => 'MyIdempotencyToken',
+      Parameters       => 'MyConstraintParameters',
+      PortfolioId      => 'MyId',
+      ProductId        => 'MyId',
+      Type             => 'MyConstraintType',
+      AcceptLanguage   => 'MyAcceptLanguage',           # OPTIONAL
+      Description      => 'MyConstraintDescription',    # OPTIONAL
+    );
+
+    # Results:
+    my $ConstraintDetail     = $CreateConstraintOutput->ConstraintDetail;
+    my $ConstraintParameters = $CreateConstraintOutput->ConstraintParameters;
+    my $Status               = $CreateConstraintOutput->Status;
+
+    # Returns a L<Paws::ServiceCatalog::CreateConstraintOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog/CreateConstraint>
 
 =head1 ATTRIBUTES
 
@@ -87,13 +104,34 @@ constraint type as follows:
 
 Specify the C<RoleArn> property as follows:
 
-\"RoleArn\" : \"arn:aws:iam::123456789012:role/LaunchRole\"
+C<{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}>
+
+You cannot have both a C<LAUNCH> and a C<STACKSET> constraint.
+
+You also cannot have more than one C<LAUNCH> constraint on a product
+and portfolio.
 
 =item NOTIFICATION
 
 Specify the C<NotificationArns> property as follows:
 
-\"NotificationArns\" : [\"arn:aws:sns:us-east-1:123456789012:Topic\"]
+C<{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}>
+
+=item STACKSET
+
+Specify the C<Parameters> property as follows:
+
+C<{"Version": "String", "Properties": {"AccountList": [ "String" ],
+"RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole":
+"String"}}>
+
+You cannot have both a C<LAUNCH> and a C<STACKSET> constraint.
+
+You also cannot have more than one C<STACKSET> constraint on a product
+and portfolio.
+
+Products with a C<STACKSET> constraint will launch an AWS
+CloudFormation stack set.
 
 =item TEMPLATE
 
@@ -131,6 +169,10 @@ C<LAUNCH>
 =item *
 
 C<NOTIFICATION>
+
+=item *
+
+C<STACKSET>
 
 =item *
 

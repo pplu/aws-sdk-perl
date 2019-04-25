@@ -17,7 +17,7 @@ Paws::Greengrass::DisassociateServiceRoleFromAccountResponse
 
 =head2 DisassociatedAt => Str
 
-Time when the service role was disassociated from the account.
+The time when the service role was disassociated from the account.
 
 
 =head2 _request_id => Str

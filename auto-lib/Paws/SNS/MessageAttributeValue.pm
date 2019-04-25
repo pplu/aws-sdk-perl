@@ -56,8 +56,9 @@ compressed data, encrypted data, or images.
 
 =head2 B<REQUIRED> DataType => Str
 
-  Amazon SNS supports the following logical data types: String, Number,
-and Binary. For more information, see Message Attribute Data Types
+  Amazon SNS supports the following logical data types: String,
+String.Array, Number, and Binary. For more information, see Message
+Attribute Data Types
 (http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html#SNSMessageAttributes.DataTypes).
 
 

@@ -21,17 +21,27 @@ Paws::RDS::DescribeEventSubscriptions - Arguments for method DescribeEventSubscr
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeEventSubscriptions on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeEventSubscriptions on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method DescribeEventSubscriptions.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEventSubscriptions.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeEventSubscriptions(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To list information about DB event notification subscriptions
+    # This example lists information for the specified DB event notification
+    # subscription.
+    my $EventSubscriptionsMessage = $rds->DescribeEventSubscriptions(
+      {
+        'SubscriptionName' => 'mymysqleventsubscription'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/DescribeEventSubscriptions>
 
 =head1 ATTRIBUTES
 

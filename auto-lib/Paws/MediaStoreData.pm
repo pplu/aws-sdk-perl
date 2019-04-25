@@ -1,6 +1,7 @@
 package Paws::MediaStoreData;
   use Moose;
   sub service { 'data.mediastore' }
+  sub signing_name { 'mediastore' }
   sub version { '2017-09-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -39,6 +40,29 @@ package Paws::MediaStoreData;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllItems {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListItems(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListItems(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Items }, @{ $next_result->Items };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Items') foreach (@{ $result->Items });
+        $result = $self->ListItems(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Items') foreach (@{ $result->Items });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteObject DescribeObject GetObject ListItems PutObject / }
@@ -73,9 +97,19 @@ An AWS Elemental MediaStore asset is an object, similar to an object in
 the Amazon S3 service. Objects are the fundamental entities that are
 stored in AWS Elemental MediaStore.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/mediastore/>
+
+
 =head1 METHODS
 
-=head2 DeleteObject(Path => Str)
+=head2 DeleteObject
+
+=over
+
+=item Path => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStoreData::DeleteObject>
 
@@ -84,16 +118,32 @@ Returns: a L<Paws::MediaStoreData::DeleteObjectResponse> instance
 Deletes an object at the specified path.
 
 
-=head2 DescribeObject(Path => Str)
+=head2 DescribeObject
+
+=over
+
+=item Path => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStoreData::DescribeObject>
 
 Returns: a L<Paws::MediaStoreData::DescribeObjectResponse> instance
 
-Gets the header for an object at the specified path.
+Gets the headers for an object at the specified path.
 
 
-=head2 GetObject(Path => Str, [Range => Str])
+=head2 GetObject
+
+=over
+
+=item Path => Str
+
+=item [Range => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStoreData::GetObject>
 
@@ -102,7 +152,18 @@ Returns: a L<Paws::MediaStoreData::GetObjectResponse> instance
 Downloads the object at the specified path.
 
 
-=head2 ListItems([MaxResults => Int, NextToken => Str, Path => Str])
+=head2 ListItems
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Path => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStoreData::ListItems>
 
@@ -112,13 +173,28 @@ Provides a list of metadata entries about folders and objects in the
 specified folder.
 
 
-=head2 PutObject(Body => Str, Path => Str, [CacheControl => Str, ContentType => Str, StorageClass => Str])
+=head2 PutObject
+
+=over
+
+=item Body => Str
+
+=item Path => Str
+
+=item [CacheControl => Str]
+
+=item [ContentType => Str]
+
+=item [StorageClass => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::MediaStoreData::PutObject>
 
 Returns: a L<Paws::MediaStoreData::PutObjectResponse> instance
 
-Uploads an object to the specified path. Object sizes are limited to 10
+Uploads an object to the specified path. Object sizes are limited to 25
 MB.
 
 
@@ -127,6 +203,18 @@ MB.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllItems(sub { },[MaxResults => Int, NextToken => Str, Path => Str])
+
+=head2 ListAllItems([MaxResults => Int, NextToken => Str, Path => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Items, passing the object as the first parameter, and the string 'Items' as the second parameter 
+
+If not, it will return a a L<Paws::MediaStoreData::ListItemsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

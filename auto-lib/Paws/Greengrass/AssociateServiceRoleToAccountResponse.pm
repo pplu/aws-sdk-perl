@@ -17,7 +17,7 @@ Paws::Greengrass::AssociateServiceRoleToAccountResponse
 
 =head2 AssociatedAt => Str
 
-Time when the service role was associated to the account.
+The time when the service role was associated with the account.
 
 
 =head2 _request_id => Str

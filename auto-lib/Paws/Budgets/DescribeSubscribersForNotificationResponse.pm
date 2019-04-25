@@ -17,12 +17,13 @@ Paws::Budgets::DescribeSubscribersForNotificationResponse
 
 =head2 NextToken => Str
 
-
+The pagination token in the service response that indicates the next
+set of results that you can retrieve.
 
 
 =head2 Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>]
 
-
+A list of subscribers that are associated with a notification.
 
 
 =head2 _request_id => Str

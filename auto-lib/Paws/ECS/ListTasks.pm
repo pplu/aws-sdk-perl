@@ -26,17 +26,45 @@ Paws::ECS::ListTasks - Arguments for method ListTasks on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListTasks on the 
-Amazon EC2 Container Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ListTasks on the
+L<Amazon EC2 Container Service|Paws::ECS> service. Use the attributes of this class
 as arguments to method ListTasks.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTasks.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListTasks(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+    # To list the tasks in a cluster
+    # This example lists all of the tasks in a cluster.
+    my $ListTasksResponse = $ecs->ListTasks(
+      {
+        'Cluster' => 'default'
+      }
+    );
+
+    # Results:
+    my $taskArns = $ListTasksResponse->taskArns;
+
+    # Returns a L<Paws::ECS::ListTasksResponse> object.
+    # To list the tasks on a particular container instance
+    # This example lists the tasks of a specified container instance. Specifying
+    # a ``containerInstance`` value limits	the  results  to  tasks  that belong
+    # to that container instance.
+    my $ListTasksResponse = $ecs->ListTasks(
+      {
+        'Cluster'           => 'default',
+        'ContainerInstance' => 'f6bbb147-5370-4ace-8c73-c7181ded911f'
+      }
+    );
+
+    # Results:
+    my $taskArns = $ListTasksResponse->taskArns;
+
+    # Returns a L<Paws::ECS::ListTasksResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/ListTasks>
 
 =head1 ATTRIBUTES
 
@@ -62,15 +90,15 @@ container instance.
 
 The task desired status with which to filter the C<ListTasks> results.
 Specifying a C<desiredStatus> of C<STOPPED> limits the results to tasks
-that Amazon ECS has set the desired status to C<STOPPED>, which can be
+that Amazon ECS has set the desired status to C<STOPPED>. This can be
 useful for debugging tasks that are not starting properly or have died
 or finished. The default status filter is C<RUNNING>, which shows tasks
 that Amazon ECS has set the desired status to C<RUNNING>.
 
 Although you can filter results based on a desired status of
-C<PENDING>, this does not return any results because Amazon ECS never
-sets the desired status of a task to that value (only a task's
-C<lastStatus> may have a value of C<PENDING>).
+C<PENDING>, this does not return any results. Amazon ECS never sets the
+desired status of a task to that value (only a task's C<lastStatus> may
+have a value of C<PENDING>).
 
 Valid values are: C<"RUNNING">, C<"PENDING">, C<"STOPPED">
 
@@ -84,7 +112,7 @@ family.
 
 =head2 LaunchType => Str
 
-The launch type for services you want to list.
+The launch type for services to list.
 
 Valid values are: C<"EC2">, C<"FARGATE">
 

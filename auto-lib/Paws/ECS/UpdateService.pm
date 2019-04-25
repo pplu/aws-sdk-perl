@@ -5,6 +5,7 @@ package Paws::ECS::UpdateService;
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
   has ForceNewDeployment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'forceNewDeployment' );
+  has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'healthCheckGracePeriodSeconds' );
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
   has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
@@ -25,17 +26,38 @@ Paws::ECS::UpdateService - Arguments for method UpdateService on L<Paws::ECS>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateService on the 
-Amazon EC2 Container Service service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateService on the
+L<Amazon EC2 Container Service|Paws::ECS> service. Use the attributes of this class
 as arguments to method UpdateService.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateService.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateService(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+    # To change the task definition used in a service
+    # This example updates the my-http-service service to use the
+    # amazon-ecs-sample task definition.
+    my $UpdateServiceResponse = $ecs->UpdateService(
+      {
+        'Service'        => 'my-http-service',
+        'TaskDefinition' => 'amazon-ecs-sample'
+      }
+    );
+
+    # To change the number of tasks in a service
+    # This example updates the desired count of the my-http-service service to
+    # 10.
+    my $UpdateServiceResponse = $ecs->UpdateService(
+      {
+        'DesiredCount' => 10,
+        'Service'      => 'my-http-service'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/UpdateService>
 
 =head1 ATTRIBUTES
 
@@ -64,7 +86,27 @@ your service.
 
 =head2 ForceNewDeployment => Bool
 
-Whether or not to force a new deployment of the service.
+Whether to force a new deployment of the service. Deployments are not
+forced by default. You can use this option to trigger a new deployment
+with no service definition changes. For example, you can update a
+service's tasks to use a newer Docker image with the same image/tag
+combination (C<my_image:latest>) or to roll Fargate tasks onto a newer
+platform version.
+
+
+
+=head2 HealthCheckGracePeriodSeconds => Int
+
+The period of time, in seconds, that the Amazon ECS service scheduler
+should ignore unhealthy Elastic Load Balancing target health checks
+after a task has first started. This is only valid if your service is
+configured to use a load balancer. If your service's tasks take a while
+to start and respond to Elastic Load Balancing health checks, you can
+specify a health check grace period of up to 1,800 seconds. During that
+time, the ECS service scheduler ignores the Elastic Load Balancing
+health check status. This grace period can prevent the ECS service
+scheduler from marking tasks as unhealthy and stopping them before they
+have time to come up.
 
 
 
@@ -72,7 +114,7 @@ Whether or not to force a new deployment of the service.
 
 The network configuration for the service. This parameter is required
 for task definitions that use the C<awsvpc> network mode to receive
-their own Elastic Network Interface, and it is not supported for other
+their own elastic network interface, and it is not supported for other
 network modes. For more information, see Task Networking
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
@@ -87,7 +129,12 @@ new service deployment.
 
 =head2 PlatformVersion => Str
 
-The platform version you want to update your service to run.
+The platform version on which your tasks in the service are running. A
+platform version is only specified for tasks using the Fargate launch
+type. If one is not specified, the C<LATEST> platform version is used
+by default. For more information, see AWS Fargate Platform Versions
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 

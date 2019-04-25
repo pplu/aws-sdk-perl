@@ -1,6 +1,7 @@
 package Paws::ElasticTranscoder;
   use Moose;
   sub service { 'elastictranscoder' }
+  sub signing_name { 'elastictranscoder' }
   sub version { '2012-09-25' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -225,9 +226,19 @@ AWS Elastic Transcoder Service
 
 The AWS Elastic Transcoder Service.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25>
+
+
 =head1 METHODS
 
-=head2 CancelJob(Id => Str)
+=head2 CancelJob
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::CancelJob>
 
@@ -240,7 +251,28 @@ a pipeline from starting to process a job while you're getting the job
 identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
 
 
-=head2 CreateJob(PipelineId => Str, [Input => L<Paws::ElasticTranscoder::JobInput>, Inputs => ArrayRef[L<Paws::ElasticTranscoder::JobInput>], Output => L<Paws::ElasticTranscoder::CreateJobOutput>, OutputKeyPrefix => Str, Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>], Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>], UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>])
+=head2 CreateJob
+
+=over
+
+=item PipelineId => Str
+
+=item [Input => L<Paws::ElasticTranscoder::JobInput>]
+
+=item [Inputs => ArrayRef[L<Paws::ElasticTranscoder::JobInput>]]
+
+=item [Output => L<Paws::ElasticTranscoder::CreateJobOutput>]
+
+=item [OutputKeyPrefix => Str]
+
+=item [Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>]]
+
+=item [Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>]]
+
+=item [UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::CreateJob>
 
@@ -256,7 +288,28 @@ one output for the Kindle Fire and another output for the Apple iPhone
 (as opposed to the AWS Console).
 
 
-=head2 CreatePipeline(InputBucket => Str, Name => Str, Role => Str, [AwsKmsKeyArn => Str, ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>, Notifications => L<Paws::ElasticTranscoder::Notifications>, OutputBucket => Str, ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>])
+=head2 CreatePipeline
+
+=over
+
+=item InputBucket => Str
+
+=item Name => Str
+
+=item Role => Str
+
+=item [AwsKmsKeyArn => Str]
+
+=item [ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>]
+
+=item [Notifications => L<Paws::ElasticTranscoder::Notifications>]
+
+=item [OutputBucket => Str]
+
+=item [ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::CreatePipeline>
 
@@ -266,7 +319,24 @@ The CreatePipeline operation creates a pipeline with settings that you
 specify.
 
 
-=head2 CreatePreset(Container => Str, Name => Str, [Audio => L<Paws::ElasticTranscoder::AudioParameters>, Description => Str, Thumbnails => L<Paws::ElasticTranscoder::Thumbnails>, Video => L<Paws::ElasticTranscoder::VideoParameters>])
+=head2 CreatePreset
+
+=over
+
+=item Container => Str
+
+=item Name => Str
+
+=item [Audio => L<Paws::ElasticTranscoder::AudioParameters>]
+
+=item [Description => Str]
+
+=item [Thumbnails => L<Paws::ElasticTranscoder::Thumbnails>]
+
+=item [Video => L<Paws::ElasticTranscoder::VideoParameters>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::CreatePreset>
 
@@ -293,7 +363,14 @@ I<Recommendation ITU-T H.264: Advanced video coding for generic
 audiovisual services>.
 
 
-=head2 DeletePipeline(Id => Str)
+=head2 DeletePipeline
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::DeletePipeline>
 
@@ -306,7 +383,14 @@ currently in use (doesn't contain any active jobs). If the pipeline is
 currently in use, C<DeletePipeline> returns an error.
 
 
-=head2 DeletePreset(Id => Str)
+=head2 DeletePreset
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::DeletePreset>
 
@@ -319,7 +403,18 @@ You can't delete the default presets that are included with Elastic
 Transcoder.
 
 
-=head2 ListJobsByPipeline(PipelineId => Str, [Ascending => Str, PageToken => Str])
+=head2 ListJobsByPipeline
+
+=over
+
+=item PipelineId => Str
+
+=item [Ascending => Str]
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::ListJobsByPipeline>
 
@@ -333,7 +428,18 @@ pipeline. The response body contains one element for each job that
 satisfies the search criteria.
 
 
-=head2 ListJobsByStatus(Status => Str, [Ascending => Str, PageToken => Str])
+=head2 ListJobsByStatus
+
+=over
+
+=item Status => Str
+
+=item [Ascending => Str]
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::ListJobsByStatus>
 
@@ -344,7 +450,16 @@ specified status. The response body contains one element for each job
 that satisfies the search criteria.
 
 
-=head2 ListPipelines([Ascending => Str, PageToken => Str])
+=head2 ListPipelines
+
+=over
+
+=item [Ascending => Str]
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::ListPipelines>
 
@@ -354,7 +469,16 @@ The ListPipelines operation gets a list of the pipelines associated
 with the current AWS account.
 
 
-=head2 ListPresets([Ascending => Str, PageToken => Str])
+=head2 ListPresets
+
+=over
+
+=item [Ascending => Str]
+
+=item [PageToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::ListPresets>
 
@@ -365,7 +489,14 @@ with Elastic Transcoder and the presets that you've added in an AWS
 region.
 
 
-=head2 ReadJob(Id => Str)
+=head2 ReadJob
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadJob>
 
@@ -374,7 +505,14 @@ Returns: a L<Paws::ElasticTranscoder::ReadJobResponse> instance
 The ReadJob operation returns detailed information about a job.
 
 
-=head2 ReadPipeline(Id => Str)
+=head2 ReadPipeline
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadPipeline>
 
@@ -383,7 +521,14 @@ Returns: a L<Paws::ElasticTranscoder::ReadPipelineResponse> instance
 The ReadPipeline operation gets detailed information about a pipeline.
 
 
-=head2 ReadPreset(Id => Str)
+=head2 ReadPreset
+
+=over
+
+=item Id => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::ReadPreset>
 
@@ -392,7 +537,20 @@ Returns: a L<Paws::ElasticTranscoder::ReadPresetResponse> instance
 The ReadPreset operation gets detailed information about a preset.
 
 
-=head2 TestRole(InputBucket => Str, OutputBucket => Str, Role => Str, Topics => ArrayRef[Str|Undef])
+=head2 TestRole
+
+=over
+
+=item InputBucket => Str
+
+=item OutputBucket => Str
+
+=item Role => Str
+
+=item Topics => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::TestRole>
 
@@ -408,7 +566,28 @@ output buckets, and tries to send a test notification to Amazon SNS
 topics that you specify.
 
 
-=head2 UpdatePipeline(Id => Str, [AwsKmsKeyArn => Str, ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>, InputBucket => Str, Name => Str, Notifications => L<Paws::ElasticTranscoder::Notifications>, Role => Str, ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>])
+=head2 UpdatePipeline
+
+=over
+
+=item Id => Str
+
+=item [AwsKmsKeyArn => Str]
+
+=item [ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>]
+
+=item [InputBucket => Str]
+
+=item [Name => Str]
+
+=item [Notifications => L<Paws::ElasticTranscoder::Notifications>]
+
+=item [Role => Str]
+
+=item [ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipeline>
 
@@ -422,7 +601,16 @@ Transcoder has not started to process are affected in addition to jobs
 that you submit after you change settings.
 
 
-=head2 UpdatePipelineNotifications(Id => Str, Notifications => L<Paws::ElasticTranscoder::Notifications>)
+=head2 UpdatePipelineNotifications
+
+=over
+
+=item Id => Str
+
+=item Notifications => L<Paws::ElasticTranscoder::Notifications>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipelineNotifications>
 
@@ -435,7 +623,16 @@ When you update notifications for a pipeline, Elastic Transcoder
 returns the values that you specified in the request.
 
 
-=head2 UpdatePipelineStatus(Id => Str, Status => Str)
+=head2 UpdatePipelineStatus
+
+=over
+
+=item Id => Str
+
+=item Status => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipelineStatus>
 

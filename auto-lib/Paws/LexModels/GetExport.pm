@@ -22,17 +22,36 @@ Paws::LexModels::GetExport - Arguments for method GetExport on L<Paws::LexModels
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetExport on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method GetExport on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method GetExport.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetExport.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetExport(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $GetExportResponse = $models . lex->GetExport(
+      ExportType   => 'ALEXA_SKILLS_KIT',
+      Name         => 'MyName',
+      ResourceType => 'BOT',
+      Version      => 'MyNumericalVersion',
+
+    );
+
+    # Results:
+    my $ExportStatus  = $GetExportResponse->ExportStatus;
+    my $ExportType    = $GetExportResponse->ExportType;
+    my $FailureReason = $GetExportResponse->FailureReason;
+    my $Name          = $GetExportResponse->Name;
+    my $ResourceType  = $GetExportResponse->ResourceType;
+    my $Url           = $GetExportResponse->Url;
+    my $Version       = $GetExportResponse->Version;
+
+    # Returns a L<Paws::LexModels::GetExportResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/GetExport>
 
 =head1 ATTRIBUTES
 
@@ -41,7 +60,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The format of the exported data.
 
-Valid values are: C<"ALEXA_SKILLS_KIT">
+Valid values are: C<"ALEXA_SKILLS_KIT">, C<"LEX">
 
 =head2 B<REQUIRED> Name => Str
 
@@ -53,7 +72,7 @@ The name of the bot to export.
 
 The type of resource to export.
 
-Valid values are: C<"BOT">
+Valid values are: C<"BOT">, C<"INTENT">, C<"SLOT_TYPE">
 
 =head2 B<REQUIRED> Version => Str
 

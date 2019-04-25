@@ -20,17 +20,32 @@ Paws::EC2::ConfirmProductInstance - Arguments for method ConfirmProductInstance 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ConfirmProductInstance on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method ConfirmProductInstance on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method ConfirmProductInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ConfirmProductInstance.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ConfirmProductInstance(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To confirm the product instance
+    # This example determines whether the specified product code is associated
+    # with the specified instance.
+    my $ConfirmProductInstanceResult = $ec2->ConfirmProductInstance(
+      {
+        'InstanceId'  => 'i-1234567890abcdef0',
+        'ProductCode' => '774F4FF8'
+      }
+    );
+
+    # Results:
+    my $OwnerId = $ConfirmProductInstanceResult->OwnerId;
+
+    # Returns a L<Paws::EC2::ConfirmProductInstanceResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ConfirmProductInstance>
 
 =head1 ATTRIBUTES
 

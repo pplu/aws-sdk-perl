@@ -16,7 +16,7 @@ Paws::CodeDeploy::CreateDeploymentOutput
 
 =head2 DeploymentId => Str
 
-A unique deployment ID.
+The unique ID of a deployment.
 
 
 =head2 _request_id => Str

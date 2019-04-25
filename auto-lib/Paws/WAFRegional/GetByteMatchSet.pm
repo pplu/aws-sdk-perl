@@ -18,17 +18,31 @@ Paws::WAFRegional::GetByteMatchSet - Arguments for method GetByteMatchSet on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetByteMatchSet on the 
-AWS WAF Regional service. Use the attributes of this class
+This class represents the parameters used for calling the method GetByteMatchSet on the
+L<AWS WAF Regional|Paws::WAFRegional> service. Use the attributes of this class
 as arguments to method GetByteMatchSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetByteMatchSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetByteMatchSet(Att1 => $value1, Att2 => $value2, ...);
+    my $waf-regional = Paws->service('WAFRegional');
+    # To get a byte match set
+    # The following example returns the details of a byte match set with the ID
+    # exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
+    my $GetByteMatchSetResponse = $waf -regional->GetByteMatchSet(
+      {
+        'ByteMatchSetId' => 'exampleIDs3t-46da-4fdb-b8d5-abc321j569j5'
+      }
+    );
+
+    # Results:
+    my $ByteMatchSet = $GetByteMatchSetResponse->ByteMatchSet;
+
+    # Returns a L<Paws::WAFRegional::GetByteMatchSetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf-regional/GetByteMatchSet>
 
 =head1 ATTRIBUTES
 

@@ -1,7 +1,7 @@
 package Paws::MediaLive::InputChannelLevel;
   use Moose;
-  has Gain => (is => 'ro', isa => 'Int', request_name => 'gain', traits => ['NameInRequest']);
-  has InputChannel => (is => 'ro', isa => 'Int', request_name => 'inputChannel', traits => ['NameInRequest']);
+  has Gain => (is => 'ro', isa => 'Int', request_name => 'gain', traits => ['NameInRequest'], required => 1);
+  has InputChannel => (is => 'ro', isa => 'Int', request_name => 'inputChannel', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +37,13 @@ Placeholder documentation for InputChannelLevel
 =head1 ATTRIBUTES
 
 
-=head2 Gain => Int
+=head2 B<REQUIRED> Gain => Int
 
   Remixing value. Units are in dB and acceptable values are within the
 range from -60 (mute) and 6 dB.
 
 
-=head2 InputChannel => Int
+=head2 B<REQUIRED> InputChannel => Int
 
   The index of the input channel used as a source.
 

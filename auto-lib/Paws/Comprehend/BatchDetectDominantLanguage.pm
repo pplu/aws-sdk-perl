@@ -18,17 +18,31 @@ Paws::Comprehend::BatchDetectDominantLanguage - Arguments for method BatchDetect
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method BatchDetectDominantLanguage on the 
-Amazon Comprehend service. Use the attributes of this class
+This class represents the parameters used for calling the method BatchDetectDominantLanguage on the
+L<Amazon Comprehend|Paws::Comprehend> service. Use the attributes of this class
 as arguments to method BatchDetectDominantLanguage.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchDetectDominantLanguage.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->BatchDetectDominantLanguage(Att1 => $value1, Att2 => $value2, ...);
+    my $comprehend = Paws->service('Comprehend');
+    my $BatchDetectDominantLanguageResponse =
+      $comprehend->BatchDetectDominantLanguage(
+      TextList => [
+        'MyString', ...    # min: 1
+      ],
+
+      );
+
+    # Results:
+    my $ErrorList  = $BatchDetectDominantLanguageResponse->ErrorList;
+    my $ResultList = $BatchDetectDominantLanguageResponse->ResultList;
+
+    # Returns a L<Paws::Comprehend::BatchDetectDominantLanguageResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/comprehend/BatchDetectDominantLanguage>
 
 =head1 ATTRIBUTES
 

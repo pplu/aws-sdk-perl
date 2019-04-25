@@ -40,21 +40,23 @@ This class has no description
 
 =head2 AllowDnsResolutionFromRemoteVpc => Bool
 
-  If true, enables a local VPC to resolve public DNS hostnames to private
-IP addresses when queried from instances in the peer VPC.
+  If true, the public DNS hostnames of instances in the specified VPC
+resolve to private IP addresses when queried from instances in the peer
+VPC.
 
 
 =head2 AllowEgressFromLocalClassicLinkToRemoteVpc => Bool
 
   If true, enables outbound communication from an EC2-Classic instance
-that's linked to a local VPC via ClassicLink to instances in a peer
+that's linked to a local VPC using ClassicLink to instances in a peer
 VPC.
 
 
 =head2 AllowEgressFromLocalVpcToRemoteClassicLink => Bool
 
   If true, enables outbound communication from instances in a local VPC
-to an EC2-Classic instance that's linked to a peer VPC via ClassicLink.
+to an EC2-Classic instance that's linked to a peer VPC using
+ClassicLink.
 
 
 

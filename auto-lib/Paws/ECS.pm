@@ -1,6 +1,7 @@
 package Paws::ECS;
   use Moose;
   sub service { 'ecs' }
+  sub signing_name { 'ecs' }
   sub version { '2014-11-13' }
   sub target_prefix { 'AmazonEC2ContainerServiceV20141113' }
   sub json_version { "1.1" }
@@ -22,6 +23,11 @@ package Paws::ECS;
   sub CreateService {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::CreateService', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAccountSetting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::DeleteAccountSetting', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteAttributes {
@@ -79,6 +85,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::DiscoverPollEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAccountSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::ListAccountSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListAttributes', @_);
@@ -99,6 +110,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListServices', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTaskDefinitionFamilies {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListTaskDefinitionFamilies', @_);
@@ -112,6 +128,16 @@ package Paws::ECS;
   sub ListTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAccountSetting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::PutAccountSetting', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAccountSettingDefault {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::PutAccountSettingDefault', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutAttributes {
@@ -154,6 +180,16 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::SubmitTaskStateChange', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateContainerAgent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateContainerAgent', @_);
@@ -170,6 +206,52 @@ package Paws::ECS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAccountSettings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccountSettings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAccountSettings(@_, nextToken => $next_result->nextToken);
+        push @{ $result->settings }, @{ $next_result->settings };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'settings') foreach (@{ $result->settings });
+        $result = $self->ListAccountSettings(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'settings') foreach (@{ $result->settings });
+    }
+
+    return undef
+  }
+  sub ListAllAttributes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAttributes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAttributes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->attributes }, @{ $next_result->attributes };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'attributes') foreach (@{ $result->attributes });
+        $result = $self->ListAttributes(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'attributes') foreach (@{ $result->attributes });
+    }
+
+    return undef
+  }
   sub ListAllClusters {
     my $self = shift;
 
@@ -310,7 +392,7 @@ package Paws::ECS;
   }
 
 
-  sub operations { qw/CreateCluster CreateService DeleteAttributes DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListAttributes ListClusters ListContainerInstances ListServices ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange UpdateContainerAgent UpdateContainerInstancesState UpdateService / }
+  sub operations { qw/CreateCluster CreateService DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateContainerAgent UpdateContainerInstancesState UpdateService / }
 
 1;
 
@@ -346,7 +428,7 @@ your services or tasks using the Fargate launch type. For more control,
 you can host your tasks on a cluster of Amazon Elastic Compute Cloud
 (Amazon EC2) instances that you manage by using the EC2 launch type.
 For more information about launch types, see Amazon ECS Launch Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguidelaunch_types.html).
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html).
 
 Amazon ECS lets you launch and stop container-based applications with
 simple API calls, allows you to get the state of your cluster from a
@@ -359,9 +441,21 @@ availability requirements. Amazon ECS eliminates the need for you to
 operate your own cluster management and configuration management
 systems or worry about scaling your management infrastructure.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13>
+
+
 =head1 METHODS
 
-=head2 CreateCluster([ClusterName => Str])
+=head2 CreateCluster
+
+=over
+
+=item [ClusterName => Str]
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::CreateCluster>
 
@@ -382,7 +476,52 @@ Using Service-Linked Roles for Amazon ECS
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, LaunchType => Str, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], PlatformVersion => Str, Role => Str])
+=head2 CreateService
+
+=over
+
+=item ServiceName => Str
+
+=item TaskDefinition => Str
+
+=item [ClientToken => Str]
+
+=item [Cluster => Str]
+
+=item [DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>]
+
+=item [DeploymentController => L<Paws::ECS::DeploymentController>]
+
+=item [DesiredCount => Int]
+
+=item [EnableECSManagedTags => Bool]
+
+=item [HealthCheckGracePeriodSeconds => Int]
+
+=item [LaunchType => Str]
+
+=item [LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]]
+
+=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+
+=item [PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]]
+
+=item [PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]]
+
+=item [PlatformVersion => Str]
+
+=item [PropagateTags => Str]
+
+=item [Role => Str]
+
+=item [SchedulingStrategy => Str]
+
+=item [ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]]
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -397,41 +536,59 @@ In addition to maintaining the desired count of tasks in your service,
 you can optionally run your service behind a load balancer. The load
 balancer distributes traffic across the tasks that are associated with
 the service. For more information, see Service Load Balancing
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 You can optionally specify a deployment configuration for your service.
-During a deployment, the service scheduler uses the
-C<minimumHealthyPercent> and C<maximumPercent> parameters to determine
-the deployment strategy. The deployment is triggered by changing the
-task definition or the desired count of a service with an UpdateService
+The deployment is triggered by changing properties, such as the task
+definition or the desired count of a service, with an UpdateService
 operation.
 
-The C<minimumHealthyPercent> represents a lower limit on the number of
-your service's tasks that must remain in the C<RUNNING> state during a
-deployment, as a percentage of the C<desiredCount> (rounded up to the
-nearest integer). This parameter enables you to deploy without using
-additional cluster capacity. For example, if your service has a
-C<desiredCount> of four tasks and a C<minimumHealthyPercent> of 50%,
-the scheduler can stop two existing tasks to free up cluster capacity
-before starting two new tasks. Tasks for services that I<do not> use a
-load balancer are considered healthy if they are in the C<RUNNING>
-state. Tasks for services that I<do> use a load balancer are considered
-healthy if they are in the C<RUNNING> state and the container instance
-they are hosted on is reported as healthy by the load balancer. The
-default value for C<minimumHealthyPercent> is 50% in the console and
-100% for the AWS CLI, the AWS SDKs, and the APIs.
+If a service is using the C<ECS> deployment controller, the B<minimum
+healthy percent> represents a lower limit on the number of tasks in a
+service that must remain in the C<RUNNING> state during a deployment,
+as a percentage of the desired number of tasks (rounded up to the
+nearest integer), and while any container instances are in the
+C<DRAINING> state if the service contains tasks using the EC2 launch
+type. This parameter enables you to deploy without using additional
+cluster capacity. For example, if your service has a desired number of
+four tasks and a minimum healthy percent of 50%, the scheduler may stop
+two existing tasks to free up cluster capacity before starting two new
+tasks. Tasks for services that I<do not> use a load balancer are
+considered healthy if they are in the C<RUNNING> state; tasks for
+services that I<do> use a load balancer are considered healthy if they
+are in the C<RUNNING> state and they are reported as healthy by the
+load balancer. The default value for minimum healthy percent is 100%.
 
-The C<maximumPercent> parameter represents an upper limit on the number
-of your service's tasks that are allowed in the C<RUNNING> or
-C<PENDING> state during a deployment, as a percentage of the
-C<desiredCount> (rounded down to the nearest integer). This parameter
-enables you to define the deployment batch size. For example, if your
-service has a C<desiredCount> of four tasks and a C<maximumPercent>
-value of 200%, the scheduler can start four new tasks before stopping
-the four older tasks (provided that the cluster resources required to
-do this are available). The default value for C<maximumPercent> is
-200%.
+If a service is using the C<ECS> deployment controller, the B<maximum
+percent> parameter represents an upper limit on the number of tasks in
+a service that are allowed in the C<RUNNING> or C<PENDING> state during
+a deployment, as a percentage of the desired number of tasks (rounded
+down to the nearest integer), and while any container instances are in
+the C<DRAINING> state if the service contains tasks using the EC2
+launch type. This parameter enables you to define the deployment batch
+size. For example, if your service has a desired number of four tasks
+and a maximum percent value of 200%, the scheduler may start four new
+tasks before stopping the four older tasks (provided that the cluster
+resources required to do this are available). The default value for
+maximum percent is 200%.
+
+If a service is using the C<CODE_DEPLOY> deployment controller and
+tasks that use the EC2 launch type, the B<minimum healthy percent> and
+B<maximum percent> values are only used to define the lower and upper
+limit on the number of the tasks in the service that remain in the
+C<RUNNING> state while the container instances are in the C<DRAINING>
+state. If the tasks in the service use the Fargate launch type, the
+minimum healthy percent and maximum percent values are not used,
+although they are currently visible when describing your service.
+
+Tasks for services that I<do not> use a load balancer are considered
+healthy if they are in the C<RUNNING> state. Tasks for services that
+I<do> use a load balancer are considered healthy if they are in the
+C<RUNNING> state and the container instance they are hosted on is
+reported as healthy by the load balancer. The default value for a
+replica service for C<minimumHealthyPercent> is 100%. The default value
+for a daemon service for C<minimumHealthyPercent> is 0%.
 
 When the service scheduler launches new tasks, it determines task
 placement in your cluster using the following logic:
@@ -454,11 +611,11 @@ placement strategy) with the C<placementStrategy> parameter):
 
 =item *
 
-Sort the valid container instances by the fewest number of running
-tasks for this service in the same Availability Zone as the instance.
-For example, if zone A has one running service task and zones B and C
-each have zero, valid container instances in either zone B or C are
-considered optimal for placement.
+Sort the valid container instances, giving priority to instances that
+have the fewest number of running tasks for this service in their
+respective Availability Zone. For example, if zone A has one running
+service task and zones B and C each have zero, valid container
+instances in either zone B or C are considered optimal for placement.
 
 =item *
 
@@ -472,7 +629,37 @@ instances with the fewest number of running tasks for this service.
 
 
 
-=head2 DeleteAttributes(Attributes => ArrayRef[L<Paws::ECS::Attribute>], [Cluster => Str])
+=head2 DeleteAccountSetting
+
+=over
+
+=item Name => Str
+
+=item [PrincipalArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::DeleteAccountSetting>
+
+Returns: a L<Paws::ECS::DeleteAccountSettingResponse> instance
+
+Modifies the ARN and resource ID format of a resource for a specified
+IAM user, IAM role, or the root user for an account. You can specify
+whether the new ARN and resource ID format are disabled for new
+resources that are created.
+
+
+=head2 DeleteAttributes
+
+=over
+
+=item Attributes => ArrayRef[L<Paws::ECS::Attribute>]
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DeleteAttributes>
 
@@ -481,7 +668,14 @@ Returns: a L<Paws::ECS::DeleteAttributesResponse> instance
 Deletes one or more custom attributes from an Amazon ECS resource.
 
 
-=head2 DeleteCluster(Cluster => Str)
+=head2 DeleteCluster
+
+=over
+
+=item Cluster => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DeleteCluster>
 
@@ -493,7 +687,18 @@ container instances in a cluster with ListContainerInstances and
 deregister them with DeregisterContainerInstance.
 
 
-=head2 DeleteService(Service => Str, [Cluster => Str])
+=head2 DeleteService
+
+=over
+
+=item Service => Str
+
+=item [Cluster => Str]
+
+=item [Force => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DeleteService>
 
@@ -508,16 +713,31 @@ information, see UpdateService.
 When you delete a service, if there are still running tasks that
 require cleanup, the service status moves from C<ACTIVE> to
 C<DRAINING>, and the service is no longer visible in the console or in
-ListServices API operations. After the tasks have stopped, then the
+the ListServices API operation. After the tasks have stopped, then the
 service status moves from C<DRAINING> to C<INACTIVE>. Services in the
-C<DRAINING> or C<INACTIVE> status can still be viewed with
-DescribeServices API operations. However, in the future, C<INACTIVE>
+C<DRAINING> or C<INACTIVE> status can still be viewed with the
+DescribeServices API operation. However, in the future, C<INACTIVE>
 services may be cleaned up and purged from Amazon ECS record keeping,
-and DescribeServices API operations on those services return a
+and DescribeServices calls on those services return a
 C<ServiceNotFoundException> error.
 
+If you attempt to create a new service with the same name as an
+existing service in either C<ACTIVE> or C<DRAINING> status, you receive
+an error.
 
-=head2 DeregisterContainerInstance(ContainerInstance => Str, [Cluster => Str, Force => Bool])
+
+=head2 DeregisterContainerInstance
+
+=over
+
+=item ContainerInstance => Str
+
+=item [Cluster => Str]
+
+=item [Force => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DeregisterContainerInstance>
 
@@ -532,7 +752,7 @@ container instance before deregistration. That prevents any orphaned
 tasks from consuming resources.
 
 Deregistering a container instance removes the instance from a cluster,
-but it does not terminate the EC2 instance; if you are finished using
+but it does not terminate the EC2 instance. If you are finished using
 the instance, be sure to terminate it in the Amazon EC2 console to stop
 billing.
 
@@ -542,7 +762,14 @@ or instances with disconnected agents are not automatically
 deregistered when terminated).
 
 
-=head2 DeregisterTaskDefinition(TaskDefinition => Str)
+=head2 DeregisterTaskDefinition
+
+=over
+
+=item TaskDefinition => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DeregisterTaskDefinition>
 
@@ -557,17 +784,26 @@ service's desired count.
 
 You cannot use an C<INACTIVE> task definition to run new tasks or
 create new services, and you cannot update an existing service to
-reference an C<INACTIVE> task definition (although there may be up to a
+reference an C<INACTIVE> task definition. However, there may be up to a
 10-minute window following deregistration where these restrictions have
-not yet taken effect).
+not yet taken effect.
 
 At this time, C<INACTIVE> task definitions remain discoverable in your
-account indefinitely; however, this behavior is subject to change in
+account indefinitely. However, this behavior is subject to change in
 the future, so you should not rely on C<INACTIVE> task definitions
 persisting beyond the lifecycle of any associated tasks and services.
 
 
-=head2 DescribeClusters([Clusters => ArrayRef[Str|Undef], Include => ArrayRef[Str|Undef]])
+=head2 DescribeClusters
+
+=over
+
+=item [Clusters => ArrayRef[Str|Undef]]
+
+=item [Include => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DescribeClusters>
 
@@ -576,7 +812,18 @@ Returns: a L<Paws::ECS::DescribeClustersResponse> instance
 Describes one or more of your clusters.
 
 
-=head2 DescribeContainerInstances(ContainerInstances => ArrayRef[Str|Undef], [Cluster => Str])
+=head2 DescribeContainerInstances
+
+=over
+
+=item ContainerInstances => ArrayRef[Str|Undef]
+
+=item [Cluster => Str]
+
+=item [Include => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DescribeContainerInstances>
 
@@ -587,7 +834,18 @@ metadata about registered and remaining resources on each container
 instance requested.
 
 
-=head2 DescribeServices(Services => ArrayRef[Str|Undef], [Cluster => Str])
+=head2 DescribeServices
+
+=over
+
+=item Services => ArrayRef[Str|Undef]
+
+=item [Cluster => Str]
+
+=item [Include => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DescribeServices>
 
@@ -596,7 +854,16 @@ Returns: a L<Paws::ECS::DescribeServicesResponse> instance
 Describes the specified services running in your cluster.
 
 
-=head2 DescribeTaskDefinition(TaskDefinition => Str)
+=head2 DescribeTaskDefinition
+
+=over
+
+=item TaskDefinition => Str
+
+=item [Include => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DescribeTaskDefinition>
 
@@ -611,7 +878,18 @@ You can only describe C<INACTIVE> task definitions while an active task
 or service references them.
 
 
-=head2 DescribeTasks(Tasks => ArrayRef[Str|Undef], [Cluster => Str])
+=head2 DescribeTasks
+
+=over
+
+=item Tasks => ArrayRef[Str|Undef]
+
+=item [Cluster => Str]
+
+=item [Include => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DescribeTasks>
 
@@ -620,7 +898,16 @@ Returns: a L<Paws::ECS::DescribeTasksResponse> instance
 Describes a specified task or tasks.
 
 
-=head2 DiscoverPollEndpoint([Cluster => Str, ContainerInstance => Str])
+=head2 DiscoverPollEndpoint
+
+=over
+
+=item [Cluster => Str]
+
+=item [ContainerInstance => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::DiscoverPollEndpoint>
 
@@ -632,7 +919,51 @@ intended for use outside of the agent.
 Returns an endpoint for the Amazon ECS agent to poll for updates.
 
 
-=head2 ListAttributes(TargetType => Str, [AttributeName => Str, AttributeValue => Str, Cluster => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAccountSettings
+
+=over
+
+=item [EffectiveSettings => Bool]
+
+=item [MaxResults => Int]
+
+=item [Name => Str]
+
+=item [NextToken => Str]
+
+=item [PrincipalArn => Str]
+
+=item [Value => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::ListAccountSettings>
+
+Returns: a L<Paws::ECS::ListAccountSettingsResponse> instance
+
+Lists the account settings for an Amazon ECS resource for a specified
+principal.
+
+
+=head2 ListAttributes
+
+=over
+
+=item TargetType => Str
+
+=item [AttributeName => Str]
+
+=item [AttributeValue => Str]
+
+=item [Cluster => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListAttributes>
 
@@ -648,7 +979,16 @@ to see which container instances in a cluster are running a Linux AMI
 (C<ecs.os-type=linux>).
 
 
-=head2 ListClusters([MaxResults => Int, NextToken => Str])
+=head2 ListClusters
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListClusters>
 
@@ -657,7 +997,22 @@ Returns: a L<Paws::ECS::ListClustersResponse> instance
 Returns a list of existing clusters.
 
 
-=head2 ListContainerInstances([Cluster => Str, Filter => Str, MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListContainerInstances
+
+=over
+
+=item [Cluster => Str]
+
+=item [Filter => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListContainerInstances>
 
@@ -667,11 +1022,26 @@ Returns a list of container instances in a specified cluster. You can
 filter the results of a C<ListContainerInstances> operation with
 cluster query language statements inside the C<filter> parameter. For
 more information, see Cluster Query Language
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 ListServices([Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str])
+=head2 ListServices
+
+=over
+
+=item [Cluster => Str]
+
+=item [LaunchType => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SchedulingStrategy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListServices>
 
@@ -680,7 +1050,36 @@ Returns: a L<Paws::ECS::ListServicesResponse> instance
 Lists the services that are running in a specified cluster.
 
 
-=head2 ListTaskDefinitionFamilies([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::ListTagsForResource>
+
+Returns: a L<Paws::ECS::ListTagsForResourceResponse> instance
+
+List the tags for an Amazon ECS resource.
+
+
+=head2 ListTaskDefinitionFamilies
+
+=over
+
+=item [FamilyPrefix => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitionFamilies>
 
@@ -696,7 +1095,22 @@ to C<ACTIVE>. You can also filter the results with the C<familyPrefix>
 parameter.
 
 
-=head2 ListTaskDefinitions([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Sort => Str, Status => Str])
+=head2 ListTaskDefinitions
+
+=over
+
+=item [FamilyPrefix => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Sort => Str]
+
+=item [Status => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitions>
 
@@ -707,7 +1121,30 @@ You can filter the results by family name with the C<familyPrefix>
 parameter or by status with the C<status> parameter.
 
 
-=head2 ListTasks([Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, LaunchType => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
+=head2 ListTasks
+
+=over
+
+=item [Cluster => Str]
+
+=item [ContainerInstance => Str]
+
+=item [DesiredStatus => Str]
+
+=item [Family => Str]
+
+=item [LaunchType => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ServiceName => Str]
+
+=item [StartedBy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::ListTasks>
 
@@ -722,7 +1159,68 @@ Recently stopped tasks might appear in the returned results. Currently,
 stopped tasks appear in the returned results for at least one hour.
 
 
-=head2 PutAttributes(Attributes => ArrayRef[L<Paws::ECS::Attribute>], [Cluster => Str])
+=head2 PutAccountSetting
+
+=over
+
+=item Name => Str
+
+=item Value => Str
+
+=item [PrincipalArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::PutAccountSetting>
+
+Returns: a L<Paws::ECS::PutAccountSettingResponse> instance
+
+Modifies the ARN and resource ID format of a resource type for a
+specified IAM user, IAM role, or the root user for an account. If the
+account setting for the root user is changed, it sets the default
+setting for all of the IAM users and roles for which no individual
+account setting has been set. The opt-in and opt-out account setting
+can be set for each Amazon ECS resource separately. The ARN and
+resource ID format of a resource will be defined by the opt-in status
+of the IAM user or role that created the resource. Enabling this
+setting is required to use new Amazon ECS features such as resource
+tagging. For more information, see Amazon Resource Names (ARNs) and IDs
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-resource-ids.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+
+=head2 PutAccountSettingDefault
+
+=over
+
+=item Name => Str
+
+=item Value => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::PutAccountSettingDefault>
+
+Returns: a L<Paws::ECS::PutAccountSettingDefaultResponse> instance
+
+Modifies the ARN and resource ID format of a resource type for all IAM
+users on an account for which no individual account setting has been
+set. Enabling this setting is required to use new Amazon ECS features
+such as resource tagging.
+
+
+=head2 PutAttributes
+
+=over
+
+=item Attributes => ArrayRef[L<Paws::ECS::Attribute>]
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::PutAttributes>
 
@@ -732,11 +1230,34 @@ Create or update an attribute on an Amazon ECS resource. If the
 attribute does not exist, it is created. If the attribute exists, its
 value is replaced with the specified value. To delete an attribute, use
 DeleteAttributes. For more information, see Attributes
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 RegisterContainerInstance([Attributes => ArrayRef[L<Paws::ECS::Attribute>], Cluster => Str, ContainerInstanceArn => Str, InstanceIdentityDocument => Str, InstanceIdentityDocumentSignature => Str, TotalResources => ArrayRef[L<Paws::ECS::Resource>], VersionInfo => L<Paws::ECS::VersionInfo>])
+=head2 RegisterContainerInstance
+
+=over
+
+=item [Attributes => ArrayRef[L<Paws::ECS::Attribute>]]
+
+=item [Cluster => Str]
+
+=item [ContainerInstanceArn => Str]
+
+=item [InstanceIdentityDocument => Str]
+
+=item [InstanceIdentityDocumentSignature => Str]
+
+=item [PlatformDevices => ArrayRef[L<Paws::ECS::PlatformDevice>]]
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+
+=item [TotalResources => ArrayRef[L<Paws::ECS::Resource>]]
+
+=item [VersionInfo => L<Paws::ECS::VersionInfo>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::RegisterContainerInstance>
 
@@ -749,7 +1270,38 @@ Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
 
 
-=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [Cpu => Str, ExecutionRoleArn => Str, Memory => Str, NetworkMode => Str, PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>], RequiresCompatibilities => ArrayRef[Str|Undef], TaskRoleArn => Str, Volumes => ArrayRef[L<Paws::ECS::Volume>]])
+=head2 RegisterTaskDefinition
+
+=over
+
+=item ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>]
+
+=item Family => Str
+
+=item [Cpu => Str]
+
+=item [ExecutionRoleArn => Str]
+
+=item [IpcMode => Str]
+
+=item [Memory => Str]
+
+=item [NetworkMode => Str]
+
+=item [PidMode => Str]
+
+=item [PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]]
+
+=item [RequiresCompatibilities => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+
+=item [TaskRoleArn => Str]
+
+=item [Volumes => ArrayRef[L<Paws::ECS::Volume>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::RegisterTaskDefinition>
 
@@ -760,7 +1312,7 @@ C<containerDefinitions>. Optionally, you can add data volumes to your
 containers with the C<volumes> parameter. For more information about
 task definition parameters and defaults, see Amazon ECS Task
 Definitions
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 You can specify an IAM role for your task with the C<taskRoleArn>
@@ -768,7 +1320,7 @@ parameter. When you specify an IAM role for a task, its containers can
 then use the latest versions of the AWS CLI or SDKs to make API
 requests to the AWS services that are specified in the IAM policy
 associated with the role. For more information, see IAM Roles for Tasks
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 You can specify a Docker networking mode for the containers in your
@@ -776,14 +1328,47 @@ task definition with the C<networkMode> parameter. The available
 network modes correspond to those described in Network settings
 (https://docs.docker.com/engine/reference/run/#/network-settings) in
 the Docker run reference. If you specify the C<awsvpc> network mode,
-the task is allocated an Elastic Network Interface, and you must
+the task is allocated an elastic network interface, and you must
 specify a NetworkConfiguration when you create a service or run a task
 with the task definition. For more information, see Task Networking
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Group => Str, LaunchType => Str, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, Overrides => L<Paws::ECS::TaskOverride>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], PlatformVersion => Str, StartedBy => Str])
+=head2 RunTask
+
+=over
+
+=item TaskDefinition => Str
+
+=item [Cluster => Str]
+
+=item [Count => Int]
+
+=item [EnableECSManagedTags => Bool]
+
+=item [Group => Str]
+
+=item [LaunchType => Str]
+
+=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+
+=item [Overrides => L<Paws::ECS::TaskOverride>]
+
+=item [PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]]
+
+=item [PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]]
+
+=item [PlatformVersion => Str]
+
+=item [PropagateTags => Str]
+
+=item [StartedBy => Str]
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::RunTask>
 
@@ -794,14 +1379,69 @@ Starts a new task using the specified task definition.
 You can allow Amazon ECS to place tasks for you, or you can customize
 how Amazon ECS places tasks using placement constraints and placement
 strategies. For more information, see Scheduling Tasks
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 Alternatively, you can use StartTask to use your own scheduler or place
 tasks manually on specific container instances.
 
+The Amazon ECS API follows an eventual consistency model, due to the
+distributed nature of the system supporting the API. This means that
+the result of an API command you run that affects your Amazon ECS
+resources might not be immediately visible to all subsequent commands
+you run. Keep this in mind when you carry out an API command that
+immediately follows a previous API command.
 
-=head2 StartTask(ContainerInstances => ArrayRef[Str|Undef], TaskDefinition => Str, [Cluster => Str, Group => Str, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
+To manage eventual consistency, you can do the following:
+
+=over
+
+=item *
+
+Confirm the state of the resource before you run a command to modify
+it. Run the DescribeTasks command using an exponential backoff
+algorithm to ensure that you allow enough time for the previous command
+to propagate through the system. To do this, run the DescribeTasks
+command repeatedly, starting with a couple of seconds of wait time and
+increasing gradually up to five minutes of wait time.
+
+=item *
+
+Add wait time between subsequent commands, even if the DescribeTasks
+command returns an accurate response. Apply an exponential backoff
+algorithm starting with a couple of seconds of wait time, and increase
+gradually up to about five minutes of wait time.
+
+=back
+
+
+
+=head2 StartTask
+
+=over
+
+=item ContainerInstances => ArrayRef[Str|Undef]
+
+=item TaskDefinition => Str
+
+=item [Cluster => Str]
+
+=item [EnableECSManagedTags => Bool]
+
+=item [Group => Str]
+
+=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+
+=item [Overrides => L<Paws::ECS::TaskOverride>]
+
+=item [PropagateTags => Str]
+
+=item [StartedBy => Str]
+
+=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::StartTask>
 
@@ -812,33 +1452,64 @@ container instance or instances.
 
 Alternatively, you can use RunTask to place tasks for you. For more
 information, see Scheduling Tasks
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 StopTask(Task => Str, [Cluster => Str, Reason => Str])
+=head2 StopTask
+
+=over
+
+=item Task => Str
+
+=item [Cluster => Str]
+
+=item [Reason => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::StopTask>
 
 Returns: a L<Paws::ECS::StopTaskResponse> instance
 
-Stops a running task.
+Stops a running task. Any tags associated with the task will be
+deleted.
 
 When StopTask is called on a task, the equivalent of C<docker stop> is
 issued to the containers running in the task. This results in a
-C<SIGTERM> and a default 30-second timeout, after which C<SIGKILL> is
-sent and the containers are forcibly stopped. If the container handles
-the C<SIGTERM> gracefully and exits within 30 seconds from receiving
-it, no C<SIGKILL> is sent.
+C<SIGTERM> value and a default 30-second timeout, after which the
+C<SIGKILL> value is sent and the containers are forcibly stopped. If
+the container handles the C<SIGTERM> value gracefully and exits within
+30 seconds from receiving it, no C<SIGKILL> value is sent.
 
 The default 30-second timeout can be configured on the Amazon ECS
 container agent with the C<ECS_CONTAINER_STOP_TIMEOUT> variable. For
 more information, see Amazon ECS Container Agent Configuration
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 SubmitContainerStateChange([Cluster => Str, ContainerName => Str, ExitCode => Int, NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>], Reason => Str, Status => Str, Task => Str])
+=head2 SubmitContainerStateChange
+
+=over
+
+=item [Cluster => Str]
+
+=item [ContainerName => Str]
+
+=item [ExitCode => Int]
+
+=item [NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]]
+
+=item [Reason => Str]
+
+=item [Status => Str]
+
+=item [Task => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::SubmitContainerStateChange>
 
@@ -850,7 +1521,30 @@ intended for use outside of the agent.
 Sent to acknowledge that a container changed states.
 
 
-=head2 SubmitTaskStateChange([Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>], Cluster => Str, Containers => ArrayRef[L<Paws::ECS::ContainerStateChange>], ExecutionStoppedAt => Str, PullStartedAt => Str, PullStoppedAt => Str, Reason => Str, Status => Str, Task => Str])
+=head2 SubmitTaskStateChange
+
+=over
+
+=item [Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>]]
+
+=item [Cluster => Str]
+
+=item [Containers => ArrayRef[L<Paws::ECS::ContainerStateChange>]]
+
+=item [ExecutionStoppedAt => Str]
+
+=item [PullStartedAt => Str]
+
+=item [PullStoppedAt => Str]
+
+=item [Reason => Str]
+
+=item [Status => Str]
+
+=item [Task => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::SubmitTaskStateChange>
 
@@ -862,7 +1556,55 @@ intended for use outside of the agent.
 Sent to acknowledge that a task changed states.
 
 
-=head2 UpdateContainerAgent(ContainerInstance => Str, [Cluster => Str])
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::TagResource>
+
+Returns: a L<Paws::ECS::TagResourceResponse> instance
+
+Associates the specified tags to a resource with the specified
+C<resourceArn>. If existing tags on a resource are not specified in the
+request parameters, they are not changed. When a resource is deleted,
+the tags associated with that resource are deleted as well.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::UntagResource>
+
+Returns: a L<Paws::ECS::UntagResourceResponse> instance
+
+Deletes specified tags from a resource.
+
+
+=head2 UpdateContainerAgent
+
+=over
+
+=item ContainerInstance => Str
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::UpdateContainerAgent>
 
@@ -879,11 +1621,22 @@ C<UpdateContainerAgent> requires the Amazon ECS-optimized AMI or Amazon
 Linux with the C<ecs-init> service installed and running. For help
 updating the Amazon ECS container agent on other operating systems, see
 Manually Updating the Amazon ECS Container Agent
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 UpdateContainerInstancesState(ContainerInstances => ArrayRef[Str|Undef], Status => Str, [Cluster => Str])
+=head2 UpdateContainerInstancesState
+
+=over
+
+=item ContainerInstances => ArrayRef[Str|Undef]
+
+=item Status => Str
+
+=item [Cluster => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::UpdateContainerInstancesState>
 
@@ -929,16 +1682,16 @@ load balancer.
 
 The C<maximumPercent> parameter represents an upper limit on the number
 of running tasks during task replacement, which enables you to define
-the replacement batch size. For example, if C<desiredCount> of four
+the replacement batch size. For example, if C<desiredCount> is four
 tasks, a maximum of 200% starts four new tasks before stopping the four
-tasks to be drained (provided that the cluster resources required to do
-this are available). If the maximum is 100%, then replacement tasks
+tasks to be drained, provided that the cluster resources required to do
+this are available. If the maximum is 100%, then replacement tasks
 can't start until the draining tasks have stopped.
 
 =back
 
 Any C<PENDING> or C<RUNNING> tasks that do not belong to a service are
-not affected; you must wait for them to finish or stop them manually.
+not affected. You must wait for them to finish or stop them manually.
 
 A container instance has completed draining when it has no more
 C<RUNNING> tasks. You can verify this using ListTasks.
@@ -947,21 +1700,67 @@ When you set a container instance to C<ACTIVE>, the Amazon ECS
 scheduler can begin scheduling tasks on the instance again.
 
 
-=head2 UpdateService(Service => Str, [Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, DesiredCount => Int, ForceNewDeployment => Bool, NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>, PlatformVersion => Str, TaskDefinition => Str])
+=head2 UpdateService
+
+=over
+
+=item Service => Str
+
+=item [Cluster => Str]
+
+=item [DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>]
+
+=item [DesiredCount => Int]
+
+=item [ForceNewDeployment => Bool]
+
+=item [HealthCheckGracePeriodSeconds => Int]
+
+=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+
+=item [PlatformVersion => Str]
+
+=item [TaskDefinition => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ECS::UpdateService>
 
 Returns: a L<Paws::ECS::UpdateServiceResponse> instance
 
-Modifies the desired count, deployment configuration, network
-configuration, or task definition used in a service.
+Modifies the parameters of a service.
+
+For services using the rolling update (C<ECS>) deployment controller,
+the desired count, deployment configuration, network configuration, or
+task definition used can be updated.
+
+For services using the blue/green (C<CODE_DEPLOY>) deployment
+controller, only the desired count, deployment configuration, and
+health check grace period can be updated using this API. If the network
+configuration, platform version, or task definition need to be updated,
+a new AWS CodeDeploy deployment should be created. For more
+information, see CreateDeployment
+(https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html)
+in the I<AWS CodeDeploy API Reference>.
 
 You can add to or subtract from the number of instantiations of a task
 definition in a service by specifying the cluster that the service is
 running in and a new C<desiredCount> parameter.
 
-You can use UpdateService to modify your task definition and deploy a
-new version of your service.
+If you have updated the Docker image of your application, you can
+create a new task definition with that image and deploy it to your
+service. The service scheduler uses the minimum healthy percent and
+maximum percent parameters (in the service's deployment configuration)
+to determine the deployment strategy.
+
+If your updated Docker image uses the same tag as what is in the
+existing task definition for your service (for example,
+C<my_image:latest>), you do not need to create a new revision of your
+task definition. You can update the service using the
+C<forceNewDeployment> option. The new tasks launched by the deployment
+pull the current image/tag combination from your repository when they
+start.
 
 You can also update the deployment configuration of a service. When a
 deployment is triggered by updating the task definition of a service,
@@ -1068,6 +1867,30 @@ largest number of running tasks for this service.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 ListAllAccountSettings(sub { },[EffectiveSettings => Bool, MaxResults => Int, Name => Str, NextToken => Str, PrincipalArn => Str, Value => Str])
+
+=head2 ListAllAccountSettings([EffectiveSettings => Bool, MaxResults => Int, Name => Str, NextToken => Str, PrincipalArn => Str, Value => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - settings, passing the object as the first parameter, and the string 'settings' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListAccountSettingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAttributes(sub { },TargetType => Str, [AttributeName => Str, AttributeValue => Str, Cluster => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAttributes(TargetType => Str, [AttributeName => Str, AttributeValue => Str, Cluster => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - attributes, passing the object as the first parameter, and the string 'attributes' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListAttributesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllClusters(sub { },[MaxResults => Int, NextToken => Str])
 
 =head2 ListAllClusters([MaxResults => Int, NextToken => Str])
@@ -1092,9 +1915,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ECS::ListContainerInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllServices(sub { },[Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllServices(sub { },[Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str, SchedulingStrategy => Str])
 
-=head2 ListAllServices([Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllServices([Cluster => Str, LaunchType => Str, MaxResults => Int, NextToken => Str, SchedulingStrategy => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

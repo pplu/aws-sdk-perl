@@ -19,17 +19,29 @@ Paws::DirectConnect::CreateDirectConnectGateway - Arguments for method CreateDir
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDirectConnectGateway on the 
-AWS Direct Connect service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateDirectConnectGateway on the
+L<AWS Direct Connect|Paws::DirectConnect> service. Use the attributes of this class
 as arguments to method CreateDirectConnectGateway.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDirectConnectGateway.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDirectConnectGateway(Att1 => $value1, Att2 => $value2, ...);
+    my $directconnect = Paws->service('DirectConnect');
+    my $CreateDirectConnectGatewayResult =
+      $directconnect->CreateDirectConnectGateway(
+      DirectConnectGatewayName => 'MyDirectConnectGatewayName',
+      AmazonSideAsn            => 1,                              # OPTIONAL
+      );
+
+    # Results:
+    my $DirectConnectGateway =
+      $CreateDirectConnectGatewayResult->DirectConnectGateway;
+
+    # Returns a L<Paws::DirectConnect::CreateDirectConnectGatewayResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect/CreateDirectConnectGateway>
 
 =head1 ATTRIBUTES
 
@@ -38,21 +50,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The autonomous system number (ASN) for Border Gateway Protocol (BGP) to
 be configured on the Amazon side of the connection. The ASN must be in
-the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294
-
-Example: 65200
-
-Default: 64512
+the private range of 64,512 to 65,534 or 4,200,000,000 to
+4,294,967,294. The default is 64512.
 
 
 
 =head2 B<REQUIRED> DirectConnectGatewayName => Str
 
-The name of the direct connect gateway.
-
-Example: "My direct connect gateway"
-
-Default: None
+The name of the Direct Connect gateway.
 
 
 

@@ -2,6 +2,7 @@
 package Paws::Lightsail::CreateKeyPair;
   use Moose;
   has KeyPairName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPairName' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -18,17 +19,36 @@ Paws::Lightsail::CreateKeyPair - Arguments for method CreateKeyPair on L<Paws::L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateKeyPair on the 
-Amazon Lightsail service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateKeyPair on the
+L<Amazon Lightsail|Paws::Lightsail> service. Use the attributes of this class
 as arguments to method CreateKeyPair.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateKeyPair.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateKeyPair(Att1 => $value1, Att2 => $value2, ...);
+    my $lightsail = Paws->service('Lightsail');
+    my $CreateKeyPairResult = $lightsail->CreateKeyPair(
+      KeyPairName => 'MyResourceName',
+      Tags        => [
+        {
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
+    );
+
+    # Results:
+    my $KeyPair          = $CreateKeyPairResult->KeyPair;
+    my $Operation        = $CreateKeyPairResult->Operation;
+    my $PrivateKeyBase64 = $CreateKeyPairResult->PrivateKeyBase64;
+    my $PublicKeyBase64  = $CreateKeyPairResult->PublicKeyBase64;
+
+    # Returns a L<Paws::Lightsail::CreateKeyPairResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/CreateKeyPair>
 
 =head1 ATTRIBUTES
 
@@ -36,6 +56,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> KeyPairName => Str
 
 The name for your new key pair.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the C<tag resource>
+operation.
 
 
 

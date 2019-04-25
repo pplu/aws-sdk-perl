@@ -1,6 +1,6 @@
 package Paws::MediaLive::TimecodeConfig;
   use Moose;
-  has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest']);
+  has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest'], required => 1);
   has SyncThreshold => (is => 'ro', isa => 'Int', request_name => 'syncThreshold', traits => ['NameInRequest']);
 1;
 
@@ -37,7 +37,7 @@ Placeholder documentation for TimecodeConfig
 =head1 ATTRIBUTES
 
 
-=head2 Source => Str
+=head2 B<REQUIRED> Source => Str
 
   Identifies the source for the timecode that will be associated with the
 events outputs. -Embedded (embedded): Initialize the output timecode

@@ -1,6 +1,7 @@
 package Paws::LexModels;
   use Moose;
   sub service { 'models.lex' }
+  sub signing_name { 'lex' }
   sub version { '2017-04-19' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -128,6 +129,11 @@ package Paws::LexModels;
     my $call_object = $self->new_with_coercions('Paws::LexModels::GetExport', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetImport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexModels::GetImport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetIntent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LexModels::GetIntent', @_);
@@ -183,10 +189,245 @@ package Paws::LexModels;
     my $call_object = $self->new_with_coercions('Paws::LexModels::PutSlotType', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartImport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexModels::StartImport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
+  sub GetAllBotAliases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBotAliases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBotAliases(@_, nextToken => $next_result->nextToken);
+        push @{ $result->BotAliases }, @{ $next_result->BotAliases };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'BotAliases') foreach (@{ $result->BotAliases });
+        $result = $self->GetBotAliases(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'BotAliases') foreach (@{ $result->BotAliases });
+    }
+
+    return undef
+  }
+  sub GetAllBotChannelAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBotChannelAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBotChannelAssociations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->botChannelAssociations }, @{ $next_result->botChannelAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'botChannelAssociations') foreach (@{ $result->botChannelAssociations });
+        $result = $self->GetBotChannelAssociations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'botChannelAssociations') foreach (@{ $result->botChannelAssociations });
+    }
+
+    return undef
+  }
+  sub GetAllBots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBots(@_, nextToken => $next_result->nextToken);
+        push @{ $result->bots }, @{ $next_result->bots };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'bots') foreach (@{ $result->bots });
+        $result = $self->GetBots(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'bots') foreach (@{ $result->bots });
+    }
+
+    return undef
+  }
+  sub GetAllBotVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBotVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBotVersions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->bots }, @{ $next_result->bots };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'bots') foreach (@{ $result->bots });
+        $result = $self->GetBotVersions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'bots') foreach (@{ $result->bots });
+    }
+
+    return undef
+  }
+  sub GetAllBuiltinIntents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBuiltinIntents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBuiltinIntents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->intents }, @{ $next_result->intents };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'intents') foreach (@{ $result->intents });
+        $result = $self->GetBuiltinIntents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'intents') foreach (@{ $result->intents });
+    }
+
+    return undef
+  }
+  sub GetAllBuiltinSlotTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBuiltinSlotTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBuiltinSlotTypes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->slotTypes }, @{ $next_result->slotTypes };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+        $result = $self->GetBuiltinSlotTypes(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+    }
+
+    return undef
+  }
+  sub GetAllIntents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetIntents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetIntents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->intents }, @{ $next_result->intents };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'intents') foreach (@{ $result->intents });
+        $result = $self->GetIntents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'intents') foreach (@{ $result->intents });
+    }
+
+    return undef
+  }
+  sub GetAllIntentVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetIntentVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetIntentVersions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->intents }, @{ $next_result->intents };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'intents') foreach (@{ $result->intents });
+        $result = $self->GetIntentVersions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'intents') foreach (@{ $result->intents });
+    }
+
+    return undef
+  }
+  sub GetAllSlotTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetSlotTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetSlotTypes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->slotTypes }, @{ $next_result->slotTypes };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+        $result = $self->GetSlotTypes(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+    }
+
+    return undef
+  }
+  sub GetAllSlotTypeVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetSlotTypeVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetSlotTypeVersions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->slotTypes }, @{ $next_result->slotTypes };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+        $result = $self->GetSlotTypeVersions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'slotTypes') foreach (@{ $result->slotTypes });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateBotVersion CreateIntentVersion CreateSlotTypeVersion DeleteBot DeleteBotAlias DeleteBotChannelAssociation DeleteBotVersion DeleteIntent DeleteIntentVersion DeleteSlotType DeleteSlotTypeVersion DeleteUtterances GetBot GetBotAlias GetBotAliases GetBotChannelAssociation GetBotChannelAssociations GetBots GetBotVersions GetBuiltinIntent GetBuiltinIntents GetBuiltinSlotTypes GetExport GetIntent GetIntents GetIntentVersions GetSlotType GetSlotTypes GetSlotTypeVersions GetUtterancesView PutBot PutBotAlias PutIntent PutSlotType / }
+  sub operations { qw/CreateBotVersion CreateIntentVersion CreateSlotTypeVersion DeleteBot DeleteBotAlias DeleteBotChannelAssociation DeleteBotVersion DeleteIntent DeleteIntentVersion DeleteSlotType DeleteSlotTypeVersion DeleteUtterances GetBot GetBotAlias GetBotAliases GetBotChannelAssociation GetBotChannelAssociations GetBots GetBotVersions GetBuiltinIntent GetBuiltinIntents GetBuiltinSlotTypes GetExport GetImport GetIntent GetIntents GetIntentVersions GetSlotType GetSlotTypes GetSlotTypeVersions GetUtterancesView PutBot PutBotAlias PutIntent PutSlotType StartImport / }
 
 1;
 
@@ -220,9 +461,21 @@ Amazon Lex is an AWS service for building conversational voice and text
 interfaces. Use these actions to create, update, and delete
 conversational bots for new and existing client applications.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/lex/>
+
+
 =head1 METHODS
 
-=head2 CreateBotVersion(Name => Str, [Checksum => Str])
+=head2 CreateBotVersion
+
+=over
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::CreateBotVersion>
 
@@ -245,7 +498,16 @@ This operation requires permission for the C<lex:CreateBotVersion>
 action.
 
 
-=head2 CreateIntentVersion(Name => Str, [Checksum => Str])
+=head2 CreateIntentVersion
+
+=over
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::CreateIntentVersion>
 
@@ -268,7 +530,16 @@ This operation requires permissions to perform the
 C<lex:CreateIntentVersion> action.
 
 
-=head2 CreateSlotTypeVersion(Name => Str, [Checksum => Str])
+=head2 CreateSlotTypeVersion
+
+=over
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::CreateSlotTypeVersion>
 
@@ -291,7 +562,14 @@ This operation requires permissions for the
 C<lex:CreateSlotTypeVersion> action.
 
 
-=head2 DeleteBot(Name => Str)
+=head2 DeleteBot
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteBot>
 
@@ -311,7 +589,16 @@ successful.
 This operation requires permissions for the C<lex:DeleteBot> action.
 
 
-=head2 DeleteBotAlias(BotName => Str, Name => Str)
+=head2 DeleteBotAlias
+
+=over
+
+=item BotName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteBotAlias>
 
@@ -329,7 +616,18 @@ delete the referring association until the C<DeleteBotAlias> operation
 is successful.
 
 
-=head2 DeleteBotChannelAssociation(BotAlias => Str, BotName => Str, Name => Str)
+=head2 DeleteBotChannelAssociation
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteBotChannelAssociation>
 
@@ -342,7 +640,16 @@ This operation requires permission for the
 C<lex:DeleteBotChannelAssociation> action.
 
 
-=head2 DeleteBotVersion(Name => Str, Version => Str)
+=head2 DeleteBotVersion
+
+=over
+
+=item Name => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteBotVersion>
 
@@ -355,7 +662,14 @@ This operation requires permissions for the C<lex:DeleteBotVersion>
 action.
 
 
-=head2 DeleteIntent(Name => Str)
+=head2 DeleteIntent
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteIntent>
 
@@ -379,7 +693,16 @@ C<DeleteIntent> is successful.
 This operation requires permission for the C<lex:DeleteIntent> action.
 
 
-=head2 DeleteIntentVersion(Name => Str, Version => Str)
+=head2 DeleteIntentVersion
+
+=over
+
+=item Name => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteIntentVersion>
 
@@ -392,7 +715,14 @@ This operation requires permissions for the C<lex:DeleteIntentVersion>
 action.
 
 
-=head2 DeleteSlotType(Name => Str)
+=head2 DeleteSlotType
+
+=over
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteSlotType>
 
@@ -417,7 +747,16 @@ This operation requires permission for the C<lex:DeleteSlotType>
 action.
 
 
-=head2 DeleteSlotTypeVersion(Name => Str, Version => Str)
+=head2 DeleteSlotTypeVersion
+
+=over
+
+=item Name => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteSlotTypeVersion>
 
@@ -430,7 +769,16 @@ This operation requires permissions for the
 C<lex:DeleteSlotTypeVersion> action.
 
 
-=head2 DeleteUtterances(BotName => Str, UserId => Str)
+=head2 DeleteUtterances
+
+=over
+
+=item BotName => Str
+
+=item UserId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteUtterances>
 
@@ -438,11 +786,10 @@ Returns: nothing
 
 Deletes stored utterances.
 
-Amazon Lex stores the utterances that users send to your bot unless the
-C<childDirected> field in the bot is set to C<true>. Utterances are
-stored for 15 days for use with the GetUtterancesView operation, and
-then stored indefinately for use in improving the ability of your bot
-to respond to user input.
+Amazon Lex stores the utterances that users send to your bot.
+Utterances are stored for 15 days for use with the GetUtterancesView
+operation, and then stored indefinitely for use in improving the
+ability of your bot to respond to user input.
 
 Use the C<DeleteStoredUtterances> operation to manually delete stored
 utterances for a specific user.
@@ -451,7 +798,16 @@ This operation requires permissions for the C<lex:DeleteUtterances>
 action.
 
 
-=head2 GetBot(Name => Str, VersionOrAlias => Str)
+=head2 GetBot
+
+=over
+
+=item Name => Str
+
+=item VersionOrAlias => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBot>
 
@@ -463,7 +819,16 @@ bot name and the bot version or alias.
 This operation requires permissions for the C<lex:GetBot> action.
 
 
-=head2 GetBotAlias(BotName => Str, Name => Str)
+=head2 GetBotAlias
+
+=over
+
+=item BotName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBotAlias>
 
@@ -475,7 +840,20 @@ about aliases, see versioning-aliases.
 This operation requires permissions for the C<lex:GetBotAlias> action.
 
 
-=head2 GetBotAliases(BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+=head2 GetBotAliases
+
+=over
+
+=item BotName => Str
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBotAliases>
 
@@ -487,7 +865,18 @@ This operation requires permissions for the C<lex:GetBotAliases>
 action.
 
 
-=head2 GetBotChannelAssociation(BotAlias => Str, BotName => Str, Name => Str)
+=head2 GetBotChannelAssociation
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item Name => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBotChannelAssociation>
 
@@ -500,7 +889,22 @@ This operation requires permissions for the
 C<lex:GetBotChannelAssociation> action.
 
 
-=head2 GetBotChannelAssociations(BotAlias => Str, BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+=head2 GetBotChannelAssociations
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBotChannelAssociations>
 
@@ -513,7 +917,18 @@ The C<GetBotChannelAssociations> operation requires permissions for the
 C<lex:GetBotChannelAssociations> action.
 
 
-=head2 GetBots([MaxResults => Int, NameContains => Str, NextToken => Str])
+=head2 GetBots
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBots>
 
@@ -539,7 +954,18 @@ information about the C<$LATEST> version of all of your bots.
 This operation requires permission for the C<lex:GetBots> action.
 
 
-=head2 GetBotVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetBotVersions
+
+=over
+
+=item Name => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBotVersions>
 
@@ -560,7 +986,14 @@ This operation requires permissions for the C<lex:GetBotVersions>
 action.
 
 
-=head2 GetBuiltinIntent(Signature => Str)
+=head2 GetBuiltinIntent
+
+=over
+
+=item Signature => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBuiltinIntent>
 
@@ -572,7 +1005,20 @@ This operation requires permission for the C<lex:GetBuiltinIntent>
 action.
 
 
-=head2 GetBuiltinIntents([Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+=head2 GetBuiltinIntents
+
+=over
+
+=item [Locale => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SignatureContains => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBuiltinIntents>
 
@@ -584,7 +1030,20 @@ This operation requires permission for the C<lex:GetBuiltinIntents>
 action.
 
 
-=head2 GetBuiltinSlotTypes([Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+=head2 GetBuiltinSlotTypes
+
+=over
+
+=item [Locale => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SignatureContains => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetBuiltinSlotTypes>
 
@@ -600,7 +1059,20 @@ This operation requires permission for the C<lex:GetBuiltInSlotTypes>
 action.
 
 
-=head2 GetExport(ExportType => Str, Name => Str, ResourceType => Str, Version => Str)
+=head2 GetExport
+
+=over
+
+=item ExportType => Str
+
+=item Name => Str
+
+=item ResourceType => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetExport>
 
@@ -609,7 +1081,33 @@ Returns: a L<Paws::LexModels::GetExportResponse> instance
 Exports the contents of a Amazon Lex resource in a specified format.
 
 
-=head2 GetIntent(Name => Str, Version => Str)
+=head2 GetImport
+
+=over
+
+=item ImportId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LexModels::GetImport>
+
+Returns: a L<Paws::LexModels::GetImportResponse> instance
+
+Gets information about an import job started with the C<StartImport>
+operation.
+
+
+=head2 GetIntent
+
+=over
+
+=item Name => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetIntent>
 
@@ -622,7 +1120,18 @@ This operation requires permissions to perform the C<lex:GetIntent>
 action.
 
 
-=head2 GetIntents([MaxResults => Int, NameContains => Str, NextToken => Str])
+=head2 GetIntents
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetIntents>
 
@@ -647,7 +1156,18 @@ about the C<$LATEST> version of all intents.
 The operation requires permission for the C<lex:GetIntents> action.
 
 
-=head2 GetIntentVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetIntentVersions
+
+=over
+
+=item Name => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetIntentVersions>
 
@@ -668,7 +1188,16 @@ This operation requires permissions for the C<lex:GetIntentVersions>
 action.
 
 
-=head2 GetSlotType(Name => Str, Version => Str)
+=head2 GetSlotType
+
+=over
+
+=item Name => Str
+
+=item Version => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetSlotType>
 
@@ -681,7 +1210,18 @@ type version.
 This operation requires permissions for the C<lex:GetSlotType> action.
 
 
-=head2 GetSlotTypes([MaxResults => Int, NameContains => Str, NextToken => Str])
+=head2 GetSlotTypes
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NameContains => Str]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetSlotTypes>
 
@@ -706,7 +1246,18 @@ about the C<$LATEST> version of all slot types.
 The operation requires permission for the C<lex:GetSlotTypes> action.
 
 
-=head2 GetSlotTypeVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetSlotTypeVersions
+
+=over
+
+=item Name => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetSlotTypeVersions>
 
@@ -727,7 +1278,18 @@ This operation requires permissions for the C<lex:GetSlotTypeVersions>
 action.
 
 
-=head2 GetUtterancesView(BotName => Str, BotVersions => ArrayRef[Str|Undef], StatusType => Str)
+=head2 GetUtterancesView
+
+=over
+
+=item BotName => Str
+
+=item BotVersions => ArrayRef[Str|Undef]
+
+=item StatusType => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::GetUtterancesView>
 
@@ -748,19 +1310,45 @@ After you publish a new version of a bot, you can get information about
 the old version and the new so that you can compare the performance
 across the two versions.
 
-Data is available for the last 15 days. You can request information for
-up to 5 versions in each request. The response contains information
-about a maximum of 100 utterances for each version.
-
-If the bot's C<childDirected> field is set to C<true>, utterances for
-the bot are not stored and cannot be retrieved with the
-C<GetUtterancesView> operation. For more information, see PutBot.
+Utterance statistics are generated once a day. Data is available for
+the last 15 days. You can request information for up to 5 versions in
+each request. The response contains information about a maximum of 100
+utterances for each version.
 
 This operation requires permissions for the C<lex:GetUtterancesView>
 action.
 
 
-=head2 PutBot(ChildDirected => Bool, Locale => Str, Name => Str, [AbortStatement => L<Paws::LexModels::Statement>, Checksum => Str, ClarificationPrompt => L<Paws::LexModels::Prompt>, Description => Str, IdleSessionTTLInSeconds => Int, Intents => ArrayRef[L<Paws::LexModels::Intent>], ProcessBehavior => Str, VoiceId => Str])
+=head2 PutBot
+
+=over
+
+=item ChildDirected => Bool
+
+=item Locale => Str
+
+=item Name => Str
+
+=item [AbortStatement => L<Paws::LexModels::Statement>]
+
+=item [Checksum => Str]
+
+=item [ClarificationPrompt => L<Paws::LexModels::Prompt>]
+
+=item [CreateVersion => Bool]
+
+=item [Description => Str]
+
+=item [IdleSessionTTLInSeconds => Int]
+
+=item [Intents => ArrayRef[L<Paws::LexModels::Intent>]]
+
+=item [ProcessBehavior => Str]
+
+=item [VoiceId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::PutBot>
 
@@ -768,11 +1356,12 @@ Returns: a L<Paws::LexModels::PutBotResponse> instance
 
 Creates an Amazon Lex conversational bot or replaces an existing bot.
 When you create or update a bot you are only required to specify a
-name. You can use this to add intents later, or to remove intents from
-an existing bot. When you create a bot with a name only, the bot is
-created or updated but Amazon Lex returns the C< response C<FAILED>.
-You can build the bot after you add one or more intents. For more
-information about Amazon Lex bots, see how-it-works.>
+name, a locale, and whether the bot is directed toward children under
+age 13. You can use this to add intents later, or to remove intents
+from an existing bot. When you create a bot with the minimum
+information, the bot is created or updated but Amazon Lex returns the
+C< response C<FAILED>. You can build the bot after you add one or more
+intents. For more information about Amazon Lex bots, see how-it-works.>
 
 If you specify the name of an existing bot, the fields in the request
 replace the existing values in the C<$LATEST> version of the bot.
@@ -785,7 +1374,22 @@ This operation requires permissions for the C<lex:PutBot> action. For
 more information, see auth-and-access-control.
 
 
-=head2 PutBotAlias(BotName => Str, BotVersion => Str, Name => Str, [Checksum => Str, Description => Str])
+=head2 PutBotAlias
+
+=over
+
+=item BotName => Str
+
+=item BotVersion => Str
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::PutBotAlias>
 
@@ -799,7 +1403,38 @@ see versioning-aliases.
 This operation requires permissions for the C<lex:PutBotAlias> action.
 
 
-=head2 PutIntent(Name => Str, [Checksum => Str, ConclusionStatement => L<Paws::LexModels::Statement>, ConfirmationPrompt => L<Paws::LexModels::Prompt>, Description => Str, DialogCodeHook => L<Paws::LexModels::CodeHook>, FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>, FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>, ParentIntentSignature => Str, RejectionStatement => L<Paws::LexModels::Statement>, SampleUtterances => ArrayRef[Str|Undef], Slots => ArrayRef[L<Paws::LexModels::Slot>]])
+=head2 PutIntent
+
+=over
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+=item [ConclusionStatement => L<Paws::LexModels::Statement>]
+
+=item [ConfirmationPrompt => L<Paws::LexModels::Prompt>]
+
+=item [CreateVersion => Bool]
+
+=item [Description => Str]
+
+=item [DialogCodeHook => L<Paws::LexModels::CodeHook>]
+
+=item [FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>]
+
+=item [FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>]
+
+=item [ParentIntentSignature => Str]
+
+=item [RejectionStatement => L<Paws::LexModels::Statement>]
+
+=item [SampleUtterances => ArrayRef[Str|Undef]]
+
+=item [Slots => ArrayRef[L<Paws::LexModels::Slot>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::PutIntent>
 
@@ -865,17 +1500,36 @@ example, asking "Do you want to order a drink with your pizza?"
 =back
 
 If you specify an existing intent name to update the intent, Amazon Lex
-replaces the values in the C<$LATEST> version of the slot type with the
+replaces the values in the C<$LATEST> version of the intent with the
 values in the request. Amazon Lex removes fields that you don't provide
 in the request. If you don't specify the required fields, Amazon Lex
-throws an exception.
+throws an exception. When you update the C<$LATEST> version of an
+intent, the C<status> field of any bot that uses the C<$LATEST> version
+of the intent is set to C<NOT_BUILT>.
 
 For more information, see how-it-works.
 
 This operation requires permissions for the C<lex:PutIntent> action.
 
 
-=head2 PutSlotType(Name => Str, [Checksum => Str, Description => Str, EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>], ValueSelectionStrategy => Str])
+=head2 PutSlotType
+
+=over
+
+=item Name => Str
+
+=item [Checksum => Str]
+
+=item [CreateVersion => Bool]
+
+=item [Description => Str]
+
+=item [EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>]]
+
+=item [ValueSelectionStrategy => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexModels::PutSlotType>
 
@@ -891,9 +1545,31 @@ If you specify the name of an existing slot type, the fields in the
 request replace the existing values in the C<$LATEST> version of the
 slot type. Amazon Lex removes the fields that you don't provide in the
 request. If you don't specify required fields, Amazon Lex throws an
-exception.
+exception. When you update the C<$LATEST> version of a slot type, if a
+bot uses the C<$LATEST> version of an intent that contains the slot
+type, the bot's C<status> field is set to C<NOT_BUILT>.
 
 This operation requires permissions for the C<lex:PutSlotType> action.
+
+
+=head2 StartImport
+
+=over
+
+=item MergeStrategy => Str
+
+=item Payload => Str
+
+=item ResourceType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LexModels::StartImport>
+
+Returns: a L<Paws::LexModels::StartImportResponse> instance
+
+Starts a job to import a resource to Amazon Lex.
 
 
 
@@ -901,6 +1577,126 @@ This operation requires permissions for the C<lex:PutSlotType> action.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllBotAliases(sub { },BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+
+=head2 GetAllBotAliases(BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - BotAliases, passing the object as the first parameter, and the string 'BotAliases' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBotAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBotChannelAssociations(sub { },BotAlias => Str, BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+
+=head2 GetAllBotChannelAssociations(BotAlias => Str, BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - botChannelAssociations, passing the object as the first parameter, and the string 'botChannelAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBotChannelAssociationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBots(sub { },[MaxResults => Int, NameContains => Str, NextToken => Str])
+
+=head2 GetAllBots([MaxResults => Int, NameContains => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - bots, passing the object as the first parameter, and the string 'bots' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBotsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBotVersions(sub { },Name => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllBotVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - bots, passing the object as the first parameter, and the string 'bots' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBotVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBuiltinIntents(sub { },[Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+
+=head2 GetAllBuiltinIntents([Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - intents, passing the object as the first parameter, and the string 'intents' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBuiltinIntentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBuiltinSlotTypes(sub { },[Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+
+=head2 GetAllBuiltinSlotTypes([Locale => Str, MaxResults => Int, NextToken => Str, SignatureContains => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - slotTypes, passing the object as the first parameter, and the string 'slotTypes' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetBuiltinSlotTypesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllIntents(sub { },[MaxResults => Int, NameContains => Str, NextToken => Str])
+
+=head2 GetAllIntents([MaxResults => Int, NameContains => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - intents, passing the object as the first parameter, and the string 'intents' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetIntentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllIntentVersions(sub { },Name => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllIntentVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - intents, passing the object as the first parameter, and the string 'intents' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetIntentVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllSlotTypes(sub { },[MaxResults => Int, NameContains => Str, NextToken => Str])
+
+=head2 GetAllSlotTypes([MaxResults => Int, NameContains => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - slotTypes, passing the object as the first parameter, and the string 'slotTypes' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetSlotTypesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllSlotTypeVersions(sub { },Name => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllSlotTypeVersions(Name => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - slotTypes, passing the object as the first parameter, and the string 'slotTypes' as the second parameter 
+
+If not, it will return a a L<Paws::LexModels::GetSlotTypeVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

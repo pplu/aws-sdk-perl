@@ -1,8 +1,10 @@
 package Paws::CloudFormation::StackSetOperation;
   use Moose;
   has Action => (is => 'ro', isa => 'Str');
+  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
   has CreationTimestamp => (is => 'ro', isa => 'Str');
   has EndTimestamp => (is => 'ro', isa => 'Str');
+  has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
   has RetainStacks => (is => 'ro', isa => 'Bool');
@@ -52,6 +54,18 @@ operations affect both the stack set itself, as well as I<all>
 associated stack set instances.
 
 
+=head2 AdministrationRoleARN => Str
+
+  The Amazon Resource Number (ARN) of the IAM role used to perform this
+stack set operation.
+
+Use customized administrator roles to control which users or groups can
+manage specific stack sets within the same administrator account. For
+more information, see Define Permissions for Multiple Administrators
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+in the I<AWS CloudFormation User Guide>.
+
+
 =head2 CreationTimestamp => Str
 
   The time at which the operation was initiated. Note that the creation
@@ -68,6 +82,15 @@ the first stacks.
 and regions specified. Note that this doesn't necessarily mean that the
 stack set operation was successful, or even attempted, in each account
 or region.
+
+
+=head2 ExecutionRoleName => Str
+
+  The name of the IAM execution role used to create or update the stack
+set.
+
+Use customized execution roles to control which stack resources users
+and groups can include in their stack sets.
 
 
 =head2 OperationId => Str

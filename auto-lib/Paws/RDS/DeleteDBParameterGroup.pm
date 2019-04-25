@@ -18,17 +18,26 @@ Paws::RDS::DeleteDBParameterGroup - Arguments for method DeleteDBParameterGroup 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteDBParameterGroup on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteDBParameterGroup on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method DeleteDBParameterGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDBParameterGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteDBParameterGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To delete a DB parameter group
+    # The following example deletes a DB parameter group.
+    $rds->DeleteDBParameterGroup(
+      {
+        'DBParameterGroupName' => 'mydbparamgroup3'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/DeleteDBParameterGroup>
 
 =head1 ATTRIBUTES
 
@@ -51,7 +60,7 @@ You can't delete a default DB parameter group
 
 =item *
 
-Cannot be associated with any DB instances
+Can't be associated with any DB instances
 
 =back
 

@@ -4,6 +4,7 @@ package Paws::MediaConvert::Mpeg2Settings;
   has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
   has CodecLevel => (is => 'ro', isa => 'Str', request_name => 'codecLevel', traits => ['NameInRequest']);
   has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
+  has DynamicSubGop => (is => 'ro', isa => 'Str', request_name => 'dynamicSubGop', traits => ['NameInRequest']);
   has FramerateControl => (is => 'ro', isa => 'Str', request_name => 'framerateControl', traits => ['NameInRequest']);
   has FramerateConversionAlgorithm => (is => 'ro', isa => 'Str', request_name => 'framerateConversionAlgorithm', traits => ['NameInRequest']);
   has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest']);
@@ -73,10 +74,9 @@ Required when you set (Codec) under
 
 =head2 Bitrate => Int
 
-  Average bitrate in bits/second. Required for VBR, CBR, and ABR. Five
-megabits can be entered as 5000000 or 5m. Five hundred kilobits can be
-entered as 500000 or 0.5m. For MS Smooth outputs, bitrates must be
-unique when rounded down to the nearest multiple of 1000.
+  Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth
+outputs, bitrates must be unique when rounded down to the nearest
+multiple of 1000.
 
 
 =head2 CodecLevel => Str
@@ -87,6 +87,16 @@ unique when rounded down to the nearest multiple of 1000.
 =head2 CodecProfile => Str
 
   
+
+
+=head2 DynamicSubGop => Str
+
+  Choose Adaptive to improve subjective video quality for high-motion
+content. This will cause the service to use fewer B-frames (which infer
+information based on other frames) for high-motion portions of the
+video and more B-frames for low-motion portions. The maximum number of
+B-frames is limited by the value you provide for the setting B frames
+between reference frames (numberBFramesBetweenReferenceFrames).
 
 
 =head2 FramerateControl => Str
@@ -101,12 +111,12 @@ unique when rounded down to the nearest multiple of 1000.
 
 =head2 FramerateDenominator => Int
 
-  Framerate denominator.
+  Frame rate denominator.
 
 
 =head2 FramerateNumerator => Int
 
-  Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 =
+  Frame rate numerator - frame rate is a fraction, e.g. 24000 / 1001 =
 23.976 fps.
 
 
@@ -137,8 +147,8 @@ model).
 
 =head2 HrdBufferSize => Int
 
-  Size of buffer (HRD buffer model). Five megabits can be entered as
-5000000 or 5m. Five hundred kilobits can be entered as 500000 or 0.5m.
+  Size of buffer (HRD buffer model) in bits. For example, enter five
+megabits as 5000000.
 
 
 =head2 InterlaceMode => Str
@@ -153,9 +163,8 @@ model).
 
 =head2 MaxBitrate => Int
 
-  Maximum bitrate in bits/second (for VBR mode only). Five megabits can
-be entered as 5000000 or 5m. Five hundred kilobits can be entered as
-500000 or 0.5m.
+  Maximum bitrate in bits/second. For example, enter five megabits per
+second as 5000000.
 
 
 =head2 MinIInterval => Int

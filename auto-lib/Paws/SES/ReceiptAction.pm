@@ -86,7 +86,7 @@ publishes a notification to Amazon SNS.
 =head2 WorkmailAction => L<Paws::SES::WorkmailAction>
 
   Calls Amazon WorkMail and, optionally, publishes a notification to
-Amazon SNS.
+Amazon Amazon SNS.
 
 
 

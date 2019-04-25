@@ -19,17 +19,27 @@ Paws::EC2::MonitorInstances - Arguments for method MonitorInstances on L<Paws::E
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method MonitorInstances on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method MonitorInstances on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method MonitorInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to MonitorInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->MonitorInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $MonitorInstancesResult = $ec2->MonitorInstances(
+      InstanceIds => [ 'MyString', ... ],
+      DryRun      => 1,                     # OPTIONAL
+    );
+
+    # Results:
+    my $InstanceMonitorings = $MonitorInstancesResult->InstanceMonitorings;
+
+    # Returns a L<Paws::EC2::MonitorInstancesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/MonitorInstances>
 
 =head1 ATTRIBUTES
 

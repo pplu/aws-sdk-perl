@@ -33,17 +33,67 @@ Paws::S3::HeadObject - Arguments for method HeadObject on L<Paws::S3>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method HeadObject on the 
-Amazon Simple Storage Service service. Use the attributes of this class
+This class represents the parameters used for calling the method HeadObject on the
+L<Amazon Simple Storage Service|Paws::S3> service. Use the attributes of this class
 as arguments to method HeadObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to HeadObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->HeadObject(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $HeadObjectOutput = $s3->HeadObject(
+      Bucket               => 'MyBucketName',
+      Key                  => 'MyObjectKey',
+      IfMatch              => 'MyIfMatch',                 # OPTIONAL
+      IfModifiedSince      => '1970-01-01T01:00:00',       # OPTIONAL
+      IfNoneMatch          => 'MyIfNoneMatch',             # OPTIONAL
+      IfUnmodifiedSince    => '1970-01-01T01:00:00',       # OPTIONAL
+      PartNumber           => 1,                           # OPTIONAL
+      Range                => 'MyRange',                   # OPTIONAL
+      RequestPayer         => 'requester',                 # OPTIONAL
+      SSECustomerAlgorithm => 'MySSECustomerAlgorithm',    # OPTIONAL
+      SSECustomerKey       => 'MySSECustomerKey',          # OPTIONAL
+      SSECustomerKeyMD5    => 'MySSECustomerKeyMD5',       # OPTIONAL
+      VersionId            => 'MyObjectVersionId',         # OPTIONAL
+    );
+
+    # Results:
+    my $AcceptRanges       = $HeadObjectOutput->AcceptRanges;
+    my $CacheControl       = $HeadObjectOutput->CacheControl;
+    my $ContentDisposition = $HeadObjectOutput->ContentDisposition;
+    my $ContentEncoding    = $HeadObjectOutput->ContentEncoding;
+    my $ContentLanguage    = $HeadObjectOutput->ContentLanguage;
+    my $ContentLength      = $HeadObjectOutput->ContentLength;
+    my $ContentType        = $HeadObjectOutput->ContentType;
+    my $DeleteMarker       = $HeadObjectOutput->DeleteMarker;
+    my $ETag               = $HeadObjectOutput->ETag;
+    my $Expiration         = $HeadObjectOutput->Expiration;
+    my $Expires            = $HeadObjectOutput->Expires;
+    my $LastModified       = $HeadObjectOutput->LastModified;
+    my $Metadata           = $HeadObjectOutput->Metadata;
+    my $MissingMeta        = $HeadObjectOutput->MissingMeta;
+    my $ObjectLockLegalHoldStatus =
+      $HeadObjectOutput->ObjectLockLegalHoldStatus;
+    my $ObjectLockMode = $HeadObjectOutput->ObjectLockMode;
+    my $ObjectLockRetainUntilDate =
+      $HeadObjectOutput->ObjectLockRetainUntilDate;
+    my $PartsCount              = $HeadObjectOutput->PartsCount;
+    my $ReplicationStatus       = $HeadObjectOutput->ReplicationStatus;
+    my $RequestCharged          = $HeadObjectOutput->RequestCharged;
+    my $Restore                 = $HeadObjectOutput->Restore;
+    my $SSECustomerAlgorithm    = $HeadObjectOutput->SSECustomerAlgorithm;
+    my $SSECustomerKeyMD5       = $HeadObjectOutput->SSECustomerKeyMD5;
+    my $SSEKMSKeyId             = $HeadObjectOutput->SSEKMSKeyId;
+    my $ServerSideEncryption    = $HeadObjectOutput->ServerSideEncryption;
+    my $StorageClass            = $HeadObjectOutput->StorageClass;
+    my $VersionId               = $HeadObjectOutput->VersionId;
+    my $WebsiteRedirectLocation = $HeadObjectOutput->WebsiteRedirectLocation;
+
+    # Returns a L<Paws::S3::HeadObjectOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/HeadObject>
 
 =head1 ATTRIBUTES
 

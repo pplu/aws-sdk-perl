@@ -19,17 +19,32 @@ Paws::WAFRegional::CreateXssMatchSet - Arguments for method CreateXssMatchSet on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateXssMatchSet on the 
-AWS WAF Regional service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateXssMatchSet on the
+L<AWS WAF Regional|Paws::WAFRegional> service. Use the attributes of this class
 as arguments to method CreateXssMatchSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateXssMatchSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateXssMatchSet(Att1 => $value1, Att2 => $value2, ...);
+    my $waf-regional = Paws->service('WAFRegional');
+    # To create an XSS match set
+    # The following example creates an XSS match set named MySampleXssMatchSet.
+    my $CreateXssMatchSetResponse = $waf -regional->CreateXssMatchSet(
+      {
+        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+        'Name'        => 'MySampleXssMatchSet'
+      }
+    );
+
+    # Results:
+    my $ChangeToken = $CreateXssMatchSetResponse->ChangeToken;
+    my $XssMatchSet = $CreateXssMatchSetResponse->XssMatchSet;
+
+    # Returns a L<Paws::WAFRegional::CreateXssMatchSetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf-regional/CreateXssMatchSet>
 
 =head1 ATTRIBUTES
 

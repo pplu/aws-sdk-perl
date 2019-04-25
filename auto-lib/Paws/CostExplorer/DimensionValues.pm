@@ -49,6 +49,11 @@ your results. For example, C<AZ> returns a list of Availability Zones.
   The metadata values that you can use to filter and group your results.
 You can use C<GetDimensionValues> to find specific values.
 
+Valid values for the C<SERVICE> dimension are C<Amazon Elastic Compute
+Cloud - Compute>, C<Amazon Elasticsearch Service>, C<Amazon
+ElastiCache>, C<Amazon Redshift>, and C<Amazon Relational Database
+Service>.
+
 
 
 =head1 SEE ALSO

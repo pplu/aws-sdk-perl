@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::GetUsagePlan;
   use Moose;
-  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usagePlanId', required => 1);
+  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usageplanId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -19,24 +19,40 @@ Paws::ApiGateway::GetUsagePlan - Arguments for method GetUsagePlan on L<Paws::Ap
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetUsagePlan on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method GetUsagePlan on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method GetUsagePlan.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUsagePlan.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetUsagePlan(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $UsagePlan = $apigateway->GetUsagePlan(
+      UsagePlanId => 'MyString',
+
+    );
+
+    # Results:
+    my $ApiStages   = $UsagePlan->ApiStages;
+    my $Description = $UsagePlan->Description;
+    my $Id          = $UsagePlan->Id;
+    my $Name        = $UsagePlan->Name;
+    my $ProductCode = $UsagePlan->ProductCode;
+    my $Quota       = $UsagePlan->Quota;
+    my $Throttle    = $UsagePlan->Throttle;
+
+    # Returns a L<Paws::ApiGateway::UsagePlan> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetUsagePlan>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> UsagePlanId => Str
 
-The identifier of the UsagePlan resource to be retrieved.
+[Required] The identifier of the UsagePlan resource to be retrieved.
 
 
 

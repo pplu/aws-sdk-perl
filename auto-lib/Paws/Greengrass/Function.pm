@@ -33,24 +33,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on function
+Information about a Lambda function.
 
 =head1 ATTRIBUTES
 
 
 =head2 FunctionArn => Str
 
-  Arn of the Lambda function.
+  The ARN of the Lambda function.
 
 
 =head2 FunctionConfiguration => L<Paws::Greengrass::FunctionConfiguration>
 
-  Configuration of the function
+  The configuration of the Lambda function.
 
 
 =head2 Id => Str
 
-  Id of the function in this version.
+  A descriptive or arbitrary ID for the function. This value must be
+unique within the function definition version. Max length is 128
+characters with pattern ''[a-zA-Z0-9:_-]+''.
 
 
 

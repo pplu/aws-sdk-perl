@@ -50,7 +50,7 @@ Information about a request operation.
 
 =head2 CreatedTime => Str
 
-  The UTC timestamp of the creation time.
+  The UTC time stamp of the creation time.
 
 
 =head2 PathId => Str
@@ -75,7 +75,8 @@ Information about a request operation.
 
 =head2 ProvisionedProductType => Str
 
-  The type of provisioned product. The supported value is C<CFN_STACK>.
+  The type of provisioned product. The supported values are C<CFN_STACK>
+and C<CFN_STACKSET>.
 
 
 =head2 ProvisioningArtifactId => Str
@@ -85,7 +86,7 @@ Information about a request operation.
 
 =head2 RecordErrors => ArrayRef[L<Paws::ServiceCatalog::RecordError>]
 
-  The errors that occurred while processing the request.
+  The errors that occurred.
 
 
 =head2 RecordId => Str
@@ -95,12 +96,12 @@ Information about a request operation.
 
 =head2 RecordTags => ArrayRef[L<Paws::ServiceCatalog::RecordTag>]
 
-  The tags associated with this record.
+  One or more tags.
 
 
 =head2 RecordType => Str
 
-  The record type for this record.
+  The record type.
 
 =over
 

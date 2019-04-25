@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 To insert ID3 tags in your output, specify two values. Use ID3 tag
 (Id3) to specify the base 64 encoded string and use Timecode (TimeCode)
 to specify the time when the tag should be inserted. To insert multiple
-ID3 tags in your output, create mulitple instances of ID3 insertion
+ID3 tags in your output, create multiple instances of ID3 insertion
 (Id3Insertion).
 
 =head1 ATTRIBUTES

@@ -6,10 +6,13 @@ package Paws::MediaLive::Channel;
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', request_name => 'encoderSettings', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', request_name => 'inputAttachments', traits => ['NameInRequest']);
+  has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', request_name => 'inputSpecification', traits => ['NameInRequest']);
+  has LogLevel => (is => 'ro', isa => 'Str', request_name => 'logLevel', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', request_name => 'pipelinesRunningCount', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +32,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::Channel object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., State => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -77,6 +80,16 @@ one destination per packager.
   List of input attachments for channel.
 
 
+=head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
+
+  
+
+
+=head2 LogLevel => Str
+
+  The log level being written to CloudWatch Logs.
+
+
 =head2 Name => Str
 
   The name of the channel. (user-mutable)
@@ -96,6 +109,11 @@ Channel.
 =head2 State => Str
 
   
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+  A collection of key-value pairs.
 
 
 

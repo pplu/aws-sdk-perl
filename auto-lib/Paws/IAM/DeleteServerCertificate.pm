@@ -18,17 +18,22 @@ Paws::IAM::DeleteServerCertificate - Arguments for method DeleteServerCertificat
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteServerCertificate on the 
-AWS Identity and Access Management service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteServerCertificate on the
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method DeleteServerCertificate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteServerCertificate.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteServerCertificate(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    $iam->DeleteServerCertificate(
+      ServerCertificateName => 'MyserverCertificateNameType',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/DeleteServerCertificate>
 
 =head1 ATTRIBUTES
 
@@ -37,10 +42,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the server certificate you want to delete.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 

@@ -43,7 +43,7 @@ An attribute that is associated with the Facet.
 
   A facet attribute consists of either a definition or a reference. This
 structure contains the attribute definition. See Attribute References
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html)
 for more information.
 
 
@@ -51,7 +51,7 @@ for more information.
 
   An attribute reference that is associated with the attribute. See
 Attribute References
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html)
 for more information.
 
 

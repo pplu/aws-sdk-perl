@@ -22,17 +22,30 @@ Paws::Athena::CreateNamedQuery - Arguments for method CreateNamedQuery on L<Paws
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateNamedQuery on the 
-Amazon Athena service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateNamedQuery on the
+L<Amazon Athena|Paws::Athena> service. Use the attributes of this class
 as arguments to method CreateNamedQuery.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateNamedQuery.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateNamedQuery(Att1 => $value1, Att2 => $value2, ...);
+    my $athena = Paws->service('Athena');
+    my $CreateNamedQueryOutput = $athena->CreateNamedQuery(
+      Database           => 'MyDatabaseString',
+      Name               => 'MyNameString',
+      QueryString        => 'MyQueryString',
+      ClientRequestToken => 'MyIdempotencyToken',     # OPTIONAL
+      Description        => 'MyDescriptionString',    # OPTIONAL
+    );
+
+    # Results:
+    my $NamedQueryId = $CreateNamedQueryOutput->NamedQueryId;
+
+    # Returns a L<Paws::Athena::CreateNamedQueryOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/athena/CreateNamedQuery>
 
 =head1 ATTRIBUTES
 

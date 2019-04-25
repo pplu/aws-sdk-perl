@@ -21,17 +21,29 @@ Paws::ElasticTranscoder::ListJobsByPipeline - Arguments for method ListJobsByPip
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListJobsByPipeline on the 
-Amazon Elastic Transcoder service. Use the attributes of this class
+This class represents the parameters used for calling the method ListJobsByPipeline on the
+L<Amazon Elastic Transcoder|Paws::ElasticTranscoder> service. Use the attributes of this class
 as arguments to method ListJobsByPipeline.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListJobsByPipeline.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListJobsByPipeline(Att1 => $value1, Att2 => $value2, ...);
+    my $elastictranscoder = Paws->service('ElasticTranscoder');
+    my $ListJobsByPipelineResponse = $elastictranscoder->ListJobsByPipeline(
+      PipelineId => 'MyId',
+      Ascending  => 'MyAscending',    # OPTIONAL
+      PageToken  => 'MyId',           # OPTIONAL
+    );
+
+    # Results:
+    my $Jobs          = $ListJobsByPipelineResponse->Jobs;
+    my $NextPageToken = $ListJobsByPipelineResponse->NextPageToken;
+
+    # Returns a L<Paws::ElasticTranscoder::ListJobsByPipelineResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder/ListJobsByPipeline>
 
 =head1 ATTRIBUTES
 

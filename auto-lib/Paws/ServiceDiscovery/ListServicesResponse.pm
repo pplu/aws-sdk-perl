@@ -17,11 +17,15 @@ Paws::ServiceDiscovery::ListServicesResponse
 
 =head2 NextToken => Str
 
-If more than C<MaxResults> operations match the specified criteria, the
-value of C<NextToken> is the first service in the next group of
-services that were created by the current AWS account. To get the next
-group, specify the value of C<NextToken> from the previous response in
-the next request.
+If the response contains C<NextToken>, submit another C<ListServices>
+request to get the next group of results. Specify the value of
+C<NextToken> from the previous response in the next request.
+
+AWS Cloud Map gets C<MaxResults> services and then filters them based
+on the specified criteria. It's possible that no services in the first
+C<MaxResults> services matched the specified criteria but that
+subsequent groups of C<MaxResults> services do contain services that
+match the criteria.
 
 
 =head2 Services => ArrayRef[L<Paws::ServiceDiscovery::ServiceSummary>]

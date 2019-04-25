@@ -43,33 +43,94 @@ Represents a condition for a device pool.
   The rule's stringified attribute. For example, specify the value as
 C<"\"abc\"">.
 
-Allowed values include:
+The supported operators for each attribute are provided in the
+following list.
 
 =over
 
-=item *
+=item APPIUM_VERSION
 
-ARN: The ARN.
+The Appium version for the test.
 
-=item *
+I<Supported operators>: C<CONTAINS>
 
-FORM_FACTOR: The form factor (for example, phone or tablet).
+=item ARN
 
-=item *
+The Amazon Resource Name (ARN) of the device. For example,
+"arn:aws:devicefarm:us-west-2::device:12345Example".
 
-MANUFACTURER: The manufacturer.
+I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
 
-=item *
+=item AVAILABILITY
 
-PLATFORM: The platform (for example, Android or iOS).
+The current availability of the device. Valid values are "AVAILABLE",
+"HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
 
-=item *
+I<Supported operators>: C<EQUALS>
 
-REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
+=item FLEET_TYPE
 
-=item *
+The fleet type. Valid values are "PUBLIC" or "PRIVATE".
 
-APPIUM_VERSION: The Appium version for the test.
+I<Supported operators>: C<EQUALS>
+
+=item FORM_FACTOR
+
+The device form factor. Valid values are "PHONE" or "TABLET".
+
+I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
+
+=item INSTANCE_ARN
+
+The Amazon Resource Name (ARN) of the device instance.
+
+I<Supported operators>: C<IN>, C<NOT_IN>
+
+=item INSTANCE_LABELS
+
+The label of the device instance.
+
+I<Supported operators>: C<CONTAINS>
+
+=item MANUFACTURER
+
+The device manufacturer. For example, "Apple".
+
+I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
+
+=item MODEL
+
+The device model, such as "Apple iPad Air 2" or "Google Pixel".
+
+I<Supported operators>: C<CONTAINS>, C<EQUALS>, C<IN>, C<NOT_IN>
+
+=item OS_VERSION
+
+The operating system version. For example, "10.3.2".
+
+I<Supported operators>: C<EQUALS>, C<GREATER_THAN>,
+C<GREATER_THAN_OR_EQUALS>, C<IN>, C<LESS_THAN>, C<LESS_THAN_OR_EQUALS>,
+C<NOT_IN>
+
+=item PLATFORM
+
+The device platform. Valid values are "ANDROID" or "IOS".
+
+I<Supported operators>: C<EQUALS>, C<IN>, C<NOT_IN>
+
+=item REMOTE_ACCESS_ENABLED
+
+Whether the device is enabled for remote access. Valid values are
+"TRUE" or "FALSE".
+
+I<Supported operators>: C<EQUALS>
+
+=item REMOTE_DEBUG_ENABLED
+
+Whether the device is enabled for remote debugging. Valid values are
+"TRUE" or "FALSE".
+
+I<Supported operators>: C<EQUALS>
 
 =back
 
@@ -77,36 +138,9 @@ APPIUM_VERSION: The Appium version for the test.
 
 =head2 Operator => Str
 
-  The rule's operator.
-
-=over
-
-=item *
-
-EQUALS: The equals operator.
-
-=item *
-
-GREATER_THAN: The greater-than operator.
-
-=item *
-
-IN: The in operator.
-
-=item *
-
-LESS_THAN: The less-than operator.
-
-=item *
-
-NOT_IN: The not-in operator.
-
-=item *
-
-CONTAINS: The contains operator.
-
-=back
-
+  Specifies how Device Farm compares the rule's attribute to the value.
+For the operators that are supported by each attribute, see the
+attribute descriptions.
 
 
 =head2 Value => Str

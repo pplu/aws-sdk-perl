@@ -20,17 +20,29 @@ Paws::IAM::UpdateAccessKey - Arguments for method UpdateAccessKey on L<Paws::IAM
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateAccessKey on the 
-AWS Identity and Access Management service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateAccessKey on the
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method UpdateAccessKey.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAccessKey.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateAccessKey(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    # To activate or deactivate an access key for an IAM user
+    # The following command deactivates the specified access key (access key ID
+    # and secret access key) for the IAM user named Bob.
+    $iam->UpdateAccessKey(
+      {
+        'AccessKeyId' => 'AKIAIOSFODNN7EXAMPLE',
+        'Status'      => 'Inactive',
+        'UserName'    => 'Bob'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/UpdateAccessKey>
 
 =head1 ATTRIBUTES
 
@@ -39,7 +51,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The access key ID of the secret access key you want to update.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters that can
 consist of any upper or lowercased letter or digit.
 
@@ -48,8 +60,8 @@ consist of any upper or lowercased letter or digit.
 =head2 B<REQUIRED> Status => Str
 
 The status you want to assign to the secret access key. C<Active> means
-the key can be used for API calls to AWS, while C<Inactive> means the
-key cannot be used.
+that the key can be used for API calls to AWS, while C<Inactive> means
+that the key cannot be used.
 
 Valid values are: C<"Active">, C<"Inactive">
 
@@ -57,10 +69,10 @@ Valid values are: C<"Active">, C<"Inactive">
 
 The name of the user whose key you want to update.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 

@@ -1,6 +1,7 @@
 package Paws::ACM::CertificateDetail;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str');
+  has CertificateAuthorityArn => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]');
@@ -14,6 +15,8 @@ package Paws::ACM::CertificateDetail;
   has KeyUsages => (is => 'ro', isa => 'ArrayRef[Paws::ACM::KeyUsage]');
   has NotAfter => (is => 'ro', isa => 'Str');
   has NotBefore => (is => 'ro', isa => 'Str');
+  has Options => (is => 'ro', isa => 'Paws::ACM::CertificateOptions');
+  has RenewalEligibility => (is => 'ro', isa => 'Str');
   has RenewalSummary => (is => 'ro', isa => 'Paws::ACM::RenewalSummary');
   has RevocationReason => (is => 'ro', isa => 'Str');
   has RevokedAt => (is => 'ro', isa => 'Str');
@@ -65,6 +68,15 @@ in the response to a DescribeCertificate request.
 about ARNs, see Amazon Resource Names (ARNs) and AWS Service Namespaces
 (http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
+
+
+=head2 CertificateAuthorityArn => Str
+
+  The Amazon Resource Name (ARN) of the ACM PCA private certificate
+authority (CA) that issued the certificate. This has the following
+format:
+
+C<arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012>
 
 
 =head2 CreatedAt => Str
@@ -147,6 +159,20 @@ KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.
 =head2 NotBefore => Str
 
   The time before which the certificate is not valid.
+
+
+=head2 Options => L<Paws::ACM::CertificateOptions>
+
+  Value that specifies whether to add the certificate to a transparency
+log. Certificate transparency makes it possible to detect SSL
+certificates that have been mistakenly or maliciously issued. A browser
+might respond to certificate that has not been logged by showing an
+error message. The logs are cryptographically secure.
+
+
+=head2 RenewalEligibility => Str
+
+  Specifies whether the certificate is eligible for renewal.
 
 
 =head2 RenewalSummary => L<Paws::ACM::RenewalSummary>

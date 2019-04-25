@@ -2,6 +2,7 @@
 package Paws::LexModels::PutSlotType;
   use Moose;
   has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]', traits => ['NameInRequest'], request_name => 'enumerationValues');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
@@ -23,17 +24,47 @@ Paws::LexModels::PutSlotType - Arguments for method PutSlotType on L<Paws::LexMo
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutSlotType on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method PutSlotType on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method PutSlotType.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutSlotType.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutSlotType(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $PutSlotTypeResponse = $models . lex->PutSlotType(
+      Name              => 'MySlotTypeName',
+      Checksum          => 'MyString',         # OPTIONAL
+      CreateVersion     => 1,                  # OPTIONAL
+      Description       => 'MyDescription',    # OPTIONAL
+      EnumerationValues => [
+        {
+          Value    => 'MyValue',               # min: 1, max: 140
+          Synonyms => [
+            'MyValue', ...                     # min: 1, max: 140
+          ],                                   # OPTIONAL
+        },
+        ...
+      ],                                       # OPTIONAL
+      ValueSelectionStrategy => 'ORIGINAL_VALUE',    # OPTIONAL
+    );
+
+    # Results:
+    my $Checksum               = $PutSlotTypeResponse->Checksum;
+    my $CreateVersion          = $PutSlotTypeResponse->CreateVersion;
+    my $CreatedDate            = $PutSlotTypeResponse->CreatedDate;
+    my $Description            = $PutSlotTypeResponse->Description;
+    my $EnumerationValues      = $PutSlotTypeResponse->EnumerationValues;
+    my $LastUpdatedDate        = $PutSlotTypeResponse->LastUpdatedDate;
+    my $Name                   = $PutSlotTypeResponse->Name;
+    my $ValueSelectionStrategy = $PutSlotTypeResponse->ValueSelectionStrategy;
+    my $Version                = $PutSlotTypeResponse->Version;
+
+    # Returns a L<Paws::LexModels::PutSlotTypeResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/PutSlotType>
 
 =head1 ATTRIBUTES
 
@@ -50,6 +81,12 @@ checksum of the most recent revision of the C<$LATEST> version. If you
 don't specify the C< checksum> field, or if the checksum does not match
 the C<$LATEST> version, you get a C<PreconditionFailedException>
 exception.
+
+
+
+=head2 CreateVersion => Bool
+
+
 
 
 

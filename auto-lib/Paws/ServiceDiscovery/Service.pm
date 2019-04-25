@@ -6,9 +6,11 @@ package Paws::ServiceDiscovery::Service;
   has Description => (is => 'ro', isa => 'Str');
   has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfig');
   has HealthCheckConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckConfig');
+  has HealthCheckCustomConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckCustomConfig');
   has Id => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
+  has NamespaceId => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ServiceDiscovery::Service object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., NamespaceId => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,21 +48,24 @@ A complex type that contains information about the specified service.
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) that Amazon Route 53 assigns to the
+  The Amazon Resource Name (ARN) that AWS Cloud Map assigns to the
 service when you create it.
 
 
 =head2 CreateDate => Str
 
   The date and time that the service was created, in Unix format and
-Coordinated Universal Time (UTC).
+Coordinated Universal Time (UTC). The value of C<CreateDate> is
+accurate to milliseconds. For example, the value C<1516925490.087>
+represents Friday, January 26, 2018 12:11:30.087 AM.
 
 
 =head2 CreatorRequestId => Str
 
-  An optional parameter that you can use to resolve concurrent creation
-requests. C<CreatorRequestId> helps to determine if a specific client
-owns the namespace.
+  A unique string that identifies the request and that allows failed
+requests to be retried without the risk of executing the operation
+twice. C<CreatorRequestId> can be any unique string, for example, a
+date/time stamp.
 
 
 =head2 Description => Str
@@ -70,36 +75,33 @@ owns the namespace.
 
 =head2 DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
 
-  A complex type that contains information about the resource record sets
-that you want Amazon Route 53 to create when you register an instance.
+  A complex type that contains information about the Route 53 DNS records
+that you want AWS Cloud Map to create when you register an instance.
 
 
 =head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>
 
   I<Public DNS namespaces only.> A complex type that contains settings
 for an optional health check. If you specify settings for a health
-check, Amazon Route 53 associates the health check with all the
-resource record sets that you specify in C<DnsConfig>.
-
-The health check uses 30 seconds as the request interval. This is the
-number of seconds between the time that each Amazon Route 53 health
-checker gets a response from your endpoint and the time that it sends
-the next health check request. A health checker in each data center
-around the world sends your endpoint a health check request every 30
-seconds. On average, your endpoint receives a health check request
-about every two seconds. Health checkers in different data centers
-don't coordinate with one another, so you'll sometimes see several
-requests per second followed by a few seconds with no health checks at
-all.
+check, AWS Cloud Map associates the health check with the records that
+you specify in C<DnsConfig>.
 
 For information about the charges for health checks, see Amazon Route
-53 Pricing (http://aws.amazon.com/route53/pricing).
+53 Pricing (http://aws.amazon.com/route53/pricing/).
+
+
+=head2 HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>
+
+  A complex type that contains information about an optional custom
+health check.
+
+If you specify a health check configuration, you can specify either
+C<HealthCheckCustomConfig> or C<HealthCheckConfig> but not both.
 
 
 =head2 Id => Str
 
-  The ID that Amazon Route 53 assigned to the service when you created
-it.
+  The ID that AWS Cloud Map assigned to the service when you created it.
 
 
 =head2 InstanceCount => Int
@@ -112,6 +114,11 @@ have been deleted are not included in the count.
 =head2 Name => Str
 
   The name of the service.
+
+
+=head2 NamespaceId => Str
+
+  The ID of the namespace that was used to create the service.
 
 
 

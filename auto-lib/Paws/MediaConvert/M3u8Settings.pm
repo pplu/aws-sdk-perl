@@ -2,6 +2,7 @@ package Paws::MediaConvert::M3u8Settings;
   use Moose;
   has AudioFramesPerPes => (is => 'ro', isa => 'Int', request_name => 'audioFramesPerPes', traits => ['NameInRequest']);
   has AudioPids => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'audioPids', traits => ['NameInRequest']);
+  has NielsenId3 => (is => 'ro', isa => 'Str', request_name => 'nielsenId3', traits => ['NameInRequest']);
   has PatInterval => (is => 'ro', isa => 'Int', request_name => 'patInterval', traits => ['NameInRequest']);
   has PcrControl => (is => 'ro', isa => 'Str', request_name => 'pcrControl', traits => ['NameInRequest']);
   has PcrPid => (is => 'ro', isa => 'Int', request_name => 'pcrPid', traits => ['NameInRequest']);
@@ -59,8 +60,12 @@ Settings for TS segments in HLS
 
   Packet Identifier (PID) of the elementary audio stream(s) in the
 transport stream. Multiple values are accepted, and can be entered in
-ranges and/or by comma separation. Can be entered as decimal or
-hexadecimal values.
+ranges and/or by comma separation.
+
+
+=head2 NielsenId3 => Str
+
+  
 
 
 =head2 PatInterval => Int
@@ -78,8 +83,7 @@ output transport stream.
 
   Packet Identifier (PID) of the Program Clock Reference (PCR) in the
 transport stream. When no value is given, the encoder will assign the
-same value as the Video PID. Can be entered as a decimal or hexadecimal
-value.
+same value as the Video PID.
 
 
 =head2 PmtInterval => Int
@@ -91,13 +95,13 @@ output transport stream.
 =head2 PmtPid => Int
 
   Packet Identifier (PID) for the Program Map Table (PMT) in the
-transport stream. Can be entered as a decimal or hexadecimal value.
+transport stream.
 
 
 =head2 PrivateMetadataPid => Int
 
   Packet Identifier (PID) of the private metadata stream in the transport
-stream. Can be entered as a decimal or hexadecimal value.
+stream.
 
 
 =head2 ProgramNumber => Int
@@ -108,7 +112,6 @@ stream. Can be entered as a decimal or hexadecimal value.
 =head2 Scte35Pid => Int
 
   Packet Identifier (PID) of the SCTE-35 stream in the transport stream.
-Can be entered as a decimal or hexadecimal value.
 
 
 =head2 Scte35Source => Str
@@ -124,7 +127,7 @@ Can be entered as a decimal or hexadecimal value.
 =head2 TimedMetadataPid => Int
 
   Packet Identifier (PID) of the timed metadata stream in the transport
-stream. Can be entered as a decimal or hexadecimal value.
+stream.
 
 
 =head2 TransportStreamId => Int
@@ -135,7 +138,7 @@ stream. Can be entered as a decimal or hexadecimal value.
 =head2 VideoPid => Int
 
   Packet Identifier (PID) of the elementary video stream in the transport
-stream. Can be entered as a decimal or hexadecimal value.
+stream.
 
 
 

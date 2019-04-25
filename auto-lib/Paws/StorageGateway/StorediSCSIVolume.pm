@@ -1,9 +1,12 @@
 package Paws::StorageGateway::StorediSCSIVolume;
   use Moose;
   has CreatedDate => (is => 'ro', isa => 'Str');
+  has KMSKey => (is => 'ro', isa => 'Str');
   has PreservedExistingData => (is => 'ro', isa => 'Bool');
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
+  has TargetName => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
+  has VolumeAttachmentStatus => (is => 'ro', isa => 'Str');
   has VolumeDiskId => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
   has VolumeiSCSIAttributes => (is => 'ro', isa => 'Paws::StorageGateway::VolumeiSCSIAttributes');
@@ -53,6 +56,11 @@ Describes an iSCSI stored volume.
 2017 donE<rsquo>t have this time stamp.
 
 
+=head2 KMSKey => Str
+
+  
+
+
 =head2 PreservedExistingData => Bool
 
   Indicates if when the stored volume was created, existing data on the
@@ -68,9 +76,23 @@ the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not
 included.
 
 
+=head2 TargetName => Str
+
+  The name of the iSCSI target that is used by an initiator to connect to
+a volume and used as a suffix for the target ARN. For example,
+specifying C<TargetName> as I<myvolume> results in the target ARN of
+C<arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume>.
+
+
 =head2 VolumeARN => Str
 
   The Amazon Resource Name (ARN) of the storage volume.
+
+
+=head2 VolumeAttachmentStatus => Str
+
+  A value that indicates whether a storage volume is attached to,
+detached from, or is in the process of detaching from a gateway.
 
 
 =head2 VolumeDiskId => Str

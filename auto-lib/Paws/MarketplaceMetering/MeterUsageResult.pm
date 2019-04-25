@@ -16,7 +16,7 @@ Paws::MarketplaceMetering::MeterUsageResult
 
 =head2 MeteringRecordId => Str
 
-
+Metering record id.
 
 
 =head2 _request_id => Str

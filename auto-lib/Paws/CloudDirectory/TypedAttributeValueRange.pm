@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-A range of attribute values.
+A range of attribute values. For more information, see Range Filters
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_range_filters.html).
 
 =head1 ATTRIBUTES
 

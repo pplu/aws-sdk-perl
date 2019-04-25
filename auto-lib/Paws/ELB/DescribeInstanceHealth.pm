@@ -19,17 +19,32 @@ Paws::ELB::DescribeInstanceHealth - Arguments for method DescribeInstanceHealth 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeInstanceHealth on the 
-Elastic Load Balancing service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeInstanceHealth on the
+L<Elastic Load Balancing|Paws::ELB> service. Use the attributes of this class
 as arguments to method DescribeInstanceHealth.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstanceHealth.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeInstanceHealth(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELB');
+    # To describe the health of the instances for a load balancer
+    # This example describes the health of the instances for the specified load
+    # balancer.
+    my $DescribeEndPointStateOutput =
+      $elasticloadbalancing->DescribeInstanceHealth(
+      {
+        'LoadBalancerName' => 'my-load-balancer'
+      }
+      );
+
+    # Results:
+    my $InstanceStates = $DescribeEndPointStateOutput->InstanceStates;
+
+    # Returns a L<Paws::ELB::DescribeEndPointStateOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/DescribeInstanceHealth>
 
 =head1 ATTRIBUTES
 

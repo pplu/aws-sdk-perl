@@ -19,17 +19,31 @@ Paws::MediaPackage::RotateChannelCredentials - Arguments for method RotateChanne
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RotateChannelCredentials on the 
-AWS Elemental MediaPackage service. Use the attributes of this class
+This class represents the parameters used for calling the method RotateChannelCredentials on the
+L<AWS Elemental MediaPackage|Paws::MediaPackage> service. Use the attributes of this class
 as arguments to method RotateChannelCredentials.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RotateChannelCredentials.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RotateChannelCredentials(Att1 => $value1, Att2 => $value2, ...);
+    my $mediapackage = Paws->service('MediaPackage');
+    my $RotateChannelCredentialsResponse =
+      $mediapackage->RotateChannelCredentials(
+      Id => 'My__string',
+
+      );
+
+    # Results:
+    my $Arn         = $RotateChannelCredentialsResponse->Arn;
+    my $Description = $RotateChannelCredentialsResponse->Description;
+    my $HlsIngest   = $RotateChannelCredentialsResponse->HlsIngest;
+    my $Id          = $RotateChannelCredentialsResponse->Id;
+
+    # Returns a L<Paws::MediaPackage::RotateChannelCredentialsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediapackage/RotateChannelCredentials>
 
 =head1 ATTRIBUTES
 

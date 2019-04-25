@@ -42,13 +42,13 @@ same as the AppSpec file.
 =head2 Content => Str
 
   The YAML-formatted or JSON-formatted revision string. It includes
-information about what Lambda function to update and optional Lambda
+information about which Lambda function to update and optional Lambda
 functions that validate deployment lifecycle events.
 
 
 =head2 Sha256 => Str
 
-  The SHA256 hash value of the revision that is specified as a RawString.
+  The SHA256 hash value of the revision content.
 
 
 

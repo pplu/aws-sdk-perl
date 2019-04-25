@@ -18,28 +18,34 @@ Paws::DirectConnect::DescribeConnectionsOnInterconnect - Arguments for method De
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeConnectionsOnInterconnect on the 
-AWS Direct Connect service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeConnectionsOnInterconnect on the
+L<AWS Direct Connect|Paws::DirectConnect> service. Use the attributes of this class
 as arguments to method DescribeConnectionsOnInterconnect.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConnectionsOnInterconnect.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeConnectionsOnInterconnect(Att1 => $value1, Att2 => $value2, ...);
+    my $directconnect = Paws->service('DirectConnect');
+    my $Connections = $directconnect->DescribeConnectionsOnInterconnect(
+      InterconnectId => 'MyInterconnectId',
+
+    );
+
+    # Results:
+    my $Connections = $Connections->Connections;
+
+    # Returns a L<Paws::DirectConnect::Connections> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect/DescribeConnectionsOnInterconnect>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> InterconnectId => Str
 
-ID of the interconnect on which a list of connection is provisioned.
-
-Example: dxcon-abc123
-
-Default: None
+The ID of the interconnect.
 
 
 

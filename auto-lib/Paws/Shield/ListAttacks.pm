@@ -22,17 +22,39 @@ Paws::Shield::ListAttacks - Arguments for method ListAttacks on L<Paws::Shield>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListAttacks on the 
-AWS Shield service. Use the attributes of this class
+This class represents the parameters used for calling the method ListAttacks on the
+L<AWS Shield|Paws::Shield> service. Use the attributes of this class
 as arguments to method ListAttacks.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAttacks.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListAttacks(Att1 => $value1, Att2 => $value2, ...);
+    my $shield = Paws->service('Shield');
+    my $ListAttacksResponse = $shield->ListAttacks(
+      EndTime => {
+        FromInclusive => '1970-01-01T01:00:00',    # OPTIONAL
+        ToExclusive   => '1970-01-01T01:00:00',    # OPTIONAL
+      },    # OPTIONAL
+      MaxResults   => 1,            # OPTIONAL
+      NextToken    => 'MyToken',    # OPTIONAL
+      ResourceArns => [
+        'MyResourceArn', ...        # min: 1, max: 2048
+      ],                            # OPTIONAL
+      StartTime => {
+        FromInclusive => '1970-01-01T01:00:00',    # OPTIONAL
+        ToExclusive   => '1970-01-01T01:00:00',    # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $AttackSummaries = $ListAttacksResponse->AttackSummaries;
+    my $NextToken       = $ListAttacksResponse->NextToken;
+
+    # Returns a L<Paws::Shield::ListAttacksResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/shield/ListAttacks>
 
 =head1 ATTRIBUTES
 
@@ -52,6 +74,13 @@ is allowed.
 
 The maximum number of AttackSummary objects to be returned. If this is
 left blank, the first 20 results will be returned.
+
+This is a maximum value; it is possible that AWS WAF will return the
+results in smaller batches. That is, the number of AttackSummary
+objects returned could be less than C<MaxResults>, even if there are
+still more AttackSummary objects yet to return. If there are more
+AttackSummary objects to return, AWS WAF will always also return a
+C<NextToken>.
 
 
 

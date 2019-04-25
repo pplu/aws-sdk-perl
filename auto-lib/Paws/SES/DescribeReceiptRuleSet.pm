@@ -18,17 +18,32 @@ Paws::SES::DescribeReceiptRuleSet - Arguments for method DescribeReceiptRuleSet 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeReceiptRuleSet on the 
-Amazon Simple Email Service service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeReceiptRuleSet on the
+L<Amazon Simple Email Service|Paws::SES> service. Use the attributes of this class
 as arguments to method DescribeReceiptRuleSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReceiptRuleSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeReceiptRuleSet(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    # DescribeReceiptRuleSet
+    # The following example returns the metadata and receipt rules of a receipt
+    # rule set:
+    my $DescribeReceiptRuleSetResponse = $email->DescribeReceiptRuleSet(
+      {
+        'RuleSetName' => 'MyRuleSet'
+      }
+    );
+
+    # Results:
+    my $Metadata = $DescribeReceiptRuleSetResponse->Metadata;
+    my $Rules    = $DescribeReceiptRuleSetResponse->Rules;
+
+    # Returns a L<Paws::SES::DescribeReceiptRuleSetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/DescribeReceiptRuleSet>
 
 =head1 ATTRIBUTES
 

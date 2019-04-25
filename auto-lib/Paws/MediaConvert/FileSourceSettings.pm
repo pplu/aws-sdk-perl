@@ -47,7 +47,6 @@ Settings for File-based Captions in Source
 
   External caption file used for loading captions. Accepted file
 extensions are 'scc', 'ttml', 'dfxp', 'stl', 'srt', and 'smi'.
-Auto-populated when Infer External Filename is checked.
 
 
 =head2 TimeDelta => Int

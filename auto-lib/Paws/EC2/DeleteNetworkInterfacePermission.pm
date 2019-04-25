@@ -20,17 +20,29 @@ Paws::EC2::DeleteNetworkInterfacePermission - Arguments for method DeleteNetwork
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteNetworkInterfacePermission on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteNetworkInterfacePermission on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DeleteNetworkInterfacePermission.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteNetworkInterfacePermission.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteNetworkInterfacePermission(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DeleteNetworkInterfacePermissionResult =
+      $ec2->DeleteNetworkInterfacePermission(
+      NetworkInterfacePermissionId => 'MyString',
+      DryRun                       => 1,            # OPTIONAL
+      Force                        => 1,            # OPTIONAL
+      );
+
+    # Results:
+    my $Return = $DeleteNetworkInterfacePermissionResult->Return;
+
+    # Returns a L<Paws::EC2::DeleteNetworkInterfacePermissionResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DeleteNetworkInterfacePermission>
 
 =head1 ATTRIBUTES
 

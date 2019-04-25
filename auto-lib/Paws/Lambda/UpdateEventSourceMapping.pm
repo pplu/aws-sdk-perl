@@ -22,61 +22,111 @@ Paws::Lambda::UpdateEventSourceMapping - Arguments for method UpdateEventSourceM
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateEventSourceMapping on the 
-AWS Lambda service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateEventSourceMapping on the
+L<AWS Lambda|Paws::Lambda> service. Use the attributes of this class
 as arguments to method UpdateEventSourceMapping.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateEventSourceMapping.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateEventSourceMapping(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # To update a Lambda function event source mapping
+    # This operation updates a Lambda function event source mapping
+    my $EventSourceMappingConfiguration = $lambda->UpdateEventSourceMapping(
+      {
+        'BatchSize'    => 123,
+        'Enabled'      => 1,
+        'FunctionName' => 'myFunction',
+        'UUID'         => '1234xCy789012'
+      }
+    );
+
+    # Results:
+    my $BatchSize      = $EventSourceMappingConfiguration->BatchSize;
+    my $EventSourceArn = $EventSourceMappingConfiguration->EventSourceArn;
+    my $FunctionArn    = $EventSourceMappingConfiguration->FunctionArn;
+    my $LastModified   = $EventSourceMappingConfiguration->LastModified;
+    my $LastProcessingResult =
+      $EventSourceMappingConfiguration->LastProcessingResult;
+    my $State = $EventSourceMappingConfiguration->State;
+    my $StateTransitionReason =
+      $EventSourceMappingConfiguration->StateTransitionReason;
+    my $UUID = $EventSourceMappingConfiguration->UUID;
+
+    # Returns a L<Paws::Lambda::EventSourceMappingConfiguration> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/UpdateEventSourceMapping>
 
 =head1 ATTRIBUTES
 
 
 =head2 BatchSize => Int
 
-The maximum number of stream records that can be sent to your Lambda
-function for a single invocation.
+The maximum number of items to retrieve in a single batch.
+
+=over
+
+=item *
+
+B<Amazon Kinesis> - Default 100. Max 10,000.
+
+=item *
+
+B<Amazon DynamoDB Streams> - Default 100. Max 1,000.
+
+=item *
+
+B<Amazon Simple Queue Service> - Default 10. Max 10.
+
+=back
+
 
 
 
 =head2 Enabled => Bool
 
-Specifies whether AWS Lambda should actively poll the stream or not. If
-disabled, AWS Lambda will not poll the stream.
+Disables the event source mapping to pause polling and invocation.
 
 
 
 =head2 FunctionName => Str
 
-The Lambda function to which you want the stream records sent.
+The name of the Lambda function.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
 
-If you are using versioning, you can also provide a qualified function
-ARN (ARN that is qualified with function version or alias name as
-suffix). For more information about versioning, see AWS Lambda Function
-Versioning and Aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
+=over
 
-Note that the length constraint applies only to the ARN. If you specify
-only the function name, it is limited to 64 character in length.
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Version or Alias ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it's limited to 64 characters in length.
 
 
 
 =head2 B<REQUIRED> UUID => Str
 
-The event source mapping identifier.
+The identifier of the event source mapping.
 
 
 

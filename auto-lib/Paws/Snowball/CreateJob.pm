@@ -29,17 +29,59 @@ Paws::Snowball::CreateJob - Arguments for method CreateJob on L<Paws::Snowball>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateJob on the 
-Amazon Import/Export Snowball service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateJob on the
+L<Amazon ImportE<sol>Export Snowball|Paws::Snowball> service. Use the attributes of this class
 as arguments to method CreateJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateJob(Att1 => $value1, Att2 => $value2, ...);
+    my $snowball = Paws->service('Snowball');
+    # To create a job
+    # Creates a job to import or export data between Amazon S3 and your
+    # on-premises data center. Your AWS account must have the right trust
+    # policies and permissions in place to create a job for Snowball. If you're
+    # creating a job for a node in a cluster, you only need to provide the
+    # clusterId value; the other job attributes are inherited from the cluster.
+    my $CreateJobResult = $snowball->CreateJob(
+      {
+        'AddressId'   => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+        'Description' => 'My Job',
+        'JobType'     => 'IMPORT',
+        'KmsKeyARN' =>
+'arn:aws:kms:us-east-1:123456789012:key/abcd1234-12ab-34cd-56ef-123456123456',
+        'Notification' => {
+          'JobStatesToNotify' => [
+
+          ],
+          'NotifyAll' => 0
+        },
+        'Resources' => {
+          'S3Resources' => [
+
+            {
+              'BucketArn' => 'arn:aws:s3:::MyBucket',
+              'KeyRange'  => {
+
+              }
+            }
+          ]
+        },
+        'RoleARN' => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
+        'ShippingOption'             => 'SECOND_DAY',
+        'SnowballCapacityPreference' => 'T80',
+        'SnowballType'               => 'STANDARD'
+      }
+    );
+
+    # Results:
+    my $JobId = $CreateJobResult->JobId;
+
+    # Returns a L<Paws::Snowball::CreateJobResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/snowball/CreateJob>
 
 =head1 ATTRIBUTES
 
@@ -159,14 +201,14 @@ If your job is being created in one of the US regions, you have the
 option of specifying what size Snowball you'd like for this job. In all
 other regions, Snowballs come with 80 TB in storage capacity.
 
-Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"NoPreference">
+Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"T42">, C<"NoPreference">
 
 =head2 SnowballType => Str
 
-The type of AWS Snowball appliance to use for this job. Currently, the
-only supported appliance type for cluster jobs is C<EDGE>.
+The type of AWS Snowball device to use for this job. The only supported
+device types for cluster jobs are C<EDGE>, C<EDGE_C>, and C<EDGE_CG>.
 
-Valid values are: C<"STANDARD">, C<"EDGE">
+Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">
 
 
 =head1 SEE ALSO

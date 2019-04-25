@@ -20,27 +20,37 @@ Paws::AutoScaling::SetInstanceHealth - Arguments for method SetInstanceHealth on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SetInstanceHealth on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method SetInstanceHealth on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method SetInstanceHealth.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetInstanceHealth.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetInstanceHealth(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+   # To set the health status of an instance
+   # This example sets the health status of the specified instance to Unhealthy.
+    $autoscaling->SetInstanceHealth(
+      {
+        'HealthStatus' => 'Unhealthy',
+        'InstanceId'   => 'i-93633f9b'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/SetInstanceHealth>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> HealthStatus => Str
 
-The health status of the instance. Set to C<Healthy> if you want the
-instance to remain in service. Set to C<Unhealthy> if you want the
-instance to be out of service. Auto Scaling will terminate and replace
-the unhealthy instance.
+The health status of the instance. Set to C<Healthy> to have the
+instance remain in service. Set to C<Unhealthy> to have the instance be
+out of service. Amazon EC2 Auto Scaling terminates and replaces the
+unhealthy instance.
 
 
 
@@ -54,11 +64,11 @@ The ID of the instance.
 
 If the Auto Scaling group of the specified instance has a
 C<HealthCheckGracePeriod> specified for the group, by default, this
-call will respect the grace period. Set this to C<False>, if you do not
-want the call to respect the grace period associated with the group.
+call respects the grace period. Set this to C<False>, to have the call
+not respect the grace period associated with the group.
 
-For more information, see the description of the health check grace
-period for CreateAutoScalingGroup.
+For more information about the health check grace period, see
+CreateAutoScalingGroup.
 
 
 

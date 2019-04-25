@@ -26,17 +26,33 @@ Paws::RDS::DescribeReservedDBInstancesOfferings - Arguments for method DescribeR
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeReservedDBInstancesOfferings on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeReservedDBInstancesOfferings on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method DescribeReservedDBInstancesOfferings.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReservedDBInstancesOfferings.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeReservedDBInstancesOfferings(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To list information about reserved DB instance offerings
+    # This example lists information for all reserved DB instance offerings for
+    # the specified DB instance class, duration, product, offering type, and
+    # availability zone settings.
+    my $ReservedDBInstancesOfferingMessage =
+      $rds->DescribeReservedDBInstancesOfferings(
+      {
+        'DBInstanceClass'    => 'db.t2.micro',
+        'Duration'           => '1y',
+        'MultiAZ'            => 0,
+        'OfferingType'       => 'No Upfront',
+        'ProductDescription' => 'mysql'
+      }
+      );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/DescribeReservedDBInstancesOfferings>
 
 =head1 ATTRIBUTES
 
@@ -103,7 +119,9 @@ Valid Values: C<"Partial Upfront" | "All Upfront" | "No Upfront">
 =head2 ProductDescription => Str
 
 Product description filter value. Specify this parameter to show only
-the available offerings matching the specified product description.
+the available offerings that contain the specified product description.
+
+The results show offerings that partially match the filter value.
 
 
 

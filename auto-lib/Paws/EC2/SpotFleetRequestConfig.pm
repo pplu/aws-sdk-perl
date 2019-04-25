@@ -1,10 +1,10 @@
 package Paws::EC2::SpotFleetRequestConfig;
   use Moose;
   has ActivityStatus => (is => 'ro', isa => 'Str', request_name => 'activityStatus', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest'], required => 1);
-  has SpotFleetRequestConfig => (is => 'ro', isa => 'Paws::EC2::SpotFleetRequestConfigData', request_name => 'spotFleetRequestConfig', traits => ['NameInRequest'], required => 1);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest'], required => 1);
-  has SpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestState', traits => ['NameInRequest'], required => 1);
+  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
+  has SpotFleetRequestConfig => (is => 'ro', isa => 'Paws::EC2::SpotFleetRequestConfigData', request_name => 'spotFleetRequestConfig', traits => ['NameInRequest']);
+  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest']);
+  has SpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestState', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -50,22 +50,22 @@ the fleet is decreased, the status is C<pending_termination> while Spot
 Instances are terminating.
 
 
-=head2 B<REQUIRED> CreateTime => Str
+=head2 CreateTime => Str
 
   The creation date and time of the request.
 
 
-=head2 B<REQUIRED> SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
+=head2 SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
 
   The configuration of the Spot Fleet request.
 
 
-=head2 B<REQUIRED> SpotFleetRequestId => Str
+=head2 SpotFleetRequestId => Str
 
   The ID of the Spot Fleet request.
 
 
-=head2 B<REQUIRED> SpotFleetRequestState => Str
+=head2 SpotFleetRequestState => Str
 
   The state of the Spot Fleet request.
 

@@ -22,17 +22,29 @@ Paws::RDS::AuthorizeDBSecurityGroupIngress - Arguments for method AuthorizeDBSec
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method AuthorizeDBSecurityGroupIngress on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method AuthorizeDBSecurityGroupIngress on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method AuthorizeDBSecurityGroupIngress.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AuthorizeDBSecurityGroupIngress.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AuthorizeDBSecurityGroupIngress(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To authorize DB security group integress
+    # This example authorizes access to the specified security group by the
+    # specified CIDR block.
+    my $AuthorizeDBSecurityGroupIngressResult =
+      $rds->AuthorizeDBSecurityGroupIngress(
+      {
+        'CIDRIP'              => '203.0.113.5/32',
+        'DBSecurityGroupName' => 'mydbsecuritygroup'
+      }
+      );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/AuthorizeDBSecurityGroupIngress>
 
 =head1 ATTRIBUTES
 

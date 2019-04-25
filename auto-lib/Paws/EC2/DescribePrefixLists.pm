@@ -22,17 +22,41 @@ Paws::EC2::DescribePrefixLists - Arguments for method DescribePrefixLists on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribePrefixLists on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribePrefixLists on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribePrefixLists.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribePrefixLists.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribePrefixLists(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $DescribePrefixListsResult = $ec2->DescribePrefixLists(
+      DryRun  => 1,    # OPTIONAL
+      Filters => [
+        {
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
+        },
+        ...
+      ],                           # OPTIONAL
+      MaxResults    => 1,          # OPTIONAL
+      NextToken     => 'MyString', # OPTIONAL
+      PrefixListIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken   = $DescribePrefixListsResult->NextToken;
+    my $PrefixLists = $DescribePrefixListsResult->PrefixLists;
+
+    # Returns a L<Paws::EC2::DescribePrefixListsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribePrefixLists>
 
 =head1 ATTRIBUTES
 

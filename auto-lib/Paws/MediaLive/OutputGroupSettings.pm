@@ -1,8 +1,10 @@
 package Paws::MediaLive::OutputGroupSettings;
   use Moose;
   has ArchiveGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::ArchiveGroupSettings', request_name => 'archiveGroupSettings', traits => ['NameInRequest']);
+  has FrameCaptureGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::FrameCaptureGroupSettings', request_name => 'frameCaptureGroupSettings', traits => ['NameInRequest']);
   has HlsGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsGroupSettings', request_name => 'hlsGroupSettings', traits => ['NameInRequest']);
   has MsSmoothGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::MsSmoothGroupSettings', request_name => 'msSmoothGroupSettings', traits => ['NameInRequest']);
+  has RtmpGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpGroupSettings', request_name => 'rtmpGroupSettings', traits => ['NameInRequest']);
   has UdpGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpGroupSettings', request_name => 'udpGroupSettings', traits => ['NameInRequest']);
 1;
 
@@ -44,12 +46,22 @@ Placeholder documentation for OutputGroupSettings
   
 
 
+=head2 FrameCaptureGroupSettings => L<Paws::MediaLive::FrameCaptureGroupSettings>
+
+  
+
+
 =head2 HlsGroupSettings => L<Paws::MediaLive::HlsGroupSettings>
 
   
 
 
 =head2 MsSmoothGroupSettings => L<Paws::MediaLive::MsSmoothGroupSettings>
+
+  
+
+
+=head2 RtmpGroupSettings => L<Paws::MediaLive::RtmpGroupSettings>
 
   
 

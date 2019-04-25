@@ -20,17 +20,42 @@ Paws::LexModels::CreateIntentVersion - Arguments for method CreateIntentVersion 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateIntentVersion on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateIntentVersion on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method CreateIntentVersion.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateIntentVersion.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateIntentVersion(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $CreateIntentVersionResponse = $models . lex->CreateIntentVersion(
+      Name     => 'MyIntentName',
+      Checksum => 'MyString',       # OPTIONAL
+    );
+
+    # Results:
+    my $Checksum            = $CreateIntentVersionResponse->Checksum;
+    my $ConclusionStatement = $CreateIntentVersionResponse->ConclusionStatement;
+    my $ConfirmationPrompt  = $CreateIntentVersionResponse->ConfirmationPrompt;
+    my $CreatedDate         = $CreateIntentVersionResponse->CreatedDate;
+    my $Description         = $CreateIntentVersionResponse->Description;
+    my $DialogCodeHook      = $CreateIntentVersionResponse->DialogCodeHook;
+    my $FollowUpPrompt      = $CreateIntentVersionResponse->FollowUpPrompt;
+    my $FulfillmentActivity = $CreateIntentVersionResponse->FulfillmentActivity;
+    my $LastUpdatedDate     = $CreateIntentVersionResponse->LastUpdatedDate;
+    my $Name                = $CreateIntentVersionResponse->Name;
+    my $ParentIntentSignature =
+      $CreateIntentVersionResponse->ParentIntentSignature;
+    my $RejectionStatement = $CreateIntentVersionResponse->RejectionStatement;
+    my $SampleUtterances   = $CreateIntentVersionResponse->SampleUtterances;
+    my $Slots              = $CreateIntentVersionResponse->Slots;
+    my $Version            = $CreateIntentVersionResponse->Version;
+
+    # Returns a L<Paws::LexModels::CreateIntentVersionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/CreateIntentVersion>
 
 =head1 ATTRIBUTES
 

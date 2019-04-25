@@ -41,7 +41,8 @@ This class has no description
 
   Indicate whether the VPN connection uses static routes only. If you are
 creating a VPN connection for a device that does not support BGP, you
-must specify C<true>.
+must specify C<true>. Use CreateVpnConnectionRoute to create a static
+route.
 
 Default: C<false>
 

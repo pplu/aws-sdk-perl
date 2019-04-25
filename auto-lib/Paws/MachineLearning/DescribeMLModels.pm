@@ -28,17 +28,37 @@ Paws::MachineLearning::DescribeMLModels - Arguments for method DescribeMLModels 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeMLModels on the 
-Amazon Machine Learning service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeMLModels on the
+L<Amazon Machine Learning|Paws::MachineLearning> service. Use the attributes of this class
 as arguments to method DescribeMLModels.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeMLModels.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeMLModels(Att1 => $value1, Att2 => $value2, ...);
+    my $machinelearning = Paws->service('MachineLearning');
+    my $DescribeMLModelsOutput = $machinelearning->DescribeMLModels(
+      EQ             => 'MyComparatorValue',    # OPTIONAL
+      FilterVariable => 'CreatedAt',            # OPTIONAL
+      GE             => 'MyComparatorValue',    # OPTIONAL
+      GT             => 'MyComparatorValue',    # OPTIONAL
+      LE             => 'MyComparatorValue',    # OPTIONAL
+      LT             => 'MyComparatorValue',    # OPTIONAL
+      Limit          => 1,                      # OPTIONAL
+      NE             => 'MyComparatorValue',    # OPTIONAL
+      NextToken      => 'MyStringType',         # OPTIONAL
+      Prefix         => 'MyComparatorValue',    # OPTIONAL
+      SortOrder      => 'asc',                  # OPTIONAL
+    );
+
+    # Results:
+    my $NextToken = $DescribeMLModelsOutput->NextToken;
+    my $Results   = $DescribeMLModelsOutput->Results;
+
+    # Returns a L<Paws::MachineLearning::DescribeMLModelsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/machinelearning/DescribeMLModels>
 
 =head1 ATTRIBUTES
 

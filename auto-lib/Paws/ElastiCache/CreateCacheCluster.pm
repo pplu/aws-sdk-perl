@@ -40,17 +40,54 @@ Paws::ElastiCache::CreateCacheCluster - Arguments for method CreateCacheCluster 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateCacheCluster on the 
-Amazon ElastiCache service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateCacheCluster on the
+L<Amazon ElastiCache|Paws::ElastiCache> service. Use the attributes of this class
 as arguments to method CreateCacheCluster.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheCluster.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCacheCluster(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticache = Paws->service('ElastiCache');
+    my $CreateCacheClusterResult = $elasticache->CreateCacheCluster(
+      CacheClusterId             => 'MyString',
+      AZMode                     => 'single-az',            # OPTIONAL
+      AuthToken                  => 'MyString',             # OPTIONAL
+      AutoMinorVersionUpgrade    => 1,                      # OPTIONAL
+      CacheNodeType              => 'MyString',             # OPTIONAL
+      CacheParameterGroupName    => 'MyString',             # OPTIONAL
+      CacheSecurityGroupNames    => [ 'MyString', ... ],    # OPTIONAL
+      CacheSubnetGroupName       => 'MyString',             # OPTIONAL
+      Engine                     => 'MyString',             # OPTIONAL
+      EngineVersion              => 'MyString',             # OPTIONAL
+      NotificationTopicArn       => 'MyString',             # OPTIONAL
+      NumCacheNodes              => 1,                      # OPTIONAL
+      Port                       => 1,                      # OPTIONAL
+      PreferredAvailabilityZone  => 'MyString',             # OPTIONAL
+      PreferredAvailabilityZones => [ 'MyString', ... ],    # OPTIONAL
+      PreferredMaintenanceWindow => 'MyString',             # OPTIONAL
+      ReplicationGroupId         => 'MyString',             # OPTIONAL
+      SecurityGroupIds           => [ 'MyString', ... ],    # OPTIONAL
+      SnapshotArns               => [ 'MyString', ... ],    # OPTIONAL
+      SnapshotName               => 'MyString',             # OPTIONAL
+      SnapshotRetentionLimit     => 1,                      # OPTIONAL
+      SnapshotWindow             => 'MyString',             # OPTIONAL
+      Tags                       => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                                    # OPTIONAL
+    );
+
+    # Results:
+    my $CacheCluster = $CreateCacheClusterResult->CacheCluster;
+
+    # Returns a L<Paws::ElastiCache::CreateCacheClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/CreateCacheCluster>
 
 =head1 ATTRIBUTES
 
@@ -59,21 +96,6 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 B<Reserved parameter.> The password used to access a password protected
 server.
-
-This parameter is valid only if:
-
-=over
-
-=item *
-
-The parameter C<TransitEncryptionEnabled> was set to C<true> when the
-cluster was created.
-
-=item *
-
-The line C<requirepass> was added to the database configuration file.
-
-=back
 
 Password constraints:
 
@@ -212,6 +234,10 @@ Current generation:
 B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
 C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
+B<R4 node types;> C<cache.r4.large>, C<cache.r4.xlarge>,
+C<cache.r4.2xlarge>, C<cache.r4.4xlarge>, C<cache.r4.8xlarge>,
+C<cache.r4.16xlarge>
+
 =item *
 
 Previous generation: (not recommended)
@@ -249,13 +275,27 @@ T2 instances.
 
 =back
 
-For a complete listing of node types and specifications, see Amazon
-ElastiCache Product Features and Details
-(http://aws.amazon.com/elasticache/details) and either Cache Node
-Type-Specific Parameters for Memcached
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
-or Cache Node Type-Specific Parameters for Redis
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific).
+For a complete listing of node types and specifications, see:
+
+=over
+
+=item *
+
+Amazon ElastiCache Product Features and Details
+(http://aws.amazon.com/elasticache/details)
+
+=item *
+
+Cache Node Type-Specific Parameters for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
+
+=item *
+
+Cache Node Type-Specific Parameters for Redis
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific)
+
+=back
+
 
 
 
@@ -287,7 +327,7 @@ Virtual Private Cloud (Amazon VPC).
 If you're going to launch your cluster in an Amazon VPC, you need to
 create a subnet group before you start creating a cluster. For more
 information, see Subnets and Subnet Groups
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SubnetGroups.html).
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
 
 
 
@@ -307,7 +347,7 @@ DescribeCacheEngineVersions operation.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
 a Cache Engine and Version
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement)),
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
 but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing cluster or
 replication group and create it anew with the earlier engine version.
@@ -429,10 +469,6 @@ Example: C<sun:23:00-mon:01:30>
 
 =head2 ReplicationGroupId => Str
 
-Due to current limitations on Redis (cluster mode disabled), this
-operation or parameter is not supported on Redis (cluster mode enabled)
-replication groups.
-
 The ID of the replication group to which this cluster should belong. If
 this parameter is specified, the cluster is added to the specified
 replication group as a read replica; otherwise, the cluster is a
@@ -488,7 +524,8 @@ deleted.
 
 This parameter is only valid if the C<Engine> parameter is C<redis>.
 
-Default: 0 (i.e., automatic backups are disabled for this cluster).
+Default: 0 (i.e., automatic backups are disabled for this cache
+cluster).
 
 
 

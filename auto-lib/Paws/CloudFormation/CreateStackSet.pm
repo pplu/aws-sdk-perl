@@ -1,9 +1,11 @@
 
 package Paws::CloudFormation::CreateStackSet;
   use Moose;
+  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has StackSetName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
@@ -25,77 +27,180 @@ Paws::CloudFormation::CreateStackSet - Arguments for method CreateStackSet on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateStackSet on the 
-AWS CloudFormation service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateStackSet on the
+L<AWS CloudFormation|Paws::CloudFormation> service. Use the attributes of this class
 as arguments to method CreateStackSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStackSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateStackSet(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudformation = Paws->service('CloudFormation');
+    my $CreateStackSetOutput = $cloudformation->CreateStackSet(
+      StackSetName          => 'MyStackSetName',
+      AdministrationRoleARN => 'MyRoleARN',        # OPTIONAL
+      Capabilities          => [
+        'CAPABILITY_IAM',
+        ... # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND
+      ],    # OPTIONAL
+      ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
+      Description        => 'MyDescription',           # OPTIONAL
+      ExecutionRoleName  => 'MyExecutionRoleName',     # OPTIONAL
+      Parameters         => [
+        {
+          ParameterKey     => 'MyParameterKey',        # OPTIONAL
+          ParameterValue   => 'MyParameterValue',      # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',      # OPTIONAL
+          UsePreviousValue => 1,                       # OPTIONAL
+        },
+        ...
+      ],                                               # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',                         # min: 1, max: 128
+          Value => 'MyTagValue',                       # min: 1, max: 256
+
+        },
+        ...
+      ],                                               # OPTIONAL
+      TemplateBody => 'MyTemplateBody',                # OPTIONAL
+      TemplateURL  => 'MyTemplateURL',                 # OPTIONAL
+    );
+
+    # Results:
+    my $StackSetId = $CreateStackSetOutput->StackSetId;
+
+    # Returns a L<Paws::CloudFormation::CreateStackSetOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/CreateStackSet>
 
 =head1 ATTRIBUTES
 
 
+=head2 AdministrationRoleARN => Str
+
+The Amazon Resource Number (ARN) of the IAM role to use to create this
+stack set.
+
+Specify an IAM role only if you are using customized administrator
+roles to control which users or groups can manage specific stack sets
+within the same administrator account. For more information, see
+Prerequisites: Granting Permissions for Stack Set Operations
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+in the I<AWS CloudFormation User Guide>.
+
+
+
 =head2 Capabilities => ArrayRef[Str|Undef]
 
-A list of values that you must specify before AWS CloudFormation can
-create certain stack sets. Some stack set templates might include
-resources that can affect permissions in your AWS accountE<mdash>for
-example, by creating new AWS Identity and Access Management (IAM)
-users. For those stack sets, you must explicitly acknowledge their
-capabilities by specifying this parameter.
+In some cases, you must explicity acknowledge that your stack set
+template contains certain capabilities in order for AWS CloudFormation
+to create the stack set and related stack instances.
 
-The only valid values are CAPABILITY_IAM and CAPABILITY_NAMED_IAM. The
-following resources require you to specify this parameter:
+=over
+
+=item *
+
+C<CAPABILITY_IAM> and C<CAPABILITY_NAMED_IAM>
+
+Some stack templates might include resources that can affect
+permissions in your AWS account; for example, by creating new AWS
+Identity and Access Management (IAM) users. For those stack sets, you
+must explicitly acknowledge this by specifying one of these
+capabilities.
+
+The following IAM resources require you to specify either the
+C<CAPABILITY_IAM> or C<CAPABILITY_NAMED_IAM> capability.
+
+=over
+
+=item *
+
+If you have IAM resources, you can specify either capability.
+
+=item *
+
+If you have IAM resources with custom names, you I<must> specify
+C<CAPABILITY_NAMED_IAM>.
+
+=item *
+
+If you don't specify either of these capabilities, AWS CloudFormation
+returns an C<InsufficientCapabilities> error.
+
+=back
+
+If your stack template contains these resources, we recommend that you
+review all permissions associated with them and edit their permissions
+if necessary.
 
 =over
 
 =item *
 
 AWS::IAM::AccessKey
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 
 =item *
 
 AWS::IAM::Group
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 
 =item *
 
 AWS::IAM::InstanceProfile
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 
 =item *
 
 AWS::IAM::Policy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
 
 =item *
 
 AWS::IAM::Role
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 
 =item *
 
 AWS::IAM::User
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
 
 =item *
 
 AWS::IAM::UserToGroupAddition
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 
 =back
 
-If your stack template contains these resources, we recommend that you
-review all permissions that are associated with them and edit their
-permissions if necessary.
-
-If you have IAM resources, you can specify either capability. If you
-have IAM resources with custom names, you must specify
-CAPABILITY_NAMED_IAM. If you don't specify this parameter, this action
-returns an C<InsufficientCapabilities> error.
-
 For more information, see Acknowledging IAM Resources in AWS
-CloudFormation Templates.
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities)
+CloudFormation Templates
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+
+=item *
+
+C<CAPABILITY_AUTO_EXPAND>
+
+Some templates contain macros. If your stack template contains one or
+more macros, and you choose to create a stack directly from the
+processed template, without first reviewing the resulting changes in a
+change set, you must acknowledge this capability. For more information,
+see Using AWS CloudFormation Macros to Perform Custom Processing on
+Templates
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+
+Stack sets do not currently support macros in stack templates. (This
+includes the AWS::Include
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+and AWS::Serverless
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+transforms, which are macros hosted by AWS CloudFormation.) Even if you
+specify this capability, if you include a macro in your template the
+stack set operation will fail.
+
+=back
+
 
 
 
@@ -116,6 +221,19 @@ automatically.
 
 A description of the stack set. You can use the description to identify
 the stack set's purpose or other important information.
+
+
+
+=head2 ExecutionRoleName => Str
+
+The name of the IAM execution role to use to create the stack set. If
+you do not specify an execution role, AWS CloudFormation uses the
+C<AWSCloudFormationStackSetExecutionRole> role for the stack set
+operation.
+
+Specify an IAM role only if you are using customized execution roles to
+control which stack resources users and groups can include in their
+stack sets.
 
 
 

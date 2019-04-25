@@ -1,7 +1,9 @@
 package Paws::Rekognition::Label;
   use Moose;
   has Confidence => (is => 'ro', isa => 'Num');
+  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Instance]');
   has Name => (is => 'ro', isa => 'Str');
+  has Parents => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Parent]');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Rekognition::Label object:
 
-  $service_obj->Method(Att1 => { Confidence => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Confidence => $value, ..., Parents => $value  });
 
 =head3 Results returned from an API call
 
@@ -32,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Structure containing details about the detected label, including name,
-and level of confidence.
+Structure containing details about the detected label, including the
+name, detected instances, parent labels, and level of confidence.
 
 =head1 ATTRIBUTES
 
@@ -43,9 +45,23 @@ and level of confidence.
   Level of confidence.
 
 
+=head2 Instances => ArrayRef[L<Paws::Rekognition::Instance>]
+
+  If C<Label> represents an object, C<Instances> contains the bounding
+boxes for each instance of the detected object. Bounding boxes are
+returned for common object labels such as people, cars, furniture,
+apparel or pets.
+
+
 =head2 Name => Str
 
-  The name (label) of the object.
+  The name (label) of the object or scene.
+
+
+=head2 Parents => ArrayRef[L<Paws::Rekognition::Parent>]
+
+  The parent labels for a label. The response includes all ancestor
+labels.
 
 
 

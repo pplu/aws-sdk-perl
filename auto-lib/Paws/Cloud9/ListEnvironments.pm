@@ -19,17 +19,28 @@ Paws::Cloud9::ListEnvironments - Arguments for method ListEnvironments on L<Paws
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListEnvironments on the 
-AWS Cloud9 service. Use the attributes of this class
+This class represents the parameters used for calling the method ListEnvironments on the
+L<AWS Cloud9|Paws::Cloud9> service. Use the attributes of this class
 as arguments to method ListEnvironments.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListEnvironments.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListEnvironments(Att1 => $value1, Att2 => $value2, ...);
+    my $cloud9 = Paws->service('Cloud9');
+    my $ListEnvironmentsResult = $cloud9->ListEnvironments(
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $EnvironmentIds = $ListEnvironmentsResult->EnvironmentIds;
+    my $NextToken      = $ListEnvironmentsResult->NextToken;
+
+    # Returns a L<Paws::Cloud9::ListEnvironmentsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloud9/ListEnvironments>
 
 =head1 ATTRIBUTES
 

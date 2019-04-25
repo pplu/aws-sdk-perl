@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::MFADev
 Contains information about an MFA device.
 
 This data type is used as a response element in the ListMFADevices
-action.
+operation.
 
 =head1 ATTRIBUTES
 

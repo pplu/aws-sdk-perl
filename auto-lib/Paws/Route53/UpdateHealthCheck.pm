@@ -3,6 +3,7 @@ package Paws::Route53::UpdateHealthCheck;
   use Moose;
   has AlarmIdentifier => (is => 'ro', isa => 'Paws::Route53::AlarmIdentifier');
   has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Disabled => (is => 'ro', isa => 'Bool');
   has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
@@ -36,24 +37,64 @@ Paws::Route53::UpdateHealthCheck - Arguments for method UpdateHealthCheck on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateHealthCheck on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateHealthCheck on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method UpdateHealthCheck.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateHealthCheck.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateHealthCheck(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $UpdateHealthCheckResponse = $route53->UpdateHealthCheck(
+      HealthCheckId   => 'MyHealthCheckId',
+      AlarmIdentifier => {
+        Name   => 'MyAlarmName',    # min: 1, max: 256
+        Region => 'us-east-1'
+        , # values: us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, eu-central-1, eu-west-1, eu-west-2, eu-west-3, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, eu-north-1, sa-east-1min: 1, max: 64
+
+      },    # OPTIONAL
+      ChildHealthChecks => [
+        'MyHealthCheckId', ...    # max: 64
+      ],                          # OPTIONAL
+      Disabled                     => 1,                              # OPTIONAL
+      EnableSNI                    => 1,                              # OPTIONAL
+      FailureThreshold             => 1,                              # OPTIONAL
+      FullyQualifiedDomainName     => 'MyFullyQualifiedDomainName',   # OPTIONAL
+      HealthCheckVersion           => 1,                              # OPTIONAL
+      HealthThreshold              => 1,                              # OPTIONAL
+      IPAddress                    => 'MyIPAddress',                  # OPTIONAL
+      InsufficientDataHealthStatus => 'Healthy',                      # OPTIONAL
+      Inverted                     => 1,                              # OPTIONAL
+      Port                         => 1,                              # OPTIONAL
+      Regions                      => [
+        'us-east-1',
+        ... # values: us-east-1, us-west-1, us-west-2, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1min: 1, max: 64
+      ],    # OPTIONAL
+      ResetElements => [
+        'FullyQualifiedDomainName',
+        ... # values: FullyQualifiedDomainName, Regions, ResourcePath, ChildHealthChecksmin: 1, max: 64
+      ],    # OPTIONAL
+      ResourcePath => 'MyResourcePath',    # OPTIONAL
+      SearchString => 'MySearchString',    # OPTIONAL
+    );
+
+    # Results:
+    my $HealthCheck = $UpdateHealthCheckResponse->HealthCheck;
+
+    # Returns a L<Paws::Route53::UpdateHealthCheckResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/UpdateHealthCheck>
 
 =head1 ATTRIBUTES
 
 
 =head2 AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>
 
-
+A complex type that identifies the CloudWatch alarm that you want
+Amazon Route 53 health checkers to use to determine whether the
+specified health check is healthy.
 
 
 
@@ -62,6 +103,42 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A complex type that contains one C<ChildHealthCheck> element for each
 health check that you want to associate with a C<CALCULATED> health
 check.
+
+
+
+=head2 Disabled => Bool
+
+Stops Route 53 from performing health checks. When you disable a health
+check, here's what happens:
+
+=over
+
+=item *
+
+B<Health checks that check the health of endpoints:> Route 53 stops
+submitting requests to your application, server, or other resource.
+
+=item *
+
+B<Calculated health checks:> Route 53 stops aggregating the status of
+the referenced health checks.
+
+=item *
+
+B<Health checks that monitor CloudWatch alarms:> Route 53 stops
+monitoring the corresponding CloudWatch metrics.
+
+=back
+
+After you disable a health check, Route 53 considers the status of the
+health check to always be healthy. If you configured DNS failover,
+Route 53 continues to route traffic to the corresponding resources. If
+you want to stop routing traffic to a resource, change the value of
+UpdateHealthCheckRequest$Inverted.
+
+Charges for a health check still apply when the health check is
+disabled. For more information, see Amazon Route 53 Pricing
+(http://aws.amazon.com/route53/pricing/).
 
 
 
@@ -118,13 +195,13 @@ remove the value of C<IPAddress>.
 
 B<If you specify a value for> C<IPAddress>:
 
-Amazon Route 53 sends health check requests to the specified IPv4 or
-IPv6 address and passes the value of C<FullyQualifiedDomainName> in the
+Route 53 sends health check requests to the specified IPv4 or IPv6
+address and passes the value of C<FullyQualifiedDomainName> in the
 C<Host> header for all health checks except TCP health checks. This is
 typically the fully qualified DNS name of the endpoint on which you
-want Amazon Route 53 to perform health checks.
+want Route 53 to perform health checks.
 
-When Amazon Route 53 checks the health of an endpoint, here is how it
+When Route 53 checks the health of an endpoint, here is how it
 constructs the C<Host> header:
 
 =over
@@ -132,39 +209,38 @@ constructs the C<Host> header:
 =item *
 
 If you specify a value of C<80> for C<Port> and C<HTTP> or
-C<HTTP_STR_MATCH> for C<Type>, Amazon Route 53 passes the value of
+C<HTTP_STR_MATCH> for C<Type>, Route 53 passes the value of
 C<FullyQualifiedDomainName> to the endpoint in the C<Host> header.
 
 =item *
 
 If you specify a value of C<443> for C<Port> and C<HTTPS> or
-C<HTTPS_STR_MATCH> for C<Type>, Amazon Route 53 passes the value of
+C<HTTPS_STR_MATCH> for C<Type>, Route 53 passes the value of
 C<FullyQualifiedDomainName> to the endpoint in the C<Host> header.
 
 =item *
 
 If you specify another value for C<Port> and any value except C<TCP>
-for C<Type>, Amazon Route 53 passes I<
-C<FullyQualifiedDomainName>:C<Port> > to the endpoint in the C<Host>
-header.
+for C<Type>, Route 53 passes I< C<FullyQualifiedDomainName>:C<Port> >
+to the endpoint in the C<Host> header.
 
 =back
 
-If you don't specify a value for C<FullyQualifiedDomainName>, Amazon
-Route 53 substitutes the value of C<IPAddress> in the C<Host> header in
-each of the above cases.
+If you don't specify a value for C<FullyQualifiedDomainName>, Route 53
+substitutes the value of C<IPAddress> in the C<Host> header in each of
+the above cases.
 
 B<If you don't specify a value for> C<IPAddress>:
 
-If you don't specify a value for C<IPAddress>, Amazon Route 53 sends a
-DNS request to the domain that you specify in
-C<FullyQualifiedDomainName> at the interval you specify in
-C<RequestInterval>. Using an IPv4 address that is returned by DNS,
-Amazon Route 53 then checks the health of the endpoint.
+If you don't specify a value for C<IPAddress>, Route 53 sends a DNS
+request to the domain that you specify in C<FullyQualifiedDomainName>
+at the interval you specify in C<RequestInterval>. Using an IPv4
+address that is returned by DNS, Route 53 then checks the health of the
+endpoint.
 
-If you don't specify a value for C<IPAddress>, Amazon Route 53 uses
-only IPv4 to send health checks to the endpoint. If there's no resource
-record set with a type of A for the name that you specify for
+If you don't specify a value for C<IPAddress>, Route 53 uses only IPv4
+to send health checks to the endpoint. If there's no resource record
+set with a type of A for the name that you specify for
 C<FullyQualifiedDomainName>, the health check fails with a "DNS
 resolution failed" error.
 
@@ -183,10 +259,10 @@ health check with those resource record sets, health check results will
 be unpredictable.
 
 In addition, if the value of C<Type> is C<HTTP>, C<HTTPS>,
-C<HTTP_STR_MATCH>, or C<HTTPS_STR_MATCH>, Amazon Route 53 passes the
-value of C<FullyQualifiedDomainName> in the C<Host> header, as it does
-when you specify a value for C<IPAddress>. If the value of C<Type> is
-C<TCP>, Amazon Route 53 doesn't pass a C<Host> header.
+C<HTTP_STR_MATCH>, or C<HTTPS_STR_MATCH>, Route 53 passes the value of
+C<FullyQualifiedDomainName> in the C<Host> header, as it does when you
+specify a value for C<IPAddress>. If the value of C<Type> is C<TCP>,
+Route 53 doesn't pass a C<Host> header.
 
 
 
@@ -207,22 +283,22 @@ the health check.
 We recommend that you use C<GetHealthCheck> or C<ListHealthChecks> to
 get the current value of C<HealthCheckVersion> for the health check
 that you want to update, and that you include that value in your
-C<UpdateHealthCheck> request. This prevents Amazon Route 53 from
-overwriting an intervening update:
+C<UpdateHealthCheck> request. This prevents Route 53 from overwriting
+an intervening update:
 
 =over
 
 =item *
 
 If the value in the C<UpdateHealthCheck> request matches the value of
-C<HealthCheckVersion> in the health check, Amazon Route 53 updates the
-health check with the new settings.
+C<HealthCheckVersion> in the health check, Route 53 updates the health
+check with the new settings.
 
 =item *
 
 If the value of C<HealthCheckVersion> in the health check is greater,
-the health check was changed after you got the version number. Amazon
-Route 53 does not update the health check, and it returns a
+the health check was changed after you got the version number. Route 53
+does not update the health check, and it returns a
 C<HealthCheckVersionMismatch> error.
 
 =back
@@ -246,12 +322,12 @@ Note the following:
 =item *
 
 If you specify a number greater than the number of child health checks,
-Amazon Route 53 always considers this health check to be unhealthy.
+Route 53 always considers this health check to be unhealthy.
 
 =item *
 
-If you specify C<0>, Amazon Route 53 always considers this health check
-to be healthy.
+If you specify C<0>, Route 53 always considers this health check to be
+healthy.
 
 =back
 
@@ -268,18 +344,17 @@ health check:
 
 =item *
 
-C<Healthy>: Amazon Route 53 considers the health check to be healthy.
+C<Healthy>: Route 53 considers the health check to be healthy.
 
 =item *
 
-C<Unhealthy>: Amazon Route 53 considers the health check to be
-unhealthy.
+C<Unhealthy>: Route 53 considers the health check to be unhealthy.
 
 =item *
 
-C<LastKnownStatus>: Amazon Route 53 uses the status of the health check
-from the last time CloudWatch had sufficient data to determine the
-alarm state. For new health checks that have no last known status, the
+C<LastKnownStatus>: Route 53 uses the status of the health check from
+the last time CloudWatch had sufficient data to determine the alarm
+state. For new health checks that have no last known status, the
 default status for the health check is healthy.
 
 =back
@@ -299,11 +374,10 @@ otherwise would be considered healthy.
 
 The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route
 53 to perform health checks on. If you don't specify a value for
-C<IPAddress>, Amazon Route 53 sends a DNS request to resolve the domain
-name that you specify in C<FullyQualifiedDomainName> at the interval
-that you specify in C<RequestInterval>. Using an IP address that is
-returned by DNS, Amazon Route 53 then checks the health of the
-endpoint.
+C<IPAddress>, Route 53 sends a DNS request to resolve the domain name
+that you specify in C<FullyQualifiedDomainName> at the interval that
+you specify in C<RequestInterval>. Using an IP address that is returned
+by DNS, Route 53 then checks the health of the endpoint.
 
 Use one of the following formats for the value of C<IPAddress>:
 
@@ -352,10 +426,10 @@ remove the value of C<IPAddress>.
 For more information, see
 UpdateHealthCheckRequest$FullyQualifiedDomainName.
 
-Constraints: Amazon Route 53 can't check the health of endpoints for
-which the IP address is in local, private, non-routable, or multicast
-ranges. For more information about IP addresses for which you can't
-create health checks, see the following documents:
+Constraints: Route 53 can't check the health of endpoints for which the
+IP address is in local, private, non-routable, or multicast ranges. For
+more information about IP addresses for which you can't create health
+checks, see the following documents:
 
 =over
 
@@ -409,18 +483,18 @@ HealthCheckConfig$ChildHealthChecks to null.
 
 =item *
 
-C<FullyQualifiedDomainName>: Amazon Route 53 resets
+C<FullyQualifiedDomainName>: Route 53 resets
 HealthCheckConfig$FullyQualifiedDomainName to null.
 
 =item *
 
-C<Regions>: Amazon Route 53 resets the HealthCheckConfig$Regions list
-to the default set of regions.
+C<Regions>: Route 53 resets the HealthCheckConfig$Regions list to the
+default set of regions.
 
 =item *
 
-C<ResourcePath>: Amazon Route 53 resets HealthCheckConfig$ResourcePath
-to null.
+C<ResourcePath>: Route 53 resets HealthCheckConfig$ResourcePath to
+null.
 
 =back
 
@@ -432,7 +506,9 @@ to null.
 The path that you want Amazon Route 53 to request when performing
 health checks. The path can be any value for which your endpoint will
 return an HTTP status code of 2xx or 3xx when the endpoint is healthy,
-for example the file /docs/route53-health-check.html.
+for example the file /docs/route53-health-check.html. You can also
+include query string parameters, for example,
+C</welcome.html?language=jp&login=y>.
 
 Specify this value only if you want to change it.
 
@@ -443,8 +519,8 @@ Specify this value only if you want to change it.
 If the value of C<Type> is C<HTTP_STR_MATCH> or C<HTTP_STR_MATCH>, the
 string that you want Amazon Route 53 to search for in the response body
 from the specified resource. If the string appears in the response
-body, Amazon Route 53 considers the resource healthy. (You can't change
-the value of C<Type> when you update a health check.)
+body, Route 53 considers the resource healthy. (You can't change the
+value of C<Type> when you update a health check.)
 
 
 

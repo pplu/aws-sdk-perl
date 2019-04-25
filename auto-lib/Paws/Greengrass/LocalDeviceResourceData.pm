@@ -32,19 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Attributes that define the Local Device Resource.
+Attributes that define a local device resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 GroupOwnerSetting => L<Paws::Greengrass::GroupOwnerSetting>
 
-  Group owner related settings for local resources.
+  Group/owner related settings for local resources.
 
 
 =head2 SourcePath => Str
 
-  Local source path of the resource.
+  The local absolute path of the device resource. The source path for a
+device resource can refer only to a character device or block device
+under ''/dev''.
 
 
 

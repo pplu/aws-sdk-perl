@@ -2,8 +2,10 @@
 package Paws::DynamoDB::UpdateTable;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
+  has BillingMode => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate]');
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+  has SSESpecification => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -22,17 +24,35 @@ Paws::DynamoDB::UpdateTable - Arguments for method UpdateTable on L<Paws::Dynamo
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateTable on the 
-Amazon DynamoDB service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateTable on the
+L<Amazon DynamoDB|Paws::DynamoDB> service. Use the attributes of this class
 as arguments to method UpdateTable.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateTable.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateTable(Att1 => $value1, Att2 => $value2, ...);
+    my $dynamodb = Paws->service('DynamoDB');
+   # To modify a table's provisioned throughput
+   # This example increases the provisioned read and write capacity on the Music
+   # table.
+    my $UpdateTableOutput = $dynamodb->UpdateTable(
+      {
+        'ProvisionedThroughput' => {
+          'ReadCapacityUnits'  => 10,
+          'WriteCapacityUnits' => 10
+        },
+        'TableName' => 'MusicCollection'
+      }
+    );
+
+    # Results:
+    my $TableDescription = $UpdateTableOutput->TableDescription;
+
+    # Returns a L<Paws::DynamoDB::UpdateTableOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dynamodb/UpdateTable>
 
 =head1 ATTRIBUTES
 
@@ -45,6 +65,32 @@ C<AttributeDefinitions> must include the key element(s) of the new
 index.
 
 
+
+=head2 BillingMode => Str
+
+Controls how you are charged for read and write throughput and how you
+manage capacity. When switching from pay-per-request to provisioned
+capacity, initial provisioned capacity values must be set. The initial
+provisioned capacity values are estimated based on the consumed read
+and write capacity of your table and global secondary indexes over the
+past 30 minutes.
+
+=over
+
+=item *
+
+C<PROVISIONED> - Sets the billing mode to C<PROVISIONED>. We recommend
+using C<PROVISIONED> for predictable workloads.
+
+=item *
+
+C<PAY_PER_REQUEST> - Sets the billing mode to C<PAY_PER_REQUEST>. We
+recommend using C<PAY_PER_REQUEST> for unpredictable workloads.
+
+=back
+
+
+Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
 
 =head2 GlobalSecondaryIndexUpdates => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexUpdate>]
 
@@ -78,6 +124,12 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 The new provisioned throughput settings for the specified table or
 index.
+
+
+
+=head2 SSESpecification => L<Paws::DynamoDB::SSESpecification>
+
+The new server-side encryption settings for the specified table.
 
 
 

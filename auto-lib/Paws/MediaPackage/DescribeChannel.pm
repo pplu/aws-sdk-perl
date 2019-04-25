@@ -19,17 +19,30 @@ Paws::MediaPackage::DescribeChannel - Arguments for method DescribeChannel on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeChannel on the 
-AWS Elemental MediaPackage service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeChannel on the
+L<AWS Elemental MediaPackage|Paws::MediaPackage> service. Use the attributes of this class
 as arguments to method DescribeChannel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeChannel.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeChannel(Att1 => $value1, Att2 => $value2, ...);
+    my $mediapackage = Paws->service('MediaPackage');
+    my $DescribeChannelResponse = $mediapackage->DescribeChannel(
+      Id => 'My__string',
+
+    );
+
+    # Results:
+    my $Arn         = $DescribeChannelResponse->Arn;
+    my $Description = $DescribeChannelResponse->Description;
+    my $HlsIngest   = $DescribeChannelResponse->HlsIngest;
+    my $Id          = $DescribeChannelResponse->Id;
+
+    # Returns a L<Paws::MediaPackage::DescribeChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediapackage/DescribeChannel>
 
 =head1 ATTRIBUTES
 

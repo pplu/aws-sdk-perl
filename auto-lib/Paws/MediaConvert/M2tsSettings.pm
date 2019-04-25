@@ -13,9 +13,11 @@ package Paws::MediaConvert::M2tsSettings;
   has EbpAudioInterval => (is => 'ro', isa => 'Str', request_name => 'ebpAudioInterval', traits => ['NameInRequest']);
   has EbpPlacement => (is => 'ro', isa => 'Str', request_name => 'ebpPlacement', traits => ['NameInRequest']);
   has EsRateInPes => (is => 'ro', isa => 'Str', request_name => 'esRateInPes', traits => ['NameInRequest']);
+  has ForceTsVideoEbpOrder => (is => 'ro', isa => 'Str', request_name => 'forceTsVideoEbpOrder', traits => ['NameInRequest']);
   has FragmentTime => (is => 'ro', isa => 'Num', request_name => 'fragmentTime', traits => ['NameInRequest']);
   has MaxPcrInterval => (is => 'ro', isa => 'Int', request_name => 'maxPcrInterval', traits => ['NameInRequest']);
   has MinEbpInterval => (is => 'ro', isa => 'Int', request_name => 'minEbpInterval', traits => ['NameInRequest']);
+  has NielsenId3 => (is => 'ro', isa => 'Str', request_name => 'nielsenId3', traits => ['NameInRequest']);
   has NullPacketBitrate => (is => 'ro', isa => 'Num', request_name => 'nullPacketBitrate', traits => ['NameInRequest']);
   has PatInterval => (is => 'ro', isa => 'Int', request_name => 'patInterval', traits => ['NameInRequest']);
   has PcrControl => (is => 'ro', isa => 'Str', request_name => 'pcrControl', traits => ['NameInRequest']);
@@ -30,6 +32,7 @@ package Paws::MediaConvert::M2tsSettings;
   has SegmentationMarkers => (is => 'ro', isa => 'Str', request_name => 'segmentationMarkers', traits => ['NameInRequest']);
   has SegmentationStyle => (is => 'ro', isa => 'Str', request_name => 'segmentationStyle', traits => ['NameInRequest']);
   has SegmentationTime => (is => 'ro', isa => 'Num', request_name => 'segmentationTime', traits => ['NameInRequest']);
+  has TimedMetadataPid => (is => 'ro', isa => 'Int', request_name => 'timedMetadataPid', traits => ['NameInRequest']);
   has TransportStreamId => (is => 'ro', isa => 'Int', request_name => 'transportStreamId', traits => ['NameInRequest']);
   has VideoPid => (is => 'ro', isa => 'Int', request_name => 'videoPid', traits => ['NameInRequest']);
 1;
@@ -81,8 +84,7 @@ Settings for M2TS Container.
 
   Packet Identifier (PID) of the elementary audio stream(s) in the
 transport stream. Multiple values are accepted, and can be entered in
-ranges and/or by comma separation. Can be entered as decimal or
-hexadecimal values.
+ranges and/or by comma separation.
 
 
 =head2 Bitrate => Int
@@ -111,8 +113,7 @@ Other common values are 3750000, 7500000, and 15000000.
 
   Packet Identifier (PID) for input source DVB Subtitle data to this
 output. Multiple values are accepted, and can be entered in ranges
-and/or by comma separation. Can be entered as decimal or hexadecimal
-values.
+and/or by comma separation.
 
 
 =head2 DvbTdtSettings => L<Paws::MediaConvert::DvbTdtSettings>
@@ -123,7 +124,7 @@ values.
 =head2 DvbTeletextPid => Int
 
   Packet Identifier (PID) for input source DVB Teletext data to this
-output. Can be entered as a decimal or hexadecimal value.
+output.
 
 
 =head2 EbpAudioInterval => Str
@@ -137,6 +138,11 @@ output. Can be entered as a decimal or hexadecimal value.
 
 
 =head2 EsRateInPes => Str
+
+  
+
+
+=head2 ForceTsVideoEbpOrder => Str
 
   
 
@@ -163,6 +169,11 @@ The Live Event must be configured elsewhere to create sufficient
 latency to make the lookahead accurate.
 
 
+=head2 NielsenId3 => Str
+
+  
+
+
 =head2 NullPacketBitrate => Num
 
   Value in bits per second of extra null packets to insert into the
@@ -185,8 +196,7 @@ output transport stream.
 
   Packet Identifier (PID) of the Program Clock Reference (PCR) in the
 transport stream. When no value is given, the encoder will assign the
-same value as the Video PID. Can be entered as a decimal or hexadecimal
-value.
+same value as the Video PID.
 
 
 =head2 PmtInterval => Int
@@ -198,13 +208,13 @@ output transport stream.
 =head2 PmtPid => Int
 
   Packet Identifier (PID) for the Program Map Table (PMT) in the
-transport stream. Can be entered as a decimal or hexadecimal value.
+transport stream.
 
 
 =head2 PrivateMetadataPid => Int
 
   Packet Identifier (PID) of the private metadata stream in the transport
-stream. Can be entered as a decimal or hexadecimal value.
+stream.
 
 
 =head2 ProgramNumber => Int
@@ -220,7 +230,6 @@ stream. Can be entered as a decimal or hexadecimal value.
 =head2 Scte35Pid => Int
 
   Packet Identifier (PID) of the SCTE-35 stream in the transport stream.
-Can be entered as a decimal or hexadecimal value.
 
 
 =head2 Scte35Source => Str
@@ -244,6 +253,12 @@ Can be entered as a decimal or hexadecimal value.
 to _none_.
 
 
+=head2 TimedMetadataPid => Int
+
+  Packet Identifier (PID) of the timed metadata stream in the transport
+stream.
+
+
 =head2 TransportStreamId => Int
 
   The value of the transport stream ID field in the Program Map Table.
@@ -252,7 +267,7 @@ to _none_.
 =head2 VideoPid => Int
 
   Packet Identifier (PID) of the elementary video stream in the transport
-stream. Can be entered as a decimal or hexadecimal value.
+stream.
 
 
 

@@ -22,17 +22,32 @@ Paws::Route53::ListReusableDelegationSets - Arguments for method ListReusableDel
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListReusableDelegationSets on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method ListReusableDelegationSets on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method ListReusableDelegationSets.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListReusableDelegationSets.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListReusableDelegationSets(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $ListReusableDelegationSetsResponse =
+      $route53->ListReusableDelegationSets(
+      Marker   => 'MyPageMarker',      # OPTIONAL
+      MaxItems => 'MyPageMaxItems',    # OPTIONAL
+      );
+
+    # Results:
+    my $DelegationSets = $ListReusableDelegationSetsResponse->DelegationSets;
+    my $IsTruncated    = $ListReusableDelegationSetsResponse->IsTruncated;
+    my $Marker         = $ListReusableDelegationSetsResponse->Marker;
+    my $MaxItems       = $ListReusableDelegationSetsResponse->MaxItems;
+    my $NextMarker     = $ListReusableDelegationSetsResponse->NextMarker;
+
+    # Returns a L<Paws::Route53::ListReusableDelegationSetsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/ListReusableDelegationSets>
 
 =head1 ATTRIBUTES
 
@@ -56,8 +71,7 @@ there are no more reusable delegation sets to get.
 
 The number of reusable delegation sets that you want Amazon Route 53 to
 return in the response to this request. If you specify a value greater
-than 100, Amazon Route 53 returns only the first 100 reusable
-delegation sets.
+than 100, Route 53 returns only the first 100 reusable delegation sets.
 
 
 

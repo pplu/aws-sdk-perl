@@ -20,17 +20,23 @@ Paws::CloudDirectory::DeleteTypedLinkFacet - Arguments for method DeleteTypedLin
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteTypedLinkFacet on the 
-Amazon CloudDirectory service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteTypedLinkFacet on the
+L<Amazon CloudDirectory|Paws::CloudDirectory> service. Use the attributes of this class
 as arguments to method DeleteTypedLinkFacet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTypedLinkFacet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteTypedLinkFacet(Att1 => $value1, Att2 => $value2, ...);
+    my $clouddirectory = Paws->service('CloudDirectory');
+    my $DeleteTypedLinkFacetResponse = $clouddirectory->DeleteTypedLinkFacet(
+      Name      => 'MyTypedLinkName',
+      SchemaArn => 'MyArn',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clouddirectory/DeleteTypedLinkFacet>
 
 =head1 ATTRIBUTES
 

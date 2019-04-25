@@ -40,7 +40,10 @@ should be applied to schematize the records on the stream.
 
 =head2 MappingParameters => L<Paws::KinesisAnalytics::MappingParameters>
 
-  
+  When configuring application input at the time of creating or updating
+an application, provides additional mapping information specific to the
+record format (such as JSON, CSV, or record fields delimited by some
+delimiter) on the streaming source.
 
 
 =head2 B<REQUIRED> RecordFormatType => Str

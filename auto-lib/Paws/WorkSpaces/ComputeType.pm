@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Contains information about the compute type of a WorkSpace bundle.
+Describes the compute type.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-  The name of the compute type for the bundle.
+  The compute type.
 
 
 

@@ -3,7 +3,7 @@ package Paws::ApiGateway::CreateUsagePlanKey;
   use Moose;
   has KeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyId', required => 1);
   has KeyType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyType', required => 1);
-  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usagePlanId', required => 1);
+  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usageplanId', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -21,37 +21,54 @@ Paws::ApiGateway::CreateUsagePlanKey - Arguments for method CreateUsagePlanKey o
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateUsagePlanKey on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateUsagePlanKey on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method CreateUsagePlanKey.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateUsagePlanKey.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateUsagePlanKey(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $UsagePlanKey = $apigateway->CreateUsagePlanKey(
+      KeyId       => 'MyString',
+      KeyType     => 'MyString',
+      UsagePlanId => 'MyString',
+
+    );
+
+    # Results:
+    my $Id    = $UsagePlanKey->Id;
+    my $Name  = $UsagePlanKey->Name;
+    my $Type  = $UsagePlanKey->Type;
+    my $Value = $UsagePlanKey->Value;
+
+    # Returns a L<Paws::ApiGateway::UsagePlanKey> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/CreateUsagePlanKey>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> KeyId => Str
 
-The identifier of a UsagePlanKey resource for a plan customer.
+[Required] The identifier of a UsagePlanKey resource for a plan
+customer.
 
 
 
 =head2 B<REQUIRED> KeyType => Str
 
-The type of a UsagePlanKey resource for a plan customer.
+[Required] The type of a UsagePlanKey resource for a plan customer.
 
 
 
 =head2 B<REQUIRED> UsagePlanId => Str
 
-The Id of the UsagePlan resource representing the usage plan containing
-the to-be-created UsagePlanKey resource representing a plan customer.
+[Required] The Id of the UsagePlan resource representing the usage plan
+containing the to-be-created UsagePlanKey resource representing a plan
+customer.
 
 
 

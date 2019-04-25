@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 =head1 DESCRIPTION
 
 Kinesis video stream stream that provides the source streaming video
-for a Rekognition Video stream processor. For more information, see .
+for a Amazon Rekognition Video stream processor. For more information,
+see CreateStreamProcessor in the Amazon Rekognition Developer Guide.
 
 =head1 ATTRIBUTES
 

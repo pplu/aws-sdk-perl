@@ -20,17 +20,31 @@ Paws::GuardDuty::GetThreatIntelSet - Arguments for method GetThreatIntelSet on L
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetThreatIntelSet on the 
-Amazon GuardDuty service. Use the attributes of this class
+This class represents the parameters used for calling the method GetThreatIntelSet on the
+L<Amazon GuardDuty|Paws::GuardDuty> service. Use the attributes of this class
 as arguments to method GetThreatIntelSet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetThreatIntelSet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetThreatIntelSet(Att1 => $value1, Att2 => $value2, ...);
+    my $guardduty = Paws->service('GuardDuty');
+    my $GetThreatIntelSetResponse = $guardduty->GetThreatIntelSet(
+      DetectorId       => 'My__string',
+      ThreatIntelSetId => 'My__string',
+
+    );
+
+    # Results:
+    my $Format   = $GetThreatIntelSetResponse->Format;
+    my $Location = $GetThreatIntelSetResponse->Location;
+    my $Name     = $GetThreatIntelSetResponse->Name;
+    my $Status   = $GetThreatIntelSetResponse->Status;
+
+    # Returns a L<Paws::GuardDuty::GetThreatIntelSetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/GetThreatIntelSet>
 
 =head1 ATTRIBUTES
 

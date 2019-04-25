@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Configuration information for the directory used to join domains.
+Describes the configuration information for the directory used to join
+a streaming instance to a Microsoft Active Directory domain.
 
 =head1 ATTRIBUTES
 

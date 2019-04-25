@@ -21,17 +21,35 @@ Paws::CodeDeploy::ListDeploymentInstances - Arguments for method ListDeploymentI
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListDeploymentInstances on the 
-AWS CodeDeploy service. Use the attributes of this class
+This class represents the parameters used for calling the method ListDeploymentInstances on the
+L<AWS CodeDeploy|Paws::CodeDeploy> service. Use the attributes of this class
 as arguments to method ListDeploymentInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDeploymentInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListDeploymentInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $codedeploy = Paws->service('CodeDeploy');
+    my $ListDeploymentInstancesOutput = $codedeploy->ListDeploymentInstances(
+      DeploymentId         => 'MyDeploymentId',
+      InstanceStatusFilter => [
+        'Pending',
+        ... # values: Pending, InProgress, Succeeded, Failed, Skipped, Unknown, Ready
+      ],    # OPTIONAL
+      InstanceTypeFilter => [
+        'Blue', ...    # values: Blue, Green
+      ],               # OPTIONAL
+      NextToken => 'MyNextToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $InstancesList = $ListDeploymentInstancesOutput->InstancesList;
+    my $NextToken     = $ListDeploymentInstancesOutput->NextToken;
+
+    # Returns a L<Paws::CodeDeploy::ListDeploymentInstancesOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codedeploy/ListDeploymentInstances>
 
 =head1 ATTRIBUTES
 
@@ -50,11 +68,11 @@ A subset of instances to list by status:
 
 =item *
 
-Pending: Include those instance with pending deployments.
+Pending: Include those instances with pending deployments.
 
 =item *
 
-InProgress: Include those instance where deployments are still in
+InProgress: Include those instances where deployments are still in
 progress.
 
 =item *
@@ -63,15 +81,15 @@ Succeeded: Include those instances with successful deployments.
 
 =item *
 
-Failed: Include those instance with failed deployments.
+Failed: Include those instances with failed deployments.
 
 =item *
 
-Skipped: Include those instance with skipped deployments.
+Skipped: Include those instances with skipped deployments.
 
 =item *
 
-Unknown: Include those instance with deployments in an unknown state.
+Unknown: Include those instances with deployments in an unknown state.
 
 =back
 

@@ -38,7 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Instan
 
 Contains information about an instance profile.
 
-This data type is used as a response element in the following actions:
+This data type is used as a response element in the following
+operations:
 
 =over
 

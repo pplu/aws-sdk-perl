@@ -1,6 +1,7 @@
 package Paws::S3::OutputSerialization;
   use Moose;
   has CSV => (is => 'ro', isa => 'Paws::S3::CSVOutput');
+  has JSON => (is => 'ro', isa => 'Paws::S3::JSONOutput');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::S3::OutputSerialization object:
 
-  $service_obj->Method(Att1 => { CSV => $value, ..., CSV => $value  });
+  $service_obj->Method(Att1 => { CSV => $value, ..., JSON => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ Describes how results of the Select job are serialized.
 =head2 CSV => L<Paws::S3::CSVOutput>
 
   Describes the serialization of CSV-encoded Select results.
+
+
+=head2 JSON => L<Paws::S3::JSONOutput>
+
+  Specifies JSON as request's output serialization format.
 
 
 

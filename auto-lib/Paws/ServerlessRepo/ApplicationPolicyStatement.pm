@@ -1,7 +1,7 @@
 package Paws::ServerlessRepo::ApplicationPolicyStatement;
   use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'actions', traits => ['NameInRequest']);
-  has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'principals', traits => ['NameInRequest']);
+  has Actions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'actions', traits => ['NameInRequest'], required => 1);
+  has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'principals', traits => ['NameInRequest'], required => 1);
   has StatementId => (is => 'ro', isa => 'Str', request_name => 'statementId', traits => ['NameInRequest']);
 1;
 
@@ -38,15 +38,14 @@ Policy statement applied to the application.
 =head1 ATTRIBUTES
 
 
-=head2 Actions => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> Actions => ArrayRef[Str|Undef]
 
-  A list of supported actions:\n\n GetApplication \n \n\n
-CreateCloudFormationChangeSet \n \n\n ListApplicationVersions \n \n\n
-SearchApplications \n \n\n Deploy (Note: This action enables all other
-actions above.)
+  For the list of actions supported for this operation, see Application
+Permissions
+(https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions).
 
 
-=head2 Principals => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> Principals => ArrayRef[Str|Undef]
 
   An AWS account ID, or * to make the application public.
 

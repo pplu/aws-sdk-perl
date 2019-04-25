@@ -5,6 +5,7 @@ package Paws::IoT::RoleAliasDescription;
   has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
   has RoleAlias => (is => 'ro', isa => 'Str', request_name => 'roleAlias', traits => ['NameInRequest']);
+  has RoleAliasArn => (is => 'ro', isa => 'Str', request_name => 'roleAliasArn', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
 1;
 
@@ -64,6 +65,11 @@ Role alias description.
 =head2 RoleAlias => Str
 
   The role alias.
+
+
+=head2 RoleAliasArn => Str
+
+  The ARN of the role alias.
 
 
 =head2 RoleArn => Str

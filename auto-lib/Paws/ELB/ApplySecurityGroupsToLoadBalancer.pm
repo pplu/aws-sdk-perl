@@ -19,17 +19,34 @@ Paws::ELB::ApplySecurityGroupsToLoadBalancer - Arguments for method ApplySecurit
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ApplySecurityGroupsToLoadBalancer on the 
-Elastic Load Balancing service. Use the attributes of this class
+This class represents the parameters used for calling the method ApplySecurityGroupsToLoadBalancer on the
+L<Elastic Load Balancing|Paws::ELB> service. Use the attributes of this class
 as arguments to method ApplySecurityGroupsToLoadBalancer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ApplySecurityGroupsToLoadBalancer.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ApplySecurityGroupsToLoadBalancer(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticloadbalancing = Paws->service('ELB');
+    # To associate a security group with a load balancer in a VPC
+    # This example associates a security group with the specified load balancer
+    # in a VPC.
+    my $ApplySecurityGroupsToLoadBalancerOutput =
+      $elasticloadbalancing->ApplySecurityGroupsToLoadBalancer(
+      {
+        'LoadBalancerName' => 'my-load-balancer',
+        'SecurityGroups'   => ['sg-fc448899']
+      }
+      );
+
+    # Results:
+    my $SecurityGroups =
+      $ApplySecurityGroupsToLoadBalancerOutput->SecurityGroups;
+
+    # Returns a L<Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing/ApplySecurityGroupsToLoadBalancer>
 
 =head1 ATTRIBUTES
 

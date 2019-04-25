@@ -23,17 +23,32 @@ Paws::Route53::ListHostedZones - Arguments for method ListHostedZones on L<Paws:
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListHostedZones on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method ListHostedZones on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method ListHostedZones.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListHostedZones.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListHostedZones(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $ListHostedZonesResponse = $route53->ListHostedZones(
+      DelegationSetId => 'MyResourceId',      # OPTIONAL
+      Marker          => 'MyPageMarker',      # OPTIONAL
+      MaxItems        => 'MyPageMaxItems',    # OPTIONAL
+    );
+
+    # Results:
+    my $HostedZones = $ListHostedZonesResponse->HostedZones;
+    my $IsTruncated = $ListHostedZonesResponse->IsTruncated;
+    my $Marker      = $ListHostedZonesResponse->Marker;
+    my $MaxItems    = $ListHostedZonesResponse->MaxItems;
+    my $NextMarker  = $ListHostedZonesResponse->NextMarker;
+
+    # Returns a L<Paws::Route53::ListHostedZonesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/ListHostedZones>
 
 =head1 ATTRIBUTES
 
@@ -66,8 +81,8 @@ there are no more hosted zones to get.
 (Optional) The maximum number of hosted zones that you want Amazon
 Route 53 to return. If you have more than C<maxitems> hosted zones, the
 value of C<IsTruncated> in the response is C<true>, and the value of
-C<NextMarker> is the hosted zone ID of the first hosted zone that
-Amazon Route 53 will return if you submit another request.
+C<NextMarker> is the hosted zone ID of the first hosted zone that Route
+53 will return if you submit another request.
 
 
 

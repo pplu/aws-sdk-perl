@@ -19,17 +19,31 @@ Paws::MediaStoreData::DescribeObject - Arguments for method DescribeObject on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeObject on the 
-AWS Elemental MediaStore Data Plane service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeObject on the
+L<AWS Elemental MediaStore Data Plane|Paws::MediaStoreData> service. Use the attributes of this class
 as arguments to method DescribeObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeObject(Att1 => $value1, Att2 => $value2, ...);
+    my $data.mediastore = Paws->service('MediaStoreData');
+    my $DescribeObjectResponse = $data . mediastore->DescribeObject(
+      Path => 'MyPathNaming',
+
+    );
+
+    # Results:
+    my $CacheControl  = $DescribeObjectResponse->CacheControl;
+    my $ContentLength = $DescribeObjectResponse->ContentLength;
+    my $ContentType   = $DescribeObjectResponse->ContentType;
+    my $ETag          = $DescribeObjectResponse->ETag;
+    my $LastModified  = $DescribeObjectResponse->LastModified;
+
+    # Returns a L<Paws::MediaStoreData::DescribeObjectResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/data.mediastore/DescribeObject>
 
 =head1 ATTRIBUTES
 

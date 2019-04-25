@@ -42,19 +42,19 @@ a deployment group.
 
 =head2 CreateTime => Str
 
-  A timestamp indicating when the most recent deployment to the
+  A timestamp that indicates when the most recent deployment to the
 deployment group started.
 
 
 =head2 DeploymentId => Str
 
-  The deployment ID.
+  The unique ID of a deployment.
 
 
 =head2 EndTime => Str
 
-  A timestamp indicating when the most recent deployment to the
-deployment group completed.
+  A timestamp that indicates when the most recent deployment to the
+deployment group was complete.
 
 
 =head2 Status => Str

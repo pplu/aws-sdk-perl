@@ -3,6 +3,7 @@ package Paws::StorageGateway::VolumeInfo;
   has GatewayARN => (is => 'ro', isa => 'Str');
   has GatewayId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
+  has VolumeAttachmentStatus => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
   has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
   has VolumeType => (is => 'ro', isa => 'Str');
@@ -65,6 +66,11 @@ C<arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/volume/vol-
 
 Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and
 hyphens (-).
+
+
+=head2 VolumeAttachmentStatus => Str
+
+  
 
 
 =head2 VolumeId => Str

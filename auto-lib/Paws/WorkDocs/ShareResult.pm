@@ -1,5 +1,6 @@
 package Paws::WorkDocs::ShareResult;
   use Moose;
+  has InviteePrincipalId => (is => 'ro', isa => 'Str');
   has PrincipalId => (is => 'ro', isa => 'Str');
   has Role => (is => 'ro', isa => 'Str');
   has ShareId => (is => 'ro', isa => 'Str');
@@ -24,20 +25,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::WorkDocs::ShareResult object:
 
-  $service_obj->Method(Att1 => { PrincipalId => $value, ..., StatusMessage => $value  });
+  $service_obj->Method(Att1 => { InviteePrincipalId => $value, ..., StatusMessage => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::WorkDocs::ShareResult object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->PrincipalId
+  $result->Att1->InviteePrincipalId
 
 =head1 DESCRIPTION
 
 Describes the share results of a resource.
 
 =head1 ATTRIBUTES
+
+
+=head2 InviteePrincipalId => Str
+
+  The ID of the invited user.
 
 
 =head2 PrincipalId => Str

@@ -3,6 +3,8 @@ package Paws::EC2::DescribeRouteTables;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
   has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RouteTableId' );
 
   use MooseX::ClassAttribute;
@@ -20,17 +22,30 @@ Paws::EC2::DescribeRouteTables - Arguments for method DescribeRouteTables on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeRouteTables on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeRouteTables on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeRouteTables.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRouteTables.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeRouteTables(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe a route table
+    # This example describes the specified route table.
+    my $DescribeRouteTablesResult = $ec2->DescribeRouteTables(
+      {
+        'RouteTableIds' => ['rtb-1f382e7d']
+      }
+    );
+
+    # Results:
+    my $RouteTables = $DescribeRouteTablesResult->RouteTables;
+
+    # Returns a L<Paws::EC2::DescribeRouteTablesResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeRouteTables>
 
 =head1 ATTRIBUTES
 
@@ -73,6 +88,10 @@ have an association ID are not returned in the response.
 
 =item *
 
+C<owner-id> - The ID of the AWS account that owns the route table.
+
+=item *
+
 C<route-table-id> - The ID of the route table.
 
 =item *
@@ -111,6 +130,10 @@ C<route.nat-gateway-id> - The ID of a NAT gateway.
 
 =item *
 
+C<route.transit-gateway-id> - The ID of a transit gateway.
+
+=item *
+
 C<route.origin> - Describes how the route was created.
 C<CreateRouteTable> indicates that the route was automatically created
 when the route table was created; C<CreateRoute> indicates that the
@@ -132,26 +155,21 @@ specified in a route in the table.
 
 =item *
 
-C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource. Specify the key of the tag in the filter name and the
-value of the tag in the filter value. For example, for the tag
-Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
-filter value.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. This filter is
-independent of the C<tag-value> filter. For example, if you use both
-the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
-resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of what the tag's key
-is). If you want to list only resources where Purpose is X, see the
-C<tag>:I<key>=I<value> filter.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =item *
 
-C<tag-value> - The value of a tag assigned to the resource. This filter
-is independent of the C<tag-key> filter.
+C<transit-gateway-id> - The ID of a transit gateway.
 
 =item *
 
@@ -159,6 +177,20 @@ C<vpc-id> - The ID of the VPC for the route table.
 
 =back
 
+
+
+
+=head2 MaxResults => Int
+
+The maximum number of results to return in a single call. To retrieve
+the remaining results, make another call with the returned B<NextToken>
+value. This value can be between 5 and 100.
+
+
+
+=head2 NextToken => Str
+
+The token to retrieve the next page of results.
 
 
 

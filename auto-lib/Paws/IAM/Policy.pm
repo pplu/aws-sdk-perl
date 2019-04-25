@@ -7,6 +7,7 @@ package Paws::IAM::Policy;
   has Description => (is => 'ro', isa => 'Str');
   has IsAttachable => (is => 'ro', isa => 'Bool');
   has Path => (is => 'ro', isa => 'Str');
+  has PermissionsBoundaryUsageCount => (is => 'ro', isa => 'Int');
   has PolicyId => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str');
   has UpdateDate => (is => 'ro', isa => 'Str');
@@ -43,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Policy
 Contains information about a managed policy.
 
 This data type is used as a response element in the CreatePolicy,
-GetPolicy, and ListPolicies actions.
+GetPolicy, and ListPolicies operations.
 
 For more information about managed policies, refer to Managed Policies
 and Inline Policies
@@ -97,6 +98,17 @@ role.
 For more information about paths, see IAM Identifiers
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
+
+
+=head2 PermissionsBoundaryUsageCount => Int
+
+  The number of entities (users and roles) for which the policy is used
+to set the permissions boundary.
+
+For more information about permissions boundaries, see Permissions
+Boundaries for IAM Identities
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+in the I<IAM User Guide>.
 
 
 =head2 PolicyId => Str

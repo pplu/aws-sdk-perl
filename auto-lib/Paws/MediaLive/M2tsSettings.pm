@@ -225,9 +225,7 @@ to videoPid, EBP markers will be placed on only the video PID.
 
 =head2 EcmPid => Str
 
-  Packet Identifier (PID) for ECM in the transport stream. Only enabled
-when Simulcrypt is enabled. Can be entered as a decimal or hexadecimal
-value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+  This field is unused and deprecated.
 
 
 =head2 EsRateInPes => Str

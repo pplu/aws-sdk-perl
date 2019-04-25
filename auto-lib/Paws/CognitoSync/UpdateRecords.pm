@@ -25,17 +25,41 @@ Paws::CognitoSync::UpdateRecords - Arguments for method UpdateRecords on L<Paws:
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateRecords on the 
-Amazon Cognito Sync service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateRecords on the
+L<Amazon Cognito Sync|Paws::CognitoSync> service. Use the attributes of this class
 as arguments to method UpdateRecords.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRecords.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateRecords(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-sync = Paws->service('CognitoSync');
+    my $UpdateRecordsResponse = $cognito -sync->UpdateRecords(
+      DatasetName      => 'MyDatasetName',
+      IdentityId       => 'MyIdentityId',
+      IdentityPoolId   => 'MyIdentityPoolId',
+      SyncSessionToken => 'MySyncSessionToken',
+      ClientContext    => 'MyClientContext',      # OPTIONAL
+      DeviceId         => 'MyDeviceId',           # OPTIONAL
+      RecordPatches    => [
+        {
+          Key       => 'MyRecordKey',             # min: 1, max: 1024
+          Op        => 'replace',                 # values: replace, remove
+          SyncCount => 1,
+          DeviceLastModifiedDate => '1970-01-01T01:00:00',    # OPTIONAL
+          Value => 'MyRecordValue',    # max: 1048575; OPTIONAL
+        },
+        ...
+      ],                               # OPTIONAL
+    );
+
+    # Results:
+    my $Records = $UpdateRecordsResponse->Records;
+
+    # Returns a L<Paws::CognitoSync::UpdateRecordsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-sync/UpdateRecords>
 
 =head1 ATTRIBUTES
 

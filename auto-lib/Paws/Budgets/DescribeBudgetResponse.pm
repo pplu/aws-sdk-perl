@@ -16,7 +16,7 @@ Paws::Budgets::DescribeBudgetResponse
 
 =head2 Budget => L<Paws::Budgets::Budget>
 
-
+The description of the budget.
 
 
 =head2 _request_id => Str

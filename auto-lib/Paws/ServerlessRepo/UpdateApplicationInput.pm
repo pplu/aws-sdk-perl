@@ -2,6 +2,7 @@ package Paws::ServerlessRepo::UpdateApplicationInput;
   use Moose;
   has Author => (is => 'ro', isa => 'Str', request_name => 'author', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has HomePageUrl => (is => 'ro', isa => 'Str', request_name => 'homePageUrl', traits => ['NameInRequest']);
   has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'labels', traits => ['NameInRequest']);
   has ReadmeBody => (is => 'ro', isa => 'Str', request_name => 'readmeBody', traits => ['NameInRequest']);
   has ReadmeUrl => (is => 'ro', isa => 'Str', request_name => 'readmeUrl', traits => ['NameInRequest']);
@@ -35,39 +36,56 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessR
 
 =head1 DESCRIPTION
 
-Update application request.
+Update the application request.
 
 =head1 ATTRIBUTES
 
 
 =head2 Author => Str
 
-  The name of the author publishing the app.\nMin Length=1. Max
-Length=127.\nPattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
+  The name of the author publishing the app.
+
+Minimum length=1. Maximum length=127.
+
+Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
 
 =head2 Description => Str
 
-  The description of the application.\nMin Length=1. Max Length=256
+  The description of the application.
+
+Minimum length=1. Maximum length=256
+
+
+=head2 HomePageUrl => Str
+
+  A URL with more information about the application, for example the
+location of your GitHub repository for the application.
 
 
 =head2 Labels => ArrayRef[Str|Undef]
 
-  Labels to improve discovery of apps in search results.\nMin Length=1.
-Max Length=127. Maximum number of labels: 10\nPattern:
-"^[a-zA-Z0-9+\\-_:\\/@]+$";
+  Labels to improve discovery of apps in search results.
+
+Minimum length=1. Maximum length=127. Maximum number of labels: 10
+
+Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
 
 =head2 ReadmeBody => Str
 
-  A raw text Readme file that contains a more detailed description of the
-application and how it works in markdown language.\nMax size 5 MB
+  A text readme file in Markdown language that contains a more detailed
+description of the application and how it works.
+
+Maximum size 5 MB
 
 
 =head2 ReadmeUrl => Str
 
-  A link to the Readme file that contains a more detailed description of
-the application and how it works in markdown language.\nMax size 5 MB
+  A link to the readme file in Markdown language that contains a more
+detailed description of the application and how it works.
+
+Maximum size 5 MB
 
 
 

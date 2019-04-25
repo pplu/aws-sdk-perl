@@ -1,13 +1,14 @@
 package Paws::MediaConvert::JobTemplate;
   use Moose;
+  has AccelerationSettings => (is => 'ro', isa => 'Paws::MediaConvert::AccelerationSettings', request_name => 'accelerationSettings', traits => ['NameInRequest']);
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has LastUpdated => (is => 'ro', isa => 'Str', request_name => 'lastUpdated', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Queue => (is => 'ro', isa => 'Str', request_name => 'queue', traits => ['NameInRequest']);
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', request_name => 'settings', traits => ['NameInRequest']);
+  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
@@ -28,14 +29,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::JobTemplate object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { AccelerationSettings => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::JobTemplate object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Arn
+  $result->Att1->AccelerationSettings
 
 =head1 DESCRIPTION
 
@@ -43,6 +44,11 @@ A job template is a pre-made set of encoding instructions that you can
 use to quickly create a job.
 
 =head1 ATTRIBUTES
+
+
+=head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
+
+  Acceleration settings for job execution.
 
 
 =head2 Arn => Str
@@ -70,7 +76,7 @@ use to quickly create a job.
   The timestamp in epoch seconds when the Job template was last updated.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
   A name you create for each job template. Each name must be unique
 within your account.
@@ -82,7 +88,7 @@ within your account.
 to. If you don't specify this, jobs will go to the default queue.
 
 
-=head2 Settings => L<Paws::MediaConvert::JobTemplateSettings>
+=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobTemplateSettings>
 
   
 
@@ -90,7 +96,7 @@ to. If you don't specify this, jobs will go to the default queue.
 =head2 Type => Str
 
   A job template can be of two types: system or custom. System or
-built-in job templates canE<rsquo>t be modified or deleted by the user.
+built-in job templates can't be modified or deleted by the user.
 
 
 

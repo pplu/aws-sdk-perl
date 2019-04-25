@@ -22,17 +22,32 @@ Paws::ECS::ListContainerInstances - Arguments for method ListContainerInstances 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListContainerInstances on the 
-Amazon EC2 Container Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ListContainerInstances on the
+L<Amazon EC2 Container Service|Paws::ECS> service. Use the attributes of this class
 as arguments to method ListContainerInstances.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListContainerInstances.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListContainerInstances(Att1 => $value1, Att2 => $value2, ...);
+    my $ecs = Paws->service('ECS');
+    # To list your available container instances in a cluster
+    # This example lists all of your available container instances in the
+    # specified cluster in your default region.
+    my $ListContainerInstancesResponse = $ecs->ListContainerInstances(
+      {
+        'Cluster' => 'default'
+      }
+    );
+
+    # Results:
+    my $containerInstanceArns =
+      $ListContainerInstancesResponse->containerInstanceArns;
+
+    # Returns a L<Paws::ECS::ListContainerInstancesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/ListContainerInstances>
 
 =head1 ATTRIBUTES
 
@@ -50,7 +65,7 @@ the default cluster is assumed.
 You can filter the results of a C<ListContainerInstances> operation
 with cluster query language statements. For more information, see
 Cluster Query Language
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

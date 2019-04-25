@@ -5,6 +5,7 @@ package Paws::LexModels::PutBot;
   has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
   has ChildDirected => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'childDirected', required => 1);
   has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'clarificationPrompt');
+  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
   has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
@@ -29,17 +30,80 @@ Paws::LexModels::PutBot - Arguments for method PutBot on L<Paws::LexModels>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutBot on the 
-Amazon Lex Model Building Service service. Use the attributes of this class
+This class represents the parameters used for calling the method PutBot on the
+L<Amazon Lex Model Building Service|Paws::LexModels> service. Use the attributes of this class
 as arguments to method PutBot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutBot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutBot(Att1 => $value1, Att2 => $value2, ...);
+    my $models.lex = Paws->service('LexModels');
+    my $PutBotResponse = $models . lex->PutBot(
+      ChildDirected  => 1,
+      Locale         => 'en-US',
+      Name           => 'MyBotName',
+      AbortStatement => {
+        Messages => [
+          {
+            Content => 'MyContentString',    # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
+          },
+          ...
+        ],                              # min: 1, max: 15
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+      },    # OPTIONAL
+      Checksum            => 'MyString',    # OPTIONAL
+      ClarificationPrompt => {
+        MaxAttempts => 1,                   # min: 1, max: 5
+        Messages    => [
+          {
+            Content => 'MyContentString',    # min: 1, max: 1000
+            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
+            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
+          },
+          ...
+        ],                              # min: 1, max: 15
+        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
+      },    # OPTIONAL
+      CreateVersion           => 1,                  # OPTIONAL
+      Description             => 'MyDescription',    # OPTIONAL
+      IdleSessionTTLInSeconds => 1,                  # OPTIONAL
+      Intents                 => [
+        {
+          IntentName    => 'MyIntentName',           # min: 1, max: 100
+          IntentVersion => 'MyVersion',              # min: 1, max: 64
+
+        },
+        ...
+      ],                                             # OPTIONAL
+      ProcessBehavior => 'SAVE',                     # OPTIONAL
+      VoiceId         => 'MyString',                 # OPTIONAL
+    );
+
+    # Results:
+    my $AbortStatement          = $PutBotResponse->AbortStatement;
+    my $Checksum                = $PutBotResponse->Checksum;
+    my $ChildDirected           = $PutBotResponse->ChildDirected;
+    my $ClarificationPrompt     = $PutBotResponse->ClarificationPrompt;
+    my $CreateVersion           = $PutBotResponse->CreateVersion;
+    my $CreatedDate             = $PutBotResponse->CreatedDate;
+    my $Description             = $PutBotResponse->Description;
+    my $FailureReason           = $PutBotResponse->FailureReason;
+    my $IdleSessionTTLInSeconds = $PutBotResponse->IdleSessionTTLInSeconds;
+    my $Intents                 = $PutBotResponse->Intents;
+    my $LastUpdatedDate         = $PutBotResponse->LastUpdatedDate;
+    my $Locale                  = $PutBotResponse->Locale;
+    my $Name                    = $PutBotResponse->Name;
+    my $Status                  = $PutBotResponse->Status;
+    my $Version                 = $PutBotResponse->Version;
+    my $VoiceId                 = $PutBotResponse->VoiceId;
+
+    # Returns a L<Paws::LexModels::PutBotResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/PutBot>
 
 =head1 ATTRIBUTES
 
@@ -124,6 +188,12 @@ would you like to do? You can say 'Order a pizza' or 'Order a drink.'"
 
 
 
+=head2 CreateVersion => Bool
+
+
+
+
+
 =head2 Description => Str
 
 A description of the bot.
@@ -167,7 +237,7 @@ must be compatible with the locale of the bot.
 
 The default is C<en-US>.
 
-Valid values are: C<"en-US">
+Valid values are: C<"en-US">, C<"en-GB">, C<"de-DE">
 
 =head2 B<REQUIRED> Name => Str
 
@@ -177,11 +247,11 @@ The name of the bot. The name is I<not> case sensitive.
 
 =head2 ProcessBehavior => Str
 
-If you set the C<processBehavior> element to C<Build>, Amazon Lex
-builds the bot so that it can be run. If you set the element to
-C<Save>Amazon Lex saves the bot, but doesn't build it.
+If you set the C<processBehavior> element to C<BUILD>, Amazon Lex
+builds the bot so that it can be run. If you set the element to C<SAVE>
+Amazon Lex saves the bot, but doesn't build it.
 
-If you don't specify this value, the default value is C<Save>.
+If you don't specify this value, the default value is C<BUILD>.
 
 Valid values are: C<"SAVE">, C<"BUILD">
 

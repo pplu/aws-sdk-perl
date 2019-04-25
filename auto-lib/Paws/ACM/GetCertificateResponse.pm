@@ -17,7 +17,7 @@ Paws::ACM::GetCertificateResponse
 
 =head2 Certificate => Str
 
-String that contains the ACM Certificate represented by the ARN
+String that contains the ACM certificate represented by the ARN
 specified at input.
 
 

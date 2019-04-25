@@ -19,17 +19,39 @@ Paws::MediaLive::DescribeChannel - Arguments for method DescribeChannel on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeChannel on the 
-AWS Elemental MediaLive service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeChannel on the
+L<AWS Elemental MediaLive|Paws::MediaLive> service. Use the attributes of this class
 as arguments to method DescribeChannel.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeChannel.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeChannel(Att1 => $value1, Att2 => $value2, ...);
+    my $medialive = Paws->service('MediaLive');
+    my $DescribeChannelResponse = $medialive->DescribeChannel(
+      ChannelId => 'My__string',
+
+    );
+
+    # Results:
+    my $Arn                   = $DescribeChannelResponse->Arn;
+    my $Destinations          = $DescribeChannelResponse->Destinations;
+    my $EgressEndpoints       = $DescribeChannelResponse->EgressEndpoints;
+    my $EncoderSettings       = $DescribeChannelResponse->EncoderSettings;
+    my $Id                    = $DescribeChannelResponse->Id;
+    my $InputAttachments      = $DescribeChannelResponse->InputAttachments;
+    my $InputSpecification    = $DescribeChannelResponse->InputSpecification;
+    my $LogLevel              = $DescribeChannelResponse->LogLevel;
+    my $Name                  = $DescribeChannelResponse->Name;
+    my $PipelinesRunningCount = $DescribeChannelResponse->PipelinesRunningCount;
+    my $RoleArn               = $DescribeChannelResponse->RoleArn;
+    my $State                 = $DescribeChannelResponse->State;
+    my $Tags                  = $DescribeChannelResponse->Tags;
+
+    # Returns a L<Paws::MediaLive::DescribeChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/medialive/DescribeChannel>
 
 =head1 ATTRIBUTES
 

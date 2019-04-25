@@ -26,17 +26,44 @@ Paws::S3::ListParts - Arguments for method ListParts on L<Paws::S3>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListParts on the 
-Amazon Simple Storage Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ListParts on the
+L<Amazon Simple Storage Service|Paws::S3> service. Use the attributes of this class
 as arguments to method ListParts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListParts.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListParts(Att1 => $value1, Att2 => $value2, ...);
+    my $s3 = Paws->service('S3');
+    my $ListPartsOutput = $s3->ListParts(
+      Bucket           => 'MyBucketName',
+      Key              => 'MyObjectKey',
+      UploadId         => 'MyMultipartUploadId',
+      MaxParts         => 1,                       # OPTIONAL
+      PartNumberMarker => 1,                       # OPTIONAL
+      RequestPayer     => 'requester',             # OPTIONAL
+    );
+
+    # Results:
+    my $AbortDate            = $ListPartsOutput->AbortDate;
+    my $AbortRuleId          = $ListPartsOutput->AbortRuleId;
+    my $Bucket               = $ListPartsOutput->Bucket;
+    my $Initiator            = $ListPartsOutput->Initiator;
+    my $IsTruncated          = $ListPartsOutput->IsTruncated;
+    my $Key                  = $ListPartsOutput->Key;
+    my $MaxParts             = $ListPartsOutput->MaxParts;
+    my $NextPartNumberMarker = $ListPartsOutput->NextPartNumberMarker;
+    my $Owner                = $ListPartsOutput->Owner;
+    my $PartNumberMarker     = $ListPartsOutput->PartNumberMarker;
+    my $Parts                = $ListPartsOutput->Parts;
+    my $RequestCharged       = $ListPartsOutput->RequestCharged;
+    my $StorageClass         = $ListPartsOutput->StorageClass;
+    my $UploadId             = $ListPartsOutput->UploadId;
+
+    # Returns a L<Paws::S3::ListPartsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/ListParts>
 
 =head1 ATTRIBUTES
 

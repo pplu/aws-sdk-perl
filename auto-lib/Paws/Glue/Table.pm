@@ -63,7 +63,8 @@ Represents a collection of related data organized in columns and rows.
 
 =head2 DatabaseName => Str
 
-  Name of the metadata database where the table metadata resides.
+  Name of the metadata database where the table metadata resides. For
+Hive compatibility, this must be all lowercase.
 
 
 =head2 Description => Str
@@ -84,7 +85,8 @@ may not be reliable.
 
 =head2 B<REQUIRED> Name => Str
 
-  Name of the table.
+  Name of the table. For Hive compatibility, this must be entirely
+lowercase.
 
 
 =head2 Owner => Str
@@ -94,13 +96,19 @@ may not be reliable.
 
 =head2 Parameters => L<Paws::Glue::ParametersMap>
 
-  Properties associated with this table, as a list of key-value pairs.
+  These key-value pairs define properties associated with the table.
 
 
 =head2 PartitionKeys => ArrayRef[L<Paws::Glue::Column>]
 
   A list of columns by which the table is partitioned. Only primitive
 types are supported as partition keys.
+
+When creating a table used by Athena, and you do not specify any
+C<partitionKeys>, you must at least set the value of C<partitionKeys>
+to an empty list. For example:
+
+C<"PartitionKeys": []>
 
 
 =head2 Retention => Int

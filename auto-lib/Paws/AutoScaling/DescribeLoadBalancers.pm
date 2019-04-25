@@ -20,17 +20,31 @@ Paws::AutoScaling::DescribeLoadBalancers - Arguments for method DescribeLoadBala
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeLoadBalancers on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeLoadBalancers on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method DescribeLoadBalancers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLoadBalancers.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeLoadBalancers(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To describe the load balancers for an Auto Scaling group
+    # This example describes the load balancers attached to the specified Auto
+    # Scaling group.
+    my $DescribeLoadBalancersResponse = $autoscaling->DescribeLoadBalancers(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group'
+      }
+    );
+
+    # Results:
+    my $LoadBalancers = $DescribeLoadBalancersResponse->LoadBalancers;
+
+    # Returns a L<Paws::AutoScaling::DescribeLoadBalancersResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/DescribeLoadBalancers>
 
 =head1 ATTRIBUTES
 
@@ -44,7 +58,7 @@ The name of the Auto Scaling group.
 =head2 MaxRecords => Int
 
 The maximum number of items to return with this call. The default value
-is 50 and the maximum value is 100.
+is 100 and the maximum value is 100.
 
 
 

@@ -23,17 +23,37 @@ Paws::DS::ConnectDirectory - Arguments for method ConnectDirectory on L<Paws::DS
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ConnectDirectory on the 
-AWS Directory Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ConnectDirectory on the
+L<AWS Directory Service|Paws::DS> service. Use the attributes of this class
 as arguments to method ConnectDirectory.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ConnectDirectory.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ConnectDirectory(Att1 => $value1, Att2 => $value2, ...);
+    my $ds = Paws->service('DS');
+    my $ConnectDirectoryResult = $ds->ConnectDirectory(
+      ConnectSettings => {
+        CustomerDnsIps   => [ 'MyIpAddr', ... ],
+        CustomerUserName => 'MyUserName',            # min: 1
+        SubnetIds        => [ 'MySubnetId', ... ],
+        VpcId            => 'MyVpcId',
+
+      },
+      Name        => 'MyDirectoryName',
+      Password    => 'MyConnectPassword',
+      Size        => 'Small',
+      Description => 'MyDescription',                # OPTIONAL
+      ShortName   => 'MyDirectoryShortName',         # OPTIONAL
+    );
+
+    # Results:
+    my $DirectoryId = $ConnectDirectoryResult->DirectoryId;
+
+    # Returns a L<Paws::DS::ConnectDirectoryResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ds/ConnectDirectory>
 
 =head1 ATTRIBUTES
 
@@ -53,7 +73,7 @@ A textual description for the directory.
 
 =head2 B<REQUIRED> Name => Str
 
-The fully-qualified name of the on-premises directory, such as
+The fully qualified name of the on-premises directory, such as
 C<corp.example.com>.
 
 

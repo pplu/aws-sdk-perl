@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::AccessC
 
 =head1 DESCRIPTION
 
-Container for information regarding the access control for replicas.
+A container for information about access control for replicas.
 
 =head1 ATTRIBUTES
 

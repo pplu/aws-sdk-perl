@@ -40,14 +40,15 @@ preprocess the records in the stream.
 
 =head2 ResourceARNUpdate => Str
 
-  The ARN of the new AWS Lambda
+  The Amazon Resource Name (ARN) of the new AWS Lambda
 (https://aws.amazon.com/documentation/lambda/) function that is used to
 preprocess the records in the stream.
 
 
 =head2 RoleARNUpdate => Str
 
-  The ARN of the new IAM role used to access the AWS Lambda function.
+  The ARN of the new IAM role that is used to access the AWS Lambda
+function.
 
 
 

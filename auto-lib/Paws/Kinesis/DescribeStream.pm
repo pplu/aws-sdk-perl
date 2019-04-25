@@ -20,17 +20,28 @@ Paws::Kinesis::DescribeStream - Arguments for method DescribeStream on L<Paws::K
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeStream on the 
-Amazon Kinesis service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeStream on the
+L<Amazon Kinesis|Paws::Kinesis> service. Use the attributes of this class
 as arguments to method DescribeStream.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStream.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeStream(Att1 => $value1, Att2 => $value2, ...);
+    my $kinesis = Paws->service('Kinesis');
+    my $DescribeStreamOutput = $kinesis->DescribeStream(
+      StreamName            => 'MyStreamName',
+      ExclusiveStartShardId => 'MyShardId',      # OPTIONAL
+      Limit                 => 1,                # OPTIONAL
+    );
+
+    # Results:
+    my $StreamDescription = $DescribeStreamOutput->StreamDescription;
+
+    # Returns a L<Paws::Kinesis::DescribeStreamOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesis/DescribeStream>
 
 =head1 ATTRIBUTES
 

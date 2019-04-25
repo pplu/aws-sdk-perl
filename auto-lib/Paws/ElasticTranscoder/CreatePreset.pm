@@ -24,17 +24,86 @@ Paws::ElasticTranscoder::CreatePreset - Arguments for method CreatePreset on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreatePreset on the 
-Amazon Elastic Transcoder service. Use the attributes of this class
+This class represents the parameters used for calling the method CreatePreset on the
+L<Amazon Elastic Transcoder|Paws::ElasticTranscoder> service. Use the attributes of this class
 as arguments to method CreatePreset.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePreset.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreatePreset(Att1 => $value1, Att2 => $value2, ...);
+    my $elastictranscoder = Paws->service('ElasticTranscoder');
+    my $CreatePresetResponse = $elastictranscoder->CreatePreset(
+      Container => 'MyPresetContainer',
+      Name      => 'MyName',
+      Audio     => {
+        AudioPackingMode => 'MyAudioPackingMode',    # OPTIONAL
+        BitRate          => 'MyAudioBitRate',        # OPTIONAL
+        Channels         => 'MyAudioChannels',       # OPTIONAL
+        Codec            => 'MyAudioCodec',          # OPTIONAL
+        CodecOptions     => {
+          BitDepth => 'MyAudioBitDepth',             # OPTIONAL
+          BitOrder => 'MyAudioBitOrder',             # OPTIONAL
+          Profile  => 'MyAudioCodecProfile',         # OPTIONAL
+          Signed   => 'MyAudioSigned',               # OPTIONAL
+        },    # OPTIONAL
+        SampleRate => 'MyAudioSampleRate',    # OPTIONAL
+      },    # OPTIONAL
+      Description => 'MyDescription',    # OPTIONAL
+      Thumbnails  => {
+        AspectRatio   => 'MyAspectRatio',            # OPTIONAL
+        Format        => 'MyJpgOrPng',               # OPTIONAL
+        Interval      => 'MyDigits',                 # OPTIONAL
+        MaxHeight     => 'MyDigitsOrAuto',           # OPTIONAL
+        MaxWidth      => 'MyDigitsOrAuto',           # OPTIONAL
+        PaddingPolicy => 'MyPaddingPolicy',          # OPTIONAL
+        Resolution    => 'MyThumbnailResolution',    # OPTIONAL
+        SizingPolicy  => 'MySizingPolicy',           # OPTIONAL
+      },    # OPTIONAL
+      Video => {
+        AspectRatio  => 'MyAspectRatio',     # OPTIONAL
+        BitRate      => 'MyVideoBitRate',    # OPTIONAL
+        Codec        => 'MyVideoCodec',      # OPTIONAL
+        CodecOptions => {
+          'MyCodecOption' =>
+            'MyCodecOption',    # key: min: 1, max: 255, value: min: 1, max: 255
+        },    # max: 30; OPTIONAL
+        DisplayAspectRatio => 'MyAspectRatio',         # OPTIONAL
+        FixedGOP           => 'MyFixedGOP',            # OPTIONAL
+        FrameRate          => 'MyFrameRate',           # OPTIONAL
+        KeyframesMaxDist   => 'MyKeyframesMaxDist',    # OPTIONAL
+        MaxFrameRate       => 'MyMaxFrameRate',        # OPTIONAL
+        MaxHeight          => 'MyDigitsOrAuto',        # OPTIONAL
+        MaxWidth           => 'MyDigitsOrAuto',        # OPTIONAL
+        PaddingPolicy      => 'MyPaddingPolicy',       # OPTIONAL
+        Resolution         => 'MyResolution',          # OPTIONAL
+        SizingPolicy       => 'MySizingPolicy',        # OPTIONAL
+        Watermarks         => [
+          {
+            HorizontalAlign  => 'MyHorizontalAlign',    # OPTIONAL
+            HorizontalOffset => 'MyPixelsOrPercent',    # OPTIONAL
+            Id        => 'MyPresetWatermarkId',    # min: 1, max: 40; OPTIONAL
+            MaxHeight => 'MyPixelsOrPercent',      # OPTIONAL
+            MaxWidth  => 'MyPixelsOrPercent',      # OPTIONAL
+            Opacity   => 'MyOpacity',              # OPTIONAL
+            SizingPolicy   => 'MyWatermarkSizingPolicy',    # OPTIONAL
+            Target         => 'MyTarget',                   # OPTIONAL
+            VerticalAlign  => 'MyVerticalAlign',            # OPTIONAL
+            VerticalOffset => 'MyPixelsOrPercent',          # OPTIONAL
+          },
+          ...
+        ],                                                  # OPTIONAL
+      },    # OPTIONAL
+    );
+
+    # Results:
+    my $Preset  = $CreatePresetResponse->Preset;
+    my $Warning = $CreatePresetResponse->Warning;
+
+    # Returns a L<Paws::ElasticTranscoder::CreatePresetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elastictranscoder/CreatePreset>
 
 =head1 ATTRIBUTES
 

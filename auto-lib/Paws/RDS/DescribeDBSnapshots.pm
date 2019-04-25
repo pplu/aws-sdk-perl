@@ -2,6 +2,7 @@
 package Paws::RDS::DescribeDBSnapshots;
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has DbiResourceId => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
   has IncludePublic => (is => 'ro', isa => 'Bool');
@@ -25,17 +26,30 @@ Paws::RDS::DescribeDBSnapshots - Arguments for method DescribeDBSnapshots on L<P
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeDBSnapshots on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeDBSnapshots on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method DescribeDBSnapshots.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBSnapshots.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeDBSnapshots(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+   # To list DB snapshot attributes
+   # This example lists all manually-created, shared snapshots for the specified
+   # DB instance.
+    my $DBSnapshotMessage = $rds->DescribeDBSnapshots(
+      {
+        'DBInstanceIdentifier' => 'mymysqlinstance',
+        'IncludePublic'        => 0,
+        'IncludeShared'        => 1,
+        'SnapshotType'         => 'manual'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/DescribeDBSnapshots>
 
 =head1 ATTRIBUTES
 
@@ -56,6 +70,12 @@ If supplied, must match the identifier of an existing DBInstance.
 
 =back
 
+
+
+
+=head2 DbiResourceId => Str
+
+A specific DB resource ID to describe.
 
 
 

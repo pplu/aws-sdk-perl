@@ -44,8 +44,7 @@ Placeholder documentation for ChannelConfigurationValidationError
 
 =head2 ValidationErrors => ArrayRef[L<Paws::MediaLive::ValidationError>]
 
-  A collection of validation error responses from attempting to create a
-channel with a bouquet of settings.
+  A collection of validation error responses.
 
 
 

@@ -20,48 +20,51 @@ Paws::DirectConnect::DescribeLoa - Arguments for method DescribeLoa on L<Paws::D
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeLoa on the 
-AWS Direct Connect service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeLoa on the
+L<AWS Direct Connect|Paws::DirectConnect> service. Use the attributes of this class
 as arguments to method DescribeLoa.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLoa.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeLoa(Att1 => $value1, Att2 => $value2, ...);
+    my $directconnect = Paws->service('DirectConnect');
+    my $Loa = $directconnect->DescribeLoa(
+      ConnectionId   => 'MyConnectionId',
+      LoaContentType => 'application/pdf',    # OPTIONAL
+      ProviderName   => 'MyProviderName',     # OPTIONAL
+    );
+
+    # Results:
+    my $LoaContent     = $Loa->LoaContent;
+    my $LoaContentType = $Loa->LoaContentType;
+
+    # Returns a L<Paws::DirectConnect::Loa> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect/DescribeLoa>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-The ID of a connection, LAG, or interconnect for which to get the
-LOA-CFA information.
-
-Example: dxcon-abc123 or dxlag-abc123
-
-Default: None
+The ID of a connection, LAG, or interconnect.
 
 
 
 =head2 LoaContentType => Str
 
-A standard media type indicating the content type of the LOA-CFA
-document. Currently, the only supported value is "application/pdf".
-
-Default: application/pdf
+The standard media type for the LOA-CFA document. The only supported
+value is application/pdf.
 
 Valid values are: C<"application/pdf">
 
 =head2 ProviderName => Str
 
 The name of the service provider who establishes connectivity on your
-behalf. If you supply this parameter, the LOA-CFA lists the provider
+behalf. If you specify this parameter, the LOA-CFA lists the provider
 name alongside your company name as the requester of the cross connect.
-
-Default: None
 
 
 

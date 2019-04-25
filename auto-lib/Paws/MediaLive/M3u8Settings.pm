@@ -13,6 +13,7 @@ package Paws::MediaLive::M3u8Settings;
   has Scte35Behavior => (is => 'ro', isa => 'Str', request_name => 'scte35Behavior', traits => ['NameInRequest']);
   has Scte35Pid => (is => 'ro', isa => 'Str', request_name => 'scte35Pid', traits => ['NameInRequest']);
   has TimedMetadataBehavior => (is => 'ro', isa => 'Str', request_name => 'timedMetadataBehavior', traits => ['NameInRequest']);
+  has TimedMetadataPid => (is => 'ro', isa => 'Str', request_name => 'timedMetadataPid', traits => ['NameInRequest']);
   has TransportStreamId => (is => 'ro', isa => 'Int', request_name => 'transportStreamId', traits => ['NameInRequest']);
   has VideoPid => (is => 'ro', isa => 'Str', request_name => 'videoPid', traits => ['NameInRequest']);
 1;
@@ -65,11 +66,7 @@ hexadecimal values.
 
 =head2 EcmPid => Str
 
-  ThePlatform-protected transport streams using 'microsoft' as Target
-Client include an ECM stream. This ECM stream contains the size, IV,
-and PTS of every sample in the transport stream. This stream PID is
-specified here. This PID has no effect on non ThePlatform-protected
-streams.
+  This parameter is unused and deprecated.
 
 
 =head2 PatInterval => Int
@@ -135,6 +132,13 @@ Can be entered as a decimal or hexadecimal value.
 
   When set to passthrough, timed metadata is passed through from input to
 output.
+
+
+=head2 TimedMetadataPid => Str
+
+  Packet Identifier (PID) of the timed metadata stream in the transport
+stream. Can be entered as a decimal or hexadecimal value. Valid values
+are 32 (or 0x20)..8182 (or 0x1ff6).
 
 
 =head2 TransportStreamId => Int

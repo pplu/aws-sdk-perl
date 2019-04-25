@@ -21,17 +21,36 @@ Paws::CloudFormation::GetTemplateSummary - Arguments for method GetTemplateSumma
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetTemplateSummary on the 
-AWS CloudFormation service. Use the attributes of this class
+This class represents the parameters used for calling the method GetTemplateSummary on the
+L<AWS CloudFormation|Paws::CloudFormation> service. Use the attributes of this class
 as arguments to method GetTemplateSummary.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTemplateSummary.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetTemplateSummary(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudformation = Paws->service('CloudFormation');
+    my $GetTemplateSummaryOutput = $cloudformation->GetTemplateSummary(
+      StackName    => 'MyStackNameOrId',       # OPTIONAL
+      StackSetName => 'MyStackSetNameOrId',    # OPTIONAL
+      TemplateBody => 'MyTemplateBody',        # OPTIONAL
+      TemplateURL  => 'MyTemplateURL',         # OPTIONAL
+    );
+
+    # Results:
+    my $Capabilities       = $GetTemplateSummaryOutput->Capabilities;
+    my $CapabilitiesReason = $GetTemplateSummaryOutput->CapabilitiesReason;
+    my $DeclaredTransforms = $GetTemplateSummaryOutput->DeclaredTransforms;
+    my $Description        = $GetTemplateSummaryOutput->Description;
+    my $Metadata           = $GetTemplateSummaryOutput->Metadata;
+    my $Parameters         = $GetTemplateSummaryOutput->Parameters;
+    my $ResourceTypes      = $GetTemplateSummaryOutput->ResourceTypes;
+    my $Version            = $GetTemplateSummaryOutput->Version;
+
+    # Returns a L<Paws::CloudFormation::GetTemplateSummaryOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/GetTemplateSummary>
 
 =head1 ATTRIBUTES
 

@@ -1,9 +1,12 @@
 package Paws::SSM::Command;
   use Moose;
+  has CloudWatchOutputConfig => (is => 'ro', isa => 'Paws::SSM::CloudWatchOutputConfig');
   has CommandId => (is => 'ro', isa => 'Str');
   has Comment => (is => 'ro', isa => 'Str');
   has CompletedCount => (is => 'ro', isa => 'Int');
+  has DeliveryTimedOutCount => (is => 'ro', isa => 'Int');
   has DocumentName => (is => 'ro', isa => 'Str');
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has ErrorCount => (is => 'ro', isa => 'Int');
   has ExpiresAfter => (is => 'ro', isa => 'Str');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -39,20 +42,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::Command object:
 
-  $service_obj->Method(Att1 => { CommandId => $value, ..., Targets => $value  });
+  $service_obj->Method(Att1 => { CloudWatchOutputConfig => $value, ..., Targets => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Command object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CommandId
+  $result->Att1->CloudWatchOutputConfig
 
 =head1 DESCRIPTION
 
 Describes a command request.
 
 =head1 ATTRIBUTES
+
+
+=head2 CloudWatchOutputConfig => L<Paws::SSM::CloudWatchOutputConfig>
+
+  CloudWatch Logs information where you want Systems Manager to send the
+command output.
 
 
 =head2 CommandId => Str
@@ -74,9 +83,19 @@ Execution Timed Out, Delivery Timed Out, Canceled, Terminated, or
 Undeliverable.
 
 
+=head2 DeliveryTimedOutCount => Int
+
+  The number of targets for which the status is Delivery Timed Out.
+
+
 =head2 DocumentName => Str
 
   The name of the document requested for execution.
+
+
+=head2 DocumentVersion => Str
+
+  The SSM document version.
 
 
 =head2 ErrorCount => Int
@@ -88,8 +107,8 @@ Out.
 =head2 ExpiresAfter => Str
 
   If this time is reached and the command has not already started
-executing, it will not execute. Calculated based on the ExpiresAfter
-user input provided as part of the SendCommand API.
+executing, it will not run. Calculated based on the ExpiresAfter user
+input provided as part of the SendCommand API.
 
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
@@ -102,9 +121,10 @@ user input provided as part of the SendCommand API.
   The maximum number of instances that are allowed to execute the command
 at the same time. You can specify a number of instances, such as 10, or
 a percentage of instances, such as 10%. The default value is 50. For
-more information about how to use MaxConcurrency, see Executing a
-Command Using Systems Manager Run Command
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html).
+more information about how to use MaxConcurrency, see Executing
+Commands Using Systems Manager Run Command
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 MaxErrors => Str
@@ -112,9 +132,10 @@ Command Using Systems Manager Run Command
   The maximum number of errors allowed before the system stops sending
 the command to additional targets. You can specify a number of errors,
 such as 10, or a percentage or errors, such as 10%. The default value
-is 50. For more information about how to use MaxErrors, see Executing a
-Command Using Systems Manager Run Command
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html).
+is 0. For more information about how to use MaxErrors, see Executing
+Commands Using Systems Manager Run Command
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
@@ -169,10 +190,11 @@ sending notifications about command status changes.
   A detailed status of the command execution. StatusDetails includes more
 information than Status because it includes states resulting from error
 and concurrency control parameters. StatusDetails can show different
-results than Status. For more information about these statuses, see Run
-Command Status
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html).
-StatusDetails can be one of the following values:
+results than Status. For more information about these statuses, see
+Understanding Command Statuses
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html)
+in the I<AWS Systems Manager User Guide>. StatusDetails can be one of
+the following values:
 
 =over
 

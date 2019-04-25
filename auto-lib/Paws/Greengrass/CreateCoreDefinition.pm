@@ -21,36 +21,64 @@ Paws::Greengrass::CreateCoreDefinition - Arguments for method CreateCoreDefiniti
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateCoreDefinition on the 
-AWS Greengrass service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateCoreDefinition on the
+L<AWS Greengrass|Paws::Greengrass> service. Use the attributes of this class
 as arguments to method CreateCoreDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCoreDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateCoreDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $CreateCoreDefinitionResponse = $greengrass->CreateCoreDefinition(
+      AmznClientToken => 'My__string',    # OPTIONAL
+      InitialVersion  => {
+        Cores => [
+          {
+            CertificateArn => 'My__string',
+            Id             => 'My__string',
+            SyncShadow     => 1,              # OPTIONAL
+            ThingArn       => 'My__string',
+          },
+          ...
+        ],                                    # OPTIONAL
+      },    # OPTIONAL
+      Name => 'My__string',    # OPTIONAL
+    );
+
+    # Results:
+    my $Arn               = $CreateCoreDefinitionResponse->Arn;
+    my $CreationTimestamp = $CreateCoreDefinitionResponse->CreationTimestamp;
+    my $Id                = $CreateCoreDefinitionResponse->Id;
+    my $LastUpdatedTimestamp =
+      $CreateCoreDefinitionResponse->LastUpdatedTimestamp;
+    my $LatestVersion    = $CreateCoreDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $CreateCoreDefinitionResponse->LatestVersionArn;
+    my $Name             = $CreateCoreDefinitionResponse->Name;
+
+    # Returns a L<Paws::Greengrass::CreateCoreDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateCoreDefinition>
 
 =head1 ATTRIBUTES
 
 
 =head2 AmznClientToken => Str
 
-The client token used to request idempotent operations.
+A client token used to correlate requests and responses.
 
 
 
 =head2 InitialVersion => L<Paws::Greengrass::CoreDefinitionVersion>
 
-Information on the initial version
+Information about the initial version of the core definition.
 
 
 
 =head2 Name => Str
 
-name of the core definition
+The name of the core definition.
 
 
 

@@ -1,6 +1,7 @@
 package Paws::Config;
   use Moose;
   sub service { 'config' }
+  sub signing_name { 'config' }
   sub version { '2014-11-12' }
   sub target_prefix { 'StarlingDoveService' }
   sub json_version { "1.1" }
@@ -14,9 +15,29 @@ package Paws::Config;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub BatchGetAggregateResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::BatchGetAggregateResourceConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchGetResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::BatchGetResourceConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAggregationAuthorization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteAggregationAuthorization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteConfigRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteConfigRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteConfigurationAggregator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteConfigurationAggregator', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteConfigurationRecorder {
@@ -34,9 +55,29 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteEvaluationResults', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeletePendingAggregationRequest {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeletePendingAggregationRequest', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRetentionConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteRetentionConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeliverConfigSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeliverConfigSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAggregateComplianceByConfigRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeAggregateComplianceByConfigRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAggregationAuthorizations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeAggregationAuthorizations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeComplianceByConfigRule {
@@ -59,6 +100,16 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeConfigurationAggregators {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigurationAggregators', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeConfigurationAggregatorSourcesStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigurationAggregatorSourcesStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeConfigurationRecorders {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigurationRecorders', @_);
@@ -77,6 +128,36 @@ package Paws::Config;
   sub DescribeDeliveryChannelStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeDeliveryChannelStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePendingAggregationRequests {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribePendingAggregationRequests', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeRetentionConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeRetentionConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAggregateComplianceDetailsByConfigRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateComplianceDetailsByConfigRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAggregateConfigRuleComplianceSummary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateConfigRuleComplianceSummary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAggregateDiscoveredResourceCounts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateDiscoveredResourceCounts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAggregateResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetAggregateResourceConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetComplianceDetailsByConfigRule {
@@ -109,14 +190,29 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::GetResourceConfigHistory', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAggregateDiscoveredResources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::ListAggregateDiscoveredResources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDiscoveredResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::ListDiscoveredResources', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutAggregationAuthorization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutAggregationAuthorization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutConfigRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutConfigRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutConfigurationAggregator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutConfigurationAggregator', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutConfigurationRecorder {
@@ -132,6 +228,11 @@ package Paws::Config;
   sub PutEvaluations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutEvaluations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutRetentionConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutRetentionConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartConfigRulesEvaluation {
@@ -150,6 +251,52 @@ package Paws::Config;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAggregateComplianceByConfigRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAggregateComplianceByConfigRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAggregateComplianceByConfigRules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AggregateComplianceByConfigRules }, @{ $next_result->AggregateComplianceByConfigRules };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AggregateComplianceByConfigRules') foreach (@{ $result->AggregateComplianceByConfigRules });
+        $result = $self->DescribeAggregateComplianceByConfigRules(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AggregateComplianceByConfigRules') foreach (@{ $result->AggregateComplianceByConfigRules });
+    }
+
+    return undef
+  }
+  sub DescribeAllAggregationAuthorizations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAggregationAuthorizations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAggregationAuthorizations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AggregationAuthorizations }, @{ $next_result->AggregationAuthorizations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AggregationAuthorizations') foreach (@{ $result->AggregationAuthorizations });
+        $result = $self->DescribeAggregationAuthorizations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AggregationAuthorizations') foreach (@{ $result->AggregationAuthorizations });
+    }
+
+    return undef
+  }
   sub DescribeAllComplianceByConfigRule {
     my $self = shift;
 
@@ -196,6 +343,29 @@ package Paws::Config;
 
     return undef
   }
+  sub DescribeAllConfigRuleEvaluationStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeConfigRuleEvaluationStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeConfigRuleEvaluationStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConfigRulesEvaluationStatus }, @{ $next_result->ConfigRulesEvaluationStatus };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConfigRulesEvaluationStatus') foreach (@{ $result->ConfigRulesEvaluationStatus });
+        $result = $self->DescribeConfigRuleEvaluationStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConfigRulesEvaluationStatus') foreach (@{ $result->ConfigRulesEvaluationStatus });
+    }
+
+    return undef
+  }
   sub DescribeAllConfigRules {
     my $self = shift;
 
@@ -215,6 +385,121 @@ package Paws::Config;
         $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'ConfigRules') foreach (@{ $result->ConfigRules });
+    }
+
+    return undef
+  }
+  sub DescribeAllConfigurationAggregators {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeConfigurationAggregators(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeConfigurationAggregators(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConfigurationAggregators }, @{ $next_result->ConfigurationAggregators };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ConfigurationAggregators') foreach (@{ $result->ConfigurationAggregators });
+        $result = $self->DescribeConfigurationAggregators(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ConfigurationAggregators') foreach (@{ $result->ConfigurationAggregators });
+    }
+
+    return undef
+  }
+  sub DescribeAllConfigurationAggregatorSourcesStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeConfigurationAggregatorSourcesStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeConfigurationAggregatorSourcesStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AggregatedSourceStatusList }, @{ $next_result->AggregatedSourceStatusList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AggregatedSourceStatusList') foreach (@{ $result->AggregatedSourceStatusList });
+        $result = $self->DescribeConfigurationAggregatorSourcesStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AggregatedSourceStatusList') foreach (@{ $result->AggregatedSourceStatusList });
+    }
+
+    return undef
+  }
+  sub DescribeAllPendingAggregationRequests {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePendingAggregationRequests(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribePendingAggregationRequests(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PendingAggregationRequests }, @{ $next_result->PendingAggregationRequests };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PendingAggregationRequests') foreach (@{ $result->PendingAggregationRequests });
+        $result = $self->DescribePendingAggregationRequests(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PendingAggregationRequests') foreach (@{ $result->PendingAggregationRequests });
+    }
+
+    return undef
+  }
+  sub DescribeAllRetentionConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeRetentionConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeRetentionConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->RetentionConfigurations }, @{ $next_result->RetentionConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'RetentionConfigurations') foreach (@{ $result->RetentionConfigurations });
+        $result = $self->DescribeRetentionConfigurations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'RetentionConfigurations') foreach (@{ $result->RetentionConfigurations });
+    }
+
+    return undef
+  }
+  sub GetAllAggregateComplianceDetailsByConfigRule {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetAggregateComplianceDetailsByConfigRule(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetAggregateComplianceDetailsByConfigRule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AggregateEvaluationResults }, @{ $next_result->AggregateEvaluationResults };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AggregateEvaluationResults') foreach (@{ $result->AggregateEvaluationResults });
+        $result = $self->GetAggregateComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AggregateEvaluationResults') foreach (@{ $result->AggregateEvaluationResults });
     }
 
     return undef
@@ -288,6 +573,29 @@ package Paws::Config;
 
     return undef
   }
+  sub ListAllAggregateDiscoveredResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAggregateDiscoveredResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAggregateDiscoveredResources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ResourceIdentifiers }, @{ $next_result->ResourceIdentifiers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ResourceIdentifiers') foreach (@{ $result->ResourceIdentifiers });
+        $result = $self->ListAggregateDiscoveredResources(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ResourceIdentifiers') foreach (@{ $result->ResourceIdentifiers });
+    }
+
+    return undef
+  }
   sub ListAllDiscoveredResources {
     my $self = shift;
 
@@ -313,7 +621,7 @@ package Paws::Config;
   }
 
 
-  sub operations { qw/DeleteConfigRule DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
+  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeletePendingAggregationRequest DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribePendingAggregationRequests DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutRetentionConfiguration StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
 
 1;
 
@@ -348,32 +656,127 @@ the AWS resources associated with your AWS account. You can use AWS
 Config to get the current and historical configurations of each AWS
 resource and also to get information about the relationship between the
 resources. An AWS resource can be an Amazon Compute Cloud (Amazon EC2)
-instance, an Elastic Block Store (EBS) volume, an Elastic network
+instance, an Elastic Block Store (EBS) volume, an elastic network
 Interface (ENI), or a security group. For a complete list of resources
 currently supported by AWS Config, see Supported AWS Resources
 (http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
 
 You can access and manage AWS Config through the AWS Management
 Console, the AWS Command Line Interface (AWS CLI), the AWS Config API,
-or the AWS SDKs for AWS Config
-
-This reference guide contains documentation for the AWS Config API and
-the AWS CLI commands that you can use to manage AWS Config.
-
-The AWS Config API uses the Signature Version 4 protocol for signing
-requests. For more information about how to sign a request with this
-protocol, see Signature Version 4 Signing Process
+or the AWS SDKs for AWS Config. This reference guide contains
+documentation for the AWS Config API and the AWS CLI commands that you
+can use to manage AWS Config. The AWS Config API uses the Signature
+Version 4 protocol for signing requests. For more information about how
+to sign a request with this protocol, see Signature Version 4 Signing
+Process
 (http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
-
 For detailed information about AWS Config features and their associated
 actions or commands, as well as how to work with AWS Management
-Console, see What Is AWS Config?
+Console, see What Is AWS Config
 (http://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
 in the I<AWS Config Developer Guide>.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12>
+
+
 =head1 METHODS
 
-=head2 DeleteConfigRule(ConfigRuleName => Str)
+=head2 BatchGetAggregateResourceConfig
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item ResourceIdentifiers => ArrayRef[L<Paws::Config::AggregateResourceIdentifier>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::BatchGetAggregateResourceConfig>
+
+Returns: a L<Paws::Config::BatchGetAggregateResourceConfigResponse> instance
+
+Returns the current configuration items for resources that are present
+in your AWS Config aggregator. The operation also returns a list of
+resources that are not processed in the current request. If there are
+no unprocessed resources, the operation returns an empty
+C<unprocessedResourceIdentifiers> list.
+
+=over
+
+=item *
+
+The API does not return results for deleted resources.
+
+=item *
+
+The API does not return tags and relationships.
+
+=back
+
+
+
+=head2 BatchGetResourceConfig
+
+=over
+
+=item ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::BatchGetResourceConfig>
+
+Returns: a L<Paws::Config::BatchGetResourceConfigResponse> instance
+
+Returns the current configuration for one or more requested resources.
+The operation also returns a list of resources that are not processed
+in the current request. If there are no unprocessed resources, the
+operation returns an empty unprocessedResourceKeys list.
+
+=over
+
+=item *
+
+The API does not return results for deleted resources.
+
+=item *
+
+The API does not return any tags for the requested resources. This
+information is filtered out of the supplementaryConfiguration section
+of the API response.
+
+=back
+
+
+
+=head2 DeleteAggregationAuthorization
+
+=over
+
+=item AuthorizedAccountId => Str
+
+=item AuthorizedAwsRegion => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteAggregationAuthorization>
+
+Returns: nothing
+
+Deletes the authorization granted to the specified configuration
+aggregator account in a specified region.
+
+
+=head2 DeleteConfigRule
+
+=over
+
+=item ConfigRuleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeleteConfigRule>
 
@@ -391,7 +794,31 @@ You can check the state of a rule by using the C<DescribeConfigRules>
 request.
 
 
-=head2 DeleteConfigurationRecorder(ConfigurationRecorderName => Str)
+=head2 DeleteConfigurationAggregator
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteConfigurationAggregator>
+
+Returns: nothing
+
+Deletes the specified configuration aggregator and the aggregated data
+associated with the aggregator.
+
+
+=head2 DeleteConfigurationRecorder
+
+=over
+
+=item ConfigurationRecorderName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeleteConfigurationRecorder>
 
@@ -410,7 +837,14 @@ will not be able to access this information in the AWS Config console
 until you create a new configuration recorder.
 
 
-=head2 DeleteDeliveryChannel(DeliveryChannelName => Str)
+=head2 DeleteDeliveryChannel
+
+=over
+
+=item DeliveryChannelName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeleteDeliveryChannel>
 
@@ -422,19 +856,68 @@ Before you can delete the delivery channel, you must stop the
 configuration recorder by using the StopConfigurationRecorder action.
 
 
-=head2 DeleteEvaluationResults(ConfigRuleName => Str)
+=head2 DeleteEvaluationResults
+
+=over
+
+=item ConfigRuleName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeleteEvaluationResults>
 
 Returns: a L<Paws::Config::DeleteEvaluationResultsResponse> instance
 
-Deletes the evaluation results for the specified Config rule. You can
-specify one Config rule per request. After you delete the evaluation
-results, you can call the StartConfigRulesEvaluation API to start
-evaluating your AWS resources against the rule.
+Deletes the evaluation results for the specified AWS Config rule. You
+can specify one AWS Config rule per request. After you delete the
+evaluation results, you can call the StartConfigRulesEvaluation API to
+start evaluating your AWS resources against the rule.
 
 
-=head2 DeliverConfigSnapshot(DeliveryChannelName => Str)
+=head2 DeletePendingAggregationRequest
+
+=over
+
+=item RequesterAccountId => Str
+
+=item RequesterAwsRegion => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeletePendingAggregationRequest>
+
+Returns: nothing
+
+Deletes pending authorization requests for a specified aggregator
+account in a specified region.
+
+
+=head2 DeleteRetentionConfiguration
+
+=over
+
+=item RetentionConfigurationName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteRetentionConfiguration>
+
+Returns: nothing
+
+Deletes the retention configuration.
+
+
+=head2 DeliverConfigSnapshot
+
+=over
+
+=item DeliveryChannelName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DeliverConfigSnapshot>
 
@@ -442,29 +925,85 @@ Returns: a L<Paws::Config::DeliverConfigSnapshotResponse> instance
 
 Schedules delivery of a configuration snapshot to the Amazon S3 bucket
 in the specified delivery channel. After the delivery has started, AWS
-Config sends following notifications using an Amazon SNS topic that you
-have specified.
+Config sends the following notifications using an Amazon SNS topic that
+you have specified.
 
 =over
 
 =item *
 
-Notification of starting the delivery.
+Notification of the start of the delivery.
 
 =item *
 
-Notification of delivery completed, if the delivery was successfully
-completed.
+Notification of the completion of the delivery, if the delivery was
+successfully completed.
 
 =item *
 
-Notification of delivery failure, if the delivery failed to complete.
+Notification of delivery failure, if the delivery failed.
 
 =back
 
 
 
-=head2 DescribeComplianceByConfigRule([ComplianceTypes => ArrayRef[Str|Undef], ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAggregateComplianceByConfigRules
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [Filters => L<Paws::Config::ConfigRuleComplianceFilters>]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeAggregateComplianceByConfigRules>
+
+Returns: a L<Paws::Config::DescribeAggregateComplianceByConfigRulesResponse> instance
+
+Returns a list of compliant and noncompliant rules with the number of
+resources for compliant and noncompliant rules.
+
+The results can return an empty result page, but if you have a
+nextToken, the results are displayed on the next page.
+
+
+=head2 DescribeAggregationAuthorizations
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeAggregationAuthorizations>
+
+Returns: a L<Paws::Config::DescribeAggregationAuthorizationsResponse> instance
+
+Returns a list of authorizations granted to various aggregator accounts
+and regions.
+
+
+=head2 DescribeComplianceByConfigRule
+
+=over
+
+=item [ComplianceTypes => ArrayRef[Str|Undef]]
+
+=item [ConfigRuleNames => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeComplianceByConfigRule>
 
@@ -474,8 +1013,8 @@ Indicates whether the specified AWS Config rules are compliant. If a
 rule is noncompliant, this action returns the number of AWS resources
 that do not comply with the rule.
 
-A rule is compliant if all of the evaluated resources comply with it,
-and it is noncompliant if any of these resources do not comply.
+A rule is compliant if all of the evaluated resources comply with it.
+It is noncompliant if any of these resources do not comply.
 
 If AWS Config has no current evaluation results for the rule, it
 returns C<INSUFFICIENT_DATA>. This result might indicate one of the
@@ -493,10 +1032,10 @@ C<LastFailedInvocationTime>.
 =item *
 
 The rule's AWS Lambda function is failing to send evaluation results to
-AWS Config. Verify that the role that you assigned to your
-configuration recorder includes the C<config:PutEvaluations>
-permission. If the rule is a custom rule, verify that the AWS Lambda
-execution role includes the C<config:PutEvaluations> permission.
+AWS Config. Verify that the role you assigned to your configuration
+recorder includes the C<config:PutEvaluations> permission. If the rule
+is a custom rule, verify that the AWS Lambda execution role includes
+the C<config:PutEvaluations> permission.
 
 =item *
 
@@ -508,7 +1047,22 @@ removed from the rule's scope.
 
 
 
-=head2 DescribeComplianceByResource([ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
+=head2 DescribeComplianceByResource
+
+=over
+
+=item [ComplianceTypes => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceId => Str]
+
+=item [ResourceType => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeComplianceByResource>
 
@@ -553,7 +1107,18 @@ removed from the rule's scope.
 
 
 
-=head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribeConfigRuleEvaluationStatus
+
+=over
+
+=item [ConfigRuleNames => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigRuleEvaluationStatus>
 
@@ -565,7 +1130,16 @@ invoked the rule, the last time AWS Config failed to invoke the rule,
 and the related error for the last failure.
 
 
-=head2 DescribeConfigRules([ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeConfigRules
+
+=over
+
+=item [ConfigRuleNames => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigRules>
 
@@ -574,7 +1148,62 @@ Returns: a L<Paws::Config::DescribeConfigRulesResponse> instance
 Returns details about your AWS Config rules.
 
 
-=head2 DescribeConfigurationRecorders([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
+=head2 DescribeConfigurationAggregators
+
+=over
+
+=item [ConfigurationAggregatorNames => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeConfigurationAggregators>
+
+Returns: a L<Paws::Config::DescribeConfigurationAggregatorsResponse> instance
+
+Returns the details of one or more configuration aggregators. If the
+configuration aggregator is not specified, this action returns the
+details for all the configuration aggregators associated with the
+account.
+
+
+=head2 DescribeConfigurationAggregatorSourcesStatus
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [UpdateStatus => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeConfigurationAggregatorSourcesStatus>
+
+Returns: a L<Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse> instance
+
+Returns status information for sources within an aggregator. The status
+includes information about the last time AWS Config aggregated data
+from source accounts or AWS Config failed to aggregate data from source
+accounts with the related error code or message.
+
+
+=head2 DescribeConfigurationRecorders
+
+=over
+
+=item [ConfigurationRecorderNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRecorders>
 
@@ -588,7 +1217,14 @@ Currently, you can specify only one configuration recorder per region
 in your account.
 
 
-=head2 DescribeConfigurationRecorderStatus([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
+=head2 DescribeConfigurationRecorderStatus
+
+=over
+
+=item [ConfigurationRecorderNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRecorderStatus>
 
@@ -596,13 +1232,20 @@ Returns: a L<Paws::Config::DescribeConfigurationRecorderStatusResponse> instance
 
 Returns the current status of the specified configuration recorder. If
 a configuration recorder is not specified, this action returns the
-status of all configuration recorder associated with the account.
+status of all configuration recorders associated with the account.
 
 Currently, you can specify only one configuration recorder per region
 in your account.
 
 
-=head2 DescribeDeliveryChannels([DeliveryChannelNames => ArrayRef[Str|Undef]])
+=head2 DescribeDeliveryChannels
+
+=over
+
+=item [DeliveryChannelNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannels>
 
@@ -616,7 +1259,14 @@ Currently, you can specify only one delivery channel per region in your
 account.
 
 
-=head2 DescribeDeliveryChannelStatus([DeliveryChannelNames => ArrayRef[Str|Undef]])
+=head2 DescribeDeliveryChannelStatus
+
+=over
+
+=item [DeliveryChannelNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannelStatus>
 
@@ -630,7 +1280,174 @@ Currently, you can specify only one delivery channel per region in your
 account.
 
 
-=head2 GetComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+=head2 DescribePendingAggregationRequests
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribePendingAggregationRequests>
+
+Returns: a L<Paws::Config::DescribePendingAggregationRequestsResponse> instance
+
+Returns a list of all pending aggregation requests.
+
+
+=head2 DescribeRetentionConfigurations
+
+=over
+
+=item [NextToken => Str]
+
+=item [RetentionConfigurationNames => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeRetentionConfigurations>
+
+Returns: a L<Paws::Config::DescribeRetentionConfigurationsResponse> instance
+
+Returns the details of one or more retention configurations. If the
+retention configuration name is not specified, this action returns the
+details for all the retention configurations for that account.
+
+Currently, AWS Config supports only one retention configuration per
+region in your account.
+
+
+=head2 GetAggregateComplianceDetailsByConfigRule
+
+=over
+
+=item AccountId => Str
+
+=item AwsRegion => Str
+
+=item ConfigRuleName => Str
+
+=item ConfigurationAggregatorName => Str
+
+=item [ComplianceType => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetAggregateComplianceDetailsByConfigRule>
+
+Returns: a L<Paws::Config::GetAggregateComplianceDetailsByConfigRuleResponse> instance
+
+Returns the evaluation results for the specified AWS Config rule for a
+specific resource in a rule. The results indicate which AWS resources
+were evaluated by the rule, when each resource was last evaluated, and
+whether each resource complies with the rule.
+
+The results can return an empty result page. But if you have a
+nextToken, the results are displayed on the next page.
+
+
+=head2 GetAggregateConfigRuleComplianceSummary
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [Filters => L<Paws::Config::ConfigRuleComplianceSummaryFilters>]
+
+=item [GroupByKey => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetAggregateConfigRuleComplianceSummary>
+
+Returns: a L<Paws::Config::GetAggregateConfigRuleComplianceSummaryResponse> instance
+
+Returns the number of compliant and noncompliant rules for one or more
+accounts and regions in an aggregator.
+
+The results can return an empty result page, but if you have a
+nextToken, the results are displayed on the next page.
+
+
+=head2 GetAggregateDiscoveredResourceCounts
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [Filters => L<Paws::Config::ResourceCountFilters>]
+
+=item [GroupByKey => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetAggregateDiscoveredResourceCounts>
+
+Returns: a L<Paws::Config::GetAggregateDiscoveredResourceCountsResponse> instance
+
+Returns the resource counts across accounts and regions that are
+present in your AWS Config aggregator. You can request the resource
+counts by providing filters and GroupByKey.
+
+For example, if the input contains accountID 12345678910 and region
+us-east-1 in filters, the API returns the count of resources in account
+ID 12345678910 and region us-east-1. If the input contains ACCOUNT_ID
+as a GroupByKey, the API returns resource counts for all source
+accounts that are present in your aggregator.
+
+
+=head2 GetAggregateResourceConfig
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item ResourceIdentifier => L<Paws::Config::AggregateResourceIdentifier>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetAggregateResourceConfig>
+
+Returns: a L<Paws::Config::GetAggregateResourceConfigResponse> instance
+
+Returns configuration item that is aggregated for your specific
+resource in a specific source account and region.
+
+
+=head2 GetComplianceDetailsByConfigRule
+
+=over
+
+=item ConfigRuleName => Str
+
+=item [ComplianceTypes => ArrayRef[Str|Undef]]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByConfigRule>
 
@@ -642,7 +1459,20 @@ each resource was last evaluated, and whether each resource complies
 with the rule.
 
 
-=head2 GetComplianceDetailsByResource(ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str|Undef], NextToken => Str])
+=head2 GetComplianceDetailsByResource
+
+=over
+
+=item ResourceId => Str
+
+=item ResourceType => Str
+
+=item [ComplianceTypes => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByResource>
 
@@ -654,7 +1484,14 @@ resource, when each rule was last used, and whether the resource
 complies with each rule.
 
 
-=head2 GetComplianceSummaryByConfigRule( => )
+=head2 GetComplianceSummaryByConfigRule
+
+=over
+
+=item  => 
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByConfigRule>
 
@@ -664,7 +1501,14 @@ Returns the number of AWS Config rules that are compliant and
 noncompliant, up to a maximum of 25 for each.
 
 
-=head2 GetComplianceSummaryByResourceType([ResourceTypes => ArrayRef[Str|Undef]])
+=head2 GetComplianceSummaryByResourceType
+
+=over
+
+=item [ResourceTypes => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByResourceType>
 
@@ -676,7 +1520,18 @@ these numbers for each resource type. The maximum number returned is
 100.
 
 
-=head2 GetDiscoveredResourceCounts([Limit => Int, NextToken => Str, ResourceTypes => ArrayRef[Str|Undef]])
+=head2 GetDiscoveredResourceCounts
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceTypes => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetDiscoveredResourceCounts>
 
@@ -709,15 +1564,15 @@ AWS Config returns the following:
 
 =item *
 
-The resource types (EC2 instances, IAM users, and S3 buckets)
+The resource types (EC2 instances, IAM users, and S3 buckets).
 
 =item *
 
-The number of each resource type (25, 20, and 15)
+The number of each resource type (25, 20, and 15).
 
 =item *
 
-The total number of all resources (60)
+The total number of all resources (60).
 
 =back
 
@@ -729,27 +1584,46 @@ the C<limit> parameter. The response includes a C<nextToken> string. To
 get the next page of results, run the request again and specify the
 string for the C<nextToken> parameter.
 
-If you make a call to the GetDiscoveredResourceCounts action, you may
+If you make a call to the GetDiscoveredResourceCounts action, you might
 not immediately receive resource counts in the following situations:
 
 =over
 
 =item *
 
-You are a new AWS Config customer
+You are a new AWS Config customer.
 
 =item *
 
-You just enabled resource recording
+You just enabled resource recording.
 
 =back
 
-It may take a few minutes for AWS Config to record and count your
+It might take a few minutes for AWS Config to record and count your
 resources. Wait a few minutes and then retry the
 GetDiscoveredResourceCounts action.
 
 
-=head2 GetResourceConfigHistory(ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
+=head2 GetResourceConfigHistory
+
+=over
+
+=item ResourceId => Str
+
+=item ResourceType => Str
+
+=item [ChronologicalOrder => Str]
+
+=item [EarlierTime => Str]
+
+=item [LaterTime => Str]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::GetResourceConfigHistory>
 
@@ -757,7 +1631,10 @@ Returns: a L<Paws::Config::GetResourceConfigHistoryResponse> instance
 
 Returns a list of configuration items for the specified resource. The
 list contains details about each state of the resource during the
-specified time interval.
+specified time interval. If you specified a retention period to retain
+your C<ConfigurationItems> between a minimum of 30 days and a maximum
+of 7 years (2557 days), AWS Config returns the C<ConfigurationItems>
+for the specified retention period.
 
 The response is paginated. By default, AWS Config returns a limit of 10
 configuration items per page. You can customize this number with the
@@ -771,7 +1648,59 @@ specified C<limit>. In such cases, you can make another call, using the
 C<nextToken>.
 
 
-=head2 ListDiscoveredResources(ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceName => Str])
+=head2 ListAggregateDiscoveredResources
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item ResourceType => Str
+
+=item [Filters => L<Paws::Config::ResourceFilters>]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::ListAggregateDiscoveredResources>
+
+Returns: a L<Paws::Config::ListAggregateDiscoveredResourcesResponse> instance
+
+Accepts a resource type and returns a list of resource identifiers that
+are aggregated for a specific resource type across accounts and
+regions. A resource identifier includes the resource type, ID, (if
+available) the custom resource name, source account, and source region.
+You can narrow the results to include only resources that have specific
+resource IDs, or a resource name, or source account ID, or source
+region.
+
+For example, if the input consists of accountID 12345678910 and the
+region is us-east-1 for resource type C<AWS::EC2::Instance> then the
+API returns all the EC2 instance identifiers of accountID 12345678910
+and region us-east-1.
+
+
+=head2 ListDiscoveredResources
+
+=over
+
+=item ResourceType => Str
+
+=item [IncludeDeletedResources => Bool]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceIds => ArrayRef[Str|Undef]]
+
+=item [ResourceName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::ListDiscoveredResources>
 
@@ -785,8 +1714,8 @@ that AWS Config is not currently recording. You can narrow the results
 to include only resources that have specific resource IDs or a resource
 name.
 
-You can specify either resource IDs or a resource name but not both in
-the same request.
+You can specify either resource IDs or a resource name, but not both,
+in the same request.
 
 The response is paginated. By default, AWS Config lists 100 resource
 identifiers on each page. You can customize this number with the
@@ -795,7 +1724,33 @@ the next page of results, run the request again and specify the string
 for the C<nextToken> parameter.
 
 
-=head2 PutConfigRule(ConfigRule => L<Paws::Config::ConfigRule>)
+=head2 PutAggregationAuthorization
+
+=over
+
+=item AuthorizedAccountId => Str
+
+=item AuthorizedAwsRegion => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutAggregationAuthorization>
+
+Returns: a L<Paws::Config::PutAggregationAuthorizationResponse> instance
+
+Authorizes the aggregator account and region to collect data from the
+source account and region.
+
+
+=head2 PutConfigRule
+
+=over
+
+=item ConfigRule => L<Paws::Config::ConfigRule>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::PutConfigRule>
 
@@ -804,18 +1759,18 @@ Returns: nothing
 Adds or updates an AWS Config rule for evaluating whether your AWS
 resources comply with your desired configurations.
 
-You can use this action for custom Config rules and AWS managed Config
-rules. A custom Config rule is a rule that you develop and maintain. An
-AWS managed Config rule is a customizable, predefined rule that AWS
-Config provides.
+You can use this action for custom AWS Config rules and AWS managed
+Config rules. A custom AWS Config rule is a rule that you develop and
+maintain. An AWS managed Config rule is a customizable, predefined rule
+that AWS Config provides.
 
-If you are adding a new custom Config rule, you must first create the
-AWS Lambda function that the rule invokes to evaluate your resources.
-When you use the C<PutConfigRule> action to add the rule to AWS Config,
-you must specify the Amazon Resource Name (ARN) that AWS Lambda assigns
-to the function. Specify the ARN for the C<SourceIdentifier> key. This
-key is part of the C<Source> object, which is part of the C<ConfigRule>
-object.
+If you are adding a new custom AWS Config rule, you must first create
+the AWS Lambda function that the rule invokes to evaluate your
+resources. When you use the C<PutConfigRule> action to add the rule to
+AWS Config, you must specify the Amazon Resource Name (ARN) that AWS
+Lambda assigns to the function. Specify the ARN for the
+C<SourceIdentifier> key. This key is part of the C<Source> object,
+which is part of the C<ConfigRule> object.
 
 If you are adding an AWS managed Config rule, specify the rule's
 identifier for the C<SourceIdentifier> key. To reference AWS managed
@@ -833,8 +1788,8 @@ the C<ConfigRule> data type that you use in this request.
 
 The maximum number of rules that AWS Config supports is 50.
 
-For more information about requesting a rule limit increase, see AWS
-Config Limits
+For information about requesting a rule limit increase, see AWS Config
+Limits
 (http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
 in the I<AWS General Reference Guide>.
 
@@ -844,7 +1799,44 @@ Evaluating AWS Resource Configurations with AWS Config
 in the I<AWS Config Developer Guide>.
 
 
-=head2 PutConfigurationRecorder(ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>)
+=head2 PutConfigurationAggregator
+
+=over
+
+=item ConfigurationAggregatorName => Str
+
+=item [AccountAggregationSources => ArrayRef[L<Paws::Config::AccountAggregationSource>]]
+
+=item [OrganizationAggregationSource => L<Paws::Config::OrganizationAggregationSource>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutConfigurationAggregator>
+
+Returns: a L<Paws::Config::PutConfigurationAggregatorResponse> instance
+
+Creates and updates the configuration aggregator with the selected
+source accounts and regions. The source account can be individual
+account(s) or an organization.
+
+AWS Config should be enabled in source accounts and regions you want to
+aggregate.
+
+If your source type is an organization, you must be signed in to the
+master account and all features must be enabled in your organization.
+AWS Config calls C<EnableAwsServiceAccess> API to enable integration
+between AWS Config and AWS Organizations.
+
+
+=head2 PutConfigurationRecorder
+
+=over
+
+=item ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::PutConfigurationRecorder>
 
@@ -853,7 +1845,7 @@ Returns: nothing
 Creates a new configuration recorder to record the selected resource
 configurations.
 
-You can use this action to change the role C<roleARN> and/or the
+You can use this action to change the role C<roleARN> or the
 C<recordingGroup> of an existing recorder. To change the role, call the
 action on the existing configuration recorder and specify a role.
 
@@ -865,7 +1857,14 @@ parameter specified, the default is to record all supported resource
 types.
 
 
-=head2 PutDeliveryChannel(DeliveryChannel => L<Paws::Config::DeliveryChannel>)
+=head2 PutDeliveryChannel
+
+=over
+
+=item DeliveryChannel => L<Paws::Config::DeliveryChannel>
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::PutDeliveryChannel>
 
@@ -887,7 +1886,18 @@ existing value for the parameter that is not changed.
 You can have only one delivery channel per region in your account.
 
 
-=head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[L<Paws::Config::Evaluation>], TestMode => Bool])
+=head2 PutEvaluations
+
+=over
+
+=item ResultToken => Str
+
+=item [Evaluations => ArrayRef[L<Paws::Config::Evaluation>]]
+
+=item [TestMode => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::PutEvaluations>
 
@@ -898,29 +1908,60 @@ Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
 
 
-=head2 StartConfigRulesEvaluation([ConfigRuleNames => ArrayRef[Str|Undef]])
+=head2 PutRetentionConfiguration
+
+=over
+
+=item RetentionPeriodInDays => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutRetentionConfiguration>
+
+Returns: a L<Paws::Config::PutRetentionConfigurationResponse> instance
+
+Creates and updates the retention configuration with details about
+retention period (number of days) that AWS Config stores your
+historical information. The API creates the C<RetentionConfiguration>
+object and names the object as B<default>. When you have a
+C<RetentionConfiguration> object named B<default>, calling the API
+modifies the default object.
+
+Currently, AWS Config supports only one retention configuration per
+region in your account.
+
+
+=head2 StartConfigRulesEvaluation
+
+=over
+
+=item [ConfigRuleNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::StartConfigRulesEvaluation>
 
 Returns: a L<Paws::Config::StartConfigRulesEvaluationResponse> instance
 
-Runs an on-demand evaluation for the specified Config rules against the
-last known configuration state of the resources. Use
-C<StartConfigRulesEvaluation> when you want to test a rule that you
+Runs an on-demand evaluation for the specified AWS Config rules against
+the last known configuration state of the resources. Use
+C<StartConfigRulesEvaluation> when you want to test that a rule you
 updated is working as expected. C<StartConfigRulesEvaluation> does not
-re-record the latest configuration state for your resources; it re-runs
+re-record the latest configuration state for your resources. It re-runs
 an evaluation against the last known state of your resources.
 
-You can specify up to 25 Config rules per request.
+You can specify up to 25 AWS Config rules per request.
 
-An existing C<StartConfigRulesEvaluation> call must complete for the
-specified rules before you can call the API again. If you chose to have
+An existing C<StartConfigRulesEvaluation> call for the specified rules
+must complete before you can call the API again. If you chose to have
 AWS Config stream to an Amazon SNS topic, you will receive a
 C<ConfigRuleEvaluationStarted> notification when the evaluation starts.
 
 You don't need to call the C<StartConfigRulesEvaluation> API to run an
-evaluation for a new rule. When you create a new rule, AWS Config
-automatically evaluates your resources against the rule.
+evaluation for a new rule. When you create a rule, AWS Config evaluates
+your resources against the rule automatically.
 
 The C<StartConfigRulesEvaluation> API is useful if you want to run
 on-demand evaluations, such as the following example:
@@ -955,7 +1996,14 @@ Your custom rule will still run periodic evaluations every 24 hours.
 
 
 
-=head2 StartConfigurationRecorder(ConfigurationRecorderName => Str)
+=head2 StartConfigurationRecorder
+
+=over
+
+=item ConfigurationRecorderName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::StartConfigurationRecorder>
 
@@ -968,7 +2016,14 @@ You must have created at least one delivery channel to successfully
 start the configuration recorder.
 
 
-=head2 StopConfigurationRecorder(ConfigurationRecorderName => Str)
+=head2 StopConfigurationRecorder
+
+=over
+
+=item ConfigurationRecorderName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::Config::StopConfigurationRecorder>
 
@@ -983,6 +2038,30 @@ to record in your AWS account.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAggregateComplianceByConfigRules(sub { },ConfigurationAggregatorName => Str, [Filters => L<Paws::Config::ConfigRuleComplianceFilters>, Limit => Int, NextToken => Str])
+
+=head2 DescribeAllAggregateComplianceByConfigRules(ConfigurationAggregatorName => Str, [Filters => L<Paws::Config::ConfigRuleComplianceFilters>, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AggregateComplianceByConfigRules, passing the object as the first parameter, and the string 'AggregateComplianceByConfigRules' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeAggregateComplianceByConfigRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllAggregationAuthorizations(sub { },[Limit => Int, NextToken => Str])
+
+=head2 DescribeAllAggregationAuthorizations([Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AggregationAuthorizations, passing the object as the first parameter, and the string 'AggregationAuthorizations' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeAggregationAuthorizationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllComplianceByConfigRule(sub { },[ComplianceTypes => ArrayRef[Str|Undef], ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
 
@@ -1008,6 +2087,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Config::DescribeComplianceByResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllConfigRuleEvaluationStatus(sub { },[ConfigRuleNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConfigRulesEvaluationStatus, passing the object as the first parameter, and the string 'ConfigRulesEvaluationStatus' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeConfigRuleEvaluationStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllConfigRules(sub { },[ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
 
 =head2 DescribeAllConfigRules([ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
@@ -1018,6 +2109,66 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ConfigRules, passing the object as the first parameter, and the string 'ConfigRules' as the second parameter 
 
 If not, it will return a a L<Paws::Config::DescribeConfigRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllConfigurationAggregators(sub { },[ConfigurationAggregatorNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 DescribeAllConfigurationAggregators([ConfigurationAggregatorNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConfigurationAggregators, passing the object as the first parameter, and the string 'ConfigurationAggregators' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeConfigurationAggregatorsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllConfigurationAggregatorSourcesStatus(sub { },ConfigurationAggregatorName => Str, [Limit => Int, NextToken => Str, UpdateStatus => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllConfigurationAggregatorSourcesStatus(ConfigurationAggregatorName => Str, [Limit => Int, NextToken => Str, UpdateStatus => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AggregatedSourceStatusList, passing the object as the first parameter, and the string 'AggregatedSourceStatusList' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPendingAggregationRequests(sub { },[Limit => Int, NextToken => Str])
+
+=head2 DescribeAllPendingAggregationRequests([Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PendingAggregationRequests, passing the object as the first parameter, and the string 'PendingAggregationRequests' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribePendingAggregationRequestsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllRetentionConfigurations(sub { },[NextToken => Str, RetentionConfigurationNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllRetentionConfigurations([NextToken => Str, RetentionConfigurationNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RetentionConfigurations, passing the object as the first parameter, and the string 'RetentionConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeRetentionConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllAggregateComplianceDetailsByConfigRule(sub { },AccountId => Str, AwsRegion => Str, ConfigRuleName => Str, ConfigurationAggregatorName => Str, [ComplianceType => Str, Limit => Int, NextToken => Str])
+
+=head2 GetAllAggregateComplianceDetailsByConfigRule(AccountId => Str, AwsRegion => Str, ConfigRuleName => Str, ConfigurationAggregatorName => Str, [ComplianceType => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AggregateEvaluationResults, passing the object as the first parameter, and the string 'AggregateEvaluationResults' as the second parameter 
+
+If not, it will return a a L<Paws::Config::GetAggregateComplianceDetailsByConfigRuleResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllComplianceDetailsByConfigRule(sub { },ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
@@ -1054,6 +2205,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - configurationItems, passing the object as the first parameter, and the string 'configurationItems' as the second parameter 
 
 If not, it will return a a L<Paws::Config::GetResourceConfigHistoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAggregateDiscoveredResources(sub { },ConfigurationAggregatorName => Str, ResourceType => Str, [Filters => L<Paws::Config::ResourceFilters>, Limit => Int, NextToken => Str])
+
+=head2 ListAllAggregateDiscoveredResources(ConfigurationAggregatorName => Str, ResourceType => Str, [Filters => L<Paws::Config::ResourceFilters>, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceIdentifiers, passing the object as the first parameter, and the string 'ResourceIdentifiers' as the second parameter 
+
+If not, it will return a a L<Paws::Config::ListAggregateDiscoveredResourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllDiscoveredResources(sub { },ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceName => Str])

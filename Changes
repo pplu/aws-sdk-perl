@@ -1,7 +1,71 @@
-0.37
+0.39 11 Feb 2019
+ - Paws is now installed with Module::Builder::Tiny, which speeds
+   up installation (Grinzz)
+ - MojoAsyncCaller is working correctly (leonerd, bork1n)
+ - Fix failing tests when AWS_CONFIG_FILE env var is set in the test environment (stevecaldwell77)
+ - API updates for any service up to the date of release
+ - Fix: SNS CheckIfPhoneNumberIsOptedOut CheckIfPhoneNumberIsOptedOut ListPhoneNumbersOptedOut
+        were not working correctly
+ - MojoAsyncCaller now sleeps appropiately (leonerd)
+ - t/04_credentials.t now works if AWS_CONFIG_FILE is set in the environment (campus-explorer)
+ - Don't ship and install paws_make_testcase and xml2yaml scripts (atoomic)
+ - unstable API warnings can be silenced by setting PAWS_SILENCE_UNSTABLE_WARNINGS to 1 (meis)
+ - paws CLI doesn't add './lib' and './auto-lib' to @INC (atoomic)
+ - uninitialized value warnings solved in S3 #282 (slobo)
+ - New API: Macie
+ - New API: DLM
+ - New API: Signer
+ - New API: Chime
+ - New API: PinpointEmail
+ - New API: S3Control
+ - New API: PinpointSMSVoice
+ - New API: RAM
+ - New API: Route53Resolver
+ - New API: RDSData
+ - New API: Quicksight
+ - New API: Amplify
+ - New API: Datasync
+ - New API: Robomaker
+ - New API: Transfer
+ - New API: GlobalAccelerator
+ - New API: ComprehendMedical
+ - New API: FSX
+ - New API: KinesisAnalyticsV2
+ - New API: MediaConnect
+ - New API: SecurityHub
+ - New API: AppMesh
+ - New API: Kafka
+ - New API: LicenseManager
+ - New API: ApiGatewayManagement 
+ - New API: ApiGatewayV2
+ - New API: Backup
+ - New API: DocDB
+ - New API: PinpointSMSVoice
+ - New API: WorkLink
+
+0.38 19 Jun 2018
+ - Fix test suite so that credentials_process tests don't need extra modules (#251, #248)
+ - API updates for any service up to the date of release
+
+0.37 13 Jun 2018
  - Big refactor of all result handling for all services
+ - Support for credential_process in credential handlers
+   https://docs.aws.amazon.com/cli/latest/topic/config-vars.html#sourcing-credentials-from-external-processes
  - Better docu generation (osoriano)
- - Documentation update: Now POD contains links from the botocore documentation
+ - Documentation update: Now POD contains links from the botocore documentation in services and methods
+ - Bump XML::Simple dependency to 2.21 (mla)
+ - Documentation improvement: Link back to Service class from method parameters classes (castaway)
+ - Documentation improvement: New way of rendering parameters to methods (avoids very long method signatures in TOCs). This
+   also fixes the fact that search.cpan.org didn't like very long lines in its TOC, so was not putting some methods in the
+   TOC (castaway)
+ - Documentation improvement: Synopsis for methods now has relevant examples for each method call with hints about the size of parameters, if they're optional, etc. (castaway)
+ - Json services will now return the code of the exception as the message of the exception if no message was found (instead
+   of 'unrecognized error format')
+ - Some services were signing requests with the incorrect strings. Pricing, Opsworks, MarketplaceMetering, MarketplaceEntitlement,
+   MarketplaceCommerceAnalytics, DynamoDBStreams, CloudHSMv2, ApplicationAutoScaling and AutoScalingPlans now sign correctly. (autarch)
+ - New API: EKS
+ - New API: Neptune
+ - New API: MediaTailor
  - New API: Pricing
  - New API: CostExplorer
  - New API: Translate
@@ -17,62 +81,17 @@
  - New API: AppSync
  - New API: AlexaForBusiness
  - New API: ServiceDiscovery
- - API update: IoT
- - API update: Shield
- - API update: Rekognition
- - API update: Route53
- - API update: Glue
- - API update: Organizations
- - API update: CodeBuild
- - API update: StepFunctions
- - API update: WorkDocs
- - API update: CloudFormation
- - API update: Firehose
- - API update: Kinesis
- - API update: StorageGateway
- - API update: EMR
- - API update: XRay
- - API update: ACM
- - API update: S3
- - API update: ApiGateway
- - API update: ApplicationAutoscaling
- - API update: ECS
- - API update: EC2
- - API update: ELBv2
- - API update: OpsWorksCM
- - API update: WAFRegional
- - API update: WAF
- - API update: SQS
- - API update: SES
- - API update: ES
- - API update: CodeCommit
- - API update: ECR
- - API update: RDS
- - API update: DMS
- - API update: ElasticBeanstalk
- - API update: Lightsail
- - API update: SSM
- - API update: Pinpoint
- - API update: DirectConnect
- - API update: ApiGateway
- - API update: CloudFront
- - API update: Glue
- - API update: ElastiCache
- - API update: Lambda
- - API update: SSM
- - API update: CodeDeploy
- - API update: Batch
- - API update: CognitoIdp
- - API update: Greengrass
- - API update: ECS
- - API update: AutoScaling
- - API update: DynamoDB
- - API update: Glacier
- - API update: CloudDirectory
- - API update: ServiceCatalog
- - API update: CloudWatch
- - API update: AppStream
- - API update: Budgets
+ - New API: WorkMail
+ - New API: Transcribe
+ - New API: AutoScalingPlans
+ - New API: Connect
+ - New API: ACMCPA
+ - New API: FMS
+ - New API: SecretsManager
+ - New API: IoTAnalytics
+ - New APIs: IoT1ClickDevices and IOT1ClickProjects
+ - New API: PerformanceInsights
+ - API updates for any service up to the date of release
 
 0.36 03 Nov 2017
  - Fix Bug: #210: S3 PutObject was not working: the Content-MD5 header was not 

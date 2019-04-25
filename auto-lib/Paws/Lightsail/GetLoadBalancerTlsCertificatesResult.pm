@@ -16,7 +16,7 @@ Paws::Lightsail::GetLoadBalancerTlsCertificatesResult
 
 =head2 TlsCertificates => ArrayRef[L<Paws::Lightsail::LoadBalancerTlsCertificate>]
 
-An array of LoadBalancerTlsCertificate objects describing your TLS/SSL
+An array of LoadBalancerTlsCertificate objects describing your SSL/TLS
 certificates.
 
 

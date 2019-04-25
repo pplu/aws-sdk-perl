@@ -13,6 +13,7 @@ package Paws::CloudDirectory::BatchWriteOperationResponse;
   has DetachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachPolicyResponse');
   has DetachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachTypedLinkResponse');
   has RemoveFacetFromObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchRemoveFacetFromObjectResponse');
+  has UpdateLinkAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateLinkAttributesResponse');
   has UpdateObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateObjectAttributesResponse');
 1;
 
@@ -73,14 +74,14 @@ limited number of attached policies.
 =head2 AttachTypedLink => L<Paws::CloudDirectory::BatchAttachTypedLinkResponse>
 
   Attaches a typed link to a specified source and target object. For more
-information, see Typed link
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+information, see Typed Links
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
 =head2 CreateIndex => L<Paws::CloudDirectory::BatchCreateIndexResponse>
 
-  Creates an index object. See Indexing
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html)
+  Creates an index object. See Indexing and search
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.htm)
 for more information.
 
 
@@ -112,13 +113,18 @@ for more information.
 =head2 DetachTypedLink => L<Paws::CloudDirectory::BatchDetachTypedLinkResponse>
 
   Detaches a typed link from a specified source and target object. For
-more information, see Typed link
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+more information, see Typed Links
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
 =head2 RemoveFacetFromObject => L<Paws::CloudDirectory::BatchRemoveFacetFromObjectResponse>
 
   The result of a batch remove facet from object operation.
+
+
+=head2 UpdateLinkAttributes => L<Paws::CloudDirectory::BatchUpdateLinkAttributesResponse>
+
+  Represents the output of a C<BatchWrite> response operation.
 
 
 =head2 UpdateObjectAttributes => L<Paws::CloudDirectory::BatchUpdateObjectAttributesResponse>

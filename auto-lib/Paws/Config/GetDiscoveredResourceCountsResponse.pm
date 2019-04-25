@@ -48,7 +48,7 @@ buckets, for a total of 60 resources.
 =item 2.
 
 You make a call to the C<GetDiscoveredResourceCounts> action and
-specify the resource type, C<"AWS::EC2::Instances"> in the request.
+specify the resource type, C<"AWS::EC2::Instances">, in the request.
 
 =item 3.
 

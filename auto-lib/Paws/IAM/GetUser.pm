@@ -18,17 +18,30 @@ Paws::IAM::GetUser - Arguments for method GetUser on L<Paws::IAM>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetUser on the 
-AWS Identity and Access Management service. Use the attributes of this class
+This class represents the parameters used for calling the method GetUser on the
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method GetUser.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUser.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetUser(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    # To get information about an IAM user
+    # The following command gets information about the IAM user named Bob.
+    my $GetUserResponse = $iam->GetUser(
+      {
+        'UserName' => 'Bob'
+      }
+    );
+
+    # Results:
+    my $User = $GetUserResponse->User;
+
+    # Returns a L<Paws::IAM::GetUserResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/GetUser>
 
 =head1 ATTRIBUTES
 
@@ -38,10 +51,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The name of the user to get information about.
 
 This parameter is optional. If it is not included, it defaults to the
-user making the request. This parameter allows (per its regex pattern
-(http://wikipedia.org/wiki/regex)) a string of characters consisting of
-upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+user making the request. This parameter allows (through its regex
+pattern (http://wikipedia.org/wiki/regex)) a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: _+=,.@-
 
 
 

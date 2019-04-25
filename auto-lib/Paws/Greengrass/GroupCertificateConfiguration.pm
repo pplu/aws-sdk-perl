@@ -33,24 +33,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on the group certificate configuration
+Information about a group certificate configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 CertificateAuthorityExpiryInMilliseconds => Str
 
-  Amount of time when the certificate authority expires in milliseconds.
+  The amount of time remaining before the certificate authority expires,
+in milliseconds.
 
 
 =head2 CertificateExpiryInMilliseconds => Str
 
-  Amount of time when the certificate expires in milliseconds.
+  The amount of time remaining before the certificate expires, in
+milliseconds.
 
 
 =head2 GroupId => Str
 
-  Id of the group the certificate configuration belongs to.
+  The ID of the group certificate configuration.
 
 
 

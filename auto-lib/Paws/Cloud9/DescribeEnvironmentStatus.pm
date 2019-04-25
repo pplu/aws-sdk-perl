@@ -18,17 +18,28 @@ Paws::Cloud9::DescribeEnvironmentStatus - Arguments for method DescribeEnvironme
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeEnvironmentStatus on the 
-AWS Cloud9 service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeEnvironmentStatus on the
+L<AWS Cloud9|Paws::Cloud9> service. Use the attributes of this class
 as arguments to method DescribeEnvironmentStatus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEnvironmentStatus.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeEnvironmentStatus(Att1 => $value1, Att2 => $value2, ...);
+    my $cloud9 = Paws->service('Cloud9');
+    my $DescribeEnvironmentStatusResult = $cloud9->DescribeEnvironmentStatus(
+      EnvironmentId => 'MyEnvironmentId',
+
+    );
+
+    # Results:
+    my $Message = $DescribeEnvironmentStatusResult->Message;
+    my $Status  = $DescribeEnvironmentStatusResult->Status;
+
+    # Returns a L<Paws::Cloud9::DescribeEnvironmentStatusResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloud9/DescribeEnvironmentStatus>
 
 =head1 ATTRIBUTES
 

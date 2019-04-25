@@ -19,17 +19,30 @@ Paws::Batch::DescribeJobs - Arguments for method DescribeJobs on L<Paws::Batch>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeJobs on the 
-AWS Batch service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeJobs on the
+L<AWS Batch|Paws::Batch> service. Use the attributes of this class
 as arguments to method DescribeJobs.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeJobs.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeJobs(Att1 => $value1, Att2 => $value2, ...);
+    my $batch = Paws->service('Batch');
+    # To describe a specific job
+    # This example describes a job with the specified job ID.
+    my $DescribeJobsResponse = $batch->DescribeJobs(
+      {
+        'Jobs' => ['24fa2d7a-64c4-49d2-8b47-f8da4fbde8e9']
+      }
+    );
+
+    # Results:
+    my $jobs = $DescribeJobsResponse->jobs;
+
+    # Returns a L<Paws::Batch::DescribeJobsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/batch/DescribeJobs>
 
 =head1 ATTRIBUTES
 

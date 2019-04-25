@@ -20,17 +20,24 @@ Paws::SQS::ChangeMessageVisibility - Arguments for method ChangeMessageVisibilit
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ChangeMessageVisibility on the 
-Amazon Simple Queue Service service. Use the attributes of this class
+This class represents the parameters used for calling the method ChangeMessageVisibility on the
+L<Amazon Simple Queue Service|Paws::SQS> service. Use the attributes of this class
 as arguments to method ChangeMessageVisibility.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ChangeMessageVisibility.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ChangeMessageVisibility(Att1 => $value1, Att2 => $value2, ...);
+    my $sqs = Paws->service('SQS');
+    $sqs->ChangeMessageVisibility(
+      QueueUrl          => 'MyString',
+      ReceiptHandle     => 'MyString',
+      VisibilityTimeout => 1,
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs/ChangeMessageVisibility>
 
 =head1 ATTRIBUTES
 
@@ -39,7 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The URL of the Amazon SQS queue whose message's visibility is changed.
 
-Queue URLs are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 

@@ -23,17 +23,29 @@ Paws::RDS::CopyDBClusterSnapshot - Arguments for method CopyDBClusterSnapshot on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CopyDBClusterSnapshot on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method CopyDBClusterSnapshot on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method CopyDBClusterSnapshot.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyDBClusterSnapshot.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CopyDBClusterSnapshot(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+   # To copy a DB cluster snapshot
+   # The following example copies an automated snapshot of a DB cluster to a new
+   # DB cluster snapshot.
+    my $CopyDBClusterSnapshotResult = $rds->CopyDBClusterSnapshot(
+      {
+        'SourceDBClusterSnapshotIdentifier' =>
+          'rds:sample-cluster-2016-09-14-10-38',
+        'TargetDBClusterSnapshotIdentifier' => 'cluster-snapshot-copy-1'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CopyDBClusterSnapshot>
 
 =head1 ATTRIBUTES
 
@@ -51,10 +63,6 @@ The AWS AWS KMS key ID for an encrypted DB cluster snapshot. The KMS
 key ID is the Amazon Resource Name (ARN), KMS key identifier, or the
 KMS key alias for the KMS encryption key.
 
-If you copy an unencrypted DB cluster snapshot and specify a value for
-the C<KmsKeyId> parameter, Amazon RDS encrypts the target DB cluster
-snapshot using the specified KMS encryption key.
-
 If you copy an encrypted DB cluster snapshot from your AWS account, you
 can specify a value for C<KmsKeyId> to encrypt the copy with a new KMS
 encryption key. If you don't specify a value for C<KmsKeyId>, then the
@@ -70,6 +78,9 @@ copy of the DB cluster snapshot in the destination AWS Region. KMS
 encryption keys are specific to the AWS Region that they are created
 in, and you can't use encryption keys from one AWS Region in another
 AWS Region.
+
+If you copy an unencrypted DB cluster snapshot and specify a value for
+the C<KmsKeyId> parameter, an error is returned.
 
 
 
@@ -148,8 +159,9 @@ valid DB snapshot identifier.
 
 If the source snapshot is in a different AWS Region than the copy,
 specify a valid DB cluster snapshot ARN. For more information, go to
-Copying a DB Snapshot or DB Cluster Snapshot
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html).
+Copying Snapshots Across AWS Regions
+(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html#USER_CopySnapshot.AcrossRegions)
+in the I<Amazon Aurora User Guide.>
 
 =back
 
@@ -182,7 +194,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 

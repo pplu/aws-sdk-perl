@@ -1,8 +1,8 @@
 package Paws::MediaLive::CaptionLanguageMapping;
   use Moose;
-  has CaptionChannel => (is => 'ro', isa => 'Int', request_name => 'captionChannel', traits => ['NameInRequest']);
-  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
-  has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
+  has CaptionChannel => (is => 'ro', isa => 'Int', request_name => 'captionChannel', traits => ['NameInRequest'], required => 1);
+  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest'], required => 1);
+  has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -39,19 +39,20 @@ Maps a caption channel to an ISO 693-2 language code
 =head1 ATTRIBUTES
 
 
-=head2 CaptionChannel => Int
+=head2 B<REQUIRED> CaptionChannel => Int
 
-  Channel to insert closed captions. Each channel mapping must have a
-unique channel number (maximum of 4)
+  The closed caption channel being described by this
+CaptionLanguageMapping. Each channel mapping must have a unique channel
+number (maximum of 4)
 
 
-=head2 LanguageCode => Str
+=head2 B<REQUIRED> LanguageCode => Str
 
   Three character ISO 639-2 language code (see
 http://www.loc.gov/standards/iso639-2)
 
 
-=head2 LanguageDescription => Str
+=head2 B<REQUIRED> LanguageDescription => Str
 
   Textual description of language
 

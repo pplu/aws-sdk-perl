@@ -1,6 +1,7 @@
 package Paws::LexRuntime;
   use Moose;
   sub service { 'runtime.lex' }
+  sub signing_name { 'lex' }
   sub version { '2016-11-28' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -67,9 +68,33 @@ pizza size and crust type), and then performs fulfillment activity
 API to create and manage your Amazon Lex bot. For a list of build-time
 operations, see the build-time API, .
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/runtime.lex-2016-11-28>
+
+
 =head1 METHODS
 
-=head2 PostContent(BotAlias => Str, BotName => Str, ContentType => Str, InputStream => Str, UserId => Str, [Accept => Str, RequestAttributes => Str, SessionAttributes => Str])
+=head2 PostContent
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item ContentType => Str
+
+=item InputStream => Str
+
+=item UserId => Str
+
+=item [Accept => Str]
+
+=item [RequestAttributes => Str]
+
+=item [SessionAttributes => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexRuntime::PostContent>
 
@@ -167,7 +192,24 @@ C<sessionAttributes>. For more information, see Managing Conversation
 Context (http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 
 
-=head2 PostText(BotAlias => Str, BotName => Str, InputText => Str, UserId => Str, [RequestAttributes => L<Paws::LexRuntime::StringMap>, SessionAttributes => L<Paws::LexRuntime::StringMap>])
+=head2 PostText
+
+=over
+
+=item BotAlias => Str
+
+=item BotName => Str
+
+=item InputText => Str
+
+=item UserId => Str
+
+=item [RequestAttributes => L<Paws::LexRuntime::StringMap>]
+
+=item [SessionAttributes => L<Paws::LexRuntime::StringMap>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::LexRuntime::PostText>
 

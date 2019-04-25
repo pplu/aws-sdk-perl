@@ -19,24 +19,41 @@ Paws::Greengrass::GetLoggerDefinition - Arguments for method GetLoggerDefinition
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetLoggerDefinition on the 
-AWS Greengrass service. Use the attributes of this class
+This class represents the parameters used for calling the method GetLoggerDefinition on the
+L<AWS Greengrass|Paws::Greengrass> service. Use the attributes of this class
 as arguments to method GetLoggerDefinition.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLoggerDefinition.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetLoggerDefinition(Att1 => $value1, Att2 => $value2, ...);
+    my $greengrass = Paws->service('Greengrass');
+    my $GetLoggerDefinitionResponse = $greengrass->GetLoggerDefinition(
+      LoggerDefinitionId => 'My__string',
+
+    );
+
+    # Results:
+    my $Arn               = $GetLoggerDefinitionResponse->Arn;
+    my $CreationTimestamp = $GetLoggerDefinitionResponse->CreationTimestamp;
+    my $Id                = $GetLoggerDefinitionResponse->Id;
+    my $LastUpdatedTimestamp =
+      $GetLoggerDefinitionResponse->LastUpdatedTimestamp;
+    my $LatestVersion    = $GetLoggerDefinitionResponse->LatestVersion;
+    my $LatestVersionArn = $GetLoggerDefinitionResponse->LatestVersionArn;
+    my $Name             = $GetLoggerDefinitionResponse->Name;
+
+    # Returns a L<Paws::Greengrass::GetLoggerDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/GetLoggerDefinition>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> LoggerDefinitionId => Str
 
-logger definition Id
+The ID of the logger definition.
 
 
 

@@ -31,15 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Contains information used with the RebuildWorkspaces operation to
-rebuild a WorkSpace.
+Describes the information used to rebuild a WorkSpace.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> WorkspaceId => Str
 
-  The identifier of the WorkSpace to rebuild.
+  The identifier of the WorkSpace.
 
 
 

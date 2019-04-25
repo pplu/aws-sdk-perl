@@ -13,6 +13,7 @@ package Paws::CloudDirectory::BatchWriteOperation;
   has DetachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachPolicy');
   has DetachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachTypedLink');
   has RemoveFacetFromObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchRemoveFacetFromObject');
+  has UpdateLinkAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateLinkAttributes');
   has UpdateObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateObjectAttributes');
 1;
 
@@ -73,14 +74,14 @@ limited number of attached policies.
 =head2 AttachTypedLink => L<Paws::CloudDirectory::BatchAttachTypedLink>
 
   Attaches a typed link to a specified source and target object. For more
-information, see Typed link
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+information, see Typed Links
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
 =head2 CreateIndex => L<Paws::CloudDirectory::BatchCreateIndex>
 
-  Creates an index object. See Indexing
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html)
+  Creates an index object. See Indexing and search
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.htm)
 for more information.
 
 
@@ -112,13 +113,18 @@ for more information.
 =head2 DetachTypedLink => L<Paws::CloudDirectory::BatchDetachTypedLink>
 
   Detaches a typed link from a specified source and target object. For
-more information, see Typed link
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
+more information, see Typed Links
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
 =head2 RemoveFacetFromObject => L<Paws::CloudDirectory::BatchRemoveFacetFromObject>
 
   A batch operation that removes a facet from an object.
+
+
+=head2 UpdateLinkAttributes => L<Paws::CloudDirectory::BatchUpdateLinkAttributes>
+
+  Updates a given object's attributes.
 
 
 =head2 UpdateObjectAttributes => L<Paws::CloudDirectory::BatchUpdateObjectAttributes>

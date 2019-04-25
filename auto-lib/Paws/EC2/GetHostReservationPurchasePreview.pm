@@ -19,25 +19,42 @@ Paws::EC2::GetHostReservationPurchasePreview - Arguments for method GetHostReser
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetHostReservationPurchasePreview on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method GetHostReservationPurchasePreview on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method GetHostReservationPurchasePreview.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetHostReservationPurchasePreview.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetHostReservationPurchasePreview(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    my $GetHostReservationPurchasePreviewResult =
+      $ec2->GetHostReservationPurchasePreview(
+      HostIdSet  => [ 'MyString', ... ],
+      OfferingId => 'MyString',
+
+      );
+
+    # Results:
+    my $CurrencyCode = $GetHostReservationPurchasePreviewResult->CurrencyCode;
+    my $Purchase     = $GetHostReservationPurchasePreviewResult->Purchase;
+    my $TotalHourlyPrice =
+      $GetHostReservationPurchasePreviewResult->TotalHourlyPrice;
+    my $TotalUpfrontPrice =
+      $GetHostReservationPurchasePreviewResult->TotalUpfrontPrice;
+
+    # Returns a L<Paws::EC2::GetHostReservationPurchasePreviewResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/GetHostReservationPurchasePreview>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> HostIdSet => ArrayRef[Str|Undef]
 
-The ID/s of the Dedicated Host/s that the reservation will be
-associated with.
+The IDs of the Dedicated Hosts with which the reservation is
+associated.
 
 
 

@@ -3,10 +3,12 @@ package Paws::Batch::JobDefinition;
   has ContainerProperties => (is => 'ro', isa => 'Paws::Batch::ContainerProperties', request_name => 'containerProperties', traits => ['NameInRequest']);
   has JobDefinitionArn => (is => 'ro', isa => 'Str', request_name => 'jobDefinitionArn', traits => ['NameInRequest'], required => 1);
   has JobDefinitionName => (is => 'ro', isa => 'Str', request_name => 'jobDefinitionName', traits => ['NameInRequest'], required => 1);
+  has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodeProperties', request_name => 'nodeProperties', traits => ['NameInRequest']);
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', request_name => 'parameters', traits => ['NameInRequest']);
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', request_name => 'retryStrategy', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', request_name => 'timeout', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -58,6 +60,11 @@ An object representing an AWS Batch job definition.
   The name of the job definition.
 
 
+=head2 NodeProperties => L<Paws::Batch::NodeProperties>
+
+  An object with various properties specific to multi-node parallel jobs.
+
+
 =head2 Parameters => L<Paws::Batch::ParametersMap>
 
   Default parameters or parameter substitution placeholders that are set
@@ -80,6 +87,13 @@ job definition.
 =head2 Status => Str
 
   The status of the job definition.
+
+
+=head2 Timeout => L<Paws::Batch::JobTimeout>
+
+  The timeout configuration for jobs that are submitted with this job
+definition. You can specify a timeout duration after which AWS Batch
+terminates your jobs if they have not finished.
 
 
 =head2 B<REQUIRED> Type => Str

@@ -11,8 +11,10 @@ package Paws::AutoScaling::UpdateAutoScalingGroup;
   has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has MaxSize => (is => 'ro', isa => 'Int');
   has MinSize => (is => 'ro', isa => 'Int');
+  has MixedInstancesPolicy => (is => 'ro', isa => 'Paws::AutoScaling::MixedInstancesPolicy');
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
+  has ServiceLinkedRoleARN => (is => 'ro', isa => 'Str');
   has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
 
@@ -31,17 +33,49 @@ Paws::AutoScaling::UpdateAutoScalingGroup - Arguments for method UpdateAutoScali
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateAutoScalingGroup on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateAutoScalingGroup on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method UpdateAutoScalingGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAutoScalingGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateAutoScalingGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+   # To update the launch configuration
+   # This example updates the launch configuration of the specified Auto Scaling
+   # group.
+    $autoscaling->UpdateAutoScalingGroup(
+      {
+        'AutoScalingGroupName'    => 'my-auto-scaling-group',
+        'LaunchConfigurationName' => 'new-launch-config'
+      }
+    );
+
+    # To update the minimum and maximum size
+    # This example updates the minimum size and maximum size of the specified
+    # Auto Scaling group.
+    $autoscaling->UpdateAutoScalingGroup(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'MaxSize'              => 3,
+        'MinSize'              => 1
+      }
+    );
+
+    # To enable instance protection
+    # This example enables instance protection for the specified Auto Scaling
+    # group.
+    $autoscaling->UpdateAutoScalingGroup(
+      {
+        'AutoScalingGroupName'             => 'my-auto-scaling-group',
+        'NewInstancesProtectedFromScaleIn' => 1
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/UpdateAutoScalingGroup>
 
 =head1 ATTRIBUTES
 
@@ -63,9 +97,9 @@ One or more Availability Zones for the group.
 The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default is 300.
 
-For more information, see Auto Scaling Cooldowns
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
-in the I<Auto Scaling User Guide>.
+For more information, see Scaling Cooldowns
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) in
+the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -79,13 +113,13 @@ the group and less than or equal to the maximum size of the group.
 
 =head2 HealthCheckGracePeriod => Int
 
-The amount of time, in seconds, that Auto Scaling waits before checking
-the health status of an EC2 instance that has come into service. The
-default is 0.
+The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
+before checking the health status of an EC2 instance that has come into
+service. The default is 0.
 
 For more information, see Health Checks
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -98,15 +132,16 @@ and C<ELB>.
 
 =head2 LaunchConfigurationName => Str
 
-The name of the launch configuration. You must specify either a launch
-configuration or a launch template.
+The name of the launch configuration. If you specify this parameter,
+you can't specify a launch template or a mixed instances policy.
 
 
 
 =head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
 
-The launch template to use to specify the updates. You must specify a
-launch configuration or a launch template.
+The launch template and version to use to specify the updates. If you
+specify this parameter, you can't specify a launch configuration or a
+mixed instances policy.
 
 
 
@@ -122,6 +157,14 @@ The minimum size of the Auto Scaling group.
 
 
 
+=head2 MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>
+
+The mixed instances policy to use to specify the updates. If you
+specify this parameter, you can't specify a launch configuration or a
+launch template.
+
+
+
 =head2 NewInstancesProtectedFromScaleIn => Bool
 
 Indicates whether newly launched instances are protected from
@@ -131,10 +174,17 @@ termination by Auto Scaling when scaling in.
 
 =head2 PlacementGroup => Str
 
-The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups
+The name of the placement group into which to launch your instances, if
+any. For more information, see Placement Groups
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
+=head2 ServiceLinkedRoleARN => Str
+
+The Amazon Resource Name (ARN) of the service-linked role that the Auto
+Scaling group uses to call other AWS services on your behalf.
 
 
 
@@ -146,7 +196,7 @@ order that they are listed.
 
 For more information, see Controlling Which Instances Auto Scaling
 Terminates During Scale In
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html)
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
 in the I<Auto Scaling User Guide>.
 
 
@@ -161,8 +211,8 @@ that the subnets' Availability Zones match the values you specify for
 C<AvailabilityZones>.
 
 For more information, see Launching Auto Scaling Instances in a VPC
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html)
-in the I<Auto Scaling User Guide>.
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 

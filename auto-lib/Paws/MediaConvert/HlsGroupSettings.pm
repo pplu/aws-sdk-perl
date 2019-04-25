@@ -11,6 +11,7 @@ package Paws::MediaConvert::HlsGroupSettings;
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::HlsEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
   has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
   has ManifestDurationFormat => (is => 'ro', isa => 'Str', request_name => 'manifestDurationFormat', traits => ['NameInRequest']);
+  has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
   has MinSegmentLength => (is => 'ro', isa => 'Int', request_name => 'minSegmentLength', traits => ['NameInRequest']);
   has OutputSelection => (is => 'ro', isa => 'Str', request_name => 'outputSelection', traits => ['NameInRequest']);
   has ProgramDateTime => (is => 'ro', isa => 'Str', request_name => 'programDateTime', traits => ['NameInRequest']);
@@ -118,6 +119,22 @@ service uses the filename of the first input file.
 =head2 ManifestDurationFormat => Str
 
   
+
+
+=head2 MinFinalSegmentLength => Num
+
+  Keep this setting at the default value of 0, unless you are
+troubleshooting a problem with how devices play back the end of your
+video asset. If you know that player devices are hanging on the final
+segment of your video because the length of your final segment is too
+short, use this setting to specify a minimum final segment length, in
+seconds. Choose a value that is greater than or equal to 1 and less
+than your segment length. When you specify a value for this setting,
+the encoder will combine any final segment that is shorter than the
+length that you specify with the previous segment. For example, your
+segment length is 3 seconds and your final segment is .5 seconds
+without a minimum final segment length; when you set the minimum final
+segment length to 1, your final segment is 3.5 seconds.
 
 
 =head2 MinSegmentLength => Int

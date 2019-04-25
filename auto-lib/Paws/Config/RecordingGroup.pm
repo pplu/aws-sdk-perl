@@ -63,7 +63,7 @@ If you don't want AWS Config to record all resources, you can specify
 which types of resources it will record with the C<resourceTypes>
 parameter.
 
-For a list of supported resource types, see Supported resource types
+For a list of supported resource types, see Supported Resource Types
 (http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
 
 For more information, see Selecting Which Resources AWS Config Records
@@ -78,8 +78,8 @@ For more information, see Selecting Which Resources AWS Config Records
 supported type of regional resource.
 
 If you set this option to C<true>, when AWS Config adds support for a
-new type of regional resource, it automatically starts recording
-resources of that type.
+new type of regional resource, it starts recording resources of that
+type automatically.
 
 If you set this option to C<true>, you cannot enumerate a list of
 C<resourceTypes>.
@@ -95,8 +95,8 @@ Before you can set this option to C<true>, you must set the
 C<allSupported> option to C<true>.
 
 If you set this option to C<true>, when AWS Config adds support for a
-new type of global resource, it automatically starts recording
-resources of that type.
+new type of global resource, it starts recording resources of that type
+automatically.
 
 The configuration details for any global resource are the same in all
 regions. To prevent duplicate configuration items, you should consider

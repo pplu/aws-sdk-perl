@@ -20,17 +20,23 @@ Paws::IAM::UpdateServerCertificate - Arguments for method UpdateServerCertificat
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateServerCertificate on the 
-AWS Identity and Access Management service. Use the attributes of this class
+This class represents the parameters used for calling the method UpdateServerCertificate on the
+L<AWS Identity and Access Management|Paws::IAM> service. Use the attributes of this class
 as arguments to method UpdateServerCertificate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateServerCertificate.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UpdateServerCertificate(Att1 => $value1, Att2 => $value2, ...);
+    my $iam = Paws->service('IAM');
+    $iam->UpdateServerCertificate(
+      ServerCertificateName    => 'MyserverCertificateNameType',
+      NewPath                  => 'MypathType',                     # OPTIONAL
+      NewServerCertificateName => 'MyserverCertificateNameType',    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam/UpdateServerCertificate>
 
 =head1 ATTRIBUTES
 
@@ -40,12 +46,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The new path for the server certificate. Include this only if you are
 updating the server certificate's path.
 
-This paramater allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 either a forward slash (/) by itself or a string that must begin and
-end with forward slashes, containing any ASCII character from the !
-(\u0021) thru the DEL character (\u007F), including most punctuation
-characters, digits, and upper and lowercased letters.
+end with forward slashes. In addition, it can contain any ASCII
+character from the ! (\u0021) through the DEL character (\u007F),
+including most punctuation characters, digits, and upper and lowercased
+letters.
 
 
 
@@ -55,10 +62,10 @@ The new name for the server certificate. Include this only if you are
 updating the server certificate's name. The name of the certificate
 cannot contain any spaces.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 
@@ -66,10 +73,10 @@ also include any of the following characters: =,.@-
 
 The name of the server certificate that you want to update.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: =,.@-
+also include any of the following characters: _+=,.@-
 
 
 

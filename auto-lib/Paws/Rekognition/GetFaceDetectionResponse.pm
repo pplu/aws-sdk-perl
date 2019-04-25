@@ -45,7 +45,7 @@ message.
 
 =head2 VideoMetadata => L<Paws::Rekognition::VideoMetadata>
 
-Information about a video that Rekognition Video analyzed.
+Information about a video that Amazon Rekognition Video analyzed.
 C<Videometadata> is returned in every page of paginated responses from
 a Amazon Rekognition video operation.
 

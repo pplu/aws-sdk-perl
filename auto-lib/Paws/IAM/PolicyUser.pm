@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Policy
 Contains information about a user that a managed policy is attached to.
 
 This data type is used as a response element in the
-ListEntitiesForPolicy action.
+ListEntitiesForPolicy operation.
 
 For more information about managed policies, refer to Managed Policies
 and Inline Policies

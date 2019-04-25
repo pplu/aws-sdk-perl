@@ -5,7 +5,9 @@ package Paws::LexModels::BotChannelAssociation;
   has BotName => (is => 'ro', isa => 'Str', request_name => 'botName', traits => ['NameInRequest']);
   has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
@@ -74,9 +76,38 @@ channel was created.
   A text description of the association you are creating.
 
 
+=head2 FailureReason => Str
+
+  If C<status> is C<FAILED>, Amazon Lex provides the reason that it
+failed to create the association.
+
+
 =head2 Name => Str
 
   The name of the association between the bot and the channel.
+
+
+=head2 Status => Str
+
+  The status of the bot channel.
+
+=over
+
+=item *
+
+C<CREATED> - The channel has been created and is ready for use.
+
+=item *
+
+C<IN_PROGRESS> - Channel creation is in progress.
+
+=item *
+
+C<FAILED> - There was an error creating the channel. For information
+about the reason for the failure, see the C<failureReason> field.
+
+=back
+
 
 
 =head2 Type => Str

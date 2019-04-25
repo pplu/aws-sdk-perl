@@ -26,17 +26,35 @@ Paws::WorkDocs::InitiateDocumentVersionUpload - Arguments for method InitiateDoc
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method InitiateDocumentVersionUpload on the 
-Amazon WorkDocs service. Use the attributes of this class
+This class represents the parameters used for calling the method InitiateDocumentVersionUpload on the
+L<Amazon WorkDocs|Paws::WorkDocs> service. Use the attributes of this class
 as arguments to method InitiateDocumentVersionUpload.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to InitiateDocumentVersionUpload.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->InitiateDocumentVersionUpload(Att1 => $value1, Att2 => $value2, ...);
+    my $workdocs = Paws->service('WorkDocs');
+    my $InitiateDocumentVersionUploadResponse =
+      $workdocs->InitiateDocumentVersionUpload(
+      ParentFolderId           => 'MyResourceIdType',
+      AuthenticationToken      => 'MyAuthenticationHeaderType',    # OPTIONAL
+      ContentCreatedTimestamp  => '1970-01-01T01:00:00',           # OPTIONAL
+      ContentModifiedTimestamp => '1970-01-01T01:00:00',           # OPTIONAL
+      ContentType              => 'MyDocumentContentType',         # OPTIONAL
+      DocumentSizeInBytes      => 1,                               # OPTIONAL
+      Id                       => 'MyResourceIdType',              # OPTIONAL
+      Name                     => 'MyResourceNameType',            # OPTIONAL
+      );
+
+    # Results:
+    my $Metadata       = $InitiateDocumentVersionUploadResponse->Metadata;
+    my $UploadMetadata = $InitiateDocumentVersionUploadResponse->UploadMetadata;
+
+    # Returns a L<Paws::WorkDocs::InitiateDocumentVersionUploadResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workdocs/InitiateDocumentVersionUpload>
 
 =head1 ATTRIBUTES
 

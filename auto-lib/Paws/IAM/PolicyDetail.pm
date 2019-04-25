@@ -36,7 +36,7 @@ Contains information about an IAM policy, including the policy
 document.
 
 This data type is used as a response element in the
-GetAccountAuthorizationDetails action.
+GetAccountAuthorizationDetails operation.
 
 =head1 ATTRIBUTES
 

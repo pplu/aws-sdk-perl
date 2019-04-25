@@ -38,8 +38,6 @@ EC2 instances. By default, new fleets have a capacity of one instance,
 but can be updated as needed. The maximum number of instances for a
 fleet is determined by the fleet's instance type.
 
-Fleet-related operations include:
-
 =over
 
 =item *
@@ -49,6 +47,10 @@ CreateFleet
 =item *
 
 ListFleets
+
+=item *
+
+DeleteFleet
 
 =item *
 
@@ -62,6 +64,10 @@ DescribeFleetAttributes
 
 =item *
 
+DescribeFleetCapacity
+
+=item *
+
 DescribeFleetPortSettings
 
 =item *
@@ -71,6 +77,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -104,39 +114,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 

@@ -19,17 +19,30 @@ Paws::SSM::GetPatchBaselineForPatchGroup - Arguments for method GetPatchBaseline
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetPatchBaselineForPatchGroup on the 
-Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
+This class represents the parameters used for calling the method GetPatchBaselineForPatchGroup on the
+L<Amazon Simple Systems Manager (SSM)|Paws::SSM> service. Use the attributes of this class
 as arguments to method GetPatchBaselineForPatchGroup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPatchBaselineForPatchGroup.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetPatchBaselineForPatchGroup(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $GetPatchBaselineForPatchGroupResult =
+      $ssm->GetPatchBaselineForPatchGroup(
+      PatchGroup      => 'MyPatchGroup',
+      OperatingSystem => 'WINDOWS',        # OPTIONAL
+      );
+
+    # Results:
+    my $BaselineId      = $GetPatchBaselineForPatchGroupResult->BaselineId;
+    my $OperatingSystem = $GetPatchBaselineForPatchGroupResult->OperatingSystem;
+    my $PatchGroup      = $GetPatchBaselineForPatchGroupResult->PatchGroup;
+
+    # Returns a L<Paws::SSM::GetPatchBaselineForPatchGroupResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/GetPatchBaselineForPatchGroup>
 
 =head1 ATTRIBUTES
 
@@ -39,7 +52,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Returns he operating system rule specified for patch groups using the
 patch baseline.
 
-Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"AMAZON_LINUX_2">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">, C<"SUSE">, C<"CENTOS">
 
 =head2 B<REQUIRED> PatchGroup => Str
 

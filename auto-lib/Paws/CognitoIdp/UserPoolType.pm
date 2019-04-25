@@ -2,9 +2,12 @@ package Paws::CognitoIdp::UserPoolType;
   use Moose;
   has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
   has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Arn => (is => 'ro', isa => 'Str');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has CustomDomain => (is => 'ro', isa => 'Str');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
+  has Domain => (is => 'ro', isa => 'Str');
   has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
   has EmailConfigurationFailure => (is => 'ro', isa => 'Str');
   has EmailVerificationMessage => (is => 'ro', isa => 'Str');
@@ -71,6 +74,11 @@ A container for information about the user pool.
   Specifies the attributes that are aliased in a user pool.
 
 
+=head2 Arn => Str
+
+  The Amazon Resource Name (ARN) for the user pool.
+
+
 =head2 AutoVerifiedAttributes => ArrayRef[Str|Undef]
 
   Specifies the attributes that are auto-verified in a user pool.
@@ -81,9 +89,20 @@ A container for information about the user pool.
   The date the user pool was created.
 
 
+=head2 CustomDomain => Str
+
+  
+
+
 =head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>
 
   The device configuration.
+
+
+=head2 Domain => Str
+
+  Holds the domain prefix if the user pool has a domain associated with
+it.
 
 
 =head2 EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>
@@ -119,7 +138,7 @@ users.
 
 =head2 LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>
 
-  The AWS Lambda triggers associated with tue user pool.
+  The AWS Lambda triggers associated with the user pool.
 
 
 =head2 LastModifiedDate => Str

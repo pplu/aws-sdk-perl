@@ -19,17 +19,47 @@ Paws::SSM::PutInventory - Arguments for method PutInventory on L<Paws::SSM>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutInventory on the 
-Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
+This class represents the parameters used for calling the method PutInventory on the
+L<Amazon Simple Systems Manager (SSM)|Paws::SSM> service. Use the attributes of this class
 as arguments to method PutInventory.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutInventory.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutInventory(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $PutInventoryResult = $ssm->PutInventory(
+      InstanceId => 'MyInstanceId',
+      Items      => [
+        {
+          CaptureTime   => 'MyInventoryItemCaptureTime',
+          SchemaVersion => 'MyInventoryItemSchemaVersion',
+          TypeName      => 'MyInventoryItemTypeName',        # min: 1, max: 100
+          Content       => [
+            {
+              'MyAttributeName' =>
+                'MyAttributeValue',    # key: min: 1, max: 64, value: max: 4096
+            },
+            ...                        # max: 50
+          ],                           # max: 10000; OPTIONAL
+          ContentHash => 'MyInventoryItemContentHash',    # max: 256; OPTIONAL
+          Context     => {
+            'MyAttributeName' =>
+              'MyAttributeValue',    # key: min: 1, max: 64, value: max: 4096
+          },    # max: 50; OPTIONAL
+        },
+        ...
+      ],
+
+    );
+
+    # Results:
+    my $Message = $PutInventoryResult->Message;
+
+    # Returns a L<Paws::SSM::PutInventoryResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/PutInventory>
 
 =head1 ATTRIBUTES
 

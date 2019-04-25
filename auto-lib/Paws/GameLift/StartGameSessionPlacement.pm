@@ -25,17 +25,55 @@ Paws::GameLift::StartGameSessionPlacement - Arguments for method StartGameSessio
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method StartGameSessionPlacement on the 
-Amazon GameLift service. Use the attributes of this class
+This class represents the parameters used for calling the method StartGameSessionPlacement on the
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method StartGameSessionPlacement.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartGameSessionPlacement.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->StartGameSessionPlacement(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $StartGameSessionPlacementOutput = $gamelift->StartGameSessionPlacement(
+      GameSessionQueueName      => 'MyGameSessionQueueName',
+      MaximumPlayerSessionCount => 1,
+      PlacementId               => 'MyIdStringModel',
+      DesiredPlayerSessions     => [
+        {
+          PlayerData => 'MyPlayerData',            # min: 1, max: 2048; OPTIONAL
+          PlayerId   => 'MyNonZeroAndMaxString',   # min: 1, max: 1024; OPTIONAL
+        },
+        ...
+      ],                                           # OPTIONAL
+      GameProperties => [
+        {
+          Key   => 'MyGamePropertyKey',            # max: 32
+          Value => 'MyGamePropertyValue',          # max: 96
+
+        },
+        ...
+      ],                                           # OPTIONAL
+      GameSessionData => 'MyGameSessionData',      # OPTIONAL
+      GameSessionName => 'MyNonZeroAndMaxString',  # OPTIONAL
+      PlayerLatencies => [
+        {
+          LatencyInMilliseconds => 1.0,            # OPTIONAL
+          PlayerId => 'MyNonZeroAndMaxString',     # min: 1, max: 1024; OPTIONAL
+          RegionIdentifier =>
+            'MyNonZeroAndMaxString',               # min: 1, max: 1024; OPTIONAL
+        },
+        ...
+      ],                                           # OPTIONAL
+    );
+
+    # Results:
+    my $GameSessionPlacement =
+      $StartGameSessionPlacementOutput->GameSessionPlacement;
+
+    # Returns a L<Paws::GameLift::StartGameSessionPlacementOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/StartGameSessionPlacement>
 
 =head1 ATTRIBUTES
 
@@ -48,21 +86,21 @@ Set of information on each player to create a player session for.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-Set of developer-defined properties for a game session, formatted as a
-set of type:value pairs. These properties are included in the
-GameSession object, which is passed to the game server with a request
-to start a new game session (see Start a Game Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+Set of custom properties for a game session, formatted as key:value
+pairs. These properties are passed to a game server process in the
+GameSession object with a request to start a new game session (see
+Start a Game Session
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 
 =head2 GameSessionData => Str
 
-Set of developer-defined game session properties, formatted as a single
-string value. This data is included in the GameSession object, which is
-passed to the game server with a request to start a new game session
-(see Start a Game Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+Set of custom game session properties, formatted as a single string
+value. This data is passed to a game server process in the GameSession
+object with a request to start a new game session (see Start a Game
+Session
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 

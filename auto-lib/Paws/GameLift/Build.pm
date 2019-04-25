@@ -39,8 +39,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::B
 
 Properties describing a game build.
 
-Build-related operations include:
-
 =over
 
 =item *

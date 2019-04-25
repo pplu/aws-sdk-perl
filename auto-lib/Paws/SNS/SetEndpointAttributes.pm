@@ -19,17 +19,23 @@ Paws::SNS::SetEndpointAttributes - Arguments for method SetEndpointAttributes on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SetEndpointAttributes on the 
-Amazon Simple Notification Service service. Use the attributes of this class
+This class represents the parameters used for calling the method SetEndpointAttributes on the
+L<Amazon Simple Notification Service|Paws::SNS> service. Use the attributes of this class
 as arguments to method SetEndpointAttributes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetEndpointAttributes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetEndpointAttributes(Att1 => $value1, Att2 => $value2, ...);
+    my $sns = Paws->service('SNS');
+    $sns->SetEndpointAttributes(
+      Attributes  => { 'MyString' => 'MyString', },
+      EndpointArn => 'MyString',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns/SetEndpointAttributes>
 
 =head1 ATTRIBUTES
 
@@ -43,23 +49,23 @@ following:
 
 =item *
 
-C<CustomUserData> -- arbitrary user data to associate with the
+C<CustomUserData> E<ndash> arbitrary user data to associate with the
 endpoint. Amazon SNS does not use this data. The data must be in UTF-8
 format and less than 2KB.
 
 =item *
 
-C<Enabled> -- flag that enables/disables delivery to the endpoint.
-Amazon SNS will set this to false when a notification service indicates
-to Amazon SNS that the endpoint is invalid. Users can set it back to
-true, typically after updating Token.
+C<Enabled> E<ndash> flag that enables/disables delivery to the
+endpoint. Amazon SNS will set this to false when a notification service
+indicates to Amazon SNS that the endpoint is invalid. Users can set it
+back to true, typically after updating Token.
 
 =item *
 
-C<Token> -- device token, also referred to as a registration id, for an
-app and mobile device. This is returned from the notification service
-when an app and mobile device are registered with the notification
-service.
+C<Token> E<ndash> device token, also referred to as a registration id,
+for an app and mobile device. This is returned from the notification
+service when an app and mobile device are registered with the
+notification service.
 
 =back
 

@@ -3,11 +3,12 @@ package Paws::ApiGateway::TestInvokeMethod;
   use Moose;
   has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
   has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientCertificateId');
-  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfHeaderValues', traits => ['NameInRequest'], request_name => 'headers');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod', required => 1);
+  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'headers');
+  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'http_method', required => 1);
+  has MultiValueHeaders => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToList', traits => ['NameInRequest'], request_name => 'multiValueHeaders');
   has PathWithQueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pathWithQueryString');
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_id', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
   has StageVariables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'stageVariables');
 
   use MooseX::ClassAttribute;
@@ -26,17 +27,39 @@ Paws::ApiGateway::TestInvokeMethod - Arguments for method TestInvokeMethod on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method TestInvokeMethod on the 
-Amazon API Gateway service. Use the attributes of this class
+This class represents the parameters used for calling the method TestInvokeMethod on the
+L<Amazon API Gateway|Paws::ApiGateway> service. Use the attributes of this class
 as arguments to method TestInvokeMethod.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TestInvokeMethod.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->TestInvokeMethod(Att1 => $value1, Att2 => $value2, ...);
+    my $apigateway = Paws->service('ApiGateway');
+    my $TestInvokeMethodResponse = $apigateway->TestInvokeMethod(
+      HttpMethod          => 'MyString',
+      ResourceId          => 'MyString',
+      RestApiId           => 'MyString',
+      Body                => 'MyString',                              # OPTIONAL
+      ClientCertificateId => 'MyString',                              # OPTIONAL
+      Headers             => { 'MyString' => 'MyString', },           # OPTIONAL
+      MultiValueHeaders   => { 'MyString' => [ 'MyString', ... ], },  # OPTIONAL
+      PathWithQueryString => 'MyString',                              # OPTIONAL
+      StageVariables      => { 'MyString' => 'MyString', },           # OPTIONAL
+    );
+
+    # Results:
+    my $Body              = $TestInvokeMethodResponse->Body;
+    my $Headers           = $TestInvokeMethodResponse->Headers;
+    my $Latency           = $TestInvokeMethodResponse->Latency;
+    my $Log               = $TestInvokeMethodResponse->Log;
+    my $MultiValueHeaders = $TestInvokeMethodResponse->MultiValueHeaders;
+    my $Status            = $TestInvokeMethodResponse->Status;
+
+    # Returns a L<Paws::ApiGateway::TestInvokeMethodResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/TestInvokeMethod>
 
 =head1 ATTRIBUTES
 
@@ -55,7 +78,7 @@ defined back-end endpoint.
 
 
 
-=head2 Headers => L<Paws::ApiGateway::MapOfHeaderValues>
+=head2 Headers => L<Paws::ApiGateway::MapOfStringToString>
 
 A key-value map of headers to simulate an incoming invocation request.
 
@@ -63,7 +86,14 @@ A key-value map of headers to simulate an incoming invocation request.
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-Specifies a test invoke method request's HTTP method.
+[Required] Specifies a test invoke method request's HTTP method.
+
+
+
+=head2 MultiValueHeaders => L<Paws::ApiGateway::MapOfStringToList>
+
+The headers as a map from string to list of values to simulate an
+incoming invocation request.
 
 
 
@@ -77,13 +107,13 @@ parameters.
 
 =head2 B<REQUIRED> ResourceId => Str
 
-Specifies a test invoke method request's resource ID.
+[Required] Specifies a test invoke method request's resource ID.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The string identifier of the associated RestApi.
+[Required] The string identifier of the associated RestApi.
 
 
 

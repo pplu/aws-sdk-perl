@@ -91,7 +91,7 @@ Amazon CloudWatch Logs
 
 =head2 CreateTimestamp => Str
 
-  Timestamp when the application version was created.
+  Time stamp when the application version was created.
 
 
 =head2 InputDescriptions => ArrayRef[L<Paws::KinesisAnalytics::InputDescription>]
@@ -103,7 +103,7 @@ see Configuring Application Input
 
 =head2 LastUpdateTimestamp => Str
 
-  Timestamp when the application was last updated.
+  Time stamp when the application was last updated.
 
 
 =head2 OutputDescriptions => ArrayRef[L<Paws::KinesisAnalytics::OutputDescription>]

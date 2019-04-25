@@ -39,13 +39,13 @@ Information about the cache for the build project.
 
 =head2 Location => Str
 
-  Information about the cache location, as follows:
+  Information about the cache location:
 
 =over
 
 =item *
 
-C<NO_CACHE>: This value will be ignored.
+C<NO_CACHE>: This value is ignored.
 
 =item *
 
@@ -63,11 +63,11 @@ C<S3>: This is the S3 bucket name/prefix.
 
 =item *
 
-C<NO_CACHE>: The build project will not use any cache.
+C<NO_CACHE>: The build project does not use any cache.
 
 =item *
 
-C<S3>: The build project will read and write from/to S3.
+C<S3>: The build project reads and writes from and to S3.
 
 =back
 

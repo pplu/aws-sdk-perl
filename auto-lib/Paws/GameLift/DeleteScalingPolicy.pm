@@ -19,17 +19,23 @@ Paws::GameLift::DeleteScalingPolicy - Arguments for method DeleteScalingPolicy o
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeleteScalingPolicy on the 
-Amazon GameLift service. Use the attributes of this class
+This class represents the parameters used for calling the method DeleteScalingPolicy on the
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method DeleteScalingPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteScalingPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeleteScalingPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    $gamelift->DeleteScalingPolicy(
+      FleetId => 'MyFleetId',
+      Name    => 'MyNonZeroAndMaxString',
+
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/DeleteScalingPolicy>
 
 =head1 ATTRIBUTES
 

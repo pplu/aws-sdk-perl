@@ -22,17 +22,36 @@ Paws::Config::DescribeComplianceByResource - Arguments for method DescribeCompli
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeComplianceByResource on the 
-AWS Config service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeComplianceByResource on the
+L<AWS Config|Paws::Config> service. Use the attributes of this class
 as arguments to method DescribeComplianceByResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeComplianceByResource.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeComplianceByResource(Att1 => $value1, Att2 => $value2, ...);
+    my $config = Paws->service('Config');
+    my $DescribeComplianceByResourceResponse =
+      $config->DescribeComplianceByResource(
+      ComplianceTypes => [
+        'COMPLIANT',
+        ... # values: COMPLIANT, NON_COMPLIANT, NOT_APPLICABLE, INSUFFICIENT_DATA
+      ],    # OPTIONAL
+      Limit        => 1,                             # OPTIONAL
+      NextToken    => 'MyNextToken',                 # OPTIONAL
+      ResourceId   => 'MyBaseResourceId',            # OPTIONAL
+      ResourceType => 'MyStringWithCharLimit256',    # OPTIONAL
+      );
+
+    # Results:
+    my $ComplianceByResources =
+      $DescribeComplianceByResourceResponse->ComplianceByResources;
+    my $NextToken = $DescribeComplianceByResourceResponse->NextToken;
+
+    # Returns a L<Paws::Config::DescribeComplianceByResourceResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config/DescribeComplianceByResource>
 
 =head1 ATTRIBUTES
 
@@ -41,22 +60,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Filters the results by compliance.
 
-The allowed values are C<COMPLIANT>, C<NON_COMPLIANT>, and
-C<INSUFFICIENT_DATA>.
+The allowed values are C<COMPLIANT> and C<NON_COMPLIANT>.
 
 
 
 =head2 Limit => Int
 
 The maximum number of evaluation results returned on each page. The
-default is 10. You cannot specify a limit greater than 100. If you
+default is 10. You cannot specify a number greater than 100. If you
 specify 0, AWS Config uses the default.
 
 
 
 =head2 NextToken => Str
 
-The C<NextToken> string returned on a previous page that you use to get
+The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
 
 
@@ -71,8 +89,8 @@ must also specify a type for C<ResourceType>.
 
 =head2 ResourceType => Str
 
-The types of AWS resources for which you want compliance information;
-for example, C<AWS::EC2::Instance>. For this action, you can specify
+The types of AWS resources for which you want compliance information
+(for example, C<AWS::EC2::Instance>). For this action, you can specify
 that the resource type is an AWS account by specifying
 C<AWS::::Account>.
 

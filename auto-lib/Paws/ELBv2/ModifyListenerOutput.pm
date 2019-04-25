@@ -17,7 +17,7 @@ Paws::ELBv2::ModifyListenerOutput
 
 =head2 Listeners => ArrayRef[L<Paws::ELBv2::Listener>]
 
-Information about the modified listeners.
+Information about the modified listener.
 
 
 =head2 _request_id => Str

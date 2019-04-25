@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on core definition version
+Information about a core definition version.
 
 =head1 ATTRIBUTES
 
 
 =head2 Cores => ArrayRef[L<Paws::Greengrass::Core>]
 
-  Cores in the definition version.
+  A list of cores in the core definition version.
 
 
 

@@ -41,6 +41,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Mainte
 
 The parameters for a RUN_COMMAND task type.
 
+For information about specifying and updating task parameters, see
+RegisterTaskWithMaintenanceWindow and UpdateMaintenanceWindowTask.
+
+C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
+logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>
+options in the C<TaskInvocationParameters> structure. For information
+about how Systems Manager handles these options for the supported
+Maintenance Window task types, see
+MaintenanceWindowTaskInvocationParameters.
+
+C<TaskParameters> has been deprecated. To specify parameters to pass to
+a task when it runs, instead use the C<Parameters> option in the
+C<TaskInvocationParameters> structure. For information about how
+Systems Manager handles these options for the supported Maintenance
+Window task types, see MaintenanceWindowTaskInvocationParameters.
+
+For Run Command tasks, Systems Manager uses specified values for
+C<TaskParameters> and C<LoggingInfo> only if no values are specified
+for C<TaskInvocationParameters>.
+
 =head1 ATTRIBUTES
 
 
@@ -89,7 +109,7 @@ on a per-instance basis.
 =head2 TimeoutSeconds => Int
 
   If this time is reached and the command has not already started
-executing, it doesn not execute.
+executing, it doesn't run.
 
 
 

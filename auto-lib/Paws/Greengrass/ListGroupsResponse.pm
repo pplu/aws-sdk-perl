@@ -18,7 +18,7 @@ Paws::Greengrass::ListGroupsResponse
 
 =head2 Groups => ArrayRef[L<Paws::Greengrass::GroupInformation>]
 
-Groups
+Information about a group.
 
 
 =head2 NextToken => Str

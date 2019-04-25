@@ -5,6 +5,7 @@ package Paws::Lambda::AliasConfiguration;
   has Description => (is => 'ro', isa => 'Str');
   has FunctionVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has RevisionId => (is => 'ro', isa => 'Str');
   has RoutingConfig => (is => 'ro', isa => 'Paws::Lambda::AliasRoutingConfiguration');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -21,32 +22,34 @@ Paws::Lambda::AliasConfiguration
 
 =head2 AliasArn => Str
 
-Lambda function ARN that is qualified using the alias name as the
-suffix. For example, if you create an alias called C<BETA> that points
-to a helloworld function version, the ARN is
-C<arn:aws:lambda:aws-regions:acct-id:function:helloworld:BETA>.
+The Amazon Resource Name (ARN) of the alias.
 
 
 =head2 Description => Str
 
-Alias description.
+A description of the alias.
 
 
 =head2 FunctionVersion => Str
 
-Function version to which the alias points.
+The function version that the alias invokes.
 
 
 =head2 Name => Str
 
-Alias name.
+The name of the alias.
+
+
+=head2 RevisionId => Str
+
+A unique identifier that changes when you update the alias.
 
 
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
 
-Specifies an additional function versions the alias points to, allowing
-you to dictate what percentage of traffic will invoke each version. For
-more information, see lambda-traffic-shifting-using-aliases.
+The routing configuration
+(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
+of the alias.
 
 
 =head2 _request_id => Str

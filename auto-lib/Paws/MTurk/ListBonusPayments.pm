@@ -21,17 +21,31 @@ Paws::MTurk::ListBonusPayments - Arguments for method ListBonusPayments on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListBonusPayments on the 
-Amazon Mechanical Turk service. Use the attributes of this class
+This class represents the parameters used for calling the method ListBonusPayments on the
+L<Amazon Mechanical Turk|Paws::MTurk> service. Use the attributes of this class
 as arguments to method ListBonusPayments.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListBonusPayments.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListBonusPayments(Att1 => $value1, Att2 => $value2, ...);
+    my $mturk-requester = Paws->service('MTurk');
+    my $ListBonusPaymentsResponse = $mturk -requester->ListBonusPayments(
+      AssignmentId => 'MyEntityId',           # OPTIONAL
+      HITId        => 'MyEntityId',           # OPTIONAL
+      MaxResults   => 1,                      # OPTIONAL
+      NextToken    => 'MyPaginationToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $BonusPayments = $ListBonusPaymentsResponse->BonusPayments;
+    my $NextToken     = $ListBonusPaymentsResponse->NextToken;
+    my $NumResults    = $ListBonusPaymentsResponse->NumResults;
+
+    # Returns a L<Paws::MTurk::ListBonusPaymentsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mturk-requester/ListBonusPayments>
 
 =head1 ATTRIBUTES
 

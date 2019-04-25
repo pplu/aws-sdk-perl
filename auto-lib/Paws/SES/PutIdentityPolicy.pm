@@ -20,17 +20,29 @@ Paws::SES::PutIdentityPolicy - Arguments for method PutIdentityPolicy on L<Paws:
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutIdentityPolicy on the 
-Amazon Simple Email Service service. Use the attributes of this class
+This class represents the parameters used for calling the method PutIdentityPolicy on the
+L<Amazon Simple Email Service|Paws::SES> service. Use the attributes of this class
 as arguments to method PutIdentityPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutIdentityPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutIdentityPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $email = Paws->service('SES');
+    # PutIdentityPolicy
+    # The following example adds a sending authorization policy to an identity:
+    my $PutIdentityPolicyResponse = $email->PutIdentityPolicy(
+      {
+        'Identity' => 'example.com',
+        'Policy' =>
+'{"Version":"2008-10-17","Statement":[{"Sid":"stmt1469123904194","Effect":"Allow","Principal":{"AWS":"arn:aws:iam::123456789012:root"},"Action":["ses:SendEmail","ses:SendRawEmail"],"Resource":"arn:aws:ses:us-east-1:EXAMPLE65304:identity/example.com"}]}',
+        'PolicyName' => 'MyPolicy'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/email/PutIdentityPolicy>
 
 =head1 ATTRIBUTES
 

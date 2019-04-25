@@ -34,31 +34,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information on subscription
+Information about a subscription.
 
 =head1 ATTRIBUTES
 
 
 =head2 Id => Str
 
-  Element Id for this entry in the list.
+  A descriptive or arbitrary ID for the subscription. This value must be
+unique within the subscription definition version. Max length is 128
+characters with pattern ''[a-zA-Z0-9:_-]+''.
 
 
 =head2 Source => Str
 
-  Source of the subscription. Can be a thing arn, lambda arn or word
-'cloud'
+  The source of the subscription. Can be a thing ARN, a Lambda function
+ARN, a connector ARN, 'cloud' (which represents the AWS IoT cloud), or
+'GGShadowService'.
 
 
 =head2 Subject => Str
 
-  Subject of the message.
+  The subject of the message.
 
 
 =head2 Target => Str
 
-  Where the message is sent to. Can be a thing arn, lambda arn or word
-'cloud'.
+  Where the message is sent to. Can be a thing ARN, a Lambda function
+ARN, a connector ARN, 'cloud' (which represents the AWS IoT cloud), or
+'GGShadowService'.
 
 
 

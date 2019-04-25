@@ -3,6 +3,7 @@ package Paws::Lambda::RemovePermission;
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier');
+  has RevisionId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'RevisionId');
   has StatementId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'StatementId', required => 1);
 
   use MooseX::ClassAttribute;
@@ -21,42 +22,74 @@ Paws::Lambda::RemovePermission - Arguments for method RemovePermission on L<Paws
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RemovePermission on the 
-AWS Lambda service. Use the attributes of this class
+This class represents the parameters used for calling the method RemovePermission on the
+L<AWS Lambda|Paws::Lambda> service. Use the attributes of this class
 as arguments to method RemovePermission.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemovePermission.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RemovePermission(Att1 => $value1, Att2 => $value2, ...);
+    my $lambda = Paws->service('Lambda');
+    # To remove a Lambda function's permissions
+    # This operation removes a Lambda function's permissions
+    $lambda->RemovePermission(
+      {
+        'FunctionName' => 'myFunction',
+        'Qualifier'    => 1,
+        'StatementId'  => 'role-statement-id'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda/RemovePermission>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-Lambda function whose resource policy you want to remove a permission
-from.
+The name of the Lambda function, version, or alias.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<my-function> (name-only), C<my-function:v1> (with
+alias).
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:my-function>.
+
+=back
+
+You can append a version number or alias to any of the formats. The
+length constraint applies only to the full ARN. If you specify only the
+function name, it is limited to 64 characters in length.
 
 
 
 =head2 Qualifier => Str
 
-You can specify this optional parameter to remove permission associated
-with a specific function version or function alias. If you don't
-specify this parameter, the API removes permission associated with the
-unqualified function ARN.
+Specify a version or alias to remove permissions from a published
+version of the function.
+
+
+
+=head2 RevisionId => Str
+
+Only update the policy if the revision ID matches the ID specified. Use
+this option to avoid modifying a policy that has changed since you last
+read it.
 
 
 

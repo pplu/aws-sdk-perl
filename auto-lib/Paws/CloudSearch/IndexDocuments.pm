@@ -18,17 +18,27 @@ Paws::CloudSearch::IndexDocuments - Arguments for method IndexDocuments on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method IndexDocuments on the 
-Amazon CloudSearch service. Use the attributes of this class
+This class represents the parameters used for calling the method IndexDocuments on the
+L<Amazon CloudSearch|Paws::CloudSearch> service. Use the attributes of this class
 as arguments to method IndexDocuments.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to IndexDocuments.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->IndexDocuments(Att1 => $value1, Att2 => $value2, ...);
+    my $cloudsearch = Paws->service('CloudSearch');
+    my $IndexDocumentsResponse = $cloudsearch->IndexDocuments(
+      DomainName => 'MyDomainName',
+
+    );
+
+    # Results:
+    my $FieldNames = $IndexDocumentsResponse->FieldNames;
+
+    # Returns a L<Paws::CloudSearch::IndexDocumentsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudsearch/IndexDocuments>
 
 =head1 ATTRIBUTES
 

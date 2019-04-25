@@ -19,17 +19,29 @@ Paws::RDS::RemoveTagsFromResource - Arguments for method RemoveTagsFromResource 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RemoveTagsFromResource on the 
-Amazon Relational Database Service service. Use the attributes of this class
+This class represents the parameters used for calling the method RemoveTagsFromResource on the
+L<Amazon Relational Database Service|Paws::RDS> service. Use the attributes of this class
 as arguments to method RemoveTagsFromResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTagsFromResource.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->RemoveTagsFromResource(Att1 => $value1, Att2 => $value2, ...);
+    my $rds = Paws->service('RDS');
+    # To remove tags from a resource
+    # This example removes the specified tag associated with the specified DB
+    # option group.
+    $rds->RemoveTagsFromResource(
+      {
+        'ResourceName' =>
+          'arn:aws:rds:us-east-1:992648334831:og:mydboptiongroup',
+        'TagKeys' => ['MyKey']
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/RemoveTagsFromResource>
 
 =head1 ATTRIBUTES
 
@@ -38,8 +50,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The Amazon RDS resource that the tags are removed from. This value is
 an Amazon Resource Name (ARN). For information about creating an ARN,
-see Constructing an RDS Amazon Resource Name (ARN)
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+see Constructing an ARN for Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
+in the I<Amazon RDS User Guide.>
 
 
 

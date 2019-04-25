@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessR
 
 =head1 DESCRIPTION
 
-Create version request.
+Create a version request.
 
 =head1 ATTRIBUTES
 
@@ -45,12 +45,12 @@ Create version request.
 
 =head2 TemplateBody => Str
 
-  The raw packaged SAM template of your application.
+  The raw packaged AWS SAM template of your application.
 
 
 =head2 TemplateUrl => Str
 
-  A link to the packaged SAM template of your application.
+  A link to the packaged AWS SAM template of your application.
 
 
 

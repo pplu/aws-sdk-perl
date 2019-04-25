@@ -5,6 +5,7 @@ package Paws::GameLift::CreateFleet;
   has Description => (is => 'ro', isa => 'Str');
   has EC2InboundPermissions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::IpPermission]');
   has EC2InstanceType => (is => 'ro', isa => 'Str', required => 1);
+  has FleetType => (is => 'ro', isa => 'Str');
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MetricGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -31,17 +32,68 @@ Paws::GameLift::CreateFleet - Arguments for method CreateFleet on L<Paws::GameLi
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateFleet on the 
-Amazon GameLift service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateFleet on the
+L<Amazon GameLift|Paws::GameLift> service. Use the attributes of this class
 as arguments to method CreateFleet.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateFleet.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateFleet(Att1 => $value1, Att2 => $value2, ...);
+    my $gamelift = Paws->service('GameLift');
+    my $CreateFleetOutput = $gamelift->CreateFleet(
+      BuildId               => 'MyBuildId',
+      EC2InstanceType       => 't2.micro',
+      Name                  => 'MyNonZeroAndMaxString',
+      Description           => 'MyNonZeroAndMaxString',    # OPTIONAL
+      EC2InboundPermissions => [
+        {
+          FromPort => 1,                                   # min: 1, max: 60000
+          IpRange  => 'MyNonBlankString',
+          Protocol => 'TCP',                               # values: TCP, UDP
+          ToPort   => 1,                                   # min: 1, max: 60000
+
+        },
+        ...
+      ],                                                   # OPTIONAL
+      FleetType => 'ON_DEMAND',                            # OPTIONAL
+      LogPaths  => [
+        'MyNonZeroAndMaxString', ...                       # min: 1, max: 1024
+      ],                                                   # OPTIONAL
+      MetricGroups => [
+        'MyMetricGroup', ...                               # min: 1, max: 255
+      ],                                                   # OPTIONAL
+      NewGameSessionProtectionPolicy => 'NoProtection',             # OPTIONAL
+      PeerVpcAwsAccountId            => 'MyNonZeroAndMaxString',    # OPTIONAL
+      PeerVpcId                      => 'MyNonZeroAndMaxString',    # OPTIONAL
+      ResourceCreationLimitPolicy    => {
+        NewGameSessionsPerCreator => 1,                             # OPTIONAL
+        PolicyPeriodInMinutes     => 1,                             # OPTIONAL
+      },    # OPTIONAL
+      RuntimeConfiguration => {
+        GameSessionActivationTimeoutSeconds => 1,   # min: 1, max: 600; OPTIONAL
+        MaxConcurrentGameSessionActivations =>
+          1,    # min: 1, max: 2147483647; OPTIONAL
+        ServerProcesses => [
+          {
+            ConcurrentExecutions => 1,                       # min: 1
+            LaunchPath           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
+            Parameters           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
+          },
+          ...
+        ],    # min: 1, max: 50; OPTIONAL
+      },    # OPTIONAL
+      ServerLaunchParameters => 'MyNonZeroAndMaxString',    # OPTIONAL
+      ServerLaunchPath       => 'MyNonZeroAndMaxString',    # OPTIONAL
+    );
+
+    # Results:
+    my $FleetAttributes = $CreateFleetOutput->FleetAttributes;
+
+    # Returns a L<Paws::GameLift::CreateFleetOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift/CreateFleet>
 
 =head1 ATTRIBUTES
 
@@ -82,6 +134,21 @@ detailed descriptions.
 
 Valid values are: C<"t2.micro">, C<"t2.small">, C<"t2.medium">, C<"t2.large">, C<"c3.large">, C<"c3.xlarge">, C<"c3.2xlarge">, C<"c3.4xlarge">, C<"c3.8xlarge">, C<"c4.large">, C<"c4.xlarge">, C<"c4.2xlarge">, C<"c4.4xlarge">, C<"c4.8xlarge">, C<"r3.large">, C<"r3.xlarge">, C<"r3.2xlarge">, C<"r3.4xlarge">, C<"r3.8xlarge">, C<"r4.large">, C<"r4.xlarge">, C<"r4.2xlarge">, C<"r4.4xlarge">, C<"r4.8xlarge">, C<"r4.16xlarge">, C<"m3.medium">, C<"m3.large">, C<"m3.xlarge">, C<"m3.2xlarge">, C<"m4.large">, C<"m4.xlarge">, C<"m4.2xlarge">, C<"m4.4xlarge">, C<"m4.10xlarge">
 
+=head2 FleetType => Str
+
+Indicates whether to use on-demand instances or spot instances for this
+fleet. If empty, the default is ON_DEMAND. Both categories of instances
+use identical hardware and configurations, based on the instance type
+selected for this fleet. You can acquire on-demand instances at any
+time for a fixed price and keep them as long as you need them. Spot
+instances have lower prices, but spot pricing is variable, and while in
+use they can be interrupted (with a two-minute notification). Learn
+more about Amazon GameLift spot instances with at Set up Access to
+External Services
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-credentials.html).
+
+Valid values are: C<"ON_DEMAND">, C<"SPOT">
+
 =head2 LogPaths => ArrayRef[Str|Undef]
 
 This parameter is no longer used. Instead, to specify where Amazon
@@ -89,14 +156,15 @@ GameLift should store log files once a server process shuts down, use
 the Amazon GameLift server API C<ProcessReady()> and specify one or
 more directory paths in C<logParameters>. See more information in the
 Server API Reference
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process).
 
 
 
 =head2 MetricGroups => ArrayRef[Str|Undef]
 
-Names of metric groups to add this fleet to. Use an existing metric
-group name to add this fleet to the group. Or use a new name to create
+Name of an Amazon CloudWatch metric group to add this fleet to. A
+metric group aggregates the metrics for all fleets in the group.
+Specify an existing metric group name, or provide a new name to create
 a new metric group. A fleet can only be included in one metric group at
 a time.
 
@@ -147,9 +215,10 @@ the AWS Management Console under account settings.
 
 Unique identifier for a VPC with resources to be accessed by your
 Amazon GameLift fleet. The VPC must be in the same region where your
-fleet is deployed. To get VPC information, including IDs, use the
-Virtual Private Cloud service tools, including the VPC Dashboard in the
-AWS Management Console.
+fleet is deployed. Look up a VPC ID using the VPC Dashboard
+(https://console.aws.amazon.com/vpc/) in the AWS Management Console.
+Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 
 

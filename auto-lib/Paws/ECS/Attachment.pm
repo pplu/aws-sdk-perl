@@ -41,7 +41,7 @@ An object representing a container instance or task attachment.
 
 =head2 Details => ArrayRef[L<Paws::ECS::KeyValuePair>]
 
-  Details of the attachment. For Elastic Network Interfaces, this
+  Details of the attachment. For elastic network interfaces, this
 includes the network interface ID, the MAC address, the subnet ID, and
 the private IPv4 address.
 
@@ -60,7 +60,7 @@ C<DELETED>.
 
 =head2 Type => Str
 
-  The type of the attachment, such as an C<ElasticNetworkInterface>.
+  The type of the attachment, such as C<ElasticNetworkInterface>.
 
 
 

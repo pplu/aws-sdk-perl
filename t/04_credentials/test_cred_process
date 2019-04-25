@@ -1,0 +1,3 @@
+#!/usr/bin/env perl
+
+print '{"AccessKeyId":"PCAccessKey","SecretAccessKey":"PCSecretKey","SessionToken":"PCSessionToken","Version":1}';

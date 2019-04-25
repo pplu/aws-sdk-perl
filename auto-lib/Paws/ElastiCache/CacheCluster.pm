@@ -68,6 +68,9 @@ You cannot modify the value of C<AtRestEncryptionEnabled> after the
 cluster is created. To enable at-rest encryption on a cluster you must
 set C<AtRestEncryptionEnabled> to C<true> when you create a cluster.
 
+B<Required:> Only available when creating a replication group in an
+Amazon VPC using redis version C<3.2.6> or C<4.x>.
+
 Default: C<false>
 
 
@@ -176,6 +179,10 @@ Current generation:
 B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
 C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
+B<R4 node types;> C<cache.r4.large>, C<cache.r4.xlarge>,
+C<cache.r4.2xlarge>, C<cache.r4.4xlarge>, C<cache.r4.8xlarge>,
+C<cache.r4.16xlarge>
+
 =item *
 
 Previous generation: (not recommended)
@@ -213,13 +220,27 @@ T2 instances.
 
 =back
 
-For a complete listing of node types and specifications, see Amazon
-ElastiCache Product Features and Details
-(http://aws.amazon.com/elasticache/details) and either Cache Node
-Type-Specific Parameters for Memcached
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
-or Cache Node Type-Specific Parameters for Redis
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific).
+For a complete listing of node types and specifications, see:
+
+=over
+
+=item *
+
+Amazon ElastiCache Product Features and Details
+(http://aws.amazon.com/elasticache/details)
+
+=item *
+
+Cache Node Type-Specific Parameters for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
+
+=item *
+
+Cache Node Type-Specific Parameters for Redis
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific)
+
+=back
+
 
 
 =head2 CacheParameterGroup => L<Paws::ElastiCache::CacheParameterGroupStatus>
@@ -374,6 +395,9 @@ You cannot modify the value of C<TransitEncryptionEnabled> after the
 cluster is created. To enable in-transit encryption on a cluster you
 must set C<TransitEncryptionEnabled> to C<true> when you create a
 cluster.
+
+B<Required:> Only available when creating a replication group in an
+Amazon VPC using redis version C<3.2.6> or C<4.x>.
 
 Default: C<false>
 

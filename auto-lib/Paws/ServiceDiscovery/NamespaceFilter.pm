@@ -58,6 +58,10 @@ the default condition and can be omitted.
 C<IN>: When you specify C<IN> for the condition, you can choose to list
 public namespaces, private namespaces, or both.
 
+=item *
+
+C<BETWEEN>: Not applicable
+
 =back
 
 

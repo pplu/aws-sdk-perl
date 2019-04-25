@@ -21,17 +21,35 @@ Paws::EMR::ListSteps - Arguments for method ListSteps on L<Paws::EMR>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListSteps on the 
-Amazon Elastic MapReduce service. Use the attributes of this class
+This class represents the parameters used for calling the method ListSteps on the
+L<Amazon Elastic MapReduce|Paws::EMR> service. Use the attributes of this class
 as arguments to method ListSteps.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListSteps.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListSteps(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticmapreduce = Paws->service('EMR');
+    my $ListStepsOutput = $elasticmapreduce->ListSteps(
+      ClusterId => 'MyClusterId',
+      Marker    => 'MyMarker',      # OPTIONAL
+      StepIds   => [
+        'MyXmlString', ...          # max: 10280
+      ],                            # OPTIONAL
+      StepStates => [
+        'PENDING',
+        ... # values: PENDING, CANCEL_PENDING, RUNNING, COMPLETED, CANCELLED, FAILED, INTERRUPTED
+      ],    # OPTIONAL
+    );
+
+    # Results:
+    my $Marker = $ListStepsOutput->Marker;
+    my $Steps  = $ListStepsOutput->Steps;
+
+    # Returns a L<Paws::EMR::ListStepsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce/ListSteps>
 
 =head1 ATTRIBUTES
 

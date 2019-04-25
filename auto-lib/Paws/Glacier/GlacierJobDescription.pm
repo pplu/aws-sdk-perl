@@ -123,7 +123,7 @@ null.
 
 =head2 SelectParameters => L<Paws::Glacier::SelectParameters>
 
-Contains the parameters that define a select job.
+Contains the parameters used for a select.
 
 
 =head2 SHA256TreeHash => Str
@@ -190,7 +190,7 @@ A friendly message that describes the job status.
 
 =head2 Tier => Str
 
-The retrieval option to use for the archive retrieval. Valid values are
+The tier to use for a select or an archive retrieval. Valid values are
 C<Expedited>, C<Standard>, or C<Bulk>. C<Standard> is the default.
 
 

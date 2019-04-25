@@ -1,6 +1,7 @@
 package Paws::ELB;
   use Moose;
   sub service { 'elasticloadbalancing' }
+  sub signing_name { 'elasticloadbalancing' }
   sub version { '2012-06-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -159,6 +160,29 @@ package Paws::ELB;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAccountLimits {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAccountLimits(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeAccountLimits(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Limits }, @{ $next_result->Limits };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+        $result = $self->DescribeAccountLimits(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+    }
+
+    return undef
+  }
   sub DescribeAllLoadBalancers {
     my $self = shift;
 
@@ -214,29 +238,25 @@ Paws::ELB - Perl Interface to AWS Elastic Load Balancing
 
 Elastic Load Balancing
 
-A load balancer distributes incoming traffic across your EC2 instances.
-This enables you to increase the availability of your application. The
-load balancer also monitors the health of its registered instances and
-ensures that it routes traffic only to healthy instances. You configure
-your load balancer to accept incoming traffic by specifying one or more
-listeners, which are configured with a protocol and port number for
-connections from clients to the load balancer and a protocol and port
-number for connections from the load balancer to the instances.
+A load balancer can distribute incoming traffic across your EC2
+instances. This enables you to increase the availability of your
+application. The load balancer also monitors the health of its
+registered instances and ensures that it routes traffic only to healthy
+instances. You configure your load balancer to accept incoming traffic
+by specifying one or more listeners, which are configured with a
+protocol and port number for connections from clients to the load
+balancer and a protocol and port number for connections from the load
+balancer to the instances.
 
-Elastic Load Balancing supports two types of load balancers: Classic
-Load Balancers and Application Load Balancers (new). A Classic Load
-Balancer makes routing and load balancing decisions either at the
-transport layer (TCP/SSL) or the application layer (HTTP/HTTPS), and
-supports either EC2-Classic or a VPC. An Application Load Balancer
-makes routing and load balancing decisions at the application layer
-(HTTP/HTTPS), supports path-based routing, and can route requests to
-one or more ports on each EC2 instance or container instance in your
-virtual private cloud (VPC). For more information, see the Elastic Load
-Balancing User Guide
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html).
+Elastic Load Balancing supports three types of load balancers:
+Application Load Balancers, Network Load Balancers, and Classic Load
+Balancers. You can select a load balancer based on your application
+needs. For more information, see the Elastic Load Balancing User Guide
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
 
 This reference covers the 2012-06-01 API, which supports Classic Load
-Balancers. The 2015-12-01 API supports Application Load Balancers.
+Balancers. The 2015-12-01 API supports Application Load Balancers and
+Network Load Balancers.
 
 To get started, create a load balancer with one or more listeners using
 CreateLoadBalancer. Register your instances with the load balancer
@@ -246,9 +266,21 @@ All Elastic Load Balancing operations are I<idempotent>, which means
 that they complete at most one time. If you repeat an operation, it
 succeeds with a 200 OK response code.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01>
+
+
 =head1 METHODS
 
-=head2 AddTags(LoadBalancerNames => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELB::Tag>])
+=head2 AddTags
+
+=over
+
+=item LoadBalancerNames => ArrayRef[Str|Undef]
+
+=item Tags => ArrayRef[L<Paws::ELB::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::AddTags>
 
@@ -263,10 +295,19 @@ updates its value.
 
 For more information, see Tag Your Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 ApplySecurityGroupsToLoadBalancer(LoadBalancerName => Str, SecurityGroups => ArrayRef[Str|Undef])
+=head2 ApplySecurityGroupsToLoadBalancer
+
+=over
+
+=item LoadBalancerName => Str
+
+=item SecurityGroups => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::ApplySecurityGroupsToLoadBalancer>
 
@@ -278,10 +319,19 @@ previously associated security groups.
 
 For more information, see Security Groups for Load Balancers in a VPC
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 AttachLoadBalancerToSubnets(LoadBalancerName => Str, Subnets => ArrayRef[Str|Undef])
+=head2 AttachLoadBalancerToSubnets
+
+=over
+
+=item LoadBalancerName => Str
+
+=item Subnets => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::AttachLoadBalancerToSubnets>
 
@@ -294,10 +344,19 @@ The load balancer evenly distributes requests across all registered
 subnets. For more information, see Add or Remove Subnets for Your Load
 Balancer in a VPC
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 ConfigureHealthCheck(HealthCheck => L<Paws::ELB::HealthCheck>, LoadBalancerName => Str)
+=head2 ConfigureHealthCheck
+
+=over
+
+=item HealthCheck => L<Paws::ELB::HealthCheck>
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::ConfigureHealthCheck>
 
@@ -309,10 +368,21 @@ state of your EC2 instances.
 For more information, see Configure Health Checks for Your Load
 Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 CreateAppCookieStickinessPolicy(CookieName => Str, LoadBalancerName => Str, PolicyName => Str)
+=head2 CreateAppCookieStickinessPolicy
+
+=over
+
+=item CookieName => Str
+
+=item LoadBalancerName => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::CreateAppCookieStickinessPolicy>
 
@@ -334,10 +404,21 @@ stops being sticky until a new application cookie is issued.
 
 For more information, see Application-Controlled Session Stickiness
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 CreateLBCookieStickinessPolicy(LoadBalancerName => Str, PolicyName => Str, [CookieExpirationPeriod => Int])
+=head2 CreateLBCookieStickinessPolicy
+
+=over
+
+=item LoadBalancerName => Str
+
+=item PolicyName => Str
+
+=item [CookieExpirationPeriod => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::CreateLBCookieStickinessPolicy>
 
@@ -362,10 +443,29 @@ configuration.
 
 For more information, see Duration-Based Session Stickiness
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 CreateLoadBalancer(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str, [AvailabilityZones => ArrayRef[Str|Undef], Scheme => Str, SecurityGroups => ArrayRef[Str|Undef], Subnets => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELB::Tag>]])
+=head2 CreateLoadBalancer
+
+=over
+
+=item Listeners => ArrayRef[L<Paws::ELB::Listener>]
+
+=item LoadBalancerName => Str
+
+=item [AvailabilityZones => ArrayRef[Str|Undef]]
+
+=item [Scheme => Str]
+
+=item [SecurityGroups => ArrayRef[Str|Undef]]
+
+=item [Subnets => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::ELB::Tag>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancer>
 
@@ -386,10 +486,19 @@ You can create up to 20 load balancers per region per account. You can
 request an increase for the number of load balancers for your account.
 For more information, see Limits for Your Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 CreateLoadBalancerListeners(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str)
+=head2 CreateLoadBalancerListeners
+
+=over
+
+=item Listeners => ArrayRef[L<Paws::ELB::Listener>]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancerListeners>
 
@@ -402,10 +511,23 @@ of the existing listener.
 
 For more information, see Listeners for Your Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 CreateLoadBalancerPolicy(LoadBalancerName => Str, PolicyName => Str, PolicyTypeName => Str, [PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]])
+=head2 CreateLoadBalancerPolicy
+
+=over
+
+=item LoadBalancerName => Str
+
+=item PolicyName => Str
+
+=item PolicyTypeName => Str
+
+=item [PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancerPolicy>
 
@@ -419,7 +541,14 @@ can be applied to the listener or the application server, depending on
 the policy type.
 
 
-=head2 DeleteLoadBalancer(LoadBalancerName => Str)
+=head2 DeleteLoadBalancer
+
+=over
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DeleteLoadBalancer>
 
@@ -437,7 +566,16 @@ If the load balancer does not exist or has already been deleted, the
 call to C<DeleteLoadBalancer> still succeeds.
 
 
-=head2 DeleteLoadBalancerListeners(LoadBalancerName => Str, LoadBalancerPorts => ArrayRef[Int])
+=head2 DeleteLoadBalancerListeners
+
+=over
+
+=item LoadBalancerName => Str
+
+=item LoadBalancerPorts => ArrayRef[Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DeleteLoadBalancerListeners>
 
@@ -446,7 +584,16 @@ Returns: a L<Paws::ELB::DeleteLoadBalancerListenerOutput> instance
 Deletes the specified listeners from the specified load balancer.
 
 
-=head2 DeleteLoadBalancerPolicy(LoadBalancerName => Str, PolicyName => Str)
+=head2 DeleteLoadBalancerPolicy
+
+=over
+
+=item LoadBalancerName => Str
+
+=item PolicyName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DeleteLoadBalancerPolicy>
 
@@ -456,7 +603,16 @@ Deletes the specified policy from the specified load balancer. This
 policy must not be enabled for any listeners.
 
 
-=head2 DeregisterInstancesFromLoadBalancer(Instances => ArrayRef[L<Paws::ELB::Instance>], LoadBalancerName => Str)
+=head2 DeregisterInstancesFromLoadBalancer
+
+=over
+
+=item Instances => ArrayRef[L<Paws::ELB::Instance>]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DeregisterInstancesFromLoadBalancer>
 
@@ -471,10 +627,19 @@ deregistered from the load balancer.
 
 For more information, see Register or De-Register EC2 Instances
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 DescribeAccountLimits([Marker => Str, PageSize => Int])
+=head2 DescribeAccountLimits
+
+=over
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeAccountLimits>
 
@@ -485,10 +650,19 @@ AWS account.
 
 For more information, see Limits for Your Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 DescribeInstanceHealth(LoadBalancerName => Str, [Instances => ArrayRef[L<Paws::ELB::Instance>]])
+=head2 DescribeInstanceHealth
+
+=over
+
+=item LoadBalancerName => Str
+
+=item [Instances => ArrayRef[L<Paws::ELB::Instance>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeInstanceHealth>
 
@@ -502,7 +676,14 @@ even if they are no longer registered with the load balancer. The state
 of terminated instances is not returned.
 
 
-=head2 DescribeLoadBalancerAttributes(LoadBalancerName => Str)
+=head2 DescribeLoadBalancerAttributes
+
+=over
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerAttributes>
 
@@ -511,7 +692,16 @@ Returns: a L<Paws::ELB::DescribeLoadBalancerAttributesOutput> instance
 Describes the attributes for the specified load balancer.
 
 
-=head2 DescribeLoadBalancerPolicies([LoadBalancerName => Str, PolicyNames => ArrayRef[Str|Undef]])
+=head2 DescribeLoadBalancerPolicies
+
+=over
+
+=item [LoadBalancerName => Str]
+
+=item [PolicyNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerPolicies>
 
@@ -528,7 +718,14 @@ policies, or descriptions of all sample policies. The names of the
 sample policies have the C<ELBSample-> prefix.
 
 
-=head2 DescribeLoadBalancerPolicyTypes([PolicyTypeNames => ArrayRef[Str|Undef]])
+=head2 DescribeLoadBalancerPolicyTypes
+
+=over
+
+=item [PolicyTypeNames => ArrayRef[Str|Undef]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerPolicyTypes>
 
@@ -548,7 +745,18 @@ either SetLoadBalancerPoliciesOfListener or
 SetLoadBalancerPoliciesForBackendServer to set the policy.
 
 
-=head2 DescribeLoadBalancers([LoadBalancerNames => ArrayRef[Str|Undef], Marker => Str, PageSize => Int])
+=head2 DescribeLoadBalancers
+
+=over
+
+=item [LoadBalancerNames => ArrayRef[Str|Undef]]
+
+=item [Marker => Str]
+
+=item [PageSize => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancers>
 
@@ -558,7 +766,14 @@ Describes the specified the load balancers. If no load balancers are
 specified, the call describes all of your load balancers.
 
 
-=head2 DescribeTags(LoadBalancerNames => ArrayRef[Str|Undef])
+=head2 DescribeTags
+
+=over
+
+=item LoadBalancerNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DescribeTags>
 
@@ -567,7 +782,16 @@ Returns: a L<Paws::ELB::DescribeTagsOutput> instance
 Describes the tags associated with the specified load balancers.
 
 
-=head2 DetachLoadBalancerFromSubnets(LoadBalancerName => Str, Subnets => ArrayRef[Str|Undef])
+=head2 DetachLoadBalancerFromSubnets
+
+=over
+
+=item LoadBalancerName => Str
+
+=item Subnets => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DetachLoadBalancerFromSubnets>
 
@@ -582,14 +806,26 @@ the load balancer balances the traffic among the remaining routable
 subnets.
 
 
-=head2 DisableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str|Undef], LoadBalancerName => Str)
+=head2 DisableAvailabilityZonesForLoadBalancer
+
+=over
+
+=item AvailabilityZones => ArrayRef[Str|Undef]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::DisableAvailabilityZonesForLoadBalancer>
 
 Returns: a L<Paws::ELB::RemoveAvailabilityZonesOutput> instance
 
 Removes the specified Availability Zones from the set of Availability
-Zones for the specified load balancer.
+Zones for the specified load balancer in EC2-Classic or a default VPC.
+
+For load balancers in a non-default VPC, use
+DetachLoadBalancerFromSubnets.
 
 There must be at least one Availability Zone registered with a load
 balancer at all times. After an Availability Zone is removed, all
@@ -600,27 +836,47 @@ Availability Zones.
 
 For more information, see Add or Remove Availability Zones
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 EnableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str|Undef], LoadBalancerName => Str)
+=head2 EnableAvailabilityZonesForLoadBalancer
+
+=over
+
+=item AvailabilityZones => ArrayRef[Str|Undef]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::EnableAvailabilityZonesForLoadBalancer>
 
 Returns: a L<Paws::ELB::AddAvailabilityZonesOutput> instance
 
 Adds the specified Availability Zones to the set of Availability Zones
-for the specified load balancer.
+for the specified load balancer in EC2-Classic or a default VPC.
+
+For load balancers in a non-default VPC, use
+AttachLoadBalancerToSubnets.
 
 The load balancer evenly distributes requests across all its registered
-Availability Zones that contain instances.
-
-For more information, see Add or Remove Availability Zones
+Availability Zones that contain instances. For more information, see
+Add or Remove Availability Zones
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 ModifyLoadBalancerAttributes(LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>, LoadBalancerName => Str)
+=head2 ModifyLoadBalancerAttributes
+
+=over
+
+=item LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::ModifyLoadBalancerAttributes>
 
@@ -634,7 +890,7 @@ or disabling them. Or, you can modify the load balancer attribute
 C<ConnectionSettings> by specifying an idle connection timeout value
 for your load balancer.
 
-For more information, see the following in the I<Classic Load Balancer
+For more information, see the following in the I<Classic Load Balancers
 Guide>:
 
 =over
@@ -663,7 +919,16 @@ Idle Connection Timeout
 
 
 
-=head2 RegisterInstancesWithLoadBalancer(Instances => ArrayRef[L<Paws::ELB::Instance>], LoadBalancerName => Str)
+=head2 RegisterInstancesWithLoadBalancer
+
+=over
+
+=item Instances => ArrayRef[L<Paws::ELB::Instance>]
+
+=item LoadBalancerName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::RegisterInstancesWithLoadBalancer>
 
@@ -694,10 +959,19 @@ DeregisterInstancesFromLoadBalancer.
 
 For more information, see Register or De-Register EC2 Instances
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 RemoveTags(LoadBalancerNames => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELB::TagKeyOnly>])
+=head2 RemoveTags
+
+=over
+
+=item LoadBalancerNames => ArrayRef[Str|Undef]
+
+=item Tags => ArrayRef[L<Paws::ELB::TagKeyOnly>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::RemoveTags>
 
@@ -706,7 +980,18 @@ Returns: a L<Paws::ELB::RemoveTagsOutput> instance
 Removes one or more tags from the specified load balancer.
 
 
-=head2 SetLoadBalancerListenerSSLCertificate(LoadBalancerName => Str, LoadBalancerPort => Int, SSLCertificateId => Str)
+=head2 SetLoadBalancerListenerSSLCertificate
+
+=over
+
+=item LoadBalancerName => Str
+
+=item LoadBalancerPort => Int
+
+=item SSLCertificateId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerListenerSSLCertificate>
 
@@ -719,10 +1004,21 @@ that was used on the same load balancer and port.
 For more information about updating your SSL certificate, see Replace
 the SSL Certificate for Your Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 SetLoadBalancerPoliciesForBackendServer(InstancePort => Int, LoadBalancerName => Str, PolicyNames => ArrayRef[Str|Undef])
+=head2 SetLoadBalancerPoliciesForBackendServer
+
+=over
+
+=item InstancePort => Int
+
+=item LoadBalancerName => Str
+
+=item PolicyNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerPoliciesForBackendServer>
 
@@ -744,13 +1040,24 @@ verify that the policy is associated with the EC2 instance.
 For more information about enabling back-end instance authentication,
 see Configure Back-end Instance Authentication
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt)
-in the I<Classic Load Balancer Guide>. For more information about Proxy
-Protocol, see Configure Proxy Protocol Support
+in the I<Classic Load Balancers Guide>. For more information about
+Proxy Protocol, see Configure Proxy Protocol Support
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
-=head2 SetLoadBalancerPoliciesOfListener(LoadBalancerName => Str, LoadBalancerPort => Int, PolicyNames => ArrayRef[Str|Undef])
+=head2 SetLoadBalancerPoliciesOfListener
+
+=over
+
+=item LoadBalancerName => Str
+
+=item LoadBalancerPort => Int
+
+=item PolicyNames => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerPoliciesOfListener>
 
@@ -769,7 +1076,7 @@ Duration-Based Session Stickiness
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration),
 and Application-Controlled Session Stickiness
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 
@@ -777,6 +1084,18 @@ in the I<Classic Load Balancer Guide>.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAccountLimits(sub { },[Marker => Str, PageSize => Int])
+
+=head2 DescribeAllAccountLimits([Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Limits, passing the object as the first parameter, and the string 'Limits' as the second parameter 
+
+If not, it will return a a L<Paws::ELB::DescribeAccountLimitsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllLoadBalancers(sub { },[LoadBalancerNames => ArrayRef[Str|Undef], Marker => Str, PageSize => Int])
 

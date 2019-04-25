@@ -87,16 +87,16 @@ stream.
 =head2 KinesisFirehoseInputDescription => L<Paws::KinesisAnalytics::KinesisFirehoseInputDescription>
 
   If an Amazon Kinesis Firehose delivery stream is configured as a
-streaming source, provides the Firehose delivery stream's Amazon
-Resource Name (ARN) and an IAM role that enables Amazon Kinesis
-Analytics to access the stream on your behalf.
+streaming source, provides the delivery stream's ARN and an IAM role
+that enables Amazon Kinesis Analytics to access the stream on your
+behalf.
 
 
 =head2 KinesisStreamsInputDescription => L<Paws::KinesisAnalytics::KinesisStreamsInputDescription>
 
   If an Amazon Kinesis stream is configured as streaming source, provides
-Amazon Kinesis stream's ARN and an IAM role that enables Amazon Kinesis
-Analytics to access the stream on your behalf.
+Amazon Kinesis stream's Amazon Resource Name (ARN) and an IAM role that
+enables Amazon Kinesis Analytics to access the stream on your behalf.
 
 
 =head2 NamePrefix => Str

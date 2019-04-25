@@ -21,17 +21,30 @@ Paws::MigrationHub::ListCreatedArtifacts - Arguments for method ListCreatedArtif
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListCreatedArtifacts on the 
-AWS Migration Hub service. Use the attributes of this class
+This class represents the parameters used for calling the method ListCreatedArtifacts on the
+L<AWS Migration Hub|Paws::MigrationHub> service. Use the attributes of this class
 as arguments to method ListCreatedArtifacts.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListCreatedArtifacts.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListCreatedArtifacts(Att1 => $value1, Att2 => $value2, ...);
+    my $mgh = Paws->service('MigrationHub');
+    my $ListCreatedArtifactsResult = $mgh->ListCreatedArtifacts(
+      MigrationTaskName    => 'MyMigrationTaskName',
+      ProgressUpdateStream => 'MyProgressUpdateStream',
+      MaxResults           => 1,                          # OPTIONAL
+      NextToken            => 'MyToken',                  # OPTIONAL
+    );
+
+    # Results:
+    my $CreatedArtifactList = $ListCreatedArtifactsResult->CreatedArtifactList;
+    my $NextToken           = $ListCreatedArtifactsResult->NextToken;
+
+    # Returns a L<Paws::MigrationHub::ListCreatedArtifactsResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mgh/ListCreatedArtifacts>
 
 =head1 ATTRIBUTES
 

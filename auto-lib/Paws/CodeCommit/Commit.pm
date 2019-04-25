@@ -79,7 +79,8 @@ Straub.
 
 =head2 Parents => ArrayRef[Str|Undef]
 
-  The parent list for the specified commit.
+  A list of parent commits for the specified commit. Each parent commit
+ID is the full commit ID.
 
 
 =head2 TreeId => Str

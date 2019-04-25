@@ -24,17 +24,54 @@ Paws::CognitoIdp::AdminRespondToAuthChallenge - Arguments for method AdminRespon
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method AdminRespondToAuthChallenge on the 
-Amazon Cognito Identity Provider service. Use the attributes of this class
+This class represents the parameters used for calling the method AdminRespondToAuthChallenge on the
+L<Amazon Cognito Identity Provider|Paws::CognitoIdp> service. Use the attributes of this class
 as arguments to method AdminRespondToAuthChallenge.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AdminRespondToAuthChallenge.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->AdminRespondToAuthChallenge(Att1 => $value1, Att2 => $value2, ...);
+    my $cognito-idp = Paws->service('CognitoIdp');
+    my $AdminRespondToAuthChallengeResponse =
+      $cognito -idp->AdminRespondToAuthChallenge(
+      ChallengeName     => 'SMS_MFA',
+      ClientId          => 'MyClientIdType',
+      UserPoolId        => 'MyUserPoolIdType',
+      AnalyticsMetadata => {
+        AnalyticsEndpointId => 'MyStringType',    # OPTIONAL
+      },    # OPTIONAL
+      ChallengeResponses => {
+        'MyStringType' => 'MyStringType',    # key: OPTIONAL, value: OPTIONAL
+      },    # OPTIONAL
+      ContextData => {
+        HttpHeaders => [
+          {
+            HeaderName  => 'MyStringType',    # OPTIONAL
+            HeaderValue => 'MyStringType',    # OPTIONAL
+          },
+          ...
+        ],
+        IpAddress   => 'MyStringType',        # OPTIONAL
+        ServerName  => 'MyStringType',        # OPTIONAL
+        ServerPath  => 'MyStringType',        # OPTIONAL
+        EncodedData => 'MyStringType',        # OPTIONAL
+      },    # OPTIONAL
+      Session => 'MySessionType',    # OPTIONAL
+      );
+
+    # Results:
+    my $AuthenticationResult =
+      $AdminRespondToAuthChallengeResponse->AuthenticationResult;
+    my $ChallengeName = $AdminRespondToAuthChallengeResponse->ChallengeName;
+    my $ChallengeParameters =
+      $AdminRespondToAuthChallengeResponse->ChallengeParameters;
+    my $Session = $AdminRespondToAuthChallengeResponse->Session;
+
+    # Returns a L<Paws::CognitoIdp::AdminRespondToAuthChallengeResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cognito-idp/AdminRespondToAuthChallenge>
 
 =head1 ATTRIBUTES
 

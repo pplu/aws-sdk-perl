@@ -20,17 +20,30 @@ Paws::Firehose::ListDeliveryStreams - Arguments for method ListDeliveryStreams o
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListDeliveryStreams on the 
-Amazon Kinesis Firehose service. Use the attributes of this class
+This class represents the parameters used for calling the method ListDeliveryStreams on the
+L<Amazon Kinesis Firehose|Paws::Firehose> service. Use the attributes of this class
 as arguments to method ListDeliveryStreams.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDeliveryStreams.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListDeliveryStreams(Att1 => $value1, Att2 => $value2, ...);
+    my $firehose = Paws->service('Firehose');
+    my $ListDeliveryStreamsOutput = $firehose->ListDeliveryStreams(
+      DeliveryStreamType               => 'DirectPut',               # OPTIONAL
+      ExclusiveStartDeliveryStreamName => 'MyDeliveryStreamName',    # OPTIONAL
+      Limit                            => 1,                         # OPTIONAL
+    );
+
+    # Results:
+    my $DeliveryStreamNames = $ListDeliveryStreamsOutput->DeliveryStreamNames;
+    my $HasMoreDeliveryStreams =
+      $ListDeliveryStreamsOutput->HasMoreDeliveryStreams;
+
+    # Returns a L<Paws::Firehose::ListDeliveryStreamsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/firehose/ListDeliveryStreams>
 
 =head1 ATTRIBUTES
 
@@ -48,8 +61,8 @@ directly.
 
 =item *
 
-C<KinesisStreamAsSource>: The delivery stream uses a Kinesis stream as
-a source.
+C<KinesisStreamAsSource>: The delivery stream uses a Kinesis data
+stream as a source.
 
 =back
 
@@ -60,7 +73,10 @@ Valid values are: C<"DirectPut">, C<"KinesisStreamAsSource">
 
 =head2 ExclusiveStartDeliveryStreamName => Str
 
-The name of the delivery stream to start the list with.
+The list of delivery streams returned by this call to
+C<ListDeliveryStreams> will start with the delivery stream whose name
+comes alphabetically immediately after the name you specify in
+C<ExclusiveStartDeliveryStreamName>.
 
 
 

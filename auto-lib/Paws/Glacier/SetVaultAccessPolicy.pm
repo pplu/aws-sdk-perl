@@ -21,17 +21,31 @@ Paws::Glacier::SetVaultAccessPolicy - Arguments for method SetVaultAccessPolicy 
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method SetVaultAccessPolicy on the 
-Amazon Glacier service. Use the attributes of this class
+This class represents the parameters used for calling the method SetVaultAccessPolicy on the
+L<Amazon Glacier|Paws::Glacier> service. Use the attributes of this class
 as arguments to method SetVaultAccessPolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetVaultAccessPolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->SetVaultAccessPolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To set the access-policy on a vault
+    # The example configures an access policy for the vault named examplevault.
+    $glacier->SetVaultAccessPolicy(
+      {
+        'AccountId' => '-',
+        'Policy'    => {
+          'Policy' =>
+'{"Version":"2012-10-17","Statement":[{"Sid":"Define-owner-access-rights","Effect":"Allow","Principal":{"AWS":"arn:aws:iam::999999999999:root"},"Action":"glacier:DeleteArchive","Resource":"arn:aws:glacier:us-west-2:999999999999:vaults/examplevault"}]}'
+        },
+        'VaultName' => 'examplevault'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/SetVaultAccessPolicy>
 
 =head1 ATTRIBUTES
 

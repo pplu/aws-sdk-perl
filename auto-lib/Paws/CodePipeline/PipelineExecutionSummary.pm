@@ -2,6 +2,7 @@ package Paws::CodePipeline::PipelineExecutionSummary;
   use Moose;
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has PipelineExecutionId => (is => 'ro', isa => 'Str', request_name => 'pipelineExecutionId', traits => ['NameInRequest']);
+  has SourceRevisions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::SourceRevision]', request_name => 'sourceRevisions', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
@@ -48,6 +49,12 @@ timestamp format.
 =head2 PipelineExecutionId => Str
 
   The ID of the pipeline execution.
+
+
+=head2 SourceRevisions => ArrayRef[L<Paws::CodePipeline::SourceRevision>]
+
+  A list of the source artifact revisions that initiated a pipeline
+execution.
 
 
 =head2 StartTime => Str

@@ -1,6 +1,7 @@
 package Paws::CloudSearchDomain;
   use Moose;
   sub service { 'cloudsearchdomain' }
+  sub signing_name { 'cloudsearch' }
   sub version { '2013-01-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -72,9 +73,45 @@ suggest requests to the search endpoint.
 For more information, see the Amazon CloudSearch Developer Guide
 (http://docs.aws.amazon.com/cloudsearch/latest/developerguide).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/cloudsearch/>
+
+
 =head1 METHODS
 
-=head2 Search(Query => Str, [Cursor => Str, Expr => Str, Facet => Str, FilterQuery => Str, Highlight => Str, Partial => Bool, QueryOptions => Str, QueryParser => Str, Return => Str, Size => Int, Sort => Str, Start => Int, Stats => Str])
+=head2 Search
+
+=over
+
+=item Query => Str
+
+=item [Cursor => Str]
+
+=item [Expr => Str]
+
+=item [Facet => Str]
+
+=item [FilterQuery => Str]
+
+=item [Highlight => Str]
+
+=item [Partial => Bool]
+
+=item [QueryOptions => Str]
+
+=item [QueryParser => Str]
+
+=item [Return => Str]
+
+=item [Size => Int]
+
+=item [Sort => Str]
+
+=item [Start => Int]
+
+=item [Stats => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearchDomain::Search>
 
@@ -113,7 +150,18 @@ service C<DescribeDomains> action. A domain's endpoints are also
 displayed on the domain dashboard in the Amazon CloudSearch console.
 
 
-=head2 Suggest(Query => Str, Suggester => Str, [Size => Int])
+=head2 Suggest
+
+=over
+
+=item Query => Str
+
+=item Suggester => Str
+
+=item [Size => Int]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearchDomain::Suggest>
 
@@ -140,7 +188,16 @@ are also displayed on the domain dashboard in the Amazon CloudSearch
 console.
 
 
-=head2 UploadDocuments(ContentType => Str, Documents => Str)
+=head2 UploadDocuments
+
+=over
+
+=item ContentType => Str
+
+=item Documents => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudSearchDomain::UploadDocuments>
 

@@ -16,7 +16,7 @@ Paws::DirectConnect::Connections
 
 =head2 Connections => ArrayRef[L<Paws::DirectConnect::Connection>]
 
-A list of connections.
+The connections.
 
 
 =head2 _request_id => Str

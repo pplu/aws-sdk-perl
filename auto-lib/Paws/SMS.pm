@@ -1,6 +1,7 @@
 package Paws::SMS;
   use Moose;
   sub service { 'sms' }
+  sub signing_name { 'sms' }
   sub version { '2016-10-24' }
   sub target_prefix { 'AWSServerMigrationService_V2016_10_24' }
   sub json_version { "1.1" }
@@ -14,9 +15,29 @@ package Paws::SMS;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CreateApp {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::CreateApp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateReplicationJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SMS::CreateReplicationJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteApp {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::DeleteApp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAppLaunchConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::DeleteAppLaunchConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAppReplicationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::DeleteAppReplicationConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteReplicationJob {
@@ -32,6 +53,31 @@ package Paws::SMS;
   sub DisassociateConnector {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SMS::DisassociateConnector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GenerateChangeSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::GenerateChangeSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GenerateTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::GenerateTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetApp {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::GetApp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAppLaunchConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::GetAppLaunchConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAppReplicationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::GetAppReplicationConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetConnectors {
@@ -59,9 +105,49 @@ package Paws::SMS;
     my $call_object = $self->new_with_coercions('Paws::SMS::ImportServerCatalog', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub LaunchApp {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::LaunchApp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListApps {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::ListApps', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAppLaunchConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::PutAppLaunchConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAppReplicationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::PutAppReplicationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartAppReplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::StartAppReplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartOnDemandReplicationRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SMS::StartOnDemandReplicationRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopAppReplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::StopAppReplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TerminateApp {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::TerminateApp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateApp {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::UpdateApp', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateReplicationJob {
@@ -162,9 +248,32 @@ package Paws::SMS;
 
     return undef
   }
+  sub ListAllApps {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApps(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListApps(@_, nextToken => $next_result->nextToken);
+        push @{ $result->apps }, @{ $next_result->apps };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'apps') foreach (@{ $result->apps });
+        $result = $self->ListApps(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'apps') foreach (@{ $result->apps });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateReplicationJob DeleteReplicationJob DeleteServerCatalog DisassociateConnector GetConnectors GetReplicationJobs GetReplicationRuns GetServers ImportServerCatalog StartOnDemandReplicationRun UpdateReplicationJob / }
+  sub operations { qw/CreateApp CreateReplicationJob DeleteApp DeleteAppLaunchConfiguration DeleteAppReplicationConfiguration DeleteReplicationJob DeleteServerCatalog DisassociateConnector GenerateChangeSet GenerateTemplate GetApp GetAppLaunchConfiguration GetAppReplicationConfiguration GetConnectors GetReplicationJobs GetReplicationRuns GetServers ImportServerCatalog LaunchApp ListApps PutAppLaunchConfiguration PutAppReplicationConfiguration StartAppReplication StartOnDemandReplicationRun StopAppReplication TerminateApp UpdateApp UpdateReplicationJob / }
 
 1;
 
@@ -192,137 +301,602 @@ Paws::SMS - Perl Interface to AWS AWS Server Migration Service
 
 =head1 DESCRIPTION
 
-Amazon Server Migration Service automates the process of migrating
-servers to EC2.
+AAWS Sever Migration Service
+
+This is the I<AWS Sever Migration Service API Reference>. It provides
+descriptions, syntax, and usage examples for each of the actions and
+data types for the AWS Sever Migration Service (AWS SMS). The topic for
+each action shows the Query API request parameters and the XML
+response. You can also view the XML request elements in the WSDL.
+
+Alternatively, you can use one of the AWS SDKs to access an API that's
+tailored to the programming language or platform that you're using. For
+more information, see AWS SDKs (http://aws.amazon.com/tools/#SDKs).
+
+To learn more about the Server Migration Service, see the following
+resources:
+
+=over
+
+=item *
+
+AWS Sever Migration Service product page
+(https://aws.amazon.com/server-migration-service/)
+
+=item *
+
+AWS Sever Migration Service User Guide
+(https://docs.aws.amazon.com/server-migration-service/latest/userguide/server-migration.html)
+
+=back
+
+
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms-2016-10-24>
+
 
 =head1 METHODS
 
-=head2 CreateReplicationJob(Frequency => Int, SeedReplicationTime => Str, ServerId => Str, [Description => Str, LicenseType => Str, RoleName => Str])
+=head2 CreateApp
+
+=over
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+=item [RoleName => Str]
+
+=item [ServerGroups => ArrayRef[L<Paws::SMS::ServerGroup>]]
+
+=item [Tags => ArrayRef[L<Paws::SMS::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::CreateApp>
+
+Returns: a L<Paws::SMS::CreateAppResponse> instance
+
+Creates an application. An application consists of one or more server
+groups. Each server group contain one or more servers.
+
+
+=head2 CreateReplicationJob
+
+=over
+
+=item SeedReplicationTime => Str
+
+=item ServerId => Str
+
+=item [Description => Str]
+
+=item [Encrypted => Bool]
+
+=item [Frequency => Int]
+
+=item [KmsKeyId => Str]
+
+=item [LicenseType => Str]
+
+=item [NumberOfRecentAmisToKeep => Int]
+
+=item [RoleName => Str]
+
+=item [RunOnce => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::CreateReplicationJob>
 
 Returns: a L<Paws::SMS::CreateReplicationJobResponse> instance
 
-The CreateReplicationJob API is used to create a ReplicationJob to
-replicate a server on AWS. Call this API to first create a
-ReplicationJob, which will then schedule periodic ReplicationRuns to
-replicate your server to AWS. Each ReplicationRun will result in the
-creation of an AWS AMI.
+Creates a replication job. The replication job schedules periodic
+replication runs to replicate your server to AWS. Each replication run
+creates an Amazon Machine Image (AMI).
 
 
-=head2 DeleteReplicationJob(ReplicationJobId => Str)
+=head2 DeleteApp
+
+=over
+
+=item [AppId => Str]
+
+=item [ForceStopAppReplication => Bool]
+
+=item [ForceTerminateApp => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::DeleteApp>
+
+Returns: a L<Paws::SMS::DeleteAppResponse> instance
+
+Deletes an existing application. Optionally deletes the launched stack
+associated with the application and all AWS SMS replication jobs for
+servers in the application.
+
+
+=head2 DeleteAppLaunchConfiguration
+
+=over
+
+=item [AppId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::DeleteAppLaunchConfiguration>
+
+Returns: a L<Paws::SMS::DeleteAppLaunchConfigurationResponse> instance
+
+Deletes existing launch configuration for an application.
+
+
+=head2 DeleteAppReplicationConfiguration
+
+=over
+
+=item [AppId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::DeleteAppReplicationConfiguration>
+
+Returns: a L<Paws::SMS::DeleteAppReplicationConfigurationResponse> instance
+
+Deletes existing replication configuration for an application.
+
+
+=head2 DeleteReplicationJob
+
+=over
+
+=item ReplicationJobId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::DeleteReplicationJob>
 
 Returns: a L<Paws::SMS::DeleteReplicationJobResponse> instance
 
-The DeleteReplicationJob API is used to delete a ReplicationJob,
-resulting in no further ReplicationRuns. This will delete the contents
-of the S3 bucket used to store SMS artifacts, but will not delete any
-AMIs created by the SMS service.
+Deletes the specified replication job.
+
+After you delete a replication job, there are no further replication
+runs. AWS deletes the contents of the Amazon S3 bucket used to store
+AWS SMS artifacts. The AMIs created by the replication runs are not
+deleted.
 
 
-=head2 DeleteServerCatalog()
+=head2 DeleteServerCatalog
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::SMS::DeleteServerCatalog>
 
 Returns: a L<Paws::SMS::DeleteServerCatalogResponse> instance
 
-The DeleteServerCatalog API clears all servers from your server
-catalog. This means that these servers will no longer be accessible to
-the Server Migration Service.
+Deletes all servers from your server catalog.
 
 
-=head2 DisassociateConnector(ConnectorId => Str)
+=head2 DisassociateConnector
+
+=over
+
+=item ConnectorId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::DisassociateConnector>
 
 Returns: a L<Paws::SMS::DisassociateConnectorResponse> instance
 
-The DisassociateConnector API will disassociate a connector from the
-Server Migration Service, rendering it unavailable to support
-replication jobs.
+Disassociates the specified connector from AWS SMS.
+
+After you disassociate a connector, it is no longer available to
+support replication jobs.
 
 
-=head2 GetConnectors([MaxResults => Int, NextToken => Str])
+=head2 GenerateChangeSet
+
+=over
+
+=item [AppId => Str]
+
+=item [ChangesetFormat => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::GenerateChangeSet>
+
+Returns: a L<Paws::SMS::GenerateChangeSetResponse> instance
+
+Generates a target change set for a currently launched stack and writes
+it to an Amazon S3 object in the customerE<rsquo>s Amazon S3 bucket.
+
+
+=head2 GenerateTemplate
+
+=over
+
+=item [AppId => Str]
+
+=item [TemplateFormat => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::GenerateTemplate>
+
+Returns: a L<Paws::SMS::GenerateTemplateResponse> instance
+
+Generates an Amazon CloudFormation template based on the current launch
+configuration and writes it to an Amazon S3 object in the
+customerE<rsquo>s Amazon S3 bucket.
+
+
+=head2 GetApp
+
+=over
+
+=item [AppId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::GetApp>
+
+Returns: a L<Paws::SMS::GetAppResponse> instance
+
+Retrieve information about an application.
+
+
+=head2 GetAppLaunchConfiguration
+
+=over
+
+=item [AppId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::GetAppLaunchConfiguration>
+
+Returns: a L<Paws::SMS::GetAppLaunchConfigurationResponse> instance
+
+Retrieves the application launch configuration associated with an
+application.
+
+
+=head2 GetAppReplicationConfiguration
+
+=over
+
+=item [AppId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::GetAppReplicationConfiguration>
+
+Returns: a L<Paws::SMS::GetAppReplicationConfigurationResponse> instance
+
+Retrieves an application replication configuration associatd with an
+application.
+
+
+=head2 GetConnectors
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::GetConnectors>
 
 Returns: a L<Paws::SMS::GetConnectorsResponse> instance
 
-The GetConnectors API returns a list of connectors that are registered
-with the Server Migration Service.
+Describes the connectors registered with the AWS SMS.
 
 
-=head2 GetReplicationJobs([MaxResults => Int, NextToken => Str, ReplicationJobId => Str])
+=head2 GetReplicationJobs
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ReplicationJobId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::GetReplicationJobs>
 
 Returns: a L<Paws::SMS::GetReplicationJobsResponse> instance
 
-The GetReplicationJobs API will return all of your ReplicationJobs and
-their details. This API returns a paginated list, that may be
-consecutively called with nextToken to retrieve all ReplicationJobs.
+Describes the specified replication job or all of your replication
+jobs.
 
 
-=head2 GetReplicationRuns(ReplicationJobId => Str, [MaxResults => Int, NextToken => Str])
+=head2 GetReplicationRuns
+
+=over
+
+=item ReplicationJobId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::GetReplicationRuns>
 
 Returns: a L<Paws::SMS::GetReplicationRunsResponse> instance
 
-The GetReplicationRuns API will return all ReplicationRuns for a given
-ReplicationJob. This API returns a paginated list, that may be
-consecutively called with nextToken to retrieve all ReplicationRuns for
-a ReplicationJob.
+Describes the replication runs for the specified replication job.
 
 
-=head2 GetServers([MaxResults => Int, NextToken => Str])
+=head2 GetServers
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [VmServerAddressList => ArrayRef[L<Paws::SMS::VmServerAddress>]]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::GetServers>
 
 Returns: a L<Paws::SMS::GetServersResponse> instance
 
-The GetServers API returns a list of all servers in your server
-catalog. For this call to succeed, you must previously have called
+Describes the servers in your server catalog.
+
+Before you can describe your servers, you must import them using
 ImportServerCatalog.
 
 
-=head2 ImportServerCatalog()
+=head2 ImportServerCatalog
+
+
+
+
+
 
 Each argument is described in detail in: L<Paws::SMS::ImportServerCatalog>
 
 Returns: a L<Paws::SMS::ImportServerCatalogResponse> instance
 
-The ImportServerCatalog API is used to gather the complete list of
-on-premises servers on your premises. This API call requires connectors
-to be installed and monitoring all servers you would like imported.
-This API call returns immediately, but may take some time to retrieve
-all of the servers.
+Gathers a complete list of on-premises servers. Connectors must be
+installed and monitoring all servers that you want to import.
+
+This call returns immediately, but might take additional time to
+retrieve all the servers.
 
 
-=head2 StartOnDemandReplicationRun(ReplicationJobId => Str, [Description => Str])
+=head2 LaunchApp
+
+=over
+
+=item [AppId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::LaunchApp>
+
+Returns: a L<Paws::SMS::LaunchAppResponse> instance
+
+Launches an application stack.
+
+
+=head2 ListApps
+
+=over
+
+=item [AppIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::ListApps>
+
+Returns: a L<Paws::SMS::ListAppsResponse> instance
+
+Returns a list of summaries for all applications.
+
+
+=head2 PutAppLaunchConfiguration
+
+=over
+
+=item [AppId => Str]
+
+=item [RoleName => Str]
+
+=item [ServerGroupLaunchConfigurations => ArrayRef[L<Paws::SMS::ServerGroupLaunchConfiguration>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::PutAppLaunchConfiguration>
+
+Returns: a L<Paws::SMS::PutAppLaunchConfigurationResponse> instance
+
+Creates a launch configuration for an application.
+
+
+=head2 PutAppReplicationConfiguration
+
+=over
+
+=item [AppId => Str]
+
+=item [ServerGroupReplicationConfigurations => ArrayRef[L<Paws::SMS::ServerGroupReplicationConfiguration>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::PutAppReplicationConfiguration>
+
+Returns: a L<Paws::SMS::PutAppReplicationConfigurationResponse> instance
+
+Creates or updates a replication configuration for an application.
+
+
+=head2 StartAppReplication
+
+=over
+
+=item [AppId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::StartAppReplication>
+
+Returns: a L<Paws::SMS::StartAppReplicationResponse> instance
+
+Starts replicating an application.
+
+
+=head2 StartOnDemandReplicationRun
+
+=over
+
+=item ReplicationJobId => Str
+
+=item [Description => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::StartOnDemandReplicationRun>
 
 Returns: a L<Paws::SMS::StartOnDemandReplicationRunResponse> instance
 
-The StartOnDemandReplicationRun API is used to start a ReplicationRun
-on demand (in addition to those that are scheduled based on your
-frequency). This ReplicationRun will start immediately.
-StartOnDemandReplicationRun is subject to limits on how many on demand
-ReplicationRuns you may call per 24-hour period.
+Starts an on-demand replication run for the specified replication job.
+This replication run starts immediately. This replication run is in
+addition to the ones already scheduled.
+
+There is a limit on the number of on-demand replications runs you can
+request in a 24-hour period.
 
 
-=head2 UpdateReplicationJob(ReplicationJobId => Str, [Description => Str, Frequency => Int, LicenseType => Str, NextReplicationRunStartTime => Str, RoleName => Str])
+=head2 StopAppReplication
+
+=over
+
+=item [AppId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::StopAppReplication>
+
+Returns: a L<Paws::SMS::StopAppReplicationResponse> instance
+
+Stops replicating an application.
+
+
+=head2 TerminateApp
+
+=over
+
+=item [AppId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::TerminateApp>
+
+Returns: a L<Paws::SMS::TerminateAppResponse> instance
+
+Terminates the stack for an application.
+
+
+=head2 UpdateApp
+
+=over
+
+=item [AppId => Str]
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+=item [RoleName => Str]
+
+=item [ServerGroups => ArrayRef[L<Paws::SMS::ServerGroup>]]
+
+=item [Tags => ArrayRef[L<Paws::SMS::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::UpdateApp>
+
+Returns: a L<Paws::SMS::UpdateAppResponse> instance
+
+Updates an application.
+
+
+=head2 UpdateReplicationJob
+
+=over
+
+=item ReplicationJobId => Str
+
+=item [Description => Str]
+
+=item [Encrypted => Bool]
+
+=item [Frequency => Int]
+
+=item [KmsKeyId => Str]
+
+=item [LicenseType => Str]
+
+=item [NextReplicationRunStartTime => Str]
+
+=item [NumberOfRecentAmisToKeep => Int]
+
+=item [RoleName => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SMS::UpdateReplicationJob>
 
 Returns: a L<Paws::SMS::UpdateReplicationJobResponse> instance
 
-The UpdateReplicationJob API is used to change the settings of your
-existing ReplicationJob created using CreateReplicationJob. Calling
-this API will affect the next scheduled ReplicationRun.
+Updates the specified settings for the specified replication job.
 
 
 
@@ -367,9 +941,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SMS::GetReplicationRunsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllServers(sub { },[MaxResults => Int, NextToken => Str])
+=head2 GetAllServers(sub { },[MaxResults => Int, NextToken => Str, VmServerAddressList => ArrayRef[L<Paws::SMS::VmServerAddress>]])
 
-=head2 GetAllServers([MaxResults => Int, NextToken => Str])
+=head2 GetAllServers([MaxResults => Int, NextToken => Str, VmServerAddressList => ArrayRef[L<Paws::SMS::VmServerAddress>]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -377,6 +951,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - serverList, passing the object as the first parameter, and the string 'serverList' as the second parameter 
 
 If not, it will return a a L<Paws::SMS::GetServersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllApps(sub { },[AppIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllApps([AppIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - apps, passing the object as the first parameter, and the string 'apps' as the second parameter 
+
+If not, it will return a a L<Paws::SMS::ListAppsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

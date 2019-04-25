@@ -1,7 +1,7 @@
 
 package Paws::GuardDuty::DeclineInvitations;
   use Moose;
-  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'accountIds');
+  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'accountIds', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -19,22 +19,32 @@ Paws::GuardDuty::DeclineInvitations - Arguments for method DeclineInvitations on
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DeclineInvitations on the 
-Amazon GuardDuty service. Use the attributes of this class
+This class represents the parameters used for calling the method DeclineInvitations on the
+L<Amazon GuardDuty|Paws::GuardDuty> service. Use the attributes of this class
 as arguments to method DeclineInvitations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeclineInvitations.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DeclineInvitations(Att1 => $value1, Att2 => $value2, ...);
+    my $guardduty = Paws->service('GuardDuty');
+    my $DeclineInvitationsResponse = $guardduty->DeclineInvitations(
+      AccountIds => [ 'My__string', ... ],
+
+    );
+
+    # Results:
+    my $UnprocessedAccounts = $DeclineInvitationsResponse->UnprocessedAccounts;
+
+    # Returns a L<Paws::GuardDuty::DeclineInvitationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/DeclineInvitations>
 
 =head1 ATTRIBUTES
 
 
-=head2 AccountIds => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> AccountIds => ArrayRef[Str|Undef]
 
 A list of account IDs of the AWS accounts that sent invitations to the
 current member account that you want to decline invitations from.

@@ -23,17 +23,95 @@ Paws::Batch::CreateComputeEnvironment - Arguments for method CreateComputeEnviro
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateComputeEnvironment on the 
-AWS Batch service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateComputeEnvironment on the
+L<AWS Batch|Paws::Batch> service. Use the attributes of this class
 as arguments to method CreateComputeEnvironment.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateComputeEnvironment.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateComputeEnvironment(Att1 => $value1, Att2 => $value2, ...);
+    my $batch = Paws->service('Batch');
+    # To create a managed EC2 compute environment
+    # This example creates a managed compute environment with specific C4
+    # instance types that are launched on demand. The compute environment is
+    # called C4OnDemand.
+    my $CreateComputeEnvironmentResponse = $batch->CreateComputeEnvironment(
+      {
+        'ComputeEnvironmentName' => 'C4OnDemand',
+        'ComputeResources'       => {
+          'DesiredvCpus'  => 48,
+          'Ec2KeyPair'    => 'id_rsa',
+          'InstanceRole'  => 'ecsInstanceRole',
+          'InstanceTypes' => [
+            'c4.large', 'c4.xlarge', 'c4.2xlarge', 'c4.4xlarge',
+            'c4.8xlarge'
+          ],
+          'MaxvCpus'         => 128,
+          'MinvCpus'         => 0,
+          'SecurityGroupIds' => ['sg-cf5093b2'],
+          'Subnets' =>
+            [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
+          'Tags' => {
+            'Name' => 'Batch Instance - C4OnDemand'
+          },
+          'Type' => 'EC2'
+        },
+        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
+        'State'       => 'ENABLED',
+        'Type'        => 'MANAGED'
+      }
+    );
+
+    # Results:
+    my $computeEnvironmentArn =
+      $CreateComputeEnvironmentResponse->computeEnvironmentArn;
+    my $computeEnvironmentName =
+      $CreateComputeEnvironmentResponse->computeEnvironmentName;
+
+    # Returns a L<Paws::Batch::CreateComputeEnvironmentResponse> object.
+    # To create a managed EC2 Spot compute environment
+    # This example creates a managed compute environment with the M4 instance
+    # type that is launched when the Spot bid price is at or below 20% of the
+    # On-Demand price for the instance type. The compute environment is called
+    # M4Spot.
+    my $CreateComputeEnvironmentResponse = $batch->CreateComputeEnvironment(
+      {
+        'ComputeEnvironmentName' => 'M4Spot',
+        'ComputeResources'       => {
+          'BidPercentage'    => 20,
+          'DesiredvCpus'     => 4,
+          'Ec2KeyPair'       => 'id_rsa',
+          'InstanceRole'     => 'ecsInstanceRole',
+          'InstanceTypes'    => ['m4'],
+          'MaxvCpus'         => 128,
+          'MinvCpus'         => 0,
+          'SecurityGroupIds' => ['sg-cf5093b2'],
+          'SpotIamFleetRole' =>
+            'arn:aws:iam::012345678910:role/aws-ec2-spot-fleet-role',
+          'Subnets' =>
+            [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
+          'Tags' => {
+            'Name' => 'Batch Instance - M4Spot'
+          },
+          'Type' => 'SPOT'
+        },
+        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
+        'State'       => 'ENABLED',
+        'Type'        => 'MANAGED'
+      }
+    );
+
+    # Results:
+    my $computeEnvironmentArn =
+      $CreateComputeEnvironmentResponse->computeEnvironmentArn;
+    my $computeEnvironmentName =
+      $CreateComputeEnvironmentResponse->computeEnvironmentName;
+
+    # Returns a L<Paws::Batch::CreateComputeEnvironmentResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/batch/CreateComputeEnvironment>
 
 =head1 ATTRIBUTES
 
@@ -80,7 +158,10 @@ Valid values are: C<"ENABLED">, C<"DISABLED">
 
 =head2 B<REQUIRED> Type => Str
 
-The type of the compute environment.
+The type of the compute environment. For more information, see Compute
+Environments
+(http://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+in the I<AWS Batch User Guide>.
 
 Valid values are: C<"MANAGED">, C<"UNMANAGED">
 

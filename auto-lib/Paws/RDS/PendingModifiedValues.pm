@@ -11,7 +11,9 @@ package Paws::RDS::PendingModifiedValues;
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
+  has PendingCloudwatchLogsExports => (is => 'ro', isa => 'Paws::RDS::PendingCloudwatchLogsExports');
   has Port => (is => 'ro', isa => 'Int');
+  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]', request_name => 'ProcessorFeature', traits => ['NameInRequest']);
   has StorageType => (is => 'ro', isa => 'Str');
 1;
 
@@ -114,9 +116,20 @@ credentials for the DB instance.
 deployment.
 
 
+=head2 PendingCloudwatchLogsExports => L<Paws::RDS::PendingCloudwatchLogsExports>
+
+  
+
+
 =head2 Port => Int
 
   Specifies the pending port for the DB instance.
+
+
+=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+
+  The number of CPU cores and the number of threads per core for the DB
+instance class of the DB instance.
 
 
 =head2 StorageType => Str

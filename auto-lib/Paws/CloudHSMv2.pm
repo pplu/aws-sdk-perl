@@ -1,6 +1,7 @@
 package Paws::CloudHSMv2;
   use Moose;
   sub service { 'cloudhsmv2' }
+  sub signing_name { 'cloudhsm' }
   sub version { '2017-04-28' }
   sub target_prefix { 'BaldrApiService' }
   sub json_version { "1.1" }
@@ -14,6 +15,11 @@ package Paws::CloudHSMv2;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CopyBackupToRegion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::CopyBackupToRegion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::CreateCluster', @_);
@@ -22,6 +28,11 @@ package Paws::CloudHSMv2;
   sub CreateHsm {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::CreateHsm', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteBackup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::DeleteBackup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCluster {
@@ -54,6 +65,11 @@ package Paws::CloudHSMv2;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::ListTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RestoreBackup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::RestoreBackup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::TagResource', @_);
@@ -65,9 +81,78 @@ package Paws::CloudHSMv2;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllBackups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeBackups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeBackups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Backups }, @{ $next_result->Backups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Backups') foreach (@{ $result->Backups });
+        $result = $self->DescribeBackups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Backups') foreach (@{ $result->Backups });
+    }
+
+    return undef
+  }
+  sub DescribeAllClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeClusters(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Clusters }, @{ $next_result->Clusters };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Clusters') foreach (@{ $result->Clusters });
+        $result = $self->DescribeClusters(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Clusters') foreach (@{ $result->Clusters });
+    }
+
+    return undef
+  }
+  sub ListAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTags(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTags(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TagList }, @{ $next_result->TagList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TagList') foreach (@{ $result->TagList });
+        $result = $self->ListTags(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TagList') foreach (@{ $result->TagList });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateCluster CreateHsm DeleteCluster DeleteHsm DescribeBackups DescribeClusters InitializeCluster ListTags TagResource UntagResource / }
+  sub operations { qw/CopyBackupToRegion CreateCluster CreateHsm DeleteBackup DeleteCluster DeleteHsm DescribeBackups DescribeClusters InitializeCluster ListTags RestoreBackup TagResource UntagResource / }
 
 1;
 
@@ -99,9 +184,41 @@ For more information about AWS CloudHSM, see AWS CloudHSM
 (http://aws.amazon.com/cloudhsm/) and the AWS CloudHSM User Guide
 (http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2-2017-04-28>
+
+
 =head1 METHODS
 
-=head2 CreateCluster(HsmType => Str, SubnetIds => ArrayRef[Str|Undef], [SourceBackupId => Str])
+=head2 CopyBackupToRegion
+
+=over
+
+=item BackupId => Str
+
+=item DestinationRegion => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudHSMv2::CopyBackupToRegion>
+
+Returns: a L<Paws::CloudHSMv2::CopyBackupToRegionResponse> instance
+
+Copy an AWS CloudHSM cluster backup to a different region.
+
+
+=head2 CreateCluster
+
+=over
+
+=item HsmType => Str
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+=item [SourceBackupId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::CreateCluster>
 
@@ -110,7 +227,18 @@ Returns: a L<Paws::CloudHSMv2::CreateClusterResponse> instance
 Creates a new AWS CloudHSM cluster.
 
 
-=head2 CreateHsm(AvailabilityZone => Str, ClusterId => Str, [IpAddress => Str])
+=head2 CreateHsm
+
+=over
+
+=item AvailabilityZone => Str
+
+=item ClusterId => Str
+
+=item [IpAddress => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::CreateHsm>
 
@@ -120,7 +248,32 @@ Creates a new hardware security module (HSM) in the specified AWS
 CloudHSM cluster.
 
 
-=head2 DeleteCluster(ClusterId => Str)
+=head2 DeleteBackup
+
+=over
+
+=item BackupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudHSMv2::DeleteBackup>
+
+Returns: a L<Paws::CloudHSMv2::DeleteBackupResponse> instance
+
+Deletes a specified AWS CloudHSM backup. A backup can be restored up to
+7 days after the DeleteBackup request. For more information on
+restoring a backup, see RestoreBackup
+
+
+=head2 DeleteCluster
+
+=over
+
+=item ClusterId => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::DeleteCluster>
 
@@ -132,7 +285,20 @@ contains any HSMs, use DescribeClusters. To delete an HSM, use
 DeleteHsm.
 
 
-=head2 DeleteHsm(ClusterId => Str, [EniId => Str, EniIp => Str, HsmId => Str])
+=head2 DeleteHsm
+
+=over
+
+=item ClusterId => Str
+
+=item [EniId => Str]
+
+=item [EniIp => Str]
+
+=item [HsmId => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::DeleteHsm>
 
@@ -144,7 +310,20 @@ identifier (ID), the IP address of the HSM's elastic network interface
 these values. To find these values, use DescribeClusters.
 
 
-=head2 DescribeBackups([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+=head2 DescribeBackups
+
+=over
+
+=item [Filters => L<Paws::CloudHSMv2::Filters>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortAscending => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::DescribeBackups>
 
@@ -160,7 +339,18 @@ When you receive a response with no C<NextToken> (or an empty or null
 value), that means there are no more backups to get.
 
 
-=head2 DescribeClusters([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+=head2 DescribeClusters
+
+=over
+
+=item [Filters => L<Paws::CloudHSMv2::Filters>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::DescribeClusters>
 
@@ -176,7 +366,18 @@ When you receive a response with no C<NextToken> (or an empty or null
 value), that means there are no more clusters to get.
 
 
-=head2 InitializeCluster(ClusterId => Str, SignedCert => Str, TrustAnchor => Str)
+=head2 InitializeCluster
+
+=over
+
+=item ClusterId => Str
+
+=item SignedCert => Str
+
+=item TrustAnchor => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::InitializeCluster>
 
@@ -189,7 +390,18 @@ cluster's certificate signing request (CSR) with your issuing CA. To
 get the cluster's CSR, use DescribeClusters.
 
 
-=head2 ListTags(ResourceId => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListTags
+
+=over
+
+=item ResourceId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::ListTags>
 
@@ -205,7 +417,34 @@ response with no C<NextToken> (or an empty or null value), that means
 there are no more tags to get.
 
 
-=head2 TagResource(ResourceId => Str, TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>])
+=head2 RestoreBackup
+
+=over
+
+=item BackupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudHSMv2::RestoreBackup>
+
+Returns: a L<Paws::CloudHSMv2::RestoreBackupResponse> instance
+
+Restores a specified AWS CloudHSM backup that is in the
+C<PENDING_DELETION> state. For more information on deleting a backup,
+see DeleteBackup.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceId => Str
+
+=item TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::TagResource>
 
@@ -215,7 +454,16 @@ Adds or overwrites one or more tags for the specified AWS CloudHSM
 cluster.
 
 
-=head2 UntagResource(ResourceId => Str, TagKeyList => ArrayRef[Str|Undef])
+=head2 UntagResource
+
+=over
+
+=item ResourceId => Str
+
+=item TagKeyList => ArrayRef[Str|Undef]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::CloudHSMv2::UntagResource>
 
@@ -230,6 +478,42 @@ cluster.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllBackups(sub { },[Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str, SortAscending => Bool])
+
+=head2 DescribeAllBackups([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str, SortAscending => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Backups, passing the object as the first parameter, and the string 'Backups' as the second parameter 
+
+If not, it will return a a L<Paws::CloudHSMv2::DescribeBackupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusters(sub { },[Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllClusters([Filters => L<Paws::CloudHSMv2::Filters>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Clusters, passing the object as the first parameter, and the string 'Clusters' as the second parameter 
+
+If not, it will return a a L<Paws::CloudHSMv2::DescribeClustersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTags(sub { },ResourceId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTags(ResourceId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TagList, passing the object as the first parameter, and the string 'TagList' as the second parameter 
+
+If not, it will return a a L<Paws::CloudHSMv2::ListTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

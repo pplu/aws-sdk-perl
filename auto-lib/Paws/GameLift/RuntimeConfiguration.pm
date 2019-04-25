@@ -57,8 +57,6 @@ run-time configuration, add the values of the C<ConcurrentExecutions>
 parameter for each C< ServerProcess > object in the run-time
 configuration.
 
-Fleet-related operations include:
-
 =over
 
 =item *
@@ -68,6 +66,10 @@ CreateFleet
 =item *
 
 ListFleets
+
+=item *
+
+DeleteFleet
 
 =item *
 
@@ -81,6 +83,10 @@ DescribeFleetAttributes
 
 =item *
 
+DescribeFleetCapacity
+
+=item *
+
 DescribeFleetPortSettings
 
 =item *
@@ -90,6 +96,10 @@ DescribeFleetUtilization
 =item *
 
 DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
 
 =item *
 
@@ -123,39 +133,19 @@ UpdateRuntimeConfiguration
 
 =item *
 
-Manage fleet capacity:
+Manage fleet actions:
 
 =over
 
 =item *
 
-DescribeFleetCapacity
+StartFleetActions
 
 =item *
 
-UpdateFleetCapacity
-
-=item *
-
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeEC2InstanceLimits
+StopFleetActions
 
 =back
-
-=item *
-
-DeleteFleet
 
 =back
 

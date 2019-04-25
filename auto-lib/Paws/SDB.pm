@@ -1,6 +1,7 @@
 package Paws::SDB;
   use Moose;
   sub service { 'sdb' }
+  sub signing_name { 'sdb' }
   sub version { '2009-04-15' }
   sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -177,9 +178,21 @@ pay only for what they use.
 Visit http://aws.amazon.com/simpledb/ (http://aws.amazon.com/simpledb/)
 for more information.
 
+For the AWS API documentation, see L<https://docs.aws.amazon.com/simpledb/>
+
+
 =head1 METHODS
 
-=head2 BatchDeleteAttributes(DomainName => Str, Items => ArrayRef[L<Paws::SDB::DeletableItem>])
+=head2 BatchDeleteAttributes
+
+=over
+
+=item DomainName => Str
+
+=item Items => ArrayRef[L<Paws::SDB::DeletableItem>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SDB::BatchDeleteAttributes>
 
@@ -201,7 +214,16 @@ The following limitations are enforced for this operation:
 
 
 
-=head2 BatchPutAttributes(DomainName => Str, Items => ArrayRef[L<Paws::SDB::ReplaceableItem>])
+=head2 BatchPutAttributes
+
+=over
+
+=item DomainName => Str
+
+=item Items => ArrayRef[L<Paws::SDB::ReplaceableItem>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SDB::BatchPutAttributes>
 
@@ -266,7 +288,14 @@ The following limitations are enforced for this operation:
 
 
 
-=head2 CreateDomain(DomainName => Str)
+=head2 CreateDomain
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SDB::CreateDomain>
 
@@ -284,7 +313,20 @@ http://aws.amazon.com/contact-us/simpledb-limit-request/
 (http://aws.amazon.com/contact-us/simpledb-limit-request/).
 
 
-=head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>], Expected => L<Paws::SDB::UpdateCondition>])
+=head2 DeleteAttributes
+
+=over
+
+=item DomainName => Str
+
+=item ItemName => Str
+
+=item [Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>]]
+
+=item [Expected => L<Paws::SDB::UpdateCondition>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SDB::DeleteAttributes>
 
@@ -303,7 +345,14 @@ operation (read) immediately after a C<DeleteAttributes> or
 PutAttributes operation (write) might not return updated item data.
 
 
-=head2 DeleteDomain(DomainName => Str)
+=head2 DeleteDomain
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SDB::DeleteDomain>
 
@@ -314,7 +363,14 @@ attributes) in the domain are deleted as well. The C<DeleteDomain>
 operation might take 10 or more seconds to complete.
 
 
-=head2 DomainMetadata(DomainName => Str)
+=head2 DomainMetadata
+
+=over
+
+=item DomainName => Str
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SDB::DomainMetadata>
 
@@ -325,7 +381,20 @@ created, the number of items and attributes in the domain, and the size
 of the attribute names and values.
 
 
-=head2 GetAttributes(DomainName => Str, ItemName => Str, [AttributeName => Str, ConsistentRead => Bool])
+=head2 GetAttributes
+
+=over
+
+=item DomainName => Str
+
+=item ItemName => Str
+
+=item [AttributeName => Str]
+
+=item [ConsistentRead => Bool]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SDB::GetAttributes>
 
@@ -340,7 +409,16 @@ operation, an empty set is returned. The system does not return an
 error as it cannot guarantee the item does not exist on other replicas.
 
 
-=head2 ListDomains([MaxNumberOfDomains => Int, NextToken => Str])
+=head2 ListDomains
+
+=over
+
+=item [MaxNumberOfDomains => Int]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SDB::ListDomains>
 
@@ -355,7 +433,20 @@ operation returns up to C<MaxNumberOfDomains> more domain names with
 each successive operation call.
 
 
-=head2 PutAttributes(Attributes => ArrayRef[L<Paws::SDB::ReplaceableAttribute>], DomainName => Str, ItemName => Str, [Expected => L<Paws::SDB::UpdateCondition>])
+=head2 PutAttributes
+
+=over
+
+=item Attributes => ArrayRef[L<Paws::SDB::ReplaceableAttribute>]
+
+=item DomainName => Str
+
+=item ItemName => Str
+
+=item [Expected => L<Paws::SDB::UpdateCondition>]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SDB::PutAttributes>
 
@@ -405,7 +496,18 @@ The following limitations are enforced for this operation:
 
 
 
-=head2 Select(SelectExpression => Str, [ConsistentRead => Bool, NextToken => Str])
+=head2 Select
+
+=over
+
+=item SelectExpression => Str
+
+=item [ConsistentRead => Bool]
+
+=item [NextToken => Str]
+
+
+=back
 
 Each argument is described in detail in: L<Paws::SDB::Select>
 

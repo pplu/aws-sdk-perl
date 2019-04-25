@@ -5,9 +5,11 @@ package Paws::GameLift::ScalingPolicy;
   has FleetId => (is => 'ro', isa => 'Str');
   has MetricName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has PolicyType => (is => 'ro', isa => 'Str');
   has ScalingAdjustment => (is => 'ro', isa => 'Int');
   has ScalingAdjustmentType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has TargetConfiguration => (is => 'ro', isa => 'Paws::GameLift::TargetConfiguration');
   has Threshold => (is => 'ro', isa => 'Num');
 1;
 
@@ -42,74 +44,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::S
 Rule that controls how a fleet is scaled. Scaling policies are uniquely
 identified by the combination of name and fleet ID.
 
-Fleet-related operations include:
-
-=over
-
-=item *
-
-CreateFleet
-
-=item *
-
-ListFleets
-
-=item *
-
-Describe fleets:
-
-=over
-
-=item *
-
-DescribeFleetAttributes
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
-UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
-
-=item *
-
-Manage fleet capacity:
-
 =over
 
 =item *
@@ -122,25 +56,43 @@ UpdateFleetCapacity
 
 =item *
 
-PutScalingPolicy (automatic scaling)
-
-=item *
-
-DescribeScalingPolicies (automatic scaling)
-
-=item *
-
-DeleteScalingPolicy (automatic scaling)
-
-=item *
-
 DescribeEC2InstanceLimits
+
+=item *
+
+Manage scaling policies:
+
+=over
+
+=item *
+
+PutScalingPolicy (auto-scaling)
+
+=item *
+
+DescribeScalingPolicies (auto-scaling)
+
+=item *
+
+DeleteScalingPolicy (auto-scaling)
 
 =back
 
 =item *
 
-DeleteFleet
+Manage fleet actions:
+
+=over
+
+=item *
+
+StartFleetActions
+
+=item *
+
+StopFleetActions
+
+=back
 
 =back
 
@@ -168,44 +120,69 @@ policy.
 
 =head2 MetricName => Str
 
-  Name of the Amazon GameLift-defined metric that is used to trigger an
-adjustment.
+  Name of the Amazon GameLift-defined metric that is used to trigger a
+scaling adjustment. For detailed descriptions of fleet metrics, see
+Monitor Amazon GameLift with Amazon CloudWatch
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html).
 
 =over
 
 =item *
 
-B<ActivatingGameSessions> -- number of game sessions in the process of
-being created (game session status = C<ACTIVATING>).
+B<ActivatingGameSessions> -- Game sessions in the process of being
+created.
 
 =item *
 
-B<ActiveGameSessions> -- number of game sessions currently running
-(game session status = C<ACTIVE>).
+B<ActiveGameSessions> -- Game sessions that are currently running.
 
 =item *
 
-B<CurrentPlayerSessions> -- number of active or reserved player
-sessions (player session status = C<ACTIVE> or C<RESERVED>).
+B<ActiveInstances> -- Fleet instances that are currently running at
+least one game session.
 
 =item *
 
-B<AvailablePlayerSessions> -- number of player session slots currently
-available in active game sessions across the fleet, calculated by
-subtracting a game session's current player session count from its
-maximum player session count. This number does include game sessions
-that are not currently accepting players (game session
-C<PlayerSessionCreationPolicy> = C<DENY_ALL>).
+B<AvailableGameSessions> -- Additional game sessions that fleet could
+host simultaneously, given current capacity.
 
 =item *
 
-B<ActiveInstances> -- number of instances currently running a game
-session.
+B<AvailablePlayerSessions> -- Empty player slots in currently active
+game sessions. This includes game sessions that are not currently
+accepting players. Reserved player slots are not included.
 
 =item *
 
-B<IdleInstances> -- number of instances not currently running a game
-session.
+B<CurrentPlayerSessions> -- Player slots in active game sessions that
+are being used by a player or are reserved for a player.
+
+=item *
+
+B<IdleInstances> -- Active instances that are currently hosting zero
+game sessions.
+
+=item *
+
+B<PercentAvailableGameSessions> -- Unused percentage of the total
+number of game sessions that a fleet could host simultaneously, given
+current capacity. Use this metric for a target-based scaling policy.
+
+=item *
+
+B<PercentIdleInstances> -- Percentage of the total number of active
+instances that are hosting zero game sessions.
+
+=item *
+
+B<QueueDepth> -- Pending game session placement requests, in any queue,
+where the current fleet is the top-priority destination.
+
+=item *
+
+B<WaitTime> -- Current wait time for pending game session placement
+requests, in any queue, where the current fleet is the top-priority
+destination.
 
 =back
 
@@ -215,6 +192,16 @@ session.
 
   Descriptive label that is associated with a scaling policy. Policy
 names do not need to be unique.
+
+
+=head2 PolicyType => Str
+
+  Type of scaling policy to create. For a target-based policy, set the
+parameter I<MetricName> to 'PercentAvailableGameSessions' and specify a
+I<TargetConfiguration>. For a rule-based policy set the following
+parameters: I<MetricName>, I<ComparisonOperator>, I<Threshold>,
+I<EvaluationPeriods>, I<ScalingAdjustmentType>, and
+I<ScalingAdjustment>.
 
 
 =head2 ScalingAdjustment => Int
@@ -252,14 +239,17 @@ scale up while negative values scale down.
 
 =head2 Status => Str
 
-  Current status of the scaling policy. The scaling policy is only in
-force when in an C<ACTIVE> status.
+  Current status of the scaling policy. The scaling policy can be in
+force only when in an C<ACTIVE> status. Scaling policies can be
+suspended for individual fleets (see StopFleetActions; if suspended for
+a fleet, the policy status does not change. View a fleet's stopped
+actions by calling DescribeFleetCapacity.
 
 =over
 
 =item *
 
-B<ACTIVE> -- The scaling policy is currently in force.
+B<ACTIVE> -- The scaling policy can be used for auto-scaling a fleet.
 
 =item *
 
@@ -290,6 +280,11 @@ removed and recreated.
 
 =back
 
+
+
+=head2 TargetConfiguration => L<Paws::GameLift::TargetConfiguration>
+
+  Object that contains settings for a target-based scaling policy.
 
 
 =head2 Threshold => Num

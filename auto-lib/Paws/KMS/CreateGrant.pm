@@ -24,17 +24,35 @@ Paws::KMS::CreateGrant - Arguments for method CreateGrant on L<Paws::KMS>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateGrant on the 
-AWS Key Management Service service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateGrant on the
+L<AWS Key Management Service|Paws::KMS> service. Use the attributes of this class
 as arguments to method CreateGrant.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateGrant.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateGrant(Att1 => $value1, Att2 => $value2, ...);
+    my $kms = Paws->service('KMS');
+   # To create a grant
+   # The following example creates a grant that allows the specified IAM role to
+   # encrypt data with the specified customer master key (CMK).
+    my $CreateGrantResponse = $kms->CreateGrant(
+      {
+        'GranteePrincipal' => 'arn:aws:iam::111122223333:role/ExampleRole',
+        'KeyId' =>
+'arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab',
+        'Operations' => [ 'Encrypt', 'Decrypt' ]
+      }
+    );
+
+    # Results:
+    my $GrantId    = $CreateGrantResponse->GrantId;
+    my $GrantToken = $CreateGrantResponse->GrantToken;
+
+    # Returns a L<Paws::KMS::CreateGrantResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/CreateGrant>
 
 =head1 ATTRIBUTES
 

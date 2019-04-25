@@ -21,17 +21,36 @@ Paws::CodePipeline::PutActionRevision - Arguments for method PutActionRevision o
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutActionRevision on the 
-AWS CodePipeline service. Use the attributes of this class
+This class represents the parameters used for calling the method PutActionRevision on the
+L<AWS CodePipeline|Paws::CodePipeline> service. Use the attributes of this class
 as arguments to method PutActionRevision.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutActionRevision.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->PutActionRevision(Att1 => $value1, Att2 => $value2, ...);
+    my $codepipeline = Paws->service('CodePipeline');
+    my $PutActionRevisionOutput = $codepipeline->PutActionRevision(
+      ActionName     => 'MyActionName',
+      ActionRevision => {
+        Created          => '1970-01-01T01:00:00',
+        RevisionChangeId => 'MyRevisionChangeIdentifier',    # min: 1, max: 100
+        RevisionId       => 'MyRevision',                    # min: 1, max: 1500
+
+      },
+      PipelineName => 'MyPipelineName',
+      StageName    => 'MyStageName',
+
+    );
+
+    # Results:
+    my $NewRevision         = $PutActionRevisionOutput->NewRevision;
+    my $PipelineExecutionId = $PutActionRevisionOutput->PipelineExecutionId;
+
+    # Returns a L<Paws::CodePipeline::PutActionRevisionOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline/PutActionRevision>
 
 =head1 ATTRIBUTES
 

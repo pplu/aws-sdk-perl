@@ -4,6 +4,7 @@ package Paws::EC2::NetworkAcl;
   has Entries => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkAclEntry]', request_name => 'entrySet', traits => ['NameInRequest']);
   has IsDefault => (is => 'ro', isa => 'Bool', request_name => 'default', traits => ['NameInRequest']);
   has NetworkAclId => (is => 'ro', isa => 'Str', request_name => 'networkAclId', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
@@ -59,6 +60,11 @@ This class has no description
 =head2 NetworkAclId => Str
 
   The ID of the network ACL.
+
+
+=head2 OwnerId => Str
+
+  The ID of the AWS account that owns the network ACL.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]

@@ -24,17 +24,35 @@ Paws::ElastiCache::DescribeReservedCacheNodesOfferings - Arguments for method De
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeReservedCacheNodesOfferings on the 
-Amazon ElastiCache service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeReservedCacheNodesOfferings on the
+L<Amazon ElastiCache|Paws::ElastiCache> service. Use the attributes of this class
 as arguments to method DescribeReservedCacheNodesOfferings.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReservedCacheNodesOfferings.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeReservedCacheNodesOfferings(Att1 => $value1, Att2 => $value2, ...);
+    my $elasticache = Paws->service('ElastiCache');
+    my $ReservedCacheNodesOfferingMessage =
+      $elasticache->DescribeReservedCacheNodesOfferings(
+      CacheNodeType                => 'MyString',    # OPTIONAL
+      Duration                     => 'MyString',    # OPTIONAL
+      Marker                       => 'MyString',    # OPTIONAL
+      MaxRecords                   => 1,             # OPTIONAL
+      OfferingType                 => 'MyString',    # OPTIONAL
+      ProductDescription           => 'MyString',    # OPTIONAL
+      ReservedCacheNodesOfferingId => 'MyString',    # OPTIONAL
+      );
+
+    # Results:
+    my $Marker = $ReservedCacheNodesOfferingMessage->Marker;
+    my $ReservedCacheNodesOfferings =
+      $ReservedCacheNodesOfferingMessage->ReservedCacheNodesOfferings;
+
+    # Returns a L<Paws::ElastiCache::ReservedCacheNodesOfferingMessage> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/DescribeReservedCacheNodesOfferings>
 
 =head1 ATTRIBUTES
 
@@ -108,6 +126,10 @@ Current generation:
 B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
 C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
+B<R4 node types;> C<cache.r4.large>, C<cache.r4.xlarge>,
+C<cache.r4.2xlarge>, C<cache.r4.4xlarge>, C<cache.r4.8xlarge>,
+C<cache.r4.16xlarge>
+
 =item *
 
 Previous generation: (not recommended)
@@ -145,13 +167,27 @@ T2 instances.
 
 =back
 
-For a complete listing of node types and specifications, see Amazon
-ElastiCache Product Features and Details
-(http://aws.amazon.com/elasticache/details) and either Cache Node
-Type-Specific Parameters for Memcached
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
-or Cache Node Type-Specific Parameters for Redis
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific).
+For a complete listing of node types and specifications, see:
+
+=over
+
+=item *
+
+Amazon ElastiCache Product Features and Details
+(http://aws.amazon.com/elasticache/details)
+
+=item *
+
+Cache Node Type-Specific Parameters for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
+
+=item *
+
+Cache Node Type-Specific Parameters for Redis
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific)
+
+=back
+
 
 
 

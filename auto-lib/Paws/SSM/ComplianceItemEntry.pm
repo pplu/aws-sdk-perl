@@ -67,8 +67,8 @@ NON_COMPLIANT.
 
   The title of the compliance item. For example, if the compliance item
 is a Windows patch, the title could be the title of the KB article for
-the patch. Here's an example: Security Update for Active Directory
-Federation Services.
+the patch; for example: Security Update for Active Directory Federation
+Services.
 
 
 

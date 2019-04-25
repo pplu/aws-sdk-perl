@@ -2,9 +2,9 @@
 package Paws::Glacier::UploadArchive;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'archiveDescription');
+  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-archive-description');
   has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'checksum');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash');
   has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -23,17 +23,36 @@ Paws::Glacier::UploadArchive - Arguments for method UploadArchive on L<Paws::Gla
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UploadArchive on the 
-Amazon Glacier service. Use the attributes of this class
+This class represents the parameters used for calling the method UploadArchive on the
+L<Amazon Glacier|Paws::Glacier> service. Use the attributes of this class
 as arguments to method UploadArchive.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UploadArchive.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->UploadArchive(Att1 => $value1, Att2 => $value2, ...);
+    my $glacier = Paws->service('Glacier');
+    # To upload an archive
+    # The example adds an archive to a vault.
+    my $ArchiveCreationOutput = $glacier->UploadArchive(
+      {
+        'AccountId'          => '-',
+        'ArchiveDescription' => '',
+        'Body'               => 'example-data-to-upload',
+        'Checksum'           => '',
+        'VaultName'          => 'my-vault'
+      }
+    );
+
+    # Results:
+    my $archiveId = $ArchiveCreationOutput->archiveId;
+    my $checksum  = $ArchiveCreationOutput->checksum;
+    my $location  = $ArchiveCreationOutput->location;
+
+    # Returns a L<Paws::Glacier::ArchiveCreationOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/UploadArchive>
 
 =head1 ATTRIBUTES
 

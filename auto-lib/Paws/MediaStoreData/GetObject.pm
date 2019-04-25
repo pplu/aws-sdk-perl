@@ -20,17 +20,34 @@ Paws::MediaStoreData::GetObject - Arguments for method GetObject on L<Paws::Medi
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetObject on the 
-AWS Elemental MediaStore Data Plane service. Use the attributes of this class
+This class represents the parameters used for calling the method GetObject on the
+L<AWS Elemental MediaStore Data Plane|Paws::MediaStoreData> service. Use the attributes of this class
 as arguments to method GetObject.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetObject.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->GetObject(Att1 => $value1, Att2 => $value2, ...);
+    my $data.mediastore = Paws->service('MediaStoreData');
+    my $GetObjectResponse = $data . mediastore->GetObject(
+      Path  => 'MyPathNaming',
+      Range => 'MyRangePattern',    # OPTIONAL
+    );
+
+    # Results:
+    my $Body          = $GetObjectResponse->Body;
+    my $CacheControl  = $GetObjectResponse->CacheControl;
+    my $ContentLength = $GetObjectResponse->ContentLength;
+    my $ContentRange  = $GetObjectResponse->ContentRange;
+    my $ContentType   = $GetObjectResponse->ContentType;
+    my $ETag          = $GetObjectResponse->ETag;
+    my $LastModified  = $GetObjectResponse->LastModified;
+    my $StatusCode    = $GetObjectResponse->StatusCode;
+
+    # Returns a L<Paws::MediaStoreData::GetObjectResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/data.mediastore/GetObject>
 
 =head1 ATTRIBUTES
 

@@ -22,17 +22,34 @@ Paws::Route53::CreateVPCAssociationAuthorization - Arguments for method CreateVP
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateVPCAssociationAuthorization on the 
-Amazon Route 53 service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateVPCAssociationAuthorization on the
+L<Amazon Route 53|Paws::Route53> service. Use the attributes of this class
 as arguments to method CreateVPCAssociationAuthorization.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateVPCAssociationAuthorization.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateVPCAssociationAuthorization(Att1 => $value1, Att2 => $value2, ...);
+    my $route53 = Paws->service('Route53');
+    my $CreateVPCAssociationAuthorizationResponse =
+      $route53->CreateVPCAssociationAuthorization(
+      HostedZoneId => 'MyResourceId',
+      VPC          => {
+        VPCId     => 'MyVPCId',    # max: 1024; OPTIONAL
+        VPCRegion => 'us-east-1'
+        , # values: us-east-1, us-east-2, us-west-1, us-west-2, eu-west-1, eu-west-2, eu-west-3, eu-central-1, ap-southeast-1, ap-southeast-2, ap-south-1, ap-northeast-1, ap-northeast-2, ap-northeast-3, eu-north-1, sa-east-1, ca-central-1, cn-north-1min: 1, max: 64; OPTIONAL
+      },
+
+      );
+
+    # Results:
+    my $HostedZoneId = $CreateVPCAssociationAuthorizationResponse->HostedZoneId;
+    my $VPC          = $CreateVPCAssociationAuthorizationResponse->VPC;
+
+ # Returns a L<Paws::Route53::CreateVPCAssociationAuthorizationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/CreateVPCAssociationAuthorization>
 
 =head1 ATTRIBUTES
 

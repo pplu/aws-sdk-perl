@@ -22,17 +22,29 @@ Paws::AutoScaling::ExecutePolicy - Arguments for method ExecutePolicy on L<Paws:
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ExecutePolicy on the 
-Auto Scaling service. Use the attributes of this class
+This class represents the parameters used for calling the method ExecutePolicy on the
+L<Auto Scaling|Paws::AutoScaling> service. Use the attributes of this class
 as arguments to method ExecutePolicy.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ExecutePolicy.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ExecutePolicy(Att1 => $value1, Att2 => $value2, ...);
+    my $autoscaling = Paws->service('AutoScaling');
+    # To execute an Auto Scaling policy
+    # This example executes the specified Auto Scaling policy for the specified
+    # Auto Scaling group.
+    $autoscaling->ExecutePolicy(
+      {
+        'AutoScalingGroupName' => 'my-auto-scaling-group',
+        'HonorCooldown'        => 1,
+        'PolicyName'           => 'ScaleIn'
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling/ExecutePolicy>
 
 =head1 ATTRIBUTES
 
@@ -54,16 +66,14 @@ supported otherwise.
 
 =head2 HonorCooldown => Bool
 
-If this parameter is true, Auto Scaling waits for the cooldown period
-to complete before executing the policy. Otherwise, Auto Scaling
-executes the policy without waiting for the cooldown period to
-complete.
+Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period
+to complete before executing the policy.
 
 This parameter is not supported if the policy type is C<StepScaling>.
 
-For more information, see Auto Scaling Cooldowns
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
-in the I<Auto Scaling User Guide>.
+For more information, see Scaling Cooldowns
+(http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) in
+the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 

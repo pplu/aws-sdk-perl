@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::SSHPub
 Contains information about an SSH public key.
 
 This data type is used as a response element in the GetSSHPublicKey and
-UploadSSHPublicKey actions.
+UploadSSHPublicKey operations.
 
 =head1 ATTRIBUTES
 
@@ -61,9 +61,9 @@ UploadSSHPublicKey actions.
 
 =head2 B<REQUIRED> Status => Str
 
-  The status of the SSH public key. C<Active> means the key can be used
-for authentication with an AWS CodeCommit repository. C<Inactive> means
-the key cannot be used.
+  The status of the SSH public key. C<Active> means that the key can be
+used for authentication with an AWS CodeCommit repository. C<Inactive>
+means that the key cannot be used.
 
 
 =head2 UploadDate => Str

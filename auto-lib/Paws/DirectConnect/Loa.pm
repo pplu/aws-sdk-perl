@@ -17,12 +17,13 @@ Paws::DirectConnect::Loa
 
 =head2 LoaContent => Str
 
-
+The binary contents of the LOA-CFA document.
 
 
 =head2 LoaContentType => Str
 
-
+The standard media type for the LOA-CFA document. The only supported
+value is application/pdf.
 
 Valid values are: C<"application/pdf">
 =head2 _request_id => Str

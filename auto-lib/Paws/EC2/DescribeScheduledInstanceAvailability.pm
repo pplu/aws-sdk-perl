@@ -25,17 +25,43 @@ Paws::EC2::DescribeScheduledInstanceAvailability - Arguments for method Describe
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeScheduledInstanceAvailability on the 
-Amazon Elastic Compute Cloud service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeScheduledInstanceAvailability on the
+L<Amazon Elastic Compute Cloud|Paws::EC2> service. Use the attributes of this class
 as arguments to method DescribeScheduledInstanceAvailability.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeScheduledInstanceAvailability.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeScheduledInstanceAvailability(Att1 => $value1, Att2 => $value2, ...);
+    my $ec2 = Paws->service('EC2');
+    # To describe an available schedule
+    # This example describes a schedule that occurs every week on Sunday,
+    # starting on the specified date. Note that the output contains a single
+    # schedule as an example.
+    my $DescribeScheduledInstanceAvailabilityResult =
+      $ec2->DescribeScheduledInstanceAvailability(
+      {
+        'FirstSlotStartTimeRange' => {
+          'EarliestTime' => '2016-01-31T00:00:00Z',
+          'LatestTime'   => '2016-01-31T04:00:00Z'
+        },
+        'Recurrence' => {
+          'Frequency'      => 'Weekly',
+          'Interval'       => 1,
+          'OccurrenceDays' => [1]
+        }
+      }
+      );
+
+    # Results:
+    my $ScheduledInstanceAvailabilitySet =
+      $DescribeScheduledInstanceAvailabilityResult
+      ->ScheduledInstanceAvailabilitySet;
+
+   # Returns a L<Paws::EC2::DescribeScheduledInstanceAvailabilityResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeScheduledInstanceAvailability>
 
 =head1 ATTRIBUTES
 

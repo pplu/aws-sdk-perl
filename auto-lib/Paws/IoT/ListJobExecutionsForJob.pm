@@ -22,17 +22,31 @@ Paws::IoT::ListJobExecutionsForJob - Arguments for method ListJobExecutionsForJo
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListJobExecutionsForJob on the 
-AWS IoT service. Use the attributes of this class
+This class represents the parameters used for calling the method ListJobExecutionsForJob on the
+L<AWS IoT|Paws::IoT> service. Use the attributes of this class
 as arguments to method ListJobExecutionsForJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListJobExecutionsForJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ListJobExecutionsForJob(Att1 => $value1, Att2 => $value2, ...);
+    my $iot = Paws->service('IoT');
+    my $ListJobExecutionsForJobResponse = $iot->ListJobExecutionsForJob(
+      JobId      => 'MyJobId',
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
+      Status     => 'QUEUED',         # OPTIONAL
+    );
+
+    # Results:
+    my $ExecutionSummaries =
+      $ListJobExecutionsForJobResponse->ExecutionSummaries;
+    my $NextToken = $ListJobExecutionsForJobResponse->NextToken;
+
+    # Returns a L<Paws::IoT::ListJobExecutionsForJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/ListJobExecutionsForJob>
 
 =head1 ATTRIBUTES
 
@@ -59,7 +73,7 @@ The token to retrieve the next set of results.
 
 The status of the job.
 
-Valid values are: C<"QUEUED">, C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">, C<"REJECTED">, C<"REMOVED">, C<"CANCELED">
+Valid values are: C<"QUEUED">, C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">, C<"TIMED_OUT">, C<"REJECTED">, C<"REMOVED">, C<"CANCELED">
 
 
 =head1 SEE ALSO

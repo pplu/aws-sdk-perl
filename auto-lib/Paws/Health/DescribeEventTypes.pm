@@ -21,17 +21,41 @@ Paws::Health::DescribeEventTypes - Arguments for method DescribeEventTypes on L<
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeEventTypes on the 
-AWS Health APIs and Notifications service. Use the attributes of this class
+This class represents the parameters used for calling the method DescribeEventTypes on the
+L<AWS Health APIs and Notifications|Paws::Health> service. Use the attributes of this class
 as arguments to method DescribeEventTypes.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEventTypes.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->DescribeEventTypes(Att1 => $value1, Att2 => $value2, ...);
+    my $health = Paws->service('Health');
+    my $DescribeEventTypesResponse = $health->DescribeEventTypes(
+      Filter => {
+        EventTypeCategories => [
+          'issue',
+          ... # values: issue, accountNotification, scheduledChangemin: 3, max: 255
+        ],    # min: 1, max: 10; OPTIONAL
+        EventTypeCodes => [
+          'MyeventTypeCode', ...    # min: 3, max: 100
+        ],                          # min: 1, max: 10; OPTIONAL
+        Services => [
+          'Myservice', ...          # min: 2, max: 30
+        ],                          # min: 1, max: 10; OPTIONAL
+      },    # OPTIONAL
+      Locale     => 'Mylocale',       # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MynextToken',    # OPTIONAL
+    );
+
+    # Results:
+    my $EventTypes = $DescribeEventTypesResponse->EventTypes;
+    my $NextToken  = $DescribeEventTypesResponse->NextToken;
+
+    # Returns a L<Paws::Health::DescribeEventTypesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/health/DescribeEventTypes>
 
 =head1 ATTRIBUTES
 

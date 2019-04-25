@@ -77,6 +77,11 @@ ASCII character range.
   The types of policies that are currently enabled for the root and
 therefore can be attached to the root or to its OUs or accounts.
 
+Even if a policy type is shown as available in the organization, you
+can separately enable and disable them at the root level by using
+EnablePolicyType and DisablePolicyType. Use DescribeOrganization to see
+the availability of the policy types in that organization.
+
 
 
 =head1 SEE ALSO

@@ -22,17 +22,31 @@ Paws::SSM::CreateActivation - Arguments for method CreateActivation on L<Paws::S
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateActivation on the 
-Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateActivation on the
+L<Amazon Simple Systems Manager (SSM)|Paws::SSM> service. Use the attributes of this class
 as arguments to method CreateActivation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateActivation.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateActivation(Att1 => $value1, Att2 => $value2, ...);
+    my $ssm = Paws->service('SSM');
+    my $CreateActivationResult = $ssm->CreateActivation(
+      IamRole             => 'MyIamRole',
+      DefaultInstanceName => 'MyDefaultInstanceName',      # OPTIONAL
+      Description         => 'MyActivationDescription',    # OPTIONAL
+      ExpirationDate      => '1970-01-01T01:00:00',        # OPTIONAL
+      RegistrationLimit   => 1,                            # OPTIONAL
+    );
+
+    # Results:
+    my $ActivationCode = $CreateActivationResult->ActivationCode;
+    my $ActivationId   = $CreateActivationResult->ActivationId;
+
+    # Returns a L<Paws::SSM::CreateActivationResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/CreateActivation>
 
 =head1 ATTRIBUTES
 
@@ -43,12 +57,16 @@ The name of the registered, managed instance as it will appear in the
 Amazon EC2 console or when you use the AWS command line tools to list
 EC2 resources.
 
+Do not enter personally identifiable information in this field.
+
 
 
 =head2 Description => Str
 
-A userdefined description of the resource that you want to register
+A user-defined description of the resource that you want to register
 with Amazon EC2.
+
+Do not enter personally identifiable information in this field.
 
 
 

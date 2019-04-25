@@ -5,6 +5,7 @@ package Paws::CodePipeline::ActionDeclaration;
   has InputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::InputArtifact]', request_name => 'inputArtifacts', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::OutputArtifact]', request_name => 'outputArtifacts', traits => ['NameInRequest']);
+  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has RunOrder => (is => 'ro', isa => 'Int', request_name => 'runOrder', traits => ['NameInRequest']);
 1;
@@ -67,6 +68,11 @@ or build artifact.
 
   The name or ID of the result of the action declaration, such as a test
 or build artifact.
+
+
+=head2 Region => Str
+
+  The action declaration's AWS Region, such as us-east-1.
 
 
 =head2 RoleArn => Str

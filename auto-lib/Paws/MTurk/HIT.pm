@@ -153,10 +153,11 @@ abandoned.
 
 =head2 QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]
 
-  A condition that a Worker's Qualifications must meet in order to accept
+  Conditions that a Worker's Qualifications must meet in order to accept
 the HIT. A HIT can have between zero and ten Qualification
-requirements. All requirements must be met by a Worker's Qualifications
-for the Worker to accept the HIT.
+requirements. All requirements must be met in order for a Worker to
+accept the HIT. Additionally, other actions can be restricted using the
+C<ActionsGuarded> field on each C<QualificationRequirement> structure.
 
 
 =head2 Question => Str

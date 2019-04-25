@@ -8,10 +8,12 @@ package Paws::MQ::CreateBrokerInput;
   has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
   has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
   has HostInstanceType => (is => 'ro', isa => 'Str', request_name => 'hostInstanceType', traits => ['NameInRequest']);
+  has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', request_name => 'logs', traits => ['NameInRequest']);
   has MaintenanceWindowStartTime => (is => 'ro', isa => 'Paws::MQ::WeeklyStartTime', request_name => 'maintenanceWindowStartTime', traits => ['NameInRequest']);
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', request_name => 'publiclyAccessible', traits => ['NameInRequest']);
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::MQ::User]', request_name => 'users', traits => ['NameInRequest']);
 1;
 
@@ -80,11 +82,7 @@ idempotency.
 
 =head2 DeploymentMode => Str
 
-  Required. The deployment mode of the broker. Possible values:
-SINGLE_INSTANCE, ACTIVE_STANDBY_MULTI_AZ SINGLE_INSTANCE creates a
-single-instance broker in a single Availability Zone.
-ACTIVE_STANDBY_MULTI_AZ creates an active/standby broker for high
-availability.
+  Required. The deployment mode of the broker.
 
 
 =head2 EngineType => Str
@@ -95,14 +93,19 @@ supports only ACTIVEMQ.
 
 =head2 EngineVersion => Str
 
-  Required. The version of the broker engine. Note: Currently, Amazon MQ
-supports only 5.15.0.
+  Required. The version of the broker engine. For a list of supported
+engine versions, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
 =head2 HostInstanceType => Str
 
-  Required. The broker's instance type. Possible values: mq.t2.micro,
-mq.m4.large
+  Required. The broker's instance type.
+
+
+=head2 Logs => L<Paws::MQ::Logs>
+
+  Enables Amazon CloudWatch logging for brokers.
 
 
 =head2 MaintenanceWindowStartTime => L<Paws::MQ::WeeklyStartTime>
@@ -118,17 +121,21 @@ hosts the broker's subnets.
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-  Required. The list of rules (1 minimum, 125 maximum) that authorize
-connections to brokers.
+  The list of rules (1 minimum, 125 maximum) that authorize connections
+to brokers.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-  Required. The list of groups (2 maximum) that define which subnets and
-IP ranges the broker can use from different Availability Zones. A
-SINGLE_INSTANCE deployment requires one subnet (for example, the
-default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment requires two
-subnets.
+  The list of groups (2 maximum) that define which subnets and IP ranges
+the broker can use from different Availability Zones. A SINGLE_INSTANCE
+deployment requires one subnet (for example, the default subnet). An
+ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.
+
+
+=head2 Tags => L<Paws::MQ::__mapOf__string>
+
+  Create tags when creating the broker.
 
 
 =head2 Users => ArrayRef[L<Paws::MQ::User>]

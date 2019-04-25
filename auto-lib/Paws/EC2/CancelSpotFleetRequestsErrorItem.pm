@@ -1,7 +1,7 @@
 package Paws::EC2::CancelSpotFleetRequestsErrorItem;
   use Moose;
-  has Error => (is => 'ro', isa => 'Paws::EC2::CancelSpotFleetRequestsError', request_name => 'error', traits => ['NameInRequest'], required => 1);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest'], required => 1);
+  has Error => (is => 'ro', isa => 'Paws::EC2::CancelSpotFleetRequestsError', request_name => 'error', traits => ['NameInRequest']);
+  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +37,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Error => L<Paws::EC2::CancelSpotFleetRequestsError>
+=head2 Error => L<Paws::EC2::CancelSpotFleetRequestsError>
 
   The error.
 
 
-=head2 B<REQUIRED> SpotFleetRequestId => Str
+=head2 SpotFleetRequestId => Str
 
   The ID of the Spot Fleet request.
 

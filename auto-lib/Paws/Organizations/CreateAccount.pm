@@ -21,17 +21,29 @@ Paws::Organizations::CreateAccount - Arguments for method CreateAccount on L<Paw
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateAccount on the 
-AWS Organizations service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateAccount on the
+L<AWS Organizations|Paws::Organizations> service. Use the attributes of this class
 as arguments to method CreateAccount.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAccount.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateAccount(Att1 => $value1, Att2 => $value2, ...);
+    my $organizations = Paws->service('Organizations');
+    my $CreateAccountResponse = $organizations->CreateAccount(
+      AccountName            => 'MyAccountName',
+      Email                  => 'MyEmail',
+      IamUserAccessToBilling => 'ALLOW',           # OPTIONAL
+      RoleName               => 'MyRoleName',      # OPTIONAL
+    );
+
+    # Results:
+    my $CreateAccountStatus = $CreateAccountResponse->CreateAccountStatus;
+
+    # Returns a L<Paws::Organizations::CreateAccountResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations/CreateAccount>
 
 =head1 ATTRIBUTES
 
@@ -47,7 +59,7 @@ The friendly name of the member account.
 The email address of the owner to assign to the new member account.
 This email address must not already be associated with another AWS
 account. You must use a valid email address to complete account
-creation. You cannot access the root user of the account or remove an
+creation. You can't access the root user of the account or remove an
 account that was created with an invalid email address.
 
 
@@ -56,15 +68,15 @@ account that was created with an invalid email address.
 
 If set to C<ALLOW>, the new account enables IAM users to access account
 billing information I<if> they have the required permissions. If set to
-C<DENY>, then only the root user of the new account can access account
+C<DENY>, only the root user of the new account can access account
 billing information. For more information, see Activating Access to the
 Billing and Cost Management Console
 (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
 in the I<AWS Billing and Cost Management User Guide>.
 
-If you do not specify this parameter, the value defaults to ALLOW, and
-IAM users and roles with the required permissions can access billing
-information for the new account.
+If you don't specify this parameter, the value defaults to C<ALLOW>,
+and IAM users and roles with the required permissions can access
+billing information for the new account.
 
 Valid values are: C<"ALLOW">, C<"DENY">
 
@@ -72,13 +84,13 @@ Valid values are: C<"ALLOW">, C<"DENY">
 
 (Optional)
 
-The name of an IAM role that Organizations automatically preconfigures
-in the new member account. This role trusts the master account,
-allowing users in the master account to assume the role, as permitted
-by the master account administrator. The role has administrator
-permissions in the new member account.
+The name of an IAM role that AWS Organizations automatically
+preconfigures in the new member account. This role trusts the master
+account, allowing users in the master account to assume the role, as
+permitted by the master account administrator. The role has
+administrator permissions in the new member account.
 
-If you do not specify this parameter, the role name defaults to
+If you don't specify this parameter, the role name defaults to
 C<OrganizationAccountAccessRole>.
 
 For more information about how to use this role to access the member

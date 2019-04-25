@@ -41,7 +41,9 @@ detection.
 
 =head2 LanguageCode => Str
 
-  The RFC 5646 language code for the dominant language.
+  The RFC 5646 language code for the dominant language. For more
+information about RFC 5646, see Tags for Identifying Languages
+(https://tools.ietf.org/html/rfc5646) on the I<IETF Tools> web site.
 
 
 =head2 Score => Num

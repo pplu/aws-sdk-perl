@@ -20,24 +20,44 @@ Paws::Pinpoint::CreateImportJob - Arguments for method CreateImportJob on L<Paws
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateImportJob on the 
-Amazon Pinpoint service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateImportJob on the
+L<Amazon Pinpoint|Paws::Pinpoint> service. Use the attributes of this class
 as arguments to method CreateImportJob.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateImportJob.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateImportJob(Att1 => $value1, Att2 => $value2, ...);
+    my $pinpoint = Paws->service('Pinpoint');
+    my $CreateImportJobResponse = $pinpoint->CreateImportJob(
+      ApplicationId    => 'My__string',
+      ImportJobRequest => {
+        DefineSegment     => 1,              # OPTIONAL
+        ExternalId        => 'My__string',
+        Format            => 'CSV',          # values: CSV, JSON; OPTIONAL
+        RegisterEndpoints => 1,              # OPTIONAL
+        RoleArn           => 'My__string',
+        S3Url             => 'My__string',
+        SegmentId         => 'My__string',
+        SegmentName       => 'My__string',
+      },
+
+    );
+
+    # Results:
+    my $ImportJobResponse = $CreateImportJobResponse->ImportJobResponse;
+
+    # Returns a L<Paws::Pinpoint::CreateImportJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/CreateImportJob>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique ID of your Amazon Pinpoint application.
 
 
 

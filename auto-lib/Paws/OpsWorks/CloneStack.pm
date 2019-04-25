@@ -39,17 +39,62 @@ Paws::OpsWorks::CloneStack - Arguments for method CloneStack on L<Paws::OpsWorks
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CloneStack on the 
-AWS OpsWorks service. Use the attributes of this class
+This class represents the parameters used for calling the method CloneStack on the
+L<AWS OpsWorks|Paws::OpsWorks> service. Use the attributes of this class
 as arguments to method CloneStack.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CloneStack.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CloneStack(Att1 => $value1, Att2 => $value2, ...);
+    my $opsworks = Paws->service('OpsWorks');
+    my $CloneStackResult = $opsworks->CloneStack(
+      ServiceRoleArn => 'MyString',
+      SourceStackId  => 'MyString',
+      AgentVersion   => 'MyString',    # OPTIONAL
+      Attributes     => {
+        'Color' => 'MyString',         # key: values: Color
+      },    # OPTIONAL
+      ChefConfiguration => {
+        BerkshelfVersion => 'MyString',
+        ManageBerkshelf  => 1,            # OPTIONAL
+      },    # OPTIONAL
+      CloneAppIds          => [ 'MyString', ... ],    # OPTIONAL
+      ClonePermissions     => 1,                      # OPTIONAL
+      ConfigurationManager => {
+        Name    => 'MyString',
+        Version => 'MyString',
+      },                                              # OPTIONAL
+      CustomCookbooksSource => {
+        Password => 'MyString',
+        Revision => 'MyString',
+        SshKey   => 'MyString',
+        Type     => 'git',        # values: git, svn, archive, s3; OPTIONAL
+        Url      => 'MyString',
+        Username => 'MyString',
+      },    # OPTIONAL
+      CustomJson                => 'MyString',    # OPTIONAL
+      DefaultAvailabilityZone   => 'MyString',    # OPTIONAL
+      DefaultInstanceProfileArn => 'MyString',    # OPTIONAL
+      DefaultOs                 => 'MyString',    # OPTIONAL
+      DefaultRootDeviceType     => 'ebs',         # OPTIONAL
+      DefaultSshKeyName         => 'MyString',    # OPTIONAL
+      DefaultSubnetId           => 'MyString',    # OPTIONAL
+      HostnameTheme             => 'MyString',    # OPTIONAL
+      Name                      => 'MyString',    # OPTIONAL
+      Region                    => 'MyString',    # OPTIONAL
+      UseCustomCookbooks        => 1,             # OPTIONAL
+      UseOpsworksSecurityGroups => 1,             # OPTIONAL
+      VpcId                     => 'MyString',    # OPTIONAL
+    );
+
+    # Results:
+    my $StackId = $CloneStackResult->StackId;
+
+    # Returns a L<Paws::OpsWorks::CloneStackResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/opsworks/CloneStack>
 
 =head1 ATTRIBUTES
 
@@ -137,8 +182,8 @@ string should be in the following format:
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
-For more information on custom JSON, see Use Custom JSON to Modify the
-Stack Configuration Attributes
+For more information about custom JSON, see Use Custom JSON to Modify
+the Stack Configuration Attributes
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html)
 
 
@@ -172,8 +217,9 @@ following.
 =item *
 
 A supported Linux operating system: An Amazon Linux version, such as
-C<Amazon Linux 2017.03>, C<Amazon Linux 2016.09>, C<Amazon Linux
-2016.03>, C<Amazon Linux 2015.09>, or C<Amazon Linux 2015.03>.
+C<Amazon Linux 2017.09>, C<Amazon Linux 2017.03>, C<Amazon Linux
+2016.09>, C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon
+Linux 2015.03>.
 
 =item *
 
@@ -198,14 +244,14 @@ SQL Server Web>.
 =item *
 
 A custom AMI: C<Custom>. You specify the custom AMI you want to use
-when you create instances. For more information on how to use custom
+when you create instances. For more information about how to use custom
 AMIs with OpsWorks, see Using Custom AMIs
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 =back
 
 The default option is the parent stack's operating system. For more
-information on the supported operating systems, see AWS OpsWorks Stacks
+information about supported operating systems, see AWS OpsWorks Stacks
 Operating Systems
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
@@ -432,10 +478,10 @@ You must specify a value for C<DefaultSubnetId>.
 
 =back
 
-For more information on how to use AWS OpsWorks Stacks with a VPC, see
-Running a Stack in a VPC
+For more information about how to use AWS OpsWorks Stacks with a VPC,
+see Running a Stack in a VPC
 (http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
-For more information on default VPC and EC2 Classic, see Supported
+For more information about default VPC and EC2 Classic, see Supported
 Platforms
 (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 

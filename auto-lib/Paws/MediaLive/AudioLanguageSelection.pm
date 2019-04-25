@@ -1,6 +1,6 @@
 package Paws::MediaLive::AudioLanguageSelection;
   use Moose;
-  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
+  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest'], required => 1);
   has LanguageSelectionPolicy => (is => 'ro', isa => 'Str', request_name => 'languageSelectionPolicy', traits => ['NameInRequest']);
 1;
 
@@ -37,7 +37,7 @@ Placeholder documentation for AudioLanguageSelection
 =head1 ATTRIBUTES
 
 
-=head2 LanguageCode => Str
+=head2 B<REQUIRED> LanguageCode => Str
 
   Selects a specific three-letter language code from within an audio
 source.

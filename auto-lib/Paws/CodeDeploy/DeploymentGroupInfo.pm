@@ -12,6 +12,7 @@ package Paws::CodeDeploy::DeploymentGroupInfo;
   has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', request_name => 'deploymentStyle', traits => ['NameInRequest']);
   has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', request_name => 'ec2TagFilters', traits => ['NameInRequest']);
   has Ec2TagSet => (is => 'ro', isa => 'Paws::CodeDeploy::EC2TagSet', request_name => 'ec2TagSet', traits => ['NameInRequest']);
+  has EcsServices => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ECSService]', request_name => 'ecsServices', traits => ['NameInRequest']);
   has LastAttemptedDeployment => (is => 'ro', isa => 'Paws::CodeDeploy::LastDeploymentInfo', request_name => 'lastAttemptedDeployment', traits => ['NameInRequest']);
   has LastSuccessfulDeployment => (is => 'ro', isa => 'Paws::CodeDeploy::LastDeploymentInfo', request_name => 'lastSuccessfulDeployment', traits => ['NameInRequest']);
   has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', request_name => 'loadBalancerInfo', traits => ['NameInRequest']);
@@ -118,8 +119,17 @@ EC2 instances with any of the specified tags.
 =head2 Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>
 
   Information about groups of tags applied to an EC2 instance. The
-deployment group includes only EC2 instances identified by all the tag
-groups. Cannot be used in the same call as ec2TagFilters.
+deployment group includes only EC2 instances identified by all of the
+tag groups. Cannot be used in the same call as ec2TagFilters.
+
+
+=head2 EcsServices => ArrayRef[L<Paws::CodeDeploy::ECSService>]
+
+  The target Amazon ECS services in the deployment group. This applies
+only to deployment groups that use the Amazon ECS compute platform. A
+target Amazon ECS service is specified as an Amazon ECS cluster and
+service name pair using the format
+C<E<lt>clusternameE<gt>:E<lt>servicenameE<gt>>.
 
 
 =head2 LastAttemptedDeployment => L<Paws::CodeDeploy::LastDeploymentInfo>

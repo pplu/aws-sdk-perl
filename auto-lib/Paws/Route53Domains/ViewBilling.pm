@@ -21,17 +21,30 @@ Paws::Route53Domains::ViewBilling - Arguments for method ViewBilling on L<Paws::
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ViewBilling on the 
-Amazon Route 53 Domains service. Use the attributes of this class
+This class represents the parameters used for calling the method ViewBilling on the
+L<Amazon Route 53 Domains|Paws::Route53Domains> service. Use the attributes of this class
 as arguments to method ViewBilling.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ViewBilling.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->ViewBilling(Att1 => $value1, Att2 => $value2, ...);
+    my $route53domains = Paws->service('Route53Domains');
+    my $ViewBillingResponse = $route53domains->ViewBilling(
+      End      => '1970-01-01T01:00:00',    # OPTIONAL
+      Marker   => 'MyPageMarker',           # OPTIONAL
+      MaxItems => 1,                        # OPTIONAL
+      Start    => '1970-01-01T01:00:00',    # OPTIONAL
+    );
+
+    # Results:
+    my $BillingRecords = $ViewBillingResponse->BillingRecords;
+    my $NextPageMarker = $ViewBillingResponse->NextPageMarker;
+
+    # Returns a L<Paws::Route53Domains::ViewBillingResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53domains/ViewBilling>
 
 =head1 ATTRIBUTES
 
@@ -39,7 +52,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 End => Str
 
 The end date and time for the time period for which you want a list of
-billing records. Specify the date in Unix time format.
+billing records. Specify the date and time in Coordinated Universal
+time (UTC).
 
 
 
@@ -69,7 +83,8 @@ Default: 20
 =head2 Start => Str
 
 The beginning date and time for the time period for which you want a
-list of billing records. Specify the date in Unix time format.
+list of billing records. Specify the date and time in Coordinated
+Universal time (UTC).
 
 
 

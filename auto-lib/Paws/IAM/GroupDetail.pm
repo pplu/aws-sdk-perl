@@ -41,7 +41,7 @@ Contains information about an IAM group, including all of the group's
 policies.
 
 This data type is used as a response element in the
-GetAccountAuthorizationDetails action.
+GetAccountAuthorizationDetails operation.
 
 =head1 ATTRIBUTES
 

@@ -21,17 +21,34 @@ Paws::MachineLearning::CreateDataSourceFromS3 - Arguments for method CreateDataS
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDataSourceFromS3 on the 
-Amazon Machine Learning service. Use the attributes of this class
+This class represents the parameters used for calling the method CreateDataSourceFromS3 on the
+L<Amazon Machine Learning|Paws::MachineLearning> service. Use the attributes of this class
 as arguments to method CreateDataSourceFromS3.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDataSourceFromS3.
 
-As an example:
+=head1 SYNOPSIS
 
-  $service_obj->CreateDataSourceFromS3(Att1 => $value1, Att2 => $value2, ...);
+    my $machinelearning = Paws->service('MachineLearning');
+    my $CreateDataSourceFromS3Output = $machinelearning->CreateDataSourceFromS3(
+      DataSourceId => 'MyEntityId',
+      DataSpec     => {
+        DataLocationS3       => 'MyS3Url',               # max: 2048
+        DataRearrangement    => 'MyDataRearrangement',   # OPTIONAL
+        DataSchema           => 'MyDataSchema',          # max: 131071; OPTIONAL
+        DataSchemaLocationS3 => 'MyS3Url',               # max: 2048
+      },
+      ComputeStatistics => 1,                            # OPTIONAL
+      DataSourceName    => 'MyEntityName',               # OPTIONAL
+    );
+
+    # Results:
+    my $DataSourceId = $CreateDataSourceFromS3Output->DataSourceId;
+
+    # Returns a L<Paws::MachineLearning::CreateDataSourceFromS3Output> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/machinelearning/CreateDataSourceFromS3>
 
 =head1 ATTRIBUTES
 
