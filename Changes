@@ -1,4 +1,6 @@
 0.40
+ - Paws will not send an HTTP body of '{}' when there are no parameters to send for RestJson services. Some
+   services (MQ) were not liking it.
 
 0.39 11 Feb 2019
  - Paws is now installed with Module::Builder::Tiny, which speeds
