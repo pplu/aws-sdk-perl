@@ -1,4 +1,5 @@
 0.40
+ - V3 signatures have been deprecated, as all APIs use V4 signatures
 
 0.39 11 Feb 2019
  - Paws is now installed with Module::Builder::Tiny, which speeds
