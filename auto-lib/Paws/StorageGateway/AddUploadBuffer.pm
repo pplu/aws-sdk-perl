@@ -32,12 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Configures one or more gateway local disks as upload buffer for a specified
    # gateway.
     my $AddUploadBufferOutput = $storagegateway->AddUploadBuffer(
-      {
-        'DiskIds' =>
-          [ 'pci-0000:03:00.0-scsi-0:0:0:0', 'pci-0000:03:00.0-scsi-0:0:1:0' ],
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
+      'DiskIds' =>
+        [ 'pci-0000:03:00.0-scsi-0:0:0:0', 'pci-0000:03:00.0-scsi-0:0:1:0' ],
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
     );
 
     # Results:

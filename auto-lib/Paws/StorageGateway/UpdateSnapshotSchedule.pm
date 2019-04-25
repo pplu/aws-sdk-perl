@@ -33,13 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To update a volume snapshot schedule
     # Updates a snapshot schedule configured for a gateway volume.
     my $UpdateSnapshotScheduleOutput = $storagegateway->UpdateSnapshotSchedule(
-      {
-        'Description'       => 'Hourly snapshot',
-        'RecurrenceInHours' => 1,
-        'StartAt'           => 0,
-        'VolumeARN' =>
+      'Description'       => 'Hourly snapshot',
+      'RecurrenceInHours' => 1,
+      'StartAt'           => 0,
+      'VolumeARN' =>
 'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB'
-      }
     );
 
     # Results:

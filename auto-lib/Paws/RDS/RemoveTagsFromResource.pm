@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example removes the specified tag associated with the specified DB
     # option group.
     $rds->RemoveTagsFromResource(
-      {
-        'ResourceName' =>
-          'arn:aws:rds:us-east-1:992648334831:og:mydboptiongroup',
-        'TagKeys' => ['MyKey']
-      }
+      'ResourceName' => 'arn:aws:rds:us-east-1:992648334831:og:mydboptiongroup',
+      'TagKeys'      => ['MyKey']
     );
 
 

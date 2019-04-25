@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command gets information about the instance profile named
     # ExampleInstanceProfile.
     my $GetInstanceProfileResponse = $iam->GetInstanceProfile(
-      {
-        'InstanceProfileName' => 'ExampleInstanceProfile'
-      }
-    );
+      'InstanceProfileName' => 'ExampleInstanceProfile' );
 
     # Results:
     my $InstanceProfile = $GetInstanceProfileResponse->InstanceProfile;

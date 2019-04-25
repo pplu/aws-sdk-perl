@@ -33,10 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the load balancers attached to the specified Auto
     # Scaling group.
     my $DescribeLoadBalancersResponse = $autoscaling->DescribeLoadBalancers(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
-      }
-    );
+      'AutoScalingGroupName' => 'my-auto-scaling-group' );
 
     # Results:
     my $LoadBalancers = $DescribeLoadBalancersResponse->LoadBalancers;

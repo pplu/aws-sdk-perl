@@ -37,19 +37,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # SendRawEmail
     # The following example sends an email with an attachment:
     my $SendRawEmailResponse = $email->SendRawEmail(
-      {
-        'Destinations' => [
+      'Destinations' => [
 
-        ],
-        'FromArn'    => '',
-        'RawMessage' => {
-          'Data' =>
+      ],
+      'FromArn'    => '',
+      'RawMessage' => {
+        'Data' =>
 'From: sender@example.com\nTo: recipient@example.com\nSubject: Test email (contains an attachment)\nMIME-Version: 1.0\nContent-type: Multipart/Mixed; boundary="NextPart"\n\n--NextPart\nContent-Type: text/plain\n\nThis is the message body.\n\n--NextPart\nContent-Type: text/plain;\nContent-Disposition: attachment; filename="attachment.txt"\n\nThis is the text in the attachment.\n\n--NextPart--'
-        },
-        'ReturnPathArn' => '',
-        'Source'        => '',
-        'SourceArn'     => ''
-      }
+      },
+      'ReturnPathArn' => '',
+      'Source'        => '',
+      'SourceArn'     => ''
     );
 
     # Results:

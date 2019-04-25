@@ -38,40 +38,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # SendEmail
     # The following example sends a formatted email:
     my $SendEmailResponse = $email->SendEmail(
-      {
-        'Destination' => {
-          'BccAddresses' => [
-
-          ],
-          'CcAddresses' => ['recipient3@example.com'],
-          'ToAddresses' =>
-            [ 'recipient1@example.com', 'recipient2@example.com' ]
-        },
-        'Message' => {
-          'Body' => {
-            'Html' => {
-              'Charset' => 'UTF-8',
-              'Data' =>
-'This message body contains HTML formatting. It can, for example, contain links like this one: <a class="ulink" href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide" target="_blank">Amazon SES Developer Guide</a>.'
-            },
-            'Text' => {
-              'Charset' => 'UTF-8',
-              'Data'    => 'This is the message body in text format.'
-            }
-          },
-          'Subject' => {
-            'Charset' => 'UTF-8',
-            'Data'    => 'Test email'
-          }
-        },
-        'ReplyToAddresses' => [
+      'Destination' => {
+        'BccAddresses' => [
 
         ],
-        'ReturnPath'    => '',
-        'ReturnPathArn' => '',
-        'Source'        => 'sender@example.com',
-        'SourceArn'     => ''
-      }
+        'CcAddresses' => ['recipient3@example.com'],
+        'ToAddresses' => [ 'recipient1@example.com', 'recipient2@example.com' ]
+      },
+      'Message' => {
+        'Body' => {
+          'Html' => {
+            'Charset' => 'UTF-8',
+            'Data' =>
+'This message body contains HTML formatting. It can, for example, contain links like this one: <a class="ulink" href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide" target="_blank">Amazon SES Developer Guide</a>.'
+          },
+          'Text' => {
+            'Charset' => 'UTF-8',
+            'Data'    => 'This is the message body in text format.'
+          }
+        },
+        'Subject' => {
+          'Charset' => 'UTF-8',
+          'Data'    => 'Test email'
+        }
+      },
+      'ReplyToAddresses' => [
+
+      ],
+      'ReturnPath'    => '',
+      'ReturnPathArn' => '',
+      'Source'        => 'sender@example.com',
+      'SourceArn'     => ''
     );
 
     # Results:

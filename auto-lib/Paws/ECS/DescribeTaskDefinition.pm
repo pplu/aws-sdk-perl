@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ecs = Paws->service('ECS');
     # To describe a task definition
     # This example provides a description of the specified task definition.
-    my $DescribeTaskDefinitionResponse = $ecs->DescribeTaskDefinition(
-      {
-        'TaskDefinition' => 'hello_world:8'
-      }
-    );
+    my $DescribeTaskDefinitionResponse =
+      $ecs->DescribeTaskDefinition( 'TaskDefinition' => 'hello_world:8' );
 
     # Results:
     my $taskDefinition = $DescribeTaskDefinitionResponse->taskDefinition;

@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To get password information for an IAM user
     # The following command gets information about the password for the IAM user
     # named Anika.
-    my $GetLoginProfileResponse = $iam->GetLoginProfile(
-      {
-        'UserName' => 'Anika'
-      }
-    );
+    my $GetLoginProfileResponse =
+      $iam->GetLoginProfile( 'UserName' => 'Anika' );
 
     # Results:
     my $LoginProfile = $GetLoginProfileResponse->LoginProfile;

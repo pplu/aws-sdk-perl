@@ -31,10 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To renew a device slot offering
     # The following example renews a specific device slot offering.
     my $RenewOfferingResult = $devicefarm->RenewOffering(
-      {
-        'OfferingId' => 'D68B3C05-1BA6-4360-BC69-12345EXAMPLE',
-        'Quantity'   => 1
-      }
+      'OfferingId' => 'D68B3C05-1BA6-4360-BC69-12345EXAMPLE',
+      'Quantity'   => 1
     );
 
     # Results:

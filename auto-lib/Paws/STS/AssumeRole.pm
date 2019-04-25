@@ -35,14 +35,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $sts = Paws->service('STS');
     # To assume a role
     my $AssumeRoleResponse = $sts->AssumeRole(
-      {
-        'DurationSeconds' => 3600,
-        'ExternalId'      => '123ABC',
-        'Policy' =>
+      'DurationSeconds' => 3600,
+      'ExternalId'      => '123ABC',
+      'Policy' =>
 '{"Version":"2012-10-17","Statement":[{"Sid":"Stmt1","Effect":"Allow","Action":"s3:*","Resource":"*"}]}',
-        'RoleArn'         => 'arn:aws:iam::123456789012:role/demo',
-        'RoleSessionName' => 'Bob'
-      }
+      'RoleArn'         => 'arn:aws:iam::123456789012:role/demo',
+      'RoleSessionName' => 'Bob'
     );
 
     # Results:

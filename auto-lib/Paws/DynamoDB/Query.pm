@@ -49,16 +49,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # partition key value. It returns song titles by the artist named "No One You
    # Know".
     my $QueryOutput = $dynamodb->Query(
-      {
-        'ExpressionAttributeValues' => {
-          ':v1' => {
-            'S' => 'No One You Know'
-          }
-        },
-        'KeyConditionExpression' => 'Artist = :v1',
-        'ProjectionExpression'   => 'SongTitle',
-        'TableName'              => 'Music'
-      }
+      'ExpressionAttributeValues' => {
+        ':v1' => {
+          'S' => 'No One You Know'
+        }
+      },
+      'KeyConditionExpression' => 'Artist = :v1',
+      'ProjectionExpression'   => 'SongTitle',
+      'TableName'              => 'Music'
     );
 
     # Results:

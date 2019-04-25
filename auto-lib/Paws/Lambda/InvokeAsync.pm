@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To invoke a Lambda function asynchronously
     # This operation invokes a Lambda function asynchronously
     my $InvokeAsyncResponse = $lambda->InvokeAsync(
-      {
-        'FunctionName' => 'myFunction',
-        'InvokeArgs'   => 'fileb://file-path/input.json'
-      }
+      'FunctionName' => 'myFunction',
+      'InvokeArgs'   => 'fileb://file-path/input.json'
     );
 
     # Results:

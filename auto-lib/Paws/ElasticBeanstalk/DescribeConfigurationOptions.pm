@@ -37,10 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # configuration options for an environment named my-env:
     my $ConfigurationOptionsDescription =
       $elasticbeanstalk->DescribeConfigurationOptions(
-      {
-        'ApplicationName' => 'my-app',
-        'EnvironmentName' => 'my-env'
-      }
+      'ApplicationName' => 'my-app',
+      'EnvironmentName' => 'my-env'
       );
 
     # Results:

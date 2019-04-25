@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # VerifyDomainIdentity
     # The following example starts the domain verification process with Amazon
     # SES:
-    my $VerifyDomainIdentityResponse = $email->VerifyDomainIdentity(
-      {
-        'Domain' => 'example.com'
-      }
-    );
+    my $VerifyDomainIdentityResponse =
+      $email->VerifyDomainIdentity( 'Domain' => 'example.com' );
 
     # Results:
     my $VerificationToken = $VerifyDomainIdentityResponse->VerificationToken;

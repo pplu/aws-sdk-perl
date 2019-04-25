@@ -41,15 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 M    => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N  => 'MyNumberAttributeValue',    # OPTIONAL
-                NS => [
-                  'MyNumberAttributeValue', ...    # OPTIONAL
-                ],                                 # OPTIONAL
-                NULL => 1,                         # OPTIONAL
-                S    => 'MyStringAttributeValue',  # OPTIONAL
-                SS   => [
-                  'MyStringAttributeValue', ...    # OPTIONAL
-                ],                                 # OPTIONAL
+                N    => 'MyNumberAttributeValue',
+                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
+                NULL => 1,                                    # OPTIONAL
+                S    => 'MyStringAttributeValue',
+                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
               },    # key: max: 65535
             },
             TableName                => 'MyTableName',    # min: 3, max: 255

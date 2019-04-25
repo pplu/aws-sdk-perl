@@ -32,18 +32,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Assigns attributes (key and value pairs) to the findings that are specified
    # by the ARNs of the findings.
     my $AddAttributesToFindingsResponse = $inspector->AddAttributesToFindings(
-      {
-        'Attributes' => [
+      'Attributes' => [
 
-          {
-            'Key'   => 'Example',
-            'Value' => 'example'
-          }
-        ],
-        'FindingArns' => [
+        {
+          'Key'   => 'Example',
+          'Value' => 'example'
+        }
+      ],
+      'FindingArns' => [
 'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/run/0-Z02cjjug/finding/0-T8yM9mEU'
-        ]
-      }
+      ]
     );
 
     # Results:

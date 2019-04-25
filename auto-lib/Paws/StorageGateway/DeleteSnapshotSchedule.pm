@@ -29,12 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $storagegateway = Paws->service('StorageGateway');
     # To delete a snapshot of a volume
     # This action enables you to delete a snapshot schedule for a volume.
-    my $DeleteSnapshotScheduleOutput = $storagegateway->DeleteSnapshotSchedule(
-      {
-        'VolumeARN' =>
+    my $DeleteSnapshotScheduleOutput =
+      $storagegateway->DeleteSnapshotSchedule( 'VolumeARN' =>
 'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB'
-      }
-    );
+      );
 
     # Results:
     my $VolumeARN = $DeleteSnapshotScheduleOutput->VolumeARN;

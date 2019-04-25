@@ -29,10 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $sts = Paws->service('STS');
     # To decode information about an authorization status of a request
     my $DecodeAuthorizationMessageResponse = $sts->DecodeAuthorizationMessage(
-      {
-        'EncodedMessage' => '<encoded-message>'
-      }
-    );
+      'EncodedMessage' => '<encoded-message>' );
 
     # Results:
     my $DecodedMessage = $DecodeAuthorizationMessageResponse->DecodedMessage;

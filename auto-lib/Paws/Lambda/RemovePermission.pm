@@ -34,11 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To remove a Lambda function's permissions
     # This operation removes a Lambda function's permissions
     $lambda->RemovePermission(
-      {
-        'FunctionName' => 'myFunction',
-        'Qualifier'    => 1,
-        'StatementId'  => 'role-statement-id'
-      }
+      'FunctionName' => 'myFunction',
+      'Qualifier'    => 1,
+      'StatementId'  => 'role-statement-id'
     );
 
 

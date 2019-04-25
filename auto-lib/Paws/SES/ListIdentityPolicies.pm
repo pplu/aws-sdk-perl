@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # ListIdentityPolicies
    # The following example returns a list of sending authorization policies that
    # are attached to an identity:
-    my $ListIdentityPoliciesResponse = $email->ListIdentityPolicies(
-      {
-        'Identity' => 'example.com'
-      }
-    );
+    my $ListIdentityPoliciesResponse =
+      $email->ListIdentityPolicies( 'Identity' => 'example.com' );
 
     # Results:
     my $PolicyNames = $ListIdentityPoliciesResponse->PolicyNames;

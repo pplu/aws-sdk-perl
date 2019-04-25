@@ -33,11 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
    # To describe the status of a single volume
    # This example describes the status for the volume ``vol-1234567890abcdef0``.
-    my $DescribeVolumeStatusResult = $ec2->DescribeVolumeStatus(
-      {
-        'VolumeIds' => ['vol-1234567890abcdef0']
-      }
-    );
+    my $DescribeVolumeStatusResult =
+      $ec2->DescribeVolumeStatus( 'VolumeIds' => ['vol-1234567890abcdef0'] );
 
     # Results:
     my $VolumeStatuses = $DescribeVolumeStatusResult->VolumeStatuses;
@@ -47,15 +44,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the status for all volumes that are impaired. In
     # this example output, there are no impaired volumes.
     my $DescribeVolumeStatusResult = $ec2->DescribeVolumeStatus(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'volume-status.status',
-            'Values' => ['impaired']
-          }
-        ]
-      }
+        {
+          'Name'   => 'volume-status.status',
+          'Values' => ['impaired']
+        }
+      ]
     );
 
     # Results:

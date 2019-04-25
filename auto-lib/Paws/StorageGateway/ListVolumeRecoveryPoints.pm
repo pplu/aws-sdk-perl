@@ -31,12 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Lists the recovery points for a specified gateway in which all data of the
     # volume is consistent and can be used to create a snapshot.
     my $ListVolumeRecoveryPointsOutput =
-      $storagegateway->ListVolumeRecoveryPoints(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
-      );
+      $storagegateway->ListVolumeRecoveryPoints( 'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
 
     # Results:
     my $GatewayARN = $ListVolumeRecoveryPointsOutput->GatewayARN;

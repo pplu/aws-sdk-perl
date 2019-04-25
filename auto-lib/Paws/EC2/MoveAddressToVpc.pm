@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To move an address to EC2-VPC
     # This example moves the specified Elastic IP address to the EC2-VPC
     # platform.
-    my $MoveAddressToVpcResult = $ec2->MoveAddressToVpc(
-      {
-        'PublicIp' => '54.123.4.56'
-      }
-    );
+    my $MoveAddressToVpcResult =
+      $ec2->MoveAddressToVpc( 'PublicIp' => '54.123.4.56' );
 
     # Results:
     my $Status = $MoveAddressToVpcResult->Status;

@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To request tailed logs
     # The following operation requests logs from an environment named my-env:
     $elasticbeanstalk->RequestEnvironmentInfo(
-      {
-        'EnvironmentName' => 'my-env',
-        'InfoType'        => 'tail'
-      }
+      'EnvironmentName' => 'my-env',
+      'InfoType'        => 'tail'
     );
 
 

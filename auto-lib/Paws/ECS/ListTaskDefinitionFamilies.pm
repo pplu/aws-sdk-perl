@@ -40,11 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ECS::ListTaskDefinitionFamiliesResponse> object.
     # To filter your registered task definition families
     # This example lists the task definition revisions that start with "hpcc".
-    my $ListTaskDefinitionFamiliesResponse = $ecs->ListTaskDefinitionFamilies(
-      {
-        'FamilyPrefix' => 'hpcc'
-      }
-    );
+    my $ListTaskDefinitionFamiliesResponse =
+      $ecs->ListTaskDefinitionFamilies( 'FamilyPrefix' => 'hpcc' );
 
     # Results:
     my $families = $ListTaskDefinitionFamiliesResponse->families;

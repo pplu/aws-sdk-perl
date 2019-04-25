@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the ``createVolumePermission`` attribute on a
     # snapshot with the snapshot ID of ``snap-066877671789bd71b``.
     my $DescribeSnapshotAttributeResult = $ec2->DescribeSnapshotAttribute(
-      {
-        'Attribute'  => 'createVolumePermission',
-        'SnapshotId' => 'snap-066877671789bd71b'
-      }
+      'Attribute'  => 'createVolumePermission',
+      'SnapshotId' => 'snap-066877671789bd71b'
     );
 
     # Results:

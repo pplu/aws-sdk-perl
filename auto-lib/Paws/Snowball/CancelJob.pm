@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This operation cancels a job. You can only cancel a job before its JobState
    # value changes to PreparingAppliance.
     my $CancelJobResult = $snowball->CancelJob(
-      {
-        'JobId' => 'JID123e4567-e89b-12d3-a456-426655440000'
-      }
-    );
+      'JobId' => 'JID123e4567-e89b-12d3-a456-426655440000' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

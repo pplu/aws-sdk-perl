@@ -32,10 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe an Auto Scaling group
     # This example describes the specified Auto Scaling group.
     my $AutoScalingGroupsType = $autoscaling->DescribeAutoScalingGroups(
-      {
-        'AutoScalingGroupNames' => ['my-auto-scaling-group']
-      }
-    );
+      'AutoScalingGroupNames' => ['my-auto-scaling-group'] );
 
     # Results:
     my $AutoScalingGroups = $AutoScalingGroupsType->AutoScalingGroups;

@@ -52,8 +52,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/log
 
 =head2 B<REQUIRED> EndTime => Int
 
-The time to end this query, if it is still running. Specified as epoch
-time, the number of seconds since January 1, 1970, 00:00:00 UTC.
+The end of the time range to query. Specified as epoch time, the number
+of seconds since January 1, 1970, 00:00:00 UTC.
 
 
 
@@ -81,8 +81,8 @@ Insights Query Syntax
 
 =head2 B<REQUIRED> StartTime => Int
 
-The time to start the query. Specified as epoch time, the number of
-seconds since January 1, 1970, 00:00:00 UTC.
+The beginning of the time range to query. Specified as epoch time, the
+number of seconds since January 1, 1970, 00:00:00 UTC.
 
 
 

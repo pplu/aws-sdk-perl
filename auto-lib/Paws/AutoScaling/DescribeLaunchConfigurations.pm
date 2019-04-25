@@ -32,10 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe Auto Scaling launch configurations
     # This example describes the specified launch configuration.
     my $LaunchConfigurationsType = $autoscaling->DescribeLaunchConfigurations(
-      {
-        'LaunchConfigurationNames' => ['my-launch-config']
-      }
-    );
+      'LaunchConfigurationNames' => ['my-launch-config'] );
 
     # Results:
     my $LaunchConfigurations = $LaunchConfigurationsType->LaunchConfigurations;

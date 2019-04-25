@@ -35,11 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # speech synthesis. Displayed languages are those within the specified
     # language code. If no language code is specified, voices for all available
     # languages are displayed.
-    my $DescribeVoicesOutput = $polly->DescribeVoices(
-      {
-        'LanguageCode' => 'en-GB'
-      }
-    );
+    my $DescribeVoicesOutput =
+      $polly->DescribeVoices( 'LanguageCode' => 'en-GB' );
 
     # Results:
     my $Voices = $DescribeVoicesOutput->Voices;

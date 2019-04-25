@@ -33,9 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To attach a key policy to a customer master key (CMK)
     # The following example attaches a key policy to the specified CMK.
     $kms->PutKeyPolicy(
-      {
-        'KeyId'  => '1234abcd-12ab-34cd-56ef-1234567890ab',
-        'Policy' => '{
+      'KeyId'  => '1234abcd-12ab-34cd-56ef-1234567890ab',
+      'Policy' => '{
     "Version": "2012-10-17",
     "Id": "custom-policy-2016-12-07",
     "Statement": [
@@ -109,8 +108,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     ]
 }
 ',
-        'PolicyName' => 'default'
-      }
+      'PolicyName' => 'default'
     );
 
 

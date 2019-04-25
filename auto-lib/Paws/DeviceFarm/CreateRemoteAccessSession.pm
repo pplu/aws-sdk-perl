@@ -42,15 +42,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example creates a remote access session named MySession.
     my $CreateRemoteAccessSessionResult =
       $devicefarm->CreateRemoteAccessSession(
-      {
-        'Configuration' => {
-          'BillingMethod' => 'METERED'
-        },
-        'DeviceArn' => 'arn:aws:devicefarm:us-west-2::device:123EXAMPLE',
-        'Name'      => 'MySession',
-        'ProjectArn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456'
-      }
+      'Configuration' => {
+        'BillingMethod' => 'METERED'
+      },
+      'DeviceArn' => 'arn:aws:devicefarm:us-west-2::device:123EXAMPLE',
+      'Name'      => 'MySession',
+      'ProjectArn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456'
       );
 
     # Results:

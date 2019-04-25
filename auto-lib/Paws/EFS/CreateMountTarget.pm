@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a new mount target
     # This operation creates a new mount target for an EFS file system.
     my $MountTargetDescription = $elasticfilesystem->CreateMountTarget(
-      {
-        'FileSystemId' => 'fs-01234567',
-        'SubnetId'     => 'subnet-1234abcd'
-      }
+      'FileSystemId' => 'fs-01234567',
+      'SubnetId'     => 'subnet-1234abcd'
     );
 
     # Results:

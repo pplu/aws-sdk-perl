@@ -36,20 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates an HTTP listener for the specified load balancer that
     # forwards requests to the specified target group.
     my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
-      {
-        'DefaultActions' => [
+      'DefaultActions' => [
 
-          {
-            'TargetGroupArn' =>
+        {
+          'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
-            'Type' => 'forward'
-          }
-        ],
-        'LoadBalancerArn' =>
+          'Type' => 'forward'
+        }
+      ],
+      'LoadBalancerArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
-        'Port'     => 80,
-        'Protocol' => 'HTTP'
-      }
+      'Port'     => 80,
+      'Protocol' => 'HTTP'
     );
 
     # Results:
@@ -65,28 +63,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # certificate authority (CA), and upload the certificate to AWS Identity and
    # Access Management (IAM).
     my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
-      {
-        'Certificates' => [
+      'Certificates' => [
 
-          {
-            'CertificateArn' =>
-              'arn:aws:iam::123456789012:server-certificate/my-server-cert'
-          }
-        ],
-        'DefaultActions' => [
+        {
+          'CertificateArn' =>
+            'arn:aws:iam::123456789012:server-certificate/my-server-cert'
+        }
+      ],
+      'DefaultActions' => [
 
-          {
-            'TargetGroupArn' =>
+        {
+          'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
-            'Type' => 'forward'
-          }
-        ],
-        'LoadBalancerArn' =>
+          'Type' => 'forward'
+        }
+      ],
+      'LoadBalancerArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
-        'Port'      => 443,
-        'Protocol'  => 'HTTPS',
-        'SslPolicy' => 'ELBSecurityPolicy-2015-05'
-      }
+      'Port'      => 443,
+      'Protocol'  => 'HTTPS',
+      'SslPolicy' => 'ELBSecurityPolicy-2015-05'
     );
 
     # Results:

@@ -31,11 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To purchases a provisioned capacity unit for an AWS account
     # The example purchases provisioned capacity unit for an AWS account.
     my $PurchaseProvisionedCapacityOutput =
-      $glacier->PurchaseProvisionedCapacity(
-      {
-        'AccountId' => '-'
-      }
-      );
+      $glacier->PurchaseProvisionedCapacity( 'AccountId' => '-' );
 
     # Results:
     my $capacityId = $PurchaseProvisionedCapacityOutput->capacityId;

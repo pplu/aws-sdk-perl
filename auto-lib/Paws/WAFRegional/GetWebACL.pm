@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To get a web ACL
     # The following example returns the details of a web ACL with the ID
     # createwebacl-1472061481310.
-    my $GetWebACLResponse = $waf -regional->GetWebACL(
-      {
-        'WebACLId' => 'createwebacl-1472061481310'
-      }
-    );
+    my $GetWebACLResponse =
+      $waf -regional->GetWebACL( 'WebACLId' => 'createwebacl-1472061481310' );
 
     # Results:
     my $WebACL = $GetWebACLResponse->WebACL;

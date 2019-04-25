@@ -31,23 +31,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To add tags to a load balancer
     # This example adds the specified tags to the specified load balancer.
     my $AddTagsOutput = $elasticloadbalancing->AddTags(
-      {
-        'ResourceArns' => [
+      'ResourceArns' => [
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188'
-        ],
-        'Tags' => [
+      ],
+      'Tags' => [
 
-          {
-            'Key'   => 'project',
-            'Value' => 'lima'
-          },
+        {
+          'Key'   => 'project',
+          'Value' => 'lima'
+        },
 
-          {
-            'Key'   => 'department',
-            'Value' => 'digital-media'
-          }
-        ]
-      }
+        {
+          'Key'   => 'department',
+          'Value' => 'digital-media'
+        }
+      ]
     );
 
 

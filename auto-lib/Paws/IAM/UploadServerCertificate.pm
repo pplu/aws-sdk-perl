@@ -35,14 +35,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following upload-server-certificate command uploads a server
     # certificate to your AWS account:
     my $UploadServerCertificateResponse = $iam->UploadServerCertificate(
-      {
-        'CertificateBody' =>
+      'CertificateBody' =>
 '-----BEGIN CERTIFICATE-----<a very long certificate text string>-----END CERTIFICATE-----',
-        'Path' => '/company/servercerts/',
-        'PrivateKey' =>
+      'Path' => '/company/servercerts/',
+      'PrivateKey' =>
 '-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----END DSA PRIVATE KEY-----',
-        'ServerCertificateName' => 'ProdServerCert'
-      }
+      'ServerCertificateName' => 'ProdServerCert'
     );
 
     # Results:

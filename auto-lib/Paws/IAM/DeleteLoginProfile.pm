@@ -29,11 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iam = Paws->service('IAM');
     # To delete a password for an IAM user
     # The following command deletes the password for the IAM user named Bob.
-    $iam->DeleteLoginProfile(
-      {
-        'UserName' => 'Bob'
-      }
-    );
+    $iam->DeleteLoginProfile( 'UserName' => 'Bob' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

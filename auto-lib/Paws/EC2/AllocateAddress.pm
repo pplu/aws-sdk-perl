@@ -33,11 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To allocate an Elastic IP address for EC2-VPC
     # This example allocates an Elastic IP address to use with an instance in a
     # VPC.
-    my $AllocateAddressResult = $ec2->AllocateAddress(
-      {
-        'Domain' => 'vpc'
-      }
-    );
+    my $AllocateAddressResult = $ec2->AllocateAddress( 'Domain' => 'vpc' );
 
     # Results:
     my $AllocationId = $AllocateAddressResult->AllocationId;

@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To attach an Internet gateway to a VPC
     # This example attaches the specified Internet gateway to the specified VPC.
     $ec2->AttachInternetGateway(
-      {
-        'InternetGatewayId' => 'igw-c0a643a9',
-        'VpcId'             => 'vpc-a01106c2'
-      }
+      'InternetGatewayId' => 'igw-c0a643a9',
+      'VpcId'             => 'vpc-a01106c2'
     );
 
 

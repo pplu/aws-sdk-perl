@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following operation deletes a draft configuration for an environment
     # named my-env:
     $elasticbeanstalk->DeleteEnvironmentConfiguration(
-      {
-        'ApplicationName' => 'my-app',
-        'EnvironmentName' => 'my-env'
-      }
+      'ApplicationName' => 'my-app',
+      'EnvironmentName' => 'my-env'
     );
 
 

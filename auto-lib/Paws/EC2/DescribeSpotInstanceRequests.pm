@@ -34,10 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a Spot Instance request
     # This example describes the specified Spot Instance request.
     my $DescribeSpotInstanceRequestsResult = $ec2->DescribeSpotInstanceRequests(
-      {
-        'SpotInstanceRequestIds' => ['sir-08b93456']
-      }
-    );
+      'SpotInstanceRequestIds' => ['sir-08b93456'] );
 
     # Results:
     my $SpotInstanceRequests =

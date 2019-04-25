@@ -33,11 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an IAM user
     # The following create-user command creates an IAM user named Bob in the
     # current account.
-    my $CreateUserResponse = $iam->CreateUser(
-      {
-        'UserName' => 'Bob'
-      }
-    );
+    my $CreateUserResponse = $iam->CreateUser( 'UserName' => 'Bob' );
 
     # Results:
     my $User = $CreateUserResponse->User;

@@ -30,12 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To list the gateway's local disks
    # The request returns a list of all disks, specifying which are configured as
    # working storage, cache storage, or stored volume or not configured at all.
-    my $ListLocalDisksOutput = $storagegateway->ListLocalDisks(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
-    );
+    my $ListLocalDisksOutput = $storagegateway->ListLocalDisks( 'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
 
     # Results:
     my $Disks      = $ListLocalDisksOutput->Disks;

@@ -35,10 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The example lists all the in-progress multipart uploads for the vault named
    # examplevault.
     my $ListMultipartUploadsOutput = $glacier->ListMultipartUploads(
-      {
-        'AccountId' => '-',
-        'VaultName' => 'examplevault'
-      }
+      'AccountId' => '-',
+      'VaultName' => 'examplevault'
     );
 
     # Results:

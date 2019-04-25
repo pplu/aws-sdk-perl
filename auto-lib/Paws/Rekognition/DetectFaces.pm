@@ -31,12 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To detect faces in an image
     # This operation detects faces in an image stored in an AWS S3 bucket.
     my $DetectFacesResponse = $rekognition->DetectFaces(
-      {
-        'Image' => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'myphoto'
-          }
+      'Image' => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'myphoto'
         }
       }
     );

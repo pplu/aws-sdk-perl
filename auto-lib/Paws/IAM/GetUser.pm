@@ -29,11 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iam = Paws->service('IAM');
     # To get information about an IAM user
     # The following command gets information about the IAM user named Bob.
-    my $GetUserResponse = $iam->GetUser(
-      {
-        'UserName' => 'Bob'
-      }
-    );
+    my $GetUserResponse = $iam->GetUser( 'UserName' => 'Bob' );
 
     # Results:
     my $User = $GetUserResponse->User;

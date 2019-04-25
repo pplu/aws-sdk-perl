@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a placement group
     # This example creates a placement group with the specified name.
     $ec2->CreatePlacementGroup(
-      {
-        'GroupName' => 'my-cluster',
-        'Strategy'  => 'cluster'
-      }
+      'GroupName' => 'my-cluster',
+      'Strategy'  => 'cluster'
     );
 
 

@@ -34,10 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe Auto Scaling policies
     # This example describes the policies for the specified Auto Scaling group.
     my $PoliciesType = $autoscaling->DescribePolicies(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
-      }
-    );
+      'AutoScalingGroupName' => 'my-auto-scaling-group' );
 
     # Results:
     my $ScalingPolicies = $PoliciesType->ScalingPolicies;

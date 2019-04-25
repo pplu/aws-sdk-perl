@@ -32,15 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To purchase a Scheduled Instance
     # This example purchases a Scheduled Instance.
     my $PurchaseScheduledInstancesResult = $ec2->PurchaseScheduledInstances(
-      {
-        'PurchaseRequests' => [
+      'PurchaseRequests' => [
 
-          {
-            'InstanceCount' => 1,
-            'PurchaseToken' => 'eyJ2IjoiMSIsInMiOjEsImMiOi...'
-          }
-        ]
-      }
+        {
+          'InstanceCount' => 1,
+          'PurchaseToken' => 'eyJ2IjoiMSIsInMiOjEsImMiOi...'
+        }
+      ]
     );
 
     # Results:

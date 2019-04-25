@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example lists up to 20 certificates for the specified certificate
     # identifier.
     my $CertificateMessage = $rds->DescribeCertificates(
-      {
-        'CertificateIdentifier' => 'rds-ca-2015',
-        'MaxRecords'            => 20
-      }
+      'CertificateIdentifier' => 'rds-ca-2015',
+      'MaxRecords'            => 20
     );
 
 

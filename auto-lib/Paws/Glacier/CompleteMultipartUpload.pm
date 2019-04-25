@@ -35,15 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To complete a multipart upload
     # The example completes a multipart upload for a 3 MiB archive.
     my $ArchiveCreationOutput = $glacier->CompleteMultipartUpload(
-      {
-        'AccountId'   => '-',
-        'ArchiveSize' => 3145728,
-        'Checksum' =>
-          '9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67',
-        'UploadId' =>
+      'AccountId'   => '-',
+      'ArchiveSize' => 3145728,
+      'Checksum' =>
+        '9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67',
+      'UploadId' =>
 '19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',
-        'VaultName' => 'my-vault'
-      }
+      'VaultName' => 'my-vault'
     );
 
     # Results:

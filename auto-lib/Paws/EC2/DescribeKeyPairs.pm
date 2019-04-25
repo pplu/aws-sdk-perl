@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To display a key pair
     # This example displays the fingerprint for the specified key.
-    my $DescribeKeyPairsResult = $ec2->DescribeKeyPairs(
-      {
-        'KeyNames' => ['my-key-pair']
-      }
-    );
+    my $DescribeKeyPairsResult =
+      $ec2->DescribeKeyPairs( 'KeyNames' => ['my-key-pair'] );
 
     # Results:
     my $KeyPairs = $DescribeKeyPairsResult->KeyPairs;

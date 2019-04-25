@@ -35,18 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a job queue called LowPriority that uses the M4Spot
     # compute environment.
     my $CreateJobQueueResponse = $batch->CreateJobQueue(
-      {
-        'ComputeEnvironmentOrder' => [
+      'ComputeEnvironmentOrder' => [
 
-          {
-            'ComputeEnvironment' => 'M4Spot',
-            'Order'              => 1
-          }
-        ],
-        'JobQueueName' => 'LowPriority',
-        'Priority'     => 10,
-        'State'        => 'ENABLED'
-      }
+        {
+          'ComputeEnvironment' => 'M4Spot',
+          'Order'              => 1
+        }
+      ],
+      'JobQueueName' => 'LowPriority',
+      'Priority'     => 10,
+      'State'        => 'ENABLED'
     );
 
     # Results:
@@ -59,23 +57,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # C4OnDemand compute environment with an order of 1 and the M4Spot compute
     # environment with an order of 2.
     my $CreateJobQueueResponse = $batch->CreateJobQueue(
-      {
-        'ComputeEnvironmentOrder' => [
+      'ComputeEnvironmentOrder' => [
 
-          {
-            'ComputeEnvironment' => 'C4OnDemand',
-            'Order'              => 1
-          },
+        {
+          'ComputeEnvironment' => 'C4OnDemand',
+          'Order'              => 1
+        },
 
-          {
-            'ComputeEnvironment' => 'M4Spot',
-            'Order'              => 2
-          }
-        ],
-        'JobQueueName' => 'HighPriority',
-        'Priority'     => 1,
-        'State'        => 'ENABLED'
-      }
+        {
+          'ComputeEnvironment' => 'M4Spot',
+          'Order'              => 2
+        }
+      ],
+      'JobQueueName' => 'HighPriority',
+      'Priority'     => 1,
+      'State'        => 'ENABLED'
     );
 
     # Results:

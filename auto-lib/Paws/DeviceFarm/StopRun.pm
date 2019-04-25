@@ -29,12 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $devicefarm = Paws->service('DeviceFarm');
     # To stop a test run
     # The following example stops a specific test run.
-    my $StopRunResult = $devicefarm->StopRun(
-      {
-        'Arn' =>
-          'arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456'
-      }
-    );
+    my $StopRunResult = $devicefarm->StopRun( 'Arn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456' );
 
     # Results:
     my $run = $StopRunResult->run;

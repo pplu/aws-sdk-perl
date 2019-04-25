@@ -32,10 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the supported-platforms attribute for your AWS
     # account.
     my $DescribeAccountAttributesResult = $ec2->DescribeAccountAttributes(
-      {
-        'AttributeNames' => ['supported-platforms']
-      }
-    );
+      'AttributeNames' => ['supported-platforms'] );
 
     # Results:
     my $AccountAttributes = $DescribeAccountAttributesResult->AccountAttributes;

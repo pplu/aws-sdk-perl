@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example provides a description of the specified container instance in
     # your default region, using the container instance UUID as an identifier.
     my $DescribeContainerInstancesResponse = $ecs->DescribeContainerInstances(
-      {
-        'Cluster'            => 'default',
-        'ContainerInstances' => ['f2756532-8f13-4d53-87c9-aed50dc94cd7']
-      }
+      'Cluster'            => 'default',
+      'ContainerInstances' => ['f2756532-8f13-4d53-87c9-aed50dc94cd7']
     );
 
     # Results:

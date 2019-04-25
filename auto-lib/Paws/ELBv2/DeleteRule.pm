@@ -29,12 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $elasticloadbalancing = Paws->service('ELBv2');
     # To delete a rule
     # This example deletes the specified rule.
-    my $DeleteRuleOutput = $elasticloadbalancing->DeleteRule(
-      {
-        'RuleArn' =>
+    my $DeleteRuleOutput =
+      $elasticloadbalancing->DeleteRule( 'RuleArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2/1291d13826f405c3'
-      }
-    );
+      );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

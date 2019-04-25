@@ -34,13 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateVirtualNodeOutput = $appmesh->UpdateVirtualNode(
       MeshName => 'MyResourceName',
       Spec     => {
-        Backends => [ 'MyServiceName', ... ],    # OPTIONAL
+        Backends => [
+          'MyServiceName', ...    # OPTIONAL
+        ],                        # OPTIONAL
         Listeners => [
           {
             HealthCheck => {
               HealthyThreshold   => 1,            # min: 2, max: 10
               IntervalMillis     => 1,            # min: 5000, max: 300000
-              Protocol           => 'http',       # values: http, tcp
+              Protocol           => 'http',       # values: http, tcp; OPTIONAL
               TimeoutMillis      => 1,            # min: 2000, max: 60000
               UnhealthyThreshold => 1,            # min: 2, max: 10
               Path               => 'MyString',   # OPTIONAL
@@ -48,13 +50,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
             PortMapping => {
               Port     => 1,         # min: 1, max: 65535; OPTIONAL
-              Protocol => 'http',    # values: http, tcp
+              Protocol => 'http',    # values: http, tcp; OPTIONAL
             },    # OPTIONAL
           },
           ...
         ],        # OPTIONAL
         ServiceDiscovery => {
-          Dns => { ServiceName => 'MyServiceName', },    # OPTIONAL
+          Dns => {
+            ServiceName => 'MyServiceName',    # OPTIONAL
+          },    # OPTIONAL
         },    # OPTIONAL
       },
       VirtualNodeName => 'MyResourceName',

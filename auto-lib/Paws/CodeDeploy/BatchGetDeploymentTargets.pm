@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codedeploy = Paws->service('CodeDeploy');
     my $BatchGetDeploymentTargetsOutput =
       $codedeploy->BatchGetDeploymentTargets(
-      DeploymentId => 'MyDeploymentId',      # OPTIONAL
-      TargetIds => [ 'MyTargetId', ... ],    # OPTIONAL
+      DeploymentId => 'MyDeploymentId',         # OPTIONAL
+      TargetIds    => [ 'MyTargetId', ... ],    # OPTIONAL
       );
 
     # Results:

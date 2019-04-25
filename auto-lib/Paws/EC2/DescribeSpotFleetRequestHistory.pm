@@ -37,10 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the specified time.
     my $DescribeSpotFleetRequestHistoryResponse =
       $ec2->DescribeSpotFleetRequestHistory(
-      {
-        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
-        'StartTime'          => '2015-05-26T00:00:00Z'
-      }
+      'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
+      'StartTime'          => '2015-05-26T00:00:00Z'
       );
 
     # Results:

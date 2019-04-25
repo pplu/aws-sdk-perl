@@ -29,11 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iam = Paws->service('IAM');
     # To get information about an IAM role
     # The following command gets information about the role named Test-Role.
-    my $GetRoleResponse = $iam->GetRole(
-      {
-        'RoleName' => 'Test-Role'
-      }
-    );
+    my $GetRoleResponse = $iam->GetRole( 'RoleName' => 'Test-Role' );
 
     # Results:
     my $Role = $GetRoleResponse->Role;

@@ -35,10 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example disables the P2OnDemand compute environment so it can be
     # deleted.
     my $UpdateComputeEnvironmentResponse = $batch->UpdateComputeEnvironment(
-      {
-        'ComputeEnvironment' => 'P2OnDemand',
-        'State'              => 'DISABLED'
-      }
+      'ComputeEnvironment' => 'P2OnDemand',
+      'State'              => 'DISABLED'
     );
 
     # Results:

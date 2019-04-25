@@ -33,17 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To modify an option group
     # The following example adds an option to an option group.
     my $ModifyOptionGroupResult = $rds->ModifyOptionGroup(
-      {
-        'ApplyImmediately' => 1,
-        'OptionGroupName'  => 'myawsuser-og02',
-        'OptionsToInclude' => [
+      'ApplyImmediately' => 1,
+      'OptionGroupName'  => 'myawsuser-og02',
+      'OptionsToInclude' => [
 
-          {
-            'DBSecurityGroupMemberships' => ['default'],
-            'OptionName'                 => 'MEMCACHED'
-          }
-        ]
-      }
+        {
+          'DBSecurityGroupMemberships' => ['default'],
+          'OptionName'                 => 'MEMCACHED'
+        }
+      ]
     );
 
 

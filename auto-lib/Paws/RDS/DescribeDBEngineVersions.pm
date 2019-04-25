@@ -38,13 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To list DB engine version settings
     # This example lists settings for the specified DB engine version.
     my $DBEngineVersionMessage = $rds->DescribeDBEngineVersions(
-      {
-        'DBParameterGroupFamily'     => 'mysql5.6',
-        'DefaultOnly'                => 1,
-        'Engine'                     => 'mysql',
-        'EngineVersion'              => 5.6,
-        'ListSupportedCharacterSets' => 1
-      }
+      'DBParameterGroupFamily'     => 'mysql5.6',
+      'DefaultOnly'                => 1,
+      'Engine'                     => 'mysql',
+      'EngineVersion'              => 5.6,
+      'ListSupportedCharacterSets' => 1
     );
 
 

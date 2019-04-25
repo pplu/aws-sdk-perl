@@ -51,11 +51,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # ``ecs-simple-service``. The service uses the ``hello_world`` task
     # definition and it maintains 10 copies of that task.
     my $CreateServiceResponse = $ecs->CreateService(
-      {
-        'DesiredCount'   => 10,
-        'ServiceName'    => 'ecs-simple-service',
-        'TaskDefinition' => 'hello_world'
-      }
+      'DesiredCount'   => 10,
+      'ServiceName'    => 'ecs-simple-service',
+      'TaskDefinition' => 'hello_world'
     );
 
     # Results:
@@ -68,20 +66,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # definition and it maintains 10 copies of that task. You must reference an
     # existing load balancer in the same region by its name.
     my $CreateServiceResponse = $ecs->CreateService(
-      {
-        'DesiredCount'  => 10,
-        'LoadBalancers' => [
+      'DesiredCount'  => 10,
+      'LoadBalancers' => [
 
-          {
-            'ContainerName'    => 'simple-app',
-            'ContainerPort'    => 80,
-            'LoadBalancerName' => 'EC2Contai-EcsElast-15DCDAURT3ZO2'
-          }
-        ],
-        'Role'           => 'ecsServiceRole',
-        'ServiceName'    => 'ecs-simple-service-elb',
-        'TaskDefinition' => 'console-sample-app-static'
-      }
+        {
+          'ContainerName'    => 'simple-app',
+          'ContainerPort'    => 80,
+          'LoadBalancerName' => 'EC2Contai-EcsElast-15DCDAURT3ZO2'
+        }
+      ],
+      'Role'           => 'ecsServiceRole',
+      'ServiceName'    => 'ecs-simple-service-elb',
+      'TaskDefinition' => 'console-sample-app-static'
     );
 
     # Results:

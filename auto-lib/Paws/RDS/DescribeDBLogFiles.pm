@@ -38,12 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # file name pattern, last write date in POSIX time with milleseconds, and
     # minimum file size.
     my $DescribeDBLogFilesResponse = $rds->DescribeDBLogFiles(
-      {
-        'DBInstanceIdentifier' => 'mymysqlinstance',
-        'FileLastWritten'      => 1470873600000,
-        'FileSize'             => 0,
-        'FilenameContains'     => 'error'
-      }
+      'DBInstanceIdentifier' => 'mymysqlinstance',
+      'FileLastWritten'      => 1470873600000,
+      'FileSize'             => 0,
+      'FilenameContains'     => 'error'
     );
 
 

@@ -41,33 +41,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # CreateJob action separately to create the jobs for each of these nodes. The
    # cluster does not ship until these five node jobs have been created.
     my $CreateClusterResult = $snowball->CreateCluster(
-      {
-        'AddressId'   => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
-        'Description' => 'MyCluster',
-        'JobType'     => 'LOCAL_USE',
-        'KmsKeyARN' =>
+      'AddressId'   => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+      'Description' => 'MyCluster',
+      'JobType'     => 'LOCAL_USE',
+      'KmsKeyARN' =>
 'arn:aws:kms:us-east-1:123456789012:key/abcd1234-12ab-34cd-56ef-123456123456',
-        'Notification' => {
-          'JobStatesToNotify' => [
+      'Notification' => {
+        'JobStatesToNotify' => [
 
-          ],
-          'NotifyAll' => 0
-        },
-        'Resources' => {
-          'S3Resources' => [
+        ],
+        'NotifyAll' => 0
+      },
+      'Resources' => {
+        'S3Resources' => [
 
-            {
-              'BucketArn' => 'arn:aws:s3:::MyBucket',
-              'KeyRange'  => {
+          {
+            'BucketArn' => 'arn:aws:s3:::MyBucket',
+            'KeyRange'  => {
 
-              }
             }
-          ]
-        },
-        'RoleARN' => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
-        'ShippingOption' => 'SECOND_DAY',
-        'SnowballType'   => 'EDGE'
-      }
+          }
+        ]
+      },
+      'RoleARN' => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
+      'ShippingOption' => 'SECOND_DAY',
+      'SnowballType'   => 'EDGE'
     );
 
     # Results:

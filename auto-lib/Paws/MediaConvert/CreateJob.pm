@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1; OPTIONAL
+                  'My__stringMin1', ...    # min: 1
                 ],                         # OPTIONAL
               },
             },    # OPTIONAL
@@ -530,7 +530,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
+                    CaptionSelectorName => 'My__stringMin1',    # min: 1
                     CustomLanguageCode => 'My__stringMin3Max3PatternAZaZ3'
                     ,    # min: 3, max: 3; OPTIONAL
                     DestinationSettings => {
@@ -626,9 +626,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     AudioBufferModel  => 'DVB',    # values: DVB, ATSC; OPTIONAL
                     AudioFramesPerPes => 1,        # max: 2147483647; OPTIONAL
                     AudioPids         => [
-                      1, ...                       # min: 32, max: 8182
-                    ],                             # OPTIONAL
-                    Bitrate => 1,                  # max: 2147483647; OPTIONAL
+                      1, ...    # min: 32, max: 8182; OPTIONAL
+                    ],          # OPTIONAL
+                    Bitrate => 1,    # max: 2147483647; OPTIONAL
                     BufferModel =>
                       'MULTIPLEX',    # values: MULTIPLEX, NONE; OPTIONAL
                     DvbNitSettings => {
@@ -647,12 +647,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
                     },    # OPTIONAL
                     DvbSubPids => [
-                      1, ...    # min: 32, max: 8182
+                      1, ...    # min: 32, max: 8182; OPTIONAL
                     ],          # OPTIONAL
                     DvbTdtSettings => {
                       TdtInterval => 1,    # min: 1000, max: 30000; OPTIONAL
                     },    # OPTIONAL
-                    DvbTeletextPid => 1,    # min: 32, max: 8182
+                    DvbTeletextPid => 1,    # min: 32, max: 8182; OPTIONAL
                     EbpAudioInterval => 'VIDEO_AND_FIXED_INTERVALS'
                     , # values: VIDEO_AND_FIXED_INTERVALS, VIDEO_INTERVAL; OPTIONAL
                     EbpPlacement => 'VIDEO_AND_AUDIO_PIDS'
@@ -669,13 +669,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     PatInterval       => 1,     # max: 1000; OPTIONAL
                     PcrControl => 'PCR_EVERY_PES_PACKET'
                     , # values: PCR_EVERY_PES_PACKET, CONFIGURED_PCR_PERIOD; OPTIONAL
-                    PcrPid             => 1,        # min: 32, max: 8182
-                    PmtInterval        => 1,        # max: 1000; OPTIONAL
-                    PmtPid             => 1,        # min: 32, max: 8182
-                    PrivateMetadataPid => 1,        # min: 32, max: 8182
-                    ProgramNumber      => 1,        # max: 65535; OPTIONAL
-                    RateMode           => 'VBR',    # values: VBR, CBR; OPTIONAL
-                    Scte35Pid          => 1,        # min: 32, max: 8182
+                    PcrPid             => 1,      # min: 32, max: 8182; OPTIONAL
+                    PmtInterval        => 1,      # max: 1000; OPTIONAL
+                    PmtPid             => 1,      # min: 32, max: 8182; OPTIONAL
+                    PrivateMetadataPid => 1,      # min: 32, max: 8182; OPTIONAL
+                    ProgramNumber      => 1,      # max: 65535; OPTIONAL
+                    RateMode           => 'VBR',  # values: VBR, CBR; OPTIONAL
+                    Scte35Pid          => 1,      # min: 32, max: 8182; OPTIONAL
                     Scte35Source =>
                       'PASSTHROUGH',    # values: PASSTHROUGH, NONE; OPTIONAL
                     SegmentationMarkers => 'NONE'
@@ -683,32 +683,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     SegmentationStyle => 'MAINTAIN_CADENCE'
                     ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
                     SegmentationTime  => 1,    # OPTIONAL
-                    TimedMetadataPid  => 1,    # min: 32, max: 8182
+                    TimedMetadataPid  => 1,    # min: 32, max: 8182; OPTIONAL
                     TransportStreamId => 1,    # max: 65535; OPTIONAL
-                    VideoPid          => 1,    # min: 32, max: 8182
+                    VideoPid          => 1,    # min: 32, max: 8182; OPTIONAL
                   },    # OPTIONAL
                   M3u8Settings => {
                     AudioFramesPerPes => 1,    # max: 2147483647; OPTIONAL
                     AudioPids         => [
-                      1, ...                   # min: 32, max: 8182
+                      1, ...                   # min: 32, max: 8182; OPTIONAL
                     ],                         # OPTIONAL
                     NielsenId3  => 'INSERT',   # values: INSERT, NONE; OPTIONAL
                     PatInterval => 1,          # max: 1000; OPTIONAL
                     PcrControl => 'PCR_EVERY_PES_PACKET'
                     , # values: PCR_EVERY_PES_PACKET, CONFIGURED_PCR_PERIOD; OPTIONAL
-                    PcrPid             => 1,    # min: 32, max: 8182
+                    PcrPid             => 1,    # min: 32, max: 8182; OPTIONAL
                     PmtInterval        => 1,    # max: 1000; OPTIONAL
-                    PmtPid             => 1,    # min: 32, max: 8182
-                    PrivateMetadataPid => 1,    # min: 32, max: 8182
+                    PmtPid             => 1,    # min: 32, max: 8182; OPTIONAL
+                    PrivateMetadataPid => 1,    # min: 32, max: 8182; OPTIONAL
                     ProgramNumber      => 1,    # max: 65535; OPTIONAL
-                    Scte35Pid          => 1,    # min: 32, max: 8182
+                    Scte35Pid          => 1,    # min: 32, max: 8182; OPTIONAL
                     Scte35Source =>
                       'PASSTHROUGH',    # values: PASSTHROUGH, NONE; OPTIONAL
                     TimedMetadata =>
                       'PASSTHROUGH',    # values: PASSTHROUGH, NONE; OPTIONAL
-                    TimedMetadataPid  => 1,    # min: 32, max: 8182
+                    TimedMetadataPid  => 1,    # min: 32, max: 8182; OPTIONAL
                     TransportStreamId => 1,    # max: 65535; OPTIONAL
-                    VideoPid          => 1,    # min: 32, max: 8182
+                    VideoPid          => 1,    # min: 32, max: 8182; OPTIONAL
                   },    # OPTIONAL
                   MovSettings => {
                     ClapAtom => 'INCLUDE',  # values: INCLUDE, EXCLUDE; OPTIONAL
@@ -729,7 +729,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
+                NameModifier   => 'My__stringMin1',    # min: 1
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId       => 'My__string',

@@ -34,11 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To publish a version of a Lambda function
     # This operation publishes a version of a Lambda function
     my $FunctionConfiguration = $lambda->PublishVersion(
-      {
-        'CodeSha256'   => '',
-        'Description'  => '',
-        'FunctionName' => 'myFunction'
-      }
+      'CodeSha256'   => '',
+      'Description'  => '',
+      'FunctionName' => 'myFunction'
     );
 
     # Results:

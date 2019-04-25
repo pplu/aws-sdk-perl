@@ -37,10 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation creates a new file system with the default generalpurpose
     # performance mode.
     my $FileSystemDescription = $elasticfilesystem->CreateFileSystem(
-      {
-        'CreationToken'   => 'tokenstring',
-        'PerformanceMode' => 'generalPurpose'
-      }
+      'CreationToken'   => 'tokenstring',
+      'PerformanceMode' => 'generalPurpose'
     );
 
     # Results:

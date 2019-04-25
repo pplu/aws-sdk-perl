@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To set the health status of an instance
    # This example sets the health status of the specified instance to Unhealthy.
     $autoscaling->SetInstanceHealth(
-      {
-        'HealthStatus' => 'Unhealthy',
-        'InstanceId'   => 'i-93633f9b'
-      }
+      'HealthStatus' => 'Unhealthy',
+      'InstanceId'   => 'i-93633f9b'
     );
 
 
