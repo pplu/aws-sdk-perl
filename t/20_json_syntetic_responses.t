@@ -24,6 +24,11 @@ my $s = $aws->service('JsonParamsService',
 }
 
 { 
+  my $r = $s->Method1(response => '{}', dup_requestid => 1);
+  isa_ok($r, 'Paws::JsonParamsService::Method1Return');
+}
+
+{ 
   my $r = $s->Method1(response => '{"StringAttribute":"String","IntegerAttribute":42,"BooleanAttribute":true}');
   isa_ok($r, 'Paws::JsonParamsService::Method1Return');
   cmp_ok($r->StringAttribute, 'eq', 'String');
