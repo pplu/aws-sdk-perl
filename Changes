@@ -1,4 +1,7 @@
 0.40
+ - Solve issue #324. Paws won't die when any API returns duplicate requestid headers. IAM has 
+   started returning duplicate request id headers, basically rendering old versions of Paws
+   unable to call IAM. Issue #324 has instructions for users of older versions of Paws.
 
 0.39 11 Feb 2019
  - Paws is now installed with Module::Builder::Tiny, which speeds
