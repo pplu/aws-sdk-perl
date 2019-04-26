@@ -306,6 +306,9 @@ package Paws::Net::XMLResponse;
                       || $unserialized_struct->{'RequestId'} 
                       || $unserialized_struct->{'RequestID'}
                       || $unserialized_struct->{ ResponseMetadata }->{ RequestId };
+
+    # AWS has sent duplicate headers x-amx-request-id headers on some services. See issue 324 for more info
+    $request_id = (ref($request_id) eq 'ARRAY') ? $request_id->[0] : $request_id;
       
     if ($returns){
       if ($call_object->_result_key){
