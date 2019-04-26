@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following example retrieves the public key and import token for the
    # specified CMK.
     my $GetParametersForImportResponse = $kms->GetParametersForImport(
-      {
-        'KeyId'             => '1234abcd-12ab-34cd-56ef-1234567890ab',
-        'WrappingAlgorithm' => 'RSAES_OAEP_SHA_1',
-        'WrappingKeySpec'   => 'RSA_2048'
-      }
+      'KeyId'             => '1234abcd-12ab-34cd-56ef-1234567890ab',
+      'WrappingAlgorithm' => 'RSAES_OAEP_SHA_1',
+      'WrappingKeySpec'   => 'RSA_2048'
     );
 
     # Results:

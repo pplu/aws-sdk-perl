@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example assigns the specified secondary private IP address to the
     # specified network interface.
     $ec2->AssignPrivateIpAddresses(
-      {
-        'NetworkInterfaceId' => 'eni-e5aa89a3',
-        'PrivateIpAddresses' => ['10.0.0.82']
-      }
+      'NetworkInterfaceId' => 'eni-e5aa89a3',
+      'PrivateIpAddresses' => ['10.0.0.82']
     );
 
 # To assign secondary private IP addresses that Amazon EC2 selects to an interface
@@ -46,10 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 # the available IP addresses in the CIDR block range of the subnet the
 # network interface is associated with.
     $ec2->AssignPrivateIpAddresses(
-      {
-        'NetworkInterfaceId'             => 'eni-e5aa89a3',
-        'SecondaryPrivateIpAddressCount' => 2
-      }
+      'NetworkInterfaceId'             => 'eni-e5aa89a3',
+      'SecondaryPrivateIpAddressCount' => 2
     );
 
 

@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a rule
     # This example describes the specified rule.
     my $DescribeRulesOutput = $elasticloadbalancing->DescribeRules(
-      {
-        'RuleArns' => [
+      'RuleArns' => [
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2/9683b2d02a6cabee'
-        ]
-      }
+      ]
     );
 
     # Results:

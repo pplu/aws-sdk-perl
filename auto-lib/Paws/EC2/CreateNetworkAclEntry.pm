@@ -41,18 +41,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # allows ingress traffic from anywhere (0.0.0.0/0) on UDP port 53 (DNS) into
     # any associated subnet.
     $ec2->CreateNetworkAclEntry(
-      {
-        'CidrBlock'    => '0.0.0.0/0',
-        'Egress'       => 0,
-        'NetworkAclId' => 'acl-5fb85d36',
-        'PortRange'    => {
-          'From' => 53,
-          'To'   => 53
-        },
-        'Protocol'   => 'udp',
-        'RuleAction' => 'allow',
-        'RuleNumber' => 100
-      }
+      'CidrBlock'    => '0.0.0.0/0',
+      'Egress'       => 0,
+      'NetworkAclId' => 'acl-5fb85d36',
+      'PortRange'    => {
+        'From' => 53,
+        'To'   => 53
+      },
+      'Protocol'   => 'udp',
+      'RuleAction' => 'allow',
+      'RuleNumber' => 100
     );
 
 

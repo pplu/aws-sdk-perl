@@ -31,12 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $sts = Paws->service('STS');
     # To get temporary credentials for a role by using GetFederationToken
     my $GetFederationTokenResponse = $sts->GetFederationToken(
-      {
-        'DurationSeconds' => 3600,
-        'Name'            => 'Bob',
-        'Policy' =>
+      'DurationSeconds' => 3600,
+      'Name'            => 'Bob',
+      'Policy' =>
 '{"Version":"2012-10-17","Statement":[{"Sid":"Stmt1","Effect":"Allow","Action":"s3:*","Resource":"*"}]}'
-      }
     );
 
     # Results:

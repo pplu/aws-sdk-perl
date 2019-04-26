@@ -33,12 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete an archive
     # The example deletes the archive specified by the archive ID.
     $glacier->DeleteArchive(
-      {
-        'AccountId' => '-',
-        'ArchiveId' =>
+      'AccountId' => '-',
+      'ArchiveId' =>
 'NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLHy8pTl5nfCFJmDl2yEZONi5L26Omw12vcs01MNGntHEQL8MBfGlqrEXAMPLEArchiveId',
-        'VaultName' => 'examplevault'
-      }
+      'VaultName' => 'examplevault'
     );
 
 

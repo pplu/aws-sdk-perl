@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example deletes the access policy associated with the vault named
     # examplevault.
     $glacier->DeleteVaultAccessPolicy(
-      {
-        'AccountId' => '-',
-        'VaultName' => 'examplevault'
-      }
+      'AccountId' => '-',
+      'VaultName' => 'examplevault'
     );
 
 

@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command adds an IAM user named Bob to the IAM group named
     # Admins:
     $iam->AddUserToGroup(
-      {
-        'GroupName' => 'Admins',
-        'UserName'  => 'Bob'
-      }
+      'GroupName' => 'Admins',
+      'UserName'  => 'Bob'
     );
 
 

@@ -32,15 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe tags
     # This example describes the tags for the specified Auto Scaling group.
     my $TagsType = $autoscaling->DescribeTags(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'auto-scaling-group',
-            'Values' => ['my-auto-scaling-group']
-          }
-        ]
-      }
+        {
+          'Name'   => 'auto-scaling-group',
+          'Values' => ['my-auto-scaling-group']
+        }
+      ]
     );
 
     # Results:

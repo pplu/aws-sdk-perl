@@ -37,17 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To schedule a test run
     # The following example schedules a test run named MyRun.
     my $ScheduleRunResult = $devicefarm->ScheduleRun(
-      {
-        'DevicePoolArn' =>
-          'arn:aws:devicefarm:us-west-2:123456789101:pool:EXAMPLE-GUID-123-456',
-        'Name' => 'MyRun',
-        'ProjectArn' =>
+      'DevicePoolArn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:pool:EXAMPLE-GUID-123-456',
+      'Name' => 'MyRun',
+      'ProjectArn' =>
 'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
-        'Test' => {
-          'TestPackageArn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456',
-          'Type' => 'APPIUM_JAVA_JUNIT'
-        }
+      'Test' => {
+        'TestPackageArn' =>
+          'arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456',
+        'Type' => 'APPIUM_JAVA_JUNIT'
       }
     );
 

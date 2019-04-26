@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following example updates the specified alias to refer to the specified
    # customer master key (CMK).
     $kms->UpdateAlias(
-      {
-        'AliasName'   => 'alias/ExampleAlias',
-        'TargetKeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
-      }
+      'AliasName'   => 'alias/ExampleAlias',
+      'TargetKeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
     );
 
 

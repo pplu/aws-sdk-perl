@@ -47,20 +47,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # songs by the artist "No One You Know". For each item, only the album title
     # and song title are returned.
     my $ScanOutput = $dynamodb->Scan(
-      {
-        'ExpressionAttributeNames' => {
-          'AT' => 'AlbumTitle',
-          'ST' => 'SongTitle'
-        },
-        'ExpressionAttributeValues' => {
-          ':a' => {
-            'S' => 'No One You Know'
-          }
-        },
-        'FilterExpression'     => 'Artist = :a',
-        'ProjectionExpression' => '#ST, #AT',
-        'TableName'            => 'Music'
-      }
+      'ExpressionAttributeNames' => {
+        'AT' => 'AlbumTitle',
+        'ST' => 'SongTitle'
+      },
+      'ExpressionAttributeValues' => {
+        ':a' => {
+          'S' => 'No One You Know'
+        }
+      },
+      'FilterExpression'     => 'Artist = :a',
+      'ProjectionExpression' => '#ST, #AT',
+      'TableName'            => 'Music'
     );
 
     # Results:

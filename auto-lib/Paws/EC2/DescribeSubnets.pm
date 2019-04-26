@@ -32,15 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe the subnets for a VPC
     # This example describes the subnets for the specified VPC.
     my $DescribeSubnetsResult = $ec2->DescribeSubnets(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'vpc-id',
-            'Values' => ['vpc-a01106c2']
-          }
-        ]
-      }
+        {
+          'Name'   => 'vpc-id',
+          'Values' => ['vpc-a01106c2']
+        }
+      ]
     );
 
     # Results:

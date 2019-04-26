@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Describes the snapshot schedule for the specified gateway volume including
     # intervals at which snapshots are automatically initiated.
     my $DescribeSnapshotScheduleOutput =
-      $storagegateway->DescribeSnapshotSchedule(
-      {
-        'VolumeARN' =>
+      $storagegateway->DescribeSnapshotSchedule( 'VolumeARN' =>
 'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB'
-      }
       );
 
     # Results:

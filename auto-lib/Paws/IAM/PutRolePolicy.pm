@@ -33,12 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command adds a permissions policy to the role named
     # Test-Role.
     $iam->PutRolePolicy(
-      {
-        'PolicyDocument' =>
+      'PolicyDocument' =>
 '{"Version":"2012-10-17","Statement":{"Effect":"Allow","Action":"s3:*","Resource":"*"}}',
-        'PolicyName' => 'S3AccessPolicy',
-        'RoleName'   => 'S3Access'
-      }
+      'PolicyName' => 'S3AccessPolicy',
+      'RoleName'   => 'S3Access'
     );
 
 

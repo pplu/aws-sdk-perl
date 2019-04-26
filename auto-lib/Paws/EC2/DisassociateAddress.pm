@@ -31,20 +31,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
    # To disassociate an Elastic IP address in EC2-VPC
    # This example disassociates an Elastic IP address from an instance in a VPC.
-    $ec2->DisassociateAddress(
-      {
-        'AssociationId' => 'eipassoc-2bebb745'
-      }
-    );
+    $ec2->DisassociateAddress( 'AssociationId' => 'eipassoc-2bebb745' );
 
     # To disassociate an Elastic IP addresses in EC2-Classic
     # This example disassociates an Elastic IP address from an instance in
     # EC2-Classic.
-    $ec2->DisassociateAddress(
-      {
-        'PublicIp' => '198.51.100.0'
-      }
-    );
+    $ec2->DisassociateAddress( 'PublicIp' => '198.51.100.0' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

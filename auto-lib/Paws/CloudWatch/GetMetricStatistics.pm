@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                  # OPTIONAL
       ExtendedStatistics => [ 'MyExtendedStatistic', ... ],    # OPTIONAL
-      Statistics => [
+      Statistics         => [
         'SampleCount', ... # values: SampleCount, Average, Sum, Minimum, Maximum
       ],                   # OPTIONAL
       Unit => 'Seconds',   # OPTIONAL

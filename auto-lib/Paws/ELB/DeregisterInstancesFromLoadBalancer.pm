@@ -33,15 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # balancer.
     my $DeregisterEndPointsOutput =
       $elasticloadbalancing->DeregisterInstancesFromLoadBalancer(
-      {
-        'Instances' => [
+      'Instances' => [
 
-          {
-            'InstanceId' => 'i-d6f6fae3'
-          }
-        ],
-        'LoadBalancerName' => 'my-load-balancer'
-      }
+        {
+          'InstanceId' => 'i-d6f6fae3'
+        }
+      ],
+      'LoadBalancerName' => 'my-load-balancer'
       );
 
     # Results:

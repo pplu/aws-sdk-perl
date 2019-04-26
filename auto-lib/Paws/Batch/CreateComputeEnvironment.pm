@@ -37,30 +37,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # instance types that are launched on demand. The compute environment is
     # called C4OnDemand.
     my $CreateComputeEnvironmentResponse = $batch->CreateComputeEnvironment(
-      {
-        'ComputeEnvironmentName' => 'C4OnDemand',
-        'ComputeResources'       => {
-          'DesiredvCpus'  => 48,
-          'Ec2KeyPair'    => 'id_rsa',
-          'InstanceRole'  => 'ecsInstanceRole',
-          'InstanceTypes' => [
-            'c4.large', 'c4.xlarge', 'c4.2xlarge', 'c4.4xlarge',
-            'c4.8xlarge'
-          ],
-          'MaxvCpus'         => 128,
-          'MinvCpus'         => 0,
-          'SecurityGroupIds' => ['sg-cf5093b2'],
-          'Subnets' =>
-            [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
-          'Tags' => {
-            'Name' => 'Batch Instance - C4OnDemand'
-          },
-          'Type' => 'EC2'
+      'ComputeEnvironmentName' => 'C4OnDemand',
+      'ComputeResources'       => {
+        'DesiredvCpus' => 48,
+        'Ec2KeyPair'   => 'id_rsa',
+        'InstanceRole' => 'ecsInstanceRole',
+        'InstanceTypes' =>
+          [ 'c4.large', 'c4.xlarge', 'c4.2xlarge', 'c4.4xlarge', 'c4.8xlarge' ],
+        'MaxvCpus'         => 128,
+        'MinvCpus'         => 0,
+        'SecurityGroupIds' => ['sg-cf5093b2'],
+        'Subnets' =>
+          [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
+        'Tags' => {
+          'Name' => 'Batch Instance - C4OnDemand'
         },
-        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
-        'State'       => 'ENABLED',
-        'Type'        => 'MANAGED'
-      }
+        'Type' => 'EC2'
+      },
+      'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
+      'State'       => 'ENABLED',
+      'Type'        => 'MANAGED'
     );
 
     # Results:
@@ -76,30 +72,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # On-Demand price for the instance type. The compute environment is called
     # M4Spot.
     my $CreateComputeEnvironmentResponse = $batch->CreateComputeEnvironment(
-      {
-        'ComputeEnvironmentName' => 'M4Spot',
-        'ComputeResources'       => {
-          'BidPercentage'    => 20,
-          'DesiredvCpus'     => 4,
-          'Ec2KeyPair'       => 'id_rsa',
-          'InstanceRole'     => 'ecsInstanceRole',
-          'InstanceTypes'    => ['m4'],
-          'MaxvCpus'         => 128,
-          'MinvCpus'         => 0,
-          'SecurityGroupIds' => ['sg-cf5093b2'],
-          'SpotIamFleetRole' =>
-            'arn:aws:iam::012345678910:role/aws-ec2-spot-fleet-role',
-          'Subnets' =>
-            [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
-          'Tags' => {
-            'Name' => 'Batch Instance - M4Spot'
-          },
-          'Type' => 'SPOT'
+      'ComputeEnvironmentName' => 'M4Spot',
+      'ComputeResources'       => {
+        'BidPercentage'    => 20,
+        'DesiredvCpus'     => 4,
+        'Ec2KeyPair'       => 'id_rsa',
+        'InstanceRole'     => 'ecsInstanceRole',
+        'InstanceTypes'    => ['m4'],
+        'MaxvCpus'         => 128,
+        'MinvCpus'         => 0,
+        'SecurityGroupIds' => ['sg-cf5093b2'],
+        'SpotIamFleetRole' =>
+          'arn:aws:iam::012345678910:role/aws-ec2-spot-fleet-role',
+        'Subnets' =>
+          [ 'subnet-220c0e0a', 'subnet-1a95556d', 'subnet-978f6dce' ],
+        'Tags' => {
+          'Name' => 'Batch Instance - M4Spot'
         },
-        'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
-        'State'       => 'ENABLED',
-        'Type'        => 'MANAGED'
-      }
+        'Type' => 'SPOT'
+      },
+      'ServiceRole' => 'arn:aws:iam::012345678910:role/AWSBatchServiceRole',
+      'State'       => 'ENABLED',
+      'Type'        => 'MANAGED'
     );
 
     # Results:

@@ -34,11 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # lifetimes of the application-generated cookie.
     my $CreateAppCookieStickinessPolicyOutput =
       $elasticloadbalancing->CreateAppCookieStickinessPolicy(
-      {
-        'CookieName'       => 'my-app-cookie',
-        'LoadBalancerName' => 'my-load-balancer',
-        'PolicyName'       => 'my-app-cookie-policy'
-      }
+      'CookieName'       => 'my-app-cookie',
+      'LoadBalancerName' => 'my-load-balancer',
+      'PolicyName'       => 'my-app-cookie-policy'
       );
 
 

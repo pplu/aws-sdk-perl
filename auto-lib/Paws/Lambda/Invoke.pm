@@ -36,14 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To invoke a Lambda function
     # This operation invokes a Lambda function
     my $InvocationResponse = $lambda->Invoke(
-      {
-        'ClientContext'  => 'MyApp',
-        'FunctionName'   => 'MyFunction',
-        'InvocationType' => 'Event',
-        'LogType'        => 'Tail',
-        'Payload'        => 'fileb://file-path/input.json',
-        'Qualifier'      => 1
-      }
+      'ClientContext'  => 'MyApp',
+      'FunctionName'   => 'MyFunction',
+      'InvocationType' => 'Event',
+      'LogType'        => 'Tail',
+      'Payload'        => 'fileb://file-path/input.json',
+      'Qualifier'      => 1
     );
 
     # Results:

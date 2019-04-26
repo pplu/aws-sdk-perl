@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example creates size constraint set named
     # MySampleSizeConstraintSet.
     my $CreateSizeConstraintSetResponse = $waf->CreateSizeConstraintSet(
-      {
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'Name'        => 'MySampleSizeConstraintSet'
-      }
+      'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+      'Name'        => 'MySampleSizeConstraintSet'
     );
 
     # Results:

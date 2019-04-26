@@ -32,12 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Initiates a snapshot of a gateway from a volume recovery point.
     my $CreateSnapshotFromVolumeRecoveryPointOutput =
       $storagegateway->CreateSnapshotFromVolumeRecoveryPoint(
-      {
-        'SnapshotDescription' =>
-          'My root volume snapshot as of 2017-06-30T10:10:10.000Z',
-        'VolumeARN' =>
+      'SnapshotDescription' =>
+        'My root volume snapshot as of 2017-06-30T10:10:10.000Z',
+      'VolumeARN' =>
 'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB'
-      }
       );
 
     # Results:

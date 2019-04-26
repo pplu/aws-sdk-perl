@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # credentials information for a specified iSCSI target, one for each
     # target-initiator pair.
     my $DescribeChapCredentialsOutput =
-      $storagegateway->DescribeChapCredentials(
-      {
-        'TargetARN' =>
+      $storagegateway->DescribeChapCredentials( 'TargetARN' =>
 'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume'
-      }
       );
 
     # Results:

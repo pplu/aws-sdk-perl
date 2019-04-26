@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following example returns the details of a SQL injection match set with
    # the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
     my $GetSqlInjectionMatchSetResponse = $waf->GetSqlInjectionMatchSet(
-      {
-        'SqlInjectionMatchSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5'
-      }
-    );
+      'SqlInjectionMatchSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5' );
 
     # Results:
     my $SqlInjectionMatchSet =

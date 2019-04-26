@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a DB snapshot.
     # This example creates a DB snapshot.
     my $CreateDBSnapshotResult = $rds->CreateDBSnapshot(
-      {
-        'DBInstanceIdentifier' => 'mymysqlinstance',
-        'DBSnapshotIdentifier' => 'mydbsnapshot'
-      }
+      'DBInstanceIdentifier' => 'mymysqlinstance',
+      'DBSnapshotIdentifier' => 'mydbsnapshot'
     );
 
 

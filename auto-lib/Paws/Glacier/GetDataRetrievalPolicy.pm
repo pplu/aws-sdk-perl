@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glacier = Paws->service('Glacier');
     # To get the current data retrieval policy for an account
     # The example returns the current data retrieval policy for the account.
-    my $GetDataRetrievalPolicyOutput = $glacier->GetDataRetrievalPolicy(
-      {
-        'AccountId' => '-'
-      }
-    );
+    my $GetDataRetrievalPolicyOutput =
+      $glacier->GetDataRetrievalPolicy( 'AccountId' => '-' );
 
     # Results:
     my $Policy = $GetDataRetrievalPolicyOutput->Policy;

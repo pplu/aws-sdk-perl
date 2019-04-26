@@ -33,10 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a Spot fleet request
     # This example describes the specified Spot fleet request.
     my $DescribeSpotFleetRequestsResponse = $ec2->DescribeSpotFleetRequests(
-      {
-        'SpotFleetRequestIds' => ['sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE']
-      }
-    );
+      'SpotFleetRequestIds' => ['sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'] );
 
     # Results:
     my $SpotFleetRequestConfigs =

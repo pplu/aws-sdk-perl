@@ -29,11 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $dynamodb = Paws->service('DynamoDB');
     # To describe a table
     # This example describes the Music table.
-    my $DescribeTableOutput = $dynamodb->DescribeTable(
-      {
-        'TableName' => 'Music'
-      }
-    );
+    my $DescribeTableOutput =
+      $dynamodb->DescribeTable( 'TableName' => 'Music' );
 
     # Results:
     my $Table = $DescribeTableOutput->Table;

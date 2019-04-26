@@ -42,10 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following operation updates an environment named "my-env" to version
     # "v2" of the application to which it belongs:
     my $EnvironmentDescription = $elasticbeanstalk->UpdateEnvironment(
-      {
-        'EnvironmentName' => 'my-env',
-        'VersionLabel'    => 'v2'
-      }
+      'EnvironmentName' => 'my-env',
+      'VersionLabel'    => 'v2'
     );
 
     # Results:
@@ -67,35 +65,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following operation configures several options in the
     # aws:elb:loadbalancer namespace:
     my $EnvironmentDescription = $elasticbeanstalk->UpdateEnvironment(
-      {
-        'EnvironmentName' => 'my-env',
-        'OptionSettings'  => [
+      'EnvironmentName' => 'my-env',
+      'OptionSettings'  => [
 
-          {
-            'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'Interval',
-            'Value'      => 15
-          },
+        {
+          'Namespace'  => 'aws:elb:healthcheck',
+          'OptionName' => 'Interval',
+          'Value'      => 15
+        },
 
-          {
-            'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'Timeout',
-            'Value'      => 8
-          },
+        {
+          'Namespace'  => 'aws:elb:healthcheck',
+          'OptionName' => 'Timeout',
+          'Value'      => 8
+        },
 
-          {
-            'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'HealthyThreshold',
-            'Value'      => 2
-          },
+        {
+          'Namespace'  => 'aws:elb:healthcheck',
+          'OptionName' => 'HealthyThreshold',
+          'Value'      => 2
+        },
 
-          {
-            'Namespace'  => 'aws:elb:healthcheck',
-            'OptionName' => 'UnhealthyThreshold',
-            'Value'      => 3
-          }
-        ]
-      }
+        {
+          'Namespace'  => 'aws:elb:healthcheck',
+          'OptionName' => 'UnhealthyThreshold',
+          'Value'      => 3
+        }
+      ]
     );
 
     # Results:

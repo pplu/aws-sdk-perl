@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To check the availability of a CNAME
     # The following operation checks the availability of the subdomain my-cname:
     my $CheckDNSAvailabilityResultMessage =
-      $elasticbeanstalk->CheckDNSAvailability(
-      {
-        'CNAMEPrefix' => 'my-cname'
-      }
-      );
+      $elasticbeanstalk->CheckDNSAvailability( 'CNAMEPrefix' => 'my-cname' );
 
     # Results:
     my $Available = $CheckDNSAvailabilityResultMessage->Available;

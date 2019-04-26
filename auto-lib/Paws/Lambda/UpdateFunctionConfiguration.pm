@@ -44,17 +44,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To update a Lambda function's configuration
     # This operation updates a Lambda function's configuration
     my $FunctionConfiguration = $lambda->UpdateFunctionConfiguration(
-      {
-        'Description'  => '',
-        'FunctionName' => 'myFunction',
-        'Handler'      => 'index.handler',
-        'MemorySize'   => 128,
-        'Role'      => 'arn:aws:iam::123456789012:role/lambda_basic_execution',
-        'Runtime'   => 'python2.7',
-        'Timeout'   => 123,
-        'VpcConfig' => {
+      'Description'  => '',
+      'FunctionName' => 'myFunction',
+      'Handler'      => 'index.handler',
+      'MemorySize'   => 128,
+      'Role'         => 'arn:aws:iam::123456789012:role/lambda_basic_execution',
+      'Runtime'      => 'python2.7',
+      'Timeout'      => 123,
+      'VpcConfig'    => {
 
-        }
       }
     );
 

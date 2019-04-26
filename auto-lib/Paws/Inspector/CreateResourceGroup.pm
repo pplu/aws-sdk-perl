@@ -33,15 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Amazon Inspector assessment target. The created resource group is then used
    # to create an Amazon Inspector assessment target.
     my $CreateResourceGroupResponse = $inspector->CreateResourceGroup(
-      {
-        'ResourceGroupTags' => [
+      'ResourceGroupTags' => [
 
-          {
-            'Key'   => 'Name',
-            'Value' => 'example'
-          }
-        ]
-      }
+        {
+          'Key'   => 'Name',
+          'Value' => 'example'
+        }
+      ]
     );
 
     # Results:

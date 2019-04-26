@@ -46,31 +46,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example updates the template and input parameters for the specified
     # stack.
     my $UpdateStackOutput = $cloudformation->UpdateStack(
-      {
-        'NotificationARNs' => [
+      'NotificationARNs' => [
 
-        ],
-        'Parameters' => [
+      ],
+      'Parameters' => [
 
-          {
-            'ParameterKey'   => 'KeyPairName',
-            'ParameterValue' => 'ExampleKeyPair'
-          },
+        {
+          'ParameterKey'   => 'KeyPairName',
+          'ParameterValue' => 'ExampleKeyPair'
+        },
 
-          {
-            'ParameterKey'   => 'SubnetIDs',
-            'ParameterValue' => 'ExampleSubnetID1, ExampleSubnetID2'
-          }
-        ],
-        'ResourceTypes' => [
+        {
+          'ParameterKey'   => 'SubnetIDs',
+          'ParameterValue' => 'ExampleSubnetID1, ExampleSubnetID2'
+        }
+      ],
+      'ResourceTypes' => [
 
-        ],
-        'StackName' => 'MyStack',
-        'Tags'      => [
+      ],
+      'StackName' => 'MyStack',
+      'Tags'      => [
 
-        ],
-        'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template'
-      }
+      ],
+      'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template'
     );
 
     # Results:
@@ -82,31 +80,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # specified stack. If you don't specify a parameter value, AWS CloudFormation
    # uses the default value from the template.
     my $UpdateStackOutput = $cloudformation->UpdateStack(
-      {
-        'NotificationARNs' => [
+      'NotificationARNs' => [
 
-        ],
-        'Parameters' => [
+      ],
+      'Parameters' => [
 
-          {
-            'ParameterKey'     => 'KeyPairName',
-            'UsePreviousValue' => 1
-          },
+        {
+          'ParameterKey'     => 'KeyPairName',
+          'UsePreviousValue' => 1
+        },
 
-          {
-            'ParameterKey'   => 'SubnetIDs',
-            'ParameterValue' => 'SampleSubnetID1, UpdatedSampleSubnetID2'
-          }
-        ],
-        'ResourceTypes' => [
+        {
+          'ParameterKey'   => 'SubnetIDs',
+          'ParameterValue' => 'SampleSubnetID1, UpdatedSampleSubnetID2'
+        }
+      ],
+      'ResourceTypes' => [
 
-        ],
-        'StackName' => 'MyStack',
-        'Tags'      => [
+      ],
+      'StackName' => 'MyStack',
+      'Tags'      => [
 
-        ],
-        'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template'
-      }
+      ],
+      'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template'
     );
 
     # Results:
@@ -116,27 +112,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To update an AWS CloudFormation stack
     # This example adds two stack notification topics to the specified stack.
     my $UpdateStackOutput = $cloudformation->UpdateStack(
-      {
-        'Capabilities' => [
+      'Capabilities' => [
 
-        ],
-        'NotificationARNs' => [
-          'arn:aws:sns:use-east-1:123456789012:mytopic1',
-          'arn:aws:sns:us-east-1:123456789012:mytopic2'
-        ],
-        'Parameters' => [
+      ],
+      'NotificationARNs' => [
+        'arn:aws:sns:use-east-1:123456789012:mytopic1',
+        'arn:aws:sns:us-east-1:123456789012:mytopic2'
+      ],
+      'Parameters' => [
 
-        ],
-        'ResourceTypes' => [
+      ],
+      'ResourceTypes' => [
 
-        ],
-        'StackName' => 'MyStack',
-        'Tags'      => [
+      ],
+      'StackName' => 'MyStack',
+      'Tags'      => [
 
-        ],
-        'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template',
-        'UsePreviousTemplate' => 1
-      }
+      ],
+      'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template',
+      'UsePreviousTemplate' => 1
     );
 
     # Results:

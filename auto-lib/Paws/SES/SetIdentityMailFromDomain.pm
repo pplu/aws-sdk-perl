@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example configures Amazon SES to use a custom MAIL FROM
     # domain for an identity:
     my $SetIdentityMailFromDomainResponse = $email->SetIdentityMailFromDomain(
-      {
-        'BehaviorOnMXFailure' => 'UseDefaultValue',
-        'Identity'            => 'user@example.com',
-        'MailFromDomain'      => 'bounces.example.com'
-      }
+      'BehaviorOnMXFailure' => 'UseDefaultValue',
+      'Identity'            => 'user@example.com',
+      'MailFromDomain'      => 'bounces.example.com'
     );
 
 

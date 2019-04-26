@@ -32,11 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To create a VPC
     # This example creates a VPC with the specified CIDR block.
-    my $CreateVpcResult = $ec2->CreateVpc(
-      {
-        'CidrBlock' => '10.0.0.0/16'
-      }
-    );
+    my $CreateVpcResult = $ec2->CreateVpc( 'CidrBlock' => '10.0.0.0/16' );
 
     # Results:
     my $Vpc = $CreateVpcResult->Vpc;

@@ -31,12 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Updates the gateway virtual machine (VM) software. The request immediately
     # triggers the software update.
     my $UpdateGatewaySoftwareNowOutput =
-      $storagegateway->UpdateGatewaySoftwareNow(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
-      );
+      $storagegateway->UpdateGatewaySoftwareNow( 'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
 
     # Results:
     my $GatewayARN = $UpdateGatewaySoftwareNowOutput->GatewayARN;

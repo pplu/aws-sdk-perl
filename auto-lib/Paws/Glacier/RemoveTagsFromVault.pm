@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To remove tags from a vault
     # The example removes two tags from the vault named examplevault.
     $glacier->RemoveTagsFromVault(
-      {
-        'TagKeys'   => [ 'examplekey1', 'examplekey2' ],
-        'AccountId' => '-',
-        'VaultName' => 'examplevault'
-      }
+      'TagKeys'   => [ 'examplekey1', 'examplekey2' ],
+      'AccountId' => '-',
+      'VaultName' => 'examplevault'
     );
 
 

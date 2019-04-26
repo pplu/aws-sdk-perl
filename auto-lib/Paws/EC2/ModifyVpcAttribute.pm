@@ -35,12 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # is true, the Amazon DNS server resolves DNS hostnames for instances in the
     # VPC to their corresponding IP addresses; otherwise, it does not.
     $ec2->ModifyVpcAttribute(
-      {
-        'EnableDnsSupport' => {
-          'Value' => 0
-        },
-        'VpcId' => 'vpc-a01106c2'
-      }
+      'EnableDnsSupport' => {
+        'Value' => 0
+      },
+      'VpcId' => 'vpc-a01106c2'
     );
 
     # To modify the enableDnsHostnames attribute
@@ -49,12 +47,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # attribute is true, instances in the VPC get DNS hostnames; otherwise, they
     # do not.
     $ec2->ModifyVpcAttribute(
-      {
-        'EnableDnsHostnames' => {
-          'Value' => 0
-        },
-        'VpcId' => 'vpc-a01106c2'
-      }
+      'EnableDnsHostnames' => {
+        'Value' => 0
+      },
+      'VpcId' => 'vpc-a01106c2'
     );
 
 

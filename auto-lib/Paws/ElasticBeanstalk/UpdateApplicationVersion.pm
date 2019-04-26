@@ -34,11 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # named 22a0-stage-150819_185942:
     my $ApplicationVersionDescriptionMessage =
       $elasticbeanstalk->UpdateApplicationVersion(
-      {
-        'ApplicationName' => 'my-app',
-        'Description'     => 'new description',
-        'VersionLabel'    => '22a0-stage-150819_185942'
-      }
+      'ApplicationName' => 'my-app',
+      'Description'     => 'new description',
+      'VersionLabel'    => '22a0-stage-150819_185942'
       );
 
     # Results:

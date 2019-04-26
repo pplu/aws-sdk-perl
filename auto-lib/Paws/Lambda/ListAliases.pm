@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a Lambda function aliases
     # This operation retrieves a Lambda function's aliases
     my $ListAliasesResponse = $lambda->ListAliases(
-      {
-        'FunctionName'    => 'myFunction',
-        'FunctionVersion' => 1,
-        'Marker'          => '',
-        'MaxItems'        => 123
-      }
+      'FunctionName'    => 'myFunction',
+      'FunctionVersion' => 1,
+      'Marker'          => '',
+      'MaxItems'        => 123
     );
 
     # Results:

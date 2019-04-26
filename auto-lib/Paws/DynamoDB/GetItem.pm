@@ -38,17 +38,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # partition key and a sort key (Artist and SongTitle), so you must specify
     # both of these attributes.
     my $GetItemOutput = $dynamodb->GetItem(
-      {
-        'Key' => {
-          'Artist' => {
-            'S' => 'Acme Band'
-          },
-          'SongTitle' => {
-            'S' => 'Happy Day'
-          }
+      'Key' => {
+        'Artist' => {
+          'S' => 'Acme Band'
         },
-        'TableName' => 'Music'
-      }
+        'SongTitle' => {
+          'S' => 'Happy Day'
+        }
+      },
+      'TableName' => 'Music'
     );
 
     # Results:

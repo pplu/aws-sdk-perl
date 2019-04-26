@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a new application
     # The following operation creates a new application named my-app:
     my $ApplicationDescriptionMessage = $elasticbeanstalk->CreateApplication(
-      {
-        'ApplicationName' => 'my-app',
-        'Description'     => 'my application'
-      }
+      'ApplicationName' => 'my-app',
+      'Description'     => 'my application'
     );
 
     # Results:

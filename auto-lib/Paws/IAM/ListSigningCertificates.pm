@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To list the signing certificates for an IAM user
    # The following command lists the signing certificates for the IAM user named
    # Bob.
-    my $ListSigningCertificatesResponse = $iam->ListSigningCertificates(
-      {
-        'UserName' => 'Bob'
-      }
-    );
+    my $ListSigningCertificatesResponse =
+      $iam->ListSigningCertificates( 'UserName' => 'Bob' );
 
     # Results:
     my $Certificates = $ListSigningCertificatesResponse->Certificates;

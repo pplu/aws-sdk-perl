@@ -36,11 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # called web-app that is running in the default cluster.
     my $DescribeScalingActivitiesResponse =
       $autoscaling->DescribeScalingActivities(
-      {
-        'ResourceId'        => 'service/default/web-app',
-        'ScalableDimension' => 'ecs:service:DesiredCount',
-        'ServiceNamespace'  => 'ecs'
-      }
+      'ResourceId'        => 'service/default/web-app',
+      'ScalableDimension' => 'ecs:service:DesiredCount',
+      'ServiceNamespace'  => 'ecs'
       );
 
     # Results:

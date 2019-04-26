@@ -37,17 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # named my-template:
     my $ConfigurationSettingsDescription =
       $elasticbeanstalk->UpdateConfigurationTemplate(
-      {
-        'ApplicationName' => 'my-app',
-        'OptionsToRemove' => [
+      'ApplicationName' => 'my-app',
+      'OptionsToRemove' => [
 
-          {
-            'Namespace'  => 'aws:elasticbeanstalk:healthreporting:system',
-            'OptionName' => 'ConfigDocument'
-          }
-        ],
-        'TemplateName' => 'my-template'
-      }
+        {
+          'Namespace'  => 'aws:elasticbeanstalk:healthreporting:system',
+          'OptionName' => 'ConfigDocument'
+        }
+      ],
+      'TemplateName' => 'my-template'
       );
 
     # Results:

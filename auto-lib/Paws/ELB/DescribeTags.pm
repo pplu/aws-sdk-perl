@@ -30,10 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe the tags for a load balancer
     # This example describes the tags for the specified load balancer.
     my $DescribeTagsOutput = $elasticloadbalancing->DescribeTags(
-      {
-        'LoadBalancerNames' => ['my-load-balancer']
-      }
-    );
+      'LoadBalancerNames' => ['my-load-balancer'] );
 
     # Results:
     my $TagDescriptions = $DescribeTagsOutput->TagDescriptions;

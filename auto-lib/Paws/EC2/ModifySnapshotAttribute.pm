@@ -38,23 +38,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # create volume permission for a user with the account ID ``123456789012``.
     # If the command succeeds, no output is returned.
     $ec2->ModifySnapshotAttribute(
-      {
-        'Attribute'     => 'createVolumePermission',
-        'OperationType' => 'remove',
-        'SnapshotId'    => 'snap-1234567890abcdef0',
-        'UserIds'       => [123456789012]
-      }
+      'Attribute'     => 'createVolumePermission',
+      'OperationType' => 'remove',
+      'SnapshotId'    => 'snap-1234567890abcdef0',
+      'UserIds'       => [123456789012]
     );
 
     # To make a snapshot public
     # This example makes the snapshot ``snap-1234567890abcdef0`` public.
     $ec2->ModifySnapshotAttribute(
-      {
-        'Attribute'     => 'createVolumePermission',
-        'GroupNames'    => ['all'],
-        'OperationType' => 'add',
-        'SnapshotId'    => 'snap-1234567890abcdef0'
-      }
+      'Attribute'     => 'createVolumePermission',
+      'GroupNames'    => ['all'],
+      'OperationType' => 'add',
+      'SnapshotId'    => 'snap-1234567890abcdef0'
     );
 
 

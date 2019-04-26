@@ -32,16 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a new tag
     # This operation creates a new tag for an EFS file system.
     $elasticfilesystem->CreateTags(
-      {
-        'FileSystemId' => 'fs-01234567',
-        'Tags'         => [
+      'FileSystemId' => 'fs-01234567',
+      'Tags'         => [
 
-          {
-            'Key'   => 'Name',
-            'Value' => 'MyFileSystem'
-          }
-        ]
-      }
+        {
+          'Key'   => 'Name',
+          'Value' => 'MyFileSystem'
+        }
+      ]
     );
 
 

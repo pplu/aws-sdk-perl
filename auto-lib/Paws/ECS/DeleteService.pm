@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a service
     # This example deletes the my-http-service service. The service must have a
     # desired count and running count of 0 before you can delete it.
-    my $DeleteServiceResponse = $ecs->DeleteService(
-      {
-        'Service' => 'my-http-service'
-      }
-    );
+    my $DeleteServiceResponse =
+      $ecs->DeleteService( 'Service' => 'my-http-service' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

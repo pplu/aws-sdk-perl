@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example deletes a scaling policy for the Amazon ECS service called
     # web-app, which is running in the default cluster.
     my $DeleteScalingPolicyResponse = $autoscaling->DeleteScalingPolicy(
-      {
-        'PolicyName'        => 'web-app-cpu-lt-25',
-        'ResourceId'        => 'service/default/web-app',
-        'ScalableDimension' => 'ecs:service:DesiredCount',
-        'ServiceNamespace'  => 'ecs'
-      }
+      'PolicyName'        => 'web-app-cpu-lt-25',
+      'ResourceId'        => 'service/default/web-app',
+      'ScalableDimension' => 'ecs:service:DesiredCount',
+      'ServiceNamespace'  => 'ecs'
     );
 
 

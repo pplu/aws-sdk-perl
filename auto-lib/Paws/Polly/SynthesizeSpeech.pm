@@ -38,14 +38,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To synthesize speech
     # Synthesizes plain text or SSML into a file of human-like speech.
     my $SynthesizeSpeechOutput = $polly->SynthesizeSpeech(
-      {
-        'LexiconNames' => ['example'],
-        'OutputFormat' => 'mp3',
-        'SampleRate'   => 8000,
-        'Text'         => 'All Gaul is divided into three parts',
-        'TextType'     => 'text',
-        'VoiceId'      => 'Joanna'
-      }
+      'LexiconNames' => ['example'],
+      'OutputFormat' => 'mp3',
+      'SampleRate'   => 8000,
+      'Text'         => 'All Gaul is divided into three parts',
+      'TextType'     => 'text',
+      'VoiceId'      => 'Joanna'
     );
 
     # Results:

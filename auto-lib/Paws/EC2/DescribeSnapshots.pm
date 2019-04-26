@@ -36,11 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a snapshot
     # This example describes a snapshot with the snapshot ID of
     # ``snap-1234567890abcdef0``.
-    my $DescribeSnapshotsResult = $ec2->DescribeSnapshots(
-      {
-        'SnapshotIds' => ['snap-1234567890abcdef0']
-      }
-    );
+    my $DescribeSnapshotsResult =
+      $ec2->DescribeSnapshots( 'SnapshotIds' => ['snap-1234567890abcdef0'] );
 
     # Results:
     my $NextToken = $DescribeSnapshotsResult->NextToken;
@@ -51,16 +48,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes all snapshots owned by the ID 012345678910 that are
     # in the ``pending`` status.
     my $DescribeSnapshotsResult = $ec2->DescribeSnapshots(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'status',
-            'Values' => ['pending']
-          }
-        ],
-        'OwnerIds' => [012345678910]
-      }
+        {
+          'Name'   => 'status',
+          'Values' => ['pending']
+        }
+      ],
+      'OwnerIds' => [012345678910]
     );
 
     # Results:

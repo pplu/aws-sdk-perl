@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes the imported key material from the specified
     # customer master key (CMK).
     $kms->DeleteImportedKeyMaterial(
-      {
-        'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
-      }
-    );
+      'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

@@ -31,8 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $ecr = Paws->service('ECR');
-    my $GetLifecyclePolicyPreviewResponse = $ecr->GetLifecyclePolicyPreview(
+    my $api.ecr = Paws->service('ECR');
+    my $GetLifecyclePolicyPreviewResponse =
+      $api . ecr->GetLifecyclePolicyPreview(
       RepositoryName => 'MyRepositoryName',
       Filter         => {
         TagStatus => 'TAGGED',    # values: TAGGED, UNTAGGED, ANY; OPTIONAL
@@ -47,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults => 1,                       # OPTIONAL
       NextToken  => 'MyNextToken',           # OPTIONAL
       RegistryId => 'MyRegistryId',          # OPTIONAL
-    );
+      );
 
     # Results:
     my $LifecyclePolicyText =
@@ -62,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ECR::GetLifecyclePolicyPreviewResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr/GetLifecyclePolicyPreview>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.ecr/GetLifecyclePolicyPreview>
 
 =head1 ATTRIBUTES
 

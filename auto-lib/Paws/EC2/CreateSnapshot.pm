@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example creates a snapshot of the volume with a volume ID of
    # ``vol-1234567890abcdef0`` and a short description to identify the snapshot.
     my $Snapshot = $ec2->CreateSnapshot(
-      {
-        'Description' => 'This is my root volume snapshot.',
-        'VolumeId'    => 'vol-1234567890abcdef0'
-      }
+      'Description' => 'This is my root volume snapshot.',
+      'VolumeId'    => 'vol-1234567890abcdef0'
     );
 
     # Results:

@@ -34,10 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # JobListEntry object is for a job in the specified cluster and contains a
     # job's state, a job's ID, and other information.
     my $ListClusterJobsResult = $snowball->ListClusterJobs(
-      {
-        'ClusterId' => 'CID123e4567-e89b-12d3-a456-426655440000'
-      }
-    );
+      'ClusterId' => 'CID123e4567-e89b-12d3-a456-426655440000' );
 
     # Results:
     my $JobListEntries = $ListClusterJobsResult->JobListEntries;

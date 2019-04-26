@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To restore an address to EC2-Classic
     # This example restores the specified Elastic IP address to the EC2-Classic
     # platform.
-    my $RestoreAddressToClassicResult = $ec2->RestoreAddressToClassic(
-      {
-        'PublicIp' => '198.51.100.0'
-      }
-    );
+    my $RestoreAddressToClassicResult =
+      $ec2->RestoreAddressToClassic( 'PublicIp' => '198.51.100.0' );
 
     # Results:
     my $PublicIp = $RestoreAddressToClassicResult->PublicIp;

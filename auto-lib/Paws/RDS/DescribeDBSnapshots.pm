@@ -39,12 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example lists all manually-created, shared snapshots for the specified
    # DB instance.
     my $DBSnapshotMessage = $rds->DescribeDBSnapshots(
-      {
-        'DBInstanceIdentifier' => 'mymysqlinstance',
-        'IncludePublic'        => 0,
-        'IncludeShared'        => 1,
-        'SnapshotType'         => 'manual'
-      }
+      'DBInstanceIdentifier' => 'mymysqlinstance',
+      'IncludePublic'        => 0,
+      'IncludeShared'        => 1,
+      'SnapshotType'         => 'manual'
     );
 
 

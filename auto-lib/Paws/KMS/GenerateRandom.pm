@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $kms = Paws->service('KMS');
     # To generate random data
     # The following example uses AWS KMS to generate 32 bytes of random data.
-    my $GenerateRandomResponse = $kms->GenerateRandom(
-      {
-        'NumberOfBytes' => 32
-      }
-    );
+    my $GenerateRandomResponse = $kms->GenerateRandom( 'NumberOfBytes' => 32 );
 
     # Results:
     my $Plaintext = $GenerateRandomResponse->Plaintext;

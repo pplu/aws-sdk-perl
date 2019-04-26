@@ -32,11 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Lists the iSCSI stored volumes of a gateway. Removes one or more tags from
     # the specified resource.
     my $RemoveTagsFromResourceOutput = $storagegateway->RemoveTagsFromResource(
-      {
-        'ResourceARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B',
-        'TagKeys' => [ 'Dev Gatgeway Region', 'East Coast' ]
-      }
+      'ResourceARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B',
+      'TagKeys' => [ 'Dev Gatgeway Region', 'East Coast' ]
     );
 
     # Results:

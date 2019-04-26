@@ -31,15 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a DHCP options set
     # This example creates a DHCP options set.
     my $CreateDhcpOptionsResult = $ec2->CreateDhcpOptions(
-      {
-        'DhcpConfigurations' => [
+      'DhcpConfigurations' => [
 
-          {
-            'Key'    => 'domain-name-servers',
-            'Values' => [ '10.2.5.1', '10.2.5.2' ]
-          }
-        ]
-      }
+        {
+          'Key'    => 'domain-name-servers',
+          'Values' => [ '10.2.5.1', '10.2.5.2' ]
+        }
+      ]
     );
 
     # Results:

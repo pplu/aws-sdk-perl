@@ -32,17 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example enables deletion protection for the specified load balancer.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
-      {
-        'Attributes' => [
+      'Attributes' => [
 
-          {
-            'Key'   => 'deletion_protection.enabled',
-            'Value' => 'true'
-          }
-        ],
-        'LoadBalancerArn' =>
+        {
+          'Key'   => 'deletion_protection.enabled',
+          'Value' => 'true'
+        }
+      ],
+      'LoadBalancerArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188'
-      }
       );
 
     # Results:
@@ -54,17 +52,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # balancer.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
-      {
-        'Attributes' => [
+      'Attributes' => [
 
-          {
-            'Key'   => 'idle_timeout.timeout_seconds',
-            'Value' => 30
-          }
-        ],
-        'LoadBalancerArn' =>
+        {
+          'Key'   => 'idle_timeout.timeout_seconds',
+          'Value' => 30
+        }
+      ],
+      'LoadBalancerArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188'
-      }
       );
 
     # Results:
@@ -78,27 +74,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # service.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
-      {
-        'Attributes' => [
+      'Attributes' => [
 
-          {
-            'Key'   => 'access_logs.s3.enabled',
-            'Value' => 'true'
-          },
+        {
+          'Key'   => 'access_logs.s3.enabled',
+          'Value' => 'true'
+        },
 
-          {
-            'Key'   => 'access_logs.s3.bucket',
-            'Value' => 'my-loadbalancer-logs'
-          },
+        {
+          'Key'   => 'access_logs.s3.bucket',
+          'Value' => 'my-loadbalancer-logs'
+        },
 
-          {
-            'Key'   => 'access_logs.s3.prefix',
-            'Value' => 'myapp'
-          }
-        ],
-        'LoadBalancerArn' =>
+        {
+          'Key'   => 'access_logs.s3.prefix',
+          'Value' => 'myapp'
+        }
+      ],
+      'LoadBalancerArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188'
-      }
       );
 
     # Results:

@@ -32,12 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To attach a policy to an IAM user
     # The following command attaches a policy to the IAM user named Bob.
     $iam->PutUserPolicy(
-      {
-        'PolicyDocument' =>
+      'PolicyDocument' =>
 '{"Version":"2012-10-17","Statement":{"Effect":"Allow","Action":"*","Resource":"*"}}',
-        'PolicyName' => 'AllAccessPolicy',
-        'UserName'   => 'Bob'
-      }
+      'PolicyName' => 'AllAccessPolicy',
+      'UserName'   => 'Bob'
     );
 
 

@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $elasticfilesystem = Paws->service('EFS');
     # To describe the tags for a file system
     # This operation describes all of a file system's tags.
-    my $DescribeTagsResponse = $elasticfilesystem->DescribeTags(
-      {
-        'FileSystemId' => 'fs-01234567'
-      }
-    );
+    my $DescribeTagsResponse =
+      $elasticfilesystem->DescribeTags( 'FileSystemId' => 'fs-01234567' );
 
     # Results:
     my $Tags = $DescribeTagsResponse->Tags;

@@ -35,11 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # instance, you must either stop those tasks before deregistering, or use the
    # force option.
     my $DeregisterContainerInstanceResponse = $ecs->DeregisterContainerInstance(
-      {
-        'Cluster'           => 'default',
-        'ContainerInstance' => 'container_instance_UUID',
-        'Force'             => 1
-      }
+      'Cluster'           => 'default',
+      'ContainerInstance' => 'container_instance_UUID',
+      'Force'             => 1
     );
 
 

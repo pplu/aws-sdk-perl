@@ -32,40 +32,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example reads multiple items from the Music table using a batch of
     # three GetItem requests.  Only the AlbumTitle attribute is returned.
     my $BatchGetItemOutput = $dynamodb->BatchGetItem(
-      {
-        'RequestItems' => {
-          'Music' => {
-            'Keys' => [
+      'RequestItems' => {
+        'Music' => {
+          'Keys' => [
 
-              {
-                'Artist' => {
-                  'S' => 'No One You Know'
-                },
-                'SongTitle' => {
-                  'S' => 'Call Me Today'
-                }
+            {
+              'Artist' => {
+                'S' => 'No One You Know'
               },
-
-              {
-                'Artist' => {
-                  'S' => 'Acme Band'
-                },
-                'SongTitle' => {
-                  'S' => 'Happy Day'
-                }
-              },
-
-              {
-                'Artist' => {
-                  'S' => 'No One You Know'
-                },
-                'SongTitle' => {
-                  'S' => 'Scared of My Shadow'
-                }
+              'SongTitle' => {
+                'S' => 'Call Me Today'
               }
-            ],
-            'ProjectionExpression' => 'AlbumTitle'
-          }
+            },
+
+            {
+              'Artist' => {
+                'S' => 'Acme Band'
+              },
+              'SongTitle' => {
+                'S' => 'Happy Day'
+              }
+            },
+
+            {
+              'Artist' => {
+                'S' => 'No One You Know'
+              },
+              'SongTitle' => {
+                'S' => 'Scared of My Shadow'
+              }
+            }
+          ],
+          'ProjectionExpression' => 'AlbumTitle'
         }
       }
     );

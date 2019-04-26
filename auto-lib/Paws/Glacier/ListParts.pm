@@ -35,12 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
  # To list the parts of an archive that have been uploaded in a multipart upload
  # The example lists all the parts of a multipart upload.
     my $ListPartsOutput = $glacier->ListParts(
-      {
-        'AccountId' => '-',
-        'UploadId' =>
+      'AccountId' => '-',
+      'UploadId' =>
 'OW2fM5iVylEpFEMM9_HpKowRapC3vn5sSL39_396UW9zLFUWVrnRHaPjUJddQ5OxSHVXjYtrN47NBZ-khxOjyEXAMPLE',
-        'VaultName' => 'examplevault'
-      }
+      'VaultName' => 'examplevault'
     );
 
     # Results:

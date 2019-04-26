@@ -33,10 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # mount target.
     my $DescribeMountTargetSecurityGroupsResponse =
       $elasticfilesystem->DescribeMountTargetSecurityGroups(
-      {
-        'MountTargetId' => 'fsmt-12340abc'
-      }
-      );
+      'MountTargetId' => 'fsmt-12340abc' );
 
     # Results:
     my $SecurityGroups =

@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command removes the policy named ExamplePolicy from the role
     # named Test-Role.
     $iam->DeleteRolePolicy(
-      {
-        'PolicyName' => 'ExamplePolicy',
-        'RoleName'   => 'Test-Role'
-      }
+      'PolicyName' => 'ExamplePolicy',
+      'RoleName'   => 'Test-Role'
     );
 
 

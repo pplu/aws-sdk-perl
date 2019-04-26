@@ -39,15 +39,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Creates a cached volume on a specified cached gateway.
     my $CreateCachediSCSIVolumeOutput =
       $storagegateway->CreateCachediSCSIVolume(
-      {
-        'ClientToken' => 'cachedvol112233',
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
-        'NetworkInterfaceId' => '10.1.1.1',
-        'SnapshotId'         => 'snap-f47b7b94',
-        'TargetName'         => 'my-volume',
-        'VolumeSizeInBytes'  => 536870912000
-      }
+      'ClientToken' => 'cachedvol112233',
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+      'NetworkInterfaceId' => '10.1.1.1',
+      'SnapshotId'         => 'snap-f47b7b94',
+      'TargetName'         => 'my-volume',
+      'VolumeSizeInBytes'  => 536870912000
       );
 
     # Results:

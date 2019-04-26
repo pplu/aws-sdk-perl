@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # load balancer.
     my $DescribeLoadBalancerPoliciesOutput =
       $elasticloadbalancing->DescribeLoadBalancerPolicies(
-      {
-        'LoadBalancerName' => 'my-load-balancer',
-        'PolicyNames'      => ['my-authentication-policy']
-      }
+      'LoadBalancerName' => 'my-load-balancer',
+      'PolicyNames'      => ['my-authentication-policy']
       );
 
     # Results:

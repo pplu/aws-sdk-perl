@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # zone.
     my $UpdateGatewayInformationOutput =
       $storagegateway->UpdateGatewayInformation(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
-        'GatewayName'     => 'MyGateway2',
-        'GatewayTimezone' => 'GMT-12:00'
-      }
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+      'GatewayName'     => 'MyGateway2',
+      'GatewayTimezone' => 'GMT-12:00'
       );
 
     # Results:

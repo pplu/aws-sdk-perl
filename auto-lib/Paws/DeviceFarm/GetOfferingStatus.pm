@@ -30,12 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To get status information about device offerings
     # The following example returns information about Device Farm offerings
     # available to your account.
-    my $GetOfferingStatusResult = $devicefarm->GetOfferingStatus(
-      {
-        'NextToken' =>
-          'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE='
-      }
-    );
+    my $GetOfferingStatusResult = $devicefarm->GetOfferingStatus( 'NextToken' =>
+        'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE=' );
 
     # Results:
     my $current    = $GetOfferingStatusResult->current;

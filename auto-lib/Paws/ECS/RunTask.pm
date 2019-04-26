@@ -43,10 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To run a task on your default cluster
     # This example runs the specified task definition on your default cluster.
     my $RunTaskResponse = $ecs->RunTask(
-      {
-        'Cluster'        => 'default',
-        'TaskDefinition' => 'sleep360:1'
-      }
+      'Cluster'        => 'default',
+      'TaskDefinition' => 'sleep360:1'
     );
 
     # Results:

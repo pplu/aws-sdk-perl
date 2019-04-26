@@ -36,12 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specific device pool, given its ARN.
     my $GetDevicePoolCompatibilityResult =
       $devicefarm->GetDevicePoolCompatibility(
-      {
-        'AppArn' => 'arn:aws:devicefarm:us-west-2::app:123-456-EXAMPLE-GUID',
-        'DevicePoolArn' =>
-          'arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID',
-        'TestType' => 'APPIUM_PYTHON'
-      }
+      'AppArn' => 'arn:aws:devicefarm:us-west-2::app:123-456-EXAMPLE-GUID',
+      'DevicePoolArn' =>
+        'arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID',
+      'TestType' => 'APPIUM_PYTHON'
       );
 
     # Results:

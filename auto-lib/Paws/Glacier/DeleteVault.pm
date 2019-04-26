@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a vault
     # The example deletes a vault named my-vault:
     $glacier->DeleteVault(
-      {
-        'AccountId' => '-',
-        'VaultName' => 'my-vault'
-      }
+      'AccountId' => '-',
+      'VaultName' => 'my-vault'
     );
 
 

@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ecs = Paws->service('ECS');
     # To create a new cluster
     # This example creates a cluster in your default region.
-    my $CreateClusterResponse = $ecs->CreateCluster(
-      {
-        'ClusterName' => 'my_cluster'
-      }
-    );
+    my $CreateClusterResponse =
+      $ecs->CreateCluster( 'ClusterName' => 'my_cluster' );
 
     # Results:
     my $cluster = $CreateClusterResponse->cluster;

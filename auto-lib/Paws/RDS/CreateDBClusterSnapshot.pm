@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a DB cluster snapshot
     # This example creates a DB cluster snapshot.
     my $CreateDBClusterSnapshotResult = $rds->CreateDBClusterSnapshot(
-      {
-        'DBClusterIdentifier'         => 'mydbcluster',
-        'DBClusterSnapshotIdentifier' => 'mydbclustersnapshot'
-      }
+      'DBClusterIdentifier'         => 'mydbcluster',
+      'DBClusterSnapshotIdentifier' => 'mydbclustersnapshot'
     );
 
 

@@ -29,12 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $storagegateway = Paws->service('StorageGateway');
     # To start a gateway service
     # Starts a gateway service that was previously shut down.
-    my $StartGatewayOutput = $storagegateway->StartGateway(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B'
-      }
-    );
+    my $StartGatewayOutput = $storagegateway->StartGateway( 'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B' );
 
     # Results:
     my $GatewayARN = $StartGatewayOutput->GatewayARN;

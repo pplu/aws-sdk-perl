@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a new vault
     # The following example creates a new vault named my-vault.
     my $CreateVaultOutput = $glacier->CreateVault(
-      {
-        'AccountId' => '-',
-        'VaultName' => 'my-vault'
-      }
+      'AccountId' => '-',
+      'VaultName' => 'my-vault'
     );
 
     # Results:

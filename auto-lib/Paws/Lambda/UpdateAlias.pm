@@ -36,12 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To update a Lambda function alias
     # This operation updates a Lambda function alias
     my $AliasConfiguration = $lambda->UpdateAlias(
-      {
-        'Description'     => '',
-        'FunctionName'    => 'myFunction',
-        'FunctionVersion' => 1,
-        'Name'            => 'functionAlias'
-      }
+      'Description'     => '',
+      'FunctionName'    => 'myFunction',
+      'FunctionVersion' => 1,
+      'Name'            => 'functionAlias'
     );
 
     # Results:

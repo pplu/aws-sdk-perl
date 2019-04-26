@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the ``autoEnableIo`` attribute of the volume with
     # the ID ``vol-049df61146c4d7901``.
     my $DescribeVolumeAttributeResult = $ec2->DescribeVolumeAttribute(
-      {
-        'Attribute' => 'autoEnableIO',
-        'VolumeId'  => 'vol-049df61146c4d7901'
-      }
+      'Attribute' => 'autoEnableIO',
+      'VolumeId'  => 'vol-049df61146c4d7901'
     );
 
     # Results:

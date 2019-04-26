@@ -29,11 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To delete a NAT gateway
     # This example deletes the specified NAT gateway.
-    my $DeleteNatGatewayResult = $ec2->DeleteNatGateway(
-      {
-        'NatGatewayId' => 'nat-04ae55e711cec5680'
-      }
-    );
+    my $DeleteNatGatewayResult =
+      $ec2->DeleteNatGateway( 'NatGatewayId' => 'nat-04ae55e711cec5680' );
 
     # Results:
     my $NatGatewayId = $DeleteNatGatewayResult->NatGatewayId;

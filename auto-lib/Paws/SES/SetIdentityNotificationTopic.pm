@@ -35,11 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # with the specified identity as the Source:
     my $SetIdentityNotificationTopicResponse =
       $email->SetIdentityNotificationTopic(
-      {
-        'Identity'         => 'user@example.com',
-        'NotificationType' => 'Bounce',
-        'SnsTopic'         => 'arn:aws:sns:us-west-2:111122223333:MyTopic'
-      }
+      'Identity'         => 'user@example.com',
+      'NotificationType' => 'Bounce',
+      'SnsTopic'         => 'arn:aws:sns:us-west-2:111122223333:MyTopic'
       );
 
 

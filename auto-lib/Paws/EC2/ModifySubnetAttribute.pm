@@ -33,12 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example modifies the specified subnet so that all instances launched
     # into this subnet are assigned a public IP address.
     $ec2->ModifySubnetAttribute(
-      {
-        'MapPublicIpOnLaunch' => {
-          'Value' => 1
-        },
-        'SubnetId' => 'subnet-1a2b3c4d'
-      }
+      'MapPublicIpOnLaunch' => {
+        'Value' => 1
+      },
+      'SubnetId' => 'subnet-1a2b3c4d'
     );
 
 

@@ -36,10 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example lists information for all option groups for the specified DB
     # engine.
     my $OptionGroups = $rds->DescribeOptionGroups(
-      {
-        'EngineName'         => 'mysql',
-        'MajorEngineVersion' => 5.6
-      }
+      'EngineName'         => 'mysql',
+      'MajorEngineVersion' => 5.6
     );
 
 

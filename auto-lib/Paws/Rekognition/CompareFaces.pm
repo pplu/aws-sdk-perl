@@ -33,19 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation compares the largest face detected in the source image with
     # each face detected in the target image.
     my $CompareFacesResponse = $rekognition->CompareFaces(
-      {
-        'SimilarityThreshold' => 90,
-        'SourceImage'         => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'mysourceimage'
-          }
-        },
-        'TargetImage' => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'mytargetimage'
-          }
+      'SimilarityThreshold' => 90,
+      'SourceImage'         => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'mysourceimage'
+        }
+      },
+      'TargetImage' => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'mytargetimage'
         }
       }
     );

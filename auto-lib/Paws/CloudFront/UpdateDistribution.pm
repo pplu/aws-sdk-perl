@@ -239,7 +239,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             {
               FailoverCriteria => {
                 StatusCodes => {
-                  Items => [ 1, ... ],     # min: 1
+                  Items    => [ 1, ... ],    # min: 1
                   Quantity => 1,
 
                 },

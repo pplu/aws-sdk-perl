@@ -35,11 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $batch = Paws->service('Batch');
     # To list running jobs
     # This example lists the running jobs in the HighPriority job queue.
-    my $ListJobsResponse = $batch->ListJobs(
-      {
-        'JobQueue' => 'HighPriority'
-      }
-    );
+    my $ListJobsResponse = $batch->ListJobs( 'JobQueue' => 'HighPriority' );
 
     # Results:
     my $jobSummaryList = $ListJobsResponse->jobSummaryList;
@@ -49,10 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example lists jobs in the HighPriority job queue that are in the
     # SUBMITTED job status.
     my $ListJobsResponse = $batch->ListJobs(
-      {
-        'JobQueue'  => 'HighPriority',
-        'JobStatus' => 'SUBMITTED'
-      }
+      'JobQueue'  => 'HighPriority',
+      'JobStatus' => 'SUBMITTED'
     );
 
     # Results:

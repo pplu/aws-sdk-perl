@@ -30,12 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a gatgeway
     # This operation deletes the gateway, but not the gateway's VM from the host
     # computer.
-    my $DeleteGatewayOutput = $storagegateway->DeleteGateway(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
-    );
+    my $DeleteGatewayOutput = $storagegateway->DeleteGateway( 'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
 
     # Results:
     my $GatewayARN = $DeleteGatewayOutput->GatewayARN;

@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command deactivates the specified access key (access key ID
     # and secret access key) for the IAM user named Bob.
     $iam->UpdateAccessKey(
-      {
-        'AccessKeyId' => 'AKIAIOSFODNN7EXAMPLE',
-        'Status'      => 'Inactive',
-        'UserName'    => 'Bob'
-      }
+      'AccessKeyId' => 'AKIAIOSFODNN7EXAMPLE',
+      'Status'      => 'Inactive',
+      'UserName'    => 'Bob'
     );
 
 

@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a specific remote access session
     # The following example deletes a specific remote access session.
     my $DeleteRemoteAccessSessionResult =
-      $devicefarm->DeleteRemoteAccessSession(
-      {
-        'Arn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456'
-      }
+      $devicefarm->DeleteRemoteAccessSession( 'Arn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456'
       );
 
 

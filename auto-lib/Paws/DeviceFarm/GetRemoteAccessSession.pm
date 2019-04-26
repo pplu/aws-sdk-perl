@@ -29,12 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $devicefarm = Paws->service('DeviceFarm');
     # To get a remote access session
     # The following example gets a specific remote access session.
-    my $GetRemoteAccessSessionResult = $devicefarm->GetRemoteAccessSession(
-      {
-        'Arn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456'
-      }
-    );
+    my $GetRemoteAccessSessionResult =
+      $devicefarm->GetRemoteAccessSession( 'Arn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456'
+      );
 
     # Results:
     my $remoteAccessSession =

@@ -40,11 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
     # To view events for an environment
     # The following operation retrieves events for an environment named my-env:
-    my $EventDescriptionsMessage = $elasticbeanstalk->DescribeEvents(
-      {
-        'EnvironmentName' => 'my-env'
-      }
-    );
+    my $EventDescriptionsMessage =
+      $elasticbeanstalk->DescribeEvents( 'EnvironmentName' => 'my-env' );
 
     # Results:
     my $Events = $EventDescriptionsMessage->Events;

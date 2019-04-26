@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve information about a vault
     # The example retrieves data about a vault named my-vault.
     my $DescribeVaultOutput = $glacier->DescribeVault(
-      {
-        'AccountId' => '-',
-        'VaultName' => 'my-vault'
-      }
+      'AccountId' => '-',
+      'VaultName' => 'my-vault'
     );
 
     # Results:

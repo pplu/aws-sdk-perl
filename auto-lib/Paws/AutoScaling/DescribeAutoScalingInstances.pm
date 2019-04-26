@@ -32,10 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe one or more Auto Scaling instances
     # This example describes the specified Auto Scaling instance.
     my $AutoScalingInstancesType = $autoscaling->DescribeAutoScalingInstances(
-      {
-        'InstanceIds' => ['i-4ba0837f']
-      }
-    );
+      'InstanceIds' => ['i-4ba0837f'] );
 
     # Results:
     my $AutoScalingInstances = $AutoScalingInstancesType->AutoScalingInstances;

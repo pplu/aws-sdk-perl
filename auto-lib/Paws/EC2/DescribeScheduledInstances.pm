@@ -35,10 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe your Scheduled Instances
     # This example describes the specified Scheduled Instance.
     my $DescribeScheduledInstancesResult = $ec2->DescribeScheduledInstances(
-      {
-        'ScheduledInstanceIds' => ['sci-1234-1234-1234-1234-123456789012']
-      }
-    );
+      'ScheduledInstanceIds' => ['sci-1234-1234-1234-1234-123456789012'] );
 
     # Results:
     my $ScheduledInstanceSet =

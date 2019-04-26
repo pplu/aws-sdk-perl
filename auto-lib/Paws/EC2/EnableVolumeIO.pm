@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To enable I/O for a volume
     # This example enables I/O on volume ``vol-1234567890abcdef0``.
-    $ec2->EnableVolumeIO(
-      {
-        'VolumeId' => 'vol-1234567890abcdef0'
-      }
-    );
+    $ec2->EnableVolumeIO( 'VolumeId' => 'vol-1234567890abcdef0' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

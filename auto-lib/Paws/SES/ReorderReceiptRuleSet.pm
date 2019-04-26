@@ -31,10 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # ReorderReceiptRuleSet
    # The following example reorders the receipt rules within a receipt rule set:
     my $ReorderReceiptRuleSetResponse = $email->ReorderReceiptRuleSet(
-      {
-        'RuleNames'   => [ 'MyRule', 'MyOtherRule' ],
-        'RuleSetName' => 'MyRuleSet'
-      }
+      'RuleNames'   => [ 'MyRule', 'MyOtherRule' ],
+      'RuleSetName' => 'MyRuleSet'
     );
 
 

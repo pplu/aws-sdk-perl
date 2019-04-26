@@ -33,16 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example adds the tag Stack=production to the specified image, or
     # overwrites an existing tag for the AMI where the tag key is Stack.
     $ec2->CreateTags(
-      {
-        'Resources' => ['ami-78a54011'],
-        'Tags'      => [
+      'Resources' => ['ami-78a54011'],
+      'Tags'      => [
 
-          {
-            'Key'   => 'Stack',
-            'Value' => 'production'
-          }
-        ]
-      }
+        {
+          'Key'   => 'Stack',
+          'Value' => 'production'
+        }
+      ]
     );
 
 

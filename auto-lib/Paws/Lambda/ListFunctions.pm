@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a list of Lambda functions
     # This operation retrieves a Lambda functions
     my $ListFunctionsResponse = $lambda->ListFunctions(
-      {
-        'Marker'   => '',
-        'MaxItems' => 123
-      }
+      'Marker'   => '',
+      'MaxItems' => 123
     );
 
     # Results:

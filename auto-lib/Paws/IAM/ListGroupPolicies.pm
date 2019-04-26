@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To list the in-line policies for an IAM group
    # The following command lists the names of in-line policies that are embedded
    # in the IAM group named Admins.
-    my $ListGroupPoliciesResponse = $iam->ListGroupPolicies(
-      {
-        'GroupName' => 'Admins'
-      }
-    );
+    my $ListGroupPoliciesResponse =
+      $iam->ListGroupPolicies( 'GroupName' => 'Admins' );
 
     # Results:
     my $PolicyNames = $ListGroupPoliciesResponse->PolicyNames;

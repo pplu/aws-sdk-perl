@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example retrieves the status of automatic annual rotation of
     # the key material for the specified CMK.
     my $GetKeyRotationStatusResponse = $kms->GetKeyRotationStatus(
-      {
-        'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
-      }
-    );
+      'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab' );
 
     # Results:
     my $KeyRotationEnabled = $GetKeyRotationStatusResponse->KeyRotationEnabled;

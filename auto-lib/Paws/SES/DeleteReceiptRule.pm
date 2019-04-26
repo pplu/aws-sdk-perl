@@ -31,10 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # DeleteReceiptRule
     # The following example deletes a receipt rule:
     my $DeleteReceiptRuleResponse = $email->DeleteReceiptRule(
-      {
-        'RuleName'    => 'MyRule',
-        'RuleSetName' => 'MyRuleSet'
-      }
+      'RuleName'    => 'MyRule',
+      'RuleSetName' => 'MyRuleSet'
     );
 
 

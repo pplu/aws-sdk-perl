@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SendUsersMessagesResponse = $pinpoint->SendUsersMessages(
       ApplicationId           => 'My__string',
       SendUsersMessageRequest => {
-        Context => { 'My__string' => 'My__string', },    # OPTIONAL
+        Context              => { 'My__string' => 'My__string', },    # OPTIONAL
         MessageConfiguration => {
           ADMMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL

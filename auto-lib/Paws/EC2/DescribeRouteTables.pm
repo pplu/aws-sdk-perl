@@ -33,11 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To describe a route table
     # This example describes the specified route table.
-    my $DescribeRouteTablesResult = $ec2->DescribeRouteTables(
-      {
-        'RouteTableIds' => ['rtb-1f382e7d']
-      }
-    );
+    my $DescribeRouteTablesResult =
+      $ec2->DescribeRouteTables( 'RouteTableIds' => ['rtb-1f382e7d'] );
 
     # Results:
     my $RouteTables = $DescribeRouteTablesResult->RouteTables;

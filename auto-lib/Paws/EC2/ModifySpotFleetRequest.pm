@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example increases the target capacity of the specified Spot fleet
     # request.
     my $ModifySpotFleetRequestResponse = $ec2->ModifySpotFleetRequest(
-      {
-        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
-        'TargetCapacity'     => 20
-      }
+      'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
+      'TargetCapacity'     => 20
     );
 
     # Results:
@@ -47,11 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example decreases the target capacity of the specified Spot fleet
     # request without terminating any Spot Instances as a result.
     my $ModifySpotFleetRequestResponse = $ec2->ModifySpotFleetRequest(
-      {
-        'ExcessCapacityTerminationPolicy' => 'NoTermination ',
-        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
-        'TargetCapacity'     => 10
-      }
+      'ExcessCapacityTerminationPolicy' => 'NoTermination ',
+      'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
+      'TargetCapacity'     => 10
     );
 
     # Results:

@@ -33,11 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # group. One target is healthy but the other is not specified in an action,
     # so it can't receive traffic from the load balancer.
     my $DescribeTargetHealthOutput =
-      $elasticloadbalancing->DescribeTargetHealth(
-      {
-        'TargetGroupArn' =>
+      $elasticloadbalancing->DescribeTargetHealth( 'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
-      }
       );
 
     # Results:
@@ -50,17 +47,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # healthy.
     my $DescribeTargetHealthOutput =
       $elasticloadbalancing->DescribeTargetHealth(
-      {
-        'TargetGroupArn' =>
+      'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
-        'Targets' => [
+      'Targets' => [
 
-          {
-            'Id'   => 'i-0f76fade',
-            'Port' => 80
-          }
-        ]
-      }
+        {
+          'Id'   => 'i-0f76fade',
+          'Port' => 80
+        }
+      ]
       );
 
     # Results:

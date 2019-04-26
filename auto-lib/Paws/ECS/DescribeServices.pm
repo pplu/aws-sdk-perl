@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a service
     # This example provides descriptive information about the service named
     # ``ecs-simple-service``.
-    my $DescribeServicesResponse = $ecs->DescribeServices(
-      {
-        'Services' => ['ecs-simple-service']
-      }
-    );
+    my $DescribeServicesResponse =
+      $ecs->DescribeServices( 'Services' => ['ecs-simple-service'] );
 
     # Results:
     my $failures = $DescribeServicesResponse->failures;

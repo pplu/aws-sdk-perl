@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $cloudformation = Paws->service('CloudFormation');
     # To validate an AWS CloudFormation template
     # This example validates the specified template.
-    my $ValidateTemplateOutput = $cloudformation->ValidateTemplate(
-      {
-        'TemplateBody' => 'MyTemplate.json'
-      }
-    );
+    my $ValidateTemplateOutput =
+      $cloudformation->ValidateTemplate( 'TemplateBody' => 'MyTemplate.json' );
 
     # Results:
     my $Capabilities       = $ValidateTemplateOutput->Capabilities;

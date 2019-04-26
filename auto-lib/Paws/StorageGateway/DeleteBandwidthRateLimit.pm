@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # download limit, or both.
     my $DeleteBandwidthRateLimitOutput =
       $storagegateway->DeleteBandwidthRateLimit(
-      {
-        'BandwidthType' => 'All',
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
+      'BandwidthType' => 'All',
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
       );
 
     # Results:
