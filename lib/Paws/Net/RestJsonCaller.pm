@@ -121,7 +121,7 @@ package Paws::Net::RestJsonCaller;
       #$request->headers->header( 'content-type'   => $self->content_type );
     } else {
       my $data = $self->_to_jsoncaller_params($call);
-      $request->content(encode_json($data));
+      $request->content(encode_json($data)) if (keys %$data > 0);
     }
     
     $request->method($call->_api_method);
