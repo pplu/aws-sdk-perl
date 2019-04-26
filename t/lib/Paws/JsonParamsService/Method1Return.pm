@@ -18,4 +18,6 @@ package Paws::JsonParamsService::Method1Return;
 
   has MapOfArrayOfString => (is => 'ro', isa => 'Paws::JsonParamsService::MapOfArrayOfString');
   has MapOfArrayOfObject => (is => 'ro', isa => 'Paws::JsonParamsService::MapOfArrayOfObject');
+
+  has _request_id => (is => 'ro', isa => 'Str');
 1;

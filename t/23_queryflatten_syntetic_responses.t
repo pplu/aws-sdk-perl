@@ -35,6 +35,19 @@ my $s = $aws->service('QueryFlattenedParamsService',
   my $r = $s->Method2(response => q'
   <Method2Response xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
     <Method2Result>
+    </Method2Result>
+    <ResponseMetadata>
+      <RequestId>384ac68d-3775-11df-8963-01868b7c937a</RequestId>
+    </ResponseMetadata>
+  </Method2Response>
+', dup_requestid => 1);
+  isa_ok($r, 'Paws::JsonParamsService::Method1Return');
+}
+
+{ 
+  my $r = $s->Method2(response => q'
+  <Method2Response xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
+    <Method2Result>
       <StringAttribute>String</StringAttribute>
       <IntegerAttribute>42</IntegerAttribute>
       <BooleanAttribute>1</BooleanAttribute>
