@@ -40,22 +40,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
+      ],                                    # OPTIONAL
       LaunchTemplateId   => 'MyString',                # OPTIONAL
       LaunchTemplateName => 'MyLaunchTemplateName',    # OPTIONAL
       MaxResults         => 1,                         # OPTIONAL
       MaxVersion         => 'MyString',                # OPTIONAL
       MinVersion         => 'MyString',                # OPTIONAL
       NextToken          => 'MyString',                # OPTIONAL
-      Versions           => [
-        'MyString', ...                                # OPTIONAL
-      ],                                               # OPTIONAL
+      Versions           => [ 'MyString', ... ],       # OPTIONAL
       );
 
     # Results:

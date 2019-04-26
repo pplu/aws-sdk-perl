@@ -39,12 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # ``snap-066877671789bd71b`` from the ``us-west-2`` region to the
    # ``us-east-1`` region and adds a short description to identify the snapshot.
     my $CopySnapshotResult = $ec2->CopySnapshot(
-      {
-        'Description'       => 'This is my copied snapshot.',
-        'DestinationRegion' => 'us-east-1',
-        'SourceRegion'      => 'us-west-2',
-        'SourceSnapshotId'  => 'snap-066877671789bd71b'
-      }
+      'Description'       => 'This is my copied snapshot.',
+      'DestinationRegion' => 'us-east-1',
+      'SourceRegion'      => 'us-west-2',
+      'SourceSnapshotId'  => 'snap-066877671789bd71b'
     );
 
     # Results:

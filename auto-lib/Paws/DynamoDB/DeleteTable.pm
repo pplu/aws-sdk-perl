@@ -29,11 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $dynamodb = Paws->service('DynamoDB');
     # To delete a table
     # This example deletes the Music table.
-    my $DeleteTableOutput = $dynamodb->DeleteTable(
-      {
-        'TableName' => 'Music'
-      }
-    );
+    my $DeleteTableOutput = $dynamodb->DeleteTable( 'TableName' => 'Music' );
 
     # Results:
     my $TableDescription = $DeleteTableOutput->TableDescription;

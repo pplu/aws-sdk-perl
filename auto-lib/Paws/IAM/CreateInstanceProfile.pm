@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an instance profile
     # The following command creates an instance profile named Webserver that is
     # ready to have a role attached and then be associated with an EC2 instance.
-    my $CreateInstanceProfileResponse = $iam->CreateInstanceProfile(
-      {
-        'InstanceProfileName' => 'Webserver'
-      }
-    );
+    my $CreateInstanceProfileResponse =
+      $iam->CreateInstanceProfile( 'InstanceProfileName' => 'Webserver' );
 
     # Results:
     my $InstanceProfile = $CreateInstanceProfileResponse->InstanceProfile;

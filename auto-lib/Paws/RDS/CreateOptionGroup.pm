@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an option group
     # This example creates an option group.
     my $CreateOptionGroupResult = $rds->CreateOptionGroup(
-      {
-        'EngineName'             => 'MySQL',
-        'MajorEngineVersion'     => 5.6,
-        'OptionGroupDescription' => 'My MySQL 5.6 option group',
-        'OptionGroupName'        => 'mymysqloptiongroup'
-      }
+      'EngineName'             => 'MySQL',
+      'MajorEngineVersion'     => 5.6,
+      'OptionGroupDescription' => 'My MySQL 5.6 option group',
+      'OptionGroupName'        => 'mymysqloptiongroup'
     );
 
 

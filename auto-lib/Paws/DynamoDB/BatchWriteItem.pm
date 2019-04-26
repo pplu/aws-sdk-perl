@@ -33,59 +33,57 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example adds three new items to the Music table using a batch of three
    # PutItem requests.
     my $BatchWriteItemOutput = $dynamodb->BatchWriteItem(
-      {
-        'RequestItems' => {
-          'Music' => [
+      'RequestItems' => {
+        'Music' => [
 
-            {
-              'PutRequest' => {
-                'Item' => {
-                  'AlbumTitle' => {
-                    'S' => 'Somewhat Famous'
-                  },
-                  'Artist' => {
-                    'S' => 'No One You Know'
-                  },
-                  'SongTitle' => {
-                    'S' => 'Call Me Today'
-                  }
-                }
-              }
-            },
-
-            {
-              'PutRequest' => {
-                'Item' => {
-                  'AlbumTitle' => {
-                    'S' => 'Songs About Life'
-                  },
-                  'Artist' => {
-                    'S' => 'Acme Band'
-                  },
-                  'SongTitle' => {
-                    'S' => 'Happy Day'
-                  }
-                }
-              }
-            },
-
-            {
-              'PutRequest' => {
-                'Item' => {
-                  'AlbumTitle' => {
-                    'S' => 'Blue Sky Blues'
-                  },
-                  'Artist' => {
-                    'S' => 'No One You Know'
-                  },
-                  'SongTitle' => {
-                    'S' => 'Scared of My Shadow'
-                  }
+          {
+            'PutRequest' => {
+              'Item' => {
+                'AlbumTitle' => {
+                  'S' => 'Somewhat Famous'
+                },
+                'Artist' => {
+                  'S' => 'No One You Know'
+                },
+                'SongTitle' => {
+                  'S' => 'Call Me Today'
                 }
               }
             }
-          ]
-        }
+          },
+
+          {
+            'PutRequest' => {
+              'Item' => {
+                'AlbumTitle' => {
+                  'S' => 'Songs About Life'
+                },
+                'Artist' => {
+                  'S' => 'Acme Band'
+                },
+                'SongTitle' => {
+                  'S' => 'Happy Day'
+                }
+              }
+            }
+          },
+
+          {
+            'PutRequest' => {
+              'Item' => {
+                'AlbumTitle' => {
+                  'S' => 'Blue Sky Blues'
+                },
+                'Artist' => {
+                  'S' => 'No One You Know'
+                },
+                'SongTitle' => {
+                  'S' => 'Scared of My Shadow'
+                }
+              }
+            }
+          }
+        ]
       }
     );
 

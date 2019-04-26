@@ -31,11 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To describe a VPC
     # This example describes the specified VPC.
-    my $DescribeVpcsResult = $ec2->DescribeVpcs(
-      {
-        'VpcIds' => ['vpc-a01106c2']
-      }
-    );
+    my $DescribeVpcsResult = $ec2->DescribeVpcs( 'VpcIds' => ['vpc-a01106c2'] );
 
     # Results:
     my $Vpcs = $DescribeVpcsResult->Vpcs;

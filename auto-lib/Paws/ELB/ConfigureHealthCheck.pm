@@ -33,16 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # health of your backend EC2 instances.
     my $ConfigureHealthCheckOutput =
       $elasticloadbalancing->ConfigureHealthCheck(
-      {
-        'HealthCheck' => {
-          'HealthyThreshold'   => 2,
-          'Interval'           => 30,
-          'Target'             => 'HTTP:80/png',
-          'Timeout'            => 3,
-          'UnhealthyThreshold' => 2
-        },
-        'LoadBalancerName' => 'my-load-balancer'
-      }
+      'HealthCheck' => {
+        'HealthyThreshold'   => 2,
+        'Interval'           => 30,
+        'Target'             => 'HTTP:80/png',
+        'Timeout'            => 3,
+        'UnhealthyThreshold' => 2
+      },
+      'LoadBalancerName' => 'my-load-balancer'
       );
 
     # Results:

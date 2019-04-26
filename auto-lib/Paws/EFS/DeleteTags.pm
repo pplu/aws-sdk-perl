@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete tags for an EFS file system
     # This operation deletes tags for an EFS file system.
     $elasticfilesystem->DeleteTags(
-      {
-        'FileSystemId' => 'fs-01234567',
-        'TagKeys'      => ['Name']
-      }
+      'FileSystemId' => 'fs-01234567',
+      'TagKeys'      => ['Name']
     );
 
 

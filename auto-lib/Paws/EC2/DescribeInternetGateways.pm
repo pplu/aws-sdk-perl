@@ -32,15 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe the Internet gateway for a VPC
     # This example describes the Internet gateway for the specified VPC.
     my $DescribeInternetGatewaysResult = $ec2->DescribeInternetGateways(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'attachment.vpc-id',
-            'Values' => ['vpc-a01106c2']
-          }
-        ]
-      }
+        {
+          'Name'   => 'attachment.vpc-id',
+          'Values' => ['vpc-a01106c2']
+        }
+      ]
     );
 
     # Results:

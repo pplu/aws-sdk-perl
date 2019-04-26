@@ -35,21 +35,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Creates an assessment template for the assessment target that is specified
     # by the ARN of the assessment target.
     my $CreateAssessmentTemplateResponse = $inspector->CreateAssessmentTemplate(
-      {
-        'AssessmentTargetArn' =>
-          'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX',
-        'AssessmentTemplateName' => 'ExampleAssessmentTemplate',
-        'DurationInSeconds'      => 180,
-        'RulesPackageArns' =>
-          ['arn:aws:inspector:us-west-2:758058086616:rulespackage/0-11B9DBXp'],
-        'UserAttributesForFindings' => [
+      'AssessmentTargetArn' =>
+        'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX',
+      'AssessmentTemplateName' => 'ExampleAssessmentTemplate',
+      'DurationInSeconds'      => 180,
+      'RulesPackageArns' =>
+        ['arn:aws:inspector:us-west-2:758058086616:rulespackage/0-11B9DBXp'],
+      'UserAttributesForFindings' => [
 
-          {
-            'Key'   => 'Example',
-            'Value' => 'example'
-          }
-        ]
-      }
+        {
+          'Key'   => 'Example',
+          'Value' => 'example'
+        }
+      ]
     );
 
     # Results:

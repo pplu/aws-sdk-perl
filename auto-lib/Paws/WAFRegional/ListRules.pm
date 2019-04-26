@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $waf-regional = Paws->service('WAFRegional');
     # To list rules
     # The following example returns an array of up to 100 rules.
-    my $ListRulesResponse = $waf -regional->ListRules(
-      {
-        'Limit' => 100
-      }
-    );
+    my $ListRulesResponse = $waf -regional->ListRules( 'Limit' => 100 );
 
     # Results:
     my $Rules = $ListRulesResponse->Rules;

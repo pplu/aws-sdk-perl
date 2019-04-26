@@ -34,14 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example initiates the vault locking process for the vault named
     # my-vault.
     my $InitiateVaultLockOutput = $glacier->InitiateVaultLock(
-      {
-        'AccountId' => '-',
-        'Policy'    => {
-          'Policy' =>
+      'AccountId' => '-',
+      'Policy'    => {
+        'Policy' =>
 '{"Version":"2012-10-17","Statement":[{"Sid":"Define-vault-lock","Effect":"Deny","Principal":{"AWS":"arn:aws:iam::999999999999:root"},"Action":"glacier:DeleteArchive","Resource":"arn:aws:glacier:us-west-2:999999999999:vaults/examplevault","Condition":{"NumericLessThanEquals":{"glacier:ArchiveAgeinDays":"365"}}}]}'
-        },
-        'VaultName' => 'my-vault'
-      }
+      },
+      'VaultName' => 'my-vault'
     );
 
     # Results:

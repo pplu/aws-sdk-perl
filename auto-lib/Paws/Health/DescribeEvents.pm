@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeEventsResponse = $health->DescribeEvents(
       Filter => {
         AvailabilityZones => [ 'MyavailabilityZone', ... ],    # OPTIONAL
-        EndTimes => [
+        EndTimes          => [
           {
             From => '1970-01-01T01:00:00',                     # OPTIONAL
             To   => '1970-01-01T01:00:00',                     # OPTIONAL
@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                    # min: 1, max: 10; OPTIONAL
-        Regions => [ 'Myregion', ... ],       # min: 1, max: 10; OPTIONAL
+        Regions  => [ 'Myregion', ... ],      # min: 1, max: 10; OPTIONAL
         Services => [
           'Myservice', ...                    # min: 2, max: 30
         ],                                    # min: 1, max: 10; OPTIONAL

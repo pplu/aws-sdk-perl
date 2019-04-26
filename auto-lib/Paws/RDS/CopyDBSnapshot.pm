@@ -36,10 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To copy a DB snapshot
     # This example copies a DB snapshot.
     my $CopyDBSnapshotResult = $rds->CopyDBSnapshot(
-      {
-        'SourceDBSnapshotIdentifier' => 'mydbsnapshot',
-        'TargetDBSnapshotIdentifier' => 'mydbsnapshot-copy'
-      }
+      'SourceDBSnapshotIdentifier' => 'mydbsnapshot',
+      'TargetDBSnapshotIdentifier' => 'mydbsnapshot-copy'
     );
 
 

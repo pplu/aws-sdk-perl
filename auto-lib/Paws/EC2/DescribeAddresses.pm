@@ -42,15 +42,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes your Elastic IP addresses for use with instances in
     # a VPC.
     my $DescribeAddressesResult = $ec2->DescribeAddresses(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'domain',
-            'Values' => ['vpc']
-          }
-        ]
-      }
+        {
+          'Name'   => 'domain',
+          'Values' => ['vpc']
+        }
+      ]
     );
 
     # Results:
@@ -61,15 +59,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes your Elastic IP addresses for use with instances in
     # EC2-Classic.
     my $DescribeAddressesResult = $ec2->DescribeAddresses(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'domain',
-            'Values' => ['standard']
-          }
-        ]
-      }
+        {
+          'Name'   => 'domain',
+          'Values' => ['standard']
+        }
+      ]
     );
 
     # Results:

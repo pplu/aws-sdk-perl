@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To reencrypt data
     # The following example reencrypts data with the specified CMK.
     my $ReEncryptResponse = $kms->ReEncrypt(
-      {
-        'CiphertextBlob'   => '<binary data>',
-        'DestinationKeyId' => '0987dcba-09fe-87dc-65ba-ab0987654321'
-      }
+      'CiphertextBlob'   => '<binary data>',
+      'DestinationKeyId' => '0987dcba-09fe-87dc-65ba-ab0987654321'
     );
 
     # Results:

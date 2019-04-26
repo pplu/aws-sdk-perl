@@ -820,13 +820,13 @@ package Paws::API::Builder {
         . join(",\n", (map { $self->dump_perl($_, $depth+1, %args) } (@$val) ))
         . "\n]";
     } elsif( ref $val eq 'HASH' ) {
-      return "\n{\n"
+      return
+        (($depth == 1) ? "\n" : "\n{\n")
         . join(",\n", (map { $self->dump_perl($_, $depth+1, %args, is_key => 1)
                              . ' => '
                              . $self->dump_perl($val->{$_}, $depth+1, %args, no_quote => 1) }
                                  (sort keys %$val) ))
-        . "\n}";
-
+        . (($depth == 1) ? "" : "\n}");
     } else {
       die "Tried to dump something strange when creating an example: $val ", ref $val;
     }

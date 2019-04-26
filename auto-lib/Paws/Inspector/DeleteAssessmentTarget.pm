@@ -30,12 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Delete assessment target
     # Deletes the assessment target that is specified by the ARN of the
     # assessment target.
-    $inspector->DeleteAssessmentTarget(
-      {
-        'AssessmentTargetArn' =>
-          'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq'
-      }
-    );
+    $inspector->DeleteAssessmentTarget( 'AssessmentTargetArn' =>
+        'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

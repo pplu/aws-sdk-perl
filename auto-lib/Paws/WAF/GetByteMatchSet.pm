@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example returns the details of a byte match set with the ID
     # exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
     my $GetByteMatchSetResponse = $waf->GetByteMatchSet(
-      {
-        'ByteMatchSetId' => 'exampleIDs3t-46da-4fdb-b8d5-abc321j569j5'
-      }
-    );
+      'ByteMatchSetId' => 'exampleIDs3t-46da-4fdb-b8d5-abc321j569j5' );
 
     # Results:
     my $ByteMatchSet = $GetByteMatchSetResponse->ByteMatchSet;

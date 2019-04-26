@@ -34,17 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example initiates an inventory-retrieval job for the vault named
     # examplevault.
     my $InitiateJobOutput = $glacier->InitiateJob(
-      {
-        'AccountId'     => '-',
-        'JobParameters' => {
-          'Description' => 'My inventory job',
-          'Format'      => 'CSV',
-          'SNSTopic' =>
+      'AccountId'     => '-',
+      'JobParameters' => {
+        'Description' => 'My inventory job',
+        'Format'      => 'CSV',
+        'SNSTopic' =>
 'arn:aws:sns:us-west-2:111111111111:Glacier-InventoryRetrieval-topic-Example',
-          'Type' => 'inventory-retrieval'
-        },
-        'VaultName' => 'examplevault'
-      }
+        'Type' => 'inventory-retrieval'
+      },
+      'VaultName' => 'examplevault'
     );
 
     # Results:

@@ -39,21 +39,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To add an item to a table
     # This example adds a new item to the Music table.
     my $PutItemOutput = $dynamodb->PutItem(
-      {
-        'Item' => {
-          'AlbumTitle' => {
-            'S' => 'Somewhat Famous'
-          },
-          'Artist' => {
-            'S' => 'No One You Know'
-          },
-          'SongTitle' => {
-            'S' => 'Call Me Today'
-          }
+      'Item' => {
+        'AlbumTitle' => {
+          'S' => 'Somewhat Famous'
         },
-        'ReturnConsumedCapacity' => 'TOTAL',
-        'TableName'              => 'Music'
-      }
+        'Artist' => {
+          'S' => 'No One You Know'
+        },
+        'SongTitle' => {
+          'S' => 'Call Me Today'
+        }
+      },
+      'ReturnConsumedCapacity' => 'TOTAL',
+      'TableName'              => 'Music'
     );
 
     # Results:

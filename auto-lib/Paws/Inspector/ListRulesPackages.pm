@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $inspector = Paws->service('Inspector');
     # List rules packages
     # Lists all available Amazon Inspector rules packages.
-    my $ListRulesPackagesResponse = $inspector->ListRulesPackages(
-      {
-        'MaxResults' => 123
-      }
-    );
+    my $ListRulesPackagesResponse =
+      $inspector->ListRulesPackages( 'MaxResults' => 123 );
 
     # Results:
     my $nextToken        = $ListRulesPackagesResponse->nextToken;

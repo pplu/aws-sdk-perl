@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To create a route table
     # This example creates a route table for the specified VPC.
-    my $CreateRouteTableResult = $ec2->CreateRouteTable(
-      {
-        'VpcId' => 'vpc-a01106c2'
-      }
-    );
+    my $CreateRouteTableResult =
+      $ec2->CreateRouteTable( 'VpcId' => 'vpc-a01106c2' );
 
     # Results:
     my $RouteTable = $CreateRouteTableResult->RouteTable;

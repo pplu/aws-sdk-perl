@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a Lambda function alias
     # This operation retrieves a Lambda function alias
     my $AliasConfiguration = $lambda->GetAlias(
-      {
-        'FunctionName' => 'myFunction',
-        'Name'         => 'myFunctionAlias'
-      }
+      'FunctionName' => 'myFunction',
+      'Name'         => 'myFunctionAlias'
     );
 
     # Results:

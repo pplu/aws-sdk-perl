@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # the specified load balancer.
     my $AttachLoadBalancerToSubnetsOutput =
       $elasticloadbalancing->AttachLoadBalancerToSubnets(
-      {
-        'LoadBalancerName' => 'my-load-balancer',
-        'Subnets'          => ['subnet-0ecac448']
-      }
+      'LoadBalancerName' => 'my-load-balancer',
+      'Subnets'          => ['subnet-0ecac448']
       );
 
     # Results:

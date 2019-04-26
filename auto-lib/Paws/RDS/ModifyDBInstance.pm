@@ -70,16 +70,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example immediately changes the specified settings for the specified
     # DB instance.
     my $ModifyDBInstanceResult = $rds->ModifyDBInstance(
-      {
-        'AllocatedStorage'           => 10,
-        'ApplyImmediately'           => 1,
-        'BackupRetentionPeriod'      => 1,
-        'DBInstanceClass'            => 'db.t2.small',
-        'DBInstanceIdentifier'       => 'mymysqlinstance',
-        'MasterUserPassword'         => 'mynewpassword',
-        'PreferredBackupWindow'      => '04:00-04:30',
-        'PreferredMaintenanceWindow' => 'Tue:05:00-Tue:05:30'
-      }
+      'AllocatedStorage'           => 10,
+      'ApplyImmediately'           => 1,
+      'BackupRetentionPeriod'      => 1,
+      'DBInstanceClass'            => 'db.t2.small',
+      'DBInstanceIdentifier'       => 'mymysqlinstance',
+      'MasterUserPassword'         => 'mynewpassword',
+      'PreferredBackupWindow'      => '04:00-04:30',
+      'PreferredMaintenanceWindow' => 'Tue:05:00-Tue:05:30'
     );
 
 

@@ -41,13 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified DB instance class, duration, product, offering type, and
     # availability zone settings.
     my $ReservedDBInstanceMessage = $rds->DescribeReservedDBInstances(
-      {
-        'DBInstanceClass'    => 'db.t2.micro',
-        'Duration'           => '1y',
-        'MultiAZ'            => 0,
-        'OfferingType'       => 'No Upfront',
-        'ProductDescription' => 'mysql'
-      }
+      'DBInstanceClass'    => 'db.t2.micro',
+      'Duration'           => '1y',
+      'MultiAZ'            => 0,
+      'OfferingType'       => 'No Upfront',
+      'ProductDescription' => 'mysql'
     );
 
 

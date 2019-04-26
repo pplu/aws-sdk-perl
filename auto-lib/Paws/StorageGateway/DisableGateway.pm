@@ -30,12 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To disable a gateway when it is no longer functioning
     # Disables a gateway when the gateway is no longer functioning. Use this
     # operation for a gateway-VTL that is not reachable or not functioning.
-    my $DisableGatewayOutput = $storagegateway->DisableGateway(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
-    );
+    my $DisableGatewayOutput = $storagegateway->DisableGateway( 'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
 
     # Results:
     my $GatewayARN = $DisableGatewayOutput->GatewayARN;

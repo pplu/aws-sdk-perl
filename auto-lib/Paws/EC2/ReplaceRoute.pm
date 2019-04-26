@@ -42,11 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # new route matches the specified CIDR and sends the traffic to the specified
    # virtual private gateway.
     $ec2->ReplaceRoute(
-      {
-        'DestinationCidrBlock' => '10.0.0.0/16',
-        'GatewayId'            => 'vgw-9a4cacf3',
-        'RouteTableId'         => 'rtb-22574640'
-      }
+      'DestinationCidrBlock' => '10.0.0.0/16',
+      'GatewayId'            => 'vgw-9a4cacf3',
+      'RouteTableId'         => 'rtb-22574640'
     );
 
 

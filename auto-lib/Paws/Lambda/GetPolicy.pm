@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a Lambda function policy
     # This operation retrieves a Lambda function policy
     my $GetPolicyResponse = $lambda->GetPolicy(
-      {
-        'FunctionName' => 'myFunction',
-        'Qualifier'    => 1
-      }
+      'FunctionName' => 'myFunction',
+      'Qualifier'    => 1
     );
 
     # Results:

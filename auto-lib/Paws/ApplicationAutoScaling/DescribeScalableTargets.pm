@@ -33,11 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $autoscaling = Paws->service('ApplicationAutoScaling');
     # To describe scalable targets
     # This example describes the scalable targets for the ecs service namespace.
-    my $DescribeScalableTargetsResponse = $autoscaling->DescribeScalableTargets(
-      {
-        'ServiceNamespace' => 'ecs'
-      }
-    );
+    my $DescribeScalableTargetsResponse =
+      $autoscaling->DescribeScalableTargets( 'ServiceNamespace' => 'ecs' );
 
     # Results:
     my $ScalableTargets = $DescribeScalableTargetsResponse->ScalableTargets;

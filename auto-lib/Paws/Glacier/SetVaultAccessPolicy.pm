@@ -33,14 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To set the access-policy on a vault
     # The example configures an access policy for the vault named examplevault.
     $glacier->SetVaultAccessPolicy(
-      {
-        'AccountId' => '-',
-        'Policy'    => {
-          'Policy' =>
+      'AccountId' => '-',
+      'Policy'    => {
+        'Policy' =>
 '{"Version":"2012-10-17","Statement":[{"Sid":"Define-owner-access-rights","Effect":"Allow","Principal":{"AWS":"arn:aws:iam::999999999999:root"},"Action":"glacier:DeleteArchive","Resource":"arn:aws:glacier:us-west-2:999999999999:vaults/examplevault"}]}'
-        },
-        'VaultName' => 'examplevault'
-      }
+      },
+      'VaultName' => 'examplevault'
     );
 
 

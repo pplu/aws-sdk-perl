@@ -41,11 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ECS::ListTaskDefinitionsResponse> object.
     # To list the registered task definitions in a family
     # This example lists the task definition revisions of a specified family.
-    my $ListTaskDefinitionsResponse = $ecs->ListTaskDefinitions(
-      {
-        'FamilyPrefix' => 'wordpress'
-      }
-    );
+    my $ListTaskDefinitionsResponse =
+      $ecs->ListTaskDefinitions( 'FamilyPrefix' => 'wordpress' );
 
     # Results:
     my $taskDefinitionArns = $ListTaskDefinitionsResponse->taskDefinitionArns;

@@ -40,14 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example adds a permission for an S3 bucket to invoke a Lambda
     # function.
     my $AddPermissionResponse = $lambda->AddPermission(
-      {
-        'Action'        => 'lambda:InvokeFunction',
-        'FunctionName'  => 'MyFunction',
-        'Principal'     => 's3.amazonaws.com',
-        'SourceAccount' => 123456789012,
-        'SourceArn'     => 'arn:aws:s3:::examplebucket/*',
-        'StatementId'   => 'ID-1'
-      }
+      'Action'        => 'lambda:InvokeFunction',
+      'FunctionName'  => 'MyFunction',
+      'Principal'     => 's3.amazonaws.com',
+      'SourceAccount' => 123456789012,
+      'SourceArn'     => 'arn:aws:s3:::examplebucket/*',
+      'StatementId'   => 'ID-1'
     );
 
     # Results:

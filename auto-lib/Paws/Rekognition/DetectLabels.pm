@@ -32,16 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To detect labels
     # This operation detects labels in the supplied image
     my $DetectLabelsResponse = $rekognition->DetectLabels(
-      {
-        'Image' => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'myphoto'
-          }
-        },
-        'MaxLabels'     => 123,
-        'MinConfidence' => 70
-      }
+      'Image' => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'myphoto'
+        }
+      },
+      'MaxLabels'     => 123,
+      'MinConfidence' => 70
     );
 
     # Results:

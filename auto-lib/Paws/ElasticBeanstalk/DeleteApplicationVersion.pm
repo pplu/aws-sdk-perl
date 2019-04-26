@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following operation deletes an application version named
     # 22a0-stage-150819_182129 for an application named my-app:
     $elasticbeanstalk->DeleteApplicationVersion(
-      {
-        'ApplicationName'    => 'my-app',
-        'DeleteSourceBundle' => 1,
-        'VersionLabel'       => '22a0-stage-150819_182129'
-      }
+      'ApplicationName'    => 'my-app',
+      'DeleteSourceBundle' => 1,
+      'VersionLabel'       => '22a0-stage-150819_182129'
     );
 
 

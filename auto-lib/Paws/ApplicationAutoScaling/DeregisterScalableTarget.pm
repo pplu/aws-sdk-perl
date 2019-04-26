@@ -34,11 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # web-app that is running in the default cluster.
     my $DeregisterScalableTargetResponse =
       $autoscaling->DeregisterScalableTarget(
-      {
-        'ResourceId'        => 'service/default/web-app',
-        'ScalableDimension' => 'ecs:service:DesiredCount',
-        'ServiceNamespace'  => 'ecs'
-      }
+      'ResourceId'        => 'service/default/web-app',
+      'ScalableDimension' => 'ecs:service:DesiredCount',
+      'ServiceNamespace'  => 'ecs'
       );
 
 

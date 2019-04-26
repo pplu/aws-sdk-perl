@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example performs a failover for the specified DB cluster to the
     # specified DB instance.
     my $FailoverDBClusterResult = $rds->FailoverDBCluster(
-      {
-        'DBClusterIdentifier'        => 'myaurorainstance-cluster',
-        'TargetDBInstanceIdentifier' => 'myaurorareplica'
-      }
+      'DBClusterIdentifier'        => 'myaurorainstance-cluster',
+      'TargetDBInstanceIdentifier' => 'myaurorareplica'
     );
 
 

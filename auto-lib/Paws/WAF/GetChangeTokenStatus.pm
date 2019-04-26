@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example returns the status of a change token with the ID
     # abcd12f2-46da-4fdb-b8d5-fbd4c466928f.
     my $GetChangeTokenStatusResponse = $waf->GetChangeTokenStatus(
-      {
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
-      }
-    );
+      'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f' );
 
     # Results:
     my $ChangeTokenStatus = $GetChangeTokenStatusResponse->ChangeTokenStatus;

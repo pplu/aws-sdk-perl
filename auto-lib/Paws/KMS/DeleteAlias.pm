@@ -29,11 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $kms = Paws->service('KMS');
     # To delete an alias
     # The following example deletes the specified alias.
-    $kms->DeleteAlias(
-      {
-        'AliasName' => 'alias/ExampleAlias'
-      }
-    );
+    $kms->DeleteAlias( 'AliasName' => 'alias/ExampleAlias' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

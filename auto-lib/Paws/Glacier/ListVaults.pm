@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To list all vaults owned by the calling user's account
     # The example lists all vaults owned by the specified AWS account.
     my $ListVaultsOutput = $glacier->ListVaults(
-      {
-        'AccountId' => '-',
-        'Limit'     => '',
-        'Marker'    => ''
-      }
+      'AccountId' => '-',
+      'Limit'     => '',
+      'Marker'    => ''
     );
 
     # Results:

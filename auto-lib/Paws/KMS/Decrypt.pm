@@ -32,11 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To decrypt data
     # The following example decrypts data that was encrypted with a customer
     # master key (CMK) in AWS KMS.
-    my $DecryptResponse = $kms->Decrypt(
-      {
-        'CiphertextBlob' => '<binary data>'
-      }
-    );
+    my $DecryptResponse = $kms->Decrypt( 'CiphertextBlob' => '<binary data>' );
 
     # Results:
     my $KeyId     = $DecryptResponse->KeyId;

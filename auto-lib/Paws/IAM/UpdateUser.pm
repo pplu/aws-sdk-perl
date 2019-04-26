@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command changes the name of the IAM user Bob to Robert. It
     # does not change the user's path.
     $iam->UpdateUser(
-      {
-        'NewUserName' => 'Robert',
-        'UserName'    => 'Bob'
-      }
+      'NewUserName' => 'Robert',
+      'UserName'    => 'Bob'
     );
 
 

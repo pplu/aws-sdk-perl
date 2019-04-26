@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example lists information for the specified log file for the specified
    # DB instance.
     my $DownloadDBLogFilePortionDetails = $rds->DownloadDBLogFilePortion(
-      {
-        'DBInstanceIdentifier' => 'mymysqlinstance',
-        'LogFileName'          => 'mysqlUpgrade'
-      }
+      'DBInstanceIdentifier' => 'mymysqlinstance',
+      'LogFileName'          => 'mysqlUpgrade'
     );
 
 

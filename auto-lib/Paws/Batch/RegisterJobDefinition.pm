@@ -37,16 +37,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To register a job definition
     # This example registers a job definition for a simple container job.
     my $RegisterJobDefinitionResponse = $batch->RegisterJobDefinition(
-      {
-        'ContainerProperties' => {
-          'Command' => [ 'sleep', 10 ],
-          'Image'   => 'busybox',
-          'Memory'  => 128,
-          'Vcpus'   => 1
-        },
-        'JobDefinitionName' => 'sleep10',
-        'Type'              => 'container'
-      }
+      'ContainerProperties' => {
+        'Command' => [ 'sleep', 10 ],
+        'Image'   => 'busybox',
+        'Memory'  => 128,
+        'Vcpus'   => 1
+      },
+      'JobDefinitionName' => 'sleep10',
+      'Type'              => 'container'
     );
 
     # Results:

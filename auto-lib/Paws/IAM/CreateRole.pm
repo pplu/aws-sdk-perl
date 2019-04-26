@@ -37,11 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command creates a role named Test-Role and attaches a trust
     # policy to it that is provided as a URL-encoded JSON string.
     my $CreateRoleResponse = $iam->CreateRole(
-      {
-        'AssumeRolePolicyDocument' => '<URL-encoded-JSON>',
-        'Path'                     => '/',
-        'RoleName'                 => 'Test-Role'
-      }
+      'AssumeRolePolicyDocument' => '<URL-encoded-JSON>',
+      'Path'                     => '/',
+      'RoleName'                 => 'Test-Role'
     );
 
     # Results:

@@ -37,13 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example increases the provisioned read and write capacity on the Music
    # table.
     my $UpdateTableOutput = $dynamodb->UpdateTable(
-      {
-        'ProvisionedThroughput' => {
-          'ReadCapacityUnits'  => 10,
-          'WriteCapacityUnits' => 10
-        },
-        'TableName' => 'MusicCollection'
-      }
+      'ProvisionedThroughput' => {
+        'ReadCapacityUnits'  => 10,
+        'WriteCapacityUnits' => 10
+      },
+      'TableName' => 'MusicCollection'
     );
 
     # Results:

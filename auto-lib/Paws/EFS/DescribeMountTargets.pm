@@ -34,10 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe the mount targets for a file system
     # This operation describes all of a file system's mount targets.
     my $DescribeMountTargetsResponse = $elasticfilesystem->DescribeMountTargets(
-      {
-        'FileSystemId' => 'fs-01234567'
-      }
-    );
+      'FileSystemId' => 'fs-01234567' );
 
     # Results:
     my $MountTargets = $DescribeMountTargetsResponse->MountTargets;

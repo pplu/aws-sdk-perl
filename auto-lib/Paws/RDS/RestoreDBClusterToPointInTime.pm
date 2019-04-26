@@ -47,11 +47,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # in time from the source DB cluster.
     my $RestoreDBClusterToPointInTimeResult =
       $rds->RestoreDBClusterToPointInTime(
-      {
-        'DBClusterIdentifier'       => 'sample-restored-cluster1',
-        'RestoreToTime'             => '2016-09-13T18:45:00Z',
-        'SourceDBClusterIdentifier' => 'sample-cluster1'
-      }
+      'DBClusterIdentifier'       => 'sample-restored-cluster1',
+      'RestoreToTime'             => '2016-09-13T18:45:00Z',
+      'SourceDBClusterIdentifier' => 'sample-cluster1'
       );
 
 

@@ -40,12 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example changes the configuration of the health checks used to
     # evaluate the health of the targets for the specified target group.
     my $ModifyTargetGroupOutput = $elasticloadbalancing->ModifyTargetGroup(
-      {
-        'HealthCheckPort'     => 443,
-        'HealthCheckProtocol' => 'HTTPS',
-        'TargetGroupArn' =>
+      'HealthCheckPort'     => 443,
+      'HealthCheckProtocol' => 'HTTPS',
+      'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https-targets/2453ed029918f21f'
-      }
     );
 
     # Results:

@@ -39,10 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command sets the password policy to require a minimum length
     # of eight characters and to require one or more numbers in the password:
     $iam->UpdateAccountPasswordPolicy(
-      {
-        'MinimumPasswordLength' => 8,
-        'RequireNumbers'        => 1
-      }
+      'MinimumPasswordLength' => 8,
+      'RequireNumbers'        => 1
     );
 
 

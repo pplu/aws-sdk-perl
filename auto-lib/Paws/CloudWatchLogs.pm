@@ -1462,8 +1462,8 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::StartQuery>
 Returns: a L<Paws::CloudWatchLogs::StartQueryResponse> instance
 
 Schedules a query of a log group using CloudWatch Logs Insights. You
-specify the log group to query, the query string to use, and the time
-to query.
+specify the log group and time range to query, and the query string to
+use.
 
 For more information, see CloudWatch Logs Insights Query Syntax
 (http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).

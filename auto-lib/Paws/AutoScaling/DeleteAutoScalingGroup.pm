@@ -31,19 +31,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete an Auto Scaling group
     # This example deletes the specified Auto Scaling group.
     $autoscaling->DeleteAutoScalingGroup(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
-      }
-    );
+      'AutoScalingGroupName' => 'my-auto-scaling-group' );
 
     # To delete an Auto Scaling group and all its instances
     # This example deletes the specified Auto Scaling group and all its
     # instances.
     $autoscaling->DeleteAutoScalingGroup(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'ForceDelete'          => 1
-      }
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'ForceDelete'          => 1
     );
 
 

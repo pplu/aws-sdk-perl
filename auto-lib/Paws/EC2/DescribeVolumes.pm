@@ -45,20 +45,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # with the ID i-1234567890abcdef0 and set to delete when the instance
     # terminates.
     my $DescribeVolumesResult = $ec2->DescribeVolumes(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'attachment.instance-id',
-            'Values' => ['i-1234567890abcdef0']
-          },
+        {
+          'Name'   => 'attachment.instance-id',
+          'Values' => ['i-1234567890abcdef0']
+        },
 
-          {
-            'Name'   => 'attachment.delete-on-termination',
-            'Values' => ['true']
-          }
-        ]
-      }
+        {
+          'Name'   => 'attachment.delete-on-termination',
+          'Values' => ['true']
+        }
+      ]
     );
 
     # Results:

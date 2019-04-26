@@ -38,23 +38,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # web-app in the default cluster. The policy increases the desired count of
     # the service by 200%, with a cool down period of 60 seconds.
     my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
-      {
-        'PolicyName'                     => 'web-app-cpu-gt-75',
-        'PolicyType'                     => 'StepScaling',
-        'ResourceId'                     => 'service/default/web-app',
-        'ScalableDimension'              => 'ecs:service:DesiredCount',
-        'ServiceNamespace'               => 'ecs',
-        'StepScalingPolicyConfiguration' => {
-          'AdjustmentType'  => 'PercentChangeInCapacity',
-          'Cooldown'        => 60,
-          'StepAdjustments' => [
+      'PolicyName'                     => 'web-app-cpu-gt-75',
+      'PolicyType'                     => 'StepScaling',
+      'ResourceId'                     => 'service/default/web-app',
+      'ScalableDimension'              => 'ecs:service:DesiredCount',
+      'ServiceNamespace'               => 'ecs',
+      'StepScalingPolicyConfiguration' => {
+        'AdjustmentType'  => 'PercentChangeInCapacity',
+        'Cooldown'        => 60,
+        'StepAdjustments' => [
 
-            {
-              'MetricIntervalLowerBound' => 0,
-              'ScalingAdjustment'        => 200
-            }
-          ]
-        }
+          {
+            'MetricIntervalLowerBound' => 0,
+            'ScalingAdjustment'        => 200
+          }
+        ]
       }
     );
 
@@ -68,24 +66,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # down period of 180 seconds.",
 
     my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
-      {
-        'PolicyName' => 'fleet-cpu-gt-75',
-        'PolicyType' => 'StepScaling',
-        'ResourceId' =>
-          'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
-        'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
-        'ServiceNamespace'  => 'ec2',
-        'StepScalingPolicyConfiguration' => {
-          'AdjustmentType'  => 'PercentChangeInCapacity',
-          'Cooldown'        => 180,
-          'StepAdjustments' => [
+      'PolicyName' => 'fleet-cpu-gt-75',
+      'PolicyType' => 'StepScaling',
+      'ResourceId' =>
+        'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
+      'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
+      'ServiceNamespace'  => 'ec2',
+      'StepScalingPolicyConfiguration' => {
+        'AdjustmentType'  => 'PercentChangeInCapacity',
+        'Cooldown'        => 180,
+        'StepAdjustments' => [
 
-            {
-              'MetricIntervalLowerBound' => 0,
-              'ScalingAdjustment'        => 200
-            }
-          ]
-        }
+          {
+            'MetricIntervalLowerBound' => 0,
+            'ScalingAdjustment'        => 200
+          }
+        ]
       }
     );
 

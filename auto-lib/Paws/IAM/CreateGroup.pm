@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iam = Paws->service('IAM');
     # To create an IAM group
     # The following command creates an IAM group named Admins.
-    my $CreateGroupResponse = $iam->CreateGroup(
-      {
-        'GroupName' => 'Admins'
-      }
-    );
+    my $CreateGroupResponse = $iam->CreateGroup( 'GroupName' => 'Admins' );
 
     # Results:
     my $Group = $CreateGroupResponse->Group;

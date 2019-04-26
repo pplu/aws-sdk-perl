@@ -39,15 +39,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example adds the specified scheduled action to the specified Auto
     # Scaling group.
     $autoscaling->PutScheduledUpdateGroupAction(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'DesiredCapacity'      => 4,
-        'EndTime'              => '2014-05-12T08:00:00Z',
-        'MaxSize'              => 6,
-        'MinSize'              => 2,
-        'ScheduledActionName'  => 'my-scheduled-action',
-        'StartTime'            => '2014-05-12T08:00:00Z'
-      }
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'DesiredCapacity'      => 4,
+      'EndTime'              => '2014-05-12T08:00:00Z',
+      'MaxSize'              => 6,
+      'MinSize'              => 2,
+      'ScheduledActionName'  => 'my-scheduled-action',
+      'StartTime'            => '2014-05-12T08:00:00Z'
     );
 
 

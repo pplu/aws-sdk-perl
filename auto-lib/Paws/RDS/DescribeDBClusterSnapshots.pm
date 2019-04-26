@@ -38,10 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example lists settings for the specified, manually-created cluster
     # snapshot.
     my $DBClusterSnapshotMessage = $rds->DescribeDBClusterSnapshots(
-      {
-        'DBClusterSnapshotIdentifier' => 'mydbclustersnapshot',
-        'SnapshotType'                => 'manual'
-      }
+      'DBClusterSnapshotIdentifier' => 'mydbclustersnapshot',
+      'SnapshotType'                => 'manual'
     );
 
 

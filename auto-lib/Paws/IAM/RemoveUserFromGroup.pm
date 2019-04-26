@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command removes the user named Bob from the IAM group named
     # Admins.
     $iam->RemoveUserFromGroup(
-      {
-        'GroupName' => 'Admins',
-        'UserName'  => 'Bob'
-      }
+      'GroupName' => 'Admins',
+      'UserName'  => 'Bob'
     );
 
 

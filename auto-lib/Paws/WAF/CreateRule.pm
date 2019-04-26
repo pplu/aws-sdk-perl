@@ -32,11 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a rule
     # The following example creates a rule named WAFByteHeaderRule.
     my $CreateRuleResponse = $waf->CreateRule(
-      {
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'MetricName'  => 'WAFByteHeaderRule',
-        'Name'        => 'WAFByteHeaderRule'
-      }
+      'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+      'MetricName'  => 'WAFByteHeaderRule',
+      'Name'        => 'WAFByteHeaderRule'
     );
 
     # Results:

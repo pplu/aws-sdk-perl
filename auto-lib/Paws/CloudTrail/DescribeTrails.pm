@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudtrail = Paws->service('CloudTrail');
     my $DescribeTrailsResponse = $cloudtrail->DescribeTrails(
-      IncludeShadowTrails => 1,                # OPTIONAL
-      TrailNameList => [ 'MyString', ... ],    # OPTIONAL
+      IncludeShadowTrails => 1,                      # OPTIONAL
+      TrailNameList       => [ 'MyString', ... ],    # OPTIONAL
     );
 
     # Results:

@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a list of Lambda function versions
     # This operation retrieves a Lambda function versions
     my $ListVersionsByFunctionResponse = $lambda->ListVersionsByFunction(
-      {
-        'FunctionName' => 'myFunction',
-        'Marker'       => '',
-        'MaxItems'     => 123
-      }
+      'FunctionName' => 'myFunction',
+      'Marker'       => '',
+      'MaxItems'     => 123
     );
 
     # Results:

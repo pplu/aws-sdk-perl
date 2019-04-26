@@ -33,15 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe the tags for a single resource
     # This example describes the tags for the specified instance.
     my $DescribeTagsResult = $ec2->DescribeTags(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'resource-id',
-            'Values' => ['i-1234567890abcdef8']
-          }
-        ]
-      }
+        {
+          'Name'   => 'resource-id',
+          'Values' => ['i-1234567890abcdef8']
+        }
+      ]
     );
 
     # Results:

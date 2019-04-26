@@ -41,12 +41,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To add a scaling policy to an Auto Scaling group
    # This example adds the specified policy to the specified Auto Scaling group.
     my $PolicyARNType = $autoscaling->PutScalingPolicy(
-      {
-        'AdjustmentType'       => 'ChangeInCapacity',
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'PolicyName'           => 'ScaleIn',
-        'ScalingAdjustment'    => -1
-      }
+      'AdjustmentType'       => 'ChangeInCapacity',
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'PolicyName'           => 'ScaleIn',
+      'ScalingAdjustment'    => -1
     );
 
     # Results:

@@ -33,14 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a description of specified virtual tapes in the virtual tape shelf
     # (VTS).
     my $DescribeTapeArchivesOutput = $storagegateway->DescribeTapeArchives(
-      {
-        'Limit'    => 123,
-        'Marker'   => 1,
-        'TapeARNs' => [
-          'arn:aws:storagegateway:us-east-1:999999999999:tape/AM08A1AD',
-          'arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4'
-        ]
-      }
+      'Limit'    => 123,
+      'Marker'   => 1,
+      'TapeARNs' => [
+        'arn:aws:storagegateway:us-east-1:999999999999:tape/AM08A1AD',
+        'arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4'
+      ]
     );
 
     # Results:

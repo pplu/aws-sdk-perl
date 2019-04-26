@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To describe a network ACL
     # This example describes the specified network ACL.
-    my $DescribeNetworkAclsResult = $ec2->DescribeNetworkAcls(
-      {
-        'NetworkAclIds' => ['acl-5fb85d36']
-      }
-    );
+    my $DescribeNetworkAclsResult =
+      $ec2->DescribeNetworkAcls( 'NetworkAclIds' => ['acl-5fb85d36'] );
 
     # Results:
     my $NetworkAcls = $DescribeNetworkAclsResult->NetworkAcls;

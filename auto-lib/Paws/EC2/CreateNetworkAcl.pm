@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To create a network ACL
     # This example creates a network ACL for the specified VPC.
-    my $CreateNetworkAclResult = $ec2->CreateNetworkAcl(
-      {
-        'VpcId' => 'vpc-a01106c2'
-      }
-    );
+    my $CreateNetworkAclResult =
+      $ec2->CreateNetworkAcl( 'VpcId' => 'vpc-a01106c2' );
 
     # Results:
     my $NetworkAcl = $CreateNetworkAclResult->NetworkAcl;

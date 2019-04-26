@@ -29,12 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $devicefarm = Paws->service('DeviceFarm');
     # To get information about a test suite
     # The following example gets information about a specific test suite.
-    my $GetSuiteResult = $devicefarm->GetSuite(
-      {
-        'Arn' =>
-          'arn:aws:devicefarm:us-west-2:123456789101:suite:EXAMPLE-GUID-123-456'
-      }
-    );
+    my $GetSuiteResult =
+      $devicefarm->GetSuite( 'Arn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:suite:EXAMPLE-GUID-123-456'
+      );
 
     # Results:
     my $suite = $GetSuiteResult->suite;

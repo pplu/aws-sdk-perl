@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command attaches the AWS managed policy named ReadOnlyAccess
     # to the IAM role named ReadOnlyRole.
     $iam->AttachRolePolicy(
-      {
-        'PolicyArn' => 'arn:aws:iam::aws:policy/ReadOnlyAccess',
-        'RoleName'  => 'ReadOnlyRole'
-      }
+      'PolicyArn' => 'arn:aws:iam::aws:policy/ReadOnlyAccess',
+      'RoleName'  => 'ReadOnlyRole'
     );
 
 

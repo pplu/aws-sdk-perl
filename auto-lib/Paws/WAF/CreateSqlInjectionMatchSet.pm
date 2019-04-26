@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example creates a SQL injection match set named
     # MySQLInjectionMatchSet.
     my $CreateSqlInjectionMatchSetResponse = $waf->CreateSqlInjectionMatchSet(
-      {
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'Name'        => 'MySQLInjectionMatchSet'
-      }
+      'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+      'Name'        => 'MySQLInjectionMatchSet'
     );
 
     # Results:

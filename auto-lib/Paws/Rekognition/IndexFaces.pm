@@ -36,17 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation detects faces in an image and adds them to the specified
     # Rekognition collection.
     my $IndexFacesResponse = $rekognition->IndexFaces(
-      {
-        'CollectionId'        => 'myphotos',
-        'DetectionAttributes' => [
+      'CollectionId'        => 'myphotos',
+      'DetectionAttributes' => [
 
-        ],
-        'ExternalImageId' => 'myphotoid',
-        'Image'           => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'myphoto'
-          }
+      ],
+      'ExternalImageId' => 'myphotoid',
+      'Image'           => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'myphoto'
         }
       }
     );

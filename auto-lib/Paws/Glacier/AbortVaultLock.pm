@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example aborts the vault locking process if the vault lock is not in
     # the Locked state for the vault named examplevault.
     $glacier->AbortVaultLock(
-      {
-        'AccountId' => '-',
-        'VaultName' => 'examplevault'
-      }
+      'AccountId' => '-',
+      'VaultName' => 'examplevault'
     );
 
 

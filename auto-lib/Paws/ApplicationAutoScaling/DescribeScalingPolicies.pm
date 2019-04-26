@@ -34,11 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $autoscaling = Paws->service('ApplicationAutoScaling');
     # To describe scaling policies
     # This example describes the scaling policies for the ecs service namespace.
-    my $DescribeScalingPoliciesResponse = $autoscaling->DescribeScalingPolicies(
-      {
-        'ServiceNamespace' => 'ecs'
-      }
-    );
+    my $DescribeScalingPoliciesResponse =
+      $autoscaling->DescribeScalingPolicies( 'ServiceNamespace' => 'ecs' );
 
     # Results:
     my $NextToken       = $DescribeScalingPoliciesResponse->NextToken;

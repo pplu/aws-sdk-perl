@@ -30,12 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To get information about a device pool
     # The following example returns information about a specific device pool,
     # given a project ARN.
-    my $GetDevicePoolResult = $devicefarm->GetDevicePool(
-      {
-        'Arn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456'
-      }
-    );
+    my $GetDevicePoolResult =
+      $devicefarm->GetDevicePool( 'Arn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456'
+      );
 
     # Results:
     my $devicePool = $GetDevicePoolResult->devicePool;

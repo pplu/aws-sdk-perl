@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation searches for matching faces in the collection the supplied
     # face belongs to.
     my $SearchFacesResponse = $rekognition->SearchFaces(
-      {
-        'CollectionId'       => 'myphotos',
-        'FaceId'             => '70008e50-75e4-55d0-8e80-363fb73b3a14',
-        'FaceMatchThreshold' => 90,
-        'MaxFaces'           => 10
-      }
+      'CollectionId'       => 'myphotos',
+      'FaceId'             => '70008e50-75e4-55d0-8e80-363fb73b3a14',
+      'FaceMatchThreshold' => 90,
+      'MaxFaces'           => 10
     );
 
     # Results:

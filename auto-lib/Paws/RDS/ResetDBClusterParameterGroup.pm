@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example resets all parameters for the specified DB cluster parameter
     # group to their default values.
     my $DBClusterParameterGroupNameMessage = $rds->ResetDBClusterParameterGroup(
-      {
-        'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
-        'ResetAllParameters'          => 1
-      }
+      'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
+      'ResetAllParameters'          => 1
     );
 
 

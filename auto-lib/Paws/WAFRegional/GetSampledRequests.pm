@@ -36,15 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # that your AWS resource received between the time period 2016-09-27T15:50Z
     # to 2016-09-27T15:50Z.
     my $GetSampledRequestsResponse = $waf -regional->GetSampledRequests(
-      {
-        'MaxItems'   => 100,
-        'RuleId'     => 'WAFRule-1-Example',
-        'TimeWindow' => {
-          'EndTime'   => '2016-09-27T15:50Z',
-          'StartTime' => '2016-09-27T15:50Z'
-        },
-        'WebAclId' => 'createwebacl-1472061481310'
-      }
+      'MaxItems'   => 100,
+      'RuleId'     => 'WAFRule-1-Example',
+      'TimeWindow' => {
+        'EndTime'   => '2016-09-27T15:50Z',
+        'StartTime' => '2016-09-27T15:50Z'
+      },
+      'WebAclId' => 'createwebacl-1472061481310'
     );
 
     # Results:

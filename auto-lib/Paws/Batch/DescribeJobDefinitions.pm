@@ -34,11 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $batch = Paws->service('Batch');
     # To describe active job definitions
     # This example describes all of your active job definitions.
-    my $DescribeJobDefinitionsResponse = $batch->DescribeJobDefinitions(
-      {
-        'Status' => 'ACTIVE'
-      }
-    );
+    my $DescribeJobDefinitionsResponse =
+      $batch->DescribeJobDefinitions( 'Status' => 'ACTIVE' );
 
     # Results:
     my $jobDefinitions = $DescribeJobDefinitionsResponse->jobDefinitions;

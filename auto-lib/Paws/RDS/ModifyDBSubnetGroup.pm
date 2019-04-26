@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example changes the specified setting for the specified DB subnet
     # group.
     my $ModifyDBSubnetGroupResult = $rds->ModifyDBSubnetGroup(
-      {
-        'DBSubnetGroupName' => 'mydbsubnetgroup',
-        'SubnetIds'         => [ 'subnet-70e1975a', 'subnet-747a5c49' ]
-      }
+      'DBSubnetGroupName' => 'mydbsubnetgroup',
+      'SubnetIds'         => [ 'subnet-70e1975a', 'subnet-747a5c49' ]
     );
 
 

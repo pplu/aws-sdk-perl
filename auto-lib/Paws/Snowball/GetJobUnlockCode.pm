@@ -42,10 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # these separately helps prevent unauthorized parties from gaining access to
    # the Snowball associated with that job.
     my $GetJobUnlockCodeResult = $snowball->GetJobUnlockCode(
-      {
-        'JobId' => 'JID123e4567-e89b-12d3-a456-426655440000'
-      }
-    );
+      'JobId' => 'JID123e4567-e89b-12d3-a456-426655440000' );
 
     # Results:
     my $UnlockCode = $GetJobUnlockCodeResult->UnlockCode;

@@ -39,11 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # from the settings applied to an environment with the id e-rpqsewtp2j:
     my $ConfigurationSettingsDescription =
       $elasticbeanstalk->CreateConfigurationTemplate(
-      {
-        'ApplicationName' => 'my-app',
-        'EnvironmentId'   => 'e-rpqsewtp2j',
-        'TemplateName'    => 'my-app-v1'
-      }
+      'ApplicationName' => 'my-app',
+      'EnvironmentId'   => 'e-rpqsewtp2j',
+      'TemplateName'    => 'my-app-v1'
       );
 
     # Results:

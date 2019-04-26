@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glacier = Paws->service('Glacier');
     # To list the provisioned capacity units for an account
     # The example lists the provisioned capacity units for an account.
-    my $ListProvisionedCapacityOutput = $glacier->ListProvisionedCapacity(
-      {
-        'AccountId' => '-'
-      }
-    );
+    my $ListProvisionedCapacityOutput =
+      $glacier->ListProvisionedCapacity( 'AccountId' => '-' );
 
     # Results:
     my $ProvisionedCapacityList =

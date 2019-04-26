@@ -31,15 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To remove tags from a load balancer
     # This example removes the specified tag from the specified load balancer.
     my $RemoveTagsOutput = $elasticloadbalancing->RemoveTags(
-      {
-        'LoadBalancerNames' => ['my-load-balancer'],
-        'Tags'              => [
+      'LoadBalancerNames' => ['my-load-balancer'],
+      'Tags'              => [
 
-          {
-            'Key' => 'project'
-          }
-        ]
-      }
+        {
+          'Key' => 'project'
+        }
+      ]
     );
 
 

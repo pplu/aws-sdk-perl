@@ -29,12 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $storagegateway = Paws->service('StorageGateway');
     # To describe cache information
     # Returns information about the cache of a gateway.
-    my $DescribeCacheOutput = $storagegateway->DescribeCache(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
-      }
-    );
+    my $DescribeCacheOutput = $storagegateway->DescribeCache( 'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );
 
     # Results:
     my $CacheAllocatedInBytes = $DescribeCacheOutput->CacheAllocatedInBytes;

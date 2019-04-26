@@ -33,15 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a NAT gateway
     # This example describes the NAT gateway for the specified VPC.
     my $DescribeNatGatewaysResult = $ec2->DescribeNatGateways(
-      {
-        'Filter' => [
+      'Filter' => [
 
-          {
-            'Name'   => 'vpc-id',
-            'Values' => ['vpc-1a2b3c4d']
-          }
-        ]
-      }
+        {
+          'Name'   => 'vpc-id',
+          'Values' => ['vpc-1a2b3c4d']
+        }
+      ]
     );
 
     # Results:

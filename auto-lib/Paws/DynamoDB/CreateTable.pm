@@ -38,37 +38,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a table
     # This example creates a table named Music.
     my $CreateTableOutput = $dynamodb->CreateTable(
-      {
-        'AttributeDefinitions' => [
+      'AttributeDefinitions' => [
 
-          {
-            'AttributeName' => 'Artist',
-            'AttributeType' => 'S'
-          },
-
-          {
-            'AttributeName' => 'SongTitle',
-            'AttributeType' => 'S'
-          }
-        ],
-        'KeySchema' => [
-
-          {
-            'AttributeName' => 'Artist',
-            'KeyType'       => 'HASH'
-          },
-
-          {
-            'AttributeName' => 'SongTitle',
-            'KeyType'       => 'RANGE'
-          }
-        ],
-        'ProvisionedThroughput' => {
-          'ReadCapacityUnits'  => 5,
-          'WriteCapacityUnits' => 5
+        {
+          'AttributeName' => 'Artist',
+          'AttributeType' => 'S'
         },
-        'TableName' => 'Music'
-      }
+
+        {
+          'AttributeName' => 'SongTitle',
+          'AttributeType' => 'S'
+        }
+      ],
+      'KeySchema' => [
+
+        {
+          'AttributeName' => 'Artist',
+          'KeyType'       => 'HASH'
+        },
+
+        {
+          'AttributeName' => 'SongTitle',
+          'KeyType'       => 'RANGE'
+        }
+      ],
+      'ProvisionedThroughput' => {
+        'ReadCapacityUnits'  => 5,
+        'WriteCapacityUnits' => 5
+      },
+      'TableName' => 'Music'
     );
 
     # Results:

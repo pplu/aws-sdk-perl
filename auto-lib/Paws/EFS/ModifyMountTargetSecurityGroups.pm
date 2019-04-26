@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 # This operation modifies the security groups associated with a mount target
 # for a file system.
     $elasticfilesystem->ModifyMountTargetSecurityGroups(
-      {
-        'MountTargetId'  => 'fsmt-12340abc',
-        'SecurityGroups' => ['sg-abcd1234']
-      }
+      'MountTargetId'  => 'fsmt-12340abc',
+      'SecurityGroups' => ['sg-abcd1234']
     );
 
 
