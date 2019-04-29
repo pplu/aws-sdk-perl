@@ -448,6 +448,8 @@ CIDR address ranges specified in the rules.
 
 =item [GroupDesc => Str]
 
+=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
+
 =item [UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]]
 
 
@@ -488,7 +490,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::CreateTags>
 
 Returns: a L<Paws::WorkSpaces::CreateTagsResult> instance
 
-Creates the specified tags for the specified WorkSpace.
+Creates the specified tags for the specified WorkSpaces resource.
 
 
 =head2 CreateWorkspaces
@@ -544,7 +546,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DeleteTags>
 
 Returns: a L<Paws::WorkSpaces::DeleteTagsResult> instance
 
-Deletes the specified tags from the specified WorkSpace.
+Deletes the specified tags from the specified WorkSpaces resource.
 
 
 =head2 DeleteWorkspaceImage
@@ -646,7 +648,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeTags>
 
 Returns: a L<Paws::WorkSpaces::DescribeTagsResult> instance
 
-Describes the specified tags for the specified WorkSpace.
+Describes the specified tags for the specified WorkSpaces resource.
 
 
 =head2 DescribeWorkspaceBundles
@@ -791,6 +793,8 @@ directory.
 
 =item IngestionProcess => Str
 
+=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
+
 
 =back
 
@@ -865,7 +869,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::ModifyClientPropert
 
 Returns: a L<Paws::WorkSpaces::ModifyClientPropertiesResult> instance
 
-Modifies the properties of the specified Amazon WorkSpaces client.
+Modifies the properties of the specified Amazon WorkSpaces clients.
 
 
 =head2 ModifyWorkspaceProperties
@@ -938,6 +942,8 @@ rebooted.
 
 =item RebuildWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebuildRequest>]
 
+=item [AdditionalInfo => Str]
+
 
 =back
 
@@ -953,7 +959,7 @@ C<ERROR>, or C<UNHEALTHY>.
 Rebuilding a WorkSpace is a potentially destructive action that can
 result in the loss of data. For more information, see Rebuild a
 WorkSpace
-(http://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html).
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html).
 
 This operation is asynchronous and returns before the WorkSpaces have
 been completely rebuilt.
