@@ -1,7 +1,11 @@
 package Paws::DirectConnect::DirectConnectGatewayAssociation;
   use Moose;
+  has AllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', request_name => 'allowedPrefixesToDirectConnectGateway', traits => ['NameInRequest']);
+  has AssociatedGateway => (is => 'ro', isa => 'Paws::DirectConnect::AssociatedGateway', request_name => 'associatedGateway', traits => ['NameInRequest']);
+  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
   has AssociationState => (is => 'ro', isa => 'Str', request_name => 'associationState', traits => ['NameInRequest']);
   has DirectConnectGatewayId => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayId', traits => ['NameInRequest']);
+  has DirectConnectGatewayOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayOwnerAccount', traits => ['NameInRequest']);
   has StateChangeError => (is => 'ro', isa => 'Str', request_name => 'stateChangeError', traits => ['NameInRequest']);
   has VirtualGatewayId => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayId', traits => ['NameInRequest']);
   has VirtualGatewayOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayOwnerAccount', traits => ['NameInRequest']);
@@ -25,14 +29,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DirectConnect::DirectConnectGatewayAssociation object:
 
-  $service_obj->Method(Att1 => { AssociationState => $value, ..., VirtualGatewayRegion => $value  });
+  $service_obj->Method(Att1 => { AllowedPrefixesToDirectConnectGateway => $value, ..., VirtualGatewayRegion => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConnect::DirectConnectGatewayAssociation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AssociationState
+  $result->Att1->AllowedPrefixesToDirectConnectGateway
 
 =head1 DESCRIPTION
 
@@ -40,6 +44,21 @@ Information about an association between a Direct Connect gateway and a
 virtual private gateway.
 
 =head1 ATTRIBUTES
+
+
+=head2 AllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
+
+  The Amazon VPC prefixes to advertise to the Direct Connect gateway.
+
+
+=head2 AssociatedGateway => L<Paws::DirectConnect::AssociatedGateway>
+
+  Information about the associated virtual private gateway.
+
+
+=head2 AssociationId => Str
+
+  The ID of the Direct Connect gateway association.
 
 
 =head2 AssociationState => Str
@@ -76,6 +95,11 @@ and virtual private gateway is stopped.
 =head2 DirectConnectGatewayId => Str
 
   The ID of the Direct Connect gateway.
+
+
+=head2 DirectConnectGatewayOwnerAccount => Str
+
+  The ID of the AWS account that owns the associated gateway.
 
 
 =head2 StateChangeError => Str

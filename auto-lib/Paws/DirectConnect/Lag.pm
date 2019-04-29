@@ -35,12 +35,12 @@ Indicates whether the LAG can host other connections.
 
 =head2 AwsDevice => Str
 
-The Direct Connect endpoint that hosts the LAG.
+The AWS Direct Connect endpoint that hosts the LAG.
 
 
 =head2 AwsDeviceV2 => Str
 
-The Direct Connect endpoint that hosts the LAG.
+The AWS Direct Connect endpoint that hosts the LAG.
 
 
 =head2 Connections => ArrayRef[L<Paws::DirectConnect::Connection>]
@@ -107,10 +107,14 @@ C<deleting>: The LAG is being deleted.
 
 C<deleted>: The LAG is deleted.
 
+=item *
+
+C<unknown>: The state of the LAG is not available.
+
 =back
 
 
-Valid values are: C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">
+Valid values are: C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"unknown">
 =head2 Location => Str
 
 The location of the LAG.

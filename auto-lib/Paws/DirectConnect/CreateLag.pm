@@ -73,7 +73,8 @@ The ID of an existing connection to migrate to the LAG.
 =head2 B<REQUIRED> ConnectionsBandwidth => Str
 
 The bandwidth of the individual physical connections bundled by the
-LAG. The possible values are 1Gbps and 10Gbps.
+LAG. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps,
+400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
 
 
 

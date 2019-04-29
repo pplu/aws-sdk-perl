@@ -61,13 +61,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-The ID of the connection. For example, dxcon-abc123.
+The ID of the connection.
 
 
 
 =head2 B<REQUIRED> LagId => Str
 
-The ID of the LAG. For example, dxlag-abc123.
+The ID of the LAG.
 
 
 

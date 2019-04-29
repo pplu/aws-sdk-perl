@@ -100,10 +100,14 @@ C<deleted>: The connection has been deleted.
 C<rejected>: A hosted connection in the C<ordering> state enters the
 C<rejected> state if it is deleted by the customer.
 
+=item *
+
+C<unknown>: The state of the connection is not available.
+
 =back
 
 
-Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
+Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">, C<"unknown">
 =head2 HasLogicalRedundancy => Str
 
 Indicates whether the connection supports a secondary BGP peer in the

@@ -1,5 +1,5 @@
 
-package Paws::DirectConnect::DeleteDirectConnectGatewayAssociationResult;
+package Paws::DirectConnect::UpdateDirectConnectGatewayAssociationResult;
   use Moose;
   has DirectConnectGatewayAssociation => (is => 'ro', isa => 'Paws::DirectConnect::DirectConnectGatewayAssociation', traits => ['NameInRequest'], request_name => 'directConnectGatewayAssociation' );
 
@@ -9,14 +9,14 @@ package Paws::DirectConnect::DeleteDirectConnectGatewayAssociationResult;
 
 =head1 NAME
 
-Paws::DirectConnect::DeleteDirectConnectGatewayAssociationResult
+Paws::DirectConnect::UpdateDirectConnectGatewayAssociationResult
 
 =head1 ATTRIBUTES
 
 
 =head2 DirectConnectGatewayAssociation => L<Paws::DirectConnect::DirectConnectGatewayAssociation>
 
-Information about the deleted association.
+
 
 
 =head2 _request_id => Str

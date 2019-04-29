@@ -64,10 +64,14 @@ virtual interface. If a virtual interface in the C<Confirming> state is
 deleted by the virtual interface owner, the virtual interface enters
 the C<Rejected> state.
 
+=item *
+
+C<unknown>: The state of the virtual interface is not available.
+
 =back
 
 
-Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
+Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">, C<"unknown">
 =head2 _request_id => Str
 
 

@@ -126,7 +126,7 @@ C<down>: The BGP peer is down.
 
 =item *
 
-C<unknown>: The BGP peer status is unknown.
+C<unknown>: The BGP peer status is not available.
 
 =back
 
