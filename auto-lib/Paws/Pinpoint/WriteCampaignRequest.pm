@@ -11,6 +11,7 @@ package Paws::Pinpoint::WriteCampaignRequest;
   has Schedule => (is => 'ro', isa => 'Paws::Pinpoint::Schedule');
   has SegmentId => (is => 'ro', isa => 'Str');
   has SegmentVersion => (is => 'ro', isa => 'Int');
+  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has TreatmentDescription => (is => 'ro', isa => 'Str');
   has TreatmentName => (is => 'ro', isa => 'Str');
 1;
@@ -103,6 +104,11 @@ send messages unless you resume it by setting IsPaused to false.
 =head2 SegmentVersion => Int
 
   The version of the segment to which the campaign sends messages.
+
+
+=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+
+  The Tags for the campaign.
 
 
 =head2 TreatmentDescription => Str

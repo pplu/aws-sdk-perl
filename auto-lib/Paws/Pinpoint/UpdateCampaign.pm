@@ -301,7 +301,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Timezone  => 'My__string',
         },    # OPTIONAL
         SegmentId            => 'My__string',
-        SegmentVersion       => 1,              # OPTIONAL
+        SegmentVersion       => 1,                                    # OPTIONAL
+        Tags                 => { 'My__string' => 'My__string', },    # OPTIONAL
         TreatmentDescription => 'My__string',
         TreatmentName        => 'My__string',
       },

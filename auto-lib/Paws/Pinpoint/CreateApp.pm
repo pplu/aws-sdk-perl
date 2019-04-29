@@ -30,7 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $pinpoint = Paws->service('Pinpoint');
     my $CreateAppResponse = $pinpoint->CreateApp(
       CreateApplicationRequest => {
-        Name => 'My__string',    # OPTIONAL
+        Name => 'My__string',
+        Tags => { 'My__string' => 'My__string', },    # OPTIONAL
       },
 
     );

@@ -279,6 +279,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetVoiceChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PhoneNumberValidate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::PhoneNumberValidate', @_);
@@ -307,6 +312,16 @@ package Paws::Pinpoint;
   sub SendUsersMessages {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::SendUsersMessages', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAdmChannel {
@@ -387,7 +402,7 @@ package Paws::Pinpoint;
   
 
 
-  sub operations { qw/CreateApp CreateCampaign CreateExportJob CreateImportJob CreateSegment DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApnsVoipChannel DeleteApnsVoipSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEndpoint DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel DeleteUserEndpoints DeleteVoiceChannel GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApnsVoipChannel GetApnsVoipSandboxChannel GetApp GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetChannels GetEmailChannel GetEndpoint GetEventStream GetExportJob GetExportJobs GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentExportJobs GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel GetUserEndpoints GetVoiceChannel PhoneNumberValidate PutEvents PutEventStream RemoveAttributes SendMessages SendUsersMessages UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApnsVoipChannel UpdateApnsVoipSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel UpdateVoiceChannel / }
+  sub operations { qw/CreateApp CreateCampaign CreateExportJob CreateImportJob CreateSegment DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApnsVoipChannel DeleteApnsVoipSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEndpoint DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel DeleteUserEndpoints DeleteVoiceChannel GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApnsVoipChannel GetApnsVoipSandboxChannel GetApp GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetChannels GetEmailChannel GetEndpoint GetEventStream GetExportJob GetExportJobs GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentExportJobs GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel GetUserEndpoints GetVoiceChannel ListTagsForResource PhoneNumberValidate PutEvents PutEventStream RemoveAttributes SendMessages SendUsersMessages TagResource UntagResource UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApnsVoipChannel UpdateApnsVoipSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel UpdateVoiceChannel / }
 
 1;
 
@@ -1355,6 +1370,22 @@ Returns: a L<Paws::Pinpoint::GetVoiceChannelResponse> instance
 Get a Voice Channel
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::ListTagsForResource>
+
+Returns: a L<Paws::Pinpoint::ListTagsForResourceResponse> instance
+
+
+
+
 =head2 PhoneNumberValidate
 
 =over
@@ -1462,6 +1493,42 @@ Each argument is described in detail in: L<Paws::Pinpoint::SendUsersMessages>
 Returns: a L<Paws::Pinpoint::SendUsersMessagesResponse> instance
 
 Used to send a message to a list of users.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagsModel => L<Paws::Pinpoint::TagsModel>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::TagResource>
+
+Returns: nothing
+
+
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::UntagResource>
+
+Returns: nothing
+
+
 
 
 =head2 UpdateAdmChannel

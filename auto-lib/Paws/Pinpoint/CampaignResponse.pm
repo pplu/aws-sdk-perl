@@ -2,6 +2,7 @@ package Paws::Pinpoint::CampaignResponse;
   use Moose;
   has AdditionalTreatments => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::TreatmentResource]');
   has ApplicationId => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has DefaultState => (is => 'ro', isa => 'Paws::Pinpoint::CampaignState');
   has Description => (is => 'ro', isa => 'Str');
@@ -17,6 +18,7 @@ package Paws::Pinpoint::CampaignResponse;
   has SegmentId => (is => 'ro', isa => 'Str');
   has SegmentVersion => (is => 'ro', isa => 'Int');
   has State => (is => 'ro', isa => 'Paws::Pinpoint::CampaignState');
+  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has TreatmentDescription => (is => 'ro', isa => 'Str');
   has TreatmentName => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
@@ -63,6 +65,11 @@ Campaign definition
 =head2 ApplicationId => Str
 
   The ID of the application to which the campaign applies.
+
+
+=head2 Arn => Str
+
+  The arn for the campaign.
 
 
 =head2 CreationDate => Str
@@ -142,6 +149,11 @@ send messages unless you resume it by setting IsPaused to false.
 
   The campaign status. An A/B test campaign will have a status of
 COMPLETED only when all treatments have a status of COMPLETED.
+
+
+=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+
+  The Tags for the campaign.
 
 
 =head2 TreatmentDescription => Str

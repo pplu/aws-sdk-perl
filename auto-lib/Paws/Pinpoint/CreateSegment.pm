@@ -106,7 +106,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Values => [ 'My__string', ... ],    # OPTIONAL
             },
           },    # OPTIONAL
-        },
+        },    # OPTIONAL
         Name          => 'My__string',
         SegmentGroups => {
           Groups => [
@@ -188,7 +188,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },
                   },    # OPTIONAL
                 },
-                ...
+                ...     # OPTIONAL
               ],        # OPTIONAL
               SourceSegments => [
                 {
@@ -204,6 +204,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],                                 # OPTIONAL
           Include => 'ALL',                  # values: ALL, ANY, NONE; OPTIONAL
         },    # OPTIONAL
+        Tags => { 'My__string' => 'My__string', },    # OPTIONAL
       },
 
     );

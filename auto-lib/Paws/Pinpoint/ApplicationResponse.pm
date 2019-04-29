@@ -1,7 +1,9 @@
 package Paws::Pinpoint::ApplicationResponse;
   use Moose;
+  has Arn => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,20 +23,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::ApplicationResponse object:
 
-  $service_obj->Method(Att1 => { Id => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::ApplicationResponse object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Id
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
 Application Response.
 
 =head1 ATTRIBUTES
+
+
+=head2 Arn => Str
+
+  The arn for the application.
 
 
 =head2 Id => Str
@@ -45,6 +52,11 @@ Application Response.
 =head2 Name => Str
 
   The display name of the application.
+
+
+=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+
+  The Tags for the application.
 
 
 

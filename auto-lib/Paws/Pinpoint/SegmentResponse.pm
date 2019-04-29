@@ -1,6 +1,7 @@
 package Paws::Pinpoint::SegmentResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has Dimensions => (is => 'ro', isa => 'Paws::Pinpoint::SegmentDimensions');
   has Id => (is => 'ro', isa => 'Str');
@@ -9,6 +10,7 @@ package Paws::Pinpoint::SegmentResponse;
   has Name => (is => 'ro', isa => 'Str');
   has SegmentGroups => (is => 'ro', isa => 'Paws::Pinpoint::SegmentGroupList');
   has SegmentType => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Int');
 1;
 
@@ -48,6 +50,11 @@ Segment definition.
 =head2 ApplicationId => Str
 
   The ID of the application that the segment applies to.
+
+
+=head2 Arn => Str
+
+  The arn for the segment.
 
 
 =head2 CreationDate => Str
@@ -96,6 +103,11 @@ A static segment built from an imported set of endpoint definitions.
 You create this type of segment by importing a segment in the Amazon
 Pinpoint console or by making a POST request to the jobs/import
 resource.
+
+
+=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+
+  The Tags for the segment.
 
 
 =head2 Version => Int

@@ -1,14 +1,13 @@
-package Paws::Pinpoint::CreateApplicationRequest;
+package Paws::Pinpoint::TagsModel;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::CreateApplicationRequest
+Paws::Pinpoint::TagsModel
 
 =head1 USAGE
 
@@ -19,33 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::CreateApplicationRequest object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::TagsModel object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { Tags => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::CreateApplicationRequest object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::TagsModel object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Name
+  $result->Att1->Tags
 
 =head1 DESCRIPTION
 
-Application Request.
+This class has no description
 
 =head1 ATTRIBUTES
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Tags => L<Paws::Pinpoint::MapOf__string>
 
-  The display name of the application. Used in the Amazon Pinpoint
-console.
-
-
-=head2 Tags => L<Paws::Pinpoint::MapOf__string>
-
-  The Tags for the app.
+  
 
 
 
