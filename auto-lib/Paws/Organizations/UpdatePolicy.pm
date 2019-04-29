@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 If provided, the new content for the policy. The text must be correctly
 formatted JSON that complies with the syntax for the policy's type. For
 more information, see Service Control Policy Syntax
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
 in the I<AWS Organizations User Guide>.
 
 

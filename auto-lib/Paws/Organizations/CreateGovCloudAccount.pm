@@ -1,5 +1,5 @@
 
-package Paws::Organizations::CreateAccount;
+package Paws::Organizations::CreateGovCloudAccount;
   use Moose;
   has AccountName => (is => 'ro', isa => 'Str', required => 1);
   has Email => (is => 'ro', isa => 'Str', required => 1);
@@ -8,8 +8,8 @@ package Paws::Organizations::CreateAccount;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAccount');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Organizations::CreateAccountResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGovCloudAccount');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Organizations::CreateGovCloudAccountResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -17,20 +17,20 @@ package Paws::Organizations::CreateAccount;
 
 =head1 NAME
 
-Paws::Organizations::CreateAccount - Arguments for method CreateAccount on L<Paws::Organizations>
+Paws::Organizations::CreateGovCloudAccount - Arguments for method CreateGovCloudAccount on L<Paws::Organizations>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateAccount on the
+This class represents the parameters used for calling the method CreateGovCloudAccount on the
 L<AWS Organizations|Paws::Organizations> service. Use the attributes of this class
-as arguments to method CreateAccount.
+as arguments to method CreateGovCloudAccount.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAccount.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateGovCloudAccount.
 
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    my $CreateAccountResponse = $organizations->CreateAccount(
+    my $CreateGovCloudAccountResponse = $organizations->CreateGovCloudAccount(
       AccountName            => 'MyAccountName',
       Email                  => 'MyEmail',
       IamUserAccessToBilling => 'ALLOW',           # OPTIONAL
@@ -38,12 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreateAccountStatus = $CreateAccountResponse->CreateAccountStatus;
+    my $CreateAccountStatus =
+      $CreateGovCloudAccountResponse->CreateAccountStatus;
 
-    # Returns a L<Paws::Organizations::CreateAccountResponse> object.
+    # Returns a L<Paws::Organizations::CreateGovCloudAccountResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations/CreateAccount>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations/CreateGovCloudAccount>
 
 =head1 ATTRIBUTES
 
@@ -56,23 +57,28 @@ The friendly name of the member account.
 
 =head2 B<REQUIRED> Email => Str
 
-The email address of the owner to assign to the new member account.
-This email address must not already be associated with another AWS
-account. You must use a valid email address to complete account
-creation. You can't access the root user of the account or remove an
-account that was created with an invalid email address.
+The email address of the owner to assign to the new member account in
+the commercial Region. This email address must not already be
+associated with another AWS account. You must use a valid email address
+to complete account creation. You can't access the root user of the
+account or remove an account that was created with an invalid email
+address. Like all request parameters for C<CreateGovCloudAccount>, the
+request for the email address for the AWS GovCloud (US) account
+originates from the commercial Region, not from the AWS GovCloud (US)
+Region.
 
 
 
 =head2 IamUserAccessToBilling => Str
 
-If set to C<ALLOW>, the new account enables IAM users to access account
-billing information I<if> they have the required permissions. If set to
-C<DENY>, only the root user of the new account can access account
-billing information. For more information, see Activating Access to the
-Billing and Cost Management Console
+If set to C<ALLOW>, the new linked account in the commercial Region
+enables IAM users to access account billing information I<if> they have
+the required permissions. If set to C<DENY>, only the root user of the
+new account can access account billing information. For more
+information, see Activating Access to the Billing and Cost Management
+Console
 (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
-in the I<AWS Billing and Cost Management User Guide>.
+in the I<AWS Billing and Cost Management User Guide.>
 
 If you don't specify this parameter, the value defaults to C<ALLOW>,
 and IAM users and roles with the required permissions can access
@@ -85,7 +91,8 @@ Valid values are: C<"ALLOW">, C<"DENY">
 (Optional)
 
 The name of an IAM role that AWS Organizations automatically
-preconfigures in the new member account. This role trusts the master
+preconfigures in the new member accounts in both the AWS GovCloud (US)
+Region and in the commercial Region. This role trusts the master
 account, allowing users in the master account to assume the role, as
 permitted by the master account administrator. The role has
 administrator permissions in the new member account.
@@ -97,10 +104,10 @@ For more information about how to use this role to access the member
 account, see Accessing and Administering the Member Accounts in Your
 Organization
 (https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
-in the I<AWS Organizations User Guide>, and steps 2 and 3 in Tutorial:
+in the I<AWS Organizations User Guide> and steps 2 and 3 in Tutorial:
 Delegate Access Across AWS Accounts Using IAM Roles
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
-in the I<IAM User Guide>.
+in the I<IAM User Guide.>
 
 The regex pattern (http://wikipedia.org/wiki/regex) that is used to
 validate this parameter is a string of characters that can consist of
@@ -112,7 +119,7 @@ the following characters: =,.@-
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateAccount in L<Paws::Organizations>
+This class forms part of L<Paws>, documenting arguments for method CreateGovCloudAccount in L<Paws::Organizations>
 
 =head1 BUGS and CONTRIBUTIONS
 

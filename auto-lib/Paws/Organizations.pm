@@ -36,6 +36,11 @@ package Paws::Organizations;
     my $call_object = $self->new_with_coercions('Paws::Organizations::CreateAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateGovCloudAccount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Organizations::CreateGovCloudAccount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateOrganization {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Organizations::CreateOrganization', @_);
@@ -528,7 +533,7 @@ package Paws::Organizations;
   }
 
 
-  sub operations { qw/AcceptHandshake AttachPolicy CancelHandshake CreateAccount CreateOrganization CreateOrganizationalUnit CreatePolicy DeclineHandshake DeleteOrganization DeleteOrganizationalUnit DeletePolicy DescribeAccount DescribeCreateAccountStatus DescribeHandshake DescribeOrganization DescribeOrganizationalUnit DescribePolicy DetachPolicy DisableAWSServiceAccess DisablePolicyType EnableAllFeatures EnableAWSServiceAccess EnablePolicyType InviteAccountToOrganization LeaveOrganization ListAccounts ListAccountsForParent ListAWSServiceAccessForOrganization ListChildren ListCreateAccountStatus ListHandshakesForAccount ListHandshakesForOrganization ListOrganizationalUnitsForParent ListParents ListPolicies ListPoliciesForTarget ListRoots ListTargetsForPolicy MoveAccount RemoveAccountFromOrganization UpdateOrganizationalUnit UpdatePolicy / }
+  sub operations { qw/AcceptHandshake AttachPolicy CancelHandshake CreateAccount CreateGovCloudAccount CreateOrganization CreateOrganizationalUnit CreatePolicy DeclineHandshake DeleteOrganization DeleteOrganizationalUnit DeletePolicy DescribeAccount DescribeCreateAccountStatus DescribeHandshake DescribeOrganization DescribeOrganizationalUnit DescribePolicy DetachPolicy DisableAWSServiceAccess DisablePolicyType EnableAllFeatures EnableAWSServiceAccess EnablePolicyType InviteAccountToOrganization LeaveOrganization ListAccounts ListAccountsForParent ListAWSServiceAccessForOrganization ListChildren ListCreateAccountStatus ListHandshakesForAccount ListHandshakesForOrganization ListOrganizationalUnitsForParent ListParents ListPolicies ListPoliciesForTarget ListRoots ListTargetsForPolicy MoveAccount RemoveAccountFromOrganization UpdateOrganizationalUnit UpdatePolicy / }
 
 1;
 
@@ -565,7 +570,7 @@ accounts and their resources.
 This guide provides descriptions of the Organizations API. For more
 information about using this service, see the AWS Organizations User
 Guide
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
 
 B<API Version>
 
@@ -586,7 +591,7 @@ We recommend that you use the AWS SDKs to make programmatic API calls
 to Organizations. However, you also can use the Organizations Query API
 to make direct calls to the Organizations web service. To learn more
 about the Organizations Query API, see Making Query Requests
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html)
 in the I<AWS Organizations User Guide>. Organizations supports GET and
 POST requests for all actions. That is, the API does not require you to
 use GET for some actions and POST for others. However, GET requests are
@@ -607,7 +612,7 @@ generate temporary security credentials, and use those credentials to
 sign requests.
 
 To sign requests, we recommend that you use Signature Version 4
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 If you have an existing application that uses Signature Version 2, you
 do not have to update it to use Signature Version 4. However, some
 operations now require Signature Version 4. The documentation for
@@ -664,8 +669,8 @@ C<--region us-east-1>
 For the various SDKs used to call the APIs, see the documentation for
 the SDK of interest to learn how to direct the requests to a specific
 endpoint. For more information, see Regions and Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region) in
-the I<AWS General Reference>.
+(https://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region)
+in the I<AWS General Reference>.
 
 B<How examples are presented>
 
@@ -686,11 +691,11 @@ determine which requests were successfully made to Organizations, who
 made the request, when it was made, and so on. For more about AWS
 Organizations and its support for AWS CloudTrail, see Logging AWS
 Organizations Events with AWS CloudTrail
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html#orgs_cloudtrail-integration)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html#orgs_cloudtrail-integration)
 in the I<AWS Organizations User Guide>. To learn more about CloudTrail,
 including how to turn it on and find your log files, see the AWS
 CloudTrail User Guide
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28>
 
@@ -740,11 +745,11 @@ from the master account.
 
 For more information about invitations, see Inviting an AWS Account to
 Join Your Organization
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html)
 in the I<AWS Organizations User Guide>. For more information about
 requests to enable all features in the organization, see Enabling All
 Features in Your Organization
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
 in the I<AWS Organizations User Guide>.
 
 =back
@@ -799,7 +804,8 @@ that account.
 
 =back
 
-SCPs essentially are permission "filters". When you attach one SCP to a
+SCPs are JSON policies that specify the maximum permissions for an
+organization or organizational unit (OU). When you attach one SCP to a
 higher level root or OU, and you also attach a different SCP to a child
 OU or to an account, the child policy can further restrict only the
 permissions that pass through the parent filter and are available to
@@ -822,7 +828,7 @@ you want to allow in that OU or account.
 
 For more information about how Organizations policies permissions work,
 see Using Service Control Policies
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
 in the I<AWS Organizations User Guide>.
 
 =back
@@ -897,7 +903,7 @@ Check the AWS CloudTrail log for the C<CreateAccountResult> event. For
 information on using AWS CloudTrail with Organizations, see Monitoring
 the Activity in Your Organization
 (http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html)
-in the I<AWS Organizations User Guide>.
+in the I<AWS Organizations User Guide.>
 
 =back
 
@@ -921,8 +927,8 @@ account.
 
 For more information about creating accounts, see Creating an AWS
 Account in Your Organization
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
-in the I<AWS Organizations User Guide>.
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
+in the I<AWS Organizations User Guide.>
 
 =over
 
@@ -954,7 +960,7 @@ try again. If the error persists, contact AWS Support
 
 =item *
 
-Using CreateAccount to create multiple temporary accounts is not
+Using CreateAccount to create multiple temporary accounts isn't
 recommended. You can only close an account from the Billing and Cost
 Management Console, and you must be signed in as the root user. For
 information on the requirements and process for closing an account, see
@@ -972,7 +978,184 @@ for the account. If you disable it, only the account root user can
 access billing information. For information about how to disable this
 switch for an account, see Granting Access to Your Billing Information
 and Tools
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
+
+
+=head2 CreateGovCloudAccount
+
+=over
+
+=item AccountName => Str
+
+=item Email => Str
+
+=item [IamUserAccessToBilling => Str]
+
+=item [RoleName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Organizations::CreateGovCloudAccount>
+
+Returns: a L<Paws::Organizations::CreateGovCloudAccountResponse> instance
+
+This action is available if all of the following are true:
+
+=over
+
+=item *
+
+You are authorized to create accounts in the AWS GovCloud (US) Region.
+For more information on the AWS GovCloud (US) Region, see the I<AWS
+GovCloud User Guide>.
+(http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/welcome.html)
+
+=item *
+
+You already have an account in the AWS GovCloud (US) Region that is
+associated with your master account in the commercial Region.
+
+=item *
+
+You call this action from the master account of your organization in
+the commercial Region.
+
+=item *
+
+You have the C<organizations:CreateGovCloudAccount> permission. AWS
+Organizations creates the required service-linked role named
+C<AWSServiceRoleForOrganizations>. For more information, see AWS
+Organizations and Service-Linked Roles
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs)
+in the I<AWS Organizations User Guide>.
+
+=back
+
+AWS automatically enables AWS CloudTrail for AWS GovCloud (US)
+accounts, but you should also do the following:
+
+=over
+
+=item *
+
+Verify that AWS CloudTrail is enabled to store logs.
+
+=item *
+
+Create an S3 bucket for AWS CloudTrail log storage.
+
+For more information, see Verifying AWS CloudTrail Is Enabled
+(http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/verifying-cloudtrail.html)
+in the I<AWS GovCloud User Guide>.
+
+=back
+
+You call this action from the master account of your organization in
+the commercial Region to create a standalone AWS account in the AWS
+GovCloud (US) Region. After the account is created, the master account
+of an organization in the AWS GovCloud (US) Region can invite it to
+that organization. For more information on inviting standalone accounts
+in the AWS GovCloud (US) to join an organization, see AWS Organizations
+(http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html)
+in the I<AWS GovCloud User Guide.>
+
+Calling C<CreateGovCloudAccount> is an asynchronous request that AWS
+performs in the background. Because C<CreateGovCloudAccount> operates
+asynchronously, it can return a successful completion message even
+though account initialization might still be in progress. You might
+need to wait a few minutes before you can successfully access the
+account. To check the status of the request, do one of the following:
+
+=over
+
+=item *
+
+Use the C<OperationId> response element from this operation to provide
+as a parameter to the DescribeCreateAccountStatus operation.
+
+=item *
+
+Check the AWS CloudTrail log for the C<CreateAccountResult> event. For
+information on using AWS CloudTrail with Organizations, see Monitoring
+the Activity in Your Organization
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html)
+in the I<AWS Organizations User Guide.>
+
+=back
+
+When you call the C<CreateGovCloudAccount> action, you create two
+accounts: a standalone account in the AWS GovCloud (US) Region and an
+associated account in the commercial Region for billing and support
+purposes. The account in the commercial Region is automatically a
+member of the organization whose credentials made the request. Both
+accounts are associated with the same email address.
+
+A role is created in the new account in the commercial Region that
+allows the master account in the organization in the commercial Region
+to assume it. An AWS GovCloud (US) account is then created and
+associated with the commercial account that you just created. A role is
+created in the new AWS GovCloud (US) account that can be assumed by the
+AWS GovCloud (US) account that is associated with the master account of
+the commercial organization. For more information and to view a diagram
+that explains how account access works, see AWS Organizations
+(http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html)
+in the I<AWS GovCloud User Guide.>
+
+For more information about creating accounts, see Creating an AWS
+Account in Your Organization
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
+in the I<AWS Organizations User Guide.>
+
+=over
+
+=item *
+
+When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information required
+for the account to operate as a standalone account, such as a payment
+method and signing the end user license agreement (EULA) is I<not>
+automatically collected. If you must remove an account from your
+organization later, you can do so only after you provide the missing
+information. Follow the steps at To leave an organization as a member
+account
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
+in the I<AWS Organizations User Guide.>
+
+=item *
+
+If you get an exception that indicates that you exceeded your account
+limits for the organization, contact AWS Support
+(https://console.aws.amazon.com/support/home#/).
+
+=item *
+
+If you get an exception that indicates that the operation failed
+because your organization is still initializing, wait one hour and then
+try again. If the error persists, contact AWS Support
+(https://console.aws.amazon.com/support/home#/).
+
+=item *
+
+Using C<CreateGovCloudAccount> to create multiple temporary accounts
+isn't recommended. You can only close an account from the AWS Billing
+and Cost Management console, and you must be signed in as the root
+user. For information on the requirements and process for closing an
+account, see Closing an AWS Account
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
+in the I<AWS Organizations User Guide>.
+
+=back
+
+When you create a member account with this operation, you can choose
+whether to create the account with the B<IAM User and Role Access to
+Billing Information> switch enabled. If you enable it, IAM users and
+roles that have appropriate permissions can view billing information
+for the account. If you disable it, only the account root user can
+access billing information. For information about how to disable this
+switch for an account, see Granting Access to Your Billing Information
+and Tools
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
 
 
 =head2 CreateOrganization
@@ -990,7 +1173,7 @@ Returns: a L<Paws::Organizations::CreateOrganizationResponse> instance
 
 Creates an AWS organization. The account whose user is calling the
 CreateOrganization operation automatically becomes the master account
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account)
 of the new organization.
 
 This operation must be called using credentials from the account that
@@ -1028,7 +1211,7 @@ of levels deep that you can nest OUs is dependent upon the policy types
 enabled for that root. For service control policies, the limit is five.
 
 For more information about OUs, see Managing Organizational Units
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html)
 in the I<AWS Organizations User Guide>.
 
 This operation can be called only from the organization's master
@@ -1059,7 +1242,7 @@ organizational unit (OU), or an individual AWS account.
 
 For more information about policies and their use, see Managing
 Organization Policies
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
 
 This operation can be called only from the organization's master
 account.
@@ -1300,13 +1483,13 @@ attached. If you want to replace the default C<FullAWSAccess> policy
 with one that limits the permissions that can be delegated, then you
 must attach the replacement policy before you can remove the default
 one. This is the authorization strategy of whitelisting
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist).
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist).
 If you instead attach a second SCP and leave the C<FullAWSAccess> SCP
 still attached, and specify C<"Effect": "Deny"> in the second SCP to
 override the C<"Effect": "Allow"> in the C<FullAWSAccess> policy (or
 any other attached SCP), then you are using the authorization strategy
 of blacklisting
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist).
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist).
 
 This operation can be called only from the organization's master
 account.
@@ -1410,7 +1593,7 @@ access only to consolidated billing, and you can't use any of the
 advanced account administration features that AWS Organizations
 supports. For more information, see Enabling All Features in Your
 Organization
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
 in the I<AWS Organizations User Guide>.
 
 This operation is required only for organizations that were created
@@ -2022,7 +2205,7 @@ Each argument is described in detail in: L<Paws::Organizations::ListTargetsForPo
 
 Returns: a L<Paws::Organizations::ListTargetsForPolicyResponse> instance
 
-Lists all the roots, organizaitonal units (OUs), and accounts to which
+Lists all the roots, organizational units (OUs), and accounts to which
 the specified policy is attached.
 
 Always check the C<NextToken> response parameter for a C<null> value
