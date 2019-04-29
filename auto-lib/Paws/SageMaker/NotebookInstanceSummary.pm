@@ -101,7 +101,7 @@ this notebook instance.
 
 For information about notebook instance lifestyle configurations, see
 Step 2.1: (Optional) Customize a Notebook Instance
-(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
 =head2 B<REQUIRED> NotebookInstanceName => Str

@@ -57,7 +57,7 @@ for the tuning job.
 point for the new hyperparameter tuning job. For more information about
 warm starting a hyperparameter tuning job, see Using a Previous
 Hyperparameter Tuning Job as a Starting Point
-(http://docs.aws.amazon.com/automatic-model-tuning-incremental).
+(http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-warm-start.html).
 
 Hyperparameter tuning jobs created before October 1, 2018 cannot be
 used as parent jobs for warm start tuning jobs.

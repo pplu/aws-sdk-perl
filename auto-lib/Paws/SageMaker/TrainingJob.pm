@@ -2,6 +2,7 @@ package Paws::SageMaker::TrainingJob;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification');
   has CreationTime => (is => 'ro', isa => 'Str');
+  has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has FailureReason => (is => 'ro', isa => 'Str');
   has FinalMetricDataList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricData]');
@@ -68,6 +69,16 @@ metadata.
 =head2 CreationTime => Str
 
   A timestamp that indicates when the training job was created.
+
+
+=head2 EnableInterContainerTrafficEncryption => Bool
+
+  To encrypt all communications between ML compute instances in
+distributed training, choose C<True>. Encryption provides greater
+security for distributed training, but training might take longer. How
+long it takes depends on the amount of communication between compute
+instances, especially if you use a deep learning algorithm in
+distributed training.
 
 
 =head2 EnableNetworkIsolation => Bool
@@ -256,7 +267,7 @@ transitioned through.
 
   An array of key-value pairs. For more information, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 in the I<AWS Billing and Cost Management User Guide>.
 
 
@@ -334,7 +345,7 @@ job if the training job was launched by a hyperparameter tuning job.
   A VpcConfig object that specifies the VPC that this training job has
 access to. For more information, see Protect Training Jobs by Using an
 Amazon Virtual Private Cloud
-(http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 
 
 

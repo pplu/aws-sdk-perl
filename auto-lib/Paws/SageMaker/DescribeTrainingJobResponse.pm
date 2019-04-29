@@ -51,9 +51,11 @@ A timestamp that indicates when the training job was created.
 =head2 EnableInterContainerTrafficEncryption => Bool
 
 To encrypt all communications between ML compute instances in
-distributed training, specify C<True>. Encryption provides greater
-security for distributed training, but training take longer because of
-the additional communications between ML compute instances.
+distributed training, choose C<True>. Encryption provides greater
+security for distributed training, but training might take longer. How
+long it takes depends on the amount of communication between compute
+instances, especially if you use a deep learning algorithm in
+distributed training.
 
 
 =head2 EnableNetworkIsolation => Bool
@@ -320,7 +322,7 @@ job if the training job was launched by a hyperparameter tuning job.
 A VpcConfig object that specifies the VPC that this training job has
 access to. For more information, see Protect Training Jobs by Using an
 Amazon Virtual Private Cloud
-(http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 
 
 =head2 _request_id => Str

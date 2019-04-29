@@ -60,8 +60,12 @@ jobs and parallel training jobs for this tuning job.
 
 =head2 B<REQUIRED> Strategy => Str
 
-  Specifies the search strategy for hyperparameters. Currently, the only
-valid value is C<Bayesian>.
+  Specifies how hyperparameter tuning chooses the combinations of
+hyperparameter values to use for the training job it launches. To use
+the Bayesian search stategy, set this to C<Bayesian>. To randomly
+search, set it to C<Random>. For information about search strategies,
+see How Hyperparameter Tuning Works
+(http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html).
 
 
 =head2 TrainingJobEarlyStoppingType => Str

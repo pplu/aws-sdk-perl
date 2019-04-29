@@ -42,7 +42,7 @@ Describes the container, as part of model definition.
 
 =head2 ContainerHostname => Str
 
-  The DNS host name for the container after Amazon SageMaker deploys it.
+  This parameter is ignored.
 
 
 =head2 Environment => L<Paws::SageMaker::EnvironmentMap>
@@ -61,7 +61,7 @@ Amazon SageMaker requirements. Amazon SageMaker supports both
 C<registry/repository[:tag]> and C<registry/repository[@digest]> image
 path formats. For more information, see Using Your Own Algorithms with
 Amazon SageMaker
-(http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html)
 
 
 =head2 ModelDataUrl => Str

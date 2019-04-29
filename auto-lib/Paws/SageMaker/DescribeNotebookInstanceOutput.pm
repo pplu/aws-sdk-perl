@@ -16,6 +16,7 @@ package Paws::SageMaker::DescribeNotebookInstanceOutput;
   has NotebookInstanceName => (is => 'ro', isa => 'Str');
   has NotebookInstanceStatus => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
+  has RootAccess => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetId => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
@@ -78,13 +79,13 @@ Notebook Instances
 =head2 DirectInternetAccess => Str
 
 Describes whether Amazon SageMaker provides internet access to the
-notebook instance. If this value is set to I<Disabled, he notebook
+notebook instance. If this value is set to I<Disabled>, the notebook
 instance does not have internet access, and cannot connect to Amazon
-SageMaker training and endpoint services>.
+SageMaker training and endpoint services.
 
 For more information, see Notebook Instances Are Internet-Enabled by
 Default
-(http://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
 
 Valid values are: C<"Enabled">, C<"Disabled">
 =head2 FailureReason => Str
@@ -126,7 +127,7 @@ Returns the name of a notebook instance lifecycle configuration.
 
 For information about notebook instance lifestyle configurations, see
 Step 2.1: (Optional) Customize a Notebook Instance
-(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html)
 
 
 =head2 NotebookInstanceName => Str
@@ -145,6 +146,17 @@ The Amazon Resource Name (ARN) of the IAM role associated with the
 instance.
 
 
+=head2 RootAccess => Str
+
+Whether root access is enabled or disabled for users of the notebook
+instance.
+
+Lifecycle configurations need root access to be able to set up a
+notebook instance. Because of this, lifecycle configurations associated
+with a notebook instance always run with root access even if you
+disable root access for users.
+
+Valid values are: C<"Enabled">, C<"Disabled">
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
 The IDs of the VPC security groups.

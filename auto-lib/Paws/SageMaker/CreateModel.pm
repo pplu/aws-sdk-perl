@@ -113,7 +113,7 @@ can assume to access model artifacts and docker image for deployment on
 ML compute instances or for batch transform jobs. Deploying on ML
 compute instances is part of model hosting. For more information, see
 Amazon SageMaker Roles
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 
 To be able to pass this role to Amazon SageMaker, the caller of this
 API must have the C<iam:PassRole> permission.
@@ -138,7 +138,7 @@ code uses when the model is deployed for predictions.
 
 An array of key-value pairs. For more information, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 in the I<AWS Billing and Cost Management User Guide>.
 
 
@@ -150,9 +150,9 @@ connect to. Control access to and from your model container by
 configuring the VPC. C<VpcConfig> is used in hosting services and in
 batch transform. For more information, see Protect Endpoints by Using
 an Amazon Virtual Private Cloud
-(http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and
+(https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and
 Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private
-Cloud (http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html).
+Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html).
 
 
 

@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TenthFractionsOfACent => 1,            # max: 9; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
-        TaskAvailabilityLifetimeInSeconds => 1,  # min: 1, max: 345600; OPTIONAL
+        TaskAvailabilityLifetimeInSeconds => 1,  # min: 1, max: 864000; OPTIONAL
         TaskKeywords                      => [
           'MyTaskKeyword', ...                   # min: 1, max: 30
         ],                                       # min: 1, max: 5; OPTIONAL

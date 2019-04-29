@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OutputConfig => {
         S3OutputLocation => 'MyS3Uri',    # max: 1024
         TargetDevice     => 'ml_m4'
-        , # values: ml_m4, ml_m5, ml_c4, ml_c5, ml_p2, ml_p3, jetson_tx1, jetson_tx2, rasp3b, deeplens
+        , # values: ml_m4, ml_m5, ml_c4, ml_c5, ml_p2, ml_p3, jetson_tx1, jetson_tx2, rasp3b, deeplens, rk3399, rk3288
 
       },
       RoleArn           => 'MyRoleArn',

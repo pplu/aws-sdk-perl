@@ -55,9 +55,11 @@ launches.
 =head2 EnableInterContainerTrafficEncryption => Bool
 
   To encrypt all communications between ML compute instances in
-distributed training, specify C<True>. Encryption provides greater
-security for distributed training, but training take longer because of
-the additional communications between ML compute instances.
+distributed training, choose C<True>. Encryption provides greater
+security for distributed training, but training might take longer. How
+long it takes depends on the amount of communication between compute
+instances, especially if you use a deep learning algorithm in
+distributed training.
 
 
 =head2 EnableNetworkIsolation => Bool
@@ -131,7 +133,7 @@ jobs that this hyperparameter tuning job launches to connect to.
 Control access to and from your training container by configuring the
 VPC. For more information, see Protect Training Jobs by Using an Amazon
 Virtual Private Cloud
-(http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 
 
 

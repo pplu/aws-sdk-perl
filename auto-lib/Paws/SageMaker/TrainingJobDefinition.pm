@@ -78,7 +78,7 @@ which delays job termination for 120 seconds. Algorithms might use this
 
   The input mode used by the algorithm for the training job. For the
 input modes that Amazon SageMaker algorithms support, see Algorithms
-(http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 
 If an algorithm supports the C<File> input mode, Amazon SageMaker
 downloads the training data from S3 to the provisioned ML storage

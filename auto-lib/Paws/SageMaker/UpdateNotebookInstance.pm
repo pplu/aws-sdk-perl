@@ -12,6 +12,7 @@ package Paws::SageMaker::UpdateNotebookInstance;
   has LifecycleConfigName => (is => 'ro', isa => 'Str');
   has NotebookInstanceName => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str');
+  has RootAccess => (is => 'ro', isa => 'Str');
   has VolumeSizeInGB => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -55,6 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceType                           => 'ml.t2.medium',       # OPTIONAL
       LifecycleConfigName => 'MyNotebookInstanceLifecycleConfigName', # OPTIONAL
       RoleArn             => 'MyRoleArn',                             # OPTIONAL
+      RootAccess          => 'Enabled',                               # OPTIONAL
       VolumeSizeInGB      => 1,                                       # OPTIONAL
     );
 
@@ -81,7 +83,7 @@ instance. These can be either the names of Git repositories stored as
 resources in your account, or the URL of Git repositories in AWS
 CodeCommit
 (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-or in any other Git repository.. These repositories are cloned at the
+or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For
 more information, see Associating Git Repositories with Amazon
 SageMaker Notebook Instances
@@ -143,7 +145,7 @@ Valid values are: C<"ml.t2.medium">, C<"ml.t2.large">, C<"ml.t2.xlarge">, C<"ml.
 The name of a lifecycle configuration to associate with the notebook
 instance. For information about lifestyle configurations, see Step 2.1:
 (Optional) Customize a Notebook Instance
-(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
 
@@ -158,12 +160,23 @@ The name of the notebook instance to update.
 The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker
 can assume to access the notebook instance. For more information, see
 Amazon SageMaker Roles
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 
 To be able to pass this role to Amazon SageMaker, the caller of this
 API must have the C<iam:PassRole> permission.
 
 
+
+=head2 RootAccess => Str
+
+Whether root access is enabled or disabled for users of the notebook
+instance. The default value is C<Enabled>.
+
+If you set this to C<Disabled>, users don't have root access on the
+notebook instance, but lifecycle configuration scripts still run with
+root permissions.
+
+Valid values are: C<"Enabled">, C<"Disabled">
 
 =head2 VolumeSizeInGB => Int
 

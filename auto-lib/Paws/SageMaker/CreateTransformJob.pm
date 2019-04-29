@@ -95,17 +95,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 BatchStrategy => Str
 
-Determines the number of records to include in a mini-batch. If you
-want to include only one record in a mini-batch, specify
-C<SingleRecord>.. If you want mini-batches to contain a maximum of the
-number of records specified in the C<MaxPayloadInMB> parameter, specify
-C<MultiRecord>.
+Specifies the number of records to include in a mini-batch for an HTTP
+inference request. A I<record> I< is a single unit of input data that
+inference can be made on. For example, a single line in a CSV file is a
+record.>
 
-If you set C<SplitType> to C<Line> and C<BatchStrategy> to
-C<MultiRecord>, a batch transform automatically splits your input data
-into the specified payload size. There's no need to split the dataset
-into smaller files or to use larger payload sizes unless the records in
-your dataset are very large.
+To enable the batch strategy, you must set C<SplitType> to C<Line>,
+C<RecordIO>, or C<TFRecord>.
+
+To use only one record when making an HTTP invocation request to a
+container, set C<BatchStrategy> to C<SingleRecord> and C<SplitType> to
+C<Line>.
+
+To fit as many records in a mini-batch as can fit within the
+C<MaxPayloadInMB> limit, set C<BatchStrategy> to C<MultiRecord> and
+C<SplitType> to C<Line>.
 
 Valid values are: C<"MultiRecord">, C<"SingleRecord">
 
@@ -118,29 +122,27 @@ to 16 key and values entries in the map.
 
 =head2 MaxConcurrentTransforms => Int
 
-The maximum number of parallel requests that can be sent to an
-algorithm container on an instance. This is good for algorithms that
-implement multiple workers on larger instances . The default value is
-C<1>. To allow Amazon SageMaker to determine the appropriate number for
-C<MaxConcurrentTransforms>, do not set the value in the API.
+The maximum number of parallel requests that can be sent to each
+instance in a transform job. The default value is C<1>. To allow Amazon
+SageMaker to determine the appropriate number for
+C<MaxConcurrentTransforms>, set the value to C<0>.
 
 
 
 =head2 MaxPayloadInMB => Int
 
-The maximum payload size allowed, in MB. A payload is the data portion
-of a record (without metadata). The value in C<MaxPayloadInMB> must be
-greater or equal to the size of a single record. You can approximate
-the size of a record by dividing the size of your dataset by the number
-of records. Then multiply this value by the number of records you want
-in a mini-batch. We recommend to enter a slightly larger value than
-this to ensure the records fit within the maximum payload size. The
-default value is C<6> MB.
+The maximum allowed size of the payload, in MB. A I<payload> is the
+data portion of a record (without metadata). The value in
+C<MaxPayloadInMB> must be greater than, or equal to, the size of a
+single record. To estimate the size of a record in MB, divide the size
+of your dataset by the number of records. To ensure that the records
+fit within the maximum payload size, we recommend using a slightly
+larger value. The default value is C<6> MB.
 
 For cases where the payload might be arbitrarily large and is
 transmitted using HTTP chunked encoding, set the value to C<0>. This
-feature only works in supported algorithms. Currently, Amazon SageMaker
-built-in algorithms do not support this feature.
+feature works only in supported algorithms. Currently, Amazon SageMaker
+built-in algorithms do not support HTTP chunked encoding.
 
 
 
@@ -156,7 +158,7 @@ within an AWS Region in an AWS account.
 
 (Optional) An array of key-value pairs. For more information, see Using
 Cost Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 in the I<AWS Billing and Cost Management User Guide>.
 
 

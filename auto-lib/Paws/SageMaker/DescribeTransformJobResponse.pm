@@ -31,10 +31,13 @@ Paws::SageMaker::DescribeTransformJobResponse
 
 =head2 BatchStrategy => Str
 
-If you want to include only one record in a batch, specify
-C<SingleRecord>.. If you want batches to contain a maximum of the
-number of records specified in the C<MaxPayloadInMB> parameter, specify
-C<MultiRecord>.S
+Specifies the number of records to include in a mini-batch for an HTTP
+inference request. A I<record> I< is a single unit of input data that
+inference can be made on. For example, a single line in a CSV file is a
+record.>
+
+To enable the batch strategy, you must set C<SplitType> to C<Line>,
+C<RecordIO>, or C<TFRecord>.
 
 Valid values are: C<"MultiRecord">, C<"SingleRecord">
 =head2 B<REQUIRED> CreationTime => Str
@@ -44,12 +47,17 @@ A timestamp that shows when the transform Job was created.
 
 =head2 Environment => L<Paws::SageMaker::TransformEnvironmentMap>
 
-
+The environment variables to set in the Docker container. We support up
+to 16 key and values entries in the map.
 
 
 =head2 FailureReason => Str
 
-If the transform job failed, the reason that it failed.
+If the transform job failed, C<FailureReason> describes why it failed.
+A transform job creates a log file, which includes error messages, and
+stores it as an Amazon S3 object. For more information, see Log Amazon
+SageMaker Events with Amazon CloudWatch
+(http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html).
 
 
 =head2 LabelingJobArn => Str

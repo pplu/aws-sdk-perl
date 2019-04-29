@@ -10,6 +10,7 @@ package Paws::SageMaker::CreateNotebookInstance;
   has LifecycleConfigName => (is => 'ro', isa => 'Str');
   has NotebookInstanceName => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has RootAccess => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetId => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
@@ -54,6 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DirectInternetAccess  => 'Enabled',                      # OPTIONAL
       KmsKeyId              => 'MyKmsKeyId',                   # OPTIONAL
       LifecycleConfigName => 'MyNotebookInstanceLifecycleConfigName', # OPTIONAL
+      RootAccess          => 'Enabled',                               # OPTIONAL
       SecurityGroupIds    => [
         'MySecurityGroupId', ...                                      # max: 32
       ],                                                              # OPTIONAL
@@ -131,7 +133,7 @@ configure a NAT Gateway in your VPC.
 
 For more information, see Notebook Instances Are Internet-Enabled by
 Default
-(http://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
 You can set the value of this parameter to C<Disabled> only if you set
 a value for the C<SubnetId> parameter.
 
@@ -159,7 +161,7 @@ in the I<AWS Key Management Service Developer Guide>.
 The name of a lifecycle configuration to associate with the notebook
 instance. For information about lifestyle configurations, see Step 2.1:
 (Optional) Customize a Notebook Instance
-(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
 
@@ -177,12 +179,24 @@ must grant this role necessary permissions so Amazon SageMaker can
 perform these tasks. The policy must allow the Amazon SageMaker service
 principal (sagemaker.amazonaws.com) permissions to assume this role.
 For more information, see Amazon SageMaker Roles
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 
 To be able to pass this role to Amazon SageMaker, the caller of this
 API must have the C<iam:PassRole> permission.
 
 
+
+=head2 RootAccess => Str
+
+Whether root access is enabled or disabled for users of the notebook
+instance. The default value is C<Enabled>.
+
+Lifecycle configurations need root access to be able to set up a
+notebook instance. Because of this, lifecycle configurations associated
+with a notebook instance always run with root access even if you
+disable root access for users.
+
+Valid values are: C<"Enabled">, C<"Disabled">
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
