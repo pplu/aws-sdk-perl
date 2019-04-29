@@ -56,8 +56,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 =head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
 
 The input image as base64-encoded bytes or an S3 object. If you use the
-AWS CLI to call Amazon Rekognition operations, passing base64-encoded
-image bytes is not supported.
+AWS CLI to call Amazon Rekognition operations, passing image bytes is
+not supported. Images stored in an S3 Bucket do not need to be
+base64-encoded.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
 
 
 

@@ -865,15 +865,15 @@ Gets the content moderation analysis results for a Amazon Rekognition
 Video analysis started by StartContentModeration.
 
 Content moderation analysis of a video is an asynchronous operation.
-You start analysis by calling StartContentModeration. which returns a
+You start analysis by calling StartContentModeration which returns a
 job identifier (C<JobId>). When analysis finishes, Amazon Rekognition
 Video publishes a completion status to the Amazon Simple Notification
 Service topic registered in the initial call to
 C<StartContentModeration>. To get the results of the content moderation
 analysis, first check that the status value published to the Amazon SNS
-topic is C<SUCCEEDED>. If so, call C<GetCelebrityDetection> and pass
-the job identifier (C<JobId>) from the initial call to
-C<StartCelebrityDetection>.
+topic is C<SUCCEEDED>. If so, call C<GetContentModeration> and pass the
+job identifier (C<JobId>) from the initial call to
+C<StartContentModeration>.
 
 For more information, see Working with Stored Videos in the Amazon
 Rekognition Devlopers Guide.
@@ -1230,7 +1230,7 @@ the bounding box contains a face.
 
 =item *
 
-A face ID, C<faceId>, assigned by the service for each face that's
+A face ID, C<FaceId>, assigned by the service for each face that's
 detected and stored.
 
 =item *
