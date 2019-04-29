@@ -139,6 +139,12 @@ is associated with.
   Specifies whether tags are copied from the DB instance to snapshots of
 the DB instance.
 
+B<Amazon Aurora>
+
+Not applicable. Copying tags to snapshots is managed by the DB cluster.
+Setting this value for an Aurora DB instance has no effect on the DB
+cluster setting. For more information, see DBCluster.
+
 
 =head2 DBClusterIdentifier => Str
 
@@ -185,9 +191,7 @@ key for the DB instance is accessed.
 =head2 DBName => Str
 
   The meaning of this parameter differs according to the database engine
-you use. For example, this value returns MySQL, MariaDB, or PostgreSQL
-information when returning values from CreateDBInstanceReadReplica
-since Read Replicas are only supported for these engines.
+you use.
 
 B<MySQL, MariaDB, SQL Server, PostgreSQL>
 
@@ -227,7 +231,7 @@ group.
   Indicates if the DB instance has deletion protection enabled. The
 database can't be deleted when this value is set to true. For more
 information, see Deleting a DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 =head2 DomainMemberships => ArrayRef[L<Paws::RDS::DomainMembership>]
@@ -243,7 +247,7 @@ CloudWatch Logs.
 
 Log types vary by DB engine. For information about the log types for
 each DB engine, see Amazon RDS Database Log Files
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html)
 in the I<Amazon RDS User Guide.>
 
 
@@ -406,7 +410,7 @@ instance class of the DB instance.
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
 in the I<Amazon Aurora User Guide>.
 
 

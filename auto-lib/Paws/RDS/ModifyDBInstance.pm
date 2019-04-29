@@ -126,7 +126,7 @@ applied during the next maintenance window. Some parameter changes can
 cause an outage and are applied on the next call to RebootDBInstance,
 or the next failure reboot. Review the table of parameters in Modifying
 a DB Instance and Using the Apply Immediately Parameter
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
 in the I<Amazon RDS User Guide.> to see the impact that setting
 C<ApplyImmediately> to C<true> or C<false> has for each modified
 parameter and to determine when the changes are applied.
@@ -217,6 +217,12 @@ C<ApplyImmediately> parameter has no effect.
 True to copy all tags from the DB instance to snapshots of the DB
 instance, and otherwise false. The default is false.
 
+B<Amazon Aurora>
+
+Not applicable. Copying tags to snapshots is managed by the DB cluster.
+Setting this value for an Aurora DB instance has no effect on the DB
+cluster setting. For more information, see ModifyDBCluster.
+
 
 
 =head2 DBInstanceClass => Str
@@ -225,7 +231,7 @@ The new compute and memory capacity of the DB instance, for example,
 C<db.m4.large>. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the I<Amazon RDS User Guide.>
 
 If you modify the DB instance class, an outage occurs during the
@@ -365,7 +371,7 @@ Example: C<mySubnetGroup>
 Indicates if the DB instance has deletion protection enabled. The
 database can't be deleted when this value is set to true. For more
 information, see Deleting a DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 
@@ -422,7 +428,7 @@ True to enable Performance Insights for the DB instance, and otherwise
 false.
 
 For more information, see Using Amazon Performance Insights
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
 in the I<Amazon Relational Database Service User Guide>.
 
 
@@ -554,7 +560,7 @@ metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
 Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
 in the I<Amazon RDS User Guide.>
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
@@ -706,7 +712,7 @@ A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
 in the I<Amazon Aurora User Guide>.
 
 Default: 1

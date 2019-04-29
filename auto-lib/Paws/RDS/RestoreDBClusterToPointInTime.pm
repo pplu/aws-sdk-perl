@@ -2,6 +2,7 @@
 package Paws::RDS::RestoreDBClusterToPointInTime;
   use Moose;
   has BacktrackWindow => (is => 'ro', isa => 'Int');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
@@ -77,6 +78,13 @@ hours).
 
 =back
 
+
+
+
+=head2 CopyTagsToSnapshot => Bool
+
+True to copy all tags from the restored DB cluster to snapshots of the
+restored DB cluster, and otherwise false. The default is false.
 
 
 
@@ -162,7 +170,7 @@ The list of logs that the restored DB cluster is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see Publishing Database Logs to Amazon
 CloudWatch Logs
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 in the I<Amazon Aurora User Guide>.
 
 

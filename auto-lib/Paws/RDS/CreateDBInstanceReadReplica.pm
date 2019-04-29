@@ -112,7 +112,7 @@ The compute and memory capacity of the Read Replica, for example,
 C<db.m4.large>. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the I<Amazon RDS User Guide.>
 
 Default: Inherits from the source DB instance.
@@ -181,7 +181,7 @@ Example: C<mySubnetgroup>
 Indicates if the DB instance should have deletion protection enabled.
 The database can't be deleted when this value is set to true. The
 default is false. For more information, see Deleting a DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 
@@ -191,7 +191,7 @@ The list of logs that the new DB instance is to export to CloudWatch
 Logs. The values in the list depend on the DB engine being used. For
 more information, see Publishing Database Logs to Amazon CloudWatch
 Logs
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 in the I<Amazon RDS User Guide>.
 
 
@@ -226,11 +226,11 @@ Default: C<false>
 
 =head2 EnablePerformanceInsights => Bool
 
-True to enable Performance Insights for the read replica, and otherwise
+True to enable Performance Insights for the Read Replica, and otherwise
 false.
 
 For more information, see Using Amazon Performance Insights
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
 in the I<Amazon RDS User Guide>.
 
 
@@ -284,7 +284,7 @@ metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
 Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
 in the I<Amazon RDS User Guide>.
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
@@ -307,7 +307,7 @@ instance.
 =head2 OptionGroupName => Str
 
 The option group the DB instance is associated with. If omitted, the
-default option group for the engine specified is used.
+option group associated with the source instance is used.
 
 
 
@@ -393,9 +393,9 @@ C<arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115>.
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
 4)
-(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 and Signature Version 4 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 
@@ -427,13 +427,20 @@ Constraints:
 
 =item *
 
-Must be the identifier of an existing MySQL, MariaDB, or PostgreSQL DB
-instance.
+Must be the identifier of an existing MySQL, MariaDB, Oracle, or
+PostgreSQL DB instance.
 
 =item *
 
 Can specify a DB instance that is a MySQL Read Replica only if the
 source is running MySQL 5.6 or later.
+
+=item *
+
+For the limitations of Oracle Read Replicas, see Read Replica
+Limitations with Oracle
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html)
+in the I<Amazon RDS User Guide>.
 
 =item *
 
@@ -456,7 +463,7 @@ Replica, specify a valid DB instance identifier.
 If the source DB instance is in a different AWS Region than the Read
 Replica, specify a valid DB instance ARN. For more information, go to
 Constructing an ARN for Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
 in the I<Amazon RDS User Guide>.
 
 =back

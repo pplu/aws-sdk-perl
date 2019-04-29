@@ -138,7 +138,7 @@ Example: C<us-east-1a>
 =head2 CopyTagsToSnapshot => Bool
 
 True to copy all tags from the restored DB instance to snapshots of the
-DB instance, and otherwise false. The default is false.
+restored DB instance, and otherwise false. The default is false.
 
 
 
@@ -149,7 +149,7 @@ example, C<db.m4.large>. Not all DB instance classes are available in
 all AWS Regions, or for all database engines. For the full list of DB
 instance classes, and availability for your engine, see DB Instance
 Class
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the I<Amazon RDS User Guide.>
 
 Default: The same DBInstanceClass as the original DB instance.
@@ -211,7 +211,7 @@ Example: C<mySubnetgroup>
 Indicates if the DB instance should have deletion protection enabled.
 The database can't be deleted when this value is set to true. The
 default is false. For more information, see Deleting a DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 
@@ -234,7 +234,7 @@ The list of logs that the restored DB instance is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see Publishing Database Logs to Amazon
 CloudWatch Logs
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 in the I<Amazon RDS User Guide>.
 
 

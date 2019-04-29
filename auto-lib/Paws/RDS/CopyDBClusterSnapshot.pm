@@ -126,9 +126,9 @@ C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-2
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
 4)
-(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 and Signature Version 4 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 
@@ -158,7 +158,7 @@ valid DB snapshot identifier.
 If the source snapshot is in a different AWS Region than the copy,
 specify a valid DB cluster snapshot ARN. For more information, go to
 Copying Snapshots Across AWS Regions
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html#USER_CopySnapshot.AcrossRegions)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html#USER_CopySnapshot.AcrossRegions)
 in the I<Amazon Aurora User Guide.>
 
 =back

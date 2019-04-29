@@ -124,7 +124,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                                            # OPTIONAL
       UseDefaultProcessorFeatures => 1,                             # OPTIONAL
-      VpcSecurityGroupIds         => [ 'MyString', ... ],           # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                   # OPTIONAL
     );
 
     # Results:
@@ -163,7 +163,7 @@ Default: C<true>
 The Availability Zone that the DB instance is created in. For
 information about AWS Regions and Availability Zones, see Regions and
 Availability Zones
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html)
 in the I<Amazon RDS User Guide.>
 
 Default: A random, system-chosen Availability Zone in the endpoint's
@@ -187,8 +187,8 @@ information, see CreateDBInstance.
 
 =head2 CopyTagsToSnapshot => Bool
 
-True to copy all tags from the DB instance to snapshots of the DB
-instance, and otherwise false.
+True to copy all tags from the restored DB instance to snapshots of the
+restored DB instance, and otherwise false.
 
 Default: false.
 
@@ -200,7 +200,7 @@ The compute and memory capacity of the DB instance, for example,
 C<db.m4.large>. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the I<Amazon RDS User Guide.>
 
 Importing from Amazon S3 is not supported on the db.t2.micro DB
@@ -269,7 +269,7 @@ A DB subnet group to associate with this DB instance.
 Indicates if the DB instance should have deletion protection enabled.
 The database can't be deleted when this value is set to true. The
 default is false. For more information, see Deleting a DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 
@@ -279,7 +279,7 @@ The list of logs that the restored DB instance is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see Publishing Database Logs to Amazon
 CloudWatch Logs
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 in the I<Amazon RDS User Guide>.
 
 
@@ -299,7 +299,7 @@ True to enable Performance Insights for the DB instance, and otherwise
 false.
 
 For more information, see Using Amazon Performance Insights
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
 in the I<Amazon Relational Database Service User Guide>.
 
 
@@ -326,7 +326,7 @@ The amount of Provisioned IOPS (input/output operations per second) to
 allocate initially for the DB instance. For information about valid
 Iops values, see see Amazon RDS Provisioned IOPS Storage to Improve
 Performance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
 in the I<Amazon RDS User Guide.>
 
 
@@ -410,7 +410,7 @@ The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, see Setting Up and Enabling Enhanced Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling)
 in the I<Amazon RDS User Guide.>
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
@@ -465,7 +465,7 @@ Default: C<3306>
 The time range each day during which automated backups are created if
 automated backups are enabled. For more information, see The Backup
 Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
 in the I<Amazon RDS User Guide.>
 
 Constraints:
@@ -498,7 +498,7 @@ Must be at least 30 minutes.
 The time range each week during which system maintenance can occur, in
 Universal Coordinated Time (UTC). For more information, see Amazon RDS
 Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance)
 in the I<Amazon RDS User Guide.>
 
 Constraints:
@@ -607,7 +607,7 @@ C<standard>
 
 A list of tags to associate with this DB instance. For more
 information, see Tagging Amazon RDS Resources
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html)
 in the I<Amazon RDS User Guide.>
 
 

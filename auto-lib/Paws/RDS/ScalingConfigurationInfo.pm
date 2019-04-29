@@ -4,6 +4,7 @@ package Paws::RDS::ScalingConfigurationInfo;
   has MaxCapacity => (is => 'ro', isa => 'Int');
   has MinCapacity => (is => 'ro', isa => 'Int');
   has SecondsUntilAutoPause => (is => 'ro', isa => 'Int');
+  has TimeoutAction => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::ScalingConfigurationInfo object:
 
-  $service_obj->Method(Att1 => { AutoPause => $value, ..., SecondsUntilAutoPause => $value  });
+  $service_obj->Method(Att1 => { AutoPause => $value, ..., TimeoutAction => $value  });
 
 =head3 Results returned from an API call
 
@@ -38,7 +39,7 @@ Shows the scaling configuration for an Aurora DB cluster in
 C<serverless> DB engine mode.
 
 For more information, see Using Amazon Aurora Serverless
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
 in the I<Amazon Aurora User Guide>.
 
 =head1 ATTRIBUTES
@@ -48,6 +49,9 @@ in the I<Amazon Aurora User Guide>.
 
   A value that indicates whether automatic pause is allowed for the
 Aurora DB cluster in C<serverless> DB engine mode.
+
+When the value is set to false for an Aurora Serverless DB cluster, the
+DB cluster automatically resumes.
 
 
 =head2 MaxCapacity => Int
@@ -67,6 +71,12 @@ engine mode.
   The remaining amount of time, in seconds, before the Aurora DB cluster
 in C<serverless> mode is paused. A DB cluster can be paused only when
 it's idle (it has no connections).
+
+
+=head2 TimeoutAction => Str
+
+  The timeout action of a call to C<ModifyCurrentDBClusterCapacity>,
+either C<ForceApplyCapacityChange> or C<RollbackCapacityChange>.
 
 
 

@@ -41,7 +41,9 @@ associated with a DB cluster.
 
 =head2 FeatureName => Str
 
-  
+  The name of the feature associated with the AWS Identity and Access
+Management (IAM) role. For the list of supported feature names, see
+DBEngineVersion.
 
 
 =head2 RoleArn => Str

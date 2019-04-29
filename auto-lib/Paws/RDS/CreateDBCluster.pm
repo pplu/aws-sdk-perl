@@ -5,6 +5,7 @@ package Paws::RDS::CreateDBCluster;
   has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
@@ -82,7 +83,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 A list of EC2 Availability Zones that instances in the DB cluster can
 be created in. For information on AWS Regions and Availability Zones,
 see Choosing the Regions and Availability Zones
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html)
 in the I<Amazon Aurora User Guide>.
 
 
@@ -132,6 +133,13 @@ Must be a value from 1 to 35
 
 A value that indicates that the DB cluster should be associated with
 the specified CharacterSet.
+
+
+
+=head2 CopyTagsToSnapshot => Bool
+
+True to copy all tags from the DB cluster to snapshots of the DB
+cluster, and otherwise false. The default is false.
 
 
 
@@ -214,7 +222,7 @@ The list of log types that need to be enabled for exporting to
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see Publishing Database Logs to Amazon
 CloudWatch Logs
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 in the I<Amazon Aurora User Guide>.
 
 
@@ -368,7 +376,7 @@ parameter.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
 see Adjusting the Preferred DB Cluster Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
 in the I<Amazon Aurora User Guide.>
 
 Constraints:
@@ -407,7 +415,7 @@ The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
 week. To see the time blocks available, see Adjusting the Preferred DB
 Cluster Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
 in the I<Amazon Aurora User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -459,9 +467,9 @@ Example: C<arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1>.
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
 4)
-(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 and Signature Version 4 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 

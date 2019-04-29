@@ -10,6 +10,7 @@ package Paws::RDS::DBCluster;
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has CloneGroupId => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has CustomEndpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterArn => (is => 'ro', isa => 'Str');
@@ -130,7 +131,7 @@ is 0 (zero) when the cluster is paused.
 
 For more information about Aurora Serverless, see Using Amazon Aurora
 Serverless
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
 in the I<Amazon Aurora User Guide>.
 
 
@@ -149,6 +150,12 @@ is associated with.
 
   Specifies the time when the DB cluster was created, in Universal
 Coordinated Time (UTC).
+
+
+=head2 CopyTagsToSnapshot => Bool
+
+  Specifies whether tags are copied from the DB cluster to snapshots of
+the DB cluster.
 
 
 =head2 CustomEndpoints => ArrayRef[Str|Undef]
@@ -228,7 +235,7 @@ CloudWatch Logs.
 
 Log types vary by DB engine. For information about the log types for
 each DB engine, see Amazon RDS Database Log Files
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html)
 in the I<Amazon Aurora User Guide.>
 
 
@@ -276,7 +283,7 @@ editor.
 
 For more information about Aurora Serverless, see Using Amazon Aurora
 Serverless
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
 in the I<Amazon Aurora User Guide>.
 
 

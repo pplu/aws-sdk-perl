@@ -178,6 +178,17 @@ AWS account.
 
 C<public> - Return all DB snapshots that have been marked as public.
 
+=item *
+
+C<awsbackup> - Return the DB snapshots managed by the AWS Backup
+service.
+
+For information about AWS Backup, see the I<AWS Backup Developer
+Guide.>
+(https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html)
+
+The C<awsbackup> type does not apply to Aurora.
+
 =back
 
 If you don't specify a C<SnapshotType> value, then both automated and

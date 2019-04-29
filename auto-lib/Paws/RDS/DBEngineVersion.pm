@@ -128,7 +128,7 @@ the log types specified by ExportableLogTypes to CloudWatch Logs.
 
 =head2 SupportsReadReplica => Bool
 
-  Indicates whether the database engine version supports read replicas.
+  Indicates whether the database engine version supports Read Replicas.
 
 
 =head2 ValidUpgradeTarget => ArrayRef[L<Paws::RDS::UpgradeTarget>]

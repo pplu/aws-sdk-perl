@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 The identifier or ARN for the source option group. For information
 about creating an ARN, see Constructing an ARN for Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
 in the I<Amazon RDS User Guide>.
 
 Constraints:

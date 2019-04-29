@@ -5,6 +5,7 @@ package Paws::RDS::ModifyDBCluster;
   has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::RDS::CloudwatchLogsExportConfiguration');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
@@ -131,6 +132,13 @@ CloudWatch Logs for a specific DB cluster.
 
 
 
+=head2 CopyTagsToSnapshot => Bool
+
+True to copy all tags from the DB cluster to snapshots of the DB
+cluster, and otherwise false. The default is false.
+
+
+
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
 The DB cluster identifier for the cluster being modified. This
@@ -178,7 +186,7 @@ editor.
 
 For more information about Aurora Serverless, see Using Amazon Aurora
 Serverless
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
 in the I<Amazon Aurora User Guide>.
 
 
@@ -276,7 +284,7 @@ parameter.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
 see Adjusting the Preferred DB Cluster Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
 in the I<Amazon Aurora User Guide.>
 
 Constraints:
@@ -315,7 +323,7 @@ The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
 week. To see the time blocks available, see Adjusting the Preferred DB
 Cluster Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
 in the I<Amazon Aurora User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.

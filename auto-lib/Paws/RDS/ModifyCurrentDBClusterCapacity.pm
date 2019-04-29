@@ -56,6 +56,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 The DB cluster capacity.
 
+When you change the capacity of a paused Aurora Serverless DB cluster,
+it automatically resumes.
+
 Constraints:
 
 =over

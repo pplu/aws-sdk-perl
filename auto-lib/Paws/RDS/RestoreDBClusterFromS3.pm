@@ -5,6 +5,7 @@ package Paws::RDS::RestoreDBClusterFromS3;
   has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
@@ -67,6 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BacktrackWindow                 => 1,                      # OPTIONAL
       BackupRetentionPeriod           => 1,                      # OPTIONAL
       CharacterSetName                => 'MyString',             # OPTIONAL
+      CopyTagsToSnapshot              => 1,                      # OPTIONAL
       DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DatabaseName                    => 'MyString',             # OPTIONAL
@@ -157,6 +159,13 @@ associated with the specified CharacterSet.
 
 
 
+=head2 CopyTagsToSnapshot => Bool
+
+True to copy all tags from the restored DB cluster to snapshots of the
+restored DB cluster, and otherwise false. The default is false.
+
+
+
 =head2 DatabaseName => Str
 
 The database name for the restored DB cluster.
@@ -235,7 +244,7 @@ The list of logs that the restored DB cluster is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see Publishing Database Logs to Amazon
 CloudWatch Logs
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 in the I<Amazon Aurora User Guide>.
 
 
@@ -352,7 +361,7 @@ parameter.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
 see Adjusting the Preferred Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
 in the I<Amazon Aurora User Guide.>
 
 Constraints:
@@ -391,7 +400,7 @@ The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
 week. To see the time blocks available, see Adjusting the Preferred
 Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
 in the I<Amazon Aurora User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.

@@ -111,11 +111,11 @@ following:
 =item *
 
 General Purpose (SSD) storage (gp2): Must be an integer from 20 to
-16384.
+32768.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
 
 =item *
 
@@ -133,11 +133,11 @@ following:
 =item *
 
 General Purpose (SSD) storage (gp2): Must be an integer from 20 to
-16384.
+32768.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
 
 =item *
 
@@ -155,11 +155,11 @@ following:
 =item *
 
 General Purpose (SSD) storage (gp2): Must be an integer from 20 to
-16384.
+32768.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 16384.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
 
 =item *
 
@@ -263,7 +263,7 @@ Default: C<true>
 The EC2 Availability Zone that the DB instance is created in. For
 information on AWS Regions and Availability Zones, see Regions and
 Availability Zones
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -323,6 +323,12 @@ more information, see CreateDBCluster.
 True to copy all tags from the DB instance to snapshots of the DB
 instance, and otherwise false. The default is false.
 
+B<Amazon Aurora>
+
+Not applicable. Copying tags to snapshots is managed by the DB cluster.
+Setting this value for an Aurora DB instance has no effect on the DB
+cluster setting. For more information, see CreateDBCluster.
+
 
 
 =head2 DBClusterIdentifier => Str
@@ -341,7 +347,7 @@ The compute and memory capacity of the DB instance, for example,
 C<db.m4.large>. Not all DB instance classes are available in all AWS
 Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see DB Instance Class
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the I<Amazon RDS User Guide.>
 
 
@@ -538,7 +544,7 @@ If there is no DB subnet group, then it is a non-VPC DB instance.
 Indicates if the DB instance should have deletion protection enabled.
 The database can't be deleted when this value is set to true. The
 default is false. For more information, see Deleting a DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 
@@ -561,7 +567,7 @@ The list of log types that need to be enabled for exporting to
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see Publishing Database Logs to Amazon
 CloudWatch Logs
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 in the I<Amazon Relational Database Service User Guide>.
 
 
@@ -603,7 +609,7 @@ True to enable Performance Insights for the DB instance, and otherwise
 false.
 
 For more information, see Using Amazon Performance Insights
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
 in the I<Amazon Relational Database Service User Guide>.
 
 
@@ -698,31 +704,31 @@ CreateDBCluster.
 B<MariaDB>
 
 See MariaDB on Amazon RDS Versions
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt)
 in the I<Amazon RDS User Guide.>
 
 B<Microsoft SQL Server>
 
 See Version and Feature Support on Amazon RDS
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.FeatureSupport)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.FeatureSupport)
 in the I<Amazon RDS User Guide.>
 
 B<MySQL>
 
 See MySQL on Amazon RDS Versions
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt)
 in the I<Amazon RDS User Guide.>
 
 B<Oracle>
 
 See Oracle Database Engine Release Notes
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html)
 in the I<Amazon RDS User Guide.>
 
 B<PostgreSQL>
 
 See Supported PostgreSQL Database Versions
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions)
 in the I<Amazon RDS User Guide.>
 
 
@@ -733,7 +739,7 @@ The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance. For information about valid
 Iops values, see see Amazon RDS Provisioned IOPS Storage to Improve
 Performance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
 in the I<Amazon RDS User Guide>.
 
 Constraints: Must be a multiple between 1 and 50 of the storage amount
@@ -952,7 +958,7 @@ The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to Setting Up and Enabling Enhanced Monitoring
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling)
 in the I<Amazon RDS User Guide>.
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
@@ -1050,7 +1056,7 @@ Type: Integer
 The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter. For more information, see The Backup Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
 in the I<Amazon RDS User Guide>.
 
 B<Amazon Aurora>
@@ -1061,7 +1067,7 @@ managed by the DB cluster. For more information, see CreateDBCluster.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
 see Adjusting the Preferred DB Instance Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow)
 in the I<Amazon RDS User Guide>.
 
 Constraints:
@@ -1094,7 +1100,7 @@ Must be at least 30 minutes.
 The time range each week during which system maintenance can occur, in
 Universal Coordinated Time (UTC). For more information, see Amazon RDS
 Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance).
 
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
@@ -1121,7 +1127,7 @@ A value that specifies the order in which an Aurora Replica is promoted
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
 in the I<Amazon Aurora User Guide>.
 
 Default: 1
@@ -1229,7 +1235,7 @@ the device.
 
 The time zone of the DB instance. The time zone parameter is currently
 supported only by Microsoft SQL Server
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone).
 
 
 
