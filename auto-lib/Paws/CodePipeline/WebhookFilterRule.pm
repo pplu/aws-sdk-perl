@@ -59,7 +59,7 @@ configuration property called "Branch" with a value of "master", the
 MatchEquals value will be evaluated as "refs/heads/master". A list of
 action configuration properties for built-in action types can be found
 here: Pipeline Structure Reference Action Requirements
-(http://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements).
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements).
 
 
 

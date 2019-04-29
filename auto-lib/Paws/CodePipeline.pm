@@ -90,6 +90,11 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::GetThirdPartyJobDetails', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListActionExecutions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListActionExecutions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListActionTypes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListActionTypes', @_);
@@ -270,7 +275,7 @@ package Paws::CodePipeline;
   }
 
 
-  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelineExecutions ListPipelines ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution UpdatePipeline / }
+  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionExecutions ListActionTypes ListPipelineExecutions ListPipelines ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution UpdatePipeline / }
 
 1;
 
@@ -306,7 +311,7 @@ This is the AWS CodePipeline API Reference. This guide provides
 descriptions of the actions and data types for AWS CodePipeline. Some
 functionality for your pipeline is only configurable through the API.
 For additional information, see the AWS CodePipeline User Guide
-(http://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
 
 You can use the AWS CodePipeline API to work with pipelines, stages,
 actions, and transitions, as described below.
@@ -375,7 +380,7 @@ entire structure of the pipeline, including the stages of that
 pipeline. For more information about the structure of stages and
 actions, also refer to the AWS CodePipeline Pipeline Structure
 Reference
-(http://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html).
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html).
 
 Pipeline stages include I<actions>, which are categorized into
 categories such as source or build actions performed within a stage of
@@ -800,6 +805,10 @@ Returns: a L<Paws::CodePipeline::GetPipelineStateOutput> instance
 Returns information about the state of a pipeline, including the stages
 and actions.
 
+Values returned in the revisionId and revisionUrl fields indicate the
+source revision information, such as the commit ID, for the current
+state.
+
 
 =head2 GetThirdPartyJobDetails
 
@@ -824,6 +833,28 @@ for the Amazon S3 bucket used to store artifacts for the pipeline, if
 the action requires access to that Amazon S3 bucket for input or output
 artifacts. Additionally, this API returns any secret values defined for
 the action.
+
+
+=head2 ListActionExecutions
+
+=over
+
+=item PipelineName => Str
+
+=item [Filter => L<Paws::CodePipeline::ActionExecutionFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::ListActionExecutions>
+
+Returns: a L<Paws::CodePipeline::ListActionExecutionsOutput> instance
+
+Lists the action executions that have occurred in a pipeline.
 
 
 =head2 ListActionTypes

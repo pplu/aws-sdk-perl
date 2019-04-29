@@ -97,7 +97,7 @@ action within the URL templates by following the format of
 {Config:name}, as long as the configuration property is both required
 and not secret. For more information, see Create a Custom Action for a
 Pipeline
-(http://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html).
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html).
 
 
 
