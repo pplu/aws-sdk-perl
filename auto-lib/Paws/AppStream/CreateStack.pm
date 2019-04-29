@@ -130,14 +130,14 @@ The storage connectors to enable.
 
 =head2 Tags => L<Paws::AppStream::Tags>
 
-The tags to associate with the stack. A tag is a key-value pair (the
-value is optional). For example, Environment=Test, or, if you do not
+The tags to associate with the stack. A tag is a key-value pair, and
+the value is optional. For example, Environment=Test. If you do not
 specify a value, Environment=.
 
-If you do not specify a value, we set the value to an empty string.
+If you do not specify a value, the value is set to an empty string.
 
 For more information about tags, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 

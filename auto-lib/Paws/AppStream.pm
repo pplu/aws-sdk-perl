@@ -498,13 +498,13 @@ Paws::AppStream - Perl Interface to AWS Amazon AppStream
 
 Amazon AppStream 2.0
 
-This is the I<Amazon AppStream 2.0 API Reference>. It provides
-descriptions and syntax for each of the actions and data types in
-AppStream 2.0. AppStream 2.0 is a fully managed application streaming
-service. You centrally manage your desktop applications on AppStream
-2.0 and securely deliver them to any computer. AppStream 2.0 manages
-the AWS resources required to host and run your applications, scales
-automatically, and provides access to your users on demand.
+This is the I<Amazon AppStream 2.0 API Reference>. This reference
+provides descriptions and syntax for each of the actions and data types
+in AppStream 2.0. AppStream 2.0 is a fully managed application
+streaming service. You centrally manage your desktop applications on
+AppStream 2.0 and securely deliver them to any computer. AppStream 2.0
+manages the AWS resources required to host and run your applications,
+scales automatically, and provides access to your users on demand.
 
 To learn more about AppStream 2.0, see the following resources:
 
@@ -1078,11 +1078,11 @@ Each argument is described in detail in: L<Paws::AppStream::DescribeSessions>
 
 Returns: a L<Paws::AppStream::DescribeSessionsResult> instance
 
-Retrieves a list that describes the streaming sessions for a specified
-stack and fleet. If a UserId is provided for the stack and fleet, only
-streaming sessions for that user are described. If an authentication
-type is not provided, the default is to authenticate users using a
-streaming URL.
+Retrieves a list that describes the active streaming sessions for a
+specified stack and fleet. If a value for C<UserId> is provided for the
+stack and fleet, only streaming sessions for that user are described.
+If an authentication type is not provided, the default is to
+authenticate users using a streaming URL.
 
 
 =head2 DescribeStacks
@@ -1294,7 +1294,7 @@ Retrieves a list of all tags for the specified AppStream 2.0 resource.
 You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 
 For more information about tags, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
@@ -1390,7 +1390,7 @@ To list the current tags for your resources, use ListTagsForResource.
 To disassociate tags from your resources, use UntagResource.
 
 For more information about tags, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
@@ -1415,7 +1415,7 @@ Disassociates one or more specified tags from the specified AppStream
 To list the current tags for your resources, use ListTagsForResource.
 
 For more information about tags, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 

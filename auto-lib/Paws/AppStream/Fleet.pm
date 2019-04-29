@@ -77,7 +77,8 @@ Describes the parameters for a fleet.
   The time after disconnection when a session is considered to have
 ended, in seconds. If a user who was disconnected reconnects within
 this time interval, the user is connected to their previous session.
-Specify a value between 60 and 57600.
+Specify a value between 60 and 360000. By default, this value is 900
+seconds (15 minutes).
 
 
 =head2 DisplayName => Str
@@ -142,7 +143,7 @@ streaming apps.
 =head2 MaxUserDurationInSeconds => Int
 
   The maximum time that a streaming session can run, in seconds. Specify
-a value between 600 and 57600.
+a value between 600 and 360000.
 
 
 =head2 B<REQUIRED> Name => Str

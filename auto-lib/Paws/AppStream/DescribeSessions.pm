@@ -56,8 +56,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head2 AuthenticationType => Str
 
 The authentication method. Specify C<API> for a user authenticated
-using a streaming URL or C<SAML> for a SAML federated user. The default
-is to authenticate users using a streaming URL.
+using a streaming URL, C<SAML> for a SAML 2.0-federated user, or
+C<USERPOOL> for a user in the AppStream 2.0 user pool. The default is
+to authenticate users using a streaming URL.
 
 Valid values are: C<"API">, C<"SAML">, C<"USERPOOL">
 
