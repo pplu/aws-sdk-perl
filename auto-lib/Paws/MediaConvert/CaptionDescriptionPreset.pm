@@ -51,7 +51,9 @@ language for rendering the captions text.
 
 =head2 DestinationSettings => L<Paws::MediaConvert::CaptionDestinationSettings>
 
-  
+  Specific settings required by destination type. Note that
+burnin_destination_settings are not available if the source of the
+caption data is Embedded or Teletext.
 
 
 =head2 LanguageCode => Str

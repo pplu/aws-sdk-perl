@@ -55,7 +55,7 @@ underscores.
 
 =head2 OutputGroupSettings => L<Paws::MediaConvert::OutputGroupSettings>
 
-  
+  Output Group settings, including type
 
 
 =head2 Outputs => ArrayRef[L<Paws::MediaConvert::Output>]

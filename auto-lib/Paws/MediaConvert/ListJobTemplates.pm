@@ -61,7 +61,9 @@ job templates from that category.
 
 =head2 ListBy => Str
 
-
+Optional. When you request a list of job templates, you can choose to
+list them alphabetically by NAME or chronologically by CREATION_DATE.
+If you don't specify, the service will list them by name.
 
 Valid values are: C<"NAME">, C<"CREATION_DATE">, C<"SYSTEM">
 
@@ -81,7 +83,9 @@ request the next batch of job templates.
 
 =head2 Order => Str
 
-
+When you request lists of resources, you can optionally specify whether
+they are sorted in ASCENDING or DESCENDING order. Default varies by
+resource.
 
 Valid values are: C<"ASCENDING">, C<"DESCENDING">
 

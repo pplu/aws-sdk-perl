@@ -7,6 +7,7 @@ package Paws::MediaConvert::UpdateJobTemplate;
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
   has Queue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queue');
   has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', traits => ['NameInRequest'], request_name => 'settings');
+  has StatusUpdateInterval => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusUpdateInterval');
 
   use MooseX::ClassAttribute;
 
@@ -47,6 +48,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AvailBlanking => {
           AvailBlankingImage =>
             'My__stringMin14PatternS3BmpBMPPngPNG',    # min: 14; OPTIONAL
+        },    # OPTIONAL
+        Esam => {
+          ManifestConfirmConditionNotification => {
+            MccXml =>
+              'My__stringPatternSNManifestConfirmConditionNotificationNS'
+            ,    # OPTIONAL
+          },    # OPTIONAL
+          ResponseSignalPreroll        => 1,    # max: 30000; OPTIONAL
+          SignalProcessingNotification => {
+            SccXml =>
+              'My__stringPatternSNSignalProcessingNotificationNS',    # OPTIONAL
+          },    # OPTIONAL
         },    # OPTIONAL
         Inputs => [
           {
@@ -191,6 +204,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               Pid           => 1,  # min: 1, max: 2147483647; OPTIONAL
               ProgramNumber => 1,  # min: -2147483648, max: 2147483647; OPTIONAL
+              Rotate => 'DEGREE_0'
+              , # values: DEGREE_0, DEGREES_90, DEGREES_180, DEGREES_270, AUTO; OPTIONAL
             },    # OPTIONAL
           },
           ...
@@ -225,8 +240,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_6381',    # values: RFC_6381, RFC_4281; OPTIONAL
-                Destination => 'My__stringPatternS3',    # OPTIONAL
-                Encryption  => {
+                Destination         => 'My__stringPatternS3',    # OPTIONAL
+                DestinationSettings => {
+                  S3Settings => {
+                    Encryption => {
+                      EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
+                      , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
+                      KmsKeyArn =>
+'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+                      ,    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                Encryption => {
                   ConstantInitializationVector =>
                     'My__stringMin32Max32Pattern09aFAF32'
                   ,    # min: 32, max: 32; OPTIONAL
@@ -260,9 +286,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'DISABLED',          # values: DISABLED, ENABLED; OPTIONAL
               },    # OPTIONAL
               DashIsoGroupSettings => {
-                BaseUrl     => 'My__string',
-                Destination => 'My__stringPatternS3',    # OPTIONAL
-                Encryption  => {
+                BaseUrl             => 'My__string',
+                Destination         => 'My__stringPatternS3',    # OPTIONAL
+                DestinationSettings => {
+                  S3Settings => {
+                    Encryption => {
+                      EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
+                      , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
+                      KmsKeyArn =>
+'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+                      ,    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                Encryption => {
                   SpekeKeyProvider => {
                     CertificateArn =>
                       'My__stringPatternArnAwsUsGovAcm',    # OPTIONAL
@@ -285,7 +322,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'ENABLED',           # values: ENABLED, DISABLED; OPTIONAL
               },    # OPTIONAL
               FileGroupSettings => {
-                Destination => 'My__stringPatternS3',    # OPTIONAL
+                Destination         => 'My__stringPatternS3',    # OPTIONAL
+                DestinationSettings => {
+                  S3Settings => {
+                    Encryption => {
+                      EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
+                      , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
+                      KmsKeyArn =>
+'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+                      ,    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
               },    # OPTIONAL
               HlsGroupSettings => {
                 AdMarkers => [
@@ -309,7 +357,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_6381',    # values: RFC_6381, RFC_4281; OPTIONAL
-                Destination        => 'My__stringPatternS3',    # OPTIONAL
+                Destination         => 'My__stringPatternS3',    # OPTIONAL
+                DestinationSettings => {
+                  S3Settings => {
+                    Encryption => {
+                      EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
+                      , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
+                      KmsKeyArn =>
+'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+                      ,    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
                 DirectoryStructure => 'SINGLE_DIRECTORY'
                 ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
                 Encryption => {
@@ -320,6 +379,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     'AES128',    # values: AES128, SAMPLE_AES; OPTIONAL
                   InitializationVectorInManifest =>
                     'INCLUDE',    # values: INCLUDE, EXCLUDE; OPTIONAL
+                  OfflineEncrypted =>
+                    'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
                   SpekeKeyProvider => {
                     CertificateArn =>
                       'My__stringPatternArnAwsUsGovAcm',    # OPTIONAL
@@ -366,8 +427,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MsSmoothGroupSettings => {
                 AudioDeduplication => 'COMBINE_DUPLICATE_STREAMS'
                 ,    # values: COMBINE_DUPLICATE_STREAMS, NONE; OPTIONAL
-                Destination => 'My__stringPatternS3',    # OPTIONAL
-                Encryption  => {
+                Destination         => 'My__stringPatternS3',    # OPTIONAL
+                DestinationSettings => {
+                  S3Settings => {
+                    Encryption => {
+                      EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
+                      , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
+                      KmsKeyArn =>
+'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+                      ,    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                Encryption => {
                   SpekeKeyProvider => {
                     CertificateArn =>
                       'My__stringPatternArnAwsUsGovAcm',    # OPTIONAL
@@ -663,7 +735,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     PrivateMetadataPid => 1,      # min: 32, max: 8182; OPTIONAL
                     ProgramNumber      => 1,      # max: 65535; OPTIONAL
                     RateMode           => 'VBR',  # values: VBR, CBR; OPTIONAL
-                    Scte35Pid          => 1,      # min: 32, max: 8182; OPTIONAL
+                    Scte35Esam         => {
+                      Scte35EsamPid => 1,         # min: 32, max: 8182; OPTIONAL
+                    },    # OPTIONAL
+                    Scte35Pid => 1,    # min: 32, max: 8182; OPTIONAL
                     Scte35Source =>
                       'PASSTHROUGH',    # values: PASSTHROUGH, NONE; OPTIONAL
                     SegmentationMarkers => 'NONE'
@@ -1074,6 +1149,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],                                                        # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
+      StatusUpdateInterval => 'SECONDS_10',    # OPTIONAL
     );
 
     # Results:
@@ -1120,9 +1196,20 @@ The new queue for the job template, if you are changing it.
 
 =head2 Settings => L<Paws::MediaConvert::JobTemplateSettings>
 
+JobTemplateSettings contains all the transcode settings saved in the
+template that will be applied to jobs created from it.
 
 
 
+=head2 StatusUpdateInterval => Str
+
+Specify how often MediaConvert sends STATUS_UPDATE events to Amazon
+CloudWatch Events. Set the interval, in seconds, between status
+updates. MediaConvert sends an update at this interval from the time
+the service begins processing your job to the time it completes the
+transcode or encounters an error.
+
+Valid values are: C<"SECONDS_10">, C<"SECONDS_12">, C<"SECONDS_15">, C<"SECONDS_20">, C<"SECONDS_30">, C<"SECONDS_60">, C<"SECONDS_120">, C<"SECONDS_180">, C<"SECONDS_240">, C<"SECONDS_300">, C<"SECONDS_360">, C<"SECONDS_420">, C<"SECONDS_480">, C<"SECONDS_540">, C<"SECONDS_600">
 
 
 =head1 SEE ALSO

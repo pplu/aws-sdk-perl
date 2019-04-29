@@ -7,6 +7,7 @@ package Paws::MediaConvert::HlsGroupSettings;
   has ClientCache => (is => 'ro', isa => 'Str', request_name => 'clientCache', traits => ['NameInRequest']);
   has CodecSpecification => (is => 'ro', isa => 'Str', request_name => 'codecSpecification', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
+  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
   has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::HlsEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
   has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
@@ -79,17 +80,28 @@ URL than the main .m3u8 file.
 
 =head2 CaptionLanguageSetting => Str
 
-  
+  Applies only to 608 Embedded output captions. Insert: Include
+CLOSED-CAPTIONS lines in the manifest. Specify at least one language in
+the CC1 Language Code field. One CLOSED-CAPTION line is added for each
+Language Code you specify. Make sure to specify the languages in the
+order in which they appear in the original source (if the source is
+embedded format) or the order of the caption selectors (if the source
+is other than embedded). Otherwise, languages in the manifest will not
+match up properly with the output captions. None: Include
+CLOSED-CAPTIONS=NONE line in the manifest. Omit: Omit any
+CLOSED-CAPTIONS line from the manifest.
 
 
 =head2 ClientCache => Str
 
-  
+  When set to ENABLED, sets #EXT-X-ALLOW-CACHE:no tag, which prevents
+client from saving media segments for later replay.
 
 
 =head2 CodecSpecification => Str
 
-  
+  Specification to use (RFC-6381 or the default RFC-4281) during m3u8
+playlist generation.
 
 
 =head2 Destination => Str
@@ -101,9 +113,15 @@ filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
 
 
+=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+
+  Settings associated with the destination. Will vary based on the type
+of destination
+
+
 =head2 DirectoryStructure => Str
 
-  
+  Indicates whether segments should be placed in subdirectories.
 
 
 =head2 Encryption => L<Paws::MediaConvert::HlsEncryptionSettings>
@@ -113,12 +131,13 @@ service uses the filename of the first input file.
 
 =head2 ManifestCompression => Str
 
-  
+  When set to GZIP, compresses HLS playlist.
 
 
 =head2 ManifestDurationFormat => Str
 
-  
+  Indicates whether the output manifest should use floating point values
+for segment duration.
 
 
 =head2 MinFinalSegmentLength => Num
@@ -146,12 +165,17 @@ size if needed.
 
 =head2 OutputSelection => Str
 
-  
+  Indicates whether the .m3u8 manifest file should be generated for this
+HLS output group.
 
 
 =head2 ProgramDateTime => Str
 
-  
+  Includes or excludes EXT-X-PROGRAM-DATE-TIME tag in .m3u8 manifest
+files. The value is calculated as follows: either the program date and
+time are initialized using the input timecode source, or the time is
+initialized using the input timecode source and the date is initialized
+using the timestamp_offset.
 
 
 =head2 ProgramDateTimePeriod => Int
@@ -161,7 +185,8 @@ size if needed.
 
 =head2 SegmentControl => Str
 
-  
+  When set to SINGLE_FILE, emits program as a single media resource (.ts)
+file, uses #EXT-X-BYTERANGE tags to index segment for playback.
 
 
 =head2 SegmentLength => Int
@@ -180,12 +205,13 @@ have an effect.
 
 =head2 StreamInfResolution => Str
 
-  
+  Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF
+tag of variant manifest.
 
 
 =head2 TimedMetadataId3Frame => Str
 
-  
+  Indicates ID3 frame that has the timecode.
 
 
 =head2 TimedMetadataId3Period => Int

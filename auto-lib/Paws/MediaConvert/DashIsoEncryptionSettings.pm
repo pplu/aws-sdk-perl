@@ -38,7 +38,7 @@ Specifies DRM settings for DASH outputs.
 
 =head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProvider>
 
-  
+  Settings for use with a SPEKE key provider
 
 
 

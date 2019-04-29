@@ -52,12 +52,13 @@ mode.
 
 =head2 BitstreamMode => Str
 
-  
+  Specifies the "Bitstream Mode" (bsmod) for the emitted AC-3 stream. See
+ATSC A/52-2012 for background on these values.
 
 
 =head2 CodingMode => Str
 
-  
+  Dolby Digital coding mode. Determines number of channels.
 
 
 =head2 Dialnorm => Int
@@ -68,17 +69,22 @@ Digital, dialnorm will be passed through.
 
 =head2 DynamicRangeCompressionProfile => Str
 
-  
+  If set to FILM_STANDARD, adds dynamic range compression signaling to
+the output bitstream as defined in the Dolby Digital specification.
 
 
 =head2 LfeFilter => Str
 
-  
+  Applies a 120Hz lowpass filter to the LFE channel prior to encoding.
+Only valid with 3_2_LFE coding mode.
 
 
 =head2 MetadataControl => Str
 
-  
+  When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD,
+DD+, or DolbyE decoder that supplied this audio data. If audio was not
+supplied from one of these streams, then the static metadata settings
+will be used.
 
 
 =head2 SampleRate => Int

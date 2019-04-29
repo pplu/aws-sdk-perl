@@ -9,6 +9,7 @@ package Paws::MediaConvert::JobTemplate;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Queue => (is => 'ro', isa => 'Str', request_name => 'queue', traits => ['NameInRequest']);
   has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
+  has StatusUpdateInterval => (is => 'ro', isa => 'Str', request_name => 'statusUpdateInterval', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
@@ -48,7 +49,8 @@ use to quickly create a job.
 
 =head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
 
-  Acceleration settings for job execution.
+  Accelerated transcoding is currently in private preview. Contact AWS
+for more information.
 
 
 =head2 Arn => Str
@@ -90,7 +92,17 @@ to. If you don't specify this, jobs will go to the default queue.
 
 =head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobTemplateSettings>
 
-  
+  JobTemplateSettings contains all the transcode settings saved in the
+template that will be applied to jobs created from it.
+
+
+=head2 StatusUpdateInterval => Str
+
+  Specify how often MediaConvert sends STATUS_UPDATE events to Amazon
+CloudWatch Events. Set the interval, in seconds, between status
+updates. MediaConvert sends an update at this interval from the time
+the service begins processing your job to the time it completes the
+transcode or encounters an error.
 
 
 =head2 Type => Str

@@ -4,6 +4,7 @@ package Paws::MediaConvert::CmafGroupSettings;
   has ClientCache => (is => 'ro', isa => 'Str', request_name => 'clientCache', traits => ['NameInRequest']);
   has CodecSpecification => (is => 'ro', isa => 'Str', request_name => 'codecSpecification', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
+  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::CmafEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
   has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
   has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
@@ -62,12 +63,14 @@ different URL than the manifest file.
 
 =head2 ClientCache => Str
 
-  
+  When set to ENABLED, sets #EXT-X-ALLOW-CACHE:no tag, which prevents
+client from saving media segments for later replay.
 
 
 =head2 CodecSpecification => Str
 
-  
+  Specification to use (RFC-6381 or the default RFC-4281) during m3u8
+playlist generation.
 
 
 =head2 Destination => Str
@@ -77,6 +80,12 @@ output filename base. Destination accepts format identifiers. If you do
 not specify the base filename in the URI, the service will use the
 filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
+
+
+=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+
+  Settings associated with the destination. Will vary based on the type
+of destination
 
 
 =head2 Encryption => L<Paws::MediaConvert::CmafEncryptionSettings>
@@ -96,12 +105,13 @@ the creation of many output files as in other output types.
 
 =head2 ManifestCompression => Str
 
-  
+  When set to GZIP, compresses HLS playlist.
 
 
 =head2 ManifestDurationFormat => Str
 
-  
+  Indicates whether the output manifest should use floating point values
+for segment duration.
 
 
 =head2 MinBufferTime => Int
@@ -128,7 +138,9 @@ segment length to 1, your final segment is 3.5 seconds.
 
 =head2 SegmentControl => Str
 
-  
+  When set to SINGLE_FILE, a single output file is generated, which is
+internally segmented using the Fragment Length and Segment Length. When
+set to SEGMENTED_FILES, separate segment files will be created.
 
 
 =head2 SegmentLength => Int
@@ -146,17 +158,20 @@ multiple files for each output, each with the content of one segment.
 
 =head2 StreamInfResolution => Str
 
-  
+  Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF
+tag of variant manifest.
 
 
 =head2 WriteDashManifest => Str
 
-  
+  When set to ENABLED, a DASH MPD manifest will be generated for this
+output.
 
 
 =head2 WriteHlsManifest => Str
 
-  
+  When set to ENABLED, an Apple HLS manifest will be generated for this
+output.
 
 
 

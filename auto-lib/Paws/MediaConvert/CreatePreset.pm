@@ -296,7 +296,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PrivateMetadataPid => 1,        # min: 32, max: 8182; OPTIONAL
             ProgramNumber      => 1,        # max: 65535; OPTIONAL
             RateMode           => 'VBR',    # values: VBR, CBR; OPTIONAL
-            Scte35Pid          => 1,        # min: 32, max: 8182; OPTIONAL
+            Scte35Esam         => {
+              Scte35EsamPid => 1,           # min: 32, max: 8182; OPTIONAL
+            },    # OPTIONAL
+            Scte35Pid    => 1,             # min: 32, max: 8182; OPTIONAL
             Scte35Source => 'PASSTHROUGH', # values: PASSTHROUGH, NONE; OPTIONAL
             SegmentationMarkers => 'NONE'
             , # values: NONE, RAI_SEGSTART, RAI_ADAPT, PSI_SEGSTART, EBP, EBP_LEGACY; OPTIONAL
@@ -667,7 +670,7 @@ The name of the preset you are creating.
 
 =head2 B<REQUIRED> Settings => L<Paws::MediaConvert::PresetSettings>
 
-
+Settings for preset
 
 
 

@@ -48,7 +48,11 @@ Settings for color correction.
 
 =head2 ColorSpaceConversion => Str
 
-  
+  Determines if colorspace conversion will be performed. If set to
+_None_, no conversion will be performed. If _Force 601_ or _Force 709_
+are selected, conversion will be performed for inputs with differing
+colorspaces. An input's colorspace can be specified explicitly in the
+"Video Selector":#inputs-video_selector if necessary.
 
 
 =head2 Contrast => Int

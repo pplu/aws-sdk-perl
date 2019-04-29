@@ -64,7 +64,8 @@ with pass-through captions.
 
 =head2 SourceSettings => L<Paws::MediaConvert::CaptionSourceSettings>
 
-  
+  Source settings (SourceSettings) contains the group of settings for
+captions in the input.
 
 
 
