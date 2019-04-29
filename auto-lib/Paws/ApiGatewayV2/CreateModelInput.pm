@@ -3,7 +3,7 @@ package Paws::ApiGatewayV2::CreateModelInput;
   has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Schema => (is => 'ro', isa => 'Str', request_name => 'schema', traits => ['NameInRequest']);
+  has Schema => (is => 'ro', isa => 'Str', request_name => 'schema', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +54,7 @@ Represents the input parameters for a CreateModel request.
   The name of the model. Must be alphanumeric.
 
 
-=head2 Schema => Str
+=head2 B<REQUIRED> Schema => Str
 
   The schema for the model. For application/json models, this should be
 JSON schema draft 4 model.

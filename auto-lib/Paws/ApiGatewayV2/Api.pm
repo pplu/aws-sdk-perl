@@ -87,7 +87,7 @@ API stage.
 
 =head2 B<REQUIRED> ProtocolType => Str
 
-  The API protocol: HTTP or WEBSOCKET.
+  The API protocol: Currently only WEBSOCKET is supported.
 
 
 =head2 B<REQUIRED> RouteSelectionExpression => Str

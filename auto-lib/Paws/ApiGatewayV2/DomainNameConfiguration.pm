@@ -72,8 +72,7 @@ endpoint for this domain name was uploaded.
 
 =head2 HostedZoneId => Str
 
-  The Amazon Route 53 Hosted Zone ID of the endpoint. See AWS Regions and
-Endpoints for API Gateway.
+  The Amazon Route 53 Hosted Zone ID of the endpoint.
 
 
 

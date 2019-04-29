@@ -1,7 +1,6 @@
 
 package Paws::ApiGatewayV2::DeleteApiMapping;
   use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'apiId', required => 1);
   has ApiMappingId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiMappingId', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
 
@@ -31,7 +30,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $apigateway = Paws->service('ApiGatewayV2');
     $apigateway->DeleteApiMapping(
-      ApiId        => 'My__string',
       ApiMappingId => 'My__string',
       DomainName   => 'My__string',
 
@@ -41,12 +39,6 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/DeleteApiMapping>
 
 =head1 ATTRIBUTES
-
-
-=head2 B<REQUIRED> ApiId => Str
-
-The identifier of the API.
-
 
 
 =head2 B<REQUIRED> ApiMappingId => Str

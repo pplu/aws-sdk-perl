@@ -688,6 +688,8 @@ Creates a domain name.
 
 =item ApiId => Str
 
+=item IntegrationType => Str
+
 =item [ConnectionId => Str]
 
 =item [ConnectionType => Str]
@@ -699,8 +701,6 @@ Creates a domain name.
 =item [Description => Str]
 
 =item [IntegrationMethod => Str]
-
-=item [IntegrationType => Str]
 
 =item [IntegrationUri => Str]
 
@@ -719,7 +719,7 @@ Creates a domain name.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::CreateIntegration>
 
-Returns: a L<Paws::ApiGatewayV2::CreateIntegrationResult> instance
+Returns: a L<Paws::ApiGatewayV2::CreateIntegrationResponse> instance
 
 Creates an Integration.
 
@@ -760,11 +760,11 @@ Creates an IntegrationResponses.
 
 =item Name => Str
 
+=item Schema => Str
+
 =item [ContentType => Str]
 
 =item [Description => Str]
-
-=item [Schema => Str]
 
 
 =back
@@ -809,7 +809,7 @@ Creates a Model for an API.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::CreateRoute>
 
-Returns: a L<Paws::ApiGatewayV2::CreateRouteResult> instance
+Returns: a L<Paws::ApiGatewayV2::CreateRouteResponse> instance
 
 Creates a Route for an API.
 
@@ -891,8 +891,6 @@ Deletes an Api resource.
 =head2 DeleteApiMapping
 
 =over
-
-=item ApiId => Str
 
 =item ApiMappingId => Str
 
@@ -1092,8 +1090,6 @@ Gets an Api resource.
 
 =over
 
-=item ApiId => Str
-
 =item ApiMappingId => Str
 
 =item DomainName => Str
@@ -1269,7 +1265,7 @@ Gets the domain names for an AWS account.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::GetIntegration>
 
-Returns: a L<Paws::ApiGatewayV2::GetIntegrationResult> instance
+Returns: a L<Paws::ApiGatewayV2::GetIntegrationResponse> instance
 
 Gets an Integration.
 
@@ -1405,7 +1401,7 @@ Gets a model template.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::GetRoute>
 
-Returns: a L<Paws::ApiGatewayV2::GetRouteResult> instance
+Returns: a L<Paws::ApiGatewayV2::GetRouteResponse> instance
 
 Gets a Route.
 
@@ -1673,7 +1669,7 @@ Updates a domain name.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::UpdateIntegration>
 
-Returns: a L<Paws::ApiGatewayV2::UpdateIntegrationResult> instance
+Returns: a L<Paws::ApiGatewayV2::UpdateIntegrationResponse> instance
 
 Updates an Integration.
 
@@ -1769,7 +1765,7 @@ Updates a Model.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::UpdateRoute>
 
-Returns: a L<Paws::ApiGatewayV2::UpdateRouteResult> instance
+Returns: a L<Paws::ApiGatewayV2::UpdateRouteResponse> instance
 
 Updates a Route.
 
