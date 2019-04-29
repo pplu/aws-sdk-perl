@@ -44,6 +44,21 @@ package Paws::Kafka;
     my $call_object = $self->new_with_coercions('Paws::Kafka::ListNodes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub ListAllClusters {
     my $self = shift;
@@ -93,7 +108,7 @@ package Paws::Kafka;
   }
 
 
-  sub operations { qw/CreateCluster DeleteCluster DescribeCluster GetBootstrapBrokers ListClusters ListNodes / }
+  sub operations { qw/CreateCluster DeleteCluster DescribeCluster GetBootstrapBrokers ListClusters ListNodes ListTagsForResource TagResource UntagResource / }
 
 1;
 
@@ -244,6 +259,58 @@ Each argument is described in detail in: L<Paws::Kafka::ListNodes>
 Returns: a L<Paws::Kafka::ListNodesResponse> instance
 
 Returns a list of the broker nodes in the cluster.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::ListTagsForResource>
+
+Returns: a L<Paws::Kafka::ListTagsForResourceResponse> instance
+
+Returns a list of tags attached to a resource.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::Kafka::__mapOf__string>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::TagResource>
+
+Returns: nothing
+
+Tag a resource with given tags.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::UntagResource>
+
+Returns: nothing
+
+Remove tags of a resource by given tag keys.
 
 
 
