@@ -113,6 +113,8 @@ resources.
 
   A finding's description.
 
+In this release, Description is a required property.
+
 
 =head2 FirstObservedAt => Str
 
@@ -221,6 +223,8 @@ findings provider's solution.
 =head2 Title => Str
 
   A finding's title.
+
+In this release, Title is a required property.
 
 
 =head2 B<REQUIRED> Types => ArrayRef[Str|Undef]
