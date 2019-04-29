@@ -9,6 +9,7 @@ package Paws::FMS::Policy;
   has RemediationEnabled => (is => 'ro', isa => 'Bool', required => 1);
   has ResourceTags => (is => 'ro', isa => 'ArrayRef[Paws::FMS::ResourceTag]');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceTypeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SecurityServicePolicyData => (is => 'ro', isa => 'Paws::FMS::SecurityServicePolicyData', required => 1);
 1;
 
@@ -110,12 +111,16 @@ resources.
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  The type of resource to protect with the policy, either an Application
-Load Balancer or a CloudFront distribution. This is in the format shown
-in AWS Resource Types Reference
+  The type of resource to protect with the policy. This is in the format
+shown in AWS Resource Types Reference
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-Valid values are C<AWS::ElasticLoadBalancingV2::LoadBalancer> or
+For example: C<AWS::ElasticLoadBalancingV2::LoadBalancer> or
 C<AWS::CloudFront::Distribution>.
+
+
+=head2 ResourceTypeList => ArrayRef[Str|Undef]
+
+  An array of C<ResourceType>.
 
 
 =head2 B<REQUIRED> SecurityServicePolicyData => L<Paws::FMS::SecurityServicePolicyData>
