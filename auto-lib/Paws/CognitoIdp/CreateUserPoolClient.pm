@@ -229,7 +229,8 @@ valid and cannot be used.
 =head2 SupportedIdentityProviders => ArrayRef[Str|Undef]
 
 A list of provider names for the identity providers that are supported
-on this client.
+on this client. The following are supported: C<COGNITO>, C<Facebook>,
+C<Google> and C<LoginWithAmazon>.
 
 
 
@@ -252,7 +253,7 @@ your app client lacks write access to a mapped attribute, Amazon
 Cognito throws an error when it attempts to update the attribute. For
 more information, see Specifying Identity Provider Attribute Mappings
 for Your User Pool
-(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html).
+(https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html).
 
 
 

@@ -365,6 +365,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ListResourceServers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListUserImportJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ListUserImportJobs', @_);
@@ -438,6 +443,16 @@ package Paws::CognitoIdp;
   sub StopUserImportJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::StopUserImportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAuthEventFeedback {
@@ -682,7 +697,7 @@ package Paws::CognitoIdp;
   }
 
 
-  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableProviderForUser AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminLinkProviderForUser AdminListDevices AdminListGroupsForUser AdminListUserAuthEvents AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserMFAPreference AdminSetUserSettings AdminUpdateAuthEventFeedback AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut AssociateSoftwareToken ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateIdentityProvider CreateResourceServer CreateUserImportJob CreateUserPool CreateUserPoolClient CreateUserPoolDomain DeleteGroup DeleteIdentityProvider DeleteResourceServer DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DeleteUserPoolDomain DescribeIdentityProvider DescribeResourceServer DescribeRiskConfiguration DescribeUserImportJob DescribeUserPool DescribeUserPoolClient DescribeUserPoolDomain ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetIdentityProviderByIdentifier GetSigningCertificate GetUICustomization GetUser GetUserAttributeVerificationCode GetUserPoolMfaConfig GlobalSignOut InitiateAuth ListDevices ListGroups ListIdentityProviders ListResourceServers ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetRiskConfiguration SetUICustomization SetUserMFAPreference SetUserPoolMfaConfig SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateAuthEventFeedback UpdateDeviceStatus UpdateGroup UpdateIdentityProvider UpdateResourceServer UpdateUserAttributes UpdateUserPool UpdateUserPoolClient UpdateUserPoolDomain VerifySoftwareToken VerifyUserAttribute / }
+  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableProviderForUser AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminLinkProviderForUser AdminListDevices AdminListGroupsForUser AdminListUserAuthEvents AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserMFAPreference AdminSetUserSettings AdminUpdateAuthEventFeedback AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut AssociateSoftwareToken ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateIdentityProvider CreateResourceServer CreateUserImportJob CreateUserPool CreateUserPoolClient CreateUserPoolDomain DeleteGroup DeleteIdentityProvider DeleteResourceServer DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DeleteUserPoolDomain DescribeIdentityProvider DescribeResourceServer DescribeRiskConfiguration DescribeUserImportJob DescribeUserPool DescribeUserPoolClient DescribeUserPoolDomain ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetIdentityProviderByIdentifier GetSigningCertificate GetUICustomization GetUser GetUserAttributeVerificationCode GetUserPoolMfaConfig GlobalSignOut InitiateAuth ListDevices ListGroups ListIdentityProviders ListResourceServers ListTagsForResource ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetRiskConfiguration SetUICustomization SetUserMFAPreference SetUserPoolMfaConfig SetUserSettings SignUp StartUserImportJob StopUserImportJob TagResource UntagResource UpdateAuthEventFeedback UpdateDeviceStatus UpdateGroup UpdateIdentityProvider UpdateResourceServer UpdateUserAttributes UpdateUserPool UpdateUserPoolClient UpdateUserPoolDomain VerifySoftwareToken VerifyUserAttribute / }
 
 1;
 
@@ -2329,6 +2344,28 @@ Returns: a L<Paws::CognitoIdp::ListResourceServersResponse> instance
 Lists the resource servers for a user pool.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CognitoIdp::ListTagsForResource>
+
+Returns: a L<Paws::CognitoIdp::ListTagsForResourceResponse> instance
+
+Lists the tags that are assigned to an Amazon Cognito user pool.
+
+A tag is a label that you can apply to user pools to categorize and
+manage them in different ways, such as by purpose, owner, environment,
+or other criteria.
+
+You can use this action up to 10 times per second, per account.
+
+
 =head2 ListUserImportJobs
 
 =over
@@ -2681,6 +2718,61 @@ Returns: a L<Paws::CognitoIdp::StopUserImportJobResponse> instance
 Stops the user import job.
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [Tags => L<Paws::CognitoIdp::UserPoolTagsType>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CognitoIdp::TagResource>
+
+Returns: a L<Paws::CognitoIdp::TagResourceResponse> instance
+
+Assigns a set of tags to an Amazon Cognito user pool. A tag is a label
+that you can use to categorize and manage user pools in different ways,
+such as by purpose, owner, environment, or other criteria.
+
+Each tag consists of a key and value, both of which you define. A key
+is a general category for more specific values. For example, if you
+have two versions of a user pool, one for testing and another for
+production, you might assign an C<Environment> tag key to both user
+pools. The value of this key might be C<Test> for one user pool and
+C<Production> for the other.
+
+Tags are useful for cost tracking and access control. You can activate
+your tags so that they appear on the Billing and Cost Management
+console, where you can track the costs associated with your user pools.
+In an IAM policy, you can constrain permissions for user pools based on
+specific tags or tag values.
+
+You can use this action up to 5 times per second, per account. A user
+pool can have as many as 50 tags.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CognitoIdp::UntagResource>
+
+Returns: a L<Paws::CognitoIdp::UntagResourceResponse> instance
+
+Removes the specified tags from an Amazon Cognito user pool. You can
+use this action up to 5 times per second, per account
+
+
 =head2 UpdateAuthEventFeedback
 
 =over
@@ -2961,7 +3053,7 @@ distribute your new certificate to your custom domain.
 
 For more information about adding a custom domain to your user pool,
 see Using Your Own Domain for the Hosted UI
-(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html).
+(https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html).
 
 
 =head2 VerifySoftwareToken
