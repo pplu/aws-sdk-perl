@@ -14,6 +14,11 @@ package Paws::WorkLink;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub AssociateDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::AssociateDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateWebsiteCertificateAuthority {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::AssociateWebsiteCertificateAuthority', @_);
@@ -49,6 +54,11 @@ package Paws::WorkLink;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::DescribeDevicePolicyConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::DescribeDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeFleetMetadata {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::DescribeFleetMetadata', @_);
@@ -64,6 +74,11 @@ package Paws::WorkLink;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::DescribeWebsiteCertificateAuthority', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::DisassociateDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateWebsiteCertificateAuthority {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::DisassociateWebsiteCertificateAuthority', @_);
@@ -74,6 +89,11 @@ package Paws::WorkLink;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::ListDevices', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDomains {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::ListDomains', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListFleets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::ListFleets', @_);
@@ -82,6 +102,16 @@ package Paws::WorkLink;
   sub ListWebsiteCertificateAuthorities {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::ListWebsiteCertificateAuthorities', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RestoreDomainAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::RestoreDomainAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RevokeDomainAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::RevokeDomainAccess', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SignOutUser {
@@ -104,6 +134,11 @@ package Paws::WorkLink;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::UpdateDevicePolicyConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateDomainMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::UpdateDomainMetadata', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateFleetMetadata {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::UpdateFleetMetadata', @_);
@@ -117,7 +152,7 @@ package Paws::WorkLink;
   
 
 
-  sub operations { qw/AssociateWebsiteCertificateAuthority CreateFleet DeleteFleet DescribeAuditStreamConfiguration DescribeCompanyNetworkConfiguration DescribeDevice DescribeDevicePolicyConfiguration DescribeFleetMetadata DescribeIdentityProviderConfiguration DescribeWebsiteCertificateAuthority DisassociateWebsiteCertificateAuthority ListDevices ListFleets ListWebsiteCertificateAuthorities SignOutUser UpdateAuditStreamConfiguration UpdateCompanyNetworkConfiguration UpdateDevicePolicyConfiguration UpdateFleetMetadata UpdateIdentityProviderConfiguration / }
+  sub operations { qw/AssociateDomain AssociateWebsiteCertificateAuthority CreateFleet DeleteFleet DescribeAuditStreamConfiguration DescribeCompanyNetworkConfiguration DescribeDevice DescribeDevicePolicyConfiguration DescribeDomain DescribeFleetMetadata DescribeIdentityProviderConfiguration DescribeWebsiteCertificateAuthority DisassociateDomain DisassociateWebsiteCertificateAuthority ListDevices ListDomains ListFleets ListWebsiteCertificateAuthorities RestoreDomainAccess RevokeDomainAccess SignOutUser UpdateAuditStreamConfiguration UpdateCompanyNetworkConfiguration UpdateDevicePolicyConfiguration UpdateDomainMetadata UpdateFleetMetadata UpdateIdentityProviderConfiguration / }
 
 1;
 
@@ -159,6 +194,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 
 =head1 METHODS
+
+=head2 AssociateDomain
+
+=over
+
+=item AcmCertificateArn => Str
+
+=item DomainName => Str
+
+=item FleetArn => Str
+
+=item [DisplayName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::AssociateDomain>
+
+Returns: a L<Paws::WorkLink::AssociateDomainResponse> instance
+
+Specifies a domain to be associated to Amazon WorkLink.
+
 
 =head2 AssociateWebsiteCertificateAuthority
 
@@ -289,6 +346,24 @@ Returns: a L<Paws::WorkLink::DescribeDevicePolicyConfigurationResponse> instance
 Describes the device policy configuration for the specified fleet.
 
 
+=head2 DescribeDomain
+
+=over
+
+=item DomainName => Str
+
+=item FleetArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::DescribeDomain>
+
+Returns: a L<Paws::WorkLink::DescribeDomainResponse> instance
+
+Provides information about the domain.
+
+
 =head2 DescribeFleetMetadata
 
 =over
@@ -340,6 +415,25 @@ Returns: a L<Paws::WorkLink::DescribeWebsiteCertificateAuthorityResponse> instan
 Provides information about the certificate authority.
 
 
+=head2 DisassociateDomain
+
+=over
+
+=item DomainName => Str
+
+=item FleetArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::DisassociateDomain>
+
+Returns: a L<Paws::WorkLink::DisassociateDomainResponse> instance
+
+Disassociates a domain from Amazon WorkLink. End users lose the ability
+to access the domain with Amazon WorkLink.
+
+
 =head2 DisassociateWebsiteCertificateAuthority
 
 =over
@@ -376,6 +470,26 @@ Each argument is described in detail in: L<Paws::WorkLink::ListDevices>
 Returns: a L<Paws::WorkLink::ListDevicesResponse> instance
 
 Retrieves a list of devices registered with the specified fleet.
+
+
+=head2 ListDomains
+
+=over
+
+=item FleetArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::ListDomains>
+
+Returns: a L<Paws::WorkLink::ListDomainsResponse> instance
+
+Retrieves a list of domains associated to a specified fleet.
 
 
 =head2 ListFleets
@@ -415,6 +529,42 @@ Returns: a L<Paws::WorkLink::ListWebsiteCertificateAuthoritiesResponse> instance
 
 Retrieves a list of certificate authorities added for the current
 account and Region.
+
+
+=head2 RestoreDomainAccess
+
+=over
+
+=item DomainName => Str
+
+=item FleetArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::RestoreDomainAccess>
+
+Returns: a L<Paws::WorkLink::RestoreDomainAccessResponse> instance
+
+Moves a domain to ACTIVE status if it was in the INACTIVE status.
+
+
+=head2 RevokeDomainAccess
+
+=over
+
+=item DomainName => Str
+
+=item FleetArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::RevokeDomainAccess>
+
+Returns: a L<Paws::WorkLink::RevokeDomainAccessResponse> instance
+
+Moves a domain to INACTIVE status if it was in the ACTIVE status.
 
 
 =head2 SignOutUser
@@ -492,6 +642,26 @@ Each argument is described in detail in: L<Paws::WorkLink::UpdateDevicePolicyCon
 Returns: a L<Paws::WorkLink::UpdateDevicePolicyConfigurationResponse> instance
 
 Updates the device policy configuration for the fleet.
+
+
+=head2 UpdateDomainMetadata
+
+=over
+
+=item DomainName => Str
+
+=item FleetArn => Str
+
+=item [DisplayName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::UpdateDomainMetadata>
+
+Returns: a L<Paws::WorkLink::UpdateDomainMetadataResponse> instance
+
+Updates domain metadata, such as DisplayName.
 
 
 =head2 UpdateFleetMetadata
