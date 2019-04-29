@@ -44,7 +44,7 @@ filter rule.
 which the filtering rule applies. The maximum prefix length is 1,024
 characters. Overlapping prefixes and suffixes are not supported. For
 more information, see Configuring Event Notifications
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
 in the I<Amazon Simple Storage Service Developer Guide>.
 
 

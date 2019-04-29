@@ -90,7 +90,7 @@ Valid values are: C<"requester">
 
 =head2 Token => Str
 
-
+A token to allow Object Lock to be enabled for an existing bucket.
 
 
 

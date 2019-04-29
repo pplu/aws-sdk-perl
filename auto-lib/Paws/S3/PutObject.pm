@@ -161,7 +161,8 @@ the body cannot be determined automatically.
 
 =head2 ContentMD5 => Str
 
-The base64-encoded 128-bit MD5 digest of the part data.
+The base64-encoded 128-bit MD5 digest of the part data. This parameter
+is auto-populated when using the command from the CLI
 
 
 
@@ -284,7 +285,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signatur
 
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
 
 =head2 Tagging => Str
 

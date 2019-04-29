@@ -344,7 +344,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signatur
 
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
 
 =head2 Tagging => Str
 

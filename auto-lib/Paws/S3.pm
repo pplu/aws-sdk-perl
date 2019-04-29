@@ -1348,7 +1348,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketLifecycle>
 
 Returns: a L<Paws::S3::GetBucketLifecycleOutput> instance
 
-Deprecated, see the GetBucketLifecycleConfiguration operation.
+No longer used, see the GetBucketLifecycleConfiguration operation.
 
 
 =head2 GetBucketLifecycleConfiguration
@@ -1433,7 +1433,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketNotification>
 
 Returns: a L<Paws::S3::NotificationConfigurationDeprecated> instance
 
-Deprecated, see the GetBucketNotificationConfiguration operation.
+No longer used, see the GetBucketNotificationConfiguration operation.
 
 
 =head2 GetBucketNotificationConfiguration
@@ -2206,7 +2206,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketLifecycle>
 
 Returns: nothing
 
-Deprecated, see the PutBucketLifecycleConfiguration operation.
+No longer used, see the PutBucketLifecycleConfiguration operation.
 
 
 =head2 PutBucketLifecycleConfiguration
@@ -2294,7 +2294,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketNotification>
 
 Returns: nothing
 
-Deprecated, see the PutBucketNotificationConfiguraiton operation.
+No longer used, see the PutBucketNotificationConfiguration operation.
 
 
 =head2 PutBucketNotificationConfiguration

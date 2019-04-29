@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Notific
 
 A container for object key name filtering rules. For information about
 key name filtering, see Configuring Event Notifications
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
 in the I<Amazon Simple Storage Service Developer Guide>.
 
 =head1 ATTRIBUTES

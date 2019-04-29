@@ -57,13 +57,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             NoncurrentVersionTransition => {
               NoncurrentDays => 1,          # OPTIONAL
               StorageClass   => 'GLACIER'
-              , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING; OPTIONAL
+              , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, DEEP_ARCHIVE; OPTIONAL
             },    # OPTIONAL
             Transition => {
               Date         => '1970-01-01T01:00:00',    # OPTIONAL
               Days         => 1,                        # OPTIONAL
               StorageClass => 'GLACIER'
-              , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING; OPTIONAL
+              , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, DEEP_ARCHIVE; OPTIONAL
             },    # OPTIONAL
           },
           ...

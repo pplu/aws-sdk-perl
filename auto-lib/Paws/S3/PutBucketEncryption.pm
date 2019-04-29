@@ -73,7 +73,8 @@ Size of the body in bytes.
 =head2 ContentMD5 => Str
 
 The base64-encoded 128-bit MD5 digest of the server-side encryption
-configuration.
+configuration. This parameter is auto-populated when using the command
+from the CLI
 
 
 
