@@ -1,14 +1,14 @@
-package Paws::Comprehend::OutputDataConfig;
+package Paws::Comprehend::DocumentClassifierOutputDataConfig;
   use Moose;
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+  has S3Uri => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Comprehend::OutputDataConfig
+Paws::Comprehend::DocumentClassifierOutputDataConfig
 
 =head1 USAGE
 
@@ -19,20 +19,20 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Comprehend::OutputDataConfig object:
+As an example, if Att1 is expected to be a Paws::Comprehend::DocumentClassifierOutputDataConfig object:
 
   $service_obj->Method(Att1 => { KmsKeyId => $value, ..., S3Uri => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Comprehend::OutputDataConfig object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Comprehend::DocumentClassifierOutputDataConfig object:
 
   $result = $service_obj->Method(...);
   $result->Att1->KmsKeyId
 
 =head1 DESCRIPTION
 
-Provides configuration parameters for the output of topic detection
+Provides output results configuration parameters for custom classifier
 jobs.
 
 =head1 ATTRIBUTES
@@ -68,18 +68,18 @@ C<"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias">
 
 
 
-=head2 B<REQUIRED> S3Uri => Str
+=head2 S3Uri => Str
 
-  When you use the C<OutputDataConfig> object with asynchronous
-operations, you specify the Amazon S3 location where you want to write
-the output data. The URI must be in the same region as the API endpoint
-that you are calling. The location is used as the prefix for the actual
-location of the output file.
+  When you use the C<OutputDataConfig> object while creating a custom
+classifier, you specify the Amazon S3 location where you want to write
+the confusion matrix. The URI must be in the same region as the API
+endpoint that you are calling. The location is used as the prefix for
+the actual location of this output file.
 
-When the topic detection job is finished, the service creates an output
-file in a directory specific to the job. The C<S3Uri> field contains
-the location of the output file, called C<output.tar.gz>. It is a
-compressed archive that contains the ouput of the operation.
+When the custom classifier job is finished, the service creates the
+output file in a directory specific to the job. The C<S3Uri> field
+contains the location of the output file, called C<output.tar.gz>. It
+is a compressed archive that contains the confusion matrix.
 
 
 

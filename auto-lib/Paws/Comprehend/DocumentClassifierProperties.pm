@@ -7,10 +7,12 @@ package Paws::Comprehend::DocumentClassifierProperties;
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierInputDataConfig');
   has LanguageCode => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
+  has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierOutputDataConfig');
   has Status => (is => 'ro', isa => 'Str');
   has SubmitTime => (is => 'ro', isa => 'Str');
   has TrainingEndTime => (is => 'ro', isa => 'Str');
   has TrainingStartTime => (is => 'ro', isa => 'Str');
+  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +32,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Comprehend::DocumentClassifierProperties object:
 
-  $service_obj->Method(Att1 => { ClassifierMetadata => $value, ..., TrainingStartTime => $value  });
+  $service_obj->Method(Att1 => { ClassifierMetadata => $value, ..., VolumeKmsKeyId => $value  });
 
 =head3 Results returned from an API call
 
@@ -86,6 +88,12 @@ was trained on.
   Additional information about the status of the classifier.
 
 
+=head2 OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>
+
+  Provides output results configuration parameters for custom classifier
+jobs.
+
+
 =head2 Status => Str
 
   The status of the document classifier. If the status is C<TRAINED> the
@@ -112,6 +120,28 @@ the value of TrainingStartTime.
   Indicates the time when the training starts on documentation
 classifiers. You are billed for the time interval between this time and
 the value of TrainingEndTime.
+
+
+=head2 VolumeKmsKeyId => Str
+
+  ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt data on the storage volume attached to the ML compute
+instance(s) that process the analysis job. The VolumeKmsKeyId can be
+either of the following formats:
+
+=over
+
+=item *
+
+KMS Key ID: C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+Amazon Resource Name (ARN) of a KMS Key:
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
 
 
 

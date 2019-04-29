@@ -10,6 +10,7 @@ package Paws::Comprehend::DocumentClassificationJobProperties;
   has Message => (is => 'ro', isa => 'Str');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::OutputDataConfig');
   has SubmitTime => (is => 'ro', isa => 'Str');
+  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Comprehend::DocumentClassificationJobProperties object:
 
-  $service_obj->Method(Att1 => { DataAccessRoleArn => $value, ..., SubmitTime => $value  });
+  $service_obj->Method(Att1 => { DataAccessRoleArn => $value, ..., VolumeKmsKeyId => $value  });
 
 =head3 Results returned from an API call
 
@@ -99,6 +100,28 @@ document classification job.
 
   The time that the document classification job was submitted for
 processing.
+
+
+=head2 VolumeKmsKeyId => Str
+
+  ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt data on the storage volume attached to the ML compute
+instance(s) that process the analysis job. The VolumeKmsKeyId can be
+either of the following formats:
+
+=over
+
+=item *
+
+KMS Key ID: C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+Amazon Resource Name (ARN) of a KMS Key:
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
 
 
 
