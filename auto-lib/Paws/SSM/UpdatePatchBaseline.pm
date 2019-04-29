@@ -145,7 +145,7 @@ A list of explicitly approved patches for the baseline.
 For information about accepted formats for lists of approved patches
 and rejected patches, see Package Name Formats for Approved and
 Rejected Patch Lists
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -178,7 +178,7 @@ A description of the patch baseline.
 
 =head2 GlobalFilters => L<Paws::SSM::PatchFilterGroup>
 
-A set of global filters used to exclude patches from the baseline.
+A set of global filters used to include patches in the baseline.
 
 
 
@@ -195,7 +195,7 @@ A list of explicitly rejected patches for the baseline.
 For information about accepted formats for lists of approved patches
 and rejected patches, see Package Name Formats for Approved and
 Rejected Patch Lists
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
 

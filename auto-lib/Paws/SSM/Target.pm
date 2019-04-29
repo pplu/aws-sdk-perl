@@ -42,22 +42,23 @@ provide one or more instance IDs in the call.
 =head2 Key => Str
 
   User-defined criteria for sending commands that target instances that
-meet the criteria. Key can be tag:E<lt>Amazon EC2 tagE<gt> or
-InstanceIds. For more information about how to send commands that
-target instances using Key,Value parameters, see Targeting Multiple
-Instances
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-targeting)
+meet the criteria. C<Key> can be C<tag:E<lt>Amazon EC2 tagE<gt>> or
+C<InstanceIds>. For more information about how to send commands that
+target instances using C<Key,Value> parameters, see Using Targets and
+Rate Controls to Send Commands to a Fleet
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-targeting)
 in the I<AWS Systems Manager User Guide>.
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  User-defined criteria that maps to Key. For example, if you specified
-tag:ServerRole, you could specify value:WebServer to execute a command
-on instances that include Amazon EC2 tags of ServerRole,WebServer. For
-more information about how to send commands that target instances using
-Key,Value parameters, see Sending Commands to a Fleet
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
+  User-defined criteria that maps to C<Key>. For example, if you
+specified C<tag:ServerRole>, you could specify C<value:WebServer> to
+run a command on instances that include Amazon EC2 tags of
+C<ServerRole,WebServer>. For more information about how to send
+commands that target instances using C<Key,Value> parameters, see Using
+Targets and Rate Controls to Send Commands to a Fleet
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
 in the I<AWS Systems Manager User Guide>.
 
 

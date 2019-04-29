@@ -66,7 +66,7 @@ for C<TaskInvocationParameters>.
 
 =head2 Comment => Str
 
-  Information about the command(s) to execute.
+  Information about the command(s) to run.
 
 
 =head2 DocumentHash => Str
@@ -109,7 +109,7 @@ on a per-instance basis.
 =head2 TimeoutSeconds => Int
 
   If this time is reached and the command has not already started
-executing, it doesn't run.
+running, it doesn't run.
 
 
 

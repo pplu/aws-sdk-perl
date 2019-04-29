@@ -6,6 +6,8 @@ package Paws::SSM::ParameterMetadata;
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has LastModifiedUser => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ParameterInlinePolicy]');
+  has Tier => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
 1;
@@ -75,6 +77,16 @@ parameter.
 =head2 Name => Str
 
   The parameter name.
+
+
+=head2 Policies => ArrayRef[L<Paws::SSM::ParameterInlinePolicy>]
+
+  A list of policies associated with a parameter.
+
+
+=head2 Tier => Str
+
+  The parameter tier.
 
 
 =head2 Type => Str

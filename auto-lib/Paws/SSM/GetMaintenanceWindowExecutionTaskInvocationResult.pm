@@ -27,7 +27,7 @@ Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult
 
 =head2 EndTime => Str
 
-The time that the task finished executing on the target.
+The time that the task finished running on the target.
 
 
 =head2 ExecutionId => Str
@@ -48,12 +48,12 @@ while running tasks for these targets in this Maintenance Window.
 
 =head2 Parameters => Str
 
-The parameters used at the time that the task executed.
+The parameters used at the time that the task ran.
 
 
 =head2 StartTime => Str
 
-The time that the task started executing on the target.
+The time that the task started running on the target.
 
 
 =head2 Status => Str

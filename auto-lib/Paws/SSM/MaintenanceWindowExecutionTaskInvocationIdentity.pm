@@ -75,8 +75,7 @@ events raised during the task invocation.
 
 =head2 Parameters => Str
 
-  The parameters that were provided for the invocation when it was
-executed.
+  The parameters that were provided for the invocation when it was run.
 
 
 =head2 StartTime => Str

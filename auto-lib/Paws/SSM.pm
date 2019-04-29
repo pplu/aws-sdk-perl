@@ -375,6 +375,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetPatchBaselineForPatchGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetServiceSetting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetServiceSetting', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub LabelParameterVersion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::LabelParameterVersion', @_);
@@ -485,6 +490,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::RemoveTagsFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ResetServiceSetting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ResetServiceSetting', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ResumeSession {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::ResumeSession', @_);
@@ -568,6 +578,11 @@ package Paws::SSM;
   sub UpdatePatchBaseline {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdatePatchBaseline', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateServiceSetting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateServiceSetting', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -1493,7 +1508,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribeSessions GetAutomationExecution GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
+  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribeSessions GetAutomationExecution GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup GetServiceSetting LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResetServiceSetting ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline UpdateServiceSetting / }
 
 1;
 
@@ -1645,6 +1660,8 @@ cancels any tasks in the window that have not already starting running.
 
 =item [RegistrationLimit => Int]
 
+=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+
 
 =back
 
@@ -1746,6 +1763,8 @@ exception.
 
 =item [DocumentType => Str]
 
+=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+
 =item [TargetType => Str]
 
 =item [VersionName => Str]
@@ -1787,6 +1806,8 @@ it with one or more running instances.
 
 =item [StartDate => Str]
 
+=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+
 
 =back
 
@@ -1824,6 +1845,8 @@ Creates a new Maintenance Window.
 =item [RejectedPatchesAction => Str]
 
 =item [Sources => ArrayRef[L<Paws::SSM::PatchSource>]]
+
+=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
 
 
 =back
@@ -1863,10 +1886,9 @@ ListResourceDataSync.
 By default, data is not encrypted in Amazon S3. We strongly recommend
 that you enable encryption in Amazon S3 to ensure secure data storage.
 We also recommend that you secure access to the Amazon S3 bucket by
-creating a restrictive bucket policy. To view an example of a
-restrictive Amazon S3 bucket policy for Resource Data Sync, see Create
-a Resource Data Sync for Inventory
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync-create.html)
+creating a restrictive bucket policy. For more information, see
+Configuring Resource Data Sync for Inventory
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -2551,7 +2573,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowE
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowExecutionTaskInvocationsResult> instance
 
 Retrieves the individual task executions (one per target) for a
-particular task executed as part of a Maintenance Window execution.
+particular task run as part of a Maintenance Window execution.
 
 
 =head2 DescribeMaintenanceWindowExecutionTasks
@@ -2574,7 +2596,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowE
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowExecutionTasksResult> instance
 
 For a given Maintenance Window execution, lists the tasks that were
-executed.
+run.
 
 
 =head2 DescribeMaintenanceWindows
@@ -2997,8 +3019,8 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionResult> instance
 
-Retrieves details about a specific task executed as part of a
-Maintenance Window execution.
+Retrieves details about a specific task run as part of a Maintenance
+Window execution.
 
 
 =head2 GetMaintenanceWindowExecutionTask
@@ -3016,7 +3038,7 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionTaskResult> instance
 
-Retrieves the details about a specific task executed as part of a
+Retrieves the details about a specific task run as part of a
 Maintenance Window execution.
 
 
@@ -3038,8 +3060,8 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult> instance
 
 Retrieves a task invocation. A task invocation is a specific task
-executing on a specific target. Maintenance Windows report status for
-all invocations.
+running on a specific target. Maintenance Windows report status for all
+invocations.
 
 
 =head2 GetMaintenanceWindowTask
@@ -3195,6 +3217,38 @@ Retrieves the patch baseline that should be used for the specified
 patch group.
 
 
+=head2 GetServiceSetting
+
+=over
+
+=item SettingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::GetServiceSetting>
+
+Returns: a L<Paws::SSM::GetServiceSettingResult> instance
+
+C<ServiceSetting> is an account-level setting for an AWS service. This
+setting defines how a user interacts with or uses a service or a
+feature of a service. For example, if an AWS service charges money to
+the account based on feature or service usage, then the AWS service
+team might create a default setting of "false". This means the user
+can't use this feature unless they change the setting to "true" and
+intentionally opt in for a paid feature.
+
+Services map a C<SettingId> object to a setting value. AWS services
+teams define the default value for a C<SettingId>. You can't create a
+new C<SettingId>, but you can overwrite the default value if you have
+the C<ssm:UpdateServiceSetting> permission for the setting. Use the
+UpdateServiceSetting API action to change the default setting. Or use
+the ResetServiceSetting to change the value back to the original value
+defined by the AWS service team.
+
+Query the current service setting for the account.
+
+
 =head2 LabelParameterVersion
 
 =over
@@ -3333,7 +3387,7 @@ Returns: a L<Paws::SSM::ListCommandInvocationsResult> instance
 
 An invocation is copy of a command sent to a specific instance. A
 command can apply to one or more instances. A command invocation
-applies to one instance. For example, if a user executes SendCommand
+applies to one instance. For example, if a user runs SendCommand
 against three instances, then a command invocation is created for each
 requested instance ID. ListCommandInvocations provide status about
 command execution.
@@ -3715,6 +3769,12 @@ inventory item, if it does exist.
 
 =item [Overwrite => Bool]
 
+=item [Policies => Str]
+
+=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+
+=item [Tier => Str]
+
 
 =back
 
@@ -3849,6 +3909,38 @@ Returns: a L<Paws::SSM::RemoveTagsFromResourceResult> instance
 Removes all tags from the specified resource.
 
 
+=head2 ResetServiceSetting
+
+=over
+
+=item SettingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::ResetServiceSetting>
+
+Returns: a L<Paws::SSM::ResetServiceSettingResult> instance
+
+C<ServiceSetting> is an account-level setting for an AWS service. This
+setting defines how a user interacts with or uses a service or a
+feature of a service. For example, if an AWS service charges money to
+the account based on feature or service usage, then the AWS service
+team might create a default setting of "false". This means the user
+can't use this feature unless they change the setting to "true" and
+intentionally opt in for a paid feature.
+
+Services map a C<SettingId> object to a setting value. AWS services
+teams define the default value for a C<SettingId>. You can't create a
+new C<SettingId>, but you can overwrite the default value if you have
+the C<ssm:UpdateServiceSetting> permission for the setting. Use the
+GetServiceSetting API action to view the current value. Use the
+UpdateServiceSetting API action to change the default setting.
+
+Reset the service setting for the account to the default value as
+provisioned by the AWS service team.
+
+
 =head2 ResumeSession
 
 =over
@@ -3937,7 +4029,7 @@ Each argument is described in detail in: L<Paws::SSM::SendCommand>
 
 Returns: a L<Paws::SSM::SendCommandResult> instance
 
-Executes commands on one or more managed instances.
+Runs commands on one or more managed instances.
 
 
 =head2 StartAssociationsOnce
@@ -3953,7 +4045,7 @@ Each argument is described in detail in: L<Paws::SSM::StartAssociationsOnce>
 
 Returns: a L<Paws::SSM::StartAssociationsOnceResult> instance
 
-Use this API action to execute an association immediately and only one
+Use this API action to run an association immediately and only one
 time. This action can be helpful when troubleshooting associations.
 
 
@@ -4037,7 +4129,7 @@ Each argument is described in detail in: L<Paws::SSM::StopAutomationExecution>
 
 Returns: a L<Paws::SSM::StopAutomationExecutionResult> instance
 
-Stop an Automation that is currently executing.
+Stop an Automation that is currently running.
 
 
 =head2 TerminateSession
@@ -4098,6 +4190,9 @@ Returns: a L<Paws::SSM::UpdateAssociationResult> instance
 Updates an association. You can update the association name and
 version, the document version, schedule, parameters, and Amazon S3
 output.
+
+When you update an association, the association immediately runs
+against the specified targets.
 
 
 =head2 UpdateAssociationStatus
@@ -4387,6 +4482,40 @@ request are left unchanged.
 For information about valid key and value pairs in C<PatchFilters> for
 each supported operating system type, see PatchFilter
 (http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html).
+
+
+=head2 UpdateServiceSetting
+
+=over
+
+=item SettingId => Str
+
+=item SettingValue => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::UpdateServiceSetting>
+
+Returns: a L<Paws::SSM::UpdateServiceSettingResult> instance
+
+C<ServiceSetting> is an account-level setting for an AWS service. This
+setting defines how a user interacts with or uses a service or a
+feature of a service. For example, if an AWS service charges money to
+the account based on feature or service usage, then the AWS service
+team might create a default setting of "false". This means the user
+can't use this feature unless they change the setting to "true" and
+intentionally opt in for a paid feature.
+
+Services map a C<SettingId> object to a setting value. AWS services
+teams define the default value for a C<SettingId>. You can't create a
+new C<SettingId>, but you can overwrite the default value if you have
+the C<ssm:UpdateServiceSetting> permission for the setting. Use the
+GetServiceSetting API action to view the current value. Or, use the
+ResetServiceSetting to change the value back to the original value
+defined by the AWS service team.
+
+Update the service setting for the account.
 
 
 

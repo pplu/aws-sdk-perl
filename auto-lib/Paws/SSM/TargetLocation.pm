@@ -48,8 +48,7 @@ Automation execution.
 
 =head2 ExecutionRoleName => Str
 
-  The Automation execution role used by the currently executing
-Automation.
+  The Automation execution role used by the currently running Automation.
 
 
 =head2 Regions => ArrayRef[Str|Undef]
@@ -66,8 +65,7 @@ Automation concurrently
 =head2 TargetLocationMaxErrors => Str
 
   The maxium number of errors allowed before the system stops queueing
-additional Automation executions for the currently executing
-Automation.
+additional Automation executions for the currently running Automation.
 
 
 

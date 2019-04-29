@@ -13,6 +13,7 @@ package Paws::SSM::CreatePatchBaseline;
   has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RejectedPatchesAction => (is => 'ro', isa => 'Str');
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchSource]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -103,6 +104,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                                    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',                              # min: 1, max: 128
+          Value => 'MyTagValue',                            # min: 1, max: 256
+
+        },
+        ...
+      ],                                                    # OPTIONAL
     );
 
     # Results:
@@ -129,7 +138,7 @@ A list of explicitly approved patches for the baseline.
 For information about accepted formats for lists of approved patches
 and rejected patches, see Package Name Formats for Approved and
 Rejected Patch Lists
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -164,7 +173,7 @@ A description of the patch baseline.
 
 =head2 GlobalFilters => L<Paws::SSM::PatchFilterGroup>
 
-A set of global filters used to exclude patches from the baseline.
+A set of global filters used to include patches in the baseline.
 
 
 
@@ -188,7 +197,7 @@ A list of explicitly rejected patches for the baseline.
 For information about accepted formats for lists of approved patches
 and rejected patches, see Package Name Formats for Approved and
 Rejected Patch Lists
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -226,6 +235,32 @@ Valid values are: C<"ALLOW_AS_DEPENDENCY">, C<"BLOCK">
 Information about the patches to use to update the instances, including
 target operating systems and source repositories. Applies to Linux
 instances only.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+
+Optional metadata that you assign to a resource. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag a patch baseline to
+identify the severity level of patches it specifies and the operating
+system family it applies to. In this case, you could specify the
+following key name/value pairs:
+
+=over
+
+=item *
+
+C<Key=PatchSeverity,Value=Critical>
+
+=item *
+
+C<Key=OS,Value=Windows>
+
+=back
+
+To add tags to an existing patch baseline, use the AddTagsToResource
+action.
 
 
 

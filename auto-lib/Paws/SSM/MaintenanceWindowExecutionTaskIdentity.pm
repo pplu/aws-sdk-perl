@@ -67,7 +67,7 @@ for certain status values.
 
 =head2 TaskArn => Str
 
-  The ARN of the executed task.
+  The ARN of the task that ran.
 
 
 =head2 TaskExecutionId => Str
@@ -78,7 +78,7 @@ execution.
 
 =head2 TaskType => Str
 
-  The type of executed task.
+  The type of task that ran.
 
 
 =head2 WindowExecutionId => Str

@@ -11,6 +11,7 @@ package Paws::SSM::CreateMaintenanceWindow;
   has Schedule => (is => 'ro', isa => 'Str', required => 1);
   has ScheduleTimezone => (is => 'ro', isa => 'Str');
   has StartDate => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -47,6 +48,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndDate          => 'MyMaintenanceWindowStringDateTime',        # OPTIONAL
       ScheduleTimezone => 'MyMaintenanceWindowTimezone',              # OPTIONAL
       StartDate        => 'MyMaintenanceWindowStringDateTime',        # OPTIONAL
+      Tags             => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -62,8 +71,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> AllowUnassociatedTargets => Bool
 
-Enables a Maintenance Window task to execute on managed instances, even
-if you have not registered those instances as targets. If enabled, then
+Enables a Maintenance Window task to run on managed instances, even if
+you have not registered those instances as targets. If enabled, then
 you must specify the unregistered instances (by instance ID) when you
 register a task with the Maintenance Window
 
@@ -135,6 +144,36 @@ information, see the Time Zone Database
 The date and time, in ISO-8601 Extended format, for when you want the
 Maintenance Window to become active. StartDate allows you to delay
 activation of the Maintenance Window until the specified future date.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+
+Optional metadata that you assign to a resource. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag a Maintenance Window to
+identify the type of tasks it will run, the types of targets, and the
+environment it will run in. In this case, you could specify the
+following key name/value pairs:
+
+=over
+
+=item *
+
+C<Key=TaskType,Value=AgentUpdate>
+
+=item *
+
+C<Key=OS,Value=Windows>
+
+=item *
+
+C<Key=Environment,Value=Production>
+
+=back
+
+To add tags to an existing Maintenance Window, use the
+AddTagsToResource action.
 
 
 

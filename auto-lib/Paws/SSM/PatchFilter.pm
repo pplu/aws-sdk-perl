@@ -102,6 +102,10 @@ C<WindowsServer2016>
 
 =item *
 
+C<WindowsServer2019>
+
+=item *
+
 C<*>
 
 I<Use a wildcard character (*) to target all supported operating system
@@ -503,6 +507,14 @@ C<RedhatEnterpriseLinux7.4>
 
 =item *
 
+C<RedhatEnterpriseLinux7.5>
+
+=item *
+
+C<RedhatEnterpriseLinux7.6>
+
+=item *
+
 C<*>
 
 I<Use a wildcard character (*) to target all supported operating system
@@ -730,6 +742,14 @@ C<CentOS7.3>
 =item *
 
 C<CentOS7.4>
+
+=item *
+
+C<CentOS7.5>
+
+=item *
+
+C<CentOS7.6>
 
 =item *
 

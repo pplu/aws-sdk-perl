@@ -21,12 +21,12 @@ Paws::SSM::GetMaintenanceWindowExecutionResult
 
 =head2 EndTime => Str
 
-The time the Maintenance Window finished executing.
+The time the Maintenance Window finished running.
 
 
 =head2 StartTime => Str
 
-The time the Maintenance Window started executing.
+The time the Maintenance Window started running.
 
 
 =head2 Status => Str

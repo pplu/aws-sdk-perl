@@ -67,7 +67,7 @@ MaintenanceWindowTaskInvocationParameters.
 
 =head2 MaxConcurrency => Str
 
-  The maximum number of targets this task can be run for in parallel.
+  The maximum number of targets this task can be run for, in parallel.
 
 
 =head2 MaxErrors => Str
@@ -90,7 +90,7 @@ scheduled in parallel.
 
 =head2 ServiceRoleArn => Str
 
-  The role that should be assumed when executing the task
+  The role that should be assumed when running the task.
 
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
@@ -111,7 +111,7 @@ STEP_FUNCTION tasks, it's the state machine ARN.
 
 =head2 TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>
 
-  The parameters that should be passed to the task when it is executed.
+  The parameters that should be passed to the task when it is run.
 
 C<TaskParameters> has been deprecated. To specify parameters to pass to
 a task when it runs, instead use the C<Parameters> option in the
@@ -128,7 +128,7 @@ AUTOMATION, LAMBDA, or STEP_FUNCTION.
 
 =head2 WindowId => Str
 
-  The Maintenance Window ID where the task is registered.
+  The ID of the Maintenance Window where the task is registered.
 
 
 =head2 WindowTaskId => Str

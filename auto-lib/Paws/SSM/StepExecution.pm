@@ -126,7 +126,7 @@ value is 1.
 
 =head2 OverriddenParameters => L<Paws::SSM::AutomationParameterMap>
 
-  A user-specified list of parameters to override when executing a step.
+  A user-specified list of parameters to override when running a step.
 
 
 =head2 Response => Str
@@ -175,9 +175,9 @@ Automation execution.
 
   Strategies used when step fails, we support Continue and Abort. Abort
 will fail the automation when the step fails. Continue will ignore the
-failure of current step and allow automation to execute the next step.
-With conditional branching, we add step:stepName to support the
-automation to go to another specific step.
+failure of current step and allow automation to run the next step. With
+conditional branching, we add step:stepName to support the automation
+to go to another specific step.
 
 
 

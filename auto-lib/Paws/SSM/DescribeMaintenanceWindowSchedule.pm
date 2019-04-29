@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceType => 'INSTANCE',                    # OPTIONAL
       Targets      => [
         {
-          Key    => 'MyTargetKey',               # min: 1, max: 128; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...

@@ -6,6 +6,7 @@ package Paws::SSM::CreateDocument;
   has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
   has TargetType => (is => 'ro', isa => 'Str');
   has VersionName => (is => 'ro', isa => 'Str');
 
@@ -45,10 +46,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                       # OPTIONAL
-      DocumentFormat => 'YAML',                     # OPTIONAL
-      DocumentType   => 'Command',                  # OPTIONAL
-      TargetType     => 'MyTargetType',             # OPTIONAL
-      VersionName    => 'MyDocumentVersionName',    # OPTIONAL
+      DocumentFormat => 'YAML',                # OPTIONAL
+      DocumentType   => 'Command',             # OPTIONAL
+      Tags           => [
+        {
+          Key   => 'MyTagKey',                 # min: 1, max: 128
+          Value => 'MyTagValue',               # min: 1, max: 256
+
+        },
+        ...
+      ],                                       # OPTIONAL
+      TargetType  => 'MyTargetType',           # OPTIONAL
+      VersionName => 'MyDocumentVersionName',  # OPTIONAL
     );
 
     # Results:
@@ -112,6 +121,31 @@ C<amzn>
 
 =back
 
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+
+Optional metadata that you assign to a resource. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag an SSM document to
+identify the types of targets or the environment where it will run. In
+this case, you could specify the following key name/value pairs:
+
+=over
+
+=item *
+
+C<Key=OS,Value=Windows>
+
+=item *
+
+C<Key=Environment,Value=Production>
+
+=back
+
+To add tags to an existing SSM document, use the AddTagsToResource
+action.
 
 
 

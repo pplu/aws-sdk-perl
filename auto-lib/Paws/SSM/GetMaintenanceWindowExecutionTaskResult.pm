@@ -50,7 +50,7 @@ The priority of the task.
 
 =head2 ServiceRole => Str
 
-The role that was assumed when executing the task.
+The role that was assumed when running the task.
 
 
 =head2 StartTime => Str
@@ -71,7 +71,7 @@ values.
 
 =head2 TaskArn => Str
 
-The ARN of the executed task.
+The ARN of the task that ran.
 
 
 =head2 TaskExecutionId => Str
@@ -82,7 +82,7 @@ that was retrieved.
 
 =head2 TaskParameters => ArrayRef[L<Paws::SSM::MaintenanceWindowTaskParameters>]
 
-The parameters passed to the task when it was executed.
+The parameters passed to the task when it was run.
 
 C<TaskParameters> has been deprecated. To specify parameters to pass to
 a task when it runs, instead use the C<Parameters> option in the
@@ -99,7 +99,7 @@ Value: an array of strings, each string is between 1 and 255 characters
 
 =head2 Type => Str
 
-The type of task executed.
+The type of task that was run.
 
 Valid values are: C<"RUN_COMMAND">, C<"AUTOMATION">, C<"STEP_FUNCTIONS">, C<"LAMBDA">
 =head2 WindowExecutionId => Str

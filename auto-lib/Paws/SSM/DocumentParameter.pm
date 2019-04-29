@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Docume
 
 =head1 DESCRIPTION
 
-Parameters specified in a System Manager document that execute on the
+Parameters specified in a System Manager document that run on the
 server when the command is run.
 
 =head1 ATTRIBUTES

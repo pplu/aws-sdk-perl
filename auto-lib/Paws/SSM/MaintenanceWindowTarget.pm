@@ -44,7 +44,7 @@ The target registered with the Maintenance Window.
 
 =head2 Description => Str
 
-  A description of the target.
+  A description for the target.
 
 
 =head2 Name => Str
@@ -54,27 +54,33 @@ The target registered with the Maintenance Window.
 
 =head2 OwnerInformation => Str
 
-  User-provided value that will be included in any CloudWatch events
-raised while running tasks for these targets in this Maintenance
-Window.
+  A user-provided value that will be included in any CloudWatch events
+that are raised while running tasks for these targets in this
+Maintenance Window.
 
 
 =head2 ResourceType => Str
 
-  The type of target.
+  The type of target that is being registered with the Maintenance
+Window.
 
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
 
-  The targets (either instances or tags). Instances are specified using
-Key=instanceids,Values=E<lt>instanceid1E<gt>,E<lt>instanceid2E<gt>.
-Tags are specified using Key=E<lt>tag nameE<gt>,Values=E<lt>tag
-valueE<gt>.
+  The targets, either instances or tags.
+
+Specify instances using the following format:
+
+C<Key=instanceids,Values=E<lt>instanceid1E<gt>,E<lt>instanceid2E<gt>>
+
+Tags are specified using the following format:
+
+C<Key=E<lt>tag nameE<gt>,Values=E<lt>tag valueE<gt>>.
 
 
 =head2 WindowId => Str
 
-  The Maintenance Window ID where the target is registered.
+  The ID of the Maintenance Window to register the target with.
 
 
 =head2 WindowTargetId => Str

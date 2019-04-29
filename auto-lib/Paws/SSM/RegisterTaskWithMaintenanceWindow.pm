@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxErrors      => 'MyMaxErrors',
       Targets        => [
         {
-          Key    => 'MyTargetKey',               # min: 1, max: 128; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -217,7 +217,7 @@ C<Key=E<lt>WindowTargetIdsE<gt>,Values=E<lt>window-target-id-1E<gt>,E<lt>window-
 
 =head2 B<REQUIRED> TaskArn => Str
 
-The ARN of the task to execute
+The ARN of the task to run.
 
 
 
@@ -230,7 +230,7 @@ the fields that match the task type. All other fields should be empty.
 
 =head2 TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>
 
-The parameters that should be passed to the task when it is executed.
+The parameters that should be passed to the task when it is run.
 
 C<TaskParameters> has been deprecated. To specify parameters to pass to
 a task when it runs, instead use the C<Parameters> option in the
