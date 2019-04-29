@@ -65,7 +65,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 The language code for the language used in the input media file.
 
-Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">, C<"it-IT">
+Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">, C<"it-IT">, C<"ko-KR">, C<"es-ES">
 
 =head2 B<REQUIRED> Media => L<Paws::Transcribe::Media>
 
@@ -96,6 +96,10 @@ the C<TranscriptFileUri> field. The S3 bucket must have permissions
 that allow Amazon Transcribe to put files in the bucket. For more
 information, see Permissions Required for IAM User Roles
 (https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user).
+
+Amazon Transcribe uses the default Amazon S3 key for server-side
+encryption of transcripts that are placed in your S3 bucket. You can't
+specify your own encryption key.
 
 If you don't set the C<OutputBucketName>, Amazon Transcribe generates a
 pre-signed URL, a shareable URL that provides secure access to your

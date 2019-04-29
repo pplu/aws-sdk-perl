@@ -21,7 +21,7 @@ Paws::Transcribe::UpdateVocabularyResponse
 
 The language code of the vocabulary entries.
 
-Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">, C<"it-IT">
+Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">, C<"it-IT">, C<"ko-KR">, C<"es-ES">
 =head2 LastModifiedTime => Str
 
 The date and time that the vocabulary was updated.
