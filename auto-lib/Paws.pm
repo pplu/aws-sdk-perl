@@ -657,6 +657,8 @@ L<Paws::STS>
 
 L<Paws::Support>
 
+L<Paws::Textract>
+
 L<Paws::Transcribe>
 
 L<Paws::Transfer>

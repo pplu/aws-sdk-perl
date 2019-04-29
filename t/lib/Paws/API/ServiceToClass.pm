@@ -175,6 +175,7 @@ package Paws::API::ServiceToClass;
     sts => 'STS',
     support => 'Support',
     sdb => 'SDB',
+    textract => 'Textract',
     transcribe => 'Transcribe',
     transfer => 'Transfer',
     translate => 'Translate',
