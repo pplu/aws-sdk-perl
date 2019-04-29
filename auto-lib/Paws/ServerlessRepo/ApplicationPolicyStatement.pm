@@ -47,7 +47,7 @@ Permissions
 
 =head2 B<REQUIRED> Principals => ArrayRef[Str|Undef]
 
-  An AWS account ID, or * to make the application public.
+  An array of AWS account IDs, or * to make the application public.
 
 
 =head2 StatementId => Str

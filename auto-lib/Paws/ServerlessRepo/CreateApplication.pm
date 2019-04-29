@@ -11,6 +11,7 @@ package Paws::ServerlessRepo::CreateApplication;
   has ReadmeBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeBody');
   has ReadmeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeUrl');
   has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion');
+  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCodeArchiveUrl');
   has SourceCodeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCodeUrl');
   has SpdxLicenseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spdxLicenseId');
   has TemplateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateBody');
@@ -42,20 +43,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $serverlessrepo = Paws->service('ServerlessRepo');
     my $CreateApplicationResponse = $serverlessrepo->CreateApplication(
-      Author          => 'My__string',
-      Description     => 'My__string',
-      Name            => 'My__string',
-      HomePageUrl     => 'My__string',             # OPTIONAL
-      Labels          => [ 'My__string', ... ],    # OPTIONAL
-      LicenseBody     => 'My__string',             # OPTIONAL
-      LicenseUrl      => 'My__string',             # OPTIONAL
-      ReadmeBody      => 'My__string',             # OPTIONAL
-      ReadmeUrl       => 'My__string',             # OPTIONAL
-      SemanticVersion => 'My__string',             # OPTIONAL
-      SourceCodeUrl   => 'My__string',             # OPTIONAL
-      SpdxLicenseId   => 'My__string',             # OPTIONAL
-      TemplateBody    => 'My__string',             # OPTIONAL
-      TemplateUrl     => 'My__string',             # OPTIONAL
+      Author               => 'My__string',
+      Description          => 'My__string',
+      Name                 => 'My__string',
+      HomePageUrl          => 'My__string',             # OPTIONAL
+      Labels               => [ 'My__string', ... ],    # OPTIONAL
+      LicenseBody          => 'My__string',             # OPTIONAL
+      LicenseUrl           => 'My__string',             # OPTIONAL
+      ReadmeBody           => 'My__string',             # OPTIONAL
+      ReadmeUrl            => 'My__string',             # OPTIONAL
+      SemanticVersion      => 'My__string',             # OPTIONAL
+      SourceCodeArchiveUrl => 'My__string',             # OPTIONAL
+      SourceCodeUrl        => 'My__string',             # OPTIONAL
+      SpdxLicenseId        => 'My__string',             # OPTIONAL
+      TemplateBody         => 'My__string',             # OPTIONAL
+      TemplateUrl          => 'My__string',             # OPTIONAL
     );
 
     # Results:
@@ -182,9 +184,19 @@ https://semver.org/ (https://semver.org/)
 
 
 
+=head2 SourceCodeArchiveUrl => Str
+
+A link to the S3 object that contains the ZIP archive of the source
+code for this version of your application.
+
+Maximum size 50 MB
+
+
+
 =head2 SourceCodeUrl => Str
 
-A link to a public repository for the source code of your application.
+A link to a public repository for the source code of your application,
+for example the URL of a specific GitHub commit.
 
 
 

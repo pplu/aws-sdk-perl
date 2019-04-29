@@ -6,6 +6,7 @@ package Paws::ServerlessRepo::Version;
   has RequiredCapabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'requiredCapabilities', traits => ['NameInRequest'], required => 1);
   has ResourcesSupported => (is => 'ro', isa => 'Bool', request_name => 'resourcesSupported', traits => ['NameInRequest'], required => 1);
   has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest'], required => 1);
+  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeArchiveUrl', traits => ['NameInRequest']);
   has SourceCodeUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeUrl', traits => ['NameInRequest']);
   has TemplateUrl => (is => 'ro', isa => 'Str', request_name => 'templateUrl', traits => ['NameInRequest'], required => 1);
 1;
@@ -67,8 +68,8 @@ Identity and Access Management (IAM) users. For those applications, you
 must explicitly acknowledge their capabilities by specifying this
 parameter.
 
-The only valid values are CAPABILITY_IAM, CAPABILITY_NAMED_IAM, and
-CAPABILITY_RESOURCE_POLICY.
+The only valid values are CAPABILITY_IAM, CAPABILITY_NAMED_IAM,
+CAPABILITY_RESOURCE_POLICY, and CAPABILITY_AUTO_EXPAND.
 
 The following resources require you to specify CAPABILITY_IAM or
 CAPABILITY_NAMED_IAM: AWS::IAM::Group
@@ -97,13 +98,13 @@ AWS::SQS::QueuePolicy
 and AWS::SNS::TopicPolicy
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html).
 
+Applications that contain one or more nested applications require you
+to specify CAPABILITY_AUTO_EXPAND.
+
 If your application template contains any of the above resources, we
 recommend that you review all permissions associated with the
 application before deploying. If you don't specify this parameter for
 an application that requires capabilities, the call will fail.
-
-Valid values: CAPABILITY_IAM | CAPABILITY_NAMED_IAM |
-CAPABILITY_RESOURCE_POLICY
 
 
 =head2 B<REQUIRED> ResourcesSupported => Bool
@@ -119,9 +120,18 @@ supported in the region in which it is being retrieved.
 https://semver.org/ (https://semver.org/)
 
 
+=head2 SourceCodeArchiveUrl => Str
+
+  A link to the S3 object that contains the ZIP archive of the source
+code for this version of your application.
+
+Maximum size 50 MB
+
+
 =head2 SourceCodeUrl => Str
 
-  A link to a public repository for the source code of your application.
+  A link to a public repository for the source code of your application,
+for example the URL of a specific GitHub commit.
 
 
 =head2 B<REQUIRED> TemplateUrl => Str

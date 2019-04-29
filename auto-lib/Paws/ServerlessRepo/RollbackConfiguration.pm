@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessR
 
 This property corresponds to the I<AWS CloudFormation
 RollbackConfiguration
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RollbackConfiguration)>
-Data Type.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RollbackConfiguration)
+> Data Type.
 
 =head1 ATTRIBUTES
 
@@ -44,16 +44,16 @@ Data Type.
 
   This property corresponds to the content of the same name for the I<AWS
 CloudFormation RollbackConfiguration
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RollbackConfiguration)>
-Data Type.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RollbackConfiguration)
+> Data Type.
 
 
 =head2 RollbackTriggers => ArrayRef[L<Paws::ServerlessRepo::RollbackTrigger>]
 
   This property corresponds to the content of the same name for the I<AWS
 CloudFormation RollbackConfiguration
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RollbackConfiguration)>
-Data Type.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RollbackConfiguration)
+> Data Type.
 
 
 
