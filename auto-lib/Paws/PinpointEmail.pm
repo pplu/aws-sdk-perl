@@ -129,6 +129,11 @@ package Paws::PinpointEmail;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::ListEmailIdentities', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutAccountDedicatedIpWarmupAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::PutAccountDedicatedIpWarmupAttributes', @_);
@@ -192,6 +197,16 @@ package Paws::PinpointEmail;
   sub SendEmail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::SendEmail', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateConfigurationSetEventDestination {
@@ -317,7 +332,7 @@ package Paws::PinpointEmail;
   }
 
 
-  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateDedicatedIpPool CreateDeliverabilityTestReport CreateEmailIdentity DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteDedicatedIpPool DeleteEmailIdentity GetAccount GetBlacklistReports GetConfigurationSet GetConfigurationSetEventDestinations GetDedicatedIp GetDedicatedIps GetDeliverabilityDashboardOptions GetDeliverabilityTestReport GetDomainStatisticsReport GetEmailIdentity ListConfigurationSets ListDedicatedIpPools ListDeliverabilityTestReports ListEmailIdentities PutAccountDedicatedIpWarmupAttributes PutAccountSendingAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutDeliverabilityDashboardOption PutEmailIdentityDkimAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes SendEmail UpdateConfigurationSetEventDestination / }
+  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateDedicatedIpPool CreateDeliverabilityTestReport CreateEmailIdentity DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteDedicatedIpPool DeleteEmailIdentity GetAccount GetBlacklistReports GetConfigurationSet GetConfigurationSetEventDestinations GetDedicatedIp GetDedicatedIps GetDeliverabilityDashboardOptions GetDeliverabilityTestReport GetDomainStatisticsReport GetEmailIdentity ListConfigurationSets ListDedicatedIpPools ListDeliverabilityTestReports ListEmailIdentities ListTagsForResource PutAccountDedicatedIpWarmupAttributes PutAccountSendingAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutDeliverabilityDashboardOption PutEmailIdentityDkimAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes SendEmail TagResource UntagResource UpdateConfigurationSetEventDestination / }
 
 1;
 
@@ -350,11 +365,11 @@ Amazon Pinpoint Email Service
 This document contains reference information for the Amazon Pinpoint
 (https://aws.amazon.com/pinpoint) Email API, version 1.0. This document
 is best used in conjunction with the Amazon Pinpoint Developer Guide
-(http://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
+(https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
 
 The Amazon Pinpoint Email API is available in the US East (N.
-Virginia), US West (Oregon) and the EU (Ireland) Regions at the
-following endpoints:
+Virginia), US West (Oregon), EU (Frankfurt), and EU (Ireland) Regions
+at the following endpoints:
 
 =over
 
@@ -365,6 +380,10 @@ B<US East (N. Virginia)>: C<email.us-east-1.amazonaws.com>
 =item *
 
 B<US West (Oregon)>: C<email.us-west-2.amazonaws.com>
+
+=item *
+
+B<EU (Frankfurt)>: C<email.eu-central-1.amazonaws.com>
 
 =item *
 
@@ -389,6 +408,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/ses/>
 =item [ReputationOptions => L<Paws::PinpointEmail::ReputationOptions>]
 
 =item [SendingOptions => L<Paws::PinpointEmail::SendingOptions>]
+
+=item [Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]]
 
 =item [TrackingOptions => L<Paws::PinpointEmail::TrackingOptions>]
 
@@ -441,6 +462,8 @@ A single configuration set can include more than one event destination.
 
 =item PoolName => Str
 
+=item [Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]]
+
 
 =back
 
@@ -465,6 +488,8 @@ Pinpoint sends it using only the IP addresses in the associated pool.
 
 =item [ReportName => Str]
 
+=item [Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]]
+
 
 =back
 
@@ -488,6 +513,8 @@ to view the results of the test.
 =over
 
 =item EmailIdentity => Str
+
+=item [Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]]
 
 
 =back
@@ -880,6 +907,27 @@ address or a domain. This operation returns identities that are
 verified as well as those that aren't.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PinpointEmail::ListTagsForResource>
+
+Returns: a L<Paws::PinpointEmail::ListTagsForResourceResponse> instance
+
+Retrieve a list of the tags (keys and values) that are associated with
+a specific resource. A I<tag> is a label that you optionally define and
+associate with a resource in Amazon Pinpoint. Each tag consists of a
+required I<tag key> and an optional associated I<tag value>. A tag key
+is a general label that acts as a category for more specific tag
+values. A tag value acts as a descriptor within a tag key.
+
+
 =head2 PutAccountDedicatedIpWarmupAttributes
 
 =over
@@ -1175,6 +1223,51 @@ valid MIME message.
 
 =back
 
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PinpointEmail::TagResource>
+
+Returns: a L<Paws::PinpointEmail::TagResourceResponse> instance
+
+Add one or more tags (keys and values) to one or more specified
+resources. A I<tag> is a label that you optionally define and associate
+with a resource in Amazon Pinpoint. Tags can help you categorize and
+manage resources in different ways, such as by purpose, owner,
+environment, or other criteria. A resource can have as many as 50 tags.
+
+Each tag consists of a required I<tag key> and an associated I<tag
+value>, both of which you define. A tag key is a general label that
+acts as a category for more specific tag values. A tag value acts as a
+descriptor within a tag key.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PinpointEmail::UntagResource>
+
+Returns: a L<Paws::PinpointEmail::UntagResourceResponse> instance
+
+Remove one or more tags (keys and values) from a specified resource.
 
 
 =head2 UpdateConfigurationSetEventDestination

@@ -36,7 +36,7 @@ Specifies whether or not the identity is verified. In Amazon Pinpoint,
 you can only send email from verified email addresses or domains. For
 more information about verifying identities, see the Amazon Pinpoint
 User Guide
-(http://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-manage-verify.html).
+(https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-manage-verify.html).
 
 
 =head2 _request_id => Str

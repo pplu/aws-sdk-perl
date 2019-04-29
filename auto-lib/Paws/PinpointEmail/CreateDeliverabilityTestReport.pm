@@ -4,6 +4,7 @@ package Paws::PinpointEmail::CreateDeliverabilityTestReport;
   has Content => (is => 'ro', isa => 'Paws::PinpointEmail::EmailContent', required => 1);
   has FromEmailAddress => (is => 'ro', isa => 'Str', required => 1);
   has ReportName => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -57,6 +58,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       FromEmailAddress => 'MyEmailAddress',
       ReportName       => 'MyReportName',     # OPTIONAL
+      Tags             => [
+        {
+          Key   => 'MyTagKey',
+          Value => 'MyTagValue',
+
+        },
+        ...
+      ],                                      # OPTIONAL
       );
 
     # Results:
@@ -90,6 +99,13 @@ sent from.
 
 A unique name that helps you to identify the predictive inbox placement
 test when you retrieve the results.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+
+An object that defines the tags (keys and values) that you want to
+associate with the predictive inbox placement test.
 
 
 

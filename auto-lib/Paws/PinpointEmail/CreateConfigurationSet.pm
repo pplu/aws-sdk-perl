@@ -5,6 +5,7 @@ package Paws::PinpointEmail::CreateConfigurationSet;
   has DeliveryOptions => (is => 'ro', isa => 'Paws::PinpointEmail::DeliveryOptions');
   has ReputationOptions => (is => 'ro', isa => 'Paws::PinpointEmail::ReputationOptions');
   has SendingOptions => (is => 'ro', isa => 'Paws::PinpointEmail::SendingOptions');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::Tag]');
   has TrackingOptions => (is => 'ro', isa => 'Paws::PinpointEmail::TrackingOptions');
 
   use MooseX::ClassAttribute;
@@ -44,6 +45,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SendingOptions => {
         SendingEnabled => 1,    # OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',
+          Value => 'MyTagValue',
+
+        },
+        ...
+      ],    # OPTIONAL
       TrackingOptions => {
         CustomRedirectDomain => 'MyCustomRedirectDomain',
 
@@ -81,6 +90,13 @@ configuration set.
 
 An object that defines whether or not Amazon Pinpoint can send email
 that you send using the configuration set.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+
+An object that defines the tags (keys and values) that you want to
+associate with the configuration set.
 
 
 

@@ -2,6 +2,7 @@
 package Paws::PinpointEmail::CreateDedicatedIpPool;
   use Moose;
   has PoolName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -30,7 +31,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $email = Paws->service('PinpointEmail');
     my $CreateDedicatedIpPoolResponse = $email->CreateDedicatedIpPool(
       PoolName => 'MyPoolName',
+      Tags     => [
+        {
+          Key   => 'MyTagKey',
+          Value => 'MyTagValue',
 
+        },
+        ...
+      ],    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -42,6 +50,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 =head2 B<REQUIRED> PoolName => Str
 
 The name of the dedicated IP pool.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+
+An object that defines the tags (keys and values) that you want to
+associate with the pool.
 
 
 
