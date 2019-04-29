@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListDeploymentJobsResponse = $robomaker->ListDeploymentJobs(
       Filters => [
         {
-          Name   => 'MyName',    # min: 1, max: 255; OPTIONAL
+          Name   => 'MyName',    # min: 1, max: 255
           Values => [
-            'MyName', ...        # min: 1, max: 255; OPTIONAL
+            'MyName', ...        # min: 1, max: 255
           ],                     # min: 1, max: 1; OPTIONAL
         },
         ...
@@ -59,6 +59,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rob
 =head2 Filters => ArrayRef[L<Paws::Robomaker::Filter>]
 
 Optional filters to limit results.
+
+The filter names C<status> and C<fleetName> are supported. When
+filtering, you must use the complete value of the filtered item. You
+can use up to three filters, but they must be for the same named item.
+For example, if you are looking for items with the status C<InProgress>
+or the status C<Pending>.
 
 
 

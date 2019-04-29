@@ -358,7 +358,7 @@ Paws::Robomaker - Perl Interface to AWS AWS RoboMaker
 
 =head1 DESCRIPTION
 
-his section provides documentation for the AWS RoboMaker API
+This section provides documentation for the AWS RoboMaker API
 operations.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29>
@@ -426,6 +426,9 @@ consistency reasons. To create a new version, use
 C<CreateRobotApplicationVersion> or see Creating a Robot Application
 Version
 (https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html).
+
+After 90 days, deployment jobs expire and will be deleted. They will no
+longer be accessible.
 
 
 =head2 CreateFleet
@@ -583,6 +586,9 @@ Each argument is described in detail in: L<Paws::Robomaker::CreateSimulationJob>
 Returns: a L<Paws::Robomaker::CreateSimulationJobResponse> instance
 
 Creates a simulation job.
+
+After 90 days, simulation jobs expire and will be deleted. They will no
+longer be accessible.
 
 
 =head2 DeleteFleet
@@ -1016,7 +1022,7 @@ Removes the specified tags from the specified AWS RoboMaker resource.
 
 To remove a tag, specify the tag key. To change the tag value of an
 existing tag key, use C<TagResource>
-(https://docs.aws.amazon.com/robomaker/latest/dg//API_Reference.htmlAPI_TagResource.html).
+(https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html).
 
 
 =head2 UpdateRobotApplication

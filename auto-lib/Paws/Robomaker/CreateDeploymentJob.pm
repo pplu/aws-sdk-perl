@@ -39,14 +39,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Application        => 'MyArn',                  # min: 1, max: 1224
           ApplicationVersion => 'MyDeploymentVersion',    # min: 1, max: 255
           LaunchConfig       => {
-            LaunchFile           => 'MyGenericString',
-            PackageName          => 'MyGenericString',
+            LaunchFile           => 'MyCommand',          # min: 1, max: 1024
+            PackageName          => 'MyCommand',          # min: 1, max: 1024
             EnvironmentVariables => {
               'MyEnvironmentVariableKey' => 'MyEnvironmentVariableValue'
               ,    # key: min: 1, max: 1024, value: min: 1, max: 1024
             },    # max: 16; OPTIONAL
-            PostLaunchFile => 'MyGenericString',
-            PreLaunchFile  => 'MyGenericString',
+            PostLaunchFile => 'MyPath',    # min: 1, max: 1024; OPTIONAL
+            PreLaunchFile  => 'MyPath',    # min: 1, max: 1024; OPTIONAL
           },
 
         },

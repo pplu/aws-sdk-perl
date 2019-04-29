@@ -110,7 +110,7 @@ creation.
 =back
 
 
-Valid values are: C<"ResourceNotFound">, C<"FailureThresholdBreached">, C<"RobotDeploymentNoResponse">, C<"GreengrassDeploymentFailed">, C<"MissingRobotArchitecture">, C<"MissingRobotApplicationArchitecture">, C<"MissingRobotDeploymentResource">, C<"GreengrassGroupVersionDoesNotExist">, C<"ExtractingBundleFailure">, C<"PreLaunchFileFailure">, C<"PostLaunchFileFailure">, C<"BadPermissionError">, C<"InternalServerError">
+Valid values are: C<"ResourceNotFound">, C<"EnvironmentSetupError">, C<"EtagMismatch">, C<"FailureThresholdBreached">, C<"RobotDeploymentNoResponse">, C<"RobotAgentConnectionTimeout">, C<"GreengrassDeploymentFailed">, C<"MissingRobotArchitecture">, C<"MissingRobotApplicationArchitecture">, C<"MissingRobotDeploymentResource">, C<"GreengrassGroupVersionDoesNotExist">, C<"ExtractingBundleFailure">, C<"PreLaunchFileFailure">, C<"PostLaunchFileFailure">, C<"BadPermissionError">, C<"InternalServerError">
 =head2 FailureReason => Str
 
 The failure reason if the job fails.

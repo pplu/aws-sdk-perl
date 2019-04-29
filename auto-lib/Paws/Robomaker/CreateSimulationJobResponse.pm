@@ -127,8 +127,7 @@ last updated.
 
 =head2 MaxJobDurationInSeconds => Int
 
-The maximum simulation job duration in seconds. The value must be 8
-days (691,200 seconds) or less.
+The maximum simulation job duration in seconds.
 
 
 =head2 OutputLocation => L<Paws::Robomaker::OutputLocation>
