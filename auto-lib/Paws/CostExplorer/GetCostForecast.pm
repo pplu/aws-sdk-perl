@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },
       Filter => {
-        And        => [ <Expression>, ... ],    # OPTIONAL
+        And => [ <Expression>, ... ],    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
           , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID; OPTIONAL
@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Not  => <Expression>,
         Or   => [ <Expression>, ... ],    # OPTIONAL
         Tags => {
-          Key    => 'MyTagKey',            # OPTIONAL
+          Key => 'MyTagKey',               # OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
