@@ -56,8 +56,8 @@ The name of the job definition to describe.
 
 =head2 JobDefinitions => ArrayRef[Str|Undef]
 
-A space-separated list of up to 100 job definition names or full Amazon
-Resource Name (ARN) entries.
+A list of up to 100 job definition names or full Amazon Resource Name
+(ARN) entries.
 
 
 

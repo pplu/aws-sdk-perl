@@ -64,7 +64,7 @@ The array properties for the submitted job, such as the size of the
 array. The array size can be between 2 and 10,000. If you specify array
 properties for a job, it becomes an array job. For more information,
 see Array Jobs
-(http://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html) in
+(https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html) in
 the I<AWS Batch User Guide>.
 
 
@@ -150,7 +150,7 @@ retried. The minimum value for the timeout is 60 seconds. This
 configuration overrides any timeout configuration specified in the job
 definition. For array jobs, child jobs have the same timeout
 configuration as the parent job. For more information, see Job Timeouts
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
