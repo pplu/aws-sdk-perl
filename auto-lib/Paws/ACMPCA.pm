@@ -25,9 +25,19 @@ package Paws::ACMPCA;
     my $call_object = $self->new_with_coercions('Paws::ACMPCA::CreateCertificateAuthorityAuditReport', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreatePermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACMPCA::CreatePermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCertificateAuthority {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ACMPCA::DeleteCertificateAuthority', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeletePermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACMPCA::DeletePermission', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCertificateAuthority {
@@ -68,6 +78,11 @@ package Paws::ACMPCA;
   sub ListCertificateAuthorities {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ACMPCA::ListCertificateAuthorities', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACMPCA::ListPermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTags {
@@ -124,6 +139,29 @@ package Paws::ACMPCA;
 
     return undef
   }
+  sub ListAllPermissions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPermissions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPermissions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Permissions }, @{ $next_result->Permissions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Permissions') foreach (@{ $result->Permissions });
+        $result = $self->ListPermissions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Permissions') foreach (@{ $result->Permissions });
+    }
+
+    return undef
+  }
   sub ListAllTags {
     my $self = shift;
 
@@ -149,7 +187,7 @@ package Paws::ACMPCA;
   }
 
 
-  sub operations { qw/CreateCertificateAuthority CreateCertificateAuthorityAuditReport DeleteCertificateAuthority DescribeCertificateAuthority DescribeCertificateAuthorityAuditReport GetCertificate GetCertificateAuthorityCertificate GetCertificateAuthorityCsr ImportCertificateAuthorityCertificate IssueCertificate ListCertificateAuthorities ListTags RestoreCertificateAuthority RevokeCertificate TagCertificateAuthority UntagCertificateAuthority UpdateCertificateAuthority / }
+  sub operations { qw/CreateCertificateAuthority CreateCertificateAuthorityAuditReport CreatePermission DeleteCertificateAuthority DeletePermission DescribeCertificateAuthority DescribeCertificateAuthorityAuditReport GetCertificate GetCertificateAuthorityCertificate GetCertificateAuthorityCsr ImportCertificateAuthorityCertificate IssueCertificate ListCertificateAuthorities ListPermissions ListTags RestoreCertificateAuthority RevokeCertificate TagCertificateAuthority UntagCertificateAuthority UpdateCertificateAuthority / }
 
 1;
 
@@ -210,7 +248,9 @@ expired, and revoked certificates from the CA.
 
 Each ACM PCA API operation has a throttling limit which determines the
 number of times the operation can be called per second. For more
-information, see API Rate Limits in ACM PCA in the ACM PCA user guide.
+information, see API Rate Limits in ACM PCA
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaLimits.html#PcaLimits-api)
+in the ACM PCA user guide.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22>
 
@@ -268,10 +308,43 @@ Each argument is described in detail in: L<Paws::ACMPCA::CreateCertificateAuthor
 
 Returns: a L<Paws::ACMPCA::CreateCertificateAuthorityAuditReportResponse> instance
 
-Creates an audit report that lists every time that the your CA private
-key is used. The report is saved in the Amazon S3 bucket that you
-specify on input. The IssueCertificate and RevokeCertificate operations
-use the private key. You can generate a new report every 30 minutes.
+Creates an audit report that lists every time that your CA private key
+is used. The report is saved in the Amazon S3 bucket that you specify
+on input. The IssueCertificate and RevokeCertificate operations use the
+private key. You can generate a new report every 30 minutes.
+
+
+=head2 CreatePermission
+
+=over
+
+=item Actions => ArrayRef[Str|Undef]
+
+=item CertificateAuthorityArn => Str
+
+=item Principal => Str
+
+=item [SourceAccount => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ACMPCA::CreatePermission>
+
+Returns: nothing
+
+Assigns permissions from a private CA to a designated AWS service.
+Services are specified by their service principals and can be given
+permission to create and retrieve certificates on a private CA.
+Services can also be given permission to list the active permissions
+that the private CA has granted. For ACM to automatically renew your
+private CA's certificates, you must assign all possible permissions
+from the CA to the ACM service principal.
+
+At this time, you can only assign permissions to ACM
+(C<acm.amazonaws.com>). Permissions can be revoked with the
+DeletePermission operation and listed with the ListPermissions
+operation.
 
 
 =head2 DeleteCertificateAuthority
@@ -302,15 +375,37 @@ C<CREATING>). You can also delete it if the CA has been created but you
 haven't yet imported the signed certificate (the B<Status> is
 C<PENDING_CERTIFICATE>) into ACM PCA.
 
-If the CA is in one of the aforementioned states and you call
+If the CA is in one of the previously mentioned states and you call
 DeleteCertificateAuthority, the CA's status changes to C<DELETED>.
-However, the CA won't be permentantly deleted until the restoration
+However, the CA won't be permanently deleted until the restoration
 period has passed. By default, if you do not set the
 C<PermanentDeletionTimeInDays> parameter, the CA remains restorable for
 30 days. You can set the parameter from 7 to 30 days. The
 DescribeCertificateAuthority operation returns the time remaining in
 the restoration window of a Private CA in the C<DELETED> state. To
-restore an eligable CA, call the RestoreCertificateAuthority operation.
+restore an eligible CA, call the RestoreCertificateAuthority operation.
+
+
+=head2 DeletePermission
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+=item Principal => Str
+
+=item [SourceAccount => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ACMPCA::DeletePermission>
+
+Returns: nothing
+
+Revokes permissions that a private CA assigned to a designated AWS
+service. Permissions can be created with the CreatePermission operation
+and listed with the ListPermissions operation.
 
 
 =head2 DescribeCertificateAuthority
@@ -547,6 +642,28 @@ Lists the private certificate authorities that you created by using the
 CreateCertificateAuthority operation.
 
 
+=head2 ListPermissions
+
+=over
+
+=item CertificateAuthorityArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ACMPCA::ListPermissions>
+
+Returns: a L<Paws::ACMPCA::ListPermissionsResponse> instance
+
+Lists all the permissions, if any, that have been assigned by a private
+CA. Permissions can be granted with the CreatePermission operation and
+revoked with the DeletePermission operation.
+
+
 =head2 ListTags
 
 =over
@@ -720,6 +837,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - CertificateAuthorities, passing the object as the first parameter, and the string 'CertificateAuthorities' as the second parameter 
 
 If not, it will return a a L<Paws::ACMPCA::ListCertificateAuthoritiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPermissions(sub { },CertificateAuthorityArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPermissions(CertificateAuthorityArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Permissions, passing the object as the first parameter, and the string 'Permissions' as the second parameter 
+
+If not, it will return a a L<Paws::ACMPCA::ListPermissionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllTags(sub { },CertificateAuthorityArn => Str, [MaxResults => Int, NextToken => Str])
