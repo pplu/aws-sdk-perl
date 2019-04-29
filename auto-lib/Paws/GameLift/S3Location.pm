@@ -2,6 +2,7 @@ package Paws::GameLift::S3Location;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
+  has ObjectVersion => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
 1;
 
@@ -33,31 +34,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::S
 
 =head1 DESCRIPTION
 
-Location in Amazon Simple Storage Service (Amazon S3) where build files
-can be stored for access by Amazon GameLift. This location is specified
-in a CreateBuild request. For more details, see the Create a Build with
-Files in Amazon S3
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build).
+Location in Amazon Simple Storage Service (Amazon S3) where build or
+script files are stored for access by Amazon GameLift. This location is
+specified in CreateBuild, CreateScript, and UpdateScript requests.
 
 =head1 ATTRIBUTES
 
 
 =head2 Bucket => Str
 
-  Amazon S3 bucket identifier. This is the name of your S3 bucket.
+  Amazon S3 bucket identifier. This is the name of the S3 bucket.
 
 
 =head2 Key => Str
 
-  Name of the zip file containing your build files.
+  Name of the zip file containing the build files or script files.
+
+
+=head2 ObjectVersion => Str
+
+  Version of the file, if object versioning is turned on for the bucket.
+Amazon GameLift uses this information when retrieving files from an S3
+bucket that you own. Use this parameter to specify a specific version
+of the file; if not set, the latest version of the file is retrieved.
 
 
 =head2 RoleArn => Str
 
   Amazon Resource Name (ARN
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
-for the access role that allows Amazon GameLift to access your S3
-bucket.
+for an IAM role that allows Amazon GameLift to access the S3 bucket.
 
 
 

@@ -4,6 +4,7 @@ package Paws::GameLift::ListFleets;
   has BuildId => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ScriptId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BuildId   => 'MyBuildId',                # OPTIONAL
       Limit     => 1,                          # OPTIONAL
       NextToken => 'MyNonZeroAndMaxString',    # OPTIONAL
+      ScriptId  => 'MyScriptId',               # OPTIONAL
     );
 
     # Results:
@@ -67,6 +69,14 @@ C<NextToken> to get results as a set of sequential pages.
 Token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
 start at the beginning of the result set, do not specify a value.
+
+
+
+=head2 ScriptId => Str
+
+Unique identifier for a Realtime script to return fleets for. Use this
+parameter to return only fleets using the specified script. To retrieve
+all fleets, leave this parameter empty.
 
 
 
