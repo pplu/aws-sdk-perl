@@ -65,6 +65,11 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateContact', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateGatewayGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateGatewayGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateProfile', @_);
@@ -108,6 +113,11 @@ package Paws::AlexaForBusiness;
   sub DeleteDevice {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteGatewayGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteGatewayGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteProfile {
@@ -195,6 +205,21 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetDevice', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetGateway {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetGatewayGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetGatewayGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetInvitationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetInvitationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetProfile', @_);
@@ -230,6 +255,16 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::ListDeviceEvents', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListGatewayGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::ListGatewayGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListGateways {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::ListGateways', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSkills {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::ListSkills', @_);
@@ -258,6 +293,11 @@ package Paws::AlexaForBusiness;
   sub PutConferencePreference {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::PutConferencePreference', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutInvitationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::PutInvitationConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutRoomSkillParameter {
@@ -373,6 +413,16 @@ package Paws::AlexaForBusiness;
   sub UpdateDevice {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::UpdateDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateGateway {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::UpdateGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateGatewayGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::UpdateGatewayGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateProfile {
@@ -692,7 +742,7 @@ package Paws::AlexaForBusiness;
   }
 
 
-  sub operations { qw/ApproveSkill AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom AssociateSkillWithSkillGroup AssociateSkillWithUsers CreateAddressBook CreateBusinessReportSchedule CreateConferenceProvider CreateContact CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteBusinessReportSchedule DeleteConferenceProvider DeleteContact DeleteDevice DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillAuthorization DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillFromSkillGroup DisassociateSkillFromUsers DisassociateSkillGroupFromRoom ForgetSmartHomeAppliances GetAddressBook GetConferencePreference GetConferenceProvider GetContact GetDevice GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListBusinessReportSchedules ListConferenceProviders ListDeviceEvents ListSkills ListSkillsStoreCategories ListSkillsStoreSkillsByCategory ListSmartHomeAppliances ListTags PutConferencePreference PutRoomSkillParameter PutSkillAuthorization RegisterAVSDevice RejectSkill ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync StartSmartHomeApplianceDiscovery TagResource UntagResource UpdateAddressBook UpdateBusinessReportSchedule UpdateConferenceProvider UpdateContact UpdateDevice UpdateProfile UpdateRoom UpdateSkillGroup / }
+  sub operations { qw/ApproveSkill AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom AssociateSkillWithSkillGroup AssociateSkillWithUsers CreateAddressBook CreateBusinessReportSchedule CreateConferenceProvider CreateContact CreateGatewayGroup CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteBusinessReportSchedule DeleteConferenceProvider DeleteContact DeleteDevice DeleteGatewayGroup DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillAuthorization DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillFromSkillGroup DisassociateSkillFromUsers DisassociateSkillGroupFromRoom ForgetSmartHomeAppliances GetAddressBook GetConferencePreference GetConferenceProvider GetContact GetDevice GetGateway GetGatewayGroup GetInvitationConfiguration GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListBusinessReportSchedules ListConferenceProviders ListDeviceEvents ListGatewayGroups ListGateways ListSkills ListSkillsStoreCategories ListSkillsStoreSkillsByCategory ListSmartHomeAppliances ListTags PutConferencePreference PutInvitationConfiguration PutRoomSkillParameter PutSkillAuthorization RegisterAVSDevice RejectSkill ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync StartSmartHomeApplianceDiscovery TagResource UntagResource UpdateAddressBook UpdateBusinessReportSchedule UpdateConferenceProvider UpdateContact UpdateDevice UpdateGateway UpdateGatewayGroup UpdateProfile UpdateRoom UpdateSkillGroup / }
 
 1;
 
@@ -837,8 +887,6 @@ Associates a skill with a skill group.
 
 =item SkillId => Str
 
-=item [OrganizationArn => Str]
-
 
 =back
 
@@ -947,6 +995,26 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateContact
 Returns: a L<Paws::AlexaForBusiness::CreateContactResponse> instance
 
 Creates a contact with the specified details.
+
+
+=head2 CreateGatewayGroup
+
+=over
+
+=item ClientRequestToken => Str
+
+=item Name => Str
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateGatewayGroup>
+
+Returns: a L<Paws::AlexaForBusiness::CreateGatewayGroupResponse> instance
+
+Creates a gateway group with the specified details.
 
 
 =head2 CreateProfile
@@ -1136,6 +1204,22 @@ Returns: a L<Paws::AlexaForBusiness::DeleteDeviceResponse> instance
 Removes a device from Alexa For Business.
 
 
+=head2 DeleteGatewayGroup
+
+=over
+
+=item GatewayGroupArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteGatewayGroup>
+
+Returns: a L<Paws::AlexaForBusiness::DeleteGatewayGroupResponse> instance
+
+Deletes a gateway group.
+
+
 =head2 DeleteProfile
 
 =over
@@ -1301,8 +1385,6 @@ Disassociates a skill from a skill group.
 
 =item SkillId => Str
 
-=item [OrganizationArn => Str]
-
 
 =back
 
@@ -1425,6 +1507,53 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::GetDevice>
 Returns: a L<Paws::AlexaForBusiness::GetDeviceResponse> instance
 
 Gets the details of a device by device ARN.
+
+
+=head2 GetGateway
+
+=over
+
+=item GatewayArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::GetGateway>
+
+Returns: a L<Paws::AlexaForBusiness::GetGatewayResponse> instance
+
+Retrieves the details of a gateway.
+
+
+=head2 GetGatewayGroup
+
+=over
+
+=item GatewayGroupArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::GetGatewayGroup>
+
+Returns: a L<Paws::AlexaForBusiness::GetGatewayGroupResponse> instance
+
+Retrieves the details of a gateway group.
+
+
+=head2 GetInvitationConfiguration
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::GetInvitationConfiguration>
+
+Returns: a L<Paws::AlexaForBusiness::GetInvitationConfigurationResponse> instance
+
+Retrieves the configured values for the user enrollment invitation
+email template.
 
 
 =head2 GetProfile
@@ -1555,6 +1684,48 @@ Lists the device event history, including device connection status, for
 up to 30 days.
 
 
+=head2 ListGatewayGroups
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::ListGatewayGroups>
+
+Returns: a L<Paws::AlexaForBusiness::ListGatewayGroupsResponse> instance
+
+Retrieves a list of gateway group summaries. Use GetGatewayGroup to
+retrieve details of a specific gateway group.
+
+
+=head2 ListGateways
+
+=over
+
+=item [GatewayGroupArn => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::ListGateways>
+
+Returns: a L<Paws::AlexaForBusiness::ListGatewaysResponse> instance
+
+Retrieves a list of gateway summaries. Use GetGateway to retrieve
+details of a specific gateway. An optional gateway group ARN can be
+provided to only retrieve gateway summaries of gateways that are
+associated with that gateway group ARN.
+
+
 =head2 ListSkills
 
 =over
@@ -1672,6 +1843,27 @@ Returns: a L<Paws::AlexaForBusiness::PutConferencePreferenceResponse> instance
 
 Sets the conference preferences on a specific conference provider at
 the account level.
+
+
+=head2 PutInvitationConfiguration
+
+=over
+
+=item OrganizationName => Str
+
+=item [ContactEmail => Str]
+
+=item [PrivateSkillIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::PutInvitationConfiguration>
+
+Returns: a L<Paws::AlexaForBusiness::PutInvitationConfigurationResponse> instance
+
+Configures the email template for the user enrollment invitation with
+the specified attributes.
 
 
 =head2 PutRoomSkillParameter
@@ -2162,6 +2354,50 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateDevice>
 Returns: a L<Paws::AlexaForBusiness::UpdateDeviceResponse> instance
 
 Updates the device name by device ARN.
+
+
+=head2 UpdateGateway
+
+=over
+
+=item GatewayArn => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+=item [SoftwareVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateGateway>
+
+Returns: a L<Paws::AlexaForBusiness::UpdateGatewayResponse> instance
+
+Updates the details of a gateway. If any optional field is not
+provided, the existing corresponding value is left unmodified.
+
+
+=head2 UpdateGatewayGroup
+
+=over
+
+=item GatewayGroupArn => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateGatewayGroup>
+
+Returns: a L<Paws::AlexaForBusiness::UpdateGatewayGroupResponse> instance
+
+Updates the details of a gateway group. If any optional field is not
+provided, the existing corresponding value is left unmodified.
 
 
 =head2 UpdateProfile

@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Key    => 'MyFilterKey',    # min: 1, max: 500
           Values => [
             'MyFilterValue', ...      # min: 1, max: 500
-          ],                          # max: 5
+          ],                          # max: 50
 
         },
         ...
