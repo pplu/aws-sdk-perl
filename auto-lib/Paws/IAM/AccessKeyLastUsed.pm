@@ -90,8 +90,8 @@ There is no sign-in data associated with the user
 =back
 
 For more information about AWS regions, see Regions and Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html) in the Amazon
-Web Services General Reference.
+(https://docs.aws.amazon.com/general/latest/gr/rande.html) in the
+Amazon Web Services General Reference.
 
 
 =head2 B<REQUIRED> ServiceName => Str

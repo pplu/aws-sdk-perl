@@ -39,7 +39,7 @@ attached to a user or role to set the permissions boundary.
 
 For more information about permissions boundaries, see Permissions
 Boundaries for IAM Identities
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>.
 
 =head1 ATTRIBUTES

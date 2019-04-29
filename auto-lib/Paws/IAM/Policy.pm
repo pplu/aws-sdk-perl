@@ -48,7 +48,7 @@ GetPolicy, and ListPolicies operations.
 
 For more information about managed policies, refer to Managed Policies
 and Inline Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
 in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
@@ -96,7 +96,7 @@ role.
   The path to the policy.
 
 For more information about paths, see IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 
@@ -107,7 +107,7 @@ to set the permissions boundary.
 
 For more information about permissions boundaries, see Permissions
 Boundaries for IAM Identities
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>.
 
 
@@ -116,7 +116,7 @@ in the I<IAM User Guide>.
   The stable and unique string identifying the policy.
 
 For more information about IDs, see IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 

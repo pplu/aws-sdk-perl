@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The path for the user name. For more information about paths, see IAM
 Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -78,7 +78,7 @@ the user.
 A list of tags that you want to attach to the newly created user. Each
 tag consists of a key name and an associated value. For more
 information about tagging, see Tagging IAM Identities
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
 I<IAM User Guide>.
 
 If any one of the tags is invalid or if you exceed the allowed number

@@ -47,7 +47,7 @@ delete a version.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 
@@ -63,7 +63,7 @@ optionally followed by a period '.' and a string of letters and digits.
 
 For more information about managed policy versions, see Versioning for
 Managed Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
 in the I<IAM User Guide>.
 
 

@@ -52,7 +52,7 @@ unauthenticated requests.
 
 This field is null if no IAM entities attempted to access the service
 within the reporting period
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
 
 
 =head2 LastAuthenticatedEntity => Str
@@ -62,7 +62,7 @@ to access the service. AWS does not report unauthenticated requests.
 
 This field is null if no IAM entities attempted to access the service
 within the reporting period
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
 
 
 =head2 B<REQUIRED> ServiceName => Str
@@ -76,12 +76,12 @@ within the reporting period
 
 To learn the service namespace of a service, go to Actions, Resources,
 and Condition Keys for AWS Services
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html)
 in the I<IAM User Guide>. Choose the name of the service to view
 details for that service. In the first paragraph, find the service
 prefix. For example, C<(service prefix: a4b)>. For more information
 about service namespaces, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<AWS General Reference>.
 
 
@@ -92,7 +92,7 @@ access the service.
 
 This field is null if no IAM entities attempted to access the service
 within the reporting period
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
 
 
 

@@ -52,8 +52,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
-the value of the C<Marker> element in the response to indicate where
-the next call should start.
+the value of the C<Marker> element in the response that you received to
+indicate where the next call should start.
 
 
 

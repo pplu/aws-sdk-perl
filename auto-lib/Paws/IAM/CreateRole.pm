@@ -106,7 +106,7 @@ one hour by default. This applies when you use the C<AssumeRole*> API
 operations or the C<assume-role*> CLI operations but does not apply
 when you use those operations to create a console URL. For more
 information, see Using IAM Roles
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
 the I<IAM User Guide>.
 
 
@@ -115,7 +115,7 @@ the I<IAM User Guide>.
 
 The path to the role. For more information about paths, see IAM
 Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -157,7 +157,7 @@ create roles named both "PRODROLE" and "prodrole".
 A list of tags that you want to attach to the newly created role. Each
 tag consists of a key name and an associated value. For more
 information about tagging, see Tagging IAM Identities
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
 I<IAM User Guide>.
 
 If any one of the tags is invalid or if you exceed the allowed number

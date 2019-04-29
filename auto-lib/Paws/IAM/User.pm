@@ -68,7 +68,7 @@ ListUsers
   The Amazon Resource Name (ARN) that identifies the user. For more
 information about ARNs and how to use ARNs in policies, see IAM
 Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 
@@ -84,7 +84,7 @@ in the I<Using IAM> guide.
 (http://www.iso.org/iso/iso8601), when the user's password was last
 used to sign in to an AWS website. For a list of AWS websites that
 capture a user's last sign-in time, see the Credential Reports
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html)
 topic in the I<Using IAM> guide. If a password is used more than once
 in a five-minute span, only the first use is returned in this field. If
 the field is null (no value), then it indicates that they never signed
@@ -115,7 +115,7 @@ This value is returned only in the GetUser and ListUsers operations.
 
   The path to the user. For more information about paths, see IAM
 Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 
@@ -125,14 +125,16 @@ in the I<Using IAM> guide.
 user.
 
 For more information about permissions boundaries, see Permissions
-Boundaries for IAM Identities in the I<IAM User Guide>.
+Boundaries for IAM Identities
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+in the I<IAM User Guide>.
 
 
 =head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
 
   A list of tags that are associated with the specified user. For more
 information about tagging, see Tagging IAM Identities
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
 I<IAM User Guide>.
 
 
@@ -140,7 +142,7 @@ I<IAM User Guide>.
 
   The stable and unique string identifying the user. For more information
 about IDs, see IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 
