@@ -51,7 +51,7 @@ The name for the user.
 =head2 State => Str
 
 The state of a user: enabled (registered to Amazon WorkMail) or
-disabled (deregistered or never registered to Amazon WorkMail).
+disabled (deregistered or never registered to WorkMail).
 
 Valid values are: C<"ENABLED">, C<"DISABLED">, C<"DELETED">
 =head2 UserId => Str
@@ -61,13 +61,13 @@ The identifier for the described user.
 
 =head2 UserRole => Str
 
-In certain cases other entities are modeled as users. If
+In certain cases, other entities are modeled as users. If
 interoperability is enabled, resources are imported into Amazon
-WorkMail as users. Because different Amazon WorkMail organizations rely
-on different directory types, administrators can distinguish between a
-user that is not registered to Amazon WorkMail (is disabled and has a
-user role) and the administrative users of the directory. The values
-are USER, RESOURCE, and SYSTEM_USER.
+WorkMail as users. Because different WorkMail organizations rely on
+different directory types, administrators can distinguish between an
+unregistered user (account is disabled and has a user role) and the
+directory administrators. The values are USER, RESOURCE, and
+SYSTEM_USER.
 
 Valid values are: C<"USER">, C<"RESOURCE">, C<"SYSTEM_USER">
 =head2 _request_id => Str

@@ -40,7 +40,7 @@ UserAttribute enumeration.
 
 =head2 B<REQUIRED> Id => Str
 
-  The identifier for the user or group is associated as the resource's
+  The identifier for the user or group associated as the resource's
 delegate.
 
 
