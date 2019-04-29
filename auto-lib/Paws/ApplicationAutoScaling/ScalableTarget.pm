@@ -49,12 +49,12 @@ Represents a scalable target.
 
 =head2 B<REQUIRED> MaxCapacity => Int
 
-  The maximum value to scale to in response to a scale out event.
+  The maximum value to scale to in response to a scale-out event.
 
 
 =head2 B<REQUIRED> MinCapacity => Int
 
-  The minimum value to scale to in response to a scale in event.
+  The minimum value to scale to in response to a scale-in event.
 
 
 =head2 B<REQUIRED> ResourceId => Str
@@ -198,7 +198,7 @@ custom resource provided by your own application or service.
   The namespace of the AWS service that provides the resource or
 C<custom-resource> for a resource provided by your own application or
 service. For more information, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
 
