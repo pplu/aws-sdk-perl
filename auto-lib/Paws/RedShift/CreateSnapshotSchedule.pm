@@ -98,7 +98,7 @@ characters are allowed for the identifier.
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-
+An optional set of tags you can use to search for the schedule.
 
 
 

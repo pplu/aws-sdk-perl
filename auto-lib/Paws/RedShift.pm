@@ -971,7 +971,7 @@ immediately, on the next instance reboot, or during the next
 maintenance window. For a summary of the Amazon Redshift cluster
 management interfaces, go to Using the Amazon Redshift Management
 Interfaces
-(http://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html).
+(https://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html).
 
 Amazon Redshift manages all the work of setting up, operating, and
 scaling a data warehouse: provisioning capacity, monitoring and backing
@@ -981,10 +981,10 @@ insights for your business and customers.
 
 If you are a first-time user of Amazon Redshift, we recommend that you
 begin by reading the Amazon Redshift Getting Started Guide
-(http://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html).
+(https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html).
 
 If you are a database developer, the Amazon Redshift Database Developer
-Guide (http://docs.aws.amazon.com/redshift/latest/dg/welcome.html)
+Guide (https://docs.aws.amazon.com/redshift/latest/dg/welcome.html)
 explains how to design, build, query, and maintain the databases that
 make up your data warehouse.
 
@@ -1053,7 +1053,7 @@ You must also associate the security group with a cluster so that
 clients running on these IP addresses or the EC2 instance are
 authorized to connect to the cluster. For information about managing
 security groups, go to Working with Security Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1079,7 +1079,7 @@ snapshot.
 
 For more information about working with snapshots, go to Amazon
 Redshift Snapshots
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1167,7 +1167,7 @@ delete them.
 
 For more information about working with snapshots, go to Amazon
 Redshift Snapshots
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1249,7 +1249,7 @@ cluster subnet group name. The cluster subnet group identifies the
 subnets of your VPC that Amazon Redshift uses when creating the
 cluster. For more information about managing clusters, go to Amazon
 Redshift Clusters
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1282,7 +1282,7 @@ the cluster is created by using ModifyCluster.
 Parameters in the parameter group define specific behavior that applies
 to the databases you create on the cluster. For more information about
 parameters and parameter groups, go to Amazon Redshift Parameter Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1308,7 +1308,7 @@ to control access to non-VPC clusters.
 
 For information about managing security groups, go to Amazon Redshift
 Cluster Security Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1336,7 +1336,7 @@ in the C<available> state.
 
 For more information about working with snapshots, go to Amazon
 Redshift Snapshots
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1365,7 +1365,7 @@ one or more subnets in your existing Amazon Virtual Private Cloud
 
 For information about subnet groups, go to Amazon Redshift Cluster
 Subnet Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1446,7 +1446,7 @@ addition to creating the HSM certificate, you must create an Amazon
 Redshift HSM configuration that provides a cluster the information
 needed to store and use encryption keys in the HSM. For more
 information, go to Hardware Security Modules
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
 in the Amazon Redshift Cluster Management Guide.
 
 
@@ -1484,7 +1484,7 @@ will then store its encryption keys in the HSM.
 In addition to creating an HSM configuration, you must also create an
 HSM client certificate. For more information, go to Hardware Security
 Modules
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
 in the Amazon Redshift Cluster Management Guide.
 
 
@@ -1511,7 +1511,7 @@ encrypt copied snapshots in a destination region.
 
 For more information about managing snapshot copy grants, go to Amazon
 Redshift Database Encryption
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1590,7 +1590,7 @@ the web service indicates that the request was received correctly. Use
 DescribeClusters to monitor the status of the deletion. The delete
 operation cannot be canceled or reverted once submitted. For more
 information about managing clusters, go to Amazon Redshift Clusters
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 If you want to shut down the cluster and retain it for future use, set
@@ -1603,7 +1603,7 @@ deleting the cluster.
 
 For more information about managing clusters, go to Amazon Redshift
 Clusters
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1645,7 +1645,7 @@ clusters. You cannot delete the default security group.
 
 For information about managing security groups, go to Amazon Redshift
 Cluster Security Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1856,7 +1856,7 @@ retrieve the description of a specific parameter group.
 
 For more information about parameters and parameter groups, go to
 Amazon Redshift Parameter Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 If you specify both tag keys and tag values in the same request, Amazon
@@ -1902,7 +1902,7 @@ specify I<source> equal to I<user>.
 
 For more information about parameters and parameter groups, go to
 Amazon Redshift Parameter Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -1932,7 +1932,7 @@ properties, cluster database properties, maintenance and backup
 properties, and security and access properties. This operation supports
 pagination. For more information about managing clusters, go to Amazon
 Redshift Clusters
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 If you specify both tag keys and tag values in the same request, Amazon
@@ -1973,7 +1973,7 @@ information about only that security group.
 
 For information about managing security groups, go to Amazon Redshift
 Cluster Security Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 If you specify both tag keys and tag values in the same request, Amazon
@@ -2124,7 +2124,7 @@ Returns descriptions of the available Amazon Redshift cluster versions.
 You can call this operation even before creating any clusters to learn
 more about the Amazon Redshift versions. For more information about
 managing clusters, go to Amazon Redshift Clusters
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -2150,7 +2150,7 @@ family.
 
 For more information about parameters and parameter groups, go to
 Amazon Redshift Parameter Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -2170,7 +2170,7 @@ Returns: a L<Paws::RedShift::EventCategoriesMessage> instance
 Displays a list of event categories for all event source types, or for
 a specified source type. For a list of the event categories and source
 types, go to Amazon Redshift Event Notifications
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html).
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html).
 
 
 =head2 DescribeEvents
@@ -2360,7 +2360,7 @@ differ by available storage, memory, CPU and price. With the cost
 involved you might want to obtain a list of cluster options in the
 specific region and specify values when creating a cluster. For more
 information about managing clusters, go to Amazon Redshift Clusters
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -2391,7 +2391,7 @@ nodes for your Amazon Redshift cluster.
 
 For more information about reserved node offerings, go to Purchasing
 Reserved Nodes
-(http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -2464,7 +2464,7 @@ destination region.
 
 For more information about managing snapshot copy grants, go to Amazon
 Redshift Database Encryption
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -2715,14 +2715,14 @@ on. By default, the temporary credentials expire in 900 seconds. You
 can optionally specify a duration between 900 seconds (15 minutes) and
 3600 seconds (60 minutes). For more information, see Using IAM
 Authentication to Generate Database User Credentials
-(http://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
 in the Amazon Redshift Cluster Management Guide.
 
 The AWS Identity and Access Management (IAM)user or role that executes
 GetClusterCredentials must have an IAM policy attached that allows
 access to all necessary actions and resources. For more information
 about permissions, see Resource Policies for GetClusterCredentials
-(http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html#redshift-policy-resources.getclustercredentials-resources)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html#redshift-policy-resources.getclustercredentials-resources)
 in the Amazon Redshift Cluster Management Guide.
 
 If the C<DbGroups> parameter is specified, the IAM policy must allow
@@ -2818,7 +2818,7 @@ modifying the security groups associated with a cluster do not need a
 reboot. However, modifying a parameter group requires a reboot for
 parameters to take effect. For more information about managing
 clusters, go to Amazon Redshift Clusters
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 You can also change node type and the number of nodes to scale up or
@@ -2915,7 +2915,7 @@ Modifies the parameters of a parameter group.
 
 For more information about parameters and parameter groups, go to
 Amazon Redshift Parameter Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -3079,7 +3079,7 @@ want to reserve.
 
 For more information about reserved node offerings, go to Purchasing
 Reserved Nodes
-(http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -3102,7 +3102,7 @@ is set to C<rebooting>. A cluster event is created when the reboot is
 completed. Any pending cluster modifications (see ModifyCluster) are
 applied at this reboot. For more information about managing clusters,
 go to Amazon Redshift Clusters
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -3270,7 +3270,7 @@ group where you want the cluster restored.
 
 For more information about working with snapshots, go to Amazon
 Redshift Snapshots
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -3341,7 +3341,7 @@ previously authorized IP range or Amazon EC2 security group. To add an
 ingress rule, see AuthorizeClusterSecurityGroupIngress. For information
 about managing security groups, go to Amazon Redshift Cluster Security
 Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -3368,7 +3368,7 @@ snapshot, the restore will run to completion.
 
 For more information about working with snapshots, go to Amazon
 Redshift Snapshots
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 

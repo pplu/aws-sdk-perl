@@ -23,12 +23,13 @@ Paws::RedShift::SnapshotSchedule
 
 =head2 AssociatedClusterCount => Int
 
-
+The number of clusters associated with the schedule.
 
 
 =head2 AssociatedClusters => ArrayRef[L<Paws::RedShift::ClusterAssociatedToSchedule>]
 
-
+A list of clusters associated with the schedule. A maximum of 100
+clusters is returned.
 
 
 =head2 NextInvocations => ArrayRef[Str|Undef]
@@ -38,7 +39,7 @@ Paws::RedShift::SnapshotSchedule
 
 =head2 ScheduleDefinitions => ArrayRef[Str|Undef]
 
-A list of ScheduleDefinitions
+A list of ScheduleDefinitions.
 
 
 =head2 ScheduleDescription => Str
