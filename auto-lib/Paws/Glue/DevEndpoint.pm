@@ -1,5 +1,6 @@
 package Paws::Glue::DevEndpoint;
   use Moose;
+  has Arguments => (is => 'ro', isa => 'Paws::Glue::MapValue');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has EndpointName => (is => 'ro', isa => 'Str');
@@ -40,14 +41,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::DevEndpoint object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., ZeppelinRemoteSparkInterpreterPort => $value  });
+  $service_obj->Method(Att1 => { Arguments => $value, ..., ZeppelinRemoteSparkInterpreterPort => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::DevEndpoint object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AvailabilityZone
+  $result->Att1->Arguments
 
 =head1 DESCRIPTION
 
@@ -55,6 +56,14 @@ A development endpoint where a developer can remotely debug ETL
 scripts.
 
 =head1 ATTRIBUTES
+
+
+=head2 Arguments => L<Paws::Glue::MapValue>
+
+  A map of arguments used to configure the DevEndpoint.
+
+Note that currently, we only support "--enable-glue-datacatalog": "" as
+a valid argument.
 
 
 =head2 AvailabilityZone => Str

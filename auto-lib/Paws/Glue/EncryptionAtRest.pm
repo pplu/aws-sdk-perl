@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Encry
 
 =head1 DESCRIPTION
 
-Specifies encryption-at-rest configuration for the Data Catalog.
+Specifies the encryption-at-rest configuration for the Data Catalog.
 
 =head1 ATTRIBUTES
 

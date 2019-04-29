@@ -11,6 +11,7 @@ package Paws::Glue::CreateCrawler;
   has Schedule => (is => 'ro', isa => 'Str');
   has SchemaChangePolicy => (is => 'ro', isa => 'Paws::Glue::SchemaChangePolicy');
   has TablePrefix => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
   has Targets => (is => 'ro', isa => 'Paws::Glue::CrawlerTargets', required => 1);
 
   use MooseX::ClassAttribute;
@@ -42,46 +43,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name         => 'MyNameString',
       Role         => 'MyRole',
       Targets      => {
-        DynamoDBTargets => [
-          {
-            Path => 'MyPath',    # OPTIONAL
-          },
-          ...
-        ],                       # OPTIONAL
+        DynamoDBTargets => [ { Path => 'MyPath', }, ... ],    # OPTIONAL
         JdbcTargets => [
           {
-            ConnectionName => 'MyConnectionName',    # OPTIONAL
-            Exclusions     => [
-              'MyPath', ...                          # OPTIONAL
-            ],                                       # OPTIONAL
-            Path => 'MyPath',                        # OPTIONAL
+            ConnectionName => 'MyConnectionName',             # OPTIONAL
+            Exclusions     => [ 'MyPath', ... ],              # OPTIONAL
+            Path           => 'MyPath',
           },
           ...
-        ],                                           # OPTIONAL
+        ],                                                    # OPTIONAL
         S3Targets => [
           {
-            Exclusions => [
-              'MyPath', ...                          # OPTIONAL
-            ],                                       # OPTIONAL
-            Path => 'MyPath',                        # OPTIONAL
+            Exclusions => [ 'MyPath', ... ],                  # OPTIONAL
+            Path => 'MyPath',
           },
           ...
-        ],                                           # OPTIONAL
+        ],                                                    # OPTIONAL
       },
       Classifiers => [
-        'MyNameString', ...                          # min: 1, max: 255
-      ],                                             # OPTIONAL
-      Configuration => 'MyCrawlerConfiguration',     # OPTIONAL
+        'MyNameString', ...                                   # min: 1, max: 255
+      ],                                                      # OPTIONAL
+      Configuration => 'MyCrawlerConfiguration',              # OPTIONAL
       CrawlerSecurityConfiguration =>
-        'MyCrawlerSecurityConfiguration',            # OPTIONAL
-      Description        => 'MyDescriptionString',   # OPTIONAL
-      Schedule           => 'MyCronExpression',      # OPTIONAL
+        'MyCrawlerSecurityConfiguration',                     # OPTIONAL
+      Description        => 'MyDescriptionString',            # OPTIONAL
+      Schedule           => 'MyCronExpression',               # OPTIONAL
       SchemaChangePolicy => {
         DeleteBehavior => 'LOG'
         ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL
         UpdateBehavior => 'LOG',    # values: LOG, UPDATE_IN_DATABASE; OPTIONAL
       },    # OPTIONAL
       TablePrefix => 'MyTablePrefix',    # OPTIONAL
+      Tags        => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -160,6 +155,16 @@ Policy for the crawler's update and deletion behavior.
 =head2 TablePrefix => Str
 
 The table prefix used for catalog tables that are created.
+
+
+
+=head2 Tags => L<Paws::Glue::TagsMap>
+
+The tags to use with this crawler request. You may use tags to limit
+access to the crawler. For more information about tags in AWS Glue, see
+AWS Tags in AWS Glue
+(http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in the
+developer guide.
 
 
 

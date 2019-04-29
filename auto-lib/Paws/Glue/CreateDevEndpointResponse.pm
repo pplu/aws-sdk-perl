@@ -1,6 +1,7 @@
 
 package Paws::Glue::CreateDevEndpointResponse;
   use Moose;
+  has Arguments => (is => 'ro', isa => 'Paws::Glue::MapValue');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has EndpointName => (is => 'ro', isa => 'Str');
@@ -26,6 +27,11 @@ package Paws::Glue::CreateDevEndpointResponse;
 Paws::Glue::CreateDevEndpointResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 Arguments => L<Paws::Glue::MapValue>
+
+The map of arguments used to configure this DevEndpoint.
 
 
 =head2 AvailabilityZone => Str

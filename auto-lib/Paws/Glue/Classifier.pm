@@ -1,5 +1,6 @@
 package Paws::Glue::Classifier;
   use Moose;
+  has CsvClassifier => (is => 'ro', isa => 'Paws::Glue::CsvClassifier');
   has GrokClassifier => (is => 'ro', isa => 'Paws::Glue::GrokClassifier');
   has JsonClassifier => (is => 'ro', isa => 'Paws::Glue::JsonClassifier');
   has XMLClassifier => (is => 'ro', isa => 'Paws::Glue::XMLClassifier');
@@ -22,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::Classifier object:
 
-  $service_obj->Method(Att1 => { GrokClassifier => $value, ..., XMLClassifier => $value  });
+  $service_obj->Method(Att1 => { CsvClassifier => $value, ..., XMLClassifier => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Classifier object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->GrokClassifier
+  $result->Att1->CsvClassifier
 
 =head1 DESCRIPTION
 
@@ -41,10 +42,16 @@ matches that data format.
 You can use the standard classifiers that AWS Glue supplies, or you can
 write your own classifiers to best categorize your data sources and
 specify the appropriate schemas to use for them. A classifier can be a
-C<grok> classifier, an C<XML> classifier, or a C<JSON> classifier, as
-specified in one of the fields in the C<Classifier> object.
+C<grok> classifier, an C<XML> classifier, a C<JSON> classifier, or a
+custom C<CSV> classifier as specified in one of the fields in the
+C<Classifier> object.
 
 =head1 ATTRIBUTES
+
+
+=head2 CsvClassifier => L<Paws::Glue::CsvClassifier>
+
+  A C<CSVClassifier> object.
 
 
 =head2 GrokClassifier => L<Paws::Glue::GrokClassifier>

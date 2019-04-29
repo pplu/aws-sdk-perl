@@ -40,9 +40,29 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::BatchDeleteTableVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchGetCrawlers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::BatchGetCrawlers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchGetDevEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::BatchGetDevEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchGetJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::BatchGetJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetPartition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::BatchGetPartition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchGetTriggers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::BatchGetTriggers', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub BatchStopJobRun {
@@ -320,6 +340,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetTableVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTrigger {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetTrigger', @_);
@@ -343,6 +368,26 @@ package Paws::Glue;
   sub ImportCatalogToGlue {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::ImportCatalogToGlue', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListCrawlers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::ListCrawlers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListDevEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::ListDevEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::ListJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTriggers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::ListTriggers', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutDataCatalogEncryptionSettings {
@@ -393,6 +438,16 @@ package Paws::Glue;
   sub StopTrigger {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::StopTrigger', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateClassifier {
@@ -775,7 +830,7 @@ package Paws::Glue;
   }
 
 
-  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetPartition BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteResourcePolicy DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetResourcePolicy GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue PutDataCatalogEncryptionSettings PutResourcePolicy ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
+  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetCrawlers BatchGetDevEndpoints BatchGetJobs BatchGetPartition BatchGetTriggers BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteResourcePolicy DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetResourcePolicy GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTags GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue ListCrawlers ListDevEndpoints ListJobs ListTriggers PutDataCatalogEncryptionSettings PutResourcePolicy ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger TagResource UntagResource UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
 
 1;
 
@@ -927,6 +982,66 @@ Returns: a L<Paws::Glue::BatchDeleteTableVersionResponse> instance
 Deletes a specified batch of versions of a table.
 
 
+=head2 BatchGetCrawlers
+
+=over
+
+=item CrawlerNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::BatchGetCrawlers>
+
+Returns: a L<Paws::Glue::BatchGetCrawlersResponse> instance
+
+Returns a list of resource metadata for a given list of crawler names.
+After calling the C<ListCrawlers> operation, you can call this
+operation to access the data to which you have been granted
+permissions. This operation supports all IAM permissions, including
+permission conditions that uses tags.
+
+
+=head2 BatchGetDevEndpoints
+
+=over
+
+=item DevEndpointNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::BatchGetDevEndpoints>
+
+Returns: a L<Paws::Glue::BatchGetDevEndpointsResponse> instance
+
+Returns a list of resource metadata for a given list of DevEndpoint
+names. After calling the C<ListDevEndpoints> operation, you can call
+this operation to access the data to which you have been granted
+permissions. This operation supports all IAM permissions, including
+permission conditions that uses tags.
+
+
+=head2 BatchGetJobs
+
+=over
+
+=item JobNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::BatchGetJobs>
+
+Returns: a L<Paws::Glue::BatchGetJobsResponse> instance
+
+Returns a list of resource metadata for a given list of job names.
+After calling the C<ListJobs> operation, you can call this operation to
+access the data to which you have been granted permissions. This
+operation supports all IAM permissions, including permission conditions
+that uses tags.
+
+
 =head2 BatchGetPartition
 
 =over
@@ -947,6 +1062,26 @@ Each argument is described in detail in: L<Paws::Glue::BatchGetPartition>
 Returns: a L<Paws::Glue::BatchGetPartitionResponse> instance
 
 Retrieves partitions in a batch request.
+
+
+=head2 BatchGetTriggers
+
+=over
+
+=item TriggerNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::BatchGetTriggers>
+
+Returns: a L<Paws::Glue::BatchGetTriggersResponse> instance
+
+Returns a list of resource metadata for a given list of trigger names.
+After calling the C<ListTriggers> operation, you can call this
+operation to access the data to which you have been granted
+permissions. This operation supports all IAM permissions, including
+permission conditions that uses tags.
 
 
 =head2 BatchStopJobRun
@@ -971,6 +1106,8 @@ Stops one or more job runs for a specified job definition.
 
 =over
 
+=item [CsvClassifier => L<Paws::Glue::CreateCsvClassifierRequest>]
+
 =item [GrokClassifier => L<Paws::Glue::CreateGrokClassifierRequest>]
 
 =item [JsonClassifier => L<Paws::Glue::CreateJsonClassifierRequest>]
@@ -985,8 +1122,8 @@ Each argument is described in detail in: L<Paws::Glue::CreateClassifier>
 Returns: a L<Paws::Glue::CreateClassifierResponse> instance
 
 Creates a classifier in the user's account. This may be a
-C<GrokClassifier>, an C<XMLClassifier>, or abbrev C<JsonClassifier>,
-depending on which field of the request is present.
+C<GrokClassifier>, an C<XMLClassifier>, a C<JsonClassifier>, or a
+C<CsvClassifier>, depending on which field of the request is present.
 
 
 =head2 CreateConnection
@@ -1033,6 +1170,8 @@ Creates a connection definition in the Data Catalog.
 
 =item [TablePrefix => Str]
 
+=item [Tags => L<Paws::Glue::TagsMap>]
+
 
 =back
 
@@ -1072,6 +1211,8 @@ Creates a new database in a Data Catalog.
 
 =item RoleArn => Str
 
+=item [Arguments => L<Paws::Glue::MapValue>]
+
 =item [ExtraJarsS3Path => Str]
 
 =item [ExtraPythonLibsS3Path => Str]
@@ -1087,6 +1228,8 @@ Creates a new database in a Data Catalog.
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
 
 =item [SubnetId => Str]
+
+=item [Tags => L<Paws::Glue::TagsMap>]
 
 
 =back
@@ -1126,9 +1269,15 @@ Creates a new DevEndpoint.
 
 =item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
 
+=item [NumberOfWorkers => Int]
+
 =item [SecurityConfiguration => Str]
 
+=item [Tags => L<Paws::Glue::TagsMap>]
+
 =item [Timeout => Int]
+
+=item [WorkerType => Str]
 
 
 =back
@@ -1237,6 +1386,8 @@ Creates a new table definition in the Data Catalog.
 =item [Schedule => Str]
 
 =item [StartOnCreation => Bool]
+
+=item [Tags => L<Paws::Glue::TagsMap>]
 
 
 =back
@@ -2098,6 +2249,22 @@ Retrieves a list of strings that identify available versions of a
 specified table.
 
 
+=head2 GetTags
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetTags>
+
+Returns: a L<Paws::Glue::GetTagsResponse> instance
+
+Retrieves a list of tags associated with a resource.
+
+
 =head2 GetTrigger
 
 =over
@@ -2194,6 +2361,116 @@ Returns: a L<Paws::Glue::ImportCatalogToGlueResponse> instance
 Imports an existing Athena Data Catalog to AWS Glue
 
 
+=head2 ListCrawlers
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Tags => L<Paws::Glue::TagsMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::ListCrawlers>
+
+Returns: a L<Paws::Glue::ListCrawlersResponse> instance
+
+Retrieves the names of all crawler resources in this AWS account, or
+the resources with the specified tag. This operation allows you to see
+which resources are available in your account, and their names.
+
+This operation takes the optional C<Tags> field which you can use as a
+filter on the response so that tagged resources can be retrieved as a
+group. If you choose to use tags filtering, only resources with the tag
+will be retrieved.
+
+
+=head2 ListDevEndpoints
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Tags => L<Paws::Glue::TagsMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::ListDevEndpoints>
+
+Returns: a L<Paws::Glue::ListDevEndpointsResponse> instance
+
+Retrieves the names of all DevEndpoint resources in this AWS account,
+or the resources with the specified tag. This operation allows you to
+see which resources are available in your account, and their names.
+
+This operation takes the optional C<Tags> field which you can use as a
+filter on the response so that tagged resources can be retrieved as a
+group. If you choose to use tags filtering, only resources with the tag
+will be retrieved.
+
+
+=head2 ListJobs
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Tags => L<Paws::Glue::TagsMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::ListJobs>
+
+Returns: a L<Paws::Glue::ListJobsResponse> instance
+
+Retrieves the names of all job resources in this AWS account, or the
+resources with the specified tag. This operation allows you to see
+which resources are available in your account, and their names.
+
+This operation takes the optional C<Tags> field which you can use as a
+filter on the response so that tagged resources can be retrieved as a
+group. If you choose to use tags filtering, only resources with the tag
+will be retrieved.
+
+
+=head2 ListTriggers
+
+=over
+
+=item [DependentJobName => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Tags => L<Paws::Glue::TagsMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::ListTriggers>
+
+Returns: a L<Paws::Glue::ListTriggersResponse> instance
+
+Retrieves the names of all trigger resources in this AWS account, or
+the resources with the specified tag. This operation allows you to see
+which resources are available in your account, and their names.
+
+This operation takes the optional C<Tags> field which you can use as a
+filter on the response so that tagged resources can be retrieved as a
+group. If you choose to use tags filtering, only resources with the tag
+will be retrieved.
+
+
 =head2 PutDataCatalogEncryptionSettings
 
 =over
@@ -2209,7 +2486,7 @@ Each argument is described in detail in: L<Paws::Glue::PutDataCatalogEncryptionS
 
 Returns: a L<Paws::Glue::PutDataCatalogEncryptionSettingsResponse> instance
 
-Sets the security configuration for a specified catalog. Once the
+Sets the security configuration for a specified catalog. After the
 configuration has been set, the specified encryption is applied to
 every catalog write thereafter.
 
@@ -2303,9 +2580,13 @@ C<SCHEDULED>.
 
 =item [NotificationProperty => L<Paws::Glue::NotificationProperty>]
 
+=item [NumberOfWorkers => Int]
+
 =item [SecurityConfiguration => Str]
 
 =item [Timeout => Int]
+
+=item [WorkerType => Str]
 
 
 =back
@@ -2384,9 +2665,50 @@ Returns: a L<Paws::Glue::StopTriggerResponse> instance
 Stops a specified trigger.
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagsToAdd => L<Paws::Glue::TagsMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::TagResource>
+
+Returns: a L<Paws::Glue::TagResourceResponse> instance
+
+Adds tags to a resource. A tag is a label you can assign to an AWS
+resource. In AWS Glue, you can tag only certain resources. For
+information about what resources you can tag, see AWS Tags in AWS Glue
+(http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html).
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagsToRemove => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::UntagResource>
+
+Returns: a L<Paws::Glue::UntagResourceResponse> instance
+
+Removes tags from a resource.
+
+
 =head2 UpdateClassifier
 
 =over
+
+=item [CsvClassifier => L<Paws::Glue::UpdateCsvClassifierRequest>]
 
 =item [GrokClassifier => L<Paws::Glue::UpdateGrokClassifierRequest>]
 
@@ -2401,8 +2723,9 @@ Each argument is described in detail in: L<Paws::Glue::UpdateClassifier>
 
 Returns: a L<Paws::Glue::UpdateClassifierResponse> instance
 
-Modifies an existing classifier (a C<GrokClassifier>, C<XMLClassifier>,
-or C<JsonClassifier>, depending on which field is present).
+Modifies an existing classifier (a C<GrokClassifier>, an
+C<XMLClassifier>, a C<JsonClassifier>, or a C<CsvClassifier>, depending
+on which field is present).
 
 
 =head2 UpdateConnection
@@ -2506,9 +2829,13 @@ Updates an existing database definition in a Data Catalog.
 
 =item EndpointName => Str
 
+=item [AddArguments => L<Paws::Glue::MapValue>]
+
 =item [AddPublicKeys => ArrayRef[Str|Undef]]
 
 =item [CustomLibraries => L<Paws::Glue::DevEndpointCustomLibraries>]
+
+=item [DeleteArguments => ArrayRef[Str|Undef]]
 
 =item [DeletePublicKeys => ArrayRef[Str|Undef]]
 

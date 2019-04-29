@@ -33,14 +33,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       JobUpdate => {
         AllocatedCapacity => 1,    # OPTIONAL
         Command           => {
-          Name           => 'MyGenericString',
+          Name           => 'MyGenericString',           # OPTIONAL
           ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
         },    # OPTIONAL
         Connections => {
-          Connections => [ 'MyGenericString', ... ],    # OPTIONAL
+          Connections => [
+            'MyGenericString', ...    # OPTIONAL
+          ],                          # OPTIONAL
         },    # OPTIONAL
-        DefaultArguments => { 'MyGenericString' => 'MyGenericString', }
-        ,     # OPTIONAL
+        DefaultArguments => {
+          'MyGenericString' =>
+            'MyGenericString',    # key: OPTIONAL, value: OPTIONAL
+        },    # OPTIONAL
         Description       => 'MyDescriptionString',    # max: 2048; OPTIONAL
         ExecutionProperty => {
           MaxConcurrentRuns => 1,                      # OPTIONAL
@@ -51,9 +55,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         NotificationProperty => {
           NotifyDelayAfter => 1,                  # min: 1; OPTIONAL
         },    # OPTIONAL
+        NumberOfWorkers       => 1,                 # OPTIONAL
         Role                  => 'MyRoleString',    # OPTIONAL
         SecurityConfiguration => 'MyNameString',    # min: 1, max: 255
         Timeout               => 1,                 # min: 1; OPTIONAL
+        WorkerType => 'Standard',    # values: Standard, G.1X, G.2X; OPTIONAL
       },
 
     );

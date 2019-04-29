@@ -42,7 +42,8 @@ Defines an action to be initiated by a trigger.
 
 =head2 Arguments => L<Paws::Glue::GenericMap>
 
-  Arguments to be passed to the job run.
+  The job arguments used when this trigger fires. For this job run, they
+replace the default arguments set in the job definition itself.
 
 You can specify arguments here that your own job-execution script
 consumes, as well as arguments that AWS Glue itself consumes.

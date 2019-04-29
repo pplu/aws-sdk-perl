@@ -7,6 +7,7 @@ package Paws::Glue::CreateTrigger;
   has Predicate => (is => 'ro', isa => 'Paws::Glue::Predicate');
   has Schedule => (is => 'ro', isa => 'Str');
   has StartOnCreation => (is => 'ro', isa => 'Bool');
+  has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -63,6 +64,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Schedule        => 'MyGenericString',    # OPTIONAL
       StartOnCreation => 1,                    # OPTIONAL
+      Tags            => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -118,6 +122,16 @@ This field is required when the trigger type is SCHEDULED.
 
 Set to true to start SCHEDULED and CONDITIONAL triggers when created.
 True not supported for ON_DEMAND triggers.
+
+
+
+=head2 Tags => L<Paws::Glue::TagsMap>
+
+The tags to use with this trigger. You may use tags to limit access to
+the trigger. For more information about tags in AWS Glue, see AWS Tags
+in AWS Glue
+(http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in the
+developer guide.
 
 
 

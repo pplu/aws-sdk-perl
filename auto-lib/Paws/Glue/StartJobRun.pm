@@ -7,8 +7,10 @@ package Paws::Glue::StartJobRun;
   has JobRunId => (is => 'ro', isa => 'Str');
   has MaxCapacity => (is => 'ro', isa => 'Num');
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
+  has NumberOfWorkers => (is => 'ro', isa => 'Int');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
+  has WorkerType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -43,8 +45,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NotificationProperty => {
         NotifyDelayAfter => 1,    # min: 1; OPTIONAL
       },    # OPTIONAL
+      NumberOfWorkers       => 1,                 # OPTIONAL
       SecurityConfiguration => 'MyNameString',    # OPTIONAL
       Timeout               => 1,                 # OPTIONAL
+      WorkerType            => 'Standard',        # OPTIONAL
     );
 
     # Results:
@@ -72,8 +76,8 @@ Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 =head2 Arguments => L<Paws::Glue::GenericMap>
 
-The job arguments specifically for this run. They override the
-equivalent default arguments set for in the job definition itself.
+The job arguments specifically for this run. For this job run, they
+replace the default arguments set in the job definition itself.
 
 You can specify arguments here that your own job-execution script
 consumes, as well as arguments that AWS Glue itself consumes.
@@ -104,16 +108,50 @@ The ID of a previous JobRun to retry.
 
 =head2 MaxCapacity => Num
 
-AWS Glue supports running jobs on a C<JobCommand.Name>="pythonshell"
-with allocated processing as low as 0.0625 DPU, which can be specified
-using C<MaxCapacity>. Glue ETL jobs running in any other way cannot
-have fractional DPU allocations.
+The number of AWS Glue data processing units (DPUs) that can be
+allocated when this job runs. A DPU is a relative measure of processing
+power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
+For more information, see the AWS Glue pricing page
+(https://aws.amazon.com/glue/pricing/).
+
+Do not set C<Max Capacity> if using C<WorkerType> and
+C<NumberOfWorkers>.
+
+The value that can be allocated for C<MaxCapacity> depends on whether
+you are running a python shell job, or an Apache Spark ETL job:
+
+=over
+
+=item *
+
+When you specify a python shell job (C<JobCommand.Name>="pythonshell"),
+you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
+
+=item *
+
+When you specify an Apache Spark ETL job
+(C<JobCommand.Name>="glueetl"), you can allocate from 2 to 100 DPUs.
+The default is 10 DPUs. This job type cannot have a fractional DPU
+allocation.
+
+=back
+
 
 
 
 =head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
 
 Specifies configuration properties of a job run notification.
+
+
+
+=head2 NumberOfWorkers => Int
+
+The number of workers of a defined C<workerType> that are allocated
+when a job runs.
+
+The maximum number of workers you can define are 299 for C<G.1X>, and
+149 for C<G.2X>.
 
 
 
@@ -132,6 +170,33 @@ status. The default is 2,880 minutes (48 hours). This overrides the
 timeout value set in the parent job.
 
 
+
+=head2 WorkerType => Str
+
+The type of predefined worker that is allocated when a job runs.
+Accepts a value of Standard, G.1X, or G.2X.
+
+=over
+
+=item *
+
+For the C<Standard> worker type, each worker provides 4 vCPU, 16 GB of
+memory and a 50GB disk, and 2 executors per worker.
+
+=item *
+
+For the C<G.1X> worker type, each worker provides 4 vCPU, 16 GB of
+memory and a 64GB disk, and 1 executor per worker.
+
+=item *
+
+For the C<G.2X> worker type, each worker provides 8 vCPU, 32 GB of
+memory and a 128GB disk, and 1 executor per worker.
+
+=back
+
+
+Valid values are: C<"Standard">, C<"G.1X">, C<"G.2X">
 
 
 =head1 SEE ALSO
