@@ -46,13 +46,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> MountTargetId => Str
 
-ID of the mount target whose security groups you want to modify.
+The ID of the mount target whose security groups you want to modify.
 
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-Array of up to five VPC security group IDs.
+An array of up to five VPC security group IDs.
 
 
 

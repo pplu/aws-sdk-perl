@@ -50,6 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ProvisionedThroughputInMibps =
       $FileSystemDescription->ProvisionedThroughputInMibps;
     my $SizeInBytes    = $FileSystemDescription->SizeInBytes;
+    my $Tags           = $FileSystemDescription->Tags;
     my $ThroughputMode = $FileSystemDescription->ThroughputMode;
 
     # Returns a L<Paws::EFS::FileSystemDescription> object.

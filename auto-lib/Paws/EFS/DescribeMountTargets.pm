@@ -66,7 +66,7 @@ continue the list from where the previous returning call left off.
 =head2 MaxItems => Int
 
 (Optional) Maximum number of mount targets to return in the response.
-It must be an integer with a value greater than zero.
+Currently, this number is automatically set to 10.
 
 
 

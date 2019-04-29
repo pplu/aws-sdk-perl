@@ -6,6 +6,7 @@ package Paws::EFS::CreateFileSystem;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has PerformanceMode => (is => 'ro', isa => 'Str');
   has ProvisionedThroughputInMibps => (is => 'ro', isa => 'Num');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EFS::Tag]');
   has ThroughputMode => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -61,7 +62,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> CreationToken => Str
 
-String of up to 64 ASCII characters. Amazon EFS uses this to ensure
+A string of up to 64 ASCII characters. Amazon EFS uses this to ensure
 idempotent creation.
 
 
@@ -69,7 +70,7 @@ idempotent creation.
 =head2 Encrypted => Bool
 
 A Boolean value that, if true, creates an encrypted file system. When
-creating an encrypted file system, you have the option of specifying a
+creating an encrypted file system, you have the option of specifying
 CreateFileSystemRequest$KmsKeyId for an existing AWS Key Management
 Service (AWS KMS) customer master key (CMK). If you don't specify a
 CMK, then the default CMK for Amazon EFS, C</aws/elasticfilesystem>, is
@@ -80,47 +81,47 @@ used to protect the encrypted file system.
 =head2 KmsKeyId => Str
 
 The ID of the AWS KMS CMK to be used to protect the encrypted file
-system. This parameter is only required if you want to use a
-non-default CMK. If this parameter is not specified, the default CMK
-for Amazon EFS is used. This ID can be in one of the following formats:
+system. This parameter is only required if you want to use a nondefault
+CMK. If this parameter is not specified, the default CMK for Amazon EFS
+is used. This ID can be in one of the following formats:
 
 =over
 
 =item *
 
-Key ID - A unique identifier of the key, for example,
+Key ID - A unique identifier of the key, for example
 C<1234abcd-12ab-34cd-56ef-1234567890ab>.
 
 =item *
 
-ARN - An Amazon Resource Name (ARN) for the key, for example,
+ARN - An Amazon Resource Name (ARN) for the key, for example
 C<arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>.
 
 =item *
 
-Key alias - A previously created display name for a key. For example,
+Key alias - A previously created display name for a key, for example
 C<alias/projectKey1>.
 
 =item *
 
-Key alias ARN - An ARN for a key alias, for example,
+Key alias ARN - An ARN for a key alias, for example
 C<arn:aws:kms:us-west-2:444455556666:alias/projectKey1>.
 
 =back
 
-If KmsKeyId is specified, the CreateFileSystemRequest$Encrypted
+If C<KmsKeyId> is specified, the CreateFileSystemRequest$Encrypted
 parameter must be set to true.
 
 
 
 =head2 PerformanceMode => Str
 
-The C<PerformanceMode> of the file system. We recommend
-C<generalPurpose> performance mode for most file systems. File systems
-using the C<maxIO> performance mode can scale to higher levels of
-aggregate throughput and operations per second with a tradeoff of
-slightly higher latencies for most file operations. This can't be
-changed after the file system has been created.
+The performance mode of the file system. We recommend C<generalPurpose>
+performance mode for most file systems. File systems using the C<maxIO>
+performance mode can scale to higher levels of aggregate throughput and
+operations per second with a tradeoff of slightly higher latencies for
+most file operations. The performance mode can't be changed after the
+file system has been created.
 
 Valid values are: C<"generalPurpose">, C<"maxIO">
 
@@ -130,8 +131,17 @@ The throughput, measured in MiB/s, that you want to provision for a
 file system that you're creating. The limit on throughput is 1024
 MiB/s. You can get these limits increased by contacting AWS Support.
 For more information, see Amazon EFS Limits That You Can Increase
-(http://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits) in
+(https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits) in
 the I<Amazon EFS User Guide.>
+
+
+
+=head2 Tags => ArrayRef[L<Paws::EFS::Tag>]
+
+A value that specifies to create one or more tags associated with the
+file system. Each tag is a user-defined key-value pair. Name your file
+system on creation by including a C<"Key":"Name","Value":"{value}">
+key-value pair.
 
 
 

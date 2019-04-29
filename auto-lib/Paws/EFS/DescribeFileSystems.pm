@@ -72,10 +72,8 @@ continue the list from where the returning call had left off.
 =head2 MaxItems => Int
 
 (Optional) Specifies the maximum number of file systems to return in
-the response (integer). This parameter value must be greater than 0.
-The number of items that Amazon EFS returns is the minimum of the
-C<MaxItems> parameter specified in the request and the service's
-internal maximum number of items per page.
+the response (integer). Currently, this number is automatically set to
+10.
 
 
 

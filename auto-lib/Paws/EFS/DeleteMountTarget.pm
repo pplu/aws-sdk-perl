@@ -41,7 +41,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> MountTargetId => Str
 
-ID of the mount target to delete (String).
+The ID of the mount target to delete (String).
 
 
 
