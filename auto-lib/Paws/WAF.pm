@@ -810,7 +810,7 @@ This guide is for developers who need detailed information about the
 AWS WAF API actions, data types, and errors. For detailed information
 about AWS WAF features and an overview of how to use the AWS WAF API,
 see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24>
 
@@ -867,7 +867,7 @@ and the value that you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateGeoMatchSet
@@ -919,7 +919,7 @@ you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateIPSet
@@ -972,7 +972,7 @@ want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRateBasedRule
@@ -1096,7 +1096,7 @@ more information, see CreateWebACL.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRegexMatchSet
@@ -1152,7 +1152,7 @@ WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRegexPatternSet
@@ -1203,7 +1203,7 @@ want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRule
@@ -1284,7 +1284,7 @@ information, see CreateWebACL.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRuleGroup
@@ -1329,7 +1329,7 @@ Ten rules per rule group.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateSizeConstraintSet
@@ -1383,7 +1383,7 @@ the URI) and the value that you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateSqlInjectionMatchSet
@@ -1435,7 +1435,7 @@ code.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateWebACL
@@ -1506,7 +1506,7 @@ associate the C<WebACL> with a CloudFront distribution.
 
 For more information about how to use the AWS WAF API, see the AWS WAF
 Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateXssMatchSet
@@ -1557,7 +1557,7 @@ scripting attacks.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 DeleteByteMatchSet
@@ -2174,7 +2174,7 @@ request to all AWS WAF servers.
 
 =item *
 
-C<IN_SYNC>: Propagation is complete.
+C<INSYNC>: Propagation is complete.
 
 =back
 
@@ -2745,6 +2745,10 @@ using the following steps:
 
 Create an Amazon Kinesis Data Firehose .
 
+Create the data firehose with a PUT source and in the region that you
+are operating. However, if you are capturing logs for Amazon
+CloudFront, always create the firehose in US East (N. Virginia).
+
 =item 2.
 
 Associate that firehose to your web ACL using a
@@ -2756,7 +2760,7 @@ When you successfully enable logging using a C<PutLoggingConfiguration>
 request, AWS WAF will create a service linked role with the necessary
 permissions to write logs to the Amazon Kinesis Data Firehose. For more
 information, see Logging Web ACL Traffic Information
-(http://docs.aws.amazon.com/waf/latest/developerguide/logging.html) in
+(https://docs.aws.amazon.com/waf/latest/developerguide/logging.html) in
 the I<AWS WAF Developer Guide>.
 
 
@@ -2906,7 +2910,7 @@ the URI) and the value that you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateGeoMatchSet
@@ -2975,7 +2979,7 @@ change a country, you delete the existing country and add the new one.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateIPSet
@@ -3019,8 +3023,8 @@ C<192.0.2.44/32> (for the individual IP address C<192.0.2.44>).
 =back
 
 AWS WAF supports IPv4 address ranges: /8 and any range between /16
-through /32. AWS WAF supports IPv6 address ranges: /16, /24, /32, /48,
-/56, /64, and /128. For more information about CIDR notation, see the
+through /32. AWS WAF supports IPv6 address ranges: /24, /32, /48, /56,
+/64, and /128. For more information about CIDR notation, see the
 Wikipedia entry Classless Inter-Domain Routing
 (https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
@@ -3082,7 +3086,7 @@ You can insert a maximum of 1000 addresses in a single request.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateRateBasedRule
@@ -3242,7 +3246,7 @@ regular expression patters you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateRegexPatternSet
@@ -3326,7 +3330,7 @@ expression pattern that you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateRule
@@ -3406,7 +3410,7 @@ you delete the existing one and add the new one.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateRuleGroup
@@ -3463,7 +3467,7 @@ existing one and add the new one.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateSizeConstraintSet
@@ -3554,7 +3558,7 @@ the URI) and the value that you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateSqlInjectionMatchSet
@@ -3632,7 +3636,7 @@ web requests that you want AWS WAF to inspect for snippets of SQL code.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateWebACL
@@ -3741,7 +3745,7 @@ default rule type) with the specified ID, which does not exist.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateXssMatchSet
@@ -3818,7 +3822,7 @@ attacks.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 
