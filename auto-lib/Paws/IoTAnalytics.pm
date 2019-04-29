@@ -436,6 +436,8 @@ pipeline.
 
 =item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
 
+=item [VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>]
+
 
 =back
 
@@ -507,7 +509,9 @@ Returns: a L<Paws::IoTAnalytics::CreatePipelineResponse> instance
 
 Creates a pipeline. A pipeline consumes messages from one or more
 channels and allows you to process the messages before storing them in
-a data store.
+a data store. You must specify both a C<channel> and a C<datastore>
+activity and, optionally, as many as 23 additional activities in the
+C<pipelineActivities> array.
 
 
 =head2 DeleteChannel
@@ -961,6 +965,8 @@ Updates the settings of a channel.
 
 =item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
 
+=item [VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>]
+
 
 =back
 
@@ -1004,7 +1010,9 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::UpdatePipeline>
 
 Returns: nothing
 
-Updates the settings of a pipeline.
+Updates the settings of a pipeline. You must specify both a C<channel>
+and a C<datastore> activity and, optionally, as many as 23 additional
+activities in the C<pipelineActivities> array.
 
 
 
