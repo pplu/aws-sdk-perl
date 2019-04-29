@@ -59,7 +59,7 @@ to this property causes the resource to be recreated. The value can be
 C<Never>, C<Always>, or C<Conditionally>. To determine the conditions
 for a C<Conditionally> recreation, see the update behavior for that
 property
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 in the AWS CloudFormation User Guide.
 
 

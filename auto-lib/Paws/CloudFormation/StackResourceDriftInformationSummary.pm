@@ -69,12 +69,12 @@ differs from its expected configuration.
 Any resources that do not currently support drift detection have a
 status of C<NOT_CHECKED>. For more information, see Resources that
 Support Drift Detection
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
 If you performed an ContinueUpdateRollback operation on a stack, any
 resources included in C<ResourcesToSkip> will also have a status of
 C<NOT_CHECKED>. For more information on skipping resources during
 rollback operations, see Continue Rolling Back an Update
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html)
 in the AWS CloudFormation User Guide.
 
 =item *

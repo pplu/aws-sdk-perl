@@ -55,7 +55,7 @@ value that is specified in your template.
 
   Read-only. The value that corresponds to a Systems Manager parameter
 key. This field is returned only for C<SSM> parameter types
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types)
 in the template.
 
 

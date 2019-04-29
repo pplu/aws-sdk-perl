@@ -46,7 +46,7 @@ in which AWS CloudFormation has detected drift. Only resource
 properties explicitly defined in the stack template are checked for
 drift. For more information, see Detecting Unregulated Configuration
 Changes to Stacks and Resources
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 
 Resources that do not currently support drift detection cannot be
 checked. For a list of resources that support drift detection, see

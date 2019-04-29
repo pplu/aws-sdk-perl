@@ -37,7 +37,7 @@ yet been checked for drift are not included. Resources that do not
 currently support drift detection are not checked, and so not included.
 For a list of resources that support drift detection, see Resources
 that Support Drift Detection
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
 
 
 =head2 _request_id => Str

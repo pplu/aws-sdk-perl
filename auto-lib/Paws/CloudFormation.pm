@@ -240,6 +240,52 @@ package Paws::CloudFormation;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAccountLimits {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAccountLimits(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAccountLimits(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AccountLimits }, @{ $next_result->AccountLimits };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AccountLimits') foreach (@{ $result->AccountLimits });
+        $result = $self->DescribeAccountLimits(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AccountLimits') foreach (@{ $result->AccountLimits });
+    }
+
+    return undef
+  }
+  sub DescribeAllChangeSet {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeChangeSet(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeChangeSet(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Changes }, @{ $next_result->Changes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Changes') foreach (@{ $result->Changes });
+        $result = $self->DescribeChangeSet(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Changes') foreach (@{ $result->Changes });
+    }
+
+    return undef
+  }
   sub DescribeAllStackEvents {
     my $self = shift;
 
@@ -282,6 +328,29 @@ package Paws::CloudFormation;
         $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Stacks') foreach (@{ $result->Stacks });
+    }
+
+    return undef
+  }
+  sub ListAllChangeSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListChangeSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListChangeSets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Summaries }, @{ $next_result->Summaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+        $result = $self->ListChangeSets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
     }
 
     return undef
@@ -332,6 +401,29 @@ package Paws::CloudFormation;
 
     return undef
   }
+  sub ListAllStackInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStackInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListStackInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Summaries }, @{ $next_result->Summaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+        $result = $self->ListStackInstances(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+    }
+
+    return undef
+  }
   sub ListAllStackResources {
     my $self = shift;
 
@@ -374,6 +466,75 @@ package Paws::CloudFormation;
         $result = $self->ListStacks(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'StackSummaries') foreach (@{ $result->StackSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllStackSetOperationResults {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStackSetOperationResults(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListStackSetOperationResults(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Summaries }, @{ $next_result->Summaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+        $result = $self->ListStackSetOperationResults(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+    }
+
+    return undef
+  }
+  sub ListAllStackSetOperations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStackSetOperations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListStackSetOperations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Summaries }, @{ $next_result->Summaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+        $result = $self->ListStackSetOperations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+    }
+
+    return undef
+  }
+  sub ListAllStackSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStackSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListStackSets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Summaries }, @{ $next_result->Summaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
+        $result = $self->ListStackSets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Summaries') foreach (@{ $result->Summaries });
     }
 
     return undef
@@ -430,7 +591,7 @@ CloudFormation Product Page (http://aws.amazon.com/cloudformation/).
 Amazon CloudFormation makes use of other AWS products. If you need
 additional technical information about a specific AWS product, you can
 find the product's technical documentation at docs.aws.amazon.com
-(http://docs.aws.amazon.com/).
+(https://docs.aws.amazon.com/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15>
 
@@ -481,7 +642,7 @@ Returns: a L<Paws::CloudFormation::ContinueUpdateRollbackOutput> instance
 For a specified stack that is in the C<UPDATE_ROLLBACK_FAILED> state,
 continues rolling it back to the C<UPDATE_ROLLBACK_COMPLETE> state.
 Depending on the cause of the failure, you can manually fix the error
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed)
 and continue the rollback. By continuing the rollback, you can return
 your stack to a working state (the C<UPDATE_ROLLBACK_COMPLETE> state),
 and then try to update the stack again.
@@ -778,7 +939,10 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeAccount
 Returns: a L<Paws::CloudFormation::DescribeAccountLimitsOutput> instance
 
 Retrieves your account's AWS CloudFormation limits, such as the maximum
-number of stacks that you can create in your account.
+number of stacks that you can create in your account. For more
+information about account limits, see AWS CloudFormation Limits
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html)
+in the I<AWS CloudFormation User Guide>.
 
 
 =head2 DescribeChangeSet
@@ -801,7 +965,7 @@ Returns: a L<Paws::CloudFormation::DescribeChangeSetOutput> instance
 Returns the inputs for the change set and a list of changes that AWS
 CloudFormation will make if you execute the change set. For more
 information, see Updating Stacks Using Change Sets
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
 in the AWS CloudFormation User Guide.
 
 
@@ -826,7 +990,7 @@ specified as template parameters. A stack is considered to have drifted
 if one or more of its resources have drifted. For more information on
 stack and resource drift, see Detecting Unregulated Configuration
 Changes to Stacks and Resources
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 
 Use DetectStackDrift to initiate a stack drift detection operation.
 C<DetectStackDrift> returns a C<StackDriftDetectionId> you can use to
@@ -854,7 +1018,7 @@ Returns: a L<Paws::CloudFormation::DescribeStackEventsOutput> instance
 Returns all stack related events for a specified stack in reverse
 chronological order. For more information about a stack's event
 history, go to Stacks
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html)
 in the AWS CloudFormation User Guide.
 
 You can list events for stacks that have failed to create or have been
@@ -936,7 +1100,7 @@ yet been checked for drift are not included. Resources that do not
 currently support drift detection are not checked, and so not included.
 For a list of resources that support drift detection, see Resources
 that Support Drift Detection
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
 
 Use DetectStackResourceDrift to detect drift on individual resources,
 or DetectStackDrift to detect drift on all supported resources for a
@@ -977,7 +1141,7 @@ both. In addition, you can specify C<LogicalResourceId> to filter the
 returned result. For more information about resources, the
 C<LogicalResourceId> and C<PhysicalResourceId>, go to the AWS
 CloudFormation User Guide
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
 
 A C<ValidationError> is returned if you specify both C<StackName> and
 C<PhysicalResourceId> in the same request.
@@ -1064,7 +1228,7 @@ the stack template are checked for drift. A stack is considered to have
 drifted if one or more of its resources differ from their expected
 template configurations. For more information, see Detecting
 Unregulated Configuration Changes to Stacks and Resources
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 
 Use C<DetectStackDrift> to detect drift on all supported resources for
 a given stack, or DetectStackResourceDrift to detect drift on
@@ -1072,7 +1236,7 @@ individual resources.
 
 For a list of stack resources that currently support drift detection,
 see Resources that Support Drift Detection
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
 
 C<DetectStackDrift> can take up to several minutes, depending on the
 number of resources contained within the stack. Use
@@ -1109,7 +1273,7 @@ values for resources in which AWS CloudFormation detects drift. Only
 resource properties explicitly defined in the stack template are
 checked for drift. For more information about stack and resource drift,
 see Detecting Unregulated Configuration Changes to Stacks and Resources
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 
 Use C<DetectStackResourceDrift> to detect drift on individual
 resources, or DetectStackDrift to detect drift on all resources in a
@@ -1118,7 +1282,7 @@ given stack that support drift detection.
 Resources that do not currently support drift detection cannot be
 checked. For a list of resources that support drift detection, see
 Resources that Support Drift Detection
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
 
 
 =head2 EstimateTemplateCost
@@ -1287,11 +1451,11 @@ Lists all exported output values in the account and region in which you
 call this action. Use this action to see the exported output values
 that you can import into other stacks. To import values, use the
 C<Fn::ImportValue>
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
 function.
 
 For more information, see AWS CloudFormation Export Stack Output Values
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html).
 
 
 =head2 ListImports
@@ -1316,7 +1480,7 @@ see ListExports.
 
 For more information about importing an exported output value, see the
 C<Fn::ImportValue>
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
 function.
 
 
@@ -1571,7 +1735,7 @@ GetTemplate action.
 
 For more information about creating an update template, updating a
 stack, and monitoring the progress of the update, see Updating a Stack
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html).
 
 
 =head2 UpdateStackInstances
@@ -1604,18 +1768,18 @@ stack in a specific account and region.
 You can only update stack instances in regions and accounts where they
 already exist; to create additional stack instances, use
 CreateStackInstances
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html).
 
 During stack set updates, any parameters overridden for a stack
 instance are not updated, but retain their overridden value.
 
 You can only update the parameter I<values> that are specified in the
 stack set; to add or delete a parameter itself, use UpdateStackSet
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
 to update the stack set template. If you add a parameter to a template,
 before you can override the parameter value specified in the stack set
 you must first use UpdateStackSet
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
 to update all stack instances with the updated template and parameter
 value specified in the stack set. Once a stack instance has been
 updated with the new parameter, you can then override the parameter
@@ -1723,6 +1887,30 @@ returns a template validation error.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllAccountLimits(sub { },[NextToken => Str])
+
+=head2 DescribeAllAccountLimits([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AccountLimits, passing the object as the first parameter, and the string 'AccountLimits' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::DescribeAccountLimitsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllChangeSet(sub { },ChangeSetName => Str, [NextToken => Str, StackName => Str])
+
+=head2 DescribeAllChangeSet(ChangeSetName => Str, [NextToken => Str, StackName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Changes, passing the object as the first parameter, and the string 'Changes' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::DescribeChangeSetOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllStackEvents(sub { },[NextToken => Str, StackName => Str])
 
 =head2 DescribeAllStackEvents([NextToken => Str, StackName => Str])
@@ -1745,6 +1933,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Stacks, passing the object as the first parameter, and the string 'Stacks' as the second parameter 
 
 If not, it will return a a L<Paws::CloudFormation::DescribeStacksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllChangeSets(sub { },StackName => Str, [NextToken => Str])
+
+=head2 ListAllChangeSets(StackName => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Summaries, passing the object as the first parameter, and the string 'Summaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListChangeSetsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllExports(sub { },[NextToken => Str])
@@ -1771,6 +1971,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudFormation::ListImportsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllStackInstances(sub { },StackSetName => Str, [MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
+
+=head2 ListAllStackInstances(StackSetName => Str, [MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Summaries, passing the object as the first parameter, and the string 'Summaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListStackInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllStackResources(sub { },StackName => Str, [NextToken => Str])
 
 =head2 ListAllStackResources(StackName => Str, [NextToken => Str])
@@ -1793,6 +2005,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - StackSummaries, passing the object as the first parameter, and the string 'StackSummaries' as the second parameter 
 
 If not, it will return a a L<Paws::CloudFormation::ListStacksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStackSetOperationResults(sub { },OperationId => Str, StackSetName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllStackSetOperationResults(OperationId => Str, StackSetName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Summaries, passing the object as the first parameter, and the string 'Summaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListStackSetOperationResultsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStackSetOperations(sub { },StackSetName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllStackSetOperations(StackSetName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Summaries, passing the object as the first parameter, and the string 'Summaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListStackSetOperationsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStackSets(sub { },[MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllStackSets([MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Summaries, passing the object as the first parameter, and the string 'Summaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListStackSetsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 
