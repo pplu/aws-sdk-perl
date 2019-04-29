@@ -2518,6 +2518,8 @@ Updates the specified product.
 
 =item [ProvisioningPreferences => L<Paws::ServiceCatalog::UpdateProvisioningPreferences>]
 
+=item [Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]]
+
 
 =back
 
