@@ -34,8 +34,7 @@ Date on which the identity was last modified.
 
 =head2 Logins => ArrayRef[Str|Undef]
 
-A set of optional name-value pairs that map provider names to provider
-tokens.
+The provider names.
 
 
 =head2 _request_id => Str

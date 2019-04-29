@@ -5,6 +5,7 @@ package Paws::CognitoIdentity::CreateIdentityPool;
   has CognitoIdentityProviders => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::CognitoIdentityProvider]');
   has DeveloperProviderName => (is => 'ro', isa => 'Str');
   has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
+  has IdentityPoolTags => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityPoolTagsType');
   has OpenIdConnectProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SamlProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedLoginProviders => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityProviders');
@@ -46,7 +47,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                            # OPTIONAL
-      DeveloperProviderName     => 'MyDeveloperProviderName',    # OPTIONAL
+      DeveloperProviderName => 'MyDeveloperProviderName',    # OPTIONAL
+      IdentityPoolTags      => {
+        'MyTagKeysType' =>
+          'MyTagValueType',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
       OpenIdConnectProviderARNs => [
         'MyARNString', ...    # min: 20, max: 2048
       ],                      # OPTIONAL
@@ -66,6 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeveloperProviderName     = $IdentityPool->DeveloperProviderName;
     my $IdentityPoolId            = $IdentityPool->IdentityPoolId;
     my $IdentityPoolName          = $IdentityPool->IdentityPoolName;
+    my $IdentityPoolTags          = $IdentityPool->IdentityPoolTags;
     my $OpenIdConnectProviderARNs = $IdentityPool->OpenIdConnectProviderARNs;
     my $SamlProviderARNs          = $IdentityPool->SamlProviderARNs;
     my $SupportedLoginProviders   = $IdentityPool->SupportedLoginProviders;
@@ -86,7 +92,7 @@ TRUE if the identity pool supports unauthenticated logins.
 
 =head2 CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]
 
-An array of Amazon Cognito Identity user pools and their client IDs.
+An array of Amazon Cognito user pools and their client IDs.
 
 
 
@@ -106,6 +112,14 @@ Please take care in setting this parameter.
 =head2 B<REQUIRED> IdentityPoolName => Str
 
 A string that you provide.
+
+
+
+=head2 IdentityPoolTags => L<Paws::CognitoIdentity::IdentityPoolTagsType>
+
+Tags to assign to the identity pool. A tag is a label that you can
+apply to identity pools to categorize and manage them in different
+ways, such as by purpose, owner, environment, or other criteria.
 
 
 

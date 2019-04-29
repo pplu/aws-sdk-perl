@@ -75,6 +75,11 @@ package Paws::CognitoIdentity;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::ListIdentityPools', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub LookupDeveloperIdentity {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::LookupDeveloperIdentity', @_);
@@ -90,6 +95,11 @@ package Paws::CognitoIdentity;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::SetIdentityPoolRoles', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UnlinkDeveloperIdentity {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::UnlinkDeveloperIdentity', @_);
@@ -98,6 +108,11 @@ package Paws::CognitoIdentity;
   sub UnlinkIdentity {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::UnlinkIdentity', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateIdentityPool {
@@ -131,7 +146,7 @@ package Paws::CognitoIdentity;
   }
 
 
-  sub operations { qw/CreateIdentityPool DeleteIdentities DeleteIdentityPool DescribeIdentity DescribeIdentityPool GetCredentialsForIdentity GetId GetIdentityPoolRoles GetOpenIdToken GetOpenIdTokenForDeveloperIdentity ListIdentities ListIdentityPools LookupDeveloperIdentity MergeDeveloperIdentities SetIdentityPoolRoles UnlinkDeveloperIdentity UnlinkIdentity UpdateIdentityPool / }
+  sub operations { qw/CreateIdentityPool DeleteIdentities DeleteIdentityPool DescribeIdentity DescribeIdentityPool GetCredentialsForIdentity GetId GetIdentityPoolRoles GetOpenIdToken GetOpenIdTokenForDeveloperIdentity ListIdentities ListIdentityPools ListTagsForResource LookupDeveloperIdentity MergeDeveloperIdentities SetIdentityPoolRoles TagResource UnlinkDeveloperIdentity UnlinkIdentity UntagResource UpdateIdentityPool / }
 
 1;
 
@@ -159,44 +174,27 @@ Paws::CognitoIdentity - Perl Interface to AWS Amazon Cognito Identity
 
 =head1 DESCRIPTION
 
-Amazon Cognito
+Amazon Cognito Federated Identities
 
-Amazon Cognito is a web service that delivers scoped temporary
-credentials to mobile devices and other untrusted environments. Amazon
-Cognito uniquely identifies a device and supplies the user with a
-consistent identity over the lifetime of an application.
+Amazon Cognito Federated Identities is a web service that delivers
+scoped temporary credentials to mobile devices and other untrusted
+environments. It uniquely identifies a device and supplies the user
+with a consistent identity over the lifetime of an application.
 
-Using Amazon Cognito, you can enable authentication with one or more
-third-party identity providers (Facebook, Google, or Login with
-Amazon), and you can also choose to support unauthenticated access from
+Using Amazon Cognito Federated Identities, you can enable
+authentication with one or more third-party identity providers
+(Facebook, Google, or Login with Amazon) or an Amazon Cognito user
+pool, and you can also choose to support unauthenticated access from
 your app. Cognito delivers a unique identifier for each user and acts
 as an OpenID token provider trusted by AWS Security Token Service (STS)
 to access temporary, limited-privilege AWS credentials.
 
-To provide end-user credentials, first make an unsigned call to GetId.
-If the end user is authenticated with one of the supported identity
-providers, set the C<Logins> map with the identity provider token.
-C<GetId> returns a unique identifier for the user.
+For a description of the authentication flow from the Amazon Cognito
+Developer Guide see Authentication Flow
+(https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html).
 
-Next, make an unsigned call to GetCredentialsForIdentity. This call
-expects the same C<Logins> map as the C<GetId> call, as well as the
-C<IdentityID> originally returned by C<GetId>. Assuming your identity
-pool has been configured via the SetIdentityPoolRoles operation,
-C<GetCredentialsForIdentity> will return AWS credentials for your use.
-If your pool has not been configured with C<SetIdentityPoolRoles>, or
-if you want to follow legacy flow, make an unsigned call to
-GetOpenIdToken, which returns the OpenID token necessary to call STS
-and retrieve AWS credentials. This call expects the same C<Logins> map
-as the C<GetId> call, as well as the C<IdentityID> originally returned
-by C<GetId>. The token returned by C<GetOpenIdToken> can be passed to
-the STS operation AssumeRoleWithWebIdentity
-(http://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html)
-to retrieve AWS credentials.
-
-If you want to use Amazon Cognito in an Android, iOS, or Unity
-application, you will probably want to make API calls via the AWS
-Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide
-(http://docs.aws.amazon.com/mobile/index.html).
+For more information see Amazon Cognito Federated Identities
+(https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/cognito/>
 
@@ -214,6 +212,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/cognito/>
 =item [CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]]
 
 =item [DeveloperProviderName => Str]
+
+=item [IdentityPoolTags => L<Paws::CognitoIdentity::IdentityPoolTagsType>]
 
 =item [OpenIdConnectProviderARNs => ArrayRef[Str|Undef]]
 
@@ -292,8 +292,8 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::DeleteIdentity
 
 Returns: nothing
 
-Deletes a user pool. Once a pool is deleted, users will not be able to
-authenticate with the pool.
+Deletes an identity pool. Once a pool is deleted, users will not be
+able to authenticate with the pool.
 
 You must use AWS Developer credentials to call this API.
 
@@ -421,7 +421,7 @@ Gets an OpenID token, using a known Cognito ID. This known Cognito ID
 is returned by GetId. You can optionally add additional logins for the
 identity. Supplying multiple logins creates an implicit link.
 
-The OpenId token is valid for 15 minutes.
+The OpenId token is valid for 10 minutes.
 
 This is a public API. You do not need any credentials to call this API.
 
@@ -483,7 +483,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::ListIdentities
 
 Returns: a L<Paws::CognitoIdentity::ListIdentitiesResponse> instance
 
-Lists the identities in a pool.
+Lists the identities in an identity pool.
 
 You must use AWS Developer credentials to call this API.
 
@@ -508,6 +508,28 @@ Lists all of the Cognito identity pools registered for your account.
 You must use AWS Developer credentials to call this API.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CognitoIdentity::ListTagsForResource>
+
+Returns: a L<Paws::CognitoIdentity::ListTagsForResourceResponse> instance
+
+Lists the tags that are assigned to an Amazon Cognito identity pool.
+
+A tag is a label that you can apply to identity pools to categorize and
+manage them in different ways, such as by purpose, owner, environment,
+or other criteria.
+
+You can use this action up to 10 times per second, per account.
+
+
 =head2 LookupDeveloperIdentity
 
 =over
@@ -530,15 +552,22 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::LookupDevelope
 Returns: a L<Paws::CognitoIdentity::LookupDeveloperIdentityResponse> instance
 
 Retrieves the C<IdentityID> associated with a
-C<DeveloperUserIdentifier> or the list of C<DeveloperUserIdentifier>s
-associated with an C<IdentityId> for an existing identity. Either
-C<IdentityID> or C<DeveloperUserIdentifier> must not be null. If you
-supply only one of these values, the other value will be searched in
-the database and returned as a part of the response. If you supply
+C<DeveloperUserIdentifier> or the list of C<DeveloperUserIdentifier>
+values associated with an C<IdentityId> for an existing identity.
+Either C<IdentityID> or C<DeveloperUserIdentifier> must not be null. If
+you supply only one of these values, the other value will be searched
+in the database and returned as a part of the response. If you supply
 both, C<DeveloperUserIdentifier> will be matched against C<IdentityID>.
 If the values are verified against the database, the response returns
 both values and is the same as the request. Otherwise a
 C<ResourceConflictException> is thrown.
+
+C<LookupDeveloperIdentity> is intended for low-throughput control plane
+operations: for example, to enable customer service to locate an
+identity ID by username. If you are using it for higher-volume
+operations such as user authentication, your requests are likely to be
+throttled. GetOpenIdTokenForDeveloperIdentity is a better option for
+higher-volume operations for user authentication.
 
 You must use AWS Developer credentials to call this API.
 
@@ -572,6 +601,11 @@ can be merged. If the users to be merged are associated with the same
 public provider, but as two different users, an exception will be
 thrown.
 
+The number of linked logins is limited to 20. So, the number of linked
+logins for the source user, C<SourceUserIdentifier>, and the
+destination user, C<DestinationUserIdentifier>, together should not be
+larger than 20. Otherwise, an exception will be thrown.
+
 You must use AWS Developer credentials to call this API.
 
 
@@ -596,6 +630,43 @@ Sets the roles for an identity pool. These roles are used when making
 calls to GetCredentialsForIdentity action.
 
 You must use AWS Developer credentials to call this API.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [Tags => L<Paws::CognitoIdentity::IdentityPoolTagsType>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CognitoIdentity::TagResource>
+
+Returns: a L<Paws::CognitoIdentity::TagResourceResponse> instance
+
+Assigns a set of tags to an Amazon Cognito identity pool. A tag is a
+label that you can use to categorize and manage identity pools in
+different ways, such as by purpose, owner, environment, or other
+criteria.
+
+Each tag consists of a key and value, both of which you define. A key
+is a general category for more specific values. For example, if you
+have two versions of an identity pool, one for testing and another for
+production, you might assign an C<Environment> tag key to both identity
+pools. The value of this key might be C<Test> for one identity pool and
+C<Production> for the other.
+
+Tags are useful for cost tracking and access control. You can activate
+your tags so that they appear on the Billing and Cost Management
+console, where you can track the costs associated with your identity
+pools. In an IAM policy, you can constrain permissions for identity
+pools based on specific tags or tag values.
+
+You can use this action up to 5 times per second, per account. An
+identity pool can have as many as 50 tags.
 
 
 =head2 UnlinkDeveloperIdentity
@@ -650,6 +721,25 @@ last linked login will make this identity inaccessible.
 This is a public API. You do not need any credentials to call this API.
 
 
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CognitoIdentity::UntagResource>
+
+Returns: a L<Paws::CognitoIdentity::UntagResourceResponse> instance
+
+Removes the specified tags from an Amazon Cognito identity pool. You
+can use this action up to 5 times per second, per account
+
+
 =head2 UpdateIdentityPool
 
 =over
@@ -664,6 +754,8 @@ This is a public API. You do not need any credentials to call this API.
 
 =item [DeveloperProviderName => Str]
 
+=item [IdentityPoolTags => L<Paws::CognitoIdentity::IdentityPoolTagsType>]
+
 =item [OpenIdConnectProviderARNs => ArrayRef[Str|Undef]]
 
 =item [SamlProviderARNs => ArrayRef[Str|Undef]]
@@ -677,7 +769,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::UpdateIdentity
 
 Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
 
-Updates a user pool.
+Updates an identity pool.
 
 You must use AWS Developer credentials to call this API.
 

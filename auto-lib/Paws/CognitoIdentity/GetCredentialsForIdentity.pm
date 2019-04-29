@@ -69,7 +69,17 @@ A unique identifier in the format REGION:GUID.
 =head2 Logins => L<Paws::CognitoIdentity::LoginsMap>
 
 A set of optional name-value pairs that map provider names to provider
-tokens.
+tokens. The name-value pair will follow the syntax "provider_name":
+"provider_user_identifier".
+
+Logins should not be specified when trying to get credentials for an
+unauthenticated identity.
+
+The Logins parameter is required when using identities associated with
+external identity providers such as FaceBook. For examples of C<Logins>
+maps, see the code examples in the External Identity Providers
+(http://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html)
+section of the Amazon Cognito Developer Guide.
 
 
 
