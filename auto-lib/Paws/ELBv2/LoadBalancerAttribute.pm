@@ -48,18 +48,6 @@ Balancers and Network Load Balancers:
 
 =item *
 
-C<deletion_protection.enabled> - Indicates whether deletion protection
-is enabled. The value is C<true> or C<false>. The default is C<false>.
-
-=back
-
-The following attributes are supported by only Application Load
-Balancers:
-
-=over
-
-=item *
-
 C<access_logs.s3.enabled> - Indicates whether access logs are enabled.
 The value is C<true> or C<false>. The default is C<false>.
 
@@ -75,6 +63,18 @@ bucket.
 
 C<access_logs.s3.prefix> - The prefix for the location in the S3 bucket
 for the access logs.
+
+=item *
+
+C<deletion_protection.enabled> - Indicates whether deletion protection
+is enabled. The value is C<true> or C<false>. The default is C<false>.
+
+=back
+
+The following attributes are supported by only Application Load
+Balancers:
+
+=over
 
 =item *
 

@@ -405,7 +405,7 @@ A Classic Load Balancer makes routing and load balancing decisions
 either at the transport layer (TCP/SSL) or the application layer
 (HTTP/HTTPS), and supports either EC2-Classic or a VPC. For more
 information, see the Elastic Load Balancing User Guide
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
 
 This reference covers the 2015-12-01 API, which supports Application
 Load Balancers and Network Load Balancers. The 2012-06-01 API supports
@@ -546,10 +546,10 @@ time. If you attempt to create multiple listeners with the same
 settings, each call succeeds.
 
 For more information, see Listeners for Your Application Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
 in the I<Application Load Balancers Guide> and Listeners for Your
 Network Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
 in the I<Network Load Balancers Guide>.
 
 
@@ -593,10 +593,10 @@ you are finished with a load balancer, you can delete it using
 DeleteLoadBalancer.
 
 For limit information, see Limits for Your Application Load Balancer
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
 in the I<Application Load Balancers Guide> and Limits for Your Network
 Load Balancer
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
 in the I<Network Load Balancers Guide>.
 
 This operation is idempotent, which means that it completes at most one
@@ -604,9 +604,9 @@ time. If you attempt to create multiple load balancers with the same
 settings, each call succeeds.
 
 For more information, see Application Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
 in the I<Application Load Balancers Guide> and Network Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html)
 in the I<Network Load Balancers Guide>.
 
 
@@ -636,7 +636,7 @@ Rules are evaluated in priority order, from the lowest value to the
 highest value. When the conditions for a rule are met, its actions are
 performed. If the conditions for no rules are met, the actions for the
 default rule are performed. For more information, see Listener Rules
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
 in the I<Application Load Balancers Guide>.
 
 To view your current rules, use DescribeRules. To update a rule, use
@@ -701,10 +701,10 @@ settings, each call succeeds.
 
 For more information, see Target Groups for Your Application Load
 Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
 in the I<Application Load Balancers Guide> or Target Groups for Your
 Network Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html)
 in the I<Network Load Balancers Guide>.
 
 
@@ -827,10 +827,10 @@ Describes the current Elastic Load Balancing resource limits for your
 AWS account.
 
 For more information, see Limits for Your Application Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
 in the I<Application Load Balancer Guide> or Limits for Your Network
 Load Balancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
 in the I<Network Load Balancers Guide>.
 
 
@@ -895,9 +895,9 @@ Describes the attributes for the specified Application Load Balancer or
 Network Load Balancer.
 
 For more information, see Load Balancer Attributes
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes)
 in the I<Application Load Balancers Guide> or Load Balancer Attributes
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes)
 in the I<Network Load Balancers Guide>.
 
 
@@ -971,7 +971,7 @@ Describes the specified policies or all policies used for SSL
 negotiation.
 
 For more information, see Security Policies
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
 in the I<Application Load Balancers Guide>.
 
 
@@ -1009,9 +1009,9 @@ Returns: a L<Paws::ELBv2::DescribeTargetGroupAttributesOutput> instance
 Describes the attributes for the specified target group.
 
 For more information, see Target Group Attributes
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes)
 in the I<Application Load Balancers Guide> or Target Group Attributes
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes)
 in the I<Network Load Balancers Guide>.
 
 

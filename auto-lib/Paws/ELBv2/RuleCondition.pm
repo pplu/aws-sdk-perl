@@ -1,6 +1,12 @@
 package Paws::ELBv2::RuleCondition;
   use Moose;
   has Field => (is => 'ro', isa => 'Str');
+  has HostHeaderConfig => (is => 'ro', isa => 'Paws::ELBv2::HostHeaderConditionConfig');
+  has HttpHeaderConfig => (is => 'ro', isa => 'Paws::ELBv2::HttpHeaderConditionConfig');
+  has HttpRequestMethodConfig => (is => 'ro', isa => 'Paws::ELBv2::HttpRequestMethodConditionConfig');
+  has PathPatternConfig => (is => 'ro', isa => 'Paws::ELBv2::PathPatternConditionConfig');
+  has QueryStringConfig => (is => 'ro', isa => 'Paws::ELBv2::QueryStringConditionConfig');
+  has SourceIpConfig => (is => 'ro', isa => 'Paws::ELBv2::SourceIpConditionConfig');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
@@ -41,6 +47,36 @@ Information about a condition for a rule.
 
   The name of the field. The possible values are C<host-header> and
 C<path-pattern>.
+
+
+=head2 HostHeaderConfig => L<Paws::ELBv2::HostHeaderConditionConfig>
+
+  
+
+
+=head2 HttpHeaderConfig => L<Paws::ELBv2::HttpHeaderConditionConfig>
+
+  
+
+
+=head2 HttpRequestMethodConfig => L<Paws::ELBv2::HttpRequestMethodConditionConfig>
+
+  
+
+
+=head2 PathPatternConfig => L<Paws::ELBv2::PathPatternConditionConfig>
+
+  
+
+
+=head2 QueryStringConfig => L<Paws::ELBv2::QueryStringConditionConfig>
+
+  
+
+
+=head2 SourceIpConfig => L<Paws::ELBv2::SourceIpConditionConfig>
+
+  
 
 
 =head2 Values => ArrayRef[Str|Undef]

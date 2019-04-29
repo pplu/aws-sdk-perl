@@ -137,7 +137,7 @@ Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">
 [HTTPS and TLS listeners] The security policy that defines which
 protocols and ciphers are supported. For more information, see Security
 Policies
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
 in the I<Application Load Balancers Guide>.
 
 
