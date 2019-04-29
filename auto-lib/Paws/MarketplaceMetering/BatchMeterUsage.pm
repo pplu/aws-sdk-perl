@@ -34,9 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           CustomerIdentifier => 'MyCustomerIdentifier',    # min: 1, max: 255
           Dimension          => 'MyUsageDimension',        # min: 1, max: 255
-          Quantity           => 1,                         # max: 1000000
           Timestamp          => '1970-01-01T01:00:00',
-
+          Quantity => 1,    # max: 2147483647; OPTIONAL
         },
         ...
       ],

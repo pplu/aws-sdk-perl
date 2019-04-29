@@ -1,11 +1,11 @@
 
 package Paws::MarketplaceMetering::MeterUsage;
   use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool', required => 1);
+  has DryRun => (is => 'ro', isa => 'Bool');
   has ProductCode => (is => 'ro', isa => 'Str', required => 1);
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
   has UsageDimension => (is => 'ro', isa => 'Str', required => 1);
-  has UsageQuantity => (is => 'ro', isa => 'Int', required => 1);
+  has UsageQuantity => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -32,12 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $metering.marketplace = Paws->service('MarketplaceMetering');
     my $MeterUsageResult = $metering . marketplace->MeterUsage(
-      DryRun         => 1,
       ProductCode    => 'MyProductCode',
       Timestamp      => '1970-01-01T01:00:00',
       UsageDimension => 'MyUsageDimension',
-      UsageQuantity  => 1,
-
+      DryRun         => 1,                       # OPTIONAL
+      UsageQuantity  => 1,                       # OPTIONAL
     );
 
     # Results:
@@ -51,11 +50,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/met
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DryRun => Bool
+=head2 DryRun => Bool
 
 Checks whether you have the permissions required for the action, but
 does not make the request. If you have the permissions, the request
 returns DryRunOperation; otherwise, it returns UnauthorizedException.
+Defaults to C<false> if not specified.
 
 
 
@@ -81,9 +81,9 @@ of the product.
 
 
 
-=head2 B<REQUIRED> UsageQuantity => Int
+=head2 UsageQuantity => Int
 
-Consumption value for the hour.
+Consumption value for the hour. Defaults to C<0> if not specified.
 
 
 

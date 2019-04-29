@@ -2,7 +2,7 @@ package Paws::MarketplaceMetering::UsageRecord;
   use Moose;
   has CustomerIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Dimension => (is => 'ro', isa => 'Str', required => 1);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  has Quantity => (is => 'ro', isa => 'Int');
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -56,10 +56,10 @@ eight dimensions are specified. These represent different units of
 value in your application.
 
 
-=head2 B<REQUIRED> Quantity => Int
+=head2 Quantity => Int
 
   The quantity of usage consumed by the customer for the given dimension
-and time.
+and time. Defaults to C<0> if not specified.
 
 
 =head2 B<REQUIRED> Timestamp => Str
