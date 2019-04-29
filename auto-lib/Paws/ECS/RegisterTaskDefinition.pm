@@ -10,6 +10,7 @@ package Paws::ECS::RegisterTaskDefinition;
   has NetworkMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkMode' );
   has PidMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pidMode' );
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
+  has ProxyConfiguration => (is => 'ro', isa => 'Paws::ECS::ProxyConfiguration', traits => ['NameInRequest'], request_name => 'proxyConfiguration' );
   has RequiresCompatibilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'requiresCompatibilities' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TaskRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskRoleArn' );
@@ -315,6 +316,12 @@ Valid values are: C<"host">, C<"task">
 An array of placement constraint objects to use for the task. You can
 specify a maximum of 10 constraints per task (this limit includes
 constraints in the task definition and those specified at runtime).
+
+
+
+=head2 ProxyConfiguration => L<Paws::ECS::ProxyConfiguration>
+
+
 
 
 

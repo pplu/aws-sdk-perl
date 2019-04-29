@@ -10,6 +10,7 @@ package Paws::ECS::TaskDefinition;
   has NetworkMode => (is => 'ro', isa => 'Str', request_name => 'networkMode', traits => ['NameInRequest']);
   has PidMode => (is => 'ro', isa => 'Str', request_name => 'pidMode', traits => ['NameInRequest']);
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', request_name => 'placementConstraints', traits => ['NameInRequest']);
+  has ProxyConfiguration => (is => 'ro', isa => 'Paws::ECS::ProxyConfiguration', request_name => 'proxyConfiguration', traits => ['NameInRequest']);
   has RequiresAttributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', request_name => 'requiresAttributes', traits => ['NameInRequest']);
   has RequiresCompatibilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'requiresCompatibilities', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest']);
@@ -274,6 +275,21 @@ the Fargate launch type.
 
   An array of placement constraint objects to use for tasks. This field
 is not valid if you are using the Fargate launch type for your task.
+
+
+=head2 ProxyConfiguration => L<Paws::ECS::ProxyConfiguration>
+
+  The configuration details for the App Mesh proxy.
+
+Your Amazon ECS container instances require at least version 1.26.0 of
+the container agent and at least version 1.26.0-1 of the C<ecs-init>
+package to enable a proxy configuration. If your container instances
+are launched from the Amazon ECS-optimized AMI version C<20190301> or
+later, then they contain the required versions of the container agent
+and C<ecs-init>. For more information, see Amazon ECS-optimized Linux
+AMI
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 RequiresAttributes => ArrayRef[L<Paws::ECS::Attribute>]

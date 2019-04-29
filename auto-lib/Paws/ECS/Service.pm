@@ -248,7 +248,9 @@ multiple clusters within a Region or across multiple Regions.
 
 =head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
 
-  
+  The details of the service discovery registries to assign to this
+service. For more information, see Service Discovery
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 
 
 =head2 Status => Str
@@ -275,10 +277,10 @@ modified with UpdateService.
 
 =head2 TaskSets => ArrayRef[L<Paws::ECS::TaskSet>]
 
-  Information about a set of Amazon ECS tasks in an AWS CodeDeploy
-deployment. An Amazon ECS task set includes details such as the desired
-number of tasks, how many tasks are running, and whether the task set
-serves production traffic.
+  Information about a set of Amazon ECS tasks in either an AWS CodeDeploy
+or an C<EXTERNAL> deployment. An Amazon ECS task set includes details
+such as the desired number of tasks, how many tasks are running, and
+whether the task set serves production traffic.
 
 
 

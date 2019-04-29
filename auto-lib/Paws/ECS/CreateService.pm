@@ -20,7 +20,7 @@ package Paws::ECS::CreateService;
   has ServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceName' , required => 1);
   has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', traits => ['NameInRequest'], request_name => 'serviceRegistries' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
+  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' );
 
   use MooseX::ClassAttribute;
 
@@ -143,10 +143,11 @@ should ignore unhealthy Elastic Load Balancing target health checks
 after a task has first started. This is only valid if your service is
 configured to use a load balancer. If your service's tasks take a while
 to start and respond to Elastic Load Balancing health checks, you can
-specify a health check grace period of up to 7,200 seconds. During that
-time, the ECS service scheduler ignores health check status. This grace
-period can prevent the ECS service scheduler from marking tasks as
-unhealthy and stopping them before they have time to come up.
+specify a health check grace period of up to 2,147,483,647 seconds.
+During that time, the ECS service scheduler ignores health check
+status. This grace period can prevent the ECS service scheduler from
+marking tasks as unhealthy and stopping them before they have time to
+come up.
 
 
 
@@ -237,10 +238,10 @@ can specify a maximum of five strategy rules per service.
 
 =head2 PlatformVersion => Str
 
-The platform version on which your tasks in the service are running. A
-platform version is only specified for tasks using the Fargate launch
-type. If one is not specified, the C<LATEST> platform version is used
-by default. For more information, see AWS Fargate Platform Versions
+The platform version that your tasks in the service are running on. A
+platform version is specified only for tasks using the Fargate launch
+type. If one isn't specified, the C<LATEST> platform version is used by
+default. For more information, see AWS Fargate Platform Versions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -300,19 +301,20 @@ C<REPLICA>-The replica scheduling strategy places and maintains the
 desired number of tasks across your cluster. By default, the service
 scheduler spreads tasks across Availability Zones. You can use task
 placement strategies and constraints to customize task placement
-decisions. This scheduler strategy is required if using the
-C<CODE_DEPLOY> deployment controller.
+decisions. This scheduler strategy is required if the service is using
+the C<CODE_DEPLOY> or C<EXTERNAL> deployment controller types.
 
 =item *
 
 C<DAEMON>-The daemon scheduling strategy deploys exactly one task on
 each active container instance that meets all of the task placement
-constraints that you specify in your cluster. When you are using this
-strategy, there is no need to specify a desired number of tasks, a task
+constraints that you specify in your cluster. When you're using this
+strategy, you don't need to specify a desired number of tasks, a task
 placement strategy, or use Service Auto Scaling policies.
 
-Tasks using the Fargate launch type or the C<CODE_DEPLOY> deploymenet
-controller do not support the C<DAEMON> scheduling strategy.
+Tasks using the Fargate launch type or the C<CODE_DEPLOY> or
+C<EXTERNAL> deployment controller types don't support the C<DAEMON>
+scheduling strategy.
 
 =back
 
@@ -351,11 +353,14 @@ and tag values can have a maximum length of 256 characters.
 
 
 
-=head2 B<REQUIRED> TaskDefinition => Str
+=head2 TaskDefinition => Str
 
 The C<family> and C<revision> (C<family:revision>) or full ARN of the
 task definition to run in your service. If a C<revision> is not
 specified, the latest C<ACTIVE> revision is used.
+
+A task definition must be specified if the service is using the C<ECS>
+deployment controller.
 
 
 

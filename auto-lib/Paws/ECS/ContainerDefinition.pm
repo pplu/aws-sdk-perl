@@ -2,6 +2,7 @@ package Paws::ECS::ContainerDefinition;
   use Moose;
   has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
   has Cpu => (is => 'ro', isa => 'Int', request_name => 'cpu', traits => ['NameInRequest']);
+  has DependsOn => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDependency]', request_name => 'dependsOn', traits => ['NameInRequest']);
   has DisableNetworking => (is => 'ro', isa => 'Bool', request_name => 'disableNetworking', traits => ['NameInRequest']);
   has DnsSearchDomains => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'dnsSearchDomains', traits => ['NameInRequest']);
   has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'dnsServers', traits => ['NameInRequest']);
@@ -29,6 +30,8 @@ package Paws::ECS::ContainerDefinition;
   has RepositoryCredentials => (is => 'ro', isa => 'Paws::ECS::RepositoryCredentials', request_name => 'repositoryCredentials', traits => ['NameInRequest']);
   has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
   has Secrets => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Secret]', request_name => 'secrets', traits => ['NameInRequest']);
+  has StartTimeout => (is => 'ro', isa => 'Int', request_name => 'startTimeout', traits => ['NameInRequest']);
+  has StopTimeout => (is => 'ro', isa => 'Int', request_name => 'stopTimeout', traits => ['NameInRequest']);
   has SystemControls => (is => 'ro', isa => 'ArrayRef[Paws::ECS::SystemControl]', request_name => 'systemControls', traits => ['NameInRequest']);
   has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
@@ -154,6 +157,28 @@ values of 1 are passed to Docker as 2.
 On Windows container instances, the CPU limit is enforced as an
 absolute limit, or a quota. Windows containers only have access to the
 specified amount of CPU that is described in the task definition.
+
+
+=head2 DependsOn => ArrayRef[L<Paws::ECS::ContainerDependency>]
+
+  The dependencies defined for container startup and shutdown. A
+container can contain multiple dependencies. When a dependency is
+defined for container startup, for container shutdown it is reversed.
+
+Your Amazon ECS container instances require at least version 1.26.0 of
+the container agent to enable container dependencies. However, we
+recommend using the latest container agent version. For information
+about checking your agent version and updating to the latest version,
+see Updating the Amazon ECS Container Agent
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
+in the I<Amazon Elastic Container Service Developer Guide>. If you are
+using an Amazon ECS-optimized Linux AMI, your instance needs at least
+version 1.26.0-1 of the C<ecs-init> package. If your container
+instances are launched from version C<20190301> or later, then they
+contain the required versions of the container agent and C<ecs-init>.
+For more information, see Amazon ECS-optimized Linux AMI
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 DisableNetworking => Bool
@@ -637,6 +662,55 @@ Specifying Sensitive Data
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
+=head2 StartTimeout => Int
+
+  Time duration to wait before giving up on resolving dependencies for a
+container. For example, you specify two containers in a task definition
+with containerA having a dependency on containerB reaching a
+C<COMPLETE>, C<SUCCESS>, or C<HEALTHY> status. If a C<startTimeout>
+value is specified for containerB and it does not reach the desired
+status within that time then containerA will give up and not start.
+This results in the task transitioning to a C<STOPPED> state.
+
+Your Amazon ECS container instances require at least version 1.26.0 of
+the container agent to enable a container start timeout value. However,
+we recommend using the latest container agent version. For information
+about checking your agent version and updating to the latest version,
+see Updating the Amazon ECS Container Agent
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
+in the I<Amazon Elastic Container Service Developer Guide>. If you are
+using an Amazon ECS-optimized Linux AMI, your instance needs at least
+version 1.26.0-1 of the C<ecs-init> package. If your container
+instances are launched from version C<20190301> or later, then they
+contain the required versions of the container agent and C<ecs-init>.
+For more information, see Amazon ECS-optimized Linux AMI
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+
+=head2 StopTimeout => Int
+
+  Time duration to wait before the container is forcefully killed if it
+doesn't exit normally on its own. The stop timeout value for the
+container takes precedence over the C<ECS_CONTAINER_STOP_TIMEOUT>
+container agent configuration parameter, if used.
+
+Your Amazon ECS container instances require at least version 1.26.0 of
+the container agent to enable a container stop timeout value. However,
+we recommend using the latest container agent version. For information
+about checking your agent version and updating to the latest version,
+see Updating the Amazon ECS Container Agent
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
+in the I<Amazon Elastic Container Service Developer Guide>. If you are
+using an Amazon ECS-optimized Linux AMI, your instance needs at least
+version 1.26.0-1 of the C<ecs-init> package. If your container
+instances are launched from version C<20190301> or later, then they
+contain the required versions of the container agent and C<ecs-init>.
+For more information, see Amazon ECS-optimized Linux AMI
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+
 =head2 SystemControls => ArrayRef[L<Paws::ECS::SystemControl>]
 
   A list of namespaced kernel parameters to set in the container. This
@@ -681,6 +755,37 @@ C<User> in the Create a container
 section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<--user> option to
 docker run (https://docs.docker.com/engine/reference/run/).
+
+You can use the following formats. If specifying a UID or GID, you must
+specify it as a positive integer.
+
+=over
+
+=item *
+
+C<user>
+
+=item *
+
+C<user:group>
+
+=item *
+
+C<uid>
+
+=item *
+
+C<uid:gid>
+
+=item *
+
+C<user:gid>
+
+=item *
+
+C<uid:group>
+
+=back
 
 This parameter is not supported for Windows containers.
 
