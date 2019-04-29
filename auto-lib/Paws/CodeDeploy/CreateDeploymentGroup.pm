@@ -239,7 +239,7 @@ deployment group.
 
 For more information about the predefined deployment configurations in
 AWS CodeDeploy, see Working with Deployment Groups in AWS CodeDeploy
-(http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html)
+(https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html)
 in the AWS CodeDeploy User Guide.
 
 
@@ -318,7 +318,7 @@ behalf when interacting with AWS services.
 
 Information about triggers to create when the deployment group is
 created. For examples, see Create a Trigger for an AWS CodeDeploy Event
-(http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
+(https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
 in the AWS CodeDeploy User Guide.
 
 

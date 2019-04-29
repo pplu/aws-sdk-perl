@@ -556,17 +556,17 @@ B<AWS CodeDeploy Information Resources>
 =item *
 
 AWS CodeDeploy User Guide
-(http://docs.aws.amazon.com/codedeploy/latest/userguide)
+(https://docs.aws.amazon.com/codedeploy/latest/userguide)
 
 =item *
 
 AWS CodeDeploy API Reference Guide
-(http://docs.aws.amazon.com/codedeploy/latest/APIReference/)
+(https://docs.aws.amazon.com/codedeploy/latest/APIReference/)
 
 =item *
 
 AWS CLI Reference for AWS CodeDeploy
-(http://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
+(https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
 
 =item *
 
@@ -1022,6 +1022,11 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetDeployment>
 Returns: a L<Paws::CodeDeploy::GetDeploymentOutput> instance
 
 Gets information about a deployment.
+
+The C<content> property of the C<appSpecContent> object in the returned
+revision is always null. Use C<GetApplicationRevision> and the
+C<sha256> property of the returned C<appSpecContent> object to get the
+content of the deploymentE<rsquo>s AppSpec file.
 
 
 =head2 GetDeploymentConfig
