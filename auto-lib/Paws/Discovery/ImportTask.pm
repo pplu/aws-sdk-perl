@@ -82,7 +82,7 @@ the authenticity of the compressed archive before you download it.
 
 If some records failed to be imported we recommend that you correct the
 records in the failed entries file and then imports that failed entries
-file. This prevents you frmo having to correct and update the larger
+file. This prevents you from having to correct and update the larger
 original file and attempt importing it again.
 
 
