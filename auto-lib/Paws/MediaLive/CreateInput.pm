@@ -10,6 +10,7 @@ package Paws::MediaLive::CreateInput;
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSourceRequest]', traits => ['NameInRequest'], request_name => 'sources');
   has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
+  has Vpc => (is => 'ro', isa => 'Paws::MediaLive::InputVpcRequest', traits => ['NameInRequest'], request_name => 'vpc');
 
   use MooseX::ClassAttribute;
 
@@ -67,6 +68,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'My__string' => 'My__string',       # key: OPTIONAL, value: OPTIONAL
       },    # OPTIONAL
       Type => 'UDP_PUSH',    # OPTIONAL
+      Vpc  => {
+        SubnetIds => [
+          'My__string', ...    # OPTIONAL
+        ],
+        SecurityGroupIds => [
+          'My__string', ...    # OPTIONAL
+        ],
+      },    # OPTIONAL
     );
 
     # Results:
@@ -79,6 +88,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Sources             = $CreateInputResponse->Sources;
     my $Tags                = $CreateInputResponse->Tags;
     my $Type                = $CreateInputResponse->Type;
+    my $Vpc                 = $CreateInputResponse->Vpc;
 
     # Returns a L<Paws::MediaLive::CreateInputResponse> object.
 
@@ -149,6 +159,12 @@ A collection of key-value pairs.
 
 
 Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">, C<"MEDIACONNECT">
+
+=head2 Vpc => L<Paws::MediaLive::InputVpcRequest>
+
+
+
+
 
 
 =head1 SEE ALSO

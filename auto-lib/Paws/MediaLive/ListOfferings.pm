@@ -1,6 +1,7 @@
 
 package Paws::MediaLive::ListOfferings;
   use Moose;
+  has ChannelClass => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'channelClass');
   has ChannelConfiguration => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'channelConfiguration');
   has Codec => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'codec');
   has MaximumBitrate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maximumBitrate');
@@ -38,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $medialive = Paws->service('MediaLive');
     my $ListOfferingsResponse = $medialive->ListOfferings(
+      ChannelClass         => 'My__string',    # OPTIONAL
       ChannelConfiguration => 'My__string',    # OPTIONAL
       Codec                => 'My__string',    # OPTIONAL
       MaxResults           => 1,               # OPTIONAL
@@ -60,6 +62,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/medialive/ListOfferings>
 
 =head1 ATTRIBUTES
+
+
+=head2 ChannelClass => Str
+
+Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'
+
 
 
 =head2 ChannelConfiguration => Str

@@ -10,6 +10,7 @@ package Paws::MediaLive::CreateInputResponse;
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSourceRequest]', traits => ['NameInRequest'], request_name => 'sources');
   has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
+  has Vpc => (is => 'ro', isa => 'Paws::MediaLive::InputVpcRequest', traits => ['NameInRequest'], request_name => 'vpc');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -76,6 +77,11 @@ A collection of key-value pairs.
 
 
 Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">, C<"MEDIACONNECT">
+=head2 Vpc => L<Paws::MediaLive::InputVpcRequest>
+
+
+
+
 =head2 _request_id => Str
 
 

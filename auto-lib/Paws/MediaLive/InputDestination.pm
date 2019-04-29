@@ -3,6 +3,7 @@ package Paws::MediaLive::InputDestination;
   has Ip => (is => 'ro', isa => 'Str', request_name => 'ip', traits => ['NameInRequest']);
   has Port => (is => 'ro', isa => 'Str', request_name => 'port', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  has Vpc => (is => 'ro', isa => 'Paws::MediaLive::InputDestinationVpc', request_name => 'vpc', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::InputDestination object:
 
-  $service_obj->Method(Att1 => { Ip => $value, ..., Url => $value  });
+  $service_obj->Method(Att1 => { Ip => $value, ..., Vpc => $value  });
 
 =head3 Results returned from an API call
 
@@ -53,6 +54,11 @@ for the lifetime of the input.
 
   This represents the endpoint that the customer stream will be pushed
 to.
+
+
+=head2 Vpc => L<Paws::MediaLive::InputDestinationVpc>
+
+  
 
 
 

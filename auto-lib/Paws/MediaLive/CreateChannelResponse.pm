@@ -1,6 +1,7 @@
 
 package Paws::MediaLive::CreateChannelResponse;
   use Moose;
+  has ChannelClass => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelClass');
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
@@ -24,6 +25,12 @@ Paws::MediaLive::CreateChannelResponse
 =head1 ATTRIBUTES
 
 
+=head2 ChannelClass => Str
+
+The class for this channel. STANDARD for a channel with two pipelines
+or SINGLE_PIPELINE for a channel with one pipeline.
+
+Valid values are: C<"STANDARD">, C<"SINGLE_PIPELINE">
 =head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
 
 

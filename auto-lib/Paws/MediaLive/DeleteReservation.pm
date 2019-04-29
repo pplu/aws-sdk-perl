@@ -51,6 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DeleteReservationResponse->ResourceSpecification;
     my $Start      = $DeleteReservationResponse->Start;
     my $State      = $DeleteReservationResponse->State;
+    my $Tags       = $DeleteReservationResponse->Tags;
     my $UsagePrice = $DeleteReservationResponse->UsagePrice;
 
     # Returns a L<Paws::MediaLive::DeleteReservationResponse> object.

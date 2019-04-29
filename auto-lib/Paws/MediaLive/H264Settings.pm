@@ -67,7 +67,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Placeholder documentation for H264Settings
+H264 Settings
 
 =head1 ATTRIBUTES
 

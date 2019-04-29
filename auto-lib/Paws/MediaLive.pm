@@ -154,6 +154,11 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateInputSecurityGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateReservation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateReservation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub DescribeAllSchedule {
     my $self = shift;
@@ -295,7 +300,7 @@ package Paws::MediaLive;
   }
 
 
-  sub operations { qw/BatchUpdateSchedule CreateChannel CreateInput CreateInputSecurityGroup CreateTags DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteReservation DeleteTags DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeOffering DescribeReservation DescribeSchedule ListChannels ListInputs ListInputSecurityGroups ListOfferings ListReservations ListTagsForResource PurchaseOffering StartChannel StopChannel UpdateChannel UpdateInput UpdateInputSecurityGroup / }
+  sub operations { qw/BatchUpdateSchedule CreateChannel CreateInput CreateInputSecurityGroup CreateTags DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteReservation DeleteTags DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeOffering DescribeReservation DescribeSchedule ListChannels ListInputs ListInputSecurityGroups ListOfferings ListReservations ListTagsForResource PurchaseOffering StartChannel StopChannel UpdateChannel UpdateInput UpdateInputSecurityGroup UpdateReservation / }
 
 1;
 
@@ -354,6 +359,8 @@ Update a channel schedule
 
 =over
 
+=item [ChannelClass => Str]
+
 =item [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]]
 
 =item [EncoderSettings => L<Paws::MediaLive::EncoderSettings>]
@@ -405,6 +412,8 @@ Creates a new channel
 =item [Tags => L<Paws::MediaLive::Tags>]
 
 =item [Type => Str]
+
+=item [Vpc => L<Paws::MediaLive::InputVpcRequest>]
 
 
 =back
@@ -692,6 +701,8 @@ Produces a list of Input Security Groups for an account
 
 =over
 
+=item [ChannelClass => Str]
+
 =item [ChannelConfiguration => Str]
 
 =item [Codec => Str]
@@ -725,6 +736,8 @@ List offerings available for purchase.
 =head2 ListReservations
 
 =over
+
+=item [ChannelClass => Str]
 
 =item [Codec => Str]
 
@@ -776,13 +789,13 @@ Produces list of tags that have been created for a resource
 
 =item Count => Int
 
-=item OfferingId => Str
-
 =item [Name => Str]
 
 =item [RequestId => Str]
 
 =item [Start => Str]
+
+=item [Tags => L<Paws::MediaLive::Tags>]
 
 
 =back
@@ -902,6 +915,24 @@ Returns: a L<Paws::MediaLive::UpdateInputSecurityGroupResponse> instance
 Update an Input Security Group's Whilelists.
 
 
+=head2 UpdateReservation
+
+=over
+
+=item ReservationId => Str
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::UpdateReservation>
+
+Returns: a L<Paws::MediaLive::UpdateReservationResponse> instance
+
+Update reservation.
+
+
 
 
 =head1 PAGINATORS
@@ -956,9 +987,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::MediaLive::ListInputSecurityGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllOfferings(sub { },[ChannelConfiguration => Str, Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
+=head2 ListAllOfferings(sub { },[ChannelClass => Str, ChannelConfiguration => Str, Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
 
-=head2 ListAllOfferings([ChannelConfiguration => Str, Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
+=head2 ListAllOfferings([ChannelClass => Str, ChannelConfiguration => Str, Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -968,9 +999,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::MediaLive::ListOfferingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllReservations(sub { },[Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
+=head2 ListAllReservations(sub { },[ChannelClass => Str, Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
 
-=head2 ListAllReservations([Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
+=head2 ListAllReservations([ChannelClass => Str, Codec => Str, MaximumBitrate => Str, MaximumFramerate => Str, MaxResults => Int, NextToken => Str, Resolution => Str, ResourceType => Str, SpecialFeature => Str, VideoQuality => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

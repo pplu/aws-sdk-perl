@@ -35,6 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Arn                   = $DeleteChannelResponse->Arn;
+    my $ChannelClass          = $DeleteChannelResponse->ChannelClass;
     my $Destinations          = $DeleteChannelResponse->Destinations;
     my $EgressEndpoints       = $DeleteChannelResponse->EgressEndpoints;
     my $EncoderSettings       = $DeleteChannelResponse->EncoderSettings;
