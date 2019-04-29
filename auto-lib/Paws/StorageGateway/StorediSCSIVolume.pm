@@ -78,10 +78,14 @@ included.
 
 =head2 TargetName => Str
 
-  The name of the iSCSI target that is used by an initiator to connect to
-a volume and used as a suffix for the target ARN. For example,
-specifying C<TargetName> as I<myvolume> results in the target ARN of
+  The name of the iSCSI target used by an initiator to connect to a
+volume and used as a suffix for the target ARN. For example, specifying
+C<TargetName> as I<myvolume> results in the target ARN of
 C<arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume>.
+The target name must be unique across all volumes on a gateway.
+
+If you don't specify a value, Storage Gateway uses the value that was
+previously used for this volume as the new target name.
 
 
 =head2 VolumeARN => Str
@@ -92,7 +96,9 @@ C<arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.
 =head2 VolumeAttachmentStatus => Str
 
   A value that indicates whether a storage volume is attached to,
-detached from, or is in the process of detaching from a gateway.
+detached from, or is in the process of detaching from a gateway. For
+more information, see Moving Your Volumes to a Different Gateway
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#attach-detach-volume).
 
 
 =head2 VolumeDiskId => Str
@@ -139,7 +145,12 @@ volume.
 
 =head2 VolumeUsedInBytes => Int
 
-  The size of the data stored on the volume in bytes.
+  The size of the data stored on the volume in bytes. This value is
+calculated based on the number of blocks that are touched, instead of
+the actual amount of data written. This value can be useful for
+sequential write patterns but less accurate for random write patterns.
+C<VolumeUsedInBytes> is different from the compressed size of the
+volume, which is the value that is used to calculate your bill.
 
 This value is not available for volumes created prior to May 13, 2015,
 until you store data on the volume.

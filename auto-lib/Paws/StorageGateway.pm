@@ -463,6 +463,29 @@ package Paws::StorageGateway;
 
     return undef
   }
+  sub ListAllFileShares {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFileShares(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListFileShares(@_, Marker => $next_result->NextMarker);
+        push @{ $result->FileShareInfoList }, @{ $next_result->FileShareInfoList };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'FileShareInfoList') foreach (@{ $result->FileShareInfoList });
+        $result = $self->ListFileShares(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'FileShareInfoList') foreach (@{ $result->FileShareInfoList });
+    }
+
+    return undef
+  }
   sub ListAllGateways {
     my $self = shift;
 
@@ -482,6 +505,29 @@ package Paws::StorageGateway;
         $result = $self->ListGateways(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'Gateways') foreach (@{ $result->Gateways });
+    }
+
+    return undef
+  }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->ListTagsForResource(@_, Marker => $next_result->Marker);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsForResource(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
     }
 
     return undef
@@ -567,7 +613,7 @@ AWS Storage Gateway Service
 AWS Storage Gateway is the service that connects an on-premises
 software appliance with cloud-based storage to provide seamless and
 secure integration between an organization's on-premises IT environment
-and AWS's storage infrastructure. The service enables you to securely
+and the AWS storage infrastructure. The service enables you to securely
 upload data to the AWS cloud for cost effective backup and rapid
 disaster recovery.
 
@@ -579,27 +625,27 @@ Service API Reference>:
 =item *
 
 AWS Storage Gateway Required Request Headers
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders):
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders):
 Describes the required headers that you must send with every POST
 request to AWS Storage Gateway.
 
 =item *
 
 Signing Requests
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests):
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests):
 AWS Storage Gateway requires that you authenticate every request you
 send; this topic describes how sign such a request.
 
 =item *
 
 Error Responses
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses):
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses):
 Provides reference information about AWS Storage Gateway errors.
 
 =item *
 
 Operations in AWS Storage Gateway
-(http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html):
+(https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html):
 Contains detailed descriptions of all AWS Storage Gateway operations,
 their request parameters, response elements, possible errors, and
 examples of requests and responses.
@@ -662,6 +708,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =item [MediumChangerType => Str]
 
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+
 =item [TapeDriveType => Str]
 
 
@@ -700,7 +748,7 @@ Returns: a L<Paws::StorageGateway::AddCacheOutput> instance
 Configures one or more gateway local disks as cache for a gateway. This
 operation is only supported in the cached volume, tape and file gateway
 type (see Storage Gateway Concepts
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html)).
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html)).
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add cache, and one or more disk IDs that you want to
@@ -735,25 +783,21 @@ resources:
 
 Storage gateways of all types
 
-=back
+=item *
 
-=over
+Storage volumes
 
 =item *
 
-Storage Volumes
-
-=back
-
-=over
+Virtual tapes
 
 =item *
 
-Virtual Tapes
+NFS and SMB file shares
 
 =back
 
-You can create a maximum of 10 tags for each resource. Virtual tapes
+You can create a maximum of 50 tags for each resource. Virtual tapes
 and storage volumes that are recovered to a new gateway maintain their
 tags.
 
@@ -902,6 +946,8 @@ gateway type.
 
 =item [SourceVolumeARN => Str]
 
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+
 
 =back
 
@@ -962,6 +1008,8 @@ the copied volume, in bytes.
 
 =item [Squash => Str]
 
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+
 
 =back
 
@@ -1016,6 +1064,10 @@ share.
 
 =item [RequesterPays => Bool]
 
+=item [SMBACLEnabled => Bool]
+
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+
 =item [ValidUserList => ArrayRef[Str|Undef]]
 
 
@@ -1037,7 +1089,7 @@ is activated in the AWS Region you are creating your file gateway in.
 If AWS STS is not activated in this AWS Region, activate it. For
 information about how to activate AWS STS, see Activating and
 Deactivating AWS STS in an AWS Region
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 in the I<AWS Identity and Access Management User Guide.>
 
 File gateways don't support creating hard or symbolic links on a file
@@ -1065,10 +1117,10 @@ AWS Storage Gateway provides the ability to back up point-in-time
 snapshots of your data to Amazon Simple Storage (S3) for durable
 off-site recovery, as well as import the data to an Amazon Elastic
 Block Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can
-take snapshots of your gateway volume on a scheduled or ad-hoc basis.
+take snapshots of your gateway volume on a scheduled or ad hoc basis.
 This API enables you to take ad-hoc snapshot. For more information, see
 Editing a Snapshot Schedule
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot).
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot).
 
 In the CreateSnapshot request you identify the volume by providing its
 Amazon Resource Name (ARN). You must also provide description for the
@@ -1082,11 +1134,11 @@ is only supported in stored and cached volume gateway type.
 To list or delete a snapshot, you must use the Amazon EC2 API. For more
 information, see DescribeSnapshots or DeleteSnapshot in the EC2 API
 reference
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html).
 
 Volume and snapshot IDs are changing to a longer length ID format. For
 more information, see the important note on the Welcome
-(http://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html)
+(https://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html)
 page.
 
 
@@ -1146,6 +1198,8 @@ information, in I<Amazon Elastic Compute Cloud API Reference>.
 
 =item [SnapshotId => Str]
 
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+
 
 =back
 
@@ -1186,6 +1240,10 @@ can use to connect to the volume target.
 
 =item [KMSKey => Str]
 
+=item [PoolId => Str]
+
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+
 
 =back
 
@@ -1215,6 +1273,10 @@ gateway.
 =item [KMSEncrypted => Bool]
 
 =item [KMSKey => Str]
+
+=item [PoolId => Str]
+
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
 
 
 =back
@@ -1345,7 +1407,7 @@ Deletes a snapshot of a volume.
 You can take snapshots of your gateway volumes on a scheduled or ad hoc
 basis. This API action enables you to delete a snapshot schedule for a
 volume. For more information, see Working with Snapshots
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html).
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html).
 In the C<DeleteSnapshotSchedule> request, you identify the volume by
 providing its Amazon Resource Name (ARN). This operation is only
 supported in stored and cached volume gateway types.
@@ -1416,7 +1478,7 @@ snapshot in progress. You can use the Amazon Elastic Compute Cloud
 (Amazon EC2) API to query snapshots on the volume you are deleting and
 check the snapshot status. For more information, go to
 DescribeSnapshots
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
 in the I<Amazon Elastic Compute Cloud API Reference>.
 
 In the request, you must provide the Amazon Resource Name (ARN) of the
@@ -2119,6 +2181,14 @@ your RefreshCache operation completes. For more information, see
 Getting Notified About File Operations
 (https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification).
 
+When this API is called, it only initiates the refresh operation. When
+the API call completes and returns a success code, it doesn't
+necessarily mean that the file refresh has completed. You should use
+the refresh-complete notification to determine that the operation has
+completed before you check for new files on the gateway file share. You
+can subscribe to be notified through an CloudWatch event when your
+C<RefreshCache> operation completes.
+
 
 =head2 RemoveTagsFromResource
 
@@ -2441,9 +2511,9 @@ minimize the chance of any disruption to your applications by
 increasing your iSCSI Initiators' timeouts. For more information about
 increasing iSCSI Initiator timeouts for Windows and Linux, see
 Customizing Your Windows iSCSI Settings
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings)
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings)
 and Customizing Your Linux iSCSI Settings
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings),
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings),
 respectively.
 
 
@@ -2451,13 +2521,15 @@ respectively.
 
 =over
 
-=item DayOfWeek => Int
-
 =item GatewayARN => Str
 
 =item HourOfDay => Int
 
 =item MinuteOfHour => Int
+
+=item [DayOfMonth => Int]
+
+=item [DayOfWeek => Int]
 
 
 =back
@@ -2562,6 +2634,8 @@ field to null. This operation is only supported in file gateways.
 
 =item [RequesterPays => Bool]
 
+=item [SMBACLEnabled => Bool]
+
 =item [ValidUserList => ArrayRef[Str|Undef]]
 
 
@@ -2582,7 +2656,7 @@ is activated in the AWS Region you are creating your file gateway in.
 If AWS STS is not activated in this AWS Region, activate it. For
 information about how to activate AWS STS, see Activating and
 Deactivating AWS STS in an AWS Region
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 in the I<AWS Identity and Access Management User Guide.>
 
 File gateways don't support creating hard or symbolic links on a file
@@ -2698,6 +2772,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::StorageGateway::DescribeVTLDevicesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllFileShares(sub { },[GatewayARN => Str, Limit => Int, Marker => Str])
+
+=head2 ListAllFileShares([GatewayARN => Str, Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FileShareInfoList, passing the object as the first parameter, and the string 'FileShareInfoList' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::ListFileSharesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllGateways(sub { },[Limit => Int, Marker => Str])
 
 =head2 ListAllGateways([Limit => Int, Marker => Str])
@@ -2708,6 +2794,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Gateways, passing the object as the first parameter, and the string 'Gateways' as the second parameter 
 
 If not, it will return a a L<Paws::StorageGateway::ListGatewaysOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceARN => Str, [Limit => Int, Marker => Str])
+
+=head2 ListAllTagsForResource(ResourceARN => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::ListTagsForResourceOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllTapes(sub { },[Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])

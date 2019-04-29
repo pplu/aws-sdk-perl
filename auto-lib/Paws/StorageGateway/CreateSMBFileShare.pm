@@ -14,6 +14,8 @@ package Paws::StorageGateway::CreateSMBFileShare;
   has ReadOnly => (is => 'ro', isa => 'Bool');
   has RequesterPays => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str', required => 1);
+  has SMBACLEnabled => (is => 'ro', isa => 'Bool');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has ValidUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -56,6 +58,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ObjectACL     => 'private',                    # OPTIONAL
       ReadOnly      => 1,                            # OPTIONAL
       RequesterPays => 1,                            # OPTIONAL
+      SMBACLEnabled => 1,                            # OPTIONAL
+      Tags          => [
+        {
+          Key   => 'MyTagKey',                       # min: 1, max: 128
+          Value => 'MyTagValue',                     # max: 256
+
+        },
+        ...
+      ],                                             # OPTIONAL
       ValidUserList => [
         'MyFileShareUser', ...                       # min: 1, max: 64
       ],                                             # OPTIONAL
@@ -159,9 +170,15 @@ if the write status is read-only, and otherwise false.
 
 =head2 RequesterPays => Bool
 
-A value that sets the access control list permission for objects in the
-Amazon S3 bucket that a file gateway puts objects into. The default
-value is C<private>.
+A value that sets who pays the cost of the request and the cost
+associated with data download from the S3 bucket. If this value is set
+to true, the requester pays the costs. Otherwise the S3 bucket owner
+pays. However, the S3 bucket owner always pays the cost of storing
+data.
+
+C<RequesterPays> is a configuration for the S3 bucket that backs the
+file share, so make sure that the configuration on the file share is
+the same as the S3 bucket configuration.
 
 
 
@@ -169,6 +186,26 @@ value is C<private>.
 
 The ARN of the AWS Identity and Access Management (IAM) role that a
 file gateway assumes when it accesses the underlying storage.
+
+
+
+=head2 SMBACLEnabled => Bool
+
+Set this value to "true to enable ACL (access control list) on the SMB
+file share. Set it to "false" to map file and directory permissions to
+the POSIX permissions.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+
+A list of up to 50 tags that can be assigned to the NFS file share.
+Each tag is a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: +
+- = . _ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.
 
 
 

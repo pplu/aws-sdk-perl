@@ -51,7 +51,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =head2 B<REQUIRED> VolumeARNs => ArrayRef[Str|Undef]
 
-
+An array of strings where each string represents the Amazon Resource
+Name (ARN) of a cached volume. All of the specified cached volumes must
+from the same gateway. Use ListVolumes to get volume ARNs for a
+gateway.
 
 
 

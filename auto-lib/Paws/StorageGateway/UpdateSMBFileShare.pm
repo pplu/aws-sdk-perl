@@ -10,6 +10,7 @@ package Paws::StorageGateway::UpdateSMBFileShare;
   has ObjectACL => (is => 'ro', isa => 'Str');
   has ReadOnly => (is => 'ro', isa => 'Bool');
   has RequesterPays => (is => 'ro', isa => 'Bool');
+  has SMBACLEnabled => (is => 'ro', isa => 'Bool');
   has ValidUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -48,6 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ObjectACL     => 'private',                  # OPTIONAL
       ReadOnly      => 1,                          # OPTIONAL
       RequesterPays => 1,                          # OPTIONAL
+      SMBACLEnabled => 1,                          # OPTIONAL
       ValidUserList => [
         'MyFileShareUser', ...                     # min: 1, max: 64
       ],                                           # OPTIONAL
@@ -129,9 +131,23 @@ if the write status is read-only, and otherwise false.
 
 =head2 RequesterPays => Bool
 
-A value that sets the access control list permission for objects in the
-Amazon S3 bucket that a file gateway puts objects into. The default
-value is C<private>.
+A value that sets who pays the cost of the request and the cost
+associated with data download from the S3 bucket. If this value is set
+to true, the requester pays the costs. Otherwise the S3 bucket owner
+pays. However, the S3 bucket owner always pays the cost of storing
+data.
+
+C<RequesterPays> is a configuration for the S3 bucket that backs the
+file share, so make sure that the configuration on the file share is
+the same as the S3 bucket configuration.
+
+
+
+=head2 SMBACLEnabled => Bool
+
+Set this value to "true to enable ACL (access control list) on the SMB
+file share. Set it to "false" to map file and directory permissions to
+the POSIX permissions.
 
 
 

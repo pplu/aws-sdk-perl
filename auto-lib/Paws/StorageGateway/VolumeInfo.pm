@@ -70,7 +70,8 @@ hyphens (-).
 
 =head2 VolumeAttachmentStatus => Str
 
-  
+  One of the VolumeStatus values that indicates the state of the storage
+volume.
 
 
 =head2 VolumeId => Str
@@ -93,7 +94,8 @@ hyphens (-).
 
 =head2 VolumeType => Str
 
-  
+  One of the VolumeType enumeration values describing the type of the
+volume.
 
 
 

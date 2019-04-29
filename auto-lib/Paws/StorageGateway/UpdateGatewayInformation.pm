@@ -66,7 +66,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =head2 GatewayTimezone => Str
 
-
+A value that indicates the time zone of the gateway.
 
 
 

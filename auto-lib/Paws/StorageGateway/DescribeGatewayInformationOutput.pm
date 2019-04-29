@@ -1,6 +1,8 @@
 
 package Paws::StorageGateway::DescribeGatewayInformationOutput;
   use Moose;
+  has Ec2InstanceId => (is => 'ro', isa => 'Str');
+  has Ec2InstanceRegion => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str');
   has GatewayId => (is => 'ro', isa => 'Str');
   has GatewayName => (is => 'ro', isa => 'Str');
@@ -10,6 +12,7 @@ package Paws::StorageGateway::DescribeGatewayInformationOutput;
   has GatewayType => (is => 'ro', isa => 'Str');
   has LastSoftwareUpdate => (is => 'ro', isa => 'Str');
   has NextUpdateAvailabilityDate => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -20,6 +23,16 @@ package Paws::StorageGateway::DescribeGatewayInformationOutput;
 Paws::StorageGateway::DescribeGatewayInformationOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 Ec2InstanceId => Str
+
+The ID of the Amazon EC2 instance that was used to launch the gateway.
+
+
+=head2 Ec2InstanceRegion => Str
+
+The AWS Region where the Amazon EC2 instance is located.
 
 
 =head2 GatewayARN => Str
@@ -72,6 +85,14 @@ value in the response.
 The date on which an update to the gateway is available. This date is
 in the time zone of the gateway. If the gateway is not available for an
 update this field is not returned in the response.
+
+
+=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+
+A list of up to 50 tags assigned to the gateway, sorted alphabetically
+by key name. Each tag is a key-value pair. For a gateway with more than
+10 tags assigned, you can view all tags using the
+C<ListTagsForResource> API operation.
 
 
 =head2 _request_id => Str

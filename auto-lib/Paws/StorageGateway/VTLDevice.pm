@@ -53,17 +53,17 @@ drive or media changer).
 
 =head2 VTLDeviceProductIdentifier => Str
 
-  
+  Specifies the model number of device that the VTL device emulates.
 
 
 =head2 VTLDeviceType => Str
 
-  
+  Specifies the type of device that the VTL device emulates.
 
 
 =head2 VTLDeviceVendor => Str
 
-  
+  Specifies the vendor of the device that the VTL device object emulates.
 
 
 

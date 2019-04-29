@@ -16,6 +16,8 @@ package Paws::StorageGateway::SMBFileShareInfo;
   has ReadOnly => (is => 'ro', isa => 'Bool');
   has RequesterPays => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str');
+  has SMBACLEnabled => (is => 'ro', isa => 'Bool');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has ValidUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
@@ -136,14 +138,36 @@ if the write status is read-only, and otherwise false.
 
 =head2 RequesterPays => Bool
 
-  A value that sets the access control list permission for objects in the
-Amazon S3 bucket that a file gateway puts objects into. The default
-value is C<private>.
+  A value that sets who pays the cost of the request and the cost
+associated with data download from the S3 bucket. If this value is set
+to true, the requester pays the costs. Otherwise the S3 bucket owner
+pays. However, the S3 bucket owner always pays the cost of storing
+data.
+
+C<RequesterPays> is a configuration for the S3 bucket that backs the
+file share, so make sure that the configuration on the file share is
+the same as the S3 bucket configuration.
 
 
 =head2 Role => Str
 
   
+
+
+=head2 SMBACLEnabled => Bool
+
+  If this value is set to "true", indicates that ACL (access control
+list) is enabled on the SMB file share. If it is set to "false", it
+indicates that file and directory permissions are mapped to the POSIX
+permission.
+
+
+=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+
+  A list of up to 50 tags assigned to the SMB file share, sorted
+alphabetically by key name. Each tag is a key-value pair. For a gateway
+with more than 10 tags assigned, you can view all tags using the
+C<ListTagsForResource> API operation.
 
 
 =head2 ValidUserList => ArrayRef[Str|Undef]
