@@ -4,6 +4,7 @@ package Paws::Quicksight::User;
   has Arn => (is => 'ro', isa => 'Str');
   has Email => (is => 'ro', isa => 'Str');
   has IdentityType => (is => 'ro', isa => 'Str');
+  has PrincipalId => (is => 'ro', isa => 'Str');
   has Role => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
 1;
@@ -62,6 +63,11 @@ until they sign in and provide a password
 =head2 IdentityType => Str
 
   The type of identity authentication used by the user.
+
+
+=head2 PrincipalId => Str
+
+  The principal ID of the user.
 
 
 =head2 Role => Str

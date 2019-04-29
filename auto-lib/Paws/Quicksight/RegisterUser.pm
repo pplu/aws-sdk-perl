@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IdentityType => 'IAM',
       Namespace    => 'MyNamespace',
       UserRole     => 'ADMIN',
-      IamArn       => 'MyString',         # OPTIONAL
-      SessionName  => 'MyString',         # OPTIONAL
-      UserName     => 'MyUserName',       # OPTIONAL
+      IamArn       => 'MyString',             # OPTIONAL
+      SessionName  => 'MyRoleSessionName',    # OPTIONAL
+      UserName     => 'MyUserName',           # OPTIONAL
     );
 
     # Results:
