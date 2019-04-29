@@ -25,6 +25,11 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateBranch', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateCommit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateCommit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePullRequest {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreatePullRequest', @_);
@@ -374,7 +379,7 @@ package Paws::CodeCommit;
   }
 
 
-  sub operations { qw/BatchGetRepositories CreateBranch CreatePullRequest CreateRepository DeleteBranch DeleteCommentContent DeleteFile DeleteRepository DescribePullRequestEvents GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetFile GetFolder GetMergeConflicts GetPullRequest GetRepository GetRepositoryTriggers ListBranches ListPullRequests ListRepositories MergePullRequestByFastForward PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TestRepositoryTriggers UpdateComment UpdateDefaultBranch UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
+  sub operations { qw/BatchGetRepositories CreateBranch CreateCommit CreatePullRequest CreateRepository DeleteBranch DeleteCommentContent DeleteFile DeleteRepository DescribePullRequestEvents GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetFile GetFolder GetMergeConflicts GetPullRequest GetRepository GetRepositoryTriggers ListBranches ListPullRequests ListRepositories MergePullRequestByFastForward PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TestRepositoryTriggers UpdateComment UpdateDefaultBranch UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
 
 1;
 
@@ -506,6 +511,10 @@ Information about committed code in a repository, by calling the
 following:
 
 =over
+
+=item *
+
+CreateCommit, which creates a commit for changes to a repository.
 
 =item *
 
@@ -692,6 +701,40 @@ Creates a new branch in a repository and points the branch to a commit.
 
 Calling the create branch operation does not set a repository's default
 branch. To do this, call the update default branch operation.
+
+
+=head2 CreateCommit
+
+=over
+
+=item BranchName => Str
+
+=item RepositoryName => Str
+
+=item [AuthorName => Str]
+
+=item [CommitMessage => Str]
+
+=item [DeleteFiles => ArrayRef[L<Paws::CodeCommit::DeleteFileEntry>]]
+
+=item [Email => Str]
+
+=item [KeepEmptyFolders => Bool]
+
+=item [ParentCommitId => Str]
+
+=item [PutFiles => ArrayRef[L<Paws::CodeCommit::PutFileEntry>]]
+
+=item [SetFileModes => ArrayRef[L<Paws::CodeCommit::SetFileModeEntry>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::CreateCommit>
+
+Returns: a L<Paws::CodeCommit::CreateCommitOutput> instance
+
+Creates a commit for a repository on the tip of a specified branch.
 
 
 =head2 CreatePullRequest
