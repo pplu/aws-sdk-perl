@@ -1,12 +1,14 @@
 package Paws::MediaPackage::DashPackage;
   use Moose;
   has Encryption => (is => 'ro', isa => 'Paws::MediaPackage::DashEncryption', request_name => 'encryption', traits => ['NameInRequest']);
+  has ManifestLayout => (is => 'ro', isa => 'Str', request_name => 'manifestLayout', traits => ['NameInRequest']);
   has ManifestWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'manifestWindowSeconds', traits => ['NameInRequest']);
   has MinBufferTimeSeconds => (is => 'ro', isa => 'Int', request_name => 'minBufferTimeSeconds', traits => ['NameInRequest']);
   has MinUpdatePeriodSeconds => (is => 'ro', isa => 'Int', request_name => 'minUpdatePeriodSeconds', traits => ['NameInRequest']);
   has PeriodTriggers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'periodTriggers', traits => ['NameInRequest']);
   has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
   has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
+  has SegmentTemplateFormat => (is => 'ro', isa => 'Str', request_name => 'segmentTemplateFormat', traits => ['NameInRequest']);
   has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackage::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
   has SuggestedPresentationDelaySeconds => (is => 'ro', isa => 'Int', request_name => 'suggestedPresentationDelaySeconds', traits => ['NameInRequest']);
 1;
@@ -49,6 +51,15 @@ A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration.
   
 
 
+=head2 ManifestLayout => Str
+
+  Determines the position of some tags in the Media Presentation
+Description (MPD). When set to FULL, elements like SegmentTemplate and
+ContentProtection are included in each Representation. When set to
+COMPACT, duplicate elements are combined and presented at the
+AdaptationSet level.
+
+
 =head2 ManifestWindowSeconds => Int
 
   Time window (in seconds) contained in each manifest.
@@ -87,6 +98,15 @@ to "HBBTV_1_5", HbbTV 1.5 compliant output is enabled.
 
   Duration (in seconds) of each segment. Actual segments will be rounded
 to the nearest multiple of the source segment duration.
+
+
+=head2 SegmentTemplateFormat => Str
+
+  Determines the type of SegmentTimeline included in the Media
+Presentation Description (MPD). When set to NUMBER_WITH_TIMELINE, a
+full timeline is presented in each SegmentTemplate, with $Number$ media
+URLs. When set to TIME_WITH_TIMELINE, a full timeline is presented in
+each SegmentTemplate, with $Time$ media URLs.
 
 
 =head2 StreamSelection => L<Paws::MediaPackage::StreamSelection>

@@ -10,6 +10,7 @@ package Paws::MediaPackage::CreateOriginEndpoint;
   has ManifestName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'manifestName');
   has MssPackage => (is => 'ro', isa => 'Paws::MediaPackage::MssPackage', traits => ['NameInRequest'], request_name => 'mssPackage');
   has StartoverWindowSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startoverWindowSeconds');
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', traits => ['NameInRequest'], request_name => 'tags');
   has TimeDelaySeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeDelaySeconds');
   has Whitelist => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'whitelist');
 
@@ -85,15 +86,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           KeyRotationIntervalSeconds => 1,    # OPTIONAL
         },    # OPTIONAL
-        ManifestWindowSeconds  => 1,    # OPTIONAL
-        MinBufferTimeSeconds   => 1,    # OPTIONAL
-        MinUpdatePeriodSeconds => 1,    # OPTIONAL
+        ManifestLayout         => 'FULL',    # values: FULL, COMPACT; OPTIONAL
+        ManifestWindowSeconds  => 1,         # OPTIONAL
+        MinBufferTimeSeconds   => 1,         # OPTIONAL
+        MinUpdatePeriodSeconds => 1,         # OPTIONAL
         PeriodTriggers         => [
-          'ADS', ...                    # values: ADS
-        ],                              # OPTIONAL
+          'ADS', ...                         # values: ADS
+        ],                                   # OPTIONAL
         Profile                => 'NONE',    # values: NONE, HBBTV_1_5; OPTIONAL
         SegmentDurationSeconds => 1,         # OPTIONAL
-        StreamSelection        => {
+        SegmentTemplateFormat => 'NUMBER_WITH_TIMELINE'
+        ,    # values: NUMBER_WITH_TIMELINE, TIME_WITH_TIMELINE; OPTIONAL
+        StreamSelection => {
           MaxVideoBitsPerSecond => 1,           # OPTIONAL
           MinVideoBitsPerSecond => 1,           # OPTIONAL
           StreamOrder           => 'ORIGINAL'
@@ -152,9 +156,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
-      StartoverWindowSeconds => 1,                        # OPTIONAL
-      TimeDelaySeconds       => 1,                        # OPTIONAL
-      Whitelist              => [ 'My__string', ... ],    # OPTIONAL
+      StartoverWindowSeconds => 1,                                    # OPTIONAL
+      Tags                   => { 'My__string' => 'My__string', },    # OPTIONAL
+      TimeDelaySeconds       => 1,                                    # OPTIONAL
+      Whitelist              => [ 'My__string', ... ],                # OPTIONAL
     );
 
     # Results:
@@ -169,6 +174,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MssPackage   = $CreateOriginEndpointResponse->MssPackage;
     my $StartoverWindowSeconds =
       $CreateOriginEndpointResponse->StartoverWindowSeconds;
+    my $Tags             = $CreateOriginEndpointResponse->Tags;
     my $TimeDelaySeconds = $CreateOriginEndpointResponse->TimeDelaySeconds;
     my $Url              = $CreateOriginEndpointResponse->Url;
     my $Whitelist        = $CreateOriginEndpointResponse->Whitelist;
@@ -237,6 +243,12 @@ URL (defaults to "index").
 Maximum duration (seconds) of content to retain for startover playback.
 If not specified, startover playback will be disabled for the
 OriginEndpoint.
+
+
+
+=head2 Tags => L<Paws::MediaPackage::Tags>
+
+
 
 
 

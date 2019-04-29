@@ -83,15 +83,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           KeyRotationIntervalSeconds => 1,    # OPTIONAL
         },    # OPTIONAL
-        ManifestWindowSeconds  => 1,    # OPTIONAL
-        MinBufferTimeSeconds   => 1,    # OPTIONAL
-        MinUpdatePeriodSeconds => 1,    # OPTIONAL
+        ManifestLayout         => 'FULL',    # values: FULL, COMPACT; OPTIONAL
+        ManifestWindowSeconds  => 1,         # OPTIONAL
+        MinBufferTimeSeconds   => 1,         # OPTIONAL
+        MinUpdatePeriodSeconds => 1,         # OPTIONAL
         PeriodTriggers         => [
-          'ADS', ...                    # values: ADS
-        ],                              # OPTIONAL
+          'ADS', ...                         # values: ADS
+        ],                                   # OPTIONAL
         Profile                => 'NONE',    # values: NONE, HBBTV_1_5; OPTIONAL
         SegmentDurationSeconds => 1,         # OPTIONAL
-        StreamSelection        => {
+        SegmentTemplateFormat => 'NUMBER_WITH_TIMELINE'
+        ,    # values: NUMBER_WITH_TIMELINE, TIME_WITH_TIMELINE; OPTIONAL
+        StreamSelection => {
           MaxVideoBitsPerSecond => 1,           # OPTIONAL
           MinVideoBitsPerSecond => 1,           # OPTIONAL
           StreamOrder           => 'ORIGINAL'
@@ -167,6 +170,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MssPackage   = $UpdateOriginEndpointResponse->MssPackage;
     my $StartoverWindowSeconds =
       $UpdateOriginEndpointResponse->StartoverWindowSeconds;
+    my $Tags             = $UpdateOriginEndpointResponse->Tags;
     my $TimeDelaySeconds = $UpdateOriginEndpointResponse->TimeDelaySeconds;
     my $Url              = $UpdateOriginEndpointResponse->Url;
     my $Whitelist        = $UpdateOriginEndpointResponse->Whitelist;
