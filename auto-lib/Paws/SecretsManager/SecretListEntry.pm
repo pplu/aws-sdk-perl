@@ -56,7 +56,7 @@ get those values, use the GetSecretValue operation.
 
 For more information about ARNs in Secrets Manager, see Policy
 Resources
-(http://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#iam-resources)
+(https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#iam-resources)
 in the I<AWS Secrets Manager User Guide>.
 
 
