@@ -44,6 +44,11 @@ package Paws::EKS;
     my $call_object = $self->new_with_coercions('Paws::EKS::ListUpdates', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateClusterConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::UpdateClusterConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateClusterVersion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::UpdateClusterVersion', @_);
@@ -98,7 +103,7 @@ package Paws::EKS;
   }
 
 
-  sub operations { qw/CreateCluster DeleteCluster DescribeCluster DescribeUpdate ListClusters ListUpdates UpdateClusterVersion / }
+  sub operations { qw/CreateCluster DeleteCluster DescribeCluster DescribeUpdate ListClusters ListUpdates UpdateClusterConfig UpdateClusterVersion / }
 
 1;
 
@@ -157,6 +162,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 
 =item [ClientRequestToken => Str]
 
+=item [Logging => L<Paws::EKS::Logging>]
+
 =item [Version => Str]
 
 
@@ -171,11 +178,9 @@ Creates an Amazon EKS control plane.
 The Amazon EKS control plane consists of control plane instances that
 run the Kubernetes software, like C<etcd> and the API server. The
 control plane runs in an account managed by AWS, and the Kubernetes API
-is exposed via the Amazon EKS API server endpoint.
-
-Amazon EKS worker nodes run in your AWS account and connect to your
-cluster's control plane via the Kubernetes API server endpoint and a
-certificate file that is created for your cluster.
+is exposed via the Amazon EKS API server endpoint. Each Amazon EKS
+cluster control plane is single-tenant and unique, and runs on its own
+set of Amazon EC2 instances.
 
 The cluster control plane is provisioned across multiple Availability
 Zones and fronted by an Elastic Load Balancing Network Load Balancer.
@@ -184,14 +189,37 @@ subnets to provide connectivity from the control plane instances to the
 worker nodes (for example, to support C<kubectl exec>, C<logs>, and
 C<proxy> data flows).
 
-After you create an Amazon EKS cluster, you must configure your
-Kubernetes tooling to communicate with the API server and launch worker
-nodes into your cluster. For more information, see Managing Cluster
-Authentication
-(http://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html)
+Amazon EKS worker nodes run in your AWS account and connect to your
+cluster's control plane via the Kubernetes API server endpoint and a
+certificate file that is created for your cluster.
+
+You can use the C<endpointPublicAccess> and C<endpointPrivateAccess>
+parameters to enable or disable public and private access to your
+cluster's Kubernetes API server endpoint. By default, public access is
+enabled and private access is disabled. For more information, see
+Amazon EKS Cluster Endpoint Access Control
+(https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
+in the I< I<Amazon EKS User Guide> >.
+
+You can use the C<logging> parameter to enable or disable exporting the
+Kubernetes control plane logs for your cluster to CloudWatch Logs. By
+default, cluster control plane logs are not exported to CloudWatch
+Logs. For more information, see Amazon EKS Cluster Control Plane Logs
+(https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+in the I< I<Amazon EKS User Guide> >.
+
+CloudWatch Logs ingestion, archive storage, and data scanning rates
+apply to exported control plane logs. For more information, see Amazon
+CloudWatch Pricing (http://aws.amazon.com/cloudwatch/pricing/).
+
+Cluster creation typically takes between 10 and 15 minutes. After you
+create an Amazon EKS cluster, you must configure your Kubernetes
+tooling to communicate with the API server and launch worker nodes into
+your cluster. For more information, see Managing Cluster Authentication
+(https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html)
 and Launching Amazon EKS Worker Nodes
-(http://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)in
-the I<Amazon EKS User Guide>.
+(https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
+in the I<Amazon EKS User Guide>.
 
 
 =head2 DeleteCluster
@@ -214,7 +242,7 @@ load balancer, you must delete those services before deleting the
 cluster so that the load balancers are deleted properly. Otherwise, you
 can have orphaned resources in your VPC that prevent you from being
 able to delete the VPC. For more information, see Deleting a Cluster
-(http://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
+(https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
 in the I<Amazon EKS User Guide>.
 
 
@@ -237,7 +265,7 @@ The API server endpoint and certificate authority data returned by this
 operation are required for C<kubelet> and C<kubectl> to communicate
 with your Kubernetes API server. For more information, see Create a
 kubeconfig for Amazon EKS
-(http://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html).
+(https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html).
 
 The API server endpoint and certificate authority data are not
 available until the cluster reaches the C<ACTIVE> state.
@@ -304,6 +332,55 @@ Returns: a L<Paws::EKS::ListUpdatesResponse> instance
 
 Lists the updates associated with an Amazon EKS cluster in your AWS
 account, in the specified Region.
+
+
+=head2 UpdateClusterConfig
+
+=over
+
+=item Name => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Logging => L<Paws::EKS::Logging>]
+
+=item [ResourcesVpcConfig => L<Paws::EKS::VpcConfigRequest>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::UpdateClusterConfig>
+
+Returns: a L<Paws::EKS::UpdateClusterConfigResponse> instance
+
+Updates an Amazon EKS cluster configuration. Your cluster continues to
+function during the update. The response output includes an update ID
+that you can use to track the status of your cluster update with the
+DescribeUpdate API operation.
+
+You can use this API operation to enable or disable public and private
+access to your cluster's Kubernetes API server endpoint. By default,
+public access is enabled and private access is disabled. For more
+information, see Amazon EKS Cluster Endpoint Access Control
+(https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
+in the I< I<Amazon EKS User Guide> >.
+
+You can also use this API operation to enable or disable exporting the
+Kubernetes control plane logs for your cluster to CloudWatch Logs. By
+default, cluster control plane logs are not exported to CloudWatch
+Logs. For more information, see Amazon EKS Cluster Control Plane Logs
+(https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+in the I< I<Amazon EKS User Guide> >.
+
+CloudWatch Logs ingestion, archive storage, and data scanning rates
+apply to exported control plane logs. For more information, see Amazon
+CloudWatch Pricing (http://aws.amazon.com/cloudwatch/pricing/).
+
+Cluster updates are asynchronous, and they should finish within a few
+minutes. During an update, the cluster status moves to C<UPDATING>
+(this status transition is eventually consistent). When the update is
+complete (either C<Failed> or C<Successful>), the cluster status moves
+to C<Active>.
 
 
 =head2 UpdateClusterVersion
