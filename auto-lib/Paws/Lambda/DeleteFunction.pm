@@ -75,7 +75,7 @@ function name, it is limited to 64 characters in length.
 
 =head2 Qualifier => Str
 
-Specify a version to delete. You cannot delete a version that is
+Specify a version to delete. You can't delete a version that's
 referenced by an alias.
 
 

@@ -113,16 +113,16 @@ code. This has the same effect as calling PublishVersion separately.
 
 =head2 RevisionId => Str
 
-Only update the function if the revision ID matches the ID specified.
-Use this option to avoid modifying a function that has changed since
-you last read it.
+Only update the function if the revision ID matches the ID that's
+specified. Use this option to avoid modifying a function that has
+changed since you last read it.
 
 
 
 =head2 S3Bucket => Str
 
-An Amazon S3 bucket in the same region as your function. The bucket can
-be in a different AWS account.
+An Amazon S3 bucket in the same AWS Region as your function. The bucket
+can be in a different AWS account.
 
 
 

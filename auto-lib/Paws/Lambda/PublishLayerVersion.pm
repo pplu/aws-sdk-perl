@@ -69,7 +69,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 =head2 CompatibleRuntimes => ArrayRef[Str|Undef]
 
 A list of compatible function runtimes
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 Used for filtering with ListLayers and ListLayerVersions.
 
 

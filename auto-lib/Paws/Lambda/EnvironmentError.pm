@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Env
 
 =head1 DESCRIPTION
 
-Error messages for environment variables that could not be applied.
+Error messages for environment variables that couldn't be applied.
 
 =head1 ATTRIBUTES
 

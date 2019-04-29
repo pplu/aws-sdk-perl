@@ -42,8 +42,8 @@ Amazon S3, or upload a deployment package directly.
 
 =head2 S3Bucket => Str
 
-  An Amazon S3 bucket in the same region as your function. The bucket can
-be in a different AWS account.
+  An Amazon S3 bucket in the same AWS Region as your function. The bucket
+can be in a different AWS account.
 
 
 =head2 S3Key => Str

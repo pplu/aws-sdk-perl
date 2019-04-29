@@ -110,8 +110,8 @@ The API response includes the function response and additional data.
 =item *
 
 C<Event> - Invoke the function asynchronously. Send events that fail
-multiple times to the function's dead-letter queue (if configured). The
-API response only includes a status code.
+multiple times to the function's dead-letter queue (if it's
+configured). The API response only includes a status code.
 
 =item *
 
@@ -131,7 +131,7 @@ Valid values are: C<"None">, C<"Tail">
 
 =head2 Payload => Str
 
-JSON that you want to provide to your Lambda function as input.
+The JSON that you want to provide to your Lambda function as input.
 
 
 

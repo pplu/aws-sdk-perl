@@ -41,7 +41,7 @@ The SHA256 hash of the function's deployment package.
 
 =head2 CodeSize => Int
 
-The size of the function's deployment package in bytes.
+The size of the function's deployment package, in bytes.
 
 
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
@@ -71,13 +71,14 @@ The name of the function.
 
 =head2 Handler => Str
 
-The function Lambda calls to begin executing your function.
+The function that Lambda calls to begin executing your function.
 
 
 =head2 KMSKeyArn => Str
 
-The KMS key used to encrypt the function's environment variables. Only
-returned if you've configured a customer managed CMK.
+The KMS key that's used to encrypt the function's environment
+variables. This key is only returned if you've configured a
+customer-managed CMK.
 
 
 =head2 LastModified => Str
@@ -90,7 +91,7 @@ format (https://www.w3.org/TR/NOTE-datetime)
 =head2 Layers => ArrayRef[L<Paws::Lambda::Layer>]
 
 The function's layers
-(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 
 
 =head2 MasterArn => Str
@@ -100,12 +101,12 @@ For Lambda@Edge functions, the ARN of the master function.
 
 =head2 MemorySize => Int
 
-The memory allocated to the function
+The memory that's allocated to the function.
 
 
 =head2 RevisionId => Str
 
-Represents the latest updated revision of the function or alias.
+The latest updated revision of the function or alias.
 
 
 =head2 Role => Str
@@ -120,8 +121,8 @@ The runtime environment for the Lambda function.
 Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"provided">
 =head2 Timeout => Int
 
-The amount of time that Lambda allows a function to run before
-terminating it.
+The amount of time that Lambda allows a function to run before stopping
+it.
 
 
 =head2 TracingConfig => L<Paws::Lambda::TracingConfigResponse>

@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 
@@ -89,8 +89,8 @@ version.
 
 =head2 Marker => Str
 
-Specify the pagination token returned by a previous request to retrieve
-the next page of results.
+Specify the pagination token that's returned by a previous request to
+retrieve the next page of results.
 
 
 

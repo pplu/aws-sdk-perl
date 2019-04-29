@@ -18,7 +18,7 @@ Paws::Lambda::GetAccountSettingsResponse
 
 =head2 AccountLimit => L<Paws::Lambda::AccountLimit>
 
-Limits related to concurrency and code storage.
+Limits that are related to concurrency and code storage.
 
 
 =head2 AccountUsage => L<Paws::Lambda::AccountUsage>

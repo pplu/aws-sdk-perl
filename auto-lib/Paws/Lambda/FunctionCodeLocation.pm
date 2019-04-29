@@ -39,12 +39,12 @@ Details about a function's deployment package.
 
 =head2 Location => Str
 
-  A pre-signed URL that you can use to download the deployment package.
+  A presigned URL that you can use to download the deployment package.
 
 
 =head2 RepositoryType => Str
 
-  The service hosting the file.
+  The service that's hosting the file.
 
 
 

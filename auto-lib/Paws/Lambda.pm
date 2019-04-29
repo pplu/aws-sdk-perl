@@ -94,6 +94,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetLayerVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetLayerVersionByArn {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetLayerVersionByArn', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetLayerVersionPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetLayerVersionPolicy', @_);
@@ -345,7 +350,7 @@ package Paws::Lambda;
   }
 
 
-  sub operations { qw/AddLayerVersionPermission AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction DeleteFunctionConcurrency DeleteLayerVersion GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetLayerVersion GetLayerVersionPolicy GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListLayers ListLayerVersions ListTags ListVersionsByFunction PublishLayerVersion PublishVersion PutFunctionConcurrency RemoveLayerVersionPermission RemovePermission TagResource UntagResource UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
+  sub operations { qw/AddLayerVersionPermission AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction DeleteFunctionConcurrency DeleteLayerVersion GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetLayerVersion GetLayerVersionByArn GetLayerVersionPolicy GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListLayers ListLayerVersions ListTags ListVersionsByFunction PublishLayerVersion PublishVersion PutFunctionConcurrency RemoveLayerVersionPermission RemovePermission TagResource UntagResource UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
 
 1;
 
@@ -379,10 +384,10 @@ B<Overview>
 
 This is the I<AWS Lambda API Reference>. The AWS Lambda Developer Guide
 provides additional information. For the service overview, see What is
-AWS Lambda (http://docs.aws.amazon.com/lambda/latest/dg/welcome.html),
+AWS Lambda (https://docs.aws.amazon.com/lambda/latest/dg/welcome.html),
 and for information about how the service works, see AWS Lambda: How it
 Works
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html)
 in the B<AWS Lambda Developer Guide>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31>
@@ -417,7 +422,7 @@ Returns: a L<Paws::Lambda::AddLayerVersionPermissionResponse> instance
 
 Adds permissions to the resource-based policy of a version of an AWS
 Lambda layer
-(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 Use this action to grant layer usage permission to other accounts. You
 can grant permission to a single account, all AWS accounts, or all
 accounts in an organization.
@@ -473,7 +478,7 @@ configure resources in their account to invoke your Lambda function.
 This action adds a statement to a resource-based permission policy for
 the function. For more information about function policies, see Lambda
 Function Policies
-(http://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html).
 
 
 =head2 CreateAlias
@@ -498,7 +503,7 @@ Each argument is described in detail in: L<Paws::Lambda::CreateAlias>
 Returns: a L<Paws::Lambda::AliasConfiguration> instance
 
 Creates an alias
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
 for a Lambda function version. Use aliases to provide clients with a
 function identifier that you can update to invoke a different version.
 
@@ -540,17 +545,17 @@ For details about each event source type, see the following topics.
 =item *
 
 Using AWS Lambda with Amazon Kinesis
-(http://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html)
 
 =item *
 
 Using AWS Lambda with Amazon SQS
-(http://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html)
 
 =item *
 
 Using AWS Lambda with Amazon DynamoDB
-(http://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html)
 
 =back
 
@@ -601,28 +606,29 @@ Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
 Creates a Lambda function. To create a function, you need a deployment
 package
-(http://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html)
 and an execution role
-(http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role).
+(https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role).
 The deployment package contains your function code. The execution role
-grants the function permission to use AWS services such as Amazon
+grants the function permission to use AWS services, such as Amazon
 CloudWatch Logs for log streaming and AWS X-Ray for request tracing.
 
 A function has an unpublished version, and can have published versions
-and aliases. A published version is a snapshot of your function code
-and configuration that can not be changed. An alias is a named resource
-that maps to a version, and can be changed to map to a different
-version. Use the C<Publish> parameter to create version C<1> of your
-function from its initial configuration.
+and aliases. The unpublished version changes when you update your
+function's code and configuration. A published version is a snapshot of
+your function code and configuration that can't be changed. An alias is
+a named resource that maps to a version, and can be changed to map to a
+different version. Use the C<Publish> parameter to create version C<1>
+of your function from its initial configuration.
 
 The other parameters let you configure version-specific and
 function-level settings. You can modify version-specific settings later
 with UpdateFunctionConfiguration. Function-level settings apply to both
-the unpublished and published versions of the function and include tags
-(TagResource) and per-function concurrency limits
+the unpublished and published versions of the function, and include
+tags (TagResource) and per-function concurrency limits
 (PutFunctionConcurrency).
 
-If another account or a AWS service invokes your function, use
+If another account or an AWS service invokes your function, use
 AddPermission to grant permission by creating a resource-based IAM
 policy. You can grant permissions at the function level, on a version,
 or on an alias.
@@ -631,7 +637,7 @@ To invoke your function directly, use Invoke. To invoke your function
 in response to events in other AWS services, create an event source
 mapping (CreateEventSourceMapping), or configure a function trigger in
 the other service. For more information, see Invoking Functions
-(http://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html).
 
 
 =head2 DeleteAlias
@@ -650,7 +656,7 @@ Each argument is described in detail in: L<Paws::Lambda::DeleteAlias>
 Returns: nothing
 
 Deletes a Lambda function alias
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 
 =head2 DeleteEventSourceMapping
@@ -667,7 +673,7 @@ Each argument is described in detail in: L<Paws::Lambda::DeleteEventSourceMappin
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
 Deletes an event source mapping
-(http://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html).
 You can get the identifier of a mapping from the output of
 ListEventSourceMappings.
 
@@ -729,7 +735,7 @@ Each argument is described in detail in: L<Paws::Lambda::DeleteLayerVersion>
 Returns: nothing
 
 Deletes a version of an AWS Lambda layer
-(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 Deleted versions can no longer be viewed or added to functions. To
 avoid breaking functions, a copy of the version remains in Lambda until
 no functions refer to it.
@@ -747,8 +753,8 @@ Each argument is described in detail in: L<Paws::Lambda::GetAccountSettings>
 Returns: a L<Paws::Lambda::GetAccountSettingsResponse> instance
 
 Retrieves details about your account's limits
-(http://docs.aws.amazon.com/lambda/latest/dg/limits.html) and usage in
-a region.
+(https://docs.aws.amazon.com/lambda/latest/dg/limits.html) and usage in
+an AWS Region.
 
 
 =head2 GetAlias
@@ -767,7 +773,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetAlias>
 Returns: a L<Paws::Lambda::AliasConfiguration> instance
 
 Returns details about a Lambda function alias
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 
 =head2 GetEventSourceMapping
@@ -802,10 +808,10 @@ Each argument is described in detail in: L<Paws::Lambda::GetFunction>
 
 Returns: a L<Paws::Lambda::GetFunctionResponse> instance
 
-Returns information about function or function version, with a link to
-download the deployment package that's valid for 10 minutes. If you
-specify a function version, only details specific to that version are
-returned.
+Returns information about the function or function version, with a link
+to download the deployment package that's valid for 10 minutes. If you
+specify a function version, only details that are specific to that
+version are returned.
 
 
 =head2 GetFunctionConfiguration
@@ -823,10 +829,9 @@ Each argument is described in detail in: L<Paws::Lambda::GetFunctionConfiguratio
 
 Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
-Returns a the version-specific settings of a Lambda function or
-version. The output includes only options that can vary between
-versions of a function. To modify these settings, use
-UpdateFunctionConfiguration.
+Returns the version-specific settings of a Lambda function or version.
+The output includes only options that can vary between versions of a
+function. To modify these settings, use UpdateFunctionConfiguration.
 
 To get all of a function's details, including function-level settings,
 use GetFunction.
@@ -848,7 +853,25 @@ Each argument is described in detail in: L<Paws::Lambda::GetLayerVersion>
 Returns: a L<Paws::Lambda::GetLayerVersionResponse> instance
 
 Returns information about a version of an AWS Lambda layer
-(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
+with a link to download the layer archive that's valid for 10 minutes.
+
+
+=head2 GetLayerVersionByArn
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::GetLayerVersionByArn>
+
+Returns: a L<Paws::Lambda::GetLayerVersionResponse> instance
+
+Returns information about a version of an AWS Lambda layer
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
 with a link to download the layer archive that's valid for 10 minutes.
 
 
@@ -868,7 +891,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetLayerVersionPolicy>
 Returns: a L<Paws::Lambda::GetLayerVersionPolicyResponse> instance
 
 Returns the permission policy for a version of an AWS Lambda layer
-(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 For more information, see AddLayerVersionPermission.
 
 
@@ -888,7 +911,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetPolicy>
 Returns: a L<Paws::Lambda::GetPolicyResponse> instance
 
 Returns the resource-based IAM policy
-(http://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html)
 for a function, version, or alias.
 
 
@@ -915,31 +938,38 @@ Each argument is described in detail in: L<Paws::Lambda::Invoke>
 
 Returns: a L<Paws::Lambda::InvocationResponse> instance
 
-Invokes a Lambda function. You can invoke a function synchronously and
-wait for the response, or asynchronously. To invoke a function
+Invokes a Lambda function. You can invoke a function synchronously (and
+wait for the response), or asynchronously. To invoke a function
 asynchronously, set C<InvocationType> to C<Event>.
 
 For synchronous invocation, details about the function response,
 including errors, are included in the response body and headers. For
 either invocation type, you can find more information in the execution
 log
-(http://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html)
-and trace (http://docs.aws.amazon.com/lambda/latest/dg/dlq.html). To
+(https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html)
+and trace (https://docs.aws.amazon.com/lambda/latest/dg/dlq.html). To
 record function errors for asynchronous invocations, configure your
 function with a dead letter queue
-(http://docs.aws.amazon.com/lambda/latest/dg/dlq.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/dlq.html).
 
-The status code in the API response does not reflect function errors.
+When an error occurs, your function may be invoked multiple times.
+Retry behavior varies by error type, client, event source, and
+invocation type. For example, if you invoke a function asynchronously
+and it returns an error, Lambda executes the function up to two more
+times. For more information, see Retry Behavior
+(https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html).
+
+The status code in the API response doesn't reflect function errors.
 Error codes are reserved for errors that prevent your function from
 executing, such as permissions errors, limit errors
-(http://docs.aws.amazon.com/lambda/latest/dg/limits.html), or issues
+(https://docs.aws.amazon.com/lambda/latest/dg/limits.html), or issues
 with your function's code and configuration. For example, Lambda
 returns C<TooManyRequestsException> if executing the function would
 cause you to exceed a concurrency limit at either the account level
 (C<ConcurrentInvocationLimitExceeded>) or function level
 (C<ReservedFunctionConcurrentInvocationLimitExceeded>).
 
-For functions with a long timeout, your client may be disconnected
+For functions with a long timeout, your client might be disconnected
 during synchronous invocation while it waits for a response. Configure
 your HTTP client, SDK, firewall, proxy, or operating system to allow
 for long connections with timeout or keep-alive settings.
@@ -988,7 +1018,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListAliases>
 Returns: a L<Paws::Lambda::ListAliasesResponse> instance
 
 Returns a list of aliases
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
 for a Lambda function.
 
 
@@ -1060,10 +1090,10 @@ Each argument is described in detail in: L<Paws::Lambda::ListLayers>
 Returns: a L<Paws::Lambda::ListLayersResponse> instance
 
 Lists AWS Lambda layers
-(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
 and shows information about the latest version of each. Specify a
 runtime identifier
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to
 list only layers that indicate that they're compatible with that
 runtime.
 
@@ -1088,10 +1118,10 @@ Each argument is described in detail in: L<Paws::Lambda::ListLayerVersions>
 Returns: a L<Paws::Lambda::ListLayerVersionsResponse> instance
 
 Lists the versions of an AWS Lambda layer
-(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 Versions that have been deleted aren't listed. Specify a runtime
 identifier
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to
 list only versions that indicate that they're compatible with that
 runtime.
 
@@ -1110,7 +1140,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListTags>
 Returns: a L<Paws::Lambda::ListTagsResponse> instance
 
 Returns a function's tags
-(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html). You can
+(https://docs.aws.amazon.com/lambda/latest/dg/tagging.html). You can
 also view tags with GetFunction.
 
 
@@ -1132,7 +1162,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListVersionsByFunction>
 Returns: a L<Paws::Lambda::ListVersionsByFunctionResponse> instance
 
 Returns a list of versions
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html),
+(https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html),
 with the version-specific configuration of each.
 
 
@@ -1158,7 +1188,7 @@ Each argument is described in detail in: L<Paws::Lambda::PublishLayerVersion>
 Returns: a L<Paws::Lambda::PublishLayerVersionResponse> instance
 
 Creates an AWS Lambda layer
-(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
 from a ZIP archive. Each time you call C<PublishLayerVersion> with the
 same version name, a new version is created.
 
@@ -1186,15 +1216,15 @@ Each argument is described in detail in: L<Paws::Lambda::PublishVersion>
 Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
 Creates a version
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
 from the current code and configuration of a function. Use versions to
 create a snapshot of your function code and configuration that doesn't
 change.
 
-AWS Lambda does not publish a version if the function's configuration
-and code hasn't changed since the last version. Use UpdateFunctionCode
-or UpdateFunctionConfiguration to update the function prior to
-publishing a version.
+AWS Lambda doesn't publish a version if the function's configuration
+and code haven't changed since the last version. Use UpdateFunctionCode
+or UpdateFunctionConfiguration to update the function before publishing
+a version.
 
 Clients can invoke versions directly or with an alias. To create an
 alias, use CreateAlias.
@@ -1220,17 +1250,16 @@ reserves capacity for that concurrency level.
 
 Concurrency settings apply to the function as a whole, including all
 published versions and the unpublished version. Reserving concurrency
-both guarantees that your function has capacity to process the
-specified number of events simultaneously, and prevents it from scaling
-beyond that level. Use GetFunction to see the current setting for a
-function.
+both ensures that your function has capacity to process the specified
+number of events simultaneously, and prevents it from scaling beyond
+that level. Use GetFunction to see the current setting for a function.
 
 Use GetAccountSettings to see your regional concurrency limit. You can
 reserve concurrency for as many functions as you like, as long as you
 leave at least 100 simultaneous executions unreserved for functions
 that aren't configured with a per-function limit. For more information,
 see Managing Concurrency
-(http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
 
 
 =head2 RemoveLayerVersionPermission
@@ -1254,7 +1283,7 @@ Returns: nothing
 
 Removes a statement from the permissions policy for a version of an AWS
 Lambda layer
-(http://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 For more information, see AddLayerVersionPermission.
 
 
@@ -1277,7 +1306,7 @@ Each argument is described in detail in: L<Paws::Lambda::RemovePermission>
 
 Returns: nothing
 
-Revokes function use permission from an AWS service or another account.
+Revokes function-use permission from an AWS service or another account.
 You can get the ID of the statement from the output of GetPolicy.
 
 
@@ -1296,8 +1325,8 @@ Each argument is described in detail in: L<Paws::Lambda::TagResource>
 
 Returns: nothing
 
-Adds tags (http://docs.aws.amazon.com/lambda/latest/dg/tagging.html) to
-a function.
+Adds tags (https://docs.aws.amazon.com/lambda/latest/dg/tagging.html)
+to a function.
 
 
 =head2 UntagResource
@@ -1315,8 +1344,9 @@ Each argument is described in detail in: L<Paws::Lambda::UntagResource>
 
 Returns: nothing
 
-Removes tags (http://docs.aws.amazon.com/lambda/latest/dg/tagging.html)
-from a function.
+Removes tags
+(https://docs.aws.amazon.com/lambda/latest/dg/tagging.html) from a
+function.
 
 
 =head2 UpdateAlias
@@ -1343,7 +1373,7 @@ Each argument is described in detail in: L<Paws::Lambda::UpdateAlias>
 Returns: a L<Paws::Lambda::AliasConfiguration> instance
 
 Updates the configuration of a Lambda function alias
-(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 
 =head2 UpdateEventSourceMapping
@@ -1399,7 +1429,7 @@ Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
 Updates a Lambda function's code.
 
-The function's code is locked when you publish a version. You cannot
+The function's code is locked when you publish a version. You can't
 modify the code of a published version, only the unpublished version.
 
 
@@ -1442,10 +1472,10 @@ Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionConfigura
 
 Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
-Modify the version-specifc settings of a Lambda function.
+Modify the version-specific settings of a Lambda function.
 
 These settings can vary between versions of a function and are locked
-when you publish a version. You cannot modify the configuration of a
+when you publish a version. You can't modify the configuration of a
 published version, only the unpublished version.
 
 To configure function concurrency, use PutFunctionConcurrency. To grant

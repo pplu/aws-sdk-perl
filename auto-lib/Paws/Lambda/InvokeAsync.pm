@@ -77,7 +77,7 @@ the function name, it is limited to 64 characters in length.
 
 =head2 B<REQUIRED> InvokeArgs => Str
 
-JSON that you want to provide to your Lambda function as input.
+The JSON that you want to provide to your Lambda function as input.
 
 
 
