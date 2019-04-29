@@ -94,7 +94,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =over
 
+=item [ContainerFormat => Str]
+
 =item [DiscontinuityMode => Str]
+
+=item [DisplayFragmentTimestamp => Str]
 
 =item [Expires => Int]
 
@@ -127,7 +131,10 @@ providing data through HLS:
 
 =item *
 
-The media type must be C<video/h264>.
+The media must contain h.264 encoded video and, optionally, AAC encoded
+audio. Specifically, the codec id of track 1 should be
+C<V_MPEG/ISO/AVC>. Optionally, the codec id of track 2 should be
+C<A_AAC>.
 
 =item *
 
@@ -135,11 +142,18 @@ Data retention must be greater than 0.
 
 =item *
 
-The fragments must contain codec private data in the AVC (Advanced
-Video Coding) for H.264 format (MPEG-4 specification ISO/IEC 14496-15
-(https://www.iso.org/standard/55980.html)). For information about
-adapting stream data to a given format, see NAL Adaptation Flags
-(http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/latest/dg/producer-reference-nal.html).
+The video track of each fragment must contain codec private data in the
+Advanced Video Coding (AVC) for H.264 format (MPEG-4 specification
+ISO/IEC 14496-15 (https://www.iso.org/standard/55980.html)). For
+information about adapting stream data to a given format, see NAL
+Adaptation Flags
+(http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
+
+=item *
+
+The audio track (if present) of each fragment must contain codec
+private data in the AAC format (AAC specification ISO/IEC 13818-7
+(https://www.iso.org/standard/43345.html)).
 
 =back
 
@@ -177,7 +191,7 @@ AWS credentials.
 
 The media that is made available through the playlist consists only of
 the requested stream, time range, and format. No other media data (such
-as frames outside the requested window or alternate bit rates) is made
+as frames outside the requested window or alternate bitrates) is made
 available.
 
 =item 3.
@@ -187,9 +201,9 @@ master playlist to a media player that supports the HLS protocol.
 Kinesis Video Streams makes the HLS media playlist, initialization
 fragment, and media fragments available through the master playlist
 URL. The initialization fragment contains the codec private data for
-the stream, and other data needed to set up the video decoder and
-renderer. The media fragments contain H.264-encoded video frames and
-time stamps.
+the stream, and other data needed to set up the video or audio decoder
+and renderer. The media fragments contain H.264-encoded video frames or
+AAC-encoded audio samples.
 
 =item 4.
 
@@ -202,9 +216,9 @@ it calls the following actions:
 =item *
 
 B<GetHLSMasterPlaylist:> Retrieves an HLS master playlist, which
-contains a URL for the C<GetHLSMediaPlaylist> action, and additional
-metadata for the media player, including estimated bit rate and
-resolution.
+contains a URL for the C<GetHLSMediaPlaylist> action for each track,
+and additional metadata for the media player, including estimated
+bitrate and resolution.
 
 =item *
 
@@ -217,7 +231,9 @@ to play it, such as whether the C<PlaybackMode> is C<LIVE> or
 C<ON_DEMAND>. The HLS media playlist is typically static for sessions
 with a C<PlaybackType> of C<ON_DEMAND>. The HLS media playlist is
 continually updated with new fragments for sessions with a
-C<PlaybackType> of C<LIVE>.
+C<PlaybackType> of C<LIVE>. There is a distinct HLS media playlist for
+the video track and the audio track (if applicable) that contains MP4
+media URLs for the specific track.
 
 =item *
 
@@ -229,20 +245,38 @@ player decoder.
 
 The initialization fragment does not correspond to a fragment in a
 Kinesis video stream. It contains only the codec private data for the
-stream, which the media player needs to decode video frames.
+stream and respective track, which the media player needs to decode the
+media frames.
 
 =item *
 
 B<GetMP4MediaFragment:> Retrieves MP4 media fragments. These fragments
 contain the "C<moof>" and "C<mdat>" MP4 atoms and their child atoms,
-containing the encoded fragment's video frames and their time stamps.
+containing the encoded fragment's media frames and their timestamps.
 
 After the first media fragment is made available in a streaming
 session, any fragments that don't contain the same codec private data
-are excluded in the HLS media playlist. Therefore, the codec private
-data does not change between fragments in a session.
+cause an error to be returned when those different media fragments are
+loaded. Therefore, the codec private data should not change between
+fragments in a session. This also means that the session fails if the
+fragments in a stream change from having only video to having both
+audio and video.
 
-Data retrieved with this action is billable. See Pricing for details.
+Data retrieved with this action is billable. See Pricing
+(https://aws.amazon.com/kinesis/video-streams/pricing/) for details.
+
+=item *
+
+B<GetTSFragment:> Retrieves MPEG TS fragments containing both
+initialization and media data for all tracks in the stream.
+
+If the C<ContainerFormat> is C<MPEG_TS>, this API is used instead of
+C<GetMP4InitFragment> and C<GetMP4MediaFragment> to retrieve stream
+media.
+
+Data retrieved with this action is billable. For more information, see
+Kinesis Video Streams pricing
+(https://aws.amazon.com/kinesis/video-streams/pricing/).
 
 =back
 
@@ -304,6 +338,11 @@ Returns: a L<Paws::KinesisVideoArchivedMedia::GetMediaForFragmentListOutput> ins
 Gets media for a list of fragments (specified by fragment number) from
 the archived data in an Amazon Kinesis video stream.
 
+You must first call the C<GetDataEndpoint> API to get an endpoint. Then
+send the C<GetMediaForFragmentList> requests to this endpoint using the
+--endpoint-url parameter
+(https://docs.aws.amazon.com/cli/latest/reference/).
+
 The following limits apply when using the C<GetMediaForFragmentList>
 API:
 
@@ -343,8 +382,19 @@ Each argument is described in detail in: L<Paws::KinesisVideoArchivedMedia::List
 
 Returns: a L<Paws::KinesisVideoArchivedMedia::ListFragmentsOutput> instance
 
-Returns a list of Fragment objects from the specified stream and start
-location within the archived data.
+Returns a list of Fragment objects from the specified stream and
+timestamp range within the archived data.
+
+Listing fragments is eventually consistent. This means that even if the
+producer receives an acknowledgment that a fragment is persisted, the
+result might not be returned immediately from a request to
+C<ListFragments>. However, results are typically available in less than
+one second.
+
+You must first call the C<GetDataEndpoint> API to get an endpoint. Then
+send the C<ListFragments> requests to this endpoint using the
+--endpoint-url parameter
+(https://docs.aws.amazon.com/cli/latest/reference/).
 
 
 

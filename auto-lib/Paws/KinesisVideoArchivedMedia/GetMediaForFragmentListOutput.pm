@@ -41,12 +41,12 @@ chunk.
 
 =item *
 
-AWS_KINESISVIDEO_SERVER_SIDE_TIMESTAMP - Server-side time stamp of the
+AWS_KINESISVIDEO_SERVER_SIDE_TIMESTAMP - Server-side timestamp of the
 fragment.
 
 =item *
 
-AWS_KINESISVIDEO_PRODUCER_SIDE_TIMESTAMP - Producer-side time stamp of
+AWS_KINESISVIDEO_PRODUCER_SIDE_TIMESTAMP - Producer-side timestamp of
 the fragment.
 
 =back

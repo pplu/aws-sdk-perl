@@ -32,20 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisVide
 
 =head1 DESCRIPTION
 
-The range of time stamps for which to return fragments.
+The range of timestamps for which to return fragments.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> EndTimestamp => Str
 
-  The ending time stamp in the range of time stamps for which to return
+  The ending timestamp in the range of timestamps for which to return
 fragments.
 
 
 =head2 B<REQUIRED> StartTimestamp => Str
 
-  The starting time stamp in the range of time stamps for which to return
+  The starting timestamp in the range of timestamps for which to return
 fragments.
 
 

@@ -1,7 +1,9 @@
 
 package Paws::KinesisVideoArchivedMedia::GetHLSStreamingSessionURL;
   use Moose;
+  has ContainerFormat => (is => 'ro', isa => 'Str');
   has DiscontinuityMode => (is => 'ro', isa => 'Str');
+  has DisplayFragmentTimestamp => (is => 'ro', isa => 'Str');
   has Expires => (is => 'ro', isa => 'Int');
   has HLSFragmentSelector => (is => 'ro', isa => 'Paws::KinesisVideoArchivedMedia::HLSFragmentSelector');
   has MaxMediaPlaylistFragmentResults => (is => 'ro', isa => 'Int');
@@ -36,9 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $kinesisvideo = Paws->service('KinesisVideoArchivedMedia');
     my $GetHLSStreamingSessionURLOutput =
       $kinesisvideo->GetHLSStreamingSessionURL(
-      DiscontinuityMode   => 'ALWAYS',    # OPTIONAL
-      Expires             => 1,           # OPTIONAL
-      HLSFragmentSelector => {
+      ContainerFormat          => 'FRAGMENTED_MP4',    # OPTIONAL
+      DiscontinuityMode        => 'ALWAYS',            # OPTIONAL
+      DisplayFragmentTimestamp => 'ALWAYS',            # OPTIONAL
+      Expires                  => 1,                   # OPTIONAL
+      HLSFragmentSelector      => {
         FragmentSelectorType => 'PRODUCER_TIMESTAMP'
         ,    # values: PRODUCER_TIMESTAMP, SERVER_TIMESTAMP; OPTIONAL
         TimestampRange => {
@@ -64,6 +68,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 =head1 ATTRIBUTES
 
 
+=head2 ContainerFormat => Str
+
+Specifies which format should be used for packaging the media.
+Specifying the C<FRAGMENTED_MP4> container format packages the media
+into MP4 fragments (fMP4 or CMAF). This is the recommended packaging
+because there is minimal packaging overhead. The other container format
+option is C<MPEG_TS>. HLS has supported MPEG TS chunks since it was
+released and is sometimes the only supported packaging on older HLS
+players. MPEG TS typically has a 5-25 percent packaging overhead. This
+means MPEG TS typically requires 5-25 percent more bandwidth and cost
+than fMP4.
+
+The default is C<FRAGMENTED_MP4>.
+
+Valid values are: C<"FRAGMENTED_MP4">, C<"MPEG_TS">
+
 =head2 DiscontinuityMode => Str
 
 Specifies when flags marking discontinuities between fragments will be
@@ -72,17 +92,36 @@ HLSFragmentSelector is C<SERVER_TIMESTAMP>, and C<NEVER> when it is
 C<PRODUCER_TIMESTAMP>.
 
 Media players typically build a timeline of media content to play,
-based on the time stamps of each fragment. This means that if there is
+based on the timestamps of each fragment. This means that if there is
 any overlap between fragments (as is typical if HLSFragmentSelector is
 C<SERVER_TIMESTAMP>), the media player timeline has small gaps between
 fragments in some places, and overwrites frames in other places. When
 there are discontinuity flags between fragments, the media player is
 expected to reset the timeline, resulting in the fragment being played
 immediately after the previous fragment. We recommend that you always
-have discontinuity flags between fragments if the fragment time stamps
+have discontinuity flags between fragments if the fragment timestamps
 are not accurate or if fragments might be missing. You should not place
 discontinuity flags between fragments for the player timeline to
-accurately map to the producer time stamps.
+accurately map to the producer timestamps.
+
+Valid values are: C<"ALWAYS">, C<"NEVER">
+
+=head2 DisplayFragmentTimestamp => Str
+
+Specifies when the fragment start timestamps should be included in the
+HLS media playlist. Typically, media players report the playhead
+position as a time relative to the start of the first fragment in the
+playback session. However, when the start timestamps are included in
+the HLS media playlist, some media players might report the current
+playhead as an absolute time based on the fragment timestamps. This can
+be useful for creating a playback experience that shows viewers the
+wall-clock time of the media.
+
+The default is C<NEVER>. When HLSFragmentSelector is
+C<SERVER_TIMESTAMP>, the timestamps will be the server start
+timestamps. Similarly, when HLSFragmentSelector is
+C<PRODUCER_TIMESTAMP>, the timestamps will be the producer start
+timestamps.
 
 Valid values are: C<"ALWAYS">, C<"NEVER">
 
@@ -101,8 +140,8 @@ The default is 300 (5 minutes).
 
 =head2 HLSFragmentSelector => L<Paws::KinesisVideoArchivedMedia::HLSFragmentSelector>
 
-The time range of the requested fragment, and the source of the time
-stamps.
+The time range of the requested fragment, and the source of the
+timestamps.
 
 This parameter is required if C<PlaybackMode> is C<ON_DEMAND>. This
 parameter is optional if C<PlaybackMode> is C<LIVE>. If C<PlaybackMode>
@@ -179,11 +218,11 @@ display.
 
 In both playback modes, if C<FragmentSelectorType> is
 C<PRODUCER_TIMESTAMP>, and if there are multiple fragments with the
-same start time stamp, the fragment that has the larger fragment number
+same start timestamp, the fragment that has the larger fragment number
 (that is, the newer fragment) is included in the HLS media playlist.
 The other fragments are not included. Fragments that have different
-time stamps but have overlapping durations are still included in the
-HLS media playlist. This can lead to unexpected behavior in the media
+timestamps but have overlapping durations are still included in the HLS
+media playlist. This can lead to unexpected behavior in the media
 player.
 
 The default is C<LIVE>.
