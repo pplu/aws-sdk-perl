@@ -319,8 +319,8 @@ Each argument is described in detail in: L<Paws::ResourceGroups::GetTags>
 
 Returns: a L<Paws::ResourceGroups::GetTagsOutput> instance
 
-Returns a list of tags that are associated with a resource, specified
-by an ARN.
+Returns a list of tags that are associated with a resource group,
+specified by an ARN.
 
 
 =head2 ListGroupResources
@@ -403,9 +403,9 @@ Each argument is described in detail in: L<Paws::ResourceGroups::Tag>
 
 Returns: a L<Paws::ResourceGroups::TagOutput> instance
 
-Adds specified tags to a resource with the specified ARN. Existing tags
-on a resource are not changed if they are not specified in the request
-parameters.
+Adds tags to a resource group with the specified ARN. Existing tags on
+a resource group are not changed if they are not specified in the
+request parameters.
 
 
 =head2 Untag

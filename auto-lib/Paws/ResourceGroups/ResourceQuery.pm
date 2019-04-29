@@ -68,14 +68,13 @@ The results of this query might include the following.
 =item *
 
 An EC2 instance that has the following two tags:
-C<{"Key":"Stage","Values":["Deploy"]}>, and
-C<{"Key":"Version","Values":["2"]}>
+C<{"Key":"Stage","Value":"Deploy"}>, and
+C<{"Key":"Version","Value":"2"}>
 
 =item *
 
 An S3 bucket that has the following two tags:
-{"Key":"Stage","Values":["Test","Deploy"]}, and
-{"Key":"Version","Values":["1"]}
+{"Key":"Stage","Value":"Test"}, and {"Key":"Version","Value":"1"}
 
 =back
 
@@ -90,13 +89,13 @@ in the filter.
 =item *
 
 An EC2 instance that has only the following tag:
-C<{"Key":"Stage","Values":["Deploy"]}>.
+C<{"Key":"Stage","Value":"Deploy"}>.
 
 =item *
 
 An RDS database that has the following two tags:
-C<{"Key":"Stage","Values":["Archived"]}>, and
-C<{"Key":"Version","Values":["4"]}>
+C<{"Key":"Stage","Value":"Archived"}>, and
+C<{"Key":"Version","Value":"4"}>
 
 =back
 
