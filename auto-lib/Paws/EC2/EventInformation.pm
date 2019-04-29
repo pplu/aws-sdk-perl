@@ -58,12 +58,6 @@ permissions either to launch or terminate an instance.
 
 =item *
 
-C<launchSpecTemporarilyBlacklisted> - The configuration is not valid
-and several attempts to launch instances have failed. For more
-information, see the description of the event.
-
-=item *
-
 C<spotFleetRequestConfigurationInvalid> - The configuration is not
 valid. For more information, see the description of the event.
 
@@ -144,6 +138,12 @@ C<terminated> - An instance was terminated by the user.
 The following are the C<Information> events:
 
 =over
+
+=item *
+
+C<launchSpecTemporarilyBlacklisted> - The configuration is not valid
+and several attempts to launch instances have failed. For more
+information, see the description of the event.
 
 =item *
 

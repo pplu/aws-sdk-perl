@@ -75,7 +75,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -166,7 +166,7 @@ C<null> when there are no more results to return.
 
 =head2 VolumeIds => ArrayRef[Str|Undef]
 
-One or more volume IDs.
+The IDs of the volumes.
 
 Default: Describes all your volumes.
 

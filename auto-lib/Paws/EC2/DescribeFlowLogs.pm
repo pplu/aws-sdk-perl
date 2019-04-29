@@ -112,18 +112,15 @@ One or more flow log IDs.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return for the request in a single
-page. The remaining results can be seen by sending another request with
-the returned C<NextToken> value. This value can be between 5 and 1000.
-If C<MaxResults> is given a value larger than 1000, only 1000 results
-are returned. You cannot specify this parameter and the flow log IDs
-parameter in the same request.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
 
 
 =head2 NextToken => Str
 
-The token to retrieve the next page of results.
+The token for the next page of results.
 
 
 

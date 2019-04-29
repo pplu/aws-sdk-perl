@@ -57,7 +57,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -92,13 +92,13 @@ C<us-east-1a>).
 
 =head2 ZoneIds => ArrayRef[Str|Undef]
 
-The IDs of one or more Availability Zones.
+The IDs of the Availability Zones.
 
 
 
 =head2 ZoneNames => ArrayRef[Str|Undef]
 
-The names of one or more Availability Zones.
+The names of the Availability Zones.
 
 
 

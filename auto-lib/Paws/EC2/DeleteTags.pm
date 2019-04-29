@@ -60,7 +60,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> Resources => ArrayRef[Str|Undef]
 
-The IDs of one or more resources, separated by spaces.
+The IDs of the resources, separated by spaces.
 
 Constraints: Up to 1000 resource IDs. We recommend breaking up this
 request into smaller batches.

@@ -179,15 +179,15 @@ C<vpc-id> - The ID of the VPC for the route table.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return in a single call. To retrieve
-the remaining results, make another call with the returned B<NextToken>
-value. This value can be between 5 and 100.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
 
 
 =head2 NextToken => Str
 
-The token to retrieve the next page of results.
+The token for the next page of results.
 
 
 

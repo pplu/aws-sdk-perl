@@ -203,8 +203,8 @@ fulfilling the request immediately.
 
   The end date and time of the request, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). At this point, no new Spot
-Instance requests are placed or able to fulfill the request. The
-default end date is 7 days from the current date.
+Instance requests are placed or able to fulfill the request. If no
+value is specified, the Spot Fleet request remains until you cancel it.
 
 
 

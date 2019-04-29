@@ -172,7 +172,10 @@ Key ID
 
 =item *
 
-Key alias, in the form C<alias/I<ExampleAlias>>
+Key alias. The alias ARN contains the C<arn:aws:kms> namespace,
+followed by the region of the CMK, the AWS account ID of the CMK owner,
+the C<alias> namespace, and then the CMK alias. For example,
+arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 
 =item *
 
@@ -210,7 +213,27 @@ information, see Prerequisites
 (https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image)
 in the VM Import/Export User Guide.
 
-Valid values: C<AWS> | C<BYOL>
+Valid values include:
+
+=over
+
+=item *
+
+C<Auto> - Detects the source-system operating system (OS) and applies
+the appropriate license.
+
+=item *
+
+C<AWS> - Replaces the source-system license with an AWS license, if
+appropriate.
+
+=item *
+
+C<BYOL> - Retains the source-system license, if appropriate.
+
+=back
+
+Default value: C<Auto>
 
 
 

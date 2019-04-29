@@ -55,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AttributeNames => ArrayRef[Str|Undef]
 
-One or more account attribute names.
+The account attribute names.
 
 
 

@@ -17,7 +17,7 @@ Paws::EC2::StopInstancesResult
 
 =head2 StoppingInstances => ArrayRef[L<Paws::EC2::InstanceStateChange>]
 
-Information about one or more stopped instances.
+Information about the stopped instances.
 
 
 =head2 _request_id => Str

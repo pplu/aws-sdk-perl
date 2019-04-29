@@ -17,7 +17,7 @@ Paws::EC2::DescribeAccountAttributesResult
 
 =head2 AccountAttributes => ArrayRef[L<Paws::EC2::AccountAttribute>]
 
-Information about one or more account attributes.
+Information about the account attributes.
 
 
 =head2 _request_id => Str

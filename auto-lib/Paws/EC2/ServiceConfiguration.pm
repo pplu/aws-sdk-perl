@@ -3,6 +3,7 @@ package Paws::EC2::ServiceConfiguration;
   has AcceptanceRequired => (is => 'ro', isa => 'Bool', request_name => 'acceptanceRequired', traits => ['NameInRequest']);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availabilityZoneSet', traits => ['NameInRequest']);
   has BaseEndpointDnsNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'baseEndpointDnsNameSet', traits => ['NameInRequest']);
+  has ManagesVpcEndpoints => (is => 'ro', isa => 'Bool', request_name => 'managesVpcEndpoints', traits => ['NameInRequest']);
   has NetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkLoadBalancerArnSet', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
   has ServiceId => (is => 'ro', isa => 'Str', request_name => 'serviceId', traits => ['NameInRequest']);
@@ -58,6 +59,12 @@ endpoint to the service must first be accepted.
 =head2 BaseEndpointDnsNames => ArrayRef[Str|Undef]
 
   The DNS names for the service.
+
+
+=head2 ManagesVpcEndpoints => Bool
+
+  Indicates whether the service manages it's VPC Endpoints. Management of
+the service VPC Endpoints using the VPC Endpoint API is restricted.
 
 
 =head2 NetworkLoadBalancerArns => ArrayRef[Str|Undef]

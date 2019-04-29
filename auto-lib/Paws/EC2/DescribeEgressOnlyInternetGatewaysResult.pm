@@ -23,7 +23,8 @@ Information about the egress-only internet gateways.
 
 =head2 NextToken => Str
 
-The token to use to retrieve the next page of results.
+The token to use to retrieve the next page of results. This value is
+C<null> when there are no more results to return.
 
 
 =head2 _request_id => Str

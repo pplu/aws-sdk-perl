@@ -97,12 +97,9 @@ C<vpc-id> - The ID of the VPC in which the NAT gateway resides.
 
 =head2 MaxResults => Int
 
-The maximum number of items to return for this request. The request
-returns a token that you can specify in a subsequent call to get the
-next set of results.
-
-Constraint: If the value specified is greater than 1000, we return only
-1000 items.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
 
 
@@ -114,7 +111,7 @@ One or more NAT gateway IDs.
 
 =head2 NextToken => Str
 
-The token to retrieve the next page of results.
+The token for the next page of results.
 
 
 

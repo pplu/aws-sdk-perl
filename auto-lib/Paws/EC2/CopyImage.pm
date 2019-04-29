@@ -111,7 +111,10 @@ Key ID
 
 =item *
 
-Key alias, in the form C<alias/I<ExampleAlias>>
+Key alias. The alias ARN contains the C<arn:aws:kms> namespace,
+followed by the region of the CMK, the AWS account ID of the CMK owner,
+the C<alias> namespace, and then the CMK alias. For example,
+arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 
 =item *
 

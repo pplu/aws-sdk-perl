@@ -111,6 +111,11 @@ C<block-device-mapping.volume-type> - The volume type of the EBS volume
 
 =item *
 
+C<block-device-mapping.encrypted> - A Boolean that indicates whether
+the EBS volume is encrypted.
+
+=item *
+
 C<description> - The description of the image (provided during image
 creation).
 

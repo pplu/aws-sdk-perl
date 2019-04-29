@@ -60,13 +60,12 @@ This class has no description
 
 =head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
-  One or more inbound rules associated with the security group.
+  The inbound rules associated with the security group.
 
 
 =head2 IpPermissionsEgress => ArrayRef[L<Paws::EC2::IpPermission>]
 
-  [EC2-VPC] One or more outbound rules associated with the security
-group.
+  [EC2-VPC] The outbound rules associated with the security group.
 
 
 =head2 OwnerId => Str

@@ -58,9 +58,10 @@ the parent volume.
 
 =head2 OwnerAlias => Str
 
-Value from an Amazon-maintained list (C<amazon> | C<aws-marketplace> |
-C<microsoft>) of snapshot owners. Not to be confused with the
-user-configured AWS account alias, which is set from the IAM console.
+Value from an Amazon-maintained list (C<amazon> | C<self> | C<all> |
+C<aws-marketplace> | C<microsoft>) of snapshot owners. Not to be
+confused with the user-configured AWS account alias, which is set from
+the IAM console.
 
 
 =head2 OwnerId => Str

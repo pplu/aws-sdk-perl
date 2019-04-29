@@ -17,7 +17,7 @@ Paws::EC2::DescribeKeyPairsResult
 
 =head2 KeyPairs => ArrayRef[L<Paws::EC2::KeyPairInfo>]
 
-Information about one or more key pairs.
+Information about the key pairs.
 
 
 =head2 _request_id => Str

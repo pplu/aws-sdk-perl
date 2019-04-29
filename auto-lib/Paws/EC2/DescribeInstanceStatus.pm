@@ -70,7 +70,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -90,6 +90,11 @@ C<event.description> - A description of the event.
 
 =item *
 
+C<event.instance-event-id> - The ID of the event whose date and time
+you are modifying.
+
+=item *
+
 C<event.not-after> - The latest end time for the scheduled event (for
 example, C<2014-09-15T17:15:20.000Z>).
 
@@ -97,6 +102,11 @@ example, C<2014-09-15T17:15:20.000Z>).
 
 C<event.not-before> - The earliest start time for the scheduled event
 (for example, C<2014-09-15T17:15:20.000Z>).
+
+=item *
+
+C<event.not-before-deadline> - The deadline for starting the event (for
+example, C<2014-09-15T17:15:20.000Z>).
 
 =item *
 
@@ -152,7 +162,7 @@ Default: C<false>
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-One or more instance IDs.
+The instance IDs.
 
 Default: Describes all your instances.
 

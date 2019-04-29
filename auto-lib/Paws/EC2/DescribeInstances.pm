@@ -68,7 +68,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -502,7 +502,7 @@ C<vpc-id> - The ID of the VPC that the instance is running in.
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-One or more instance IDs.
+The instance IDs.
 
 Default: Describes all your instances.
 

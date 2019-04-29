@@ -67,17 +67,17 @@ and codes is allowed when authorizing rules.
 
 =head2 IpRanges => ArrayRef[L<Paws::EC2::IpRange>]
 
-  One or more IPv4 ranges.
+  The IPv4 ranges.
 
 
 =head2 Ipv6Ranges => ArrayRef[L<Paws::EC2::Ipv6Range>]
 
-  [EC2-VPC only] One or more IPv6 ranges.
+  [EC2-VPC only] The IPv6 ranges.
 
 
 =head2 PrefixListIds => ArrayRef[L<Paws::EC2::PrefixListId>]
 
-  [EC2-VPC only] One or more prefix list IDs for an AWS service. With
+  [EC2-VPC only] The prefix list IDs for an AWS service. With
 AuthorizeSecurityGroupEgress, this is the AWS service that you want to
 access through a VPC endpoint from instances associated with the
 security group.
@@ -93,7 +93,7 @@ specify all codes.
 
 =head2 UserIdGroupPairs => ArrayRef[L<Paws::EC2::UserIdGroupPair>]
 
-  One or more security group and AWS account ID pairs.
+  The security group and AWS account ID pairs.
 
 
 

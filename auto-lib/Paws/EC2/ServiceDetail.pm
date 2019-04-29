@@ -3,6 +3,7 @@ package Paws::EC2::ServiceDetail;
   has AcceptanceRequired => (is => 'ro', isa => 'Bool', request_name => 'acceptanceRequired', traits => ['NameInRequest']);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availabilityZoneSet', traits => ['NameInRequest']);
   has BaseEndpointDnsNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'baseEndpointDnsNameSet', traits => ['NameInRequest']);
+  has ManagesVpcEndpoints => (is => 'ro', isa => 'Bool', request_name => 'managesVpcEndpoints', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
@@ -57,6 +58,12 @@ be accepted by the service owner.
 =head2 BaseEndpointDnsNames => ArrayRef[Str|Undef]
 
   The DNS names for the service.
+
+
+=head2 ManagesVpcEndpoints => Bool
+
+  Indicates whether the service manages it's VPC Endpoints. Management of
+the service VPC Endpoints using the VPC Endpoint API is restricted.
 
 
 =head2 Owner => Str

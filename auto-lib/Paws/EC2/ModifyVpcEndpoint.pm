@@ -94,8 +94,10 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 PolicyDocument => Str
 
-(Gateway endpoint) A policy document to attach to the endpoint. The
-policy must be in valid JSON format.
+A policy to attach to the endpoint that controls access to the service.
+The policy must be in valid JSON format. If this parameter is not
+specified, we attach a default policy that allows full access to the
+service.
 
 
 

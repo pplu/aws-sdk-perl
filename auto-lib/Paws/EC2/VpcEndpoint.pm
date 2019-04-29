@@ -6,6 +6,7 @@ package Paws::EC2::VpcEndpoint;
   has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkInterfaceIdSet', traits => ['NameInRequest']);
   has PolicyDocument => (is => 'ro', isa => 'Str', request_name => 'policyDocument', traits => ['NameInRequest']);
   has PrivateDnsEnabled => (is => 'ro', isa => 'Bool', request_name => 'privateDnsEnabled', traits => ['NameInRequest']);
+  has RequesterManaged => (is => 'ro', isa => 'Bool', request_name => 'requesterManaged', traits => ['NameInRequest']);
   has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'routeTableIdSet', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
@@ -78,6 +79,11 @@ with the network interface.
 
   (Interface endpoint) Indicates whether the VPC is associated with a
 private hosted zone.
+
+
+=head2 RequesterManaged => Bool
+
+  Indicates whether the VPC Endpoint is being managed by its service.
 
 
 =head2 RouteTableIds => ArrayRef[Str|Undef]

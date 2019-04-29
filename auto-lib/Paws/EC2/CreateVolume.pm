@@ -121,10 +121,11 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 The number of I/O operations per second (IOPS) to provision for the
 volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 64,000
-IOPS for volumes in most regions. Maximum IOPS of 64,000 is guaranteed
-only on Nitro-based instances. Other instance families guarantee
-performance up to 32,000 IOPS. For more information, see Amazon EBS
-Volume Types
+IOPS for volumes in most Regions. Maximum IOPS of 64,000 is guaranteed
+only on Nitro-based instances
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances).
+Other instance families guarantee performance up to 32,000 IOPS. For
+more information, see Amazon EBS Volume Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -150,7 +151,10 @@ Key ID
 
 =item *
 
-Key alias
+Key alias. The alias ARN contains the C<arn:aws:kms> namespace,
+followed by the region of the CMK, the AWS account ID of the CMK owner,
+the C<alias> namespace, and then the CMK alias. For example,
+arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 
 =item *
 
@@ -213,7 +217,7 @@ Cold HDD, or C<standard> for Magnetic volumes.
 Defaults: If no volume type is specified, the default is C<standard> in
 us-east-1, eu-west-1, eu-central-1, us-west-2, us-west-1, sa-east-1,
 ap-northeast-1, ap-northeast-2, ap-southeast-1, ap-southeast-2,
-ap-south-1, us-gov-west-1, and cn-north-1. In all other regions, EBS
+ap-south-1, us-gov-west-1, and cn-north-1. In all other Regions, EBS
 defaults to C<gp2>.
 
 Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">

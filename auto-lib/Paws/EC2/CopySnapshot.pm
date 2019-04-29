@@ -64,15 +64,15 @@ A description for the EBS snapshot.
 
 =head2 DestinationRegion => Str
 
-The destination region to use in the C<PresignedUrl> parameter of a
+The destination Region to use in the C<PresignedUrl> parameter of a
 snapshot copy operation. This parameter is only valid for specifying
-the destination region in a C<PresignedUrl> parameter, where it is
+the destination Region in a C<PresignedUrl> parameter, where it is
 required.
 
 The snapshot copy is sent to the regional endpoint that you sent the
 HTTP request to (for example, C<ec2.us-east-1.amazonaws.com>). With the
 AWS CLI, this is specified using the C<--region> parameter or the
-default region in your AWS configuration file.
+default Region in your AWS configuration file.
 
 
 
@@ -116,7 +116,10 @@ Key ID
 
 =item *
 
-Key alias
+Key alias. The alias ARN contains the C<arn:aws:kms> namespace,
+followed by the region of the CMK, the AWS account ID of the CMK owner,
+the C<alias> namespace, and then the CMK alias. For example,
+arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 
 =item *
 
@@ -163,7 +166,7 @@ asynchronously, and the snapshot will move to an C<error> state.
 
 =head2 B<REQUIRED> SourceRegion => Str
 
-The ID of the region that contains the snapshot to be copied.
+The ID of the Region that contains the snapshot to be copied.
 
 
 

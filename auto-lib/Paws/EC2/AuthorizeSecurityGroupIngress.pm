@@ -138,8 +138,8 @@ request.
 
 =head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
-One or more sets of IP permissions. Can be used to specify multiple
-rules in a single command.
+The sets of IP permissions. Can be used to specify multiple rules in a
+single command.
 
 
 

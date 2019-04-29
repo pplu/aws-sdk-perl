@@ -50,16 +50,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 MaxResults => Int
 
-The maximum number of items to return for this request. The request
-returns a token that you can specify in a subsequent call to get the
-next set of results.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
 
 
 =head2 NextToken => Str
 
-The token for the next set of items to return. (You received this token
-from a prior call.)
+The token for the next page of results.
 
 
 

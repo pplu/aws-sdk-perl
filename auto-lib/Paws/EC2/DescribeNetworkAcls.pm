@@ -3,7 +3,9 @@ package Paws::EC2::DescribeNetworkAcls;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has MaxResults => (is => 'ro', isa => 'Int');
   has NetworkAclIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'NetworkAclId' );
+  has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -152,11 +154,25 @@ C<vpc-id> - The ID of the VPC for the network ACL.
 
 
 
+=head2 MaxResults => Int
+
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
+
+
+
 =head2 NetworkAclIds => ArrayRef[Str|Undef]
 
 One or more network ACL IDs.
 
 Default: Describes all your network ACLs.
+
+
+
+=head2 NextToken => Str
+
+The token for the next page of results.
 
 
 
