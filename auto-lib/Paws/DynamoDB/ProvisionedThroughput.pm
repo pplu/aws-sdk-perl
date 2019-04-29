@@ -37,7 +37,7 @@ index. The settings can be modified using the C<UpdateTable> operation.
 
 For current minimum and maximum provisioned throughput values, see
 Limits
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 =head1 ATTRIBUTES
@@ -48,7 +48,7 @@ in the I<Amazon DynamoDB Developer Guide>.
   The maximum number of strongly consistent reads consumed per second
 before DynamoDB returns a C<ThrottlingException>. For more information,
 see Specifying Read and Write Requirements
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 in the I<Amazon DynamoDB Developer Guide>.
 
 If read/write capacity mode is C<PAY_PER_REQUEST> the value is set to
@@ -60,7 +60,7 @@ If read/write capacity mode is C<PAY_PER_REQUEST> the value is set to
   The maximum number of writes consumed per second before DynamoDB
 returns a C<ThrottlingException>. For more information, see Specifying
 Read and Write Requirements
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 in the I<Amazon DynamoDB Developer Guide>.
 
 If read/write capacity mode is C<PAY_PER_REQUEST> the value is set to

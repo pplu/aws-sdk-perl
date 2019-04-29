@@ -32,7 +32,7 @@ statistics for the table and any indexes involved in the operation.
 C<ConsumedCapacity> is only returned if the C<ReturnConsumedCapacity>
 parameter was specified. For more information, see Provisioned
 Throughput
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

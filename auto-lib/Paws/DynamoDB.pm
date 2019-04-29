@@ -462,7 +462,7 @@ operation using exponential backoff, the individual requests in the
 batch are much more likely to succeed.
 
 For more information, see Batch Operations and Error Handling
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
 in the I<Amazon DynamoDB Developer Guide>.
 
 By default, C<BatchGetItem> performs eventually consistent reads on
@@ -482,7 +482,7 @@ If a requested item does not exist, it is not returned in the result.
 Requests for nonexistent items consume the minimum read capacity units
 according to the type of read. For more information, see Capacity Units
 Calculations
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -536,7 +536,7 @@ operation using exponential backoff, the individual requests in the
 batch are much more likely to succeed.
 
 For more information, see Batch Operations and Error Handling
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
 in the I<Amazon DynamoDB Developer Guide>.
 
 With C<BatchWriteItem>, you can efficiently write or delete large
@@ -757,6 +757,8 @@ matching secondary indexes across your global table.
 =item [SSESpecification => L<Paws::DynamoDB::SSESpecification>]
 
 =item [StreamSpecification => L<Paws::DynamoDB::StreamSpecification>]
+
+=item [Tags => ArrayRef[L<Paws::DynamoDB::Tag>]]
 
 
 =back
@@ -1001,7 +1003,7 @@ the maximum read capacity units and write capacity units that you can
 provision across all of your DynamoDB tables in a given region. Also,
 there are per-table limits that apply when you create a table there.
 For more information, see Limits
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 page in the I<Amazon DynamoDB Developer Guide>.
 
 Although you can increase these limits by filing a case at AWS Support
@@ -1254,7 +1256,7 @@ List all tags on an Amazon DynamoDB resource. You can call
 ListTagsOfResource up to 10 times per second, per account.
 
 For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -1365,7 +1367,7 @@ C<attribute_not_exists> function will only succeed if no matching item
 exists.
 
 For more information about C<PutItem>, see Working with Items
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -1452,7 +1454,7 @@ then apply any filtering to the results using C<FilterExpression>. If
 C<LastEvaluatedKey> is present in the response, you will need to
 paginate the result set. For more information, see Paginating the
 Results
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination)
 in the I<Amazon DynamoDB Developer Guide>.
 
 C<FilterExpression> is applied after a C<Query> finishes, but before
@@ -1676,14 +1678,14 @@ then apply any filtering to the results using C<FilterExpression>. If
 C<LastEvaluatedKey> is present in the response, you will need to
 paginate the result set. For more information, see Paginating the
 Results
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination)
 in the I<Amazon DynamoDB Developer Guide>.
 
 C<Scan> operations proceed sequentially; however, for faster
 performance on a large table or secondary index, applications can
 request a parallel C<Scan> operation by providing the C<Segment> and
 C<TotalSegments> parameters. For more information, see Parallel Scan
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan)
 in the I<Amazon DynamoDB Developer Guide>.
 
 C<Scan> uses eventually consistent reads when accessing the data in a
@@ -1714,7 +1716,7 @@ Cost Management console for cost allocation tracking. You can call
 TagResource up to 5 times per second, per account.
 
 For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -1885,7 +1887,7 @@ Removes the association of tags from an Amazon DynamoDB resource. You
 can call UntagResource up to 5 times per second, per account.
 
 For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -2141,7 +2143,7 @@ and Global Secondary Index immediately in the same eventually
 consistent way as a standard delete operation.
 
 For more information, see Time To Live
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html)
 in the Amazon DynamoDB Developer Guide.
 
 

@@ -69,7 +69,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 This is a legacy parameter. Use C<ConditionExpression> instead. For
 more information, see ConditionalOperator
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 Valid values are: C<"AND">, C<"OR">
@@ -103,7 +103,7 @@ Logical operators: C<AND | OR | NOT>
 
 For more information on condition expressions, see Specifying
 Conditions
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -112,7 +112,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 This is a legacy parameter. Use C<ConditionExpression> instead. For
 more information, see Expected
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -155,7 +155,7 @@ C<Percentile>
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
 words, see Reserved Words
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 in the I<Amazon DynamoDB Developer Guide>). To work around this, you
 could specify the following for C<ExpressionAttributeNames>:
 
@@ -183,7 +183,7 @@ values>, which are placeholders for the actual value at runtime.
 
 For more information on expression attribute names, see Accessing Item
 Attributes
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -210,7 +210,7 @@ C<ProductStatus IN (:avail, :back, :disc)>
 
 For more information on expression attribute values, see Specifying
 Conditions
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -231,7 +231,7 @@ data types for those attributes must match those of the schema in the
 table's attribute definition.
 
 For more information about primary keys, see Primary Key
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
 in the I<Amazon DynamoDB Developer Guide>.
 
 Each element in the C<Item> map is an C<AttributeValue> object.

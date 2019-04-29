@@ -249,7 +249,7 @@ the sort key value.
 =back
 
 For more information about primary keys, see Primary Key
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

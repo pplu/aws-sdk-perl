@@ -79,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 This is a legacy parameter. Use C<ProjectionExpression> instead. For
 more information, see AttributesToGet
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -88,7 +88,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 This is a legacy parameter. Use C<FilterExpression> instead. For more
 information, see ConditionalOperator
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 Valid values are: C<"AND">, C<"OR">
@@ -175,7 +175,7 @@ C<Percentile>
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
 words, see Reserved Words
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 in the I<Amazon DynamoDB Developer Guide>). To work around this, you
 could specify the following for C<ExpressionAttributeNames>:
 
@@ -203,7 +203,7 @@ values>, which are placeholders for the actual value at runtime.
 
 For more information on expression attribute names, see Accessing Item
 Attributes
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -230,7 +230,7 @@ C<ProductStatus IN (:avail, :back, :disc)>
 
 For more information on expression attribute values, see Specifying
 Conditions
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -246,7 +246,7 @@ read; the process of filtering does not consume any additional read
 capacity units.
 
 For more information, see Filter Expressions
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -271,7 +271,7 @@ DynamoDB reaches this limit, it stops the operation and returns the
 matching values up to the limit, and a key in C<LastEvaluatedKey> to
 apply in a subsequent operation to continue the operation. For more
 information, see Query and Scan
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -288,7 +288,7 @@ returned. If any of the requested attributes are not found, they will
 not appear in the result.
 
 For more information, see Accessing Item Attributes
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -303,7 +303,7 @@ Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
 This is a legacy parameter. Use C<FilterExpression> instead. For more
 information, see ScanFilter
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ScanFilter.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ScanFilter.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

@@ -34,15 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TransactItems => [
         {
           ConditionCheck => {
-            ConditionExpression => 'MyConditionExpression',
+            ConditionExpression => 'MyConditionExpression',    # OPTIONAL
             Key                 => {
               'MyAttributeName' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
-                  'MyAttributeName' => <AttributeValue>,    # key: max: 65535
+                B    => 'BlobBinaryAttributeValue',            # OPTIONAL
+                BOOL => 1,                                     # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...              # OPTIONAL
+                ],                                             # OPTIONAL
+                L => [ <AttributeValue>, ... ],                # OPTIONAL
+                M => {
+                  'MyAttributeName' => <AttributeValue>,       # key: max: 65535
                 },    # OPTIONAL
                 N    => 'MyNumberAttributeValue',
                 NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
@@ -58,11 +60,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
             ExpressionAttributeValues => {
               'MyExpressionAttributeValueVariable' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],                                     # OPTIONAL
+                L => [ <AttributeValue>, ... ],        # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
                 N    => 'MyNumberAttributeValue',
@@ -78,11 +82,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Delete => {
             Key => {
               'MyAttributeName' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],                                     # OPTIONAL
+                L => [ <AttributeValue>, ... ],        # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
                 N    => 'MyNumberAttributeValue',
@@ -93,18 +99,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # key: max: 65535
             },
             TableName           => 'MyTableName',             # min: 3, max: 255
-            ConditionExpression => 'MyConditionExpression',
+            ConditionExpression => 'MyConditionExpression',   # OPTIONAL
             ExpressionAttributeNames => {
               'MyExpressionAttributeNameVariable' =>
                 'MyAttributeName',    # , value: max: 65535
             },    # OPTIONAL
             ExpressionAttributeValues => {
               'MyExpressionAttributeValueVariable' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],                                     # OPTIONAL
+                L => [ <AttributeValue>, ... ],        # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
                 N    => 'MyNumberAttributeValue',
@@ -120,11 +128,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Put => {
             Item => {
               'MyAttributeName' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],                                     # OPTIONAL
+                L => [ <AttributeValue>, ... ],        # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
                 N    => 'MyNumberAttributeValue',
@@ -135,18 +145,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # key: max: 65535
             },
             TableName           => 'MyTableName',             # min: 3, max: 255
-            ConditionExpression => 'MyConditionExpression',
+            ConditionExpression => 'MyConditionExpression',   # OPTIONAL
             ExpressionAttributeNames => {
               'MyExpressionAttributeNameVariable' =>
                 'MyAttributeName',    # , value: max: 65535
             },    # OPTIONAL
             ExpressionAttributeValues => {
               'MyExpressionAttributeValueVariable' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],                                     # OPTIONAL
+                L => [ <AttributeValue>, ... ],        # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
                 N    => 'MyNumberAttributeValue',
@@ -162,11 +174,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Update => {
             Key => {
               'MyAttributeName' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],                                     # OPTIONAL
+                L => [ <AttributeValue>, ... ],        # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
                 N    => 'MyNumberAttributeValue',
@@ -178,18 +192,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             TableName           => 'MyTableName',             # min: 3, max: 255
             UpdateExpression    => 'MyUpdateExpression',
-            ConditionExpression => 'MyConditionExpression',
+            ConditionExpression => 'MyConditionExpression',   # OPTIONAL
             ExpressionAttributeNames => {
               'MyExpressionAttributeNameVariable' =>
                 'MyAttributeName',    # , value: max: 65535
             },    # OPTIONAL
             ExpressionAttributeValues => {
               'MyExpressionAttributeValueVariable' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],                                     # OPTIONAL
+                L => [ <AttributeValue>, ... ],        # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
                 N    => 'MyNumberAttributeValue',

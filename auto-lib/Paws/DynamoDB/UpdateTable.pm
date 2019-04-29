@@ -113,7 +113,7 @@ C<Delete> - remove a global secondary index from the table.
 =back
 
 For more information, see Managing Global Secondary Indexes
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

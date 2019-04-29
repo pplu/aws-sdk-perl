@@ -10,6 +10,7 @@ package Paws::DynamoDB::CreateTable;
   has SSESpecification => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -183,7 +184,7 @@ global secondary index, consisting of read and write capacity units.
 Specifies the attributes that make up the primary key for a table or an
 index. The attributes in C<KeySchema> must also be defined in the
 C<AttributeDefinitions> array. For more information, see Data Model
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 Each C<KeySchemaElement> in the array is composed of:
@@ -231,7 +232,7 @@ have a C<KeyType> of C<HASH>, and the second element must have a
 C<KeyType> of C<RANGE>.
 
 For more information, see Specifying the Primary Key
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -315,7 +316,7 @@ specify this property.
 
 For current minimum and maximum provisioned throughput values, see
 Limits
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -376,6 +377,14 @@ item are written to the stream.
 =head2 B<REQUIRED> TableName => Str
 
 The name of the table to create.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::DynamoDB::Tag>]
+
+A list of key-value pairs to label the table. For more information, see
+Tagging for DynamoDB
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html).
 
 
 
