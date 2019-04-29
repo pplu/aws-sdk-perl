@@ -42,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LatestVersion    = $GetConnectorDefinitionResponse->LatestVersion;
     my $LatestVersionArn = $GetConnectorDefinitionResponse->LatestVersionArn;
     my $Name             = $GetConnectorDefinitionResponse->Name;
+    my $Tags             = $GetConnectorDefinitionResponse->Tags;
 
     # Returns a L<Paws::Greengrass::GetConnectorDefinitionResponse> object.
 

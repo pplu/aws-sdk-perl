@@ -41,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreatedAt    = $GetBulkDeploymentStatusResponse->CreatedAt;
     my $ErrorDetails = $GetBulkDeploymentStatusResponse->ErrorDetails;
     my $ErrorMessage = $GetBulkDeploymentStatusResponse->ErrorMessage;
+    my $Tags         = $GetBulkDeploymentStatusResponse->Tags;
 
     # Returns a L<Paws::Greengrass::GetBulkDeploymentStatusResponse> object.
 

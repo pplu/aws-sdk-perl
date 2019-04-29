@@ -44,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LatestVersion    = $GetSubscriptionDefinitionResponse->LatestVersion;
     my $LatestVersionArn = $GetSubscriptionDefinitionResponse->LatestVersionArn;
     my $Name             = $GetSubscriptionDefinitionResponse->Name;
+    my $Tags             = $GetSubscriptionDefinitionResponse->Tags;
 
     # Returns a L<Paws::Greengrass::GetSubscriptionDefinitionResponse> object.
 

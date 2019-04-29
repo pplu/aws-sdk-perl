@@ -1,6 +1,7 @@
 package Paws::Greengrass::FunctionDefaultExecutionConfig;
   use Moose;
   has IsolationMode => (is => 'ro', isa => 'Str');
+  has RunAs => (is => 'ro', isa => 'Paws::Greengrass::FunctionRunAsConfig');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Greengrass::FunctionDefaultExecutionConfig object:
 
-  $service_obj->Method(Att1 => { IsolationMode => $value, ..., IsolationMode => $value  });
+  $service_obj->Method(Att1 => { IsolationMode => $value, ..., RunAs => $value  });
 
 =head3 Results returned from an API call
 
@@ -31,14 +32,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Configuration that defines the default containerization used for when
-running Lambda functions in the group. Individual Lambda functions can
-be override this setting.
+Configuration information that specifies how a Lambda function runs.
 
 =head1 ATTRIBUTES
 
 
 =head2 IsolationMode => Str
+
+  
+
+
+=head2 RunAs => L<Paws::Greengrass::FunctionRunAsConfig>
 
   
 

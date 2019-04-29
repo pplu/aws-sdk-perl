@@ -4,6 +4,7 @@ package Paws::Greengrass::CreateFunctionDefinition;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::FunctionDefinitionVersion');
   has Name => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -38,6 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Execution => {
             IsolationMode => 'GreengrassContainer'
             ,    # values: GreengrassContainer, NoContainer; OPTIONAL
+            RunAs => {
+              Gid => 1,    # OPTIONAL
+              Uid => 1,    # OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         Functions => [
@@ -75,7 +80,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],        # OPTIONAL
       },    # OPTIONAL
-      Name => 'My__string',    # OPTIONAL
+      Name => 'My__string',                         # OPTIONAL
+      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
       );
 
     # Results:
@@ -112,6 +118,12 @@ Information about the initial version of the function definition.
 =head2 Name => Str
 
 The name of the function definition.
+
+
+
+=head2 Tags => L<Paws::Greengrass::Tags>
+
+Tag(s) to add to the new resource
 
 
 

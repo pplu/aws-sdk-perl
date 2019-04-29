@@ -42,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LatestVersion    = $GetFunctionDefinitionResponse->LatestVersion;
     my $LatestVersionArn = $GetFunctionDefinitionResponse->LatestVersionArn;
     my $Name             = $GetFunctionDefinitionResponse->Name;
+    my $Tags             = $GetFunctionDefinitionResponse->Tags;
 
     # Returns a L<Paws::Greengrass::GetFunctionDefinitionResponse> object.
 
