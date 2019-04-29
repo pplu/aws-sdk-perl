@@ -800,7 +800,7 @@ Returns: a L<Paws::OpsWorksCM::UpdateServerEngineAttributesResponse> instance
 Updates engine-specific attributes on a specified server. The server
 enters the C<MODIFYING> state when this operation is in progress. Only
 one update can occur at a time. You can use this command to reset a
-Chef server's private key (C<CHEF_PIVOTAL_KEY>) or a Puppet server's
+Chef server's public key (C<CHEF_PIVOTAL_KEY>) or a Puppet server's
 admin password (C<PUPPET_ADMIN_PASSWORD>).
 
 This operation is asynchronous.
