@@ -1,12 +1,12 @@
 
-package Paws::ACM::DescribeCertificate;
+package Paws::ACM::RenewCertificate;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ACM::DescribeCertificateResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RenewCertificate');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -14,39 +14,34 @@ package Paws::ACM::DescribeCertificate;
 
 =head1 NAME
 
-Paws::ACM::DescribeCertificate - Arguments for method DescribeCertificate on L<Paws::ACM>
+Paws::ACM::RenewCertificate - Arguments for method RenewCertificate on L<Paws::ACM>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method DescribeCertificate on the
+This class represents the parameters used for calling the method RenewCertificate on the
 L<AWS Certificate Manager|Paws::ACM> service. Use the attributes of this class
-as arguments to method DescribeCertificate.
+as arguments to method RenewCertificate.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCertificate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RenewCertificate.
 
 =head1 SYNOPSIS
 
     my $acm = Paws->service('ACM');
-    my $DescribeCertificateResponse = $acm->DescribeCertificate(
+    $acm->RenewCertificate(
       CertificateArn => 'MyArn',
 
     );
 
-    # Results:
-    my $Certificate = $DescribeCertificateResponse->Certificate;
-
-    # Returns a L<Paws::ACM::DescribeCertificateResponse> object.
-
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm/DescribeCertificate>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm/RenewCertificate>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CertificateArn => Str
 
-The Amazon Resource Name (ARN) of the ACM certificate. The ARN must
-have the following form:
+String that contains the ARN of the ACM certificate to be renewed. This
+must be of the form:
 
 C<arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012>
 
@@ -59,7 +54,7 @@ AWS Service Namespaces
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method DescribeCertificate in L<Paws::ACM>
+This class forms part of L<Paws>, documenting arguments for method RenewCertificate in L<Paws::ACM>
 
 =head1 BUGS and CONTRIBUTIONS
 
