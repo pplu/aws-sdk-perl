@@ -80,7 +80,7 @@ this metric as a regular-resolution metric, which CloudWatch stores at
 1-minute resolution. Currently, high resolution is available only for
 custom metrics. For more information about high-resolution metrics, see
 High-Resolution Metrics
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics)
 in the I<Amazon CloudWatch User Guide>.
 
 This field is optional, if you do not specify it the default of 60 is

@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                  # OPTIONAL
       ExtendedStatistics => [ 'MyExtendedStatistic', ... ],    # OPTIONAL
-      Statistics         => [
+      Statistics => [
         'SampleCount', ... # values: SampleCount, Average, Sum, Minimum, Maximum
       ],                   # OPTIONAL
       Unit => 'Seconds',   # OPTIONAL
@@ -77,10 +77,10 @@ combination of dimensions was not published, you can't retrieve
 statistics for it. You must specify the same dimensions that were used
 when the metrics were created. For an example, see Dimension
 Combinations
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations)
 in the I<Amazon CloudWatch User Guide>. For more information about
 specifying dimensions, see Publishing Metrics
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
 in the I<Amazon CloudWatch User Guide>.
 
 

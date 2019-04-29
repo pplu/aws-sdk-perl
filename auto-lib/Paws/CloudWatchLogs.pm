@@ -1237,7 +1237,7 @@ Returns: nothing
 
 Creates or updates an access policy associated with an existing
 destination. An access policy is an IAM policy document
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html)
 that is used to authorize claims to register a subscription filter
 against a given destination.
 
@@ -1466,7 +1466,7 @@ specify the log group and time range to query, and the query string to
 use.
 
 For more information, see CloudWatch Logs Insights Query Syntax
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
 
 
 =head2 StopQuery
@@ -1509,7 +1509,7 @@ use UntagLogGroup.
 
 For more information about tags, see Tag Log Groups in Amazon
 CloudWatch Logs
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html)
 in the I<Amazon CloudWatch Logs User Guide>.
 
 

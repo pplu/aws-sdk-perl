@@ -74,7 +74,7 @@ time are not returned.
 
 The filter pattern to use. For more information, see Filter and Pattern
 Syntax
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
 
 If not provided, all the events are matched.
 
