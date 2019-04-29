@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 =head2 Attributes => L<Paws::SNS::MapStringToString>
 
 For a list of attributes, see SetEndpointAttributes
-(http://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html).
+(https://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html).
 
 
 

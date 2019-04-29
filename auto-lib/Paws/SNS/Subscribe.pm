@@ -92,7 +92,7 @@ protocol:
 =item *
 
 For the C<http> protocol, the endpoint is an URL beginning with
-"http://"
+"https://"
 
 =item *
 

@@ -184,7 +184,7 @@ send to a specific transport protocol (e.g., "http").
 For information about sending different messages for each protocol
 using the AWS Management Console, go to Create Different Messages for
 Each Protocol
-(http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol)
+(https://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol)
 in the I<Amazon Simple Notification Service Getting Started Guide>.
 
 Valid value: C<json>
@@ -214,8 +214,6 @@ characters; and must be less than 100 characters long.
 
 
 =head2 TargetArn => Str
-
-Either TopicArn or EndpointArn, but not both.
 
 If you don't specify a value for the C<TargetArn> parameter, you must
 specify a value for the C<PhoneNumber> or C<TopicArn> parameters.

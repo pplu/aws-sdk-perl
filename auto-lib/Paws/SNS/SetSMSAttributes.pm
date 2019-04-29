@@ -145,7 +145,7 @@ Amazon SNS service principle to perform the C<s3:PutObject> and
 C<s3:GetBucketLocation> actions.
 
 For an example bucket policy and usage report, see Monitoring SMS
-Activity (http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html) in
+Activity (https://docs.aws.amazon.com/sns/latest/dg/sms_stats.html) in
 the I<Amazon SNS Developer Guide>.
 
 
