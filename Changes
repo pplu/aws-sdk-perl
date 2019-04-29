@@ -1,4 +1,5 @@
 0.41
+ - New API: Textract
 
 0.40 26 Apr 2019
  - Solve issue #324. Paws won't die when any API returns duplicate requestid headers. IAM has 
