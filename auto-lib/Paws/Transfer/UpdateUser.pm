@@ -72,13 +72,13 @@ C<${Transfer:HomeBucket}>.
 
 =head2 Role => Str
 
-The IAM role that controls your userE<rsquo>s access to your Amazon S3
-bucket. The policies attached to this role will determine the level of
-access you want to provide your users when transferring files into and
-out of your Amazon S3 bucket or buckets. The IAM role should also
-contain a trust relationship that allows the Secure File Transfer
-Protocol (SFTP) server to access your resources when servicing your
-SFTP userE<rsquo>s transfer requests.
+The IAM role that controls your user's access to your Amazon S3 bucket.
+The policies attached to this role will determine the level of access
+you want to provide your users when transferring files into and out of
+your Amazon S3 bucket or buckets. The IAM role should also contain a
+trust relationship that allows the Secure File Transfer Protocol (SFTP)
+server to access your resources when servicing your SFTP user's
+transfer requests.
 
 
 

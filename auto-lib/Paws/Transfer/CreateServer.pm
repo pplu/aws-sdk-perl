@@ -1,6 +1,8 @@
 
 package Paws::Transfer::CreateServer;
   use Moose;
+  has EndpointDetails => (is => 'ro', isa => 'Paws::Transfer::EndpointDetails');
+  has EndpointType => (is => 'ro', isa => 'Str');
   has IdentityProviderDetails => (is => 'ro', isa => 'Paws::Transfer::IdentityProviderDetails');
   has IdentityProviderType => (is => 'ro', isa => 'Str');
   has LoggingRole => (is => 'ro', isa => 'Str');
@@ -31,9 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $transfer = Paws->service('Transfer');
     my $CreateServerResponse = $transfer->CreateServer(
+      EndpointDetails => {
+        VpcEndpointId => 'MyVpcEndpointId',    # OPTIONAL
+      },    # OPTIONAL
+      EndpointType            => 'PUBLIC',    # OPTIONAL
       IdentityProviderDetails => {
-        InvocationRole => 'MyRole',    # OPTIONAL
-        Url            => 'MyUrl',     # OPTIONAL
+        InvocationRole => 'MyRole',           # OPTIONAL
+        Url            => 'MyUrl',            # OPTIONAL
       },    # OPTIONAL
       IdentityProviderType => 'SERVICE_MANAGED',    # OPTIONAL
       LoggingRole          => 'MyRole',             # OPTIONAL
@@ -58,6 +64,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head1 ATTRIBUTES
 
 
+=head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
+
+
+
+
+
+=head2 EndpointType => Str
+
+
+
+Valid values are: C<"PUBLIC">, C<"VPC_ENDPOINT">
+
 =head2 IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>
 
 An array containing all of the information required to call a
@@ -80,9 +98,8 @@ Valid values are: C<"SERVICE_MANAGED">, C<"API_GATEWAY">
 
 =head2 LoggingRole => Str
 
-A value that allows the service to write your SFTP usersE<rsquo>
-activity to your Amazon CloudWatch logs for monitoring and auditing
-purposes.
+A value that allows the service to write your SFTP users' activity to
+your Amazon CloudWatch logs for monitoring and auditing purposes.
 
 
 

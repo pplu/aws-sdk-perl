@@ -1,6 +1,8 @@
 
 package Paws::Transfer::UpdateServer;
   use Moose;
+  has EndpointDetails => (is => 'ro', isa => 'Paws::Transfer::EndpointDetails');
+  has EndpointType => (is => 'ro', isa => 'Str');
   has IdentityProviderDetails => (is => 'ro', isa => 'Paws::Transfer::IdentityProviderDetails');
   has LoggingRole => (is => 'ro', isa => 'Str');
   has ServerId => (is => 'ro', isa => 'Str', required => 1);
@@ -30,10 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $transfer = Paws->service('Transfer');
     my $UpdateServerResponse = $transfer->UpdateServer(
-      ServerId                => 'MyServerId',
+      ServerId        => 'MyServerId',
+      EndpointDetails => {
+        VpcEndpointId => 'MyVpcEndpointId',    # OPTIONAL
+      },    # OPTIONAL
+      EndpointType            => 'PUBLIC',    # OPTIONAL
       IdentityProviderDetails => {
-        InvocationRole => 'MyRole',    # OPTIONAL
-        Url            => 'MyUrl',     # OPTIONAL
+        InvocationRole => 'MyRole',           # OPTIONAL
+        Url            => 'MyUrl',            # OPTIONAL
       },    # OPTIONAL
       LoggingRole => 'MyNullableRole',    # OPTIONAL
     );
@@ -48,6 +54,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head1 ATTRIBUTES
 
+
+=head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
+
+
+
+
+
+=head2 EndpointType => Str
+
+
+
+Valid values are: C<"PUBLIC">, C<"VPC_ENDPOINT">
 
 =head2 IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>
 

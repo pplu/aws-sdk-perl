@@ -1,6 +1,8 @@
 package Paws::Transfer::DescribedServer;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has EndpointDetails => (is => 'ro', isa => 'Paws::Transfer::EndpointDetails');
+  has EndpointType => (is => 'ro', isa => 'Str');
   has IdentityProviderDetails => (is => 'ro', isa => 'Paws::Transfer::IdentityProviderDetails');
   has IdentityProviderType => (is => 'ro', isa => 'Str');
   has LoggingRole => (is => 'ro', isa => 'Str');
@@ -50,6 +52,16 @@ state, and assigned tags or metadata.
 
   Specifies the unique Amazon Resource Name (ARN) for the server to be
 described.
+
+
+=head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
+
+  
+
+
+=head2 EndpointType => Str
+
+  
 
 
 =head2 IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>
