@@ -57,8 +57,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       BadgeEnabled => 1,    # OPTIONAL
       Cache        => {
-        Type     => 'NO_CACHE',    # values: NO_CACHE, S3
+        Type     => 'NO_CACHE',    # values: NO_CACHE, S3, LOCAL
         Location => 'MyString',    # OPTIONAL
+        Modes    => [
+          'LOCAL_DOCKER_LAYER_CACHE',
+          ... # values: LOCAL_DOCKER_LAYER_CACHE, LOCAL_SOURCE_CACHE, LOCAL_CUSTOM_CACHE
+        ],    # OPTIONAL
       },    # OPTIONAL
       Description   => 'MyProjectDescription',    # OPTIONAL
       EncryptionKey => 'MyNonEmptyString',        # OPTIONAL
@@ -93,8 +97,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StreamName => 'MyString',    # OPTIONAL
         },    # OPTIONAL
         S3Logs => {
-          Status   => 'ENABLED',     # values: ENABLED, DISABLED
-          Location => 'MyString',    # OPTIONAL
+          Status             => 'ENABLED',     # values: ENABLED, DISABLED
+          EncryptionDisabled => 1,             # OPTIONAL
+          Location           => 'MyString',    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       QueuedTimeoutInMinutes => 1,    # OPTIONAL
@@ -120,8 +125,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Type     => 'OAUTH',       # values: OAUTH
             Resource => 'MyString',    # OPTIONAL
           },    # OPTIONAL
-          Buildspec         => 'MyString',    # OPTIONAL
-          GitCloneDepth     => 1,             # OPTIONAL
+          Buildspec           => 'MyString',    # OPTIONAL
+          GitCloneDepth       => 1,             # OPTIONAL
+          GitSubmodulesConfig => {
+            FetchSubmodules => 1,               # OPTIONAL
+
+          },    # OPTIONAL
           InsecureSsl       => 1,             # OPTIONAL
           Location          => 'MyString',    # OPTIONAL
           ReportBuildStatus => 1,             # OPTIONAL
@@ -137,8 +146,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Type     => 'OAUTH',       # values: OAUTH
           Resource => 'MyString',    # OPTIONAL
         },    # OPTIONAL
-        Buildspec         => 'MyString',    # OPTIONAL
-        GitCloneDepth     => 1,             # OPTIONAL
+        Buildspec           => 'MyString',    # OPTIONAL
+        GitCloneDepth       => 1,             # OPTIONAL
+        GitSubmodulesConfig => {
+          FetchSubmodules => 1,               # OPTIONAL
+
+        },    # OPTIONAL
         InsecureSsl       => 1,             # OPTIONAL
         Location          => 'MyString',    # OPTIONAL
         ReportBuildStatus => 1,             # OPTIONAL
@@ -203,10 +216,13 @@ A new or replacement description of the build project.
 
 =head2 EncryptionKey => Str
 
-The replacement AWS Key Management Service (AWS KMS) customer master
-key (CMK) to be used for encrypting the build output artifacts.
+The AWS Key Management Service (AWS KMS) customer master key (CMK) to
+be used for encrypting the build output artifacts.
 
-You can specify either the Amazon Resource Name (ARN)of the CMK or, if
+You can use a cross-account KMS key to encrypt the build output
+artifacts if your service role has permission to that key.
+
+You can specify either the Amazon Resource Name (ARN) of the CMK or, if
 available, the CMK's alias (using the format C<alias/I<alias-name> >).
 
 

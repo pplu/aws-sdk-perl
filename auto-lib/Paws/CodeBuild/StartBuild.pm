@@ -9,6 +9,7 @@ package Paws::CodeBuild::StartBuild;
   has EnvironmentTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'environmentTypeOverride' );
   has EnvironmentVariablesOverride => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentVariable]', traits => ['NameInRequest'], request_name => 'environmentVariablesOverride' );
   has GitCloneDepthOverride => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'gitCloneDepthOverride' );
+  has GitSubmodulesConfigOverride => (is => 'ro', isa => 'Paws::CodeBuild::GitSubmodulesConfig', traits => ['NameInRequest'], request_name => 'gitSubmodulesConfigOverride' );
   has IdempotencyToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'idempotencyToken' );
   has ImageOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageOverride' );
   has ImagePullCredentialsTypeOverride => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imagePullCredentialsTypeOverride' );
@@ -68,8 +69,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       BuildspecOverride => 'MyString',    # OPTIONAL
       CacheOverride     => {
-        Type     => 'NO_CACHE',           # values: NO_CACHE, S3
+        Type     => 'NO_CACHE',           # values: NO_CACHE, S3, LOCAL
         Location => 'MyString',           # OPTIONAL
+        Modes    => [
+          'LOCAL_DOCKER_LAYER_CACHE',
+          ... # values: LOCAL_DOCKER_LAYER_CACHE, LOCAL_SOURCE_CACHE, LOCAL_CUSTOM_CACHE
+        ],    # OPTIONAL
       },    # OPTIONAL
       CertificateOverride          => 'MyString',                # OPTIONAL
       ComputeTypeOverride          => 'BUILD_GENERAL1_SMALL',    # OPTIONAL
@@ -82,7 +87,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                          # OPTIONAL
-      GitCloneDepthOverride            => 1,                     # OPTIONAL
+      GitCloneDepthOverride       => 1,    # OPTIONAL
+      GitSubmodulesConfigOverride => {
+        FetchSubmodules => 1,              # OPTIONAL
+
+      },    # OPTIONAL
       IdempotencyToken                 => 'MyString',            # OPTIONAL
       ImageOverride                    => 'MyNonEmptyString',    # OPTIONAL
       ImagePullCredentialsTypeOverride => 'CODEBUILD',           # OPTIONAL
@@ -94,8 +103,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StreamName => 'MyString',    # OPTIONAL
         },    # OPTIONAL
         S3Logs => {
-          Status   => 'ENABLED',     # values: ENABLED, DISABLED
-          Location => 'MyString',    # OPTIONAL
+          Status             => 'ENABLED',     # values: ENABLED, DISABLED
+          EncryptionDisabled => 1,             # OPTIONAL
+          Location           => 'MyString',    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       PrivilegedModeOverride         => 1,    # OPTIONAL
@@ -128,23 +138,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Type     => 'OAUTH',       # values: OAUTH
             Resource => 'MyString',    # OPTIONAL
           },    # OPTIONAL
-          Buildspec         => 'MyString',    # OPTIONAL
-          GitCloneDepth     => 1,
-          InsecureSsl       => 1,             # OPTIONAL
-          Location          => 'MyString',    # OPTIONAL
-          ReportBuildStatus => 1,             # OPTIONAL
-          SourceIdentifier  => 'MyString',    # OPTIONAL
+          Buildspec           => 'MyString',    # OPTIONAL
+          GitCloneDepth       => 1,
+          GitSubmodulesConfig => {
+            FetchSubmodules => 1,               # OPTIONAL
+
+          },
+          InsecureSsl       => 1,               # OPTIONAL
+          Location          => 'MyString',      # OPTIONAL
+          ReportBuildStatus => 1,               # OPTIONAL
+          SourceIdentifier  => 'MyString',      # OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
+      ],                                        # OPTIONAL
       SecondarySourcesVersionOverride => [
         {
-          SourceIdentifier => 'MyString',     # OPTIONAL
-          SourceVersion    => 'MyString',     # OPTIONAL
+          SourceIdentifier => 'MyString',       # OPTIONAL
+          SourceVersion    => 'MyString',       # OPTIONAL
 
         },
         ...
-      ],                                      # OPTIONAL
+      ],                                        # OPTIONAL
       ServiceRoleOverride => 'MyNonEmptyString',    # OPTIONAL
       SourceAuthOverride  => {
         Type     => 'OAUTH',                        # values: OAUTH
@@ -221,6 +235,13 @@ latest ones already defined in the build project.
 The user-defined depth of history, with a minimum value of 0, that
 overrides, for this build only, any previous depth of history defined
 in the build project.
+
+
+
+=head2 GitSubmodulesConfigOverride => L<Paws::CodeBuild::GitSubmodulesConfig>
+
+Information about the Git submodules configuration for this build of an
+AWS CodeBuild build project.
 
 
 

@@ -48,8 +48,8 @@ images cannot be curated or an Amazon ECR image.
 =back
 
 For more information, see Private Registry with AWS Secrets Manager
-Samle for AWS CodeBuild
-(http://docs.aws.amazon.com/codebuild/latest/userguide/sample-private-registry.html).
+Sample for AWS CodeBuild
+(https://docs.aws.amazon.com/codebuild/latest/userguide/sample-private-registry.html).
 
 =head1 ATTRIBUTES
 
