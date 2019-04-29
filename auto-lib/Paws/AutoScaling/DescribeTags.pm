@@ -62,7 +62,7 @@ filters per filter type (for example, C<auto-scaling-group>) is 1000.
 =head2 MaxRecords => Int
 
 The maximum number of items to return with this call. The default value
-is 50 and the maximum value is 100.
+is C<50> and the maximum value is C<100>.
 
 
 

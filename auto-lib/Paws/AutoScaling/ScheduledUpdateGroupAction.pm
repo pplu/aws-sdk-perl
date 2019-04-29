@@ -58,8 +58,7 @@ DescribeScheduledActions.
 
 =head2 EndTime => Str
 
-  The date and time that the action is scheduled to end. This date and
-time can be up to one month in the future.
+  The date and time that the action is scheduled to end.
 
 
 =head2 MaxSize => Int
@@ -89,8 +88,7 @@ time can be up to one month in the future.
 
 =head2 StartTime => Str
 
-  The date and time that the action is scheduled to begin. This date and
-time can be up to one month in the future.
+  The date and time that the action is scheduled to begin.
 
 When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
 form the boundaries of when the recurring action starts and stops.

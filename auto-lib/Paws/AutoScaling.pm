@@ -552,8 +552,10 @@ terminate EC2 instances based on user-defined policies, schedules, and
 health checks. Use this service with AWS Auto Scaling, Amazon
 CloudWatch, and Elastic Load Balancing.
 
-For more information, see the Amazon EC2 Auto Scaling User Guide
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html).
+For more information, including information about granting IAM users
+required permissions for Amazon EC2 Auto Scaling actions, see the
+Amazon EC2 Auto Scaling User Guide
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01>
 
@@ -590,7 +592,7 @@ instances are also registered with the target groups.
 
 For more information, see Attach EC2 Instances to Your Auto Scaling
 Group
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -612,16 +614,16 @@ Returns: a L<Paws::AutoScaling::AttachLoadBalancersResultType> instance
 Attaches one or more Classic Load Balancers to the specified Auto
 Scaling group.
 
-To attach an Application Load Balancer instead, see
-AttachLoadBalancerTargetGroups.
+To attach an Application Load Balancer or a Network Load Balancer
+instead, see AttachLoadBalancerTargetGroups.
 
 To describe the load balancers for an Auto Scaling group, use
 DescribeLoadBalancers. To detach the load balancer from the Auto
 Scaling group, use DetachLoadBalancers.
 
-For more information, see Attach a Load Balancer to Your Auto Scaling
-Group
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
+For more information, see Attaching a Load Balancer to Your Auto
+Scaling Group
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -646,9 +648,11 @@ To describe the target groups for an Auto Scaling group, use
 DescribeLoadBalancerTargetGroups. To detach the target group from the
 Auto Scaling group, use DetachLoadBalancerTargetGroups.
 
-For more information, see Attach a Load Balancer to Your Auto Scaling
-Group
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
+With Application Load Balancers and Network Load Balancers, instances
+are registered as targets with a target group. With Classic Load
+Balancers, instances are registered with the load balancer. For more
+information, see Attaching a Load Balancer to Your Auto Scaling Group
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -750,8 +754,8 @@ action.>
 
 =back
 
-For more information, see Auto Scaling Lifecycle
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
+For more information, see Amazon EC2 Auto Scaling Lifecycle Hooks
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -813,12 +817,8 @@ Creates an Auto Scaling group with the specified name and attributes.
 If you exceed your maximum limit of Auto Scaling groups, the call
 fails. For information about viewing this limit, see
 DescribeAccountLimits. For information about updating this limit, see
-Auto Scaling Limits
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
-in the I<Amazon EC2 Auto Scaling User Guide>.
-
-For more information, see Auto Scaling Groups
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html)
+Amazon EC2 Auto Scaling Limits
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -874,12 +874,12 @@ Creates a launch configuration.
 If you exceed your maximum limit of launch configurations, the call
 fails. For information about viewing this limit, see
 DescribeAccountLimits. For information about updating this limit, see
-Auto Scaling Limits
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
+Amazon EC2 Auto Scaling Limits
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 For more information, see Launch Configurations
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -903,7 +903,7 @@ overwrites the previous tag definition, and you do not get an error
 message.
 
 For more information, see Tagging Auto Scaling Groups and Instances
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1016,7 +1016,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DeletePolicy>
 
 Returns: nothing
 
-Deletes the specified Auto Scaling policy.
+Deletes the specified scaling policy.
 
 Deleting a policy deletes the underlying alarm action, but does not
 delete the alarm, even if it no longer has an associated action.
@@ -1069,12 +1069,12 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAccountLim
 
 Returns: a L<Paws::AutoScaling::DescribeAccountLimitsAnswer> instance
 
-Describes the current Auto Scaling resource limits for your AWS
-account.
+Describes the current Amazon EC2 Auto Scaling resource limits for your
+AWS account.
 
-For information about requesting an increase in these limits, see Auto
-Scaling Limits
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
+For information about requesting an increase in these limits, see
+Amazon EC2 Auto Scaling Limits
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1240,8 +1240,8 @@ Returns: a L<Paws::AutoScaling::DescribeLoadBalancersResponse> instance
 Describes the load balancers for the specified Auto Scaling group.
 
 This operation describes only Classic Load Balancers. If you have
-Application Load Balancers, use DescribeLoadBalancerTargetGroups
-instead.
+Application Load Balancers or Network Load Balancers, use
+DescribeLoadBalancerTargetGroups instead.
 
 
 =head2 DescribeLoadBalancerTargetGroups
@@ -1444,7 +1444,7 @@ Scaling.
 
 For more information, see Controlling Which Auto Scaling Instances
 Terminate During Scale In
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1481,7 +1481,7 @@ deregistered from the target groups.
 
 For more information, see Detach EC2 Instances from Your Auto Scaling
 Group
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1504,7 +1504,8 @@ Detaches one or more Classic Load Balancers from the specified Auto
 Scaling group.
 
 This operation detaches only Classic Load Balancers. If you have
-Application Load Balancers, use DetachLoadBalancerTargetGroups instead.
+Application Load Balancers or Network Load Balancers, use
+DetachLoadBalancerTargetGroups instead.
 
 When you detach a load balancer, it enters the C<Removing> state while
 deregistering the instances in the group. When all instances are
@@ -1568,7 +1569,7 @@ Returns: nothing
 
 Enables group metrics for the specified Auto Scaling group. For more
 information, see Monitoring Your Auto Scaling Groups and Instances
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1593,7 +1594,7 @@ Moves the specified instances into the standby state.
 
 For more information, see Temporarily Removing Instances from Your Auto
 Scaling Group
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1640,7 +1641,7 @@ Moves the specified instances out of the standby state.
 
 For more information, see Temporarily Removing Instances from Your Auto
 Scaling Group
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1675,8 +1676,8 @@ Creates or updates a lifecycle hook for the specified Auto Scaling
 group.
 
 A lifecycle hook tells Amazon EC2 Auto Scaling to perform an action on
-an instance that is not actively in service; for example, either when
-the instance launches or before the instance terminates.
+an instance when the instance launches (before it is put into service)
+or as the instance terminates (before it is fully terminated).
 
 This step is a part of the procedure for adding a lifecycle hook to an
 Auto Scaling group:
@@ -1704,24 +1705,26 @@ instances launch or terminate.>
 =item 4.
 
 If you need more time, record the lifecycle action heartbeat to keep
-the instance in a pending state.
+the instance in a pending state using using
+RecordLifecycleActionHeartbeat.
 
 =item 5.
 
 If you finish before the timeout period ends, complete the lifecycle
-action.
+action using CompleteLifecycleAction.
 
 =back
 
-For more information, see Auto Scaling Lifecycle Hooks
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
+For more information, see Amazon EC2 Auto Scaling Lifecycle Hooks
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 If you exceed your maximum limit of lifecycle hooks, which by default
-is 50 per Auto Scaling group, the call fails. For information about
-updating this limit, see AWS Service Limits
-(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
-in the I<Amazon Web Services General Reference>.
+is 50 per Auto Scaling group, the call fails.
+
+You can view the lifecycle hooks for an Auto Scaling group using
+DescribeLifecycleHooks. If you are no longer using a lifecycle hook,
+you can delete it using DeleteLifecycleHook.
 
 
 =head2 PutNotificationConfiguration
@@ -1747,10 +1750,10 @@ delivered to an endpoint such as a web server or an email address.
 
 This configuration overwrites any existing configuration.
 
-For more information, see Getting SNS Notifications When Your Auto
-Scaling Group Scales
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html)
-in the I<Auto Scaling User Guide>.
+For more information, see Getting Amazon SNS Notifications When Your
+Auto Scaling Group Scales
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 PutScalingPolicy
@@ -1793,12 +1796,6 @@ existing policy, use the existing policy name and set the parameters to
 change. Any existing parameter not changed in an update to an existing
 policy is not changed in this update request.
 
-If you exceed your maximum limit of step adjustments, which by default
-is 20 per region, the call fails. For information about updating this
-limit, see AWS Service Limits
-(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
-in the I<Amazon Web Services General Reference>.
-
 
 =head2 PutScheduledUpdateGroupAction
 
@@ -1834,7 +1831,7 @@ group. If you leave a parameter unspecified when updating a scheduled
 scaling action, the corresponding value remains unchanged.
 
 For more information, see Scheduled Scaling
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1897,7 +1894,7 @@ action.
 =back
 
 For more information, see Auto Scaling Lifecycle
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1920,7 +1917,7 @@ Resumes the specified suspended automatic scaling processes, or all
 suspended process, for the specified Auto Scaling group.
 
 For more information, see Suspending and Resuming Scaling Processes
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1945,7 +1942,7 @@ Sets the size of the specified Auto Scaling group.
 
 For more information about desired capacity, see What Is Amazon EC2
 Auto Scaling?
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/WhatIsAutoScaling.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1968,8 +1965,8 @@ Returns: nothing
 
 Sets the health status of the specified instance.
 
-For more information, see Health Checks
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+For more information, see Health Checks for Auto Scaling Instances
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1992,8 +1989,10 @@ Returns: a L<Paws::AutoScaling::SetInstanceProtectionAnswer> instance
 
 Updates the instance protection settings of the specified instances.
 
-For more information, see Instance Protection
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection)
+For more information about preventing instances that are part of an
+Auto Scaling group from terminating on scale in, see Instance
+Protection
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -2021,7 +2020,7 @@ can prevent other process types from functioning properly.
 To resume processes that have been suspended, use ResumeProcesses.
 
 For more information, see Suspending and Resuming Scaling Processes
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 

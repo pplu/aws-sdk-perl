@@ -42,7 +42,7 @@ Describes an override for a launch template.
 
 For information about available instance types, see Available Instance
 Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes)
 in the I<Amazon Elastic Compute Cloud User Guide.>
 
 

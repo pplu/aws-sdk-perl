@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 Describes an adjustment based on the difference between the value of
 the aggregated CloudWatch metric and the breach threshold that you've
-defined for the alarm.
+defined for the alarm. Used in combination with PutScalingPolicy.
 
 For the following examples, suppose that you have an alarm with a
 breach threshold of 50:

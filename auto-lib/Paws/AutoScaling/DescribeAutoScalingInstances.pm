@@ -56,7 +56,7 @@ you specify an ID that does not exist, it is ignored with no error.
 =head2 MaxRecords => Int
 
 The maximum number of items to return with this call. The default value
-is 50 and the maximum value is 50.
+is C<50> and the maximum value is C<50>.
 
 
 

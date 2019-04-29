@@ -37,15 +37,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes a target tracking configuration. Used with ScalingInstruction
-and ScalingPolicy.
+Describes a target tracking configuration to use with AWS Auto Scaling.
+Used with ScalingInstruction and ScalingPolicy.
 
 =head1 ATTRIBUTES
 
 
 =head2 CustomizedScalingMetricSpecification => L<Paws::AutoScalingPlans::CustomizedScalingMetricSpecification>
 
-  A customized metric.
+  A customized metric. You can specify either a predefined metric or a
+customized metric.
 
 
 =head2 DisableScaleIn => Bool
@@ -68,7 +69,8 @@ resource is an Auto Scaling group.
 
 =head2 PredefinedScalingMetricSpecification => L<Paws::AutoScalingPlans::PredefinedScalingMetricSpecification>
 
-  A predefined metric.
+  A predefined metric. You can specify either a predefined metric or a
+customized metric.
 
 
 =head2 ScaleInCooldown => Int

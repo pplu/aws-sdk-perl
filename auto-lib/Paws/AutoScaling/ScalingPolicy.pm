@@ -52,8 +52,8 @@ Describes a scaling policy.
 =head2 AdjustmentType => Str
 
   The adjustment type, which specifies how C<ScalingAdjustment> is
-interpreted. Valid values are C<ChangeInCapacity>, C<ExactCapacity>,
-and C<PercentChangeInCapacity>.
+interpreted. The valid values are C<ChangeInCapacity>,
+C<ExactCapacity>, and C<PercentChangeInCapacity>.
 
 
 =head2 Alarms => ArrayRef[L<Paws::AutoScaling::Alarm>]
@@ -80,7 +80,7 @@ contribute to the CloudWatch metrics.
 
 =head2 MetricAggregationType => Str
 
-  The aggregation type for the CloudWatch metrics. Valid values are
+  The aggregation type for the CloudWatch metrics. The valid values are
 C<Minimum>, C<Maximum>, and C<Average>.
 
 
@@ -110,7 +110,8 @@ instead.
 
 =head2 PolicyType => Str
 
-  The policy type. Valid values are C<SimpleScaling> and C<StepScaling>.
+  The policy type. The valid values are C<SimpleScaling> and
+C<StepScaling>.
 
 
 =head2 ScalingAdjustment => Int
@@ -128,7 +129,7 @@ alarm breach.
 
 =head2 TargetTrackingConfiguration => L<Paws::AutoScaling::TargetTrackingConfiguration>
 
-  A target tracking policy.
+  A target tracking scaling policy.
 
 
 

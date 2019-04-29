@@ -50,7 +50,8 @@ Represents a scaling policy.
 
 =head2 TargetTrackingConfiguration => L<Paws::AutoScalingPlans::TargetTrackingConfiguration>
 
-  The target tracking scaling policy.
+  The target tracking scaling policy. Includes support for predefined or
+customized metrics.
 
 
 

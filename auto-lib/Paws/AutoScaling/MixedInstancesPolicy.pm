@@ -35,9 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 Describes a mixed instances policy for an Auto Scaling group. With
 mixed instances, your Auto Scaling group can provision a combination of
 On-Demand Instances and Spot Instances across multiple instance types.
-For more information, see Using Multiple Instance Types and Purchase
+Used in combination with CreateAutoScalingGroup. For more information,
+see Auto Scaling Groups with Multiple Instance Types and Purchase
 Options
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html#asg-purchase-options)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 When you create your Auto Scaling group, you can specify a launch
