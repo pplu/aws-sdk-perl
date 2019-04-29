@@ -80,6 +80,16 @@ package Paws::MediaStore;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::PutLifecyclePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartAccessLogging {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::StartAccessLogging', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopAccessLogging {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::StopAccessLogging', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub ListAllContainers {
     my $self = shift;
@@ -106,7 +116,7 @@ package Paws::MediaStore;
   }
 
 
-  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DeleteCorsPolicy DeleteLifecyclePolicy DescribeContainer GetContainerPolicy GetCorsPolicy GetLifecyclePolicy ListContainers PutContainerPolicy PutCorsPolicy PutLifecyclePolicy / }
+  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DeleteCorsPolicy DeleteLifecyclePolicy DescribeContainer GetContainerPolicy GetCorsPolicy GetLifecyclePolicy ListContainers PutContainerPolicy PutCorsPolicy PutLifecyclePolicy StartAccessLogging StopAccessLogging / }
 
 1;
 
@@ -229,7 +239,8 @@ Each argument is described in detail in: L<Paws::MediaStore::DeleteLifecyclePoli
 
 Returns: a L<Paws::MediaStore::DeleteLifecyclePolicyOutput> instance
 
-Removes an object lifecycle policy from a container.
+Removes an object lifecycle policy from a container. It takes up to 20
+minutes for the change to take effect.
 
 
 =head2 DescribeContainer
@@ -392,6 +403,10 @@ The policy can contain up to 398,000 characters. You can add up to 100
 rules to a CORS policy. If more than one rule applies, the service uses
 the first applicable rule listed.
 
+To learn more about CORS, see Cross-Origin Resource Sharing (CORS) in
+AWS Elemental MediaStore
+(https://docs.aws.amazon.com/mediastore/latest/ug/cors-policy.html).
+
 
 =head2 PutLifecyclePolicy
 
@@ -410,7 +425,49 @@ Returns: a L<Paws::MediaStore::PutLifecyclePolicyOutput> instance
 
 Writes an object lifecycle policy to a container. If the container
 already has an object lifecycle policy, the service replaces the
-existing policy with the new policy.
+existing policy with the new policy. It takes up to 20 minutes for the
+change to take effect.
+
+For information about how to construct an object lifecycle policy, see
+Components of an Object Lifecycle Policy
+(https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html).
+
+
+=head2 StartAccessLogging
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::StartAccessLogging>
+
+Returns: a L<Paws::MediaStore::StartAccessLoggingOutput> instance
+
+Starts access logging on the specified container. When you enable
+access logging on a container, MediaStore delivers access logs for
+objects stored in that container to Amazon CloudWatch Logs.
+
+
+=head2 StopAccessLogging
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::StopAccessLogging>
+
+Returns: a L<Paws::MediaStore::StopAccessLoggingOutput> instance
+
+Stops access logging on the specified container. When you stop access
+logging on a container, MediaStore stops sending access logs to Amazon
+CloudWatch Logs. These access logs are not saved and are not
+retrievable.
 
 
 
