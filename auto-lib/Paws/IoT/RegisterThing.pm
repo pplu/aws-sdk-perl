@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 Parameters => L<Paws::IoT::Parameters>
 
 The parameters for provisioning a thing. See Programmatic Provisioning
-(http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
+(https://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
 for more information.
 
 
@@ -57,7 +57,7 @@ for more information.
 =head2 B<REQUIRED> TemplateBody => Str
 
 The provisioning template. See Programmatic Provisioning
-(http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
+(https://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
 for more information.
 
 

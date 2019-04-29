@@ -87,7 +87,7 @@ Currently one index is supported: "AWS_Things".
 The dynamic thing group search query string.
 
 See Query Syntax
-(http://docs.aws.amazon.com/iot/latest/developerguide/query-syntax.html)
+(https://docs.aws.amazon.com/iot/latest/developerguide/query-syntax.html)
 for information about query string syntax.
 
 

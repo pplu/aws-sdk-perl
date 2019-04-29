@@ -34,6 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AdditionalMetricsToRetain =
+      $DescribeSecurityProfileResponse->AdditionalMetricsToRetain;
     my $AlertTargets     = $DescribeSecurityProfileResponse->AlertTargets;
     my $Behaviors        = $DescribeSecurityProfileResponse->Behaviors;
     my $CreationDate     = $DescribeSecurityProfileResponse->CreationDate;

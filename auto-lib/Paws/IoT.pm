@@ -444,6 +444,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetRegistrationCode', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetStatistics {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::GetStatistics', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTopicRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetTopicRule', @_);
@@ -1698,7 +1703,7 @@ package Paws::IoT;
   }
 
 
-  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateDynamicThingGroup CreateJob CreateKeysAndCertificate CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAccountAuditConfiguration DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing ValidateSecurityProfileBehaviors / }
+  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateDynamicThingGroup CreateJob CreateKeysAndCertificate CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAccountAuditConfiguration DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPolicy GetPolicyVersion GetRegistrationCode GetStatistics GetTopicRule GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing ValidateSecurityProfileBehaviors / }
 
 1;
 
@@ -1737,11 +1742,11 @@ associated with each device (Registry), configure logging, and create
 and manage policies and credentials to authenticate devices.
 
 For more information about how AWS IoT works, see the Developer Guide
-(http://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html).
+(https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html).
 
 For information about how to use the credentials provider for AWS IoT,
 see Authorizing Direct Calls to AWS Services
-(http://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html).
+(https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28>
 
@@ -1929,7 +1934,9 @@ Each argument is described in detail in: L<Paws::IoT::AttachThingPrincipal>
 
 Returns: a L<Paws::IoT::AttachThingPrincipalResponse> instance
 
-Attaches the specified principal to the specified thing.
+Attaches the specified principal to the specified thing. A principal
+can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
+identities or federated identities.
 
 
 =head2 CancelAuditTask
@@ -2243,6 +2250,8 @@ certificate, so it is important to keep it in a secure location.
 
 =item [Description => Str]
 
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
 =item [TargetSelection => Str]
 
 
@@ -2340,6 +2349,8 @@ Creates a role alias.
 
 =item [DayOfWeek => Str]
 
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
 
 =back
 
@@ -2354,11 +2365,13 @@ Creates a scheduled audit that is run at a specified time interval.
 
 =over
 
-=item Behaviors => ArrayRef[L<Paws::IoT::Behavior>]
-
 =item SecurityProfileName => Str
 
+=item [AdditionalMetricsToRetain => ArrayRef[Str|Undef]]
+
 =item [AlertTargets => L<Paws::IoT::AlertTargets>]
+
+=item [Behaviors => ArrayRef[L<Paws::IoT::Behavior>]]
 
 =item [SecurityProfileDescription => Str]
 
@@ -2385,6 +2398,8 @@ Creates a Device Defender security profile.
 =item StreamId => Str
 
 =item [Description => Str]
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
 
 
 =back
@@ -2422,10 +2437,13 @@ Each argument is described in detail in: L<Paws::IoT::CreateThing>
 
 Returns: a L<Paws::IoT::CreateThingResponse> instance
 
-Creates a thing record in the registry.
+Creates a thing record in the registry. If this call is made multiple
+times using the same thing name and configuration, the call will
+succeed. If this call is made with the same thing name but different
+configuration a C<ResourceAlreadyExistsException> is thrown.
 
 This is a control plane operation. See Authorization
-(http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
+(https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
 for information about authorizing control plane actions.
 
 
@@ -2451,7 +2469,7 @@ Returns: a L<Paws::IoT::CreateThingGroupResponse> instance
 Create a thing group.
 
 This is a control plane operation. See Authorization
-(http://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
+(https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
 for information about authorizing control plane actions.
 
 
@@ -3307,7 +3325,9 @@ Each argument is described in detail in: L<Paws::IoT::DetachThingPrincipal>
 
 Returns: a L<Paws::IoT::DetachThingPrincipalResponse> instance
 
-Detaches the specified principal from the specified thing.
+Detaches the specified principal from the specified thing. A principal
+can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
+identities or federated identities.
 
 This call is asynchronous. It might take several seconds for the
 detachment to propagate.
@@ -3478,6 +3498,28 @@ Returns: a L<Paws::IoT::GetRegistrationCodeResponse> instance
 
 Gets a registration code used to register a CA certificate with AWS
 IoT.
+
+
+=head2 GetStatistics
+
+=over
+
+=item QueryString => Str
+
+=item [AggregationField => Str]
+
+=item [IndexName => Str]
+
+=item [QueryVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::GetStatistics>
+
+Returns: a L<Paws::IoT::GetStatisticsResponse> instance
+
+Gets statistics about things that match the specified query.
 
 
 =head2 GetTopicRule
@@ -3933,7 +3975,7 @@ Returns: a L<Paws::IoT::ListPrincipalPoliciesResponse> instance
 
 Lists the policies attached to the specified principal. If you use an
 Cognito identity, the ID must be in AmazonCognito Identity format
-(http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax).
+(https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax).
 
 B<Note:> This API is deprecated. Please use ListAttachedPolicies
 instead.
@@ -3956,7 +3998,9 @@ Each argument is described in detail in: L<Paws::IoT::ListPrincipalThings>
 
 Returns: a L<Paws::IoT::ListPrincipalThingsResponse> instance
 
-Lists the things associated with the specified principal.
+Lists the things associated with the specified principal. A principal
+can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
+identities or federated identities.
 
 
 =head2 ListRoleAliases
@@ -4176,7 +4220,9 @@ Each argument is described in detail in: L<Paws::IoT::ListThingPrincipals>
 
 Returns: a L<Paws::IoT::ListThingPrincipalsResponse> instance
 
-Lists the principals associated with the specified thing.
+Lists the principals associated with the specified thing. A principal
+can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
+identities or federated identities.
 
 
 =head2 ListThingRegistrationTaskReports
@@ -5092,9 +5138,17 @@ often the audit takes place.
 
 =item SecurityProfileName => Str
 
+=item [AdditionalMetricsToRetain => ArrayRef[Str|Undef]]
+
 =item [AlertTargets => L<Paws::IoT::AlertTargets>]
 
 =item [Behaviors => ArrayRef[L<Paws::IoT::Behavior>]]
+
+=item [DeleteAdditionalMetricsToRetain => Bool]
+
+=item [DeleteAlertTargets => Bool]
+
+=item [DeleteBehaviors => Bool]
 
 =item [ExpectedVersion => Int]
 
