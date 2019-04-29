@@ -1,9 +1,9 @@
 package Paws::AppMesh::VirtualRouterData;
   use Moose;
   has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
-  has Metadata => (is => 'ro', isa => 'Paws::AppMesh::ResourceMetadata', request_name => 'metadata', traits => ['NameInRequest']);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::VirtualRouterSpec', request_name => 'spec', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::AppMesh::VirtualRouterStatus', request_name => 'status', traits => ['NameInRequest']);
+  has Metadata => (is => 'ro', isa => 'Paws::AppMesh::ResourceMetadata', request_name => 'metadata', traits => ['NameInRequest'], required => 1);
+  has Spec => (is => 'ro', isa => 'Paws::AppMesh::VirtualRouterSpec', request_name => 'spec', traits => ['NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Paws::AppMesh::VirtualRouterStatus', request_name => 'status', traits => ['NameInRequest'], required => 1);
   has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -43,20 +43,20 @@ operation.
 
 =head2 B<REQUIRED> MeshName => Str
 
-  The name of the service mesh in which the virtual router resides.
+  The name of the service mesh that the virtual router resides in.
 
 
-=head2 Metadata => L<Paws::AppMesh::ResourceMetadata>
+=head2 B<REQUIRED> Metadata => L<Paws::AppMesh::ResourceMetadata>
 
   The associated metadata for the virtual router.
 
 
-=head2 Spec => L<Paws::AppMesh::VirtualRouterSpec>
+=head2 B<REQUIRED> Spec => L<Paws::AppMesh::VirtualRouterSpec>
 
   The specifications of the virtual router.
 
 
-=head2 Status => L<Paws::AppMesh::VirtualRouterStatus>
+=head2 B<REQUIRED> Status => L<Paws::AppMesh::VirtualRouterStatus>
 
   The current status of the virtual router.
 

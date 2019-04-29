@@ -10,7 +10,7 @@ package Paws::AppMesh::UpdateRoute;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRoute');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::UpdateRouteOutput');
 1;
@@ -41,14 +41,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             WeightedTargets => [
               {
                 VirtualNode => 'MyResourceName',    # min: 1, max: 255
-                Weight      => 1,                   # max: 100; OPTIONAL
+                Weight      => 1,                   # max: 100
+
               },
               ...
-            ],                                      # OPTIONAL
-          },    # OPTIONAL
+            ],                                      # min: 1, max: 10
+
+          },
           Match => {
-            Prefix => 'MyString',    # OPTIONAL
-          },    # OPTIONAL
+            Prefix => 'MyString',
+
+          },
+
+        },    # OPTIONAL
+        TcpRoute => {
+          Action => {
+            WeightedTargets => [
+              {
+                VirtualNode => 'MyResourceName',    # min: 1, max: 255
+                Weight      => 1,                   # max: 100
+
+              },
+              ...
+            ],                                      # min: 1, max: 10
+
+          },
+
         },    # OPTIONAL
       },
       VirtualRouterName => 'MyResourceName',
@@ -76,7 +94,7 @@ underscores are allowed.
 
 =head2 B<REQUIRED> MeshName => Str
 
-The name of the service mesh in which the route resides.
+The name of the service mesh that the route resides in.
 
 
 
@@ -95,7 +113,7 @@ data.
 
 =head2 B<REQUIRED> VirtualRouterName => Str
 
-The name of the virtual router with which the route is associated.
+The name of the virtual router that the route is associated with.
 
 
 

@@ -1,6 +1,6 @@
 package Paws::AppMesh::VirtualRouterSpec;
   use Moose;
-  has ServiceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'serviceNames', traits => ['NameInRequest']);
+  has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::VirtualRouterListener]', request_name => 'listeners', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppMesh::VirtualRouterSpec object:
 
-  $service_obj->Method(Att1 => { ServiceNames => $value, ..., ServiceNames => $value  });
+  $service_obj->Method(Att1 => { Listeners => $value, ..., Listeners => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::VirtualRouterSpec object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ServiceNames
+  $result->Att1->Listeners
 
 =head1 DESCRIPTION
 
@@ -36,9 +36,11 @@ An object representing the specification of a virtual router.
 =head1 ATTRIBUTES
 
 
-=head2 ServiceNames => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> Listeners => ArrayRef[L<Paws::AppMesh::VirtualRouterListener>]
 
-  The service mesh service names to associate with the virtual router.
+  The listeners that the virtual router is expected to receive inbound
+traffic from. Currently only one listener is supported per virtual
+router.
 
 
 

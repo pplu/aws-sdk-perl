@@ -1,6 +1,6 @@
 package Paws::AppMesh::VirtualRouterStatus;
   use Moose;
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ An object representing the status of a virtual router.
 =head1 ATTRIBUTES
 
 
-=head2 Status => Str
+=head2 B<REQUIRED> Status => Str
 
   The current status of the virtual router.
 

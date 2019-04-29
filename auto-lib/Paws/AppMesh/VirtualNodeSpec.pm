@@ -1,7 +1,8 @@
 package Paws::AppMesh::VirtualNodeSpec;
   use Moose;
-  has Backends => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'backends', traits => ['NameInRequest']);
+  has Backends => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::Backend]', request_name => 'backends', traits => ['NameInRequest']);
   has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::Listener]', request_name => 'listeners', traits => ['NameInRequest']);
+  has Logging => (is => 'ro', isa => 'Paws::AppMesh::Logging', request_name => 'logging', traits => ['NameInRequest']);
   has ServiceDiscovery => (is => 'ro', isa => 'Paws::AppMesh::ServiceDiscovery', request_name => 'serviceDiscovery', traits => ['NameInRequest']);
 1;
 
@@ -38,21 +39,29 @@ An object representing the specification of a virtual node.
 =head1 ATTRIBUTES
 
 
-=head2 Backends => ArrayRef[Str|Undef]
+=head2 Backends => ArrayRef[L<Paws::AppMesh::Backend>]
 
-  The backends to which the virtual node is expected to send outbound
-traffic.
+  The backends that the virtual node is expected to send outbound traffic
+to.
 
 
 =head2 Listeners => ArrayRef[L<Paws::AppMesh::Listener>]
 
-  The listeners from which the virtual node is expected to receive
-inbound traffic.
+  The listeners that the virtual node is expected to receive inbound
+traffic from. Currently only one listener is supported per virtual
+node.
+
+
+=head2 Logging => L<Paws::AppMesh::Logging>
+
+  The inbound and outbound access logging information for the virtual
+node.
 
 
 =head2 ServiceDiscovery => L<Paws::AppMesh::ServiceDiscovery>
 
-  The service discovery information for the virtual node.
+  The service discovery information for the virtual node. If your virtual
+node does not expect ingress traffic, you can omit this parameter.
 
 
 

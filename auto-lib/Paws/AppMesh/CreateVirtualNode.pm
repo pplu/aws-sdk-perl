@@ -4,12 +4,13 @@ package Paws::AppMesh::CreateVirtualNode;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
   has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
   has Spec => (is => 'ro', isa => 'Paws::AppMesh::VirtualNodeSpec', traits => ['NameInRequest'], request_name => 'spec', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::TagRef]', traits => ['NameInRequest'], request_name => 'tags');
   has VirtualNodeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualNodeName', required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVirtualNode');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/meshes/{meshName}/virtualNodes');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualNodes');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::CreateVirtualNodeOutput');
 1;
@@ -35,34 +36,57 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MeshName => 'MyResourceName',
       Spec     => {
         Backends => [
-          'MyServiceName', ...    # OPTIONAL
-        ],                        # OPTIONAL
-        Listeners => [
           {
-            HealthCheck => {
-              HealthyThreshold   => 1,            # min: 2, max: 10
-              IntervalMillis     => 1,            # min: 5000, max: 300000
-              Protocol           => 'http',       # values: http, tcp; OPTIONAL
-              TimeoutMillis      => 1,            # min: 2000, max: 60000
-              UnhealthyThreshold => 1,            # min: 2, max: 10
-              Path               => 'MyString',   # OPTIONAL
-              Port               => 1,            # min: 1, max: 65535; OPTIONAL
-            },    # OPTIONAL
-            PortMapping => {
-              Port     => 1,         # min: 1, max: 65535; OPTIONAL
-              Protocol => 'http',    # values: http, tcp; OPTIONAL
+            VirtualService => {
+              VirtualServiceName => 'MyServiceName',
+
             },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],        # max: 25; OPTIONAL
+        Listeners => [
+          {
+            PortMapping => {
+              Port     => 1,         # min: 1, max: 65535
+              Protocol => 'http',    # values: http, tcp
+
+            },
+            HealthCheck => {
+              HealthyThreshold   => 1,             # min: 2, max: 10
+              IntervalMillis     => 1,             # min: 5000, max: 300000
+              Protocol           => 'http',        # values: http, tcp
+              TimeoutMillis      => 1,             # min: 2000, max: 60000
+              UnhealthyThreshold => 1,             # min: 2, max: 10
+              Path               => 'MyString',    # OPTIONAL
+              Port               => 1,             # min: 1, max: 65535
+            },    # OPTIONAL
+          },
+          ...
+        ],        # max: 1; OPTIONAL
+        Logging => {
+          AccessLog => {
+            File => {
+              Path => 'MyFilePath',    # min: 1, max: 255
+
+            },    # OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
         ServiceDiscovery => {
           Dns => {
-            ServiceName => 'MyServiceName',    # OPTIONAL
+            Hostname => 'MyHostname',
+
           },    # OPTIONAL
         },    # OPTIONAL
       },
       VirtualNodeName => 'MyResourceName',
       ClientToken     => 'MyString',         # OPTIONAL
+      Tags            => [
+        {
+          Key   => 'MyTagKey',               # min: 1, max: 128
+          Value => 'MyTagValue',             # max: 256; OPTIONAL
+        },
+        ...
+      ],                                     # OPTIONAL
     );
 
     # Results:
@@ -86,13 +110,23 @@ underscores are allowed.
 
 =head2 B<REQUIRED> MeshName => Str
 
-The name of the service mesh in which to create the virtual node.
+The name of the service mesh to create the virtual node in.
 
 
 
 =head2 B<REQUIRED> Spec => L<Paws::AppMesh::VirtualNodeSpec>
 
 The virtual node specification to apply.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::AppMesh::TagRef>]
+
+Optional metadata that you can apply to the virtual node to assist with
+categorization and organization. Each tag consists of a key and an
+optional value, both of which you define. Tag keys can have a maximum
+character length of 128 characters, and tag values can have a maximum
+length of 256 characters.
 
 
 

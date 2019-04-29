@@ -1,6 +1,7 @@
 package Paws::AppMesh::RouteSpec;
   use Moose;
   has HttpRoute => (is => 'ro', isa => 'Paws::AppMesh::HttpRoute', request_name => 'httpRoute', traits => ['NameInRequest']);
+  has TcpRoute => (is => 'ro', isa => 'Paws::AppMesh::TcpRoute', request_name => 'tcpRoute', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppMesh::RouteSpec object:
 
-  $service_obj->Method(Att1 => { HttpRoute => $value, ..., HttpRoute => $value  });
+  $service_obj->Method(Att1 => { HttpRoute => $value, ..., TcpRoute => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ An object representing the specification of a route.
 =head2 HttpRoute => L<Paws::AppMesh::HttpRoute>
 
   The HTTP routing information for the route.
+
+
+=head2 TcpRoute => L<Paws::AppMesh::TcpRoute>
+
+  The TCP routing information for the route.
 
 
 

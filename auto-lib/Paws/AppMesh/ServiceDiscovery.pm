@@ -39,7 +39,7 @@ node.
 
 =head2 Dns => L<Paws::AppMesh::DnsServiceDiscovery>
 
-  Specifies the DNS service name for the virtual node.
+  Specifies the DNS information for the virtual node.
 
 
 

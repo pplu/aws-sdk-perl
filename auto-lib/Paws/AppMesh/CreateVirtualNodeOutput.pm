@@ -1,7 +1,7 @@
 
 package Paws::AppMesh::CreateVirtualNodeOutput;
   use Moose;
-  has VirtualNode => (is => 'ro', isa => 'Paws::AppMesh::VirtualNodeData', traits => ['NameInRequest'], request_name => 'virtualNode');
+  has VirtualNode => (is => 'ro', isa => 'Paws::AppMesh::VirtualNodeData', traits => ['NameInRequest'], request_name => 'virtualNode', required => 1);
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'VirtualNode');
   has _request_id => (is => 'ro', isa => 'Str');
@@ -16,7 +16,7 @@ Paws::AppMesh::CreateVirtualNodeOutput
 =head1 ATTRIBUTES
 
 
-=head2 VirtualNode => L<Paws::AppMesh::VirtualNodeData>
+=head2 B<REQUIRED> VirtualNode => L<Paws::AppMesh::VirtualNodeData>
 
 The full description of your virtual node following the create call.
 

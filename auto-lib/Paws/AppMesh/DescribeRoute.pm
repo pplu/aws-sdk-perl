@@ -8,7 +8,7 @@ package Paws::AppMesh::DescribeRoute;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRoute');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::DescribeRouteOutput');
 1;
@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 =head2 B<REQUIRED> MeshName => Str
 
-The name of the service mesh in which the route resides.
+The name of the service mesh that the route resides in.
 
 
 
@@ -62,7 +62,7 @@ The name of the route to describe.
 
 =head2 B<REQUIRED> VirtualRouterName => Str
 
-The name of the virtual router with which the route is associated.
+The name of the virtual router that the route is associated with.
 
 
 

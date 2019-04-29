@@ -8,7 +8,7 @@ package Paws::AppMesh::DeleteRoute;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRoute');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::DeleteRouteOutput');
 1;
@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 =head2 B<REQUIRED> MeshName => Str
 
-The name of the service mesh in which to delete the route.
+The name of the service mesh to delete the route in.
 
 
 
@@ -62,7 +62,7 @@ The name of the route to delete.
 
 =head2 B<REQUIRED> VirtualRouterName => Str
 
-The name of the virtual router in which to delete the route.
+The name of the virtual router to delete the route in.
 
 
 
