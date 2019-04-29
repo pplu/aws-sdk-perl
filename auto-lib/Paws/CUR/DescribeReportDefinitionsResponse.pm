@@ -22,7 +22,7 @@ Paws::CUR::DescribeReportDefinitionsResponse
 
 =head2 ReportDefinitions => ArrayRef[L<Paws::CUR::ReportDefinition>]
 
-
+A list of AWS Cost and Usage reports owned by the account.
 
 
 =head2 _request_id => Str
