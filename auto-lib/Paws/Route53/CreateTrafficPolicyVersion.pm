@@ -62,7 +62,8 @@ request, if any.
 
 The definition of this version of the traffic policy, in JSON format.
 You specified the JSON in the C<CreateTrafficPolicyVersion> request.
-For more information about the JSON format, see CreateTrafficPolicy.
+For more information about the JSON format, see CreateTrafficPolicy
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateTrafficPolicy.html).
 
 
 

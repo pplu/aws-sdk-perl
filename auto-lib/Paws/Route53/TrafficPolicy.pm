@@ -53,7 +53,7 @@ any.
 document to use for a new traffic policy in the C<CreateTrafficPolicy>
 request. For more information about the JSON format, see Traffic Policy
 Document Format
-(http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
+(https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
 
 
 =head2 B<REQUIRED> Id => Str

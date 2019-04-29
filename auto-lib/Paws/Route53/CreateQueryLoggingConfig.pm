@@ -59,9 +59,9 @@ arn:aws:logs:I<region>:I<account-id>:log-group:I<log_group_name>
 
 To get the ARN for a log group, you can use the CloudWatch console, the
 DescribeLogGroups
-(http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html)
+(https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html)
 API action, the describe-log-groups
-(http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html)
+(https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html)
 command, or the applicable command in one of the AWS SDKs.
 
 

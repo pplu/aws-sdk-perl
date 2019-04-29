@@ -33,21 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Al
 
 =head1 DESCRIPTION
 
-I<Alias resource record sets only:> Information about the CloudFront
-distribution, Elastic Beanstalk environment, ELB load balancer, Amazon
-S3 bucket, or Amazon Route 53 resource record set that you're
-redirecting queries to. An Elastic Beanstalk environment must have a
-regionalized subdomain.
+I<Alias resource record sets only:> Information about the AWS resource,
+such as a CloudFront distribution or an Amazon S3 bucket, that you want
+to route traffic to.
 
 When creating resource record sets for a private hosted zone, note the
 following:
 
 =over
-
-=item *
-
-Resource record sets can't be created for CloudFront distributions in a
-private hosted zone.
 
 =item *
 
@@ -73,6 +66,38 @@ on where you want to route queries:
 
 =over
 
+=item Amazon API Gateway custom regional APIs and edge-optimized APIs
+
+Specify the applicable domain name for your API. You can get the
+applicable value using the AWS CLI command get-domain-names
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-domain-names.html):
+
+=over
+
+=item *
+
+For regional APIs, specify the value of C<regionalDomainName>.
+
+=item *
+
+For edge-optimized APIs, specify the value of
+C<distributionDomainName>. This is the name of the associated
+CloudFront distribution, such as C<da1b2c3d4e5.cloudfront.net>.
+
+=back
+
+The name of the record that you're creating must match a custom domain
+name for your API, such as C<api.example.com>.
+
+=item Amazon Virtual Private Cloud interface VPC endpoint
+
+Enter the API endpoint for the interface endpoint, such as
+C<vpce-123456789abcdef01-example-us-east-1a.elasticloadbalancing.us-east-1.vpce.amazonaws.com>.
+For edge-optimized APIs, this is the domain name for the corresponding
+CloudFront distribution. You can get the value of C<DnsName> using the
+AWS CLI command describe-vpc-endpoints
+(https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpc-endpoints.html).
+
 =item CloudFront distribution
 
 Specify the domain name that CloudFront assigned when you created your
@@ -86,6 +111,9 @@ domain names. For more information, see Using Alternate Domain Names
 (CNAMEs)
 (http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html)
 in the I<Amazon CloudFront Developer Guide>.
+
+You can't create a resource record set in a private hosted zone to
+route traffic to a CloudFront distribution.
 
 For failover alias records, you can't specify a CloudFront distribution
 for both the primary and secondary records. A distribution must include
@@ -298,7 +326,7 @@ to other resources.
 
 =item *
 
-A target group that has no registered targets is considered healthy.
+A target group that has no registered targets is considered unhealthy.
 
 =back
 
@@ -339,6 +367,32 @@ you want to route traffic:
 
 =over
 
+=item Amazon API Gateway custom regional APIs and edge-optimized APIs
+
+Specify the hosted zone ID for your API. You can get the applicable
+value using the AWS CLI command get-domain-names
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-domain-names.html):
+
+=over
+
+=item *
+
+For regional APIs, specify the value of C<regionalHostedZoneId>.
+
+=item *
+
+For edge-optimized APIs, specify the value of
+C<distributionHostedZoneId>.
+
+=back
+
+=item Amazon Virtual Private Cloud interface VPC endpoint
+
+Specify the hosted zone ID for your interface endpoint. You can get the
+value of C<HostedZoneId> using the AWS CLI command
+describe-vpc-endpoints
+(https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpc-endpoints.html).
+
 =item CloudFront distribution
 
 Specify C<Z2FDTNDATAQYW2>.
@@ -366,7 +420,7 @@ following methods to get the hosted zone ID:
 =item *
 
 Elastic Load Balancing
-(http://docs.aws.amazon.com/general/latest/gr/rande.html#elb_region)
+(https://docs.aws.amazon.com/general/latest/gr/rande.html#elb_region)
 table in the "AWS Regions and Endpoints" chapter of the I<Amazon Web
 Services General Reference>: Use the value that corresponds with the
 region that you created your load balancer in. Note that there are
