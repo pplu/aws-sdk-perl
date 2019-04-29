@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 Represents summary information about the health of an instance. For
 more information, see Health Colors and Statuses
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html).
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html).
 
 =head1 ATTRIBUTES
 
