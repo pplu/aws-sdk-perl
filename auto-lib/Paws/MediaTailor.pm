@@ -29,9 +29,24 @@ package Paws::MediaTailor;
     my $call_object = $self->new_with_coercions('Paws::MediaTailor::ListPlaybackConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaTailor::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutPlaybackConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaTailor::PutPlaybackConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaTailor::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaTailor::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -60,7 +75,7 @@ package Paws::MediaTailor;
   }
 
 
-  sub operations { qw/DeletePlaybackConfiguration GetPlaybackConfiguration ListPlaybackConfigurations PutPlaybackConfiguration / }
+  sub operations { qw/DeletePlaybackConfiguration GetPlaybackConfiguration ListPlaybackConfigurations ListTagsForResource PutPlaybackConfiguration TagResource UntagResource / }
 
 1;
 
@@ -119,7 +134,7 @@ Each argument is described in detail in: L<Paws::MediaTailor::DeletePlaybackConf
 
 Returns: a L<Paws::MediaTailor::DeletePlaybackConfigurationResponse> instance
 
-Deletes the configuration for the specified name.
+Deletes the playback configuration for the specified name.
 
 
 =head2 GetPlaybackConfiguration
@@ -135,7 +150,7 @@ Each argument is described in detail in: L<Paws::MediaTailor::GetPlaybackConfigu
 
 Returns: a L<Paws::MediaTailor::GetPlaybackConfigurationResponse> instance
 
-Returns the configuration for the specified name.
+Returns the playback configuration for the specified name.
 
 
 =head2 ListPlaybackConfigurations
@@ -153,12 +168,29 @@ Each argument is described in detail in: L<Paws::MediaTailor::ListPlaybackConfig
 
 Returns: a L<Paws::MediaTailor::ListPlaybackConfigurationsResponse> instance
 
-Returns a list of the configurations defined in AWS Elemental
-MediaTailor. You can specify a max number of configurations to return
-at a time. The default max is 50. Results are returned in pagefuls. If
-AWS Elemental MediaTailor has more configurations than the specified
-max, it provides parameters in the response that you can use to
+Returns a list of the playback configurations defined in AWS Elemental
+MediaTailor. You can specify a maximum number of configurations to
+return at a time. The default maximum is 50. Results are returned in
+pagefuls. If MediaTailor has more configurations than the specified
+maximum, it provides parameters in the response that you can use to
 retrieve the next pageful.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaTailor::ListTagsForResource>
+
+Returns: a L<Paws::MediaTailor::ListTagsForResourceResponse> instance
+
+Returns a list of the tags assigned to the specified playback
+configuration resource.
 
 
 =head2 PutPlaybackConfiguration
@@ -175,6 +207,8 @@ retrieve the next pageful.
 
 =item [SlateAdUrl => Str]
 
+=item [Tags => L<Paws::MediaTailor::__mapOf__string>]
+
 =item [TranscodeProfileName => Str]
 
 =item [VideoContentSourceUrl => Str]
@@ -186,7 +220,45 @@ Each argument is described in detail in: L<Paws::MediaTailor::PutPlaybackConfigu
 
 Returns: a L<Paws::MediaTailor::PutPlaybackConfigurationResponse> instance
 
-Adds a new configuration to AWS Elemental MediaTailor.
+Adds a new playback configuration to AWS Elemental MediaTailor.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::MediaTailor::__mapOf__string>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaTailor::TagResource>
+
+Returns: nothing
+
+Adds tags to the specified playback configuration resource. You can
+specify one or more tags to add.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaTailor::UntagResource>
+
+Returns: nothing
+
+Removes tags from the specified playback configuration resource. You
+can specify one or more tags to remove.
 
 
 

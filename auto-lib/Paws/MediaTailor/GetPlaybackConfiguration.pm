@@ -42,11 +42,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $GetPlaybackConfigurationResponse->DashConfiguration;
     my $HlsConfiguration = $GetPlaybackConfigurationResponse->HlsConfiguration;
     my $Name             = $GetPlaybackConfigurationResponse->Name;
+    my $PlaybackConfigurationArn =
+      $GetPlaybackConfigurationResponse->PlaybackConfigurationArn;
     my $PlaybackEndpointPrefix =
       $GetPlaybackConfigurationResponse->PlaybackEndpointPrefix;
     my $SessionInitializationEndpointPrefix =
       $GetPlaybackConfigurationResponse->SessionInitializationEndpointPrefix;
     my $SlateAdUrl = $GetPlaybackConfigurationResponse->SlateAdUrl;
+    my $Tags       = $GetPlaybackConfigurationResponse->Tags;
     my $TranscodeProfileName =
       $GetPlaybackConfigurationResponse->TranscodeProfileName;
     my $VideoContentSourceUrl =
@@ -62,7 +65,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> Name => Str
 
-The identifier for the configuration.
+The identifier for the playback configuration.
 
 
 
