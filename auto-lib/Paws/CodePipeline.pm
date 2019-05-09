@@ -348,6 +348,13 @@ the stages and actions of a pipeline.
 
 =item *
 
+ListActionExecutions, which returns action-level details for past
+executions. The details include full stage and action-level details,
+including individual action duration, status, any errors which occurred
+during the execution, and input and output artifact location details.
+
+=item *
+
 ListPipelines, which gets a summary of all of the pipelines associated
 with your account.
 
@@ -617,7 +624,7 @@ Each argument is described in detail in: L<Paws::CodePipeline::DeleteCustomActio
 
 Returns: nothing
 
-Marks a custom action as deleted. PollForJobs for the custom action
+Marks a custom action as deleted. C<PollForJobs> for the custom action
 will fail after the action is marked for deletion. Only used for custom
 actions.
 
@@ -805,8 +812,8 @@ Returns: a L<Paws::CodePipeline::GetPipelineStateOutput> instance
 Returns information about the state of a pipeline, including the stages
 and actions.
 
-Values returned in the revisionId and revisionUrl fields indicate the
-source revision information, such as the commit ID, for the current
+Values returned in the C<revisionId> and C<revisionUrl> fields indicate
+the source revision information, such as the commit ID, for the current
 state.
 
 
@@ -950,9 +957,9 @@ Each argument is described in detail in: L<Paws::CodePipeline::PollForJobs>
 Returns: a L<Paws::CodePipeline::PollForJobsOutput> instance
 
 Returns information about any jobs for AWS CodePipeline to act upon.
-PollForJobs is only valid for action types with "Custom" in the owner
-field. If the action type contains "AWS" or "ThirdParty" in the owner
-field, the PollForJobs action returns an error.
+C<PollForJobs> is only valid for action types with "Custom" in the
+owner field. If the action type contains "AWS" or "ThirdParty" in the
+owner field, the C<PollForJobs> action returns an error.
 
 When this API is called, AWS CodePipeline returns temporary credentials
 for the Amazon S3 bucket used to store artifacts for the pipeline, if
@@ -1219,8 +1226,9 @@ Returns: a L<Paws::CodePipeline::UpdatePipelineOutput> instance
 
 Updates a specified pipeline with edits or changes to its structure.
 Use a JSON file with the pipeline structure in conjunction with
-UpdatePipeline to provide the full structure of the pipeline. Updating
-the pipeline increases the version number of the pipeline by 1.
+C<UpdatePipeline> to provide the full structure of the pipeline.
+Updating the pipeline increases the version number of the pipeline by
+1.
 
 
 

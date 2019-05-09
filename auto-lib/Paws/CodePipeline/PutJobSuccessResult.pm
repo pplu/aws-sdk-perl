@@ -80,7 +80,7 @@ by the job worker.
 =head2 B<REQUIRED> JobId => Str
 
 The unique system-generated ID of the job that succeeded. This is the
-same ID returned from PollForJobs.
+same ID returned from C<PollForJobs>.
 
 
 

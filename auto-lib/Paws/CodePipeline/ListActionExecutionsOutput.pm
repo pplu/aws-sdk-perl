@@ -25,8 +25,8 @@ ID.
 
 If the amount of returned information is significantly large, an
 identifier is also returned and can be used in a subsequent
-ListActionExecutions call to return the next set of action executions
-in the list.
+C<ListActionExecutions> call to return the next set of action
+executions in the list.
 
 
 =head2 _request_id => Str

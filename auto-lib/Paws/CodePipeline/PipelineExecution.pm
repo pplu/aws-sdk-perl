@@ -42,7 +42,7 @@ Represents information about an execution of a pipeline.
 
 =head2 ArtifactRevisions => ArrayRef[L<Paws::CodePipeline::ArtifactRevision>]
 
-  A list of ArtifactRevision objects included in a pipeline execution.
+  A list of C<ArtifactRevision> objects included in a pipeline execution.
 
 
 =head2 PipelineExecutionId => Str

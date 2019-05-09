@@ -83,8 +83,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 The category of the custom action, such as a build action or a test
 action.
 
-Although Source and Approval are listed as valid values, they are not
-currently functional. These values are reserved for future use.
+Although C<Source> and C<Approval> are listed as valid values, they are
+not currently functional. These values are reserved for future use.
 
 Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">, C<"Approval">
 
@@ -124,7 +124,7 @@ CodeDeploy.
 
 =head2 Settings => L<Paws::CodePipeline::ActionTypeSettings>
 
-Returns information about the settings for an action type.
+URLs that provide users information about this custom action.
 
 
 

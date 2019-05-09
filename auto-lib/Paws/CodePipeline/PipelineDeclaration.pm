@@ -50,13 +50,13 @@ stored for the pipeline.
 
 =head2 ArtifactStores => L<Paws::CodePipeline::ArtifactStoreMap>
 
-  A mapping of artifactStore objects and their corresponding regions.
+  A mapping of C<artifactStore> objects and their corresponding regions.
 There must be an artifact store for the pipeline region and for each
 cross-region action within the pipeline. You can only use either
-artifactStore or artifactStores, not both.
+C<artifactStore> or C<artifactStores>, not both.
 
 If you create a cross-region action in your pipeline, you must use
-artifactStores.
+C<artifactStores>.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -67,8 +67,8 @@ artifactStores.
 =head2 B<REQUIRED> RoleArn => Str
 
   The Amazon Resource Name (ARN) for AWS CodePipeline to use to either
-perform actions with no actionRoleArn, or to use to assume roles for
-actions with an actionRoleArn.
+perform actions with no C<actionRoleArn>, or to use to assume roles for
+actions with an C<actionRoleArn>.
 
 
 =head2 B<REQUIRED> Stages => ArrayRef[L<Paws::CodePipeline::StageDeclaration>]

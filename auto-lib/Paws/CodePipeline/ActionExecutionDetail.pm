@@ -95,8 +95,8 @@ result.
 
 =head2 Status => Str
 
-  The status of the action execution. Status categories are InProgress,
-Succeeded, and Failed.
+  The status of the action execution. Status categories are
+C<InProgress>, C<Succeeded>, and C<Failed>.
 
 
 

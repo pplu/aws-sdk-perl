@@ -18,7 +18,7 @@ Paws::CodePipeline::GetPipelineOutput
 =head2 Metadata => L<Paws::CodePipeline::PipelineMetadata>
 
 Represents the pipeline metadata information returned as part of the
-output of a GetPipeline action.
+output of a C<GetPipeline> action.
 
 
 =head2 Pipeline => L<Paws::CodePipeline::PipelineDeclaration>

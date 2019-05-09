@@ -64,7 +64,7 @@ Represents information about failure details.
 =head2 B<REQUIRED> JobId => Str
 
 The ID of the job that failed. This is the same ID returned from
-PollForThirdPartyJobs.
+C<PollForThirdPartyJobs>.
 
 
 
