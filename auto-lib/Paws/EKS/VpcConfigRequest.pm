@@ -44,9 +44,9 @@ cluster.
 
   Set this value to C<true> to enable private access for your cluster's
 Kubernetes API server endpoint. If you enable private access,
-Kubernetes API requests from within your cluster's VPC will use the
-private VPC endpoint. The default value for this parameter is C<false>,
-which disables private access for your Kubernetes API server. For more
+Kubernetes API requests from within your cluster's VPC use the private
+VPC endpoint. The default value for this parameter is C<false>, which
+disables private access for your Kubernetes API server. For more
 information, see Amazon EKS Cluster Endpoint Access Control
 (https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 in the I< I<Amazon EKS User Guide> >.
@@ -56,7 +56,7 @@ in the I< I<Amazon EKS User Guide> >.
 
   Set this value to C<false> to disable public access for your cluster's
 Kubernetes API server endpoint. If you disable public access, your
-cluster's Kubernetes API server can only receive requests from within
+cluster's Kubernetes API server can receive only requests from within
 the cluster VPC. The default value for this parameter is C<true>, which
 enables public access for your Kubernetes API server. For more
 information, see Amazon EKS Cluster Endpoint Access Control
@@ -69,7 +69,7 @@ in the I< I<Amazon EKS User Guide> >.
   Specify one or more security groups for the cross-account elastic
 network interfaces that Amazon EKS creates to use to allow
 communication between your worker nodes and the Kubernetes control
-plane. If you do not specify a security group, the default security
+plane. If you don't specify a security group, the default security
 group for your VPC is used.
 
 

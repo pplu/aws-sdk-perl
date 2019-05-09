@@ -75,9 +75,9 @@ idempotency of the request.
 =head2 Logging => L<Paws::EKS::Logging>
 
 Enable or disable exporting the Kubernetes control plane logs for your
-cluster to CloudWatch Logs. By default, cluster control plane logs are
-not exported to CloudWatch Logs. For more information, see Amazon EKS
-Cluster Control Plane Logs
+cluster to CloudWatch Logs. By default, cluster control plane logs
+aren't exported to CloudWatch Logs. For more information, see Amazon
+EKS Cluster Control Plane Logs
 (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 in the I< I<Amazon EKS User Guide> >.
 

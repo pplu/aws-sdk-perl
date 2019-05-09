@@ -79,9 +79,9 @@ idempotency of the request.
 =head2 Logging => L<Paws::EKS::Logging>
 
 Enable or disable exporting the Kubernetes control plane logs for your
-cluster to CloudWatch Logs. By default, cluster control plane logs are
-not exported to CloudWatch Logs. For more information, see Amazon EKS
-Cluster Control Plane Logs
+cluster to CloudWatch Logs. By default, cluster control plane logs
+aren't exported to CloudWatch Logs. For more information, see Amazon
+EKS Cluster Control Plane Logs
 (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 in the I< I<Amazon EKS User Guide> >.
 
@@ -106,7 +106,7 @@ For more information, see Cluster VPC Considerations
 and Cluster Security Group Considerations
 (https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
 in the I<Amazon EKS User Guide>. You must specify at least two subnets.
-You may specify up to five security groups, but we recommend that you
+You can specify up to five security groups, but we recommend that you
 use a dedicated security group for your cluster control plane.
 
 
@@ -123,8 +123,8 @@ in the I< I<Amazon EKS User Guide> >.
 
 =head2 Version => Str
 
-The desired Kubernetes version for your cluster. If you do not specify
-a value here, the latest version available in Amazon EKS is used.
+The desired Kubernetes version for your cluster. If you don't specify a
+value here, the latest version available in Amazon EKS is used.
 
 
 

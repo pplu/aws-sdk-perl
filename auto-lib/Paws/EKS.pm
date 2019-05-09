@@ -176,10 +176,10 @@ Returns: a L<Paws::EKS::CreateClusterResponse> instance
 Creates an Amazon EKS control plane.
 
 The Amazon EKS control plane consists of control plane instances that
-run the Kubernetes software, like C<etcd> and the API server. The
+run the Kubernetes software, such as C<etcd> and the API server. The
 control plane runs in an account managed by AWS, and the Kubernetes API
 is exposed via the Amazon EKS API server endpoint. Each Amazon EKS
-cluster control plane is single-tenant and unique, and runs on its own
+cluster control plane is single-tenant and unique and runs on its own
 set of Amazon EC2 instances.
 
 The cluster control plane is provisioned across multiple Availability
@@ -196,15 +196,15 @@ certificate file that is created for your cluster.
 You can use the C<endpointPublicAccess> and C<endpointPrivateAccess>
 parameters to enable or disable public and private access to your
 cluster's Kubernetes API server endpoint. By default, public access is
-enabled and private access is disabled. For more information, see
+enabled, and private access is disabled. For more information, see
 Amazon EKS Cluster Endpoint Access Control
 (https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 in the I< I<Amazon EKS User Guide> >.
 
 You can use the C<logging> parameter to enable or disable exporting the
 Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-default, cluster control plane logs are not exported to CloudWatch
-Logs. For more information, see Amazon EKS Cluster Control Plane Logs
+default, cluster control plane logs aren't exported to CloudWatch Logs.
+For more information, see Amazon EKS Cluster Control Plane Logs
 (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 in the I< I<Amazon EKS User Guide> >.
 
@@ -267,8 +267,8 @@ with your Kubernetes API server. For more information, see Create a
 kubeconfig for Amazon EKS
 (https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html).
 
-The API server endpoint and certificate authority data are not
-available until the cluster reaches the C<ACTIVE> state.
+The API server endpoint and certificate authority data aren't available
+until the cluster reaches the C<ACTIVE> state.
 
 
 =head2 DescribeUpdate
@@ -358,23 +358,26 @@ function during the update. The response output includes an update ID
 that you can use to track the status of your cluster update with the
 DescribeUpdate API operation.
 
-You can use this API operation to enable or disable public and private
-access to your cluster's Kubernetes API server endpoint. By default,
-public access is enabled and private access is disabled. For more
-information, see Amazon EKS Cluster Endpoint Access Control
-(https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
-in the I< I<Amazon EKS User Guide> >.
-
-You can also use this API operation to enable or disable exporting the
+You can use this API operation to enable or disable exporting the
 Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-default, cluster control plane logs are not exported to CloudWatch
-Logs. For more information, see Amazon EKS Cluster Control Plane Logs
+default, cluster control plane logs aren't exported to CloudWatch Logs.
+For more information, see Amazon EKS Cluster Control Plane Logs
 (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 in the I< I<Amazon EKS User Guide> >.
 
 CloudWatch Logs ingestion, archive storage, and data scanning rates
 apply to exported control plane logs. For more information, see Amazon
 CloudWatch Pricing (http://aws.amazon.com/cloudwatch/pricing/).
+
+You can also use this API operation to enable or disable public and
+private access to your cluster's Kubernetes API server endpoint. By
+default, public access is enabled, and private access is disabled. For
+more information, see Amazon EKS Cluster Endpoint Access Control
+(https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
+in the I< I<Amazon EKS User Guide> >.
+
+At this time, you can not update the subnets or security group IDs for
+an existing cluster.
 
 Cluster updates are asynchronous, and they should finish within a few
 minutes. During an update, the cluster status moves to C<UPDATING>
