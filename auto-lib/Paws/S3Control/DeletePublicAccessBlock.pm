@@ -43,8 +43,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3-
 
 =head2 B<REQUIRED> AccountId => Str
 
-The Account ID for the Amazon Web Services account whose Public Access
-Block configuration you want to remove.
+The account ID for the AWS account whose block public access
+configuration you want to delete.
 
 
 
