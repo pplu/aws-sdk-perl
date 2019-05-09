@@ -32,41 +32,75 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::GrantC
 
 =head1 DESCRIPTION
 
-A structure that you can use to allow certain operations in the grant
-only when the desired encryption context is present. For more
-information about encryption context, see Encryption Context
-(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html)
-in the I<AWS Key Management Service Developer Guide>.
+Use this structure to allow cryptographic operations in the grant only
+when the operation request includes the specified encryption context
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context).
 
-Grant constraints apply only to operations that accept encryption
-context as input. For example, the C< DescribeKey > operation does not
-accept encryption context as input. A grant that allows the
-C<DescribeKey> operation does so regardless of the grant constraints.
-In constrast, the C< Encrypt > operation accepts encryption context as
-input. A grant that allows the C<Encrypt> operation does so only when
-the encryption context of the C<Encrypt> operation satisfies the grant
-constraints.
+AWS KMS applies the grant constraints only when the grant allows a
+cryptographic operation that accepts an encryption context as input,
+such as the following.
+
+=over
+
+=item *
+
+Encrypt
+
+=item *
+
+Decrypt
+
+=item *
+
+GenerateDataKey
+
+=item *
+
+GenerateDataKeyWithoutPlaintext
+
+=item *
+
+ReEncrypt
+
+=back
+
+AWS KMS does not apply the grant constraints to other operations, such
+as DescribeKey or ScheduleKeyDeletion.
+
+In a cryptographic operation, the encryption context in the decryption
+operation must be an exact, case-sensitive match for the keys and
+values in the encryption context of the encryption operation. Only the
+order of the pairs can vary.
+
+However, in a grant constraint, the key in each key-value pair is not
+case sensitive, but the value is case sensitive.
+
+To avoid confusion, do not use multiple encryption context pairs that
+differ only by case. To require a fully case-sensitive encryption
+context, use the C<kms:EncryptionContext:> and
+C<kms:EncryptionContextKeys> conditions in an IAM or key policy. For
+details, see kms:EncryptionContext:
+(https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-context)
+in the I< I<AWS Key Management Service Developer Guide> >.
 
 =head1 ATTRIBUTES
 
 
 =head2 EncryptionContextEquals => L<Paws::KMS::EncryptionContextType>
 
-  A list of key-value pairs that must be present in the encryption
-context of certain subsequent operations that the grant allows. When
-certain subsequent operations allowed by the grant include encryption
-context that matches this list, the grant allows the operation.
-Otherwise, the grant does not allow the operation.
+  A list of key-value pairs that must match the encryption context in the
+cryptographic operation request. The grant allows the operation only
+when the encryption context in the request is the same as the
+encryption context specified in this constraint.
 
 
 =head2 EncryptionContextSubset => L<Paws::KMS::EncryptionContextType>
 
-  A list of key-value pairs, all of which must be present in the
-encryption context of certain subsequent operations that the grant
-allows. When certain subsequent operations allowed by the grant include
-encryption context that matches this list or is a superset of this
-list, the grant allows the operation. Otherwise, the grant does not
-allow the operation.
+  A list of key-value pairs that must be included in the encryption
+context of the cryptographic operation request. The grant allows the
+cryptographic operation only when the encryption context in the request
+includes the key-value pairs specified in this constraint, although it
+can include additional key-value pairs.
 
 
 

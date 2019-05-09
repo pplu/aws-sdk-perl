@@ -40,9 +40,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> AliasName => Str
 
-The alias to be deleted. The name must start with the word "alias"
-followed by a forward slash (alias/). Aliases that begin with
-"alias/aws" are reserved.
+The alias to be deleted. The alias name must begin with C<alias/>
+followed by the alias name, such as C<alias/ExampleAlias>.
 
 
 

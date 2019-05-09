@@ -28,7 +28,7 @@ operation.
 The grant token.
 
 For more information, see Grant Tokens
-(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 
 

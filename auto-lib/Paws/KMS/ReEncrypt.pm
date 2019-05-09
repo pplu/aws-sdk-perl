@@ -68,9 +68,9 @@ Encryption context to use when the data is reencrypted.
 A unique identifier for the CMK that is used to reencrypt the data.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with "alias/".
-To specify a CMK in a different AWS account, you must use the key ARN
-or alias ARN.
+name, or alias ARN. When using an alias name, prefix it with
+C<"alias/">. To specify a CMK in a different AWS account, you must use
+the key ARN or alias ARN.
 
 For example:
 
@@ -105,7 +105,7 @@ To get the alias name and alias ARN, use ListAliases.
 A list of grant tokens.
 
 For more information, see Grant Tokens
-(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 
 

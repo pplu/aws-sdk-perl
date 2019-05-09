@@ -57,11 +57,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 Constraints => L<Paws::KMS::GrantConstraints>
 
-A structure that you can use to allow certain operations in the grant
-only when the desired encryption context is present. For more
-information about encryption context, see Encryption Context
-(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html)
-in the I<AWS Key Management Service Developer Guide>.
+Allows a cryptographic operation only when the encryption context
+matches or includes the encryption context specified in this structure.
+For more information about encryption context, see Encryption Context
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+in the I< I<AWS Key Management Service Developer Guide> >.
 
 
 
@@ -71,12 +71,12 @@ The principal that is given permission to perform the operations that
 the grant permits.
 
 To specify the principal, use the Amazon Resource Name (ARN)
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 of an AWS principal. Valid AWS principals include AWS accounts (root),
 IAM users, IAM roles, federated users, and assumed role users. For
 examples of the ARN syntax to use for specifying a principal, see AWS
 Identity and Access Management (IAM)
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
 in the Example ARNs section of the I<AWS General Reference>.
 
 
@@ -86,7 +86,7 @@ in the Example ARNs section of the I<AWS General Reference>.
 A list of grant tokens.
 
 For more information, see Grant Tokens
-(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 
 
@@ -121,7 +121,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 =head2 Name => Str
 
 A friendly name for identifying the grant. Use this value to prevent
-unintended creation of duplicate grants when retrying this request.
+the unintended creation of duplicate grants when retrying this request.
 
 When this value is absent, all C<CreateGrant> requests result in a new
 grant with a unique C<GrantId> even if all the supplied parameters are
@@ -149,12 +149,12 @@ The principal that is given permission to retire the grant by using
 RetireGrant operation.
 
 To specify the principal, use the Amazon Resource Name (ARN)
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 of an AWS principal. Valid AWS principals include AWS accounts (root),
 IAM users, federated users, and assumed role users. For examples of the
 ARN syntax to use for specifying a principal, see AWS Identity and
 Access Management (IAM)
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
 in the Example ARNs section of the I<AWS General Reference>.
 
 
