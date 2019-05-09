@@ -59,6 +59,11 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DeleteReservation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteSchedule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DeleteSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DeleteTags', @_);
@@ -142,6 +147,11 @@ package Paws::MediaLive;
   sub UpdateChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateChannelClass {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateChannelClass', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateInput {
@@ -300,7 +310,7 @@ package Paws::MediaLive;
   }
 
 
-  sub operations { qw/BatchUpdateSchedule CreateChannel CreateInput CreateInputSecurityGroup CreateTags DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteReservation DeleteTags DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeOffering DescribeReservation DescribeSchedule ListChannels ListInputs ListInputSecurityGroups ListOfferings ListReservations ListTagsForResource PurchaseOffering StartChannel StopChannel UpdateChannel UpdateInput UpdateInputSecurityGroup UpdateReservation / }
+  sub operations { qw/BatchUpdateSchedule CreateChannel CreateInput CreateInputSecurityGroup CreateTags DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteReservation DeleteSchedule DeleteTags DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeOffering DescribeReservation DescribeSchedule ListChannels ListInputs ListInputSecurityGroups ListOfferings ListReservations ListTagsForResource PurchaseOffering StartChannel StopChannel UpdateChannel UpdateChannelClass UpdateInput UpdateInputSecurityGroup UpdateReservation / }
 
 1;
 
@@ -523,6 +533,22 @@ Each argument is described in detail in: L<Paws::MediaLive::DeleteReservation>
 Returns: a L<Paws::MediaLive::DeleteReservationResponse> instance
 
 Delete an expired reservation.
+
+
+=head2 DeleteSchedule
+
+=over
+
+=item ChannelId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DeleteSchedule>
+
+Returns: a L<Paws::MediaLive::DeleteScheduleResponse> instance
+
+Delete all schedule actions on a channel.
 
 
 =head2 DeleteTags
@@ -867,6 +893,26 @@ Each argument is described in detail in: L<Paws::MediaLive::UpdateChannel>
 Returns: a L<Paws::MediaLive::UpdateChannelResponse> instance
 
 Updates a channel.
+
+
+=head2 UpdateChannelClass
+
+=over
+
+=item ChannelClass => Str
+
+=item ChannelId => Str
+
+=item [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::UpdateChannelClass>
+
+Returns: a L<Paws::MediaLive::UpdateChannelClassResponse> instance
+
+Changes the class of the channel.
 
 
 =head2 UpdateInput
