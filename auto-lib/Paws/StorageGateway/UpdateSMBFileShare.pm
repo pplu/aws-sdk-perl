@@ -1,6 +1,7 @@
 
 package Paws::StorageGateway::UpdateSMBFileShare;
   use Moose;
+  has AdminUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DefaultStorageClass => (is => 'ro', isa => 'Str');
   has FileShareARN => (is => 'ro', isa => 'Str', required => 1);
   has GuessMIMETypeEnabled => (is => 'ro', isa => 'Bool');
@@ -38,7 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $storagegateway = Paws->service('StorageGateway');
     my $UpdateSMBFileShareOutput = $storagegateway->UpdateSMBFileShare(
-      FileShareARN         => 'MyFileShareARN',
+      FileShareARN  => 'MyFileShareARN',
+      AdminUserList => [
+        'MyFileShareUser', ...    # min: 1, max: 64
+      ],                          # OPTIONAL
       DefaultStorageClass  => 'MyStorageClass',    # OPTIONAL
       GuessMIMETypeEnabled => 1,                   # OPTIONAL
       InvalidUserList      => [
@@ -64,6 +68,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/UpdateSMBFileShare>
 
 =head1 ATTRIBUTES
+
+
+=head2 AdminUserList => ArrayRef[Str|Undef]
+
+A list of users or groups in the Active Directory that have
+administrator rights to the file share. A group must be prefixed with
+the @ character. For example C<@group1>. Can only be set if
+Authentication is set to C<ActiveDirectory>.
+
 
 
 =head2 DefaultStorageClass => Str

@@ -1046,6 +1046,8 @@ share.
 
 =item Role => Str
 
+=item [AdminUserList => ArrayRef[Str|Undef]]
+
 =item [Authentication => Str]
 
 =item [DefaultStorageClass => Str]
@@ -2617,6 +2619,8 @@ field to null. This operation is only supported in file gateways.
 =over
 
 =item FileShareARN => Str
+
+=item [AdminUserList => ArrayRef[Str|Undef]]
 
 =item [DefaultStorageClass => Str]
 

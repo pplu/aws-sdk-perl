@@ -1,5 +1,6 @@
 package Paws::StorageGateway::SMBFileShareInfo;
   use Moose;
+  has AdminUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Authentication => (is => 'ro', isa => 'Str');
   has DefaultStorageClass => (is => 'ro', isa => 'Str');
   has FileShareARN => (is => 'ro', isa => 'Str');
@@ -38,14 +39,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::SMBFileShareInfo object:
 
-  $service_obj->Method(Att1 => { Authentication => $value, ..., ValidUserList => $value  });
+  $service_obj->Method(Att1 => { AdminUserList => $value, ..., ValidUserList => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGateway::SMBFileShareInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Authentication
+  $result->Att1->AdminUserList
 
 =head1 DESCRIPTION
 
@@ -54,6 +55,14 @@ default, to native S3 objects when file gateway discovers them in S3
 buckets. This operation is only supported for file gateways.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdminUserList => ArrayRef[Str|Undef]
+
+  A list of users or groups in the Active Directory that have
+administrator rights to the file share. A group must be prefixed with
+the @ character. For example C<@group1>. Can only be set if
+Authentication is set to C<ActiveDirectory>.
 
 
 =head2 Authentication => Str
