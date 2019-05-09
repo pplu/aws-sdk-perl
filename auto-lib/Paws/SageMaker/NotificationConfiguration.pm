@@ -1,13 +1,13 @@
-package Paws::SageMaker::DataSource;
+package Paws::SageMaker::NotificationConfiguration;
   use Moose;
-  has S3DataSource => (is => 'ro', isa => 'Paws::SageMaker::S3DataSource');
+  has NotificationTopicArn => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::SageMaker::DataSource
+Paws::SageMaker::NotificationConfiguration
 
 =head1 USAGE
 
@@ -18,27 +18,28 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::SageMaker::DataSource object:
+As an example, if Att1 is expected to be a Paws::SageMaker::NotificationConfiguration object:
 
-  $service_obj->Method(Att1 => { S3DataSource => $value, ..., S3DataSource => $value  });
+  $service_obj->Method(Att1 => { NotificationTopicArn => $value, ..., NotificationTopicArn => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::DataSource object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::NotificationConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->S3DataSource
+  $result->Att1->NotificationTopicArn
 
 =head1 DESCRIPTION
 
-Describes the location of the channel data.
+Configures SNS notifications of available or expiring work items for
+work teams.
 
 =head1 ATTRIBUTES
 
 
-=head2 S3DataSource => L<Paws::SageMaker::S3DataSource>
+=head2 NotificationTopicArn => Str
 
-  The S3 location of the data source that is associated with a channel.
+  The ARN for the SNS topic to which notifications should be published.
 
 
 

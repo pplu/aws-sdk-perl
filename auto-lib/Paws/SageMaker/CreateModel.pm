@@ -145,11 +145,13 @@ in the I<AWS Billing and Cost Management User Guide>.
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
 
-A VpcConfig object that specifies the VPC that you want your model to
-connect to. Control access to and from your model container by
-configuring the VPC. C<VpcConfig> is used in hosting services and in
-batch transform. For more information, see Protect Endpoints by Using
-an Amazon Virtual Private Cloud
+A VpcConfig
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html)
+object that specifies the VPC that you want your model to connect to.
+Control access to and from your model container by configuring the VPC.
+C<VpcConfig> is used in hosting services and in batch transform. For
+more information, see Protect Endpoints by Using an Amazon Virtual
+Private Cloud
 (https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and
 Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private
 Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html).

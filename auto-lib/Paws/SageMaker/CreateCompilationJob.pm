@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       OutputConfig => {
         S3OutputLocation => 'MyS3Uri',    # max: 1024
-        TargetDevice     => 'ml_m4'
-        , # values: ml_m4, ml_m5, ml_c4, ml_c5, ml_p2, ml_p3, jetson_tx1, jetson_tx2, rasp3b, deeplens, rk3399, rk3288
+        TargetDevice     => 'lambda'
+        , # values: lambda, ml_m4, ml_m5, ml_c4, ml_c5, ml_p2, ml_p3, jetson_tx1, jetson_tx2, jetson_nano, rasp3b, deeplens, rk3399, rk3288
 
       },
       RoleArn           => 'MyRoleArn',
@@ -88,7 +88,7 @@ and the target device the model runs on.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The Amazon Resource Name (ARN) of an IIAMAM role that enables Amazon
+The Amazon Resource Name (ARN) of an IAM role that enables Amazon
 SageMaker to perform tasks on your behalf.
 
 During model compilation, Amazon SageMaker needs your permission to:

@@ -70,25 +70,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Name => 'MyParameterName',                   # max: 256
             Type =>
               'Integer',    # values: Integer, Continuous, Categorical, FreeText
-            DefaultValue => 'MyParameterValue',       # max: 256
+            DefaultValue => 'MyParameterValue',       # max: 256; OPTIONAL
             Description  => 'MyEntityDescription',    # max: 1024; OPTIONAL
             IsRequired   => 1,                        # OPTIONAL
             IsTunable    => 1,                        # OPTIONAL
             Range        => {
               CategoricalParameterRangeSpecification => {
                 Values => [
-                  'MyParameterValue', ...             # max: 256
+                  'MyParameterValue', ...             # max: 256; OPTIONAL
                 ],                                    # min: 1, max: 20
 
               },    # OPTIONAL
               ContinuousParameterRangeSpecification => {
-                MaxValue => 'MyParameterValue',    # max: 256
-                MinValue => 'MyParameterValue',    # max: 256
+                MaxValue => 'MyParameterValue',    # max: 256; OPTIONAL
+                MinValue => 'MyParameterValue',    # max: 256; OPTIONAL
 
               },    # OPTIONAL
               IntegerParameterRangeSpecification => {
-                MaxValue => 'MyParameterValue',    # max: 256
-                MinValue => 'MyParameterValue',    # max: 256
+                MaxValue => 'MyParameterValue',    # max: 256; OPTIONAL
+                MinValue => 'MyParameterValue',    # max: 256; OPTIONAL
 
               },    # OPTIONAL
             },    # OPTIONAL
@@ -153,8 +153,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       ],                              # max: 16; OPTIONAL
                       S3DataDistributionType => 'FullyReplicated'
                       ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
-                    },
-
+                    },    # OPTIONAL
                   },
                   CompressionType => 'None',             # values: None, Gzip
                   ContentType     => 'MyContentType',    # max: 256
@@ -185,7 +184,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TrainingInputMode => 'Pipe',         # values: Pipe, File
               HyperParameters   => {
                 'MyParameterKey' =>
-                  'MyParameterValue',    # key: max: 256, value: max: 256
+                  'MyParameterValue', # key: max: 256, value: max: 256; OPTIONAL
               },    # max: 100; OPTIONAL
             },
             TransformJobDefinition => {

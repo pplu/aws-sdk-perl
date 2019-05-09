@@ -1,7 +1,7 @@
 package Paws::SageMaker::HyperParameterTuningJobConfig;
   use Moose;
-  has HyperParameterTuningJobObjective => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobObjective', required => 1);
-  has ParameterRanges => (is => 'ro', isa => 'Paws::SageMaker::ParameterRanges', required => 1);
+  has HyperParameterTuningJobObjective => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobObjective');
+  has ParameterRanges => (is => 'ro', isa => 'Paws::SageMaker::ParameterRanges');
   has ResourceLimits => (is => 'ro', isa => 'Paws::SageMaker::ResourceLimits', required => 1);
   has Strategy => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobEarlyStoppingType => (is => 'ro', isa => 'Str');
@@ -40,13 +40,13 @@ Configures a hyperparameter tuning job.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HyperParameterTuningJobObjective => L<Paws::SageMaker::HyperParameterTuningJobObjective>
+=head2 HyperParameterTuningJobObjective => L<Paws::SageMaker::HyperParameterTuningJobObjective>
 
   The HyperParameterTuningJobObjective object that specifies the
 objective metric for this tuning job.
 
 
-=head2 B<REQUIRED> ParameterRanges => L<Paws::SageMaker::ParameterRanges>
+=head2 ParameterRanges => L<Paws::SageMaker::ParameterRanges>
 
   The ParameterRanges object that specifies the ranges of hyperparameters
 that this tuning job searches.

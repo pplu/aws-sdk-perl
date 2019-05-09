@@ -86,8 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                              # max: 16; OPTIONAL
               S3DataDistributionType => 'FullyReplicated'
               ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
-            },
-
+            },    # OPTIONAL
           },
           CompressionType => 'None',             # values: None, Gzip; OPTIONAL
           ContentType     => 'MyContentType',    # max: 256; OPTIONAL

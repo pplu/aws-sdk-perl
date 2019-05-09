@@ -63,8 +63,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 CreationTimeAfter => Str
 
-A filter that returns only endpoints that were created after the
-specified time (timestamp).
+A filter that returns only endpoints with a creation time greater than
+or equal to the specified time (timestamp).
 
 
 

@@ -123,9 +123,15 @@ to 16 key and values entries in the map.
 =head2 MaxConcurrentTransforms => Int
 
 The maximum number of parallel requests that can be sent to each
-instance in a transform job. The default value is C<1>. To allow Amazon
-SageMaker to determine the appropriate number for
-C<MaxConcurrentTransforms>, set the value to C<0>.
+instance in a transform job. If C<MaxConcurrentTransforms> is set to
+C<0> or left unset, Amazon SageMaker checks the optional
+execution-parameters to determine the optimal settings for your chosen
+algorithm. If the execution-parameters endpoint is not enabled, the
+default value is C<1>. For more information on execution-parameters,
+see How Containers Serve Requests
+(http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests).
+For built-in algorithms, you don't need to set a value for
+C<MaxConcurrentTransforms>.
 
 
 

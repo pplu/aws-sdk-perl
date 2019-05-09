@@ -109,28 +109,37 @@ Notebook Instances
 =head2 DisassociateAcceleratorTypes => Bool
 
 A list of the Elastic Inference (EI) instance types to remove from this
-notebook instance.
+notebook instance. This operation is idempotent. If you specify an
+accelerator type that is not associated with the notebook instance when
+you call this method, it does not throw an error.
 
 
 
 =head2 DisassociateAdditionalCodeRepositories => Bool
 
 A list of names or URLs of the default Git repositories to remove from
-this notebook instance.
+this notebook instance. This operation is idempotent. If you specify a
+Git repository that is not associated with the notebook instance when
+you call this method, it does not throw an error.
 
 
 
 =head2 DisassociateDefaultCodeRepository => Bool
 
 The name or URL of the default Git repository to remove from this
-notebook instance.
+notebook instance. This operation is idempotent. If you specify a Git
+repository that is not associated with the notebook instance when you
+call this method, it does not throw an error.
 
 
 
 =head2 DisassociateLifecycleConfig => Bool
 
 Set to C<true> to remove the notebook instance lifecycle configuration
-currently associated with the notebook instance.
+currently associated with the notebook instance. This operation is
+idempotent. If you specify a lifecycle configuration that is not
+associated with the notebook instance when you call this method, it
+does not throw an error.
 
 
 

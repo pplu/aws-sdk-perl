@@ -882,8 +882,8 @@ Returns: a L<Paws::SageMaker::AddTagsOutput> instance
 
 Adds or overwrites one or more tags for the specified Amazon SageMaker
 resource. You can add tags to notebook instances, training jobs,
-hyperparameter tuning jobs, models, endpoint configurations, and
-endpoints.
+hyperparameter tuning jobs, batch transform jobs, models, labeling
+jobs, work teams, endpoint configurations, and endpoints.
 
 Each tag consists of a key and an optional value. Tag keys must be
 unique per resource. For more information about tags, see For more
@@ -1046,6 +1046,11 @@ API.
 Use this API only for hosting models using Amazon SageMaker hosting
 services.
 
+You must not delete an C<EndpointConfig> in use by an endpoint that is
+live or while the C<UpdateEndpoint> or C<CreateEndpoint> operations are
+being performed on the endpoint. To update an endpoint, you must create
+a new C<EndpointConfig>.
+
 The endpoint name must be unique within an AWS Region in your AWS
 account.
 
@@ -1127,9 +1132,9 @@ model B.
 
 =item HyperParameterTuningJobName => Str
 
-=item TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
-
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+=item [TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>]
 
 =item [WarmStartConfig => L<Paws::SageMaker::HyperParameterTuningJobWarmStartConfig>]
 
@@ -1474,6 +1479,10 @@ to have access to the notebook instance. For more information, see
 Limit Access to a Notebook Instance by IP Address
 (https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html).
 
+The URL that you get from a call to is valid only for 5 minutes. If you
+try to use the URL after the 5-minute limit expires, you are directed
+to the AWS console sign-in page.
+
 
 =head2 CreateTrainingJob
 
@@ -1654,6 +1663,8 @@ SageMaker, see How It Works
 =item MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]
 
 =item WorkteamName => Str
+
+=item [NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>]
 
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
 
@@ -2846,7 +2857,9 @@ Returns: nothing
 
 Terminates the ML compute instance. Before terminating the instance,
 Amazon SageMaker disconnects the ML storage volume from it. Amazon
-SageMaker preserves the ML storage volume.
+SageMaker preserves the ML storage volume. Amazon SageMaker stops
+charging you for the ML compute instance when you call
+C<StopNotebookInstance>.
 
 To access data on the ML storage volume for a notebook instance that
 has been terminated, call the C<StartNotebookInstance> API.
@@ -2945,8 +2958,10 @@ DescribeEndpoint
 (https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 API.
 
-You cannot update an endpoint with the current C<EndpointConfig>. To
-update an endpoint, you must create a new C<EndpointConfig>.
+You must not delete an C<EndpointConfig> in use by an endpoint that is
+live or while the C<UpdateEndpoint> or C<CreateEndpoint> operations are
+being performed on the endpoint. To update an endpoint, you must create
+a new C<EndpointConfig>.
 
 
 =head2 UpdateEndpointWeightsAndCapacities
@@ -3013,8 +3028,7 @@ Returns: a L<Paws::SageMaker::UpdateNotebookInstanceOutput> instance
 
 Updates a notebook instance. NotebookInstance updates include upgrading
 or downgrading the ML compute instance used for your notebook instance
-to accommodate changes in your workload requirements. You can also
-update the VPC security groups.
+to accommodate changes in your workload requirements.
 
 
 =head2 UpdateNotebookInstanceLifecycleConfig
@@ -3047,6 +3061,8 @@ CreateNotebookInstanceLifecycleConfig API.
 =item [Description => Str]
 
 =item [MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]]
+
+=item [NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>]
 
 
 =back

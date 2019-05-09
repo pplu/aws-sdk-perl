@@ -4,7 +4,7 @@ package Paws::SageMaker::CreateHyperParameterTuningJob;
   has HyperParameterTuningJobConfig => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobConfig', required => 1);
   has HyperParameterTuningJobName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
-  has TrainingJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTrainingJobDefinition', required => 1);
+  has TrainingJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTrainingJobDefinition');
   has WarmStartConfig => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobWarmStartConfig');
 
   use MooseX::ClassAttribute;
@@ -34,11 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateHyperParameterTuningJobResponse =
       $api . sagemaker->CreateHyperParameterTuningJob(
       HyperParameterTuningJobConfig => {
+        ResourceLimits => {
+          MaxNumberOfTrainingJobs => 1,    # min: 1
+          MaxParallelTrainingJobs => 1,    # min: 1
+
+        },
+        Strategy => 'Bayesian',            # values: Bayesian, Random
         HyperParameterTuningJobObjective => {
           MetricName => 'MyMetricName',    # min: 1, max: 255
           Type       => 'Maximize',        # values: Maximize, Minimize
 
-        },
+        },    # OPTIONAL
         ParameterRanges => {
           CategoricalParameterRanges => [
             {
@@ -70,17 +76,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],    # max: 20; OPTIONAL
-        },
-        ResourceLimits => {
-          MaxNumberOfTrainingJobs => 1,    # min: 1
-          MaxParallelTrainingJobs => 1,    # min: 1
-
-        },
-        Strategy => 'Bayesian',            # values: Bayesian, Random
+        },    # OPTIONAL
         TrainingJobEarlyStoppingType => 'Off',    # values: Off, Auto; OPTIONAL
       },
       HyperParameterTuningJobName => 'MyHyperParameterTuningJobName',
-      TrainingJobDefinition       => {
+      Tags                        => [
+        {
+          Key   => 'MyTagKey',                    # min: 1, max: 128
+          Value => 'MyTagValue',                  # max: 256
+
+        },
+        ...
+      ],                                          # OPTIONAL
+      TrainingJobDefinition => {
         AlgorithmSpecification => {
           TrainingInputMode => 'Pipe',            # values: Pipe, File
           AlgorithmName     => 'MyArnOrName',     # min: 1, max: 170; OPTIONAL
@@ -124,8 +132,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                              # max: 16; OPTIONAL
                 S3DataDistributionType => 'FullyReplicated'
                 ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
-              },
-
+              },    # OPTIONAL
             },
             CompressionType => 'None',            # values: None, Gzip; OPTIONAL
             ContentType     => 'MyContentType',   # max: 256; OPTIONAL
@@ -151,15 +158,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],                            # min: 1, max: 16
 
         },    # OPTIONAL
-      },
-      Tags => [
-        {
-          Key   => 'MyTagKey',      # min: 1, max: 128
-          Value => 'MyTagValue',    # max: 256
-
-        },
-        ...
-      ],                            # OPTIONAL
+      },    # OPTIONAL
       WarmStartConfig => {
         ParentHyperParameterTuningJobs => [
           {
@@ -217,7 +216,7 @@ jobs that the tuning job launches.
 
 
 
-=head2 B<REQUIRED> TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
+=head2 TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
 
 The HyperParameterTrainingJobDefinition object that describes the
 training jobs that this tuning job launches, including static

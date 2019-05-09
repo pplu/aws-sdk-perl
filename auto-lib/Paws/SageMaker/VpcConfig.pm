@@ -54,6 +54,11 @@ security groups for the VPC that is specified in the C<Subnets> field.
   The ID of the subnets in the VPC to which you want to connect your
 training job or model.
 
+Amazon EC2 P3 accelerated computing instances are not available in the
+c/d/e availability zones of region us-east-1. If you want to create
+endpoints with P3 instances in VPC mode in region us-east-1, create
+subnets in a/b/f availability zones instead.
+
 
 
 =head1 SEE ALSO

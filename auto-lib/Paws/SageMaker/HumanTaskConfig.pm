@@ -184,6 +184,28 @@ C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass>
 
 =back
 
+B<Asia Pacific (Sydney (ap-southeast-1):>
+
+=over
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClass>
+
+=back
+
 
 
 =head2 PublicWorkforceTaskPrice => L<Paws::SageMaker::PublicWorkforceTaskPrice>

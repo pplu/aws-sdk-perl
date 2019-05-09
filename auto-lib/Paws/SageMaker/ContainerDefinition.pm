@@ -42,7 +42,22 @@ Describes the container, as part of model definition.
 
 =head2 ContainerHostname => Str
 
-  This parameter is ignored.
+  This parameter is ignored for models that contain only a
+C<PrimaryContainer>.
+
+When a C<ContainerDefinition> is part of an inference pipeline, the
+value of ths parameter uniquely identifies the container for the
+purposes of logging and metrics. For information, see Use Logs and
+Metrics to Monitor an Inference Pipeline
+(http://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-logs-metrics.html).
+If you don't specify a value for this parameter for a
+C<ContainerDefinition> that is part of an inference pipeline, a unique
+name is automatically assigned based on the position of the
+C<ContainerDefinition> in the pipeline. If you specify a value for the
+C<ContainerHostName> for any C<ContainerDefinition> that is part of an
+inference pipeline, you must specify a value for the
+C<ContainerHostName> parameter of every C<ContainerDefinition> in that
+pipeline.
 
 
 =head2 Environment => L<Paws::SageMaker::EnvironmentMap>
@@ -68,7 +83,10 @@ Amazon SageMaker
 
   The S3 path where the model artifacts, which result from model
 training, are stored. This path must point to a single gzip compressed
-tar archive (.tar.gz suffix).
+tar archive (.tar.gz suffix). The S3 path is required for Amazon
+SageMaker built-in algorithms, but not if you use your own algorithms.
+For more information on built-in algorithms, see Common Parameters
+(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
 
 If you provide a value for this parameter, Amazon SageMaker uses AWS
 Security Token Service to download model artifacts from the S3 path you
@@ -78,6 +96,10 @@ AWS STS for that region. For more information, see Activating and
 Deactivating AWS STS in an AWS Region
 (http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 in the I<AWS Identity and Access Management User Guide>.
+
+If you use a built-in algorithm to create a model, Amazon SageMaker
+requires that you provide a S3 path to the model artifacts in
+C<ModelDataUrl>.
 
 
 =head2 ModelPackageName => Str
