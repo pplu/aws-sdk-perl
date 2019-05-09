@@ -33,6 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 When updating an output configuration using the UpdateApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_UpdateApplication.html)
 operation, provides information about an AWS Lambda function configured
 as the destination.
 
@@ -42,6 +43,10 @@ as the destination.
 =head2 ResourceARNUpdate => Str
 
   Amazon Resource Name (ARN) of the destination Lambda function.
+
+To specify an earlier version of the Lambda function than the latest,
+include the Lambda function version in the Lambda function ARN. For
+more information about Lambda ARNs, see Example ARNs: AWS Lambda
 
 
 =head2 RoleARNUpdate => Str

@@ -46,7 +46,7 @@ C<OutputId>.
 
   Describes the data format when records are written to the destination.
 For more information, see Configuring Application Output
-(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
 
 =head2 KinesisFirehoseOutputUpdate => L<Paws::KinesisAnalytics::KinesisFirehoseOutputUpdate>

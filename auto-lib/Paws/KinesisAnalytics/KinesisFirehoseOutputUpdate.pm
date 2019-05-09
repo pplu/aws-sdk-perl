@@ -33,6 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 When updating an output configuration using the UpdateApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_UpdateApplication.html)
 operation, provides information about an Amazon Kinesis Firehose
 delivery stream configured as the destination.
 

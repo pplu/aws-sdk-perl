@@ -44,7 +44,7 @@ Also used to describe the format of the reference data source.
 
 =head2 Mapping => Str
 
-  A reference to the data element in the streaming input of the reference
+  A reference to the data element in the streaming input or the reference
 data source.
 
 

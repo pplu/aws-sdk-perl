@@ -59,7 +59,9 @@ The version ID of the Kinesis Analytics application.
 
 The ID of the input configuration from which to delete the input
 processing configuration. You can get a list of the input IDs for an
-application by using the DescribeApplication operation.
+application by using the DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+operation.
 
 
 
