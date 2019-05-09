@@ -83,7 +83,7 @@ private hosted zone.
 
 =head2 RequesterManaged => Bool
 
-  Indicates whether the VPC Endpoint is being managed by its service.
+  Indicates whether the VPC endpoint is being managed by its service.
 
 
 =head2 RouteTableIds => ArrayRef[Str|Undef]

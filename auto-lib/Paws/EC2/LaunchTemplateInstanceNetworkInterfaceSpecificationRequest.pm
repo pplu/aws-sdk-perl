@@ -5,6 +5,7 @@ package Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest;
   has Description => (is => 'ro', isa => 'Str');
   has DeviceIndex => (is => 'ro', isa => 'Int');
   has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SecurityGroupId', traits => ['NameInRequest']);
+  has InterfaceType => (is => 'ro', isa => 'Str');
   has Ipv6AddressCount => (is => 'ro', isa => 'Int');
   has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6AddressRequest]');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
@@ -71,6 +72,11 @@ terminated.
 =head2 Groups => ArrayRef[Str|Undef]
 
   The IDs of one or more security groups.
+
+
+=head2 InterfaceType => Str
+
+  The type of networking interface.
 
 
 =head2 Ipv6AddressCount => Int

@@ -98,7 +98,8 @@ instances only.
 
   If set to C<true>, you can't terminate the instance using the Amazon
 EC2 console, CLI, or API. To change this attribute to C<false> after
-launch, use ModifyInstanceAttribute.
+launch, use ModifyInstanceAttribute
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html).
 
 
 =head2 EbsOptimized => Bool
@@ -139,7 +140,8 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 ImageId => Str
 
-  The ID of the AMI, which you can get by using DescribeImages.
+  The ID of the AMI, which you can get by using DescribeImages
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html).
 
 
 =head2 InstanceInitiatedShutdownBehavior => Str
@@ -176,7 +178,9 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =head2 KeyName => Str
 
   The name of the key pair. You can create a key pair using CreateKeyPair
-or ImportKeyPair.
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html)
+or ImportKeyPair
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html).
 
 If you do not specify a key pair, you can't connect to the instance
 unless you choose an AMI that is configured to allow users another way

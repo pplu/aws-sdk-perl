@@ -113,21 +113,21 @@ Valid values are: C<"add">, C<"remove">
 
 =head2 ProductCodes => ArrayRef[Str|Undef]
 
-One or more DevPay product codes. After you add a product code to an
-AMI, it can't be removed.
+The DevPay product codes. After you add a product code to an AMI, it
+can't be removed.
 
 
 
 =head2 UserGroups => ArrayRef[Str|Undef]
 
-One or more user groups. This parameter can be used only when the
-C<Attribute> parameter is C<launchPermission>.
+The user groups. This parameter can be used only when the C<Attribute>
+parameter is C<launchPermission>.
 
 
 
 =head2 UserIds => ArrayRef[Str|Undef]
 
-One or more AWS account IDs. This parameter can be used only when the
+The AWS account IDs. This parameter can be used only when the
 C<Attribute> parameter is C<launchPermission>.
 
 

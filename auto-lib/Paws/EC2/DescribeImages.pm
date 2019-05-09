@@ -75,7 +75,7 @@ AMIs).
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -235,7 +235,7 @@ C<hvm>).
 
 =head2 ImageIds => ArrayRef[Str|Undef]
 
-One or more image IDs.
+The image IDs.
 
 Default: Describes all images available to you.
 

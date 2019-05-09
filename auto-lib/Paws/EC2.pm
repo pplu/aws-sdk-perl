@@ -1445,6 +1445,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcTenancy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyVpnConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpnConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub MonitorInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::MonitorInstances', @_);
@@ -3139,7 +3144,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportTransitGatewayRoutes GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes StartInstances StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportTransitGatewayRoutes GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes StartInstances StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
 
 1;
 
@@ -3957,26 +3962,25 @@ Each argument is described in detail in: L<Paws::EC2::AuthorizeSecurityGroupEgre
 
 Returns: nothing
 
-[EC2-VPC only] Adds the specified egress rules to a security group for
-use with a VPC. Specifically, this action permits instances to send
-traffic to the specified destination IPv4 or IPv6 CIDR address ranges,
-or to the specified destination security groups for the same VPC. This
-action doesn't apply to security groups for use in EC2-Classic. For
-more information, see Security Groups for Your VPC
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html)
-in the I<Amazon Virtual Private Cloud User Guide>. For more information
-about security group limits, see Amazon VPC Limits
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html).
+[VPC only] Adds the specified egress rules to a security group for use
+with a VPC.
 
-Each rule consists of the protocol (for example, TCP), plus either a
-CIDR range or a source group. For the TCP and UDP protocols, you must
-also specify the destination port or port range. For the ICMP protocol,
-you must also specify the ICMP type and code. You can use -1 for the
-type or code to mean all types or all codes. You can optionally specify
-a description for the rule.
+An outbound rule permits instances to send traffic to the specified
+destination IPv4 or IPv6 CIDR address ranges, or to the specified
+destination security groups for the same VPC.
+
+You specify a protocol for each rule (for example, TCP). For the TCP
+and UDP protocols, you must also specify the destination port or port
+range. For the ICMP protocol, you must also specify the ICMP type and
+code. You can use -1 for the type or code to mean all types or all
+codes.
 
 Rule changes are propagated to affected instances as quickly as
 possible. However, a small delay might occur.
+
+For more information about VPC security group limits, see Amazon VPC
+Limits
+(https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html).
 
 
 =head2 AuthorizeSecurityGroupIngress
@@ -4012,24 +4016,21 @@ Returns: nothing
 
 Adds the specified ingress rules to a security group.
 
+An inbound rule permits instances to receive traffic from the specified
+destination IPv4 or IPv6 CIDR address ranges, or from the specified
+destination security groups.
+
+You specify a protocol for each rule (for example, TCP). For TCP and
+UDP, you must also specify the destination port or port range. For
+ICMP/ICMPv6, you must also specify the ICMP/ICMPv6 type and code. You
+can use -1 to mean all types or all codes.
+
 Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
 
-[EC2-Classic] This action gives the IPv4 CIDR address ranges permission
-to access a security group in your account, or gives the security
-groups (called the I<source groups>) permission to access a security
-group for your account. A source group can be for your own AWS account,
-or another. You can have up to 100 rules per group.
-
-[EC2-VPC] This action gives the specified IPv4 or IPv6 CIDR address
-ranges permission to access a security group in your VPC, or gives the
-specified security groups (called the I<source groups>) permission to
-access a security group for your VPC. The security groups must all be
-for the same VPC or a peer VPC in a VPC peering connection. For more
-information about VPC security group limits, see Amazon VPC Limits
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html).
-
-You can optionally specify a description for the security group rule.
+For more information about VPC security group limits, see Amazon VPC
+Limits
+(https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html).
 
 
 =head2 BundleInstance
@@ -4843,7 +4844,7 @@ The create operation is asynchronous. To verify that the AFI is ready
 for use, check the output logs.
 
 An AFI contains the FPGA bitstream that is ready to download to an
-FPGA. You can securely deploy an AFI on one or more FPGA-accelerated
+FPGA. You can securely deploy an AFI on multiple FPGA-accelerated
 instances. For more information, see the AWS FPGA Hardware Development
 Kit (https://github.com/aws/aws-fpga/).
 
@@ -5141,6 +5142,8 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 
 =item [Groups => ArrayRef[Str|Undef]]
 
+=item [InterfaceType => Str]
+
 =item [Ipv6AddressCount => Int]
 
 =item [Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]]
@@ -5387,18 +5390,14 @@ Returns: a L<Paws::EC2::CreateSecurityGroupResult> instance
 
 Creates a security group.
 
-A security group is for use with instances either in the EC2-Classic
-platform or in a specific VPC. For more information, see Amazon EC2
-Security Groups
+A security group acts as a virtual firewall for your instance to
+control inbound and outbound traffic. For more information, see Amazon
+EC2 Security Groups
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)
 in the I<Amazon Elastic Compute Cloud User Guide> and Security Groups
 for Your VPC
 (https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
-
-EC2-Classic: You can have up to 500 security groups.
-
-EC2-VPC: You can create up to 500 security groups per VPC.
 
 When you create a security group, you specify a friendly name of your
 choice. You can have a security group for use in EC2-Classic with the
@@ -5416,6 +5415,10 @@ other.
 You can add or remove rules from your security groups using
 AuthorizeSecurityGroupIngress, AuthorizeSecurityGroupEgress,
 RevokeSecurityGroupIngress, and RevokeSecurityGroupEgress.
+
+For more information about VPC security group limits, see Amazon VPC
+Limits
+(https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html).
 
 
 =head2 CreateSnapshot
@@ -7314,8 +7317,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeConversionTasks>
 
 Returns: a L<Paws::EC2::DescribeConversionTasksResult> instance
 
-Describes one or more of your conversion tasks. For more information,
-see the VM Import/Export User Guide
+Describes the specified conversion tasks or all your conversion tasks.
+For more information, see the VM Import/Export User Guide
 (https://docs.aws.amazon.com/vm-import/latest/userguide/).
 
 For information about the import manifest referenced by this API
@@ -7433,7 +7436,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeExportTasks>
 
 Returns: a L<Paws::EC2::DescribeExportTasksResult> instance
 
-Describes one or more of your export tasks.
+Describes the specified export tasks or all your export tasks.
 
 
 =head2 DescribeFleetHistory
@@ -7508,7 +7511,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeFleets>
 
 Returns: a L<Paws::EC2::DescribeFleetsResult> instance
 
-Describes one or more of your EC2 Fleets.
+Describes the specified EC2 Fleets or all your EC2 Fleets.
 
 
 =head2 DescribeFlowLogs
@@ -7581,9 +7584,9 @@ Each argument is described in detail in: L<Paws::EC2::DescribeFpgaImages>
 
 Returns: a L<Paws::EC2::DescribeFpgaImagesResult> instance
 
-Describes one or more available Amazon FPGA Images (AFIs). These
-include public AFIs, private AFIs that you own, and AFIs owned by other
-AWS accounts for which you have load permissions.
+Describes the Amazon FPGA Images (AFIs) available to you. These include
+public AFIs, private AFIs that you own, and AFIs owned by other AWS
+accounts for which you have load permissions.
 
 
 =head2 DescribeHostReservationOfferings
@@ -7664,7 +7667,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeHosts>
 
 Returns: a L<Paws::EC2::DescribeHostsResult> instance
 
-Describes one or more of your Dedicated Hosts.
+Describes the specified Dedicated Hosts or all your Dedicated Hosts.
 
 The results describe only the Dedicated Hosts in the Region you're
 currently using. All listed instances consume capacity on your
@@ -7823,8 +7826,8 @@ The images available to you include public images, private images that
 you own, and private images owned by other AWS accounts for which you
 have explicit launch permissions.
 
-Deregistered images are included in the returned results for an
-unspecified interval after deregistration.
+Recently deregistered images might appear in the returned results for a
+short interval.
 
 
 =head2 DescribeImportImageTasks
@@ -8690,7 +8693,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeScheduledInstances
 
 Returns: a L<Paws::EC2::DescribeScheduledInstancesResult> instance
 
-Describes one or more of your Scheduled Instances.
+Describes the specified Scheduled Instances or all your Scheduled
+Instances.
 
 
 =head2 DescribeSecurityGroupReferences
@@ -8708,7 +8712,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSecurityGroupRefer
 
 Returns: a L<Paws::EC2::DescribeSecurityGroupReferencesResult> instance
 
-[EC2-VPC only] Describes the VPCs on the other side of a VPC peering
+[VPC only] Describes the VPCs on the other side of a VPC peering
 connection that are referencing the security groups you've specified in
 this request.
 
@@ -9061,10 +9065,10 @@ Each argument is described in detail in: L<Paws::EC2::DescribeStaleSecurityGroup
 
 Returns: a L<Paws::EC2::DescribeStaleSecurityGroupsResult> instance
 
-[EC2-VPC only] Describes the stale security group rules for security
-groups in a specified VPC. Rules are stale when they reference a
-deleted security group in a peer VPC, or a security group in a peer VPC
-for which the VPC peering connection has been deleted.
+[VPC only] Describes the stale security group rules for security groups
+in a specified VPC. Rules are stale when they reference a deleted
+security group in a peer VPC, or a security group in a peer VPC for
+which the VPC peering connection has been deleted.
 
 
 =head2 DescribeSubnets
@@ -11693,6 +11697,28 @@ For more information, see Dedicated Instances
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 ModifyVpnConnection
+
+=over
+
+=item VpnConnectionId => Str
+
+=item [DryRun => Bool]
+
+=item [TransitGatewayId => Str]
+
+=item [VpnGatewayId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyVpnConnection>
+
+Returns: a L<Paws::EC2::ModifyVpnConnectionResult> instance
+
+
+
+
 =head2 MonitorInstances
 
 =over
@@ -11862,7 +11888,7 @@ Each argument is described in detail in: L<Paws::EC2::PurchaseScheduledInstances
 
 Returns: a L<Paws::EC2::PurchaseScheduledInstancesResult> instance
 
-Purchases one or more Scheduled Instances with the specified schedule.
+Purchases the Scheduled Instances with the specified schedule.
 
 Scheduled Instances enable you to purchase Amazon EC2 compute capacity
 by the hour for a one-year term. Before you can purchase a Scheduled
@@ -12615,8 +12641,8 @@ Each argument is described in detail in: L<Paws::EC2::RevokeSecurityGroupEgress>
 
 Returns: nothing
 
-[EC2-VPC only] Removes the specified egress rules from a security group
-for EC2-VPC. This action doesn't apply to security groups for use in
+[VPC only] Removes the specified egress rules from a security group for
+EC2-VPC. This action doesn't apply to security groups for use in
 EC2-Classic. To remove a rule, the values that you specify (for
 example, ports) must match the existing rule's values exactly.
 
@@ -12666,9 +12692,9 @@ Removes the specified ingress rules from a security group. To remove a
 rule, the values that you specify (for example, ports) must match the
 existing rule's values exactly.
 
-[EC2-Classic security groups only] If the values you specify do not
-match the existing rule's values, no error is returned. Use
-DescribeSecurityGroups to verify that the rule has been removed.
+[EC2-Classic only] If the values you specify do not match the existing
+rule's values, no error is returned. Use DescribeSecurityGroups to
+verify that the rule has been removed.
 
 Each rule consists of the protocol and the CIDR range or source
 security group. For the TCP and UDP protocols, you must also specify
@@ -13169,7 +13195,7 @@ Each argument is described in detail in: L<Paws::EC2::UpdateSecurityGroupRuleDes
 
 Returns: a L<Paws::EC2::UpdateSecurityGroupRuleDescriptionsEgressResult> instance
 
-[EC2-VPC only] Updates the description of an egress (outbound) security
+[VPC only] Updates the description of an egress (outbound) security
 group rule. You can replace an existing description, or add a
 description to a rule that did not have one previously.
 

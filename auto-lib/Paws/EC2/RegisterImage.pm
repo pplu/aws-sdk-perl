@@ -102,7 +102,7 @@ bill for the use of an AMI.
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-One or more block device mapping entries.
+The block device mapping entries.
 
 
 

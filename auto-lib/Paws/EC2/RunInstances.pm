@@ -158,6 +158,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Description              => 'MyString',
           DeviceIndex              => 1,
           Groups                   => [ 'MyString', ... ],    # OPTIONAL
+          InterfaceType            => 'MyString',
           Ipv6AddressCount         => 1,
           Ipv6Addresses      => [ { Ipv6Address => 'MyString', }, ... ],
           NetworkInterfaceId => 'MyString',
@@ -267,10 +268,10 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 CreditSpecification => L<Paws::EC2::CreditSpecificationRequest>
 
-The credit option for CPU usage of the instance. Valid values are
-C<standard> and C<unlimited>. To change this attribute after launch,
-use ModifyInstanceCreditSpecification. For more information, see
-Burstable Performance Instances
+The credit option for CPU usage of the T2 or T3 instance. Valid values
+are C<standard> and C<unlimited>. To change this attribute after
+launch, use ModifyInstanceCreditSpecification. For more information,
+see Burstable Performance Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -314,13 +315,21 @@ Default: C<false>
 
 =head2 ElasticGpuSpecification => ArrayRef[L<Paws::EC2::ElasticGpuSpecification>]
 
-An elastic GPU to associate with the instance.
+An elastic GPU to associate with the instance. An Elastic GPU is a GPU
+resource that you can attach to your Windows instance to accelerate the
+graphics performance of your applications. For more information, see
+Amazon EC2 Elastic GPUs
+(https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
 =head2 ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::ElasticInferenceAccelerator>]
 
-An elastic inference accelerator.
+An elastic inference accelerator to associate with the instance.
+Elastic inference accelerators are a resource you can attach to your
+Amazon EC2 instances to accelerate your Deep Learning (DL) inference
+workloads.
 
 
 
@@ -341,9 +350,8 @@ The IAM instance profile.
 
 =head2 ImageId => Str
 
-The ID of the AMI, which you can get by calling DescribeImages. An AMI
-is required to launch an instance and must be specified here or in a
-launch template.
+The ID of the AMI. An AMI is required to launch an instance and must be
+specified here or in a launch template.
 
 
 
@@ -379,7 +387,7 @@ Valid values are: C<"t1.micro">, C<"t2.nano">, C<"t2.micro">, C<"t2.small">, C<"
 
 =head2 Ipv6AddressCount => Int
 
-[EC2-VPC] A number of IPv6 addresses to associate with the primary
+[EC2-VPC] The number of IPv6 addresses to associate with the primary
 network interface. Amazon EC2 chooses the IPv6 addresses from the range
 of your subnet. You cannot specify this option and the option to assign
 specific IPv6 addresses in the same request. You can specify this
@@ -473,16 +481,13 @@ in the Amazon EC2 General FAQ.
 
 =head2 Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>
 
-The monitoring for the instance.
+Specifies whether detailed monitoring is enabled for the instance.
 
 
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
 
-The network interfaces.
-
-You cannot specify this option and the network interfaces option in the
-same request.
+The network interfaces to associate with the instance.
 
 
 
@@ -510,7 +515,10 @@ same request.
 
 =head2 RamdiskId => Str
 
-The ID of the RAM disk.
+The ID of the RAM disk to select. Some kernels require additional
+drivers at launch. Check the kernel requirements for information about
+whether you need to specify a RAM disk. To find kernel requirements, go
+to the AWS Resource Center and search for the kernel ID.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see PV-GRUB
@@ -570,7 +578,7 @@ see Running Commands on Your Linux Instance at Launch
 (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data)
 (Windows). If you are using a command line tool, base64-encoding is
 performed for you, and you can load the text from a file. Otherwise,
-you must provide base64-encoded text.
+you must provide base64-encoded text. User data is limited to 16 KB.
 
 
 

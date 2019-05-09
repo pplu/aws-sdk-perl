@@ -60,7 +60,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -104,7 +104,7 @@ The token for the next set of results.
 
 =head2 ScheduledInstanceIds => ArrayRef[Str|Undef]
 
-One or more Scheduled Instance IDs.
+The Scheduled Instance IDs.
 
 
 

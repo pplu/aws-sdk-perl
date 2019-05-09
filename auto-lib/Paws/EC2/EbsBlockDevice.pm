@@ -105,19 +105,20 @@ and RequestSpotInstances
 
   The size of the volume, in GiB.
 
+Default: If you're creating the volume from a snapshot and don't
+specify a volume size, the default is the snapshot size.
+
 Constraints: 1-16384 for General Purpose SSD (C<gp2>), 4-16384 for
 Provisioned IOPS SSD (C<io1>), 500-16384 for Throughput Optimized HDD
 (C<st1>), 500-16384 for Cold HDD (C<sc1>), and 1-1024 for Magnetic
 (C<standard>) volumes. If you specify a snapshot, the volume size must
 be equal to or larger than the snapshot size.
 
-Default: If you're creating the volume from a snapshot and don't
-specify a volume size, the default is the snapshot size.
-
 
 =head2 VolumeType => Str
 
-  The volume type: C<gp2>, C<io1>, C<st1>, C<sc1>, or C<standard>.
+  The volume type. If you set the type to C<io1>, you must also set the
+B<Iops> property.
 
 Default: C<standard>
 

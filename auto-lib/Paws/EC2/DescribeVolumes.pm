@@ -121,7 +121,8 @@ C<create-time> - The time stamp when the volume was created.
 
 =item *
 
-C<encrypted> - The encryption status of the volume.
+C<encrypted> - Indicates whether the volume is encrypted (C<true> |
+C<false>)
 
 =item *
 

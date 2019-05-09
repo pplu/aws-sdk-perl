@@ -107,12 +107,14 @@ that you specify.
 
 =head2 LaunchSpecifications => ArrayRef[L<Paws::EC2::SpotFleetLaunchSpecification>]
 
-  The launch specifications for the Spot Fleet request.
+  The launch specifications for the Spot Fleet request. If you specify
+C<LaunchSpecifications>, you can't specify C<LaunchTemplateConfigs>.
 
 
 =head2 LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::LaunchTemplateConfig>]
 
-  The launch template and overrides.
+  The launch template and overrides. If you specify
+C<LaunchTemplateConfigs>, you can't specify C<LaunchSpecifications>.
 
 
 =head2 LoadBalancersConfig => L<Paws::EC2::LoadBalancersConfig>

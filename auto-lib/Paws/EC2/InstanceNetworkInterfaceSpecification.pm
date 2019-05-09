@@ -5,6 +5,7 @@ package Paws::EC2::InstanceNetworkInterfaceSpecification;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has DeviceIndex => (is => 'ro', isa => 'Int', request_name => 'deviceIndex', traits => ['NameInRequest']);
   has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SecurityGroupId', traits => ['NameInRequest']);
+  has InterfaceType => (is => 'ro', isa => 'Str');
   has Ipv6AddressCount => (is => 'ro', isa => 'Int', request_name => 'ipv6AddressCount', traits => ['NameInRequest']);
   has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6Address]', request_name => 'ipv6AddressesSet', traits => ['NameInRequest']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
@@ -81,6 +82,11 @@ request, you must provide the device index.
 
   The IDs of the security groups for the network interface. Applies only
 if creating a network interface when launching an instance.
+
+
+=head2 InterfaceType => Str
+
+  The type of interface.
 
 
 =head2 Ipv6AddressCount => Int

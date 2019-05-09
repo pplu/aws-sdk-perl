@@ -67,17 +67,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AutoPlacement => Str
 
-This is enabled by default. This property allows instances to be
-automatically placed onto available Dedicated Hosts, when you are
-launching instances without specifying a host ID.
+Indicates whether the host accepts any untargeted instance launches
+that match its instance type configuration, or if it only accepts Host
+tenancy instance launches that specify its unique host ID. For more
+information, see Understanding Instance Placement and Host Affinity
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
-Default: Enabled
+Default: C<on>
 
 Valid values are: C<"on">, C<"off">
 
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-The Availability Zone for the Dedicated Hosts.
+The Availability Zone in which to allocate the Dedicated Host.
 
 
 
@@ -93,9 +96,9 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-Specify the instance type for which to configure your Dedicated Hosts.
-When you specify the instance type, that is the only instance type that
-you can launch onto that host.
+Specifies the instance type for which to configure your Dedicated
+Hosts. When you specify the instance type, that is the only instance
+type that you can launch onto that host.
 
 
 

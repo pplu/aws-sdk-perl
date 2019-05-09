@@ -18,7 +18,7 @@ Paws::EC2::DescribeFpgaImagesResult
 
 =head2 FpgaImages => ArrayRef[L<Paws::EC2::FpgaImage>]
 
-Information about one or more FPGA images.
+Information about the FPGA images.
 
 
 =head2 NextToken => Str

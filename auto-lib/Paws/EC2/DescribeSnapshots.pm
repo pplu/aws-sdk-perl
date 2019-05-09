@@ -91,6 +91,11 @@ C<description> - A description of the snapshot.
 
 =item *
 
+C<encrypted> - Indicates whether the snapshot is encrypted (C<true> |
+C<false>)
+
+=item *
+
 C<owner-alias> - Value from an Amazon-maintained list (C<amazon> |
 C<self> | C<all> | C<aws-marketplace> | C<microsoft>) of snapshot
 owners. Not to be confused with the user-configured AWS account alias,

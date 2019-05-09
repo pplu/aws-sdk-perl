@@ -72,7 +72,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> PurchaseRequests => ArrayRef[L<Paws::EC2::PurchaseRequest>]
 
-One or more purchase requests.
+The purchase requests.
 
 
 

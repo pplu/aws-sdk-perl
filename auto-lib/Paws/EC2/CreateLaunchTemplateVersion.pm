@@ -128,6 +128,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Groups                   => [
               'MyString', ...                          # OPTIONAL
             ],                                         # OPTIONAL
+            InterfaceType    => 'MyString',            # OPTIONAL
             Ipv6AddressCount => 1,                     # OPTIONAL
             Ipv6Addresses    => [
               {

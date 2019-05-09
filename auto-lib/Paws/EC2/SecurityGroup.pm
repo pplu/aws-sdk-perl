@@ -65,7 +65,7 @@ This class has no description
 
 =head2 IpPermissionsEgress => ArrayRef[L<Paws::EC2::IpPermission>]
 
-  [EC2-VPC] The outbound rules associated with the security group.
+  [VPC only] The outbound rules associated with the security group.
 
 
 =head2 OwnerId => Str
@@ -80,7 +80,7 @@ This class has no description
 
 =head2 VpcId => Str
 
-  [EC2-VPC] The ID of the VPC for the security group.
+  [VPC only] The ID of the VPC for the security group.
 
 
 
