@@ -184,6 +184,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =item [EndpointType => Str]
 
+=item [HostKey => Str]
+
 =item [IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>]
 
 =item [IdentityProviderType => Str]
@@ -566,6 +568,8 @@ No response is returned from this call.
 =item [EndpointDetails => L<Paws::Transfer::EndpointDetails>]
 
 =item [EndpointType => Str]
+
+=item [HostKey => Str]
 
 =item [IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>]
 

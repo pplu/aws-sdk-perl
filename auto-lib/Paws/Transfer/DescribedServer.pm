@@ -3,6 +3,7 @@ package Paws::Transfer::DescribedServer;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has EndpointDetails => (is => 'ro', isa => 'Paws::Transfer::EndpointDetails');
   has EndpointType => (is => 'ro', isa => 'Str');
+  has HostKeyFingerprint => (is => 'ro', isa => 'Str');
   has IdentityProviderDetails => (is => 'ro', isa => 'Paws::Transfer::IdentityProviderDetails');
   has IdentityProviderType => (is => 'ro', isa => 'Str');
   has LoggingRole => (is => 'ro', isa => 'Str');
@@ -56,12 +57,22 @@ described.
 
 =head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
 
-  
+  The virtual private cloud (VPC) endpoint settings that you configured
+for your SFTP server.
 
 
 =head2 EndpointType => Str
 
-  
+  The type of endpoint that your SFTP server is connected to. If your
+SFTP server is connected to a VPC endpoint, your server isn't
+accessible over the public internet.
+
+
+=head2 HostKeyFingerprint => Str
+
+  This value contains the Message-Digest Algorithm (MD5) hash of the
+server's host key. This value is equivalent to the output of
+C<ssh-keygen -l -E md5 -f my-new-server-key> command.
 
 
 =head2 IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>

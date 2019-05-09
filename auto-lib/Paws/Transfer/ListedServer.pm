@@ -49,7 +49,9 @@ Returns properties of the server that was specified.
 
 =head2 EndpointType => Str
 
-  
+  The type of VPC endpoint that your SFTP server is connected to. If your
+SFTP server is connected to a VPC endpoint, your server isn't
+accessible over the public internet.
 
 
 =head2 IdentityProviderType => Str

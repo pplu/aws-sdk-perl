@@ -31,14 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transfer::E
 
 =head1 DESCRIPTION
 
-This class has no description
+The configuration settings for the virtual private cloud (VPC) endpoint
+for your SFTP server.
 
 =head1 ATTRIBUTES
 
 
 =head2 VpcEndpointId => Str
 
-  
+  The ID of the VPC endpoint.
 
 
 
