@@ -111,6 +111,7 @@ package Paws::API::ServiceToClass;
     logs => 'CloudWatchLogs',
     machinelearning => 'MachineLearning',
     macie => 'Macie',
+    managedblockchain => 'ManagedBlockchain',
     marketplacecommerceanalytics => 'MarketplaceCommerceAnalytics',
    'marketplace-entitlement' => 'MarketplaceEntitlement',
     mediaconnect => 'MediaConnect',
