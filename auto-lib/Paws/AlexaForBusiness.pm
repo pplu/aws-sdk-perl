@@ -115,6 +115,11 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteDevice', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDeviceUsageData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteDeviceUsageData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteGatewayGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteGatewayGroup', @_);
@@ -363,6 +368,11 @@ package Paws::AlexaForBusiness;
   sub SearchUsers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::SearchUsers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SendAnnouncement {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::SendAnnouncement', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SendInvitation {
@@ -742,7 +752,7 @@ package Paws::AlexaForBusiness;
   }
 
 
-  sub operations { qw/ApproveSkill AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom AssociateSkillWithSkillGroup AssociateSkillWithUsers CreateAddressBook CreateBusinessReportSchedule CreateConferenceProvider CreateContact CreateGatewayGroup CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteBusinessReportSchedule DeleteConferenceProvider DeleteContact DeleteDevice DeleteGatewayGroup DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillAuthorization DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillFromSkillGroup DisassociateSkillFromUsers DisassociateSkillGroupFromRoom ForgetSmartHomeAppliances GetAddressBook GetConferencePreference GetConferenceProvider GetContact GetDevice GetGateway GetGatewayGroup GetInvitationConfiguration GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListBusinessReportSchedules ListConferenceProviders ListDeviceEvents ListGatewayGroups ListGateways ListSkills ListSkillsStoreCategories ListSkillsStoreSkillsByCategory ListSmartHomeAppliances ListTags PutConferencePreference PutInvitationConfiguration PutRoomSkillParameter PutSkillAuthorization RegisterAVSDevice RejectSkill ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendInvitation StartDeviceSync StartSmartHomeApplianceDiscovery TagResource UntagResource UpdateAddressBook UpdateBusinessReportSchedule UpdateConferenceProvider UpdateContact UpdateDevice UpdateGateway UpdateGatewayGroup UpdateProfile UpdateRoom UpdateSkillGroup / }
+  sub operations { qw/ApproveSkill AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom AssociateSkillWithSkillGroup AssociateSkillWithUsers CreateAddressBook CreateBusinessReportSchedule CreateConferenceProvider CreateContact CreateGatewayGroup CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteBusinessReportSchedule DeleteConferenceProvider DeleteContact DeleteDevice DeleteDeviceUsageData DeleteGatewayGroup DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillAuthorization DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillFromSkillGroup DisassociateSkillFromUsers DisassociateSkillGroupFromRoom ForgetSmartHomeAppliances GetAddressBook GetConferencePreference GetConferenceProvider GetContact GetDevice GetGateway GetGatewayGroup GetInvitationConfiguration GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListBusinessReportSchedules ListConferenceProviders ListDeviceEvents ListGatewayGroups ListGateways ListSkills ListSkillsStoreCategories ListSkillsStoreSkillsByCategory ListSmartHomeAppliances ListTags PutConferencePreference PutInvitationConfiguration PutRoomSkillParameter PutSkillAuthorization RegisterAVSDevice RejectSkill ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendAnnouncement SendInvitation StartDeviceSync StartSmartHomeApplianceDiscovery TagResource UntagResource UpdateAddressBook UpdateBusinessReportSchedule UpdateConferenceProvider UpdateContact UpdateDevice UpdateGateway UpdateGatewayGroup UpdateProfile UpdateRoom UpdateSkillGroup / }
 
 1;
 
@@ -1202,6 +1212,27 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteDevice>
 Returns: a L<Paws::AlexaForBusiness::DeleteDeviceResponse> instance
 
 Removes a device from Alexa For Business.
+
+
+=head2 DeleteDeviceUsageData
+
+=over
+
+=item DeviceArn => Str
+
+=item DeviceUsageType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteDeviceUsageData>
+
+Returns: a L<Paws::AlexaForBusiness::DeleteDeviceUsageDataResponse> instance
+
+When this action is called for a specified shared device, it allows
+authorized users to delete the device's entire previous history of
+voice input data and associated response data. This action can be
+called once every 24 hours for a specific shared device.
 
 
 =head2 DeleteGatewayGroup
@@ -2149,6 +2180,29 @@ Returns: a L<Paws::AlexaForBusiness::SearchUsersResponse> instance
 
 Searches users and lists the ones that meet a set of filter and sort
 criteria.
+
+
+=head2 SendAnnouncement
+
+=over
+
+=item ClientRequestToken => Str
+
+=item Content => L<Paws::AlexaForBusiness::Content>
+
+=item RoomFilters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]
+
+=item [TimeToLiveInSeconds => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::SendAnnouncement>
+
+Returns: a L<Paws::AlexaForBusiness::SendAnnouncementResponse> instance
+
+Triggers an asynchronous flow to send text, SSML, or audio
+announcements to rooms that are identified by a search or filter.
 
 
 =head2 SendInvitation
