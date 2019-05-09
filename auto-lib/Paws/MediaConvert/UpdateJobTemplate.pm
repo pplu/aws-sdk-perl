@@ -300,6 +300,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Encryption => {
+                  PlaybackDeviceCompatibility =>
+                    'CENC_V1',    # values: CENC_V1, UNENCRYPTED_SEI; OPTIONAL
                   SpekeKeyProvider => {
                     CertificateArn =>
                       'My__stringPatternArnAwsUsGovAcm',    # OPTIONAL
@@ -1165,8 +1167,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
 
-This is a beta feature. If you are interested in using this feature,
-please contact AWS customer support.
+Accelerated transcoding can significantly speed up jobs with long,
+visually complex content. Outputs that use this feature incur pro-tier
+pricing. For information about feature limitations, see the AWS
+Elemental MediaConvert User Guide.
 
 
 

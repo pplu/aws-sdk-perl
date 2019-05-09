@@ -58,8 +58,8 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
 
-  Accelerated transcoding is currently in private preview. Contact AWS
-for more information.
+  Accelerated transcoding can significantly speed up jobs with long,
+visually complex content.
 
 
 =head2 Arn => Str

@@ -61,7 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1
+                  'My__stringMin1', ...    # min: 1; OPTIONAL
                 ],                         # OPTIONAL
               },
             },    # OPTIONAL
@@ -312,6 +312,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Encryption => {
+                  PlaybackDeviceCompatibility =>
+                    'CENC_V1',    # values: CENC_V1, UNENCRYPTED_SEI; OPTIONAL
                   SpekeKeyProvider => {
                     CertificateArn =>
                       'My__stringPatternArnAwsUsGovAcm',    # OPTIONAL
@@ -602,7 +604,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',    # min: 1
+                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
                     CustomLanguageCode => 'My__stringMin3Max3PatternAZaZ3'
                     ,    # min: 3, max: 3; OPTIONAL
                     DestinationSettings => {
@@ -804,7 +806,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1
+                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId       => 'My__string',
@@ -1186,8 +1188,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
 
-This is a beta feature. If you are interested in using this feature,
-please contact AWS customer support.
+Accelerated transcoding can significantly speed up jobs with long,
+visually complex content. Outputs that use this feature incur pro-tier
+pricing. For information about feature limitations, see the AWS
+Elemental MediaConvert User Guide.
 
 
 
