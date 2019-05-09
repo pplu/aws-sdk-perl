@@ -20,7 +20,7 @@ package Paws::ApiGatewayV2::UpdateRoute;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRoute');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/routes/{routeId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::UpdateRouteResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::UpdateRouteResult');
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $apigateway = Paws->service('ApiGatewayV2');
-    my $UpdateRouteResponse = $apigateway->UpdateRoute(
+    my $UpdateRouteResult = $apigateway->UpdateRoute(
       ApiId          => 'My__string',
       RouteId        => 'My__string',
       ApiKeyRequired => 1,              # OPTIONAL
@@ -59,22 +59,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApiKeyRequired      = $UpdateRouteResponse->ApiKeyRequired;
-    my $AuthorizationScopes = $UpdateRouteResponse->AuthorizationScopes;
-    my $AuthorizationType   = $UpdateRouteResponse->AuthorizationType;
-    my $AuthorizerId        = $UpdateRouteResponse->AuthorizerId;
-    my $ModelSelectionExpression =
-      $UpdateRouteResponse->ModelSelectionExpression;
-    my $OperationName     = $UpdateRouteResponse->OperationName;
-    my $RequestModels     = $UpdateRouteResponse->RequestModels;
-    my $RequestParameters = $UpdateRouteResponse->RequestParameters;
-    my $RouteId           = $UpdateRouteResponse->RouteId;
-    my $RouteKey          = $UpdateRouteResponse->RouteKey;
+    my $ApiKeyRequired           = $UpdateRouteResult->ApiKeyRequired;
+    my $AuthorizationScopes      = $UpdateRouteResult->AuthorizationScopes;
+    my $AuthorizationType        = $UpdateRouteResult->AuthorizationType;
+    my $AuthorizerId             = $UpdateRouteResult->AuthorizerId;
+    my $ModelSelectionExpression = $UpdateRouteResult->ModelSelectionExpression;
+    my $OperationName            = $UpdateRouteResult->OperationName;
+    my $RequestModels            = $UpdateRouteResult->RequestModels;
+    my $RequestParameters        = $UpdateRouteResult->RequestParameters;
+    my $RouteId                  = $UpdateRouteResult->RouteId;
+    my $RouteKey                 = $UpdateRouteResult->RouteKey;
     my $RouteResponseSelectionExpression =
-      $UpdateRouteResponse->RouteResponseSelectionExpression;
-    my $Target = $UpdateRouteResponse->Target;
+      $UpdateRouteResult->RouteResponseSelectionExpression;
+    my $Target = $UpdateRouteResult->Target;
 
-    # Returns a L<Paws::ApiGatewayV2::UpdateRouteResponse> object.
+    # Returns a L<Paws::ApiGatewayV2::UpdateRouteResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/UpdateRoute>

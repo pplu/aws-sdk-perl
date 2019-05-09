@@ -1265,7 +1265,7 @@ Gets the domain names for an AWS account.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::GetIntegration>
 
-Returns: a L<Paws::ApiGatewayV2::GetIntegrationResponse> instance
+Returns: a L<Paws::ApiGatewayV2::GetIntegrationResult> instance
 
 Gets an Integration.
 
@@ -1401,7 +1401,7 @@ Gets a model template.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::GetRoute>
 
-Returns: a L<Paws::ApiGatewayV2::GetRouteResponse> instance
+Returns: a L<Paws::ApiGatewayV2::GetRouteResult> instance
 
 Gets a Route.
 
@@ -1765,7 +1765,7 @@ Updates a Model.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::UpdateRoute>
 
-Returns: a L<Paws::ApiGatewayV2::UpdateRouteResponse> instance
+Returns: a L<Paws::ApiGatewayV2::UpdateRouteResult> instance
 
 Updates a Route.
 

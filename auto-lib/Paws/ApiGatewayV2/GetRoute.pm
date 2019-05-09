@@ -9,7 +9,7 @@ package Paws::ApiGatewayV2::GetRoute;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRoute');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/routes/{routeId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::GetRouteResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::GetRouteResult');
 1;
 
 ### main pod documentation begin ###
@@ -29,28 +29,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $apigateway = Paws->service('ApiGatewayV2');
-    my $GetRouteResponse = $apigateway->GetRoute(
+    my $GetRouteResult = $apigateway->GetRoute(
       ApiId   => 'My__string',
       RouteId => 'My__string',
 
     );
 
     # Results:
-    my $ApiKeyRequired           = $GetRouteResponse->ApiKeyRequired;
-    my $AuthorizationScopes      = $GetRouteResponse->AuthorizationScopes;
-    my $AuthorizationType        = $GetRouteResponse->AuthorizationType;
-    my $AuthorizerId             = $GetRouteResponse->AuthorizerId;
-    my $ModelSelectionExpression = $GetRouteResponse->ModelSelectionExpression;
-    my $OperationName            = $GetRouteResponse->OperationName;
-    my $RequestModels            = $GetRouteResponse->RequestModels;
-    my $RequestParameters        = $GetRouteResponse->RequestParameters;
-    my $RouteId                  = $GetRouteResponse->RouteId;
-    my $RouteKey                 = $GetRouteResponse->RouteKey;
+    my $ApiKeyRequired           = $GetRouteResult->ApiKeyRequired;
+    my $AuthorizationScopes      = $GetRouteResult->AuthorizationScopes;
+    my $AuthorizationType        = $GetRouteResult->AuthorizationType;
+    my $AuthorizerId             = $GetRouteResult->AuthorizerId;
+    my $ModelSelectionExpression = $GetRouteResult->ModelSelectionExpression;
+    my $OperationName            = $GetRouteResult->OperationName;
+    my $RequestModels            = $GetRouteResult->RequestModels;
+    my $RequestParameters        = $GetRouteResult->RequestParameters;
+    my $RouteId                  = $GetRouteResult->RouteId;
+    my $RouteKey                 = $GetRouteResult->RouteKey;
     my $RouteResponseSelectionExpression =
-      $GetRouteResponse->RouteResponseSelectionExpression;
-    my $Target = $GetRouteResponse->Target;
+      $GetRouteResult->RouteResponseSelectionExpression;
+    my $Target = $GetRouteResult->Target;
 
-    # Returns a L<Paws::ApiGatewayV2::GetRouteResponse> object.
+    # Returns a L<Paws::ApiGatewayV2::GetRouteResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetRoute>
