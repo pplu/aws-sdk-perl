@@ -105,6 +105,11 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::DisassociateMemberFromGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetMailboxDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::GetMailboxDetails', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAliases {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ListAliases', @_);
@@ -158,6 +163,11 @@ package Paws::WorkMail;
   sub ResetPassword {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ResetPassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMailboxQuota {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::UpdateMailboxQuota', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePrimaryEmailAddress {
@@ -357,7 +367,7 @@ package Paws::WorkMail;
   }
 
 
-  sub operations { qw/AssociateDelegateToResource AssociateMemberToGroup CreateAlias CreateGroup CreateResource CreateUser DeleteAlias DeleteGroup DeleteMailboxPermissions DeleteResource DeleteUser DeregisterFromWorkMail DescribeGroup DescribeOrganization DescribeResource DescribeUser DisassociateDelegateFromResource DisassociateMemberFromGroup ListAliases ListGroupMembers ListGroups ListMailboxPermissions ListOrganizations ListResourceDelegates ListResources ListUsers PutMailboxPermissions RegisterToWorkMail ResetPassword UpdatePrimaryEmailAddress UpdateResource / }
+  sub operations { qw/AssociateDelegateToResource AssociateMemberToGroup CreateAlias CreateGroup CreateResource CreateUser DeleteAlias DeleteGroup DeleteMailboxPermissions DeleteResource DeleteUser DeregisterFromWorkMail DescribeGroup DescribeOrganization DescribeResource DescribeUser DisassociateDelegateFromResource DisassociateMemberFromGroup GetMailboxDetails ListAliases ListGroupMembers ListGroups ListMailboxPermissions ListOrganizations ListResourceDelegates ListResources ListUsers PutMailboxPermissions RegisterToWorkMail ResetPassword UpdateMailboxQuota UpdatePrimaryEmailAddress UpdateResource / }
 
 1;
 
@@ -799,6 +809,25 @@ Returns: a L<Paws::WorkMail::DisassociateMemberFromGroupResponse> instance
 Removes a member from a group.
 
 
+=head2 GetMailboxDetails
+
+=over
+
+=item OrganizationId => Str
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::GetMailboxDetails>
+
+Returns: a L<Paws::WorkMail::GetMailboxDetailsResponse> instance
+
+Requests a user's mailbox details for a specified organization and
+user.
+
+
 =head2 ListAliases
 
 =over
@@ -1040,6 +1069,27 @@ Each argument is described in detail in: L<Paws::WorkMail::ResetPassword>
 Returns: a L<Paws::WorkMail::ResetPasswordResponse> instance
 
 Allows the administrator to reset the password for a user.
+
+
+=head2 UpdateMailboxQuota
+
+=over
+
+=item MailboxQuota => Int
+
+=item OrganizationId => Str
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::UpdateMailboxQuota>
+
+Returns: a L<Paws::WorkMail::UpdateMailboxQuotaResponse> instance
+
+Updates a user's current mailbox quota for a specified organization and
+user.
 
 
 =head2 UpdatePrimaryEmailAddress
