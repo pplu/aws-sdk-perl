@@ -70,7 +70,7 @@ The ID of the Direct Connect gateway.
 
 =head2 GatewayId => Str
 
-The ID of the virtual private gateway.
+The ID of the virtual private gateway or transit gateway.
 
 
 

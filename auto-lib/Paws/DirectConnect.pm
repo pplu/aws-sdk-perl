@@ -40,6 +40,11 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::AllocatePublicVirtualInterface', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AllocateTransitVirtualInterface {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::AllocateTransitVirtualInterface', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateConnectionWithLag {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::AssociateConnectionWithLag', @_);
@@ -68,6 +73,11 @@ package Paws::DirectConnect;
   sub ConfirmPublicVirtualInterface {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::ConfirmPublicVirtualInterface', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ConfirmTransitVirtualInterface {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::ConfirmTransitVirtualInterface', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateBGPPeer {
@@ -113,6 +123,11 @@ package Paws::DirectConnect;
   sub CreatePublicVirtualInterface {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreatePublicVirtualInterface', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTransitVirtualInterface {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateTransitVirtualInterface', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteBGPPeer {
@@ -337,7 +352,7 @@ package Paws::DirectConnect;
   }
 
 
-  sub operations { qw/AcceptDirectConnectGatewayAssociationProposal AllocateConnectionOnInterconnect AllocateHostedConnection AllocatePrivateVirtualInterface AllocatePublicVirtualInterface AssociateConnectionWithLag AssociateHostedConnection AssociateVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateBGPPeer CreateConnection CreateDirectConnectGateway CreateDirectConnectGatewayAssociation CreateDirectConnectGatewayAssociationProposal CreateInterconnect CreateLag CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteBGPPeer DeleteConnection DeleteDirectConnectGateway DeleteDirectConnectGatewayAssociation DeleteDirectConnectGatewayAssociationProposal DeleteInterconnect DeleteLag DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeDirectConnectGatewayAssociationProposals DescribeDirectConnectGatewayAssociations DescribeDirectConnectGatewayAttachments DescribeDirectConnectGateways DescribeHostedConnections DescribeInterconnectLoa DescribeInterconnects DescribeLags DescribeLoa DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces DisassociateConnectionFromLag TagResource UntagResource UpdateDirectConnectGatewayAssociation UpdateLag UpdateVirtualInterfaceAttributes / }
+  sub operations { qw/AcceptDirectConnectGatewayAssociationProposal AllocateConnectionOnInterconnect AllocateHostedConnection AllocatePrivateVirtualInterface AllocatePublicVirtualInterface AllocateTransitVirtualInterface AssociateConnectionWithLag AssociateHostedConnection AssociateVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface ConfirmTransitVirtualInterface CreateBGPPeer CreateConnection CreateDirectConnectGateway CreateDirectConnectGatewayAssociation CreateDirectConnectGatewayAssociationProposal CreateInterconnect CreateLag CreatePrivateVirtualInterface CreatePublicVirtualInterface CreateTransitVirtualInterface DeleteBGPPeer DeleteConnection DeleteDirectConnectGateway DeleteDirectConnectGatewayAssociation DeleteDirectConnectGatewayAssociationProposal DeleteInterconnect DeleteLag DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeDirectConnectGatewayAssociationProposals DescribeDirectConnectGatewayAssociations DescribeDirectConnectGatewayAttachments DescribeDirectConnectGateways DescribeHostedConnections DescribeInterconnectLoa DescribeInterconnects DescribeLags DescribeLoa DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces DisassociateConnectionFromLag TagResource UntagResource UpdateDirectConnectGatewayAssociation UpdateLag UpdateVirtualInterfaceAttributes / }
 
 1;
 
@@ -400,8 +415,8 @@ Each argument is described in detail in: L<Paws::DirectConnect::AcceptDirectConn
 
 Returns: a L<Paws::DirectConnect::AcceptDirectConnectGatewayAssociationProposalResult> instance
 
-Accepts a proposal request to attach a virtual private gateway to a
-Direct Connect gateway.
+Accepts a proposal request to attach a virtual private gateway or
+transit gateway to a Direct Connect gateway.
 
 
 =head2 AllocateConnectionOnInterconnect
@@ -526,6 +541,36 @@ When creating an IPv6 public virtual interface, omit the Amazon address
 and customer address. IPv6 addresses are automatically assigned from
 the Amazon pool of IPv6 addresses; you cannot specify custom IPv6
 addresses.
+
+
+=head2 AllocateTransitVirtualInterface
+
+=over
+
+=item ConnectionId => Str
+
+=item NewTransitVirtualInterfaceAllocation => L<Paws::DirectConnect::NewTransitVirtualInterfaceAllocation>
+
+=item OwnerAccount => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::AllocateTransitVirtualInterface>
+
+Returns: a L<Paws::DirectConnect::AllocateTransitVirtualInterfaceResult> instance
+
+Provisions a transit virtual interface to be owned by the specified AWS
+account. Use this type of interface to connect a transit gateway to
+your Direct Connect gateway.
+
+The owner of a connection provisions a transit virtual interface to be
+owned by the specified AWS account.
+
+After you create a transit virtual interface, it must be confirmed by
+the owner using ConfirmTransitVirtualInterface. Until this step has
+been completed, the transit virtual interface is in the C<requested>
+state and is not available to handle traffic.
 
 
 =head2 AssociateConnectionWithLag
@@ -686,6 +731,29 @@ After the virtual interface owner makes this call, the specified
 virtual interface is created and made available to handle traffic.
 
 
+=head2 ConfirmTransitVirtualInterface
+
+=over
+
+=item DirectConnectGatewayId => Str
+
+=item VirtualInterfaceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::ConfirmTransitVirtualInterface>
+
+Returns: a L<Paws::DirectConnect::ConfirmTransitVirtualInterfaceResponse> instance
+
+Accepts ownership of a transit virtual interface created by another AWS
+account.
+
+After the owner of the transit virtual interface makes this call, the
+specified transit virtual interface is created and made available to
+handle traffic.
+
+
 =head2 CreateBGPPeer
 
 =over
@@ -826,11 +894,12 @@ Each argument is described in detail in: L<Paws::DirectConnect::CreateDirectConn
 Returns: a L<Paws::DirectConnect::CreateDirectConnectGatewayAssociationProposalResult> instance
 
 Creates a proposal to associate the specified virtual private gateway
-with the specified Direct Connect gateway.
+or transit gateway with the specified Direct Connect gateway.
 
 You can only associate a Direct Connect gateway and virtual private
-gateway when the account that owns the Direct Connect gateway and the
-account that owns the virtual private gateway have the same payer ID.
+gateway or transit gateway when the account that owns the Direct
+Connect gateway and the account that owns the virtual private gateway
+or transit gateway have the same AWS Payer ID.
 
 
 =head2 CreateInterconnect
@@ -976,6 +1045,28 @@ C<ipv6>), leave the C<customer> and C<amazon> address fields blank to
 use auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
 
 
+=head2 CreateTransitVirtualInterface
+
+=over
+
+=item ConnectionId => Str
+
+=item NewTransitVirtualInterface => L<Paws::DirectConnect::NewTransitVirtualInterface>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::CreateTransitVirtualInterface>
+
+Returns: a L<Paws::DirectConnect::CreateTransitVirtualInterfaceResult> instance
+
+Creates a transit virtual interface. A transit virtual interface is a
+VLAN that transports traffic from a Direct Connect gateway to one or
+more transit gateways. A transit virtual interface enables the
+connection of multiple VPCs attached to a transit gateway to a Direct
+Connect gateway.
+
+
 =head2 DeleteBGPPeer
 
 =over
@@ -1076,7 +1167,7 @@ Each argument is described in detail in: L<Paws::DirectConnect::DeleteDirectConn
 Returns: a L<Paws::DirectConnect::DeleteDirectConnectGatewayAssociationProposalResult> instance
 
 Deletes the association proposal request between the specified Direct
-Connect gateway and virtual private gateway.
+Connect gateway and virtual private gateway or transit gateway.
 
 
 =head2 DeleteInterconnect
@@ -1219,7 +1310,8 @@ Each argument is described in detail in: L<Paws::DirectConnect::DescribeDirectCo
 Returns: a L<Paws::DirectConnect::DescribeDirectConnectGatewayAssociationProposalsResult> instance
 
 Describes one or more association proposals for connection between a
-virtual private gateway and a Direct Connect gateway.
+virtual private gateway or transit gateway and a Direct Connect
+gateway.
 
 
 =head2 DescribeDirectConnectGatewayAssociations

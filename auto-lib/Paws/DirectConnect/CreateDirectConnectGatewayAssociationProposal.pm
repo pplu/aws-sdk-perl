@@ -83,7 +83,7 @@ The ID of the AWS account that owns the Direct Connect gateway.
 
 =head2 B<REQUIRED> GatewayId => Str
 
-The ID of the virtual private gateway.
+The ID of the virtual private gateway or transit gateway.
 
 
 

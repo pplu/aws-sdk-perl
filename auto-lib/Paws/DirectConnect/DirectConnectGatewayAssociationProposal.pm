@@ -38,14 +38,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 =head1 DESCRIPTION
 
 Information about the proposal request to attach a virtual private
-gateway to a DDirect Connect gateway.
+gateway to a Direct Connect gateway.
 
 =head1 ATTRIBUTES
 
 
 =head2 AssociatedGateway => L<Paws::DirectConnect::AssociatedGateway>
 
-  Information about the associated virtual private gateway.
+  Information about the associated gateway.
 
 
 =head2 DirectConnectGatewayId => Str

@@ -16,7 +16,7 @@ Paws::DirectConnect::DeleteDirectConnectGatewayAssociationProposalResult
 
 =head2 DirectConnectGatewayAssociationProposal => L<Paws::DirectConnect::DirectConnectGatewayAssociationProposal>
 
-The ID of the virtual private gateway.
+The ID of the associated gateway.
 
 
 =head2 _request_id => Str

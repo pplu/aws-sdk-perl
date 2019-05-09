@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 AssociatedGatewayId => Str
 
-The ID of the associated virtual private gateway.
+The ID of the associated gateway.
 
 
 

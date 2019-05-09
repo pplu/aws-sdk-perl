@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 =head1 DESCRIPTION
 
 Information about an association between a Direct Connect gateway and a
-virtual private gateway.
+virtual private gateway or transit gateway.
 
 =head1 ATTRIBUTES
 
@@ -53,7 +53,7 @@ virtual private gateway.
 
 =head2 AssociatedGateway => L<Paws::DirectConnect::AssociatedGateway>
 
-  Information about the associated virtual private gateway.
+  Information about the associated gateway.
 
 
 =head2 AssociationId => Str
@@ -75,7 +75,8 @@ CreateDirectConnectGatewayAssociation.
 =item *
 
 C<associated>: The Direct Connect gateway and virtual private gateway
-are successfully associated and ready to pass traffic.
+or transit gateway are successfully associated and ready to pass
+traffic.
 
 =item *
 
@@ -84,9 +85,10 @@ DeleteDirectConnectGatewayAssociation.
 
 =item *
 
-C<disassociated>: The virtual private gateway is disassociated from the
-Direct Connect gateway. Traffic flow between the Direct Connect gateway
-and virtual private gateway is stopped.
+C<disassociated>: The virtual private gateway or transit gateway is
+disassociated from the Direct Connect gateway. Traffic flow between the
+Direct Connect gateway and virtual private gateway or transit gateway
+is stopped.
 
 =back
 

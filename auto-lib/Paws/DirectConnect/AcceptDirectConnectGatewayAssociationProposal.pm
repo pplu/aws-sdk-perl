@@ -58,7 +58,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> AssociatedGatewayOwnerAccount => Str
 
-The ID of the AWS account that owns the virtual private gateway.
+The ID of the AWS account that owns the virtual private gateway or
+transit gateway.
 
 
 
@@ -70,8 +71,8 @@ The ID of the Direct Connect gateway.
 
 =head2 OverrideAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
 
-Overrides the Amazon VPC prefixes advertised to the Direct Connect
-gateway.
+Overrides the existing Amazon VPC prefixes advertised to the Direct
+Connect gateway.
 
 
 
