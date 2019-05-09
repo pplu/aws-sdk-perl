@@ -35,15 +35,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::ProxyC
 
 The configuration details for the App Mesh proxy.
 
-Your Amazon ECS container instances require at least version 1.26.0 of
-the container agent and at least version 1.26.0-1 of the C<ecs-init>
-package to enable a proxy configuration. If your container instances
-are launched from the Amazon ECS-optimized AMI version C<20190301> or
-later, then they contain the required versions of the container agent
-and C<ecs-init>. For more information, see Amazon ECS-optimized Linux
-AMI
+For tasks using the EC2 launch type, the container instances require at
+least version 1.26.0 of the container agent and at least version
+1.26.0-1 of the C<ecs-init> package to enable a proxy configuration. If
+your container instances are launched from the Amazon ECS-optimized AMI
+version C<20190301> or later, then they contain the required versions
+of the container agent and C<ecs-init>. For more information, see
+Amazon ECS-optimized Linux AMI
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+This parameter is available for tasks using the Fargate launch type in
+the Ohio (us-east-2) region only and the task or service requires
+platform version 1.3.0 or later.
 
 =head1 ATTRIBUTES
 

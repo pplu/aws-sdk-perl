@@ -165,11 +165,11 @@ specified amount of CPU that is described in the task definition.
 container can contain multiple dependencies. When a dependency is
 defined for container startup, for container shutdown it is reversed.
 
-Your Amazon ECS container instances require at least version 1.26.0 of
-the container agent to enable container dependencies. However, we
-recommend using the latest container agent version. For information
-about checking your agent version and updating to the latest version,
-see Updating the Amazon ECS Container Agent
+For tasks using the EC2 launch type, the container instances require at
+least version 1.26.0 of the container agent to enable container
+dependencies. However, we recommend using the latest container agent
+version. For information about checking your agent version and updating
+to the latest version, see Updating the Amazon ECS Container Agent
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
 in the I<Amazon Elastic Container Service Developer Guide>. If you are
 using an Amazon ECS-optimized Linux AMI, your instance needs at least
@@ -179,6 +179,10 @@ contain the required versions of the container agent and C<ecs-init>.
 For more information, see Amazon ECS-optimized Linux AMI
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+This parameter is available for tasks using the Fargate launch type in
+the Ohio (us-east-2) region only and the task or service requires
+platform version 1.3.0 or later.
 
 
 =head2 DisableNetworking => Bool
@@ -444,8 +448,12 @@ This parameter is not supported for Windows containers.
 
   The log configuration specification for the container.
 
-If you are using the Fargate launch type, the only supported value is
-C<awslogs>.
+For tasks using the Fargate launch type, the supported log drivers are
+C<awslogs> and C<splunk>.
+
+For tasks using the EC2 launch type, the supported log drivers are
+C<awslogs>, C<syslog>, C<gelf>, C<fluentd>, C<splunk>, C<journald>, and
+C<json-file>.
 
 This parameter maps to C<LogConfig> in the Create a container
 (https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
@@ -672,11 +680,11 @@ value is specified for containerB and it does not reach the desired
 status within that time then containerA will give up and not start.
 This results in the task transitioning to a C<STOPPED> state.
 
-Your Amazon ECS container instances require at least version 1.26.0 of
-the container agent to enable a container start timeout value. However,
-we recommend using the latest container agent version. For information
-about checking your agent version and updating to the latest version,
-see Updating the Amazon ECS Container Agent
+For tasks using the EC2 launch type, the container instances require at
+least version 1.26.0 of the container agent to enable a container start
+timeout value. However, we recommend using the latest container agent
+version. For information about checking your agent version and updating
+to the latest version, see Updating the Amazon ECS Container Agent
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
 in the I<Amazon Elastic Container Service Developer Guide>. If you are
 using an Amazon ECS-optimized Linux AMI, your instance needs at least
@@ -687,19 +695,28 @@ For more information, see Amazon ECS-optimized Linux AMI
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
+This parameter is available for tasks using the Fargate launch type in
+the Ohio (us-east-2) region only and the task or service requires
+platform version 1.3.0 or later.
+
 
 =head2 StopTimeout => Int
 
   Time duration to wait before the container is forcefully killed if it
-doesn't exit normally on its own. The stop timeout value for the
-container takes precedence over the C<ECS_CONTAINER_STOP_TIMEOUT>
-container agent configuration parameter, if used.
+doesn't exit normally on its own. For tasks using the Fargate launch
+type, the max C<stopTimeout> value is 2 minutes. This parameter is
+available for tasks using the Fargate launch type in the Ohio
+(us-east-2) region only and the task or service requires platform
+version 1.3.0 or later.
 
-Your Amazon ECS container instances require at least version 1.26.0 of
-the container agent to enable a container stop timeout value. However,
-we recommend using the latest container agent version. For information
-about checking your agent version and updating to the latest version,
-see Updating the Amazon ECS Container Agent
+For tasks using the EC2 launch type, the stop timeout value for the
+container takes precedence over the C<ECS_CONTAINER_STOP_TIMEOUT>
+container agent configuration parameter, if used. Container instances
+require at least version 1.26.0 of the container agent to enable a
+container stop timeout value. However, we recommend using the latest
+container agent version. For information about checking your agent
+version and updating to the latest version, see Updating the Amazon ECS
+Container Agent
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
 in the I<Amazon Elastic Container Service Developer Guide>. If you are
 using an Amazon ECS-optimized Linux AMI, your instance needs at least

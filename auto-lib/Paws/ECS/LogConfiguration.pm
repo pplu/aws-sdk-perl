@@ -2,6 +2,7 @@ package Paws::ECS::LogConfiguration;
   use Moose;
   has LogDriver => (is => 'ro', isa => 'Str', request_name => 'logDriver', traits => ['NameInRequest'], required => 1);
   has Options => (is => 'ro', isa => 'Paws::ECS::LogConfigurationOptionsMap', request_name => 'options', traits => ['NameInRequest']);
+  has SecretOptions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Secret]', request_name => 'secretOptions', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::LogConfiguration object:
 
-  $service_obj->Method(Att1 => { LogDriver => $value, ..., Options => $value  });
+  $service_obj->Method(Att1 => { LogDriver => $value, ..., SecretOptions => $value  });
 
 =head3 Results returned from an API call
 
@@ -42,9 +43,17 @@ container.
 
   The log driver to use for the container. The valid values listed for
 this parameter are log drivers that the Amazon ECS container agent can
-communicate with by default. If you are using the Fargate launch type,
-the only supported value is C<awslogs>. For more information about
-using the C<awslogs> driver, see Using the awslogs Log Driver
+communicate with by default.
+
+For tasks using the Fargate launch type, the supported log drivers are
+C<awslogs> and C<splunk>.
+
+For tasks using the EC2 launch type, the supported log drivers are
+C<awslogs>, C<syslog>, C<gelf>, C<fluentd>, C<splunk>, C<journald>, and
+C<json-file>.
+
+For more information about using the C<awslogs> log driver, see Using
+the awslogs Log Driver
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -71,6 +80,11 @@ container instance. To check the Docker Remote API version on your
 container instance, log in to your container instance and run the
 following command: C<sudo docker version --format
 '{{.Server.APIVersion}}'>
+
+
+=head2 SecretOptions => ArrayRef[L<Paws::ECS::Secret>]
+
+  The secrets to pass to the log configuration.
 
 
 
