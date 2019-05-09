@@ -1,6 +1,7 @@
 
 package Paws::ServiceCatalog::DescribeProductOutput;
   use Moose;
+  has Budgets => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::BudgetDetail]');
   has ProductViewSummary => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewSummary');
   has ProvisioningArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningArtifact]');
 
@@ -13,6 +14,11 @@ package Paws::ServiceCatalog::DescribeProductOutput;
 Paws::ServiceCatalog::DescribeProductOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 Budgets => ArrayRef[L<Paws::ServiceCatalog::BudgetDetail>]
+
+Information about the associated budgets.
 
 
 =head2 ProductViewSummary => L<Paws::ServiceCatalog::ProductViewSummary>

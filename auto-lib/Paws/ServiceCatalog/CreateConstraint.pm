@@ -117,7 +117,7 @@ Specify the C<NotificationArns> property as follows:
 
 C<{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}>
 
-=item RESOUCE_UPDATE
+=item RESOURCE_UPDATE
 
 Specify the C<TagUpdatesOnProvisionedProduct> property as follows:
 

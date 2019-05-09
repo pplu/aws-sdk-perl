@@ -1,6 +1,7 @@
 package Paws::ServiceCatalog::ProvisioningArtifactProperties;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has DisableTemplateValidation => (is => 'ro', isa => 'Bool');
   has Info => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningArtifactInfo', required => 1);
   has Name => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
@@ -44,6 +45,12 @@ a product.
 
   The description of the provisioning artifact, including how it differs
 from the previous provisioning artifact.
+
+
+=head2 DisableTemplateValidation => Bool
+
+  If set to true, AWS Service Catalog stops validating the specified
+provisioning artifact even if it is invalid.
 
 
 =head2 B<REQUIRED> Info => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>

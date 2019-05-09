@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $servicecatalog = Paws->service('ServiceCatalog');
     my $DescribePortfolioShareStatusOutput =
       $servicecatalog->DescribePortfolioShareStatus(
-      PortfolioShareToken => 'MyPortfolioShareToken',
+      PortfolioShareToken => 'MyId',
 
       );
 
