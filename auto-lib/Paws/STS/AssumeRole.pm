@@ -66,10 +66,10 @@ example, if you specify a session duration of 12 hours, but your
 administrator set the maximum session duration to 6 hours, your
 operation fails. To learn how to view the maximum value for your role,
 see View the Maximum Session Duration Setting for a Role
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 in the I<IAM User Guide>.
 
-By default, the value is set to 3600 seconds.
+By default, the value is set to C<3600> seconds.
 
 The C<DurationSeconds> parameter is separate from the duration of a
 console session that you might request using the returned credentials.
@@ -77,26 +77,28 @@ The request to the federation endpoint for a console sign-in token
 takes a C<SessionDuration> parameter that specifies the maximum length
 of the console session. For more information, see Creating a URL that
 Enables Federated Users to Access the AWS Management Console
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
 in the I<IAM User Guide>.
 
 
 
 =head2 ExternalId => Str
 
-A unique identifier that is used by third parties when assuming roles
-in their customers' accounts. For each role that the third party can
-assume, they should instruct their customers to ensure the role's trust
-policy checks for the external ID that the third party generated. Each
-time the third party assumes the role, they should pass the customer's
-external ID. The external ID is useful in order to help third parties
-bind a role to the customer who created it. For more information about
+A unique identifier that might be required when you assume a role in
+another account. If the administrator of the account to which the role
+belongs provided you with an external ID, then provide that value in
+the C<ExternalId> parameter. This value can be any string, such as a
+passphrase or account number. Because a cross-account role is usually
+set up to trust everyone in an account, the administrator of the
+trusting account might send an external ID to the administrator of the
+trusted account. That way, only someone with the ID can assume the
+role, rather than everyone in the account. For more information about
 the external ID, see How to Use an External ID When Granting Access to
 Your AWS Resources to a Third Party
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html)
 in the I<IAM User Guide>.
 
-The regex used to validated this parameter is a string of characters
+The regex used to validate this parameter is a string of characters
 consisting of upper- and lower-case alphanumeric characters with no
 spaces. You can also include underscores or any of the following
 characters: =,.@:/-
@@ -107,17 +109,15 @@ characters: =,.@:/-
 
 An IAM policy in JSON format.
 
-This parameter is optional. If you pass a policy, the temporary
-security credentials that are returned by the operation have the
-permissions that are allowed by both (the intersection of) the access
-policy of the role that is being assumed, I<and> the policy that you
-pass. This gives you a way to further restrict the permissions for the
-resulting temporary security credentials. You cannot use the passed
-policy to grant permissions that are in excess of those allowed by the
-access policy of the role that is being assumed. For more information,
-see Permissions for AssumeRole, AssumeRoleWithSAML, and
-AssumeRoleWithWebIdentity
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html)
+This parameter is optional. If you pass a policy to this operation, the
+resulting temporary credentials have the permissions of the assumed
+role I<and> the policy that you pass. This gives you a way to further
+restrict the permissions for the resulting temporary security
+credentials. You cannot use the passed policy to grant permissions that
+are in excess of those allowed by the permissions policy of the role
+that is being assumed. For more information, see Permissions for
+AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html)
 in the I<IAM User Guide>.
 
 The format for this parameter, as described by its regex pattern, is a
@@ -126,11 +126,11 @@ can be any ASCII character from the space character to the end of the
 valid character list (\u0020-\u00FF). It can also include the tab
 (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
-The policy plain text must be 2048 bytes or shorter. However, an
+The policy plaintext must be 2048 bytes or shorter. However, an
 internal conversion compresses it into a packed binary format with a
-separate limit. The PackedPolicySize response element indicates by
-percentage how close to the upper size limit the policy is, with 100%
-equaling the maximum allowed size.
+separate limit. The C<PackedPolicySize> response element indicates by
+percentage how close to the upper size limit the policy is, where 100
+percent is the maximum allowed size.
 
 
 
@@ -149,9 +149,9 @@ role is assumed by different principals or for different reasons. In
 cross-account scenarios, the role session name is visible to, and can
 be logged by the account that owns the role. The role session name is
 also used in the ARN of the assumed role principal. This means that
-subsequent cross-account API requests using the temporary security
+subsequent cross-account API requests that use the temporary security
 credentials will expose the role session name to the external account
-in their CloudTrail logs.
+in their AWS CloudTrail logs.
 
 The regex used to validate this parameter is a string of characters
 consisting of upper- and lower-case alphanumeric characters with no

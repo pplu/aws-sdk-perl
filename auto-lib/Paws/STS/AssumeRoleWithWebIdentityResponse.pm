@@ -42,7 +42,7 @@ application that requested the web identity token.
 The temporary security credentials, which include an access key ID, a
 secret access key, and a security token.
 
-B<Note:> The size of the security token that STS APIs return is not
+The size of the security token that STS API operations return is not
 fixed. We strongly recommend that you make no assumptions about the
 maximum size. As of this writing, the typical size is less than 4096
 bytes, but that can vary. Also, future updates to AWS might require
@@ -59,7 +59,7 @@ form. The service rejects any policy with a packed size greater than
 =head2 Provider => Str
 
 The issuing authority of the web identity token presented. For OpenID
-Connect ID Tokens this contains the value of the C<iss> field. For
+Connect ID tokens, this contains the value of the C<iss> field. For
 OAuth 2.0 access tokens, this contains the value of the C<ProviderId>
 parameter that was passed in the C<AssumeRoleWithWebIdentity> request.
 

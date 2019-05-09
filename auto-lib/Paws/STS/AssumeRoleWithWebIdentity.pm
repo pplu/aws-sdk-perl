@@ -69,10 +69,10 @@ example, if you specify a session duration of 12 hours, but your
 administrator set the maximum session duration to 6 hours, your
 operation fails. To learn how to view the maximum value for your role,
 see View the Maximum Session Duration Setting for a Role
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 in the I<IAM User Guide>.
 
-By default, the value is set to 3600 seconds.
+By default, the value is set to C<3600> seconds.
 
 The C<DurationSeconds> parameter is separate from the duration of a
 console session that you might request using the returned credentials.
@@ -80,7 +80,7 @@ The request to the federation endpoint for a console sign-in token
 takes a C<SessionDuration> parameter that specifies the maximum length
 of the console session. For more information, see Creating a URL that
 Enables Federated Users to Access the AWS Management Console
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
 in the I<IAM User Guide>.
 
 
@@ -89,16 +89,16 @@ in the I<IAM User Guide>.
 
 An IAM policy in JSON format.
 
-The policy parameter is optional. If you pass a policy, the temporary
-security credentials that are returned by the operation have the
-permissions that are allowed by both the access policy of the role that
-is being assumed, I< B<and> > the policy that you pass. This gives you
-a way to further restrict the permissions for the resulting temporary
+The policy parameter is optional. If you pass a policy to this
+operation, the resulting temporary credentials have the permissions of
+the assumed role I<and> the policy that you pass. This gives you a way
+to further restrict the permissions for the resulting temporary
 security credentials. You cannot use the passed policy to grant
-permissions that are in excess of those allowed by the access policy of
-the role that is being assumed. For more information, see Permissions
-for AssumeRoleWithWebIdentity
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html)
+permissions that are in excess of those allowed by the permissions
+policy of the role that is being assumed. For more information, see
+Permissions for AssumeRole, AssumeRoleWithSAML, and
+AssumeRoleWithWebIdentity
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html)
 in the I<IAM User Guide>.
 
 The format for this parameter, as described by its regex pattern, is a
@@ -107,11 +107,11 @@ can be any ASCII character from the space character to the end of the
 valid character list (\u0020-\u00FF). It can also include the tab
 (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
-The policy plain text must be 2048 bytes or shorter. However, an
+The policy plaintext must be 2048 bytes or shorter. However, an
 internal conversion compresses it into a packed binary format with a
-separate limit. The PackedPolicySize response element indicates by
-percentage how close to the upper size limit the policy is, with 100%
-equaling the maximum allowed size.
+separate limit. The C<PackedPolicySize> response element indicates by
+percentage how close to the upper size limit the policy is, where 100
+percent is the maximum allowed size.
 
 
 
