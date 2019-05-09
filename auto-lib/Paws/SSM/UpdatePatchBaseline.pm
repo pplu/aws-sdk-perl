@@ -47,8 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PatchFilterGroup => {
               PatchFilters => [
                 {
-                  Key => 'PRODUCT'
-                  , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
+                  Key => 'PATCH_SET'
+                  , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
                   Values => [
                     'MyPatchFilterValue', ...    # min: 1, max: 64
                   ],                             # min: 1, max: 20
@@ -75,8 +75,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalFilters                    => {
         PatchFilters => [
           {
-            Key => 'PRODUCT'
-            , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
+            Key => 'PATCH_SET'
+            , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
             Values => [
               'MyPatchFilterValue', ...    # min: 1, max: 64
             ],                             # min: 1, max: 20

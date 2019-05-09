@@ -46,6 +46,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribePatchGroupStateResult->InstancesWithMissingPatches;
     my $InstancesWithNotApplicablePatches =
       $DescribePatchGroupStateResult->InstancesWithNotApplicablePatches;
+    my $InstancesWithUnreportedNotApplicablePatches =
+      $DescribePatchGroupStateResult
+      ->InstancesWithUnreportedNotApplicablePatches;
 
     # Returns a L<Paws::SSM::DescribePatchGroupStateResult> object.
 

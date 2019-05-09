@@ -15,6 +15,7 @@ package Paws::SSM::InstancePatchState;
   has OwnerInformation => (is => 'ro', isa => 'Str');
   has PatchGroup => (is => 'ro', isa => 'Str', required => 1);
   has SnapshotId => (is => 'ro', isa => 'Str');
+  has UnreportedNotApplicableCount => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::InstancePatchState object:
 
-  $service_obj->Method(Att1 => { BaselineId => $value, ..., SnapshotId => $value  });
+  $service_obj->Method(Att1 => { BaselineId => $value, ..., UnreportedNotApplicableCount => $value  });
 
 =head3 Results returned from an API call
 
@@ -117,7 +118,10 @@ the instance but aren't currently installed.
 =head2 NotApplicableCount => Int
 
   The number of patches from the patch baseline that aren't applicable
-for the instance and hence aren't installed on the instance.
+for the instance and therefore aren't installed on the instance. This
+number may be truncated if the list of patch names is very large. The
+number of patches beyond this limit are reported in
+C<UnreportedNotApplicableCount>.
 
 
 =head2 B<REQUIRED> Operation => Str
@@ -152,6 +156,13 @@ release of the service.
 
   The ID of the patch baseline snapshot used during the patching
 operation when this compliance data was collected.
+
+
+=head2 UnreportedNotApplicableCount => Int
+
+  The number of patches beyond the supported limit of
+C<NotApplicableCount> that are not reported by name to Systems Manager
+Inventory.
 
 
 
