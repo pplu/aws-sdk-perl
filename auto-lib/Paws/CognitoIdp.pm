@@ -120,6 +120,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminSetUserMFAPreference', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AdminSetUserPassword {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminSetUserPassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AdminSetUserSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminSetUserSettings', @_);
@@ -697,7 +702,7 @@ package Paws::CognitoIdp;
   }
 
 
-  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableProviderForUser AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminLinkProviderForUser AdminListDevices AdminListGroupsForUser AdminListUserAuthEvents AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserMFAPreference AdminSetUserSettings AdminUpdateAuthEventFeedback AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut AssociateSoftwareToken ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateIdentityProvider CreateResourceServer CreateUserImportJob CreateUserPool CreateUserPoolClient CreateUserPoolDomain DeleteGroup DeleteIdentityProvider DeleteResourceServer DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DeleteUserPoolDomain DescribeIdentityProvider DescribeResourceServer DescribeRiskConfiguration DescribeUserImportJob DescribeUserPool DescribeUserPoolClient DescribeUserPoolDomain ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetIdentityProviderByIdentifier GetSigningCertificate GetUICustomization GetUser GetUserAttributeVerificationCode GetUserPoolMfaConfig GlobalSignOut InitiateAuth ListDevices ListGroups ListIdentityProviders ListResourceServers ListTagsForResource ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetRiskConfiguration SetUICustomization SetUserMFAPreference SetUserPoolMfaConfig SetUserSettings SignUp StartUserImportJob StopUserImportJob TagResource UntagResource UpdateAuthEventFeedback UpdateDeviceStatus UpdateGroup UpdateIdentityProvider UpdateResourceServer UpdateUserAttributes UpdateUserPool UpdateUserPoolClient UpdateUserPoolDomain VerifySoftwareToken VerifyUserAttribute / }
+  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableProviderForUser AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminLinkProviderForUser AdminListDevices AdminListGroupsForUser AdminListUserAuthEvents AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserMFAPreference AdminSetUserPassword AdminSetUserSettings AdminUpdateAuthEventFeedback AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut AssociateSoftwareToken ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateIdentityProvider CreateResourceServer CreateUserImportJob CreateUserPool CreateUserPoolClient CreateUserPoolDomain DeleteGroup DeleteIdentityProvider DeleteResourceServer DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DeleteUserPoolDomain DescribeIdentityProvider DescribeResourceServer DescribeRiskConfiguration DescribeUserImportJob DescribeUserPool DescribeUserPoolClient DescribeUserPoolDomain ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetIdentityProviderByIdentifier GetSigningCertificate GetUICustomization GetUser GetUserAttributeVerificationCode GetUserPoolMfaConfig GlobalSignOut InitiateAuth ListDevices ListGroups ListIdentityProviders ListResourceServers ListTagsForResource ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetRiskConfiguration SetUICustomization SetUserMFAPreference SetUserPoolMfaConfig SetUserSettings SignUp StartUserImportJob StopUserImportJob TagResource UntagResource UpdateAuthEventFeedback UpdateDeviceStatus UpdateGroup UpdateIdentityProvider UpdateResourceServer UpdateUserAttributes UpdateUserPool UpdateUserPoolClient UpdateUserPoolDomain VerifySoftwareToken VerifyUserAttribute / }
 
 1;
 
@@ -1290,6 +1295,28 @@ Each argument is described in detail in: L<Paws::CognitoIdp::AdminSetUserMFAPref
 Returns: a L<Paws::CognitoIdp::AdminSetUserMFAPreferenceResponse> instance
 
 Sets the user's multi-factor authentication (MFA) preference.
+
+
+=head2 AdminSetUserPassword
+
+=over
+
+=item Password => Str
+
+=item Username => Str
+
+=item UserPoolId => Str
+
+=item [Permanent => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminSetUserPassword>
+
+Returns: a L<Paws::CognitoIdp::AdminSetUserPasswordResponse> instance
+
+
 
 
 =head2 AdminSetUserSettings

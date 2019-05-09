@@ -87,11 +87,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MfaConfiguration => 'OFF',    # OPTIONAL
       Policies         => {
         PasswordPolicy => {
-          MinimumLength    => 1,    # min: 6, max: 99; OPTIONAL
-          RequireLowercase => 1,    # OPTIONAL
-          RequireNumbers   => 1,    # OPTIONAL
-          RequireSymbols   => 1,    # OPTIONAL
-          RequireUppercase => 1,    # OPTIONAL
+          MinimumLength                 => 1,    # min: 6, max: 99; OPTIONAL
+          RequireLowercase              => 1,    # OPTIONAL
+          RequireNumbers                => 1,    # OPTIONAL
+          RequireSymbols                => 1,    # OPTIONAL
+          RequireUppercase              => 1,    # OPTIONAL
+          TemporaryPasswordValidityDays => 1,    # max: 365; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       SmsAuthenticationMessage => 'MySmsVerificationMessageType',    # OPTIONAL

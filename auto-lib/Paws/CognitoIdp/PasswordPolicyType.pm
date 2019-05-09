@@ -5,6 +5,7 @@ package Paws::CognitoIdp::PasswordPolicyType;
   has RequireNumbers => (is => 'ro', isa => 'Bool');
   has RequireSymbols => (is => 'ro', isa => 'Bool');
   has RequireUppercase => (is => 'ro', isa => 'Bool');
+  has TemporaryPasswordValidityDays => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CognitoIdp::PasswordPolicyType object:
 
-  $service_obj->Method(Att1 => { MinimumLength => $value, ..., RequireUppercase => $value  });
+  $service_obj->Method(Att1 => { MinimumLength => $value, ..., TemporaryPasswordValidityDays => $value  });
 
 =head3 Results returned from an API call
 
@@ -68,6 +69,11 @@ required users to use at least one symbol in their password.
 
   In the password policy that you have set, refers to whether you have
 required users to use at least one uppercase letter in their password.
+
+
+=head2 TemporaryPasswordValidityDays => Int
+
+  
 
 
 
