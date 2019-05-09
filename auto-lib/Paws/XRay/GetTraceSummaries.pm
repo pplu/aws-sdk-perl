@@ -5,7 +5,9 @@ package Paws::XRay::GetTraceSummaries;
   has FilterExpression => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has Sampling => (is => 'ro', isa => 'Bool');
+  has SamplingStrategy => (is => 'ro', isa => 'Paws::XRay::SamplingStrategy');
   has StartTime => (is => 'ro', isa => 'Str', required => 1);
+  has TimeRangeType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -38,6 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FilterExpression => 'MyFilterExpression',    # OPTIONAL
       NextToken        => 'MyString',              # OPTIONAL
       Sampling         => 1,                       # OPTIONAL
+      SamplingStrategy => {
+        Name  => 'PartialScan',    # values: PartialScan, FixedRate; OPTIONAL
+        Value => 1,                # OPTIONAL
+      },    # OPTIONAL
+      TimeRangeType => 'TraceId',    # OPTIONAL
     );
 
     # Results:
@@ -80,11 +87,25 @@ Set to C<true> to get summaries for only a subset of available traces.
 
 
 
+=head2 SamplingStrategy => L<Paws::XRay::SamplingStrategy>
+
+A paramater to indicate whether to enable sampling on trace summaries.
+Input parameters are Name and Value.
+
+
+
 =head2 B<REQUIRED> StartTime => Str
 
 The start of the time frame for which to retrieve traces.
 
 
+
+=head2 TimeRangeType => Str
+
+A parameter to indicate whether to query trace summaries by TraceId or
+Event time.
+
+Valid values are: C<"TraceId">, C<"Event">
 
 
 =head1 SEE ALSO
