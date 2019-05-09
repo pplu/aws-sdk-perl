@@ -245,8 +245,8 @@ enabled, and otherwise false.
 
 =head2 KmsKeyId => Str
 
-  If C<StorageEncrypted> is true, the AWS KMS key identifier for the
-encrypted DB instance.
+  Not supported: The encryption for DB instances is managed by the DB
+cluster.
 
 
 =head2 LatestRestorableTime => Str
@@ -328,7 +328,7 @@ the primary instance after a failure of the existing primary instance.
 
 =head2 PubliclyAccessible => Bool
 
-  This parameter is not supported.
+  This flag should no longer be used.
 
 
 =head2 ReadReplicaDBClusterIdentifiers => ArrayRef[Str|Undef]
@@ -363,7 +363,8 @@ this is blank.
 
 =head2 StorageEncrypted => Bool
 
-  Specifies whether the DB instance is encrypted.
+  Not supported: The encryption for DB instances is managed by the DB
+cluster.
 
 
 =head2 StorageType => Str

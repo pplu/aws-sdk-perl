@@ -268,8 +268,7 @@ this DB cluster.
 
 =head2 ReplicationSourceIdentifier => Str
 
-  Contains the identifier of the source DB cluster if this DB cluster is
-a Read Replica.
+  Not supported by Neptune.
 
 
 =head2 Status => Str

@@ -315,7 +315,7 @@ parameter.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
 see Adjusting the Preferred Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon Neptune User Guide.>
 
 Constraints:
@@ -354,7 +354,7 @@ The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
 week. To see the time blocks available, see Adjusting the Preferred
 Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon Neptune User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -365,51 +365,7 @@ Constraints: Minimum 30-minute window.
 
 =head2 PreSignedUrl => Str
 
-A URL that contains a Signature Version 4 signed request for the
-C<CreateDBCluster> action to be called in the source AWS Region where
-the DB cluster is replicated from. You only need to specify
-C<PreSignedUrl> when you are performing cross-region replication from
-an encrypted DB cluster.
-
-The pre-signed URL must be a valid request for the C<CreateDBCluster>
-API action that can be executed in the source AWS Region that contains
-the encrypted DB cluster to be copied.
-
-The pre-signed URL request must contain the following parameter values:
-
-=over
-
-=item *
-
-C<KmsKeyId> - The AWS KMS key identifier for the key to use to encrypt
-the copy of the DB cluster in the destination AWS Region. This should
-refer to the same KMS key for both the C<CreateDBCluster> action that
-is called in the destination AWS Region, and the action contained in
-the pre-signed URL.
-
-=item *
-
-C<DestinationRegion> - The name of the AWS Region that Read Replica
-will be created in.
-
-=item *
-
-C<ReplicationSourceIdentifier> - The DB cluster identifier for the
-encrypted DB cluster to be copied. This identifier must be in the
-Amazon Resource Name (ARN) format for the source AWS Region. For
-example, if you are copying an encrypted DB cluster from the us-west-2
-AWS Region, then your C<ReplicationSourceIdentifier> would look like
-Example:
-C<arn:aws:rds:us-west-2:123456789012:cluster:neptune-cluster1>.
-
-=back
-
-To learn how to generate a Signature Version 4 signed request, see
-Authenticating Requests: Using Query Parameters (AWS Signature Version
-4)
-(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
-and Signature Version 4 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+This parameter is not currently supported.
 
 
 
@@ -428,7 +384,7 @@ Specifies whether the DB cluster is encrypted.
 
 =head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
 
-
+The tags to assign to the new DB cluster.
 
 
 

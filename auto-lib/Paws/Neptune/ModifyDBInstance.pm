@@ -166,10 +166,6 @@ for that engine version.
 
 =head2 BackupRetentionPeriod => Int
 
-The number of days to retain automated backups. Setting this parameter
-to a positive number enables backups. Setting this parameter to 0
-disables automated backups.
-
 Not applicable. The retention period for automated backups is managed
 by the DB cluster. For more information, see ModifyDBCluster.
 
@@ -324,8 +320,7 @@ Default: C<false>
 
 =head2 EnablePerformanceInsights => Bool
 
-True to enable Performance Insights for the DB instance, and otherwise
-false.
+Not supported.
 
 
 
@@ -358,21 +353,13 @@ Default: Uses existing setting
 
 =head2 LicenseModel => Str
 
-The license model for the DB instance.
-
-Valid values: C<license-included> | C<bring-your-own-license> |
-C<general-public-license>
+Not supported.
 
 
 
 =head2 MasterUserPassword => Str
 
-The new password for the master user. The password can include any
-printable ASCII character except "/", """, or "@".
-
 Not applicable.
-
-Default: Uses existing setting
 
 
 
@@ -458,9 +445,7 @@ be removed from a DB instance once it is associated with a DB instance
 
 =head2 PerformanceInsightsKMSKeyId => Str
 
-The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
-or the KMS key alias for the KMS encryption key.
+Not supported.
 
 
 
@@ -532,36 +517,13 @@ Valid Values: 0 - 15
 
 =head2 PubliclyAccessible => Bool
 
-This parameter is not supported.
+This flag should no longer be used.
 
 
 
 =head2 StorageType => Str
 
-Specifies the storage type to be associated with the DB instance.
-
-If you specify Provisioned IOPS (C<io1>), you must also include a value
-for the C<Iops> parameter.
-
-If you choose to migrate your DB instance from using standard storage
-to using Provisioned IOPS, or from using Provisioned IOPS to using
-standard storage, the process can take time. The duration of the
-migration depends on several factors such as database load, storage
-size, storage type (standard or Provisioned IOPS), amount of IOPS
-provisioned (if any), and the number of prior scale storage operations.
-Typical migration times are under 24 hours, but the process can take up
-to several days in some cases. During the migration, the DB instance is
-available for use, but might experience performance degradation. While
-the migration takes place, nightly backups for the instance are
-suspended. No other Amazon Neptune operations can take place for the
-instance, including modifying the instance, rebooting the instance,
-deleting the instance, creating a Read Replica for the instance, and
-creating a DB snapshot of the instance.
-
-Valid values: C<standard | gp2 | io1>
-
-Default: C<io1> if the C<Iops> parameter is specified, otherwise
-C<standard>
+Not supported.
 
 
 

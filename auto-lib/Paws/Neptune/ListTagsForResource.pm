@@ -62,7 +62,7 @@ This parameter is not currently supported.
 The Amazon Neptune resource with tags to be listed. This value is an
 Amazon Resource Name (ARN). For information about creating an ARN, see
 Constructing an Amazon Resource Name (ARN)
-(http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
+(https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
 
 
 

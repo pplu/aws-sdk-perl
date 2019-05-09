@@ -4,6 +4,7 @@ package Paws::Neptune::RestoreDBClusterFromSnapshot;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -44,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Engine                          => 'MyString',
       SnapshotIdentifier              => 'MyString',
       AvailabilityZones               => [ 'MyString', ... ],    # OPTIONAL
+      DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DatabaseName                    => 'MyString',             # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
@@ -81,7 +83,7 @@ restored DB cluster can be created in.
 
 =head2 DatabaseName => Str
 
-The database name for the restored DB cluster.
+Not supported.
 
 
 
@@ -109,6 +111,25 @@ Cannot end with a hyphen or contain two consecutive hyphens
 =back
 
 Example: C<my-snapshot-id>
+
+
+
+=head2 DBClusterParameterGroupName => Str
+
+The name of the DB cluster parameter group to associate with the new DB
+cluster.
+
+Constraints:
+
+=over
+
+=item *
+
+If supplied, must match the name of an existing
+DBClusterParameterGroup.
+
+=back
+
 
 
 

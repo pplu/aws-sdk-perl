@@ -2,6 +2,7 @@
 package Paws::Neptune::RestoreDBClusterToPointInTime;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -42,6 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $rds->RestoreDBClusterToPointInTime(
       DBClusterIdentifier             => 'MyString',
       SourceDBClusterIdentifier       => 'MyString',
+      DBClusterParameterGroupName     => 'MyString',               # OPTIONAL
       DBSubnetGroupName               => 'MyString',               # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                        # OPTIONAL
       KmsKeyId                        => 'MyString',               # OPTIONAL
@@ -57,7 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                                           # OPTIONAL
       UseLatestRestorableTime => 1,                                # OPTIONAL
-      VpcSecurityGroupIds     => [ 'MyString', ... ],              # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                  # OPTIONAL
       );
 
     # Results:
@@ -90,6 +92,25 @@ First character must be a letter
 =item *
 
 Cannot end with a hyphen or contain two consecutive hyphens
+
+=back
+
+
+
+
+=head2 DBClusterParameterGroupName => Str
+
+The name of the DB cluster parameter group to associate with the new DB
+cluster.
+
+Constraints:
+
+=over
+
+=item *
+
+If supplied, must match the name of an existing
+DBClusterParameterGroup.
 
 =back
 
@@ -207,28 +228,8 @@ Example: C<2015-03-07T23:45:00Z>
 
 =head2 RestoreType => Str
 
-The type of restore to be performed. You can specify one of the
-following values:
-
-=over
-
-=item *
-
-C<full-copy> - The new DB cluster is restored as a full copy of the
-source DB cluster.
-
-=item *
-
-C<copy-on-write> - The new DB cluster is restored as a clone of the
-source DB cluster.
-
-=back
-
-Constraints: You can't specify C<copy-on-write> if the engine version
-of the source DB cluster is earlier than 1.11.
-
-If you don't specify a C<RestoreType> value, then the new DB cluster is
-restored as a full copy of the source DB cluster.
+The type of restore to be performed. The only type of restore currently
+supported is C<full-copy> (the default).
 
 
 
@@ -251,7 +252,7 @@ Must match the identifier of an existing DBCluster.
 
 =head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
 
-
+The tags to be applied to the restored DB cluster.
 
 
 
