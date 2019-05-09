@@ -1,86 +1,105 @@
 
 package Paws::ApiGatewayV2::GetRouteResponse;
   use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has RouteId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'routeId', required => 1);
-  has RouteResponseId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'routeResponseId', required => 1);
+  has ApiKeyRequired => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'apiKeyRequired');
+  has AuthorizationScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'authorizationScopes');
+  has AuthorizationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizationType');
+  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerId');
+  has ModelSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'modelSelectionExpression');
+  has OperationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'operationName');
+  has RequestModels => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteModels', traits => ['NameInRequest'], request_name => 'requestModels');
+  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteParameters', traits => ['NameInRequest'], request_name => 'requestParameters');
+  has RouteId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeId');
+  has RouteKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeKey');
+  has RouteResponseSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeResponseSelectionExpression');
+  has Target => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'target');
 
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRouteResponse');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/routes/{routeId}/routeresponses/{routeResponseId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::GetRouteResponseResponse');
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGatewayV2::GetRouteResponse - Arguments for method GetRouteResponse on L<Paws::ApiGatewayV2>
-
-=head1 DESCRIPTION
-
-This class represents the parameters used for calling the method GetRouteResponse on the
-L<AmazonApiGatewayV2|Paws::ApiGatewayV2> service. Use the attributes of this class
-as arguments to method GetRouteResponse.
-
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetRouteResponse.
-
-=head1 SYNOPSIS
-
-    my $apigateway = Paws->service('ApiGatewayV2');
-    my $GetRouteResponseResponse = $apigateway->GetRouteResponse(
-      ApiId           => 'My__string',
-      RouteId         => 'My__string',
-      RouteResponseId => 'My__string',
-
-    );
-
-    # Results:
-    my $ModelSelectionExpression =
-      $GetRouteResponseResponse->ModelSelectionExpression;
-    my $ResponseModels     = $GetRouteResponseResponse->ResponseModels;
-    my $ResponseParameters = $GetRouteResponseResponse->ResponseParameters;
-    my $RouteResponseId    = $GetRouteResponseResponse->RouteResponseId;
-    my $RouteResponseKey   = $GetRouteResponseResponse->RouteResponseKey;
-
-    # Returns a L<Paws::ApiGatewayV2::GetRouteResponseResponse> object.
-
-Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/GetRouteResponse>
+Paws::ApiGatewayV2::GetRouteResponse
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ApiId => Str
+=head2 ApiKeyRequired => Bool
 
-The API identifier.
+Specifies whether an API key is required for this route.
 
 
+=head2 AuthorizationScopes => ArrayRef[Str|Undef]
 
-=head2 B<REQUIRED> RouteId => Str
+A list of authorization scopes configured on a route. The scopes are
+used with a COGNITO_USER_POOLS authorizer to authorize the method
+invocation. The authorization works by matching the route scopes
+against the scopes parsed from the access token in the incoming
+request. The method invocation is authorized if any route scope matches
+a claimed scope in the access token. Otherwise, the invocation is not
+authorized. When the route scope is configured, the client must provide
+an access token instead of an identity token for authorization
+purposes.
+
+
+=head2 AuthorizationType => Str
+
+The authorization type for the route. Valid values are NONE for open
+access, AWS_IAM for using AWS IAM permissions, and CUSTOM for using a
+Lambda authorizer
+
+Valid values are: C<"NONE">, C<"AWS_IAM">, C<"CUSTOM">
+=head2 AuthorizerId => Str
+
+The identifier of the Authorizer resource to be associated with this
+route, if the authorizationType is CUSTOM . The authorizer identifier
+is generated by API Gateway when you created the authorizer.
+
+
+=head2 ModelSelectionExpression => Str
+
+The model selection expression for the route.
+
+
+=head2 OperationName => Str
+
+The operation name for the route.
+
+
+=head2 RequestModels => L<Paws::ApiGatewayV2::RouteModels>
+
+The request models for the route.
+
+
+=head2 RequestParameters => L<Paws::ApiGatewayV2::RouteParameters>
+
+The request parameters for the route.
+
+
+=head2 RouteId => Str
 
 The route ID.
 
 
+=head2 RouteKey => Str
 
-=head2 B<REQUIRED> RouteResponseId => Str
-
-The route response ID.
-
+The route key for the route.
 
 
+=head2 RouteResponseSelectionExpression => Str
 
-=head1 SEE ALSO
+The route response selection expression for the route.
 
-This class forms part of L<Paws>, documenting arguments for method GetRouteResponse in L<Paws::ApiGatewayV2>
 
-=head1 BUGS and CONTRIBUTIONS
+=head2 Target => Str
 
-The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
+The target for the route.
 
-Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
+
+=head2 _request_id => Str
+
 
 =cut
 
