@@ -15,6 +15,12 @@ package Paws::API::EndpointResolver;
     builder => '_construct_endpoint',
   );
 
+  has _endpoint_has_been_constructed => (
+    is => 'rw',
+    init_arg => undef,
+    default => 0,
+  );
+
   has _region_for_signature => (
     is => 'rw',
     isa => 'Str', 
@@ -23,15 +29,19 @@ package Paws::API::EndpointResolver;
     default => sub {
       my $self = shift;
       my $sig_region;
-   
-      # For global services:   don't specify region: we sign with the region in the credentialScope
-      #                        specify the region: we override the credentialScope (use the region specified)
-      # For regional services: use the region specified for signing
-      # If endpoint is specified: use the region specified (no _endpoint_info) 
-      if (defined $self->_endpoint_info->{ credentialScope } and not defined $self->region) {
-        $sig_region = $self->_endpoint_info->{ credentialScope }->{ region }
+
+      # If endpoint is specified: use the region specified
+      if ($self->region and not $self->_endpoint_has_been_constructed) {
+        $sig_region = $self->region;
       }
-      $sig_region = $self->region if (not defined $sig_region);
+      # For global services: we sign with the region in the credentialScope
+      elsif (defined $self->_endpoint_info->{ credentialScope }) {
+        $sig_region = $self->_endpoint_info->{ credentialScope }->{ region };
+      }
+      # For regional services: use the region specified for signing
+      else {
+        $sig_region = $self->region;
+      }
 
       Paws::Exception->throw(
         message => "Can't find a region for signing. region is required",
@@ -96,6 +106,8 @@ package Paws::API::EndpointResolver;
 
   sub _construct_endpoint {
     my ($self) = @_;
+
+    $self->_endpoint_has_been_constructed(1);
 
     my $args = {};
     $args->{ service } = $self->service;
