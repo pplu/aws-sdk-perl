@@ -4,6 +4,7 @@ package Paws::Config::PutConfigurationAggregator;
   has AccountAggregationSources => (is => 'ro', isa => 'ArrayRef[Paws::Config::AccountAggregationSource]');
   has ConfigurationAggregatorName => (is => 'ro', isa => 'Str', required => 1);
   has OrganizationAggregationSource => (is => 'ro', isa => 'Paws::Config::OrganizationAggregationSource');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Config::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -45,6 +46,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AllAwsRegions => 1,                           # OPTIONAL
         AwsRegions    => [ 'MyString', ... ],         # min: 1; OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
       );
 
     # Results:
@@ -74,6 +82,12 @@ The name of the configuration aggregator.
 =head2 OrganizationAggregationSource => L<Paws::Config::OrganizationAggregationSource>
 
 An OrganizationAggregationSource object.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Config::Tag>]
+
+
 
 
 

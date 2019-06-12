@@ -1881,6 +1881,8 @@ List the tags for AWS Config resource.
 
 =item AuthorizedAwsRegion => Str
 
+=item [Tags => ArrayRef[L<Paws::Config::Tag>]]
+
 
 =back
 
@@ -1897,6 +1899,8 @@ source account and region.
 =over
 
 =item ConfigRule => L<Paws::Config::ConfigRule>
+
+=item [Tags => ArrayRef[L<Paws::Config::Tag>]]
 
 
 =back
@@ -1957,6 +1961,8 @@ in the I<AWS Config Developer Guide>.
 =item [AccountAggregationSources => ArrayRef[L<Paws::Config::AccountAggregationSource>]]
 
 =item [OrganizationAggregationSource => L<Paws::Config::OrganizationAggregationSource>]
+
+=item [Tags => ArrayRef[L<Paws::Config::Tag>]]
 
 
 =back
