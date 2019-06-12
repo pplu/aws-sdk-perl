@@ -50,8 +50,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 CopyTags => Bool
 
-True to copy all tags from the source DB cluster snapshot to the target
-DB cluster snapshot, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the source DB
+cluster snapshot to the target DB cluster snapshot. By default, tags
+are not copied.
 
 
 

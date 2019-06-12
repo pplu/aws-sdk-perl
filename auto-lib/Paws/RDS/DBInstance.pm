@@ -89,8 +89,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBInst
 
 Contains the details of an Amazon RDS DB instance.
 
-This data type is used as a response element in the DescribeDBInstances
-action.
+This data type is used as a response element in the
+C<DescribeDBInstances> action.
 
 =head1 ATTRIBUTES
 
@@ -143,7 +143,7 @@ B<Amazon Aurora>
 
 Not applicable. Copying tags to snapshots is managed by the DB cluster.
 Setting this value for an Aurora DB instance has no effect on the DB
-cluster setting. For more information, see DBCluster.
+cluster setting. For more information, see C<DBCluster>.
 
 
 =head2 DBClusterIdentifier => Str
@@ -215,8 +215,8 @@ instance.
 
 =head2 DBSecurityGroups => ArrayRef[L<Paws::RDS::DBSecurityGroupMembership>]
 
-  Provides List of DB security group elements containing only
-C<DBSecurityGroup.Name> and C<DBSecurityGroup.Status> subelements.
+  A list of DB security group elements containing C<DBSecurityGroup.Name>
+and C<DBSecurityGroup.Status> subelements.
 
 
 =head2 DBSubnetGroup => L<Paws::RDS::DBSubnetGroup>
@@ -229,7 +229,7 @@ group.
 =head2 DeletionProtection => Bool
 
   Indicates if the DB instance has deletion protection enabled. The
-database can't be deleted when this value is set to true. For more
+database can't be deleted when deletion protection is enabled. For more
 information, see Deleting a DB Instance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 

@@ -111,11 +111,11 @@ following:
 =item *
 
 General Purpose (SSD) storage (gp2): Must be an integer from 20 to
-32768.
+65536.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 65536.
 
 =item *
 
@@ -133,11 +133,11 @@ following:
 =item *
 
 General Purpose (SSD) storage (gp2): Must be an integer from 20 to
-32768.
+65536.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 65536.
 
 =item *
 
@@ -155,11 +155,11 @@ following:
 =item *
 
 General Purpose (SSD) storage (gp2): Must be an integer from 20 to
-32768.
+65536.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 65536.
 
 =item *
 
@@ -177,11 +177,11 @@ following:
 =item *
 
 General Purpose (SSD) storage (gp2): Must be an integer from 20 to
-32768.
+65536.
 
 =item *
 
-Provisioned IOPS storage (io1): Must be an integer from 100 to 32768.
+Provisioned IOPS storage (io1): Must be an integer from 100 to 65536.
 
 =item *
 
@@ -251,16 +251,15 @@ Web and Express editions: Must be an integer from 20 to 1024.
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor engine upgrades are applied automatically to the
-DB instance during the maintenance window.
-
-Default: C<true>
+A value that indicates whether minor engine upgrades are applied
+automatically to the DB instance during the maintenance window. By
+default, minor engine upgrades are applied automatically.
 
 
 
 =head2 AvailabilityZone => Str
 
-The EC2 Availability Zone that the DB instance is created in. For
+The Availability Zone (AZ) where the database will be created. For
 information on AWS Regions and Availability Zones, see Regions and
 Availability Zones
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -270,8 +269,8 @@ AWS Region.
 
 Example: C<us-east-1d>
 
-Constraint: The AvailabilityZone parameter can't be specified if the
-MultiAZ parameter is set to C<true>. The specified Availability Zone
+Constraint: The C<AvailabilityZone> parameter can't be specified if the
+DB instance is a Multi-AZ deployment. The specified Availability Zone
 must be in the same AWS Region as the current endpoint.
 
 
@@ -285,7 +284,7 @@ parameter to 0 disables automated backups.
 B<Amazon Aurora>
 
 Not applicable. The retention period for automated backups is managed
-by the DB cluster. For more information, see CreateDBCluster.
+by the DB cluster.
 
 Default: 1
 
@@ -314,30 +313,26 @@ associated with the specified CharacterSet.
 B<Amazon Aurora>
 
 Not applicable. The character set is managed by the DB cluster. For
-more information, see CreateDBCluster.
+more information, see C<CreateDBCluster>.
 
 
 
 =head2 CopyTagsToSnapshot => Bool
 
-True to copy all tags from the DB instance to snapshots of the DB
-instance, and otherwise false. The default is false.
+A value that indicates whether to copy tags from the DB instance to
+snapshots of the DB instance. By default, tags are not copied.
 
 B<Amazon Aurora>
 
 Not applicable. Copying tags to snapshots is managed by the DB cluster.
 Setting this value for an Aurora DB instance has no effect on the DB
-cluster setting. For more information, see CreateDBCluster.
+cluster setting.
 
 
 
 =head2 DBClusterIdentifier => Str
 
 The identifier of the DB cluster that the instance will belong to.
-
-For information on creating a DB cluster, see CreateDBCluster.
-
-Type: String
 
 
 
@@ -383,8 +378,6 @@ Example: C<mydbinstance>
 
 The meaning of this parameter differs according to the database engine
 you use.
-
-Type: String
 
 B<MySQL>
 
@@ -541,16 +534,24 @@ If there is no DB subnet group, then it is a non-VPC DB instance.
 
 =head2 DeletionProtection => Bool
 
-Indicates if the DB instance should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false. For more information, see Deleting a DB Instance
+A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. For more
+information, see Deleting a DB Instance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
 
 =head2 Domain => Str
 
-Specify the Active Directory Domain to create the instance in.
+For an Amazon RDS DB instance that's running Microsoft SQL Server, this
+parameter specifies the Active Directory directory ID to create the
+instance in. Amazon RDS uses Windows Authentication to authenticate
+users that connect to the DB instance. For more information, see Using
+Windows Authentication with an Amazon RDS DB Instance Running Microsoft
+SQL Server
+(https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_SQLServerWinAuth.html)
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -574,8 +575,9 @@ in the I<Amazon Relational Database Service User Guide>.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 You can enable IAM database authentication for the following database
 engines:
@@ -583,7 +585,7 @@ engines:
 B<Amazon Aurora>
 
 Not applicable. Mapping AWS IAM accounts to database accounts is
-managed by the DB cluster. For more information, see CreateDBCluster.
+managed by the DB cluster.
 
 B<MySQL>
 
@@ -599,14 +601,13 @@ For MySQL 5.7, minor version 5.7.16 or higher
 
 =back
 
-Default: C<false>
 
 
 
 =head2 EnablePerformanceInsights => Bool
 
-True to enable Performance Insights for the DB instance, and otherwise
-false.
+A value that indicates whether to enable Performance Insights for the
+DB instance.
 
 For more information, see Using Amazon Performance Insights
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
@@ -689,7 +690,8 @@ C<sqlserver-web>
 
 The version number of the database engine to use.
 
-For a list of valid engine versions, call DescribeDBEngineVersions.
+For a list of valid engine versions, use the
+C<DescribeDBEngineVersions> action.
 
 The following are the database engines and links to information about
 the major and minor versions that are available with Amazon RDS. Not
@@ -698,8 +700,7 @@ every database engine is available for every AWS Region.
 B<Amazon Aurora>
 
 Not applicable. The version number of the database engine to be used by
-the DB instance is managed by the DB cluster. For more information, see
-CreateDBCluster.
+the DB instance is managed by the DB cluster.
 
 B<MariaDB>
 
@@ -760,13 +761,13 @@ KM encryption key.
 B<Amazon Aurora>
 
 Not applicable. The KMS key identifier is managed by the DB cluster.
-For more information, see CreateDBCluster.
+For more information, see C<CreateDBCluster>.
 
-If the C<StorageEncrypted> parameter is true, and you do not specify a
-value for the C<KmsKeyId> parameter, then Amazon RDS will use your
-default encryption key. AWS KMS creates the default encryption key for
-your AWS account. Your AWS account has a different default encryption
-key for each AWS Region.
+If C<StorageEncrypted> is enabled, and you do not specify a value for
+the C<KmsKeyId> parameter, then Amazon RDS will use your default
+encryption key. AWS KMS creates the default encryption key for your AWS
+account. Your AWS account has a different default encryption key for
+each AWS Region.
 
 
 
@@ -786,7 +787,7 @@ The name for the master user.
 B<Amazon Aurora>
 
 Not applicable. The name for the master user is managed by the DB
-cluster. For more information, see CreateDBCluster.
+cluster.
 
 B<MariaDB>
 
@@ -915,7 +916,7 @@ printable ASCII character except "/", """, or "@".
 B<Amazon Aurora>
 
 Not applicable. The password for the master user is managed by the DB
-cluster. For more information, see CreateDBCluster.
+cluster.
 
 B<MariaDB>
 
@@ -968,9 +969,9 @@ supply a C<MonitoringRoleArn> value.
 
 =head2 MultiAZ => Bool
 
-A value that specifies whether the DB instance is a Multi-AZ
-deployment. You can't set the AvailabilityZone parameter if the MultiAZ
-parameter is set to true.
+A value that indicates whether the DB instance is a Multi-AZ
+deployment. You can't set the C<AvailabilityZone> parameter if the DB
+instance is a Multi-AZ deployment.
 
 
 
@@ -990,6 +991,11 @@ be removed from a DB instance once it is associated with a DB instance
 The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
 or the KMS key alias for the KMS encryption key.
+
+If you do not specify a value for C<PerformanceInsightsKMSKeyId>, then
+Amazon RDS uses your default encryption key. AWS KMS creates the
+default encryption key for your AWS account. Your AWS account has a
+different default encryption key for each AWS Region.
 
 
 
@@ -1062,7 +1068,7 @@ in the I<Amazon RDS User Guide>.
 B<Amazon Aurora>
 
 Not applicable. The daily time range for creating automated backups is
-managed by the DB cluster. For more information, see CreateDBCluster.
+managed by the DB cluster.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
@@ -1138,11 +1144,12 @@ Valid Values: 0 - 15
 
 =head2 PubliclyAccessible => Bool
 
-Specifies the accessibility options for the DB instance. A value of
-true specifies an Internet-facing instance with a publicly resolvable
-DNS name, which resolves to a public IP address. A value of false
-specifies an internal instance with a DNS name that resolves to a
-private IP address.
+A value that indicates whether the DB instance is publicly accessible.
+When the DB instance is publicly accessible, it is an Internet-facing
+instance with a publicly resolvable DNS name, which resolves to a
+public IP address. When the DB instance is not publicly accessible, it
+is an internal instance with a DNS name that resolves to a private IP
+address.
 
 Default: The default behavior varies depending on whether
 C<DBSubnetGroupName> is specified.
@@ -1186,14 +1193,13 @@ to it, the DB instance is public.
 
 =head2 StorageEncrypted => Bool
 
-Specifies whether the DB instance is encrypted.
+A value that indicates whether the DB instance is encrypted. By
+default, it is not encrypted.
 
 B<Amazon Aurora>
 
 Not applicable. The encryption for DB instances is managed by the DB
-cluster. For more information, see CreateDBCluster.
-
-Default: false
+cluster.
 
 
 
@@ -1206,14 +1212,13 @@ Valid values: C<standard | gp2 | io1>
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
 
-Default: C<io1> if the C<Iops> parameter is specified, otherwise
-C<standard>
+Default: C<io1> if the C<Iops> parameter is specified, otherwise C<gp2>
 
 
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
+Tags to assign to the DB instance.
 
 
 
@@ -1247,7 +1252,7 @@ instance.
 B<Amazon Aurora>
 
 Not applicable. The associated list of EC2 VPC security groups is
-managed by the DB cluster. For more information, see CreateDBCluster.
+managed by the DB cluster.
 
 Default: The default EC2 VPC security group for the DB subnet group's
 VPC.

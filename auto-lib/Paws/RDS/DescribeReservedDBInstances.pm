@@ -100,8 +100,8 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 MultiAZ => Bool
 
-The Multi-AZ filter value. Specify this parameter to show only those
-reservations matching the specified Multi-AZ parameter.
+A value that indicates whether to show only those reservations that
+support Multi-AZ.
 
 
 

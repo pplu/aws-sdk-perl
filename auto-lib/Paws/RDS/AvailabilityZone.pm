@@ -33,16 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Availa
 
 Contains Availability Zone information.
 
-This data type is used as an element in the following data type:
-
-=over
-
-=item *
-
-OrderableDBInstanceOption
-
-=back
-
+This data type is used as an element in the
+C<OrderableDBInstanceOption> data type.
 
 =head1 ATTRIBUTES
 

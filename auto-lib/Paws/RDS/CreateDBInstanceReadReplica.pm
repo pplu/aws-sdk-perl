@@ -81,8 +81,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor engine upgrades are applied automatically to the
-Read Replica during the maintenance window.
+A value that indicates whether minor engine upgrades are applied
+automatically to the Read Replica during the maintenance window.
 
 Default: Inherits from the source DB instance
 
@@ -90,7 +90,7 @@ Default: Inherits from the source DB instance
 
 =head2 AvailabilityZone => Str
 
-The Amazon EC2 Availability Zone that the Read Replica is created in.
+The Availability Zone (AZ) where the Read Replica will be created.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -101,8 +101,8 @@ Example: C<us-east-1d>
 
 =head2 CopyTagsToSnapshot => Bool
 
-True to copy all tags from the Read Replica to snapshots of the Read
-Replica, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the Read Replica
+to snapshots of the Read Replica. By default, tags are not copied.
 
 
 
@@ -178,9 +178,10 @@ Example: C<mySubnetgroup>
 
 =head2 DeletionProtection => Bool
 
-Indicates if the DB instance should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false. For more information, see Deleting a DB Instance
+A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. For more
+information, see Deleting a DB Instance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
@@ -198,8 +199,9 @@ in the I<Amazon RDS User Guide>.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 You can enable IAM database authentication for the following database
 engines
@@ -220,14 +222,13 @@ Aurora MySQL 5.6 or higher
 
 =back
 
-Default: C<false>
 
 
 
 =head2 EnablePerformanceInsights => Bool
 
-True to enable Performance Insights for the Read Replica, and otherwise
-false.
+A value that indicates whether to enable Performance Insights for the
+Read Replica.
 
 For more information, see Using Amazon Performance Insights
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
@@ -294,7 +295,8 @@ supply a C<MonitoringRoleArn> value.
 
 =head2 MultiAZ => Bool
 
-Specifies whether the Read Replica is in a Multi-AZ deployment.
+A value that indicates whether the Read Replica is in a Multi-AZ
+deployment.
 
 You can create a Read Replica as a Multi-AZ DB instance. RDS creates a
 standby of your replica in another Availability Zone for failover
@@ -316,6 +318,11 @@ option group associated with the source instance is used.
 The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
 or the KMS key alias for the KMS encryption key.
+
+If you do not specify a value for C<PerformanceInsightsKMSKeyId>, then
+Amazon RDS uses your default encryption key. AWS KMS creates the
+default encryption key for your AWS account. Your AWS account has a
+different default encryption key for each AWS Region.
 
 
 
@@ -408,11 +415,12 @@ instance class of the DB instance.
 
 =head2 PubliclyAccessible => Bool
 
-Specifies the accessibility options for the DB instance. A value of
-true specifies an Internet-facing instance with a publicly resolvable
-DNS name, which resolves to a public IP address. A value of false
-specifies an internal instance with a DNS name that resolves to a
-private IP address. For more information, see CreateDBInstance.
+A value that indicates whether the DB instance is publicly accessible.
+When the DB instance is publicly accessible, it is an Internet-facing
+instance with a publicly resolvable DNS name, which resolves to a
+public IP address. When the DB instance is not publicly accessible, it
+is an internal instance with a DNS name that resolves to a private IP
+address. For more information, see CreateDBInstance.
 
 
 
@@ -480,8 +488,7 @@ Valid values: C<standard | gp2 | io1>
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
 
-Default: C<io1> if the C<Iops> parameter is specified, otherwise
-C<standard>
+Default: C<io1> if the C<Iops> parameter is specified, otherwise C<gp2>
 
 
 
@@ -493,7 +500,7 @@ C<standard>
 
 =head2 UseDefaultProcessorFeatures => Bool
 
-A value that specifies that the DB instance class of the DB instance
+A value that indicates whether the DB instance class of the DB instance
 uses its default processor features.
 
 

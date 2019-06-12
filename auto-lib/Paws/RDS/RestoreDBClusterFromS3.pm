@@ -106,8 +106,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-A list of EC2 Availability Zones that instances in the restored DB
-cluster can be created in.
+A list of Availability Zones (AZs) where instances in the restored DB
+cluster can be created.
 
 
 
@@ -161,8 +161,9 @@ associated with the specified CharacterSet.
 
 =head2 CopyTagsToSnapshot => Bool
 
-True to copy all tags from the restored DB cluster to snapshots of the
-restored DB cluster, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the restored DB
+cluster to snapshots of the restored DB cluster. The default is not to
+copy them.
 
 
 
@@ -232,9 +233,9 @@ Example: C<mySubnetgroup>
 
 =head2 DeletionProtection => Bool
 
-Indicates if the DB cluster should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false.
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.
 
 
 
@@ -251,10 +252,9 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: C<false>
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 
 
@@ -290,7 +290,7 @@ account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KM encryption key.
 
-If the C<StorageEncrypted> parameter is true, and you do not specify a
+If the StorageEncrypted parameter is enabled, and you do not specify a
 value for the C<KmsKeyId> parameter, then Amazon RDS will use your
 default encryption key. AWS KMS creates the default encryption key for
 your AWS account. Your AWS account has a different default encryption
@@ -454,7 +454,7 @@ Example: C<5.6.22>
 
 =head2 StorageEncrypted => Bool
 
-Specifies whether the restored DB cluster is encrypted.
+A value that indicates whether the restored DB cluster is encrypted.
 
 
 

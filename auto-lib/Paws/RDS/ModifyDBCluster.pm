@@ -65,22 +65,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 ApplyImmediately => Bool
 
-A value that specifies whether the modifications in this request and
+A value that indicates whether the modifications in this request and
 any pending modifications are asynchronously applied as soon as
 possible, regardless of the C<PreferredMaintenanceWindow> setting for
-the DB cluster. If this parameter is set to C<false>, changes to the DB
+the DB cluster. If this parameter is disabled, changes to the DB
 cluster are applied during the next maintenance window.
 
 The C<ApplyImmediately> parameter only affects the
 C<EnableIAMDatabaseAuthentication>, C<MasterUserPassword>, and
-C<NewDBClusterIdentifier> values. If you set the C<ApplyImmediately>
-parameter value to false, then changes to the
-C<EnableIAMDatabaseAuthentication>, C<MasterUserPassword>, and
-C<NewDBClusterIdentifier> values are applied during the next
-maintenance window. All other changes are applied immediately,
-regardless of the value of the C<ApplyImmediately> parameter.
+C<NewDBClusterIdentifier> values. If the C<ApplyImmediately> parameter
+is disabled, then changes to the C<EnableIAMDatabaseAuthentication>,
+C<MasterUserPassword>, and C<NewDBClusterIdentifier> values are applied
+during the next maintenance window. All other changes are applied
+immediately, regardless of the value of the C<ApplyImmediately>
+parameter.
 
-Default: C<false>
+By default, this parameter is disabled.
 
 
 
@@ -134,8 +134,8 @@ CloudWatch Logs for a specific DB cluster.
 
 =head2 CopyTagsToSnapshot => Bool
 
-True to copy all tags from the DB cluster to snapshots of the DB
-cluster, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the DB cluster to
+snapshots of the DB cluster. The default is not to copy them.
 
 
 
@@ -165,15 +165,13 @@ The name of the DB cluster parameter group to use for the DB cluster.
 
 =head2 DeletionProtection => Bool
 
-Indicates if the DB cluster has deletion protection enabled. The
-database can't be deleted when this value is set to true.
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.
 
 
 
 =head2 EnableHttpEndpoint => Bool
-
-HTTP endpoint functionality is in beta for Aurora Serverless and is
-subject to change.
 
 A value that indicates whether to enable the HTTP endpoint for an
 Aurora Serverless DB cluster. By default, the HTTP endpoint is
@@ -184,19 +182,17 @@ API for running SQL queries on the Aurora Serverless DB cluster. You
 can also query your database from inside the RDS console with the query
 editor.
 
-For more information about Aurora Serverless, see Using Amazon Aurora
-Serverless
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+For more information, see Using the Data API for Aurora Serverless
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 in the I<Amazon Aurora User Guide>.
 
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: C<false>
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 
 
@@ -204,11 +200,10 @@ Default: C<false>
 
 The version number of the database engine to which you want to upgrade.
 Changing this parameter results in an outage. The change is applied
-during the next maintenance window unless the ApplyImmediately
-parameter is set to true.
+during the next maintenance window unless C<ApplyImmediately> is
+enabled.
 
-For a list of valid engine versions, see CreateDBCluster, or call
-DescribeDBEngineVersions.
+For a list of valid engine versions, use DescribeDBEngineVersions.
 
 
 
@@ -253,11 +248,11 @@ Example: C<my-cluster2>
 A value that indicates that the DB cluster should be associated with
 the specified option group. Changing this parameter doesn't result in
 an outage except in the following case, and the change is applied
-during the next maintenance window unless the C<ApplyImmediately>
-parameter is set to C<true> for this request. If the parameter change
-results in an option group that enables OEM, this change can cause a
-brief (sub-second) period during which new connections are rejected but
-existing connections are not interrupted.
+during the next maintenance window unless the C<ApplyImmediately> is
+enabled for this request. If the parameter change results in an option
+group that enables OEM, this change can cause a brief (sub-second)
+period during which new connections are rejected but existing
+connections are not interrupted.
 
 Permanent options can't be removed from an option group. The option
 group can't be removed from a DB cluster once it is associated with a

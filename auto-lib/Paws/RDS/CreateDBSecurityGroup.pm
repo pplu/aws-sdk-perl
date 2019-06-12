@@ -82,7 +82,7 @@ Example: C<mysecuritygroup>
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
+Tags to assign to the DB security group.
 
 
 

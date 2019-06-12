@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 Enabled => Bool
 
-A Boolean value; set to B<true> to activate the subscription.
+A value that indicates whether to activate the subscription.
 
 
 

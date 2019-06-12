@@ -55,7 +55,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Ordera
 Contains a list of available options for a DB instance.
 
 This data type is used as a response element in the
-DescribeOrderableDBInstanceOptions action.
+C<DescribeOrderableDBInstanceOptions> action.
 
 =head1 ATTRIBUTES
 

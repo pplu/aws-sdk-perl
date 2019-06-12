@@ -25,8 +25,8 @@ matching any filter conditions.
 =head2 Marker => Str
 
 An optional pagination token provided by a previous
-DescribeDBClusterEndpoints request. If this parameter is specified, the
-response includes only records beyond the marker, up to the value
+C<DescribeDBClusterEndpoints> request. If this parameter is specified,
+the response includes only records beyond the marker, up to the value
 specified by C<MaxRecords>.
 
 

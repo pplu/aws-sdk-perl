@@ -95,7 +95,7 @@ Example: C<myoptiongroup>
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
+Tags to assign to the option group.
 
 
 

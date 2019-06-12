@@ -49,8 +49,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head2 DeletionProtection => Bool
 
 Indicates if the global database cluster has deletion protection
-enabled. The global database cluster can't be deleted when this value
-is set to true.
+enabled. The global database cluster can't be deleted when deletion
+protection is enabled.
 
 
 

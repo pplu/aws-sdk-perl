@@ -41,20 +41,20 @@ the following actions:
 
 =item *
 
-CreateDBInstance
+C<CreateDBInstance>
 
 =item *
 
-DescribeDBInstances
+C<DescribeDBInstances>
 
 =item *
 
-DeleteDBInstance
+C<DeleteDBInstance>
 
 =back
 
 For the data structure that represents Amazon Aurora DB cluster
-endpoints, see DBClusterEndpoint.
+endpoints, see C<DBClusterEndpoint>.
 
 =head1 ATTRIBUTES
 

@@ -83,8 +83,9 @@ hours).
 
 =head2 CopyTagsToSnapshot => Bool
 
-True to copy all tags from the restored DB cluster to snapshots of the
-restored DB cluster, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the restored DB
+cluster to snapshots of the restored DB cluster. The default is not to
+copy them.
 
 
 
@@ -158,9 +159,9 @@ Example: C<mySubnetgroup>
 
 =head2 DeletionProtection => Bool
 
-Indicates if the DB cluster should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false.
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.
 
 
 
@@ -177,10 +178,9 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: C<false>
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 
 
@@ -261,11 +261,12 @@ provided
 
 =item *
 
-Can't be specified if C<UseLatestRestorableTime> parameter is true
+Can't be specified if the C<UseLatestRestorableTime> parameter is
+enabled
 
 =item *
 
-Can't be specified if C<RestoreType> parameter is C<copy-on-write>
+Can't be specified if the C<RestoreType> parameter is C<copy-on-write>
 
 =back
 
@@ -325,10 +326,9 @@ Must match the identifier of an existing DBCluster.
 
 =head2 UseLatestRestorableTime => Bool
 
-A value that is set to C<true> to restore the DB cluster to the latest
-restorable backup time, and C<false> otherwise.
-
-Default: C<false>
+A value that indicates whether to restore the DB cluster to the latest
+restorable backup time. By default, the DB cluster is not restored to
+the latest restorable backup time.
 
 Constraints: Can't be specified if C<RestoreToTime> parameter is
 provided.

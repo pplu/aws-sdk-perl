@@ -111,19 +111,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor version upgrades are applied automatically to the
-DB instance during the maintenance window.
+A value that indicates whether minor version upgrades are applied
+automatically to the DB instance during the maintenance window.
 
 
 
 =head2 AvailabilityZone => Str
 
-The EC2 Availability Zone that the DB instance is created in.
+The Availability Zone (AZ) where the DB instance will be created.
 
 Default: A random, system-chosen Availability Zone.
 
-Constraint: You can't specify the AvailabilityZone parameter if the
-MultiAZ parameter is set to C<true>.
+Constraint: You can't specify the C<AvailabilityZone> parameter if the
+DB instance is a Multi-AZ deployment.
 
 Example: C<us-east-1a>
 
@@ -131,8 +131,9 @@ Example: C<us-east-1a>
 
 =head2 CopyTagsToSnapshot => Bool
 
-True to copy all tags from the restored DB instance to snapshots of the
-restored DB instance, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the restored DB
+instance to snapshots of the DB instance. By default, tags are not
+copied.
 
 
 
@@ -252,9 +253,10 @@ Example: C<mySubnetgroup>
 
 =head2 DeletionProtection => Bool
 
-Indicates if the DB instance should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false. For more information, see Deleting a DB Instance
+A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. For more
+information, see Deleting a DB Instance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
@@ -285,8 +287,9 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 You can enable IAM database authentication for the following database
 engines
@@ -303,7 +306,6 @@ For MySQL 5.7, minor version 5.7.16 or higher
 
 =back
 
-Default: C<false>
 
 
 
@@ -402,10 +404,11 @@ C<general-public-license>
 
 =head2 MultiAZ => Bool
 
-Specifies if the DB instance is a Multi-AZ deployment.
+A value that indicates whether the DB instance is a Multi-AZ
+deployment.
 
-Constraint: You can't specify the AvailabilityZone parameter if the
-MultiAZ parameter is set to C<true>.
+Constraint: You can't specify the C<AvailabilityZone> parameter if the
+DB instance is a Multi-AZ deployment.
 
 
 
@@ -438,11 +441,12 @@ instance class of the DB instance.
 
 =head2 PubliclyAccessible => Bool
 
-Specifies the accessibility options for the DB instance. A value of
-true specifies an Internet-facing instance with a publicly resolvable
-DNS name, which resolves to a public IP address. A value of false
-specifies an internal instance with a DNS name that resolves to a
-private IP address. For more information, see CreateDBInstance.
+A value that indicates whether the DB instance is publicly accessible.
+When the DB instance is publicly accessible, it is an Internet-facing
+instance with a publicly resolvable DNS name, which resolves to a
+public IP address. When the DB instance is not publicly accessible, it
+is an internal instance with a DNS name that resolves to a private IP
+address. For more information, see CreateDBInstance.
 
 
 
@@ -455,8 +459,7 @@ Valid values: C<standard | gp2 | io1>
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
 
-Default: C<io1> if the C<Iops> parameter is specified, otherwise
-C<standard>
+Default: C<io1> if the C<Iops> parameter is specified, otherwise C<gp2>
 
 
 
@@ -482,7 +485,7 @@ the device.
 
 =head2 UseDefaultProcessorFeatures => Bool
 
-A value that specifies that the DB instance class of the DB instance
+A value that indicates whether the DB instance class of the DB instance
 uses its default processor features.
 
 

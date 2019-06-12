@@ -18,7 +18,7 @@ Paws::RDS::DBSubnetGroupMessage
 
 =head2 DBSubnetGroups => ArrayRef[L<Paws::RDS::DBSubnetGroup>]
 
-A list of DBSubnetGroup instances.
+A list of C<DBSubnetGroup> instances.
 
 
 =head2 Marker => Str

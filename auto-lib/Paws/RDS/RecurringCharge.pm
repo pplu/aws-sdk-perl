@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Recurr
 =head1 DESCRIPTION
 
 This data type is used as a response element in the
-DescribeReservedDBInstances and DescribeReservedDBInstancesOfferings
-actions.
+C<DescribeReservedDBInstances> and
+C<DescribeReservedDBInstancesOfferings> actions.
 
 =head1 ATTRIBUTES
 

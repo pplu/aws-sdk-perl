@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBPara
 Contains the details of an Amazon RDS DB parameter group.
 
 This data type is used as a response element in the
-DescribeDBParameterGroups action.
+C<DescribeDBParameterGroups> action.
 
 =head1 ATTRIBUTES
 

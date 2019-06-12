@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::ValidS
 
 Information about valid modifications that you can make to your DB
 instance. Contains the result of a successful call to the
-DescribeValidDBInstanceModifications action.
+C<DescribeValidDBInstanceModifications> action.
 
 =head1 ATTRIBUTES
 

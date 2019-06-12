@@ -98,52 +98,50 @@ least 10% greater than the existing value are rounded up so that they
 are 10% greater than the current value.
 
 For the valid values for allocated storage for each engine, see
-CreateDBInstance.
+C<CreateDBInstance>.
 
 
 
 =head2 AllowMajorVersionUpgrade => Bool
 
-Indicates that major version upgrades are allowed. Changing this
-parameter doesn't result in an outage and the change is asynchronously
-applied as soon as possible.
+A value that indicates whether major version upgrades are allowed.
+Changing this parameter doesn't result in an outage and the change is
+asynchronously applied as soon as possible.
 
-Constraints: This parameter must be set to true when specifying a value
-for the EngineVersion parameter that is a different major version than
-the DB instance's current version.
+Constraints: Major version upgrades must be allowed when specifying a
+value for the EngineVersion parameter that is a different major version
+than the DB instance's current version.
 
 
 
 =head2 ApplyImmediately => Bool
 
-Specifies whether the modifications in this request and any pending
-modifications are asynchronously applied as soon as possible,
-regardless of the C<PreferredMaintenanceWindow> setting for the DB
-instance.
+A value that indicates whether the modifications in this request and
+any pending modifications are asynchronously applied as soon as
+possible, regardless of the C<PreferredMaintenanceWindow> setting for
+the DB instance. By default, this parameter is disabled.
 
-If this parameter is set to C<false>, changes to the DB instance are
-applied during the next maintenance window. Some parameter changes can
-cause an outage and are applied on the next call to RebootDBInstance,
-or the next failure reboot. Review the table of parameters in Modifying
-a DB Instance and Using the Apply Immediately Parameter
+If this parameter is disabled, changes to the DB instance are applied
+during the next maintenance window. Some parameter changes can cause an
+outage and are applied on the next call to RebootDBInstance, or the
+next failure reboot. Review the table of parameters in Modifying a DB
+Instance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
-in the I<Amazon RDS User Guide.> to see the impact that setting
-C<ApplyImmediately> to C<true> or C<false> has for each modified
-parameter and to determine when the changes are applied.
-
-Default: C<false>
+in the I<Amazon RDS User Guide.> to see the impact of enabling or
+disabling C<ApplyImmediately> for each modified parameter and to
+determine when the changes are applied.
 
 
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor version upgrades are applied automatically to the
-DB instance during the maintenance window. Changing this parameter
-doesn't result in an outage except in the following case and the change
-is asynchronously applied as soon as possible. An outage will result if
-this parameter is set to C<true> during the maintenance window, and a
-newer minor version is available, and RDS has enabled auto patching for
-that engine version.
+A value that indicates whether minor version upgrades are applied
+automatically to the DB instance during the maintenance window.
+Changing this parameter doesn't result in an outage except in the
+following case and the change is asynchronously applied as soon as
+possible. An outage results if this parameter is enabled during the
+maintenance window, and a newer minor version is available, and RDS has
+enabled auto patching for that engine version.
 
 
 
@@ -156,14 +154,14 @@ disables automated backups.
 Changing this parameter can result in an outage if you change from 0 to
 a non-zero value or from a non-zero value to 0. These changes are
 applied during the next maintenance window unless the
-C<ApplyImmediately> parameter is set to C<true> for this request. If
-you change the parameter from one non-zero value to another non-zero
-value, the change is asynchronously applied as soon as possible.
+C<ApplyImmediately> parameter is enabled for this request. If you
+change the parameter from one non-zero value to another non-zero value,
+the change is asynchronously applied as soon as possible.
 
 B<Amazon Aurora>
 
 Not applicable. The retention period for automated backups is managed
-by the DB cluster. For more information, see ModifyDBCluster.
+by the DB cluster. For more information, see C<ModifyDBCluster>.
 
 Default: Uses existing setting
 
@@ -214,14 +212,14 @@ C<ApplyImmediately> parameter has no effect.
 
 =head2 CopyTagsToSnapshot => Bool
 
-True to copy all tags from the DB instance to snapshots of the DB
-instance, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the DB instance to
+snapshots of the DB instance. By default, tags are not copied.
 
 B<Amazon Aurora>
 
 Not applicable. Copying tags to snapshots is managed by the DB cluster.
 Setting this value for an Aurora DB instance has no effect on the DB
-cluster setting. For more information, see ModifyDBCluster.
+cluster setting. For more information, see C<ModifyDBCluster>.
 
 
 
@@ -236,7 +234,7 @@ in the I<Amazon RDS User Guide.>
 
 If you modify the DB instance class, an outage occurs during the
 change. The change is applied during the next maintenance window,
-unless C<ApplyImmediately> is specified as C<true> for this request.
+unless C<ApplyImmediately> is enabled for this request.
 
 Default: Uses existing setting
 
@@ -264,7 +262,7 @@ Must match the identifier of an existing DBInstance.
 The name of the DB parameter group to apply to the DB instance.
 Changing this setting doesn't result in an outage. The parameter group
 name itself is changed immediately, but the actual parameter changes
-are not applied until you reboot the instance without failover. The db
+are not applied until you reboot the instance without failover. The DB
 instance will NOT be rebooted automatically and the parameter changes
 will NOT be applied during the next maintenance window.
 
@@ -356,8 +354,8 @@ a VPC. For more information, see Updating the VPC for a DB Instance
 in the I<Amazon RDS User Guide.>
 
 Changing the subnet group causes an outage during the change. The
-change is applied during the next maintenance window, unless you
-specify C<true> for the C<ApplyImmediately> parameter.
+change is applied during the next maintenance window, unless you enable
+C<ApplyImmediately>.
 
 Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
@@ -368,8 +366,9 @@ Example: C<mySubnetGroup>
 
 =head2 DeletionProtection => Bool
 
-Indicates if the DB instance has deletion protection enabled. The
-database can't be deleted when this value is set to true. For more
+A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. For more
 information, see Deleting a DB Instance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
@@ -393,8 +392,9 @@ Service.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 You can enable IAM database authentication for the following database
 engines
@@ -402,7 +402,8 @@ engines
 B<Amazon Aurora>
 
 Not applicable. Mapping AWS IAM accounts to database accounts is
-managed by the DB cluster. For more information, see ModifyDBCluster.
+managed by the DB cluster. For more information, see
+C<ModifyDBCluster>.
 
 B<MySQL>
 
@@ -418,14 +419,13 @@ For MySQL 5.7, minor version 5.7.16 or higher
 
 =back
 
-Default: C<false>
 
 
 
 =head2 EnablePerformanceInsights => Bool
 
-True to enable Performance Insights for the DB instance, and otherwise
-false.
+A value that indicates whether to enable Performance Insights for the
+DB instance.
 
 For more information, see Using Amazon Performance Insights
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
@@ -437,16 +437,16 @@ in the I<Amazon Relational Database Service User Guide>.
 
 The version number of the database engine to upgrade to. Changing this
 parameter results in an outage and the change is applied during the
-next maintenance window unless the C<ApplyImmediately> parameter is set
-to C<true> for this request.
+next maintenance window unless the C<ApplyImmediately> parameter is
+eanbled for this request.
 
 For major version upgrades, if a nondefault DB parameter group is
 currently in use, a new DB parameter group in the DB parameter group
 family for the new engine version must be specified. The new DB
 parameter group can be the default for that DB parameter group family.
 
-For information about valid engine versions, see CreateDBInstance, or
-call DescribeDBEngineVersions.
+For information about valid engine versions, see C<CreateDBInstance>,
+or call C<DescribeDBEngineVersions>.
 
 
 
@@ -457,10 +457,10 @@ instance.
 
 Changing this setting doesn't result in an outage and the change is
 applied during the next maintenance window unless the
-C<ApplyImmediately> parameter is set to C<true> for this request. If
-you are migrating from Provisioned IOPS to standard storage, set this
-value to 0. The DB instance will require a reboot for the change in
-storage type to take effect.
+C<ApplyImmediately> parameter is enabled for this request. If you are
+migrating from Provisioned IOPS to standard storage, set this value to
+0. The DB instance will require a reboot for the change in storage type
+to take effect.
 
 If you choose to migrate your DB instance from using standard storage
 to using Provisioned IOPS, or from using Provisioned IOPS to using
@@ -509,7 +509,7 @@ response.
 B<Amazon Aurora>
 
 Not applicable. The password for the master user is managed by the DB
-cluster. For more information, see ModifyDBCluster.
+cluster. For more information, see C<ModifyDBCluster>.
 
 Default: Uses existing setting
 
@@ -570,10 +570,10 @@ supply a C<MonitoringRoleArn> value.
 
 =head2 MultiAZ => Bool
 
-Specifies if the DB instance is a Multi-AZ deployment. Changing this
-parameter doesn't result in an outage and the change is applied during
-the next maintenance window unless the C<ApplyImmediately> parameter is
-set to C<true> for this request.
+A value that indicates whether the DB instance is a Multi-AZ
+deployment. Changing this parameter doesn't result in an outage and the
+change is applied during the next maintenance window unless the
+C<ApplyImmediately> parameter is enabled for this request.
 
 
 
@@ -581,9 +581,9 @@ set to C<true> for this request.
 
 The new DB instance identifier for the DB instance when renaming a DB
 instance. When you change the DB instance identifier, an instance
-reboot will occur immediately if you set C<Apply Immediately> to true,
-or will occur during the next maintenance window if C<Apply
-Immediately> to false. This value is stored as a lowercase string.
+reboot occurs immediately if you enable C<ApplyImmediately>, or will
+occur during the next maintenance window if you disable Apply
+Immediately. This value is stored as a lowercase string.
 
 Constraints:
 
@@ -612,11 +612,11 @@ Example: C<mydbinstance>
 Indicates that the DB instance should be associated with the specified
 option group. Changing this parameter doesn't result in an outage
 except in the following case and the change is applied during the next
-maintenance window unless the C<ApplyImmediately> parameter is set to
-C<true> for this request. If the parameter change results in an option
-group that enables OEM, this change can cause a brief (sub-second)
-period during which new connections are rejected but existing
-connections are not interrupted.
+maintenance window unless the C<ApplyImmediately> parameter is enabled
+for this request. If the parameter change results in an option group
+that enables OEM, this change can cause a brief (sub-second) period
+during which new connections are rejected but existing connections are
+not interrupted.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, can't be removed from an option group, and that option group can't
@@ -629,6 +629,11 @@ be removed from a DB instance once it is associated with a DB instance
 The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
 or the KMS key alias for the KMS encryption key.
+
+If you do not specify a value for C<PerformanceInsightsKMSKeyId>, then
+Amazon RDS uses your default encryption key. AWS KMS creates the
+default encryption key for your AWS account. Your AWS account has a
+different default encryption key for each AWS Region.
 
 
 
@@ -650,7 +655,8 @@ possible.
 B<Amazon Aurora>
 
 Not applicable. The daily time range for creating automated backups is
-managed by the DB cluster. For more information, see ModifyDBCluster.
+managed by the DB cluster. For more information, see
+C<ModifyDBCluster>.
 
 Constraints:
 
@@ -723,20 +729,19 @@ Valid Values: 0 - 15
 
 =head2 PubliclyAccessible => Bool
 
-Boolean value that indicates if the DB instance has a publicly
-resolvable DNS name. Set to C<True> to make the DB instance
-Internet-facing with a publicly resolvable DNS name, which resolves to
-a public IP address. Set to C<False> to make the DB instance internal
-with a DNS name that resolves to a private IP address.
+A value that indicates whether the DB instance is publicly accessible.
+When the DB instance is publicly accessible, it is an Internet-facing
+instance with a publicly resolvable DNS name, which resolves to a
+public IP address. When the DB instance is not publicly accessible, it
+is an internal instance with a DNS name that resolves to a private IP
+address.
 
 C<PubliclyAccessible> only applies to DB instances in a VPC. The DB
 instance must be part of a public subnet and C<PubliclyAccessible> must
-be true in order for it to be publicly accessible.
+be enabled for it to be publicly accessible.
 
 Changes to the C<PubliclyAccessible> parameter are applied immediately
 regardless of the value of the C<ApplyImmediately> parameter.
-
-Default: false
 
 
 
@@ -764,8 +769,7 @@ creating a DB snapshot of the instance.
 
 Valid values: C<standard | gp2 | io1>
 
-Default: C<io1> if the C<Iops> parameter is specified, otherwise
-C<standard>
+Default: C<io1> if the C<Iops> parameter is specified, otherwise C<gp2>
 
 
 
@@ -785,7 +789,7 @@ the device.
 
 =head2 UseDefaultProcessorFeatures => Bool
 
-A value that specifies that the DB instance class of the DB instance
+A value that indicates whether the DB instance class of the DB instance
 uses its default processor features.
 
 
@@ -798,7 +802,8 @@ This change is asynchronously applied as soon as possible.
 B<Amazon Aurora>
 
 Not applicable. The associated list of EC2 VPC security groups is
-managed by the DB cluster. For more information, see ModifyDBCluster.
+managed by the DB cluster. For more information, see
+C<ModifyDBCluster>.
 
 Constraints:
 

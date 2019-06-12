@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Source
 =head1 DESCRIPTION
 
 Contains an AWS Region name as the result of a successful call to the
-DescribeSourceRegions action.
+C<DescribeSourceRegions> action.
 
 =head1 ATTRIBUTES
 

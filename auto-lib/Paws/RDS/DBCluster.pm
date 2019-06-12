@@ -1,5 +1,9 @@
 package Paws::RDS::DBCluster;
   use Moose;
+  has ActivityStreamKinesisStreamName => (is => 'ro', isa => 'Str');
+  has ActivityStreamKmsKeyId => (is => 'ro', isa => 'Str');
+  has ActivityStreamMode => (is => 'ro', isa => 'Str');
+  has ActivityStreamStatus => (is => 'ro', isa => 'Str');
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AssociatedRoles => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterRole]', request_name => 'DBClusterRole', traits => ['NameInRequest']);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
@@ -65,23 +69,47 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::DBCluster object:
 
-  $service_obj->Method(Att1 => { AllocatedStorage => $value, ..., VpcSecurityGroups => $value  });
+  $service_obj->Method(Att1 => { ActivityStreamKinesisStreamName => $value, ..., VpcSecurityGroups => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBCluster object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AllocatedStorage
+  $result->Att1->ActivityStreamKinesisStreamName
 
 =head1 DESCRIPTION
 
 Contains the details of an Amazon Aurora DB cluster.
 
-This data type is used as a response element in the DescribeDBClusters,
-StopDBCluster, and StartDBCluster actions.
+This data type is used as a response element in the
+C<DescribeDBClusters>, C<StopDBCluster>, and C<StartDBCluster> actions.
 
 =head1 ATTRIBUTES
+
+
+=head2 ActivityStreamKinesisStreamName => Str
+
+  The name of the Amazon Kinesis data stream used for the database
+activity stream.
+
+
+=head2 ActivityStreamKmsKeyId => Str
+
+  The AWS KMS key identifier used for encrypting messages in the database
+activity stream.
+
+
+=head2 ActivityStreamMode => Str
+
+  The mode of the database activity stream. Database events such as a
+change or access generate an activity stream event. The database
+session can handle these events either synchronously or asynchronously.
+
+
+=head2 ActivityStreamStatus => Str
+
+  The status of the database activity stream.
 
 
 =head2 AllocatedStorage => Int
@@ -102,8 +130,8 @@ AWS services on your behalf.
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-  Provides the list of EC2 Availability Zones that instances in the DB
-cluster can be created in.
+  Provides the list of Availability Zones (AZs) where instances in the DB
+cluster can be created.
 
 
 =head2 BacktrackConsumedChangeRecords => Int
@@ -214,7 +242,7 @@ group.
 =head2 DeletionProtection => Bool
 
   Indicates if the DB cluster has deletion protection enabled. The
-database can't be deleted when this value is set to true.
+database can't be deleted when deletion protection is enabled.
 
 
 =head2 EarliestBacktrackTime => Str
@@ -270,32 +298,28 @@ zone.
 
 =head2 HttpEndpointEnabled => Bool
 
-  HTTP endpoint functionality is in beta for Aurora Serverless and is
-subject to change.
-
-Value that is C<true> if the HTTP endpoint for an Aurora Serverless DB
-cluster is enabled and C<false> otherwise.
+  A value that indicates whether the HTTP endpoint for an Aurora
+Serverless DB cluster is enabled.
 
 When enabled, the HTTP endpoint provides a connectionless web service
 API for running SQL queries on the Aurora Serverless DB cluster. You
 can also query your database from inside the RDS console with the query
 editor.
 
-For more information about Aurora Serverless, see Using Amazon Aurora
-Serverless
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+For more information, see Using the Data API for Aurora Serverless
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 in the I<Amazon Aurora User Guide>.
 
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-  True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled, and otherwise false.
+  A value that indicates whether the mapping of AWS Identity and Access
+Management (IAM) accounts to database accounts is enabled.
 
 
 =head2 KmsKeyId => Str
 
-  If C<StorageEncrypted> is true, the AWS KMS key identifier for the
+  If C<StorageEncrypted> is enabled, the AWS KMS key identifier for the
 encrypted DB cluster.
 
 

@@ -80,8 +80,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-A list of EC2 Availability Zones that instances in the DB cluster can
-be created in. For information on AWS Regions and Availability Zones,
+A list of Availability Zones (AZs) where instances in the DB cluster
+can be created. For information on AWS Regions and Availability Zones,
 see Choosing the Regions and Availability Zones
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html)
 in the I<Amazon Aurora User Guide>.
@@ -111,8 +111,7 @@ hours).
 
 =head2 BackupRetentionPeriod => Int
 
-The number of days for which automated backups are retained. You must
-specify a minimum value of 1.
+The number of days for which automated backups are retained.
 
 Default: 1
 
@@ -138,8 +137,8 @@ the specified CharacterSet.
 
 =head2 CopyTagsToSnapshot => Bool
 
-True to copy all tags from the DB cluster to snapshots of the DB
-cluster, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the DB cluster to
+snapshots of the DB cluster. The default is not to copy them.
 
 
 
@@ -210,9 +209,9 @@ Example: C<mySubnetgroup>
 
 =head2 DeletionProtection => Bool
 
-Indicates if the DB cluster should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false.
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.
 
 
 
@@ -229,10 +228,9 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: C<false>
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 
 
@@ -296,7 +294,7 @@ Otherwise, Amazon RDS will use your default encryption key.
 
 =item *
 
-If the C<StorageEncrypted> parameter is true and
+If the C<StorageEncrypted> parameter is enabled and
 C<ReplicationSourceIdentifier> is not specified, then Amazon RDS will
 use your default encryption key.
 
@@ -489,13 +487,13 @@ of the DB cluster.
 
 =head2 StorageEncrypted => Bool
 
-Specifies whether the DB cluster is encrypted.
+A value that indicates whether the DB cluster is encrypted.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
+Tags to assign to the DB cluster.
 
 
 

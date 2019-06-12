@@ -53,8 +53,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 Enabled => Bool
 
-A Boolean value; set to B<true> to activate the subscription, set to
-B<false> to create the subscription but not active it.
+A value that indicates whether to activate the subscription. If the
+event notification subscription is not activated, the subscription is
+created but not active.
 
 
 

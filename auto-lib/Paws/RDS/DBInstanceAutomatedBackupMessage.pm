@@ -18,7 +18,7 @@ Paws::RDS::DBInstanceAutomatedBackupMessage
 
 =head2 DBInstanceAutomatedBackups => ArrayRef[L<Paws::RDS::DBInstanceAutomatedBackup>]
 
-A list of DBInstanceAutomatedBackup instances.
+A list of C<DBInstanceAutomatedBackup> instances.
 
 
 =head2 Marker => Str

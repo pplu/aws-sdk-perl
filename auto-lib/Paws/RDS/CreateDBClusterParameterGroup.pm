@@ -90,7 +90,7 @@ The description for the DB cluster parameter group.
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
+Tags to assign to the DB cluster parameter group.
 
 
 

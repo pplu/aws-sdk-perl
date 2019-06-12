@@ -60,8 +60,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSnap
 
 Contains the details of an Amazon RDS DB snapshot.
 
-This data type is used as a response element in the DescribeDBSnapshots
-action.
+This data type is used as a response element in the
+C<DescribeDBSnapshots> action.
 
 =head1 ATTRIBUTES
 

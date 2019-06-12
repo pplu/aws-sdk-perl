@@ -141,7 +141,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head2 AllocatedStorage => Int
 
 The amount of storage (in gigabytes) to allocate initially for the DB
-instance. Follow the allocation rules specified in CreateDBInstance.
+instance. Follow the allocation rules specified in C<CreateDBInstance>.
 
 Be sure to allocate enough memory for your new DB instance so that the
 restore operation can succeed. You can also allocate additional memory
@@ -151,10 +151,9 @@ for future growth.
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-True to indicate that minor engine upgrades are applied automatically
-to the DB instance during the maintenance window, and otherwise false.
-
-Default: C<true>
+A value that indicates whether minor engine upgrades are applied
+automatically to the DB instance during the maintenance window. By
+default, minor engine upgrades are not applied automatically.
 
 
 
@@ -171,8 +170,8 @@ AWS Region.
 
 Example: C<us-east-1d>
 
-Constraint: The AvailabilityZone parameter can't be specified if the
-MultiAZ parameter is set to C<true>. The specified Availability Zone
+Constraint: The C<AvailabilityZone> parameter can't be specified if the
+DB instance is a Multi-AZ deployment. The specified Availability Zone
 must be in the same AWS Region as the current endpoint.
 
 
@@ -181,16 +180,14 @@ must be in the same AWS Region as the current endpoint.
 
 The number of days for which automated backups are retained. Setting
 this parameter to a positive number enables backups. For more
-information, see CreateDBInstance.
+information, see C<CreateDBInstance>.
 
 
 
 =head2 CopyTagsToSnapshot => Bool
 
-True to copy all tags from the restored DB instance to snapshots of the
-restored DB instance, and otherwise false.
-
-Default: false.
+A value that indicates whether to copy all tags from the DB instance to
+snapshots of the DB instance. By default, tags are not copied.
 
 
 
@@ -238,7 +235,7 @@ Example: C<mydbinstance>
 =head2 DBName => Str
 
 The name of the database to create when the DB instance is created.
-Follow the naming rules specified in CreateDBInstance.
+Follow the naming rules specified in C<CreateDBInstance>.
 
 
 
@@ -266,9 +263,10 @@ A DB subnet group to associate with this DB instance.
 
 =head2 DeletionProtection => Bool
 
-Indicates if the DB instance should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false. For more information, see Deleting a DB Instance
+A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. For more
+information, see Deleting a DB Instance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 
 
@@ -286,17 +284,16 @@ in the I<Amazon RDS User Guide>.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: C<false>
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 
 
 =head2 EnablePerformanceInsights => Bool
 
-True to enable Performance Insights for the DB instance, and otherwise
-false.
+A value that indicates whether to enable Performance Insights for the
+DB instance.
 
 For more information, see Using Amazon Performance Insights
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
@@ -316,7 +313,7 @@ Valid Values: C<mysql>
 
 The version number of the database engine to use. Choose the latest
 minor version of your database engine. For information about engine
-versions, see CreateDBInstance, or call DescribeDBEngineVersions.
+versions, see C<CreateDBInstance>, or call C<DescribeDBEngineVersions>.
 
 
 
@@ -341,8 +338,8 @@ account that owns the KMS encryption key used to encrypt the new DB
 instance, then you can use the KMS key alias instead of the ARN for the
 KM encryption key.
 
-If the C<StorageEncrypted> parameter is true, and you do not specify a
-value for the C<KmsKeyId> parameter, then Amazon RDS will use your
+If the C<StorageEncrypted> parameter is enabled, and you do not specify
+a value for the C<KmsKeyId> parameter, then Amazon RDS will use your
 default encryption key. AWS KMS creates the default encryption key for
 your AWS account. Your AWS account has a different default encryption
 key for each AWS Region.
@@ -420,8 +417,9 @@ supply a C<MonitoringRoleArn> value.
 
 =head2 MultiAZ => Bool
 
-Specifies whether the DB instance is a Multi-AZ deployment. If MultiAZ
-is set to C<true>, you can't set the AvailabilityZone parameter.
+A value that indicates whether the DB instance is a Multi-AZ
+deployment. If the DB instance is a Multi-AZ deployment, you can't set
+the C<AvailabilityZone> parameter.
 
 
 
@@ -438,6 +436,11 @@ engine is used.
 The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), the KMS key
 identifier, or the KMS key alias for the KMS encryption key.
+
+If you do not specify a value for C<PerformanceInsightsKMSKeyId>, then
+Amazon RDS uses your default encryption key. AWS KMS creates the
+default encryption key for your AWS account. Your AWS account has a
+different default encryption key for each AWS Region.
 
 
 
@@ -539,11 +542,12 @@ instance class of the DB instance.
 
 =head2 PubliclyAccessible => Bool
 
-Specifies the accessibility options for the DB instance. A value of
-true specifies an Internet-facing instance with a publicly resolvable
-DNS name, which resolves to a public IP address. A value of false
-specifies an internal instance with a DNS name that resolves to a
-private IP address. For more information, see CreateDBInstance.
+A value that indicates whether the DB instance is publicly accessible.
+When the DB instance is publicly accessible, it is an Internet-facing
+instance with a publicly resolvable DNS name, which resolves to a
+public IP address. When the DB instance is not publicly accessible, it
+is an internal instance with a DNS name that resolves to a private IP
+address. For more information, see CreateDBInstance.
 
 
 
@@ -585,7 +589,7 @@ Valid Values: C<5.6>
 
 =head2 StorageEncrypted => Bool
 
-Specifies whether the new DB instance is encrypted or not.
+A value that indicates whether the new DB instance is encrypted or not.
 
 
 
@@ -598,8 +602,7 @@ Valid values: C<standard> | C<gp2> | C<io1>
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
 
-Default: C<io1> if the C<Iops> parameter is specified; otherwise
-C<standard>
+Default: C<io1> if the C<Iops> parameter is specified; otherwise C<gp2>
 
 
 
@@ -614,7 +617,7 @@ in the I<Amazon RDS User Guide.>
 
 =head2 UseDefaultProcessorFeatures => Bool
 
-A value that specifies that the DB instance class of the DB instance
+A value that indicates whether the DB instance class of the DB instance
 uses its default processor features.
 
 

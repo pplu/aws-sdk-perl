@@ -46,7 +46,7 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 AutoPause => Bool
 
-  A value that specifies whether to allow or disallow automatic pause for
+  A value that indicates whether to allow or disallow automatic pause for
 an Aurora DB cluster in C<serverless> DB engine mode. A DB cluster can
 be paused only when it's idle (it has no connections).
 
@@ -60,7 +60,7 @@ restored when there is a request to connect to it.
   The maximum capacity for an Aurora DB cluster in C<serverless> DB
 engine mode.
 
-Valid capacity values are C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
+Valid capacity values are C<1>, C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
 C<128>, and C<256>.
 
 The maximum capacity must be greater than or equal to the minimum
@@ -72,7 +72,7 @@ capacity.
   The minimum capacity for an Aurora DB cluster in C<serverless> DB
 engine mode.
 
-Valid capacity values are C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
+Valid capacity values are C<1>, C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
 C<128>, and C<256>.
 
 The minimum capacity must be less than or equal to the maximum
@@ -90,11 +90,14 @@ is paused.
   The action to take when the timeout is reached, either
 C<ForceApplyCapacityChange> or C<RollbackCapacityChange>.
 
-C<ForceApplyCapacityChange>, the default, sets the capacity to the
-specified value as soon as possible.
+C<ForceApplyCapacityChange> sets the capacity to the specified value as
+soon as possible.
 
-C<RollbackCapacityChange> ignores the capacity change if a scaling
-point is not found in the timeout period.
+C<RollbackCapacityChange>, the default, ignores the capacity change if
+a scaling point is not found in the timeout period.
+
+If you specify C<ForceApplyCapacityChange>, connections that prevent
+Aurora Serverless from finding a scaling point might be dropped.
 
 For more information, see Autoscaling for Aurora Serverless
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling)
