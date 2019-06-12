@@ -106,7 +106,7 @@ created with CreateService, and it can be modified with UpdateService.
   Specifies whether to enable Amazon ECS managed tags for the tasks in
 the service. For more information, see Tagging Your Amazon ECS
 Resources
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -125,8 +125,9 @@ task has first started.
 
 =head2 LaunchType => Str
 
-  The launch type on which your service is running. For more information,
-see Amazon ECS Launch Types
+  The launch type on which your service is running. If no value is
+specified, it will default to C<EC2>. Valid values include C<EC2> and
+C<FARGATE>. For more information, see Amazon ECS Launch Types
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -171,10 +172,10 @@ placed.
 
 =head2 PlatformVersion => Str
 
-  The platform version on which your tasks in the service are running. A
-platform version is only specified for tasks using the Fargate launch
-type. If one is not specified, the C<LATEST> platform version is used
-by default. For more information, see AWS Fargate Platform Versions
+  The platform version on which to run your service. A platform version
+is only specified for tasks using the Fargate launch type. If one is
+not specified, the C<LATEST> platform version is used by default. For
+more information, see AWS Fargate Platform Versions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -202,7 +203,7 @@ Elastic Load Balancing load balancer.
 
   The scheduling strategy to use for the service. For more information,
 see Services
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 
 There are two service scheduler strategies available:
 
@@ -235,22 +236,22 @@ Fargate tasks do not support the C<DAEMON> scheduling strategy.
 C<arn:aws:ecs> namespace, followed by the Region of the service, the
 AWS account ID of the service owner, the C<service> namespace, and then
 the service name. For example,
-C<arn:aws:ecs:I<region>:I<012345678910>:service/I<my-service> >.
+C<arn:aws:ecs:region:012345678910:service/my-service>.
 
 
 =head2 ServiceName => Str
 
   The name of your service. Up to 255 letters (uppercase and lowercase),
-numbers, hyphens, and underscores are allowed. Service names must be
-unique within a cluster, but you can have similarly named services in
-multiple clusters within a Region or across multiple Regions.
+numbers, and hyphens are allowed. Service names must be unique within a
+cluster, but you can have similarly named services in multiple clusters
+within a Region or across multiple Regions.
 
 
 =head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
 
   The details of the service discovery registries to assign to this
 service. For more information, see Service Discovery
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 
 
 =head2 Status => Str

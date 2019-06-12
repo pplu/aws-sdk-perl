@@ -54,7 +54,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container instances to describe. If you do not specify a
-cluster, the default cluster is assumed.
+cluster, the default cluster is assumed. This parameter is required if
+the container instance or container instances you are describing were
+launched in any cluster other than the default cluster.
 
 
 

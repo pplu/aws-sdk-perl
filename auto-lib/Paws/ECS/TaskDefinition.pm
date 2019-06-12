@@ -48,7 +48,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::TaskDe
 
 =head1 DESCRIPTION
 
-Details of a task definition.
+The details of a task definition which describes the container and
+volume definitions of an Amazon Elastic Container Service task. You can
+specify which Docker images to use, the required resources, and other
+configurations related to launching the task definition through an
+Amazon ECS service or task.
 
 =head1 ATTRIBUTES
 
@@ -112,13 +116,18 @@ values for the C<memory> parameter:
 
 =head2 ExecutionRoleArn => Str
 
-  The Amazon Resource Name (ARN) of the task execution role that the
-Amazon ECS container agent and the Docker daemon can assume.
+  The Amazon Resource Name (ARN) of the task execution role that
+containers in this task can assume. All containers in this task are
+granted the permissions that are specified in this role.
 
 
 =head2 Family => Str
 
-  The family of your task definition, used as the definition name.
+  The name of a family that this task definition is registered to. A
+family groups multiple versions of a task definition. Amazon ECS gives
+the first task definition that you registered to a family a revision
+number of 1. Amazon ECS gives sequential revision numbers to each task
+definition that you add.
 
 
 =head2 IpcMode => Str
@@ -144,7 +153,7 @@ Docker security (https://docs.docker.com/engine/security/security/).
 If you are setting namespaced kernel parameters using C<systemControls>
 for the containers in the task, the following will apply to your IPC
 resource namespace. For more information, see System Controls
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 =over
@@ -228,7 +237,7 @@ If the network mode is C<awsvpc>, the task is allocated an elastic
 network interface, and you must specify a NetworkConfiguration value
 when you create a service or run a task with the task definition. For
 more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 Currently, only Amazon ECS-optimized AMIs, other Amazon Linux variants
@@ -288,7 +297,7 @@ are launched from the Amazon ECS-optimized AMI version C<20190301> or
 later, then they contain the required versions of the container agent
 and C<ecs-init>. For more information, see Amazon ECS-optimized Linux
 AMI
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -300,7 +309,8 @@ not valid if you are using the Fargate launch type for your task.
 
 =head2 RequiresCompatibilities => ArrayRef[Str|Undef]
 
-  The launch type that the task is using.
+  The launch type the task requires. If no value is specified, it will
+default to C<EC2>. Valid values include C<EC2> and C<FARGATE>.
 
 
 =head2 Revision => Int
@@ -325,9 +335,11 @@ deregistered previous revisions in this family.
 
 =head2 TaskRoleArn => Str
 
-  The ARN of the IAM role that containers in this task can assume. All
-containers in this task are granted the permissions that are specified
-in this role.
+  The Amazon Resource Name (ARN) of an AWS Identity and Access Management
+(IAM) role that grants containers in the task permission to call AWS
+APIs on your behalf. For more information, see Amazon ECS Task Role
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_IAM_role.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 IAM roles for tasks on Windows require that the C<-EnableTaskIAMRole>
 option is set when you launch the Amazon ECS-optimized Windows AMI.
@@ -340,10 +352,10 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head2 Volumes => ArrayRef[L<Paws::ECS::Volume>]
 
-  The list of volumes in a task.
+  The list of volume definitions for the task.
 
-If you are using the Fargate launch type, the C<host> and C<sourcePath>
-parameters are not supported.
+If your tasks are using the Fargate launch type, the C<host> and
+C<sourcePath> parameters are not supported.
 
 For more information about volume definition parameters and defaults,
 see Amazon ECS Task Definitions

@@ -41,14 +41,14 @@ the container agent to enable container dependencies. However, we
 recommend using the latest container agent version. For information
 about checking your agent version and updating to the latest version,
 see Updating the Amazon ECS Container Agent
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
 in the I<Amazon Elastic Container Service Developer Guide>. If you are
 using an Amazon ECS-optimized Linux AMI, your instance needs at least
 version 1.26.0-1 of the C<ecs-init> package. If your container
 instances are launched from version C<20190301> or later, then they
 contain the required versions of the container agent and C<ecs-init>.
 For more information, see Amazon ECS-optimized Linux AMI
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 If you are using tasks that use the Fargate launch type, container

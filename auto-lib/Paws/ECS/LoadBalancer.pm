@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::LoadBa
 
 =head1 DESCRIPTION
 
-Details on a load balancer that is used with a service.
+Details on a load balancer to be used with a service or task set.
 
 If the service is using the C<ECS> deployment controller, you are
 limited to one load balancer or target group.
@@ -76,16 +76,27 @@ C<hostPort> of the port mapping.
 
 =head2 LoadBalancerName => Str
 
-  The name of a load balancer.
+  The name of the load balancer to associate with the Amazon ECS service
+or task set.
+
+A load balancer name is only specified when using a classic load
+balancer. If you are using an application load balancer or a network
+load balancer this should be omitted.
 
 
 =head2 TargetGroupArn => Str
 
   The full Amazon Resource Name (ARN) of the Elastic Load Balancing
-target group or groups associated with a service. For services using
-the C<ECS> deployment controller, you are limited to one target group.
-For services using the C<CODE_DEPLOY> deployment controller, you are
-required to define two target groups for the load balancer.
+target group or groups associated with a service or task set.
+
+A target group ARN is only specified when using an application load
+balancer or a network load balancer. If you are using a classic load
+balancer this should be omitted.
+
+For services using the C<ECS> deployment controller, you are limited to
+one target group. For services using the C<CODE_DEPLOY> deployment
+controller, you are required to define two target groups for the load
+balancer.
 
 If your service's task definition uses the C<awsvpc> network mode
 (which is required for the Fargate launch type), you must choose C<ip>

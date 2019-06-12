@@ -131,7 +131,7 @@ and keep running on your cluster.
 Specifies whether to enable Amazon ECS managed tags for the tasks
 within the service. For more information, see Tagging Your Amazon ECS
 Resources
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -215,7 +215,7 @@ The network configuration for the service. This parameter is required
 for task definitions that use the C<awsvpc> network mode to receive
 their own elastic network interface, and it is not supported for other
 network modes. For more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -272,7 +272,7 @@ here. The service-linked role is required if your task definition uses
 the C<awsvpc> network mode, in which case you should not specify a role
 here. For more information, see Using Service-Linked Roles for Amazon
 ECS
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 If your specified role has a path other than C</>, then you must either
@@ -289,7 +289,7 @@ in the I<IAM User Guide>.
 
 The scheduling strategy to use for the service. For more information,
 see Services
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 
 There are two service scheduler strategies available:
 
@@ -324,9 +324,9 @@ Valid values are: C<"REPLICA">, C<"DAEMON">
 =head2 B<REQUIRED> ServiceName => Str
 
 The name of your service. Up to 255 letters (uppercase and lowercase),
-numbers, hyphens, and underscores are allowed. Service names must be
-unique within a cluster, but you can have similarly named services in
-multiple clusters within a Region or across multiple Regions.
+numbers, and hyphens are allowed. Service names must be unique within a
+cluster, but you can have similarly named services in multiple clusters
+within a Region or across multiple Regions.
 
 
 
@@ -334,12 +334,12 @@ multiple clusters within a Region or across multiple Regions.
 
 The details of the service discovery registries to assign to this
 service. For more information, see Service Discovery
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 
 Service discovery is supported for Fargate tasks if you are using
 platform version v1.1.0 or later. For more information, see AWS Fargate
 Platform Versions
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
 
 
 

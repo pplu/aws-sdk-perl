@@ -154,7 +154,7 @@ keep running in the task set.
 
   The details of the service discovery registries to assign to this task
 set. For more information, see Service Discovery
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 
 
 =head2 StabilityStatus => Str
@@ -182,6 +182,11 @@ status.
 
 All tasks are reporting a healthy status from the load balancers,
 service discovery, and container health checks.
+
+If a C<healthCheckGracePeriodSeconds> value was set when the service
+was created, you may see a C<STEADY_STATE> reached since unhealthy
+Elastic Load Balancing target health checks will be ignored until it
+expires.
 
 =back
 

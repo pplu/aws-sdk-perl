@@ -48,8 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 The name of your cluster. If you do not specify a name for your
 cluster, you create a cluster named C<default>. Up to 255 letters
-(uppercase and lowercase), numbers, hyphens, and underscores are
-allowed.
+(uppercase and lowercase), numbers, and hyphens are allowed.
 
 
 

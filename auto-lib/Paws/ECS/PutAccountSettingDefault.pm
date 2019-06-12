@@ -47,14 +47,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 =head2 B<REQUIRED> Name => Str
 
-The resource type to enable the new format for. If
+The resource name for which to modify the account setting. If
 C<serviceLongArnFormat> is specified, the ARN for your Amazon ECS
 services is affected. If C<taskLongArnFormat> is specified, the ARN and
-resource ID for your Amazon ECS tasks are affected. If
+resource ID for your Amazon ECS tasks is affected. If
 C<containerInstanceLongArnFormat> is specified, the ARN and resource ID
-for your Amazon ECS container instances are affected.
+for your Amazon ECS container instances is affected. If
+C<awsvpcTrunking> is specified, the ENI limit for your Amazon ECS
+container instances is affected.
 
-Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">
+Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">, C<"awsvpcTrunking">
 
 =head2 B<REQUIRED> Value => Str
 

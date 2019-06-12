@@ -170,14 +170,14 @@ least version 1.26.0 of the container agent to enable container
 dependencies. However, we recommend using the latest container agent
 version. For information about checking your agent version and updating
 to the latest version, see Updating the Amazon ECS Container Agent
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
 in the I<Amazon Elastic Container Service Developer Guide>. If you are
 using an Amazon ECS-optimized Linux AMI, your instance needs at least
 version 1.26.0-1 of the C<ecs-init> package. If your container
 instances are launched from version C<20190301> or later, then they
 contain the required versions of the container agent and C<ecs-init>.
 For more information, see Amazon ECS-optimized Linux AMI
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 This parameter is available for tasks using the Fargate launch type in
@@ -412,21 +412,19 @@ option to docker run (https://docs.docker.com/engine/reference/run/).
 
 =head2 Links => ArrayRef[Str|Undef]
 
-  The C<link> parameter allows containers to communicate with each other
-without the need for port mappings. Only supported if the network mode
-of a task definition is set to C<bridge>. The C<name:internalName>
-construct is analogous to C<name:alias> in Docker links. Up to 255
-letters (uppercase and lowercase), numbers, hyphens, and underscores
-are allowed. For more information about linking Docker containers, go
-to
-https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/
-(https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/).
+  The C<links> parameter allows containers to communicate with each other
+without the need for port mappings. This parameter is only supported if
+the network mode of a task definition is C<bridge>. The
+C<name:internalName> construct is analogous to C<name:alias> in Docker
+links. Up to 255 letters (uppercase and lowercase), numbers, and
+hyphens are allowed. For more information about linking Docker
+containers, go to Legacy container links
+(https://docs.docker.com/network/links/) in the Docker documentation.
 This parameter maps to C<Links> in the Create a container
 (https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<--link> option to
-C<docker run>
-(https://docs.docker.com/engine/reference/commandline/run/).
+docker run (https://docs.docker.com/engine/reference/run/).
 
 This parameter is not supported for Windows containers.
 
@@ -439,7 +437,7 @@ using security groups and VPC settings.
 =head2 LinuxParameters => L<Paws::ECS::LinuxParameters>
 
   Linux-specific modifications that are applied to the container, such as
-Linux KernelCapabilities.
+Linux kernel capabilities. For more information see KernelCapabilities.
 
 This parameter is not supported for Windows containers.
 
@@ -493,18 +491,18 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head2 Memory => Int
 
-  The hard limit (in MiB) of memory to present to the container. If your
+  The amount (in MiB) of memory to present to the container. If your
 container attempts to exceed the memory specified here, the container
-is killed. This parameter maps to C<Memory> in the Create a container
+is killed. The total amount of memory reserved for all containers
+within a task must be lower than the task C<memory> value, if one is
+specified. This parameter maps to C<Memory> in the Create a container
 (https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<--memory> option
 to docker run (https://docs.docker.com/engine/reference/run/).
 
 If your containers are part of a task using the Fargate launch type,
-this field is optional and the only requirement is that the total
-amount of memory reserved for all containers within a task be lower
-than the task C<memory> value.
+this field is optional.
 
 For containers that are part of a task using the EC2 launch type, you
 must specify a non-zero integer for one or both of C<memory> or
@@ -574,9 +572,8 @@ different drive, and mount point cannot be across drives.
   The name of a container. If you are linking multiple containers
 together in a task definition, the C<name> of one container can be
 entered in the C<links> of another container to connect the containers.
-Up to 255 letters (uppercase and lowercase), numbers, hyphens, and
-underscores are allowed. This parameter maps to C<name> in the Create a
-container
+Up to 255 letters (uppercase and lowercase), numbers, and hyphens are
+allowed. This parameter maps to C<name> in the Create a container
 (https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<--name> option to
@@ -666,7 +663,7 @@ supported resource is a GPU.
 
   The secrets to pass to the container. For more information, see
 Specifying Sensitive Data
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -685,14 +682,14 @@ least version 1.26.0 of the container agent to enable a container start
 timeout value. However, we recommend using the latest container agent
 version. For information about checking your agent version and updating
 to the latest version, see Updating the Amazon ECS Container Agent
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
 in the I<Amazon Elastic Container Service Developer Guide>. If you are
 using an Amazon ECS-optimized Linux AMI, your instance needs at least
 version 1.26.0-1 of the C<ecs-init> package. If your container
 instances are launched from version C<20190301> or later, then they
 contain the required versions of the container agent and C<ecs-init>.
 For more information, see Amazon ECS-optimized Linux AMI
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 This parameter is available for tasks using the Fargate launch type in
@@ -717,14 +714,14 @@ container stop timeout value. However, we recommend using the latest
 container agent version. For information about checking your agent
 version and updating to the latest version, see Updating the Amazon ECS
 Container Agent
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html)
 in the I<Amazon Elastic Container Service Developer Guide>. If you are
 using an Amazon ECS-optimized Linux AMI, your instance needs at least
 version 1.26.0-1 of the C<ecs-init> package. If your container
 instances are launched from version C<20190301> or later, then they
 contain the required versions of the container agent and C<ecs-init>.
 For more information, see Amazon ECS-optimized Linux AMI
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

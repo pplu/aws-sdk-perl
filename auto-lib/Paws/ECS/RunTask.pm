@@ -77,7 +77,7 @@ cluster. You can specify up to 10 tasks per call.
 
 Specifies whether to enable Amazon ECS managed tags for the task. For
 more information, see Tagging Your Amazon ECS Resources
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -105,7 +105,7 @@ The network configuration for the task. This parameter is required for
 task definitions that use the C<awsvpc> network mode to receive their
 own elastic network interface, and it is not supported for other
 network modes. For more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

@@ -100,9 +100,9 @@ Filters the container instances by status. For example, if you specify
 the C<DRAINING> status, the results include only container instances
 that have been set to C<DRAINING> using UpdateContainerInstancesState.
 If you do not specify this parameter, the default is to include
-container instances set to C<ACTIVE> and C<DRAINING>.
+container instances set to all states other than C<INACTIVE>.
 
-Valid values are: C<"ACTIVE">, C<"DRAINING">
+Valid values are: C<"ACTIVE">, C<"DRAINING">, C<"REGISTERING">, C<"DEREGISTERING">, C<"REGISTRATION_FAILED">
 
 
 =head1 SEE ALSO

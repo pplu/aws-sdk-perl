@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Deploy
 
 The deployment controller to use for the service. For more information,
 see Amazon ECS Deployment Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head1 ATTRIBUTES

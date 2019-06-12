@@ -185,6 +185,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::StopTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SubmitAttachmentStateChanges {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::SubmitAttachmentStateChanges', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SubmitContainerStateChange {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::SubmitContainerStateChange', @_);
@@ -417,7 +422,7 @@ package Paws::ECS;
   }
 
 
-  sub operations { qw/CreateCluster CreateService CreateTaskSet DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeleteTaskSet DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DescribeTaskSets DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateContainerAgent UpdateContainerInstancesState UpdateService UpdateServicePrimaryTaskSet UpdateTaskSet / }
+  sub operations { qw/CreateCluster CreateService CreateTaskSet DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeleteTaskSet DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DescribeTaskSets DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitAttachmentStateChanges SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateContainerAgent UpdateContainerInstancesState UpdateService UpdateServicePrimaryTaskSet UpdateTaskSet / }
 
 1;
 
@@ -455,7 +460,7 @@ your services or tasks using the Fargate launch type. For more control,
 you can host your tasks on a cluster of Amazon Elastic Compute Cloud
 (Amazon EC2) instances that you manage by using the EC2 launch type.
 For more information about launch types, see Amazon ECS Launch Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html).
 
 Amazon ECS lets you launch and stop container-based applications with
 simple API calls, allows you to get the state of your cluster from a
@@ -499,7 +504,7 @@ resources in other AWS services can be managed on your behalf. However,
 if the IAM user that makes the call does not have permissions to create
 the service-linked role, it is not created. For more information, see
 Using Service-Linked Roles for Amazon ECS
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -728,7 +733,7 @@ Returns: a L<Paws::ECS::CreateTaskSetResponse> instance
 Create a task set in the specified cluster and service. This is used
 when a service uses the C<EXTERNAL> deployment controller type. For
 more information, see Amazon ECS Deployment Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -747,10 +752,8 @@ Each argument is described in detail in: L<Paws::ECS::DeleteAccountSetting>
 
 Returns: a L<Paws::ECS::DeleteAccountSettingResponse> instance
 
-Modifies the ARN and resource ID format of a resource for a specified
-IAM user, IAM role, or the root user for an account. You can specify
-whether the new ARN and resource ID format are disabled for new
-resources that are created.
+Disables an account setting for a specified IAM user, IAM role, or the
+root user for an account.
 
 
 =head2 DeleteAttributes
@@ -851,7 +854,7 @@ Returns: a L<Paws::ECS::DeleteTaskSetResponse> instance
 Deletes a specified task set within a service. This is used when a
 service uses the C<EXTERNAL> deployment controller type. For more
 information, see Amazon ECS Deployment Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -1047,7 +1050,7 @@ Returns: a L<Paws::ECS::DescribeTaskSetsResponse> instance
 Describes the task sets in the specified cluster and service. This is
 used when a service uses the C<EXTERNAL> deployment controller type.
 For more information, see Amazon ECS Deployment Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -1095,8 +1098,7 @@ Each argument is described in detail in: L<Paws::ECS::ListAccountSettings>
 
 Returns: a L<Paws::ECS::ListAccountSettingsResponse> instance
 
-Lists the account settings for an Amazon ECS resource for a specified
-principal.
+Lists the account settings for a specified principal.
 
 
 =head2 ListAttributes
@@ -1329,17 +1331,29 @@ Each argument is described in detail in: L<Paws::ECS::PutAccountSetting>
 
 Returns: a L<Paws::ECS::PutAccountSettingResponse> instance
 
-Modifies the ARN and resource ID format of a resource type for a
-specified IAM user, IAM role, or the root user for an account. If the
-account setting for the root user is changed, it sets the default
-setting for all of the IAM users and roles for which no individual
-account setting has been set. The opt-in and opt-out account setting
-can be set for each Amazon ECS resource separately. The ARN and
-resource ID format of a resource will be defined by the opt-in status
-of the IAM user or role that created the resource. Enabling this
-setting is required to use new Amazon ECS features such as resource
-tagging. For more information, see Amazon Resource Names (ARNs) and IDs
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-resource-ids.html)
+Modifies an account setting. For more information, see Account Settings
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+When C<serviceLongArnFormat>, C<taskLongArnFormat>, or
+C<containerInstanceLongArnFormat> are specified, the ARN and resource
+ID format of the resource type for a specified IAM user, IAM role, or
+the root user for an account is changed. If you change the account
+setting for the root user, the default settings for all of the IAM
+users and roles for which no individual account setting has been
+specified are reset. The opt-in and opt-out account setting can be
+specified for each Amazon ECS resource separately. The ARN and resource
+ID format of a resource will be defined by the opt-in status of the IAM
+user or role that created the resource. You must enable this setting to
+use Amazon ECS features such as resource tagging.
+
+When C<awsvpcTrunking> is specified, the elastic network interface
+(ENI) limit for any new container instances that support the feature is
+changed. If C<awsvpcTrunking> is enabled, any new container instances
+that support the feature are launched have the increased ENI limits
+available to them. For more information, see Elastic Network Interface
+Trunking
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -1358,10 +1372,8 @@ Each argument is described in detail in: L<Paws::ECS::PutAccountSettingDefault>
 
 Returns: a L<Paws::ECS::PutAccountSettingDefaultResponse> instance
 
-Modifies the ARN and resource ID format of a resource type for all IAM
-users on an account for which no individual account setting has been
-set. Enabling this setting is required to use new Amazon ECS features
-such as resource tagging.
+Modifies an account setting for all IAM users on an account for whom no
+individual account setting has been specified.
 
 
 =head2 PutAttributes
@@ -1486,7 +1498,7 @@ the Docker run reference. If you specify the C<awsvpc> network mode,
 the task is allocated an elastic network interface, and you must
 specify a NetworkConfiguration when you create a service or run a task
 with the task definition. For more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -1645,6 +1657,27 @@ more information, see Amazon ECS Container Agent Configuration
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
+=head2 SubmitAttachmentStateChanges
+
+=over
+
+=item Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>]
+
+=item [Cluster => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::SubmitAttachmentStateChanges>
+
+Returns: a L<Paws::ECS::SubmitAttachmentStateChangesResponse> instance
+
+This action is only used by the Amazon ECS agent, and it is not
+intended for use outside of the agent.
+
+Sent to acknowledge that an attachment changed states.
+
+
 =head2 SubmitContainerStateChange
 
 =over
@@ -1799,10 +1832,14 @@ Returns: a L<Paws::ECS::UpdateContainerInstancesStateResponse> instance
 
 Modifies the status of an Amazon ECS container instance.
 
-You can change the status of a container instance to C<DRAINING> to
-manually remove an instance from a cluster, for example to perform
-system updates, update the Docker daemon, or scale down the cluster
-size.
+Once a container instance has reached an C<ACTIVE> state, you can
+change the status of a container instance to C<DRAINING> to manually
+remove an instance from a cluster, for example to perform system
+updates, update the Docker daemon, or scale down the cluster size.
+
+A container instance cannot be changed to C<DRAINING> until it has
+reached an C<ACTIVE> status. If the instance is in any other status, an
+error will be received.
 
 When you set a container instance to C<DRAINING>, Amazon ECS prevents
 new tasks from being scheduled for placement on the container instance
@@ -1851,8 +1888,9 @@ not affected. You must wait for them to finish or stop them manually.
 A container instance has completed draining when it has no more
 C<RUNNING> tasks. You can verify this using ListTasks.
 
-When you set a container instance to C<ACTIVE>, the Amazon ECS
-scheduler can begin scheduling tasks on the instance again.
+When a container instance has been drained, you can set a container
+instance to C<ACTIVE> status and once it has reached that status the
+Amazon ECS scheduler can begin scheduling tasks on the instance again.
 
 
 =head2 UpdateService
@@ -2044,7 +2082,7 @@ parameters that are updated on the primary task set in a service will
 transition to the service. This is used when a service uses the
 C<EXTERNAL> deployment controller type. For more information, see
 Amazon ECS Deployment Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -2070,7 +2108,7 @@ Returns: a L<Paws::ECS::UpdateTaskSetResponse> instance
 Modifies a task set. This is used when a service uses the C<EXTERNAL>
 deployment controller type. For more information, see Amazon ECS
 Deployment Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

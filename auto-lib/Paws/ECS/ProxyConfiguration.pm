@@ -42,11 +42,10 @@ your container instances are launched from the Amazon ECS-optimized AMI
 version C<20190301> or later, then they contain the required versions
 of the container agent and C<ecs-init>. For more information, see
 Amazon ECS-optimized Linux AMI
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
-This parameter is available for tasks using the Fargate launch type in
-the Ohio (us-east-2) region only and the task or service requires
+For tasks using the Fargate launch type, the task or service requires
 platform version 1.3.0 or later.
 
 =head1 ATTRIBUTES
@@ -75,7 +74,7 @@ specified, this field can be empty.
 
 C<IgnoredGID> - (Required) The group ID (GID) of the proxy container as
 defined by the C<user> parameter in a container definition. This is
-used to ensure the proxy ignores its own traffic. If C<IgnoredGID> is
+used to ensure the proxy ignores its own traffic. If C<IgnoredUID> is
 specified, this field can be empty.
 
 =item *

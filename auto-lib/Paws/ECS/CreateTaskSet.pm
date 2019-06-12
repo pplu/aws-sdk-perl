@@ -160,7 +160,7 @@ create the task set in.
 
 The details of the service discovery registries to assign to this task
 set. For more information, see Service Discovery
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 
 
 

@@ -154,7 +154,7 @@ C<PENDING> state).
 
   The desired status of the task. For more information, see Task
 Lifecycle
-(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html).
 
 
 =head2 ExecutionStoppedAt => Str
@@ -188,7 +188,7 @@ that exist in the container image.
 
   The last known status of the task. For more information, see Task
 Lifecycle
-(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html).
 
 
 =head2 LaunchType => Str

@@ -143,7 +143,7 @@ Amazon ECS container agent and the Docker daemon can assume.
 You must specify a C<family> for a task definition, which allows you to
 track multiple versions of the same task definition. The C<family> is
 used as a name for your task definition. Up to 255 letters (uppercase
-and lowercase), numbers, hyphens, and underscores are allowed.
+and lowercase), numbers, and hyphens are allowed.
 
 
 
@@ -170,7 +170,7 @@ Docker security (https://docs.docker.com/engine/security/security/).
 If you are setting namespaced kernel parameters using C<systemControls>
 for the containers in the task, the following will apply to your IPC
 resource namespace. For more information, see System Controls
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 =over
@@ -266,7 +266,7 @@ If the network mode is C<awsvpc>, the task is allocated an elastic
 network interface, and you must specify a NetworkConfiguration value
 when you create a service or run a task with the task definition. For
 more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 Currently, only Amazon ECS-optimized AMIs, other Amazon Linux variants

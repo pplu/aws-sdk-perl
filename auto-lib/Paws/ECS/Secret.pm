@@ -50,7 +50,7 @@ container, use the C<secretOptions> container definition parameter.
 =back
 
 For more information, see Specifying Sensitive Data
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head1 ATTRIBUTES
