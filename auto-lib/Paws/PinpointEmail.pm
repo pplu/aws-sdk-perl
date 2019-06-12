@@ -99,6 +99,11 @@ package Paws::PinpointEmail;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::GetDeliverabilityTestReport', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDomainDeliverabilityCampaign {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::GetDomainDeliverabilityCampaign', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDomainStatisticsReport {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::GetDomainStatisticsReport', @_);
@@ -122,6 +127,11 @@ package Paws::PinpointEmail;
   sub ListDeliverabilityTestReports {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::PinpointEmail::ListDeliverabilityTestReports', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListDomainDeliverabilityCampaigns {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PinpointEmail::ListDomainDeliverabilityCampaigns', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListEmailIdentities {
@@ -332,7 +342,7 @@ package Paws::PinpointEmail;
   }
 
 
-  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateDedicatedIpPool CreateDeliverabilityTestReport CreateEmailIdentity DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteDedicatedIpPool DeleteEmailIdentity GetAccount GetBlacklistReports GetConfigurationSet GetConfigurationSetEventDestinations GetDedicatedIp GetDedicatedIps GetDeliverabilityDashboardOptions GetDeliverabilityTestReport GetDomainStatisticsReport GetEmailIdentity ListConfigurationSets ListDedicatedIpPools ListDeliverabilityTestReports ListEmailIdentities ListTagsForResource PutAccountDedicatedIpWarmupAttributes PutAccountSendingAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutDeliverabilityDashboardOption PutEmailIdentityDkimAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes SendEmail TagResource UntagResource UpdateConfigurationSetEventDestination / }
+  sub operations { qw/CreateConfigurationSet CreateConfigurationSetEventDestination CreateDedicatedIpPool CreateDeliverabilityTestReport CreateEmailIdentity DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteDedicatedIpPool DeleteEmailIdentity GetAccount GetBlacklistReports GetConfigurationSet GetConfigurationSetEventDestinations GetDedicatedIp GetDedicatedIps GetDeliverabilityDashboardOptions GetDeliverabilityTestReport GetDomainDeliverabilityCampaign GetDomainStatisticsReport GetEmailIdentity ListConfigurationSets ListDedicatedIpPools ListDeliverabilityTestReports ListDomainDeliverabilityCampaigns ListEmailIdentities ListTagsForResource PutAccountDedicatedIpWarmupAttributes PutAccountSendingAttributes PutConfigurationSetDeliveryOptions PutConfigurationSetReputationOptions PutConfigurationSetSendingOptions PutConfigurationSetTrackingOptions PutDedicatedIpInPool PutDedicatedIpWarmupAttributes PutDeliverabilityDashboardOption PutEmailIdentityDkimAttributes PutEmailIdentityFeedbackAttributes PutEmailIdentityMailFromAttributes SendEmail TagResource UntagResource UpdateConfigurationSetEventDestination / }
 
 1;
 
@@ -367,30 +377,21 @@ This document contains reference information for the Amazon Pinpoint
 is best used in conjunction with the Amazon Pinpoint Developer Guide
 (https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
 
-The Amazon Pinpoint Email API is available in the US East (N.
-Virginia), US West (Oregon), EU (Frankfurt), and EU (Ireland) Regions
-at the following endpoints:
+The Amazon Pinpoint Email API is available in several AWS Regions and
+it provides an endpoint for each of these Regions. For a list of all
+the Regions and endpoints where the API is currently available, see AWS
+Regions and Endpoints
+(https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region)
+in the I<Amazon Web Services General Reference>.
 
-=over
-
-=item *
-
-B<US East (N. Virginia)>: C<email.us-east-1.amazonaws.com>
-
-=item *
-
-B<US West (Oregon)>: C<email.us-west-2.amazonaws.com>
-
-=item *
-
-B<EU (Frankfurt)>: C<email.eu-central-1.amazonaws.com>
-
-=item *
-
-B<EU (Ireland)>: C<email.eu-west-1.amazonaws.com>
-
-=back
-
+In each Region, AWS maintains multiple Availability Zones. These
+Availability Zones are physically isolated from each other, but are
+united by private, low-latency, high-throughput, and highly redundant
+network connections. These Availability Zones enable us to provide very
+high levels of availability and redundancy, while also minimizing
+latency. To learn more about the number of Availability Zones that are
+available in each Region, see AWS Global Infrastructure
+(http://aws.amazon.com/about-aws/global-infrastructure/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/ses/>
 
@@ -401,7 +402,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/ses/>
 
 =over
 
-=item [ConfigurationSetName => Str]
+=item ConfigurationSetName => Str
 
 =item [DeliveryOptions => L<Paws::PinpointEmail::DeliveryOptions>]
 
@@ -753,17 +754,18 @@ Each argument is described in detail in: L<Paws::PinpointEmail::GetDeliverabilit
 
 Returns: a L<Paws::PinpointEmail::GetDeliverabilityDashboardOptionsResponse> instance
 
-Show the status of the Deliverability dashboard. When the
-Deliverability dashboard is enabled, you gain access to reputation
+Retrieve information about the status of the Deliverability dashboard
+for your Amazon Pinpoint account. When the Deliverability dashboard is
+enabled, you gain access to reputation, deliverability, and other
 metrics for the domains that you use to send email using Amazon
 Pinpoint. You also gain the ability to perform predictive inbox
 placement tests.
 
-When you use the Deliverability dashboard, you pay a monthly charge of
-USD$1,250.00, in addition to any other fees that you accrue by using
-Amazon Pinpoint. If you enable the Deliverability dashboard after the
-first day of a calendar month, AWS prorates the monthly charge based on
-how many days have elapsed in the current calendar month.
+When you use the Deliverability dashboard, you pay a monthly
+subscription charge, in addition to any other fees that you accrue by
+using Amazon Pinpoint. For more information about the features and cost
+of a Deliverability dashboard subscription, see Amazon Pinpoint Pricing
+(http://aws.amazon.com/pinpoint/pricing/).
 
 
 =head2 GetDeliverabilityTestReport
@@ -780,6 +782,25 @@ Each argument is described in detail in: L<Paws::PinpointEmail::GetDeliverabilit
 Returns: a L<Paws::PinpointEmail::GetDeliverabilityTestReportResponse> instance
 
 Retrieve the results of a predictive inbox placement test.
+
+
+=head2 GetDomainDeliverabilityCampaign
+
+=over
+
+=item CampaignId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PinpointEmail::GetDomainDeliverabilityCampaign>
+
+Returns: a L<Paws::PinpointEmail::GetDomainDeliverabilityCampaignResponse> instance
+
+Retrieve all the deliverability data for a specific campaign. This data
+is available for a campaign only if the campaign sent email by using a
+domain that the Deliverability dashboard is enabled for
+(C<PutDeliverabilityDashboardOption> operation).
 
 
 =head2 GetDomainStatisticsReport
@@ -886,6 +907,33 @@ tests that are complete, you can use the C<GetDeliverabilityTestReport>
 operation to view the results.
 
 
+=head2 ListDomainDeliverabilityCampaigns
+
+=over
+
+=item EndDate => Str
+
+=item StartDate => Str
+
+=item SubscribedDomain => Str
+
+=item [NextToken => Str]
+
+=item [PageSize => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PinpointEmail::ListDomainDeliverabilityCampaigns>
+
+Returns: a L<Paws::PinpointEmail::ListDomainDeliverabilityCampaignsResponse> instance
+
+Retrieve deliverability data for all the campaigns that used a specific
+domain to send email during a specified time range. This data is
+available for a domain only if you enabled the Deliverability dashboard
+(C<PutDeliverabilityDashboardOption> operation) for the domain.
+
+
 =head2 ListEmailIdentities
 
 =over
@@ -921,10 +969,10 @@ Each argument is described in detail in: L<Paws::PinpointEmail::ListTagsForResou
 Returns: a L<Paws::PinpointEmail::ListTagsForResourceResponse> instance
 
 Retrieve a list of the tags (keys and values) that are associated with
-a specific resource. A I<tag> is a label that you optionally define and
-associate with a resource in Amazon Pinpoint. Each tag consists of a
-required I<tag key> and an optional associated I<tag value>. A tag key
-is a general label that acts as a category for more specific tag
+a specified resource. A I<tag> is a label that you optionally define
+and associate with a resource in Amazon Pinpoint. Each tag consists of
+a required I<tag key> and an optional associated I<tag value>. A tag
+key is a general label that acts as a category for more specific tag
 values. A tag value acts as a descriptor within a tag key.
 
 
@@ -968,6 +1016,8 @@ Enable or disable the ability of your account to send email.
 =item ConfigurationSetName => Str
 
 =item [SendingPoolName => Str]
+
+=item [TlsPolicy => Str]
 
 
 =back
@@ -1086,6 +1136,8 @@ Returns: a L<Paws::PinpointEmail::PutDedicatedIpWarmupAttributesResponse> instan
 
 =item DashboardEnabled => Bool
 
+=item [SubscribedDomains => ArrayRef[L<Paws::PinpointEmail::DomainDeliverabilityTrackingOption>]]
+
 
 =back
 
@@ -1093,16 +1145,17 @@ Each argument is described in detail in: L<Paws::PinpointEmail::PutDeliverabilit
 
 Returns: a L<Paws::PinpointEmail::PutDeliverabilityDashboardOptionResponse> instance
 
-Enable or disable the Deliverability dashboard. When you enable the
-Deliverability dashboard, you gain access to reputation metrics for the
-domains that you use to send email using Amazon Pinpoint. You also gain
-the ability to perform predictive inbox placement tests.
+Enable or disable the Deliverability dashboard for your Amazon Pinpoint
+account. When you enable the Deliverability dashboard, you gain access
+to reputation, deliverability, and other metrics for the domains that
+you use to send email using Amazon Pinpoint. You also gain the ability
+to perform predictive inbox placement tests.
 
-When you use the Deliverability dashboard, you pay a monthly charge of
-USD$1,250.00, in addition to any other fees that you accrue by using
-Amazon Pinpoint. If you enable the Deliverability dashboard after the
-first day of a calendar month, we prorate the monthly charge based on
-how many days have elapsed in the current calendar month.
+When you use the Deliverability dashboard, you pay a monthly
+subscription charge, in addition to any other fees that you accrue by
+using Amazon Pinpoint. For more information about the features and cost
+of a Deliverability dashboard subscription, see Amazon Pinpoint Pricing
+(http://aws.amazon.com/pinpoint/pricing/).
 
 
 =head2 PutEmailIdentityDkimAttributes
@@ -1240,11 +1293,11 @@ Each argument is described in detail in: L<Paws::PinpointEmail::TagResource>
 
 Returns: a L<Paws::PinpointEmail::TagResourceResponse> instance
 
-Add one or more tags (keys and values) to one or more specified
-resources. A I<tag> is a label that you optionally define and associate
-with a resource in Amazon Pinpoint. Tags can help you categorize and
-manage resources in different ways, such as by purpose, owner,
-environment, or other criteria. A resource can have as many as 50 tags.
+Add one or more tags (keys and values) to a specified resource. A
+I<tag> is a label that you optionally define and associate with a
+resource in Amazon Pinpoint. Tags can help you categorize and manage
+resources in different ways, such as by purpose, owner, environment, or
+other criteria. A resource can have as many as 50 tags.
 
 Each tag consists of a required I<tag key> and an associated I<tag
 value>, both of which you define. A tag key is a general label that

@@ -1,7 +1,7 @@
 
 package Paws::PinpointEmail::CreateConfigurationSet;
   use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str');
+  has ConfigurationSetName => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryOptions => (is => 'ro', isa => 'Paws::PinpointEmail::DeliveryOptions');
   has ReputationOptions => (is => 'ro', isa => 'Paws::PinpointEmail::ReputationOptions');
   has SendingOptions => (is => 'ro', isa => 'Paws::PinpointEmail::SendingOptions');
@@ -34,9 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $email = Paws->service('PinpointEmail');
     my $CreateConfigurationSetResponse = $email->CreateConfigurationSet(
-      ConfigurationSetName => 'MyConfigurationSetName',    # OPTIONAL
+      ConfigurationSetName => 'MyConfigurationSetName',
       DeliveryOptions      => {
-        SendingPoolName => 'MyPoolName',                   # OPTIONAL
+        SendingPoolName => 'MyPoolName',   # OPTIONAL
+        TlsPolicy       => 'REQUIRE',      # values: REQUIRE, OPTIONAL; OPTIONAL
       },    # OPTIONAL
       ReputationOptions => {
         LastFreshStart           => '1970-01-01T01:00:00',    # OPTIONAL
@@ -65,7 +66,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 =head1 ATTRIBUTES
 
 
-=head2 ConfigurationSetName => Str
+=head2 B<REQUIRED> ConfigurationSetName => Str
 
 The name of the configuration set.
 
@@ -95,8 +96,8 @@ that you send using the configuration set.
 
 =head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
 
-An object that defines the tags (keys and values) that you want to
-associate with the configuration set.
+An array of objects that define the tags (keys and values) that you
+want to associate with the configuration set.
 
 
 

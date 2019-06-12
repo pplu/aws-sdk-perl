@@ -63,8 +63,8 @@ The email address or domain that you want to verify.
 
 =head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
 
-An object that defines the tags (keys and values) that you want to
-associate with the email identity.
+An array of objects that define the tags (keys and values) that you
+want to associate with the email identity.
 
 
 

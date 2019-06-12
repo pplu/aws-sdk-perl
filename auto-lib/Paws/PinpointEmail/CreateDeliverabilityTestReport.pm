@@ -104,8 +104,8 @@ test when you retrieve the results.
 
 =head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
 
-An object that defines the tags (keys and values) that you want to
-associate with the predictive inbox placement test.
+An array of objects that define the tags (keys and values) that you
+want to associate with the predictive inbox placement test.
 
 
 

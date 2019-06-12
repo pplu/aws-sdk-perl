@@ -5,6 +5,7 @@ package Paws::PinpointEmail::GetDeliverabilityTestReportResponse;
   has IspPlacements => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::IspPlacement]', required => 1);
   has Message => (is => 'ro', isa => 'Str');
   has OverallPlacement => (is => 'ro', isa => 'Paws::PinpointEmail::PlacementStatistics', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::Tag]');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -42,6 +43,12 @@ An object that specifies how many test messages that were sent during
 the predictive inbox placement test were delivered to recipients'
 inboxes, how many were sent to recipients' spam folders, and how many
 weren't delivered.
+
+
+=head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+
+An array of objects that define the tags (keys and values) that are
+associated with the predictive inbox placement test.
 
 
 =head2 _request_id => Str

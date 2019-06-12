@@ -41,7 +41,7 @@ each day of the analysis period.
 
 =head2 DomainIspPlacements => ArrayRef[L<Paws::PinpointEmail::DomainIspPlacement>]
 
-  An object that contains inbox placement metrics for a specifid day in
+  An object that contains inbox placement metrics for a specified day in
 the analysis period, broken out by the recipient's email provider.
 
 

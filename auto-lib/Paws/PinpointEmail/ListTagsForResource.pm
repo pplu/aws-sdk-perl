@@ -1,7 +1,7 @@
 
 package Paws::PinpointEmail::ListTagsForResource;
   use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'ResourceArn', required => 1);
 
   use MooseX::ClassAttribute;
 

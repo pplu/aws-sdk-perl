@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $GetEmailIdentityResponse->FeedbackForwardingStatus;
     my $IdentityType       = $GetEmailIdentityResponse->IdentityType;
     my $MailFromAttributes = $GetEmailIdentityResponse->MailFromAttributes;
+    my $Tags               = $GetEmailIdentityResponse->Tags;
     my $VerifiedForSendingStatus =
       $GetEmailIdentityResponse->VerifiedForSendingStatus;
 

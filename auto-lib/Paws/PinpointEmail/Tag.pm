@@ -41,16 +41,11 @@ other criteria. A resource can have as many as 50 tags.
 Each tag consists of a required I<tag key> and an associated I<tag
 value>, both of which you define. A tag key is a general label that
 acts as a category for a more specific tag value. A tag value acts as a
-descriptor within a tag key. For example, if you have two versions of
-an Amazon Pinpoint project, one for internal testing and another for
-external use, you might assign a C<Stack> tag key to both projects. The
-value of the C<Stack> tag key might be C<Test> for one project and
-C<Production> for the other project.
-
-A tag key can contain as many as 128 characters. A tag value can
-contain as many as 256 characters. The characters can be Unicode
-letters, digits, white space, or one of the following symbols: _ . : /
-= + -. The following additional restrictions apply to tags:
+descriptor within a tag key. A tag key can contain as many as 128
+characters. A tag value can contain as many as 256 characters. The
+characters can be Unicode letters, digits, white space, or one of the
+following symbols: _ . : / = + -. The following additional restrictions
+apply to tags:
 
 =over
 

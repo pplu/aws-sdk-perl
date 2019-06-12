@@ -49,18 +49,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         Enabled                    => 1,    # OPTIONAL
         KinesisFirehoseDestination => {
-          DeliveryStreamArn => 'MyAmazonResourceName',
-          IamRoleArn        => 'MyAmazonResourceName',
+          DeliveryStreamArn => 'MyAmazonResourceName',    # OPTIONAL
+          IamRoleArn        => 'MyAmazonResourceName',    # OPTIONAL
 
-        },                                  # OPTIONAL
+        },    # OPTIONAL
         MatchingEventTypes => [
           'SEND',
           ... # values: SEND, REJECT, BOUNCE, COMPLAINT, DELIVERY, OPEN, CLICK, RENDERING_FAILURE
         ],    # OPTIONAL
-        PinpointDestination => { ApplicationArn => 'MyAmazonResourceName', }
-        ,     # OPTIONAL
+        PinpointDestination => {
+          ApplicationArn => 'MyAmazonResourceName',    # OPTIONAL
+        },    # OPTIONAL
         SnsDestination => {
-          TopicArn => 'MyAmazonResourceName',
+          TopicArn => 'MyAmazonResourceName',    # OPTIONAL
 
         },    # OPTIONAL
       },

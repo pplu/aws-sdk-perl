@@ -31,8 +31,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $email->GetDeliverabilityDashboardOptions();
 
     # Results:
+    my $AccountStatus =
+      $GetDeliverabilityDashboardOptionsResponse->AccountStatus;
+    my $ActiveSubscribedDomains =
+      $GetDeliverabilityDashboardOptionsResponse->ActiveSubscribedDomains;
     my $DashboardEnabled =
       $GetDeliverabilityDashboardOptionsResponse->DashboardEnabled;
+    my $PendingExpirationSubscribedDomains =
+      $GetDeliverabilityDashboardOptionsResponse
+      ->PendingExpirationSubscribedDomains;
+    my $SubscriptionExpiryDate =
+      $GetDeliverabilityDashboardOptionsResponse->SubscriptionExpiryDate;
 
 # Returns a L<Paws::PinpointEmail::GetDeliverabilityDashboardOptionsResponse> object.
 
