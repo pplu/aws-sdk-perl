@@ -49,15 +49,25 @@ This class has no description
 
 =head2 Encrypted => Bool
 
-  Indicates whether the EBS volume is encrypted. Encrypted volumes can
-only be attached to instances that support Amazon EBS encryption.
+  Indicates whether the encryption state of an EBS volume is changed
+while being restored from a backing snapshot. The default effect of
+setting the C<Encrypted> parameter to C<true> through the console, API,
+or CLI depends on the volume's origin (new or from a snapshot),
+starting encryption state, ownership, and whether account-level
+encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/account-level-encryption.html)
+is enabled. Each default case can be overridden by specifying a
+customer master key (CMK) with the C<KmsKeyId> parameter in addition to
+setting C<Encrypted> to C<true>. For a complete list of possible
+encryption cases, see Amazon EBS Encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
-If you are creating a volume from a snapshot, you cannot specify an
-encryption value. This is because only blank volumes can be encrypted
-on creation. If you are creating a snapshot from an existing EBS
-volume, you cannot specify an encryption value that differs from that
-of the EBS volume. We recommend that you omit the encryption value from
-the block device mappings when creating an image from an instance.
+In no case can you remove encryption from an encrypted volume.
+
+Encrypted volumes can only be attached to instances that support Amazon
+EBS encryption. For more information, see Supported Instance Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances).
 
 
 =head2 Iops => Int
@@ -72,10 +82,13 @@ EBS Volume Types
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Constraints: Range is 100-16,000 IOPS for C<gp2> volumes and 100 to
-64,000IOPS for C<io1> volumes, in most Regions. The maximum IOPS for
-C<io1> of 64,000 is guaranteed only on Nitro-based instances
+64,000IOPS for C<io1> volumes in most Regions. Maximum C<io1> IOPS of
+64,000 is guaranteed only on Nitro-based instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances).
-Other instance families guarantee performance up to 32,000 IOPS.
+Other instance families guarantee performance up to 32,000 IOPS. For
+more information, see Amazon EBS Volume Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Condition: This parameter is required for requests to create C<io1>
 volumes; it is not used in requests to create C<gp2>, C<st1>, C<sc1>,

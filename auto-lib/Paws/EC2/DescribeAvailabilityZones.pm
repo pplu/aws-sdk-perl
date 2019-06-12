@@ -67,7 +67,7 @@ C<message> - Information about the Availability Zone.
 
 =item *
 
-C<region-name> - The name of the region for the Availability Zone (for
+C<region-name> - The name of the Region for the Availability Zone (for
 example, C<us-east-1>).
 
 =item *

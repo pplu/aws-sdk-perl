@@ -43,7 +43,7 @@ The time stamp when volume creation was initiated.
 
 =head2 Encrypted => Bool
 
-Indicates whether the volume will be encrypted.
+Indicates whether the volume is encrypted.
 
 
 =head2 Iops => Int
@@ -70,9 +70,9 @@ or C<standard> volumes.
 
 =head2 KmsKeyId => Str
 
-The full ARN of the AWS Key Management Service (AWS KMS) customer
-master key (CMK) that was used to protect the volume encryption key for
-the volume.
+The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS
+KMS) customer master key (CMK) that was used to protect the volume
+encryption key for the volume.
 
 
 =head2 Size => Int

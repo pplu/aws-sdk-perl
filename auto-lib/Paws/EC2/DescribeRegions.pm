@@ -61,12 +61,12 @@ The filters.
 
 =item *
 
-C<endpoint> - The endpoint of the region (for example,
+C<endpoint> - The endpoint of the Region (for example,
 C<ec2.us-east-1.amazonaws.com>).
 
 =item *
 
-C<region-name> - The name of the region (for example, C<us-east-1>).
+C<region-name> - The name of the Region (for example, C<us-east-1>).
 
 =back
 
@@ -75,7 +75,7 @@ C<region-name> - The name of the region (for example, C<us-east-1>).
 
 =head2 RegionNames => ArrayRef[Str|Undef]
 
-The names of the regions.
+The names of the Regions.
 
 
 

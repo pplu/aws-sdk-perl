@@ -4,6 +4,7 @@ package Paws::EC2::AllocateHosts;
   has AutoPlacement => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'autoPlacement' );
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
+  has HostRecovery => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceType' , required => 1);
   has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' , required => 1);
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
@@ -38,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Quantity          => 1,
       AutoPlacement     => 'on',          # OPTIONAL
       ClientToken       => 'MyString',    # OPTIONAL
+      HostRecovery      => 'on',          # OPTIONAL
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
@@ -89,10 +91,21 @@ The Availability Zone in which to allocate the Dedicated Host.
 Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see How to Ensure
 Idempotency
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+
+
+
+=head2 HostRecovery => Str
+
+Indicates whether to enable or disable host recovery for the Dedicated
+Host. Host recovery is disabled by default. For more information, see
+Host Recovery
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
+Default: C<off>
 
+Valid values are: C<"on">, C<"off">
 
 =head2 B<REQUIRED> InstanceType => Str
 

@@ -1,6 +1,7 @@
 
 package Paws::EC2::AssociateClientVpnTargetNetwork;
   use Moose;
+  has ClientToken => (is => 'ro', isa => 'Str');
   has ClientVpnEndpointId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
@@ -33,7 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ec2->AssociateClientVpnTargetNetwork(
       ClientVpnEndpointId => 'MyString',
       SubnetId            => 'MyString',
-      DryRun              => 1,            # OPTIONAL
+      ClientToken         => 'MyString',    # OPTIONAL
+      DryRun              => 1,             # OPTIONAL
       );
 
     # Results:
@@ -46,6 +48,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/AssociateClientVpnTargetNetwork>
 
 =head1 ATTRIBUTES
+
+
+=head2 ClientToken => Str
+
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+
 
 
 =head2 B<REQUIRED> ClientVpnEndpointId => Str

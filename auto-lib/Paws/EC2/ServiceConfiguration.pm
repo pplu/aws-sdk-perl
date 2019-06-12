@@ -10,6 +10,7 @@ package Paws::EC2::ServiceConfiguration;
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has ServiceState => (is => 'ro', isa => 'Str', request_name => 'serviceState', traits => ['NameInRequest']);
   has ServiceType => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ServiceTypeDetail]', request_name => 'serviceType', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::ServiceConfiguration object:
 
-  $service_obj->Method(Att1 => { AcceptanceRequired => $value, ..., ServiceType => $value  });
+  $service_obj->Method(Att1 => { AcceptanceRequired => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -96,6 +97,11 @@ service.
 =head2 ServiceType => ArrayRef[L<Paws::EC2::ServiceTypeDetail>]
 
   The type of service.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  Any tags assigned to the service.
 
 
 

@@ -3,6 +3,7 @@ package Paws::EC2::AuthorizeClientVpnIngress;
   use Moose;
   has AccessGroupId => (is => 'ro', isa => 'Str');
   has AuthorizeAllGroups => (is => 'ro', isa => 'Bool');
+  has ClientToken => (is => 'ro', isa => 'Str');
   has ClientVpnEndpointId => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
@@ -37,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TargetNetworkCidr   => 'MyString',
       AccessGroupId       => 'MyString',    # OPTIONAL
       AuthorizeAllGroups  => 1,             # OPTIONAL
+      ClientToken         => 'MyString',    # OPTIONAL
       Description         => 'MyString',    # OPTIONAL
       DryRun              => 1,             # OPTIONAL
     );
@@ -63,6 +65,15 @@ The ID of the Active Directory group to grant access.
 Indicates whether to grant access to all clients. Use C<true> to grant
 all clients who successfully establish a VPN connection access to the
 network.
+
+
+
+=head2 ClientToken => Str
+
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 

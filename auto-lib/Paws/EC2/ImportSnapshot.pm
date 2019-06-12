@@ -134,21 +134,21 @@ Key ID
 =item *
 
 Key alias. The alias ARN contains the C<arn:aws:kms> namespace,
-followed by the region of the CMK, the AWS account ID of the CMK owner,
+followed by the Region of the CMK, the AWS account ID of the CMK owner,
 the C<alias> namespace, and then the CMK alias. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 
 =item *
 
 ARN using key ID. The ID ARN contains the C<arn:aws:kms> namespace,
-followed by the region of the CMK, the AWS account ID of the CMK owner,
+followed by the Region of the CMK, the AWS account ID of the CMK owner,
 the C<key> namespace, and then the CMK ID. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
 
 =item *
 
 ARN using key alias. The alias ARN contains the C<arn:aws:kms>
-namespace, followed by the region of the CMK, the AWS account ID of the
+namespace, followed by the Region of the CMK, the AWS account ID of the
 CMK owner, the C<alias> namespace, and then the CMK alias. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 
@@ -158,7 +158,7 @@ AWS parses C<KmsKeyId> asynchronously, meaning that the action you call
 may appear to complete even though you provided an invalid identifier.
 This action will eventually report failure.
 
-The specified CMK must exist in the region that the snapshot is being
+The specified CMK must exist in the Region that the snapshot is being
 copied to.
 
 

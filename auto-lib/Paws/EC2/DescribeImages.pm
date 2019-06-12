@@ -81,7 +81,8 @@ The filters.
 
 =item *
 
-C<architecture> - The image architecture (C<i386> | C<x86_64>).
+C<architecture> - The image architecture (C<i386> | C<x86_64> |
+C<arm64>).
 
 =item *
 

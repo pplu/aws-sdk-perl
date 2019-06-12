@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SearchTransitGatewayRoutesResult = $ec2->SearchTransitGatewayRoutes(
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
       ],
@@ -111,13 +109,11 @@ supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
 
 =item *
 
-C<state> - The state of the attachment (C<available> | C<deleted> |
-C<deleting> | C<failed> | C<modifying> | C<pendingAcceptance> |
-C<pending> | C<rollingBack> | C<rejected> | C<rejecting>).
+C<state> - The state of the route (C<active> | C<blackhole>).
 
 =item *
 
-C<type> - The type of roue (C<active> | C<blackhole>).
+C<type> - The type of roue (C<propagated> | C<static>).
 
 =back
 

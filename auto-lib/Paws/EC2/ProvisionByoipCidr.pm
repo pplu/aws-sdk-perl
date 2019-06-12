@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 The public IPv4 address range, in CIDR notation. The most specific
 prefix that you can specify is /24. The address range cannot overlap
 with another address range that you've brought to this or another
-region.
+Region.
 
 
 

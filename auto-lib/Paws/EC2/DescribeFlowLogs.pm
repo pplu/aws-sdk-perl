@@ -35,18 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun => 1,    # OPTIONAL
       Filter => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      FlowLogIds => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      FlowLogIds => [ 'MyString', ... ],    # OPTIONAL
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyString',             # OPTIONAL
     );
 
     # Results:
@@ -111,6 +107,8 @@ C<traffic-type> - The type of traffic (C<ACCEPT> | C<REJECT> | C<ALL>).
 =head2 FlowLogIds => ArrayRef[Str|Undef]
 
 One or more flow log IDs.
+
+Constraint: Maximum of 1000 flow log IDs.
 
 
 

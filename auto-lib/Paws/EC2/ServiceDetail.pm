@@ -6,8 +6,10 @@ package Paws::EC2::ServiceDetail;
   has ManagesVpcEndpoints => (is => 'ro', isa => 'Bool', request_name => 'managesVpcEndpoints', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
+  has ServiceId => (is => 'ro', isa => 'Str', request_name => 'serviceId', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has ServiceType => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ServiceTypeDetail]', request_name => 'serviceType', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has VpcEndpointPolicySupported => (is => 'ro', isa => 'Bool', request_name => 'vpcEndpointPolicySupported', traits => ['NameInRequest']);
 1;
 
@@ -76,6 +78,11 @@ the service VPC endpoints using the VPC endpoint API is restricted.
   The private DNS name for the service.
 
 
+=head2 ServiceId => Str
+
+  The ID of the endpoint service.
+
+
 =head2 ServiceName => Str
 
   The Amazon Resource Name (ARN) of the service.
@@ -84,6 +91,11 @@ the service VPC endpoints using the VPC endpoint API is restricted.
 =head2 ServiceType => ArrayRef[L<Paws::EC2::ServiceTypeDetail>]
 
   The type of service.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  Any tags assigned to the service.
 
 
 =head2 VpcEndpointPolicySupported => Bool

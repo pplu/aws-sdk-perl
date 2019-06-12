@@ -76,7 +76,15 @@ terminated.
 
 =head2 InterfaceType => Str
 
-  The type of networking interface.
+  The type of network interface. To create an Elastic Fabric Adapter
+(EFA), specify C<efa>. For more information, see Elastic Fabric Adapter
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) in the
+I<Amazon Elastic Compute Cloud User Guide>.
+
+If you are not creating an EFA, specify C<interface> or omit this
+parameter.
+
+Valid values: C<interface> | C<efa>
 
 
 =head2 Ipv6AddressCount => Int

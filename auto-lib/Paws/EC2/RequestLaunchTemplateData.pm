@@ -96,10 +96,13 @@ instances only.
 
 =head2 DisableApiTermination => Bool
 
-  If set to C<true>, you can't terminate the instance using the Amazon
-EC2 console, CLI, or API. To change this attribute to C<false> after
-launch, use ModifyInstanceAttribute
+  If you set this parameter to C<true>, you can't terminate the instance
+using the Amazon EC2 console, CLI, or API; otherwise, you can. To
+change this attribute after launch, use ModifyInstanceAttribute
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html).
+Alternatively, if you set C<InstanceInitiatedShutdownBehavior> to
+C<terminate>, you can terminate the instance by running the shutdown
+command from the instance.
 
 
 =head2 EbsOptimized => Bool
@@ -140,8 +143,7 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 ImageId => Str
 
-  The ID of the AMI, which you can get by using DescribeImages
-(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html).
+  The ID of the AMI.
 
 
 =head2 InstanceInitiatedShutdownBehavior => Str
@@ -199,7 +201,8 @@ to log in.
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest>]
 
-  One or more network interfaces.
+  One or more network interfaces. If you specify a network interface, you
+must specify any security groups as part of the network interface.
 
 
 =head2 Placement => L<Paws::EC2::LaunchTemplatePlacementRequest>
@@ -220,8 +223,10 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
   One or more security group IDs. You can create a security group using
-CreateSecurityGroup. You cannot specify both a security group ID and
-security name in the same request.
+CreateSecurityGroup
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html).
+You cannot specify both a security group ID and security name in the
+same request.
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
@@ -236,7 +241,8 @@ specify both a security group ID and security name in the same request.
   The tags to apply to the resources during launch. You can only tag
 instances and volumes on launch. The specified tags are applied to all
 instances or volumes that are created during launch. To tag a resource
-after it has been created, see CreateTags.
+after it has been created, see CreateTags
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html).
 
 
 =head2 UserData => Str

@@ -76,6 +76,8 @@ network interface.
 
   Describes the type of network interface.
 
+Valid values: C<interface> | C<efa>
+
 
 =head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]
 

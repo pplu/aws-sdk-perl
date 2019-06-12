@@ -350,6 +350,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateSnapshots {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSpotDatafeedSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateSpotDatafeedSubscription', @_);
@@ -1130,6 +1135,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DetachVpnGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableEbsEncryptionByDefault {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisableEbsEncryptionByDefault', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableTransitGatewayRouteTablePropagation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisableTransitGatewayRouteTablePropagation', @_);
@@ -1185,6 +1195,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateVpcCidrBlock', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub EnableEbsEncryptionByDefault {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::EnableEbsEncryptionByDefault', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub EnableTransitGatewayRouteTablePropagation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::EnableTransitGatewayRouteTablePropagation', @_);
@@ -1233,6 +1248,16 @@ package Paws::EC2;
   sub GetConsoleScreenshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetConsoleScreenshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetEbsDefaultKmsKeyId {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetEbsDefaultKmsKeyId', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetEbsEncryptionByDefault {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetEbsEncryptionByDefault', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetHostReservationPurchasePreview {
@@ -1308,6 +1333,11 @@ package Paws::EC2;
   sub ModifyClientVpnEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyClientVpnEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyEbsDefaultKmsKeyId {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyEbsDefaultKmsKeyId', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyFleet {
@@ -1558,6 +1588,11 @@ package Paws::EC2;
   sub RequestSpotInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RequestSpotInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ResetEbsDefaultKmsKeyId {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ResetEbsDefaultKmsKeyId', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ResetFpgaImageAttribute {
@@ -1850,6 +1885,29 @@ package Paws::EC2;
         $result = $self->DescribeClientVpnTargetNetworks(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'ClientVpnTargetNetworks') foreach (@{ $result->ClientVpnTargetNetworks });
+    }
+
+    return undef
+  }
+  sub DescribeAllDhcpOptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDhcpOptions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeDhcpOptions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DhcpOptions }, @{ $next_result->DhcpOptions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DhcpOptions') foreach (@{ $result->DhcpOptions });
+        $result = $self->DescribeDhcpOptions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DhcpOptions') foreach (@{ $result->DhcpOptions });
     }
 
     return undef
@@ -2682,6 +2740,29 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllSubnets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSubnets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeSubnets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Subnets }, @{ $next_result->Subnets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Subnets') foreach (@{ $result->Subnets });
+        $result = $self->DescribeSubnets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Subnets') foreach (@{ $result->Subnets });
+    }
+
+    return undef
+  }
   sub DescribeAllTags {
     my $self = shift;
 
@@ -3144,7 +3225,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportTransitGatewayRoutes GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes StartInstances StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSnapshots CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableEbsEncryptionByDefault DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableEbsEncryptionByDefault EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportTransitGatewayRoutes GetConsoleOutput GetConsoleScreenshot GetEbsDefaultKmsKeyId GetEbsEncryptionByDefault GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyEbsDefaultKmsKeyId ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetEbsDefaultKmsKeyId ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes StartInstances StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
 
 1;
 
@@ -3297,8 +3378,8 @@ peering connection must be in the C<pending-acceptance> state, and you
 must be the owner of the peer VPC. Use DescribeVpcPeeringConnections to
 view your outstanding VPC peering connection requests.
 
-For an inter-region VPC peering connection request, you must accept the
-VPC peering connection in the region of the accepter VPC.
+For an inter-Region VPC peering connection request, you must accept the
+VPC peering connection in the Region of the accepter VPC.
 
 
 =head2 AdvertiseByoipCidr
@@ -3374,8 +3455,8 @@ address that you released, specify it in this operation.
 
 An Elastic IP address is for use either in the EC2-Classic platform or
 in a VPC. By default, you can allocate 5 Elastic IP addresses for
-EC2-Classic per region and 5 Elastic IP addresses for EC2-VPC per
-region.
+EC2-Classic per Region and 5 Elastic IP addresses for EC2-VPC per
+Region.
 
 For more information, see Elastic IP Addresses
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
@@ -3395,6 +3476,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =item [AutoPlacement => Str]
 
 =item [ClientToken => Str]
+
+=item [HostRecovery => Str]
 
 =item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
@@ -3567,6 +3650,8 @@ Pricing (http://aws.amazon.com/ec2/pricing/).
 =item ClientVpnEndpointId => Str
 
 =item SubnetId => Str
+
+=item [ClientToken => Str]
 
 =item [DryRun => Bool]
 
@@ -3834,19 +3919,14 @@ Returns: a L<Paws::EC2::VolumeAttachment> instance
 Attaches an EBS volume to a running or stopped instance and exposes it
 to the instance with the specified device name.
 
-Encrypted EBS volumes may only be attached to instances that support
-Amazon EBS encryption. For more information, see Amazon EBS Encryption
+Encrypted EBS volumes must be attached to instances that support Amazon
+EBS encryption. For more information, see Amazon EBS Encryption
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-For a list of supported device names, see Attaching an EBS Volume to an
-Instance
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html).
-Any device names that aren't reserved for instance store volumes can be
-used for EBS volumes. For more information, see Amazon EC2 Instance
-Store
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+After you attach an EBS volume, you must make it available. For more
+information, see Making an EBS Volume Available For Use
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html).
 
 If a volume has an AWS Marketplace product code:
 
@@ -3873,8 +3953,7 @@ and attach it to a Linux instance.
 
 =back
 
-For more information about EBS volumes, see Attaching Amazon EBS
-Volumes
+For more information, see Attaching Amazon EBS Volumes
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -3915,6 +3994,8 @@ I<AWS Site-to-Site VPN User Guide>.
 =item [AccessGroupId => Str]
 
 =item [AuthorizeAllGroups => Bool]
+
+=item [ClientToken => Str]
 
 =item [Description => Str]
 
@@ -3966,8 +4047,8 @@ Returns: nothing
 with a VPC.
 
 An outbound rule permits instances to send traffic to the specified
-destination IPv4 or IPv6 CIDR address ranges, or to the specified
-destination security groups for the same VPC.
+IPv4 or IPv6 CIDR address ranges, or to the instances associated with
+the specified destination security groups.
 
 You specify a protocol for each rule (for example, TCP). For the TCP
 and UDP protocols, you must also specify the destination port or port
@@ -4017,8 +4098,8 @@ Returns: nothing
 Adds the specified ingress rules to a security group.
 
 An inbound rule permits instances to receive traffic from the specified
-destination IPv4 or IPv6 CIDR address ranges, or from the specified
-destination security groups.
+IPv4 or IPv6 CIDR address ranges, or from the instances associated with
+the specified destination security groups.
 
 You specify a protocol for each rule (for example, TCP). For TCP and
 UDP, you must also specify the destination port or port range. For
@@ -4287,7 +4368,7 @@ Each argument is described in detail in: L<Paws::EC2::CopyFpgaImage>
 
 Returns: a L<Paws::EC2::CopyFpgaImageResult> instance
 
-Copies the specified Amazon FPGA Image (AFI) to the current region.
+Copies the specified Amazon FPGA Image (AFI) to the current Region.
 
 
 =head2 CopyImage
@@ -4317,8 +4398,8 @@ Each argument is described in detail in: L<Paws::EC2::CopyImage>
 
 Returns: a L<Paws::EC2::CopyImageResult> instance
 
-Initiates the copy of an AMI from the specified source region to the
-current region. You specify the destination region by using its
+Initiates the copy of an AMI from the specified source Region to the
+current Region. You specify the destination Region by using its
 endpoint when making the request.
 
 Copies of encrypted backing snapshots for the AMI are encrypted. Copies
@@ -4362,15 +4443,13 @@ Returns: a L<Paws::EC2::CopySnapshotResult> instance
 Copies a point-in-time snapshot of an EBS volume and stores it in
 Amazon S3. You can copy the snapshot within the same Region or from one
 Region to another. You can use the snapshot to create EBS volumes or
-Amazon Machine Images (AMIs). The snapshot is copied to the regional
-endpoint that you send the HTTP request to.
+Amazon Machine Images (AMIs).
 
 Copies of encrypted EBS snapshots remain encrypted. Copies of
-unencrypted snapshots remain unencrypted, unless the C<Encrypted> flag
-is specified during the snapshot copy operation. By default, encrypted
-snapshot copies use the default AWS Key Management Service (AWS KMS)
-customer master key (CMK); however, you can specify a non-default CMK
-with the C<KmsKeyId> parameter.
+unencrypted snapshots remain unencrypted, unless you enable encryption
+for the snapshot copy operation. By default, encrypted snapshot copies
+use the default AWS Key Management Service (AWS KMS) customer master
+key (CMK); however, you can specify a different CMK.
 
 To copy an encrypted snapshot that has been shared from another
 account, you must have permissions for the CMK used to encrypt the
@@ -4498,6 +4577,8 @@ terminated.
 
 =item TargetVpcSubnetId => Str
 
+=item [ClientToken => Str]
+
 =item [Description => Str]
 
 =item [DryRun => Bool]
@@ -4549,7 +4630,7 @@ already, you can use a private ASN (in the 64512 - 65534 range).
 
 Amazon EC2 supports all 2-byte ASN numbers in the range of 1 - 65534,
 with the exception of 7224, which is reserved in the C<us-east-1>
-region, and 9059, which is reserved in the C<eu-west-1> region.
+Region, and 9059, which is reserved in the C<eu-west-1> Region.
 
 For more information, see AWS Site-to-Site VPN
 (https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html) in the
@@ -4654,7 +4735,7 @@ server.
 
 C<domain-name> - If you're using AmazonProvidedDNS in C<us-east-1>,
 specify C<ec2.internal>. If you're using AmazonProvidedDNS in another
-region, specify C<region.compute.internal> (for example,
+Region, specify C<region.compute.internal> (for example,
 C<ap-northeast-1.compute.internal>). Otherwise, specify a domain name
 (for example, C<MyCompany.com>). This value is used to complete
 unqualified DNS hostnames. B<Important>: Some Linux operating systems
@@ -4956,11 +5037,11 @@ file. The private key is returned as an unencrypted PEM encoded PKCS#1
 private key. If a key with the specified name already exists, Amazon
 EC2 returns an error.
 
-You can have up to five thousand key pairs per region.
+You can have up to five thousand key pairs per Region.
 
-The key pair returned to you is available only in the region in which
+The key pair returned to you is available only in the Region in which
 you create it. If you prefer, you can create your own key pair using a
-third-party tool and upload it to any region using ImportKeyPair.
+third-party tool and upload it to any Region using ImportKeyPair.
 
 For more information, see Key Pairs
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
@@ -5478,6 +5559,34 @@ and Amazon EBS Encryption
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 CreateSnapshots
+
+=over
+
+=item InstanceSpecification => L<Paws::EC2::InstanceSpecification>
+
+=item [CopyTagsFromSource => Str]
+
+=item [Description => Str]
+
+=item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateSnapshots>
+
+Returns: a L<Paws::EC2::CreateSnapshotsResult> instance
+
+Creates crash-consistent snapshots of multiple EBS volumes and stores
+the data in S3. Volumes are chosen by specifying an instance. Any
+attached volumes will produce one snapshot each that is
+crash-consistent across the instance. Boot volumes can be excluded by
+changing the paramaters.
+
+
 =head2 CreateSpotDatafeedSubscription
 
 =over
@@ -5748,11 +5857,10 @@ You can create a new empty volume or restore a volume from an EBS
 snapshot. Any AWS Marketplace product codes from the snapshot are
 propagated to the volume.
 
-You can create encrypted volumes with the C<Encrypted> parameter.
-Encrypted volumes may only be attached to instances that support Amazon
-EBS encryption. Volumes that are created from encrypted snapshots are
-also automatically encrypted. For more information, see Amazon EBS
-Encryption
+You can create encrypted volumes. Encrypted volumes must be attached to
+instances that support Amazon EBS encryption. Volumes that are created
+from encrypted snapshots are also automatically encrypted. For more
+information, see Amazon EBS Encryption
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -5990,8 +6098,8 @@ Each argument is described in detail in: L<Paws::EC2::CreateVpnConnection>
 Returns: a L<Paws::EC2::CreateVpnConnectionResult> instance
 
 Creates a VPN connection between an existing virtual private gateway
-and a VPN customer gateway. The only supported connection type is
-C<ipsec.1>.
+and a VPN customer gateway. The supported connection types are
+C<ipsec.1> and C<ipsec.2>.
 
 The response includes information that you need to give to your network
 administrator to configure your customer gateway.
@@ -7026,8 +7134,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeAggregateIdFormat>
 Returns: a L<Paws::EC2::DescribeAggregateIdFormatResult> instance
 
 Describes the longer ID format settings for all resource types in a
-specific region. This request is useful for performing a quick audit to
-determine whether a specific region is fully opted in for longer IDs
+specific Region. This request is useful for performing a quick audit to
+determine whether a specific Region is fully opted in for longer IDs
 (17-character IDs).
 
 This request only returns information about resource types that support
@@ -7066,7 +7174,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeAvailabilityZones>
 Returns: a L<Paws::EC2::DescribeAvailabilityZonesResult> instance
 
 Describes the Availability Zones that are available to you. The results
-include zones only for the region you're currently using. If there is
+include zones only for the Region you're currently using. If there is
 an event impacting an Availability Zone, you can use this request to
 view the state and any provided message for that Availability Zone.
 
@@ -7359,6 +7467,10 @@ I<AWS Site-to-Site VPN User Guide>.
 =item [DryRun => Bool]
 
 =item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
 
 
 =back
@@ -7750,7 +7862,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeIdFormat>
 
 Returns: a L<Paws::EC2::DescribeIdFormatResult> instance
 
-Describes the ID format settings for your resources on a per-region
+Describes the ID format settings for your resources on a per-Region
 basis, for example, to view which resource types are enabled for longer
 IDs. This request only returns information about resource types whose
 ID formats can be modified; it does not return information about other
@@ -7826,8 +7938,10 @@ The images available to you include public images, private images that
 you own, and private images owned by other AWS accounts for which you
 have explicit launch permissions.
 
-Recently deregistered images might appear in the returned results for a
-short interval.
+Recently deregistered images appear in the returned results for a short
+interval and then return empty results. After all instances that
+reference a deregistered AMI are terminated, specifying the ID of the
+image results in an error indicating that the AMI ID cannot be found.
 
 
 =head2 DescribeImportImageTasks
@@ -8436,9 +8550,14 @@ Each argument is described in detail in: L<Paws::EC2::DescribeRegions>
 
 Returns: a L<Paws::EC2::DescribeRegionsResult> instance
 
-Describes the regions that are currently available to you.
+Describes the Regions that are currently available to you. The API
+returns a list of all the Regions, including Regions that are disabled
+for your account. For information about enabling Regions for your
+account, see Enabling and Disabling Regions
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/manage-account-payment.html#manage-account-payment-enable-disable-regions)
+in the I<AWS Billing and Cost Management User Guide>.
 
-For a list of the regions supported by Amazon EC2, see Regions and
+For a list of the Regions supported by Amazon EC2, see Regions and
 Endpoints
 (https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region).
 
@@ -9078,6 +9197,10 @@ which the VPC peering connection has been deleted.
 =item [DryRun => Bool]
 
 =item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
 
 =item [SubnetIds => ArrayRef[Str|Undef]]
 
@@ -9831,6 +9954,33 @@ before you can delete the VPC or attach a different VPC to the virtual
 private gateway.
 
 
+=head2 DisableEbsEncryptionByDefault
+
+=over
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisableEbsEncryptionByDefault>
+
+Returns: a L<Paws::EC2::DisableEbsEncryptionByDefaultResult> instance
+
+Disables EBS encryption by default for your account in the current
+Region.
+
+After you disable encryption by default, you can still create encrypted
+volumes by enabling encryption when you create each volume.
+
+Disabling encryption by default does not change the encryption status
+of your existing volumes.
+
+For more information, see Amazon EBS Encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 DisableTransitGatewayRouteTablePropagation
 
 =over
@@ -10088,6 +10238,41 @@ You cannot disassociate the CIDR block with which you originally
 created the VPC (the primary CIDR block).
 
 
+=head2 EnableEbsEncryptionByDefault
+
+=over
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::EnableEbsEncryptionByDefault>
+
+Returns: a L<Paws::EC2::EnableEbsEncryptionByDefaultResult> instance
+
+Enables EBS encryption by default for your account in the current
+Region.
+
+After you enable encryption by default, the EBS volumes that you create
+are are always encrypted, either using the default CMK or the CMK that
+you specified when you created each volume. For more information, see
+Amazon EBS Encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+You can specify the default CMK for encryption by default using
+ModifyEbsDefaultKmsKeyId or ResetEbsDefaultKmsKeyId.
+
+Enabling encryption by default has no effect on the encryption status
+of your existing volumes.
+
+After you enable encryption by default, you can no longer launch
+instances using instance types that do not support encryption. For more
+information, see Supported Instance Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances).
+
+
 =head2 EnableTransitGatewayRouteTablePropagation
 
 =over
@@ -10320,6 +10505,50 @@ Retrieve a JPG-format screenshot of a running instance to help with
 troubleshooting.
 
 The returned content is Base64-encoded.
+
+
+=head2 GetEbsDefaultKmsKeyId
+
+=over
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetEbsDefaultKmsKeyId>
+
+Returns: a L<Paws::EC2::GetEbsDefaultKmsKeyIdResult> instance
+
+Describes the default customer master key (CMK) for EBS encryption by
+default for your account in this Region. You can change the default CMK
+for encryption by default using ModifyEbsDefaultKmsKeyId or
+ResetEbsDefaultKmsKeyId.
+
+For more information, see Amazon EBS Encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 GetEbsEncryptionByDefault
+
+=over
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetEbsEncryptionByDefault>
+
+Returns: a L<Paws::EC2::GetEbsEncryptionByDefaultResult> instance
+
+Describes whether EBS encryption by default is enabled for your account
+in the current Region.
+
+For more information, see Amazon EBS Encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 GetHostReservationPurchasePreview
@@ -10749,6 +10978,38 @@ information, DNS server, and description. Modifying the DNS server
 resets existing client connections.
 
 
+=head2 ModifyEbsDefaultKmsKeyId
+
+=over
+
+=item KmsKeyId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyEbsDefaultKmsKeyId>
+
+Returns: a L<Paws::EC2::ModifyEbsDefaultKmsKeyIdResult> instance
+
+Changes the default customer master key (CMK) for EBS encryption by
+default for your account in this Region.
+
+AWS creates a unique AWS managed CMK in each Region for use with
+encryption by default. If you change the default CMK to a customer
+managed CMK, it is used instead of the AWS managed CMK. To reset the
+default CMK to the AWS managed CMK for EBS, use
+ResetEbsDefaultKmsKeyId.
+
+If you delete or disable the customer managed CMK that you specified
+for use with encryption by default, your instances will fail to launch.
+
+For more information, see Amazon EBS Encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 ModifyFleet
 
 =over
@@ -10812,9 +11073,11 @@ Modifies the specified attribute of the specified Amazon FPGA Image
 
 =over
 
-=item AutoPlacement => Str
-
 =item HostIds => ArrayRef[Str|Undef]
+
+=item [AutoPlacement => Str]
+
+=item [HostRecovery => Str]
 
 
 =back
@@ -10895,7 +11158,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyIdFormat>
 
 Returns: nothing
 
-Modifies the ID format for the specified resource on a per-region
+Modifies the ID format for the specified resource on a per-Region
 basis. You can specify that resources should receive longer IDs
 (17-character IDs) when they are created.
 
@@ -11270,9 +11533,9 @@ Returns: nothing
 
 Adds or removes permission settings for the specified snapshot. You may
 add or remove specified AWS account IDs from a snapshot's list of
-create volume permissions, but you cannot do both in a single API call.
-If you need to both add and remove account IDs for a snapshot, you must
-use multiple API calls.
+create volume permissions, but you cannot do both in a single
+operation. If you need to both add and remove account IDs for a
+snapshot, you must use multiple operations.
 
 Encrypted snapshots and snapshots with AWS Marketplace product codes
 cannot be made public. Snapshots encrypted with your default CMK cannot
@@ -11302,6 +11565,8 @@ Each argument is described in detail in: L<Paws::EC2::ModifySpotFleetRequest>
 Returns: a L<Paws::EC2::ModifySpotFleetRequestResponse> instance
 
 Modifies the specified Spot Fleet request.
+
+You can only modify a Spot Fleet request of type C<maintain>.
 
 While the Spot Fleet request is being modified, it is in the
 C<modifying> state.
@@ -11420,8 +11685,8 @@ You can use CloudWatch Events to check the status of a modification to
 an EBS volume. For information about CloudWatch Events, see the Amazon
 CloudWatch Events User Guide
 (https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). You can
-also track the status of a modification using the
-DescribeVolumesModifications API. For information about tracking status
+also track the status of a modification using
+DescribeVolumesModifications. For information about tracking status
 changes using either method, see Monitoring Volume Modifications
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods).
 
@@ -11656,11 +11921,11 @@ If the peered VPCs are in the same AWS account, you can enable DNS
 resolution for queries from the local VPC. This ensures that queries
 from the local VPC resolve to private IP addresses in the peer VPC.
 This option is not available if the peered VPCs are in different AWS
-accounts or different regions. For peered VPCs in different AWS
+accounts or different Regions. For peered VPCs in different AWS
 accounts, each AWS account owner must initiate a separate request to
 modify the peering connection options. For inter-region peering
-connections, you must use the region for the requester VPC to modify
-the requester VPC peering options and the region for the accepter VPC
+connections, you must use the Region for the requester VPC to modify
+the requester VPC peering options and the Region for the accepter VPC
 to modify the accepter VPC peering options. To verify which VPCs are
 the accepter and the requester for a VPC peering connection, use the
 DescribeVpcPeeringConnections command.
@@ -11716,7 +11981,61 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpnConnection>
 
 Returns: a L<Paws::EC2::ModifyVpnConnectionResult> instance
 
+Modifies the target gateway of a AWS Site-to-Site VPN connection. The
+following migration options are available:
 
+=over
+
+=item *
+
+An existing virtual private gateway to a new virtual private gateway
+
+=item *
+
+An existing virtual private gateway to a transit gateway
+
+=item *
+
+An existing transit gateway to a new transit gateway
+
+=item *
+
+An existing transit gateway to a virtual private gateway
+
+=back
+
+Before you perform the migration to the new gateway, you must configure
+the new gateway. Use CreateVpnGateway to create a virtual private
+gateway, or CreateTransitGateway to create a transit gateway.
+
+This step is required when you migrate from a virtual private gateway
+with static routes to a transit gateway.
+
+You must delete the static routes before you migrate to the new
+gateway.
+
+Keep a copy of the static route before you delete it. You will need to
+add back these routes to the transit gateway after the VPN connection
+migration is complete.
+
+After you migrate to the new gateway, you might need to modify your VPC
+route table. Use CreateRoute and DeleteRoute to make the changes
+described in VPN Gateway Target Modification Required VPC Route Table
+Updates
+(https://docs.aws.amazon.com/vpn/latest/s2svpn/modify-vpn-target.html#step-update-routing)
+in the I<AWS Site-to-Site VPN User Guide>.
+
+When the new gateway is a transit gateway, modify the transit gateway
+route table to allow traffic between the VPC and the AWS Site-to-Site
+VPN connection. Use CreateTransitGatewayRoute to add the routes.
+
+If you deleted VPN static routes, you must add the static routes to the
+transit gateway route table.
+
+After you perform this operation, the AWS VPN endpoint's IP addresses
+on the AWS side and the tunnel options remain intact. Your s2slong;
+connection will be temporarily unavailable for approximately 10 minutes
+while we provision the new endpoints
 
 
 =head2 MonitorInstances
@@ -12445,6 +12764,29 @@ Creates a Spot Instance request.
 For more information, see Spot Instance Requests
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
+
+
+=head2 ResetEbsDefaultKmsKeyId
+
+=over
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ResetEbsDefaultKmsKeyId>
+
+Returns: a L<Paws::EC2::ResetEbsDefaultKmsKeyIdResult> instance
+
+Resets the default customer master key (CMK) for EBS encryption for
+your account in this Region to the AWS managed CMK for EBS.
+
+After resetting the default CMK to the AWS managed CMK, you can
+continue to encrypt by a customer managed CMK by specifying it when you
+create the volume. For more information, see Amazon EBS Encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 ResetFpgaImageAttribute
@@ -13359,6 +13701,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeClientVpnTargetNetworksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllDhcpOptions(sub { },[DhcpOptionsIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllDhcpOptions([DhcpOptionsIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DhcpOptions, passing the object as the first parameter, and the string 'DhcpOptions' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeDhcpOptionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllEgressOnlyInternetGateways(sub { },[DryRun => Bool, EgressOnlyInternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 =head2 DescribeAllEgressOnlyInternetGateways([DryRun => Bool, EgressOnlyInternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -13789,6 +14143,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - StaleSecurityGroupSet, passing the object as the first parameter, and the string 'StaleSecurityGroupSet' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeStaleSecurityGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSubnets(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, SubnetIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllSubnets([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, SubnetIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Subnets, passing the object as the first parameter, and the string 'Subnets' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeSubnetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllTags(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])

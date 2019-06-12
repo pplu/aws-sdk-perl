@@ -37,49 +37,48 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LaunchTemplateData => {
         BlockDeviceMappings => [
           {
-            DeviceName => 'MyString',    # OPTIONAL
+            DeviceName => 'MyString',
             Ebs        => {
-              DeleteOnTermination => 1,             # OPTIONAL
-              Encrypted           => 1,             # OPTIONAL
-              Iops                => 1,             # OPTIONAL
-              KmsKeyId            => 'MyString',    # OPTIONAL
-              SnapshotId          => 'MyString',    # OPTIONAL
-              VolumeSize          => 1,             # OPTIONAL
+              DeleteOnTermination => 1,            # OPTIONAL
+              Encrypted           => 1,            # OPTIONAL
+              Iops                => 1,            # OPTIONAL
+              KmsKeyId            => 'MyString',
+              SnapshotId          => 'MyString',
+              VolumeSize          => 1,            # OPTIONAL
               VolumeType =>
                 'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
             },    # OPTIONAL
-            NoDevice    => 'MyString',    # OPTIONAL
-            VirtualName => 'MyString',    # OPTIONAL
+            NoDevice    => 'MyString',
+            VirtualName => 'MyString',
           },
           ...
-        ],                                # OPTIONAL
+        ],        # OPTIONAL
         CapacityReservationSpecification => {
           CapacityReservationPreference =>
-            'open',                       # values: open, none; OPTIONAL
-          CapacityReservationTarget => {
-            CapacityReservationId => 'MyString',    # OPTIONAL
-          },    # OPTIONAL
+            'open',    # values: open, none; OPTIONAL
+          CapacityReservationTarget => { CapacityReservationId => 'MyString', }
+          ,            # OPTIONAL
         },    # OPTIONAL
         CpuOptions => {
           CoreCount      => 1,    # OPTIONAL
           ThreadsPerCore => 1,    # OPTIONAL
         },    # OPTIONAL
         CreditSpecification => {
-          CpuCredits => 'MyString',    # OPTIONAL
+          CpuCredits => 'MyString',
 
         },    # OPTIONAL
         DisableApiTermination    => 1,    # OPTIONAL
         EbsOptimized             => 1,    # OPTIONAL
         ElasticGpuSpecifications => [
           {
-            Type => 'MyString',           # OPTIONAL
+            Type => 'MyString',
 
           },
           ...
         ],                                # OPTIONAL
         ElasticInferenceAccelerators => [
           {
-            Type => 'MyString',           # OPTIONAL
+            Type => 'MyString',
 
           },
           ...
@@ -88,98 +87,83 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Configured => 1,                # OPTIONAL
         },    # OPTIONAL
         IamInstanceProfile => {
-          Arn  => 'MyString',    # OPTIONAL
-          Name => 'MyString',    # OPTIONAL
+          Arn  => 'MyString',
+          Name => 'MyString',
         },    # OPTIONAL
-        ImageId => 'MyString',    # OPTIONAL
+        ImageId => 'MyString',
         InstanceInitiatedShutdownBehavior =>
-          'stop',                 # values: stop, terminate; OPTIONAL
+          'stop',    # values: stop, terminate; OPTIONAL
         InstanceMarketOptions => {
           MarketType  => 'spot',    # values: spot; OPTIONAL
           SpotOptions => {
             BlockDurationMinutes => 1,    # OPTIONAL
             InstanceInterruptionBehavior =>
               'hibernate',    # values: hibernate, stop, terminate; OPTIONAL
-            MaxPrice => 'MyString',    # OPTIONAL
+            MaxPrice => 'MyString',
             SpotInstanceType =>
-              'one-time',              # values: one-time, persistent; OPTIONAL
+              'one-time',     # values: one-time, persistent; OPTIONAL
             ValidUntil => '1970-01-01T01:00:00',    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         InstanceType => 't1.micro'
-        , # values: t1.micro, t2.nano, t2.micro, t2.small, t2.medium, t2.large, t2.xlarge, t2.2xlarge, t3.nano, t3.micro, t3.small, t3.medium, t3.large, t3.xlarge, t3.2xlarge, t3a.nano, t3a.micro, t3a.small, t3a.medium, t3a.large, t3a.xlarge, t3a.2xlarge, m1.small, m1.medium, m1.large, m1.xlarge, m3.medium, m3.large, m3.xlarge, m3.2xlarge, m4.large, m4.xlarge, m4.2xlarge, m4.4xlarge, m4.10xlarge, m4.16xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, r3.large, r3.xlarge, r3.2xlarge, r3.4xlarge, r3.8xlarge, r4.large, r4.xlarge, r4.2xlarge, r4.4xlarge, r4.8xlarge, r4.16xlarge, r5.large, r5.xlarge, r5.2xlarge, r5.4xlarge, r5.12xlarge, r5.24xlarge, r5.metal, r5a.large, r5a.xlarge, r5a.2xlarge, r5a.4xlarge, r5a.12xlarge, r5a.24xlarge, r5d.large, r5d.xlarge, r5d.2xlarge, r5d.4xlarge, r5d.12xlarge, r5d.24xlarge, r5d.metal, r5ad.large, r5ad.xlarge, r5ad.2xlarge, r5ad.4xlarge, r5ad.8xlarge, r5ad.12xlarge, r5ad.16xlarge, r5ad.24xlarge, x1.16xlarge, x1.32xlarge, x1e.xlarge, x1e.2xlarge, x1e.4xlarge, x1e.8xlarge, x1e.16xlarge, x1e.32xlarge, i2.xlarge, i2.2xlarge, i2.4xlarge, i2.8xlarge, i3.large, i3.xlarge, i3.2xlarge, i3.4xlarge, i3.8xlarge, i3.16xlarge, i3.metal, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, c4.large, c4.xlarge, c4.2xlarge, c4.4xlarge, c4.8xlarge, c5.large, c5.xlarge, c5.2xlarge, c5.4xlarge, c5.9xlarge, c5.18xlarge, c5d.large, c5d.xlarge, c5d.2xlarge, c5d.4xlarge, c5d.9xlarge, c5d.18xlarge, c5n.large, c5n.xlarge, c5n.2xlarge, c5n.4xlarge, c5n.9xlarge, c5n.18xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, g2.8xlarge, g3.4xlarge, g3.8xlarge, g3.16xlarge, g3s.xlarge, cg1.4xlarge, p2.xlarge, p2.8xlarge, p2.16xlarge, p3.2xlarge, p3.8xlarge, p3.16xlarge, p3dn.24xlarge, d2.xlarge, d2.2xlarge, d2.4xlarge, d2.8xlarge, f1.2xlarge, f1.4xlarge, f1.16xlarge, m5.large, m5.xlarge, m5.2xlarge, m5.4xlarge, m5.12xlarge, m5.24xlarge, m5.metal, m5a.large, m5a.xlarge, m5a.2xlarge, m5a.4xlarge, m5a.12xlarge, m5a.24xlarge, m5d.large, m5d.xlarge, m5d.2xlarge, m5d.4xlarge, m5d.12xlarge, m5d.24xlarge, m5d.metal, m5ad.large, m5ad.xlarge, m5ad.2xlarge, m5ad.4xlarge, m5ad.8xlarge, m5ad.12xlarge, m5ad.16xlarge, m5ad.24xlarge, h1.2xlarge, h1.4xlarge, h1.8xlarge, h1.16xlarge, z1d.large, z1d.xlarge, z1d.2xlarge, z1d.3xlarge, z1d.6xlarge, z1d.12xlarge, z1d.metal, u-6tb1.metal, u-9tb1.metal, u-12tb1.metal, a1.medium, a1.large, a1.xlarge, a1.2xlarge, a1.4xlarge; OPTIONAL
-        KernelId              => 'MyString',    # OPTIONAL
-        KeyName               => 'MyString',    # OPTIONAL
-        LicenseSpecifications => [
-          {
-            LicenseConfigurationArn => 'MyString',    # OPTIONAL
-          },
-          ...
-        ],                                            # OPTIONAL
+        , # values: t1.micro, t2.nano, t2.micro, t2.small, t2.medium, t2.large, t2.xlarge, t2.2xlarge, t3.nano, t3.micro, t3.small, t3.medium, t3.large, t3.xlarge, t3.2xlarge, t3a.nano, t3a.micro, t3a.small, t3a.medium, t3a.large, t3a.xlarge, t3a.2xlarge, m1.small, m1.medium, m1.large, m1.xlarge, m3.medium, m3.large, m3.xlarge, m3.2xlarge, m4.large, m4.xlarge, m4.2xlarge, m4.4xlarge, m4.10xlarge, m4.16xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, cr1.8xlarge, r3.large, r3.xlarge, r3.2xlarge, r3.4xlarge, r3.8xlarge, r4.large, r4.xlarge, r4.2xlarge, r4.4xlarge, r4.8xlarge, r4.16xlarge, r5.large, r5.xlarge, r5.2xlarge, r5.4xlarge, r5.12xlarge, r5.24xlarge, r5.metal, r5a.large, r5a.xlarge, r5a.2xlarge, r5a.4xlarge, r5a.12xlarge, r5a.24xlarge, r5d.large, r5d.xlarge, r5d.2xlarge, r5d.4xlarge, r5d.12xlarge, r5d.24xlarge, r5d.metal, r5ad.large, r5ad.xlarge, r5ad.2xlarge, r5ad.4xlarge, r5ad.8xlarge, r5ad.12xlarge, r5ad.16xlarge, r5ad.24xlarge, x1.16xlarge, x1.32xlarge, x1e.xlarge, x1e.2xlarge, x1e.4xlarge, x1e.8xlarge, x1e.16xlarge, x1e.32xlarge, i2.xlarge, i2.2xlarge, i2.4xlarge, i2.8xlarge, i3.large, i3.xlarge, i3.2xlarge, i3.4xlarge, i3.8xlarge, i3.16xlarge, i3.metal, i3en.large, i3en.xlarge, i3en.2xlarge, i3en.3xlarge, i3en.6xlarge, i3en.12xlarge, i3en.24xlarge, hi1.4xlarge, hs1.8xlarge, c1.medium, c1.xlarge, c3.large, c3.xlarge, c3.2xlarge, c3.4xlarge, c3.8xlarge, c4.large, c4.xlarge, c4.2xlarge, c4.4xlarge, c4.8xlarge, c5.large, c5.xlarge, c5.2xlarge, c5.4xlarge, c5.9xlarge, c5.18xlarge, c5d.large, c5d.xlarge, c5d.2xlarge, c5d.4xlarge, c5d.9xlarge, c5d.18xlarge, c5n.large, c5n.xlarge, c5n.2xlarge, c5n.4xlarge, c5n.9xlarge, c5n.18xlarge, cc1.4xlarge, cc2.8xlarge, g2.2xlarge, g2.8xlarge, g3.4xlarge, g3.8xlarge, g3.16xlarge, g3s.xlarge, cg1.4xlarge, p2.xlarge, p2.8xlarge, p2.16xlarge, p3.2xlarge, p3.8xlarge, p3.16xlarge, p3dn.24xlarge, d2.xlarge, d2.2xlarge, d2.4xlarge, d2.8xlarge, f1.2xlarge, f1.4xlarge, f1.16xlarge, m5.large, m5.xlarge, m5.2xlarge, m5.4xlarge, m5.12xlarge, m5.24xlarge, m5.metal, m5a.large, m5a.xlarge, m5a.2xlarge, m5a.4xlarge, m5a.12xlarge, m5a.24xlarge, m5d.large, m5d.xlarge, m5d.2xlarge, m5d.4xlarge, m5d.12xlarge, m5d.24xlarge, m5d.metal, m5ad.large, m5ad.xlarge, m5ad.2xlarge, m5ad.4xlarge, m5ad.8xlarge, m5ad.12xlarge, m5ad.16xlarge, m5ad.24xlarge, h1.2xlarge, h1.4xlarge, h1.8xlarge, h1.16xlarge, z1d.large, z1d.xlarge, z1d.2xlarge, z1d.3xlarge, z1d.6xlarge, z1d.12xlarge, z1d.metal, u-6tb1.metal, u-9tb1.metal, u-12tb1.metal, a1.medium, a1.large, a1.xlarge, a1.2xlarge, a1.4xlarge; OPTIONAL
+        KernelId => 'MyString',
+        KeyName  => 'MyString',
+        LicenseSpecifications =>
+          [ { LicenseConfigurationArn => 'MyString', }, ... ],    # OPTIONAL
         Monitoring => {
-          Enabled => 1,                               # OPTIONAL
+          Enabled => 1,                                           # OPTIONAL
         },    # OPTIONAL
         NetworkInterfaces => [
           {
-            AssociatePublicIpAddress => 1,             # OPTIONAL
-            DeleteOnTermination      => 1,             # OPTIONAL
-            Description              => 'MyString',    # OPTIONAL
-            DeviceIndex              => 1,             # OPTIONAL
-            Groups                   => [
-              'MyString', ...                          # OPTIONAL
-            ],                                         # OPTIONAL
-            InterfaceType    => 'MyString',            # OPTIONAL
-            Ipv6AddressCount => 1,                     # OPTIONAL
-            Ipv6Addresses    => [
-              {
-                Ipv6Address => 'MyString',             # OPTIONAL
-              },
-              ...
-            ],                                         # OPTIONAL
-            NetworkInterfaceId => 'MyString',          # OPTIONAL
-            PrivateIpAddress   => 'MyString',          # OPTIONAL
+            AssociatePublicIpAddress => 1,                      # OPTIONAL
+            DeleteOnTermination      => 1,                      # OPTIONAL
+            Description              => 'MyString',
+            DeviceIndex              => 1,                      # OPTIONAL
+            Groups                   => [ 'MyString', ... ],    # OPTIONAL
+            InterfaceType            => 'MyString',
+            Ipv6AddressCount         => 1,                      # OPTIONAL
+            Ipv6Addresses => [ { Ipv6Address => 'MyString', }, ... ], # OPTIONAL
+            NetworkInterfaceId => 'MyString',
+            PrivateIpAddress   => 'MyString',
             PrivateIpAddresses => [
               {
-                Primary          => 1,                 # OPTIONAL
-                PrivateIpAddress => 'MyString',        # OPTIONAL
+                Primary          => 1,                                # OPTIONAL
+                PrivateIpAddress => 'MyString',
               },
               ...
-            ],                                         # OPTIONAL
-            SecondaryPrivateIpAddressCount => 1,             # OPTIONAL
-            SubnetId                       => 'MyString',    # OPTIONAL
+            ],                                                        # OPTIONAL
+            SecondaryPrivateIpAddressCount => 1,                      # OPTIONAL
+            SubnetId                       => 'MyString',
           },
           ...
-        ],                                                   # OPTIONAL
+        ],                                                            # OPTIONAL
         Placement => {
-          Affinity         => 'MyString',                    # OPTIONAL
-          AvailabilityZone => 'MyString',                    # OPTIONAL
-          GroupName        => 'MyString',                    # OPTIONAL
-          HostId           => 'MyString',                    # OPTIONAL
-          SpreadDomain     => 'MyString',                    # OPTIONAL
+          Affinity         => 'MyString',
+          AvailabilityZone => 'MyString',
+          GroupName        => 'MyString',
+          HostId           => 'MyString',
+          SpreadDomain     => 'MyString',
           Tenancy => 'default',    # values: default, dedicated, host; OPTIONAL
         },    # OPTIONAL
-        RamDiskId        => 'MyString',    # OPTIONAL
-        SecurityGroupIds => [
-          'MyString', ...                  # OPTIONAL
-        ],                                 # OPTIONAL
-        SecurityGroups => [
-          'MyString', ...                  # OPTIONAL
-        ],                                 # OPTIONAL
+        RamDiskId         => 'MyString',
+        SecurityGroupIds  => [ 'MyString', ... ],    # OPTIONAL
+        SecurityGroups    => [ 'MyString', ... ],    # OPTIONAL
         TagSpecifications => [
           {
             ResourceType => 'client-vpn-endpoint'
             , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, transit-gateway, transit-gateway-attachment, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
             Tags => [
               {
-                Key   => 'MyString',    # OPTIONAL
-                Value => 'MyString',    # OPTIONAL
+                Key   => 'MyString',
+                Value => 'MyString',
               },
               ...
-            ],                          # OPTIONAL
+            ],    # OPTIONAL
           },
           ...
-        ],                              # OPTIONAL
-        UserData => 'MyString',         # OPTIONAL
+        ],        # OPTIONAL
+        UserData => 'MyString',
       },
       ClientToken        => 'MyString',                # OPTIONAL
       DryRun             => 1,                         # OPTIONAL

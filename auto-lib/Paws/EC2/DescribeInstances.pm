@@ -35,18 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      InstanceIds => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      InstanceIds => [ 'MyString', ... ],   # OPTIONAL
+      MaxResults  => 1,                     # OPTIONAL
+      NextToken   => 'MyString',            # OPTIONAL
     );
 
     # Results:
@@ -83,7 +79,8 @@ Dedicated Host (C<default> | C<host>).
 
 =item *
 
-C<architecture> - The instance architecture (C<i386> | C<x86_64>).
+C<architecture> - The instance architecture (C<i386> | C<x86_64> |
+C<arm64>).
 
 =item *
 

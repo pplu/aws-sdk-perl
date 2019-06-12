@@ -79,12 +79,13 @@ The IDs of one or more security groups.
 
 =head2 InterfaceType => Str
 
-Indicates whether the network interface is an Elastic Fabric Adapter
-(EFA). Only specify this parameter to create an EFA. For more
-information, see Elastic Fabric Adapter in the I<Amazon Elastic Compute
-Cloud User Guide>.
+Indicates the type of network interface. To create an Elastic Fabric
+Adapter (EFA), specify C<efa>. For more information, see Elastic Fabric
+Adapter (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
-If you are not creating an EFA ENI, omit this parameter.
+If you are not creating an EFA, specify C<interface> or omit this
+parameter.
 
 Valid values are: C<"efa">
 
