@@ -25,6 +25,11 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::AssociateContactWithAddressBook', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateDeviceWithNetworkProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::AssociateDeviceWithNetworkProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateDeviceWithRoom {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::AssociateDeviceWithRoom', @_);
@@ -68,6 +73,11 @@ package Paws::AlexaForBusiness;
   sub CreateGatewayGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateGatewayGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateNetworkProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::CreateNetworkProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateProfile {
@@ -123,6 +133,11 @@ package Paws::AlexaForBusiness;
   sub DeleteGatewayGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteGatewayGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteNetworkProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::DeleteNetworkProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteProfile {
@@ -223,6 +238,11 @@ package Paws::AlexaForBusiness;
   sub GetInvitationConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetInvitationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetNetworkProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::GetNetworkProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetProfile {
@@ -350,6 +370,11 @@ package Paws::AlexaForBusiness;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::SearchDevices', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SearchNetworkProfiles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::SearchNetworkProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SearchProfiles {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::SearchProfiles', @_);
@@ -433,6 +458,11 @@ package Paws::AlexaForBusiness;
   sub UpdateGatewayGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::UpdateGatewayGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateNetworkProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AlexaForBusiness::UpdateNetworkProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateProfile {
@@ -752,7 +782,7 @@ package Paws::AlexaForBusiness;
   }
 
 
-  sub operations { qw/ApproveSkill AssociateContactWithAddressBook AssociateDeviceWithRoom AssociateSkillGroupWithRoom AssociateSkillWithSkillGroup AssociateSkillWithUsers CreateAddressBook CreateBusinessReportSchedule CreateConferenceProvider CreateContact CreateGatewayGroup CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteBusinessReportSchedule DeleteConferenceProvider DeleteContact DeleteDevice DeleteDeviceUsageData DeleteGatewayGroup DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillAuthorization DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillFromSkillGroup DisassociateSkillFromUsers DisassociateSkillGroupFromRoom ForgetSmartHomeAppliances GetAddressBook GetConferencePreference GetConferenceProvider GetContact GetDevice GetGateway GetGatewayGroup GetInvitationConfiguration GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListBusinessReportSchedules ListConferenceProviders ListDeviceEvents ListGatewayGroups ListGateways ListSkills ListSkillsStoreCategories ListSkillsStoreSkillsByCategory ListSmartHomeAppliances ListTags PutConferencePreference PutInvitationConfiguration PutRoomSkillParameter PutSkillAuthorization RegisterAVSDevice RejectSkill ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendAnnouncement SendInvitation StartDeviceSync StartSmartHomeApplianceDiscovery TagResource UntagResource UpdateAddressBook UpdateBusinessReportSchedule UpdateConferenceProvider UpdateContact UpdateDevice UpdateGateway UpdateGatewayGroup UpdateProfile UpdateRoom UpdateSkillGroup / }
+  sub operations { qw/ApproveSkill AssociateContactWithAddressBook AssociateDeviceWithNetworkProfile AssociateDeviceWithRoom AssociateSkillGroupWithRoom AssociateSkillWithSkillGroup AssociateSkillWithUsers CreateAddressBook CreateBusinessReportSchedule CreateConferenceProvider CreateContact CreateGatewayGroup CreateNetworkProfile CreateProfile CreateRoom CreateSkillGroup CreateUser DeleteAddressBook DeleteBusinessReportSchedule DeleteConferenceProvider DeleteContact DeleteDevice DeleteDeviceUsageData DeleteGatewayGroup DeleteNetworkProfile DeleteProfile DeleteRoom DeleteRoomSkillParameter DeleteSkillAuthorization DeleteSkillGroup DeleteUser DisassociateContactFromAddressBook DisassociateDeviceFromRoom DisassociateSkillFromSkillGroup DisassociateSkillFromUsers DisassociateSkillGroupFromRoom ForgetSmartHomeAppliances GetAddressBook GetConferencePreference GetConferenceProvider GetContact GetDevice GetGateway GetGatewayGroup GetInvitationConfiguration GetNetworkProfile GetProfile GetRoom GetRoomSkillParameter GetSkillGroup ListBusinessReportSchedules ListConferenceProviders ListDeviceEvents ListGatewayGroups ListGateways ListSkills ListSkillsStoreCategories ListSkillsStoreSkillsByCategory ListSmartHomeAppliances ListTags PutConferencePreference PutInvitationConfiguration PutRoomSkillParameter PutSkillAuthorization RegisterAVSDevice RejectSkill ResolveRoom RevokeInvitation SearchAddressBooks SearchContacts SearchDevices SearchNetworkProfiles SearchProfiles SearchRooms SearchSkillGroups SearchUsers SendAnnouncement SendInvitation StartDeviceSync StartSmartHomeApplianceDiscovery TagResource UntagResource UpdateAddressBook UpdateBusinessReportSchedule UpdateConferenceProvider UpdateContact UpdateDevice UpdateGateway UpdateGatewayGroup UpdateNetworkProfile UpdateProfile UpdateRoom UpdateSkillGroup / }
 
 1;
 
@@ -831,6 +861,24 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateCont
 Returns: a L<Paws::AlexaForBusiness::AssociateContactWithAddressBookResponse> instance
 
 Associates a contact with a given address book.
+
+
+=head2 AssociateDeviceWithNetworkProfile
+
+=over
+
+=item DeviceArn => Str
+
+=item NetworkProfileArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::AssociateDeviceWithNetworkProfile>
+
+Returns: a L<Paws::AlexaForBusiness::AssociateDeviceWithNetworkProfileResponse> instance
+
+Associates a device with the specified network profile.
 
 
 =head2 AssociateDeviceWithRoom
@@ -1025,6 +1073,40 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateGateway
 Returns: a L<Paws::AlexaForBusiness::CreateGatewayGroupResponse> instance
 
 Creates a gateway group with the specified details.
+
+
+=head2 CreateNetworkProfile
+
+=over
+
+=item ClientRequestToken => Str
+
+=item NetworkProfileName => Str
+
+=item SecurityType => Str
+
+=item Ssid => Str
+
+=item [CertificateAuthorityArn => Str]
+
+=item [CurrentPassword => Str]
+
+=item [Description => Str]
+
+=item [EapMethod => Str]
+
+=item [NextPassword => Str]
+
+=item [TrustAnchors => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::CreateNetworkProfile>
+
+Returns: a L<Paws::AlexaForBusiness::CreateNetworkProfileResponse> instance
+
+Creates a network profile with the specified details.
 
 
 =head2 CreateProfile
@@ -1231,8 +1313,8 @@ Returns: a L<Paws::AlexaForBusiness::DeleteDeviceUsageDataResponse> instance
 
 When this action is called for a specified shared device, it allows
 authorized users to delete the device's entire previous history of
-voice input data and associated response data. This action can be
-called once every 24 hours for a specific shared device.
+voice input data. This action can be called once every 24 hours for a
+specific shared device.
 
 
 =head2 DeleteGatewayGroup
@@ -1249,6 +1331,22 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteGateway
 Returns: a L<Paws::AlexaForBusiness::DeleteGatewayGroupResponse> instance
 
 Deletes a gateway group.
+
+
+=head2 DeleteNetworkProfile
+
+=over
+
+=item NetworkProfileArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteNetworkProfile>
+
+Returns: a L<Paws::AlexaForBusiness::DeleteNetworkProfileResponse> instance
+
+Deletes a network profile by the network profile ARN.
 
 
 =head2 DeleteProfile
@@ -1585,6 +1683,22 @@ Returns: a L<Paws::AlexaForBusiness::GetInvitationConfigurationResponse> instanc
 
 Retrieves the configured values for the user enrollment invitation
 email template.
+
+
+=head2 GetNetworkProfile
+
+=over
+
+=item NetworkProfileArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::GetNetworkProfile>
+
+Returns: a L<Paws::AlexaForBusiness::GetNetworkProfileResponse> instance
+
+Gets the network profile details by the network profile ARN.
 
 
 =head2 GetProfile
@@ -2090,6 +2204,29 @@ Returns: a L<Paws::AlexaForBusiness::SearchDevicesResponse> instance
 Searches devices and lists the ones that meet a set of filter criteria.
 
 
+=head2 SearchNetworkProfiles
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::SearchNetworkProfiles>
+
+Returns: a L<Paws::AlexaForBusiness::SearchNetworkProfilesResponse> instance
+
+Searches network profiles and lists the ones that meet a set of filter
+and sort criteria.
+
+
 =head2 SearchProfiles
 
 =over
@@ -2240,8 +2377,37 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::StartDeviceSy
 
 Returns: a L<Paws::AlexaForBusiness::StartDeviceSyncResponse> instance
 
-Resets a device and its account to the known default settings, by
-clearing all information and settings set by previous users.
+Resets a device and its account to the known default settings. This
+clears all information and settings set by previous users in the
+following ways:
+
+=over
+
+=item *
+
+Bluetooth - This unpairs all bluetooth devices paired with your echo
+device.
+
+=item *
+
+Volume - This resets the echo device's volume to the default value.
+
+=item *
+
+Notifications - This clears all notifications from your echo device.
+
+=item *
+
+Lists - This clears all to-do items from your echo device.
+
+=item *
+
+Settings - This internally syncs the room's profile (if the device is
+assigned to a room), contacts, address books, delegation access for
+account linking, and communications (if enabled on the room profile).
+
+=back
+
 
 
 =head2 StartSmartHomeApplianceDiscovery
@@ -2452,6 +2618,34 @@ Returns: a L<Paws::AlexaForBusiness::UpdateGatewayGroupResponse> instance
 
 Updates the details of a gateway group. If any optional field is not
 provided, the existing corresponding value is left unmodified.
+
+
+=head2 UpdateNetworkProfile
+
+=over
+
+=item NetworkProfileArn => Str
+
+=item [CertificateAuthorityArn => Str]
+
+=item [CurrentPassword => Str]
+
+=item [Description => Str]
+
+=item [NetworkProfileName => Str]
+
+=item [NextPassword => Str]
+
+=item [TrustAnchors => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AlexaForBusiness::UpdateNetworkProfile>
+
+Returns: a L<Paws::AlexaForBusiness::UpdateNetworkProfileResponse> instance
+
+Updates a network profile by the network profile ARN.
 
 
 =head2 UpdateProfile
