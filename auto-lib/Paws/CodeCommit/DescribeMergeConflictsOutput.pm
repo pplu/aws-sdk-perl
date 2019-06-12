@@ -1,10 +1,10 @@
 
-package Paws::CodeCommit::GetMergeConflictsOutput;
+package Paws::CodeCommit::DescribeMergeConflictsOutput;
   use Moose;
   has BaseCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'baseCommitId' );
-  has ConflictMetadataList => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::ConflictMetadata]', traits => ['NameInRequest'], request_name => 'conflictMetadataList' , required => 1);
+  has ConflictMetadata => (is => 'ro', isa => 'Paws::CodeCommit::ConflictMetadata', traits => ['NameInRequest'], request_name => 'conflictMetadata' , required => 1);
   has DestinationCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCommitId' , required => 1);
-  has Mergeable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'mergeable' , required => 1);
+  has MergeHunks => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::MergeHunk]', traits => ['NameInRequest'], request_name => 'mergeHunks' , required => 1);
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has SourceCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitId' , required => 1);
 
@@ -14,7 +14,7 @@ package Paws::CodeCommit::GetMergeConflictsOutput;
 
 =head1 NAME
 
-Paws::CodeCommit::GetMergeConflictsOutput
+Paws::CodeCommit::DescribeMergeConflictsOutput
 
 =head1 ATTRIBUTES
 
@@ -24,9 +24,9 @@ Paws::CodeCommit::GetMergeConflictsOutput
 The commit ID of the merge base.
 
 
-=head2 B<REQUIRED> ConflictMetadataList => ArrayRef[L<Paws::CodeCommit::ConflictMetadata>]
+=head2 B<REQUIRED> ConflictMetadata => L<Paws::CodeCommit::ConflictMetadata>
 
-A list of metadata for any conflicts found.
+Contains metadata about the conflicts found in the merge.
 
 
 =head2 B<REQUIRED> DestinationCommitId => Str
@@ -35,10 +35,9 @@ The commit ID of the destination commit specifier that was used in the
 merge evaluation.
 
 
-=head2 B<REQUIRED> Mergeable => Bool
+=head2 B<REQUIRED> MergeHunks => ArrayRef[L<Paws::CodeCommit::MergeHunk>]
 
-A Boolean value that indicates whether the code is mergeable by the
-specified merge option.
+A list of merge hunks of the differences between the files or lines.
 
 
 =head2 NextToken => Str

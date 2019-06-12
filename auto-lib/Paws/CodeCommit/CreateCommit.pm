@@ -128,7 +128,8 @@ The email address of the person who created the commit.
 
 If the commit contains deletions, whether to keep a folder or folder
 structure if the changes leave the folders empty. If this is specified
-as true, a .gitkeep file will be created for empty folders.
+as true, a .gitkeep file will be created for empty folders. The default
+is false.
 
 
 

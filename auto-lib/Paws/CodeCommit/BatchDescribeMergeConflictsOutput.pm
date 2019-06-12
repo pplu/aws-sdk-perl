@@ -1,10 +1,10 @@
 
-package Paws::CodeCommit::GetMergeConflictsOutput;
+package Paws::CodeCommit::BatchDescribeMergeConflictsOutput;
   use Moose;
   has BaseCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'baseCommitId' );
-  has ConflictMetadataList => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::ConflictMetadata]', traits => ['NameInRequest'], request_name => 'conflictMetadataList' , required => 1);
+  has Conflicts => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::Conflict]', traits => ['NameInRequest'], request_name => 'conflicts' , required => 1);
   has DestinationCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCommitId' , required => 1);
-  has Mergeable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'mergeable' , required => 1);
+  has Errors => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::BatchDescribeMergeConflictsError]', traits => ['NameInRequest'], request_name => 'errors' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has SourceCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitId' , required => 1);
 
@@ -14,7 +14,7 @@ package Paws::CodeCommit::GetMergeConflictsOutput;
 
 =head1 NAME
 
-Paws::CodeCommit::GetMergeConflictsOutput
+Paws::CodeCommit::BatchDescribeMergeConflictsOutput
 
 =head1 ATTRIBUTES
 
@@ -24,9 +24,10 @@ Paws::CodeCommit::GetMergeConflictsOutput
 The commit ID of the merge base.
 
 
-=head2 B<REQUIRED> ConflictMetadataList => ArrayRef[L<Paws::CodeCommit::ConflictMetadata>]
+=head2 B<REQUIRED> Conflicts => ArrayRef[L<Paws::CodeCommit::Conflict>]
 
-A list of metadata for any conflicts found.
+A list of conflicts for each file, including the conflict metadata and
+the hunks of the differences between the files.
 
 
 =head2 B<REQUIRED> DestinationCommitId => Str
@@ -35,10 +36,10 @@ The commit ID of the destination commit specifier that was used in the
 merge evaluation.
 
 
-=head2 B<REQUIRED> Mergeable => Bool
+=head2 Errors => ArrayRef[L<Paws::CodeCommit::BatchDescribeMergeConflictsError>]
 
-A Boolean value that indicates whether the code is mergeable by the
-specified merge option.
+A list of any errors returned while describing the merge conflicts for
+each file.
 
 
 =head2 NextToken => Str
