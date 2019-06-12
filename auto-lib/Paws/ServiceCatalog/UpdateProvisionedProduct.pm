@@ -129,7 +129,7 @@ C<ProvisionedProductName> and C<ProvisionedProductId>.
 
 =head2 ProvisionedProductName => Str
 
-The updated name of the provisioned product. You cannot specify both
+The name of the provisioned product. You cannot specify both
 C<ProvisionedProductName> and C<ProvisionedProductId>.
 
 
