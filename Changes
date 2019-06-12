@@ -2,6 +2,14 @@
  - API updates for any service up to the date of release
  - New API: Textract
  - New API: ManagedBlockchain
+ - New API: GroundStation
+ - New API: IoTEvents
+ - New API: IoTEventsData
+ - New API: IoTThingsGraph
+ - New API: MediaPackageVod
+ - New API: Personalize
+ - New API: PersonalizeEvents
+ - New API: PersonalizeRuntime
 
 0.40 26 Apr 2019
  - Solve issue #324. Paws won't die when any API returns duplicate requestid headers. IAM has 
