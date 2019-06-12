@@ -186,7 +186,7 @@ Redis versions earlier than 2.8.6.
 
 =item *
 
-Redis (cluster mode disabled): T1 and T2 cache node types.
+Redis (cluster mode disabled): T1 node types.
 
 =item *
 
@@ -224,14 +224,15 @@ General purpose:
 
 Current generation:
 
-B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
-C<cache.t2.medium>
-
-B<M3 node types:> C<cache.m3.medium>, C<cache.m3.large>,
-C<cache.m3.xlarge>, C<cache.m3.2xlarge>
+B<M5 node types:> C<cache.m5.large>, C<cache.m5.xlarge>,
+C<cache.m5.2xlarge>, C<cache.m5.4xlarge>, C<cache.m5.12xlarge>,
+C<cache.m5.24xlarge>
 
 B<M4 node types:> C<cache.m4.large>, C<cache.m4.xlarge>,
 C<cache.m4.2xlarge>, C<cache.m4.4xlarge>, C<cache.m4.10xlarge>
+
+B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
+C<cache.t2.medium>
 
 =item *
 
@@ -241,6 +242,9 @@ B<T1 node types:> C<cache.t1.micro>
 
 B<M1 node types:> C<cache.m1.small>, C<cache.m1.medium>,
 C<cache.m1.large>, C<cache.m1.xlarge>
+
+B<M3 node types:> C<cache.m3.medium>, C<cache.m3.large>,
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>
 
 =back
 
@@ -268,10 +272,11 @@ Memory optimized:
 
 Current generation:
 
-B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
-C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
+B<R5 node types:> C<cache.r5.large>, C<cache.r5.xlarge>,
+C<cache.r5.2xlarge>, C<cache.r5.4xlarge>, C<cache.r5.12xlarge>,
+C<cache.r5.24xlarge>
 
-B<R4 node types;> C<cache.r4.large>, C<cache.r4.xlarge>,
+B<R4 node types:> C<cache.r4.large>, C<cache.r4.xlarge>,
 C<cache.r4.2xlarge>, C<cache.r4.4xlarge>, C<cache.r4.8xlarge>,
 C<cache.r4.16xlarge>
 
@@ -282,54 +287,35 @@ Previous generation: (not recommended)
 B<M2 node types:> C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
 C<cache.m2.4xlarge>
 
-=back
+B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
+C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
 =back
 
-B<Notes:>
+=back
+
+B<Additional node type info>
 
 =over
 
 =item *
 
-All T2 instances are created in an Amazon Virtual Private Cloud (Amazon
-VPC).
+All current generation instance types are created in Amazon VPC by
+default.
 
 =item *
 
-Redis (cluster mode disabled): Redis backup/restore is not supported on
-T1 and T2 instances.
+Redis append-only files (AOF) are not supported for T1 or T2 instances.
 
 =item *
 
-Redis (cluster mode enabled): Backup/restore is not supported on T1
+Redis Multi-AZ with automatic failover is not supported on T1
 instances.
 
 =item *
 
-Redis Append-only files (AOF) functionality is not supported for T1 or
-T2 instances.
-
-=back
-
-For a complete listing of node types and specifications, see:
-
-=over
-
-=item *
-
-Amazon ElastiCache Product Features and Details
-(http://aws.amazon.com/elasticache/details)
-
-=item *
-
-Cache Node Type-Specific Parameters for Memcached
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
-
-=item *
-
-Cache Node Type-Specific Parameters for Redis
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific)
+Redis configuration variables C<appendonly> and C<appendfsync> are not
+supported on Redis version 2.8.22 and later.
 
 =back
 
@@ -341,6 +327,10 @@ Cache Node Type-Specific Parameters for Redis
 The name of the parameter group to associate with this replication
 group. If this argument is omitted, the default cache parameter group
 for the specified engine is used.
+
+If you are restoring to an engine version that is different than the
+original, you must specify the default version of that version. For
+example, C<CacheParameterGroupName=default.redis4.0>.
 
 If you are running Redis version 3.2.4 or later, only one node group
 (shard), and want to use a default parameter group, we recommend that
@@ -378,7 +368,7 @@ group.
 If you're going to launch your cluster in an Amazon VPC, you need to
 create a subnet group before you start creating a cluster. For more
 information, see Subnets and Subnet Groups
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
 
 
 
@@ -397,7 +387,7 @@ use the C<DescribeCacheEngineVersions> operation.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
 a Cache Engine and Version
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement))
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement))
 in the I<ElastiCache User Guide>, but you cannot downgrade to an
 earlier engine version. If you want to use an earlier engine version,
 you must delete the existing cluster or replication group and create it
@@ -643,8 +633,11 @@ an appropriate time range.
 
 =head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 
-A list of cost allocation tags to be added to this resource. A tag is a
-key-value pair.
+A list of cost allocation tags to be added to this resource. Tags are
+comma-separated key,value pairs (e.g. Key=C<myKey>,
+Value=C<myKeyValue>. You can include multiple tags as shown following:
+Key=C<myKey>, Value=C<myKeyValue> Key=C<mySecondKey>,
+Value=C<mySecondKeyValue>.
 
 
 
