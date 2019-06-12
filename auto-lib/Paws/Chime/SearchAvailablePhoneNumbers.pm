@@ -7,6 +7,7 @@ package Paws::Chime::SearchAvailablePhoneNumbers;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-results');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'next-token');
   has State => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'state');
+  has TollFreePrefix => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'toll-free-prefix');
 
   use MooseX::ClassAttribute;
 
@@ -35,12 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $chime = Paws->service('Chime');
     my $SearchAvailablePhoneNumbersResponse =
       $chime->SearchAvailablePhoneNumbers(
-      AreaCode   => 'MyString',    # OPTIONAL
-      City       => 'MyString',    # OPTIONAL
-      Country    => 'MyString',    # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
-      State      => 'MyString',    # OPTIONAL
+      AreaCode       => 'MyString',            # OPTIONAL
+      City           => 'MyString',            # OPTIONAL
+      Country        => 'MyString',            # OPTIONAL
+      MaxResults     => 1,                     # OPTIONAL
+      NextToken      => 'MyString',            # OPTIONAL
+      State          => 'MyString',            # OPTIONAL
+      TollFreePrefix => 'MyTollFreePrefix',    # OPTIONAL
       );
 
     # Results:
@@ -88,6 +90,12 @@ The token to use to retrieve the next page of results.
 =head2 State => Str
 
 The state used to filter results.
+
+
+
+=head2 TollFreePrefix => Str
+
+The toll-free prefix that you use to filter results.
 
 
 

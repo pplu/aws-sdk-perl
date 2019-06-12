@@ -8,6 +8,7 @@ package Paws::Chime::PhoneNumber;
   has PhoneNumberId => (is => 'ro', isa => 'Str');
   has ProductType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str');
   has UpdatedTimestamp => (is => 'ro', isa => 'Str');
 1;
 
@@ -83,6 +84,11 @@ Chime Voice Connector.
 =head2 Status => Str
 
   The phone number status.
+
+
+=head2 Type => Str
+
+  The phone number type.
 
 
 =head2 UpdatedTimestamp => Str

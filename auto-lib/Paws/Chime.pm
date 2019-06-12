@@ -54,6 +54,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreateAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateBot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateBot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePhoneNumberOrder {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreatePhoneNumberOrder', @_);
@@ -67,6 +72,11 @@ package Paws::Chime;
   sub DeleteAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteAccount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteEventsConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteEventsConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeletePhoneNumber {
@@ -112,6 +122,16 @@ package Paws::Chime;
   sub GetAccountSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetAccountSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetBot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetBot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetEventsConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetEventsConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetGlobalSettings {
@@ -169,6 +189,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListAccounts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListBots {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListBots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListPhoneNumberOrders {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListPhoneNumberOrders', @_);
@@ -199,6 +224,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::LogoutUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutEventsConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::PutEventsConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutVoiceConnectorOrigination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::PutVoiceConnectorOrigination', @_);
@@ -212,6 +242,11 @@ package Paws::Chime;
   sub PutVoiceConnectorTerminationCredentials {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::PutVoiceConnectorTerminationCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegenerateSecurityToken {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::RegenerateSecurityToken', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ResetPersonalPIN {
@@ -237,6 +272,11 @@ package Paws::Chime;
   sub UpdateAccountSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdateAccountSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateBot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateBot', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateGlobalSettings {
@@ -313,7 +353,7 @@ package Paws::Chime;
   }
 
 
-  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumberWithUser BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreatePhoneNumberOrder CreateVoiceConnector DeleteAccount DeletePhoneNumber DeleteVoiceConnector DeleteVoiceConnectorOrigination DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector GetAccount GetAccountSettings GetGlobalSettings GetPhoneNumber GetPhoneNumberOrder GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorOrigination GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListPhoneNumberOrders ListPhoneNumbers ListUsers ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutVoiceConnectorOrigination PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers UpdateAccount UpdateAccountSettings UpdateGlobalSettings UpdatePhoneNumber UpdateUser UpdateUserSettings UpdateVoiceConnector / }
+  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumberWithUser BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreateBot CreatePhoneNumberOrder CreateVoiceConnector DeleteAccount DeleteEventsConfiguration DeletePhoneNumber DeleteVoiceConnector DeleteVoiceConnectorOrigination DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector GetAccount GetAccountSettings GetBot GetEventsConfiguration GetGlobalSettings GetPhoneNumber GetPhoneNumberOrder GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorOrigination GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListBots ListPhoneNumberOrders ListPhoneNumbers ListUsers ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutEventsConfiguration PutVoiceConnectorOrigination PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials RegenerateSecurityToken ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers UpdateAccount UpdateAccountSettings UpdateBot UpdateGlobalSettings UpdatePhoneNumber UpdateUser UpdateUserSettings UpdateVoiceConnector / }
 
 1;
 
@@ -477,7 +517,7 @@ Managing Your Amazon Chime Accounts
 (https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html)
 in the I<Amazon Chime Administration Guide>.
 
-Users suspended from a C<Team> account are dissociated from the
+Users suspended from a C<Team> account are dissasociated from the
 account, but they can continue to use Amazon Chime as free users. To
 remove the suspension from suspended C<Team> account users, invite them
 to the C<Team> account again. You can use the InviteUsers action to do
@@ -533,7 +573,9 @@ Each argument is described in detail in: L<Paws::Chime::BatchUpdatePhoneNumber>
 Returns: a L<Paws::Chime::BatchUpdatePhoneNumberResponse> instance
 
 Updates phone number product types. Choose from Amazon Chime Business
-Calling and Amazon Chime Voice Connector product types.
+Calling and Amazon Chime Voice Connector product types. For toll-free
+numbers, you can use only the Amazon Chime Voice Connector product
+type.
 
 
 =head2 BatchUpdateUser
@@ -577,6 +619,26 @@ Amazon Chime Accounts
 in the I<Amazon Chime Administration Guide>.
 
 
+=head2 CreateBot
+
+=over
+
+=item AccountId => Str
+
+=item DisplayName => Str
+
+=item [Domain => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateBot>
+
+Returns: a L<Paws::Chime::CreateBotResponse> instance
+
+Creates a bot for an Amazon Chime Enterprise account.
+
+
 =head2 CreatePhoneNumberOrder
 
 =over
@@ -594,7 +656,8 @@ Returns: a L<Paws::Chime::CreatePhoneNumberOrderResponse> instance
 
 Creates an order for phone numbers to be provisioned. Choose from
 Amazon Chime Business Calling and Amazon Chime Voice Connector product
-types.
+types. For toll-free numbers, you can use only the Amazon Chime Voice
+Connector product type.
 
 
 =head2 CreateVoiceConnector
@@ -646,6 +709,25 @@ must contact AWS Support.
 
 After 90 days, deleted accounts are permanently removed from your
 C<Disabled> accounts list.
+
+
+=head2 DeleteEventsConfiguration
+
+=over
+
+=item AccountId => Str
+
+=item BotId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteEventsConfiguration>
+
+Returns: nothing
+
+Deletes the events configuration that allows a bot to receive outgoing
+events.
 
 
 =head2 DeletePhoneNumber
@@ -813,6 +895,44 @@ such as remote control and dial out settings. For more information
 about these settings, see Use the Policies Page
 (https://docs.aws.amazon.com/chime/latest/ag/policies.html) in the
 I<Amazon Chime Administration Guide>.
+
+
+=head2 GetBot
+
+=over
+
+=item AccountId => Str
+
+=item BotId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetBot>
+
+Returns: a L<Paws::Chime::GetBotResponse> instance
+
+Retrieves details for the specified bot, such as bot email address, bot
+type, status, and display name.
+
+
+=head2 GetEventsConfiguration
+
+=over
+
+=item AccountId => Str
+
+=item BotId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetEventsConfiguration>
+
+Returns: a L<Paws::Chime::GetEventsConfigurationResponse> instance
+
+Gets details for an events configuration that allows a bot to receive
+outgoing events, such as an HTTPS endpoint or Lambda function ARN.
 
 
 =head2 GetGlobalSettings
@@ -1023,6 +1143,27 @@ Amazon Chime account a user belongs to, you can filter by the user's
 email address, which returns one account result.
 
 
+=head2 ListBots
+
+=over
+
+=item AccountId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListBots>
+
+Returns: a L<Paws::Chime::ListBotsResponse> instance
+
+Lists the bots associated with the administrator's Amazon Chime
+Enterprise account ID.
+
+
 =head2 ListPhoneNumberOrders
 
 =over
@@ -1148,6 +1289,30 @@ Logs out the specified user from all of the devices they are currently
 logged into.
 
 
+=head2 PutEventsConfiguration
+
+=over
+
+=item AccountId => Str
+
+=item BotId => Str
+
+=item [LambdaFunctionArn => Str]
+
+=item [OutboundEventsHTTPSEndpoint => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::PutEventsConfiguration>
+
+Returns: a L<Paws::Chime::PutEventsConfigurationResponse> instance
+
+Creates an events configuration that allows a bot to receive outgoing
+events sent by Amazon Chime. Choose either an HTTPS endpoint or a
+Lambda function ARN. For more information, see Bot.
+
+
 =head2 PutVoiceConnectorOrigination
 
 =over
@@ -1205,6 +1370,24 @@ Adds termination SIP credentials for the specified Amazon Chime Voice
 Connector.
 
 
+=head2 RegenerateSecurityToken
+
+=over
+
+=item AccountId => Str
+
+=item BotId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::RegenerateSecurityToken>
+
+Returns: a L<Paws::Chime::RegenerateSecurityTokenResponse> instance
+
+Regenerates the security token for a bot.
+
+
 =head2 ResetPersonalPIN
 
 =over
@@ -1258,6 +1441,8 @@ number B<Inventory>.
 
 =item [State => Str]
 
+=item [TollFreePrefix => Str]
+
 
 =back
 
@@ -1310,6 +1495,27 @@ Policies Page
 I<Amazon Chime Administration Guide>.
 
 
+=head2 UpdateBot
+
+=over
+
+=item AccountId => Str
+
+=item BotId => Str
+
+=item [Disabled => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateBot>
+
+Returns: a L<Paws::Chime::UpdateBotResponse> instance
+
+Updates the status of the specified bot, such as starting or stopping
+the bot from running in your Amazon Chime Enterprise account.
+
+
 =head2 UpdateGlobalSettings
 
 =over
@@ -1346,7 +1552,8 @@ Each argument is described in detail in: L<Paws::Chime::UpdatePhoneNumber>
 Returns: a L<Paws::Chime::UpdatePhoneNumberResponse> instance
 
 Updates phone number details, such as product type, for the specified
-phone number ID.
+phone number ID. For toll-free numbers, you can use only the Amazon
+Chime Voice Connector product type.
 
 
 =head2 UpdateUser
