@@ -6,6 +6,7 @@ package Paws::Robomaker::SimulationJob;
   has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
   has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
   has IamRole => (is => 'ro', isa => 'Str', request_name => 'iamRole', traits => ['NameInRequest']);
+  has LastStartedAt => (is => 'ro', isa => 'Str', request_name => 'lastStartedAt', traits => ['NameInRequest']);
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
   has MaxJobDurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'maxJobDurationInSeconds', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
@@ -93,9 +94,13 @@ Stop the simulation job and terminate the instance.
 
   The IAM role that allows the simulation instance to call the AWS APIs
 that are specified in its associated policies on your behalf. This is
-how credentials are passed in to your simulation job. See how to
-specify AWS security credentials for your application
-(https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-ecs-specify-credentials).
+how credentials are passed in to your simulation job.
+
+
+=head2 LastStartedAt => Str
+
+  The time, in milliseconds since the epoch, when the simulation job was
+last started.
 
 
 =head2 LastUpdatedAt => Str

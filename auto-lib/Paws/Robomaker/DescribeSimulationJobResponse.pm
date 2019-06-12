@@ -7,6 +7,7 @@ package Paws::Robomaker::DescribeSimulationJobResponse;
   has FailureCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureCode');
   has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
   has IamRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamRole');
+  has LastStartedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastStartedAt');
   has LastUpdatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedAt');
   has MaxJobDurationInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxJobDurationInSeconds');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
@@ -126,6 +127,12 @@ troubleshooting, see Troubleshooting
 
 The IAM role that allows the simulation instance to call the AWS APIs
 that are specified in its associated policies on your behalf.
+
+
+=head2 LastStartedAt => Str
+
+The time, in milliseconds since the epoch, when the simulation job was
+last started.
 
 
 =head2 LastUpdatedAt => Str

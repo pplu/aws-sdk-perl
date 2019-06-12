@@ -125,7 +125,7 @@ The target fleet for the deployment job.
 
 The status of the deployment job.
 
-Valid values are: C<"Pending">, C<"Preparing">, C<"InProgress">, C<"Failed">, C<"Succeeded">
+Valid values are: C<"Pending">, C<"Preparing">, C<"InProgress">, C<"Failed">, C<"Succeeded">, C<"Canceled">
 =head2 Tags => L<Paws::Robomaker::TagMap>
 
 The list of all tags added to the deployment job.

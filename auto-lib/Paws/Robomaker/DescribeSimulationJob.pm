@@ -40,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $FailureCode        = $DescribeSimulationJobResponse->FailureCode;
     my $FailureReason      = $DescribeSimulationJobResponse->FailureReason;
     my $IamRole            = $DescribeSimulationJobResponse->IamRole;
+    my $LastStartedAt      = $DescribeSimulationJobResponse->LastStartedAt;
     my $LastUpdatedAt      = $DescribeSimulationJobResponse->LastUpdatedAt;
     my $MaxJobDurationInSeconds =
       $DescribeSimulationJobResponse->MaxJobDurationInSeconds;

@@ -125,7 +125,7 @@ The Amazon Resource Name (ARN) of the fleet.
 
 The status of the synchronization job.
 
-Valid values are: C<"Pending">, C<"Preparing">, C<"InProgress">, C<"Failed">, C<"Succeeded">
+Valid values are: C<"Pending">, C<"Preparing">, C<"InProgress">, C<"Failed">, C<"Succeeded">, C<"Canceled">
 =head2 _request_id => Str
 
 

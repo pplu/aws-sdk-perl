@@ -19,6 +19,11 @@ package Paws::Robomaker;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::BatchDescribeSimulationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelDeploymentJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::CancelDeploymentJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelSimulationJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::CancelSimulationJob', @_);
@@ -330,7 +335,7 @@ package Paws::Robomaker;
   }
 
 
-  sub operations { qw/BatchDescribeSimulationJob CancelSimulationJob CreateDeploymentJob CreateFleet CreateRobot CreateRobotApplication CreateRobotApplicationVersion CreateSimulationApplication CreateSimulationApplicationVersion CreateSimulationJob DeleteFleet DeleteRobot DeleteRobotApplication DeleteSimulationApplication DeregisterRobot DescribeDeploymentJob DescribeFleet DescribeRobot DescribeRobotApplication DescribeSimulationApplication DescribeSimulationJob ListDeploymentJobs ListFleets ListRobotApplications ListRobots ListSimulationApplications ListSimulationJobs ListTagsForResource RegisterRobot RestartSimulationJob SyncDeploymentJob TagResource UntagResource UpdateRobotApplication UpdateSimulationApplication / }
+  sub operations { qw/BatchDescribeSimulationJob CancelDeploymentJob CancelSimulationJob CreateDeploymentJob CreateFleet CreateRobot CreateRobotApplication CreateRobotApplicationVersion CreateSimulationApplication CreateSimulationApplicationVersion CreateSimulationJob DeleteFleet DeleteRobot DeleteRobotApplication DeleteSimulationApplication DeregisterRobot DescribeDeploymentJob DescribeFleet DescribeRobot DescribeRobotApplication DescribeSimulationApplication DescribeSimulationJob ListDeploymentJobs ListFleets ListRobotApplications ListRobots ListSimulationApplications ListSimulationJobs ListTagsForResource RegisterRobot RestartSimulationJob SyncDeploymentJob TagResource UntagResource UpdateRobotApplication UpdateSimulationApplication / }
 
 1;
 
@@ -380,6 +385,22 @@ Each argument is described in detail in: L<Paws::Robomaker::BatchDescribeSimulat
 Returns: a L<Paws::Robomaker::BatchDescribeSimulationJobResponse> instance
 
 Describes one or more simulation jobs.
+
+
+=head2 CancelDeploymentJob
+
+=over
+
+=item Job => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::CancelDeploymentJob>
+
+Returns: a L<Paws::Robomaker::CancelDeploymentJobResponse> instance
+
+Cancels the specified deployment job.
 
 
 =head2 CancelSimulationJob

@@ -91,6 +91,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $FailureBehavior    = $CreateSimulationJobResponse->FailureBehavior;
     my $FailureCode        = $CreateSimulationJobResponse->FailureCode;
     my $IamRole            = $CreateSimulationJobResponse->IamRole;
+    my $LastStartedAt      = $CreateSimulationJobResponse->LastStartedAt;
     my $LastUpdatedAt      = $CreateSimulationJobResponse->LastUpdatedAt;
     my $MaxJobDurationInSeconds =
       $CreateSimulationJobResponse->MaxJobDurationInSeconds;

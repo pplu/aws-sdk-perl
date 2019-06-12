@@ -49,11 +49,11 @@ Information about the progress of a deployment job.
 
 Validating the deployment.
 
-=item Downloading/Extracting
+=item DownloadingExtracting
 
 Downloading and extracting the bundle on the robot.
 
-=item Executing pre-launch script(s)
+=item ExecutingPreLaunch
 
 Executing pre-launch script(s) if provided.
 
@@ -61,7 +61,7 @@ Executing pre-launch script(s) if provided.
 
 Launching the robot application.
 
-=item Executing post-launch script(s)
+=item ExecutingPostLaunch
 
 Executing post-launch script(s) if provided.
 
