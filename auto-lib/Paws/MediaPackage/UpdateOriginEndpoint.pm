@@ -93,7 +93,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Profile                => 'NONE',    # values: NONE, HBBTV_1_5; OPTIONAL
         SegmentDurationSeconds => 1,         # OPTIONAL
         SegmentTemplateFormat => 'NUMBER_WITH_TIMELINE'
-        ,    # values: NUMBER_WITH_TIMELINE, TIME_WITH_TIMELINE; OPTIONAL
+        , # values: NUMBER_WITH_TIMELINE, TIME_WITH_TIMELINE, NUMBER_WITH_DURATION; OPTIONAL
         StreamSelection => {
           MaxVideoBitsPerSecond => 1,           # OPTIONAL
           MinVideoBitsPerSecond => 1,           # OPTIONAL

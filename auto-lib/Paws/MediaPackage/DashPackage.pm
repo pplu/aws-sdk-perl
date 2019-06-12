@@ -102,11 +102,13 @@ to the nearest multiple of the source segment duration.
 
 =head2 SegmentTemplateFormat => Str
 
-  Determines the type of SegmentTimeline included in the Media
+  Determines the type of SegmentTemplate included in the Media
 Presentation Description (MPD). When set to NUMBER_WITH_TIMELINE, a
 full timeline is presented in each SegmentTemplate, with $Number$ media
 URLs. When set to TIME_WITH_TIMELINE, a full timeline is presented in
-each SegmentTemplate, with $Time$ media URLs.
+each SegmentTemplate, with $Time$ media URLs. When set to
+NUMBER_WITH_DURATION, only a duration is included in each
+SegmentTemplate, with $Number$ media URLs.
 
 
 =head2 StreamSelection => L<Paws::MediaPackage::StreamSelection>
