@@ -45,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RegionalCertificateName  = $DomainName->RegionalCertificateName;
     my $RegionalDomainName       = $DomainName->RegionalDomainName;
     my $RegionalHostedZoneId     = $DomainName->RegionalHostedZoneId;
+    my $Tags                     = $DomainName->Tags;
 
     # Returns a L<Paws::ApiGateway::DomainName> object.
 

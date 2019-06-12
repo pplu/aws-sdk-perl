@@ -46,6 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
     my $Name                   = $RestApi->Name;
     my $Policy                 = $RestApi->Policy;
+    my $Tags                   = $RestApi->Tags;
     my $Version                = $RestApi->Version;
     my $Warnings               = $RestApi->Warnings;
 

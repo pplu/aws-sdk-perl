@@ -1088,6 +1088,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/apigateway/>
 
 =item [StageKeys => ArrayRef[L<Paws::ApiGateway::StageKey>]]
 
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
 =item [Value => Str]
 
 
@@ -1259,6 +1261,8 @@ Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
 
 =item [RegionalCertificateName => Str]
 
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
 
 =back
 
@@ -1355,6 +1359,8 @@ Creates a Resource resource.
 
 =item [Policy => Str]
 
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
 =item [Version => Str]
 
 
@@ -1416,6 +1422,8 @@ for the API.
 
 =item [Quota => L<Paws::ApiGateway::QuotaSettings>]
 
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
 =item [Throttle => L<Paws::ApiGateway::ThrottleSettings>]
 
 
@@ -1459,6 +1467,8 @@ plan.
 =item TargetArns => ArrayRef[Str|Undef]
 
 =item [Description => Str]
+
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
 
 
 =back
@@ -1898,6 +1908,8 @@ Flushes a stage's cache.
 =over
 
 =item [Description => Str]
+
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
 
 
 =back

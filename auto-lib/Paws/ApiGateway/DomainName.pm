@@ -12,6 +12,7 @@ package Paws::ApiGateway::DomainName;
   has RegionalCertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateName');
   has RegionalDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalDomainName');
   has RegionalHostedZoneId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalHostedZoneId');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -107,6 +108,12 @@ Name
 (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html)
 and AWS Regions and Endpoints for API Gateway
 (https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region).
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The collection of tags. Each tag element is associated with a given
+resource.
 
 
 =head2 _request_id => Str

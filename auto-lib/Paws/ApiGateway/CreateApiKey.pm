@@ -7,6 +7,7 @@ package Paws::ApiGateway::CreateApiKey;
   has GenerateDistinctId => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'generateDistinctId');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has StageKeys => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::StageKey]', traits => ['NameInRequest'], request_name => 'stageKeys');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
   has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
 
   use MooseX::ClassAttribute;
@@ -47,7 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                   # OPTIONAL
-      Value => 'MyString',                 # OPTIONAL
+      Tags => { 'MyString' => 'MyString', },    # OPTIONAL
+      Value => 'MyString',                      # OPTIONAL
     );
 
     # Results:
@@ -59,6 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LastUpdatedDate = $ApiKey->LastUpdatedDate;
     my $Name            = $ApiKey->Name;
     my $StageKeys       = $ApiKey->StageKeys;
+    my $Tags            = $ApiKey->Tags;
     my $Value           = $ApiKey->Value;
 
     # Returns a L<Paws::ApiGateway::ApiKey> object.
@@ -105,6 +108,14 @@ The name of the ApiKey.
 
 DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
 key.
+
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with C<aws:>. The tag value can be up to 256 characters.
 
 
 

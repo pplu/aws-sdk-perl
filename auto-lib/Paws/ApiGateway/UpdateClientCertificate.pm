@@ -49,6 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Description           = $ClientCertificate->Description;
     my $ExpirationDate        = $ClientCertificate->ExpirationDate;
     my $PemEncodedCertificate = $ClientCertificate->PemEncodedCertificate;
+    my $Tags                  = $ClientCertificate->Tags;
 
     # Returns a L<Paws::ApiGateway::ClientCertificate> object.
 

@@ -1,80 +1,46 @@
 
 package Paws::ApiGatewayV2::CreateIntegrationResponse;
   use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId');
+  has ConnectionType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionType');
   has ContentHandlingStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandlingStrategy');
-  has IntegrationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'integrationId', required => 1);
-  has IntegrationResponseKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationResponseKey', required => 1);
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::IntegrationParameters', traits => ['NameInRequest'], request_name => 'responseParameters');
-  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGatewayV2::TemplateMap', traits => ['NameInRequest'], request_name => 'responseTemplates');
+  has CredentialsArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'credentialsArn');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has IntegrationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationId');
+  has IntegrationMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationMethod');
+  has IntegrationResponseSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationResponseSelectionExpression');
+  has IntegrationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationType');
+  has IntegrationUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationUri');
+  has PassthroughBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'passthroughBehavior');
+  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::IntegrationParameters', traits => ['NameInRequest'], request_name => 'requestParameters');
+  has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGatewayV2::TemplateMap', traits => ['NameInRequest'], request_name => 'requestTemplates');
   has TemplateSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateSelectionExpression');
+  has TimeoutInMillis => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMillis');
 
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateIntegrationResponse');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/integrations/{integrationId}/integrationresponses');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::CreateIntegrationResponseResponse');
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGatewayV2::CreateIntegrationResponse - Arguments for method CreateIntegrationResponse on L<Paws::ApiGatewayV2>
-
-=head1 DESCRIPTION
-
-This class represents the parameters used for calling the method CreateIntegrationResponse on the
-L<AmazonApiGatewayV2|Paws::ApiGatewayV2> service. Use the attributes of this class
-as arguments to method CreateIntegrationResponse.
-
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateIntegrationResponse.
-
-=head1 SYNOPSIS
-
-    my $apigateway = Paws->service('ApiGatewayV2');
-    my $CreateIntegrationResponseResponse =
-      $apigateway->CreateIntegrationResponse(
-      ApiId                   => 'My__string',
-      IntegrationId           => 'My__string',
-      IntegrationResponseKey  => 'MySelectionKey',
-      ContentHandlingStrategy => 'CONVERT_TO_BINARY',    # OPTIONAL
-      ResponseParameters =>
-        { 'My__string' => 'MyStringWithLengthBetween1And512', },    # OPTIONAL
-      ResponseTemplates =>
-        { 'My__string' => 'MyStringWithLengthBetween0And32K', },    # OPTIONAL
-      TemplateSelectionExpression => 'MySelectionExpression',       # OPTIONAL
-      );
-
-    # Results:
-    my $ContentHandlingStrategy =
-      $CreateIntegrationResponseResponse->ContentHandlingStrategy;
-    my $IntegrationResponseId =
-      $CreateIntegrationResponseResponse->IntegrationResponseId;
-    my $IntegrationResponseKey =
-      $CreateIntegrationResponseResponse->IntegrationResponseKey;
-    my $ResponseParameters =
-      $CreateIntegrationResponseResponse->ResponseParameters;
-    my $ResponseTemplates =
-      $CreateIntegrationResponseResponse->ResponseTemplates;
-    my $TemplateSelectionExpression =
-      $CreateIntegrationResponseResponse->TemplateSelectionExpression;
-
-    # Returns a L<Paws::ApiGatewayV2::CreateIntegrationResponseResponse> object.
-
-Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/CreateIntegrationResponse>
+Paws::ApiGatewayV2::CreateIntegrationResponse
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ApiId => Str
+=head2 ConnectionId => Str
 
-The API identifier.
+The connection ID.
 
 
+=head2 ConnectionType => Str
 
+The type of the network connection to the integration endpoint.
+Currently the only valid value is INTERNET, for connections through the
+public routable internet.
+
+Valid values are: C<"INTERNET">, C<"VPC_LINK">
 =head2 ContentHandlingStrategy => Str
 
 Specifies how to handle response payload content type conversions.
@@ -92,60 +58,122 @@ through from the integration response to the route response or method
 response without modification.
 
 Valid values are: C<"CONVERT_TO_BINARY">, C<"CONVERT_TO_TEXT">
+=head2 CredentialsArn => Str
 
-=head2 B<REQUIRED> IntegrationId => Str
-
-The integration ID.
-
-
-
-=head2 B<REQUIRED> IntegrationResponseKey => Str
-
-The integration response key.
+Specifies the credentials required for the integration, if any. For AWS
+integrations, three options are available. To specify an IAM Role for
+API Gateway to assume, use the role's Amazon Resource Name (ARN). To
+require that the caller's identity be passed through from the request,
+specify the string arn:aws:iam::*:user/*. To use resource-based
+permissions on supported AWS services, specify null.
 
 
+=head2 Description => Str
 
-=head2 ResponseParameters => L<Paws::ApiGatewayV2::IntegrationParameters>
-
-A key-value map specifying response parameters that are passed to the
-method response from the backend. The key is a method response header
-parameter name and the mapped value is an integration response header
-value, a static value enclosed within a pair of single quotes, or a
-JSON expression from the integration response body. The mapping key
-must match the pattern of method.response.header.{name}, where {name}
-is a valid and unique header name. The mapped non-static value must
-match the pattern of integration.response.header.{name} or
-integration.response.body.{JSON-expression}, where {name} is a valid
-and unique response header name and {JSON-expression} is a valid JSON
-expression without the $ prefix.
+Represents the description of an integration.
 
 
+=head2 IntegrationId => Str
 
-=head2 ResponseTemplates => L<Paws::ApiGatewayV2::TemplateMap>
+Represents the identifier of an integration.
 
-The collection of response templates for the integration response as a
-string-to-string map of key-value pairs. Response templates are
-represented as a key/value map, with a content-type as the key and a
-template as the value.
 
+=head2 IntegrationMethod => Str
+
+Specifies the integration's HTTP method type.
+
+
+=head2 IntegrationResponseSelectionExpression => Str
+
+The integration response selection expression for the integration. See
+Integration Response Selection Expressions
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-integration-response-selection-expressions).
+
+
+=head2 IntegrationType => Str
+
+The integration type of an integration. One of the following:
+
+AWS: for integrating the route or method request with an AWS service
+action, including the Lambda function-invoking action. With the Lambda
+function-invoking action, this is referred to as the Lambda custom
+integration. With any other AWS service action, this is known as AWS
+integration.
+
+AWS_PROXY: for integrating the route or method request with the Lambda
+function-invoking action with the client request passed through as-is.
+This integration is also referred to as Lambda proxy integration.
+
+HTTP: for integrating the route or method request with an HTTP
+endpoint. This integration is also referred to as the HTTP custom
+integration.
+
+HTTP_PROXY: for integrating route or method request with an HTTP
+endpoint, with the client request passed through as-is. This is also
+referred to as HTTP proxy integration.
+
+MOCK: for integrating the route or method request with API Gateway as a
+"loopback" endpoint without invoking any backend.
+
+Valid values are: C<"AWS">, C<"HTTP">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY">
+=head2 IntegrationUri => Str
+
+For a Lambda proxy integration, this is the URI of the Lambda function.
+
+
+=head2 PassthroughBehavior => Str
+
+Specifies the pass-through behavior for incoming requests based on the
+Content-Type header in the request, and the available mapping templates
+specified as the requestTemplates property on the Integration resource.
+There are three valid values: WHEN_NO_MATCH, WHEN_NO_TEMPLATES, and
+NEVER.
+
+WHEN_NO_MATCH passes the request body for unmapped content types
+through to the integration backend without transformation.
+
+NEVER rejects unmapped content types with an HTTP 415 Unsupported Media
+Type response.
+
+WHEN_NO_TEMPLATES allows pass-through when the integration has no
+content types mapped to templates. However, if there is at least one
+content type defined, unmapped content types will be rejected with the
+same HTTP 415 Unsupported Media Type response.
+
+Valid values are: C<"WHEN_NO_MATCH">, C<"NEVER">, C<"WHEN_NO_TEMPLATES">
+=head2 RequestParameters => L<Paws::ApiGatewayV2::IntegrationParameters>
+
+A key-value map specifying request parameters that are passed from the
+method request to the backend. The key is an integration request
+parameter name and the associated value is a method request parameter
+value or static value that must be enclosed within single quotes and
+pre-encoded as required by the backend. The method request parameter
+value must match the pattern of method.request.{location}.{name} ,
+where {location} is querystring, path, or header; and {name} must be a
+valid and unique method request parameter name.
+
+
+=head2 RequestTemplates => L<Paws::ApiGatewayV2::TemplateMap>
+
+Represents a map of Velocity templates that are applied on the request
+payload based on the value of the Content-Type header sent by the
+client. The content type value is the key in this map, and the template
+(as a String) is the value.
 
 
 =head2 TemplateSelectionExpression => Str
 
-The template selection expression for the integration response.
+The template selection expression for the integration.
 
 
+=head2 TimeoutInMillis => Int
+
+Custom timeout between 50 and 29,000 milliseconds. The default value is
+29,000 milliseconds or 29 seconds.
 
 
-=head1 SEE ALSO
+=head2 _request_id => Str
 
-This class forms part of L<Paws>, documenting arguments for method CreateIntegrationResponse in L<Paws::ApiGatewayV2>
-
-=head1 BUGS and CONTRIBUTIONS
-
-The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
-
-Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 
