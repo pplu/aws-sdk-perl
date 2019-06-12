@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 AccountIds => ArrayRef[Str|Undef]
 
-A list of account IDs specifying accounts whose invitations to Security
-Hub you want to delete.
+A list of account IDs that specify accounts whose invitations to
+Security Hub you want to delete.
 
 
 

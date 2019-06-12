@@ -38,7 +38,7 @@ The IP filter for querying findings.E<gt>
 
 =head2 Cidr => Str
 
-  Finding's CIDR value.
+  A finding's CIDR value.
 
 
 

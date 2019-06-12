@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 AccountIds => ArrayRef[Str|Undef]
 
-A list of account IDs specifying accounts whose invitations to Security
-Hub you want to decline.
+A list of account IDs that specify the accounts from which invitations
+to Security Hub are declined.
 
 
 

@@ -56,11 +56,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 The list of standards that you want to enable.
 
-In this release, Security Hub only supports the CIS AWS Foundations
+In this release, Security Hub supports only the CIS AWS Foundations
 standard.
 
 Its ARN is
-arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0.
+C<arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0>.
 
 
 

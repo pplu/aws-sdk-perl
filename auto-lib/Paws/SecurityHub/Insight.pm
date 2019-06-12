@@ -48,7 +48,7 @@ are included in this insight.
 
 =head2 B<REQUIRED> GroupByAttribute => Str
 
-  The attribute by which the insight's findings are grouped. This
+  The attribute that the insight's findings are grouped by. This
 attribute is used as a findings aggregator for the purposes of viewing
 and managing multiple related findings under a single operand.
 

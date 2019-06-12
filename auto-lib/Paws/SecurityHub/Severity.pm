@@ -44,7 +44,7 @@ A finding's severity.
 
 =head2 Product => Num
 
-  The native severity as defined by the security findings provider's
+  The native severity as defined by the security-findings provider's
 solution that generated the finding.
 
 

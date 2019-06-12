@@ -189,8 +189,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 B<REQUIRED> Findings => ArrayRef[L<Paws::SecurityHub::AwsSecurityFinding>]
 
-A list of findings that you want to import. Must be submitted in the
-AWSSecurityFinding format.
+A list of findings to import. You must submit them in the
+AwsSecurityFinding format.
 
 
 

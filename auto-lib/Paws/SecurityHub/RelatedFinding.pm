@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-Related finding's details.
+A related finding's details.
 
 =head1 ATTRIBUTES
 

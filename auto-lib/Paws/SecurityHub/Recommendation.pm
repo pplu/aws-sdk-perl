@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-Provides a recommendation on how to remediate the issue identified
-within a finding.
+A recommendation on how to remediate the issue identified in a finding.
 
 =head1 ATTRIBUTES
 

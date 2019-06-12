@@ -50,22 +50,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 InsightArns => ArrayRef[Str|Undef]
 
-The ARNS of the insights that you want to describe.
+The ARNs of the insights that you want to describe.
 
 
 
 =head2 MaxResults => Int
 
-Indicates the maximum number of items that you want in the response.
+The maximum number of items that you want in the response.
 
 
 
 =head2 NextToken => Str
 
-Paginates results. Set the value of this parameter to NULL on your
-first call to the GetInsights operation. For subsequent calls to the
-operation, fill nextToken in the request with the value of nextToken
-from the previous response to continue listing data.
+Paginates results. On your first call to the C<GetInsights> operation,
+set the value of this parameter to C<NULL>. For subsequent calls to the
+operation, fill C<nextToken> in the request with the value of
+C<nextToken> from the previous response to continue listing data.
 
 
 

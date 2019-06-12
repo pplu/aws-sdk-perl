@@ -33,26 +33,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-The insight results returned by the GetInsightResults operation.
+The insight results returned by the C<GetInsightResults> operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> GroupByAttribute => Str
 
-  The attribute by which the findings are grouped for the insight's whose
-results are returned by the GetInsightResults operation.
+  The attribute that the findings are grouped by for the insight whose
+results are returned by the C<GetInsightResults> operation.
 
 
 =head2 B<REQUIRED> InsightArn => Str
 
   The ARN of the insight whose results are returned by the
-GetInsightResults operation.
+C<GetInsightResults> operation.
 
 
 =head2 B<REQUIRED> ResultValues => ArrayRef[L<Paws::SecurityHub::InsightResultValue>]
 
-  The list of insight result values returned by the GetInsightResults
+  The list of insight result values returned by the C<GetInsightResults>
 operation.
 
 

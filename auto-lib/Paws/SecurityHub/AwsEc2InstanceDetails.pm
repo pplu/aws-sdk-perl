@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-The details of an AWS EC2 instance.
+The details of an Amazon EC2 instance.
 
 =head1 ATTRIBUTES
 
@@ -76,7 +76,7 @@ The details of an AWS EC2 instance.
 
 =head2 SubnetId => Str
 
-  The identifier of the subnet in which the instance was launched.
+  The identifier of the subnet that the instance was launched in.
 
 
 =head2 Type => Str
@@ -86,7 +86,7 @@ The details of an AWS EC2 instance.
 
 =head2 VpcId => Str
 
-  The identifier of the VPC in which the instance was launched.
+  The identifier of the VPC that the instance was launched in.
 
 
 

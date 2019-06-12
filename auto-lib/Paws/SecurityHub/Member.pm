@@ -53,12 +53,12 @@ The details for a Security Hub member account.
 
 =head2 InvitedAt => Str
 
-  Time stamp at which the member account was invited to Security Hub.
+  The timestamp of when the member account was invited to Security Hub.
 
 
 =head2 MasterId => Str
 
-  The AWS account ID of the master Security Hub account to this member
+  The AWS account ID of the Security Hub master account to this member
 account.
 
 
@@ -70,7 +70,7 @@ master account.
 
 =head2 UpdatedAt => Str
 
-  Time stamp at which this member account was updated.
+  The timestamp of when this member account was updated.
 
 
 

@@ -43,7 +43,7 @@ A resource that represents your subscription to a supported standard.
 
   The ARN of a standard.
 
-In this release, Security Hub only supports the CIS AWS Foundations
+In this release, Security Hub supports only the CIS AWS Foundations
 standard.
 
 Its ARN is

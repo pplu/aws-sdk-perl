@@ -38,8 +38,8 @@ The remediation options for a finding.
 
 =head2 Recommendation => L<Paws::SecurityHub::Recommendation>
 
-  Provides a recommendation on how to remediate the issue identified
-within a finding.
+  A recommendation on how to remediate the issue identified within a
+finding.
 
 
 
