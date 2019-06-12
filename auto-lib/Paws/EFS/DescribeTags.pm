@@ -63,7 +63,9 @@ continue the list from where the previous call left off.
 =head2 MaxItems => Int
 
 (Optional) The maximum number of file system tags to return in the
-response. Currently, this number is automatically set to 10.
+response. Currently, this number is automatically set to 10, and other
+values are ignored. The response is paginated at 10 per page if you
+have more than 10 tags.
 
 
 

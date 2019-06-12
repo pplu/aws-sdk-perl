@@ -89,9 +89,10 @@ Valid values are: C<"generalPurpose">, C<"maxIO">
 =head2 ProvisionedThroughputInMibps => Num
 
 The throughput, measured in MiB/s, that you want to provision for a
-file system. The limit on throughput is 1024 MiB/s. You can get these
-limits increased by contacting AWS Support. For more information, see
-Amazon EFS Limits That You Can Increase
+file system. Valid values are 1-1024. Required if C<ThroughputMode> is
+set to C<provisioned>. The limit on throughput is 1024 MiB/s. You can
+get these limits increased by contacting AWS Support. For more
+information, see Amazon EFS Limits That You Can Increase
 (https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits) in
 the I<Amazon EFS User Guide.>
 
@@ -119,10 +120,12 @@ C<Tag> objects.
 =head2 ThroughputMode => Str
 
 The throughput mode for a file system. There are two throughput modes
-to choose from for your file system: bursting and provisioned. You can
-decrease your file system's throughput in Provisioned Throughput mode
-or change between the throughput modes as long as itE<rsquo>s been more
-than 24 hours since the last decrease or throughput mode change.
+to choose from for your file system: C<bursting> and C<provisioned>. If
+you set C<ThroughputMode> to C<provisioned>, you must also set a value
+for C<ProvisionedThroughPutInMibps>. You can decrease your file
+system's throughput in Provisioned Throughput mode or change between
+the throughput modes as long as itE<rsquo>s been more than 24 hours
+since the last decrease or throughput mode change.
 
 Valid values are: C<"bursting">, C<"provisioned">
 =head2 _request_id => Str
