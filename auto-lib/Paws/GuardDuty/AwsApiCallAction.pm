@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Information about the AWS_API_CALL action described in this finding.
+This class has no description
 
 =head1 ATTRIBUTES
 

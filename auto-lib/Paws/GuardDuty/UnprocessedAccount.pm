@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-An object containing the unprocessed account and a result string
-explaining why it was unprocessed.
+This class has no description
 
 =head1 ATTRIBUTES
 

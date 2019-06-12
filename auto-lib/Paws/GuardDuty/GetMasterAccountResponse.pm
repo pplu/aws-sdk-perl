@@ -1,7 +1,7 @@
 
 package Paws::GuardDuty::GetMasterAccountResponse;
   use Moose;
-  has Master => (is => 'ro', isa => 'Paws::GuardDuty::Master', traits => ['NameInRequest'], request_name => 'master');
+  has Master => (is => 'ro', isa => 'Paws::GuardDuty::Master', traits => ['NameInRequest'], request_name => 'master', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -15,9 +15,9 @@ Paws::GuardDuty::GetMasterAccountResponse
 =head1 ATTRIBUTES
 
 
-=head2 Master => L<Paws::GuardDuty::Master>
+=head2 B<REQUIRED> Master => L<Paws::GuardDuty::Master>
 
-
+Master account details.
 
 
 =head2 _request_id => Str

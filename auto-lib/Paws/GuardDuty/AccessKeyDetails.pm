@@ -34,8 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-The IAM access key details (IAM user information) of a user that
-engaged in the activity that prompted GuardDuty to generate a finding.
+This class has no description
 
 =head1 ATTRIBUTES
 

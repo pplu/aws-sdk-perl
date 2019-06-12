@@ -1,10 +1,10 @@
 
 package Paws::GuardDuty::GetFilterResponse;
   use Moose;
-  has Action => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'action');
+  has Action => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'action', required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has FindingCriteria => (is => 'ro', isa => 'Paws::GuardDuty::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has FindingCriteria => (is => 'ro', isa => 'Paws::GuardDuty::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria', required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Rank => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'rank');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -19,7 +19,7 @@ Paws::GuardDuty::GetFilterResponse
 =head1 ATTRIBUTES
 
 
-=head2 Action => Str
+=head2 B<REQUIRED> Action => Str
 
 Specifies the action that is to be applied to the findings that match
 the filter.
@@ -30,12 +30,12 @@ Valid values are: C<"NOOP">, C<"ARCHIVE">
 The description of the filter.
 
 
-=head2 FindingCriteria => L<Paws::GuardDuty::FindingCriteria>
+=head2 B<REQUIRED> FindingCriteria => L<Paws::GuardDuty::FindingCriteria>
 
 Represents the criteria to be used in the filter for querying findings.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
 The name of the filter.
 

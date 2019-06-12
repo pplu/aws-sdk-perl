@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $AcceptInvitationResponse = $guardduty->AcceptInvitation(
-      DetectorId   => 'My__string',
-      InvitationId => 'MyInvitationId',
-      MasterId     => 'MyMasterId',
+      DetectorId   => 'MyDetectorId',
+      InvitationId => 'MyString',
+      MasterId     => 'MyString',
 
     );
 

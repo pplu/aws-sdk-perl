@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $DeleteDetectorResponse = $guardduty->DeleteDetector(
-      DetectorId => 'My__string',
+      DetectorId => 'MyDetectorId',
 
     );
 
@@ -41,7 +41,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID that specifies the detector that you want to delete.
+The unique ID of the detector that you want to delete.
 
 
 

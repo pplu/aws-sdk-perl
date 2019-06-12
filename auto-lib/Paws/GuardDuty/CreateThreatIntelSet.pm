@@ -35,11 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $guardduty = Paws->service('GuardDuty');
     my $CreateThreatIntelSetResponse = $guardduty->CreateThreatIntelSet(
       Activate    => 1,
-      DetectorId  => 'My__string',
+      DetectorId  => 'MyDetectorId',
       Format      => 'TXT',
       Location    => 'MyLocation',
       Name        => 'MyName',
-      ClientToken => 'My__stringMin0Max64',    # OPTIONAL
+      ClientToken => 'MyClientToken',    # OPTIONAL
     );
 
     # Results:
@@ -68,7 +68,8 @@ The idempotency token for the create request.
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector that you want to update.
+The unique ID of the detector of the GuardDuty account for which you
+want to create a threatIntelSet.
 
 
 

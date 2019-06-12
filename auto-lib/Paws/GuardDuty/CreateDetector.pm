@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $guardduty = Paws->service('GuardDuty');
     my $CreateDetectorResponse = $guardduty->CreateDetector(
       Enable                     => 1,
-      ClientToken                => 'My__stringMin0Max64',    # OPTIONAL
-      FindingPublishingFrequency => 'FIFTEEN_MINUTES',        # OPTIONAL
+      ClientToken                => 'MyClientToken',      # OPTIONAL
+      FindingPublishingFrequency => 'FIFTEEN_MINUTES',    # OPTIONAL
     );
 
     # Results:

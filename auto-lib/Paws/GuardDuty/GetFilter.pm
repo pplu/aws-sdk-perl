@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $GetFilterResponse = $guardduty->GetFilter(
-      DetectorId => 'My__string',
-      FilterName => 'My__string',
+      DetectorId => 'MyDetectorId',
+      FilterName => 'MyString',
 
     );
 
@@ -52,14 +52,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The detector ID that specifies the GuardDuty service where you want to
-list the details of the specified filter.
+The unique ID of the detector the filter is associated with.
 
 
 
 =head2 B<REQUIRED> FilterName => Str
 
-The name of the filter whose details you want to get.
+The name of the filter you want to get.
 
 
 

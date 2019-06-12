@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $UpdateDetectorResponse = $guardduty->UpdateDetector(
-      DetectorId                 => 'My__string',
+      DetectorId                 => 'MyDetectorId',
       Enable                     => 1,                    # OPTIONAL
       FindingPublishingFrequency => 'FIFTEEN_MINUTES',    # OPTIONAL
     );

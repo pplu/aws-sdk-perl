@@ -37,19 +37,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains details about the member account.
+This class has no description
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AccountId => Str
 
-  
+  Member account ID.
 
 
 =head2 DetectorId => Str
 
-  
+  Member account's detector ID.
 
 
 =head2 B<REQUIRED> Email => Str
@@ -64,7 +64,7 @@ Contains details about the member account.
 
 =head2 B<REQUIRED> MasterId => Str
 
-  
+  Master account ID.
 
 
 =head2 B<REQUIRED> RelationshipStatus => Str
@@ -74,7 +74,7 @@ Contains details about the member account.
 
 =head2 B<REQUIRED> UpdatedAt => Str
 
-  
+  Member last updated timestamp.
 
 
 

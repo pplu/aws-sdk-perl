@@ -1,14 +1,15 @@
-package Paws::GuardDuty::ErrorResponse;
+package Paws::GuardDuty::Criterion;
   use Moose;
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => '__type', traits => ['NameInRequest']);
+  with 'Paws::API::StrToObjMapParser';
+
+  has Map => (is => 'ro', isa => 'HashRef[Paws::GuardDuty::Condition]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::GuardDuty::ErrorResponse
+Paws::GuardDuty::Criterion
 
 =head1 USAGE
 
@@ -19,34 +20,26 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::GuardDuty::ErrorResponse object:
+As an example, if Att1 is expected to be a Paws::GuardDuty::Criterion object:
 
-  $service_obj->Method(Att1 => { Message => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::ErrorResponse object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::Criterion object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Message
+  $result->Att1->Map->{ key1 }
 
 =head1 DESCRIPTION
 
-Error response object.
+This class has no description
 
 =head1 ATTRIBUTES
 
+=head2 Map => L<Paws::GuardDuty::Condition>
 
-=head2 Message => Str
-
-  The error message.
-
-
-=head2 Type => Str
-
-  The error type.
-
-
+Use the Map method to retrieve a HashRef to the map
 
 =head1 SEE ALSO
 

@@ -32,13 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateMembersResponse = $guardduty->CreateMembers(
       AccountDetails => [
         {
-          AccountId => 'MyAccountId',
-          Email     => 'MyEmail',
+          AccountId => 'MyAccountId',    # min: 12, max: 12
+          Email     => 'MyEmail',        # min: 1, max: 64
 
         },
         ...
       ],
-      DetectorId => 'My__string',
+      DetectorId => 'MyDetectorId',
 
     );
 
