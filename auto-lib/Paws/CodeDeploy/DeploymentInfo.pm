@@ -92,8 +92,8 @@ the deployment.
 
 =head2 ComputePlatform => Str
 
-  The destination platform type for the deployment (C<Lambda> or
-C<Server>).
+  The destination platform type for the deployment (C<Lambda>, C<Server>,
+or C<ECS>).
 
 
 =head2 CreateTime => Str
@@ -194,13 +194,13 @@ used as part of the new deployment.
 
 =head2 IgnoreApplicationStopFailures => Bool
 
-  If true, then if an ApplicationStop, BeforeBlockTraffic, or
-AfterBlockTraffic deployment lifecycle event to an instance fails, then
-the deployment continues to the next deployment lifecycle event. For
-example, if ApplicationStop fails, the deployment continues with
-DownloadBundle. If BeforeBlockTraffic fails, the deployment continues
-with BlockTraffic. If AfterBlockTraffic fails, the deployment continues
-with ApplicationStop.
+  If true, then if an C<ApplicationStop>, C<BeforeBlockTraffic>, or
+C<AfterBlockTraffic> deployment lifecycle event to an instance fails,
+then the deployment continues to the next deployment lifecycle event.
+For example, if C<ApplicationStop> fails, the deployment continues with
+DownloadBundle. If C<BeforeBlockTraffic> fails, the deployment
+continues with C<BlockTraffic>. If C<AfterBlockTraffic> fails, the
+deployment continues with C<ApplicationStop>.
 
 If false or not specified, then if a lifecycle event fails during a
 deployment to an instance, that deployment fails. If deployment to that
@@ -209,8 +209,8 @@ hosts is not less than the minimum number of healthy hosts, then a
 deployment to the next instance is attempted.
 
 During a deployment, the AWS CodeDeploy agent runs the scripts
-specified for ApplicationStop, BeforeBlockTraffic, and
-AfterBlockTraffic in the AppSpec file from the previous successful
+specified for C<ApplicationStop>, C<BeforeBlockTraffic>, and
+C<AfterBlockTraffic> in the AppSpec file from the previous successful
 deployment. (All other scripts are run from the AppSpec file in the
 current deployment.) If one of these scripts contains an error and does
 not run successfully, the deployment can fail.
@@ -218,8 +218,8 @@ not run successfully, the deployment can fail.
 If the cause of the failure is a script from the last successful
 deployment that will never run successfully, create a new deployment
 and use C<ignoreApplicationStopFailures> to specify that the
-ApplicationStop, BeforeBlockTraffic, and AfterBlockTraffic failures
-should be ignored.
+C<ApplicationStop>, C<BeforeBlockTraffic>, and C<AfterBlockTraffic>
+failures should be ignored.
 
 
 =head2 InstanceTerminationWaitTimeStarted => Bool

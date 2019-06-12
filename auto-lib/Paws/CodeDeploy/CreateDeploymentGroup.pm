@@ -16,6 +16,7 @@ package Paws::CodeDeploy::CreateDeploymentGroup;
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
   has OnPremisesTagSet => (is => 'ro', isa => 'Paws::CodeDeploy::OnPremisesTagSet', traits => ['NameInRequest'], request_name => 'onPremisesTagSet' );
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', traits => ['NameInRequest'], request_name => 'triggerConfigurations' );
 
   use MooseX::ClassAttribute;
@@ -169,6 +170,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],                           # OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyKey',      # OPTIONAL
+          Value => 'MyValue',    # OPTIONAL
+        },
+        ...
+      ],                         # OPTIONAL
       TriggerConfigurations => [
         {
           TriggerEvents => [
@@ -311,6 +319,14 @@ onPremisesInstanceTagFilters.
 
 A service role ARN that allows AWS CodeDeploy to act on the user's
 behalf when interacting with AWS services.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+
+The metadata that you apply to CodeDeploy deployment groups to help you
+organize and categorize them. Each tag consists of a key and an
+optional value, both of which you define.
 
 
 

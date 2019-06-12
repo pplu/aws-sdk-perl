@@ -82,8 +82,9 @@ information.
 
 =head2 B<REQUIRED> Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionLocation>]
 
-Information to get about the application revisions, including type and
-location.
+An array of C<RevisionLocation> objects that specify information to get
+about the application revisions, including type and location. The
+maximum number of C<RevisionLocation> objects you can specify is 25.
 
 
 

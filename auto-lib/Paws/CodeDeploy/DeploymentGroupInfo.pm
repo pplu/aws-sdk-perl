@@ -84,8 +84,8 @@ the deployment group.
 
 =head2 ComputePlatform => Str
 
-  The destination platform type for the deployment group (C<Lambda> or
-C<Server>).
+  The destination platform type for the deployment (C<Lambda>, C<Server>,
+or C<ECS>).
 
 
 =head2 DeploymentConfigName => Str
@@ -165,7 +165,11 @@ onPremisesInstanceTagFilters.
 
 =head2 ServiceRoleArn => Str
 
-  A service role ARN.
+  A service role Amazon Resource Name (ARN) that grants CodeDeploy
+permission to make calls to AWS services on your behalf. For more
+information, see Create a Service Role for AWS CodeDeploy
+(https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html)
+in the I<AWS CodeDeploy User Guide>.
 
 
 =head2 TargetRevision => L<Paws::CodeDeploy::RevisionLocation>

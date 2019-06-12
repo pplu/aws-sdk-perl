@@ -3,6 +3,7 @@ package Paws::CodeDeploy::CreateApplication;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
   has ComputePlatform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computePlatform' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -31,6 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateApplicationOutput = $codedeploy->CreateApplication(
       ApplicationName => 'MyApplicationName',
       ComputePlatform => 'Server',              # OPTIONAL
+      Tags            => [
+        {
+          Key   => 'MyKey',                     # OPTIONAL
+          Value => 'MyValue',                   # OPTIONAL
+        },
+        ...
+      ],                                        # OPTIONAL
     );
 
     # Results:
@@ -53,10 +61,18 @@ applicable IAM user or AWS account.
 
 =head2 ComputePlatform => Str
 
-The destination platform type for the deployment (C<Lambda> or
-C<Server>).
+The destination platform type for the deployment (C<Lambda>, C<Server>,
+or C<ECS>).
 
 Valid values are: C<"Server">, C<"Lambda">, C<"ECS">
+
+=head2 Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+
+The metadata that you apply to CodeDeploy applications to help you
+organize and categorize them. Each tag consists of a key and an
+optional value, both of which you define.
+
+
 
 
 =head1 SEE ALSO
