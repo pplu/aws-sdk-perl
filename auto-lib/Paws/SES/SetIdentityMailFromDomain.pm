@@ -74,7 +74,7 @@ The MAIL FROM domain must 1) be a subdomain of the verified identity,
 2) not be used in a "From" address if the MAIL FROM domain is the
 destination of email feedback forwarding (for more information, see the
 Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html)),
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html)),
 and 3) not be used to receive emails. A value of C<null> disables the
 custom MAIL FROM setting for the identity.
 
