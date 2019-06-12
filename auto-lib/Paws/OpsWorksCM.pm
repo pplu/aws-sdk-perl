@@ -221,7 +221,7 @@ servers, they continue to run until they are deleted.
 =item *
 
 B<Engine>: The engine is the specific configuration manager that you
-want to use. Valid values in this release include C<Chef> and
+want to use. Valid values in this release include C<ChefAutomate> and
 C<Puppet>.
 
 =item *
@@ -518,8 +518,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeAccountAttr
 
 Returns: a L<Paws::OpsWorksCM::DescribeAccountAttributesResponse> instance
 
-Describes your account attributes, and creates requests to increase
-limits before they are reached or exceeded.
+Describes your OpsWorks-CM account attributes.
 
 This operation is synchronous.
 
