@@ -24,9 +24,7 @@ secret access key, and a security (or session) token.
 
 The size of the security token that STS API operations return is not
 fixed. We strongly recommend that you make no assumptions about the
-maximum size. As of this writing, the typical size is less than 4096
-bytes, but that can vary. Also, future updates to AWS might require
-larger sizes.
+maximum size.
 
 
 =head2 FederatedUser => L<Paws::STS::FederatedUser>
