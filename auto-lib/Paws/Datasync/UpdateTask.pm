@@ -1,6 +1,8 @@
 
 package Paws::Datasync::UpdateTask;
   use Moose;
+  has CloudWatchLogGroupArn => (is => 'ro', isa => 'Str');
+  has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
   has Name => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
   has TaskArn => (is => 'ro', isa => 'Str', required => 1);
@@ -30,11 +32,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $datasync = Paws->service('Datasync');
     my $UpdateTaskResponse = $datasync->UpdateTask(
-      TaskArn => 'MyTaskArn',
-      Name    => 'MyTagValue',    # OPTIONAL
+      TaskArn               => 'MyTaskArn',
+      CloudWatchLogGroupArn => 'MyLogGroupArn',    # OPTIONAL
+      Excludes              => [
+        {
+          FilterType =>
+            'SIMPLE_PATTERN',    # values: SIMPLE_PATTERNmax: 128; OPTIONAL
+          Value => 'MyFilterValue',    # max: 409600; OPTIONAL
+        },
+        ...
+      ],                               # OPTIONAL
+      Name    => 'MyTagValue',         # OPTIONAL
       Options => {
-        Atime          => 'NONE',    # values: NONE, BEST_EFFORT; OPTIONAL
-        BytesPerSecond => 1,         # min: -1; OPTIONAL
+        Atime          => 'NONE',      # values: NONE, BEST_EFFORT; OPTIONAL
+        BytesPerSecond => 1,           # min: -1; OPTIONAL
         Gid   => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         Mtime => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
         PosixPermissions =>
@@ -51,6 +62,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/datasync/UpdateTask>
 
 =head1 ATTRIBUTES
+
+
+=head2 CloudWatchLogGroupArn => Str
+
+The Amazon Resource Name (ARN) of the resource name of the CloudWatch
+LogGroup.
+
+
+
+=head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
+
+A filter that determines which files to exclude from a task based on
+the specified pattern in the filter. Transfers all files in the
+taskE<rsquo>s subdirectory, except files that match the filter that is
+set.
+
 
 
 =head2 Name => Str

@@ -1,6 +1,6 @@
-package Paws::Datasync::TagListEntry;
+package Paws::Datasync::FilterRule;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str', required => 1);
+  has FilterType => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 1;
 
@@ -8,7 +8,7 @@ package Paws::Datasync::TagListEntry;
 
 =head1 NAME
 
-Paws::Datasync::TagListEntry
+Paws::Datasync::FilterRule
 
 =head1 USAGE
 
@@ -19,34 +19,35 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Datasync::TagListEntry object:
+As an example, if Att1 is expected to be a Paws::Datasync::FilterRule object:
 
-  $service_obj->Method(Att1 => { Key => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { FilterType => $value, ..., Value => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::TagListEntry object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::FilterRule object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Key
+  $result->Att1->FilterType
 
 =head1 DESCRIPTION
 
-Represents a single entry in a list of AWS resource tags.
-C<TagListEntry> returns an array that contains a list of tasks when the
-ListTagsForResource operation is called.
+A pattern that determines which files to include in the transfer or
+which files to exclude.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Key => Str
+=head2 FilterType => Str
 
-  The key for an AWS resource tag.
+  Specifies the type of filter rule pattern to apply. DataSync only
+supports the SIMPLE_PATTERN rule type.
 
 
 =head2 Value => Str
 
-  The value for an AWS resource tag.
+  A pattern that defines the filter. The filter might include or exclude
+files is a transfer.
 
 
 
