@@ -43,13 +43,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kaf
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) that uniquely identifies the resource.
+The Amazon Resource Name (ARN) that uniquely identifies the resource
+that's associated with the tags.
 
 
 
 =head2 B<REQUIRED> Tags => L<Paws::Kafka::__mapOf__string>
 
-The key-value pairs for the resource tags
+The key-value pair for the resource tag.
 
 
 

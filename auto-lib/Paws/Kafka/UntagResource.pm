@@ -43,13 +43,41 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kaf
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) that uniquely identifies the resource.
+The Amazon Resource Name (ARN) that uniquely identifies the resource
+that's associated with the tags.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The list of tag keys.
+Tag keys must be unique for a given cluster. In addition, the following
+restrictions apply:
+
+=over
+
+=item *
+
+Each tag key must be unique. If you add a tag with a key that's already
+in use, your new tag overwrites the existing key-value pair.
+
+=item *
+
+You can't start a tag key with aws: because this prefix is reserved for
+use by AWS. AWS creates tags that begin with this prefix on your
+behalf, but you can't edit or delete them.
+
+=item *
+
+Tag keys must be between 1 and 128 Unicode characters in length.
+
+=item *
+
+Tag keys must consist of the following characters: Unicode letters,
+digits, white space, and the following special characters: _ . / = + -
+@.
+
+=back
+
 
 
 

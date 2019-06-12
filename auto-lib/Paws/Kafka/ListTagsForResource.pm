@@ -46,7 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kaf
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) that uniquely identifies the resource.
+The Amazon Resource Name (ARN) that uniquely identifies the resource
+that's associated with the tags.
 
 
 

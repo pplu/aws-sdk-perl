@@ -1,13 +1,13 @@
-package Paws::Kafka::EncryptionAtRest;
+package Paws::Kafka::Tls;
   use Moose;
-  has DataVolumeKMSKeyId => (is => 'ro', isa => 'Str', request_name => 'dataVolumeKMSKeyId', traits => ['NameInRequest'], required => 1);
+  has CertificateAuthorityArnList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'certificateAuthorityArnList', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Kafka::EncryptionAtRest
+Paws::Kafka::Tls
 
 =head1 USAGE
 
@@ -18,28 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Kafka::EncryptionAtRest object:
+As an example, if Att1 is expected to be a Paws::Kafka::Tls object:
 
-  $service_obj->Method(Att1 => { DataVolumeKMSKeyId => $value, ..., DataVolumeKMSKeyId => $value  });
+  $service_obj->Method(Att1 => { CertificateAuthorityArnList => $value, ..., CertificateAuthorityArnList => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Kafka::EncryptionAtRest object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Kafka::Tls object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DataVolumeKMSKeyId
+  $result->Att1->CertificateAuthorityArnList
 
 =head1 DESCRIPTION
 
-The data-volume encryption details.
+Details for client authentication using TLS.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DataVolumeKMSKeyId => Str
+=head2 CertificateAuthorityArnList => ArrayRef[Str|Undef]
 
-  The ARN of the AWS KMS key for encrypting data at rest. If you don't
-specify a KMS key, MSK creates one for you and uses it.
+  List of ACM Certificate Authority ARNs.
 
 
 

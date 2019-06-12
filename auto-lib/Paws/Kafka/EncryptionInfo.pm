@@ -1,6 +1,7 @@
 package Paws::Kafka::EncryptionInfo;
   use Moose;
   has EncryptionAtRest => (is => 'ro', isa => 'Paws::Kafka::EncryptionAtRest', request_name => 'encryptionAtRest', traits => ['NameInRequest']);
+  has EncryptionInTransit => (is => 'ro', isa => 'Paws::Kafka::EncryptionInTransit', request_name => 'encryptionInTransit', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kafka::EncryptionInfo object:
 
-  $service_obj->Method(Att1 => { EncryptionAtRest => $value, ..., EncryptionAtRest => $value  });
+  $service_obj->Method(Att1 => { EncryptionAtRest => $value, ..., EncryptionInTransit => $value  });
 
 =head3 Results returned from an API call
 
@@ -32,14 +33,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kafka::Encr
 =head1 DESCRIPTION
 
 Includes encryption-related information, such as the AWS KMS key used
-for encrypting data at rest.
+for encrypting data at rest and whether you want MSK to encrypt your
+data in transit.
 
 =head1 ATTRIBUTES
 
 
 =head2 EncryptionAtRest => L<Paws::Kafka::EncryptionAtRest>
 
-  The data volume encryption details.
+  The data-volume encryption details.
+
+
+=head2 EncryptionInTransit => L<Paws::Kafka::EncryptionInTransit>
+
+  The details for encryption in transit.
 
 
 

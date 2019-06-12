@@ -1,6 +1,8 @@
 package Paws::Kafka::ClusterInfo;
   use Moose;
+  has ActiveOperationArn => (is => 'ro', isa => 'Str', request_name => 'activeOperationArn', traits => ['NameInRequest']);
   has BrokerNodeGroupInfo => (is => 'ro', isa => 'Paws::Kafka::BrokerNodeGroupInfo', request_name => 'brokerNodeGroupInfo', traits => ['NameInRequest']);
+  has ClientAuthentication => (is => 'ro', isa => 'Paws::Kafka::ClientAuthentication', request_name => 'clientAuthentication', traits => ['NameInRequest']);
   has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
   has ClusterName => (is => 'ro', isa => 'Str', request_name => 'clusterName', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
@@ -10,6 +12,7 @@ package Paws::Kafka::ClusterInfo;
   has EnhancedMonitoring => (is => 'ro', isa => 'Str', request_name => 'enhancedMonitoring', traits => ['NameInRequest']);
   has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', request_name => 'numberOfBrokerNodes', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::Kafka::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has ZookeeperConnectString => (is => 'ro', isa => 'Str', request_name => 'zookeeperConnectString', traits => ['NameInRequest']);
 1;
 
@@ -30,14 +33,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kafka::ClusterInfo object:
 
-  $service_obj->Method(Att1 => { BrokerNodeGroupInfo => $value, ..., ZookeeperConnectString => $value  });
+  $service_obj->Method(Att1 => { ActiveOperationArn => $value, ..., ZookeeperConnectString => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Kafka::ClusterInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BrokerNodeGroupInfo
+  $result->Att1->ActiveOperationArn
 
 =head1 DESCRIPTION
 
@@ -46,9 +49,19 @@ Returns information about a cluster.
 =head1 ATTRIBUTES
 
 
+=head2 ActiveOperationArn => Str
+
+  Arn of active cluster operation.
+
+
 =head2 BrokerNodeGroupInfo => L<Paws::Kafka::BrokerNodeGroupInfo>
 
   Information about the broker nodes.
+
+
+=head2 ClientAuthentication => L<Paws::Kafka::ClientAuthentication>
+
+  Includes all client authentication information.
 
 
 =head2 ClusterArn => Str
@@ -86,18 +99,25 @@ Kafka brokers in the cluster.
 
   Specifies which metrics are gathered for the MSK cluster. This property
 has three possible values: DEFAULT, PER_BROKER, and
-PER_TOPIC_PER_BROKER.
+PER_TOPIC_PER_BROKER. For a list of the metrics associated with each of
+these three levels of monitoring, see Monitoring
+(https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html).
 
 
 =head2 NumberOfBrokerNodes => Int
 
-  The number of Kafka broker nodes in the cluster.
+  The number of broker nodes in the cluster.
 
 
 =head2 State => Str
 
   The state of the cluster. The possible states are CREATING, ACTIVE, and
 FAILED.
+
+
+=head2 Tags => L<Paws::Kafka::__mapOf__string>
+
+  Tags attached to the cluster.
 
 
 =head2 ZookeeperConnectString => Str

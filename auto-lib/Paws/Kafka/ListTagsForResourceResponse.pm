@@ -17,7 +17,7 @@ Paws::Kafka::ListTagsForResourceResponse
 
 =head2 Tags => L<Paws::Kafka::__mapOf__string>
 
-The key-value pairs for the resource tags
+The key-value pair for the resource tag.
 
 
 =head2 _request_id => Str
