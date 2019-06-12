@@ -64,8 +64,10 @@ request. For more information, see GetChangeTokenStatus.
 
 A friendly name or description for the metrics for this
 C<RateBasedRule>. The name can contain only alphanumeric characters
-(A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
-the name of the metric after you create the C<RateBasedRule>.
+(A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It
+can't contain whitespace or metric names reserved for AWS WAF,
+including "All" and "Default_Action." You can't change the name of the
+metric after you create the C<RateBasedRule>.
 
 
 
