@@ -76,7 +76,7 @@ values. The default value is true.
 =head2 QuoteSymbol => Str
 
   A custom symbol to denote what combines content into a single column
-value. Must be different from the column delimiter.
+value. It must be different from the column delimiter.
 
 
 

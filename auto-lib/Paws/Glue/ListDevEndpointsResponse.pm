@@ -17,8 +17,8 @@ Paws::Glue::ListDevEndpointsResponse
 
 =head2 DevEndpointNames => ArrayRef[Str|Undef]
 
-The names of all DevEndpoints in the account, or the DevEndpoints with
-the specified tags.
+The names of all the C<DevEndpoint>s in the account, or the
+C<DevEndpoint>s with the specified tags.
 
 
 =head2 NextToken => Str

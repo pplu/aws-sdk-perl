@@ -22,7 +22,7 @@ A list of crawler definitions.
 
 =head2 CrawlersNotFound => ArrayRef[Str|Undef]
 
-A list of names of crawlers not found.
+A list of names of crawlers that were not found.
 
 
 =head2 _request_id => Str

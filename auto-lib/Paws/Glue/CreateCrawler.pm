@@ -4,7 +4,7 @@ package Paws::Glue::CreateCrawler;
   has Classifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Configuration => (is => 'ro', isa => 'Str');
   has CrawlerSecurityConfiguration => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
+  has DatabaseName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Role => (is => 'ro', isa => 'Str', required => 1);
@@ -39,35 +39,54 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $glue = Paws->service('Glue');
     my $CreateCrawlerResponse = $glue->CreateCrawler(
-      DatabaseName => 'MyDatabaseName',
-      Name         => 'MyNameString',
-      Role         => 'MyRole',
-      Targets      => {
-        DynamoDBTargets => [ { Path => 'MyPath', }, ... ],    # OPTIONAL
+      Name    => 'MyNameString',
+      Role    => 'MyRole',
+      Targets => {
+        CatalogTargets => [
+          {
+            DatabaseName => 'MyNameString',    # min: 1, max: 255
+            Tables       => [
+              'MyNameString', ...              # min: 1, max: 255
+            ],                                 # min: 1
+
+          },
+          ...
+        ],                                     # OPTIONAL
+        DynamoDBTargets => [
+          {
+            Path => 'MyPath',                  # OPTIONAL
+          },
+          ...
+        ],                                     # OPTIONAL
         JdbcTargets => [
           {
-            ConnectionName => 'MyConnectionName',             # OPTIONAL
-            Exclusions     => [ 'MyPath', ... ],              # OPTIONAL
-            Path           => 'MyPath',
+            ConnectionName => 'MyConnectionName',    # OPTIONAL
+            Exclusions     => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
           },
           ...
-        ],                                                    # OPTIONAL
+        ],                                           # OPTIONAL
         S3Targets => [
           {
-            Exclusions => [ 'MyPath', ... ],                  # OPTIONAL
-            Path => 'MyPath',
+            Exclusions => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
           },
           ...
-        ],                                                    # OPTIONAL
+        ],                                           # OPTIONAL
       },
       Classifiers => [
-        'MyNameString', ...                                   # min: 1, max: 255
-      ],                                                      # OPTIONAL
-      Configuration => 'MyCrawlerConfiguration',              # OPTIONAL
+        'MyNameString', ...                          # min: 1, max: 255
+      ],                                             # OPTIONAL
+      Configuration => 'MyCrawlerConfiguration',     # OPTIONAL
       CrawlerSecurityConfiguration =>
-        'MyCrawlerSecurityConfiguration',                     # OPTIONAL
-      Description        => 'MyDescriptionString',            # OPTIONAL
-      Schedule           => 'MyCronExpression',               # OPTIONAL
+        'MyCrawlerSecurityConfiguration',            # OPTIONAL
+      DatabaseName       => 'MyDatabaseName',        # OPTIONAL
+      Description        => 'MyDescriptionString',   # OPTIONAL
+      Schedule           => 'MyCronExpression',      # OPTIONAL
       SchemaChangePolicy => {
         DeleteBehavior => 'LOG'
         ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL
@@ -96,21 +115,21 @@ classification.
 
 =head2 Configuration => Str
 
-Crawler configuration information. This versioned JSON string allows
-users to specify aspects of a crawler's behavior. For more information,
-see Configuring a Crawler
+The crawler configuration information. This versioned JSON string
+allows users to specify aspects of a crawler's behavior. For more
+information, see Configuring a Crawler
 (http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 
 
 
 =head2 CrawlerSecurityConfiguration => Str
 
-The name of the SecurityConfiguration structure to be used by this
-Crawler.
+The name of the C<SecurityConfiguration> structure to be used by this
+crawler.
 
 
 
-=head2 B<REQUIRED> DatabaseName => Str
+=head2 DatabaseName => Str
 
 The AWS Glue database where results are written, such as:
 C<arn:aws:daylight:us-east-1::database/sometable/*>.
@@ -131,24 +150,24 @@ Name of the new crawler.
 
 =head2 B<REQUIRED> Role => Str
 
-The IAM role (or ARN of an IAM role) used by the new crawler to access
-customer resources.
+The IAM role or Amazon Resource Name (ARN) of an IAM role used by the
+new crawler to access customer resources.
 
 
 
 =head2 Schedule => Str
 
-A C<cron> expression used to specify the schedule (see Time-Based
-Schedules for Jobs and Crawlers
+A C<cron> expression used to specify the schedule. For more
+information, see Time-Based Schedules for Jobs and Crawlers
 (http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
-For example, to run something every day at 12:15 UTC, you would
-specify: C<cron(15 12 * * ? *)>.
+For example, to run something every day at 12:15 UTC, specify C<cron(15
+12 * * ? *)>.
 
 
 
 =head2 SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>
 
-Policy for the crawler's update and deletion behavior.
+The policy for the crawler's update and deletion behavior.
 
 
 
@@ -160,11 +179,9 @@ The table prefix used for catalog tables that are created.
 
 =head2 Tags => L<Paws::Glue::TagsMap>
 
-The tags to use with this crawler request. You may use tags to limit
-access to the crawler. For more information about tags in AWS Glue, see
-AWS Tags in AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in the
-developer guide.
+The tags to use with this crawler request. You can use tags to limit
+access to the crawler. For more information, see AWS Tags in AWS Glue
+(http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html).
 
 
 

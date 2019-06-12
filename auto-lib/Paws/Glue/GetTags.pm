@@ -45,7 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon ARN of the resource for which to retrieve tags.
+The Amazon Resource Name (ARN) of the resource for which to retrieve
+tags.
 
 
 

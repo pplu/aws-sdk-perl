@@ -50,26 +50,26 @@ Twitter, JSON, Omniture logs, and so on.
 
 =head2 CreationTime => Str
 
-  The time this classifier was registered.
+  The time that this classifier was registered.
 
 
 =head2 CustomPatterns => Str
 
   Optional custom grok patterns defined by this classifier. For more
-information, see custom patterns in Writing Custom Classifers
+information, see custom patterns in Writing Custom Classifiers
 (http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html).
 
 
 =head2 B<REQUIRED> GrokPattern => Str
 
   The grok pattern applied to a data store by this classifier. For more
-information, see built-in patterns in Writing Custom Classifers
+information, see built-in patterns in Writing Custom Classifiers
 (http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html).
 
 
 =head2 LastUpdated => Str
 
-  The time this classifier was last updated.
+  The time that this classifier was last updated.
 
 
 =head2 B<REQUIRED> Name => Str

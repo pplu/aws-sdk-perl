@@ -1121,7 +1121,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateClassifier>
 
 Returns: a L<Paws::Glue::CreateClassifierResponse> instance
 
-Creates a classifier in the user's account. This may be a
+Creates a classifier in the user's account. This can be a
 C<GrokClassifier>, an C<XMLClassifier>, a C<JsonClassifier>, or a
 C<CsvClassifier>, depending on which field of the request is present.
 
@@ -1148,8 +1148,6 @@ Creates a connection definition in the Data Catalog.
 
 =over
 
-=item DatabaseName => Str
-
 =item Name => Str
 
 =item Role => Str
@@ -1161,6 +1159,8 @@ Creates a connection definition in the Data Catalog.
 =item [Configuration => Str]
 
 =item [CrawlerSecurityConfiguration => Str]
+
+=item [DatabaseName => Str]
 
 =item [Description => Str]
 
@@ -1181,7 +1181,7 @@ Returns: a L<Paws::Glue::CreateCrawlerResponse> instance
 
 Creates a new crawler with specified targets, role, configuration, and
 optional schedule. At least one crawl target must be specified, in the
-I<s3Targets> field, the I<jdbcTargets> field, or the I<DynamoDBTargets>
+C<s3Targets> field, the C<jdbcTargets> field, or the C<DynamoDBTargets>
 field.
 
 
@@ -1466,8 +1466,8 @@ Each argument is described in detail in: L<Paws::Glue::DeleteCrawler>
 
 Returns: a L<Paws::Glue::DeleteCrawlerResponse> instance
 
-Removes a specified crawler from the Data Catalog, unless the crawler
-state is C<RUNNING>.
+Removes a specified crawler from the AWS Glue Data Catalog, unless the
+crawler state is C<RUNNING>.
 
 
 =head2 DeleteDatabase
@@ -2382,10 +2382,10 @@ Retrieves the names of all crawler resources in this AWS account, or
 the resources with the specified tag. This operation allows you to see
 which resources are available in your account, and their names.
 
-This operation takes the optional C<Tags> field which you can use as a
+This operation takes the optional C<Tags> field, which you can use as a
 filter on the response so that tagged resources can be retrieved as a
 group. If you choose to use tags filtering, only resources with the tag
-will be retrieved.
+are retrieved.
 
 
 =head2 ListDevEndpoints
@@ -2405,14 +2405,15 @@ Each argument is described in detail in: L<Paws::Glue::ListDevEndpoints>
 
 Returns: a L<Paws::Glue::ListDevEndpointsResponse> instance
 
-Retrieves the names of all DevEndpoint resources in this AWS account,
-or the resources with the specified tag. This operation allows you to
-see which resources are available in your account, and their names.
+Retrieves the names of all C<DevEndpoint> resources in this AWS
+account, or the resources with the specified tag. This operation allows
+you to see which resources are available in your account, and their
+names.
 
-This operation takes the optional C<Tags> field which you can use as a
+This operation takes the optional C<Tags> field, which you can use as a
 filter on the response so that tagged resources can be retrieved as a
 group. If you choose to use tags filtering, only resources with the tag
-will be retrieved.
+are retrieved.
 
 
 =head2 ListJobs
@@ -2436,10 +2437,10 @@ Retrieves the names of all job resources in this AWS account, or the
 resources with the specified tag. This operation allows you to see
 which resources are available in your account, and their names.
 
-This operation takes the optional C<Tags> field which you can use as a
+This operation takes the optional C<Tags> field, which you can use as a
 filter on the response so that tagged resources can be retrieved as a
 group. If you choose to use tags filtering, only resources with the tag
-will be retrieved.
+are retrieved.
 
 
 =head2 ListTriggers
@@ -2465,10 +2466,10 @@ Retrieves the names of all trigger resources in this AWS account, or
 the resources with the specified tag. This operation allows you to see
 which resources are available in your account, and their names.
 
-This operation takes the optional C<Tags> field which you can use as a
+This operation takes the optional C<Tags> field, which you can use as a
 filter on the response so that tagged resources can be retrieved as a
 group. If you choose to use tags filtering, only resources with the tag
-will be retrieved.
+are retrieved.
 
 
 =head2 PutDataCatalogEncryptionSettings
@@ -2612,7 +2613,7 @@ Each argument is described in detail in: L<Paws::Glue::StartTrigger>
 Returns: a L<Paws::Glue::StartTriggerResponse> instance
 
 Starts an existing trigger. See Triggering Jobs
-(http://docs.aws.amazon.com/glue/latest/dg/trigger-job.html) for
+(https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html) for
 information about how different types of trigger are started.
 
 
@@ -2683,7 +2684,7 @@ Returns: a L<Paws::Glue::TagResourceResponse> instance
 Adds tags to a resource. A tag is a label you can assign to an AWS
 resource. In AWS Glue, you can tag only certain resources. For
 information about what resources you can tag, see AWS Tags in AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html).
+(https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html).
 
 
 =head2 UntagResource

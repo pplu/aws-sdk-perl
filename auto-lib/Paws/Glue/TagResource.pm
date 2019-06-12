@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 The ARN of the AWS Glue resource to which to add the tags. For more
 information about AWS Glue resource ARNs, see the AWS Glue ARN string
 pattern
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id).
+(https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id).
 
 
 

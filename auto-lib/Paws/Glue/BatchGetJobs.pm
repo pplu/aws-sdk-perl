@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 B<REQUIRED> JobNames => ArrayRef[Str|Undef]
 
-A list of job names, which may be the names returned from the
+A list of job names, which might be the names returned from the
 C<ListJobs> operation.
 
 

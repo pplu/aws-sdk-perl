@@ -33,18 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       JobUpdate => {
         AllocatedCapacity => 1,    # OPTIONAL
         Command           => {
-          Name           => 'MyGenericString',           # OPTIONAL
+          Name           => 'MyGenericString',
+          PythonVersion  => 'MyPythonVersionString',     # OPTIONAL
           ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
         },    # OPTIONAL
         Connections => {
-          Connections => [
-            'MyGenericString', ...    # OPTIONAL
-          ],                          # OPTIONAL
+          Connections => [ 'MyGenericString', ... ],    # OPTIONAL
         },    # OPTIONAL
-        DefaultArguments => {
-          'MyGenericString' =>
-            'MyGenericString',    # key: OPTIONAL, value: OPTIONAL
-        },    # OPTIONAL
+        DefaultArguments => { 'MyGenericString' => 'MyGenericString', }
+        ,     # OPTIONAL
         Description       => 'MyDescriptionString',    # max: 2048; OPTIONAL
         ExecutionProperty => {
           MaxConcurrentRuns => 1,                      # OPTIONAL
@@ -77,7 +74,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 B<REQUIRED> JobName => Str
 
-Name of the job definition to update.
+The name of the job definition to update.
 
 
 

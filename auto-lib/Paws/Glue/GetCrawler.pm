@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the crawler to retrieve metadata for.
+The name of the crawler to retrieve metadata for.
 
 
 

@@ -57,7 +57,7 @@ A classifier for custom C<CSV> content.
 
 =head2 CreationTime => Str
 
-  The time this classifier was registered.
+  The time that this classifier was registered.
 
 
 =head2 Delimiter => Str
@@ -68,7 +68,7 @@ A classifier for custom C<CSV> content.
 =head2 DisableValueTrimming => Bool
 
   Specifies not to trim values before identifying the type of column
-values. The default value is true.
+values. The default value is C<true>.
 
 
 =head2 Header => ArrayRef[Str|Undef]
@@ -78,7 +78,7 @@ values. The default value is true.
 
 =head2 LastUpdated => Str
 
-  The time this classifier was last updated.
+  The time that this classifier was last updated.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -89,7 +89,7 @@ values. The default value is true.
 =head2 QuoteSymbol => Str
 
   A custom symbol to denote what combines content into a single column
-value. Must be different from the column delimiter.
+value. It must be different from the column delimiter.
 
 
 =head2 Version => Int

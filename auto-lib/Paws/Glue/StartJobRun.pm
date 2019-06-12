@@ -64,13 +64,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 AllocatedCapacity => Int
 
-This field is deprecated, use C<MaxCapacity> instead.
+This field is deprecated. Use C<MaxCapacity> instead.
 
 The number of AWS Glue data processing units (DPUs) to allocate to this
 JobRun. From 2 to 100 DPUs can be allocated; the default is 10. A DPU
 is a relative measure of processing power that consists of 4 vCPUs of
 compute capacity and 16 GB of memory. For more information, see the AWS
-Glue pricing page (https://aws.amazon.com/glue/pricing/).
+Glue pricing page
+(https://docs.aws.amazon.com/https:/aws.amazon.com/glue/pricing/).
 
 
 
@@ -84,12 +85,12 @@ consumes, as well as arguments that AWS Glue itself consumes.
 
 For information about how to specify and consume your own Job
 arguments, see the Calling AWS Glue APIs in Python
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
+(https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 topic in the developer guide.
 
 For information about the key-value pairs that AWS Glue consumes to set
 up your job, see the Special Parameters Used by AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
+(https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
 
@@ -102,7 +103,7 @@ The name of the job definition to use.
 
 =head2 JobRunId => Str
 
-The ID of a previous JobRun to retry.
+The ID of a previous C<JobRun> to retry.
 
 
 
@@ -112,19 +113,19 @@ The number of AWS Glue data processing units (DPUs) that can be
 allocated when this job runs. A DPU is a relative measure of processing
 power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
 For more information, see the AWS Glue pricing page
-(https://aws.amazon.com/glue/pricing/).
+(https://docs.aws.amazon.com/https:/aws.amazon.com/glue/pricing/).
 
 Do not set C<Max Capacity> if using C<WorkerType> and
 C<NumberOfWorkers>.
 
 The value that can be allocated for C<MaxCapacity> depends on whether
-you are running a python shell job, or an Apache Spark ETL job:
+you are running a Python shell job, or an Apache Spark ETL job:
 
 =over
 
 =item *
 
-When you specify a python shell job (C<JobCommand.Name>="pythonshell"),
+When you specify a Python shell job (C<JobCommand.Name>="pythonshell"),
 you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
 
 =item *
@@ -157,15 +158,15 @@ The maximum number of workers you can define are 299 for C<G.1X>, and
 
 =head2 SecurityConfiguration => Str
 
-The name of the SecurityConfiguration structure to be used with this
+The name of the C<SecurityConfiguration> structure to be used with this
 job run.
 
 
 
 =head2 Timeout => Int
 
-The JobRun timeout in minutes. This is the maximum time that a job run
-can consume resources before it is terminated and enters C<TIMEOUT>
+The C<JobRun> timeout in minutes. This is the maximum time that a job
+run can consume resources before it is terminated and enters C<TIMEOUT>
 status. The default is 2,880 minutes (48 hours). This overrides the
 timeout value set in the parent job.
 

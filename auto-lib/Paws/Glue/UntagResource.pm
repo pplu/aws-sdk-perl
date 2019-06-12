@@ -44,7 +44,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The ARN of the resource from which to remove the tags.
+The Amazon Resource Name (ARN) of the resource from which to remove the
+tags.
 
 
 

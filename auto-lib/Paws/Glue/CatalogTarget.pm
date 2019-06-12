@@ -1,14 +1,14 @@
-package Paws::Glue::S3Target;
+package Paws::Glue::CatalogTarget;
   use Moose;
-  has Exclusions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Path => (is => 'ro', isa => 'Str');
+  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
+  has Tables => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Glue::S3Target
+Paws::Glue::CatalogTarget
 
 =head1 USAGE
 
@@ -19,34 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Glue::S3Target object:
+As an example, if Att1 is expected to be a Paws::Glue::CatalogTarget object:
 
-  $service_obj->Method(Att1 => { Exclusions => $value, ..., Path => $value  });
+  $service_obj->Method(Att1 => { DatabaseName => $value, ..., Tables => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::S3Target object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::CatalogTarget object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Exclusions
+  $result->Att1->DatabaseName
 
 =head1 DESCRIPTION
 
-Specifies a data store in Amazon Simple Storage Service (Amazon S3).
+Specifies an AWS Glue Data Catalog target.
 
 =head1 ATTRIBUTES
 
 
-=head2 Exclusions => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> DatabaseName => Str
 
-  A list of glob patterns used to exclude from the crawl. For more
-information, see Catalog Tables with a Crawler
-(http://docs.aws.amazon.com/glue/latest/dg/add-crawler.html).
+  The name of the database to be synchronized.
 
 
-=head2 Path => Str
+=head2 B<REQUIRED> Tables => ArrayRef[Str|Undef]
 
-  The path to the Amazon S3 target.
+  A list of the tables to be synchronized.
 
 
 

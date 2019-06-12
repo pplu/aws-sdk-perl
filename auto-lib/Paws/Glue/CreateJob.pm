@@ -46,6 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateJobResponse = $glue->CreateJob(
       Command => {
         Name           => 'MyGenericString',           # OPTIONAL
+        PythonVersion  => 'MyPythonVersionString',     # OPTIONAL
         ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
       },
       Name              => 'MyNameString',
@@ -94,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 This parameter is deprecated. Use C<MaxCapacity> instead.
 
 The number of AWS Glue data processing units (DPUs) to allocate to this
-Job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a
+Job. You can allocate from 2 to 100 DPUs; the default is 10. A DPU is a
 relative measure of processing power that consists of 4 vCPUs of
 compute capacity and 16 GB of memory. For more information, see the AWS
 Glue pricing page (https://aws.amazon.com/glue/pricing/).
@@ -103,7 +104,7 @@ Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 =head2 B<REQUIRED> Command => L<Paws::Glue::JobCommand>
 
-The JobCommand that executes this job.
+The C<JobCommand> that executes this job.
 
 
 
@@ -122,12 +123,12 @@ consumes, as well as arguments that AWS Glue itself consumes.
 
 For information about how to specify and consume your own Job
 arguments, see the Calling AWS Glue APIs in Python
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
+(https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 topic in the developer guide.
 
 For information about the key-value pairs that AWS Glue consumes to set
 up your job, see the Special Parameters Used by AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
+(https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
 
@@ -140,8 +141,8 @@ Description of the job being defined.
 
 =head2 ExecutionProperty => L<Paws::Glue::ExecutionProperty>
 
-An ExecutionProperty specifying the maximum number of concurrent runs
-allowed for this job.
+An C<ExecutionProperty> specifying the maximum number of concurrent
+runs allowed for this job.
 
 
 
@@ -163,13 +164,13 @@ Do not set C<Max Capacity> if using C<WorkerType> and
 C<NumberOfWorkers>.
 
 The value that can be allocated for C<MaxCapacity> depends on whether
-you are running a python shell job, or an Apache Spark ETL job:
+you are running a Python shell job or an Apache Spark ETL job:
 
 =over
 
 =item *
 
-When you specify a python shell job (C<JobCommand.Name>="pythonshell"),
+When you specify a Python shell job (C<JobCommand.Name>="pythonshell"),
 you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
 
 =item *
@@ -215,13 +216,14 @@ The maximum number of workers you can define are 299 for C<G.1X>, and
 
 =head2 B<REQUIRED> Role => Str
 
-The name or ARN of the IAM role associated with this job.
+The name or Amazon Resource Name (ARN) of the IAM role associated with
+this job.
 
 
 
 =head2 SecurityConfiguration => Str
 
-The name of the SecurityConfiguration structure to be used with this
+The name of the C<SecurityConfiguration> structure to be used with this
 job.
 
 
@@ -230,7 +232,7 @@ job.
 
 The tags to use with this job. You may use tags to limit access to the
 job. For more information about tags in AWS Glue, see AWS Tags in AWS
-Glue (http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
+Glue (https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
 the developer guide.
 
 
@@ -257,13 +259,15 @@ memory and a 50GB disk, and 2 executors per worker.
 
 =item *
 
-For the C<G.1X> worker type, each worker provides 4 vCPU, 16 GB of
-memory and a 64GB disk, and 1 executor per worker.
+For the C<G.1X> worker type, each worker maps to 1 DPU (4 vCPU, 16 GB
+of memory, 64 GB disk), and provides 1 executor per worker. We
+recommend this worker type for memory-intensive jobs.
 
 =item *
 
-For the C<G.2X> worker type, each worker provides 8 vCPU, 32 GB of
-memory and a 128GB disk, and 1 executor per worker.
+For the C<G.2X> worker type, each worker maps to 2 DPU (8 vCPU, 32 GB
+of memory, 128 GB disk), and provides 1 executor per worker. We
+recommend this worker type for memory-intensive jobs.
 
 =back
 

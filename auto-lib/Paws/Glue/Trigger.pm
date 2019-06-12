@@ -60,7 +60,7 @@ Information about a specific trigger.
 
 =head2 Name => Str
 
-  Name of the trigger.
+  The name of the trigger.
 
 
 =head2 Predicate => L<Paws::Glue::Predicate>
@@ -72,7 +72,7 @@ Information about a specific trigger.
 
   A C<cron> expression used to specify the schedule (see Time-Based
 Schedules for Jobs and Crawlers
-(http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
+(https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
 For example, to run something every day at 12:15 UTC, you would
 specify: C<cron(15 12 * * ? *)>.
 

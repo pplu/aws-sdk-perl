@@ -35,15 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Class
 =head1 DESCRIPTION
 
 Classifiers are triggered during a crawl task. A classifier checks
-whether a given file is in a format it can handle, and if it is, the
+whether a given file is in a format it can handle. If it is, the
 classifier creates a schema in the form of a C<StructType> object that
 matches that data format.
 
-You can use the standard classifiers that AWS Glue supplies, or you can
+You can use the standard classifiers that AWS Glue provides, or you can
 write your own classifiers to best categorize your data sources and
 specify the appropriate schemas to use for them. A classifier can be a
 C<grok> classifier, an C<XML> classifier, a C<JSON> classifier, or a
-custom C<CSV> classifier as specified in one of the fields in the
+custom C<CSV> classifier, as specified in one of the fields in the
 C<Classifier> object.
 
 =head1 ATTRIBUTES
@@ -51,22 +51,22 @@ C<Classifier> object.
 
 =head2 CsvClassifier => L<Paws::Glue::CsvClassifier>
 
-  A C<CSVClassifier> object.
+  A classifier for comma-separated values (CSV).
 
 
 =head2 GrokClassifier => L<Paws::Glue::GrokClassifier>
 
-  A C<GrokClassifier> object.
+  A classifier that uses C<grok>.
 
 
 =head2 JsonClassifier => L<Paws::Glue::JsonClassifier>
 
-  A C<JsonClassifier> object.
+  A classifier for JSON content.
 
 
 =head2 XMLClassifier => L<Paws::Glue::XMLClassifier>
 
-  An C<XMLClassifier> object.
+  A classifier for XML content.
 
 
 

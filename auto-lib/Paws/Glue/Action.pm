@@ -50,12 +50,12 @@ consumes, as well as arguments that AWS Glue itself consumes.
 
 For information about how to specify and consume your own Job
 arguments, see the Calling AWS Glue APIs in Python
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
+(https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 topic in the developer guide.
 
 For information about the key-value pairs that AWS Glue consumes to set
 up your job, see the Special Parameters Used by AWS Glue
-(http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
+(https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
 
@@ -71,14 +71,14 @@ topic in the developer guide.
 
 =head2 SecurityConfiguration => Str
 
-  The name of the SecurityConfiguration structure to be used with this
+  The name of the C<SecurityConfiguration> structure to be used with this
 action.
 
 
 =head2 Timeout => Int
 
-  The JobRun timeout in minutes. This is the maximum time that a job run
-can consume resources before it is terminated and enters C<TIMEOUT>
+  The C<JobRun> timeout in minutes. This is the maximum time that a job
+run can consume resources before it is terminated and enters C<TIMEOUT>
 status. The default is 2,880 minutes (48 hours). This overrides the
 timeout value set in the parent job.
 

@@ -40,7 +40,7 @@ Defines a condition under which a trigger fires.
 
 =head2 JobName => Str
 
-  The name of the Job to whose JobRuns this condition applies and on
+  The name of the job whose C<JobRuns> this condition applies to, and on
 which this trigger waits.
 
 
@@ -51,8 +51,8 @@ which this trigger waits.
 
 =head2 State => Str
 
-  The condition state. Currently, the values supported are SUCCEEDED,
-STOPPED, TIMEOUT and FAILED.
+  The condition state. Currently, the values supported are C<SUCCEEDED>,
+C<STOPPED>, C<TIMEOUT>, and C<FAILED>.
 
 
 
