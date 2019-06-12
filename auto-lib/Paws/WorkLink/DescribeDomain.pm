@@ -36,9 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedTime  = $DescribeDomainResponse->CreatedTime;
-    my $DisplayName  = $DescribeDomainResponse->DisplayName;
-    my $DomainStatus = $DescribeDomainResponse->DomainStatus;
+    my $AcmCertificateArn = $DescribeDomainResponse->AcmCertificateArn;
+    my $CreatedTime       = $DescribeDomainResponse->CreatedTime;
+    my $DisplayName       = $DescribeDomainResponse->DisplayName;
+    my $DomainName        = $DescribeDomainResponse->DomainName;
+    my $DomainStatus      = $DescribeDomainResponse->DomainStatus;
 
     # Returns a L<Paws::WorkLink::DescribeDomainResponse> object.
 

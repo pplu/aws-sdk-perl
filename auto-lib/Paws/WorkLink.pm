@@ -19,6 +19,11 @@ package Paws::WorkLink;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::AssociateDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateWebsiteAuthorizationProvider {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::AssociateWebsiteAuthorizationProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateWebsiteCertificateAuthority {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::AssociateWebsiteCertificateAuthority', @_);
@@ -79,6 +84,11 @@ package Paws::WorkLink;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::DisassociateDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateWebsiteAuthorizationProvider {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::DisassociateWebsiteAuthorizationProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateWebsiteCertificateAuthority {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::DisassociateWebsiteCertificateAuthority', @_);
@@ -97,6 +107,11 @@ package Paws::WorkLink;
   sub ListFleets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::ListFleets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListWebsiteAuthorizationProviders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::ListWebsiteAuthorizationProviders', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListWebsiteCertificateAuthorities {
@@ -152,7 +167,7 @@ package Paws::WorkLink;
   
 
 
-  sub operations { qw/AssociateDomain AssociateWebsiteCertificateAuthority CreateFleet DeleteFleet DescribeAuditStreamConfiguration DescribeCompanyNetworkConfiguration DescribeDevice DescribeDevicePolicyConfiguration DescribeDomain DescribeFleetMetadata DescribeIdentityProviderConfiguration DescribeWebsiteCertificateAuthority DisassociateDomain DisassociateWebsiteCertificateAuthority ListDevices ListDomains ListFleets ListWebsiteCertificateAuthorities RestoreDomainAccess RevokeDomainAccess SignOutUser UpdateAuditStreamConfiguration UpdateCompanyNetworkConfiguration UpdateDevicePolicyConfiguration UpdateDomainMetadata UpdateFleetMetadata UpdateIdentityProviderConfiguration / }
+  sub operations { qw/AssociateDomain AssociateWebsiteAuthorizationProvider AssociateWebsiteCertificateAuthority CreateFleet DeleteFleet DescribeAuditStreamConfiguration DescribeCompanyNetworkConfiguration DescribeDevice DescribeDevicePolicyConfiguration DescribeDomain DescribeFleetMetadata DescribeIdentityProviderConfiguration DescribeWebsiteCertificateAuthority DisassociateDomain DisassociateWebsiteAuthorizationProvider DisassociateWebsiteCertificateAuthority ListDevices ListDomains ListFleets ListWebsiteAuthorizationProviders ListWebsiteCertificateAuthorities RestoreDomainAccess RevokeDomainAccess SignOutUser UpdateAuditStreamConfiguration UpdateCompanyNetworkConfiguration UpdateDevicePolicyConfiguration UpdateDomainMetadata UpdateFleetMetadata UpdateIdentityProviderConfiguration / }
 
 1;
 
@@ -215,6 +230,28 @@ Each argument is described in detail in: L<Paws::WorkLink::AssociateDomain>
 Returns: a L<Paws::WorkLink::AssociateDomainResponse> instance
 
 Specifies a domain to be associated to Amazon WorkLink.
+
+
+=head2 AssociateWebsiteAuthorizationProvider
+
+=over
+
+=item AuthorizationProviderType => Str
+
+=item FleetArn => Str
+
+=item [DomainName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::AssociateWebsiteAuthorizationProvider>
+
+Returns: a L<Paws::WorkLink::AssociateWebsiteAuthorizationProviderResponse> instance
+
+Associates a website authorization provider with a specified fleet.
+This is used to authorize users against associated websites in the
+company network.
 
 
 =head2 AssociateWebsiteCertificateAuthority
@@ -434,6 +471,26 @@ Disassociates a domain from Amazon WorkLink. End users lose the ability
 to access the domain with Amazon WorkLink.
 
 
+=head2 DisassociateWebsiteAuthorizationProvider
+
+=over
+
+=item AuthorizationProviderId => Str
+
+=item FleetArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::DisassociateWebsiteAuthorizationProvider>
+
+Returns: a L<Paws::WorkLink::DisassociateWebsiteAuthorizationProviderResponse> instance
+
+Disassociates a website authorization provider from a specified fleet.
+After the disassociation, users can't load any associated websites that
+require this authorization provider.
+
+
 =head2 DisassociateWebsiteCertificateAuthority
 
 =over
@@ -508,6 +565,27 @@ Each argument is described in detail in: L<Paws::WorkLink::ListFleets>
 Returns: a L<Paws::WorkLink::ListFleetsResponse> instance
 
 Retrieves a list of fleets for the current account and Region.
+
+
+=head2 ListWebsiteAuthorizationProviders
+
+=over
+
+=item FleetArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::ListWebsiteAuthorizationProviders>
+
+Returns: a L<Paws::WorkLink::ListWebsiteAuthorizationProvidersResponse> instance
+
+Retrieves a list of website authorization providers associated with a
+specified fleet.
 
 
 =head2 ListWebsiteCertificateAuthorities
