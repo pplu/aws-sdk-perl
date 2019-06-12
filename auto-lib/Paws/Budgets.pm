@@ -284,6 +284,13 @@ Returns: a L<Paws::Budgets::CreateBudgetResponse> instance
 
 Creates a budget and, if included, notifications and subscribers.
 
+Only one of C<BudgetLimit> or C<PlannedBudgetLimits> can be present in
+the syntax at one time. Use the syntax that matches your case. The
+Request Syntax section shows the C<BudgetLimit> syntax. For
+C<PlannedBudgetLimits>, see the Examples
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples)
+section.
+
 
 =head2 CreateNotification
 
@@ -417,6 +424,11 @@ Returns: a L<Paws::Budgets::DescribeBudgetResponse> instance
 
 Describes a budget.
 
+The Request Syntax section shows the C<BudgetLimit> syntax. For
+C<PlannedBudgetLimits>, see the Examples
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.html#API_DescribeBudget_Examples)
+section.
+
 
 =head2 DescribeBudgetPerformanceHistory
 
@@ -461,6 +473,11 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeBudgets>
 Returns: a L<Paws::Budgets::DescribeBudgetsResponse> instance
 
 Lists the budgets that are associated with an account.
+
+The Request Syntax section shows the C<BudgetLimit> syntax. For
+C<PlannedBudgetLimits>, see the Examples
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples)
+section.
 
 
 =head2 DescribeNotificationsForBudget
@@ -528,6 +545,13 @@ Updates a budget. You can change every part of a budget except for the
 C<budgetName> and the C<calculatedSpend>. When you modify a budget, the
 C<calculatedSpend> drops to zero until AWS has new usage data to use
 for forecasting.
+
+Only one of C<BudgetLimit> or C<PlannedBudgetLimits> can be present in
+the syntax at one time. Use the syntax that matches your case. The
+Request Syntax section shows the C<BudgetLimit> syntax. For
+C<PlannedBudgetLimits>, see the Examples
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples)
+section.
 
 
 =head2 UpdateNotification
