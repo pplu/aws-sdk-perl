@@ -40,6 +40,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::AddWorkingStorage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssignTapePool {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::AssignTapePool', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AttachVolume {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::AttachVolume', @_);
@@ -360,6 +365,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateSMBFileShare', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateSMBSecurityStrategy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateSMBSecurityStrategy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateSnapshotSchedule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateSnapshotSchedule', @_);
@@ -580,7 +590,7 @@ package Paws::StorageGateway;
   }
 
 
-  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage AttachVolume CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSMBFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSMBFileShares DescribeSMBSettings DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DetachVolume DisableGateway JoinDomain ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes NotifyWhenUploaded RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword SetSMBGuestPassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSMBFileShare UpdateSnapshotSchedule UpdateVTLDeviceType / }
+  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage AssignTapePool AttachVolume CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSMBFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSMBFileShares DescribeSMBSettings DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DetachVolume DisableGateway JoinDomain ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes NotifyWhenUploaded RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword SetSMBGuestPassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSMBFileShare UpdateSMBSecurityStrategy UpdateSnapshotSchedule UpdateVTLDeviceType / }
 
 1;
 
@@ -855,6 +865,30 @@ which you want to add working storage, and one or more disk IDs that
 you want to configure as working storage.
 
 
+=head2 AssignTapePool
+
+=over
+
+=item PoolId => Str
+
+=item TapeARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::AssignTapePool>
+
+Returns: a L<Paws::StorageGateway::AssignTapePoolOutput> instance
+
+Assigns a tape to a tape pool for archiving. The tape assigned to a
+pool is archived in the S3 storage class that is associated with the
+pool. When you use your backup application to eject the tape, the tape
+is archived directly into the S3 storage class (Glacier or Deep
+Archive) that corresponds to the pool.
+
+Valid values: "GLACIER", "DEEP_ARCHIVE"
+
+
 =head2 AttachVolume
 
 =over
@@ -1105,6 +1139,8 @@ share.
 =item SnapshotDescription => Str
 
 =item VolumeARN => Str
+
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
 
 
 =back
@@ -2667,6 +2703,25 @@ File gateways don't support creating hard or symbolic links on a file
 share.
 
 
+=head2 UpdateSMBSecurityStrategy
+
+=over
+
+=item GatewayARN => Str
+
+=item SMBSecurityStrategy => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateSMBSecurityStrategy>
+
+Returns: a L<Paws::StorageGateway::UpdateSMBSecurityStrategyOutput> instance
+
+Updates the SMB security strategy on a file gateway. This action is
+only supported in file gateways.
+
+
 =head2 UpdateSnapshotSchedule
 
 =over
@@ -2678,6 +2733,8 @@ share.
 =item VolumeARN => Str
 
 =item [Description => Str]
+
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
 
 
 =back

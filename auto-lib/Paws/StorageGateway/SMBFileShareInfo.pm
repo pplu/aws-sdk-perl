@@ -170,6 +170,10 @@ list) is enabled on the SMB file share. If it is set to "false", it
 indicates that file and directory permissions are mapped to the POSIX
 permission.
 
+For more information, see
+https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html
+in the Storage Gateway User Guide.
+
 
 =head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
 

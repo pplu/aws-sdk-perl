@@ -13,6 +13,7 @@ package Paws::StorageGateway::DescribeGatewayInformationOutput;
   has LastSoftwareUpdate => (is => 'ro', isa => 'Str');
   has NextUpdateAvailabilityDate => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
+  has VPCEndpoint => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -93,6 +94,12 @@ A list of up to 50 tags assigned to the gateway, sorted alphabetically
 by key name. Each tag is a key-value pair. For a gateway with more than
 10 tags assigned, you can view all tags using the
 C<ListTagsForResource> API operation.
+
+
+=head2 VPCEndpoint => Str
+
+The configuration settings for the virtual private cloud (VPC) endpoint
+for your gateway.
 
 
 =head2 _request_id => Str
