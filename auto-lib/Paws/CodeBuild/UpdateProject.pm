@@ -12,8 +12,10 @@ package Paws::CodeBuild::UpdateProject;
   has QueuedTimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'queuedTimeoutInMinutes' );
   has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', traits => ['NameInRequest'], request_name => 'secondaryArtifacts' );
   has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', traits => ['NameInRequest'], request_name => 'secondarySources' );
+  has SecondarySourceVersions => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSourceVersion]', traits => ['NameInRequest'], request_name => 'secondarySourceVersions' );
   has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole' );
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', traits => ['NameInRequest'], request_name => 'source' );
+  has SourceVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceVersion' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TimeoutInMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMinutes' );
   has VpcConfig => (is => 'ro', isa => 'Paws::CodeBuild::VpcConfig', traits => ['NameInRequest'], request_name => 'vpcConfig' );
@@ -117,6 +119,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                      # OPTIONAL
+      SecondarySourceVersions => [
+        {
+          SourceIdentifier => 'MyString',     # OPTIONAL
+          SourceVersion    => 'MyString',     # OPTIONAL
+
+        },
+        ...
+      ],                                      # OPTIONAL
       SecondarySources => [
         {
           Type => 'CODECOMMIT'
@@ -157,7 +167,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ReportBuildStatus => 1,             # OPTIONAL
         SourceIdentifier  => 'MyString',    # OPTIONAL
       },    # OPTIONAL
-      Tags => [
+      SourceVersion => 'MyString',    # OPTIONAL
+      Tags          => [
         {
           Key   => 'MyKeyInput',      # min: 1, max: 127; OPTIONAL
           Value => 'MyValueInput',    # min: 1, max: 255; OPTIONAL
@@ -268,6 +279,14 @@ An array of C<ProjectSource> objects.
 
 
 
+=head2 SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]
+
+An array of C<ProjectSourceVersion> objects. If
+C<secondarySourceVersions> is specified at the build level, then they
+take over these C<secondarySourceVersions> (at the project level).
+
+
+
 =head2 ServiceRole => Str
 
 The replacement ARN of the AWS Identity and Access Management (IAM)
@@ -280,6 +299,49 @@ on behalf of the AWS account.
 
 Information to be changed about the build input source code for the
 build project.
+
+
+
+=head2 SourceVersion => Str
+
+A version of the build input to be built for this project. If not
+specified, the latest version is used. If specified, it must be one of:
+
+=over
+
+=item *
+
+For AWS CodeCommit: the commit ID to use.
+
+=item *
+
+For GitHub: the commit ID, pull request ID, branch name, or tag name
+that corresponds to the version of the source code you want to build.
+If a pull request ID is specified, it must use the format
+C<pr/pull-request-ID> (for example C<pr/25>). If a branch name is
+specified, the branch's HEAD commit ID is used. If not specified, the
+default branch's HEAD commit ID is used.
+
+=item *
+
+For Bitbucket: the commit ID, branch name, or tag name that corresponds
+to the version of the source code you want to build. If a branch name
+is specified, the branch's HEAD commit ID is used. If not specified,
+the default branch's HEAD commit ID is used.
+
+=item *
+
+For Amazon Simple Storage Service (Amazon S3): the version ID of the
+object that represents the build input ZIP file to use.
+
+=back
+
+If C<sourceVersion> is specified at the build level, then that version
+takes precedence over this C<sourceVersion> (at the project level).
+
+For more information, see Source Version Sample with CodeBuild
+(https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
+in the I<AWS CodeBuild User Guide>.
 
 
 

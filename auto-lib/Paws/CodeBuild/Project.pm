@@ -14,8 +14,10 @@ package Paws::CodeBuild::Project;
   has QueuedTimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'queuedTimeoutInMinutes', traits => ['NameInRequest']);
   has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectArtifacts]', request_name => 'secondaryArtifacts', traits => ['NameInRequest']);
   has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', request_name => 'secondarySources', traits => ['NameInRequest']);
+  has SecondarySourceVersions => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSourceVersion]', request_name => 'secondarySourceVersions', traits => ['NameInRequest']);
   has ServiceRole => (is => 'ro', isa => 'Str', request_name => 'serviceRole', traits => ['NameInRequest']);
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', request_name => 'source', traits => ['NameInRequest']);
+  has SourceVersion => (is => 'ro', isa => 'Str', request_name => 'sourceVersion', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutInMinutes', traits => ['NameInRequest']);
   has VpcConfig => (is => 'ro', isa => 'Paws::CodeBuild::VpcConfig', request_name => 'vpcConfig', traits => ['NameInRequest']);
@@ -135,6 +137,13 @@ out.
   An array of C<ProjectSource> objects.
 
 
+=head2 SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]
+
+  An array of C<ProjectSourceVersion> objects. If
+C<secondarySourceVersions> is specified at the build level, then they
+take over these C<secondarySourceVersions> (at the project level).
+
+
 =head2 ServiceRole => Str
 
   The ARN of the AWS Identity and Access Management (IAM) role that
@@ -145,6 +154,48 @@ of the AWS account.
 =head2 Source => L<Paws::CodeBuild::ProjectSource>
 
   Information about the build input source code for this build project.
+
+
+=head2 SourceVersion => Str
+
+  A version of the build input to be built for this project. If not
+specified, the latest version is used. If specified, it must be one of:
+
+=over
+
+=item *
+
+For AWS CodeCommit: the commit ID to use.
+
+=item *
+
+For GitHub: the commit ID, pull request ID, branch name, or tag name
+that corresponds to the version of the source code you want to build.
+If a pull request ID is specified, it must use the format
+C<pr/pull-request-ID> (for example C<pr/25>). If a branch name is
+specified, the branch's HEAD commit ID is used. If not specified, the
+default branch's HEAD commit ID is used.
+
+=item *
+
+For Bitbucket: the commit ID, branch name, or tag name that corresponds
+to the version of the source code you want to build. If a branch name
+is specified, the branch's HEAD commit ID is used. If not specified,
+the default branch's HEAD commit ID is used.
+
+=item *
+
+For Amazon Simple Storage Service (Amazon S3): the version ID of the
+object that represents the build input ZIP file to use.
+
+=back
+
+If C<sourceVersion> is specified at the build level, then that version
+takes precedence over this C<sourceVersion> (at the project level).
+
+For more information, see Source Version Sample with CodeBuild
+(https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
+in the I<AWS CodeBuild User Guide>.
 
 
 =head2 Tags => ArrayRef[L<Paws::CodeBuild::Tag>]

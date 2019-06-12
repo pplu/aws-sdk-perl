@@ -84,7 +84,7 @@ Docker images down from the network.
 
 =item *
 
-You can use a Docker layer cache in the Linux enviornment only.
+You can use a Docker layer cache in the Linux environment only.
 
 =item *
 

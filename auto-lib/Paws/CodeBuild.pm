@@ -408,6 +408,10 @@ Gets information about build projects.
 
 =item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
 
+=item [SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]]
+
+=item [SourceVersion => Str]
+
 =item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
 
 =item [TimeoutInMinutes => Int]
@@ -750,9 +754,13 @@ Attempts to stop running a build.
 
 =item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
 
+=item [SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]]
+
 =item [ServiceRole => Str]
 
 =item [Source => L<Paws::CodeBuild::ProjectSource>]
+
+=item [SourceVersion => Str]
 
 =item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
 

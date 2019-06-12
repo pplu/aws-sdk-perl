@@ -142,15 +142,17 @@ CodeBuild with Docker support.)
 If the operating system's base image is Ubuntu Linux:
 
 C<- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock
---host=tcp://0.0.0.0:2375 --storage-driver=overlay& - timeout 15 sh -c
-"until docker info; do echo .; sleep 1; done">
+--host=tcp://0.0.0.0:2375 --storage-driver=overlay&>
 
-If the operating system's base image is Alpine Linux, add the C<-t>
-argument to C<timeout>:
+C<- timeout 15 sh -c "until docker info; do echo .; sleep 1; done">
+
+If the operating system's base image is Alpine Linux and the previous
+command does not work, add the C<-t> argument to C<timeout>:
 
 C<- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock
---host=tcp://0.0.0.0:2375 --storage-driver=overlay& - timeout 15 -t sh
--c "until docker info; do echo .; sleep 1; done">
+--host=tcp://0.0.0.0:2375 --storage-driver=overlay&>
+
+C<- timeout -t 15 sh -c "until docker info; do echo .; sleep 1; done">
 
 
 =head2 RegistryCredential => L<Paws::CodeBuild::RegistryCredential>

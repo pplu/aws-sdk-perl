@@ -281,6 +281,12 @@ object that represents the build input ZIP file to use.
 =head2 SourceVersion => Str
 
   Any version identifier for the version of the source code to be built.
+If C<sourceVersion> is specified at the project level, then this
+C<sourceVersion> (at the build level) takes precedence.
+
+For more information, see Source Version Sample with CodeBuild
+(https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
+in the I<AWS CodeBuild User Guide>.
 
 
 =head2 StartTime => Str
