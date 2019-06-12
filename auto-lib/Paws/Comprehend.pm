@@ -582,6 +582,8 @@ For more information, see how-syntax.
 
 =item [VolumeKmsKeyId => Str]
 
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+
 
 =back
 
@@ -614,6 +616,8 @@ how-document-classification.
 =item [Tags => ArrayRef[L<Paws::Comprehend::Tag>]]
 
 =item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
 
 
 =back
@@ -1110,6 +1114,8 @@ Gets a list of the topic detection jobs that you have submitted.
 
 =item [VolumeKmsKeyId => Str]
 
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+
 
 =back
 
@@ -1136,6 +1142,8 @@ to track the progress of the job.
 =item [JobName => Str]
 
 =item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
 
 
 =back
@@ -1167,6 +1175,8 @@ of documents. Use the operation to track the status of a job.
 =item [JobName => Str]
 
 =item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
 
 
 =back
@@ -1202,6 +1212,8 @@ access to the recognizer being used to detect the custom entity.
 
 =item [VolumeKmsKeyId => Str]
 
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+
 
 =back
 
@@ -1231,6 +1243,8 @@ documents. Use the operation to track the status of a job.
 
 =item [VolumeKmsKeyId => Str]
 
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+
 
 =back
 
@@ -1259,6 +1273,8 @@ documents. use the operation to track the status of a job.
 =item [NumberOfTopics => Int]
 
 =item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
 
 
 =back

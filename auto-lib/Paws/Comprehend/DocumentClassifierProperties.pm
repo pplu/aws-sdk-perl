@@ -13,6 +13,7 @@ package Paws::Comprehend::DocumentClassifierProperties;
   has TrainingEndTime => (is => 'ro', isa => 'Str');
   has TrainingStartTime => (is => 'ro', isa => 'Str');
   has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
+  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +33,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Comprehend::DocumentClassifierProperties object:
 
-  $service_obj->Method(Att1 => { ClassifierMetadata => $value, ..., VolumeKmsKeyId => $value  });
+  $service_obj->Method(Att1 => { ClassifierMetadata => $value, ..., VpcConfig => $value  });
 
 =head3 Results returned from an API call
 
@@ -142,6 +143,14 @@ C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
 
 =back
 
+
+
+=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+
+  Configuration parameters for a private Virtual Private Cloud (VPC)
+containing the resources you are using for your custom classifier. For
+more information, see Amazon VPC
+(https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 
 
 
