@@ -2,6 +2,7 @@ package Paws::IoTAnalytics::DatastoreSummary;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has DatastoreName => (is => 'ro', isa => 'Str', request_name => 'datastoreName', traits => ['NameInRequest']);
+  has DatastoreStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastoreStorageSummary', request_name => 'datastoreStorage', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
@@ -47,6 +48,11 @@ A summary of information about a data store.
 =head2 DatastoreName => Str
 
   The name of the data store.
+
+
+=head2 DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorageSummary>
+
+  Where data store data is stored.
 
 
 =head2 LastUpdateTime => Str

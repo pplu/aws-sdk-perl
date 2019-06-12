@@ -404,6 +404,8 @@ Cancels the reprocessing of data through the pipeline.
 
 =item ChannelName => Str
 
+=item [ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>]
+
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
 =item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
@@ -475,6 +477,8 @@ query) or a "containerAction" (executing a containerized application).
 =over
 
 =item DatastoreName => Str
+
+=item [DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>]
 
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
@@ -939,6 +943,8 @@ Removes the given tags (metadata) from the resource.
 
 =item ChannelName => Str
 
+=item [ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>]
+
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
 
@@ -982,6 +988,8 @@ Updates the settings of a data set.
 =over
 
 =item DatastoreName => Str
+
+=item [DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>]
 
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 

@@ -1,6 +1,7 @@
 package Paws::IoTAnalytics::DatasetContentDeliveryDestination;
   use Moose;
   has IotEventsDestinationConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::IotEventsDestinationConfiguration', request_name => 'iotEventsDestinationConfiguration', traits => ['NameInRequest']);
+  has S3DestinationConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::S3DestinationConfiguration', request_name => 's3DestinationConfiguration', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoTAnalytics::DatasetContentDeliveryDestination object:
 
-  $service_obj->Method(Att1 => { IotEventsDestinationConfiguration => $value, ..., IotEventsDestinationConfiguration => $value  });
+  $service_obj->Method(Att1 => { IotEventsDestinationConfiguration => $value, ..., S3DestinationConfiguration => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,6 +41,12 @@ The destination to which data set contents are delivered.
 
   Configuration information for delivery of data set contents to AWS IoT
 Events.
+
+
+=head2 S3DestinationConfiguration => L<Paws::IoTAnalytics::S3DestinationConfiguration>
+
+  Configuration information for delivery of data set contents to Amazon
+S3.
 
 
 

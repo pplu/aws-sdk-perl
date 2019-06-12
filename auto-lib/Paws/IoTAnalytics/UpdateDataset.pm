@@ -87,6 +87,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               RoleArn   => 'MyRoleArn',               # min: 20, max: 2048
 
             },    # OPTIONAL
+            S3DestinationConfiguration => {
+              Bucket            => 'MyBucketName',          # min: 3, max: 255
+              Key               => 'MyBucketKeyExpression', # min: 1, max: 255
+              RoleArn           => 'MyRoleArn',             # min: 20, max: 2048
+              GlueConfiguration => {
+                DatabaseName => 'MyGlueDatabaseName',       # min: 1, max: 150
+                TableName    => 'MyGlueTableName',          # min: 1, max: 150
+
+              },    # OPTIONAL
+            },    # OPTIONAL
           },
           EntryName => 'MyEntryName',    # OPTIONAL
         },
