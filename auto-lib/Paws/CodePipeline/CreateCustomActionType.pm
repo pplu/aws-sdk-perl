@@ -7,6 +7,7 @@ package Paws::CodePipeline::CreateCustomActionType;
   has OutputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', traits => ['NameInRequest'], request_name => 'outputArtifactDetails' , required => 1);
   has Provider => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'provider' , required => 1);
   has Settings => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeSettings', traits => ['NameInRequest'], request_name => 'settings' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -65,10 +66,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RevisionUrlTemplate  => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
         ThirdPartyConfigurationUrl => 'MyUrl',     # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
     my $ActionType = $CreateCustomActionTypeOutput->ActionType;
+    my $Tags       = $CreateCustomActionTypeOutput->Tags;
 
     # Returns a L<Paws::CodePipeline::CreateCustomActionTypeOutput> object.
 
@@ -125,6 +135,12 @@ CodeDeploy.
 =head2 Settings => L<Paws::CodePipeline::ActionTypeSettings>
 
 URLs that provide users information about this custom action.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+
+The tags for the custom action.
 
 
 

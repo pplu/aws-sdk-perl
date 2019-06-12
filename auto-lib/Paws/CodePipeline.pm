@@ -110,6 +110,11 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListPipelines', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListWebhooks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListWebhooks', @_);
@@ -175,12 +180,45 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::StartPipelineExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdatePipeline {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::UpdatePipeline', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllActionExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListActionExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListActionExecutions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->actionExecutionDetails }, @{ $next_result->actionExecutionDetails };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'actionExecutionDetails') foreach (@{ $result->actionExecutionDetails });
+        $result = $self->ListActionExecutions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'actionExecutionDetails') foreach (@{ $result->actionExecutionDetails });
+    }
+
+    return undef
+  }
   sub ListAllActionTypes {
     my $self = shift;
 
@@ -250,6 +288,29 @@ package Paws::CodePipeline;
 
     return undef
   }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTagsForResource(@_, nextToken => $next_result->nextToken);
+        push @{ $result->tags }, @{ $next_result->tags };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'tags') foreach (@{ $result->tags });
+        $result = $self->ListTagsForResource(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'tags') foreach (@{ $result->tags });
+    }
+
+    return undef
+  }
   sub ListAllWebhooks {
     my $self = shift;
 
@@ -275,7 +336,7 @@ package Paws::CodePipeline;
   }
 
 
-  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionExecutions ListActionTypes ListPipelineExecutions ListPipelines ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution UpdatePipeline / }
+  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionExecutions ListActionTypes ListPipelineExecutions ListPipelines ListTagsForResource ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution TagResource UntagResource UpdatePipeline / }
 
 1;
 
@@ -580,6 +641,8 @@ partner actions.
 
 =item [Settings => L<Paws::CodePipeline::ActionTypeSettings>]
 
+=item [Tags => ArrayRef[L<Paws::CodePipeline::Tag>]]
+
 
 =back
 
@@ -596,6 +659,8 @@ associated with the AWS account. Only used for custom actions.
 =over
 
 =item Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
+
+=item [Tags => ArrayRef[L<Paws::CodePipeline::Tag>]]
 
 
 =back
@@ -919,6 +984,27 @@ Returns: a L<Paws::CodePipeline::ListPipelinesOutput> instance
 Gets a summary of all of the pipelines associated with your account.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::ListTagsForResource>
+
+Returns: a L<Paws::CodePipeline::ListTagsForResourceOutput> instance
+
+Gets the set of key/value pairs (metadata) that are used to manage the
+resource.
+
+
 =head2 ListWebhooks
 
 =over
@@ -1134,6 +1220,8 @@ by a job worker. Only used for partner actions.
 
 =item Webhook => L<Paws::CodePipeline::WebhookDefinition>
 
+=item [Tags => ArrayRef[L<Paws::CodePipeline::Tag>]]
+
 
 =back
 
@@ -1211,6 +1299,43 @@ Starts the specified pipeline. Specifically, it begins processing the
 latest commit to the source location specified as part of the pipeline.
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::TagResource>
+
+Returns: a L<Paws::CodePipeline::TagResourceOutput> instance
+
+Adds to or modifies the tags of the given resource. Tags are metadata
+that can be used to manage a resource.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::UntagResource>
+
+Returns: a L<Paws::CodePipeline::UntagResourceOutput> instance
+
+Removes tags from an AWS resource.
+
+
 =head2 UpdatePipeline
 
 =over
@@ -1236,6 +1361,18 @@ Updating the pipeline increases the version number of the pipeline by
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllActionExecutions(sub { },PipelineName => Str, [Filter => L<Paws::CodePipeline::ActionExecutionFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllActionExecutions(PipelineName => Str, [Filter => L<Paws::CodePipeline::ActionExecutionFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - actionExecutionDetails, passing the object as the first parameter, and the string 'actionExecutionDetails' as the second parameter 
+
+If not, it will return a a L<Paws::CodePipeline::ListActionExecutionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllActionTypes(sub { },[ActionOwnerFilter => Str, NextToken => Str])
 
@@ -1271,6 +1408,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - pipelines, passing the object as the first parameter, and the string 'pipelines' as the second parameter 
 
 If not, it will return a a L<Paws::CodePipeline::ListPipelinesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - tags, passing the object as the first parameter, and the string 'tags' as the second parameter 
+
+If not, it will return a a L<Paws::CodePipeline::ListTagsForResourceOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllWebhooks(sub { },[MaxResults => Int, NextToken => Str])
