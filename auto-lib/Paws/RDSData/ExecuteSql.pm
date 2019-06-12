@@ -53,33 +53,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> AwsSecretStoreArn => Str
 
-ARN of the db credentials in AWS Secret Store or the friendly secret
-name
+The Amazon Resource Name (ARN) of the secret that enables access to the
+DB cluster.
 
 
 
 =head2 Database => Str
 
-Target DB name
+The name of the database.
 
 
 
 =head2 B<REQUIRED> DbClusterOrInstanceArn => Str
 
-ARN of the target db cluster or instance
+The ARN of the Aurora Serverless DB cluster.
 
 
 
 =head2 Schema => Str
 
-Target Schema name
+The name of the database schema.
 
 
 
 =head2 B<REQUIRED> SqlStatements => Str
 
-SQL statement(s) to be executed. Statements can be chained by using
-semicolons
+One or more SQL statements to run on the DB cluster.
+
+You can separate SQL statements from each other with a semicolon (;).
+Any valid SQL statement is permitted, including data definition, data
+manipulation, and commit statements.
 
 
 

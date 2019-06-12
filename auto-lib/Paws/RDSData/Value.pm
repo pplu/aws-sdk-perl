@@ -40,59 +40,59 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDSData::Va
 
 =head1 DESCRIPTION
 
-Column value
+Contains the value of a column.
 
 =head1 ATTRIBUTES
 
 
 =head2 ArrayValues => ArrayRef[L<Paws::RDSData::Value>]
 
-  Arbitrarily nested arrays
+  An array of column values.
 
 
 =head2 BigIntValue => Int
 
-  Long value
+  A value for a column of big integer data type.
 
 
 =head2 BitValue => Bool
 
-  Bit value
+  A value for a column of BIT data type.
 
 
 =head2 BlobValue => Str
 
-  Blob value
+  A value for a column of BLOB data type.
 
 
 =head2 DoubleValue => Num
 
-  Double value
+  A value for a column of double data type.
 
 
 =head2 IntValue => Int
 
-  Integer value
+  A value for a column of integer data type.
 
 
 =head2 IsNull => Bool
 
-  Is column null
+  A NULL value.
 
 
 =head2 RealValue => Num
 
-  Float value
+  A value for a column of real data type.
 
 
 =head2 StringValue => Str
 
-  String value
+  A value for a column of string data type.
 
 
 =head2 StructValue => L<Paws::RDSData::StructValue>
 
-  Struct or UDT
+  A value for a column of STRUCT data type.
 
 
 

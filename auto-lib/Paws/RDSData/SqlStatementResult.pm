@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDSData::Sq
 
 =head1 DESCRIPTION
 
-SQL statement execution result
+The result of a SQL statement.
 
 =head1 ATTRIBUTES
 
 
 =head2 NumberOfRecordsUpdated => Int
 
-  Number of rows updated.
+  The number of records updated by a SQL statement.
 
 
 =head2 ResultFrame => L<Paws::RDSData::ResultFrame>
 
-  ResultFrame returned by executing the sql statement
+  The result set of the SQL statement.
 
 
 
