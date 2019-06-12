@@ -32,7 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Version
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes the versioning state of an Amazon S3 bucket. For more
+information, see PUT Bucket versioning
+(https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTVersioningStatus.html)
+in the I<Amazon Simple Storage Service API Reference>.
 
 =head1 ATTRIBUTES
 

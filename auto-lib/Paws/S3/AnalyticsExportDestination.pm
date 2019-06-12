@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Analyti
 
 =head1 DESCRIPTION
 
-This class has no description
+Where to publish the analytics results.
 
 =head1 ATTRIBUTES
 

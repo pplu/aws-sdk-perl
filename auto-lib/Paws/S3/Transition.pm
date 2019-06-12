@@ -33,26 +33,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Transit
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies when an object transitions to a specified storage class.
 
 =head1 ATTRIBUTES
 
 
 =head2 Date => Str
 
-  Indicates at what date the object is to be moved or deleted. Should be
-in GMT ISO 8601 Format.
+  Indicates when objects are transitioned to the specified storage class.
+The date value must be in ISO 8601 format. The time is always midnight
+UTC.
 
 
 =head2 Days => Int
 
-  Indicates the lifetime, in days, of the objects that are subject to the
-rule. The value must be a non-zero positive integer.
+  Indicates the number of days after creation when objects are
+transitioned to the specified storage class. The value must be a
+positive integer.
 
 
 =head2 StorageClass => Str
 
-  The class of storage used to store the object.
+  The storage class to which you want the object to transition.
 
 
 

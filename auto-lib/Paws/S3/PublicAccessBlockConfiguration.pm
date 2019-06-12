@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::PublicA
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies the Block Public Access configuration for an Amazon S3
+bucket.
 
 =head1 ATTRIBUTES
 

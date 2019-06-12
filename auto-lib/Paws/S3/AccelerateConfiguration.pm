@@ -31,14 +31,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Acceler
 
 =head1 DESCRIPTION
 
-This class has no description
+Configures the transfer acceleration state for an Amazon S3 bucket. For
+more information, see Amazon S3 Transfer Acceleration
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 Status => Str
 
-  The accelerate configuration of the bucket.
+  Specifies the transfer acceleration status of the bucket.
 
 
 

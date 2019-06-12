@@ -31,17 +31,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::AbortIn
 
 =head1 DESCRIPTION
 
-Specifies the days since the initiation of an Incomplete Multipart
-Upload that Lifecycle will wait before permanently removing all parts
-of the upload.
+Specifies the days since the initiation of an incomplete multipart
+upload that Amazon S3 will wait before permanently removing all parts
+of the upload. For more information, see Aborting Incomplete Multipart
+Uploads Using a Bucket Lifecycle Policy
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 DaysAfterInitiation => Int
 
-  Indicates the number of days that must pass since initiation for
-Lifecycle to abort an Incomplete Multipart Upload.
+  Specifies the number of days after which Amazon S3 aborts an incomplete
+multipart upload.
 
 
 

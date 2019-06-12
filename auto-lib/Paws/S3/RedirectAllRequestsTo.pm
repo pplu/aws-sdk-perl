@@ -32,20 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Redirec
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies the redirect behavior of all requests to a website endpoint
+of an Amazon S3 bucket.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> HostName => Str
 
-  Name of the host where requests will be redirected.
+  Name of the host where requests are redirected.
 
 
 =head2 Protocol => Str
 
-  Protocol to use (http, https) when redirecting requests. The default is
-the protocol that is used in the original request.
+  Protocol to use when redirecting requests. The default is the protocol
+that is used in the original request.
 
 
 

@@ -39,8 +39,8 @@ encrypted with AWS KMS.
 
 =head2 B<REQUIRED> Status => Str
 
-  If the status is not C<Enabled>, replication for S3 objects encrypted
-with AWS KMS is disabled.
+  Specifies whether Amazon S3 replicates objects created with server-side
+encryption using an AWS KMS-managed key.
 
 
 

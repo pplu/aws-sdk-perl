@@ -91,7 +91,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 AccessControlPolicy => L<Paws::S3::AccessControlPolicy>
 
-
+Contains the elements that set the ACL permissions for an object per
+grantee.
 
 
 

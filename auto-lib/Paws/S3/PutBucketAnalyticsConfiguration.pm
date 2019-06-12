@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Value => 'MyValue',
 
               },
-              ...                          # OPTIONAL
+              ...
             ],                             # OPTIONAL
           },    # OPTIONAL
           Prefix => 'MyPrefix',    # OPTIONAL
@@ -68,7 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Key   => 'MyObjectKey',    # min: 1
             Value => 'MyValue',
 
-          },    # OPTIONAL
+          },
         },    # OPTIONAL
       },
       Bucket        => 'MyBucketName',
@@ -102,7 +102,7 @@ Size of the body in bytes.
 
 =head2 B<REQUIRED> Id => Str
 
-The identifier used to represent an analytics configuration.
+The ID that identifies the analytics configuration.
 
 
 

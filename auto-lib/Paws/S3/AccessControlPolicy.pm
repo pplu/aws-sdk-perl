@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::AccessC
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains the elements that set the ACL permissions for an object per
+grantee.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +45,7 @@ This class has no description
 
 =head2 Owner => L<Paws::S3::Owner>
 
-  
+  Container for the bucket owner's display name and ID.
 
 
 

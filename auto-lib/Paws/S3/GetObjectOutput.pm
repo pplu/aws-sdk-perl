@@ -165,13 +165,13 @@ Valid values are: C<"ON">, C<"OFF">
 
 =head2 ObjectLockMode => Str
 
-The Object Lock mode currently in place for this object.
+The object lock mode currently in place for this object.
 
 Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
 
 =head2 ObjectLockRetainUntilDate => Str
 
-The date and time when this object's Object Lock will expire.
+The date and time when this object's object lock will expire.
 
 
 

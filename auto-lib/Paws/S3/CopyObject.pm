@@ -281,13 +281,13 @@ Valid values are: C<"ON">, C<"OFF">
 
 =head2 ObjectLockMode => Str
 
-The Object Lock mode that you want to apply to the copied object.
+The object lock mode that you want to apply to the copied object.
 
 Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
 
 =head2 ObjectLockRetainUntilDate => Str
 
-The date and time when you want the copied object's Object Lock to
+The date and time when you want the copied object's object lock to
 expire.
 
 

@@ -202,14 +202,14 @@ Valid values are: C<"ON">, C<"OFF">
 
 =head2 ObjectLockMode => Str
 
-Specifies the Object Lock mode that you want to apply to the uploaded
+Specifies the object lock mode that you want to apply to the uploaded
 object.
 
 Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
 
 =head2 ObjectLockRetainUntilDate => Str
 
-Specifies the date and time when you want the Object Lock to expire.
+Specifies the date and time when you want the object lock to expire.
 
 
 

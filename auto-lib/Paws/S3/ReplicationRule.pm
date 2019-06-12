@@ -38,7 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Replica
 
 =head1 DESCRIPTION
 
-A container for information about a specific replication rule.
+Specifies which Amazon S3 objects to replicate and where to store the
+replicas.
 
 =head1 ATTRIBUTES
 
@@ -66,7 +67,8 @@ A container for information about a specific replication rule.
 =head2 Prefix => Str
 
   An object keyname prefix that identifies the object or objects to which
-the rule applies. The maximum prefix length is 1,024 characters.
+the rule applies. The maximum prefix length is 1,024 characters. To
+include all objects in a bucket, specify an empty string.
 
 
 =head2 Priority => Int
@@ -103,13 +105,10 @@ disable the replication of these objects. Currently, Amazon S3 supports
 only the filter that you can specify for objects created with
 server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
 
-If you want Amazon S3 to replicate objects created with server-side
-encryption using AWS KMS-Managed Keys.
-
 
 =head2 B<REQUIRED> Status => Str
 
-  If status isn't enabled, the rule is ignored.
+  Specifies whether the rule is enabled.
 
 
 

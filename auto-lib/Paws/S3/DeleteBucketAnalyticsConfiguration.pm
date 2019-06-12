@@ -52,7 +52,7 @@ deleted.
 
 =head2 B<REQUIRED> Id => Str
 
-The identifier used to represent an analytics configuration.
+The ID that identifies the analytics configuration.
 
 
 

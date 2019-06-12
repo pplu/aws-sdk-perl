@@ -19,19 +19,22 @@ Paws::S3::NotificationConfiguration
 
 =head2 LambdaFunctionConfigurations => ArrayRef[L<Paws::S3::LambdaFunctionConfiguration>]
 
-
+Describes the AWS Lambda functions to invoke and the events for which
+to invoke them.
 
 
 
 =head2 QueueConfigurations => ArrayRef[L<Paws::S3::QueueConfiguration>]
 
-
+The Amazon Simple Queue Service queues to publish messages to and the
+events for which to publish messages.
 
 
 
 =head2 TopicConfigurations => ArrayRef[L<Paws::S3::TopicConfiguration>]
 
-
+The topic to which notifications are sent and the events for which
+notifications are generated.
 
 
 
