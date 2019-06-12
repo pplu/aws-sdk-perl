@@ -56,6 +56,11 @@ Environment=.
 
 If you do not specify a value, the value is set to an empty string.
 
+Generally allowed characters are: letters, numbers, and spaces
+representable in UTF-8, and the following special characters:
+
+_ . : / = + \ - @
+
 
 
 

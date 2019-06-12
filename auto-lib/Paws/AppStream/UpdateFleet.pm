@@ -9,6 +9,7 @@ package Paws::AppStream::UpdateFleet;
   has DisplayName => (is => 'ro', isa => 'Str');
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
+  has IdleDisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has ImageArn => (is => 'ro', isa => 'Str');
   has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
@@ -58,19 +59,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         OrganizationalUnitDistinguishedName =>
           'MyOrganizationalUnitDistinguishedName',      # max: 2000; OPTIONAL
       },    # OPTIONAL
-      EnableDefaultInternetAccess => 1,             # OPTIONAL
-      ImageArn                    => 'MyArn',       # OPTIONAL
-      ImageName                   => 'MyString',    # OPTIONAL
-      InstanceType                => 'MyString',    # OPTIONAL
-      MaxUserDurationInSeconds    => 1,             # OPTIONAL
-      Name                        => 'MyString',    # OPTIONAL
-      VpcConfig                   => {
+      EnableDefaultInternetAccess    => 1,             # OPTIONAL
+      IdleDisconnectTimeoutInSeconds => 1,             # OPTIONAL
+      ImageArn                       => 'MyArn',       # OPTIONAL
+      ImageName                      => 'MyString',    # OPTIONAL
+      InstanceType                   => 'MyString',    # OPTIONAL
+      MaxUserDurationInSeconds       => 1,             # OPTIONAL
+      Name                           => 'MyString',    # OPTIONAL
+      VpcConfig                      => {
         SecurityGroupIds => [
-          'MyString', ...                           # min: 1
-        ],                                          # max: 5; OPTIONAL
+          'MyString', ...                              # min: 1
+        ],                                             # max: 5; OPTIONAL
         SubnetIds => [
-          'MyString', ...                           # min: 1
-        ],                                          # OPTIONAL
+          'MyString', ...                              # min: 1
+        ],                                             # OPTIONAL
       },    # OPTIONAL
     );
 
@@ -111,11 +113,13 @@ The description to display.
 
 =head2 DisconnectTimeoutInSeconds => Int
 
-The time after disconnection when a session is considered to have
-ended, in seconds. If a user who was disconnected reconnects within
-this time interval, the user is connected to their previous session.
-Specify a value between 60 and 360000. By default, the value is 900
-seconds (15 minutes).
+The amount of time that a streaming session remains active after users
+disconnect. If users try to reconnect to the streaming session after a
+disconnection or network interruption within this time interval, they
+are connected to their previous session. Otherwise, they are connected
+to a new session with a new streaming instance.
+
+Specify a value between 60 and 360000.
 
 
 
@@ -135,6 +139,35 @@ the fleet to a Microsoft Active Directory domain.
 =head2 EnableDefaultInternetAccess => Bool
 
 Enables or disables default internet access for the fleet.
+
+
+
+=head2 IdleDisconnectTimeoutInSeconds => Int
+
+The amount of time that users can be idle (inactive) before they are
+disconnected from their streaming session and the
+C<DisconnectTimeoutInSeconds> time interval begins. Users are notified
+before they are disconnected due to inactivity. If users try to
+reconnect to the streaming session before the time interval specified
+in C<DisconnectTimeoutInSeconds> elapses, they are connected to their
+previous session. Users are considered idle when they stop providing
+keyboard or mouse input during their streaming session. File uploads
+and downloads, audio in, audio out, and pixels changing do not qualify
+as user activity. If users continue to be idle after the time interval
+in C<IdleDisconnectTimeoutInSeconds> elapses, they are disconnected.
+
+To prevent users from being disconnected due to inactivity, specify a
+value of 0. Otherwise, specify a value between 60 and 3600. The default
+value is 900.
+
+If you enable this feature, we recommend that you specify a value that
+corresponds exactly to a whole number of minutes (for example, 60, 120,
+and 180). If you don't do this, the value is rounded to the nearest
+minute. For example, if you specify a value of 70, users are
+disconnected after 1 minute of inactivity. If you specify a value that
+is at the midpoint between two different minutes, the value is rounded
+up. For example, if you specify a value of 90, users are disconnected
+after 2 minutes of inactivity.
 
 
 
@@ -244,9 +277,13 @@ stream.graphics-pro.16xlarge
 
 =head2 MaxUserDurationInSeconds => Int
 
-The maximum time that a streaming session can run, in seconds. Specify
-a value between 600 and 360000. By default, the value is 900 seconds
-(15 minutes).
+The maximum amount of time that a streaming session can remain active,
+in seconds. If users are still connected to a streaming instance five
+minutes before this limit is reached, they are prompted to save any
+open documents before being disconnected. After this time elapses, the
+instance is terminated and replaced by a new instance.
+
+Specify a value between 600 and 360000.
 
 
 

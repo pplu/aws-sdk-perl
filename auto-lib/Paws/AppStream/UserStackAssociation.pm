@@ -59,6 +59,8 @@ created in the user pool.
 
   The email address of the user who is associated with the stack.
 
+Users' email addresses are case-sensitive.
+
 
 
 =head1 SEE ALSO

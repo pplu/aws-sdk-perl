@@ -137,6 +137,11 @@ The tags to associate with the image builder. A tag is a key-value
 pair, and the value is optional. For example, Environment=Test. If you
 do not specify a value, Environment=.
 
+Generally allowed characters are: letters, numbers, and spaces
+representable in UTF-8, and the following special characters:
+
+_ . : / = + \ - @
+
 If you do not specify a value, the value is set to an empty string.
 
 For more information about tags, see Tagging Your Resources

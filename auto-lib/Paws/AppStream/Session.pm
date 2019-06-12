@@ -48,9 +48,7 @@ Describes a streaming session.
 =head2 AuthenticationType => Str
 
   The authentication method. The user is authenticated using a streaming
-URL (C<API>), SAML 2.0 federation (C<SAML>), or the AppStream 2.0 user
-pool (C<USERPOOL>). The default is to authenticate users using a
-streaming URL.
+URL (C<API>) or SAML 2.0 federation (C<SAML>).
 
 
 =head2 ConnectionState => Str
