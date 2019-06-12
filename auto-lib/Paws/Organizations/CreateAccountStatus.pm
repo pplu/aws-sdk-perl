@@ -103,7 +103,8 @@ Customer Support.
 
 =head2 GovCloudAccountId => Str
 
-  
+  If the account was created successfully, the unique identifier (ID) of
+the new account in the AWS GovCloud (US) Region.
 
 
 =head2 Id => Str

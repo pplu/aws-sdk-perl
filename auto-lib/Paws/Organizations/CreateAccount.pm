@@ -100,7 +100,7 @@ Organization
 in the I<AWS Organizations User Guide>, and steps 2 and 3 in Tutorial:
 Delegate Access Across AWS Accounts Using IAM Roles
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
-in the I<IAM User Guide>.
+in the I<IAM User Guide.>
 
 The regex pattern (http://wikipedia.org/wiki/regex) that is used to
 validate this parameter is a string of characters that can consist of

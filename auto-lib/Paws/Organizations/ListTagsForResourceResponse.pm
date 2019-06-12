@@ -1,8 +1,8 @@
 
-package Paws::Organizations::ListPoliciesResponse;
+package Paws::Organizations::ListTagsForResourceResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::PolicySummary]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::Tag]');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -10,7 +10,7 @@ package Paws::Organizations::ListPoliciesResponse;
 
 =head1 NAME
 
-Paws::Organizations::ListPoliciesResponse
+Paws::Organizations::ListTagsForResourceResponse
 
 =head1 ATTRIBUTES
 
@@ -24,11 +24,9 @@ get the next part of the output. You should repeat this until the
 C<NextToken> response element comes back as C<null>.
 
 
-=head2 Policies => ArrayRef[L<Paws::Organizations::PolicySummary>]
+=head2 Tags => ArrayRef[L<Paws::Organizations::Tag>]
 
-A list of policies that match the filter criteria in the request. The
-output list doesn't include the policy contents. To see the content for
-a policy, see DescribePolicy.
+The tags that are assigned to the resource.
 
 
 =head2 _request_id => Str

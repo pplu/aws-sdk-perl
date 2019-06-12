@@ -59,7 +59,7 @@ that admins in attached accounts can delegate to their users, groups,
 and roles. For more information about the SCP syntax, see Service
 Control Policy Syntax
 (https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
-in the I<AWS Organizations User Guide>.
+in the I<AWS Organizations User Guide.>
 
 
 
