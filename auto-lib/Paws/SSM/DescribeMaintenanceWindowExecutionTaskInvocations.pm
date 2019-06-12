@@ -88,14 +88,14 @@ from a previous call.)
 
 =head2 B<REQUIRED> TaskId => Str
 
-The ID of the specific task in the Maintenance Window task that should
+The ID of the specific task in the maintenance window task that should
 be retrieved.
 
 
 
 =head2 B<REQUIRED> WindowExecutionId => Str
 
-The ID of the Maintenance Window execution the task is part of.
+The ID of the maintenance window execution the task is part of.
 
 
 

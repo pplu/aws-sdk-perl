@@ -43,7 +43,7 @@ The invocation ID.
 =head2 OwnerInformation => Str
 
 User-provided value to be included in any CloudWatch events raised
-while running tasks for these targets in this Maintenance Window.
+while running tasks for these targets in this maintenance window.
 
 
 =head2 Parameters => Str
@@ -74,18 +74,18 @@ The task execution ID.
 
 =head2 TaskType => Str
 
-Retrieves the task type for a Maintenance Window. Task types include
+Retrieves the task type for a maintenance window. Task types include
 the following: LAMBDA, STEP_FUNCTION, AUTOMATION, RUN_COMMAND.
 
 Valid values are: C<"RUN_COMMAND">, C<"AUTOMATION">, C<"STEP_FUNCTIONS">, C<"LAMBDA">
 =head2 WindowExecutionId => Str
 
-The Maintenance Window execution ID.
+The maintenance window execution ID.
 
 
 =head2 WindowTargetId => Str
 
-The Maintenance Window target ID.
+The maintenance window target ID.
 
 
 =head2 _request_id => Str

@@ -76,7 +76,7 @@ The ARN of the task that ran.
 
 =head2 TaskExecutionId => Str
 
-The ID of the specific task execution in the Maintenance Window task
+The ID of the specific task execution in the maintenance window task
 that was retrieved.
 
 
@@ -87,8 +87,8 @@ The parameters passed to the task when it was run.
 C<TaskParameters> has been deprecated. To specify parameters to pass to
 a task when it runs, instead use the C<Parameters> option in the
 C<TaskInvocationParameters> structure. For information about how
-Systems Manager handles these options for the supported Maintenance
-Window task types, see MaintenanceWindowTaskInvocationParameters.
+Systems Manager handles these options for the supported maintenance
+window task types, see MaintenanceWindowTaskInvocationParameters.
 
 The map has the following format:
 
@@ -104,7 +104,7 @@ The type of task that was run.
 Valid values are: C<"RUN_COMMAND">, C<"AUTOMATION">, C<"STEP_FUNCTIONS">, C<"LAMBDA">
 =head2 WindowExecutionId => Str
 
-The ID of the Maintenance Window execution that includes the task.
+The ID of the maintenance window execution that includes the task.
 
 
 =head2 _request_id => Str

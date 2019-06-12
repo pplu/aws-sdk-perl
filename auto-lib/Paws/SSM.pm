@@ -55,6 +55,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::CreateMaintenanceWindow', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateOpsItem {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::CreateOpsItem', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePatchBaseline {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::CreatePatchBaseline', @_);
@@ -255,6 +260,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeMaintenanceWindowTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeOpsItems {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeOpsItems', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeParameters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeParameters', @_);
@@ -348,6 +358,16 @@ package Paws::SSM;
   sub GetMaintenanceWindowTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetMaintenanceWindowTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetOpsItem {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetOpsItem', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetOpsSummary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetOpsSummary', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetParameter {
@@ -578,6 +598,11 @@ package Paws::SSM;
   sub UpdateManagedInstanceRole {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdateManagedInstanceRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateOpsItem {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateOpsItem', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePatchBaseline {
@@ -1513,7 +1538,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribePatchProperties DescribeSessions GetAutomationExecution GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup GetServiceSetting LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResetServiceSetting ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline UpdateServiceSetting / }
+  sub operations { qw/AddTagsToResource CancelCommand CancelMaintenanceWindowExecution CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreateOpsItem CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowSchedule DescribeMaintenanceWindowsForTarget DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeOpsItems DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState DescribePatchProperties DescribeSessions GetAutomationExecution GetCommandInvocation GetConnectionStatus GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetOpsItem GetOpsSummary GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup GetServiceSetting LabelParameterVersion ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource ResetServiceSetting ResumeSession SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StartSession StopAutomationExecution TerminateSession UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdateOpsItem UpdatePatchBaseline UpdateServiceSetting / }
 
 1;
 
@@ -1556,7 +1581,7 @@ This reference is intended to be used with the AWS Systems Manager User
 Guide (http://docs.aws.amazon.com/systems-manager/latest/userguide/).
 
 To get started, verify prerequisites and configure managed instances.
-For more information, see Systems Manager Prerequisites
+For more information, see Setting Up AWS Systems Manager
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html)
 in the I<AWS Systems Manager User Guide>.
 
@@ -1590,7 +1615,7 @@ Returns: a L<Paws::SSM::AddTagsToResourceResult> instance
 
 Adds or overwrites one or more tags for the specified resource. Tags
 are metadata that you can assign to your documents, managed instances,
-Maintenance Windows, Parameter Store parameters, and patch baselines.
+maintenance windows, Parameter Store parameters, and patch baselines.
 Tags enable you to categorize your resources in different ways, for
 example, by purpose, owner, or environment. Each tag consists of a key
 and an optional value, both of which you define. For example, you could
@@ -1646,7 +1671,7 @@ Each argument is described in detail in: L<Paws::SSM::CancelMaintenanceWindowExe
 
 Returns: a L<Paws::SSM::CancelMaintenanceWindowExecutionResult> instance
 
-Stops a Maintenance Window execution that is already in progress and
+Stops a maintenance window execution that is already in progress and
 cancels any tasks in the window that have not already starting running.
 (Tasks already in progress will continue to completion.)
 
@@ -1678,7 +1703,7 @@ Registers your on-premises server or virtual machine with Amazon EC2 so
 that you can manage these resources using Run Command. An on-premises
 server or virtual machine that has been registered with EC2 is called a
 managed instance. For more information about activations, see Setting
-Up Systems Manager in Hybrid Environments
+Up AWS Systems Manager for Hybrid Environments
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html).
 
 
@@ -1820,7 +1845,48 @@ Each argument is described in detail in: L<Paws::SSM::CreateMaintenanceWindow>
 
 Returns: a L<Paws::SSM::CreateMaintenanceWindowResult> instance
 
-Creates a new Maintenance Window.
+Creates a new maintenance window.
+
+
+=head2 CreateOpsItem
+
+=over
+
+=item Description => Str
+
+=item Source => Str
+
+=item Title => Str
+
+=item [Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]]
+
+=item [OperationalData => L<Paws::SSM::OpsItemOperationalData>]
+
+=item [Priority => Int]
+
+=item [RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]]
+
+=item [Tags => ArrayRef[L<Paws::SSM::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::CreateOpsItem>
+
+Returns: a L<Paws::SSM::CreateOpsItemResponse> instance
+
+Creates a new OpsItem. You must have permission in AWS Identity and
+Access Management (IAM) to create a new OpsItem. For more information,
+see Getting Started with OpsItems
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+in the I<AWS Systems Manager User Guide>.
+
+Operations engineers and IT professionals use the Systems Manager
+OpsItems capability to view, investigate, and remediate operational
+issues impacting the performance and health of their AWS resources. For
+more information, see AWS Systems Manager OpsItems
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 CreatePatchBaseline
@@ -2002,7 +2068,7 @@ Each argument is described in detail in: L<Paws::SSM::DeleteMaintenanceWindow>
 
 Returns: a L<Paws::SSM::DeleteMaintenanceWindowResult> instance
 
-Deletes a Maintenance Window.
+Deletes a maintenance window.
 
 
 =head2 DeleteParameter
@@ -2127,7 +2193,7 @@ Each argument is described in detail in: L<Paws::SSM::DeregisterTargetFromMainte
 
 Returns: a L<Paws::SSM::DeregisterTargetFromMaintenanceWindowResult> instance
 
-Removes a target from a Maintenance Window.
+Removes a target from a maintenance window.
 
 
 =head2 DeregisterTaskFromMaintenanceWindow
@@ -2145,7 +2211,7 @@ Each argument is described in detail in: L<Paws::SSM::DeregisterTaskFromMaintena
 
 Returns: a L<Paws::SSM::DeregisterTaskFromMaintenanceWindowResult> instance
 
-Removes a task from a Maintenance Window.
+Removes a task from a maintenance window.
 
 
 =head2 DescribeActivations
@@ -2551,9 +2617,9 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowE
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowExecutionsResult> instance
 
-Lists the executions of a Maintenance Window. This includes information
-about when the Maintenance Window was scheduled to be active, and
-information about tasks registered and run with the Maintenance Window.
+Lists the executions of a maintenance window. This includes information
+about when the maintenance window was scheduled to be active, and
+information about tasks registered and run with the maintenance window.
 
 
 =head2 DescribeMaintenanceWindowExecutionTaskInvocations
@@ -2578,7 +2644,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowE
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowExecutionTaskInvocationsResult> instance
 
 Retrieves the individual task executions (one per target) for a
-particular task run as part of a Maintenance Window execution.
+particular task run as part of a maintenance window execution.
 
 
 =head2 DescribeMaintenanceWindowExecutionTasks
@@ -2600,7 +2666,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowE
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowExecutionTasksResult> instance
 
-For a given Maintenance Window execution, lists the tasks that were
+For a given maintenance window execution, lists the tasks that were
 run.
 
 
@@ -2621,7 +2687,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindows
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowsResult> instance
 
-Retrieves the Maintenance Windows in an AWS account.
+Retrieves the maintenance windows in an AWS account.
 
 
 =head2 DescribeMaintenanceWindowSchedule
@@ -2647,8 +2713,8 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowS
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowScheduleResult> instance
 
-Retrieves information about upcoming executions of a Maintenance
-Window.
+Retrieves information about upcoming executions of a maintenance
+window.
 
 
 =head2 DescribeMaintenanceWindowsForTarget
@@ -2670,7 +2736,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindows
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowsForTargetResult> instance
 
-Retrieves information about the Maintenance Windows targets or tasks
+Retrieves information about the maintenance window targets or tasks
 that an instance is associated with.
 
 
@@ -2693,7 +2759,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowT
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowTargetsResult> instance
 
-Lists the targets registered with the Maintenance Window.
+Lists the targets registered with the maintenance window.
 
 
 =head2 DescribeMaintenanceWindowTasks
@@ -2715,7 +2781,38 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowT
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowTasksResult> instance
 
-Lists the tasks in a Maintenance Window.
+Lists the tasks in a maintenance window.
+
+
+=head2 DescribeOpsItems
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [OpsItemFilters => ArrayRef[L<Paws::SSM::OpsItemFilter>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::DescribeOpsItems>
+
+Returns: a L<Paws::SSM::DescribeOpsItemsResponse> instance
+
+Query a set of OpsItems. You must have permission in AWS Identity and
+Access Management (IAM) to query a list of OpsItems. For more
+information, see Getting Started with OpsItems
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+in the I<AWS Systems Manager User Guide>.
+
+Operations engineers and IT professionals use the Systems Manager
+OpsItems capability to view, investigate, and remediate operational
+issues impacting the performance and health of their AWS resources. For
+more information, see AWS Systems Manager OpsItems
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 DescribeParameters
@@ -3074,7 +3171,7 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindow>
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowResult> instance
 
-Retrieves a Maintenance Window.
+Retrieves a maintenance window.
 
 
 =head2 GetMaintenanceWindowExecution
@@ -3090,8 +3187,8 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionResult> instance
 
-Retrieves details about a specific task run as part of a Maintenance
-Window execution.
+Retrieves details about a specific task run as part of a maintenance
+window execution.
 
 
 =head2 GetMaintenanceWindowExecutionTask
@@ -3110,7 +3207,7 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionTaskResult> instance
 
 Retrieves the details about a specific task run as part of a
-Maintenance Window execution.
+maintenance window execution.
 
 
 =head2 GetMaintenanceWindowExecutionTaskInvocation
@@ -3131,7 +3228,7 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult> instance
 
 Retrieves a task invocation. A task invocation is a specific task
-running on a specific target. Maintenance Windows report status for all
+running on a specific target. maintenance windows report status for all
 invocations.
 
 
@@ -3150,7 +3247,57 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowTask>
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowTaskResult> instance
 
-Lists the tasks in a Maintenance Window.
+Lists the tasks in a maintenance window.
+
+
+=head2 GetOpsItem
+
+=over
+
+=item OpsItemId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::GetOpsItem>
+
+Returns: a L<Paws::SSM::GetOpsItemResponse> instance
+
+Get information about an OpsItem by using the ID. You must have
+permission in AWS Identity and Access Management (IAM) to view
+information about an OpsItem. For more information, see Getting Started
+with OpsItems
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+in the I<AWS Systems Manager User Guide>.
+
+Operations engineers and IT professionals use the Systems Manager
+OpsItems capability to view, investigate, and remediate operational
+issues impacting the performance and health of their AWS resources. For
+more information, see AWS Systems Manager OpsItems
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+in the I<AWS Systems Manager User Guide>.
+
+
+=head2 GetOpsSummary
+
+=over
+
+=item Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>]
+
+=item [Filters => ArrayRef[L<Paws::SSM::OpsFilter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::GetOpsSummary>
+
+Returns: a L<Paws::SSM::GetOpsSummaryResult> instance
+
+View a summary of OpsItems based on specified filters and aggregators.
 
 
 =head2 GetParameter
@@ -3915,7 +4062,7 @@ Each argument is described in detail in: L<Paws::SSM::RegisterTargetWithMaintena
 
 Returns: a L<Paws::SSM::RegisterTargetWithMaintenanceWindowResult> instance
 
-Registers a target with a Maintenance Window.
+Registers a target with a maintenance window.
 
 
 =head2 RegisterTaskWithMaintenanceWindow
@@ -3957,7 +4104,7 @@ Each argument is described in detail in: L<Paws::SSM::RegisterTaskWithMaintenanc
 
 Returns: a L<Paws::SSM::RegisterTaskWithMaintenanceWindowResult> instance
 
-Adds a new task to a Maintenance Window.
+Adds a new task to a maintenance window.
 
 
 =head2 RemoveTagsFromResource
@@ -4368,7 +4515,7 @@ Each argument is described in detail in: L<Paws::SSM::UpdateMaintenanceWindow>
 
 Returns: a L<Paws::SSM::UpdateMaintenanceWindowResult> instance
 
-Updates an existing Maintenance Window. Only specified parameters are
+Updates an existing maintenance window. Only specified parameters are
 modified.
 
 
@@ -4397,7 +4544,7 @@ Each argument is described in detail in: L<Paws::SSM::UpdateMaintenanceWindowTar
 
 Returns: a L<Paws::SSM::UpdateMaintenanceWindowTargetResult> instance
 
-Modifies the target of an existing Maintenance Window. You can't change
+Modifies the target of an existing maintenance window. You can't change
 the target type, but you can change the following:
 
 The target from being an ID target to a Tag target, or a Tag target to
@@ -4455,7 +4602,7 @@ Each argument is described in detail in: L<Paws::SSM::UpdateMaintenanceWindowTas
 
 Returns: a L<Paws::SSM::UpdateMaintenanceWindowTaskResult> instance
 
-Modifies a task assigned to a Maintenance Window. You can't change the
+Modifies a task assigned to a maintenance window. You can't change the
 task type, but you can change the following values:
 
 =over
@@ -4510,6 +4657,49 @@ Returns: a L<Paws::SSM::UpdateManagedInstanceRoleResult> instance
 
 Assigns or changes an Amazon Identity and Access Management (IAM) role
 to the managed instance.
+
+
+=head2 UpdateOpsItem
+
+=over
+
+=item OpsItemId => Str
+
+=item [Description => Str]
+
+=item [Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]]
+
+=item [OperationalData => L<Paws::SSM::OpsItemOperationalData>]
+
+=item [OperationalDataToDelete => ArrayRef[Str|Undef]]
+
+=item [Priority => Int]
+
+=item [RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]]
+
+=item [Status => Str]
+
+=item [Title => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SSM::UpdateOpsItem>
+
+Returns: a L<Paws::SSM::UpdateOpsItemResponse> instance
+
+Edit or change an OpsItem. You must have permission in AWS Identity and
+Access Management (IAM) to update an OpsItem. For more information, see
+Getting Started with OpsItems
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+in the I<AWS Systems Manager User Guide>.
+
+Operations engineers and IT professionals use the Systems Manager
+OpsItems capability to view, investigate, and remediate operational
+issues impacting the performance and health of their AWS resources. For
+more information, see AWS Systems Manager OpsItems
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 =head2 UpdatePatchBaseline

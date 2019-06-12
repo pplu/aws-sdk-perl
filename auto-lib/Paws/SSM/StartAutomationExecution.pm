@@ -47,7 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Parameters      => {
         'MyAutomationParameterKey' => [
           'MyAutomationParameterValue', ...       # min: 1, max: 512
-        ],    # key: min: 1, max: 30, value: max: 10
+        ],    # key: min: 1, max: 50, value: max: 10
       },    # OPTIONAL
       TargetLocations => [
         {

@@ -89,6 +89,10 @@ parameter.
 
   Information about the policies assigned to a parameter.
 
+Working with Parameter Policies
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html)
+in the I<AWS Systems Manager User Guide>.
+
 
 =head2 Tier => Str
 

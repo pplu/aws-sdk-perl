@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Mainte
 
 =head1 DESCRIPTION
 
-The target registered with the Maintenance Window.
+The target registered with the maintenance window.
 
 =head1 ATTRIBUTES
 
@@ -49,20 +49,20 @@ The target registered with the Maintenance Window.
 
 =head2 Name => Str
 
-  The target name.
+  The name for the maintenance window target.
 
 
 =head2 OwnerInformation => Str
 
   A user-provided value that will be included in any CloudWatch events
 that are raised while running tasks for these targets in this
-Maintenance Window.
+maintenance window.
 
 
 =head2 ResourceType => Str
 
-  The type of target that is being registered with the Maintenance
-Window.
+  The type of target that is being registered with the maintenance
+window.
 
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
@@ -80,7 +80,7 @@ C<Key=E<lt>tag nameE<gt>,Values=E<lt>tag valueE<gt>>.
 
 =head2 WindowId => Str
 
-  The ID of the Maintenance Window to register the target with.
+  The ID of the maintenance window to register the target with.
 
 
 =head2 WindowTargetId => Str

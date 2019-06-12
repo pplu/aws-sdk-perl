@@ -43,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Mainte
 
 =head1 DESCRIPTION
 
-Information about a task defined for a Maintenance Window.
+Information about a task defined for a maintenance window.
 
 =head1 ATTRIBUTES
 
@@ -61,7 +61,7 @@ C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
 logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>
 options in the C<TaskInvocationParameters> structure. For information
 about how Systems Manager handles these options for the supported
-Maintenance Window task types, see
+maintenance window task types, see
 MaintenanceWindowTaskInvocationParameters.
 
 
@@ -83,14 +83,16 @@ scheduled.
 
 =head2 Priority => Int
 
-  The priority of the task in the Maintenance Window. The lower the
+  The priority of the task in the maintenance window. The lower the
 number, the higher the priority. Tasks that have the same priority are
 scheduled in parallel.
 
 
 =head2 ServiceRoleArn => Str
 
-  The role that should be assumed when running the task.
+  The ARN of the IAM service role to use to publish Amazon Simple
+Notification Service (Amazon SNS) notifications for maintenance window
+Run Command tasks.
 
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
@@ -116,8 +118,8 @@ STEP_FUNCTION tasks, it's the state machine ARN.
 C<TaskParameters> has been deprecated. To specify parameters to pass to
 a task when it runs, instead use the C<Parameters> option in the
 C<TaskInvocationParameters> structure. For information about how
-Systems Manager handles these options for the supported Maintenance
-Window task types, see MaintenanceWindowTaskInvocationParameters.
+Systems Manager handles these options for the supported maintenance
+window task types, see MaintenanceWindowTaskInvocationParameters.
 
 
 =head2 Type => Str
@@ -128,7 +130,7 @@ AUTOMATION, LAMBDA, or STEP_FUNCTION.
 
 =head2 WindowId => Str
 
-  The ID of the Maintenance Window where the task is registered.
+  The ID of the maintenance window where the task is registered.
 
 
 =head2 WindowTaskId => Str

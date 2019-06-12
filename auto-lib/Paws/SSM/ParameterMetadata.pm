@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Parame
 
 =head1 DESCRIPTION
 
-Metada includes information like the ARN of the last user and the
+Metadata includes information like the ARN of the last user and the
 date/time the parameter was last used.
 
 =head1 ATTRIBUTES

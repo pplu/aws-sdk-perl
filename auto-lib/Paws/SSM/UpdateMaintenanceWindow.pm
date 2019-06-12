@@ -77,14 +77,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 AllowUnassociatedTargets => Bool
 
-Whether targets must be registered with the Maintenance Window before
+Whether targets must be registered with the maintenance window before
 tasks can be defined for those targets.
 
 
 
 =head2 Cutoff => Int
 
-The number of hours before the end of the Maintenance Window that
+The number of hours before the end of the maintenance window that
 Systems Manager stops scheduling new tasks for execution.
 
 
@@ -97,27 +97,27 @@ An optional description for the update request.
 
 =head2 Duration => Int
 
-The duration of the Maintenance Window in hours.
+The duration of the maintenance window in hours.
 
 
 
 =head2 Enabled => Bool
 
-Whether the Maintenance Window is enabled.
+Whether the maintenance window is enabled.
 
 
 
 =head2 EndDate => Str
 
 The date and time, in ISO-8601 Extended format, for when you want the
-Maintenance Window to become inactive. EndDate allows you to set a date
-and time in the future when the Maintenance Window will no longer run.
+maintenance window to become inactive. EndDate allows you to set a date
+and time in the future when the maintenance window will no longer run.
 
 
 
 =head2 Name => Str
 
-The name of the Maintenance Window.
+The name of the maintenance window.
 
 
 
@@ -131,14 +131,14 @@ Optional fields that are not specified are set to null.
 
 =head2 Schedule => Str
 
-The schedule of the Maintenance Window in the form of a cron or rate
+The schedule of the maintenance window in the form of a cron or rate
 expression.
 
 
 
 =head2 ScheduleTimezone => Str
 
-The time zone that the scheduled Maintenance Window executions are
+The time zone that the scheduled maintenance window executions are
 based on, in Internet Assigned Numbers Authority (IANA) format. For
 example: "America/Los_Angeles", "etc/UTC", or "Asia/Seoul". For more
 information, see the Time Zone Database
@@ -148,7 +148,7 @@ information, see the Time Zone Database
 
 =head2 StartDate => Str
 
-The time zone that the scheduled Maintenance Window executions are
+The time zone that the scheduled maintenance window executions are
 based on, in Internet Assigned Numbers Authority (IANA) format. For
 example: "America/Los_Angeles", "etc/UTC", or "Asia/Seoul". For more
 information, see the Time Zone Database
@@ -158,7 +158,7 @@ information, see the Time Zone Database
 
 =head2 B<REQUIRED> WindowId => Str
 
-The ID of the Maintenance Window to update.
+The ID of the maintenance window to update.
 
 
 

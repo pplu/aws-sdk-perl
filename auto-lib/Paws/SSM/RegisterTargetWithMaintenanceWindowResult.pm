@@ -16,7 +16,7 @@ Paws::SSM::RegisterTargetWithMaintenanceWindowResult
 
 =head2 WindowTargetId => Str
 
-The ID of the target definition in this Maintenance Window.
+The ID of the target definition in this maintenance window.
 
 
 =head2 _request_id => Str

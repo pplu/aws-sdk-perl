@@ -69,7 +69,7 @@ Status information about the instance association.
 
 =head2 DocumentVersion => Str
 
-  The association document verions.
+  The association document versions.
 
 
 =head2 ErrorCode => Str

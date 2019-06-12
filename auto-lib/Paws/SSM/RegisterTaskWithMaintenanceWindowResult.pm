@@ -16,7 +16,7 @@ Paws::SSM::RegisterTaskWithMaintenanceWindowResult
 
 =head2 WindowTaskId => Str
 
-The ID of the task in the Maintenance Window.
+The ID of the task in the maintenance window.
 
 
 =head2 _request_id => Str

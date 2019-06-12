@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Mainte
 
 =head1 DESCRIPTION
 
-Describes the information about an execution of a Maintenance Window.
+Describes the information about an execution of a maintenance window.
 
 =head1 ATTRIBUTES
 
@@ -64,12 +64,12 @@ values.
 
 =head2 WindowExecutionId => Str
 
-  The ID of the Maintenance Window execution.
+  The ID of the maintenance window execution.
 
 
 =head2 WindowId => Str
 
-  The ID of the Maintenance Window.
+  The ID of the maintenance window.
 
 
 

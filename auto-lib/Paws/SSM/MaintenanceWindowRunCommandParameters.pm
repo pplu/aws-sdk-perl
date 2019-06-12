@@ -48,14 +48,14 @@ C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
 logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>
 options in the C<TaskInvocationParameters> structure. For information
 about how Systems Manager handles these options for the supported
-Maintenance Window task types, see
+maintenance window task types, see
 MaintenanceWindowTaskInvocationParameters.
 
 C<TaskParameters> has been deprecated. To specify parameters to pass to
 a task when it runs, instead use the C<Parameters> option in the
 C<TaskInvocationParameters> structure. For information about how
-Systems Manager handles these options for the supported Maintenance
-Window task types, see MaintenanceWindowTaskInvocationParameters.
+Systems Manager handles these options for the supported maintenance
+window task types, see MaintenanceWindowTaskInvocationParameters.
 
 For Run Command tasks, Systems Manager uses specified values for
 C<TaskParameters> and C<LoggingInfo> only if no values are specified
@@ -66,7 +66,7 @@ for C<TaskInvocationParameters>.
 
 =head2 Comment => Str
 
-  Information about the command(s) to run.
+  Information about the commands to run.
 
 
 =head2 DocumentHash => Str
@@ -103,7 +103,9 @@ on a per-instance basis.
 
 =head2 ServiceRoleArn => Str
 
-  The IAM service role to assume during task execution.
+  The ARN of the IAM service role to use to publish Amazon Simple
+Notification Service (Amazon SNS) notifications for maintenance window
+Run Command tasks.
 
 
 =head2 TimeoutSeconds => Int
