@@ -779,7 +779,7 @@ package Paws::API::Builder {
     foreach my $ex (@{ $self->example_struct->{ $op_name } }) {
       $example_str .= "# $ex->{title}\n";
       if ($ex->{ description }) {
-        local $Text::Wrap::coloumns = 79;
+        local $Text::Wrap::columns = 79;
         local $Text::Wrap::separator = "\n# ";
         $example_str .= '# ' . Text::Wrap::wrap('','',$ex->{ description }) . "\n";
       }
