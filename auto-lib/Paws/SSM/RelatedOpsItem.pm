@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Relate
 
 =head1 DESCRIPTION
 
-An OpsItems that shares something in common with the current OpsItems.
+An OpsItems that shares something in common with the current OpsItem.
 For example, related OpsItems can include OpsItems with similar error
 messages, impacted resources, or statuses for the impacted resource.
 

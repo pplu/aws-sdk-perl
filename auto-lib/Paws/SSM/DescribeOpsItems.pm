@@ -121,7 +121,7 @@ Operations: Contains
 
 =item *
 
-Key: OperationalData
+Key: OperationalData*
 
 Operations: Equals
 
@@ -157,6 +157,9 @@ Operations: Equals
 
 =back
 
+*If you filter the response by using the OperationalData operator,
+specify a key-value pair by using the following JSON format:
+{"key":"key_name","value":"a_value"}
 
 
 

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::OpsIte
 
 =head1 DESCRIPTION
 
-Describes an OpsCenter filter.
+Describes an OpsItem filter.
 
 =head1 ATTRIBUTES
 

@@ -98,12 +98,23 @@ strings, license keys, troubleshooting tips, or other relevant data.
 You enter operational data as key-value pairs. The key has a maximum
 length of 128 characters. The value has a maximum size of 20 KB.
 
-This custom data is searchable, but with restrictions. For the
-C<Searchable operational data> feature, all users with access to the
-OpsItem Overview page (as provided by the DescribeOpsItems API action)
-can view and search on the specified data. For the C<Private
-operational data> feature, the data is only viewable by users who have
-access to the OpsItem (as provided by the GetOpsItem API action).
+Operational data keys I<can't> begin with the following: amazon, aws,
+amzn, ssm, /amazon, /aws, /amzn, /ssm.
+
+You can choose to make the data searchable by other users in the
+account or you can restrict search access. Searchable data means that
+all users with access to the OpsItem Overview page (as provided by the
+DescribeOpsItems API action) can view and search on the specified data.
+Operational data that is not searchable is only viewable by users who
+have access to the OpsItem (as provided by the GetOpsItem API action).
+
+Use the C</aws/resources> key in OperationalData to specify a related
+resource in the request. Use the C</aws/automations> key in
+OperationalData to associate an Automation runbook with the OpsItem. To
+view AWS CLI example commands that use these keys, see Creating
+OpsItems Manually
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems)
+in the I<AWS Systems Manager User Guide>.
 
 
 
@@ -139,7 +150,7 @@ impacted resource.
 
 The OpsItem status. Status can be C<Open>, C<In Progress>, or
 C<Resolved>. For more information, see Editing OpsItem Details
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-working-with-OpsItems-editing-details.html)
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems-editing-details.html)
 in the I<AWS Systems Manager User Guide>.
 
 Valid values are: C<"Open">, C<"InProgress">, C<"Resolved">

@@ -1877,15 +1877,15 @@ Returns: a L<Paws::SSM::CreateOpsItemResponse> instance
 
 Creates a new OpsItem. You must have permission in AWS Identity and
 Access Management (IAM) to create a new OpsItem. For more information,
-see Getting Started with OpsItems
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+see Getting Started with OpsCenter
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 in the I<AWS Systems Manager User Guide>.
 
-Operations engineers and IT professionals use the Systems Manager
-OpsItems capability to view, investigate, and remediate operational
-issues impacting the performance and health of their AWS resources. For
-more information, see AWS Systems Manager OpsItems
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+Operations engineers and IT professionals use OpsCenter to view,
+investigate, and remediate operational issues impacting the performance
+and health of their AWS resources. For more information, see AWS
+Systems Manager OpsCenter
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -2015,6 +2015,10 @@ instance.
 =over
 
 =item Name => Str
+
+=item [DocumentVersion => Str]
+
+=item [VersionName => Str]
 
 
 =back
@@ -2803,15 +2807,15 @@ Returns: a L<Paws::SSM::DescribeOpsItemsResponse> instance
 
 Query a set of OpsItems. You must have permission in AWS Identity and
 Access Management (IAM) to query a list of OpsItems. For more
-information, see Getting Started with OpsItems
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+information, see Getting Started with OpsCenter
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 in the I<AWS Systems Manager User Guide>.
 
-Operations engineers and IT professionals use the Systems Manager
-OpsItems capability to view, investigate, and remediate operational
-issues impacting the performance and health of their AWS resources. For
-more information, see AWS Systems Manager OpsItems
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+Operations engineers and IT professionals use OpsCenter to view,
+investigate, and remediate operational issues impacting the performance
+and health of their AWS resources. For more information, see AWS
+Systems Manager OpsCenter
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -3266,15 +3270,15 @@ Returns: a L<Paws::SSM::GetOpsItemResponse> instance
 Get information about an OpsItem by using the ID. You must have
 permission in AWS Identity and Access Management (IAM) to view
 information about an OpsItem. For more information, see Getting Started
-with OpsItems
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+with OpsCenter
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 in the I<AWS Systems Manager User Guide>.
 
-Operations engineers and IT professionals use the Systems Manager
-OpsItems capability to view, investigate, and remediate operational
-issues impacting the performance and health of their AWS resources. For
-more information, see AWS Systems Manager OpsItems
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+Operations engineers and IT professionals use OpsCenter to view,
+investigate, and remediate operational issues impacting the performance
+and health of their AWS resources. For more information, see AWS
+Systems Manager OpsCenter
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -4690,15 +4694,15 @@ Returns: a L<Paws::SSM::UpdateOpsItemResponse> instance
 
 Edit or change an OpsItem. You must have permission in AWS Identity and
 Access Management (IAM) to update an OpsItem. For more information, see
-Getting Started with OpsItems
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+Getting Started with OpsCenter
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 in the I<AWS Systems Manager User Guide>.
 
-Operations engineers and IT professionals use the Systems Manager
-OpsItems capability to view, investigate, and remediate operational
-issues impacting the performance and health of their AWS resources. For
-more information, see AWS Systems Manager OpsItems
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+Operations engineers and IT professionals use OpsCenter to view,
+investigate, and remediate operational issues impacting the performance
+and health of their AWS resources. For more information, see AWS
+Systems Manager OpsCenter
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 in the I<AWS Systems Manager User Guide>.
 
 

@@ -70,17 +70,7 @@ OpsItem.
 =head2 OperationalData => L<Paws::SSM::OpsItemOperationalData>
 
   Operational data is custom data that provides useful reference details
-about the OpsItem. For example, you can specify log files, error
-strings, license keys, troubleshooting tips, or other relevant data.
-You enter operational data as key-value pairs. The key has a maximum
-length of 128 characters. The value has a maximum size of 20 KB.
-
-This custom data is searchable, but with restrictions. For the
-C<Searchable operational data> feature, all users with access to the
-OpsItem Overview page (as provided by the DescribeOpsItems API action)
-can view and search on the specified data. For the C<Private
-operational data> feature, the data is only viewable by users who have
-access to the OpsItem (as provided by the GetOpsItem API action).
+about the OpsItem.
 
 
 =head2 OpsItemId => Str
