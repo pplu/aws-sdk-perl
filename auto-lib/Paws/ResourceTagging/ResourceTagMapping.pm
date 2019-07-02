@@ -40,7 +40,7 @@ associated with each.
 
 =head2 ResourceARN => Str
 
-  An array of resource ARN(s).
+  The ARN of the resource.
 
 
 =head2 Tags => ArrayRef[L<Paws::ResourceTagging::Tag>]
