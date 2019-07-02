@@ -60,7 +60,7 @@ exactly one default cache behavior.
   Whether you want CloudFront to automatically compress certain files for
 this cache behavior. If so, specify C<true>; if not, specify C<false>.
 For more information, see Serving Compressed Files
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 
@@ -71,9 +71,9 @@ caches before CloudFront forwards another request to your origin to
 determine whether the object has been updated. The value that you
 specify applies only when your origin does not add HTTP headers such as
 C<Cache-Control max-age>, C<Cache-Control s-maxage>, and C<Expires> to
-objects. For more information, see Specifying How Long Objects and
-Errors Stay in a CloudFront Edge Cache (Expiration)
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
+objects. For more information, see Managing How Long Content Stays in
+an Edge Cache (Expiration)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 
@@ -98,7 +98,15 @@ for a cache behavior.
 
 =head2 MaxTTL => Int
 
-  
+  The maximum amount of time that you want objects to stay in CloudFront
+caches before CloudFront forwards another request to your origin to
+determine whether the object has been updated. The value that you
+specify applies only when your origin adds HTTP headers such as
+C<Cache-Control max-age>, C<Cache-Control s-maxage>, and C<Expires> to
+objects. For more information, see Managing How Long Content Stays in
+an Edge Cache (Expiration)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> MinTTL => Int
@@ -106,10 +114,9 @@ for a cache behavior.
   The minimum amount of time that you want objects to stay in CloudFront
 caches before CloudFront forwards another request to your origin to
 determine whether the object has been updated. For more information,
-see Specifying How Long Objects and Errors Stay in a CloudFront Edge
-Cache (Expiration)
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
-in the I<Amazon Amazon CloudFront Developer Guide>.
+see Managing How Long Content Stays in an Edge Cache (Expiration)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 You must specify C<0> for C<MinTTL> if you configure CloudFront to
 forward all headers to your origin (under C<Headers>, if you specify
@@ -143,8 +150,8 @@ target origin that match the C<PathPattern> for this cache behavior,
 specify C<true> for C<Enabled>, and specify the applicable values for
 C<Quantity> and C<Items>. For more information, see Serving Private
 Content through CloudFront
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
-in the I<Amazon Amazon CloudFront Developer Guide>.
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I< Amazon CloudFront Developer Guide>.
 
 If you don't want to require signed URLs in requests for objects that
 match C<PathPattern>, specify C<false> for C<Enabled> and C<0> for
@@ -184,7 +191,7 @@ HTTP status code of 403 (Forbidden).
 
 For more information about requiring the HTTPS protocol, see Using an
 HTTPS Connection to Access Your Objects
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 The only way to guarantee that viewers retrieve an object that was
@@ -194,9 +201,8 @@ we recommend that you clear your objects' cache because cached objects
 are protocol agnostic. That means that an edge location will return an
 object from the cache regardless of whether the current request
 protocol matches the protocol used previously. For more information,
-see Specifying How Long Objects and Errors Stay in a CloudFront Edge
-Cache (Expiration)
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
+see Managing How Long Content Stays in an Edge Cache (Expiration)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 

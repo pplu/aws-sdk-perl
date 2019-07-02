@@ -46,7 +46,7 @@ account. If no C<KeyPairId> element appears for a C<Signer>, that
 signer can't create signed URLs.
 
 For more information, see Serving Private Content through CloudFront
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
@@ -55,10 +55,8 @@ in the I<Amazon CloudFront Developer Guide>.
 =head2 B<REQUIRED> Enabled => Bool
 
   Enabled is C<true> if any of the AWS accounts listed in the
-C<TrustedSigners> complex type for this RTMP distribution have active
+C<TrustedSigners> complex type for this distribution have active
 CloudFront key pairs. If not, C<Enabled> is C<false>.
-
-For more information, see ActiveTrustedSigners.
 
 
 =head2 Items => ArrayRef[L<Paws::CloudFront::Signer>]
@@ -66,15 +64,11 @@ For more information, see ActiveTrustedSigners.
   A complex type that contains one C<Signer> complex type for each
 trusted signer that is specified in the C<TrustedSigners> complex type.
 
-For more information, see ActiveTrustedSigners.
-
 
 =head2 B<REQUIRED> Quantity => Int
 
-  A complex type that contains one C<Signer> complex type for each
-trusted signer specified in the C<TrustedSigners> complex type.
-
-For more information, see ActiveTrustedSigners.
+  The number of trusted signers specified in the C<TrustedSigners>
+complex type.
 
 
 

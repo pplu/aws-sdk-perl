@@ -6,7 +6,7 @@ package Paws::CloudFront::CreateDistributionWithTags;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDistributionWithTags');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-11-05/distribution?WithTags');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/distribution?WithTags');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateDistributionWithTagsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -21,11 +21,11 @@ Paws::CloudFront::CreateDistributionWithTags - Arguments for method CreateDistri
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDistributionWithTags2018_11_05 on the
+This class represents the parameters used for calling the method CreateDistributionWithTags2019_03_26 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method CreateDistributionWithTags2018_11_05.
+as arguments to method CreateDistributionWithTags2019_03_26.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDistributionWithTags2018_11_05.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDistributionWithTags2019_03_26.
 
 =head1 SYNOPSIS
 
@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DistributionConfigWithTags => {
         DistributionConfig => {
           CallerReference      => 'Mystring',
-          Comment              => 'Mystring',
+          Comment              => 'MyCommentType',
           DefaultCacheBehavior => {
             ForwardedValues => {
               Cookies => {
@@ -240,7 +240,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 FailoverCriteria => {
                   StatusCodes => {
-                    Items    => [ 1, ... ],    # min: 1
+                    Items => [ 1, ... ],     # min: 1
                     Quantity => 1,
 
                   },
@@ -323,7 +323,7 @@ The distribution's configuration information.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateDistributionWithTags2018_11_05 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method CreateDistributionWithTags2019_03_26 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 
