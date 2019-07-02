@@ -711,8 +711,7 @@ Each argument is described in detail in: L<Paws::Robomaker::DescribeDeploymentJo
 
 Returns: a L<Paws::Robomaker::DescribeDeploymentJobResponse> instance
 
-Describes a deployment job. [Does it work regardless of deployment
-status, e.g. Failed?]
+Describes a deployment job.
 
 
 =head2 DescribeFleet
