@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         NumberOfHumanWorkersPerDataObject => 1,    # min: 1, max: 9
         PreHumanTaskLambdaArn  => 'MyLambdaFunctionArn',    # max: 2048
         TaskDescription        => 'MyTaskDescription',      # min: 1, max: 255
-        TaskTimeLimitInSeconds => 1,                        # min: 1, max: 3600
+        TaskTimeLimitInSeconds => 1,                        # min: 1, max: 28800
         TaskTitle              => 'MyTaskTitle',            # min: 1, max: 128
         UiConfig               => {
           UiTemplateS3Uri => 'MyS3Uri',                     # max: 1024

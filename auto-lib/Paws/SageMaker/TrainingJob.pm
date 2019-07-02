@@ -260,7 +260,14 @@ transitioned through.
 
 =head2 StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
-  The condition under which to stop the training job.
+  Specifies a limit to how long a model training job can run. When the
+job reaches the time limit, Amazon SageMaker ends the training job. Use
+this API to cap model training costs.
+
+To stop a job, Amazon SageMaker sends the algorithm the C<SIGTERM>
+signal, which delays job termination for 120 seconds. Algorithms can
+use this 120-second window to save the model artifacts, so the results
+of training are not lost.
 
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]

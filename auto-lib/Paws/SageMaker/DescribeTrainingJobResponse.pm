@@ -54,7 +54,7 @@ To encrypt all communications between ML compute instances in
 distributed training, choose C<True>. Encryption provides greater
 security for distributed training, but training might take longer. How
 long it takes depends on the amount of communication between compute
-instances, especially if you use a deep learning algorithm in
+instances, especially if you use a deep learning algorithms in
 distributed training.
 
 
@@ -245,7 +245,14 @@ transitioned through.
 
 =head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
-The condition under which to stop the training job.
+Specifies a limit to how long a model training job can run. When the
+job reaches the time limit, Amazon SageMaker ends the training job. Use
+this API to cap model training costs.
+
+To stop a job, Amazon SageMaker sends the algorithm the C<SIGTERM>
+signal, which delays job termination for 120 seconds. Algorithms can
+use this 120-second window to save the model artifacts, so the results
+of training are not lost.
 
 
 =head2 TrainingEndTime => Str

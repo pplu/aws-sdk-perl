@@ -1468,11 +1468,10 @@ C<Open> next to a notebook instance, Amazon SageMaker opens a new tab
 showing the Jupyter server home page from the notebook instance. The
 console uses this API to get the URL and show the page.
 
-You can restrict access to this API and to the URL that it returns to a
-list of IP addresses that you specify. To restrict access, attach an
-IAM policy that denies access to this API unless the call comes from an
-IP address in the specified list to every AWS Identity and Access
-Management user, group, or role used to access the notebook instance.
+IAM authorization policies for this API are also enforced for every
+HTTP request and WebSocket frame that attempts to connect to the
+notebook instance.For example, you can restrict access to this API and
+to the URL that it returns to a list of IP addresses that you specify.
 Use the C<NotIpAddress> condition operator and the C<aws:SourceIP>
 condition context key to specify the list of IP addresses that you want
 to have access to the notebook instance. For more information, see
@@ -1540,9 +1539,10 @@ C<AlgorithmSpecification> - Identifies the training algorithm to use.
 =item *
 
 C<HyperParameters> - Specify these algorithm-specific parameters to
-influence the quality of the final model. For a list of hyperparameters
-for each training algorithm provided by Amazon SageMaker, see
-Algorithms
+enable the estimation of model parameters during training.
+Hyperparameters can be tuned to optimize this learning process. For a
+list of hyperparameters for each training algorithm provided by Amazon
+SageMaker, see Algorithms
 (https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 
 =item *
@@ -1570,8 +1570,8 @@ successfully complete model training.
 
 =item *
 
-C<StoppingCondition> - Sets a duration for training. Use this parameter
-to cap model training costs.
+C<StoppingCondition> - Sets a time limit for training. Use this
+parameter to cap model training costs.
 
 =back
 
@@ -1594,6 +1594,8 @@ For more information about Amazon SageMaker, see How It Works
 =item TransformResources => L<Paws::SageMaker::TransformResources>
 
 =item [BatchStrategy => Str]
+
+=item [DataProcessing => L<Paws::SageMaker::DataProcessing>]
 
 =item [Environment => L<Paws::SageMaker::TransformEnvironmentMap>]
 

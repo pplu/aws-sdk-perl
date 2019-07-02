@@ -144,7 +144,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },                              # OPTIONAL
           },
           ...
-        ],                                  # min: 1, max: 8; OPTIONAL
+        ],                                  # min: 1, max: 20; OPTIONAL
         StaticHyperParameters => {
           'MyParameterKey' =>
             'MyParameterValue',             # key: max: 256, value: max: 256

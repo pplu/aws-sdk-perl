@@ -104,7 +104,8 @@ C<ModelDataUrl>.
 
 =head2 ModelPackageName => Str
 
-  The name of the model package to use to create the model.
+  The name or Amazon Resource Name (ARN) of the model package to use to
+create the model.
 
 
 

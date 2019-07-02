@@ -3,6 +3,7 @@ package Paws::SageMaker::DescribeTransformJobResponse;
   use Moose;
   has BatchStrategy => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+  has DataProcessing => (is => 'ro', isa => 'Paws::SageMaker::DataProcessing');
   has Environment => (is => 'ro', isa => 'Paws::SageMaker::TransformEnvironmentMap');
   has FailureReason => (is => 'ro', isa => 'Str');
   has LabelingJobArn => (is => 'ro', isa => 'Str');
@@ -43,6 +44,11 @@ Valid values are: C<"MultiRecord">, C<"SingleRecord">
 =head2 B<REQUIRED> CreationTime => Str
 
 A timestamp that shows when the transform Job was created.
+
+
+=head2 DataProcessing => L<Paws::SageMaker::DataProcessing>
+
+
 
 
 =head2 Environment => L<Paws::SageMaker::TransformEnvironmentMap>

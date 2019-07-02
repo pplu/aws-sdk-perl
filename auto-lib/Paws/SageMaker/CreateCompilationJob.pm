@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OutputConfig => {
         S3OutputLocation => 'MyS3Uri',    # max: 1024
         TargetDevice     => 'lambda'
-        , # values: lambda, ml_m4, ml_m5, ml_c4, ml_c5, ml_p2, ml_p3, jetson_tx1, jetson_tx2, jetson_nano, rasp3b, deeplens, rk3399, rk3288
+        , # values: lambda, ml_m4, ml_m5, ml_c4, ml_c5, ml_p2, ml_p3, jetson_tx1, jetson_tx2, jetson_nano, rasp3b, deeplens, rk3399, rk3288, sbe_c
 
       },
       RoleArn           => 'MyRoleArn',
@@ -123,7 +123,9 @@ Roles.
 
 =head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
-The duration allowed for model compilation.
+Specifies a limit to how long a model compilation job can run. When the
+job reaches the time limit, Amazon SageMaker ends the compilation job.
+Use this API to cap model training costs.
 
 
 

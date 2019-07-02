@@ -162,7 +162,7 @@ C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClass>
 
 =back
 
-B<Asia Pacific (Tokyo (ap-northeast-1):>
+B<Asia Pacific (Tokyo) (ap-northeast-1):>
 
 =over
 
@@ -184,7 +184,7 @@ C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass>
 
 =back
 
-B<Asia Pacific (Sydney (ap-southeast-1):>
+B<Asia Pacific (Sydney) (ap-southeast-1):>
 
 =over
 
