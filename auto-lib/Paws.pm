@@ -335,6 +335,8 @@ L<Paws::ApiGatewayV2>
 
 L<Paws::ApplicationAutoScaling>
 
+L<Paws::ApplicationInsights>
+
 L<Paws::AppMesh>
 
 L<Paws::AppStream>
@@ -434,6 +436,8 @@ L<Paws::DynamoDB>
 L<Paws::DynamoDBStreams>
 
 L<Paws::EC2>
+
+L<Paws::EC2InstanceConnect>
 
 L<Paws::ECR>
 
@@ -642,6 +646,8 @@ L<Paws::ServerlessRepo>
 L<Paws::ServiceCatalog>
 
 L<Paws::ServiceDiscovery>
+
+L<Paws::ServiceQuotas>
 
 L<Paws::SES>
 

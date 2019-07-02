@@ -10,6 +10,9 @@
  - New API: Personalize
  - New API: PersonalizeEvents
  - New API: PersonalizeRuntime
+ - New API: ApplicationInsights
+ - New API: EC2IntanceConnect
+ - New API: ServiceQuotas
 
 0.40 26 Apr 2019
  - Solve issue #324. Paws won't die when any API returns duplicate requestid headers. IAM has 

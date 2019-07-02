@@ -16,6 +16,7 @@ package Paws::API::ServiceToClass;
     autoscaling => 'AutoScaling',
    'autoscaling-plans' => 'AutoScalingPlans',
    'application-autoscaling' => 'ApplicationAutoScaling',
+   'application-insights' => 'ApplicationInsights',
     appstream => 'AppStream',
     backup => 'Backup',
     batch => 'Batch',
@@ -58,6 +59,7 @@ package Paws::API::ServiceToClass;
     dynamodb => 'DynamoDB',
     dynamodbstreams => 'DynamoDBStreams',
     ec2 => 'EC2',
+   'ec2-instance-connect' => 'EC2InstanceConnect',
     ecr => 'ECR',
     eks => 'EKS',
     # The API definitions use "efs"
@@ -166,6 +168,7 @@ package Paws::API::ServiceToClass;
     securityhub => 'SecurityHub',
     ses => 'SES',
     servicecatalog => 'ServiceCatalog',
+   'service-quotas' => 'ServiceQuotas',
     serverlessrepo => 'ServerlessRepo',
     servicediscovery => 'ServiceDiscovery',
     shield => 'Shield',
