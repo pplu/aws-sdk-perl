@@ -7,6 +7,7 @@ package Paws::ApiGatewayV2::CreateApi;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has ProtocolType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'protocolType', required => 1);
   has RouteSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeSelectionExpression', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', traits => ['NameInRequest'], request_name => 'tags');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
   use MooseX::ClassAttribute;
@@ -41,7 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApiKeySelectionExpression => 'MySelectionExpression',           # OPTIONAL
       Description             => 'MyStringWithLengthBetween0And1024', # OPTIONAL
       DisableSchemaValidation => 1,                                   # OPTIONAL
-      Version                 => 'MyStringWithLengthBetween1And64',   # OPTIONAL
+      Tags => { 'My__string' => 'MyStringWithLengthBetween1And1600', }
+      ,                                                               # OPTIONAL
+      Version => 'MyStringWithLengthBetween1And64',                   # OPTIONAL
     );
 
     # Results:
@@ -55,6 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Name                     = $CreateApiResponse->Name;
     my $ProtocolType             = $CreateApiResponse->ProtocolType;
     my $RouteSelectionExpression = $CreateApiResponse->RouteSelectionExpression;
+    my $Tags                     = $CreateApiResponse->Tags;
     my $Version                  = $CreateApiResponse->Version;
     my $Warnings                 = $CreateApiResponse->Warnings;
 
@@ -100,6 +104,14 @@ Valid values are: C<"WEBSOCKET">
 =head2 B<REQUIRED> RouteSelectionExpression => Str
 
 The route selection expression for the API.
+
+
+
+=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with aws:. The tag value can be up to 256 characters..
 
 
 

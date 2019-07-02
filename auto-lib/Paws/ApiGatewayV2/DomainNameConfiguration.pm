@@ -4,8 +4,11 @@ package Paws::ApiGatewayV2::DomainNameConfiguration;
   has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
   has CertificateName => (is => 'ro', isa => 'Str', request_name => 'certificateName', traits => ['NameInRequest']);
   has CertificateUploadDate => (is => 'ro', isa => 'Str', request_name => 'certificateUploadDate', traits => ['NameInRequest']);
+  has DomainNameStatus => (is => 'ro', isa => 'Str', request_name => 'domainNameStatus', traits => ['NameInRequest']);
+  has DomainNameStatusMessage => (is => 'ro', isa => 'Str', request_name => 'domainNameStatusMessage', traits => ['NameInRequest']);
   has EndpointType => (is => 'ro', isa => 'Str', request_name => 'endpointType', traits => ['NameInRequest']);
   has HostedZoneId => (is => 'ro', isa => 'Str', request_name => 'hostedZoneId', traits => ['NameInRequest']);
+  has SecurityPolicy => (is => 'ro', isa => 'Str', request_name => 'securityPolicy', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ApiGatewayV2::DomainNameConfiguration object:
 
-  $service_obj->Method(Att1 => { ApiGatewayDomainName => $value, ..., HostedZoneId => $value  });
+  $service_obj->Method(Att1 => { ApiGatewayDomainName => $value, ..., SecurityPolicy => $value  });
 
 =head3 Results returned from an API call
 
@@ -65,6 +68,20 @@ edge-optimized endpoint for this domain name.
 endpoint for this domain name was uploaded.
 
 
+=head2 DomainNameStatus => Str
+
+  The status of the domain name migration. The valid values are AVAILABLE
+and UPDATING. If the status is UPDATING, the domain cannot be modified
+further until the existing operation is complete. If it is AVAILABLE,
+the domain can be updated.
+
+
+=head2 DomainNameStatusMessage => Str
+
+  An optional text message containing detailed information about status
+of the domain name migration.
+
+
 =head2 EndpointType => Str
 
   The endpoint type.
@@ -73,6 +90,12 @@ endpoint for this domain name was uploaded.
 =head2 HostedZoneId => Str
 
   The Amazon Route 53 Hosted Zone ID of the endpoint.
+
+
+=head2 SecurityPolicy => Str
+
+  The Transport Layer Security (TLS) version of the security policy for
+this domain name. The valid values are TLS_1_0 and TLS_1_2.
 
 
 

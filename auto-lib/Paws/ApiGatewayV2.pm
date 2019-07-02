@@ -239,6 +239,21 @@ package Paws::ApiGatewayV2;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::GetStages', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::GetTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateApi {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGatewayV2::UpdateApi', @_);
@@ -527,7 +542,7 @@ package Paws::ApiGatewayV2;
   }
 
 
-  sub operations { qw/CreateApi CreateApiMapping CreateAuthorizer CreateDeployment CreateDomainName CreateIntegration CreateIntegrationResponse CreateModel CreateRoute CreateRouteResponse CreateStage DeleteApi DeleteApiMapping DeleteAuthorizer DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteModel DeleteRoute DeleteRouteResponse DeleteStage GetApi GetApiMapping GetApiMappings GetApis GetAuthorizer GetAuthorizers GetDeployment GetDeployments GetDomainName GetDomainNames GetIntegration GetIntegrationResponse GetIntegrationResponses GetIntegrations GetModel GetModels GetModelTemplate GetRoute GetRouteResponse GetRouteResponses GetRoutes GetStage GetStages UpdateApi UpdateApiMapping UpdateAuthorizer UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateModel UpdateRoute UpdateRouteResponse UpdateStage / }
+  sub operations { qw/CreateApi CreateApiMapping CreateAuthorizer CreateDeployment CreateDomainName CreateIntegration CreateIntegrationResponse CreateModel CreateRoute CreateRouteResponse CreateStage DeleteApi DeleteApiMapping DeleteAuthorizer DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteModel DeleteRoute DeleteRouteResponse DeleteStage GetApi GetApiMapping GetApiMappings GetApis GetAuthorizer GetAuthorizers GetDeployment GetDeployments GetDomainName GetDomainNames GetIntegration GetIntegrationResponse GetIntegrationResponses GetIntegrations GetModel GetModels GetModelTemplate GetRoute GetRouteResponse GetRouteResponses GetRoutes GetStage GetStages GetTags TagResource UntagResource UpdateApi UpdateApiMapping UpdateAuthorizer UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateModel UpdateRoute UpdateRouteResponse UpdateStage / }
 
 1;
 
@@ -577,6 +592,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/apigateway/>
 =item [Description => Str]
 
 =item [DisableSchemaValidation => Bool]
+
+=item [Tags => L<Paws::ApiGatewayV2::Tags>]
 
 =item [Version => Str]
 
@@ -671,6 +688,8 @@ Creates a Deployment for an API.
 =item DomainName => Str
 
 =item [DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]]
+
+=item [Tags => L<Paws::ApiGatewayV2::Tags>]
 
 
 =back
@@ -861,6 +880,8 @@ Creates a RouteResponse for a Route.
 =item [RouteSettings => L<Paws::ApiGatewayV2::RouteSettingsMap>]
 
 =item [StageVariables => L<Paws::ApiGatewayV2::StageVariablesMap>]
+
+=item [Tags => L<Paws::ApiGatewayV2::Tags>]
 
 
 =back
@@ -1504,6 +1525,58 @@ Each argument is described in detail in: L<Paws::ApiGatewayV2::GetStages>
 Returns: a L<Paws::ApiGatewayV2::GetStagesResponse> instance
 
 Gets the Stages for an API.
+
+
+=head2 GetTags
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::GetTags>
+
+Returns: a L<Paws::ApiGatewayV2::GetTagsResponse> instance
+
+Gets the Tags for an API.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [Tags => L<Paws::ApiGatewayV2::Tags>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::TagResource>
+
+Returns: a L<Paws::ApiGatewayV2::TagResourceResponse> instance
+
+Tag an APIGW resource
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApiGatewayV2::UntagResource>
+
+Returns: nothing
+
+Untag an APIGW resource
 
 
 =head2 UpdateApi

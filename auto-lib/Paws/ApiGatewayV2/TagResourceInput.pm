@@ -1,7 +1,5 @@
-package Paws::ApiGatewayV2::CreateDomainNameInput;
+package Paws::ApiGatewayV2::TagResourceInput;
   use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest'], required => 1);
-  has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', request_name => 'domainNameConfigurations', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
@@ -9,7 +7,7 @@ package Paws::ApiGatewayV2::CreateDomainNameInput;
 
 =head1 NAME
 
-Paws::ApiGatewayV2::CreateDomainNameInput
+Paws::ApiGatewayV2::TagResourceInput
 
 =head1 USAGE
 
@@ -20,32 +18,22 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ApiGatewayV2::CreateDomainNameInput object:
+As an example, if Att1 is expected to be a Paws::ApiGatewayV2::TagResourceInput object:
 
-  $service_obj->Method(Att1 => { DomainName => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { Tags => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ApiGatewayV2::CreateDomainNameInput object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ApiGatewayV2::TagResourceInput object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DomainName
+  $result->Att1->Tags
 
 =head1 DESCRIPTION
 
-Represents the input parameters for a CreateDomainName request.
+This class has no description
 
 =head1 ATTRIBUTES
-
-
-=head2 B<REQUIRED> DomainName => Str
-
-  The domain name.
-
-
-=head2 DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]
-
-  The domain name configurations.
 
 
 =head2 Tags => L<Paws::ApiGatewayV2::Tags>
