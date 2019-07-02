@@ -1,5 +1,7 @@
 package Paws::MediaPackage::DashPackage;
   use Moose;
+  has AdsOnDeliveryRestrictions => (is => 'ro', isa => 'Str', request_name => 'adsOnDeliveryRestrictions', traits => ['NameInRequest']);
+  has AdTriggers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'adTriggers', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaPackage::DashEncryption', request_name => 'encryption', traits => ['NameInRequest']);
   has ManifestLayout => (is => 'ro', isa => 'Str', request_name => 'manifestLayout', traits => ['NameInRequest']);
   has ManifestWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'manifestWindowSeconds', traits => ['NameInRequest']);
@@ -30,20 +32,30 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaPackage::DashPackage object:
 
-  $service_obj->Method(Att1 => { Encryption => $value, ..., SuggestedPresentationDelaySeconds => $value  });
+  $service_obj->Method(Att1 => { AdsOnDeliveryRestrictions => $value, ..., SuggestedPresentationDelaySeconds => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaPackage::DashPackage object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Encryption
+  $result->Att1->AdsOnDeliveryRestrictions
 
 =head1 DESCRIPTION
 
 A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdsOnDeliveryRestrictions => Str
+
+  
+
+
+=head2 AdTriggers => ArrayRef[Str|Undef]
+
+  
 
 
 =head2 Encryption => L<Paws::MediaPackage::DashEncryption>

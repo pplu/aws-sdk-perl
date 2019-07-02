@@ -55,6 +55,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Id => 'My__string',
             AdMarkers =>
               'NONE',    # values: NONE, SCTE35_ENHANCED, PASSTHROUGH; OPTIONAL
+            AdTriggers => [
+              'SPLICE_INSERT',
+              ... # values: SPLICE_INSERT, BREAK, PROVIDER_ADVERTISEMENT, DISTRIBUTOR_ADVERTISEMENT, PROVIDER_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_PLACEMENT_OPPORTUNITY, PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY
+            ],    # OPTIONAL
+            AdsOnDeliveryRestrictions =>
+              'NONE',   # values: NONE, RESTRICTED, UNRESTRICTED, BOTH; OPTIONAL
             IncludeIframeOnlyStream => 1,              # OPTIONAL
             ManifestName            => 'My__string',
             PlaylistType => 'NONE',    # values: NONE, EVENT, VOD; OPTIONAL
@@ -73,6 +79,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
       },    # OPTIONAL
       DashPackage => {
+        AdTriggers => [
+          'SPLICE_INSERT',
+          ... # values: SPLICE_INSERT, BREAK, PROVIDER_ADVERTISEMENT, DISTRIBUTOR_ADVERTISEMENT, PROVIDER_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_PLACEMENT_OPPORTUNITY, PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY
+        ],    # OPTIONAL
+        AdsOnDeliveryRestrictions =>
+          'NONE',    # values: NONE, RESTRICTED, UNRESTRICTED, BOTH; OPTIONAL
         Encryption => {
           SpekeKeyProvider => {
             ResourceId     => 'My__string',
@@ -106,6 +118,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HlsPackage  => {
         AdMarkers =>
           'NONE',    # values: NONE, SCTE35_ENHANCED, PASSTHROUGH; OPTIONAL
+        AdTriggers => [
+          'SPLICE_INSERT',
+          ... # values: SPLICE_INSERT, BREAK, PROVIDER_ADVERTISEMENT, DISTRIBUTOR_ADVERTISEMENT, PROVIDER_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_PLACEMENT_OPPORTUNITY, PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY
+        ],    # OPTIONAL
+        AdsOnDeliveryRestrictions =>
+          'NONE',    # values: NONE, RESTRICTED, UNRESTRICTED, BOTH; OPTIONAL
         Encryption => {
           SpekeKeyProvider => {
             ResourceId     => 'My__string',
