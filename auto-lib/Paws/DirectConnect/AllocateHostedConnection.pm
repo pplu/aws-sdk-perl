@@ -5,6 +5,7 @@ package Paws::DirectConnect::AllocateHostedConnection;
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
   has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' , required => 1);
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -37,7 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConnectionName => 'MyConnectionName',
       OwnerAccount   => 'MyOwnerAccount',
       Vlan           => 1,
-
+      Tags           => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -55,6 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $OwnerAccount         = $Connection->OwnerAccount;
     my $PartnerName          = $Connection->PartnerName;
     my $Region               = $Connection->Region;
+    my $Tags                 = $Connection->Tags;
     my $Vlan                 = $Connection->Vlan;
 
     # Returns a L<Paws::DirectConnect::Connection> object.
@@ -90,6 +98,12 @@ The name of the hosted connection.
 =head2 B<REQUIRED> OwnerAccount => Str
 
 The ID of the AWS account ID of the customer for the connection.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+The tags to assign to the hosted connection.
 
 
 

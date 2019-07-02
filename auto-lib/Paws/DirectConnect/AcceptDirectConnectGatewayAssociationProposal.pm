@@ -71,8 +71,12 @@ The ID of the Direct Connect gateway.
 
 =head2 OverrideAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
 
-Overrides the existing Amazon VPC prefixes advertised to the Direct
-Connect gateway.
+Overrides the Amazon VPC prefixes advertised to the Direct Connect
+gateway.
+
+For information about how to set the prefixes, see Allowed Prefixes
+(https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes)
+in the I<AWS Direct Connect User Guide>.
 
 
 

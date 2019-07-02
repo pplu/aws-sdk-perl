@@ -47,6 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $OwnerAccount         = $Connection->OwnerAccount;
     my $PartnerName          = $Connection->PartnerName;
     my $Region               = $Connection->Region;
+    my $Tags                 = $Connection->Tags;
     my $Vlan                 = $Connection->Vlan;
 
     # Returns a L<Paws::DirectConnect::Connection> object.

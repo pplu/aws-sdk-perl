@@ -60,6 +60,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 The Amazon VPC prefixes to advertise to the Direct Connect gateway
 
+For information about how to set the prefixes, see Allowed Prefixes
+(https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes)
+in the I<AWS Direct Connect User Guide>.
+
 
 
 =head2 B<REQUIRED> DirectConnectGatewayId => Str

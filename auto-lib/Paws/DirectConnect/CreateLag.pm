@@ -1,11 +1,13 @@
 
 package Paws::DirectConnect::CreateLag;
   use Moose;
+  has ChildConnectionTags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'childConnectionTags' );
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
   has ConnectionsBandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionsBandwidth' , required => 1);
   has LagName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagName' , required => 1);
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
   has NumberOfConnections => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfConnections' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -36,7 +38,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LagName              => 'MyLagName',
       Location             => 'MyLocationCode',
       NumberOfConnections  => 1,
-      ConnectionId         => 'MyConnectionId',    # OPTIONAL
+      ChildConnectionTags  => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
+      ConnectionId => 'MyConnectionId',    # OPTIONAL
+      Tags         => [
+        {
+          Key   => 'MyTagKey',             # min: 1, max: 128
+          Value => 'MyTagValue',           # max: 256; OPTIONAL
+        },
+        ...
+      ],                                   # OPTIONAL
     );
 
     # Results:
@@ -55,6 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $NumberOfConnections     = $Lag->NumberOfConnections;
     my $OwnerAccount            = $Lag->OwnerAccount;
     my $Region                  = $Lag->Region;
+    my $Tags                    = $Lag->Tags;
 
     # Returns a L<Paws::DirectConnect::Lag> object.
 
@@ -62,6 +79,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/directconnect/CreateLag>
 
 =head1 ATTRIBUTES
+
+
+=head2 ChildConnectionTags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+The tags to assign to the child connections of the LAG. Only newly
+created child connections as the result of creating a LAG connection
+are assigned the provided tags. The tags are not assigned to an
+existing connection that is provided via the
+E<ldquo>connectionIdE<rdquo> parameter that will be migrated to the
+LAG.
+
 
 
 =head2 ConnectionId => Str
@@ -94,6 +122,12 @@ The location for the LAG.
 
 The number of physical connections initially provisioned and bundled by
 the LAG.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+The tags to assign to the link aggregation group (LAG).
 
 
 

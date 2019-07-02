@@ -16,6 +16,7 @@ package Paws::DirectConnect::Lag;
   has NumberOfConnections => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfConnections' );
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
   has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -140,6 +141,11 @@ The ID of the AWS account that owns the LAG.
 =head2 Region => Str
 
 The AWS Region where the connection is located.
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+Any tags assigned to link aggregation group (LAG).
 
 
 =head2 _request_id => Str

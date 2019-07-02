@@ -6,6 +6,7 @@ package Paws::DirectConnect::NewTransitVirtualInterfaceAllocation;
   has AuthKey => (is => 'ro', isa => 'Str', request_name => 'authKey', traits => ['NameInRequest']);
   has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest']);
   has Mtu => (is => 'ro', isa => 'Int', request_name => 'mtu', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has VirtualInterfaceName => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceName', traits => ['NameInRequest']);
   has Vlan => (is => 'ro', isa => 'Int', request_name => 'vlan', traits => ['NameInRequest']);
 1;
@@ -38,8 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-Information about a transit virtual interface to be provisioned on a
-connection.
+Information about a transit virtual interface.
 
 =head1 ATTRIBUTES
 
@@ -73,7 +73,12 @@ configuration.
 =head2 Mtu => Int
 
   The maximum transmission unit (MTU), in bytes. The supported values are
-1500 and 9001. The default value is 1500.
+1500 and 8500. The default value is 1500.
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+  Any tags assigned to the transit virtual interface.
 
 
 =head2 VirtualInterfaceName => Str

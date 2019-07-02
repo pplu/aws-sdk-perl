@@ -39,8 +39,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CustomerAddress => 'MyCustomerAddress',   # OPTIONAL
         DirectConnectGatewayId => 'MyDirectConnectGatewayId',    # OPTIONAL
         Mtu                    => 1,                             # OPTIONAL
-        VirtualInterfaceName   => 'MyVirtualInterfaceName',      # OPTIONAL
-        Vlan                   => 1,                             # OPTIONAL
+        Tags                   => [
+          {
+            Key   => 'MyTagKey',      # min: 1, max: 128
+            Value => 'MyTagValue',    # max: 256; OPTIONAL
+          },
+          ...
+        ],                            # min: 1; OPTIONAL
+        VirtualInterfaceName => 'MyVirtualInterfaceName',    # OPTIONAL
+        Vlan                 => 1,                           # OPTIONAL
       },
 
       );
