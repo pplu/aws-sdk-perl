@@ -1,6 +1,6 @@
 package Paws::Pinpoint::GPSPointDimension;
   use Moose;
-  has Coordinates => (is => 'ro', isa => 'Paws::Pinpoint::GPSCoordinates');
+  has Coordinates => (is => 'ro', isa => 'Paws::Pinpoint::GPSCoordinates', required => 1);
   has RangeInKilometers => (is => 'ro', isa => 'Num');
 1;
 
@@ -32,19 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::G
 
 =head1 DESCRIPTION
 
-GPS point location dimension
+Specifies GPS-based criteria for including or excluding endpoints from
+a segment.
 
 =head1 ATTRIBUTES
 
 
-=head2 Coordinates => L<Paws::Pinpoint::GPSCoordinates>
+=head2 B<REQUIRED> Coordinates => L<Paws::Pinpoint::GPSCoordinates>
 
-  Coordinate to measure distance from.
+  The GPS coordinates to measure distance from.
 
 
 =head2 RangeInKilometers => Num
 
-  Range in kilometers from the coordinate.
+  The range, in kilometers, from the GPS coordinates.
 
 
 

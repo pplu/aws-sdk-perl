@@ -32,7 +32,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SendUsersMessagesResponse = $pinpoint->SendUsersMessages(
       ApplicationId           => 'My__string',
       SendUsersMessageRequest => {
-        Context => { 'My__string' => 'My__string', },    # OPTIONAL
         MessageConfiguration => {
           ADMMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
@@ -168,9 +167,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,    # OPTIONAL
             VoiceId => 'My__string',
           },    # OPTIONAL
-        },    # OPTIONAL
-        TraceId => 'My__string',
-        Users   => {
+        },
+        Users => {
           'My__string' => {
             BodyOverride => 'My__string',
             Context      => { 'My__string' => 'My__string', },    # OPTIONAL
@@ -179,7 +177,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,                                                     # OPTIONAL
             TitleOverride => 'My__string',
           },
-        },    # OPTIONAL
+        },
+        Context => { 'My__string' => 'My__string', },             # OPTIONAL
+        TraceId => 'My__string',
       },
 
     );
@@ -198,7 +198,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 

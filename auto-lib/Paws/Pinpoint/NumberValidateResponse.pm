@@ -44,41 +44,44 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::N
 
 =head1 DESCRIPTION
 
-Phone Number Validate response.
+Provides information about a phone number.
 
 =head1 ATTRIBUTES
 
 
 =head2 Carrier => Str
 
-  The carrier or servive provider that the phone number is currently
+  The carrier or service provider that the phone number is currently
 registered with.
 
 
 =head2 City => Str
 
-  The city where the phone number was originally registered.
+  The name of the city where the phone number was originally registered.
 
 
 =head2 CleansedPhoneNumberE164 => Str
 
-  The cleansed phone number, shown in E.164 format.
+  The cleansed phone number, in E.164 format, for the location where the
+phone number was originally registered.
 
 
 =head2 CleansedPhoneNumberNational => Str
 
-  The cleansed phone number, shown in the local phone number format.
+  The cleansed phone number, in the format for the location where the
+phone number was originally registered.
 
 
 =head2 Country => Str
 
-  The country or region where the phone number was originally registered.
+  The name of the country or region where the phone number was originally
+registered.
 
 
 =head2 CountryCodeIso2 => Str
 
-  The two-character ISO code for the country or region where the phone
-number was originally registered.
+  The two-character code, in ISO 3166-1 alpha-2 format, for the country
+or region where the phone number was originally registered.
 
 
 =head2 CountryCodeNumeric => Str
@@ -89,31 +92,32 @@ originally registered.
 
 =head2 County => Str
 
-  The county where the phone number was originally registered.
+  The name of the county where the phone number was originally
+registered.
 
 
 =head2 OriginalCountryCodeIso2 => Str
 
-  The two-character code (in ISO 3166-1 alpha-2 format) for the country
-or region in the request body.
+  The two-character code, in ISO 3166-1 alpha-2 format, that was sent in
+the request body.
 
 
 =head2 OriginalPhoneNumber => Str
 
-  The phone number that you included in the request body.
+  The phone number that was sent in the request body.
 
 
 =head2 PhoneType => Str
 
-  A description of the phone type. Possible values are MOBILE, LANDLINE,
+  The description of the phone type. Valid values are: MOBILE, LANDLINE,
 VOIP, INVALID, PREPAID, and OTHER.
 
 
 =head2 PhoneTypeCode => Int
 
-  The phone type, represented by an integer. Possible values include 0
-(MOBILE), 1 (LANDLINE), 2 (VOIP), 3 (INVALID), 4 (OTHER), and 5
-(PREPAID).
+  The phone type, represented by an integer. Valid values are: 0
+(mobile), 1 (landline), 2 (VoIP), 3 (invalid), 4 (other), and 5
+(prepaid).
 
 
 =head2 Timezone => Str
@@ -124,8 +128,8 @@ registered.
 
 =head2 ZipCode => Str
 
-  The postal code for the location where the phone number was originally
-registered.
+  The postal or ZIP code for the location where the phone number was
+originally registered.
 
 
 

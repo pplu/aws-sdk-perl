@@ -8,7 +8,7 @@ package Paws::Pinpoint::ADMChannelResponse;
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
+  has Platform => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Int');
 1;
 
@@ -40,60 +40,63 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-Amazon Device Messaging channel definition.
+Provides information about the status and settings of the ADM (Amazon
+Device Messaging) channel for an application.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  The ID of the application to which the channel applies.
+  The unique identifier for the application that the ADM channel applies
+to.
 
 
 =head2 CreationDate => Str
 
-  The date and time when this channel was created.
+  The date and time when the ADM channel was enabled.
 
 
 =head2 Enabled => Bool
 
-  Indicates whether or not the channel is enabled for sending messages.
+  Specifies whether the ADM channel is enabled for the application.
 
 
 =head2 HasCredential => Bool
 
-  Not used. Retained for backwards compatibility.
+  (Not used) This property is retained only for backward compatibility.
 
 
 =head2 Id => Str
 
-  (Deprecated) An identifier for the channel. Retained for backwards
-compatibility.
+  (Deprecated) An identifier for the ADM channel. This property is
+retained only for backward compatibility.
 
 
 =head2 IsArchived => Bool
 
-  Indicates whether or not the channel is archived.
+  Specifies whether the ADM channel is archived.
 
 
 =head2 LastModifiedBy => Str
 
-  The user who last updated this channel.
+  The user who last modified the ADM channel.
 
 
 =head2 LastModifiedDate => Str
 
-  The date and time when this channel was last modified.
+  The date and time when the ADM channel was last modified.
 
 
-=head2 Platform => Str
+=head2 B<REQUIRED> Platform => Str
 
-  The platform type. For this channel, the value is always "ADM."
+  The type of messaging or notification platform for the channel. For the
+ADM channel, this value is ADM.
 
 
 =head2 Version => Int
 
-  The channel version.
+  The current version of the ADM channel.
 
 
 

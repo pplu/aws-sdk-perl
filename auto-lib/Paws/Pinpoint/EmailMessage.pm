@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Email Message.
+Specifies the default settings and content for a one-time email message
+that's sent directly to an endpoint.
 
 =head1 ATTRIBUTES
 
@@ -49,36 +50,37 @@ Email Message.
 
 =head2 FeedbackForwardingAddress => Str
 
-  The email address that bounces and complaints will be forwarded to when
-feedback forwarding is enabled.
+  The email address to forward bounces and complaints to, if feedback
+forwarding is enabled.
 
 
 =head2 FromAddress => Str
 
-  The email address used to send the email from. Defaults to use
-FromAddress specified in the Email Channel.
+  The verified email address to send the email message from. The default
+value is the FromAddress specified for the email channel.
 
 
 =head2 RawEmail => L<Paws::Pinpoint::RawEmail>
 
-  An email represented as a raw MIME message.
+  The email message, represented as a raw MIME message.
 
 
 =head2 ReplyToAddresses => ArrayRef[Str|Undef]
 
-  The reply-to email address(es) for the email. If the recipient replies
-to the email, each reply-to address will receive the reply.
+  The reply-to email address(es) for the email message. If a recipient
+replies to the email, each reply-to address receives the reply.
 
 
 =head2 SimpleEmail => L<Paws::Pinpoint::SimpleEmail>
 
-  An email composed of a subject, a text part and a html part.
+  The email message, composed of a subject, a text part, and an HTML
+part.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
 
-  Default message substitutions. Can be overridden by individual address
-substitutions.
+  The default message variables to use in the email message. You can
+override the default variables with individual address variables.
 
 
 

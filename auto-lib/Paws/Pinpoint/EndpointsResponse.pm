@@ -1,6 +1,6 @@
 package Paws::Pinpoint::EndpointsResponse;
   use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::EndpointResponse]');
+  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::EndpointResponse]', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -31,14 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-List of endpoints
+Provides information about all the endpoints that are associated with a
+user ID.
 
 =head1 ATTRIBUTES
 
 
-=head2 Item => ArrayRef[L<Paws::Pinpoint::EndpointResponse>]
+=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::EndpointResponse>]
 
-  The list of endpoints.
+  An array of responses, one for each endpoint that's associated with the
+user ID.
 
 
 

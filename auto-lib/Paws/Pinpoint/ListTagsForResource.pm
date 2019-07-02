@@ -46,7 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-
+The Amazon Resource Name (ARN) of the application, campaign, or
+segment.
 
 
 

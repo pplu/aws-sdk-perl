@@ -34,32 +34,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::W
 
 =head1 DESCRIPTION
 
-Segment definition.
+Specifies the configuration, dimension, and other settings for a
+segment. A WriteSegmentRequest object can include a Dimensions object
+or a SegmentGroups object, but not both.
 
 =head1 ATTRIBUTES
 
 
 =head2 Dimensions => L<Paws::Pinpoint::SegmentDimensions>
 
-  The segment dimensions attributes.
+  The criteria that define the dimensions for the segment.
 
 
 =head2 Name => Str
 
-  The name of segment
+  The name of the segment.
 
 
 =head2 SegmentGroups => L<Paws::Pinpoint::SegmentGroupList>
 
-  A segment group, which consists of zero or more source segments, plus
-dimensions that are applied to those source segments. Your request can
-only include one segment group. Your request can include either a
-SegmentGroups object or a Dimensions object, but not both.
+  The segment group to use and the dimensions to apply to the group's
+base segments in order to build the segment. A segment group can
+consist of zero or more base segments. Your request can include only
+one segment group.
 
 
 =head2 Tags => L<Paws::Pinpoint::MapOf__string>
 
-  The Tags for the segments.
+  A string-to-string map of key-value pairs that defines the tags to
+associate with the segment. Each tag consists of a required tag key and
+an associated tag value.
 
 
 

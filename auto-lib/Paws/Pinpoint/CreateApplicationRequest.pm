@@ -1,6 +1,6 @@
 package Paws::Pinpoint::CreateApplicationRequest;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
@@ -32,20 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-Application Request.
+Specifies the display name of an application and the tags to associate
+with the application.
 
 =head1 ATTRIBUTES
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
-  The display name of the application. Used in the Amazon Pinpoint
-console.
+  The display name of the application. This name is displayed as the
+B<Project name> on the Amazon Pinpoint console.
 
 
 =head2 Tags => L<Paws::Pinpoint::MapOf__string>
 
-  The Tags for the app.
+  A string-to-string map of key-value pairs that defines the tags to
+associate with the application. Each tag consists of a required tag key
+and an associated tag value.
 
 
 

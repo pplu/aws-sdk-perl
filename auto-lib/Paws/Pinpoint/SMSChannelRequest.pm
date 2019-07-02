@@ -33,24 +33,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-SMS Channel Request
+Specifies the status and settings of the SMS channel for an
+application.
 
 =head1 ATTRIBUTES
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether to enable the SMS channel for the application.
 
 
 =head2 SenderId => Str
 
-  Sender identifier of your messages.
+  The identity that you want to display on recipients' devices when they
+receive messages from the SMS channel.
 
 
 =head2 ShortCode => Str
 
-  ShortCode registered with phone provider.
+  The registered short code that you want to use when you send messages
+through the SMS channel.
 
 
 

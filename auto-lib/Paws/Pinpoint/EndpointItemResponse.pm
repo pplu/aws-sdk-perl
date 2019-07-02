@@ -32,22 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-A complex object that holds the status code and message as a result of
-processing an endpoint.
+Provides the status code and message that result from processing data
+for an endpoint.
 
 =head1 ATTRIBUTES
 
 
 =head2 Message => Str
 
-  A custom message associated with the registration of an endpoint when
-issuing a response.
+  The custom message that's returned in the response as a result of
+processing the endpoint data.
 
 
 =head2 StatusCode => Int
 
-  The status code associated with the merging of an endpoint when issuing
-a response.
+  The status code that's returned in the response as a result of
+processing the endpoint data.
 
 
 

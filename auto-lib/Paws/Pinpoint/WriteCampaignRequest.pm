@@ -44,46 +44,48 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::W
 
 =head1 DESCRIPTION
 
-Used to create a campaign.
+Specifies the configuration and other settings for a campaign.
 
 =head1 ATTRIBUTES
 
 
 =head2 AdditionalTreatments => ArrayRef[L<Paws::Pinpoint::WriteTreatmentResource>]
 
-  Treatments that are defined in addition to the default treatment.
+  An array of requests that defines additional treatments for the
+campaign, in addition to the default treatment for the campaign.
 
 
 =head2 Description => Str
 
-  A description of the campaign.
+  The custom description of the campaign.
 
 
 =head2 HoldoutPercent => Int
 
-  The allocated percentage of end users who will not receive messages
-from this campaign.
+  The allocated percentage of users (segment members) who shouldn't
+receive messages from the campaign.
 
 
 =head2 Hook => L<Paws::Pinpoint::CampaignHook>
 
-  Campaign hook information.
+  The settings for the AWS Lambda function to use as a code hook for the
+campaign.
 
 
 =head2 IsPaused => Bool
 
-  Indicates whether the campaign is paused. A paused campaign does not
-send messages unless you resume it by setting IsPaused to false.
+  Specifies whether to pause the campaign. A paused campaign doesn't run
+unless you resume it by setting this value to false.
 
 
 =head2 Limits => L<Paws::Pinpoint::CampaignLimits>
 
-  The campaign limits settings.
+  The messaging limits for the campaign.
 
 
 =head2 MessageConfiguration => L<Paws::Pinpoint::MessageConfiguration>
 
-  The message configuration settings.
+  The message configuration settings for the campaign.
 
 
 =head2 Name => Str
@@ -93,32 +95,35 @@ send messages unless you resume it by setting IsPaused to false.
 
 =head2 Schedule => L<Paws::Pinpoint::Schedule>
 
-  The campaign schedule.
+  The schedule settings for the campaign.
 
 
 =head2 SegmentId => Str
 
-  The ID of the segment to which the campaign sends messages.
+  The unique identifier for the segment to associate with the campaign.
 
 
 =head2 SegmentVersion => Int
 
-  The version of the segment to which the campaign sends messages.
+  The version of the segment to associate with the campaign.
 
 
 =head2 Tags => L<Paws::Pinpoint::MapOf__string>
 
-  The Tags for the campaign.
+  A string-to-string map of key-value pairs that defines the tags to
+associate with the campaign. Each tag consists of a required tag key
+and an associated tag value.
 
 
 =head2 TreatmentDescription => Str
 
-  A custom description for the treatment.
+  The custom description of a variation of the campaign to use for A/B
+testing.
 
 
 =head2 TreatmentName => Str
 
-  The custom name of a variation of the campaign used for A/B testing.
+  The custom name of a variation of the campaign to use for A/B testing.
 
 
 

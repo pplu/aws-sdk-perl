@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::M
 
 =head1 DESCRIPTION
 
-Simple message object.
+Provides information about an API request or response.
 
 =head1 ATTRIBUTES
 
 
 =head2 Message => Str
 
-  The error message that's returned from the API.
+  The message that's returned from the API.
 
 
 =head2 RequestID => Str
 
-  The unique message body ID.
+  The unique identifier for the request or response.
 
 
 

@@ -31,15 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::R
 
 =head1 DESCRIPTION
 
-An email represented as a raw MIME message.
+Specifies the contents of an email message, represented as a raw MIME
+message.
 
 =head1 ATTRIBUTES
 
 
 =head2 Data => Str
 
-  The raw email message itself. Then entire message must be
-base64-encoded.
+  The email message, represented as a raw MIME message. The entire
+message must be base64 encoded.
 
 
 

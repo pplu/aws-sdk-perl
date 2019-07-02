@@ -1,8 +1,8 @@
 package Paws::Pinpoint::ApplicationResponse;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Name => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
@@ -34,29 +34,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-Application Response.
+Provides information about an application.
 
 =head1 ATTRIBUTES
 
 
-=head2 Arn => Str
+=head2 B<REQUIRED> Arn => Str
 
-  The arn for the application.
-
-
-=head2 Id => Str
-
-  The unique application ID.
+  The Amazon Resource Name (ARN) of the application.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Id => Str
 
-  The display name of the application.
+  The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
+
+
+=head2 B<REQUIRED> Name => Str
+
+  The display name of the application. This name is displayed as the
+B<Project name> on the Amazon Pinpoint console.
 
 
 =head2 Tags => L<Paws::Pinpoint::MapOf__string>
 
-  The Tags for the application.
+  A string-to-string map of key-value pairs that identifies the tags that
+are associated with the application. Each tag consists of a required
+tag key and an associated tag value.
 
 
 

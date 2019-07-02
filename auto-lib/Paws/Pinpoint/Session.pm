@@ -1,8 +1,8 @@
 package Paws::Pinpoint::Session;
   use Moose;
   has Duration => (is => 'ro', isa => 'Int');
-  has Id => (is => 'ro', isa => 'Str');
-  has StartTimestamp => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has StartTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has StopTimestamp => (is => 'ro', isa => 'Str');
 1;
 
@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Information about a session.
+Provides information about a session.
 
 =head1 ATTRIBUTES
 
@@ -44,12 +44,12 @@ Information about a session.
   The duration of the session, in milliseconds.
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
-  A unique identifier for the session.
+  The unique identifier for the session.
 
 
-=head2 StartTimestamp => Str
+=head2 B<REQUIRED> StartTimestamp => Str
 
   The date and time when the session began.
 

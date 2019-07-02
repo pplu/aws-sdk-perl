@@ -37,75 +37,77 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Dimensions => {
           Attributes => {
             'My__string' => {
+              Values => [ 'My__string', ... ],
               AttributeType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },
           },    # OPTIONAL
           Behavior => {
             Recency => {
-              Duration =>
-                'HR_24',    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
-              RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
+              Duration    => 'HR_24',     # values: HR_24, DAY_7, DAY_14, DAY_30
+              RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE
+
             },    # OPTIONAL
           },    # OPTIONAL
           Demographic => {
             AppVersion => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             Channel => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             DeviceType => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             Make => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             Model => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             Platform => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
           Location => {
             Country => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             GPSPoint => {
               Coordinates => {
-                Latitude  => 1,    # OPTIONAL
-                Longitude => 1,    # OPTIONAL
-              },    # OPTIONAL
-              RangeInKilometers => 1,    # OPTIONAL
+                Latitude  => 1,
+                Longitude => 1,
+
+              },
+              RangeInKilometers => 1,
             },    # OPTIONAL
           },    # OPTIONAL
           Metrics => {
             'My__string' => {
               ComparisonOperator => 'My__string',
-              Value              => 1,              # OPTIONAL
+              Value              => 1,
+
             },
           },    # OPTIONAL
           UserAttributes => {
             'My__string' => {
+              Values => [ 'My__string', ... ],
               AttributeType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },
           },    # OPTIONAL
         },    # OPTIONAL
@@ -117,76 +119,78 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Attributes => {
                     'My__string' => {
+                      Values => [ 'My__string', ... ],
                       AttributeType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },
                   },    # OPTIONAL
                   Behavior => {
                     Recency => {
-                      Duration => 'HR_24'
-                      ,    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
-                      RecencyType =>
-                        'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
+                      Duration =>
+                        'HR_24',    # values: HR_24, DAY_7, DAY_14, DAY_30
+                      RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE
+
                     },    # OPTIONAL
                   },    # OPTIONAL
                   Demographic => {
                     AppVersion => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     Channel => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     DeviceType => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     Make => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     Model => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     Platform => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
                   Location => {
                     Country => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     GPSPoint => {
                       Coordinates => {
-                        Latitude  => 1,    # OPTIONAL
-                        Longitude => 1,    # OPTIONAL
-                      },    # OPTIONAL
-                      RangeInKilometers => 1,    # OPTIONAL
+                        Latitude  => 1,
+                        Longitude => 1,
+
+                      },
+                      RangeInKilometers => 1,
                     },    # OPTIONAL
                   },    # OPTIONAL
                   Metrics => {
                     'My__string' => {
                       ComparisonOperator => 'My__string',
-                      Value              => 1,              # OPTIONAL
+                      Value              => 1,
+
                     },
                   },    # OPTIONAL
                   UserAttributes => {
                     'My__string' => {
+                      Values => [ 'My__string', ... ],
                       AttributeType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },
                   },    # OPTIONAL
                 },
@@ -224,13 +228,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
 =head2 B<REQUIRED> SegmentId => Str
 
-The unique ID of the segment.
+The unique identifier for the segment.
 
 
 

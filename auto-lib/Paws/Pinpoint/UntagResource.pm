@@ -43,13 +43,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-
+The Amazon Resource Name (ARN) of the application, campaign, or
+segment.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The key(s) of tag to be deleted
+The key of the tag to remove from the application, campaign, or
+segment. To remove multiple tags, append the tagKeys parameter and
+argument for each additional tag to remove, separated by an ampersand
+(&).
 
 
 

@@ -33,25 +33,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-SMS message configuration.
+Specifies the content and settings for an SMS message that's sent to
+recipients of a campaign.
 
 =head1 ATTRIBUTES
 
 
 =head2 Body => Str
 
-  The SMS text body.
+  The body of the SMS message.
 
 
 =head2 MessageType => Str
 
-  Is this is a transactional SMS message, otherwise a promotional
-message.
+  The type of SMS message. Valid values are: TRANSACTIONAL, the message
+is critical or time-sensitive, such as a one-time password that
+supports a customer transaction; and, PROMOTIONAL, the message isn't
+critical or time-sensitive, such as a marketing message.
 
 
 =head2 SenderId => Str
 
-  Sender ID of sent message.
+  The sender ID to display on recipients' devices when they receive the
+SMS message.
 
 
 
