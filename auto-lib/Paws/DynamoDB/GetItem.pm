@@ -141,7 +141,7 @@ C<#P = :val>
 Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see Accessing Item
+For more information on expression attribute names, see Specifying Item
 Attributes
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
@@ -167,11 +167,11 @@ table. These attributes can include scalars, sets, or elements of a
 JSON document. The attributes in the expression must be separated by
 commas.
 
-If no attribute names are specified, then all attributes will be
-returned. If any of the requested attributes are not found, they will
-not appear in the result.
+If no attribute names are specified, then all attributes are returned.
+If any of the requested attributes are not found, they do not appear in
+the result.
 
-For more information, see Accessing Item Attributes
+For more information, see Specifying Item Attributes
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
 

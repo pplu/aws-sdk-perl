@@ -150,7 +150,7 @@ index.
 =item *
 
 C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes are in C<NonKeyAttributes>.
+index. The list of projected attributes is in C<NonKeyAttributes>.
 
 =item *
 
@@ -214,9 +214,9 @@ C<RANGE> - sort key
 =back
 
 The partition key of an item is also known as its I<hash attribute>.
-The term "hash attribute" derives from DynamoDB' usage of an internal
-hash function to evenly distribute data items across partitions, based
-on their partition key values.
+The term "hash attribute" derives from the DynamoDB usage of an
+internal hash function to evenly distribute data items across
+partitions, based on their partition key values.
 
 The sort key of an item is also known as its I<range attribute>. The
 term "range attribute" derives from the way DynamoDB stores items with
@@ -231,7 +231,7 @@ provide exactly two elements, in this order: The first element must
 have a C<KeyType> of C<HASH>, and the second element must have a
 C<KeyType> of C<RANGE>.
 
-For more information, see Specifying the Primary Key
+For more information, see Working with Tables
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
 in the I<Amazon DynamoDB Developer Guide>.
 
@@ -281,7 +281,7 @@ index.
 =item *
 
 C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes are in C<NonKeyAttributes>.
+index. The list of projected attributes is in C<NonKeyAttributes>.
 
 =item *
 
@@ -336,8 +336,8 @@ of:
 
 =item *
 
-C<StreamEnabled> - Indicates whether Streams is to be enabled (true) or
-disabled (false).
+C<StreamEnabled> - Indicates whether DynamoDB Streams is to be enabled
+(true) or disabled (false).
 
 =item *
 

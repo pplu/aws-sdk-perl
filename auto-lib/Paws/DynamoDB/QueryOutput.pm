@@ -24,7 +24,7 @@ The capacity units consumed by the C<Query> operation. The data
 returned includes the total provisioned throughput consumed, along with
 statistics for the table and any indexes involved in the operation.
 C<ConsumedCapacity> is only returned if the C<ReturnConsumedCapacity>
-parameter was specified For more information, see Provisioned
+parameter was specified. For more information, see Provisioned
 Throughput
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
 in the I<Amazon DynamoDB Developer Guide>.

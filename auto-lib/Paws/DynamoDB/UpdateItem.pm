@@ -124,7 +124,7 @@ Logical operators: C<AND | OR | NOT>
 
 =back
 
-For more information on condition expressions, see Specifying
+For more information about condition expressions, see Specifying
 Conditions
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 in the I<Amazon DynamoDB Developer Guide>.
@@ -179,7 +179,7 @@ The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
 words, see Reserved Words
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
-in the I<Amazon DynamoDB Developer Guide>). To work around this, you
+in the I<Amazon DynamoDB Developer Guide>.) To work around this, you
 could specify the following for C<ExpressionAttributeNames>:
 
 =over
@@ -204,8 +204,8 @@ C<#P = :val>
 Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see Accessing Item
-Attributes
+For more information about expression attribute names, see Specifying
+Item Attributes
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
@@ -217,7 +217,7 @@ One or more values that can be substituted in an expression.
 
 Use the B<:> (colon) character in an expression to dereference an
 attribute value. For example, suppose that you wanted to check whether
-the value of the I<ProductStatus> attribute was one of the following:
+the value of the C<ProductStatus> attribute was one of the following:
 
 C<Available | Backordered | Discontinued>
 
@@ -231,8 +231,8 @@ You could then use these values in an expression, such as this:
 
 C<ProductStatus IN (:avail, :back, :disc)>
 
-For more information on expression attribute values, see Specifying
-Conditions
+For more information on expression attribute values, see Condition
+Expressions
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
@@ -318,7 +318,7 @@ The name of the table containing the item to update.
 =head2 UpdateExpression => Str
 
 An expression that defines one or more attributes to be updated, the
-action to be performed on them, and new value(s) for them.
+action to be performed on them, and new values for them.
 
 The following action values are available for C<UpdateExpression>.
 
@@ -327,8 +327,8 @@ The following action values are available for C<UpdateExpression>.
 =item *
 
 C<SET> - Adds one or more attributes and values to an item. If any of
-these attribute already exist, they are replaced by the new values. You
-can also use C<SET> to add or subtract from an attribute that is of
+these attributes already exist, they are replaced by the new values.
+You can also use C<SET> to add or subtract from an attribute that is of
 type Number. For example: C<SET myNum = myNum + :val>
 
 C<SET> supports the following functions:
@@ -378,11 +378,11 @@ value.
 Similarly, if you use C<ADD> for an existing item to increment or
 decrement an attribute value that doesn't exist before the update,
 DynamoDB uses C<0> as the initial value. For example, suppose that the
-item you want to update doesn't have an attribute named I<itemcount>,
+item you want to update doesn't have an attribute named C<itemcount>,
 but you decide to C<ADD> the number C<3> to this attribute anyway.
-DynamoDB will create the I<itemcount> attribute, set its initial value
+DynamoDB will create the C<itemcount> attribute, set its initial value
 to C<0>, and finally add C<3> to it. The result will be a new
-I<itemcount> attribute in the item, with a value of C<3>.
+C<itemcount> attribute in the item, with a value of C<3>.
 
 =item *
 

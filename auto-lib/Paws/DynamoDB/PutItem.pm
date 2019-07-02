@@ -101,8 +101,8 @@ Logical operators: C<AND | OR | NOT>
 
 =back
 
-For more information on condition expressions, see Specifying
-Conditions
+For more information on condition expressions, see Condition
+Expressions
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
@@ -181,7 +181,7 @@ C<#P = :val>
 Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see Accessing Item
+For more information on expression attribute names, see Specifying Item
 Attributes
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
@@ -208,8 +208,8 @@ You could then use these values in an expression, such as this:
 
 C<ProductStatus IN (:avail, :back, :disc)>
 
-For more information on expression attribute values, see Specifying
-Conditions
+For more information on expression attribute values, see Condition
+Expressions
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
@@ -231,7 +231,7 @@ data types for those attributes must match those of the schema in the
 table's attribute definition.
 
 For more information about primary keys, see Primary Key
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey)
 in the I<Amazon DynamoDB Developer Guide>.
 
 Each element in the C<Item> map is an C<AttributeValue> object.

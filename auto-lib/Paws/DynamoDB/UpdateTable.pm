@@ -135,9 +135,9 @@ The new server-side encryption settings for the specified table.
 
 Represents the DynamoDB Streams configuration for the table.
 
-You will receive a C<ResourceInUseException> if you attempt to enable a
-stream on a table that already has a stream, or if you attempt to
-disable a stream on a table which does not have a stream.
+You receive a C<ResourceInUseException> if you try to enable a stream
+on a table that already has a stream, or if you try to disable a stream
+on a table that doesn't have a stream.
 
 
 

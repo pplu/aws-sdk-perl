@@ -62,7 +62,7 @@ The maximum number of table names to return.
 
 =head2 RegionName => Str
 
-Lists the global tables in a specific region.
+Lists the global tables in a specific Region.
 
 
 

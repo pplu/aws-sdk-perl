@@ -26,7 +26,7 @@ of the C<TransactItems> request parameter.
 
 A list of tables that were processed by C<TransactWriteItems> and, for
 each table, information about any item collections that were affected
-by individual C<UpdateItem>, C<PutItem> or C<DeleteItem> operations.
+by individual C<UpdateItem>, C<PutItem>, or C<DeleteItem> operations.
 
 
 =head2 _request_id => Str

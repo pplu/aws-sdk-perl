@@ -133,8 +133,8 @@ C<Item> - A map of attributes and their values. Each entry in this map
 consists of an attribute name and an attribute value. Attribute values
 must not be null; string and binary type attributes must have lengths
 greater than zero; and set type attributes must not be empty. Requests
-that contain empty values will be rejected with a
-C<ValidationException> exception.
+that contain empty values are rejected with a C<ValidationException>
+exception.
 
 If you specify any attributes that are part of an index key, then the
 data types for those attributes must match those of the schema in the

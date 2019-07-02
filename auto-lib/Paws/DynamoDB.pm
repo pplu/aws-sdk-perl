@@ -12,7 +12,6 @@ package Paws::DynamoDB;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
        sub { $_[0]->code eq 'Crc32Error' },
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'TransactionInProgressException' },
-       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -427,31 +426,30 @@ items from one or more tables. You identify requested items by primary
 key.
 
 A single operation can retrieve up to 16 MB of data, which can contain
-as many as 100 items. C<BatchGetItem> will return a partial result if
-the response size limit is exceeded, the table's provisioned throughput
-is exceeded, or an internal processing failure occurs. If a partial
-result is returned, the operation returns a value for
-C<UnprocessedKeys>. You can use this value to retry the operation
-starting with the next item to get.
+as many as 100 items. C<BatchGetItem> returns a partial result if the
+response size limit is exceeded, the table's provisioned throughput is
+exceeded, or an internal processing failure occurs. If a partial result
+is returned, the operation returns a value for C<UnprocessedKeys>. You
+can use this value to retry the operation starting with the next item
+to get.
 
-If you request more than 100 items C<BatchGetItem> will return a
+If you request more than 100 items, C<BatchGetItem> returns a
 C<ValidationException> with the message "Too many items requested for
-the BatchGetItem call".
+the BatchGetItem call."
 
 For example, if you ask to retrieve 100 items, but each individual item
 is 300 KB in size, the system returns 52 items (so as not to exceed the
 16 MB limit). It also returns an appropriate C<UnprocessedKeys> value
 so you can get the next page of results. If desired, your application
 can include its own logic to assemble the pages of results into one
-data set.
+dataset.
 
 If I<none> of the items can be processed due to insufficient
 provisioned throughput on all of the tables in the request, then
-C<BatchGetItem> will return a
-C<ProvisionedThroughputExceededException>. If I<at least one> of the
-items is successfully processed, then C<BatchGetItem> completes
-successfully, while returning the keys of the unread items in
-C<UnprocessedKeys>.
+C<BatchGetItem> returns a C<ProvisionedThroughputExceededException>. If
+I<at least one> of the items is successfully processed, then
+C<BatchGetItem> completes successfully, while returning the keys of the
+unread items in C<UnprocessedKeys>.
 
 If DynamoDB returns any unprocessed items, you should retry the batch
 operation on those items. However, I<we strongly recommend that you use
@@ -480,8 +478,8 @@ the C<ProjectionExpression> parameter.
 
 If a requested item does not exist, it is not returned in the result.
 Requests for nonexistent items consume the minimum read capacity units
-according to the type of read. For more information, see Capacity Units
-Calculations
+according to the type of read. For more information, see Working with
+Tables
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
 in the I<Amazon DynamoDB Developer Guide>.
 
@@ -522,10 +520,9 @@ would check for unprocessed items and submit a new C<BatchWriteItem>
 request with those unprocessed items until all items have been
 processed.
 
-Note that if I<none> of the items can be processed due to insufficient
+If I<none> of the items can be processed due to insufficient
 provisioned throughput on all of the tables in the request, then
-C<BatchWriteItem> will return a
-C<ProvisionedThroughputExceededException>.
+C<BatchWriteItem> returns a C<ProvisionedThroughputExceededException>.
 
 If DynamoDB returns any unprocessed items, you should retry the batch
 operation on those items. However, I<we strongly recommend that you use
@@ -536,17 +533,17 @@ operation using exponential backoff, the individual requests in the
 batch are much more likely to succeed.
 
 For more information, see Batch Operations and Error Handling
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#Programming.Errors.BatchOperations)
 in the I<Amazon DynamoDB Developer Guide>.
 
 With C<BatchWriteItem>, you can efficiently write or delete large
-amounts of data, such as from Amazon Elastic MapReduce (EMR), or copy
-data from another database into DynamoDB. In order to improve
-performance with these large-scale operations, C<BatchWriteItem> does
-not behave in the same way as individual C<PutItem> and C<DeleteItem>
-calls would. For example, you cannot specify conditions on individual
-put and delete requests, and C<BatchWriteItem> does not return deleted
-items in the response.
+amounts of data, such as from Amazon EMR, or copy data from another
+database into DynamoDB. In order to improve performance with these
+large-scale operations, C<BatchWriteItem> does not behave in the same
+way as individual C<PutItem> and C<DeleteItem> calls would. For
+example, you cannot specify conditions on individual put and delete
+requests, and C<BatchWriteItem> does not return deleted items in the
+response.
 
 If you use a programming language that supports concurrency, you can
 use threads to write items in parallel. Your application must include
@@ -621,11 +618,11 @@ Returns: a L<Paws::DynamoDB::CreateBackupOutput> instance
 
 Creates a backup for an existing table.
 
-Each time you create an On-Demand Backup, the entire table data is
+Each time you create an on-demand backup, the entire table data is
 backed up. There is no limit to the number of on-demand backups that
 can be taken.
 
-When you create an On-Demand Backup, a time marker of the request is
+When you create an on-demand backup, a time marker of the request is
 cataloged, and the backup is created asynchronously, by applying all
 changes until the time of the request to the last full table snapshot.
 Backup requests are processed instantaneously and become available for
@@ -638,9 +635,9 @@ throughput on the table.
 
 If you submit a backup request on 2018-12-14 at 14:25:00, the backup is
 guaranteed to contain all data committed to the table up to 14:24:00,
-and data committed after 14:26:00 will not be. The backup may or may
-not contain data modifications made between 14:24:00 and 14:26:00.
-On-Demand Backup does not support causal consistency.
+and data committed after 14:26:00 will not be. The backup might contain
+data modifications made between 14:24:00 and 14:26:00. On-demand backup
+does not support causal consistency.
 
 Along with data, the following are also included on the backups:
 
@@ -683,7 +680,7 @@ Returns: a L<Paws::DynamoDB::CreateGlobalTableOutput> instance
 
 Creates a global table from an existing table. A global table creates a
 replication relationship between two or more DynamoDB tables with the
-same table name in the provided regions.
+same table name in the provided Regions.
 
 If you want to add a new replica table to a global table, each of the
 following conditions must be true:
@@ -768,9 +765,9 @@ Each argument is described in detail in: L<Paws::DynamoDB::CreateTable>
 Returns: a L<Paws::DynamoDB::CreateTableOutput> instance
 
 The C<CreateTable> operation adds a new table to your account. In an
-AWS account, table names must be unique within each region. That is,
+AWS account, table names must be unique within each Region. That is,
 you can have two tables with same name if you create the tables in
-different regions.
+different Regions.
 
 C<CreateTable> is an asynchronous operation. Upon receiving a
 C<CreateTable> request, DynamoDB immediately returns a response with a
@@ -925,9 +922,9 @@ the specified table. Continuous backups are C<ENABLED> on all tables at
 table creation. If point in time recovery is enabled,
 C<PointInTimeRecoveryStatus> will be set to ENABLED.
 
-Once continuous backups and point in time recovery are enabled, you can
-restore to any point in time within C<EarliestRestorableDateTime> and
-C<LatestRestorableDateTime>.
+After continuous backups and point in time recovery are enabled, you
+can restore to any point in time within C<EarliestRestorableDateTime>
+and C<LatestRestorableDateTime>.
 
 C<LatestRestorableDateTime> is typically 5 minutes before the current
 time. You can restore your table to any point in time during the last
@@ -980,7 +977,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::DescribeGlobalTableSe
 
 Returns: a L<Paws::DynamoDB::DescribeGlobalTableSettingsOutput> instance
 
-Describes region specific settings for a global table.
+Describes Region-specific settings for a global table.
 
 
 =head2 DescribeLimits
@@ -995,12 +992,12 @@ Each argument is described in detail in: L<Paws::DynamoDB::DescribeLimits>
 Returns: a L<Paws::DynamoDB::DescribeLimitsOutput> instance
 
 Returns the current provisioned-capacity limits for your AWS account in
-a region, both for the region as a whole and for any one DynamoDB table
+a Region, both for the Region as a whole and for any one DynamoDB table
 that you create there.
 
 When you establish an AWS account, the account has initial limits on
 the maximum read capacity units and write capacity units that you can
-provision across all of your DynamoDB tables in a given region. Also,
+provision across all of your DynamoDB tables in a given Region. Also,
 there are per-table limits that apply when you create a table there.
 For more information, see Limits
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
@@ -1019,13 +1016,13 @@ For example, you could use one of the AWS SDKs to do the following:
 
 =item 1.
 
-Call C<DescribeLimits> for a particular region to obtain your current
+Call C<DescribeLimits> for a particular Region to obtain your current
 account limits on provisioned capacity there.
 
 =item 2.
 
 Create a variable to hold the aggregate read capacity units provisioned
-for all your tables in that region, and one to hold the aggregate write
+for all your tables in that Region, and one to hold the aggregate write
 capacity units. Zero them both.
 
 =item 3.
@@ -1058,7 +1055,7 @@ as well.
 
 =item 5.
 
-Report the account limits for that region returned by
+Report the account limits for that Region returned by
 C<DescribeLimits>, along with the total current provisioned capacity
 levels you have calculated.
 
@@ -1071,8 +1068,8 @@ The per-table limits apply only when you are creating a new table. They
 restrict the sum of the provisioned capacity of the new table itself
 and all its global secondary indexes.
 
-For existing tables and their GSIs, DynamoDB will not let you increase
-provisioned capacity extremely rapidly, but the only upper limit that
+For existing tables and their GSIs, DynamoDB doesn't let you increase
+provisioned capacity extremely rapidly. But the only upper limit that
 applies is that the aggregate provisioned capacity over all your tables
 and GSIs cannot exceed either of the per-account limits.
 
@@ -1186,15 +1183,15 @@ Returns: a L<Paws::DynamoDB::ListBackupsOutput> instance
 
 List backups associated with an AWS account. To list backups for a
 given table, specify C<TableName>. C<ListBackups> returns a paginated
-list of results with at most 1MB worth of items in a page. You can also
-specify a limit for the maximum number of entries to be returned in a
-page.
+list of results with at most 1 MB worth of items in a page. You can
+also specify a limit for the maximum number of entries to be returned
+in a page.
 
-In the request, start time is inclusive but end time is exclusive. Note
-that these limits are for the time at which the original backup was
-requested.
+In the request, start time is inclusive, but end time is exclusive.
+Note that these limits are for the time at which the original backup
+was requested.
 
-You can call C<ListBackups> a maximum of 5 times per second.
+You can call C<ListBackups> a maximum of five times per second.
 
 
 =head2 ListGlobalTables
@@ -1214,7 +1211,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::ListGlobalTables>
 
 Returns: a L<Paws::DynamoDB::ListGlobalTablesOutput> instance
 
-Lists all global tables that have a replica in the specified region.
+Lists all global tables that have a replica in the specified Region.
 
 
 =head2 ListTables
@@ -1353,11 +1350,11 @@ PutItem in the AWS SDK for Ruby V2
 
 =back
 
-When you add an item, the primary key attribute(s) are the only
-required attributes. Attribute values cannot be null. String and Binary
-type attributes must have lengths greater than zero. Set type
-attributes cannot be empty. Requests with empty values will be rejected
-with a C<ValidationException> exception.
+When you add an item, the primary key attributes are the only required
+attributes. Attribute values cannot be null. String and Binary type
+attributes must have lengths greater than zero. Set type attributes
+cannot be empty. Requests with empty values will be rejected with a
+C<ValidationException> exception.
 
 To prevent a new item from replacing an existing item, use a
 conditional expression that contains the C<attribute_not_exists>
@@ -1510,7 +1507,7 @@ IAM policies
 
 =item *
 
-Cloudwatch metrics and alarms
+Amazon CloudWatch metrics and alarms
 
 =item *
 
@@ -1597,7 +1594,7 @@ IAM policies
 
 =item *
 
-Cloudwatch metrics and alarms
+Amazon CloudWatch metrics and alarms
 
 =item *
 
@@ -1666,18 +1663,17 @@ The C<Scan> operation returns one or more items and item attributes by
 accessing every item in a table or a secondary index. To have DynamoDB
 return fewer items, you can provide a C<FilterExpression> operation.
 
-If the total number of scanned items exceeds the maximum data set size
+If the total number of scanned items exceeds the maximum dataset size
 limit of 1 MB, the scan stops and results are returned to the user as a
 C<LastEvaluatedKey> value to continue the scan in a subsequent
 operation. The results also include the number of items exceeding the
 limit. A scan can result in no table data meeting the filter criteria.
 
-A single C<Scan> operation will read up to the maximum number of items
-set (if using the C<Limit> parameter) or a maximum of 1 MB of data and
-then apply any filtering to the results using C<FilterExpression>. If
-C<LastEvaluatedKey> is present in the response, you will need to
-paginate the result set. For more information, see Paginating the
-Results
+A single C<Scan> operation reads up to the maximum number of items set
+(if using the C<Limit> parameter) or a maximum of 1 MB of data and then
+apply any filtering to the results using C<FilterExpression>. If
+C<LastEvaluatedKey> is present in the response, you need to paginate
+the result set. For more information, see Paginating the Results
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination)
 in the I<Amazon DynamoDB Developer Guide>.
 
@@ -1713,7 +1709,7 @@ Returns: nothing
 Associate a set of tags with an Amazon DynamoDB resource. You can then
 activate these user-defined tags so that they appear on the Billing and
 Cost Management console for cost allocation tracking. You can call
-TagResource up to 5 times per second, per account.
+TagResource up to five times per second, per account.
 
 For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
@@ -1737,11 +1733,30 @@ Returns: a L<Paws::DynamoDB::TransactGetItemsOutput> instance
 
 C<TransactGetItems> is a synchronous operation that atomically
 retrieves multiple items from one or more tables (but not from indexes)
-in a single account and region. A C<TransactGetItems> call can contain
-up to 10 C<TransactGetItem> objects, each of which contains a C<Get>
+in a single account and Region. A C<TransactGetItems> call can contain
+up to 25 C<TransactGetItem> objects, each of which contains a C<Get>
 structure that specifies an item to retrieve from a table in the
-account and region. A call to C<TransactGetItems> cannot retrieve items
-from tables in more than one AWS account or region.
+account and Region. A call to C<TransactGetItems> cannot retrieve items
+from tables in more than one AWS account or Region. The aggregate size
+of the items in the transaction cannot exceed 4 MB.
+
+All AWS Regions and AWS GovCloud (US) support up to 25 items per
+transaction with up to 4 MB of data, except the following AWS Regions:
+
+=over
+
+=item *
+
+China (Beijing)
+
+=item *
+
+China (Ningxia)
+
+=back
+
+The China (Beijing) and China (Ningxia) Regions support up to 10 items
+per transaction with up to 4 MB of data.
 
 DynamoDB rejects the entire C<TransactGetItems> request if any of the
 following is true:
@@ -1761,6 +1776,10 @@ completed.
 =item *
 
 There is a user error, such as an invalid data format.
+
+=item *
+
+The aggregate size of the items in the transaction cannot exceed 4 MB.
 
 =back
 
@@ -1786,10 +1805,29 @@ Each argument is described in detail in: L<Paws::DynamoDB::TransactWriteItems>
 Returns: a L<Paws::DynamoDB::TransactWriteItemsOutput> instance
 
 C<TransactWriteItems> is a synchronous write operation that groups up
-to 10 action requests. These actions can target items in different
-tables, but not in different AWS accounts or regions, and no two
+to 25 action requests. These actions can target items in different
+tables, but not in different AWS accounts or Regions, and no two
 actions can target the same item. For example, you cannot both
-C<ConditionCheck> and C<Update> the same item.
+C<ConditionCheck> and C<Update> the same item. The aggregate size of
+the items in the transaction cannot exceed 4 MB.
+
+All AWS Regions and AWS GovCloud (US) support up to 25 items per
+transaction with up to 4 MB of data, except the following AWS Regions:
+
+=over
+
+=item *
+
+China (Beijing)
+
+=item *
+
+China (Ningxia)
+
+=back
+
+The China (Beijing) and China (Ningxia) Regions support up to 10 items
+per transaction with up to 4 MB of data.
 
 The actions are completed atomically so that either all of them
 succeed, or all of them fail. They are defined by the following
@@ -1803,8 +1841,8 @@ C<Put> E<151> Initiates a C<PutItem> operation to write a new item.
 This structure specifies the primary key of the item to be written, the
 name of the table to write it in, an optional condition expression that
 must be satisfied for the write to succeed, a list of the item's
-attributes, and a field indicating whether or not to retrieve the
-item's attributes if the condition is not met.
+attributes, and a field indicating whether to retrieve the item's
+attributes if the condition is not met.
 
 =item *
 
@@ -1813,8 +1851,8 @@ existing item. This structure specifies the primary key of the item to
 be updated, the name of the table where it resides, an optional
 condition expression that must be satisfied for the update to succeed,
 an expression that defines one or more attributes to be updated, and a
-field indicating whether or not to retrieve the item's attributes if
-the condition is not met.
+field indicating whether to retrieve the item's attributes if the
+condition is not met.
 
 =item *
 
@@ -1822,7 +1860,7 @@ C<Delete> E<151> Initiates a C<DeleteItem> operation to delete an
 existing item. This structure specifies the primary key of the item to
 be deleted, the name of the table where it resides, an optional
 condition expression that must be satisfied for the deletion to
-succeed, and a field indicating whether or not to retrieve the item's
+succeed, and a field indicating whether to retrieve the item's
 attributes if the condition is not met.
 
 =item *
@@ -1831,7 +1869,7 @@ C<ConditionCheck> E<151> Applies a condition to an item that is not
 being modified by the transaction. This structure specifies the primary
 key of the item to be checked, the name of the table where it resides,
 a condition expression that must be satisfied for the transaction to
-succeed, and a field indicating whether or not to retrieve the item's
+succeed, and a field indicating whether to retrieve the item's
 attributes if the condition is not met.
 
 =back
@@ -1847,7 +1885,7 @@ A condition in one of the condition expressions is not met.
 
 =item *
 
-A conflicting operation is in the process of updating the same item.
+An ongoing operation is in the process of updating the same item.
 
 =item *
 
@@ -1856,9 +1894,13 @@ completed.
 
 =item *
 
-An item size becomes too large (bigger than 400 KB), a Local Secondary
-Index (LSI) becomes too large, or a similar validation error occurs
+An item size becomes too large (bigger than 400 KB), a local secondary
+index (LSI) becomes too large, or a similar validation error occurs
 because of changes made by the transaction.
+
+=item *
+
+The aggregate size of the items in the transaction exceeds 4 MB.
 
 =item *
 
@@ -1884,7 +1926,7 @@ Each argument is described in detail in: L<Paws::DynamoDB::UntagResource>
 Returns: nothing
 
 Removes the association of tags from an Amazon DynamoDB resource. You
-can call UntagResource up to 5 times per second, per account.
+can call C<UntagResource> up to five times per second, per account.
 
 For an overview on tagging DynamoDB resources, see Tagging for DynamoDB
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
@@ -1919,7 +1961,7 @@ C<LatestRestorableDateTime>.
 
 C<LatestRestorableDateTime> is typically 5 minutes before the current
 time. You can restore your table to any point in time during the last
-35 days..
+35 days.
 
 
 =head2 UpdateGlobalTable
@@ -1939,9 +1981,9 @@ Returns: a L<Paws::DynamoDB::UpdateGlobalTableOutput> instance
 
 Adds or removes replicas in the specified global table. The global
 table must already exist to be able to use this operation. Any replica
-to be added must be empty, must have the same name as the global table,
-must have the same key schema, and must have DynamoDB Streams enabled
-and must have same provisioned and maximum write capacity units.
+to be added must be empty, have the same name as the global table, have
+the same key schema, have DynamoDB Streams enabled, and have the same
+provisioned and maximum write capacity units.
 
 Although you can use C<UpdateGlobalTable> to add replicas and remove
 replicas in a single request, for simplicity we recommend that you
@@ -2080,7 +2122,7 @@ Modify the provisioned throughput settings of the table.
 
 =item *
 
-Enable or disable Streams on the table.
+Enable or disable DynamoDB Streams on the table.
 
 =item *
 
@@ -2088,8 +2130,9 @@ Remove a global secondary index from the table.
 
 =item *
 
-Create a new global secondary index on the table. Once the index begins
-backfilling, you can use C<UpdateTable> to perform other operations.
+Create a new global secondary index on the table. After the index
+begins backfilling, you can use C<UpdateTable> to perform other
+operations.
 
 =back
 
@@ -2115,11 +2158,11 @@ Each argument is described in detail in: L<Paws::DynamoDB::UpdateTimeToLive>
 
 Returns: a L<Paws::DynamoDB::UpdateTimeToLiveOutput> instance
 
-The UpdateTimeToLive method will enable or disable TTL for the
-specified table. A successful C<UpdateTimeToLive> call returns the
-current C<TimeToLiveSpecification>; it may take up to one hour for the
-change to fully process. Any additional C<UpdateTimeToLive> calls for
-the same table during this one hour duration result in a
+The C<UpdateTimeToLive> method enables or disables Time to Live (TTL)
+for the specified table. A successful C<UpdateTimeToLive> call returns
+the current C<TimeToLiveSpecification>. It can take up to one hour for
+the change to fully process. Any additional C<UpdateTimeToLive> calls
+for the same table during this one hour duration result in a
 C<ValidationException>.
 
 TTL compares the current time in epoch time format to the time stored
@@ -2128,7 +2171,7 @@ attribute is less than the current time, the item is marked as expired
 and subsequently deleted.
 
 The epoch time format is the number of seconds elapsed since 12:00:00
-AM January 1st, 1970 UTC.
+AM January 1, 1970 UTC.
 
 DynamoDB deletes expired items on a best-effort basis to ensure
 availability of throughput for other data operations.
@@ -2138,8 +2181,8 @@ The exact duration within which an item gets deleted after expiration
 is specific to the nature of the workload. Items that have expired and
 not been deleted will still show up in reads, queries, and scans.
 
-As items are deleted, they are removed from any Local Secondary Index
-and Global Secondary Index immediately in the same eventually
+As items are deleted, they are removed from any local secondary index
+and global secondary index immediately in the same eventually
 consistent way as a standard delete operation.
 
 For more information, see Time To Live

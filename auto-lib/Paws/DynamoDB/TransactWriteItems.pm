@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TransactItems => [
         {
           ConditionCheck => {
-            ConditionExpression => 'MyConditionExpression',
+            ConditionExpression => 'MyConditionExpression',    # OPTIONAL
             Key                 => {
               'MyAttributeName' => {
                 B    => 'BlobBinaryAttributeValue',
@@ -48,9 +48,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 NS => [
                   'MyNumberAttributeValue', ...    # OPTIONAL
                 ],                                 # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',
-                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
+                NULL => 1,                         # OPTIONAL
+                S    => 'MyStringAttributeValue',  # OPTIONAL
+                SS   => [
+                  'MyStringAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
               },    # key: max: 65535
             },
             TableName                => 'MyTableName',    # min: 3, max: 255
@@ -71,9 +73,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 NS => [
                   'MyNumberAttributeValue', ...    # OPTIONAL
                 ],                                 # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',
-                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
+                NULL => 1,                         # OPTIONAL
+                S    => 'MyStringAttributeValue',  # OPTIONAL
+                SS   => [
+                  'MyStringAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
               },
             },    # OPTIONAL
             ReturnValuesOnConditionCheckFailure =>
@@ -93,13 +97,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 NS => [
                   'MyNumberAttributeValue', ...    # OPTIONAL
                 ],                                 # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',
-                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
+                NULL => 1,                         # OPTIONAL
+                S    => 'MyStringAttributeValue',  # OPTIONAL
+                SS   => [
+                  'MyStringAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
               },    # key: max: 65535
             },
             TableName           => 'MyTableName',             # min: 3, max: 255
-            ConditionExpression => 'MyConditionExpression',
+            ConditionExpression => 'MyConditionExpression',   # OPTIONAL
             ExpressionAttributeNames => {
               'MyExpressionAttributeNameVariable' =>
                 'MyAttributeName',    # , value: max: 65535
@@ -117,9 +123,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 NS => [
                   'MyNumberAttributeValue', ...    # OPTIONAL
                 ],                                 # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',
-                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
+                NULL => 1,                         # OPTIONAL
+                S    => 'MyStringAttributeValue',  # OPTIONAL
+                SS   => [
+                  'MyStringAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
               },
             },    # OPTIONAL
             ReturnValuesOnConditionCheckFailure =>
@@ -139,13 +147,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 NS => [
                   'MyNumberAttributeValue', ...    # OPTIONAL
                 ],                                 # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',
-                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
+                NULL => 1,                         # OPTIONAL
+                S    => 'MyStringAttributeValue',  # OPTIONAL
+                SS   => [
+                  'MyStringAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
               },    # key: max: 65535
             },
             TableName           => 'MyTableName',             # min: 3, max: 255
-            ConditionExpression => 'MyConditionExpression',
+            ConditionExpression => 'MyConditionExpression',   # OPTIONAL
             ExpressionAttributeNames => {
               'MyExpressionAttributeNameVariable' =>
                 'MyAttributeName',    # , value: max: 65535
@@ -163,9 +173,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 NS => [
                   'MyNumberAttributeValue', ...    # OPTIONAL
                 ],                                 # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',
-                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
+                NULL => 1,                         # OPTIONAL
+                S    => 'MyStringAttributeValue',  # OPTIONAL
+                SS   => [
+                  'MyStringAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
               },
             },    # OPTIONAL
             ReturnValuesOnConditionCheckFailure =>
@@ -185,14 +197,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 NS => [
                   'MyNumberAttributeValue', ...    # OPTIONAL
                 ],                                 # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',
-                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
+                NULL => 1,                         # OPTIONAL
+                S    => 'MyStringAttributeValue',  # OPTIONAL
+                SS   => [
+                  'MyStringAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
               },    # key: max: 65535
             },
             TableName           => 'MyTableName',             # min: 3, max: 255
             UpdateExpression    => 'MyUpdateExpression',
-            ConditionExpression => 'MyConditionExpression',
+            ConditionExpression => 'MyConditionExpression',   # OPTIONAL
             ExpressionAttributeNames => {
               'MyExpressionAttributeNameVariable' =>
                 'MyAttributeName',    # , value: max: 65535
@@ -210,9 +224,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 NS => [
                   'MyNumberAttributeValue', ...    # OPTIONAL
                 ],                                 # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',
-                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
+                NULL => 1,                         # OPTIONAL
+                S    => 'MyStringAttributeValue',  # OPTIONAL
+                SS   => [
+                  'MyStringAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
               },
             },    # OPTIONAL
             ReturnValuesOnConditionCheckFailure =>
@@ -247,20 +263,21 @@ have the same effect as one single call.
 
 Although multiple identical calls using the same client request token
 produce the same result on the server (no side effects), the responses
-to the calls may not be the same. If the C<ReturnConsumedCapacityE<gt>>
-parameter is set, then the initial C<TransactWriteItems> call returns
-the amount of write capacity units consumed in making the changes, and
-subsequent C<TransactWriteItems> calls with the same client token
-return the amount of read capacity units consumed in reading the item.
+to the calls might not be the same. If the
+C<ReturnConsumedCapacityE<gt>> parameter is set, then the initial
+C<TransactWriteItems> call returns the amount of write capacity units
+consumed in making the changes. Subsequent C<TransactWriteItems> calls
+with the same client token return the number of read capacity units
+consumed in reading the item.
 
 A client request token is valid for 10 minutes after the first request
-that uses it completes. After 10 minutes, any request with the same
+that uses it is completed. After 10 minutes, any request with the same
 client token is treated as a new request. Do not resubmit the same
-request with the same client token for more than 10 minutes or the
-result may not be idempotent.
+request with the same client token for more than 10 minutes, or the
+result might not be idempotent.
 
 If you submit a request with the same client token but a change in
-other parameters within the 10 minute idempotency window, DynamoDB
+other parameters within the 10-minute idempotency window, DynamoDB
 returns an C<IdempotentParameterMismatch> exception.
 
 
@@ -282,10 +299,10 @@ Valid values are: C<"SIZE">, C<"NONE">
 
 =head2 B<REQUIRED> TransactItems => ArrayRef[L<Paws::DynamoDB::TransactWriteItem>]
 
-An ordered array of up to 10 C<TransactWriteItem> objects, each of
+An ordered array of up to 25 C<TransactWriteItem> objects, each of
 which contains a C<ConditionCheck>, C<Put>, C<Update>, or C<Delete>
 object. These can operate on items in different tables, but the tables
-must reside in the same AWS account and region, and no two of them can
+must reside in the same AWS account and Region, and no two of them can
 operate on the same item.
 
 

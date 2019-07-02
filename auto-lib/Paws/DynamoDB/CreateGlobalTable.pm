@@ -59,7 +59,7 @@ The global table name.
 
 =head2 B<REQUIRED> ReplicationGroup => ArrayRef[L<Paws::DynamoDB::Replica>]
 
-The regions where the global table needs to be created.
+The Regions where the global table needs to be created.
 
 
 
