@@ -50,7 +50,7 @@ Information about the current state of the detector instance.
 
 =head2 B<REQUIRED> Variables => ArrayRef[L<Paws::IoTEventsData::Variable>]
 
-  The current state of the detector's variables.
+  The current values of the detector's variables.
 
 
 

@@ -40,14 +40,13 @@ Information about a message.
 
 =head2 B<REQUIRED> InputName => Str
 
-  The name of the input into which the message payload will be
-transformed.
+  The name of the input into which the message payload is transformed.
 
 
 =head2 B<REQUIRED> MessageId => Str
 
-  The ID you wish to assign to the message. Each "messageId" must be
-unique within each batch sent.
+  The ID to assign to the message. Within each batch sent, each
+C<"messageId"> must be unique.
 
 
 =head2 B<REQUIRED> Payload => Str

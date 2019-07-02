@@ -52,8 +52,8 @@ that caused the creation of this detector (instance).
 
 =head2 B<REQUIRED> MessageId => Str
 
-  The ID you wish to assign to the detector update "message". Each
-"messageId" must be unique within each batch sent.
+  The ID to assign to the detector update C<"message">. Each
+C<"messageId"> must be unique within each batch sent.
 
 
 =head2 B<REQUIRED> State => L<Paws::IoTEventsData::DetectorStateDefinition>

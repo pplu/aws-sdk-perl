@@ -66,7 +66,9 @@ Paws::IoTEventsData - Perl Interface to AWS AWS IoT Events Data
 =head1 DESCRIPTION
 
 AWS IoT Events monitors your equipment or device fleets for failures or
-changes in operation, and triggers actions when such events occur.
+changes in operation, and triggers actions when such events occur. AWS
+IoT Events Data API commands enable you to send inputs to detectors,
+list detectors, and view or update a detector's status.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/data.iotevents-2018-10-23>
 
@@ -87,11 +89,11 @@ Each argument is described in detail in: L<Paws::IoTEventsData::BatchPutMessage>
 Returns: a L<Paws::IoTEventsData::BatchPutMessageResponse> instance
 
 Sends a set of messages to the AWS IoT Events system. Each message
-payload will be transformed into the input you specify (C<inputName>)
-and ingested into any detectors that monitor that input. If multiple
-messages are sent, the order in which the messages are processed is not
-guaranteed--you must send messages one at a time and wait for a
-successful response to guarantee ordering.
+payload is transformed into the input you specify (C<"inputName">) and
+ingested into any detectors that monitor that input. If multiple
+messages are sent, the order in which the messages are processed isn't
+guaranteed. To guarantee ordering, you must send messages one at a time
+and wait for a successful response.
 
 
 =head2 BatchUpdateDetector

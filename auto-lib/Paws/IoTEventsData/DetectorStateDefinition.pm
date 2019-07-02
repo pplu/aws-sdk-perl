@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEventsDa
 
 =head1 DESCRIPTION
 
-The new state, variable values and timer settings of the detector
+The new state, variable values, and timer settings of the detector
 (instance).
 
 =head1 ATTRIBUTES
@@ -46,14 +46,14 @@ The new state, variable values and timer settings of the detector
 
 =head2 B<REQUIRED> Timers => ArrayRef[L<Paws::IoTEventsData::TimerDefinition>]
 
-  The new values of the detector's timers. Any timer whose value is not
-specified will be cleared and its timeout event will not occur.
+  The new values of the detector's timers. Any timer whose value isn't
+specified is cleared, and its timeout event won't occur.
 
 
 =head2 B<REQUIRED> Variables => ArrayRef[L<Paws::IoTEventsData::VariableDefinition>]
 
-  The new values of the detector's variables. Any variable whose value is
-not specified will be cleared.
+  The new values of the detector's variables. Any variable whose value
+isn't specified is cleared.
 
 
 

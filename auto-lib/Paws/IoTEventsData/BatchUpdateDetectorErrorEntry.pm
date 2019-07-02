@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEventsDa
 
 =head1 DESCRIPTION
 
-Information about the error which occured when attempting to update a
+Information about the error that occured when attempting to update a
 detector.
 
 =head1 ATTRIBUTES
@@ -51,8 +51,9 @@ detector.
 
 =head2 MessageId => Str
 
-  The "messageId" of the update request that caused the error. (The value
-of the C<messageId> in the update request C<Detector> object.)
+  The C<"messageId"> of the update request that caused the error. (The
+value of the C<"messageId"> in the update request C<"Detector">
+object.)
 
 
 

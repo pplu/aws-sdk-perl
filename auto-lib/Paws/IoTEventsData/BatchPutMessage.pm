@@ -55,8 +55,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 
 =head2 B<REQUIRED> Messages => ArrayRef[L<Paws::IoTEventsData::Message>]
 
-The list of messages to send. Each message has format: C<'{
-"messageId": "string", "inputName": "string", "payload": "string"}'>.
+The list of messages to send. Each message has the following format:
+C<'{ "messageId": "string", "inputName": "string", "payload":
+"string"}'>
 
 
 

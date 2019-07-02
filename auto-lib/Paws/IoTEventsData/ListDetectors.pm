@@ -52,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 
 =head2 B<REQUIRED> DetectorModelName => Str
 
-The name of the detector model whose instances you want to list.
+The name of the detector model whose detectors (instances) are listed.
 
 
 

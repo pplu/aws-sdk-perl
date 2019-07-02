@@ -74,8 +74,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 
 =head2 B<REQUIRED> Detectors => ArrayRef[L<Paws::IoTEventsData::UpdateDetectorRequest>]
 
-The list of detectors (instances) to be updated, along with the values
-to be updated.
+The list of detectors (instances) to update, along with the values to
+update.
 
 
 
