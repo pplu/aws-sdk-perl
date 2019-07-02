@@ -1045,6 +1045,10 @@ Adds a new conference provider under the user's AWS account.
 
 =item [PhoneNumber => Str]
 
+=item [PhoneNumbers => ArrayRef[L<Paws::AlexaForBusiness::PhoneNumber>]]
+
+=item [SipAddresses => ArrayRef[L<Paws::AlexaForBusiness::SipAddress>]]
+
 
 =back
 
@@ -1310,6 +1314,11 @@ Removes a device from Alexa For Business.
 Each argument is described in detail in: L<Paws::AlexaForBusiness::DeleteDeviceUsageData>
 
 Returns: a L<Paws::AlexaForBusiness::DeleteDeviceUsageDataResponse> instance
+
+When this action is called for a specified shared device, it allows
+authorized users to delete the device's entire previous history of
+voice input data and associated response data. This action can be
+called once every 24 hours for a specific shared device.
 
 When this action is called for a specified shared device, it allows
 authorized users to delete the device's entire previous history of
@@ -2356,7 +2365,7 @@ Each argument is described in detail in: L<Paws::AlexaForBusiness::SendInvitatio
 Returns: a L<Paws::AlexaForBusiness::SendInvitationResponse> instance
 
 Sends an enrollment invitation email with a URL to a user. The URL is
-valid for 72 hours or until you call this operation again, whichever
+valid for 30 days or until you call this operation again, whichever
 comes first.
 
 
@@ -2547,6 +2556,10 @@ Updates an existing conference provider's settings.
 =item [LastName => Str]
 
 =item [PhoneNumber => Str]
+
+=item [PhoneNumbers => ArrayRef[L<Paws::AlexaForBusiness::PhoneNumber>]]
+
+=item [SipAddresses => ArrayRef[L<Paws::AlexaForBusiness::SipAddress>]]
 
 
 =back
