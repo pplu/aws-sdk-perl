@@ -80,15 +80,17 @@ A user-defined comment.
 
 =head2 CustomJson => Str
 
-A string that contains user-defined, custom JSON. It is used to
-override the corresponding default stack configuration JSON values. The
-string should be in the following format:
+A string that contains user-defined, custom JSON. You can use this
+parameter to override some corresponding default stack configuration
+JSON values. The string should be in the following format:
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
 For more information about custom JSON, see Use Custom JSON to Modify
 the Stack Configuration Attributes
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html)
+and Overriding Attributes With Custom JSON
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
 
 
 

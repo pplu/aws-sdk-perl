@@ -138,7 +138,7 @@ attributes.
 A C<ChefConfiguration> object that specifies whether to enable
 Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more
 information, see Create a New Stack
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 
 
 
@@ -153,7 +153,11 @@ default value for Linux stacks is currently 12.
 
 =head2 CustomCookbooksSource => L<Paws::OpsWorks::Source>
 
-
+Contains the information required to retrieve an app or cookbook from a
+repository. For more information, see Adding Apps
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html)
+or Cookbooks and Recipes
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html).
 
 
 
@@ -168,7 +172,7 @@ C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
 For more information about custom JSON, see Use Custom JSON to Modify
 the Stack Configuration Attributes
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 
 
 
@@ -176,7 +180,7 @@ the Stack Configuration Attributes
 
 The stack's default Availability Zone, which must be in the specified
 region. For more information, see Regions and Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html). If you also
+(https://docs.aws.amazon.com/general/latest/gr/rande.html). If you also
 specify a value for C<DefaultSubnetId>, the subnet must be in the same
 zone. For more information, see the C<VpcId> parameter description.
 
@@ -187,7 +191,7 @@ zone. For more information, see the C<VpcId> parameter description.
 The Amazon Resource Name (ARN) of an IAM profile that is the default
 profile for all of the stack's EC2 instances. For more information
 about IAM ARNs, see Using Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 
 
 
@@ -202,9 +206,9 @@ create the instance. You can specify one of the following.
 =item *
 
 A supported Linux operating system: An Amazon Linux version, such as
-C<Amazon Linux 2017.09>, C<Amazon Linux 2017.03>, C<Amazon Linux
-2016.09>, C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon
-Linux 2015.03>.
+C<Amazon Linux 2018.03>, C<Amazon Linux 2017.09>, C<Amazon Linux
+2017.03>, C<Amazon Linux 2016.09>, C<Amazon Linux 2016.03>, C<Amazon
+Linux 2015.09>, or C<Amazon Linux 2015.03>.
 
 =item *
 
@@ -230,14 +234,14 @@ Standard>, or C<Microsoft Windows Server 2012 R2 with SQL Server Web>.
 
 A custom AMI: C<Custom>. You specify the custom AMI you want to use
 when you create instances. For more information, see Using Custom AMIs
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 =back
 
 The default option is the current Amazon Linux version. For more
 information about supported operating systems, see AWS OpsWorks Stacks
 Operating Systems
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
 
 
@@ -247,7 +251,7 @@ The default root device type. This value is the default for all
 instances in the stack, but you can override it when you create an
 instance. The default option is C<instance-store>. For more
 information, see Storage for the Root Device
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
 
 Valid values are: C<"ebs">, C<"instance-store">
 
@@ -258,12 +262,12 @@ specify a key pair name, AWS OpsWorks installs the public key on the
 instance and you can use the private key with an SSH client to log in
 to the instance. For more information, see Using SSH to Communicate
 with an Instance
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html)
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html)
 and Managing SSH Access
-(http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html).
 You can override this setting by specifying a different key pair, or no
 key pair, when you create an instance
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
 
 
 
@@ -307,7 +311,7 @@ C<Fruits>
 
 =item *
 
-C<Greek_Deities>
+C<Greek_Deities_and_Titans>
 
 =item *
 
@@ -350,7 +354,7 @@ The stack name.
 
 The stack's AWS region, such as C<ap-south-1>. For more information
 about Amazon regions, see Regions and Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html).
+(https://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 In the AWS CLI, this API maps to the C<--stack-region> parameter. If
 the C<--stack-region> parameter and the AWS CLI common parameter
@@ -378,7 +382,7 @@ The stack's AWS Identity and Access Management (IAM) role, which allows
 AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
 set this parameter to the Amazon Resource Name (ARN) for an existing
 IAM role. For more information about IAM ARNs, see Using Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 
 
 
@@ -420,7 +424,7 @@ that need custom settings.
 =back
 
 For more information, see Create a New Stack
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 
 
 
@@ -467,10 +471,10 @@ You must specify a value for C<DefaultSubnetId>.
 
 For more information about how to use AWS OpsWorks Stacks with a VPC,
 see Running a Stack in a VPC
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
 For more information about default VPC and EC2-Classic, see Supported
 Platforms
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 
 
 

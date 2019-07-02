@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ops
 
 Whether users can specify their own SSH public key through the My
 Settings page. For more information, see Managing User Permissions
-(http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
 
 
 
