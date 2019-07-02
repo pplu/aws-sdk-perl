@@ -179,6 +179,11 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListMembers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListThreatIntelSets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListThreatIntelSets', @_);
@@ -194,9 +199,19 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::StopMonitoringMembers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UnarchiveFindings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::UnarchiveFindings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDetector {
@@ -388,7 +403,7 @@ package Paws::GuardDuty;
   }
 
 
-  sub operations { qw/AcceptInvitation ArchiveFindings CreateDetector CreateFilter CreateIPSet CreateMembers CreateSampleFindings CreateThreatIntelSet DeclineInvitations DeleteDetector DeleteFilter DeleteInvitations DeleteIPSet DeleteMembers DeleteThreatIntelSet DisassociateFromMasterAccount DisassociateMembers GetDetector GetFilter GetFindings GetFindingsStatistics GetInvitationsCount GetIPSet GetMasterAccount GetMembers GetThreatIntelSet InviteMembers ListDetectors ListFilters ListFindings ListInvitations ListIPSets ListMembers ListThreatIntelSets StartMonitoringMembers StopMonitoringMembers UnarchiveFindings UpdateDetector UpdateFilter UpdateFindingsFeedback UpdateIPSet UpdateThreatIntelSet / }
+  sub operations { qw/AcceptInvitation ArchiveFindings CreateDetector CreateFilter CreateIPSet CreateMembers CreateSampleFindings CreateThreatIntelSet DeclineInvitations DeleteDetector DeleteFilter DeleteInvitations DeleteIPSet DeleteMembers DeleteThreatIntelSet DisassociateFromMasterAccount DisassociateMembers GetDetector GetFilter GetFindings GetFindingsStatistics GetInvitationsCount GetIPSet GetMasterAccount GetMembers GetThreatIntelSet InviteMembers ListDetectors ListFilters ListFindings ListInvitations ListIPSets ListMembers ListTagsForResource ListThreatIntelSets StartMonitoringMembers StopMonitoringMembers TagResource UnarchiveFindings UntagResource UpdateDetector UpdateFilter UpdateFindingsFeedback UpdateIPSet UpdateThreatIntelSet / }
 
 1;
 
@@ -488,6 +503,8 @@ IDs.
 
 =item [FindingPublishingFrequency => Str]
 
+=item [Tags => L<Paws::GuardDuty::TagMap>]
+
 
 =back
 
@@ -518,6 +535,8 @@ order for GuardDuty to become operational.
 
 =item [Rank => Int]
 
+=item [Tags => L<Paws::GuardDuty::TagMap>]
+
 
 =back
 
@@ -543,6 +562,8 @@ Creates a filter using the specified finding criteria.
 =item Name => Str
 
 =item [ClientToken => Str]
+
+=item [Tags => L<Paws::GuardDuty::TagMap>]
 
 
 =back
@@ -611,6 +632,8 @@ example findings of all supported finding types.
 =item Name => Str
 
 =item [ClientToken => Str]
+
+=item [Tags => L<Paws::GuardDuty::TagMap>]
 
 
 =back
@@ -1096,6 +1119,25 @@ Lists details about all member accounts for the current GuardDuty
 master account.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::ListTagsForResource>
+
+Returns: a L<Paws::GuardDuty::ListTagsForResourceResponse> instance
+
+Lists tags for a resource. Tagging is currently supported for
+detectors, finding filters, IP sets, and Threat Intel sets, with a
+limit of 50 tags per resource. When invoked, this operation returns all
+assigned tags for a given resource..
+
+
 =head2 ListThreatIntelSets
 
 =over
@@ -1159,6 +1201,24 @@ GuardDuty account can run StartMonitoringMembers to re-enable GuardDuty
 to monitor these membersE<rsquo> findings.
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::GuardDuty::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::TagResource>
+
+Returns: a L<Paws::GuardDuty::TagResourceResponse> instance
+
+Adds tags to a resource.
+
+
 =head2 UnarchiveFindings
 
 =over
@@ -1176,6 +1236,24 @@ Returns: a L<Paws::GuardDuty::UnarchiveFindingsResponse> instance
 
 Unarchives Amazon GuardDuty findings specified by the list of finding
 IDs.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::UntagResource>
+
+Returns: a L<Paws::GuardDuty::UntagResourceResponse> instance
+
+Removes tags from a resource.
 
 
 =head2 UpdateDetector

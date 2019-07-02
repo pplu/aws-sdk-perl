@@ -5,6 +5,7 @@ package Paws::GuardDuty::GetIPSetResponse;
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location', required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -41,6 +42,11 @@ included in this IPSet.
 The status of ipSet file uploaded.
 
 Valid values are: C<"INACTIVE">, C<"ACTIVATING">, C<"ACTIVE">, C<"DEACTIVATING">, C<"ERROR">, C<"DELETE_PENDING">, C<"DELETED">
+=head2 Tags => L<Paws::GuardDuty::TagMap>
+
+The tags of the IP set resource.
+
+
 =head2 _request_id => Str
 
 

@@ -6,6 +6,7 @@ package Paws::GuardDuty::GetFilterResponse;
   has FindingCriteria => (is => 'ro', isa => 'Paws::GuardDuty::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria', required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Rank => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'rank');
+  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -45,6 +46,11 @@ The name of the filter.
 Specifies the position of the filter in the list of current filters.
 Also specifies the order in which this filter is applied to the
 findings.
+
+
+=head2 Tags => L<Paws::GuardDuty::TagMap>
+
+The tags of the filter resource.
 
 
 =head2 _request_id => Str

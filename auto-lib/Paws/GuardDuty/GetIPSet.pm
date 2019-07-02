@@ -40,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Location = $GetIPSetResponse->Location;
     my $Name     = $GetIPSetResponse->Name;
     my $Status   = $GetIPSetResponse->Status;
+    my $Tags     = $GetIPSetResponse->Tags;
 
     # Returns a L<Paws::GuardDuty::GetIPSetResponse> object.
 

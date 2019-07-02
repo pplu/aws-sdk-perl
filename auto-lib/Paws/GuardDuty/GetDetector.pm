@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $GetDetectorResponse->FindingPublishingFrequency;
     my $ServiceRole = $GetDetectorResponse->ServiceRole;
     my $Status      = $GetDetectorResponse->Status;
+    my $Tags        = $GetDetectorResponse->Tags;
     my $UpdatedAt   = $GetDetectorResponse->UpdatedAt;
 
     # Returns a L<Paws::GuardDuty::GetDetectorResponse> object.

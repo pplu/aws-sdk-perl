@@ -7,6 +7,7 @@ package Paws::GuardDuty::CreateIPSet;
   has Format => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'format', required => 1);
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location', required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -40,6 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Location    => 'MyLocation',
       Name        => 'MyName',
       ClientToken => 'MyClientToken',    # OPTIONAL
+      Tags        => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -91,6 +95,12 @@ The URI of the file that contains the IPSet. For example
 The user friendly name to identify the IPSet. This name is displayed in
 all findings that are triggered by activity that involves IP addresses
 included in this IPSet.
+
+
+
+=head2 Tags => L<Paws::GuardDuty::TagMap>
+
+The tags to be added to a new IP set resource.
 
 
 

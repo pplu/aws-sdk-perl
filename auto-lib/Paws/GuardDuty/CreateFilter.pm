@@ -8,6 +8,7 @@ package Paws::GuardDuty::CreateFilter;
   has FindingCriteria => (is => 'ro', isa => 'Paws::GuardDuty::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria', required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Rank => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'rank');
+  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -59,6 +60,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientToken => 'MyClientToken',          # OPTIONAL
       Description => 'MyFilterDescription',    # OPTIONAL
       Rank        => 1,                        # OPTIONAL
+      Tags        => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -115,6 +119,12 @@ The name of the filter.
 Specifies the position of the filter in the list of current filters.
 Also specifies the order in which this filter is applied to the
 findings.
+
+
+
+=head2 Tags => L<Paws::GuardDuty::TagMap>
+
+The tags to be added to a new filter resource.
 
 
 

@@ -41,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $FindingCriteria = $GetFilterResponse->FindingCriteria;
     my $Name            = $GetFilterResponse->Name;
     my $Rank            = $GetFilterResponse->Rank;
+    my $Tags            = $GetFilterResponse->Tags;
 
     # Returns a L<Paws::GuardDuty::GetFilterResponse> object.
 

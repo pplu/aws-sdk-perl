@@ -5,6 +5,7 @@ package Paws::GuardDuty::GetDetectorResponse;
   has FindingPublishingFrequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingPublishingFrequency');
   has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole', required => 1);
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has UpdatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'updatedAt');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -39,6 +40,11 @@ The GuardDuty service role.
 The detector status.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
+=head2 Tags => L<Paws::GuardDuty::TagMap>
+
+The tags of the detector resource.
+
+
 =head2 UpdatedAt => Str
 
 Detector last update timestamp.

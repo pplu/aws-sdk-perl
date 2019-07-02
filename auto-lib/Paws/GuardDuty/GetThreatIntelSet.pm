@@ -40,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Location = $GetThreatIntelSetResponse->Location;
     my $Name     = $GetThreatIntelSetResponse->Name;
     my $Status   = $GetThreatIntelSetResponse->Status;
+    my $Tags     = $GetThreatIntelSetResponse->Tags;
 
     # Returns a L<Paws::GuardDuty::GetThreatIntelSetResponse> object.
 

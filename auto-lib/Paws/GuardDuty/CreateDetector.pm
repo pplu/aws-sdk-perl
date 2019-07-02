@@ -4,6 +4,7 @@ package Paws::GuardDuty::CreateDetector;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
   has Enable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enable', required => 1);
   has FindingPublishingFrequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingPublishingFrequency');
+  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -34,6 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Enable                     => 1,
       ClientToken                => 'MyClientToken',      # OPTIONAL
       FindingPublishingFrequency => 'FIFTEEN_MINUTES',    # OPTIONAL
+      Tags                       => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -65,6 +69,12 @@ A enum value that specifies how frequently customer got Finding updates
 published.
 
 Valid values are: C<"FIFTEEN_MINUTES">, C<"ONE_HOUR">, C<"SIX_HOURS">
+
+=head2 Tags => L<Paws::GuardDuty::TagMap>
+
+The tags to be added to a new detector resource.
+
+
 
 
 =head1 SEE ALSO
