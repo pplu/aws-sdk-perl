@@ -23,7 +23,7 @@ Paws::EKS::UpdateClusterConfig - Arguments for method UpdateClusterConfig on L<P
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateClusterConfig on the
-L<Amazon Elastic Container Service for Kubernetes|Paws::EKS> service. Use the attributes of this class
+L<Amazon Elastic Kubernetes Service|Paws::EKS> service. Use the attributes of this class
 as arguments to method UpdateClusterConfig.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateClusterConfig.
