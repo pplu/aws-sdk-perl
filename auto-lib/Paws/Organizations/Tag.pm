@@ -1,7 +1,7 @@
 package Paws::Organizations::Tag;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  has Key => (is => 'ro', isa => 'Str', required => 1);
+  has Value => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -38,14 +38,16 @@ within your organization.
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 B<REQUIRED> Key => Str
 
   The key identifier, or name, of the tag.
 
 
-=head2 Value => Str
+=head2 B<REQUIRED> Value => Str
 
-  The string value that's associated with the key of the tag.
+  The string value that's associated with the key of the tag. You can set
+the value of a tag to an empty string, but you can't set the value of a
+tag to null.
 
 
 

@@ -32,8 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceId => 'MyTaggableResourceId',
       Tags       => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
-          Value => 'MyTagValue',    # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
         },
         ...
       ],
@@ -54,7 +55,9 @@ The ID of the resource to add a tag to.
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Organizations::Tag>]
 
-The tag to add to the specified resource.
+The tag to add to the specified resource. Specifying the tag key is
+required. You can set the value of a tag to an empty string, but you
+can't set the value of a tag to null.
 
 
 
