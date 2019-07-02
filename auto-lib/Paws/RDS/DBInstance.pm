@@ -34,6 +34,7 @@ package Paws::RDS::DBInstance;
   has LicenseModel => (is => 'ro', isa => 'Str');
   has ListenerEndpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
   has MasterUsername => (is => 'ro', isa => 'Str');
+  has MaxAllocatedStorage => (is => 'ro', isa => 'Int');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
@@ -335,6 +336,12 @@ point-in-time restore.
 =head2 MasterUsername => Str
 
   Contains the master username for the DB instance.
+
+
+=head2 MaxAllocatedStorage => Int
+
+  The upper limit to which Amazon RDS can automatically scale the storage
+of the DB instance.
 
 
 =head2 MonitoringInterval => Int

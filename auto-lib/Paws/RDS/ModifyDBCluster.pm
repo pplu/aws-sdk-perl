@@ -1,6 +1,7 @@
 
 package Paws::RDS::ModifyDBCluster;
   use Moose;
+  has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -8,6 +9,7 @@ package Paws::RDS::ModifyDBCluster;
   has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
+  has DBInstanceParameterGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableHttpEndpoint => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
@@ -61,6 +63,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBCluster>
 
 =head1 ATTRIBUTES
+
+
+=head2 AllowMajorVersionUpgrade => Bool
+
+A value that indicates whether major version upgrades are allowed.
+
+Constraints: You must allow major version upgrades when specifying a
+value for the C<EngineVersion> parameter that is a different major
+version than the DB cluster's current version.
+
 
 
 =head2 ApplyImmediately => Bool
@@ -144,22 +156,45 @@ snapshots of the DB cluster. The default is not to copy them.
 The DB cluster identifier for the cluster being modified. This
 parameter is not case-sensitive.
 
-Constraints:
-
-=over
-
-=item *
-
-Must match the identifier of an existing DBCluster.
-
-=back
-
+Constraints: This identifier must match the identifier of an existing
+DB cluster.
 
 
 
 =head2 DBClusterParameterGroupName => Str
 
 The name of the DB cluster parameter group to use for the DB cluster.
+
+
+
+=head2 DBInstanceParameterGroupName => Str
+
+The name of the DB parameter group to apply to all instances of the DB
+cluster.
+
+When you apply a parameter group using the
+C<DBInstanceParameterGroupName> parameter, the DB cluster isn't
+rebooted automatically. Also, parameter changes aren't applied during
+the next maintenance window but instead are applied immediately.
+
+Default: The existing name setting
+
+Constraints:
+
+=over
+
+=item *
+
+The DB parameter group must be in the same DB parameter group family as
+this DB cluster.
+
+=item *
+
+The C<DBInstanceParameterGroupName> parameter is only valid in
+combination with the C<AllowMajorVersionUpgrade> parameter.
+
+=back
+
 
 
 

@@ -2020,6 +2020,8 @@ This action only applies to Aurora DB clusters.
 
 =item [MasterUserPassword => Str]
 
+=item [MaxAllocatedStorage => Int]
+
 =item [MonitoringInterval => Int]
 
 =item [MonitoringRoleArn => Str]
@@ -3716,6 +3718,8 @@ This action only applies to Aurora DB clusters.
 
 =item DBClusterIdentifier => Str
 
+=item [AllowMajorVersionUpgrade => Bool]
+
 =item [ApplyImmediately => Bool]
 
 =item [BacktrackWindow => Int]
@@ -3727,6 +3731,8 @@ This action only applies to Aurora DB clusters.
 =item [CopyTagsToSnapshot => Bool]
 
 =item [DBClusterParameterGroupName => Str]
+
+=item [DBInstanceParameterGroupName => Str]
 
 =item [DeletionProtection => Bool]
 
@@ -3927,6 +3933,8 @@ This action only applies to Aurora DB clusters.
 =item [LicenseModel => Str]
 
 =item [MasterUserPassword => Str]
+
+=item [MaxAllocatedStorage => Int]
 
 =item [MonitoringInterval => Int]
 

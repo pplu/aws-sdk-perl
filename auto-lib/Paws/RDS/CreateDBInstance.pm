@@ -27,6 +27,7 @@ package Paws::RDS::CreateDBInstance;
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
+  has MaxAllocatedStorage => (is => 'ro', isa => 'Int');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
@@ -937,6 +938,13 @@ Constraints: Must contain from 8 to 30 characters.
 B<PostgreSQL>
 
 Constraints: Must contain from 8 to 128 characters.
+
+
+
+=head2 MaxAllocatedStorage => Int
+
+The upper limit to which Amazon RDS can automatically scale the storage
+of the DB instance.
 
 
 

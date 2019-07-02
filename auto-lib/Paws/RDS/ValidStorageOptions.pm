@@ -4,6 +4,7 @@ package Paws::RDS::ValidStorageOptions;
   has ProvisionedIops => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Range]', request_name => 'Range', traits => ['NameInRequest']);
   has StorageSize => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Range]', request_name => 'Range', traits => ['NameInRequest']);
   has StorageType => (is => 'ro', isa => 'Str');
+  has SupportsStorageAutoscaling => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::ValidStorageOptions object:
 
-  $service_obj->Method(Att1 => { IopsToStorageRatio => $value, ..., StorageType => $value  });
+  $service_obj->Method(Att1 => { IopsToStorageRatio => $value, ..., SupportsStorageAutoscaling => $value  });
 
 =head3 Results returned from an API call
 
@@ -61,6 +62,12 @@ and 10 times storage.
 =head2 StorageType => Str
 
   The valid storage types for your DB instance. For example, gp2, io1.
+
+
+=head2 SupportsStorageAutoscaling => Bool
+
+  Whether or not Amazon RDS can automatically scale storage for DB
+instances that use the new instance class.
 
 
 

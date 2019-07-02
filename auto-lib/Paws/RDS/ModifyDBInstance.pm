@@ -24,6 +24,7 @@ package Paws::RDS::ModifyDBInstance;
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
+  has MaxAllocatedStorage => (is => 'ro', isa => 'Int');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
@@ -262,9 +263,9 @@ Must match the identifier of an existing DBInstance.
 The name of the DB parameter group to apply to the DB instance.
 Changing this setting doesn't result in an outage. The parameter group
 name itself is changed immediately, but the actual parameter changes
-are not applied until you reboot the instance without failover. The DB
-instance will NOT be rebooted automatically and the parameter changes
-will NOT be applied during the next maintenance window.
+are not applied until you reboot the instance without failover. In this
+case, the DB instance isn't rebooted automatically and the parameter
+changes isn't applied during the next maintenance window.
 
 Default: Uses existing setting
 
@@ -537,6 +538,13 @@ Amazon RDS API actions never return the password, so this action
 provides a way to regain access to a primary instance user if the
 password is lost. This includes restoring privileges that might have
 been accidentally revoked.
+
+
+
+=head2 MaxAllocatedStorage => Int
+
+The upper limit to which Amazon RDS can automatically scale the storage
+of the DB instance.
 
 
 
