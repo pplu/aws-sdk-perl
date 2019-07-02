@@ -33,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           AwsAccountId => 'MyNonEmptyString',
           CreatedAt    => 'MyNonEmptyString',
+          Description  => 'MyNonEmptyString',
           GeneratorId  => 'MyNonEmptyString',
           Id           => 'MyNonEmptyString',
           ProductArn   => 'MyNonEmptyString',
@@ -81,6 +82,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Normalized => 1,
             Product    => 1,                                          # OPTIONAL
           },
+          Title      => 'MyNonEmptyString',
           Types      => [ 'MyNonEmptyString', ... ],
           UpdatedAt  => 'MyNonEmptyString',
           Compliance => {
@@ -89,7 +91,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           Confidence      => 1,
           Criticality     => 1,
-          Description     => 'MyNonEmptyString',
           FirstObservedAt => 'MyNonEmptyString',
           LastObservedAt  => 'MyNonEmptyString',
           Malware         => [
@@ -161,7 +162,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],    # OPTIONAL
-          Title             => 'MyNonEmptyString',
           UserDefinedFields => { 'MyNonEmptyString' => 'MyNonEmptyString', }
           ,     # OPTIONAL
           VerificationState => 'UNKNOWN'
@@ -189,8 +189,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 B<REQUIRED> Findings => ArrayRef[L<Paws::SecurityHub::AwsSecurityFinding>]
 
-A list of findings to import. You must submit them in the
-AwsSecurityFinding format.
+A list of findings to import. To successfully import a finding, it must
+follow the AWS Security Finding Format
+(https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html).
 
 
 

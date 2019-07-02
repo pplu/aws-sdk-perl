@@ -18,7 +18,7 @@ Paws::SecurityHub::DeleteInvitationsResponse
 =head2 UnprocessedAccounts => ArrayRef[L<Paws::SecurityHub::Result>]
 
 A list of account ID and email address pairs of the AWS accounts that
-couldn't be processed.
+invitations weren't deleted for.
 
 
 =head2 _request_id => Str

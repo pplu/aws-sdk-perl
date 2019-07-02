@@ -40,8 +40,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 AccountIds => ArrayRef[Str|Undef]
 
-The account IDs of the member accounts that you want to disassociate
-from the master account.
+The account IDs of the member accounts to disassociate from the master
+account.
 
 
 

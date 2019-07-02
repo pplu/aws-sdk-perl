@@ -45,12 +45,12 @@ In this release, Security Hub only supports the CIS AWS Foundations
 standard.
 
 Its ARN is
-arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0.
+C<arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0>.
 
 
 =head2 StandardsInput => L<Paws::SecurityHub::StandardsInputParameterMap>
 
-  
+  A key-value pair of input for the standard.
 
 
 

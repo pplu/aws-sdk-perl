@@ -36,15 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-A resource data type that describes a resource that the finding refers
-to.
+A resource related to a finding.
 
 =head1 ATTRIBUTES
 
 
 =head2 Details => L<Paws::SecurityHub::ResourceDetails>
 
-  Additional details about the resource.
+  Additional details about the resource related to a finding.
 
 
 =head2 B<REQUIRED> Id => Str

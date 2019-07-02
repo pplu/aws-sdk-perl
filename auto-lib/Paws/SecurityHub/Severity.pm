@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-A finding's severity.
+The severity of the finding.
 
 =head1 ATTRIBUTES
 
@@ -44,8 +44,8 @@ A finding's severity.
 
 =head2 Product => Num
 
-  The native severity as defined by the security-findings provider's
-solution that generated the finding.
+  The native severity as defined by the AWS service or integrated partner
+product that generated the finding.
 
 
 

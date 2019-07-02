@@ -23,7 +23,7 @@ The token that is required for pagination.
 
 =head2 B<REQUIRED> Products => ArrayRef[L<Paws::SecurityHub::Product>]
 
-A list of products.
+A list of products, including details for each product.
 
 
 =head2 _request_id => Str

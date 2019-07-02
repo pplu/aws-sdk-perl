@@ -18,7 +18,7 @@ Paws::SecurityHub::DeleteMembersResponse
 =head2 UnprocessedAccounts => ArrayRef[L<Paws::SecurityHub::Result>]
 
 A list of account ID and email address pairs of the AWS accounts that
-couldn't be processed.
+weren't deleted.
 
 
 =head2 _request_id => Str

@@ -5,7 +5,7 @@ package Paws::SecurityHub::AwsSecurityFinding;
   has Confidence => (is => 'ro', isa => 'Int');
   has CreatedAt => (is => 'ro', isa => 'Str', required => 1);
   has Criticality => (is => 'ro', isa => 'Int');
-  has Description => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str', required => 1);
   has FirstObservedAt => (is => 'ro', isa => 'Str');
   has GeneratorId => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
@@ -24,7 +24,7 @@ package Paws::SecurityHub::AwsSecurityFinding;
   has Severity => (is => 'ro', isa => 'Paws::SecurityHub::Severity', required => 1);
   has SourceUrl => (is => 'ro', isa => 'Str');
   has ThreatIntelIndicators => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::ThreatIntelIndicator]');
-  has Title => (is => 'ro', isa => 'Str');
+  has Title => (is => 'ro', isa => 'Str', required => 1);
   has Types => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
   has UserDefinedFields => (is => 'ro', isa => 'Paws::SecurityHub::FieldMap');
@@ -61,9 +61,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 =head1 DESCRIPTION
 
 Provides consistent format for the contents of the Security
-Hub-aggregated findings. AwsSecurityFinding format enables you to share
-findings between AWS security services and third-party solutions, and
-compliance checks.
+Hub-aggregated findings. C<AwsSecurityFinding> format enables you to
+share findings between AWS security services and third-party solutions,
+and compliance checks.
 
 A finding is a potential security issue generated either by AWS
 services (Amazon GuardDuty, Amazon Inspector, and Amazon Macie) or by
@@ -104,12 +104,12 @@ finding captured.
 =head2 Criticality => Int
 
   The level of importance assigned to the resources associated with the
-finding. A score of 0 means the underlying resources have no
+finding. A score of 0 means that the underlying resources have no
 criticality, and a score of 100 is reserved for the most critical
 resources.
 
 
-=head2 Description => Str
+=head2 B<REQUIRED> Description => Str
 
   A finding's description.
 
@@ -175,7 +175,7 @@ Hub.
 
   A data type where security-findings providers can include additional
 solution-specific details that aren't part of the defined
-AwsSecurityFinding format.
+C<AwsSecurityFinding> format.
 
 
 =head2 RecordState => Str
@@ -190,7 +190,7 @@ AwsSecurityFinding format.
 
 =head2 Remediation => L<Paws::SecurityHub::Remediation>
 
-  An data type that describes the remediation options for a finding.
+  A data type that describes the remediation options for a finding.
 
 
 =head2 B<REQUIRED> Resources => ArrayRef[L<Paws::SecurityHub::Resource>]
@@ -220,7 +220,7 @@ security-findings provider's solution.
   Threat intel details related to a finding.
 
 
-=head2 Title => Str
+=head2 B<REQUIRED> Title => Str
 
   A finding's title.
 

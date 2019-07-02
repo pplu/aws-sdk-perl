@@ -34,21 +34,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-The details of an invitation that the Security Hub master account sent
-to an AWS account.
+Details about an invitation.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccountId => Str
 
-  The account ID of the Security Hub master account that sent the
-invitation.
+  The account ID of the Security Hub master account that the invitation
+was sent from.
 
 
 =head2 InvitationId => Str
 
-  The ID of the invitation that the Security Hub master account sent.
+  The ID of the invitation sent to the member account.
 
 
 =head2 InvitedAt => Str
@@ -58,7 +57,7 @@ invitation.
 
 =head2 MemberStatus => Str
 
-  The current relationship status between the inviter and invitee
+  The current status of the association between member and master
 accounts.
 
 

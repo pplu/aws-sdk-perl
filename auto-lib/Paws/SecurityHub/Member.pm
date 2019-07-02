@@ -36,30 +36,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-The details for a Security Hub member account.
+The details about a member account.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccountId => Str
 
-  The AWS account ID of a Security Hub member account.
+  The AWS account ID of the member account.
 
 
 =head2 Email => Str
 
-  The email of a Security Hub member account.
+  The email address of the member account.
 
 
 =head2 InvitedAt => Str
 
-  The timestamp of when the member account was invited to Security Hub.
+  A timestamp for the date and time when the invitation was sent to the
+member account.
 
 
 =head2 MasterId => Str
 
-  The AWS account ID of the Security Hub master account to this member
-account.
+  The AWS account ID of the Security Hub master account associated with
+this member account.
 
 
 =head2 MemberStatus => Str
@@ -70,7 +71,8 @@ master account.
 
 =head2 UpdatedAt => Str
 
-  The timestamp of when this member account was updated.
+  The timestamp for the date and time when the member account was
+updated.
 
 
 

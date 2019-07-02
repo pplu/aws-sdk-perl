@@ -29,7 +29,7 @@ The list of the findings that failed to import.
 
 =head2 B<REQUIRED> SuccessCount => Int
 
-The number of findings that were successfully imported
+The number of findings that were successfully imported.
 
 
 =head2 _request_id => Str

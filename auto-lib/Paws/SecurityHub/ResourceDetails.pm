@@ -35,35 +35,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-Additional details about the resource.
+Additional details about a resource related to a finding.
 
 =head1 ATTRIBUTES
 
 
 =head2 AwsEc2Instance => L<Paws::SecurityHub::AwsEc2InstanceDetails>
 
-  The details of an Amazon EC2 instance.
+  Details about an Amazon EC2 instance related to a finding.
 
 
 =head2 AwsIamAccessKey => L<Paws::SecurityHub::AwsIamAccessKeyDetails>
 
-  IAM access key details related to a finding.
+  Details about an IAM access key related to a finding.
 
 
 =head2 AwsS3Bucket => L<Paws::SecurityHub::AwsS3BucketDetails>
 
-  The details of an Amazon S3 Bucket.
+  Details about an Amazon S3 Bucket related to a finding.
 
 
 =head2 Container => L<Paws::SecurityHub::ContainerDetails>
 
-  Container details related to a finding.
+  Details about a container resource related to a finding.
 
 
 =head2 Other => L<Paws::SecurityHub::FieldMap>
 
-  The details of a resource that doesn't have a specific subfield for the
-resource type defined.
+  Details about a resource that doesn't have a specific type defined.
 
 
 

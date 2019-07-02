@@ -157,7 +157,7 @@ finding captured.
 =head2 Criticality => ArrayRef[L<Paws::SecurityHub::NumberFilter>]
 
   The level of importance assigned to the resources associated with the
-finding. A score of 0 means the underlying resources have no
+finding. A score of 0 means that the underlying resources have no
 criticality, and a score of 100 is reserved for the most critical
 resources.
 
@@ -334,7 +334,7 @@ Hub.
 
   A data type where security-findings providers can include additional
 solution-specific details that aren't part of the defined
-AwsSecurityFinding format.
+C<AwsSecurityFinding> format.
 
 
 =head2 ProductName => ArrayRef[L<Paws::SecurityHub::StringFilter>]

@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 MaxResults => Int
 
-The maximum number of items that you want in the response.
+The maximum number of results to return in the response.
 
 
 
@@ -66,8 +66,8 @@ of C<nextToken> from the previous response to continue listing data.
 
 =head2 StandardsSubscriptionArns => ArrayRef[Str|Undef]
 
-The list of standards subscription ARNS that you want to list and
-describe.
+A list of the standards subscription ARNs for the standards to
+retrieve.
 
 
 

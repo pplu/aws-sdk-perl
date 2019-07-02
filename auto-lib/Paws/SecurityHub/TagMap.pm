@@ -1,13 +1,15 @@
-package Paws::SecurityHub::Remediation;
+package Paws::SecurityHub::TagMap;
   use Moose;
-  has Recommendation => (is => 'ro', isa => 'Paws::SecurityHub::Recommendation');
+  with 'Paws::API::StrToNativeMapParser';
+
+  has Map => (is => 'ro', isa => 'HashRef[Maybe[Str]]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::SecurityHub::Remediation
+Paws::SecurityHub::TagMap
 
 =head1 USAGE
 
@@ -18,30 +20,26 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::SecurityHub::Remediation object:
+As an example, if Att1 is expected to be a Paws::SecurityHub::TagMap object:
 
-  $service_obj->Method(Att1 => { Recommendation => $value, ..., Recommendation => $value  });
+  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub::Remediation object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub::TagMap object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Recommendation
+  $result->Att1->Map->{ key1 }
 
 =head1 DESCRIPTION
 
-Details about the remediation steps for a finding.
+This class has no description
 
 =head1 ATTRIBUTES
 
+=head2 Map => Str
 
-=head2 Recommendation => L<Paws::SecurityHub::Recommendation>
-
-  A recommendation on the steps to take to remediate the issue identified
-by a finding.
-
-
+Use the Map method to retrieve a HashRef to the map
 
 =head1 SEE ALSO
 

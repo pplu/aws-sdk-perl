@@ -80,7 +80,7 @@ Contains details about a product.
 
 =head2 ProductSubscriptionResourcePolicy => Str
 
-  The resource policy asasociated with the product.
+  The resource policy associated with the product.
 
 
 

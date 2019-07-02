@@ -40,8 +40,8 @@ The map filter for querying findings.
 
 =head2 Comparison => Str
 
-  The condition to be applied to a key value when querying for findings
-with a map filter.
+  The condition to apply to a key value when querying for findings with a
+map filter.
 
 
 =head2 Key => Str

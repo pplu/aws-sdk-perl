@@ -689,13 +689,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>
 
-A collection of attributes that is used for querying findings.
+The findings attributes used to define a condition to filter the
+findings returned.
 
 
 
 =head2 MaxResults => Int
 
-Indicates the maximum number of items that you want in the response.
+The maximum number of findings to return.
 
 
 
@@ -710,7 +711,7 @@ C<nextToken> from the previous response to continue listing data.
 
 =head2 SortCriteria => ArrayRef[L<Paws::SecurityHub::SortCriterion>]
 
-A collection of attributes used for sorting findings.
+Findings attributes used to sort the list of findings returned.
 
 
 
