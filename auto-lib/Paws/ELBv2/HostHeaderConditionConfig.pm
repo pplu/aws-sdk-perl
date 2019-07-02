@@ -31,14 +31,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::Host
 
 =head1 DESCRIPTION
 
-This class has no description
+Information about a host header condition.
 
 =head1 ATTRIBUTES
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  
+  One or more host names. The maximum size of each name is 128
+characters. The comparison is case insensitive. The following wildcard
+characters are supported: * (matches 0 or more characters) and ?
+(matches exactly 1 character).
+
+If you specify multiple strings, the condition is satisfied if one of
+the strings matches the host name.
 
 
 

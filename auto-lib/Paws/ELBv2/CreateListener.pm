@@ -98,11 +98,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
-[HTTPS and TLS listeners] The default SSL server certificate. You must
-provide exactly one certificate. Set C<CertificateArn> to the
+[HTTPS and TLS listeners] The default certificate for the listener. You
+must provide exactly one certificate. Set C<CertificateArn> to the
 certificate ARN but do not set C<IsDefault>.
 
-To create a certificate list, use AddListenerCertificates.
+To create a certificate list for the listener, use
+AddListenerCertificates.
 
 
 
@@ -113,8 +114,8 @@ action or one or more fixed-response actions.
 
 If the action type is C<forward>, you specify a target group. The
 protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer. The protocol of the target group must be TCP or TLS for
-a Network Load Balancer.
+Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
+or TCP_UDP for a Network Load Balancer.
 
 [HTTPS listeners] If the action type is C<authenticate-oidc>, you
 authenticate users through an identity provider that is OpenID Connect
@@ -147,9 +148,10 @@ The port on which the load balancer is listening.
 
 The protocol for connections from clients to the load balancer. For
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
-For Network Load Balancers, the supported protocols are TCP and TLS.
+For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
+and TCP_UDP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
 
 =head2 SslPolicy => Str
 

@@ -72,8 +72,8 @@ of actions: C<forward>, C<fixed-response>, or C<redirect>.
 
 If the action type is C<forward>, you specify a target group. The
 protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer. The protocol of the target group must be TCP or TLS for
-a Network Load Balancer.
+Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
+or TCP_UDP for a Network Load Balancer.
 
 [HTTPS listeners] If the action type is C<authenticate-oidc>, you
 authenticate users through an identity provider that is OpenID Connect
@@ -92,63 +92,10 @@ you drop specified client requests and return a custom HTTP response.
 
 =head2 B<REQUIRED> Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
 
-The conditions. Each condition specifies a field name and a single
-value.
-
-If the field name is C<host-header>, you can specify a single host name
-(for example, my.example.com). A host name is case insensitive, can be
-up to 128 characters in length, and can contain any of the following
-characters. You can include up to three wildcard characters.
-
-=over
-
-=item *
-
-A-Z, a-z, 0-9
-
-=item *
-
-- .
-
-=item *
-
-* (matches 0 or more characters)
-
-=item *
-
-? (matches exactly 1 character)
-
-=back
-
-If the field name is C<path-pattern>, you can specify a single path
-pattern. A path pattern is case-sensitive, can be up to 128 characters
-in length, and can contain any of the following characters. You can
-include up to three wildcard characters.
-
-=over
-
-=item *
-
-A-Z, a-z, 0-9
-
-=item *
-
-_ - . $ / ~ " ' @ : +
-
-=item *
-
-& (using &)
-
-=item *
-
-* (matches 0 or more characters)
-
-=item *
-
-? (matches exactly 1 character)
-
-=back
-
+The conditions. Each rule can include zero or one of the following
+conditions: C<http-request-method>, C<host-header>, C<path-pattern>,
+and C<source-ip>, and zero or more of the following conditions:
+C<http-header> and C<query-string>.
 
 
 

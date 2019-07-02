@@ -473,15 +473,20 @@ Each argument is described in detail in: L<Paws::ELBv2::AddListenerCertificates>
 
 Returns: a L<Paws::ELBv2::AddListenerCertificatesOutput> instance
 
-Adds the specified certificate to the specified HTTPS listener.
+Adds the specified SSL server certificate to the certificate list for
+the specified HTTPS listener.
 
-If the certificate was already added, the call is successful but the
-certificate is not added again.
+If the certificate in already in the certificate list, the call is
+successful but the certificate is not added again.
 
-To list the certificates for your listener, use
-DescribeListenerCertificates. To remove certificates from your
-listener, use RemoveListenerCertificates. To specify the default SSL
-server certificate, use ModifyListener.
+To get the certificate list for a listener, use
+DescribeListenerCertificates. To remove certificates from the
+certificate list for a listener, use RemoveListenerCertificates. To
+replace the default certificate for a listener, use ModifyListener.
+
+For more information, see SSL Certificates
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates)
+in the I<Application Load Balancers Guide>.
 
 
 =head2 AddTags
@@ -851,7 +856,16 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeListenerCertific
 
 Returns: a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance
 
-Describes the certificates for the specified HTTPS listener.
+Describes the default certificate and the certificate list for the
+specified HTTPS listener.
+
+If the default certificate is also in the certificate list, it appears
+twice in the results (once with C<IsDefault> set to true and once with
+C<IsDefault> set to false).
+
+For more information, see SSL Certificates
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates)
+in the I<Application Load Balancers Guide>.
 
 
 =head2 DescribeListeners
@@ -876,6 +890,10 @@ Returns: a L<Paws::ELBv2::DescribeListenersOutput> instance
 Describes the specified listeners or the listeners for the specified
 Application Load Balancer or Network Load Balancer. You must specify
 either a load balancer or one or more listeners.
+
+For an HTTPS or TLS listener, the output includes the default
+certificate for the listener. To describe the certificate list for the
+listener, use DescribeListenerCertificates.
 
 
 =head2 DescribeLoadBalancerAttributes
@@ -1092,9 +1110,9 @@ Modifies the specified properties of the specified listener.
 
 Any properties that you do not specify retain their current values.
 However, changing the protocol from HTTPS to HTTP, or from TLS to TCP,
-removes the security policy and server certificate properties. If you
+removes the security policy and default certificate properties. If you
 change the protocol from HTTP to HTTPS, or from TCP to TLS, you must
-add the security policy and server certificate properties.
+add the security policy and default certificate properties.
 
 
 =head2 ModifyLoadBalancerAttributes
@@ -1249,7 +1267,8 @@ Each argument is described in detail in: L<Paws::ELBv2::RemoveListenerCertificat
 
 Returns: a L<Paws::ELBv2::RemoveListenerCertificatesOutput> instance
 
-Removes the specified certificate from the specified HTTPS listener.
+Removes the specified certificate from the certificate list for the
+specified HTTPS listener.
 
 You can't remove the default certificate for a listener. To replace the
 default certificate, call ModifyListener.
@@ -1296,8 +1315,6 @@ Returns: a L<Paws::ELBv2::SetIpAddressTypeOutput> instance
 
 Sets the type of IP addresses used by the subnets of the specified
 Application Load Balancer or Network Load Balancer.
-
-Network Load Balancers must use C<ipv4>.
 
 
 =head2 SetRulePriorities

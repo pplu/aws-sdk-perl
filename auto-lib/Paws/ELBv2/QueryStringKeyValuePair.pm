@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::Quer
 
 =head1 DESCRIPTION
 
-This class has no description
+Information about a key/value pair.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-  
+  The key. You can omit the key.
 
 
 =head2 Value => Str
 
-  
+  The value.
 
 
 
