@@ -91,7 +91,7 @@ cannot specify a virtual private gateway.
 
 =head2 B<REQUIRED> Type => Str
 
-The type of VPN connection (C<ipsec.1> | C<ipsec.2>).
+The type of VPN connection (C<ipsec.1>).
 
 
 

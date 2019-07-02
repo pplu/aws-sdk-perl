@@ -70,7 +70,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The type of events to describe. By default, all events are described.
 
-Valid values are: C<"instanceChange">, C<"fleetRequestChange">, C<"error">
+Valid values are: C<"instanceChange">, C<"fleetRequestChange">, C<"error">, C<"information">
 
 =head2 MaxResults => Int
 

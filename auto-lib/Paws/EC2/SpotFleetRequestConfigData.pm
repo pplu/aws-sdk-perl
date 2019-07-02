@@ -12,8 +12,10 @@ package Paws::EC2::SpotFleetRequestConfigData;
   has LoadBalancersConfig => (is => 'ro', isa => 'Paws::EC2::LoadBalancersConfig', request_name => 'loadBalancersConfig', traits => ['NameInRequest']);
   has OnDemandAllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'onDemandAllocationStrategy', traits => ['NameInRequest']);
   has OnDemandFulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'onDemandFulfilledCapacity', traits => ['NameInRequest']);
+  has OnDemandMaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'onDemandMaxTotalPrice', traits => ['NameInRequest']);
   has OnDemandTargetCapacity => (is => 'ro', isa => 'Int', request_name => 'onDemandTargetCapacity', traits => ['NameInRequest']);
   has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', request_name => 'replaceUnhealthyInstances', traits => ['NameInRequest']);
+  has SpotMaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'spotMaxTotalPrice', traits => ['NameInRequest']);
   has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
   has TargetCapacity => (is => 'ro', isa => 'Int', request_name => 'targetCapacity', traits => ['NameInRequest'], required => 1);
   has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool', request_name => 'terminateInstancesWithExpiration', traits => ['NameInRequest']);
@@ -154,6 +156,19 @@ C<lowestPrice>.
 set target On-Demand capacity.
 
 
+=head2 OnDemandMaxTotalPrice => Str
+
+  The maximum amount per hour for On-Demand Instances that you're willing
+to pay. You can use the C<onDemandMaxTotalPrice> parameter, the
+C<spotMaxTotalPrice> parameter, or both parameters to ensure that your
+fleet cost does not exceed your budget. If you set a maximum price per
+hour for the On-Demand Instances and Spot Instances in your request,
+Spot Fleet will launch instances until it reaches the maximum amount
+you're willing to pay. When the maximum amount you're willing to pay is
+reached, the fleet stops launching instances even if it hasnE<rsquo>t
+met the target capacity.
+
+
 =head2 OnDemandTargetCapacity => Int
 
   The number of On-Demand units to request. You can choose to set the
@@ -166,6 +181,19 @@ capacity of 0 and add capacity later.
 =head2 ReplaceUnhealthyInstances => Bool
 
   Indicates whether Spot Fleet should replace unhealthy instances.
+
+
+=head2 SpotMaxTotalPrice => Str
+
+  The maximum amount per hour for Spot Instances that you're willing to
+pay. You can use the C<spotdMaxTotalPrice> parameter, the
+C<onDemandMaxTotalPrice> parameter, or both parameters to ensure that
+your fleet cost does not exceed your budget. If you set a maximum price
+per hour for the On-Demand Instances and Spot Instances in your
+request, Spot Fleet will launch instances until it reaches the maximum
+amount you're willing to pay. When the maximum amount you're willing to
+pay is reached, the fleet stops launching instances even if it
+hasnE<rsquo>t met the target capacity.
 
 
 =head2 SpotPrice => Str

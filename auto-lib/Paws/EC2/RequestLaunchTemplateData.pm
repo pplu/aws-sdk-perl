@@ -202,7 +202,8 @@ to log in.
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecificationRequest>]
 
   One or more network interfaces. If you specify a network interface, you
-must specify any security groups as part of the network interface.
+must specify any security groups and subnets as part of the network
+interface.
 
 
 =head2 Placement => L<Paws::EC2::LaunchTemplatePlacementRequest>

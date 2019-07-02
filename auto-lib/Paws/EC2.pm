@@ -370,6 +370,26 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTrafficMirrorFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTrafficMirrorFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTrafficMirrorFilterRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTrafficMirrorFilterRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTrafficMirrorSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTrafficMirrorSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTrafficMirrorTarget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTrafficMirrorTarget', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateTransitGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGateway', @_);
@@ -558,6 +578,26 @@ package Paws::EC2;
   sub DeleteTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTrafficMirrorFilter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTrafficMirrorFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTrafficMirrorFilterRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTrafficMirrorFilterRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTrafficMirrorSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTrafficMirrorSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTrafficMirrorTarget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTrafficMirrorTarget', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTransitGateway {
@@ -1005,6 +1045,21 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTrafficMirrorFilters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTrafficMirrorFilters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTrafficMirrorSessions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTrafficMirrorSessions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTrafficMirrorTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTrafficMirrorTargets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTransitGatewayAttachments {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayAttachments', @_);
@@ -1423,6 +1478,21 @@ package Paws::EC2;
   sub ModifySubnetAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifySubnetAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyTrafficMirrorFilterNetworkServices {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyTrafficMirrorFilterNetworkServices', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyTrafficMirrorFilterRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyTrafficMirrorFilterRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyTrafficMirrorSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyTrafficMirrorSession', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyTransitGatewayVpcAttachment {
@@ -2786,6 +2856,75 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllTrafficMirrorFilters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTrafficMirrorFilters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTrafficMirrorFilters(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TrafficMirrorFilters }, @{ $next_result->TrafficMirrorFilters };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TrafficMirrorFilters') foreach (@{ $result->TrafficMirrorFilters });
+        $result = $self->DescribeTrafficMirrorFilters(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TrafficMirrorFilters') foreach (@{ $result->TrafficMirrorFilters });
+    }
+
+    return undef
+  }
+  sub DescribeAllTrafficMirrorSessions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTrafficMirrorSessions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTrafficMirrorSessions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TrafficMirrorSessions }, @{ $next_result->TrafficMirrorSessions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TrafficMirrorSessions') foreach (@{ $result->TrafficMirrorSessions });
+        $result = $self->DescribeTrafficMirrorSessions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TrafficMirrorSessions') foreach (@{ $result->TrafficMirrorSessions });
+    }
+
+    return undef
+  }
+  sub DescribeAllTrafficMirrorTargets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTrafficMirrorTargets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTrafficMirrorTargets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TrafficMirrorTargets }, @{ $next_result->TrafficMirrorTargets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TrafficMirrorTargets') foreach (@{ $result->TrafficMirrorTargets });
+        $result = $self->DescribeTrafficMirrorTargets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TrafficMirrorTargets') foreach (@{ $result->TrafficMirrorTargets });
+    }
+
+    return undef
+  }
   sub DescribeAllTransitGatewayAttachments {
     my $self = shift;
 
@@ -3096,14 +3235,17 @@ package Paws::EC2;
       while ($next_result->NextToken) {
         $next_result = $self->DescribeVpcEndpointServices(@_, NextToken => $next_result->NextToken);
         push @{ $result->ServiceDetails }, @{ $next_result->ServiceDetails };
+        push @{ $result->ServiceNames }, @{ $next_result->ServiceNames };
       }
       return $result;
     } else {
       while ($result->NextToken) {
         $callback->($_ => 'ServiceDetails') foreach (@{ $result->ServiceDetails });
+        $callback->($_ => 'ServiceNames') foreach (@{ $result->ServiceNames });
         $result = $self->DescribeVpcEndpointServices(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'ServiceDetails') foreach (@{ $result->ServiceDetails });
+      $callback->($_ => 'ServiceNames') foreach (@{ $result->ServiceNames });
     }
 
     return undef
@@ -3225,7 +3367,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSnapshots CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableEbsEncryptionByDefault DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableEbsEncryptionByDefault EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportTransitGatewayRoutes GetConsoleOutput GetConsoleScreenshot GetEbsDefaultKmsKeyId GetEbsEncryptionByDefault GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyEbsDefaultKmsKeyId ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetEbsDefaultKmsKeyId ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes StartInstances StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSnapshots CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTrafficMirrorFilter CreateTrafficMirrorFilterRule CreateTrafficMirrorSession CreateTrafficMirrorTarget CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTrafficMirrorFilter DeleteTrafficMirrorFilterRule DeleteTrafficMirrorSession DeleteTrafficMirrorTarget DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTrafficMirrorFilters DescribeTrafficMirrorSessions DescribeTrafficMirrorTargets DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableEbsEncryptionByDefault DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableEbsEncryptionByDefault EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportTransitGatewayRoutes GetConsoleOutput GetConsoleScreenshot GetEbsDefaultKmsKeyId GetEbsEncryptionByDefault GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyEbsDefaultKmsKeyId ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTrafficMirrorFilterNetworkServices ModifyTrafficMirrorFilterRule ModifyTrafficMirrorSession ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetEbsDefaultKmsKeyId ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes StartInstances StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
 
 1;
 
@@ -3260,30 +3402,30 @@ computing capacity in the AWS cloud. Using Amazon EC2 eliminates the
 need to invest in hardware up front, so you can develop and deploy
 applications faster.
 
-To learn more about Amazon EC2, Amazon EBS, and Amazon VPC, see the
-following resources:
+To learn more, see the following resources:
 
 =over
 
 =item *
 
-Amazon EC2 product page (http://aws.amazon.com/ec2)
+Amazon EC2: Amazon EC2 product page (http://aws.amazon.com/ec2), Amazon
+EC2 documentation (http://aws.amazon.com/documentation/ec2)
 
 =item *
 
-Amazon EC2 documentation (http://aws.amazon.com/documentation/ec2)
+Amazon EBS: Amazon EBS product page (http://aws.amazon.com/ebs), Amazon
+EBS documentation
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html)
 
 =item *
 
-Amazon EBS product page (http://aws.amazon.com/ebs)
+Amazon VPC: Amazon VPC product page (http://aws.amazon.com/vpc), Amazon
+VPC documentation (http://aws.amazon.com/documentation/vpc)
 
 =item *
 
-Amazon VPC product page (http://aws.amazon.com/vpc)
-
-=item *
-
-Amazon VPC documentation (http://aws.amazon.com/documentation/vpc)
+AWS VPN: AWS VPN product page (http://aws.amazon.com/vpn), AWS VPN
+documentation (http://aws.amazon.com/documentation/vpn)
 
 =back
 
@@ -3697,7 +3839,7 @@ instance renews its DHCP lease. You can explicitly renew the lease
 using the operating system on the instance.
 
 For more information, see DHCP Options Sets
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -3746,7 +3888,7 @@ disassociate the route table from the subnet later. A route table can
 be associated with multiple subnets.
 
 For more information, see Route Tables
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -3814,7 +3956,7 @@ block. The IPv6 CIDR block size is fixed at /56.
 
 For more information about associating CIDR blocks with your VPC and
 applicable restrictions, see VPC and Subnet Sizing
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#VPC_Sizing)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -3872,7 +4014,7 @@ Returns: nothing
 Attaches an internet gateway to a VPC, enabling connectivity between
 the internet and the VPC. For more information about your VPC and
 internet gateway, see the Amazon Virtual Private Cloud User Guide
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/).
+(https://docs.aws.amazon.com/vpc/latest/userguide/).
 
 
 =head2 AttachNetworkInterface
@@ -4663,7 +4805,7 @@ Creates a default subnet with a size C</20> IPv4 CIDR block in the
 specified Availability Zone in your default VPC. You can have only one
 default subnet per Availability Zone. For more information, see
 Creating a Default Subnet
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#create-default-subnet)
+(https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -4683,9 +4825,9 @@ Returns: a L<Paws::EC2::CreateDefaultVpcResult> instance
 Creates a default VPC with a size C</16> IPv4 CIDR block and a default
 subnet in each Availability Zone. For more information about the
 components of a default VPC, see Default VPC and Default Subnets
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html)
-in the I<Amazon Virtual Private Cloud User Guide>. You cannot specify
-the components of the default VPC yourself.
+(https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html) in
+the I<Amazon Virtual Private Cloud User Guide>. You cannot specify the
+components of the default VPC yourself.
 
 If you deleted your previous default VPC, you can create a default VPC.
 You cannot have more than one default VPC per Region.
@@ -4770,7 +4912,7 @@ create a set of options, and if your VPC has an internet gateway, make
 sure to set the C<domain-name-servers> option either to
 C<AmazonProvidedDNS> or to a domain name server of your choice. For
 more information, see DHCP Options Sets
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -4881,7 +5023,7 @@ for a specific network interface, subnet, or VPC.
 Flow log data for a monitored network interface is recorded as flow log
 records, which are log events consisting of fields that describe the
 traffic flow. For more information, see Flow Log Records
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html#flow-log-records)
+(https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 When publishing to CloudWatch Logs, flow log records are published to a
@@ -4891,8 +5033,8 @@ the monitored network interfaces are published to a single log file
 object that is stored in the specified bucket.
 
 For more information, see VPC Flow Logs
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html)
-in the I<Amazon Virtual Private Cloud User Guide>.
+(https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateFpgaImage
@@ -5013,7 +5155,7 @@ internet gateway, you attach it to a VPC using AttachInternetGateway.
 
 For more information about your VPC and internet gateway, see the
 Amazon Virtual Private Cloud User Guide
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/).
+(https://docs.aws.amazon.com/vpc/latest/userguide/).
 
 
 =head2 CreateKeyPair
@@ -5131,7 +5273,7 @@ address from the IP address range of the subnet. Internet-bound traffic
 from a private subnet can be routed to the NAT gateway, therefore
 enabling instances in the private subnet to connect to the internet.
 For more information, see NAT Gateways
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -5155,8 +5297,8 @@ of security (in addition to security groups) for the instances in your
 VPC.
 
 For more information, see Network ACLs
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
-in the I<Amazon Virtual Private Cloud User Guide>.
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the
+I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateNetworkAclEntry
@@ -5207,8 +5349,8 @@ After you add an entry, you can't modify it; you must either replace
 it, or create an entry and delete the old one.
 
 For more information about network ACLs, see Network ACLs
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
-in the I<Amazon Virtual Private Cloud User Guide>.
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the
+I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateNetworkInterface
@@ -5423,7 +5565,7 @@ and is therefore more specific, so we use that route to determine where
 to target the traffic.
 
 For more information about route tables, see Route Tables
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -5446,7 +5588,7 @@ Creates a route table for the specified VPC. After you create a route
 table, you can add routes and associate the table with a subnet.
 
 For more information, see Route Tables
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -5662,8 +5804,8 @@ running instances (they're all stopped), but no remaining IP addresses
 available.
 
 For more information about subnets, see Your VPC and Subnets
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html)
-in the I<Amazon Virtual Private Cloud User Guide>.
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreateTags
@@ -5696,6 +5838,163 @@ based on tags, see Supported Resource-Level Permissions for Amazon EC2
 API Actions
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 CreateTrafficMirrorFilter
+
+=over
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTrafficMirrorFilter>
+
+Returns: a L<Paws::EC2::CreateTrafficMirrorFilterResult> instance
+
+Creates a Traffic Mirror filter.
+
+A Traffic Mirror filter is a set of rules that defines the traffic to
+mirror.
+
+By default, no traffic is mirrored. To mirror traffic, use
+CreateTrafficMirrorFilterRule to add Traffic Mirror rules to the
+filter. The rules you add define what traffic gets mirrored. You can
+also use ModifyTrafficMirrorFilterNetworkServices to mirror supported
+network services.
+
+
+=head2 CreateTrafficMirrorFilterRule
+
+=over
+
+=item DestinationCidrBlock => Str
+
+=item RuleAction => Str
+
+=item RuleNumber => Int
+
+=item SourceCidrBlock => Str
+
+=item TrafficDirection => Str
+
+=item TrafficMirrorFilterId => Str
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [DestinationPortRange => L<Paws::EC2::TrafficMirrorPortRangeRequest>]
+
+=item [DryRun => Bool]
+
+=item [Protocol => Int]
+
+=item [SourcePortRange => L<Paws::EC2::TrafficMirrorPortRangeRequest>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTrafficMirrorFilterRule>
+
+Returns: a L<Paws::EC2::CreateTrafficMirrorFilterRuleResult> instance
+
+Creates a Traffic Mirror rule.
+
+A Traffic Mirror rule defines the Traffic Mirror source traffic to
+mirror.
+
+You need the Traffic Mirror filter ID when you create the rule.
+
+
+=head2 CreateTrafficMirrorSession
+
+=over
+
+=item NetworkInterfaceId => Str
+
+=item SessionNumber => Int
+
+=item TrafficMirrorFilterId => Str
+
+=item TrafficMirrorTargetId => Str
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [DryRun => Bool]
+
+=item [PacketLength => Int]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+=item [VirtualNetworkId => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTrafficMirrorSession>
+
+Returns: a L<Paws::EC2::CreateTrafficMirrorSessionResult> instance
+
+Creates a Traffic Mirror session.
+
+A Traffic Mirror session actively copies packets from a Traffic Mirror
+source to a Traffic Mirror target. Create a filter, and then assign it
+to the session to define a subset of the traffic to mirror, for example
+all TCP traffic.
+
+The Traffic Mirror source and the Traffic Mirror target (monitoring
+appliances) can be in the same VPC, or in a different VPC connected via
+VPC peering or a transit gateway.
+
+By default, no traffic is mirrored. Use CreateTrafficMirrorFilter to
+create filter rules that specify the traffic to mirror.
+
+
+=head2 CreateTrafficMirrorTarget
+
+=over
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [DryRun => Bool]
+
+=item [NetworkInterfaceId => Str]
+
+=item [NetworkLoadBalancerArn => Str]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTrafficMirrorTarget>
+
+Returns: a L<Paws::EC2::CreateTrafficMirrorTargetResult> instance
+
+Creates a target for your Traffic Mirror session.
+
+A Traffic Mirror target is the destination for mirrored traffic. The
+Traffic Mirror source and the Traffic Mirror target (monitoring
+appliances) can be in the same VPC, or in different VPCs connected via
+VPC peering or a transit gateway.
+
+A Traffic Mirror target can be a network interface, or a Network Load
+Balancer.
+
+To use the target in a Traffic Mirror session, use
+CreateTrafficMirrorSession.
 
 
 =head2 CreateTransitGateway
@@ -5897,8 +6196,8 @@ Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
 can create uses a /28 netmask (16 IPv4 addresses), and the largest uses
 a /16 netmask (65,536 IPv4 addresses). For more information about how
 large to make your VPC, see Your VPC and Subnets
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html)
-in the I<Amazon Virtual Private Cloud User Guide>.
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 You can optionally request an Amazon-provided IPv6 CIDR block for the
 VPC. The IPv6 CIDR block uses a /56 prefix length, and is allocated
@@ -5908,7 +6207,7 @@ for your VPC.
 By default, each instance you launch in the VPC has the default DHCP
 options, which include only a default DNS server that we provide
 (AmazonProvidedDNS). For more information, see DHCP Options Sets
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 You can specify the instance tenancy value for the VPC when you create
@@ -5953,7 +6252,7 @@ Creates a VPC endpoint for a specified service. An endpoint enables you
 to create a private connection between your VPC and the service. The
 service may be provided by AWS, an AWS Marketplace partner, or another
 AWS account. For more information, see VPC Endpoints
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 A C<gateway> endpoint serves as a target for a route in your route
@@ -6029,7 +6328,7 @@ can create an interface VPC endpoint to connect to your service.
 To create an endpoint service configuration, you must first create a
 Network Load Balancer for your service. For more information, see VPC
 Endpoint Services
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -6062,7 +6361,7 @@ VPC cannot have overlapping CIDR blocks.
 
 Limitations and rules apply to a VPC peering connection. For more
 information, see the limitations
-(https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-basics.html#vpc-peering-limitations)
+(https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html#vpc-peering-limitations)
 section in the I<VPC Peering Guide>.
 
 The owner of the accepter VPC must accept the peering request to
@@ -6098,8 +6397,8 @@ Each argument is described in detail in: L<Paws::EC2::CreateVpnConnection>
 Returns: a L<Paws::EC2::CreateVpnConnectionResult> instance
 
 Creates a VPN connection between an existing virtual private gateway
-and a VPN customer gateway. The supported connection types are
-C<ipsec.1> and C<ipsec.2>.
+and a VPN customer gateway. The supported connection types is
+C<ipsec.1>.
 
 The response includes information that you need to give to your network
 administrator to configure your customer gateway.
@@ -6708,6 +7007,84 @@ To list the current tags, use DescribeTags. For more information about
 tags, see Tagging Your Resources
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 DeleteTrafficMirrorFilter
+
+=over
+
+=item TrafficMirrorFilterId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTrafficMirrorFilter>
+
+Returns: a L<Paws::EC2::DeleteTrafficMirrorFilterResult> instance
+
+Deletes the specified Traffic Mirror filter.
+
+You cannot delete a Traffic Mirror filter that is in use by a Traffic
+Mirror session.
+
+
+=head2 DeleteTrafficMirrorFilterRule
+
+=over
+
+=item TrafficMirrorFilterRuleId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTrafficMirrorFilterRule>
+
+Returns: a L<Paws::EC2::DeleteTrafficMirrorFilterRuleResult> instance
+
+Deletes the specified Traffic Mirror rule.
+
+
+=head2 DeleteTrafficMirrorSession
+
+=over
+
+=item TrafficMirrorSessionId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTrafficMirrorSession>
+
+Returns: a L<Paws::EC2::DeleteTrafficMirrorSessionResult> instance
+
+Deletes the specified Traffic Mirror session.
+
+
+=head2 DeleteTrafficMirrorTarget
+
+=over
+
+=item TrafficMirrorTargetId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTrafficMirrorTarget>
+
+Returns: a L<Paws::EC2::DeleteTrafficMirrorTargetResult> instance
+
+Deletes the specified Traffic Mirror target.
+
+You cannot delete a Traffic Mirror target that is in use by a Traffic
+Mirror session.
 
 
 =head2 DeleteTransitGateway
@@ -7482,7 +7859,7 @@ Returns: a L<Paws::EC2::DescribeDhcpOptionsResult> instance
 Describes one or more of your DHCP options sets.
 
 For more information, see DHCP Options Sets
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -8088,7 +8465,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstances>
 
 Returns: a L<Paws::EC2::DescribeInstancesResult> instance
 
-Describes the specified instances or all of your instances.
+Describes the specified instances or all of AWS account's instances.
 
 If you specify one or more instance IDs, Amazon EC2 returns information
 for those instances. If you do not specify instance IDs, Amazon EC2
@@ -8349,8 +8726,8 @@ Returns: a L<Paws::EC2::DescribeNetworkAclsResult> instance
 Describes one or more of your network ACLs.
 
 For more information, see Network ACLs
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
-in the I<Amazon Virtual Private Cloud User Guide>.
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the
+I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DescribeNetworkInterfaceAttribute
@@ -8745,7 +9122,7 @@ implicitly associated with the main route table. This command does not
 return the subnet ID for implicit associations.
 
 For more information, see Route Tables
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -9214,8 +9591,8 @@ Returns: a L<Paws::EC2::DescribeSubnetsResult> instance
 Describes one or more of your subnets.
 
 For more information, see Your VPC and Subnets
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html)
-in the I<Amazon Virtual Private Cloud User Guide>.
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) in
+the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DescribeTags
@@ -9242,6 +9619,80 @@ Describes the specified tags for your EC2 resources.
 For more information about tags, see Tagging Your Resources
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 DescribeTrafficMirrorFilters
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TrafficMirrorFilterIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTrafficMirrorFilters>
+
+Returns: a L<Paws::EC2::DescribeTrafficMirrorFiltersResult> instance
+
+Describes one or more Traffic Mirror filters.
+
+
+=head2 DescribeTrafficMirrorSessions
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TrafficMirrorSessionIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTrafficMirrorSessions>
+
+Returns: a L<Paws::EC2::DescribeTrafficMirrorSessionsResult> instance
+
+Describes one or more Traffic Mirror sessions. By default, all Traffic
+Mirror sessions are described. Alternatively, you can filter the
+results.
+
+
+=head2 DescribeTrafficMirrorTargets
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TrafficMirrorTargetIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTrafficMirrorTargets>
+
+Returns: a L<Paws::EC2::DescribeTrafficMirrorTargetsResult> instance
+
+Information about one or more Traffic Mirror targets.
 
 
 =head2 DescribeTransitGatewayAttachments
@@ -10172,7 +10623,7 @@ Disassociates a subnet from a route table.
 After you perform this action, the subnet no longer uses the routes in
 the route table. Instead, it uses the routes in the VPC's main route
 table. For more information about route tables, see Route Tables
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -11555,6 +12006,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [ExcessCapacityTerminationPolicy => Str]
 
+=item [OnDemandTargetCapacity => Int]
+
 =item [TargetCapacity => Int]
 
 
@@ -11613,6 +12066,113 @@ Returns: nothing
 
 Modifies a subnet attribute. You can only modify one attribute at a
 time.
+
+
+=head2 ModifyTrafficMirrorFilterNetworkServices
+
+=over
+
+=item TrafficMirrorFilterId => Str
+
+=item [AddNetworkServices => ArrayRef[Str|Undef]]
+
+=item [DryRun => Bool]
+
+=item [RemoveNetworkServices => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyTrafficMirrorFilterNetworkServices>
+
+Returns: a L<Paws::EC2::ModifyTrafficMirrorFilterNetworkServicesResult> instance
+
+Allows or restricts mirroring network services.
+
+By default, Amazon DNS network services are not eligible for Traffic
+Mirror. Use C<AddNetworkServices> to add network services to a Traffic
+Mirror filter. When a network service is added to the Traffic Mirror
+filter, all traffic related to that network service will be mirrored.
+When you no longer want to mirror network services, use
+C<RemoveNetworkServices> to remove the network services from the
+Traffic Mirror filter.
+
+FFor information about filter rule properties, see Network Services
+(https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html#traffic-mirroring-network-services)
+in the I<Traffic Mirroring User Guide >.
+
+
+=head2 ModifyTrafficMirrorFilterRule
+
+=over
+
+=item TrafficMirrorFilterRuleId => Str
+
+=item [Description => Str]
+
+=item [DestinationCidrBlock => Str]
+
+=item [DestinationPortRange => L<Paws::EC2::TrafficMirrorPortRangeRequest>]
+
+=item [DryRun => Bool]
+
+=item [Protocol => Int]
+
+=item [RemoveFields => ArrayRef[Str|Undef]]
+
+=item [RuleAction => Str]
+
+=item [RuleNumber => Int]
+
+=item [SourceCidrBlock => Str]
+
+=item [SourcePortRange => L<Paws::EC2::TrafficMirrorPortRangeRequest>]
+
+=item [TrafficDirection => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyTrafficMirrorFilterRule>
+
+Returns: a L<Paws::EC2::ModifyTrafficMirrorFilterRuleResult> instance
+
+Modifies the specified Traffic Mirror rule.
+
+C<DestinationCidrBlock> and C<SourceCidrBlock> must both be an IPv4
+range or an IPv6 range.
+
+
+=head2 ModifyTrafficMirrorSession
+
+=over
+
+=item TrafficMirrorSessionId => Str
+
+=item [Description => Str]
+
+=item [DryRun => Bool]
+
+=item [PacketLength => Int]
+
+=item [RemoveFields => ArrayRef[Str|Undef]]
+
+=item [SessionNumber => Int]
+
+=item [TrafficMirrorFilterId => Str]
+
+=item [TrafficMirrorTargetId => Str]
+
+=item [VirtualNetworkId => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyTrafficMirrorSession>
+
+Returns: a L<Paws::EC2::ModifyTrafficMirrorSessionResult> instance
+
+Modifies a Traffic Mirror session.
 
 
 =head2 ModifyTransitGatewayVpcAttachment
@@ -11789,7 +12349,7 @@ Returns: a L<Paws::EC2::ModifyVpcEndpointResult> instance
 Modifies attributes of a specified VPC endpoint. The attributes that
 you can modify depend on the type of VPC endpoint (interface or
 gateway). For more information, see VPC Endpoints
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -11864,7 +12424,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpointServicePe
 Returns: a L<Paws::EC2::ModifyVpcEndpointServicePermissionsResult> instance
 
 Modifies the permissions for your VPC endpoint service
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html).
+(https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html).
 You can add or remove permissions for service consumers (IAM users, IAM
 roles, and AWS accounts) to connect to your endpoint service.
 
@@ -12501,8 +13061,8 @@ Returns: a L<Paws::EC2::ReplaceNetworkAclAssociationResult> instance
 Changes which network ACL a subnet is associated with. By default when
 you create a subnet, it's automatically associated with the default
 network ACL. For more information, see Network ACLs
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
-in the I<Amazon Virtual Private Cloud User Guide>.
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the
+I<Amazon Virtual Private Cloud User Guide>.
 
 This is an idempotent operation.
 
@@ -12540,8 +13100,8 @@ Returns: nothing
 
 Replaces an entry (rule) in a network ACL. For more information, see
 Network ACLs
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
-in the I<Amazon Virtual Private Cloud User Guide>.
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the
+I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 ReplaceRoute
@@ -12583,7 +13143,7 @@ gateway, NAT instance, NAT gateway, VPC peering connection, network
 interface, or egress-only internet gateway.
 
 For more information, see Route Tables
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
@@ -12608,7 +13168,7 @@ Changes the route table associated with a given subnet in a VPC. After
 the operation completes, the subnet uses the routes in the new route
 table it's associated with. For more information about route tables,
 see Route Tables
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html)
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 You can also use ReplaceRouteTableAssociation to change which table is
@@ -14169,6 +14729,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeTagsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllTrafficMirrorFilters(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorFilterIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTrafficMirrorFilters([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorFilterIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TrafficMirrorFilters, passing the object as the first parameter, and the string 'TrafficMirrorFilters' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTrafficMirrorFiltersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTrafficMirrorSessions(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorSessionIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTrafficMirrorSessions([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorSessionIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TrafficMirrorSessions, passing the object as the first parameter, and the string 'TrafficMirrorSessions' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTrafficMirrorSessionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTrafficMirrorTargets(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorTargetIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTrafficMirrorTargets([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorTargetIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TrafficMirrorTargets, passing the object as the first parameter, and the string 'TrafficMirrorTargets' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTrafficMirrorTargetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllTransitGatewayAttachments(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
 
 =head2 DescribeAllTransitGatewayAttachments([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
@@ -14334,7 +14930,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 
  - ServiceDetails, passing the object as the first parameter, and the string 'ServiceDetails' as the second parameter 
 
-If not, it will return a a L<Paws::EC2::DescribeVpcEndpointServicesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+ - ServiceNames, passing the object as the first parameter, and the string 'ServiceNames' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeVpcEndpointServicesResult> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllVpcPeeringConnections(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcPeeringConnectionIds => ArrayRef[Str|Undef]])

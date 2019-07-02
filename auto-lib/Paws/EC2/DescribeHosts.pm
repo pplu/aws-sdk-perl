@@ -33,14 +33,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeHostsResult = $ec2->DescribeHosts(
       Filter => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      HostIds    => [ 'MyString', ... ],    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
+      ],                           # OPTIONAL
+      HostIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:

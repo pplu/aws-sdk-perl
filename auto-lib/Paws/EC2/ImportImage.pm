@@ -207,33 +207,16 @@ to.
 The license type to be used for the Amazon Machine Image (AMI) after
 importing.
 
-B<Note:> You may only use BYOL if you have existing licenses with
-rights to use these licenses in a third party cloud like AWS. For more
+By default, we detect the source-system operating system (OS) and apply
+the appropriate license. Specify C<AWS> to replace the source-system
+license with an AWS license, if appropriate. Specify C<BYOL> to retain
+the source-system license, if appropriate.
+
+To use C<BYOL>, you must have existing licenses with rights to use
+these licenses in a third party cloud, such as AWS. For more
 information, see Prerequisites
 (https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image)
 in the VM Import/Export User Guide.
-
-Valid values include:
-
-=over
-
-=item *
-
-C<Auto> - Detects the source-system operating system (OS) and applies
-the appropriate license.
-
-=item *
-
-C<AWS> - Replaces the source-system license with an AWS license, if
-appropriate.
-
-=item *
-
-C<BYOL> - Retains the source-system license, if appropriate.
-
-=back
-
-Default value: C<Auto>
 
 
 
