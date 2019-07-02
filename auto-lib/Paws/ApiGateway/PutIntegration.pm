@@ -88,13 +88,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 CacheKeyParameters => ArrayRef[Str|Undef]
 
-Specifies a put integration input's cache key parameters.
+An API-specific tag group of related cached parameters.
 
 
 
 =head2 CacheNamespace => Str
 
-Specifies a put integration input's cache namespace.
+A list of request parameters whose values are to be cached.
 
 
 
@@ -138,8 +138,8 @@ Base64-encoded string.
 
 If this property is not defined, the request payload will be passed
 through from the method request to integration request without
-modification, provided that the C<passthroughBehaviors> is configured
-to support payload pass-through.
+modification, provided that the C<passthroughBehavior> is configured to
+support payload pass-through.
 
 Valid values are: C<"CONVERT_TO_BINARY">, C<"CONVERT_TO_TEXT">
 

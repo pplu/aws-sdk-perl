@@ -30,12 +30,16 @@ Paws::ApiGateway::Integration
 
 =head2 CacheKeyParameters => ArrayRef[Str|Undef]
 
-Specifies the integration's cache key parameters.
+A list of request parameters whose values API Gateway caches. To be
+valid values for C<cacheKeyParameters>, these parameters must also be
+specified for Method C<requestParameters>.
 
 
 =head2 CacheNamespace => Str
 
-Specifies the integration's cache namespace.
+An API-specific tag group of related cached parameters. To be valid
+values for C<cacheKeyParameters>, these parameters must also be
+specified for Method C<requestParameters>.
 
 
 =head2 ConnectionId => Str
@@ -76,8 +80,8 @@ Base64-encoded string.
 
 If this property is not defined, the request payload will be passed
 through from the method request to integration request without
-modification, provided that the C<passthroughBehaviors> is configured
-to support payload pass-through.
+modification, provided that the C<passthroughBehavior> is configured to
+support payload pass-through.
 
 Valid values are: C<"CONVERT_TO_BINARY">, C<"CONVERT_TO_TEXT">
 =head2 Credentials => Str

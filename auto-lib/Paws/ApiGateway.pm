@@ -1261,6 +1261,8 @@ Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
 
 =item [RegionalCertificateName => Str]
 
+=item [SecurityPolicy => Str]
+
 =item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
 
 
@@ -3126,8 +3128,10 @@ Returns: a L<Paws::ApiGateway::TestInvokeAuthorizerResponse> instance
 Simulate the execution of an Authorizer in your RestApi with headers,
 parameters, and an incoming request body.
 
-Enable custom authorizers
-(https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html)
+Use Lambda Function as Authorizer
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html)
+Use Cognito User Pool as Authorizer
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html)
 
 
 =head2 TestInvokeMethod

@@ -89,8 +89,8 @@ C<endpointConfigurationTypes=REGIONAL>, or
 C<endpointConfigurationTypes=PRIVATE>. The default endpoint type is
 C<EDGE>.
 
-To handle imported C<basePath>, set C<parameters> as
-C<basePath=ignore>, C<basePath=prepend> or C<basePath=split>.
+To handle imported C<basepath>, set C<parameters> as
+C<basepath=ignore>, C<basepath=prepend> or C<basepath=split>.
 
 For example, the AWS CLI command to exclude documentation from the
 imported API is:

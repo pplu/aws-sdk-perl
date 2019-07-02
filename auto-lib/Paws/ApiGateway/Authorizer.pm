@@ -101,12 +101,13 @@ property is optional.
 =head2 IdentityValidationExpression => Str
 
 A validation expression for the incoming identity token. For C<TOKEN>
-authorizers, this value is a regular expression. API Gateway will match
-the C<aud> field of the incoming token from the client against the
-specified regular expression. It will invoke the authorizer's Lambda
-function when there is a match. Otherwise, it will return a 401
-Unauthorized response without calling the Lambda function. The
-validation expression does not apply to the C<REQUEST> authorizer.
+authorizers, this value is a regular expression. For
+C<COGNITO_USER_POOLS> authorizers, API Gateway will match the C<aud>
+field of the incoming token from the client against the specified
+regular expression. It will invoke the authorizer's Lambda function
+when there is a match. Otherwise, it will return a 401 Unauthorized
+response without calling the Lambda function. The validation expression
+does not apply to the C<REQUEST> authorizer.
 
 
 =head2 Name => Str
