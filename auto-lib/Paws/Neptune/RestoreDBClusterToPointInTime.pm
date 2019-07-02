@@ -4,6 +4,7 @@ package Paws::Neptune::RestoreDBClusterToPointInTime;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
@@ -45,6 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SourceDBClusterIdentifier       => 'MyString',
       DBClusterParameterGroupName     => 'MyString',               # OPTIONAL
       DBSubnetGroupName               => 'MyString',               # OPTIONAL
+      EnableCloudwatchLogsExports     => [ 'MyString', ... ],      # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                        # OPTIONAL
       KmsKeyId                        => 'MyString',               # OPTIONAL
       OptionGroupName                 => 'MyString',               # OPTIONAL
@@ -125,6 +127,13 @@ Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+The list of logs that the restored DB cluster is to export to
+CloudWatch Logs.
 
 
 
@@ -228,8 +237,25 @@ Example: C<2015-03-07T23:45:00Z>
 
 =head2 RestoreType => Str
 
-The type of restore to be performed. The only type of restore currently
-supported is C<full-copy> (the default).
+The type of restore to be performed. You can specify one of the
+following values:
+
+=over
+
+=item *
+
+C<full-copy> - The new DB cluster is restored as a full copy of the
+source DB cluster.
+
+=item *
+
+C<copy-on-write> - The new DB cluster is restored as a clone of the
+source DB cluster.
+
+=back
+
+If you don't specify a C<RestoreType> value, then the new DB cluster is
+restored as a full copy of the source DB cluster.
 
 
 

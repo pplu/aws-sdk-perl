@@ -875,6 +875,8 @@ Copies the specified DB parameter group.
 
 =item [DBSubnetGroupName => Str]
 
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [EngineVersion => Str]
@@ -1290,17 +1292,8 @@ C<failed>, C<incompatible-restore>, or C<incompatible-network>, you can
 only delete it when the C<SkipFinalSnapshot> parameter is set to
 C<true>.
 
-If the specified DB instance is part of a DB cluster, you can't delete
-the DB instance if both of the following conditions are true:
-
-=over
-
-=item *
-
-The DB instance is the only instance in the DB cluster.
-
-=back
-
+You can't delete a DB instance if it is the only instance in the DB
+cluster.
 
 
 =head2 DeleteDBParameterGroup
@@ -1875,6 +1868,8 @@ Lists all tags on an Amazon Neptune resource.
 
 =item [BackupRetentionPeriod => Int]
 
+=item [CloudwatchLogsExportConfiguration => L<Paws::Neptune::CloudwatchLogsExportConfiguration>]
+
 =item [DBClusterParameterGroupName => Str]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -2334,6 +2329,8 @@ or C<RebootDBInstance> request.
 
 =item [DBSubnetGroupName => Str]
 
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [EngineVersion => Str]
@@ -2378,6 +2375,8 @@ created with the default security group.
 =item [DBClusterParameterGroupName => Str]
 
 =item [DBSubnetGroupName => Str]
+
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 

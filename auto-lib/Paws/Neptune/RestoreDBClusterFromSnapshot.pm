@@ -6,6 +6,7 @@ package Paws::Neptune::RestoreDBClusterFromSnapshot;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -48,6 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DatabaseName                    => 'MyString',             # OPTIONAL
+      EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
       EngineVersion                   => 'MyString',             # OPTIONAL
       KmsKeyId                        => 'MyString',             # OPTIONAL
@@ -141,6 +143,13 @@ Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+The list of logs that the restored DB cluster is to export to Amazon
+CloudWatch Logs.
 
 
 
