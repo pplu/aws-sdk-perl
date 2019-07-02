@@ -1,7 +1,6 @@
 
 package Paws::WorkSpaces::RebuildWorkspaces;
   use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Str');
   has RebuildWorkspaceRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::RebuildRequest]', required => 1);
 
   use MooseX::ClassAttribute;
@@ -36,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-      AdditionalInfo => 'MyAdditionalInfo',    # OPTIONAL
+
     );
 
     # Results:
@@ -48,12 +47,6 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workspaces/RebuildWorkspaces>
 
 =head1 ATTRIBUTES
-
-
-=head2 AdditionalInfo => Str
-
-Reserved.
-
 
 
 =head2 B<REQUIRED> RebuildWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebuildRequest>]
