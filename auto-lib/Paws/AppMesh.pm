@@ -330,13 +330,11 @@ helping to ensure high availability for your applications.
 
 App Mesh gives you consistent visibility and network traffic controls
 for every microservice in an application. You can use App Mesh with AWS
-Fargate, Amazon ECS, Amazon EKS, and Kubernetes on AWS.
+Fargate, Amazon ECS, Amazon EKS, Kubernetes on AWS, and Amazon EC2.
 
 App Mesh supports microservice applications that use service discovery
-naming for their components. To use App Mesh, you must have an
-application running on Amazon EC2 instances, hosted in either Amazon
-ECS, Amazon EKS, or Kubernetes on AWS. For more information about
-service discovery on Amazon ECS, see Service Discovery
+naming for their components. For more information about service
+discovery on Amazon ECS, see Service Discovery
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html)
 in the I<Amazon Elastic Container Service Developer Guide>. Kubernetes
 C<kube-dns> and C<coredns> are supported. For more information, see DNS
@@ -435,8 +433,8 @@ Creates a virtual node within a service mesh.
 
 A virtual node acts as a logical pointer to a particular task group,
 such as an Amazon ECS service or a Kubernetes deployment. When you
-create a virtual node, you must specify the DNS service discovery
-hostname for your task group.
+create a virtual node, you can specify the service discovery
+information for your task group.
 
 Any inbound traffic that your virtual node expects should be specified
 as a C<listener>. Any outbound traffic that your virtual node expects

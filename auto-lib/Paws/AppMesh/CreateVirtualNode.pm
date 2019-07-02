@@ -72,6 +72,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },    # OPTIONAL
         ServiceDiscovery => {
+          AwsCloudMap => {
+            NamespaceName => 'MyAwsCloudMapName',    # min: 1, max: 1024
+            ServiceName   => 'MyAwsCloudMapName',    # min: 1, max: 1024
+            Attributes    => [
+              {
+                Key => 'MyAwsCloudMapInstanceAttributeKey',   # min: 1, max: 255
+                Value =>
+                  'MyAwsCloudMapInstanceAttributeValue',    # min: 1, max: 1024
+
+              },
+              ...
+            ],                                              # OPTIONAL
+          },    # OPTIONAL
           Dns => {
             Hostname => 'MyHostname',
 
