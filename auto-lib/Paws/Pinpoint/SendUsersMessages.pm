@@ -9,7 +9,7 @@ package Paws::Pinpoint::SendUsersMessages;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendUsersMessages');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/users-messages');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::SendUsersMessagesResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::SendUsersMessageResponse');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $SendUsersMessagesResponse = $pinpoint->SendUsersMessages(
+    my $SendUsersMessageResponse = $pinpoint->SendUsersMessages(
       ApplicationId           => 'My__string',
       SendUsersMessageRequest => {
         MessageConfiguration => {
@@ -47,8 +47,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SilentPush        => 1,                                   # OPTIONAL
             SmallImageIconUrl => 'My__string',
             Sound             => 'My__string',
-            Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                                         # OPTIONAL
+            Substitutions     => {
+              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
+            },    # OPTIONAL
             Title => 'My__string',
             Url   => 'My__string',
           },    # OPTIONAL
@@ -65,10 +66,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RawContent                    => 'My__string',
             SilentPush                    => 1,                 # OPTIONAL
             Sound                         => 'My__string',
-            Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                                   # OPTIONAL
+            Substitutions                 => {
+              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
+            },    # OPTIONAL
             ThreadId   => 'My__string',
-            TimeToLive => 1,                                    # OPTIONAL
+            TimeToLive => 1,              # OPTIONAL
             Title      => 'My__string',
             Url        => 'My__string',
           },    # OPTIONAL
@@ -83,24 +85,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SilentPush        => 1,                                   # OPTIONAL
             SmallImageIconUrl => 'My__string',
             Sound             => 'My__string',
-            Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                                         # OPTIONAL
-            TimeToLive => 1,                                          # OPTIONAL
+            Substitutions     => {
+              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
+            },    # OPTIONAL
+            TimeToLive => 1,              # OPTIONAL
             Title      => 'My__string',
             Url        => 'My__string',
           },    # OPTIONAL
           DefaultMessage => {
             Body          => 'My__string',
-            Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,    # OPTIONAL
+            Substitutions => {
+              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
           DefaultPushNotificationMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
             Body   => 'My__string',
-            Data       => { 'My__string' => 'My__string', },    # OPTIONAL
-            SilentPush => 1,                                    # OPTIONAL
-            Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                                   # OPTIONAL
+            Data          => { 'My__string' => 'My__string', },    # OPTIONAL
+            SilentPush    => 1,                                    # OPTIONAL
+            Substitutions => {
+              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
+            },    # OPTIONAL
             Title => 'My__string',
             Url   => 'My__string',
           },    # OPTIONAL
@@ -111,23 +116,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RawEmail                  => {
               Data => 'Blob__blob',    # OPTIONAL
             },    # OPTIONAL
-            ReplyToAddresses => [ 'My__string', ... ],
-            SimpleEmail      => {
+            ReplyToAddresses => [ 'My__string', ... ],    # OPTIONAL
+            SimpleEmail => {
               HtmlPart => {
                 Charset => 'My__string',
                 Data    => 'My__string',
-              },    # OPTIONAL
+              },                                          # OPTIONAL
               Subject => {
                 Charset => 'My__string',
                 Data    => 'My__string',
-              },    # OPTIONAL
+              },                                          # OPTIONAL
               TextPart => {
                 Charset => 'My__string',
                 Data    => 'My__string',
-              },    # OPTIONAL
+              },                                          # OPTIONAL
             },    # OPTIONAL
-            Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,     # OPTIONAL
+            Substitutions => {
+              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
           GCMMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
@@ -143,9 +149,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SilentPush            => 1,                            # OPTIONAL
             SmallImageIconUrl     => 'My__string',
             Sound                 => 'My__string',
-            Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                                      # OPTIONAL
-            TimeToLive => 1,                                       # OPTIONAL
+            Substitutions         => {
+              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
+            },    # OPTIONAL
+            TimeToLive => 1,              # OPTIONAL
             Title      => 'My__string',
             Url        => 'My__string',
           },    # OPTIONAL
@@ -156,39 +163,43 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
             OriginationNumber => 'My__string',
             SenderId          => 'My__string',
-            Substitutions     => { 'My__string' => [ 'My__string', ... ], }
-            ,                     # OPTIONAL
+            Substitutions     => {
+              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
           VoiceMessage => {
             Body              => 'My__string',
             LanguageCode      => 'My__string',
             OriginationNumber => 'My__string',
-            Substitutions     => { 'My__string' => [ 'My__string', ... ], }
-            ,    # OPTIONAL
+            Substitutions     => {
+              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
+            },    # OPTIONAL
             VoiceId => 'My__string',
           },    # OPTIONAL
         },
         Users => {
           'My__string' => {
-            BodyOverride => 'My__string',
-            Context      => { 'My__string' => 'My__string', },    # OPTIONAL
-            RawContent   => 'My__string',
-            Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                                     # OPTIONAL
+            BodyOverride  => 'My__string',
+            Context       => { 'My__string' => 'My__string', },    # OPTIONAL
+            RawContent    => 'My__string',
+            Substitutions => {
+              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
+            },    # OPTIONAL
             TitleOverride => 'My__string',
           },
         },
-        Context => { 'My__string' => 'My__string', },             # OPTIONAL
+        Context => { 'My__string' => 'My__string', },    # OPTIONAL
         TraceId => 'My__string',
       },
 
     );
 
     # Results:
-    my $SendUsersMessageResponse =
-      $SendUsersMessagesResponse->SendUsersMessageResponse;
+    my $ApplicationId = $SendUsersMessageResponse->ApplicationId;
+    my $RequestId     = $SendUsersMessageResponse->RequestId;
+    my $Result        = $SendUsersMessageResponse->Result;
 
-    # Returns a L<Paws::Pinpoint::SendUsersMessagesResponse> object.
+    # Returns a L<Paws::Pinpoint::SendUsersMessageResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/SendUsersMessages>

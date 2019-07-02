@@ -8,7 +8,7 @@ package Paws::Pinpoint::DeleteBaiduChannel;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteBaiduChannel');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/baidu');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::DeleteBaiduChannelResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::BaiduChannelResponse');
 1;
 
 ### main pod documentation begin ###
@@ -28,16 +28,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $DeleteBaiduChannelResponse = $pinpoint->DeleteBaiduChannel(
+    my $BaiduChannelResponse = $pinpoint->DeleteBaiduChannel(
       ApplicationId => 'My__string',
 
     );
 
     # Results:
-    my $BaiduChannelResponse =
-      $DeleteBaiduChannelResponse->BaiduChannelResponse;
+    my $ApplicationId    = $BaiduChannelResponse->ApplicationId;
+    my $CreationDate     = $BaiduChannelResponse->CreationDate;
+    my $Credential       = $BaiduChannelResponse->Credential;
+    my $Enabled          = $BaiduChannelResponse->Enabled;
+    my $HasCredential    = $BaiduChannelResponse->HasCredential;
+    my $Id               = $BaiduChannelResponse->Id;
+    my $IsArchived       = $BaiduChannelResponse->IsArchived;
+    my $LastModifiedBy   = $BaiduChannelResponse->LastModifiedBy;
+    my $LastModifiedDate = $BaiduChannelResponse->LastModifiedDate;
+    my $Platform         = $BaiduChannelResponse->Platform;
+    my $Version          = $BaiduChannelResponse->Version;
 
-    # Returns a L<Paws::Pinpoint::DeleteBaiduChannelResponse> object.
+    # Returns a L<Paws::Pinpoint::BaiduChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/DeleteBaiduChannel>

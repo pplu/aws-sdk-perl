@@ -11,7 +11,7 @@ package Paws::Pinpoint::GetSegmentExportJobs;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSegmentExportJobs');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/segments/{segment-id}/jobs/export');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::GetSegmentExportJobsResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::ExportJobsResponse');
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $GetSegmentExportJobsResponse = $pinpoint->GetSegmentExportJobs(
+    my $ExportJobsResponse = $pinpoint->GetSegmentExportJobs(
       ApplicationId => 'My__string',
       SegmentId     => 'My__string',
       PageSize      => 'My__string',    # OPTIONAL
@@ -39,9 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ExportJobsResponse = $GetSegmentExportJobsResponse->ExportJobsResponse;
+    my $Item      = $ExportJobsResponse->Item;
+    my $NextToken = $ExportJobsResponse->NextToken;
 
-    # Returns a L<Paws::Pinpoint::GetSegmentExportJobsResponse> object.
+    # Returns a L<Paws::Pinpoint::ExportJobsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/GetSegmentExportJobs>

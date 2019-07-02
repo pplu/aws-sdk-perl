@@ -8,7 +8,7 @@ package Paws::Pinpoint::DeleteApnsChannel;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApnsChannel');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/apns');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::DeleteApnsChannelResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::APNSChannelResponse');
 1;
 
 ### main pod documentation begin ###
@@ -28,15 +28,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $DeleteApnsChannelResponse = $pinpoint->DeleteApnsChannel(
+    my $APNSChannelResponse = $pinpoint->DeleteApnsChannel(
       ApplicationId => 'My__string',
 
     );
 
     # Results:
-    my $APNSChannelResponse = $DeleteApnsChannelResponse->APNSChannelResponse;
+    my $ApplicationId = $APNSChannelResponse->ApplicationId;
+    my $CreationDate  = $APNSChannelResponse->CreationDate;
+    my $DefaultAuthenticationMethod =
+      $APNSChannelResponse->DefaultAuthenticationMethod;
+    my $Enabled          = $APNSChannelResponse->Enabled;
+    my $HasCredential    = $APNSChannelResponse->HasCredential;
+    my $HasTokenKey      = $APNSChannelResponse->HasTokenKey;
+    my $Id               = $APNSChannelResponse->Id;
+    my $IsArchived       = $APNSChannelResponse->IsArchived;
+    my $LastModifiedBy   = $APNSChannelResponse->LastModifiedBy;
+    my $LastModifiedDate = $APNSChannelResponse->LastModifiedDate;
+    my $Platform         = $APNSChannelResponse->Platform;
+    my $Version          = $APNSChannelResponse->Version;
 
-    # Returns a L<Paws::Pinpoint::DeleteApnsChannelResponse> object.
+    # Returns a L<Paws::Pinpoint::APNSChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/DeleteApnsChannel>

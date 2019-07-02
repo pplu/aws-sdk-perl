@@ -1,10 +1,6 @@
-
 package Paws::Pinpoint::PutEventStreamResponse;
   use Moose;
   has EventStream => (is => 'ro', isa => 'Paws::Pinpoint::EventStream', required => 1);
-  use MooseX::ClassAttribute;
-  class_has _stream_param => (is => 'ro', default => 'EventStream');
-  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -13,16 +9,48 @@ package Paws::Pinpoint::PutEventStreamResponse;
 
 Paws::Pinpoint::PutEventStreamResponse
 
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::Pinpoint::PutEventStreamResponse object:
+
+  $service_obj->Method(Att1 => { EventStream => $value, ..., EventStream => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::PutEventStreamResponse object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->EventStream
+
+=head1 DESCRIPTION
+
+This class has no description
+
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> EventStream => L<Paws::Pinpoint::EventStream>
 
+  
 
 
 
-=head2 _request_id => Str
+=head1 SEE ALSO
 
+This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
+
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

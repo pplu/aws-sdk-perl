@@ -448,7 +448,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 Each argument is described in detail in: L<Paws::Pinpoint::CreateApp>
 
-Returns: a L<Paws::Pinpoint::CreateAppResponse> instance
+Returns: a L<Paws::Pinpoint::ApplicationResponse> instance
 
 Creates an application.
 
@@ -466,7 +466,7 @@ Creates an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::CreateCampaign>
 
-Returns: a L<Paws::Pinpoint::CreateCampaignResponse> instance
+Returns: a L<Paws::Pinpoint::CampaignResponse> instance
 
 Creates a new campaign for an application or updates the settings of an
 existing campaign for an application.
@@ -485,7 +485,7 @@ existing campaign for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::CreateExportJob>
 
-Returns: a L<Paws::Pinpoint::CreateExportJobResponse> instance
+Returns: a L<Paws::Pinpoint::ExportJobResponse> instance
 
 Creates a new export job for an application.
 
@@ -503,7 +503,7 @@ Creates a new export job for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::CreateImportJob>
 
-Returns: a L<Paws::Pinpoint::CreateImportJobResponse> instance
+Returns: a L<Paws::Pinpoint::ImportJobResponse> instance
 
 Creates a new import job for an application.
 
@@ -521,7 +521,7 @@ Creates a new import job for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::CreateSegment>
 
-Returns: a L<Paws::Pinpoint::CreateSegmentResponse> instance
+Returns: a L<Paws::Pinpoint::SegmentResponse> instance
 
 Creates a new segment for an application or updates the configuration,
 dimension, and other settings for an existing segment that's associated
@@ -539,7 +539,7 @@ with an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteAdmChannel>
 
-Returns: a L<Paws::Pinpoint::DeleteAdmChannelResponse> instance
+Returns: a L<Paws::Pinpoint::ADMChannelResponse> instance
 
 Disables the ADM channel for an application and deletes any existing
 settings for the channel.
@@ -556,7 +556,7 @@ settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsChannel>
 
-Returns: a L<Paws::Pinpoint::DeleteApnsChannelResponse> instance
+Returns: a L<Paws::Pinpoint::APNSChannelResponse> instance
 
 Disables the APNs channel for an application and deletes any existing
 settings for the channel.
@@ -573,7 +573,7 @@ settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsSandboxChannel>
 
-Returns: a L<Paws::Pinpoint::DeleteApnsSandboxChannelResponse> instance
+Returns: a L<Paws::Pinpoint::APNSSandboxChannelResponse> instance
 
 Disables the APNs sandbox channel for an application and deletes any
 existing settings for the channel.
@@ -590,7 +590,7 @@ existing settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsVoipChannel>
 
-Returns: a L<Paws::Pinpoint::DeleteApnsVoipChannelResponse> instance
+Returns: a L<Paws::Pinpoint::APNSVoipChannelResponse> instance
 
 Disables the APNs VoIP channel for an application and deletes any
 existing settings for the channel.
@@ -607,7 +607,7 @@ existing settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsVoipSandboxChannel>
 
-Returns: a L<Paws::Pinpoint::DeleteApnsVoipSandboxChannelResponse> instance
+Returns: a L<Paws::Pinpoint::APNSVoipSandboxChannelResponse> instance
 
 Disables the APNs VoIP sandbox channel for an application and deletes
 any existing settings for the channel.
@@ -624,7 +624,7 @@ any existing settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteApp>
 
-Returns: a L<Paws::Pinpoint::DeleteAppResponse> instance
+Returns: a L<Paws::Pinpoint::ApplicationResponse> instance
 
 Deletes an application.
 
@@ -640,7 +640,7 @@ Deletes an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteBaiduChannel>
 
-Returns: a L<Paws::Pinpoint::DeleteBaiduChannelResponse> instance
+Returns: a L<Paws::Pinpoint::BaiduChannelResponse> instance
 
 Disables the Baidu channel for an application and deletes any existing
 settings for the channel.
@@ -659,7 +659,7 @@ settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteCampaign>
 
-Returns: a L<Paws::Pinpoint::DeleteCampaignResponse> instance
+Returns: a L<Paws::Pinpoint::CampaignResponse> instance
 
 Deletes a campaign from an application.
 
@@ -675,7 +675,7 @@ Deletes a campaign from an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteEmailChannel>
 
-Returns: a L<Paws::Pinpoint::DeleteEmailChannelResponse> instance
+Returns: a L<Paws::Pinpoint::EmailChannelResponse> instance
 
 Disables the email channel for an application and deletes any existing
 settings for the channel.
@@ -694,7 +694,7 @@ settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteEndpoint>
 
-Returns: a L<Paws::Pinpoint::DeleteEndpointResponse> instance
+Returns: a L<Paws::Pinpoint::EndpointResponse> instance
 
 Deletes an endpoint from an application.
 
@@ -710,7 +710,7 @@ Deletes an endpoint from an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteEventStream>
 
-Returns: a L<Paws::Pinpoint::DeleteEventStreamResponse> instance
+Returns: a L<Paws::Pinpoint::EventStream> instance
 
 Deletes the event stream for an application.
 
@@ -726,7 +726,7 @@ Deletes the event stream for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteGcmChannel>
 
-Returns: a L<Paws::Pinpoint::DeleteGcmChannelResponse> instance
+Returns: a L<Paws::Pinpoint::GCMChannelResponse> instance
 
 Disables the GCM channel for an application and deletes any existing
 settings for the channel.
@@ -745,7 +745,7 @@ settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteSegment>
 
-Returns: a L<Paws::Pinpoint::DeleteSegmentResponse> instance
+Returns: a L<Paws::Pinpoint::SegmentResponse> instance
 
 Deletes a segment from an application.
 
@@ -761,7 +761,7 @@ Deletes a segment from an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteSmsChannel>
 
-Returns: a L<Paws::Pinpoint::DeleteSmsChannelResponse> instance
+Returns: a L<Paws::Pinpoint::SMSChannelResponse> instance
 
 Disables the SMS channel for an application and deletes any existing
 settings for the channel.
@@ -780,7 +780,7 @@ settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteUserEndpoints>
 
-Returns: a L<Paws::Pinpoint::DeleteUserEndpointsResponse> instance
+Returns: a L<Paws::Pinpoint::EndpointsResponse> instance
 
 Deletes all the endpoints that are associated with a specific user ID.
 
@@ -813,7 +813,7 @@ settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetAdmChannel>
 
-Returns: a L<Paws::Pinpoint::GetAdmChannelResponse> instance
+Returns: a L<Paws::Pinpoint::ADMChannelResponse> instance
 
 Retrieves information about the status and settings of the ADM channel
 for an application.
@@ -898,7 +898,7 @@ sandbox channel for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetApp>
 
-Returns: a L<Paws::Pinpoint::GetAppResponse> instance
+Returns: a L<Paws::Pinpoint::ApplicationResponse> instance
 
 Retrieves information about an application.
 
@@ -914,7 +914,7 @@ Retrieves information about an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetApplicationSettings>
 
-Returns: a L<Paws::Pinpoint::GetApplicationSettingsResponse> instance
+Returns: a L<Paws::Pinpoint::ApplicationSettingsResource> instance
 
 Retrieves information about the settings for an application.
 
@@ -932,7 +932,7 @@ Retrieves information about the settings for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetApps>
 
-Returns: a L<Paws::Pinpoint::GetAppsResponse> instance
+Returns: a L<Paws::Pinpoint::ApplicationsResponse> instance
 
 Retrieves information about all of your applications.
 
@@ -990,7 +990,7 @@ settings for a campaign.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignActivities>
 
-Returns: a L<Paws::Pinpoint::GetCampaignActivitiesResponse> instance
+Returns: a L<Paws::Pinpoint::ActivitiesResponse> instance
 
 Retrieves information about the activity performed by a campaign.
 
@@ -1031,7 +1031,7 @@ settings for all the campaigns that are associated with an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignVersion>
 
-Returns: a L<Paws::Pinpoint::GetCampaignVersionResponse> instance
+Returns: a L<Paws::Pinpoint::CampaignResponse> instance
 
 Retrieves information about the status, configuration, and other
 settings for a specific version of a campaign.
@@ -1054,7 +1054,7 @@ settings for a specific version of a campaign.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignVersions>
 
-Returns: a L<Paws::Pinpoint::GetCampaignVersionsResponse> instance
+Returns: a L<Paws::Pinpoint::CampaignsResponse> instance
 
 Retrieves information about the status, configuration, and other
 settings for all versions of a specific campaign.
@@ -1071,7 +1071,7 @@ settings for all versions of a specific campaign.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetChannels>
 
-Returns: a L<Paws::Pinpoint::GetChannelsResponse> instance
+Returns: a L<Paws::Pinpoint::ChannelsResponse> instance
 
 Retrieves information about the history and status of each channel for
 an application.
@@ -1088,7 +1088,7 @@ an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetEmailChannel>
 
-Returns: a L<Paws::Pinpoint::GetEmailChannelResponse> instance
+Returns: a L<Paws::Pinpoint::EmailChannelResponse> instance
 
 Retrieves information about the status and settings of the email
 channel for an application.
@@ -1107,7 +1107,7 @@ channel for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetEndpoint>
 
-Returns: a L<Paws::Pinpoint::GetEndpointResponse> instance
+Returns: a L<Paws::Pinpoint::EndpointResponse> instance
 
 Retrieves information about the settings and attributes of a specific
 endpoint for an application.
@@ -1221,7 +1221,7 @@ import job for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetImportJobs>
 
-Returns: a L<Paws::Pinpoint::GetImportJobsResponse> instance
+Returns: a L<Paws::Pinpoint::ImportJobsResponse> instance
 
 Retrieves information about the status and settings of all the import
 jobs for an application.
@@ -1240,7 +1240,7 @@ jobs for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetSegment>
 
-Returns: a L<Paws::Pinpoint::GetSegmentResponse> instance
+Returns: a L<Paws::Pinpoint::SegmentResponse> instance
 
 Retrieves information about the configuration, dimension, and other
 settings for a specific segment that's associated with an application.
@@ -1263,7 +1263,7 @@ settings for a specific segment that's associated with an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetSegmentExportJobs>
 
-Returns: a L<Paws::Pinpoint::GetSegmentExportJobsResponse> instance
+Returns: a L<Paws::Pinpoint::ExportJobsResponse> instance
 
 Retrieves information about the status and settings of the export jobs
 for a segment.
@@ -1286,7 +1286,7 @@ for a segment.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetSegmentImportJobs>
 
-Returns: a L<Paws::Pinpoint::GetSegmentImportJobsResponse> instance
+Returns: a L<Paws::Pinpoint::ImportJobsResponse> instance
 
 Retrieves information about the status and settings of the import jobs
 for a segment.
@@ -1307,7 +1307,7 @@ for a segment.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetSegments>
 
-Returns: a L<Paws::Pinpoint::GetSegmentsResponse> instance
+Returns: a L<Paws::Pinpoint::SegmentsResponse> instance
 
 Retrieves information about the configuration, dimension, and other
 settings for all the segments that are associated with an application.
@@ -1328,7 +1328,7 @@ settings for all the segments that are associated with an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetSegmentVersion>
 
-Returns: a L<Paws::Pinpoint::GetSegmentVersionResponse> instance
+Returns: a L<Paws::Pinpoint::SegmentResponse> instance
 
 Retrieves information about the configuration, dimension, and other
 settings for a specific version of a segment that's associated with an
@@ -1352,7 +1352,7 @@ application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetSegmentVersions>
 
-Returns: a L<Paws::Pinpoint::GetSegmentVersionsResponse> instance
+Returns: a L<Paws::Pinpoint::SegmentsResponse> instance
 
 Retrieves information about the configuration, dimension, and other
 settings for all versions of a specific segment that's associated with
@@ -1370,7 +1370,7 @@ an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetSmsChannel>
 
-Returns: a L<Paws::Pinpoint::GetSmsChannelResponse> instance
+Returns: a L<Paws::Pinpoint::SMSChannelResponse> instance
 
 Retrieves information about the status and settings of the SMS channel
 for an application.
@@ -1389,7 +1389,7 @@ for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetUserEndpoints>
 
-Returns: a L<Paws::Pinpoint::GetUserEndpointsResponse> instance
+Returns: a L<Paws::Pinpoint::EndpointsResponse> instance
 
 Retrieves information about all the endpoints that are associated with
 a specific user ID.
@@ -1440,7 +1440,7 @@ application, campaign, or segment.
 
 Each argument is described in detail in: L<Paws::Pinpoint::PhoneNumberValidate>
 
-Returns: a L<Paws::Pinpoint::PhoneNumberValidateResponse> instance
+Returns: a L<Paws::Pinpoint::NumberValidateResponse> instance
 
 Retrieves information about a phone number.
 
@@ -1458,7 +1458,7 @@ Retrieves information about a phone number.
 
 Each argument is described in detail in: L<Paws::Pinpoint::PutEvents>
 
-Returns: a L<Paws::Pinpoint::PutEventsResponse> instance
+Returns: a L<Paws::Pinpoint::EventsResponse> instance
 
 Creates a new event to record for endpoints, or creates or updates
 endpoint data that existing events are associated with.
@@ -1477,7 +1477,7 @@ endpoint data that existing events are associated with.
 
 Each argument is described in detail in: L<Paws::Pinpoint::PutEventStream>
 
-Returns: a L<Paws::Pinpoint::PutEventStreamResponse> instance
+Returns: a L<Paws::Pinpoint::EventStream> instance
 
 Creates a new event stream for an application or updates the settings
 of an existing event stream for an application.
@@ -1498,7 +1498,7 @@ of an existing event stream for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::RemoveAttributes>
 
-Returns: a L<Paws::Pinpoint::RemoveAttributesResponse> instance
+Returns: a L<Paws::Pinpoint::AttributesResource> instance
 
 Removes one or more attributes, of the same attribute type, from all
 the endpoints that are associated with an application.
@@ -1517,7 +1517,7 @@ the endpoints that are associated with an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::SendMessages>
 
-Returns: a L<Paws::Pinpoint::SendMessagesResponse> instance
+Returns: a L<Paws::Pinpoint::MessageResponse> instance
 
 Creates and sends a direct message.
 
@@ -1535,7 +1535,7 @@ Creates and sends a direct message.
 
 Each argument is described in detail in: L<Paws::Pinpoint::SendUsersMessages>
 
-Returns: a L<Paws::Pinpoint::SendUsersMessagesResponse> instance
+Returns: a L<Paws::Pinpoint::SendUsersMessageResponse> instance
 
 Creates and sends a message to a list of users.
 
@@ -1591,7 +1591,7 @@ campaign, or segment.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateAdmChannel>
 
-Returns: a L<Paws::Pinpoint::UpdateAdmChannelResponse> instance
+Returns: a L<Paws::Pinpoint::ADMChannelResponse> instance
 
 Updates the ADM channel settings for an application.
 
@@ -1609,7 +1609,7 @@ Updates the ADM channel settings for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsChannel>
 
-Returns: a L<Paws::Pinpoint::UpdateApnsChannelResponse> instance
+Returns: a L<Paws::Pinpoint::APNSChannelResponse> instance
 
 Updates the APNs channel settings for an application.
 
@@ -1627,7 +1627,7 @@ Updates the APNs channel settings for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsSandboxChannel>
 
-Returns: a L<Paws::Pinpoint::UpdateApnsSandboxChannelResponse> instance
+Returns: a L<Paws::Pinpoint::APNSSandboxChannelResponse> instance
 
 Updates the APNs sandbox channel settings for an application.
 
@@ -1645,7 +1645,7 @@ Updates the APNs sandbox channel settings for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsVoipChannel>
 
-Returns: a L<Paws::Pinpoint::UpdateApnsVoipChannelResponse> instance
+Returns: a L<Paws::Pinpoint::APNSVoipChannelResponse> instance
 
 Updates the APNs VoIP channel settings for an application.
 
@@ -1663,7 +1663,7 @@ Updates the APNs VoIP channel settings for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsVoipSandboxChannel>
 
-Returns: a L<Paws::Pinpoint::UpdateApnsVoipSandboxChannelResponse> instance
+Returns: a L<Paws::Pinpoint::APNSVoipSandboxChannelResponse> instance
 
 Updates the settings for the APNs VoIP sandbox channel for an
 application.
@@ -1682,7 +1682,7 @@ application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateApplicationSettings>
 
-Returns: a L<Paws::Pinpoint::UpdateApplicationSettingsResponse> instance
+Returns: a L<Paws::Pinpoint::ApplicationSettingsResource> instance
 
 Updates the settings for an application.
 
@@ -1700,7 +1700,7 @@ Updates the settings for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateBaiduChannel>
 
-Returns: a L<Paws::Pinpoint::UpdateBaiduChannelResponse> instance
+Returns: a L<Paws::Pinpoint::BaiduChannelResponse> instance
 
 Updates the settings of the Baidu channel for an application.
 
@@ -1720,7 +1720,7 @@ Updates the settings of the Baidu channel for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateCampaign>
 
-Returns: a L<Paws::Pinpoint::UpdateCampaignResponse> instance
+Returns: a L<Paws::Pinpoint::CampaignResponse> instance
 
 Updates the settings for a campaign.
 
@@ -1738,7 +1738,7 @@ Updates the settings for a campaign.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateEmailChannel>
 
-Returns: a L<Paws::Pinpoint::UpdateEmailChannelResponse> instance
+Returns: a L<Paws::Pinpoint::EmailChannelResponse> instance
 
 Updates the status and settings of the email channel for an
 application.
@@ -1759,7 +1759,7 @@ application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateEndpoint>
 
-Returns: a L<Paws::Pinpoint::UpdateEndpointResponse> instance
+Returns: a L<Paws::Pinpoint::MessageBody> instance
 
 Creates a new endpoint for an application or updates the settings and
 attributes of an existing endpoint for an application. You can also use
@@ -1780,7 +1780,7 @@ UserAttributes properties) for an endpoint.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateEndpointsBatch>
 
-Returns: a L<Paws::Pinpoint::UpdateEndpointsBatchResponse> instance
+Returns: a L<Paws::Pinpoint::MessageBody> instance
 
 Creates a new batch of endpoints for an application or updates the
 settings and attributes of a batch of existing endpoints for an
@@ -1802,7 +1802,7 @@ batch of endpoints.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateGcmChannel>
 
-Returns: a L<Paws::Pinpoint::UpdateGcmChannelResponse> instance
+Returns: a L<Paws::Pinpoint::GCMChannelResponse> instance
 
 Updates the status and settings of the GCM channel for an application.
 
@@ -1822,7 +1822,7 @@ Updates the status and settings of the GCM channel for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateSegment>
 
-Returns: a L<Paws::Pinpoint::UpdateSegmentResponse> instance
+Returns: a L<Paws::Pinpoint::SegmentResponse> instance
 
 Creates a new segment for an application or updates the configuration,
 dimension, and other settings for an existing segment that's associated
@@ -1842,7 +1842,7 @@ with an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateSmsChannel>
 
-Returns: a L<Paws::Pinpoint::UpdateSmsChannelResponse> instance
+Returns: a L<Paws::Pinpoint::SMSChannelResponse> instance
 
 Updates the status and settings of the SMS channel for an application.
 

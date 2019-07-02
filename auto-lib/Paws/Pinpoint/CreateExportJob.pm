@@ -9,7 +9,7 @@ package Paws::Pinpoint::CreateExportJob;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateExportJob');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/jobs/export');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::CreateExportJobResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::ExportJobResponse');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $CreateExportJobResponse = $pinpoint->CreateExportJob(
+    my $ExportJobResponse = $pinpoint->CreateExportJob(
       ApplicationId    => 'My__string',
       ExportJobRequest => {
         RoleArn        => 'My__string',
@@ -41,9 +41,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ExportJobResponse = $CreateExportJobResponse->ExportJobResponse;
+    my $ApplicationId   = $ExportJobResponse->ApplicationId;
+    my $CompletedPieces = $ExportJobResponse->CompletedPieces;
+    my $CompletionDate  = $ExportJobResponse->CompletionDate;
+    my $CreationDate    = $ExportJobResponse->CreationDate;
+    my $Definition      = $ExportJobResponse->Definition;
+    my $FailedPieces    = $ExportJobResponse->FailedPieces;
+    my $Failures        = $ExportJobResponse->Failures;
+    my $Id              = $ExportJobResponse->Id;
+    my $JobStatus       = $ExportJobResponse->JobStatus;
+    my $TotalFailures   = $ExportJobResponse->TotalFailures;
+    my $TotalPieces     = $ExportJobResponse->TotalPieces;
+    my $TotalProcessed  = $ExportJobResponse->TotalProcessed;
+    my $Type            = $ExportJobResponse->Type;
 
-    # Returns a L<Paws::Pinpoint::CreateExportJobResponse> object.
+    # Returns a L<Paws::Pinpoint::ExportJobResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/CreateExportJob>

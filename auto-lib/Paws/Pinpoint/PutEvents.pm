@@ -9,7 +9,7 @@ package Paws::Pinpoint::PutEvents;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEvents');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/events');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::PutEventsResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::EventsResponse');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $PutEventsResponse = $pinpoint->PutEvents(
+    my $EventsResponse = $pinpoint->PutEvents(
       ApplicationId => 'My__string',
       EventsRequest => {
         BatchItem => {
@@ -101,9 +101,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $EventsResponse = $PutEventsResponse->EventsResponse;
+    my $Results = $EventsResponse->Results;
 
-    # Returns a L<Paws::Pinpoint::PutEventsResponse> object.
+    # Returns a L<Paws::Pinpoint::EventsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/PutEvents>

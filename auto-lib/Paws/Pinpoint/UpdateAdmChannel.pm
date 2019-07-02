@@ -9,7 +9,7 @@ package Paws::Pinpoint::UpdateAdmChannel;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAdmChannel');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/adm');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateAdmChannelResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::ADMChannelResponse');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $UpdateAdmChannelResponse = $pinpoint->UpdateAdmChannel(
+    my $ADMChannelResponse = $pinpoint->UpdateAdmChannel(
       ADMChannelRequest => {
         ClientId     => 'My__string',
         ClientSecret => 'My__string',
@@ -40,9 +40,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ADMChannelResponse = $UpdateAdmChannelResponse->ADMChannelResponse;
+    my $ApplicationId    = $ADMChannelResponse->ApplicationId;
+    my $CreationDate     = $ADMChannelResponse->CreationDate;
+    my $Enabled          = $ADMChannelResponse->Enabled;
+    my $HasCredential    = $ADMChannelResponse->HasCredential;
+    my $Id               = $ADMChannelResponse->Id;
+    my $IsArchived       = $ADMChannelResponse->IsArchived;
+    my $LastModifiedBy   = $ADMChannelResponse->LastModifiedBy;
+    my $LastModifiedDate = $ADMChannelResponse->LastModifiedDate;
+    my $Platform         = $ADMChannelResponse->Platform;
+    my $Version          = $ADMChannelResponse->Version;
 
-    # Returns a L<Paws::Pinpoint::UpdateAdmChannelResponse> object.
+    # Returns a L<Paws::Pinpoint::ADMChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/UpdateAdmChannel>

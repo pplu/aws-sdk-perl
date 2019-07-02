@@ -8,7 +8,7 @@ package Paws::Pinpoint::DeleteEmailChannel;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteEmailChannel');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/email');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::DeleteEmailChannelResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::EmailChannelResponse');
 1;
 
 ### main pod documentation begin ###
@@ -28,16 +28,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $DeleteEmailChannelResponse = $pinpoint->DeleteEmailChannel(
+    my $EmailChannelResponse = $pinpoint->DeleteEmailChannel(
       ApplicationId => 'My__string',
 
     );
 
     # Results:
-    my $EmailChannelResponse =
-      $DeleteEmailChannelResponse->EmailChannelResponse;
+    my $ApplicationId     = $EmailChannelResponse->ApplicationId;
+    my $ConfigurationSet  = $EmailChannelResponse->ConfigurationSet;
+    my $CreationDate      = $EmailChannelResponse->CreationDate;
+    my $Enabled           = $EmailChannelResponse->Enabled;
+    my $FromAddress       = $EmailChannelResponse->FromAddress;
+    my $HasCredential     = $EmailChannelResponse->HasCredential;
+    my $Id                = $EmailChannelResponse->Id;
+    my $Identity          = $EmailChannelResponse->Identity;
+    my $IsArchived        = $EmailChannelResponse->IsArchived;
+    my $LastModifiedBy    = $EmailChannelResponse->LastModifiedBy;
+    my $LastModifiedDate  = $EmailChannelResponse->LastModifiedDate;
+    my $MessagesPerSecond = $EmailChannelResponse->MessagesPerSecond;
+    my $Platform          = $EmailChannelResponse->Platform;
+    my $RoleArn           = $EmailChannelResponse->RoleArn;
+    my $Version           = $EmailChannelResponse->Version;
 
-    # Returns a L<Paws::Pinpoint::DeleteEmailChannelResponse> object.
+    # Returns a L<Paws::Pinpoint::EmailChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/DeleteEmailChannel>
