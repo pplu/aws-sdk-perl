@@ -10,6 +10,7 @@ package Paws::DocDB::DBCluster;
   has DBClusterParameterGroup => (is => 'ro', isa => 'Str');
   has DbClusterResourceId => (is => 'ro', isa => 'Str');
   has DBSubnetGroup => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EarliestRestorableTime => (is => 'ro', isa => 'Str');
   has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Endpoint => (is => 'ro', isa => 'Str');
@@ -123,6 +124,14 @@ key for the DB cluster is accessed.
   Specifies information on the subnet group that is associated with the
 DB cluster, including the name, description, and subnets in the subnet
 group.
+
+
+=head2 DeletionProtection => Bool
+
+  Specifies whether this cluster can be deleted. If C<DeletionProtection>
+is enabled, the cluster cannot be deleted unless it is modified and
+C<DeletionProtection> is disabled. C<DeletionProtection> protects
+clusters from being accidentally deleted.
 
 
 =head2 EarliestRestorableTime => Str

@@ -97,7 +97,7 @@ The identifier of the DB cluster that the instance will belong to.
 =head2 B<REQUIRED> DBInstanceClass => Str
 
 The compute and memory capacity of the DB instance; for example,
-C<db.m4.large>.
+C<db.r5.large>.
 
 
 

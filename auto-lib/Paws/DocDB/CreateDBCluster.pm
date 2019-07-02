@@ -6,12 +6,13 @@ package Paws::DocDB::CreateDBCluster;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
+  has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
+  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -46,15 +47,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDBClusterResult = $rds->CreateDBCluster(
       DBClusterIdentifier         => 'MyString',
       Engine                      => 'MyString',
+      MasterUserPassword          => 'MyString',
+      MasterUsername              => 'MyString',
       AvailabilityZones           => [ 'MyString', ... ],    # OPTIONAL
       BackupRetentionPeriod       => 1,                      # OPTIONAL
       DBClusterParameterGroupName => 'MyString',             # OPTIONAL
       DBSubnetGroupName           => 'MyString',             # OPTIONAL
+      DeletionProtection          => 1,                      # OPTIONAL
       EnableCloudwatchLogsExports => [ 'MyString', ... ],    # OPTIONAL
       EngineVersion               => 'MyString',             # OPTIONAL
       KmsKeyId                    => 'MyString',             # OPTIONAL
-      MasterUserPassword          => 'MyString',             # OPTIONAL
-      MasterUsername              => 'MyString',             # OPTIONAL
       Port                        => 1,                      # OPTIONAL
       PreferredBackupWindow       => 'MyString',             # OPTIONAL
       PreferredMaintenanceWindow  => 'MyString',             # OPTIONAL
@@ -152,6 +154,15 @@ Example: C<mySubnetgroup>
 
 
 
+=head2 DeletionProtection => Bool
+
+Specifies whether this cluster can be deleted. If C<DeletionProtection>
+is enabled, the cluster cannot be deleted unless it is modified and
+C<DeletionProtection> is disabled. C<DeletionProtection> protects
+clusters from being accidentally deleted.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 A list of log types that need to be enabled for exporting to Amazon
@@ -211,7 +222,7 @@ AWS Region.
 
 
 
-=head2 MasterUsername => Str
+=head2 B<REQUIRED> MasterUsername => Str
 
 The name of the master user for the DB cluster.
 
@@ -236,10 +247,11 @@ Cannot be a reserved word for the chosen database engine.
 
 
 
-=head2 MasterUserPassword => Str
+=head2 B<REQUIRED> MasterUserPassword => Str
 
 The password for the master database user. This password can contain
-any printable ASCII character except "/", """, or "@".
+any printable ASCII character except forward slash (/), double quote
+("), or the "at" symbol (@).
 
 Constraints: Must contain from 8 to 41 characters.
 
