@@ -175,6 +175,11 @@ provisioning the product.
 
 One or more tags.
 
+If the plan is for an existing provisioned product, the product must
+have a C<RESOURCE_UPDATE> constraint with
+C<TagUpdatesOnProvisionedProduct> set to C<ALLOWED> to allow tag
+updates.
+
 
 
 

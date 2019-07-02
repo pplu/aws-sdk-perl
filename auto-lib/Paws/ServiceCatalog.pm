@@ -2692,6 +2692,8 @@ product.
 
 =item [Description => Str]
 
+=item [Guidance => Str]
+
 =item [Name => Str]
 
 
