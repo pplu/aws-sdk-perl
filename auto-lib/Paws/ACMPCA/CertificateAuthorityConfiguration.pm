@@ -39,7 +39,7 @@ algorithm and the key pair that your private CA creates when it issues
 a certificate. It also includes the signature algorithm that it uses
 when issuing certificates, and its X.500 distinguished name. You must
 specify this information when you call the CreateCertificateAuthority
-operation.
+action.
 
 =head1 ATTRIBUTES
 
@@ -47,7 +47,9 @@ operation.
 =head2 B<REQUIRED> KeyAlgorithm => Str
 
   Type of the public key algorithm and size, in bits, of the key pair
-that your key pair creates when it issues a certificate.
+that your CA creates when it issues a certificate. When you create a
+subordinate CA, you must use a key algorithm supported by the parent
+CA.
 
 
 =head2 B<REQUIRED> SigningAlgorithm => Str

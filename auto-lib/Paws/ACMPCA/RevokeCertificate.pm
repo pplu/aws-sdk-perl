@@ -56,17 +56,17 @@ C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-123
 Serial number of the certificate to be revoked. This must be in
 hexadecimal format. You can retrieve the serial number by calling
 GetCertificate with the Amazon Resource Name (ARN) of the certificate
-you want and the ARN of your private CA. The B<GetCertificate>
-operation retrieves the certificate in the PEM format. You can use the
-following OpenSSL command to list the certificate in text format and
-copy the hexadecimal serial number.
+you want and the ARN of your private CA. The B<GetCertificate> action
+retrieves the certificate in the PEM format. You can use the following
+OpenSSL command to list the certificate in text format and copy the
+hexadecimal serial number.
 
 C<openssl x509 -in I<file_path> -text -noout>
 
 You can also copy the serial number from the console or use the
 DescribeCertificate
 (https://docs.aws.amazon.com/acm/latest/APIReference/API_DescribeCertificate.html)
-operation in the I<AWS Certificate Manager API Reference>.
+action in the I<AWS Certificate Manager API Reference>.
 
 
 

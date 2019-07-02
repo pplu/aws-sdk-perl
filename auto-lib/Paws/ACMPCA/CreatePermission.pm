@@ -56,8 +56,8 @@ include C<IssueCertificate>, C<GetCertificate>, and C<ListPermissions>.
 =head2 B<REQUIRED> CertificateAuthorityArn => Str
 
 The Amazon Resource Name (ARN) of the CA that grants the permissions.
-You can find the ARN by calling the ListCertificateAuthorities
-operation. This must have the following form:
+You can find the ARN by calling the ListCertificateAuthorities action.
+This must have the following form:
 
 C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>
 >.

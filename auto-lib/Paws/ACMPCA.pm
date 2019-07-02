@@ -215,42 +215,22 @@ Paws::ACMPCA - Perl Interface to AWS AWS Certificate Manager Private Certificate
 
 =head1 DESCRIPTION
 
-You can use the ACM PCA API to create a private certificate authority
-(CA). You must first call the CreateCertificateAuthority operation. If
-successful, the operation returns an Amazon Resource Name (ARN) for
-your private CA. Use this ARN as input to the
-GetCertificateAuthorityCsr operation to retrieve the certificate
-signing request (CSR) for your private CA certificate. Sign the CSR
-using the root or an intermediate CA in your on-premises PKI hierarchy,
-and call the ImportCertificateAuthorityCertificate to import your
-signed private CA certificate into ACM PCA.
+This is the I<ACM Private CA API Reference>. It provides descriptions,
+syntax, and usage examples for each of the actions and data types
+involved in creating and managing private certificate authorities (CA)
+for your organization.
 
-Use your private CA to issue and revoke certificates. These are private
-certificates that identify and secure client computers, servers,
-applications, services, devices, and users over SSLS/TLS connections
-within your organization. Call the IssueCertificate operation to issue
-a certificate. Call the RevokeCertificate operation to revoke a
-certificate.
+The documentation for each action shows the Query API request
+parameters and the XML response. Alternatively, you can use one of the
+AWS SDKs to access an API that's tailored to the programming language
+or platform that you're using. For more information, see AWS SDKs
+(https://aws.amazon.com/tools/#SDKs).
 
-Certificates issued by your private CA can be trusted only within your
-organization, not publicly.
-
-Your private CA can optionally create a certificate revocation list
-(CRL) to track the certificates you revoke. To create a CRL, you must
-specify a RevocationConfiguration object when you call the
-CreateCertificateAuthority operation. ACM PCA writes the CRL to an S3
-bucket that you specify. You must specify a bucket policy that grants
-ACM PCA write permission.
-
-You can also call the CreateCertificateAuthorityAuditReport to create
-an optional audit report, which enumerates all of the issued, valid,
-expired, and revoked certificates from the CA.
-
-Each ACM PCA API operation has a throttling limit which determines the
-number of times the operation can be called per second. For more
-information, see API Rate Limits in ACM PCA
+Each ACM Private CA API action has a throttling limit which determines
+the number of times the action can be called per second. For more
+information, see API Rate Limits in ACM Private CA
 (https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaLimits.html#PcaLimits-api)
-in the ACM PCA user guide.
+in the ACM Private CA user guide.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22>
 
@@ -278,17 +258,18 @@ Each argument is described in detail in: L<Paws::ACMPCA::CreateCertificateAuthor
 
 Returns: a L<Paws::ACMPCA::CreateCertificateAuthorityResponse> instance
 
-Creates a private subordinate certificate authority (CA). You must
-specify the CA configuration, the revocation configuration, the CA
-type, and an optional idempotency token. The CA configuration specifies
-the name of the algorithm and key size to be used to create the CA
-private key, the type of signing algorithm that the CA uses to sign,
-and X.500 subject information. The CRL (certificate revocation list)
-configuration specifies the CRL expiration period in days (the validity
-period of the CRL), the Amazon S3 bucket that will contain the CRL, and
-a CNAME alias for the S3 bucket that is included in certificates issued
-by the CA. If successful, this operation returns the Amazon Resource
-Name (ARN) of the CA.
+Creates a root or subordinate private certificate authority (CA). You
+must specify the CA configuration, the certificate revocation list
+(CRL) configuration, the CA type, and an optional idempotency token to
+avoid accidental creation of multiple CAs. The CA configuration
+specifies the name of the algorithm and key size to be used to create
+the CA private key, the type of signing algorithm that the CA uses, and
+X.500 subject information. The CRL configuration specifies the CRL
+expiration period in days (the validity period of the CRL), the Amazon
+S3 bucket that will contain the CRL, and a CNAME alias for the S3
+bucket that is included in certificates issued by the CA. If
+successful, this action returns the Amazon Resource Name (ARN) of the
+CA.
 
 
 =head2 CreateCertificateAuthorityAuditReport
@@ -310,8 +291,8 @@ Returns: a L<Paws::ACMPCA::CreateCertificateAuthorityAuditReportResponse> instan
 
 Creates an audit report that lists every time that your CA private key
 is used. The report is saved in the Amazon S3 bucket that you specify
-on input. The IssueCertificate and RevokeCertificate operations use the
-private key. You can generate a new report every 30 minutes.
+on input. The IssueCertificate and RevokeCertificate actions use the
+private key.
 
 
 =head2 CreatePermission
@@ -343,8 +324,7 @@ from the CA to the ACM service principal.
 
 At this time, you can only assign permissions to ACM
 (C<acm.amazonaws.com>). Permissions can be revoked with the
-DeletePermission operation and listed with the ListPermissions
-operation.
+DeletePermission action and listed with the ListPermissions action.
 
 
 =head2 DeleteCertificateAuthority
@@ -362,28 +342,31 @@ Each argument is described in detail in: L<Paws::ACMPCA::DeleteCertificateAuthor
 
 Returns: nothing
 
-Deletes a private certificate authority (CA). You must provide the ARN
-(Amazon Resource Name) of the private CA that you want to delete. You
-can find the ARN by calling the ListCertificateAuthorities operation.
-Before you can delete a CA, you must disable it. Call the
-UpdateCertificateAuthority operation and set the
-B<CertificateAuthorityStatus> parameter to C<DISABLED>.
+Deletes a private certificate authority (CA). You must provide the
+Amazon Resource Name (ARN) of the private CA that you want to delete.
+You can find the ARN by calling the ListCertificateAuthorities action.
+
+Deleting a CA will invalidate other CAs and certificates below it in
+your CA hierarchy.
+
+Before you can delete a CA that you have created and activated, you
+must disable it. To do this, call the UpdateCertificateAuthority action
+and set the B<CertificateAuthorityStatus> parameter to C<DISABLED>.
 
 Additionally, you can delete a CA if you are waiting for it to be
-created (the B<Status> field of the CertificateAuthority is
-C<CREATING>). You can also delete it if the CA has been created but you
-haven't yet imported the signed certificate (the B<Status> is
-C<PENDING_CERTIFICATE>) into ACM PCA.
+created (that is, the status of the CA is C<CREATING>). You can also
+delete it if the CA has been created but you haven't yet imported the
+signed certificate into ACM Private CA (that is, the status of the CA
+is C<PENDING_CERTIFICATE>).
 
-If the CA is in one of the previously mentioned states and you call
-DeleteCertificateAuthority, the CA's status changes to C<DELETED>.
-However, the CA won't be permanently deleted until the restoration
-period has passed. By default, if you do not set the
-C<PermanentDeletionTimeInDays> parameter, the CA remains restorable for
-30 days. You can set the parameter from 7 to 30 days. The
-DescribeCertificateAuthority operation returns the time remaining in
-the restoration window of a Private CA in the C<DELETED> state. To
-restore an eligible CA, call the RestoreCertificateAuthority operation.
+When you successfully call DeleteCertificateAuthority, the CA's status
+changes to C<DELETED>. However, the CA won't be permanently deleted
+until the restoration period has passed. By default, if you do not set
+the C<PermanentDeletionTimeInDays> parameter, the CA remains restorable
+for 30 days. You can set the parameter from 7 to 30 days. The
+DescribeCertificateAuthority action returns the time remaining in the
+restoration window of a private CA in the C<DELETED> state. To restore
+an eligible CA, call the RestoreCertificateAuthority action.
 
 
 =head2 DeletePermission
@@ -404,8 +387,8 @@ Each argument is described in detail in: L<Paws::ACMPCA::DeletePermission>
 Returns: nothing
 
 Revokes permissions that a private CA assigned to a designated AWS
-service. Permissions can be created with the CreatePermission operation
-and listed with the ListPermissions operation.
+service. Permissions can be created with the CreatePermission action
+and listed with the ListPermissions action.
 
 
 =head2 DescribeCertificateAuthority
@@ -430,13 +413,14 @@ following:
 
 =item *
 
-C<CREATING> - ACM PCA is creating your private certificate authority.
+C<CREATING> - ACM Private CA is creating your private certificate
+authority.
 
 =item *
 
 C<PENDING_CERTIFICATE> - The certificate is pending. You must use your
-on-premises root or subordinate CA to sign your private CA CSR and then
-import it into PCA.
+ACM Private CA-hosted or on-premises root or subordinate CA to sign
+your private CA CSR and then import it into PCA.
 
 =item *
 
@@ -461,7 +445,7 @@ new CA.
 
 C<DELETED> - Your private CA is within the restoration period, after
 which it is permanently deleted. The length of time remaining in the
-CA's restoration period is also included in this operation's output.
+CA's restoration period is also included in this action's output.
 
 =back
 
@@ -483,10 +467,10 @@ Each argument is described in detail in: L<Paws::ACMPCA::DescribeCertificateAuth
 Returns: a L<Paws::ACMPCA::DescribeCertificateAuthorityAuditReportResponse> instance
 
 Lists information about a specific audit report created by calling the
-CreateCertificateAuthorityAuditReport operation. Audit information is
+CreateCertificateAuthorityAuditReport action. Audit information is
 created every time the certificate authority (CA) private key is used.
-The private key is used when you call the IssueCertificate operation or
-the RevokeCertificate operation.
+The private key is used when you call the IssueCertificate action or
+the RevokeCertificate action.
 
 
 =head2 GetCertificate
@@ -505,13 +489,13 @@ Each argument is described in detail in: L<Paws::ACMPCA::GetCertificate>
 Returns: a L<Paws::ACMPCA::GetCertificateResponse> instance
 
 Retrieves a certificate from your private CA. The ARN of the
-certificate is returned when you call the IssueCertificate operation.
-You must specify both the ARN of your private CA and the ARN of the
-issued certificate when calling the B<GetCertificate> operation. You
-can retrieve the certificate if it is in the B<ISSUED> state. You can
-call the CreateCertificateAuthorityAuditReport operation to create a
-report that contains information about all of the certificates issued
-and revoked by your private CA.
+certificate is returned when you call the IssueCertificate action. You
+must specify both the ARN of your private CA and the ARN of the issued
+certificate when calling the B<GetCertificate> action. You can retrieve
+the certificate if it is in the B<ISSUED> state. You can call the
+CreateCertificateAuthorityAuditReport action to create a report that
+contains information about all of the certificates issued and revoked
+by your private CA.
 
 
 =head2 GetCertificateAuthorityCertificate
@@ -548,11 +532,11 @@ Returns: a L<Paws::ACMPCA::GetCertificateAuthorityCsrResponse> instance
 
 Retrieves the certificate signing request (CSR) for your private
 certificate authority (CA). The CSR is created when you call the
-CreateCertificateAuthority operation. Take the CSR to your on-premises
-X.509 infrastructure and sign it by using your root or a subordinate
-CA. Then import the signed certificate back into ACM PCA by calling the
-ImportCertificateAuthorityCertificate operation. The CSR is returned as
-a base64 PEM-encoded string.
+CreateCertificateAuthority action. Sign the CSR with your ACM Private
+CA-hosted or on-premises root or subordinate CA. Then import the signed
+certificate back into ACM Private CA by calling the
+ImportCertificateAuthorityCertificate action. The CSR is returned as a
+base64 PEM-encoded string.
 
 
 =head2 ImportCertificateAuthorityCertificate
@@ -563,7 +547,7 @@ a base64 PEM-encoded string.
 
 =item CertificateAuthorityArn => Str
 
-=item CertificateChain => Str
+=item [CertificateChain => Str]
 
 
 =back
@@ -572,25 +556,68 @@ Each argument is described in detail in: L<Paws::ACMPCA::ImportCertificateAuthor
 
 Returns: nothing
 
-Imports your signed private CA certificate into ACM PCA. Before you can
-call this operation, you must create the private certificate authority
-by calling the CreateCertificateAuthority operation. You must then
-generate a certificate signing request (CSR) by calling the
-GetCertificateAuthorityCsr operation. Take the CSR to your on-premises
-CA and use the root certificate or a subordinate certificate to sign
-it. Create a certificate chain and copy the signed certificate and the
+Imports a signed private CA certificate into ACM Private CA. This
+action is used when you are using a chain of trust whose root is
+located outside ACM Private CA. Before you can call this action, the
+following preparations must in place:
+
+=over
+
+=item 1.
+
+In ACM Private CA, call the CreateCertificateAuthority action to create
+the private CA that that you plan to back with the imported
+certificate.
+
+=item 2.
+
+Call the GetCertificateAuthorityCsr action to generate a certificate
+signing request (CSR).
+
+=item 3.
+
+Sign the CSR using a root or intermediate CA hosted either by an
+on-premises PKI hierarchy or a commercial CA..
+
+=item 4.
+
+Create a certificate chain and copy the signed certificate and the
 certificate chain to your working directory.
+
+=back
+
+The following requirements apply when you import a CA certificate.
+
+=over
+
+=item *
+
+You cannot import a non-self-signed certificate for use as a root CA.
+
+=item *
+
+You cannot import a self-signed certificate for use as a subordinate
+CA.
+
+=item *
 
 Your certificate chain must not include the private CA certificate that
 you are importing.
 
-Your on-premises CA certificate must be the last certificate in your
-chain. The subordinate certificate, if any, that your root CA signed
-must be next to last. The subordinate certificate signed by the
-preceding subordinate CA must come next, and so on until your chain is
-built.
+=item *
+
+Your ACM Private CA-hosted or on-premises CA certificate must be the
+last certificate in your chain. The subordinate certificate, if any,
+that your root CA signed must be next to last. The subordinate
+certificate signed by the preceding subordinate CA must come next, and
+so on until your chain is built.
+
+=item *
 
 The chain must be PEM-encoded.
+
+=back
+
 
 
 =head2 IssueCertificate
@@ -607,6 +634,8 @@ The chain must be PEM-encoded.
 
 =item [IdempotencyToken => Str]
 
+=item [TemplateArn => Str]
+
 
 =back
 
@@ -615,12 +644,12 @@ Each argument is described in detail in: L<Paws::ACMPCA::IssueCertificate>
 Returns: a L<Paws::ACMPCA::IssueCertificateResponse> instance
 
 Uses your private certificate authority (CA) to issue a client
-certificate. This operation returns the Amazon Resource Name (ARN) of
-the certificate. You can retrieve the certificate by calling the
-GetCertificate operation and specifying the ARN.
+certificate. This action returns the Amazon Resource Name (ARN) of the
+certificate. You can retrieve the certificate by calling the
+GetCertificate action and specifying the ARN.
 
-You cannot use the ACM B<ListCertificateAuthorities> operation to
-retrieve the ARNs of the certificates that you issue by using ACM PCA.
+You cannot use the ACM B<ListCertificateAuthorities> action to retrieve
+the ARNs of the certificates that you issue by using ACM Private CA.
 
 
 =head2 ListCertificateAuthorities
@@ -639,7 +668,7 @@ Each argument is described in detail in: L<Paws::ACMPCA::ListCertificateAuthorit
 Returns: a L<Paws::ACMPCA::ListCertificateAuthoritiesResponse> instance
 
 Lists the private certificate authorities that you created by using the
-CreateCertificateAuthority operation.
+CreateCertificateAuthority action.
 
 
 =head2 ListPermissions
@@ -660,8 +689,8 @@ Each argument is described in detail in: L<Paws::ACMPCA::ListPermissions>
 Returns: a L<Paws::ACMPCA::ListPermissionsResponse> instance
 
 Lists all the permissions, if any, that have been assigned by a private
-CA. Permissions can be granted with the CreatePermission operation and
-revoked with the DeletePermission operation.
+CA. Permissions can be granted with the CreatePermission action and
+revoked with the DeletePermission action.
 
 
 =head2 ListTags
@@ -684,8 +713,8 @@ Returns: a L<Paws::ACMPCA::ListTagsResponse> instance
 Lists the tags, if any, that are associated with your private CA. Tags
 are labels that you can use to identify and organize your CAs. Each tag
 consists of a key and an optional value. Call the
-TagCertificateAuthority operation to add one or more tags to your CA.
-Call the UntagCertificateAuthority operation to remove tags.
+TagCertificateAuthority action to add one or more tags to your CA. Call
+the UntagCertificateAuthority action to remove tags.
 
 
 =head2 RestoreCertificateAuthority
@@ -704,17 +733,17 @@ Returns: nothing
 Restores a certificate authority (CA) that is in the C<DELETED> state.
 You can restore a CA during the period that you defined in the
 B<PermanentDeletionTimeInDays> parameter of the
-DeleteCertificateAuthority operation. Currently, you can specify 7 to
-30 days. If you did not specify a B<PermanentDeletionTimeInDays> value,
-by default you can restore the CA at any time in a 30 day period. You
-can check the time remaining in the restoration period of a private CA
-in the C<DELETED> state by calling the DescribeCertificateAuthority or
-ListCertificateAuthorities operations. The status of a restored CA is
-set to its pre-deletion status when the B<RestoreCertificateAuthority>
-operation returns. To change its status to C<ACTIVE>, call the
-UpdateCertificateAuthority operation. If the private CA was in the
+DeleteCertificateAuthority action. Currently, you can specify 7 to 30
+days. If you did not specify a B<PermanentDeletionTimeInDays> value, by
+default you can restore the CA at any time in a 30 day period. You can
+check the time remaining in the restoration period of a private CA in
+the C<DELETED> state by calling the DescribeCertificateAuthority or
+ListCertificateAuthorities actions. The status of a restored CA is set
+to its pre-deletion status when the B<RestoreCertificateAuthority>
+action returns. To change its status to C<ACTIVE>, call the
+UpdateCertificateAuthority action. If the private CA was in the
 C<PENDING_CERTIFICATE> state at deletion, you must use the
-ImportCertificateAuthorityCertificate operation to import a certificate
+ImportCertificateAuthorityCertificate action to import a certificate
 authority into the private CA before it can be activated. You cannot
 restore a CA after the restoration period has ended.
 
@@ -736,14 +765,16 @@ Each argument is described in detail in: L<Paws::ACMPCA::RevokeCertificate>
 
 Returns: nothing
 
-Revokes a certificate that you issued by calling the IssueCertificate
-operation. If you enable a certificate revocation list (CRL) when you
-create or update your private CA, information about the revoked
-certificates will be included in the CRL. ACM PCA writes the CRL to an
-S3 bucket that you specify. For more information about revocation, see
-the CrlConfiguration structure. ACM PCA also writes revocation
+Revokes a certificate that was issued inside ACM Private CA. If you
+enable a certificate revocation list (CRL) when you create or update
+your private CA, information about the revoked certificates will be
+included in the CRL. ACM Private CA writes the CRL to an S3 bucket that
+you specify. For more information about revocation, see the
+CrlConfiguration structure. ACM Private CA also writes revocation
 information to the audit report. For more information, see
 CreateCertificateAuthorityAuditReport.
+
+You cannot revoke a root CA self-signed certificate.
 
 
 =head2 TagCertificateAuthority
@@ -769,8 +800,8 @@ pair. You can apply a tag to just one private CA if you want to
 identify a specific characteristic of that CA, or you can apply the
 same tag to multiple private CAs if you want to filter for a common
 relationship among those CAs. To remove one or more tags, use the
-UntagCertificateAuthority operation. Call the ListTags operation to see
-what tags are associated with your CA.
+UntagCertificateAuthority action. Call the ListTags action to see what
+tags are associated with your CA.
 
 
 =head2 UntagCertificateAuthority
@@ -790,11 +821,11 @@ Returns: nothing
 
 Remove one or more tags from your private CA. A tag consists of a
 key-value pair. If you do not specify the value portion of the tag when
-calling this operation, the tag will be removed regardless of value. If
+calling this action, the tag will be removed regardless of value. If
 you specify a value, the tag is removed only if it is associated with
 the specified value. To add tags to a private CA, use the
-TagCertificateAuthority. Call the ListTags operation to see what tags
-are associated with your CA.
+TagCertificateAuthority. Call the ListTags action to see what tags are
+associated with your CA.
 
 
 =head2 UpdateCertificateAuthority

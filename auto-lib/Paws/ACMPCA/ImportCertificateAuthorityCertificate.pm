@@ -3,7 +3,7 @@ package Paws::ACMPCA::ImportCertificateAuthorityCertificate;
   use Moose;
   has Certificate => (is => 'ro', isa => 'Str', required => 1);
   has CertificateAuthorityArn => (is => 'ro', isa => 'Str', required => 1);
-  has CertificateChain => (is => 'ro', isa => 'Str', required => 1);
+  has CertificateChain => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -32,8 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $acm -pca->ImportCertificateAuthorityCertificate(
       Certificate             => 'BlobCertificateBodyBlob',
       CertificateAuthorityArn => 'MyArn',
-      CertificateChain        => 'BlobCertificateChainBlob',
-
+      CertificateChain        => 'BlobCertificateChainBlob',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -44,8 +43,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 
 =head2 B<REQUIRED> Certificate => Str
 
-The PEM-encoded certificate for your private CA. This must be signed by
-using your on-premises CA.
+The PEM-encoded certificate for a private CA. This may be a self-signed
+certificate in the case of a root CA, or it may be signed by another CA
+that you control.
 
 
 
@@ -58,12 +58,15 @@ C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-123
 
 
 
-=head2 B<REQUIRED> CertificateChain => Str
+=head2 CertificateChain => Str
 
 A PEM-encoded file that contains all of your certificates, other than
-the certificate you're importing, chaining up to your root CA. Your
-on-premises root certificate is the last in the chain, and each
-certificate in the chain signs the one preceding.
+the certificate you're importing, chaining up to your root CA. Your ACM
+Private CA-hosted or on-premises root certificate is the last in the
+chain, and each certificate in the chain signs the one preceding.
+
+This parameter must be supplied when you import a subordinate CA. When
+you import a root CA, there is no chain.
 
 
 

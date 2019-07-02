@@ -36,20 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACMPCA::Per
 
 =head1 DESCRIPTION
 
-Permissions designate which private CA operations can be performed by
-an AWS service or entity. In order for ACM to automatically renew
-private certificates, you must give the ACM service principal all
-available permissions (C<IssueCertificate>, C<GetCertificate>, and
+Permissions designate which private CA actions can be performed by an
+AWS service or entity. In order for ACM to automatically renew private
+certificates, you must give the ACM service principal all available
+permissions (C<IssueCertificate>, C<GetCertificate>, and
 C<ListPermissions>). Permissions can be assigned with the
-CreatePermission operation, removed with the DeletePermission
-operation, and listed with the ListPermissions operation.
+CreatePermission action, removed with the DeletePermission action, and
+listed with the ListPermissions action.
 
 =head1 ATTRIBUTES
 
 
 =head2 Actions => ArrayRef[Str|Undef]
 
-  The private CA operations that can be performed by the designated AWS
+  The private CA actions that can be performed by the designated AWS
 service.
 
 
