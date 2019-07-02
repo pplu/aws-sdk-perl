@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SolutionConfig  => {
         AlgorithmHyperParameters => {
           'MyParameterName' =>
-            'MyParameterValue',            # key: max: 256, value: max: 1000
+            'MyParameterValue',    # key: max: 256; OPTIONAL, value: max: 1000
         },    # max: 100; OPTIONAL
         AutoMLConfig => {
           MetricName => 'MyMetricName',    # max: 256; OPTIONAL
@@ -54,13 +54,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         EventValueThreshold => 'MyEventValueThreshold',    # max: 256; OPTIONAL
         FeatureTransformationParameters => {
           'MyParameterName' =>
-            'MyParameterValue',    # key: max: 256, value: max: 1000
+            'MyParameterValue',    # key: max: 256; OPTIONAL, value: max: 1000
         },    # max: 100; OPTIONAL
         HpoConfig => {
           AlgorithmHyperParameterRanges => {
             CategoricalHyperParameterRanges => [
               {
-                Name   => 'MyParameterName',    # max: 256
+                Name   => 'MyParameterName',    # max: 256; OPTIONAL
                 Values => [
                   'MyCategoricalValue', ...     # max: 1000
                 ],                              # max: 100; OPTIONAL
@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 MaxValue => 1,                    # min: -1000000; OPTIONAL
                 MinValue => 1,                    # min: -1000000; OPTIONAL
-                Name     => 'MyParameterName',    # max: 256
+                Name     => 'MyParameterName',    # max: 256; OPTIONAL
               },
               ...
             ],                                    # max: 100; OPTIONAL
@@ -79,7 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 MaxValue => 1,                    # max: 1000000; OPTIONAL
                 MinValue => 1,                    # min: -1000000; OPTIONAL
-                Name     => 'MyParameterName',    # max: 256
+                Name     => 'MyParameterName',    # max: 256; OPTIONAL
               },
               ...
             ],                                    # max: 100; OPTIONAL

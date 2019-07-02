@@ -90,7 +90,7 @@ uses to train the model.
 
 =item *
 
-SEARCH_PERSONALIZATION
+PERSONALIZED_RANKING
 
 =item *
 
