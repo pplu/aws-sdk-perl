@@ -1,6 +1,7 @@
 package Paws::Glue::Action;
   use Moose;
   has Arguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
+  has CrawlerName => (is => 'ro', isa => 'Str');
   has JobName => (is => 'ro', isa => 'Str');
   has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
@@ -57,6 +58,11 @@ For information about the key-value pairs that AWS Glue consumes to set
 up your job, see the Special Parameters Used by AWS Glue
 (https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
+
+
+=head2 CrawlerName => Str
+
+  The name of the crawler to be used with this action.
 
 
 =head2 JobName => Str

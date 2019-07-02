@@ -75,8 +75,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Tags                  => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
-      Timeout    => 1,             # OPTIONAL
-      WorkerType => 'Standard',    # OPTIONAL
+      Timeout    => 1,                 # OPTIONAL
+      WorkerType => 'MyNameString',    # OPTIONAL
     );
 
     # Results:
@@ -272,7 +272,7 @@ recommend this worker type for memory-intensive jobs.
 =back
 
 
-Valid values are: C<"Standard">, C<"G.1X">, C<"G.2X">
+
 
 
 =head1 SEE ALSO

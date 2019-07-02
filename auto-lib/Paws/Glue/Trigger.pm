@@ -8,6 +8,7 @@ package Paws::Glue::Trigger;
   has Schedule => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+  has WorkflowName => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::Trigger object:
 
-  $service_obj->Method(Att1 => { Actions => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { Actions => $value, ..., WorkflowName => $value  });
 
 =head3 Results returned from an API call
 
@@ -85,6 +86,11 @@ specify: C<cron(15 12 * * ? *)>.
 =head2 Type => Str
 
   The type of trigger that this is.
+
+
+=head2 WorkflowName => Str
+
+  The name of the workflow associated with the trigger.
 
 
 

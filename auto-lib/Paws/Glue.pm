@@ -65,6 +65,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::BatchGetTriggers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchGetWorkflows {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::BatchGetWorkflows', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchStopJobRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::BatchStopJobRun', @_);
@@ -130,6 +135,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::CreateUserDefinedFunction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateWorkflow {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::CreateWorkflow', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteClassifier {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::DeleteClassifier', @_);
@@ -193,6 +203,11 @@ package Paws::Glue;
   sub DeleteUserDefinedFunction {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::DeleteUserDefinedFunction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteWorkflow {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::DeleteWorkflow', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetCatalogImportStatus {
@@ -365,6 +380,26 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetUserDefinedFunctions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetWorkflow {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetWorkflow', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetWorkflowRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetWorkflowRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetWorkflowRunProperties {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetWorkflowRunProperties', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetWorkflowRuns {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetWorkflowRuns', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportCatalogToGlue {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::ImportCatalogToGlue', @_);
@@ -390,6 +425,11 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::ListTriggers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListWorkflows {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::ListWorkflows', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutDataCatalogEncryptionSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::PutDataCatalogEncryptionSettings', @_);
@@ -398,6 +438,11 @@ package Paws::Glue;
   sub PutResourcePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::PutResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutWorkflowRunProperties {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::PutWorkflowRunProperties', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ResetJobBookmark {
@@ -423,6 +468,11 @@ package Paws::Glue;
   sub StartTrigger {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::StartTrigger', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartWorkflowRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::StartWorkflowRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopCrawler {
@@ -503,6 +553,11 @@ package Paws::Glue;
   sub UpdateUserDefinedFunction {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::UpdateUserDefinedFunction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateWorkflow {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::UpdateWorkflow', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -830,7 +885,7 @@ package Paws::Glue;
   }
 
 
-  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetCrawlers BatchGetDevEndpoints BatchGetJobs BatchGetPartition BatchGetTriggers BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteResourcePolicy DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetResourcePolicy GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTags GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions ImportCatalogToGlue ListCrawlers ListDevEndpoints ListJobs ListTriggers PutDataCatalogEncryptionSettings PutResourcePolicy ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StopCrawler StopCrawlerSchedule StopTrigger TagResource UntagResource UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction / }
+  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetCrawlers BatchGetDevEndpoints BatchGetJobs BatchGetPartition BatchGetTriggers BatchGetWorkflows BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction CreateWorkflow DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteResourcePolicy DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction DeleteWorkflow GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetResourcePolicy GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTags GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions GetWorkflow GetWorkflowRun GetWorkflowRunProperties GetWorkflowRuns ImportCatalogToGlue ListCrawlers ListDevEndpoints ListJobs ListTriggers ListWorkflows PutDataCatalogEncryptionSettings PutResourcePolicy PutWorkflowRunProperties ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StartWorkflowRun StopCrawler StopCrawlerSchedule StopTrigger TagResource UntagResource UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction UpdateWorkflow / }
 
 1;
 
@@ -1079,6 +1134,28 @@ Returns: a L<Paws::Glue::BatchGetTriggersResponse> instance
 
 Returns a list of resource metadata for a given list of trigger names.
 After calling the C<ListTriggers> operation, you can call this
+operation to access the data to which you have been granted
+permissions. This operation supports all IAM permissions, including
+permission conditions that uses tags.
+
+
+=head2 BatchGetWorkflows
+
+=over
+
+=item Names => ArrayRef[Str|Undef]
+
+=item [IncludeGraph => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::BatchGetWorkflows>
+
+Returns: a L<Paws::Glue::BatchGetWorkflowsResponse> instance
+
+Returns a list of resource metadata for a given list of workflow names.
+After calling the C<ListWorkflows> operation, you can call this
 operation to access the data to which you have been granted
 permissions. This operation supports all IAM permissions, including
 permission conditions that uses tags.
@@ -1389,6 +1466,8 @@ Creates a new table definition in the Data Catalog.
 
 =item [Tags => L<Paws::Glue::TagsMap>]
 
+=item [WorkflowName => Str]
+
 
 =back
 
@@ -1417,6 +1496,28 @@ Each argument is described in detail in: L<Paws::Glue::CreateUserDefinedFunction
 Returns: a L<Paws::Glue::CreateUserDefinedFunctionResponse> instance
 
 Creates a new function definition in the Data Catalog.
+
+
+=head2 CreateWorkflow
+
+=over
+
+=item Name => Str
+
+=item [DefaultRunProperties => L<Paws::Glue::WorkflowRunProperties>]
+
+=item [Description => Str]
+
+=item [Tags => L<Paws::Glue::TagsMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::CreateWorkflow>
+
+Returns: a L<Paws::Glue::CreateWorkflowResponse> instance
+
+Creates a new workflow.
 
 
 =head2 DeleteClassifier
@@ -1676,6 +1777,22 @@ Each argument is described in detail in: L<Paws::Glue::DeleteUserDefinedFunction
 Returns: a L<Paws::Glue::DeleteUserDefinedFunctionResponse> instance
 
 Deletes an existing function definition from the Data Catalog.
+
+
+=head2 DeleteWorkflow
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::DeleteWorkflow>
+
+Returns: a L<Paws::Glue::DeleteWorkflowResponse> instance
+
+Deletes a workflow.
 
 
 =head2 GetCatalogImportStatus
@@ -2345,6 +2462,84 @@ Returns: a L<Paws::Glue::GetUserDefinedFunctionsResponse> instance
 Retrieves a multiple function definitions from the Data Catalog.
 
 
+=head2 GetWorkflow
+
+=over
+
+=item Name => Str
+
+=item [IncludeGraph => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetWorkflow>
+
+Returns: a L<Paws::Glue::GetWorkflowResponse> instance
+
+Retrieves resource metadata for a workflow.
+
+
+=head2 GetWorkflowRun
+
+=over
+
+=item Name => Str
+
+=item RunId => Str
+
+=item [IncludeGraph => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetWorkflowRun>
+
+Returns: a L<Paws::Glue::GetWorkflowRunResponse> instance
+
+Retrieves the metadata for a given workflow run.
+
+
+=head2 GetWorkflowRunProperties
+
+=over
+
+=item Name => Str
+
+=item RunId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetWorkflowRunProperties>
+
+Returns: a L<Paws::Glue::GetWorkflowRunPropertiesResponse> instance
+
+Retrieves the workflow run properties which were set during the run.
+
+
+=head2 GetWorkflowRuns
+
+=over
+
+=item Name => Str
+
+=item [IncludeGraph => Bool]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetWorkflowRuns>
+
+Returns: a L<Paws::Glue::GetWorkflowRunsResponse> instance
+
+Retrieves metadata for all runs of a given workflow.
+
+
 =head2 ImportCatalogToGlue
 
 =over
@@ -2472,6 +2667,24 @@ group. If you choose to use tags filtering, only resources with the tag
 are retrieved.
 
 
+=head2 ListWorkflows
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::ListWorkflows>
+
+Returns: a L<Paws::Glue::ListWorkflowsResponse> instance
+
+Lists names of workflows created in the account.
+
+
 =head2 PutDataCatalogEncryptionSettings
 
 =over
@@ -2510,6 +2723,28 @@ Each argument is described in detail in: L<Paws::Glue::PutResourcePolicy>
 Returns: a L<Paws::Glue::PutResourcePolicyResponse> instance
 
 Sets the Data Catalog resource policy for access control.
+
+
+=head2 PutWorkflowRunProperties
+
+=over
+
+=item Name => Str
+
+=item RunId => Str
+
+=item RunProperties => L<Paws::Glue::WorkflowRunProperties>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::PutWorkflowRunProperties>
+
+Returns: a L<Paws::Glue::PutWorkflowRunPropertiesResponse> instance
+
+Puts the specified workflow run properties for the given workflow run.
+If a property already exists for the specified run, then it overrides
+the value otherwise adds the property to existing properties.
 
 
 =head2 ResetJobBookmark
@@ -2615,6 +2850,22 @@ Returns: a L<Paws::Glue::StartTriggerResponse> instance
 Starts an existing trigger. See Triggering Jobs
 (https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html) for
 information about how different types of trigger are started.
+
+
+=head2 StartWorkflowRun
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::StartWorkflowRun>
+
+Returns: a L<Paws::Glue::StartWorkflowRunResponse> instance
+
+Starts a new run of the specified workflow.
 
 
 =head2 StopCrawler
@@ -2956,6 +3207,26 @@ Each argument is described in detail in: L<Paws::Glue::UpdateUserDefinedFunction
 Returns: a L<Paws::Glue::UpdateUserDefinedFunctionResponse> instance
 
 Updates an existing function definition in the Data Catalog.
+
+
+=head2 UpdateWorkflow
+
+=over
+
+=item Name => Str
+
+=item [DefaultRunProperties => L<Paws::Glue::WorkflowRunProperties>]
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::UpdateWorkflow>
+
+Returns: a L<Paws::Glue::UpdateWorkflowResponse> instance
+
+Updates an existing workflow.
 
 
 

@@ -53,7 +53,7 @@ values are 2 or 3.
 =head2 ScriptLocation => Str
 
   Specifies the Amazon Simple Storage Service (Amazon S3) path to a
-script that executes a job (required).
+script that executes a job.
 
 
 

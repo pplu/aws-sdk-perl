@@ -9,6 +9,7 @@ package Paws::Glue::CreateTrigger;
   has StartOnCreation => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
   has Type => (is => 'ro', isa => 'Str', required => 1);
+  has WorkflowName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -38,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Actions => [
         {
           Arguments => { 'MyGenericString' => 'MyGenericString', },   # OPTIONAL
+          CrawlerName          => 'MyNameString',   # min: 1, max: 255; OPTIONAL
           JobName              => 'MyNameString',   # min: 1, max: 255; OPTIONAL
           NotificationProperty => {
             NotifyDelayAfter => 1,                  # min: 1; OPTIONAL
@@ -53,8 +55,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Predicate   => {
         Conditions => [
           {
-            JobName         => 'MyNameString',      # min: 1, max: 255; OPTIONAL
-            LogicalOperator => 'EQUALS',            # values: EQUALS; OPTIONAL
+            CrawlState => 'RUNNING'
+            ,    # values: RUNNING, SUCCEEDED, CANCELLED, FAILED; OPTIONAL
+            CrawlerName     => 'MyNameString',    # min: 1, max: 255; OPTIONAL
+            JobName         => 'MyNameString',    # min: 1, max: 255; OPTIONAL
+            LogicalOperator => 'EQUALS',          # values: EQUALS; OPTIONAL
             State           => 'STARTING'
             , # values: STARTING, RUNNING, STOPPING, STOPPED, SUCCEEDED, FAILED, TIMEOUT; OPTIONAL
           },
@@ -67,6 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Tags            => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
+      WorkflowName => 'MyNameString',    # OPTIONAL
     );
 
     # Results:
@@ -140,6 +146,12 @@ developer guide.
 The type of the new trigger.
 
 Valid values are: C<"SCHEDULED">, C<"CONDITIONAL">, C<"ON_DEMAND">
+
+=head2 WorkflowName => Str
+
+The name of the workflow associated with the trigger.
+
+
 
 
 =head1 SEE ALSO
