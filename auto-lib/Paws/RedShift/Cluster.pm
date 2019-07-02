@@ -3,6 +3,7 @@ package Paws::RedShift::Cluster;
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has ClusterAvailabilityStatus => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ClusterNodes => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterNode]');
@@ -92,6 +93,39 @@ window.
 =head2 AvailabilityZone => Str
 
   The name of the Availability Zone in which the cluster is located.
+
+
+=head2 ClusterAvailabilityStatus => Str
+
+  The availability status of the cluster for queries. Possible values are
+the following:
+
+=over
+
+=item *
+
+Available - The cluster is available for queries.
+
+=item *
+
+Unavailable - The cluster is not available for queries.
+
+=item *
+
+Maintenance - The cluster is intermittently available for queries due
+to maintenance activities.
+
+=item *
+
+Modifying - The cluster is intermittently available for queries due to
+changes that modify the cluster.
+
+=item *
+
+Failed - The cluster failed and is not available for queries.
+
+=back
+
 
 
 =head2 ClusterCreateTime => Str
