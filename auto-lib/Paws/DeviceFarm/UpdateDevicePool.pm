@@ -63,7 +63,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resourc Name (ARN) of the Device Farm device pool you wish
+The Amazon Resource Name (ARN) of the Device Farm device pool you wish
 to update.
 
 

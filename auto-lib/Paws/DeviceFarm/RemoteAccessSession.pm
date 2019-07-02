@@ -87,7 +87,7 @@ returned if remote debugging is enabled for the remote access session.
 
 =head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
 
-  The number of minutes a device is used in a remote access sesssion
+  The number of minutes a device is used in a remote access session
 (including setup and teardown minutes).
 
 
