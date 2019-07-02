@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 The trust relationship policy document that grants an entity permission
 to assume the role.
 
-in IAM, you must provide a JSON policy that has been converted to a
+In IAM, you must provide a JSON policy that has been converted to a
 string. However, for AWS CloudFormation templates formatted in YAML,
 you can provide the policy in JSON or YAML format. AWS CloudFormation
 always converts a YAML policy to JSON format before submitting it to

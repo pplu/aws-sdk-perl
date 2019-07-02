@@ -1,7 +1,8 @@
-package Paws::IAM::ServiceLastAccessed;
+package Paws::IAM::AccessDetail;
   use Moose;
-  has LastAuthenticated => (is => 'ro', isa => 'Str');
-  has LastAuthenticatedEntity => (is => 'ro', isa => 'Str');
+  has EntityPath => (is => 'ro', isa => 'Str');
+  has LastAuthenticatedTime => (is => 'ro', isa => 'Str');
+  has Region => (is => 'ro', isa => 'Str');
   has ServiceName => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
   has TotalAuthenticatedEntities => (is => 'ro', isa => 'Int');
@@ -11,7 +12,7 @@ package Paws::IAM::ServiceLastAccessed;
 
 =head1 NAME
 
-Paws::IAM::ServiceLastAccessed
+Paws::IAM::AccessDetail
 
 =head1 USAGE
 
@@ -22,46 +23,60 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::IAM::ServiceLastAccessed object:
+As an example, if Att1 is expected to be a Paws::IAM::AccessDetail object:
 
-  $service_obj->Method(Att1 => { LastAuthenticated => $value, ..., TotalAuthenticatedEntities => $value  });
+  $service_obj->Method(Att1 => { EntityPath => $value, ..., TotalAuthenticatedEntities => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::ServiceLastAccessed object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::AccessDetail object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->LastAuthenticated
+  $result->Att1->EntityPath
 
 =head1 DESCRIPTION
 
-Contains details about the most recent attempt to access the service.
+An object that contains details about when a principal in the reported
+AWS Organizations entity last attempted to access an AWS service. A
+principal can be an IAM user, an IAM role, or the AWS account root user
+within the reported Organizations entity.
 
-This data type is used as a response element in the
-GetServiceLastAccessedDetails operation.
+This data type is a response element in the
+GetOrganizationsAccessReport operation.
 
 =head1 ATTRIBUTES
 
 
-=head2 LastAuthenticated => Str
+=head2 EntityPath => Str
 
-  The date and time, in ISO 8601 date-time format
-(http://www.iso.org/iso/iso8601), when an authenticated entity most
-recently attempted to access the service. AWS does not report
-unauthenticated requests.
+  The path of the Organizations entity (root, organizational unit, or
+account) from which an authenticated principal last attempted to access
+the service. AWS does not report unauthenticated requests.
 
-This field is null if no IAM entities attempted to access the service
-within the reporting period
+This field is null if no principals (IAM users, IAM roles, or root
+users) in the reported Organizations entity attempted to access the
+service within the reporting period
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
 
 
-=head2 LastAuthenticatedEntity => Str
+=head2 LastAuthenticatedTime => Str
 
-  The ARN of the authenticated entity (user or role) that last attempted
-to access the service. AWS does not report unauthenticated requests.
+  The date and time, in ISO 8601 date-time format
+(http://www.iso.org/iso/iso8601), when an authenticated principal most
+recently attempted to access the service. AWS does not report
+unauthenticated requests.
 
-This field is null if no IAM entities attempted to access the service
-within the reporting period
+This field is null if no principals in the reported Organizations
+entity attempted to access the service within the reporting period
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
+
+
+=head2 Region => Str
+
+  The Region where the last service access attempt occurred.
+
+This field is null if no principals in the reported Organizations
+entity attempted to access the service within the reporting period
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
 
 
@@ -87,12 +102,9 @@ in the I<AWS General Reference>.
 
 =head2 TotalAuthenticatedEntities => Int
 
-  The total number of authenticated principals (root user, IAM users, or
-IAM roles) that have attempted to access the service.
-
-This field is null if no principals attempted to access the service
-within the reporting period
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
+  The number of accounts with authenticated principals (root users, IAM
+users, and IAM roles) that attempted to access the service in the
+reporting period.
 
 
 

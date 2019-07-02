@@ -116,7 +116,7 @@ in the I<AWS General Reference>.
 
 A list of context keys and corresponding values for the simulation to
 use. Whenever a context key is evaluated in one of the simulated IAM
-permission policies, the corresponding value is supplied.
+permissions policies, the corresponding value is supplied.
 
 
 

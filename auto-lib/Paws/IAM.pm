@@ -300,6 +300,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::GenerateCredentialReport', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GenerateOrganizationsAccessReport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::GenerateOrganizationsAccessReport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GenerateServiceLastAccessedDetails {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::GenerateServiceLastAccessedDetails', @_);
@@ -363,6 +368,11 @@ package Paws::IAM;
   sub GetOpenIDConnectProvider {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::GetOpenIDConnectProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetOrganizationsAccessReport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetOrganizationsAccessReport', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetPolicy {
@@ -1356,7 +1366,7 @@ package Paws::IAM;
   }
 
 
-  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePermissionsBoundary DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceLinkedRole DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPermissionsBoundary DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GenerateServiceLastAccessedDetails GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetServiceLastAccessedDetails GetServiceLastAccessedDetailsWithEntities GetServiceLinkedRoleDeletionStatus GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPoliciesGrantingServiceAccess ListPolicyVersions ListRolePolicies ListRoles ListRoleTags ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListUserTags ListVirtualMFADevices PutGroupPolicy PutRolePermissionsBoundary PutRolePolicy PutUserPermissionsBoundary PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SetSecurityTokenServicePreferences SimulateCustomPolicy SimulatePrincipalPolicy TagRole TagUser UntagRole UntagUser UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRole UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
+  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePermissionsBoundary DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceLinkedRole DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPermissionsBoundary DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GenerateOrganizationsAccessReport GenerateServiceLastAccessedDetails GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetOrganizationsAccessReport GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetServiceLastAccessedDetails GetServiceLastAccessedDetailsWithEntities GetServiceLinkedRoleDeletionStatus GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPoliciesGrantingServiceAccess ListPolicyVersions ListRolePolicies ListRoles ListRoleTags ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListUserTags ListVirtualMFADevices PutGroupPolicy PutRolePermissionsBoundary PutRolePolicy PutUserPermissionsBoundary PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SetSecurityTokenServicePreferences SimulateCustomPolicy SimulatePrincipalPolicy TagRole TagUser UntagRole UntagUser UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRole UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
 
 1;
 
@@ -2849,6 +2859,179 @@ about the credential report, see Getting Credential Reports
 in the I<IAM User Guide>.
 
 
+=head2 GenerateOrganizationsAccessReport
+
+=over
+
+=item EntityPath => Str
+
+=item [OrganizationsPolicyId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::GenerateOrganizationsAccessReport>
+
+Returns: a L<Paws::IAM::GenerateOrganizationsAccessReportResponse> instance
+
+Generates a report for service last accessed data for AWS
+Organizations. You can generate a report for any entities (organization
+root, organizational unit, or account) or policies in your
+organization.
+
+To call this operation, you must be signed in using your AWS
+Organizations master account credentials. You can use your long-term
+IAM user or root user credentials, or temporary credentials from
+assuming an IAM role. SCPs must be enabled for your organization root.
+You must have the required IAM and AWS Organizations permissions. For
+more information, see Refining Permissions Using Service Last Accessed
+Data
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
+in the I<IAM User Guide>.
+
+You can generate a service last accessed data report for entities by
+specifying only the entity's path. This data includes a list of
+services that are allowed by any service control policies (SCPs) that
+apply to the entity.
+
+You can generate a service last accessed data report for a policy by
+specifying an entity's path and an optional AWS Organizations policy
+ID. This data includes a list of services that are allowed by the
+specified SCP.
+
+For each service in both report types, the data includes the most
+recent account activity that the policy allows to account principals in
+the entity or the entity's children. For important information about
+the data, reporting period, permissions required, troubleshooting, and
+supported Regions see Reducing Permissions Using Service Last Accessed
+Data
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
+in the I<IAM User Guide>.
+
+The data includes all attempts to access AWS, not just the successful
+ones. This includes all attempts that were made using the AWS
+Management Console, the AWS API through any of the SDKs, or any of the
+command line tools. An unexpected entry in the service last accessed
+data does not mean that an account has been compromised, because the
+request might have been denied. Refer to your CloudTrail logs as the
+authoritative source for information about all API calls and whether
+they were successful or denied access. For more information, see
+Logging IAM Events with CloudTrail
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html)
+in the I<IAM User Guide>.
+
+This operation returns a C<JobId>. Use this parameter in the C<
+GetOrganizationsAccessReport > operation to check the status of the
+report generation. To check the status of this request, use the
+C<JobId> parameter in the C< GetOrganizationsAccessReport > operation
+and test the C<JobStatus> response parameter. When the job is complete,
+you can retrieve the report.
+
+To generate a service last accessed data report for entities, specify
+an entity path without specifying the optional AWS Organizations policy
+ID. The type of entity that you specify determines the data returned in
+the report.
+
+=over
+
+=item *
+
+B<Root> E<ndash> When you specify the organizations root as the entity,
+the resulting report lists all of the services allowed by SCPs that are
+attached to your root. For each service, the report includes data for
+all accounts in your organization except the master account, because
+the master account is not limited by SCPs.
+
+=item *
+
+B<OU> E<ndash> When you specify an organizational unit (OU) as the
+entity, the resulting report lists all of the services allowed by SCPs
+that are attached to the OU and its parents. For each service, the
+report includes data for all accounts in the OU or its children. This
+data excludes the master account, because the master account is not
+limited by SCPs.
+
+=item *
+
+B<Master account> E<ndash> When you specify the master account, the
+resulting report lists all AWS services, because the master account is
+not limited by SCPs. For each service, the report includes data for
+only the master account.
+
+=item *
+
+B<Account> E<ndash> When you specify another account as the entity, the
+resulting report lists all of the services allowed by SCPs that are
+attached to the account and its parents. For each service, the report
+includes data for only the specified account.
+
+=back
+
+To generate a service last accessed data report for policies, specify
+an entity path and the optional AWS Organizations policy ID. The type
+of entity that you specify determines the data returned for each
+service.
+
+=over
+
+=item *
+
+B<Root> E<ndash> When you specify the root entity and a policy ID, the
+resulting report lists all of the services that are allowed by the
+specified SCP. For each service, the report includes data for all
+accounts in your organization to which the SCP applies. This data
+excludes the master account, because the master account is not limited
+by SCPs. If the SCP is not attached to any entities in the
+organization, then the report will return a list of services with no
+data.
+
+=item *
+
+B<OU> E<ndash> When you specify an OU entity and a policy ID, the
+resulting report lists all of the services that are allowed by the
+specified SCP. For each service, the report includes data for all
+accounts in the OU or its children to which the SCP applies. This means
+that other accounts outside the OU that are affected by the SCP might
+not be included in the data. This data excludes the master account,
+because the master account is not limited by SCPs. If the SCP is not
+attached to the OU or one of its children, the report will return a
+list of services with no data.
+
+=item *
+
+B<Master account> E<ndash> When you specify the master account, the
+resulting report lists all AWS services, because the master account is
+not limited by SCPs. If you specify a policy ID in the CLI or API, the
+policy is ignored. For each service, the report includes data for only
+the master account.
+
+=item *
+
+B<Account> E<ndash> When you specify another account entity and a
+policy ID, the resulting report lists all of the services that are
+allowed by the specified SCP. For each service, the report includes
+data for only the specified account. This means that other accounts in
+the organization that are affected by the SCP might not be included in
+the data. If the SCP is not attached to the account, the report will
+return a list of services with no data.
+
+=back
+
+Service last accessed data does not use other policy types when
+determining whether a principal could access a service. These other
+policy types include identity-based policies, resource-based policies,
+access control lists, IAM permissions boundaries, and STS assume role
+policies. It only applies SCP logic. For more about the evaluation of
+policy types, see Evaluating Policies
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics)
+in the I<IAM User Guide>.
+
+For more information about service last accessed data, see Reducing
+Policy Scope by Viewing User Activity
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
+in the I<IAM User Guide>.
+
+
 =head2 GenerateServiceLastAccessedDetails
 
 =over
@@ -2862,12 +3045,12 @@ Each argument is described in detail in: L<Paws::IAM::GenerateServiceLastAccesse
 
 Returns: a L<Paws::IAM::GenerateServiceLastAccessedDetailsResponse> instance
 
-Generates a request for a report that includes details about when an
-IAM resource (user, group, role, or policy) was last used in an attempt
-to access AWS services. Recent activity usually appears within four
-hours. IAM reports activity for the last 365 days, or less if your
-Region began supporting this feature within the last year. For more
-information, see Regions Where Data Is Tracked
+Generates a report that includes details about when an IAM resource
+(user, group, role, or policy) was last used in an attempt to access
+AWS services. Recent activity usually appears within four hours. IAM
+reports activity for the last 365 days, or less if your Region began
+supporting this feature within the last year. For more information, see
+Regions Where Data Is Tracked
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period).
 
 The service last accessed data includes all attempts to access an AWS
@@ -3216,6 +3399,51 @@ Returns information about the specified OpenID Connect (OIDC) provider
 resource object in IAM.
 
 
+=head2 GetOrganizationsAccessReport
+
+=over
+
+=item JobId => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+=item [SortKey => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IAM::GetOrganizationsAccessReport>
+
+Returns: a L<Paws::IAM::GetOrganizationsAccessReportResponse> instance
+
+Retrieves the service last accessed data report for AWS Organizations
+that was previously generated using the C<
+GenerateOrganizationsAccessReport > operation. This operation retrieves
+the status of your report job and the report contents.
+
+Depending on the parameters that you passed when you generated the
+report, the data returned could include different information. For
+details, see GenerateOrganizationsAccessReport.
+
+To call this operation, you must be signed in to the master account in
+your organization. SCPs must be enabled for your organization root. You
+must have permissions to perform this operation. For more information,
+see Refining Permissions Using Service Last Accessed Data
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
+in the I<IAM User Guide>.
+
+For each service that principals in an account (root users, IAM users,
+or IAM roles) could access using SCPs, the operation returns details
+about the most recent access attempt. If there was no attempt, the
+service is listed without details about the most recent attempt to
+access the service. If the operation fails, it returns the reason that
+it failed.
+
+By default, the list is sorted by service namespace.
+
+
 =head2 GetPolicy
 
 =over
@@ -3417,11 +3645,13 @@ Each argument is described in detail in: L<Paws::IAM::GetServiceLastAccessedDeta
 
 Returns: a L<Paws::IAM::GetServiceLastAccessedDetailsResponse> instance
 
-After you generate a user, group, role, or policy report using the
-C<GenerateServiceLastAccessedDetails> operation, you can use the
-C<JobId> parameter in C<GetServiceLastAccessedDetails>. This operation
-retrieves the status of your report job and a list of AWS services that
-the resource (user, group, role, or managed policy) can access.
+Retrieves a service last accessed report that was created using the
+C<GenerateServiceLastAccessedDetails> operation. You can use the
+C<JobId> parameter in C<GetServiceLastAccessedDetails> to retrieve the
+status of your report job. When the report is complete, you can
+retrieve the generated report. The report includes a list of AWS
+services that the resource (user, group, role, or managed policy) can
+access.
 
 Service last accessed data does not use other policy types when
 determining whether a resource could access a service. These other
