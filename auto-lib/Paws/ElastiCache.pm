@@ -689,7 +689,7 @@ Returns: a L<Paws::ElastiCache::UpdateActionResultsMessage> instance
 
 Apply the service update. For more information on service updates and
 applying them, see Applying Service Updates
-(https://docs.aws.amazon.com/http:/docs.aws.amazon.com/Amazon/red-ug/applying-updates.html).
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/applying-updates.html).
 
 
 =head2 BatchStopUpdateAction

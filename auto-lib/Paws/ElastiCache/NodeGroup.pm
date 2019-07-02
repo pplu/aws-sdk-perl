@@ -3,6 +3,7 @@ package Paws::ElastiCache::NodeGroup;
   has NodeGroupId => (is => 'ro', isa => 'Str');
   has NodeGroupMembers => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupMember]', request_name => 'NodeGroupMember', traits => ['NameInRequest']);
   has PrimaryEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
+  has ReaderEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
   has Slots => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -60,6 +61,11 @@ group (shard).
 =head2 PrimaryEndpoint => L<Paws::ElastiCache::Endpoint>
 
   The endpoint of the primary node in this node group (shard).
+
+
+=head2 ReaderEndpoint => L<Paws::ElastiCache::Endpoint>
+
+  The endpoint of the replica nodes in this node group (shard).
 
 
 =head2 Slots => Str
