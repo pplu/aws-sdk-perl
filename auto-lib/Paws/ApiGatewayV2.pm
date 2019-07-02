@@ -828,7 +828,7 @@ Creates a Model for an API.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::CreateRoute>
 
-Returns: a L<Paws::ApiGatewayV2::CreateRouteResponse> instance
+Returns: a L<Paws::ApiGatewayV2::CreateRouteResponseShape> instance
 
 Creates a Route for an API.
 
@@ -1742,7 +1742,7 @@ Updates a domain name.
 
 Each argument is described in detail in: L<Paws::ApiGatewayV2::UpdateIntegration>
 
-Returns: a L<Paws::ApiGatewayV2::UpdateIntegrationResponse> instance
+Returns: a L<Paws::ApiGatewayV2::UpdateIntegrationResponseShape> instance
 
 Updates an Integration.
 

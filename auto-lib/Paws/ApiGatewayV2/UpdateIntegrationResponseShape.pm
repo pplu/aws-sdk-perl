@@ -1,14 +1,14 @@
 
-package Paws::ApiGatewayV2::UpdateIntegration;
+package Paws::ApiGatewayV2::UpdateIntegrationResponseShape;
   use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId');
   has ConnectionType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionType');
   has ContentHandlingStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandlingStrategy');
   has CredentialsArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'credentialsArn');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has IntegrationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'integrationId', required => 1);
+  has IntegrationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationId');
   has IntegrationMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationMethod');
+  has IntegrationResponseSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationResponseSelectionExpression');
   has IntegrationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationType');
   has IntegrationUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationUri');
   has PassthroughBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'passthroughBehavior');
@@ -17,90 +17,21 @@ package Paws::ApiGatewayV2::UpdateIntegration;
   has TemplateSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateSelectionExpression');
   has TimeoutInMillis => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMillis');
 
-  use MooseX::ClassAttribute;
-
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateIntegration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/integrations/{integrationId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::UpdateIntegrationResponseShape');
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ApiGatewayV2::UpdateIntegration - Arguments for method UpdateIntegration on L<Paws::ApiGatewayV2>
-
-=head1 DESCRIPTION
-
-This class represents the parameters used for calling the method UpdateIntegration on the
-L<AmazonApiGatewayV2|Paws::ApiGatewayV2> service. Use the attributes of this class
-as arguments to method UpdateIntegration.
-
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateIntegration.
-
-=head1 SYNOPSIS
-
-    my $apigateway = Paws->service('ApiGatewayV2');
-    my $UpdateIntegrationResponseShape = $apigateway->UpdateIntegration(
-      ApiId                   => 'My__string',
-      IntegrationId           => 'My__string',
-      ConnectionId            => 'MyStringWithLengthBetween1And1024', # OPTIONAL
-      ConnectionType          => 'INTERNET',                          # OPTIONAL
-      ContentHandlingStrategy => 'CONVERT_TO_BINARY',                 # OPTIONAL
-      CredentialsArn          => 'MyArn',                             # OPTIONAL
-      Description             => 'MyStringWithLengthBetween0And1024', # OPTIONAL
-      IntegrationMethod       => 'MyStringWithLengthBetween1And64',   # OPTIONAL
-      IntegrationType         => 'AWS',                               # OPTIONAL
-      IntegrationUri          => 'MyUriWithLengthBetween1And2048',    # OPTIONAL
-      PassthroughBehavior     => 'WHEN_NO_MATCH',                     # OPTIONAL
-      RequestParameters =>
-        { 'My__string' => 'MyStringWithLengthBetween1And512', },      # OPTIONAL
-      RequestTemplates =>
-        { 'My__string' => 'MyStringWithLengthBetween0And32K', },      # OPTIONAL
-      TemplateSelectionExpression => 'MySelectionExpression',         # OPTIONAL
-      TimeoutInMillis             => 1,                               # OPTIONAL
-    );
-
-    # Results:
-    my $ConnectionId   = $UpdateIntegrationResponseShape->ConnectionId;
-    my $ConnectionType = $UpdateIntegrationResponseShape->ConnectionType;
-    my $ContentHandlingStrategy =
-      $UpdateIntegrationResponseShape->ContentHandlingStrategy;
-    my $CredentialsArn    = $UpdateIntegrationResponseShape->CredentialsArn;
-    my $Description       = $UpdateIntegrationResponseShape->Description;
-    my $IntegrationId     = $UpdateIntegrationResponseShape->IntegrationId;
-    my $IntegrationMethod = $UpdateIntegrationResponseShape->IntegrationMethod;
-    my $IntegrationResponseSelectionExpression =
-      $UpdateIntegrationResponseShape->IntegrationResponseSelectionExpression;
-    my $IntegrationType = $UpdateIntegrationResponseShape->IntegrationType;
-    my $IntegrationUri  = $UpdateIntegrationResponseShape->IntegrationUri;
-    my $PassthroughBehavior =
-      $UpdateIntegrationResponseShape->PassthroughBehavior;
-    my $RequestParameters = $UpdateIntegrationResponseShape->RequestParameters;
-    my $RequestTemplates  = $UpdateIntegrationResponseShape->RequestTemplates;
-    my $TemplateSelectionExpression =
-      $UpdateIntegrationResponseShape->TemplateSelectionExpression;
-    my $TimeoutInMillis = $UpdateIntegrationResponseShape->TimeoutInMillis;
-
-    # Returns a L<Paws::ApiGatewayV2::UpdateIntegrationResponseShape> object.
-
-Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/UpdateIntegration>
+Paws::ApiGatewayV2::UpdateIntegrationResponseShape
 
 =head1 ATTRIBUTES
-
-
-=head2 B<REQUIRED> ApiId => Str
-
-The API identifier.
-
 
 
 =head2 ConnectionId => Str
 
 The connection ID.
-
 
 
 =head2 ConnectionType => Str
@@ -110,7 +41,6 @@ Currently the only valid value is INTERNET, for connections through the
 public routable internet.
 
 Valid values are: C<"INTERNET">, C<"VPC_LINK">
-
 =head2 ContentHandlingStrategy => Str
 
 Specifies how to handle response payload content type conversions.
@@ -128,7 +58,6 @@ through from the integration response to the route response or method
 response without modification.
 
 Valid values are: C<"CONVERT_TO_BINARY">, C<"CONVERT_TO_TEXT">
-
 =head2 CredentialsArn => Str
 
 Specifies the credentials required for the integration, if any. For AWS
@@ -139,23 +68,26 @@ specify the string arn:aws:iam::*:user/*. To use resource-based
 permissions on supported AWS services, specify null.
 
 
-
 =head2 Description => Str
 
-The description of the integration
+Represents the description of an integration.
 
 
+=head2 IntegrationId => Str
 
-=head2 B<REQUIRED> IntegrationId => Str
-
-The integration ID.
-
+Represents the identifier of an integration.
 
 
 =head2 IntegrationMethod => Str
 
 Specifies the integration's HTTP method type.
 
+
+=head2 IntegrationResponseSelectionExpression => Str
+
+The integration response selection expression for the integration. See
+Integration Response Selection Expressions
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-integration-response-selection-expressions).
 
 
 =head2 IntegrationType => Str
@@ -184,11 +116,9 @@ MOCK: for integrating the route or method request with API Gateway as a
 "loopback" endpoint without invoking any backend.
 
 Valid values are: C<"AWS">, C<"HTTP">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY">
-
 =head2 IntegrationUri => Str
 
 For a Lambda proxy integration, this is the URI of the Lambda function.
-
 
 
 =head2 PassthroughBehavior => Str
@@ -211,7 +141,6 @@ content type defined, unmapped content types will be rejected with the
 same HTTP 415 Unsupported Media Type response.
 
 Valid values are: C<"WHEN_NO_MATCH">, C<"NEVER">, C<"WHEN_NO_TEMPLATES">
-
 =head2 RequestParameters => L<Paws::ApiGatewayV2::IntegrationParameters>
 
 A key-value map specifying request parameters that are passed from the
@@ -224,7 +153,6 @@ where {location} is querystring, path, or header; and {name} must be a
 valid and unique method request parameter name.
 
 
-
 =head2 RequestTemplates => L<Paws::ApiGatewayV2::TemplateMap>
 
 Represents a map of Velocity templates that are applied on the request
@@ -233,11 +161,9 @@ client. The content type value is the key in this map, and the template
 (as a String) is the value.
 
 
-
 =head2 TemplateSelectionExpression => Str
 
 The template selection expression for the integration.
-
 
 
 =head2 TimeoutInMillis => Int
@@ -246,17 +172,8 @@ Custom timeout between 50 and 29,000 milliseconds. The default value is
 29,000 milliseconds or 29 seconds.
 
 
+=head2 _request_id => Str
 
-
-=head1 SEE ALSO
-
-This class forms part of L<Paws>, documenting arguments for method UpdateIntegration in L<Paws::ApiGatewayV2>
-
-=head1 BUGS and CONTRIBUTIONS
-
-The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
-
-Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 
