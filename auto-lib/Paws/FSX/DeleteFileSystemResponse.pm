@@ -26,7 +26,7 @@ The ID of the file system being deleted.
 The file system lifecycle for the deletion request. Should be
 C<DELETING>.
 
-Valid values are: C<"AVAILABLE">, C<"CREATING">, C<"FAILED">, C<"DELETING">
+Valid values are: C<"AVAILABLE">, C<"CREATING">, C<"FAILED">, C<"DELETING">, C<"MISCONFIGURED">, C<"UPDATING">
 =head2 WindowsResponse => L<Paws::FSX::DeleteFileSystemWindowsResponse>
 
 

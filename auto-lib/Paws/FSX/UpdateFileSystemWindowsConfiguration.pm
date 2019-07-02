@@ -2,6 +2,7 @@ package Paws::FSX::UpdateFileSystemWindowsConfiguration;
   use Moose;
   has AutomaticBackupRetentionDays => (is => 'ro', isa => 'Int');
   has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
+  has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => 'Paws::FSX::SelfManagedActiveDirectoryConfigurationUpdates');
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
 1;
 
@@ -33,8 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::FSX::Update
 
 =head1 DESCRIPTION
 
-The configuration object for the Microsoft Windows file system used in
-the C<UpdateFileSystem> operation.
+Updates the Microsoft Windows configuration for an existing Amazon FSx
+for Windows File Server file system. Amazon FSx overwrites existing
+properties with non-null values provided in the request. If you don't
+specify a non-null value for a property, that property is not updated.
 
 =head1 ATTRIBUTES
 
@@ -50,6 +53,12 @@ maximum of 35 days.
 
   The preferred time to take daily automatic backups, in the UTC time
 zone.
+
+
+=head2 SelfManagedActiveDirectoryConfiguration => L<Paws::FSX::SelfManagedActiveDirectoryConfigurationUpdates>
+
+  The configuration Amazon FSx uses to join the Windows File Server
+instance to the self-managed Microsoft AD directory.
 
 
 =head2 WeeklyMaintenanceStartTime => Str

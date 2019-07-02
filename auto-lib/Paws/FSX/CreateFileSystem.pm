@@ -66,6 +66,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CopyTagsToBackups            => 1,        # OPTIONAL
         DailyAutomaticBackupStartTime =>
           'MyDailyTime',                          # min: 5, max: 5; OPTIONAL
+        SelfManagedActiveDirectoryConfiguration => {
+          DnsIps     => [ 'MyIpAddress', ... ],               # min: 1, max: 2
+          DomainName => 'MyActiveDirectoryFullyQualifiedName',
+          Password   => 'MyDirectoryPassword',                # min: 1, max: 256
+          UserName   => 'MyDirectoryUserName',                # min: 1, max: 256
+          FileSystemAdministratorsGroup =>
+            'MyFileSystemAdministratorsGroupName',  # min: 1, max: 256; OPTIONAL
+          OrganizationalUnitDistinguishedName =>
+            'MyOrganizationalUnitDistinguishedName'
+          ,    # min: 1, max: 2000; OPTIONAL
+        },    # OPTIONAL
         WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL
       },    # OPTIONAL
     );
@@ -92,7 +103,7 @@ AWS SDK.
 
 =head2 B<REQUIRED> FileSystemType => Str
 
-The type of file system.
+The type of Amazon FSx file system to create.
 
 Valid values are: C<"WINDOWS">, C<"LUSTRE">
 
@@ -110,16 +121,15 @@ Valid values are: C<"WINDOWS">, C<"LUSTRE">
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-A list of IDs for the security groups that apply to the specified
-network interfaces created for file system access. These security
-groups will apply to all network interfaces. This list isn't returned
-in later describe requests.
+A list of IDs specifying the security groups to apply to all network
+interfaces created for file system access. This list isn't returned in
+later requests to describe the file system.
 
 
 
 =head2 B<REQUIRED> StorageCapacity => Int
 
-The storage capacity of the file system.
+The storage capacity of the file system being created.
 
 For Windows file systems, the storage capacity has a minimum of 300
 GiB, and a maximum of 65,536 GiB.
@@ -131,23 +141,23 @@ GiB. Storage capacity is provisioned in increments of 3,600 GiB.
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
-A list of IDs for the subnets that the file system will be accessible
-from. File systems support only one subnet. The file server is also
-launched in that subnet's Availability Zone.
+The IDs of the subnets that the file system will be accessible from.
+File systems support only one subnet. The file server is also launched
+in that subnet's Availability Zone.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::FSX::Tag>]
 
-The tags to be applied to the file system at file system creation. The
-key value of the C<Name> tag appears in the console as the file system
-name.
+The tags to apply to the file system being created. The key value of
+the C<Name> tag appears in the console as the file system name.
 
 
 
 =head2 WindowsConfiguration => L<Paws::FSX::CreateFileSystemWindowsConfiguration>
 
-The configuration for this Microsoft Windows file system.
+The Microsoft Windows configuration for the file system being created.
+This value is required if C<FileSystemType> is set to C<WINDOWS>.
 
 
 

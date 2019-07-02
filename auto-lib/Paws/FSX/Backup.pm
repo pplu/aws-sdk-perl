@@ -2,6 +2,7 @@ package Paws::FSX::Backup;
   use Moose;
   has BackupId => (is => 'ro', isa => 'Str', required => 1);
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+  has DirectoryInformation => (is => 'ro', isa => 'Paws::FSX::ActiveDirectoryBackupAttributes');
   has FailureDetails => (is => 'ro', isa => 'Paws::FSX::BackupFailureDetails');
   has FileSystem => (is => 'ro', isa => 'Paws::FSX::FileSystem', required => 1);
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -54,6 +55,12 @@ create a new file system from a backup to protect against data loss.
 =head2 B<REQUIRED> CreationTime => Str
 
   The time when a particular backup was created.
+
+
+=head2 DirectoryInformation => L<Paws::FSX::ActiveDirectoryBackupAttributes>
+
+  The configuration of the self-managed Microsoft Active Directory (AD)
+to which the Windows File Server instance is joined.
 
 
 =head2 FailureDetails => L<Paws::FSX::BackupFailureDetails>

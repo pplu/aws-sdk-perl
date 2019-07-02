@@ -40,6 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AutomaticBackupRetentionDays => 1,    # max: 35; OPTIONAL
         DailyAutomaticBackupStartTime =>
           'MyDailyTime',                      # min: 5, max: 5; OPTIONAL
+        SelfManagedActiveDirectoryConfiguration => {
+          DnsIps   => [ 'MyIpAddress', ... ],    # min: 1, max: 2; OPTIONAL
+          Password => 'MyDirectoryPassword',     # min: 1, max: 256; OPTIONAL
+          UserName => 'MyDirectoryUserName',     # min: 1, max: 256; OPTIONAL
+        },    # OPTIONAL
         WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL
       },    # OPTIONAL
     );
@@ -78,8 +83,9 @@ AWS SDK.
 
 =head2 WindowsConfiguration => L<Paws::FSX::UpdateFileSystemWindowsConfiguration>
 
-The configuration for this Microsoft Windows file system. The only
-supported options are for backup and maintenance.
+The configuration update for this Microsoft Windows file system. The
+only supported options are for backup and maintenance and for
+self-managed Active Directory configuration.
 
 
 

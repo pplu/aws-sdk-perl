@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::FSX::FileSy
 
 =head1 DESCRIPTION
 
-Structure providing details of any failures that occur when creating
+A structure providing details of any failures that occur when creating
 the file system has failed.
 
 =head1 ATTRIBUTES
@@ -39,7 +39,7 @@ the file system has failed.
 
 =head2 Message => Str
 
-  Message describing the failures that occurred during file system
+  A message describing any failures that occurred during file system
 creation.
 
 

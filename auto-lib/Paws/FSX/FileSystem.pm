@@ -69,13 +69,12 @@ A description of a specific Amazon FSx file system.
 
 =head2 FileSystemId => Str
 
-  The eight-digit ID of the file system that was automatically assigned
-by Amazon FSx.
+  The system-generated, unique 17-digit ID of the file system.
 
 
 =head2 FileSystemType => Str
 
-  Type of file system. Currently the only supported type is WINDOWS.
+  The type of Amazon FSx file system, either C<LUSTRE> or C<WINDOWS>.
 
 
 =head2 KmsKeyId => Str
@@ -87,7 +86,42 @@ system.
 
 =head2 Lifecycle => Str
 
-  The lifecycle status of the file system.
+  The lifecycle status of the file system:
+
+=over
+
+=item *
+
+C<AVAILABLE> indicates that the file system is reachable and available
+for use.
+
+=item *
+
+C<CREATING> indicates that Amazon FSx is in the process of creating the
+new file system.
+
+=item *
+
+C<DELETING> indicates that Amazon FSx is in the process of deleting the
+file system.
+
+=item *
+
+C<FAILED> indicates that Amazon FSx was not able to create the file
+system.
+
+=item *
+
+C<MISCONFIGURED> indicates that the file system is in a failed but
+recoverable state.
+
+=item *
+
+C<UPDATING> indicates that the file system is undergoing a customer
+initiated update.
+
+=back
+
 
 
 =head2 LustreConfiguration => L<Paws::FSX::LustreFileSystemConfiguration>
@@ -105,30 +139,30 @@ For more information, see Elastic Network Interfaces
 the I<Amazon EC2 User Guide.>
 
 For an Amazon FSx for Windows File Server file system, you can have one
-network interface Id. For an Amazon FSx for Lustre file system, you can
+network interface ID. For an Amazon FSx for Lustre file system, you can
 have more than one.
 
 
 =head2 OwnerId => Str
 
   The AWS account that created the file system. If the file system was
-created by an IAM user, the AWS account to which the IAM user belongs
-is the owner.
+created by an AWS Identity and Access Management (IAM) user, the AWS
+account to which the IAM user belongs is the owner.
 
 
 =head2 ResourceARN => Str
 
-  The resource ARN of the file system.
+  The Amazon Resource Name (ARN) for the file system resource.
 
 
 =head2 StorageCapacity => Int
 
-  The storage capacity of the file system in gigabytes.
+  The storage capacity of the file system in gigabytes (GB).
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-  The IDs of the subnets to contain the endpoint for the file system. One
+  The ID of the subnet to contain the endpoint for the file system. One
 and only one is supported. The file system is launched in the
 Availability Zone associated with this subnet.
 
