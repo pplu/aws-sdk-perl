@@ -26,7 +26,8 @@ The commit ID of the merge base.
 
 =head2 B<REQUIRED> ConflictMetadataList => ArrayRef[L<Paws::CodeCommit::ConflictMetadata>]
 
-A list of metadata for any conflicts found.
+A list of metadata for any conflicting files. If the specified merge
+strategy is FAST_FORWARD_MERGE, this list will always be empty.
 
 
 =head2 B<REQUIRED> DestinationCommitId => Str

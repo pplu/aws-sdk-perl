@@ -558,6 +558,11 @@ specified branch.
 
 =item *
 
+GetBlob, which returns the base-64 encoded content of an individual Git
+blob object within a repository.
+
+=item *
+
 GetFile, which returns the base-64 encoded content of a specified file.
 
 =item *
@@ -567,24 +572,18 @@ directory.
 
 =item *
 
-PutFile, which adds or modifies a file in a specified repository and
-branch.
+PutFile, which adds or modifies a single file in a specified repository
+and branch.
 
 =back
 
-Information about committed code in a repository, by calling the
-following:
+Commits, by calling the following:
 
 =over
 
 =item *
 
 CreateCommit, which creates a commit for changes to a repository.
-
-=item *
-
-GetBlob, which returns the base-64 encoded content of an individual Git
-blob object within a repository.
 
 =item *
 
@@ -718,7 +717,7 @@ UpdatePullRequestTitle, which updates the title of a pull request.
 
 =back
 
-Information about comments in a repository, by calling the following:
+Comments in a repository, by calling the following:
 
 =over
 
@@ -994,9 +993,11 @@ Each argument is described in detail in: L<Paws::CodeCommit::CreateUnreferencedM
 
 Returns: a L<Paws::CodeCommit::CreateUnreferencedMergeCommitOutput> instance
 
-Creates an unerferenced commit that represents the result of merging
+Creates an unreferenced commit that represents the result of merging
 two branches using a specified merge strategy. This can help you
-determine the outcome of a potential merge.
+determine the outcome of a potential merge. This API cannot be used
+with the fast-forward merge strategy, as that strategy does not create
+a merge commit.
 
 This unreferenced merge commit can only be accessed using the GetCommit
 API or through git commands such as git fetch. To retrieve this commit,
@@ -1679,9 +1680,10 @@ Each argument is described in detail in: L<Paws::CodeCommit::MergePullRequestByF
 
 Returns: a L<Paws::CodeCommit::MergePullRequestByFastForwardOutput> instance
 
-Closes a pull request and attempts to merge the source commit of a pull
-request into the specified destination branch for that pull request at
-the specified commit using the fast-forward merge strategy.
+Attempts to merge the source commit of a pull request into the
+specified destination branch for that pull request at the specified
+commit using the fast-forward merge strategy. If the merge is
+successful, it closes the pull request.
 
 
 =head2 MergePullRequestBySquash
@@ -1715,9 +1717,10 @@ Each argument is described in detail in: L<Paws::CodeCommit::MergePullRequestByS
 
 Returns: a L<Paws::CodeCommit::MergePullRequestBySquashOutput> instance
 
-Closes a pull request and attempts to merge the source commit of a pull
-request into the specified destination branch for that pull request at
-the specified commit using the squash merge strategy.
+Attempts to merge the source commit of a pull request into the
+specified destination branch for that pull request at the specified
+commit using the squash merge strategy. If the merge is successful, it
+closes the pull request.
 
 
 =head2 MergePullRequestByThreeWay
@@ -1751,9 +1754,10 @@ Each argument is described in detail in: L<Paws::CodeCommit::MergePullRequestByT
 
 Returns: a L<Paws::CodeCommit::MergePullRequestByThreeWayOutput> instance
 
-Closes a pull request and attempts to merge the source commit of a pull
-request into the specified destination branch for that pull request at
-the specified commit using the three-way merge strategy.
+Attempts to merge the source commit of a pull request into the
+specified destination branch for that pull request at the specified
+commit using the three-way merge strategy. If the merge is successful,
+it closes the pull request.
 
 
 =head2 PostCommentForComparedCommit

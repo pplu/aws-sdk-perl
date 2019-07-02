@@ -46,7 +46,8 @@ AUTOMERGE is chosen as the conflict resolution strategy.
 
 =head2 ReplaceContents => ArrayRef[L<Paws::CodeCommit::ReplaceContentEntry>]
 
-  Information about how a conflict in a merge will be resolved.
+  Files that will have content replaced as part of the merge conflict
+resolution.
 
 
 =head2 SetFileModes => ArrayRef[L<Paws::CodeCommit::SetFileModeEntry>]

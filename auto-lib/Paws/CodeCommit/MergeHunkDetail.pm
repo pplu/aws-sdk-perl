@@ -41,17 +41,18 @@ in a merge or pull request operation.
 
 =head2 EndLine => Int
 
-  The line number where a merge conflict ends.
+  The end position of the hunk in the merge result.
 
 
 =head2 HunkContent => Str
 
-  The base-64 encoded content of the hunk that contains the conflict.
+  The base-64 encoded content of the hunk merged region that might or
+might not contain a conflict.
 
 
 =head2 StartLine => Int
 
-  The line number where a merge conflict begins.
+  The start position of the hunk in the merge result.
 
 
 

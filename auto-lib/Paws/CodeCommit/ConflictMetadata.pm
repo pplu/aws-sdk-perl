@@ -95,7 +95,8 @@ conflicts.
 =head2 ObjectTypeConflict => Bool
 
   A boolean value (true or false) indicating whether there are conflicts
-in the object type of a file.
+between the branches in the object type of a file, folder, or
+submodule.
 
 
 =head2 ObjectTypes => L<Paws::CodeCommit::ObjectTypes>
