@@ -23,6 +23,7 @@ package Paws::S3::CreateMultipartUpload;
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
   has SSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key', traits => ['ParamInHeader']);
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
+  has SSEKMSEncryptionContext => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-context', traits => ['ParamInHeader']);
   has SSEKMSKeyId => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-aws-kms-key-id', traits => ['ParamInHeader']);
   has StorageClass => (is => 'ro', isa => 'Str', header_name => 'x-amz-storage-class', traits => ['ParamInHeader']);
   has Tagging => (is => 'ro', isa => 'Str', header_name => 'x-amz-tagging', traits => ['ParamInHeader']);
@@ -77,6 +78,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SSECustomerAlgorithm      => 'MySSECustomerAlgorithm',    # OPTIONAL
       SSECustomerKey            => 'MySSECustomerKey',          # OPTIONAL
       SSECustomerKeyMD5         => 'MySSECustomerKeyMD5',       # OPTIONAL
+      SSEKMSEncryptionContext   => 'MySSEKMSEncryptionContext', # OPTIONAL
       SSEKMSKeyId               => 'MySSEKMSKeyId',             # OPTIONAL
       ServerSideEncryption      => 'AES256',                    # OPTIONAL
       StorageClass              => 'STANDARD',                  # OPTIONAL
@@ -93,7 +95,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SSECustomerAlgorithm =
       $CreateMultipartUploadOutput->SSECustomerAlgorithm;
     my $SSECustomerKeyMD5 = $CreateMultipartUploadOutput->SSECustomerKeyMD5;
-    my $SSEKMSKeyId       = $CreateMultipartUploadOutput->SSEKMSKeyId;
+    my $SSEKMSEncryptionContext =
+      $CreateMultipartUploadOutput->SSEKMSEncryptionContext;
+    my $SSEKMSKeyId = $CreateMultipartUploadOutput->SSEKMSKeyId;
     my $ServerSideEncryption =
       $CreateMultipartUploadOutput->ServerSideEncryption;
     my $UploadId = $CreateMultipartUploadOutput->UploadId;
@@ -248,6 +252,14 @@ x-amz-server-side-encryption-customer-algorithm header.
 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
 ensure the encryption key was transmitted without error.
+
+
+
+=head2 SSEKMSEncryptionContext => Str
+
+Specifies the AWS KMS Encryption Context to use for object encryption.
+The value of this header is a base64-encoded UTF-8 string holding JSON
+with the encryption context key-value pairs.
 
 
 

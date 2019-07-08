@@ -93,7 +93,8 @@ rules
 
 =back
 
-For more information, see Cross-Region Replication (CRR) in the
+For more information, see Cross-Region Replication (CRR)
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the
 I<Amazon S3 Developer Guide>.
 
 
