@@ -3704,7 +3704,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Each argument is described in detail in: L<Paws::EC2::AssignPrivateIpAddresses>
 
-Returns: nothing
+Returns: a L<Paws::EC2::AssignPrivateIpAddressesResult> instance
 
 Assigns one or more secondary private IP addresses to the specified
 network interface.

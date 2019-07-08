@@ -76,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Value => 1,                                                   # OPTIONAL
       },    # OPTIONAL
       SriovNetSupport => { Value => 'MyString', },    # OPTIONAL
-      UserData => {
+      UserData        => {
         Value => 'BlobBlob',                          # OPTIONAL
       },    # OPTIONAL
       Value => 'MyString',    # OPTIONAL

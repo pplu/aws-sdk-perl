@@ -84,9 +84,6 @@ Adapter (EFA), specify C<efa>. For more information, see Elastic Fabric
 Adapter (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-If you are not creating an EFA, specify C<interface> or omit this
-parameter.
-
 Valid values are: C<"efa">
 
 =head2 Ipv6AddressCount => Int
