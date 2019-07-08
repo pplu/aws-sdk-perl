@@ -1,5 +1,6 @@
 package Paws::SimpleWorkflow::DomainInfo;
   use Moose;
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
@@ -22,20 +23,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::DomainInfo object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::DomainInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Description
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
 Contains general information about a domain.
 
 =head1 ATTRIBUTES
+
+
+=head2 Arn => Str
+
+  The ARN of the domain.
 
 
 =head2 Description => Str
