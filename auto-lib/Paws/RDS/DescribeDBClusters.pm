@@ -3,6 +3,7 @@ package Paws::RDS::DescribeDBClusters;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
+  has IncludeShared => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -77,6 +78,13 @@ about the DB clusters identified by these ARNs.
 
 =back
 
+
+
+
+=head2 IncludeShared => Bool
+
+Optional Boolean parameter that specifies whether the output includes
+information about clusters shared from other AWS accounts.
 
 
 
