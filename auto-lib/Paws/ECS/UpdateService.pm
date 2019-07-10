@@ -39,20 +39,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example updates the my-http-service service to use the
     # amazon-ecs-sample task definition.
     my $UpdateServiceResponse = $ecs->UpdateService(
-      {
-        'Service'        => 'my-http-service',
-        'TaskDefinition' => 'amazon-ecs-sample'
-      }
+      'Service'        => 'my-http-service',
+      'TaskDefinition' => 'amazon-ecs-sample'
     );
 
     # To change the number of tasks in a service
     # This example updates the desired count of the my-http-service service to
     # 10.
     my $UpdateServiceResponse = $ecs->UpdateService(
-      {
-        'DesiredCount' => 10,
-        'Service'      => 'my-http-service'
-      }
+      'DesiredCount' => 10,
+      'Service'      => 'my-http-service'
     );
 
 
@@ -116,7 +112,7 @@ The network configuration for the service. This parameter is required
 for task definitions that use the C<awsvpc> network mode to receive
 their own elastic network interface, and it is not supported for other
 network modes. For more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 Updating a service to add a subnet to a list of existing subnets does

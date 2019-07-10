@@ -41,9 +41,31 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fms
 
 =head2 DeleteAllPolicyResources => Bool
 
-If C<True>, the request will also delete all web ACLs in this policy.
-Associated resources will no longer be protected by web ACLs in this
-policy.
+If C<True>, the request will also perform a clean-up process that will:
+
+=over
+
+=item *
+
+Delete rule groups created by AWS Firewall Manager
+
+=item *
+
+Remove web ACLs from in-scope resources
+
+=item *
+
+Delete web ACLs that contain no rules or rule groups
+
+=back
+
+After the cleanup, in-scope resources will no longer be protected by
+web ACLs in this policy. Protection of out-of-scope resources will
+remain unchanged. Scope is determined by tags and accounts associated
+with the policy. When creating the policy, if you specified that only
+resources in specific accounts or with specific tags be protected by
+the policy, those resources are in-scope. All others are out of scope.
+If you did not specify tags or accounts, all resources are in-scope.
 
 
 

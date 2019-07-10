@@ -30,12 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $streams.dynamodb = Paws->service('DynamoDBStreams');
     # To retrieve all the stream records from a shard
     # The following example retrieves all the stream records from a shard.
-    my $GetRecordsOutput = $streams
-      . dynamodb->GetRecords(
-      {
-        'ShardIterator' =>
+    my $GetRecordsOutput =
+      $streams
+      . dynamodb->GetRecords( 'ShardIterator' =>
 'arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:10.252|1|AAAAAAAAAAEvJp6D+zaQ...  <remaining characters omitted> ...'
-      }
       );
 
     # Results:

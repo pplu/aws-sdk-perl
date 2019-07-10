@@ -31,12 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $streams.dynamodb = Paws->service('DynamoDBStreams');
     # To describe a stream with a given stream ARN
     # The following example describes a stream with a given stream ARN.
-    my $DescribeStreamOutput = $streams
-      . dynamodb->DescribeStream(
-      {
-        'StreamArn' =>
+    my $DescribeStreamOutput =
+      $streams
+      . dynamodb->DescribeStream( 'StreamArn' =>
 'arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:10.252'
-      }
       );
 
     # Results:

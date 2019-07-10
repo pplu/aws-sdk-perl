@@ -3,6 +3,7 @@ package Paws::Datasync::CreateTask;
   use Moose;
   has CloudWatchLogGroupArn => (is => 'ro', isa => 'Str');
   has DestinationLocationArn => (is => 'ro', isa => 'Str', required => 1);
+  has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
   has Name => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
   has SourceLocationArn => (is => 'ro', isa => 'Str', required => 1);
@@ -36,10 +37,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DestinationLocationArn => 'MyLocationArn',
       SourceLocationArn      => 'MyLocationArn',
       CloudWatchLogGroupArn  => 'MyLogGroupArn',    # OPTIONAL
-      Name                   => 'MyTagValue',       # OPTIONAL
-      Options                => {
-        Atime          => 'NONE',    # values: NONE, BEST_EFFORT; OPTIONAL
-        BytesPerSecond => 1,         # min: -1; OPTIONAL
+      Excludes               => [
+        {
+          FilterType =>
+            'SIMPLE_PATTERN',    # values: SIMPLE_PATTERNmax: 128; OPTIONAL
+          Value => 'MyFilterValue',    # max: 409600; OPTIONAL
+        },
+        ...
+      ],                               # OPTIONAL
+      Name    => 'MyTagValue',         # OPTIONAL
+      Options => {
+        Atime          => 'NONE',      # values: NONE, BEST_EFFORT; OPTIONAL
+        BytesPerSecond => 1,           # min: -1; OPTIONAL
         Gid   => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         Mtime => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
         PosixPermissions =>
@@ -52,7 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 256
           Value => 'MyTagValue',    # min: 1, max: 256
         },
         ...
@@ -73,20 +82,30 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head2 CloudWatchLogGroupArn => Str
 
 The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
-is used to monitor and log events in the task. For more information on
-these groups, see Working with Log Groups and Log Streams
-(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html)
-in the I<Amazon CloudWatch User Guide.>
+is used to monitor and log events in the task.
+
+For more information on these groups, see
+"https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html"
+(Working with Log Groups and Log Streams) in the I<Amazon CloudWatch
+User Guide>.
 
 For more information about how to useCloudWatchLogs with DataSync, see
-Monitoring Your Task
-(https://docs.aws.amazon.com/datasync/latest/userguide/monitor-datasync.html).
+"https://docs.aws.amazon.com/datasync/latest/userguide/monitor-datasync.html"
+(Monitoring Your Task)
 
 
 
 =head2 B<REQUIRED> DestinationLocationArn => Str
 
 The Amazon Resource Name (ARN) of an AWS storage resource's location.
+
+
+
+=head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
+
+A filter that determines which files to exclude from a task based on
+the specified pattern. Transfers all files in the taskE<rsquo>s
+subdirectory, except files that match the filter that is set.
 
 
 

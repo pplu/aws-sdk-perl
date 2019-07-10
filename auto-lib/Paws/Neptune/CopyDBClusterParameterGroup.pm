@@ -60,7 +60,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 The identifier or Amazon Resource Name (ARN) for the source DB cluster
 parameter group. For information about creating an ARN, see
 Constructing an Amazon Resource Name (ARN)
-(http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
+(https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
 
 Constraints:
 
@@ -89,7 +89,7 @@ C<arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1>.
 
 =head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
 
-
+The tags to be assigned to the copied DB cluster parameter group.
 
 
 

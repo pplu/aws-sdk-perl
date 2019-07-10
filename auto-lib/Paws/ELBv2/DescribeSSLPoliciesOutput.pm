@@ -18,8 +18,8 @@ Paws::ELBv2::DescribeSSLPoliciesOutput
 
 =head2 NextMarker => Str
 
-The marker to use when requesting the next set of results. If there are
-no additional results, the string is empty.
+If there are additional results, this is the marker for the next set of
+results. Otherwise, this is null.
 
 
 =head2 SslPolicies => ArrayRef[L<Paws::ELBv2::SslPolicy>]

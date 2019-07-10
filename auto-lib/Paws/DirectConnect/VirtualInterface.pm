@@ -18,6 +18,7 @@ package Paws::DirectConnect::VirtualInterface;
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
   has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
   has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', traits => ['NameInRequest'], request_name => 'routeFilterPrefixes' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
   has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' );
   has VirtualInterfaceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceName' );
@@ -60,7 +61,8 @@ configuration.
 
 =head2 AuthKey => Str
 
-The authentication key for BGP configuration.
+The authentication key for BGP configuration. This string has a minimum
+length of 6 characters and and a maximun lenth of 80 characters.
 
 
 =head2 AwsDeviceV2 => Str
@@ -123,6 +125,11 @@ The AWS Region where the virtual interface is located.
 
 The routes to be advertised to the AWS network in this Region. Applies
 to public virtual interfaces.
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+Any tags assigned to the virtual interface.
 
 
 =head2 VirtualGatewayId => Str
@@ -191,10 +198,14 @@ virtual interface. If a virtual interface in the C<Confirming> state is
 deleted by the virtual interface owner, the virtual interface enters
 the C<Rejected> state.
 
+=item *
+
+C<unknown>: The state of the virtual interface is not available.
+
 =back
 
 
-Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
+Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">, C<"unknown">
 =head2 VirtualInterfaceType => Str
 
 The type of virtual interface. The possible values are C<private> and

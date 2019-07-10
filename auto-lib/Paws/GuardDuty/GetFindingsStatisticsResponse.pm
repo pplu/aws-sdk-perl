@@ -1,7 +1,7 @@
 
 package Paws::GuardDuty::GetFindingsStatisticsResponse;
   use Moose;
-  has FindingStatistics => (is => 'ro', isa => 'Paws::GuardDuty::FindingStatistics', traits => ['NameInRequest'], request_name => 'findingStatistics');
+  has FindingStatistics => (is => 'ro', isa => 'Paws::GuardDuty::FindingStatistics', traits => ['NameInRequest'], request_name => 'findingStatistics', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -15,7 +15,7 @@ Paws::GuardDuty::GetFindingsStatisticsResponse
 =head1 ATTRIBUTES
 
 
-=head2 FindingStatistics => L<Paws::GuardDuty::FindingStatistics>
+=head2 B<REQUIRED> FindingStatistics => L<Paws::GuardDuty::FindingStatistics>
 
 Finding statistics object.
 

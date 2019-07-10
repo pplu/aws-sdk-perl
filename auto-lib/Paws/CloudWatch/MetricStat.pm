@@ -59,7 +59,9 @@ extended statistic.
 
 =head2 Unit => Str
 
-  The unit to use for the returned data points.
+  When you are using a C<Put> operation, this defines what unit you want
+to use when storing the metric. In a C<Get> operation, this displays
+the unit that is used for the metric.
 
 
 

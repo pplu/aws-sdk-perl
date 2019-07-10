@@ -52,14 +52,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
 =head2 B<REQUIRED> AttributeType => Str
 
-Type of attribute. Can be endpoint-custom-attributes,
-endpoint-custom-metrics, endpoint-user-attributes.
+The type of attribute or attributes to remove. Valid values are:
+
+=over
+
+=item *
+
+endpoint-custom-attributes - Custom attributes that describe endpoints,
+such as the date when an associated user opted in or out of receiving
+communications from you through a specific type of channel.
+
+=item *
+
+endpoint-custom-metrics - Custom metrics that your app reports to
+Amazon Pinpoint for endpoints, such as the number of app sessions or
+the number of items left in a cart.
+
+=item *
+
+endpoint-user-attributes - Custom attributes that describe users, such
+as first name, last name, and age.
+
+=back
+
 
 
 

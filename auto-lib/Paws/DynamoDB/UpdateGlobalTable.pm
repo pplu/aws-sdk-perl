@@ -66,7 +66,7 @@ The global table name.
 
 =head2 B<REQUIRED> ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicaUpdate>]
 
-A list of regions that should be added or removed from the global
+A list of Regions that should be added or removed from the global
 table.
 
 

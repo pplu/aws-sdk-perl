@@ -32,10 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a policy used for SSL negotiation
     # This example describes the specified policy used for SSL negotiation.
     my $DescribeSSLPoliciesOutput = $elasticloadbalancing->DescribeSSLPolicies(
-      {
-        'Names' => ['ELBSecurityPolicy-2015-05']
-      }
-    );
+      'Names' => ['ELBSecurityPolicy-2015-05'] );
 
     # Results:
     my $SslPolicies = $DescribeSSLPoliciesOutput->SslPolicies;

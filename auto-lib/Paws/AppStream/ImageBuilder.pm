@@ -11,6 +11,7 @@ package Paws::AppStream::ImageBuilder;
   has ImageBuilderErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::ResourceError]');
   has InstanceType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has NetworkAccessConfiguration => (is => 'ro', isa => 'Paws::AppStream::NetworkAccessConfiguration');
   has Platform => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Paws::AppStream::ImageBuilderStateChangeReason');
@@ -105,6 +106,11 @@ the image builder to a Microsoft Active Directory domain.
 =head2 B<REQUIRED> Name => Str
 
   The name of the image builder.
+
+
+=head2 NetworkAccessConfiguration => L<Paws::AppStream::NetworkAccessConfiguration>
+
+  
 
 
 =head2 Platform => Str

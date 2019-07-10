@@ -7,7 +7,7 @@ package Paws::CloudFront::ListFieldLevelEncryptionConfigs;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListFieldLevelEncryptionConfigs');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-11-05/field-level-encryption');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/field-level-encryption');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListFieldLevelEncryptionConfigsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -22,11 +22,11 @@ Paws::CloudFront::ListFieldLevelEncryptionConfigs - Arguments for method ListFie
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListFieldLevelEncryptionConfigs2018_11_05 on the
+This class represents the parameters used for calling the method ListFieldLevelEncryptionConfigs2019_03_26 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method ListFieldLevelEncryptionConfigs2018_11_05.
+as arguments to method ListFieldLevelEncryptionConfigs2019_03_26.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListFieldLevelEncryptionConfigs2018_11_05.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListFieldLevelEncryptionConfigs2019_03_26.
 
 =head1 SYNOPSIS
 
@@ -69,7 +69,7 @@ the response body.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ListFieldLevelEncryptionConfigs2018_11_05 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method ListFieldLevelEncryptionConfigs2019_03_26 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

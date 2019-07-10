@@ -1,6 +1,6 @@
 package Paws::SageMaker::DataSource;
   use Moose;
-  has S3DataSource => (is => 'ro', isa => 'Paws::SageMaker::S3DataSource', required => 1);
+  has S3DataSource => (is => 'ro', isa => 'Paws::SageMaker::S3DataSource');
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ Describes the location of the channel data.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3DataSource => L<Paws::SageMaker::S3DataSource>
+=head2 S3DataSource => L<Paws::SageMaker::S3DataSource>
 
   The S3 location of the data source that is associated with a channel.
 

@@ -443,7 +443,7 @@ Amazon Inspector
 Amazon Inspector enables you to analyze the behavior of your AWS
 resources and to identify potential security issues. For more
 information, see Amazon Inspector User Guide
-(http://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html).
+(https://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/inspector-2016-02-16>
 
@@ -495,7 +495,7 @@ needed to perform security assessments. You can create up to 50
 assessment targets per AWS account. You can run up to 500 concurrent
 agents per AWS account. For more information, see Amazon Inspector
 Assessment Targets
-(http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html).
+(https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html).
 
 
 =head2 CreateAssessmentTemplate
@@ -888,7 +888,7 @@ Returns: a L<Paws::Inspector::ListAssessmentTargetsResponse> instance
 Lists the ARNs of the assessment targets within this AWS account. For
 more information about assessment targets, see Amazon Inspector
 Assessment Targets
-(http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html).
+(https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html).
 
 
 =head2 ListAssessmentTemplates

@@ -17,7 +17,7 @@ Paws::EC2::DescribeImagesResult
 
 =head2 Images => ArrayRef[L<Paws::EC2::Image>]
 
-Information about one or more images.
+Information about the images.
 
 
 =head2 _request_id => Str

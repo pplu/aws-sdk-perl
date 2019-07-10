@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::ExecuteProvisionedProductServiceAction;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
   has ExecuteToken => (is => 'ro', isa => 'Str', required => 1);
+  has Parameters => (is => 'ro', isa => 'Paws::ServiceCatalog::ExecutionParameterMap');
   has ProvisionedProductId => (is => 'ro', isa => 'Str', required => 1);
   has ServiceActionId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -36,6 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProvisionedProductId => 'MyId',
       ServiceActionId      => 'MyId',
       AcceptLanguage       => 'MyAcceptLanguage',     # OPTIONAL
+      Parameters           => {
+        'MyExecutionParameterKey' => [
+          'MyExecutionParameterValue', ...            # max: 512
+        ],    # key: min: 1, max: 50, value: max: 25
+      },    # OPTIONAL
       );
 
     # Results:
@@ -76,6 +82,12 @@ C<zh> - Chinese
 =head2 B<REQUIRED> ExecuteToken => Str
 
 An idempotency token that uniquely identifies the execute request.
+
+
+
+=head2 Parameters => L<Paws::ServiceCatalog::ExecutionParameterMap>
+
+
 
 
 

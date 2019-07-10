@@ -1,6 +1,8 @@
 package Paws::Robomaker::ProgressDetail;
   use Moose;
   has CurrentProgress => (is => 'ro', isa => 'Str', request_name => 'currentProgress', traits => ['NameInRequest']);
+  has EstimatedTimeRemainingSeconds => (is => 'ro', isa => 'Int', request_name => 'estimatedTimeRemainingSeconds', traits => ['NameInRequest']);
+  has PercentDone => (is => 'ro', isa => 'Num', request_name => 'percentDone', traits => ['NameInRequest']);
   has TargetResource => (is => 'ro', isa => 'Str', request_name => 'targetResource', traits => ['NameInRequest']);
 1;
 
@@ -40,6 +42,49 @@ Information about the progress of a deployment job.
 =head2 CurrentProgress => Str
 
   The current progress status.
+
+=over
+
+=item Validating
+
+Validating the deployment.
+
+=item DownloadingExtracting
+
+Downloading and extracting the bundle on the robot.
+
+=item ExecutingPreLaunch
+
+Executing pre-launch script(s) if provided.
+
+=item Launching
+
+Launching the robot application.
+
+=item ExecutingPostLaunch
+
+Executing post-launch script(s) if provided.
+
+=item Finished
+
+Deployment is complete.
+
+=back
+
+
+
+=head2 EstimatedTimeRemainingSeconds => Int
+
+  Estimated amount of time in seconds remaining in the step. This
+currently only applies to the C<Downloading/Extracting> step of the
+deployment. It is empty for other steps.
+
+
+=head2 PercentDone => Num
+
+  Precentage of the step that is done. This currently only applies to the
+C<Downloading/Extracting> step of the deployment. It is empty for other
+steps.
 
 
 =head2 TargetResource => Str

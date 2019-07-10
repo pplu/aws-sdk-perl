@@ -615,10 +615,9 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeExportConfig
 
 Returns: a L<Paws::Discovery::DescribeExportConfigurationsResponse> instance
 
-C<DescribeExportConfigurations> is deprecated.
-
-Use instead C<DescribeExportTasks>
-(http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html).
+C<DescribeExportConfigurations> is deprecated. Use DescribeImportTasks
+(https://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html),
+instead.
 
 
 =head2 DescribeExportTasks

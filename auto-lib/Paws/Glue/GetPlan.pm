@@ -105,7 +105,7 @@ Valid values are: C<"PYTHON">, C<"SCALA">
 
 =head2 Location => L<Paws::Glue::Location>
 
-Parameters for the mapping.
+The parameters for the mapping.
 
 
 

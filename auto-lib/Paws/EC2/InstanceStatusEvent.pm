@@ -2,8 +2,10 @@ package Paws::EC2::InstanceStatusEvent;
   use Moose;
   has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has InstanceEventId => (is => 'ro', isa => 'Str', request_name => 'instanceEventId', traits => ['NameInRequest']);
   has NotAfter => (is => 'ro', isa => 'Str', request_name => 'notAfter', traits => ['NameInRequest']);
   has NotBefore => (is => 'ro', isa => 'Str', request_name => 'notBefore', traits => ['NameInRequest']);
+  has NotBeforeDeadline => (is => 'ro', isa => 'Str', request_name => 'notBeforeDeadline', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::InstanceStatusEvent object:
 
-  $service_obj->Method(Att1 => { Code => $value, ..., NotBefore => $value  });
+  $service_obj->Method(Att1 => { Code => $value, ..., NotBeforeDeadline => $value  });
 
 =head3 Results returned from an API call
 
@@ -53,6 +55,11 @@ to a week. If the event has been completed, this description starts
 with the following text: [Completed].
 
 
+=head2 InstanceEventId => Str
+
+  The ID of the event.
+
+
 =head2 NotAfter => Str
 
   The latest scheduled end time for the event.
@@ -61,6 +68,11 @@ with the following text: [Completed].
 =head2 NotBefore => Str
 
   The earliest scheduled start time for the event.
+
+
+=head2 NotBeforeDeadline => Str
+
+  The deadline for starting the event.
 
 
 

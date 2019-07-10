@@ -4,6 +4,7 @@ package Paws::Greengrass::StartBulkDeployment;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has ExecutionRoleArn => (is => 'ro', isa => 'Str');
   has InputFileUri => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -31,9 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $greengrass = Paws->service('Greengrass');
     my $StartBulkDeploymentResponse = $greengrass->StartBulkDeployment(
-      AmznClientToken  => 'My__string',    # OPTIONAL
-      ExecutionRoleArn => 'My__string',    # OPTIONAL
-      InputFileUri     => 'My__string',    # OPTIONAL
+      AmznClientToken  => 'My__string',                         # OPTIONAL
+      ExecutionRoleArn => 'My__string',                         # OPTIONAL
+      InputFileUri     => 'My__string',                         # OPTIONAL
+      Tags             => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -71,6 +73,12 @@ input file. The input file is a JSON-serialized, line delimited file
 with UTF-8 encoding that provides a list of group and version IDs and
 the deployment type. This file must be less than 100 MB. Currently, AWS
 IoT Greengrass supports only ''NewDeployment'' deployment types.
+
+
+
+=head2 Tags => L<Paws::Greengrass::Tags>
+
+Tag(s) to add to the new resource
 
 
 

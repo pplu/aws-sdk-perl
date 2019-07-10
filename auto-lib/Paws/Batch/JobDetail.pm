@@ -141,7 +141,7 @@ C<RUNNING> state).
 
 If your jobs do not progress to C<STARTING>, see Jobs Stuck in
 C<RUNNABLE> Status
-(http://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html#job_stuck_in_runnable)
+(https://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html#job_stuck_in_runnable)
 in the troubleshooting section of the I<AWS Batch User Guide>.
 
 

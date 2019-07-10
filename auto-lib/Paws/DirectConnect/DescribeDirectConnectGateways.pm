@@ -57,7 +57,12 @@ The ID of the Direct Connect gateway.
 
 =head2 MaxResults => Int
 
-The maximum number of Direct Connect gateways to return per page.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
+
+If C<MaxResults> is given a value larger than 100, only 100 results are
+returned.
 
 
 

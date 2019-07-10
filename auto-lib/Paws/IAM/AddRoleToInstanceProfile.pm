@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command adds the role named S3Access to the instance profile
     # named Webserver:
     $iam->AddRoleToInstanceProfile(
-      {
-        'InstanceProfileName' => 'Webserver',
-        'RoleName'            => 'S3Access'
-      }
+      'InstanceProfileName' => 'Webserver',
+      'RoleName'            => 'S3Access'
     );
 
 

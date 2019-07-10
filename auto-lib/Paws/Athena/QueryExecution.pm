@@ -7,6 +7,7 @@ package Paws::Athena::QueryExecution;
   has StatementType => (is => 'ro', isa => 'Str');
   has Statistics => (is => 'ro', isa => 'Paws::Athena::QueryExecutionStatistics');
   has Status => (is => 'ro', isa => 'Paws::Athena::QueryExecutionStatus');
+  has WorkGroup => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Athena::QueryExecution object:
 
-  $service_obj->Method(Att1 => { Query => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { Query => $value, ..., WorkGroup => $value  });
 
 =head3 Results returned from an API call
 
@@ -60,7 +61,10 @@ Information about a single instance of a query execution.
 =head2 ResultConfiguration => L<Paws::Athena::ResultConfiguration>
 
   The location in Amazon S3 where query results were stored and the
-encryption option, if any, used for query results.
+encryption option, if any, used for query results. These are known as
+"client-side settings". If workgroup settings override client-side
+settings, then the query uses the location for the query results and
+the encryption configuration that are specified for the workgroup.
 
 
 =head2 StatementType => Str
@@ -82,6 +86,11 @@ time that it took to execute, and the type of statement that was run.
 
   The completion date, current state, submission time, and state change
 reason (if applicable) for the query execution.
+
+
+=head2 WorkGroup => Str
+
+  The name of the workgroup in which the query ran.
 
 
 

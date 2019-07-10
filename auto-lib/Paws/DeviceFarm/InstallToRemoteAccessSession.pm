@@ -33,12 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # remote access session.
     my $InstallToRemoteAccessSessionResult =
       $devicefarm->InstallToRemoteAccessSession(
-      {
-        'AppArn' =>
-          'arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456',
-        'RemoteAccessSessionArn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456'
-      }
+      'AppArn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456',
+      'RemoteAccessSessionArn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456'
       );
 
     # Results:

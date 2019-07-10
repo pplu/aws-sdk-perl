@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes a byte match set with the ID
     # exampleIDs3t-46da-4fdb-b8d5-abc321j569j5.
     my $DeleteByteMatchSetResponse = $waf->DeleteByteMatchSet(
-      {
-        'ByteMatchSetId' => 'exampleIDs3t-46da-4fdb-b8d5-abc321j569j5',
-        'ChangeToken'    => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
-      }
+      'ByteMatchSetId' => 'exampleIDs3t-46da-4fdb-b8d5-abc321j569j5',
+      'ChangeToken'    => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f'
     );
 
     # Results:

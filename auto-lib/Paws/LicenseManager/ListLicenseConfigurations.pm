@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $license -manager->ListLicenseConfigurations(
       Filters => [
         {
-          Name => 'MyFilterName',                # OPTIONAL
+          Name   => 'MyFilterName',              # OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...

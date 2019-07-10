@@ -16,7 +16,7 @@ Paws::WorkMail::CreateResourceResponse
 
 =head2 ResourceId => Str
 
-The identifier of the created resource.
+The identifier of the new resource.
 
 
 =head2 _request_id => Str

@@ -38,7 +38,7 @@ strings.
 
 For information about the rules that apply to tag keys and tag values,
 see User-Defined Tag Restrictions
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
 in the I<AWS Billing and Cost Management User Guide>.
 
 =head1 ATTRIBUTES

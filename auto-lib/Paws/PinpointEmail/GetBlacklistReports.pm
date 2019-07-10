@@ -1,7 +1,7 @@
 
 package Paws::PinpointEmail::GetBlacklistReports;
   use Moose;
-  has BlacklistItemNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has BlacklistItemNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'BlacklistItemNames', required => 1);
 
   use MooseX::ClassAttribute;
 

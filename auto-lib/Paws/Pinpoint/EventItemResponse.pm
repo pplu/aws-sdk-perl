@@ -32,22 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-A complex object that holds the status code and message as a result of
-processing an event.
+Provides the status code and message that result from processing an
+event.
 
 =head1 ATTRIBUTES
 
 
 =head2 Message => Str
 
-  A custom message that is associated with the processing of an event.
+  A custom message that's returned in the response as a result of
+processing the event.
 
 
 =head2 StatusCode => Int
 
-  The status returned in the response as a result of processing the
-event. Possible values: 400 (for invalid events) and 202 (for events
-that were accepted).
+  The status code that's returned in the response as a result of
+processing the event. Possible values are: 202, for events that were
+accepted; and, 400, for events that weren't valid.
 
 
 

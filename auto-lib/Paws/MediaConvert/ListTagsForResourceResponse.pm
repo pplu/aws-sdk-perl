@@ -17,7 +17,8 @@ Paws::MediaConvert::ListTagsForResourceResponse
 
 =head2 ResourceTags => L<Paws::MediaConvert::ResourceTags>
 
-
+The Amazon Resource Name (ARN) and tags for an AWS Elemental
+MediaConvert resource.
 
 
 =head2 _request_id => Str

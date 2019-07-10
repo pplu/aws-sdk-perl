@@ -1,6 +1,8 @@
 package Paws::MediaPackage::HlsManifestCreateOrUpdateParameters;
   use Moose;
   has AdMarkers => (is => 'ro', isa => 'Str', request_name => 'adMarkers', traits => ['NameInRequest']);
+  has AdsOnDeliveryRestrictions => (is => 'ro', isa => 'Str', request_name => 'adsOnDeliveryRestrictions', traits => ['NameInRequest']);
+  has AdTriggers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'adTriggers', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
   has IncludeIframeOnlyStream => (is => 'ro', isa => 'Bool', request_name => 'includeIframeOnlyStream', traits => ['NameInRequest']);
   has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
@@ -50,6 +52,16 @@ output. "PASSTHROUGH" causes the manifest to contain a copy of the
 SCTE-35 ad markers (comments) taken directly from the input HTTP Live
 Streaming (HLS) manifest. "SCTE35_ENHANCED" generates ad markers and
 blackout tags based on SCTE-35 messages in the input source.
+
+
+=head2 AdsOnDeliveryRestrictions => Str
+
+  
+
+
+=head2 AdTriggers => ArrayRef[Str|Undef]
+
+  
 
 
 =head2 B<REQUIRED> Id => Str

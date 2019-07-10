@@ -1,5 +1,6 @@
 package Paws::GuardDuty::DomainDetails;
   use Moose;
+  has Domain => (is => 'ro', isa => 'Str', request_name => 'domain', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -19,20 +20,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GuardDuty::DomainDetails object:
 
-  $service_obj->Method(Att1 => {  => $value, ...,  => $value  });
+  $service_obj->Method(Att1 => { Domain => $value, ..., Domain => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::DomainDetails object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->
+  $result->Att1->Domain
 
 =head1 DESCRIPTION
 
-Domain information for the AWS API call.
+This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 Domain => Str
+
+  Domain information for the AWS API call.
 
 
 

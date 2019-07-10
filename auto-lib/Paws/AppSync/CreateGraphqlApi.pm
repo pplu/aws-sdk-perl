@@ -1,10 +1,12 @@
 
 package Paws::AppSync::CreateGraphqlApi;
   use Moose;
+  has AdditionalAuthenticationProviders => (is => 'ro', isa => 'ArrayRef[Paws::AppSync::AdditionalAuthenticationProvider]', traits => ['NameInRequest'], request_name => 'additionalAuthenticationProviders');
   has AuthenticationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authenticationType', required => 1);
   has LogConfig => (is => 'ro', isa => 'Paws::AppSync::LogConfig', traits => ['NameInRequest'], request_name => 'logConfig');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has OpenIDConnectConfig => (is => 'ro', isa => 'Paws::AppSync::OpenIDConnectConfig', traits => ['NameInRequest'], request_name => 'openIDConnectConfig');
+  has Tags => (is => 'ro', isa => 'Paws::AppSync::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::UserPoolConfig', traits => ['NameInRequest'], request_name => 'userPoolConfig');
 
   use MooseX::ClassAttribute;
@@ -33,9 +35,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appsync = Paws->service('AppSync');
     my $CreateGraphqlApiResponse = $appsync->CreateGraphqlApi(
-      AuthenticationType => 'API_KEY',
-      Name               => 'MyString',
-      LogConfig          => {
+      AuthenticationType                => 'API_KEY',
+      Name                              => 'MyString',
+      AdditionalAuthenticationProviders => [
+        {
+          AuthenticationType => 'API_KEY'
+          , # values: API_KEY, AWS_IAM, AMAZON_COGNITO_USER_POOLS, OPENID_CONNECT
+          OpenIDConnectConfig => {
+            Issuer   => 'MyString',
+            AuthTTL  => 1,            # OPTIONAL
+            ClientId => 'MyString',
+            IatTTL   => 1,            # OPTIONAL
+          },    # OPTIONAL
+          UserPoolConfig => {
+            AwsRegion        => 'MyString',
+            UserPoolId       => 'MyString',
+            AppIdClientRegex => 'MyString',
+          },    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
+      LogConfig => {
         CloudWatchLogsRoleArn => 'MyString',
         FieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
 
@@ -45,6 +65,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AuthTTL  => 1,            # OPTIONAL
         ClientId => 'MyString',
         IatTTL   => 1,            # OPTIONAL
+      },    # OPTIONAL
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       UserPoolConfig => {
         AwsRegion        => 'MyString',
@@ -65,9 +88,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head1 ATTRIBUTES
 
 
+=head2 AdditionalAuthenticationProviders => ArrayRef[L<Paws::AppSync::AdditionalAuthenticationProvider>]
+
+A list of additional authentication providers for the C<GraphqlApi>
+API.
+
+
+
 =head2 B<REQUIRED> AuthenticationType => Str
 
-The authentication type: API key, AWS IAM, or Amazon Cognito user
+The authentication type: API key, AWS IAM, OIDC, or Amazon Cognito user
 pools.
 
 Valid values are: C<"API_KEY">, C<"AWS_IAM">, C<"AMAZON_COGNITO_USER_POOLS">, C<"OPENID_CONNECT">
@@ -87,6 +117,12 @@ A user-supplied name for the C<GraphqlApi>.
 =head2 OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>
 
 The OpenID Connect configuration.
+
+
+
+=head2 Tags => L<Paws::AppSync::TagMap>
+
+A C<TagMap> object.
 
 
 

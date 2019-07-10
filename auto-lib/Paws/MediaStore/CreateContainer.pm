@@ -2,6 +2,7 @@
 package Paws::MediaStore::CreateContainer;
   use Moose;
   has ContainerName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::MediaStore::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $mediastore = Paws->service('MediaStore');
     my $CreateContainerOutput = $mediastore->CreateContainer(
       ContainerName => 'MyContainerName',
-
+      Tags          => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -50,6 +57,19 @@ Container names must be unique to your AWS account within a specific
 region. As an example, you could create a container named C<movies> in
 every region, as long as you donE<rsquo>t have an existing container
 with that name.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::MediaStore::Tag>]
+
+An array of key:value pairs that you define. These values can be
+anything that you want. Typically, the tag key represents a category
+(such as "environment") and the tag value represents a specific value
+within that category (such as "test," "development," or "production").
+You can add up to 50 tags to each container. For more information about
+tagging, including naming and usage conventions, see Tagging Resources
+in MediaStore
+(https://aws.amazon.com/documentation/mediastore/tagging).
 
 
 

@@ -8,7 +8,7 @@ package Paws::AppMesh::ListVirtualRouters;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListVirtualRouters');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/meshes/{meshName}/virtualRouters');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouters');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::ListVirtualRoutersOutput');
 1;
@@ -50,20 +50,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 =head2 Limit => Int
 
-The maximum number of mesh results returned by C<ListVirtualRouters> in
-paginated output. When this parameter is used, C<ListVirtualRouters>
-only returns C<limit> results in a single page along with a
-C<nextToken> response element. The remaining results of the initial
-request can be seen by sending another C<ListVirtualRouters> request
-with the returned C<nextToken> value. This value can be between 1 and
-100. If this parameter is not used, then C<ListVirtualRouters> returns
-up to 100 results and a C<nextToken> value if applicable.
+The maximum number of results returned by C<ListVirtualRouters> in
+paginated output. When you use this parameter, C<ListVirtualRouters>
+returns only C<limit> results in a single page along with a
+C<nextToken> response element. You can see the remaining results of the
+initial request by sending another C<ListVirtualRouters> request with
+the returned C<nextToken> value. This value can be between 1 and 100.
+If you don't use this parameter, C<ListVirtualRouters> returns up to
+100 results and a C<nextToken> value if applicable.
 
 
 
 =head2 B<REQUIRED> MeshName => Str
 
-The name of the service mesh in which to list virtual routers.
+The name of the service mesh to list virtual routers in.
 
 
 

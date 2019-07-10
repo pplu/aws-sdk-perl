@@ -5,7 +5,9 @@ package Paws::Datasync::DescribeTaskExecutionResponse;
   has BytesWritten => (is => 'ro', isa => 'Int');
   has EstimatedBytesToTransfer => (is => 'ro', isa => 'Int');
   has EstimatedFilesToTransfer => (is => 'ro', isa => 'Int');
+  has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
   has FilesTransferred => (is => 'ro', isa => 'Int');
+  has Includes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
   has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
   has Result => (is => 'ro', isa => 'Paws::Datasync::TaskExecutionResultDetail');
   has StartTime => (is => 'ro', isa => 'Str');
@@ -50,6 +52,14 @@ source and destination locations and finding the delta that needs to be
 transferred.
 
 
+=head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
+
+Specifies that the task execution excludes files from the transfer
+based on the specified pattern in the filter. Transfers all files in
+the taskE<rsquo>s subdirectory, except files that match the filter that
+is set.
+
+
 =head2 FilesTransferred => Int
 
 The actual number of files that was transferred over the network. This
@@ -62,6 +72,13 @@ C<EstimatedFilesToTransfer>. This value can also be greater than
 C<EstimatedFilesTransferred> in some cases. This element is
 implementation-specific for some location types, so don't use it as an
 indicator for a correct file number or to monitor your task execution.
+
+
+=head2 Includes => ArrayRef[L<Paws::Datasync::FilterRule>]
+
+Specifies that the task execution excludes files in the transfer based
+on the specified pattern in the filter. When multiple include filters
+are set, they are interpreted as an OR.
 
 
 =head2 Options => L<Paws::Datasync::Options>
@@ -81,9 +98,11 @@ The time that the task execution was started.
 
 =head2 Status => Str
 
-The status of the task. For detailed information about sync statuses,
-see Understanding Sync Task Statuses
-(https://docs.aws.amazon.com/sync-service/latest/userguide/understand-sync-task-statuses.html).
+The status of the task execution.
+
+For detailed information about task execution statuses, see
+"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-tasks.html#understand-task-creation-statuses"
+(Understanding Task Statuses).
 
 Valid values are: C<"LAUNCHING">, C<"PREPARING">, C<"TRANSFERRING">, C<"VERIFYING">, C<"SUCCESS">, C<"ERROR">
 =head2 TaskExecutionArn => Str
@@ -93,9 +112,9 @@ described. C<TaskExecutionArn> is hierarchical and includes C<TaskArn>
 for the task that was executed.
 
 For example, a C<TaskExecution> value with the ARN
-C<arn:aws:sync:us-east-1:209870788375:task/task-0208075f79cedf4a2/execution/exec-08ef1e88ec491019b>
+C<arn:aws:datasync:us-east-1:111222333444:task/task-0208075f79cedf4a2/execution/exec-08ef1e88ec491019b>
 executed the task with the ARN
-C<arn:aws:sync:us-east-1:209870788375:task/task-0208075f79cedf4a2>.
+C<arn:aws:datasync:us-east-1:111222333444:task/task-0208075f79cedf4a2>.
 
 
 =head2 _request_id => Str

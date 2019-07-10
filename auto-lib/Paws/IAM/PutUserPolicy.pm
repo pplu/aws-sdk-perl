@@ -32,12 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To attach a policy to an IAM user
     # The following command attaches a policy to the IAM user named Bob.
     $iam->PutUserPolicy(
-      {
-        'PolicyDocument' =>
+      'PolicyDocument' =>
 '{"Version":"2012-10-17","Statement":{"Effect":"Allow","Action":"*","Resource":"*"}}',
-        'PolicyName' => 'AllAccessPolicy',
-        'UserName'   => 'Bob'
-      }
+      'PolicyName' => 'AllAccessPolicy',
+      'UserName'   => 'Bob'
     );
 
 
@@ -50,6 +48,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 =head2 B<REQUIRED> PolicyDocument => Str
 
 The policy document.
+
+You must provide policies in JSON format in IAM. However, for AWS
+CloudFormation templates formatted in YAML, you can provide the policy
+in JSON or YAML format. AWS CloudFormation always converts a YAML
+policy to JSON format before submitting it to IAM.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
 this parameter is a string of characters consisting of the following:

@@ -322,8 +322,8 @@ Each argument is described in detail in: L<Paws::MediaConvert::CancelJob>
 
 Returns: a L<Paws::MediaConvert::CancelJobResponse> instance
 
-Permanently remove a job from a queue. Once you have canceled a job,
-you can't start it again. You can't delete a running job.
+Permanently cancel a job. Once you have canceled a job, you can't start
+it again.
 
 
 =head2 CreateJob
@@ -343,6 +343,8 @@ you can't start it again. You can't delete a running job.
 =item [JobTemplate => Str]
 
 =item [Queue => Str]
+
+=item [StatusUpdateInterval => Str]
 
 =item [UserMetadata => L<Paws::MediaConvert::__mapOf__string>]
 
@@ -373,6 +375,8 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 =item [Description => Str]
 
 =item [Queue => Str]
+
+=item [StatusUpdateInterval => Str]
 
 =item [Tags => L<Paws::MediaConvert::__mapOf__string>]
 
@@ -766,6 +770,8 @@ https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 =item [Queue => Str]
 
 =item [Settings => L<Paws::MediaConvert::JobTemplateSettings>]
+
+=item [StatusUpdateInterval => Str]
 
 
 =back

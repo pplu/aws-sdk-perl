@@ -29,8 +29,9 @@ certificate that you are exporting.
 
 =head2 PrivateKey => Str
 
-The PEM-encoded private key associated with the public key in the
-certificate.
+The encrypted private key associated with the public key in the
+certificate. The key is output in PKCS #8 format and is base64
+PEM-encoded.
 
 
 =head2 _request_id => Str

@@ -3,6 +3,7 @@ package Paws::DocDB::RestoreDBClusterToPointInTime;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -41,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBClusterIdentifier         => 'MyString',
       SourceDBClusterIdentifier   => 'MyString',
       DBSubnetGroupName           => 'MyString',               # OPTIONAL
+      DeletionProtection          => 1,                        # OPTIONAL
       EnableCloudwatchLogsExports => [ 'MyString', ... ],      # OPTIONAL
       KmsKeyId                    => 'MyString',               # OPTIONAL
       Port                        => 1,                        # OPTIONAL
@@ -100,6 +102,15 @@ Constraints: If provided, must match the name of an existing
 C<DBSubnetGroup>.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 DeletionProtection => Bool
+
+Specifies whether this cluster can be deleted. If C<DeletionProtection>
+is enabled, the cluster cannot be deleted unless it is modified and
+C<DeletionProtection> is disabled. C<DeletionProtection> protects
+clusters from being accidentally deleted.
 
 
 

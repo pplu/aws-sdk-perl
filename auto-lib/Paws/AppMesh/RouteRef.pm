@@ -1,9 +1,9 @@
 package Paws::AppMesh::RouteRef;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest']);
-  has RouteName => (is => 'ro', isa => 'Str', request_name => 'routeName', traits => ['NameInRequest']);
-  has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
+  has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
+  has RouteName => (is => 'ro', isa => 'Str', request_name => 'routeName', traits => ['NameInRequest'], required => 1);
+  has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -39,24 +39,24 @@ An object representing a route returned by a list operation.
 =head1 ATTRIBUTES
 
 
-=head2 Arn => Str
+=head2 B<REQUIRED> Arn => Str
 
   The full Amazon Resource Name (ARN) for the route.
 
 
-=head2 MeshName => Str
+=head2 B<REQUIRED> MeshName => Str
 
-  The name of the service mesh in which the route resides.
+  The name of the service mesh that the route resides in.
 
 
-=head2 RouteName => Str
+=head2 B<REQUIRED> RouteName => Str
 
   The name of the route.
 
 
-=head2 VirtualRouterName => Str
+=head2 B<REQUIRED> VirtualRouterName => Str
 
-  The virtual router with which the route is associated.
+  The virtual router that the route is associated with.
 
 
 

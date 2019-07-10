@@ -1,6 +1,7 @@
 
 package Paws::Datasync::StartTaskExecution;
   use Moose;
+  has Includes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
   has OverrideOptions => (is => 'ro', isa => 'Paws::Datasync::Options');
   has TaskArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -29,10 +30,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $datasync = Paws->service('Datasync');
     my $StartTaskExecutionResponse = $datasync->StartTaskExecution(
-      TaskArn         => 'MyTaskArn',
+      TaskArn  => 'MyTaskArn',
+      Includes => [
+        {
+          FilterType =>
+            'SIMPLE_PATTERN',    # values: SIMPLE_PATTERNmax: 128; OPTIONAL
+          Value => 'MyFilterValue',    # max: 409600; OPTIONAL
+        },
+        ...
+      ],                               # OPTIONAL
       OverrideOptions => {
-        Atime          => 'NONE',    # values: NONE, BEST_EFFORT; OPTIONAL
-        BytesPerSecond => 1,         # min: -1; OPTIONAL
+        Atime          => 'NONE',      # values: NONE, BEST_EFFORT; OPTIONAL
+        BytesPerSecond => 1,           # min: -1; OPTIONAL
         Gid   => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         Mtime => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
         PosixPermissions =>
@@ -54,6 +63,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/datasync/StartTaskExecution>
 
 =head1 ATTRIBUTES
+
+
+=head2 Includes => ArrayRef[L<Paws::Datasync::FilterRule>]
+
+A filter that determines which files to include in the transfer during
+a task execution based on the specified pattern in the filter. When
+multiple include filters are set, they are interpreted as an OR.
+
 
 
 =head2 OverrideOptions => L<Paws::Datasync::Options>

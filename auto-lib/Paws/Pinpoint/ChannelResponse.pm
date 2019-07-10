@@ -39,54 +39,57 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-Base definition for channel response.
+Provides information about the general settings and status of a channel
+for an application.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  Application id
+  The unique identifier for the application.
 
 
 =head2 CreationDate => Str
 
-  When was this segment created
+  The date and time, in ISO 8601 format, when the channel was enabled.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether the channel is enabled for the application.
 
 
 =head2 HasCredential => Bool
 
-  Not used. Retained for backwards compatibility.
+  (Not used) This property is retained only for backward compatibility.
 
 
 =head2 Id => Str
 
-  Channel ID. Not used, only for backwards compatibility.
+  (Deprecated) An identifier for the channel. This property is retained
+only for backward compatibility.
 
 
 =head2 IsArchived => Bool
 
-  Is this channel archived
+  Specifies whether the channel is archived.
 
 
 =head2 LastModifiedBy => Str
 
-  Who made the last change
+  The user who last modified the channel.
 
 
 =head2 LastModifiedDate => Str
 
-  Last date this was updated
+  The date and time, in ISO 8601 format, when the channel was last
+modified.
 
 
 =head2 Version => Int
 
-  Version of channel
+  The current version of the channel.
 
 
 

@@ -74,17 +74,24 @@ captions selectors per input.
 
 =head2 DeblockFilter => Str
 
-  
+  Enable Deblock (InputDeblockFilter) to produce smoother motion in the
+output. Default is disabled. Only manaully controllable for MPEG2 and
+uncompressed video inputs.
 
 
 =head2 DecryptionSettings => L<Paws::MediaConvert::InputDecryptionSettings>
 
-  Settings for decrypting any input files that are encrypted.
+  Settings for decrypting any input files that you encrypt before you
+upload them to Amazon S3. MediaConvert can decrypt files only when you
+use AWS Key Management Service (KMS) to encrypt the data key that you
+use to encrypt your content.
 
 
 =head2 DenoiseFilter => Str
 
-  
+  Enable Denoise (InputDenoiseFilter) to filter noise from the input.
+Default is disabled. Only applicable to MPEG2, H.264, H.265, and
+uncompressed video inputs.
 
 
 =head2 FileInput => Str
@@ -101,7 +108,14 @@ CPL.
 
 =head2 FilterEnable => Str
 
-  
+  Use Filter enable (InputFilterEnable) to specify how the transcoding
+service applies the denoise and deblock filters. You must also enable
+the filters separately, with Denoise (InputDenoiseFilter) and Deblock
+(InputDeblockFilter). * Auto - The transcoding service determines
+whether to apply filtering, depending on input type and quality. *
+Disable - The input is not filtered. This is true even if you use the
+API to enable them in (InputDeblockFilter) and (InputDeblockFilter). *
+Force - The in put is filtered regardless of input type.
 
 
 =head2 FilterStrength => Int
@@ -140,7 +154,9 @@ this default.
 
 =head2 PsiControl => Str
 
-  
+  Set PSI control (InputPsiControl) for transport stream inputs to
+specify which data the demux process to scans. * Ignore PSI - Scan all
+PIDs for audio and video. * Use PSI - Scan only PSI data.
 
 
 =head2 SupplementalImps => ArrayRef[Str|Undef]
@@ -156,12 +172,19 @@ automatically detects it.
 
 =head2 TimecodeSource => Str
 
-  
+  Timecode source under input settings (InputTimecodeSource) only affects
+the behavior of features that apply to a single input at a time, such
+as input clipping and synchronizing some captions formats. Use this
+setting to specify whether the service counts frames by timecodes
+embedded in the video (EMBEDDED) or by starting the first frame at zero
+(ZEROBASED). In both cases, the timecode format is HH:MM:SS:FF or
+HH:MM:SS;FF, where FF is the frame number. Only set this to EMBEDDED if
+your source video has embedded timecodes.
 
 
 =head2 VideoSelector => L<Paws::MediaConvert::VideoSelector>
 
-  
+  Selector for video.
 
 
 

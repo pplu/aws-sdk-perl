@@ -74,7 +74,7 @@ time are not returned.
 
 The filter pattern to use. For more information, see Filter and Pattern
 Syntax
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
 
 If not provided, all the events are matched.
 
@@ -87,6 +87,11 @@ responses that contain events from multiple log streams within the log
 group, interleaved in a single response. If the value is false, all the
 matched log events in the first log stream are searched first, then
 those in the next log stream, and so on. The default is false.
+
+B<IMPORTANT:> Starting on June 17, 2019, this parameter will be ignored
+and the value will be assumed to be true. The response from this
+operation will always interleave events from multiple log streams
+within a log group.
 
 
 

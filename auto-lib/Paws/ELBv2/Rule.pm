@@ -42,12 +42,17 @@ Information about a rule.
 
 =head2 Actions => ArrayRef[L<Paws::ELBv2::Action>]
 
-  The actions.
+  The actions. Each rule must include exactly one of the following types
+of actions: C<forward>, C<redirect>, or C<fixed-response>, and it must
+be the last action to be performed.
 
 
 =head2 Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
 
-  The conditions.
+  The conditions. Each rule can include zero or one of the following
+conditions: C<http-request-method>, C<host-header>, C<path-pattern>,
+and C<source-ip>, and zero or more of the following conditions:
+C<http-header> and C<query-string>.
 
 
 =head2 IsDefault => Bool

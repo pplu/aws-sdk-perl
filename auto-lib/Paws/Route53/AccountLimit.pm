@@ -77,7 +77,8 @@ records in the Amazon Route 53 console.)
 
 =head2 B<REQUIRED> Value => Int
 
-  The current value for the limit that is specified by AccountLimit$Type.
+  The current value for the limit that is specified by Type
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_AccountLimit.html#Route53-Type-AccountLimit-Type).
 
 
 

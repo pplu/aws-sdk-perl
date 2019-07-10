@@ -31,16 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Ali
 
 =head1 DESCRIPTION
 
-A Lambda function alias's traffic shifting
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
-configuration.
+The traffic-shifting
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
+configuration of a Lambda function alias.
 
 =head1 ATTRIBUTES
 
 
 =head2 AdditionalVersionWeights => L<Paws::Lambda::AdditionalVersionWeights>
 
-  The name of the second alias, and the percentage of traffic that is
+  The name of the second alias, and the percentage of traffic that's
 routed to it.
 
 

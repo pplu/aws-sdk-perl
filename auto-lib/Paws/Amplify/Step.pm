@@ -1,11 +1,13 @@
 package Paws::Amplify::Step;
   use Moose;
   has ArtifactsUrl => (is => 'ro', isa => 'Str', request_name => 'artifactsUrl', traits => ['NameInRequest']);
+  has Context => (is => 'ro', isa => 'Str', request_name => 'context', traits => ['NameInRequest']);
   has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest'], required => 1);
   has LogUrl => (is => 'ro', isa => 'Str', request_name => 'logUrl', traits => ['NameInRequest']);
   has Screenshots => (is => 'ro', isa => 'Paws::Amplify::Screenshots', request_name => 'screenshots', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
   has StepName => (is => 'ro', isa => 'Str', request_name => 'stepName', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -45,7 +47,13 @@ App.
 
 =head2 ArtifactsUrl => Str
 
-  Url to teh artifact for the execution step.
+  URL to the artifact for the execution step.
+
+
+=head2 Context => Str
+
+  The context for current step, will include build image if step is
+build.
 
 
 =head2 B<REQUIRED> EndTime => Str
@@ -55,12 +63,12 @@ App.
 
 =head2 LogUrl => Str
 
-  Url to the logs for the execution step.
+  URL to the logs for the execution step.
 
 
 =head2 Screenshots => L<Paws::Amplify::Screenshots>
 
-  List of screenshot Urls for the execution step, if relevant.
+  List of screenshot URLs for the execution step, if relevant.
 
 
 =head2 B<REQUIRED> StartTime => Str
@@ -71,6 +79,11 @@ App.
 =head2 B<REQUIRED> Status => Str
 
   Status of the execution step.
+
+
+=head2 StatusReason => Str
+
+  The reason for current step status.
 
 
 =head2 B<REQUIRED> StepName => Str

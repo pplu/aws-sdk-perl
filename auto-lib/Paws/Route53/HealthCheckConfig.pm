@@ -94,7 +94,8 @@ After you disable a health check, Route 53 considers the status of the
 health check to always be healthy. If you configured DNS failover,
 Route 53 continues to route traffic to the corresponding resources. If
 you want to stop routing traffic to a resource, change the value of
-UpdateHealthCheckRequest$Inverted.
+Inverted
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted).
 
 Charges for a health check still apply when the health check is
 disabled. For more information, see Amazon Route 53 Pricing
@@ -219,11 +220,12 @@ C<TCP>, Route 53 doesn't pass a C<Host> header.
 =head2 HealthThreshold => Int
 
   The number of child health checks that are associated with a
-C<CALCULATED> health that Amazon Route 53 must consider healthy for the
-C<CALCULATED> health check to be considered healthy. To specify the
-child health checks that you want to associate with a C<CALCULATED>
-health check, use the HealthCheckConfig$ChildHealthChecks and
-HealthCheckConfig$ChildHealthChecks elements.
+C<CALCULATED> health check that Amazon Route 53 must consider healthy
+for the C<CALCULATED> health check to be considered healthy. To specify
+the child health checks that you want to associate with a C<CALCULATED>
+health check, use the ChildHealthChecks
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-ChildHealthChecks)
+element.
 
 Note the following:
 
@@ -309,7 +311,8 @@ Elastic IP address, associate it with your EC2 instance, and specify
 the Elastic IP address for C<IPAddress>. This ensures that the IP
 address of your instance will never change.
 
-For more information, see HealthCheckConfig$FullyQualifiedDomainName.
+For more information, see FullyQualifiedDomainName
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
 
 Constraints: Route 53 can't check the health of endpoints for which the
 IP address is in local, private, non-routable, or multicast ranges. For
@@ -474,7 +477,7 @@ the value of C<HealthThreshold>.
 
 For more information, see How Route 53 Determines Whether an Endpoint
 Is Healthy
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 

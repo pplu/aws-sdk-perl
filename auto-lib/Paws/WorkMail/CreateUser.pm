@@ -51,13 +51,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> DisplayName => Str
 
-The display name for the user to be created.
+The display name for the new user.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name for the user to be created.
+The name for the new user. Simple AD or AD Connector user names have a
+maximum length of 20. All others have a maximum length of 64.
 
 
 
@@ -69,7 +70,7 @@ The identifier of the organization for which the user is created.
 
 =head2 B<REQUIRED> Password => Str
 
-The password for the user to be created.
+The password for the new user.
 
 
 

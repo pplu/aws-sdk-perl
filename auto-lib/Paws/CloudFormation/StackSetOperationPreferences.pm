@@ -40,7 +40,7 @@ stack set operation.
 
 For more information on maximum concurrent accounts and failure
 tolerance, see Stack set operation options
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 
 =head1 ATTRIBUTES
 

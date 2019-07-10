@@ -62,7 +62,7 @@ capacity units.
   The maximum number of strongly consistent reads consumed per second
 before DynamoDB returns a C<ThrottlingException>. For more information,
 see Specifying Read and Write Requirements
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

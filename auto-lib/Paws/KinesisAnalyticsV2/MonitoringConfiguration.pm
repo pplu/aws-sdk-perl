@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 Describes configuration parameters for Amazon CloudWatch logging for a
 Java-based Kinesis Data Analytics application. For more information
 about CloudWatch logging, see Monitoring
-(https://docs.aws.amazon.com/kinesisanalytics/latest/Java/monitoring-overview.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/java/monitoring-overview.html).
 
 =head1 ATTRIBUTES
 

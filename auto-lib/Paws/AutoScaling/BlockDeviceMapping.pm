@@ -42,7 +42,9 @@ Describes a block device mapping.
 =head2 B<REQUIRED> DeviceName => Str
 
   The device name exposed to the EC2 instance (for example, C</dev/sdh>
-or C<xvdh>).
+or C<xvdh>). For more information, see Device Naming on Linux Instances
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 Ebs => L<Paws::AutoScaling::Ebs>

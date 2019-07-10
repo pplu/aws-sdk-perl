@@ -1,5 +1,6 @@
 package Paws::ServerlessRepo::CreateApplicationVersionInput;
   use Moose;
+  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeArchiveUrl', traits => ['NameInRequest']);
   has SourceCodeUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeUrl', traits => ['NameInRequest']);
   has TemplateBody => (is => 'ro', isa => 'Str', request_name => 'templateBody', traits => ['NameInRequest']);
   has TemplateUrl => (is => 'ro', isa => 'Str', request_name => 'templateUrl', traits => ['NameInRequest']);
@@ -22,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ServerlessRepo::CreateApplicationVersionInput object:
 
-  $service_obj->Method(Att1 => { SourceCodeUrl => $value, ..., TemplateUrl => $value  });
+  $service_obj->Method(Att1 => { SourceCodeArchiveUrl => $value, ..., TemplateUrl => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessRepo::CreateApplicationVersionInput object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->SourceCodeUrl
+  $result->Att1->SourceCodeArchiveUrl
 
 =head1 DESCRIPTION
 
@@ -38,9 +39,18 @@ Create a version request.
 =head1 ATTRIBUTES
 
 
+=head2 SourceCodeArchiveUrl => Str
+
+  A link to the S3 object that contains the ZIP archive of the source
+code for this version of your application.
+
+Maximum size 50 MB
+
+
 =head2 SourceCodeUrl => Str
 
-  A link to a public repository for the source code of your application.
+  A link to a public repository for the source code of your application,
+for example the URL of a specific GitHub commit.
 
 
 =head2 TemplateBody => Str

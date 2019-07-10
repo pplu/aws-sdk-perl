@@ -5,6 +5,7 @@ package Paws::DirectConnect::CreateConnection;
   has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' , required => 1);
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -35,6 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConnectionName => 'MyConnectionName',
       Location       => 'MyLocationCode',
       LagId          => 'MyLagId',            # OPTIONAL
+      Tags           => [
+        {
+          Key   => 'MyTagKey',                # min: 1, max: 128
+          Value => 'MyTagValue',              # max: 256; OPTIONAL
+        },
+        ...
+      ],                                      # OPTIONAL
     );
 
     # Results:
@@ -52,6 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $OwnerAccount         = $Connection->OwnerAccount;
     my $PartnerName          = $Connection->PartnerName;
     my $Region               = $Connection->Region;
+    my $Tags                 = $Connection->Tags;
     my $Vlan                 = $Connection->Vlan;
 
     # Returns a L<Paws::DirectConnect::Connection> object.
@@ -83,6 +92,12 @@ The ID of the LAG.
 =head2 B<REQUIRED> Location => Str
 
 The location of the connection.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+The tags to assign to the connection.
 
 
 

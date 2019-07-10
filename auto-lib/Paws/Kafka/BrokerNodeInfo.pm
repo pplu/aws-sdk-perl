@@ -5,6 +5,7 @@ package Paws::Kafka::BrokerNodeInfo;
   has ClientSubnet => (is => 'ro', isa => 'Str', request_name => 'clientSubnet', traits => ['NameInRequest']);
   has ClientVpcIpAddress => (is => 'ro', isa => 'Str', request_name => 'clientVpcIpAddress', traits => ['NameInRequest']);
   has CurrentBrokerSoftwareInfo => (is => 'ro', isa => 'Paws::Kafka::BrokerSoftwareInfo', request_name => 'currentBrokerSoftwareInfo', traits => ['NameInRequest']);
+  has Endpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'endpoints', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kafka::BrokerNodeInfo object:
 
-  $service_obj->Method(Att1 => { AttachedENIId => $value, ..., CurrentBrokerSoftwareInfo => $value  });
+  $service_obj->Method(Att1 => { AttachedENIId => $value, ..., Endpoints => $value  });
 
 =head3 Results returned from an API call
 
@@ -64,6 +65,11 @@ BrokerNodeInfo
 
   Information about the version of software currently deployed on the
 Kafka brokers in the cluster.
+
+
+=head2 Endpoints => ArrayRef[Str|Undef]
+
+  Endpoints for accessing the broker.
 
 
 

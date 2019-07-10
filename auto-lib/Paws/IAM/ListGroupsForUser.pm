@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To list the groups that an IAM user belongs to
     # The following command displays the groups that the IAM user named Bob
     # belongs to.
-    my $ListGroupsForUserResponse = $iam->ListGroupsForUser(
-      {
-        'UserName' => 'Bob'
-      }
-    );
+    my $ListGroupsForUserResponse =
+      $iam->ListGroupsForUser( 'UserName' => 'Bob' );
 
     # Results:
     my $Groups = $ListGroupsForUserResponse->Groups;

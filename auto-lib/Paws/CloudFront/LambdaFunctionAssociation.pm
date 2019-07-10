@@ -82,7 +82,7 @@ function doesn't execute.
   A flag that allows a Lambda function to have read access to the body
 content. For more information, see Accessing the Request Body by
 Choosing the Include Body Option
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-include-body-access.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-include-body-access.html)
 in the Amazon CloudFront Developer Guide.
 
 

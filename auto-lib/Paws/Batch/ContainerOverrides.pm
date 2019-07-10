@@ -4,6 +4,7 @@ package Paws::Batch::ContainerOverrides;
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
+  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
   has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest']);
 1;
 
@@ -68,6 +69,13 @@ is not valid for single-node container jobs.
 
   The number of MiB of memory reserved for the job. This value overrides
 the value set in the job definition.
+
+
+=head2 ResourceRequirements => ArrayRef[L<Paws::Batch::ResourceRequirement>]
+
+  The type and amount of a resource to assign to a container. This value
+overrides the value set in the job definition. Currently, the only
+supported resource is C<GPU>.
 
 
 =head2 Vcpus => Int

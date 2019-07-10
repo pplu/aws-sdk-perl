@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-This class has no description
+Information about the action which automatically creates the data set's
+contents.
 
 =head1 ATTRIBUTES
 

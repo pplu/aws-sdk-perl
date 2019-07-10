@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To remove tags from a vault
     # The example removes two tags from the vault named examplevault.
     $glacier->RemoveTagsFromVault(
-      {
-        'TagKeys'   => [ 'examplekey1', 'examplekey2' ],
-        'AccountId' => '-',
-        'VaultName' => 'examplevault'
-      }
+      'TagKeys'   => [ 'examplekey1', 'examplekey2' ],
+      'AccountId' => '-',
+      'VaultName' => 'examplevault'
     );
 
 
@@ -51,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gla
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon S3 Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens ('-') in the ID.
 

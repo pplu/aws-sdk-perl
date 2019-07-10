@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Application
 
 =head1 DESCRIPTION
 
-Describes the dimension of a metric.
+Describes the dimension names and values associated with a metric.
 
 =head1 ATTRIBUTES
 

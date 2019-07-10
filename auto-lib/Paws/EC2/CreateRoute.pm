@@ -42,11 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
     # gateway.
     my $CreateRouteResult = $ec2->CreateRoute(
-      {
-        'DestinationCidrBlock' => '0.0.0.0/0',
-        'GatewayId'            => 'igw-c0a643a9',
-        'RouteTableId'         => 'rtb-22574640'
-      }
+      'DestinationCidrBlock' => '0.0.0.0/0',
+      'GatewayId'            => 'igw-c0a643a9',
+      'RouteTableId'         => 'rtb-22574640'
     );
 
 

@@ -39,33 +39,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::D
 
 =head1 DESCRIPTION
 
-Message definitions for the default message and any messages that are
-tailored for specific channels.
+Specifies the settings and content for the default message and any
+default messages that you tailored for specific channels.
 
 =head1 ATTRIBUTES
 
 
 =head2 ADMMessage => L<Paws::Pinpoint::ADMMessage>
 
-  The message to ADM channels. Overrides the default push notification
-message.
+  The default push notification message for the ADM (Amazon Device
+Messaging) channel. This message overrides the default push
+notification message (DefaultPushNotificationMessage).
 
 
 =head2 APNSMessage => L<Paws::Pinpoint::APNSMessage>
 
-  The message to APNS channels. Overrides the default push notification
-message.
+  The default push notification message for the APNs (Apple Push
+Notification service) channel. This message overrides the default push
+notification message (DefaultPushNotificationMessage).
 
 
 =head2 BaiduMessage => L<Paws::Pinpoint::BaiduMessage>
 
-  The message to Baidu GCM channels. Overrides the default push
-notification message.
+  The default push notification message for the Baidu (Baidu Cloud Push)
+channel. This message overrides the default push notification message
+(DefaultPushNotificationMessage).
 
 
 =head2 DefaultMessage => L<Paws::Pinpoint::DefaultMessage>
 
-  The default message for all channels.
+  The default message body for all channels.
 
 
 =head2 DefaultPushNotificationMessage => L<Paws::Pinpoint::DefaultPushNotificationMessage>
@@ -75,23 +78,28 @@ notification message.
 
 =head2 EmailMessage => L<Paws::Pinpoint::EmailMessage>
 
-  The message to Email channels. Overrides the default message.
+  The default message for the email channel. This message overrides the
+default message (DefaultMessage).
 
 
 =head2 GCMMessage => L<Paws::Pinpoint::GCMMessage>
 
-  The message to GCM channels. Overrides the default push notification
-message.
+  The default push notification message for the GCM channel, which is
+used to send notifications through the Firebase Cloud Messaging (FCM),
+formerly Google Cloud Messaging (GCM), service. This message overrides
+the default push notification message (DefaultPushNotificationMessage).
 
 
 =head2 SMSMessage => L<Paws::Pinpoint::SMSMessage>
 
-  The message to SMS channels. Overrides the default message.
+  The default message for the SMS channel. This message overrides the
+default message (DefaultMessage).
 
 
 =head2 VoiceMessage => L<Paws::Pinpoint::VoiceMessage>
 
-  The message to Voice channels. Overrides the default message.
+  The default message for the voice channel. This message overrides the
+default message (DefaultMessage).
 
 
 

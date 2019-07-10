@@ -4,6 +4,7 @@ package Paws::FSX::CreateFileSystemWindowsConfiguration;
   has AutomaticBackupRetentionDays => (is => 'ro', isa => 'Int');
   has CopyTagsToBackups => (is => 'ro', isa => 'Bool');
   has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
+  has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => 'Paws::FSX::SelfManagedActiveDirectoryConfiguration');
   has ThroughputCapacity => (is => 'ro', isa => 'Int', required => 1);
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
 1;
@@ -44,8 +45,8 @@ C<CreateFileSystem> and C<CreateFileSystemFromBackup> operations.
 
 =head2 ActiveDirectoryId => Str
 
-  The ID for an existing Microsoft Active Directory instance that the
-file system should join when it's created.
+  The ID for an existing AWS Managed Microsoft Active Directory (AD)
+instance that the file system should join when it's created.
 
 
 =head2 AutomaticBackupRetentionDays => Int
@@ -58,30 +59,35 @@ is 35 days.
 
 =head2 CopyTagsToBackups => Bool
 
-  A boolean flag indicating whether tags on the file system should be
+  A boolean flag indicating whether tags for the file system should be
 copied to backups. This value defaults to false. If it's set to true,
-all tags on the file system are copied to all automatic backups and any
-user-initiated backups where the user doesn't specify any tags. If this
+all tags for the file system are copied to all automatic and
+user-initiated backups where the user doesn't specify tags. If this
 value is true, and you specify one or more tags, only the specified
 tags are copied to backups.
 
 
 =head2 DailyAutomaticBackupStartTime => Str
 
-  The preferred time to take daily automatic backups, in the UTC time
-zone.
+  The preferred time to take daily automatic backups, formatted HH:MM in
+the UTC time zone.
+
+
+=head2 SelfManagedActiveDirectoryConfiguration => L<Paws::FSX::SelfManagedActiveDirectoryConfiguration>
+
+  
 
 
 =head2 B<REQUIRED> ThroughputCapacity => Int
 
   The throughput of an Amazon FSx file system, measured in megabytes per
-second.
+second, in 2 to the I<n>th increments, between 2^3 (8) and 2^11 (2048).
 
 
 =head2 WeeklyMaintenanceStartTime => Str
 
-  The preferred start time to perform weekly maintenance, in the UTC time
-zone.
+  The preferred start time to perform weekly maintenance, formatted
+d:HH:MM in the UTC time zone.
 
 
 

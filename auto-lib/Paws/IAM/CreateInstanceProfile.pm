@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an instance profile
     # The following command creates an instance profile named Webserver that is
     # ready to have a role attached and then be associated with an EC2 instance.
-    my $CreateInstanceProfileResponse = $iam->CreateInstanceProfile(
-      {
-        'InstanceProfileName' => 'Webserver'
-      }
-    );
+    my $CreateInstanceProfileResponse =
+      $iam->CreateInstanceProfile( 'InstanceProfileName' => 'Webserver' );
 
     # Results:
     my $InstanceProfile = $CreateInstanceProfileResponse->InstanceProfile;
@@ -63,7 +60,7 @@ also include any of the following characters: _+=,.@-
 
 The path to the instance profile. For more information about paths, see
 IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
 This parameter is optional. If it is not included, it defaults to a

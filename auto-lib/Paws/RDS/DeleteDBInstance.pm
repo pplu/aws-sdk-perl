@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a DB instance.
     # This example deletes the specified DB instance.
     my $DeleteDBInstanceResult = $rds->DeleteDBInstance(
-      {
-        'DBInstanceIdentifier' => 'mymysqlinstance',
-        'SkipFinalSnapshot'    => 1
-      }
+      'DBInstanceIdentifier' => 'mymysqlinstance',
+      'SkipFinalSnapshot'    => 1
     );
 
 
@@ -68,17 +66,18 @@ Must match the name of an existing DB instance.
 
 A value that indicates whether to remove automated backups immediately
 after the DB instance is deleted. This parameter isn't case-sensitive.
-This parameter defaults to C<true>.
+The default is to remove automated backups immediately after the DB
+instance is deleted.
 
 
 
 =head2 FinalDBSnapshotIdentifier => Str
 
-The C<DBSnapshotIdentifier> of the new DB snapshot created when
-C<SkipFinalSnapshot> is set to C<false>.
+The C<DBSnapshotIdentifier> of the new C<DBSnapshot> created when the
+C<SkipFinalSnapshot> parameter is disabled.
 
-Specifying this parameter and also setting the C<SkipFinalShapshot>
-parameter to C<true> results in an error.
+Specifying this parameter and also specifying to skip final DB snapshot
+creation in SkipFinalShapshot results in an error.
 
 Constraints:
 
@@ -107,21 +106,20 @@ Can't be specified when deleting a Read Replica.
 
 =head2 SkipFinalSnapshot => Bool
 
-A value that indicates whether a final DB snapshot is created before
-the DB instance is deleted. If C<true> is specified, no DB snapshot is
-created. If C<false> is specified, a DB snapshot is created before the
-DB instance is deleted.
+A value that indicates whether to skip the creation of a final DB
+snapshot before the DB instance is deleted. If skip is specified, no DB
+snapshot is created. If skip is not specified, a DB snapshot is created
+before the DB instance is deleted. By default, skip is not specified,
+and the DB snapshot is created.
 
-When a DB instance is in a failure state and has a status of C<failed>,
-C<incompatible-restore>, or C<incompatible-network>, you can only
-delete it when the C<SkipFinalSnapshot> parameter is set to C<true>.
+Note that when a DB instance is in a failure state and has a status of
+'failed', 'incompatible-restore', or 'incompatible-network', it can
+only be deleted when skip is specified.
 
-Specify C<true> when deleting a Read Replica.
+Specify skip when deleting a Read Replica.
 
-The C<FinalDBSnapshotIdentifier> parameter must be specified if
-C<SkipFinalSnapshot> is C<false>.
-
-Default: C<false>
+The FinalDBSnapshotIdentifier parameter must be specified if skip is
+not specified.
 
 
 

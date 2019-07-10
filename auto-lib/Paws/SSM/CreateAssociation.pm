@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $CreateAssociationResult = $ssm->CreateAssociation(
-      Name            => 'MyDocumentName',
+      Name            => 'MyDocumentARN',
       AssociationName => 'MyAssociationName',    # OPTIONAL
       AutomationTargetParameterName =>
         'MyAutomationTargetParameterName',       # OPTIONAL
@@ -119,11 +119,11 @@ same time. You can specify a number, for example 10, or a percentage of
 the target set, for example 10%. The default value is 100%, which means
 all targets run the association at the same time.
 
-If a new instance starts and attempts to execute an association while
-Systems Manager is executing MaxConcurrency associations, the
-association is allowed to run. During the next association interval,
-the new instance will process its association within the limit
-specified for MaxConcurrency.
+If a new instance starts and attempts to run an association while
+Systems Manager is running MaxConcurrency associations, the association
+is allowed to run. During the next association interval, the new
+instance will process its association within the limit specified for
+MaxConcurrency.
 
 
 
@@ -149,7 +149,25 @@ one at a time.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the Systems Manager document.
+The name of the SSM document that contains the configuration
+information for the instance. You can specify Command or Automation
+documents.
+
+You can specify AWS-predefined documents, documents you created, or a
+document that is shared with you from another account.
+
+For SSM documents that are shared with you from other AWS accounts, you
+must specify the complete SSM document ARN, in the following format:
+
+C<arn:I<partition>:ssm:I<region>:I<account-id>:document/I<document-name>>
+
+For example:
+
+C<arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document>
+
+For AWS-predefined documents and SSM documents you created in your
+account, you only need to specify the document name. For example,
+C<AWS-ApplyPatchBaseline> or C<My-Document>.
 
 
 
@@ -162,7 +180,7 @@ request.
 
 =head2 Parameters => L<Paws::SSM::Parameters>
 
-The parameters for the documents runtime configuration.
+The parameters for the runtime configuration of the document.
 
 
 

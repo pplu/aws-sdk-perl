@@ -1,6 +1,7 @@
 package Paws::Glue::JobCommand;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
+  has PythonVersion => (is => 'ro', isa => 'Str');
   has ScriptLocation => (is => 'ro', isa => 'Str');
 1;
 
@@ -39,13 +40,20 @@ Specifies code executed when a job is run.
 
 =head2 Name => Str
 
-  The name of the job command: this must be C<glueetl>, for an Apache
-Spark ETL job, or C<pythonshell>, for a Python shell job.
+  The name of the job command. For an Apache Spark ETL job, this must be
+C<glueetl>. For a Python shell job, it must be C<pythonshell>.
+
+
+=head2 PythonVersion => Str
+
+  The Python version being used to execute a Python shell job. Allowed
+values are 2 or 3.
 
 
 =head2 ScriptLocation => Str
 
-  Specifies the S3 path to a script that executes a job (required).
+  Specifies the Amazon Simple Storage Service (Amazon S3) path to a
+script that executes a job.
 
 
 

@@ -8,7 +8,7 @@ package Paws::Pinpoint::VoiceChannelResponse;
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
+  has Platform => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Int');
 1;
 
@@ -40,59 +40,65 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::V
 
 =head1 DESCRIPTION
 
-Voice Channel Response.
+Provides information about the status and settings of the voice channel
+for an application.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  Application id
+  The unique identifier for the application that the voice channel
+applies to.
 
 
 =head2 CreationDate => Str
 
-  The date that the settings were last updated in ISO 8601 format.
+  The date and time, in ISO 8601 format, when the voice channel was
+enabled.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether the voice channel is enabled for the application.
 
 
 =head2 HasCredential => Bool
 
-  
+  (Not used) This property is retained only for backward compatibility.
 
 
 =head2 Id => Str
 
-  Channel ID. Not used, only for backwards compatibility.
+  (Deprecated) An identifier for the voice channel. This property is
+retained only for backward compatibility.
 
 
 =head2 IsArchived => Bool
 
-  Is this channel archived
+  Specifies whether the voice channel is archived.
 
 
 =head2 LastModifiedBy => Str
 
-  Who made the last change
+  The user who last modified the voice channel.
 
 
 =head2 LastModifiedDate => Str
 
-  Last date this was updated
+  The date and time, in ISO 8601 format, when the voice channel was last
+modified.
 
 
-=head2 Platform => Str
+=head2 B<REQUIRED> Platform => Str
 
-  Platform type. Will be "Voice"
+  The type of messaging or notification platform for the channel. For the
+voice channel, this value is VOICE.
 
 
 =head2 Version => Int
 
-  Version of channel
+  The current version of the voice channel.
 
 
 

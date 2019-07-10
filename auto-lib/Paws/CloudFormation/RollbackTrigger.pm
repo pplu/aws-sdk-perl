@@ -53,7 +53,7 @@ is rolled back.
 
   The resource type of the rollback trigger. Currently,
 AWS::CloudWatch::Alarm
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html)
 is the only supported resource type.
 
 

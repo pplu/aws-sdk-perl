@@ -50,7 +50,7 @@ secondary index.
 
 For current minimum and maximum provisioned throughput values, see
 Limits
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

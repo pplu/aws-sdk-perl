@@ -31,19 +31,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $GetFindingsStatisticsResponse = $guardduty->GetFindingsStatistics(
-      DetectorId            => 'My__string',
+      DetectorId            => 'MyDetectorId',
       FindingStatisticTypes => [
         'COUNT_BY_SEVERITY', ...    # values: COUNT_BY_SEVERITY
       ],
       FindingCriteria => {
         Criterion => {
-          'My__string' => {
-            Eq  => [ 'My__string', ... ],    # OPTIONAL
-            Gt  => 1,                        # OPTIONAL
-            Gte => 1,                        # OPTIONAL
-            Lt  => 1,                        # OPTIONAL
-            Lte => 1,                        # OPTIONAL
-            Neq => [ 'My__string', ... ],    # OPTIONAL
+          'MyString' => {
+            Eq     => [ 'MyString', ... ],    # OPTIONAL
+            Equals => [ 'MyString', ... ],    # OPTIONAL
+            GreaterThan        => 1,                      # OPTIONAL
+            GreaterThanOrEqual => 1,                      # OPTIONAL
+            Gt                 => 1,                      # OPTIONAL
+            Gte                => 1,                      # OPTIONAL
+            LessThan           => 1,                      # OPTIONAL
+            LessThanOrEqual    => 1,                      # OPTIONAL
+            Lt                 => 1,                      # OPTIONAL
+            Lte                => 1,                      # OPTIONAL
+            Neq                => [ 'MyString', ... ],    # OPTIONAL
+            NotEquals          => [ 'MyString', ... ],    # OPTIONAL
           },
         },    # OPTIONAL
       },    # OPTIONAL

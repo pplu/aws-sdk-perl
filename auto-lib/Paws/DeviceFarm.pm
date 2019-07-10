@@ -250,6 +250,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListSuites', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTests {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListTests', @_);
@@ -298,6 +303,16 @@ package Paws::DeviceFarm;
   sub StopRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::StopRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDeviceInstance {
@@ -801,7 +816,7 @@ package Paws::DeviceFarm;
   }
 
 
-  sub operations { qw/CreateDevicePool CreateInstanceProfile CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateUpload CreateVPCEConfiguration DeleteDevicePool DeleteInstanceProfile DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload DeleteVPCEConfiguration GetAccountSettings GetDevice GetDeviceInstance GetDevicePool GetDevicePoolCompatibility GetInstanceProfile GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload GetVPCEConfiguration InstallToRemoteAccessSession ListArtifacts ListDeviceInstances ListDevicePools ListDevices ListInstanceProfiles ListJobs ListNetworkProfiles ListOfferingPromotions ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads ListVPCEConfigurations PurchaseOffering RenewOffering ScheduleRun StopJob StopRemoteAccessSession StopRun UpdateDeviceInstance UpdateDevicePool UpdateInstanceProfile UpdateNetworkProfile UpdateProject UpdateUpload UpdateVPCEConfiguration / }
+  sub operations { qw/CreateDevicePool CreateInstanceProfile CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateUpload CreateVPCEConfiguration DeleteDevicePool DeleteInstanceProfile DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload DeleteVPCEConfiguration GetAccountSettings GetDevice GetDeviceInstance GetDevicePool GetDevicePoolCompatibility GetInstanceProfile GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload GetVPCEConfiguration InstallToRemoteAccessSession ListArtifacts ListDeviceInstances ListDevicePools ListDevices ListInstanceProfiles ListJobs ListNetworkProfiles ListOfferingPromotions ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTagsForResource ListTests ListUniqueProblems ListUploads ListVPCEConfigurations PurchaseOffering RenewOffering ScheduleRun StopJob StopRemoteAccessSession StopRun TagResource UntagResource UpdateDeviceInstance UpdateDevicePool UpdateInstanceProfile UpdateNetworkProfile UpdateProject UpdateUpload UpdateVPCEConfiguration / }
 
 1;
 
@@ -1742,6 +1757,22 @@ Returns: a L<Paws::DeviceFarm::ListSuitesResult> instance
 Gets information about test suites for a given job.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListTagsForResource>
+
+Returns: a L<Paws::DeviceFarm::ListTagsForResourceResponse> instance
+
+List the tags for an AWS Device Farm resource.
+
+
 =head2 ListTests
 
 =over
@@ -1954,6 +1985,45 @@ where tests have started executing, Setup Suite and Teardown Suite
 tests will run to completion before stopping execution on those
 devices. You will be billed for Setup, Teardown, and any tests that
 were in progress or already completed.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::DeviceFarm::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::TagResource>
+
+Returns: a L<Paws::DeviceFarm::TagResourceResponse> instance
+
+Associates the specified tags to a resource with the specified
+C<resourceArn>. If existing tags on a resource are not specified in the
+request parameters, they are not changed. When a resource is deleted,
+the tags associated with that resource are deleted as well.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DeviceFarm::UntagResource>
+
+Returns: a L<Paws::DeviceFarm::UntagResourceResponse> instance
+
+Deletes the specified tags from a resource.
 
 
 =head2 UpdateDeviceInstance

@@ -41,19 +41,14 @@ table.
 
 =head2 KMSMasterKeyArn => Str
 
-  The KMS master key ARN used for the KMS encryption.
+  The KMS customer master key (CMK) ARN used for the KMS encryption.
 
 
 =head2 SSEType => Str
 
-  Server-side encryption type:
+  Server-side encryption type. The only supported value is:
 
 =over
-
-=item *
-
-C<AES256> - Server-side encryption which uses the AES256 algorithm (not
-applicable).
 
 =item *
 
@@ -67,25 +62,14 @@ apply).
 
 =head2 Status => Str
 
-  The current state of server-side encryption:
+  Represents the current state of server-side encryption. The only
+supported values are:
 
 =over
 
 =item *
 
-C<ENABLING> - Server-side encryption is being enabled.
-
-=item *
-
 C<ENABLED> - Server-side encryption is enabled.
-
-=item *
-
-C<DISABLING> - Server-side encryption is being disabled.
-
-=item *
-
-C<DISABLED> - Server-side encryption is disabled.
 
 =item *
 

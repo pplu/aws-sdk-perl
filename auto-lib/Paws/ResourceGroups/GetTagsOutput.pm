@@ -18,12 +18,12 @@ Paws::ResourceGroups::GetTagsOutput
 
 =head2 Arn => Str
 
-The ARN of the tagged resource.
+The ARN of the tagged resource group.
 
 
 =head2 Tags => L<Paws::ResourceGroups::Tags>
 
-The tags associated with the specified resource.
+The tags associated with the specified resource group.
 
 
 =head2 _request_id => Str

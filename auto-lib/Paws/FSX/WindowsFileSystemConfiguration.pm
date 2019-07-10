@@ -5,6 +5,7 @@ package Paws::FSX::WindowsFileSystemConfiguration;
   has CopyTagsToBackups => (is => 'ro', isa => 'Bool');
   has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
   has MaintenanceOperationsInProgress => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => 'Paws::FSX::SelfManagedActiveDirectoryAttributes');
   has ThroughputCapacity => (is => 'ro', isa => 'Int');
   has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
 1;
@@ -74,6 +75,11 @@ zone.
 =head2 MaintenanceOperationsInProgress => ArrayRef[Str|Undef]
 
   The list of maintenance operations in progress for this file system.
+
+
+=head2 SelfManagedActiveDirectoryConfiguration => L<Paws::FSX::SelfManagedActiveDirectoryAttributes>
+
+  
 
 
 =head2 ThroughputCapacity => Int

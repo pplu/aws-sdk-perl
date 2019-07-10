@@ -36,7 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Segment demographic dimensions
+Specifies demographic-based dimension settings for including or
+excluding endpoints from a segment. These settings derive from
+characteristics of endpoint devices, such as platform, make, and model.
 
 =head1 ATTRIBUTES
 

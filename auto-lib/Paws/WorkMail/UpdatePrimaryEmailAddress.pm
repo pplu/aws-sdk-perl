@@ -51,13 +51,13 @@ The value of the email to be updated as primary.
 
 =head2 B<REQUIRED> EntityId => Str
 
-The entity to update (user, group, or resource).
+The user, group, or resource to update.
 
 
 
 =head2 B<REQUIRED> OrganizationId => Str
 
-The organization that contains the entity to update.
+The organization that contains the user, group, or resource to update.
 
 
 

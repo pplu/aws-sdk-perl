@@ -104,7 +104,7 @@ using custom AMIs.
 The instance architecture. Instance types do not necessarily support
 both architectures. For a list of the architectures that are supported
 by the different instance types, see Instance Families and Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 
 Valid values are: C<"x86_64">, C<"i386">
 
@@ -153,7 +153,7 @@ The instance type, such as C<t2.micro>. For a list of supported
 instance types, open the stack in the console, choose B<Instances>, and
 choose B<+ Instance>. The B<Size> list contains the currently supported
 types. For more information, see Instance Families and Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 The parameter values that you use to specify the various types are in
 the B<API Name> column of the B<Available Instance Types> table.
 
@@ -175,9 +175,9 @@ following. You cannot update an instance that is using a custom AMI.
 =item *
 
 A supported Linux operating system: An Amazon Linux version, such as
-C<Amazon Linux 2017.09>, C<Amazon Linux 2017.03>, C<Amazon Linux
-2016.09>, C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon
-Linux 2015.03>.
+C<Amazon Linux 2018.03>, C<Amazon Linux 2017.09>, C<Amazon Linux
+2017.03>, C<Amazon Linux 2016.09>, C<Amazon Linux 2016.03>, C<Amazon
+Linux 2015.09>, or C<Amazon Linux 2015.03>.
 
 =item *
 
@@ -203,16 +203,16 @@ Standard>, or C<Microsoft Windows Server 2012 R2 with SQL Server Web>.
 
 For more information about supported operating systems, see AWS
 OpsWorks Stacks Operating Systems
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 
 The default option is the current Amazon Linux version. If you set this
 parameter to C<Custom>, you must use the AmiId parameter to specify the
 custom AMI that you want to use. For more information about supported
 operating systems, see Operating Systems
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 For more information about how to use custom AMIs with OpsWorks, see
 Using Custom AMIs
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 
 You can specify a different Linux operating system for the updated
 stack, but you cannot change from Linux to Windows or Windows to Linux.

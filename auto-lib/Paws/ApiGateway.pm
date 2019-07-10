@@ -1088,6 +1088,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/apigateway/>
 
 =item [StageKeys => ArrayRef[L<Paws::ApiGateway::StageKey>]]
 
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
 =item [Value => Str]
 
 
@@ -1259,6 +1261,10 @@ Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
 
 =item [RegionalCertificateName => Str]
 
+=item [SecurityPolicy => Str]
+
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
 
 =back
 
@@ -1355,6 +1361,8 @@ Creates a Resource resource.
 
 =item [Policy => Str]
 
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
 =item [Version => Str]
 
 
@@ -1416,6 +1424,8 @@ for the API.
 
 =item [Quota => L<Paws::ApiGateway::QuotaSettings>]
 
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
 =item [Throttle => L<Paws::ApiGateway::ThrottleSettings>]
 
 
@@ -1459,6 +1469,8 @@ plan.
 =item TargetArns => ArrayRef[Str|Undef]
 
 =item [Description => Str]
+
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
 
 
 =back
@@ -1898,6 +1910,8 @@ Flushes a stage's cache.
 =over
 
 =item [Description => Str]
+
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
 
 
 =back
@@ -3114,8 +3128,10 @@ Returns: a L<Paws::ApiGateway::TestInvokeAuthorizerResponse> instance
 Simulate the execution of an Authorizer in your RestApi with headers,
 parameters, and an incoming request body.
 
-Enable custom authorizers
-(https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html)
+Use Lambda Function as Authorizer
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html)
+Use Cognito User Pool as Authorizer
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html)
 
 
 =head2 TestInvokeMethod

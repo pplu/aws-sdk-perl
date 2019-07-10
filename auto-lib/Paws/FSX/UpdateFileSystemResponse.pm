@@ -16,7 +16,7 @@ Paws::FSX::UpdateFileSystemResponse
 
 =head2 FileSystem => L<Paws::FSX::FileSystem>
 
-A description of the file system.
+A description of the file system that was updated.
 
 
 =head2 _request_id => Str

@@ -31,9 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Neptune::Ti
 
 =head1 DESCRIPTION
 
-A time zone associated with a DBInstance. This data type is an element
-in the response to the DescribeDBInstances, and the
-DescribeDBEngineVersions actions.
+A time zone associated with a DBInstance.
 
 =head1 ATTRIBUTES
 

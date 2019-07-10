@@ -68,7 +68,7 @@ differs from its expected configuration.
 Any resources that do not currently support drift detection have a
 status of C<NOT_CHECKED>. For more information, see Resources that
 Support Drift Detection
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
 
 =item *
 

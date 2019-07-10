@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Configuration information that specifies how the Lambda function runs.
+Configuration information that specifies how a Lambda function runs.
 
 =head1 ATTRIBUTES
 

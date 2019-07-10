@@ -19,9 +19,9 @@ Paws::AppMesh::ListRoutesOutput
 =head2 NextToken => Str
 
 The C<nextToken> value to include in a future C<ListRoutes> request.
-When the results of a C<ListRoutes> request exceed C<limit>, this value
-can be used to retrieve the next page of results. This value is C<null>
-when there are no more results to return.
+When the results of a C<ListRoutes> request exceed C<limit>, you can
+use this value to retrieve the next page of results. This value is
+C<null> when there are no more results to return.
 
 
 =head2 B<REQUIRED> Routes => ArrayRef[L<Paws::AppMesh::RouteRef>]

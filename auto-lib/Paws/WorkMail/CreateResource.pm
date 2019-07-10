@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the created resource.
+The name of the new resource.
 
 
 
@@ -62,7 +62,8 @@ is created.
 
 =head2 B<REQUIRED> Type => Str
 
-The type of the created resource.
+The type of the new resource. The available types are C<equipment> and
+C<room>.
 
 Valid values are: C<"ROOM">, C<"EQUIPMENT">
 

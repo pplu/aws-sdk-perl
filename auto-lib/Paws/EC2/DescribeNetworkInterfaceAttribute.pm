@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # interface.
     my $DescribeNetworkInterfaceAttributeResult =
       $ec2->DescribeNetworkInterfaceAttribute(
-      {
-        'Attribute'          => 'attachment',
-        'NetworkInterfaceId' => 'eni-686ea200'
-      }
+      'Attribute'          => 'attachment',
+      'NetworkInterfaceId' => 'eni-686ea200'
       );
 
     # Results:
@@ -51,10 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # interface.
     my $DescribeNetworkInterfaceAttributeResult =
       $ec2->DescribeNetworkInterfaceAttribute(
-      {
-        'Attribute'          => 'description',
-        'NetworkInterfaceId' => 'eni-686ea200'
-      }
+      'Attribute'          => 'description',
+      'NetworkInterfaceId' => 'eni-686ea200'
       );
 
     # Results:
@@ -68,10 +64,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # interface.
     my $DescribeNetworkInterfaceAttributeResult =
       $ec2->DescribeNetworkInterfaceAttribute(
-      {
-        'Attribute'          => 'groupSet',
-        'NetworkInterfaceId' => 'eni-686ea200'
-      }
+      'Attribute'          => 'groupSet',
+      'NetworkInterfaceId' => 'eni-686ea200'
       );
 
     # Results:
@@ -85,10 +79,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # network interface.
     my $DescribeNetworkInterfaceAttributeResult =
       $ec2->DescribeNetworkInterfaceAttribute(
-      {
-        'Attribute'          => 'sourceDestCheck',
-        'NetworkInterfaceId' => 'eni-686ea200'
-      }
+      'Attribute'          => 'sourceDestCheck',
+      'NetworkInterfaceId' => 'eni-686ea200'
       );
 
     # Results:

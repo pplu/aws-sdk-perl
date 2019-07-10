@@ -36,46 +36,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example modifies the attachment attribute of the specified network
     # interface.
     $ec2->ModifyNetworkInterfaceAttribute(
-      {
-        'Attachment' => {
-          'AttachmentId'        => 'eni-attach-43348162',
-          'DeleteOnTermination' => 0
-        },
-        'NetworkInterfaceId' => 'eni-686ea200'
-      }
+      'Attachment' => {
+        'AttachmentId'        => 'eni-attach-43348162',
+        'DeleteOnTermination' => 0
+      },
+      'NetworkInterfaceId' => 'eni-686ea200'
     );
 
     # To modify the description attribute of a network interface
     # This example modifies the description attribute of the specified network
     # interface.
     $ec2->ModifyNetworkInterfaceAttribute(
-      {
-        'Description' => {
-          'Value' => 'My description'
-        },
-        'NetworkInterfaceId' => 'eni-686ea200'
-      }
+      'Description' => {
+        'Value' => 'My description'
+      },
+      'NetworkInterfaceId' => 'eni-686ea200'
     );
 
     # To modify the groupSet attribute of a network interface
     # This example command modifies the groupSet attribute of the specified
     # network interface.
     $ec2->ModifyNetworkInterfaceAttribute(
-      {
-        'Groups'             => [ 'sg-903004f8', 'sg-1a2b3c4d' ],
-        'NetworkInterfaceId' => 'eni-686ea200'
-      }
+      'Groups'             => [ 'sg-903004f8', 'sg-1a2b3c4d' ],
+      'NetworkInterfaceId' => 'eni-686ea200'
     );
 
     # To modify the sourceDestCheck attribute of a network interface
     # This example command modifies the sourceDestCheck attribute of the
     # specified network interface.
     $ec2->ModifyNetworkInterfaceAttribute(
-      {
-        'NetworkInterfaceId' => 'eni-686ea200',
-        'SourceDestCheck'    => {
-          'Value' => 0
-        }
+      'NetworkInterfaceId' => 'eni-686ea200',
+      'SourceDestCheck'    => {
+        'Value' => 0
       }
     );
 

@@ -1,5 +1,6 @@
 package Paws::DMS::OrderableReplicationInstance;
   use Moose;
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DefaultAllocatedStorage => (is => 'ro', isa => 'Int');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has IncludedAllocatedStorage => (is => 'ro', isa => 'Int');
@@ -26,20 +27,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DMS::OrderableReplicationInstance object:
 
-  $service_obj->Method(Att1 => { DefaultAllocatedStorage => $value, ..., StorageType => $value  });
+  $service_obj->Method(Att1 => { AvailabilityZones => $value, ..., StorageType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::OrderableReplicationInstance object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DefaultAllocatedStorage
+  $result->Att1->AvailabilityZones
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
+
+  List of availability zones for this replication instance.
 
 
 =head2 DefaultAllocatedStorage => Int

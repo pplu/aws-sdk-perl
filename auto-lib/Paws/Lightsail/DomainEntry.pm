@@ -79,7 +79,44 @@ for a load balancer.
 
 =head2 Type => Str
 
-  The type of domain entry (e.g., C<SOA> or C<NS>).
+  The type of domain entry, such as address (A), canonical name (CNAME),
+mail exchanger (MX), name server (NS), start of authority (SOA),
+service locator (SRV), or text (TXT).
+
+The following domain entry types can be used:
+
+=over
+
+=item *
+
+C<A>
+
+=item *
+
+C<CNAME>
+
+=item *
+
+C<MX>
+
+=item *
+
+C<NS>
+
+=item *
+
+C<SOA>
+
+=item *
+
+C<SRV>
+
+=item *
+
+C<TXT>
+
+=back
+
 
 
 

@@ -9,6 +9,7 @@ package Paws::EC2::CreateClientVpnEndpoint;
   has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DryRun => (is => 'ro', isa => 'Bool');
   has ServerCertificateArn => (is => 'ro', isa => 'Str', required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has TransportProtocol => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -62,7 +63,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyString', ...                       # OPTIONAL
       ],                                      # OPTIONAL
       DryRun            => 1,                 # OPTIONAL
-      TransportProtocol => 'tcp',             # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',    # OPTIONAL
+              Value => 'MyString',    # OPTIONAL
+            },
+            ...
+          ],                          # OPTIONAL
+        },
+        ...
+      ],                              # OPTIONAL
+      TransportProtocol => 'tcp',     # OPTIONAL
     );
 
     # Results:
@@ -98,9 +113,10 @@ VPN endpoint has been created. The CIDR block should be /22 or greater.
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see How to Ensure Idempotency
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html).
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 
@@ -162,7 +178,14 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 B<REQUIRED> ServerCertificateArn => Str
 
 The ARN of the server certificate. For more information, see the AWS
-Certificate Manager User Guide .
+Certificate Manager User Guide
+(https://docs.aws.amazon.com/acm/latest/userguide/).
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the Client VPN endpoint during creation.
 
 
 

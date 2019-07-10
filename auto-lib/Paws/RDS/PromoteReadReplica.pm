@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example promotes the specified read replica and sets its backup
     # retention period and preferred backup window.
     my $PromoteReadReplicaResult = $rds->PromoteReadReplica(
-      {
-        'BackupRetentionPeriod' => 1,
-        'DBInstanceIdentifier'  => 'mydbreadreplica',
-        'PreferredBackupWindow' => '03:30-04:00'
-      }
+      'BackupRetentionPeriod' => 1,
+      'DBInstanceIdentifier'  => 'mydbreadreplica',
+      'PreferredBackupWindow' => '03:30-04:00'
     );
 
 
@@ -95,7 +93,7 @@ parameter.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
 see Adjusting the Preferred Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon RDS User Guide.>
 
 Constraints:

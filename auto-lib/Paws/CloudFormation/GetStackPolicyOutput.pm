@@ -19,7 +19,7 @@ Paws::CloudFormation::GetStackPolicyOutput
 
 Structure containing the stack policy body. (For more information, go
 to Prevent Updates to Stack Resources
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
 in the AWS CloudFormation User Guide.)
 
 

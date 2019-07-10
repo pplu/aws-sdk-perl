@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following command deletes the policy named ExamplePolicy from the group
    # named Admins:
     $iam->DeleteGroupPolicy(
-      {
-        'GroupName'  => 'Admins',
-        'PolicyName' => 'ExamplePolicy'
-      }
+      'GroupName'  => 'Admins',
+      'PolicyName' => 'ExamplePolicy'
     );
 
 

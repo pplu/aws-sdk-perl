@@ -53,10 +53,14 @@ include up to 20 C<MetricDataQuery> structures in the array. The 20
 structures can include as many as 10 structures that contain a
 C<MetricStat> parameter to retrieve a metric, and as many as 10
 structures that contain the C<Expression> parameter to perform a math
-expression. Any expression used in a C<PutMetricAlarm> operation must
-return a single time series. For more information, see Metric Math
-Syntax and Functions
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
+expression. Of those C<Expression> structures, one must have C<True> as
+the value for C<ReturnData>. The result of this expression is the value
+the alarm watches.
+
+Any expression used in a C<PutMetricAlarm> operation must return a
+single time series. For more information, see Metric Math Syntax and
+Functions
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
 in the I<Amazon CloudWatch User Guide>.
 
 Some of the parameters of this structure also have different uses
@@ -75,7 +79,7 @@ C<Id> of the other metrics to refer to those metrics, and can also use
 the C<Id> of other expressions to use the result of those expressions.
 For more information about metric math expressions, see Metric Math
 Syntax and Functions
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
 in the I<Amazon CloudWatch User Guide>.
 
 Within each MetricDataQuery object, you must specify either

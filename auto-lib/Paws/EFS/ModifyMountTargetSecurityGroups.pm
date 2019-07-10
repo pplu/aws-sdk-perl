@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 # This operation modifies the security groups associated with a mount target
 # for a file system.
     $elasticfilesystem->ModifyMountTargetSecurityGroups(
-      {
-        'MountTargetId'  => 'fsmt-12340abc',
-        'SecurityGroups' => ['sg-abcd1234']
-      }
+      'MountTargetId'  => 'fsmt-12340abc',
+      'SecurityGroups' => ['sg-abcd1234']
     );
 
 
@@ -48,13 +46,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> MountTargetId => Str
 
-ID of the mount target whose security groups you want to modify.
+The ID of the mount target whose security groups you want to modify.
 
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-Array of up to five VPC security group IDs.
+An array of up to five VPC security group IDs.
 
 
 

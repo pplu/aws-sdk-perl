@@ -51,7 +51,7 @@ Describes an instance's RAID array.
 =head2 AvailabilityZone => Str
 
   The array's Availability Zone. For more information, see Regions and
-Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
+Endpoints (https://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 CreatedAt => Str

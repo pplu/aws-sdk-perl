@@ -48,8 +48,7 @@ The comment text for the command.
 
 =head2 DocumentName => Str
 
-The name of the document that was executed. For example,
-AWS-RunShellScript.
+The name of the document that was run. For example, AWS-RunShellScript.
 
 
 =head2 DocumentVersion => Str
@@ -64,7 +63,7 @@ Duration since ExecutionStartDateTime.
 
 =head2 ExecutionEndDateTime => Str
 
-The date and time the plugin was finished executing. Date and time are
+The date and time the plugin was finished running. Date and time are
 written in ISO 8601 format. For example, June 7, 2017 is represented as
 2017-06-7. The following sample AWS CLI command uses the
 C<InvokedAfter> filter.
@@ -72,20 +71,20 @@ C<InvokedAfter> filter.
 C<aws ssm list-commands --filters
 key=InvokedAfter,value=2017-06-07T00:00:00Z>
 
-If the plugin has not started to execute, the string is empty.
+If the plugin has not started to run, the string is empty.
 
 
 =head2 ExecutionStartDateTime => Str
 
-The date and time the plugin started executing. Date and time are
-written in ISO 8601 format. For example, June 7, 2017 is represented as
+The date and time the plugin started running. Date and time are written
+in ISO 8601 format. For example, June 7, 2017 is represented as
 2017-06-7. The following sample AWS CLI command uses the
 C<InvokedBefore> filter.
 
 C<aws ssm list-commands --filters
 key=InvokedBefore,value=2017-06-07T00:00:00Z>
 
-If the plugin has not started to execute, the string is empty.
+If the plugin has not started to run, the string is empty.
 
 
 =head2 InstanceId => Str
@@ -104,26 +103,26 @@ example, aws:RunShellScript is a plugin.
 =head2 ResponseCode => Int
 
 The error level response code for the plugin script. If the response
-code is -1, then the command has not started executing on the instance,
+code is -1, then the command has not started running on the instance,
 or it was not received by the instance.
 
 
 =head2 StandardErrorContent => Str
 
 The first 8,000 characters written by the plugin to stderr. If the
-command has not finished executing, then this string is empty.
+command has not finished running, then this string is empty.
 
 
 =head2 StandardErrorUrl => Str
 
 The URL for the complete text written by the plugin to stderr. If the
-command has not finished executing, then this string is empty.
+command has not finished running, then this string is empty.
 
 
 =head2 StandardOutputContent => Str
 
 The first 24,000 characters written by the plugin to stdout. If the
-command has not finished executing, if ExecutionStatus is neither
+command has not finished running, if ExecutionStatus is neither
 Succeeded nor Failed, then this string is empty.
 
 
@@ -171,8 +170,8 @@ will try to deliver the command again.
 
 =item *
 
-Success: The command or plugin was executed successfully. This is a
-terminal state.
+Success: The command or plugin was run successfully. This is a terminal
+state.
 
 =item *
 
@@ -184,14 +183,14 @@ terminal state.
 
 =item *
 
-Execution Timed Out: The command started to execute on the instance,
-but the execution was not complete before the timeout expired.
-Execution timeouts count against the MaxErrors limit of the parent
-command. This is a terminal state.
+Execution Timed Out: The command started to run on the instance, but
+the execution was not complete before the timeout expired. Execution
+timeouts count against the MaxErrors limit of the parent command. This
+is a terminal state.
 
 =item *
 
-Failed: The command wasn't executed successfully on the instance. For a
+Failed: The command wasn't run successfully on the instance. For a
 plugin, this indicates that the result code was not zero. For a command
 invocation, this indicates that the result code for one or more plugins
 was not zero. Invocation failures count against the MaxErrors limit of

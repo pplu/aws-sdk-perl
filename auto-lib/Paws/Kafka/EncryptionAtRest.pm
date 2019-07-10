@@ -31,14 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kafka::Encr
 
 =head1 DESCRIPTION
 
-The data volume encryption details.
+The data-volume encryption details.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DataVolumeKMSKeyId => Str
 
-  The AWS KMS key used for data encryption.
+  The ARN of the AWS KMS key for encrypting data at rest. If you don't
+specify a KMS key, MSK creates one for you and uses it.
 
 
 

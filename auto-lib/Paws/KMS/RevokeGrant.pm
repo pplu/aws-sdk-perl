@@ -31,11 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To revoke a grant
     # The following example revokes a grant.
     $kms->RevokeGrant(
-      {
-        'GrantId' =>
-          '0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60',
-        'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
-      }
+      'GrantId' =>
+        '0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60',
+      'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
     );
 
 

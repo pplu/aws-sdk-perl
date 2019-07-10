@@ -35,10 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example lists system parameters for the specified DB cluster parameter
    # group.
     my $DBClusterParameterGroupDetails = $rds->DescribeDBClusterParameters(
-      {
-        'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
-        'Source'                      => 'system'
-      }
+      'DBClusterParameterGroupName' => 'mydbclusterparametergroup',
+      'Source'                      => 'system'
     );
 
 

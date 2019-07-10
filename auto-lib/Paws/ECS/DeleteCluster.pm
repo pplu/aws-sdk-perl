@@ -29,11 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ecs = Paws->service('ECS');
     # To delete an empty cluster
     # This example deletes an empty cluster in your default region.
-    my $DeleteClusterResponse = $ecs->DeleteCluster(
-      {
-        'Cluster' => 'my_cluster'
-      }
-    );
+    my $DeleteClusterResponse =
+      $ecs->DeleteCluster( 'Cluster' => 'my_cluster' );
 
     # Results:
     my $cluster = $DeleteClusterResponse->cluster;

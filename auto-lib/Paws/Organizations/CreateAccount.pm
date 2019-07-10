@@ -71,7 +71,7 @@ billing information I<if> they have the required permissions. If set to
 C<DENY>, only the root user of the new account can access account
 billing information. For more information, see Activating Access to the
 Billing and Cost Management Console
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
 in the I<AWS Billing and Cost Management User Guide>.
 
 If you don't specify this parameter, the value defaults to C<ALLOW>,
@@ -96,11 +96,11 @@ C<OrganizationAccountAccessRole>.
 For more information about how to use this role to access the member
 account, see Accessing and Administering the Member Accounts in Your
 Organization
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
 in the I<AWS Organizations User Guide>, and steps 2 and 3 in Tutorial:
 Delegate Access Across AWS Accounts Using IAM Roles
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
-in the I<IAM User Guide>.
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+in the I<IAM User Guide.>
 
 The regex pattern (http://wikipedia.org/wiki/regex) that is used to
 validate this parameter is a string of characters that can consist of

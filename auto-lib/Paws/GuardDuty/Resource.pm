@@ -33,20 +33,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-The AWS resource associated with the activity that prompted GuardDuty
-to generate a finding.
+This class has no description
 
 =head1 ATTRIBUTES
 
 
 =head2 AccessKeyDetails => L<Paws::GuardDuty::AccessKeyDetails>
 
-  
+  The IAM access key details (IAM user information) of a user that
+engaged in the activity that prompted GuardDuty to generate a finding.
 
 
 =head2 InstanceDetails => L<Paws::GuardDuty::InstanceDetails>
 
-  
+  The information about the EC2 instance associated with the activity
+that prompted GuardDuty to generate a finding.
 
 
 =head2 ResourceType => Str

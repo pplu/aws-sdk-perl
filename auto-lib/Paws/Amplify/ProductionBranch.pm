@@ -56,7 +56,7 @@ Structure with Production Branch information.
 
 =head2 ThumbnailUrl => Str
 
-  Thumbnail Url for Production Branch.
+  Thumbnail URL for Production Branch.
 
 
 

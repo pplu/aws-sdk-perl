@@ -9,7 +9,7 @@ package Paws::Pinpoint::CreateSegment;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSegment');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/segments');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::CreateSegmentResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::SegmentResponse');
 1;
 
 ### main pod documentation begin ###
@@ -29,84 +29,86 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $CreateSegmentResponse = $pinpoint->CreateSegment(
+    my $SegmentResponse = $pinpoint->CreateSegment(
       ApplicationId       => 'My__string',
       WriteSegmentRequest => {
         Dimensions => {
           Attributes => {
             'My__string' => {
+              Values => [ 'My__string', ... ],
               AttributeType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },
           },    # OPTIONAL
           Behavior => {
             Recency => {
-              Duration =>
-                'HR_24',    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
-              RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
+              Duration    => 'HR_24',     # values: HR_24, DAY_7, DAY_14, DAY_30
+              RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE
+
             },    # OPTIONAL
           },    # OPTIONAL
           Demographic => {
             AppVersion => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             Channel => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             DeviceType => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             Make => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             Model => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             Platform => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
           Location => {
             Country => {
+              Values => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },    # OPTIONAL
             GPSPoint => {
               Coordinates => {
-                Latitude  => 1,    # OPTIONAL
-                Longitude => 1,    # OPTIONAL
-              },    # OPTIONAL
-              RangeInKilometers => 1,    # OPTIONAL
+                Latitude  => 1,
+                Longitude => 1,
+
+              },
+              RangeInKilometers => 1,
             },    # OPTIONAL
           },    # OPTIONAL
           Metrics => {
             'My__string' => {
               ComparisonOperator => 'My__string',
-              Value              => 1,              # OPTIONAL
+              Value              => 1,
+
             },
           },    # OPTIONAL
           UserAttributes => {
             'My__string' => {
+              Values => [ 'My__string', ... ],
               AttributeType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-              Values => [ 'My__string', ... ],    # OPTIONAL
             },
           },    # OPTIONAL
-        },    # OPTIONAL
+        },
         Name          => 'My__string',
         SegmentGroups => {
           Groups => [
@@ -115,80 +117,82 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Attributes => {
                     'My__string' => {
+                      Values => [ 'My__string', ... ],
                       AttributeType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },
                   },    # OPTIONAL
                   Behavior => {
                     Recency => {
-                      Duration => 'HR_24'
-                      ,    # values: HR_24, DAY_7, DAY_14, DAY_30; OPTIONAL
-                      RecencyType =>
-                        'ACTIVE',    # values: ACTIVE, INACTIVE; OPTIONAL
+                      Duration =>
+                        'HR_24',    # values: HR_24, DAY_7, DAY_14, DAY_30
+                      RecencyType => 'ACTIVE',    # values: ACTIVE, INACTIVE
+
                     },    # OPTIONAL
                   },    # OPTIONAL
                   Demographic => {
                     AppVersion => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     Channel => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     DeviceType => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     Make => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     Model => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     Platform => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
                   Location => {
                     Country => {
+                      Values => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },    # OPTIONAL
                     GPSPoint => {
                       Coordinates => {
-                        Latitude  => 1,    # OPTIONAL
-                        Longitude => 1,    # OPTIONAL
-                      },    # OPTIONAL
-                      RangeInKilometers => 1,    # OPTIONAL
+                        Latitude  => 1,
+                        Longitude => 1,
+
+                      },
+                      RangeInKilometers => 1,
                     },    # OPTIONAL
                   },    # OPTIONAL
                   Metrics => {
                     'My__string' => {
                       ComparisonOperator => 'My__string',
-                      Value              => 1,              # OPTIONAL
+                      Value              => 1,
+
                     },
                   },    # OPTIONAL
                   UserAttributes => {
                     'My__string' => {
+                      Values => [ 'My__string', ... ],
                       AttributeType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
-                      Values => [ 'My__string', ... ],    # OPTIONAL
                     },
                   },    # OPTIONAL
                 },
-                ...     # OPTIONAL
+                ...
               ],        # OPTIONAL
               SourceSegments => [
                 {
@@ -204,14 +208,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],                                 # OPTIONAL
           Include => 'ALL',                  # values: ALL, ANY, NONE; OPTIONAL
         },    # OPTIONAL
+        Tags => { 'My__string' => 'My__string', },    # OPTIONAL
       },
 
     );
 
     # Results:
-    my $SegmentResponse = $CreateSegmentResponse->SegmentResponse;
+    my $ApplicationId    = $SegmentResponse->ApplicationId;
+    my $Arn              = $SegmentResponse->Arn;
+    my $CreationDate     = $SegmentResponse->CreationDate;
+    my $Dimensions       = $SegmentResponse->Dimensions;
+    my $Id               = $SegmentResponse->Id;
+    my $ImportDefinition = $SegmentResponse->ImportDefinition;
+    my $LastModifiedDate = $SegmentResponse->LastModifiedDate;
+    my $Name             = $SegmentResponse->Name;
+    my $SegmentGroups    = $SegmentResponse->SegmentGroups;
+    my $SegmentType      = $SegmentResponse->SegmentType;
+    my $Tags             = $SegmentResponse->Tags;
+    my $Version          = $SegmentResponse->Version;
 
-    # Returns a L<Paws::Pinpoint::CreateSegmentResponse> object.
+    # Returns a L<Paws::Pinpoint::SegmentResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/CreateSegment>
@@ -221,7 +237,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 

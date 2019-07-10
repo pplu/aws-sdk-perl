@@ -48,14 +48,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 PageSize => Str
 
-The number of entries you want on each page in the response.
+The maximum number of items to include on each page in a paginated
+response.
 
 
 
 =head2 Token => Str
 
-The NextToken string returned on a previous page that you use to get
-the next page of results in a paginated response.
+The NextToken string that specifies which page of results to return in
+a paginated response.
 
 
 

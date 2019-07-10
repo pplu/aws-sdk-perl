@@ -151,37 +151,37 @@ if necessary.
 =item *
 
 AWS::IAM::AccessKey
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 
 =item *
 
 AWS::IAM::Group
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 
 =item *
 
 AWS::IAM::InstanceProfile
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 
 =item *
 
 AWS::IAM::Policy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
 
 =item *
 
 AWS::IAM::Role
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 
 =item *
 
 AWS::IAM::User
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
 
 =item *
 
 AWS::IAM::UserToGroupAddition
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 
 =back
 
@@ -303,7 +303,7 @@ Valid values are: C<"DO_NOTHING">, C<"ROLLBACK">, C<"DELETE">
 
 A list of C<Parameter> structures that specify input parameters for the
 stack. For more information, see the Parameter
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
 data type.
 
 
@@ -326,7 +326,7 @@ grants permissions to all resource types. AWS Identity and Access
 Management (IAM) uses this parameter for AWS CloudFormation-specific
 condition keys in IAM policies. For more information, see Controlling
 Access with AWS Identity and Access Management
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
 
 
 
@@ -371,7 +371,7 @@ longer than 128 characters.
 
 Structure containing the stack policy body. For more information, go to
 Prevent Updates to Stack Resources
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
 in the I<AWS CloudFormation User Guide>. You can specify either the
 C<StackPolicyBody> or the C<StackPolicyURL> parameter, but not both.
 
@@ -399,7 +399,7 @@ number of 50 tags can be specified.
 Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. For more information, go to
 Template Anatomy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the C<TemplateBody> or the
@@ -412,7 +412,7 @@ C<TemplateURL> parameter, but not both.
 Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
 bucket. For more information, go to the Template Anatomy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the C<TemplateBody> or the

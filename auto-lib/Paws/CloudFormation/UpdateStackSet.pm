@@ -120,16 +120,15 @@ stack set.
 
 Specify an IAM role only if you are using customized administrator
 roles to control which users or groups can manage specific stack sets
-within the same administrator account. For more information, see Define
-Permissions for Multiple Administrators
+within the same administrator account. For more information, see
+Granting Permissions for Stack Set Operations
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
 in the I<AWS CloudFormation User Guide>.
 
-If you specify a customized administrator role, AWS CloudFormation uses
-that role to update the stack. If you do not specify a customized
-administrator role, AWS CloudFormation performs the update using the
-role previously associated with the stack set, so long as you have
-permissions to perform operations on the stack set.
+If you specified a customized administrator role when you created the
+stack set, you must specify a customized administrator role, even if it
+is the same customized administrator role used with this stack set
+previously.
 
 
 
@@ -181,37 +180,37 @@ if necessary.
 =item *
 
 AWS::IAM::AccessKey
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 
 =item *
 
 AWS::IAM::Group
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 
 =item *
 
 AWS::IAM::InstanceProfile
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 
 =item *
 
 AWS::IAM::Policy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
 
 =item *
 
 AWS::IAM::Role
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 
 =item *
 
 AWS::IAM::User
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
 
 =item *
 
 AWS::IAM::UserToGroupAddition
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 
 =back
 
@@ -377,7 +376,7 @@ an C<access denied> error, and the stack set is not updated.
 The structure that contains the template body, with a minimum length of
 1 byte and a maximum length of 51,200 bytes. For more information, see
 Template Anatomy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
@@ -391,7 +390,7 @@ to true.
 The location of the file that contains the template body. The URL must
 point to a template (maximum size: 460,800 bytes) that is located in an
 Amazon S3 bucket. For more information, see Template Anatomy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:

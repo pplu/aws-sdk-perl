@@ -1,6 +1,6 @@
 package Paws::Amplify::DomainAssociation;
   use Moose;
-  has CertificateVerificationDNSRecord => (is => 'ro', isa => 'Str', request_name => 'certificateVerificationDNSRecord', traits => ['NameInRequest'], required => 1);
+  has CertificateVerificationDNSRecord => (is => 'ro', isa => 'Str', request_name => 'certificateVerificationDNSRecord', traits => ['NameInRequest']);
   has DomainAssociationArn => (is => 'ro', isa => 'Str', request_name => 'domainAssociationArn', traits => ['NameInRequest'], required => 1);
   has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest'], required => 1);
   has DomainStatus => (is => 'ro', isa => 'Str', request_name => 'domainStatus', traits => ['NameInRequest'], required => 1);
@@ -43,7 +43,7 @@ an Amplify App.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CertificateVerificationDNSRecord => Str
+=head2 CertificateVerificationDNSRecord => Str
 
   DNS Record for certificate verification.
 

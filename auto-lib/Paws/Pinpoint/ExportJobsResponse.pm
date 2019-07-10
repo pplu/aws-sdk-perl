@@ -1,6 +1,6 @@
 package Paws::Pinpoint::ExportJobsResponse;
   use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ExportJobResponse]');
+  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ExportJobResponse]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 1;
 
@@ -32,20 +32,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Export job list.
+Provides information about all the export jobs that are associated with
+an application or segment. An export job is a job that exports endpoint
+definitions to a file.
 
 =head1 ATTRIBUTES
 
 
-=head2 Item => ArrayRef[L<Paws::Pinpoint::ExportJobResponse>]
+=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::ExportJobResponse>]
 
-  A list of export jobs for the application.
+  An array of responses, one for each export job that's associated with
+the application (Export Jobs resource) or segment (Segment Export Jobs
+resource).
 
 
 =head2 NextToken => Str
 
-  The string that you use in a subsequent request to get the next page of
-results in a paginated response.
+  The string to use in a subsequent request to get the next page of
+results in a paginated response. This value is null if there are no
+additional pages.
 
 
 

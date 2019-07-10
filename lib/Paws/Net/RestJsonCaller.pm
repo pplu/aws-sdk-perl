@@ -5,6 +5,7 @@ package Paws::Net::RestJsonCaller;
   use POSIX qw(strftime); 
   use URI::Template;
   use JSON::MaybeXS;
+  use Scalar::Util;
 
   use Paws::Net::RestJsonResponse;
 
@@ -116,12 +117,18 @@ package Paws::Net::RestJsonCaller;
     
     if ($call->can('_stream_param')) {
       my $param_name = $call->_stream_param;
-      $request->content($call->$param_name);
-      #$request->headers->header( 'content-length' => $request->content_length );
-      #$request->headers->header( 'content-type'   => $self->content_type );
+      if (Scalar::Util::blessed($call->$param_name)){
+          my $attribute = $call->$param_name;
+          my $content   = encode_json($self->_to_jsoncaller_params($attribute));
+          $request->content($content);
+          $request->headers->header('Content-Type'=>'application/json');
+          $request->headers->header('Content-Length'=>length($content));
+      } else {
+          $request->content($call->$param_name);
+      }
     } else {
       my $data = $self->_to_jsoncaller_params($call);
-      $request->content(encode_json($data));
+      $request->content(encode_json($data)) if (keys %$data);
     }
     
     $request->method($call->_api_method);

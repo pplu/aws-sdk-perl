@@ -162,7 +162,7 @@ C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClass>
 
 =back
 
-B<Asia Pacific (Tokyo (ap-northeast-1):>
+B<Asia Pacific (Tokyo) (ap-northeast-1):>
 
 =over
 
@@ -181,6 +181,28 @@ C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-SemanticSegmentation>
 =item *
 
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass>
+
+=back
+
+B<Asia Pacific (Sydney) (ap-southeast-1):>
+
+=over
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClass>
 
 =back
 

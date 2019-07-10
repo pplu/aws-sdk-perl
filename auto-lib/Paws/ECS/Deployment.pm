@@ -41,8 +41,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Deploy
 
 =head1 DESCRIPTION
 
-The details of an Amazon ECS service deployment. This is used when a
-service uses the C<CODE_DEPLOY> deployment controller type.
+The details of an Amazon ECS service deployment. This is used only when
+a service uses the C<ECS> deployment controller type.
 
 =head1 ATTRIBUTES
 

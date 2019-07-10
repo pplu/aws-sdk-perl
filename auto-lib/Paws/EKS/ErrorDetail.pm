@@ -46,13 +46,13 @@ An object representing an error when an asynchronous operation fails.
 
 =item *
 
-B<SubnetNotFound>: One of the subnets associated with the cluster could
-not be found.
+B<SubnetNotFound>: We couldn't find one of the subnets associated with
+the cluster.
 
 =item *
 
-B<SecurityGroupNotFound>: One of the security groups associated with
-the cluster could not be found.
+B<SecurityGroupNotFound>: We couldn't find one of the security groups
+associated with the cluster.
 
 =item *
 
@@ -61,23 +61,22 @@ limit for your account.
 
 =item *
 
-B<IpNotAvailable>: A subnet associated with the cluster does not have
+B<IpNotAvailable>: A subnet associated with the cluster doesn't have
 any free IP addresses.
 
 =item *
 
-B<AccessDenied>: You do not have permissions to perform the specified
+B<AccessDenied>: You don't have permissions to perform the specified
 operation.
 
 =item *
 
 B<OperationNotPermitted>: The service role associated with the cluster
-does not have the required access permissions for Amazon EKS.
+doesn't have the required access permissions for Amazon EKS.
 
 =item *
 
-B<VpcIdNotFound>: The VPC associated with the cluster could not be
-found.
+B<VpcIdNotFound>: We couldn't find the VPC associated with the cluster.
 
 =back
 

@@ -105,6 +105,11 @@ package Paws::KinesisAnalyticsV2;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::ListApplicationSnapshots', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::StartApplication', @_);
@@ -113,6 +118,16 @@ package Paws::KinesisAnalyticsV2;
   sub StopApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::StopApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalyticsV2::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateApplication {
@@ -169,7 +184,7 @@ package Paws::KinesisAnalyticsV2;
   }
 
 
-  sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationInputProcessingConfiguration AddApplicationOutput AddApplicationReferenceDataSource CreateApplication CreateApplicationSnapshot DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationInputProcessingConfiguration DeleteApplicationOutput DeleteApplicationReferenceDataSource DeleteApplicationSnapshot DescribeApplication DescribeApplicationSnapshot DiscoverInputSchema ListApplications ListApplicationSnapshots StartApplication StopApplication UpdateApplication / }
+  sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationInputProcessingConfiguration AddApplicationOutput AddApplicationReferenceDataSource CreateApplication CreateApplicationSnapshot DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationInputProcessingConfiguration DeleteApplicationOutput DeleteApplicationReferenceDataSource DeleteApplicationSnapshot DescribeApplication DescribeApplicationSnapshot DiscoverInputSchema ListApplications ListApplicationSnapshots ListTagsForResource StartApplication StopApplication TagResource UntagResource UpdateApplication / }
 
 1;
 
@@ -197,7 +212,11 @@ Paws::KinesisAnalyticsV2 - Perl Interface to AWS Amazon Kinesis Analytics
 
 =head1 DESCRIPTION
 
-Documentation for Kinesis Data Analytics API v2
+Amazon Kinesis Data Analytics is a fully managed service that you can
+use to process and analyze streaming data using SQL or Java. The
+service enables you to quickly author and run SQL or Java code against
+streaming sources to perform time series analytics, feed real-time
+dashboards, and create real-time metrics.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2018-05-23>
 
@@ -364,6 +383,8 @@ to columns in the resulting in-application table.
 
 =item [CloudWatchLoggingOptions => ArrayRef[L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOption>]]
 
+=item [Tags => ArrayRef[L<Paws::KinesisAnalyticsV2::Tag>]]
+
 
 =back
 
@@ -374,10 +395,7 @@ Returns: a L<Paws::KinesisAnalyticsV2::CreateApplicationResponse> instance
 Creates an Amazon Kinesis Data Analytics application. For information
 about creating a Kinesis Data Analytics application, see Creating an
 Application
-(https://docs.aws.amazon.com/kinesisanalytics/latest/Java/creating-app.html).
-
-SQL is not enabled for this private beta release. Using SQL parameters
-(such as SqlApplicationConfiguration) will result in an error.
+(https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html).
 
 
 =head2 CreateApplicationSnapshot
@@ -643,6 +661,22 @@ Returns: a L<Paws::KinesisAnalyticsV2::ListApplicationSnapshotsResponse> instanc
 Lists information about the current application snapshots.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::ListTagsForResource>
+
+Returns: a L<Paws::KinesisAnalyticsV2::ListTagsForResourceResponse> instance
+
+Retrieves the list of key-value tags assigned to the application.
+
+
 =head2 StartApplication
 
 =over
@@ -662,9 +696,6 @@ Starts the specified Amazon Kinesis Data Analytics application. After
 creating an application, you must exclusively call this operation to
 start your application.
 
-SQL is not enabled for this private beta. Using SQL parameters (such as
-RunConfiguration$SqlRunConfigurations) will result in an error.
-
 
 =head2 StopApplication
 
@@ -682,6 +713,44 @@ Returns: a L<Paws::KinesisAnalyticsV2::StopApplicationResponse> instance
 Stops the application from processing data. You can stop an application
 only if it is in the running state. You can use the DescribeApplication
 operation to find the application state.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::KinesisAnalyticsV2::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::TagResource>
+
+Returns: a L<Paws::KinesisAnalyticsV2::TagResourceResponse> instance
+
+Adds one or more key-value tags to a Kinesis Analytics application.
+Note that the maximum number of application tags includes system tags.
+The maximum number of user-defined application tags is 50.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KinesisAnalyticsV2::UntagResource>
+
+Returns: a L<Paws::KinesisAnalyticsV2::UntagResourceResponse> instance
+
+Removes one or more tags from a Kinesis Analytics application.
 
 
 =head2 UpdateApplication
@@ -713,9 +782,6 @@ and output configuration.
 
 Kinesis Data Analytics updates the C<ApplicationVersionId> each time
 you update your application.
-
-SQL is not enabled for this private beta. Using SQL parameters (such as
-SqlApplicationConfigurationUpdate) will result in an error.
 
 
 

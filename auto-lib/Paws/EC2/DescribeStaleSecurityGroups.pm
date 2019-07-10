@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DescribeStaleSecurityGroupsResult = $ec2->DescribeStaleSecurityGroups(
       VpcId      => 'MyString',
-      DryRun     => 1,                # OPTIONAL
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      DryRun     => 1,                                           # OPTIONAL
+      MaxResults => 1,                                           # OPTIONAL
+      NextToken  => 'MyDescribeStaleSecurityGroupsNextToken',    # OPTIONAL
     );
 
     # Results:

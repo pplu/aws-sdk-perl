@@ -30,10 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To get information about a job
     # The following example returns information about a specific job.
     my $GetJobResult = $devicefarm->GetJob(
-      {
-        'Arn' => 'arn:aws:devicefarm:us-west-2::job:123-456-EXAMPLE-GUID'
-      }
-    );
+      'Arn' => 'arn:aws:devicefarm:us-west-2::job:123-456-EXAMPLE-GUID' );
 
     # Results:
     my $job = $GetJobResult->job;

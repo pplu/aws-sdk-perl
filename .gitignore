@@ -1,5 +1,6 @@
 Paws-*
 dist.ini
+dzil-local/
 local/
 blib/
 .build/

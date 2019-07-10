@@ -75,13 +75,14 @@ AMIs).
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
 =item *
 
-C<architecture> - The image architecture (C<i386> | C<x86_64>).
+C<architecture> - The image architecture (C<i386> | C<x86_64> |
+C<arm64>).
 
 =item *
 
@@ -108,6 +109,11 @@ volume, in GiB.
 
 C<block-device-mapping.volume-type> - The volume type of the EBS volume
 (C<gp2> | C<io1> | C<st1 >| C<sc1> | C<standard>).
+
+=item *
+
+C<block-device-mapping.encrypted> - A Boolean that indicates whether
+the EBS volume is encrypted.
 
 =item *
 
@@ -230,7 +236,7 @@ C<hvm>).
 
 =head2 ImageIds => ArrayRef[Str|Undef]
 
-One or more image IDs.
+The image IDs.
 
 Default: Describes all images available to you.
 

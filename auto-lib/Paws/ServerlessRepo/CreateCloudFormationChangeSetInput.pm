@@ -56,8 +56,8 @@ Identity and Access Management (IAM) users. For those applications, you
 must explicitly acknowledge their capabilities by specifying this
 parameter.
 
-The only valid values are CAPABILITY_IAM, CAPABILITY_NAMED_IAM, and
-CAPABILITY_RESOURCE_POLICY.
+The only valid values are CAPABILITY_IAM, CAPABILITY_NAMED_IAM,
+CAPABILITY_RESOURCE_POLICY, and CAPABILITY_AUTO_EXPAND.
 
 The following resources require you to specify CAPABILITY_IAM or
 CAPABILITY_NAMED_IAM: AWS::IAM::Group
@@ -86,45 +86,45 @@ AWS::SQS::QueuePolicy
 and AWS::SNS:TopicPolicy
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html).
 
+Applications that contain one or more nested applications require you
+to specify CAPABILITY_AUTO_EXPAND.
+
 If your application template contains any of the above resources, we
 recommend that you review all permissions associated with the
 application before deploying. If you don't specify this parameter for
 an application that requires capabilities, the call will fail.
-
-Valid values: CAPABILITY_IAM | CAPABILITY_NAMED_IAM |
-CAPABILITY_RESOURCE_POLICY
 
 
 =head2 ChangeSetName => Str
 
   This property corresponds to the parameter of the same name for the
 I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)>
-API.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
+> API.
 
 
 =head2 ClientToken => Str
 
   This property corresponds to the parameter of the same name for the
 I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)>
-API.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
+> API.
 
 
 =head2 Description => Str
 
   This property corresponds to the parameter of the same name for the
 I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)>
-API.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
+> API.
 
 
 =head2 NotificationArns => ArrayRef[Str|Undef]
 
   This property corresponds to the parameter of the same name for the
 I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)>
-API.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
+> API.
 
 
 =head2 ParameterOverrides => ArrayRef[L<Paws::ServerlessRepo::ParameterValue>]
@@ -136,16 +136,16 @@ API.
 
   This property corresponds to the parameter of the same name for the
 I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)>
-API.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
+> API.
 
 
 =head2 RollbackConfiguration => L<Paws::ServerlessRepo::RollbackConfiguration>
 
   This property corresponds to the parameter of the same name for the
 I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)>
-API.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
+> API.
 
 
 =head2 SemanticVersion => Str
@@ -159,16 +159,16 @@ https://semver.org/ (https://semver.org/)
 
   This property corresponds to the parameter of the same name for the
 I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)>
-API.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
+> API.
 
 
 =head2 Tags => ArrayRef[L<Paws::ServerlessRepo::Tag>]
 
   This property corresponds to the parameter of the same name for the
 I<AWS CloudFormation CreateChangeSet
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)>
-API.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)
+> API.
 
 
 =head2 TemplateId => Str

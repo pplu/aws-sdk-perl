@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Redirec
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies how requests are redirected. In the event of an error, you
+can specify a different error code to return.
 
 =head1 ATTRIBUTES
 
@@ -53,25 +54,27 @@ the siblings is present.
 
 =head2 Protocol => Str
 
-  Protocol to use (http, https) when redirecting requests. The default is
-the protocol that is used in the original request.
+  Protocol to use when redirecting requests. The default is the protocol
+that is used in the original request.
 
 
 =head2 ReplaceKeyPrefixWith => Str
 
   The object key prefix to use in the redirect request. For example, to
-redirect requests for all pages with prefix docs/ (objects in the docs/
-folder) to documents/, you can set a condition block with
-KeyPrefixEquals set to docs/ and in the Redirect set
-ReplaceKeyPrefixWith to /documents. Not required if one of the siblings
-is present. Can be present only if ReplaceKeyWith is not provided.
+redirect requests for all pages with prefix C<docs/> (objects in the
+C<docs/> folder) to C<documents/>, you can set a condition block with
+C<KeyPrefixEquals> set to C<docs/> and in the Redirect set
+C<ReplaceKeyPrefixWith> to C</documents>. Not required if one of the
+siblings is present. Can be present only if C<ReplaceKeyWith> is not
+provided.
 
 
 =head2 ReplaceKeyWith => Str
 
   The specific object key to use in the redirect request. For example,
-redirect request to error.html. Not required if one of the sibling is
-present. Can be present only if ReplaceKeyPrefixWith is not provided.
+redirect request to C<error.html>. Not required if one of the siblings
+is present. Can be present only if C<ReplaceKeyPrefixWith> is not
+provided.
 
 
 

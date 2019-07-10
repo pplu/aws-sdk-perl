@@ -66,9 +66,14 @@ A list of container instance IDs or full ARN entries.
 =head2 B<REQUIRED> Status => Str
 
 The container instance state with which to update the container
-instance.
+instance. The only valid values for this action are C<ACTIVE> and
+C<DRAINING>. A container instance can only be updated to C<DRAINING>
+status once it has reached an C<ACTIVE> state. If a container instance
+is in C<REGISTERING>, C<DEREGISTERING>, or C<REGISTRATION_FAILED> state
+you can describe the container instance but will be unable to update
+the container instance state.
 
-Valid values are: C<"ACTIVE">, C<"DRAINING">
+Valid values are: C<"ACTIVE">, C<"DRAINING">, C<"REGISTERING">, C<"DEREGISTERING">, C<"REGISTRATION_FAILED">
 
 
 =head1 SEE ALSO

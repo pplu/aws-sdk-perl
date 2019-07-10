@@ -45,12 +45,12 @@ The job summary.
 
 =head2 CompletedAt => Str
 
-  The time, in milliseconds since the epoch, when the job completed.
+  The time, in seconds since the epoch, when the job completed.
 
 
 =head2 CreatedAt => Str
 
-  The time, in milliseconds since the epoch, when the job was created.
+  The time, in seconds since the epoch, when the job was created.
 
 
 =head2 JobArn => Str
@@ -65,8 +65,7 @@ The job summary.
 
 =head2 LastUpdatedAt => Str
 
-  The time, in milliseconds since the epoch, when the job was last
-updated.
+  The time, in seconds since the epoch, when the job was last updated.
 
 
 =head2 Status => Str

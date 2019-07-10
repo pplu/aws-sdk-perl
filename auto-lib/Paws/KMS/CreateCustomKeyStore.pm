@@ -55,7 +55,7 @@ Identifies the AWS CloudHSM cluster for the custom key store. Enter the
 cluster ID of any active AWS CloudHSM cluster that is not already
 associated with a custom key store. To find the cluster ID, use the
 DescribeClusters
-(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html)
+(https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html)
 operation.
 
 
@@ -70,7 +70,7 @@ unique in your AWS account.
 =head2 B<REQUIRED> KeyStorePassword => Str
 
 Enter the password of the C<kmsuser> crypto user (CU) account
-(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser)
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser)
 in the specified AWS CloudHSM cluster. AWS KMS logs into the cluster as
 this user to manage key material on your behalf.
 
@@ -84,7 +84,7 @@ not change the password in the AWS CloudHSM cluster.
 Enter the content of the trust anchor certificate for the cluster. This
 is the content of the C<customerCA.crt> file that you created when you
 initialized the cluster
-(http://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html).
+(https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html).
 
 
 

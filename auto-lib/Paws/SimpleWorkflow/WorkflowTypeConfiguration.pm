@@ -94,8 +94,8 @@ Executions of this workflow type need IAM roles to invoke Lambda
 functions. If you don't specify an IAM role when starting this workflow
 type, the default Lambda role is attached to the execution. For more
 information, see
-http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html)
+https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -122,7 +122,7 @@ indicate higher priority.
 
 For more information about setting task priority, see Setting Task
 Priority
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
 in the I<Amazon SWF Developer Guide>.
 
 

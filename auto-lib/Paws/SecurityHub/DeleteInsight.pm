@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 B<REQUIRED> InsightArn => Str
 
-The ARN of the insight that you want to delete.
+The ARN of the insight to delete.
 
 
 

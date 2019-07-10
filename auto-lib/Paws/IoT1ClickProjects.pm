@@ -69,6 +69,21 @@ package Paws::IoT1ClickProjects;
     my $call_object = $self->new_with_coercions('Paws::IoT1ClickProjects::ListProjects', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickProjects::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickProjects::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickProjects::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdatePlacement {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT1ClickProjects::UpdatePlacement', @_);
@@ -128,7 +143,7 @@ package Paws::IoT1ClickProjects;
   }
 
 
-  sub operations { qw/AssociateDeviceWithPlacement CreatePlacement CreateProject DeletePlacement DeleteProject DescribePlacement DescribeProject DisassociateDeviceFromPlacement GetDevicesInPlacement ListPlacements ListProjects UpdatePlacement UpdateProject / }
+  sub operations { qw/AssociateDeviceWithPlacement CreatePlacement CreateProject DeletePlacement DeleteProject DescribePlacement DescribeProject DisassociateDeviceFromPlacement GetDevicesInPlacement ListPlacements ListProjects ListTagsForResource TagResource UntagResource UpdatePlacement UpdateProject / }
 
 1;
 
@@ -156,7 +171,7 @@ Paws::IoT1ClickProjects - Perl Interface to AWS AWS IoT 1-Click Projects Service
 
 =head1 DESCRIPTION
 
-The AWS IoT 1-Click Project API Reference
+The AWS IoT 1-Click Projects API Reference
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/projects.iot1click-2018-05-14>
 
@@ -214,6 +229,8 @@ Creates an empty placement.
 =item [Description => Str]
 
 =item [PlacementTemplate => L<Paws::IoT1ClickProjects::PlacementTemplate>]
+
+=item [Tags => L<Paws::IoT1ClickProjects::TagMap>]
 
 
 =back
@@ -376,6 +393,62 @@ Returns: a L<Paws::IoT1ClickProjects::ListProjectsResponse> instance
 
 Lists the AWS IoT 1-Click project(s) associated with your AWS account
 and region.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickProjects::ListTagsForResource>
+
+Returns: a L<Paws::IoT1ClickProjects::ListTagsForResourceResponse> instance
+
+Lists the tags (metadata key/value pairs) which you have assigned to
+the resource.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::IoT1ClickProjects::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickProjects::TagResource>
+
+Returns: a L<Paws::IoT1ClickProjects::TagResourceResponse> instance
+
+Creates or modifies tags for a resource. Tags are key/value pairs
+(metadata) that can be used to manage a resource. For more information,
+see AWS Tagging Strategies
+(https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickProjects::UntagResource>
+
+Returns: a L<Paws::IoT1ClickProjects::UntagResourceResponse> instance
+
+Removes one or more tags (metadata key/value pairs) from a resource.
 
 
 =head2 UpdatePlacement

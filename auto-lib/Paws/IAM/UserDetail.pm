@@ -74,7 +74,7 @@ GetAccountAuthorizationDetails operation.
 
   The path to the user. For more information about paths, see IAM
 Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 
@@ -84,14 +84,16 @@ in the I<Using IAM> guide.
 user.
 
 For more information about permissions boundaries, see Permissions
-Boundaries for IAM Identities in the I<IAM User Guide>.
+Boundaries for IAM Identities
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+in the I<IAM User Guide>.
 
 
 =head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
 
   A list of tags that are associated with the specified user. For more
 information about tagging, see Tagging IAM Identities
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
 I<IAM User Guide>.
 
 
@@ -99,7 +101,7 @@ I<IAM User Guide>.
 
   The stable and unique string identifying the user. For more information
 about IDs, see IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 

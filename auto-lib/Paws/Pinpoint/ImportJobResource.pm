@@ -2,10 +2,10 @@ package Paws::Pinpoint::ImportJobResource;
   use Moose;
   has DefineSegment => (is => 'ro', isa => 'Bool');
   has ExternalId => (is => 'ro', isa => 'Str');
-  has Format => (is => 'ro', isa => 'Str');
+  has Format => (is => 'ro', isa => 'Str', required => 1);
   has RegisterEndpoints => (is => 'ro', isa => 'Bool');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has S3Url => (is => 'ro', isa => 'Str');
+  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has S3Url => (is => 'ro', isa => 'Str', required => 1);
   has SegmentId => (is => 'ro', isa => 'Str');
   has SegmentName => (is => 'ro', isa => 'Str');
 1;
@@ -38,62 +38,77 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::I
 
 =head1 DESCRIPTION
 
-Import job resource
+Provides information about the resource settings for a job that imports
+endpoint definitions from one or more files. The files can be stored in
+an Amazon Simple Storage Service (Amazon S3) bucket or uploaded
+directly from a computer by using the Amazon Pinpoint console.
 
 =head1 ATTRIBUTES
 
 
 =head2 DefineSegment => Bool
 
-  Sets whether the endpoints create a segment when they are imported.
+  Specifies whether the import job creates a segment that contains the
+endpoints, when the endpoint definitions are imported.
 
 
 =head2 ExternalId => Str
 
-  (Deprecated) Your AWS account ID, which you assigned to the ExternalID
-key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM
-role. This requirement is removed, and external IDs are not recommended
-for IAM roles assumed by Amazon Pinpoint.
+  (Deprecated) Your AWS account ID, which you assigned to an external ID
+key in an IAM trust policy. Amazon Pinpoint previously used this value
+to assume an IAM role when importing endpoint definitions, but we
+removed this requirement. We don't recommend use of external IDs for
+IAM roles that are assumed by Amazon Pinpoint.
 
 
-=head2 Format => Str
+=head2 B<REQUIRED> Format => Str
 
-  The format of the files that contain the endpoint definitions. Valid
-values: CSV, JSON
+  The format of the files that contain the endpoint definitions to
+import. Valid values are: CSV, for comma-separated values format; and,
+JSON, for newline-delimited JSON format.
+
+If the files are stored in an Amazon S3 location and that location
+contains multiple files that use different formats, Amazon Pinpoint
+imports data only from the files that use the specified format.
 
 
 =head2 RegisterEndpoints => Bool
 
-  Sets whether the endpoints are registered with Amazon Pinpoint when
-they are imported.
+  Specifies whether the import job registers the endpoints with Amazon
+Pinpoint, when the endpoint definitions are imported.
 
 
-=head2 RoleArn => Str
+=head2 B<REQUIRED> RoleArn => Str
 
-  The Amazon Resource Name (ARN) of an IAM role that grants Amazon
-Pinpoint access to the Amazon S3 location that contains the endpoints
-to import.
+  The Amazon Resource Name (ARN) of the AWS Identity and Access
+Management (IAM) role that authorizes Amazon Pinpoint to access the
+Amazon S3 location to import endpoint definitions from.
 
 
-=head2 S3Url => Str
+=head2 B<REQUIRED> S3Url => Str
 
-  The URL of the S3 bucket that contains the segment information to
-import. The location can be a folder or a single file. The URL should
-use the following format: s3://bucket-name/folder-name/file-name Amazon
-Pinpoint imports endpoints from this location and any subfolders it
-contains.
+  The URL of the Amazon Simple Storage Service (Amazon S3) bucket that
+contains the endpoint definitions to import. This location can be a
+folder or a single file. If the location is a folder, Amazon Pinpoint
+imports endpoint definitions from the files in this location, including
+any subfolders that the folder contains.
+
+The URL should be in the following format:
+s3://bucket-name/folder-name/file-name. The location can end with the
+key for an individual object or a prefix that qualifies multiple
+objects.
 
 
 =head2 SegmentId => Str
 
-  The ID of the segment to update if the import job is meant to update an
-existing segment.
+  The identifier for the segment that the import job updates or adds
+endpoint definitions to, if the import job updates an existing segment.
 
 
 =head2 SegmentName => Str
 
-  A custom name for the segment created by the import job. Use if
-DefineSegment is true.
+  The custom name for the segment that's created by the import job, if
+the value of the DefineSegment property is true.
 
 
 

@@ -40,14 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # changes to a different job state, usually within 60 minutes of the job
    # being created, this action is no longer available.
     my $UpdateJobResult = $snowball->UpdateJob(
-      {
-        'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
-        'Description' =>
+      'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+      'Description' =>
 'Upgraded to Edge, shipped to Finance Dept, and requested faster shipping speed - TS.',
-        'JobId'          => 'JID123e4567-e89b-12d3-a456-426655440000',
-        'ShippingOption' => 'NEXT_DAY',
-        'SnowballCapacityPreference' => 'T100'
-      }
+      'JobId'                      => 'JID123e4567-e89b-12d3-a456-426655440000',
+      'ShippingOption'             => 'NEXT_DAY',
+      'SnowballCapacityPreference' => 'T100'
     );
 
 

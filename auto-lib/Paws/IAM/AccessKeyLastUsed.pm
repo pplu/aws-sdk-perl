@@ -61,7 +61,7 @@ this information.
 
 =item *
 
-There is no sign-in data associated with the user
+There is no sign-in data associated with the user.
 
 =back
 
@@ -69,7 +69,7 @@ There is no sign-in data associated with the user
 
 =head2 B<REQUIRED> Region => Str
 
-  The AWS region where this access key was most recently used. The value
+  The AWS Region where this access key was most recently used. The value
 for this field is "N/A" in the following situations:
 
 =over
@@ -85,13 +85,13 @@ this information.
 
 =item *
 
-There is no sign-in data associated with the user
+There is no sign-in data associated with the user.
 
 =back
 
-For more information about AWS regions, see Regions and Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html) in the Amazon
-Web Services General Reference.
+For more information about AWS Regions, see Regions and Endpoints
+(https://docs.aws.amazon.com/general/latest/gr/rande.html) in the
+Amazon Web Services General Reference.
 
 
 =head2 B<REQUIRED> ServiceName => Str
@@ -113,7 +113,7 @@ this information.
 
 =item *
 
-There is no sign-in data associated with the user
+There is no sign-in data associated with the user.
 
 =back
 

@@ -3,7 +3,7 @@ package Paws::ApplicationAutoScaling::PutScheduledAction;
   use Moose;
   has EndTime => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str');
+  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
   has ScalableTargetAction => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::ScalableTargetAction');
   has Schedule => (is => 'ro', isa => 'Str');
   has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
@@ -36,13 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $autoscaling = Paws->service('ApplicationAutoScaling');
     my $PutScheduledActionResponse = $autoscaling->PutScheduledAction(
       ResourceId           => 'MyResourceIdMaxLen1600',
+      ScalableDimension    => 'ecs:service:DesiredCount',
       ScheduledActionName  => 'MyScheduledActionName',
       ServiceNamespace     => 'ecs',
-      EndTime              => '1970-01-01T01:00:00',         # OPTIONAL
-      ScalableDimension    => 'ecs:service:DesiredCount',    # OPTIONAL
+      EndTime              => '1970-01-01T01:00:00',        # OPTIONAL
       ScalableTargetAction => {
-        MaxCapacity => 1,                                    # OPTIONAL
-        MinCapacity => 1,                                    # OPTIONAL
+        MaxCapacity => 1,                                   # OPTIONAL
+        MinCapacity => 1,                                   # OPTIONAL
       },    # OPTIONAL
       Schedule  => 'MyResourceIdMaxLen1600',    # OPTIONAL
       StartTime => '1970-01-01T01:00:00',       # OPTIONAL
@@ -125,10 +125,9 @@ repository (https://github.com/aws/aws-auto-scaling-custom-resource).
 
 
 
-=head2 ScalableDimension => Str
+=head2 B<REQUIRED> ScalableDimension => Str
 
-The scalable dimension. This parameter is required if you are creating
-a scheduled action. This string consists of the service namespace,
+The scalable dimension. This string consists of the service namespace,
 resource type, and scaling property.
 
 =over
@@ -246,7 +245,7 @@ The name of the scheduled action.
 The namespace of the AWS service that provides the resource or
 C<custom-resource> for a resource provided by your own application or
 service. For more information, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
 Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">

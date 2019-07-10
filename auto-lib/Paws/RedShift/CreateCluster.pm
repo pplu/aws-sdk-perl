@@ -202,7 +202,7 @@ The name of the parameter group to be associated with this cluster.
 Default: The default Amazon Redshift cluster parameter group. For
 information about the default parameter group, go to Working with
 Amazon Redshift Parameter Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 
 Constraints:
 
@@ -285,7 +285,7 @@ created.
 To create additional databases after the cluster is created, connect to
 the cluster with a SQL client and use SQL commands to create a
 database. For more information, go to Create a Database
-(http://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html)
+(https://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html)
 in the Amazon Redshift Database Developer Guide.
 
 Default: C<dev>
@@ -306,7 +306,7 @@ Must contain only lowercase letters.
 
 Cannot be a word that is reserved by the service. A list of reserved
 words can be found in Reserved Words
-(http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in
+(https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in
 the Amazon Redshift Database Developer Guide.
 
 =back
@@ -322,7 +322,7 @@ Constraints: The cluster must be provisioned in EC2-VPC and
 publicly-accessible through an Internet gateway. For more information
 about provisioning clusters in EC2-VPC, go to Supported Platforms to
 Launch Your Cluster
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
 in the Amazon Redshift Cluster Management Guide.
 
 
@@ -341,7 +341,7 @@ An option that specifies whether to create the cluster with enhanced
 VPC routing enabled. To create a cluster that uses enhanced VPC
 routing, the cluster must be in a VPC. For more information, see
 Enhanced VPC Routing
-(http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
 in the Amazon Redshift Cluster Management Guide.
 
 If this option is C<true>, enhanced VPC routing is enabled.
@@ -423,7 +423,7 @@ First character must be a letter.
 
 Cannot be a reserved word. A list of reserved words can be found in
 Reserved Words
-(http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in
+(https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in
 the Amazon Redshift Database Developer Guide.
 
 =back
@@ -470,7 +470,7 @@ Can be any printable ASCII character (ASCII code 33 to 126) except '
 
 The node type to be provisioned for the cluster. For information about
 node types, go to Working with Clusters
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 Valid Values: C<ds2.xlarge> | C<ds2.8xlarge> | C<ds2.xlarge> |
@@ -486,7 +486,7 @@ when the B<ClusterType> parameter is specified as C<multi-node>.
 
 For information about determining how many nodes you need, go to
 Working with Clusters
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 If you don't specify this parameter, you get a single-node cluster.
@@ -524,7 +524,7 @@ Default: A 30-minute window selected at random from an 8-hour block of
 time per region, occurring on a random day of the week. For more
 information about the time blocks for each region, see Maintenance
 Windows
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows)
 in Amazon Redshift Cluster Management Guide.
 
 Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun

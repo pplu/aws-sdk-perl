@@ -3,6 +3,7 @@ package Paws::Config::PutAggregationAuthorization;
   use Moose;
   has AuthorizedAccountId => (is => 'ro', isa => 'Str', required => 1);
   has AuthorizedAwsRegion => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Config::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $config->PutAggregationAuthorization(
       AuthorizedAccountId => 'MyAccountId',
       AuthorizedAwsRegion => 'MyAwsRegion',
-
+      Tags                => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
       );
 
     # Results:
@@ -56,6 +63,12 @@ The 12-digit account ID of the account authorized to aggregate data.
 =head2 B<REQUIRED> AuthorizedAwsRegion => Str
 
 The region authorized to collect aggregated data.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Config::Tag>]
+
+
 
 
 

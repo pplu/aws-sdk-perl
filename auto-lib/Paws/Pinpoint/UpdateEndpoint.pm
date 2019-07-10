@@ -10,7 +10,7 @@ package Paws::Pinpoint::UpdateEndpoint;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEndpoint');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/endpoints/{endpoint-id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateEndpointResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::MessageBody');
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $UpdateEndpointResponse = $pinpoint->UpdateEndpoint(
+    my $MessageBody = $pinpoint->UpdateEndpoint(
       ApplicationId   => 'My__string',
       EndpointId      => 'My__string',
       EndpointRequest => {
@@ -53,17 +53,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Location       => {
           City       => 'My__string',
           Country    => 'My__string',
-          Latitude   => 1,
-          Longitude  => 1,
+          Latitude   => 1,              # OPTIONAL
+          Longitude  => 1,              # OPTIONAL
           PostalCode => 'My__string',
           Region     => 'My__string',
         },    # OPTIONAL
-        Metrics   => { 'My__string' => 1, },    # OPTIONAL
+        Metrics => {
+          'My__string' => 1,    # , value: OPTIONAL
+        },    # OPTIONAL
         OptOut    => 'My__string',
         RequestId => 'My__string',
         User      => {
           UserAttributes => { 'My__string' => [ 'My__string', ... ], }
-          ,                                     # OPTIONAL
+          ,    # OPTIONAL
           UserId => 'My__string',
         },    # OPTIONAL
       },
@@ -71,9 +73,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $MessageBody = $UpdateEndpointResponse->MessageBody;
+    my $Message   = $MessageBody->Message;
+    my $RequestID = $MessageBody->RequestID;
 
-    # Returns a L<Paws::Pinpoint::UpdateEndpointResponse> object.
+    # Returns a L<Paws::Pinpoint::MessageBody> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/UpdateEndpoint>
@@ -83,13 +86,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
 =head2 B<REQUIRED> EndpointId => Str
 
-The unique ID of the endpoint.
+The unique identifier for the endpoint.
 
 
 

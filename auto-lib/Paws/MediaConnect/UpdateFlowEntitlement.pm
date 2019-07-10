@@ -37,10 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FlowArn        => 'My__string',
       Description    => 'My__string',    # OPTIONAL
       Encryption     => {
-        Algorithm => 'aes128',        # values: aes128, aes192, aes256; OPTIONAL
-        KeyType   => 'static-key',    # values: static-key; OPTIONAL
-        RoleArn   => 'My__string',
-        SecretArn => 'My__string',
+        Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
+        ConstantInitializationVector => 'My__string',
+        DeviceId                     => 'My__string',
+        KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
+        Region     => 'My__string',
+        ResourceId => 'My__string',
+        RoleArn    => 'My__string',
+        SecretArn  => 'My__string',
+        Url        => 'My__string',
       },    # OPTIONAL
       Subscribers => [ 'My__string', ... ],    # OPTIONAL
     );

@@ -6,6 +6,7 @@ package Paws::DocDB::ModifyDBCluster;
   has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::DocDB::CloudwatchLogsExportConfiguration');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NewDBClusterIdentifier => (is => 'ro', isa => 'Str');
@@ -47,6 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         EnableLogTypes  => [ 'MyString', ... ],          # OPTIONAL
       },    # OPTIONAL
       DBClusterParameterGroupName => 'MyString',             # OPTIONAL
+      DeletionProtection          => 1,                      # OPTIONAL
       EngineVersion               => 'MyString',             # OPTIONAL
       MasterUserPassword          => 'MyString',             # OPTIONAL
       NewDBClusterIdentifier      => 'MyString',             # OPTIONAL
@@ -140,6 +142,15 @@ The name of the DB cluster parameter group to use for the DB cluster.
 
 
 
+=head2 DeletionProtection => Bool
+
+Specifies whether this cluster can be deleted. If C<DeletionProtection>
+is enabled, the cluster cannot be deleted unless it is modified and
+C<DeletionProtection> is disabled. C<DeletionProtection> protects
+clusters from being accidentally deleted.
+
+
+
 =head2 EngineVersion => Str
 
 The version number of the database engine to which you want to upgrade.
@@ -151,8 +162,9 @@ parameter is set to C<true>.
 
 =head2 MasterUserPassword => Str
 
-The new password for the master database user. This password can
-contain any printable ASCII character except "C</>", "C<">", or "C<@>".
+The password for the master database user. This password can contain
+any printable ASCII character except forward slash (/), double quote
+("), or the "at" symbol (@).
 
 Constraints: Must contain from 8 to 41 characters.
 

@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a DB security group.
     # This example creates a DB security group.
     my $CreateDBSecurityGroupResult = $rds->CreateDBSecurityGroup(
-      {
-        'DBSecurityGroupDescription' => 'My DB security group',
-        'DBSecurityGroupName'        => 'mydbsecuritygroup'
-      }
+      'DBSecurityGroupDescription' => 'My DB security group',
+      'DBSecurityGroupName'        => 'mydbsecuritygroup'
     );
 
 
@@ -84,7 +82,7 @@ Example: C<mysecuritygroup>
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
+Tags to assign to the DB security group.
 
 
 

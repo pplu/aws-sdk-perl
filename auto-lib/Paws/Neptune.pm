@@ -694,8 +694,6 @@ applied immediately, on the next instance reboot, or during the
 maintenance window. The reference structure is as follows, and we list
 following some related topics from the user guide.
 
-B<Amazon Neptune API Reference>
-
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31>
 
 
@@ -832,84 +830,7 @@ To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
 C<SourceDBClusterSnapshotIdentifier> must be the Amazon Resource Name
 (ARN) of the shared DB cluster snapshot.
 
-You can copy an encrypted DB cluster snapshot from another AWS Region.
-In that case, the AWS Region where you call the
-C<CopyDBClusterSnapshot> action is the destination AWS Region for the
-encrypted DB cluster snapshot to be copied to. To copy an encrypted DB
-cluster snapshot from another AWS Region, you must provide the
-following values:
-
-=over
-
-=item *
-
-C<KmsKeyId> - The AWS Key Management System (AWS KMS) key identifier
-for the key to use to encrypt the copy of the DB cluster snapshot in
-the destination AWS Region.
-
-=item *
-
-C<PreSignedUrl> - A URL that contains a Signature Version 4 signed
-request for the C<CopyDBClusterSnapshot> action to be called in the
-source AWS Region where the DB cluster snapshot is copied from. The
-pre-signed URL must be a valid request for the C<CopyDBClusterSnapshot>
-API action that can be executed in the source AWS Region that contains
-the encrypted DB cluster snapshot to be copied.
-
-The pre-signed URL request must contain the following parameter values:
-
-=over
-
-=item *
-
-C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-copy of the DB cluster snapshot in the destination AWS Region. This is
-the same identifier for both the C<CopyDBClusterSnapshot> action that
-is called in the destination AWS Region, and the action contained in
-the pre-signed URL.
-
-=item *
-
-C<DestinationRegion> - The name of the AWS Region that the DB cluster
-snapshot will be created in.
-
-=item *
-
-C<SourceDBClusterSnapshotIdentifier> - The DB cluster snapshot
-identifier for the encrypted DB cluster snapshot to be copied. This
-identifier must be in the Amazon Resource Name (ARN) format for the
-source AWS Region. For example, if you are copying an encrypted DB
-cluster snapshot from the us-west-2 AWS Region, then your
-C<SourceDBClusterSnapshotIdentifier> looks like the following example:
-C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:neptune-cluster1-snapshot-20161115>.
-
-=back
-
-To learn how to generate a Signature Version 4 signed request, see
-Authenticating Requests: Using Query Parameters (AWS Signature Version
-4)
-(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
-and Signature Version 4 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
-
-=item *
-
-C<TargetDBClusterSnapshotIdentifier> - The identifier for the new copy
-of the DB cluster snapshot in the destination AWS Region.
-
-=item *
-
-C<SourceDBClusterSnapshotIdentifier> - The DB cluster snapshot
-identifier for the encrypted DB cluster snapshot to be copied. This
-identifier must be in the ARN format for the source AWS Region and is
-the same value as the C<SourceDBClusterSnapshotIdentifier> in the
-pre-signed URL.
-
-=back
-
-To cancel the copy operation once it is in progress, delete the target
-DB cluster snapshot identified by C<TargetDBClusterSnapshotIdentifier>
-while that DB cluster snapshot is in "copying" status.
+You can't copy from one AWS Region to another.
 
 
 =head2 CopyDBParameterGroup
@@ -954,6 +875,8 @@ Copies the specified DB parameter group.
 
 =item [DBSubnetGroupName => Str]
 
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [EngineVersion => Str]
@@ -993,9 +916,7 @@ Creates a new Amazon Neptune DB cluster.
 
 You can use the C<ReplicationSourceIdentifier> parameter to create the
 DB cluster as a Read Replica of another DB cluster or Amazon Neptune DB
-instance. For cross-region replication where the DB cluster identified
-by C<ReplicationSourceIdentifier> is encrypted, you must also specify
-the C<PreSignedUrl> parameter.
+instance.
 
 
 =head2 CreateDBClusterParameterGroup
@@ -1371,26 +1292,8 @@ C<failed>, C<incompatible-restore>, or C<incompatible-network>, you can
 only delete it when the C<SkipFinalSnapshot> parameter is set to
 C<true>.
 
-If the specified DB instance is part of a DB cluster, you can't delete
-the DB instance if both of the following conditions are true:
-
-=over
-
-=item *
-
-The DB cluster is a Read Replica of another DB cluster.
-
-=item *
-
-The DB instance is the only instance in the DB cluster.
-
-=back
-
-To delete a DB instance in this case, first call the
-PromoteReadReplicaDBCluster API action to promote the DB cluster so
-it's no longer a Read Replica. After the promotion completes, then call
-the C<DeleteDBInstance> API action to delete the final instance in the
-DB cluster.
+You can't delete a DB instance if it is the only instance in the DB
+cluster.
 
 
 =head2 DeleteDBParameterGroup
@@ -1965,6 +1868,8 @@ Lists all tags on an Amazon Neptune resource.
 
 =item [BackupRetentionPeriod => Int]
 
+=item [CloudwatchLogsExportConfiguration => L<Paws::Neptune::CloudwatchLogsExportConfiguration>]
+
 =item [DBClusterParameterGroupName => Str]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -2265,7 +2170,7 @@ Each argument is described in detail in: L<Paws::Neptune::PromoteReadReplicaDBCl
 
 Returns: a L<Paws::Neptune::PromoteReadReplicaDBClusterResult> instance
 
-Promotes a Read Replica DB cluster to a standalone DB cluster.
+Not supported.
 
 
 =head2 RebootDBInstance
@@ -2420,7 +2325,11 @@ or C<RebootDBInstance> request.
 
 =item [DatabaseName => Str]
 
+=item [DBClusterParameterGroupName => Str]
+
 =item [DBSubnetGroupName => Str]
+
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 
@@ -2463,7 +2372,11 @@ created with the default security group.
 
 =item SourceDBClusterIdentifier => Str
 
+=item [DBClusterParameterGroupName => Str]
+
 =item [DBSubnetGroupName => Str]
+
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 

@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-Related finding's details.
+Details about a related finding.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Id => Str
 
-  The solution-generated identifier for a related finding.
+  The product-generated identifier for a related finding.
 
 
 =head2 B<REQUIRED> ProductArn => Str
 
-  The ARN of the solution that generated a related finding.
+  The ARN of the product that generated a related finding.
 
 
 

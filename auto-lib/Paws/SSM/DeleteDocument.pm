@@ -1,7 +1,9 @@
 
 package Paws::SSM::DeleteDocument;
   use Moose;
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has VersionName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -28,8 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $DeleteDocumentResult = $ssm->DeleteDocument(
-      Name => 'MyDocumentName',
-
+      Name            => 'MyDocumentName',
+      DocumentVersion => 'MyDocumentVersion',        # OPTIONAL
+      VersionName     => 'MyDocumentVersionName',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -38,9 +41,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
+=head2 DocumentVersion => Str
+
+(Optional) The version of the document that you want to delete. If not
+provided, all versions of the document are deleted.
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the document.
+
+
+
+=head2 VersionName => Str
+
+(Optional) The version name of the document that you want to delete. If
+not provided, all versions of the document are deleted.
 
 
 

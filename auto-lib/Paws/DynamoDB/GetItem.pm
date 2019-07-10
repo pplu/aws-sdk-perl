@@ -38,17 +38,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # partition key and a sort key (Artist and SongTitle), so you must specify
     # both of these attributes.
     my $GetItemOutput = $dynamodb->GetItem(
-      {
-        'Key' => {
-          'Artist' => {
-            'S' => 'Acme Band'
-          },
-          'SongTitle' => {
-            'S' => 'Happy Day'
-          }
+      'Key' => {
+        'Artist' => {
+          'S' => 'Acme Band'
         },
-        'TableName' => 'Music'
-      }
+        'SongTitle' => {
+          'S' => 'Happy Day'
+        }
+      },
+      'TableName' => 'Music'
     );
 
     # Results:
@@ -66,7 +64,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 This is a legacy parameter. Use C<ProjectionExpression> instead. For
 more information, see AttributesToGet
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -117,7 +115,7 @@ C<Percentile>
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
 words, see Reserved Words
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 in the I<Amazon DynamoDB Developer Guide>). To work around this, you
 could specify the following for C<ExpressionAttributeNames>:
 
@@ -143,9 +141,9 @@ C<#P = :val>
 Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see Accessing Item
+For more information on expression attribute names, see Specifying Item
 Attributes
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -169,12 +167,12 @@ table. These attributes can include scalars, sets, or elements of a
 JSON document. The attributes in the expression must be separated by
 commas.
 
-If no attribute names are specified, then all attributes will be
-returned. If any of the requested attributes are not found, they will
-not appear in the result.
+If no attribute names are specified, then all attributes are returned.
+If any of the requested attributes are not found, they do not appear in
+the result.
 
-For more information, see Accessing Item Attributes
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+For more information, see Specifying Item Attributes
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

@@ -35,18 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To change the default action for a listener
     # This example changes the default action for the specified listener.
     my $ModifyListenerOutput = $elasticloadbalancing->ModifyListener(
-      {
-        'DefaultActions' => [
+      'DefaultActions' => [
 
-          {
-            'TargetGroupArn' =>
+        {
+          'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-targets/2453ed029918f21f',
-            'Type' => 'forward'
-          }
-        ],
-        'ListenerArn' =>
+          'Type' => 'forward'
+        }
+      ],
+      'ListenerArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2'
-      }
     );
 
     # Results:
@@ -57,17 +55,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example changes the server certificate for the specified HTTPS
     # listener.
     my $ModifyListenerOutput = $elasticloadbalancing->ModifyListener(
-      {
-        'Certificates' => [
+      'Certificates' => [
 
-          {
-            'CertificateArn' =>
-              'arn:aws:iam::123456789012:server-certificate/my-new-server-cert'
-          }
-        ],
-        'ListenerArn' =>
+        {
+          'CertificateArn' =>
+            'arn:aws:iam::123456789012:server-certificate/my-new-server-cert'
+        }
+      ],
+      'ListenerArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/0467ef3c8400ae65'
-      }
     );
 
     # Results:
@@ -83,8 +79,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
-[HTTPS and TLS listeners] The default SSL server certificate. You must
-provide exactly one certificate. Set C<CertificateArn> to the
+[HTTPS and TLS listeners] The default certificate for the listener. You
+must provide exactly one certificate. Set C<CertificateArn> to the
 certificate ARN but do not set C<IsDefault>.
 
 To create a certificate list, use AddListenerCertificates.
@@ -98,8 +94,8 @@ action or one or more fixed-response actions.
 
 If the action type is C<forward>, you specify a target group. The
 protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer. The protocol of the target group must be TCP or TLS for
-a Network Load Balancer.
+Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
+or TCP_UDP for a Network Load Balancer.
 
 [HTTPS listeners] If the action type is C<authenticate-oidc>, you
 authenticate users through an identity provider that is OpenID Connect
@@ -132,16 +128,17 @@ The port for connections from clients to the load balancer.
 
 The protocol for connections from clients to the load balancer.
 Application Load Balancers support the HTTP and HTTPS protocols.
-Network Load Balancers support the TCP and TLS protocols.
+Network Load Balancers support the TCP, TLS, UDP, and TCP_UDP
+protocols.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
 
 =head2 SslPolicy => Str
 
 [HTTPS and TLS listeners] The security policy that defines which
 protocols and ciphers are supported. For more information, see Security
 Policies
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
 in the I<Application Load Balancers Guide>.
 
 

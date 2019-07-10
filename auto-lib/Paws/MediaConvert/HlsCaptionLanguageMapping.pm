@@ -52,7 +52,8 @@ ISO 639-3 three-letter language code
 
 =head2 LanguageCode => Str
 
-  
+  Specify the language, using the ISO 639-2 three-letter code listed at
+https://www.loc.gov/standards/iso639-2/php/code_list.php.
 
 
 =head2 LanguageDescription => Str

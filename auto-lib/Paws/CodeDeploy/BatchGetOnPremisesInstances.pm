@@ -47,6 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head2 B<REQUIRED> InstanceNames => ArrayRef[Str|Undef]
 
 The names of the on-premises instances about which to get information.
+The maximum number of instance names you can specify is 25.
 
 
 

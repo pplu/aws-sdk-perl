@@ -7,7 +7,7 @@ package Paws::AppMesh::ListMeshes;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListMeshes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/meshes');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::ListMeshesOutput');
 1;
@@ -48,14 +48,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 =head2 Limit => Int
 
-The maximum number of mesh results returned by C<ListMeshes> in
-paginated output. When this parameter is used, C<ListMeshes> only
-returns C<limit> results in a single page along with a C<nextToken>
-response element. The remaining results of the initial request can be
-seen by sending another C<ListMeshes> request with the returned
-C<nextToken> value. This value can be between 1 and 100. If this
-parameter is not used, then C<ListMeshes> returns up to 100 results and
-a C<nextToken> value if applicable.
+The maximum number of results returned by C<ListMeshes> in paginated
+output. When you use this parameter, C<ListMeshes> returns only
+C<limit> results in a single page along with a C<nextToken> response
+element. You can see the remaining results of the initial request by
+sending another C<ListMeshes> request with the returned C<nextToken>
+value. This value can be between 1 and 100. If you don't use this
+parameter, C<ListMeshes> returns up to 100 results and a C<nextToken>
+value if applicable.
 
 
 
@@ -66,7 +66,7 @@ request where C<limit> was used and the results exceeded the value of
 that parameter. Pagination continues from the end of the previous
 results that returned the C<nextToken> value.
 
-This token should be treated as an opaque identifier that is only used
+This token should be treated as an opaque identifier that is used only
 to retrieve the next items in a list and not for other programmatic
 purposes.
 

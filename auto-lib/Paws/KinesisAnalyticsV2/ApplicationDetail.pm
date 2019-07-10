@@ -99,7 +99,7 @@ application.
 =head2 B<REQUIRED> RuntimeEnvironment => Str
 
   The runtime environment for the application (C<SQL-1.0> or
-C<JAVA-8-FLINK-1.5>).
+C<FLINK-1_6>).
 
 
 =head2 ServiceExecutionRole => Str

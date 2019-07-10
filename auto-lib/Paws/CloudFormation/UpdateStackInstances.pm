@@ -152,7 +152,7 @@ stack set; to add or delete a parameter itself, use C<UpdateStackSet>
 to update the stack set template. If you add a parameter to a template,
 before you can override the parameter value specified in the stack set
 you must first use UpdateStackSet
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
 to update all stack instances with the updated template and parameter
 value specified in the stack set. Once a stack instance has been
 updated with the new parameter, you can then override the parameter

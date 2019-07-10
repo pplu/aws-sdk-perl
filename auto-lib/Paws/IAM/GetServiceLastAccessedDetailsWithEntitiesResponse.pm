@@ -50,6 +50,9 @@ The date and time, in ISO 8601 date-time format
 (http://www.iso.org/iso/iso8601), when the generated report job was
 completed or failed.
 
+This field is null if the job is still in progress, as indicated by a
+job status value of C<IN_PROGRESS>.
+
 
 =head2 B<REQUIRED> JobCreationDate => Str
 

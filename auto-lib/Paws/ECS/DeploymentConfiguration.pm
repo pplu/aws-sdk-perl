@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Deploy
 
 =head1 DESCRIPTION
 
-Optional deployment parameters that control how many tasks run during
-the deployment and the ordering of stopping and starting tasks.
+Optional deployment parameters that control how many tasks run during a
+deployment and the ordering of stopping and starting tasks.
 
 =head1 ATTRIBUTES
 
@@ -53,14 +53,14 @@ may start four new tasks before stopping the four older tasks (provided
 that the cluster resources required to do this are available). The
 default value for maximum percent is 200%.
 
-If a service is using the blue/green (C<CODE_DEPLOY>) deployment type
-and tasks that use the EC2 launch type, the B<maximum percent> value is
-set to the default value and is used to define the upper limit on the
-number of the tasks in the service that remain in the C<RUNNING> state
-while the container instances are in the C<DRAINING> state. If the
-tasks in the service use the Fargate launch type, the maximum percent
-value is not used, although it is returned when describing your
-service.
+If a service is using the blue/green (C<CODE_DEPLOY>) or C<EXTERNAL>
+deployment types and tasks that use the EC2 launch type, the B<maximum
+percent> value is set to the default value and is used to define the
+upper limit on the number of the tasks in the service that remain in
+the C<RUNNING> state while the container instances are in the
+C<DRAINING> state. If the tasks in the service use the Fargate launch
+type, the maximum percent value is not used, although it is returned
+when describing your service.
 
 
 =head2 MinimumHealthyPercent => Int
@@ -81,14 +81,14 @@ services that I<do> use a load balancer are considered healthy if they
 are in the C<RUNNING> state and they are reported as healthy by the
 load balancer. The default value for minimum healthy percent is 100%.
 
-If a service is using the blue/green (C<CODE_DEPLOY>) deployment type
-and tasks that use the EC2 launch type, the B<minimum healthy percent>
-value is set to the default value and is used to define the lower limit
-on the number of the tasks in the service that remain in the C<RUNNING>
-state while the container instances are in the C<DRAINING> state. If
-the tasks in the service use the Fargate launch type, the minimum
-healthy percent value is not used, although it is returned when
-describing your service.
+If a service is using the blue/green (C<CODE_DEPLOY>) or C<EXTERNAL>
+deployment types and tasks that use the EC2 launch type, the B<minimum
+healthy percent> value is set to the default value and is used to
+define the lower limit on the number of the tasks in the service that
+remain in the C<RUNNING> state while the container instances are in the
+C<DRAINING> state. If the tasks in the service use the Fargate launch
+type, the minimum healthy percent value is not used, although it is
+returned when describing your service.
 
 
 

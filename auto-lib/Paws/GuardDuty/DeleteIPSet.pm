@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $DeleteIPSetResponse = $guardduty->DeleteIPSet(
-      DetectorId => 'My__string',
-      IpSetId    => 'My__string',
+      DetectorId => 'MyDetectorId',
+      IpSetId    => 'MyString',
 
     );
 
@@ -43,14 +43,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The detectorID that specifies the GuardDuty service whose IPSet you
-want to delete.
+The unique ID of the detector the ipSet is associated with.
 
 
 
 =head2 B<REQUIRED> IpSetId => Str
 
-The unique ID that specifies the IPSet that you want to delete.
+The unique ID of the ipSet you want to delete.
 
 
 

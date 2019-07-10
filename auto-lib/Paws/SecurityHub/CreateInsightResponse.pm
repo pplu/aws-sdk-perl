@@ -17,7 +17,7 @@ Paws::SecurityHub::CreateInsightResponse
 
 =head2 B<REQUIRED> InsightArn => Str
 
-The ARN Of the created insight.
+The ARN of the insight created.
 
 
 =head2 _request_id => Str

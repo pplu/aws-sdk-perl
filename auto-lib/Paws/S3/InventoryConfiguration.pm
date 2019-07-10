@@ -37,7 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Invento
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies the inventory configuration for an Amazon S3 bucket. For more
+information, see GET Bucket inventory
+(https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETInventoryConfig.html)
+in the I<Amazon Simple Storage Service API Reference>.
 
 =head1 ATTRIBUTES
 
@@ -60,12 +63,18 @@ meet the filter's criteria.
 
 =head2 B<REQUIRED> IncludedObjectVersions => Str
 
-  Specifies which object version(s) to included in the inventory results.
+  Object versions to include in the inventory list. If set to C<All>, the
+list includes all the object versions, which adds the version-related
+fields C<VersionId>, C<IsLatest>, and C<DeleteMarker> to the list. If
+set to C<Current>, the list does not contain these version-related
+fields.
 
 
 =head2 B<REQUIRED> IsEnabled => Bool
 
-  Specifies whether the inventory is enabled or disabled.
+  Specifies whether the inventory is enabled or disabled. If set to
+C<True>, an inventory list is generated. If set to C<False>, no
+inventory list is generated.
 
 
 =head2 OptionalFields => ArrayRef[Str|Undef]

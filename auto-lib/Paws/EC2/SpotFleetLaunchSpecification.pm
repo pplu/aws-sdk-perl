@@ -60,11 +60,11 @@ This class has no description
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-  One or more block device mapping entries. You can't specify both a
-snapshot ID and an encryption value. This is because only blank volumes
-can be encrypted on creation. If a snapshot is the basis for a volume,
-it is not blank and its encryption status is used for the volume
-encryption status.
+  One or more block devices that are mapped to the Spot instances. You
+can't specify both a snapshot ID and an encryption value. This is
+because only blank volumes can be encrypted on creation. If a snapshot
+is the basis for a volume, it is not blank and its encryption status is
+used for the volume encryption status.
 
 
 =head2 EbsOptimized => Bool
@@ -122,7 +122,10 @@ interface.
 
 =head2 RamdiskId => Str
 
-  The ID of the RAM disk.
+  The ID of the RAM disk. Some kernels require additional drivers at
+launch. Check the kernel requirements for information about whether you
+need to specify a RAM disk. To find kernel requirements, refer to the
+AWS Resource Center and search for the kernel ID.
 
 
 =head2 SecurityGroups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
@@ -155,19 +158,19 @@ multiple subnets, separate them using commas; for example,
 
 =head2 UserData => Str
 
-  The Base64-encoded user data to make available to the instances.
+  The Base64-encoded user data that instances use when starting up.
 
 
 =head2 WeightedCapacity => Num
 
   The number of units provided by the specified instance type. These are
-the same units that you chose to set the target capacity in terms
-(instances or a performance characteristic such as vCPUs, memory, or
-I/O).
+the same units that you chose to set the target capacity in terms of
+instances, or a performance characteristic such as vCPUs, memory, or
+I/O.
 
-If the target capacity divided by this value is not a whole number, we
-round the number of instances to the next whole number. If this value
-is not specified, the default is 1.
+If the target capacity divided by this value is not a whole number,
+Amazon EC2 rounds the number of instances to the next whole number. If
+this value is not specified, the default is 1.
 
 
 

@@ -14,6 +14,7 @@ package Paws::Batch::ContainerDetail;
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
   has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
   has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
   has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
@@ -135,6 +136,12 @@ its root file system.
 
   A short (255 max characters) human-readable string to provide
 additional details about a running or stopped container.
+
+
+=head2 ResourceRequirements => ArrayRef[L<Paws::Batch::ResourceRequirement>]
+
+  The type and amount of a resource to assign to a container. Currently,
+the only supported resource is C<GPU>.
 
 
 =head2 TaskArn => Str

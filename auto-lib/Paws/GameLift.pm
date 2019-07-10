@@ -65,6 +65,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::CreatePlayerSessions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateScript {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::CreateScript', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateVpcPeeringAuthorization {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::CreateVpcPeeringAuthorization', @_);
@@ -108,6 +113,11 @@ package Paws::GameLift;
   sub DeleteScalingPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteScript {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteScript', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVpcPeeringAuthorization {
@@ -215,6 +225,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeScalingPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeScript {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeScript', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeVpcPeeringAuthorizations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeVpcPeeringAuthorizations', @_);
@@ -248,6 +263,11 @@ package Paws::GameLift;
   sub ListFleets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::ListFleets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListScripts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::ListScripts', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutScalingPolicy {
@@ -348,6 +368,11 @@ package Paws::GameLift;
   sub UpdateRuntimeConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::UpdateRuntimeConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateScript {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::UpdateScript', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ValidateMatchmakingRuleSet {
@@ -726,7 +751,7 @@ package Paws::GameLift;
   }
 
 
-  sub operations { qw/AcceptMatch CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreateMatchmakingConfiguration CreateMatchmakingRuleSet CreatePlayerSession CreatePlayerSessions CreateVpcPeeringAuthorization CreateVpcPeeringConnection DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteMatchmakingConfiguration DeleteMatchmakingRuleSet DeleteScalingPolicy DeleteVpcPeeringAuthorization DeleteVpcPeeringConnection DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribeMatchmaking DescribeMatchmakingConfigurations DescribeMatchmakingRuleSets DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies DescribeVpcPeeringAuthorizations DescribeVpcPeeringConnections GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartFleetActions StartGameSessionPlacement StartMatchBackfill StartMatchmaking StopFleetActions StopGameSessionPlacement StopMatchmaking UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateMatchmakingConfiguration UpdateRuntimeConfiguration ValidateMatchmakingRuleSet / }
+  sub operations { qw/AcceptMatch CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreateMatchmakingConfiguration CreateMatchmakingRuleSet CreatePlayerSession CreatePlayerSessions CreateScript CreateVpcPeeringAuthorization CreateVpcPeeringConnection DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteMatchmakingConfiguration DeleteMatchmakingRuleSet DeleteScalingPolicy DeleteScript DeleteVpcPeeringAuthorization DeleteVpcPeeringConnection DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribeMatchmaking DescribeMatchmakingConfigurations DescribeMatchmakingRuleSets DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies DescribeScript DescribeVpcPeeringAuthorizations DescribeVpcPeeringConnections GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets ListScripts PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartFleetActions StartGameSessionPlacement StartMatchBackfill StartMatchmaking StopFleetActions StopGameSessionPlacement StopMatchmaking UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateMatchmakingConfiguration UpdateRuntimeConfiguration UpdateScript ValidateMatchmakingRuleSet / }
 
 1;
 
@@ -764,583 +789,42 @@ games, (3) automatically scale your resources to meet player demand and
 manage costs, and (4) track in-depth metrics on game server performance
 and player usage.
 
-The Amazon GameLift service API includes two important function sets:
+When setting up hosting resources, you can deploy your custom game
+server or use the Amazon GameLift Realtime Servers. Realtime Servers
+gives you the ability to quickly stand up lightweight, efficient game
+servers with the core Amazon GameLift infrastructure already built in.
 
-=over
-
-=item *
-
-B<Manage game sessions and player access> -- Retrieve information on
-available game sessions; create new game sessions; send player requests
-to join a game session.
-
-=item *
-
-B<Configure and manage game server resources> -- Manage builds, fleets,
-queues, and aliases; set auto-scaling policies; retrieve logs and
-metrics.
-
-=back
+B<Get Amazon GameLift Tools and Resources>
 
 This reference guide describes the low-level service API for Amazon
-GameLift. You can use the API functionality with these tools:
+GameLift and provides links to language-specific SDK reference topics.
+See also Amazon GameLift Tools and Resources
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-components.html).
+
+B<API Summary>
+
+The Amazon GameLift service API includes two key sets of actions:
 
 =over
 
 =item *
 
-The Amazon Web Services software development kit (AWS SDK
-(http://aws.amazon.com/tools/#sdk)) is available in multiple languages
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-supported.html#gamelift-supported-clients)
-including C++ and C#. Use the SDK to access the API programmatically
-from an application, such as a game client.
+Manage game sessions and player access -- Integrate this functionality
+into game client services in order to create new game sessions,
+retrieve information on existing game sessions; reserve a player slot
+in a game session, request matchmaking, etc.
 
 =item *
 
-The AWS command-line interface
-(https://docs.aws.amazon.com/cli/latest/userguide/) (CLI) tool is
-primarily useful for handling administrative actions, such as setting
-up and managing Amazon GameLift settings and resources. You can use the
-AWS CLI to manage all of your AWS services.
-
-=item *
-
-The AWS Management Console
-(https://console.aws.amazon.com/gamelift/home) for Amazon GameLift
-provides a web interface to manage your Amazon GameLift settings and
-resources. The console includes a dashboard for tracking key resources,
-including builds and fleets, and displays usage and performance metrics
-for your games as customizable graphs.
-
-=item *
-
-Amazon GameLift Local is a tool for testing your game's integration
-with Amazon GameLift before deploying it on the service. This tools
-supports a subset of key API actions, which can be called from either
-the AWS CLI or programmatically. See Testing an Integration
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/integration-testing-local.html).
+Configure and manage game server resources -- Manage your Amazon
+GameLift hosting resources, including builds, scripts, fleets, queues,
+and aliases. Set up matchmakers, configure auto-scaling, retrieve game
+logs, and get hosting and game metrics.
 
 =back
 
-B<Learn more>
-
-=over
-
-=item *
-
-Developer Guide
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/) -- Read
-about Amazon GameLift features and how to use them.
-
-=item *
-
-Tutorials (https://gamedev.amazon.com/forums/tutorials) -- Get started
-fast with walkthroughs and sample projects.
-
-=item *
-
-GameDev Blog (https://gamedev.amazon.com/blogs/gamedev/) -- Stay up to
-date with new features and techniques.
-
-=item *
-
-GameDev Forums
-(https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html)
--- Connect with the GameDev community.
-
-=item *
-
-Release notes (https://aws.amazon.com/releasenotes/Amazon-GameLift/)
-and document history
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html)
--- Stay current with updates to the Amazon GameLift service, SDKs, and
-documentation.
-
-=back
-
-B<API SUMMARY>
-
-This list offers a functional overview of the Amazon GameLift service
-API.
-
-B<Managing Games and Players>
-
-Use these actions to start new game sessions, find existing game
-sessions, track game session status and other information, and enable
-player access to game sessions.
-
-=over
-
-=item *
-
-B<Discover existing game sessions>
-
-=over
-
-=item *
-
-SearchGameSessions -- Retrieve all available game sessions or search
-for game sessions that match a set of criteria.
-
-=back
-
-=item *
-
-B<Start new game sessions>
-
-=over
-
-=item *
-
-Start new games with Queues to find the best available hosting
-resources across multiple regions, minimize player latency, and balance
-game session activity for efficiency and cost effectiveness.
-
-=over
-
-=item *
-
-StartGameSessionPlacement -- Request a new game session placement and
-add one or more players to it.
-
-=item *
-
-DescribeGameSessionPlacement -- Get details on a placement request,
-including status.
-
-=item *
-
-StopGameSessionPlacement -- Cancel a placement request.
-
-=back
-
-=item *
-
-CreateGameSession -- Start a new game session on a specific fleet.
-I<Available in Amazon GameLift Local.>
-
-=back
-
-=item *
-
-B<Match players to game sessions with FlexMatch matchmaking>
-
-=over
-
-=item *
-
-StartMatchmaking -- Request matchmaking for one players or a group who
-want to play together.
-
-=item *
-
-StartMatchBackfill - Request additional player matches to fill empty
-slots in an existing game session.
-
-=item *
-
-DescribeMatchmaking -- Get details on a matchmaking request, including
-status.
-
-=item *
-
-AcceptMatch -- Register that a player accepts a proposed match, for
-matches that require player acceptance.
-
-=item *
-
-StopMatchmaking -- Cancel a matchmaking request.
-
-=back
-
-=item *
-
-B<Manage game session data>
-
-=over
-
-=item *
-
-DescribeGameSessions -- Retrieve metadata for one or more game
-sessions, including length of time active and current player count.
-I<Available in Amazon GameLift Local.>
-
-=item *
-
-DescribeGameSessionDetails -- Retrieve metadata and the game session
-protection setting for one or more game sessions.
-
-=item *
-
-UpdateGameSession -- Change game session settings, such as maximum
-player count and join policy.
-
-=item *
-
-GetGameSessionLogUrl -- Get the location of saved logs for a game
-session.
-
-=back
-
-=item *
-
-B<Manage player sessions>
-
-=over
-
-=item *
-
-CreatePlayerSession -- Send a request for a player to join a game
-session. I<Available in Amazon GameLift Local.>
-
-=item *
-
-CreatePlayerSessions -- Send a request for multiple players to join a
-game session. I<Available in Amazon GameLift Local.>
-
-=item *
-
-DescribePlayerSessions -- Get details on player activity, including
-status, playing time, and player data. I<Available in Amazon GameLift
-Local.>
-
-=back
-
-=back
-
-B<Setting Up and Managing Game Servers>
-
-When setting up Amazon GameLift resources for your game, you first
-create a game build
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
-and upload it to Amazon GameLift. You can then use these actions to
-configure and manage a fleet of resources to run your game servers,
-scale capacity to meet player demand, access performance and
-utilization metrics, and more.
-
-=over
-
-=item *
-
-B<Manage game builds>
-
-=over
-
-=item *
-
-CreateBuild -- Create a new build using files stored in an Amazon S3
-bucket. To create a build and upload files from a local path, use the
-AWS CLI command C<upload-build>.
-
-=item *
-
-ListBuilds -- Get a list of all builds uploaded to a Amazon GameLift
-region.
-
-=item *
-
-DescribeBuild -- Retrieve information associated with a build.
-
-=item *
-
-UpdateBuild -- Change build metadata, including build name and version.
-
-=item *
-
-DeleteBuild -- Remove a build from Amazon GameLift.
-
-=back
-
-=item *
-
-B<Manage fleets>
-
-=over
-
-=item *
-
-CreateFleet -- Configure and activate a new fleet to run a build's game
-servers.
-
-=item *
-
-ListFleets -- Get a list of all fleet IDs in a Amazon GameLift region
-(all statuses).
-
-=item *
-
-DeleteFleet -- Terminate a fleet that is no longer running game servers
-or hosting players.
-
-=item *
-
-View / update fleet configurations.
-
-=over
-
-=item *
-
-DescribeFleetAttributes / UpdateFleetAttributes -- View or change a
-fleet's metadata and settings for game session protection and resource
-creation limits.
-
-=item *
-
-DescribeFleetPortSettings / UpdateFleetPortSettings -- View or change
-the inbound permissions (IP address and port setting ranges) allowed
-for a fleet.
-
-=item *
-
-DescribeRuntimeConfiguration / UpdateRuntimeConfiguration -- View or
-change what server processes (and how many) to run on each instance in
-a fleet.
-
-=back
-
-=back
-
-=item *
-
-B<Control fleet capacity>
-
-=over
-
-=item *
-
-DescribeEC2InstanceLimits -- Retrieve maximum number of instances
-allowed for the current AWS account and the current usage level.
-
-=item *
-
-DescribeFleetCapacity / UpdateFleetCapacity -- Retrieve the capacity
-settings and the current number of instances in a fleet; adjust fleet
-capacity settings to scale up or down.
-
-=item *
-
-Autoscale -- Manage auto-scaling rules and apply them to a fleet.
-
-=over
-
-=item *
-
-PutScalingPolicy -- Create a new auto-scaling policy, or update an
-existing one.
-
-=item *
-
-DescribeScalingPolicies -- Retrieve an existing auto-scaling policy.
-
-=item *
-
-DeleteScalingPolicy -- Delete an auto-scaling policy and stop it from
-affecting a fleet's capacity.
-
-=item *
-
-StartFleetActions -- Restart a fleet's auto-scaling policies.
-
-=item *
-
-StopFleetActions -- Suspend a fleet's auto-scaling policies.
-
-=back
-
-=back
-
-=item *
-
-B<Manage game session queues>
-
-=over
-
-=item *
-
-CreateGameSessionQueue -- Create a queue for processing requests for
-new game sessions.
-
-=item *
-
-DescribeGameSessionQueues -- Retrieve game session queues defined in a
-Amazon GameLift region.
-
-=item *
-
-UpdateGameSessionQueue -- Change the configuration of a game session
-queue.
-
-=item *
-
-DeleteGameSessionQueue -- Remove a game session queue from the region.
-
-=back
-
-=item *
-
-B<Manage FlexMatch resources>
-
-=over
-
-=item *
-
-CreateMatchmakingConfiguration -- Create a matchmaking configuration
-with instructions for building a player group and placing in a new game
-session.
-
-=item *
-
-DescribeMatchmakingConfigurations -- Retrieve matchmaking
-configurations defined a Amazon GameLift region.
-
-=item *
-
-UpdateMatchmakingConfiguration -- Change settings for matchmaking
-configuration. queue.
-
-=item *
-
-DeleteMatchmakingConfiguration -- Remove a matchmaking configuration
-from the region.
-
-=item *
-
-CreateMatchmakingRuleSet -- Create a set of rules to use when searching
-for player matches.
-
-=item *
-
-DescribeMatchmakingRuleSets -- Retrieve matchmaking rule sets defined
-in a Amazon GameLift region.
-
-=item *
-
-ValidateMatchmakingRuleSet -- Verify syntax for a set of matchmaking
-rules.
-
-=item *
-
-DeleteMatchmakingRuleSet -- Remove a matchmaking rule set from the
-region.
-
-=back
-
-=item *
-
-B<Access fleet activity statistics>
-
-=over
-
-=item *
-
-DescribeFleetUtilization -- Get current data on the number of server
-processes, game sessions, and players currently active on a fleet.
-
-=item *
-
-DescribeFleetEvents -- Get a fleet's logged events for a specified time
-span.
-
-=item *
-
-DescribeGameSessions -- Retrieve metadata associated with one or more
-game sessions, including length of time active and current player
-count.
-
-=back
-
-=item *
-
-B<Remotely access an instance>
-
-=over
-
-=item *
-
-DescribeInstances -- Get information on each instance in a fleet,
-including instance ID, IP address, and status.
-
-=item *
-
-GetInstanceAccess -- Request access credentials needed to remotely
-connect to a specified instance in a fleet.
-
-=back
-
-=item *
-
-B<Manage fleet aliases>
-
-=over
-
-=item *
-
-CreateAlias -- Define a new alias and optionally assign it to a fleet.
-
-=item *
-
-ListAliases -- Get all fleet aliases defined in a Amazon GameLift
-region.
-
-=item *
-
-DescribeAlias -- Retrieve information on an existing alias.
-
-=item *
-
-UpdateAlias -- Change settings for a alias, such as redirecting it from
-one fleet to another.
-
-=item *
-
-DeleteAlias -- Remove an alias from the region.
-
-=item *
-
-ResolveAlias -- Get the fleet ID that a specified alias points to.
-
-=back
-
-=item *
-
-B<Manage VPC peering connections for fleets>
-
-=over
-
-=item *
-
-CreateVpcPeeringAuthorization -- Authorize a peering connection to one
-of your VPCs.
-
-=item *
-
-DescribeVpcPeeringAuthorizations -- Retrieve valid peering connection
-authorizations.
-
-=item *
-
-DeleteVpcPeeringAuthorization -- Delete a peering connection
-authorization.
-
-=item *
-
-CreateVpcPeeringConnection -- Establish a peering connection between
-the VPC for a Amazon GameLift fleet and one of your VPCs.
-
-=item *
-
-DescribeVpcPeeringConnections -- Retrieve information on active or
-pending VPC peering connections with a Amazon GameLift fleet.
-
-=item *
-
-DeleteVpcPeeringConnection -- Delete a VPC peering connection with a
-Amazon GameLift fleet.
-
-=back
-
-=back
-
+B<Task-based list of API actions
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html)>
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01>
 
@@ -1384,11 +868,21 @@ session is created for the match.
 If any player rejects the match, or if acceptances are not received
 before a specified timeout, the proposed match is dropped. The
 matchmaking tickets are then handled in one of two ways: For tickets
-where all players accepted the match, the ticket status is returned to
-C<SEARCHING> to find a new match. For tickets where one or more players
-failed to accept the match, the ticket status is set to C<FAILED>, and
-processing is terminated. A new matchmaking request for these players
-can be submitted as needed.
+where one or more players rejected the match, the ticket status is
+returned to C<SEARCHING> to find a new match. For tickets where one or
+more players failed to respond, the ticket status is set to
+C<CANCELLED>, and processing is terminated. A new matchmaking request
+for these players can be submitted as needed.
+
+B<Learn more>
+
+Add FlexMatch to a Game Client
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+
+FlexMatch Events Reference
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-events.html)
+
+B<Related operations>
 
 =over
 
@@ -1508,18 +1002,14 @@ files and points to the location of your game server build files in an
 Amazon Simple Storage Service (Amazon S3) location.
 
 Game server binaries must be combined into a C<.zip> file for use with
-Amazon GameLift. See Uploading Your Game
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
-for more information.
+Amazon GameLift.
 
 To create new builds quickly and easily, use the AWS CLI command B<
 upload-build
 (https://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html)
 >. This helper command uploads your build and creates a new build
 record in one step, and automatically handles the necessary
-permissions. See Upload Build Files to Amazon GameLift
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html)
-for more help.
+permissions.
 
 The C<CreateBuild> operation should be used only when you need to
 manually upload your build files, as in the following scenarios:
@@ -1530,9 +1020,7 @@ manually upload your build files, as in the following scenarios:
 
 Store a build file in an Amazon S3 bucket under your own AWS account.
 To use this option, you must first give Amazon GameLift access to that
-Amazon S3 bucket. See Create a Build with Files in Amazon S3
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build)
-for detailed help. To create a new build record using files in your
+Amazon S3 bucket. To create a new build record using files in your
 Amazon S3 bucket, call C<CreateBuild> and specify a build name,
 operating system, and the storage location of your game build.
 
@@ -1553,6 +1041,16 @@ If successful, this operation creates a new build record with a unique
 build ID and places it in C<INITIALIZED> status. You can use
 DescribeBuild to check the status of your build. A build must be in
 C<READY> status before it can be used to create fleets.
+
+B<Learn more>
+
+Uploading Your Game
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
+
+Create a Build with Files in Amazon S3
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build)
+
+B<Related operations>
 
 =over
 
@@ -1584,17 +1082,19 @@ DeleteBuild
 
 =over
 
-=item BuildId => Str
-
 =item EC2InstanceType => Str
 
 =item Name => Str
+
+=item [BuildId => Str]
 
 =item [Description => Str]
 
 =item [EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>]]
 
 =item [FleetType => Str]
+
+=item [InstanceRoleArn => Str]
 
 =item [LogPaths => ArrayRef[Str|Undef]]
 
@@ -1610,6 +1110,8 @@ DeleteBuild
 
 =item [RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>]
 
+=item [ScriptId => Str]
+
 =item [ServerLaunchParameters => Str]
 
 =item [ServerLaunchPath => Str]
@@ -1621,18 +1123,25 @@ Each argument is described in detail in: L<Paws::GameLift::CreateFleet>
 
 Returns: a L<Paws::GameLift::CreateFleetOutput> instance
 
-Creates a new fleet to run your game servers. A fleet is a set of
-Amazon Elastic Compute Cloud (Amazon EC2) instances, each of which can
-run multiple server processes to host game sessions. You set up a fleet
-to use instances with certain hardware specifications (see Amazon EC2
-Instance Types (http://aws.amazon.com/ec2/instance-types/)), and deploy
-your game build to the fleet.
+Creates a new fleet to run your game servers. whether they are custom
+game builds or Realtime Servers with game-specific script. A fleet is a
+set of Amazon Elastic Compute Cloud (Amazon EC2) instances, each of
+which can host multiple game sessions. When creating a fleet, you
+choose the hardware specifications, set some configuration options, and
+specify the game server to deploy on the new fleet.
 
 To create a new fleet, you must provide the following: (1) a fleet
-name, (2) an EC2 instance type, (3) the build ID for your game build,
-and (4) a run-time configuration, which specifies the server processes
-to run on each instance in the fleet. If fleet type is not set, the new
-fleet will use on-demand instances by default.
+name, (2) an EC2 instance type and fleet type (spot or on-demand), (3)
+the build ID for your game build or script ID if using Realtime
+Servers, and (4) a run-time configuration, which determines how game
+servers will run on each instance in the fleet.
+
+When creating a Realtime Servers fleet, we recommend using a minimal
+version of the Realtime script (see this working code example
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-script.html#realtime-script-examples)).
+This will make it much easier to troubleshoot any fleet creation
+issues. Once the fleet is active, you can update your Realtime script
+as needed.
 
 If the C<CreateFleet> call is successful, Amazon GameLift performs the
 following tasks. You can track the process of a fleet by checking the
@@ -1654,8 +1163,8 @@ triggers Amazon GameLift to start one new EC2 instance.
 
 =item *
 
-Downloads the game build to the new instance and installs it. Statuses:
-C<DOWNLOADING>, C<VALIDATING>, C<BUILDING>.
+Downloads the game build or Realtime script to the new instance and
+installs it. Statuses: C<DOWNLOADING>, C<VALIDATING>, C<BUILDING>.
 
 =item *
 
@@ -1672,8 +1181,11 @@ ready to host a game session.
 
 B<Learn more>
 
-See Amazon GameLift Developer Guide topics in Working with Fleets
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html)
+
+Debug Fleet Creation Issues
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html)
 
 B<Related operations>
 
@@ -1977,6 +1489,8 @@ DeleteGameSessionQueue
 
 =item [AdditionalPlayerCount => Int]
 
+=item [BackfillMode => Str]
+
 =item [CustomEventData => Str]
 
 =item [Description => Str]
@@ -2008,24 +1522,24 @@ evaluate players and find acceptable matches; a game session queue to
 use when placing a new game session for the match; and the maximum time
 allowed for a matchmaking attempt.
 
-B<Player acceptance> -- In each configuration, you have the option to
-require that all players accept participation in a proposed match. To
-enable this feature, set I<AcceptanceRequired> to true and specify a
-time limit for player acceptance. Players have the option to accept or
-reject a proposed match, and a match does not move ahead to game
-session placement unless all matched players accept.
+There are two ways to track the progress of matchmaking tickets: (1)
+polling ticket status with DescribeMatchmaking; or (2) receiving
+notifications with Amazon Simple Notification Service (SNS). To use
+notifications, you first need to set up an SNS topic to receive the
+notifications, and provide the topic ARN in the matchmaking
+configuration. Since notifications promise only "best effort" delivery,
+we recommend calling C<DescribeMatchmaking> if no notifications are
+received within 30 seconds.
 
-B<Matchmaking status notification> -- There are two ways to track the
-progress of matchmaking tickets: (1) polling ticket status with
-DescribeMatchmaking; or (2) receiving notifications with Amazon Simple
-Notification Service (SNS). To use notifications, you first need to set
-up an SNS topic to receive the notifications, and provide the topic ARN
-in the matchmaking configuration (see Setting up Notifications for
-Matchmaking
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)).
-Since notifications promise only "best effort" delivery, we recommend
-calling C<DescribeMatchmaking> if no notifications are received within
-30 seconds.
+B<Learn more>
+
+Design a FlexMatch Matchmaker
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html)
+
+Setting up Notifications for Matchmaking
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
+
+B<Related operations>
 
 =over
 
@@ -2088,7 +1602,7 @@ MatchmakingConfiguration.
 
 To create a matchmaking rule set, provide unique rule set name and the
 rule set body in JSON format. Rule sets must be defined in the same
-region as the matchmaking configuration they will be used with.
+region as the matchmaking configuration they are used with.
 
 Since matchmaking rule sets cannot be edited, it is a good idea to
 check the rule set syntax using ValidateMatchmakingRuleSet before
@@ -2172,16 +1686,18 @@ Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSession>
 
 Returns: a L<Paws::GameLift::CreatePlayerSessionOutput> instance
 
-Adds a player to a game session and creates a player session record.
-Before a player can be added, a game session must have an C<ACTIVE>
-status, have a creation policy of C<ALLOW_ALL>, and have an open player
-slot. To add a group of players to a game session, use
-CreatePlayerSessions.
+Reserves an open player slot in an active game session. Before a player
+can be added, a game session must have an C<ACTIVE> status, have a
+creation policy of C<ALLOW_ALL>, and have an open player slot. To add a
+group of players to a game session, use CreatePlayerSessions. When the
+player connects to the game server and references a player session ID,
+the game server contacts the Amazon GameLift service to validate the
+player reservation and accept the player.
 
 To create a player session, specify a game session ID, player ID, and
-optionally a string of player data. If successful, the player is added
-to the game session and a new PlayerSession object is returned. Player
-sessions cannot be updated.
+optionally a string of player data. If successful, a slot is reserved
+in the game session for the player and a new PlayerSession object is
+returned. Player sessions cannot be updated.
 
 I<Available in Amazon GameLift Local.>
 
@@ -2240,16 +1756,18 @@ Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSessions>
 
 Returns: a L<Paws::GameLift::CreatePlayerSessionsOutput> instance
 
-Adds a group of players to a game session. This action is useful with a
-team matching feature. Before players can be added, a game session must
-have an C<ACTIVE> status, have a creation policy of C<ALLOW_ALL>, and
-have an open player slot. To add a single player to a game session, use
-CreatePlayerSession.
+Reserves open slots in a game session for a group of players. Before
+players can be added, a game session must have an C<ACTIVE> status,
+have a creation policy of C<ALLOW_ALL>, and have an open player slot.
+To add a single player to a game session, use CreatePlayerSession. When
+a player connects to the game server and references a player session
+ID, the game server contacts the Amazon GameLift service to validate
+the player reservation and accept the player.
 
 To create player sessions, specify a game session ID, a list of player
-IDs, and optionally a set of player data strings. If successful, the
-players are added to the game session and a set of new PlayerSession
-objects is returned. Player sessions cannot be updated.
+IDs, and optionally a set of player data strings. If successful, a slot
+is reserved in the game session for each player and a set of new
+PlayerSession objects is returned. Player sessions cannot be updated.
 
 I<Available in Amazon GameLift Local.>
 
@@ -2286,6 +1804,95 @@ DescribeGameSessionPlacement
 StopGameSessionPlacement
 
 =back
+
+=back
+
+
+
+=head2 CreateScript
+
+=over
+
+=item [Name => Str]
+
+=item [StorageLocation => L<Paws::GameLift::S3Location>]
+
+=item [Version => Str]
+
+=item [ZipFile => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GameLift::CreateScript>
+
+Returns: a L<Paws::GameLift::CreateScriptOutput> instance
+
+Creates a new script record for your Realtime Servers script. Realtime
+scripts are JavaScript that provide configuration settings and optional
+custom game logic for your game. The script is deployed when you create
+a Realtime Servers fleet to host your game sessions. Script logic is
+executed during an active game session.
+
+To create a new script record, specify a script name and provide the
+script file(s). The script files and all dependencies must be zipped
+into a single file. You can pull the zip file from either of these
+locations:
+
+=over
+
+=item *
+
+A locally available directory. Use the I<ZipFile> parameter for this
+option.
+
+=item *
+
+An Amazon Simple Storage Service (Amazon S3) bucket under your AWS
+account. Use the I<StorageLocation> parameter for this option. You'll
+need to have an Identity Access Management (IAM) role that allows the
+Amazon GameLift service to access your S3 bucket.
+
+=back
+
+If the call is successful, a new script record is created with a unique
+script ID. If the script file is provided as a local file, the file is
+uploaded to an Amazon GameLift-owned S3 bucket and the script record's
+storage location reflects this location. If the script file is provided
+as an S3 bucket, Amazon GameLift accesses the file at this storage
+location as needed for deployment.
+
+B<Learn more>
+
+Amazon GameLift Realtime Servers
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html)
+
+Set Up a Role for Amazon GameLift Access
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/setting-up-role.html)
+
+B<Related operations>
+
+=over
+
+=item *
+
+CreateScript
+
+=item *
+
+ListScripts
+
+=item *
+
+DescribeScript
+
+=item *
+
+UpdateScript
+
+=item *
+
+DeleteScript
 
 =back
 
@@ -2511,6 +2118,13 @@ To delete a build, specify its ID. Deleting a build does not affect the
 status of any active fleets using the build, but you can no longer
 create new fleets with the deleted build.
 
+B<Learn more>
+
+Working with Builds
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html)
+
+B<Related operations>
+
 =over
 
 =item *
@@ -2553,8 +2167,21 @@ Returns: nothing
 Deletes everything related to a fleet. Before deleting a fleet, you
 must set the fleet's desired capacity to zero. See UpdateFleetCapacity.
 
+If the fleet being deleted has a VPC peering connection, you first need
+to get a valid authorization (good for 24 hours) by calling
+CreateVpcPeeringAuthorization. You do not need to explicitly delete the
+VPC peering connection--this is done as part of the delete fleet
+process.
+
 This action removes the fleet's resources and the fleet record. Once a
 fleet is deleted, you can no longer use that fleet.
+
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
 
 =over
 
@@ -2705,6 +2332,8 @@ Returns: a L<Paws::GameLift::DeleteMatchmakingConfigurationOutput> instance
 Permanently removes a FlexMatch matchmaking configuration. To delete,
 specify the configuration name. A matchmaking configuration cannot be
 deleted if it is being used in any active matchmaking tickets.
+
+B<Related operations>
 
 =over
 
@@ -2889,6 +2518,62 @@ StopFleetActions
 
 
 
+=head2 DeleteScript
+
+=over
+
+=item ScriptId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GameLift::DeleteScript>
+
+Returns: nothing
+
+Deletes a Realtime script. This action permanently deletes the script
+record. If script files were uploaded, they are also deleted (files
+stored in an S3 bucket are not deleted).
+
+To delete a script, specify the script ID. Before deleting a script, be
+sure to terminate all fleets that are deployed with the script being
+deleted. Fleet instances periodically check for script updates, and if
+the script record no longer exists, the instance will go into an error
+state and be unable to host game sessions.
+
+B<Learn more>
+
+Amazon GameLift Realtime Servers
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html)
+
+B<Related operations>
+
+=over
+
+=item *
+
+CreateScript
+
+=item *
+
+ListScripts
+
+=item *
+
+DescribeScript
+
+=item *
+
+UpdateScript
+
+=item *
+
+DeleteScript
+
+=back
+
+
+
 =head2 DeleteVpcPeeringAuthorization
 
 =over
@@ -2905,8 +2590,8 @@ Each argument is described in detail in: L<Paws::GameLift::DeleteVpcPeeringAutho
 Returns: a L<Paws::GameLift::DeleteVpcPeeringAuthorizationOutput> instance
 
 Cancels a pending VPC peering authorization for the specified VPC. If
-the authorization has already been used to create a peering connection,
-call DeleteVpcPeeringConnection to remove the connection.
+you need to delete an existing VPC peering connection, call
+DeleteVpcPeeringConnection.
 
 =over
 
@@ -3061,6 +2746,13 @@ Retrieves properties for a build. To request a build record, specify a
 build ID. If successful, an object containing the build properties is
 returned.
 
+B<Learn more>
+
+Working with Builds
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html)
+
+B<Related operations>
+
 =over
 
 =item *
@@ -3118,6 +2810,13 @@ current usage level for the AWS account
 Service limits vary depending on region. Available regions for Amazon
 GameLift can be found in the AWS Management Console for Amazon GameLift
 (see the drop-down list in the upper right corner).
+
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
 
 =over
 
@@ -3242,6 +2941,13 @@ exist.
 Some API actions may limit the number of fleet IDs allowed in one
 request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
+
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
 
 =over
 
@@ -3368,6 +3074,13 @@ Some API actions may limit the number of fleet IDs allowed in one
 request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
 
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
+
 =over
 
 =item *
@@ -3488,6 +3201,13 @@ a time range to limit the result set. Use the pagination parameters to
 retrieve results as a set of sequential pages. If successful, a
 collection of event log entries matching the request are returned.
 
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
+
 =over
 
 =item *
@@ -3602,6 +3322,13 @@ get a fleet's inbound connection permissions, specify a fleet ID. If
 successful, a collection of IpPermission objects is returned for the
 requested fleet ID. If the requested fleet has been deleted, the result
 set is empty.
+
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
 
 =over
 
@@ -3725,6 +3452,13 @@ returned only for fleets that currently exist.
 Some API actions may limit the number of fleet IDs allowed in one
 request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
+
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
 
 =over
 
@@ -4162,6 +3896,16 @@ To request matchmaking tickets, provide a list of up to 10 ticket IDs.
 If the request is successful, a ticket object is returned for each
 requested ID that currently exists.
 
+B<Learn more>
+
+Add FlexMatch to a Game Client
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+
+Set Up FlexMatch Event Notification
+(https://docs.aws.amazon.com/gamelift/latest/developerguidematch-notification.html)
+
+B<Related operations>
+
 =over
 
 =item *
@@ -4207,7 +3951,7 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeMatchmakingCo
 
 Returns: a L<Paws::GameLift::DescribeMatchmakingConfigurationsOutput> instance
 
-Retrieves the details of FlexMatch matchmaking configurations. with
+Retrieves the details of FlexMatch matchmaking configurations. With
 this operation, you have the following options: (1) retrieve all
 existing configurations, (2) provide the names of one or more
 configurations to retrieve, or (3) retrieve all configurations that use
@@ -4216,6 +3960,13 @@ pagination parameters to retrieve results as a set of sequential pages.
 If successful, a configuration is returned for each requested name.
 When specifying a list of names, only configurations that currently
 exist are returned.
+
+B<Learn more>
+
+Setting Up FlexMatch Matchmakers
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/matchmaker-build.html)
+
+B<Related operations>
 
 =over
 
@@ -4422,6 +4173,13 @@ Retrieves the current run-time configuration for the specified fleet.
 The run-time configuration tells Amazon GameLift how to launch server
 processes on instances in the fleet.
 
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
+
 =over
 
 =item *
@@ -4598,6 +4356,57 @@ StartFleetActions
 StopFleetActions
 
 =back
+
+=back
+
+
+
+=head2 DescribeScript
+
+=over
+
+=item ScriptId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GameLift::DescribeScript>
+
+Returns: a L<Paws::GameLift::DescribeScriptOutput> instance
+
+Retrieves properties for a Realtime script.
+
+To request a script record, specify the script ID. If successful, an
+object containing the script properties is returned.
+
+B<Learn more>
+
+Amazon GameLift Realtime Servers
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html)
+
+B<Related operations>
+
+=over
+
+=item *
+
+CreateScript
+
+=item *
+
+ListScripts
+
+=item *
+
+DescribeScript
+
+=item *
+
+UpdateScript
+
+=item *
+
+DeleteScript
 
 =back
 
@@ -4892,6 +4701,13 @@ retrieve results in a set of sequential pages.
 
 Build records are not listed in any particular order.
 
+B<Learn more>
+
+Working with Builds
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html)
+
+B<Related operations>
+
 =over
 
 =item *
@@ -4928,6 +4744,8 @@ DeleteBuild
 
 =item [NextToken => Str]
 
+=item [ScriptId => Str]
+
 
 =back
 
@@ -4936,10 +4754,18 @@ Each argument is described in detail in: L<Paws::GameLift::ListFleets>
 Returns: a L<Paws::GameLift::ListFleetsOutput> instance
 
 Retrieves a collection of fleet records for this AWS account. You can
-filter the result set by build ID. Use the pagination parameters to
-retrieve results in sequential pages.
+filter the result set to find only those fleets that are deployed with
+a specific build or script. Use the pagination parameters to retrieve
+results in sequential pages.
 
-Fleet records are not listed in any particular order.
+Fleet records are not listed in a particular order.
+
+B<Learn more>
+
+Set Up Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
 
 =over
 
@@ -5030,6 +4856,57 @@ StartFleetActions
 StopFleetActions
 
 =back
+
+=back
+
+
+
+=head2 ListScripts
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GameLift::ListScripts>
+
+Returns: a L<Paws::GameLift::ListScriptsOutput> instance
+
+Retrieves script records for all Realtime scripts that are associated
+with the AWS account in use.
+
+B<Learn more>
+
+Amazon GameLift Realtime Servers
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html)
+
+B<Related operations>
+
+=over
+
+=item *
+
+CreateScript
+
+=item *
+
+ListScripts
+
+=item *
+
+DescribeScript
+
+=item *
+
+UpdateScript
+
+=item *
+
+DeleteScript
 
 =back
 
@@ -5225,6 +5102,38 @@ To request new credentials, specify the build ID as returned with an
 initial C<CreateBuild> request. If successful, a new set of credentials
 are returned, along with the S3 storage location associated with the
 build ID.
+
+B<Learn more>
+
+Uploading Your Game
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html)
+
+B<Related operations>
+
+=over
+
+=item *
+
+CreateBuild
+
+=item *
+
+ListBuilds
+
+=item *
+
+DescribeBuild
+
+=item *
+
+UpdateBuild
+
+=item *
+
+DeleteBuild
+
+=back
+
 
 
 =head2 ResolveAlias
@@ -5445,7 +5354,36 @@ policies. If actions on the fleet were never stopped, this operation
 will have no effect. You can view a fleet's stopped actions using
 DescribeFleetAttributes.
 
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
+
 =over
+
+=item *
+
+CreateFleet
+
+=item *
+
+ListFleets
+
+=item *
+
+DeleteFleet
+
+=item *
+
+Describe fleets:
+
+=over
+
+=item *
+
+DescribeFleetAttributes
 
 =item *
 
@@ -5453,7 +5391,15 @@ DescribeFleetCapacity
 
 =item *
 
-UpdateFleetCapacity
+DescribeFleetPortSettings
+
+=item *
+
+DescribeFleetUtilization
+
+=item *
+
+DescribeRuntimeConfiguration
 
 =item *
 
@@ -5461,21 +5407,31 @@ DescribeEC2InstanceLimits
 
 =item *
 
-Manage scaling policies:
+DescribeFleetEvents
+
+=back
+
+=item *
+
+Update fleets:
 
 =over
 
 =item *
 
-PutScalingPolicy (auto-scaling)
+UpdateFleetAttributes
 
 =item *
 
-DescribeScalingPolicies (auto-scaling)
+UpdateFleetCapacity
 
 =item *
 
-DeleteScalingPolicy (auto-scaling)
+UpdateFleetPortSettings
+
+=item *
+
+UpdateRuntimeConfiguration
 
 =back
 
@@ -5666,10 +5622,7 @@ game session's ARN, a matchmaking configuration, and a set of data that
 describes all current players in the game session. If successful, a
 match backfill ticket is created and returned with status set to
 QUEUED. The ticket is placed in the matchmaker's ticket pool and
-processed. Track the status of the ticket to respond as needed. For
-more detail how to set up backfilling, see Backfill Existing Games with
-FlexMatch
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
+processed. Track the status of the ticket to respond as needed.
 
 The process of finding backfill matches is essentially identical to the
 initial matchmaking process. The matchmaker searches the pool and
@@ -5680,7 +5633,17 @@ the match are updated with the game session's connection information,
 and the GameSession object is updated to include matchmaker data on the
 new players. For more detail on how match backfill requests are
 processed, see How Amazon GameLift FlexMatch Works
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html).
+
+B<Learn more>
+
+Backfill Existing Games with FlexMatch
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html)
+
+How GameLift FlexMatch Works
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html)
+
+B<Related operations>
 
 =over
 
@@ -5734,10 +5697,7 @@ new game session for optimal performance. A matchmaking request might
 start with a single player or a group of players who want to play
 together. FlexMatch finds additional players as needed to fill the
 match. Match type, rules, and the queue used to place a new game
-session are defined in a C<MatchmakingConfiguration>. For complete
-information on setting up and using FlexMatch, see the topic Adding
-FlexMatch to Your Game
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
+session are defined in a C<MatchmakingConfiguration>.
 
 To start matchmaking, provide a unique ticket ID, specify a matchmaking
 configuration, and include the players to be matched. You must also
@@ -5814,6 +5774,22 @@ game.
 
 =back
 
+B<Learn more>
+
+Add FlexMatch to a Game Client
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+
+Set Up FlexMatch Event Notification
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
+
+FlexMatch Integration Roadmap
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-tasks.html)
+
+How GameLift FlexMatch Works
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html)
+
+B<Related operations>
+
 =over
 
 =item *
@@ -5867,6 +5843,106 @@ suspend. When auto-scaling fleet actions are stopped, Amazon GameLift
 no longer initiates scaling events except to maintain the fleet's
 desired instances setting (FleetCapacity. Changes to the fleet's
 capacity must be done manually using UpdateFleetCapacity.
+
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
+
+=over
+
+=item *
+
+CreateFleet
+
+=item *
+
+ListFleets
+
+=item *
+
+DeleteFleet
+
+=item *
+
+Describe fleets:
+
+=over
+
+=item *
+
+DescribeFleetAttributes
+
+=item *
+
+DescribeFleetCapacity
+
+=item *
+
+DescribeFleetPortSettings
+
+=item *
+
+DescribeFleetUtilization
+
+=item *
+
+DescribeRuntimeConfiguration
+
+=item *
+
+DescribeEC2InstanceLimits
+
+=item *
+
+DescribeFleetEvents
+
+=back
+
+=item *
+
+Update fleets:
+
+=over
+
+=item *
+
+UpdateFleetAttributes
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+UpdateFleetPortSettings
+
+=item *
+
+UpdateRuntimeConfiguration
+
+=back
+
+=item *
+
+Manage fleet actions:
+
+=over
+
+=item *
+
+StartFleetActions
+
+=item *
+
+StopFleetActions
+
+=back
+
+=back
+
 
 
 =head2 StopGameSessionPlacement
@@ -5949,10 +6025,26 @@ Each argument is described in detail in: L<Paws::GameLift::StopMatchmaking>
 
 Returns: a L<Paws::GameLift::StopMatchmakingOutput> instance
 
-Cancels a matchmaking ticket that is currently being processed. To stop
-the matchmaking operation, specify the ticket ID. If successful, work
-on the ticket is stopped, and the ticket status is changed to
-C<CANCELLED>.
+Cancels a matchmaking ticket or match backfill ticket that is currently
+being processed. To stop the matchmaking operation, specify the ticket
+ID. If successful, work on the ticket is stopped, and the ticket status
+is changed to C<CANCELLED>.
+
+This call is also used to turn off automatic backfill for an individual
+game session. This is for game sessions that are created with a
+matchmaking configuration that has automatic backfill enabled. The
+ticket ID is included in the C<MatchmakerData> of an updated game
+session object, which is provided to the game server.
+
+If the action is successful, the service sends back an empty JSON
+struct with the HTTP 200 response (not an empty HTTP body).
+
+B<Learn more>
+
+Add FlexMatch to a Game Client
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+
+B<Related operations>
 
 =over
 
@@ -6056,6 +6148,13 @@ version. To update the metadata, specify the build ID to update and
 provide the new values. If successful, a build object containing the
 updated metadata is returned.
 
+B<Learn more>
+
+Working with Builds
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html)
+
+B<Related operations>
+
 =over
 
 =item *
@@ -6109,6 +6208,13 @@ Updates fleet properties, including name and description, for a fleet.
 To update metadata, specify the fleet ID and the property values that
 you want to change. If successful, the fleet ID for the updated fleet
 is returned.
+
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
 
 =over
 
@@ -6243,6 +6349,13 @@ current capacity information by calling DescribeFleetCapacity. If the
 desired instance count is higher than the instance type's limit, the
 "Limit Exceeded" exception occurs.
 
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
+
 =over
 
 =item *
@@ -6361,6 +6474,13 @@ C<InboundPermissionAuthorizations>, and permissions you want to remove
 in C<InboundPermissionRevocations>. Permissions to be removed must
 match existing fleet permissions. If successful, the fleet ID for the
 updated fleet is returned.
+
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
 
 =over
 
@@ -6593,6 +6713,8 @@ DeleteGameSessionQueue
 
 =item [AdditionalPlayerCount => Int]
 
+=item [BackfillMode => Str]
+
 =item [CustomEventData => Str]
 
 =item [Description => Str]
@@ -6616,9 +6738,17 @@ Each argument is described in detail in: L<Paws::GameLift::UpdateMatchmakingConf
 
 Returns: a L<Paws::GameLift::UpdateMatchmakingConfigurationOutput> instance
 
-Updates settings for a FlexMatch matchmaking configuration. To update
-settings, specify the configuration name to be updated and provide the
-new settings.
+Updates settings for a FlexMatch matchmaking configuration. These
+changes affect all matches and game sessions that are created after the
+update. To update settings, specify the configuration name to be
+updated and provide the new settings.
+
+B<Learn more>
+
+Design a FlexMatch Matchmaker
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html)
+
+B<Related operations>
 
 =over
 
@@ -6680,18 +6810,22 @@ time after the fleet is created; it does not need to be in an C<ACTIVE>
 status.
 
 To update run-time configuration, specify the fleet ID and provide a
-C<RuntimeConfiguration> object with the updated collection of server
-process configurations.
+C<RuntimeConfiguration> object with an updated set of server process
+configurations.
 
 Each instance in a Amazon GameLift fleet checks regularly for an
 updated run-time configuration and changes how it launches server
 processes to comply with the latest version. Existing server processes
-are not affected by the update; they continue to run until they end,
-while Amazon GameLift simply adds new server processes to fit the
-current run-time configuration. As a result, the run-time configuration
-changes are applied gradually as existing processes shut down and new
-processes are launched in Amazon GameLift's normal process recycling
-activity.
+are not affected by the update; run-time configuration changes are
+applied gradually as existing processes shut down and new processes are
+launched during Amazon GameLift's normal process recycling activity.
+
+B<Learn more>
+
+Working with Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+
+B<Related operations>
 
 =over
 
@@ -6782,6 +6916,75 @@ StartFleetActions
 StopFleetActions
 
 =back
+
+=back
+
+
+
+=head2 UpdateScript
+
+=over
+
+=item ScriptId => Str
+
+=item [Name => Str]
+
+=item [StorageLocation => L<Paws::GameLift::S3Location>]
+
+=item [Version => Str]
+
+=item [ZipFile => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GameLift::UpdateScript>
+
+Returns: a L<Paws::GameLift::UpdateScriptOutput> instance
+
+Updates Realtime script metadata and content.
+
+To update script metadata, specify the script ID and provide updated
+name and/or version values.
+
+To update script content, provide an updated zip file by pointing to
+either a local file or an Amazon S3 bucket location. You can use either
+method regardless of how the original script was uploaded. Use the
+I<Version> parameter to track updates to the script.
+
+If the call is successful, the updated metadata is stored in the script
+record and a revised script is uploaded to the Amazon GameLift service.
+Once the script is updated and acquired by a fleet instance, the new
+version is used for all new game sessions.
+
+B<Learn more>
+
+Amazon GameLift Realtime Servers
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html)
+
+B<Related operations>
+
+=over
+
+=item *
+
+CreateScript
+
+=item *
+
+ListScripts
+
+=item *
+
+DescribeScript
+
+=item *
+
+UpdateScript
+
+=item *
+
+DeleteScript
 
 =back
 
@@ -7030,9 +7233,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::GameLift::ListBuildsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllFleets(sub { },[BuildId => Str, Limit => Int, NextToken => Str])
+=head2 ListAllFleets(sub { },[BuildId => Str, Limit => Int, NextToken => Str, ScriptId => Str])
 
-=head2 ListAllFleets([BuildId => Str, Limit => Int, NextToken => Str])
+=head2 ListAllFleets([BuildId => Str, Limit => Int, NextToken => Str, ScriptId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Lists the assessment runs that correspond to the assessment templates that
     # are specified by the ARNs of the assessment templates.
     my $ListAssessmentRunsResponse = $inspector->ListAssessmentRuns(
-      {
-        'AssessmentTemplateArns' => [
+      'AssessmentTemplateArns' => [
 'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw'
-        ],
-        'MaxResults' => 123
-      }
+      ],
+      'MaxResults' => 123
     );
 
     # Results:

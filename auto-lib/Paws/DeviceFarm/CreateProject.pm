@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $devicefarm = Paws->service('DeviceFarm');
     # To create a new project
     # The following example creates a new project named MyProject.
-    my $CreateProjectResult = $devicefarm->CreateProject(
-      {
-        'Name' => 'MyProject'
-      }
-    );
+    my $CreateProjectResult =
+      $devicefarm->CreateProject( 'Name' => 'MyProject' );
 
     # Results:
     my $project = $CreateProjectResult->project;

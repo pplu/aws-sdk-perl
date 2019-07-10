@@ -52,7 +52,7 @@ The name of the DB instance to disassociate the IAM role from.
 
 The name of the feature for the DB instance that the IAM role is to be
 disassociated from. For the list of supported feature names, see
-DBEngineVersion.
+C<DBEngineVersion>.
 
 
 

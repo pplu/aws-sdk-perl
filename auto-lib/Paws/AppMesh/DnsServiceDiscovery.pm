@@ -1,6 +1,6 @@
 package Paws::AppMesh::DnsServiceDiscovery;
   use Moose;
-  has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
+  has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -20,25 +20,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppMesh::DnsServiceDiscovery object:
 
-  $service_obj->Method(Att1 => { ServiceName => $value, ..., ServiceName => $value  });
+  $service_obj->Method(Att1 => { Hostname => $value, ..., Hostname => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::DnsServiceDiscovery object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ServiceName
+  $result->Att1->Hostname
 
 =head1 DESCRIPTION
 
-The DNS service discovery information for your virtual node.
+An object representing the DNS service discovery information for your
+virtual node.
 
 =head1 ATTRIBUTES
 
 
-=head2 ServiceName => Str
+=head2 B<REQUIRED> Hostname => Str
 
-  The DNS service name for your virtual node.
+  Specifies the DNS service discovery hostname for the virtual node.
 
 
 

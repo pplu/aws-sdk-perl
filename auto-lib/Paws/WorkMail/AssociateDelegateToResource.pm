@@ -57,7 +57,7 @@ The organization under which the resource exists.
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The resource for which members are associated.
+The resource for which members (users or groups) are associated.
 
 
 

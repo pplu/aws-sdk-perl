@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $lambda = Paws->service('Lambda');
     # To retrieve a Lambda function's event source mapping
     # This operation retrieves a Lambda function's event source mapping
-    my $EventSourceMappingConfiguration = $lambda->GetEventSourceMapping(
-      {
-        'UUID' => '123489-xxxxx-kdla8d89d7'
-      }
-    );
+    my $EventSourceMappingConfiguration =
+      $lambda->GetEventSourceMapping( 'UUID' => '123489-xxxxx-kdla8d89d7' );
 
     # Results:
     my $BatchSize      = $EventSourceMappingConfiguration->BatchSize;

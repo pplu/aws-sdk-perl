@@ -34,10 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Auto Scaling group.
     my $DescribeNotificationConfigurationsAnswer =
       $autoscaling->DescribeNotificationConfigurations(
-      {
-        'AutoScalingGroupNames' => ['my-auto-scaling-group']
-      }
-      );
+      'AutoScalingGroupNames' => ['my-auto-scaling-group'] );
 
     # Results:
     my $NotificationConfigurations =
@@ -60,7 +57,7 @@ The name of the Auto Scaling group.
 =head2 MaxRecords => Int
 
 The maximum number of items to return with this call. The default value
-is 50 and the maximum value is 100.
+is C<50> and the maximum value is C<100>.
 
 
 

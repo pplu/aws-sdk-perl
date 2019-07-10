@@ -17,6 +17,7 @@ package Paws::StorageGateway::NFSFileShareInfo;
   has RequesterPays => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str');
   has Squash => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +37,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::NFSFileShareInfo object:
 
-  $service_obj->Method(Att1 => { ClientList => $value, ..., Squash => $value  });
+  $service_obj->Method(Att1 => { ClientList => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -133,9 +134,15 @@ if the write status is read-only, and otherwise false.
 
 =head2 RequesterPays => Bool
 
-  A value that sets the access control list permission for objects in the
-Amazon S3 bucket that a file gateway puts objects into. The default
-value is C<private>.
+  A value that sets who pays the cost of the request and the cost
+associated with data download from the S3 bucket. If this value is set
+to true, the requester pays the costs. Otherwise the S3 bucket owner
+pays. However, the S3 bucket owner always pays the cost of storing
+data.
+
+C<RequesterPays> is a configuration for the S3 bucket that backs the
+file share, so make sure that the configuration on the file share is
+the same as the S3 bucket configuration.
 
 
 =head2 Role => Str
@@ -146,6 +153,14 @@ value is C<private>.
 =head2 Squash => Str
 
   
+
+
+=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+
+  A list of up to 50 tags assigned to the NFS file share, sorted
+alphabetically by key name. Each tag is a key-value pair. For a gateway
+with more than 10 tags assigned, you can view all tags using the
+C<ListTagsForResource> API operation.
 
 
 

@@ -5,6 +5,7 @@ package Paws::JsonParamsService::Method1;
 
   has response => (isa => 'Str', is => 'ro', required => 1);
   has status => (isa => 'Int', is => 'ro', default => 200);
+  has dup_requestid => (isa => 'Bool', is => 'ro', default => 0);
 
   use MooseX::ClassAttribute;
 

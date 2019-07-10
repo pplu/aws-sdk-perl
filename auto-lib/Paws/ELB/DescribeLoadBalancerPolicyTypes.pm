@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the specified load balancer policy type.
     my $DescribeLoadBalancerPolicyTypesOutput =
       $elasticloadbalancing->DescribeLoadBalancerPolicyTypes(
-      {
-        'PolicyTypeNames' => ['ProxyProtocolPolicyType']
-      }
-      );
+      'PolicyTypeNames' => ['ProxyProtocolPolicyType'] );
 
     # Results:
     my $PolicyTypeDescriptions =

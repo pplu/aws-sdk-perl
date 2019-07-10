@@ -3,7 +3,7 @@ package Paws::Pinpoint::CampaignEmailMessage;
   has Body => (is => 'ro', isa => 'Str');
   has FromAddress => (is => 'ro', isa => 'Str');
   has HtmlBody => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str');
+  has Title => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -34,30 +34,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-The email message configuration.
+Specifies the content and "From" address for an email message that's
+sent to recipients of a campaign.
 
 =head1 ATTRIBUTES
 
 
 =head2 Body => Str
 
-  The email text body.
+  The body of the email for recipients whose email clients don't support
+HTML content.
 
 
 =head2 FromAddress => Str
 
-  The email address used to send the email from. Defaults to use
-FromAddress specified in the Email Channel.
+  The verified email address to send the email from. The default address
+is the FromAddress specified for the email channel for the application.
 
 
 =head2 HtmlBody => Str
 
-  The email html body.
+  The body of the email, in HTML format, for recipients whose email
+clients support HTML content.
 
 
-=head2 Title => Str
+=head2 B<REQUIRED> Title => Str
 
-  The email title (Or subject).
+  The subject line, or title, of the email.
 
 
 

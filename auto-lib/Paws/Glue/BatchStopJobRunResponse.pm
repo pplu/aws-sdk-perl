@@ -17,9 +17,9 @@ Paws::Glue::BatchStopJobRunResponse
 
 =head2 Errors => ArrayRef[L<Paws::Glue::BatchStopJobRunError>]
 
-A list of the errors that were encountered in tryng to stop JobRuns,
-including the JobRunId for which each error was encountered and details
-about the error.
+A list of the errors that were encountered in trying to stop
+C<JobRuns>, including the C<JobRunId> for which each error was
+encountered and details about the error.
 
 
 =head2 SuccessfulSubmissions => ArrayRef[L<Paws::Glue::BatchStopJobRunSuccessfulSubmission>]

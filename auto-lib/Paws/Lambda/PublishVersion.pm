@@ -34,11 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To publish a version of a Lambda function
     # This operation publishes a version of a Lambda function
     my $FunctionConfiguration = $lambda->PublishVersion(
-      {
-        'CodeSha256'   => '',
-        'Description'  => '',
-        'FunctionName' => 'myFunction'
-      }
+      'CodeSha256'   => '',
+      'Description'  => '',
+      'FunctionName' => 'myFunction'
     );
 
     # Results:
@@ -66,23 +64,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 CodeSha256 => Str
 
-Only publish a version if the hash matches the value specified. Use
-this option to avoid publishing a version if the function code has
-changed since you last updated it. You can get the hash for the version
-you uploaded from the output of UpdateFunctionCode.
+Only publish a version if the hash value matches the value that's
+specified. Use this option to avoid publishing a version if the
+function code has changed since you last updated it. You can get the
+hash for the version that you uploaded from the output of
+UpdateFunctionCode.
 
 
 
 =head2 Description => Str
 
-Specify a description for the version to override the description in
-the function configuration.
+A description for the version to override the description in the
+function configuration.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 
@@ -110,9 +109,9 @@ the function name, it is limited to 64 characters in length.
 
 =head2 RevisionId => Str
 
-Only update the function if the revision ID matches the ID specified.
-Use this option to avoid publishing a version if the function
-configuration has changed since you last updated it.
+Only update the function if the revision ID matches the ID that's
+specified. Use this option to avoid publishing a version if the
+function configuration has changed since you last updated it.
 
 
 

@@ -31,12 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To detect faces in an image
     # This operation detects faces in an image stored in an AWS S3 bucket.
     my $DetectFacesResponse = $rekognition->DetectFaces(
-      {
-        'Image' => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'myphoto'
-          }
+      'Image' => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'myphoto'
         }
       }
     );
@@ -74,6 +72,10 @@ attributes).
 The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 image bytes is not supported.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
 
 
 

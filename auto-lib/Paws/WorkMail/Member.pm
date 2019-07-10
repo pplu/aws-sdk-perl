@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkMail::M
 
 =head1 DESCRIPTION
 
-The representation of a group member (user or group).
+The representation of a user or group.
 
 =head1 ATTRIBUTES
 

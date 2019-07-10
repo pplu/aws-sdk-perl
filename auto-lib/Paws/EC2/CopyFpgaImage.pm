@@ -90,7 +90,7 @@ The ID of the source AFI.
 
 =head2 B<REQUIRED> SourceRegion => Str
 
-The region that contains the source AFI.
+The Region that contains the source AFI.
 
 
 

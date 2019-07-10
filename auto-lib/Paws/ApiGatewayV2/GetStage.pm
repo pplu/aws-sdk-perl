@@ -46,6 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RouteSettings        = $GetStageResponse->RouteSettings;
     my $StageName            = $GetStageResponse->StageName;
     my $StageVariables       = $GetStageResponse->StageVariables;
+    my $Tags                 = $GetStageResponse->Tags;
 
     # Returns a L<Paws::ApiGatewayV2::GetStageResponse> object.
 

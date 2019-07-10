@@ -55,41 +55,47 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Location       => {
                 City       => 'My__string',
                 Country    => 'My__string',
-                Latitude   => 1,
-                Longitude  => 1,
+                Latitude   => 1,              # OPTIONAL
+                Longitude  => 1,              # OPTIONAL
                 PostalCode => 'My__string',
                 Region     => 'My__string',
               },    # OPTIONAL
-              Metrics   => { 'My__string' => 1, },    # OPTIONAL
+              Metrics => {
+                'My__string' => 1,    # , value: OPTIONAL
+              },    # OPTIONAL
               OptOut    => 'My__string',
               RequestId => 'My__string',
               User      => {
                 UserAttributes => { 'My__string' => [ 'My__string', ... ], }
-                ,                                     # OPTIONAL
+                ,    # OPTIONAL
                 UserId => 'My__string',
               },    # OPTIONAL
-            },    # OPTIONAL
+            },
             Events => {
               'My__string' => {
+                EventType      => 'My__string',
+                Timestamp      => 'My__string',
                 AppPackageName => 'My__string',
                 AppTitle       => 'My__string',
                 AppVersionCode => 'My__string',
                 Attributes     => { 'My__string' => 'My__string', },  # OPTIONAL
                 ClientSdkVersion => 'My__string',
-                EventType        => 'My__string',
-                Metrics          => { 'My__string' => 1, },           # OPTIONAL
-                SdkName          => 'My__string',
-                Session          => {
-                  Duration       => 1,                                # OPTIONAL
+                Metrics          => {
+                  'My__string' => 1,    # , value: OPTIONAL
+                },    # OPTIONAL
+                SdkName => 'My__string',
+                Session => {
                   Id             => 'My__string',
                   StartTimestamp => 'My__string',
+                  Duration       => 1,              # OPTIONAL
                   StopTimestamp  => 'My__string',
                 },    # OPTIONAL
-                Timestamp => 'My__string',
               },
-            },    # OPTIONAL
+            },
+
           },
-        },    # OPTIONAL
+        },
+
       },
 
     );
@@ -107,7 +113,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 

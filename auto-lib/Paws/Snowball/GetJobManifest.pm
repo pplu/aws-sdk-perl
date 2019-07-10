@@ -47,10 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The credentials of a given job, including its manifest file and unlock
    # code, expire 90 days after the job is created.
     my $GetJobManifestResult = $snowball->GetJobManifest(
-      {
-        'JobId' => 'JID123e4567-e89b-12d3-a456-426655440000'
-      }
-    );
+      'JobId' => 'JID123e4567-e89b-12d3-a456-426655440000' );
 
     # Results:
     my $ManifestURI = $GetJobManifestResult->ManifestURI;

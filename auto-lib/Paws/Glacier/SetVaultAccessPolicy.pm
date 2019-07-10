@@ -33,14 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To set the access-policy on a vault
     # The example configures an access policy for the vault named examplevault.
     $glacier->SetVaultAccessPolicy(
-      {
-        'AccountId' => '-',
-        'Policy'    => {
-          'Policy' =>
+      'AccountId' => '-',
+      'Policy'    => {
+        'Policy' =>
 '{"Version":"2012-10-17","Statement":[{"Sid":"Define-owner-access-rights","Effect":"Allow","Principal":{"AWS":"arn:aws:iam::999999999999:root"},"Action":"glacier:DeleteArchive","Resource":"arn:aws:glacier:us-west-2:999999999999:vaults/examplevault"}]}'
-        },
-        'VaultName' => 'examplevault'
-      }
+      },
+      'VaultName' => 'examplevault'
     );
 
 
@@ -54,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gla
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon S3 Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens ('-') in the ID.
 

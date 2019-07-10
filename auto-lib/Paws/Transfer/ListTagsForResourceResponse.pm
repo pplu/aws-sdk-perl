@@ -23,7 +23,10 @@ This value is the ARN you specified to list the tags of.
 
 =head2 NextToken => Str
 
-
+When you can get additional results from the C<ListTagsForResource>
+call, a C<NextToken> parameter is returned in the output. You can then
+pass in a subsequent command the C<NextToken> parameter to continue
+listing additional tags.
 
 
 =head2 Tags => ArrayRef[L<Paws::Transfer::Tag>]

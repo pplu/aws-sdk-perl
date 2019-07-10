@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 Contains the details of an Amazon RDS DB cluster parameter group.
 
 This data type is used as a response element in the
-DescribeDBClusterParameterGroups action.
+C<DescribeDBClusterParameterGroups> action.
 
 =head1 ATTRIBUTES
 

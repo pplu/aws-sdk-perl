@@ -73,12 +73,12 @@ Automation execution.
 
 =head2 CurrentAction => Str
 
-  The action of the currently executing step.
+  The action of the step that is currently running.
 
 
 =head2 CurrentStepName => Str
 
-  The name of the currently executing step.
+  The name of the step that is currently running.
 
 
 =head2 DocumentName => Str
@@ -93,7 +93,7 @@ Automation execution.
 
 =head2 ExecutedBy => Str
 
-  The Amazon Resource Name (ARN) of the user who executed the automation.
+  The Amazon Resource Name (ARN) of the user who ran the automation.
 
 
 =head2 ExecutionEndTime => Str
@@ -158,8 +158,8 @@ for a multi-Region and multi-account Automation execution.
 =head2 StepExecutions => ArrayRef[L<Paws::SSM::StepExecution>]
 
   A list of details about the current state of all steps that comprise an
-execution. An Automation document contains a list of steps that are
-executed in order.
+execution. An Automation document contains a list of steps that are run
+in order.
 
 
 =head2 StepExecutionsTruncated => Bool
@@ -178,7 +178,7 @@ step executions.
 =head2 TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]
 
   The combination of AWS Regions and/or AWS accounts where you want to
-execute the Automation.
+run the Automation.
 
 
 =head2 TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]

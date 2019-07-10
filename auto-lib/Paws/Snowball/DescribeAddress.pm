@@ -30,10 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe an address for a job
     # This operation describes an address for a job.
     my $DescribeAddressResult = $snowball->DescribeAddress(
-      {
-        'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b'
-      }
-    );
+      'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b' );
 
     # Results:
     my $Address = $DescribeAddressResult->Address;

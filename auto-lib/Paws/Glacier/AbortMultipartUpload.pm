@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example deletes an in-progress multipart upload to a vault named
     # my-vault:
     $glacier->AbortMultipartUpload(
-      {
-        'AccountId' => '-',
-        'UploadId' =>
+      'AccountId' => '-',
+      'UploadId' =>
 '19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',
-        'VaultName' => 'my-vault'
-      }
+      'VaultName' => 'my-vault'
     );
 
 
@@ -53,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gla
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon S3 Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens ('-') in the ID.
 

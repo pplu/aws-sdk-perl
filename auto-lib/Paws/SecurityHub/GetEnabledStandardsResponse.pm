@@ -23,7 +23,8 @@ The token that is required for pagination.
 
 =head2 StandardsSubscriptions => ArrayRef[L<Paws::SecurityHub::StandardsSubscription>]
 
-The standards subscription details returned by the operation.
+A list of C<StandardsSubscriptions> objects that include information
+about the enabled standards.
 
 
 =head2 _request_id => Str

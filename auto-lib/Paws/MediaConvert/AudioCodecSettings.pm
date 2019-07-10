@@ -50,37 +50,49 @@ AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings
 
 =head2 AacSettings => L<Paws::MediaConvert::AacSettings>
 
-  
+  Required when you set (Codec) under
+(AudioDescriptions)E<gt>(CodecSettings) to the value AAC. The service
+accepts one of two mutually exclusive groups of AAC settings--VBR and
+CBR. To select one of these modes, set the value of Bitrate control
+mode (rateControlMode) to "VBR" or "CBR". In VBR mode, you control the
+audio quality with the setting VBR quality (vbrQuality). In CBR mode,
+you use the setting Bitrate (bitrate). Defaults and valid values depend
+on the rate control mode.
 
 
 =head2 Ac3Settings => L<Paws::MediaConvert::Ac3Settings>
 
-  
+  Required when you set (Codec) under
+(AudioDescriptions)E<gt>(CodecSettings) to the value AC3.
 
 
 =head2 AiffSettings => L<Paws::MediaConvert::AiffSettings>
 
-  
+  Required when you set (Codec) under
+(AudioDescriptions)E<gt>(CodecSettings) to the value AIFF.
 
 
 =head2 Codec => Str
 
-  
+  Type of Audio codec.
 
 
 =head2 Eac3Settings => L<Paws::MediaConvert::Eac3Settings>
 
-  
+  Required when you set (Codec) under
+(AudioDescriptions)E<gt>(CodecSettings) to the value EAC3.
 
 
 =head2 Mp2Settings => L<Paws::MediaConvert::Mp2Settings>
 
-  
+  Required when you set (Codec) under
+(AudioDescriptions)E<gt>(CodecSettings) to the value MP2.
 
 
 =head2 WavSettings => L<Paws::MediaConvert::WavSettings>
 
-  
+  Required when you set (Codec) under
+(AudioDescriptions)E<gt>(CodecSettings) to the value WAV.
 
 
 

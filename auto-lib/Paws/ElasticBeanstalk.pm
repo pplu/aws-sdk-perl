@@ -400,7 +400,7 @@ B<Endpoints>
 
 For a list of region-specific endpoints that AWS Elastic Beanstalk
 supports, go to Regions and Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
+(https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
 in the I<Amazon Web Services Glossary>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01>
@@ -488,7 +488,7 @@ specify application source bundles for each of the environments to
 create or update. The name of each environment and other required
 information must be included in the source bundles in an environment
 manifest named C<env.yaml>. See Compose Environments
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html)
 for details.
 
 
@@ -501,6 +501,8 @@ for details.
 =item [Description => Str]
 
 =item [ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>]
+
+=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
 
 
 =back
@@ -532,6 +534,8 @@ C<default> and no application versions.
 =item [SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>]
 
 =item [SourceBundle => L<Paws::ElasticBeanstalk::S3Location>]
+
+=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
 
 
 =back
@@ -581,6 +585,8 @@ attempt to launch an environment from the application version.
 =item [SolutionStackName => Str]
 
 =item [SourceConfiguration => L<Paws::ElasticBeanstalk::SourceConfiguration>]
+
+=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
 
 
 =back
@@ -670,6 +676,8 @@ specified configuration.
 =item [EnvironmentName => Str]
 
 =item [OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]]
+
+=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
 
 
 =back
@@ -1115,7 +1123,7 @@ Returns: a L<Paws::ElasticBeanstalk::DescribeInstancesHealthResult> instance
 Retrieves detailed information about the health of instances in your
 AWS Elastic Beanstalk. This operation requires enhanced health
 reporting
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
 
 
 =head2 DescribePlatformVersion
@@ -1190,7 +1198,7 @@ response contains a list of tag key-value pairs.
 Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
 environments. For details about environment tagging, see Tagging
 Resources in Your Elastic Beanstalk Environment
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
 
 
 =head2 RebuildEnvironment
@@ -1527,7 +1535,7 @@ C<TagsToRemove>.
 Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
 environments. For details about environment tagging, see Tagging
 Resources in Your Elastic Beanstalk Environment
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
 
 If you create a custom IAM user policy to control permission to this
 operation, specify one of the following two virtual actions (or both)
@@ -1549,7 +1557,7 @@ tag keys to remove in the C<TagsToRemove> parameter.
 
 For details about creating a custom user policy, see Creating a Custom
 User Policy
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies).
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies).
 
 
 =head2 ValidateConfigurationSettings

@@ -37,10 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # the specified time.
     my $DescribeSpotFleetRequestHistoryResponse =
       $ec2->DescribeSpotFleetRequestHistory(
-      {
-        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
-        'StartTime'          => '2015-05-26T00:00:00Z'
-      }
+      'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',
+      'StartTime'          => '2015-05-26T00:00:00Z'
       );
 
     # Results:
@@ -72,7 +70,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The type of events to describe. By default, all events are described.
 
-Valid values are: C<"instanceChange">, C<"fleetRequestChange">, C<"error">
+Valid values are: C<"instanceChange">, C<"fleetRequestChange">, C<"error">, C<"information">
 
 =head2 MaxResults => Int
 

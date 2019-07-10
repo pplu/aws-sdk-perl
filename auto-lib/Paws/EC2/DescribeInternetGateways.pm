@@ -4,6 +4,8 @@ package Paws::EC2::DescribeInternetGateways;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has InternetGatewayIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'internetGatewayId' );
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -32,15 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe the Internet gateway for a VPC
     # This example describes the Internet gateway for the specified VPC.
     my $DescribeInternetGatewaysResult = $ec2->DescribeInternetGateways(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'attachment.vpc-id',
-            'Values' => ['vpc-a01106c2']
-          }
-        ]
-      }
+        {
+          'Name'   => 'attachment.vpc-id',
+          'Values' => ['vpc-a01106c2']
+        }
+      ]
     );
 
     # Results:
@@ -110,6 +110,20 @@ the tag value.
 One or more internet gateway IDs.
 
 Default: Describes all your internet gateways.
+
+
+
+=head2 MaxResults => Int
+
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
+
+
+
+=head2 NextToken => Str
+
+The token for the next page of results.
 
 
 

@@ -50,10 +50,15 @@ package Paws::CostExplorer;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetUsageForecast {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetUsageForecast', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/GetCostAndUsage GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetTags / }
+  sub operations { qw/GetCostAndUsage GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetTags GetUsageForecast / }
 
 1;
 
@@ -112,6 +117,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing
 
 =over
 
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
 =item [Filter => L<Paws::CostExplorer::Expression>]
 
 =item [Granularity => Str]
@@ -121,8 +128,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing
 =item [Metrics => ArrayRef[Str|Undef]]
 
 =item [NextPageToken => Str]
-
-=item [TimePeriod => L<Paws::CostExplorer::DateInterval>]
 
 
 =back
@@ -381,6 +386,32 @@ Returns: a L<Paws::CostExplorer::GetTagsResponse> instance
 
 Queries for available tag keys and tag values for a specified period.
 You can search the tag values for an arbitrary string.
+
+
+=head2 GetUsageForecast
+
+=over
+
+=item Granularity => Str
+
+=item Metric => Str
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [PredictionIntervalLevel => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetUsageForecast>
+
+Returns: a L<Paws::CostExplorer::GetUsageForecastResponse> instance
+
+Retrieves a forecast for how much Amazon Web Services predicts that you
+will use over the forecast time period that you select, based on your
+past usage.
 
 
 

@@ -33,14 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 # To configure a vault to post a message to an Amazon SNS topic when jobs complete
 # The example sets the examplevault notification configuration.
     $glacier->SetVaultNotifications(
-      {
-        'AccountId'               => '-',
-        'VaultName'               => 'examplevault',
-        'VaultNotificationConfig' => {
-          'Events' =>
-            [ 'ArchiveRetrievalCompleted', 'InventoryRetrievalCompleted' ],
-          'SNSTopic' => 'arn:aws:sns:us-west-2:012345678901:mytopic'
-        }
+      'AccountId'               => '-',
+      'VaultName'               => 'examplevault',
+      'VaultNotificationConfig' => {
+        'Events' =>
+          [ 'ArchiveRetrievalCompleted', 'InventoryRetrievalCompleted' ],
+        'SNSTopic' => 'arn:aws:sns:us-west-2:012345678901:mytopic'
       }
     );
 
@@ -55,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gla
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon S3 Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens ('-') in the ID.
 

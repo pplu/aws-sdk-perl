@@ -44,7 +44,7 @@ Details regarding output
 
 =head2 VideoDetails => L<Paws::MediaConvert::VideoDetail>
 
-  
+  Contains details about the output's video stream
 
 
 

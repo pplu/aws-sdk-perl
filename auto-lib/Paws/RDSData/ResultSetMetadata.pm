@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDSData::Re
 
 =head1 DESCRIPTION
 
-List of columns and their types.
+The metadata of the result set returned by a SQL statement.
 
 =head1 ATTRIBUTES
 
 
 =head2 ColumnCount => Int
 
-  Number of columns
+  The number of columns in the result set.
 
 
 =head2 ColumnMetadata => ArrayRef[L<Paws::RDSData::ColumnMetadata>]
 
-  List of columns and their types
+  The metadata of the columns in the result set.
 
 
 

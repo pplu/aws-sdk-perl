@@ -29,12 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $devicefarm = Paws->service('DeviceFarm');
     # To get information about a specific upload
     # The following example gets information about a specific upload.
-    my $GetUploadResult = $devicefarm->GetUpload(
-      {
-        'Arn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456'
-      }
-    );
+    my $GetUploadResult =
+      $devicefarm->GetUpload( 'Arn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456'
+      );
 
     # Results:
     my $upload = $GetUploadResult->upload;

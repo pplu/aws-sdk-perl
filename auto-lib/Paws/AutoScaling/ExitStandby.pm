@@ -31,10 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To move instances out of standby mode
     # This example moves the specified instance out of standby mode.
     my $ExitStandbyAnswer = $autoscaling->ExitStandby(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'InstanceIds'          => ['i-93633f9b']
-      }
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'InstanceIds'          => ['i-93633f9b']
     );
 
     # Results:

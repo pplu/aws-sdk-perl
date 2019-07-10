@@ -129,7 +129,9 @@ The version of the associated API documentation.
 
 =head2 B<REQUIRED> StageName => Str
 
-[Required] The name for the Stage resource.
+[Required] The name for the Stage resource. Stage names can only
+contain alphanumeric characters, hyphens, and underscores. Maximum
+length is 128 characters.
 
 
 

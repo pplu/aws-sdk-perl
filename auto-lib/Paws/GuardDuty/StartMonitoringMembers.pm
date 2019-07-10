@@ -30,8 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $StartMonitoringMembersResponse = $guardduty->StartMonitoringMembers(
-      AccountIds => [ 'My__string', ... ],
-      DetectorId => 'My__string',
+      AccountIds => [
+        'MyAccountId', ...    # min: 12, max: 12
+      ],
+      DetectorId => 'MyDetectorId',
 
     );
 

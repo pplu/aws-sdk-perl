@@ -3,6 +3,8 @@ package Paws::EC2::DescribeVpcs;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
   has VpcIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'VpcId' );
 
   use MooseX::ClassAttribute;
@@ -31,11 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To describe a VPC
     # This example describes the specified VPC.
-    my $DescribeVpcsResult = $ec2->DescribeVpcs(
-      {
-        'VpcIds' => ['vpc-a01106c2']
-      }
-    );
+    my $DescribeVpcsResult = $ec2->DescribeVpcs( 'VpcIds' => ['vpc-a01106c2'] );
 
     # Results:
     my $Vpcs = $DescribeVpcsResult->Vpcs;
@@ -136,6 +134,20 @@ C<vpc-id> - The ID of the VPC.
 
 =back
 
+
+
+
+=head2 MaxResults => Int
+
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
+
+
+
+=head2 NextToken => Str
+
+The token for the next page of results.
 
 
 

@@ -3,7 +3,7 @@ package Paws::Datasync::CreateLocationEfs;
   use Moose;
   has Ec2Config => (is => 'ro', isa => 'Paws::Datasync::Ec2Config', required => 1);
   has EfsFilesystemArn => (is => 'ro', isa => 'Str', required => 1);
-  has Subdirectory => (is => 'ro', isa => 'Str', required => 1);
+  has Subdirectory => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]');
 
   use MooseX::ClassAttribute;
@@ -39,14 +39,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },
       EfsFilesystemArn => 'MyEfsFilesystemArn',
-      Subdirectory     => 'MySubdirectory',
+      Subdirectory     => 'MySubdirectory',       # OPTIONAL
       Tags             => [
         {
-          Key   => 'MyTagKey',            # min: 1, max: 256; OPTIONAL
-          Value => 'MyTagValue',          # min: 1, max: 256; OPTIONAL
+          Key   => 'MyTagKey',                    # min: 1, max: 256
+          Value => 'MyTagValue',                  # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                  # OPTIONAL
+      ],                                          # OPTIONAL
     );
 
     # Results:
@@ -62,7 +62,37 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 
 =head2 B<REQUIRED> Ec2Config => L<Paws::Datasync::Ec2Config>
 
-The subnet and security group that the Amazon EFS file system uses.
+The subnet and security group that the Amazon EFS file system uses. The
+security group that you provide needs to be able to communicate with
+the security group on the mount target in the subnet specified.
+
+The exact relationship between security group M (of the mount target)
+and security group S (which you provide for DataSync to use at this
+stage) is as follows:
+
+=over
+
+=item *
+
+Security group M (which you associate with the mount target) must allow
+inbound access for the Transmission Control Protocol (TCP) on the NFS
+port (2049) from security group S. You can enable inbound connections
+either by IP address (CIDR range) or security group.
+
+=item *
+
+Security group S (provided to DataSync to access EFS) should have a
+rule that enables outbound connections to the NFS port on one of the
+file systemE<rsquo>s mount targets. You can enable outbound connections
+either by IP address (CIDR range) or security group.
+
+For information about security groups and mount targets, see
+"https://docs.aws.amazon.com/efs/latest/ug/security-considerations.html#network-access"
+(Security Groups for Amazon EC2 Instances and Mount Targets) in the
+I<Amazon EFS User Guide>.
+
+=back
+
 
 
 
@@ -72,7 +102,7 @@ The Amazon Resource Name (ARN) for the Amazon EFS file system.
 
 
 
-=head2 B<REQUIRED> Subdirectory => Str
+=head2 Subdirectory => Str
 
 A subdirectory in the locationE<rsquo>s path. This subdirectory in the
 EFS file system is used to read data from the EFS source location or

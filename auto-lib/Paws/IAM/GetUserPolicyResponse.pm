@@ -21,6 +21,11 @@ Paws::IAM::GetUserPolicyResponse
 
 The policy document.
 
+IAM stores policies in JSON format. However, resources that were
+created using AWS CloudFormation templates can be formatted in YAML.
+AWS CloudFormation always converts a YAML policy to JSON format before
+submitting it to IAM.
+
 
 =head2 B<REQUIRED> PolicyName => Str
 

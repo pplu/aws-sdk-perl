@@ -66,7 +66,7 @@ characters are allowed in this message.
 
 =head2 B<REQUIRED> Task => Str
 
-The task ID or full ARN entry of the task to stop.
+The task ID or full Amazon Resource Name (ARN) of the task to stop.
 
 
 

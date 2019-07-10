@@ -36,7 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-SMS Message.
+Specifies the default settings for a one-time SMS message that's sent
+directly to an endpoint.
 
 =head1 ATTRIBUTES
 
@@ -54,27 +55,31 @@ requested your dedicated number.
 
 =head2 MessageType => Str
 
-  Is this a transaction priority message or lower priority.
+  The SMS message type. Valid values are: TRANSACTIONAL, the message is
+critical or time-sensitive, such as a one-time password that supports a
+customer transaction; and, PROMOTIONAL, the message is not critical or
+time-sensitive, such as a marketing message.
 
 
 =head2 OriginationNumber => Str
 
-  The phone number that the SMS message originates from. Specify one of
+  The number that the SMS message originates from. This should be one of
 the dedicated long codes or short codes that you requested from AWS
-Support and that is assigned to your account. If this attribute is not
-specified, Amazon Pinpoint randomly assigns a long code.
+Support and is assigned to your AWS account. If you don't specify a
+long or short code, Amazon Pinpoint assigns a random long code to the
+SMS message.
 
 
 =head2 SenderId => Str
 
-  The sender ID that is shown as the message sender on the recipient's
+  The sender ID to display as the sender of the message on a recipient's
 device. Support for sender IDs varies by country or region.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
 
-  Default message substitutions. Can be overridden by individual address
-substitutions.
+  The message variables to use in the SMS message. You can override the
+default variables with individual address variables.
 
 
 

@@ -36,15 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-A resource data type that describes a resource to which the finding
-refers.
+A resource related to a finding.
 
 =head1 ATTRIBUTES
 
 
 =head2 Details => L<Paws::SecurityHub::ResourceDetails>
 
-  Provides additional details about the resource.
+  Additional details about the resource related to a finding.
 
 
 =head2 B<REQUIRED> Id => Str
@@ -54,12 +53,12 @@ refers.
 
 =head2 Partition => Str
 
-  The canonical AWS partition name to which the region is assigned.
+  The canonical AWS partition name that the Region is assigned to.
 
 
 =head2 Region => Str
 
-  The canonical AWS external region name where this resource is located.
+  The canonical AWS external Region name where this resource is located.
 
 
 =head2 Tags => L<Paws::SecurityHub::FieldMap>
@@ -70,7 +69,7 @@ was processed.
 
 =head2 B<REQUIRED> Type => Str
 
-  Specifies the type of the resource for which details are provided.
+  The type of the resource that details are provided for.
 
 
 

@@ -37,48 +37,52 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::M
 
 =head1 DESCRIPTION
 
-Message configuration for a campaign.
+Specifies the message configuration settings for a campaign.
 
 =head1 ATTRIBUTES
 
 
 =head2 ADMMessage => L<Paws::Pinpoint::Message>
 
-  The message that the campaign delivers to ADM channels. Overrides the
-default message.
+  The message that the campaign sends through the ADM (Amazon Device
+Messaging) channel. This message overrides the default message.
 
 
 =head2 APNSMessage => L<Paws::Pinpoint::Message>
 
-  The message that the campaign delivers to APNS channels. Overrides the
-default message.
+  The message that the campaign sends through the APNs (Apple Push
+Notification service) channel. This message overrides the default
+message.
 
 
 =head2 BaiduMessage => L<Paws::Pinpoint::Message>
 
-  The message that the campaign delivers to Baidu channels. Overrides the
-default message.
+  The message that the campaign sends through the Baidu (Baidu Cloud
+Push) channel. This message overrides the default message.
 
 
 =head2 DefaultMessage => L<Paws::Pinpoint::Message>
 
-  The default message for all channels.
+  The default message that the campaign sends through all the channels
+that are configured for the campaign.
 
 
 =head2 EmailMessage => L<Paws::Pinpoint::CampaignEmailMessage>
 
-  The email message configuration.
+  The message that the campaign sends through the email channel.
 
 
 =head2 GCMMessage => L<Paws::Pinpoint::Message>
 
-  The message that the campaign delivers to GCM channels. Overrides the
-default message.
+  The message that the campaign sends through the GCM channel, which
+enables Amazon Pinpoint to send push notifications through the Firebase
+Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service.
+This message overrides the default message.
 
 
 =head2 SMSMessage => L<Paws::Pinpoint::CampaignSmsMessage>
 
-  The SMS message configuration.
+  The message that the campaign sends through the SMS channel.
 
 
 

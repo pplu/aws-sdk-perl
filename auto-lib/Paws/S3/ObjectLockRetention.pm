@@ -44,7 +44,7 @@ A Retention configuration for an object.
 
 =head2 RetainUntilDate => Str
 
-  The date on which this Object Lock Retention will expire.
+  The date on which this object lock retention expires.
 
 
 

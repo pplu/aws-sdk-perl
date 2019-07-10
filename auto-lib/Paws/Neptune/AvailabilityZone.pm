@@ -31,18 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Neptune::Av
 
 =head1 DESCRIPTION
 
-Contains Availability Zone information.
-
-This data type is used as an element in the following data type:
-
-=over
-
-=item *
-
-OrderableDBInstanceOption
-
-=back
-
+Specifies an Availability Zone.
 
 =head1 ATTRIBUTES
 

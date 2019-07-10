@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # zone.
     my $UpdateGatewayInformationOutput =
       $storagegateway->UpdateGatewayInformation(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
-        'GatewayName'     => 'MyGateway2',
-        'GatewayTimezone' => 'GMT-12:00'
-      }
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+      'GatewayName'     => 'MyGateway2',
+      'GatewayTimezone' => 'GMT-12:00'
       );
 
     # Results:
@@ -68,7 +66,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =head2 GatewayTimezone => Str
 
-
+A value that indicates the time zone of the gateway.
 
 
 

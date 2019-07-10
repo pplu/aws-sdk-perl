@@ -128,14 +128,13 @@ connection information for players.
 
 =item *
 
-B<FAILED> -- The matchmaking request was not completed. Tickets with
-players who fail to accept a proposed match are placed in C<FAILED>
-status.
+B<FAILED> -- The matchmaking request was not completed.
 
 =item *
 
-B<CANCELLED> -- The matchmaking request was canceled with a call to
-StopMatchmaking.
+B<CANCELLED> -- The matchmaking request was canceled. This may be the
+result of a call to StopMatchmaking or a proposed match that one or
+more players failed to accept.
 
 =item *
 

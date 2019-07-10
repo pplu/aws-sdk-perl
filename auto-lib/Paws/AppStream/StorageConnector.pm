@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Describes a connector to enable persistent storage for users.
+Describes a connector that enables persistent storage for users.
 
 =head1 ATTRIBUTES
 

@@ -45,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MssPackage   = $DescribeOriginEndpointResponse->MssPackage;
     my $StartoverWindowSeconds =
       $DescribeOriginEndpointResponse->StartoverWindowSeconds;
+    my $Tags             = $DescribeOriginEndpointResponse->Tags;
     my $TimeDelaySeconds = $DescribeOriginEndpointResponse->TimeDelaySeconds;
     my $Url              = $DescribeOriginEndpointResponse->Url;
     my $Whitelist        = $DescribeOriginEndpointResponse->Whitelist;

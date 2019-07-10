@@ -33,27 +33,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIden
 
 =head1 DESCRIPTION
 
-A provider representing an Amazon Cognito Identity User Pool and its
-client ID.
+A provider representing an Amazon Cognito user pool and its client ID.
 
 =head1 ATTRIBUTES
 
 
 =head2 ClientId => Str
 
-  The client ID for the Amazon Cognito Identity User Pool.
+  The client ID for the Amazon Cognito user pool.
 
 
 =head2 ProviderName => Str
 
-  The provider name for an Amazon Cognito Identity User Pool. For
-example, C<cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789>.
+  The provider name for an Amazon Cognito user pool. For example,
+C<cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789>.
 
 
 =head2 ServerSideTokenCheck => Bool
 
   TRUE if server-side token validation is enabled for the identity
 providerE<rsquo>s token.
+
+Once you set C<ServerSideTokenCheck> to TRUE for an identity pool, that
+identity pool will check with the integrated user pools to make sure
+that the user has not been globally signed out or deleted before the
+identity pool provides an OIDC token or AWS credentials for the user.
+
+If the user is signed out or deleted, the identity pool will return a
+400 Not Authorized error.
 
 
 

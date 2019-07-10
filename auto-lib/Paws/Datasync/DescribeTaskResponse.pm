@@ -7,6 +7,7 @@ package Paws::Datasync::DescribeTaskResponse;
   has DestinationLocationArn => (is => 'ro', isa => 'Str');
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorDetail => (is => 'ro', isa => 'Str');
+  has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
   has Name => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
   has SourceLocationArn => (is => 'ro', isa => 'Str');
@@ -27,10 +28,12 @@ Paws::Datasync::DescribeTaskResponse
 =head2 CloudWatchLogGroupArn => Str
 
 The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
-was used to monitor and log events in the task. For more information on
-these groups, see Working with Log Groups and Log Streams
-(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html)
-in the I<Amazon CloudWatch User Guide.>
+was used to monitor and log events in the task.
+
+For more information on these groups, see
+"https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html"
+(Working with Log Groups and Log Streams) in the I<Amazon CloudWatch
+UserGuide>.
 
 
 =head2 CreationTime => Str
@@ -61,6 +64,14 @@ Detailed description of an error that was encountered during the task
 execution. You can use this information to help troubleshoot issues.
 
 
+=head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
+
+Specifies that the task excludes files in the transfer based on the
+specified pattern in the filter. Transfers all files in the
+taskE<rsquo>s subdirectory, except files that match the filter that is
+set.
+
+
 =head2 Name => Str
 
 The name of the task that was described.
@@ -85,9 +96,11 @@ The Amazon Resource Name (ARN) of the source file system's location.
 
 =head2 Status => Str
 
-The status of the task that was described. For detailed information
-about sync statuses, see Understanding Sync Task Statuses
-(https://docs.aws.amazon.com/sync-service/latest/userguide/understand-sync-task-statuses.html).
+The status of the task that was described.
+
+For detailed information about task execution statuses, see
+"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-tasks.html#understand-task-creation-statuses"
+(Understanding Task Statuses).
 
 Valid values are: C<"AVAILABLE">, C<"CREATING">, C<"RUNNING">, C<"UNAVAILABLE">
 =head2 TaskArn => Str

@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example deletes a scaling policy for the Amazon ECS service called
     # web-app, which is running in the default cluster.
     my $DeleteScalingPolicyResponse = $autoscaling->DeleteScalingPolicy(
-      {
-        'PolicyName'        => 'web-app-cpu-lt-25',
-        'ResourceId'        => 'service/default/web-app',
-        'ScalableDimension' => 'ecs:service:DesiredCount',
-        'ServiceNamespace'  => 'ecs'
-      }
+      'PolicyName'        => 'web-app-cpu-lt-25',
+      'ResourceId'        => 'service/default/web-app',
+      'ScalableDimension' => 'ecs:service:DesiredCount',
+      'ServiceNamespace'  => 'ecs'
     );
 
 
@@ -192,7 +190,7 @@ Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:Targe
 The namespace of the AWS service that provides the resource or
 C<custom-resource> for a resource provided by your own application or
 service. For more information, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
 Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">

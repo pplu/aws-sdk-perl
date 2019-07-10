@@ -56,12 +56,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       TablePrefix => 'MyTablePrefix',    # OPTIONAL
       Targets     => {
-        DynamoDBTargets => [
+        CatalogTargets => [
           {
-            Path => 'MyPath',            # OPTIONAL
+            DatabaseName => 'MyNameString',    # min: 1, max: 255
+            Tables       => [
+              'MyNameString', ...              # min: 1, max: 255
+            ],                                 # min: 1
+
           },
           ...
-        ],                               # OPTIONAL
+        ],                                     # OPTIONAL
+        DynamoDBTargets => [
+          {
+            Path => 'MyPath',                  # OPTIONAL
+          },
+          ...
+        ],                                     # OPTIONAL
         JdbcTargets => [
           {
             ConnectionName => 'MyConnectionName',    # OPTIONAL
@@ -101,17 +111,17 @@ classification.
 
 =head2 Configuration => Str
 
-Crawler configuration information. This versioned JSON string allows
-users to specify aspects of a crawler's behavior. For more information,
-see Configuring a Crawler
+The crawler configuration information. This versioned JSON string
+allows users to specify aspects of a crawler's behavior. For more
+information, see Configuring a Crawler
 (http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 
 
 
 =head2 CrawlerSecurityConfiguration => Str
 
-The name of the SecurityConfiguration structure to be used by this
-Crawler.
+The name of the C<SecurityConfiguration> structure to be used by this
+crawler.
 
 
 
@@ -136,24 +146,24 @@ Name of the new crawler.
 
 =head2 Role => Str
 
-The IAM role (or ARN of an IAM role) used by the new crawler to access
-customer resources.
+The IAM role or Amazon Resource Name (ARN) of an IAM role that is used
+by the new crawler to access customer resources.
 
 
 
 =head2 Schedule => Str
 
-A C<cron> expression used to specify the schedule (see Time-Based
-Schedules for Jobs and Crawlers
+A C<cron> expression used to specify the schedule. For more
+information, see Time-Based Schedules for Jobs and Crawlers
 (http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
-For example, to run something every day at 12:15 UTC, you would
-specify: C<cron(15 12 * * ? *)>.
+For example, to run something every day at 12:15 UTC, specify C<cron(15
+12 * * ? *)>.
 
 
 
 =head2 SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>
 
-Policy for the crawler's update and deletion behavior.
+The policy for the crawler's update and deletion behavior.
 
 
 

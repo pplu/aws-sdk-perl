@@ -1,9 +1,9 @@
 
 package Paws::PinpointEmail::GetDedicatedIps;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PageSize => (is => 'ro', isa => 'Int');
-  has PoolName => (is => 'ro', isa => 'Str');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
+  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'PageSize');
+  has PoolName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PoolName');
 
   use MooseX::ClassAttribute;
 

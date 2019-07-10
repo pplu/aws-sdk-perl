@@ -2,7 +2,7 @@ package Paws::MarketplaceMetering::UsageRecord;
   use Moose;
   has CustomerIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Dimension => (is => 'ro', isa => 'Str', required => 1);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  has Quantity => (is => 'ro', isa => 'Int');
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -56,18 +56,18 @@ eight dimensions are specified. These represent different units of
 value in your application.
 
 
-=head2 B<REQUIRED> Quantity => Int
+=head2 Quantity => Int
 
   The quantity of usage consumed by the customer for the given dimension
-and time.
+and time. Defaults to C<0> if not specified.
 
 
 =head2 B<REQUIRED> Timestamp => Str
 
-  Timestamp of the hour, recorded in UTC. The seconds and milliseconds
-portions of the timestamp will be ignored.
+  Timestamp, in UTC, for which the usage is being reported.
 
-Your application can meter usage for up to one hour in the past.
+Your application can meter usage for up to one hour in the past. Make
+sure the timestamp value is not before the start of the software usage.
 
 
 

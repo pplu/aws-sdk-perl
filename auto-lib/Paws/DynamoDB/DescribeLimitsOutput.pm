@@ -20,19 +20,19 @@ Paws::DynamoDB::DescribeLimitsOutput
 =head2 AccountMaxReadCapacityUnits => Int
 
 The maximum total read capacity units that your account allows you to
-provision across all of your tables in this region.
+provision across all of your tables in this Region.
 
 
 =head2 AccountMaxWriteCapacityUnits => Int
 
 The maximum total write capacity units that your account allows you to
-provision across all of your tables in this region.
+provision across all of your tables in this Region.
 
 
 =head2 TableMaxReadCapacityUnits => Int
 
 The maximum read capacity units that your account allows you to
-provision for a new table that you are creating in this region,
+provision for a new table that you are creating in this Region,
 including the read capacity units provisioned for its global secondary
 indexes (GSIs).
 
@@ -40,7 +40,7 @@ indexes (GSIs).
 =head2 TableMaxWriteCapacityUnits => Int
 
 The maximum write capacity units that your account allows you to
-provision for a new table that you are creating in this region,
+provision for a new table that you are creating in this Region,
 including the write capacity units provisioned for its global secondary
 indexes (GSIs).
 

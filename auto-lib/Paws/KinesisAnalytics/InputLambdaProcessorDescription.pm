@@ -33,18 +33,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 An object that contains the Amazon Resource Name (ARN) of the AWS
-Lambda (https://aws.amazon.com/documentation/lambda/) function that is
-used to preprocess records in the stream, and the ARN of the IAM role
-that is used to access the AWS Lambda expression.
+Lambda (https://docs.aws.amazon.com/lambda/) function that is used to
+preprocess records in the stream, and the ARN of the IAM role that is
+used to access the AWS Lambda expression.
 
 =head1 ATTRIBUTES
 
 
 =head2 ResourceARN => Str
 
-  The ARN of the AWS Lambda
-(https://aws.amazon.com/documentation/lambda/) function that is used to
-preprocess the records in the stream.
+  The ARN of the AWS Lambda (https://docs.aws.amazon.com/lambda/)
+function that is used to preprocess the records in the stream.
 
 
 =head2 RoleARN => Str

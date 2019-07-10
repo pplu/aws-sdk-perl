@@ -33,20 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example associates the specified DHCP options set with the specified
     # VPC.
     $ec2->AssociateDhcpOptions(
-      {
-        'DhcpOptionsId' => 'dopt-d9070ebb',
-        'VpcId'         => 'vpc-a01106c2'
-      }
+      'DhcpOptionsId' => 'dopt-d9070ebb',
+      'VpcId'         => 'vpc-a01106c2'
     );
 
     # To associate the default DHCP options set with a VPC
     # This example associates the default DHCP options set with the specified
     # VPC.
     $ec2->AssociateDhcpOptions(
-      {
-        'DhcpOptionsId' => 'default',
-        'VpcId'         => 'vpc-a01106c2'
-      }
+      'DhcpOptionsId' => 'default',
+      'VpcId'         => 'vpc-a01106c2'
     );
 
 

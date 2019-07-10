@@ -61,7 +61,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =head2 FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>
 
-Describes the time stamp range and time stamp origin for the range of
+Describes the timestamp range and timestamp origin for the range of
 fragments to return.
 
 

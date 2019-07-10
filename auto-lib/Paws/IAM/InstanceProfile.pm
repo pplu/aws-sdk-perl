@@ -70,7 +70,7 @@ ListInstanceProfilesForRole
   The Amazon Resource Name (ARN) specifying the instance profile. For
 more information about ARNs and how to use them in policies, see IAM
 Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 
@@ -83,7 +83,7 @@ in the I<Using IAM> guide.
 
   The stable and unique string identifying the instance profile. For more
 information about IDs, see IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 
@@ -96,7 +96,7 @@ in the I<Using IAM> guide.
 
   The path to the instance profile. For more information about paths, see
 IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 

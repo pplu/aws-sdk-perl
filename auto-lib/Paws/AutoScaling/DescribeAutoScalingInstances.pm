@@ -32,10 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe one or more Auto Scaling instances
     # This example describes the specified Auto Scaling instance.
     my $AutoScalingInstancesType = $autoscaling->DescribeAutoScalingInstances(
-      {
-        'InstanceIds' => ['i-4ba0837f']
-      }
-    );
+      'InstanceIds' => ['i-4ba0837f'] );
 
     # Results:
     my $AutoScalingInstances = $AutoScalingInstancesType->AutoScalingInstances;
@@ -59,7 +56,7 @@ you specify an ID that does not exist, it is ignored with no error.
 =head2 MaxRecords => Int
 
 The maximum number of items to return with this call. The default value
-is 50 and the maximum value is 50.
+is C<50> and the maximum value is C<50>.
 
 
 

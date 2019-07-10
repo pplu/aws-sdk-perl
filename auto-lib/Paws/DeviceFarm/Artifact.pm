@@ -159,7 +159,7 @@ APPLICATION_CRASH_REPORT: The application crash report output type.
 
 =item *
 
-XCTEST_LOG: The XCode test output type.
+XCTEST_LOG: The Xcode test output type.
 
 =item *
 

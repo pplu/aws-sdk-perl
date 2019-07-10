@@ -31,11 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To update the description of a customer master key (CMK)
     # The following example updates the description of the specified CMK.
     $kms->UpdateKeyDescription(
-      {
-        'Description' =>
-          'Example description that indicates the intended use of this CMK.',
-        'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
-      }
+      'Description' =>
+        'Example description that indicates the intended use of this CMK.',
+      'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
     );
 
 

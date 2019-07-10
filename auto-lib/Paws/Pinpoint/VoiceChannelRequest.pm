@@ -31,14 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::V
 
 =head1 DESCRIPTION
 
-Voice Channel Request
+Specifies the status and settings of the voice channel for an
+application.
 
 =head1 ATTRIBUTES
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether to enable the voice channel for the application.
 
 
 

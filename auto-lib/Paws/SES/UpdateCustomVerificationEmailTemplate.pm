@@ -73,7 +73,7 @@ The content of the custom verification email. The total size of the
 email must be less than 10 MB. The message body may contain HTML, with
 some limitations. For more information, see Custom Verification Email
 Frequently Asked Questions
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq)
 in the I<Amazon SES Developer Guide>.
 
 

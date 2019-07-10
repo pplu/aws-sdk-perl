@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Event 
 
 =head1 DESCRIPTION
 
-This data type is used as a response element in the DescribeEvents
+This data type is used as a response element in the C<DescribeEvents>
 action.
 
 =head1 ATTRIBUTES

@@ -2,6 +2,7 @@ package Paws::MediaPackage::ChannelCreateParameters;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaPackage::ChannelCreateParameters object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., Id => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,6 +47,11 @@ Configuration parameters for a new Channel.
 
   The ID of the Channel. The ID must be unique within the region and it
 cannot be changed after a Channel is created.
+
+
+=head2 Tags => L<Paws::MediaPackage::Tags>
+
+  
 
 
 

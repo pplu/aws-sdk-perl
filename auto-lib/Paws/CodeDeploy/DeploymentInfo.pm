@@ -92,8 +92,8 @@ the deployment.
 
 =head2 ComputePlatform => Str
 
-  The destination platform type for the deployment (C<Lambda> or
-C<Server>).
+  The destination platform type for the deployment (C<Lambda>, C<Server>,
+or C<ECS>).
 
 
 =head2 CreateTime => Str
@@ -194,15 +194,32 @@ used as part of the new deployment.
 
 =head2 IgnoreApplicationStopFailures => Bool
 
-  If true, then if the deployment causes the ApplicationStop deployment
-lifecycle event to an instance to fail, the deployment to that instance
-is not considered to have failed at that point and continues on to the
-BeforeInstall deployment lifecycle event.
+  If true, then if an C<ApplicationStop>, C<BeforeBlockTraffic>, or
+C<AfterBlockTraffic> deployment lifecycle event to an instance fails,
+then the deployment continues to the next deployment lifecycle event.
+For example, if C<ApplicationStop> fails, the deployment continues with
+DownloadBundle. If C<BeforeBlockTraffic> fails, the deployment
+continues with C<BlockTraffic>. If C<AfterBlockTraffic> fails, the
+deployment continues with C<ApplicationStop>.
 
-If false or not specified, then if the deployment causes the
-ApplicationStop deployment lifecycle event to an instance to fail, the
-deployment to that instance stops, and the deployment to that instance
-is considered to have failed.
+If false or not specified, then if a lifecycle event fails during a
+deployment to an instance, that deployment fails. If deployment to that
+instance is part of an overall deployment and the number of healthy
+hosts is not less than the minimum number of healthy hosts, then a
+deployment to the next instance is attempted.
+
+During a deployment, the AWS CodeDeploy agent runs the scripts
+specified for C<ApplicationStop>, C<BeforeBlockTraffic>, and
+C<AfterBlockTraffic> in the AppSpec file from the previous successful
+deployment. (All other scripts are run from the AppSpec file in the
+current deployment.) If one of these scripts contains an error and does
+not run successfully, the deployment can fail.
+
+If the cause of the failure is a script from the last successful
+deployment that will never run successfully, create a new deployment
+and use C<ignoreApplicationStopFailures> to specify that the
+C<ApplicationStop>, C<BeforeBlockTraffic>, and C<AfterBlockTraffic>
+failures should be ignored.
 
 
 =head2 InstanceTerminationWaitTimeStarted => Bool

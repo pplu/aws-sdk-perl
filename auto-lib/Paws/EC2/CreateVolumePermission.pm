@@ -39,14 +39,12 @@ This class has no description
 
 =head2 Group => Str
 
-  The specific group that is to be added or removed from a volume's list
-of create volume permissions.
+  The group to be added or removed. The possible value is C<all>.
 
 
 =head2 UserId => Str
 
-  The specific AWS account ID that is to be added or removed from a
-volume's list of create volume permissions.
+  The AWS account ID to be added or removed.
 
 
 

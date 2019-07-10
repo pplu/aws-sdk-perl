@@ -33,8 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ServerS
 =head1 DESCRIPTION
 
 Describes the default server-side encryption to apply to new objects in
-the bucket. If Put Object request does not specify any server-side
-encryption, this default encryption will be applied.
+the bucket. If a PUT Object request doesn't specify any server-side
+encryption, this default encryption will be applied. For more
+information, see PUT Bucket encryption
+(https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTencryption.html)
+in the I<Amazon Simple Storage Service API Reference>.
 
 =head1 ATTRIBUTES
 
@@ -42,7 +45,7 @@ encryption, this default encryption will be applied.
 =head2 KMSMasterKeyID => Str
 
   KMS master key ID to use for the default encryption. This parameter is
-allowed if SSEAlgorithm is aws:kms.
+allowed if and only if C<SSEAlgorithm> is set to C<aws:kms>.
 
 
 =head2 B<REQUIRED> SSEAlgorithm => Str

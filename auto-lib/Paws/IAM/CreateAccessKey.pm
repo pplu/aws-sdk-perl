@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an access key for an IAM user
     # The following command creates an access key (access key ID and secret
     # access key) for the IAM user named Bob.
-    my $CreateAccessKeyResponse = $iam->CreateAccessKey(
-      {
-        'UserName' => 'Bob'
-      }
-    );
+    my $CreateAccessKeyResponse = $iam->CreateAccessKey( 'UserName' => 'Bob' );
 
     # Results:
     my $AccessKey = $CreateAccessKeyResponse->AccessKey;

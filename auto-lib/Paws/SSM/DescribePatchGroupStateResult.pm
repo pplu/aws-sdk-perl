@@ -8,6 +8,7 @@ package Paws::SSM::DescribePatchGroupStateResult;
   has InstancesWithInstalledRejectedPatches => (is => 'ro', isa => 'Int');
   has InstancesWithMissingPatches => (is => 'ro', isa => 'Int');
   has InstancesWithNotApplicablePatches => (is => 'ro', isa => 'Int');
+  has InstancesWithUnreportedNotApplicablePatches => (is => 'ro', isa => 'Int');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -62,6 +63,13 @@ The number of instances with missing patches from the patch baseline.
 =head2 InstancesWithNotApplicablePatches => Int
 
 The number of instances with patches that aren't applicable.
+
+
+=head2 InstancesWithUnreportedNotApplicablePatches => Int
+
+The number of instances with C<NotApplicable> patches beyond the
+supported limit, which are not reported by name to Systems Manager
+Inventory.
 
 
 =head2 _request_id => Str

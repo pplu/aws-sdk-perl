@@ -49,20 +49,19 @@ later in commands which return or update job execution information.
 
 =head2 LastUpdatedAt => Str
 
-  The time, in milliseconds since the epoch, when the job execution was
-last updated.
+  The time, in seconds since the epoch, when the job execution was last
+updated.
 
 
 =head2 QueuedAt => Str
 
-  The time, in milliseconds since the epoch, when the job execution was
+  The time, in seconds since the epoch, when the job execution was
 queued.
 
 
 =head2 StartedAt => Str
 
-  The time, in milliseconds since the epoch, when the job execution
-started.
+  The time, in seconds since the epoch, when the job execution started.
 
 
 =head2 Status => Str

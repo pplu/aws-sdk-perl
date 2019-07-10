@@ -40,7 +40,9 @@ Settings for embedded captions Source
 
 =head2 Convert608To708 => Str
 
-  
+  When set to UPCONVERT, 608 data is both passed through via the "608
+compatibility bytes" fields of the 708 wrapper as well as translated
+into 708. 708 data present in the source content will be discarded.
 
 
 =head2 Source608ChannelNumber => Int

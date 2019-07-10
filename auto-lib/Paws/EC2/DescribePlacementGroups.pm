@@ -67,7 +67,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -92,7 +92,7 @@ C<spread> | C<partition>).
 
 =head2 GroupNames => ArrayRef[Str|Undef]
 
-One or more placement group names.
+The names of the placement groups.
 
 Default: Describes all your placement groups, or only those otherwise
 specified.

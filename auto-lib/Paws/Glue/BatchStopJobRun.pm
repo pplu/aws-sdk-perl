@@ -56,7 +56,8 @@ The name of the job definition for which to stop job runs.
 
 =head2 B<REQUIRED> JobRunIds => ArrayRef[Str|Undef]
 
-A list of the JobRunIds that should be stopped for that job definition.
+A list of the C<JobRunIds> that should be stopped for that job
+definition.
 
 
 

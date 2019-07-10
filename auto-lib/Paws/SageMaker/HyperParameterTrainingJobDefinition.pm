@@ -55,9 +55,11 @@ launches.
 =head2 EnableInterContainerTrafficEncryption => Bool
 
   To encrypt all communications between ML compute instances in
-distributed training, specify C<True>. Encryption provides greater
-security for distributed training, but training take longer because of
-the additional communications between ML compute instances.
+distributed training, choose C<True>. Encryption provides greater
+security for distributed training, but training might take longer. How
+long it takes depends on the amount of communication between compute
+instances, especially if you use a deep learning algorithm in
+distributed training.
 
 
 =head2 EnableNetworkIsolation => Bool
@@ -112,16 +114,9 @@ tuning job.
 
 =head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
-  Sets a maximum duration for the training jobs that the tuning job
-launches. Use this parameter to limit model training costs.
-
-To stop a job, Amazon SageMaker sends the algorithm the C<SIGTERM>
-signal. This delays job termination for 120 seconds. Algorithms might
-use this 120-second window to save the model artifacts.
-
-When Amazon SageMaker terminates a job because the stopping condition
-has been met, training algorithms provided by Amazon SageMaker save the
-intermediate results of the job.
+  Specifies a limit to how long a model hyperparameter training job can
+run. When the job reaches the time limit, Amazon SageMaker ends the
+training job. Use this API to cap model training costs.
 
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
@@ -131,7 +126,7 @@ jobs that this hyperparameter tuning job launches to connect to.
 Control access to and from your training container by configuring the
 VPC. For more information, see Protect Training Jobs by Using an Amazon
 Virtual Private Cloud
-(http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 
 
 

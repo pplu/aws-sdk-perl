@@ -71,7 +71,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 The name of the endpoint configuration. You specify this name in a
 CreateEndpoint
-(http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
 request.
 
 
@@ -86,17 +86,17 @@ the ML compute instance that hosts the endpoint.
 
 =head2 B<REQUIRED> ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariant>]
 
-An array of C<ProductionVariant> objects, one for each model that you
+An list of C<ProductionVariant> objects, one for each model that you
 want to host at this endpoint.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-An array of key-value pairs. For more information, see Using Cost
+A list of key-value pairs. For more information, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I<AWS Billing and Cost Management User Guide>.
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+in the I< AWS Billing and Cost Management User Guide>.
 
 
 

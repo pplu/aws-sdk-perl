@@ -52,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 [Required] The base path name that callers of the API must provide as
 part of the URL after the domain name. This value must be unique for
-all of the mappings across a single API. Leave this blank if you do not
+all of the mappings across a single API. Specify '(none)' if you do not
 want callers to specify any base path name after the domain name.
 
 

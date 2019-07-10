@@ -1,5 +1,7 @@
 package Paws::EKS::VpcConfigResponse;
   use Moose;
+  has EndpointPrivateAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPrivateAccess', traits => ['NameInRequest']);
+  has EndpointPublicAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPublicAccess', traits => ['NameInRequest']);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
@@ -22,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EKS::VpcConfigResponse object:
 
-  $service_obj->Method(Att1 => { SecurityGroupIds => $value, ..., VpcId => $value  });
+  $service_obj->Method(Att1 => { EndpointPrivateAccess => $value, ..., VpcId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EKS::VpcConfigResponse object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->SecurityGroupIds
+  $result->Att1->EndpointPrivateAccess
 
 =head1 DESCRIPTION
 
@@ -37,6 +39,23 @@ An object representing an Amazon EKS cluster VPC configuration
 response.
 
 =head1 ATTRIBUTES
+
+
+=head2 EndpointPrivateAccess => Bool
+
+  This parameter indicates whether the Amazon EKS private API server
+endpoint is enabled. If the Amazon EKS private API server endpoint is
+enabled, Kubernetes API requests that originate from within your
+cluster's VPC use the private VPC endpoint instead of traversing the
+internet.
+
+
+=head2 EndpointPublicAccess => Bool
+
+  This parameter indicates whether the Amazon EKS public API server
+endpoint is enabled. If the Amazon EKS public API server endpoint is
+disabled, your cluster's Kubernetes API server can receive only
+requests that originate from within the cluster VPC.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]

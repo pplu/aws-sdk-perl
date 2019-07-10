@@ -32,20 +32,49 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisVide
 
 =head1 DESCRIPTION
 
-Describes the time stamp range and time stamp origin of a range of
+Describes the timestamp range and timestamp origin of a range of
 fragments.
+
+Only fragments with a start timestamp greater than or equal to the
+given start time and less than or equal to the end time are returned.
+For example, if a stream contains fragments with the following start
+timestamps:
+
+=over
+
+=item *
+
+00:00:00
+
+=item *
+
+00:00:02
+
+=item *
+
+00:00:04
+
+=item *
+
+00:00:06
+
+=back
+
+A fragment selector range with a start time of 00:00:01 and end time of
+00:00:04 would return the fragments with start times of 00:00:02 and
+00:00:04.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> FragmentSelectorType => Str
 
-  The origin of the time stamps to use (Server or Producer).
+  The origin of the timestamps to use (Server or Producer).
 
 
 =head2 B<REQUIRED> TimestampRange => L<Paws::KinesisVideoArchivedMedia::TimestampRange>
 
-  The range of time stamps to return.
+  The range of timestamps to return.
 
 
 

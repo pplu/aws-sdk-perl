@@ -1,6 +1,7 @@
 package Paws::MediaLive::OutputDestination;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has MediaPackageSettings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaPackageOutputDestinationSettings]', request_name => 'mediaPackageSettings', traits => ['NameInRequest']);
   has Settings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestinationSettings]', request_name => 'settings', traits => ['NameInRequest']);
 1;
 
@@ -42,9 +43,16 @@ Placeholder documentation for OutputDestination
   User-specified id. This is used in an output group or an output.
 
 
+=head2 MediaPackageSettings => ArrayRef[L<Paws::MediaLive::MediaPackageOutputDestinationSettings>]
+
+  Destination settings for a MediaPackage output; one destination for
+both encoders.
+
+
 =head2 Settings => ArrayRef[L<Paws::MediaLive::OutputDestinationSettings>]
 
-  Destination settings for output; one for each redundant encoder.
+  Destination settings for a standard output; one destination for each
+redundant encoder.
 
 
 

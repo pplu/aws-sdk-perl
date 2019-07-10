@@ -3,7 +3,7 @@ package Paws::Datasync::CreateLocationS3;
   use Moose;
   has S3BucketArn => (is => 'ro', isa => 'Str', required => 1);
   has S3Config => (is => 'ro', isa => 'Paws::Datasync::S3Config', required => 1);
-  has Subdirectory => (is => 'ro', isa => 'Str', required => 1);
+  has Subdirectory => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]');
 
   use MooseX::ClassAttribute;
@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         BucketAccessRoleArn => 'MyIamRoleArn',    # max: 2048
 
       },
-      Subdirectory => 'MySubdirectory',
+      Subdirectory => 'MySubdirectory',           # OPTIONAL
       Tags         => [
         {
-          Key   => 'MyTagKey',                    # min: 1, max: 256; OPTIONAL
+          Key   => 'MyTagKey',                    # min: 1, max: 256
           Value => 'MyTagValue',                  # min: 1, max: 256; OPTIONAL
         },
         ...
@@ -69,7 +69,7 @@ The Amazon Resource Name (ARN) of the Amazon S3 bucket.
 
 
 
-=head2 B<REQUIRED> Subdirectory => Str
+=head2 Subdirectory => Str
 
 A subdirectory in the Amazon S3 bucket. This subdirectory in Amazon S3
 is used to read data from the S3 source location or write data to the

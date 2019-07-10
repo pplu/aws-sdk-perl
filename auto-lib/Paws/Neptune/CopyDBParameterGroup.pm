@@ -59,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 The identifier or ARN for the source DB parameter group. For
 information about creating an ARN, see Constructing an Amazon Resource
 Name (ARN)
-(http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
+(https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
 
 Constraints:
 
@@ -81,7 +81,7 @@ C<my-db-param-group>, or a valid ARN.
 
 =head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
 
-
+The tags to be assigned to the copied DB parameter group.
 
 
 
@@ -101,19 +101,19 @@ Constraints:
 
 =item *
 
-Cannot be null, empty, or blank
+Cannot be null, empty, or blank.
 
 =item *
 
-Must contain from 1 to 255 letters, numbers, or hyphens
+Must contain from 1 to 255 letters, numbers, or hyphens.
 
 =item *
 
-First character must be a letter
+First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 

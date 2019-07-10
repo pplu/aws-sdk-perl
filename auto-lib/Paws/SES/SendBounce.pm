@@ -111,7 +111,7 @@ the identity that is associated with the sending authorization policy
 that permits you to use the address in the "From" header of the bounce.
 For more information about sending authorization, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
 

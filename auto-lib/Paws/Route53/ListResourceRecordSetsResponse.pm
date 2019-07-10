@@ -42,7 +42,7 @@ C<SetIdentifier> for the next resource record set that has the current
 DNS name and type.
 
 For information about routing policies, see Choosing a Routing Policy
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 

@@ -4,6 +4,7 @@ package Paws::EC2::AllocateHosts;
   has AutoPlacement => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'autoPlacement' );
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
+  has HostRecovery => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceType' , required => 1);
   has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' , required => 1);
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
@@ -38,10 +39,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Quantity          => 1,
       AutoPlacement     => 'on',          # OPTIONAL
       ClientToken       => 'MyString',    # OPTIONAL
+      HostRecovery      => 'on',          # OPTIONAL
       TagSpecifications => [
         {
-          ResourceType => 'customer-gateway'
-          , # values: customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, transit-gateway, transit-gateway-attachment, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',
@@ -67,17 +69,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AutoPlacement => Str
 
-This is enabled by default. This property allows instances to be
-automatically placed onto available Dedicated Hosts, when you are
-launching instances without specifying a host ID.
+Indicates whether the host accepts any untargeted instance launches
+that match its instance type configuration, or if it only accepts Host
+tenancy instance launches that specify its unique host ID. For more
+information, see Understanding Instance Placement and Host Affinity
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
-Default: Enabled
+Default: C<on>
 
 Valid values are: C<"on">, C<"off">
 
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-The Availability Zone for the Dedicated Hosts.
+The Availability Zone in which to allocate the Dedicated Host.
 
 
 
@@ -86,16 +91,27 @@ The Availability Zone for the Dedicated Hosts.
 Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see How to Ensure
 Idempotency
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+
+
+
+=head2 HostRecovery => Str
+
+Indicates whether to enable or disable host recovery for the Dedicated
+Host. Host recovery is disabled by default. For more information, see
+Host Recovery
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
+Default: C<off>
 
+Valid values are: C<"on">, C<"off">
 
 =head2 B<REQUIRED> InstanceType => Str
 
-Specify the instance type for which to configure your Dedicated Hosts.
-When you specify the instance type, that is the only instance type that
-you can launch onto that host.
+Specifies the instance type for which to configure your Dedicated
+Hosts. When you specify the instance type, that is the only instance
+type that you can launch onto that host.
 
 
 

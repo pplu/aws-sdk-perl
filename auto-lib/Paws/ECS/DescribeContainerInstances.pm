@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example provides a description of the specified container instance in
     # your default region, using the container instance UUID as an identifier.
     my $DescribeContainerInstancesResponse = $ecs->DescribeContainerInstances(
-      {
-        'Cluster'            => 'default',
-        'ContainerInstances' => ['f2756532-8f13-4d53-87c9-aed50dc94cd7']
-      }
+      'Cluster'            => 'default',
+      'ContainerInstances' => ['f2756532-8f13-4d53-87c9-aed50dc94cd7']
     );
 
     # Results:
@@ -56,7 +54,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container instances to describe. If you do not specify a
-cluster, the default cluster is assumed.
+cluster, the default cluster is assumed. This parameter is required if
+the container instance or container instances you are describing were
+launched in any cluster other than the default cluster.
 
 
 

@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a Lambda function
     # This operation deletes a Lambda function
     $lambda->DeleteFunction(
-      {
-        'FunctionName' => 'myFunction',
-        'Qualifier'    => 1
-      }
+      'FunctionName' => 'myFunction',
+      'Qualifier'    => 1
     );
 
 
@@ -77,7 +75,7 @@ function name, it is limited to 64 characters in length.
 
 =head2 Qualifier => Str
 
-Specify a version to delete. You cannot delete a version that is
+Specify a version to delete. You can't delete a version that's
 referenced by an alias.
 
 

@@ -34,27 +34,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To launch a Scheduled Instance in a VPC
     # This example launches the specified Scheduled Instance in a VPC.
     my $RunScheduledInstancesResult = $ec2->RunScheduledInstances(
-      {
-        'InstanceCount'       => 1,
-        'LaunchSpecification' => {
-          'IamInstanceProfile' => {
-            'Name' => 'my-iam-role'
-          },
-          'ImageId'           => 'ami-12345678',
-          'InstanceType'      => 'c4.large',
-          'KeyName'           => 'my-key-pair',
-          'NetworkInterfaces' => [
-
-            {
-              'AssociatePublicIpAddress' => 1,
-              'DeviceIndex'              => 0,
-              'Groups'                   => ['sg-12345678'],
-              'SubnetId'                 => 'subnet-12345678'
-            }
-          ]
+      'InstanceCount'       => 1,
+      'LaunchSpecification' => {
+        'IamInstanceProfile' => {
+          'Name' => 'my-iam-role'
         },
-        'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012'
-      }
+        'ImageId'           => 'ami-12345678',
+        'InstanceType'      => 'c4.large',
+        'KeyName'           => 'my-key-pair',
+        'NetworkInterfaces' => [
+
+          {
+            'AssociatePublicIpAddress' => 1,
+            'DeviceIndex'              => 0,
+            'Groups'                   => ['sg-12345678'],
+            'SubnetId'                 => 'subnet-12345678'
+          }
+        ]
+      },
+      'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012'
     );
 
     # Results:
@@ -64,22 +62,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To launch a Scheduled Instance in EC2-Classic
     # This example launches the specified Scheduled Instance in EC2-Classic.
     my $RunScheduledInstancesResult = $ec2->RunScheduledInstances(
-      {
-        'InstanceCount'       => 1,
-        'LaunchSpecification' => {
-          'IamInstanceProfile' => {
-            'Name' => 'my-iam-role'
-          },
-          'ImageId'      => 'ami-12345678',
-          'InstanceType' => 'c4.large',
-          'KeyName'      => 'my-key-pair',
-          'Placement'    => {
-            'AvailabilityZone' => 'us-west-2b'
-          },
-          'SecurityGroupIds' => ['sg-12345678']
+      'InstanceCount'       => 1,
+      'LaunchSpecification' => {
+        'IamInstanceProfile' => {
+          'Name' => 'my-iam-role'
         },
-        'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012'
-      }
+        'ImageId'      => 'ami-12345678',
+        'InstanceType' => 'c4.large',
+        'KeyName'      => 'my-key-pair',
+        'Placement'    => {
+          'AvailabilityZone' => 'us-west-2b'
+        },
+        'SecurityGroupIds' => ['sg-12345678']
+      },
+      'ScheduledInstanceId' => 'sci-1234-1234-1234-1234-123456789012'
     );
 
     # Results:

@@ -36,22 +36,22 @@ values are:
 
 =item *
 
-REGISTRY E<ndash> Your thing index will contain only registry data.
+REGISTRY E<ndash> Your thing index contains only registry data.
 
 =item *
 
-REGISTRY_AND_SHADOW - Your thing index will contain registry data and
+REGISTRY_AND_SHADOW - Your thing index contains registry data and
 shadow data.
 
 =item *
 
-REGISTRY_AND_CONNECTIVITY_STATUS - Your thing index will contain
-registry data and thing connectivity status data.
+REGISTRY_AND_CONNECTIVITY_STATUS - Your thing index contains registry
+data and thing connectivity status data.
 
 =item *
 
-REGISTRY_AND_SHADOW_AND_CONNECTIVITY_STATUS - Your thing index will
-contain registry data, shadow data, and thing connectivity status data.
+REGISTRY_AND_SHADOW_AND_CONNECTIVITY_STATUS - Your thing index contains
+registry data, shadow data, and thing connectivity status data.
 
 =back
 

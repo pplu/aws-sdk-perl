@@ -15,9 +15,19 @@ package Paws::S3Control;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::S3V4Signature', 'Paws::Net::RestXmlCaller';
 
   
+  sub CreateJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3Control::CreateJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeletePublicAccessBlock {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3Control::DeletePublicAccessBlock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3Control::DescribeJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetPublicAccessBlock {
@@ -25,15 +35,30 @@ package Paws::S3Control;
     my $call_object = $self->new_with_coercions('Paws::S3Control::GetPublicAccessBlock', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3Control::ListJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutPublicAccessBlock {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3Control::PutPublicAccessBlock', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateJobPriority {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3Control::UpdateJobPriority', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateJobStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3Control::UpdateJobStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/DeletePublicAccessBlock GetPublicAccessBlock PutPublicAccessBlock / }
+  sub operations { qw/CreateJob DeletePublicAccessBlock DescribeJob GetPublicAccessBlock ListJobs PutPublicAccessBlock UpdateJobPriority UpdateJobStatus / }
 
 1;
 
@@ -68,6 +93,38 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3-
 
 =head1 METHODS
 
+=head2 CreateJob
+
+=over
+
+=item AccountId => Str
+
+=item ClientRequestToken => Str
+
+=item Manifest => L<Paws::S3Control::JobManifest>
+
+=item Operation => L<Paws::S3Control::JobOperation>
+
+=item Priority => Int
+
+=item Report => L<Paws::S3Control::JobReport>
+
+=item RoleArn => Str
+
+=item [ConfirmationRequired => Bool]
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3Control::CreateJob>
+
+Returns: a L<Paws::S3Control::CreateJobResult> instance
+
+Creates an Amazon S3 batch operations job.
+
+
 =head2 DeletePublicAccessBlock
 
 =over
@@ -81,8 +138,27 @@ Each argument is described in detail in: L<Paws::S3Control::DeletePublicAccessBl
 
 Returns: nothing
 
-Removes the Public Access Block configuration for an Amazon Web
-Services account.
+Deletes the block public access configuration for the specified
+account.
+
+
+=head2 DescribeJob
+
+=over
+
+=item AccountId => Str
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3Control::DescribeJob>
+
+Returns: a L<Paws::S3Control::DescribeJobResult> instance
+
+Retrieves the configuration parameters and status for a batch
+operations job.
 
 
 =head2 GetPublicAccessBlock
@@ -98,8 +174,30 @@ Each argument is described in detail in: L<Paws::S3Control::GetPublicAccessBlock
 
 Returns: a L<Paws::S3Control::GetPublicAccessBlockOutput> instance
 
-Retrieves the Public Access Block configuration for an Amazon Web
-Services account.
+
+
+
+=head2 ListJobs
+
+=over
+
+=item AccountId => Str
+
+=item [JobStatuses => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3Control::ListJobs>
+
+Returns: a L<Paws::S3Control::ListJobsResult> instance
+
+Lists current jobs and jobs that have ended within the last 30 days for
+the AWS account making the request.
 
 
 =head2 PutPublicAccessBlock
@@ -117,8 +215,50 @@ Each argument is described in detail in: L<Paws::S3Control::PutPublicAccessBlock
 
 Returns: nothing
 
-Creates or modifies the Public Access Block configuration for an Amazon
-Web Services account.
+
+
+
+=head2 UpdateJobPriority
+
+=over
+
+=item AccountId => Str
+
+=item JobId => Str
+
+=item Priority => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3Control::UpdateJobPriority>
+
+Returns: a L<Paws::S3Control::UpdateJobPriorityResult> instance
+
+Updates an existing job's priority.
+
+
+=head2 UpdateJobStatus
+
+=over
+
+=item AccountId => Str
+
+=item JobId => Str
+
+=item RequestedJobStatus => Str
+
+=item [StatusUpdateReason => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::S3Control::UpdateJobStatus>
+
+Returns: a L<Paws::S3Control::UpdateJobStatusResult> instance
+
+Updates the status for the specified job. Use this operation to confirm
+that you want to run a job or to cancel an existing job.
 
 
 

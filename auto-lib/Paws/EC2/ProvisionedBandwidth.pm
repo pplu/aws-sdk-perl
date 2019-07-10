@@ -44,7 +44,7 @@ This class has no description
 
   Reserved. If you need to sustain traffic greater than the documented
 limits
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+(https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html),
 contact us through the Support Center
 (https://console.aws.amazon.com/support/home?).
 
@@ -53,7 +53,7 @@ contact us through the Support Center
 
   Reserved. If you need to sustain traffic greater than the documented
 limits
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+(https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html),
 contact us through the Support Center
 (https://console.aws.amazon.com/support/home?).
 
@@ -62,7 +62,7 @@ contact us through the Support Center
 
   Reserved. If you need to sustain traffic greater than the documented
 limits
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+(https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html),
 contact us through the Support Center
 (https://console.aws.amazon.com/support/home?).
 
@@ -71,7 +71,7 @@ contact us through the Support Center
 
   Reserved. If you need to sustain traffic greater than the documented
 limits
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+(https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html),
 contact us through the Support Center
 (https://console.aws.amazon.com/support/home?).
 
@@ -80,7 +80,7 @@ contact us through the Support Center
 
   Reserved. If you need to sustain traffic greater than the documented
 limits
-(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+(https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html),
 contact us through the Support Center
 (https://console.aws.amazon.com/support/home?).
 

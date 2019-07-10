@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $UpdateThreatIntelSetResponse = $guardduty->UpdateThreatIntelSet(
-      DetectorId       => 'My__string',
-      ThreatIntelSetId => 'My__string',
-      Activate         => 1,               # OPTIONAL
-      Location         => 'MyLocation',    # OPTIONAL
-      Name             => 'MyName',        # OPTIONAL
+      DetectorId       => 'MyDetectorId',
+      ThreatIntelSetId => 'MyString',
+      Activate         => 1,                # OPTIONAL
+      Location         => 'MyLocation',     # OPTIONAL
+      Name             => 'MyName',         # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

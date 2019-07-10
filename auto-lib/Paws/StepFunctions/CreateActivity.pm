@@ -2,6 +2,7 @@
 package Paws::StepFunctions::CreateActivity;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $states = Paws->service('StepFunctions');
     my $CreateActivityOutput = $states->CreateActivity(
       Name => 'MyName',
-
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -49,7 +56,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sta
 The name of the activity to create. This name must be unique for your
 AWS account and region for 90 days. For more information, see Limits
 Related to State Machine Executions
-(http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
+(https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
 in the I<AWS Step Functions Developer Guide>.
 
 A name must I<not> contain:
@@ -78,6 +85,12 @@ control characters (C<U+0000-001F>, C<U+007F-009F>)
 
 =back
 
+
+
+
+=head2 Tags => ArrayRef[L<Paws::StepFunctions::Tag>]
+
+The list of tags to add to a resource.
 
 
 

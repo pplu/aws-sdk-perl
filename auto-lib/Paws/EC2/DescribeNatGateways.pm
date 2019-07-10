@@ -33,15 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a NAT gateway
     # This example describes the NAT gateway for the specified VPC.
     my $DescribeNatGatewaysResult = $ec2->DescribeNatGateways(
-      {
-        'Filter' => [
+      'Filter' => [
 
-          {
-            'Name'   => 'vpc-id',
-            'Values' => ['vpc-1a2b3c4d']
-          }
-        ]
-      }
+        {
+          'Name'   => 'vpc-id',
+          'Values' => ['vpc-1a2b3c4d']
+        }
+      ]
     );
 
     # Results:
@@ -99,12 +97,9 @@ C<vpc-id> - The ID of the VPC in which the NAT gateway resides.
 
 =head2 MaxResults => Int
 
-The maximum number of items to return for this request. The request
-returns a token that you can specify in a subsequent call to get the
-next set of results.
-
-Constraint: If the value specified is greater than 1000, we return only
-1000 items.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
 
 
@@ -116,7 +111,7 @@ One or more NAT gateway IDs.
 
 =head2 NextToken => Str
 
-The token to retrieve the next page of results.
+The token for the next page of results.
 
 
 

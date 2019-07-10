@@ -70,7 +70,7 @@ the time you deleted the source instance.
   The Availability Zone that the automated backup was created in. For
 information on AWS Regions and Availability Zones, see Regions and
 Availability Zones
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
 
 =head2 DBInstanceArn => Str

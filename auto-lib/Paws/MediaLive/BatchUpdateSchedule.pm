@@ -45,6 +45,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 InputAttachmentNameReference => 'My__string',
 
               },    # OPTIONAL
+              PauseStateSettings => {
+                Pipelines => [
+                  {
+                    PipelineId => 'PIPELINE_0', # values: PIPELINE_0, PIPELINE_1
+
+                  },
+                  ...
+                ],                              # OPTIONAL
+              },    # OPTIONAL
               Scte35ReturnToNetworkSettings => {
                 SpliceEventId => 1,    # max: 4294967295
 

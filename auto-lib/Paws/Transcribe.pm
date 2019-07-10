@@ -104,9 +104,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =item LanguageCode => Str
 
-=item Phrases => ArrayRef[Str|Undef]
-
 =item VocabularyName => Str
+
+=item [Phrases => ArrayRef[Str|Undef]]
+
+=item [VocabularyFileUri => Str]
 
 
 =back
@@ -266,9 +268,11 @@ Starts an asynchronous job to transcribe speech to text.
 
 =item LanguageCode => Str
 
-=item Phrases => ArrayRef[Str|Undef]
-
 =item VocabularyName => Str
+
+=item [Phrases => ArrayRef[Str|Undef]]
+
+=item [VocabularyFileUri => Str]
 
 
 =back

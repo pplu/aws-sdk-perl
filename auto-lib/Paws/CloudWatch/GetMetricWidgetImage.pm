@@ -68,8 +68,7 @@ The default is C<png>. If you specify C<png>, the API returns an HTTP
 response with the content-type set to C<text/xml>. The image data is in
 a C<MetricWidgetImage> field. For example:
 
-C<E<lt>GetMetricWidgetImageResponse
-xmlns="http://monitoring.amazonaws.com/doc/2010-08-01/"E<gt>>
+C<E<lt>GetMetricWidgetImageResponse xmlns=E<lt>URLstringE<gt>E<gt>>
 
 C<E<lt>GetMetricWidgetImageResultE<gt>>
 

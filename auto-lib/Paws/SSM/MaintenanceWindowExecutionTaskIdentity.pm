@@ -38,8 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Mainte
 
 =head1 DESCRIPTION
 
-Information about a task execution performed as part of a Maintenance
-Window execution.
+Information about a task execution performed as part of a maintenance
+window execution.
 
 =head1 ATTRIBUTES
 
@@ -67,23 +67,23 @@ for certain status values.
 
 =head2 TaskArn => Str
 
-  The ARN of the executed task.
+  The ARN of the task that ran.
 
 
 =head2 TaskExecutionId => Str
 
-  The ID of the specific task execution in the Maintenance Window
+  The ID of the specific task execution in the maintenance window
 execution.
 
 
 =head2 TaskType => Str
 
-  The type of executed task.
+  The type of task that ran.
 
 
 =head2 WindowExecutionId => Str
 
-  The ID of the Maintenance Window execution that ran the task.
+  The ID of the maintenance window execution that ran the task.
 
 
 

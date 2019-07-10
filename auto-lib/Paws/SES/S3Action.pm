@@ -44,14 +44,14 @@ AWS KMS key to encrypt your emails, or publish to an Amazon SNS topic
 of another account, Amazon SES must have permission to access those
 resources. For information about giving permissions, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
 
 When you save your emails to an Amazon S3 bucket, the maximum email
 size (including headers) is 30 MB. Emails larger than that will bounce.
 
 For information about specifying Amazon S3 actions in receipt rules,
 see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-s3.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-s3.html).
 
 =head1 ATTRIBUTES
 
@@ -87,13 +87,13 @@ To use a custom master key you created in AWS KMS, provide the ARN of
 the master key and ensure that you add a statement to your key's policy
 to give Amazon SES permission to use it. For more information about
 giving permissions, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
 
 =back
 
 For more information about key policies, see the AWS KMS Developer
 Guide
-(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html).
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html).
 If you do not specify a master key, Amazon SES will not encrypt your
 emails.
 
@@ -108,7 +108,7 @@ available with the AWS SDK for Java
 (http://aws.amazon.com/sdk-for-ruby/) only. For more information about
 client-side encryption using AWS KMS master keys, see the Amazon S3
 Developer Guide
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html).
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html).
 
 
 =head2 ObjectKeyPrefix => Str
@@ -124,7 +124,7 @@ directory in a bucket.
 the Amazon S3 bucket. An example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
 about Amazon SNS topics, see the Amazon SNS Developer Guide
-(http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
+(https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
 
 
 

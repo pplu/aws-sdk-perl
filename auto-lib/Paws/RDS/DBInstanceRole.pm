@@ -43,7 +43,7 @@ associated with a DB instance.
 
   The name of the feature associated with the AWS Identity and Access
 Management (IAM) role. For the list of supported feature names, see
-DBEngineVersion.
+C<DBEngineVersion>.
 
 
 =head2 RoleArn => Str

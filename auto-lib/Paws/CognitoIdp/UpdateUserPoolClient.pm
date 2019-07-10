@@ -98,9 +98,6 @@ Set to C<code> to initiate a code grant flow, which provides an
 authorization code as the response. This code can be exchanged for
 access tokens with the token endpoint.
 
-Set to C<token> to specify that the client should get the access token
-(and, optionally, ID token, based on scopes) directly.
-
 
 
 =head2 AllowedOAuthFlowsUserPoolClient => Bool

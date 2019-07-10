@@ -70,7 +70,7 @@ or requester VPC.
 
 =head2 Region => Str
 
-  The region in which the VPC is located.
+  The Region in which the VPC is located.
 
 
 =head2 VpcId => Str

@@ -36,14 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To invoke a Lambda function
     # This operation invokes a Lambda function
     my $InvocationResponse = $lambda->Invoke(
-      {
-        'ClientContext'  => 'MyApp',
-        'FunctionName'   => 'MyFunction',
-        'InvocationType' => 'Event',
-        'LogType'        => 'Tail',
-        'Payload'        => 'fileb://file-path/input.json',
-        'Qualifier'      => 1
-      }
+      'ClientContext'  => 'MyApp',
+      'FunctionName'   => 'MyFunction',
+      'InvocationType' => 'Event',
+      'LogType'        => 'Tail',
+      'Payload'        => 'fileb://file-path/input.json',
+      'Qualifier'      => 1
     );
 
     # Results:
@@ -112,8 +110,8 @@ The API response includes the function response and additional data.
 =item *
 
 C<Event> - Invoke the function asynchronously. Send events that fail
-multiple times to the function's dead-letter queue (if configured). The
-API response only includes a status code.
+multiple times to the function's dead-letter queue (if it's
+configured). The API response only includes a status code.
 
 =item *
 
@@ -133,7 +131,7 @@ Valid values are: C<"None">, C<"Tail">
 
 =head2 Payload => Str
 
-JSON that you want to provide to your Lambda function as input.
+The JSON that you want to provide to your Lambda function as input.
 
 
 

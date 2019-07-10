@@ -21,7 +21,7 @@ Paws::EKS::DescribeUpdate - Arguments for method DescribeUpdate on L<Paws::EKS>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeUpdate on the
-L<Amazon Elastic Container Service for Kubernetes|Paws::EKS> service. Use the attributes of this class
+L<Amazon Elastic Kubernetes Service|Paws::EKS> service. Use the attributes of this class
 as arguments to method DescribeUpdate.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeUpdate.

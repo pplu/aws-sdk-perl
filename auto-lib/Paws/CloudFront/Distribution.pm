@@ -1,6 +1,7 @@
 package Paws::CloudFront::Distribution;
   use Moose;
   has ActiveTrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::ActiveTrustedSigners', required => 1);
+  has AliasICPRecordals => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::AliasICPRecordal]', request_name => 'AliasICPRecordal', traits => ['NameInRequest']);
   has ARN => (is => 'ro', isa => 'Str', required => 1);
   has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
@@ -38,7 +39,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-The distribution's information.
+A distribution tells CloudFront where you want content to be delivered
+from, and the details about how to track and manage content delivery.
 
 =head1 ATTRIBUTES
 
@@ -54,6 +56,20 @@ the signer is you). The C<Signer> element also includes the IDs of any
 active key pairs associated with the trusted signer's AWS account. If
 no C<KeyPairId> element appears for a C<Signer>, that signer can't
 create working signed URLs.
+
+
+=head2 AliasICPRecordals => ArrayRef[L<Paws::CloudFront::AliasICPRecordal>]
+
+  AWS services in China customers must file for an Internet Content
+Provider (ICP) recordal if they want to serve content publicly on an
+alternate domain name, also known as a CNAME, that they've added to
+CloudFront. AliasICPRecordal provides the ICP recordal status for
+CNAMEs associated with distributions.
+
+For more information about ICP recordals, see Signup, Accounts, and
+Credentials
+(https://docs.amazonaws.cn/en_us/aws/latest/userguide/accounts-and-credentials.html)
+in I<Getting Started with AWS services in China>.
 
 
 =head2 B<REQUIRED> ARN => Str

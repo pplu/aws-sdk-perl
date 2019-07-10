@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To delete a subnet
     # This example deletes the specified subnet.
-    $ec2->DeleteSubnet(
-      {
-        'SubnetId' => 'subnet-9d4a7b6c'
-      }
-    );
+    $ec2->DeleteSubnet( 'SubnetId' => 'subnet-9d4a7b6c' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To update a job queue
     # This example disables a job queue so that it can be deleted.
     my $UpdateJobQueueResponse = $batch->UpdateJobQueue(
-      {
-        'JobQueue' => 'GPGPU',
-        'State'    => 'DISABLED'
-      }
+      'JobQueue' => 'GPGPU',
+      'State'    => 'DISABLED'
     );
 
     # Results:

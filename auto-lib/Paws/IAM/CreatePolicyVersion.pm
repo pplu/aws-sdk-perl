@@ -53,7 +53,7 @@ add a new version.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 
@@ -62,6 +62,11 @@ in the I<AWS General Reference>.
 
 The JSON policy document that you want to use as the content for this
 new version of the policy.
+
+You must provide policies in JSON format in IAM. However, for AWS
+CloudFormation templates formatted in YAML, you can provide the policy
+in JSON or YAML format. AWS CloudFormation always converts a YAML
+policy to JSON format before submitting it to IAM.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
 this parameter is a string of characters consisting of the following:
@@ -98,7 +103,7 @@ for the IAM users, groups, and roles that the policy is attached to.
 
 For more information about managed policy versions, see Versioning for
 Managed Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
 in the I<IAM User Guide>.
 
 

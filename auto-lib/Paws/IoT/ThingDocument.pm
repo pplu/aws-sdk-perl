@@ -49,7 +49,7 @@ The thing search index document.
 
 =head2 Connectivity => L<Paws::IoT::ThingConnectivity>
 
-  Indicates whether or not the thing is connected to the AWS IoT service.
+  Indicates whether the thing is connected to the AWS IoT service.
 
 
 =head2 Shadow => Str

@@ -40,7 +40,7 @@ verified domains.
 
 For information about setting up receipt rule sets, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
 
 =head1 ATTRIBUTES
 

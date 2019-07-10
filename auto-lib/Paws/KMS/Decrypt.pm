@@ -32,11 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To decrypt data
     # The following example decrypts data that was encrypted with a customer
     # master key (CMK) in AWS KMS.
-    my $DecryptResponse = $kms->Decrypt(
-      {
-        'CiphertextBlob' => '<binary data>'
-      }
-    );
+    my $DecryptResponse = $kms->Decrypt( 'CiphertextBlob' => '<binary data>' );
 
     # Results:
     my $KeyId     = $DecryptResponse->KeyId;
@@ -61,7 +57,7 @@ Ciphertext to be decrypted. The blob includes metadata.
 The encryption context. If this was specified in the Encrypt function,
 it must be specified here or the decryption operation will fail. For
 more information, see Encryption Context
-(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html).
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context).
 
 
 
@@ -70,7 +66,7 @@ more information, see Encryption Context
 A list of grant tokens.
 
 For more information, see Grant Tokens
-(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 
 

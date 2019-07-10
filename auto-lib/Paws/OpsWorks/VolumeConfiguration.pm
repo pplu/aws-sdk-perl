@@ -46,7 +46,7 @@ Describes an Amazon EBS volume configuration.
 
   Specifies whether an Amazon EBS volume is encrypted. For more
 information, see Amazon EBS Encryption
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html).
 
 
 =head2 Iops => Int
@@ -78,7 +78,7 @@ information, see Amazon EBS Encryption
 =head2 VolumeType => Str
 
   The volume type. For more information, see Amazon EBS Volume Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
 
 =over
 

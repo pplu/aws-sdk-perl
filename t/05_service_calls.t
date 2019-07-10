@@ -592,6 +592,12 @@ $test_params = {
 
 request_contentjson($test_params, $request);
 
+my $mq = $aws->service('MQ');
+
+$request = $mq->ListBrokers;
+
+is($request->content, '', 'There is no body for a method that doesn\'t have parameters');
+
 my $r53 = $aws->service('Route53');
 
 $request = $r53->ListHealthChecks(

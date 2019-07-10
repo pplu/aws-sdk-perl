@@ -53,14 +53,8 @@ The following are the C<error> events:
 
 =item *
 
-C<iamFleetRoleInvalid> - The Spot Fleet did not have the required
-permissions either to launch or terminate an instance.
-
-=item *
-
-C<launchSpecTemporarilyBlacklisted> - The configuration is not valid
-and several attempts to launch instances have failed. For more
-information, see the description of the event.
+C<iamFleetRoleInvalid> - The EC2 Fleet or Spot Fleet did not have the
+required permissions either to launch or terminate an instance.
 
 =item *
 
@@ -80,40 +74,42 @@ The following are the C<fleetRequestChange> events:
 
 =item *
 
-C<active> - The Spot Fleet has been validated and Amazon EC2 is
-attempting to maintain the target number of running Spot Instances.
+C<active> - The EC2 Fleet or Spot Fleet request has been validated and
+Amazon EC2 is attempting to maintain the target number of running Spot
+Instances.
 
 =item *
 
-C<cancelled> - The Spot Fleet is canceled and has no running Spot
-Instances. The Spot Fleet will be deleted two days after its instances
-were terminated.
+C<cancelled> - The EC2 Fleet or Spot Fleet request is canceled and has
+no running Spot Instances. The EC2 Fleet or Spot Fleet will be deleted
+two days after its instances were terminated.
 
 =item *
 
-C<cancelled_running> - The Spot Fleet is canceled and does not launch
-additional Spot Instances. Existing Spot Instances continue to run
-until they are interrupted or terminated.
+C<cancelled_running> - The EC2 Fleet or Spot Fleet request is canceled
+and does not launch additional Spot Instances. Existing Spot Instances
+continue to run until they are interrupted or terminated.
 
 =item *
 
-C<cancelled_terminating> - The Spot Fleet is canceled and its Spot
-Instances are terminating.
+C<cancelled_terminating> - The EC2 Fleet or Spot Fleet request is
+canceled and its Spot Instances are terminating.
 
 =item *
 
-C<expired> - The Spot Fleet request has expired. A subsequent event
-indicates that the instances were terminated, if the request was
-created with C<TerminateInstancesWithExpiration> set.
+C<expired> - The EC2 Fleet or Spot Fleet request has expired. A
+subsequent event indicates that the instances were terminated, if the
+request was created with C<TerminateInstancesWithExpiration> set.
 
 =item *
 
-C<modify_in_progress> - A request to modify the Spot Fleet request was
-accepted and is in progress.
+C<modify_in_progress> - A request to modify the EC2 Fleet or Spot Fleet
+request was accepted and is in progress.
 
 =item *
 
-C<modify_successful> - The Spot Fleet request was modified.
+C<modify_successful> - The EC2 Fleet or Spot Fleet request was
+modified.
 
 =item *
 
@@ -122,8 +118,9 @@ because it was too high. This change is permanent.
 
 =item *
 
-C<submitted> - The Spot Fleet request is being evaluated and Amazon EC2
-is preparing to launch the target number of Spot Instances.
+C<submitted> - The EC2 Fleet or Spot Fleet request is being evaluated
+and Amazon EC2 is preparing to launch the target number of Spot
+Instances.
 
 =back
 
@@ -144,6 +141,12 @@ C<terminated> - An instance was terminated by the user.
 The following are the C<Information> events:
 
 =over
+
+=item *
+
+C<launchSpecTemporarilyBlacklisted> - The configuration is not valid
+and several attempts to launch instances have failed. For more
+information, see the description of the event.
 
 =item *
 

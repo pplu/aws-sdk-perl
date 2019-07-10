@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $ecr = Paws->service('ECR');
-    my $SetRepositoryPolicyResponse = $ecr->SetRepositoryPolicy(
+    my $api.ecr = Paws->service('ECR');
+    my $SetRepositoryPolicyResponse = $api . ecr->SetRepositoryPolicy(
       PolicyText     => 'MyRepositoryPolicyText',
       RepositoryName => 'MyRepositoryName',
       Force          => 1,                          # OPTIONAL
@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ECR::SetRepositoryPolicyResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr/SetRepositoryPolicy>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.ecr/SetRepositoryPolicy>
 
 =head1 ATTRIBUTES
 

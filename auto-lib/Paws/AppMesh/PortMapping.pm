@@ -1,7 +1,7 @@
 package Paws::AppMesh::PortMapping;
   use Moose;
-  has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
+  has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest'], required => 1);
+  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -32,17 +32,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Po
 
 =head1 DESCRIPTION
 
-An object representing a virtual node listener port mapping.
+An object representing a virtual node or virtual router listener port
+mapping.
 
 =head1 ATTRIBUTES
 
 
-=head2 Port => Int
+=head2 B<REQUIRED> Port => Int
 
   The port used for the port mapping.
 
 
-=head2 Protocol => Str
+=head2 B<REQUIRED> Protocol => Str
 
   The protocol used for the port mapping.
 

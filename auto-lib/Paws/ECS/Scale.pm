@@ -33,8 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Scale 
 =head1 DESCRIPTION
 
 A floating-point percentage of the desired number of tasks to place and
-keep running in the service. This is used when a service uses the
-C<CODE_DEPLOY> deployment controller type.
+keep running in the task set.
 
 =head1 ATTRIBUTES
 
@@ -47,7 +46,7 @@ C<CODE_DEPLOY> deployment controller type.
 =head2 Value => Num
 
   The value, specified as a percent total of a service's C<desiredCount>,
-to scale the task set.
+to scale the task set. Accepted values are numbers between 0 and 100.
 
 
 

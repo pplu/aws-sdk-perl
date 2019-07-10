@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glacier = Paws->service('Glacier');
     # To list the provisioned capacity units for an account
     # The example lists the provisioned capacity units for an account.
-    my $ListProvisionedCapacityOutput = $glacier->ListProvisionedCapacity(
-      {
-        'AccountId' => '-'
-      }
-    );
+    my $ListProvisionedCapacityOutput =
+      $glacier->ListProvisionedCapacity( 'AccountId' => '-' );
 
     # Results:
     my $ProvisionedCapacityList =
@@ -52,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gla
 
 The AWS account ID of the account that owns the vault. You can either
 specify an AWS account ID or optionally a single '-' (hyphen), in which
-case Amazon Glacier uses the AWS account ID associated with the
+case Amazon S3 Glacier uses the AWS account ID associated with the
 credentials used to sign the request. If you use an account ID, don't
 include any hyphens ('-') in the ID.
 

@@ -26,7 +26,7 @@ The deployment package of the function or version.
 =head2 Concurrency => L<Paws::Lambda::Concurrency>
 
 The function's reserved concurrency
-(http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
 
 
 =head2 Configuration => L<Paws::Lambda::FunctionConfiguration>
@@ -37,7 +37,7 @@ The configuration of the function or version.
 =head2 Tags => L<Paws::Lambda::Tags>
 
 The function's tags
-(http://docs.aws.amazon.com/lambda/latest/dg/tagging.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/tagging.html).
 
 
 =head2 _request_id => Str

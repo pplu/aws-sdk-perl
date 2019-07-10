@@ -70,7 +70,7 @@ Describes a rule.
 
   The SQL statement used to query the topic. For more information, see
 AWS IoT SQL Reference
-(http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference)
+(https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference)
 in the I<AWS IoT Developer Guide>.
 
 

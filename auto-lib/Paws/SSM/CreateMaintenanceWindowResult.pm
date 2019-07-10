@@ -16,7 +16,7 @@ Paws::SSM::CreateMaintenanceWindowResult
 
 =head2 WindowId => Str
 
-The ID of the created Maintenance Window.
+The ID of the created maintenance window.
 
 
 =head2 _request_id => Str

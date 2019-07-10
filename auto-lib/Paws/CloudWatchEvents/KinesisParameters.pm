@@ -44,7 +44,7 @@ partition key.
 
   The JSON path to be extracted from the event and used as the partition
 key. For more information, see Amazon Kinesis Streams Key Concepts
-(http://docs.aws.amazon.com/streams/latest/dev/key-concepts.html#partition-key)
+(https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html#partition-key)
 in the I<Amazon Kinesis Streams Developer Guide>.
 
 

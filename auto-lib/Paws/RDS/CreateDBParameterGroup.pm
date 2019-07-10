@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a DB parameter group.
     # This example creates a DB parameter group.
     my $CreateDBParameterGroupResult = $rds->CreateDBParameterGroup(
-      {
-        'DBParameterGroupFamily' => 'mysql5.6',
-        'DBParameterGroupName'   => 'mymysqlparametergroup',
-        'Description'            => 'My MySQL parameter group'
-      }
+      'DBParameterGroupFamily' => 'mysql5.6',
+      'DBParameterGroupName'   => 'mymysqlparametergroup',
+      'Description'            => 'My MySQL parameter group'
     );
 
 
@@ -98,7 +96,7 @@ The description for the DB parameter group.
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
+Tags to assign to the DB parameter group.
 
 
 

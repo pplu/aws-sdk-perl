@@ -54,7 +54,7 @@ The details about the failure of a job.
 =head2 B<REQUIRED> JobId => Str
 
 The unique system-generated ID of the job that failed. This is the same
-ID returned from PollForJobs.
+ID returned from C<PollForJobs>.
 
 
 

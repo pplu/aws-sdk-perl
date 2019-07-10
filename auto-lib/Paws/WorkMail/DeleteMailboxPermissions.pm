@@ -44,21 +44,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> EntityId => Str
 
-The identifier of the entity (user or group) for which to delete
-mailbox permissions.
+The identifier of the member (user or group)that owns the mailbox.
 
 
 
 =head2 B<REQUIRED> GranteeId => Str
 
-The identifier of the entity (user or group) for which to delete
+The identifier of the member (user or group) for which to delete
 granted permissions.
 
 
 
 =head2 B<REQUIRED> OrganizationId => Str
 
-The identifier of the organization under which the entity (user or
+The identifier of the organization under which the member (user or
 group) exists.
 
 

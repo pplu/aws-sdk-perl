@@ -56,6 +56,8 @@ Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. For more information, see Ensuring Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
+Constraint: Maximum 128 ASCII characters.
+
 
 
 =head2 DefaultVersion => Str

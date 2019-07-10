@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateEmailChannelResponse = $pinpoint->UpdateEmailChannel(
       ApplicationId       => 'My__string',
       EmailChannelRequest => {
-        ConfigurationSet => 'My__string',
-        Enabled          => 1,              # OPTIONAL
         FromAddress      => 'My__string',
         Identity         => 'My__string',
+        ConfigurationSet => 'My__string',
+        Enabled          => 1,              # OPTIONAL
         RoleArn          => 'My__string',
       },
 
@@ -55,7 +55,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 

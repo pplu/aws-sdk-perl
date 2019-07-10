@@ -6,6 +6,7 @@ package Paws::WAF::CreateRateBasedRule;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RateKey => (is => 'ro', isa => 'Str', required => 1);
   has RateLimit => (is => 'ro', isa => 'Int', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WAF::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -37,7 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyResourceName',
       RateKey     => 'IP',
       RateLimit   => 1,
-
+      Tags        => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -64,8 +71,10 @@ request. For more information, see GetChangeTokenStatus.
 
 A friendly name or description for the metrics for this
 C<RateBasedRule>. The name can contain only alphanumeric characters
-(A-Z, a-z, 0-9); the name can't contain whitespace. You can't change
-the name of the metric after you create the C<RateBasedRule>.
+(A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It
+can't contain whitespace or metric names reserved for AWS WAF,
+including "All" and "Default_Action." You can't change the name of the
+metric after you create the C<RateBasedRule>.
 
 
 
@@ -93,6 +102,12 @@ field that is specified by C<RateKey>, allowed in a five-minute period.
 If the number of requests exceeds the C<RateLimit> and the other
 predicates specified in the rule are also met, AWS WAF triggers the
 action that is specified for this rule.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::WAF::Tag>]
+
+
 
 
 

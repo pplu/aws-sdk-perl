@@ -34,10 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example lists the Spot Instances associated with the specified Spot
     # fleet.
     my $DescribeSpotFleetInstancesResponse = $ec2->DescribeSpotFleetInstances(
-      {
-        'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'
-      }
-    );
+      'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE' );
 
     # Results:
     my $ActiveInstances = $DescribeSpotFleetInstancesResponse->ActiveInstances;

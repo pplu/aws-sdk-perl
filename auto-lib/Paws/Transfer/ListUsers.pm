@@ -57,10 +57,10 @@ C<ListUsers> request.
 
 =head2 NextToken => Str
 
-When you can get additional results from the C<ListUsers>ListUsers
-call, a C<NextToken> parameter is returned in the output. You can then
-pass in a subsequent command the C<NextToken> parameter to continue
-listing additional users.
+When you can get additional results from the C<ListUsers> call, a
+C<NextToken> parameter is returned in the output. You can then pass in
+a subsequent command the C<NextToken> parameter to continue listing
+additional users.
 
 
 

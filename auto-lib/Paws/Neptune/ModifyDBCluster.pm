@@ -3,6 +3,7 @@ package Paws::Neptune::ModifyDBCluster;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
+  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::Neptune::CloudwatchLogsExportConfiguration');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
@@ -40,9 +41,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $rds = Paws->service('Neptune');
     my $ModifyDBClusterResult = $rds->ModifyDBCluster(
-      DBClusterIdentifier             => 'MyString',
-      ApplyImmediately                => 1,                      # OPTIONAL
-      BackupRetentionPeriod           => 1,                      # OPTIONAL
+      DBClusterIdentifier               => 'MyString',
+      ApplyImmediately                  => 1,            # OPTIONAL
+      BackupRetentionPeriod             => 1,            # OPTIONAL
+      CloudwatchLogsExportConfiguration => {
+        DisableLogTypes => [ 'MyString', ... ],          # OPTIONAL
+        EnableLogTypes  => [ 'MyString', ... ],          # OPTIONAL
+      },    # OPTIONAL
       DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
       EngineVersion                   => 'MyString',             # OPTIONAL
@@ -103,6 +108,13 @@ Must be a value from 1 to 35
 
 =back
 
+
+
+
+=head2 CloudwatchLogsExportConfiguration => L<Paws::Neptune::CloudwatchLogsExportConfiguration>
+
+The configuration setting for the log types to be enabled for export to
+CloudWatch Logs for a specific DB cluster.
 
 
 

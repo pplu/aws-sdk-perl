@@ -6,6 +6,7 @@ package Paws::SSM::CreateActivation;
   has ExpirationDate => (is => 'ro', isa => 'Str');
   has IamRole => (is => 'ro', isa => 'Str', required => 1);
   has RegistrationLimit => (is => 'ro', isa => 'Int');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -37,6 +38,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description         => 'MyActivationDescription',    # OPTIONAL
       ExpirationDate      => '1970-01-01T01:00:00',        # OPTIONAL
       RegistrationLimit   => 1,                            # OPTIONAL
+      Tags                => [
+        {
+          Key   => 'MyTagKey',                             # min: 1, max: 128
+          Value => 'MyTagValue',                           # min: 1, max: 256
+
+        },
+        ...
+      ],                                                   # OPTIONAL
     );
 
     # Results:
@@ -88,6 +97,43 @@ assign to the managed instance.
 
 Specify the maximum number of managed instances you want to register.
 The default value is 1 instance.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+
+Optional metadata that you assign to a resource. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag an activation to
+identify which servers or virtual machines (VMs) in your on-premises
+environment you intend to activate. In this case, you could specify the
+following key name/value pairs:
+
+=over
+
+=item *
+
+C<Key=OS,Value=Windows>
+
+=item *
+
+C<Key=Environment,Value=Production>
+
+=back
+
+When you install SSM Agent on your on-premises servers and VMs, you
+specify an activation ID and code. When you specify the activation ID
+and code, tags assigned to the activation are automatically applied to
+the on-premises servers or VMs.
+
+You can't add tags to or delete tags from an existing activation. You
+can tag your on-premises servers and VMs after they connect to Systems
+Manager for the first time and are assigned a managed instance ID. This
+means they are listed in the AWS Systems Manager console with an ID
+that is prefixed with "mi-". For information about how to add tags to
+your managed instances, see AddTagsToResource. For information about
+how to remove tags from your managed instances, see
+RemoveTagsFromResource.
 
 
 

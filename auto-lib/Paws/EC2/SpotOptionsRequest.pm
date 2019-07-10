@@ -3,6 +3,7 @@ package Paws::EC2::SpotOptionsRequest;
   has AllocationStrategy => (is => 'ro', isa => 'Str');
   has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str');
   has InstancePoolsToUseCount => (is => 'ro', isa => 'Int');
+  has MaxTotalPrice => (is => 'ro', isa => 'Str');
   has MinTargetCapacity => (is => 'ro', isa => 'Int');
   has SingleAvailabilityZone => (is => 'ro', isa => 'Bool');
   has SingleInstanceType => (is => 'ro', isa => 'Bool');
@@ -60,6 +61,12 @@ capacity. Valid only when Spot B<AllocationStrategy> is set to
 C<lowest-price>. EC2 Fleet selects the cheapest Spot pools and evenly
 allocates your target Spot capacity across the number of Spot pools
 that you specify.
+
+
+=head2 MaxTotalPrice => Str
+
+  The maximum amount per hour for Spot Instances that you're willing to
+pay.
 
 
 =head2 MinTargetCapacity => Int

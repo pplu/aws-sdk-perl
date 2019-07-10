@@ -51,9 +51,9 @@ reason (if applicable) for the query execution.
 by Athena and is reserved for future use. C<RUNNING> indicates that the
 query has been submitted to the service, and Athena will execute the
 query as soon as resources are available. C<SUCCEEDED> indicates that
-the query completed without error. C<FAILED> indicates that the query
-experienced an error and did not complete processing.C<CANCELLED>
-indicates that user input interrupted query execution.
+the query completed without errors. C<FAILED> indicates that the query
+experienced an error and did not complete processing. C<CANCELLED>
+indicates that a user input interrupted query execution.
 
 
 =head2 StateChangeReason => Str

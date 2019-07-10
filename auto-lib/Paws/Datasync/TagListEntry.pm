@@ -1,6 +1,6 @@
 package Paws::Datasync::TagListEntry;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
+  has Key => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str');
 1;
 
@@ -39,7 +39,7 @@ ListTagsForResource operation is called.
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 B<REQUIRED> Key => Str
 
   The key for an AWS resource tag.
 

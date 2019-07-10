@@ -124,8 +124,8 @@ Allows grantee to write the ACL for the applicable bucket.
 
 =head2 ObjectLockEnabledForBucket => Bool
 
-Specifies whether you want S3 Object Lock to be enabled for the new
-bucket.
+Specifies whether you want Amazon S3 object lock to be enabled for the
+new bucket.
 
 
 

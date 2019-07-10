@@ -1,6 +1,7 @@
 
 package Paws::ServiceCatalog::DescribePortfolioOutput;
   use Moose;
+  has Budgets => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::BudgetDetail]');
   has PortfolioDetail => (is => 'ro', isa => 'Paws::ServiceCatalog::PortfolioDetail');
   has TagOptions => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::TagOptionDetail]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
@@ -14,6 +15,11 @@ package Paws::ServiceCatalog::DescribePortfolioOutput;
 Paws::ServiceCatalog::DescribePortfolioOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 Budgets => ArrayRef[L<Paws::ServiceCatalog::BudgetDetail>]
+
+Information about the associated budgets.
 
 
 =head2 PortfolioDetail => L<Paws::ServiceCatalog::PortfolioDetail>

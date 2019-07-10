@@ -3,6 +3,7 @@ package Paws::ApiGateway::CreateVpcLink;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
   has TargetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targetArns', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,7 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $VpcLink = $apigateway->CreateVpcLink(
       Name        => 'MyString',
       TargetArns  => [ 'MyString', ... ],
-      Description => 'MyString',            # OPTIONAL
+      Description => 'MyString',                       # OPTIONAL
+      Tags        => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 
     # Results:
@@ -42,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Name          = $VpcLink->Name;
     my $Status        = $VpcLink->Status;
     my $StatusMessage = $VpcLink->StatusMessage;
+    my $Tags          = $VpcLink->Tags;
     my $TargetArns    = $VpcLink->TargetArns;
 
     # Returns a L<Paws::ApiGateway::VpcLink> object.
@@ -61,6 +64,14 @@ The description of the VPC link.
 =head2 B<REQUIRED> Name => Str
 
 [Required] The name used to label and identify the VPC link.
+
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with C<aws:>. The tag value can be up to 256 characters.
 
 
 

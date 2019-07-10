@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a Lambda function alias
     # This operation retrieves a Lambda function alias
     my $AliasConfiguration = $lambda->GetAlias(
-      {
-        'FunctionName' => 'myFunction',
-        'Name'         => 'myFunctionAlias'
-      }
+      'FunctionName' => 'myFunction',
+      'Name'         => 'myFunctionAlias'
     );
 
     # Results:
@@ -54,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 

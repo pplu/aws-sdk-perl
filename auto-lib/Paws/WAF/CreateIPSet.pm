@@ -31,10 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an IP set
     # The following example creates an IP match set named MyIPSetFriendlyName.
     my $CreateIPSetResponse = $waf->CreateIPSet(
-      {
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'Name'        => 'MyIPSetFriendlyName'
-      }
+      'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+      'Name'        => 'MyIPSetFriendlyName'
     );
 
     # Results:

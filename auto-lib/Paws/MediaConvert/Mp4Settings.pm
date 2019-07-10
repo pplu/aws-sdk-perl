@@ -41,17 +41,23 @@ Settings for MP4 Container
 
 =head2 CslgAtom => Str
 
-  
+  When enabled, file composition times will start at zero, composition
+times in the 'ctts' (composition time to sample) box for B-frames will
+be negative, and a 'cslg' (composition shift least greatest) box will
+be included per 14496-1 amendment 1. This improves compatibility with
+Apple players and tools.
 
 
 =head2 FreeSpaceBox => Str
 
-  
+  Inserts a free-space box immediately after the moov box.
 
 
 =head2 MoovPlacement => Str
 
-  
+  If set to PROGRESSIVE_DOWNLOAD, the MOOV atom is relocated to the
+beginning of the archive as required for progressive downloading.
+Otherwise it is placed normally at the end.
 
 
 =head2 Mp4MajorBrand => Str

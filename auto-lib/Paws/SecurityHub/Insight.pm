@@ -41,14 +41,14 @@ Contains information about a Security Hub insight.
 
 =head2 B<REQUIRED> Filters => L<Paws::SecurityHub::AwsSecurityFindingFilters>
 
-  A collection of attributes that are applied to all active Security
-Hub-aggregated findings and that result in a subset of findings that
-are included in this insight.
+  One or more attributes used to filter the findings included in the
+insight. Only findings that match the criteria defined in the filters
+are included in the insight.
 
 
 =head2 B<REQUIRED> GroupByAttribute => Str
 
-  The attribute by which the insight's findings are grouped. This
+  The attribute that the insight's findings are grouped by. This
 attribute is used as a findings aggregator for the purposes of viewing
 and managing multiple related findings under a single operand.
 

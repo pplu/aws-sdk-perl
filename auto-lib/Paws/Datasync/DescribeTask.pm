@@ -40,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DestinationLocationArn = $DescribeTaskResponse->DestinationLocationArn;
     my $ErrorCode              = $DescribeTaskResponse->ErrorCode;
     my $ErrorDetail            = $DescribeTaskResponse->ErrorDetail;
+    my $Excludes               = $DescribeTaskResponse->Excludes;
     my $Name                   = $DescribeTaskResponse->Name;
     my $Options                = $DescribeTaskResponse->Options;
     my $SourceLocationArn      = $DescribeTaskResponse->SourceLocationArn;

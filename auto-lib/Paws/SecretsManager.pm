@@ -167,7 +167,7 @@ and retrieve, secrets.
 This guide provides descriptions of the Secrets Manager API. For more
 information about using this service, see the AWS Secrets Manager User
 Guide
-(http://docs.aws.amazon.com/secretsmanager/latest/userguide/introduction.html).
+(https://docs.aws.amazon.com/secretsmanager/latest/userguide/introduction.html).
 
 B<API Version>
 
@@ -189,7 +189,7 @@ to Secrets Manager. However, you also can use the Secrets Manager HTTP
 Query API to make direct calls to the Secrets Manager web service. To
 learn more about the Secrets Manager HTTP Query API, see Making Query
 Requests
-(http://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html)
+(https://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html)
 in the I<AWS Secrets Manager User Guide>.
 
 Secrets Manager supports GET and POST requests for all actions. That
@@ -232,7 +232,7 @@ Secrets Manager Events with AWS CloudTrail
 in the I<AWS Secrets Manager User Guide>. To learn more about
 CloudTrail, including how to turn it on and find your log files, see
 the AWS CloudTrail User Guide
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager-2017-10-17>
 
@@ -940,7 +940,7 @@ Using Resource-Based Policies for AWS Secrets Manager
 (http://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html).
 For the complete description of the AWS policy syntax and grammar, see
 IAM JSON Policy Reference
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
 in the I<IAM User Guide>.
 
 B<Minimum permissions>
@@ -1193,7 +1193,7 @@ staging label C<AWSCURRENT> so that your clients all immediately begin
 to use the new version. For more information about rotating secrets and
 how to configure a Lambda function to rotate the secrets for your
 protected service, see Rotating Secrets in AWS Secrets Manager
-(http://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
+(https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
 in the I<AWS Secrets Manager User Guide>.
 
 Secrets Manager schedules the next rotation when the previous one is
@@ -1572,7 +1572,7 @@ a secret at a time. If a staging label to be added is already attached
 to another version, then it is moved--removed from the other version
 first and then attached to this one. For more information about staging
 labels, see Staging Labels
-(http://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label)
+(https://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label)
 in the I<AWS Secrets Manager User Guide>.
 
 The staging labels that you specify in the C<VersionStage> parameter

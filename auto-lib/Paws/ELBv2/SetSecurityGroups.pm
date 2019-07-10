@@ -32,11 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example associates the specified security group with the specified
     # load balancer.
     my $SetSecurityGroupsOutput = $elasticloadbalancing->SetSecurityGroups(
-      {
-        'LoadBalancerArn' =>
+      'LoadBalancerArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',
-        'SecurityGroups' => ['sg-5943793c']
-      }
+      'SecurityGroups' => ['sg-5943793c']
     );
 
     # Results:

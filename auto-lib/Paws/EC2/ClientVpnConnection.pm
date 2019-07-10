@@ -60,8 +60,8 @@ This class has no description
 
 =head2 CommonName => Str
 
-  B<The common name associated with the client. This is either the name
-of the client certificate, or the Active Directory user name.>
+  The common name associated with the client. This is either the name of
+the client certificate, or the Active Directory user name.
 
 
 =head2 ConnectionEndTime => Str
@@ -106,7 +106,7 @@ of the client certificate, or the Active Directory user name.>
 
 =head2 Timestamp => Str
 
-  B<The current date and time.>
+  The current date and time.
 
 
 =head2 Username => Str

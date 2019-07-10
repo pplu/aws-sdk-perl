@@ -7,6 +7,7 @@ package Paws::IoT::CreateOTAUpdate;
   has Files => (is => 'ro', isa => 'ArrayRef[Paws::IoT::OTAUpdateFile]', traits => ['NameInRequest'], request_name => 'files', required => 1);
   has OtaUpdateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'otaUpdateId', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targets', required => 1);
   has TargetSelection => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetSelection');
 
@@ -91,8 +92,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AwsJobExecutionsRolloutConfig => {
         MaximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
       },    # OPTIONAL
-      Description     => 'MyOTAUpdateDescription',    # OPTIONAL
-      TargetSelection => 'CONTINUOUS',                # OPTIONAL
+      Description => 'MyOTAUpdateDescription',    # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MyTagKey',                    # OPTIONAL
+          Value => 'MyTagValue',                  # OPTIONAL
+        },
+        ...
+      ],                                          # OPTIONAL
+      TargetSelection => 'CONTINUOUS',            # OPTIONAL
     );
 
     # Results:
@@ -143,6 +151,12 @@ The ID of the OTA update to be created.
 =head2 B<REQUIRED> RoleArn => Str
 
 The IAM role that allows access to the AWS IoT Jobs service.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+Metadata which can be used to manage updates.
 
 
 

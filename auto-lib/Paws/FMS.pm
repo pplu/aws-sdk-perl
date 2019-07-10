@@ -55,6 +55,11 @@ package Paws::FMS;
     my $call_object = $self->new_with_coercions('Paws::FMS::GetPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetProtectionStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::GetProtectionStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListComplianceStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FMS::ListComplianceStatus', @_);
@@ -152,7 +157,7 @@ package Paws::FMS;
   }
 
 
-  sub operations { qw/AssociateAdminAccount DeleteNotificationChannel DeletePolicy DisassociateAdminAccount GetAdminAccount GetComplianceDetail GetNotificationChannel GetPolicy ListComplianceStatus ListMemberAccounts ListPolicies PutNotificationChannel PutPolicy / }
+  sub operations { qw/AssociateAdminAccount DeleteNotificationChannel DeletePolicy DisassociateAdminAccount GetAdminAccount GetComplianceDetail GetNotificationChannel GetPolicy GetProtectionStatus ListComplianceStatus ListMemberAccounts ListPolicies PutNotificationChannel PutPolicy / }
 
 1;
 
@@ -186,7 +191,7 @@ This is the I<AWS Firewall Manager API Reference>. This guide is for
 developers who need detailed information about the AWS Firewall Manager
 API actions, data types, and errors. For detailed information about AWS
 Firewall Manager features, see the AWS Firewall Manager Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
+(https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fms-2018-01-01>
 
@@ -334,6 +339,33 @@ Returns: a L<Paws::FMS::GetPolicyResponse> instance
 Returns information about the specified AWS Firewall Manager policy.
 
 
+=head2 GetProtectionStatus
+
+=over
+
+=item PolicyId => Str
+
+=item [EndTime => Str]
+
+=item [MaxResults => Int]
+
+=item [MemberAccountId => Str]
+
+=item [NextToken => Str]
+
+=item [StartTime => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::GetProtectionStatus>
+
+Returns: a L<Paws::FMS::GetProtectionStatusResponse> instance
+
+If you created a Shield Advanced policy, returns policy-level attack
+summary information in the event of a potential DDoS attack.
+
+
 =head2 ListComplianceStatus
 
 =over
@@ -429,6 +461,20 @@ Each argument is described in detail in: L<Paws::FMS::PutPolicy>
 Returns: a L<Paws::FMS::PutPolicyResponse> instance
 
 Creates an AWS Firewall Manager policy.
+
+Firewall Manager provides two types of policies: A Shield Advanced
+policy, which applies Shield Advanced protection to specified accounts
+and resources, or a WAF policy, which contains a rule group and defines
+which resources are to be protected by that rule group. A policy is
+specific to either WAF or Shield Advanced. If you want to enforce both
+WAF rules and Shield Advanced protection across accounts, you can
+create multiple policies. You can create one or more policies for WAF
+rules, and one or more policies for Shield Advanced.
+
+You must be subscribed to Shield Advanced to create a Shield Advanced
+policy. For more information on subscribing to Shield Advanced, see
+CreateSubscription
+(https://docs.aws.amazon.com/waf/latest/DDOSAPIReference/API_CreateSubscription.html).
 
 
 

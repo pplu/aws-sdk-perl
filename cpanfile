@@ -5,7 +5,6 @@ requires 'HTTP::Tiny';
 requires 'Throwable::Error';
 requires 'Data::Compare';
 requires 'URI';
-requires 'Net::Amazon::Signature::V3';
 requires 'Net::Amazon::Signature::V4';
 requires 'JSON::MaybeXS';
 requires 'XML::Simple' => '2.21';

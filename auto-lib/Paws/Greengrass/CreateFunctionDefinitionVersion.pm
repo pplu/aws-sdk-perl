@@ -39,6 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Execution => {
           IsolationMode => 'GreengrassContainer'
           ,    # values: GreengrassContainer, NoContainer; OPTIONAL
+          RunAs => {
+            Gid => 1,    # OPTIONAL
+            Uid => 1,    # OPTIONAL
+          },    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Functions => [
@@ -100,8 +104,9 @@ A client token used to correlate requests and responses.
 
 =head2 DefaultConfig => L<Paws::Greengrass::FunctionDefaultConfig>
 
-Default configuration that will apply to all Lambda functions in this
-function definition version
+The default configuration that applies to all Lambda functions in this
+function definition version. Individual Lambda functions can override
+these settings.
 
 
 

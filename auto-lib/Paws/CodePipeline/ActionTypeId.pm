@@ -56,7 +56,10 @@ limited to one of the values below.
   The provider of the service being called by the action. Valid providers
 are determined by the action category. For example, an action in the
 Deploy category type might have a provider of AWS CodeDeploy, which
-would be specified as CodeDeploy.
+would be specified as CodeDeploy. To reference a list of action
+providers by action type, see Valid Action Types and Providers in
+CodePipeline
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#actions-valid-providers).
 
 
 =head2 B<REQUIRED> Version => Str

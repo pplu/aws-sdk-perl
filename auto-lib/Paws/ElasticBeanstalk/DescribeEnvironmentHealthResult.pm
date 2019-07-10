@@ -36,7 +36,7 @@ health status.
 =head2 Color => Str
 
 The health color
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html)
 of the environment.
 
 
@@ -48,7 +48,7 @@ The environment's name.
 =head2 HealthStatus => Str
 
 The health status
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html)
 of the environment. For example, C<Ok>.
 
 

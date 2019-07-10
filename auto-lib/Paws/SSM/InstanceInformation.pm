@@ -108,7 +108,7 @@ managed instances.
 
 =head2 LastAssociationExecutionDate => Str
 
-  The date the association was last executed.
+  The date the association was last run.
 
 
 =head2 LastPingDateTime => Str

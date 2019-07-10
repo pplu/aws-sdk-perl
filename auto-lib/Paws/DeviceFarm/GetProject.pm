@@ -29,12 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $devicefarm = Paws->service('DeviceFarm');
     # To get information about a project
     # The following example gets information about a specific project.
-    my $GetProjectResult = $devicefarm->GetProject(
-      {
-        'Arn' =>
+    my $GetProjectResult =
+      $devicefarm->GetProject( 'Arn' =>
 'arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12345EXAMPLE'
-      }
-    );
+      );
 
     # Results:
     my $project = $GetProjectResult->project;

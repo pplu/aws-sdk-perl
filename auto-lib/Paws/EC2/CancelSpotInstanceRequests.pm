@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To cancel Spot Instance requests
     # This example cancels a Spot Instance request.
     my $CancelSpotInstanceRequestsResult = $ec2->CancelSpotInstanceRequests(
-      {
-        'SpotInstanceRequestIds' => ['sir-08b93456']
-      }
-    );
+      'SpotInstanceRequestIds' => ['sir-08b93456'] );
 
     # Results:
     my $CancelledSpotInstanceRequests =

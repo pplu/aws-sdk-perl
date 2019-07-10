@@ -53,7 +53,10 @@ ISO 639-2 or ISO 639-3 three-letter language code
 
 =head2 DefaultSelection => Str
 
-  
+  Enable this setting on one audio selector to set it as the default for
+the job. The service uses this default for outputs where it can't find
+the specified input audio. If you don't set a default, those outputs
+have no audio.
 
 
 =head2 ExternalAudioFileInput => Str
@@ -101,7 +104,7 @@ single output, one after the other.
 
 =head2 SelectorType => Str
 
-  
+  Specifies the type of the audio selector.
 
 
 =head2 Tracks => ArrayRef[Int]

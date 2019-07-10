@@ -24,9 +24,9 @@ The capacity units consumed by the C<Query> operation. The data
 returned includes the total provisioned throughput consumed, along with
 statistics for the table and any indexes involved in the operation.
 C<ConsumedCapacity> is only returned if the C<ReturnConsumedCapacity>
-parameter was specified For more information, see Provisioned
+parameter was specified. For more information, see Provisioned
 Throughput
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -71,7 +71,7 @@ The number of items evaluated, before any C<QueryFilter> is applied. A
 high C<ScannedCount> value with few, or no, C<Count> results indicates
 an inefficient C<Query> operation. For more information, see Count and
 ScannedCount
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count)
 in the I<Amazon DynamoDB Developer Guide>.
 
 If you did not use a filter in the request, then C<ScannedCount> is the

@@ -51,8 +51,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> EntityId => Str
 
-The identifier of the entity (user or group) for which to list mailbox
-permissions.
+The identifier of the user, group, or resource for which to list
+mailbox permissions.
 
 
 
@@ -71,8 +71,8 @@ does not contain any tokens.
 
 =head2 B<REQUIRED> OrganizationId => Str
 
-The identifier of the organization under which the entity (user or
-group) exists.
+The identifier of the organization under which the user, group, or
+resource exists.
 
 
 

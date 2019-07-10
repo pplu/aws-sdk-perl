@@ -34,17 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation searches for faces in a Rekognition collection that match
     # the largest face in an S3 bucket stored image.
     my $SearchFacesByImageResponse = $rekognition->SearchFacesByImage(
-      {
-        'CollectionId'       => 'myphotos',
-        'FaceMatchThreshold' => 95,
-        'Image'              => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'myphoto'
-          }
-        },
-        'MaxFaces' => 5
-      }
+      'CollectionId'       => 'myphotos',
+      'FaceMatchThreshold' => 95,
+      'Image'              => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'myphoto'
+        }
+      },
+      'MaxFaces' => 5
     );
 
     # Results:
@@ -81,6 +79,10 @@ matches is less than 70%.
 The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 image bytes is not supported.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
 
 
 

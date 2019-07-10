@@ -32,17 +32,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AdditionalSchemaElements => [
           'RESOURCES', ...    # values: RESOURCES
         ],
-        Compression => 'ZIP',             # values: ZIP, GZIP
-        Format      => 'textORcsv',       # values: textORcsv
+        Compression => 'ZIP',             # values: ZIP, GZIP, Parquet
+        Format      => 'textORcsv',       # values: textORcsv, Parquet
         ReportName  => 'MyReportName',    # max: 256
         S3Bucket    => 'MyS3Bucket',      # max: 256
         S3Prefix    => 'MyS3Prefix',      # max: 256
         S3Region    => 'us-east-1'
-        , # values: us-east-1, us-west-1, us-west-2, eu-central-1, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1
+        , # values: us-east-1, us-west-1, us-west-2, eu-central-1, eu-west-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, eu-north-1, ap-northeast-3
         TimeUnit            => 'HOURLY',    # values: HOURLY, DAILY
         AdditionalArtifacts => [
-          'REDSHIFT', ...                   # values: REDSHIFT, QUICKSIGHT
-        ],                                  # OPTIONAL
+          'REDSHIFT', ...    # values: REDSHIFT, QUICKSIGHT, ATHENA
+        ],                   # OPTIONAL
+        RefreshClosedReports => 1,                    # OPTIONAL
+        ReportVersioning     => 'CREATE_NEW_REPORT'
+        ,    # values: CREATE_NEW_REPORT, OVERWRITE_REPORT; OPTIONAL
       },
 
     );
@@ -55,7 +58,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cur
 
 =head2 B<REQUIRED> ReportDefinition => L<Paws::CUR::ReportDefinition>
 
-
+Represents the output of the PutReportDefinition operation. The content
+consists of the detailed metadata and data file information.
 
 
 

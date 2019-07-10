@@ -36,15 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Criteria => {
             ComparisonOperator => 'less-than'
             , # values: less-than, less-than-equals, greater-than, greater-than-equals, in-cidr-set, not-in-cidr-set, in-port-set, not-in-port-set; OPTIONAL
-            DurationSeconds => 1,    # OPTIONAL
-            Value           => {
+            ConsecutiveDatapointsToAlarm => 1,    # min: 1, max: 10; OPTIONAL
+            ConsecutiveDatapointsToClear => 1,    # min: 1, max: 10; OPTIONAL
+            DurationSeconds              => 1,    # OPTIONAL
+            StatisticalThreshold         => {
+              Statistic => 'MyEvaluationStatistic',    # OPTIONAL
+            },    # OPTIONAL
+            Value => {
               Cidrs => [
-                'MyCidr', ...        # min: 2, max: 43
-              ],                     # OPTIONAL
-              Count => 1,            # OPTIONAL
+                'MyCidr', ...    # min: 2, max: 43
+              ],                 # OPTIONAL
+              Count => 1,        # OPTIONAL
               Ports => [
-                1, ...               # max: 65535
-              ],                     # OPTIONAL
+                1, ...           # max: 65535
+              ],                 # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
           Metric => 'MyBehaviorMetric',    # OPTIONAL

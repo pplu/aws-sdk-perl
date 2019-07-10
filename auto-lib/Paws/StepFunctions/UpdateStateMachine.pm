@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sta
 
 The Amazon States Language definition of the state machine. See Amazon
 States Language
-(http://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
+(https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 
 
 

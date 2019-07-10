@@ -82,11 +82,11 @@ compute environment.
 
   The Amazon ECS instance profile applied to Amazon EC2 instances in a
 compute environment. You can specify the short name or full Amazon
-Resource Name (ARN) of an instance profile. For example,
-C<ecsInstanceRole> or
-C<arn:aws:iam::E<lt>aws_account_idE<gt>:instance-profile/ecsInstanceRole>.
-For more information, see Amazon ECS Instance Role
-(http://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html)
+Resource Name (ARN) of an instance profile. For example, C<
+I<ecsInstanceRole> > or
+C<arn:aws:iam::I<E<lt>aws_account_idE<gt>>:instance-profile/I<ecsInstanceRole>
+>. For more information, see Amazon ECS Instance Role
+(https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html)
 in the I<AWS Batch User Guide>.
 
 
@@ -96,8 +96,8 @@ in the I<AWS Batch User Guide>.
 families to launch any instance type within those families (for
 example, C<c4> or C<p3>), or you can specify specific sizes within a
 family (such as C<c4.8xlarge>). You can also choose C<optimal> to pick
-instance types (from the latest C, M, and R instance families) on the
-fly that match the demand of your job queues.
+instance types (from the C, M, and R instance families) on the fly that
+match the demand of your job queues.
 
 
 =head2 LaunchTemplate => L<Paws::Batch::LaunchTemplateSpecification>
@@ -106,7 +106,10 @@ fly that match the demand of your job queues.
 compute resource parameters that you specify in a
 CreateComputeEnvironment API operation override the same parameters in
 the launch template. You must specify either the launch template ID or
-launch template name in the request, but not both.
+launch template name in the request, but not both. For more
+information, see Launch Template Support
+(https://docs.aws.amazon.com/batch/latest/userguide/launch-templates.html)
+in the I<AWS Batch User Guide>.
 
 
 =head2 B<REQUIRED> MaxvCpus => Int
@@ -129,7 +132,7 @@ group and associate it with your compute resources. This keeps your
 multi-node parallel job on a logical grouping of instances within a
 single Availability Zone with high network flow potential. For more
 information, see Placement Groups
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
@@ -142,7 +145,10 @@ the compute environment.
 =head2 SpotIamFleetRole => Str
 
   The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role
-applied to a C<SPOT> compute environment.
+applied to a C<SPOT> compute environment. For more information, see
+Amazon EC2 Spot Fleet Role
+(https://docs.aws.amazon.com/batch/latest/userguide/spot_fleet_IAM_role.html)
+in the I<AWS Batch User Guide>.
 
 
 =head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
@@ -153,12 +159,15 @@ applied to a C<SPOT> compute environment.
 =head2 Tags => L<Paws::Batch::TagsMap>
 
   Key-value pair tags to be applied to resources that are launched in the
-compute environment.
+compute environment. For AWS Batch, these take the form of "String1":
+"String2", where String1 is the tag key and String2 is the tag
+valueE<mdash>for example, { "Name": "AWS Batch Instance - C4OnDemand"
+}.
 
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of compute environment.
+  The type of compute environment: EC2 or SPOT.
 
 
 

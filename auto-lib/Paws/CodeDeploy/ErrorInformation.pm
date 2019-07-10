@@ -40,9 +40,9 @@ Information about a deployment error.
 =head2 Code => Str
 
   For more information, see Error Codes for AWS CodeDeploy
-(http://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html)
+(https://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html)
 in the AWS CodeDeploy User Guide
-(http://docs.aws.amazon.com/codedeploy/latest/userguide).
+(https://docs.aws.amazon.com/codedeploy/latest/userguide).
 
 The error code:
 

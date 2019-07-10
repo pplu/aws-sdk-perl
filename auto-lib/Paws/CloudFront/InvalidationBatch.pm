@@ -64,7 +64,7 @@ C<InvalidationBatchAlreadyExists> error.
   A complex type that contains information about the objects that you
 want to invalidate. For more information, see Specifying the Objects to
 Invalidate
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#invalidation-specifying-objects)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#invalidation-specifying-objects)
 in the I<Amazon CloudFront Developer Guide>.
 
 

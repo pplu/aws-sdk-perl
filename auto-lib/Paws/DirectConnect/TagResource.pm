@@ -54,7 +54,7 @@ The Amazon Resource Name (ARN) of the resource.
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
 
-The tags to add.
+The tags to assign.
 
 
 

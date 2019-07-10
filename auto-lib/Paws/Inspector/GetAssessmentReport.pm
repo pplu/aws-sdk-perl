@@ -67,7 +67,7 @@ Valid values are: C<"HTML">, C<"PDF">
 Specifies the type of the assessment report that you want to generate.
 There are two types of assessment reports: a finding report and a full
 report. For more information, see Assessment Reports
-(http://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html).
+(https://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html).
 
 Valid values are: C<"FINDING">, C<"FULL">
 

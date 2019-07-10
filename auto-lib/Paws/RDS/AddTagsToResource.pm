@@ -31,17 +31,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To add tags to a resource
     # This example adds a tag to an option group.
     $rds->AddTagsToResource(
-      {
-        'ResourceName' =>
-          'arn:aws:rds:us-east-1:992648334831:og:mymysqloptiongroup',
-        'Tags' => [
+      'ResourceName' =>
+        'arn:aws:rds:us-east-1:992648334831:og:mymysqloptiongroup',
+      'Tags' => [
 
-          {
-            'Key'   => 'Staging',
-            'Value' => 'LocationDB'
-          }
-        ]
-      }
+        {
+          'Key'   => 'Staging',
+          'Value' => 'LocationDB'
+        }
+      ]
     );
 
 
@@ -56,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 The Amazon RDS resource that the tags are added to. This value is an
 Amazon Resource Name (ARN). For information about creating an ARN, see
 Constructing an RDS Amazon Resource Name (ARN)
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 
 
 

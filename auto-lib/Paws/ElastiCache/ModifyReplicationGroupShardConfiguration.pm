@@ -83,9 +83,9 @@ of the shard configuration.
 =head2 NodeGroupsToRemove => ArrayRef[Str|Undef]
 
 If the value of C<NodeGroupCount> is less than the current number of
-node groups (shards), the C<NodeGroupsToRemove> or
-C<NodeGroupsToRetain> is a required list of node group ids to remove
-from or retain in the cluster.
+node groups (shards), then either C<NodeGroupsToRemove> or
+C<NodeGroupsToRetain> is required. C<NodeGroupsToRemove> is a list of
+C<NodeGroupId>s to remove from the cluster.
 
 ElastiCache for Redis will attempt to remove all node groups listed by
 C<NodeGroupsToRemove> from the cluster.
@@ -95,9 +95,9 @@ C<NodeGroupsToRemove> from the cluster.
 =head2 NodeGroupsToRetain => ArrayRef[Str|Undef]
 
 If the value of C<NodeGroupCount> is less than the current number of
-node groups (shards), the C<NodeGroupsToRemove> or
-C<NodeGroupsToRetain> is a required list of node group ids to remove
-from or retain in the cluster.
+node groups (shards), then either C<NodeGroupsToRemove> or
+C<NodeGroupsToRetain> is required. C<NodeGroupsToRetain> is a list of
+C<NodeGroupId>s to retain in the cluster.
 
 ElastiCache for Redis will attempt to remove all node groups except
 those listed by C<NodeGroupsToRetain> from the cluster.

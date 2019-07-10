@@ -692,7 +692,7 @@ Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint
 receives a confirmation message, and must confirm the subscription.
 
 For more information, see Subscribe to Notifications
-(http://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html)
+(https://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html)
 in the I<Amazon WorkDocs Developer Guide>.
 
 
@@ -1123,7 +1123,7 @@ This action requires an authentication token. To get an authentication
 token, register an application with Amazon WorkDocs. For more
 information, see Authentication and Access Control for User
 Applications
-(http://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html)
+(https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html)
 in the I<Amazon WorkDocs Developer Guide>.
 
 

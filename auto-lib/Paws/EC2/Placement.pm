@@ -52,6 +52,9 @@ parameter is not supported for the ImportInstance command.
 
   The Availability Zone of the instance.
 
+If not specified, an Availability Zone will be automatically chosen for
+you based on the load balancing criteria for the Region.
+
 
 =head2 GroupName => Str
 

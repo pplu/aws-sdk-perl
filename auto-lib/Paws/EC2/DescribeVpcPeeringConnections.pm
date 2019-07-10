@@ -147,16 +147,15 @@ C<vpc-peering-connection-id> - The ID of the VPC peering connection.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return for this request. The request
-returns a token that you can specify in a subsequent call to get the
-next set of results.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
 
 
 =head2 NextToken => Str
 
-The token to request the next page of results. (You received this token
-from a prior call.)
+The token for the next page of results.
 
 
 

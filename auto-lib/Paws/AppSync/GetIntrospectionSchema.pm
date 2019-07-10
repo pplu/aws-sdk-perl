@@ -3,6 +3,7 @@ package Paws::AppSync::GetIntrospectionSchema;
   use Moose;
   has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
   has Format => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'format', required => 1);
+  has IncludeDirectives => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeDirectives');
 
   use MooseX::ClassAttribute;
 
@@ -30,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appsync = Paws->service('AppSync');
     my $GetIntrospectionSchemaResponse = $appsync->GetIntrospectionSchema(
-      ApiId  => 'MyString',
-      Format => 'SDL',
-
+      ApiId             => 'MyString',
+      Format            => 'SDL',
+      IncludeDirectives => 1,            # OPTIONAL
     );
 
     # Results:
@@ -57,6 +58,13 @@ The API ID.
 The schema format: SDL or JSON.
 
 Valid values are: C<"SDL">, C<"JSON">
+
+=head2 IncludeDirectives => Bool
+
+A flag that specifies whether the schema introspection should contain
+directives.
+
+
 
 
 =head1 SEE ALSO

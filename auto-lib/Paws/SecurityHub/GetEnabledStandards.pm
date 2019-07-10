@@ -51,23 +51,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 MaxResults => Int
 
-Indicates the maximum number of items that you want in the response.
+The maximum number of results to return in the response.
 
 
 
 =head2 NextToken => Str
 
-Paginates results. Set the value of this parameter to NULL on your
-first call to the GetEnabledStandards operation. For subsequent calls
-to the operation, fill nextToken in the request with the value of
-nextToken from the previous response to continue listing data.
+Paginates results. On your first call to the C<GetEnabledStandards>
+operation, set the value of this parameter to C<NULL>. For subsequent
+calls to the operation, fill C<nextToken> in the request with the value
+of C<nextToken> from the previous response to continue listing data.
 
 
 
 =head2 StandardsSubscriptionArns => ArrayRef[Str|Undef]
 
-The list of standards subscription ARNS that you want to list and
-describe.
+A list of the standards subscription ARNs for the standards to
+retrieve.
 
 
 

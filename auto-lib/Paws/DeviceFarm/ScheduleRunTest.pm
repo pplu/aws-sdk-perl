@@ -315,11 +315,11 @@ UIAUTOMATOR: The uiautomator type.
 
 =item *
 
-XCTEST: The XCode test type.
+XCTEST: The Xcode test type.
 
 =item *
 
-XCTEST_UI: The XCode UI test type.
+XCTEST_UI: The Xcode UI test type.
 
 =back
 

@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To list a size constraint sets
     # The following example returns an array of up to 100 size contraint match
     # sets.
-    my $ListSizeConstraintSetsResponse = $waf -regional->ListSizeConstraintSets(
-      {
-        'Limit' => 100
-      }
-    );
+    my $ListSizeConstraintSetsResponse =
+      $waf -regional->ListSizeConstraintSets( 'Limit' => 100 );
 
     # Results:
     my $SizeConstraintSets =

@@ -88,7 +88,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 =head1 ATTRIBUTES
@@ -181,7 +181,7 @@ indicate higher priority.
 
 For more information about setting task priority, see Setting Task
 Priority
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
 in the I<Amazon SWF Developer Guide>.
 
 

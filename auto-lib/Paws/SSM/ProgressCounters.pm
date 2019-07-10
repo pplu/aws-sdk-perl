@@ -49,7 +49,7 @@ AWS Regions and accounts for the current Automation execution.
 
 =head2 FailedSteps => Int
 
-  The total number of steps that failed to execute in all specified AWS
+  The total number of steps that failed to run in all specified AWS
 Regions and accounts for the current Automation execution.
 
 
@@ -67,8 +67,8 @@ and accounts for the current Automation execution.
 
 =head2 TotalSteps => Int
 
-  The total number of steps executed in all specified AWS Regions and
-accounts for the current Automation execution.
+  The total number of steps run in all specified AWS Regions and accounts
+for the current Automation execution.
 
 
 

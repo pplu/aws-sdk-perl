@@ -31,8 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Default configuration that will apply to all Lambda functions in the
-group.
+The default configuration that applies to all Lambda functions in the
+group. Individual Lambda functions can override these settings.
 
 =head1 ATTRIBUTES
 

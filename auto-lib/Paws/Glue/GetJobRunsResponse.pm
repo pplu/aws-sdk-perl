@@ -17,13 +17,12 @@ Paws::Glue::GetJobRunsResponse
 
 =head2 JobRuns => ArrayRef[L<Paws::Glue::JobRun>]
 
-A list of job-run metatdata objects.
+A list of job-run metadata objects.
 
 
 =head2 NextToken => Str
 
-A continuation token, if not all reequested job runs have been
-returned.
+A continuation token, if not all requested job runs have been returned.
 
 
 =head2 _request_id => Str

@@ -98,23 +98,23 @@ Valid values for a C<GetCostForecast> call are the following:
 
 =item *
 
-AmortizedCost
+AMORTIZED_COST
 
 =item *
 
-BlendedCost
+BLENDED_COST
 
 =item *
 
-NetAmortizedCost
+NET_AMORTIZED_COST
 
 =item *
 
-NetUnblendedCost
+NET_UNBLENDED_COST
 
 =item *
 
-UnblendedCost
+UNBLENDED_COST
 
 =back
 

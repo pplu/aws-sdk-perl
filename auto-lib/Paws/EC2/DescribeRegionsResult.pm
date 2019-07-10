@@ -17,7 +17,7 @@ Paws::EC2::DescribeRegionsResult
 
 =head2 Regions => ArrayRef[L<Paws::EC2::Region>]
 
-Information about one or more regions.
+Information about the Regions.
 
 
 =head2 _request_id => Str

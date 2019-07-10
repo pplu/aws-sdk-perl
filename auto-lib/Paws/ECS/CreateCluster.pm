@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ecs = Paws->service('ECS');
     # To create a new cluster
     # This example creates a cluster in your default region.
-    my $CreateClusterResponse = $ecs->CreateCluster(
-      {
-        'ClusterName' => 'my_cluster'
-      }
-    );
+    my $CreateClusterResponse =
+      $ecs->CreateCluster( 'ClusterName' => 'my_cluster' );
 
     # Results:
     my $cluster = $CreateClusterResponse->cluster;
@@ -51,8 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 The name of your cluster. If you do not specify a name for your
 cluster, you create a cluster named C<default>. Up to 255 letters
-(uppercase and lowercase), numbers, hyphens, and underscores are
-allowed.
+(uppercase and lowercase), numbers, and hyphens are allowed.
 
 
 

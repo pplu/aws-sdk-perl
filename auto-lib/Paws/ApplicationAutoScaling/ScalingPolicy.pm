@@ -205,7 +205,7 @@ custom resource provided by your own application or service.
   The namespace of the AWS service that provides the resource or
 C<custom-resource> for a resource provided by your own application or
 service. For more information, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
 
@@ -216,7 +216,7 @@ in the I<Amazon Web Services General Reference>.
 
 =head2 TargetTrackingScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration>
 
-  A target tracking policy.
+  A target tracking scaling policy.
 
 
 

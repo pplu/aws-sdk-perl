@@ -5,6 +5,7 @@ package Paws::EKS::Cluster;
   has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
+  has Logging => (is => 'ro', isa => 'Paws::EKS::Logging', request_name => 'logging', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
   has ResourcesVpcConfig => (is => 'ro', isa => 'Paws::EKS::VpcConfigResponse', request_name => 'resourcesVpcConfig', traits => ['NameInRequest']);
@@ -72,6 +73,11 @@ idempotency of the request.
   The endpoint for your Kubernetes API server.
 
 
+=head2 Logging => L<Paws::EKS::Logging>
+
+  The logging configuration for your cluster.
+
+
 =head2 Name => Str
 
   The name of the cluster.
@@ -81,18 +87,18 @@ idempotency of the request.
 
   The platform version of your Amazon EKS cluster. For more information,
 see Platform Versions
-(http://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html)
+(https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html)
 in the I< I<Amazon EKS User Guide> >.
 
 
 =head2 ResourcesVpcConfig => L<Paws::EKS::VpcConfigResponse>
 
-  The VPC subnets and security groups used by the cluster control plane.
-Amazon EKS VPC resources have specific requirements to work properly
-with Kubernetes. For more information, see Cluster VPC Considerations
-(http://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html) and
-Cluster Security Group Considerations
-(http://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
+  The VPC configuration used by the cluster control plane. Amazon EKS VPC
+resources have specific requirements to work properly with Kubernetes.
+For more information, see Cluster VPC Considerations
+(https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html)
+and Cluster Security Group Considerations
+(https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
 in the I<Amazon EKS User Guide>.
 
 

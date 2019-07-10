@@ -54,7 +54,7 @@ type that you specify here must match one of the launch type
 (compatibilities) of the target task. The C<FARGATE> value is supported
 only in the Regions where AWS Fargate with Amazon ECS is supported. For
 more information, see AWS Fargate on Amazon ECS
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -78,7 +78,7 @@ portion of the platform version, such as C<1.1.0>.
 This structure is used only if C<LaunchType> is C<FARGATE>. For more
 information about valid platform versions, see AWS Fargate Platform
 Versions
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

@@ -37,7 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Contai
 
 =head1 DESCRIPTION
 
-The overrides that should be sent to a container.
+The overrides that should be sent to a container. An empty container
+override can be passed in. An example of an empty container override
+would be C<{"containerOverrides": [ ] }>. If a non-empty container
+override is specified, the C<name> parameter must be included.
 
 =head1 ATTRIBUTES
 

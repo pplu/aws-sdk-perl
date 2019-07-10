@@ -1,9 +1,11 @@
 package Paws::IoT1ClickDevices::DeviceDescription;
   use Moose;
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Attributes => (is => 'ro', isa => 'Paws::IoT1ClickDevices::DeviceAttributes', request_name => 'attributes', traits => ['NameInRequest']);
   has DeviceId => (is => 'ro', isa => 'Str', request_name => 'deviceId', traits => ['NameInRequest']);
   has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
   has RemainingLife => (is => 'ro', isa => 'Num', request_name => 'remainingLife', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::IoT1ClickDevices::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
@@ -24,20 +26,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT1ClickDevices::DeviceDescription object:
 
-  $service_obj->Method(Att1 => { Attributes => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT1ClickDevices::DeviceDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Attributes
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 Arn => Str
+
+  The ARN of the device.
 
 
 =head2 Attributes => L<Paws::IoT1ClickDevices::DeviceAttributes>
@@ -60,6 +67,11 @@ user specified device attributes.
 
   A value between 0 and 1 inclusive, representing the fraction of life
 remaining for the device.
+
+
+=head2 Tags => L<Paws::IoT1ClickDevices::__mapOf__string>
+
+  The tags currently associated with the AWS IoT 1-Click device.
 
 
 =head2 Type => Str

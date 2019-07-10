@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 B<REQUIRED> StandardsSubscriptionArns => ArrayRef[Str|Undef]
 
-The ARNS of the standards subscriptions that you want to disable.
+The ARNs of the standards subscriptions to disable.
 
 
 

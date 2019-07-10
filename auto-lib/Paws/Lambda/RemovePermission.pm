@@ -34,11 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To remove a Lambda function's permissions
     # This operation removes a Lambda function's permissions
     $lambda->RemovePermission(
-      {
-        'FunctionName' => 'myFunction',
-        'Qualifier'    => 1,
-        'StatementId'  => 'role-statement-id'
-      }
+      'FunctionName' => 'myFunction',
+      'Qualifier'    => 1,
+      'StatementId'  => 'role-statement-id'
     );
 
 
@@ -87,9 +85,9 @@ version of the function.
 
 =head2 RevisionId => Str
 
-Only update the policy if the revision ID matches the ID specified. Use
-this option to avoid modifying a policy that has changed since you last
-read it.
+Only update the policy if the revision ID matches the ID that's
+specified. Use this option to avoid modifying a policy that has changed
+since you last read it.
 
 
 

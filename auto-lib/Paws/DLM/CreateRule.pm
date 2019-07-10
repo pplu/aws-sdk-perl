@@ -40,7 +40,8 @@ Specifies when to create snapshots of EBS volumes.
 
 =head2 B<REQUIRED> Interval => Int
 
-  The interval. The supported values are 12 and 24.
+  The interval between snapshots. The supported values are 2, 3, 4, 6, 8,
+12, and 24.
 
 
 =head2 B<REQUIRED> IntervalUnit => Str
@@ -50,7 +51,8 @@ Specifies when to create snapshots of EBS volumes.
 
 =head2 Times => ArrayRef[Str|Undef]
 
-  The time, in UTC, to start the operation.
+  The time, in UTC, to start the operation. The supported format is
+hh:mm.
 
 The operation occurs within a one-hour window following the specified
 time.

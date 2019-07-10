@@ -34,10 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe the mount targets for a file system
     # This operation describes all of a file system's mount targets.
     my $DescribeMountTargetsResponse = $elasticfilesystem->DescribeMountTargets(
-      {
-        'FileSystemId' => 'fs-01234567'
-      }
-    );
+      'FileSystemId' => 'fs-01234567' );
 
     # Results:
     my $MountTargets = $DescribeMountTargetsResponse->MountTargets;
@@ -69,7 +66,9 @@ continue the list from where the previous returning call left off.
 =head2 MaxItems => Int
 
 (Optional) Maximum number of mount targets to return in the response.
-It must be an integer with a value greater than zero.
+Currently, this number is automatically set to 10, and other values are
+ignored. The response is paginated at 10 per page if you have more than
+10 mount targets.
 
 
 

@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkMail::R
 
 =head1 DESCRIPTION
 
-The overview for a resource containing relevant data regarding it.
+The representation of a resource.
 
 =head1 ATTRIBUTES
 

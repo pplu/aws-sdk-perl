@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $sqs = Paws->service('SQS');
     # Create an SQS queue
     # The following operation creates an SQS queue named MyQueue.
-    my $CreateQueueResult = $sqs->CreateQueue(
-      {
-        'QueueName' => 'MyQueue'
-      }
-    );
+    my $CreateQueueResult = $sqs->CreateQueue( 'QueueName' => 'MyQueue' );
 
     # Results:
     my $QueueUrl = $CreateQueueResult->QueueUrl;

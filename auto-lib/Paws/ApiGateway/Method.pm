@@ -116,8 +116,7 @@ AWS CLI
 
 A human-friendly operation identifier for the method. For example, you
 can assign the C<operationName> of C<ListPets> for the C<GET /pets>
-method in PetStore
-(https://petstore-demo-endpoint.execute-api.com/petstore/pets) example.
+method in the C<PetStore> example.
 
 
 =head2 RequestModels => L<Paws::ApiGateway::MapOfStringToString>

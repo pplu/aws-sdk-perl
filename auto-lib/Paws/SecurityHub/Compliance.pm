@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 =head1 DESCRIPTION
 
 Exclusive to findings that are generated as the result of a check run
-against a specific rule in a supported standard (for example, AWS CIS
+against a specific rule in a supported standard (for example, CIS AWS
 Foundations). Contains compliance-related finding details.
 
 =head1 ATTRIBUTES
@@ -40,7 +40,7 @@ Foundations). Contains compliance-related finding details.
 
 =head2 Status => Str
 
-  Indicates the result of a compliance check.
+  The result of a compliance check.
 
 
 

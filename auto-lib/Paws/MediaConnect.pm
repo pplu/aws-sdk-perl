@@ -330,7 +330,7 @@ Each argument is described in detail in: L<Paws::MediaConnect::ListTagsForResour
 
 Returns: a L<Paws::MediaConnect::ListTagsForResourceResponse> instance
 
-Lists all tags associated with the resource.
+List all tags on an AWS Elemental MediaConnect resource
 
 
 =head2 RemoveFlowOutput
@@ -422,9 +422,10 @@ Each argument is described in detail in: L<Paws::MediaConnect::TagResource>
 
 Returns: nothing
 
-Associates the specified tags to a resource. If the request does not
-mention an existing tag associated with the resource, that tag is not
-changed.
+Associates the specified tags to a resource with the specified
+resourceArn. If existing tags on a resource are not specified in the
+request parameters, they are not changed. When a resource is deleted,
+the tags associated with that resource are deleted as well.
 
 
 =head2 UntagResource
@@ -442,7 +443,7 @@ Each argument is described in detail in: L<Paws::MediaConnect::UntagResource>
 
 Returns: nothing
 
-Deletes the specified tags from a resource.
+Deletes specified tags from a resource.
 
 
 =head2 UpdateFlowEntitlement

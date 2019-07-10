@@ -153,18 +153,9 @@ for the other.
 
 Tagging can help you organize your resources and enables you to
 simplify resource management, access management and cost allocation.
-For more information about tagging, see Working with Tag Editor
-(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html)
-and Working with Resource Groups
-(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/resource-groups.html).
-For more information about permissions you need to use the resource
-groups tagging APIs, see Obtaining Permissions for Resource Groups
-(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html)
-and Obtaining Permissions for Tagging
-(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html).
 
-You can use the resource groups tagging APIs to complete the following
-tasks:
+You can use the resource groups tagging API operations to complete the
+following tasks:
 
 =over
 
@@ -189,18 +180,340 @@ for the AWS account
 
 =back
 
-Not all resources can have tags. For a lists of resources that you can
-tag, see Supported Resources
-(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/supported-resources.html)
-in the I<AWS Resource Groups and Tag Editor User Guide>.
-
-To make full use of the resource groups tagging APIs, you might need
-additional IAM permissions, including permission to access the
-resources of individual services as well as permission to view and
+To make full use of the resource groups tagging API operations, you
+might need additional IAM permissions, including permission to access
+the resources of individual services as well as permission to view and
 apply tags to those resources. For more information, see Obtaining
-Permissions for Tagging
-(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
-in the I<AWS Resource Groups and Tag Editor User Guide>.
+Permissions for Resource Groups and Tag Editor
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html).
+
+You can use the Resource Groups Tagging API to tag resources for the
+following AWS services.
+
+=over
+
+=item *
+
+Alexa for Business (a4b)
+
+=item *
+
+API Gateway
+
+=item *
+
+AWS AppStream
+
+=item *
+
+AWS AppSync
+
+=item *
+
+Amazon Athena
+
+=item *
+
+Amazon Aurora
+
+=item *
+
+AWS Certificate Manager
+
+=item *
+
+AWS Certificate Manager Private CA
+
+=item *
+
+Amazon Cloud Directory
+
+=item *
+
+AWS CloudFormation
+
+=item *
+
+Amazon CloudFront
+
+=item *
+
+AWS CloudHSM
+
+=item *
+
+AWS CloudTrail
+
+=item *
+
+Amazon CloudWatch (alarms only)
+
+=item *
+
+Amazon CloudWatch Events
+
+=item *
+
+Amazon CloudWatch Logs
+
+=item *
+
+AWS CodeBuild
+
+=item *
+
+AWS CodeStar
+
+=item *
+
+Amazon Cognito Identity
+
+=item *
+
+Amazon Cognito User Pools
+
+=item *
+
+Amazon Comprehend
+
+=item *
+
+AWS Config
+
+=item *
+
+AWS Data Pipeline
+
+=item *
+
+AWS Database Migration Service
+
+=item *
+
+AWS Datasync
+
+=item *
+
+AWS Direct Connect
+
+=item *
+
+AWS Directory Service
+
+=item *
+
+Amazon DynamoDB
+
+=item *
+
+Amazon EBS
+
+=item *
+
+Amazon EC2
+
+=item *
+
+Amazon ECR
+
+=item *
+
+Amazon ECS
+
+=item *
+
+AWS Elastic Beanstalk
+
+=item *
+
+Amazon Elastic File System
+
+=item *
+
+Elastic Load Balancing
+
+=item *
+
+Amazon ElastiCache
+
+=item *
+
+Amazon Elasticsearch Service
+
+=item *
+
+AWS Elemental MediaLive
+
+=item *
+
+AWS Elemental MediaPackage
+
+=item *
+
+AWS Elemental MediaTailor
+
+=item *
+
+Amazon EMR
+
+=item *
+
+Amazon FSx
+
+=item *
+
+Amazon Glacier
+
+=item *
+
+AWS Glue
+
+=item *
+
+Amazon Inspector
+
+=item *
+
+AWS IoT Analytics
+
+=item *
+
+AWS IoT Core
+
+=item *
+
+AWS IoT Device Defender
+
+=item *
+
+AWS IoT Device Management
+
+=item *
+
+AWS IoT Greengrass
+
+=item *
+
+AWS Key Management Service
+
+=item *
+
+Amazon Kinesis
+
+=item *
+
+Amazon Kinesis Data Analytics
+
+=item *
+
+Amazon Kinesis Data Firehose
+
+=item *
+
+AWS Lambda
+
+=item *
+
+AWS License Manager
+
+=item *
+
+Amazon Machine Learning
+
+=item *
+
+Amazon MQ
+
+=item *
+
+Amazon MSK
+
+=item *
+
+Amazon Neptune
+
+=item *
+
+AWS OpsWorks
+
+=item *
+
+Amazon RDS
+
+=item *
+
+Amazon Redshift
+
+=item *
+
+AWS Resource Access Manager
+
+=item *
+
+AWS Resource Groups
+
+=item *
+
+AWS RoboMaker
+
+=item *
+
+Amazon Route 53
+
+=item *
+
+Amazon Route 53 Resolver
+
+=item *
+
+Amazon S3 (buckets only)
+
+=item *
+
+Amazon SageMaker
+
+=item *
+
+AWS Secrets Manager
+
+=item *
+
+AWS Service Catalog
+
+=item *
+
+Amazon Simple Notification Service (SNS)
+
+=item *
+
+Amazon Simple Queue Service (SQS)
+
+=item *
+
+AWS Simple System Manager (SSM)
+
+=item *
+
+AWS Step Functions
+
+=item *
+
+AWS Storage Gateway
+
+=item *
+
+AWS Transfer for SFTP
+
+=item *
+
+Amazon VPC
+
+=item *
+
+Amazon WorkSpaces
+
+=back
+
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html>
 
@@ -228,12 +541,16 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetResources>
 
 Returns: a L<Paws::ResourceTagging::GetResourcesOutput> instance
 
-Returns all the tagged resources that are associated with the specified
-tags (keys and values) located in the specified region for the AWS
-account. The tags and the resource types that you specify in the
-request are known as I<filters>. The response includes all tags that
-are associated with the requested resources. If no filter is provided,
-this action returns a paginated resource list with the associated tags.
+Returns all the tagged or previously tagged resources that are located
+in the specified region for the AWS account. You can optionally specify
+I<filters> (tags and resource types) in your request, depending on what
+information you want returned. The response includes all tags that are
+associated with the requested resources.
+
+You can check the C<PaginationToken> response parameter to determine if
+a query completed. Queries can occasionally return fewer results on a
+page than allowed. The C<PaginationToken> response parameter value is
+C<null> I<only> when there are no more results to display.
 
 
 =head2 GetTagKeys
@@ -295,8 +612,8 @@ following:
 
 Not all resources can have tags. For a list of resources that support
 tagging, see Supported Resources
-(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/supported-resources.html)
-in the I<AWS Resource Groups and Tag Editor User Guide>.
+(http://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html)
+in the I<AWS Resource Groups User Guide>.
 
 =item *
 
@@ -315,8 +632,8 @@ the AWS account.
 To add tags to a resource, you need the necessary permissions for the
 service that the resource belongs to as well as permissions for adding
 tags. For more information, see Obtaining Permissions for Tagging
-(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
-in the I<AWS Resource Groups and Tag Editor User Guide>.
+(http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html)
+in the I<AWS Resource Groups User Guide>.
 
 =back
 
@@ -350,8 +667,8 @@ To remove tags from a resource, you need the necessary permissions for
 the service that the resource belongs to as well as permissions for
 removing tags. For more information, see Obtaining Permissions for
 Tagging
-(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
-in the I<AWS Resource Groups and Tag Editor User Guide>.
+(http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html)
+in the I<AWS Resource Groups User Guide>.
 
 =item *
 

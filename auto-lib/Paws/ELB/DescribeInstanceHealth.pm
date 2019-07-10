@@ -33,10 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # balancer.
     my $DescribeEndPointStateOutput =
       $elasticloadbalancing->DescribeInstanceHealth(
-      {
-        'LoadBalancerName' => 'my-load-balancer'
-      }
-      );
+      'LoadBalancerName' => 'my-load-balancer' );
 
     # Results:
     my $InstanceStates = $DescribeEndPointStateOutput->InstanceStates;

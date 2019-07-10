@@ -54,8 +54,8 @@ in-application stream.
 Also identifies the IAM role Amazon Kinesis Analytics can assume to
 read this object on your behalf. An Amazon Kinesis Analytics
 application loads reference data only once. If the data changes, you
-call the UpdateApplication operation to trigger reloading of data into
-your application.
+call the C<UpdateApplication> operation to trigger reloading of data
+into your application.
 
 
 =head2 B<REQUIRED> TableName => Str

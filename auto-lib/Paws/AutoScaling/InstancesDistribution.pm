@@ -51,13 +51,12 @@ Instances, and how the Auto Scaling group allocates instance types.
   Indicates how to allocate instance types to fulfill On-Demand capacity.
 
 The only valid value is C<prioritized>, which is also the default
-value. This strategy uses the order of instance types in the
-B<Overrides> array of LaunchTemplate to define the launch priority of
-each instance type. The first instance type in the array is prioritized
-higher than the last. If all your On-Demand capacity cannot be
-fulfilled using your highest priority instance, then the Auto Scaling
-groups launches the remaining capacity using the second priority
-instance type, and so on.
+value. This strategy uses the order of instance type overrides for the
+LaunchTemplate to define the launch priority of each instance type. The
+first instance type in the array is prioritized higher than the last.
+If all your On-Demand capacity cannot be fulfilled using your highest
+priority instance, then the Auto Scaling groups launches the remaining
+capacity using the second priority instance type, and so on.
 
 
 =head2 OnDemandBaseCapacity => Int
@@ -66,20 +65,20 @@ instance type, and so on.
 fulfilled by On-Demand Instances. This base portion is provisioned
 first as your group scales.
 
-The default value is 0. If you leave this parameter set to 0, On-Demand
-Instances are launched as a percentage of the Auto Scaling group's
-desired capacity, per the B<OnDemandPercentageAboveBaseCapacity>
-setting.
+The default value is C<0>. If you leave this parameter set to C<0>,
+On-Demand Instances are launched as a percentage of the Auto Scaling
+group's desired capacity, per the
+C<OnDemandPercentageAboveBaseCapacity> setting.
 
 
 =head2 OnDemandPercentageAboveBaseCapacity => Int
 
   Controls the percentages of On-Demand Instances and Spot Instances for
-your additional capacity beyond B<OnDemandBaseCapacity>.
+your additional capacity beyond C<OnDemandBaseCapacity>.
 
-The range is 0E<ndash>100. The default value is 100. If you leave this
-parameter set to 100, the percentages are 100% for On-Demand Instances
-and 0% for Spot Instances.
+The range is 0E<ndash>100. The default value is C<100>. If you leave
+this parameter set to C<100>, the percentages are 100% for On-Demand
+Instances and 0% for Spot Instances.
 
 
 =head2 SpotAllocationStrategy => Str
@@ -96,7 +95,7 @@ that you specify.
 
   The number of Spot pools to use to allocate your Spot capacity. The
 Spot pools are determined from the different instance types in the
-B<Overrides> array of LaunchTemplate.
+Overrides array of LaunchTemplate.
 
 The range is 1E<ndash>20 and the default is 2.
 
@@ -104,8 +103,11 @@ The range is 1E<ndash>20 and the default is 2.
 =head2 SpotMaxPrice => Str
 
   The maximum price per unit hour that you are willing to pay for a Spot
-Instance. If you leave this value blank (which is the default), the
-maximum Spot price is set at the On-Demand price.
+Instance. If you leave the value of this parameter blank (which is the
+default), the maximum Spot price is set at the On-Demand price.
+
+To remove a value that you previously set, include the parameter but
+leave the value blank.
 
 
 

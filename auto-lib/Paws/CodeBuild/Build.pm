@@ -125,9 +125,11 @@ C<TIMED_OUT>: The build timed out.
   The AWS Key Management Service (AWS KMS) customer master key (CMK) to
 be used for encrypting the build output artifacts.
 
-This is expressed either as the Amazon Resource Name (ARN) of the CMK
-or, if specified, the CMK's alias (using the format
-C<alias/I<alias-name> >).
+You can use a cross-account KMS key to encrypt the build output
+artifacts if your service role has permission to that key.
+
+You can specify either the Amazon Resource Name (ARN) of the CMK or, if
+available, the CMK's alias (using the format C<alias/I<alias-name> >).
 
 
 =head2 EndTime => Str
@@ -279,6 +281,12 @@ object that represents the build input ZIP file to use.
 =head2 SourceVersion => Str
 
   Any version identifier for the version of the source code to be built.
+If C<sourceVersion> is specified at the project level, then this
+C<sourceVersion> (at the build level) takes precedence.
+
+For more information, see Source Version Sample with CodeBuild
+(https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
+in the I<AWS CodeBuild User Guide>.
 
 
 =head2 StartTime => Str

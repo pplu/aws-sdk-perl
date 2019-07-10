@@ -17,7 +17,7 @@ Paws::Lambda::AddPermissionResponse
 
 =head2 Statement => Str
 
-The permission statement added to the function policy.
+The permission statement that's added to the function policy.
 
 
 =head2 _request_id => Str

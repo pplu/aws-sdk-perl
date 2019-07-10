@@ -31,14 +31,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::U
 
 =head1 DESCRIPTION
 
-Update attributes request
+Specifies one or more attributes to remove from all the endpoints that
+are associated with an application.
 
 =head1 ATTRIBUTES
 
 
 =head2 Blacklist => ArrayRef[Str|Undef]
 
-  The GLOB wildcard for removing the attributes in the application
+  An array of the attributes to remove from all the endpoints that are
+associated with the application. The array can specify the complete,
+exact name of each attribute to remove or it can specify a glob pattern
+that an attribute name must match in order for the attribute to be
+removed.
 
 
 

@@ -5,6 +5,7 @@ package Paws::IoT::CreateScheduledAudit;
   has DayOfWeek => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dayOfWeek');
   has Frequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'frequency', required => 1);
   has ScheduledAuditName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'scheduledAuditName', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has TargetCheckNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targetCheckNames', required => 1);
 
   use MooseX::ClassAttribute;
@@ -38,6 +39,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TargetCheckNames   => [ 'MyAuditCheckName', ... ],
       DayOfMonth         => 'MyDayOfMonth',                # OPTIONAL
       DayOfWeek          => 'SUN',                         # OPTIONAL
+      Tags               => [
+        {
+          Key   => 'MyTagKey',                             # OPTIONAL
+          Value => 'MyTagValue',                           # OPTIONAL
+        },
+        ...
+      ],                                                   # OPTIONAL
     );
 
     # Results:
@@ -80,6 +88,12 @@ Valid values are: C<"DAILY">, C<"WEEKLY">, C<"BIWEEKLY">, C<"MONTHLY">
 =head2 B<REQUIRED> ScheduledAuditName => Str
 
 The name you want to give to the scheduled audit. (Max. 128 chars)
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+Metadata which can be used to manage the scheduled audit.
 
 
 

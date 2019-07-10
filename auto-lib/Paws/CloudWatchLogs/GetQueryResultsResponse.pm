@@ -36,8 +36,12 @@ bytes in the log events that were scanned.
 =head2 Status => Str
 
 The status of the most recent running of the query. Possible values are
-C<Cancelled>, C<Complete>, C<Failed>, C<Running>, C<Scheduled>, and
-C<Unknown>.
+C<Cancelled>, C<Complete>, C<Failed>, C<Running>, C<Scheduled>,
+C<Timeout>, and C<Unknown>.
+
+Queries time out after 15 minutes of execution. To avoid having your
+queries time out, reduce the time range being searched, or partition
+your query into a number of queries.
 
 Valid values are: C<"Scheduled">, C<"Running">, C<"Complete">, C<"Failed">, C<"Cancelled">
 =head2 _request_id => Str

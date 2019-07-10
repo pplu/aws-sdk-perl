@@ -2,10 +2,13 @@
 package Paws::Amplify::UpdateApp;
   use Moose;
   has AppId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'appId', required => 1);
+  has AutoBranchCreationConfig => (is => 'ro', isa => 'Paws::Amplify::AutoBranchCreationConfig', traits => ['NameInRequest'], request_name => 'autoBranchCreationConfig');
+  has AutoBranchCreationPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'autoBranchCreationPatterns');
   has BasicAuthCredentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'basicAuthCredentials');
   has BuildSpec => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildSpec');
   has CustomRules => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::CustomRule]', traits => ['NameInRequest'], request_name => 'customRules');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has EnableAutoBranchCreation => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableAutoBranchCreation');
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBasicAuth');
   has EnableBranchAutoBuild => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBranchAutoBuild');
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', traits => ['NameInRequest'], request_name => 'environmentVariables');
@@ -39,7 +42,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $amplify = Paws->service('Amplify');
     my $UpdateAppResult = $amplify->UpdateApp(
-      AppId                => 'MyAppId',
+      AppId                    => 'MyAppId',
+      AutoBranchCreationConfig => {
+        BasicAuthCredentials => 'MyBasicAuthCredentials',  # max: 2000; OPTIONAL
+        BuildSpec            => 'MyBuildSpec',    # min: 1, max: 25000; OPTIONAL
+        EnableAutoBuild      => 1,                # OPTIONAL
+        EnableBasicAuth      => 1,                # OPTIONAL
+        EnvironmentVariables => {
+          'MyEnvKey' => 'MyEnvValue',    # key: max: 255, value: max: 1000
+        },    # OPTIONAL
+        Framework => 'MyFramework',    # max: 255; OPTIONAL
+        Stage     => 'PRODUCTION'
+        ,    # values: PRODUCTION, BETA, DEVELOPMENT, EXPERIMENTAL; OPTIONAL
+      },    # OPTIONAL
+      AutoBranchCreationPatterns => [
+        'MyAutoBranchCreationPattern', ...    # min: 1, max: 2048
+      ],                                      # OPTIONAL
       BasicAuthCredentials => 'MyBasicAuthCredentials',    # OPTIONAL
       BuildSpec            => 'MyBuildSpec',               # OPTIONAL
       CustomRules          => [
@@ -51,15 +69,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                 # OPTIONAL
-      Description           => 'MyDescription',    # OPTIONAL
-      EnableBasicAuth       => 1,                  # OPTIONAL
-      EnableBranchAutoBuild => 1,                  # OPTIONAL
-      EnvironmentVariables  => {
+      Description              => 'MyDescription',    # OPTIONAL
+      EnableAutoBranchCreation => 1,                  # OPTIONAL
+      EnableBasicAuth          => 1,                  # OPTIONAL
+      EnableBranchAutoBuild    => 1,                  # OPTIONAL
+      EnvironmentVariables     => {
         'MyEnvKey' => 'MyEnvValue',    # key: max: 255, value: max: 1000
       },    # OPTIONAL
       IamServiceRoleArn => 'MyServiceRoleArn',    # OPTIONAL
       Name              => 'MyName',              # OPTIONAL
-      Platform          => 'IOS',                 # OPTIONAL
+      Platform          => 'WEB',                 # OPTIONAL
     );
 
     # Results:
@@ -76,6 +95,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 =head2 B<REQUIRED> AppId => Str
 
 Unique Id for an Amplify App.
+
+
+
+=head2 AutoBranchCreationConfig => L<Paws::Amplify::AutoBranchCreationConfig>
+
+Automated branch creation config for the Amplify App.
+
+
+
+=head2 AutoBranchCreationPatterns => ArrayRef[Str|Undef]
+
+Automated branch creation glob patterns for the Amplify App.
 
 
 
@@ -100,6 +131,12 @@ Custom redirect / rewrite rules for an Amplify App.
 =head2 Description => Str
 
 Description for an Amplify App.
+
+
+
+=head2 EnableAutoBranchCreation => Bool
+
+Enables automated branch creation for the Amplify App.
 
 
 
@@ -137,7 +174,7 @@ Name for an Amplify App.
 
 Platform for an Amplify App.
 
-Valid values are: C<"IOS">, C<"ANDROID">, C<"WEB">, C<"REACT_NATIVE">
+Valid values are: C<"WEB">
 
 
 =head1 SEE ALSO

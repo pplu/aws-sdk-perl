@@ -39,10 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # my-env:
     my $EnvironmentDescriptionsMessage =
       $elasticbeanstalk->DescribeEnvironments(
-      {
-        'EnvironmentNames' => ['my-env']
-      }
-      );
+      'EnvironmentNames' => ['my-env'] );
 
     # Results:
     my $Environments = $EnvironmentDescriptionsMessage->Environments;

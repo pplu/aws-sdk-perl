@@ -50,11 +50,9 @@ Information about the resource record set to create or delete.
 
 =head2 AliasTarget => L<Paws::Route53::AliasTarget>
 
-  I<Alias resource record sets only:> Information about the CloudFront
-distribution, AWS Elastic Beanstalk environment, ELB load balancer,
-Amazon S3 bucket, or Amazon Route 53 resource record set to which
-you're redirecting queries. The AWS Elastic Beanstalk environment must
-have a regionalized subdomain.
+  I<Alias resource record sets only:> Information about the AWS resource,
+such as a CloudFront distribution or an Amazon S3 bucket, that you want
+to route traffic to.
 
 If you're creating resource records sets for a private hosted zone,
 note the following:
@@ -63,8 +61,8 @@ note the following:
 
 =item *
 
-You can't create alias resource record sets for CloudFront
-distributions in a private hosted zone.
+You can't create an alias resource record set in a private hosted zone
+to route traffic to a CloudFront distribution.
 
 =item *
 
@@ -237,7 +235,7 @@ Developer Guide>:
 =item *
 
 How Amazon Route 53 Determines Whether an Endpoint Is Healthy
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
 
 =item *
 
@@ -544,7 +542,7 @@ type, the value of C<SetIdentifier> must be unique for each resource
 record set.
 
 For information about routing policies, see Choosing a Routing Policy
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 
@@ -638,6 +636,11 @@ Values for alias resource record sets:
 
 =item *
 
+B<Amazon API Gateway custom regional APIs and edge-optimized APIs:>
+C<A>
+
+=item *
+
 B<CloudFront distributions:> C<A>
 
 If IPv6 is enabled for the distribution, create two resource record
@@ -656,6 +659,10 @@ B<ELB load balancers:> C<A> | C<AAAA>
 =item *
 
 B<Amazon S3 buckets:> C<A>
+
+=item *
+
+B<Amazon Virtual Private Cloud interface VPC endpoints> C<A>
 
 =item *
 

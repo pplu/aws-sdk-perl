@@ -4,6 +4,7 @@ package Paws::WAFRegional::CreateRuleGroup;
   has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ChangeToken => 'MyChangeToken',
       MetricName  => 'MyMetricName',
       Name        => 'MyResourceName',
-
+      Tags        => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -57,9 +64,11 @@ The value returned by the most recent call to GetChangeToken.
 =head2 B<REQUIRED> MetricName => Str
 
 A friendly name or description for the metrics for this C<RuleGroup>.
-The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the
-name can't contain whitespace. You can't change the name of the metric
-after you create the C<RuleGroup>.
+The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
+maximum length 128 and minimum length one. It can't contain whitespace
+or metric names reserved for AWS WAF, including "All" and
+"Default_Action." You can't change the name of the metric after you
+create the C<RuleGroup>.
 
 
 
@@ -67,6 +76,12 @@ after you create the C<RuleGroup>.
 
 A friendly name or description of the RuleGroup. You can't change
 C<Name> after you create a C<RuleGroup>.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::WAFRegional::Tag>]
+
+
 
 
 

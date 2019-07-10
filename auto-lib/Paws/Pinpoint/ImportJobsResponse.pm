@@ -1,6 +1,6 @@
 package Paws::Pinpoint::ImportJobsResponse;
   use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ImportJobResponse]');
+  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ImportJobResponse]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 1;
 
@@ -32,20 +32,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::I
 
 =head1 DESCRIPTION
 
-Import job list.
+Provides information about the status and settings of all the import
+jobs that are associated with an application or segment. An import job
+is a job that imports endpoint definitions from one or more files.
 
 =head1 ATTRIBUTES
 
 
-=head2 Item => ArrayRef[L<Paws::Pinpoint::ImportJobResponse>]
+=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::ImportJobResponse>]
 
-  A list of import jobs for the application.
+  An array of responses, one for each import job that's associated with
+the application (Import Jobs resource) or segment (Segment Import Jobs
+resource).
 
 
 =head2 NextToken => Str
 
-  The string that you use in a subsequent request to get the next page of
-results in a paginated response.
+  The string to use in a subsequent request to get the next page of
+results in a paginated response. This value is null if there are no
+additional pages.
 
 
 

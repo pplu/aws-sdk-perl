@@ -78,7 +78,7 @@ B<CreateClientVpnRoute> action.
 
 =head2 Type => Str
 
-  B<The route type.>
+  The route type.
 
 
 

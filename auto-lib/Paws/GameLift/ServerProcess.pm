@@ -34,11 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::S
 =head1 DESCRIPTION
 
 A set of instructions for launching server processes on each instance
-in a fleet. Each instruction set identifies the location of the server
-executable, optional launch parameters, and the number of server
-processes with this configuration to maintain concurrently on the
-instance. Server process configurations make up a fleet's C<
-RuntimeConfiguration >.
+in a fleet. Server processes run either a custom game build executable
+or a Realtime Servers script. Each instruction set identifies the
+location of the custom game build executable or Realtime launch script,
+optional launch parameters, and the number of server processes with
+this configuration to maintain concurrently on the instance. Server
+process configurations make up a fleet's C< RuntimeConfiguration >.
 
 =head1 ATTRIBUTES
 
@@ -51,18 +52,30 @@ on an instance.
 
 =head2 B<REQUIRED> LaunchPath => Str
 
-  Location of the server executable in a game build. All game builds are
-installed on instances at the root : for Windows instances C<C:\game>,
-and for Linux instances C</local/game>. A Windows game build with an
-executable file located at C<MyGame\latest\server.exe> must have a
-launch path of "C<C:\game\MyGame\latest\server.exe>". A Linux game
-build with an executable file located at C<MyGame/latest/server.exe>
-must have a launch path of "C</local/game/MyGame/latest/server.exe>".
+  Location of the server executable in a custom game build or the name of
+the Realtime script file that contains the C<Init()> function. Game
+builds and Realtime scripts are installed on instances at the root:
+
+=over
+
+=item *
+
+Windows (for custom game builds only): C<C:\game>. Example:
+"C<C:\game\MyGame\server.exe>"
+
+=item *
+
+Linux: C</local/game>. Examples: "C</local/game/MyGame/server.exe>" or
+"C</local/game/MyRealtimeScript.js>"
+
+=back
+
 
 
 =head2 Parameters => Str
 
-  Optional list of parameters to pass to the server executable on launch.
+  Optional list of parameters to pass to the server executable or
+Realtime script on launch.
 
 
 

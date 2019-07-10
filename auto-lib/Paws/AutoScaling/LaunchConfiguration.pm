@@ -71,18 +71,25 @@ instance.
   The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
 to. This parameter can only be used if you are launching EC2-Classic
 instances. For more information, see ClassicLink
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+in the I<Amazon EC2 User Guide for Linux Instances> and Linking
+EC2-Classic Instances to a VPC
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str|Undef]
 
   The IDs of one or more security groups for the VPC specified in
-C<ClassicLinkVPCId>. This parameter is required if you specify a
-ClassicLink-enabled VPC, and cannot be used otherwise. For more
-information, see ClassicLink
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+C<ClassicLinkVPCId>. For more information, see ClassicLink
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+in the I<Amazon EC2 User Guide for Linux Instances> and Linking
+EC2-Classic Instances to a VPC
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+Conditional: This parameter is required if you specify a
+ClassicLink-enabled VPC, and cannot be used otherwise.
 
 
 =head2 B<REQUIRED> CreatedTime => Str

@@ -30,10 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a job you've created for AWS Snowball
     # This operation describes a job you've created for AWS Snowball.
     my $DescribeJobResult = $snowball->DescribeJob(
-      {
-        'JobId' => 'JID123e4567-e89b-12d3-a456-426655440000'
-      }
-    );
+      'JobId' => 'JID123e4567-e89b-12d3-a456-426655440000' );
 
     # Results:
     my $JobMetadata = $DescribeJobResult->JobMetadata;

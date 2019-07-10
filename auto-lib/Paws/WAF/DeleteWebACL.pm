@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes a web ACL with the ID
     # example-46da-4444-5555-example.
     my $DeleteWebACLResponse = $waf->DeleteWebACL(
-      {
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'WebACLId'    => 'example-46da-4444-5555-example'
-      }
+      'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+      'WebACLId'    => 'example-46da-4444-5555-example'
     );
 
     # Results:

@@ -41,7 +41,8 @@ This class has no description
 
   The type of resource to tag. Currently, the resource types that support
 tagging on creation are C<instance> and C<volume>. To tag a resource
-after it has been created, see CreateTags.
+after it has been created, see CreateTags
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html).
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]

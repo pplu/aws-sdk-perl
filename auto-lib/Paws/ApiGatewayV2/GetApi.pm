@@ -43,6 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Name                      = $GetApiResponse->Name;
     my $ProtocolType              = $GetApiResponse->ProtocolType;
     my $RouteSelectionExpression  = $GetApiResponse->RouteSelectionExpression;
+    my $Tags                      = $GetApiResponse->Tags;
     my $Version                   = $GetApiResponse->Version;
     my $Warnings                  = $GetApiResponse->Warnings;
 

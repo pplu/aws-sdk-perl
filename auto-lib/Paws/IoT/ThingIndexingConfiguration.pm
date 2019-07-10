@@ -47,9 +47,9 @@ Thing Indexing
 
 =item *
 
-STATUS E<ndash> Your thing index will contain connectivity status. In
-order to enable thing connectivity indexing, thingIndexMode must not be
-set to OFF.
+STATUS E<ndash> Your thing index contains connectivity status. To
+enable thing connectivity indexing, thingIndexMode must not be set to
+OFF.
 
 =item *
 
@@ -67,11 +67,11 @@ OFF - Thing connectivity status indexing is disabled.
 
 =item *
 
-REGISTRY E<ndash> Your thing index will contain only registry data.
+REGISTRY E<ndash> Your thing index contains registry data only.
 
 =item *
 
-REGISTRY_AND_SHADOW - Your thing index will contain registry and shadow
+REGISTRY_AND_SHADOW - Your thing index contains registry and shadow
 data.
 
 =item *

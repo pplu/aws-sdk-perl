@@ -5,6 +5,7 @@ package Paws::WorkSpaces::ImportWorkspaceImage;
   has ImageDescription => (is => 'ro', isa => 'Str', required => 1);
   has ImageName => (is => 'ro', isa => 'Str', required => 1);
   has IngestionProcess => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -35,7 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ImageDescription => 'MyWorkspaceImageDescription',
       ImageName        => 'MyWorkspaceImageName',
       IngestionProcess => 'BYOL_REGULAR',
-
+      Tags             => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 127
+          Value => 'MyTagValue',    # max: 255; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -72,6 +79,12 @@ The name of the WorkSpace image.
 The ingestion process to be used when importing the image.
 
 Valid values are: C<"BYOL_REGULAR">, C<"BYOL_GRAPHICS">, C<"BYOL_GRAPHICSPRO">
+
+=head2 Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
+
+The tags. Each WorkSpaces resource can have a maximum of 50 tags.
+
+
 
 
 =head1 SEE ALSO

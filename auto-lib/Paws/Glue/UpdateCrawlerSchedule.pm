@@ -41,17 +41,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 B<REQUIRED> CrawlerName => Str
 
-Name of the crawler whose schedule to update.
+The name of the crawler whose schedule to update.
 
 
 
 =head2 Schedule => Str
 
-The updated C<cron> expression used to specify the schedule (see
-Time-Based Schedules for Jobs and Crawlers
+The updated C<cron> expression used to specify the schedule. For more
+information, see Time-Based Schedules for Jobs and Crawlers
 (http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
-For example, to run something every day at 12:15 UTC, you would
-specify: C<cron(15 12 * * ? *)>.
+For example, to run something every day at 12:15 UTC, specify C<cron(15
+12 * * ? *)>.
 
 
 

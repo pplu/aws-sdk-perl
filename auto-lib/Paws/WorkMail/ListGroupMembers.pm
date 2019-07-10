@@ -51,7 +51,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> GroupId => Str
 
-The identifier for the group to which the members are associated.
+The identifier for the group to which the members (users or groups) are
+associated.
 
 
 

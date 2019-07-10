@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::ErrorD
 Contains information about the reason that the operation failed.
 
 This data type is used as a response element in the
-GetServiceLastAccessedDetails operation and the
-GetServiceLastAccessedDetailsWithEntities operation.
+GetOrganizationsAccessReport, GetServiceLastAccessedDetails, and
+GetServiceLastAccessedDetailsWithEntities operations.
 
 =head1 ATTRIBUTES
 

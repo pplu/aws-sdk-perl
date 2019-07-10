@@ -30,10 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To cancel deletion of a customer master key (CMK)
     # The following example cancels deletion of the specified CMK.
     my $CancelKeyDeletionResponse = $kms->CancelKeyDeletion(
-      {
-        'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
-      }
-    );
+      'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab' );
 
     # Results:
     my $KeyId = $CancelKeyDeletionResponse->KeyId;

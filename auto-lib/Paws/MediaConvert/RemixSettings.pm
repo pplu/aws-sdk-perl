@@ -43,7 +43,11 @@ provides.
 
 =head2 ChannelMapping => L<Paws::MediaConvert::ChannelMapping>
 
-  
+  Channel mapping (ChannelMapping) contains the group of fields that hold
+the remixing value for each channel. Units are in dB. Acceptable values
+are within the range from -60 (mute) through 6. A setting of 0 passes
+the input channel unchanged to the output channel (no attenuation or
+amplification).
 
 
 =head2 ChannelsIn => Int

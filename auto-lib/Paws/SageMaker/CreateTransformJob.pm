@@ -2,6 +2,7 @@
 package Paws::SageMaker::CreateTransformJob;
   use Moose;
   has BatchStrategy => (is => 'ro', isa => 'Str');
+  has DataProcessing => (is => 'ro', isa => 'Paws::SageMaker::DataProcessing');
   has Environment => (is => 'ro', isa => 'Paws::SageMaker::TransformEnvironmentMap');
   has MaxConcurrentTransforms => (is => 'ro', isa => 'Int');
   has MaxPayloadInMB => (is => 'ro', isa => 'Int');
@@ -65,8 +66,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge
         VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
       },
-      BatchStrategy => 'MultiRecord',      # OPTIONAL
-      Environment   => {
+      BatchStrategy  => 'MultiRecord',     # OPTIONAL
+      DataProcessing => {
+        InputFilter  => 'MyJsonPath',      # max: 63; OPTIONAL
+        JoinSource   => 'Input',           # values: Input, None; OPTIONAL
+        OutputFilter => 'MyJsonPath',      # max: 63; OPTIONAL
+      },    # OPTIONAL
+      Environment => {
         'MyTransformEnvironmentKey' =>
           'MyTransformEnvironmentValue',    # key: max: 1024, value: max: 10240
       },    # OPTIONAL
@@ -95,19 +101,31 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 BatchStrategy => Str
 
-Determines the number of records to include in a mini-batch. If you
-want to include only one record in a mini-batch, specify
-C<SingleRecord>.. If you want mini-batches to contain a maximum of the
-number of records specified in the C<MaxPayloadInMB> parameter, specify
-C<MultiRecord>.
+Specifies the number of records to include in a mini-batch for an HTTP
+inference request. A I<record> I< is a single unit of input data that
+inference can be made on. For example, a single line in a CSV file is a
+record.>
 
-If you set C<SplitType> to C<Line> and C<BatchStrategy> to
-C<MultiRecord>, a batch transform automatically splits your input data
-into the specified payload size. There's no need to split the dataset
-into smaller files or to use larger payload sizes unless the records in
-your dataset are very large.
+To enable the batch strategy, you must set C<SplitType> to C<Line>,
+C<RecordIO>, or C<TFRecord>.
+
+To use only one record when making an HTTP invocation request to a
+container, set C<BatchStrategy> to C<SingleRecord> and C<SplitType> to
+C<Line>.
+
+To fit as many records in a mini-batch as can fit within the
+C<MaxPayloadInMB> limit, set C<BatchStrategy> to C<MultiRecord> and
+C<SplitType> to C<Line>.
 
 Valid values are: C<"MultiRecord">, C<"SingleRecord">
+
+=head2 DataProcessing => L<Paws::SageMaker::DataProcessing>
+
+The data structure used for combining the input data and inference in
+the output file. For more information, see Batch Transform I/O Join
+(http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html).
+
+
 
 =head2 Environment => L<Paws::SageMaker::TransformEnvironmentMap>
 
@@ -118,29 +136,33 @@ to 16 key and values entries in the map.
 
 =head2 MaxConcurrentTransforms => Int
 
-The maximum number of parallel requests that can be sent to an
-algorithm container on an instance. This is good for algorithms that
-implement multiple workers on larger instances . The default value is
-C<1>. To allow Amazon SageMaker to determine the appropriate number for
-C<MaxConcurrentTransforms>, do not set the value in the API.
+The maximum number of parallel requests that can be sent to each
+instance in a transform job. If C<MaxConcurrentTransforms> is set to
+C<0> or left unset, Amazon SageMaker checks the optional
+execution-parameters to determine the optimal settings for your chosen
+algorithm. If the execution-parameters endpoint is not enabled, the
+default value is C<1>. For more information on execution-parameters,
+see How Containers Serve Requests
+(http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests).
+For built-in algorithms, you don't need to set a value for
+C<MaxConcurrentTransforms>.
 
 
 
 =head2 MaxPayloadInMB => Int
 
-The maximum payload size allowed, in MB. A payload is the data portion
-of a record (without metadata). The value in C<MaxPayloadInMB> must be
-greater or equal to the size of a single record. You can approximate
-the size of a record by dividing the size of your dataset by the number
-of records. Then multiply this value by the number of records you want
-in a mini-batch. We recommend to enter a slightly larger value than
-this to ensure the records fit within the maximum payload size. The
-default value is C<6> MB.
+The maximum allowed size of the payload, in MB. A I<payload> is the
+data portion of a record (without metadata). The value in
+C<MaxPayloadInMB> must be greater than, or equal to, the size of a
+single record. To estimate the size of a record in MB, divide the size
+of your dataset by the number of records. To ensure that the records
+fit within the maximum payload size, we recommend using a slightly
+larger value. The default value is C<6> MB.
 
 For cases where the payload might be arbitrarily large and is
 transmitted using HTTP chunked encoding, set the value to C<0>. This
-feature only works in supported algorithms. Currently, Amazon SageMaker
-built-in algorithms do not support this feature.
+feature works only in supported algorithms. Currently, Amazon SageMaker
+built-in algorithms do not support HTTP chunked encoding.
 
 
 
@@ -156,7 +178,7 @@ within an AWS Region in an AWS account.
 
 (Optional) An array of key-value pairs. For more information, see Using
 Cost Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 in the I<AWS Billing and Cost Management User Guide>.
 
 

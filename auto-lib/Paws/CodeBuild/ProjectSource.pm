@@ -3,6 +3,7 @@ package Paws::CodeBuild::ProjectSource;
   has Auth => (is => 'ro', isa => 'Paws::CodeBuild::SourceAuth', request_name => 'auth', traits => ['NameInRequest']);
   has Buildspec => (is => 'ro', isa => 'Str', request_name => 'buildspec', traits => ['NameInRequest']);
   has GitCloneDepth => (is => 'ro', isa => 'Int', request_name => 'gitCloneDepth', traits => ['NameInRequest']);
+  has GitSubmodulesConfig => (is => 'ro', isa => 'Paws::CodeBuild::GitSubmodulesConfig', request_name => 'gitSubmodulesConfig', traits => ['NameInRequest']);
   has InsecureSsl => (is => 'ro', isa => 'Bool', request_name => 'insecureSsl', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
   has ReportBuildStatus => (is => 'ro', isa => 'Bool', request_name => 'reportBuildStatus', traits => ['NameInRequest']);
@@ -62,7 +63,13 @@ with the source code to be built.
 
 =head2 GitCloneDepth => Int
 
-  Information about the git clone depth for the build project.
+  Information about the Git clone depth for the build project.
+
+
+=head2 GitSubmodulesConfig => L<Paws::CodeBuild::GitSubmodulesConfig>
+
+  Information about the Git submodules configuration for the build
+project.
 
 
 =head2 InsecureSsl => Bool

@@ -82,7 +82,7 @@ failover to a replica if your primary node fails)
 (cluster mode disabled) replication groups, the node group id is always
 0001. To find a Redis (cluster mode enabled)'s node group's (shard's)
 id, see Finding a Shard's Id
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/shard-find-id.html).
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/shard-find-id.html).
 
 
 =head2 PreferredAvailabilityZones => ArrayRef[Str|Undef]

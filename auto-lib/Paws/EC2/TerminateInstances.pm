@@ -55,7 +55,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> InstanceIds => ArrayRef[Str|Undef]
 
-One or more instance IDs.
+The IDs of the instances.
 
 Constraints: Up to 1000 instance IDs. We recommend breaking up this
 request into smaller batches.

@@ -6,6 +6,8 @@ package Paws::Comprehend::StartDominantLanguageDetectionJob;
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::InputDataConfig', required => 1);
   has JobName => (is => 'ro', isa => 'Str');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::OutputDataConfig', required => 1);
+  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
+  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
 
   use MooseX::ClassAttribute;
 
@@ -40,11 +42,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ,    # values: ONE_DOC_PER_FILE, ONE_DOC_PER_LINE; OPTIONAL
       },
       OutputDataConfig => {
-        S3Uri => 'MyS3Uri',    # max: 1024
-
+        S3Uri    => 'MyS3Uri',       # max: 1024
+        KmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
       },
       ClientRequestToken => 'MyClientRequestTokenString',    # OPTIONAL
       JobName            => 'MyJobName',                     # OPTIONAL
+      VolumeKmsKeyId     => 'MyKmsKeyId',                    # OPTIONAL
+      VpcConfig          => {
+        SecurityGroupIds => [
+          'MySecurityGroupId', ...                           # min: 1, max: 32
+        ],                                                   # min: 1, max: 5
+        Subnets => [
+          'MySubnetId', ...                                  # min: 1, max: 32
+        ],                                                   # min: 1, max: 16
+
+      },    # OPTIONAL
       );
 
     # Results:
@@ -91,6 +103,38 @@ An identifier for the job.
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
 
 Specifies where to send the output files.
+
+
+
+=head2 VolumeKmsKeyId => Str
+
+ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt data on the storage volume attached to the ML compute
+instance(s) that process the analysis job. The VolumeKmsKeyId can be
+either of the following formats:
+
+=over
+
+=item *
+
+KMS Key ID: C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+Amazon Resource Name (ARN) of a KMS Key:
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
+
+
+
+=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+
+Configuration parameters for an optional private Virtual Private Cloud
+(VPC) containing the resources you are using for your dominant language
+detection job. For more information, see Amazon VPC
+(https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 
 
 

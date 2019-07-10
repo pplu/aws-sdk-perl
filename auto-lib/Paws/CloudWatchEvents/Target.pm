@@ -50,7 +50,7 @@ that account granted permission to your account through an organization
 instead of directly by the account ID, then you must specify a
 C<RoleArn> with proper permissions in the C<Target> structure. For more
 information, see Sending and Receiving Events Between AWS Accounts
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
 in the I<Amazon CloudWatch Events User Guide>.
 
 =head1 ATTRIBUTES
@@ -65,7 +65,7 @@ in the I<Amazon CloudWatch Events User Guide>.
 
   If the event target is an AWS Batch job, this contains the job
 definition, job name, and other parameters. For more information, see
-Jobs (http://docs.aws.amazon.com/batch/latest/userguide/jobs.html) in
+Jobs (https://docs.aws.amazon.com/batch/latest/userguide/jobs.html) in
 the I<AWS Batch User Guide>.
 
 
@@ -74,7 +74,7 @@ the I<AWS Batch User Guide>.
   Contains the Amazon ECS task definition and task count to be used, if
 the event target is an Amazon ECS task. For more information about
 Amazon ECS tasks, see Task Definitions
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
 in the I<Amazon EC2 Container Service Developer Guide>.
 
 

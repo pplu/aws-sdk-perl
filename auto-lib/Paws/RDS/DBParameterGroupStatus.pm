@@ -40,27 +40,27 @@ This data type is used as a response element in the following actions:
 
 =item *
 
-CreateDBInstance
+C<CreateDBInstance>
 
 =item *
 
-CreateDBInstanceReadReplica
+C<CreateDBInstanceReadReplica>
 
 =item *
 
-DeleteDBInstance
+C<DeleteDBInstance>
 
 =item *
 
-ModifyDBInstance
+C<ModifyDBInstance>
 
 =item *
 
-RebootDBInstance
+C<RebootDBInstance>
 
 =item *
 
-RestoreDBInstanceFromDBSnapshot
+C<RestoreDBInstanceFromDBSnapshot>
 
 =back
 

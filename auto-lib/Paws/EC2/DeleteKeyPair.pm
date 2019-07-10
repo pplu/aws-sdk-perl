@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To delete a key pair
     # This example deletes the specified key pair.
-    $ec2->DeleteKeyPair(
-      {
-        'KeyName' => 'my-key-pair'
-      }
-    );
+    $ec2->DeleteKeyPair( 'KeyName' => 'my-key-pair' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

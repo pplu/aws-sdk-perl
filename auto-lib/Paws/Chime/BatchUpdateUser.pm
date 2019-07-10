@@ -7,7 +7,7 @@ package Paws::Chime::BatchUpdateUser;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchUpdateUser');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/console/accounts/{accountId}/users');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/users');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::BatchUpdateUserResponse');
 1;

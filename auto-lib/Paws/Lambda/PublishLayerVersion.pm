@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LayerName          => 'MyLayerName',
       CompatibleRuntimes => [
         'nodejs',
-        ... # values: nodejs, nodejs4.3, nodejs6.10, nodejs8.10, java8, python2.7, python3.6, python3.7, dotnetcore1.0, dotnetcore2.0, dotnetcore2.1, nodejs4.3-edge, go1.x, ruby2.5, provided
+        ... # values: nodejs, nodejs4.3, nodejs6.10, nodejs8.10, nodejs10.x, java8, python2.7, python3.6, python3.7, dotnetcore1.0, dotnetcore2.0, dotnetcore2.1, nodejs4.3-edge, go1.x, ruby2.5, provided
       ],    # OPTIONAL
       Description => 'MyDescription',    # OPTIONAL
       LicenseInfo => 'MyLicenseInfo',    # OPTIONAL
@@ -69,7 +69,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 =head2 CompatibleRuntimes => ArrayRef[Str|Undef]
 
 A list of compatible function runtimes
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 Used for filtering with ListLayers and ListLayerVersions.
 
 

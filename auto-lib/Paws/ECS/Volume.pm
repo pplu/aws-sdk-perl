@@ -37,7 +37,7 @@ A data volume used in a task definition. For tasks that use a Docker
 volume, specify a C<DockerVolumeConfiguration>. For tasks that use a
 bind mount host volume, specify a C<host> and optional C<sourcePath>.
 For more information, see Using Data Volumes in Tasks
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html).
 
 =head1 ATTRIBUTES
 
@@ -71,9 +71,8 @@ C<D:\my\path:C:\my\path> or C<D:\:C:\my\path>.
 =head2 Name => Str
 
   The name of the volume. Up to 255 letters (uppercase and lowercase),
-numbers, hyphens, and underscores are allowed. This name is referenced
-in the C<sourceVolume> parameter of container definition
-C<mountPoints>.
+numbers, and hyphens are allowed. This name is referenced in the
+C<sourceVolume> parameter of container definition C<mountPoints>.
 
 
 

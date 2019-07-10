@@ -37,11 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command creates a role named Test-Role and attaches a trust
     # policy to it that is provided as a URL-encoded JSON string.
     my $CreateRoleResponse = $iam->CreateRole(
-      {
-        'AssumeRolePolicyDocument' => '<URL-encoded-JSON>',
-        'Path'                     => '/',
-        'RoleName'                 => 'Test-Role'
-      }
+      'AssumeRolePolicyDocument' => '<URL-encoded-JSON>',
+      'Path'                     => '/',
+      'RoleName'                 => 'Test-Role'
     );
 
     # Results:
@@ -59,6 +57,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The trust relationship policy document that grants an entity permission
 to assume the role.
+
+In IAM, you must provide a JSON policy that has been converted to a
+string. However, for AWS CloudFormation templates formatted in YAML,
+you can provide the policy in JSON or YAML format. AWS CloudFormation
+always converts a YAML policy to JSON format before submitting it to
+IAM.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
 this parameter is a string of characters consisting of the following:
@@ -82,6 +86,8 @@ return (\u000D)
 
 =back
 
+Upon success, the response includes the same trust policy as a
+URL-encoded JSON string.
 
 
 
@@ -108,7 +114,7 @@ one hour by default. This applies when you use the C<AssumeRole*> API
 operations or the C<assume-role*> CLI operations but does not apply
 when you use those operations to create a console URL. For more
 information, see Using IAM Roles
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) in
 the I<IAM User Guide>.
 
 
@@ -117,7 +123,7 @@ the I<IAM User Guide>.
 
 The path to the role. For more information about paths, see IAM
 Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -144,13 +150,9 @@ the role.
 
 The name of the role to create.
 
-This parameter allows (through its regex pattern
-(http://wikipedia.org/wiki/regex)) a string of characters consisting of
-upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: _+=,.@-
-
-Role names are not distinguished by case. For example, you cannot
-create roles named both "PRODROLE" and "prodrole".
+IAM user, group, role, and policy names must be unique within the
+account. Names are not distinguished by case. For example, you cannot
+create resources named both "MyResource" and "myresource".
 
 
 
@@ -159,7 +161,7 @@ create roles named both "PRODROLE" and "prodrole".
 A list of tags that you want to attach to the newly created role. Each
 tag consists of a key name and an associated value. For more
 information about tagging, see Tagging IAM Identities
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
 I<IAM User Guide>.
 
 If any one of the tags is invalid or if you exceed the allowed number

@@ -65,7 +65,7 @@ global database cluster you are creating.
 =head2 DeletionProtection => Bool
 
 The deletion protection setting for the new global database. The global
-database can't be deleted when this value is set to true.
+database can't be deleted when deletion protection is enabled.
 
 
 

@@ -68,7 +68,7 @@ in production.
 A VpcConfig object that specifies the VPC that this model has access
 to. For more information, see Protect Endpoints by Using an Amazon
 Virtual Private Cloud
-(http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)
 
 
 =head2 _request_id => Str

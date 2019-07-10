@@ -32,10 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # token for a domain identity:
     my $GetIdentityVerificationAttributesResponse =
       $email->GetIdentityVerificationAttributes(
-      {
-        'Identities' => ['example.com']
-      }
-      );
+      'Identities' => ['example.com'] );
 
     # Results:
     my $VerificationAttributes =

@@ -32,10 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe an Auto Scaling group
     # This example describes the specified Auto Scaling group.
     my $AutoScalingGroupsType = $autoscaling->DescribeAutoScalingGroups(
-      {
-        'AutoScalingGroupNames' => ['my-auto-scaling-group']
-      }
-    );
+      'AutoScalingGroupNames' => ['my-auto-scaling-group'] );
 
     # Results:
     my $AutoScalingGroups = $AutoScalingGroupsType->AutoScalingGroups;
@@ -50,16 +47,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 AutoScalingGroupNames => ArrayRef[Str|Undef]
 
-The names of the Auto Scaling groups. You can specify up to
-C<MaxRecords> names. If you omit this parameter, all Auto Scaling
-groups are described.
+The names of the Auto Scaling groups. Each name can be a maximum of
+1600 characters. By default, you can only specify up to 50 names. You
+can optionally increase this limit using the C<MaxRecords> parameter.
+
+If you omit this parameter, all Auto Scaling groups are described.
 
 
 
 =head2 MaxRecords => Int
 
 The maximum number of items to return with this call. The default value
-is 50 and the maximum value is 100.
+is C<50> and the maximum value is C<100>.
 
 
 

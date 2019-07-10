@@ -1,6 +1,6 @@
 package Paws::Pinpoint::GCMChannelRequest;
   use Moose;
-  has ApiKey => (is => 'ro', isa => 'Str');
+  has ApiKey => (is => 'ro', isa => 'Str', required => 1);
   has Enabled => (is => 'ro', isa => 'Bool');
 1;
 
@@ -32,19 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::G
 
 =head1 DESCRIPTION
 
-Google Cloud Messaging credentials
+Specifies the status and settings of the GCM channel for an
+application. This channel enables Amazon Pinpoint to send push
+notifications through the Firebase Cloud Messaging (FCM), formerly
+Google Cloud Messaging (GCM), service.
 
 =head1 ATTRIBUTES
 
 
-=head2 ApiKey => Str
+=head2 B<REQUIRED> ApiKey => Str
 
-  Platform credential API key from Google.
+  The API key, also referred to as a I<server key>, that you received
+from Google to communicate with Google services.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether to enable the GCM channel for the application.
 
 
 

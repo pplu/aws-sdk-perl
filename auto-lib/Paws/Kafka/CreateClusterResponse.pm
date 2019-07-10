@@ -32,7 +32,7 @@ The name of the MSK cluster.
 The state of the cluster. The possible states are CREATING, ACTIVE, and
 FAILED.
 
-Valid values are: C<"ACTIVE">, C<"CREATING">, C<"DELETING">, C<"FAILED">
+Valid values are: C<"ACTIVE">, C<"CREATING">, C<"UPDATING">, C<"DELETING">, C<"FAILED">
 =head2 _request_id => Str
 
 

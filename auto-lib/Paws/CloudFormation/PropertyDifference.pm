@@ -40,7 +40,7 @@ specified as template parameters. These will be present only for
 resources whose C<StackResourceDriftStatus> is C<MODIFIED>. For more
 information, see Detecting Unregulated Configuration Changes to Stacks
 and Resources
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 
 =head1 ATTRIBUTES
 

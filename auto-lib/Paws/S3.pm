@@ -824,6 +824,8 @@ Completes a multipart upload by assembling previously uploaded parts.
 
 =item [SSECustomerKeyMD5 => Str]
 
+=item [SSEKMSEncryptionContext => Str]
+
 =item [SSEKMSKeyId => Str]
 
 =item [StorageClass => Str]
@@ -926,6 +928,8 @@ Creates a new bucket.
 
 =item [SSECustomerKeyMD5 => Str]
 
+=item [SSEKMSEncryptionContext => Str]
+
 =item [SSEKMSKeyId => Str]
 
 =item [StorageClass => Str]
@@ -985,6 +989,11 @@ Returns: nothing
 
 Deletes an analytics configuration for the bucket (specified by the
 analytics configuration ID).
+
+To use this operation, you must have permissions to perform the
+s3:PutAnalyticsConfiguration action. The bucket owner has this
+permission by default. The bucket owner can grant this permission to
+others.
 
 
 =head2 DeleteBucketCors
@@ -1103,8 +1112,9 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketReplication>
 Returns: nothing
 
 Deletes the replication configuration from the bucket. For information
-about replication configuration, see Cross-Region Replication (CRR) in
-the I<Amazon S3 Developer Guide>.
+about replication configuration, see Cross-Region Replication (CRR)
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the
+I<Amazon S3 Developer Guide>.
 
 
 =head2 DeleteBucketTagging
@@ -1348,7 +1358,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketLifecycle>
 
 Returns: a L<Paws::S3::GetBucketLifecycleOutput> instance
 
-Deprecated, see the GetBucketLifecycleConfiguration operation.
+No longer used, see the GetBucketLifecycleConfiguration operation.
 
 
 =head2 GetBucketLifecycleConfiguration
@@ -1433,7 +1443,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketNotification>
 
 Returns: a L<Paws::S3::NotificationConfigurationDeprecated> instance
 
-Deprecated, see the GetBucketNotificationConfiguration operation.
+No longer used, see the GetBucketNotificationConfiguration operation.
 
 
 =head2 GetBucketNotificationConfiguration
@@ -1678,8 +1688,8 @@ Each argument is described in detail in: L<Paws::S3::GetObjectLockConfiguration>
 
 Returns: a L<Paws::S3::GetObjectLockConfigurationOutput> instance
 
-Gets the Object Lock configuration for a bucket. The rule specified in
-the Object Lock configuration will be applied by default to every new
+Gets the object lock configuration for a bucket. The rule specified in
+the object lock configuration will be applied by default to every new
 object placed in the specified bucket.
 
 
@@ -2206,7 +2216,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketLifecycle>
 
 Returns: nothing
 
-Deprecated, see the PutBucketLifecycleConfiguration operation.
+No longer used, see the PutBucketLifecycleConfiguration operation.
 
 
 =head2 PutBucketLifecycleConfiguration
@@ -2294,7 +2304,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketNotification>
 
 Returns: nothing
 
-Deprecated, see the PutBucketNotificationConfiguraiton operation.
+No longer used, see the PutBucketNotificationConfiguration operation.
 
 
 =head2 PutBucketNotificationConfiguration
@@ -2336,8 +2346,7 @@ Each argument is described in detail in: L<Paws::S3::PutBucketPolicy>
 
 Returns: nothing
 
-Replaces a policy on a bucket. If the bucket already has a policy, the
-one in this request completely replaces it.
+Applies an Amazon S3 bucket policy to an Amazon S3 bucket.
 
 
 =head2 PutBucketReplication
@@ -2352,6 +2361,8 @@ one in this request completely replaces it.
 
 =item [ContentMD5 => Str]
 
+=item [Token => Str]
+
 
 =back
 
@@ -2360,8 +2371,9 @@ Each argument is described in detail in: L<Paws::S3::PutBucketReplication>
 Returns: nothing
 
 Creates a replication configuration or replaces an existing one. For
-more information, see Cross-Region Replication (CRR) in the I<Amazon S3
-Developer Guide>.
+more information, see Cross-Region Replication (CRR)
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the
+I<Amazon S3 Developer Guide>.
 
 
 =head2 PutBucketRequestPayment
@@ -2514,6 +2526,8 @@ Set the website configuration for a bucket.
 
 =item [SSECustomerKeyMD5 => Str]
 
+=item [SSEKMSEncryptionContext => Str]
+
 =item [SSEKMSKeyId => Str]
 
 =item [StorageClass => Str]
@@ -2620,8 +2634,8 @@ Each argument is described in detail in: L<Paws::S3::PutObjectLockConfiguration>
 
 Returns: a L<Paws::S3::PutObjectLockConfigurationOutput> instance
 
-Places an Object Lock configuration on the specified bucket. The rule
-specified in the Object Lock configuration will be applied by default
+Places an object lock configuration on the specified bucket. The rule
+specified in the object lock configuration will be applied by default
 to every new object placed in the specified bucket.
 
 

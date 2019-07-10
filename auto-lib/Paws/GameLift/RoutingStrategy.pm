@@ -39,91 +39,27 @@ Routing configuration for a fleet alias.
 
 =item *
 
-CreateFleet
+CreateAlias
 
 =item *
 
-ListFleets
+ListAliases
 
 =item *
 
-DeleteFleet
+DescribeAlias
 
 =item *
 
-Describe fleets:
-
-=over
+UpdateAlias
 
 =item *
 
-DescribeFleetAttributes
+DeleteAlias
 
 =item *
 
-DescribeFleetCapacity
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=item *
-
-DescribeEC2InstanceLimits
-
-=item *
-
-DescribeFleetEvents
-
-=back
-
-=item *
-
-Update fleets:
-
-=over
-
-=item *
-
-UpdateFleetAttributes
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-UpdateFleetPortSettings
-
-=item *
-
-UpdateRuntimeConfiguration
-
-=back
-
-=item *
-
-Manage fleet actions:
-
-=over
-
-=item *
-
-StartFleetActions
-
-=item *
-
-StopFleetActions
-
-=back
+ResolveAlias
 
 =back
 

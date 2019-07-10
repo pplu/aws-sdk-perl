@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $gamelift = Paws->service('GameLift');
     my $DescribeMatchmakingOutput = $gamelift->DescribeMatchmaking(
       TicketIds => [
-        'MyMatchmakingIdStringModel', ...    # min: 1, max: 128
+        'MyMatchmakingIdStringModel', ...    # max: 128
       ],
 
     );

@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $inspector = Paws->service('Inspector');
     # List assessment targets
     # Lists the ARNs of the assessment targets within this AWS account.
-    my $ListAssessmentTargetsResponse = $inspector->ListAssessmentTargets(
-      {
-        'MaxResults' => 123
-      }
-    );
+    my $ListAssessmentTargetsResponse =
+      $inspector->ListAssessmentTargets( 'MaxResults' => 123 );
 
     # Results:
     my $assessmentTargetArns =

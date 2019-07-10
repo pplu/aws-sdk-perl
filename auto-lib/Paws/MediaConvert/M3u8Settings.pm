@@ -65,7 +65,9 @@ ranges and/or by comma separation.
 
 =head2 NielsenId3 => Str
 
-  
+  If INSERT, Nielsen inaudible tones for media tracking will be detected
+in the input audio and an equivalent ID3 tag will be inserted in the
+output.
 
 
 =head2 PatInterval => Int
@@ -76,7 +78,10 @@ output transport stream.
 
 =head2 PcrControl => Str
 
-  
+  When set to PCR_EVERY_PES_PACKET a Program Clock Reference value is
+inserted for every Packetized Elementary Stream (PES) header. This
+parameter is effective only when the PCR PID is the same as the video
+or audio elementary stream.
 
 
 =head2 PcrPid => Int
@@ -116,12 +121,14 @@ stream.
 
 =head2 Scte35Source => Str
 
-  
+  Enables SCTE-35 passthrough (scte35Source) to pass any SCTE-35 signals
+from input to output.
 
 
 =head2 TimedMetadata => Str
 
-  
+  Applies only to HLS outputs. Use this setting to specify whether the
+service inserts the ID3 timed metadata from the input in this output.
 
 
 =head2 TimedMetadataPid => Int

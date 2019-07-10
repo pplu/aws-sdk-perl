@@ -36,15 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To upload the first part of an archive
    # The example uploads the first 1 MiB (1024 x 1024 bytes) part of an archive.
     my $UploadMultipartPartOutput = $glacier->UploadMultipartPart(
-      {
-        'AccountId' => '-',
-        'Body'      => 'part1',
-        'Checksum'  => 'c06f7cd4baacb087002a99a5f48bf953',
-        'Range'     => 'bytes 0-1048575/*',
-        'UploadId' =>
+      'AccountId' => '-',
+      'Body'      => 'part1',
+      'Checksum'  => 'c06f7cd4baacb087002a99a5f48bf953',
+      'Range'     => 'bytes 0-1048575/*',
+      'UploadId' =>
 '19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',
-        'VaultName' => 'examplevault'
-      }
+      'VaultName' => 'examplevault'
     );
 
     # Results:
@@ -62,7 +60,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gla
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon S3 Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens ('-') in the ID.
 
@@ -83,9 +81,9 @@ The SHA256 tree hash of the data being uploaded.
 =head2 Range => Str
 
 Identifies the range of bytes in the assembled archive that will be
-uploaded in this part. Amazon Glacier uses this information to assemble
-the archive in the proper sequence. The format of this header follows
-RFC 2616. An example header is Content-Range:bytes 0-4194303/*.
+uploaded in this part. Amazon S3 Glacier uses this information to
+assemble the archive in the proper sequence. The format of this header
+follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.
 
 
 

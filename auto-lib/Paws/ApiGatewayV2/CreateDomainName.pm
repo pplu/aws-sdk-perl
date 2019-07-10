@@ -3,6 +3,7 @@ package Paws::ApiGatewayV2::CreateDomainName;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName', required => 1);
   has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', traits => ['NameInRequest'], request_name => 'domainNameConfigurations');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -37,11 +38,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CertificateArn       => 'MyArn',                            # OPTIONAL
           CertificateName      => 'MyStringWithLengthBetween1And128', # OPTIONAL
           CertificateUploadDate => '1970-01-01T01:00:00',             # OPTIONAL
-          EndpointType => 'REGIONAL',      # values: REGIONAL, EDGE; OPTIONAL
-          HostedZoneId => 'My__string',    # OPTIONAL
+          DomainNameStatus =>
+            'AVAILABLE',    # values: AVAILABLE, UPDATING; OPTIONAL
+          DomainNameStatusMessage => 'My__string',    # OPTIONAL
+          EndpointType   => 'REGIONAL',     # values: REGIONAL, EDGE; OPTIONAL
+          HostedZoneId   => 'My__string',   # OPTIONAL
+          SecurityPolicy => 'TLS_1_0',      # values: TLS_1_0, TLS_1_2; OPTIONAL
         },
         ...
-      ],                                   # OPTIONAL
+      ],                                    # OPTIONAL
+      Tags => {
+        'My__string' => 'MyStringWithLengthBetween1And1600',    # key: OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -50,6 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DomainName = $CreateDomainNameResponse->DomainName;
     my $DomainNameConfigurations =
       $CreateDomainNameResponse->DomainNameConfigurations;
+    my $Tags = $CreateDomainNameResponse->Tags;
 
     # Returns a L<Paws::ApiGatewayV2::CreateDomainNameResponse> object.
 
@@ -68,6 +77,14 @@ The domain name.
 =head2 DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]
 
 The domain name configurations.
+
+
+
+=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with aws:. The tag value can be up to 256 characters..
 
 
 

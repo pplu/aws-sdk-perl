@@ -38,7 +38,7 @@ With Amazon EMR release version 4.0 and later, the only accepted
 parameter is the application name. To pass arguments to applications,
 you use configuration classifications specified using configuration
 JSON objects. For more information, see Configuring Applications
-(http://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html).
+(https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html).
 
 With earlier Amazon EMR releases, the application is any Amazon or
 third-party software that you can add to the cluster. This structure

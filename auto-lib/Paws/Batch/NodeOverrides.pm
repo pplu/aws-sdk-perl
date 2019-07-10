@@ -1,6 +1,7 @@
 package Paws::Batch::NodeOverrides;
   use Moose;
   has NodePropertyOverrides => (is => 'ro', isa => 'ArrayRef[Paws::Batch::NodePropertyOverride]', request_name => 'nodePropertyOverrides', traits => ['NameInRequest']);
+  has NumNodes => (is => 'ro', isa => 'Int', request_name => 'numNodes', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Batch::NodeOverrides object:
 
-  $service_obj->Method(Att1 => { NodePropertyOverrides => $value, ..., NodePropertyOverrides => $value  });
+  $service_obj->Method(Att1 => { NodePropertyOverrides => $value, ..., NumNodes => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,6 +41,33 @@ in a SubmitJob API operation.
 =head2 NodePropertyOverrides => ArrayRef[L<Paws::Batch::NodePropertyOverride>]
 
   The node property overrides for the job.
+
+
+=head2 NumNodes => Int
+
+  The number of nodes to use with a multi-node parallel job. This value
+overrides the number of nodes that are specified in the job definition.
+To use this override:
+
+=over
+
+=item *
+
+There must be at least one node range in your job definition that has
+an open upper boundary (such as C<:> or C<n:>).
+
+=item *
+
+The lower boundary of the node range specified in the job definition
+must be fewer than the number of nodes specified in the override.
+
+=item *
+
+The main node index specified in the job definition must be fewer than
+the number of nodes specified in the override.
+
+=back
+
 
 
 

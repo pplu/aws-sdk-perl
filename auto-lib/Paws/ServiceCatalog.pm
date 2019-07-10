@@ -20,6 +20,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::AcceptPortfolioShare', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateBudgetWithResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::AssociateBudgetWithResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociatePrincipalWithPortfolio {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::AssociatePrincipalWithPortfolio', @_);
@@ -200,6 +205,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeServiceAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeServiceActionExecutionParameters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeServiceActionExecutionParameters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTagOption {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeTagOption', @_);
@@ -208,6 +218,11 @@ package Paws::ServiceCatalog;
   sub DisableAWSOrganizationsAccess {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DisableAWSOrganizationsAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateBudgetFromResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DisassociateBudgetFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisassociatePrincipalFromPortfolio {
@@ -253,6 +268,11 @@ package Paws::ServiceCatalog;
   sub ListAcceptedPortfolioShares {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListAcceptedPortfolioShares', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListBudgetsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListBudgetsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListConstraintsForPortfolio {
@@ -325,6 +345,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListServiceActionsForProvisioningArtifact', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListStackInstancesForProvisionedProduct {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListStackInstancesForProvisionedProduct', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListTagOptions', @_);
@@ -383,6 +408,11 @@ package Paws::ServiceCatalog;
   sub UpdateProvisionedProduct {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::UpdateProvisionedProduct', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateProvisionedProductProperties {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::UpdateProvisionedProductProperties', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateProvisioningArtifact {
@@ -771,7 +801,7 @@ package Paws::ServiceCatalog;
   }
 
 
-  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateServiceActionWithProvisioningArtifact AssociateTagOptionWithResource BatchAssociateServiceActionWithProvisioningArtifact BatchDisassociateServiceActionFromProvisioningArtifact CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisionedProductPlan CreateProvisioningArtifact CreateServiceAction CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisionedProductPlan DeleteProvisioningArtifact DeleteServiceAction DeleteTagOption DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribePortfolioShareStatus DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisionedProductPlan DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeServiceAction DescribeTagOption DisableAWSOrganizationsAccess DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateServiceActionFromProvisioningArtifact DisassociateTagOptionFromResource EnableAWSOrganizationsAccess ExecuteProvisionedProductPlan ExecuteProvisionedProductServiceAction GetAWSOrganizationsAccessStatus ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListOrganizationPortfolioAccess ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisionedProductPlans ListProvisioningArtifacts ListProvisioningArtifactsForServiceAction ListRecordHistory ListResourcesForTagOption ListServiceActions ListServiceActionsForProvisioningArtifact ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin SearchProvisionedProducts TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact UpdateServiceAction UpdateTagOption / }
+  sub operations { qw/AcceptPortfolioShare AssociateBudgetWithResource AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateServiceActionWithProvisioningArtifact AssociateTagOptionWithResource BatchAssociateServiceActionWithProvisioningArtifact BatchDisassociateServiceActionFromProvisioningArtifact CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisionedProductPlan CreateProvisioningArtifact CreateServiceAction CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisionedProductPlan DeleteProvisioningArtifact DeleteServiceAction DeleteTagOption DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribePortfolioShareStatus DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisionedProductPlan DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeServiceAction DescribeServiceActionExecutionParameters DescribeTagOption DisableAWSOrganizationsAccess DisassociateBudgetFromResource DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateServiceActionFromProvisioningArtifact DisassociateTagOptionFromResource EnableAWSOrganizationsAccess ExecuteProvisionedProductPlan ExecuteProvisionedProductServiceAction GetAWSOrganizationsAccessStatus ListAcceptedPortfolioShares ListBudgetsForResource ListConstraintsForPortfolio ListLaunchPaths ListOrganizationPortfolioAccess ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisionedProductPlans ListProvisioningArtifacts ListProvisioningArtifactsForServiceAction ListRecordHistory ListResourcesForTagOption ListServiceActions ListServiceActionsForProvisioningArtifact ListStackInstancesForProvisionedProduct ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin SearchProvisionedProducts TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisionedProductProperties UpdateProvisioningArtifact UpdateServiceAction UpdateTagOption / }
 
 1;
 
@@ -831,6 +861,24 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::AcceptPortfolio
 Returns: a L<Paws::ServiceCatalog::AcceptPortfolioShareOutput> instance
 
 Accepts an offer to share the specified portfolio.
+
+
+=head2 AssociateBudgetWithResource
+
+=over
+
+=item BudgetName => Str
+
+=item ResourceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::AssociateBudgetWithResource>
+
+Returns: a L<Paws::ServiceCatalog::AssociateBudgetWithResourceOutput> instance
+
+Associates the specified budget with the specified resource.
 
 
 =head2 AssociatePrincipalWithPortfolio
@@ -1636,6 +1684,13 @@ Use this operation after calling a request operation (for example,
 ProvisionProduct, TerminateProvisionedProduct, or
 UpdateProvisionedProduct).
 
+If a provisioned product was transferred to a new owner using
+UpdateProvisionedProductProperties, the new owner will be able to
+describe all past records for that product. The previous owner will no
+longer be able to describe the records, but will be able to use
+ListRecordHistory to see the product's history from when he was the
+owner.
+
 
 =head2 DescribeServiceAction
 
@@ -1653,6 +1708,26 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeService
 Returns: a L<Paws::ServiceCatalog::DescribeServiceActionOutput> instance
 
 Describes a self-service action.
+
+
+=head2 DescribeServiceActionExecutionParameters
+
+=over
+
+=item ProvisionedProductId => Str
+
+=item ServiceActionId => Str
+
+=item [AcceptLanguage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeServiceActionExecutionParameters>
+
+Returns: a L<Paws::ServiceCatalog::DescribeServiceActionExecutionParametersOutput> instance
+
+
 
 
 =head2 DescribeTagOption
@@ -1688,6 +1763,24 @@ from creating new shares throughout your organization. Current shares
 will not be in sync with your organization structure if it changes
 after calling this API. This API can only be called by the master
 account in the organization.
+
+
+=head2 DisassociateBudgetFromResource
+
+=over
+
+=item BudgetName => Str
+
+=item ResourceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DisassociateBudgetFromResource>
+
+Returns: a L<Paws::ServiceCatalog::DisassociateBudgetFromResourceOutput> instance
+
+Disassociates the specified budget from the specified resource.
 
 
 =head2 DisassociatePrincipalFromPortfolio
@@ -1826,6 +1919,8 @@ specified plan.
 
 =item [AcceptLanguage => Str]
 
+=item [Parameters => L<Paws::ServiceCatalog::ExecutionParameterMap>]
+
 
 =back
 
@@ -1871,6 +1966,28 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListAcceptedPor
 Returns: a L<Paws::ServiceCatalog::ListAcceptedPortfolioSharesOutput> instance
 
 Lists all portfolios for which sharing was accepted by this account.
+
+
+=head2 ListBudgetsForResource
+
+=over
+
+=item ResourceId => Str
+
+=item [AcceptLanguage => Str]
+
+=item [PageSize => Int]
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ListBudgetsForResource>
+
+Returns: a L<Paws::ServiceCatalog::ListBudgetsForResourceOutput> instance
+
+Lists all the budgets associated to the specified resource.
 
 
 =head2 ListConstraintsForPortfolio
@@ -2187,6 +2304,31 @@ Returns a paginated list of self-service actions associated with the
 specified Product ID and Provisioning Artifact ID.
 
 
+=head2 ListStackInstancesForProvisionedProduct
+
+=over
+
+=item ProvisionedProductId => Str
+
+=item [AcceptLanguage => Str]
+
+=item [PageSize => Int]
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ListStackInstancesForProvisionedProduct>
+
+Returns: a L<Paws::ServiceCatalog::ListStackInstancesForProvisionedProductOutput> instance
+
+Returns summary information about stack instances that are associated
+with the specified C<CFN_STACKSET> type provisioned product. You can
+filter for stack instances that are associated with a specific AWS
+account name or region.
+
+
 =head2 ListTagOptions
 
 =over
@@ -2420,6 +2562,8 @@ You can check the status of this request using DescribeRecord.
 
 =item [Description => Str]
 
+=item [Parameters => Str]
+
 
 =back
 
@@ -2518,6 +2662,8 @@ Updates the specified product.
 
 =item [ProvisioningPreferences => L<Paws::ServiceCatalog::UpdateProvisioningPreferences>]
 
+=item [Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]]
+
 
 =back
 
@@ -2536,6 +2682,29 @@ provisioned product entirely.
 You can check the status of this request using DescribeRecord.
 
 
+=head2 UpdateProvisionedProductProperties
+
+=over
+
+=item IdempotencyToken => Str
+
+=item ProvisionedProductId => Str
+
+=item ProvisionedProductProperties => L<Paws::ServiceCatalog::ProvisionedProductProperties>
+
+=item [AcceptLanguage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::UpdateProvisionedProductProperties>
+
+Returns: a L<Paws::ServiceCatalog::UpdateProvisionedProductPropertiesOutput> instance
+
+Requests updates to the properties of the specified provisioned
+product.
+
+
 =head2 UpdateProvisioningArtifact
 
 =over
@@ -2549,6 +2718,8 @@ You can check the status of this request using DescribeRecord.
 =item [Active => Bool]
 
 =item [Description => Str]
+
+=item [Guidance => Str]
 
 =item [Name => Str]
 

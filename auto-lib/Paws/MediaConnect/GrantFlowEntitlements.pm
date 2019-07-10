@@ -35,10 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Subscribers => [ 'My__string', ... ],
           Description => 'My__string',
           Encryption  => {
-            Algorithm => 'aes128',        # values: aes128, aes192, aes256
+            Algorithm => 'aes128',       # values: aes128, aes192, aes256
             RoleArn   => 'My__string',
-            SecretArn => 'My__string',
-            KeyType   => 'static-key',    # values: static-key; OPTIONAL
+            ConstantInitializationVector => 'My__string',
+            DeviceId                     => 'My__string',
+            KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
+            Region     => 'My__string',
+            ResourceId => 'My__string',
+            SecretArn  => 'My__string',
+            Url        => 'My__string',
           },    # OPTIONAL
           Name => 'My__string',
         },

@@ -1,5 +1,7 @@
 package Paws::StorageGateway::GatewayInfo;
   use Moose;
+  has Ec2InstanceId => (is => 'ro', isa => 'Str');
+  has Ec2InstanceRegion => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str');
   has GatewayId => (is => 'ro', isa => 'Str');
   has GatewayName => (is => 'ro', isa => 'Str');
@@ -24,20 +26,30 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::GatewayInfo object:
 
-  $service_obj->Method(Att1 => { GatewayARN => $value, ..., GatewayType => $value  });
+  $service_obj->Method(Att1 => { Ec2InstanceId => $value, ..., GatewayType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGateway::GatewayInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->GatewayARN
+  $result->Att1->Ec2InstanceId
 
 =head1 DESCRIPTION
 
 Describes a gateway object.
 
 =head1 ATTRIBUTES
+
+
+=head2 Ec2InstanceId => Str
+
+  The ID of the Amazon EC2 instance that was used to launch the gateway.
+
+
+=head2 Ec2InstanceRegion => Str
+
+  The AWS Region where the Amazon EC2 instance is located.
 
 
 =head2 GatewayARN => Str

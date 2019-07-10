@@ -34,29 +34,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Website
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies website configuration parameters for an Amazon S3 bucket.
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorDocument => L<Paws::S3::ErrorDocument>
 
-  
+  The name of the error document for the website.
 
 
 =head2 IndexDocument => L<Paws::S3::IndexDocument>
 
-  
+  The name of the index document for the website.
 
 
 =head2 RedirectAllRequestsTo => L<Paws::S3::RedirectAllRequestsTo>
 
-  
+  The redirect behavior for every request to this bucket's website
+endpoint.
+
+If you specify this property, you can't specify any other property.
 
 
 =head2 RoutingRules => ArrayRef[L<Paws::S3::RoutingRule>]
 
-  
+  Rules that define when a redirect is applied and the redirect behavior.
 
 
 

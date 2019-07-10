@@ -7,11 +7,15 @@ package Paws::ApiGateway::DomainName;
   has DistributionDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distributionDomainName');
   has DistributionHostedZoneId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distributionHostedZoneId');
   has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName');
+  has DomainNameStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainNameStatus');
+  has DomainNameStatusMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainNameStatusMessage');
   has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
   has RegionalCertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateArn');
   has RegionalCertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateName');
   has RegionalDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalDomainName');
   has RegionalHostedZoneId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalHostedZoneId');
+  has SecurityPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'securityPolicy');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -71,6 +75,20 @@ The custom domain name as an API host name, for example,
 C<my-api.example.com>.
 
 
+=head2 DomainNameStatus => Str
+
+The status of the DomainName migration. The valid values are
+C<AVAILABLE> and C<UPDATING>. If the status is C<UPDATING>, the domain
+cannot be modified further until the existing operation is complete. If
+it is C<AVAILABLE>, the domain can be updated.
+
+Valid values are: C<"AVAILABLE">, C<"UPDATING">, C<"PENDING">
+=head2 DomainNameStatusMessage => Str
+
+An optional text message containing detailed information about status
+of the DomainName migration.
+
+
 =head2 EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>
 
 The endpoint configuration of this DomainName showing the endpoint
@@ -107,6 +125,18 @@ Name
 (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html)
 and AWS Regions and Endpoints for API Gateway
 (https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region).
+
+
+=head2 SecurityPolicy => Str
+
+The Transport Layer Security (TLS) version + cipher suite for this
+DomainName. The valid values are C<TLS_1_0> and C<TLS_1_2>.
+
+Valid values are: C<"TLS_1_0">, C<"TLS_1_2">
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The collection of tags. Each tag element is associated with a given
+resource.
 
 
 =head2 _request_id => Str

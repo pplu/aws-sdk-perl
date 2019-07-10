@@ -32,9 +32,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Secret
 
 =head1 DESCRIPTION
 
-An object representing the secret to expose to your container. For more
-information, see Specifying Sensitive Data
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html)
+An object representing the secret to expose to your container. Secrets
+can be exposed to a container in the following ways:
+
+=over
+
+=item *
+
+To inject sensitive data into your containers as environment variables,
+use the C<secrets> container definition parameter.
+
+=item *
+
+To reference sensitive information in the log configuration of a
+container, use the C<secretOptions> container definition parameter.
+
+=back
+
+For more information, see Specifying Sensitive Data
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head1 ATTRIBUTES
@@ -42,16 +58,13 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head2 B<REQUIRED> Name => Str
 
-  The value to set as the environment variable on the container.
+  The name of the secret.
 
 
 =head2 B<REQUIRED> ValueFrom => Str
 
-  The secret to expose to the container. If your task is using the EC2
-launch type, then supported values are either the full ARN of the AWS
-Secrets Manager secret or the full ARN of the parameter in the AWS
-Systems Manager Parameter Store. If your task is using the Fargate
-launch type, then the only supported value is the full ARN of the
+  The secret to expose to the container. The supported values are either
+the full ARN of the AWS Secrets Manager secret or the full ARN of the
 parameter in the AWS Systems Manager Parameter Store.
 
 If the AWS Systems Manager Parameter Store parameter exists in the same

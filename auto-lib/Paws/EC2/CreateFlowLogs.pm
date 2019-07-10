@@ -71,7 +71,11 @@ Idempotency
 
 =head2 DeliverLogsPermissionArn => Str
 
-The ARN for the IAM role that's used to post flow logs to a log group.
+The ARN for the IAM role that permits Amazon EC2 to publish flow logs
+to a CloudWatch Logs log group in your account.
+
+If you specify C<LogDestinationType> as C<s3>, do not specify
+C<DeliverLogsPermissionArn> or C<LogGroupName>.
 
 
 
@@ -87,9 +91,9 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 LogDestination => Str
 
 Specifies the destination to which the flow log data is to be
-published. Flow log data can be published to an CloudWatch Logs log
+published. Flow log data can be published to a CloudWatch Logs log
 group or an Amazon S3 bucket. The value specified for this parameter
-depends on the value specified for LogDestinationType.
+depends on the value specified for C<LogDestinationType>.
 
 If LogDestinationType is not specified or C<cloud-watch-logs>, specify
 the Amazon Resource Name (ARN) of the CloudWatch Logs log group.
@@ -112,19 +116,27 @@ S3. To publish flow log data to CloudWatch Logs, specify
 C<cloud-watch-logs>. To publish flow log data to Amazon S3, specify
 C<s3>.
 
+If you specify C<LogDestinationType> as C<s3>, do not specify
+C<DeliverLogsPermissionArn> or C<LogGroupName>.
+
 Default: C<cloud-watch-logs>
 
 Valid values are: C<"cloud-watch-logs">, C<"s3">
 
 =head2 LogGroupName => Str
 
-The name of the log group.
+The name of a new or existing CloudWatch Logs log group where Amazon
+EC2 publishes your flow logs.
+
+If you specify C<LogDestinationType> as C<s3>, do not specify
+C<DeliverLogsPermissionArn> or C<LogGroupName>.
 
 
 
 =head2 B<REQUIRED> ResourceIds => ArrayRef[Str|Undef]
 
-One or more subnet, network interface, or VPC IDs.
+The ID of the subnet, network interface, or VPC for which you want to
+create a flow log.
 
 Constraints: Maximum of 1000 resources
 
@@ -132,13 +144,16 @@ Constraints: Maximum of 1000 resources
 
 =head2 B<REQUIRED> ResourceType => Str
 
-The type of resource on which to create the flow log.
+The type of resource for which to create the flow log. For example, if
+you specified a VPC ID for the C<ResourceId> property, specify C<VPC>
+for this property.
 
 Valid values are: C<"VPC">, C<"Subnet">, C<"NetworkInterface">
 
 =head2 B<REQUIRED> TrafficType => Str
 
-The type of traffic to log.
+The type of traffic to log. You can log traffic that the resource
+accepts or rejects, or all traffic.
 
 Valid values are: C<"ACCEPT">, C<"REJECT">, C<"ALL">
 

@@ -24,7 +24,7 @@ C<null> when there are no more results to return.
 
 =head2 VolumeStatuses => ArrayRef[L<Paws::EC2::VolumeStatusItem>]
 
-A list of volumes.
+Information about the status of the volumes.
 
 
 =head2 _request_id => Str

@@ -2,6 +2,7 @@ package Paws::ServiceCatalog::ProvisioningArtifact;
   use Moose;
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has Guidance => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 1;
@@ -48,6 +49,12 @@ also known as a product version.
 =head2 Description => Str
 
   The description of the provisioning artifact.
+
+
+=head2 Guidance => Str
+
+  Information set by the administrator to provide guidance to end users
+about which provisioning artifacts to use.
 
 
 =head2 Id => Str

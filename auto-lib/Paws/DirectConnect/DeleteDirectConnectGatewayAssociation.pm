@@ -1,8 +1,9 @@
 
 package Paws::DirectConnect::DeleteDirectConnectGatewayAssociation;
   use Moose;
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' , required => 1);
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' , required => 1);
+  has AssociationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associationId' );
+  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' );
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
 
   use MooseX::ClassAttribute;
 
@@ -30,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $directconnect = Paws->service('DirectConnect');
     my $DeleteDirectConnectGatewayAssociationResult =
       $directconnect->DeleteDirectConnectGatewayAssociation(
-      DirectConnectGatewayId => 'MyDirectConnectGatewayId',
-      VirtualGatewayId       => 'MyVirtualGatewayId',
-
+      AssociationId => 'MyDirectConnectGatewayAssociationId',    # OPTIONAL
+      DirectConnectGatewayId => 'MyDirectConnectGatewayId',      # OPTIONAL
+      VirtualGatewayId       => 'MyVirtualGatewayId',            # OPTIONAL
       );
 
     # Results:
@@ -48,13 +49,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DirectConnectGatewayId => Str
+=head2 AssociationId => Str
+
+The ID of the Direct Connect gateway association.
+
+
+
+=head2 DirectConnectGatewayId => Str
 
 The ID of the Direct Connect gateway.
 
 
 
-=head2 B<REQUIRED> VirtualGatewayId => Str
+=head2 VirtualGatewayId => Str
 
 The ID of the virtual private gateway.
 

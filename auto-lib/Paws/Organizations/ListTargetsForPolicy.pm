@@ -73,8 +73,8 @@ where the output should continue from.
 
 =head2 B<REQUIRED> PolicyId => Str
 
-The unique identifier (ID) of the policy for which you want to know its
-attachments.
+The unique identifier (ID) of the policy whose attachments you want to
+know.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a policy ID
 string requires "p-" followed by from 8 to 128 lower-case letters or

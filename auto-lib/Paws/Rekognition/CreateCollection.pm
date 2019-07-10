@@ -29,11 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $rekognition = Paws->service('Rekognition');
     # To create a collection
     # This operation creates a Rekognition collection for storing image data.
-    my $CreateCollectionResponse = $rekognition->CreateCollection(
-      {
-        'CollectionId' => 'myphotos'
-      }
-    );
+    my $CreateCollectionResponse =
+      $rekognition->CreateCollection( 'CollectionId' => 'myphotos' );
 
     # Results:
     my $CollectionArn = $CreateCollectionResponse->CollectionArn;

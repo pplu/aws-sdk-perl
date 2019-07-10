@@ -1,6 +1,7 @@
 package Paws::Amplify::Branch;
   use Moose;
   has ActiveJobId => (is => 'ro', isa => 'Str', request_name => 'activeJobId', traits => ['NameInRequest'], required => 1);
+  has AssociatedResources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'associatedResources', traits => ['NameInRequest']);
   has BasicAuthCredentials => (is => 'ro', isa => 'Str', request_name => 'basicAuthCredentials', traits => ['NameInRequest']);
   has BranchArn => (is => 'ro', isa => 'Str', request_name => 'branchArn', traits => ['NameInRequest'], required => 1);
   has BranchName => (is => 'ro', isa => 'Str', request_name => 'branchName', traits => ['NameInRequest'], required => 1);
@@ -8,14 +9,14 @@ package Paws::Amplify::Branch;
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest'], required => 1);
   has CustomDomains => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'customDomains', traits => ['NameInRequest'], required => 1);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
-  has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest']);
+  has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest'], required => 1);
   has EnableAutoBuild => (is => 'ro', isa => 'Bool', request_name => 'enableAutoBuild', traits => ['NameInRequest'], required => 1);
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', request_name => 'enableBasicAuth', traits => ['NameInRequest'], required => 1);
   has EnableNotification => (is => 'ro', isa => 'Bool', request_name => 'enableNotification', traits => ['NameInRequest'], required => 1);
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', request_name => 'environmentVariables', traits => ['NameInRequest'], required => 1);
   has Framework => (is => 'ro', isa => 'Str', request_name => 'framework', traits => ['NameInRequest'], required => 1);
   has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Amplify::Tags', request_name => 'tags', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::Amplify::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has ThumbnailUrl => (is => 'ro', isa => 'Str', request_name => 'thumbnailUrl', traits => ['NameInRequest']);
   has TotalNumberOfJobs => (is => 'ro', isa => 'Str', request_name => 'totalNumberOfJobs', traits => ['NameInRequest'], required => 1);
   has Ttl => (is => 'ro', isa => 'Str', request_name => 'ttl', traits => ['NameInRequest'], required => 1);
@@ -60,6 +61,11 @@ Branch for an Amplify App, which maps to a 3rd party repository branch.
   Id of the active job for a branch, part of an Amplify App.
 
 
+=head2 AssociatedResources => ArrayRef[Str|Undef]
+
+  List of custom resources that are linked to this branch.
+
+
 =head2 BasicAuthCredentials => Str
 
   Basic Authorization credentials for a branch, part of an Amplify App.
@@ -95,9 +101,9 @@ Branch for an Amplify App, which maps to a 3rd party repository branch.
   Description for a branch, part of an Amplify App.
 
 
-=head2 DisplayName => Str
+=head2 B<REQUIRED> DisplayName => Str
 
-  Display name for a branch, part of an Amplify App.
+  Display name for a branch, will use as the default domain prefix.
 
 
 =head2 B<REQUIRED> EnableAutoBuild => Bool
@@ -130,14 +136,14 @@ Branch for an Amplify App, which maps to a 3rd party repository branch.
   Stage for a branch, part of an Amplify App.
 
 
-=head2 Tags => L<Paws::Amplify::Tags>
+=head2 Tags => L<Paws::Amplify::TagMap>
 
   Tag for branch for Amplify App.
 
 
 =head2 ThumbnailUrl => Str
 
-  Thumbnail Url for the branch.
+  Thumbnail URL for the branch.
 
 
 =head2 B<REQUIRED> TotalNumberOfJobs => Str

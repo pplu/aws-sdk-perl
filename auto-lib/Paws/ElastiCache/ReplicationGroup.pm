@@ -89,7 +89,7 @@ Redis versions earlier than 2.8.6.
 
 =item *
 
-Redis (cluster mode disabled): T1 and T2 cache node types.
+Redis (cluster mode disabled): T1 node types.
 
 =item *
 

@@ -76,9 +76,9 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters. If using multiple filters for rules, the results
-include security groups for which any combination of rules - not
-necessarily a single rule - match all filters.
+The filters. If using multiple filters for rules, the results include
+security groups for which any combination of rules - not necessarily a
+single rule - match all filters.
 
 =over
 
@@ -214,7 +214,7 @@ created.
 
 =head2 GroupIds => ArrayRef[Str|Undef]
 
-One or more security group IDs. Required for security groups in a
+The IDs of the security groups. Required for security groups in a
 nondefault VPC.
 
 Default: Describes all your security groups.
@@ -223,7 +223,7 @@ Default: Describes all your security groups.
 
 =head2 GroupNames => ArrayRef[Str|Undef]
 
-[EC2-Classic and default VPC only] One or more security group names.
+[EC2-Classic and default VPC only] The names of the security groups.
 You can specify either the security group name or the security group
 ID. For security groups in a nondefault VPC, use the C<group-name>
 filter to describe security groups by name.

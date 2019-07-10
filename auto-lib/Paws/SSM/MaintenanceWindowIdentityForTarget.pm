@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Mainte
 
 =head1 DESCRIPTION
 
-The Maintenance Window to which the specified target belongs.
+The maintenance window to which the specified target belongs.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-  The name of the Maintenance Window.
+  The name of the maintenance window.
 
 
 =head2 WindowId => Str
 
-  The ID of the Maintenance Window.
+  The ID of the maintenance window.
 
 
 

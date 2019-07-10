@@ -32,19 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Textual email data, plus an optional character set specification.
+Specifies the subject or body of an email message, represented as
+textual email data and the applicable character set.
 
 =head1 ATTRIBUTES
 
 
 =head2 Charset => Str
 
-  The character set of the content.
+  The applicable character set for the message content.
 
 
 =head2 Data => Str
 
-  The textual data of the content.
+  The textual data of the message content.
 
 
 

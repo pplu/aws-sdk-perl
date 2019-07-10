@@ -37,11 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ecs = Paws->service('ECS');
     # To list the tasks in a cluster
     # This example lists all of the tasks in a cluster.
-    my $ListTasksResponse = $ecs->ListTasks(
-      {
-        'Cluster' => 'default'
-      }
-    );
+    my $ListTasksResponse = $ecs->ListTasks( 'Cluster' => 'default' );
 
     # Results:
     my $taskArns = $ListTasksResponse->taskArns;
@@ -52,10 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # a ``containerInstance`` value limits	the  results  to  tasks  that belong
     # to that container instance.
     my $ListTasksResponse = $ecs->ListTasks(
-      {
-        'Cluster'           => 'default',
-        'ContainerInstance' => 'f6bbb147-5370-4ace-8c73-c7181ded911f'
-      }
+      'Cluster'           => 'default',
+      'ContainerInstance' => 'f6bbb147-5370-4ace-8c73-c7181ded911f'
     );
 
     # Results:

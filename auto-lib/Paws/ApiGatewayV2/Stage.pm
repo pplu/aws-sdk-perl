@@ -10,6 +10,7 @@ package Paws::ApiGatewayV2::Stage;
   has RouteSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteSettingsMap', request_name => 'routeSettings', traits => ['NameInRequest']);
   has StageName => (is => 'ro', isa => 'Str', request_name => 'stageName', traits => ['NameInRequest'], required => 1);
   has StageVariables => (is => 'ro', isa => 'Paws::ApiGatewayV2::StageVariablesMap', request_name => 'stageVariables', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ApiGatewayV2::Stage object:
 
-  $service_obj->Method(Att1 => { AccessLogSettings => $value, ..., StageVariables => $value  });
+  $service_obj->Method(Att1 => { AccessLogSettings => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -95,6 +96,13 @@ Represents an API stage.
   A map that defines the stage variables for a stage resource. Variable
 names can have alphanumeric and underscore characters, and the values
 must match [A-Za-z0-9-._~:/?#&=,]+.
+
+
+=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+
+  The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with aws:. The tag value can be up to 256 characters..
 
 
 

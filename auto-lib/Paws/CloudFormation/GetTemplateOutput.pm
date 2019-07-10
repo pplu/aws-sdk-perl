@@ -29,7 +29,7 @@ template becomes available.
 
 Structure containing the template body. (For more information, go to
 Template Anatomy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.)
 
 AWS CloudFormation returns the same template that was used when the
