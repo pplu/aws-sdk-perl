@@ -6,6 +6,7 @@ package Paws::Amplify::UpdateBranch;
   has BranchName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'branchName', required => 1);
   has BuildSpec => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildSpec');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DisplayName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'displayName');
   has EnableAutoBuild => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableAutoBuild');
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBasicAuth');
   has EnableNotification => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableNotification');
@@ -45,6 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BasicAuthCredentials => 'MyBasicAuthCredentials',    # OPTIONAL
       BuildSpec            => 'MyBuildSpec',               # OPTIONAL
       Description          => 'MyDescription',             # OPTIONAL
+      DisplayName          => 'MyDisplayName',             # OPTIONAL
       EnableAutoBuild      => 1,                           # OPTIONAL
       EnableBasicAuth      => 1,                           # OPTIONAL
       EnableNotification   => 1,                           # OPTIONAL
@@ -94,6 +96,12 @@ BuildSpec for the branch.
 =head2 Description => Str
 
 Description for the branch.
+
+
+
+=head2 DisplayName => Str
+
+Display name for a branch, will use as the default domain prefix.
 
 
 

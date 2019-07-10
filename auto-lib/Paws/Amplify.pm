@@ -24,9 +24,19 @@ package Paws::Amplify;
     my $call_object = $self->new_with_coercions('Paws::Amplify::CreateBranch', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDeployment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::CreateDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDomainAssociation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Amplify::CreateDomainAssociation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateWebhook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::CreateWebhook', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteApp {
@@ -49,6 +59,11 @@ package Paws::Amplify;
     my $call_object = $self->new_with_coercions('Paws::Amplify::DeleteJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteWebhook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::DeleteWebhook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetApp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Amplify::GetApp', @_);
@@ -67,6 +82,11 @@ package Paws::Amplify;
   sub GetJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Amplify::GetJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetWebhook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::GetWebhook', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListApps {
@@ -89,6 +109,21 @@ package Paws::Amplify;
     my $call_object = $self->new_with_coercions('Paws::Amplify::ListJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListWebhooks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::ListWebhooks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartDeployment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::StartDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Amplify::StartJob', @_);
@@ -97,6 +132,16 @@ package Paws::Amplify;
   sub StopJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Amplify::StopJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateApp {
@@ -112,6 +157,11 @@ package Paws::Amplify;
   sub UpdateDomainAssociation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Amplify::UpdateDomainAssociation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateWebhook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Amplify::UpdateWebhook', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -209,7 +259,7 @@ package Paws::Amplify;
   }
 
 
-  sub operations { qw/CreateApp CreateBranch CreateDomainAssociation DeleteApp DeleteBranch DeleteDomainAssociation DeleteJob GetApp GetBranch GetDomainAssociation GetJob ListApps ListBranches ListDomainAssociations ListJobs StartJob StopJob UpdateApp UpdateBranch UpdateDomainAssociation / }
+  sub operations { qw/CreateApp CreateBranch CreateDeployment CreateDomainAssociation CreateWebhook DeleteApp DeleteBranch DeleteDomainAssociation DeleteJob DeleteWebhook GetApp GetBranch GetDomainAssociation GetJob GetWebhook ListApps ListBranches ListDomainAssociations ListJobs ListTagsForResource ListWebhooks StartDeployment StartJob StopJob TagResource UntagResource UpdateApp UpdateBranch UpdateDomainAssociation UpdateWebhook / }
 
 1;
 
@@ -251,11 +301,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =item Name => Str
 
-=item OauthToken => Str
+=item [AccessToken => Str]
 
-=item Platform => Str
+=item [AutoBranchCreationConfig => L<Paws::Amplify::AutoBranchCreationConfig>]
 
-=item Repository => Str
+=item [AutoBranchCreationPatterns => ArrayRef[Str|Undef]]
 
 =item [BasicAuthCredentials => Str]
 
@@ -265,6 +315,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =item [Description => Str]
 
+=item [EnableAutoBranchCreation => Bool]
+
 =item [EnableBasicAuth => Bool]
 
 =item [EnableBranchAutoBuild => Bool]
@@ -273,7 +325,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =item [IamServiceRoleArn => Str]
 
-=item [Tags => L<Paws::Amplify::Tags>]
+=item [OauthToken => Str]
+
+=item [Platform => Str]
+
+=item [Repository => Str]
+
+=item [Tags => L<Paws::Amplify::TagMap>]
 
 
 =back
@@ -299,6 +357,8 @@ Creates a new Amplify App.
 
 =item [Description => Str]
 
+=item [DisplayName => Str]
+
 =item [EnableAutoBuild => Bool]
 
 =item [EnableBasicAuth => Bool]
@@ -311,7 +371,7 @@ Creates a new Amplify App.
 
 =item [Stage => Str]
 
-=item [Tags => L<Paws::Amplify::Tags>]
+=item [Tags => L<Paws::Amplify::TagMap>]
 
 =item [Ttl => Str]
 
@@ -323,6 +383,27 @@ Each argument is described in detail in: L<Paws::Amplify::CreateBranch>
 Returns: a L<Paws::Amplify::CreateBranchResult> instance
 
 Creates a new Branch for an Amplify App.
+
+
+=head2 CreateDeployment
+
+=over
+
+=item AppId => Str
+
+=item BranchName => Str
+
+=item [FileMap => L<Paws::Amplify::FileMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::CreateDeployment>
+
+Returns: a L<Paws::Amplify::CreateDeploymentResult> instance
+
+Create a deployment for manual deploy apps. (Apps are not connected to
+repository)
 
 
 =head2 CreateDomainAssociation
@@ -345,6 +426,26 @@ Each argument is described in detail in: L<Paws::Amplify::CreateDomainAssociatio
 Returns: a L<Paws::Amplify::CreateDomainAssociationResult> instance
 
 Create a new DomainAssociation on an App
+
+
+=head2 CreateWebhook
+
+=over
+
+=item AppId => Str
+
+=item BranchName => Str
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::CreateWebhook>
+
+Returns: a L<Paws::Amplify::CreateWebhookResult> instance
+
+Create a new webhook on an App.
 
 
 =head2 DeleteApp
@@ -419,6 +520,22 @@ Returns: a L<Paws::Amplify::DeleteJobResult> instance
 Delete a job, for an Amplify branch, part of Amplify App.
 
 
+=head2 DeleteWebhook
+
+=over
+
+=item WebhookId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::DeleteWebhook>
+
+Returns: a L<Paws::Amplify::DeleteWebhookResult> instance
+
+Deletes a webhook.
+
+
 =head2 GetApp
 
 =over
@@ -489,6 +606,22 @@ Each argument is described in detail in: L<Paws::Amplify::GetJob>
 Returns: a L<Paws::Amplify::GetJobResult> instance
 
 Get a job for a branch, part of an Amplify App.
+
+
+=head2 GetWebhook
+
+=over
+
+=item WebhookId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::GetWebhook>
+
+Returns: a L<Paws::Amplify::GetWebhookResult> instance
+
+Retrieves webhook info that corresponds to a webhookId.
 
 
 =head2 ListApps
@@ -571,6 +704,65 @@ Returns: a L<Paws::Amplify::ListJobsResult> instance
 List Jobs for a branch, part of an Amplify App.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::ListTagsForResource>
+
+Returns: a L<Paws::Amplify::ListTagsForResourceResponse> instance
+
+List tags for resource.
+
+
+=head2 ListWebhooks
+
+=over
+
+=item AppId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::ListWebhooks>
+
+Returns: a L<Paws::Amplify::ListWebhooksResult> instance
+
+List webhooks with an app.
+
+
+=head2 StartDeployment
+
+=over
+
+=item AppId => Str
+
+=item BranchName => Str
+
+=item [JobId => Str]
+
+=item [SourceUrl => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::StartDeployment>
+
+Returns: a L<Paws::Amplify::StartDeploymentResult> instance
+
+Start a deployment for manual deploy apps. (Apps are not connected to
+repository)
+
+
 =head2 StartJob
 
 =over
@@ -622,11 +814,51 @@ Stop a job that is in progress, for an Amplify branch, part of Amplify
 App.
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::Amplify::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::TagResource>
+
+Returns: a L<Paws::Amplify::TagResourceResponse> instance
+
+Tag resource with tag key and value.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::UntagResource>
+
+Returns: a L<Paws::Amplify::UntagResourceResponse> instance
+
+Untag resource with resourceArn.
+
+
 =head2 UpdateApp
 
 =over
 
 =item AppId => Str
+
+=item [AutoBranchCreationConfig => L<Paws::Amplify::AutoBranchCreationConfig>]
+
+=item [AutoBranchCreationPatterns => ArrayRef[Str|Undef]]
 
 =item [BasicAuthCredentials => Str]
 
@@ -635,6 +867,8 @@ App.
 =item [CustomRules => ArrayRef[L<Paws::Amplify::CustomRule>]]
 
 =item [Description => Str]
+
+=item [EnableAutoBranchCreation => Bool]
 
 =item [EnableBasicAuth => Bool]
 
@@ -671,6 +905,8 @@ Updates an existing Amplify App.
 =item [BuildSpec => Str]
 
 =item [Description => Str]
+
+=item [DisplayName => Str]
 
 =item [EnableAutoBuild => Bool]
 
@@ -716,6 +952,26 @@ Each argument is described in detail in: L<Paws::Amplify::UpdateDomainAssociatio
 Returns: a L<Paws::Amplify::UpdateDomainAssociationResult> instance
 
 Create a new DomainAssociation on an App
+
+
+=head2 UpdateWebhook
+
+=over
+
+=item WebhookId => Str
+
+=item [BranchName => Str]
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Amplify::UpdateWebhook>
+
+Returns: a L<Paws::Amplify::UpdateWebhookResult> instance
+
+Update a webhook.
 
 
 

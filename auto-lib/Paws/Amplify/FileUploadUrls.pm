@@ -1,4 +1,4 @@
-package Paws::Amplify::Tags;
+package Paws::Amplify::FileUploadUrls;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -9,7 +9,7 @@ package Paws::Amplify::Tags;
 
 =head1 NAME
 
-Paws::Amplify::Tags
+Paws::Amplify::FileUploadUrls
 
 =head1 USAGE
 
@@ -20,13 +20,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Amplify::Tags object:
+As an example, if Att1 is expected to be a Paws::Amplify::FileUploadUrls object:
 
   $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Tags object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::FileUploadUrls object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Map->{ key1 }

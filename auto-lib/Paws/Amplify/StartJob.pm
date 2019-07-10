@@ -89,21 +89,24 @@ Commit date / time for the Job.
 
 =head2 JobId => Str
 
-Unique Id for the Job.
+Unique Id for an existing job. Required for "RETRY" JobType.
 
 
 
 =head2 JobReason => Str
 
-Reason for the Job.
+Descriptive reason for starting this job.
 
 
 
 =head2 B<REQUIRED> JobType => Str
 
-Type for the Job.
+Type for the Job. Available JobTypes are: \n "RELEASE": Start a new job
+with the latest change from the specified branch. Only available for
+apps that have connected to a repository. "RETRY": Retry an existing
+job. JobId is required for this type of job.
 
-Valid values are: C<"RELEASE">, C<"RETRY">, C<"WEB_HOOK">
+Valid values are: C<"RELEASE">, C<"RETRY">, C<"MANUAL">, C<"WEB_HOOK">
 
 
 =head1 SEE ALSO

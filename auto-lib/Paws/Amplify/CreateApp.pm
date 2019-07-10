@@ -1,19 +1,23 @@
 
 package Paws::Amplify::CreateApp;
   use Moose;
+  has AccessToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'accessToken');
+  has AutoBranchCreationConfig => (is => 'ro', isa => 'Paws::Amplify::AutoBranchCreationConfig', traits => ['NameInRequest'], request_name => 'autoBranchCreationConfig');
+  has AutoBranchCreationPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'autoBranchCreationPatterns');
   has BasicAuthCredentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'basicAuthCredentials');
   has BuildSpec => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildSpec');
   has CustomRules => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::CustomRule]', traits => ['NameInRequest'], request_name => 'customRules');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has EnableAutoBranchCreation => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableAutoBranchCreation');
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBasicAuth');
   has EnableBranchAutoBuild => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBranchAutoBuild');
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', traits => ['NameInRequest'], request_name => 'environmentVariables');
   has IamServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamServiceRoleArn');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has OauthToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'oauthToken', required => 1);
-  has Platform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platform', required => 1);
-  has Repository => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repository', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Amplify::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  has OauthToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'oauthToken');
+  has Platform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platform');
+  has Repository => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repository');
+  has Tags => (is => 'ro', isa => 'Paws::Amplify::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -41,10 +45,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $amplify = Paws->service('Amplify');
     my $CreateAppResult = $amplify->CreateApp(
-      Name                 => 'MyName',
-      OauthToken           => 'MyOauthToken',
-      Platform             => 'IOS',
-      Repository           => 'MyRepository',
+      Name                     => 'MyName',
+      AccessToken              => 'MyAccessToken',    # OPTIONAL
+      AutoBranchCreationConfig => {
+        BasicAuthCredentials => 'MyBasicAuthCredentials',  # max: 2000; OPTIONAL
+        BuildSpec            => 'MyBuildSpec',    # min: 1, max: 25000; OPTIONAL
+        EnableAutoBuild      => 1,                # OPTIONAL
+        EnableBasicAuth      => 1,                # OPTIONAL
+        EnvironmentVariables => {
+          'MyEnvKey' => 'MyEnvValue',    # key: max: 255, value: max: 1000
+        },    # OPTIONAL
+        Framework => 'MyFramework',    # max: 255; OPTIONAL
+        Stage     => 'PRODUCTION'
+        ,    # values: PRODUCTION, BETA, DEVELOPMENT, EXPERIMENTAL; OPTIONAL
+      },    # OPTIONAL
+      AutoBranchCreationPatterns => [
+        'MyAutoBranchCreationPattern', ...    # min: 1, max: 2048
+      ],                                      # OPTIONAL
       BasicAuthCredentials => 'MyBasicAuthCredentials',    # OPTIONAL
       BuildSpec            => 'MyBuildSpec',               # OPTIONAL
       CustomRules          => [
@@ -56,15 +73,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                 # OPTIONAL
-      Description           => 'MyDescription',    # OPTIONAL
-      EnableBasicAuth       => 1,                  # OPTIONAL
-      EnableBranchAutoBuild => 1,                  # OPTIONAL
-      EnvironmentVariables  => {
+      Description              => 'MyDescription',    # OPTIONAL
+      EnableAutoBranchCreation => 1,                  # OPTIONAL
+      EnableBasicAuth          => 1,                  # OPTIONAL
+      EnableBranchAutoBuild    => 1,                  # OPTIONAL
+      EnvironmentVariables     => {
         'MyEnvKey' => 'MyEnvValue',    # key: max: 255, value: max: 1000
       },    # OPTIONAL
       IamServiceRoleArn => 'MyServiceRoleArn',    # OPTIONAL
+      OauthToken        => 'MyOauthToken',        # OPTIONAL
+      Platform          => 'WEB',                 # OPTIONAL
+      Repository        => 'MyRepository',        # OPTIONAL
       Tags              => {
-        'MyTagKey' => 'MyTagValue',    # key: max: 1000, value: max: 1000
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
     );
 
@@ -77,6 +98,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amplify/CreateApp>
 
 =head1 ATTRIBUTES
+
+
+=head2 AccessToken => Str
+
+Personal Access token for 3rd party source control system for an
+Amplify App, used to create webhook and read-only deploy key. Token is
+not stored.
+
+
+
+=head2 AutoBranchCreationConfig => L<Paws::Amplify::AutoBranchCreationConfig>
+
+Automated branch creation config for the Amplify App.
+
+
+
+=head2 AutoBranchCreationPatterns => ArrayRef[Str|Undef]
+
+Automated branch creation glob patterns for the Amplify App.
+
 
 
 =head2 BasicAuthCredentials => Str
@@ -100,6 +141,12 @@ Custom rewrite / redirect rules for an Amplify App.
 =head2 Description => Str
 
 Description for an Amplify App
+
+
+
+=head2 EnableAutoBranchCreation => Bool
+
+Enables automated branch creation for the Amplify App.
 
 
 
@@ -134,7 +181,7 @@ Name for the Amplify App
 
 
 
-=head2 B<REQUIRED> OauthToken => Str
+=head2 OauthToken => Str
 
 OAuth token for 3rd party source control system for an Amplify App,
 used to create webhook and read-only deploy key. OAuth token is not
@@ -142,19 +189,19 @@ stored.
 
 
 
-=head2 B<REQUIRED> Platform => Str
+=head2 Platform => Str
 
 Platform / framework for an Amplify App
 
-Valid values are: C<"IOS">, C<"ANDROID">, C<"WEB">, C<"REACT_NATIVE">
+Valid values are: C<"WEB">
 
-=head2 B<REQUIRED> Repository => Str
+=head2 Repository => Str
 
 Repository for an Amplify App
 
 
 
-=head2 Tags => L<Paws::Amplify::Tags>
+=head2 Tags => L<Paws::Amplify::TagMap>
 
 Tag for an Amplify App
 
