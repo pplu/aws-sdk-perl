@@ -108,7 +108,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
             },
           },    # OPTIONAL
-        },    # OPTIONAL
+        },
         Name          => 'My__string',
         SegmentGroups => {
           Groups => [
@@ -192,7 +192,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },
                   },    # OPTIONAL
                 },
-                ...     # OPTIONAL
+                ...
               ],        # OPTIONAL
               SourceSegments => [
                 {

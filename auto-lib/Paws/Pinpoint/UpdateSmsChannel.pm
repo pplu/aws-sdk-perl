@@ -9,7 +9,7 @@ package Paws::Pinpoint::UpdateSmsChannel;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSmsChannel');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/sms');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::SMSChannelResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateSmsChannelResponse');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $SMSChannelResponse = $pinpoint->UpdateSmsChannel(
+    my $UpdateSmsChannelResponse = $pinpoint->UpdateSmsChannel(
       ApplicationId     => 'My__string',
       SMSChannelRequest => {
         Enabled   => 1,              # OPTIONAL
@@ -40,24 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApplicationId    = $SMSChannelResponse->ApplicationId;
-    my $CreationDate     = $SMSChannelResponse->CreationDate;
-    my $Enabled          = $SMSChannelResponse->Enabled;
-    my $HasCredential    = $SMSChannelResponse->HasCredential;
-    my $Id               = $SMSChannelResponse->Id;
-    my $IsArchived       = $SMSChannelResponse->IsArchived;
-    my $LastModifiedBy   = $SMSChannelResponse->LastModifiedBy;
-    my $LastModifiedDate = $SMSChannelResponse->LastModifiedDate;
-    my $Platform         = $SMSChannelResponse->Platform;
-    my $PromotionalMessagesPerSecond =
-      $SMSChannelResponse->PromotionalMessagesPerSecond;
-    my $SenderId  = $SMSChannelResponse->SenderId;
-    my $ShortCode = $SMSChannelResponse->ShortCode;
-    my $TransactionalMessagesPerSecond =
-      $SMSChannelResponse->TransactionalMessagesPerSecond;
-    my $Version = $SMSChannelResponse->Version;
+    my $SMSChannelResponse = $UpdateSmsChannelResponse->SMSChannelResponse;
 
-    # Returns a L<Paws::Pinpoint::SMSChannelResponse> object.
+    # Returns a L<Paws::Pinpoint::UpdateSmsChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/UpdateSmsChannel>

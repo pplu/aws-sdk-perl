@@ -10,7 +10,7 @@ package Paws::Pinpoint::RemoveAttributes;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveAttributes');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/attributes/{attribute-type}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::AttributesResource');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::RemoveAttributesResponse');
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $AttributesResource = $pinpoint->RemoveAttributes(
+    my $RemoveAttributesResponse = $pinpoint->RemoveAttributes(
       ApplicationId           => 'My__string',
       AttributeType           => 'My__string',
       UpdateAttributesRequest => {
@@ -40,11 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApplicationId = $AttributesResource->ApplicationId;
-    my $AttributeType = $AttributesResource->AttributeType;
-    my $Attributes    = $AttributesResource->Attributes;
+    my $AttributesResource = $RemoveAttributesResponse->AttributesResource;
 
-    # Returns a L<Paws::Pinpoint::AttributesResource> object.
+    # Returns a L<Paws::Pinpoint::RemoveAttributesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/RemoveAttributes>

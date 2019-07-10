@@ -9,7 +9,7 @@ package Paws::Pinpoint::UpdateBaiduChannel;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBaiduChannel');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/baidu');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::BaiduChannelResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateBaiduChannelResponse');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $BaiduChannelResponse = $pinpoint->UpdateBaiduChannel(
+    my $UpdateBaiduChannelResponse = $pinpoint->UpdateBaiduChannel(
       ApplicationId       => 'My__string',
       BaiduChannelRequest => {
         ApiKey    => 'My__string',
@@ -40,19 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApplicationId    = $BaiduChannelResponse->ApplicationId;
-    my $CreationDate     = $BaiduChannelResponse->CreationDate;
-    my $Credential       = $BaiduChannelResponse->Credential;
-    my $Enabled          = $BaiduChannelResponse->Enabled;
-    my $HasCredential    = $BaiduChannelResponse->HasCredential;
-    my $Id               = $BaiduChannelResponse->Id;
-    my $IsArchived       = $BaiduChannelResponse->IsArchived;
-    my $LastModifiedBy   = $BaiduChannelResponse->LastModifiedBy;
-    my $LastModifiedDate = $BaiduChannelResponse->LastModifiedDate;
-    my $Platform         = $BaiduChannelResponse->Platform;
-    my $Version          = $BaiduChannelResponse->Version;
+    my $BaiduChannelResponse =
+      $UpdateBaiduChannelResponse->BaiduChannelResponse;
 
-    # Returns a L<Paws::Pinpoint::BaiduChannelResponse> object.
+    # Returns a L<Paws::Pinpoint::UpdateBaiduChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/UpdateBaiduChannel>

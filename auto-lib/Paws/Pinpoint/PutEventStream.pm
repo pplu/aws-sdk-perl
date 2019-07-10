@@ -9,7 +9,7 @@ package Paws::Pinpoint::PutEventStream;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEventStream');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/eventstream');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::EventStream');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::PutEventStreamResponse');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $EventStream = $pinpoint->PutEventStream(
+    my $PutEventStreamResponse = $pinpoint->PutEventStream(
       ApplicationId    => 'My__string',
       WriteEventStream => {
         DestinationStreamArn => 'My__string',
@@ -40,14 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApplicationId        = $EventStream->ApplicationId;
-    my $DestinationStreamArn = $EventStream->DestinationStreamArn;
-    my $ExternalId           = $EventStream->ExternalId;
-    my $LastModifiedDate     = $EventStream->LastModifiedDate;
-    my $LastUpdatedBy        = $EventStream->LastUpdatedBy;
-    my $RoleArn              = $EventStream->RoleArn;
+    my $EventStream = $PutEventStreamResponse->EventStream;
 
-    # Returns a L<Paws::Pinpoint::EventStream> object.
+    # Returns a L<Paws::Pinpoint::PutEventStreamResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/PutEventStream>

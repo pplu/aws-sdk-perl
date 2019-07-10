@@ -9,7 +9,7 @@ package Paws::Pinpoint::UpdateApplicationSettings;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplicationSettings');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/settings');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::ApplicationSettingsResource');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateApplicationSettingsResponse');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $ApplicationSettingsResource = $pinpoint->UpdateApplicationSettings(
+    my $UpdateApplicationSettingsResponse =
+      $pinpoint->UpdateApplicationSettings(
       ApplicationId                   => 'My__string',
       WriteApplicationSettingsRequest => {
         CampaignHook => {
@@ -50,16 +51,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
       },
 
-    );
+      );
 
     # Results:
-    my $ApplicationId    = $ApplicationSettingsResource->ApplicationId;
-    my $CampaignHook     = $ApplicationSettingsResource->CampaignHook;
-    my $LastModifiedDate = $ApplicationSettingsResource->LastModifiedDate;
-    my $Limits           = $ApplicationSettingsResource->Limits;
-    my $QuietTime        = $ApplicationSettingsResource->QuietTime;
+    my $ApplicationSettingsResource =
+      $UpdateApplicationSettingsResponse->ApplicationSettingsResource;
 
-    # Returns a L<Paws::Pinpoint::ApplicationSettingsResource> object.
+    # Returns a L<Paws::Pinpoint::UpdateApplicationSettingsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/UpdateApplicationSettings>

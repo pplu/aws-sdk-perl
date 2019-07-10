@@ -8,7 +8,7 @@ package Paws::Pinpoint::DeleteApnsVoipSandboxChannel;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApnsVoipSandboxChannel');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/apns_voip_sandbox');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::APNSVoipSandboxChannelResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::DeleteApnsVoipSandboxChannelResponse');
 1;
 
 ### main pod documentation begin ###
@@ -28,28 +28,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $APNSVoipSandboxChannelResponse =
+    my $DeleteApnsVoipSandboxChannelResponse =
       $pinpoint->DeleteApnsVoipSandboxChannel(
       ApplicationId => 'My__string',
 
       );
 
     # Results:
-    my $ApplicationId = $APNSVoipSandboxChannelResponse->ApplicationId;
-    my $CreationDate  = $APNSVoipSandboxChannelResponse->CreationDate;
-    my $DefaultAuthenticationMethod =
-      $APNSVoipSandboxChannelResponse->DefaultAuthenticationMethod;
-    my $Enabled          = $APNSVoipSandboxChannelResponse->Enabled;
-    my $HasCredential    = $APNSVoipSandboxChannelResponse->HasCredential;
-    my $HasTokenKey      = $APNSVoipSandboxChannelResponse->HasTokenKey;
-    my $Id               = $APNSVoipSandboxChannelResponse->Id;
-    my $IsArchived       = $APNSVoipSandboxChannelResponse->IsArchived;
-    my $LastModifiedBy   = $APNSVoipSandboxChannelResponse->LastModifiedBy;
-    my $LastModifiedDate = $APNSVoipSandboxChannelResponse->LastModifiedDate;
-    my $Platform         = $APNSVoipSandboxChannelResponse->Platform;
-    my $Version          = $APNSVoipSandboxChannelResponse->Version;
+    my $APNSVoipSandboxChannelResponse =
+      $DeleteApnsVoipSandboxChannelResponse->APNSVoipSandboxChannelResponse;
 
-    # Returns a L<Paws::Pinpoint::APNSVoipSandboxChannelResponse> object.
+    # Returns a L<Paws::Pinpoint::DeleteApnsVoipSandboxChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/DeleteApnsVoipSandboxChannel>

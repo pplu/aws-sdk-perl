@@ -1,13 +1,13 @@
-package Paws::Pinpoint::EndpointsResponse;
+package Paws::Pinpoint::CampaignVersionsResponse;
   use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::EndpointResponse]', required => 1);
+  has CampaignsResponse => (is => 'ro', isa => 'Paws::Pinpoint::CampaignsResponse', required => 1);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::EndpointsResponse
+Paws::Pinpoint::CampaignVersionsResponse
 
 =head1 USAGE
 
@@ -18,29 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::EndpointsResponse object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::CampaignVersionsResponse object:
 
-  $service_obj->Method(Att1 => { Item => $value, ..., Item => $value  });
+  $service_obj->Method(Att1 => { CampaignsResponse => $value, ..., CampaignsResponse => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::EndpointsResponse object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::CampaignVersionsResponse object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Item
+  $result->Att1->CampaignsResponse
 
 =head1 DESCRIPTION
 
-Provides information about all the endpoints that are associated with a
-user ID.
+This class has no description
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::EndpointResponse>]
+=head2 B<REQUIRED> CampaignsResponse => L<Paws::Pinpoint::CampaignsResponse>
 
-  An array of responses, one for each endpoint that's associated with the
-user ID.
+  
 
 
 

@@ -47,9 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SilentPush        => 1,                                   # OPTIONAL
             SmallImageIconUrl => 'My__string',
             Sound             => 'My__string',
-            Substitutions     => {
-              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
-            },    # OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                                                         # OPTIONAL
             Title => 'My__string',
             Url   => 'My__string',
           },    # OPTIONAL
@@ -66,11 +65,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RawContent                    => 'My__string',
             SilentPush                    => 1,                 # OPTIONAL
             Sound                         => 'My__string',
-            Substitutions                 => {
-              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
-            },    # OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                                                   # OPTIONAL
             ThreadId   => 'My__string',
-            TimeToLive => 1,              # OPTIONAL
+            TimeToLive => 1,                                    # OPTIONAL
             Title      => 'My__string',
             Url        => 'My__string',
           },    # OPTIONAL
@@ -85,27 +83,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SilentPush        => 1,                                   # OPTIONAL
             SmallImageIconUrl => 'My__string',
             Sound             => 'My__string',
-            Substitutions     => {
-              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
-            },    # OPTIONAL
-            TimeToLive => 1,              # OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                                                         # OPTIONAL
+            TimeToLive => 1,                                          # OPTIONAL
             Title      => 'My__string',
             Url        => 'My__string',
           },    # OPTIONAL
           DefaultMessage => {
             Body          => 'My__string',
-            Substitutions => {
-              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
-            },    # OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,    # OPTIONAL
           },    # OPTIONAL
           DefaultPushNotificationMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
             Body   => 'My__string',
-            Data          => { 'My__string' => 'My__string', },    # OPTIONAL
-            SilentPush    => 1,                                    # OPTIONAL
-            Substitutions => {
-              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
-            },    # OPTIONAL
+            Data       => { 'My__string' => 'My__string', },    # OPTIONAL
+            SilentPush => 1,                                    # OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                                                   # OPTIONAL
             Title => 'My__string',
             Url   => 'My__string',
           },    # OPTIONAL
@@ -116,24 +111,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RawEmail                  => {
               Data => 'Blob__blob',    # OPTIONAL
             },    # OPTIONAL
-            ReplyToAddresses => [ 'My__string', ... ],    # OPTIONAL
-            SimpleEmail => {
+            ReplyToAddresses => [ 'My__string', ... ],
+            SimpleEmail      => {
               HtmlPart => {
                 Charset => 'My__string',
                 Data    => 'My__string',
-              },                                          # OPTIONAL
+              },    # OPTIONAL
               Subject => {
                 Charset => 'My__string',
                 Data    => 'My__string',
-              },                                          # OPTIONAL
+              },    # OPTIONAL
               TextPart => {
                 Charset => 'My__string',
                 Data    => 'My__string',
-              },                                          # OPTIONAL
+              },    # OPTIONAL
             },    # OPTIONAL
-            Substitutions => {
-              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
-            },    # OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,     # OPTIONAL
           },    # OPTIONAL
           GCMMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
@@ -149,10 +143,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SilentPush            => 1,                            # OPTIONAL
             SmallImageIconUrl     => 'My__string',
             Sound                 => 'My__string',
-            Substitutions         => {
-              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
-            },    # OPTIONAL
-            TimeToLive => 1,              # OPTIONAL
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                                                      # OPTIONAL
+            TimeToLive => 1,                                       # OPTIONAL
             Title      => 'My__string',
             Url        => 'My__string',
           },    # OPTIONAL
@@ -163,17 +156,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
             OriginationNumber => 'My__string',
             SenderId          => 'My__string',
-            Substitutions     => {
-              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
-            },    # OPTIONAL
+            Substitutions     => { 'My__string' => [ 'My__string', ... ], }
+            ,                     # OPTIONAL
           },    # OPTIONAL
           VoiceMessage => {
             Body              => 'My__string',
             LanguageCode      => 'My__string',
             OriginationNumber => 'My__string',
-            Substitutions     => {
-              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
-            },    # OPTIONAL
+            Substitutions     => { 'My__string' => [ 'My__string', ... ], }
+            ,    # OPTIONAL
             VoiceId => 'My__string',
           },    # OPTIONAL
         },
@@ -182,23 +173,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             BodyOverride => 'My__string',
             ChannelType  => 'GCM'
             , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM; OPTIONAL
-            Context       => { 'My__string' => 'My__string', },    # OPTIONAL
-            RawContent    => 'My__string',
-            Substitutions => {
-              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
-            },    # OPTIONAL
+            Context    => { 'My__string' => 'My__string', },    # OPTIONAL
+            RawContent => 'My__string',
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                                                   # OPTIONAL
             TitleOverride => 'My__string',
           },
         },    # OPTIONAL
-        Context => { 'My__string' => 'My__string', },    # OPTIONAL
+        Context   => { 'My__string' => 'My__string', },    # OPTIONAL
         Endpoints => {
           'My__string' => {
-            BodyOverride  => 'My__string',
-            Context       => { 'My__string' => 'My__string', },    # OPTIONAL
-            RawContent    => 'My__string',
-            Substitutions => {
-              'My__string' => [ 'My__string', ... ],    # , value: OPTIONAL
-            },    # OPTIONAL
+            BodyOverride => 'My__string',
+            Context      => { 'My__string' => 'My__string', },    # OPTIONAL
+            RawContent   => 'My__string',
+            Substitutions => { 'My__string' => [ 'My__string', ... ], }
+            ,                                                     # OPTIONAL
             TitleOverride => 'My__string',
           },
         },    # OPTIONAL

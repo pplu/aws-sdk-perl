@@ -1,6 +1,10 @@
+
 package Paws::Pinpoint::GetSegmentImportJobsResponse;
   use Moose;
   has ImportJobsResponse => (is => 'ro', isa => 'Paws::Pinpoint::ImportJobsResponse', required => 1);
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'ImportJobsResponse');
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -9,48 +13,16 @@ package Paws::Pinpoint::GetSegmentImportJobsResponse;
 
 Paws::Pinpoint::GetSegmentImportJobsResponse
 
-=head1 USAGE
-
-This class represents one of two things:
-
-=head3 Arguments in a call to a service
-
-Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
-Each attribute should be used as a named argument in the calls that expect this type of object.
-
-As an example, if Att1 is expected to be a Paws::Pinpoint::GetSegmentImportJobsResponse object:
-
-  $service_obj->Method(Att1 => { ImportJobsResponse => $value, ..., ImportJobsResponse => $value  });
-
-=head3 Results returned from an API call
-
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::GetSegmentImportJobsResponse object:
-
-  $result = $service_obj->Method(...);
-  $result->Att1->ImportJobsResponse
-
-=head1 DESCRIPTION
-
-This class has no description
-
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ImportJobsResponse => L<Paws::Pinpoint::ImportJobsResponse>
 
-  
 
 
 
-=head1 SEE ALSO
+=head2 _request_id => Str
 
-This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
-
-=head1 BUGS and CONTRIBUTIONS
-
-The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
-
-Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

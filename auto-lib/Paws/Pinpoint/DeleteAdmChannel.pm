@@ -8,7 +8,7 @@ package Paws::Pinpoint::DeleteAdmChannel;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAdmChannel');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/adm');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::ADMChannelResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::DeleteAdmChannelResponse');
 1;
 
 ### main pod documentation begin ###
@@ -28,24 +28,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $ADMChannelResponse = $pinpoint->DeleteAdmChannel(
+    my $DeleteAdmChannelResponse = $pinpoint->DeleteAdmChannel(
       ApplicationId => 'My__string',
 
     );
 
     # Results:
-    my $ApplicationId    = $ADMChannelResponse->ApplicationId;
-    my $CreationDate     = $ADMChannelResponse->CreationDate;
-    my $Enabled          = $ADMChannelResponse->Enabled;
-    my $HasCredential    = $ADMChannelResponse->HasCredential;
-    my $Id               = $ADMChannelResponse->Id;
-    my $IsArchived       = $ADMChannelResponse->IsArchived;
-    my $LastModifiedBy   = $ADMChannelResponse->LastModifiedBy;
-    my $LastModifiedDate = $ADMChannelResponse->LastModifiedDate;
-    my $Platform         = $ADMChannelResponse->Platform;
-    my $Version          = $ADMChannelResponse->Version;
+    my $ADMChannelResponse = $DeleteAdmChannelResponse->ADMChannelResponse;
 
-    # Returns a L<Paws::Pinpoint::ADMChannelResponse> object.
+    # Returns a L<Paws::Pinpoint::DeleteAdmChannelResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/DeleteAdmChannel>

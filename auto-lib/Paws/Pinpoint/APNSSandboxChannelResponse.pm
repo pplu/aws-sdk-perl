@@ -1,4 +1,3 @@
-
 package Paws::Pinpoint::APNSSandboxChannelResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
@@ -13,8 +12,6 @@ package Paws::Pinpoint::APNSSandboxChannelResponse;
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Int');
-
-  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,79 +20,112 @@ package Paws::Pinpoint::APNSSandboxChannelResponse;
 
 Paws::Pinpoint::APNSSandboxChannelResponse
 
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::Pinpoint::APNSSandboxChannelResponse object:
+
+  $service_obj->Method(Att1 => { ApplicationId => $value, ..., Version => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::APNSSandboxChannelResponse object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->ApplicationId
+
+=head1 DESCRIPTION
+
+Provides information about the status and settings of the APNs (Apple
+Push Notification service) sandbox channel for an application.
+
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-The unique identifier for the application that the APNs sandbox channel
+  The unique identifier for the application that the APNs sandbox channel
 applies to.
 
 
 =head2 CreationDate => Str
 
-The date and time when the APNs sandbox channel was enabled.
+  The date and time when the APNs sandbox channel was enabled.
 
 
 =head2 DefaultAuthenticationMethod => Str
 
-The default authentication method that Amazon Pinpoint uses to
+  The default authentication method that Amazon Pinpoint uses to
 authenticate with the APNs sandbox environment for this channel, key or
 certificate.
 
 
 =head2 Enabled => Bool
 
-Specifies whether the APNs sandbox channel is enabled for the
+  Specifies whether the APNs sandbox channel is enabled for the
 application.
 
 
 =head2 HasCredential => Bool
 
-(Not used) This property is retained only for backward compatibility.
+  (Not used) This property is retained only for backward compatibility.
 
 
 =head2 HasTokenKey => Bool
 
-Specifies whether the APNs sandbox channel is configured to communicate
+  Specifies whether the APNs sandbox channel is configured to communicate
 with APNs by using APNs tokens. To provide an authentication key for
 APNs tokens, set the TokenKey property of the channel.
 
 
 =head2 Id => Str
 
-(Deprecated) An identifier for the APNs sandbox channel. This property
+  (Deprecated) An identifier for the APNs sandbox channel. This property
 is retained only for backward compatibility.
 
 
 =head2 IsArchived => Bool
 
-Specifies whether the APNs sandbox channel is archived.
+  Specifies whether the APNs sandbox channel is archived.
 
 
 =head2 LastModifiedBy => Str
 
-The user who last modified the APNs sandbox channel.
+  The user who last modified the APNs sandbox channel.
 
 
 =head2 LastModifiedDate => Str
 
-The date and time when the APNs sandbox channel was last modified.
+  The date and time when the APNs sandbox channel was last modified.
 
 
 =head2 B<REQUIRED> Platform => Str
 
-The type of messaging or notification platform for the channel. For the
+  The type of messaging or notification platform for the channel. For the
 APNs sandbox channel, this value is APNS_SANDBOX.
 
 
 =head2 Version => Int
 
-The current version of the APNs sandbox channel.
+  The current version of the APNs sandbox channel.
 
 
-=head2 _request_id => Str
 
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
+
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 

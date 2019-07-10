@@ -10,7 +10,7 @@ package Paws::Pinpoint::GetSegments;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSegments');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/segments');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::SegmentsResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::GetSegmentsResponse');
 1;
 
 ### main pod documentation begin ###
@@ -30,17 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $SegmentsResponse = $pinpoint->GetSegments(
+    my $GetSegmentsResponse = $pinpoint->GetSegments(
       ApplicationId => 'My__string',
       PageSize      => 'My__string',    # OPTIONAL
       Token         => 'My__string',    # OPTIONAL
     );
 
     # Results:
-    my $Item      = $SegmentsResponse->Item;
-    my $NextToken = $SegmentsResponse->NextToken;
+    my $SegmentsResponse = $GetSegmentsResponse->SegmentsResponse;
 
-    # Returns a L<Paws::Pinpoint::SegmentsResponse> object.
+    # Returns a L<Paws::Pinpoint::GetSegmentsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/GetSegments>

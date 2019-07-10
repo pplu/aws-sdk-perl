@@ -1,4 +1,3 @@
-
 package Paws::Pinpoint::APNSVoipChannelResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
@@ -13,8 +12,6 @@ package Paws::Pinpoint::APNSVoipChannelResponse;
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Int');
-
-  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,77 +20,110 @@ package Paws::Pinpoint::APNSVoipChannelResponse;
 
 Paws::Pinpoint::APNSVoipChannelResponse
 
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::Pinpoint::APNSVoipChannelResponse object:
+
+  $service_obj->Method(Att1 => { ApplicationId => $value, ..., Version => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::APNSVoipChannelResponse object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->ApplicationId
+
+=head1 DESCRIPTION
+
+Provides information about the status and settings of the APNs (Apple
+Push Notification service) VoIP channel for an application.
+
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-The unique identifier for the application that the APNs VoIP channel
+  The unique identifier for the application that the APNs VoIP channel
 applies to.
 
 
 =head2 CreationDate => Str
 
-The date and time when the APNs VoIP channel was enabled.
+  The date and time when the APNs VoIP channel was enabled.
 
 
 =head2 DefaultAuthenticationMethod => Str
 
-The default authentication method that Amazon Pinpoint uses to
+  The default authentication method that Amazon Pinpoint uses to
 authenticate with APNs for this channel, key or certificate.
 
 
 =head2 Enabled => Bool
 
-Specifies whether the APNs VoIP channel is enabled for the application.
+  Specifies whether the APNs VoIP channel is enabled for the application.
 
 
 =head2 HasCredential => Bool
 
-(Not used) This property is retained only for backward compatibility.
+  (Not used) This property is retained only for backward compatibility.
 
 
 =head2 HasTokenKey => Bool
 
-Specifies whether the APNs VoIP channel is configured to communicate
+  Specifies whether the APNs VoIP channel is configured to communicate
 with APNs by using APNs tokens. To provide an authentication key for
 APNs tokens, set the TokenKey property of the channel.
 
 
 =head2 Id => Str
 
-(Deprecated) An identifier for the APNs VoIP channel. This property is
+  (Deprecated) An identifier for the APNs VoIP channel. This property is
 retained only for backward compatibility.
 
 
 =head2 IsArchived => Bool
 
-Specifies whether the APNs VoIP channel is archived.
+  Specifies whether the APNs VoIP channel is archived.
 
 
 =head2 LastModifiedBy => Str
 
-The user who last modified the APNs VoIP channel.
+  The user who last modified the APNs VoIP channel.
 
 
 =head2 LastModifiedDate => Str
 
-The date and time when the APNs VoIP channel was last modified.
+  The date and time when the APNs VoIP channel was last modified.
 
 
 =head2 B<REQUIRED> Platform => Str
 
-The type of messaging or notification platform for the channel. For the
+  The type of messaging or notification platform for the channel. For the
 APNs VoIP channel, this value is APNS_VOIP.
 
 
 =head2 Version => Int
 
-The current version of the APNs VoIP channel.
+  The current version of the APNs VoIP channel.
 
 
-=head2 _request_id => Str
 
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
+
+Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
 
 =cut
 
