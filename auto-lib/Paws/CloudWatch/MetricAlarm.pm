@@ -24,6 +24,7 @@ package Paws::CloudWatch::MetricAlarm;
   has StateValue => (is => 'ro', isa => 'Str');
   has Statistic => (is => 'ro', isa => 'Str');
   has Threshold => (is => 'ro', isa => 'Num');
+  has ThresholdMetricId => (is => 'ro', isa => 'Str');
   has TreatMissingData => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
 1;
@@ -141,12 +142,17 @@ specified as an Amazon Resource Name (ARN).
 
 =head2 MetricName => Str
 
-  The name of the metric associated with the alarm.
+  The name of the metric associated with the alarm, if this is an alarm
+based on a single metric.
 
 
 =head2 Metrics => ArrayRef[L<Paws::CloudWatch::MetricDataQuery>]
 
-  
+  An array of MetricDataQuery structures, used in an alarm based on a
+metric math expression. Each structure either retrieves a metric or
+performs a math expression. One item in the Metrics array is the math
+expression that the alarm watches. This expression by designated by
+having C<ReturnValue> set to true.
 
 
 =head2 Namespace => Str
@@ -195,6 +201,12 @@ percentile. For percentile statistics, use C<ExtendedStatistic>.
 =head2 Threshold => Num
 
   The value to compare with the specified statistic.
+
+
+=head2 ThresholdMetricId => Str
+
+  In an alarm based on an anomaly detection model, this is the ID of the
+C<ANOMALY_DETECTION_BAND> function used as the threshold for the alarm.
 
 
 =head2 TreatMissingData => Str

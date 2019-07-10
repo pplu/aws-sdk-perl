@@ -19,6 +19,11 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DeleteAlarms', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAnomalyDetector {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DeleteAnomalyDetector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDashboards {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DeleteDashboards', @_);
@@ -37,6 +42,11 @@ package Paws::CloudWatch;
   sub DescribeAlarmsForMetric {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DescribeAlarmsForMetric', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAnomalyDetectors {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DescribeAnomalyDetectors', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisableAlarmActions {
@@ -82,6 +92,11 @@ package Paws::CloudWatch;
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAnomalyDetector {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::PutAnomalyDetector', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutDashboard {
@@ -235,7 +250,7 @@ package Paws::CloudWatch;
   }
 
 
-  sub operations { qw/DeleteAlarms DeleteDashboards DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DisableAlarmActions EnableAlarmActions GetDashboard GetMetricData GetMetricStatistics GetMetricWidgetImage ListDashboards ListMetrics ListTagsForResource PutDashboard PutMetricAlarm PutMetricData SetAlarmState TagResource UntagResource / }
+  sub operations { qw/DeleteAlarms DeleteAnomalyDetector DeleteDashboards DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DescribeAnomalyDetectors DisableAlarmActions EnableAlarmActions GetDashboard GetMetricData GetMetricStatistics GetMetricWidgetImage ListDashboards ListMetrics ListTagsForResource PutAnomalyDetector PutDashboard PutMetricAlarm PutMetricData SetAlarmState TagResource UntagResource / }
 
 1;
 
@@ -300,6 +315,28 @@ Returns: nothing
 
 Deletes the specified alarms. In the event of an error, no alarms are
 deleted.
+
+
+=head2 DeleteAnomalyDetector
+
+=over
+
+=item MetricName => Str
+
+=item Namespace => Str
+
+=item Stat => Str
+
+=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::DeleteAnomalyDetector>
+
+Returns: a L<Paws::CloudWatch::DeleteAnomalyDetectorOutput> instance
+
+Deletes the specified anomaly detection model from your account.
 
 
 =head2 DeleteDashboards
@@ -406,6 +443,33 @@ Returns: a L<Paws::CloudWatch::DescribeAlarmsForMetricOutput> instance
 
 Retrieves the alarms for the specified metric. To filter the results,
 specify a statistic, period, or unit.
+
+
+=head2 DescribeAnomalyDetectors
+
+=over
+
+=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+
+=item [MaxResults => Int]
+
+=item [MetricName => Str]
+
+=item [Namespace => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::DescribeAnomalyDetectors>
+
+Returns: a L<Paws::CloudWatch::DescribeAnomalyDetectorsOutput> instance
+
+Lists the anomaly detection models that you have created in your
+account. You can list all models in your account or filter the results
+to only the models that are related to a certain namespace, metric
+name, or metric dimension.
 
 
 =head2 DisableAlarmActions
@@ -764,6 +828,35 @@ Displays the tags associated with a CloudWatch resource. Alarms support
 tagging.
 
 
+=head2 PutAnomalyDetector
+
+=over
+
+=item MetricName => Str
+
+=item Namespace => Str
+
+=item Stat => Str
+
+=item [Configuration => L<Paws::CloudWatch::AnomalyDetectorConfiguration>]
+
+=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::PutAnomalyDetector>
+
+Returns: a L<Paws::CloudWatch::PutAnomalyDetectorOutput> instance
+
+Creates an anomaly detection model for a CloudWatch metric. You can use
+the model to display a band of expected normal values when the metric
+is graphed.
+
+For more information, see CloudWatch Anomaly Detection
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html).
+
+
 =head2 PutDashboard
 
 =over
@@ -783,8 +876,7 @@ Creates a dashboard if it does not already exist, or updates an
 existing dashboard. If you update a dashboard, the entire contents are
 replaced with what you specify here.
 
-There is no limit to the number of dashboards in your account. All
-dashboards in your account are global, not region-specific.
+All dashboards in your account are global, not region-specific.
 
 A simple way to create a dashboard using C<PutDashboard> is to copy an
 existing dashboard. To copy an existing dashboard using the console,
@@ -811,8 +903,6 @@ create the dashboard.
 =item ComparisonOperator => Str
 
 =item EvaluationPeriods => Int
-
-=item Threshold => Num
 
 =item [ActionsEnabled => Bool]
 
@@ -844,6 +934,10 @@ create the dashboard.
 
 =item [Tags => ArrayRef[L<Paws::CloudWatch::Tag>]]
 
+=item [Threshold => Num]
+
+=item [ThresholdMetricId => Str]
+
 =item [TreatMissingData => Str]
 
 =item [Unit => Str]
@@ -855,8 +949,11 @@ Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 
 Returns: nothing
 
-Creates or updates an alarm and associates it with the specified metric
-or metric math expression.
+Creates or updates an alarm and associates it with the specified
+metric, metric math expression, or anomaly detection model.
+
+Alarms based on anomaly detection models cannot have Auto Scaling
+actions.
 
 When this operation creates an alarm, the alarm state is immediately
 set to C<INSUFFICIENT_DATA>. The alarm is then evaluated and its state

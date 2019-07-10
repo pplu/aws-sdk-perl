@@ -95,7 +95,9 @@ milliseconds since Jan 1, 1970 00:00:00 UTC.
 
 =head2 Unit => Str
 
-  The unit of the metric.
+  When you are using a C<Put> operation, this defines what unit you want
+to use when storing the metric. In a C<Get> operation, this displays
+the unit that is used for the metric.
 
 
 =head2 Value => Num

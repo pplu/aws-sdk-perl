@@ -19,7 +19,8 @@ package Paws::CloudWatch::PutMetricAlarm;
   has Period => (is => 'ro', isa => 'Int');
   has Statistic => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Tag]');
-  has Threshold => (is => 'ro', isa => 'Num', required => 1);
+  has Threshold => (is => 'ro', isa => 'Num');
+  has ThresholdMetricId => (is => 'ro', isa => 'Str');
   has TreatMissingData => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
 
@@ -51,7 +52,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AlarmName          => 'MyAlarmName',
       ComparisonOperator => 'GreaterThanOrEqualToThreshold',
       EvaluationPeriods  => 1,
-      Threshold          => 1,
       ActionsEnabled     => 1,                                 # OPTIONAL
       AlarmActions       => [
         'MyResourceName', ...    # min: 1, max: 1024
@@ -114,8 +114,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                             # OPTIONAL
-      TreatMissingData => 'MyTreatMissingData',    # OPTIONAL
-      Unit             => 'Seconds',               # OPTIONAL
+      Threshold         => 1,                       # OPTIONAL
+      ThresholdMetricId => 'MyMetricId',            # OPTIONAL
+      TreatMissingData  => 'MyTreatMissingData',    # OPTIONAL
+      Unit              => 'Seconds',               # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -172,7 +174,11 @@ The arithmetic operation to use when comparing the specified statistic
 and threshold. The specified statistic value is used as the first
 operand.
 
-Valid values are: C<"GreaterThanOrEqualToThreshold">, C<"GreaterThanThreshold">, C<"LessThanThreshold">, C<"LessThanOrEqualToThreshold">
+The values C<LessThanLowerOrGreaterThanUpperThreshold>,
+C<LessThanLowerThreshold>, and C<GreaterThanUpperThreshold> are used
+only for alarms based on anomaly detection models.
+
+Valid values are: C<"GreaterThanOrEqualToThreshold">, C<"GreaterThanThreshold">, C<"LessThanThreshold">, C<"LessThanOrEqualToThreshold">, C<"LessThanLowerOrGreaterThanUpperThreshold">, C<"LessThanLowerThreshold">, C<"GreaterThanUpperThreshold">
 
 =head2 DatapointsToAlarm => Int
 
@@ -354,9 +360,21 @@ access or change only resources with certain tag values.
 
 
 
-=head2 B<REQUIRED> Threshold => Num
+=head2 Threshold => Num
 
 The value against which the specified statistic is compared.
+
+
+
+=head2 ThresholdMetricId => Str
+
+If this is an alarm based on an anomaly detection model, make this
+value match the ID of the C<ANOMALY_DETECTION_BAND> function.
+
+For an example of how to use this parameter, see the B<Anomaly
+Detection Model Alarm> example on this page.
+
+If your alarm uses this parameter, it cannot have Auto Scaling actions.
 
 
 
