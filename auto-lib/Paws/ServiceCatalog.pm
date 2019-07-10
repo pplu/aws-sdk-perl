@@ -205,6 +205,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeServiceAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeServiceActionExecutionParameters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeServiceActionExecutionParameters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTagOption {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeTagOption', @_);
@@ -796,7 +801,7 @@ package Paws::ServiceCatalog;
   }
 
 
-  sub operations { qw/AcceptPortfolioShare AssociateBudgetWithResource AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateServiceActionWithProvisioningArtifact AssociateTagOptionWithResource BatchAssociateServiceActionWithProvisioningArtifact BatchDisassociateServiceActionFromProvisioningArtifact CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisionedProductPlan CreateProvisioningArtifact CreateServiceAction CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisionedProductPlan DeleteProvisioningArtifact DeleteServiceAction DeleteTagOption DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribePortfolioShareStatus DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisionedProductPlan DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeServiceAction DescribeTagOption DisableAWSOrganizationsAccess DisassociateBudgetFromResource DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateServiceActionFromProvisioningArtifact DisassociateTagOptionFromResource EnableAWSOrganizationsAccess ExecuteProvisionedProductPlan ExecuteProvisionedProductServiceAction GetAWSOrganizationsAccessStatus ListAcceptedPortfolioShares ListBudgetsForResource ListConstraintsForPortfolio ListLaunchPaths ListOrganizationPortfolioAccess ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisionedProductPlans ListProvisioningArtifacts ListProvisioningArtifactsForServiceAction ListRecordHistory ListResourcesForTagOption ListServiceActions ListServiceActionsForProvisioningArtifact ListStackInstancesForProvisionedProduct ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin SearchProvisionedProducts TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisionedProductProperties UpdateProvisioningArtifact UpdateServiceAction UpdateTagOption / }
+  sub operations { qw/AcceptPortfolioShare AssociateBudgetWithResource AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateServiceActionWithProvisioningArtifact AssociateTagOptionWithResource BatchAssociateServiceActionWithProvisioningArtifact BatchDisassociateServiceActionFromProvisioningArtifact CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisionedProductPlan CreateProvisioningArtifact CreateServiceAction CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisionedProductPlan DeleteProvisioningArtifact DeleteServiceAction DeleteTagOption DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribePortfolioShareStatus DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisionedProductPlan DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeServiceAction DescribeServiceActionExecutionParameters DescribeTagOption DisableAWSOrganizationsAccess DisassociateBudgetFromResource DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateServiceActionFromProvisioningArtifact DisassociateTagOptionFromResource EnableAWSOrganizationsAccess ExecuteProvisionedProductPlan ExecuteProvisionedProductServiceAction GetAWSOrganizationsAccessStatus ListAcceptedPortfolioShares ListBudgetsForResource ListConstraintsForPortfolio ListLaunchPaths ListOrganizationPortfolioAccess ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisionedProductPlans ListProvisioningArtifacts ListProvisioningArtifactsForServiceAction ListRecordHistory ListResourcesForTagOption ListServiceActions ListServiceActionsForProvisioningArtifact ListStackInstancesForProvisionedProduct ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin SearchProvisionedProducts TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisionedProductProperties UpdateProvisioningArtifact UpdateServiceAction UpdateTagOption / }
 
 1;
 
@@ -1705,6 +1710,26 @@ Returns: a L<Paws::ServiceCatalog::DescribeServiceActionOutput> instance
 Describes a self-service action.
 
 
+=head2 DescribeServiceActionExecutionParameters
+
+=over
+
+=item ProvisionedProductId => Str
+
+=item ServiceActionId => Str
+
+=item [AcceptLanguage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeServiceActionExecutionParameters>
+
+Returns: a L<Paws::ServiceCatalog::DescribeServiceActionExecutionParametersOutput> instance
+
+
+
+
 =head2 DescribeTagOption
 
 =over
@@ -1893,6 +1918,8 @@ specified plan.
 =item ServiceActionId => Str
 
 =item [AcceptLanguage => Str]
+
+=item [Parameters => L<Paws::ServiceCatalog::ExecutionParameterMap>]
 
 
 =back
