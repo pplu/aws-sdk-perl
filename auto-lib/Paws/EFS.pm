@@ -842,23 +842,20 @@ A C<PutLifecycleConfiguration> call with an empty C<LifecyclePolicies>
 array in the request body deletes any existing
 C<LifecycleConfiguration> and disables lifecycle management.
 
-You can enable lifecycle management only for EFS file systems created
-after the release of EFS infrequent access.
-
 In the request, specify the following:
 
 =over
 
 =item *
 
-The ID for the file system for which you are creating a lifecycle
-management configuration.
+The ID for the file system for which you are enabling, disabling, or
+modifying lifecycle management.
 
 =item *
 
 A C<LifecyclePolicies> array of C<LifecyclePolicy> objects that define
 when files are moved to the IA storage class. The array can contain
-only one C<"TransitionToIA": "AFTER_30_DAYS"> C<LifecyclePolicy> item.
+only one C<LifecyclePolicy> item.
 
 =back
 

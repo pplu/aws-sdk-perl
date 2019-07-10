@@ -34,7 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FileSystemId      => 'MyFileSystemId',
       LifecyclePolicies => [
         {
-          TransitionToIA => 'AFTER_30_DAYS',   # values: AFTER_30_DAYS; OPTIONAL
+          TransitionToIA => 'AFTER_14_DAYS'
+          , # values: AFTER_14_DAYS, AFTER_30_DAYS, AFTER_60_DAYS, AFTER_90_DAYS; OPTIONAL
         },
         ...
       ],
