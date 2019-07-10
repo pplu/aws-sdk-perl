@@ -93,8 +93,8 @@ EARLIEST - Start with earliest available chunk on the stream.
 
 =item *
 
-FRAGMENT_NUMBER - Start with the chunk containing the specific
-fragment. You must also specify the C<StartFragmentNumber>.
+FRAGMENT_NUMBER - Start with the chunk after a specific fragment. You
+must also specify the C<AfterFragmentNumber> parameter.
 
 =item *
 

@@ -1,14 +1,14 @@
-package Paws::KinesisVideoArchivedMedia::HLSFragmentSelector;
+package Paws::KinesisVideoArchivedMedia::DASHFragmentSelector;
   use Moose;
   has FragmentSelectorType => (is => 'ro', isa => 'Str');
-  has TimestampRange => (is => 'ro', isa => 'Paws::KinesisVideoArchivedMedia::HLSTimestampRange');
+  has TimestampRange => (is => 'ro', isa => 'Paws::KinesisVideoArchivedMedia::DASHTimestampRange');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::KinesisVideoArchivedMedia::HLSFragmentSelector
+Paws::KinesisVideoArchivedMedia::DASHFragmentSelector
 
 =head1 USAGE
 
@@ -19,13 +19,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::KinesisVideoArchivedMedia::HLSFragmentSelector object:
+As an example, if Att1 is expected to be a Paws::KinesisVideoArchivedMedia::DASHFragmentSelector object:
 
   $service_obj->Method(Att1 => { FragmentSelectorType => $value, ..., TimestampRange => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisVideoArchivedMedia::HLSFragmentSelector object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisVideoArchivedMedia::DASHFragmentSelector object:
 
   $result = $service_obj->Method(...);
   $result->Att1->FragmentSelectorType
@@ -43,35 +43,35 @@ source of the timestamps.
   The source of the timestamps for the requested media.
 
 When C<FragmentSelectorType> is set to C<PRODUCER_TIMESTAMP> and
-GetHLSStreamingSessionURLInput$PlaybackMode is C<ON_DEMAND> or
+GetDASHStreamingSessionURLInput$PlaybackMode is C<ON_DEMAND> or
 C<LIVE_REPLAY>, the first fragment ingested with a producer timestamp
 within the specified FragmentSelector$TimestampRange is included in the
 media playlist. In addition, the fragments with producer timestamps
 within the C<TimestampRange> ingested immediately following the first
 fragment (up to the
-GetHLSStreamingSessionURLInput$MaxMediaPlaylistFragmentResults value)
-are included.
+GetDASHStreamingSessionURLInput$MaxManifestFragmentResults value) are
+included.
 
 Fragments that have duplicate producer timestamps are deduplicated.
 This means that if producers are producing a stream of fragments with
 producer timestamps that are approximately equal to the true clock
-time, the HLS media playlists will contain all of the fragments within
+time, the MPEG-DASH manifest will contain all of the fragments within
 the requested timestamp range. If some fragments are ingested within
 the same time range and very different points in time, only the oldest
 ingested collection of fragments are returned.
 
 When C<FragmentSelectorType> is set to C<PRODUCER_TIMESTAMP> and
-GetHLSStreamingSessionURLInput$PlaybackMode is C<LIVE>, the producer
+GetDASHStreamingSessionURLInput$PlaybackMode is C<LIVE>, the producer
 timestamps are used in the MP4 fragments and for deduplication. But the
 most recently ingested fragments based on server timestamps are
-included in the HLS media playlist. This means that even if fragments
+included in the MPEG-DASH manifest. This means that even if fragments
 ingested in the past have producer timestamps with values now, they are
 not included in the HLS media playlist.
 
 The default is C<SERVER_TIMESTAMP>.
 
 
-=head2 TimestampRange => L<Paws::KinesisVideoArchivedMedia::HLSTimestampRange>
+=head2 TimestampRange => L<Paws::KinesisVideoArchivedMedia::DASHTimestampRange>
 
   The start and end of the timestamp range for the requested media.
 

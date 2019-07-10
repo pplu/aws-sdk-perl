@@ -1,4 +1,4 @@
-package Paws::KinesisVideoArchivedMedia::HLSTimestampRange;
+package Paws::KinesisVideoArchivedMedia::DASHTimestampRange;
   use Moose;
   has EndTimestamp => (is => 'ro', isa => 'Str');
   has StartTimestamp => (is => 'ro', isa => 'Str');
@@ -8,7 +8,7 @@ package Paws::KinesisVideoArchivedMedia::HLSTimestampRange;
 
 =head1 NAME
 
-Paws::KinesisVideoArchivedMedia::HLSTimestampRange
+Paws::KinesisVideoArchivedMedia::DASHTimestampRange
 
 =head1 USAGE
 
@@ -19,13 +19,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::KinesisVideoArchivedMedia::HLSTimestampRange object:
+As an example, if Att1 is expected to be a Paws::KinesisVideoArchivedMedia::DASHTimestampRange object:
 
   $service_obj->Method(Att1 => { EndTimestamp => $value, ..., StartTimestamp => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisVideoArchivedMedia::HLSTimestampRange object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisVideoArchivedMedia::DASHTimestampRange object:
 
   $result = $service_obj->Method(...);
   $result->Att1->EndTimestamp
@@ -36,7 +36,7 @@ The start and end of the timestamp range for the requested media.
 
 This value should not be present if C<PlaybackType> is C<LIVE>.
 
-The values in the C<HLSTimestampRange> are inclusive. Fragments that
+The values in the C<DASHimestampRange> are inclusive. Fragments that
 begin before the start time but continue past it, or fragments that
 begin before the end time but continue past it, are included in the
 session.
@@ -67,7 +67,7 @@ C<EndTimestamp> value and continue past it are included in the session.
 
   The start of the timestamp range for the requested media.
 
-If the C<HLSTimestampRange> value is specified, the C<StartTimestamp>
+If the C<DASHTimestampRange> value is specified, the C<StartTimestamp>
 value is required.
 
 This value is inclusive. Fragments that start before the

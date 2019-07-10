@@ -131,8 +131,8 @@ The time in seconds until the requested session expires. This value can
 be between 300 (5 minutes) and 43200 (12 hours).
 
 When a session expires, no new calls to C<GetHLSMasterPlaylist>,
-C<GetHLSMediaPlaylist>, C<GetMP4InitFragment>, or
-C<GetMP4MediaFragment> can be made for that session.
+C<GetHLSMediaPlaylist>, C<GetMP4InitFragment>, C<GetMP4MediaFragment>,
+or C<GetTSFragment> can be made for that session.
 
 The default is 300 (5 minutes).
 
@@ -143,12 +143,12 @@ The default is 300 (5 minutes).
 The time range of the requested fragment, and the source of the
 timestamps.
 
-This parameter is required if C<PlaybackMode> is C<ON_DEMAND>. This
-parameter is optional if C<PlaybackMode> is C<LIVE>. If C<PlaybackMode>
-is C<LIVE>, the C<FragmentSelectorType> can be set, but the
-C<TimestampRange> should not be set. If C<PlaybackMode> is
-C<ON_DEMAND>, both C<FragmentSelectorType> and C<TimestampRange> must
-be set.
+This parameter is required if C<PlaybackMode> is C<ON_DEMAND> or
+C<LIVE_REPLAY>. This parameter is optional if PlaybackMode isC<
+C<LIVE>. If C<PlaybackMode> is C<LIVE>, the C<FragmentSelectorType> can
+be set, but the C<TimestampRange> should not be set. If C<PlaybackMode>
+is C<ON_DEMAND> or C<LIVE_REPLAY>, both C<FragmentSelectorType> and
+C<TimestampRange> must be set.>
 
 
 
@@ -168,8 +168,8 @@ but it decreases the likelihood that rebuffering will occur during
 playback. We recommend that a live HLS media playlist have a minimum of
 3 fragments and a maximum of 10 fragments.
 
-The default is 5 fragments if C<PlaybackMode> is C<LIVE>, and 1,000 if
-C<PlaybackMode> is C<ON_DEMAND>.
+The default is 5 fragments if C<PlaybackMode> is C<LIVE> or
+C<LIVE_REPLAY>, and 1,000 if C<PlaybackMode> is C<ON_DEMAND>.
 
 The maximum value of 1,000 fragments corresponds to more than 16
 minutes of video on streams with 1-second fragments, and more than 2
@@ -179,9 +179,9 @@ minutes of video on streams with 1-second fragments, and more than 2
 
 =head2 PlaybackMode => Str
 
-Whether to retrieve live or archived, on-demand data.
+Whether to retrieve live, live replay, or archived, on-demand data.
 
-Features of the two types of session include the following:
+Features of the three types of sessions include the following:
 
 =over
 
@@ -206,6 +206,21 @@ added, and the gap is not filled.
 
 =item *
 
+B<C<LIVE_REPLAY> >: For sessions of this type, the HLS media playlist
+is updated similarly to how it is updated for C<LIVE> mode except that
+it starts by including fragments from a given start time. Instead of
+fragments being added as they are ingested, fragments are added as the
+duration of the next fragment elapses. For example, if the fragments in
+the session are two seconds long, then a new fragment is added to the
+media playlist every two seconds. This mode is useful to be able to
+start playback from when an event is detected and continue live
+streaming media that has not yet been ingested as of the time of the
+session creation. This mode is also useful to stream previously
+archived media without being limited by the 1,000 fragment limit in the
+C<ON_DEMAND> mode.
+
+=item *
+
 B<C<ON_DEMAND> >: For sessions of this type, the HLS media playlist
 contains all the fragments for the session, up to the number that is
 specified in C<MaxMediaPlaylistFragmentResults>. The playlist must be
@@ -216,7 +231,7 @@ display.
 
 =back
 
-In both playback modes, if C<FragmentSelectorType> is
+In all playback modes, if C<FragmentSelectorType> is
 C<PRODUCER_TIMESTAMP>, and if there are multiple fragments with the
 same start timestamp, the fragment that has the larger fragment number
 (that is, the newer fragment) is included in the HLS media playlist.
@@ -227,7 +242,7 @@ player.
 
 The default is C<LIVE>.
 
-Valid values are: C<"LIVE">, C<"ON_DEMAND">
+Valid values are: C<"LIVE">, C<"LIVE_REPLAY">, C<"ON_DEMAND">
 
 =head2 StreamARN => Str
 

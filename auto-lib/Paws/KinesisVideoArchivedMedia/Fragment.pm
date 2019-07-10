@@ -47,7 +47,8 @@ Represents a segment of video or other time-delimited data.
 
 =head2 FragmentNumber => Str
 
-  The index value of the fragment.
+  The unique identifier of the fragment. This value monotonically
+increases based on the ingestion order.
 
 
 =head2 FragmentSizeInBytes => Int
