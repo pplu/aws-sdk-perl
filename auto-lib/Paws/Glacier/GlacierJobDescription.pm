@@ -98,7 +98,7 @@ The job description provided when initiating the job.
 
 =head2 JobId => Str
 
-An opaque string that identifies an Amazon Glacier job.
+An opaque string that identifies an Amazon S3 Glacier job.
 
 
 =head2 JobOutputPath => Str

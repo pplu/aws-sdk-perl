@@ -60,7 +60,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gla
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon S3 Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens ('-') in the ID.
 
@@ -81,9 +81,9 @@ The SHA256 tree hash of the data being uploaded.
 =head2 Range => Str
 
 Identifies the range of bytes in the assembled archive that will be
-uploaded in this part. Amazon Glacier uses this information to assemble
-the archive in the proper sequence. The format of this header follows
-RFC 2616. An example header is Content-Range:bytes 0-4194303/*.
+uploaded in this part. Amazon S3 Glacier uses this information to
+assemble the archive in the proper sequence. The format of this header
+follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.
 
 
 
