@@ -1,5 +1,5 @@
 
-package Paws::CostExplorer::GetCostForecast;
+package Paws::CostExplorer::GetUsageForecast;
   use Moose;
   has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
   has Granularity => (is => 'ro', isa => 'Str', required => 1);
@@ -9,8 +9,8 @@ package Paws::CostExplorer::GetCostForecast;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCostForecast');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CostExplorer::GetCostForecastResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetUsageForecast');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CostExplorer::GetUsageForecastResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -18,20 +18,20 @@ package Paws::CostExplorer::GetCostForecast;
 
 =head1 NAME
 
-Paws::CostExplorer::GetCostForecast - Arguments for method GetCostForecast on L<Paws::CostExplorer>
+Paws::CostExplorer::GetUsageForecast - Arguments for method GetUsageForecast on L<Paws::CostExplorer>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetCostForecast on the
+This class represents the parameters used for calling the method GetUsageForecast on the
 L<AWS Cost Explorer Service|Paws::CostExplorer> service. Use the attributes of this class
-as arguments to method GetCostForecast.
+as arguments to method GetUsageForecast.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCostForecast.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUsageForecast.
 
 =head1 SYNOPSIS
 
     my $ce = Paws->service('CostExplorer');
-    my $GetCostForecastResponse = $ce->GetCostForecast(
+    my $GetUsageForecastResponse = $ce->GetUsageForecast(
       Granularity => 'DAILY',
       Metric      => 'BLENDED_COST',
       TimePeriod  => {
@@ -57,13 +57,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ForecastResultsByTime = $GetCostForecastResponse->ForecastResultsByTime;
-    my $Total                 = $GetCostForecastResponse->Total;
+    my $ForecastResultsByTime =
+      $GetUsageForecastResponse->ForecastResultsByTime;
+    my $Total = $GetUsageForecastResponse->Total;
 
-    # Returns a L<Paws::CostExplorer::GetCostForecastResponse> object.
+    # Returns a L<Paws::CostExplorer::GetUsageForecastResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/GetCostForecast>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/GetUsageForecast>
 
 =head1 ATTRIBUTES
 
@@ -80,41 +81,26 @@ API supports all of the Cost Explorer filters.
 How granular you want the forecast to be. You can get 3 months of
 C<DAILY> forecasts or 12 months of C<MONTHLY> forecasts.
 
-The C<GetCostForecast> operation supports only C<DAILY> and C<MONTHLY>
+The C<GetUsageForecast> operation supports only C<DAILY> and C<MONTHLY>
 granularities.
 
 Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
 =head2 B<REQUIRED> Metric => Str
 
-Which metric Cost Explorer uses to create your forecast. For more
-information about blended and unblended rates, see Why does the
-"blended" annotation appear on some line items in my bill?
-(https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+Which metric Cost Explorer uses to create your forecast.
 
-Valid values for a C<GetCostForecast> call are the following:
+Valid values for a C<GetUsageForecast> call are the following:
 
 =over
 
 =item *
 
-AMORTIZED_COST
+USAGE_QUANTITY
 
 =item *
 
-BLENDED_COST
-
-=item *
-
-NET_AMORTIZED_COST
-
-=item *
-
-NET_UNBLENDED_COST
-
-=item *
-
-UNBLENDED_COST
+NORMALIZED_USAGE_AMOUNT
 
 =back
 
@@ -134,14 +120,19 @@ intervals.
 
 =head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
 
-The period of time that you want the forecast to cover.
+The start and end dates of the period that you want to retrieve usage
+forecast for. The start date is inclusive, but the end date is
+exclusive. For example, if C<start> is C<2017-01-01> and C<end> is
+C<2017-05-01>, then the cost and usage data is retrieved from
+C<2017-01-01> up to and including C<2017-04-30> but not including
+C<2017-05-01>.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method GetCostForecast in L<Paws::CostExplorer>
+This class forms part of L<Paws>, documenting arguments for method GetUsageForecast in L<Paws::CostExplorer>
 
 =head1 BUGS and CONTRIBUTIONS
 
