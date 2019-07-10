@@ -213,8 +213,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_4281',    # values: RFC_4281, RFC_6381; OPTIONAL
-                ConstantIv =>
-                  'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
+                ConstantIv         => 'My__stringMin32Max32', # min: 32, max: 32
                 DirectoryStructure => 'SINGLE_DIRECTORY'
                 ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
                 EncryptionType =>
@@ -266,12 +265,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 KeyFormatVersions   => 'My__string',    # OPTIONAL
                 KeyProviderSettings => {
                   StaticKeySettings => {
-                    StaticKeyValue =>
-                      'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
+                    StaticKeyValue => 'My__stringMin32Max32', # min: 32, max: 32
                     KeyProviderServer => {
-                      Uri           => 'My__string',    # OPTIONAL
-                      PasswordParam => 'My__string',    # OPTIONAL
-                      Username      => 'My__string',    # OPTIONAL
+                      Uri           => 'My__string',          # OPTIONAL
+                      PasswordParam => 'My__string',          # OPTIONAL
+                      Username      => 'My__string',          # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -382,7 +380,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         DvbNitSettings => {
                           NetworkId => 1,    # max: 65536
                           NetworkName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                           RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
                         },    # OPTIONAL
                         DvbSdtSettings => {
@@ -390,9 +388,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
                           RepInterval => 1,    # min: 25, max: 2000; OPTIONAL
                           ServiceName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                           ServiceProviderName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                         },    # OPTIONAL
                         DvbSubPids     => 'My__string',    # OPTIONAL
                         DvbTdtSettings => {
@@ -523,7 +521,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         DvbNitSettings => {
                           NetworkId => 1,    # max: 65536
                           NetworkName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                           RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
                         },    # OPTIONAL
                         DvbSdtSettings => {
@@ -531,9 +529,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
                           RepInterval => 1,    # min: 25, max: 2000; OPTIONAL
                           ServiceName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                           ServiceProviderName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                         },    # OPTIONAL
                         DvbSubPids     => 'My__string',    # OPTIONAL
                         DvbTdtSettings => {

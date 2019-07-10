@@ -46,7 +46,7 @@ Describes VPC configuration information for fleets and image builders.
 
   The identifiers of the subnets to which a network interface is attached
 from the fleet instance or image builder instance. Fleet instances use
-one or two subnets. Image builder instances use one subnet.
+one or more subnets. Image builder instances use one subnet.
 
 
 

@@ -824,6 +824,8 @@ Completes a multipart upload by assembling previously uploaded parts.
 
 =item [SSECustomerKeyMD5 => Str]
 
+=item [SSEKMSEncryptionContext => Str]
+
 =item [SSEKMSKeyId => Str]
 
 =item [StorageClass => Str]
@@ -925,6 +927,8 @@ Creates a new bucket.
 =item [SSECustomerKey => Str]
 
 =item [SSECustomerKeyMD5 => Str]
+
+=item [SSEKMSEncryptionContext => Str]
 
 =item [SSEKMSKeyId => Str]
 
@@ -1108,8 +1112,9 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketReplication>
 Returns: nothing
 
 Deletes the replication configuration from the bucket. For information
-about replication configuration, see Cross-Region Replication (CRR) in
-the I<Amazon S3 Developer Guide>.
+about replication configuration, see Cross-Region Replication (CRR)
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the
+I<Amazon S3 Developer Guide>.
 
 
 =head2 DeleteBucketTagging
@@ -2520,6 +2525,8 @@ Set the website configuration for a bucket.
 =item [SSECustomerKey => Str]
 
 =item [SSECustomerKeyMD5 => Str]
+
+=item [SSEKMSEncryptionContext => Str]
 
 =item [SSEKMSKeyId => Str]
 

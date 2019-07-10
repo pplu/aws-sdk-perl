@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LaunchSpecification => {
         AdditionalInfo => 'MyString',
         Architecture   => 'i386',       # values: i386, x86_64, arm64; OPTIONAL
-        GroupIds => [ 'MyString', ... ],      # OPTIONAL
+        GroupIds   => [ 'MyString', ... ],    # OPTIONAL
         GroupNames => [ 'MyString', ... ],    # OPTIONAL
         InstanceInitiatedShutdownBehavior =>
           'stop',    # values: stop, terminate; OPTIONAL

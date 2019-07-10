@@ -22,7 +22,7 @@ package Paws::ApiGatewayV2::UpdateIntegration;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateIntegration');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/integrations/{integrationId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::UpdateIntegrationResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::UpdateIntegrationResponseShape');
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $apigateway = Paws->service('ApiGatewayV2');
-    my $UpdateIntegrationResponse = $apigateway->UpdateIntegration(
+    my $UpdateIntegrationResponseShape = $apigateway->UpdateIntegration(
       ApiId                   => 'My__string',
       IntegrationId           => 'My__string',
       ConnectionId            => 'MyStringWithLengthBetween1And1024', # OPTIONAL
@@ -63,26 +63,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ConnectionId   = $UpdateIntegrationResponse->ConnectionId;
-    my $ConnectionType = $UpdateIntegrationResponse->ConnectionType;
+    my $ConnectionId   = $UpdateIntegrationResponseShape->ConnectionId;
+    my $ConnectionType = $UpdateIntegrationResponseShape->ConnectionType;
     my $ContentHandlingStrategy =
-      $UpdateIntegrationResponse->ContentHandlingStrategy;
-    my $CredentialsArn    = $UpdateIntegrationResponse->CredentialsArn;
-    my $Description       = $UpdateIntegrationResponse->Description;
-    my $IntegrationId     = $UpdateIntegrationResponse->IntegrationId;
-    my $IntegrationMethod = $UpdateIntegrationResponse->IntegrationMethod;
+      $UpdateIntegrationResponseShape->ContentHandlingStrategy;
+    my $CredentialsArn    = $UpdateIntegrationResponseShape->CredentialsArn;
+    my $Description       = $UpdateIntegrationResponseShape->Description;
+    my $IntegrationId     = $UpdateIntegrationResponseShape->IntegrationId;
+    my $IntegrationMethod = $UpdateIntegrationResponseShape->IntegrationMethod;
     my $IntegrationResponseSelectionExpression =
-      $UpdateIntegrationResponse->IntegrationResponseSelectionExpression;
-    my $IntegrationType     = $UpdateIntegrationResponse->IntegrationType;
-    my $IntegrationUri      = $UpdateIntegrationResponse->IntegrationUri;
-    my $PassthroughBehavior = $UpdateIntegrationResponse->PassthroughBehavior;
-    my $RequestParameters   = $UpdateIntegrationResponse->RequestParameters;
-    my $RequestTemplates    = $UpdateIntegrationResponse->RequestTemplates;
+      $UpdateIntegrationResponseShape->IntegrationResponseSelectionExpression;
+    my $IntegrationType = $UpdateIntegrationResponseShape->IntegrationType;
+    my $IntegrationUri  = $UpdateIntegrationResponseShape->IntegrationUri;
+    my $PassthroughBehavior =
+      $UpdateIntegrationResponseShape->PassthroughBehavior;
+    my $RequestParameters = $UpdateIntegrationResponseShape->RequestParameters;
+    my $RequestTemplates  = $UpdateIntegrationResponseShape->RequestTemplates;
     my $TemplateSelectionExpression =
-      $UpdateIntegrationResponse->TemplateSelectionExpression;
-    my $TimeoutInMillis = $UpdateIntegrationResponse->TimeoutInMillis;
+      $UpdateIntegrationResponseShape->TemplateSelectionExpression;
+    my $TimeoutInMillis = $UpdateIntegrationResponseShape->TimeoutInMillis;
 
-    # Returns a L<Paws::ApiGatewayV2::UpdateIntegrationResponse> object.
+    # Returns a L<Paws::ApiGatewayV2::UpdateIntegrationResponseShape> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/UpdateIntegration>

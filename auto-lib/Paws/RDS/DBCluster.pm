@@ -15,6 +15,7 @@ package Paws::RDS::DBCluster;
   has CloneGroupId => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
+  has CrossAccountClone => (is => 'ro', isa => 'Bool');
   has CustomEndpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterArn => (is => 'ro', isa => 'Str');
@@ -184,6 +185,12 @@ Coordinated Time (UTC).
 
   Specifies whether tags are copied from the DB cluster to snapshots of
 the DB cluster.
+
+
+=head2 CrossAccountClone => Bool
+
+  Specifies whether the DB cluster is a clone of a DB cluster owned by a
+different AWS account.
 
 
 =head2 CustomEndpoints => ArrayRef[Str|Undef]

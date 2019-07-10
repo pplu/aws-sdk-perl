@@ -9,7 +9,7 @@ package Paws::EC2::AssignPrivateIpAddresses;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssignPrivateIpAddresses');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::AssignPrivateIpAddressesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To assign a specific secondary private IP address to an interface
     # This example assigns the specified secondary private IP address to the
     # specified network interface.
-    $ec2->AssignPrivateIpAddresses(
+    my $AssignPrivateIpAddressesResult = $ec2->AssignPrivateIpAddresses(
       'NetworkInterfaceId' => 'eni-e5aa89a3',
       'PrivateIpAddresses' => ['10.0.0.82']
     );
@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 # network interface. Amazon EC2 automatically assigns these IP addresses from
 # the available IP addresses in the CIDR block range of the subnet the
 # network interface is associated with.
-    $ec2->AssignPrivateIpAddresses(
+    my $AssignPrivateIpAddressesResult = $ec2->AssignPrivateIpAddresses(
       'NetworkInterfaceId'             => 'eni-e5aa89a3',
       'SecondaryPrivateIpAddressCount' => 2
     );
