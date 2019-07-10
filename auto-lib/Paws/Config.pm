@@ -55,6 +55,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteEvaluationResults', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteOrganizationConfigRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteOrganizationConfigRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeletePendingAggregationRequest {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeletePendingAggregationRequest', @_);
@@ -135,6 +140,16 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeDeliveryChannelStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeOrganizationConfigRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeOrganizationConfigRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeOrganizationConfigRuleStatuses {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeOrganizationConfigRuleStatuses', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribePendingAggregationRequests {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribePendingAggregationRequests', @_);
@@ -200,6 +215,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::GetDiscoveredResourceCounts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetOrganizationConfigRuleDetailedStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetOrganizationConfigRuleDetailedStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetResourceConfigHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::GetResourceConfigHistory', @_);
@@ -248,6 +268,11 @@ package Paws::Config;
   sub PutEvaluations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutEvaluations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutOrganizationConfigRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutOrganizationConfigRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutRemediationConfigurations {
@@ -689,7 +714,7 @@ package Paws::Config;
   }
 
 
-  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeletePendingAggregationRequest DeleteRemediationConfiguration DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribePendingAggregationRequests DescribeRemediationConfigurations DescribeRemediationExecutionStatus DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources ListTagsForResource PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutRemediationConfigurations PutRetentionConfiguration SelectResourceConfig StartConfigRulesEvaluation StartConfigurationRecorder StartRemediationExecution StopConfigurationRecorder TagResource UntagResource / }
+  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeleteOrganizationConfigRule DeletePendingAggregationRequest DeleteRemediationConfiguration DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribeOrganizationConfigRules DescribeOrganizationConfigRuleStatuses DescribePendingAggregationRequests DescribeRemediationConfigurations DescribeRemediationExecutionStatus DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetOrganizationConfigRuleDetailedStatus GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources ListTagsForResource PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutOrganizationConfigRule PutRemediationConfigurations PutRetentionConfiguration SelectResourceConfig StartConfigRulesEvaluation StartConfigurationRecorder StartRemediationExecution StopConfigurationRecorder TagResource UntagResource / }
 
 1;
 
@@ -941,6 +966,22 @@ Deletes the evaluation results for the specified AWS Config rule. You
 can specify one AWS Config rule per request. After you delete the
 evaluation results, you can call the StartConfigRulesEvaluation API to
 start evaluating your AWS resources against the rule.
+
+
+=head2 DeleteOrganizationConfigRule
+
+=over
+
+=item OrganizationConfigRuleName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteOrganizationConfigRule>
+
+Returns: nothing
+
+
 
 
 =head2 DeletePendingAggregationRequest
@@ -1367,6 +1408,46 @@ Currently, you can specify only one delivery channel per region in your
 account.
 
 
+=head2 DescribeOrganizationConfigRules
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [OrganizationConfigRuleNames => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeOrganizationConfigRules>
+
+Returns: a L<Paws::Config::DescribeOrganizationConfigRulesResponse> instance
+
+
+
+
+=head2 DescribeOrganizationConfigRuleStatuses
+
+=over
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [OrganizationConfigRuleNames => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeOrganizationConfigRuleStatuses>
+
+Returns: a L<Paws::Config::DescribeOrganizationConfigRuleStatusesResponse> instance
+
+
+
+
 =head2 DescribePendingAggregationRequests
 
 =over
@@ -1733,6 +1814,28 @@ resources. Wait a few minutes and then retry the
 GetDiscoveredResourceCounts action.
 
 
+=head2 GetOrganizationConfigRuleDetailedStatus
+
+=over
+
+=item OrganizationConfigRuleName => Str
+
+=item [Filters => L<Paws::Config::StatusDetailFilters>]
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::GetOrganizationConfigRuleDetailedStatus>
+
+Returns: a L<Paws::Config::GetOrganizationConfigRuleDetailedStatusResponse> instance
+
+
+
+
 =head2 GetResourceConfigHistory
 
 =over
@@ -2061,6 +2164,28 @@ Returns: a L<Paws::Config::PutEvaluationsResponse> instance
 Used by an AWS Lambda function to deliver evaluation results to AWS
 Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
+
+
+=head2 PutOrganizationConfigRule
+
+=over
+
+=item OrganizationConfigRuleName => Str
+
+=item [ExcludedAccounts => ArrayRef[Str|Undef]]
+
+=item [OrganizationCustomRuleMetadata => L<Paws::Config::OrganizationCustomRuleMetadata>]
+
+=item [OrganizationManagedRuleMetadata => L<Paws::Config::OrganizationManagedRuleMetadata>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutOrganizationConfigRule>
+
+Returns: a L<Paws::Config::PutOrganizationConfigRuleResponse> instance
+
+
 
 
 =head2 PutRemediationConfigurations
