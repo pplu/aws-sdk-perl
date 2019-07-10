@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $gamelift->DescribeMatchmakingRuleSets(
       Limit => 1,    # OPTIONAL
       Names => [
-        'MyMatchmakingIdStringModel', ...    # min: 1, max: 128
+        'MyMatchmakingIdStringModel', ...    # max: 128
       ],                                     # OPTIONAL
       NextToken => 'MyNonZeroAndMaxString',  # OPTIONAL
       );
