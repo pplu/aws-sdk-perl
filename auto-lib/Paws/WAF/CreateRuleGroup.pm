@@ -4,6 +4,7 @@ package Paws::WAF::CreateRuleGroup;
   has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WAF::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ChangeToken => 'MyChangeToken',
       MetricName  => 'MyMetricName',
       Name        => 'MyResourceName',
-
+      Tags        => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -69,6 +76,12 @@ create the C<RuleGroup>.
 
 A friendly name or description of the RuleGroup. You can't change
 C<Name> after you create a C<RuleGroup>.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::WAF::Tag>]
+
+
 
 
 

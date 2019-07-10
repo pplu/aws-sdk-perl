@@ -320,6 +320,11 @@ package Paws::WAFRegional;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListSubscribedRuleGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListWebACLs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::ListWebACLs', @_);
@@ -338,6 +343,16 @@ package Paws::WAFRegional;
   sub PutPermissionPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAFRegional::PutPermissionPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAFRegional::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateByteMatchSet {
@@ -403,7 +418,7 @@ package Paws::WAFRegional;
   
 
 
-  sub operations { qw/AssociateWebACL CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateRuleGroup CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeleteLoggingConfiguration DeletePermissionPolicy DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteRuleGroup DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet DisassociateWebACL GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetLoggingConfiguration GetPermissionPolicy GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetRuleGroup GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetWebACLForResource GetXssMatchSet ListActivatedRulesInRuleGroup ListByteMatchSets ListGeoMatchSets ListIPSets ListLoggingConfigurations ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListResourcesForWebACL ListRuleGroups ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListSubscribedRuleGroups ListWebACLs ListXssMatchSets PutLoggingConfiguration PutPermissionPolicy UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateRuleGroup UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
+  sub operations { qw/AssociateWebACL CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateRuleGroup CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeleteLoggingConfiguration DeletePermissionPolicy DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteRuleGroup DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet DisassociateWebACL GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetLoggingConfiguration GetPermissionPolicy GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetRuleGroup GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetWebACLForResource GetXssMatchSet ListActivatedRulesInRuleGroup ListByteMatchSets ListGeoMatchSets ListIPSets ListLoggingConfigurations ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListResourcesForWebACL ListRuleGroups ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListSubscribedRuleGroups ListTagsForResource ListWebACLs ListXssMatchSets PutLoggingConfiguration PutPermissionPolicy TagResource UntagResource UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateRuleGroup UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
 
 1;
 
@@ -640,6 +655,8 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item RateLimit => Int
 
+=item [Tags => ArrayRef[L<Paws::WAFRegional::Tag>]]
+
 
 =back
 
@@ -867,6 +884,8 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item Name => Str
 
+=item [Tags => ArrayRef[L<Paws::WAFRegional::Tag>]]
+
 
 =back
 
@@ -947,6 +966,8 @@ HTTP requests, see the AWS WAF Developer Guide
 =item MetricName => Str
 
 =item Name => Str
+
+=item [Tags => ArrayRef[L<Paws::WAFRegional::Tag>]]
 
 
 =back
@@ -1100,6 +1121,8 @@ HTTP requests, see the AWS WAF Developer Guide
 =item MetricName => Str
 
 =item Name => Str
+
+=item [Tags => ArrayRef[L<Paws::WAFRegional::Tag>]]
 
 
 =back
@@ -2388,6 +2411,26 @@ Returns: a L<Paws::WAFRegional::ListSubscribedRuleGroupsResponse> instance
 Returns an array of RuleGroup objects that you are subscribed to.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WAFRegional::ListTagsForResource>
+
+Returns: a L<Paws::WAFRegional::ListTagsForResourceResponse> instance
+
+
+
+
 =head2 ListWebACLs
 
 =over
@@ -2536,6 +2579,42 @@ For more information, see IAM Policies
 
 An example of a valid policy parameter is shown in the Examples section
 below.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::WAFRegional::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WAFRegional::TagResource>
+
+Returns: a L<Paws::WAFRegional::TagResourceResponse> instance
+
+
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WAFRegional::UntagResource>
+
+Returns: a L<Paws::WAFRegional::UntagResourceResponse> instance
+
+
 
 
 =head2 UpdateByteMatchSet

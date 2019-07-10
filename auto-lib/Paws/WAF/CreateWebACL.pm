@@ -5,6 +5,7 @@ package Paws::WAF::CreateWebACL;
   has DefaultAction => (is => 'ro', isa => 'Paws::WAF::WafAction', required => 1);
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WAF::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -82,6 +83,12 @@ C<WebACL>.
 
 A friendly name or description of the WebACL. You can't change C<Name>
 after you create the C<WebACL>.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::WAF::Tag>]
+
+
 
 
 

@@ -4,6 +4,7 @@ package Paws::WAFRegional::CreateRule;
   has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -70,6 +71,12 @@ create the C<Rule>.
 
 A friendly name or description of the Rule. You can't change the name
 of a C<Rule> after you create it.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::WAFRegional::Tag>]
+
+
 
 
 
