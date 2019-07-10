@@ -1,5 +1,6 @@
 0.41
  - V3 signature module has been deprecated, as all APIs use V4 signatures. Dependencies have been removed
+ - Don't pass undef HTTP content to signature modules. At least pass ''. See #325
  - API updates for any service up to the date of release
  - New API: Textract
  - New API: ManagedBlockchain
