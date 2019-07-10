@@ -58,12 +58,12 @@ This class has no description
 
 =head2 GroupIds => ArrayRef[Str|Undef]
 
-  One or more security group IDs.
+  The security group IDs.
 
 
 =head2 GroupNames => ArrayRef[Str|Undef]
 
-  One or more security group names.
+  The security group names.
 
 
 =head2 InstanceInitiatedShutdownBehavior => Str

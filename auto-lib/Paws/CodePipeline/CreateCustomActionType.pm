@@ -7,6 +7,7 @@ package Paws::CodePipeline::CreateCustomActionType;
   has OutputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', traits => ['NameInRequest'], request_name => 'outputArtifactDetails' , required => 1);
   has Provider => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'provider' , required => 1);
   has Settings => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeSettings', traits => ['NameInRequest'], request_name => 'settings' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -65,10 +66,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RevisionUrlTemplate  => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
         ThirdPartyConfigurationUrl => 'MyUrl',     # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
     my $ActionType = $CreateCustomActionTypeOutput->ActionType;
+    my $Tags       = $CreateCustomActionTypeOutput->Tags;
 
     # Returns a L<Paws::CodePipeline::CreateCustomActionTypeOutput> object.
 
@@ -83,8 +93,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 The category of the custom action, such as a build action or a test
 action.
 
-Although Source and Approval are listed as valid values, they are not
-currently functional. These values are reserved for future use.
+Although C<Source> and C<Approval> are listed as valid values, they are
+not currently functional. These values are reserved for future use.
 
 Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">, C<"Approval">
 
@@ -97,7 +107,7 @@ action within the URL templates by following the format of
 {Config:name}, as long as the configuration property is both required
 and not secret. For more information, see Create a Custom Action for a
 Pipeline
-(http://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html).
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html).
 
 
 
@@ -124,7 +134,13 @@ CodeDeploy.
 
 =head2 Settings => L<Paws::CodePipeline::ActionTypeSettings>
 
-Returns information about the settings for an action type.
+URLs that provide users information about this custom action.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+
+The tags for the custom action.
 
 
 

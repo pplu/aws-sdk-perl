@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeWorkspaceDirectoriesResult =
       $workspaces->DescribeWorkspaceDirectories(
       DirectoryIds => [ 'MyDirectoryId', ... ],    # OPTIONAL
-      NextToken    => 'MyPaginationToken',         # OPTIONAL
+      NextToken => 'MyPaginationToken',            # OPTIONAL
       );
 
     # Results:

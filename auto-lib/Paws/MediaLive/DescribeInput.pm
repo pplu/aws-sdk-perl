@@ -38,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AttachedChannels  = $DescribeInputResponse->AttachedChannels;
     my $Destinations      = $DescribeInputResponse->Destinations;
     my $Id                = $DescribeInputResponse->Id;
+    my $InputClass        = $DescribeInputResponse->InputClass;
     my $MediaConnectFlows = $DescribeInputResponse->MediaConnectFlows;
     my $Name              = $DescribeInputResponse->Name;
     my $RoleArn           = $DescribeInputResponse->RoleArn;

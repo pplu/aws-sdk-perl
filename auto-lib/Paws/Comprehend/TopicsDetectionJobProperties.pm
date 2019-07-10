@@ -1,5 +1,6 @@
 package Paws::Comprehend::TopicsDetectionJobProperties;
   use Moose;
+  has DataAccessRoleArn => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::InputDataConfig');
   has JobId => (is => 'ro', isa => 'Str');
@@ -9,6 +10,8 @@ package Paws::Comprehend::TopicsDetectionJobProperties;
   has NumberOfTopics => (is => 'ro', isa => 'Int');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::OutputDataConfig');
   has SubmitTime => (is => 'ro', isa => 'Str');
+  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
+  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
 1;
 
 ### main pod documentation begin ###
@@ -28,20 +31,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Comprehend::TopicsDetectionJobProperties object:
 
-  $service_obj->Method(Att1 => { EndTime => $value, ..., SubmitTime => $value  });
+  $service_obj->Method(Att1 => { DataAccessRoleArn => $value, ..., VpcConfig => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Comprehend::TopicsDetectionJobProperties object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EndTime
+  $result->Att1->DataAccessRoleArn
 
 =head1 DESCRIPTION
 
 Provides information about a topic detection job.
 
 =head1 ATTRIBUTES
+
+
+=head2 DataAccessRoleArn => Str
+
+  The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
+role that grants Amazon Comprehend read access to your job data.
 
 
 =head2 EndTime => Str
@@ -91,6 +100,36 @@ detection job.
 =head2 SubmitTime => Str
 
   The time that the topic detection job was submitted for processing.
+
+
+=head2 VolumeKmsKeyId => Str
+
+  ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt data on the storage volume attached to the ML compute
+instance(s) that process the analysis job. The VolumeKmsKeyId can be
+either of the following formats:
+
+=over
+
+=item *
+
+KMS Key ID: C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+Amazon Resource Name (ARN) of a KMS Key:
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
+
+
+=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+
+  Configuration parameters for a private Virtual Private Cloud (VPC)
+containing the resources you are using for your topic detection job.
+For more information, see Amazon VPC
+(https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 
 
 

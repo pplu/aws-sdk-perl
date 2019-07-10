@@ -31,11 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To retrieve a lexicon
    # Returns the content of the specified pronunciation lexicon stored in an AWS
    # Region.
-    my $GetLexiconOutput = $polly->GetLexicon(
-      {
-        'Name' => ''
-      }
-    );
+    my $GetLexiconOutput = $polly->GetLexicon( 'Name' => '' );
 
     # Results:
     my $Lexicon           = $GetLexiconOutput->Lexicon;

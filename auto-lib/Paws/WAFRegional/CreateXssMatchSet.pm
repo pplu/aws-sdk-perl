@@ -31,10 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an XSS match set
     # The following example creates an XSS match set named MySampleXssMatchSet.
     my $CreateXssMatchSetResponse = $waf -regional->CreateXssMatchSet(
-      {
-        'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'Name'        => 'MySampleXssMatchSet'
-      }
+      'ChangeToken' => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+      'Name'        => 'MySampleXssMatchSet'
     );
 
     # Results:

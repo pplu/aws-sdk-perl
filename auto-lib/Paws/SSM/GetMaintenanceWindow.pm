@@ -59,7 +59,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> WindowId => Str
 
-The ID of the desired Maintenance Window.
+The ID of the maintenance window for which you want to retrieve
+information.
 
 
 

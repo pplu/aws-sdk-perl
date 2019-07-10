@@ -1,7 +1,7 @@
 package Paws::Kafka::BrokerSoftwareInfo;
   use Moose;
   has ConfigurationArn => (is => 'ro', isa => 'Str', request_name => 'configurationArn', traits => ['NameInRequest']);
-  has ConfigurationRevision => (is => 'ro', isa => 'Str', request_name => 'configurationRevision', traits => ['NameInRequest']);
+  has ConfigurationRevision => (is => 'ro', isa => 'Int', request_name => 'configurationRevision', traits => ['NameInRequest']);
   has KafkaVersion => (is => 'ro', isa => 'Str', request_name => 'kafkaVersion', traits => ['NameInRequest']);
 1;
 
@@ -41,12 +41,13 @@ Information about the current software installed on the cluster.
 =head2 ConfigurationArn => Str
 
   The Amazon Resource Name (ARN) of the configuration used for the
-cluster.
+cluster. This field isn't visible in this preview release.
 
 
-=head2 ConfigurationRevision => Str
+=head2 ConfigurationRevision => Int
 
-  The revision of the configuration to use.
+  The revision of the configuration to use. This field isn't visible in
+this preview release.
 
 
 =head2 KafkaVersion => Str

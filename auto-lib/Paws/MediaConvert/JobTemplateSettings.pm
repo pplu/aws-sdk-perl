@@ -2,6 +2,7 @@ package Paws::MediaConvert::JobTemplateSettings;
   use Moose;
   has AdAvailOffset => (is => 'ro', isa => 'Int', request_name => 'adAvailOffset', traits => ['NameInRequest']);
   has AvailBlanking => (is => 'ro', isa => 'Paws::MediaConvert::AvailBlanking', request_name => 'availBlanking', traits => ['NameInRequest']);
+  has Esam => (is => 'ro', isa => 'Paws::MediaConvert::EsamSettings', request_name => 'esam', traits => ['NameInRequest']);
   has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputTemplate]', request_name => 'inputs', traits => ['NameInRequest']);
   has MotionImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::MotionImageInserter', request_name => 'motionImageInserter', traits => ['NameInRequest']);
   has NielsenConfiguration => (is => 'ro', isa => 'Paws::MediaConvert::NielsenConfiguration', request_name => 'nielsenConfiguration', traits => ['NameInRequest']);
@@ -56,6 +57,11 @@ Avail PTS time.
 an image, and audio muted during SCTE-35 triggered ad avails.
 
 
+=head2 Esam => L<Paws::MediaConvert::EsamSettings>
+
+  Settings for Event Signaling And Messaging (ESAM).
+
+
 =head2 Inputs => ArrayRef[L<Paws::MediaConvert::InputTemplate>]
 
   Use Inputs (inputs) to define the source file used in the transcode
@@ -71,7 +77,7 @@ you specify here appear on all outputs in all output groups.
 
 =head2 NielsenConfiguration => L<Paws::MediaConvert::NielsenConfiguration>
 
-  
+  Settings for Nielsen Configuration
 
 
 =head2 OutputGroups => ArrayRef[L<Paws::MediaConvert::OutputGroup>]
@@ -97,7 +103,10 @@ inputs.
 
 =head2 TimedMetadataInsertion => L<Paws::MediaConvert::TimedMetadataInsertion>
 
-  
+  Enable Timed metadata insertion (TimedMetadataInsertion) to include ID3
+tags in your job. To include timed metadata, you must enable it here,
+enable it in each output container, and specify tags and timecodes in
+ID3 insertion (Id3Insertion) objects.
 
 
 

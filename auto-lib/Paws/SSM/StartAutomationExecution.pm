@@ -47,7 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Parameters      => {
         'MyAutomationParameterKey' => [
           'MyAutomationParameterValue', ...       # min: 1, max: 512
-        ],    # key: min: 1, max: 30, value: max: 10
+        ],    # key: min: 1, max: 50, value: max: 10
       },    # OPTIONAL
       TargetLocations => [
         {
@@ -155,10 +155,9 @@ parameters in the Automation document.
 =head2 TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]
 
 A location is a combination of AWS Regions and/or AWS accounts where
-you want to execute the Automation. Use this action to start an
-Automation in multiple Regions and multiple accounts. For more
-information, see Concurrently Executing Automations in Multiple AWS
-Regions and Accounts
+you want to run the Automation. Use this action to start an Automation
+in multiple Regions and multiple accounts. For more information, see
+Executing Automations in Multiple AWS Regions and Accounts
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)
 in the I<AWS Systems Manager User Guide>.
 

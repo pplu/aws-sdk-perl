@@ -46,14 +46,21 @@ cookies.
 cookies to the origin and, if so, which ones. For more information
 about forwarding cookies to the origin, see How CloudFront Forwards,
 Caches, and Logs Cookies
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 Headers => L<Paws::CloudFront::Headers>
 
   A complex type that specifies the C<Headers>, if any, that you want
-CloudFront to base caching on for this cache behavior.
+CloudFront to forward to the origin for this cache behavior
+(whitelisted headers). For the headers that you specify, CloudFront
+also caches separate versions of a specified object that is based on
+the header values in viewer requests.
+
+For more information, see Caching Content Based on Request Headers
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> QueryString => Bool
@@ -82,7 +89,7 @@ string parameters.
 
 For more information, see Configuring CloudFront to Cache Based on
 Query String Parameters
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 

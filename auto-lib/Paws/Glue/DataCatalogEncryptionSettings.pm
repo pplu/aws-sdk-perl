@@ -40,7 +40,7 @@ security.
 
 =head2 ConnectionPasswordEncryption => L<Paws::Glue::ConnectionPasswordEncryption>
 
-  When password protection is enabled, the Data Catalog uses a
+  When connection password protection is enabled, the Data Catalog uses a
 customer-provided key to encrypt the password as part of
 C<CreateConnection> or C<UpdateConnection> and store it in the
 C<ENCRYPTED_PASSWORD> field in the connection properties. You can
@@ -49,7 +49,7 @@ enable catalog encryption or only password encryption.
 
 =head2 EncryptionAtRest => L<Paws::Glue::EncryptionAtRest>
 
-  Specifies encryption-at-rest configuration for the Data Catalog.
+  Specifies the encryption-at-rest configuration for the Data Catalog.
 
 
 

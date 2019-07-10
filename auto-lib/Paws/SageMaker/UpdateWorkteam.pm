@@ -3,6 +3,7 @@ package Paws::SageMaker::UpdateWorkteam;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has MemberDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MemberDefinition]');
+  has NotificationConfiguration => (is => 'ro', isa => 'Paws::SageMaker::NotificationConfiguration');
   has WorkteamName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -43,6 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],        # OPTIONAL
+      NotificationConfiguration => {
+        NotificationTopicArn => 'MyNotificationTopicArn',    # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -66,6 +70,12 @@ An updated description for the work team.
 
 A list of C<MemberDefinition> objects that contain the updated work
 team members.
+
+
+
+=head2 NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>
+
+Configures SNS topic notifications for available or expiring work items
 
 
 

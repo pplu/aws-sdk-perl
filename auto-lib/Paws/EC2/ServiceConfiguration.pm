@@ -3,12 +3,14 @@ package Paws::EC2::ServiceConfiguration;
   has AcceptanceRequired => (is => 'ro', isa => 'Bool', request_name => 'acceptanceRequired', traits => ['NameInRequest']);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availabilityZoneSet', traits => ['NameInRequest']);
   has BaseEndpointDnsNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'baseEndpointDnsNameSet', traits => ['NameInRequest']);
+  has ManagesVpcEndpoints => (is => 'ro', isa => 'Bool', request_name => 'managesVpcEndpoints', traits => ['NameInRequest']);
   has NetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkLoadBalancerArnSet', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
   has ServiceId => (is => 'ro', isa => 'Str', request_name => 'serviceId', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has ServiceState => (is => 'ro', isa => 'Str', request_name => 'serviceState', traits => ['NameInRequest']);
   has ServiceType => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ServiceTypeDetail]', request_name => 'serviceType', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::ServiceConfiguration object:
 
-  $service_obj->Method(Att1 => { AcceptanceRequired => $value, ..., ServiceType => $value  });
+  $service_obj->Method(Att1 => { AcceptanceRequired => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -60,6 +62,12 @@ endpoint to the service must first be accepted.
   The DNS names for the service.
 
 
+=head2 ManagesVpcEndpoints => Bool
+
+  Indicates whether the service manages it's VPC endpoints. Management of
+the service VPC endpoints using the VPC endpoint API is restricted.
+
+
 =head2 NetworkLoadBalancerArns => ArrayRef[Str|Undef]
 
   The Amazon Resource Names (ARNs) of the Network Load Balancers for the
@@ -89,6 +97,11 @@ service.
 =head2 ServiceType => ArrayRef[L<Paws::EC2::ServiceTypeDetail>]
 
   The type of service.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  Any tags assigned to the service.
 
 
 

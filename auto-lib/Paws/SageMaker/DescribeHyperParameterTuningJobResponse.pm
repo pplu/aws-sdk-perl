@@ -12,7 +12,7 @@ package Paws::SageMaker::DescribeHyperParameterTuningJobResponse;
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has ObjectiveStatusCounters => (is => 'ro', isa => 'Paws::SageMaker::ObjectiveStatusCounters', required => 1);
   has OverallBestTrainingJob => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTrainingJobSummary');
-  has TrainingJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTrainingJobDefinition', required => 1);
+  has TrainingJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTrainingJobDefinition');
   has TrainingJobStatusCounters => (is => 'ro', isa => 'Paws::SageMaker::TrainingJobStatusCounters', required => 1);
   has WarmStartConfig => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobWarmStartConfig');
 
@@ -91,7 +91,7 @@ value of all training jobs launched by this tuning job and all parent
 jobs specified for the warm start tuning job.
 
 
-=head2 B<REQUIRED> TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
+=head2 TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
 
 The HyperParameterTrainingJobDefinition object that specifies the
 definition of the training jobs that this tuning job launches.

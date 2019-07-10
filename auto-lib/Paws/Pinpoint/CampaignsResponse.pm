@@ -1,6 +1,6 @@
 package Paws::Pinpoint::CampaignsResponse;
   use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::CampaignResponse]');
+  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::CampaignResponse]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 1;
 
@@ -32,20 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-List of available campaigns.
+Provides information about the configuration and other settings for all
+the campaigns that are associated with an application.
 
 =head1 ATTRIBUTES
 
 
-=head2 Item => ArrayRef[L<Paws::Pinpoint::CampaignResponse>]
+=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::CampaignResponse>]
 
-  A list of campaigns.
+  An array of responses, one for each campaign that's associated with the
+application.
 
 
 =head2 NextToken => Str
 
-  The string that you use in a subsequent request to get the next page of
-results in a paginated response.
+  The string to use in a subsequent request to get the next page of
+results in a paginated response. This value is null if there are no
+additional pages.
 
 
 

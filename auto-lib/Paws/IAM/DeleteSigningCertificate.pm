@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following command deletes the specified signing certificate for the IAM
    # user named Anika.
     $iam->DeleteSigningCertificate(
-      {
-        'CertificateId' => 'TA7SMP42TDN5Z26OBPJE7EXAMPLE',
-        'UserName'      => 'Anika'
-      }
+      'CertificateId' => 'TA7SMP42TDN5Z26OBPJE7EXAMPLE',
+      'UserName'      => 'Anika'
     );
 
 

@@ -149,7 +149,9 @@ Each argument is described in detail in: L<Paws::MediaStoreData::GetObject>
 
 Returns: a L<Paws::MediaStoreData::GetObjectResponse> instance
 
-Downloads the object at the specified path.
+Downloads the object at the specified path. If the objectE<rsquo>s
+upload availability is set to C<streaming>, AWS Elemental MediaStore
+downloads the object even if itE<rsquo>s still uploading the object.
 
 
 =head2 ListItems
@@ -187,6 +189,8 @@ specified folder.
 
 =item [StorageClass => Str]
 
+=item [UploadAvailability => Str]
+
 
 =back
 
@@ -195,7 +199,8 @@ Each argument is described in detail in: L<Paws::MediaStoreData::PutObject>
 Returns: a L<Paws::MediaStoreData::PutObjectResponse> instance
 
 Uploads an object to the specified path. Object sizes are limited to 25
-MB.
+MB for standard upload availability and 10 MB for streaming upload
+availability.
 
 
 

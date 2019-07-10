@@ -16,7 +16,7 @@ Paws::SSM::CancelMaintenanceWindowExecutionResult
 
 =head2 WindowExecutionId => Str
 
-The ID of the Maintenance Window execution that has been stopped.
+The ID of the maintenance window execution that has been stopped.
 
 
 =head2 _request_id => Str

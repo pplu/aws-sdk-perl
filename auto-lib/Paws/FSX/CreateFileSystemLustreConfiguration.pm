@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::FSX::Create
 
 =head1 DESCRIPTION
 
-The configuration object for Lustre file systems used in the
-C<CreateFileSystem> operation.
+The Lustre configuration for the file system being created. This value
+is required if C<FileSystemType> is set to C<LUSTRE>.
 
 =head1 ATTRIBUTES
 

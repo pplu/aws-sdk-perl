@@ -4,6 +4,8 @@ package Paws::EC2::DescribeDhcpOptions;
   has DhcpOptionsIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'DhcpOptionsId' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -31,11 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To describe a DHCP options set
     # This example describes the specified DHCP options set.
-    my $DescribeDhcpOptionsResult = $ec2->DescribeDhcpOptions(
-      {
-        'DhcpOptionsIds' => ['dopt-d9070ebb']
-      }
-    );
+    my $DescribeDhcpOptionsResult =
+      $ec2->DescribeDhcpOptions( 'DhcpOptionsIds' => ['dopt-d9070ebb'] );
 
     # Results:
     my $DhcpOptions = $DescribeDhcpOptionsResult->DhcpOptions;
@@ -103,6 +102,20 @@ the tag value.
 
 =back
 
+
+
+
+=head2 MaxResults => Int
+
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
+
+
+
+=head2 NextToken => Str
+
+The token for the next page of results.
 
 
 

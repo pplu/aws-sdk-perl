@@ -1,6 +1,7 @@
 package Paws::DirectConnect::DirectConnectGatewayAttachment;
   use Moose;
   has AttachmentState => (is => 'ro', isa => 'Str', request_name => 'attachmentState', traits => ['NameInRequest']);
+  has AttachmentType => (is => 'ro', isa => 'Str', request_name => 'attachmentType', traits => ['NameInRequest']);
   has DirectConnectGatewayId => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayId', traits => ['NameInRequest']);
   has StateChangeError => (is => 'ro', isa => 'Str', request_name => 'stateChangeError', traits => ['NameInRequest']);
   has VirtualInterfaceId => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceId', traits => ['NameInRequest']);
@@ -70,6 +71,11 @@ interface is stopped.
 
 =back
 
+
+
+=head2 AttachmentType => Str
+
+  The interface type.
 
 
 =head2 DirectConnectGatewayId => Str

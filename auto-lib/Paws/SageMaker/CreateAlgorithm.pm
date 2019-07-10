@@ -115,7 +115,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ContainerHostname => 'MyContainerHostname',    # max: 63; OPTIONAL
             ImageDigest       => 'MyImageDigest',          # max: 72; OPTIONAL
             ModelDataUrl      => 'MyUrl',                  # max: 1024; OPTIONAL
-            ProductId         => 'MyProductId',            # OPTIONAL
+            ProductId         => 'MyProductId',            # max: 256; OPTIONAL
           },
           ...
         ],                                                 # min: 1, max: 1
@@ -153,8 +153,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       ],                              # max: 16; OPTIONAL
                       S3DataDistributionType => 'FullyReplicated'
                       ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
-                    },
-
+                    },    # OPTIONAL
                   },
                   CompressionType => 'None',             # values: None, Gzip
                   ContentType     => 'MyContentType',    # max: 256
@@ -167,7 +166,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },           # OPTIONAL
                 },
                 ...
-              ],               # min: 1, max: 8
+              ],               # min: 1, max: 20
               OutputDataConfig => {
                 S3OutputPath => 'MyS3Uri',       # max: 1024
                 KmsKeyId     => 'MyKmsKeyId',    # max: 2048; OPTIONAL

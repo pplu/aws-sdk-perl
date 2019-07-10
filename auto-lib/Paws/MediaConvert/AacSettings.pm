@@ -53,7 +53,16 @@ on the rate control mode.
 
 =head2 AudioDescriptionBroadcasterMix => Str
 
-  
+  Choose BROADCASTER_MIXED_AD when the input contains pre-mixed main
+audio + audio description (AD) as a stereo pair. The value for
+AudioType will be set to 3, which signals to downstream systems that
+this stream contains "broadcaster mixed AD". Note that the input
+received by the encoder must contain pre-mixed audio; the encoder does
+not perform the mixing. When you choose BROADCASTER_MIXED_AD, the
+encoder ignores any values you provide in AudioType and
+FollowInputAudioType. Choose NORMAL when the input does not contain
+pre-mixed audio + audio description (AD). In this case, the encoder
+will use any values you provide for AudioType and FollowInputAudioType.
 
 
 =head2 Bitrate => Int
@@ -70,22 +79,28 @@ Default values depend on Bitrate control mode and Profile.
 
 =head2 CodecProfile => Str
 
-  
+  AAC Profile.
 
 
 =head2 CodingMode => Str
 
-  
+  Mono (Audio Description), Mono, Stereo, or 5.1 channel layout. Valid
+values depend on rate control mode and profile. "1.0 - Audio
+Description (Receiver Mix)" setting receives a stereo description plus
+control track and emits a mono AAC encode of the description track,
+with control data emitted in the PES header as per ETSI TS 101 154
+Annex E.
 
 
 =head2 RateControlMode => Str
 
-  
+  Rate Control Mode.
 
 
 =head2 RawFormat => Str
 
-  
+  Enables LATM/LOAS AAC output. Note that if you use LATM/LOAS AAC in an
+output, you must choose "No container" for the output container.
 
 
 =head2 SampleRate => Int
@@ -96,12 +111,13 @@ profile.
 
 =head2 Specification => Str
 
-  
+  Use MPEG-2 AAC instead of MPEG-4 AAC audio for raw or MPEG-2 Transport
+Stream containers.
 
 
 =head2 VbrQuality => Str
 
-  
+  VBR Quality Level - Only used if rate_control_mode is VBR.
 
 
 

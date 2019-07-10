@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a list of Lambda functions
     # This operation retrieves a Lambda functions
     my $ListFunctionsResponse = $lambda->ListFunctions(
-      {
-        'Marker'   => '',
-        'MaxItems' => 123
-      }
+      'Marker'   => '',
+      'MaxItems' => 123
     );
 
     # Results:
@@ -61,14 +59,14 @@ Valid values are: C<"ALL">
 
 =head2 Marker => Str
 
-Specify the pagination token returned by a previous request to retrieve
-the next page of results.
+Specify the pagination token that's returned by a previous request to
+retrieve the next page of results.
 
 
 
 =head2 MasterRegion => Str
 
-For Lambda@Edge functions, the region of the master function. For
+For Lambda@Edge functions, the AWS Region of the master function. For
 example, C<us-east-2> or C<ALL>. If specified, you must set
 C<FunctionVersion> to C<ALL>.
 

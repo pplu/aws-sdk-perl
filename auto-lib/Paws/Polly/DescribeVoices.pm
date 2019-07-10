@@ -35,11 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # speech synthesis. Displayed languages are those within the specified
     # language code. If no language code is specified, voices for all available
     # languages are displayed.
-    my $DescribeVoicesOutput = $polly->DescribeVoices(
-      {
-        'LanguageCode' => 'en-GB'
-      }
-    );
+    my $DescribeVoicesOutput =
+      $polly->DescribeVoices( 'LanguageCode' => 'en-GB' );
 
     # Results:
     my $Voices = $DescribeVoicesOutput->Voices;
@@ -70,7 +67,7 @@ The language identification tag (ISO 639 code for the language name-ISO
 don't specify this optional parameter, all available voices are
 returned.
 
-Valid values are: C<"cmn-CN">, C<"cy-GB">, C<"da-DK">, C<"de-DE">, C<"en-AU">, C<"en-GB">, C<"en-GB-WLS">, C<"en-IN">, C<"en-US">, C<"es-ES">, C<"es-MX">, C<"es-US">, C<"fr-CA">, C<"fr-FR">, C<"is-IS">, C<"it-IT">, C<"ja-JP">, C<"hi-IN">, C<"ko-KR">, C<"nb-NO">, C<"nl-NL">, C<"pl-PL">, C<"pt-BR">, C<"pt-PT">, C<"ro-RO">, C<"ru-RU">, C<"sv-SE">, C<"tr-TR">
+Valid values are: C<"arb">, C<"cmn-CN">, C<"cy-GB">, C<"da-DK">, C<"de-DE">, C<"en-AU">, C<"en-GB">, C<"en-GB-WLS">, C<"en-IN">, C<"en-US">, C<"es-ES">, C<"es-MX">, C<"es-US">, C<"fr-CA">, C<"fr-FR">, C<"is-IS">, C<"it-IT">, C<"ja-JP">, C<"hi-IN">, C<"ko-KR">, C<"nb-NO">, C<"nl-NL">, C<"pl-PL">, C<"pt-BR">, C<"pt-PT">, C<"ro-RO">, C<"ru-RU">, C<"sv-SE">, C<"tr-TR">
 
 =head2 NextToken => Str
 

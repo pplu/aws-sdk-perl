@@ -64,12 +64,12 @@ The C<Job> object contains details about a job.
 
 =head2 CompletedAt => Str
 
-  The time, in milliseconds since the epoch, when the job was completed.
+  The time, in seconds since the epoch, when the job was completed.
 
 
 =head2 CreatedAt => Str
 
-  The time, in milliseconds since the epoch, when the job was created.
+  The time, in seconds since the epoch, when the job was created.
 
 
 =head2 Description => Str
@@ -106,8 +106,7 @@ parameter set to C<true>.
 
 =head2 LastUpdatedAt => Str
 
-  The time, in milliseconds since the epoch, when the job was last
-updated.
+  The time, in seconds since the epoch, when the job was last updated.
 
 
 =head2 PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>

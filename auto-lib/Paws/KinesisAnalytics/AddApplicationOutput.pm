@@ -73,9 +73,11 @@ configuration.
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
 Version of the application to which you want to add the output
-configuration. You can use the DescribeApplication operation to get the
-current application version. If the version specified is not the
-current version, the C<ConcurrentModificationException> is returned.
+configuration. You can use the DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+operation to get the current application version. If the version
+specified is not the current version, the
+C<ConcurrentModificationException> is returned.
 
 
 

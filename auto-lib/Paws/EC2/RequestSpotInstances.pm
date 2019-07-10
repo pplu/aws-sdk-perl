@@ -45,23 +45,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # Availability Zone. If your account supports EC2-Classic, Amazon EC2
    # launches the instances in EC2-Classic in the specified Availability Zone.
     my $RequestSpotInstancesResult = $ec2->RequestSpotInstances(
-      {
-        'InstanceCount'       => 5,
-        'LaunchSpecification' => {
-          'IamInstanceProfile' => {
-            'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
-          },
-          'ImageId'      => 'ami-1a2b3c4d',
-          'InstanceType' => 'm3.medium',
-          'KeyName'      => 'my-key-pair',
-          'Placement'    => {
-            'AvailabilityZone' => 'us-west-2a'
-          },
-          'SecurityGroupIds' => ['sg-1a2b3c4d']
+      'InstanceCount'       => 5,
+      'LaunchSpecification' => {
+        'IamInstanceProfile' => {
+          'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
         },
-        'SpotPrice' => 0.03,
-        'Type'      => 'one-time'
-      }
+        'ImageId'      => 'ami-1a2b3c4d',
+        'InstanceType' => 'm3.medium',
+        'KeyName'      => 'my-key-pair',
+        'Placement'    => {
+          'AvailabilityZone' => 'us-west-2a'
+        },
+        'SecurityGroupIds' => ['sg-1a2b3c4d']
+      },
+      'SpotPrice' => 0.03,
+      'Type'      => 'one-time'
     );
 
    # To create a one-time Spot Instance request
@@ -70,20 +68,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # specified subnet. If the VPC is a nondefault VPC, the instances do not
    # receive a public IP address by default.
     my $RequestSpotInstancesResult = $ec2->RequestSpotInstances(
-      {
-        'InstanceCount'       => 5,
-        'LaunchSpecification' => {
-          'IamInstanceProfile' => {
-            'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
-          },
-          'ImageId'          => 'ami-1a2b3c4d',
-          'InstanceType'     => 'm3.medium',
-          'SecurityGroupIds' => ['sg-1a2b3c4d'],
-          'SubnetId'         => 'subnet-1a2b3c4d'
+      'InstanceCount'       => 5,
+      'LaunchSpecification' => {
+        'IamInstanceProfile' => {
+          'Arn' => 'arn:aws:iam::123456789012:instance-profile/my-iam-role'
         },
-        'SpotPrice' => 0.050,
-        'Type'      => 'one-time'
-      }
+        'ImageId'          => 'ami-1a2b3c4d',
+        'InstanceType'     => 'm3.medium',
+        'SecurityGroupIds' => ['sg-1a2b3c4d'],
+        'SubnetId'         => 'subnet-1a2b3c4d'
+      },
+      'SpotPrice' => 0.050,
+      'Type'      => 'one-time'
     );
 
 

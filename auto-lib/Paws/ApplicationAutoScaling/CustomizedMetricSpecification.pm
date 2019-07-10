@@ -35,10 +35,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Application
 
 =head1 DESCRIPTION
 
-Configures a customized metric for a target tracking policy to use with
-Application Auto Scaling.
+Represents a CloudWatch metric of your choosing for a target tracking
+scaling policy to use with Application Auto Scaling.
 
-For information about terminology, see Amazon CloudWatch Concepts
+To create your customized metric specification:
+
+=over
+
+=item *
+
+Add values for each required parameter from CloudWatch. You can use an
+existing metric, or a new metric that you create. To use your own
+metric, you must first publish the metric to CloudWatch. For more
+information, see Publish Custom Metrics
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
+in the I<Amazon CloudWatch User Guide>.
+
+=item *
+
+Choose a metric that changes proportionally with capacity. The value of
+the metric should increase or decrease in inverse proportion to the
+number of capacity units. That is, the value of the metric should
+decrease when capacity increases.
+
+=back
+
+For more information about CloudWatch, see Amazon CloudWatch Concepts
 (https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html).
 
 =head1 ATTRIBUTES
@@ -47,6 +69,9 @@ For information about terminology, see Amazon CloudWatch Concepts
 =head2 Dimensions => ArrayRef[L<Paws::ApplicationAutoScaling::MetricDimension>]
 
   The dimensions of the metric.
+
+Conditional: If you published your metric with dimensions, you must
+specify the same dimensions in your scaling policy.
 
 
 =head2 B<REQUIRED> MetricName => Str

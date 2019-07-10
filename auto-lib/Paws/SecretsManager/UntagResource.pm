@@ -72,7 +72,7 @@ the value. Both the key and its associated value are removed.
 This parameter to the API requires a JSON text string argument. For
 information on how to format a JSON parameter for the various command
 line tool environments, see Using JSON for Parameters
-(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+(https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 in the I<AWS CLI User Guide>.
 
 

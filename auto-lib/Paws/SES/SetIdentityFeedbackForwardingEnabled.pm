@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # bounces and complaints via email:
     my $SetIdentityFeedbackForwardingEnabledResponse =
       $email->SetIdentityFeedbackForwardingEnabled(
-      {
-        'ForwardingEnabled' => 1,
-        'Identity'          => 'user@example.com'
-      }
+      'ForwardingEnabled' => 1,
+      'Identity'          => 'user@example.com'
       );
 
 

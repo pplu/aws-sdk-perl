@@ -7,6 +7,7 @@ package Paws::AlexaForBusiness::Device;
   has DeviceStatusInfo => (is => 'ro', isa => 'Paws::AlexaForBusiness::DeviceStatusInfo');
   has DeviceType => (is => 'ro', isa => 'Str');
   has MacAddress => (is => 'ro', isa => 'Str');
+  has NetworkProfileInfo => (is => 'ro', isa => 'Paws::AlexaForBusiness::DeviceNetworkProfileInfo');
   has RoomArn => (is => 'ro', isa => 'Str');
   has SoftwareVersion => (is => 'ro', isa => 'Str');
 1;
@@ -78,6 +79,11 @@ DeviceStatusInfo value for details.
 =head2 MacAddress => Str
 
   The MAC address of a device.
+
+
+=head2 NetworkProfileInfo => L<Paws::AlexaForBusiness::DeviceNetworkProfileInfo>
+
+  Detailed information about a device's network profile.
 
 
 =head2 RoomArn => Str

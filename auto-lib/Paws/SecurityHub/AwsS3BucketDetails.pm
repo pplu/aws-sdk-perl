@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-The details of an AWS S3 Bucket.
+The details of an Amazon S3 bucket.
 
 =head1 ATTRIBUTES
 

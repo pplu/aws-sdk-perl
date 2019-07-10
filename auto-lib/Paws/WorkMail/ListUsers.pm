@@ -55,7 +55,8 @@ The maximum number of results to return in a single call.
 
 =head2 NextToken => Str
 
-TBD
+The token to use to retrieve the next page of results. The first call
+does not contain any tokens.
 
 
 

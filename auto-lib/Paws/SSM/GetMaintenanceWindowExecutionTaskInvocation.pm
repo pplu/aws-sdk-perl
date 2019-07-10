@@ -76,14 +76,14 @@ The invocation ID to retrieve.
 
 =head2 B<REQUIRED> TaskId => Str
 
-The ID of the specific task in the Maintenance Window task that should
+The ID of the specific task in the maintenance window task that should
 be retrieved.
 
 
 
 =head2 B<REQUIRED> WindowExecutionId => Str
 
-The ID of the Maintenance Window execution for which the task is a
+The ID of the maintenance window execution for which the task is a
 part.
 
 

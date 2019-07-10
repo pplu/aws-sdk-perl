@@ -40,14 +40,14 @@ The authentication applied to incoming webhook trigger requests.
 =head2 AllowedIPRange => Str
 
   The property used to configure acceptance of webhooks within a specific
-IP range. For IP, only the AllowedIPRange property must be set, and
+IP range. For IP, only the C<AllowedIPRange> property must be set, and
 this property must be set to a valid CIDR range.
 
 
 =head2 SecretToken => Str
 
   The property used to configure GitHub authentication. For GITHUB_HMAC,
-only the SecretToken property must be set.
+only the C<SecretToken> property must be set.
 
 
 

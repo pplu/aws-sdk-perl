@@ -32,7 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClusterId      => 'MyClusterId',    # OPTIONAL
       InstanceGroups => [
         {
-          InstanceGroupId           => 'MyXmlStringMaxLen256',     # max: 256
+          InstanceGroupId => 'MyXmlStringMaxLen256',    # max: 256
+          Configurations  => [
+            {
+              Classification => 'MyString',             # OPTIONAL
+              Configurations => <ConfigurationList>,
+              Properties     => {
+                'MyString' => 'MyString',    # key: OPTIONAL, value: OPTIONAL
+              },    # OPTIONAL
+            },
+            ...
+          ],        # OPTIONAL
           EC2InstanceIdsToTerminate => [ 'MyInstanceId', ... ],    # OPTIONAL
           InstanceCount             => 1,                          # OPTIONAL
           ShrinkPolicy              => {

@@ -57,7 +57,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -67,7 +67,7 @@ C<message> - Information about the Availability Zone.
 
 =item *
 
-C<region-name> - The name of the region for the Availability Zone (for
+C<region-name> - The name of the Region for the Availability Zone (for
 example, C<us-east-1>).
 
 =item *
@@ -92,13 +92,13 @@ C<us-east-1a>).
 
 =head2 ZoneIds => ArrayRef[Str|Undef]
 
-The IDs of one or more Availability Zones.
+The IDs of the Availability Zones.
 
 
 
 =head2 ZoneNames => ArrayRef[Str|Undef]
 
-The names of one or more Availability Zones.
+The names of the Availability Zones.
 
 
 

@@ -83,6 +83,8 @@ The name of the stack that is associated with the user.
 
 The email address of the user who is associated with the stack.
 
+Users' email addresses are case-sensitive.
+
 
 
 

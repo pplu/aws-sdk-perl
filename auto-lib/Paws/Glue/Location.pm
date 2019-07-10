@@ -40,7 +40,7 @@ The location of resources.
 
 =head2 DynamoDB => ArrayRef[L<Paws::Glue::CodeGenNodeArg>]
 
-  A DynamoDB Table location.
+  An Amazon DynamoDB table location.
 
 
 =head2 Jdbc => ArrayRef[L<Paws::Glue::CodeGenNodeArg>]
@@ -50,7 +50,7 @@ The location of resources.
 
 =head2 S3 => ArrayRef[L<Paws::Glue::CodeGenNodeArg>]
 
-  An Amazon S3 location.
+  An Amazon Simple Storage Service (Amazon S3) location.
 
 
 

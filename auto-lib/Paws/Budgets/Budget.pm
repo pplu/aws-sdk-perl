@@ -7,6 +7,7 @@ package Paws::Budgets::Budget;
   has CostFilters => (is => 'ro', isa => 'Paws::Budgets::CostFilters');
   has CostTypes => (is => 'ro', isa => 'Paws::Budgets::CostTypes');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
+  has PlannedBudgetLimits => (is => 'ro', isa => 'Paws::Budgets::PlannedBudgetLimits');
   has TimePeriod => (is => 'ro', isa => 'Paws::Budgets::TimePeriod');
   has TimeUnit => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -58,18 +59,19 @@ you want to track with your budget.
 C<BudgetLimit> is required for cost or usage budgets, but optional for
 RI utilization or coverage budgets. RI utilization or coverage budgets
 default to C<100>, which is the only valid value for RI utilization or
-coverage budgets.
+coverage budgets. You can't use C<BudgetLimit> with
+C<PlannedBudgetLimits> for C<CreateBudget> and C<UpdateBudget> actions.
 
 
 =head2 B<REQUIRED> BudgetName => Str
 
-  The name of a budget. The name must be unique within accounts. The C<:>
-and C<\> characters aren't allowed in C<BudgetName>.
+  The name of a budget. The name must be unique within an account. The
+C<:> and C<\> characters aren't allowed in C<BudgetName>.
 
 
 =head2 B<REQUIRED> BudgetType => Str
 
-  Whether this budget tracks monetary costs, usage, RI utilization, or RI
+  Whether this budget tracks costs, usage, RI utilization, or RI
 coverage.
 
 
@@ -80,8 +82,7 @@ coverage.
 
 =head2 CostFilters => L<Paws::Budgets::CostFilters>
 
-  The cost filters, such as service or region, that are applied to a
-budget.
+  The cost filters, such as service or tag, that are applied to a budget.
 
 AWS Budgets supports the following services as a filter for RI budgets:
 
@@ -122,6 +123,43 @@ C<CostTypes>.
 =head2 LastUpdatedTime => Str
 
   The last time that you updated this budget.
+
+
+=head2 PlannedBudgetLimits => L<Paws::Budgets::PlannedBudgetLimits>
+
+  A map containing multiple C<BudgetLimit>, including current or future
+limits.
+
+C<PlannedBudgetLimits> is available for cost or usage budget and
+supports monthly and quarterly C<TimeUnit>.
+
+For monthly budgets, provide 12 months of C<PlannedBudgetLimits>
+values. This must start from the current month and include the next 11
+months. The C<key> is the start of the month, C<UTC> in epoch seconds.
+
+For quarterly budgets, provide 4 quarters of C<PlannedBudgetLimits>
+value entries in standard calendar quarter increments. This must start
+from the current quarter and include the next 3 quarters. The C<key> is
+the start of the quarter, C<UTC> in epoch seconds.
+
+If the planned budget expires before 12 months for monthly or 4
+quarters for quarterly, provide the C<PlannedBudgetLimits> values only
+for the remaining periods.
+
+If the budget begins at a date in the future, provide
+C<PlannedBudgetLimits> values from the start date of the budget.
+
+After all of the C<BudgetLimit> values in C<PlannedBudgetLimits> are
+used, the budget continues to use the last limit as the C<BudgetLimit>.
+At that point, the planned budget provides the same experience as a
+fixed budget.
+
+C<DescribeBudget> and C<DescribeBudgets> response along with
+C<PlannedBudgetLimits> will also contain C<BudgetLimit> representing
+the current month or quarter limit present in C<PlannedBudgetLimits>.
+This only applies to budgets created with C<PlannedBudgetLimits>.
+Budgets created without C<PlannedBudgetLimits> will only contain
+C<BudgetLimit>, and no C<PlannedBudgetLimits>.
 
 
 =head2 TimePeriod => L<Paws::Budgets::TimePeriod>

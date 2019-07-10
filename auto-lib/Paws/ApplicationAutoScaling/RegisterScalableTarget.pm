@@ -37,31 +37,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # web-app that is running on the default cluster, with a minimum desired
     # count of 1 task and a maximum desired count of 10 tasks.
     my $RegisterScalableTargetResponse = $autoscaling->RegisterScalableTarget(
-      {
-        'MaxCapacity' => 10,
-        'MinCapacity' => 1,
-        'ResourceId'  => 'service/default/web-app',
-        'RoleARN' =>
-          'arn:aws:iam::012345678910:role/ApplicationAutoscalingECSRole',
-        'ScalableDimension' => 'ecs:service:DesiredCount',
-        'ServiceNamespace'  => 'ecs'
-      }
+      'MaxCapacity' => 10,
+      'MinCapacity' => 1,
+      'ResourceId'  => 'service/default/web-app',
+      'RoleARN' =>
+        'arn:aws:iam::012345678910:role/ApplicationAutoscalingECSRole',
+      'ScalableDimension' => 'ecs:service:DesiredCount',
+      'ServiceNamespace'  => 'ecs'
     );
 
    # To register an EC2 Spot fleet as a scalable target
    # This example registers a scalable target from an Amazon EC2 Spot fleet with
    # a minimum target capacity of 1 and a maximum of 10.
     my $RegisterScalableTargetResponse = $autoscaling->RegisterScalableTarget(
-      {
-        'MaxCapacity' => 10,
-        'MinCapacity' => 1,
-        'ResourceId' =>
-          'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
-        'RoleARN' =>
-          'arn:aws:iam::012345678910:role/ApplicationAutoscalingSpotRole',
-        'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
-        'ServiceNamespace'  => 'ec2'
-      }
+      'MaxCapacity' => 10,
+      'MinCapacity' => 1,
+      'ResourceId' =>
+        'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
+      'RoleARN' =>
+        'arn:aws:iam::012345678910:role/ApplicationAutoscalingSpotRole',
+      'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
+      'ServiceNamespace'  => 'ec2'
     );
 
 
@@ -73,14 +69,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 MaxCapacity => Int
 
-The maximum value to scale to in response to a scale out event. This
+The maximum value to scale to in response to a scale-out event. This
 parameter is required to register a scalable target.
 
 
 
 =head2 MinCapacity => Int
 
-The minimum value to scale to in response to a scale in event. This
+The minimum value to scale to in response to a scale-in event. This
 parameter is required to register a scalable target.
 
 
@@ -236,7 +232,7 @@ Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:Targe
 The namespace of the AWS service that provides the resource or
 C<custom-resource> for a resource provided by your own application or
 service. For more information, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
 Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">

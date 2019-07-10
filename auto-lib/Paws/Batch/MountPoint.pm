@@ -34,7 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Moun
 =head1 DESCRIPTION
 
 Details on a Docker volume mount point that is used in a job's
-container properties.
+container properties. This parameter maps to C<Volumes> in the Create a
+container
+(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.19/#create-a-container)
+section of the Docker Remote API and the C<--volume> option to docker
+run.
 
 =head1 ATTRIBUTES
 

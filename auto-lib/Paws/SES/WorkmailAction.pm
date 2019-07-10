@@ -40,7 +40,7 @@ procedure.
 
 For information using a receipt rule to call Amazon WorkMail, see the
 Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-workmail.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-workmail.html).
 
 =head1 ATTRIBUTES
 
@@ -52,7 +52,7 @@ WorkMail organization ARN is
 C<arn:aws:workmail:us-west-2:123456789012:organization/m-68755160c4cb4e29a2b2f8fb58f359d7>.
 For information about Amazon WorkMail organizations, see the Amazon
 WorkMail Administrator Guide
-(http://docs.aws.amazon.com/workmail/latest/adminguide/organizations_overview.html).
+(https://docs.aws.amazon.com/workmail/latest/adminguide/organizations_overview.html).
 
 
 =head2 TopicArn => Str
@@ -61,7 +61,7 @@ WorkMail Administrator Guide
 the WorkMail action is called. An example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
 about Amazon SNS topics, see the Amazon SNS Developer Guide
-(http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
+(https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
 
 
 

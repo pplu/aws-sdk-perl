@@ -38,49 +38,60 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-Apple Development Push Notification Service channel definition.
+Specifies the status and settings of the APNs (Apple Push Notification
+service) sandbox channel for an application.
 
 =head1 ATTRIBUTES
 
 
 =head2 BundleId => Str
 
-  The bundle id used for APNs Tokens.
+  The bundle identifier that's assigned to your iOS app. This identifier
+is used for APNs tokens.
 
 
 =head2 Certificate => Str
 
-  The distribution certificate from Apple.
+  The APNs client certificate that you received from Apple, if you want
+Amazon Pinpoint to communicate with the APNs sandbox environment by
+using an APNs certificate.
 
 
 =head2 DefaultAuthenticationMethod => Str
 
-  The default authentication method used for APNs.
+  The default authentication method that you want Amazon Pinpoint to use
+when authenticating with the APNs sandbox environment, key or
+certificate.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether to enable the APNs sandbox channel for the
+application.
 
 
 =head2 PrivateKey => Str
 
-  The certificate private key.
+  The private key for the APNs client certificate that you want Amazon
+Pinpoint to use to communicate with the APNs sandbox environment.
 
 
 =head2 TeamId => Str
 
-  The team id used for APNs Tokens.
+  The identifier that's assigned to your Apple developer account team.
+This identifier is used for APNs tokens.
 
 
 =head2 TokenKey => Str
 
-  The token key used for APNs Tokens.
+  The authentication key to use for APNs tokens.
 
 
 =head2 TokenKeyId => Str
 
-  The token key used for APNs Tokens.
+  The key identifier that's assigned to your APNs signing key, if you
+want Amazon Pinpoint to communicate with the APNs sandbox environment
+by using APNs tokens.
 
 
 

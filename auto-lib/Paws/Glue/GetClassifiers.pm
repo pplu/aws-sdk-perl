@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 MaxResults => Int
 
-Size of the list to return (optional).
+The size of the list to return (optional).
 
 
 

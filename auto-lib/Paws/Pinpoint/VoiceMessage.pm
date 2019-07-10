@@ -35,36 +35,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::V
 
 =head1 DESCRIPTION
 
-Voice Message.
+Specifies the settings for a one-time voice message that's sent
+directly to an endpoint through the voice channel.
 
 =head1 ATTRIBUTES
 
 
 =head2 Body => Str
 
-  The message body of the notification, the email body or the text
-message.
+  The text script for the voice message.
 
 
 =head2 LanguageCode => Str
 
-  Language of sent message
+  The language to use when delivering the message. For a list of
+supported languages, see the Amazon Polly Developer Guide.
 
 
 =head2 OriginationNumber => Str
 
-  Is the number from the pool or messaging service to send from.
+  The phone number from the pool or messaging service to send the message
+from. Although it isn't required, we recommend that you specify the
+phone number in E.164 format to ensure prompt and accurate delivery.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
 
-  Default message substitutions. Can be overridden by individual address
-substitutions.
+  The default message variables to use in the voice message. You can
+override the default variables with individual address variables.
 
 
 =head2 VoiceId => Str
 
-  Voice ID of sent message.
+  The name of the voice to use when delivering the message. For a list of
+supported voices, see the Amazon Polly Developer Guide.
 
 
 

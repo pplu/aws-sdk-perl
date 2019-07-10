@@ -16,7 +16,7 @@ Paws::DirectConnect::DeleteDirectConnectGatewayAssociationResult
 
 =head2 DirectConnectGatewayAssociation => L<Paws::DirectConnect::DirectConnectGatewayAssociation>
 
-The association to be deleted.
+Information about the deleted association.
 
 
 =head2 _request_id => Str

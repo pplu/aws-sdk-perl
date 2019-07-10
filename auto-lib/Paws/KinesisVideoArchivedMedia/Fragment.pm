@@ -58,12 +58,12 @@ contained media data.
 
 =head2 ProducerTimestamp => Str
 
-  The time stamp from the producer corresponding to the fragment.
+  The timestamp from the producer corresponding to the fragment.
 
 
 =head2 ServerTimestamp => Str
 
-  The time stamp from the AWS server corresponding to the fragment.
+  The timestamp from the AWS server corresponding to the fragment.
 
 
 

@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $kms = Paws->service('KMS');
     # To generate random data
     # The following example uses AWS KMS to generate 32 bytes of random data.
-    my $GenerateRandomResponse = $kms->GenerateRandom(
-      {
-        'NumberOfBytes' => 32
-      }
-    );
+    my $GenerateRandomResponse = $kms->GenerateRandom( 'NumberOfBytes' => 32 );
 
     # Results:
     my $Plaintext = $GenerateRandomResponse->Plaintext;
@@ -51,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 Generates the random byte string in the AWS CloudHSM cluster that is
 associated with the specified custom key store
-(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html).
+(https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
 To find the ID of a custom key store, use the DescribeCustomKeyStores
 operation.
 

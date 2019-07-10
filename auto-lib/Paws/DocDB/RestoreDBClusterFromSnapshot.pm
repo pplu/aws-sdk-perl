@@ -4,6 +4,7 @@ package Paws::DocDB::RestoreDBClusterFromSnapshot;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -43,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SnapshotIdentifier          => 'MyString',
       AvailabilityZones           => [ 'MyString', ... ],    # OPTIONAL
       DBSubnetGroupName           => 'MyString',             # OPTIONAL
+      DeletionProtection          => 1,                      # OPTIONAL
       EnableCloudwatchLogsExports => [ 'MyString', ... ],    # OPTIONAL
       EngineVersion               => 'MyString',             # OPTIONAL
       KmsKeyId                    => 'MyString',             # OPTIONAL
@@ -110,6 +112,15 @@ Constraints: If provided, must match the name of an existing
 C<DBSubnetGroup>.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 DeletionProtection => Bool
+
+Specifies whether this cluster can be deleted. If C<DeletionProtection>
+is enabled, the cluster cannot be deleted unless it is modified and
+C<DeletionProtection> is disabled. C<DeletionProtection> protects
+clusters from being accidentally deleted.
 
 
 

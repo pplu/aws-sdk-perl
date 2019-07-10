@@ -45,12 +45,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # targets using HTTP on port 80. This target group uses the default health
     # check configuration.
     my $CreateTargetGroupOutput = $elasticloadbalancing->CreateTargetGroup(
-      {
-        'Name'     => 'my-targets',
-        'Port'     => 80,
-        'Protocol' => 'HTTP',
-        'VpcId'    => 'vpc-3ac0fb5f'
-      }
+      'Name'     => 'my-targets',
+      'Port'     => 80,
+      'Protocol' => 'HTTP',
+      'VpcId'    => 'vpc-3ac0fb5f'
     );
 
     # Results:
@@ -67,17 +65,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head2 HealthCheckEnabled => Bool
 
 Indicates whether health checks are enabled. If the target type is
-C<instance> or C<ip>, the default is C<true>. If the target type is
-C<lambda>, the default is C<false>.
+C<lambda>, health checks are disabled by default but can be enabled. If
+the target type is C<instance> or C<ip>, health checks are always
+enabled and cannot be disabled.
 
 
 
 =head2 HealthCheckIntervalSeconds => Int
 
 The approximate amount of time, in seconds, between health checks of an
-individual target. For Application Load Balancers, the range is
-5E<ndash>300 seconds. For Network Load Balancers, the supported values
-are 10 or 30 seconds. If the target type is C<instance> or C<ip>, the
+individual target. For HTTP and HTTPS health checks, the range is
+5E<ndash>300 seconds. For TCP health checks, the supported values are
+10 and 30 seconds. If the target type is C<instance> or C<ip>, the
 default is 30 seconds. If the target type is C<lambda>, the default is
 35 seconds.
 
@@ -104,27 +103,29 @@ The protocol the load balancer uses when performing health checks on
 targets. For Application Load Balancers, the default is HTTP. For
 Network Load Balancers, the default is TCP. The TCP protocol is
 supported for health checks only if the protocol of the target group is
-TCP or TLS. The TLS protocol is not supported for health checks.
+TCP, TLS, UDP, or TCP_UDP. The TLS, UDP, and TCP_UDP protocols are not
+supported for health checks.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
 
 =head2 HealthCheckTimeoutSeconds => Int
 
 The amount of time, in seconds, during which no response from a target
-means a failed health check. For Application Load Balancers, the range
-is 2E<ndash>120 seconds and the default is 5 seconds if the target type
-is C<instance> or C<ip> and 30 seconds if the target type is C<lambda>.
-For Network Load Balancers, this is 10 seconds for TCP and HTTPS health
-checks and 6 seconds for HTTP health checks.
+means a failed health check. For target groups with a protocol of HTTP
+or HTTPS, the default is 5 seconds. For target groups with a protocol
+of TCP or TLS, this value must be 6 seconds for HTTP health checks and
+10 seconds for TCP and HTTPS health checks. If the target type is
+C<lambda>, the default is 30 seconds.
 
 
 
 =head2 HealthyThresholdCount => Int
 
 The number of consecutive health checks successes required before
-considering an unhealthy target healthy. For Application Load
-Balancers, the default is 5. For Network Load Balancers, the default is
-3.
+considering an unhealthy target healthy. For target groups with a
+protocol of HTTP or HTTPS, the default is 5. For target groups with a
+protocol of TCP or TLS, the default is 3. If the target type is
+C<lambda>, the default is 5.
 
 
 
@@ -157,10 +158,11 @@ is a Lambda function, this parameter does not apply.
 
 The protocol to use for routing traffic to the targets. For Application
 Load Balancers, the supported protocols are HTTP and HTTPS. For Network
-Load Balancers, the supported protocols are TCP and TLS. If the target
-is a Lambda function, this parameter does not apply.
+Load Balancers, the supported protocols are TCP, TLS, UDP, or TCP_UDP.
+A TCP_UDP listener must be associated with a TCP_UDP target group. If
+the target is a Lambda function, this parameter does not apply.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
 
 =head2 TargetType => Str
 
@@ -173,7 +175,8 @@ more than one target type.
 =item *
 
 C<instance> - Targets are specified by instance ID. This is the default
-value.
+value. If the target group protocol is UDP or TCP_UDP, the target type
+must be C<instance>.
 
 =item *
 
@@ -195,9 +198,10 @@ Valid values are: C<"instance">, C<"ip">, C<"lambda">
 =head2 UnhealthyThresholdCount => Int
 
 The number of consecutive health check failures required before
-considering a target unhealthy. For Application Load Balancers, the
-default is 2. For Network Load Balancers, this value must be the same
-as the healthy threshold count.
+considering a target unhealthy. For target groups with a protocol of
+HTTP or HTTPS, the default is 2. For target groups with a protocol of
+TCP or TLS, this value must be the same as the healthy threshold count.
+If the target type is C<lambda>, the default is 2.
 
 
 

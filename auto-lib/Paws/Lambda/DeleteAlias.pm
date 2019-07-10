@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a Lambda function alias
     # This operation deletes a Lambda function alias
     $lambda->DeleteAlias(
-      {
-        'FunctionName' => 'myFunction',
-        'Name'         => 'alias'
-      }
+      'FunctionName' => 'myFunction',
+      'Name'         => 'alias'
     );
 
 
@@ -47,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 

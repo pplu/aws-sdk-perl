@@ -37,7 +37,7 @@ reject mail originating from an IP address or range of IP addresses.
 
 For information about setting up IP address filters, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html).
 
 =head1 ATTRIBUTES
 

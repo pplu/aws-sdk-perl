@@ -30,12 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a gateway volume
     # Deletes the specified gateway volume that you previously created using the
     # CreateCachediSCSIVolume or CreateStorediSCSIVolume API.
-    my $DeleteVolumeOutput = $storagegateway->DeleteVolume(
-      {
-        'VolumeARN' =>
+    my $DeleteVolumeOutput =
+      $storagegateway->DeleteVolume( 'VolumeARN' =>
 'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB'
-      }
-    );
+      );
 
     # Results:
     my $VolumeARN = $DeleteVolumeOutput->VolumeARN;

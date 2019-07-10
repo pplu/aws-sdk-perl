@@ -80,11 +80,11 @@ Valid values are: C<"USER">, C<"SYSTEM">, C<"AWS_BACKUP">, C<"ALL">
 
 =head2 ExclusiveStartBackupArn => Str
 
-C<LastEvaluatedBackupArn> is the ARN of the backup last evaluated when
-the current page of results was returned, inclusive of the current page
-of results. This value may be specified as the
-C<ExclusiveStartBackupArn> of a new C<ListBackups> operation in order
-to fetch the next page of results.
+C<LastEvaluatedBackupArn> is the Amazon Resource Name (ARN) of the
+backup last evaluated when the current page of results was returned,
+inclusive of the current page of results. This value may be specified
+as the C<ExclusiveStartBackupArn> of a new C<ListBackups> operation in
+order to fetch the next page of results.
 
 
 

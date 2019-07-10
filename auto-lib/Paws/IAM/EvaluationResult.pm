@@ -64,7 +64,7 @@ explains how each set of policies contributes to the final evaluation
 decision. When simulating cross-account access to a resource, both the
 resource-based policy and the caller's IAM policy must grant access.
 See How IAM Roles Differ from Resource-based Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html)
 
 
 =head2 EvalResourceName => Str
@@ -77,7 +77,7 @@ See How IAM Roles Differ from Resource-based Policies
   A list of the statements in the input policies that determine the
 result for this scenario. Remember that even if multiple statements
 allow the operation on the resource, if only one statement denies that
-operation, then the explicit deny overrides any allow. Inaddition, the
+operation, then the explicit deny overrides any allow. In addition, the
 deny statement is the only entry included in the result.
 
 
@@ -95,7 +95,7 @@ or GetContextKeysForPrincipalPolicy.
 
 =head2 OrganizationsDecisionDetail => L<Paws::IAM::OrganizationsDecisionDetail>
 
-  A structure that details how AWS Organizations and its service control
+  A structure that details how Organizations and its service control
 policies affect the results of the simulation. Only applies if the
 simulated user's account is part of an organization.
 

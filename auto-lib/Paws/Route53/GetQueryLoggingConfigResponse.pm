@@ -18,7 +18,9 @@ Paws::Route53::GetQueryLoggingConfigResponse
 =head2 B<REQUIRED> QueryLoggingConfig => L<Paws::Route53::QueryLoggingConfig>
 
 A complex type that contains information about the query logging
-configuration that you specified in a GetQueryLoggingConfig request.
+configuration that you specified in a GetQueryLoggingConfig
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetQueryLoggingConfig.html)
+request.
 
 
 

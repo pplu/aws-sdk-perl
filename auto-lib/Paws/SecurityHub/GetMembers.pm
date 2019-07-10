@@ -47,8 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 B<REQUIRED> AccountIds => ArrayRef[Str|Undef]
 
-A list of account IDs for the Security Hub member accounts on which you
-want to return the details.
+A list of account IDs for the Security Hub member accounts that you
+want to return the details for.
 
 
 

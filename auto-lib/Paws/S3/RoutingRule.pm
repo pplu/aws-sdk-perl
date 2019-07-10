@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Routing
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies the redirect behavior and when a redirect is applied.
 
 =head1 ATTRIBUTES
 
@@ -41,9 +41,9 @@ This class has no description
 
   A container for describing a condition that must be met for the
 specified redirect to apply. For example, 1. If request is for pages in
-the /docs folder, redirect to the /documents folder. 2. If request
-results in HTTP error 4xx, redirect request to another host where you
-might process the error.
+the C</docs> folder, redirect to the C</documents> folder. 2. If
+request results in HTTP error 4xx, redirect request to another host
+where you might process the error.
 
 
 =head2 B<REQUIRED> Redirect => L<Paws::S3::Redirect>

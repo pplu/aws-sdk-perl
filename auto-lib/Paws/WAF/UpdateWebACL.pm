@@ -34,26 +34,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes an ActivatedRule object in a WebACL with the
     # ID webacl-1472061481310.
     my $UpdateWebACLResponse = $waf->UpdateWebACL(
-      {
-        'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'DefaultAction' => {
-          'Type' => 'ALLOW'
-        },
-        'Updates' => [
+      'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+      'DefaultAction' => {
+        'Type' => 'ALLOW'
+      },
+      'Updates' => [
 
-          {
-            'Action'        => 'DELETE',
-            'ActivatedRule' => {
-              'Action' => {
-                'Type' => 'ALLOW'
-              },
-              'Priority' => 1,
-              'RuleId'   => 'WAFRule-1-Example'
-            }
+        {
+          'Action'        => 'DELETE',
+          'ActivatedRule' => {
+            'Action' => {
+              'Type' => 'ALLOW'
+            },
+            'Priority' => 1,
+            'RuleId'   => 'WAFRule-1-Example'
           }
-        ],
-        'WebACLId' => 'webacl-1472061481310'
-      }
+        }
+      ],
+      'WebACLId' => 'webacl-1472061481310'
     );
 
     # Results:

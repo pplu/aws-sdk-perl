@@ -31,14 +31,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CORSCon
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes the cross-origin access configuration for objects in an
+Amazon S3 bucket. For more information, see Enabling Cross-Origin
+Resource Sharing
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) in the
+I<Amazon Simple Storage Service Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CORSRules => ArrayRef[L<Paws::S3::CORSRule>]
 
-  
+  A set of allowed origins and methods.
 
 
 

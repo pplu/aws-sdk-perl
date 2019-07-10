@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example retrieves the attributes from the lock-policy subresource set
     # on the vault named examplevault.
     my $GetVaultLockOutput = $glacier->GetVaultLock(
-      {
-        'AccountId' => '-',
-        'VaultName' => 'examplevault'
-      }
+      'AccountId' => '-',
+      'VaultName' => 'examplevault'
     );
 
     # Results:

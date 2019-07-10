@@ -37,10 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApiId         = $GetApiMappingsResponse->ApiId;
-    my $ApiMappingId  = $GetApiMappingsResponse->ApiMappingId;
-    my $ApiMappingKey = $GetApiMappingsResponse->ApiMappingKey;
-    my $Stage         = $GetApiMappingsResponse->Stage;
+    my $Items     = $GetApiMappingsResponse->Items;
+    my $NextToken = $GetApiMappingsResponse->NextToken;
 
     # Returns a L<Paws::ApiGatewayV2::GetApiMappingsResponse> object.
 

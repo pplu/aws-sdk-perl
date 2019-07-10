@@ -51,8 +51,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 AccountDetails => ArrayRef[L<Paws::SecurityHub::AccountDetails>]
 
-A list of account ID and email address pairs of the accounts that you
-want to associate with the master Security Hub account.
+A list of account ID and email address pairs of the accounts to
+associate with the Security Hub master account.
 
 
 

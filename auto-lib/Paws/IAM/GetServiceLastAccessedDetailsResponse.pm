@@ -44,7 +44,7 @@ The date and time, in ISO 8601 date-time format
 completed or failed.
 
 This field is null if the job is still in progress, as indicated by a
-C<JobStatus> value of C<IN_PROGRESS>.
+job status value of C<IN_PROGRESS>.
 
 
 =head2 B<REQUIRED> JobCreationDate => Str

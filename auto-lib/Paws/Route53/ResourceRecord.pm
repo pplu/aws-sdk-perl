@@ -46,7 +46,7 @@ the case of a C<DELETE> action, if the current value does not match the
 actual value, an error is returned. For descriptions about how to
 format C<Value> for different record types, see Supported DNS Resource
 Record Types
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 You can specify more than one value for all record types except

@@ -32,22 +32,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Segment group definition.
+Specifies the settings that define the relationships between segment
+groups for a segment.
 
 =head1 ATTRIBUTES
 
 
 =head2 Groups => ArrayRef[L<Paws::Pinpoint::SegmentGroup>]
 
-  A set of segment criteria to evaluate.
+  An array that defines the set of segment criteria to evaluate when
+handling segment groups for the segment.
 
 
 =head2 Include => Str
 
-  Specify how to handle multiple segment groups. For example, if the
-segment includes three segment groups, should the resulting segment
-include endpoints that are matched by all, any, or none of the segment
-groups you created. Acceptable values: ALL, ANY, or NONE.
+  Specifies how to handle multiple segment groups for the segment. For
+example, if the segment includes three segment groups, whether the
+resulting segment includes endpoints that match all, any, or none of
+the segment groups.
 
 
 

@@ -39,8 +39,8 @@ A string filter for querying findings.
 
 =head2 Comparison => Str
 
-  Represents the condition to be applied to a string value when querying
-for findings.
+  The condition to be applied to a string value when querying for
+findings.
 
 
 =head2 Value => Str

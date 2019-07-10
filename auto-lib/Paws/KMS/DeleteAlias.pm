@@ -29,11 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $kms = Paws->service('KMS');
     # To delete an alias
     # The following example deletes the specified alias.
-    $kms->DeleteAlias(
-      {
-        'AliasName' => 'alias/ExampleAlias'
-      }
-    );
+    $kms->DeleteAlias( 'AliasName' => 'alias/ExampleAlias' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -44,9 +40,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> AliasName => Str
 
-The alias to be deleted. The name must start with the word "alias"
-followed by a forward slash (alias/). Aliases that begin with
-"alias/aws" are reserved.
+The alias to be deleted. The alias name must begin with C<alias/>
+followed by the alias name, such as C<alias/ExampleAlias>.
 
 
 

@@ -6,6 +6,7 @@ package Paws::Robomaker::CreateSimulationJobResponse;
   has FailureBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureBehavior');
   has FailureCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureCode');
   has IamRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamRole');
+  has LastStartedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastStartedAt');
   has LastUpdatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedAt');
   has MaxJobDurationInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxJobDurationInSeconds');
   has OutputLocation => (is => 'ro', isa => 'Paws::Robomaker::OutputLocation', traits => ['NameInRequest'], request_name => 'outputLocation');
@@ -119,6 +120,12 @@ The IAM role that allows the simulation job to call the AWS APIs that
 are specified in its associated policies on your behalf.
 
 
+=head2 LastStartedAt => Str
+
+The time, in milliseconds since the epoch, when the simulation job was
+last started.
+
+
 =head2 LastUpdatedAt => Str
 
 The time, in milliseconds since the epoch, when the simulation job was
@@ -127,8 +134,7 @@ last updated.
 
 =head2 MaxJobDurationInSeconds => Int
 
-The maximum simulation job duration in seconds. The value must be 8
-days (691,200 seconds) or less.
+The maximum simulation job duration in seconds.
 
 
 =head2 OutputLocation => L<Paws::Robomaker::OutputLocation>

@@ -6,6 +6,7 @@ package Paws::Greengrass::GetBulkDeploymentStatusResponse;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has ErrorDetails => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ErrorDetail]');
   has ErrorMessage => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Greengrass::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -42,6 +43,11 @@ Error details
 =head2 ErrorMessage => Str
 
 Error message
+
+
+=head2 Tags => L<Paws::Greengrass::__mapOf__string>
+
+The tags for the definition.
 
 
 =head2 _request_id => Str

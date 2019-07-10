@@ -77,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 BypassGovernanceRetention => Bool
 
 Specifies whether you want to delete this object even if it has a
-Governance-type Object Lock in place. You must have sufficient
+Governance-type object lock in place. You must have sufficient
 permissions to perform this operation.
 
 

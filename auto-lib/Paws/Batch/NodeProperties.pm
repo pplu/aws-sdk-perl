@@ -42,7 +42,7 @@ job.
 =head2 B<REQUIRED> MainNode => Int
 
   Specifies the node index for the main node of a multi-node parallel
-job.
+job. This node index value must be fewer than the number of nodes.
 
 
 =head2 B<REQUIRED> NodeRangeProperties => ArrayRef[L<Paws::Batch::NodeRangeProperty>]

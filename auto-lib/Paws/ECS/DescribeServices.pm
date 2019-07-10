@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a service
     # This example provides descriptive information about the service named
     # ``ecs-simple-service``.
-    my $DescribeServicesResponse = $ecs->DescribeServices(
-      {
-        'Services' => ['ecs-simple-service']
-      }
-    );
+    my $DescribeServicesResponse =
+      $ecs->DescribeServices( 'Services' => ['ecs-simple-service'] );
 
     # Results:
     my $failures = $DescribeServicesResponse->failures;
@@ -54,7 +51,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 The short name or full Amazon Resource Name (ARN)the cluster that hosts
 the service to describe. If you do not specify a cluster, the default
-cluster is assumed.
+cluster is assumed. This parameter is required if the service or
+services you are describing were launched in any cluster other than the
+default cluster.
 
 
 

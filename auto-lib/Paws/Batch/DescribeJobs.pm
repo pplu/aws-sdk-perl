@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a specific job
     # This example describes a job with the specified job ID.
     my $DescribeJobsResponse = $batch->DescribeJobs(
-      {
-        'Jobs' => ['24fa2d7a-64c4-49d2-8b47-f8da4fbde8e9']
-      }
-    );
+      'Jobs' => ['24fa2d7a-64c4-49d2-8b47-f8da4fbde8e9'] );
 
     # Results:
     my $jobs = $DescribeJobsResponse->jobs;
@@ -49,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bat
 
 =head2 B<REQUIRED> Jobs => ArrayRef[Str|Undef]
 
-A space-separated list of up to 100 job IDs.
+A list of up to 100 job IDs.
 
 
 

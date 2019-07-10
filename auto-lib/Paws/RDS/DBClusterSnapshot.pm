@@ -53,7 +53,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 Contains the details for an Amazon RDS DB cluster snapshot
 
 This data type is used as a response element in the
-DescribeDBClusterSnapshots action.
+C<DescribeDBClusterSnapshots> action.
 
 =head1 ATTRIBUTES
 
@@ -65,8 +65,8 @@ DescribeDBClusterSnapshots action.
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-  Provides the list of EC2 Availability Zones that instances in the DB
-cluster snapshot can be restored in.
+  Provides the list of Availability Zones (AZs) where instances in the DB
+cluster snapshot can be restored.
 
 
 =head2 ClusterCreateTime => Str

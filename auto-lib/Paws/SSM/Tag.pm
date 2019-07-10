@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Tag ob
 Metadata that you assign to your AWS resources. Tags enable you to
 categorize your resources in different ways, for example, by purpose,
 owner, or environment. In Systems Manager, you can apply tags to
-documents, managed instances, Maintenance Windows, Parameter Store
+documents, managed instances, maintenance windows, Parameter Store
 parameters, and patch baselines.
 
 =head1 ATTRIBUTES

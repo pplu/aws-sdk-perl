@@ -31,15 +31,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Storage
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies data related to access patterns to be collected and made
+available to analyze the tradeoffs between different storage classes
+for an Amazon S3 bucket.
 
 =head1 ATTRIBUTES
 
 
 =head2 DataExport => L<Paws::S3::StorageClassAnalysisDataExport>
 
-  A container used to describe how data related to the storage class
-analysis should be exported.
+  Specifies how data related to the storage class analysis for an Amazon
+S3 bucket should be exported.
 
 
 

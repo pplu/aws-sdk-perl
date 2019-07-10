@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the attributes of the specified load balancer.
     my $DescribeLoadBalancerAttributesOutput =
       $elasticloadbalancing->DescribeLoadBalancerAttributes(
-      {
-        'LoadBalancerName' => 'my-load-balancer'
-      }
-      );
+      'LoadBalancerName' => 'my-load-balancer' );
 
     # Results:
     my $LoadBalancerAttributes =

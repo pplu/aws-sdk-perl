@@ -57,7 +57,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> GroupId => ArrayRef[Str|Undef]
 
-One or more security group IDs in your account.
+The IDs of the security groups in your account.
 
 
 

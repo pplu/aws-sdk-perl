@@ -2,6 +2,7 @@
 package Paws::ApiGateway::GenerateClientCertificate;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $apigateway = Paws->service('ApiGateway');
     my $ClientCertificate = $apigateway->GenerateClientCertificate(
-      Description => 'MyString',    # OPTIONAL
+      Description => 'MyString',                # OPTIONAL
+      Tags => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 
     # Results:
@@ -38,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Description           = $ClientCertificate->Description;
     my $ExpirationDate        = $ClientCertificate->ExpirationDate;
     my $PemEncodedCertificate = $ClientCertificate->PemEncodedCertificate;
+    my $Tags                  = $ClientCertificate->Tags;
 
     # Returns a L<Paws::ApiGateway::ClientCertificate> object.
 
@@ -50,6 +53,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 Description => Str
 
 The description of the ClientCertificate.
+
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with C<aws:>. The tag value can be up to 256 characters.
 
 
 

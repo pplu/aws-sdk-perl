@@ -2,7 +2,9 @@
 package Paws::Neptune::RestoreDBClusterToPointInTime;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
@@ -42,7 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $rds->RestoreDBClusterToPointInTime(
       DBClusterIdentifier             => 'MyString',
       SourceDBClusterIdentifier       => 'MyString',
+      DBClusterParameterGroupName     => 'MyString',               # OPTIONAL
       DBSubnetGroupName               => 'MyString',               # OPTIONAL
+      EnableCloudwatchLogsExports     => [ 'MyString', ... ],      # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                        # OPTIONAL
       KmsKeyId                        => 'MyString',               # OPTIONAL
       OptionGroupName                 => 'MyString',               # OPTIONAL
@@ -96,6 +100,25 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 
 
+=head2 DBClusterParameterGroupName => Str
+
+The name of the DB cluster parameter group to associate with the new DB
+cluster.
+
+Constraints:
+
+=over
+
+=item *
+
+If supplied, must match the name of an existing
+DBClusterParameterGroup.
+
+=back
+
+
+
+
 =head2 DBSubnetGroupName => Str
 
 The DB subnet group name to use for the new DB cluster.
@@ -104,6 +127,13 @@ Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+The list of logs that the restored DB cluster is to export to
+CloudWatch Logs.
 
 
 
@@ -224,9 +254,6 @@ source DB cluster.
 
 =back
 
-Constraints: You can't specify C<copy-on-write> if the engine version
-of the source DB cluster is earlier than 1.11.
-
 If you don't specify a C<RestoreType> value, then the new DB cluster is
 restored as a full copy of the source DB cluster.
 
@@ -251,7 +278,7 @@ Must match the identifier of an existing DBCluster.
 
 =head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
 
-
+The tags to be applied to the restored DB cluster.
 
 
 

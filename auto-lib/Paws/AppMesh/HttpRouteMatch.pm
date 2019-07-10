@@ -1,6 +1,6 @@
 package Paws::AppMesh::HttpRouteMatch;
   use Moose;
-  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
+  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,14 +37,14 @@ requests for a virtual router.
 =head1 ATTRIBUTES
 
 
-=head2 Prefix => Str
+=head2 B<REQUIRED> Prefix => Str
 
-  Specifies the path with which to match requests. This parameter must
-always start with C</>, which by itself matches all requests to the
-virtual router service name. You can also match for path-based routing
-of requests. For example, if your virtual router service name is
-C<my-service.local>, and you want the route to match requests to
-C<my-service.local/metrics>, then your prefix should be C</metrics>.
+  Specifies the path to match requests with. This parameter must always
+start with C</>, which by itself matches all requests to the virtual
+service name. You can also match for path-based routing of requests.
+For example, if your virtual service name is C<my-service.local> and
+you want the route to match requests to C<my-service.local/metrics>,
+your prefix should be C</metrics>.
 
 
 

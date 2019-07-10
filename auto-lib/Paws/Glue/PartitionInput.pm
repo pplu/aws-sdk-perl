@@ -64,7 +64,8 @@ stored.
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  The values of the partition.
+  The values of the partition. Although this parameter is not required by
+the SDK, you must specify this parameter for a valid input.
 
 
 

@@ -36,7 +36,7 @@ Contains the name and values of a manual DB snapshot attribute
 
 Manual DB snapshot attributes are used to authorize other AWS accounts
 to restore a manual DB snapshot. For more information, see the
-ModifyDBSnapshotAttribute API.
+C<ModifyDBSnapshotAttribute> API.
 
 =head1 ATTRIBUTES
 
@@ -47,7 +47,7 @@ ModifyDBSnapshotAttribute API.
 
 The attribute named C<restore> refers to the list of AWS accounts that
 have permission to copy or restore the manual DB cluster snapshot. For
-more information, see the ModifyDBSnapshotAttribute API action.
+more information, see the C<ModifyDBSnapshotAttribute> API action.
 
 
 =head2 AttributeValues => ArrayRef[Str|Undef]

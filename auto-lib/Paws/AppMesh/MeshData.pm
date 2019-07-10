@@ -2,7 +2,8 @@ package Paws::AppMesh::MeshData;
   use Moose;
   has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
   has Metadata => (is => 'ro', isa => 'Paws::AppMesh::ResourceMetadata', request_name => 'metadata', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Paws::AppMesh::MeshStatus', request_name => 'status', traits => ['NameInRequest']);
+  has Spec => (is => 'ro', isa => 'Paws::AppMesh::MeshSpec', request_name => 'spec', traits => ['NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Paws::AppMesh::MeshStatus', request_name => 'status', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +49,12 @@ An object representing a service mesh returned by a describe operation.
   The associated metadata for the service mesh.
 
 
-=head2 Status => L<Paws::AppMesh::MeshStatus>
+=head2 B<REQUIRED> Spec => L<Paws::AppMesh::MeshSpec>
+
+  The associated specification for the service mesh.
+
+
+=head2 B<REQUIRED> Status => L<Paws::AppMesh::MeshStatus>
 
   The status of the service mesh.
 

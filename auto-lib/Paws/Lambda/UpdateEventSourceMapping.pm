@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To update a Lambda function event source mapping
     # This operation updates a Lambda function event source mapping
     my $EventSourceMappingConfiguration = $lambda->UpdateEventSourceMapping(
-      {
-        'BatchSize'    => 123,
-        'Enabled'      => 1,
-        'FunctionName' => 'myFunction',
-        'UUID'         => '1234xCy789012'
-      }
+      'BatchSize'    => 123,
+      'Enabled'      => 1,
+      'FunctionName' => 'myFunction',
+      'UUID'         => '1234xCy789012'
     );
 
     # Results:

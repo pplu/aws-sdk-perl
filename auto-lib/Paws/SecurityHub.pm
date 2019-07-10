@@ -34,6 +34,11 @@ package Paws::SecurityHub;
     my $call_object = $self->new_with_coercions('Paws::SecurityHub::BatchImportFindings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateActionTarget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecurityHub::CreateActionTarget', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateInsight {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SecurityHub::CreateInsight', @_);
@@ -49,6 +54,11 @@ package Paws::SecurityHub;
     my $call_object = $self->new_with_coercions('Paws::SecurityHub::DeclineInvitations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteActionTarget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecurityHub::DeleteActionTarget', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteInsight {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SecurityHub::DeleteInsight', @_);
@@ -62,6 +72,21 @@ package Paws::SecurityHub;
   sub DeleteMembers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SecurityHub::DeleteMembers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeActionTargets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecurityHub::DescribeActionTargets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeHub {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecurityHub::DescribeHub', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeProducts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecurityHub::DescribeProducts', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisableImportFindingsForProduct {
@@ -147,6 +172,26 @@ package Paws::SecurityHub;
   sub ListMembers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SecurityHub::ListMembers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecurityHub::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecurityHub::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecurityHub::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateActionTarget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecurityHub::UpdateActionTarget', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateFindings {
@@ -300,7 +345,7 @@ package Paws::SecurityHub;
   }
 
 
-  sub operations { qw/AcceptInvitation BatchDisableStandards BatchEnableStandards BatchImportFindings CreateInsight CreateMembers DeclineInvitations DeleteInsight DeleteInvitations DeleteMembers DisableImportFindingsForProduct DisableSecurityHub DisassociateFromMasterAccount DisassociateMembers EnableImportFindingsForProduct EnableSecurityHub GetEnabledStandards GetFindings GetInsightResults GetInsights GetInvitationsCount GetMasterAccount GetMembers InviteMembers ListEnabledProductsForImport ListInvitations ListMembers UpdateFindings UpdateInsight / }
+  sub operations { qw/AcceptInvitation BatchDisableStandards BatchEnableStandards BatchImportFindings CreateActionTarget CreateInsight CreateMembers DeclineInvitations DeleteActionTarget DeleteInsight DeleteInvitations DeleteMembers DescribeActionTargets DescribeHub DescribeProducts DisableImportFindingsForProduct DisableSecurityHub DisassociateFromMasterAccount DisassociateMembers EnableImportFindingsForProduct EnableSecurityHub GetEnabledStandards GetFindings GetInsightResults GetInsights GetInvitationsCount GetMasterAccount GetMembers InviteMembers ListEnabledProductsForImport ListInvitations ListMembers ListTagsForResource TagResource UntagResource UpdateActionTarget UpdateFindings UpdateInsight / }
 
 1;
 
@@ -328,13 +373,28 @@ Paws::SecurityHub - Perl Interface to AWS AWS SecurityHub
 
 =head1 DESCRIPTION
 
-AWS Security Hub provides you with a comprehensive view of your
-security state within AWS and your compliance with the security
-industry standards and best practices. Security Hub collects security
-data from across AWS accounts, services, and supported third-party
-partners and helps you analyze your security trends and identify the
-highest priority security issues. For more information, see AWS
-Security Hub User Guide.
+Security Hub provides you with a comprehensive view of the security
+state of your AWS environment and resources. It also provides you with
+the compliance status of your environment based on CIS AWS Foundations
+compliance checks. Security Hub collects security data from AWS
+accounts, services, and integrated third-party products and helps you
+analyze security trends in your environment to identify the highest
+priority security issues. For more information about Security Hub, see
+the I< AWS Security Hub User Guide
+(https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html)
+>.
+
+When you use operations in the Security Hub API, the requests are
+executed only in the AWS Region that is currently active or in the
+specific AWS Region that you specify in your request. Any configuration
+or settings change that results from the operation is applied only to
+that Region. To make the same change in other Regions, execute the same
+command for each Region to apply the change to. For example, if your
+Region is set to C<us-west-2>, when you use C<CreateMembers> to add a
+member account to Security Hub, the association of the member account
+with the master account is created only in the us-west-2 Region.
+Security Hub must be enabled for the member account in the same Region
+that the invite was sent from.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26>
 
@@ -356,7 +416,10 @@ Each argument is described in detail in: L<Paws::SecurityHub::AcceptInvitation>
 
 Returns: a L<Paws::SecurityHub::AcceptInvitationResponse> instance
 
-Accepts the invitation to be monitored by a master SecurityHub account.
+Accepts the invitation to be a member account and be monitored by the
+Security Hub master account that the invitation was sent from. When the
+member account accepts the invitation, permission is granted to the
+master account to view findings generated in the member account.
 
 
 =head2 BatchDisableStandards
@@ -372,11 +435,10 @@ Each argument is described in detail in: L<Paws::SecurityHub::BatchDisableStanda
 
 Returns: a L<Paws::SecurityHub::BatchDisableStandardsResponse> instance
 
-Disables the standards specified by the standards subscription ARNs. In
-the context of Security Hub, supported standards (for example, CIS AWS
-Foundations) are automated and continuous checks that help determine
-your compliance status against security industry (including AWS) best
-practices.
+Disables the standards specified by the provided
+C<StandardsSubscriptionArns>. For more information, see Standards
+Supported in AWS Security Hub
+(https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html).
 
 
 =head2 BatchEnableStandards
@@ -392,10 +454,10 @@ Each argument is described in detail in: L<Paws::SecurityHub::BatchEnableStandar
 
 Returns: a L<Paws::SecurityHub::BatchEnableStandardsResponse> instance
 
-Enables the standards specified by the standards ARNs. In the context
-of Security Hub, supported standards (for example, CIS AWS Foundations)
-are automated and continuous checks that help determine your compliance
-status against security industry (including AWS) best practices.
+Enables the standards specified by the provided C<standardsArn>. In
+this release, only CIS AWS Foundations standards are supported. For
+more information, see Standards Supported in AWS Security Hub
+(https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html).
 
 
 =head2 BatchImportFindings
@@ -411,8 +473,33 @@ Each argument is described in detail in: L<Paws::SecurityHub::BatchImportFinding
 
 Returns: a L<Paws::SecurityHub::BatchImportFindingsResponse> instance
 
-Imports security findings that are generated by the integrated
-third-party products into Security Hub.
+Imports security findings generated from an integrated third-party
+product into Security Hub. This action is requested by the integrated
+product to import its findings into Security Hub. The maximum allowed
+size for a finding is 240 Kb. An error is returned for any finding
+larger than 240 Kb.
+
+
+=head2 CreateActionTarget
+
+=over
+
+=item Description => Str
+
+=item Id => Str
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecurityHub::CreateActionTarget>
+
+Returns: a L<Paws::SecurityHub::CreateActionTargetResponse> instance
+
+Creates a custom action target in Security Hub. You can use custom
+actions on findings and insights in Security Hub to trigger target
+actions in Amazon CloudWatch Events.
 
 
 =head2 CreateInsight
@@ -432,8 +519,10 @@ Each argument is described in detail in: L<Paws::SecurityHub::CreateInsight>
 
 Returns: a L<Paws::SecurityHub::CreateInsightResponse> instance
 
-Creates an insight, which is a consolidation of findings that
-identifies a security area that requires attention or intervention.
+Creates a custom insight in Security Hub. An insight is a consolidation
+of findings that relate to a security issue that requires attention or
+remediation. Use the C<GroupByAttribute> to group the related findings
+in the insight.
 
 
 =head2 CreateMembers
@@ -449,8 +538,25 @@ Each argument is described in detail in: L<Paws::SecurityHub::CreateMembers>
 
 Returns: a L<Paws::SecurityHub::CreateMembersResponse> instance
 
-Creates member Security Hub accounts in the current AWS account (which
-becomes the master Security Hub account) that has Security Hub enabled.
+Creates a member association in Security Hub between the specified
+accounts and the account used to make the request, which is the master
+account. To successfully create a member, you must use this action from
+an account that already has Security Hub enabled. You can use the
+EnableSecurityHub to enable Security Hub.
+
+After you use C<CreateMembers> to create member account associations in
+Security Hub, you need to use the InviteMembers action, which invites
+the accounts to enable Security Hub and become member accounts in
+Security Hub. If the invitation is accepted by the account owner, the
+account becomes a member account in Security Hub, and a permission
+policy is added that permits the master account to view the findings
+generated in the member account. When Security Hub is enabled in the
+invited account, findings start being sent to both the member and
+master accounts.
+
+You can remove the association between the master and member accounts
+by using the DisassociateFromMasterAccount or DisassociateMembers
+operation.
 
 
 =head2 DeclineInvitations
@@ -466,8 +572,25 @@ Each argument is described in detail in: L<Paws::SecurityHub::DeclineInvitations
 
 Returns: a L<Paws::SecurityHub::DeclineInvitationsResponse> instance
 
-Declines invitations that are sent to this AWS account (invitee) by the
-AWS accounts (inviters) that are specified by the account IDs.
+Declines invitations to become a member account.
+
+
+=head2 DeleteActionTarget
+
+=over
+
+=item ActionTargetArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecurityHub::DeleteActionTarget>
+
+Returns: a L<Paws::SecurityHub::DeleteActionTargetResponse> instance
+
+Deletes a custom action target from Security Hub. Deleting a custom
+action target doesn't affect any findings or insights that were already
+sent to Amazon CloudWatch Events using the custom action.
 
 
 =head2 DeleteInsight
@@ -483,7 +606,7 @@ Each argument is described in detail in: L<Paws::SecurityHub::DeleteInsight>
 
 Returns: a L<Paws::SecurityHub::DeleteInsightResponse> instance
 
-Deletes an insight that is specified by the insight ARN.
+Deletes the insight specified by the C<InsightArn>.
 
 
 =head2 DeleteInvitations
@@ -499,8 +622,8 @@ Each argument is described in detail in: L<Paws::SecurityHub::DeleteInvitations>
 
 Returns: a L<Paws::SecurityHub::DeleteInvitationsResponse> instance
 
-Deletes invitations that are sent to this AWS account (invitee) by the
-AWS accounts (inviters) that are specified by their account IDs.
+Deletes invitations received by the AWS account to become a member
+account.
 
 
 =head2 DeleteMembers
@@ -516,8 +639,64 @@ Each argument is described in detail in: L<Paws::SecurityHub::DeleteMembers>
 
 Returns: a L<Paws::SecurityHub::DeleteMembersResponse> instance
 
-Deletes the Security Hub member accounts that are specified by the
-account IDs.
+Deletes the specified member accounts from Security Hub.
+
+
+=head2 DescribeActionTargets
+
+=over
+
+=item [ActionTargetArns => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecurityHub::DescribeActionTargets>
+
+Returns: a L<Paws::SecurityHub::DescribeActionTargetsResponse> instance
+
+Returns a list of the custom action targets in Security Hub in your
+account.
+
+
+=head2 DescribeHub
+
+=over
+
+=item [HubArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecurityHub::DescribeHub>
+
+Returns: a L<Paws::SecurityHub::DescribeHubResponse> instance
+
+Returns details about the Hub resource in your account, including the
+C<HubArn> and the time when you enabled Security Hub.
+
+
+=head2 DescribeProducts
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecurityHub::DescribeProducts>
+
+Returns: a L<Paws::SecurityHub::DescribeProductsResponse> instance
+
+Returns information about the products available that you can subscribe
+to and integrate with Security Hub to consolidate findings.
 
 
 =head2 DisableImportFindingsForProduct
@@ -533,8 +712,9 @@ Each argument is described in detail in: L<Paws::SecurityHub::DisableImportFindi
 
 Returns: a L<Paws::SecurityHub::DisableImportFindingsForProductResponse> instance
 
-Stops you from being able to import findings generated by integrated
-third-party providers into Security Hub.
+Disables the integration of the specified product with Security Hub.
+Findings from that product are no longer sent to Security Hub after the
+integration is disabled.
 
 
 =head2 DisableSecurityHub
@@ -548,7 +728,18 @@ Each argument is described in detail in: L<Paws::SecurityHub::DisableSecurityHub
 
 Returns: a L<Paws::SecurityHub::DisableSecurityHubResponse> instance
 
-Disables the AWS Security Hub Service.
+Disables Security Hub in your account only in the current Region. To
+disable Security Hub in all Regions, you must submit one request per
+Region where you have enabled Security Hub. When you disable Security
+Hub for a master account, it doesn't disable Security Hub for any
+associated member accounts.
+
+When you disable Security Hub, your existing findings and insights and
+any Security Hub configuration settings are deleted after 90 days and
+can't be recovered. Any standards that were enabled are disabled, and
+your master and member account associations are removed. If you want to
+save your existing findings, you must export them before you disable
+Security Hub.
 
 
 =head2 DisassociateFromMasterAccount
@@ -562,8 +753,8 @@ Each argument is described in detail in: L<Paws::SecurityHub::DisassociateFromMa
 
 Returns: a L<Paws::SecurityHub::DisassociateFromMasterAccountResponse> instance
 
-Disassociates the current Security Hub member account from its master
-account.
+Disassociates the current Security Hub member account from the
+associated master account.
 
 
 =head2 DisassociateMembers
@@ -579,8 +770,8 @@ Each argument is described in detail in: L<Paws::SecurityHub::DisassociateMember
 
 Returns: a L<Paws::SecurityHub::DisassociateMembersResponse> instance
 
-Disassociates the Security Hub member accounts that are specified by
-the account IDs from their master account.
+Disassociates the specified member accounts from the associated master
+account.
 
 
 =head2 EnableImportFindingsForProduct
@@ -596,22 +787,31 @@ Each argument is described in detail in: L<Paws::SecurityHub::EnableImportFindin
 
 Returns: a L<Paws::SecurityHub::EnableImportFindingsForProductResponse> instance
 
-Enables you to import findings generated by integrated third-party
-providers into Security Hub.
+Enables the integration of a partner product with Security Hub.
+Integrated products send findings to Security Hub. When you enable a
+product integration, a permission policy that grants permission for the
+product to send findings to Security Hub is applied.
 
 
 =head2 EnableSecurityHub
 
+=over
+
+=item [Tags => L<Paws::SecurityHub::TagMap>]
 
 
-
-
+=back
 
 Each argument is described in detail in: L<Paws::SecurityHub::EnableSecurityHub>
 
 Returns: a L<Paws::SecurityHub::EnableSecurityHubResponse> instance
 
-Enables the AWS Security Hub service.
+Enables Security Hub for your account in the current Region or the
+Region you specify in the request. When you enable Security Hub, you
+grant to Security Hub the permissions necessary to gather findings from
+AWS Config, Amazon GuardDuty, Amazon Inspector, and Amazon Macie. To
+learn more, see Setting Up AWS Security Hub
+(https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html).
 
 
 =head2 GetEnabledStandards
@@ -631,7 +831,7 @@ Each argument is described in detail in: L<Paws::SecurityHub::GetEnabledStandard
 
 Returns: a L<Paws::SecurityHub::GetEnabledStandardsResponse> instance
 
-Lists and describes enabled standards.
+Returns a list of the standards that are currently enabled.
 
 
 =head2 GetFindings
@@ -653,8 +853,7 @@ Each argument is described in detail in: L<Paws::SecurityHub::GetFindings>
 
 Returns: a L<Paws::SecurityHub::GetFindingsResponse> instance
 
-Lists and describes Security Hub-aggregated findings that are specified
-by filter attributes.
+Returns a list of findings that match the specified criteria.
 
 
 =head2 GetInsightResults
@@ -670,8 +869,8 @@ Each argument is described in detail in: L<Paws::SecurityHub::GetInsightResults>
 
 Returns: a L<Paws::SecurityHub::GetInsightResultsResponse> instance
 
-Lists the results of the Security Hub insight specified by the insight
-ARN.
+Lists the results of the Security Hub insight that the insight ARN
+specifies.
 
 
 =head2 GetInsights
@@ -691,7 +890,7 @@ Each argument is described in detail in: L<Paws::SecurityHub::GetInsights>
 
 Returns: a L<Paws::SecurityHub::GetInsightsResponse> instance
 
-Lists and describes insights that are specified by insight ARNs.
+Lists and describes insights that insight ARNs specify.
 
 
 =head2 GetInvitationsCount
@@ -738,8 +937,8 @@ Each argument is described in detail in: L<Paws::SecurityHub::GetMembers>
 
 Returns: a L<Paws::SecurityHub::GetMembersResponse> instance
 
-Returns the details on the Security Hub member accounts that are
-specified by the account IDs.
+Returns the details on the Security Hub member accounts that the
+account IDs specify.
 
 
 =head2 InviteMembers
@@ -755,10 +954,13 @@ Each argument is described in detail in: L<Paws::SecurityHub::InviteMembers>
 
 Returns: a L<Paws::SecurityHub::InviteMembersResponse> instance
 
-Invites other AWS accounts to enable Security Hub and become Security
-Hub member accounts. When an account accepts the invitation and becomes
-a member account, the master account can view Security Hub findings of
-the member account.
+Invites other AWS accounts to become member accounts for the Security
+Hub master account that the invitation is sent from. Before you can use
+this action to invite a member, you must first create the member
+account in Security Hub by using the CreateMembers action. When the
+account owner accepts the invitation to become a member account and
+enables Security Hub, the master account can view the findings
+generated from member account.
 
 
 =head2 ListEnabledProductsForImport
@@ -776,7 +978,8 @@ Each argument is described in detail in: L<Paws::SecurityHub::ListEnabledProduct
 
 Returns: a L<Paws::SecurityHub::ListEnabledProductsForImportResponse> instance
 
-Lists all Security Hub-integrated third-party findings providers.
+Lists all findings-generating solutions (products) whose findings you
+have subscribed to receive in Security Hub.
 
 
 =head2 ListInvitations
@@ -819,6 +1022,79 @@ Lists details about all member accounts for the current Security Hub
 master account.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecurityHub::ListTagsForResource>
+
+Returns: a L<Paws::SecurityHub::ListTagsForResourceResponse> instance
+
+Returns a list of tags associated with a resource.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::SecurityHub::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecurityHub::TagResource>
+
+Returns: a L<Paws::SecurityHub::TagResourceResponse> instance
+
+Adds one or more tags to a resource.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecurityHub::UntagResource>
+
+Returns: a L<Paws::SecurityHub::UntagResourceResponse> instance
+
+Removes one or more tags from a resource.
+
+
+=head2 UpdateActionTarget
+
+=over
+
+=item ActionTargetArn => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecurityHub::UpdateActionTarget>
+
+Returns: a L<Paws::SecurityHub::UpdateActionTargetResponse> instance
+
+Updates the name and description of a custom action target in Security
+Hub.
+
+
 =head2 UpdateFindings
 
 =over
@@ -836,8 +1112,9 @@ Each argument is described in detail in: L<Paws::SecurityHub::UpdateFindings>
 
 Returns: a L<Paws::SecurityHub::UpdateFindingsResponse> instance
 
-Updates the AWS Security Hub-aggregated findings specified by the
-filter attributes.
+Updates the C<Note> and C<RecordState> of the Security Hub-aggregated
+findings that the filter attributes specify. Any member account that
+can view the finding also sees the update to the finding.
 
 
 =head2 UpdateInsight
@@ -859,7 +1136,7 @@ Each argument is described in detail in: L<Paws::SecurityHub::UpdateInsight>
 
 Returns: a L<Paws::SecurityHub::UpdateInsightResponse> instance
 
-Updates the AWS Security Hub insight specified by the insight ARN.
+Updates the Security Hub insight that the insight ARN specifies.
 
 
 

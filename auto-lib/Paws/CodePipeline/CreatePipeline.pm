@@ -2,6 +2,7 @@
 package Paws::CodePipeline::CreatePipeline;
   use Moose;
   has Pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', traits => ['NameInRequest'], request_name => 'pipeline' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -102,11 +103,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         Version => 1,    # min: 1; OPTIONAL
       },
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
     my $Pipeline = $CreatePipelineOutput->Pipeline;
+    my $Tags     = $CreatePipelineOutput->Tags;
 
     # Returns a L<Paws::CodePipeline::CreatePipelineOutput> object.
 
@@ -120,6 +129,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 Represents the structure of actions and stages to be performed in the
 pipeline.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+
+The tags for the pipeline.
 
 
 

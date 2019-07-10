@@ -6,6 +6,7 @@ package Paws::Chime::User;
   has LicenseType => (is => 'ro', isa => 'Str');
   has PersonalPIN => (is => 'ro', isa => 'Str');
   has PrimaryEmail => (is => 'ro', isa => 'Str');
+  has PrimaryProvisionedNumber => (is => 'ro', isa => 'Str');
   has RegisteredOn => (is => 'ro', isa => 'Str');
   has UserId => (is => 'ro', isa => 'Str', required => 1);
   has UserInvitationStatus => (is => 'ro', isa => 'Str');
@@ -74,6 +75,11 @@ ISO 8601 format.
 =head2 PrimaryEmail => Str
 
   The primary email address of the user.
+
+
+=head2 PrimaryProvisionedNumber => Str
+
+  The primary phone number associated with the user.
 
 
 =head2 RegisteredOn => Str

@@ -31,7 +31,7 @@ this ID when the application is updated.
 
 Describes the application output configuration. For more information,
 see Configuring Application Output
-(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
 
 =head2 _request_id => Str

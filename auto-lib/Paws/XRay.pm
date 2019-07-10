@@ -74,6 +74,11 @@ package Paws::XRay;
     my $call_object = $self->new_with_coercions('Paws::XRay::GetServiceGraph', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetTimeSeriesServiceStatistics {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetTimeSeriesServiceStatistics', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTraceGraph {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::GetTraceGraph', @_);
@@ -225,6 +230,29 @@ package Paws::XRay;
 
     return undef
   }
+  sub GetAllTimeSeriesServiceStatistics {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTimeSeriesServiceStatistics(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTimeSeriesServiceStatistics(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TimeSeriesServiceStatistics }, @{ $next_result->TimeSeriesServiceStatistics };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TimeSeriesServiceStatistics') foreach (@{ $result->TimeSeriesServiceStatistics });
+        $result = $self->GetTimeSeriesServiceStatistics(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TimeSeriesServiceStatistics') foreach (@{ $result->TimeSeriesServiceStatistics });
+    }
+
+    return undef
+  }
   sub GetAllTraceGraph {
     my $self = shift;
 
@@ -273,7 +301,7 @@ package Paws::XRay;
   }
 
 
-  sub operations { qw/BatchGetTraces CreateGroup CreateSamplingRule DeleteGroup DeleteSamplingRule GetEncryptionConfig GetGroup GetGroups GetSamplingRules GetSamplingStatisticSummaries GetSamplingTargets GetServiceGraph GetTraceGraph GetTraceSummaries PutEncryptionConfig PutTelemetryRecords PutTraceSegments UpdateGroup UpdateSamplingRule / }
+  sub operations { qw/BatchGetTraces CreateGroup CreateSamplingRule DeleteGroup DeleteSamplingRule GetEncryptionConfig GetGroup GetGroups GetSamplingRules GetSamplingStatisticSummaries GetSamplingTargets GetServiceGraph GetTimeSeriesServiceStatistics GetTraceGraph GetTraceSummaries PutEncryptionConfig PutTelemetryRecords PutTraceSegments UpdateGroup UpdateSamplingRule / }
 
 1;
 
@@ -533,6 +561,35 @@ Downstream services can be other applications, AWS resources, HTTP web
 APIs, or SQL databases.
 
 
+=head2 GetTimeSeriesServiceStatistics
+
+=over
+
+=item EndTime => Str
+
+=item StartTime => Str
+
+=item [EntitySelectorExpression => Str]
+
+=item [GroupARN => Str]
+
+=item [GroupName => Str]
+
+=item [NextToken => Str]
+
+=item [Period => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetTimeSeriesServiceStatistics>
+
+Returns: a L<Paws::XRay::GetTimeSeriesServiceStatisticsResult> instance
+
+Get an aggregation of service statistics defined by a specific time
+range.
+
+
 =head2 GetTraceGraph
 
 =over
@@ -565,6 +622,10 @@ Retrieves a service graph for one or more specific trace IDs.
 
 =item [Sampling => Bool]
 
+=item [SamplingStrategy => L<Paws::XRay::SamplingStrategy>]
+
+=item [TimeRangeType => Str]
+
 
 =back
 
@@ -590,7 +651,7 @@ C<annotation.account = "12345">
 
 For a full list of indexed fields and keywords that you can use in
 filter expressions, see Using Filter Expressions
-(http://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html)
+(https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html)
 in the I<AWS X-Ray Developer Guide>.
 
 
@@ -826,6 +887,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::XRay::GetServiceGraphResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 GetAllTimeSeriesServiceStatistics(sub { },EndTime => Str, StartTime => Str, [EntitySelectorExpression => Str, GroupARN => Str, GroupName => Str, NextToken => Str, Period => Int])
+
+=head2 GetAllTimeSeriesServiceStatistics(EndTime => Str, StartTime => Str, [EntitySelectorExpression => Str, GroupARN => Str, GroupName => Str, NextToken => Str, Period => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TimeSeriesServiceStatistics, passing the object as the first parameter, and the string 'TimeSeriesServiceStatistics' as the second parameter 
+
+If not, it will return a a L<Paws::XRay::GetTimeSeriesServiceStatisticsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 GetAllTraceGraph(sub { },TraceIds => ArrayRef[Str|Undef], [NextToken => Str])
 
 =head2 GetAllTraceGraph(TraceIds => ArrayRef[Str|Undef], [NextToken => Str])
@@ -838,9 +911,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::XRay::GetTraceGraphResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllTraceSummaries(sub { },EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool])
+=head2 GetAllTraceSummaries(sub { },EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool, SamplingStrategy => L<Paws::XRay::SamplingStrategy>, TimeRangeType => Str])
 
-=head2 GetAllTraceSummaries(EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool])
+=head2 GetAllTraceSummaries(EndTime => Str, StartTime => Str, [FilterExpression => Str, NextToken => Str, Sampling => Bool, SamplingStrategy => L<Paws::XRay::SamplingStrategy>, TimeRangeType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

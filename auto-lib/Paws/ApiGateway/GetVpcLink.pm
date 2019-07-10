@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Name          = $VpcLink->Name;
     my $Status        = $VpcLink->Status;
     my $StatusMessage = $VpcLink->StatusMessage;
+    my $Tags          = $VpcLink->Tags;
     my $TargetArns    = $VpcLink->TargetArns;
 
     # Returns a L<Paws::ApiGateway::VpcLink> object.

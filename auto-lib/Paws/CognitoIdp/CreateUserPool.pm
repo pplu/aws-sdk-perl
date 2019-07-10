@@ -70,6 +70,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DeviceOnlyRememberedOnUserPrompt => 1,    # OPTIONAL
       },    # OPTIONAL
       EmailConfiguration => {
+        EmailSendingAccount =>
+          'COGNITO_DEFAULT',    # values: COGNITO_DEFAULT, DEVELOPER; OPTIONAL
         ReplyToEmailAddress => 'MyEmailAddressType',    # OPTIONAL
         SourceArn => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
@@ -91,11 +93,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MfaConfiguration => 'OFF',    # OPTIONAL
       Policies         => {
         PasswordPolicy => {
-          MinimumLength    => 1,    # min: 6, max: 99; OPTIONAL
-          RequireLowercase => 1,    # OPTIONAL
-          RequireNumbers   => 1,    # OPTIONAL
-          RequireSymbols   => 1,    # OPTIONAL
-          RequireUppercase => 1,    # OPTIONAL
+          MinimumLength                 => 1,    # min: 6, max: 99; OPTIONAL
+          RequireLowercase              => 1,    # OPTIONAL
+          RequireNumbers                => 1,    # OPTIONAL
+          RequireSymbols                => 1,    # OPTIONAL
+          RequireUppercase              => 1,    # OPTIONAL
+          TemporaryPasswordValidityDays => 1,    # max: 365; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Schema => [
@@ -128,7 +131,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },    # OPTIONAL
       UserPoolTags => {
-        'MyStringType' => 'MyStringType',    # key: OPTIONAL, value: OPTIONAL
+        'MyTagKeysType' =>
+          'MyTagValueType',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       UsernameAttributes => [
         'phone_number', ...    # values: phone_number, email
@@ -281,9 +285,9 @@ C<AdvancedSecurityMode> to the value "AUDIT".
 
 =head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>
 
-The cost allocation tags for the user pool. For more information, see
-Adding Cost Allocation Tags to Your User Pool
-(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html)
+The tag keys and values to assign to the user pool. A tag is a label
+that you can use to categorize and manage user pools in different ways,
+such as by purpose, owner, environment, or other criteria.
 
 
 

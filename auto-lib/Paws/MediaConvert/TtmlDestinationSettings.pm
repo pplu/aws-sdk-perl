@@ -39,7 +39,8 @@ information (TtmlStylePassthrough).
 
 =head2 StylePassthrough => Str
 
-  
+  Pass through style and position information from a TTML-like input
+source (TTML, SMPTE-TT, CFF-TT) to the CFF-TT output or TTML output.
 
 
 

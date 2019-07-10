@@ -34,29 +34,42 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Specify the decryption settings used to decrypt encrypted input
+Settings for decrypting any input files that you encrypt before you
+upload them to Amazon S3. MediaConvert can decrypt files only when you
+use AWS Key Management Service (KMS) to encrypt the data key that you
+use to encrypt your content.
 
 =head1 ATTRIBUTES
 
 
 =head2 DecryptionMode => Str
 
-  
+  Specify the encryption mode that you used to encrypt your input files.
 
 
 =head2 EncryptedDecryptionKey => Str
 
-  Decryption key either 128 or 192 or 256 bits encrypted with KMS
+  Warning! Don't provide your encryption key in plaintext. Your job
+settings could be intercepted, making your encrypted content
+vulnerable. Specify the encrypted version of the data key that you used
+to encrypt your content. The data key must be encrypted by AWS Key
+Management Service (KMS). The key can be 128, 192, or 256 bits.
 
 
 =head2 InitializationVector => Str
 
-  Initialization Vector 96 bits (CTR/GCM mode only) or 128 bits.
+  Specify the initialization vector that you used when you encrypted your
+content before uploading it to Amazon S3. You can use a 16-byte
+initialization vector with any encryption mode. Or, you can use a
+12-byte initialization vector with GCM or CTR. MediaConvert accepts
+only initialization vectors that are base64-encoded.
 
 
 =head2 KmsKeyRegion => Str
 
-  The AWS region in which decryption key was encrypted with KMS
+  Specify the AWS Region for AWS Key Management Service (KMS) that you
+used to encrypt your data key, if that Region is different from the one
+you are using for AWS Elemental MediaConvert.
 
 
 

@@ -2,6 +2,7 @@
 package Paws::RDS::RestoreDBClusterToPointInTime;
   use Moose;
   has BacktrackWindow => (is => 'ro', isa => 'Int');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
@@ -47,11 +48,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # in time from the source DB cluster.
     my $RestoreDBClusterToPointInTimeResult =
       $rds->RestoreDBClusterToPointInTime(
-      {
-        'DBClusterIdentifier'       => 'sample-restored-cluster1',
-        'RestoreToTime'             => '2016-09-13T18:45:00Z',
-        'SourceDBClusterIdentifier' => 'sample-cluster1'
-      }
+      'DBClusterIdentifier'       => 'sample-restored-cluster1',
+      'RestoreToTime'             => '2016-09-13T18:45:00Z',
+      'SourceDBClusterIdentifier' => 'sample-cluster1'
       );
 
 
@@ -79,6 +78,14 @@ hours).
 
 =back
 
+
+
+
+=head2 CopyTagsToSnapshot => Bool
+
+A value that indicates whether to copy all tags from the restored DB
+cluster to snapshots of the restored DB cluster. The default is not to
+copy them.
 
 
 
@@ -152,9 +159,9 @@ Example: C<mySubnetgroup>
 
 =head2 DeletionProtection => Bool
 
-Indicates if the DB cluster should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false.
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.
 
 
 
@@ -164,17 +171,16 @@ The list of logs that the restored DB cluster is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see Publishing Database Logs to Amazon
 CloudWatch Logs
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 in the I<Amazon Aurora User Guide>.
 
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: C<false>
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 
 
@@ -255,11 +261,12 @@ provided
 
 =item *
 
-Can't be specified if C<UseLatestRestorableTime> parameter is true
+Can't be specified if the C<UseLatestRestorableTime> parameter is
+enabled
 
 =item *
 
-Can't be specified if C<RestoreType> parameter is C<copy-on-write>
+Can't be specified if the C<RestoreType> parameter is C<copy-on-write>
 
 =back
 
@@ -319,10 +326,9 @@ Must match the identifier of an existing DBCluster.
 
 =head2 UseLatestRestorableTime => Bool
 
-A value that is set to C<true> to restore the DB cluster to the latest
-restorable backup time, and C<false> otherwise.
-
-Default: C<false>
+A value that indicates whether to restore the DB cluster to the latest
+restorable backup time. By default, the DB cluster is not restored to
+the latest restorable backup time.
 
 Constraints: Can't be specified if C<RestoreToTime> parameter is
 provided.

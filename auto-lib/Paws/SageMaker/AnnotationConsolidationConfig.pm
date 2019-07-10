@@ -62,6 +62,8 @@ C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-BoundingBox>
 
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-BoundingBox>
 
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-BoundingBox>
+
 =item *
 
 I<Image classification> - Uses a variant of the Expectation
@@ -77,6 +79,8 @@ C<arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClass>
 C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClass>
 
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClass>
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClass>
 
 =item *
 
@@ -94,6 +98,8 @@ C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-SemanticSegmentation>
 
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-SemanticSegmentation>
 
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-SemanticSegmentation>
+
 =item *
 
 I<Text classification> - Uses a variant of the Expectation Maximization
@@ -109,6 +115,8 @@ C<arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClass>
 C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClass>
 
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClass>
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClass>
 
 =back
 

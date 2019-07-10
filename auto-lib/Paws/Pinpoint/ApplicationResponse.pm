@@ -1,7 +1,9 @@
 package Paws::Pinpoint::ApplicationResponse;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,30 +23,44 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::ApplicationResponse object:
 
-  $service_obj->Method(Att1 => { Id => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::ApplicationResponse object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Id
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
-Application Response.
+Provides information about an application.
 
 =head1 ATTRIBUTES
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Arn => Str
 
-  The unique application ID.
+  The Amazon Resource Name (ARN) of the application.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Id => Str
 
-  The display name of the application.
+  The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
+
+
+=head2 B<REQUIRED> Name => Str
+
+  The display name of the application. This name is displayed as the
+B<Project name> on the Amazon Pinpoint console.
+
+
+=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+
+  A string-to-string map of key-value pairs that identifies the tags that
+are associated with the application. Each tag consists of a required
+tag key and an associated tag value.
 
 
 

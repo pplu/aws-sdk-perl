@@ -36,7 +36,7 @@ Settings related to the Amazon Chime account. This includes settings
 that start or stop remote control of shared screens, or start or stop
 the dial-out option in the Amazon Chime web application. For more
 information about these settings, see Use the Policies Page
-(http://docs.aws.amazon.com/chime/latest/ag/policies.html) in the
+(https://docs.aws.amazon.com/chime/latest/ag/policies.html) in the
 I<Amazon Chime Administration Guide>.
 
 =head1 ATTRIBUTES
@@ -53,7 +53,7 @@ meetings.
   Setting that allows meeting participants to choose the B<Call me at a
 phone number> option. For more information, see Join a Meeting without
 the Amazon Chime App
-(http://docs.aws.amazon.com/chime/latest/ug/chime-join-meeting.html).
+(https://docs.aws.amazon.com/chime/latest/ug/chime-join-meeting.html).
 
 
 

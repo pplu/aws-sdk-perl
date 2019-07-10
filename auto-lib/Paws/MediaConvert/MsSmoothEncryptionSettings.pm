@@ -39,7 +39,7 @@ specify the value SpekeKeyProvider.
 
 =head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProvider>
 
-  
+  Settings for use with a SPEKE key provider
 
 
 

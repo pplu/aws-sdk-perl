@@ -13,6 +13,7 @@ package Paws::DirectConnect::Interconnect;
   has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaIssueTime' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
   has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -91,10 +92,14 @@ C<deleting>: The interconnect is being deleted.
 
 C<deleted>: The interconnect is deleted.
 
+=item *
+
+C<unknown>: The state of the interconnect is not available.
+
 =back
 
 
-Valid values are: C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">
+Valid values are: C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"unknown">
 =head2 JumboFrameCapable => Bool
 
 Indicates whether jumbo frames (9001 MTU) are supported.
@@ -118,6 +123,11 @@ The location of the connection.
 =head2 Region => Str
 
 The AWS Region where the connection is located.
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+Any tags assigned to the interconnect.
 
 
 =head2 _request_id => Str

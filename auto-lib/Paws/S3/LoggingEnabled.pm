@@ -33,9 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Logging
 
 =head1 DESCRIPTION
 
-Container for logging information. Presence of this element indicates
-that logging is enabled. Parameters TargetBucket and TargetPrefix are
-required in this case.
+Describes where logs are stored and the prefix that Amazon S3 assigns
+to all log object keys for a bucket. For more information, see PUT
+Bucket logging
+(https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlogging.html)
+in the I<Amazon Simple Storage Service API Reference>.
 
 =head1 ATTRIBUTES
 
@@ -57,8 +59,9 @@ bucket so that the delivered log files can be distinguished by key.
 
 =head2 B<REQUIRED> TargetPrefix => Str
 
-  This element lets you specify a prefix for the keys that the log files
-will be stored under.
+  A prefix for all log object keys. If you store log files from multiple
+Amazon S3 buckets in a single bucket, you can use a prefix to
+distinguish which log files came from which bucket.
 
 
 

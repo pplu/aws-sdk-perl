@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AgentName     => 'MyTagValue',        # OPTIONAL
       Tags          => [
         {
-          Key   => 'MyTagKey',              # min: 1, max: 256; OPTIONAL
+          Key   => 'MyTagKey',              # min: 1, max: 256
           Value => 'MyTagValue',            # min: 1, max: 256
         },
         ...
@@ -63,10 +63,11 @@ The redirect URL returned in the response provides you the activation
 key for your agent in the query string parameter C<activationKey>. It
 might also include other activation-related parameters; however, these
 are merely defaults. The arguments you pass to this API call determine
-the actual configuration of your agent. For more information, see
-Activating a Sync Agent
-(https://docs.aws.amazon.com/sync-service/latest/userguide/working-with-sync-agents.html#activating-sync-agent)
-in the I<AWS DataSync User Guide.>
+the actual configuration of your agent.
+
+For more information, see
+"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-agents.html#activating-agent"
+(Activating a Agent) in the I<AWS DataSync User Guide.>
 
 
 
@@ -79,8 +80,8 @@ that is used to identify the agent in the console.
 
 =head2 Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]
 
-The key-value pair that represents the tag you want to associate with
-the agent. The value can be an empty string. This value helps you
+The key-value pair that represents the tag that you want to associate
+with the agent. The value can be an empty string. This value helps you
 manage, filter, and search for your agents.
 
 Valid characters for key and value are letters, spaces, and numbers

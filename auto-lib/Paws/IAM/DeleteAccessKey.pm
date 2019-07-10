@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command deletes one access key (access key ID and secret
     # access key) assigned to the IAM user named Bob.
     $iam->DeleteAccessKey(
-      {
-        'AccessKeyId' => 'AKIDPMS9RO4H3FEXAMPLE',
-        'UserName'    => 'Bob'
-      }
+      'AccessKeyId' => 'AKIDPMS9RO4H3FEXAMPLE',
+      'UserName'    => 'Bob'
     );
 
 

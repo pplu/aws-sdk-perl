@@ -30,10 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To get information about a device
     # The following example returns information about a specific device.
     my $GetDeviceResult = $devicefarm->GetDevice(
-      {
-        'Arn' => 'arn:aws:devicefarm:us-west-2::device:123EXAMPLE'
-      }
-    );
+      'Arn' => 'arn:aws:devicefarm:us-west-2::device:123EXAMPLE' );
 
     # Results:
     my $device = $GetDeviceResult->device;

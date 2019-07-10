@@ -40,7 +40,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CustomerAddress => 'MyCustomerAddress',   # OPTIONAL
         DirectConnectGatewayId => 'MyDirectConnectGatewayId',    # OPTIONAL
         Mtu                    => 1,                             # OPTIONAL
-        VirtualGatewayId       => 'MyVirtualGatewayId',          # OPTIONAL
+        Tags                   => [
+          {
+            Key   => 'MyTagKey',      # min: 1, max: 128
+            Value => 'MyTagValue',    # max: 256; OPTIONAL
+          },
+          ...
+        ],                            # min: 1; OPTIONAL
+        VirtualGatewayId => 'MyVirtualGatewayId',    # OPTIONAL
       },
 
     );
@@ -63,6 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $OwnerAccount           = $VirtualInterface->OwnerAccount;
     my $Region                 = $VirtualInterface->Region;
     my $RouteFilterPrefixes    = $VirtualInterface->RouteFilterPrefixes;
+    my $Tags                   = $VirtualInterface->Tags;
     my $VirtualGatewayId       = $VirtualInterface->VirtualGatewayId;
     my $VirtualInterfaceId     = $VirtualInterface->VirtualInterfaceId;
     my $VirtualInterfaceName   = $VirtualInterface->VirtualInterfaceName;

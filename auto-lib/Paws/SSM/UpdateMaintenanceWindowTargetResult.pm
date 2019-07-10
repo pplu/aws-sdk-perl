@@ -41,7 +41,7 @@ The updated targets.
 
 =head2 WindowId => Str
 
-The Maintenance Window ID specified in the update request.
+The maintenance window ID specified in the update request.
 
 
 =head2 WindowTargetId => Str

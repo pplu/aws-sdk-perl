@@ -100,14 +100,17 @@ want to add the streaming source.
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
 Current version of your Amazon Kinesis Analytics application. You can
-use the DescribeApplication operation to find the current application
-version.
+use the DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+operation to find the current application version.
 
 
 
 =head2 B<REQUIRED> Input => L<Paws::KinesisAnalytics::Input>
 
-The Input to add.
+The Input
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_Input.html)
+to add.
 
 
 

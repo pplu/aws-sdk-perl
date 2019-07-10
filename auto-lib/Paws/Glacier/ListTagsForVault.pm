@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To list the tags for a vault
     # The example lists all the tags attached to the vault examplevault.
     my $ListTagsForVaultOutput = $glacier->ListTagsForVault(
-      {
-        'AccountId' => '-',
-        'VaultName' => 'examplevault'
-      }
+      'AccountId' => '-',
+      'VaultName' => 'examplevault'
     );
 
     # Results:

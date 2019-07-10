@@ -40,7 +40,10 @@ Settings for File-based Captions in Source
 
 =head2 Convert608To708 => Str
 
-  
+  If set to UPCONVERT, 608 caption data is both passed through via the
+"608 compatibility bytes" fields of the 708 wrapper as well as
+translated into 708. 708 data present in the source content will be
+discarded.
 
 
 =head2 SourceFile => Str

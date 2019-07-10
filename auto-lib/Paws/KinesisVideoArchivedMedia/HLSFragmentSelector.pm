@@ -32,47 +32,47 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisVide
 
 =head1 DESCRIPTION
 
-Contains the range of time stamps for the requested media, and the
-source of the time stamps.
+Contains the range of timestamps for the requested media, and the
+source of the timestamps.
 
 =head1 ATTRIBUTES
 
 
 =head2 FragmentSelectorType => Str
 
-  The source of the time stamps for the requested media.
+  The source of the timestamps for the requested media.
 
 When C<FragmentSelectorType> is set to C<PRODUCER_TIMESTAMP> and
 GetHLSStreamingSessionURLInput$PlaybackMode is C<ON_DEMAND>, the first
-fragment ingested with a producer time stamp within the specified
+fragment ingested with a producer timestamp within the specified
 FragmentSelector$TimestampRange is included in the media playlist. In
-addition, the fragments with producer time stamps within the
+addition, the fragments with producer timestamps within the
 C<TimestampRange> ingested immediately following the first fragment (up
 to the GetHLSStreamingSessionURLInput$MaxMediaPlaylistFragmentResults
 value) are included.
 
-Fragments that have duplicate producer time stamps are deduplicated.
+Fragments that have duplicate producer timestamps are deduplicated.
 This means that if producers are producing a stream of fragments with
-producer time stamps that are approximately equal to the true clock
+producer timestamps that are approximately equal to the true clock
 time, the HLS media playlists will contain all of the fragments within
-the requested time stamp range. If some fragments are ingested within
+the requested timestamp range. If some fragments are ingested within
 the same time range and very different points in time, only the oldest
 ingested collection of fragments are returned.
 
 When C<FragmentSelectorType> is set to C<PRODUCER_TIMESTAMP> and
 GetHLSStreamingSessionURLInput$PlaybackMode is C<LIVE>, the producer
-time stamps are used in the MP4 fragments and for deduplication. But
-the most recently ingested fragments based on server time stamps are
+timestamps are used in the MP4 fragments and for deduplication. But the
+most recently ingested fragments based on server timestamps are
 included in the HLS media playlist. This means that even if fragments
-ingested in the past have producer time stamps with values now, they
-are not included in the HLS media playlist.
+ingested in the past have producer timestamps with values now, they are
+not included in the HLS media playlist.
 
 The default is C<SERVER_TIMESTAMP>.
 
 
 =head2 TimestampRange => L<Paws::KinesisVideoArchivedMedia::HLSTimestampRange>
 
-  The start and end of the time stamp range for the requested media.
+  The start and end of the timestamp range for the requested media.
 
 This value should not be present if C<PlaybackType> is C<LIVE>.
 

@@ -33,14 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a web ACL
     # The following example creates a web ACL named CreateExample.
     my $CreateWebACLResponse = $waf->CreateWebACL(
-      {
-        'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'DefaultAction' => {
-          'Type' => 'ALLOW'
-        },
-        'MetricName' => 'CreateExample',
-        'Name'       => 'CreateExample'
-      }
+      'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+      'DefaultAction' => {
+        'Type' => 'ALLOW'
+      },
+      'MetricName' => 'CreateExample',
+      'Name'       => 'CreateExample'
     );
 
     # Results:
@@ -71,10 +69,12 @@ associated with the C<WebACL>.
 
 =head2 B<REQUIRED> MetricName => Str
 
-A friendly name or description for the metrics for this C<WebACL>. The
-name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-can't contain white space. You can't change C<MetricName> after you
-create the C<WebACL>.
+A friendly name or description for the metrics for this C<WebACL>.The
+name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
+maximum length 128 and minimum length one. It can't contain whitespace
+or metric names reserved for AWS WAF, including "All" and
+"Default_Action." You can't change C<MetricName> after you create the
+C<WebACL>.
 
 
 

@@ -35,13 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To upload an archive
     # The example adds an archive to a vault.
     my $ArchiveCreationOutput = $glacier->UploadArchive(
-      {
-        'AccountId'          => '-',
-        'ArchiveDescription' => '',
-        'Body'               => 'example-data-to-upload',
-        'Checksum'           => '',
-        'VaultName'          => 'my-vault'
-      }
+      'AccountId'          => '-',
+      'ArchiveDescription' => '',
+      'Body'               => 'example-data-to-upload',
+      'Checksum'           => '',
+      'VaultName'          => 'my-vault'
     );
 
     # Results:

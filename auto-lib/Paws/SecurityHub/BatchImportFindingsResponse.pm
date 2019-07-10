@@ -19,17 +19,17 @@ Paws::SecurityHub::BatchImportFindingsResponse
 
 =head2 B<REQUIRED> FailedCount => Int
 
-The number of findings that cannot be imported.
+The number of findings that failed to import.
 
 
 =head2 FailedFindings => ArrayRef[L<Paws::SecurityHub::ImportFindingsError>]
 
-The list of the findings that cannot be imported.
+The list of the findings that failed to import.
 
 
 =head2 B<REQUIRED> SuccessCount => Int
 
-The number of findings that were successfully imported
+The number of findings that were successfully imported.
 
 
 =head2 _request_id => Str

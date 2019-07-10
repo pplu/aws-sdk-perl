@@ -18,6 +18,7 @@ package Paws::CloudWatch::PutMetricAlarm;
   has OKActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Period => (is => 'ro', isa => 'Int');
   has Statistic => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Tag]');
   has Threshold => (is => 'ro', isa => 'Num', required => 1);
   has TreatMissingData => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
@@ -103,8 +104,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OKActions => [
         'MyResourceName', ...        # min: 1, max: 1024
       ],                             # OPTIONAL
-      Period           => 1,                       # OPTIONAL
-      Statistic        => 'SampleCount',           # OPTIONAL
+      Period    => 1,                # OPTIONAL
+      Statistic => 'SampleCount',    # OPTIONAL
+      Tags      => [
+        {
+          Key   => 'MyTagKey',       # min: 1, max: 128
+          Value => 'MyTagValue',     # max: 256
+
+        },
+        ...
+      ],                             # OPTIONAL
       TreatMissingData => 'MyTreatMissingData',    # OPTIONAL
       Unit             => 'Seconds',               # OPTIONAL
     );
@@ -131,6 +140,7 @@ Resource Name (ARN).
 Valid Values: C<arn:aws:automate:I<region>:ec2:stop> |
 C<arn:aws:automate:I<region>:ec2:terminate> |
 C<arn:aws:automate:I<region>:ec2:recover> |
+C<arn:aws:automate:I<region>:ec2:reboot> |
 C<arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> > |
 C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>>
 
@@ -170,7 +180,7 @@ The number of datapoints that must be breaching to trigger the alarm.
 This is used only if you are setting an "M out of N" alarm. In that
 case, this value is the M. For more information, see Evaluating an
 Alarm
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation)
 in the I<Amazon CloudWatch User Guide>.
 
 
@@ -190,7 +200,7 @@ this parameter, the alarm is always evaluated and possibly changes
 state no matter how many data points are available. For more
 information, see Percentile-Based CloudWatch Alarms and Low Data
 Samples
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples).
 
 Valid Values: C<evaluate | ignore>
 
@@ -228,6 +238,7 @@ specified as an Amazon Resource Name (ARN).
 Valid Values: C<arn:aws:automate:I<region>:ec2:stop> |
 C<arn:aws:automate:I<region>:ec2:terminate> |
 C<arn:aws:automate:I<region>:ec2:recover> |
+C<arn:aws:automate:I<region>:ec2:reboot> |
 C<arn:aws:sns:I<region>:I<account-id>:I<sns-topic-name> > |
 C<arn:aws:autoscaling:I<region>:I<account-id>:scalingPolicy:I<policy-id>autoScalingGroupName/I<group-friendly-name>:policyName/I<policy-friendly-name>>
 
@@ -257,6 +268,11 @@ An array of C<MetricDataQuery> structures that enable you to create an
 alarm based on the result of a metric math expression. Each item in the
 C<Metrics> array either retrieves a metric or performs a math
 expression.
+
+One item in the C<Metrics> array is the expression that the alarm
+watches. You designate this expression by setting C<ReturnValue> to
+true for this object in the array. For more information, see
+MetricDataQuery.
 
 If you use the C<Metrics> parameter, you cannot include the
 C<MetricName>, C<Dimensions>, C<Period>, C<Namespace>, C<Statistic>, or
@@ -327,6 +343,17 @@ specify either C<Statistic> or C<ExtendedStatistic,> but not both.
 
 Valid values are: C<"SampleCount">, C<"Average">, C<"Sum">, C<"Minimum">, C<"Maximum">
 
+=head2 Tags => ArrayRef[L<Paws::CloudWatch::Tag>]
+
+A list of key-value pairs to associate with the alarm. You can
+associate as many as 50 tags with an alarm.
+
+Tags can help you organize and categorize your resources. You can also
+use them to scope user permissions, by granting a user permission to
+access or change only resources with certain tag values.
+
+
+
 =head2 B<REQUIRED> Threshold => Num
 
 The value against which the specified statistic is compared.
@@ -339,7 +366,7 @@ Sets how this alarm is to handle missing data points. If
 C<TreatMissingData> is omitted, the default behavior of C<missing> is
 used. For more information, see Configuring How CloudWatch Alarms
 Treats Missing Data
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data).
 
 Valid Values: C<breaching | notBreaching | ignore | missing>
 

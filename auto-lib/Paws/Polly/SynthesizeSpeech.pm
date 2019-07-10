@@ -38,14 +38,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To synthesize speech
     # Synthesizes plain text or SSML into a file of human-like speech.
     my $SynthesizeSpeechOutput = $polly->SynthesizeSpeech(
-      {
-        'LexiconNames' => ['example'],
-        'OutputFormat' => 'mp3',
-        'SampleRate'   => 8000,
-        'Text'         => 'All Gaul is divided into three parts',
-        'TextType'     => 'text',
-        'VoiceId'      => 'Joanna'
-      }
+      'LexiconNames' => ['example'],
+      'OutputFormat' => 'mp3',
+      'SampleRate'   => 8000,
+      'Text'         => 'All Gaul is divided into three parts',
+      'TextType'     => 'text',
+      'VoiceId'      => 'Joanna'
     );
 
     # Results:
@@ -75,7 +73,7 @@ operation for the C<LanguageCode> parameter. For example, if no
 language code is specified, Aditi will use Indian English rather than
 Hindi.
 
-Valid values are: C<"cmn-CN">, C<"cy-GB">, C<"da-DK">, C<"de-DE">, C<"en-AU">, C<"en-GB">, C<"en-GB-WLS">, C<"en-IN">, C<"en-US">, C<"es-ES">, C<"es-MX">, C<"es-US">, C<"fr-CA">, C<"fr-FR">, C<"is-IS">, C<"it-IT">, C<"ja-JP">, C<"hi-IN">, C<"ko-KR">, C<"nb-NO">, C<"nl-NL">, C<"pl-PL">, C<"pt-BR">, C<"pt-PT">, C<"ro-RO">, C<"ru-RU">, C<"sv-SE">, C<"tr-TR">
+Valid values are: C<"arb">, C<"cmn-CN">, C<"cy-GB">, C<"da-DK">, C<"de-DE">, C<"en-AU">, C<"en-GB">, C<"en-GB-WLS">, C<"en-IN">, C<"en-US">, C<"es-ES">, C<"es-MX">, C<"es-US">, C<"fr-CA">, C<"fr-FR">, C<"is-IS">, C<"it-IT">, C<"ja-JP">, C<"hi-IN">, C<"ko-KR">, C<"nb-NO">, C<"nl-NL">, C<"pl-PL">, C<"pt-BR">, C<"pt-PT">, C<"ro-RO">, C<"ru-RU">, C<"sv-SE">, C<"tr-TR">
 
 =head2 LexiconNames => ArrayRef[Str|Undef]
 
@@ -138,7 +136,7 @@ voice IDs by calling the DescribeVoices
 (http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)
 operation.
 
-Valid values are: C<"Geraint">, C<"Gwyneth">, C<"Mads">, C<"Naja">, C<"Hans">, C<"Marlene">, C<"Nicole">, C<"Russell">, C<"Amy">, C<"Brian">, C<"Emma">, C<"Raveena">, C<"Ivy">, C<"Joanna">, C<"Joey">, C<"Justin">, C<"Kendra">, C<"Kimberly">, C<"Matthew">, C<"Salli">, C<"Conchita">, C<"Enrique">, C<"Miguel">, C<"Penelope">, C<"Chantal">, C<"Celine">, C<"Lea">, C<"Mathieu">, C<"Dora">, C<"Karl">, C<"Carla">, C<"Giorgio">, C<"Mizuki">, C<"Liv">, C<"Lotte">, C<"Ruben">, C<"Ewa">, C<"Jacek">, C<"Jan">, C<"Maja">, C<"Ricardo">, C<"Vitoria">, C<"Cristiano">, C<"Ines">, C<"Carmen">, C<"Maxim">, C<"Tatyana">, C<"Astrid">, C<"Filiz">, C<"Vicki">, C<"Takumi">, C<"Seoyeon">, C<"Aditi">, C<"Zhiyu">, C<"Bianca">, C<"Lucia">, C<"Mia">
+Valid values are: C<"Aditi">, C<"Amy">, C<"Astrid">, C<"Bianca">, C<"Brian">, C<"Carla">, C<"Carmen">, C<"Celine">, C<"Chantal">, C<"Conchita">, C<"Cristiano">, C<"Dora">, C<"Emma">, C<"Enrique">, C<"Ewa">, C<"Filiz">, C<"Geraint">, C<"Giorgio">, C<"Gwyneth">, C<"Hans">, C<"Ines">, C<"Ivy">, C<"Jacek">, C<"Jan">, C<"Joanna">, C<"Joey">, C<"Justin">, C<"Karl">, C<"Kendra">, C<"Kimberly">, C<"Lea">, C<"Liv">, C<"Lotte">, C<"Lucia">, C<"Mads">, C<"Maja">, C<"Marlene">, C<"Mathieu">, C<"Matthew">, C<"Maxim">, C<"Mia">, C<"Miguel">, C<"Mizuki">, C<"Naja">, C<"Nicole">, C<"Penelope">, C<"Raveena">, C<"Ricardo">, C<"Ruben">, C<"Russell">, C<"Salli">, C<"Seoyeon">, C<"Takumi">, C<"Tatyana">, C<"Vicki">, C<"Vitoria">, C<"Zeina">, C<"Zhiyu">
 
 
 =head1 SEE ALSO

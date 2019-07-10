@@ -4,6 +4,7 @@ package Paws::RDS::ScalingConfiguration;
   has MaxCapacity => (is => 'ro', isa => 'Int');
   has MinCapacity => (is => 'ro', isa => 'Int');
   has SecondsUntilAutoPause => (is => 'ro', isa => 'Int');
+  has TimeoutAction => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::ScalingConfiguration object:
 
-  $service_obj->Method(Att1 => { AutoPause => $value, ..., SecondsUntilAutoPause => $value  });
+  $service_obj->Method(Att1 => { AutoPause => $value, ..., TimeoutAction => $value  });
 
 =head3 Results returned from an API call
 
@@ -37,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Scalin
 Contains the scaling configuration of an Aurora Serverless DB cluster.
 
 For more information, see Using Amazon Aurora Serverless
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
 in the I<Amazon Aurora User Guide>.
 
 =head1 ATTRIBUTES
@@ -45,7 +46,7 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 AutoPause => Bool
 
-  A value that specifies whether to allow or disallow automatic pause for
+  A value that indicates whether to allow or disallow automatic pause for
 an Aurora DB cluster in C<serverless> DB engine mode. A DB cluster can
 be paused only when it's idle (it has no connections).
 
@@ -59,7 +60,7 @@ restored when there is a request to connect to it.
   The maximum capacity for an Aurora DB cluster in C<serverless> DB
 engine mode.
 
-Valid capacity values are C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
+Valid capacity values are C<1>, C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
 C<128>, and C<256>.
 
 The maximum capacity must be greater than or equal to the minimum
@@ -71,7 +72,7 @@ capacity.
   The minimum capacity for an Aurora DB cluster in C<serverless> DB
 engine mode.
 
-Valid capacity values are C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
+Valid capacity values are C<1>, C<2>, C<4>, C<8>, C<16>, C<32>, C<64>,
 C<128>, and C<256>.
 
 The minimum capacity must be less than or equal to the maximum
@@ -82,6 +83,25 @@ capacity.
 
   The time, in seconds, before an Aurora DB cluster in C<serverless> mode
 is paused.
+
+
+=head2 TimeoutAction => Str
+
+  The action to take when the timeout is reached, either
+C<ForceApplyCapacityChange> or C<RollbackCapacityChange>.
+
+C<ForceApplyCapacityChange> sets the capacity to the specified value as
+soon as possible.
+
+C<RollbackCapacityChange>, the default, ignores the capacity change if
+a scaling point is not found in the timeout period.
+
+If you specify C<ForceApplyCapacityChange>, connections that prevent
+Aurora Serverless from finding a scaling point might be dropped.
+
+For more information, see Autoscaling for Aurora Serverless
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling)
+in the I<Amazon Aurora User Guide>.
 
 
 

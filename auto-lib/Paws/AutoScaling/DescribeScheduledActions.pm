@@ -36,10 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example describes the scheduled actions for the specified Auto Scaling
    # group.
     my $ScheduledActionsType = $autoscaling->DescribeScheduledActions(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
-      }
-    );
+      'AutoScalingGroupName' => 'my-auto-scaling-group' );
 
     # Results:
     my $ScheduledUpdateGroupActions =
@@ -69,7 +66,7 @@ are provided, this parameter is ignored.
 =head2 MaxRecords => Int
 
 The maximum number of items to return with this call. The default value
-is 50 and the maximum value is 100.
+is C<50> and the maximum value is C<100>.
 
 
 

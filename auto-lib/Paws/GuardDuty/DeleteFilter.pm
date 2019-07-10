@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $DeleteFilterResponse = $guardduty->DeleteFilter(
-      DetectorId => 'My__string',
-      FilterName => 'My__string',
+      DetectorId => 'MyDetectorId',
+      FilterName => 'MyString',
 
     );
 
@@ -43,14 +43,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID that specifies the detector where you want to delete a
-filter.
+The unique ID of the detector the filter is associated with.
 
 
 
 =head2 B<REQUIRED> FilterName => Str
 
-The name of the filter.
+The name of the filter you want to delete.
 
 
 

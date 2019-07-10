@@ -84,7 +84,7 @@ automatic patching for that engine version.
 =head2 DBInstanceClass => Str
 
 The new compute and memory capacity of the DB instance; for example,
-C<db.m4.large>. Not all DB instance classes are available in all AWS
+C<db.r5.large>. Not all DB instance classes are available in all AWS
 Regions.
 
 If you modify the DB instance class, an outage occurs during the

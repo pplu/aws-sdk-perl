@@ -404,6 +404,8 @@ Cancels the reprocessing of data through the pipeline.
 
 =item ChannelName => Str
 
+=item [ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>]
+
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
 =item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
@@ -435,6 +437,8 @@ pipeline.
 =item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
 
 =item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
+
+=item [VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>]
 
 
 =back
@@ -474,6 +478,8 @@ query) or a "containerAction" (executing a containerized application).
 
 =item DatastoreName => Str
 
+=item [DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>]
+
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
 =item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
@@ -507,7 +513,9 @@ Returns: a L<Paws::IoTAnalytics::CreatePipelineResponse> instance
 
 Creates a pipeline. A pipeline consumes messages from one or more
 channels and allows you to process the messages before storing them in
-a data store.
+a data store. You must specify both a C<channel> and a C<datastore>
+activity and, optionally, as many as 23 additional activities in the
+C<pipelineActivities> array.
 
 
 =head2 DeleteChannel
@@ -935,6 +943,8 @@ Removes the given tags (metadata) from the resource.
 
 =item ChannelName => Str
 
+=item [ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>]
+
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
 
@@ -961,6 +971,8 @@ Updates the settings of a channel.
 
 =item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
 
+=item [VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>]
+
 
 =back
 
@@ -976,6 +988,8 @@ Updates the settings of a data set.
 =over
 
 =item DatastoreName => Str
+
+=item [DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>]
 
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
@@ -1004,7 +1018,9 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::UpdatePipeline>
 
 Returns: nothing
 
-Updates the settings of a pipeline.
+Updates the settings of a pipeline. You must specify both a C<channel>
+and a C<datastore> activity and, optionally, as many as 23 additional
+activities in the C<pipelineActivities> array.
 
 
 

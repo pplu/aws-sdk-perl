@@ -52,7 +52,7 @@ Amazon Chime accounts.
 
   The Amazon Chime account type. For more information about different
 account types, see Managing Your Amazon Chime Accounts
-(http://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html)
+(https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html)
 in the I<Amazon Chime Administration Guide>.
 
 

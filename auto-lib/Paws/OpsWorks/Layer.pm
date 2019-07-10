@@ -78,9 +78,9 @@ attribute is set to the cluster's ARN.
 =head2 AutoAssignElasticIps => Bool
 
   Whether to automatically assign an Elastic IP address
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 to the layer's instances. For more information, see How to Edit a Layer
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 
 
 =head2 AutoAssignPublicIps => Bool
@@ -88,7 +88,7 @@ to the layer's instances. For more information, see How to Edit a Layer
   For stacks that are running in a VPC, whether to automatically assign a
 public IP address to the layer's instances. For more information, see
 How to Edit a Layer
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 
 
 =head2 CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>
@@ -105,7 +105,7 @@ How to Edit a Layer
 
   The ARN of the default IAM profile to be used for the layer's EC2
 instances. For more information about IAM ARNs, see Using Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 
 
 =head2 CustomJson => Str
@@ -127,7 +127,20 @@ recipes.
 
 =head2 DefaultRecipes => L<Paws::OpsWorks::Recipes>
 
-  
+  AWS OpsWorks Stacks supports five lifecycle events: B<setup>,
+B<configuration>, B<deploy>, B<undeploy>, and B<shutdown>. For each
+layer, AWS OpsWorks Stacks runs a set of standard recipes for each
+event. You can also provide custom recipes for any or all layers and
+events. AWS OpsWorks Stacks runs custom event recipes after the
+standard recipes. C<LayerCustomRecipes> specifies the custom recipes
+for a particular layer to be run in response to each of the five
+events.
+
+To specify a recipe, use the cookbook's directory name in the
+repository followed by two colons and the recipe name, which is the
+recipe's file name without the C<.rb> extension. For example:
+C<phpapp2::dbsetup> specifies the C<dbsetup.rb> recipe in the
+repository's C<phpapp2> folder.
 
 
 =head2 DefaultSecurityGroupNames => ArrayRef[Str|Undef]

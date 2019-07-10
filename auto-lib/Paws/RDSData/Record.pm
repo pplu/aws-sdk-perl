@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDSData::Re
 
 =head1 DESCRIPTION
 
-Row or Record
+A record returned by a call.
 
 =head1 ATTRIBUTES
 
 
 =head2 Values => ArrayRef[L<Paws::RDSData::Value>]
 
-  Record
+  The values returned in the record.
 
 
 

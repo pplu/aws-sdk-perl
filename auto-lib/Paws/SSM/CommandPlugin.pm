@@ -103,18 +103,18 @@ Amazon S3 bucket region.
 
 =head2 ResponseCode => Int
 
-  A numeric response code generated after executing the plugin.
+  A numeric response code generated after running the plugin.
 
 
 =head2 ResponseFinishDateTime => Str
 
-  The time the plugin stopped executing. Could stop prematurely if, for
+  The time the plugin stopped running. Could stop prematurely if, for
 example, a cancel command was sent.
 
 
 =head2 ResponseStartDateTime => Str
 
-  The time the plugin started executing.
+  The time the plugin started running.
 
 
 =head2 StandardErrorUrl => Str
@@ -132,7 +132,7 @@ this string is empty.
 
 =head2 Status => Str
 
-  The status of this plugin. You can execute a document with multiple
+  The status of this plugin. You can run a document with multiple
 plugins.
 
 

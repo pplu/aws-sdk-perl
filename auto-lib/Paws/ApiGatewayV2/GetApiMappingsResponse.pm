@@ -1,10 +1,8 @@
 
 package Paws::ApiGatewayV2::GetApiMappingsResponse;
   use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiId');
-  has ApiMappingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiMappingId');
-  has ApiMappingKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiMappingKey');
-  has Stage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stage');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::ApiMapping]', traits => ['NameInRequest'], request_name => 'items');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -18,24 +16,15 @@ Paws::ApiGatewayV2::GetApiMappingsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ApiId => Str
+=head2 Items => ArrayRef[L<Paws::ApiGatewayV2::ApiMapping>]
 
-The API identifier.
-
-
-=head2 ApiMappingId => Str
-
-The API mapping identifier.
+The elements from this collection.
 
 
-=head2 ApiMappingKey => Str
+=head2 NextToken => Str
 
-The API mapping key.
-
-
-=head2 Stage => Str
-
-The API stage.
+The next page of elements from this collection. Not valid for the last
+element of the collection.
 
 
 =head2 _request_id => Str

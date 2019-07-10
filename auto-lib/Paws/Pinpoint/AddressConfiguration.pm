@@ -36,46 +36,49 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-Address configuration.
+Specifies address-based configuration settings for a message that's
+sent directly to an endpoint.
 
 =head1 ATTRIBUTES
 
 
 =head2 BodyOverride => Str
 
-  Body override. If specified will override default body.
+  The message body to use instead of the default message body. This value
+overrides the default message body.
 
 
 =head2 ChannelType => Str
 
-  The channel type. Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP |
-APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
+  The channel to use when sending the message.
 
 
 =head2 Context => L<Paws::Pinpoint::MapOf__string>
 
-  A map of custom attributes to attributes to be attached to the message
-for this address. This payload is added to the push notification's
-'data.pinpoint' object or added to the email/sms delivery receipt event
-attributes.
+  An object that maps custom attributes to attributes for the address and
+is attached to the message. For a push notification, this payload is
+added to the data.pinpoint object. For an email or text message, this
+payload is added to email/SMS delivery receipt event attributes.
 
 
 =head2 RawContent => Str
 
-  The Raw JSON formatted string to be used as the payload. This value
-overrides the message.
+  The raw, JSON-formatted string to use as the payload for the
+notification message. This value overrides the message.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
 
-  A map of substitution values for the message to be merged with the
-DefaultMessage's substitutions. Substitutions on this map take
-precedence over the all other substitutions.
+  An object that maps variable values for the message. Amazon Pinpoint
+merges these values with the variable values specified by properties of
+the DefaultMessage object. The substitutions in this map take
+precedence over all other substitutions.
 
 
 =head2 TitleOverride => Str
 
-  Title override. If specified will override default title if applicable.
+  The message title to use instead of the default message title. This
+value overrides the default message title.
 
 
 

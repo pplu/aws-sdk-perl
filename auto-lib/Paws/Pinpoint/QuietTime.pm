@@ -32,25 +32,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::Q
 
 =head1 DESCRIPTION
 
-Quiet Time
+Specifies the start and end times that define a time range when
+messages aren't sent to endpoints.
 
 =head1 ATTRIBUTES
 
 
 =head2 End => Str
 
-  The time at which quiet time should end. The value that you specify has
-to be in HH:mm format, where HH is the hour in 24-hour format (with a
-leading zero, if applicable), and mm is the minutes. For example, use
-02:30 to represent 2:30 AM, or 14:30 to represent 2:30 PM.
+  The specific time when quiet time ends. This value has to use 24-hour
+notation and be in HH:MM format, where HH is the hour (with a leading
+zero, if applicable) and MM is the minutes. For example, use 02:30 to
+represent 2:30 AM, or 14:30 to represent 2:30 PM.
 
 
 =head2 Start => Str
 
-  The time at which quiet time should begin. The value that you specify
-has to be in HH:mm format, where HH is the hour in 24-hour format (with
-a leading zero, if applicable), and mm is the minutes. For example, use
-02:30 to represent 2:30 AM, or 14:30 to represent 2:30 PM.
+  The specific time when quiet time begins. This value has to use 24-hour
+notation and be in HH:MM format, where HH is the hour (with a leading
+zero, if applicable) and MM is the minutes. For example, use 02:30 to
+represent 2:30 AM, or 14:30 to represent 2:30 PM.
 
 
 

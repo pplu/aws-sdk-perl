@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-AWS IAM access key details related to a finding.
+IAM access key details related to a finding.
 
 =head1 ATTRIBUTES
 

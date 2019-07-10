@@ -69,7 +69,8 @@ Required when you set (Codec) under
 
 =head2 AdaptiveQuantization => Str
 
-  
+  Adaptive quantization. Allows intra-frame quantizers to vary to improve
+visual quality.
 
 
 =head2 Bitrate => Int
@@ -81,12 +82,14 @@ multiple of 1000.
 
 =head2 CodecLevel => Str
 
-  
+  Use Level (Mpeg2CodecLevel) to set the MPEG-2 level for the video
+output.
 
 
 =head2 CodecProfile => Str
 
-  
+  Use Profile (Mpeg2CodecProfile) to set the MPEG-2 profile for the video
+output.
 
 
 =head2 DynamicSubGop => Str
@@ -101,12 +104,25 @@ between reference frames (numberBFramesBetweenReferenceFrames).
 
 =head2 FramerateControl => Str
 
-  
+  If you are using the console, use the Framerate setting to specify the
+frame rate for this output. If you want to keep the same frame rate as
+the input video, choose Follow source. If you want to do frame rate
+conversion, choose a frame rate from the dropdown list or choose
+Custom. The framerates shown in the dropdown list are decimal
+approximations of fractions. If you choose Custom, specify your frame
+rate as a fraction. If you are creating your transcoding job
+sepecification as a JSON file without the console, use FramerateControl
+to specify which value the service uses for the frame rate for this
+output. Choose INITIALIZE_FROM_SOURCE if you want the service to use
+the frame rate from the input. Choose SPECIFIED if you want the service
+to use the frame rate you specify in the settings FramerateNumerator
+and FramerateDenominator.
 
 
 =head2 FramerateConversionAlgorithm => Str
 
-  
+  When set to INTERPOLATE, produces smoother motion during frame rate
+conversion.
 
 
 =head2 FramerateDenominator => Int
@@ -136,7 +152,9 @@ than zero.
 
 =head2 GopSizeUnits => Str
 
-  
+  Indicates if the GOP Size in MPEG2 is specified in frames or seconds.
+If seconds the system will convert the GOP Size into a frame count at
+run time.
 
 
 =head2 HrdBufferInitialFillPercentage => Int
@@ -153,12 +171,26 @@ megabits as 5000000.
 
 =head2 InterlaceMode => Str
 
-  
+  Use Interlace mode (InterlaceMode) to choose the scan line type for the
+output. * Top Field First (TOP_FIELD) and Bottom Field First
+(BOTTOM_FIELD) produce interlaced output with the entire output having
+the same field polarity (top or bottom first). * Follow, Default Top
+(FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use
+the same field polarity as the source. Therefore, behavior depends on
+the input scan type. - If the source is interlaced, the output will be
+interlaced with the same polarity as the source (it will follow the
+source). The output could therefore be a mix of "top field first" and
+"bottom field first". - If the source is progressive, the output will
+be interlaced with "top field first" or "bottom field first" polarity,
+depending on which of the Follow options you chose.
 
 
 =head2 IntraDcPrecision => Str
 
-  
+  Use Intra DC precision (Mpeg2IntraDcPrecision) to set quantization
+precision for intra-block DC coefficients. If you choose the value
+auto, the service will automatically select the precision based on the
+per-frame compression ratio.
 
 
 =head2 MaxBitrate => Int
@@ -185,7 +217,9 @@ enabled. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
 
 =head2 ParControl => Str
 
-  
+  Using the API, enable ParFollowSource if you want the service to use
+the pixel aspect ratio from the input. Using the console, do this by
+choosing Follow source for Pixel aspect ratio.
 
 
 =head2 ParDenominator => Int
@@ -200,22 +234,25 @@ enabled. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
 
 =head2 QualityTuningLevel => Str
 
-  
+  Use Quality tuning level (Mpeg2QualityTuningLevel) to specifiy whether
+to use single-pass or multipass video encoding.
 
 
 =head2 RateControlMode => Str
 
-  
+  Use Rate control mode (Mpeg2RateControlMode) to specifiy whether the
+bitrate is variable (vbr) or constant (cbr).
 
 
 =head2 SceneChangeDetect => Str
 
-  
+  Scene change detection (inserts I-frames on scene changes).
 
 
 =head2 SlowPal => Str
 
-  
+  Enables Slow PAL rate conversion. 23.976fps and 24fps input is
+relabeled as 25fps, and audio is sped up correspondingly.
 
 
 =head2 Softness => Int
@@ -226,22 +263,27 @@ content in the encoded image.
 
 =head2 SpatialAdaptiveQuantization => Str
 
-  
+  Adjust quantization within each frame based on spatial variation of
+content complexity.
 
 
 =head2 Syntax => Str
 
-  
+  Produces a Type D-10 compatible bitstream (SMPTE 356M-2001).
 
 
 =head2 Telecine => Str
 
-  
+  Only use Telecine (Mpeg2Telecine) when you set Framerate (Framerate) to
+29.970. Set Telecine (Mpeg2Telecine) to Hard (hard) to produce a 29.97i
+output from a 23.976 input. Set it to Soft (soft) to produce 23.976
+output and leave converstion to the player.
 
 
 =head2 TemporalAdaptiveQuantization => Str
 
-  
+  Adjust quantization within each frame based on temporal variation of
+content complexity.
 
 
 

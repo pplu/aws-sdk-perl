@@ -40,20 +40,20 @@ A number filter for querying findings.
 
 =head2 Eq => Num
 
-  Represents the "equal to" condition to be applied to a single field
-when querying for findings.
+  The equal-to condition to be applied to a single field when querying
+for findings.
 
 
 =head2 Gte => Num
 
-  Represents the "greater than equal" condition to be applied to a single
-field when querying for findings.
+  The greater-than-equal condition to be applied to a single field when
+querying for findings.
 
 
 =head2 Lte => Num
 
-  Represents the "less than equal" condition to be applied to a single
-field when querying for findings.
+  The less-than-equal condition to be applied to a single field when
+querying for findings.
 
 
 

@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example creates a new Appium Python test package upload
     # inside an existing project.
     my $CreateUploadResult = $devicefarm->CreateUpload(
-      {
-        'Name' => 'MyAppiumPythonUpload',
-        'ProjectArn' =>
+      'Name' => 'MyAppiumPythonUpload',
+      'ProjectArn' =>
 'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
-        'Type' => 'APPIUM_PYTHON_TEST_PACKAGE'
-      }
+      'Type' => 'APPIUM_PYTHON_TEST_PACKAGE'
     );
 
     # Results:
@@ -164,11 +162,11 @@ UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
 
 =item *
 
-XCTEST_TEST_PACKAGE: An XCode test package upload.
+XCTEST_TEST_PACKAGE: An Xcode test package upload.
 
 =item *
 
-XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.
+XCTEST_UI_TEST_PACKAGE: An Xcode UI test package upload.
 
 =item *
 
@@ -221,7 +219,7 @@ INSTRUMENTATION_TEST_SPEC: An instrumentation test spec upload.
 
 =item *
 
-XCTEST_UI_TEST_SPEC: An XCode UI test spec upload.
+XCTEST_UI_TEST_SPEC: An Xcode UI test spec upload.
 
 =back
 

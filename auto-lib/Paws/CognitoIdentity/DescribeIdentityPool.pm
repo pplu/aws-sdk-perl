@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeveloperProviderName     = $IdentityPool->DeveloperProviderName;
     my $IdentityPoolId            = $IdentityPool->IdentityPoolId;
     my $IdentityPoolName          = $IdentityPool->IdentityPoolName;
+    my $IdentityPoolTags          = $IdentityPool->IdentityPoolTags;
     my $OpenIdConnectProviderARNs = $IdentityPool->OpenIdConnectProviderARNs;
     my $SamlProviderARNs          = $IdentityPool->SamlProviderARNs;
     my $SupportedLoginProviders   = $IdentityPool->SupportedLoginProviders;

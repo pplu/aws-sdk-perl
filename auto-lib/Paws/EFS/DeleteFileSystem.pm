@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $elasticfilesystem = Paws->service('EFS');
     # To delete a file system
     # This operation deletes an EFS file system.
-    $elasticfilesystem->DeleteFileSystem(
-      {
-        'FileSystemId' => 'fs-01234567'
-      }
-    );
+    $elasticfilesystem->DeleteFileSystem( 'FileSystemId' => 'fs-01234567' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -45,7 +41,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-ID of the file system you want to delete.
+The ID of the file system you want to delete.
 
 
 

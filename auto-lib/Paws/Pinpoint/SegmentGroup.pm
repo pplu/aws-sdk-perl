@@ -34,41 +34,44 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Segment group definition.
+Specifies the base segments and dimensions for a segment, and the
+relationships between these base segments and dimensions.
 
 =head1 ATTRIBUTES
 
 
 =head2 Dimensions => ArrayRef[L<Paws::Pinpoint::SegmentDimensions>]
 
-  List of dimensions to include or exclude.
+  An array that defines the dimensions for the segment.
 
 
 =head2 SourceSegments => ArrayRef[L<Paws::Pinpoint::SegmentReference>]
 
-  The base segment that you build your segment on. The source segment
-defines the starting "universe" of endpoints. When you add dimensions
-to the segment, it filters the source segment based on the dimensions
-that you specify. You can specify more than one dimensional segment.
-You can only specify one imported segment. NOTE: If you specify an
-imported segment for this attribute, the segment size estimate that
-appears in the Amazon Pinpoint console shows the size of the imported
-segment, without any filters applied to it.
+  The base segment to build the segment on. A base segment, also referred
+to as a I<source segment>, defines the initial population of endpoints
+for a segment. When you add dimensions to a segment, Amazon Pinpoint
+filters the base segment by using the dimensions that you specify.
+
+You can specify more than one dimensional segment or only one imported
+segment. If you specify an imported segment, the Amazon Pinpoint
+console displays a segment size estimate that indicates the size of the
+imported segment without any filters applied to it.
 
 
 =head2 SourceType => Str
 
-  Specify how to handle multiple source segments. For example, if you
-specify three source segments, should the resulting segment be based on
-any or all of the segments? Acceptable values: ANY or ALL.
+  Specifies how to handle multiple base segments for the segment. For
+example, if you specify three base segments for the segment, whether
+the resulting segment is based on all, any, or none of the base
+segments.
 
 
 =head2 Type => Str
 
-  Specify how to handle multiple segment dimensions. For example, if you
-specify three dimensions, should the resulting segment include
-endpoints that are matched by all, any, or none of the dimensions?
-Acceptable values: ALL, ANY, or NONE.
+  Specifies how to handle multiple dimensions for the segment. For
+example, if you specify three dimensions for the segment, whether the
+resulting segment includes endpoints that match all, any, or none of
+the dimensions.
 
 
 

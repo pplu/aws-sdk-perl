@@ -39,7 +39,7 @@ C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
 logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>
 options in the C<TaskInvocationParameters> structure. For information
 about how Systems Manager handles these options for the supported
-Maintenance Window task types, see
+maintenance window task types, see
 MaintenanceWindowTaskInvocationParameters.
 
 
@@ -65,7 +65,9 @@ The updated priority value.
 
 =head2 ServiceRoleArn => Str
 
-The updated service role ARN value.
+The ARN of the IAM service role to use to publish Amazon Simple
+Notification Service (Amazon SNS) notifications for maintenance window
+Run Command tasks.
 
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
@@ -90,18 +92,18 @@ The updated parameter values.
 C<TaskParameters> has been deprecated. To specify parameters to pass to
 a task when it runs, instead use the C<Parameters> option in the
 C<TaskInvocationParameters> structure. For information about how
-Systems Manager handles these options for the supported Maintenance
-Window task types, see MaintenanceWindowTaskInvocationParameters.
+Systems Manager handles these options for the supported maintenance
+window task types, see MaintenanceWindowTaskInvocationParameters.
 
 
 =head2 WindowId => Str
 
-The ID of the Maintenance Window that was updated.
+The ID of the maintenance window that was updated.
 
 
 =head2 WindowTaskId => Str
 
-The task ID of the Maintenance Window that was updated.
+The task ID of the maintenance window that was updated.
 
 
 =head2 _request_id => Str

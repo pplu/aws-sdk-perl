@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Configures a predefined metric for a target tracking policy.
+Represents a predefined metric for a target tracking scaling policy to
+use with Amazon EC2 Auto Scaling.
 
 =head1 ATTRIBUTES
 
@@ -67,7 +68,8 @@ network interfaces by the Auto Scaling group.
 =item *
 
 C<ALBRequestCountPerTarget> - Number of requests completed per target
-in an Application Load Balancer target group.
+in an Application Load Balancer or a Network Load Balancer target
+group.
 
 =back
 

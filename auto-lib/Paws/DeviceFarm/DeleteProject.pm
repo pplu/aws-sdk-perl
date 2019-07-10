@@ -29,12 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $devicefarm = Paws->service('DeviceFarm');
     # To delete a project
     # The following example deletes a specific project.
-    my $DeleteProjectResult = $devicefarm->DeleteProject(
-      {
-        'Arn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456'
-      }
-    );
+    my $DeleteProjectResult =
+      $devicefarm->DeleteProject( 'Arn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456'
+      );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

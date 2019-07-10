@@ -80,13 +80,16 @@ Valid values are: C<"CSV">, C<"CSV_ZIP">
 
 =head2 Recurrence => L<Paws::AlexaForBusiness::BusinessReportRecurrence>
 
-The recurrence of the reports.
+The recurrence of the reports. If this isn't specified, the report will
+only be delivered one time when the API is called.
 
 
 
 =head2 S3BucketName => Str
 
-The S3 bucket name of the output reports.
+The S3 bucket name of the output reports. If this isn't specified, the
+report can be retrieved from a download link by calling
+ListBusinessReportSchedule.
 
 
 

@@ -39,15 +39,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example adds the specified scheduled action to the specified Auto
     # Scaling group.
     $autoscaling->PutScheduledUpdateGroupAction(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'DesiredCapacity'      => 4,
-        'EndTime'              => '2014-05-12T08:00:00Z',
-        'MaxSize'              => 6,
-        'MinSize'              => 2,
-        'ScheduledActionName'  => 'my-scheduled-action',
-        'StartTime'            => '2014-05-12T08:00:00Z'
-      }
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'DesiredCapacity'      => 4,
+      'EndTime'              => '2014-05-12T08:00:00Z',
+      'MaxSize'              => 6,
+      'MinSize'              => 2,
+      'ScheduledActionName'  => 'my-scheduled-action',
+      'StartTime'            => '2014-05-12T08:00:00Z'
     );
 
 
@@ -90,8 +88,11 @@ The minimum size for the Auto Scaling group.
 
 =head2 Recurrence => Str
 
-The recurring schedule for this action, in Unix cron syntax format. For
-more information about this format, see Crontab (http://crontab.org).
+The recurring schedule for this action, in Unix cron syntax format.
+This format consists of five fields separated by white spaces: [Minute]
+[Hour] [Day_of_Month] [Month_of_Year] [Day_of_Week]. The value must be
+in quotes (for example, C<"30 0 1 1,6,12 *">). For more information
+about this format, see Crontab (http://crontab.org).
 
 
 
@@ -103,8 +104,8 @@ The name of this scaling action.
 
 =head2 StartTime => Str
 
-The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in
-UTC/GMT only (for example, C<2014-06-01T00:00:00Z>).
+The time for this action to start, in YYYY-MM-DDThh:mm:ssZ format in
+UTC/GMT only and in quotes (for example, C<"2019-06-01T00:00:00Z">).
 
 If you specify C<Recurrence> and C<StartTime>, Amazon EC2 Auto Scaling
 performs the action at this time, and then performs the action based on

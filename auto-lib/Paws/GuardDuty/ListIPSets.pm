@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $ListIPSetsResponse = $guardduty->ListIPSets(
-      DetectorId => 'My__string',
-      MaxResults => 1,               # OPTIONAL
-      NextToken  => 'My__string',    # OPTIONAL
+      DetectorId => 'MyDetectorId',
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyString',       # OPTIONAL
     );
 
     # Results:
@@ -50,22 +50,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector that you want to retrieve.
+The unique ID of the detector the ipSet is associated with.
 
 
 
 =head2 MaxResults => Int
 
-You can use this parameter to indicate the maximum number of items that
-you want in the response. The default value is 7. The maximum value is
-7.
+You can use this parameter to indicate the maximum number of items you
+want in the response. The default value is 50. The maximum value is 50.
 
 
 
 =head2 NextToken => Str
 
 You can use this parameter when paginating results. Set the value of
-this parameter to null on your first call to the ListIPSet action. For
+this parameter to null on your first call to the list action. For
 subsequent calls to the action fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.
 

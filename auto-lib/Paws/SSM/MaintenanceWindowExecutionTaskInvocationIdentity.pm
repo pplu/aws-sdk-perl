@@ -43,8 +43,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Mainte
 =head1 DESCRIPTION
 
 Describes the information about a task invocation for a particular
-target as part of a task execution performed as part of a Maintenance
-Window execution.
+target as part of a task execution performed as part of a maintenance
+window execution.
 
 =head1 ATTRIBUTES
 
@@ -69,14 +69,13 @@ command ID.
 =head2 OwnerInformation => Str
 
   User-provided value that was specified when the target was registered
-with the Maintenance Window. This was also included in any CloudWatch
+with the maintenance window. This was also included in any CloudWatch
 events raised during the task invocation.
 
 
 =head2 Parameters => Str
 
-  The parameters that were provided for the invocation when it was
-executed.
+  The parameters that were provided for the invocation when it was run.
 
 
 =head2 StartTime => Str
@@ -97,7 +96,7 @@ available for certain Status values.
 
 =head2 TaskExecutionId => Str
 
-  The ID of the specific task execution in the Maintenance Window
+  The ID of the specific task execution in the maintenance window
 execution.
 
 
@@ -108,12 +107,12 @@ execution.
 
 =head2 WindowExecutionId => Str
 
-  The ID of the Maintenance Window execution that ran the task.
+  The ID of the maintenance window execution that ran the task.
 
 
 =head2 WindowTargetId => Str
 
-  The ID of the target definition in this Maintenance Window the
+  The ID of the target definition in this maintenance window the
 invocation was performed for.
 
 

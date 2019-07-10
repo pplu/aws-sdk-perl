@@ -73,9 +73,9 @@ SRV records are used.
 =head2 RegistryArn => Str
 
   The Amazon Resource Name (ARN) of the service registry. The currently
-supported service registry is Amazon Route 53 Auto Naming. For more
-information, see Service
-(https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html).
+supported service registry is AWS Cloud Map. For more information, see
+CreateService
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_CreateService.html).
 
 
 

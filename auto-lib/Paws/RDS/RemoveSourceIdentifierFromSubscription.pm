@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # event subscription.
     my $RemoveSourceIdentifierFromSubscriptionResult =
       $rds->RemoveSourceIdentifierFromSubscription(
-      {
-        'SourceIdentifier' => 'mymysqlinstance',
-        'SubscriptionName' => 'myeventsubscription'
-      }
+      'SourceIdentifier' => 'mymysqlinstance',
+      'SubscriptionName' => 'myeventsubscription'
       );
 
 

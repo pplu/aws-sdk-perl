@@ -139,6 +139,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =item [MediaType => Str]
 
+=item [Tags => L<Paws::KinesisVideo::ResourceTags>]
+
 
 =back
 
@@ -155,7 +157,7 @@ Streams updates the version.
 C<CreateStream> is an asynchronous operation.
 
 For information about how the service works, see How it Works
-(http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html).
+(https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html).
 
 You must have permissions for the C<KinesisVideo:CreateStream> action.
 
@@ -305,7 +307,7 @@ value is optional) that you can define and assign to AWS resources. If
 you specify a tag that already exists, the tag value is replaced with
 the value that you specify in the request. For more information, see
 Using Cost Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 in the I<AWS Billing and Cost Management User Guide>.
 
 You must provide either the C<StreamName> or the C<StreamARN>.

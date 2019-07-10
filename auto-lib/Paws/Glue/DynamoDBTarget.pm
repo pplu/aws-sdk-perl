@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Dynam
 
 =head1 DESCRIPTION
 
-Specifies a DynamoDB table to crawl.
+Specifies an Amazon DynamoDB table to crawl.
 
 =head1 ATTRIBUTES
 

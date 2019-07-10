@@ -1,7 +1,7 @@
 package Paws::Pinpoint::CampaignEventFilter;
   use Moose;
-  has Dimensions => (is => 'ro', isa => 'Paws::Pinpoint::EventDimensions');
-  has FilterType => (is => 'ro', isa => 'Str');
+  has Dimensions => (is => 'ro', isa => 'Paws::Pinpoint::EventDimensions', required => 1);
+  has FilterType => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -32,22 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-An object that defines the events that cause the campaign to be sent.
+Specifies the settings for events that cause a campaign to be sent.
 
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => L<Paws::Pinpoint::EventDimensions>
+=head2 B<REQUIRED> Dimensions => L<Paws::Pinpoint::EventDimensions>
 
-  An object that defines the dimensions for the event filter.
+  The dimension settings of the event filter for the campaign.
 
 
-=head2 FilterType => Str
+=head2 B<REQUIRED> FilterType => Str
 
-  The type of event that causes the campaign to be sent. Possible values:
-SYSTEM - Send the campaign when a system event occurs. See the System
-resource for more information. ENDPOINT - Send the campaign when an
-endpoint event occurs. See the Event resource for more information.
+  The type of event that causes the campaign to be sent. Valid values
+are: SYSTEM, sends the campaign when a system event occurs; and,
+ENDPOINT, sends the campaign when an endpoint event (
+
+Events resource) occurs.
 
 
 

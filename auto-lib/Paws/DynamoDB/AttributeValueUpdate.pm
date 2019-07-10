@@ -155,7 +155,7 @@ Each attribute value is described as a name-value pair. The name is the
 data type, and the value is the data itself.
 
 For more information, see Data Types
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

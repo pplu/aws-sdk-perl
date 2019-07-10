@@ -68,6 +68,13 @@ AWS CloudHSM cluster, the cluster must contain at least one active HSM.
 
 =item *
 
+C<INTERNAL_ERROR> - AWS KMS could not complete the request due to an
+internal error. Retry the request. For C<ConnectCustomKeyStore>
+requests, disconnect the custom key store before trying to connect
+again.
+
+=item *
+
 C<INVALID_CREDENTIALS> - AWS KMS does not have the correct password for
 the C<kmsuser> crypto user in the AWS CloudHSM cluster.
 
@@ -88,7 +95,7 @@ update the password value for the custom key store.
 
 For help with connection failures, see Troubleshooting Custom Key
 Stores
-(http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html)
+(https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 
@@ -109,7 +116,7 @@ and contains at least one active HSM.
 A value of C<FAILED> indicates that an attempt to connect was
 unsuccessful. For help resolving a connection failure, see
 Troubleshooting a Custom Key Store
-(http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html)
+(https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 
@@ -132,7 +139,7 @@ in the I<AWS Key Management Service Developer Guide>.
 
   The trust anchor certificate of the associated AWS CloudHSM cluster.
 When you initialize the cluster
-(http://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html#sign-csr),
+(https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html#sign-csr),
 you create this certificate and save it in the C<customerCA.crt> file.
 
 

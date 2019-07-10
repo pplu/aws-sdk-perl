@@ -16,6 +16,7 @@ package Paws::MediaLive::Reservation;
   has ResourceSpecification => (is => 'ro', isa => 'Paws::MediaLive::ReservationResourceSpecification', request_name => 'resourceSpecification', traits => ['NameInRequest']);
   has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
   has UsagePrice => (is => 'ro', isa => 'Num', request_name => 'usagePrice', traits => ['NameInRequest']);
 1;
 
@@ -136,6 +137,11 @@ standard VQ in US West (Oregon)'
 =head2 State => Str
 
   Current state of reservation, e.g. 'ACTIVE'
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+  A collection of key-value pairs
 
 
 =head2 UsagePrice => Num

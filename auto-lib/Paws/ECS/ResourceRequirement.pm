@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Resour
 The type and amount of a resource to assign to a container. The only
 supported resource is a GPU. For more information, see Working with
 GPUs on Amazon ECS
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-gpu.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-gpu.html)
 in the I<Amazon Elastic Container Service Developer Guide>
 
 =head1 ATTRIBUTES

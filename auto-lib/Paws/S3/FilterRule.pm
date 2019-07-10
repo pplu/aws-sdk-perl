@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::FilterR
 
 =head1 DESCRIPTION
 
-A container for a key value pair that defines the criteria for the
-filter rule.
+Specifies the Amazon S3 object key name to filter on and whether to
+filter on the suffix or prefix of the key name.
 
 =head1 ATTRIBUTES
 
@@ -41,16 +41,16 @@ filter rule.
 =head2 Name => Str
 
   The object key name prefix or suffix identifying one or more objects to
-which the filtering rule applies. The maximum prefix length is 1,024
+which the filtering rule applies. The maximum length is 1,024
 characters. Overlapping prefixes and suffixes are not supported. For
 more information, see Configuring Event Notifications
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
 in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 =head2 Value => Str
 
-  
+  The value that the filter searches for in object key names.
 
 
 

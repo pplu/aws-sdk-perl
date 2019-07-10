@@ -31,10 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the attributes of the specified target group.
     my $DescribeTargetGroupAttributesOutput =
       $elasticloadbalancing->DescribeTargetGroupAttributes(
-      {
-        'TargetGroupArn' =>
+      'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
-      }
       );
 
     # Results:

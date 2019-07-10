@@ -55,8 +55,8 @@ Maximum number of records to return.
 
 =head2 NextToken => Str
 
-Pagination token returned by the GET list request when results overrun
-the meximum allowed. Use the token to fetch the next page of results.
+Pagination token returned by the GET list request when results exceed
+the maximum allowed. Use the token to fetch the next page of results.
 
 
 

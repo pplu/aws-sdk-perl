@@ -176,42 +176,42 @@ during an execution.
 
 =head2 TaskFailedEventDetails => L<Paws::StepFunctions::TaskFailedEventDetails>
 
-  
+  Contains details about the failure of a task.
 
 
 =head2 TaskScheduledEventDetails => L<Paws::StepFunctions::TaskScheduledEventDetails>
 
-  
+  Contains details about a task that was scheduled.
 
 
 =head2 TaskStartedEventDetails => L<Paws::StepFunctions::TaskStartedEventDetails>
 
-  
+  Contains details about a task that was started.
 
 
 =head2 TaskStartFailedEventDetails => L<Paws::StepFunctions::TaskStartFailedEventDetails>
 
-  
+  Contains details about a task that failed to start.
 
 
 =head2 TaskSubmitFailedEventDetails => L<Paws::StepFunctions::TaskSubmitFailedEventDetails>
 
-  
+  Contains details about a task that where the submit failed.
 
 
 =head2 TaskSubmittedEventDetails => L<Paws::StepFunctions::TaskSubmittedEventDetails>
 
-  
+  Contains details about a submitted task.
 
 
 =head2 TaskSucceededEventDetails => L<Paws::StepFunctions::TaskSucceededEventDetails>
 
-  
+  Contains details about a task that succeeded.
 
 
 =head2 TaskTimedOutEventDetails => L<Paws::StepFunctions::TaskTimedOutEventDetails>
 
-  
+  Contains details about a task that timed out.
 
 
 =head2 B<REQUIRED> Timestamp => Str

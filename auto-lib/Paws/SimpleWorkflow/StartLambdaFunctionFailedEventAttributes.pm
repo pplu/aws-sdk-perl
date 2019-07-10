@@ -47,7 +47,7 @@ to trace back the chain of events leading up to this event.
 If C<cause> is set to C<OPERATION_NOT_PERMITTED>, the decision failed
 because the IAM role attached to the execution lacked sufficient
 permissions. For details and example IAM policies, see Lambda Tasks
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html)
 in the I<Amazon SWF Developer Guide>.
 
 

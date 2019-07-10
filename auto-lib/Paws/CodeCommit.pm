@@ -15,6 +15,11 @@ package Paws::CodeCommit;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub BatchDescribeMergeConflicts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::BatchDescribeMergeConflicts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetRepositories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::BatchGetRepositories', @_);
@@ -25,6 +30,11 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateBranch', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateCommit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateCommit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePullRequest {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreatePullRequest', @_);
@@ -33,6 +43,11 @@ package Paws::CodeCommit;
   sub CreateRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateRepository', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateUnreferencedMergeCommit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateUnreferencedMergeCommit', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteBranch {
@@ -53,6 +68,11 @@ package Paws::CodeCommit;
   sub DeleteRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteRepository', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeMergeConflicts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::DescribeMergeConflicts', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribePullRequestEvents {
@@ -105,9 +125,19 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetFolder', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetMergeCommit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetMergeCommit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetMergeConflicts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetMergeConflicts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetMergeOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetMergeOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetPullRequest {
@@ -140,9 +170,39 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::ListRepositories', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub MergeBranchesByFastForward {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::MergeBranchesByFastForward', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub MergeBranchesBySquash {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::MergeBranchesBySquash', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub MergeBranchesByThreeWay {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::MergeBranchesByThreeWay', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub MergePullRequestByFastForward {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::MergePullRequestByFastForward', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub MergePullRequestBySquash {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::MergePullRequestBySquash', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub MergePullRequestByThreeWay {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::MergePullRequestByThreeWay', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PostCommentForComparedCommit {
@@ -170,9 +230,19 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::PutRepositoryTriggers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TestRepositoryTriggers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::TestRepositoryTriggers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateComment {
@@ -374,7 +444,7 @@ package Paws::CodeCommit;
   }
 
 
-  sub operations { qw/BatchGetRepositories CreateBranch CreatePullRequest CreateRepository DeleteBranch DeleteCommentContent DeleteFile DeleteRepository DescribePullRequestEvents GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetFile GetFolder GetMergeConflicts GetPullRequest GetRepository GetRepositoryTriggers ListBranches ListPullRequests ListRepositories MergePullRequestByFastForward PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TestRepositoryTriggers UpdateComment UpdateDefaultBranch UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
+  sub operations { qw/BatchDescribeMergeConflicts BatchGetRepositories CreateBranch CreateCommit CreatePullRequest CreateRepository CreateUnreferencedMergeCommit DeleteBranch DeleteCommentContent DeleteFile DeleteRepository DescribeMergeConflicts DescribePullRequestEvents GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetFile GetFolder GetMergeCommit GetMergeConflicts GetMergeOptions GetPullRequest GetRepository GetRepositoryTriggers ListBranches ListPullRequests ListRepositories ListTagsForResource MergeBranchesByFastForward MergeBranchesBySquash MergeBranchesByThreeWay MergePullRequestByFastForward MergePullRequestBySquash MergePullRequestByThreeWay PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TagResource TestRepositoryTriggers UntagResource UpdateComment UpdateDefaultBranch UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
 
 1;
 
@@ -488,6 +558,11 @@ specified branch.
 
 =item *
 
+GetBlob, which returns the base-64 encoded content of an individual Git
+blob object within a repository.
+
+=item *
+
 GetFile, which returns the base-64 encoded content of a specified file.
 
 =item *
@@ -497,20 +572,18 @@ directory.
 
 =item *
 
-PutFile, which adds or modifies a file in a specified repository and
-branch.
+PutFile, which adds or modifies a single file in a specified repository
+and branch.
 
 =back
 
-Information about committed code in a repository, by calling the
-following:
+Commits, by calling the following:
 
 =over
 
 =item *
 
-GetBlob, which returns the base-64 encoded content of an individual Git
-blob object within a repository.
+CreateCommit, which creates a commit for changes to a repository.
 
 =item *
 
@@ -522,6 +595,59 @@ messages and author and committer information.
 GetDifferences, which returns information about the differences in a
 valid commit specifier (such as a branch, tag, HEAD, commit ID or other
 fully qualified reference).
+
+=back
+
+Merges, by calling the following:
+
+=over
+
+=item *
+
+BatchDescribeMergeConflicts, which returns information about conflicts
+in a merge between commits in a repository.
+
+=item *
+
+CreateUnreferencedMergeCommit, which creates an unreferenced commit
+between two branches or commits for the purpose of comparing them and
+identifying any potential conflicts.
+
+=item *
+
+DescribeMergeConflicts, which returns information about merge conflicts
+between the base, source, and destination versions of a file in a
+potential merge.
+
+=item *
+
+GetMergeCommit, which returns information about the merge between a
+source and destination commit.
+
+=item *
+
+GetMergeConflicts, which returns information about merge conflicts
+between the source and destination branch in a pull request.
+
+=item *
+
+GetMergeOptions, which returns information about the available merge
+options between two branches or commit specifiers.
+
+=item *
+
+MergeBranchesByFastForward, which merges two branches using the
+fast-forward merge option.
+
+=item *
+
+MergeBranchesBySquash, which merges two branches using the squash merge
+option.
+
+=item *
+
+MergeBranchesByThreeWay, which merges two branches using the three-way
+merge option.
 
 =back
 
@@ -546,11 +672,6 @@ a specified pull request.
 
 =item *
 
-GetMergeConflicts, which returns information about merge conflicts
-between the source and destination branch in a pull request.
-
-=item *
-
 GetPullRequest, which returns information about a specified pull
 request.
 
@@ -563,6 +684,18 @@ ListPullRequests, which lists all pull requests for a repository.
 MergePullRequestByFastForward, which merges the source destination
 branch of a pull request into the specified destination branch for that
 pull request using the fast-forward merge option.
+
+=item *
+
+MergePullRequestBySquash, which merges the source destination branch of
+a pull request into the specified destination branch for that pull
+request using the squash merge option.
+
+=item *
+
+MergePullRequestByThreeWay. which merges the source destination branch
+of a pull request into the specified destination branch for that pull
+request using the three-way merge option.
 
 =item *
 
@@ -584,7 +717,7 @@ UpdatePullRequestTitle, which updates the title of a pull request.
 
 =back
 
-Information about comments in a repository, by calling the following:
+Comments in a repository, by calling the following:
 
 =over
 
@@ -618,6 +751,27 @@ repository.
 
 =back
 
+Tags used to tag resources in AWS CodeCommit (not Git tags), by calling
+the following:
+
+=over
+
+=item *
+
+ListTagsForResource, which gets information about AWS tags for a
+specified Amazon Resource Name (ARN) in AWS CodeCommit.
+
+=item *
+
+TagResource, which adds or updates tags for a resource in AWS
+CodeCommit.
+
+=item *
+
+UntagResource, which removes tags for a resource in AWS CodeCommit.
+
+=back
+
 Triggers, by calling the following:
 
 =over
@@ -641,12 +795,48 @@ trigger by sending data to the trigger target.
 
 For information about how to use AWS CodeCommit, see the AWS CodeCommit
 User Guide
-(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
+(https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13>
 
 
 =head1 METHODS
+
+=head2 BatchDescribeMergeConflicts
+
+=over
+
+=item DestinationCommitSpecifier => Str
+
+=item MergeOption => Str
+
+=item RepositoryName => Str
+
+=item SourceCommitSpecifier => Str
+
+=item [ConflictDetailLevel => Str]
+
+=item [ConflictResolutionStrategy => Str]
+
+=item [FilePaths => ArrayRef[Str|Undef]]
+
+=item [MaxConflictFiles => Int]
+
+=item [MaxMergeHunks => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::BatchDescribeMergeConflicts>
+
+Returns: a L<Paws::CodeCommit::BatchDescribeMergeConflictsOutput> instance
+
+Returns information about one or more merge conflicts in the attempted
+merge of two commit specifiers using the squash or three-way merge
+strategy.
+
 
 =head2 BatchGetRepositories
 
@@ -694,6 +884,40 @@ Calling the create branch operation does not set a repository's default
 branch. To do this, call the update default branch operation.
 
 
+=head2 CreateCommit
+
+=over
+
+=item BranchName => Str
+
+=item RepositoryName => Str
+
+=item [AuthorName => Str]
+
+=item [CommitMessage => Str]
+
+=item [DeleteFiles => ArrayRef[L<Paws::CodeCommit::DeleteFileEntry>]]
+
+=item [Email => Str]
+
+=item [KeepEmptyFolders => Bool]
+
+=item [ParentCommitId => Str]
+
+=item [PutFiles => ArrayRef[L<Paws::CodeCommit::PutFileEntry>]]
+
+=item [SetFileModes => ArrayRef[L<Paws::CodeCommit::SetFileModeEntry>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::CreateCommit>
+
+Returns: a L<Paws::CodeCommit::CreateCommitOutput> instance
+
+Creates a commit for a repository on the tip of a specified branch.
+
+
 =head2 CreatePullRequest
 
 =over
@@ -724,6 +948,8 @@ Creates a pull request in the specified repository.
 
 =item [RepositoryDescription => Str]
 
+=item [Tags => L<Paws::CodeCommit::TagsMap>]
+
 
 =back
 
@@ -732,6 +958,50 @@ Each argument is described in detail in: L<Paws::CodeCommit::CreateRepository>
 Returns: a L<Paws::CodeCommit::CreateRepositoryOutput> instance
 
 Creates a new, empty repository.
+
+
+=head2 CreateUnreferencedMergeCommit
+
+=over
+
+=item DestinationCommitSpecifier => Str
+
+=item MergeOption => Str
+
+=item RepositoryName => Str
+
+=item SourceCommitSpecifier => Str
+
+=item [AuthorName => Str]
+
+=item [CommitMessage => Str]
+
+=item [ConflictDetailLevel => Str]
+
+=item [ConflictResolution => L<Paws::CodeCommit::ConflictResolution>]
+
+=item [ConflictResolutionStrategy => Str]
+
+=item [Email => Str]
+
+=item [KeepEmptyFolders => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::CreateUnreferencedMergeCommit>
+
+Returns: a L<Paws::CodeCommit::CreateUnreferencedMergeCommitOutput> instance
+
+Creates an unreferenced commit that represents the result of merging
+two branches using a specified merge strategy. This can help you
+determine the outcome of a potential merge. This API cannot be used
+with the fast-forward merge strategy, as that strategy does not create
+a merge commit.
+
+This unreferenced merge commit can only be accessed using the GetCommit
+API or through git commands such as git fetch. To retrieve this commit,
+you must specify its commit ID or otherwise reference it.
 
 
 =head2 DeleteBranch
@@ -821,6 +1091,41 @@ null repository ID will be returned.
 Deleting a repository also deletes all associated objects and metadata.
 After a repository is deleted, all future push calls to the deleted
 repository will fail.
+
+
+=head2 DescribeMergeConflicts
+
+=over
+
+=item DestinationCommitSpecifier => Str
+
+=item FilePath => Str
+
+=item MergeOption => Str
+
+=item RepositoryName => Str
+
+=item SourceCommitSpecifier => Str
+
+=item [ConflictDetailLevel => Str]
+
+=item [ConflictResolutionStrategy => Str]
+
+=item [MaxMergeHunks => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::DescribeMergeConflicts>
+
+Returns: a L<Paws::CodeCommit::DescribeMergeConflictsOutput> instance
+
+Returns information about one or more merge conflicts in the attempted
+merge of two commit specifiers using the squash or three-way merge
+strategy. If the merge option for the attempted merge is specified as
+FAST_FORWARD_MERGE, an exception will be thrown.
 
 
 =head2 DescribePullRequestEvents
@@ -1043,6 +1348,30 @@ Returns: a L<Paws::CodeCommit::GetFolderOutput> instance
 Returns the contents of a specified folder in a repository.
 
 
+=head2 GetMergeCommit
+
+=over
+
+=item DestinationCommitSpecifier => Str
+
+=item RepositoryName => Str
+
+=item SourceCommitSpecifier => Str
+
+=item [ConflictDetailLevel => Str]
+
+=item [ConflictResolutionStrategy => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetMergeCommit>
+
+Returns: a L<Paws::CodeCommit::GetMergeCommitOutput> instance
+
+Returns information about a specified merge commit.
+
+
 =head2 GetMergeConflicts
 
 =over
@@ -1055,6 +1384,14 @@ Returns the contents of a specified folder in a repository.
 
 =item SourceCommitSpecifier => Str
 
+=item [ConflictDetailLevel => Str]
+
+=item [ConflictResolutionStrategy => Str]
+
+=item [MaxConflictFiles => Int]
+
+=item [NextToken => Str]
+
 
 =back
 
@@ -1064,6 +1401,32 @@ Returns: a L<Paws::CodeCommit::GetMergeConflictsOutput> instance
 
 Returns information about merge conflicts between the before and after
 commit IDs for a pull request in a repository.
+
+
+=head2 GetMergeOptions
+
+=over
+
+=item DestinationCommitSpecifier => Str
+
+=item RepositoryName => Str
+
+=item SourceCommitSpecifier => Str
+
+=item [ConflictDetailLevel => Str]
+
+=item [ConflictResolutionStrategy => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetMergeOptions>
+
+Returns: a L<Paws::CodeCommit::GetMergeOptionsOutput> instance
+
+Returns information about the merge options available for merging two
+specified branches. For details about why a particular merge option is
+not available, use GetMergeConflicts or DescribeMergeConflicts.
 
 
 =head2 GetPullRequest
@@ -1184,6 +1547,122 @@ Returns: a L<Paws::CodeCommit::ListRepositoriesOutput> instance
 Gets information about one or more repositories.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::ListTagsForResource>
+
+Returns: a L<Paws::CodeCommit::ListTagsForResourceOutput> instance
+
+Gets information about AWS tags for a specified Amazon Resource Name
+(ARN) in AWS CodeCommit. For a list of valid resources in AWS
+CodeCommit, see CodeCommit Resources and Operations
+(https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
+in the AWS CodeCommit User Guide.
+
+
+=head2 MergeBranchesByFastForward
+
+=over
+
+=item DestinationCommitSpecifier => Str
+
+=item RepositoryName => Str
+
+=item SourceCommitSpecifier => Str
+
+=item [TargetBranch => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::MergeBranchesByFastForward>
+
+Returns: a L<Paws::CodeCommit::MergeBranchesByFastForwardOutput> instance
+
+Merges two branches using the fast-forward merge strategy.
+
+
+=head2 MergeBranchesBySquash
+
+=over
+
+=item DestinationCommitSpecifier => Str
+
+=item RepositoryName => Str
+
+=item SourceCommitSpecifier => Str
+
+=item [AuthorName => Str]
+
+=item [CommitMessage => Str]
+
+=item [ConflictDetailLevel => Str]
+
+=item [ConflictResolution => L<Paws::CodeCommit::ConflictResolution>]
+
+=item [ConflictResolutionStrategy => Str]
+
+=item [Email => Str]
+
+=item [KeepEmptyFolders => Bool]
+
+=item [TargetBranch => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::MergeBranchesBySquash>
+
+Returns: a L<Paws::CodeCommit::MergeBranchesBySquashOutput> instance
+
+Merges two branches using the squash merge strategy.
+
+
+=head2 MergeBranchesByThreeWay
+
+=over
+
+=item DestinationCommitSpecifier => Str
+
+=item RepositoryName => Str
+
+=item SourceCommitSpecifier => Str
+
+=item [AuthorName => Str]
+
+=item [CommitMessage => Str]
+
+=item [ConflictDetailLevel => Str]
+
+=item [ConflictResolution => L<Paws::CodeCommit::ConflictResolution>]
+
+=item [ConflictResolutionStrategy => Str]
+
+=item [Email => Str]
+
+=item [KeepEmptyFolders => Bool]
+
+=item [TargetBranch => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::MergeBranchesByThreeWay>
+
+Returns: a L<Paws::CodeCommit::MergeBranchesByThreeWayOutput> instance
+
+Merges two specified branches using the three-way merge strategy.
+
+
 =head2 MergePullRequestByFastForward
 
 =over
@@ -1201,9 +1680,84 @@ Each argument is described in detail in: L<Paws::CodeCommit::MergePullRequestByF
 
 Returns: a L<Paws::CodeCommit::MergePullRequestByFastForwardOutput> instance
 
-Closes a pull request and attempts to merge the source commit of a pull
-request into the specified destination branch for that pull request at
-the specified commit using the fast-forward merge option.
+Attempts to merge the source commit of a pull request into the
+specified destination branch for that pull request at the specified
+commit using the fast-forward merge strategy. If the merge is
+successful, it closes the pull request.
+
+
+=head2 MergePullRequestBySquash
+
+=over
+
+=item PullRequestId => Str
+
+=item RepositoryName => Str
+
+=item [AuthorName => Str]
+
+=item [CommitMessage => Str]
+
+=item [ConflictDetailLevel => Str]
+
+=item [ConflictResolution => L<Paws::CodeCommit::ConflictResolution>]
+
+=item [ConflictResolutionStrategy => Str]
+
+=item [Email => Str]
+
+=item [KeepEmptyFolders => Bool]
+
+=item [SourceCommitId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::MergePullRequestBySquash>
+
+Returns: a L<Paws::CodeCommit::MergePullRequestBySquashOutput> instance
+
+Attempts to merge the source commit of a pull request into the
+specified destination branch for that pull request at the specified
+commit using the squash merge strategy. If the merge is successful, it
+closes the pull request.
+
+
+=head2 MergePullRequestByThreeWay
+
+=over
+
+=item PullRequestId => Str
+
+=item RepositoryName => Str
+
+=item [AuthorName => Str]
+
+=item [CommitMessage => Str]
+
+=item [ConflictDetailLevel => Str]
+
+=item [ConflictResolution => L<Paws::CodeCommit::ConflictResolution>]
+
+=item [ConflictResolutionStrategy => Str]
+
+=item [Email => Str]
+
+=item [KeepEmptyFolders => Bool]
+
+=item [SourceCommitId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::MergePullRequestByThreeWay>
+
+Returns: a L<Paws::CodeCommit::MergePullRequestByThreeWayOutput> instance
+
+Attempts to merge the source commit of a pull request into the
+specified destination branch for that pull request at the specified
+commit using the three-way merge strategy. If the merge is successful,
+it closes the pull request.
 
 
 =head2 PostCommentForComparedCommit
@@ -1333,6 +1887,28 @@ Replaces all triggers for a repository. This can be used to create or
 delete triggers.
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::CodeCommit::TagsMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::TagResource>
+
+Returns: nothing
+
+Adds or updates tags for a resource in AWS CodeCommit. For a list of
+valid resources in AWS CodeCommit, see CodeCommit Resources and
+Operations
+(https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
+in the AWS CodeCommit User Guide.
+
+
 =head2 TestRepositoryTriggers
 
 =over
@@ -1352,6 +1928,27 @@ Tests the functionality of repository triggers by sending information
 to the trigger target. If real data is available in the repository, the
 test will send data from the last commit. If no data is available,
 sample data will be generated.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::UntagResource>
+
+Returns: nothing
+
+Removes tags for a resource in AWS CodeCommit. For a list of valid
+resources in AWS CodeCommit, see CodeCommit Resources and Operations
+(https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
+in the AWS CodeCommit User Guide.
 
 
 =head2 UpdateComment
@@ -1493,8 +2090,8 @@ calling AWS account. In addition, repository names are limited to 100
 alphanumeric, dash, and underscore characters, and cannot include
 certain characters. The suffix ".git" is prohibited. For a full
 description of the limits on repository names, see Limits
-(http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html) in
-the AWS CodeCommit User Guide.
+(https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
+in the AWS CodeCommit User Guide.
 
 
 

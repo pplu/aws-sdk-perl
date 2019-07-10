@@ -1,6 +1,6 @@
 package Paws::AppMesh::HttpRouteAction;
   use Moose;
-  has WeightedTargets => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::WeightedTarget]', request_name => 'weightedTargets', traits => ['NameInRequest']);
+  has WeightedTargets => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::WeightedTarget]', request_name => 'weightedTargets', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,11 +37,11 @@ matched HTTP requests.
 =head1 ATTRIBUTES
 
 
-=head2 WeightedTargets => ArrayRef[L<Paws::AppMesh::WeightedTarget>]
+=head2 B<REQUIRED> WeightedTargets => ArrayRef[L<Paws::AppMesh::WeightedTarget>]
 
   The targets that traffic is routed to when a request matches the route.
-You can specify one or more targets and their relative weights with
-which to distribute traffic.
+You can specify one or more targets and their relative weights to
+distribute traffic with.
 
 
 

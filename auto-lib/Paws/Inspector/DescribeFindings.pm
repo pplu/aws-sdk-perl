@@ -31,11 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Describe findings
     # Describes the findings that are specified by the ARNs of the findings.
     my $DescribeFindingsResponse = $inspector->DescribeFindings(
-      {
-        'FindingArns' => [
+      'FindingArns' => [
 'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MKkpXXPE/finding/0-HwPnsDm4'
-        ]
-      }
+      ]
     );
 
     # Results:

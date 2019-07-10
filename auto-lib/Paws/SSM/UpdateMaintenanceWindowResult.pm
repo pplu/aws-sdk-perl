@@ -26,13 +26,13 @@ Paws::SSM::UpdateMaintenanceWindowResult
 
 =head2 AllowUnassociatedTargets => Bool
 
-Whether targets must be registered with the Maintenance Window before
+Whether targets must be registered with the maintenance window before
 tasks can be defined for those targets.
 
 
 =head2 Cutoff => Int
 
-The number of hours before the end of the Maintenance Window that
+The number of hours before the end of the maintenance window that
 Systems Manager stops scheduling new tasks for execution.
 
 
@@ -43,35 +43,35 @@ An optional description of the update.
 
 =head2 Duration => Int
 
-The duration of the Maintenance Window in hours.
+The duration of the maintenance window in hours.
 
 
 =head2 Enabled => Bool
 
-Whether the Maintenance Window is enabled.
+Whether the maintenance window is enabled.
 
 
 =head2 EndDate => Str
 
 The date and time, in ISO-8601 Extended format, for when the
-Maintenance Window is scheduled to become inactive. The Maintenance
-Window will not run after this specified time.
+maintenance window is scheduled to become inactive. The maintenance
+window will not run after this specified time.
 
 
 =head2 Name => Str
 
-The name of the Maintenance Window.
+The name of the maintenance window.
 
 
 =head2 Schedule => Str
 
-The schedule of the Maintenance Window in the form of a cron or rate
+The schedule of the maintenance window in the form of a cron or rate
 expression.
 
 
 =head2 ScheduleTimezone => Str
 
-The time zone that the scheduled Maintenance Window executions are
+The time zone that the scheduled maintenance window executions are
 based on, in Internet Assigned Numbers Authority (IANA) format. For
 example: "America/Los_Angeles", "etc/UTC", or "Asia/Seoul". For more
 information, see the Time Zone Database
@@ -81,13 +81,13 @@ information, see the Time Zone Database
 =head2 StartDate => Str
 
 The date and time, in ISO-8601 Extended format, for when the
-Maintenance Window is scheduled to become active. The Maintenance
-Window will not run before this specified time.
+maintenance window is scheduled to become active. The maintenance
+window will not run before this specified time.
 
 
 =head2 WindowId => Str
 
-The ID of the created Maintenance Window.
+The ID of the created maintenance window.
 
 
 =head2 _request_id => Str

@@ -41,7 +41,7 @@ This class has no description
 
 =head2 B<REQUIRED> Bucket => Str
 
-  The Amazon resource name (ARN) of the bucket to which data is exported.
+  The Amazon Resource Name (ARN) of the bucket to which data is exported.
 
 
 =head2 BucketAccountId => Str
@@ -52,13 +52,13 @@ provided, the owner will not be validated prior to exporting data.
 
 =head2 B<REQUIRED> Format => Str
 
-  The file format used when exporting data to Amazon S3.
+  Specifies the file format used when exporting data to Amazon S3.
 
 
 =head2 Prefix => Str
 
-  The prefix to use when exporting data. The exported data begins with
-this prefix.
+  The prefix to use when exporting data. The prefix is prepended to all
+results.
 
 
 

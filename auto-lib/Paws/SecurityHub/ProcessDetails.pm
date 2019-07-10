@@ -68,7 +68,7 @@ The details of process-related information about a finding.
 
 =head2 TerminatedAt => Str
 
-  The date/time that the process was terminated.
+  The date and time when the process was terminated.
 
 
 

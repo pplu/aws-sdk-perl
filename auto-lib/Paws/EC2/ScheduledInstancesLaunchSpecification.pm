@@ -51,7 +51,7 @@ This class has no description
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::ScheduledInstancesBlockDeviceMapping>]
 
-  One or more block device mapping entries.
+  The block device mapping entries.
 
 
 =head2 EbsOptimized => Bool
@@ -97,7 +97,7 @@ Default: C<false>
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::ScheduledInstancesNetworkInterface>]
 
-  One or more network interfaces.
+  The network interfaces.
 
 
 =head2 Placement => L<Paws::EC2::ScheduledInstancesPlacement>
@@ -112,7 +112,7 @@ Default: C<false>
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-  The IDs of one or more security groups.
+  The IDs of the security groups.
 
 
 =head2 SubnetId => Str

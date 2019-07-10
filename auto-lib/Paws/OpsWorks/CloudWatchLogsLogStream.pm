@@ -44,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::C
 Describes the Amazon CloudWatch logs configuration for a layer. For
 detailed information about members of this data type, see the
 CloudWatch Logs Agent Reference
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html).
 
 =head1 ATTRIBUTES
 
@@ -73,7 +73,7 @@ value is 5000ms and default value is 5000ms.
 
   Specifies how the time stamp is extracted from logs. For more
 information, see the CloudWatch Logs Agent Reference
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html).
 
 
 =head2 Encoding => Str

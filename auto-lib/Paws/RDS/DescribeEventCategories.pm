@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $rds = Paws->service('RDS');
     # To list event categories.
     # This example lists all DB instance event categories.
-    my $EventCategoriesMessage = $rds->DescribeEventCategories(
-      {
-        'SourceType' => 'db-instance'
-      }
-    );
+    my $EventCategoriesMessage =
+      $rds->DescribeEventCategories( 'SourceType' => 'db-instance' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

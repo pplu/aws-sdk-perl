@@ -72,13 +72,13 @@ C<${Transfer:HomeBucket}>.
 
 =head2 Role => Str
 
-The IAM role that controls your userE<rsquo>s access to your Amazon S3
-bucket. The policies attached to this role will determine the level of
-access you want to provide your users when transferring files into and
-out of your Amazon S3 bucket or buckets. The IAM role should also
-contain a trust relationship that allows the Secure File Transfer
-Protocol (SFTP) server to access your resources when servicing your
-SFTP userE<rsquo>s transfer requests.
+The IAM role that controls your user's access to your Amazon S3 bucket.
+The policies attached to this role will determine the level of access
+you want to provide your users when transferring files into and out of
+your Amazon S3 bucket or buckets. The IAM role should also contain a
+trust relationship that allows the Secure File Transfer Protocol (SFTP)
+server to access your resources when servicing your SFTP user's
+transfer requests.
 
 
 
@@ -93,7 +93,10 @@ the user account is assigned to.
 
 A unique string that identifies a user and is associated with a server
 as specified by the ServerId. This is the string that will be used by
-your user when they log in to your SFTP server.
+your user when they log in to your SFTP server. This user name is a
+minimum of 3 and a maximum of 32 characters long. The following are
+valid characters: a-z, A-Z, 0-9, underscore, and hyphen. The user name
+can't start with a hyphen.
 
 
 

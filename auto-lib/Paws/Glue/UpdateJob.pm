@@ -34,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AllocatedCapacity => 1,    # OPTIONAL
         Command           => {
           Name           => 'MyGenericString',
+          PythonVersion  => 'MyPythonVersionString',     # OPTIONAL
           ScriptLocation => 'MyScriptLocationString',    # OPTIONAL
         },    # OPTIONAL
         Connections => {
@@ -51,9 +52,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         NotificationProperty => {
           NotifyDelayAfter => 1,                  # min: 1; OPTIONAL
         },    # OPTIONAL
+        NumberOfWorkers       => 1,                 # OPTIONAL
         Role                  => 'MyRoleString',    # OPTIONAL
         SecurityConfiguration => 'MyNameString',    # min: 1, max: 255
         Timeout               => 1,                 # min: 1; OPTIONAL
+        WorkerType => 'Standard',    # values: Standard, G.1X, G.2X; OPTIONAL
       },
 
     );
@@ -71,7 +74,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 B<REQUIRED> JobName => Str
 
-Name of the job definition to update.
+The name of the job definition to update.
 
 
 

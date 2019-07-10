@@ -5,6 +5,7 @@ package Paws::ApiGateway::CreateUsagePlan;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Quota => (is => 'ro', isa => 'Paws::ApiGateway::QuotaSettings', traits => ['NameInRequest'], request_name => 'quota');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
   has Throttle => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings', traits => ['NameInRequest'], request_name => 'throttle');
 
   use MooseX::ClassAttribute;
@@ -53,9 +54,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Offset => 1,                # OPTIONAL
         Period => 'DAY',            # values: DAY, WEEK, MONTH; OPTIONAL
       },    # OPTIONAL
+      Tags => { 'MyString' => 'MyString', },    # OPTIONAL
       Throttle => {
-        BurstLimit => 1,    # OPTIONAL
-        RateLimit  => 1,    # OPTIONAL
+        BurstLimit => 1,                        # OPTIONAL
+        RateLimit  => 1,                        # OPTIONAL
       },    # OPTIONAL
     );
 
@@ -66,6 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Name        = $UsagePlan->Name;
     my $ProductCode = $UsagePlan->ProductCode;
     my $Quota       = $UsagePlan->Quota;
+    my $Tags        = $UsagePlan->Tags;
     my $Throttle    = $UsagePlan->Throttle;
 
     # Returns a L<Paws::ApiGateway::UsagePlan> object.
@@ -97,6 +100,14 @@ The description of the usage plan.
 =head2 Quota => L<Paws::ApiGateway::QuotaSettings>
 
 The quota of the usage plan.
+
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with C<aws:>. The tag value can be up to 256 characters.
 
 
 

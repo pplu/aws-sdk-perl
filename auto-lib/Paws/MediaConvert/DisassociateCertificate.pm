@@ -1,7 +1,7 @@
 
 package Paws::MediaConvert::DisassociateCertificate;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn', required => 1);
+  has Arn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'arn', required => 1);
 
   use MooseX::ClassAttribute;
 

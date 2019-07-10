@@ -54,7 +54,7 @@ This parameter is not currently supported.
 =head2 Marker => Str
 
 An optional pagination token provided by a previous
-DescribeSourceRegions request. If this parameter is specified, the
+C<DescribeSourceRegions> request. If this parameter is specified, the
 response includes only records beyond the marker, up to the value
 specified by C<MaxRecords>.
 

@@ -190,6 +190,11 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListOnPremisesInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutLifecycleEventHookExecutionStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::PutLifecycleEventHookExecutionStatus', @_);
@@ -218,6 +223,16 @@ package Paws::CodeDeploy;
   sub StopDeployment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::StopDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateApplication {
@@ -440,7 +455,7 @@ package Paws::CodeDeploy;
   }
 
 
-  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetDeploymentTargets BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeleteGitHubAccountToken DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetDeploymentTarget GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListDeploymentTargets ListGitHubAccountTokenNames ListOnPremisesInstances PutLifecycleEventHookExecutionStatus RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
+  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetDeploymentTargets BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeleteGitHubAccountToken DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetDeploymentTarget GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListDeploymentTargets ListGitHubAccountTokenNames ListOnPremisesInstances ListTagsForResource PutLifecycleEventHookExecutionStatus RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment TagResource UntagResource UpdateApplication UpdateDeploymentGroup / }
 
 1;
 
@@ -556,17 +571,17 @@ B<AWS CodeDeploy Information Resources>
 =item *
 
 AWS CodeDeploy User Guide
-(http://docs.aws.amazon.com/codedeploy/latest/userguide)
+(https://docs.aws.amazon.com/codedeploy/latest/userguide)
 
 =item *
 
 AWS CodeDeploy API Reference Guide
-(http://docs.aws.amazon.com/codedeploy/latest/APIReference/)
+(https://docs.aws.amazon.com/codedeploy/latest/APIReference/)
 
 =item *
 
 AWS CLI Reference for AWS CodeDeploy
-(http://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
+(https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
 
 =item *
 
@@ -614,7 +629,8 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplication
 
 Returns: a L<Paws::CodeDeploy::BatchGetApplicationRevisionsOutput> instance
 
-Gets information about one or more application revisions.
+Gets information about one or more application revisions. The maximum
+number of application revisions that can be returned is 25.
 
 
 =head2 BatchGetApplications
@@ -630,7 +646,8 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplication
 
 Returns: a L<Paws::CodeDeploy::BatchGetApplicationsOutput> instance
 
-Gets information about one or more applications.
+Gets information about one or more applications. The maximum number of
+applications that can be returned is 25.
 
 
 =head2 BatchGetDeploymentGroups
@@ -669,9 +686,11 @@ Returns: a L<Paws::CodeDeploy::BatchGetDeploymentInstancesOutput> instance
 This method works, but is deprecated. Use C<BatchGetDeploymentTargets>
 instead.
 
-Returns an array of instances associated with a deployment. This method
-works with EC2/On-premises and AWS Lambda compute platforms. The newer
-C<BatchGetDeploymentTargets> works with all compute platforms.
+Returns an array of one or more instances associated with a deployment.
+This method works with EC2/On-premises and AWS Lambda compute
+platforms. The newer C<BatchGetDeploymentTargets> works with all
+compute platforms. The maximum number of instances that can be returned
+is 25.
 
 
 =head2 BatchGetDeployments
@@ -687,7 +706,8 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeployments
 
 Returns: a L<Paws::CodeDeploy::BatchGetDeploymentsOutput> instance
 
-Gets information about one or more deployments.
+Gets information about one or more deployments. The maximum number of
+deployments that can be returned is 25.
 
 
 =head2 BatchGetDeploymentTargets
@@ -705,9 +725,10 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentT
 
 Returns: a L<Paws::CodeDeploy::BatchGetDeploymentTargetsOutput> instance
 
-Returns an array of targets associated with a deployment. This method
-works with all compute types and should be used instead of the
-deprecated C<BatchGetDeploymentInstances>.
+Returns an array of one or more targets associated with a deployment.
+This method works with all compute types and should be used instead of
+the deprecated C<BatchGetDeploymentInstances>. The maximum number of
+targets that can be returned is 25.
 
 The type of targets returned depends on the deployment's compute
 platform:
@@ -743,7 +764,8 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetOnPremisesI
 
 Returns: a L<Paws::CodeDeploy::BatchGetOnPremisesInstancesOutput> instance
 
-Gets information about one or more on-premises instances.
+Gets information about one or more on-premises instances. The maximum
+number of on-premises instances that can be returned is 25.
 
 
 =head2 ContinueDeployment
@@ -776,6 +798,8 @@ soon as all instances have a status of Ready.)
 =item ApplicationName => Str
 
 =item [ComputePlatform => Str]
+
+=item [Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]]
 
 
 =back
@@ -876,6 +900,8 @@ Creates a deployment configuration.
 =item [OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]]
 
 =item [OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>]
+
+=item [Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]]
 
 =item [TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]]
 
@@ -1022,6 +1048,11 @@ Each argument is described in detail in: L<Paws::CodeDeploy::GetDeployment>
 Returns: a L<Paws::CodeDeploy::GetDeploymentOutput> instance
 
 Gets information about a deployment.
+
+The C<content> property of the C<appSpecContent> object in the returned
+revision is always null. Use C<GetApplicationRevision> and the
+C<sha256> property of the returned C<appSpecContent> object to get the
+content of the deploymentE<rsquo>s AppSpec file.
 
 
 =head2 GetDeploymentConfig
@@ -1303,6 +1334,25 @@ deregistered on-premises instance names, use the registration status
 parameter.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeDeploy::ListTagsForResource>
+
+Returns: a L<Paws::CodeDeploy::ListTagsForResourceOutput> instance
+
+Returns a list of tags for the resource identified by a specified ARN.
+Tags are used to organize and categorize your CodeDeploy resources.
+
+
 =head2 PutLifecycleEventHookExecutionStatus
 
 =over
@@ -1420,6 +1470,45 @@ Each argument is described in detail in: L<Paws::CodeDeploy::StopDeployment>
 Returns: a L<Paws::CodeDeploy::StopDeploymentOutput> instance
 
 Attempts to stop an ongoing deployment.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeDeploy::TagResource>
+
+Returns: a L<Paws::CodeDeploy::TagResourceOutput> instance
+
+Associates the list of tags in the input C<Tags> parameter with the
+resource identified by the C<ResourceArn> input parameter.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeDeploy::UntagResource>
+
+Returns: a L<Paws::CodeDeploy::UntagResourceOutput> instance
+
+Disassociates a resource from a list of tags. The resource is
+identified by the C<ResourceArn> input parameter. The tags are
+identfied by the list of keys in the C<TagKeys> input parameter.
 
 
 =head2 UpdateApplication

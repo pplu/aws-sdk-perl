@@ -22,7 +22,7 @@ The name of the global table.
 
 =head2 ReplicaSettings => ArrayRef[L<Paws::DynamoDB::ReplicaSettingsDescription>]
 
-The region specific settings for the global table.
+The Region-specific settings for the global table.
 
 
 =head2 _request_id => Str

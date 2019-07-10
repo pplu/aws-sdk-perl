@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Tag ob
 A structure that represents user-provided metadata that can be
 associated with a resource such as an IAM user or role. For more
 information about tagging, see Tagging IAM Identities
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
 I<IAM User Guide>.
 
 =head1 ATTRIBUTES

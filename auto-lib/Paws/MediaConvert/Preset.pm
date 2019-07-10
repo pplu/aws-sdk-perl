@@ -78,7 +78,7 @@ account.
 
 =head2 B<REQUIRED> Settings => L<Paws::MediaConvert::PresetSettings>
 
-  
+  Settings for preset
 
 
 =head2 Type => Str

@@ -33,24 +33,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example deletes a SizeConstraint object (filters) in a size
     # constraint set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
     my $UpdateSizeConstraintSetResponse = $waf->UpdateSizeConstraintSet(
-      {
-        'ChangeToken'         => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
-        'SizeConstraintSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
-        'Updates'             => [
+      'ChangeToken'         => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
+      'SizeConstraintSetId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5',
+      'Updates'             => [
 
-          {
-            'Action'         => 'DELETE',
-            'SizeConstraint' => {
-              'ComparisonOperator' => 'GT',
-              'FieldToMatch'       => {
-                'Type' => 'QUERY_STRING'
-              },
-              'Size'               => 0,
-              'TextTransformation' => 'NONE'
-            }
+        {
+          'Action'         => 'DELETE',
+          'SizeConstraint' => {
+            'ComparisonOperator' => 'GT',
+            'FieldToMatch'       => {
+              'Type' => 'QUERY_STRING'
+            },
+            'Size'               => 0,
+            'TextTransformation' => 'NONE'
           }
-        ]
-      }
+        }
+      ]
     );
 
     # Results:

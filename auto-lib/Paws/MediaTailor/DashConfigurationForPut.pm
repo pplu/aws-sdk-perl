@@ -1,6 +1,7 @@
 package Paws::MediaTailor::DashConfigurationForPut;
   use Moose;
   has MpdLocation => (is => 'ro', isa => 'Str');
+  has OriginManifestType => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaTailor::DashConfigurationForPut object:
 
-  $service_obj->Method(Att1 => { MpdLocation => $value, ..., MpdLocation => $value  });
+  $service_obj->Method(Att1 => { MpdLocation => $value, ..., OriginManifestType => $value  });
 
 =head3 Results returned from an API call
 
@@ -31,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaTailor
 
 =head1 DESCRIPTION
 
-The configuration object for DASH content.
+The configuration for DASH PUT operations.
 
 =head1 ATTRIBUTES
 
@@ -39,13 +40,22 @@ The configuration object for DASH content.
 =head2 MpdLocation => Str
 
   The setting that controls whether MediaTailor includes the Location tag
-in DASH Manifests. MediaTailor populates the Location tag with the URL
+in DASH manifests. MediaTailor populates the Location tag with the URL
 for manifest update requests, to be used by players that don't support
 sticky redirects. Disable this if you have CDN routing rules set up for
-accessing MediaTailor manifests and you are either using client-side
+accessing MediaTailor manifests, and you are either using client-side
 reporting or your players support sticky HTTP redirects. Valid values
 are DISABLED and EMT_DEFAULT. The EMT_DEFAULT setting enables the
 inclusion of the tag and is the default value.
+
+
+=head2 OriginManifestType => Str
+
+  The setting that controls whether MediaTailor handles manifests from
+the origin server as multi-period manifests or single-period manifests.
+If your origin server produces single-period manifests, set this to
+SINGLE_PERIOD. The default setting is MULTI_PERIOD. For multi-period
+manifests, omit this setting or set it to MULTI_PERIOD.
 
 
 

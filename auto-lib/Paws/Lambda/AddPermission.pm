@@ -40,14 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example adds a permission for an S3 bucket to invoke a Lambda
     # function.
     my $AddPermissionResponse = $lambda->AddPermission(
-      {
-        'Action'        => 'lambda:InvokeFunction',
-        'FunctionName'  => 'MyFunction',
-        'Principal'     => 's3.amazonaws.com',
-        'SourceAccount' => 123456789012,
-        'SourceArn'     => 'arn:aws:s3:::examplebucket/*',
-        'StatementId'   => 'ID-1'
-      }
+      'Action'        => 'lambda:InvokeFunction',
+      'FunctionName'  => 'MyFunction',
+      'Principal'     => 's3.amazonaws.com',
+      'SourceAccount' => 123456789012,
+      'SourceArn'     => 'arn:aws:s3:::examplebucket/*',
+      'StatementId'   => 'ID-1'
     );
 
     # Results:
@@ -122,20 +120,20 @@ the function.
 
 =head2 RevisionId => Str
 
-Only update the policy if the revision ID matches the ID specified. Use
-this option to avoid modifying a policy that has changed since you last
-read it.
+Only update the policy if the revision ID matches the ID that's
+specified. Use this option to avoid modifying a policy that has changed
+since you last read it.
 
 
 
 =head2 SourceAccount => Str
 
 For AWS services, the ID of the account that owns the resource. Use
-instead of C<SourceArn> to grant permission to resources owned by
-another account (e.g. all of an account's Amazon S3 buckets). Or use
-together with C<SourceArn> to ensure that the resource is owned by the
-specified account. For example, an Amazon S3 bucket could be deleted by
-its owner and recreated by another account.
+this instead of C<SourceArn> to grant permission to resources that are
+owned by another account (for example, all of an account's Amazon S3
+buckets). Or use it together with C<SourceArn> to ensure that the
+resource is owned by the specified account. For example, an Amazon S3
+bucket could be deleted by its owner and recreated by another account.
 
 
 

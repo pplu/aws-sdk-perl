@@ -50,7 +50,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> InstanceIds => ArrayRef[Str|Undef]
 
-One or more instance IDs.
+The instance IDs.
 
 
 

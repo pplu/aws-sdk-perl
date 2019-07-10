@@ -60,7 +60,7 @@ Cognito hosted domain instead.
 
 For more information about the hosted domain and custom domains, see
 Configuring a User Pool Domain
-(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html).
+(https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html).
 
 
 

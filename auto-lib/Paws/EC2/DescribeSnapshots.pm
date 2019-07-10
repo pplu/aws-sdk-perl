@@ -36,11 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a snapshot
     # This example describes a snapshot with the snapshot ID of
     # ``snap-1234567890abcdef0``.
-    my $DescribeSnapshotsResult = $ec2->DescribeSnapshots(
-      {
-        'SnapshotIds' => ['snap-1234567890abcdef0']
-      }
-    );
+    my $DescribeSnapshotsResult =
+      $ec2->DescribeSnapshots( 'SnapshotIds' => ['snap-1234567890abcdef0'] );
 
     # Results:
     my $NextToken = $DescribeSnapshotsResult->NextToken;
@@ -51,16 +48,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes all snapshots owned by the ID 012345678910 that are
     # in the ``pending`` status.
     my $DescribeSnapshotsResult = $ec2->DescribeSnapshots(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'status',
-            'Values' => ['pending']
-          }
-        ],
-        'OwnerIds' => [012345678910]
-      }
+        {
+          'Name'   => 'status',
+          'Values' => ['pending']
+        }
+      ],
+      'OwnerIds' => [012345678910]
     );
 
     # Results:
@@ -86,7 +81,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -96,10 +91,15 @@ C<description> - A description of the snapshot.
 
 =item *
 
+C<encrypted> - Indicates whether the snapshot is encrypted (C<true> |
+C<false>)
+
+=item *
+
 C<owner-alias> - Value from an Amazon-maintained list (C<amazon> |
-C<aws-marketplace> | C<microsoft>) of snapshot owners. Not to be
-confused with the user-configured AWS account alias, which is set from
-the IAM console.
+C<self> | C<all> | C<aws-marketplace> | C<microsoft>) of snapshot
+owners. Not to be confused with the user-configured AWS account alias,
+which is set from the IAM console.
 
 =item *
 
@@ -177,22 +177,22 @@ This value is C<null> when there are no more results to return.
 
 =head2 OwnerIds => ArrayRef[Str|Undef]
 
-Returns the snapshots owned by the specified owner. Multiple owners can
-be specified.
+Describes the snapshots owned by these owners.
 
 
 
 =head2 RestorableByUserIds => ArrayRef[Str|Undef]
 
-One or more AWS accounts IDs that can create volumes from the snapshot.
+The IDs of the AWS accounts that can create volumes from the snapshot.
 
 
 
 =head2 SnapshotIds => ArrayRef[Str|Undef]
 
-One or more snapshot IDs.
+The snapshot IDs.
 
-Default: Describes snapshots for which you have launch permissions.
+Default: Describes the snapshots for which you have create volume
+permissions.
 
 
 

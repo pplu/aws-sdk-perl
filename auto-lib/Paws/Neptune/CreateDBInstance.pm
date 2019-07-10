@@ -153,7 +153,7 @@ Default: C<true>
 
 =head2 AvailabilityZone => Str
 
-The EC2 Availability Zone that the DB instance is created in.
+The EC2 Availability Zone that the DB instance is created in
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -256,9 +256,7 @@ Example: C<mydbinstance>
 
 =head2 DBName => Str
 
-The database name.
-
-Type: String
+Not supported.
 
 
 
@@ -510,7 +508,7 @@ Valid Values: 0 - 15
 
 =head2 PubliclyAccessible => Bool
 
-This parameter is not supported.
+This flag should no longer be used.
 
 
 
@@ -535,7 +533,7 @@ Not applicable. Storage is managed by the DB Cluster.
 
 =head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
 
-
+The tags to assign to the new instance.
 
 
 

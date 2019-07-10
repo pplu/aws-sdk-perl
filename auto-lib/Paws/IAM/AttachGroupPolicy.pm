@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command attaches the AWS managed policy named ReadOnlyAccess
     # to the IAM group named Finance.
     $iam->AttachGroupPolicy(
-      {
-        'GroupName' => 'Finance',
-        'PolicyArn' => 'arn:aws:iam::aws:policy/ReadOnlyAccess'
-      }
+      'GroupName' => 'Finance',
+      'PolicyArn' => 'arn:aws:iam::aws:policy/ReadOnlyAccess'
     );
 
 
@@ -62,7 +60,7 @@ The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 

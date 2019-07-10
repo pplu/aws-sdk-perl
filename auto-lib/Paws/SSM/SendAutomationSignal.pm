@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Payload               => {
         'MyAutomationParameterKey' => [
           'MyAutomationParameterValue', ...    # min: 1, max: 512
-        ],    # key: min: 1, max: 30, value: max: 10
+        ],    # key: min: 1, max: 50, value: max: 10
       },    # OPTIONAL
     );
 
@@ -57,12 +57,26 @@ want to send the signal to.
 The data sent with the signal. The data schema depends on the type of
 signal used in the request.
 
+For C<Approve> and C<Reject> signal types, the payload is an optional
+comment that you can send with the signal type. For example:
+
+C<Comment="Looks good">
+
+For C<StartStep> and C<Resume> signal types, you must send the name of
+the Automation step to start or resume as the payload. For example:
+
+C<StepName="step1">
+
+For the C<StopStep> signal type, you must send the step execution ID as
+the payload. For example:
+
+C<StepExecutionId="97fff367-fc5a-4299-aed8-0123456789ab">
+
 
 
 =head2 B<REQUIRED> SignalType => Str
 
-The type of signal. Valid signal types include the following: Approve
-and Reject
+The type of signal to send to an Automation execution.
 
 Valid values are: C<"Approve">, C<"Reject">, C<"StartStep">, C<"StopStep">, C<"Resume">
 

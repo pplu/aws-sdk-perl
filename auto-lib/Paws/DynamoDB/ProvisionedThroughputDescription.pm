@@ -59,7 +59,7 @@ table.
   The number of provisioned throughput decreases for this table during
 this UTC calendar day. For current maximums on provisioned throughput
 decreases, see Limits
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

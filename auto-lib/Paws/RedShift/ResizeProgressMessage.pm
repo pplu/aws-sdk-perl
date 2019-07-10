@@ -2,6 +2,7 @@
 package Paws::RedShift::ResizeProgressMessage;
   use Moose;
   has AvgResizeRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
+  has DataTransferProgressPercent => (is => 'ro', isa => 'Num');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
   has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Int');
   has ImportTablesCompleted => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -34,6 +35,11 @@ Paws::RedShift::ResizeProgressMessage
 The average rate of the resize operation over the last few minutes,
 measured in megabytes per second. After the resize operation completes,
 this value shows the average rate of the entire resize operation.
+
+
+=head2 DataTransferProgressPercent => Num
+
+The percent of data transferred from source cluster to target cluster.
 
 
 =head2 ElapsedTimeInSeconds => Int

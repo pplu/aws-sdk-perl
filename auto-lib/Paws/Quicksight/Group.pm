@@ -3,6 +3,7 @@ package Paws::Quicksight::Group;
   has Arn => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
+  has PrincipalId => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Quicksight::Group object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., GroupName => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., PrincipalId => $value  });
 
 =head3 Results returned from an API call
 
@@ -54,6 +55,11 @@ QuickSight groups.
 =head2 GroupName => Str
 
   The name of the group.
+
+
+=head2 PrincipalId => Str
+
+  The principal ID of the group.
 
 
 

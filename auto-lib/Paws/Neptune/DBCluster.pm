@@ -16,6 +16,7 @@ package Paws::Neptune::DBCluster;
   has DbClusterResourceId => (is => 'ro', isa => 'Str');
   has DBSubnetGroup => (is => 'ro', isa => 'Str');
   has EarliestRestorableTime => (is => 'ro', isa => 'Str');
+  has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -170,6 +171,12 @@ group.
 point-in-time restore.
 
 
+=head2 EnabledCloudwatchLogsExports => ArrayRef[Str|Undef]
+
+  A list of log types that this DB cluster is configured to export to
+CloudWatch Logs.
+
+
 =head2 Endpoint => Str
 
   Specifies the connection endpoint for the primary instance of the DB
@@ -268,8 +275,7 @@ this DB cluster.
 
 =head2 ReplicationSourceIdentifier => Str
 
-  Contains the identifier of the source DB cluster if this DB cluster is
-a Read Replica.
+  Not supported by Neptune.
 
 
 =head2 Status => Str

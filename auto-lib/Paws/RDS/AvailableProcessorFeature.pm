@@ -38,7 +38,7 @@ instance class of a DB instance.
 
 For more information, see Configuring the Processor of the DB Instance
 Class
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html#USER_ConfigureProcessor)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html#USER_ConfigureProcessor)
 in the I<Amazon RDS User Guide.>
 
 =head1 ATTRIBUTES

@@ -47,7 +47,7 @@ and in any child OUs.
 
 For more information about ARNs in Organizations, see ARN Formats
 Supported by Organizations
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
 in the I<AWS Organizations User Guide>.
 
 

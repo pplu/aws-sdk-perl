@@ -31,11 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a volume
     # This example deletes an available volume with the volume ID of
     # ``vol-049df61146c4d7901``. If the command succeeds, no output is returned.
-    $ec2->DeleteVolume(
-      {
-        'VolumeId' => 'vol-049df61146c4d7901'
-      }
-    );
+    $ec2->DeleteVolume( 'VolumeId' => 'vol-049df61146c4d7901' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

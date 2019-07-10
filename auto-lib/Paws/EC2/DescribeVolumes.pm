@@ -45,20 +45,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # with the ID i-1234567890abcdef0 and set to delete when the instance
     # terminates.
     my $DescribeVolumesResult = $ec2->DescribeVolumes(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'attachment.instance-id',
-            'Values' => ['i-1234567890abcdef0']
-          },
+        {
+          'Name'   => 'attachment.instance-id',
+          'Values' => ['i-1234567890abcdef0']
+        },
 
-          {
-            'Name'   => 'attachment.delete-on-termination',
-            'Values' => ['true']
-          }
-        ]
-      }
+        {
+          'Name'   => 'attachment.delete-on-termination',
+          'Values' => ['true']
+        }
+      ]
     );
 
     # Results:
@@ -83,7 +81,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -123,7 +121,8 @@ C<create-time> - The time stamp when the volume was created.
 
 =item *
 
-C<encrypted> - The encryption status of the volume.
+C<encrypted> - Indicates whether the volume is encrypted (C<true> |
+C<false>)
 
 =item *
 
@@ -195,7 +194,7 @@ value is C<null> when there are no more results to return.
 
 =head2 VolumeIds => ArrayRef[Str|Undef]
 
-One or more volume IDs.
+The volume IDs.
 
 
 

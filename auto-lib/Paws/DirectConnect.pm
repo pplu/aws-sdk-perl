@@ -15,6 +15,11 @@ package Paws::DirectConnect;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub AcceptDirectConnectGatewayAssociationProposal {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::AcceptDirectConnectGatewayAssociationProposal', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AllocateConnectionOnInterconnect {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::AllocateConnectionOnInterconnect', @_);
@@ -33,6 +38,11 @@ package Paws::DirectConnect;
   sub AllocatePublicVirtualInterface {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::AllocatePublicVirtualInterface', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AllocateTransitVirtualInterface {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::AllocateTransitVirtualInterface', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AssociateConnectionWithLag {
@@ -65,6 +75,11 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::ConfirmPublicVirtualInterface', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ConfirmTransitVirtualInterface {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::ConfirmTransitVirtualInterface', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateBGPPeer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateBGPPeer', @_);
@@ -83,6 +98,11 @@ package Paws::DirectConnect;
   sub CreateDirectConnectGatewayAssociation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateDirectConnectGatewayAssociation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDirectConnectGatewayAssociationProposal {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateDirectConnectGatewayAssociationProposal', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateInterconnect {
@@ -105,6 +125,11 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreatePublicVirtualInterface', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTransitVirtualInterface {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateTransitVirtualInterface', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteBGPPeer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteBGPPeer', @_);
@@ -123,6 +148,11 @@ package Paws::DirectConnect;
   sub DeleteDirectConnectGatewayAssociation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteDirectConnectGatewayAssociation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDirectConnectGatewayAssociationProposal {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteDirectConnectGatewayAssociationProposal', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteInterconnect {
@@ -153,6 +183,11 @@ package Paws::DirectConnect;
   sub DescribeConnectionsOnInterconnect {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeConnectionsOnInterconnect', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDirectConnectGatewayAssociationProposals {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeDirectConnectGatewayAssociationProposals', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDirectConnectGatewayAssociations {
@@ -228,6 +263,11 @@ package Paws::DirectConnect;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateDirectConnectGatewayAssociation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::UpdateDirectConnectGatewayAssociation', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateLag {
@@ -312,7 +352,7 @@ package Paws::DirectConnect;
   }
 
 
-  sub operations { qw/AllocateConnectionOnInterconnect AllocateHostedConnection AllocatePrivateVirtualInterface AllocatePublicVirtualInterface AssociateConnectionWithLag AssociateHostedConnection AssociateVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateBGPPeer CreateConnection CreateDirectConnectGateway CreateDirectConnectGatewayAssociation CreateInterconnect CreateLag CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteBGPPeer DeleteConnection DeleteDirectConnectGateway DeleteDirectConnectGatewayAssociation DeleteInterconnect DeleteLag DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeDirectConnectGatewayAssociations DescribeDirectConnectGatewayAttachments DescribeDirectConnectGateways DescribeHostedConnections DescribeInterconnectLoa DescribeInterconnects DescribeLags DescribeLoa DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces DisassociateConnectionFromLag TagResource UntagResource UpdateLag UpdateVirtualInterfaceAttributes / }
+  sub operations { qw/AcceptDirectConnectGatewayAssociationProposal AllocateConnectionOnInterconnect AllocateHostedConnection AllocatePrivateVirtualInterface AllocatePublicVirtualInterface AllocateTransitVirtualInterface AssociateConnectionWithLag AssociateHostedConnection AssociateVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface ConfirmTransitVirtualInterface CreateBGPPeer CreateConnection CreateDirectConnectGateway CreateDirectConnectGatewayAssociation CreateDirectConnectGatewayAssociationProposal CreateInterconnect CreateLag CreatePrivateVirtualInterface CreatePublicVirtualInterface CreateTransitVirtualInterface DeleteBGPPeer DeleteConnection DeleteDirectConnectGateway DeleteDirectConnectGatewayAssociation DeleteDirectConnectGatewayAssociationProposal DeleteInterconnect DeleteLag DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeDirectConnectGatewayAssociationProposals DescribeDirectConnectGatewayAssociations DescribeDirectConnectGatewayAttachments DescribeDirectConnectGateways DescribeHostedConnections DescribeInterconnectLoa DescribeInterconnects DescribeLags DescribeLoa DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces DisassociateConnectionFromLag TagResource UntagResource UpdateDirectConnectGatewayAssociation UpdateLag UpdateVirtualInterfaceAttributes / }
 
 1;
 
@@ -356,6 +396,29 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head1 METHODS
 
+=head2 AcceptDirectConnectGatewayAssociationProposal
+
+=over
+
+=item AssociatedGatewayOwnerAccount => Str
+
+=item DirectConnectGatewayId => Str
+
+=item ProposalId => Str
+
+=item [OverrideAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::AcceptDirectConnectGatewayAssociationProposal>
+
+Returns: a L<Paws::DirectConnect::AcceptDirectConnectGatewayAssociationProposalResult> instance
+
+Accepts a proposal request to attach a virtual private gateway or
+transit gateway to a Direct Connect gateway.
+
+
 =head2 AllocateConnectionOnInterconnect
 
 =over
@@ -384,7 +447,7 @@ Creates a hosted connection on an interconnect.
 Allocates a VLAN number and a specified amount of bandwidth for use by
 a hosted connection on the specified interconnect.
 
-Intended for use by AWS Direct Connect partners only.
+Intended for use by AWS Direct Connect Partners only.
 
 
 =head2 AllocateHostedConnection
@@ -401,6 +464,8 @@ Intended for use by AWS Direct Connect partners only.
 
 =item Vlan => Int
 
+=item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
+
 
 =back
 
@@ -409,12 +474,15 @@ Each argument is described in detail in: L<Paws::DirectConnect::AllocateHostedCo
 Returns: a L<Paws::DirectConnect::Connection> instance
 
 Creates a hosted connection on the specified interconnect or a link
-aggregation group (LAG).
+aggregation group (LAG) of interconnects.
 
-Allocates a VLAN number and a specified amount of bandwidth for use by
-a hosted connection on the specified interconnect or LAG.
+Allocates a VLAN number and a specified amount of capacity (bandwidth)
+for use by a hosted connection on the specified interconnect or LAG of
+interconnects. AWS polices the hosted connection for the specified
+capacity and the AWS Direct Connect Partner must also police the hosted
+connection for the specified capacity.
 
-Intended for use by AWS Direct Connect partners only.
+Intended for use by AWS Direct Connect Partners only.
 
 
 =head2 AllocatePrivateVirtualInterface
@@ -477,6 +545,36 @@ the Amazon pool of IPv6 addresses; you cannot specify custom IPv6
 addresses.
 
 
+=head2 AllocateTransitVirtualInterface
+
+=over
+
+=item ConnectionId => Str
+
+=item NewTransitVirtualInterfaceAllocation => L<Paws::DirectConnect::NewTransitVirtualInterfaceAllocation>
+
+=item OwnerAccount => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::AllocateTransitVirtualInterface>
+
+Returns: a L<Paws::DirectConnect::AllocateTransitVirtualInterfaceResult> instance
+
+Provisions a transit virtual interface to be owned by the specified AWS
+account. Use this type of interface to connect a transit gateway to
+your Direct Connect gateway.
+
+The owner of a connection provisions a transit virtual interface to be
+owned by the specified AWS account.
+
+After you create a transit virtual interface, it must be confirmed by
+the owner using ConfirmTransitVirtualInterface. Until this step has
+been completed, the transit virtual interface is in the C<requested>
+state and is not available to handle traffic.
+
+
 =head2 AssociateConnectionWithLag
 
 =over
@@ -533,7 +631,7 @@ LAG has an existing hosted connection with a conflicting VLAN number or
 IP address, the operation fails. This action temporarily interrupts the
 hosted connection's connectivity to AWS as it is being migrated.
 
-Intended for use by AWS Direct Connect partners only.
+Intended for use by AWS Direct Connect Partners only.
 
 
 =head2 AssociateVirtualInterface
@@ -635,6 +733,29 @@ After the virtual interface owner makes this call, the specified
 virtual interface is created and made available to handle traffic.
 
 
+=head2 ConfirmTransitVirtualInterface
+
+=over
+
+=item DirectConnectGatewayId => Str
+
+=item VirtualInterfaceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::ConfirmTransitVirtualInterface>
+
+Returns: a L<Paws::DirectConnect::ConfirmTransitVirtualInterfaceResponse> instance
+
+Accepts ownership of a transit virtual interface created by another AWS
+account.
+
+After the owner of the transit virtual interface makes this call, the
+specified transit virtual interface is created and made available to
+handle traffic.
+
+
 =head2 CreateBGPPeer
 
 =over
@@ -679,6 +800,8 @@ be private or already whitelisted for the virtual interface.
 =item Location => Str
 
 =item [LagId => Str]
+
+=item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
 
 
 =back
@@ -735,7 +858,11 @@ located, and pass traffic between them.
 
 =item DirectConnectGatewayId => Str
 
-=item VirtualGatewayId => Str
+=item [AddAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+
+=item [GatewayId => Str]
+
+=item [VirtualGatewayId => Str]
 
 
 =back
@@ -747,6 +874,36 @@ Returns: a L<Paws::DirectConnect::CreateDirectConnectGatewayAssociationResult> i
 Creates an association between a Direct Connect gateway and a virtual
 private gateway. The virtual private gateway must be attached to a VPC
 and must not be associated with another Direct Connect gateway.
+
+
+=head2 CreateDirectConnectGatewayAssociationProposal
+
+=over
+
+=item DirectConnectGatewayId => Str
+
+=item DirectConnectGatewayOwnerAccount => Str
+
+=item GatewayId => Str
+
+=item [AddAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+
+=item [RemoveAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::CreateDirectConnectGatewayAssociationProposal>
+
+Returns: a L<Paws::DirectConnect::CreateDirectConnectGatewayAssociationProposalResult> instance
+
+Creates a proposal to associate the specified virtual private gateway
+or transit gateway with the specified Direct Connect gateway.
+
+You can only associate a Direct Connect gateway and virtual private
+gateway or transit gateway when the account that owns the Direct
+Connect gateway and the account that owns the virtual private gateway
+or transit gateway have the same AWS Payer ID.
 
 
 =head2 CreateInterconnect
@@ -761,6 +918,8 @@ and must not be associated with another Direct Connect gateway.
 
 =item [LagId => Str]
 
+=item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
+
 
 =back
 
@@ -768,16 +927,16 @@ Each argument is described in detail in: L<Paws::DirectConnect::CreateInterconne
 
 Returns: a L<Paws::DirectConnect::Interconnect> instance
 
-Creates an interconnect between an AWS Direct Connect partner's network
+Creates an interconnect between an AWS Direct Connect Partner's network
 and a specific AWS Direct Connect location.
 
-An interconnect is a connection which is capable of hosting other
-connections. The partner can use an interconnect to provide sub-1Gbps
-AWS Direct Connect service to tier 2 customers who do not have their
-own connections. Like a standard connection, an interconnect links the
-partner's network to an AWS Direct Connect location over a standard
-Ethernet fiber-optic cable. One end is connected to the partner's
-router, the other to an AWS Direct Connect router.
+An interconnect is a connection that is capable of hosting other
+connections. The AWS Direct Connect partner can use an interconnect to
+provide AWS Direct Connect hosted connections to customers through
+their own network services. Like a standard connection, an interconnect
+links the partner's network to an AWS Direct Connect location over a
+standard Ethernet fiber-optic cable. One end is connected to the
+partner's router, the other to an AWS Direct Connect router.
 
 You can automatically add the new interconnect to a link aggregation
 group (LAG) by specifying a LAG ID in the request. This ensures that
@@ -785,13 +944,13 @@ the new interconnect is allocated on the same AWS Direct Connect
 endpoint that hosts the specified LAG. If there are no available ports
 on the endpoint, the request fails and no interconnect is created.
 
-For each end customer, the AWS Direct Connect partner provisions a
-connection on their interconnect by calling
-AllocateConnectionOnInterconnect. The end customer can then connect to
-AWS resources by creating a virtual interface on their connection,
-using the VLAN assigned to them by the partner.
+For each end customer, the AWS Direct Connect Partner provisions a
+connection on their interconnect by calling AllocateHostedConnection.
+The end customer can then connect to AWS resources by creating a
+virtual interface on their connection, using the VLAN assigned to them
+by the AWS Direct Connect Partner.
 
-Intended for use by AWS Direct Connect partners only.
+Intended for use by AWS Direct Connect Partners only.
 
 
 =head2 CreateLag
@@ -806,7 +965,11 @@ Intended for use by AWS Direct Connect partners only.
 
 =item NumberOfConnections => Int
 
+=item [ChildConnectionTags => ArrayRef[L<Paws::DirectConnect::Tag>]]
+
 =item [ConnectionId => Str]
+
+=item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
 
 
 =back
@@ -838,7 +1001,7 @@ connection are automatically disassociated and re-associated with the
 LAG. The connection ID does not change.
 
 If the AWS account used to create a LAG is a registered AWS Direct
-Connect partner, the LAG is automatically enabled to host
+Connect Partner, the LAG is automatically enabled to host
 sub-connections. For a LAG owned by a partner, any associated virtual
 interfaces cannot be directly configured.
 
@@ -890,6 +1053,34 @@ supports sending traffic to public services of AWS such as Amazon S3.
 When creating an IPv6 public virtual interface (C<addressFamily> is
 C<ipv6>), leave the C<customer> and C<amazon> address fields blank to
 use auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
+
+
+=head2 CreateTransitVirtualInterface
+
+=over
+
+=item ConnectionId => Str
+
+=item NewTransitVirtualInterface => L<Paws::DirectConnect::NewTransitVirtualInterface>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::CreateTransitVirtualInterface>
+
+Returns: a L<Paws::DirectConnect::CreateTransitVirtualInterfaceResult> instance
+
+Creates a transit virtual interface. A transit virtual interface should
+be used to access one or more transit gateways associated with Direct
+Connect gateways. A transit virtual interface enables the connection of
+multiple VPCs attached to a transit gateway to a Direct Connect
+gateway.
+
+If you associate your transit gateway with one or more Direct Connect
+gateways, the Autonomous System Number (ASN) used by the transit
+gateway and the Direct Connect gateway must be different. For example,
+if you use the default ASN 64512 for both your the transit gateway and
+Direct Connect gateway, the association request fails.
 
 
 =head2 DeleteBGPPeer
@@ -961,9 +1152,11 @@ Direct Connect gateway.
 
 =over
 
-=item DirectConnectGatewayId => Str
+=item [AssociationId => Str]
 
-=item VirtualGatewayId => Str
+=item [DirectConnectGatewayId => Str]
+
+=item [VirtualGatewayId => Str]
 
 
 =back
@@ -974,6 +1167,23 @@ Returns: a L<Paws::DirectConnect::DeleteDirectConnectGatewayAssociationResult> i
 
 Deletes the association between the specified Direct Connect gateway
 and virtual private gateway.
+
+
+=head2 DeleteDirectConnectGatewayAssociationProposal
+
+=over
+
+=item ProposalId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::DeleteDirectConnectGatewayAssociationProposal>
+
+Returns: a L<Paws::DirectConnect::DeleteDirectConnectGatewayAssociationProposalResult> instance
+
+Deletes the association proposal request between the specified Direct
+Connect gateway and virtual private gateway or transit gateway.
 
 
 =head2 DeleteInterconnect
@@ -991,7 +1201,7 @@ Returns: a L<Paws::DirectConnect::DeleteInterconnectResponse> instance
 
 Deletes the specified interconnect.
 
-Intended for use by AWS Direct Connect partners only.
+Intended for use by AWS Direct Connect Partners only.
 
 
 =head2 DeleteLag
@@ -1053,7 +1263,7 @@ is a document that your APN partner or service provider uses when
 establishing your cross connect to AWS at the colocation facility. For
 more information, see Requesting Cross Connects at AWS Direct Connect
 Locations
-(http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
+(https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
 in the I<AWS Direct Connect User Guide>.
 
 
@@ -1091,12 +1301,42 @@ Deprecated. Use DescribeHostedConnections instead.
 Lists the connections that have been provisioned on the specified
 interconnect.
 
-Intended for use by AWS Direct Connect partners only.
+Intended for use by AWS Direct Connect Partners only.
+
+
+=head2 DescribeDirectConnectGatewayAssociationProposals
+
+=over
+
+=item [AssociatedGatewayId => Str]
+
+=item [DirectConnectGatewayId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ProposalId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::DescribeDirectConnectGatewayAssociationProposals>
+
+Returns: a L<Paws::DirectConnect::DescribeDirectConnectGatewayAssociationProposalsResult> instance
+
+Describes one or more association proposals for connection between a
+virtual private gateway or transit gateway and a Direct Connect
+gateway.
 
 
 =head2 DescribeDirectConnectGatewayAssociations
 
 =over
+
+=item [AssociatedGatewayId => Str]
+
+=item [AssociationId => Str]
 
 =item [DirectConnectGatewayId => Str]
 
@@ -1190,7 +1430,7 @@ Returns: a L<Paws::DirectConnect::Connections> instance
 Lists the hosted connections that have been provisioned on the
 specified interconnect or link aggregation group (LAG).
 
-Intended for use by AWS Direct Connect partners only.
+Intended for use by AWS Direct Connect Partners only.
 
 
 =head2 DescribeInterconnectLoa
@@ -1218,7 +1458,7 @@ The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
 is a document that is used when establishing your cross connect to AWS
 at the colocation facility. For more information, see Requesting Cross
 Connects at AWS Direct Connect Locations
-(http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
+(https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
 in the I<AWS Direct Connect User Guide>.
 
 
@@ -1279,7 +1519,7 @@ The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
 is a document that is used when establishing your cross connect to AWS
 at the colocation facility. For more information, see Requesting Cross
 Connects at AWS Direct Connect Locations
-(http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
+(https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
 in the I<AWS Direct Connect User Guide>.
 
 
@@ -1382,7 +1622,7 @@ connection is interrupted and re-established as a standalone connection
 (the connection is not deleted; to delete the connection, use the
 DeleteConnection request). If the LAG has associated virtual interfaces
 or hosted connections, they remain associated with the LAG. A
-disassociated connection owned by an AWS Direct Connect partner is
+disassociated connection owned by an AWS Direct Connect Partner is
 automatically converted to an interconnect.
 
 If disassociating the connection would cause the LAG to fall below its
@@ -1432,6 +1672,29 @@ Returns: a L<Paws::DirectConnect::UntagResourceResponse> instance
 
 Removes one or more tags from the specified AWS Direct Connect
 resource.
+
+
+=head2 UpdateDirectConnectGatewayAssociation
+
+=over
+
+=item [AddAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+
+=item [AssociationId => Str]
+
+=item [RemoveAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::UpdateDirectConnectGatewayAssociation>
+
+Returns: a L<Paws::DirectConnect::UpdateDirectConnectGatewayAssociationResult> instance
+
+Updates the specified attributes of the Direct Connect gateway
+association.
+
+Add or remove prefixes from the association.
 
 
 =head2 UpdateLag
@@ -1510,9 +1773,9 @@ interface supports jumbo frames, call DescribeVirtualInterfaces.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllDirectConnectGatewayAssociations(sub { },[DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str, VirtualGatewayId => Str])
+=head2 DescribeAllDirectConnectGatewayAssociations(sub { },[AssociatedGatewayId => Str, AssociationId => Str, DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str, VirtualGatewayId => Str])
 
-=head2 DescribeAllDirectConnectGatewayAssociations([DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str, VirtualGatewayId => Str])
+=head2 DescribeAllDirectConnectGatewayAssociations([AssociatedGatewayId => Str, AssociationId => Str, DirectConnectGatewayId => Str, MaxResults => Int, NextToken => Str, VirtualGatewayId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

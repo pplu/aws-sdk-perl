@@ -26,6 +26,7 @@ package Paws::S3::PutObject;
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
   has SSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key', traits => ['ParamInHeader']);
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
+  has SSEKMSEncryptionContext => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-context', traits => ['ParamInHeader']);
   has SSEKMSKeyId => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-aws-kms-key-id', traits => ['ParamInHeader']);
   has StorageClass => (is => 'ro', isa => 'Str', header_name => 'x-amz-storage-class', traits => ['ParamInHeader']);
   has Tagging => (is => 'ro', isa => 'Str', header_name => 'x-amz-tagging', traits => ['ParamInHeader']);
@@ -83,6 +84,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SSECustomerAlgorithm      => 'MySSECustomerAlgorithm',    # OPTIONAL
       SSECustomerKey            => 'MySSECustomerKey',          # OPTIONAL
       SSECustomerKeyMD5         => 'MySSECustomerKeyMD5',       # OPTIONAL
+      SSEKMSEncryptionContext   => 'MySSEKMSEncryptionContext', # OPTIONAL
       SSEKMSKeyId               => 'MySSEKMSKeyId',             # OPTIONAL
       ServerSideEncryption      => 'AES256',                    # OPTIONAL
       StorageClass              => 'STANDARD',                  # OPTIONAL
@@ -91,14 +93,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ETag                 = $PutObjectOutput->ETag;
-    my $Expiration           = $PutObjectOutput->Expiration;
-    my $RequestCharged       = $PutObjectOutput->RequestCharged;
-    my $SSECustomerAlgorithm = $PutObjectOutput->SSECustomerAlgorithm;
-    my $SSECustomerKeyMD5    = $PutObjectOutput->SSECustomerKeyMD5;
-    my $SSEKMSKeyId          = $PutObjectOutput->SSEKMSKeyId;
-    my $ServerSideEncryption = $PutObjectOutput->ServerSideEncryption;
-    my $VersionId            = $PutObjectOutput->VersionId;
+    my $ETag                    = $PutObjectOutput->ETag;
+    my $Expiration              = $PutObjectOutput->Expiration;
+    my $RequestCharged          = $PutObjectOutput->RequestCharged;
+    my $SSECustomerAlgorithm    = $PutObjectOutput->SSECustomerAlgorithm;
+    my $SSECustomerKeyMD5       = $PutObjectOutput->SSECustomerKeyMD5;
+    my $SSEKMSEncryptionContext = $PutObjectOutput->SSEKMSEncryptionContext;
+    my $SSEKMSKeyId             = $PutObjectOutput->SSEKMSKeyId;
+    my $ServerSideEncryption    = $PutObjectOutput->ServerSideEncryption;
+    my $VersionId               = $PutObjectOutput->VersionId;
 
     # Returns a L<Paws::S3::PutObjectOutput> object.
 
@@ -161,7 +164,9 @@ the body cannot be determined automatically.
 
 =head2 ContentMD5 => Str
 
-The base64-encoded 128-bit MD5 digest of the part data.
+The base64-encoded 128-bit MD5 digest of the part data. This parameter
+is auto-populated when using the command from the CLI. This parameted
+is required if object lock parameters are specified.
 
 
 
@@ -222,13 +227,13 @@ Valid values are: C<"ON">, C<"OFF">
 
 =head2 ObjectLockMode => Str
 
-The Object Lock mode that you want to apply to this object.
+The object lock mode that you want to apply to this object.
 
 Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
 
 =head2 ObjectLockRetainUntilDate => Str
 
-The date and time when you want this object's Object Lock to expire.
+The date and time when you want this object's object lock to expire.
 
 
 
@@ -270,6 +275,14 @@ ensure the encryption key was transmitted without error.
 
 
 
+=head2 SSEKMSEncryptionContext => Str
+
+Specifies the AWS KMS Encryption Context to use for object encryption.
+The value of this header is a base64-encoded UTF-8 string holding JSON
+with the encryption context key-value pairs.
+
+
+
 =head2 SSEKMSKeyId => Str
 
 Specifies the AWS KMS key ID to use for object encryption. All GET and
@@ -284,7 +297,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signatur
 
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
 
 =head2 Tagging => Str
 

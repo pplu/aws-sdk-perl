@@ -39,7 +39,7 @@ This class has no description
 =head2 B<REQUIRED> Type => Str
 
   The type of elastic inference accelerator. The possible values are
-eia1.small, eia1.medium, and eia1.large.
+C<eia1.small>, C<eia1.medium>, and C<eia1.large>.
 
 
 

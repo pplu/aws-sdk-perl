@@ -39,6 +39,11 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteUserByPrincipalId {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteUserByPrincipalId', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeGroup', @_);
@@ -92,7 +97,7 @@ package Paws::Quicksight;
   
 
 
-  sub operations { qw/CreateGroup CreateGroupMembership DeleteGroup DeleteGroupMembership DeleteUser DescribeGroup DescribeUser GetDashboardEmbedUrl ListGroupMemberships ListGroups ListUserGroups ListUsers RegisterUser UpdateGroup UpdateUser / }
+  sub operations { qw/CreateGroup CreateGroupMembership DeleteGroup DeleteGroupMembership DeleteUser DeleteUserByPrincipalId DescribeGroup DescribeUser GetDashboardEmbedUrl ListGroupMemberships ListGroups ListUserGroups ListUsers RegisterUser UpdateGroup UpdateUser / }
 
 1;
 
@@ -299,6 +304,26 @@ B<CLI Sample:>
 
 C<aws quicksight delete-user --aws-account-id=111122223333
 --namespace=default --user-name=Pat>
+
+
+=head2 DeleteUserByPrincipalId
+
+=over
+
+=item AwsAccountId => Str
+
+=item Namespace => Str
+
+=item PrincipalId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DeleteUserByPrincipalId>
+
+Returns: a L<Paws::Quicksight::DeleteUserByPrincipalIdResponse> instance
+
+Deletes a user after locating the user by its principal ID.
 
 
 =head2 DescribeGroup

@@ -2,6 +2,7 @@ package Paws::MediaConvert::MsSmoothGroupSettings;
   use Moose;
   has AudioDeduplication => (is => 'ro', isa => 'Str', request_name => 'audioDeduplication', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
+  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::MsSmoothEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
   has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
   has ManifestEncoding => (is => 'ro', isa => 'Str', request_name => 'manifestEncoding', traits => ['NameInRequest']);
@@ -43,7 +44,8 @@ Required when you set (Type) under
 
 =head2 AudioDeduplication => Str
 
-  
+  COMBINE_DUPLICATE_STREAMS combines identical audio encoding settings
+across a Microsoft Smooth output group into a single audio stream.
 
 
 =head2 Destination => Str
@@ -55,9 +57,16 @@ filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
 
 
+=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+
+  Settings associated with the destination. Will vary based on the type
+of destination
+
+
 =head2 Encryption => L<Paws::MediaConvert::MsSmoothEncryptionSettings>
 
-  
+  If you are using DRM, set DRM System (MsSmoothEncryptionSettings) to
+specify the value SpekeKeyProvider.
 
 
 =head2 FragmentLength => Int
@@ -69,7 +78,9 @@ rate.
 
 =head2 ManifestEncoding => Str
 
-  
+  Use Manifest encoding (MsSmoothManifestEncoding) to specify the
+encoding format for the server and client manifest. Valid options are
+utf8 and utf16.
 
 
 

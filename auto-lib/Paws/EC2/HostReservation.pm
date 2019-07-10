@@ -12,6 +12,7 @@ package Paws::EC2::HostReservation;
   has PaymentOption => (is => 'ro', isa => 'Str', request_name => 'paymentOption', traits => ['NameInRequest']);
   has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has UpfrontPrice => (is => 'ro', isa => 'Str', request_name => 'upfrontPrice', traits => ['NameInRequest']);
 1;
 
@@ -112,6 +113,11 @@ Dedicated Hosts are associated with it.
 =head2 State => Str
 
   The state of the reservation.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  Any tags assigned to the Dedicated Host Reservation.
 
 
 =head2 UpfrontPrice => Str

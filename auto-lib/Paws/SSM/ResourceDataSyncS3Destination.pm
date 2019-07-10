@@ -44,7 +44,7 @@ Sync.
 =head2 AWSKMSKeyARN => Str
 
   The ARN of an encryption key for a destination in Amazon S3. Must
-belong to the same region as the destination Amazon S3 bucket.
+belong to the same Region as the destination Amazon S3 bucket.
 
 
 =head2 B<REQUIRED> BucketName => Str

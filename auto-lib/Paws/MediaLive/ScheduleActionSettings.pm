@@ -2,6 +2,7 @@ package Paws::MediaLive::ScheduleActionSettings;
   use Moose;
   has HlsTimedMetadataSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsTimedMetadataScheduleActionSettings', request_name => 'hlsTimedMetadataSettings', traits => ['NameInRequest']);
   has InputSwitchSettings => (is => 'ro', isa => 'Paws::MediaLive::InputSwitchScheduleActionSettings', request_name => 'inputSwitchSettings', traits => ['NameInRequest']);
+  has PauseStateSettings => (is => 'ro', isa => 'Paws::MediaLive::PauseStateScheduleActionSettings', request_name => 'pauseStateSettings', traits => ['NameInRequest']);
   has Scte35ReturnToNetworkSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings', request_name => 'scte35ReturnToNetworkSettings', traits => ['NameInRequest']);
   has Scte35SpliceInsertSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35SpliceInsertScheduleActionSettings', request_name => 'scte35SpliceInsertSettings', traits => ['NameInRequest']);
   has Scte35TimeSignalSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35TimeSignalScheduleActionSettings', request_name => 'scte35TimeSignalSettings', traits => ['NameInRequest']);
@@ -44,37 +45,42 @@ Holds the settings for a single schedule action.
 
 =head2 HlsTimedMetadataSettings => L<Paws::MediaLive::HlsTimedMetadataScheduleActionSettings>
 
-  Settings to emit HLS metadata
+  Action to insert HLS metadata
 
 
 =head2 InputSwitchSettings => L<Paws::MediaLive::InputSwitchScheduleActionSettings>
 
-  Settings to switch an input
+  Action to switch the input
+
+
+=head2 PauseStateSettings => L<Paws::MediaLive::PauseStateScheduleActionSettings>
+
+  Action to pause or unpause one or both channel pipelines
 
 
 =head2 Scte35ReturnToNetworkSettings => L<Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings>
 
-  Settings for SCTE-35 return_to_network message
+  Action to insert SCTE-35 return_to_network message
 
 
 =head2 Scte35SpliceInsertSettings => L<Paws::MediaLive::Scte35SpliceInsertScheduleActionSettings>
 
-  Settings for SCTE-35 splice_insert message
+  Action to insert SCTE-35 splice_insert message
 
 
 =head2 Scte35TimeSignalSettings => L<Paws::MediaLive::Scte35TimeSignalScheduleActionSettings>
 
-  Settings for SCTE-35 time_signal message
+  Action to insert SCTE-35 time_signal message
 
 
 =head2 StaticImageActivateSettings => L<Paws::MediaLive::StaticImageActivateScheduleActionSettings>
 
-  Settings to activate a static image overlay
+  Action to activate a static image overlay
 
 
 =head2 StaticImageDeactivateSettings => L<Paws::MediaLive::StaticImageDeactivateScheduleActionSettings>
 
-  Settings to deactivate a static image overlay
+  Action to deactivate a static image overlay
 
 
 

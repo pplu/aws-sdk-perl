@@ -17,7 +17,7 @@ Paws::ApplicationAutoScaling::PutScalingPolicyResponse
 
 =head2 Alarms => ArrayRef[L<Paws::ApplicationAutoScaling::Alarm>]
 
-The CloudWatch alarms created for the target tracking policy.
+The CloudWatch alarms created for the target tracking scaling policy.
 
 
 =head2 B<REQUIRED> PolicyARN => Str

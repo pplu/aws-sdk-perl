@@ -17,14 +17,13 @@ Paws::KMS::GenerateDataKeyWithoutPlaintextResponse
 
 =head2 CiphertextBlob => Str
 
-The encrypted data encryption key. When you use the HTTP API or the AWS
-CLI, the value is Base64-encdoded. Otherwise, it is not encoded.
+The encrypted data key. When you use the HTTP API or the AWS CLI, the
+value is Base64-encoded. Otherwise, it is not encoded.
 
 
 =head2 KeyId => Str
 
-The identifier of the CMK under which the data encryption key was
-generated and encrypted.
+The identifier of the CMK that encrypted the data key.
 
 
 =head2 _request_id => Str

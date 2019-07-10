@@ -52,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 Blackhole => Bool
 
-Indicates whether traffic matching this route is to be dropped.
+Indicates whether to drop traffic that matches this route.
 
 
 

@@ -7,6 +7,7 @@ package Paws::KinesisAnalyticsV2::CreateApplication;
   has CloudWatchLoggingOptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::CloudWatchLoggingOption]');
   has RuntimeEnvironment => (is => 'ro', isa => 'Str', required => 1);
   has ServiceExecutionRole => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -50,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ApplicationSnapshotConfiguration => {
-          SnapshotsEnabled => 1,    # OPTIONAL
+          SnapshotsEnabled => 1,
 
         },    # OPTIONAL
         EnvironmentProperties => {
@@ -71,7 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CheckpointConfiguration => {
             ConfigurationType          => 'DEFAULT',   # values: DEFAULT, CUSTOM
             CheckpointInterval         => 1,           # OPTIONAL
-            CheckpointingEnabled       => 1,           # OPTIONAL
+            CheckpointingEnabled       => 1,
             MinPauseBetweenCheckpoints => 1,           # OPTIONAL
           },    # OPTIONAL
           MonitoringConfiguration => {
@@ -82,7 +83,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           ParallelismConfiguration => {
             ConfigurationType  => 'DEFAULT',    # values: DEFAULT, CUSTOM
-            AutoScalingEnabled => 1,            # OPTIONAL
+            AutoScalingEnabled => 1,
             Parallelism        => 1,            # min: 1; OPTIONAL
             ParallelismPerKPU  => 1,            # min: 1; OPTIONAL
           },    # OPTIONAL
@@ -206,6 +207,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                       # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',                 # min: 1, max: 128
+          Value => 'MyTagValue',               # max: 256; OPTIONAL
+        },
+        ...
+      ],                                       # OPTIONAL
     );
 
     # Results:
@@ -247,7 +255,7 @@ monitor application configuration errors.
 =head2 B<REQUIRED> RuntimeEnvironment => Str
 
 The runtime environment for the application (C<SQL-1.0> or
-C<JAVA-8-FLINK-1.5>).
+C<FLINK-1_6>).
 
 Valid values are: C<"SQL-1_0">, C<"FLINK-1_6">
 
@@ -256,6 +264,18 @@ Valid values are: C<"SQL-1_0">, C<"FLINK-1_6">
 The IAM role used by the application to access Kinesis data streams,
 Kinesis Data Firehose delivery streams, Amazon S3 objects, and other
 external resources.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::KinesisAnalyticsV2::Tag>]
+
+A list of one or more tags to assign to the application. A tag is a
+key-value pair that identifies an application. Note that the maximum
+number of application tags includes system tags. The maximum number of
+user-defined application tags is 50. For more information, see Using
+Cost Allocation Tags
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+in the I<AWS Billing and Cost Management Guide>.
 
 
 

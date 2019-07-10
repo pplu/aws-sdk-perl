@@ -6,7 +6,7 @@ package Paws::AppMesh::DescribeMesh;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMesh');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/meshes/{meshName}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::DescribeMeshOutput');
 1;

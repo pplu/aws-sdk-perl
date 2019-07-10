@@ -48,10 +48,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Comman
 
 An invocation is copy of a command sent to a specific instance. A
 command can apply to one or more instances. A command invocation
-applies to one instance. For example, if a user executes SendCommand
+applies to one instance. For example, if a user runs SendCommand
 against three instances, then a command invocation is created for each
 requested instance ID. A command invocation returns status and detail
-information about a command you executed.
+information about a command you ran.
 
 =head1 ATTRIBUTES
 

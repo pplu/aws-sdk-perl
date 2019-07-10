@@ -32,10 +32,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $InviteMembersResponse = $guardduty->InviteMembers(
-      AccountIds               => [ 'My__string', ... ],
-      DetectorId               => 'My__string',
-      DisableEmailNotification => 1,                       # OPTIONAL
-      Message                  => 'MyMessage',             # OPTIONAL
+      AccountIds => [
+        'MyAccountId', ...    # min: 12, max: 12
+      ],
+      DetectorId               => 'MyDetectorId',
+      DisableEmailNotification => 1,                # OPTIONAL
+      Message                  => 'MyString',       # OPTIONAL
     );
 
     # Results:

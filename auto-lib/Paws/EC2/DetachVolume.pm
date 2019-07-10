@@ -34,11 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To detach a volume from an instance
     # This example detaches the volume (``vol-049df61146c4d7901``) from the
     # instance it is attached to.
-    my $VolumeAttachment = $ec2->DetachVolume(
-      {
-        'VolumeId' => 'vol-1234567890abcdef0'
-      }
-    );
+    my $VolumeAttachment =
+      $ec2->DetachVolume( 'VolumeId' => 'vol-1234567890abcdef0' );
 
     # Results:
     my $AttachTime = $VolumeAttachment->AttachTime;

@@ -42,7 +42,7 @@ Information about Amazon CloudWatch Logs for a build project.
 
   The group name of the logs in Amazon CloudWatch Logs. For more
 information, see Working with Log Groups and Log Streams
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html).
 
 
 =head2 B<REQUIRED> Status => Str
@@ -69,7 +69,7 @@ project.
 
   The prefix of the stream name of the Amazon CloudWatch Logs. For more
 information, see Working with Log Groups and Log Streams
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html).
 
 
 

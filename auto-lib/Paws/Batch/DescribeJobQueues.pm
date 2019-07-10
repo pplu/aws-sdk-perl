@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $batch = Paws->service('Batch');
     # To describe a job queue
     # This example describes the HighPriority job queue.
-    my $DescribeJobQueuesResponse = $batch->DescribeJobQueues(
-      {
-        'JobQueues' => ['HighPriority']
-      }
-    );
+    my $DescribeJobQueuesResponse =
+      $batch->DescribeJobQueues( 'JobQueues' => ['HighPriority'] );
 
     # Results:
     my $jobQueues = $DescribeJobQueuesResponse->jobQueues;

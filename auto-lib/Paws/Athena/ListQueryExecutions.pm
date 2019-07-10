@@ -3,6 +3,7 @@ package Paws::Athena::ListQueryExecutions;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has WorkGroup => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,8 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $athena = Paws->service('Athena');
     my $ListQueryExecutionsOutput = $athena->ListQueryExecutions(
-      MaxResults => 1,            # OPTIONAL
-      NextToken  => 'MyToken',    # OPTIONAL
+      MaxResults => 1,                    # OPTIONAL
+      NextToken  => 'MyToken',            # OPTIONAL
+      WorkGroup  => 'MyWorkGroupName',    # OPTIONAL
     );
 
     # Results:
@@ -55,6 +57,12 @@ The maximum number of query executions to return in this request.
 
 The token that specifies where to start pagination if a previous
 request was truncated.
+
+
+
+=head2 WorkGroup => Str
+
+The name of the workgroup from which queries are being returned.
 
 
 

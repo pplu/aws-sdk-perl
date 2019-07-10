@@ -52,8 +52,8 @@ of the DB cluster.
 
 =head2 IsClusterWriter => Bool
 
-  Value that is C<true> if the cluster member is the primary instance for
-the DB cluster and C<false> otherwise.
+  A value that indicates whehter the cluster member is the primary
+instance for the DB cluster.
 
 
 =head2 PromotionTier => Int
@@ -62,7 +62,7 @@ the DB cluster and C<false> otherwise.
 to the primary instance after a failure of the existing primary
 instance. For more information, see Fault Tolerance for an Aurora DB
 Cluster
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
 in the I<Amazon Aurora User Guide>.
 
 

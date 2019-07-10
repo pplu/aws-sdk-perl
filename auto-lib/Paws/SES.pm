@@ -224,6 +224,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::ListVerifiedEmailAddresses', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutConfigurationSetDeliveryOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::PutConfigurationSetDeliveryOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutIdentityPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::PutIdentityPolicy', @_);
@@ -482,7 +487,7 @@ package Paws::SES;
   }
 
 
-  sub operations { qw/CloneReceiptRuleSet CreateConfigurationSet CreateConfigurationSetEventDestination CreateConfigurationSetTrackingOptions CreateCustomVerificationEmailTemplate CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet CreateTemplate DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteConfigurationSetTrackingOptions DeleteCustomVerificationEmailTemplate DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteTemplate DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeConfigurationSet DescribeReceiptRule DescribeReceiptRuleSet GetAccountSendingEnabled GetCustomVerificationEmailTemplate GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics GetTemplate ListConfigurationSets ListCustomVerificationEmailTemplates ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListTemplates ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendBulkTemplatedEmail SendCustomVerificationEmail SendEmail SendRawEmail SendTemplatedEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition TestRenderTemplate UpdateAccountSendingEnabled UpdateConfigurationSetEventDestination UpdateConfigurationSetReputationMetricsEnabled UpdateConfigurationSetSendingEnabled UpdateConfigurationSetTrackingOptions UpdateCustomVerificationEmailTemplate UpdateReceiptRule UpdateTemplate VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
+  sub operations { qw/CloneReceiptRuleSet CreateConfigurationSet CreateConfigurationSetEventDestination CreateConfigurationSetTrackingOptions CreateCustomVerificationEmailTemplate CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet CreateTemplate DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteConfigurationSetTrackingOptions DeleteCustomVerificationEmailTemplate DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteTemplate DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeConfigurationSet DescribeReceiptRule DescribeReceiptRuleSet GetAccountSendingEnabled GetCustomVerificationEmailTemplate GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics GetTemplate ListConfigurationSets ListCustomVerificationEmailTemplates ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListTemplates ListVerifiedEmailAddresses PutConfigurationSetDeliveryOptions PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendBulkTemplatedEmail SendCustomVerificationEmail SendEmail SendRawEmail SendTemplatedEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition TestRenderTemplate UpdateAccountSendingEnabled UpdateConfigurationSetEventDestination UpdateConfigurationSetReputationMetricsEnabled UpdateConfigurationSetSendingEnabled UpdateConfigurationSetTrackingOptions UpdateCustomVerificationEmailTemplate UpdateReceiptRule UpdateTemplate VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
 
 1;
 
@@ -516,13 +521,13 @@ This document contains reference information for the Amazon Simple
 Email Service (https://aws.amazon.com/ses/) (Amazon SES) API, version
 2010-12-01. This document is best used in conjunction with the Amazon
 SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
 
 For a list of Amazon SES endpoints to use in service requests, see
 Regions and Amazon SES
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html) in
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html) in
 the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/ses/>
 
@@ -550,7 +555,7 @@ completely independent of the source rule set.
 
 For information about setting up rule sets, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
 
 You can execute this operation no more than once per second.
 
@@ -573,7 +578,7 @@ Creates a configuration set.
 Configuration sets enable you to publish email sending events. For
 information about using configuration sets, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
 You can execute this operation no more than once per second.
 
@@ -603,7 +608,7 @@ An event destination is the AWS service to which Amazon SES publishes
 the email sending events associated with a configuration set. For
 information about using configuration sets, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
 You can execute this operation no more than once per second.
 
@@ -630,7 +635,7 @@ By default, images and links used for tracking open and click events
 are hosted on domains operated by Amazon SES. You can configure a
 subdomain of your own to handle these events. For information about
 using custom domains, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
 
 
 =head2 CreateCustomVerificationEmailTemplate
@@ -660,7 +665,7 @@ Creates a new custom verification email template.
 
 For more information about custom verification email templates, see
 Using Custom Verification Email Templates
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -683,7 +688,7 @@ Creates a new IP address filter.
 
 For information about setting up IP address filters, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html).
 
 You can execute this operation no more than once per second.
 
@@ -709,7 +714,7 @@ Creates a receipt rule.
 
 For information about setting up receipt rules, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
 
 You can execute this operation no more than once per second.
 
@@ -731,7 +736,7 @@ Creates an empty receipt rule set.
 
 For information about setting up receipt rule sets, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
 
 You can execute this operation no more than once per second.
 
@@ -752,7 +757,7 @@ Returns: a L<Paws::SES::CreateTemplateResponse> instance
 Creates an email template. Email templates enable you to send
 personalized email to one or more destinations in a single API
 operation. For more information, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
 
 You can execute this operation no more than once per second.
 
@@ -773,7 +778,7 @@ Returns: a L<Paws::SES::DeleteConfigurationSetResponse> instance
 Deletes a configuration set. Configuration sets enable you to publish
 email sending events. For information about using configuration sets,
 see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
 You can execute this operation no more than once per second.
 
@@ -797,7 +802,7 @@ Deletes a configuration set event destination. Configuration set event
 destinations are associated with configuration sets, which enable you
 to publish email sending events. For information about using
 configuration sets, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
 You can execute this operation no more than once per second.
 
@@ -822,7 +827,7 @@ By default, images and links used for tracking open and click events
 are hosted on domains operated by Amazon SES. You can configure a
 subdomain of your own to handle these events. For information about
 using custom domains, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
 
 Deleting this kind of association will result in emails sent using the
 specified configuration set to capture open and click events using the
@@ -846,7 +851,7 @@ Deletes an existing custom verification email template.
 
 For more information about custom verification email templates, see
 Using Custom Verification Email Templates
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -896,7 +901,7 @@ identity, this API will return an error.
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
 using sending authorization, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 You can execute this operation no more than once per second.
 
@@ -918,7 +923,7 @@ Deletes the specified IP address filter.
 
 For information about managing IP address filters, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).
 
 You can execute this operation no more than once per second.
 
@@ -942,7 +947,7 @@ Deletes the specified receipt rule.
 
 For information about managing receipt rules, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
 
 You can execute this operation no more than once per second.
 
@@ -967,7 +972,7 @@ The currently active rule set cannot be deleted.
 
 For information about managing receipt rule sets, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
 
 You can execute this operation no more than once per second.
 
@@ -1023,7 +1028,7 @@ currently active.
 
 For information about setting up receipt rule sets, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
 
 You can execute this operation no more than once per second.
 
@@ -1045,7 +1050,7 @@ Returns: a L<Paws::SES::DescribeConfigurationSetResponse> instance
 
 Returns the details of the specified configuration set. For information
 about using configuration sets, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
 You can execute this operation no more than once per second.
 
@@ -1069,7 +1074,7 @@ Returns the details of the specified receipt rule.
 
 For information about setting up receipt rules, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
 
 You can execute this operation no more than once per second.
 
@@ -1091,7 +1096,7 @@ Returns the details of the specified receipt rule set.
 
 For information about managing receipt rule sets, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
 
 You can execute this operation no more than once per second.
 
@@ -1133,7 +1138,7 @@ you specify.
 
 For more information about custom verification email templates, see
 Using Custom Verification Email Templates
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -1184,7 +1189,7 @@ DKIM attributes for up to 100 identities at a time.
 
 For more information about creating DNS records using DKIM tokens, go
 to the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
 
 
 =head2 GetIdentityMailFromDomainAttributes
@@ -1228,7 +1233,7 @@ notification attributes for up to 100 identities at a time.
 
 For more information about using notifications with Amazon SES, see the
 Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
 
 =head2 GetIdentityPolicies
@@ -1257,7 +1262,7 @@ identity, this API will return an error.
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
 using sending authorization, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 You can execute this operation no more than once per second.
 
@@ -1376,7 +1381,7 @@ Returns: a L<Paws::SES::ListConfigurationSetsResponse> instance
 Provides a list of the configuration sets associated with your Amazon
 SES account in the current AWS Region. For information about using
 configuration sets, see Monitoring Your Amazon SES Sending Activity
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html)
 in the I<Amazon SES Developer Guide.>
 
 You can execute this operation no more than once per second. This
@@ -1408,7 +1413,7 @@ in the current AWS Region.
 
 For more information about custom verification email templates, see
 Using Custom Verification Email Templates
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -1462,7 +1467,7 @@ identity, this API will return an error.
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
 using sending authorization, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 You can execute this operation no more than once per second.
 
@@ -1483,7 +1488,7 @@ current AWS Region.
 
 For information about managing IP address filters, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).
 
 You can execute this operation no more than once per second.
 
@@ -1508,7 +1513,7 @@ next call to C<ListReceiptRuleSets> to retrieve the additional entries.
 
 For information about managing receipt rule sets, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
 
 You can execute this operation no more than once per second.
 
@@ -1551,6 +1556,24 @@ Deprecated. Use the C<ListIdentities> operation to list the email
 addresses and domains associated with your account.
 
 
+=head2 PutConfigurationSetDeliveryOptions
+
+=over
+
+=item ConfigurationSetName => Str
+
+=item [DeliveryOptions => L<Paws::SES::DeliveryOptions>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SES::PutConfigurationSetDeliveryOptions>
+
+Returns: a L<Paws::SES::PutConfigurationSetDeliveryOptionsResponse> instance
+
+Adds or updates the delivery options for a configuration set.
+
+
 =head2 PutIdentityPolicy
 
 =over
@@ -1577,7 +1600,7 @@ identity, this API will return an error.
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
 using sending authorization, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 You can execute this operation no more than once per second.
 
@@ -1605,7 +1628,7 @@ explicitly position all of the rules.
 
 For information about managing receipt rule sets, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
 
 You can execute this operation no more than once per second.
 
@@ -1642,7 +1665,7 @@ received by Amazon SES.
 
 For information about receiving email through Amazon SES, see the
 Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
 
 You can execute this operation no more than once per second.
 
@@ -1703,7 +1726,7 @@ If your account is still in the Amazon SES sandbox, you may only send
 to verified addresses or domains, or to email addresses associated with
 the Amazon SES Mailbox Simulator. For more information, see Verifying
 Email Addresses and Domains
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
 in the I<Amazon SES Developer Guide.>
 
 =item *
@@ -1762,7 +1785,7 @@ To use this operation, you must first create a custom verification
 email template. For more information about creating and using custom
 verification email templates, see Using Custom Verification Email
 Templates
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -1815,7 +1838,7 @@ If your account is still in the Amazon SES sandbox, you may only send
 to verified addresses or domains, or to email addresses associated with
 the Amazon SES Mailbox Simulator. For more information, see Verifying
 Email Addresses and Domains
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
 in the I<Amazon SES Developer Guide.>
 
 =item *
@@ -1846,7 +1869,7 @@ For every message that you send, the total number of recipients
 against the maximum number of emails you can send in a 24-hour period
 (your I<sending quota>). For more information about sending quotas in
 Amazon SES, see Managing Your Amazon SES Sending Limits
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html)
 in the I<Amazon SES Developer Guide.>
 
 
@@ -1893,17 +1916,17 @@ The C<SendRawEmail> operation has the following requirements:
 =item *
 
 You can only send email from verified email addresses or domains
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
 If you try to send email from an address that isn't verified, the
 operation results in an "Email address not verified" error.
 
 =item *
 
 If your account is still in the Amazon SES sandbox
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html),
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html),
 you can only send email to other verified addresses in your account, or
 to addresses that are associated with the Amazon SES mailbox simulator
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mailbox-simulator.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mailbox-simulator.html).
 
 =item *
 
@@ -1938,7 +1961,7 @@ of your message (for example, if you use open and click tracking),
 8-bit content isn't preserved. For this reason, we highly recommend
 that you encode all content that isn't 7-bit ASCII. For more
 information, see MIME Encoding
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html#send-email-mime-encoding)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html#send-email-mime-encoding)
 in the I<Amazon SES Developer Guide>.
 
 =back
@@ -1991,7 +2014,7 @@ specify the C<SourceIdentityArn> parameter, Amazon SES will set the
 From and Return Path addresses to the identity specified in
 C<SourceIdentityArn>. For more information about sending authorization,
 see the Using Sending Authorization with Amazon SES
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html)
 in the I<Amazon SES Developer Guide.>
 
 =item *
@@ -2001,7 +2024,7 @@ For every message that you send, the total number of recipients
 against the maximum number of emails you can send in a 24-hour period
 (your I<sending quota>). For more information about sending quotas in
 Amazon SES, see Managing Your Amazon SES Sending Limits
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html)
 in the I<Amazon SES Developer Guide.>
 
 =back
@@ -2064,7 +2087,7 @@ If your account is still in the Amazon SES sandbox, you may only send
 to verified addresses or domains, or to email addresses associated with
 the Amazon SES Mailbox Simulator. For more information, see Verifying
 Email Addresses and Domains
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
 in the I<Amazon SES Developer Guide.>
 
 =item *
@@ -2099,7 +2122,7 @@ stating that it was unable to send the email.
 For these reasons, we highly recommend that you set up Amazon SES to
 send you notifications when Rendering Failure events occur. For more
 information, see Sending Personalized Email Using the Amazon SES API
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html)
 in the I<Amazon Simple Email Service Developer Guide>.
 
 
@@ -2123,7 +2146,7 @@ call this API with RuleSetName set to null.
 
 For information about managing receipt rule sets, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
 
 You can execute this operation no more than once per second.
 
@@ -2169,7 +2192,7 @@ You can execute this operation no more than once per second.
 
 For more information about Easy DKIM signing, go to the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
 
 
 =head2 SetIdentityFeedbackForwardingEnabled
@@ -2200,7 +2223,7 @@ You can execute this operation no more than once per second.
 
 For more information about using notifications with Amazon SES, see the
 Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
 
 =head2 SetIdentityHeadersInNotificationsEnabled
@@ -2228,7 +2251,7 @@ You can execute this operation no more than once per second.
 
 For more information about using notifications with Amazon SES, see the
 Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
 
 =head2 SetIdentityMailFromDomain
@@ -2256,7 +2279,7 @@ record to your MAIL FROM domain's DNS settings. If you want your emails
 to pass Sender Policy Framework (SPF) checks, you must also add or
 update an SPF record. For more information, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html).
 
 You can execute this operation no more than once per second.
 
@@ -2290,7 +2313,7 @@ You can execute this operation no more than once per second.
 
 For more information about feedback notification, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
 
 
 =head2 SetReceiptRulePosition
@@ -2315,7 +2338,7 @@ set.
 
 For information about managing receipt rules, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
 
 You can execute this operation no more than once per second.
 
@@ -2384,7 +2407,7 @@ to publish email sending events to Amazon CloudWatch, Amazon Kinesis
 Firehose, or Amazon Simple Notification Service (Amazon SNS). For
 information about using configuration sets, see Monitoring Your Amazon
 SES Sending Activity
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html)
 in the I<Amazon SES Developer Guide.>
 
 When you create or update an event destination, you must provide one,
@@ -2466,7 +2489,7 @@ By default, images and links used for tracking open and click events
 are hosted on domains operated by Amazon SES. You can configure a
 subdomain of your own to handle these events. For information about
 using custom domains, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
 
 
 =head2 UpdateCustomVerificationEmailTemplate
@@ -2496,7 +2519,7 @@ Updates an existing custom verification email template.
 
 For more information about custom verification email templates, see
 Using Custom Verification Email Templates
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
 in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
@@ -2521,7 +2544,7 @@ Updates a receipt rule.
 
 For information about managing receipt rules, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
 
 You can execute this operation no more than once per second.
 
@@ -2542,7 +2565,7 @@ Returns: a L<Paws::SES::UpdateTemplateResponse> instance
 Updates an email template. Email templates enable you to send
 personalized email to one or more destinations in a single API
 operation. For more information, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
 
 You can execute this operation no more than once per second.
 
@@ -2560,22 +2583,51 @@ Each argument is described in detail in: L<Paws::SES::VerifyDomainDkim>
 
 Returns: a L<Paws::SES::VerifyDomainDkimResponse> instance
 
-Returns a set of DKIM tokens for a domain. DKIM I<tokens> are character
-strings that represent your domain's identity. Using these tokens, you
-will need to create DNS CNAME records that point to DKIM public keys
-hosted by Amazon SES. Amazon Web Services will eventually detect that
-you have updated your DNS records; this detection process may take up
-to 72 hours. Upon successful detection, Amazon SES will be able to
-DKIM-sign email originating from that domain.
+Returns a set of DKIM tokens for a domain identity.
+
+When you execute the C<VerifyDomainDkim> operation, the domain that you
+specify is added to the list of identities that are associated with
+your account. This is true even if you haven't already associated the
+domain with your account by using the C<VerifyDomainIdentity>
+operation. However, you can't send email from the domain until you
+either successfully verify it
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html)
+or you successfully set up DKIM for it
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+
+You use the tokens that are generated by this operation to create CNAME
+records. When Amazon SES detects that you've added these records to the
+DNS configuration for a domain, you can start sending email from that
+domain. You can start sending email even if you haven't added the TXT
+record provided by the VerifyDomainIdentity operation to the DNS
+configuration for your domain. All email that you send from the domain
+is authenticated using DKIM.
+
+To create the CNAME records for DKIM authentication, use the following
+values:
+
+=over
+
+=item *
+
+B<Name>: I<token>._domainkey.I<example.com>
+
+=item *
+
+B<Type>: CNAME
+
+=item *
+
+B<Value>: I<token>.dkim.amazonses.com
+
+=back
+
+In the preceding example, replace I<token> with one of the tokens that
+are generated when you execute this operation. Replace I<example.com>
+with your domain. Repeat this process for each token that's generated
+by this operation.
 
 You can execute this operation no more than once per second.
-
-To enable or disable Easy DKIM signing for a domain, use the
-C<SetIdentityDkimEnabled> operation.
-
-For more information about creating DNS records using DKIM tokens, go
-to the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
 
 
 =head2 VerifyDomainIdentity
@@ -2594,7 +2646,7 @@ Returns: a L<Paws::SES::VerifyDomainIdentityResponse> instance
 Adds a domain to the list of identities for your Amazon SES account in
 the current AWS Region and attempts to verify it. For more information
 about verifying domains, see Verifying Email Addresses and Domains
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
 in the I<Amazon SES Developer Guide.>
 
 You can execute this operation no more than once per second.

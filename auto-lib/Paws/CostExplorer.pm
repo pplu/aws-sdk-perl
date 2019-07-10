@@ -112,6 +112,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing
 
 =over
 
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
 =item [Filter => L<Paws::CostExplorer::Expression>]
 
 =item [Granularity => Str]
@@ -121,8 +123,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing
 =item [Metrics => ArrayRef[Str|Undef]]
 
 =item [NextPageToken => Str]
-
-=item [TimePeriod => L<Paws::CostExplorer::DateInterval>]
 
 
 =back

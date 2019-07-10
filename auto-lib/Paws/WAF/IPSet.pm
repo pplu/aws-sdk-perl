@@ -36,14 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSet 
 Contains one or more IP addresses or blocks of IP addresses specified
 in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports
 IPv4 address ranges: /8 and any range between /16 through /32. AWS WAF
-supports IPv6 address ranges: /16, /24, /32, /48, /56, /64, and /128.
+supports IPv6 address ranges: /24, /32, /48, /56, /64, and /128.
 
 To specify an individual IP address, you specify the four-part IP
 address followed by a C</32>, for example, 192.0.2.0/31. To block a
 range of IP addresses, you can specify /8 or any range between /16
-through /32 (for IPv4) or /16, /24, /32, /48, /56, /64, or /128 (for
-IPv6). For more information about CIDR notation, see the Wikipedia
-entry Classless Inter-Domain Routing
+through /32 (for IPv4) or /24, /32, /48, /56, /64, or /128 (for IPv6).
+For more information about CIDR notation, see the Wikipedia entry
+Classless Inter-Domain Routing
 (https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 =head1 ATTRIBUTES

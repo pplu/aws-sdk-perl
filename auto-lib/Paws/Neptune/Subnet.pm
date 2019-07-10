@@ -33,6 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Neptune::Su
 
 =head1 DESCRIPTION
 
+Specifies a subnet.
+
 This data type is used as a response element in the
 DescribeDBSubnetGroups action.
 
@@ -41,7 +43,7 @@ DescribeDBSubnetGroups action.
 
 =head2 SubnetAvailabilityZone => L<Paws::Neptune::AvailabilityZone>
 
-  
+  Specifies the EC2 Availability Zone that the subnet is in.
 
 
 =head2 SubnetIdentifier => Str

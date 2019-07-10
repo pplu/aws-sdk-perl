@@ -3,6 +3,7 @@ package Paws::SageMaker::CreateWorkteam;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', required => 1);
   has MemberDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MemberDefinition]', required => 1);
+  has NotificationConfiguration => (is => 'ro', isa => 'Paws::SageMaker::NotificationConfiguration');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
   has WorkteamName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -43,8 +44,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-      WorkteamName => 'MyWorkteamName',
-      Tags         => [
+      WorkteamName              => 'MyWorkteamName',
+      NotificationConfiguration => {
+        NotificationTopicArn => 'MyNotificationTopicArn',    # OPTIONAL
+      },    # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
           Value => 'MyTagValue',    # max: 256
@@ -80,6 +84,13 @@ more information, see Amazon Cognito User Pools
 
 All of the C<CognitoMemberDefinition> objects that make up the member
 definition must have the same C<ClientId> and C<UserPool> values.
+
+
+
+=head2 NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>
+
+Configures notification of workers regarding available or expiring work
+items.
 
 
 

@@ -2,6 +2,7 @@
 package Paws::SES::DescribeConfigurationSetResponse;
   use Moose;
   has ConfigurationSet => (is => 'ro', isa => 'Paws::SES::ConfigurationSet');
+  has DeliveryOptions => (is => 'ro', isa => 'Paws::SES::DeliveryOptions');
   has EventDestinations => (is => 'ro', isa => 'ArrayRef[Paws::SES::EventDestination]');
   has ReputationOptions => (is => 'ro', isa => 'Paws::SES::ReputationOptions');
   has TrackingOptions => (is => 'ro', isa => 'Paws::SES::TrackingOptions');
@@ -22,6 +23,11 @@ Paws::SES::DescribeConfigurationSetResponse
 
 The configuration set object associated with the specified
 configuration set.
+
+
+=head2 DeliveryOptions => L<Paws::SES::DeliveryOptions>
+
+
 
 
 =head2 EventDestinations => ArrayRef[L<Paws::SES::EventDestination>]

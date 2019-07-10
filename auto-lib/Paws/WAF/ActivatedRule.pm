@@ -106,7 +106,7 @@ associated with a web ACL, perform the following steps:
 Use the AWS WAF logs to identify the IDs of the rules that you want to
 exclude. For more information about the logs, see Logging Web ACL
 Traffic Information
-(http://docs.aws.amazon.com/waf/latest/developerguide/logging.html).
+(https://docs.aws.amazon.com/waf/latest/developerguide/logging.html).
 
 =item 2.
 

@@ -1,6 +1,6 @@
 package Paws::Pinpoint::ActivitiesResponse;
   use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ActivityResponse]');
+  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ActivityResponse]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 1;
 
@@ -32,20 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-Activities for campaign.
+Provides information about the activities that were performed by a
+campaign.
 
 =head1 ATTRIBUTES
 
 
-=head2 Item => ArrayRef[L<Paws::Pinpoint::ActivityResponse>]
+=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::ActivityResponse>]
 
-  List of campaign activities
+  An array of responses, one for each activity that was performed by the
+campaign.
 
 
 =head2 NextToken => Str
 
-  The string that you use in a subsequent request to get the next page of
-results in a paginated response.
+  The string to use in a subsequent request to get the next page of
+results in a paginated response. This value is null if there are no
+additional pages.
 
 
 

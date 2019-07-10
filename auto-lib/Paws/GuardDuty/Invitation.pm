@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Invitation from an AWS account to become the current account's master.
+This class has no description
 
 =head1 ATTRIBUTES
 

@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-State of the Campaign
+Provides information about the status of a campaign.
 
 =head1 ATTRIBUTES
 
@@ -39,8 +39,9 @@ State of the Campaign
 =head2 CampaignStatus => Str
 
   The status of the campaign, or the status of a treatment that belongs
-to an A/B test campaign. Valid values: SCHEDULED, EXECUTING,
-PENDING_NEXT_RUN, COMPLETED, PAUSED
+to an A/B test campaign. If a campaign uses A/B testing, the campaign
+has a status of COMPLETED only when all campaign treatments have a
+status of COMPLETED.
 
 
 

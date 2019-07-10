@@ -75,16 +75,42 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 =head2 ClusterExists => Bool
 
 A value that indicates whether to return snapshots only for an existing
-cluster. Table-level restore can be performed only using a snapshot of
-an existing cluster, that is, a cluster that has not been deleted. If
-C<ClusterExists> is set to C<true>, C<ClusterIdentifier> is required.
+cluster. You can perform table-level restore only by using a snapshot
+of an existing cluster, that is, a cluster that has not been deleted.
+Values for this parameter work as follows:
+
+=over
+
+=item *
+
+If C<ClusterExists> is set to C<true>, C<ClusterIdentifier> is
+required.
+
+=item *
+
+If C<ClusterExists> is set to C<false> and C<ClusterIdentifier> isn't
+specified, all snapshots associated with deleted clusters (orphaned
+snapshots) are returned.
+
+=item *
+
+If C<ClusterExists> is set to C<false> and C<ClusterIdentifier> is
+specified for a deleted cluster, snapshots associated with that cluster
+are returned.
+
+=item *
+
+If C<ClusterExists> is set to C<false> and C<ClusterIdentifier> is
+specified for an existing cluster, no snapshots are returned.
+
+=back
+
 
 
 
 =head2 ClusterIdentifier => Str
 
-The identifier of the cluster for which information about snapshots is
-requested.
+The identifier of the cluster which generated the requested snapshots.
 
 
 

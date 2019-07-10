@@ -34,23 +34,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Represents a target tracking policy configuration.
+Represents a target tracking scaling policy configuration to use with
+Amazon EC2 Auto Scaling.
 
 =head1 ATTRIBUTES
 
 
 =head2 CustomizedMetricSpecification => L<Paws::AutoScaling::CustomizedMetricSpecification>
 
-  A customized metric.
+  A customized metric. You can specify either a predefined metric or a
+customized metric.
 
 
 =head2 DisableScaleIn => Bool
 
-  Indicates whether scaling in by the target tracking policy is disabled.
-If scaling in is disabled, the target tracking policy doesn't remove
-instances from the Auto Scaling group. Otherwise, the target tracking
-policy can remove instances from the Auto Scaling group. The default is
-disabled.
+  Indicates whether scaling in by the target tracking scaling policy is
+disabled. If scaling in is disabled, the target tracking scaling policy
+doesn't remove instances from the Auto Scaling group. Otherwise, the
+target tracking scaling policy can remove instances from the Auto
+Scaling group. The default is disabled.
 
 
 =head2 PredefinedMetricSpecification => L<Paws::AutoScaling::PredefinedMetricSpecification>

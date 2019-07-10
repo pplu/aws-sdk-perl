@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> ResourceIds => ArrayRef[Str|Undef]
 
-The resource identifiers, in the form of directory IDs.
+The resource identifier, in the form of directory IDs.
 
 
 

@@ -1,5 +1,6 @@
 package Paws::Comprehend::OutputDataConfig;
   use Moose;
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has S3Uri => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -20,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Comprehend::OutputDataConfig object:
 
-  $service_obj->Method(Att1 => { S3Uri => $value, ..., S3Uri => $value  });
+  $service_obj->Method(Att1 => { KmsKeyId => $value, ..., S3Uri => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Comprehend::OutputDataConfig object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->S3Uri
+  $result->Att1->KmsKeyId
 
 =head1 DESCRIPTION
 
@@ -35,6 +36,36 @@ Provides configuration parameters for the output of topic detection
 jobs.
 
 =head1 ATTRIBUTES
+
+
+=head2 KmsKeyId => Str
+
+  ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt the output results from an analysis job. The KmsKeyId
+can be one of the following formats:
+
+=over
+
+=item *
+
+KMS Key ID: C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+Amazon Resource Name (ARN) of a KMS Key:
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+KMS Key Alias: C<"alias/ExampleAlias">
+
+=item *
+
+ARN of a KMS Key Alias:
+C<"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias">
+
+=back
+
 
 
 =head2 B<REQUIRED> S3Uri => Str

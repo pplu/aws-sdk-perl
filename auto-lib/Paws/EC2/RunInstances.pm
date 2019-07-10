@@ -158,6 +158,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Description              => 'MyString',
           DeviceIndex              => 1,
           Groups                   => [ 'MyString', ... ],    # OPTIONAL
+          InterfaceType            => 'MyString',
           Ipv6AddressCount         => 1,
           Ipv6Addresses      => [ { Ipv6Address => 'MyString', }, ... ],
           NetworkInterfaceId => 'MyString',
@@ -190,8 +191,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SubnetId          => 'MyString',             # OPTIONAL
       TagSpecifications => [
         {
-          ResourceType => 'customer-gateway'
-          , # values: customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, transit-gateway, transit-gateway-attachment, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',
@@ -228,11 +229,7 @@ Reserved.
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-One or more block device mapping entries. You can't specify both a
-snapshot ID and an encryption value. This is because only blank volumes
-can be encrypted on creation. If a snapshot is the basis for a volume,
-it is not blank and its encryption status is used for the volume
-encryption status.
+The block device mapping entries.
 
 
 
@@ -267,10 +264,11 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 CreditSpecification => L<Paws::EC2::CreditSpecificationRequest>
 
-The credit option for CPU usage of the instance. Valid values are
-C<standard> and C<unlimited>. To change this attribute after launch,
-use ModifyInstanceCreditSpecification. For more information, see
-Burstable Performance Instances
+The credit option for CPU usage of the T2 or T3 instance. Valid values
+are C<standard> and C<unlimited>. To change this attribute after
+launch, use ModifyInstanceCreditSpecification
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html).
+For more information, see Burstable Performance Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -282,10 +280,11 @@ Default: C<standard> (T2 instances) or C<unlimited> (T3 instances)
 
 If you set this parameter to C<true>, you can't terminate the instance
 using the Amazon EC2 console, CLI, or API; otherwise, you can. To
-change this attribute to C<false> after launch, use
-ModifyInstanceAttribute. Alternatively, if you set
-C<InstanceInitiatedShutdownBehavior> to C<terminate>, you can terminate
-the instance by running the shutdown command from the instance.
+change this attribute after launch, use ModifyInstanceAttribute
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html).
+Alternatively, if you set C<InstanceInitiatedShutdownBehavior> to
+C<terminate>, you can terminate the instance by running the shutdown
+command from the instance.
 
 Default: C<false>
 
@@ -314,13 +313,21 @@ Default: C<false>
 
 =head2 ElasticGpuSpecification => ArrayRef[L<Paws::EC2::ElasticGpuSpecification>]
 
-An elastic GPU to associate with the instance.
+An elastic GPU to associate with the instance. An Elastic GPU is a GPU
+resource that you can attach to your Windows instance to accelerate the
+graphics performance of your applications. For more information, see
+Amazon EC2 Elastic GPUs
+(https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
 =head2 ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::ElasticInferenceAccelerator>]
 
-An elastic inference accelerator.
+An elastic inference accelerator to associate with the instance.
+Elastic inference accelerators are a resource you can attach to your
+Amazon EC2 instances to accelerate your Deep Learning (DL) inference
+workloads.
 
 
 
@@ -341,9 +348,8 @@ The IAM instance profile.
 
 =head2 ImageId => Str
 
-The ID of the AMI, which you can get by calling DescribeImages. An AMI
-is required to launch an instance and must be specified here or in a
-launch template.
+The ID of the AMI. An AMI ID is required to launch an instance and must
+be specified here or in a launch template.
 
 
 
@@ -375,25 +381,31 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Default: C<m1.small>
 
-Valid values are: C<"t1.micro">, C<"t2.nano">, C<"t2.micro">, C<"t2.small">, C<"t2.medium">, C<"t2.large">, C<"t2.xlarge">, C<"t2.2xlarge">, C<"t3.nano">, C<"t3.micro">, C<"t3.small">, C<"t3.medium">, C<"t3.large">, C<"t3.xlarge">, C<"t3.2xlarge">, C<"m1.small">, C<"m1.medium">, C<"m1.large">, C<"m1.xlarge">, C<"m3.medium">, C<"m3.large">, C<"m3.xlarge">, C<"m3.2xlarge">, C<"m4.large">, C<"m4.xlarge">, C<"m4.2xlarge">, C<"m4.4xlarge">, C<"m4.10xlarge">, C<"m4.16xlarge">, C<"m2.xlarge">, C<"m2.2xlarge">, C<"m2.4xlarge">, C<"cr1.8xlarge">, C<"r3.large">, C<"r3.xlarge">, C<"r3.2xlarge">, C<"r3.4xlarge">, C<"r3.8xlarge">, C<"r4.large">, C<"r4.xlarge">, C<"r4.2xlarge">, C<"r4.4xlarge">, C<"r4.8xlarge">, C<"r4.16xlarge">, C<"r5.large">, C<"r5.xlarge">, C<"r5.2xlarge">, C<"r5.4xlarge">, C<"r5.12xlarge">, C<"r5.24xlarge">, C<"r5.metal">, C<"r5a.large">, C<"r5a.xlarge">, C<"r5a.2xlarge">, C<"r5a.4xlarge">, C<"r5a.12xlarge">, C<"r5a.24xlarge">, C<"r5d.large">, C<"r5d.xlarge">, C<"r5d.2xlarge">, C<"r5d.4xlarge">, C<"r5d.12xlarge">, C<"r5d.24xlarge">, C<"r5d.metal">, C<"x1.16xlarge">, C<"x1.32xlarge">, C<"x1e.xlarge">, C<"x1e.2xlarge">, C<"x1e.4xlarge">, C<"x1e.8xlarge">, C<"x1e.16xlarge">, C<"x1e.32xlarge">, C<"i2.xlarge">, C<"i2.2xlarge">, C<"i2.4xlarge">, C<"i2.8xlarge">, C<"i3.large">, C<"i3.xlarge">, C<"i3.2xlarge">, C<"i3.4xlarge">, C<"i3.8xlarge">, C<"i3.16xlarge">, C<"i3.metal">, C<"hi1.4xlarge">, C<"hs1.8xlarge">, C<"c1.medium">, C<"c1.xlarge">, C<"c3.large">, C<"c3.xlarge">, C<"c3.2xlarge">, C<"c3.4xlarge">, C<"c3.8xlarge">, C<"c4.large">, C<"c4.xlarge">, C<"c4.2xlarge">, C<"c4.4xlarge">, C<"c4.8xlarge">, C<"c5.large">, C<"c5.xlarge">, C<"c5.2xlarge">, C<"c5.4xlarge">, C<"c5.9xlarge">, C<"c5.18xlarge">, C<"c5d.large">, C<"c5d.xlarge">, C<"c5d.2xlarge">, C<"c5d.4xlarge">, C<"c5d.9xlarge">, C<"c5d.18xlarge">, C<"c5n.large">, C<"c5n.xlarge">, C<"c5n.2xlarge">, C<"c5n.4xlarge">, C<"c5n.9xlarge">, C<"c5n.18xlarge">, C<"cc1.4xlarge">, C<"cc2.8xlarge">, C<"g2.2xlarge">, C<"g2.8xlarge">, C<"g3.4xlarge">, C<"g3.8xlarge">, C<"g3.16xlarge">, C<"g3s.xlarge">, C<"cg1.4xlarge">, C<"p2.xlarge">, C<"p2.8xlarge">, C<"p2.16xlarge">, C<"p3.2xlarge">, C<"p3.8xlarge">, C<"p3.16xlarge">, C<"p3dn.24xlarge">, C<"d2.xlarge">, C<"d2.2xlarge">, C<"d2.4xlarge">, C<"d2.8xlarge">, C<"f1.2xlarge">, C<"f1.4xlarge">, C<"f1.16xlarge">, C<"m5.large">, C<"m5.xlarge">, C<"m5.2xlarge">, C<"m5.4xlarge">, C<"m5.12xlarge">, C<"m5.24xlarge">, C<"m5a.large">, C<"m5a.xlarge">, C<"m5a.2xlarge">, C<"m5a.4xlarge">, C<"m5a.12xlarge">, C<"m5a.24xlarge">, C<"m5d.large">, C<"m5d.xlarge">, C<"m5d.2xlarge">, C<"m5d.4xlarge">, C<"m5d.12xlarge">, C<"m5d.24xlarge">, C<"h1.2xlarge">, C<"h1.4xlarge">, C<"h1.8xlarge">, C<"h1.16xlarge">, C<"z1d.large">, C<"z1d.xlarge">, C<"z1d.2xlarge">, C<"z1d.3xlarge">, C<"z1d.6xlarge">, C<"z1d.12xlarge">, C<"u-6tb1.metal">, C<"u-9tb1.metal">, C<"u-12tb1.metal">, C<"a1.medium">, C<"a1.large">, C<"a1.xlarge">, C<"a1.2xlarge">, C<"a1.4xlarge">
+Valid values are: C<"t1.micro">, C<"t2.nano">, C<"t2.micro">, C<"t2.small">, C<"t2.medium">, C<"t2.large">, C<"t2.xlarge">, C<"t2.2xlarge">, C<"t3.nano">, C<"t3.micro">, C<"t3.small">, C<"t3.medium">, C<"t3.large">, C<"t3.xlarge">, C<"t3.2xlarge">, C<"t3a.nano">, C<"t3a.micro">, C<"t3a.small">, C<"t3a.medium">, C<"t3a.large">, C<"t3a.xlarge">, C<"t3a.2xlarge">, C<"m1.small">, C<"m1.medium">, C<"m1.large">, C<"m1.xlarge">, C<"m3.medium">, C<"m3.large">, C<"m3.xlarge">, C<"m3.2xlarge">, C<"m4.large">, C<"m4.xlarge">, C<"m4.2xlarge">, C<"m4.4xlarge">, C<"m4.10xlarge">, C<"m4.16xlarge">, C<"m2.xlarge">, C<"m2.2xlarge">, C<"m2.4xlarge">, C<"cr1.8xlarge">, C<"r3.large">, C<"r3.xlarge">, C<"r3.2xlarge">, C<"r3.4xlarge">, C<"r3.8xlarge">, C<"r4.large">, C<"r4.xlarge">, C<"r4.2xlarge">, C<"r4.4xlarge">, C<"r4.8xlarge">, C<"r4.16xlarge">, C<"r5.large">, C<"r5.xlarge">, C<"r5.2xlarge">, C<"r5.4xlarge">, C<"r5.8xlarge">, C<"r5.12xlarge">, C<"r5.16xlarge">, C<"r5.24xlarge">, C<"r5.metal">, C<"r5a.large">, C<"r5a.xlarge">, C<"r5a.2xlarge">, C<"r5a.4xlarge">, C<"r5a.8xlarge">, C<"r5a.12xlarge">, C<"r5a.16xlarge">, C<"r5a.24xlarge">, C<"r5d.large">, C<"r5d.xlarge">, C<"r5d.2xlarge">, C<"r5d.4xlarge">, C<"r5d.8xlarge">, C<"r5d.12xlarge">, C<"r5d.16xlarge">, C<"r5d.24xlarge">, C<"r5d.metal">, C<"r5ad.large">, C<"r5ad.xlarge">, C<"r5ad.2xlarge">, C<"r5ad.4xlarge">, C<"r5ad.8xlarge">, C<"r5ad.12xlarge">, C<"r5ad.16xlarge">, C<"r5ad.24xlarge">, C<"x1.16xlarge">, C<"x1.32xlarge">, C<"x1e.xlarge">, C<"x1e.2xlarge">, C<"x1e.4xlarge">, C<"x1e.8xlarge">, C<"x1e.16xlarge">, C<"x1e.32xlarge">, C<"i2.xlarge">, C<"i2.2xlarge">, C<"i2.4xlarge">, C<"i2.8xlarge">, C<"i3.large">, C<"i3.xlarge">, C<"i3.2xlarge">, C<"i3.4xlarge">, C<"i3.8xlarge">, C<"i3.16xlarge">, C<"i3.metal">, C<"i3en.large">, C<"i3en.xlarge">, C<"i3en.2xlarge">, C<"i3en.3xlarge">, C<"i3en.6xlarge">, C<"i3en.12xlarge">, C<"i3en.24xlarge">, C<"hi1.4xlarge">, C<"hs1.8xlarge">, C<"c1.medium">, C<"c1.xlarge">, C<"c3.large">, C<"c3.xlarge">, C<"c3.2xlarge">, C<"c3.4xlarge">, C<"c3.8xlarge">, C<"c4.large">, C<"c4.xlarge">, C<"c4.2xlarge">, C<"c4.4xlarge">, C<"c4.8xlarge">, C<"c5.large">, C<"c5.xlarge">, C<"c5.2xlarge">, C<"c5.4xlarge">, C<"c5.9xlarge">, C<"c5.12xlarge">, C<"c5.18xlarge">, C<"c5.24xlarge">, C<"c5.metal">, C<"c5d.large">, C<"c5d.xlarge">, C<"c5d.2xlarge">, C<"c5d.4xlarge">, C<"c5d.9xlarge">, C<"c5d.18xlarge">, C<"c5n.large">, C<"c5n.xlarge">, C<"c5n.2xlarge">, C<"c5n.4xlarge">, C<"c5n.9xlarge">, C<"c5n.18xlarge">, C<"cc1.4xlarge">, C<"cc2.8xlarge">, C<"g2.2xlarge">, C<"g2.8xlarge">, C<"g3.4xlarge">, C<"g3.8xlarge">, C<"g3.16xlarge">, C<"g3s.xlarge">, C<"cg1.4xlarge">, C<"p2.xlarge">, C<"p2.8xlarge">, C<"p2.16xlarge">, C<"p3.2xlarge">, C<"p3.8xlarge">, C<"p3.16xlarge">, C<"p3dn.24xlarge">, C<"d2.xlarge">, C<"d2.2xlarge">, C<"d2.4xlarge">, C<"d2.8xlarge">, C<"f1.2xlarge">, C<"f1.4xlarge">, C<"f1.16xlarge">, C<"m5.large">, C<"m5.xlarge">, C<"m5.2xlarge">, C<"m5.4xlarge">, C<"m5.8xlarge">, C<"m5.12xlarge">, C<"m5.16xlarge">, C<"m5.24xlarge">, C<"m5.metal">, C<"m5a.large">, C<"m5a.xlarge">, C<"m5a.2xlarge">, C<"m5a.4xlarge">, C<"m5a.8xlarge">, C<"m5a.12xlarge">, C<"m5a.16xlarge">, C<"m5a.24xlarge">, C<"m5d.large">, C<"m5d.xlarge">, C<"m5d.2xlarge">, C<"m5d.4xlarge">, C<"m5d.8xlarge">, C<"m5d.12xlarge">, C<"m5d.16xlarge">, C<"m5d.24xlarge">, C<"m5d.metal">, C<"m5ad.large">, C<"m5ad.xlarge">, C<"m5ad.2xlarge">, C<"m5ad.4xlarge">, C<"m5ad.8xlarge">, C<"m5ad.12xlarge">, C<"m5ad.16xlarge">, C<"m5ad.24xlarge">, C<"h1.2xlarge">, C<"h1.4xlarge">, C<"h1.8xlarge">, C<"h1.16xlarge">, C<"z1d.large">, C<"z1d.xlarge">, C<"z1d.2xlarge">, C<"z1d.3xlarge">, C<"z1d.6xlarge">, C<"z1d.12xlarge">, C<"z1d.metal">, C<"u-6tb1.metal">, C<"u-9tb1.metal">, C<"u-12tb1.metal">, C<"a1.medium">, C<"a1.large">, C<"a1.xlarge">, C<"a1.2xlarge">, C<"a1.4xlarge">
 
 =head2 Ipv6AddressCount => Int
 
-[EC2-VPC] A number of IPv6 addresses to associate with the primary
+[EC2-VPC] The number of IPv6 addresses to associate with the primary
 network interface. Amazon EC2 chooses the IPv6 addresses from the range
 of your subnet. You cannot specify this option and the option to assign
 specific IPv6 addresses in the same request. You can specify this
 option if you've specified a minimum number of instances to launch.
 
+You cannot specify this option and the network interfaces option in the
+same request.
+
 
 
 =head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]
 
-[EC2-VPC] Specify one or more IPv6 addresses from the range of the
-subnet to associate with the primary network interface. You cannot
-specify this option and the option to assign a number of IPv6 addresses
-in the same request. You cannot specify this option if you've specified
-a minimum number of instances to launch.
+[EC2-VPC] The IPv6 addresses from the range of the subnet to associate
+with the primary network interface. You cannot specify this option and
+the option to assign a number of IPv6 addresses in the same request.
+You cannot specify this option if you've specified a minimum number of
+instances to launch.
+
+You cannot specify this option and the network interfaces option in the
+same request.
 
 
 
@@ -411,7 +423,9 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =head2 KeyName => Str
 
 The name of the key pair. You can create a key pair using CreateKeyPair
-or ImportKeyPair.
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html)
+or ImportKeyPair
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html).
 
 If you do not specify a key pair, you can't connect to the instance
 unless you choose an AMI that is configured to allow users another way
@@ -467,13 +481,15 @@ in the Amazon EC2 General FAQ.
 
 =head2 Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>
 
-The monitoring for the instance.
+Specifies whether detailed monitoring is enabled for the instance.
 
 
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
 
-One or more network interfaces.
+The network interfaces to associate with the instance. If you specify a
+network interface, you must specify any security groups and subnets as
+part of the network interface.
 
 
 
@@ -494,11 +510,17 @@ private IP address as the primary IP address in a network interface
 specification. You cannot specify this option if you're launching more
 than one instance in the request.
 
+You cannot specify this option and the network interfaces option in the
+same request.
+
 
 
 =head2 RamdiskId => Str
 
-The ID of the RAM disk.
+The ID of the RAM disk to select. Some kernels require additional
+drivers at launch. Check the kernel requirements for information about
+whether you need to specify a RAM disk. To find kernel requirements, go
+to the AWS Resource Center and search for the kernel ID.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see PV-GRUB
@@ -509,17 +531,22 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-One or more security group IDs. You can create a security group using
-CreateSecurityGroup.
+The IDs of the security groups. You can create a security group using
+CreateSecurityGroup
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html).
 
-Default: Amazon EC2 uses the default security group.
+If you specify a network interface, you must specify any security
+groups as part of the network interface.
 
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-[EC2-Classic, default VPC] One or more security group names. For a
+[EC2-Classic, default VPC] The names of the security groups. For a
 nondefault VPC, you must use security group IDs instead.
+
+If you specify a network interface, you must specify any security
+groups as part of the network interface.
 
 Default: Amazon EC2 uses the default security group.
 
@@ -529,6 +556,9 @@ Default: Amazon EC2 uses the default security group.
 
 [EC2-VPC] The ID of the subnet to launch the instance into.
 
+If you specify a network interface, you must specify any subnets as
+part of the network interface.
+
 
 
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
@@ -536,7 +566,8 @@ Default: Amazon EC2 uses the default security group.
 The tags to apply to the resources during launch. You can only tag
 instances and volumes on launch. The specified tags are applied to all
 instances or volumes that are created during launch. To tag a resource
-after it has been created, see CreateTags.
+after it has been created, see CreateTags
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html).
 
 
 
@@ -549,7 +580,7 @@ see Running Commands on Your Linux Instance at Launch
 (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data)
 (Windows). If you are using a command line tool, base64-encoding is
 performed for you, and you can load the text from a file. Otherwise,
-you must provide base64-encoded text.
+you must provide base64-encoded text. User data is limited to 16 KB.
 
 
 

@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $guardduty = Paws->service('GuardDuty');
     my $DisassociateFromMasterAccountResponse =
       $guardduty->DisassociateFromMasterAccount(
-      DetectorId => 'My__string',
+      DetectorId => 'MyDetectorId',
 
       );
 

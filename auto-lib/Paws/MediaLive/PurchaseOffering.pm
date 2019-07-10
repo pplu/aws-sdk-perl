@@ -3,9 +3,9 @@ package Paws::MediaLive::PurchaseOffering;
   use Moose;
   has Count => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'count', required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has OfferingId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'offeringId', required => 1);
   has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
   has Start => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'start');
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $medialive = Paws->service('MediaLive');
     my $PurchaseOfferingResponse = $medialive->PurchaseOffering(
-      Count      => 1,
-      OfferingId => 'My__string',
-      Name       => 'My__string',    # OPTIONAL
-      RequestId  => 'My__string',    # OPTIONAL
-      Start      => 'My__string',    # OPTIONAL
+      Count     => 1,
+      Name      => 'My__string',                         # OPTIONAL
+      RequestId => 'My__string',                         # OPTIONAL
+      Start     => 'My__string',                         # OPTIONAL
+      Tags      => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -63,12 +63,6 @@ Name for the new reservation
 
 
 
-=head2 B<REQUIRED> OfferingId => Str
-
-Offering to purchase, e.g. '87654321'
-
-
-
 =head2 RequestId => Str
 
 Unique request ID to be specified. This is needed to prevent retries
@@ -81,6 +75,12 @@ from creating multiple resources.
 Requested reservation start time (UTC) in ISO-8601 format. The
 specified time must be between the first day of the current month and
 one year from now. If no value is given, the default is now.
+
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs
 
 
 

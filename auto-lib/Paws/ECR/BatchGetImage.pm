@@ -29,20 +29,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $ecr = Paws->service('ECR');
+    my $api.ecr = Paws->service('ECR');
    # To obtain multiple images in a single request
    # This example obtains information for an image with a specified image digest
    # ID from the repository named ubuntu in the current account.
-    my $BatchGetImageResponse = $ecr->BatchGetImage(
-      {
-        'ImageIds' => [
+    my $BatchGetImageResponse = $api . ecr->BatchGetImage(
+      'ImageIds' => [
 
-          {
-            'ImageTag' => 'precise'
-          }
-        ],
-        'RepositoryName' => 'ubuntu'
-      }
+        {
+          'ImageTag' => 'precise'
+        }
+      ],
+      'RepositoryName' => 'ubuntu'
     );
 
     # Results:
@@ -52,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ECR::BatchGetImageResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr/BatchGetImage>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.ecr/BatchGetImage>
 
 =head1 ATTRIBUTES
 

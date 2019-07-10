@@ -52,8 +52,8 @@ transformed into a set).
 
 =head2 B<REQUIRED> EntityId => Str
 
-The identifier for the Amazon WorkMail entity to have the aliases
-removed.
+The identifier for the member (user or group) from which to have the
+aliases removed.
 
 
 

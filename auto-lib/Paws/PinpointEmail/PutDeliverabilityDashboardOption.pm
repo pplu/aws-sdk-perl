@@ -2,6 +2,7 @@
 package Paws::PinpointEmail::PutDeliverabilityDashboardOption;
   use Moose;
   has DashboardEnabled => (is => 'ro', isa => 'Bool', required => 1);
+  has SubscribedDomains => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::DomainDeliverabilityTrackingOption]');
 
   use MooseX::ClassAttribute;
 
@@ -30,8 +31,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $email = Paws->service('PinpointEmail');
     my $PutDeliverabilityDashboardOptionResponse =
       $email->PutDeliverabilityDashboardOption(
-      DashboardEnabled => 1,
-
+      DashboardEnabled  => 1,
+      SubscribedDomains => [
+        {
+          Domain                       => 'MyDomain',    # OPTIONAL
+          InboxPlacementTrackingOption => {
+            Global      => 1,
+            TrackedIsps => [ 'MyIspName', ... ],         # OPTIONAL
+          },    # OPTIONAL
+          SubscriptionStartDate => '1970-01-01T01:00:00',    # OPTIONAL
+        },
+        ...
+      ],                                                     # OPTIONAL
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -42,8 +53,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 
 =head2 B<REQUIRED> DashboardEnabled => Bool
 
-Indicates whether the Deliverability dashboard is enabled. If the value
-is C<true>, then the dashboard is enabled.
+Specifies whether to enable the Deliverability dashboard for your
+Amazon Pinpoint account. To enable the dashboard, set this value to
+C<true>.
+
+
+
+=head2 SubscribedDomains => ArrayRef[L<Paws::PinpointEmail::DomainDeliverabilityTrackingOption>]
+
+An array of objects, one for each verified domain that you use to send
+email and enabled the Deliverability dashboard for.
 
 
 

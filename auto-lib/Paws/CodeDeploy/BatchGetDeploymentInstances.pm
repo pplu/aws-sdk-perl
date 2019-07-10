@@ -55,7 +55,8 @@ The unique ID of a deployment.
 
 =head2 B<REQUIRED> InstanceIds => ArrayRef[Str|Undef]
 
-The unique IDs of instances used in the deployment.
+The unique IDs of instances used in the deployment. The maximum number
+of instance IDs you can specify is 25.
 
 
 

@@ -56,13 +56,13 @@ Protocol Numbers)
 
 =head2 IpRanges => ArrayRef[Str|Undef]
 
-  One or more IP ranges. Not applicable for stale security group rules.
+  The IP ranges. Not applicable for stale security group rules.
 
 
 =head2 PrefixListIds => ArrayRef[Str|Undef]
 
-  One or more prefix list IDs for an AWS service. Not applicable for
-stale security group rules.
+  The prefix list IDs for an AWS service. Not applicable for stale
+security group rules.
 
 
 =head2 ToPort => Int
@@ -73,9 +73,8 @@ type number. A value of C<-1> indicates all ICMP types.
 
 =head2 UserIdGroupPairs => ArrayRef[L<Paws::EC2::UserIdGroupPair>]
 
-  One or more security group pairs. Returns the ID of the referenced
-security group and VPC, and the ID and status of the VPC peering
-connection.
+  The security group pairs. Returns the ID of the referenced security
+group and VPC, and the ID and status of the VPC peering connection.
 
 
 

@@ -50,8 +50,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head2 B<REQUIRED> CertificateRevocationList => Str
 
 The client certificate revocation list file. For more information, see
-Generate a Client Certificate Revocation List in the I<AWS Client VPN
-Admin Guide>.
+Generate a Client Certificate Revocation List
+(https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/cvpn-working-certificates.html#cvpn-working-certificates-generate)
+in the I<AWS Client VPN Administrator Guide>.
 
 
 

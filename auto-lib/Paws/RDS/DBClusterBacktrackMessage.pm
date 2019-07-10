@@ -24,7 +24,7 @@ Contains a list of backtracks for the user.
 =head2 Marker => Str
 
 A pagination token that can be used in a subsequent
-DescribeDBClusterBacktracks request.
+C<DescribeDBClusterBacktracks> request.
 
 
 =head2 _request_id => Str

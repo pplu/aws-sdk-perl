@@ -17,6 +17,15 @@ Paws::StorageGateway::ListLocalDisksOutput
 
 =head2 Disks => ArrayRef[L<Paws::StorageGateway::Disk>]
 
+A JSON object containing the following fields:
+
+=over
+
+=item *
+
+ListLocalDisksOutput$Disks
+
+=back
 
 
 

@@ -59,9 +59,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> ApplyImmediately => Bool
 
-If C<True>, the number of replica nodes is decreased immediately. If
-C<False>, the number of replica nodes is decreased during the next
-maintenance window.
+If C<True>, the number of replica nodes is decreased immediately.
+C<ApplyImmediately=False> is not currently supported.
 
 
 

@@ -1,5 +1,6 @@
 package Paws::ECS::TaskSet;
   use Moose;
+  has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
   has ComputedDesiredCount => (is => 'ro', isa => 'Int', request_name => 'computedDesiredCount', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has ExternalId => (is => 'ro', isa => 'Str', request_name => 'externalId', traits => ['NameInRequest']);
@@ -11,6 +12,8 @@ package Paws::ECS::TaskSet;
   has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
   has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
   has Scale => (is => 'ro', isa => 'Paws::ECS::Scale', request_name => 'scale', traits => ['NameInRequest']);
+  has ServiceArn => (is => 'ro', isa => 'Str', request_name => 'serviceArn', traits => ['NameInRequest']);
+  has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', request_name => 'serviceRegistries', traits => ['NameInRequest']);
   has StabilityStatus => (is => 'ro', isa => 'Str', request_name => 'stabilityStatus', traits => ['NameInRequest']);
   has StabilityStatusAt => (is => 'ro', isa => 'Str', request_name => 'stabilityStatusAt', traits => ['NameInRequest']);
   has StartedBy => (is => 'ro', isa => 'Str', request_name => 'startedBy', traits => ['NameInRequest']);
@@ -37,30 +40,37 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::TaskSet object:
 
-  $service_obj->Method(Att1 => { ComputedDesiredCount => $value, ..., UpdatedAt => $value  });
+  $service_obj->Method(Att1 => { ClusterArn => $value, ..., UpdatedAt => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::TaskSet object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ComputedDesiredCount
+  $result->Att1->ClusterArn
 
 =head1 DESCRIPTION
 
-Information about a set of Amazon ECS tasks in an AWS CodeDeploy
-deployment. An Amazon ECS task set includes details such as the desired
-number of tasks, how many tasks are running, and whether the task set
-serves production traffic.
+Information about a set of Amazon ECS tasks in either an AWS CodeDeploy
+or an C<EXTERNAL> deployment. An Amazon ECS task set includes details
+such as the desired number of tasks, how many tasks are running, and
+whether the task set serves production traffic.
 
 =head1 ATTRIBUTES
+
+
+=head2 ClusterArn => Str
+
+  The Amazon Resource Name (ARN) of the cluster that the service that
+hosts the task set exists in.
 
 
 =head2 ComputedDesiredCount => Int
 
   The computed desired count for the task set. This is calculated by
 multiplying the service's C<desiredCount> by the task set's C<scale>
-percentage.
+percentage. The result is always rounded up. For example, if the
+computed desired count is 1.2, it rounds up to 2 tasks.
 
 
 =head2 CreatedAt => Str
@@ -70,7 +80,14 @@ percentage.
 
 =head2 ExternalId => Str
 
-  The deployment ID of the AWS CodeDeploy deployment.
+  The external ID associated with the task set.
+
+If a task set is created by an AWS CodeDeploy deployment, the
+C<externalId> parameter contains the AWS CodeDeploy deployment ID.
+
+If a task set is created for an external deployment and is associated
+with a service discovery registry, the C<externalId> parameter contains
+the C<ECS_TASK_SET_EXTERNAL_ID> AWS Cloud Map attribute.
 
 
 =head2 Id => Str
@@ -101,8 +118,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
   The number of tasks in the task set that are in the C<PENDING> status
 during a deployment. A task in the C<PENDING> state is preparing to
 enter the C<RUNNING> state. A task set enters the C<PENDING> status
-when it launches for the first time, or when it is restarted after
-being in the C<STOPPED> state.
+when it launches for the first time or when it is restarted after being
+in the C<STOPPED> state.
 
 
 =head2 PlatformVersion => Str
@@ -125,7 +142,19 @@ ready for use.
 =head2 Scale => L<Paws::ECS::Scale>
 
   A floating-point percentage of the desired number of tasks to place and
-keep running in the service.
+keep running in the task set.
+
+
+=head2 ServiceArn => Str
+
+  The Amazon Resource Name (ARN) of the service the task set exists in.
+
+
+=head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
+
+  The details of the service discovery registries to assign to this task
+set. For more information, see Service Discovery
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 
 
 =head2 StabilityStatus => Str
@@ -154,6 +183,11 @@ status.
 All tasks are reporting a healthy status from the load balancers,
 service discovery, and container health checks.
 
+If a C<healthCheckGracePeriodSeconds> value was set when the service
+was created, you may see a C<STEADY_STATE> reached since unhealthy
+Elastic Load Balancing target health checks will be ignored until it
+expires.
+
 =back
 
 If any of those conditions are not met, the stability status returns
@@ -168,9 +202,10 @@ retrieved.
 
 =head2 StartedBy => Str
 
-  The tag specified when a task set is started. If the task is started by
-an AWS CodeDeploy deployment, then the C<startedBy> parameter is
-C<CODE_DEPLOY>.
+  The tag specified when a task set is started. If the task set is
+created by an AWS CodeDeploy deployment, the C<startedBy> parameter is
+C<CODE_DEPLOY>. For a task set created for an external deployment, the
+startedBy field isn't used.
 
 
 =head2 Status => Str

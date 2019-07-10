@@ -56,7 +56,7 @@ Details about your recommended reservation purchase.
 
 =head2 AccountId => Str
 
-  
+  The account that this RI recommendation is for.
 
 
 =head2 AverageNormalizedUnitsUsedPerHour => Str

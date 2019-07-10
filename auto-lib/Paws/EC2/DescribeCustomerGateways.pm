@@ -32,10 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe a customer gateway
     # This example describes the specified customer gateway.
     my $DescribeCustomerGatewaysResult = $ec2->DescribeCustomerGateways(
-      {
-        'CustomerGatewayIds' => ['cgw-0e11f167']
-      }
-    );
+      'CustomerGatewayIds' => ['cgw-0e11f167'] );
 
     # Results:
     my $CustomerGateways = $DescribeCustomerGatewaysResult->CustomerGateways;

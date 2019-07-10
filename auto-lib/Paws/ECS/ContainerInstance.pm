@@ -12,6 +12,7 @@ package Paws::ECS::ContainerInstance;
   has RemainingResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', request_name => 'remainingResources', traits => ['NameInRequest']);
   has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
   has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', request_name => 'versionInfo', traits => ['NameInRequest']);
@@ -67,7 +68,8 @@ requested, this value is C<NULL>.
 
 =head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
 
-  The elastic network interfaces associated with the container instance.
+  The resources attached to a container instance, such as elastic network
+interfaces.
 
 
 =head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
@@ -84,8 +86,7 @@ contains the C<arn:aws:ecs> namespace, followed by the Region of the
 container instance, the AWS account ID of the container instance owner,
 the C<container-instance> namespace, and then the container instance
 ID. For example,
-C<arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>
->.
+C<arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID>.
 
 
 =head2 Ec2InstanceId => Str
@@ -135,14 +136,33 @@ C<RUNNING> status.
 
 =head2 Status => Str
 
-  The status of the container instance. The valid values are C<ACTIVE>,
-C<INACTIVE>, or C<DRAINING>. C<ACTIVE> indicates that the container
-instance can accept tasks. C<DRAINING> indicates that new tasks are not
-placed on the container instance and any service tasks running on the
-container instance are removed if possible. For more information, see
-Container Instance Draining
+  The status of the container instance. The valid values are
+C<REGISTERING>, C<REGISTRATION_FAILED>, C<ACTIVE>, C<INACTIVE>,
+C<DEREGISTERING>, or C<DRAINING>.
+
+If your account has opted in to the C<awsvpcTrunking> account setting,
+then any newly registered container instance will transition to a
+C<REGISTERING> status while the trunk elastic network interface is
+provisioned for the instance. If the registration fails, the instance
+will transition to a C<REGISTRATION_FAILED> status. You can describe
+the container instance and see the reason for failure in the
+C<statusReason> parameter. Once the container instance is terminated,
+the instance transitions to a C<DEREGISTERING> status while the trunk
+elastic network interface is deprovisioned. The instance then
+transitions to an C<INACTIVE> status.
+
+The C<ACTIVE> status indicates that the container instance can accept
+tasks. The C<DRAINING> indicates that new tasks are not placed on the
+container instance and any service tasks running on the container
+instance are removed if possible. For more information, see Container
+Instance Draining
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+
+=head2 StatusReason => Str
+
+  The reason that the container instance reached its current status.
 
 
 =head2 Tags => ArrayRef[L<Paws::ECS::Tag>]

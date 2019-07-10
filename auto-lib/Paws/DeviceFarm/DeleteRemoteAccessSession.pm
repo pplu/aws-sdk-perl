@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a specific remote access session
     # The following example deletes a specific remote access session.
     my $DeleteRemoteAccessSessionResult =
-      $devicefarm->DeleteRemoteAccessSession(
-      {
-        'Arn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456'
-      }
+      $devicefarm->DeleteRemoteAccessSession( 'Arn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456'
       );
 
 
@@ -46,7 +43,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the sesssion for which you want to
+The Amazon Resource Name (ARN) of the session for which you want to
 delete remote access.
 
 

@@ -17,7 +17,7 @@ Paws::SSM::DeregisterTargetFromMaintenanceWindowResult
 
 =head2 WindowId => Str
 
-The ID of the Maintenance Window the target was removed from.
+The ID of the maintenance window the target was removed from.
 
 
 =head2 WindowTargetId => Str

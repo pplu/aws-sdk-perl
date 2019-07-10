@@ -31,12 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Describe rules packages
     # Describes the rules packages that are specified by the ARNs of the rules
     # packages.
-    my $DescribeRulesPackagesResponse = $inspector->DescribeRulesPackages(
-      {
-        'RulesPackageArns' =>
-          ['arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ']
-      }
-    );
+    my $DescribeRulesPackagesResponse =
+      $inspector->DescribeRulesPackages( 'RulesPackageArns' =>
+        ['arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ'] );
 
     # Results:
     my $failedItems   = $DescribeRulesPackagesResponse->failedItems;

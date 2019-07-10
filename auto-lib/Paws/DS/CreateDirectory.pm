@@ -6,6 +6,7 @@ package Paws::DS::CreateDirectory;
   has Password => (is => 'ro', isa => 'Str', required => 1);
   has ShortName => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DS::Tag]');
   has VpcSettings => (is => 'ro', isa => 'Paws::DS::DirectoryVpcSettings');
 
   use MooseX::ClassAttribute;
@@ -38,6 +39,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Size        => 'Small',
       Description => 'MyDescription',           # OPTIONAL
       ShortName   => 'MyDirectoryShortName',    # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MyTagKey',                  # min: 1, max: 128
+          Value => 'MyTagValue',                # max: 256
+
+        },
+        ...
+      ],                                        # OPTIONAL
       VpcSettings => {
         SubnetIds => [ 'MySubnetId', ... ],
         VpcId     => 'MyVpcId',
@@ -88,6 +97,12 @@ The short name of the directory, such as C<CORP>.
 The size of the directory.
 
 Valid values are: C<"Small">, C<"Large">
+
+=head2 Tags => ArrayRef[L<Paws::DS::Tag>]
+
+The tags to be assigned to the Simple AD directory.
+
+
 
 =head2 VpcSettings => L<Paws::DS::DirectoryVpcSettings>
 

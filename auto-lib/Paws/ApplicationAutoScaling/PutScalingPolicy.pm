@@ -38,23 +38,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # web-app in the default cluster. The policy increases the desired count of
     # the service by 200%, with a cool down period of 60 seconds.
     my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
-      {
-        'PolicyName'                     => 'web-app-cpu-gt-75',
-        'PolicyType'                     => 'StepScaling',
-        'ResourceId'                     => 'service/default/web-app',
-        'ScalableDimension'              => 'ecs:service:DesiredCount',
-        'ServiceNamespace'               => 'ecs',
-        'StepScalingPolicyConfiguration' => {
-          'AdjustmentType'  => 'PercentChangeInCapacity',
-          'Cooldown'        => 60,
-          'StepAdjustments' => [
+      'PolicyName'                     => 'web-app-cpu-gt-75',
+      'PolicyType'                     => 'StepScaling',
+      'ResourceId'                     => 'service/default/web-app',
+      'ScalableDimension'              => 'ecs:service:DesiredCount',
+      'ServiceNamespace'               => 'ecs',
+      'StepScalingPolicyConfiguration' => {
+        'AdjustmentType'  => 'PercentChangeInCapacity',
+        'Cooldown'        => 60,
+        'StepAdjustments' => [
 
-            {
-              'MetricIntervalLowerBound' => 0,
-              'ScalingAdjustment'        => 200
-            }
-          ]
-        }
+          {
+            'MetricIntervalLowerBound' => 0,
+            'ScalingAdjustment'        => 200
+          }
+        ]
       }
     );
 
@@ -68,24 +66,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # down period of 180 seconds.",
 
     my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
-      {
-        'PolicyName' => 'fleet-cpu-gt-75',
-        'PolicyType' => 'StepScaling',
-        'ResourceId' =>
-          'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
-        'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
-        'ServiceNamespace'  => 'ec2',
-        'StepScalingPolicyConfiguration' => {
-          'AdjustmentType'  => 'PercentChangeInCapacity',
-          'Cooldown'        => 180,
-          'StepAdjustments' => [
+      'PolicyName' => 'fleet-cpu-gt-75',
+      'PolicyType' => 'StepScaling',
+      'ResourceId' =>
+        'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
+      'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
+      'ServiceNamespace'  => 'ec2',
+      'StepScalingPolicyConfiguration' => {
+        'AdjustmentType'  => 'PercentChangeInCapacity',
+        'Cooldown'        => 180,
+        'StepAdjustments' => [
 
-            {
-              'MetricIntervalLowerBound' => 0,
-              'ScalingAdjustment'        => 200
-            }
-          ]
-        }
+          {
+            'MetricIntervalLowerBound' => 0,
+            'ScalingAdjustment'        => 200
+          }
+        ]
       }
     );
 
@@ -112,10 +108,10 @@ The policy type. This parameter is required if you are creating a
 scaling policy.
 
 For information on which services do not support C<StepScaling> or
-C<TargetTrackingScaling>, see Step Scaling Policies for Application
-Auto Scaling
+C<TargetTrackingScaling>, see the information about B<Limits> in Step
+Scaling Policies
 (https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
-and Target Tracking Scaling Policies for Application Auto Scaling
+and Target Tracking Scaling Policies
 (https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
 in the I<Application Auto Scaling User Guide>.
 
@@ -258,7 +254,7 @@ Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:Targe
 The namespace of the AWS service that provides the resource or
 C<custom-resource> for a resource provided by your own application or
 service. For more information, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
 Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">
@@ -274,7 +270,8 @@ type is C<StepScaling>.
 
 =head2 TargetTrackingScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration>
 
-A target tracking policy.
+A target tracking scaling policy. Includes support for predefined or
+customized metrics.
 
 This parameter is required if you are creating a policy and the policy
 type is C<TargetTrackingScaling>.

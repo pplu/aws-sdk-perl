@@ -66,7 +66,7 @@ The ID of the deployment if you wish to redeploy a previous deployment.
 
 =head2 DeploymentType => Str
 
-The type of deployment. When used in ''CreateDeployment'', only
+The type of deployment. When used for ''CreateDeployment'', only
 ''NewDeployment'' and ''Redeployment'' are valid.
 
 Valid values are: C<"NewDeployment">, C<"Redeployment">, C<"ResetDeployment">, C<"ForceResetDeployment">

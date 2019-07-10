@@ -12,8 +12,10 @@ package Paws::EC2::SpotFleetRequestConfigData;
   has LoadBalancersConfig => (is => 'ro', isa => 'Paws::EC2::LoadBalancersConfig', request_name => 'loadBalancersConfig', traits => ['NameInRequest']);
   has OnDemandAllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'onDemandAllocationStrategy', traits => ['NameInRequest']);
   has OnDemandFulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'onDemandFulfilledCapacity', traits => ['NameInRequest']);
+  has OnDemandMaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'onDemandMaxTotalPrice', traits => ['NameInRequest']);
   has OnDemandTargetCapacity => (is => 'ro', isa => 'Int', request_name => 'onDemandTargetCapacity', traits => ['NameInRequest']);
   has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', request_name => 'replaceUnhealthyInstances', traits => ['NameInRequest']);
+  has SpotMaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'spotMaxTotalPrice', traits => ['NameInRequest']);
   has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
   has TargetCapacity => (is => 'ro', isa => 'Int', request_name => 'targetCapacity', traits => ['NameInRequest'], required => 1);
   has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool', request_name => 'terminateInstancesWithExpiration', traits => ['NameInRequest']);
@@ -71,8 +73,8 @@ For more information, see Ensuring Idempotency
 
 =head2 ExcessCapacityTerminationPolicy => Str
 
-  Indicates whether running Spot Instances should be terminated if the
-target capacity of the Spot Fleet request is decreased below the
+  Indicates whether running Spot Instances should be terminated if you
+decrease the target capacity of the Spot Fleet request below the
 current size of the Spot Fleet.
 
 
@@ -84,10 +86,15 @@ target capacity. You cannot set this value.
 
 =head2 B<REQUIRED> IamFleetRole => Str
 
-  Grants the Spot Fleet permission to terminate Spot Instances on your
-behalf when you cancel its Spot Fleet request using
-CancelSpotFleetRequests or when the Spot Fleet request expires, if you
-set C<terminateInstancesWithExpiration>.
+  The Amazon Resource Name (ARN) of an AWS Identity and Access Management
+(IAM) role that grants the Spot Fleet the permission to request,
+launch, terminate, and tag instances on your behalf. For more
+information, see Spot Fleet Prerequisites
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites)
+in the I<Amazon EC2 User Guide for Linux Instances>. Spot Fleet can
+terminate Spot Instances on your behalf when you cancel its Spot Fleet
+request using CancelSpotFleetRequests or when the Spot Fleet request
+expires, if you set C<TerminateInstancesWithExpiration>.
 
 
 =head2 InstanceInterruptionBehavior => Str
@@ -107,12 +114,18 @@ that you specify.
 
 =head2 LaunchSpecifications => ArrayRef[L<Paws::EC2::SpotFleetLaunchSpecification>]
 
-  The launch specifications for the Spot Fleet request.
+  The launch specifications for the Spot Fleet request. If you specify
+C<LaunchSpecifications>, you can't specify C<LaunchTemplateConfigs>. If
+you include On-Demand capacity in your request, you must use
+C<LaunchTemplateConfigs>.
 
 
 =head2 LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::LaunchTemplateConfig>]
 
-  The launch template and overrides.
+  The launch template and overrides. If you specify
+C<LaunchTemplateConfigs>, you can't specify C<LaunchSpecifications>. If
+you include On-Demand capacity in your request, you must use
+C<LaunchTemplateConfigs>.
 
 
 =head2 LoadBalancersConfig => L<Paws::EC2::LoadBalancersConfig>
@@ -143,6 +156,19 @@ C<lowestPrice>.
 set target On-Demand capacity.
 
 
+=head2 OnDemandMaxTotalPrice => Str
+
+  The maximum amount per hour for On-Demand Instances that you're willing
+to pay. You can use the C<onDemandMaxTotalPrice> parameter, the
+C<spotMaxTotalPrice> parameter, or both parameters to ensure that your
+fleet cost does not exceed your budget. If you set a maximum price per
+hour for the On-Demand Instances and Spot Instances in your request,
+Spot Fleet will launch instances until it reaches the maximum amount
+you're willing to pay. When the maximum amount you're willing to pay is
+reached, the fleet stops launching instances even if it hasnE<rsquo>t
+met the target capacity.
+
+
 =head2 OnDemandTargetCapacity => Int
 
   The number of On-Demand units to request. You can choose to set the
@@ -157,6 +183,19 @@ capacity of 0 and add capacity later.
   Indicates whether Spot Fleet should replace unhealthy instances.
 
 
+=head2 SpotMaxTotalPrice => Str
+
+  The maximum amount per hour for Spot Instances that you're willing to
+pay. You can use the C<spotdMaxTotalPrice> parameter, the
+C<onDemandMaxTotalPrice> parameter, or both parameters to ensure that
+your fleet cost does not exceed your budget. If you set a maximum price
+per hour for the On-Demand Instances and Spot Instances in your
+request, Spot Fleet will launch instances until it reaches the maximum
+amount you're willing to pay. When the maximum amount you're willing to
+pay is reached, the fleet stops launching instances even if it
+hasnE<rsquo>t met the target capacity.
+
+
 =head2 SpotPrice => Str
 
   The maximum price per unit hour that you are willing to pay for a Spot
@@ -165,17 +204,17 @@ Instance. The default is the On-Demand price.
 
 =head2 B<REQUIRED> TargetCapacity => Int
 
-  The number of units to request. You can choose to set the target
-capacity in terms of instances or a performance characteristic that is
-important to your application workload, such as vCPUs, memory, or I/O.
-If the request type is C<maintain>, you can specify a target capacity
-of 0 and add capacity later.
+  The number of units to request for the Spot Fleet. You can choose to
+set the target capacity in terms of instances or a performance
+characteristic that is important to your application workload, such as
+vCPUs, memory, or I/O. If the request type is C<maintain>, you can
+specify a target capacity of 0 and add capacity later.
 
 
 =head2 TerminateInstancesWithExpiration => Bool
 
-  Indicates whether running Spot Instances should be terminated when the
-Spot Fleet request expires.
+  Indicates whether running Spot Instances are terminated when the Spot
+Fleet request expires.
 
 
 =head2 Type => Str
@@ -194,17 +233,18 @@ Fleet.
 
 =head2 ValidFrom => Str
 
-  The start date and time of the request, in UTC format (for example,
-I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). The default is to start
+  The start date and time of the request, in UTC format
+(I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). By default, Amazon EC2 starts
 fulfilling the request immediately.
 
 
 =head2 ValidUntil => Str
 
-  The end date and time of the request, in UTC format (for example,
-I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). At this point, no new Spot
-Instance requests are placed or able to fulfill the request. The
-default end date is 7 days from the current date.
+  The end date and time of the request, in UTC format
+(I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). After the end date and time,
+no new Spot Instance requests are placed or able to fulfill the
+request. If no value is specified, the Spot Fleet request remains until
+you cancel it.
 
 
 

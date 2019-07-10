@@ -37,8 +37,8 @@ Describes a launch template and the launch template version.
 
 The launch template that is specified must be configured for use with
 an Auto Scaling group. For more information, see Creating a Launch
-Template for an Auto Scaling group
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
+Template for an Auto Scaling Group
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head1 ATTRIBUTES

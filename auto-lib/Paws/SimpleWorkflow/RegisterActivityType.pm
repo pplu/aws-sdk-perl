@@ -96,7 +96,7 @@ Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 
 For more information about setting task priority, see Setting Task
 Priority
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
 in the I<in the I<Amazon SWF Developer Guide>.>.
 
 
@@ -155,7 +155,7 @@ The name of the activity type within the domain.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
-not contain the literal string C<arn>.
+not I<be> the literal string C<arn>.
 
 
 
@@ -169,7 +169,7 @@ which must be unique within the domain.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
-not contain the literal string C<arn>.
+not I<be> the literal string C<arn>.
 
 
 

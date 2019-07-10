@@ -43,8 +43,8 @@ Information about a deployment configuration.
 
 =head2 ComputePlatform => Str
 
-  The destination platform type for the deployment (C<Lambda> or
-C<Server>).
+  The destination platform type for the deployment (C<Lambda>, C<Server>,
+or C<ECS>).
 
 
 =head2 CreateTime => Str

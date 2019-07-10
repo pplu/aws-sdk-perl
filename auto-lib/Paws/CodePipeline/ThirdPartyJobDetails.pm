@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 DESCRIPTION
 
-The details of a job sent in response to a GetThirdPartyJobDetails
+The details of a job sent in response to a C<GetThirdPartyJobDetails>
 request.
 
 =head1 ATTRIBUTES

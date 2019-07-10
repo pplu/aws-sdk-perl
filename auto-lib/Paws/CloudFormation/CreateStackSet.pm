@@ -140,37 +140,37 @@ if necessary.
 =item *
 
 AWS::IAM::AccessKey
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 
 =item *
 
 AWS::IAM::Group
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 
 =item *
 
 AWS::IAM::InstanceProfile
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 
 =item *
 
 AWS::IAM::Policy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
 
 =item *
 
 AWS::IAM::Role
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 
 =item *
 
 AWS::IAM::User
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
 
 =item *
 
 AWS::IAM::UserToGroupAddition
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 
 =back
 
@@ -273,7 +273,7 @@ with an C<access denied> error, and the stack set is not created.
 The structure that contains the template body, with a minimum length of
 1 byte and a maximum length of 51,200 bytes. For more information, see
 Template Anatomy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the TemplateBody or the
@@ -286,7 +286,7 @@ TemplateURL parameter, but not both.
 The location of the file that contains the template body. The URL must
 point to a template (maximum size: 460,800 bytes) that's located in an
 Amazon S3 bucket. For more information, see Template Anatomy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the TemplateBody or the

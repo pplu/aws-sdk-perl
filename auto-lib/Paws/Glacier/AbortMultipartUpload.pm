@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The example deletes an in-progress multipart upload to a vault named
     # my-vault:
     $glacier->AbortMultipartUpload(
-      {
-        'AccountId' => '-',
-        'UploadId' =>
+      'AccountId' => '-',
+      'UploadId' =>
 '19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',
-        'VaultName' => 'my-vault'
-      }
+      'VaultName' => 'my-vault'
     );
 
 

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 Describes the number of in-application streams to create for a given
 streaming source. For information about parallelism, see Configuring
 Application Input
-(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 
 =head1 ATTRIBUTES
 
@@ -43,7 +43,7 @@ Application Input
 
   Number of in-application streams to create. For more information, see
 Limits
-(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html).
 
 
 

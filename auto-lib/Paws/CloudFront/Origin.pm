@@ -44,7 +44,7 @@ group.
 
 For the current limit on the number of origins or origin groups that
 you can specify for a distribution, see Amazon CloudFront Limits
-(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront)
+(https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront)
 in the I<AWS General Reference>.
 
 =head1 ATTRIBUTES
@@ -73,7 +73,7 @@ hosting endpoint for the bucket.
 
 For more information about specifying this value for different types of
 origins, see Origin Domain Name
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName)
 in the I<Amazon CloudFront Developer Guide>.
 
 Constraints for Amazon S3 origins:
@@ -132,7 +132,7 @@ which you want the cache behavior to route requests by specifying the
 value of the C<Id> element for that origin. When a request matches the
 path pattern for that cache behavior, CloudFront routes the request to
 the specified origin. For more information, see Cache Behavior Settings
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior)
 in the I<Amazon CloudFront Developer Guide>.
 
 

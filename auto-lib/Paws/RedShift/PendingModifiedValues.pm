@@ -82,7 +82,7 @@ For the China region the possible values are None, and Legacy.
 VPC routing enabled. To create a cluster that uses enhanced VPC
 routing, the cluster must be in a VPC. For more information, see
 Enhanced VPC Routing
-(http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
 in the Amazon Redshift Cluster Management Guide.
 
 If this option is C<true>, enhanced VPC routing is enabled.

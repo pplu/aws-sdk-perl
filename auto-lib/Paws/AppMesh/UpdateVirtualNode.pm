@@ -9,7 +9,7 @@ package Paws::AppMesh::UpdateVirtualNode;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVirtualNode');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/meshes/{meshName}/virtualNodes/{virtualNodeName}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualNodes/{virtualNodeName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::UpdateVirtualNodeOutput');
 1;
@@ -34,27 +34,60 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateVirtualNodeOutput = $appmesh->UpdateVirtualNode(
       MeshName => 'MyResourceName',
       Spec     => {
-        Backends => [ 'MyServiceName', ... ],    # OPTIONAL
-        Listeners => [
+        Backends => [
           {
-            HealthCheck => {
-              HealthyThreshold   => 1,            # min: 2, max: 10
-              IntervalMillis     => 1,            # min: 5000, max: 300000
-              Protocol           => 'http',       # values: http, tcp
-              TimeoutMillis      => 1,            # min: 2000, max: 60000
-              UnhealthyThreshold => 1,            # min: 2, max: 10
-              Path               => 'MyString',   # OPTIONAL
-              Port               => 1,            # min: 1, max: 65535; OPTIONAL
-            },    # OPTIONAL
-            PortMapping => {
-              Port     => 1,         # min: 1, max: 65535; OPTIONAL
-              Protocol => 'http',    # values: http, tcp
+            VirtualService => {
+              VirtualServiceName => 'MyServiceName',
+
             },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],        # max: 25; OPTIONAL
+        Listeners => [
+          {
+            PortMapping => {
+              Port     => 1,         # min: 1, max: 65535
+              Protocol => 'http',    # values: http, tcp
+
+            },
+            HealthCheck => {
+              HealthyThreshold   => 1,             # min: 2, max: 10
+              IntervalMillis     => 1,             # min: 5000, max: 300000
+              Protocol           => 'http',        # values: http, tcp
+              TimeoutMillis      => 1,             # min: 2000, max: 60000
+              UnhealthyThreshold => 1,             # min: 2, max: 10
+              Path               => 'MyString',    # OPTIONAL
+              Port               => 1,             # min: 1, max: 65535
+            },    # OPTIONAL
+          },
+          ...
+        ],        # max: 1; OPTIONAL
+        Logging => {
+          AccessLog => {
+            File => {
+              Path => 'MyFilePath',    # min: 1, max: 255
+
+            },    # OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
         ServiceDiscovery => {
-          Dns => { ServiceName => 'MyServiceName', },    # OPTIONAL
+          AwsCloudMap => {
+            NamespaceName => 'MyAwsCloudMapName',    # min: 1, max: 1024
+            ServiceName   => 'MyAwsCloudMapName',    # min: 1, max: 1024
+            Attributes    => [
+              {
+                Key => 'MyAwsCloudMapInstanceAttributeKey',   # min: 1, max: 255
+                Value =>
+                  'MyAwsCloudMapInstanceAttributeValue',    # min: 1, max: 1024
+
+              },
+              ...
+            ],                                              # OPTIONAL
+          },    # OPTIONAL
+          Dns => {
+            Hostname => 'MyHostname',
+
+          },    # OPTIONAL
         },    # OPTIONAL
       },
       VirtualNodeName => 'MyResourceName',
@@ -82,7 +115,7 @@ underscores are allowed.
 
 =head2 B<REQUIRED> MeshName => Str
 
-The name of the service mesh in which the virtual node resides.
+The name of the service mesh that the virtual node resides in.
 
 
 

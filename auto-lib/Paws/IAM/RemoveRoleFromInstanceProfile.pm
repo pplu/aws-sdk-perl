@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command removes the role named Test-Role from the instance
     # profile named ExampleInstanceProfile.
     $iam->RemoveRoleFromInstanceProfile(
-      {
-        'InstanceProfileName' => 'ExampleInstanceProfile',
-        'RoleName'            => 'Test-Role'
-      }
+      'InstanceProfileName' => 'ExampleInstanceProfile',
+      'RoleName'            => 'Test-Role'
     );
 
 

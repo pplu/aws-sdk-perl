@@ -204,7 +204,7 @@ associated key pair.
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterface>]
 
-  [EC2-VPC] One or more network interfaces for the instance.
+  [EC2-VPC] The network interfaces for the instance.
 
 
 =head2 Placement => L<Paws::EC2::Placement>
@@ -271,7 +271,7 @@ an instance store volume.
 
 =head2 SecurityGroups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
-  One or more security groups for the instance.
+  The security groups for the instance.
 
 
 =head2 SourceDestCheck => Bool

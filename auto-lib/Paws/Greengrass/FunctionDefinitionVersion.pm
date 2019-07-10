@@ -39,8 +39,9 @@ Information about a function definition version.
 
 =head2 DefaultConfig => L<Paws::Greengrass::FunctionDefaultConfig>
 
-  Default configuration that will apply to all Lambda functions in this
-function definition version
+  The default configuration that applies to all Lambda functions in this
+function definition version. Individual Lambda functions can override
+these settings.
 
 
 =head2 Functions => ArrayRef[L<Paws::Greengrass::Function>]

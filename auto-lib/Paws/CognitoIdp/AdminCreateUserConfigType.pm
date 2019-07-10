@@ -59,6 +59,10 @@ no longer usable. To reset the account after that time limit, you must
 call C<AdminCreateUser> again, specifying C<"RESEND"> for the
 C<MessageAction> parameter. The default value for this parameter is 7.
 
+If you set a value for C<TemporaryPasswordValidityDays> in
+C<PasswordPolicy>, that value will be used and
+C<UnusedAccountValidityDays> will be deprecated for that user pool.
+
 
 
 =head1 SEE ALSO

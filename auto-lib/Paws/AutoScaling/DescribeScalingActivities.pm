@@ -34,10 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the scaling activities for the specified Auto
     # Scaling group.
     my $ActivitiesType = $autoscaling->DescribeScalingActivities(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
-      }
-    );
+      'AutoScalingGroupName' => 'my-auto-scaling-group' );
 
     # Results:
     my $Activities = $ActivitiesType->Activities;
@@ -69,7 +66,7 @@ The name of the Auto Scaling group.
 =head2 MaxRecords => Int
 
 The maximum number of items to return with this call. The default value
-is 100 and the maximum value is 100.
+is C<100> and the maximum value is C<100>.
 
 
 

@@ -9,6 +9,7 @@ package Paws::IoTAnalytics::Dataset;
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetTrigger]', request_name => 'triggers', traits => ['NameInRequest']);
+  has VersioningConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::VersioningConfiguration', request_name => 'versioningConfiguration', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoTAnalytics::Dataset object:
 
-  $service_obj->Method(Att1 => { Actions => $value, ..., Triggers => $value  });
+  $service_obj->Method(Att1 => { Actions => $value, ..., VersioningConfiguration => $value  });
 
 =head3 Results returned from an API call
 
@@ -90,6 +91,16 @@ specified here.
 
   The "DatasetTrigger" objects that specify when the data set is
 automatically updated.
+
+
+=head2 VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>
+
+  [Optional] How many versions of data set contents are kept. If not
+specified or set to null, only the latest version plus the latest
+succeeded version (if they are different) are kept for the time period
+specified by the "retentionPeriod" parameter. (For more information,
+see
+https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
 
 
 

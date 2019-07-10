@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateAssociationBatchResult = $ssm->CreateAssociationBatch(
       Entries => [
         {
-          Name            => 'MyDocumentName',
+          Name            => 'MyDocumentARN',
           AssociationName => 'MyAssociationName',    # OPTIONAL
           AutomationTargetParameterName =>
             'MyAutomationTargetParameterName',       # min: 1, max: 50; OPTIONAL

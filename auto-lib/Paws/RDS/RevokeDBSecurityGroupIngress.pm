@@ -35,10 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example revokes ingress for the specified CIDR block associated with
     # the specified DB security group.
     my $RevokeDBSecurityGroupIngressResult = $rds->RevokeDBSecurityGroupIngress(
-      {
-        'CIDRIP'              => '203.0.113.5/32',
-        'DBSecurityGroupName' => 'mydbsecuritygroup'
-      }
+      'CIDRIP'              => '203.0.113.5/32',
+      'DBSecurityGroupName' => 'mydbsecuritygroup'
     );
 
 

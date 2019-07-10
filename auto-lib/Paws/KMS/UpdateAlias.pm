@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following example updates the specified alias to refer to the specified
    # customer master key (CMK).
     $kms->UpdateAlias(
-      {
-        'AliasName'   => 'alias/ExampleAlias',
-        'TargetKeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
-      }
+      'AliasName'   => 'alias/ExampleAlias',
+      'TargetKeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
     );
 
 
@@ -47,15 +45,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> AliasName => Str
 
-String that contains the name of the alias to be modified. The name
-must start with the word "alias" followed by a forward slash (alias/).
-Aliases that begin with "alias/aws" are reserved.
+Specifies the name of the alias to change. This value must begin with
+C<alias/> followed by the alias name, such as C<alias/ExampleAlias>.
 
 
 
 =head2 B<REQUIRED> TargetKeyId => Str
 
-Unique identifier of the customer master key to be mapped to the alias.
+Unique identifier of the customer master key (CMK) to be mapped to the
+alias. When the update operation completes, the alias will point to
+this CMK.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

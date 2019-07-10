@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Engine
 =head1 DESCRIPTION
 
 Contains the result of a successful invocation of the
-DescribeEngineDefaultParameters action.
+C<DescribeEngineDefaultParameters> action.
 
 =head1 ATTRIBUTES
 

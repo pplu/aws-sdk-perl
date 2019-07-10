@@ -82,8 +82,8 @@ A name for the update.
 =head2 OwnerInformation => Str
 
 User-provided value that will be included in any CloudWatch events
-raised while running tasks for these targets in this Maintenance
-Window.
+raised while running tasks for these targets in this maintenance
+window.
 
 
 
@@ -103,7 +103,7 @@ The targets to add or replace.
 
 =head2 B<REQUIRED> WindowId => Str
 
-The Maintenance Window ID with which to modify the target.
+The maintenance window ID with which to modify the target.
 
 
 

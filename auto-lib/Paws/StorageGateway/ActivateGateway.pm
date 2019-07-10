@@ -7,6 +7,7 @@ package Paws::StorageGateway::ActivateGateway;
   has GatewayTimezone => (is => 'ro', isa => 'Str', required => 1);
   has GatewayType => (is => 'ro', isa => 'Str');
   has MediumChangerType => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has TapeDriveType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -36,15 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To activate the gateway
     # Activates the gateway you previously deployed on your host.
     my $ActivateGatewayOutput = $storagegateway->ActivateGateway(
-      {
-        'ActivationKey'     => '29AV1-3OFV9-VVIUB-NKT0I-LRO6V',
-        'GatewayName'       => 'My_Gateway',
-        'GatewayRegion'     => 'us-east-1',
-        'GatewayTimezone'   => 'GMT-12:00',
-        'GatewayType'       => 'STORED',
-        'MediumChangerType' => 'AWS-Gateway-VTL',
-        'TapeDriveType'     => 'IBM-ULT3580-TD5'
-      }
+      'ActivationKey'     => '29AV1-3OFV9-VVIUB-NKT0I-LRO6V',
+      'GatewayName'       => 'My_Gateway',
+      'GatewayRegion'     => 'us-east-1',
+      'GatewayTimezone'   => 'GMT-12:00',
+      'GatewayType'       => 'STORED',
+      'MediumChangerType' => 'AWS-Gateway-VTL',
+      'TapeDriveType'     => 'IBM-ULT3580-TD5'
     );
 
     # Results:
@@ -88,13 +87,12 @@ The gateway region specified must be the same region as the region in
 your C<Host> header in the request. For more information about
 available regions and endpoints for AWS Storage Gateway, see Regions
 and Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in
+(https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in
 the I<Amazon Web Services Glossary>.
 
-Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2",
-"ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "eu-west-3",
-"ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
-"ap-south-1", "sa-east-1"
+Valid Values: See AWS Storage Gateway Regions and Endpoints
+(https://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region) in
+the AWS General Reference.
 
 
 
@@ -124,6 +122,18 @@ The value that indicates the type of medium changer to use for tape
 gateway. This field is optional.
 
 Valid Values: "STK-L700", "AWS-Gateway-VTL"
+
+
+
+=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+
+A list of up to 50 tags that can be assigned to the gateway. Each tag
+is a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: +
+- = . _ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.
 
 
 

@@ -35,11 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example lists information for up to the first 20 system parameters for
    # the specified DB parameter group.
     my $DBParameterGroupDetails = $rds->DescribeDBParameters(
-      {
-        'DBParameterGroupName' => 'mymysqlparametergroup',
-        'MaxRecords'           => 20,
-        'Source'               => 'system'
-      }
+      'DBParameterGroupName' => 'mymysqlparametergroup',
+      'MaxRecords'           => 20,
+      'Source'               => 'system'
     );
 
 

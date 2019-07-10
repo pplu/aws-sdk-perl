@@ -40,8 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> AssociationIds => ArrayRef[Str|Undef]
 
-The association IDs that you want to execute immediately and only one
-time.
+The association IDs that you want to run immediately and only one time.
 
 
 

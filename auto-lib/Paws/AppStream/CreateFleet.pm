@@ -8,6 +8,7 @@ package Paws::AppStream::CreateFleet;
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has FleetType => (is => 'ro', isa => 'Str');
+  has IdleDisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has ImageArn => (is => 'ro', isa => 'Str');
   has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
@@ -55,12 +56,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         OrganizationalUnitDistinguishedName =>
           'MyOrganizationalUnitDistinguishedName',      # max: 2000; OPTIONAL
       },    # OPTIONAL
-      EnableDefaultInternetAccess => 1,              # OPTIONAL
-      FleetType                   => 'ALWAYS_ON',    # OPTIONAL
-      ImageArn                    => 'MyArn',        # OPTIONAL
-      ImageName                   => 'MyString',     # OPTIONAL
-      MaxUserDurationInSeconds    => 1,              # OPTIONAL
-      Tags                        => {
+      EnableDefaultInternetAccess    => 1,              # OPTIONAL
+      FleetType                      => 'ALWAYS_ON',    # OPTIONAL
+      IdleDisconnectTimeoutInSeconds => 1,              # OPTIONAL
+      ImageArn                       => 'MyArn',        # OPTIONAL
+      ImageName                      => 'MyString',     # OPTIONAL
+      MaxUserDurationInSeconds       => 1,              # OPTIONAL
+      Tags                           => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       VpcConfig => {
@@ -98,10 +100,13 @@ The description to display.
 
 =head2 DisconnectTimeoutInSeconds => Int
 
-The time after disconnection when a session is considered to have
-ended, in seconds. If a user who was disconnected reconnects within
-this time interval, the user is connected to their previous session.
-Specify a value between 60 and 57600.
+The amount of time that a streaming session remains active after users
+disconnect. If users try to reconnect to the streaming session after a
+disconnection or network interruption within this time interval, they
+are connected to their previous session. Otherwise, they are connected
+to a new session with a new streaming instance.
+
+Specify a value between 60 and 360000.
 
 
 
@@ -147,6 +152,35 @@ streaming apps.
 
 
 Valid values are: C<"ALWAYS_ON">, C<"ON_DEMAND">
+
+=head2 IdleDisconnectTimeoutInSeconds => Int
+
+The amount of time that users can be idle (inactive) before they are
+disconnected from their streaming session and the
+C<DisconnectTimeoutInSeconds> time interval begins. Users are notified
+before they are disconnected due to inactivity. If they try to
+reconnect to the streaming session before the time interval specified
+in C<DisconnectTimeoutInSeconds> elapses, they are connected to their
+previous session. Users are considered idle when they stop providing
+keyboard or mouse input during their streaming session. File uploads
+and downloads, audio in, audio out, and pixels changing do not qualify
+as user activity. If users continue to be idle after the time interval
+in C<IdleDisconnectTimeoutInSeconds> elapses, they are disconnected.
+
+To prevent users from being disconnected due to inactivity, specify a
+value of 0. Otherwise, specify a value between 60 and 3600. The default
+value is 0.
+
+If you enable this feature, we recommend that you specify a value that
+corresponds exactly to a whole number of minutes (for example, 60, 120,
+and 180). If you don't do this, the value is rounded to the nearest
+minute. For example, if you specify a value of 70, users are
+disconnected after 1 minute of inactivity. If you specify a value that
+is at the midpoint between two different minutes, the value is rounded
+up. For example, if you specify a value of 90, users are disconnected
+after 2 minutes of inactivity.
+
+
 
 =head2 ImageArn => Str
 
@@ -254,8 +288,13 @@ stream.graphics-pro.16xlarge
 
 =head2 MaxUserDurationInSeconds => Int
 
-The maximum time that a streaming session can run, in seconds. Specify
-a value between 600 and 57600.
+The maximum amount of time that a streaming session can remain active,
+in seconds. If users are still connected to a streaming instance five
+minutes before this limit is reached, they are prompted to save any
+open documents before being disconnected. After this time elapses, the
+instance is terminated and replaced by a new instance.
+
+Specify a value between 600 and 360000.
 
 
 
@@ -267,14 +306,19 @@ A unique name for the fleet.
 
 =head2 Tags => L<Paws::AppStream::Tags>
 
-The tags to associate with the fleet. A tag is a key-value pair (the
-value is optional). For example, Environment=Test, or, if you do not
+The tags to associate with the fleet. A tag is a key-value pair, and
+the value is optional. For example, Environment=Test. If you do not
 specify a value, Environment=.
 
-If you do not specify a value, we set the value to an empty string.
+If you do not specify a value, the value is set to an empty string.
+
+Generally allowed characters are: letters, numbers, and spaces
+representable in UTF-8, and the following special characters:
+
+_ . : / = + \ - @
 
 For more information, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 

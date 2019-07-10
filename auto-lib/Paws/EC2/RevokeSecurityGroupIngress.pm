@@ -136,8 +136,8 @@ request.
 
 =head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
-One or more sets of IP permissions. You can't specify a source security
-group and a CIDR IP address range in the same set of permissions.
+The sets of IP permissions. You can't specify a source security group
+and a CIDR IP address range in the same set of permissions.
 
 
 

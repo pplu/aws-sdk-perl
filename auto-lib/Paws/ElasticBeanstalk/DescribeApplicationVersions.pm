@@ -35,10 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # labeled v2:
     my $ApplicationVersionDescriptionsMessage =
       $elasticbeanstalk->DescribeApplicationVersions(
-      {
-        'ApplicationName' => 'my-app',
-        'VersionLabels'   => ['v2']
-      }
+      'ApplicationName' => 'my-app',
+      'VersionLabels'   => ['v2']
       );
 
     # Results:

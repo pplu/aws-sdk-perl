@@ -1,6 +1,8 @@
 package Paws::CodePipeline::PipelineContext;
   use Moose;
   has Action => (is => 'ro', isa => 'Paws::CodePipeline::ActionContext', request_name => 'action', traits => ['NameInRequest']);
+  has PipelineArn => (is => 'ro', isa => 'Str', request_name => 'pipelineArn', traits => ['NameInRequest']);
+  has PipelineExecutionId => (is => 'ro', isa => 'Str', request_name => 'pipelineExecutionId', traits => ['NameInRequest']);
   has PipelineName => (is => 'ro', isa => 'Str', request_name => 'pipelineName', traits => ['NameInRequest']);
   has Stage => (is => 'ro', isa => 'Paws::CodePipeline::StageContext', request_name => 'stage', traits => ['NameInRequest']);
 1;
@@ -35,6 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 Represents information about a pipeline to a job worker.
 
+PipelineContext contains C<pipelineArn> and C<pipelineExecutionId> for
+custom action jobs. The C<pipelineArn> and C<pipelineExecutionId>
+fields are not populated for ThirdParty action jobs.
+
 =head1 ATTRIBUTES
 
 
@@ -42,6 +48,16 @@ Represents information about a pipeline to a job worker.
 
   The context of an action to a job worker within the stage of a
 pipeline.
+
+
+=head2 PipelineArn => Str
+
+  The Amazon Resource Name (ARN) of the pipeline.
+
+
+=head2 PipelineExecutionId => Str
+
+  The execution ID of the pipeline.
 
 
 =head2 PipelineName => Str

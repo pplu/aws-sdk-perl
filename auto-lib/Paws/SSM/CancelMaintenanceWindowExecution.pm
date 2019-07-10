@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> WindowExecutionId => Str
 
-The ID of the Maintenance Window execution to stop.
+The ID of the maintenance window execution to stop.
 
 
 

@@ -55,6 +55,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CopyTagsToBackups            => 1,        # OPTIONAL
         DailyAutomaticBackupStartTime =>
           'MyDailyTime',                          # min: 5, max: 5; OPTIONAL
+        SelfManagedActiveDirectoryConfiguration => {
+          DnsIps     => [ 'MyIpAddress', ... ],               # min: 1, max: 2
+          DomainName => 'MyActiveDirectoryFullyQualifiedName',
+          Password   => 'MyDirectoryPassword',                # min: 1, max: 256
+          UserName   => 'MyDirectoryUserName',                # min: 1, max: 256
+          FileSystemAdministratorsGroup =>
+            'MyFileSystemAdministratorsGroupName',  # min: 1, max: 256; OPTIONAL
+          OrganizationalUnitDistinguishedName =>
+            'MyOrganizationalUnitDistinguishedName'
+          ,    # min: 1, max: 2000; OPTIONAL
+        },    # OPTIONAL
         WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL
       },    # OPTIONAL
     );

@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To list SQL injection match sets
     # The following example returns an array of up to 100 SQL injection match
     # sets.
-    my $ListSqlInjectionMatchSetsResponse = $waf->ListSqlInjectionMatchSets(
-      {
-        'Limit' => 100
-      }
-    );
+    my $ListSqlInjectionMatchSetsResponse =
+      $waf->ListSqlInjectionMatchSets( 'Limit' => 100 );
 
     # Results:
     my $SqlInjectionMatchSets =

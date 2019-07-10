@@ -17,7 +17,9 @@ Paws::MediaConvert::CreateJobResponse
 
 =head2 Job => L<Paws::MediaConvert::Job>
 
-
+Each job converts an input file into an output file or files. For more
+information, see the User Guide at
+http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 
 =head2 _request_id => Str

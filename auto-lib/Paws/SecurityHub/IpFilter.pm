@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-The IP filter for querying findings.E<gt>
+The IP filter for querying findings.
 
 =head1 ATTRIBUTES
 
 
 =head2 Cidr => Str
 
-  Finding's CIDR value.
+  A finding's CIDR value.
 
 
 

@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog for which to retrieve the security
-configuration. If none is supplied, the AWS account ID is used by
+configuration. If none is provided, the AWS account ID is used by
 default.
 
 

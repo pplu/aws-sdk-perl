@@ -75,7 +75,7 @@ terminated.
 
 =head2 Groups => ArrayRef[Str|Undef]
 
-  The IDs of one or more security groups.
+  The IDs of the security groups.
 
 
 =head2 Ipv6AddressCount => Int
@@ -86,7 +86,7 @@ IPv6 addresses are automatically selected from the subnet range.
 
 =head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::ScheduledInstancesIpv6Address>]
 
-  One or more specific IPv6 addresses from the subnet range.
+  The specific IPv6 addresses from the subnet range.
 
 
 =head2 NetworkInterfaceId => Str

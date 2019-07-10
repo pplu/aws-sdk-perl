@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $cloudformation = Paws->service('CloudFormation');
     # To validate an AWS CloudFormation template
     # This example validates the specified template.
-    my $ValidateTemplateOutput = $cloudformation->ValidateTemplate(
-      {
-        'TemplateBody' => 'MyTemplate.json'
-      }
-    );
+    my $ValidateTemplateOutput =
+      $cloudformation->ValidateTemplate( 'TemplateBody' => 'MyTemplate.json' );
 
     # Results:
     my $Capabilities       = $ValidateTemplateOutput->Capabilities;
@@ -55,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. For more information, go to
 Template Anatomy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must pass C<TemplateURL> or C<TemplateBody>. If both
@@ -68,7 +65,7 @@ are passed, only C<TemplateBody> is used.
 Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
 bucket. For more information, go to Template Anatomy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must pass C<TemplateURL> or C<TemplateBody>. If both

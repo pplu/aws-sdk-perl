@@ -20,7 +20,7 @@ Paws::AppMesh::ListVirtualRoutersOutput
 
 The C<nextToken> value to include in a future C<ListVirtualRouters>
 request. When the results of a C<ListVirtualRouters> request exceed
-C<limit>, this value can be used to retrieve the next page of results.
+C<limit>, you can use this value to retrieve the next page of results.
 This value is C<null> when there are no more results to return.
 
 

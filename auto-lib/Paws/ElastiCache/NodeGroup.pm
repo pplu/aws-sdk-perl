@@ -3,6 +3,7 @@ package Paws::ElastiCache::NodeGroup;
   has NodeGroupId => (is => 'ro', isa => 'Str');
   has NodeGroupMembers => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupMember]', request_name => 'NodeGroupMember', traits => ['NameInRequest']);
   has PrimaryEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
+  has ReaderEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
   has Slots => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -47,7 +48,8 @@ are read-only Replica nodes.
   The identifier for the node group (shard). A Redis (cluster mode
 disabled) replication group contains only 1 node group; therefore, the
 node group ID is 0001. A Redis (cluster mode enabled) replication group
-contains 1 to 15 node groups numbered 0001 to 0015.
+contains 1 to 15 node groups numbered 0001 to 0015. Optionally, the
+user can provide the id for a node group.
 
 
 =head2 NodeGroupMembers => ArrayRef[L<Paws::ElastiCache::NodeGroupMember>]
@@ -59,6 +61,11 @@ group (shard).
 =head2 PrimaryEndpoint => L<Paws::ElastiCache::Endpoint>
 
   The endpoint of the primary node in this node group (shard).
+
+
+=head2 ReaderEndpoint => L<Paws::ElastiCache::Endpoint>
+
+  The endpoint of the replica nodes in this node group (shard).
 
 
 =head2 Slots => Str

@@ -1,6 +1,7 @@
 package Paws::EC2::FpgaImage;
   use Moose;
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
+  has DataRetentionSupport => (is => 'ro', isa => 'Bool', request_name => 'dataRetentionSupport', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has FpgaImageGlobalId => (is => 'ro', isa => 'Str', request_name => 'fpgaImageGlobalId', traits => ['NameInRequest']);
   has FpgaImageId => (is => 'ro', isa => 'Str', request_name => 'fpgaImageId', traits => ['NameInRequest']);
@@ -52,6 +53,11 @@ This class has no description
 =head2 CreateTime => Str
 
   The date and time the AFI was created.
+
+
+=head2 DataRetentionSupport => Bool
+
+  Indicates whether data retention support is enabled for the AFI.
 
 
 =head2 Description => Str

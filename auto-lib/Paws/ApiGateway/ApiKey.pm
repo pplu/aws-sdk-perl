@@ -9,6 +9,7 @@ package Paws::ApiGateway::ApiKey;
   has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has StageKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'stageKeys');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
   has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -62,6 +63,12 @@ The name of the API Key.
 =head2 StageKeys => ArrayRef[Str|Undef]
 
 A list of Stage resources that are associated with the ApiKey resource.
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The collection of tags. Each tag element is associated with a given
+resource.
 
 
 =head2 Value => Str

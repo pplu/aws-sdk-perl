@@ -106,7 +106,9 @@ service.
 =head2 B<REQUIRED> HealthCheckType => Str
 
   The service to use for the health checks. The valid values are C<EC2>
-and C<ELB>.
+and C<ELB>. If you configure an Auto Scaling group to use ELB health
+checks, it considers the instance unhealthy if it fails either the EC2
+status checks or the load balancer health checks.
 
 
 =head2 Instances => ArrayRef[L<Paws::AutoScaling::Instance>]
@@ -147,15 +149,13 @@ and C<ELB>.
 =head2 NewInstancesProtectedFromScaleIn => Bool
 
   Indicates whether newly launched instances are protected from
-termination by Auto Scaling when scaling in.
+termination by Amazon EC2 Auto Scaling when scaling in.
 
 
 =head2 PlacementGroup => Str
 
   The name of the placement group into which to launch your instances, if
-any. For more information, see Placement Groups
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+any.
 
 
 =head2 ServiceLinkedRoleARN => Str
@@ -194,10 +194,6 @@ balancer.
 =head2 VPCZoneIdentifier => Str
 
   One or more subnet IDs, if applicable, separated by commas.
-
-If you specify C<VPCZoneIdentifier> and C<AvailabilityZones>, ensure
-that the Availability Zones of the subnets match the values for
-C<AvailabilityZones>.
 
 
 

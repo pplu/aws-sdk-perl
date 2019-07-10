@@ -5,11 +5,11 @@ package Paws::Pinpoint::Event;
   has AppVersionCode => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has ClientSdkVersion => (is => 'ro', isa => 'Str');
-  has EventType => (is => 'ro', isa => 'Str');
+  has EventType => (is => 'ro', isa => 'Str', required => 1);
   has Metrics => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__double');
   has SdkName => (is => 'ro', isa => 'Str');
   has Session => (is => 'ro', isa => 'Paws::Pinpoint::Session');
-  has Timestamp => (is => 'ro', isa => 'Str');
+  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -40,14 +40,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Model for creating or updating events.
+Specifies information about an event that reports data to Amazon
+Pinpoint.
 
 =head1 ATTRIBUTES
 
 
 =head2 AppPackageName => Str
 
-  The package name associated with the app that's recording the event.
+  The package name of the app that's recording the event.
 
 
 =head2 AppTitle => Str
@@ -62,8 +63,7 @@ Model for creating or updating events.
 
 =head2 Attributes => L<Paws::Pinpoint::MapOf__string>
 
-  Custom attributes that are associated with the event you're adding or
-updating.
+  One or more custom attributes that are associated with the event.
 
 
 =head2 ClientSdkVersion => Str
@@ -71,14 +71,14 @@ updating.
   The version of the SDK that's running on the client device.
 
 
-=head2 EventType => Str
+=head2 B<REQUIRED> EventType => Str
 
-  The name of the custom event that you're recording.
+  The name of the event.
 
 
 =head2 Metrics => L<Paws::Pinpoint::MapOf__double>
 
-  Custom metrics related to the event.
+  One or more custom metrics that are associated with the event.
 
 
 =head2 SdkName => Str
@@ -91,9 +91,9 @@ updating.
   Information about the session in which the event occurred.
 
 
-=head2 Timestamp => Str
+=head2 B<REQUIRED> Timestamp => Str
 
-  The date and time when the event occurred, in ISO 8601 format.
+  The date and time, in ISO 8601 format, when the event occurred.
 
 
 

@@ -68,6 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Messages          = $GetMetricDataOutput->Messages;
     my $MetricDataResults = $GetMetricDataOutput->MetricDataResults;
     my $NextToken         = $GetMetricDataOutput->NextToken;
 
@@ -87,7 +88,7 @@ For better performance, specify C<StartTime> and C<EndTime> values that
 align with the value of the metric's C<Period> and sync up with the
 beginning and end of an hour. For example, if the C<Period> of a metric
 is 5 minutes, specifying 12:05 or 12:30 as C<EndTime> can get a faster
-response from CloudWatch then setting 12:07 or 12:29 as the C<EndTime>.
+response from CloudWatch than setting 12:07 or 12:29 as the C<EndTime>.
 
 
 
@@ -132,7 +133,7 @@ For better performance, specify C<StartTime> and C<EndTime> values that
 align with the value of the metric's C<Period> and sync up with the
 beginning and end of an hour. For example, if the C<Period> of a metric
 is 5 minutes, specifying 12:05 or 12:30 as C<StartTime> can get a
-faster response from CloudWatch then setting 12:07 or 12:29 as the
+faster response from CloudWatch than setting 12:07 or 12:29 as the
 C<StartTime>.
 
 

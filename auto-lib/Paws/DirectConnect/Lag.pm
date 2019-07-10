@@ -16,6 +16,7 @@ package Paws::DirectConnect::Lag;
   has NumberOfConnections => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfConnections' );
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
   has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -35,12 +36,12 @@ Indicates whether the LAG can host other connections.
 
 =head2 AwsDevice => Str
 
-The Direct Connect endpoint that hosts the LAG.
+The AWS Direct Connect endpoint that hosts the LAG.
 
 
 =head2 AwsDeviceV2 => Str
 
-The Direct Connect endpoint that hosts the LAG.
+The AWS Direct Connect endpoint that hosts the LAG.
 
 
 =head2 Connections => ArrayRef[L<Paws::DirectConnect::Connection>]
@@ -107,10 +108,14 @@ C<deleting>: The LAG is being deleted.
 
 C<deleted>: The LAG is deleted.
 
+=item *
+
+C<unknown>: The state of the LAG is not available.
+
 =back
 
 
-Valid values are: C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">
+Valid values are: C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"unknown">
 =head2 Location => Str
 
 The location of the LAG.
@@ -136,6 +141,11 @@ The ID of the AWS account that owns the LAG.
 =head2 Region => Str
 
 The AWS Region where the connection is located.
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+Any tags assigned to link aggregation group (LAG).
 
 
 =head2 _request_id => Str

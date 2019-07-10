@@ -41,8 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A summary of the information for an Amazon CloudFront streaming
-distribution.
+A summary of the information for a CloudFront streaming distribution.
 
 =head1 ATTRIBUTES
 
@@ -90,7 +89,8 @@ content.
 
 =head2 B<REQUIRED> PriceClass => Str
 
-  
+  A complex type that contains information about price class for this
+streaming distribution.
 
 
 =head2 B<REQUIRED> S3Origin => L<Paws::CloudFront::S3Origin>
@@ -120,6 +120,10 @@ C<0> for C<Quantity>. Omit C<Items>. To add, change, or remove one or
 more trusted signers, change C<Enabled> to C<true> (if it's currently
 C<false>), change C<Quantity> as applicable, and specify all of the
 trusted signers that you want to include in the updated distribution.
+
+For more information, see Serving Private Content through CloudFront
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 

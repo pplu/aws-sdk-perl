@@ -249,6 +249,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =item [SemanticVersion => Str]
 
+=item [SourceCodeArchiveUrl => Str]
+
 =item [SourceCodeUrl => Str]
 
 =item [SpdxLicenseId => Str]
@@ -275,6 +277,8 @@ the first application version in the same call.
 =item ApplicationId => Str
 
 =item SemanticVersion => Str
+
+=item [SourceCodeArchiveUrl => Str]
 
 =item [SourceCodeUrl => Str]
 

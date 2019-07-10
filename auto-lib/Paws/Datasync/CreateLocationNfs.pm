@@ -1,6 +1,7 @@
 
 package Paws::Datasync::CreateLocationNfs;
   use Moose;
+  has MountOptions => (is => 'ro', isa => 'Paws::Datasync::NfsMountOptions');
   has OnPremConfig => (is => 'ro', isa => 'Paws::Datasync::OnPremConfig', required => 1);
   has ServerHostname => (is => 'ro', isa => 'Str', required => 1);
   has Subdirectory => (is => 'ro', isa => 'Str', required => 1);
@@ -38,10 +39,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },
       ServerHostname => 'MyServerHostname',
-      Subdirectory   => 'MySubdirectory',
-      Tags           => [
+      Subdirectory   => 'MyNonEmptySubdirectory',
+      MountOptions   => {
+        Version =>
+          'AUTOMATIC',    # values: AUTOMATIC, NFS3, NFS4_0, NFS4_1; OPTIONAL
+      },    # OPTIONAL
+      Tags => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 256
           Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
@@ -57,6 +62,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/datasync/CreateLocationNfs>
 
 =head1 ATTRIBUTES
+
+
+=head2 MountOptions => L<Paws::Datasync::NfsMountOptions>
+
+The NFS mount options that DataSync can use to mount your NFS share.
+
 
 
 =head2 B<REQUIRED> OnPremConfig => L<Paws::Datasync::OnPremConfig>
@@ -94,13 +105,13 @@ accessible without Kerberos authentication.
 To transfer all the data in the folder you specified, DataSync needs to
 have permissions to read all the data. To ensure this, either configure
 the NFS export with C<no_root_squash,> or ensure that the permissions
-for all of the files that you want sync allow read access for all
+for all of the files that you want DataSync allow read access for all
 users. Doing either enables the agent to read the files. For the agent
 to access directories, you must additionally enable all execute access.
-For information about NFS export configuration, see 18.7. The
-/etc/exports Configuration File
-(https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-nfs-server-config-exports.html)
-in the Centos documentation.
+
+For information about NFS export configuration, see
+"http://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/s1-nfs-server-config-exports.html"
+(18.7. The /etc/exports Configuration File).
 
 
 

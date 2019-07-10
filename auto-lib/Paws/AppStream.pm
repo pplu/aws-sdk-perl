@@ -65,6 +65,11 @@ package Paws::AppStream;
     my $call_object = $self->new_with_coercions('Paws::AppStream::CreateStreamingURL', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateUsageReportSubscription {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::CreateUsageReportSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::CreateUser', @_);
@@ -98,6 +103,11 @@ package Paws::AppStream;
   sub DeleteStack {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteStack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteUsageReportSubscription {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DeleteUsageReportSubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteUser {
@@ -138,6 +148,11 @@ package Paws::AppStream;
   sub DescribeStacks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppStream::DescribeStacks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeUsageReportSubscriptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppStream::DescribeUsageReportSubscriptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeUsers {
@@ -468,7 +483,7 @@ package Paws::AppStream;
   }
 
 
-  sub operations { qw/AssociateFleet BatchAssociateUserStack BatchDisassociateUserStack CopyImage CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL CreateUser DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteImagePermissions DeleteStack DeleteUser DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImagePermissions DescribeImages DescribeSessions DescribeStacks DescribeUsers DescribeUserStackAssociations DisableUser DisassociateFleet EnableUser ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateImagePermissions UpdateStack / }
+  sub operations { qw/AssociateFleet BatchAssociateUserStack BatchDisassociateUserStack CopyImage CreateDirectoryConfig CreateFleet CreateImageBuilder CreateImageBuilderStreamingURL CreateStack CreateStreamingURL CreateUsageReportSubscription CreateUser DeleteDirectoryConfig DeleteFleet DeleteImage DeleteImageBuilder DeleteImagePermissions DeleteStack DeleteUsageReportSubscription DeleteUser DescribeDirectoryConfigs DescribeFleets DescribeImageBuilders DescribeImagePermissions DescribeImages DescribeSessions DescribeStacks DescribeUsageReportSubscriptions DescribeUsers DescribeUserStackAssociations DisableUser DisassociateFleet EnableUser ExpireSession ListAssociatedFleets ListAssociatedStacks ListTagsForResource StartFleet StartImageBuilder StopFleet StopImageBuilder TagResource UntagResource UpdateDirectoryConfig UpdateFleet UpdateImagePermissions UpdateStack / }
 
 1;
 
@@ -498,12 +513,12 @@ Paws::AppStream - Perl Interface to AWS Amazon AppStream
 
 Amazon AppStream 2.0
 
-This is the I<Amazon AppStream 2.0 API Reference>. It provides
-descriptions and syntax for each of the actions and data types in
-AppStream 2.0. AppStream 2.0 is a fully managed application streaming
-service. You centrally manage your desktop applications on AppStream
-2.0 and securely deliver them to any computer. AppStream 2.0 manages
-the AWS resources required to host and run your applications, scales
+This is the I<Amazon AppStream 2.0 API Reference>. This documentation
+provides descriptions and syntax for each of the actions and data types
+in AppStream 2.0. AppStream 2.0 is a fully managed, secure application
+streaming service that lets you stream desktop applications to users
+without rewriting applications. AppStream 2.0 manages the AWS resources
+that are required to host and run your applications, scales
 automatically, and provides access to your users on demand.
 
 To learn more about AppStream 2.0, see the following resources:
@@ -621,8 +636,8 @@ Each argument is described in detail in: L<Paws::AppStream::CreateDirectoryConfi
 Returns: a L<Paws::AppStream::CreateDirectoryConfigResult> instance
 
 Creates a Directory Config object in AppStream 2.0. This object
-includes the information required to join streaming instances to an
-Active Directory domain.
+includes the configuration information required to join fleets and
+image builders to Microsoft Active Directory domains.
 
 
 =head2 CreateFleet
@@ -646,6 +661,8 @@ Active Directory domain.
 =item [EnableDefaultInternetAccess => Bool]
 
 =item [FleetType => Str]
+
+=item [IdleDisconnectTimeoutInSeconds => Int]
 
 =item [ImageArn => Str]
 
@@ -788,6 +805,20 @@ the specified user. A streaming URL enables application streaming to be
 tested without user setup.
 
 
+=head2 CreateUsageReportSubscription
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::AppStream::CreateUsageReportSubscription>
+
+Returns: a L<Paws::AppStream::CreateUsageReportSubscriptionResult> instance
+
+Creates a usage report subscription. Usage reports are generated daily.
+
+
 =head2 CreateUser
 
 =over
@@ -919,6 +950,20 @@ available to users. Also, any reservations made for application
 streaming sessions for the stack are released.
 
 
+=head2 DeleteUsageReportSubscription
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::AppStream::DeleteUsageReportSubscription>
+
+Returns: a L<Paws::AppStream::DeleteUsageReportSubscriptionResult> instance
+
+Disables usage report generation.
+
+
 =head2 DeleteUser
 
 =over
@@ -957,8 +1002,8 @@ Returns: a L<Paws::AppStream::DescribeDirectoryConfigsResult> instance
 Retrieves a list that describes one or more specified Directory Config
 objects for AppStream 2.0, if the names for these objects are provided.
 Otherwise, all Directory Config objects in the account are described.
-These objects include the information required to join streaming
-instances to an Active Directory domain.
+These objects include the configuration information required to join
+fleets and image builders to Microsoft Active Directory domains.
 
 Although the response syntax in this topic includes the account
 password, this password is not returned in the actual response.
@@ -1103,6 +1148,24 @@ Returns: a L<Paws::AppStream::DescribeStacksResult> instance
 Retrieves a list that describes one or more specified stacks, if the
 stack names are provided. Otherwise, all stacks in the account are
 described.
+
+
+=head2 DescribeUsageReportSubscriptions
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppStream::DescribeUsageReportSubscriptions>
+
+Returns: a L<Paws::AppStream::DescribeUsageReportSubscriptionsResult> instance
+
+Retrieves a list that describes one or more usage report subscriptions.
 
 
 =head2 DescribeUsers
@@ -1294,7 +1357,7 @@ Retrieves a list of all tags for the specified AppStream 2.0 resource.
 You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 
 For more information about tags, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
@@ -1390,7 +1453,7 @@ To list the current tags for your resources, use ListTagsForResource.
 To disassociate tags from your resources, use UntagResource.
 
 For more information about tags, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
@@ -1415,7 +1478,7 @@ Disassociates one or more specified tags from the specified AppStream
 To list the current tags for your resources, use ListTagsForResource.
 
 For more information about tags, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 
@@ -1437,8 +1500,8 @@ Each argument is described in detail in: L<Paws::AppStream::UpdateDirectoryConfi
 Returns: a L<Paws::AppStream::UpdateDirectoryConfigResult> instance
 
 Updates the specified Directory Config object in AppStream 2.0. This
-object includes the information required to join streaming instances to
-an Active Directory domain.
+object includes the configuration information required to join fleets
+and image builders to Microsoft Active Directory domains.
 
 
 =head2 UpdateFleet
@@ -1460,6 +1523,8 @@ an Active Directory domain.
 =item [DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>]
 
 =item [EnableDefaultInternetAccess => Bool]
+
+=item [IdleDisconnectTimeoutInSeconds => Int]
 
 =item [ImageArn => Str]
 
@@ -1484,7 +1549,8 @@ Updates the specified fleet.
 
 If the fleet is in the C<STOPPED> state, you can update any attribute
 except the fleet name. If the fleet is in the C<RUNNING> state, you can
-update the C<DisplayName> and C<ComputeCapacity> attributes. If the
+update the C<DisplayName>, C<ComputeCapacity>, C<ImageARN>,
+C<ImageName>, and C<DisconnectTimeoutInSeconds> attributes. If the
 fleet is in the C<STARTING> or C<STOPPING> state, you can't update it.
 
 

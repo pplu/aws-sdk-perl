@@ -65,7 +65,8 @@ kafka.m5.24xlarge.
 
   The AWS security groups to associate with the elastic network
 interfaces in order to specify who can connect to and communicate with
-the Amazon MSK cluster.
+the Amazon MSK cluster. If you don't specify a security group, Amazon
+MSK uses the default security group associated with the VPC.
 
 
 =head2 StorageInfo => L<Paws::Kafka::StorageInfo>

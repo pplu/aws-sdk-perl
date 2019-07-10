@@ -140,7 +140,7 @@ Specifies if periodic request progress information should be enabled.
 
 The SSE Algorithm used to encrypt the object. For more information, see
 Server-Side Encryption (Using Customer-Provided Encryption Keys
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 
 
 
@@ -148,7 +148,7 @@ Server-Side Encryption (Using Customer-Provided Encryption Keys
 
 The SSE Customer Key. For more information, see Server-Side Encryption
 (Using Customer-Provided Encryption Keys
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 
 
 
@@ -156,7 +156,7 @@ The SSE Customer Key. For more information, see Server-Side Encryption
 
 The SSE Customer Key MD5. For more information, see Server-Side
 Encryption (Using Customer-Provided Encryption Keys
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 
 
 

@@ -48,22 +48,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> EntityId => Str
 
-The identifier of the entity (user or group) for which to update
+The identifier of the user, group, or resource for which to update
 mailbox permissions.
 
 
 
 =head2 B<REQUIRED> GranteeId => Str
 
-The identifier of the entity (user or group) to which to grant the
+The identifier of the user, group, or resource to which to grant the
 permissions.
 
 
 
 =head2 B<REQUIRED> OrganizationId => Str
 
-The identifier of the organization under which the entity (user or
-group) exists.
+The identifier of the organization under which the user, group, or
+resource exists.
 
 
 

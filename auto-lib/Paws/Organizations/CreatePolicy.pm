@@ -53,13 +53,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 
 The policy content to add to the new policy. For example, if you create
 a service control policy
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
 (SCP), this string must be JSON text that specifies the permissions
 that admins in attached accounts can delegate to their users, groups,
 and roles. For more information about the SCP syntax, see Service
 Control Policy Syntax
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
-in the I<AWS Organizations User Guide>.
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
+in the I<AWS Organizations User Guide.>
 
 
 

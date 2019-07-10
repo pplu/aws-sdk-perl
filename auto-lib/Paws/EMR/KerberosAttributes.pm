@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Kerber
 Attributes for Kerberos configuration when Kerberos authentication is
 enabled using a security configuration. For more information see Use
 Kerberos Authentication
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
 in the I<EMR Management Guide>.
 
 =head1 ATTRIBUTES

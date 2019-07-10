@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Default
 
 =head1 DESCRIPTION
 
-The container element for specifying the default Object Lock retention
+The container element for specifying the default object lock retention
 settings for new objects placed in the specified bucket.
 
 =head1 ATTRIBUTES
@@ -47,7 +47,7 @@ period.
 
 =head2 Mode => Str
 
-  The default Object Lock retention mode you want to apply to new objects
+  The default object lock retention mode you want to apply to new objects
 placed in the specified bucket.
 
 

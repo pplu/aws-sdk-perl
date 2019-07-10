@@ -408,6 +408,10 @@ Gets information about build projects.
 
 =item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
 
+=item [SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]]
+
+=item [SourceVersion => Str]
+
 =item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
 
 =item [TimeoutInMinutes => Int]
@@ -432,6 +436,8 @@ Creates a build project.
 
 =item [BranchFilter => Str]
 
+=item [FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]]
+
 
 =back
 
@@ -452,7 +458,7 @@ you are billed for both builds. Therefore, if you are using AWS
 CodePipeline, we recommend that you disable webhooks in AWS CodeBuild.
 In the AWS CodeBuild console, clear the Webhook box. For more
 information, see step 5 in Change a Build Project's Settings
-(http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
+(https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 
 
 =head2 DeleteProject
@@ -658,6 +664,8 @@ Returns a list of C<SourceCredentialsInfo> objects.
 
 =item [GitCloneDepthOverride => Int]
 
+=item [GitSubmodulesConfigOverride => L<Paws::CodeBuild::GitSubmodulesConfig>]
+
 =item [IdempotencyToken => Str]
 
 =item [ImageOverride => Str]
@@ -746,9 +754,13 @@ Attempts to stop running a build.
 
 =item [SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
 
+=item [SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]]
+
 =item [ServiceRole => Str]
 
 =item [Source => L<Paws::CodeBuild::ProjectSource>]
+
+=item [SourceVersion => Str]
 
 =item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
 
@@ -773,6 +785,8 @@ Changes the settings of a build project.
 =item ProjectName => Str
 
 =item [BranchFilter => Str]
+
+=item [FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]]
 
 =item [RotateSecret => Bool]
 

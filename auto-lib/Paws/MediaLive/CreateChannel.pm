@@ -1,6 +1,7 @@
 
 package Paws::MediaLive::CreateChannel;
   use Moose;
+  has ChannelClass => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelClass');
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
@@ -38,21 +39,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $medialive = Paws->service('MediaLive');
     my $CreateChannelResponse = $medialive->CreateChannel(
+      ChannelClass => 'STANDARD',    # OPTIONAL
       Destinations => [
         {
-          Id       => 'My__string',    # OPTIONAL
-          Settings => [
+          Id                   => 'My__string',    # OPTIONAL
+          MediaPackageSettings => [
             {
-              PasswordParam => 'My__string',    # OPTIONAL
-              StreamName    => 'My__string',    # OPTIONAL
-              Url           => 'My__string',    # OPTIONAL
-              Username      => 'My__string',    # OPTIONAL
+              ChannelId => 'My__stringMin1',       # min: 1; OPTIONAL
             },
             ...
-          ],                                    # OPTIONAL
+          ],                                       # OPTIONAL
+          Settings => [
+            {
+              PasswordParam => 'My__string',       # OPTIONAL
+              StreamName    => 'My__string',       # OPTIONAL
+              Url           => 'My__string',       # OPTIONAL
+              Username      => 'My__string',       # OPTIONAL
+            },
+            ...
+          ],                                       # OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],                                           # OPTIONAL
       EncoderSettings => {
         AudioDescriptions => [
           {
@@ -205,8 +213,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_4281',    # values: RFC_4281, RFC_6381; OPTIONAL
-                ConstantIv =>
-                  'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
+                ConstantIv         => 'My__stringMin32Max32', # min: 32, max: 32
                 DirectoryStructure => 'SINGLE_DIRECTORY'
                 ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
                 EncryptionType =>
@@ -258,12 +265,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 KeyFormatVersions   => 'My__string',    # OPTIONAL
                 KeyProviderSettings => {
                   StaticKeySettings => {
-                    StaticKeyValue =>
-                      'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
+                    StaticKeyValue => 'My__stringMin32Max32', # min: 32, max: 32
                     KeyProviderServer => {
-                      Uri           => 'My__string',    # OPTIONAL
-                      PasswordParam => 'My__string',    # OPTIONAL
-                      Username      => 'My__string',    # OPTIONAL
+                      Uri           => 'My__string',          # OPTIONAL
+                      PasswordParam => 'My__string',          # OPTIONAL
+                      Username      => 'My__string',          # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -291,6 +297,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 TimestampDeltaMilliseconds => 1,                  # OPTIONAL
                 TsFileMode                 => 'SEGMENTED_FILES'
                 ,    # values: SEGMENTED_FILES, SINGLE_FILE; OPTIONAL
+              },    # OPTIONAL
+              MediaPackageGroupSettings => {
+                Destination => {
+                  DestinationRefId => 'My__string',    # OPTIONAL
+                },
+
               },    # OPTIONAL
               MsSmoothGroupSettings => {
                 Destination => {
@@ -368,7 +380,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         DvbNitSettings => {
                           NetworkId => 1,    # max: 65536
                           NetworkName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                           RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
                         },    # OPTIONAL
                         DvbSdtSettings => {
@@ -376,9 +388,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
                           RepInterval => 1,    # min: 25, max: 2000; OPTIONAL
                           ServiceName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                           ServiceProviderName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                         },    # OPTIONAL
                         DvbSubPids     => 'My__string',    # OPTIONAL
                         DvbTdtSettings => {
@@ -471,6 +483,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     NameModifier    => 'My__stringMin1',    # min: 1; OPTIONAL
                     SegmentModifier => 'My__string',        # OPTIONAL
                   },    # OPTIONAL
+                  MediaPackageOutputSettings => {
+
+                  },    # OPTIONAL
                   MsSmoothOutputSettings => {
                     NameModifier => 'My__string',    # OPTIONAL
                   },    # OPTIONAL
@@ -506,7 +521,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         DvbNitSettings => {
                           NetworkId => 1,    # max: 65536
                           NetworkName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                           RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
                         },    # OPTIONAL
                         DvbSdtSettings => {
@@ -514,9 +529,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           , # values: SDT_FOLLOW, SDT_FOLLOW_IF_PRESENT, SDT_MANUAL, SDT_NONE; OPTIONAL
                           RepInterval => 1,    # min: 25, max: 2000; OPTIONAL
                           ServiceName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                           ServiceProviderName =>
-                            'My__stringMin1Max256', # min: 1, max: 256; OPTIONAL
+                            'My__stringMin1Max256',    # min: 1, max: 256
                         },    # OPTIONAL
                         DvbSubPids     => 'My__string',    # OPTIONAL
                         DvbTdtSettings => {
@@ -820,6 +835,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             InputLossImageType => 'COLOR',    # values: COLOR, SLATE; OPTIONAL
             RepeatFrameMsec    => 1,          # max: 1000000; OPTIONAL
           },    # OPTIONAL
+          OutputLockingMode =>
+            'EPOCH_LOCKING', # values: EPOCH_LOCKING, PIPELINE_LOCKING; OPTIONAL
           OutputTimingSource =>
             'INPUT_CLOCK',    # values: INPUT_CLOCK, SYSTEM_CLOCK; OPTIONAL
           SupportLowFramerateInputs =>
@@ -930,6 +947,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ChannelClass       = $CreateChannelResponse->ChannelClass;
     my $Destinations       = $CreateChannelResponse->Destinations;
     my $EncoderSettings    = $CreateChannelResponse->EncoderSettings;
     my $InputAttachments   = $CreateChannelResponse->InputAttachments;
@@ -948,6 +966,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =head1 ATTRIBUTES
 
+
+=head2 ChannelClass => Str
+
+The class for this channel. STANDARD for a channel with two pipelines
+or SINGLE_PIPELINE for a channel with one pipeline.
+
+Valid values are: C<"STANDARD">, C<"SINGLE_PIPELINE">
 
 =head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
 

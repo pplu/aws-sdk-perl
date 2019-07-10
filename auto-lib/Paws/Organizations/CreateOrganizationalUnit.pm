@@ -55,8 +55,8 @@ The friendly name to assign to the new OU.
 
 =head2 B<REQUIRED> ParentId => Str
 
-The unique identifier (ID) of the parent root or OU in which you want
-to create the new OU.
+The unique identifier (ID) of the parent root or OU that you want to
+create the new OU in.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a parent ID
 string requires one of the following:

@@ -46,7 +46,7 @@ The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 

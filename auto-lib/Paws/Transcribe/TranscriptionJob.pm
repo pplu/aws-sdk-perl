@@ -62,6 +62,56 @@ C<StartTranscriptionJob> operation.
   If the C<TranscriptionJobStatus> field is C<FAILED>, this field
 contains information about why the job failed.
 
+The C<FailureReason> field can contain one of the following values:
+
+=over
+
+=item *
+
+C<Unsupported media format> - The media format specified in the
+C<MediaFormat> field of the request isn't valid. See the description of
+the C<MediaFormat> field for a list of valid values.
+
+=item *
+
+C<The media format provided does not match the detected media format> -
+The media format of the audio file doesn't match the format specified
+in the C<MediaFormat> field in the request. Check the media format of
+your media file and make sure that the two values match.
+
+=item *
+
+C<Invalid sample rate for audio file> - The sample rate specified in
+the C<MediaSampleRateHertz> of the request isn't valid. The sample rate
+must be between 8000 and 48000 Hertz.
+
+=item *
+
+C<The sample rate provided does not match the detected sample rate> -
+The sample rate in the audio file doesn't match the sample rate
+specified in the C<MediaSampleRateHertz> field in the request. Check
+the sample rate of your media file and make sure that the two values
+match.
+
+=item *
+
+C<Invalid file size: file size too large> - The size of your audio file
+is larger than Amazon Transcribe can process. For more information, see
+Limits
+(https://docs.aws.amazon.com/transcribe/latest/dg/limits-guidelines.html#limits)
+in the I<Amazon Transcribe Developer Guide>.
+
+=item *
+
+C<Invalid number of channels: number of channels too large> - Your
+audio contains more channels than Amazon Transcribe is configured to
+process. To request additional channels, see Amazon Transcribe Limits
+(https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits-amazon-transcribe)
+in the I<Amazon Web Services General Reference>.
+
+=back
+
+
 
 =head2 LanguageCode => Str
 

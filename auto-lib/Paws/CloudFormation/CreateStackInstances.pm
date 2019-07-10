@@ -150,7 +150,7 @@ instance are not updated, but retain their overridden value.
 
 You can only override the parameter I<values> that are specified in the
 stack set; to add or delete a parameter itself, use UpdateStackSet
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
 to update the stack set template.
 
 

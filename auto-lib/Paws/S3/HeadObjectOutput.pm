@@ -146,13 +146,13 @@ Valid values are: C<"ON">, C<"OFF">
 
 =head2 ObjectLockMode => Str
 
-The Object Lock mode currently in place for this object.
+The object lock mode currently in place for this object.
 
 Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
 
 =head2 ObjectLockRetainUntilDate => Str
 
-The date and time when this object's Object Lock will expire.
+The date and time when this object's object lock expires.
 
 
 
@@ -215,7 +215,7 @@ master encryption key that was used for the object.
 
 
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
 
 =head2 VersionId => Str
 

@@ -61,7 +61,7 @@ This data type is an element of the EntityDetails object.
 
   The path to the entity (user or role). For more information about
 paths, see IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 

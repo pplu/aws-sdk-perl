@@ -33,10 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To describe a network interface
     my $DescribeNetworkInterfacesResult = $ec2->DescribeNetworkInterfaces(
-      {
-        'NetworkInterfaceIds' => ['eni-e5aa89a3']
-      }
-    );
+      'NetworkInterfaceIds' => ['eni-e5aa89a3'] );
 
     # Results:
     my $NetworkInterfaces = $DescribeNetworkInterfacesResult->NetworkInterfaces;
@@ -208,7 +205,7 @@ Scaling, and so on).
 
 =item *
 
-C<source-desk-check> - Indicates whether the network interface performs
+C<source-dest-check> - Indicates whether the network interface performs
 source/destination checking. A value of C<true> means checking is
 enabled, and C<false> means checking is disabled. The value must be
 C<false> for the network interface to perform network address

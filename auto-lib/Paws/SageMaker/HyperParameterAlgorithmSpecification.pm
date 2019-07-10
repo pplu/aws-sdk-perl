@@ -59,7 +59,11 @@ algorithm emits.
 algorithm. For information about Docker registry paths for built-in
 algorithms, see Algorithms Provided by Amazon SageMaker: Common
 Parameters
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
+Amazon SageMaker supports both C<registry/repository[:tag]> and
+C<registry/repository[@digest]> image path formats. For more
+information, see Using Your Own Algorithms with Amazon SageMaker
+(https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 
 
 =head2 B<REQUIRED> TrainingInputMode => Str
@@ -77,7 +81,7 @@ to accommodate the training data downloaded from Amazon S3, the model
 artifacts, and intermediate information.
 
 For more information about input modes, see Algorithms
-(http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 
 
 

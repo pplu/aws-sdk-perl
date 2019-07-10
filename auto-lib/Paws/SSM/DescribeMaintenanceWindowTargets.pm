@@ -83,7 +83,7 @@ from a previous call.)
 
 =head2 B<REQUIRED> WindowId => Str
 
-The ID of the Maintenance Window whose targets should be retrieved.
+The ID of the maintenance window whose targets should be retrieved.
 
 
 

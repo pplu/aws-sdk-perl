@@ -32,22 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::T
 
 =head1 DESCRIPTION
 
-Represents the settings used to enable or disable Time to Live for the
-specified table.
+Represents the settings used to enable or disable Time to Live (TTL)
+for the specified table.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AttributeName => Str
 
-  The name of the Time to Live attribute used to store the expiration
-time for items in the table.
+  The name of the TTL attribute used to store the expiration time for
+items in the table.
 
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  Indicates whether Time To Live is to be enabled (true) or disabled
-(false) on the table.
+  Indicates whether TTL is to be enabled (true) or disabled (false) on
+the table.
 
 
 

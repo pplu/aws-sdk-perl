@@ -53,13 +53,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+Name of the bucket to which the multipart upload was initiated.
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+Key of the object for which the multipart upload was initiated.
 
 
 
@@ -71,7 +71,7 @@ Valid values are: C<"requester">
 
 =head2 B<REQUIRED> UploadId => Str
 
-
+Upload ID that identifies the multipart upload.
 
 
 

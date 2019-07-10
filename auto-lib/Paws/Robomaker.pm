@@ -19,6 +19,11 @@ package Paws::Robomaker;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::BatchDescribeSimulationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelDeploymentJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Robomaker::CancelDeploymentJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelSimulationJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Robomaker::CancelSimulationJob', @_);
@@ -330,7 +335,7 @@ package Paws::Robomaker;
   }
 
 
-  sub operations { qw/BatchDescribeSimulationJob CancelSimulationJob CreateDeploymentJob CreateFleet CreateRobot CreateRobotApplication CreateRobotApplicationVersion CreateSimulationApplication CreateSimulationApplicationVersion CreateSimulationJob DeleteFleet DeleteRobot DeleteRobotApplication DeleteSimulationApplication DeregisterRobot DescribeDeploymentJob DescribeFleet DescribeRobot DescribeRobotApplication DescribeSimulationApplication DescribeSimulationJob ListDeploymentJobs ListFleets ListRobotApplications ListRobots ListSimulationApplications ListSimulationJobs ListTagsForResource RegisterRobot RestartSimulationJob SyncDeploymentJob TagResource UntagResource UpdateRobotApplication UpdateSimulationApplication / }
+  sub operations { qw/BatchDescribeSimulationJob CancelDeploymentJob CancelSimulationJob CreateDeploymentJob CreateFleet CreateRobot CreateRobotApplication CreateRobotApplicationVersion CreateSimulationApplication CreateSimulationApplicationVersion CreateSimulationJob DeleteFleet DeleteRobot DeleteRobotApplication DeleteSimulationApplication DeregisterRobot DescribeDeploymentJob DescribeFleet DescribeRobot DescribeRobotApplication DescribeSimulationApplication DescribeSimulationJob ListDeploymentJobs ListFleets ListRobotApplications ListRobots ListSimulationApplications ListSimulationJobs ListTagsForResource RegisterRobot RestartSimulationJob SyncDeploymentJob TagResource UntagResource UpdateRobotApplication UpdateSimulationApplication / }
 
 1;
 
@@ -358,7 +363,7 @@ Paws::Robomaker - Perl Interface to AWS AWS RoboMaker
 
 =head1 DESCRIPTION
 
-his section provides documentation for the AWS RoboMaker API
+This section provides documentation for the AWS RoboMaker API
 operations.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29>
@@ -380,6 +385,22 @@ Each argument is described in detail in: L<Paws::Robomaker::BatchDescribeSimulat
 Returns: a L<Paws::Robomaker::BatchDescribeSimulationJobResponse> instance
 
 Describes one or more simulation jobs.
+
+
+=head2 CancelDeploymentJob
+
+=over
+
+=item Job => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Robomaker::CancelDeploymentJob>
+
+Returns: a L<Paws::Robomaker::CancelDeploymentJobResponse> instance
+
+Cancels the specified deployment job.
 
 
 =head2 CancelSimulationJob
@@ -426,6 +447,9 @@ consistency reasons. To create a new version, use
 C<CreateRobotApplicationVersion> or see Creating a Robot Application
 Version
 (https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html).
+
+After 90 days, deployment jobs expire and will be deleted. They will no
+longer be accessible.
 
 
 =head2 CreateFleet
@@ -584,6 +608,9 @@ Returns: a L<Paws::Robomaker::CreateSimulationJobResponse> instance
 
 Creates a simulation job.
 
+After 90 days, simulation jobs expire and will be deleted. They will no
+longer be accessible.
+
 
 =head2 DeleteFleet
 
@@ -684,8 +711,7 @@ Each argument is described in detail in: L<Paws::Robomaker::DescribeDeploymentJo
 
 Returns: a L<Paws::Robomaker::DescribeDeploymentJobResponse> instance
 
-Describes a deployment job. [Does it work regardless of deployment
-status, e.g. Failed?]
+Describes a deployment job.
 
 
 =head2 DescribeFleet
@@ -1016,7 +1042,7 @@ Removes the specified tags from the specified AWS RoboMaker resource.
 
 To remove a tag, specify the tag key. To change the tag value of an
 existing tag key, use C<TagResource>
-(https://docs.aws.amazon.com/robomaker/latest/dg//API_Reference.htmlAPI_TagResource.html).
+(https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html).
 
 
 =head2 UpdateRobotApplication

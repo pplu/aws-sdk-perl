@@ -52,7 +52,7 @@ Describes an instance's Amazon EBS volume.
 =head2 AvailabilityZone => Str
 
   The volume Availability Zone. For more information, see Regions and
-Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
+Endpoints (https://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 Device => Str
@@ -69,7 +69,7 @@ Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
   Specifies whether an Amazon EBS volume is encrypted. For more
 information, see Amazon EBS Encryption
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html).
 
 
 =head2 InstanceId => Str
@@ -100,7 +100,7 @@ information, see Amazon EBS Encryption
 =head2 Region => Str
 
   The AWS region. For more information about AWS regions, see Regions and
-Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
+Endpoints (https://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 Size => Int
@@ -111,7 +111,7 @@ Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 =head2 Status => Str
 
   The value returned by DescribeVolumes
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html).
 
 
 =head2 VolumeId => Str
@@ -122,7 +122,7 @@ Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 =head2 VolumeType => Str
 
   The volume type. For more information, see Amazon EBS Volume Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
 
 =over
 

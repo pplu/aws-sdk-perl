@@ -63,9 +63,11 @@ C<BadBot>.
 =head2 MetricName => Str
 
   A friendly name or description for the metrics for this C<Rule>. The
-name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-can't contain whitespace. You can't change C<MetricName> after you
-create the C<Rule>.
+name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
+maximum length 128 and minimum length one. It can't contain whitespace
+or metric names reserved for AWS WAF, including "All" and
+"Default_Action." You can't change C<MetricName> after you create the
+C<Rule>.
 
 
 =head2 Name => Str

@@ -3,11 +3,14 @@ package Paws::EMR::InstanceGroup;
   has AutoScalingPolicy => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicyDescription');
   has BidPrice => (is => 'ro', isa => 'Str');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
+  has ConfigurationsVersion => (is => 'ro', isa => 'Int');
   has EbsBlockDevices => (is => 'ro', isa => 'ArrayRef[Paws::EMR::EbsBlockDevice]');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has InstanceGroupType => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
+  has LastSuccessfullyAppliedConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
+  has LastSuccessfullyAppliedConfigurationsVersion => (is => 'ro', isa => 'Int');
   has Market => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has RequestedInstanceCount => (is => 'ro', isa => 'Int');
@@ -78,6 +81,12 @@ You can specify a separate configuration for each instance group
 (master, core, and task).
 
 
+=head2 ConfigurationsVersion => Int
+
+  The version number of the requested configuration specification for
+this instance group.
+
+
 =head2 EbsBlockDevices => ArrayRef[L<Paws::EMR::EbsBlockDevice>]
 
   The EBS block devices that are mapped to this instance group.
@@ -103,6 +112,18 @@ dedicated capacity for Amazon EBS I/O.
 =head2 InstanceType => Str
 
   The EC2 instance type for all instances in the instance group.
+
+
+=head2 LastSuccessfullyAppliedConfigurations => ArrayRef[L<Paws::EMR::Configuration>]
+
+  A list of configurations that were successfully applied for an instance
+group last time.
+
+
+=head2 LastSuccessfullyAppliedConfigurationsVersion => Int
+
+  The version number of a configuration specification that was
+successfully applied for an instance group last time.
 
 
 =head2 Market => Str

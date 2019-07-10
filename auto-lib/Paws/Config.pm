@@ -60,6 +60,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DeletePendingAggregationRequest', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteRemediationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteRemediationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRetentionConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteRetentionConfiguration', @_);
@@ -135,6 +140,16 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribePendingAggregationRequests', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeRemediationConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeRemediationConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeRemediationExecutionStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeRemediationExecutionStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeRetentionConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeRetentionConfigurations', @_);
@@ -200,6 +215,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::ListDiscoveredResources', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutAggregationAuthorization {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutAggregationAuthorization', @_);
@@ -230,9 +250,19 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::PutEvaluations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutRemediationConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutRemediationConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutRetentionConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutRetentionConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SelectResourceConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::SelectResourceConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartConfigRulesEvaluation {
@@ -245,9 +275,24 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::StartConfigurationRecorder', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartRemediationExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::StartRemediationExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopConfigurationRecorder {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::StopConfigurationRecorder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -458,6 +503,29 @@ package Paws::Config;
 
     return undef
   }
+  sub DescribeAllRemediationExecutionStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeRemediationExecutionStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeRemediationExecutionStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->RemediationExecutionStatuses }, @{ $next_result->RemediationExecutionStatuses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'RemediationExecutionStatuses') foreach (@{ $result->RemediationExecutionStatuses });
+        $result = $self->DescribeRemediationExecutionStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'RemediationExecutionStatuses') foreach (@{ $result->RemediationExecutionStatuses });
+    }
+
+    return undef
+  }
   sub DescribeAllRetentionConfigurations {
     my $self = shift;
 
@@ -621,7 +689,7 @@ package Paws::Config;
   }
 
 
-  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeletePendingAggregationRequest DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribePendingAggregationRequests DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutRetentionConfiguration StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
+  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeletePendingAggregationRequest DeleteRemediationConfiguration DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribePendingAggregationRequests DescribeRemediationConfigurations DescribeRemediationExecutionStatus DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources ListTagsForResource PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutRemediationConfigurations PutRetentionConfiguration SelectResourceConfig StartConfigRulesEvaluation StartConfigurationRecorder StartRemediationExecution StopConfigurationRecorder TagResource UntagResource / }
 
 1;
 
@@ -659,7 +727,7 @@ resources. An AWS resource can be an Amazon Compute Cloud (Amazon EC2)
 instance, an Elastic Block Store (EBS) volume, an elastic network
 Interface (ENI), or a security group. For a complete list of resources
 currently supported by AWS Config, see Supported AWS Resources
-(http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
+(https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
 
 You can access and manage AWS Config through the AWS Management
 Console, the AWS Command Line Interface (AWS CLI), the AWS Config API,
@@ -669,11 +737,11 @@ can use to manage AWS Config. The AWS Config API uses the Signature
 Version 4 protocol for signing requests. For more information about how
 to sign a request with this protocol, see Signature Version 4 Signing
 Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 For detailed information about AWS Config features and their associated
 actions or commands, as well as how to work with AWS Management
 Console, see What Is AWS Config
-(http://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
+(https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
 in the I<AWS Config Developer Guide>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12>
@@ -892,6 +960,24 @@ Returns: nothing
 
 Deletes pending authorization requests for a specified aggregator
 account in a specified region.
+
+
+=head2 DeleteRemediationConfiguration
+
+=over
+
+=item ConfigRuleName => Str
+
+=item [ResourceType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteRemediationConfiguration>
+
+Returns: a L<Paws::Config::DeleteRemediationConfigurationResponse> instance
+
+Deletes the remediation configuration.
 
 
 =head2 DeleteRetentionConfiguration
@@ -1191,9 +1277,10 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigurationAg
 Returns: a L<Paws::Config::DescribeConfigurationAggregatorSourcesStatusResponse> instance
 
 Returns status information for sources within an aggregator. The status
-includes information about the last time AWS Config aggregated data
-from source accounts or AWS Config failed to aggregate data from source
-accounts with the related error code or message.
+includes information about the last time AWS Config verified
+authorization between the source account and an aggregator account. In
+case of a failure, the status contains the related error code or
+message.
 
 
 =head2 DescribeConfigurationRecorders
@@ -1296,6 +1383,48 @@ Each argument is described in detail in: L<Paws::Config::DescribePendingAggregat
 Returns: a L<Paws::Config::DescribePendingAggregationRequestsResponse> instance
 
 Returns a list of all pending aggregation requests.
+
+
+=head2 DescribeRemediationConfigurations
+
+=over
+
+=item ConfigRuleNames => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeRemediationConfigurations>
+
+Returns: a L<Paws::Config::DescribeRemediationConfigurationsResponse> instance
+
+Returns the details of one or more remediation configurations.
+
+
+=head2 DescribeRemediationExecutionStatus
+
+=over
+
+=item ConfigRuleName => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeRemediationExecutionStatus>
+
+Returns: a L<Paws::Config::DescribeRemediationExecutionStatusResponse> instance
+
+Provides a detailed view of a Remediation Execution for a set of
+resources including state, timestamps for when steps for the
+remediation execution occur, and any error messages for steps that have
+failed. When you specify the limit and the next token, you receive a
+paginated response.
 
 
 =head2 DescribeRetentionConfigurations
@@ -1724,6 +1853,26 @@ the next page of results, run the request again and specify the string
 for the C<nextToken> parameter.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::ListTagsForResource>
+
+Returns: a L<Paws::Config::ListTagsForResourceResponse> instance
+
+List the tags for AWS Config resource.
+
+
 =head2 PutAggregationAuthorization
 
 =over
@@ -1731,6 +1880,8 @@ for the C<nextToken> parameter.
 =item AuthorizedAccountId => Str
 
 =item AuthorizedAwsRegion => Str
+
+=item [Tags => ArrayRef[L<Paws::Config::Tag>]]
 
 
 =back
@@ -1748,6 +1899,8 @@ source account and region.
 =over
 
 =item ConfigRule => L<Paws::Config::ConfigRule>
+
+=item [Tags => ArrayRef[L<Paws::Config::Tag>]]
 
 
 =back
@@ -1775,7 +1928,7 @@ which is part of the C<ConfigRule> object.
 If you are adding an AWS managed Config rule, specify the rule's
 identifier for the C<SourceIdentifier> key. To reference AWS managed
 Config rule identifiers, see About AWS Managed Config Rules
-(http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
+(https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
 
 For any new rule that you add, specify the C<ConfigRuleName> in the
 C<ConfigRule> object. Do not specify the C<ConfigRuleArn> or the
@@ -1786,7 +1939,7 @@ If you are updating a rule that you added previously, you can specify
 the rule by C<ConfigRuleName>, C<ConfigRuleId>, or C<ConfigRuleArn> in
 the C<ConfigRule> data type that you use in this request.
 
-The maximum number of rules that AWS Config supports is 50.
+The maximum number of rules that AWS Config supports is 150.
 
 For information about requesting a rule limit increase, see AWS Config
 Limits
@@ -1795,7 +1948,7 @@ in the I<AWS General Reference Guide>.
 
 For more information about developing and using AWS Config rules, see
 Evaluating AWS Resource Configurations with AWS Config
-(http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
+(https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
 in the I<AWS Config Developer Guide>.
 
 
@@ -1808,6 +1961,8 @@ in the I<AWS Config Developer Guide>.
 =item [AccountAggregationSources => ArrayRef[L<Paws::Config::AccountAggregationSource>]]
 
 =item [OrganizationAggregationSource => L<Paws::Config::OrganizationAggregationSource>]
+
+=item [Tags => ArrayRef[L<Paws::Config::Tag>]]
 
 
 =back
@@ -1908,6 +2063,27 @@ Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
 
 
+=head2 PutRemediationConfigurations
+
+=over
+
+=item RemediationConfigurations => ArrayRef[L<Paws::Config::RemediationConfiguration>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutRemediationConfigurations>
+
+Returns: a L<Paws::Config::PutRemediationConfigurationsResponse> instance
+
+Adds or updates the remediation configuration with a specific AWS
+Config rule with the selected target or action. The API creates the
+C<RemediationConfiguration> object for the AWS Config rule. The AWS
+Config rule must already exist for you to add a remediation
+configuration. The target (SSM document) must exist and have
+permissions to use the target.
+
+
 =head2 PutRetentionConfiguration
 
 =over
@@ -1930,6 +2106,33 @@ modifies the default object.
 
 Currently, AWS Config supports only one retention configuration per
 region in your account.
+
+
+=head2 SelectResourceConfig
+
+=over
+
+=item Expression => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::SelectResourceConfig>
+
+Returns: a L<Paws::Config::SelectResourceConfigResponse> instance
+
+Accepts a structured query language (SQL) C<SELECT> command, performs
+the corresponding search, and returns resource configurations matching
+the properties.
+
+For more information about query components, see the B<Query
+Components>
+(https://docs.aws.amazon.com/config/latest/developerguide/query-components.html)
+section in the AWS Config Developer Guide.
 
 
 =head2 StartConfigRulesEvaluation
@@ -2016,6 +2219,31 @@ You must have created at least one delivery channel to successfully
 start the configuration recorder.
 
 
+=head2 StartRemediationExecution
+
+=over
+
+=item ConfigRuleName => Str
+
+=item ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::StartRemediationExecution>
+
+Returns: a L<Paws::Config::StartRemediationExecutionResponse> instance
+
+Runs an on-demand remediation for the specified AWS Config rules
+against the last known remediation configuration. It runs an execution
+against the current state of your resources. Remediation execution is
+asynchronous.
+
+You can specify up to 100 resource keys per request. An existing
+StartRemediationExecution call for the specified resource keys must
+complete before you can call the API again.
+
+
 =head2 StopConfigurationRecorder
 
 =over
@@ -2031,6 +2259,45 @@ Returns: nothing
 
 Stops recording configurations of the AWS resources you have selected
 to record in your AWS account.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::Config::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::TagResource>
+
+Returns: nothing
+
+Associates the specified tags to a resource with the specified
+resourceArn. If existing tags on a resource are not specified in the
+request parameters, they are not changed. When a resource is deleted,
+the tags associated with that resource are deleted as well.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::UntagResource>
+
+Returns: nothing
+
+Deletes specified tags from a resource.
 
 
 
@@ -2145,6 +2412,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - PendingAggregationRequests, passing the object as the first parameter, and the string 'PendingAggregationRequests' as the second parameter 
 
 If not, it will return a a L<Paws::Config::DescribePendingAggregationRequestsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllRemediationExecutionStatus(sub { },ConfigRuleName => Str, [Limit => Int, NextToken => Str, ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]])
+
+=head2 DescribeAllRemediationExecutionStatus(ConfigRuleName => Str, [Limit => Int, NextToken => Str, ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - RemediationExecutionStatuses, passing the object as the first parameter, and the string 'RemediationExecutionStatuses' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeRemediationExecutionStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllRetentionConfigurations(sub { },[NextToken => Str, RetentionConfigurationNames => ArrayRef[Str|Undef]])

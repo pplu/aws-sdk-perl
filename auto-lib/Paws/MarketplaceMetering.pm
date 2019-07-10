@@ -119,7 +119,7 @@ Container Service (Amazon ECR) isn't supported. Free and BYOL products
 for ECS aren't required to call RegisterUsage, but you can do so if you
 want to receive usage data in your seller reports. For more information
 on using the RegisterUsage operation, see Container-Based Products
-(https://docs.aws.amazon.com/latest/userguide/entitlement-and-metering-for-paid-products.html).
+(https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html).
 
 =back
 
@@ -168,15 +168,15 @@ BatchMeterUsage can process up to 25 UsageRecords at a time.
 
 =over
 
-=item DryRun => Bool
-
 =item ProductCode => Str
 
 =item Timestamp => Str
 
 =item UsageDimension => Str
 
-=item UsageQuantity => Int
+=item [DryRun => Bool]
+
+=item [UsageQuantity => Int]
 
 
 =back

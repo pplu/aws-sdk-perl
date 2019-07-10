@@ -45,37 +45,39 @@ captions in the input.
 
 =head2 AncillarySourceSettings => L<Paws::MediaConvert::AncillarySourceSettings>
 
-  
+  Settings for ancillary captions source.
 
 
 =head2 DvbSubSourceSettings => L<Paws::MediaConvert::DvbSubSourceSettings>
 
-  
+  DVB Sub Source Settings
 
 
 =head2 EmbeddedSourceSettings => L<Paws::MediaConvert::EmbeddedSourceSettings>
 
-  
+  Settings for embedded captions Source
 
 
 =head2 FileSourceSettings => L<Paws::MediaConvert::FileSourceSettings>
 
-  
+  Settings for File-based Captions in Source
 
 
 =head2 SourceType => Str
 
-  
+  Use Source (SourceType) to identify the format of your input captions.
+The service cannot auto-detect caption format.
 
 
 =head2 TeletextSourceSettings => L<Paws::MediaConvert::TeletextSourceSettings>
 
-  
+  Settings specific to Teletext caption sources, including Page number.
 
 
 =head2 TrackSourceSettings => L<Paws::MediaConvert::TrackSourceSettings>
 
-  
+  Settings specific to caption sources that are specfied by track number.
+Sources include IMSC in IMF.
 
 
 

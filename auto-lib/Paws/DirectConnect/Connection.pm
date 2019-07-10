@@ -15,6 +15,7 @@ package Paws::DirectConnect::Connection;
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
   has PartnerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'partnerName' );
   has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' );
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -100,10 +101,14 @@ C<deleted>: The connection has been deleted.
 C<rejected>: A hosted connection in the C<ordering> state enters the
 C<rejected> state if it is deleted by the customer.
 
+=item *
+
+C<unknown>: The state of the connection is not available.
+
 =back
 
 
-Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
+Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">, C<"unknown">
 =head2 HasLogicalRedundancy => Str
 
 Indicates whether the connection supports a secondary BGP peer in the
@@ -144,6 +149,11 @@ connection.
 =head2 Region => Str
 
 The AWS Region where the connection is located.
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+Any tags assigned to the connection.
 
 
 =head2 Vlan => Int

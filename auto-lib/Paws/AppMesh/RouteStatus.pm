@@ -1,6 +1,6 @@
 package Paws::AppMesh::RouteStatus;
   use Moose;
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ An object representing the current status of a route.
 =head1 ATTRIBUTES
 
 
-=head2 Status => Str
+=head2 B<REQUIRED> Status => Str
 
   The current status for the route.
 

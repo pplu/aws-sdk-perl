@@ -44,7 +44,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 ExportTaskIds => ArrayRef[Str|Undef]
 
-One or more export task IDs.
+The export task IDs.
 
 
 

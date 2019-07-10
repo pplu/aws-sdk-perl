@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To display a key pair
     # This example displays the fingerprint for the specified key.
-    my $DescribeKeyPairsResult = $ec2->DescribeKeyPairs(
-      {
-        'KeyNames' => ['my-key-pair']
-      }
-    );
+    my $DescribeKeyPairsResult =
+      $ec2->DescribeKeyPairs( 'KeyNames' => ['my-key-pair'] );
 
     # Results:
     my $KeyPairs = $DescribeKeyPairsResult->KeyPairs;
@@ -59,7 +56,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -78,7 +75,7 @@ C<key-name> - The name of the key pair.
 
 =head2 KeyNames => ArrayRef[Str|Undef]
 
-One or more key pair names.
+The key pair names.
 
 Default: Describes all your key pairs.
 

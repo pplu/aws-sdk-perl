@@ -5,6 +5,7 @@ package Paws::EC2::InstanceNetworkInterfaceSpecification;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has DeviceIndex => (is => 'ro', isa => 'Int', request_name => 'deviceIndex', traits => ['NameInRequest']);
   has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SecurityGroupId', traits => ['NameInRequest']);
+  has InterfaceType => (is => 'ro', isa => 'Str');
   has Ipv6AddressCount => (is => 'ro', isa => 'Int', request_name => 'ipv6AddressCount', traits => ['NameInRequest']);
   has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6Address]', request_name => 'ipv6AddressesSet', traits => ['NameInRequest']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
@@ -72,15 +73,30 @@ network interface when launching an instance.
 
 =head2 DeviceIndex => Int
 
-  The index of the device on the instance for the network interface
-attachment. If you are specifying a network interface in a RunInstances
-request, you must provide the device index.
+  The position of the network interface in the attachment order. A
+primary network interface has a device index of 0.
+
+If you specify a network interface when launching an instance, you must
+specify the device index.
 
 
 =head2 Groups => ArrayRef[Str|Undef]
 
   The IDs of the security groups for the network interface. Applies only
 if creating a network interface when launching an instance.
+
+
+=head2 InterfaceType => Str
+
+  The type of network interface. To create an Elastic Fabric Adapter
+(EFA), specify C<efa>. For more information, see Elastic Fabric Adapter
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) in the
+I<Amazon Elastic Compute Cloud User Guide>.
+
+If you are not creating an EFA, specify C<interface> or omit this
+parameter.
+
+Valid values: C<interface> | C<efa>
 
 
 =head2 Ipv6AddressCount => Int
@@ -110,7 +126,9 @@ specified a minimum number of instances to launch.
   The private IPv4 address of the network interface. Applies only if
 creating a network interface when launching an instance. You cannot
 specify this option if you're launching more than one instance in a
-RunInstances request.
+RunInstances
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html)
+request.
 
 
 =head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
@@ -118,7 +136,9 @@ RunInstances request.
   One or more private IPv4 addresses to assign to the network interface.
 Only one private IPv4 address can be designated as primary. You cannot
 specify this option if you're launching more than one instance in a
-RunInstances request.
+RunInstances
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html)
+request.
 
 
 =head2 SecondaryPrivateIpAddressCount => Int
@@ -126,7 +146,9 @@ RunInstances request.
   The number of secondary private IPv4 addresses. You can't specify this
 option and specify more than one private IP address using the private
 IP addresses option. You cannot specify this option if you're launching
-more than one instance in a RunInstances request.
+more than one instance in a RunInstances
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html)
+request.
 
 
 =head2 SubnetId => Str

@@ -74,7 +74,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -89,7 +89,7 @@ C<instance-id> - The ID of the instance.
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-One or more instance IDs.
+The instance IDs.
 
 Default: Describes all your instances.
 

@@ -20,9 +20,7 @@ Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer
 The termination policies supported by Amazon EC2 Auto Scaling:
 C<OldestInstance>, C<OldestLaunchConfiguration>, C<NewestInstance>,
 C<ClosestToNextInstanceHour>, C<Default>, C<OldestLaunchTemplate>, and
-C<AllocationStrategy>. Currently, the C<OldestLaunchTemplate> and
-C<AllocationStrategy> policies are only supported for Auto Scaling
-groups with MixedInstancesPolicy.
+C<AllocationStrategy>.
 
 
 =head2 _request_id => Str

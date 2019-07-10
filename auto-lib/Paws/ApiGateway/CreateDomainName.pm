@@ -10,6 +10,8 @@ package Paws::ApiGateway::CreateDomainName;
   has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
   has RegionalCertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateArn');
   has RegionalCertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateName');
+  has SecurityPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'securityPolicy');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -48,8 +50,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'REGIONAL', ...                     # values: REGIONAL, EDGE, PRIVATE
         ],                                    # OPTIONAL
       },    # OPTIONAL
-      RegionalCertificateArn  => 'MyString',    # OPTIONAL
-      RegionalCertificateName => 'MyString',    # OPTIONAL
+      RegionalCertificateArn  => 'MyString',                       # OPTIONAL
+      RegionalCertificateName => 'MyString',                       # OPTIONAL
+      SecurityPolicy          => 'TLS_1_0',                        # OPTIONAL
+      Tags                    => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 
     # Results:
@@ -59,11 +63,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DistributionDomainName   = $DomainName->DistributionDomainName;
     my $DistributionHostedZoneId = $DomainName->DistributionHostedZoneId;
     my $DomainName               = $DomainName->DomainName;
+    my $DomainNameStatus         = $DomainName->DomainNameStatus;
+    my $DomainNameStatusMessage  = $DomainName->DomainNameStatusMessage;
     my $EndpointConfiguration    = $DomainName->EndpointConfiguration;
     my $RegionalCertificateArn   = $DomainName->RegionalCertificateArn;
     my $RegionalCertificateName  = $DomainName->RegionalCertificateName;
     my $RegionalDomainName       = $DomainName->RegionalDomainName;
     my $RegionalHostedZoneId     = $DomainName->RegionalHostedZoneId;
+    my $SecurityPolicy           = $DomainName->SecurityPolicy;
+    my $Tags                     = $DomainName->Tags;
 
     # Returns a L<Paws::ApiGateway::DomainName> object.
 
@@ -140,6 +148,21 @@ only supported source.
 
 The user-friendly name of the certificate that will be used by regional
 endpoint for this domain name.
+
+
+
+=head2 SecurityPolicy => Str
+
+The Transport Layer Security (TLS) version + cipher suite for this
+DomainName. The valid values are C<TLS_1_0> and C<TLS_1_2>.
+
+Valid values are: C<"TLS_1_0">, C<"TLS_1_2">
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with C<aws:>. The tag value can be up to 256 characters.
 
 
 

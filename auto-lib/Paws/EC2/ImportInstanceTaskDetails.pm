@@ -56,7 +56,7 @@ This class has no description
 
 =head2 Volumes => ArrayRef[L<Paws::EC2::ImportInstanceVolumeDetailItem>]
 
-  One or more volumes.
+  The volumes.
 
 
 

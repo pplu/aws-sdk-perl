@@ -89,7 +89,7 @@ it passes through stages in the pipeline.
 =head2 B<REQUIRED> JobId => Str
 
 The ID of the job that successfully completed. This is the same ID
-returned from PollForThirdPartyJobs.
+returned from C<PollForThirdPartyJobs>.
 
 
 

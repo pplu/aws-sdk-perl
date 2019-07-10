@@ -44,13 +44,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> GroupId => Str
 
-The group for which the member is associated.
+The group to which the member (user or group) is associated.
 
 
 
 =head2 B<REQUIRED> MemberId => Str
 
-The member to associate to the group.
+The member (user or group) to associate to the group.
 
 
 

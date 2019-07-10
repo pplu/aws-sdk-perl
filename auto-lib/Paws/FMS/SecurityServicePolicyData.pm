@@ -47,11 +47,14 @@ C<ManagedServiceData": "{\"type\": \"WAF\", \"ruleGroups\": [{\"id\":
 \"12345678-1bcd-9012-efga-0987654321ab\", \"overrideAction\" :
 {\"type\": \"COUNT\"}}], \"defaultAction\": {\"type\": \"BLOCK\"}}>
 
+If this is a Shield Advanced policy, this string will be empty.
+
 
 =head2 B<REQUIRED> Type => Str
 
   The service that the policy is using to protect the resources. This
-value is C<WAF>.
+specifies the type of policy that is created, either a WAF policy or
+Shield Advanced policy.
 
 
 

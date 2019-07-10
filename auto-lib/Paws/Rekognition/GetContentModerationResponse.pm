@@ -3,6 +3,7 @@ package Paws::Rekognition::GetContentModerationResponse;
   use Moose;
   has JobStatus => (is => 'ro', isa => 'Str');
   has ModerationLabels => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::ContentModerationDetection]');
+  has ModerationModelVersion => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has VideoMetadata => (is => 'ro', isa => 'Paws::Rekognition::VideoMetadata');
@@ -26,6 +27,12 @@ Valid values are: C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">
 =head2 ModerationLabels => ArrayRef[L<Paws::Rekognition::ContentModerationDetection>]
 
 The detected moderation labels and the time(s) they were detected.
+
+
+=head2 ModerationModelVersion => Str
+
+Version number of the moderation detection model that was used to
+detect unsafe content.
 
 
 =head2 NextToken => Str

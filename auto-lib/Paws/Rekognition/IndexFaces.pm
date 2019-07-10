@@ -36,17 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation detects faces in an image and adds them to the specified
     # Rekognition collection.
     my $IndexFacesResponse = $rekognition->IndexFaces(
-      {
-        'CollectionId'        => 'myphotos',
-        'DetectionAttributes' => [
+      'CollectionId'        => 'myphotos',
+      'DetectionAttributes' => [
 
-        ],
-        'ExternalImageId' => 'myphotoid',
-        'Image'           => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'myphoto'
-          }
+      ],
+      'ExternalImageId' => 'myphotoid',
+      'Image'           => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'myphoto'
         }
       }
     );
@@ -97,6 +95,10 @@ The ID you want to assign to all the faces detected in the image.
 The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 image bytes isn't supported.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
 
 
 

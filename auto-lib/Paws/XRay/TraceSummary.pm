@@ -13,6 +13,7 @@ package Paws::XRay::TraceSummary;
   has Id => (is => 'ro', isa => 'Str');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Paws::XRay::InstanceIdDetail]');
   has IsPartial => (is => 'ro', isa => 'Bool');
+  has MatchedEventTime => (is => 'ro', isa => 'Str');
   has ResourceARNs => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ResourceARNDetail]');
   has ResponseTime => (is => 'ro', isa => 'Num');
   has ResponseTimeRootCauses => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ResponseTimeRootCause]');
@@ -123,6 +124,11 @@ segments.
 =head2 IsPartial => Bool
 
   One or more of the segment documents is in progress.
+
+
+=head2 MatchedEventTime => Str
+
+  The matched time stamp of a defined event.
 
 
 =head2 ResourceARNs => ArrayRef[L<Paws::XRay::ResourceARNDetail>]

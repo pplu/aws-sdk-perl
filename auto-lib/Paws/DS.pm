@@ -634,6 +634,8 @@ C<CreatingSnapshot>, and C<UpdatingSchema>.
 
 =item [ShortName => Str]
 
+=item [Tags => ArrayRef[L<Paws::DS::Tag>]]
+
 
 =back
 
@@ -736,6 +738,8 @@ the trusted domain.
 
 =item [ShortName => Str]
 
+=item [Tags => ArrayRef[L<Paws::DS::Tag>]]
+
 =item [VpcSettings => L<Paws::DS::DirectoryVpcSettings>]
 
 
@@ -790,6 +794,8 @@ AWS account.
 =item [Edition => Str]
 
 =item [ShortName => Str]
+
+=item [Tags => ArrayRef[L<Paws::DS::Tag>]]
 
 
 =back

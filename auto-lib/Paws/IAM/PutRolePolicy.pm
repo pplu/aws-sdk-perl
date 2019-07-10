@@ -33,12 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command adds a permissions policy to the role named
     # Test-Role.
     $iam->PutRolePolicy(
-      {
-        'PolicyDocument' =>
+      'PolicyDocument' =>
 '{"Version":"2012-10-17","Statement":{"Effect":"Allow","Action":"s3:*","Resource":"*"}}',
-        'PolicyName' => 'S3AccessPolicy',
-        'RoleName'   => 'S3Access'
-      }
+      'PolicyName' => 'S3AccessPolicy',
+      'RoleName'   => 'S3Access'
     );
 
 
@@ -51,6 +49,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 =head2 B<REQUIRED> PolicyDocument => Str
 
 The policy document.
+
+You must provide policies in JSON format in IAM. However, for AWS
+CloudFormation templates formatted in YAML, you can provide the policy
+in JSON or YAML format. AWS CloudFormation always converts a YAML
+policy to JSON format before submitting it to IAM.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
 this parameter is a string of characters consisting of the following:

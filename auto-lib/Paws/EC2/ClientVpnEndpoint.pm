@@ -9,9 +9,11 @@ package Paws::EC2::ClientVpnEndpoint;
   has DeletionTime => (is => 'ro', isa => 'Str', request_name => 'deletionTime', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has DnsName => (is => 'ro', isa => 'Str', request_name => 'dnsName', traits => ['NameInRequest']);
+  has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'dnsServer', traits => ['NameInRequest']);
   has ServerCertificateArn => (is => 'ro', isa => 'Str', request_name => 'serverCertificateArn', traits => ['NameInRequest']);
   has SplitTunnel => (is => 'ro', isa => 'Bool', request_name => 'splitTunnel', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Paws::EC2::ClientVpnEndpointStatus', request_name => 'status', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has TransportProtocol => (is => 'ro', isa => 'Str', request_name => 'transportProtocol', traits => ['NameInRequest']);
   has VpnProtocol => (is => 'ro', isa => 'Str', request_name => 'vpnProtocol', traits => ['NameInRequest']);
 1;
@@ -86,8 +88,6 @@ VPN endpoint.
 =head2 DeletionTime => Str
 
   The date and time the Client VPN endpoint was deleted, if applicable.
-Information about deleted Client VPN endpoints is retained for 24
-hours, unless a new Client VPN is created with the same name.
 
 
 =head2 Description => Str
@@ -97,7 +97,13 @@ hours, unless a new Client VPN is created with the same name.
 
 =head2 DnsName => Str
 
-  The DNS name to be used by clients when establishing a connection.
+  The DNS name to be used by clients when connecting to the Client VPN
+endpoint.
+
+
+=head2 DnsServers => ArrayRef[Str|Undef]
+
+  Information about the DNS servers to be used for DNS resolution.
 
 
 =head2 ServerCertificateArn => Str
@@ -107,7 +113,7 @@ hours, unless a new Client VPN is created with the same name.
 
 =head2 SplitTunnel => Bool
 
-  B<Indicates whether VPN split tunneling is supported.>
+  Indicates whether VPN split tunneling is supported.
 
 
 =head2 Status => L<Paws::EC2::ClientVpnEndpointStatus>
@@ -115,9 +121,14 @@ hours, unless a new Client VPN is created with the same name.
   The current state of the Client VPN endpoint.
 
 
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  Any tags assigned to the Client VPN endpoint.
+
+
 =head2 TransportProtocol => Str
 
-  B<The transport protocol used by the Client VPN endpoint.>
+  The transport protocol used by the Client VPN endpoint.
 
 
 =head2 VpnProtocol => Str

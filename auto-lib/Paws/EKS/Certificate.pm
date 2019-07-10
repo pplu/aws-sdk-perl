@@ -39,7 +39,7 @@ cluster.
 
 =head2 Data => Str
 
-  The base64 encoded certificate data required to communicate with your
+  The Base64-encoded certificate data required to communicate with your
 cluster. Add this to the C<certificate-authority-data> section of the
 C<kubeconfig> file for your cluster.
 

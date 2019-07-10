@@ -1,8 +1,9 @@
 
 package Paws::IoT::CreateSecurityProfile;
   use Moose;
+  has AdditionalMetricsToRetain => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'additionalMetricsToRetain');
   has AlertTargets => (is => 'ro', isa => 'Paws::IoT::AlertTargets', traits => ['NameInRequest'], request_name => 'alertTargets');
-  has Behaviors => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Behavior]', traits => ['NameInRequest'], request_name => 'behaviors', required => 1);
+  has Behaviors => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Behavior]', traits => ['NameInRequest'], request_name => 'behaviors');
   has SecurityProfileDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'securityProfileDescription');
   has SecurityProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'securityProfileName', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
@@ -33,35 +34,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $CreateSecurityProfileResponse = $iot->CreateSecurityProfile(
-      Behaviors => [
-        {
-          Name     => 'MyBehaviorName',    # min: 1, max: 128
-          Criteria => {
-            ComparisonOperator => 'less-than'
-            , # values: less-than, less-than-equals, greater-than, greater-than-equals, in-cidr-set, not-in-cidr-set, in-port-set, not-in-port-set; OPTIONAL
-            DurationSeconds => 1,    # OPTIONAL
-            Value           => {
-              Cidrs => [
-                'MyCidr', ...        # min: 2, max: 43
-              ],                     # OPTIONAL
-              Count => 1,            # OPTIONAL
-              Ports => [
-                1, ...               # max: 65535
-              ],                     # OPTIONAL
-            },    # OPTIONAL
-          },    # OPTIONAL
-          Metric => 'MyBehaviorMetric',    # OPTIONAL
-        },
-        ...
-      ],
-      SecurityProfileName => 'MySecurityProfileName',
-      AlertTargets        => {
+      SecurityProfileName       => 'MySecurityProfileName',
+      AdditionalMetricsToRetain => [ 'MyBehaviorMetric', ... ],    # OPTIONAL
+      AlertTargets              => {
         'SNS' => {
           AlertTargetArn => 'MyAlertTargetArn',
           RoleArn        => 'MyRoleArn',          # min: 20, max: 2048
 
         },    # key: values: SNS
       },    # OPTIONAL
+      Behaviors => [
+        {
+          Name     => 'MyBehaviorName',    # min: 1, max: 128
+          Criteria => {
+            ComparisonOperator => 'less-than'
+            , # values: less-than, less-than-equals, greater-than, greater-than-equals, in-cidr-set, not-in-cidr-set, in-port-set, not-in-port-set; OPTIONAL
+            ConsecutiveDatapointsToAlarm => 1,    # min: 1, max: 10; OPTIONAL
+            ConsecutiveDatapointsToClear => 1,    # min: 1, max: 10; OPTIONAL
+            DurationSeconds              => 1,    # OPTIONAL
+            StatisticalThreshold         => {
+              Statistic => 'MyEvaluationStatistic',    # OPTIONAL
+            },    # OPTIONAL
+            Value => {
+              Cidrs => [
+                'MyCidr', ...    # min: 2, max: 43
+              ],                 # OPTIONAL
+              Count => 1,        # OPTIONAL
+              Ports => [
+                1, ...           # max: 65535
+              ],                 # OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Metric => 'MyBehaviorMetric',
+        },
+        ...
+      ],        # OPTIONAL
       SecurityProfileDescription => 'MySecurityProfileDescription',   # OPTIONAL
       Tags                       => [
         {
@@ -85,6 +92,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
+=head2 AdditionalMetricsToRetain => ArrayRef[Str|Undef]
+
+A list of metrics whose data is retained (stored). By default, data is
+retained for any metric used in the profile's C<behaviors> but it is
+also retained for any metric specified here.
+
+
+
 =head2 AlertTargets => L<Paws::IoT::AlertTargets>
 
 Specifies the destinations to which alerts are sent. (Alerts are always
@@ -93,7 +108,7 @@ violates a behavior.
 
 
 
-=head2 B<REQUIRED> Behaviors => ArrayRef[L<Paws::IoT::Behavior>]
+=head2 Behaviors => ArrayRef[L<Paws::IoT::Behavior>]
 
 Specifies the behaviors that, when violated by a device (thing), cause
 an alert.

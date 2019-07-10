@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AssociationId      => 'MyAssociationId',         # OPTIONAL
       AssociationVersion => 'MyAssociationVersion',    # OPTIONAL
       InstanceId         => 'MyInstanceId',            # OPTIONAL
-      Name               => 'MyDocumentName',          # OPTIONAL
+      Name               => 'MyDocumentARN',           # OPTIONAL
     );
 
     # Results:
@@ -60,8 +60,8 @@ The association ID for which you want information.
 Specify the association version to retrieve. To view the latest
 version, either specify C<$LATEST> for this parameter, or omit this
 parameter. To view a list of all associations for an instance, use
-ListInstanceAssociations. To get a list of versions for a specific
-association, use ListAssociationVersions.
+ListAssociations. To get a list of versions for a specific association,
+use ListAssociationVersions.
 
 
 

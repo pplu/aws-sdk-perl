@@ -44,7 +44,7 @@ This class has no description
 
 =head2 AttributeValues => ArrayRef[L<Paws::EC2::AccountAttributeValue>]
 
-  One or more values for the account attribute.
+  The values for the account attribute.
 
 
 

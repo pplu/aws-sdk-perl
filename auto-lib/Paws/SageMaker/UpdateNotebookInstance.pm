@@ -12,6 +12,7 @@ package Paws::SageMaker::UpdateNotebookInstance;
   has LifecycleConfigName => (is => 'ro', isa => 'Str');
   has NotebookInstanceName => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str');
+  has RootAccess => (is => 'ro', isa => 'Str');
   has VolumeSizeInGB => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -55,6 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceType                           => 'ml.t2.medium',       # OPTIONAL
       LifecycleConfigName => 'MyNotebookInstanceLifecycleConfigName', # OPTIONAL
       RoleArn             => 'MyRoleArn',                             # OPTIONAL
+      RootAccess          => 'Enabled',                               # OPTIONAL
       VolumeSizeInGB      => 1,                                       # OPTIONAL
     );
 
@@ -81,7 +83,7 @@ instance. These can be either the names of Git repositories stored as
 resources in your account, or the URL of Git repositories in AWS
 CodeCommit
 (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-or in any other Git repository.. These repositories are cloned at the
+or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For
 more information, see Associating Git Repositories with Amazon
 SageMaker Notebook Instances
@@ -107,28 +109,37 @@ Notebook Instances
 =head2 DisassociateAcceleratorTypes => Bool
 
 A list of the Elastic Inference (EI) instance types to remove from this
-notebook instance.
+notebook instance. This operation is idempotent. If you specify an
+accelerator type that is not associated with the notebook instance when
+you call this method, it does not throw an error.
 
 
 
 =head2 DisassociateAdditionalCodeRepositories => Bool
 
 A list of names or URLs of the default Git repositories to remove from
-this notebook instance.
+this notebook instance. This operation is idempotent. If you specify a
+Git repository that is not associated with the notebook instance when
+you call this method, it does not throw an error.
 
 
 
 =head2 DisassociateDefaultCodeRepository => Bool
 
 The name or URL of the default Git repository to remove from this
-notebook instance.
+notebook instance. This operation is idempotent. If you specify a Git
+repository that is not associated with the notebook instance when you
+call this method, it does not throw an error.
 
 
 
 =head2 DisassociateLifecycleConfig => Bool
 
 Set to C<true> to remove the notebook instance lifecycle configuration
-currently associated with the notebook instance.
+currently associated with the notebook instance. This operation is
+idempotent. If you specify a lifecycle configuration that is not
+associated with the notebook instance when you call this method, it
+does not throw an error.
 
 
 
@@ -143,7 +154,7 @@ Valid values are: C<"ml.t2.medium">, C<"ml.t2.large">, C<"ml.t2.xlarge">, C<"ml.
 The name of a lifecycle configuration to associate with the notebook
 instance. For information about lifestyle configurations, see Step 2.1:
 (Optional) Customize a Notebook Instance
-(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
 
@@ -158,17 +169,33 @@ The name of the notebook instance to update.
 The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker
 can assume to access the notebook instance. For more information, see
 Amazon SageMaker Roles
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 
 To be able to pass this role to Amazon SageMaker, the caller of this
 API must have the C<iam:PassRole> permission.
 
 
 
+=head2 RootAccess => Str
+
+Whether root access is enabled or disabled for users of the notebook
+instance. The default value is C<Enabled>.
+
+If you set this to C<Disabled>, users don't have root access on the
+notebook instance, but lifecycle configuration scripts still run with
+root permissions.
+
+Valid values are: C<"Enabled">, C<"Disabled">
+
 =head2 VolumeSizeInGB => Int
 
 The size, in GB, of the ML storage volume to attach to the notebook
-instance. The default value is 5 GB.
+instance. The default value is 5 GB. ML storage volumes are encrypted,
+so Amazon SageMaker can't determine the amount of available free space
+on the volume. Because of this, you can increase the volume size when
+you update a notebook instance, but you can't decrease the volume size.
+If you want to decrease the size of the ML storage volume in use,
+create a new notebook instance with the desired size.
 
 
 

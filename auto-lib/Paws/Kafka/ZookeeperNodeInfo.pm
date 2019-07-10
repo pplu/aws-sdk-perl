@@ -2,6 +2,7 @@ package Paws::Kafka::ZookeeperNodeInfo;
   use Moose;
   has AttachedENIId => (is => 'ro', isa => 'Str', request_name => 'attachedENIId', traits => ['NameInRequest']);
   has ClientVpcIpAddress => (is => 'ro', isa => 'Str', request_name => 'clientVpcIpAddress', traits => ['NameInRequest']);
+  has Endpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'endpoints', traits => ['NameInRequest']);
   has ZookeeperId => (is => 'ro', isa => 'Num', request_name => 'zookeeperId', traits => ['NameInRequest']);
   has ZookeeperVersion => (is => 'ro', isa => 'Str', request_name => 'zookeeperVersion', traits => ['NameInRequest']);
 1;
@@ -47,6 +48,11 @@ Zookeeper node information.
 =head2 ClientVpcIpAddress => Str
 
   The virtual private cloud (VPC) IP address of the client.
+
+
+=head2 Endpoints => ArrayRef[Str|Undef]
+
+  Endpoints for accessing the ZooKeeper.
 
 
 =head2 ZookeeperId => Num

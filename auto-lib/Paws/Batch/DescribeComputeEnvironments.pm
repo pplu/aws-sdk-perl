@@ -34,10 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the P2OnDemand compute environment.
     my $DescribeComputeEnvironmentsResponse =
       $batch->DescribeComputeEnvironments(
-      {
-        'ComputeEnvironments' => ['P2OnDemand']
-      }
-      );
+      'ComputeEnvironments' => ['P2OnDemand'] );
 
     # Results:
     my $computeEnvironments =

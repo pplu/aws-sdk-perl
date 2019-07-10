@@ -133,14 +133,19 @@ A unique name for the image builder.
 
 =head2 Tags => L<Paws::AppStream::Tags>
 
-The tags to associate with the image builder. A tag is a key-value pair
-(the value is optional). For example, Environment=Test, or, if you do
-not specify a value, Environment=.
+The tags to associate with the image builder. A tag is a key-value
+pair, and the value is optional. For example, Environment=Test. If you
+do not specify a value, Environment=.
 
-If you do not specify a value, we set the value to an empty string.
+Generally allowed characters are: letters, numbers, and spaces
+representable in UTF-8, and the following special characters:
+
+_ . : / = + \ - @
+
+If you do not specify a value, the value is set to an empty string.
 
 For more information about tags, see Tagging Your Resources
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 

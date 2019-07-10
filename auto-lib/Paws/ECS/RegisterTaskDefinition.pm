@@ -10,6 +10,7 @@ package Paws::ECS::RegisterTaskDefinition;
   has NetworkMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkMode' );
   has PidMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pidMode' );
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
+  has ProxyConfiguration => (is => 'ro', isa => 'Paws::ECS::ProxyConfiguration', traits => ['NameInRequest'], request_name => 'proxyConfiguration' );
   has RequiresCompatibilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'requiresCompatibilities' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TaskRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskRoleArn' );
@@ -42,24 +43,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To register a task definition
     # This example registers a task definition to the specified family.
     my $RegisterTaskDefinitionResponse = $ecs->RegisterTaskDefinition(
-      {
-        'ContainerDefinitions' => [
+      'ContainerDefinitions' => [
 
-          {
-            'Command'   => [ 'sleep', 360 ],
-            'Cpu'       => 10,
-            'Essential' => 1,
-            'Image'     => 'busybox',
-            'Memory'    => 10,
-            'Name'      => 'sleep'
-          }
-        ],
-        'Family'      => 'sleep360',
-        'TaskRoleArn' => '',
-        'Volumes'     => [
+        {
+          'Command'   => [ 'sleep', 360 ],
+          'Cpu'       => 10,
+          'Essential' => 1,
+          'Image'     => 'busybox',
+          'Memory'    => 10,
+          'Name'      => 'sleep'
+        }
+      ],
+      'Family'      => 'sleep360',
+      'TaskRoleArn' => '',
+      'Volumes'     => [
 
-        ]
-      }
+      ]
     );
 
     # Results:
@@ -144,7 +143,7 @@ Amazon ECS container agent and the Docker daemon can assume.
 You must specify a C<family> for a task definition, which allows you to
 track multiple versions of the same task definition. The C<family> is
 used as a name for your task definition. Up to 255 letters (uppercase
-and lowercase), numbers, hyphens, and underscores are allowed.
+and lowercase), numbers, and hyphens are allowed.
 
 
 
@@ -171,7 +170,7 @@ Docker security (https://docs.docker.com/engine/security/security/).
 If you are setting namespaced kernel parameters using C<systemControls>
 for the containers in the task, the following will apply to your IPC
 resource namespace. For more information, see System Controls
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 =over
@@ -267,7 +266,7 @@ If the network mode is C<awsvpc>, the task is allocated an elastic
 network interface, and you must specify a NetworkConfiguration value
 when you create a service or run a task with the task definition. For
 more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 Currently, only Amazon ECS-optimized AMIs, other Amazon Linux variants
@@ -317,6 +316,12 @@ Valid values are: C<"host">, C<"task">
 An array of placement constraint objects to use for the task. You can
 specify a maximum of 10 constraints per task (this limit includes
 constraints in the task definition and those specified at runtime).
+
+
+
+=head2 ProxyConfiguration => L<Paws::ECS::ProxyConfiguration>
+
+
 
 
 

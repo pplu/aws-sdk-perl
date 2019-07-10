@@ -95,6 +95,11 @@ package Paws::SimpleWorkflow;
     my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::ListOpenWorkflowExecutions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListWorkflowTypes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::ListWorkflowTypes', @_);
@@ -165,9 +170,34 @@ package Paws::SimpleWorkflow;
     my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::StartWorkflowExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TerminateWorkflowExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::TerminateWorkflowExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UndeprecateActivityType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::UndeprecateActivityType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UndeprecateDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::UndeprecateDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UndeprecateWorkflowType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::UndeprecateWorkflowType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -334,7 +364,7 @@ package Paws::SimpleWorkflow;
   }
 
 
-  sub operations { qw/CountClosedWorkflowExecutions CountOpenWorkflowExecutions CountPendingActivityTasks CountPendingDecisionTasks DeprecateActivityType DeprecateDomain DeprecateWorkflowType DescribeActivityType DescribeDomain DescribeWorkflowExecution DescribeWorkflowType GetWorkflowExecutionHistory ListActivityTypes ListClosedWorkflowExecutions ListDomains ListOpenWorkflowExecutions ListWorkflowTypes PollForActivityTask PollForDecisionTask RecordActivityTaskHeartbeat RegisterActivityType RegisterDomain RegisterWorkflowType RequestCancelWorkflowExecution RespondActivityTaskCanceled RespondActivityTaskCompleted RespondActivityTaskFailed RespondDecisionTaskCompleted SignalWorkflowExecution StartWorkflowExecution TerminateWorkflowExecution / }
+  sub operations { qw/CountClosedWorkflowExecutions CountOpenWorkflowExecutions CountPendingActivityTasks CountPendingDecisionTasks DeprecateActivityType DeprecateDomain DeprecateWorkflowType DescribeActivityType DescribeDomain DescribeWorkflowExecution DescribeWorkflowType GetWorkflowExecutionHistory ListActivityTypes ListClosedWorkflowExecutions ListDomains ListOpenWorkflowExecutions ListTagsForResource ListWorkflowTypes PollForActivityTask PollForDecisionTask RecordActivityTaskHeartbeat RegisterActivityType RegisterDomain RegisterWorkflowType RequestCancelWorkflowExecution RespondActivityTaskCanceled RespondActivityTaskCompleted RespondActivityTaskFailed RespondDecisionTaskCompleted SignalWorkflowExecution StartWorkflowExecution TagResource TerminateWorkflowExecution UndeprecateActivityType UndeprecateDomain UndeprecateWorkflowType UntagResource / }
 
 1;
 
@@ -378,7 +408,7 @@ as tracking their progress and maintaining their state.
 
 This documentation serves as reference only. For a broader overview of
 the Amazon SWF programming model, see the I< Amazon SWF Developer Guide
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/) >.
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/) >.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25>
 
@@ -463,7 +493,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -541,7 +571,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -595,7 +625,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -649,7 +679,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -719,7 +749,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -774,7 +804,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -845,7 +875,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -911,7 +941,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -959,7 +989,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1012,7 +1042,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1078,7 +1108,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1138,7 +1168,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1200,7 +1230,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1290,7 +1320,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1350,7 +1380,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1436,8 +1466,24 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SimpleWorkflow::ListTagsForResource>
+
+Returns: a L<Paws::SimpleWorkflow::ListTagsForResourceOutput> instance
+
+List tags for a given domain.
 
 
 =head2 ListWorkflowTypes
@@ -1495,7 +1541,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1560,7 +1606,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1642,7 +1688,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1720,7 +1766,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1808,7 +1854,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1821,6 +1867,8 @@ in the I<Amazon SWF Developer Guide>.
 =item WorkflowExecutionRetentionPeriodInDays => Str
 
 =item [Description => Str]
+
+=item [Tags => ArrayRef[L<Paws::SimpleWorkflow::ResourceTag>]]
 
 
 =back
@@ -1860,7 +1908,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -1951,7 +1999,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -2014,7 +2062,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -2049,7 +2097,7 @@ is closed. Therefore a task is reported as open while a worker is
 processing it. A task is closed after it has been specified in a call
 to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
 RespondActivityTaskFailed, or the task has timed out
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 
 B<Access Control>
 
@@ -2079,7 +2127,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -2114,7 +2162,7 @@ is closed. Therefore a task is reported as open while a worker is
 processing it. A task is closed after it has been specified in a call
 to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
 RespondActivityTaskFailed, or the task has timed out
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 
 B<Access Control>
 
@@ -2144,7 +2192,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -2175,7 +2223,7 @@ is closed. Therefore a task is reported as open while a worker is
 processing it. A task is closed after it has been specified in a call
 to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
 RespondActivityTaskFailed, or the task has timed out
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 
 B<Access Control>
 
@@ -2205,7 +2253,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -2245,7 +2293,7 @@ policies to be as readable as possible, you can express permissions on
 decisions as if they were actual API calls, including applying
 conditions to some parameters. For more information, see Using IAM to
 Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -2311,7 +2359,7 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -2420,8 +2468,28 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::SimpleWorkflow::ResourceTag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SimpleWorkflow::TagResource>
+
+Returns: nothing
+
+Add a tag to a Amazon SWF domain.
+
+Amazon SWF supports a maximum of 50 tags per resource.
 
 
 =head2 TerminateWorkflowExecution
@@ -2492,8 +2560,215 @@ or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
+
+
+=head2 UndeprecateActivityType
+
+=over
+
+=item ActivityType => L<Paws::SimpleWorkflow::ActivityType>
+
+=item Domain => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SimpleWorkflow::UndeprecateActivityType>
+
+Returns: nothing
+
+Undeprecates a previously deprecated I<activity type>. After an
+activity type has been undeprecated, you can create new tasks of that
+activity type.
+
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
+
+B<Access Control>
+
+You can use IAM policies to control this action's access to Amazon SWF
+resources as follows:
+
+=over
+
+=item *
+
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
+
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
+
+=over
+
+=item *
+
+C<activityType.name>: String constraint. The key is
+C<swf:activityType.name>.
+
+=item *
+
+C<activityType.version>: String constraint. The key is
+C<swf:activityType.version>.
+
+=back
+
+=back
+
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
+
+
+=head2 UndeprecateDomain
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SimpleWorkflow::UndeprecateDomain>
+
+Returns: nothing
+
+Undeprecates a previously deprecated domain. After a domain has been
+undeprecated it can be used to create new workflow executions or
+register new types.
+
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
+
+B<Access Control>
+
+You can use IAM policies to control this action's access to Amazon SWF
+resources as follows:
+
+=over
+
+=item *
+
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
+
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
+
+=back
+
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
+
+
+=head2 UndeprecateWorkflowType
+
+=over
+
+=item Domain => Str
+
+=item WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SimpleWorkflow::UndeprecateWorkflowType>
+
+Returns: nothing
+
+Undeprecates a previously deprecated I<workflow type>. After a workflow
+type has been undeprecated, you can create new executions of that type.
+
+This operation is eventually consistent. The results are best effort
+and may not exactly reflect recent updates and changes.
+
+B<Access Control>
+
+You can use IAM policies to control this action's access to Amazon SWF
+resources as follows:
+
+=over
+
+=item *
+
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
+
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
+
+=over
+
+=item *
+
+C<workflowType.name>: String constraint. The key is
+C<swf:workflowType.name>.
+
+=item *
+
+C<workflowType.version>: String constraint. The key is
+C<swf:workflowType.version>.
+
+=back
+
+=back
+
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SimpleWorkflow::UntagResource>
+
+Returns: nothing
+
+Remove a tag from a Amazon SWF domain.
 
 
 

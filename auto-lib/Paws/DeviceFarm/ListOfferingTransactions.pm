@@ -30,12 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To get information about device offering transactions
     # The following example returns information about Device Farm offering
     # transactions.
-    my $ListOfferingTransactionsResult = $devicefarm->ListOfferingTransactions(
-      {
-        'NextToken' =>
-          'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE='
-      }
-    );
+    my $ListOfferingTransactionsResult =
+      $devicefarm->ListOfferingTransactions( 'NextToken' =>
+        'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE=' );
 
     # Results:
     my $offeringTransactions =

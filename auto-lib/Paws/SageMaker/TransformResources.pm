@@ -42,16 +42,15 @@ count, to use for transform job.
 =head2 B<REQUIRED> InstanceCount => Int
 
   The number of ML compute instances to use in the transform job. For
-distributed transform, provide a value greater than 1. The default
+distributed transform jobs, specify a value greater than 1. The default
 value is C<1>.
 
 
 =head2 B<REQUIRED> InstanceType => Str
 
-  The ML compute instance type for the transform job. For using built-in
-algorithms to transform moderately sized datasets, ml.m4.xlarge or
-C<ml.m5.large> should suffice. There is no default value for
-C<InstanceType>.
+  The ML compute instance type for the transform job. If you are using
+built-in algorithms to transform moderately sized datasets, we
+recommend using ml.m4.xlarge or C<ml.m5.large>instance types.
 
 
 =head2 VolumeKmsKeyId => Str

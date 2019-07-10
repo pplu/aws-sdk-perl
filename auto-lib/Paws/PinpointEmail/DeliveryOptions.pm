@@ -1,6 +1,7 @@
 package Paws::PinpointEmail::DeliveryOptions;
   use Moose;
   has SendingPoolName => (is => 'ro', isa => 'Str');
+  has TlsPolicy => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::PinpointEmail::DeliveryOptions object:
 
-  $service_obj->Method(Att1 => { SendingPoolName => $value, ..., SendingPoolName => $value  });
+  $service_obj->Method(Att1 => { SendingPoolName => $value, ..., TlsPolicy => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,6 +41,15 @@ Used to associate a configuration set with a dedicated IP pool.
 
   The name of the dedicated IP pool that you want to associate with the
 configuration set.
+
+
+=head2 TlsPolicy => Str
+
+  Specifies whether Amazon Pinpoint should require that incoming email is
+delivered over a connection thatE<rsquo>s encrypted by using Transport
+Layer Security (TLS). If this value is set to C<Require>, Amazon
+Pinpoint will bounce email messages that cannot be delivered over TLS.
+The default value is C<Optional>.
 
 
 

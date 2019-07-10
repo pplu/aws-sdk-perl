@@ -49,8 +49,10 @@ Represents information about a webhook and its definition.
 
 =item *
 
-GITHUB_HMAC implements the authentication scheme described here:
-https://developer.github.com/webhooks/securing/
+For information about the authentication scheme implemented by
+GITHUB_HMAC, see Securing your webhooks
+(https://developer.github.com/webhooks/securing/) on the GitHub
+Developer website.
 
 =item *
 
@@ -70,9 +72,9 @@ origin.
 
   Properties that configure the authentication applied to incoming
 webhook trigger requests. The required properties depend on the
-authentication type. For GITHUB_HMAC, only the SecretToken property
-must be set. For IP, only the AllowedIPRange property must be set to a
-valid CIDR range. For UNAUTHENTICATED, no properties can be set.
+authentication type. For GITHUB_HMAC, only the C<SecretToken >property
+must be set. For IP, only the C<AllowedIPRange >property must be set to
+a valid CIDR range. For UNAUTHENTICATED, no properties can be set.
 
 
 =head2 B<REQUIRED> Filters => ArrayRef[L<Paws::CodePipeline::WebhookFilterRule>]

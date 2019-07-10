@@ -63,13 +63,13 @@ C</I<bucket_name>/home/I<username> >.
 
 =head2 Role => Str
 
-  This property specifies the IAM role that controls your userE<rsquo>s
-access to your Amazon S3 bucket. The policies attached to this role
-will determine the level of access you want to provide your users when
+  This property specifies the IAM role that controls your user's access
+to your Amazon S3 bucket. The policies attached to this role will
+determine the level of access you want to provide your users when
 transferring files into and out of your Amazon S3 bucket or buckets.
 The IAM role should also contain a trust relationship that allows the
-SFTP server to access your resources when servicing your SFTP
-userE<rsquo>s transfer requests.
+SFTP server to access your resources when servicing your SFTP user's
+transfer requests.
 
 
 =head2 SshPublicKeys => ArrayRef[L<Paws::Transfer::SshPublicKey>]

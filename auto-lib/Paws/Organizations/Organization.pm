@@ -51,7 +51,7 @@ controlled with policies .
 
 For more information about ARNs in Organizations, see ARN Formats
 Supported by Organizations
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
 in the I<AWS Organizations User Guide>.
 
 
@@ -75,7 +75,7 @@ policies can be applied to accounts in the organization. If set to
 "CONSOLIDATED_BILLING", then only consolidated billing functionality is
 available. For more information, see Enabling All Features in Your
 Organization
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_manage_org_support-all-features.html)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
 in the I<AWS Organizations User Guide>.
 
 
@@ -95,7 +95,7 @@ master account for the organization.
 
 For more information about ARNs in Organizations, see ARN Formats
 Supported by Organizations
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
 in the I<AWS Organizations User Guide>.
 
 

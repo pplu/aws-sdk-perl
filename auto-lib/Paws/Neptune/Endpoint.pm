@@ -33,24 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Neptune::En
 
 =head1 DESCRIPTION
 
-This data type is used as a response element in the following actions:
-
-=over
-
-=item *
-
-CreateDBInstance
-
-=item *
-
-DescribeDBInstances
-
-=item *
-
-DeleteDBInstance
-
-=back
-
+Specifies a connection endpoint.
 
 =head1 ATTRIBUTES
 

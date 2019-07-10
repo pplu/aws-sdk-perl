@@ -1,5 +1,6 @@
 package Paws::CodeBuild::S3LogsConfig;
   use Moose;
+  has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
 1;
@@ -21,20 +22,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeBuild::S3LogsConfig object:
 
-  $service_obj->Method(Att1 => { Location => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { EncryptionDisabled => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::S3LogsConfig object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Location
+  $result->Att1->EncryptionDisabled
 
 =head1 DESCRIPTION
 
 Information about S3 logs for a build project.
 
 =head1 ATTRIBUTES
+
+
+=head2 EncryptionDisabled => Bool
+
+  Set to true if you do not want your S3 build log output encrypted. By
+default S3 build logs are encrypted.
 
 
 =head2 Location => Str

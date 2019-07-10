@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $robomaker->ListSimulationApplications(
       Filters => [
         {
-          Name   => 'MyName',    # min: 1, max: 255
+          Name   => 'MyName',    # min: 1, max: 255; OPTIONAL
           Values => [
-            'MyName', ...        # min: 1, max: 255
+            'MyName', ...        # min: 1, max: 255; OPTIONAL
           ],                     # min: 1, max: 1; OPTIONAL
         },
         ...
@@ -62,8 +62,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rob
 
 =head2 Filters => ArrayRef[L<Paws::Robomaker::Filter>]
 
-Optional list of filters to limit results. The only valid filter name
-is C<name>.
+Optional list of filters to limit results.
+
+The filter name C<name> is supported. When filtering, you must use the
+complete value of the filtered item. You can use up to three filters.
 
 
 
@@ -74,10 +76,10 @@ C<ListSimulationApplications> in paginated output. When this parameter
 is used, C<ListSimulationApplications> only returns C<maxResults>
 results in a single page along with a C<nextToken> response element.
 The remaining results of the initial request can be seen by sending
-another C<ListFleets> request with the returned C<nextToken> value.
-This value can be between 1 and 100. If this parameter is not used,
-then C<ListSimulationApplications> returns up to 100 results and a
-C<nextToken> value if applicable.
+another C<ListSimulationApplications> request with the returned
+C<nextToken> value. This value can be between 1 and 100. If this
+parameter is not used, then C<ListSimulationApplications> returns up to
+100 results and a C<nextToken> value if applicable.
 
 
 

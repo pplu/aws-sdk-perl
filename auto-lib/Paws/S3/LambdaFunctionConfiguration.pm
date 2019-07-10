@@ -42,7 +42,10 @@ notifications.
 
 =head2 B<REQUIRED> Events => ArrayRef[Str|Undef]
 
-  
+  The Amazon S3 bucket event for which to invoke the AWS Lambda function.
+For more information, see Supported Event Types
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 =head2 Filter => L<Paws::S3::NotificationConfigurationFilter>
@@ -57,8 +60,8 @@ notifications.
 
 =head2 B<REQUIRED> LambdaFunctionArn => Str
 
-  The Amazon Resource Name (ARN) of the Lambda cloud function that Amazon
-S3 can invoke when it detects events of the specified type.
+  The Amazon Resource Name (ARN) of the AWS Lambda function that Amazon
+S3 invokes when the specified event type occurs.
 
 
 

@@ -1,5 +1,7 @@
 package Paws::Glue::Condition;
   use Moose;
+  has CrawlerName => (is => 'ro', isa => 'Str');
+  has CrawlState => (is => 'ro', isa => 'Str');
   has JobName => (is => 'ro', isa => 'Str');
   has LogicalOperator => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
@@ -22,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::Condition object:
 
-  $service_obj->Method(Att1 => { JobName => $value, ..., State => $value  });
+  $service_obj->Method(Att1 => { CrawlerName => $value, ..., State => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Condition object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->JobName
+  $result->Att1->CrawlerName
 
 =head1 DESCRIPTION
 
@@ -38,9 +40,19 @@ Defines a condition under which a trigger fires.
 =head1 ATTRIBUTES
 
 
+=head2 CrawlerName => Str
+
+  The name of the crawler to which this condition applies.
+
+
+=head2 CrawlState => Str
+
+  The state of the crawler to which this condition applies.
+
+
 =head2 JobName => Str
 
-  The name of the Job to whose JobRuns this condition applies and on
+  The name of the job whose C<JobRuns> this condition applies to, and on
 which this trigger waits.
 
 
@@ -51,8 +63,8 @@ which this trigger waits.
 
 =head2 State => Str
 
-  The condition state. Currently, the values supported are SUCCEEDED,
-STOPPED, TIMEOUT and FAILED.
+  The condition state. Currently, the values supported are C<SUCCEEDED>,
+C<STOPPED>, C<TIMEOUT>, and C<FAILED>.
 
 
 

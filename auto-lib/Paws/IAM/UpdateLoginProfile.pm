@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command creates or changes the password for the IAM user
     # named Bob.
     $iam->UpdateLoginProfile(
-      {
-        'Password' => 'SomeKindOfPassword123!@#',
-        'UserName' => 'Bob'
-      }
+      'Password' => 'SomeKindOfPassword123!@#',
+      'UserName' => 'Bob'
     );
 
 

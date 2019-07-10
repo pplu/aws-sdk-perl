@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDSData::Re
 
 =head1 DESCRIPTION
 
-Result Frame
+The result set returned by a SQL statement.
 
 =head1 ATTRIBUTES
 
 
 =head2 Records => ArrayRef[L<Paws::RDSData::Record>]
 
-  ResultSet Metadata.
+  The records in the result set.
 
 
 =head2 ResultSetMetadata => L<Paws::RDSData::ResultSetMetadata>
 
-  ResultSet Metadata.
+  The result-set metadata in the result set.
 
 
 

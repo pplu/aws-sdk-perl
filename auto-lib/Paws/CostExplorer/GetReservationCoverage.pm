@@ -203,10 +203,6 @@ REGION
 
 =item *
 
-TAG
-
-=item *
-
 TENANCY
 
 =back
@@ -216,7 +212,10 @@ TENANCY
 
 =head2 Metrics => ArrayRef[Str|Undef]
 
+The measurement that you want your reservation coverage reported in.
 
+Valid values are C<Hour>, C<Unit>, and C<Cost>. You can use multiple
+values in a request.
 
 
 

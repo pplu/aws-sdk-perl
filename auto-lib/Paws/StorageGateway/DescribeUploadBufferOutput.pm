@@ -19,7 +19,10 @@ Paws::StorageGateway::DescribeUploadBufferOutput
 
 =head2 DiskIds => ArrayRef[Str|Undef]
 
-
+An array of the gateway's local disk IDs that are configured as working
+storage. Each local disk ID is specified as a string (minimum length of
+1 and maximum length of 300). If no local disks are configured as
+working storage, then the DiskIds array is empty.
 
 
 =head2 GatewayARN => Str
@@ -29,12 +32,12 @@ Paws::StorageGateway::DescribeUploadBufferOutput
 
 =head2 UploadBufferAllocatedInBytes => Int
 
-
+The total number of bytes allocated in the gateway's as upload buffer.
 
 
 =head2 UploadBufferUsedInBytes => Int
 
-
+The total number of bytes being used in the gateway's upload buffer.
 
 
 =head2 _request_id => Str

@@ -7,6 +7,7 @@ package Paws::RDS::DBEngineVersion;
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has ExportableLogTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Status => (is => 'ro', isa => 'Str');
   has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::CharacterSet]', request_name => 'CharacterSet', traits => ['NameInRequest']);
   has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedFeatureNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -45,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBEngi
 =head1 DESCRIPTION
 
 This data type is used as a response element in the action
-DescribeDBEngineVersions.
+C<DescribeDBEngineVersions>.
 
 =head1 ATTRIBUTES
 
@@ -88,6 +89,12 @@ specified.
 CloudWatch Logs.
 
 
+=head2 Status => Str
+
+  The status of the DB engine version, either C<available> or
+C<deprecated>.
+
+
 =head2 SupportedCharacterSets => ArrayRef[L<Paws::RDS::CharacterSet>]
 
   A list of the character sets supported by this engine for the
@@ -128,7 +135,7 @@ the log types specified by ExportableLogTypes to CloudWatch Logs.
 
 =head2 SupportsReadReplica => Bool
 
-  Indicates whether the database engine version supports read replicas.
+  Indicates whether the database engine version supports Read Replicas.
 
 
 =head2 ValidUpgradeTarget => ArrayRef[L<Paws::RDS::UpgradeTarget>]

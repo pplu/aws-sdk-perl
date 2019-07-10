@@ -37,16 +37,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To register a job definition
     # This example registers a job definition for a simple container job.
     my $RegisterJobDefinitionResponse = $batch->RegisterJobDefinition(
-      {
-        'ContainerProperties' => {
-          'Command' => [ 'sleep', 10 ],
-          'Image'   => 'busybox',
-          'Memory'  => 128,
-          'Vcpus'   => 1
-        },
-        'JobDefinitionName' => 'sleep10',
-        'Type'              => 'container'
-      }
+      'ContainerProperties' => {
+        'Command' => [ 'sleep', 10 ],
+        'Image'   => 'busybox',
+        'Memory'  => 128,
+        'Vcpus'   => 1
+      },
+      'JobDefinitionName' => 'sleep10',
+      'Type'              => 'container'
     );
 
     # Results:
@@ -84,7 +82,7 @@ allowed.
 An object with various properties specific to multi-node parallel jobs.
 If you specify node properties for a job, it becomes a multi-node
 parallel job. For more information, see Multi-node Parallel Jobs
-(http://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html)
+(https://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html)
 in the I<AWS Batch User Guide>. If the job definition's C<type>
 parameter is C<container>, then you must specify either
 C<containerProperties> or C<nodeProperties>.
@@ -118,7 +116,7 @@ The minimum value for the timeout is 60 seconds. Any timeout
 configuration that is specified during a SubmitJob operation overrides
 the timeout configuration defined here. For more information, see Job
 Timeouts
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

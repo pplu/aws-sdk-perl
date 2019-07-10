@@ -22,7 +22,7 @@ Paws::StorageGateway::UpdateGatewayInformationOutput
 
 =head2 GatewayName => Str
 
-
+The name you configured for your gateway.
 
 
 =head2 _request_id => Str

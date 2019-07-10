@@ -146,7 +146,8 @@ groups.
 
 =head2 UserData => Str
 
-  The Base64-encoded user data for the instance.
+  The Base64-encoded user data for the instance. User data is limited to
+16 KB.
 
 
 

@@ -74,7 +74,7 @@ additional page of data.
 
 A limit that restricts the number of resources returned by GetResources
 in paginated output. You can set ResourcesPerPage to a minimum of 1
-item and the maximum of 50 items.
+item and the maximum of 100 items.
 
 
 
@@ -82,9 +82,9 @@ item and the maximum of 50 items.
 
 The constraints on the resources that you want returned. The format of
 each resource type is C<service[:resourceType]>. For example,
-specifying a resource type of C<ec2> returns all tagged Amazon EC2
-resources (which includes tagged EC2 instances). Specifying a resource
-type of C<ec2:instance> returns only EC2 instances.
+specifying a resource type of C<ec2> returns all Amazon EC2 resources
+(which includes EC2 instances). Specifying a resource type of
+C<ec2:instance> returns only EC2 instances.
 
 The string for each service name and resource type is the same as that
 embedded in a resource's Amazon Resource Name (ARN). Consult the I<AWS
@@ -110,21 +110,79 @@ AWS Service Namespaces
 
 =back
 
+You can specify multiple resource types by using an array. The array
+can include up to 100 items. Note that the length constraint
+requirement applies to each resource type filter.
 
 
 
 =head2 TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>]
 
-A list of tags (keys and values). A request can include up to 50 keys,
-and each key can include up to 20 values.
+A list of TagFilters (keys and values). Each TagFilter specified must
+contain a key with values as optional. A request can include up to 50
+keys, and each key can include up to 20 values.
 
-If you specify multiple filters connected by an AND operator in a
-single request, the response returns only those resources that are
-associated with every specified filter.
+Note the following when deciding how to use TagFilters:
 
-If you specify multiple filters connected by an OR operator in a single
-request, the response returns all resources that are associated with at
-least one or possibly more of the specified filters.
+=over
+
+=item *
+
+If you I<do> specify a TagFilter, the response returns only those
+resources that are currently associated with the specified tag.
+
+=item *
+
+If you I<don't> specify a TagFilter, the response includes all
+resources that were ever associated with tags. Resources that currently
+don't have associated tags are shown with an empty tag set, like this:
+C<"Tags": []>.
+
+=item *
+
+If you specify more than one filter in a single request, the response
+returns only those resources that satisfy all specified filters.
+
+=item *
+
+If you specify a filter that contains more than one value for a key,
+the response returns resources that match any of the specified values
+for that key.
+
+=item *
+
+If you don't specify any values for a key, the response returns
+resources that are tagged with that key irrespective of the value.
+
+For example, for filters: filter1 = {key1, {value1}}, filter2 = {key2,
+{value2,value3,value4}} , filter3 = {key3}:
+
+=over
+
+=item *
+
+GetResources( {filter1} ) returns resources tagged with key1=value1
+
+=item *
+
+GetResources( {filter2} ) returns resources tagged with key2=value2 or
+key2=value3 or key2=value4
+
+=item *
+
+GetResources( {filter3} ) returns resources tagged with any tag
+containing key3 as its tag key, irrespective of its value
+
+=item *
+
+GetResources( {filter1,filter2,filter3} ) returns resources tagged with
+( key1=value1) and ( key2=value2 or key2=value3 or key2=value4) and
+(key3, irrespective of the value)
+
+=back
+
+=back
+
 
 
 

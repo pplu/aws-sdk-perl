@@ -6,7 +6,7 @@ package Paws::AppMesh::DeleteMesh;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMesh');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/meshes/{meshName}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::DeleteMeshOutput');
 1;

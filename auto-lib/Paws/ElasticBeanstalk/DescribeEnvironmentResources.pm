@@ -33,10 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # environment named my-env:
     my $EnvironmentResourceDescriptionsMessage =
       $elasticbeanstalk->DescribeEnvironmentResources(
-      {
-        'EnvironmentName' => 'my-env'
-      }
-      );
+      'EnvironmentName' => 'my-env' );
 
     # Results:
     my $EnvironmentResources =

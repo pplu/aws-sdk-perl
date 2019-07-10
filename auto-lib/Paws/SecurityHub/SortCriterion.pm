@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-A collection of attributes used for sorting findings.
+A collection of finding attributes used to sort findings.
 
 =head1 ATTRIBUTES
 
 
 =head2 Field => Str
 
-  The finding attribute used for sorting findings.
+  The finding attribute used to sort findings.
 
 
 =head2 SortOrder => Str
 
-  The order used for sorting findings.
+  The order used to sort findings.
 
 
 

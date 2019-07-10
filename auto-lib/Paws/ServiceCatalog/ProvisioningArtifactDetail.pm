@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::ProvisioningArtifactDetail;
   has Active => (is => 'ro', isa => 'Bool');
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has Guidance => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
@@ -55,6 +56,12 @@ a product.
 =head2 Description => Str
 
   The description of the provisioning artifact.
+
+
+=head2 Guidance => Str
+
+  Information set by the administrator to provide guidance to end users
+about which provisioning artifacts to use.
 
 
 =head2 Id => Str

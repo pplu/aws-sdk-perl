@@ -33,11 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To describe a route table
     # This example describes the specified route table.
-    my $DescribeRouteTablesResult = $ec2->DescribeRouteTables(
-      {
-        'RouteTableIds' => ['rtb-1f382e7d']
-      }
-    );
+    my $DescribeRouteTablesResult =
+      $ec2->DescribeRouteTables( 'RouteTableIds' => ['rtb-1f382e7d'] );
 
     # Results:
     my $RouteTables = $DescribeRouteTablesResult->RouteTables;
@@ -182,15 +179,15 @@ C<vpc-id> - The ID of the VPC for the route table.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return in a single call. To retrieve
-the remaining results, make another call with the returned B<NextToken>
-value. This value can be between 5 and 100.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
 
 
 =head2 NextToken => Str
 
-The token to retrieve the next page of results.
+The token for the next page of results.
 
 
 

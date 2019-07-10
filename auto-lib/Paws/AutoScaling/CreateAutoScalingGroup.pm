@@ -50,47 +50,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an Auto Scaling group
     # This example creates an Auto Scaling group.
     $autoscaling->CreateAutoScalingGroup(
-      {
-        'AutoScalingGroupName'    => 'my-auto-scaling-group',
-        'LaunchConfigurationName' => 'my-launch-config',
-        'MaxSize'                 => 3,
-        'MinSize'                 => 1,
-        'VPCZoneIdentifier'       => 'subnet-4176792c'
-      }
+      'AutoScalingGroupName'    => 'my-auto-scaling-group',
+      'LaunchConfigurationName' => 'my-launch-config',
+      'MaxSize'                 => 3,
+      'MinSize'                 => 1,
+      'VPCZoneIdentifier'       => 'subnet-4176792c'
     );
 
     # To create an Auto Scaling group with an attached load balancer
     # This example creates an Auto Scaling group and attaches the specified
     # Classic Load Balancer.
     $autoscaling->CreateAutoScalingGroup(
-      {
-        'AutoScalingGroupName'    => 'my-auto-scaling-group',
-        'AvailabilityZones'       => ['us-west-2c'],
-        'HealthCheckGracePeriod'  => 120,
-        'HealthCheckType'         => 'ELB',
-        'LaunchConfigurationName' => 'my-launch-config',
-        'LoadBalancerNames'       => ['my-load-balancer'],
-        'MaxSize'                 => 3,
-        'MinSize'                 => 1
-      }
+      'AutoScalingGroupName'    => 'my-auto-scaling-group',
+      'AvailabilityZones'       => ['us-west-2c'],
+      'HealthCheckGracePeriod'  => 120,
+      'HealthCheckType'         => 'ELB',
+      'LaunchConfigurationName' => 'my-launch-config',
+      'LoadBalancerNames'       => ['my-load-balancer'],
+      'MaxSize'                 => 3,
+      'MinSize'                 => 1
     );
 
     # To create an Auto Scaling group with an attached target group
     # This example creates an Auto Scaling group and attaches the specified
     # target group.
     $autoscaling->CreateAutoScalingGroup(
-      {
-        'AutoScalingGroupName'    => 'my-auto-scaling-group',
-        'HealthCheckGracePeriod'  => 120,
-        'HealthCheckType'         => 'ELB',
-        'LaunchConfigurationName' => 'my-launch-config',
-        'MaxSize'                 => 3,
-        'MinSize'                 => 1,
-        'TargetGroupARNs'         => [
+      'AutoScalingGroupName'    => 'my-auto-scaling-group',
+      'HealthCheckGracePeriod'  => 120,
+      'HealthCheckType'         => 'ELB',
+      'LaunchConfigurationName' => 'my-launch-config',
+      'MaxSize'                 => 3,
+      'MinSize'                 => 1,
+      'TargetGroupARNs'         => [
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'
-        ],
-        'VPCZoneIdentifier' => 'subnet-4176792c, subnet-65ea5f08'
-      }
+      ],
+      'VPCZoneIdentifier' => 'subnet-4176792c, subnet-65ea5f08'
     );
 
 
@@ -110,18 +104,21 @@ scope of your AWS account.
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
 One or more Availability Zones for the group. This parameter is
-optional if you specify one or more subnets.
+optional if you specify one or more subnets for C<VPCZoneIdentifier>.
+
+Conditional: If your account supports EC2-Classic and VPC, this
+parameter is required to launch instances into EC2-Classic.
 
 
 
 =head2 DefaultCooldown => Int
 
 The amount of time, in seconds, after a scaling activity completes
-before another scaling activity can start. The default is 300.
+before another scaling activity can start. The default value is C<300>.
 
 For more information, see Scaling Cooldowns
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) in
-the I<Amazon EC2 Auto Scaling User Guide>.
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -140,25 +137,27 @@ group.
 The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
 before checking the health status of an EC2 instance that has come into
 service. During this time, any health check failures for the instance
-are ignored. The default is 0.
+are ignored. The default value is C<0>.
 
-This parameter is required if you are adding an C<ELB> health check.
-
-For more information, see Health Checks
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+For more information, see Health Checks for Auto Scaling Instances
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+Conditional: This parameter is required if you are adding an C<ELB>
+health check.
 
 
 
 =head2 HealthCheckType => Str
 
 The service to use for the health checks. The valid values are C<EC2>
-and C<ELB>.
+and C<ELB>. The default value is C<EC2>. If you configure an Auto
+Scaling group to use ELB health checks, it considers the instance
+unhealthy if it fails either the EC2 status checks or the load balancer
+health checks.
 
-By default, health checks use Amazon EC2 instance status checks to
-determine the health of an instance. For more information, see Health
-Checks
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+For more information, see Health Checks for Auto Scaling Instances
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -176,7 +175,7 @@ instance, except for the block device mapping.
 
 For more information, see Create an Auto Scaling Group Using an EC2
 Instance
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -187,6 +186,11 @@ The name of the launch configuration. This parameter, a launch
 template, a mixed instances policy, or an EC2 instance must be
 specified.
 
+For more information, see Creating an Auto Scaling Group Using a Launch
+Configuration
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
 
 
 =head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
@@ -194,6 +198,11 @@ specified.
 The launch template to use to launch instances. This parameter, a
 launch configuration, a mixed instances policy, or an EC2 instance must
 be specified.
+
+For more information, see Creating an Auto Scaling Group Using a Launch
+Template
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-launch-template.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -206,11 +215,11 @@ One or more lifecycle hooks.
 =head2 LoadBalancerNames => ArrayRef[Str|Undef]
 
 One or more Classic Load Balancers. To specify an Application Load
-Balancer, use C<TargetGroupARNs> instead.
+Balancer or a Network Load Balancer, use C<TargetGroupARNs> instead.
 
 For more information, see Using a Load Balancer With an Auto Scaling
 Group
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -233,21 +242,33 @@ The mixed instances policy to use to launch instances. This parameter,
 a launch template, a launch configuration, or an EC2 instance must be
 specified.
 
+For more information, see Auto Scaling Groups with Multiple Instance
+Types and Purchase Options
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
 
 
 =head2 NewInstancesProtectedFromScaleIn => Bool
 
 Indicates whether newly launched instances are protected from
-termination by Auto Scaling when scaling in.
+termination by Amazon EC2 Auto Scaling when scaling in.
+
+For more information about preventing instances from terminating on
+scale in, see Instance Protection
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
 =head2 PlacementGroup => Str
 
 The name of the placement group into which to launch your instances, if
-any. For more information, see Placement Groups
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+any. A placement group is a logical grouping of instances within a
+single Availability Zone. You cannot specify multiple Availability
+Zones and a placement group. For more information, see Placement Groups
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 
@@ -257,6 +278,9 @@ The Amazon Resource Name (ARN) of the service-linked role that the Auto
 Scaling group uses to call other AWS services on your behalf. By
 default, Amazon EC2 Auto Scaling uses a service-linked role named
 AWSServiceRoleForAutoScaling, which it creates if it does not exist.
+For more information, see Service-Linked Roles
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -265,7 +289,7 @@ AWSServiceRoleForAutoScaling, which it creates if it does not exist.
 One or more tags.
 
 For more information, see Tagging Auto Scaling Groups and Instances
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -284,23 +308,22 @@ listed.
 
 For more information, see Controlling Which Instances Auto Scaling
 Terminates During Scale In
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
-in the I<Auto Scaling User Guide>.
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
 =head2 VPCZoneIdentifier => Str
 
-A comma-separated list of subnet identifiers for your virtual private
-cloud (VPC).
+A comma-separated list of subnet IDs for your virtual private cloud
+(VPC).
 
-If you specify subnets and Availability Zones with this call, ensure
-that the subnets' Availability Zones match the Availability Zones
-specified.
+If you specify C<VPCZoneIdentifier> with C<AvailabilityZones>, the
+subnets that you specify for this parameter must reside in those
+Availability Zones.
 
-For more information, see Launching Auto Scaling Instances in a VPC
-(http://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
-in the I<Amazon EC2 Auto Scaling User Guide>.
+Conditional: If your account supports EC2-Classic and VPC, this
+parameter is required to launch instances into a VPC.
 
 
 

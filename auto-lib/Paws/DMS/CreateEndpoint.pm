@@ -16,6 +16,7 @@ package Paws::DMS::CreateEndpoint;
   has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
   has Password => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has RedshiftSettings => (is => 'ro', isa => 'Paws::DMS::RedshiftSettings');
   has S3Settings => (is => 'ro', isa => 'Paws::DMS::S3Settings');
   has ServerName => (is => 'ro', isa => 'Str');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
@@ -90,16 +91,55 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ServerName        => 'MyString',
         Username          => 'MyString',
       },    # OPTIONAL
-      Password   => 'MySecretString',    # OPTIONAL
-      Port       => 1,                   # OPTIONAL
+      Password         => 'MySecretString',    # OPTIONAL
+      Port             => 1,                   # OPTIONAL
+      RedshiftSettings => {
+        AcceptAnyDate      => 1,            # OPTIONAL
+        AfterConnectScript => 'MyString',
+        BucketFolder       => 'MyString',
+        BucketName         => 'MyString',
+        ConnectionTimeout  => 1,            # OPTIONAL
+        DatabaseName       => 'MyString',
+        DateFormat         => 'MyString',
+        EmptyAsNull        => 1,            # OPTIONAL
+        EncryptionMode     => 'sse-s3',     # values: sse-s3, sse-kms; OPTIONAL
+        FileTransferUploadStreams    => 1,                   # OPTIONAL
+        LoadTimeout                  => 1,                   # OPTIONAL
+        MaxFileSize                  => 1,                   # OPTIONAL
+        Password                     => 'MySecretString',    # OPTIONAL
+        Port                         => 1,                   # OPTIONAL
+        RemoveQuotes                 => 1,                   # OPTIONAL
+        ReplaceChars                 => 'MyString',
+        ReplaceInvalidChars          => 'MyString',
+        ServerName                   => 'MyString',
+        ServerSideEncryptionKmsKeyId => 'MyString',
+        ServiceAccessRoleArn         => 'MyString',
+        TimeFormat                   => 'MyString',
+        TrimBlanks                   => 1,                   # OPTIONAL
+        TruncateColumns              => 1,                   # OPTIONAL
+        Username                     => 'MyString',
+        WriteBufferSize              => 1,                   # OPTIONAL
+      },    # OPTIONAL
       S3Settings => {
-        BucketFolder            => 'MyString',
-        BucketName              => 'MyString',
-        CompressionType         => 'none',       # values: none, gzip; OPTIONAL
-        CsvDelimiter            => 'MyString',
-        CsvRowDelimiter         => 'MyString',
+        BucketFolder      => 'MyString',
+        BucketName        => 'MyString',
+        CdcInsertsOnly    => 1,            # OPTIONAL
+        CompressionType   => 'none',       # values: none, gzip; OPTIONAL
+        CsvDelimiter      => 'MyString',
+        CsvRowDelimiter   => 'MyString',
+        DataFormat        => 'csv',        # values: csv, parquet; OPTIONAL
+        DataPageSize      => 1,            # OPTIONAL
+        DictPageSizeLimit => 1,            # OPTIONAL
+        EnableStatistics  => 1,            # OPTIONAL
+        EncodingType =>
+          'plain',   # values: plain, plain-dictionary, rle-dictionary; OPTIONAL
+        EncryptionMode => 'sse-s3',    # values: sse-s3, sse-kms; OPTIONAL
         ExternalTableDefinition => 'MyString',
-        ServiceAccessRoleArn    => 'MyString',
+        ParquetVersion =>
+          'parquet-1-0',    # values: parquet-1-0, parquet-2-0; OPTIONAL
+        RowGroupLength               => 1,            # OPTIONAL
+        ServerSideEncryptionKmsKeyId => 'MyString',
+        ServiceAccessRoleArn         => 'MyString',
       },    # OPTIONAL
       ServerName           => 'MyString',    # OPTIONAL
       ServiceAccessRoleArn => 'MyString',    # OPTIONAL
@@ -177,7 +217,7 @@ JSON syntax for these attributes is as follows: C<{
 Settings in JSON format for the target Amazon DynamoDB endpoint. For
 more information about the available settings, see Using Object Mapping
 to Migrate Data to DynamoDB
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
 in the I<AWS Database Migration Service User Guide.>
 
 
@@ -187,7 +227,7 @@ in the I<AWS Database Migration Service User Guide.>
 Settings in JSON format for the target Elasticsearch endpoint. For more
 information about the available settings, see Extra Connection
 Attributes When Using Elasticsearch as a Target for AWS DMS
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
 in the I<AWS Database Migration User Guide.>
 
 
@@ -233,7 +273,7 @@ Additional attributes associated with the connection.
 Settings in JSON format for the target Amazon Kinesis Data Streams
 endpoint. For more information about the available settings, see Using
 Object Mapping to Migrate Data to a Kinesis Data Stream
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping
 ) in the I<AWS Database Migration User Guide.>
 
 
@@ -254,7 +294,7 @@ Settings in JSON format for the source MongoDB endpoint. For more
 information about the available settings, see the configuration
 properties section in Using MongoDB as a Target for AWS Database
 Migration Service
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
 in the I<AWS Database Migration Service User Guide.>
 
 
@@ -271,12 +311,18 @@ The port used by the endpoint database.
 
 
 
+=head2 RedshiftSettings => L<Paws::DMS::RedshiftSettings>
+
+
+
+
+
 =head2 S3Settings => L<Paws::DMS::S3Settings>
 
 Settings in JSON format for the target Amazon S3 endpoint. For more
 information about the available settings, see Extra Connection
 Attributes When Using Amazon S3 as a Target for AWS DMS
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
 in the I<AWS Database Migration Service User Guide.>
 
 

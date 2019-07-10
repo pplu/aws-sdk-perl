@@ -80,7 +80,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 A list of names of API operations to evaluate in the simulation. Each
 operation is evaluated against each resource. Each operation must
-include the service identifier, such as C<iam:CreateUser>.
+include the service identifier, such as C<iam:CreateUser>. This
+operation does not support using wildcards (*) in an action name.
 
 
 
@@ -100,7 +101,7 @@ of an assumed role, federated user, or a service principal.
 
 A list of context keys and corresponding values for the simulation to
 use. Whenever a context key is evaluated in one of the simulated IAM
-permission policies, the corresponding value is supplied.
+permissions policies, the corresponding value is supplied.
 
 
 
@@ -135,9 +136,9 @@ IAM policy. Do not include any resource-based policies in this
 parameter. Any resource-based policy must be submitted with the
 C<ResourcePolicy> parameter. The policies cannot be "scope-down"
 policies, such as you could include in a call to GetFederationToken
-(http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html)
+(https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html)
 or one of the AssumeRole
-(http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html)
+(https://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html)
 API operations. In other words, do not use policies designed to
 restrict what a user can do while using the temporary credentials.
 
@@ -185,7 +186,7 @@ input error.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 
@@ -208,7 +209,7 @@ includes VPC, then you must supply the network-interface resource. If
 it includes an IP subnet, then you must specify the subnet resource.
 For more information on the EC2 scenario options, see Supported
 Platforms
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
 in the I<Amazon EC2 User Guide>.
 
 =over
@@ -258,14 +259,15 @@ instance, image, security-group, network-interface, subnet, volume
 
 An ARN representing the AWS account ID that specifies the owner of any
 simulated resource that does not identify its owner in the resource
-ARN, such as an S3 bucket or object. If C<ResourceOwner> is specified,
-it is also used as the account owner of any C<ResourcePolicy> included
-in the simulation. If the C<ResourceOwner> parameter is not specified,
-then the owner of the resources and the resource policy defaults to the
-account of the identity provided in C<CallerArn>. This parameter is
-required only if you specify a resource-based policy and account that
-owns the resource is different from the account that owns the simulated
-calling user C<CallerArn>.
+ARN. Examples of resource ARNs include an S3 bucket or object. If
+C<ResourceOwner> is specified, it is also used as the account owner of
+any C<ResourcePolicy> included in the simulation. If the
+C<ResourceOwner> parameter is not specified, then the owner of the
+resources and the resource policy defaults to the account of the
+identity provided in C<CallerArn>. This parameter is required only if
+you specify a resource-based policy and account that owns the resource
+is different from the account that owns the simulated calling user
+C<CallerArn>.
 
 The ARN for an account uses the following syntax:
 C<arn:aws:iam::I<AWS-account-ID>:root>. For example, to represent the

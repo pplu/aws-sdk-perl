@@ -77,7 +77,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
             SchemaFacet => {
-              FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
+              FacetName => 'MyFacetName',                 # min: 1, max: 64
               SchemaArn => 'MyArn',
             },    # OPTIONAL
 
@@ -142,7 +142,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RangesOnIndexedValues => [
               {
                 AttributeKey => {
-                  FacetName => 'MyFacetName',       # min: 1, max: 64; OPTIONAL
+                  FacetName => 'MyFacetName',       # min: 1, max: 64
                   Name      => 'MyAttributeName',   # min: 1, max: 230; OPTIONAL
                   SchemaArn => 'MyArn',
 
@@ -176,7 +176,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Selector => 'MySelectorObjectReference',    # OPTIONAL
             },
             FacetFilter => {
-              FacetName => 'MyFacetName',    # min: 1, max: 64; OPTIONAL
+              FacetName => 'MyFacetName',                 # min: 1, max: 64
               SchemaArn => 'MyArn',
             },    # OPTIONAL
             MaxResults => 1,                # min: 1; OPTIONAL

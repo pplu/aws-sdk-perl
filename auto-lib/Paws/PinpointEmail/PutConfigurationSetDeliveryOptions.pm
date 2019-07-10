@@ -3,6 +3,7 @@ package Paws::PinpointEmail::PutConfigurationSetDeliveryOptions;
   use Moose;
   has ConfigurationSetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConfigurationSetName', required => 1);
   has SendingPoolName => (is => 'ro', isa => 'Str');
+  has TlsPolicy => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $email->PutConfigurationSetDeliveryOptions(
       ConfigurationSetName => 'MyConfigurationSetName',
       SendingPoolName      => 'MySendingPoolName',        # OPTIONAL
+      TlsPolicy            => 'REQUIRE',                  # OPTIONAL
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -54,6 +56,13 @@ The name of the dedicated IP pool that you want to associate with the
 configuration set.
 
 
+
+=head2 TlsPolicy => Str
+
+Whether Amazon Pinpoint should require that incoming email is delivered
+over a connection encrypted with Transport Layer Security (TLS).
+
+Valid values are: C<"REQUIRE">, C<"OPTIONAL">
 
 
 =head1 SEE ALSO

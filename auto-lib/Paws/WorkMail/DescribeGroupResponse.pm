@@ -21,8 +21,8 @@ Paws::WorkMail::DescribeGroupResponse
 
 =head2 DisabledDate => Str
 
-The date and time when a user was deregistered from Amazon WorkMail, in
-UNIX epoch time format.
+The date and time when a user was deregistered from WorkMail, in UNIX
+epoch time format.
 
 
 =head2 Email => Str
@@ -32,8 +32,8 @@ The email of the described group.
 
 =head2 EnabledDate => Str
 
-The date and time when a user was registered to Amazon WorkMail, in
-UNIX epoch time format.
+The date and time when a user was registered to WorkMail, in UNIX epoch
+time format.
 
 
 =head2 GroupId => Str
@@ -49,7 +49,7 @@ The name of the described group.
 =head2 State => Str
 
 The state of the user: enabled (registered to Amazon WorkMail) or
-disabled (deregistered or never registered to Amazon WorkMail).
+disabled (deregistered or never registered to WorkMail).
 
 Valid values are: C<"ENABLED">, C<"DISABLED">, C<"DELETED">
 =head2 _request_id => Str

@@ -44,15 +44,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon DyanamoDB resource the tags will be removed from. This value
-is an Amazon Resource Name (ARN).
+The DynamoDB resource that the tags will be removed from. This value is
+an Amazon Resource Name (ARN).
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 A list of tag keys. Existing tags of the resource whose keys are
-members of this list will be removed from the Amazon DynamoDB resource.
+members of this list will be removed from the DynamoDB resource.
 
 
 

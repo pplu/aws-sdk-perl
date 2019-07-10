@@ -18,7 +18,7 @@ Paws::Lambda::ListVersionsByFunctionResponse
 
 =head2 NextMarker => Str
 
-Pagination token included if more results are available.
+The pagination token that's included if more results are available.
 
 
 =head2 Versions => ArrayRef[L<Paws::Lambda::FunctionConfiguration>]

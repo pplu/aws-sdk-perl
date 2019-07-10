@@ -4,7 +4,8 @@ package Paws::Athena::StartQueryExecution;
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has QueryExecutionContext => (is => 'ro', isa => 'Paws::Athena::QueryExecutionContext');
   has QueryString => (is => 'ro', isa => 'Str', required => 1);
-  has ResultConfiguration => (is => 'ro', isa => 'Paws::Athena::ResultConfiguration', required => 1);
+  has ResultConfiguration => (is => 'ro', isa => 'Paws::Athena::ResultConfiguration');
+  has WorkGroup => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -31,18 +32,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $athena = Paws->service('Athena');
     my $StartQueryExecutionOutput = $athena->StartQueryExecution(
-      QueryString         => 'MyQueryString',
-      ResultConfiguration => {
-        OutputLocation          => 'MyString',
-        EncryptionConfiguration => {
-          EncryptionOption => 'SSE_S3',     # values: SSE_S3, SSE_KMS, CSE_KMS
-          KmsKey           => 'MyString',
-        },    # OPTIONAL
-      },
+      QueryString           => 'MyQueryString',
       ClientRequestToken    => 'MyIdempotencyToken',    # OPTIONAL
       QueryExecutionContext => {
-        Database => 'MyDatabaseString',    # min: 1, max: 32; OPTIONAL
+        Database => 'MyDatabaseString',    # min: 1, max: 255; OPTIONAL
       },    # OPTIONAL
+      ResultConfiguration => {
+        EncryptionConfiguration => {
+          EncryptionOption => 'SSE_S3',      # values: SSE_S3, SSE_KMS, CSE_KMS
+          KmsKey           => 'MyString',    # OPTIONAL
+        },    # OPTIONAL
+        OutputLocation => 'MyString',    # OPTIONAL
+      },    # OPTIONAL
+      WorkGroup => 'MyWorkGroupName',    # OPTIONAL
     );
 
     # Results:
@@ -83,10 +85,21 @@ The SQL query statements to be executed.
 
 
 
-=head2 B<REQUIRED> ResultConfiguration => L<Paws::Athena::ResultConfiguration>
+=head2 ResultConfiguration => L<Paws::Athena::ResultConfiguration>
 
 Specifies information about where and how to save the results of the
-query execution.
+query execution. If the query runs in a workgroup, then workgroup's
+settings may override query settings. This affects the query results
+location. The workgroup settings override is specified in
+EnforceWorkGroupConfiguration (true/false) in the
+WorkGroupConfiguration. See
+WorkGroupConfiguration$EnforceWorkGroupConfiguration.
+
+
+
+=head2 WorkGroup => Str
+
+The name of the workgroup in which the query is being started.
 
 
 

@@ -26,7 +26,7 @@ the C<TransactGetItems> call in that table.
 
 =head2 Responses => ArrayRef[L<Paws::DynamoDB::ItemResponse>]
 
-An ordered array of up to 10 C<ItemResponse> objects, each of which
+An ordered array of up to 25 C<ItemResponse> objects, each of which
 corresponds to the C<TransactGetItem> object in the same position in
 the I<TransactItems> array. Each C<ItemResponse> object contains a Map
 of the name-value pairs that are the projected attributes of the

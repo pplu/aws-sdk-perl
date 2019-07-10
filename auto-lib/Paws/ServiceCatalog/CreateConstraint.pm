@@ -117,6 +117,15 @@ Specify the C<NotificationArns> property as follows:
 
 C<{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}>
 
+=item RESOURCE_UPDATE
+
+Specify the C<TagUpdatesOnProvisionedProduct> property as follows:
+
+C<{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}>
+
+The C<TagUpdatesOnProvisionedProduct> property accepts a string value
+of C<ALLOWED> or C<NOT_ALLOWED>.
+
 =item STACKSET
 
 Specify the C<Parameters> property as follows:
@@ -169,6 +178,10 @@ C<LAUNCH>
 =item *
 
 C<NOTIFICATION>
+
+=item *
+
+C<RESOURCE_UPDATE>
 
 =item *
 

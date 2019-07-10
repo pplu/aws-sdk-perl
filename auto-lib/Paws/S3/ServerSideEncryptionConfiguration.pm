@@ -31,8 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ServerS
 
 =head1 DESCRIPTION
 
-Container for server-side encryption configuration rules. Currently S3
-supports one rule only.
+Specifies the default server-side-encryption configuration.
 
 =head1 ATTRIBUTES
 

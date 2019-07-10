@@ -61,8 +61,8 @@ operation.
 
 =head2 DeploymentStatus => Str
 
-  The current status of the group deployment: ''Pending'',
-''InProgress'', ''Success'', or ''Failure''.
+  The current status of the group deployment: ''InProgress'',
+''Building'', ''Success'', or ''Failure''.
 
 
 =head2 DeploymentType => Str

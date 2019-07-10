@@ -39,7 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribeTaskExecutionResponse->EstimatedBytesToTransfer;
     my $EstimatedFilesToTransfer =
       $DescribeTaskExecutionResponse->EstimatedFilesToTransfer;
+    my $Excludes         = $DescribeTaskExecutionResponse->Excludes;
     my $FilesTransferred = $DescribeTaskExecutionResponse->FilesTransferred;
+    my $Includes         = $DescribeTaskExecutionResponse->Includes;
     my $Options          = $DescribeTaskExecutionResponse->Options;
     my $Result           = $DescribeTaskExecutionResponse->Result;
     my $StartTime        = $DescribeTaskExecutionResponse->StartTime;

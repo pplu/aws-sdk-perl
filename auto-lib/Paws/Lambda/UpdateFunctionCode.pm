@@ -38,14 +38,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To update a Lambda function's code
     # This operation updates a Lambda function's code
     my $FunctionConfiguration = $lambda->UpdateFunctionCode(
-      {
-        'FunctionName'    => 'myFunction',
-        'Publish'         => 1,
-        'S3Bucket'        => 'myBucket',
-        'S3Key'           => 'myKey',
-        'S3ObjectVersion' => 1,
-        'ZipFile'         => 'fileb://file-path/file.zip'
-      }
+      'FunctionName'    => 'myFunction',
+      'Publish'         => 1,
+      'S3Bucket'        => 'myBucket',
+      'S3Key'           => 'myKey',
+      'S3ObjectVersion' => 1,
+      'ZipFile'         => 'fileb://file-path/file.zip'
     );
 
     # Results:
@@ -115,16 +113,16 @@ code. This has the same effect as calling PublishVersion separately.
 
 =head2 RevisionId => Str
 
-Only update the function if the revision ID matches the ID specified.
-Use this option to avoid modifying a function that has changed since
-you last read it.
+Only update the function if the revision ID matches the ID that's
+specified. Use this option to avoid modifying a function that has
+changed since you last read it.
 
 
 
 =head2 S3Bucket => Str
 
-An Amazon S3 bucket in the same region as your function. The bucket can
-be in a different AWS account.
+An Amazon S3 bucket in the same AWS Region as your function. The bucket
+can be in a different AWS account.
 
 
 

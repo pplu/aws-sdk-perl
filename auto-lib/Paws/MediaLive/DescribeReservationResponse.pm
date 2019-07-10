@@ -17,6 +17,7 @@ package Paws::MediaLive::DescribeReservationResponse;
   has ResourceSpecification => (is => 'ro', isa => 'Paws::MediaLive::ReservationResourceSpecification', traits => ['NameInRequest'], request_name => 'resourceSpecification');
   has Start => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'start');
   has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
   has UsagePrice => (is => 'ro', isa => 'Num', traits => ['NameInRequest'], request_name => 'usagePrice');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -117,6 +118,11 @@ Reservation UTC start date and time in ISO-8601 format, e.g.
 Current state of reservation, e.g. 'ACTIVE'
 
 Valid values are: C<"ACTIVE">, C<"EXPIRED">, C<"CANCELED">, C<"DELETED">
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs
+
+
 =head2 UsagePrice => Num
 
 Recurring usage charge for each reserved resource, e.g. '157.0'
