@@ -448,7 +448,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 Each argument is described in detail in: L<Paws::Pinpoint::CreateApp>
 
-Returns: a L<Paws::Pinpoint::CreateAppResponse> instance
+Returns: a L<Paws::Pinpoint::ApplicationResponse> instance
 
 Creates an application.
 
@@ -466,7 +466,7 @@ Creates an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::CreateCampaign>
 
-Returns: a L<Paws::Pinpoint::CreateCampaignResponse> instance
+Returns: a L<Paws::Pinpoint::CampaignResponse> instance
 
 Creates a new campaign for an application or updates the settings of an
 existing campaign for an application.
@@ -521,7 +521,7 @@ Creates a new import job for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::CreateSegment>
 
-Returns: a L<Paws::Pinpoint::CreateSegmentResponse> instance
+Returns: a L<Paws::Pinpoint::SegmentResponse> instance
 
 Creates a new segment for an application or updates the configuration,
 dimension, and other settings for an existing segment that's associated
@@ -624,7 +624,7 @@ any existing settings for the channel.
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteApp>
 
-Returns: a L<Paws::Pinpoint::DeleteAppResponse> instance
+Returns: a L<Paws::Pinpoint::ApplicationResponse> instance
 
 Deletes an application.
 
@@ -898,7 +898,7 @@ sandbox channel for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetApp>
 
-Returns: a L<Paws::Pinpoint::GetAppResponse> instance
+Returns: a L<Paws::Pinpoint::ApplicationResponse> instance
 
 Retrieves information about an application.
 
@@ -914,7 +914,7 @@ Retrieves information about an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetApplicationSettings>
 
-Returns: a L<Paws::Pinpoint::GetApplicationSettingsResponse> instance
+Returns: a L<Paws::Pinpoint::ApplicationSettingsResource> instance
 
 Retrieves information about the settings for an application.
 
@@ -990,7 +990,7 @@ settings for a campaign.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignActivities>
 
-Returns: a L<Paws::Pinpoint::GetCampaignActivitiesResponse> instance
+Returns: a L<Paws::Pinpoint::ActivitiesResponse> instance
 
 Retrieves information about the activity performed by a campaign.
 
@@ -1031,7 +1031,7 @@ settings for all the campaigns that are associated with an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignVersion>
 
-Returns: a L<Paws::Pinpoint::GetCampaignVersionResponse> instance
+Returns: a L<Paws::Pinpoint::CampaignResponse> instance
 
 Retrieves information about the status, configuration, and other
 settings for a specific version of a campaign.
@@ -1054,7 +1054,7 @@ settings for a specific version of a campaign.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignVersions>
 
-Returns: a L<Paws::Pinpoint::GetCampaignVersionsResponse> instance
+Returns: a L<Paws::Pinpoint::CampaignsResponse> instance
 
 Retrieves information about the status, configuration, and other
 settings for all versions of a specific campaign.
@@ -1071,7 +1071,7 @@ settings for all versions of a specific campaign.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetChannels>
 
-Returns: a L<Paws::Pinpoint::GetChannelsResponse> instance
+Returns: a L<Paws::Pinpoint::ChannelsResponse> instance
 
 Retrieves information about the history and status of each channel for
 an application.
@@ -1107,7 +1107,7 @@ channel for an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetEndpoint>
 
-Returns: a L<Paws::Pinpoint::GetEndpointResponse> instance
+Returns: a L<Paws::Pinpoint::EndpointResponse> instance
 
 Retrieves information about the settings and attributes of a specific
 endpoint for an application.
@@ -1440,7 +1440,7 @@ application, campaign, or segment.
 
 Each argument is described in detail in: L<Paws::Pinpoint::PhoneNumberValidate>
 
-Returns: a L<Paws::Pinpoint::PhoneNumberValidateResponse> instance
+Returns: a L<Paws::Pinpoint::NumberValidateResponse> instance
 
 Retrieves information about a phone number.
 
@@ -1517,7 +1517,7 @@ the endpoints that are associated with an application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::SendMessages>
 
-Returns: a L<Paws::Pinpoint::SendMessagesResponse> instance
+Returns: a L<Paws::Pinpoint::MessageResponse> instance
 
 Creates and sends a direct message.
 
@@ -1759,7 +1759,7 @@ application.
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateEndpoint>
 
-Returns: a L<Paws::Pinpoint::UpdateEndpointResponse> instance
+Returns: a L<Paws::Pinpoint::MessageBody> instance
 
 Creates a new endpoint for an application or updates the settings and
 attributes of an existing endpoint for an application. You can also use
