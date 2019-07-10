@@ -1069,5 +1069,7 @@ leonerd for (between others)
 
 campus-explorer for contributing to test suite
 
+byterock for testing and fixing PinPoint
+
 
 =cut
