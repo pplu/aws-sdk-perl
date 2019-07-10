@@ -7,6 +7,7 @@ package Paws::Quicksight::GetDashboardEmbedUrl;
   has ResetDisabled => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'reset-disabled');
   has SessionLifetimeInMinutes => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'session-lifetime');
   has UndoRedoDisabled => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'undo-redo-disabled');
+  has UserArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'user-arn');
 
   use MooseX::ClassAttribute;
 
@@ -40,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResetDisabled            => 1,                  # OPTIONAL
       SessionLifetimeInMinutes => 1,                  # OPTIONAL
       UndoRedoDisabled         => 1,                  # OPTIONAL
+      UserArn                  => 'MyArn',            # OPTIONAL
     );
 
     # Results:
@@ -91,6 +93,38 @@ between 15 and 600 minutes.
 
 Remove the undo/redo button on embedded dashboard. The default is
 FALSE, which enables the undo/redo button.
+
+
+
+=head2 UserArn => Str
+
+The Amazon QuickSight user's ARN, for use with C<QUICKSIGHT> identity
+type. You can use this for any of the following:
+
+=over
+
+=item *
+
+Amazon QuickSight users in your account (readers, authors, or admins)
+
+=item *
+
+AD users
+
+=item *
+
+Invited non-federated users
+
+=item *
+
+Federated IAM users
+
+=item *
+
+Federated IAM role-based sessions
+
+=back
+
 
 
 

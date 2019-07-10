@@ -109,10 +109,12 @@ The namespace. Currently, you should set this to C<default>.
 
 =head2 SessionName => Str
 
-The name of the session with the assumed IAM role. By using this
-parameter, you can register multiple users with the same IAM role,
-provided that each has a different session name. For more information
-on assuming IAM roles, see C<assume-role>
+You need to use this parameter only when you register one or more users
+using an assumed IAM role. You don't need to provide the session name
+for other scenarios, for example when you are registering an IAM user
+or an Amazon QuickSight user. You can register multiple users using the
+same IAM role if each user has a different session name. For more
+information on assuming IAM roles, see C<assume-role>
 (https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html)
 in the I<AWS CLI Reference.>
 

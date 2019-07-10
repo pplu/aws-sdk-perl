@@ -323,7 +323,17 @@ Each argument is described in detail in: L<Paws::Quicksight::DeleteUserByPrincip
 
 Returns: a L<Paws::Quicksight::DeleteUserByPrincipalIdResponse> instance
 
-Deletes a user after locating the user by its principal ID.
+Deletes a user identified by its principal ID.
+
+The permission resource is
+C<arn:aws:quicksight:us-east-1:I<E<lt>aws-account-idE<gt>>:user/default/I<E<lt>user-nameE<gt>
+> >.
+
+B<CLI Sample:>
+
+C<aws quicksight delete-user-by-principal-id
+--aws-account-id=111122223333 --namespace=default
+--principal-id=ABCDEFJA26JLI7EUUOEHS>
 
 
 =head2 DescribeGroup
@@ -406,6 +416,8 @@ C<aws quicksight describe-user --aws-account-id=111122223333
 =item [SessionLifetimeInMinutes => Int]
 
 =item [UndoRedoDisabled => Bool]
+
+=item [UserArn => Str]
 
 
 =back
