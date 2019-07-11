@@ -6,7 +6,7 @@ package Paws::Chime::GetAccountSettings;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAccountSettings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/console/accounts/{accountId}/settings');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/settings');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::GetAccountSettingsResponse');
 1;

@@ -47,6 +47,10 @@ If you choose C<ManifestFile>, C<S3Uri> identifies an object that is a
 manifest file containing a list of object keys that you want Amazon
 SageMaker to use for batch transform.
 
+The following values are compatible: C<ManifestFile>, C<S3Prefix>
+
+The following value is not compatible: C<AugmentedManifestFile>
+
 
 =head2 B<REQUIRED> S3Uri => Str
 

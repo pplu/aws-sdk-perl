@@ -57,6 +57,8 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 One or more flow log IDs.
 
+Constraint: Maximum of 1000 flow log IDs.
+
 
 
 

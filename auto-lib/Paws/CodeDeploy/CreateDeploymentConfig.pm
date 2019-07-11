@@ -64,8 +64,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 ComputePlatform => Str
 
-The destination platform type for the deployment (C<Lambda> or
-C<Server>E<gt>).
+The destination platform type for the deployment (C<Lambda>, C<Server>,
+or C<ECS>).
 
 Valid values are: C<"Server">, C<"Lambda">, C<"ECS">
 

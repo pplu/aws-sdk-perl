@@ -63,7 +63,7 @@ through an identity provider. If an attribute is immutable, Amazon
 Cognito throws an error when it attempts to update the attribute. For
 more information, see Specifying Identity Provider Attribute Mappings
 for Your User Pool
-(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html).
+(https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html).
 
 
 =head2 Name => Str

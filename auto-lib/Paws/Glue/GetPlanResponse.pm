@@ -22,7 +22,7 @@ A Python script to perform the mapping.
 
 =head2 ScalaCode => Str
 
-Scala code to perform the mapping.
+The Scala code to perform the mapping.
 
 
 =head2 _request_id => Str

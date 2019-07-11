@@ -71,21 +71,21 @@ Failed, Timed out, or Cancelled.
 =head2 AutomationType => Str
 
   Use this filter with DescribeAutomationExecutions. Specify either Local
-or CrossAccount. CrossAccount is an Automation that executes in
-multiple AWS Regions and accounts. For more information, see
-Concurrently Executing Automations in Multiple AWS Regions and Accounts
+or CrossAccount. CrossAccount is an Automation that runs in multiple
+AWS Regions and accounts. For more information, see Executing
+Automations in Multiple AWS Regions and Accounts
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)
 in the I<AWS Systems Manager User Guide>.
 
 
 =head2 CurrentAction => Str
 
-  The action of the currently executing step.
+  The action of the step that is currently running.
 
 
 =head2 CurrentStepName => Str
 
-  The name of the currently executing step.
+  The name of the step that is currently running.
 
 
 =head2 DocumentName => Str
@@ -100,7 +100,7 @@ in the I<AWS Systems Manager User Guide>.
 
 =head2 ExecutedBy => Str
 
-  The IAM role ARN of the user who executed the Automation.
+  The IAM role ARN of the user who ran the Automation.
 
 
 =head2 ExecutionEndTime => Str

@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::CreateApplication;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has ResourceLifecycleConfig => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -67,6 +68,15 @@ Describes the application.
 
 Specify an application resource lifecycle configuration to prevent your
 application from accumulating too many versions.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
+
+Specifies the tags applied to the application.
+
+Elastic Beanstalk applies these tags only to the application.
+Environments that you create in the application don't inherit the tags.
 
 
 

@@ -69,7 +69,7 @@ The name of the fleet.
 =head2 SessionContext => Str
 
 The session context. For more information, see Session Context
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters)
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 

@@ -17,7 +17,7 @@ Paws::ELBv2::AddListenerCertificatesOutput
 
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
-Information about the certificates.
+Information about the certificates in the certificate list.
 
 
 =head2 _request_id => Str

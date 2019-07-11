@@ -2,11 +2,14 @@
 package Paws::Kafka::CreateCluster;
   use Moose;
   has BrokerNodeGroupInfo => (is => 'ro', isa => 'Paws::Kafka::BrokerNodeGroupInfo', traits => ['NameInRequest'], request_name => 'brokerNodeGroupInfo', required => 1);
+  has ClientAuthentication => (is => 'ro', isa => 'Paws::Kafka::ClientAuthentication', traits => ['NameInRequest'], request_name => 'clientAuthentication');
   has ClusterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clusterName', required => 1);
+  has ConfigurationInfo => (is => 'ro', isa => 'Paws::Kafka::ConfigurationInfo', traits => ['NameInRequest'], request_name => 'configurationInfo');
   has EncryptionInfo => (is => 'ro', isa => 'Paws::Kafka::EncryptionInfo', traits => ['NameInRequest'], request_name => 'encryptionInfo');
   has EnhancedMonitoring => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'enhancedMonitoring');
   has KafkaVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kafkaVersion', required => 1);
   has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfBrokerNodes', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Kafka::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -45,16 +48,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },    # OPTIONAL
       },
-      ClusterName         => 'My__stringMin1Max64',
-      KafkaVersion        => 'My__stringMin1Max128',
-      NumberOfBrokerNodes => 1,
-      EncryptionInfo      => {
+      ClusterName          => 'My__stringMin1Max64',
+      KafkaVersion         => 'My__stringMin1Max128',
+      NumberOfBrokerNodes  => 1,
+      ClientAuthentication => {
+        Tls => { CertificateAuthorityArnList => [ 'My__string', ... ], }
+        ,     # OPTIONAL
+      },    # OPTIONAL
+      ConfigurationInfo => {
+        Arn      => 'My__string',
+        Revision => 1,
+
+      },    # OPTIONAL
+      EncryptionInfo => {
         EncryptionAtRest => {
           DataVolumeKMSKeyId => 'My__string',
 
         },    # OPTIONAL
+        EncryptionInTransit => {
+          ClientBroker =>
+            'TLS',    # values: TLS, TLS_PLAINTEXT, PLAINTEXT; OPTIONAL
+          InCluster => 1,    # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
-      EnhancedMonitoring => 'DEFAULT',    # OPTIONAL
+      EnhancedMonitoring => 'DEFAULT',              # OPTIONAL
+      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -76,9 +94,22 @@ Information about the broker nodes in the cluster.
 
 
 
+=head2 ClientAuthentication => L<Paws::Kafka::ClientAuthentication>
+
+Includes all client authentication related information.
+
+
+
 =head2 B<REQUIRED> ClusterName => Str
 
 The name of the cluster.
+
+
+
+=head2 ConfigurationInfo => L<Paws::Kafka::ConfigurationInfo>
+
+Represents the configuration that you want MSK to use for the brokers
+in a cluster.
 
 
 
@@ -103,7 +134,13 @@ The version of Apache Kafka.
 
 =head2 B<REQUIRED> NumberOfBrokerNodes => Int
 
-The number of Kafka broker nodes in the Amazon MSK cluster.
+The number of broker nodes in the cluster.
+
+
+
+=head2 Tags => L<Paws::Kafka::__mapOf__string>
+
+Create tags when creating the cluster.
 
 
 

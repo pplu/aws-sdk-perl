@@ -45,7 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> DeploymentIds => ArrayRef[Str|Undef]
 
-A list of deployment IDs, separated by spaces.
+A list of deployment IDs, separated by spaces. The maximum number of
+deployment IDs you can specify is 25.
 
 
 

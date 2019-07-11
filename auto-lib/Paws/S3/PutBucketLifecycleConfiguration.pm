@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Value => 'MyValue',
 
                   },
-                  ...
+                  ...                          # OPTIONAL
                 ],                             # OPTIONAL
               },    # OPTIONAL
               Prefix => 'MyPrefix',    # OPTIONAL
@@ -62,7 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Key   => 'MyObjectKey',    # min: 1
                 Value => 'MyValue',
 
-              },
+              },    # OPTIONAL
             },    # OPTIONAL
             ID                          => 'MyID',    # OPTIONAL
             NoncurrentVersionExpiration => {
@@ -72,7 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 NoncurrentDays => 1,          # OPTIONAL
                 StorageClass   => 'GLACIER'
-                , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING; OPTIONAL
+                , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, DEEP_ARCHIVE; OPTIONAL
               },
               ...
             ],    # OPTIONAL
@@ -82,7 +82,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Date         => '1970-01-01T01:00:00',    # OPTIONAL
                 Days         => 1,                        # OPTIONAL
                 StorageClass => 'GLACIER'
-                , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING; OPTIONAL
+                , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, DEEP_ARCHIVE; OPTIONAL
               },
               ...
             ],    # OPTIONAL

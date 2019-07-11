@@ -219,9 +219,9 @@ including them in code that programmatically initiates actions. For
 examples, don't use status messages in if statements.
 
 To have an overview of your training job's progress, view
-C<TrainingJobStatus> and C<SecondaryStatus> in
-DescribeTrainingJobResponse, and C<StatusMessage> together. For
-example, at the start of a training job, you might see the following:
+C<TrainingJobStatus> and C<SecondaryStatus> in DescribeTrainingJob, and
+C<StatusMessage> together. For example, at the start of a training job,
+you might see the following:
 
 =over
 

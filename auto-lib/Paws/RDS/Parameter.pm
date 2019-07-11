@@ -42,10 +42,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Parame
 =head1 DESCRIPTION
 
 This data type is used as a request parameter in the
-ModifyDBParameterGroup and ResetDBParameterGroup actions.
+C<ModifyDBParameterGroup> and C<ResetDBParameterGroup> actions.
 
 This data type is used as a response element in the
-DescribeEngineDefaultParameters and DescribeDBParameters actions.
+C<DescribeEngineDefaultParameters> and C<DescribeDBParameters> actions.
 
 =head1 ATTRIBUTES
 

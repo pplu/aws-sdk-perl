@@ -1,6 +1,7 @@
 package Paws::IoTAnalytics::ChannelSummary;
   use Moose;
   has ChannelName => (is => 'ro', isa => 'Str', request_name => 'channelName', traits => ['NameInRequest']);
+  has ChannelStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::ChannelStorageSummary', request_name => 'channelStorage', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -42,6 +43,11 @@ A summary of information about a channel.
 =head2 ChannelName => Str
 
   The name of the channel.
+
+
+=head2 ChannelStorage => L<Paws::IoTAnalytics::ChannelStorageSummary>
+
+  Where channel data is stored.
 
 
 =head2 CreationTime => Str

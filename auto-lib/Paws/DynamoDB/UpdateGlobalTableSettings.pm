@@ -161,7 +161,7 @@ The name of the global table
 
 =head2 GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
 
-AutoScaling settings for managing provisioned write capacity for the
+Auto scaling settings for managing provisioned write capacity for the
 global table.
 
 
@@ -175,7 +175,7 @@ returns a C<ThrottlingException.>
 
 =head2 ReplicaSettingsUpdate => ArrayRef[L<Paws::DynamoDB::ReplicaSettingsUpdate>]
 
-Represents the settings for a global table in a region that will be
+Represents the settings for a global table in a Region that will be
 modified.
 
 

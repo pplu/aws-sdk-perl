@@ -3,6 +3,7 @@ package Paws::MediaLive::GlobalConfiguration;
   has InitialAudioGain => (is => 'ro', isa => 'Int', request_name => 'initialAudioGain', traits => ['NameInRequest']);
   has InputEndAction => (is => 'ro', isa => 'Str', request_name => 'inputEndAction', traits => ['NameInRequest']);
   has InputLossBehavior => (is => 'ro', isa => 'Paws::MediaLive::InputLossBehavior', request_name => 'inputLossBehavior', traits => ['NameInRequest']);
+  has OutputLockingMode => (is => 'ro', isa => 'Str', request_name => 'outputLockingMode', traits => ['NameInRequest']);
   has OutputTimingSource => (is => 'ro', isa => 'Str', request_name => 'outputTimingSource', traits => ['NameInRequest']);
   has SupportLowFramerateInputs => (is => 'ro', isa => 'Str', request_name => 'supportLowFramerateInputs', traits => ['NameInRequest']);
 1;
@@ -35,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Placeholder documentation for GlobalConfiguration
+Global Configuration
 
 =head1 ATTRIBUTES
 
@@ -59,6 +60,14 @@ Channel Schedule API).
 =head2 InputLossBehavior => L<Paws::MediaLive::InputLossBehavior>
 
   Settings for system actions when input is lost.
+
+
+=head2 OutputLockingMode => Str
+
+  Indicates how MediaLive pipelines are synchronized. PIPELINELOCKING -
+MediaLive will attempt to synchronize the output of each pipeline to
+the other. EPOCHLOCKING - MediaLive will attempt to synchronize the
+output of each pipeline to the Unix epoch.
 
 
 =head2 OutputTimingSource => Str

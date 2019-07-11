@@ -4,6 +4,7 @@ package Paws::IoT1ClickProjects::CreateProject;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has PlacementTemplate => (is => 'ro', isa => 'Paws::IoT1ClickProjects::PlacementTemplate', traits => ['NameInRequest'], request_name => 'placementTemplate');
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::IoT1ClickProjects::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -48,6 +49,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # key: min: 1, max: 128
         },    # OPTIONAL
       },    # OPTIONAL
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -75,6 +79,15 @@ using the C<UpdateProject> API.
 =head2 B<REQUIRED> ProjectName => Str
 
 The name of the project to create.
+
+
+
+=head2 Tags => L<Paws::IoT1ClickProjects::TagMap>
+
+Optional tags (metadata key/value pairs) to be associated with the
+project. For example, C<{ {"key1": "value1", "key2": "value2"} }>. For
+more information, see AWS Tagging Strategies
+(https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
 
 
 

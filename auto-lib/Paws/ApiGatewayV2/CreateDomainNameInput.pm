@@ -2,6 +2,7 @@ package Paws::ApiGatewayV2::CreateDomainNameInput;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest'], required => 1);
   has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', request_name => 'domainNameConfigurations', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ApiGatewayV2::CreateDomainNameInput object:
 
-  $service_obj->Method(Att1 => { DomainName => $value, ..., DomainNameConfigurations => $value  });
+  $service_obj->Method(Att1 => { DomainName => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,6 +46,13 @@ Represents the input parameters for a CreateDomainName request.
 =head2 DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]
 
   The domain name configurations.
+
+
+=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+
+  The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with aws:. The tag value can be up to 256 characters..
 
 
 

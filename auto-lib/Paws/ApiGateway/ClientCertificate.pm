@@ -6,6 +6,7 @@ package Paws::ApiGateway::ClientCertificate;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has ExpirationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'expirationDate');
   has PemEncodedCertificate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pemEncodedCertificate');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -43,6 +44,12 @@ The timestamp when the client certificate will expire.
 
 The PEM-encoded public key of the client certificate, which can be used
 to configure certificate authentication in the integration endpoint .
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The collection of tags. Each tag element is associated with a given
+resource.
 
 
 =head2 _request_id => Str

@@ -51,7 +51,7 @@ attached.
 
 This field is null for managed policies. For more information about
 these policy types, see Managed Policies and Inline Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 in the I<IAM User Guide>.
 
 
@@ -62,7 +62,7 @@ service to which the inline policy is attached.
 
 This field is null for managed policies. For more information about
 these policy types, see Managed Policies and Inline Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 in the I<IAM User Guide>.
 
 
@@ -80,7 +80,7 @@ in the I<IAM User Guide>.
 
   The policy type. For more information about these policy types, see
 Managed Policies and Inline Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 in the I<IAM User Guide>.
 
 

@@ -41,8 +41,10 @@ maximum size of a replication configuration is 2 MB.
 =head2 B<REQUIRED> Role => Str
 
   The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role that Amazon S3 can assume when replicating the
-objects.
+Management (IAM) role that Amazon S3 assumes when replicating objects.
+For more information, see How to Set Up Cross-Region Replication
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-how-setup.html) in
+the I<Amazon Simple Storage Service Developer Guide>.
 
 
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::ReplicationRule>]

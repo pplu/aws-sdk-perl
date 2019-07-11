@@ -44,87 +44,79 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDSData::Co
 
 =head1 DESCRIPTION
 
-Column Metadata
+Contains the metadata for a column.
 
 =head1 ATTRIBUTES
 
 
 =head2 ArrayBaseColumnType => Int
 
-  Homogenous array base SQL type from java.sql.Types.
+  The type of the column.
 
 
 =head2 IsAutoIncrement => Bool
 
-  Whether the designated column is automatically numbered
+  A value that indicates whether the column increments automatically.
 
 
 =head2 IsCaseSensitive => Bool
 
-  Whether values in the designated column's case matters
+  A value that indicates whether the column is case-sensitive.
 
 
 =head2 IsCurrency => Bool
 
-  Whether values in the designated column is a cash value
+  A value that indicates whether the column contains currency values.
 
 
 =head2 IsSigned => Bool
 
-  Whether values in the designated column are signed numbers
+  A value that indicates whether an integer column is signed.
 
 
 =head2 Label => Str
 
-  Usually specified by the SQL AS. If not specified, return column name.
+  The label for the column.
 
 
 =head2 Name => Str
 
-  Name of the column.
+  The name of the column.
 
 
 =head2 Nullable => Int
 
-  Indicates the nullability of values in the designated column. One of
-columnNoNulls (0), columnNullable (1), columnNullableUnknown (2)
+  A value that indicates whether the column is nullable.
 
 
 =head2 Precision => Int
 
-  Get the designated column's specified column size.For numeric data,
-this is the maximum precision. For character data, this is the length
-in characters. For datetime datatypes, this is the length in characters
-of the String representation (assuming the maximum allowed precision of
-the fractional seconds component). For binary data, this is the length
-in bytes. For the ROWID datatype, this is the length in bytes. 0 is
-returned for data types where the column size is not applicable.
+  The precision value of a decimal number column.
 
 
 =head2 Scale => Int
 
-  Designated column's number of digits to right of the decimal point. 0
-is returned for data types where the scale is not applicable.
+  The scale value of a decimal number column.
 
 
 =head2 SchemaName => Str
 
-  Designated column's table's schema
+  The name of the schema that owns the table that includes the column.
 
 
 =head2 TableName => Str
 
-  Designated column's table name
+  The name of the table that includes the column.
 
 
 =head2 Type => Int
 
-  SQL type from java.sql.Types.
+  The type of the column.
 
 
 =head2 TypeName => Str
 
-  Database-specific type name.
+  The database-specific data type of the column.
 
 
 

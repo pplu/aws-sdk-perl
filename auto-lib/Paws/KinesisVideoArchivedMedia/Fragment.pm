@@ -47,7 +47,8 @@ Represents a segment of video or other time-delimited data.
 
 =head2 FragmentNumber => Str
 
-  The index value of the fragment.
+  The unique identifier of the fragment. This value monotonically
+increases based on the ingestion order.
 
 
 =head2 FragmentSizeInBytes => Int
@@ -58,12 +59,12 @@ contained media data.
 
 =head2 ProducerTimestamp => Str
 
-  The time stamp from the producer corresponding to the fragment.
+  The timestamp from the producer corresponding to the fragment.
 
 
 =head2 ServerTimestamp => Str
 
-  The time stamp from the AWS server corresponding to the fragment.
+  The timestamp from the AWS server corresponding to the fragment.
 
 
 

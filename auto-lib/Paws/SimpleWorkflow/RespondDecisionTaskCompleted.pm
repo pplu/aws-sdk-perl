@@ -62,7 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TaskPriority => 'MyTaskPriority',    # OPTIONAL
             TaskStartToCloseTimeout =>
               'MyDurationInSecondsOptional',     # max: 8; OPTIONAL
-            WorkflowTypeVersion => 'MyVersion',  # min: 1, max: 64; OPTIONAL
+            WorkflowTypeVersion => 'MyVersion',  # min: 1, max: 64
           },    # OPTIONAL
           FailWorkflowExecutionDecisionAttributes => {
             Details => 'MyData',             # max: 32768; OPTIONAL
@@ -85,7 +85,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ActivityId   => 'MyActivityId',    # min: 1, max: 256
             ActivityType => {
               Name    => 'MyName',             # min: 1, max: 256
-              Version => 'MyVersion',          # min: 1, max: 64; OPTIONAL
+              Version => 'MyVersion',          # min: 1, max: 64
 
             },
             Control => 'MyData',               # max: 32768; OPTIONAL
@@ -123,7 +123,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             WorkflowId   => 'MyWorkflowId',    # min: 1, max: 256
             WorkflowType => {
               Name    => 'MyName',             # min: 1, max: 256
-              Version => 'MyVersion',          # min: 1, max: 64; OPTIONAL
+              Version => 'MyVersion',          # min: 1, max: 64
 
             },
             ChildPolicy => 'TERMINATE'

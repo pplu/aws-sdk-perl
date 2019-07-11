@@ -29,7 +29,7 @@ The name of the data set.
 
 =head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
 
-How long, in days, message data is kept for the data set.
+How long, in days, data set contents are kept for the data set.
 
 
 =head2 _request_id => Str

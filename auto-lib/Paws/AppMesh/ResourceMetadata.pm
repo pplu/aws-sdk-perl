@@ -1,10 +1,10 @@
 package Paws::AppMesh::ResourceMetadata;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has Uid => (is => 'ro', isa => 'Str', request_name => 'uid', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
+  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest'], required => 1);
+  has Uid => (is => 'ro', isa => 'Str', request_name => 'uid', traits => ['NameInRequest'], required => 1);
+  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -40,43 +40,31 @@ An object representing metadata for a resource.
 =head1 ATTRIBUTES
 
 
-=head2 Arn => Str
+=head2 B<REQUIRED> Arn => Str
 
   The full Amazon Resource Name (ARN) for the resource.
 
-After you create a virtual node, set this value (either the full ARN or
-the truncated resource name, for example,
-C<mesh/default/virtualNode/simpleapp>, as the
-C<APPMESH_VIRTUAL_NODE_NAME> environment variable for your task group's
-Envoy proxy container in your task definition or pod spec. This is then
-mapped to the C<node.id> and C<node.cluster> Envoy parameters.
 
-If you require your Envoy stats or tracing to use a different name, you
-can override the C<node.cluster> value that is set by
-C<APPMESH_VIRTUAL_NODE_NAME> with the C<APPMESH_VIRTUAL_NODE_CLUSTER>
-environment variable.
-
-
-=head2 CreatedAt => Str
+=head2 B<REQUIRED> CreatedAt => Str
 
   The Unix epoch timestamp in seconds for when the resource was created.
 
 
-=head2 LastUpdatedAt => Str
+=head2 B<REQUIRED> LastUpdatedAt => Str
 
   The Unix epoch timestamp in seconds for when the resource was last
 updated.
 
 
-=head2 Uid => Str
+=head2 B<REQUIRED> Uid => Str
 
   The unique identifier for the resource.
 
 
-=head2 Version => Int
+=head2 B<REQUIRED> Version => Int
 
   The version of the resource. Resources are created at version 1, and
-this version is incremented each time they are updated.
+this version is incremented each time that they're updated.
 
 
 

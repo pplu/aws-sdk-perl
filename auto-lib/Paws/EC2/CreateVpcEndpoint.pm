@@ -80,10 +80,10 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 PolicyDocument => Str
 
-(Gateway endpoint) A policy to attach to the endpoint that controls
-access to the service. The policy must be in valid JSON format. If this
-parameter is not specified, we attach a default policy that allows full
-access to the service.
+A policy to attach to the endpoint that controls access to the service.
+The policy must be in valid JSON format. If this parameter is not
+specified, we attach a default policy that allows full access to the
+service.
 
 
 
@@ -91,7 +91,7 @@ access to the service.
 
 (Interface endpoint) Indicate whether to associate a private hosted
 zone with the specified VPC. The private hosted zone contains a record
-set for the default public DNS name for the service for the region (for
+set for the default public DNS name for the service for the Region (for
 example, C<kinesis.us-east-1.amazonaws.com>) which resolves to the
 private IP addresses of the endpoint network interfaces in the VPC.
 This enables you to make requests to the default public DNS name for
@@ -102,7 +102,7 @@ To use a private hosted zone, you must set the following VPC attributes
 to C<true>: C<enableDnsHostnames> and C<enableDnsSupport>. Use
 ModifyVpcAttribute to set the VPC attributes.
 
-Default: C<false>
+Default: C<true>
 
 
 

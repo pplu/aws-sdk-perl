@@ -23,7 +23,7 @@ the next call.)
 
 =head2 ScheduledWindowExecutions => ArrayRef[L<Paws::SSM::ScheduledWindowExecution>]
 
-Information about Maintenance Window executions scheduled for the
+Information about maintenance window executions scheduled for the
 specified time range.
 
 

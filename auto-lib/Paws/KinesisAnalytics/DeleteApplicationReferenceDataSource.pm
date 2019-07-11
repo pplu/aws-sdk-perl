@@ -52,6 +52,7 @@ Name of an existing application.
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
 Version of the application. You can use the DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
 operation to get the current application version. If the version
 specified is not the current version, the
 C<ConcurrentModificationException> is returned.
@@ -61,8 +62,11 @@ C<ConcurrentModificationException> is returned.
 =head2 B<REQUIRED> ReferenceId => Str
 
 ID of the reference data source. When you add a reference data source
-to your application using the AddApplicationReferenceDataSource, Amazon
-Kinesis Analytics assigns an ID. You can use the DescribeApplication
+to your application using the AddApplicationReferenceDataSource
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html),
+Amazon Kinesis Analytics assigns an ID. You can use the
+DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
 operation to get the reference ID.
 
 

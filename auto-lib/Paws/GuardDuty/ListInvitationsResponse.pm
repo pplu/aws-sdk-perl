@@ -18,12 +18,13 @@ Paws::GuardDuty::ListInvitationsResponse
 
 =head2 Invitations => ArrayRef[L<Paws::GuardDuty::Invitation>]
 
-
+A list of invitation descriptions.
 
 
 =head2 NextToken => Str
 
-
+Pagination parameter to be used on the next list operation to retrieve
+more items.
 
 
 =head2 _request_id => Str

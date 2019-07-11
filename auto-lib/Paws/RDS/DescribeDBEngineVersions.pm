@@ -6,6 +6,7 @@ package Paws::RDS::DescribeDBEngineVersions;
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
+  has IncludeAll => (is => 'ro', isa => 'Bool');
   has ListSupportedCharacterSets => (is => 'ro', isa => 'Bool');
   has ListSupportedTimezones => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
@@ -71,8 +72,8 @@ If supplied, must match an existing DBParameterGroupFamily.
 
 =head2 DefaultOnly => Bool
 
-Indicates that only the default version of the specified engine or
-engine and major version combination is returned.
+A value that indicates whether only the default version of the
+specified engine or engine and major version combination is returned.
 
 
 
@@ -96,9 +97,20 @@ This parameter is not currently supported.
 
 
 
+=head2 IncludeAll => Bool
+
+A value that indicates whether to include engine versions that aren't
+available in the list. The default is to list only available engine
+versions.
+
+
+
 =head2 ListSupportedCharacterSets => Bool
 
-If this parameter is specified and the requested engine supports the
+A value that indicates whether to list the supported character sets for
+each engine version.
+
+If this parameter is enabled and the requested engine supports the
 C<CharacterSetName> parameter for C<CreateDBInstance>, the response
 includes a list of supported character sets for each engine version.
 
@@ -106,7 +118,10 @@ includes a list of supported character sets for each engine version.
 
 =head2 ListSupportedTimezones => Bool
 
-If this parameter is specified and the requested engine supports the
+A value that indicates whether to list the supported time zones for
+each engine version.
+
+If this parameter is enabled and the requested engine supports the
 C<TimeZone> parameter for C<CreateDBInstance>, the response includes a
 list of supported time zones for each engine version.
 

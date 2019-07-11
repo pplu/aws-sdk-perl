@@ -73,13 +73,12 @@ C<PASSWORD> - A password, if one is used, for the user name.
 
 C<ENCRYPTED_PASSWORD> - When you enable connection password protection
 by setting C<ConnectionPasswordEncryption> in the Data Catalog
-encryption settings, this field stores the key you designate to encrypt
-the password.
+encryption settings, this field stores the encrypted password.
 
 =item *
 
-C<JDBC_DRIVER_JAR_URI> - The S3 path of the a jar file that contains
-the JDBC driver to use.
+C<JDBC_DRIVER_JAR_URI> - The Amazon S3 path of the JAR file that
+contains the JDBC driver to use.
 
 =item *
 
@@ -108,8 +107,8 @@ C<JDBC_CONNECTION_URL> - The URL for the JDBC connection.
 =item *
 
 C<JDBC_ENFORCE_SSL> - A Boolean string (true, false) specifying whether
-SSL with hostname matching will be enforced for the JDBC connection on
-the client. The default is false.
+Secure Sockets Layer (SSL) with hostname matching will be enforced for
+the JDBC connection on the client. The default is false.
 
 =back
 
@@ -123,22 +122,22 @@ not supported.
 
 =head2 CreationTime => Str
 
-  The time this connection definition was created.
+  The time that this connection definition was created.
 
 
 =head2 Description => Str
 
-  Description of the connection.
+  The description of the connection.
 
 
 =head2 LastUpdatedBy => Str
 
-  The user, group or role that last updated this connection definition.
+  The user, group, or role that last updated this connection definition.
 
 
 =head2 LastUpdatedTime => Str
 
-  The last time this connection definition was updated.
+  The last time that this connection definition was updated.
 
 
 =head2 MatchCriteria => ArrayRef[Str|Undef]
@@ -153,8 +152,9 @@ not supported.
 
 =head2 PhysicalConnectionRequirements => L<Paws::Glue::PhysicalConnectionRequirements>
 
-  A map of physical connection requirements, such as VPC and
-SecurityGroup, needed for making this connection successfully.
+  A map of physical connection requirements, such as virtual private
+cloud (VPC) and C<SecurityGroup>, that are needed to make this
+connection successfully.
 
 
 

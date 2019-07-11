@@ -120,7 +120,10 @@ lowercase), numbers, hyphens, and underscores are allowed.
 =head2 ComputeResources => L<Paws::Batch::ComputeResource>
 
 Details of the compute resources managed by the compute environment.
-This parameter is required for managed compute environments.
+This parameter is required for managed compute environments. For more
+information, see Compute Environments
+(https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+in the I<AWS Batch User Guide>.
 
 
 
@@ -154,7 +157,7 @@ Valid values are: C<"ENABLED">, C<"DISABLED">
 
 The type of the compute environment. For more information, see Compute
 Environments
-(http://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+(https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
 in the I<AWS Batch User Guide>.
 
 Valid values are: C<"MANAGED">, C<"UNMANAGED">

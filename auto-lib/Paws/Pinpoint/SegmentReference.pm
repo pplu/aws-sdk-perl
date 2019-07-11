@@ -1,6 +1,6 @@
 package Paws::Pinpoint::SegmentReference;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Int');
 1;
 
@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Segment reference.
+Specifies the segment identifier and version of a segment.
 
 =head1 ATTRIBUTES
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
-  A unique identifier for the segment.
+  The unique identifier for the segment.
 
 
 =head2 Version => Int
 
-  If specified contains a specific version of the segment included.
+  The version number of the segment.
 
 
 

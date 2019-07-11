@@ -2,7 +2,7 @@
 package Paws::ApplicationAutoScaling::DeleteScheduledAction;
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str');
+  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
   has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
 
@@ -32,9 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $autoscaling = Paws->service('ApplicationAutoScaling');
     my $DeleteScheduledActionResponse = $autoscaling->DeleteScheduledAction(
       ResourceId          => 'MyResourceIdMaxLen1600',
+      ScalableDimension   => 'ecs:service:DesiredCount',
       ScheduledActionName => 'MyResourceIdMaxLen1600',
       ServiceNamespace    => 'ecs',
-      ScalableDimension   => 'ecs:service:DesiredCount',    # OPTIONAL
+
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -108,7 +109,7 @@ repository (https://github.com/aws/aws-auto-scaling-custom-resource).
 
 
 
-=head2 ScalableDimension => Str
+=head2 B<REQUIRED> ScalableDimension => Str
 
 The scalable dimension. This string consists of the service namespace,
 resource type, and scaling property.
@@ -186,7 +187,7 @@ The name of the scheduled action.
 The namespace of the AWS service that provides the resource or
 C<custom-resource> for a resource provided by your own application or
 service. For more information, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
 Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">

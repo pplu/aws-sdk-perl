@@ -81,7 +81,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -121,7 +121,8 @@ C<create-time> - The time stamp when the volume was created.
 
 =item *
 
-C<encrypted> - The encryption status of the volume.
+C<encrypted> - Indicates whether the volume is encrypted (C<true> |
+C<false>)
 
 =item *
 
@@ -193,7 +194,7 @@ value is C<null> when there are no more results to return.
 
 =head2 VolumeIds => ArrayRef[Str|Undef]
 
-One or more volume IDs.
+The volume IDs.
 
 
 

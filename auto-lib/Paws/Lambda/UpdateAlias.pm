@@ -64,7 +64,7 @@ A description of the alias.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name of the lambda function.
+The name of the Lambda function.
 
 B<Name formats>
 
@@ -104,16 +104,16 @@ The name of the alias.
 
 =head2 RevisionId => Str
 
-Only update the alias if the revision ID matches the ID specified. Use
-this option to avoid modifying an alias that has changed since you last
-read it.
+Only update the alias if the revision ID matches the ID that's
+specified. Use this option to avoid modifying an alias that has changed
+since you last read it.
 
 
 
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
 
 The routing configuration
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
 of the alias.
 
 

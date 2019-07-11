@@ -51,7 +51,7 @@ Container details related to a finding.
 
 =head2 LaunchedAt => Str
 
-  The date/time that the container was started.
+  The date and time when the container started.
 
 
 =head2 Name => Str

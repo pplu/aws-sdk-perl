@@ -34,9 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name            => 'MyNonZeroAndMaxString',    # OPTIONAL
       OperatingSystem => 'WINDOWS_2012',             # OPTIONAL
       StorageLocation => {
-        Bucket  => 'MyNonEmptyString',               # min: 1; OPTIONAL
-        Key     => 'MyNonEmptyString',               # min: 1; OPTIONAL
-        RoleArn => 'MyNonEmptyString',               # min: 1; OPTIONAL
+        Bucket        => 'MyNonEmptyString',         # min: 1; OPTIONAL
+        Key           => 'MyNonEmptyString',         # min: 1; OPTIONAL
+        ObjectVersion => 'MyNonEmptyString',         # min: 1; OPTIONAL
+        RoleArn       => 'MyNonEmptyString',         # min: 1; OPTIONAL
       },    # OPTIONAL
       Version => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
@@ -77,16 +78,17 @@ Valid values are: C<"WINDOWS_2012">, C<"AMAZON_LINUX">
 Information indicating where your game build files are stored. Use this
 parameter only when creating a build with files stored in an Amazon S3
 bucket that you own. The storage location must specify an Amazon S3
-bucket name and key, as well as a role ARN that you set up to allow
-Amazon GameLift to access your Amazon S3 bucket. The S3 bucket must be
-in the same region that you want to create a new build in.
+bucket name and key, as well as a the ARN for a role that you set up to
+allow Amazon GameLift to access your Amazon S3 bucket. The S3 bucket
+must be in the same region that you want to create a new build in.
 
 
 
 =head2 Version => Str
 
-Version that is associated with this build. Version strings do not need
-to be unique. You can use UpdateBuild to change this value later.
+Version that is associated with a build or script. Version strings do
+not need to be unique. You can use UpdateBuild to change this value
+later.
 
 
 

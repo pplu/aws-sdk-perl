@@ -5,6 +5,7 @@ package Paws::PinpointEmail::GetConfigurationSetResponse;
   has DeliveryOptions => (is => 'ro', isa => 'Paws::PinpointEmail::DeliveryOptions');
   has ReputationOptions => (is => 'ro', isa => 'Paws::PinpointEmail::ReputationOptions');
   has SendingOptions => (is => 'ro', isa => 'Paws::PinpointEmail::SendingOptions');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::Tag]');
   has TrackingOptions => (is => 'ro', isa => 'Paws::PinpointEmail::TrackingOptions');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -41,6 +42,12 @@ configuration set.
 
 An object that defines whether or not Amazon Pinpoint can send email
 that you send using the configuration set.
+
+
+=head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+
+An array of objects that define the tags (keys and values) that are
+associated with the configuration set.
 
 
 =head2 TrackingOptions => L<Paws::PinpointEmail::TrackingOptions>

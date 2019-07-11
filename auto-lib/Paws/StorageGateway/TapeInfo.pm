@@ -1,6 +1,7 @@
 package Paws::StorageGateway::TapeInfo;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
+  has PoolId => (is => 'ro', isa => 'Str');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str');
   has TapeSizeInBytes => (is => 'ro', isa => 'Int');
@@ -44,6 +45,17 @@ Describes a virtual tape.
 
   The Amazon Resource Name (ARN) of the gateway. Use the ListGateways
 operation to return a list of gateways for your account and region.
+
+
+=head2 PoolId => Str
+
+  The ID of the pool that you want to add your tape to for archiving. The
+tape in this pool is archived in the S3 storage class that is
+associated with the pool. When you use your backup application to eject
+the tape, the tape is archived directly into the storage class (Glacier
+or Deep Archive) that corresponds to the pool.
+
+Valid values: "GLACIER", "DEEP_ARCHIVE"
 
 
 =head2 TapeARN => Str

@@ -6,7 +6,7 @@ package Paws::CostExplorer::GetCostAndUsage;
   has GroupBy => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::GroupDefinition]');
   has Metrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextPageToken => (is => 'ro', isa => 'Str');
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval');
+  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,8 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ce = Paws->service('CostExplorer');
     my $GetCostAndUsageResponse = $ce->GetCostAndUsage(
+      TimePeriod => {
+        End   => 'MyYearMonthDay',
+        Start => 'MyYearMonthDay',
+
+      },
       Filter => {
-        And        => [ <Expression>, ... ],    # OPTIONAL
+        And => [ <Expression>, ... ],    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
           , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID; OPTIONAL
@@ -43,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Not  => <Expression>,
         Or   => [ <Expression>, ... ],    # OPTIONAL
         Tags => {
-          Key    => 'MyTagKey',            # OPTIONAL
+          Key => 'MyTagKey',               # OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
@@ -55,13 +60,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                     # OPTIONAL
-      Metrics       => [ 'MyMetricName', ... ],    # OPTIONAL
-      NextPageToken => 'MyNextPageToken',          # OPTIONAL
-      TimePeriod    => {
-        End   => 'MyYearMonthDay',
-        Start => 'MyYearMonthDay',
-
-      },                                           # OPTIONAL
+      Metrics => [ 'MyMetricName', ... ],    # OPTIONAL
+      NextPageToken => 'MyNextPageToken',    # OPTIONAL
     );
 
     # Results:
@@ -144,7 +144,7 @@ maximum page size.
 
 
 
-=head2 TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
 
 Sets the start and end dates for retrieving AWS costs. The start date
 is inclusive, but the end date is exclusive. For example, if C<start>

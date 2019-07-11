@@ -36,8 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::A
 
 Values for use in Player attribute key:value pairs. This object lets
 you specify an attribute value using any of the valid data types:
-string, number, string array or data map. Each C<AttributeValue> object
-can use only one of the available properties.
+string, number, string array, or data map. Each C<AttributeValue>
+object can use only one of the available properties.
 
 =head1 ATTRIBUTES
 

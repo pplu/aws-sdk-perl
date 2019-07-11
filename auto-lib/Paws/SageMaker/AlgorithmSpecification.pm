@@ -35,14 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 =head1 DESCRIPTION
 
 Specifies the training algorithm to use in a CreateTrainingJob
-(http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateTrainingJob.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateTrainingJob.html)
 request.
 
 For more information about algorithms provided by Amazon SageMaker, see
-Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
-For information about using your own algorithms, see Using Your Own
+Algorithms
+(https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html). For
+information about using your own algorithms, see Using Your Own
 Algorithms with Amazon SageMaker
-(http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 
 =head1 ATTRIBUTES
 
@@ -68,14 +69,18 @@ SageMaker publishes each metric to Amazon CloudWatch.
 algorithm. For information about docker registry paths for built-in
 algorithms, see Algorithms Provided by Amazon SageMaker: Common
 Parameters
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
+Amazon SageMaker supports both C<registry/repository[:tag]> and
+C<registry/repository[@digest]> image path formats. For more
+information, see Using Your Own Algorithms with Amazon SageMaker
+(https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 
 
 =head2 B<REQUIRED> TrainingInputMode => Str
 
   The input mode that the algorithm supports. For the input modes that
 Amazon SageMaker algorithms support, see Algorithms
-(http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html). If an
+(https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html). If an
 algorithm supports the C<File> input mode, Amazon SageMaker downloads
 the training data from S3 to the provisioned ML storage Volume, and
 mounts the directory to docker volume for training container. If an

@@ -48,23 +48,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 =head2 B<REQUIRED> Name => Str
 
-The resource name for which to enable the new format. If
+The resource name for which to modify the account setting. If
 C<serviceLongArnFormat> is specified, the ARN for your Amazon ECS
 services is affected. If C<taskLongArnFormat> is specified, the ARN and
 resource ID for your Amazon ECS tasks is affected. If
 C<containerInstanceLongArnFormat> is specified, the ARN and resource ID
-for your Amazon ECS container instances is affected.
+for your Amazon ECS container instances is affected. If
+C<awsvpcTrunking> is specified, the ENI limit for your Amazon ECS
+container instances is affected.
 
-Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">
+Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">, C<"awsvpcTrunking">
 
 =head2 PrincipalArn => Str
 
 The ARN of the principal, which can be an IAM user, IAM role, or the
-root user. If you specify the root user, it modifies the ARN and
-resource ID format for all IAM users, IAM roles, and the root user of
-the account unless an IAM user or role explicitly overrides these
-settings for themselves. If this field is omitted, the settings are
-changed only for the authenticated user.
+root user. If you specify the root user, it modifies the account
+setting for all IAM users, IAM roles, and the root user of the account
+unless an IAM user or role explicitly overrides these settings. If this
+field is omitted, the setting is changed only for the authenticated
+user.
 
 
 

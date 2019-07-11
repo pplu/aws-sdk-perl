@@ -8,6 +8,7 @@ package Paws::S3::CopyObjectOutput;
   has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
+  has SSEKMSEncryptionContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-context');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
   has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
 
@@ -68,6 +69,14 @@ encryption algorithm used.
 If server-side encryption with a customer-provided encryption key was
 requested, the response will include this header to provide round trip
 message integrity verification of the customer-provided encryption key.
+
+
+
+=head2 SSEKMSEncryptionContext => Str
+
+If present, specifies the AWS KMS Encryption Context to use for object
+encryption. The value of this header is a base64-encoded UTF-8 string
+holding JSON with the encryption context key-value pairs.
 
 
 

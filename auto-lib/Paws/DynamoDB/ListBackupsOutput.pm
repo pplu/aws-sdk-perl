@@ -31,9 +31,9 @@ If C<LastEvaluatedBackupArn> is empty, then the last page of results
 has been processed and there are no more results to be retrieved.
 
 If C<LastEvaluatedBackupArn> is not empty, this may or may not indicate
-there is more data to be returned. All results are guaranteed to have
-been returned if and only if no value for C<LastEvaluatedBackupArn> is
-returned.
+that there is more data to be returned. All results are guaranteed to
+have been returned if and only if no value for
+C<LastEvaluatedBackupArn> is returned.
 
 
 =head2 _request_id => Str

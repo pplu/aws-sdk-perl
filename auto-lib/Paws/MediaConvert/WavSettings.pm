@@ -55,7 +55,10 @@ values are Mono, Stereo, 4-Channel, and 8-Channel, respectively.
 
 =head2 Format => Str
 
-  
+  The service defaults to using RIFF for WAV outputs. If your output
+audio is likely to exceed 4 GB in file size, or if you otherwise need
+the extended support of the RF64 format, set your output WAV file
+format to RF64.
 
 
 =head2 SampleRate => Int

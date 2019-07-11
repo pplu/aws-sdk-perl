@@ -40,7 +40,7 @@ When you configure the application input, you specify the streaming
 source, the in-application stream name that is created, and the mapping
 between the two. For more information, see Configuring Application
 Input
-(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 
 =head1 ATTRIBUTES
 
@@ -52,15 +52,18 @@ Input
 Data from your source is routed to these in-application input streams.
 
 (see Configuring Application Input
-(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 
 
 =head2 InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>
 
-  The InputProcessingConfiguration for the input. An input processor
-transforms records as they are received from the stream, before the
-application's SQL code executes. Currently, the only input processing
-configuration available is InputLambdaProcessor.
+  The InputProcessingConfiguration
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
+for the input. An input processor transforms records as they are
+received from the stream, before the application's SQL code executes.
+Currently, the only input processing configuration available is
+InputLambdaProcessor
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html).
 
 
 =head2 B<REQUIRED> InputSchema => L<Paws::KinesisAnalytics::SourceSchema>

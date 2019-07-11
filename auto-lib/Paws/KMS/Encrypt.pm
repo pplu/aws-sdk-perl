@@ -56,7 +56,7 @@ Name-value pair that specifies the encryption context to be used for
 authenticated encryption. If used here, the same value must be supplied
 to the C<Decrypt> API or decryption will fail. For more information,
 see Encryption Context
-(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html).
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context).
 
 
 
@@ -65,7 +65,7 @@ see Encryption Context
 A list of grant tokens.
 
 For more information, see Grant Tokens
-(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 
 
@@ -75,9 +75,9 @@ in the I<AWS Key Management Service Developer Guide>.
 A unique identifier for the customer master key (CMK).
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with "alias/".
-To specify a CMK in a different AWS account, you must use the key ARN
-or alias ARN.
+name, or alias ARN. When using an alias name, prefix it with
+C<"alias/">. To specify a CMK in a different AWS account, you must use
+the key ARN or alias ARN.
 
 For example:
 

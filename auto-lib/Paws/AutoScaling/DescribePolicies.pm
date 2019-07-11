@@ -56,7 +56,7 @@ The name of the Auto Scaling group.
 =head2 MaxRecords => Int
 
 The maximum number of items to be returned with each call. The default
-value is 50 and the maximum value is 100.
+value is C<50> and the maximum value is C<100>.
 
 
 
@@ -78,8 +78,8 @@ an unknown policy name, it is ignored with no error.
 
 =head2 PolicyTypes => ArrayRef[Str|Undef]
 
-One or more policy types. Valid values are C<SimpleScaling> and
-C<StepScaling>.
+One or more policy types. The valid values are C<SimpleScaling>,
+C<StepScaling>, and C<TargetTrackingScaling>.
 
 
 

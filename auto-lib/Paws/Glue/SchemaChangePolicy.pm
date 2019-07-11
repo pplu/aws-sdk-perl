@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Schem
 
 =head1 DESCRIPTION
 
-Crawler policy for update and deletion behavior.
+A policy that specifies update and deletion behaviors for the crawler.
 
 =head1 ATTRIBUTES
 

@@ -2,6 +2,7 @@
 package Paws::EC2::ModifySpotFleetRequest;
   use Moose;
   has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'excessCapacityTerminationPolicy' );
+  has OnDemandTargetCapacity => (is => 'ro', isa => 'Int');
   has SpotFleetRequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spotFleetRequestId' , required => 1);
   has TargetCapacity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'targetCapacity' );
 
@@ -68,6 +69,12 @@ target capacity of the Spot Fleet request is decreased below the
 current size of the Spot Fleet.
 
 Valid values are: C<"noTermination">, C<"default">
+
+=head2 OnDemandTargetCapacity => Int
+
+The number of On-Demand Instances in the fleet.
+
+
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 

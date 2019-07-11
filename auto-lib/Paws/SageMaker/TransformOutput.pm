@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Describes the results of a transform job output.
+Describes the results of a transform job.
 
 =head1 ATTRIBUTES
 
@@ -106,13 +106,20 @@ in the I<AWS Key Management Service Developer Guide>.
   The Amazon S3 path where you want Amazon SageMaker to store the results
 of the transform job. For example, C<s3://bucket-name/key-name-prefix>.
 
-For every S3 object used as input for the transform job, the
-transformed data is stored in a corresponding subfolder in the location
-under the output prefix. For example, for the input data
-C<s3://bucket-name/input-name-prefix/dataset01/data.csv> the
-transformed data is stored at
-C<s3://bucket-name/key-name-prefix/dataset01/>. This is based on the
-original name, as a series of .part files (.part0001, part0002, etc.).
+For every S3 object used as input for the transform job, batch
+transform stores the transformed data with an .C<out> suffix in a
+corresponding subfolder in the location in the output prefix. For
+example, for the input data stored at
+C<s3://bucket-name/input-name-prefix/dataset01/data.csv>, batch
+transform stores the transformed data at
+C<s3://bucket-name/output-name-prefix/input-name-prefix/data.csv.out>.
+Batch transform doesn't upload partially processed objects. For an
+input S3 object that contains multiple records, it creates an .C<out>
+file only if the transform job succeeds on the entire file. When the
+input contains multiple S3 objects, the batch transform job processes
+the listed S3 objects and uploads only the output for successfully
+processed objects. If any object fails in the transform job batch
+transform marks the job as failed to prompt investigation.
 
 
 

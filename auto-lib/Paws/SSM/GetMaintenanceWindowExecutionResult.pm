@@ -21,17 +21,17 @@ Paws::SSM::GetMaintenanceWindowExecutionResult
 
 =head2 EndTime => Str
 
-The time the Maintenance Window finished executing.
+The time the maintenance window finished running.
 
 
 =head2 StartTime => Str
 
-The time the Maintenance Window started executing.
+The time the maintenance window started running.
 
 
 =head2 Status => Str
 
-The status of the Maintenance Window execution.
+The status of the maintenance window execution.
 
 Valid values are: C<"PENDING">, C<"IN_PROGRESS">, C<"SUCCESS">, C<"FAILED">, C<"TIMED_OUT">, C<"CANCELLING">, C<"CANCELLED">, C<"SKIPPED_OVERLAPPING">
 =head2 StatusDetails => Str
@@ -42,12 +42,12 @@ values.
 
 =head2 TaskIds => ArrayRef[Str|Undef]
 
-The ID of the task executions from the Maintenance Window execution.
+The ID of the task executions from the maintenance window execution.
 
 
 =head2 WindowExecutionId => Str
 
-The ID of the Maintenance Window execution.
+The ID of the maintenance window execution.
 
 
 =head2 _request_id => Str

@@ -57,10 +57,10 @@ Valid values are: C<"MUST_EXIST">, C<"NOT_EXIST">, C<"NONE">
 
 =head2 PolicyHashCondition => Str
 
-This is the hash value returned when the previous policy was set using
-PutResourcePolicy. Its purpose is to prevent concurrent modifications
-of a policy. Do not use this parameter if no previous policy has been
-set.
+The hash value returned when the previous policy was set using
+C<PutResourcePolicy>. Its purpose is to prevent concurrent
+modifications of a policy. Do not use this parameter if no previous
+policy has been set.
 
 
 

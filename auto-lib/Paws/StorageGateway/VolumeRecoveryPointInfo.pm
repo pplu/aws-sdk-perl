@@ -34,29 +34,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes a storage volume recovery point object.
 
 =head1 ATTRIBUTES
 
 
 =head2 VolumeARN => Str
 
-  
+  The Amazon Resource Name (ARN) of the volume target.
 
 
 =head2 VolumeRecoveryPointTime => Str
 
-  
+  The time the recovery point was taken.
 
 
 =head2 VolumeSizeInBytes => Int
 
-  
+  The size of the volume in bytes.
 
 
 =head2 VolumeUsageInBytes => Int
 
-  
+  The size of the data stored on the volume in bytes.
+
+This value is not available for volumes created prior to May 13, 2015,
+until you store data on the volume.
 
 
 

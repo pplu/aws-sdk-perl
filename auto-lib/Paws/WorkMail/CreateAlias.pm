@@ -44,19 +44,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> Alias => Str
 
-The alias to add to the user.
+The alias to add to the member set.
 
 
 
 =head2 B<REQUIRED> EntityId => Str
 
-The alias is added to this Amazon WorkMail entity.
+The member (user or group) to which this alias is added.
 
 
 
 =head2 B<REQUIRED> OrganizationId => Str
 
-The organization under which the member exists.
+The organization under which the member (user or group) exists.
 
 
 

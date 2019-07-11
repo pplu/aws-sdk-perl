@@ -292,7 +292,7 @@ In a managed compute environment, AWS Batch manages the capacity and
 instance types of the compute resources within the environment. This is
 based on the compute resource specification that you define or the
 launch template
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
 that you specify when you create the compute environment. You can
 choose to use Amazon EC2 On-Demand Instances or Spot Instances in your
 managed compute environment. You can optionally set a maximum price so
@@ -306,14 +306,14 @@ resources. This provides more compute resource configuration options,
 such as using a custom AMI, but you must ensure that your AMI meets the
 Amazon ECS container instance AMI specification. For more information,
 see Container Instance AMIs
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html)
 in the I<Amazon Elastic Container Service Developer Guide>. After you
 have created your unmanaged compute environment, you can use the
 DescribeComputeEnvironments operation to find the Amazon ECS cluster
 that is associated with it. Then, manually launch your container
 instances into that Amazon ECS cluster. For more information, see
 Launching an Amazon ECS Container Instance
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 AWS Batch does not upgrade the AMIs in a compute environment after it

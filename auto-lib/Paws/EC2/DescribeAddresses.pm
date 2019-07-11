@@ -81,9 +81,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AllocationIds => ArrayRef[Str|Undef]
 
-[EC2-VPC] One or more allocation IDs.
-
-Default: Describes all your Elastic IP addresses.
+[EC2-VPC] Information about the allocation IDs.
 
 
 

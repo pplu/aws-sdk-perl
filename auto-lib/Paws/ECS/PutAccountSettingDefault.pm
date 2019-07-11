@@ -40,21 +40,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ECS::PutAccountSettingDefaultResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs/PutAccountSettingDefault>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Name => Str
 
-The resource type to enable the new format for. If
+The resource name for which to modify the account setting. If
 C<serviceLongArnFormat> is specified, the ARN for your Amazon ECS
 services is affected. If C<taskLongArnFormat> is specified, the ARN and
-resource ID for your Amazon ECS tasks are affected. If
+resource ID for your Amazon ECS tasks is affected. If
 C<containerInstanceLongArnFormat> is specified, the ARN and resource ID
-for your Amazon ECS container instances are affected.
+for your Amazon ECS container instances is affected. If
+C<awsvpcTrunking> is specified, the ENI limit for your Amazon ECS
+container instances is affected.
 
-Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">
+Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">, C<"awsvpcTrunking">
 
 =head2 B<REQUIRED> Value => Str
 

@@ -36,7 +36,7 @@ A link to another environment, defined in the environment's manifest.
 Links provide connection information in system properties that can be
 used to connect to another environment in the same group. See
 Environment Manifest (env.yaml)
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
 for details.
 
 =head1 ATTRIBUTES

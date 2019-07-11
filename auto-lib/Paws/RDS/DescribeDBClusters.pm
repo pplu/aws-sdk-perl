@@ -3,6 +3,7 @@ package Paws::RDS::DescribeDBClusters;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
+  has IncludeShared => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -80,11 +81,19 @@ about the DB clusters identified by these ARNs.
 
 
 
+=head2 IncludeShared => Bool
+
+Optional Boolean parameter that specifies whether the output includes
+information about clusters shared from other AWS accounts.
+
+
+
 =head2 Marker => Str
 
-An optional pagination token provided by a previous DescribeDBClusters
-request. If this parameter is specified, the response includes only
-records beyond the marker, up to the value specified by C<MaxRecords>.
+An optional pagination token provided by a previous
+C<DescribeDBClusters> request. If this parameter is specified, the
+response includes only records beyond the marker, up to the value
+specified by C<MaxRecords>.
 
 
 

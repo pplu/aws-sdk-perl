@@ -85,7 +85,7 @@ from a previous call.)
 
 =head2 B<REQUIRED> WindowExecutionId => Str
 
-The ID of the Maintenance Window execution whose task executions should
+The ID of the maintenance window execution whose task executions should
 be retrieved.
 
 

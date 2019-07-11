@@ -42,8 +42,7 @@ For predictive scaling to work with a customized load metric
 specification, AWS Auto Scaling needs access to the C<Sum> and
 C<Average> statistics that CloudWatch computes from metric data.
 Statistics are calculations used to aggregate data over specified time
-periods. For more information, see the Amazon CloudWatch User Guide
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html).
+periods.
 
 When you choose a load metric, make sure that the required C<Sum> and
 C<Average> statistics for your metric are available in CloudWatch and
@@ -56,8 +55,10 @@ statistic represents the total request count processed by the group,
 then the C<Average> statistic for the specified metric must represent
 the average request count processed by each instance of the group.
 
-For information about terminology, see Amazon CloudWatch Concepts
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html).
+For information about terminology, available metrics, or how to publish
+new metrics, see Amazon CloudWatch Concepts
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html)
+in the I<Amazon CloudWatch User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -65,6 +66,10 @@ For information about terminology, see Amazon CloudWatch Concepts
 =head2 Dimensions => ArrayRef[L<Paws::AutoScalingPlans::MetricDimension>]
 
   The dimensions of the metric.
+
+Conditional: If you published your metric with dimensions, you must
+specify the same dimensions in your customized load metric
+specification.
 
 
 =head2 B<REQUIRED> MetricName => Str

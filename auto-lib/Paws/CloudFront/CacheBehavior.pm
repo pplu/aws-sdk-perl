@@ -55,7 +55,7 @@ the origins, but the other origin is never used.
 
 For the current limit on the number of cache behaviors that you can add
 to a distribution, see Amazon CloudFront Limits
-(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront)
+(https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront)
 in the I<AWS General Reference>.
 
 If you don't want to specify any cache behaviors, include only an empty
@@ -71,7 +71,7 @@ distribution configuration and specify all of the cache behaviors that
 you want to include in the updated distribution.
 
 For more information about cache behaviors, see Cache Behaviors
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior)
 in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
@@ -87,7 +87,7 @@ in the I<Amazon CloudFront Developer Guide>.
   Whether you want CloudFront to automatically compress certain files for
 this cache behavior. If so, specify true; if not, specify false. For
 more information, see Serving Compressed Files
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 
@@ -98,9 +98,9 @@ caches before CloudFront forwards another request to your origin to
 determine whether the object has been updated. The value that you
 specify applies only when your origin does not add HTTP headers such as
 C<Cache-Control max-age>, C<Cache-Control s-maxage>, and C<Expires> to
-objects. For more information, see Specifying How Long Objects and
-Errors Stay in a CloudFront Edge Cache (Expiration)
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
+objects. For more information, see Managing How Long Content Stays in
+an Edge Cache (Expiration)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 
@@ -130,9 +130,9 @@ caches before CloudFront forwards another request to your origin to
 determine whether the object has been updated. The value that you
 specify applies only when your origin adds HTTP headers such as
 C<Cache-Control max-age>, C<Cache-Control s-maxage>, and C<Expires> to
-objects. For more information, see Specifying How Long Objects and
-Errors Stay in a CloudFront Edge Cache (Expiration)
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
+objects. For more information, see Managing How Long Content Stays in
+an Edge Cache (Expiration)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 
@@ -141,10 +141,9 @@ in the I<Amazon CloudFront Developer Guide>.
   The minimum amount of time that you want objects to stay in CloudFront
 caches before CloudFront forwards another request to your origin to
 determine whether the object has been updated. For more information,
-see Specifying How Long Objects and Errors Stay in a CloudFront Edge
-Cache (Expiration)
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
-in the I<Amazon Amazon CloudFront Developer Guide>.
+see Managing How Long Content Stays in an Edge Cache (Expiration)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
+in the I< Amazon CloudFront Developer Guide>.
 
 You must specify C<0> for C<MinTTL> if you configure CloudFront to
 forward all headers to your origin (under C<Headers>, if you specify
@@ -168,7 +167,7 @@ for any cache behaviors, CloudFront applies the behavior in the default
 cache behavior.
 
 For more information, see Path Pattern
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern)
 in the I< Amazon CloudFront Developer Guide>.
 
 
@@ -199,8 +198,8 @@ target origin that match the C<PathPattern> for this cache behavior,
 specify C<true> for C<Enabled>, and specify the applicable values for
 C<Quantity> and C<Items>. For more information, see Serving Private
 Content through CloudFront
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
-in the I<Amazon Amazon CloudFront Developer Guide>.
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 If you don't want to require signed URLs in requests for objects that
 match C<PathPattern>, specify C<false> for C<Enabled> and C<0> for
@@ -240,7 +239,7 @@ HTTP status code of 403 (Forbidden).
 
 For more information about requiring the HTTPS protocol, see Using an
 HTTPS Connection to Access Your Objects
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 The only way to guarantee that viewers retrieve an object that was
@@ -250,9 +249,8 @@ we recommend that you clear your objects' cache because cached objects
 are protocol agnostic. That means that an edge location will return an
 object from the cache regardless of whether the current request
 protocol matches the protocol used previously. For more information,
-see Specifying How Long Objects and Errors Stay in a CloudFront Edge
-Cache (Expiration)
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
+see Managing How Long Content Stays in an Edge Cache (Expiration)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 

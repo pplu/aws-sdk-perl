@@ -25,7 +25,7 @@ location.
 
 =head2 Checksum => Str
 
-The checksum of the archive computed by Amazon Glacier.
+The checksum of the archive computed by Amazon S3 Glacier.
 
 
 =head2 Location => Str

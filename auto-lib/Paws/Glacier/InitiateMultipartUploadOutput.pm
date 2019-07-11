@@ -18,7 +18,7 @@ Paws::Glacier::InitiateMultipartUploadOutput
 
 =head2 Location => Str
 
-The relative URI path of the multipart upload ID Amazon Glacier
+The relative URI path of the multipart upload ID Amazon S3 Glacier
 created.
 
 

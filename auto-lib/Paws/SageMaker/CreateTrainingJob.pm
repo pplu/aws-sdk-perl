@@ -86,8 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],                              # max: 16; OPTIONAL
               S3DataDistributionType => 'FullyReplicated'
               ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
-            },
-
+            },    # OPTIONAL
           },
           CompressionType => 'None',             # values: None, Gzip; OPTIONAL
           ContentType     => 'MyContentType',    # max: 256; OPTIONAL
@@ -135,19 +134,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 The registry path of the Docker image that contains the training
 algorithm and algorithm-specific metadata, including the input mode.
 For more information about algorithms provided by Amazon SageMaker, see
-Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
-For information about providing your own algorithms, see Using Your Own
+Algorithms
+(https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html). For
+information about providing your own algorithms, see Using Your Own
 Algorithms with Amazon SageMaker
-(http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 
 
 
 =head2 EnableInterContainerTrafficEncryption => Bool
 
 To encrypt all communications between ML compute instances in
-distributed training, choose C<True>,. Encryption provides greater
-security for distributed training, but training can take longer because
-of additional communications between ML compute instances.
+distributed training, choose C<True>. Encryption provides greater
+security for distributed training, but training might take longer. How
+long it takes depends on the amount of communication between compute
+instances, especially if you use a deep learning algorithm in
+distributed training. For more information, see Protect Communications
+Between ML Compute Instances in a Distributed Training Job
+(https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html).
 
 
 
@@ -171,7 +175,7 @@ Algorithm-specific parameters that influence the quality of the model.
 You set hyperparameters before you start the learning process. For a
 list of hyperparameters for each training algorithm provided by Amazon
 SageMaker, see Algorithms
-(http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 
 You can specify a maximum of 100 hyperparameters. Each hyperparameter
 is a key-value pair. Each key and value is limited to 256 characters,
@@ -230,7 +234,7 @@ training code, write model artifacts to an S3 bucket, write logs to
 Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch. You
 grant permissions for all of these tasks to an IAM role. For more
 information, see Amazon SageMaker Roles
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 
 To be able to pass this role to Amazon SageMaker, the caller of this
 API must have the C<iam:PassRole> permission.
@@ -239,17 +243,14 @@ API must have the C<iam:PassRole> permission.
 
 =head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
-Sets a duration for training. Use this parameter to cap model training
-costs. To stop a job, Amazon SageMaker sends the algorithm the
-C<SIGTERM> signal, which delays job termination for 120 seconds.
-Algorithms might use this 120-second window to save the model
-artifacts.
+Specifies a limit to how long a model training job can run. When the
+job reaches the time limit, Amazon SageMaker ends the training job. Use
+this API to cap model training costs.
 
-When Amazon SageMaker terminates a job because the stopping condition
-has been met, training algorithms provided by Amazon SageMaker save the
-intermediate results of the job. This intermediate data is a valid
-model artifact. You can use it to create a model using the
-C<CreateModel> API.
+To stop a job, Amazon SageMaker sends the algorithm the C<SIGTERM>
+signal, which delays job termination for 120 seconds. Algorithms can
+use this 120-second window to save the model artifacts, so the results
+of training are not lost.
 
 
 
@@ -257,7 +258,7 @@ C<CreateModel> API.
 
 An array of key-value pairs. For more information, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 in the I<AWS Billing and Cost Management User Guide>.
 
 
@@ -275,7 +276,7 @@ A VpcConfig object that specifies the VPC that you want your training
 job to connect to. Control access to and from your training container
 by configuring the VPC. For more information, see Protect Training Jobs
 by Using an Amazon Virtual Private Cloud
-(http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 
 
 

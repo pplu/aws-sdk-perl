@@ -33,14 +33,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeHostsResult = $ec2->DescribeHosts(
       Filter => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      HostIds    => [ 'MyString', ... ],    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
+      ],                           # OPTIONAL
+      HostIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -57,7 +61,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 Filter => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -115,14 +119,16 @@ The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
 the returned C<nextToken> value. This value can be between 5 and 500.
 If C<maxResults> is given a larger value than 500, you receive an
-error. You cannot specify this parameter and the host IDs parameter in
-the same request.
+error.
+
+You cannot specify this parameter and the host IDs parameter in the
+same request.
 
 
 
 =head2 NextToken => Str
 
-The token to retrieve the next page of results.
+The token to use to retrieve the next page of results.
 
 
 

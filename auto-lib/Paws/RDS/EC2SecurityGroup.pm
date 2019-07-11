@@ -40,15 +40,15 @@ This data type is used as a response element in the following actions:
 
 =item *
 
-AuthorizeDBSecurityGroupIngress
+C<AuthorizeDBSecurityGroupIngress>
 
 =item *
 
-DescribeDBSecurityGroups
+C<DescribeDBSecurityGroups>
 
 =item *
 
-RevokeDBSecurityGroupIngress
+C<RevokeDBSecurityGroupIngress>
 
 =back
 

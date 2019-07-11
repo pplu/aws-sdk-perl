@@ -40,7 +40,7 @@ C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
 logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>
 options in the C<TaskInvocationParameters> structure. For information
 about how Systems Manager handles these options for the supported
-Maintenance Window task types, see
+maintenance window task types, see
 MaintenanceWindowTaskInvocationParameters.
 
 
@@ -62,19 +62,21 @@ The retrieved task name.
 
 =head2 Priority => Int
 
-The priority of the task when it executes. The lower the number, the
-higher the priority. Tasks that have the same priority are scheduled in
+The priority of the task when it runs. The lower the number, the higher
+the priority. Tasks that have the same priority are scheduled in
 parallel.
 
 
 =head2 ServiceRoleArn => Str
 
-The IAM service role to assume during task execution.
+The ARN of the IAM service role to use to publish Amazon Simple
+Notification Service (Amazon SNS) notifications for maintenance window
+Run Command tasks.
 
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
 
-The targets where the task should execute.
+The targets where the task should run.
 
 
 =head2 TaskArn => Str
@@ -87,33 +89,33 @@ STEP_FUNCTION tasks, the value is the state machine ARN.
 
 =head2 TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>
 
-The parameters to pass to the task when it executes.
+The parameters to pass to the task when it runs.
 
 
 =head2 TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>
 
-The parameters to pass to the task when it executes.
+The parameters to pass to the task when it runs.
 
 C<TaskParameters> has been deprecated. To specify parameters to pass to
 a task when it runs, instead use the C<Parameters> option in the
 C<TaskInvocationParameters> structure. For information about how
-Systems Manager handles these options for the supported Maintenance
-Window task types, see MaintenanceWindowTaskInvocationParameters.
+Systems Manager handles these options for the supported maintenance
+window task types, see MaintenanceWindowTaskInvocationParameters.
 
 
 =head2 TaskType => Str
 
-The type of task to execute.
+The type of task to run.
 
 Valid values are: C<"RUN_COMMAND">, C<"AUTOMATION">, C<"STEP_FUNCTIONS">, C<"LAMBDA">
 =head2 WindowId => Str
 
-The retrieved Maintenance Window ID.
+The retrieved maintenance window ID.
 
 
 =head2 WindowTaskId => Str
 
-The retrieved Maintenance Window task ID.
+The retrieved maintenance window task ID.
 
 
 =head2 _request_id => Str

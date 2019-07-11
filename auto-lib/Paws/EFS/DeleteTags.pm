@@ -45,13 +45,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-ID of the file system whose tags you want to delete (String).
+The ID of the file system whose tags you want to delete (String).
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-List of tag keys to delete.
+A list of tag keys to delete.
 
 
 

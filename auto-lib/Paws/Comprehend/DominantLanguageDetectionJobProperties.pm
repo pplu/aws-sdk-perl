@@ -9,6 +9,8 @@ package Paws::Comprehend::DominantLanguageDetectionJobProperties;
   has Message => (is => 'ro', isa => 'Str');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::OutputDataConfig');
   has SubmitTime => (is => 'ro', isa => 'Str');
+  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
+  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Comprehend::DominantLanguageDetectionJobProperties object:
 
-  $service_obj->Method(Att1 => { DataAccessRoleArn => $value, ..., SubmitTime => $value  });
+  $service_obj->Method(Att1 => { DataAccessRoleArn => $value, ..., VpcConfig => $value  });
 
 =head3 Results returned from an API call
 
@@ -93,6 +95,36 @@ dominant language detection job.
 
   The time that the dominant language detection job was submitted for
 processing.
+
+
+=head2 VolumeKmsKeyId => Str
+
+  ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt data on the storage volume attached to the ML compute
+instance(s) that process the analysis job. The VolumeKmsKeyId can be
+either of the following formats:
+
+=over
+
+=item *
+
+KMS Key ID: C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+Amazon Resource Name (ARN) of a KMS Key:
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
+
+
+=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+
+  Configuration parameters for a private Virtual Private Cloud (VPC)
+containing the resources you are using for your dominant language
+detection job. For more information, see Amazon VPC
+(https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 
 
 

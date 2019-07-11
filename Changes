@@ -1,4 +1,23 @@
-0.40
+0.41 11 Jul 2019
+ - V3 signature module has been deprecated, as all APIs use V4 signatures. Dependencies have been removed
+ - Fix: Don't pass undef HTTP content to signature modules. At least pass ''. See #325
+ - Fix: Fixes for PinPoint to work correctly: #212 (byterock)
+ - API updates for any service up to the date of release
+ - New API: Textract
+ - New API: ManagedBlockchain
+ - New API: GroundStation
+ - New API: IoTEvents
+ - New API: IoTEventsData
+ - New API: IoTThingsGraph
+ - New API: MediaPackageVod
+ - New API: Personalize
+ - New API: PersonalizeEvents
+ - New API: PersonalizeRuntime
+ - New API: ApplicationInsights
+ - New API: EC2IntanceConnect
+ - New API: ServiceQuotas
+
+0.40 26 Apr 2019
  - Solve issue #324. Paws won't die when any API returns duplicate requestid headers. IAM has 
    started returning duplicate request id headers, basically rendering old versions of Paws
    unable to call IAM. Issue #324 has instructions for users of older versions of Paws.

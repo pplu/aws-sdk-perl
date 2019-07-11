@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/log
 The Amazon Resource Name (ARN) of the CMK to use when encrypting log
 data. For more information, see Amazon Resource Names - AWS Key
 Management Service (AWS KMS)
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
 
 
 

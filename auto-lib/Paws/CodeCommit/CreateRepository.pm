@@ -3,6 +3,7 @@ package Paws::CodeCommit::CreateRepository;
   use Moose;
   has RepositoryDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryDescription' );
   has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::CodeCommit::TagsMap', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -31,6 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateRepositoryOutput = $codecommit->CreateRepository(
       RepositoryName        => 'MyRepositoryName',
       RepositoryDescription => 'MyRepositoryDescription',    # OPTIONAL
+      Tags                  => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -65,8 +69,14 @@ The repository name must be unique across the calling AWS account. In
 addition, repository names are limited to 100 alphanumeric, dash, and
 underscore characters, and cannot include certain characters. For a
 full description of the limits on repository names, see Limits
-(http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html) in
-the AWS CodeCommit User Guide. The suffix ".git" is prohibited.
+(https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
+in the AWS CodeCommit User Guide. The suffix ".git" is prohibited.
+
+
+
+=head2 Tags => L<Paws::CodeCommit::TagsMap>
+
+One or more tag key-value pairs to use when tagging this repository.
 
 
 

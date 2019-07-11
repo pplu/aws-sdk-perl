@@ -1,7 +1,7 @@
 
 package Paws::GuardDuty::GetFindingsResponse;
   use Moose;
-  has Findings => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::Finding]', traits => ['NameInRequest'], request_name => 'findings');
+  has Findings => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::Finding]', traits => ['NameInRequest'], request_name => 'findings', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -15,9 +15,9 @@ Paws::GuardDuty::GetFindingsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Findings => ArrayRef[L<Paws::GuardDuty::Finding>]
+=head2 B<REQUIRED> Findings => ArrayRef[L<Paws::GuardDuty::Finding>]
 
-
+A list of findings.
 
 
 =head2 _request_id => Str

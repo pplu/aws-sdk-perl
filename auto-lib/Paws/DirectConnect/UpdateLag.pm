@@ -51,6 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $NumberOfConnections     = $Lag->NumberOfConnections;
     my $OwnerAccount            = $Lag->OwnerAccount;
     my $Region                  = $Lag->Region;
+    my $Tags                    = $Lag->Tags;
 
     # Returns a L<Paws::DirectConnect::Lag> object.
 

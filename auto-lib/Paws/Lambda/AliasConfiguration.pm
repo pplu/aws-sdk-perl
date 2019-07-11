@@ -48,7 +48,7 @@ A unique identifier that changes when you update the alias.
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
 
 The routing configuration
-(http://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
 of the alias.
 
 

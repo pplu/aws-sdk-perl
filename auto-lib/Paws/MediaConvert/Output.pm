@@ -62,7 +62,7 @@ groups of captions settings.
 
 =head2 ContainerSettings => L<Paws::MediaConvert::ContainerSettings>
 
-  
+  Container specific settings.
 
 
 =head2 Extension => Str
@@ -88,7 +88,7 @@ in the same way in all outputs of the output group.
 
 =head2 OutputSettings => L<Paws::MediaConvert::OutputSettings>
 
-  
+  Specific settings for this type of output.
 
 
 =head2 Preset => Str

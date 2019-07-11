@@ -1,6 +1,7 @@
 
 package Paws::SecurityHub::EnableSecurityHub;
   use Moose;
+  has Tags => (is => 'ro', isa => 'Paws::SecurityHub::TagMap');
 
   use MooseX::ClassAttribute;
 
@@ -27,12 +28,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $securityhub = Paws->service('SecurityHub');
-    my $EnableSecurityHubResponse = $securityhub->EnableSecurityHub();
+    my $EnableSecurityHubResponse = $securityhub->EnableSecurityHub(
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
+    );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/securityhub/EnableSecurityHub>
 
 =head1 ATTRIBUTES
+
+
+=head2 Tags => L<Paws::SecurityHub::TagMap>
+
+The tags to add to the Hub resource when you enable Security Hub.
+
 
 
 

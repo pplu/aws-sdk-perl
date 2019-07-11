@@ -69,13 +69,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 ElasticGpuIds => ArrayRef[Str|Undef]
 
-One or more Elastic Graphics accelerator IDs.
+The Elastic Graphics accelerator IDs.
 
 
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 

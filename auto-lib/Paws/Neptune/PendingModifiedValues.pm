@@ -117,7 +117,7 @@ deployment.
 
 =head2 PendingCloudwatchLogsExports => L<Paws::Neptune::PendingCloudwatchLogsExports>
 
-  
+  Specifies the CloudWatch logs to be exported.
 
 
 =head2 Port => Int

@@ -59,14 +59,14 @@ Valid values are: C<"ALL">
 
 =head2 Marker => Str
 
-Specify the pagination token returned by a previous request to retrieve
-the next page of results.
+Specify the pagination token that's returned by a previous request to
+retrieve the next page of results.
 
 
 
 =head2 MasterRegion => Str
 
-For Lambda@Edge functions, the region of the master function. For
+For Lambda@Edge functions, the AWS Region of the master function. For
 example, C<us-east-2> or C<ALL>. If specified, you must set
 C<FunctionVersion> to C<ALL>.
 

@@ -37,7 +37,7 @@ associate with an Amazon EMR resource. Tags make it easier to associate
 clusters in various ways, such as grouping clusters to track your
 Amazon EMR resource allocation costs. For more information, see Tag
 Clusters
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 =head1 ATTRIBUTES
 
@@ -46,14 +46,14 @@ Clusters
 
   A user-defined key, which is the minimum required information for a
 valid tag. For more information, see Tag
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 
 =head2 Value => Str
 
   A user-defined value, which is optional in a tag. For more information,
 see Tag Clusters
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 
 

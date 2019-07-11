@@ -1,7 +1,7 @@
 package Paws::AppMesh::Listener;
   use Moose;
   has HealthCheck => (is => 'ro', isa => 'Paws::AppMesh::HealthCheckPolicy', request_name => 'healthCheck', traits => ['NameInRequest']);
-  has PortMapping => (is => 'ro', isa => 'Paws::AppMesh::PortMapping', request_name => 'portMapping', traits => ['NameInRequest']);
+  has PortMapping => (is => 'ro', isa => 'Paws::AppMesh::PortMapping', request_name => 'portMapping', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ An object representing a listener for a virtual node.
   The health check information for the listener.
 
 
-=head2 PortMapping => L<Paws::AppMesh::PortMapping>
+=head2 B<REQUIRED> PortMapping => L<Paws::AppMesh::PortMapping>
 
   The port mapping information for the listener.
 

@@ -42,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LatestVersion    = $GetDeviceDefinitionResponse->LatestVersion;
     my $LatestVersionArn = $GetDeviceDefinitionResponse->LatestVersionArn;
     my $Name             = $GetDeviceDefinitionResponse->Name;
+    my $Tags             = $GetDeviceDefinitionResponse->Tags;
 
     # Returns a L<Paws::Greengrass::GetDeviceDefinitionResponse> object.
 

@@ -20,7 +20,7 @@ package Paws::ECS::CreateService;
   has ServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceName' , required => 1);
   has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', traits => ['NameInRequest'], request_name => 'serviceRegistries' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
+  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' );
 
   use MooseX::ClassAttribute;
 
@@ -131,7 +131,7 @@ and keep running on your cluster.
 Specifies whether to enable Amazon ECS managed tags for the tasks
 within the service. For more information, see Tagging Your Amazon ECS
 Resources
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -143,10 +143,11 @@ should ignore unhealthy Elastic Load Balancing target health checks
 after a task has first started. This is only valid if your service is
 configured to use a load balancer. If your service's tasks take a while
 to start and respond to Elastic Load Balancing health checks, you can
-specify a health check grace period of up to 7,200 seconds. During that
-time, the ECS service scheduler ignores health check status. This grace
-period can prevent the ECS service scheduler from marking tasks as
-unhealthy and stopping them before they have time to come up.
+specify a health check grace period of up to 2,147,483,647 seconds.
+During that time, the ECS service scheduler ignores health check
+status. This grace period can prevent the ECS service scheduler from
+marking tasks as unhealthy and stopping them before they have time to
+come up.
 
 
 
@@ -214,7 +215,7 @@ The network configuration for the service. This parameter is required
 for task definitions that use the C<awsvpc> network mode to receive
 their own elastic network interface, and it is not supported for other
 network modes. For more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -237,10 +238,10 @@ can specify a maximum of five strategy rules per service.
 
 =head2 PlatformVersion => Str
 
-The platform version on which your tasks in the service are running. A
-platform version is only specified for tasks using the Fargate launch
-type. If one is not specified, the C<LATEST> platform version is used
-by default. For more information, see AWS Fargate Platform Versions
+The platform version that your tasks in the service are running on. A
+platform version is specified only for tasks using the Fargate launch
+type. If one isn't specified, the C<LATEST> platform version is used by
+default. For more information, see AWS Fargate Platform Versions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -271,7 +272,7 @@ here. The service-linked role is required if your task definition uses
 the C<awsvpc> network mode, in which case you should not specify a role
 here. For more information, see Using Service-Linked Roles for Amazon
 ECS
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 If your specified role has a path other than C</>, then you must either
@@ -288,7 +289,7 @@ in the I<IAM User Guide>.
 
 The scheduling strategy to use for the service. For more information,
 see Services
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 
 There are two service scheduler strategies available:
 
@@ -300,19 +301,20 @@ C<REPLICA>-The replica scheduling strategy places and maintains the
 desired number of tasks across your cluster. By default, the service
 scheduler spreads tasks across Availability Zones. You can use task
 placement strategies and constraints to customize task placement
-decisions. This scheduler strategy is required if using the
-C<CODE_DEPLOY> deployment controller.
+decisions. This scheduler strategy is required if the service is using
+the C<CODE_DEPLOY> or C<EXTERNAL> deployment controller types.
 
 =item *
 
 C<DAEMON>-The daemon scheduling strategy deploys exactly one task on
 each active container instance that meets all of the task placement
-constraints that you specify in your cluster. When you are using this
-strategy, there is no need to specify a desired number of tasks, a task
+constraints that you specify in your cluster. When you're using this
+strategy, you don't need to specify a desired number of tasks, a task
 placement strategy, or use Service Auto Scaling policies.
 
-Tasks using the Fargate launch type or the C<CODE_DEPLOY> deploymenet
-controller do not support the C<DAEMON> scheduling strategy.
+Tasks using the Fargate launch type or the C<CODE_DEPLOY> or
+C<EXTERNAL> deployment controller types don't support the C<DAEMON>
+scheduling strategy.
 
 =back
 
@@ -322,9 +324,9 @@ Valid values are: C<"REPLICA">, C<"DAEMON">
 =head2 B<REQUIRED> ServiceName => Str
 
 The name of your service. Up to 255 letters (uppercase and lowercase),
-numbers, hyphens, and underscores are allowed. Service names must be
-unique within a cluster, but you can have similarly named services in
-multiple clusters within a Region or across multiple Regions.
+numbers, and hyphens are allowed. Service names must be unique within a
+cluster, but you can have similarly named services in multiple clusters
+within a Region or across multiple Regions.
 
 
 
@@ -332,12 +334,12 @@ multiple clusters within a Region or across multiple Regions.
 
 The details of the service discovery registries to assign to this
 service. For more information, see Service Discovery
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 
 Service discovery is supported for Fargate tasks if you are using
 platform version v1.1.0 or later. For more information, see AWS Fargate
 Platform Versions
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
 
 
 
@@ -351,11 +353,14 @@ and tag values can have a maximum length of 256 characters.
 
 
 
-=head2 B<REQUIRED> TaskDefinition => Str
+=head2 TaskDefinition => Str
 
 The C<family> and C<revision> (C<family:revision>) or full ARN of the
 task definition to run in your service. If a C<revision> is not
 specified, the latest C<ACTIVE> revision is used.
+
+A task definition must be specified if the service is using the C<ECS>
+deployment controller.
 
 
 

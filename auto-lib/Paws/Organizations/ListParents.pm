@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 =head2 B<REQUIRED> ChildId => Str
 
 The unique identifier (ID) of the OU or account whose parent containers
-you want to list. Do not specify a root.
+you want to list. Don't specify a root.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a child ID
 string requires one of the following:

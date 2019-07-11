@@ -62,8 +62,7 @@ deregister. The ARN contains the C<arn:aws:ecs> namespace, followed by
 the Region of the container instance, the AWS account ID of the
 container instance owner, the C<container-instance> namespace, and then
 the container instance ID. For example,
-C<arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>
->.
+C<arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID>.
 
 
 

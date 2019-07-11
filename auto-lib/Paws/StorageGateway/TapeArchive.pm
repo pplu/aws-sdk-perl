@@ -2,6 +2,7 @@ package Paws::StorageGateway::TapeArchive;
   use Moose;
   has CompletionTime => (is => 'ro', isa => 'Str');
   has KMSKey => (is => 'ro', isa => 'Str');
+  has PoolId => (is => 'ro', isa => 'Str');
   has RetrievedTo => (is => 'ro', isa => 'Str');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str');
@@ -56,6 +57,15 @@ YYYY-MM-DD'T'HH:MM:SS'Z' format.
 =head2 KMSKey => Str
 
   
+
+
+=head2 PoolId => Str
+
+  The ID of the pool that was used to archive the tape. The tapes in this
+pool are archived in the S3 storage class that is associated with the
+pool.
+
+Valid values: "GLACIER", "DEEP_ARCHIVE"
 
 
 =head2 RetrievedTo => Str

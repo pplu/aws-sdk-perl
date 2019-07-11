@@ -83,7 +83,7 @@ with the network interface.
 
 =head2 InterfaceType => Str
 
-  The type of interface.
+  The type of network interface.
 
 
 =head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::NetworkInterfaceIpv6Address>]

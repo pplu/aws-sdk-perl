@@ -2,6 +2,7 @@
 package Paws::IoTAnalytics::UpdateChannel;
   use Moose;
   has ChannelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'channelName', required => 1);
+  has ChannelStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::ChannelStorage', traits => ['NameInRequest'], request_name => 'channelStorage');
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
 
   use MooseX::ClassAttribute;
@@ -30,7 +31,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iotanalytics = Paws->service('IoTAnalytics');
     $iotanalytics->UpdateChannel(
-      ChannelName     => 'MyChannelName',
+      ChannelName    => 'MyChannelName',
+      ChannelStorage => {
+        CustomerManagedS3 => {
+          Bucket    => 'MyBucketName',     # min: 3, max: 255
+          RoleArn   => 'MyRoleArn',        # min: 20, max: 2048
+          KeyPrefix => 'MyS3KeyPrefix',    # min: 1, max: 255; OPTIONAL
+        },    # OPTIONAL
+        ServiceManagedS3 => {
+
+        },    # OPTIONAL
+      },    # OPTIONAL
       RetentionPeriod => {
         NumberOfDays => 1,    # min: 1; OPTIONAL
         Unlimited    => 1,    # OPTIONAL
@@ -46,6 +57,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 B<REQUIRED> ChannelName => Str
 
 The name of the channel to be updated.
+
+
+
+=head2 ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>
+
+Where channel data is stored.
 
 
 

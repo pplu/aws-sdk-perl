@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Vpc
 
 =head1 DESCRIPTION
 
-The VPC security groups and subnets attached to a Lambda function.
+The VPC security groups and subnets that are attached to a Lambda
+function.
 
 =head1 ATTRIBUTES
 

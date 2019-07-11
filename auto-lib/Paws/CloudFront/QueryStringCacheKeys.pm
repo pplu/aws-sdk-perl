@@ -32,21 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-This class has no description
+A complex type that contains information about the query string
+parameters that you want CloudFront to use for caching for a cache
+behavior.
 
 =head1 ATTRIBUTES
 
 
 =head2 Items => ArrayRef[Str|Undef]
 
-  (Optional) A list that contains the query string parameters that you
-want CloudFront to use as a basis for caching for this cache behavior.
-If C<Quantity> is 0, you can omit C<Items>.
+  A list that contains the query string parameters that you want
+CloudFront to use as a basis for caching for a cache behavior. If
+C<Quantity> is 0, you can omit C<Items>.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-  The number of C<whitelisted> query string parameters for this cache
+  The number of C<whitelisted> query string parameters for a cache
 behavior.
 
 

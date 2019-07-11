@@ -56,9 +56,8 @@ the rule set body.)
 
 =head2 B<REQUIRED> RuleSetBody => Str
 
-Collection of matchmaking rules, formatted as a JSON string. Note that
-comments are not allowed in JSON, but most elements support a
-description field.
+Collection of matchmaking rules, formatted as a JSON string. Comments
+are not allowed in JSON, but most elements support a description field.
 
 
 

@@ -858,7 +858,7 @@ Paws::SageMaker - Perl Interface to AWS Amazon SageMaker Service
 
 =head1 DESCRIPTION
 
-Definition of the public APIs exposed by SageMaker
+Provides APIs for creating and managing Amazon SageMaker resources.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker-2017-07-24>
 
@@ -882,8 +882,8 @@ Returns: a L<Paws::SageMaker::AddTagsOutput> instance
 
 Adds or overwrites one or more tags for the specified Amazon SageMaker
 resource. You can add tags to notebook instances, training jobs,
-hyperparameter tuning jobs, models, endpoint configurations, and
-endpoints.
+hyperparameter tuning jobs, batch transform jobs, models, labeling
+jobs, work teams, endpoint configurations, and endpoints.
 
 Each tag consists of a key and an optional value. Tag keys must be
 unique per resource. For more information about tags, see For more
@@ -1040,11 +1040,16 @@ Creates an endpoint using the endpoint configuration specified in the
 request. Amazon SageMaker uses the endpoint to provision resources and
 deploy models. You create the endpoint configuration with the
 CreateEndpointConfig
-(http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html)
 API.
 
 Use this API only for hosting models using Amazon SageMaker hosting
 services.
+
+You must not delete an C<EndpointConfig> in use by an endpoint that is
+live or while the C<UpdateEndpoint> or C<CreateEndpoint> operations are
+being performed on the endpoint. To update an endpoint, you must create
+a new C<EndpointConfig>.
 
 The endpoint name must be unique within an AWS Region in your AWS
 account.
@@ -1058,12 +1063,12 @@ to C<Creating>. After it creates the endpoint, it sets the status to
 C<InService>. Amazon SageMaker can then process incoming requests for
 inferences. To check the status of an endpoint, use the
 DescribeEndpoint
-(http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 API.
 
 For an example, see Exercise 1: Using the K-Means Algorithm Provided by
 Amazon SageMaker
-(http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html).
 
 If any of the models hosted at this endpoint get model data from an
 Amazon S3 location, Amazon SageMaker uses AWS Security Token Service to
@@ -1100,7 +1105,7 @@ services uses to deploy models. In the configuration, you identify one
 or more models, created using the C<CreateModel> API, to deploy and the
 resources that you want Amazon SageMaker to provision. Then you call
 the CreateEndpoint
-(http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
 API.
 
 Use this API only if you want to use Amazon SageMaker hosting services
@@ -1127,9 +1132,9 @@ model B.
 
 =item HyperParameterTuningJobName => Str
 
-=item TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
-
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+
+=item [TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>]
 
 =item [WarmStartConfig => L<Paws::SageMaker::HyperParameterTuningJobWarmStartConfig>]
 
@@ -1334,6 +1339,8 @@ AWS Marketplace, provide a value for C<SourceAlgorithmSpecification>.
 
 =item [LifecycleConfigName => Str]
 
+=item [RootAccess => Str]
+
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
 
 =item [SubnetId => Str]
@@ -1398,7 +1405,7 @@ training, train a model, host models by creating Amazon SageMaker
 endpoints, and validate hosted models.
 
 For more information, see How It Works
-(http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 
 
 =head2 CreateNotebookInstanceLifecycleConfig
@@ -1437,7 +1444,7 @@ instance is not created or started.
 
 For information about notebook instance lifestyle configurations, see
 Step 2.1: (Optional) Customize a Notebook Instance
-(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
 =head2 CreatePresignedNotebookInstanceUrl
@@ -1461,16 +1468,19 @@ C<Open> next to a notebook instance, Amazon SageMaker opens a new tab
 showing the Jupyter server home page from the notebook instance. The
 console uses this API to get the URL and show the page.
 
-You can restrict access to this API and to the URL that it returns to a
-list of IP addresses that you specify. To restrict access, attach an
-IAM policy that denies access to this API unless the call comes from an
-IP address in the specified list to every AWS Identity and Access
-Management user, group, or role used to access the notebook instance.
+IAM authorization policies for this API are also enforced for every
+HTTP request and WebSocket frame that attempts to connect to the
+notebook instance.For example, you can restrict access to this API and
+to the URL that it returns to a list of IP addresses that you specify.
 Use the C<NotIpAddress> condition operator and the C<aws:SourceIP>
 condition context key to specify the list of IP addresses that you want
 to have access to the notebook instance. For more information, see
 Limit Access to a Notebook Instance by IP Address
-(http://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html).
+
+The URL that you get from a call to is valid only for 5 minutes. If you
+try to use the URL after the 5-minute limit expires, you are directed
+to the AWS console sign-in page.
 
 
 =head2 CreateTrainingJob
@@ -1514,8 +1524,8 @@ specify.
 
 If you choose to host your model using Amazon SageMaker hosting
 services, you can use the resulting model artifacts as part of the
-model. You can also use the artifacts in a deep learning service other
-than Amazon SageMaker, provided that you know how to use them for
+model. You can also use the artifacts in a machine learning service
+other than Amazon SageMaker, provided that you know how to use them for
 inferences.
 
 In the request body, you provide the following:
@@ -1529,9 +1539,11 @@ C<AlgorithmSpecification> - Identifies the training algorithm to use.
 =item *
 
 C<HyperParameters> - Specify these algorithm-specific parameters to
-influence the quality of the final model. For a list of hyperparameters
-for each training algorithm provided by Amazon SageMaker, see
-Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+enable the estimation of model parameters during training.
+Hyperparameters can be tuned to optimize this learning process. For a
+list of hyperparameters for each training algorithm provided by Amazon
+SageMaker, see Algorithms
+(https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 
 =item *
 
@@ -1558,13 +1570,13 @@ successfully complete model training.
 
 =item *
 
-C<StoppingCondition> - Sets a duration for training. Use this parameter
-to cap model training costs.
+C<StoppingCondition> - Sets a time limit for training. Use this
+parameter to cap model training costs.
 
 =back
 
 For more information about Amazon SageMaker, see How It Works
-(http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 
 
 =head2 CreateTransformJob
@@ -1582,6 +1594,8 @@ For more information about Amazon SageMaker, see How It Works
 =item TransformResources => L<Paws::SageMaker::TransformResources>
 
 =item [BatchStrategy => Str]
+
+=item [DataProcessing => L<Paws::SageMaker::DataProcessing>]
 
 =item [Environment => L<Paws::SageMaker::TransformEnvironmentMap>]
 
@@ -1639,7 +1653,7 @@ transform job.
 
 For more information about how batch transformation works Amazon
 SageMaker, see How It Works
-(http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html).
 
 
 =head2 CreateWorkteam
@@ -1651,6 +1665,8 @@ SageMaker, see How It Works
 =item MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]
 
 =item WorkteamName => Str
+
+=item [NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>]
 
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
 
@@ -1755,7 +1771,7 @@ Returns: nothing
 
 Deletes a model. The C<DeleteModel> API deletes only the model entry
 that was created in Amazon SageMaker when you called the CreateModel
-(http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
 API. It does not delete model artifacts, inference code, or the IAM
 role that you specified when creating the model.
 
@@ -2044,7 +2060,7 @@ Returns a description of a notebook instance lifecycle configuration.
 
 For information about notebook instance lifestyle configurations, see
 Step 2.1: (Optional) Customize a Notebook Instance
-(http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 
 =head2 DescribeSubscribedWorkteam
@@ -2448,7 +2464,7 @@ Each argument is described in detail in: L<Paws::SageMaker::ListModels>
 Returns: a L<Paws::SageMaker::ListModelsOutput> instance
 
 Lists models created with the CreateModel
-(http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
 API.
 
 
@@ -2843,7 +2859,9 @@ Returns: nothing
 
 Terminates the ML compute instance. Before terminating the instance,
 Amazon SageMaker disconnects the ML storage volume from it. Amazon
-SageMaker preserves the ML storage volume.
+SageMaker preserves the ML storage volume. Amazon SageMaker stops
+charging you for the ML compute instance when you call
+C<StopNotebookInstance>.
 
 To access data on the ML storage volume for a notebook instance that
 has been terminated, call the C<StartNotebookInstance> API.
@@ -2869,11 +2887,6 @@ Stops a training job. To stop a job, Amazon SageMaker sends the
 algorithm the C<SIGTERM> signal, which delays job termination for 120
 seconds. Algorithms might use this 120-second window to save the model
 artifacts, so the results of the training is not lost.
-
-Training algorithms provided by Amazon SageMaker save the intermediate
-results of a model training job. This intermediate data is a valid
-model artifact. You can use the model artifacts that are saved when
-Amazon SageMaker stops a training job to create a model.
 
 When it receives a C<StopTrainingJob> request, Amazon SageMaker changes
 the status of the job to C<Stopping>. After Amazon SageMaker stops the
@@ -2944,11 +2957,13 @@ When Amazon SageMaker receives the request, it sets the endpoint status
 to C<Updating>. After updating the endpoint, it sets the status to
 C<InService>. To check the status of an endpoint, use the
 DescribeEndpoint
-(http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 API.
 
-You cannot update an endpoint with the current C<EndpointConfig>. To
-update an endpoint, you must create a new C<EndpointConfig>.
+You must not delete an C<EndpointConfig> in use by an endpoint that is
+live or while the C<UpdateEndpoint> or C<CreateEndpoint> operations are
+being performed on the endpoint. To update an endpoint, you must create
+a new C<EndpointConfig>.
 
 
 =head2 UpdateEndpointWeightsAndCapacities
@@ -2972,7 +2987,7 @@ existing endpoint. When it receives the request, Amazon SageMaker sets
 the endpoint status to C<Updating>. After updating the endpoint, it
 sets the status to C<InService>. To check the status of an endpoint,
 use the DescribeEndpoint
-(http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 API.
 
 
@@ -3002,6 +3017,8 @@ API.
 
 =item [RoleArn => Str]
 
+=item [RootAccess => Str]
+
 =item [VolumeSizeInGB => Int]
 
 
@@ -3013,8 +3030,7 @@ Returns: a L<Paws::SageMaker::UpdateNotebookInstanceOutput> instance
 
 Updates a notebook instance. NotebookInstance updates include upgrading
 or downgrading the ML compute instance used for your notebook instance
-to accommodate changes in your workload requirements. You can also
-update the VPC security groups.
+to accommodate changes in your workload requirements.
 
 
 =head2 UpdateNotebookInstanceLifecycleConfig
@@ -3047,6 +3063,8 @@ CreateNotebookInstanceLifecycleConfig API.
 =item [Description => Str]
 
 =item [MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]]
+
+=item [NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>]
 
 
 =back

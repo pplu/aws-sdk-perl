@@ -121,7 +121,7 @@ up to 10 container instances.
 
 Specifies whether to enable Amazon ECS managed tags for the task. For
 more information, see Tagging Your Amazon ECS Resources
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

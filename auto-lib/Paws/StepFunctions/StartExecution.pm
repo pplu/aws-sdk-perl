@@ -62,9 +62,9 @@ two braces, for example: C<"input": "{}">
 =head2 Name => Str
 
 The name of the execution. This name must be unique for your AWS
-account and region for 90 days. For more information, see Limits
-Related to State Machine Executions
-(http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
+account, region, and state machine for 90 days. For more information,
+see Limits Related to State Machine Executions
+(https://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
 in the I<AWS Step Functions Developer Guide>.
 
 A name must I<not> contain:

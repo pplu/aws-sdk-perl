@@ -23,8 +23,8 @@ The index names.
 
 =head2 NextToken => Str
 
-The token used to get the next set of results, or B<null> if there are
-no additional results.
+The token used to get the next set of results, or null if there are no
+additional results.
 
 
 =head2 _request_id => Str

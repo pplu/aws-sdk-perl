@@ -47,7 +47,7 @@ This class has no description
 
 =head2 RegionName => Str
 
-  The name of the region.
+  The name of the Region.
 
 
 =head2 State => Str

@@ -52,7 +52,7 @@ C<arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-1234567890
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
 

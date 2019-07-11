@@ -18,12 +18,13 @@ Paws::GuardDuty::ListMembersResponse
 
 =head2 Members => ArrayRef[L<Paws::GuardDuty::Member>]
 
-
+A list of members.
 
 
 =head2 NextToken => Str
 
-
+Pagination parameter to be used on the next list operation to retrieve
+more items.
 
 
 =head2 _request_id => Str

@@ -66,7 +66,7 @@ You must generate the metadata document using the identity management
 software that is used as your organization's IdP.
 
 For more information, see About SAML 2.0-based Federation
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)
 in the I<IAM User Guide>
 
 

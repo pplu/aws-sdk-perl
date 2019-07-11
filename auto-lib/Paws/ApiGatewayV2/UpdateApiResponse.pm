@@ -66,7 +66,7 @@ The name of the API.
 
 =head2 ProtocolType => Str
 
-The API protocol: HTTP or WEBSOCKET.
+The API protocol: Currently only WEBSOCKET is supported.
 
 Valid values are: C<"WEBSOCKET">
 =head2 RouteSelectionExpression => Str

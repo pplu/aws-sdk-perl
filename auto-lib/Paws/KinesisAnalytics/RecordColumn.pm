@@ -43,8 +43,10 @@ Also used to describe the format of the reference data source.
 
 =head2 Mapping => Str
 
-  Reference to the data element in the streaming input of the reference
-data source.
+  Reference to the data element in the streaming input or the reference
+data source. This element is required if the RecordFormatType
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_RecordFormat.html#analytics-Type-RecordFormat-RecordFormatTypel)
+is C<JSON>.
 
 
 =head2 B<REQUIRED> Name => Str

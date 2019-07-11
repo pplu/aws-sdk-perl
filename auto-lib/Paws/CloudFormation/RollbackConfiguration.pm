@@ -60,7 +60,7 @@ before cleaning up old resources after update operations. You can use
 this monitoring period to perform any manual stack validation desired,
 and manually cancel the stack creation or update (using
 CancelUpdateStack
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html),
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html),
 for example) as necessary.
 
 If you specify 0 for this parameter, CloudFormation still monitors the

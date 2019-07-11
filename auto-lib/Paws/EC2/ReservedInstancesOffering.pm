@@ -125,7 +125,7 @@ made.
 
 =head2 Scope => Str
 
-  Whether the Reserved Instance is applied to instances in a region or an
+  Whether the Reserved Instance is applied to instances in a Region or an
 Availability Zone.
 
 

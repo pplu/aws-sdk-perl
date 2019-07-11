@@ -85,9 +85,11 @@ Name of an existing application.
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
 Version of the application for which you are adding the reference data
-source. You can use the DescribeApplication operation to get the
-current application version. If the version specified is not the
-current version, the C<ConcurrentModificationException> is returned.
+source. You can use the DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+operation to get the current application version. If the version
+specified is not the current version, the
+C<ConcurrentModificationException> is returned.
 
 
 

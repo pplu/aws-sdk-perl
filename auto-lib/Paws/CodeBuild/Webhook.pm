@@ -1,6 +1,7 @@
 package Paws::CodeBuild::Webhook;
   use Moose;
   has BranchFilter => (is => 'ro', isa => 'Str', request_name => 'branchFilter', traits => ['NameInRequest']);
+  has FilterGroups => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeBuild::WebhookFilter]]', request_name => 'filterGroups', traits => ['NameInRequest']);
   has LastModifiedSecret => (is => 'ro', isa => 'Str', request_name => 'lastModifiedSecret', traits => ['NameInRequest']);
   has PayloadUrl => (is => 'ro', isa => 'Str', request_name => 'payloadUrl', traits => ['NameInRequest']);
   has Secret => (is => 'ro', isa => 'Str', request_name => 'secret', traits => ['NameInRequest']);
@@ -47,6 +48,20 @@ project in AWS CodeBuild.
 built when a webhook is triggered. If the name of a branch matches the
 regular expression, then it is built. If C<branchFilter> is empty, then
 all branches are built.
+
+It is recommended that you use C<filterGroups> instead of
+C<branchFilter>.
+
+
+=head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]
+
+  An array of arrays of C<WebhookFilter> objects used to determine which
+webhooks are triggered. At least one C<WebhookFilter> in the array must
+specify C<EVENT> as its C<type>.
+
+For a build to be triggered, at least one filter group in the
+C<filterGroups> array must pass. For a filter group to pass, each of
+its filters must pass.
 
 
 =head2 LastModifiedSecret => Str

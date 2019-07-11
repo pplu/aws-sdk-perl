@@ -61,9 +61,7 @@ Includes information about the specified association execution.
 
 =head2 ExecutionId => Str
 
-  The execution ID. If the association does not run at intervals or
-according to a schedule, then the ExecutionID is the same as the
-AssociationID.
+  The execution ID.
 
 
 =head2 LastExecutionDate => Str

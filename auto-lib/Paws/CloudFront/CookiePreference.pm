@@ -34,9 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 A complex type that specifies whether you want CloudFront to forward
 cookies to the origin and, if so, which ones. For more information
-about forwarding cookies to the origin, see How CloudFront Forwards,
-Caches, and Logs Cookies
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html)
+about forwarding cookies to the origin, see Caching Content Based on
+Cookies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
@@ -67,8 +67,8 @@ C<WhitelistedNames> element and its child elements, CloudFront deletes
 them automatically.
 
 For the current limit on the number of cookie names that you can
-whitelist for each cache behavior, see Amazon CloudFront Limits
-(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront)
+whitelist for each cache behavior, see CloudFront Limits
+(https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront)
 in the I<AWS General Reference>.
 
 

@@ -3,6 +3,7 @@ package Paws::MediaPackage::CreateChannel;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -31,7 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $mediapackage = Paws->service('MediaPackage');
     my $CreateChannelResponse = $mediapackage->CreateChannel(
       Id          => 'My__string',
-      Description => 'My__string',    # OPTIONAL
+      Description => 'My__string',                         # OPTIONAL
+      Tags        => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -39,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Description = $CreateChannelResponse->Description;
     my $HlsIngest   = $CreateChannelResponse->HlsIngest;
     my $Id          = $CreateChannelResponse->Id;
+    my $Tags        = $CreateChannelResponse->Tags;
 
     # Returns a L<Paws::MediaPackage::CreateChannelResponse> object.
 
@@ -58,6 +61,12 @@ A short text description of the Channel.
 
 The ID of the Channel. The ID must be unique within the region and it
 cannot be changed after a Channel is created.
+
+
+
+=head2 Tags => L<Paws::MediaPackage::Tags>
+
+
 
 
 

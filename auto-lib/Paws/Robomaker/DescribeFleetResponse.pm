@@ -41,7 +41,7 @@ The Amazon Resource Name (ARN) of the last deployment job.
 
 The status of the last deployment.
 
-Valid values are: C<"Pending">, C<"Preparing">, C<"InProgress">, C<"Failed">, C<"Succeeded">
+Valid values are: C<"Pending">, C<"Preparing">, C<"InProgress">, C<"Failed">, C<"Succeeded">, C<"Canceled">
 =head2 LastDeploymentTime => Str
 
 The time of the last deployment.

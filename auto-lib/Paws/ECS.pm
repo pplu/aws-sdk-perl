@@ -25,6 +25,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::CreateService', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTaskSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::CreateTaskSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteAccountSetting {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::DeleteAccountSetting', @_);
@@ -43,6 +48,11 @@ package Paws::ECS;
   sub DeleteService {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::DeleteService', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTaskSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::DeleteTaskSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterContainerInstance {
@@ -78,6 +88,11 @@ package Paws::ECS;
   sub DescribeTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::DescribeTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTaskSets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeTaskSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DiscoverPollEndpoint {
@@ -170,6 +185,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::StopTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SubmitAttachmentStateChanges {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::SubmitAttachmentStateChanges', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SubmitContainerStateChange {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::SubmitContainerStateChange', @_);
@@ -203,6 +223,16 @@ package Paws::ECS;
   sub UpdateService {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateServicePrimaryTaskSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateServicePrimaryTaskSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTaskSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateTaskSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -392,7 +422,7 @@ package Paws::ECS;
   }
 
 
-  sub operations { qw/CreateCluster CreateService DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateContainerAgent UpdateContainerInstancesState UpdateService / }
+  sub operations { qw/CreateCluster CreateService CreateTaskSet DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeleteTaskSet DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DescribeTaskSets DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitAttachmentStateChanges SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateContainerAgent UpdateContainerInstancesState UpdateService UpdateServicePrimaryTaskSet UpdateTaskSet / }
 
 1;
 
@@ -420,6 +450,8 @@ Paws::ECS - Perl Interface to AWS Amazon EC2 Container Service
 
 =head1 DESCRIPTION
 
+Amazon Elastic Container Service
+
 Amazon Elastic Container Service (Amazon ECS) is a highly scalable,
 fast, container management service that makes it easy to run, stop, and
 manage Docker containers on a cluster. You can host your cluster on a
@@ -428,7 +460,7 @@ your services or tasks using the Fargate launch type. For more control,
 you can host your tasks on a cluster of Amazon Elastic Compute Cloud
 (Amazon EC2) instances that you manage by using the EC2 launch type.
 For more information about launch types, see Amazon ECS Launch Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html).
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html).
 
 Amazon ECS lets you launch and stop container-based applications with
 simple API calls, allows you to get the state of your cluster from a
@@ -472,7 +504,7 @@ resources in other AWS services can be managed on your behalf. However,
 if the IAM user that makes the call does not have permissions to create
 the service-linked role, it is not created. For more information, see
 Using Service-Linked Roles for Amazon ECS
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -481,8 +513,6 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =over
 
 =item ServiceName => Str
-
-=item TaskDefinition => Str
 
 =item [ClientToken => Str]
 
@@ -520,6 +550,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
 
+=item [TaskDefinition => Str]
+
 
 =back
 
@@ -528,7 +560,7 @@ Each argument is described in detail in: L<Paws::ECS::CreateService>
 Returns: a L<Paws::ECS::CreateServiceResponse> instance
 
 Runs and maintains a desired number of tasks from a specified task
-definition. If the number of tasks running in a service drops below
+definition. If the number of tasks running in a service drops below the
 C<desiredCount>, Amazon ECS spawns another copy of the task in the
 specified cluster. To update an existing service, see UpdateService.
 
@@ -539,25 +571,60 @@ the service. For more information, see Service Load Balancing
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
+Tasks for services that I<do not> use a load balancer are considered
+healthy if they're in the C<RUNNING> state. Tasks for services that
+I<do> use a load balancer are considered healthy if they're in the
+C<RUNNING> state and the container instance that they're hosted on is
+reported as healthy by the load balancer.
+
+There are two service scheduler strategies available:
+
+=over
+
+=item *
+
+C<REPLICA> - The replica scheduling strategy places and maintains the
+desired number of tasks across your cluster. By default, the service
+scheduler spreads tasks across Availability Zones. You can use task
+placement strategies and constraints to customize task placement
+decisions. For more information, see Service Scheduler Concepts
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+=item *
+
+C<DAEMON> - The daemon scheduling strategy deploys exactly one task on
+each active container instance that meets all of the task placement
+constraints that you specify in your cluster. When using this strategy,
+you don't need to specify a desired number of tasks, a task placement
+strategy, or use Service Auto Scaling policies. For more information,
+see Service Scheduler Concepts
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+=back
+
 You can optionally specify a deployment configuration for your service.
 The deployment is triggered by changing properties, such as the task
 definition or the desired count of a service, with an UpdateService
-operation.
+operation. The default value for a replica service for
+C<minimumHealthyPercent> is 100%. The default value for a daemon
+service for C<minimumHealthyPercent> is 0%.
 
-If a service is using the C<ECS> deployment controller, the B<minimum
-healthy percent> represents a lower limit on the number of tasks in a
+If a service is using the C<ECS> deployment controller, the minimum
+healthy percent represents a lower limit on the number of tasks in a
 service that must remain in the C<RUNNING> state during a deployment,
 as a percentage of the desired number of tasks (rounded up to the
 nearest integer), and while any container instances are in the
 C<DRAINING> state if the service contains tasks using the EC2 launch
 type. This parameter enables you to deploy without using additional
 cluster capacity. For example, if your service has a desired number of
-four tasks and a minimum healthy percent of 50%, the scheduler may stop
-two existing tasks to free up cluster capacity before starting two new
-tasks. Tasks for services that I<do not> use a load balancer are
-considered healthy if they are in the C<RUNNING> state; tasks for
-services that I<do> use a load balancer are considered healthy if they
-are in the C<RUNNING> state and they are reported as healthy by the
+four tasks and a minimum healthy percent of 50%, the scheduler might
+stop two existing tasks to free up cluster capacity before starting two
+new tasks. Tasks for services that I<do not> use a load balancer are
+considered healthy if they're in the C<RUNNING> state. Tasks for
+services that I<do> use a load balancer are considered healthy if
+they're in the C<RUNNING> state and they're reported as healthy by the
 load balancer. The default value for minimum healthy percent is 100%.
 
 If a service is using the C<ECS> deployment controller, the B<maximum
@@ -573,22 +640,23 @@ tasks before stopping the four older tasks (provided that the cluster
 resources required to do this are available). The default value for
 maximum percent is 200%.
 
-If a service is using the C<CODE_DEPLOY> deployment controller and
-tasks that use the EC2 launch type, the B<minimum healthy percent> and
-B<maximum percent> values are only used to define the lower and upper
-limit on the number of the tasks in the service that remain in the
-C<RUNNING> state while the container instances are in the C<DRAINING>
-state. If the tasks in the service use the Fargate launch type, the
-minimum healthy percent and maximum percent values are not used,
-although they are currently visible when describing your service.
+If a service is using either the C<CODE_DEPLOY> or C<EXTERNAL>
+deployment controller types and tasks that use the EC2 launch type, the
+B<minimum healthy percent> and B<maximum percent> values are used only
+to define the lower and upper limit on the number of the tasks in the
+service that remain in the C<RUNNING> state while the container
+instances are in the C<DRAINING> state. If the tasks in the service use
+the Fargate launch type, the minimum healthy percent and maximum
+percent values aren't used, although they're currently visible when
+describing your service.
 
-Tasks for services that I<do not> use a load balancer are considered
-healthy if they are in the C<RUNNING> state. Tasks for services that
-I<do> use a load balancer are considered healthy if they are in the
-C<RUNNING> state and the container instance they are hosted on is
-reported as healthy by the load balancer. The default value for a
-replica service for C<minimumHealthyPercent> is 100%. The default value
-for a daemon service for C<minimumHealthyPercent> is 0%.
+When creating a service that uses the C<EXTERNAL> deployment
+controller, you can specify only parameters that aren't controlled at
+the task set level. The only required parameter is the service name.
+You control your services using the CreateTaskSet operation. For more
+information, see Amazon ECS Deployment Types
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 When the service scheduler launches new tasks, it determines task
 placement in your cluster using the following logic:
@@ -629,6 +697,46 @@ instances with the fewest number of running tasks for this service.
 
 
 
+=head2 CreateTaskSet
+
+=over
+
+=item Cluster => Str
+
+=item Service => Str
+
+=item TaskDefinition => Str
+
+=item [ClientToken => Str]
+
+=item [ExternalId => Str]
+
+=item [LaunchType => Str]
+
+=item [LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]]
+
+=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+
+=item [PlatformVersion => Str]
+
+=item [Scale => L<Paws::ECS::Scale>]
+
+=item [ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::CreateTaskSet>
+
+Returns: a L<Paws::ECS::CreateTaskSetResponse> instance
+
+Create a task set in the specified cluster and service. This is used
+when a service uses the C<EXTERNAL> deployment controller type. For
+more information, see Amazon ECS Deployment Types
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+
 =head2 DeleteAccountSetting
 
 =over
@@ -644,10 +752,8 @@ Each argument is described in detail in: L<Paws::ECS::DeleteAccountSetting>
 
 Returns: a L<Paws::ECS::DeleteAccountSettingResponse> instance
 
-Modifies the ARN and resource ID format of a resource for a specified
-IAM user, IAM role, or the root user for an account. You can specify
-whether the new ARN and resource ID format are disabled for new
-resources that are created.
+Disables an account setting for a specified IAM user, IAM role, or the
+root user for an account.
 
 
 =head2 DeleteAttributes
@@ -724,6 +830,32 @@ C<ServiceNotFoundException> error.
 If you attempt to create a new service with the same name as an
 existing service in either C<ACTIVE> or C<DRAINING> status, you receive
 an error.
+
+
+=head2 DeleteTaskSet
+
+=over
+
+=item Cluster => Str
+
+=item Service => Str
+
+=item TaskSet => Str
+
+=item [Force => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::DeleteTaskSet>
+
+Returns: a L<Paws::ECS::DeleteTaskSetResponse> instance
+
+Deletes a specified task set within a service. This is used when a
+service uses the C<EXTERNAL> deployment controller type. For more
+information, see Amazon ECS Deployment Types
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 DeregisterContainerInstance
@@ -898,6 +1030,30 @@ Returns: a L<Paws::ECS::DescribeTasksResponse> instance
 Describes a specified task or tasks.
 
 
+=head2 DescribeTaskSets
+
+=over
+
+=item Cluster => Str
+
+=item Service => Str
+
+=item [TaskSets => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::DescribeTaskSets>
+
+Returns: a L<Paws::ECS::DescribeTaskSetsResponse> instance
+
+Describes the task sets in the specified cluster and service. This is
+used when a service uses the C<EXTERNAL> deployment controller type.
+For more information, see Amazon ECS Deployment Types
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+
 =head2 DiscoverPollEndpoint
 
 =over
@@ -942,8 +1098,7 @@ Each argument is described in detail in: L<Paws::ECS::ListAccountSettings>
 
 Returns: a L<Paws::ECS::ListAccountSettingsResponse> instance
 
-Lists the account settings for an Amazon ECS resource for a specified
-principal.
+Lists the account settings for a specified principal.
 
 
 =head2 ListAttributes
@@ -1176,17 +1331,29 @@ Each argument is described in detail in: L<Paws::ECS::PutAccountSetting>
 
 Returns: a L<Paws::ECS::PutAccountSettingResponse> instance
 
-Modifies the ARN and resource ID format of a resource type for a
-specified IAM user, IAM role, or the root user for an account. If the
-account setting for the root user is changed, it sets the default
-setting for all of the IAM users and roles for which no individual
-account setting has been set. The opt-in and opt-out account setting
-can be set for each Amazon ECS resource separately. The ARN and
-resource ID format of a resource will be defined by the opt-in status
-of the IAM user or role that created the resource. Enabling this
-setting is required to use new Amazon ECS features such as resource
-tagging. For more information, see Amazon Resource Names (ARNs) and IDs
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-resource-ids.html)
+Modifies an account setting. For more information, see Account Settings
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+When C<serviceLongArnFormat>, C<taskLongArnFormat>, or
+C<containerInstanceLongArnFormat> are specified, the ARN and resource
+ID format of the resource type for a specified IAM user, IAM role, or
+the root user for an account is changed. If you change the account
+setting for the root user, the default settings for all of the IAM
+users and roles for which no individual account setting has been
+specified are reset. The opt-in and opt-out account setting can be
+specified for each Amazon ECS resource separately. The ARN and resource
+ID format of a resource will be defined by the opt-in status of the IAM
+user or role that created the resource. You must enable this setting to
+use Amazon ECS features such as resource tagging.
+
+When C<awsvpcTrunking> is specified, the elastic network interface
+(ENI) limit for any new container instances that support the feature is
+changed. If C<awsvpcTrunking> is enabled, any new container instances
+that support the feature are launched have the increased ENI limits
+available to them. For more information, see Elastic Network Interface
+Trunking
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -1205,10 +1372,8 @@ Each argument is described in detail in: L<Paws::ECS::PutAccountSettingDefault>
 
 Returns: a L<Paws::ECS::PutAccountSettingDefaultResponse> instance
 
-Modifies the ARN and resource ID format of a resource type for all IAM
-users on an account for which no individual account setting has been
-set. Enabling this setting is required to use new Amazon ECS features
-such as resource tagging.
+Modifies an account setting for all IAM users on an account for whom no
+individual account setting has been specified.
 
 
 =head2 PutAttributes
@@ -1292,6 +1457,8 @@ becomes available to place containers on.
 
 =item [PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]]
 
+=item [ProxyConfiguration => L<Paws::ECS::ProxyConfiguration>]
+
 =item [RequiresCompatibilities => ArrayRef[Str|Undef]]
 
 =item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
@@ -1331,7 +1498,7 @@ the Docker run reference. If you specify the C<awsvpc> network mode,
 the task is allocated an elastic network interface, and you must
 specify a NetworkConfiguration when you create a service or run a task
 with the task definition. For more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -1490,6 +1657,27 @@ more information, see Amazon ECS Container Agent Configuration
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
+=head2 SubmitAttachmentStateChanges
+
+=over
+
+=item Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>]
+
+=item [Cluster => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::SubmitAttachmentStateChanges>
+
+Returns: a L<Paws::ECS::SubmitAttachmentStateChangesResponse> instance
+
+This action is only used by the Amazon ECS agent, and it is not
+intended for use outside of the agent.
+
+Sent to acknowledge that an attachment changed states.
+
+
 =head2 SubmitContainerStateChange
 
 =over
@@ -1644,10 +1832,14 @@ Returns: a L<Paws::ECS::UpdateContainerInstancesStateResponse> instance
 
 Modifies the status of an Amazon ECS container instance.
 
-You can change the status of a container instance to C<DRAINING> to
-manually remove an instance from a cluster, for example to perform
-system updates, update the Docker daemon, or scale down the cluster
-size.
+Once a container instance has reached an C<ACTIVE> state, you can
+change the status of a container instance to C<DRAINING> to manually
+remove an instance from a cluster, for example to perform system
+updates, update the Docker daemon, or scale down the cluster size.
+
+A container instance cannot be changed to C<DRAINING> until it has
+reached an C<ACTIVE> status. If the instance is in any other status, an
+error will be received.
 
 When you set a container instance to C<DRAINING>, Amazon ECS prevents
 new tasks from being scheduled for placement on the container instance
@@ -1696,8 +1888,9 @@ not affected. You must wait for them to finish or stop them manually.
 A container instance has completed draining when it has no more
 C<RUNNING> tasks. You can verify this using ListTasks.
 
-When you set a container instance to C<ACTIVE>, the Amazon ECS
-scheduler can begin scheduling tasks on the instance again.
+When a container instance has been drained, you can set a container
+instance to C<ACTIVE> status and once it has reached that status the
+Amazon ECS scheduler can begin scheduling tasks on the instance again.
 
 
 =head2 UpdateService
@@ -1743,6 +1936,12 @@ a new AWS CodeDeploy deployment should be created. For more
 information, see CreateDeployment
 (https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html)
 in the I<AWS CodeDeploy API Reference>.
+
+For services using an external deployment controller, you can update
+only the desired count and health check grace period using this API. If
+the launch type, load balancer, network configuration, platform
+version, or task definition need to be updated, you should create a new
+task set. For more information, see CreateTaskSet.
 
 You can add to or subtract from the number of instantiations of a task
 definition in a service by specifying the cluster that the service is
@@ -1859,6 +2058,58 @@ largest number of running tasks for this service.
 
 =back
 
+
+
+=head2 UpdateServicePrimaryTaskSet
+
+=over
+
+=item Cluster => Str
+
+=item PrimaryTaskSet => Str
+
+=item Service => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::UpdateServicePrimaryTaskSet>
+
+Returns: a L<Paws::ECS::UpdateServicePrimaryTaskSetResponse> instance
+
+Modifies which task set in a service is the primary task set. Any
+parameters that are updated on the primary task set in a service will
+transition to the service. This is used when a service uses the
+C<EXTERNAL> deployment controller type. For more information, see
+Amazon ECS Deployment Types
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+
+=head2 UpdateTaskSet
+
+=over
+
+=item Cluster => Str
+
+=item Scale => L<Paws::ECS::Scale>
+
+=item Service => Str
+
+=item TaskSet => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::UpdateTaskSet>
+
+Returns: a L<Paws::ECS::UpdateTaskSetResponse> instance
+
+Modifies a task set. This is used when a service uses the C<EXTERNAL>
+deployment controller type. For more information, see Amazon ECS
+Deployment Types
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 

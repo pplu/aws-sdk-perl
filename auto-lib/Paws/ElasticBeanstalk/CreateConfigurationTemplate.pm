@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::CreateConfigurationTemplate;
   has PlatformArn => (is => 'ro', isa => 'Str');
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has SourceConfiguration => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SourceConfiguration');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Tag]');
   has TemplateName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -130,6 +131,12 @@ configuration parameters are specified, the solution stack of the
 source configuration template must match the specified solution stack
 name or else AWS Elastic Beanstalk returns an
 C<InvalidParameterCombination> error.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
+
+Specifies the tags applied to the configuration template.
 
 
 

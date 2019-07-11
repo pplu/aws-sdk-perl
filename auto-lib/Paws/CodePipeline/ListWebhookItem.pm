@@ -5,6 +5,7 @@ package Paws::CodePipeline::ListWebhookItem;
   has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
   has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
   has LastTriggered => (is => 'ro', isa => 'Str', request_name => 'lastTriggered', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -67,6 +68,11 @@ authentication type and filter rules.
 
   The date and time a webhook was last successfully triggered, in
 timestamp format.
+
+
+=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+
+  Specifies the tags applied to the webhook.
 
 
 =head2 B<REQUIRED> Url => Str

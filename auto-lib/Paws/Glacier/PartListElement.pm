@@ -44,8 +44,8 @@ A list of the part sizes of the multipart upload.
 
 =head2 SHA256TreeHash => Str
 
-  The SHA256 tree hash value that Amazon Glacier calculated for the part.
-This field is never C<null>.
+  The SHA256 tree hash value that Amazon S3 Glacier calculated for the
+part. This field is never C<null>.
 
 
 

@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Conne
 
 =head1 DESCRIPTION
 
-A structure used to specify a connection to create or update.
+A structure that is used to specify a connection to create or update.
 
 =head1 ATTRIBUTES
 
@@ -54,7 +54,7 @@ not supported.
 
 =head2 Description => Str
 
-  Description of the connection.
+  The description of the connection.
 
 
 =head2 MatchCriteria => ArrayRef[Str|Undef]
@@ -69,8 +69,9 @@ not supported.
 
 =head2 PhysicalConnectionRequirements => L<Paws::Glue::PhysicalConnectionRequirements>
 
-  A map of physical connection requirements, such as VPC and
-SecurityGroup, needed for making this connection successfully.
+  A map of physical connection requirements, such as virtual private
+cloud (VPC) and C<SecurityGroup>, that are needed to successfully make
+this connection.
 
 
 

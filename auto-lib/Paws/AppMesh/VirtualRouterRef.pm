@@ -1,8 +1,8 @@
 package Paws::AppMesh::VirtualRouterRef;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest']);
-  has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
+  has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
+  has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +38,17 @@ An object representing a virtual router returned by a list operation.
 =head1 ATTRIBUTES
 
 
-=head2 Arn => Str
+=head2 B<REQUIRED> Arn => Str
 
   The full Amazon Resource Name (ARN) for the virtual router.
 
 
-=head2 MeshName => Str
+=head2 B<REQUIRED> MeshName => Str
 
-  The name of the service mesh in which the virtual router resides.
+  The name of the service mesh that the virtual router resides in.
 
 
-=head2 VirtualRouterName => Str
+=head2 B<REQUIRED> VirtualRouterName => Str
 
   The name of the virtual router.
 

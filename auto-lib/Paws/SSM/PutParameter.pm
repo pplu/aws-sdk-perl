@@ -6,6 +6,9 @@ package Paws::SSM::PutParameter;
   has KeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Overwrite => (is => 'ro', isa => 'Bool');
+  has Policies => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
+  has Tier => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str', required => 1);
   has Value => (is => 'ro', isa => 'Str', required => 1);
 
@@ -41,6 +44,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description    => 'MyParameterDescription',    # OPTIONAL
       KeyId          => 'MyParameterKeyId',          # OPTIONAL
       Overwrite      => 1,                           # OPTIONAL
+      Policies       => 'MyParameterPolicies',       # OPTIONAL
+      Tags           => [
+        {
+          Key   => 'MyTagKey',                       # min: 1, max: 128
+          Value => 'MyTagValue',                     # min: 1, max: 256
+
+        },
+        ...
+      ],                                             # OPTIONAL
+      Tier => 'Standard',                            # OPTIONAL
     );
 
     # Results:
@@ -156,6 +169,97 @@ Overwrite an existing parameter. If not specified, will default to
 
 
 
+=head2 Policies => Str
+
+One or more policies to apply to a parameter. This action takes a JSON
+array. Parameter Store supports the following policy types:
+
+Expiration: This policy deletes the parameter after it expires. When
+you create the policy, you specify the expiration date. You can update
+the expiration date and time by updating the policy. Updating the
+I<parameter> does not affect the expiration date and time. When the
+expiration time is reached, Parameter Store deletes the parameter.
+
+ExpirationNotification: This policy triggers an event in Amazon
+CloudWatch Events that notifies you about the expiration. By using this
+policy, you can receive notification before or after the expiration
+time is reached, in units of days or hours.
+
+NoChangeNotification: This policy triggers a CloudWatch event if a
+parameter has not been modified for a specified period of time. This
+policy type is useful when, for example, a secret needs to be changed
+within a period of time, but it has not been changed.
+
+All existing policies are preserved until you send new policies or an
+empty policy. For more information about parameter policies, see
+Working with Parameter Policies
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-policies.html).
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+
+Optional metadata that you assign to a resource. Tags enable you to
+categorize a resource in different ways, such as by purpose, owner, or
+environment. For example, you might want to tag a Systems Manager
+parameter to identify the type of resource to which it applies, the
+environment, or the type of configuration data referenced by the
+parameter. In this case, you could specify the following key name/value
+pairs:
+
+=over
+
+=item *
+
+C<Key=Resource,Value=S3bucket>
+
+=item *
+
+C<Key=OS,Value=Windows>
+
+=item *
+
+C<Key=ParameterType,Value=LicenseKey>
+
+=back
+
+To add tags to an existing Systems Manager parameter, use the
+AddTagsToResource action.
+
+
+
+=head2 Tier => Str
+
+Parameter Store offers a standard tier and an advanced tier for
+parameters. Standard parameters have a value limit of 4 KB and can't be
+configured to use parameter policies. You can create a maximum of
+10,000 standard parameters per account and per Region. Standard
+parameters are offered at no additional cost.
+
+Advanced parameters have a value limit of 8 KB and can be configured to
+use parameter policies. You can create a maximum of 100,000 advanced
+parameters per account and per Region. Advanced parameters incur a
+charge.
+
+If you don't specify a parameter tier when you create a new parameter,
+the parameter defaults to using the standard tier. You can change a
+standard parameter to an advanced parameter at any time. But you can't
+revert an advanced parameter to a standard parameter. Reverting an
+advanced parameter to a standard parameter would result in data loss
+because the system would truncate the size of the parameter from 8 KB
+to 4 KB. Reverting would also remove any policies attached to the
+parameter. Lastly, advanced parameters use a different form of
+encryption than standard parameters.
+
+If you no longer need an advanced parameter, or if you no longer want
+to incur charges for an advanced parameter, you must delete it and
+recreate it as a new standard parameter. For more information, see
+About Advanced Parameters
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html)
+in the I<AWS Systems Manager User Guide>.
+
+Valid values are: C<"Standard">, C<"Advanced">
+
 =head2 B<REQUIRED> Type => Str
 
 The type of parameter that you want to add to the system.
@@ -172,7 +276,9 @@ Valid values are: C<"String">, C<"StringList">, C<"SecureString">
 
 =head2 B<REQUIRED> Value => Str
 
-The parameter value that you want to add to the system.
+The parameter value that you want to add to the system. Standard
+parameters have a value limit of 4 KB. Advanced parameters have a value
+limit of 8 KB.
 
 
 

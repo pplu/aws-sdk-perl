@@ -31,9 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Timezo
 
 =head1 DESCRIPTION
 
-A time zone associated with a DBInstance or a DBSnapshot. This data
-type is an element in the response to the DescribeDBInstances, the
-DescribeDBSnapshots, and the DescribeDBEngineVersions actions.
+A time zone associated with a C<DBInstance> or a C<DBSnapshot>. This
+data type is an element in the response to the C<DescribeDBInstances>,
+the C<DescribeDBSnapshots>, and the C<DescribeDBEngineVersions>
+actions.
 
 =head1 ATTRIBUTES
 

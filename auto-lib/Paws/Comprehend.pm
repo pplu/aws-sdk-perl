@@ -160,6 +160,11 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ListSentimentDetectionJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTopicsDetectionJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ListTopicsDetectionJobs', @_);
@@ -223,6 +228,16 @@ package Paws::Comprehend;
   sub StopTrainingEntityRecognizer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::StopTrainingEntityRecognizer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -412,7 +427,7 @@ package Paws::Comprehend;
   }
 
 
-  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment BatchDetectSyntax CreateDocumentClassifier CreateEntityRecognizer DeleteDocumentClassifier DeleteEntityRecognizer DescribeDocumentClassificationJob DescribeDocumentClassifier DescribeDominantLanguageDetectionJob DescribeEntitiesDetectionJob DescribeEntityRecognizer DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment DetectSyntax ListDocumentClassificationJobs ListDocumentClassifiers ListDominantLanguageDetectionJobs ListEntitiesDetectionJobs ListEntityRecognizers ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTopicsDetectionJobs StartDocumentClassificationJob StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob StopTrainingDocumentClassifier StopTrainingEntityRecognizer / }
+  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment BatchDetectSyntax CreateDocumentClassifier CreateEntityRecognizer DeleteDocumentClassifier DeleteEntityRecognizer DescribeDocumentClassificationJob DescribeDocumentClassifier DescribeDominantLanguageDetectionJob DescribeEntitiesDetectionJob DescribeEntityRecognizer DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment DetectSyntax ListDocumentClassificationJobs ListDocumentClassifiers ListDominantLanguageDetectionJobs ListEntitiesDetectionJobs ListEntityRecognizers ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTagsForResource ListTopicsDetectionJobs StartDocumentClassificationJob StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob StopTrainingDocumentClassifier StopTrainingEntityRecognizer TagResource UntagResource / }
 
 1;
 
@@ -466,7 +481,7 @@ Returns: a L<Paws::Comprehend::BatchDetectDominantLanguageResponse> instance
 Determines the dominant language of the input text for a batch of
 documents. For a list of languages that Amazon Comprehend can detect,
 see Amazon Comprehend Supported Languages
-(http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
+(https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 
 
 =head2 BatchDetectEntities
@@ -561,6 +576,14 @@ For more information, see how-syntax.
 
 =item [ClientRequestToken => Str]
 
+=item [OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>]
+
+=item [Tags => ArrayRef[L<Paws::Comprehend::Tag>]]
+
+=item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+
 
 =back
 
@@ -589,6 +612,12 @@ how-document-classification.
 =item RecognizerName => Str
 
 =item [ClientRequestToken => Str]
+
+=item [Tags => ArrayRef[L<Paws::Comprehend::Tag>]]
+
+=item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
 
 
 =back
@@ -804,7 +833,7 @@ Returns: a L<Paws::Comprehend::DetectDominantLanguageResponse> instance
 Determines the dominant language of the input text. For a list of
 languages that Amazon Comprehend can detect, see Amazon Comprehend
 Supported Languages
-(http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
+(https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 
 
 =head2 DetectEntities
@@ -1031,6 +1060,22 @@ Returns: a L<Paws::Comprehend::ListSentimentDetectionJobsResponse> instance
 Gets a list of sentiment detection jobs that you have submitted.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ListTagsForResource>
+
+Returns: a L<Paws::Comprehend::ListTagsForResourceResponse> instance
+
+Lists all tags associated with a given Amazon Comprehend resource.
+
+
 =head2 ListTopicsDetectionJobs
 
 =over
@@ -1067,6 +1112,10 @@ Gets a list of the topic detection jobs that you have submitted.
 
 =item [JobName => Str]
 
+=item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+
 
 =back
 
@@ -1091,6 +1140,10 @@ to track the progress of the job.
 =item [ClientRequestToken => Str]
 
 =item [JobName => Str]
+
+=item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
 
 
 =back
@@ -1120,6 +1173,10 @@ of documents. Use the operation to track the status of a job.
 =item [EntityRecognizerArn => Str]
 
 =item [JobName => Str]
+
+=item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
 
 
 =back
@@ -1153,6 +1210,10 @@ access to the recognizer being used to detect the custom entity.
 
 =item [JobName => Str]
 
+=item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+
 
 =back
 
@@ -1180,6 +1241,10 @@ documents. Use the operation to track the status of a job.
 
 =item [JobName => Str]
 
+=item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+
 
 =back
 
@@ -1206,6 +1271,10 @@ documents. use the operation to track the status of a job.
 =item [JobName => Str]
 
 =item [NumberOfTopics => Int]
+
+=item [VolumeKmsKeyId => Str]
+
+=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
 
 
 =back
@@ -1374,6 +1443,45 @@ job completes before it can be stopped, it is put into the C<TRAINED>;
 otherwise the training job is stopped and putted into the C<STOPPED>
 state and the service sends back an HTTP 200 response with an empty
 HTTP body.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::Comprehend::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::TagResource>
+
+Returns: a L<Paws::Comprehend::TagResourceResponse> instance
+
+Associates a specific tag with an Amazon Comprehend resource. A tag is
+a key-value pair that adds as a metadata to a resource used by Amazon
+Comprehend. For example, a tag with "Sales" as the key might be added
+to a resource to indicate its use by the sales department.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::UntagResource>
+
+Returns: a L<Paws::Comprehend::UntagResourceResponse> instance
+
+Removes a specific tag associated with an Amazon Comprehend resource.
 
 
 

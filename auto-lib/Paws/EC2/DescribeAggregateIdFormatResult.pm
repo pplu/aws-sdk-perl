@@ -23,9 +23,9 @@ Information about each resource's ID format.
 
 =head2 UseLongIdsAggregated => Bool
 
-Indicates whether all resource types in the region are configured to
+Indicates whether all resource types in the Region are configured to
 use longer IDs. This value is only C<true> if all users are configured
-to use longer IDs for all resources types in the region.
+to use longer IDs for all resources types in the Region.
 
 
 =head2 _request_id => Str

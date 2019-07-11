@@ -9,6 +9,7 @@ package Paws::Batch::ContainerProperties;
   has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
   has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
+  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
   has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
   has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest']);
@@ -53,9 +54,8 @@ container that is launched as part of a job.
 
   The command that is passed to the container. This parameter maps to
 C<Cmd> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<COMMAND> parameter to docker run
 (https://docs.docker.com/engine/reference/run/). For more information,
 see https://docs.docker.com/engine/reference/builder/#cmd
@@ -66,9 +66,8 @@ see https://docs.docker.com/engine/reference/builder/#cmd
 
   The environment variables to pass to a container. This parameter maps
 to C<Env> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<--env> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
@@ -89,9 +88,8 @@ I<repository-url>/I<image>:I<tag> >. Up to 255 letters (uppercase and
 lowercase), numbers, hyphens, underscores, colons, periods, forward
 slashes, and number signs are allowed. This parameter maps to C<Image>
 in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<IMAGE> parameter of docker run
 (https://docs.docker.com/engine/reference/run/).
 
@@ -140,9 +138,8 @@ assume for AWS permissions.
   The hard limit (in MiB) of memory to present to the container. If your
 container attempts to exceed the memory specified here, the container
 is killed. This parameter maps to C<Memory> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<--memory> option to docker run
 (https://docs.docker.com/engine/reference/run/). You must specify at
 least 4 MiB of memory for a job.
@@ -150,7 +147,7 @@ least 4 MiB of memory for a job.
 If you are trying to maximize your resource utilization by providing
 your jobs as much memory as possible for a particular instance type,
 see Memory Management
-(http://docs.aws.amazon.com/batch/latest/userguide/memory-management.html)
+(https://docs.aws.amazon.com/batch/latest/userguide/memory-management.html)
 in the I<AWS Batch User Guide>.
 
 
@@ -158,9 +155,8 @@ in the I<AWS Batch User Guide>.
 
   The mount points for data volumes in your container. This parameter
 maps to C<Volumes> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<--volume> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
@@ -170,9 +166,8 @@ and the C<--volume> option to docker run
   When this parameter is true, the container is given elevated privileges
 on the host container instance (similar to the C<root> user). This
 parameter maps to C<Privileged> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<--privileged> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
@@ -182,19 +177,23 @@ and the C<--privileged> option to docker run
   When this parameter is true, the container is given read-only access to
 its root file system. This parameter maps to C<ReadonlyRootfs> in the
 Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<--read-only> option to C<docker run>.
+
+
+=head2 ResourceRequirements => ArrayRef[L<Paws::Batch::ResourceRequirement>]
+
+  The type and amount of a resource to assign to a container. Currently,
+the only supported resource is C<GPU>.
 
 
 =head2 Ulimits => ArrayRef[L<Paws::Batch::Ulimit>]
 
   A list of C<ulimits> to set in the container. This parameter maps to
 C<Ulimits> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<--ulimit> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
@@ -203,9 +202,8 @@ and the C<--ulimit> option to docker run
 
   The user name to use inside the container. This parameter maps to
 C<User> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<--user> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
@@ -214,9 +212,8 @@ and the C<--user> option to docker run
 
   The number of vCPUs reserved for the container. This parameter maps to
 C<CpuShares> in the Create a container
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-section of the Docker Remote API
-(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<--cpu-shares> option to docker run
 (https://docs.docker.com/engine/reference/run/). Each vCPU is
 equivalent to 1,024 CPU shares. You must specify at least one vCPU.

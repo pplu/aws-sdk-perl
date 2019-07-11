@@ -7,6 +7,7 @@ package Paws::DirectConnect::NewPrivateVirtualInterface;
   has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest']);
   has DirectConnectGatewayId => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayId', traits => ['NameInRequest']);
   has Mtu => (is => 'ro', isa => 'Int', request_name => 'mtu', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has VirtualGatewayId => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayId', traits => ['NameInRequest']);
   has VirtualInterfaceName => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceName', traits => ['NameInRequest'], required => 1);
   has Vlan => (is => 'ro', isa => 'Int', request_name => 'vlan', traits => ['NameInRequest'], required => 1);
@@ -63,7 +64,8 @@ configuration.
 
 =head2 AuthKey => Str
 
-  The authentication key for BGP configuration.
+  The authentication key for BGP configuration. This string has a minimum
+length of 6 characters and and a maximun lenth of 80 characters.
 
 
 =head2 CustomerAddress => Str
@@ -80,6 +82,11 @@ configuration.
 
   The maximum transmission unit (MTU), in bytes. The supported values are
 1500 and 9001. The default value is 1500.
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+  Any tags assigned to the private virtual interface.
 
 
 =head2 VirtualGatewayId => Str

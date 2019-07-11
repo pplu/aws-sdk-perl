@@ -6,6 +6,8 @@ package Paws::AlexaForBusiness::CreateContact;
   has FirstName => (is => 'ro', isa => 'Str', required => 1);
   has LastName => (is => 'ro', isa => 'Str');
   has PhoneNumber => (is => 'ro', isa => 'Str');
+  has PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::PhoneNumber]');
+  has SipAddresses => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::SipAddress]');
 
   use MooseX::ClassAttribute;
 
@@ -36,7 +38,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       DisplayName        => 'MyContactName',           # OPTIONAL
       LastName           => 'MyContactName',           # OPTIONAL
-      PhoneNumber        => 'MyE164PhoneNumber',       # OPTIONAL
+      PhoneNumber        => 'MyRawPhoneNumber',        # OPTIONAL
+      PhoneNumbers       => [
+        {
+          Number => 'MyRawPhoneNumber',    # max: 50
+          Type   => 'MOBILE',              # values: MOBILE, WORK, HOME
+
+        },
+        ...
+      ],                                   # OPTIONAL
+      SipAddresses => [
+        {
+          Type => 'WORK',                  # values: WORK
+          Uri  => 'MySipUri',              # min: 1, max: 256
+
+        },
+        ...
+      ],                                   # OPTIONAL
     );
 
     # Results:
@@ -79,7 +97,22 @@ device.
 
 =head2 PhoneNumber => Str
 
-The phone number of the contact in E.164 format.
+The phone number of the contact in E.164 format. The phone number type
+defaults to WORK. You can specify PhoneNumber or PhoneNumbers. We
+recommend that you use PhoneNumbers, which lets you specify the phone
+number type and multiple numbers.
+
+
+
+=head2 PhoneNumbers => ArrayRef[L<Paws::AlexaForBusiness::PhoneNumber>]
+
+The list of phone numbers for the contact.
+
+
+
+=head2 SipAddresses => ArrayRef[L<Paws::AlexaForBusiness::SipAddress>]
+
+The list of SIP addresses for the contact.
 
 
 

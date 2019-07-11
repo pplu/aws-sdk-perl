@@ -49,8 +49,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 CopyTags => Bool
 
-True to copy all tags from the source DB snapshot to the target DB
-snapshot, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the source DB
+snapshot to the target DB snapshot. By default, tags are not copied.
 
 
 
@@ -88,7 +88,7 @@ to another, and your DB instance uses a nondefault option group. If
 your source DB instance uses Transparent Data Encryption for Oracle or
 Microsoft SQL Server, you must specify this option when copying across
 AWS Regions. For more information, see Option Group Considerations
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options)
 in the I<Amazon RDS User Guide.>
 
 
@@ -147,9 +147,9 @@ C<arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115>
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
 4)
-(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 and Signature Version 4 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 

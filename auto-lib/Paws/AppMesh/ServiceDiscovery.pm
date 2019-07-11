@@ -1,5 +1,6 @@
 package Paws::AppMesh::ServiceDiscovery;
   use Moose;
+  has AwsCloudMap => (is => 'ro', isa => 'Paws::AppMesh::AwsCloudMapServiceDiscovery', request_name => 'awsCloudMap', traits => ['NameInRequest']);
   has Dns => (is => 'ro', isa => 'Paws::AppMesh::DnsServiceDiscovery', request_name => 'dns', traits => ['NameInRequest']);
 1;
 
@@ -20,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppMesh::ServiceDiscovery object:
 
-  $service_obj->Method(Att1 => { Dns => $value, ..., Dns => $value  });
+  $service_obj->Method(Att1 => { AwsCloudMap => $value, ..., Dns => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::ServiceDiscovery object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Dns
+  $result->Att1->AwsCloudMap
 
 =head1 DESCRIPTION
 
@@ -37,9 +38,14 @@ node.
 =head1 ATTRIBUTES
 
 
+=head2 AwsCloudMap => L<Paws::AppMesh::AwsCloudMapServiceDiscovery>
+
+  Specifies any AWS Cloud Map information for the virtual node.
+
+
 =head2 Dns => L<Paws::AppMesh::DnsServiceDiscovery>
 
-  Specifies the DNS service name for the virtual node.
+  Specifies the DNS information for the virtual node.
 
 
 

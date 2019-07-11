@@ -51,8 +51,8 @@ Specifies an XML classifier for C<CreateClassifier> to create.
 =head2 RowTag => Str
 
   The XML tag designating the element that contains each record in an XML
-document being parsed. Note that this cannot identify a self-closing
-element (closed by C</E<gt>>). An empty row element that contains only
+document being parsed. This can't identify a self-closing element
+(closed by C</E<gt>>). An empty row element that contains only
 attributes can be parsed as long as it ends with a closing tag (for
 example, C<E<lt>row item_a="A" item_b="B"E<gt>E<lt>/rowE<gt>> is okay,
 but C<E<lt>row item_a="A" item_b="B" /E<gt>> is not).

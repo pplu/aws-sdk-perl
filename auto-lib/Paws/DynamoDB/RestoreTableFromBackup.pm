@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 =head2 B<REQUIRED> BackupArn => Str
 
-The ARN associated with the backup.
+The Amazon Resource Name (ARN) associated with the backup.
 
 
 

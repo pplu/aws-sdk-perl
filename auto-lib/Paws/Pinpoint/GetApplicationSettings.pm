@@ -8,7 +8,7 @@ package Paws::Pinpoint::GetApplicationSettings;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetApplicationSettings');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/settings');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::GetApplicationSettingsResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::ApplicationSettingsResource');
 1;
 
 ### main pod documentation begin ###
@@ -28,16 +28,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $GetApplicationSettingsResponse = $pinpoint->GetApplicationSettings(
+    my $ApplicationSettingsResource = $pinpoint->GetApplicationSettings(
       ApplicationId => 'My__string',
 
     );
 
     # Results:
-    my $ApplicationSettingsResource =
-      $GetApplicationSettingsResponse->ApplicationSettingsResource;
+    my $ApplicationId    = $ApplicationSettingsResource->ApplicationId;
+    my $CampaignHook     = $ApplicationSettingsResource->CampaignHook;
+    my $LastModifiedDate = $ApplicationSettingsResource->LastModifiedDate;
+    my $Limits           = $ApplicationSettingsResource->Limits;
+    my $QuietTime        = $ApplicationSettingsResource->QuietTime;
 
-    # Returns a L<Paws::Pinpoint::GetApplicationSettingsResponse> object.
+    # Returns a L<Paws::Pinpoint::ApplicationSettingsResource> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/GetApplicationSettings>
@@ -47,7 +50,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 

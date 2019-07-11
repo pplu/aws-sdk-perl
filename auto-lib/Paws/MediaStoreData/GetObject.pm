@@ -87,9 +87,11 @@ omit an extension.
 =head2 Range => Str
 
 The range bytes of an object to retrieve. For more information about
-the C<Range> header, go to
+the C<Range> header, see
 http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35
-(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35).
+(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35). AWS
+Elemental MediaStore ignores this header for partially uploaded objects
+that have streaming upload availability.
 
 
 

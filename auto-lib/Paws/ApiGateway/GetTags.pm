@@ -64,7 +64,7 @@ result set.
 =head2 B<REQUIRED> ResourceArn => Str
 
 [Required] The ARN of a resource that can be tagged. The resource ARN
-must be URL-encoded. At present, Stage is the only taggable resource.
+must be URL-encoded.
 
 
 

@@ -35,12 +35,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description      => 'MyPolicyDescription',
       ExecutionRoleArn => 'MyExecutionRoleArn',
       PolicyDetails    => {
+        Parameters => {
+          ExcludeBootVolume => 1,    # OPTIONAL
+        },    # OPTIONAL
+        PolicyType =>
+          'EBS_SNAPSHOT_MANAGEMENT', # values: EBS_SNAPSHOT_MANAGEMENT; OPTIONAL
         ResourceTypes => [
-          'VOLUME', ...    # values: VOLUME
-        ],                 # min: 1, max: 1; OPTIONAL
+          'VOLUME', ...              # values: VOLUME, INSTANCE
+        ],                           # min: 1, max: 1; OPTIONAL
         Schedules => [
           {
-            CopyTags   => 1,    # OPTIONAL
+            CopyTags   => 1,         # OPTIONAL
             CreateRule => {
               Interval     => 1,                    # min: 1
               IntervalUnit => 'HOURS',              # values: HOURS
@@ -52,6 +57,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },    # OPTIONAL
             TagsToAdd => [
+              {
+                Key   => 'MyString',
+                Value => 'MyString',
+
+              },
+              ...
+            ],    # max: 50; OPTIONAL
+            VariableTags => [
               {
                 Key   => 'MyString',
                 Value => 'MyString',

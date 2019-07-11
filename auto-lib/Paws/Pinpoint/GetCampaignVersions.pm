@@ -11,7 +11,7 @@ package Paws::Pinpoint::GetCampaignVersions;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCampaignVersions');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/campaigns/{campaign-id}/versions');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::GetCampaignVersionsResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::CampaignsResponse');
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $GetCampaignVersionsResponse = $pinpoint->GetCampaignVersions(
+    my $CampaignsResponse = $pinpoint->GetCampaignVersions(
       ApplicationId => 'My__string',
       CampaignId    => 'My__string',
       PageSize      => 'My__string',    # OPTIONAL
@@ -39,9 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CampaignsResponse = $GetCampaignVersionsResponse->CampaignsResponse;
+    my $Item      = $CampaignsResponse->Item;
+    my $NextToken = $CampaignsResponse->NextToken;
 
-    # Returns a L<Paws::Pinpoint::GetCampaignVersionsResponse> object.
+    # Returns a L<Paws::Pinpoint::CampaignsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/GetCampaignVersions>
@@ -51,26 +52,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
 =head2 B<REQUIRED> CampaignId => Str
 
-The unique ID of the campaign.
+The unique identifier for the campaign.
 
 
 
 =head2 PageSize => Str
 
-The number of entries you want on each page in the response.
+The maximum number of items to include on each page in a paginated
+response.
 
 
 
 =head2 Token => Str
 
-The NextToken string returned on a previous page that you use to get
-the next page of results in a paginated response.
+The NextToken string that specifies which page of results to return in
+a paginated response.
 
 
 

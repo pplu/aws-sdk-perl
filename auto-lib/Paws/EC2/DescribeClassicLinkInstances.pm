@@ -35,14 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      InstanceIds => [ 'MyString', ... ],   # OPTIONAL
-      MaxResults  => 1,                     # OPTIONAL
-      NextToken   => 'MyString',            # OPTIONAL
+      ],                           # OPTIONAL
+      InstanceIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -115,12 +119,9 @@ ClassicLink.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return for the request in a single
-page. The remaining results of the initial request can be seen by
-sending another request with the returned C<NextToken> value. This
-value can be between 5 and 1000. If C<MaxResults> is given a value
-larger than 1000, only 1000 results are returned. You cannot specify
-this parameter and the instance IDs parameter in the same request.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
 Constraint: If the value is greater than 1000, we return only 1000
 items.
@@ -129,7 +130,7 @@ items.
 
 =head2 NextToken => Str
 
-The token to retrieve the next page of results.
+The token for the next page of results.
 
 
 

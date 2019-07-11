@@ -6,7 +6,7 @@ package Paws::ApiGatewayV2::CreateIntegrationInput;
   has CredentialsArn => (is => 'ro', isa => 'Str', request_name => 'credentialsArn', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has IntegrationMethod => (is => 'ro', isa => 'Str', request_name => 'integrationMethod', traits => ['NameInRequest']);
-  has IntegrationType => (is => 'ro', isa => 'Str', request_name => 'integrationType', traits => ['NameInRequest']);
+  has IntegrationType => (is => 'ro', isa => 'Str', request_name => 'integrationType', traits => ['NameInRequest'], required => 1);
   has IntegrationUri => (is => 'ro', isa => 'Str', request_name => 'integrationUri', traits => ['NameInRequest']);
   has PassthroughBehavior => (is => 'ro', isa => 'Str', request_name => 'passthroughBehavior', traits => ['NameInRequest']);
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::IntegrationParameters', request_name => 'requestParameters', traits => ['NameInRequest']);
@@ -50,16 +50,14 @@ Represents the input parameters for a CreateIntegration request.
 
 =head2 ConnectionId => Str
 
-  The identifier of the VpcLink used for the integration when the
-connectionType is VPC_LINK; otherwise undefined.
+  The connection ID.
 
 
 =head2 ConnectionType => Str
 
-  The type of the network connection to the integration endpoint. The
-valid value is INTERNET for connections through the public routable
-internet or VPC_LINK for private connections between API Gateway and a
-network load balancer in a VPC. The default value is INTERNET.
+  The type of the network connection to the integration endpoint.
+Currently the only valid value is INTERNET, for connections through the
+public routable internet.
 
 
 =head2 ContentHandlingStrategy => Str
@@ -99,7 +97,7 @@ permissions on supported AWS services, specify null.
   Specifies the integration's HTTP method type.
 
 
-=head2 IntegrationType => Str
+=head2 B<REQUIRED> IntegrationType => Str
 
   The integration type of an integration. One of the following:
 
@@ -114,13 +112,12 @@ function-invoking action with the client request passed through as-is.
 This integration is also referred to as Lambda proxy integration.
 
 HTTP: for integrating the route or method request with an HTTP
-endpoint, including a private HTTP endpoint within a VPC. This
-integration is also referred to as the HTTP custom integration.
+endpoint. This integration is also referred to as HTTP custom
+integration.
 
 HTTP_PROXY: for integrating route or method request with an HTTP
-endpoint, including a private HTTP endpoint within a VPC, with the
-client request passed through as-is. This is also referred to as HTTP
-proxy integration.
+endpoint, with the client request passed through as-is. This is also
+referred to as HTTP proxy integration.
 
 MOCK: for integrating the route or method request with API Gateway as a
 "loopback" endpoint without invoking any backend.
@@ -128,31 +125,7 @@ MOCK: for integrating the route or method request with API Gateway as a
 
 =head2 IntegrationUri => Str
 
-  Specifies the Uniform Resource Identifier (URI) of the integration
-endpoint.
-
-For HTTP or HTTP_PROXY integrations, the URI must be a fully formed,
-encoded HTTP(S) URL according to the RFC-3986 specification
-(https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), for either
-standard integration, where connectionType is not VPC_LINK, or private
-integration, where connectionType is VPC_LINK. For a private HTTP
-integration, the URI is not used for routing.
-
-For AWS or AWS_PROXY integrations, the URI is of the form
-arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}.
-Here, {Region} is the API Gateway region (e.g., us-east-1); {service}
-is the name of the integrated AWS service (e.g., s3); and {subdomain}
-is a designated subdomain supported by certain AWS service for fast
-host-name lookup. action can be used for an AWS service action-based
-API, using an Action={name}&{p1}={v1}&p2={v2}... query string. The
-ensuing {service_api} refers to a supported action {name} plus any
-required input parameters. Alternatively, path can be used for an AWS
-service path-based API. The ensuing service_api refers to the path to
-an AWS service resource, including the region of the integrated AWS
-service, if applicable. For example, for integration with the S3 API of
-GetObject, the URI can be either
-arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}
-or arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}
+  For a Lambda proxy integration, this is the URI of the Lambda function.
 
 
 =head2 PassthroughBehavior => Str

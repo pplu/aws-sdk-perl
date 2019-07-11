@@ -43,7 +43,7 @@ GetServiceLinkedRoleDeletionStatus operation.
 
 =head2 Region => Str
 
-  The name of the region where the service-linked role is being used.
+  The name of the Region where the service-linked role is being used.
 
 
 =head2 Resources => ArrayRef[Str|Undef]

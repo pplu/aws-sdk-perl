@@ -26,7 +26,7 @@ specified by C<MaxRecords> .
 
 =head2 OrderableDBInstanceOptions => ArrayRef[L<Paws::RDS::OrderableDBInstanceOption>]
 
-An OrderableDBInstanceOption structure containing information about
+An C<OrderableDBInstanceOption> structure containing information about
 orderable options for the DB instance.
 
 

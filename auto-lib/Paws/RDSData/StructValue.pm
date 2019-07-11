@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDSData::St
 
 =head1 DESCRIPTION
 
-User Defined Type
+A structure value returned by a call.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attributes => ArrayRef[L<Paws::RDSData::Value>]
 
-  Struct or UDT
+  The attributes returned in the record.
 
 
 

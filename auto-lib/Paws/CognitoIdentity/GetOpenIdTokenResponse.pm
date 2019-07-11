@@ -23,7 +23,7 @@ returned may not match the one passed on input.
 
 =head2 Token => Str
 
-An OpenID token, valid for 15 minutes.
+An OpenID token, valid for 10 minutes.
 
 
 =head2 _request_id => Str

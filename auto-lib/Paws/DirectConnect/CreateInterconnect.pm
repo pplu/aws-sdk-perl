@@ -5,6 +5,7 @@ package Paws::DirectConnect::CreateInterconnect;
   has InterconnectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectName' , required => 1);
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -35,6 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InterconnectName => 'MyInterconnectName',
       Location         => 'MyLocationCode',
       LagId            => 'MyLagId',              # OPTIONAL
+      Tags             => [
+        {
+          Key   => 'MyTagKey',                    # min: 1, max: 128
+          Value => 'MyTagValue',                  # max: 256; OPTIONAL
+        },
+        ...
+      ],                                          # OPTIONAL
     );
 
     # Results:
@@ -50,6 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LoaIssueTime         = $Interconnect->LoaIssueTime;
     my $Location             = $Interconnect->Location;
     my $Region               = $Interconnect->Region;
+    my $Tags                 = $Interconnect->Tags;
 
     # Returns a L<Paws::DirectConnect::Interconnect> object.
 
@@ -80,6 +89,12 @@ The ID of the LAG.
 =head2 B<REQUIRED> Location => Str
 
 The location of the interconnect.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+The tags to assign to the interconnect,
 
 
 

@@ -109,6 +109,8 @@ UNKNOWN E<ndash> The user status is not known.
 
   The email address of the user.
 
+Users' email addresses are case-sensitive.
+
 
 
 =head1 SEE ALSO

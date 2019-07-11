@@ -66,7 +66,7 @@ DescribeStackResources action, and view the resource status reason.
 Specify this property to skip rolling back resources that AWS
 CloudFormation can't successfully roll back. We recommend that you
 troubleshoot
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed)
 resources before skipping them. AWS CloudFormation sets the status of
 the specified resources to C<UPDATE_COMPLETE> and continues to roll
 back the stack. After the rollback is complete, the state of the
@@ -92,7 +92,7 @@ Don't confuse a child stack's name with its corresponding logical ID
 defined in the parent stack. For an example of a continue update
 rollback operation with nested stacks, see Using ResourcesToSkip to
 recover a nested stacks hierarchy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks).
 
 
 

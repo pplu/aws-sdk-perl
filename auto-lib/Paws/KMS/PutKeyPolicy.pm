@@ -127,7 +127,7 @@ Setting this value to true increases the risk that the CMK becomes
 unmanageable. Do not set this value to true indiscriminately.
 
 For more information, refer to the scenario in the Default Key Policy
-(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
 section in the I<AWS Key Management Service Developer Guide>.
 
 Use this parameter only when you intend to prevent the principal that
@@ -178,7 +178,7 @@ policy must allow the principal that is making the C<PutKeyPolicy>
 request to make a subsequent C<PutKeyPolicy> request on the CMK. This
 reduces the risk that the CMK becomes unmanageable. For more
 information, refer to the scenario in the Default Key Policy
-(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam)
 section of the I<AWS Key Management Service Developer Guide>.
 
 =item *
@@ -190,7 +190,7 @@ you might need to enforce a delay before including the new principal in
 a key policy because the new principal might not be immediately visible
 to AWS KMS. For more information, see Changes that I make are not
 always immediately visible
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency)
 in the I<AWS Identity and Access Management User Guide>.
 
 =back

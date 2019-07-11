@@ -3,6 +3,8 @@ package Paws::EC2::DescribeSubnets;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SubnetId' );
 
   use MooseX::ClassAttribute;
@@ -146,6 +148,20 @@ C<vpc-id> - The ID of the VPC for the subnet.
 
 =back
 
+
+
+
+=head2 MaxResults => Int
+
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
+
+
+
+=head2 NextToken => Str
+
+The token for the next page of results.
 
 
 

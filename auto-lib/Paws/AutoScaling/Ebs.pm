@@ -36,7 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes an Amazon EBS volume.
+Describes an Amazon EBS volume. Used in combination with
+BlockDeviceMapping.
 
 =head1 ATTRIBUTES
 
@@ -44,53 +45,65 @@ Describes an Amazon EBS volume.
 =head2 DeleteOnTermination => Bool
 
   Indicates whether the volume is deleted on instance termination. The
-default is C<true>.
+default value is C<true>.
 
 
 =head2 Encrypted => Bool
 
-  Indicates whether the volume should be encrypted. Encrypted EBS volumes
+  Specifies whether the volume should be encrypted. Encrypted EBS volumes
 must be attached to instances that support Amazon EBS encryption.
 Volumes that are created from encrypted snapshots are automatically
 encrypted. There is no way to create an encrypted volume from an
 unencrypted snapshot or an unencrypted volume from an encrypted
-snapshot. For more information, see Amazon EBS Encryption
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+snapshot. If your AMI uses encrypted volumes, you can only launch it on
+supported instance types. For more information, see Amazon EBS
+Encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 Iops => Int
 
   The number of I/O operations per second (IOPS) to provision for the
-volume.
+volume. For more information, see Amazon EBS Volume Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
-Constraint: Required when the volume type is C<io1>.
+Conditional: This parameter is required when the volume type is C<io1>.
+(Not used with C<standard>, C<gp2>, C<st1>, or C<sc1> volumes.)
 
 
 =head2 SnapshotId => Str
 
-  The ID of the snapshot.
+  The ID of the snapshot. This parameter is optional if you specify a
+volume size.
 
 
 =head2 VolumeSize => Int
 
-  The volume size, in GiB. For C<standard> volumes, specify a value from
-1 to 1,024. For C<io1> volumes, specify a value from 4 to 16,384. For
-C<gp2> volumes, specify a value from 1 to 16,384. If you specify a
+  The volume size, in GiB.
+
+Constraints: 1-1,024 for C<standard>, 4-16,384 for C<io1>, 1-16,384 for
+C<gp2>, and 500-16,384 for C<st1> and C<sc1>. If you specify a
 snapshot, the volume size must be equal to or larger than the snapshot
 size.
 
 Default: If you create a volume from a snapshot and you don't specify a
 volume size, the default is the snapshot size.
 
+At least one of VolumeSize or SnapshotId is required.
+
 
 =head2 VolumeType => Str
 
-  The volume type. For more information, see Amazon EBS Volume Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+  The volume type, which can be C<standard> for Magnetic, C<io1> for
+Provisioned IOPS SSD, C<gp2> for General Purpose SSD, C<st1> for
+Throughput Optimized HDD, or C<sc1> for Cold HDD. For more information,
+see Amazon EBS Volume Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
-Valid values: C<standard> | C<io1> | C<gp2>
+Valid values: C<standard> | C<io1> | C<gp2> | C<st1> | C<sc1>
 
 
 

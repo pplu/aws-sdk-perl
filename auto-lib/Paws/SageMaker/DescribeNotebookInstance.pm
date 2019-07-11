@@ -57,6 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $NotebookInstanceStatus =
       $DescribeNotebookInstanceOutput->NotebookInstanceStatus;
     my $RoleArn        = $DescribeNotebookInstanceOutput->RoleArn;
+    my $RootAccess     = $DescribeNotebookInstanceOutput->RootAccess;
     my $SecurityGroups = $DescribeNotebookInstanceOutput->SecurityGroups;
     my $SubnetId       = $DescribeNotebookInstanceOutput->SubnetId;
     my $Url            = $DescribeNotebookInstanceOutput->Url;

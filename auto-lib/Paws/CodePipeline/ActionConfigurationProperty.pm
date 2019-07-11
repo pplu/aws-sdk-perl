@@ -61,7 +61,7 @@ displayed to users.
 =head2 Queryable => Bool
 
   Indicates that the property will be used in conjunction with
-PollForJobs. When creating a custom action, an action can have up to
+C<PollForJobs>. When creating a custom action, an action can have up to
 one queryable property. If it has one, that property must be both
 required and not secret.
 
@@ -80,8 +80,8 @@ alphanumeric characters, underscores, and hyphens.
 =head2 B<REQUIRED> Secret => Bool
 
   Whether the configuration property is secret. Secrets are hidden from
-all calls except for GetJobDetails, GetThirdPartyJobDetails,
-PollForJobs, and PollForThirdPartyJobs.
+all calls except for C<GetJobDetails>, C<GetThirdPartyJobDetails>,
+C<PollForJobs>, and C<PollForThirdPartyJobs>.
 
 When updating a pipeline, passing * * * * * without changing any other
 values of the action will preserve the prior value of the secret.

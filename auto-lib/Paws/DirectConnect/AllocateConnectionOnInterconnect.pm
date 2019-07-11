@@ -55,6 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $OwnerAccount         = $Connection->OwnerAccount;
     my $PartnerName          = $Connection->PartnerName;
     my $Region               = $Connection->Region;
+    my $Tags                 = $Connection->Tags;
     my $Vlan                 = $Connection->Vlan;
 
     # Returns a L<Paws::DirectConnect::Connection> object.
@@ -67,8 +68,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> Bandwidth => Str
 
-The bandwidth of the connection, in Mbps. The possible values are
-50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps.
+The bandwidth of the connection. The possible values are 50Mbps,
+100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
+10Gbps. Note that only those AWS Direct Connect Partners who have met
+specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
+10Gbps hosted connection.
 
 
 
@@ -81,7 +85,6 @@ The name of the provisioned connection.
 =head2 B<REQUIRED> InterconnectId => Str
 
 The ID of the interconnect on which the connection will be provisioned.
-For example, dxcon-456abc78.
 
 
 

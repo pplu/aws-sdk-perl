@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessR
 =head1 DESCRIPTION
 
 This property corresponds to the I<AWS CloudFormation Tag
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/Tag)>
-Data Type.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/Tag)
+> Data Type.
 
 =head1 ATTRIBUTES
 
@@ -43,8 +43,8 @@ Data Type.
 
   This property corresponds to the content of the same name for the I<AWS
 CloudFormation Tag
-(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/Tag)>
-Data Type.
+(https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/Tag)
+> Data Type.
 
 
 =head2 B<REQUIRED> Value => Str

@@ -1,6 +1,7 @@
 package Paws::CodeDeploy::LambdaTarget;
   use Moose;
   has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
+  has LambdaFunctionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LambdaFunctionInfo', request_name => 'lambdaFunctionInfo', traits => ['NameInRequest']);
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
   has LifecycleEvents => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::LifecycleEvent]', request_name => 'lifecycleEvents', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -45,6 +46,11 @@ deployment.
 =head2 DeploymentId => Str
 
   The unique ID of a deployment.
+
+
+=head2 LambdaFunctionInfo => L<Paws::CodeDeploy::LambdaFunctionInfo>
+
+  A C<LambdaFunctionInfo> object that describes a target Lambda function.
 
 
 =head2 LastUpdatedAt => Str

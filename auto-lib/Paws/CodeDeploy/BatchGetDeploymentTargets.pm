@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codedeploy = Paws->service('CodeDeploy');
     my $BatchGetDeploymentTargetsOutput =
       $codedeploy->BatchGetDeploymentTargets(
-      DeploymentId => 'MyDeploymentId',         # OPTIONAL
-      TargetIds    => [ 'MyTargetId', ... ],    # OPTIONAL
+      DeploymentId => 'MyDeploymentId',      # OPTIONAL
+      TargetIds => [ 'MyTargetId', ... ],    # OPTIONAL
       );
 
     # Results:
@@ -54,7 +54,8 @@ The unique ID of a deployment.
 =head2 TargetIds => ArrayRef[Str|Undef]
 
 The unique IDs of the deployment targets. The compute platform of the
-deployment determines the type of the targets and their formats.
+deployment determines the type of the targets and their formats. The
+maximum number of deployment target IDs you can specify is 25.
 
 =over
 

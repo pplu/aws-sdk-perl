@@ -2,8 +2,8 @@ package Paws::Pinpoint::EmailChannelRequest;
   use Moose;
   has ConfigurationSet => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
-  has FromAddress => (is => 'ro', isa => 'Str');
-  has Identity => (is => 'ro', isa => 'Str');
+  has FromAddress => (is => 'ro', isa => 'Str', required => 1);
+  has Identity => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str');
 1;
 
@@ -35,36 +35,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Email Channel Request
+Specifies the status and settings of the email channel for an
+application.
 
 =head1 ATTRIBUTES
 
 
 =head2 ConfigurationSet => Str
 
-  The configuration set that you want to use when you send email using
-the Pinpoint Email API.
+  The configuration set that you want to apply to email that you send
+through the channel by using the Amazon Pinpoint Email API.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether to enable the email channel for the application.
 
 
-=head2 FromAddress => Str
+=head2 B<REQUIRED> FromAddress => Str
 
-  The email address used to send emails from.
+  The verified email address that you want to send email from when you
+send email through the channel.
 
 
-=head2 Identity => Str
+=head2 B<REQUIRED> Identity => Str
 
-  The ARN of an identity verified with SES.
+  The Amazon Resource Name (ARN) of the identity, verified with Amazon
+Simple Email Service (Amazon SES), that you want to use when you send
+email through the channel.
 
 
 =head2 RoleArn => Str
 
-  The ARN of an IAM Role used to submit events to Mobile Analytics' event
-ingestion service
+  The ARN of the AWS Identity and Access Management (IAM) role that you
+want Amazon Pinpoint to use when it submits email-related event data
+for the channel.
 
 
 

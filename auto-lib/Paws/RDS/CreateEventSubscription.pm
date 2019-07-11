@@ -53,8 +53,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 Enabled => Bool
 
-A Boolean value; set to B<true> to activate the subscription, set to
-B<false> to create the subscription but not active it.
+A value that indicates whether to activate the subscription. If the
+event notification subscription is not activated, the subscription is
+created but not active.
 
 
 
@@ -63,7 +64,7 @@ B<false> to create the subscription but not active it.
 A list of event categories for a SourceType that you want to subscribe
 to. You can see a list of the categories for a given SourceType in the
 Events
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
 topic in the I<Amazon RDS User Guide> or by using the
 B<DescribeEventCategories> action.
 

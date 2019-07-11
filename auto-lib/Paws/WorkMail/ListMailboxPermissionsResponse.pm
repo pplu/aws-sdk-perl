@@ -23,7 +23,7 @@ The token to use to retrieve the next page of results. The value is
 
 =head2 Permissions => ArrayRef[L<Paws::WorkMail::Permission>]
 
-One page of the entity's mailbox permissions.
+One page of the user, group, or resource mailbox permissions.
 
 
 =head2 _request_id => Str

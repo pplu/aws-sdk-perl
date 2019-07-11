@@ -1,7 +1,7 @@
 package Paws::AppMesh::HttpRoute;
   use Moose;
-  has Action => (is => 'ro', isa => 'Paws::AppMesh::HttpRouteAction', request_name => 'action', traits => ['NameInRequest']);
-  has Match => (is => 'ro', isa => 'Paws::AppMesh::HttpRouteMatch', request_name => 'match', traits => ['NameInRequest']);
+  has Action => (is => 'ro', isa => 'Paws::AppMesh::HttpRouteAction', request_name => 'action', traits => ['NameInRequest'], required => 1);
+  has Match => (is => 'ro', isa => 'Paws::AppMesh::HttpRouteMatch', request_name => 'match', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +37,12 @@ An object representing the HTTP routing specification for a route.
 =head1 ATTRIBUTES
 
 
-=head2 Action => L<Paws::AppMesh::HttpRouteAction>
+=head2 B<REQUIRED> Action => L<Paws::AppMesh::HttpRouteAction>
 
   The action to take if a match is determined.
 
 
-=head2 Match => L<Paws::AppMesh::HttpRouteMatch>
+=head2 B<REQUIRED> Match => L<Paws::AppMesh::HttpRouteMatch>
 
   The criteria for determining an HTTP request match.
 

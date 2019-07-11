@@ -58,6 +58,9 @@ An C<address> of C<example@example.com>
   The address that AWS sends budget notifications to, either an SNS topic
 or an email.
 
+AWS validates the address for a C<CreateSubscriber> request with the
+C<.*> regex.
+
 
 =head2 B<REQUIRED> SubscriptionType => Str
 

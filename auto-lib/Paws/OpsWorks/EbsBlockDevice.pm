@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::E
 
 Describes an Amazon EBS volume. This data type maps directly to the
 Amazon EC2 EbsBlockDevice
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html)
 data type.
 
 =head1 ATTRIBUTES
@@ -52,7 +52,7 @@ data type.
 
   The number of I/O operations per second (IOPS) that the volume
 supports. For more information, see EbsBlockDevice
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html).
 
 
 =head2 SnapshotId => Str
@@ -63,7 +63,7 @@ supports. For more information, see EbsBlockDevice
 =head2 VolumeSize => Int
 
   The volume size, in GiB. For more information, see EbsBlockDevice
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html).
 
 
 =head2 VolumeType => Str

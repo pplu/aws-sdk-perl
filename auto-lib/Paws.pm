@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.40';
+our $VERSION = '0.41';
 
 use Carp;
 
@@ -335,6 +335,8 @@ L<Paws::ApiGatewayV2>
 
 L<Paws::ApplicationAutoScaling>
 
+L<Paws::ApplicationInsights>
+
 L<Paws::AppMesh>
 
 L<Paws::AppStream>
@@ -435,6 +437,8 @@ L<Paws::DynamoDBStreams>
 
 L<Paws::EC2>
 
+L<Paws::EC2InstanceConnect>
+
 L<Paws::ECR>
 
 L<Paws::ECS>
@@ -479,6 +483,8 @@ L<Paws::Glue>
 
 L<Paws::Greengrass>
 
+L<Paws::GroundStation>
+
 L<Paws::GuardDuty>
 
 L<Paws::Health>
@@ -499,7 +505,13 @@ L<Paws::IoTAnalytics>
 
 L<Paws::IoTData>
 
+L<Paws::IoTEvents>
+
+L<Paws::IoTEventsData>
+
 L<Paws::IoTJobsData>
+
+L<Paws::IoTThingsGraph>
 
 L<Paws::Kafka>
 
@@ -531,6 +543,8 @@ L<Paws::MachineLearning>
 
 L<Paws::Macie>
 
+L<Paws::ManagedBlockchain>
+
 L<Paws::MarketplaceCommerceAnalytics>
 
 L<Paws::MarketplaceEntitlement>
@@ -544,6 +558,8 @@ L<Paws::MediaConvert>
 L<Paws::MediaLive>
 
 L<Paws::MediaPackage>
+
+L<Paws::MediaPackageVod>
 
 L<Paws::MediaStore>
 
@@ -568,6 +584,12 @@ L<Paws::OpsWorksCM>
 L<Paws::Organizations>
 
 L<Paws::PerformanceInsights>
+
+L<Paws::Personalize>
+
+L<Paws::PersonalizeEvents>
+
+L<Paws::PersonalizeRuntime>
 
 L<Paws::Pinpoint>
 
@@ -625,6 +647,8 @@ L<Paws::ServiceCatalog>
 
 L<Paws::ServiceDiscovery>
 
+L<Paws::ServiceQuotas>
+
 L<Paws::SES>
 
 L<Paws::SES>
@@ -656,6 +680,8 @@ L<Paws::StorageGateway>
 L<Paws::STS>
 
 L<Paws::Support>
+
+L<Paws::Textract>
 
 L<Paws::Transcribe>
 
@@ -1042,6 +1068,8 @@ leonerd for (between others)
  - fixing retry sleep of MojoAsyncCaller
 
 campus-explorer for contributing to test suite
+
+byterock for testing and fixing PinPoint
 
 
 =cut

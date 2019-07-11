@@ -111,8 +111,7 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 Vpc => Bool
 
-The VPC filter value. Specify this parameter to show only the available
-VPC or non-VPC offerings.
+A value that indicates whether to show only VPC or non-VPC offerings.
 
 
 

@@ -59,7 +59,7 @@ to complete the job.
   Represents an AWS session credentials object. These credentials are
 temporary credentials that are issued by AWS Secure Token Service
 (STS). They can be used to access input and output artifacts in the
-Amazon S3 bucket used to store artifact for the pipeline in AWS
+Amazon S3 bucket used to store artifacts for the pipeline in AWS
 CodePipeline.
 
 
@@ -88,6 +88,8 @@ artifact store, such as an AWS Key Management Service (AWS KMS) key.
 =head2 PipelineContext => L<Paws::CodePipeline::PipelineContext>
 
   Represents information about a pipeline to a job worker.
+
+Includes C<pipelineArn> and C<pipelineExecutionId> for Custom jobs.
 
 
 

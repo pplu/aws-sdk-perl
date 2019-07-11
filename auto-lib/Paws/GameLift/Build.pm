@@ -37,7 +37,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::B
 
 =head1 DESCRIPTION
 
-Properties describing a game build.
+Properties describing a custom game build.
+
+B<Related operations>
 
 =over
 
@@ -129,8 +131,9 @@ for this build.
 
 =head2 Version => Str
 
-  Version that is associated with this build. Version strings do not need
-to be unique. This value can be set using CreateBuild or UpdateBuild.
+  Version that is associated with a build or script. Version strings do
+not need to be unique. This value can be set using CreateBuild or
+UpdateBuild.
 
 
 

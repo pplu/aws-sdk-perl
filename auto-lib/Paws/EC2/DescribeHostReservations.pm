@@ -33,14 +33,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeHostReservationsResult = $ec2->DescribeHostReservations(
       Filter => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      HostReservationIdSet => [ 'MyString', ... ],    # OPTIONAL
-      MaxResults           => 1,                      # OPTIONAL
-      NextToken            => 'MyString',             # OPTIONAL
+      ],                           # OPTIONAL
+      HostReservationIdSet => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -58,7 +62,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 Filter => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -76,6 +80,20 @@ C<PartialUpfront> | C<AllUpfront>).
 C<state> - The state of the reservation (C<payment-pending> |
 C<payment-failed> | C<active> | C<retired>).
 
+=item *
+
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
+
+=item *
+
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
+
 =back
 
 
@@ -83,7 +101,7 @@ C<payment-failed> | C<active> | C<retired>).
 
 =head2 HostReservationIdSet => ArrayRef[Str|Undef]
 
-One or more host reservation IDs.
+The host reservation IDs.
 
 
 

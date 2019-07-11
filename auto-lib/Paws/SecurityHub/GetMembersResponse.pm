@@ -24,7 +24,7 @@ A list of details about the Security Hub member accounts.
 =head2 UnprocessedAccounts => ArrayRef[L<Paws::SecurityHub::Result>]
 
 A list of account ID and email address pairs of the AWS accounts that
-could not be processed.
+couldn't be processed.
 
 
 =head2 _request_id => Str

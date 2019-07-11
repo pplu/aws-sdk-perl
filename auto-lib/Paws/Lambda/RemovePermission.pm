@@ -85,9 +85,9 @@ version of the function.
 
 =head2 RevisionId => Str
 
-Only update the policy if the revision ID matches the ID specified. Use
-this option to avoid modifying a policy that has changed since you last
-read it.
+Only update the policy if the revision ID matches the ID that's
+specified. Use this option to avoid modifying a policy that has changed
+since you last read it.
 
 
 

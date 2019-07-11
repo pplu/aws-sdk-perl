@@ -6,6 +6,9 @@ package Paws::Comprehend::CreateEntityRecognizer;
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerInputDataConfig', required => 1);
   has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
   has RecognizerName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::Tag]');
+  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
+  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
 
   use MooseX::ClassAttribute;
 
@@ -57,6 +60,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LanguageCode       => 'en',
       RecognizerName     => 'MyComprehendArnName',
       ClientRequestToken => 'MyClientRequestTokenString',    # OPTIONAL
+      Tags               => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
+      VolumeKmsKeyId => 'MyKmsKeyId',    # OPTIONAL
+      VpcConfig      => {
+        SecurityGroupIds => [
+          'MySecurityGroupId', ...       # min: 1, max: 32
+        ],                               # min: 1, max: 5
+        Subnets => [
+          'MySubnetId', ...              # min: 1, max: 32
+        ],                               # min: 1, max: 16
+
+      },    # OPTIONAL
     );
 
     # Results:
@@ -106,6 +126,47 @@ The name given to the newly created recognizer. Recognizer names can be
 a maximum of 256 characters. Alphanumeric characters, hyphens (-) and
 underscores (_) are allowed. The name must be unique in the
 account/region.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Comprehend::Tag>]
+
+Tags to be associated with the entity recognizer being created. A tag
+is a key-value pair that adds as a metadata to a resource used by
+Amazon Comprehend. For example, a tag with "Sales" as the key might be
+added to a resource to indicate its use by the sales department.
+
+
+
+=head2 VolumeKmsKeyId => Str
+
+ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt data on the storage volume attached to the ML compute
+instance(s) that process the analysis job. The VolumeKmsKeyId can be
+either of the following formats:
+
+=over
+
+=item *
+
+KMS Key ID: C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+Amazon Resource Name (ARN) of a KMS Key:
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
+
+
+
+=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+
+Configuration parameters for an optional private Virtual Private Cloud
+(VPC) containing the resources you are using for your custom entity
+recognizer. For more information, see Amazon VPC
+(https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 
 
 

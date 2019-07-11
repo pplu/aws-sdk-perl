@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 A complex type that lists the active CloudFront key pairs, if any, that
 are associated with C<AwsAccountNumber>.
 
-For more information, see ActiveTrustedSigners.
+For more information, see ActiveTrustedSigners
+(https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ActiveTrustedSigners.html).
 
 =head1 ATTRIBUTES
 
@@ -45,14 +46,16 @@ For more information, see ActiveTrustedSigners.
   A complex type that lists the active CloudFront key pairs, if any, that
 are associated with C<AwsAccountNumber>.
 
-For more information, see ActiveTrustedSigners.
+For more information, see ActiveTrustedSigners
+(https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ActiveTrustedSigners.html).
 
 
 =head2 B<REQUIRED> Quantity => Int
 
   The number of active CloudFront key pairs for C<AwsAccountNumber>.
 
-For more information, see ActiveTrustedSigners.
+For more information, see ActiveTrustedSigners
+(https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ActiveTrustedSigners.html).
 
 
 

@@ -90,6 +90,11 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::GetThirdPartyJobDetails', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListActionExecutions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListActionExecutions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListActionTypes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListActionTypes', @_);
@@ -103,6 +108,11 @@ package Paws::CodePipeline;
   sub ListPipelines {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListPipelines', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListWebhooks {
@@ -170,12 +180,45 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::StartPipelineExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdatePipeline {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::UpdatePipeline', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllActionExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListActionExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListActionExecutions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->actionExecutionDetails }, @{ $next_result->actionExecutionDetails };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'actionExecutionDetails') foreach (@{ $result->actionExecutionDetails });
+        $result = $self->ListActionExecutions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'actionExecutionDetails') foreach (@{ $result->actionExecutionDetails });
+    }
+
+    return undef
+  }
   sub ListAllActionTypes {
     my $self = shift;
 
@@ -245,6 +288,29 @@ package Paws::CodePipeline;
 
     return undef
   }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTagsForResource(@_, nextToken => $next_result->nextToken);
+        push @{ $result->tags }, @{ $next_result->tags };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'tags') foreach (@{ $result->tags });
+        $result = $self->ListTagsForResource(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'tags') foreach (@{ $result->tags });
+    }
+
+    return undef
+  }
   sub ListAllWebhooks {
     my $self = shift;
 
@@ -270,7 +336,7 @@ package Paws::CodePipeline;
   }
 
 
-  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelineExecutions ListPipelines ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution UpdatePipeline / }
+  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DeleteWebhook DeregisterWebhookWithThirdParty DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionExecutions ListActionTypes ListPipelineExecutions ListPipelines ListTagsForResource ListWebhooks PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult PutWebhook RegisterWebhookWithThirdParty RetryStageExecution StartPipelineExecution TagResource UntagResource UpdatePipeline / }
 
 1;
 
@@ -306,7 +372,7 @@ This is the AWS CodePipeline API Reference. This guide provides
 descriptions of the actions and data types for AWS CodePipeline. Some
 functionality for your pipeline is only configurable through the API.
 For additional information, see the AWS CodePipeline User Guide
-(http://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
 
 You can use the AWS CodePipeline API to work with pipelines, stages,
 actions, and transitions, as described below.
@@ -343,6 +409,13 @@ the stages and actions of a pipeline.
 
 =item *
 
+ListActionExecutions, which returns action-level details for past
+executions. The details include full stage and action-level details,
+including individual action duration, status, any errors which occurred
+during the execution, and input and output artifact location details.
+
+=item *
+
 ListPipelines, which gets a summary of all of the pipelines associated
 with your account.
 
@@ -375,7 +448,7 @@ entire structure of the pipeline, including the stages of that
 pipeline. For more information about the structure of stages and
 actions, also refer to the AWS CodePipeline Pipeline Structure
 Reference
-(http://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html).
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html).
 
 Pipeline stages include I<actions>, which are categorized into
 categories such as source or build actions performed within a stage of
@@ -568,6 +641,8 @@ partner actions.
 
 =item [Settings => L<Paws::CodePipeline::ActionTypeSettings>]
 
+=item [Tags => ArrayRef[L<Paws::CodePipeline::Tag>]]
+
 
 =back
 
@@ -584,6 +659,8 @@ associated with the AWS account. Only used for custom actions.
 =over
 
 =item Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
+
+=item [Tags => ArrayRef[L<Paws::CodePipeline::Tag>]]
 
 
 =back
@@ -612,7 +689,7 @@ Each argument is described in detail in: L<Paws::CodePipeline::DeleteCustomActio
 
 Returns: nothing
 
-Marks a custom action as deleted. PollForJobs for the custom action
+Marks a custom action as deleted. C<PollForJobs> for the custom action
 will fail after the action is marked for deletion. Only used for custom
 actions.
 
@@ -800,6 +877,10 @@ Returns: a L<Paws::CodePipeline::GetPipelineStateOutput> instance
 Returns information about the state of a pipeline, including the stages
 and actions.
 
+Values returned in the C<revisionId> and C<revisionUrl> fields indicate
+the source revision information, such as the commit ID, for the current
+state.
+
 
 =head2 GetThirdPartyJobDetails
 
@@ -824,6 +905,28 @@ for the Amazon S3 bucket used to store artifacts for the pipeline, if
 the action requires access to that Amazon S3 bucket for input or output
 artifacts. Additionally, this API returns any secret values defined for
 the action.
+
+
+=head2 ListActionExecutions
+
+=over
+
+=item PipelineName => Str
+
+=item [Filter => L<Paws::CodePipeline::ActionExecutionFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::ListActionExecutions>
+
+Returns: a L<Paws::CodePipeline::ListActionExecutionsOutput> instance
+
+Lists the action executions that have occurred in a pipeline.
 
 
 =head2 ListActionTypes
@@ -881,6 +984,27 @@ Returns: a L<Paws::CodePipeline::ListPipelinesOutput> instance
 Gets a summary of all of the pipelines associated with your account.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::ListTagsForResource>
+
+Returns: a L<Paws::CodePipeline::ListTagsForResourceOutput> instance
+
+Gets the set of key/value pairs (metadata) that are used to manage the
+resource.
+
+
 =head2 ListWebhooks
 
 =over
@@ -919,9 +1043,9 @@ Each argument is described in detail in: L<Paws::CodePipeline::PollForJobs>
 Returns: a L<Paws::CodePipeline::PollForJobsOutput> instance
 
 Returns information about any jobs for AWS CodePipeline to act upon.
-PollForJobs is only valid for action types with "Custom" in the owner
-field. If the action type contains "AWS" or "ThirdParty" in the owner
-field, the PollForJobs action returns an error.
+C<PollForJobs> is only valid for action types with "Custom" in the
+owner field. If the action type contains "AWS" or "ThirdParty" in the
+owner field, the C<PollForJobs> action returns an error.
 
 When this API is called, AWS CodePipeline returns temporary credentials
 for the Amazon S3 bucket used to store artifacts for the pipeline, if
@@ -1096,6 +1220,8 @@ by a job worker. Only used for partner actions.
 
 =item Webhook => L<Paws::CodePipeline::WebhookDefinition>
 
+=item [Tags => ArrayRef[L<Paws::CodePipeline::Tag>]]
+
 
 =back
 
@@ -1173,6 +1299,43 @@ Starts the specified pipeline. Specifically, it begins processing the
 latest commit to the source location specified as part of the pipeline.
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::TagResource>
+
+Returns: a L<Paws::CodePipeline::TagResourceOutput> instance
+
+Adds to or modifies the tags of the given resource. Tags are metadata
+that can be used to manage a resource.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodePipeline::UntagResource>
+
+Returns: a L<Paws::CodePipeline::UntagResourceOutput> instance
+
+Removes tags from an AWS resource.
+
+
 =head2 UpdatePipeline
 
 =over
@@ -1188,8 +1351,9 @@ Returns: a L<Paws::CodePipeline::UpdatePipelineOutput> instance
 
 Updates a specified pipeline with edits or changes to its structure.
 Use a JSON file with the pipeline structure in conjunction with
-UpdatePipeline to provide the full structure of the pipeline. Updating
-the pipeline increases the version number of the pipeline by 1.
+C<UpdatePipeline> to provide the full structure of the pipeline.
+Updating the pipeline increases the version number of the pipeline by
+1.
 
 
 
@@ -1197,6 +1361,18 @@ the pipeline increases the version number of the pipeline by 1.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllActionExecutions(sub { },PipelineName => Str, [Filter => L<Paws::CodePipeline::ActionExecutionFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllActionExecutions(PipelineName => Str, [Filter => L<Paws::CodePipeline::ActionExecutionFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - actionExecutionDetails, passing the object as the first parameter, and the string 'actionExecutionDetails' as the second parameter 
+
+If not, it will return a a L<Paws::CodePipeline::ListActionExecutionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllActionTypes(sub { },[ActionOwnerFilter => Str, NextToken => Str])
 
@@ -1232,6 +1408,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - pipelines, passing the object as the first parameter, and the string 'pipelines' as the second parameter 
 
 If not, it will return a a L<Paws::CodePipeline::ListPipelinesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - tags, passing the object as the first parameter, and the string 'tags' as the second parameter 
+
+If not, it will return a a L<Paws::CodePipeline::ListTagsForResourceOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllWebhooks(sub { },[MaxResults => Int, NextToken => Str])

@@ -60,7 +60,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> Resources => ArrayRef[Str|Undef]
 
-The IDs of one or more resources, separated by spaces.
+The IDs of the resources, separated by spaces.
 
 Constraints: Up to 1000 resource IDs. We recommend breaking up this
 request into smaller batches.
@@ -69,10 +69,10 @@ request into smaller batches.
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-One or more tags to delete. Specify a tag key and an optional tag value
-to delete specific tags. If you specify a tag key without a tag value,
-we delete any tag with this key regardless of its value. If you specify
-a tag key with an empty string as the tag value, we delete the tag only
+The tags to delete. Specify a tag key and an optional tag value to
+delete specific tags. If you specify a tag key without a tag value, we
+delete any tag with this key regardless of its value. If you specify a
+tag key with an empty string as the tag value, we delete the tag only
 if its value is an empty string.
 
 If you omit this parameter, we delete all user-defined tags for the

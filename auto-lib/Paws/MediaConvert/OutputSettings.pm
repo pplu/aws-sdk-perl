@@ -38,7 +38,7 @@ Specific settings for this type of output.
 
 =head2 HlsSettings => L<Paws::MediaConvert::HlsSettings>
 
-  
+  Settings for HLS output groups
 
 
 

@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $StartDeviceSyncResponse = $a4b->StartDeviceSync(
       Features => [
         'BLUETOOTH',
-        ...    # values: BLUETOOTH, VOLUME, NOTIFICATIONS, LISTS, SKILLS, ALL
+        ... # values: BLUETOOTH, VOLUME, NOTIFICATIONS, LISTS, SKILLS, NETWORK_PROFILE, SETTINGS, ALL
       ],
       DeviceArn => 'MyArn',    # OPTIONAL
       RoomArn   => 'MyArn',    # OPTIONAL

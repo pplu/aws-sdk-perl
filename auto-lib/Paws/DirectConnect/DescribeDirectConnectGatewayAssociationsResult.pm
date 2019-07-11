@@ -17,7 +17,7 @@ Paws::DirectConnect::DescribeDirectConnectGatewayAssociationsResult
 
 =head2 DirectConnectGatewayAssociations => ArrayRef[L<Paws::DirectConnect::DirectConnectGatewayAssociation>]
 
-The associations.
+Information about the associations.
 
 
 =head2 NextToken => Str

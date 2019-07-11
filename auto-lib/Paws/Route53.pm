@@ -622,13 +622,14 @@ propagates your changes to all of the Route 53 authoritative DNS
 servers. While your changes are propagating, C<GetChange> returns a
 status of C<PENDING>. When propagation is complete, C<GetChange>
 returns a status of C<INSYNC>. Changes generally propagate to all Route
-53 name servers within 60 seconds. For more information, see GetChange.
+53 name servers within 60 seconds. For more information, see GetChange
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html).
 
 B<Limits on ChangeResourceRecordSets Requests>
 
 For information about the limits on a C<ChangeResourceRecordSets>
 request, see Limits
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 
@@ -655,7 +656,7 @@ Adds, edits, or deletes tags for a health check or a hosted zone.
 
 For information about using tags for cost allocation, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 in the I<AWS Billing and Cost Management User Guide>.
 
 
@@ -677,7 +678,10 @@ Returns: a L<Paws::Route53::CreateHealthCheckResponse> instance
 Creates a new health check.
 
 For information about adding health checks to resource record sets, see
-ResourceRecordSet$HealthCheckId in ChangeResourceRecordSets.
+HealthCheckId
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html#Route53-Type-ResourceRecordSet-HealthCheckId)
+in ChangeResourceRecordSets
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html).
 
 B<ELB Load Balancers>
 
@@ -947,14 +951,14 @@ set, query logs might contain information about only one query out of
 every several thousand queries that are submitted to DNS. For more
 information about how DNS works, see Routing Internet Traffic to Your
 Website or Web Application
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 =item Log File Format
 
 For a list of the values in each query log and the format of each
 value, see Logging DNS Queries
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 =item Pricing
@@ -966,7 +970,8 @@ Pricing (http://aws.amazon.com/cloudwatch/pricing/).
 
 If you want Route 53 to stop sending query logs to CloudWatch Logs,
 delete the query logging configuration. For more information, see
-DeleteQueryLoggingConfig.
+DeleteQueryLoggingConfig
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteQueryLoggingConfig.html).
 
 =back
 
@@ -1211,20 +1216,39 @@ Returns: a L<Paws::Route53::DeleteHostedZoneResponse> instance
 
 Deletes a hosted zone.
 
-If the name servers for the hosted zone are associated with a domain
-and if you want to make the domain unavailable on the Internet, we
-recommend that you delete the name servers from the domain to prevent
-future DNS queries from possibly being misrouted. If the domain is
-registered with Amazon Route 53, see C<UpdateDomainNameservers>. If the
-domain is registered with another registrar, use the method provided by
-the registrar to delete name servers for the domain.
+If the hosted zone was created by another service, such as AWS Cloud
+Map, see Deleting Public Hosted Zones That Were Created by Another
+Service
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html#delete-public-hosted-zone-created-by-another-service)
+in the I<Amazon Route 53 Developer Guide> for information about how to
+delete it. (The process is the same for public and private hosted zones
+that were created by another service.)
 
-Some domain registries don't allow you to remove all of the name
-servers for a domain. If the registry for your domain requires one or
-more name servers, we recommend that you delete the hosted zone only if
-you transfer DNS service to another service provider, and you replace
-the name servers for the domain with name servers from the new
-provider.
+If you want to keep your domain registration but you want to stop
+routing internet traffic to your website or web application, we
+recommend that you delete resource record sets in the hosted zone
+instead of deleting the hosted zone.
+
+If you delete a hosted zone, you can't undelete it. You must create a
+new hosted zone and update the name servers for your domain
+registration, which can require up to 48 hours to take effect. (If you
+delegated responsibility for a subdomain to a hosted zone and you
+delete the child hosted zone, you must update the name servers in the
+parent hosted zone.) In addition, if you delete a hosted zone, someone
+could hijack the domain and route traffic to their own resources using
+your domain name.
+
+If you want to avoid the monthly charge for the hosted zone, you can
+transfer DNS service for the domain to a free DNS service. When you
+transfer DNS service, you have to update the name servers for the
+domain registration. If the domain is registered with Route 53, see
+UpdateDomainNameservers
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_UpdateDomainNameservers.html)
+for information about how to replace Route 53 name servers with name
+servers for the new DNS service. If the domain is registered with
+another registrar, use the method provided by the registrar to update
+name servers for the domain registration. For more information, perform
+an internet search on "free DNS service."
 
 You can delete a hosted zone only if it contains only the default SOA
 record and NS resource record sets. If the hosted zone contains other
@@ -1232,7 +1256,8 @@ resource record sets, you must delete them before you can delete the
 hosted zone. If you try to delete a hosted zone that contains other
 resource record sets, the request fails, and Route 53 returns a
 C<HostedZoneNotEmpty> error. For information about deleting records
-from your hosted zone, see ChangeResourceRecordSets.
+from your hosted zone, see ChangeResourceRecordSets
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html).
 
 To verify that the hosted zone has been deleted, do one of the
 following:
@@ -1271,8 +1296,8 @@ configuration, Amazon Route 53 stops sending query logs to CloudWatch
 Logs. Route 53 doesn't delete any logs that are already in CloudWatch
 Logs.
 
-For more information about DNS query logs, see
-CreateQueryLoggingConfig.
+For more information about DNS query logs, see CreateQueryLoggingConfig
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html).
 
 
 =head2 DeleteReusableDelegationSet
@@ -1294,8 +1319,10 @@ You can delete a reusable delegation set only if it isn't associated
 with any hosted zones.
 
 To verify that the reusable delegation set is not associated with any
-hosted zones, submit a GetReusableDelegationSet request and specify the
-ID of the reusable delegation set that you want to delete.
+hosted zones, submit a GetReusableDelegationSet
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetReusableDelegationSet.html)
+request and specify the ID of the reusable delegation set that you want
+to delete.
 
 
 =head2 DeleteTrafficPolicy
@@ -1422,10 +1449,16 @@ Gets the specified limit for the current account, for example, the
 maximum number of health checks that you can create using the account.
 
 For the default limit, see Limits
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 in the I<Amazon Route 53 Developer Guide>. To request a higher limit,
 open a case
 (https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+
+You can also view account limits in AWS Trusted Advisor. Sign in to the
+AWS Management Console and open the Trusted Advisor console at
+https://console.aws.amazon.com/trustedadvisor/
+(https://console.aws.amazon.com/trustedadvisor). Then choose B<Service
+limits> in the navigation pane.
 
 
 =head2 GetChange
@@ -1632,7 +1665,7 @@ Gets the specified limit for a specified hosted zone, for example, the
 maximum number of records that you can create in the hosted zone.
 
 For the default limit, see Limits
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 in the I<Amazon Route 53 Developer Guide>. To request a higher limit,
 open a case
 (https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
@@ -1654,8 +1687,9 @@ Returns: a L<Paws::Route53::GetQueryLoggingConfigResponse> instance
 Gets information about a specified configuration for DNS query logging.
 
 For more information about DNS query logs, see CreateQueryLoggingConfig
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html)
 and Logging DNS Queries
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html).
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html).
 
 
 =head2 GetReusableDelegationSet
@@ -1695,7 +1729,7 @@ Gets the maximum number of hosted zones that you can associate with the
 specified reusable delegation set.
 
 For the default limit, see Limits
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 in the I<Amazon Route 53 Developer Guide>. To request a higher limit,
 open a case
 (https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
@@ -1937,10 +1971,11 @@ Lists the configurations for DNS query logging that are associated with
 the current AWS account or the configuration that is associated with a
 specified hosted zone.
 
-For more information about DNS query logs, see
-CreateQueryLoggingConfig. Additional information, including the format
-of DNS query logs, appears in Logging DNS Queries
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
+For more information about DNS query logs, see CreateQueryLoggingConfig
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html).
+Additional information, including the format of DNS query logs, appears
+in Logging DNS Queries
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 
@@ -2079,7 +2114,7 @@ Lists tags for one health check or hosted zone.
 
 For information about using tags for cost allocation, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 in the I<AWS Billing and Cost Management User Guide>.
 
 
@@ -2102,7 +2137,7 @@ Lists tags for up to 10 health checks or hosted zones.
 
 For information about using tags for cost allocation, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 in the I<AWS Billing and Cost Management User Guide>.
 
 

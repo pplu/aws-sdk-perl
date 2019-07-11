@@ -57,7 +57,7 @@ Contains information about a rule in Amazon CloudWatch Events.
 
   The event pattern of the rule. For more information, see Events and
 Event Patterns
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
 in the I<Amazon CloudWatch Events User Guide>.
 
 

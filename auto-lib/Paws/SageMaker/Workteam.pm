@@ -4,6 +4,7 @@ package Paws::SageMaker::Workteam;
   has Description => (is => 'ro', isa => 'Str', required => 1);
   has LastUpdatedDate => (is => 'ro', isa => 'Str');
   has MemberDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MemberDefinition]', required => 1);
+  has NotificationConfiguration => (is => 'ro', isa => 'Paws::SageMaker::NotificationConfiguration');
   has ProductListingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubDomain => (is => 'ro', isa => 'Str');
   has WorkteamArn => (is => 'ro', isa => 'Str', required => 1);
@@ -61,6 +62,11 @@ Provides details about a labeling work team.
 =head2 B<REQUIRED> MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]
 
   The Amazon Cognito user groups that make up the work team.
+
+
+=head2 NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>
+
+  
 
 
 =head2 ProductListingIds => ArrayRef[Str|Undef]

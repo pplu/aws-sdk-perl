@@ -32,21 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::I
 
 =head1 DESCRIPTION
 
-The response that's provided after registering the endpoint.
+Provides information about the results of a request to create or update
+an endpoint that's associated with an event.
 
 =head1 ATTRIBUTES
 
 
 =head2 EndpointItemResponse => L<Paws::Pinpoint::EndpointItemResponse>
 
-  The response received after the endpoint was accepted.
+  The response that was received after the endpoint data was accepted.
 
 
 =head2 EventsItemResponse => L<Paws::Pinpoint::MapOfEventItemResponse>
 
-  A multipart response object that contains a key and value for each
-event ID in the request. In each object, the event ID is the key, and
-an EventItemResponse object is the value.
+  A multipart response object that contains a key and a value for each
+event in the request. In each object, the event ID is the key and an
+EventItemResponse object is the value.
 
 
 

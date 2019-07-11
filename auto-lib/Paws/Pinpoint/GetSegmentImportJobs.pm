@@ -51,26 +51,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
 =head2 PageSize => Str
 
-The number of entries you want on each page in the response.
+The maximum number of items to include on each page in a paginated
+response.
 
 
 
 =head2 B<REQUIRED> SegmentId => Str
 
-The unique ID of the segment.
+The unique identifier for the segment.
 
 
 
 =head2 Token => Str
 
-The NextToken string returned on a previous page that you use to get
-the next page of results in a paginated response.
+The NextToken string that specifies which page of results to return in
+a paginated response.
 
 
 

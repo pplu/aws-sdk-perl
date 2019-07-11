@@ -36,6 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreationTime = $DescribeLocationNfsResponse->CreationTime;
     my $LocationArn  = $DescribeLocationNfsResponse->LocationArn;
     my $LocationUri  = $DescribeLocationNfsResponse->LocationUri;
+    my $MountOptions = $DescribeLocationNfsResponse->MountOptions;
     my $OnPremConfig = $DescribeLocationNfsResponse->OnPremConfig;
 
     # Returns a L<Paws::Datasync::DescribeLocationNfsResponse> object.

@@ -10,6 +10,7 @@ package Paws::ServerlessRepo::CreateApplicationInput;
   has ReadmeBody => (is => 'ro', isa => 'Str', request_name => 'readmeBody', traits => ['NameInRequest']);
   has ReadmeUrl => (is => 'ro', isa => 'Str', request_name => 'readmeUrl', traits => ['NameInRequest']);
   has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest']);
+  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeArchiveUrl', traits => ['NameInRequest']);
   has SourceCodeUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeUrl', traits => ['NameInRequest']);
   has SpdxLicenseId => (is => 'ro', isa => 'Str', request_name => 'spdxLicenseId', traits => ['NameInRequest']);
   has TemplateBody => (is => 'ro', isa => 'Str', request_name => 'templateBody', traits => ['NameInRequest']);
@@ -142,9 +143,18 @@ error results.
 https://semver.org/ (https://semver.org/)
 
 
+=head2 SourceCodeArchiveUrl => Str
+
+  A link to the S3 object that contains the ZIP archive of the source
+code for this version of your application.
+
+Maximum size 50 MB
+
+
 =head2 SourceCodeUrl => Str
 
-  A link to a public repository for the source code of your application.
+  A link to a public repository for the source code of your application,
+for example the URL of a specific GitHub commit.
 
 
 =head2 SpdxLicenseId => Str

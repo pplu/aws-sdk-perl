@@ -24,7 +24,7 @@ Paws::EC2::ImageAttribute
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-One or more block device mapping entries.
+The block device mapping entries.
 
 
 =head2 Description => L<Paws::EC2::AttributeValue>
@@ -44,12 +44,12 @@ The kernel ID.
 
 =head2 LaunchPermissions => ArrayRef[L<Paws::EC2::LaunchPermission>]
 
-One or more launch permissions.
+The launch permissions.
 
 
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
-One or more product codes.
+The product codes.
 
 
 =head2 RamdiskId => L<Paws::EC2::AttributeValue>

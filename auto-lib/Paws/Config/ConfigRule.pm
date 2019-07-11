@@ -55,7 +55,7 @@ ConfigSnapshotDeliveryProperties.
 
 For more information about developing and using AWS Config rules, see
 Evaluating AWS Resource Configurations with AWS Config
-(http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
+(https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
 in the I<AWS Config Developer Guide>.
 
 =head1 ATTRIBUTES

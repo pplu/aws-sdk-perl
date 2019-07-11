@@ -41,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LatestVersion        = $GetGroupResponse->LatestVersion;
     my $LatestVersionArn     = $GetGroupResponse->LatestVersionArn;
     my $Name                 = $GetGroupResponse->Name;
+    my $Tags                 = $GetGroupResponse->Tags;
 
     # Returns a L<Paws::Greengrass::GetGroupResponse> object.
 

@@ -10,6 +10,7 @@ package Paws::ApiGatewayV2::CreateApiResponse;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has ProtocolType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'protocolType');
   has RouteSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeSelectionExpression');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', traits => ['NameInRequest'], request_name => 'tags');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'warnings');
 
@@ -66,12 +67,19 @@ The name of the API.
 
 =head2 ProtocolType => Str
 
-The API protocol: HTTP or WEBSOCKET.
+The API protocol: Currently only WEBSOCKET is supported.
 
 Valid values are: C<"WEBSOCKET">
 =head2 RouteSelectionExpression => Str
 
 The route selection expression for the API.
+
+
+=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with aws:. The tag value can be up to 256 characters..
 
 
 =head2 Version => Str

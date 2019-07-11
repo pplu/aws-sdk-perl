@@ -39,7 +39,7 @@ ListEntitiesForPolicy operation.
 
 For more information about managed policies, refer to Managed Policies
 and Inline Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
 in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
@@ -49,7 +49,7 @@ in the I<Using IAM> guide.
 
   The stable and unique string identifying the role. For more information
 about IDs, see IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 in the I<IAM User Guide>.
 
 

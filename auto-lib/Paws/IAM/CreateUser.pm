@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The path for the user name. For more information about paths, see IAM
 Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -78,7 +78,7 @@ the user.
 A list of tags that you want to attach to the newly created user. Each
 tag consists of a key name and an associated value. For more
 information about tagging, see Tagging IAM Identities
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
 I<IAM User Guide>.
 
 If any one of the tags is invalid or if you exceed the allowed number
@@ -91,12 +91,9 @@ created.
 
 The name of the user to create.
 
-This parameter allows (through its regex pattern
-(http://wikipedia.org/wiki/regex)) a string of characters consisting of
-upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: _+=,.@-. User names are
-not distinguished by case. For example, you cannot create users named
-both "TESTUSER" and "testuser".
+IAM user, group, role, and policy names must be unique within the
+account. Names are not distinguished by case. For example, you cannot
+create resources named both "MyResource" and "myresource".
 
 
 

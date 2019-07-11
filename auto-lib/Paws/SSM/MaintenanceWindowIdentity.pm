@@ -41,71 +41,71 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Mainte
 
 =head1 DESCRIPTION
 
-Information about the Maintenance Window.
+Information about the maintenance window.
 
 =head1 ATTRIBUTES
 
 
 =head2 Cutoff => Int
 
-  The number of hours before the end of the Maintenance Window that
+  The number of hours before the end of the maintenance window that
 Systems Manager stops scheduling new tasks for execution.
 
 
 =head2 Description => Str
 
-  A description of the Maintenance Window.
+  A description of the maintenance window.
 
 
 =head2 Duration => Int
 
-  The duration of the Maintenance Window in hours.
+  The duration of the maintenance window in hours.
 
 
 =head2 Enabled => Bool
 
-  Whether the Maintenance Window is enabled.
+  Indicates whether the maintenance window is enabled.
 
 
 =head2 EndDate => Str
 
   The date and time, in ISO-8601 Extended format, for when the
-Maintenance Window is scheduled to become inactive.
+maintenance window is scheduled to become inactive.
 
 
 =head2 Name => Str
 
-  The name of the Maintenance Window.
+  The name of the maintenance window.
 
 
 =head2 NextExecutionTime => Str
 
-  The next time the Maintenance Window will actually run, taking into
-account any specified times for the Maintenance Window to become active
+  The next time the maintenance window will actually run, taking into
+account any specified times for the maintenance window to become active
 or inactive.
 
 
 =head2 Schedule => Str
 
-  The schedule of the Maintenance Window in the form of a cron or rate
+  The schedule of the maintenance window in the form of a cron or rate
 expression.
 
 
 =head2 ScheduleTimezone => Str
 
-  The time zone that the scheduled Maintenance Window executions are
+  The time zone that the scheduled maintenance window executions are
 based on, in Internet Assigned Numbers Authority (IANA) format.
 
 
 =head2 StartDate => Str
 
   The date and time, in ISO-8601 Extended format, for when the
-Maintenance Window is scheduled to become active.
+maintenance window is scheduled to become active.
 
 
 =head2 WindowId => Str
 
-  The ID of the Maintenance Window.
+  The ID of the maintenance window.
 
 
 

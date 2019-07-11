@@ -6,13 +6,14 @@ package Paws::Amplify::CreateBranch;
   has BranchName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchName', required => 1);
   has BuildSpec => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildSpec');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DisplayName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'displayName');
   has EnableAutoBuild => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableAutoBuild');
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBasicAuth');
   has EnableNotification => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableNotification');
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', traits => ['NameInRequest'], request_name => 'environmentVariables');
   has Framework => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'framework');
   has Stage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stage');
-  has Tags => (is => 'ro', isa => 'Paws::Amplify::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  has Tags => (is => 'ro', isa => 'Paws::Amplify::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has Ttl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ttl');
 
   use MooseX::ClassAttribute;
@@ -46,6 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BasicAuthCredentials => 'MyBasicAuthCredentials',    # OPTIONAL
       BuildSpec            => 'MyBuildSpec',               # OPTIONAL
       Description          => 'MyDescription',             # OPTIONAL
+      DisplayName          => 'MyDisplayName',             # OPTIONAL
       EnableAutoBuild      => 1,                           # OPTIONAL
       EnableBasicAuth      => 1,                           # OPTIONAL
       EnableNotification   => 1,                           # OPTIONAL
@@ -55,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Framework => 'MyFramework',    # OPTIONAL
       Stage     => 'PRODUCTION',     # OPTIONAL
       Tags      => {
-        'MyTagKey' => 'MyTagValue',    # key: max: 1000, value: max: 1000
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       Ttl => 'MyTTL',    # OPTIONAL
     );
@@ -101,6 +103,12 @@ Description for the branch.
 
 
 
+=head2 DisplayName => Str
+
+Display name for a branch, will use as the default domain prefix.
+
+
+
 =head2 EnableAutoBuild => Bool
 
 Enables auto building for the branch.
@@ -137,7 +145,7 @@ Stage for the branch.
 
 Valid values are: C<"PRODUCTION">, C<"BETA">, C<"DEVELOPMENT">, C<"EXPERIMENTAL">
 
-=head2 Tags => L<Paws::Amplify::Tags>
+=head2 Tags => L<Paws::Amplify::TagMap>
 
 Tag for the branch.
 

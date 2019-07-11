@@ -43,8 +43,8 @@ if any, for this distribution.
   The name of a header that you want CloudFront to forward to your
 origin. For more information, see Forwarding Custom Headers to Your
 Origin (Web Distributions Only)
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html)
-in the I<Amazon Amazon CloudFront Developer Guide>.
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html)
+in the I< Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> HeaderValue => Str

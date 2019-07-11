@@ -35,21 +35,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Acc
 
 =head1 DESCRIPTION
 
-Limits related to concurrency and code storage. All file and storage
-sizes are in bytes.
+Limits that are related to concurrency and code storage. All file and
+storage sizes are in bytes.
 
 =head1 ATTRIBUTES
 
 
 =head2 CodeSizeUnzipped => Int
 
-  The maximum size of your function's code and layers when extracted.
+  The maximum size of your function's code and layers when they're
+extracted.
 
 
 =head2 CodeSizeZipped => Int
 
-  The maximum size of a deployment package when uploaded direcly to AWS
-Lambda. Use Amazon S3 for larger files.
+  The maximum size of a deployment package when it's uploaded directly to
+AWS Lambda. Use Amazon S3 for larger files.
 
 
 =head2 ConcurrentExecutions => Int
@@ -65,8 +66,8 @@ packages and layer archives.
 
 =head2 UnreservedConcurrentExecutions => Int
 
-  The maximum number of simultaneous function executions, less the
-concurrency reserved for individual functions with
+  The maximum number of simultaneous function executions, minus the
+capacity that's reserved for individual functions with
 PutFunctionConcurrency.
 
 

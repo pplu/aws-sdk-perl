@@ -112,7 +112,7 @@ The network configuration for the service. This parameter is required
 for task definitions that use the C<awsvpc> network mode to receive
 their own elastic network interface, and it is not supported for other
 network modes. For more information, see Task Networking
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 Updating a service to add a subnet to a list of existing subnets does

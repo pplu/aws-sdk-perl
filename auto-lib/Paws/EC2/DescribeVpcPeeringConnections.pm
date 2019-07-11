@@ -36,14 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      MaxResults              => 1,                      # OPTIONAL
-      NextToken               => 'MyString',             # OPTIONAL
-      VpcPeeringConnectionIds => [ 'MyString', ... ],    # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults              => 1,             # OPTIONAL
+      NextToken               => 'MyString',    # OPTIONAL
+      VpcPeeringConnectionIds => [
+        'MyString', ...                         # OPTIONAL
+      ],                                        # OPTIONAL
       );
 
     # Results:
@@ -143,16 +147,15 @@ C<vpc-peering-connection-id> - The ID of the VPC peering connection.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return for this request. The request
-returns a token that you can specify in a subsequent call to get the
-next set of results.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
 
 
 =head2 NextToken => Str
 
-The token to request the next page of results. (You received this token
-from a prior call.)
+The token for the next page of results.
 
 
 

@@ -17,12 +17,12 @@ Paws::SSM::DeregisterTaskFromMaintenanceWindowResult
 
 =head2 WindowId => Str
 
-The ID of the Maintenance Window the task was removed from.
+The ID of the maintenance window the task was removed from.
 
 
 =head2 WindowTaskId => Str
 
-The ID of the task removed from the Maintenance Window.
+The ID of the task removed from the maintenance window.
 
 
 =head2 _request_id => Str

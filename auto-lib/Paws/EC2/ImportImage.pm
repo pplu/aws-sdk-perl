@@ -98,7 +98,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 The architecture of the virtual machine.
 
-Valid values: C<i386> | C<x86_64>
+Valid values: C<i386> | C<x86_64> | C<arm64>
 
 
 
@@ -172,19 +172,22 @@ Key ID
 
 =item *
 
-Key alias, in the form C<alias/I<ExampleAlias>>
+Key alias. The alias ARN contains the C<arn:aws:kms> namespace,
+followed by the Region of the CMK, the AWS account ID of the CMK owner,
+the C<alias> namespace, and then the CMK alias. For example,
+arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 
 =item *
 
 ARN using key ID. The ID ARN contains the C<arn:aws:kms> namespace,
-followed by the region of the CMK, the AWS account ID of the CMK owner,
+followed by the Region of the CMK, the AWS account ID of the CMK owner,
 the C<key> namespace, and then the CMK ID. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
 
 =item *
 
 ARN using key alias. The alias ARN contains the C<arn:aws:kms>
-namespace, followed by the region of the CMK, the AWS account ID of the
+namespace, followed by the Region of the CMK, the AWS account ID of the
 CMK owner, the C<alias> namespace, and then the CMK alias. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 
@@ -194,7 +197,7 @@ AWS parses C<KmsKeyId> asynchronously, meaning that the action you call
 may appear to complete even though you provided an invalid identifier.
 This action will eventually report failure.
 
-The specified CMK must exist in the region that the AMI is being copied
+The specified CMK must exist in the Region that the AMI is being copied
 to.
 
 
@@ -204,13 +207,16 @@ to.
 The license type to be used for the Amazon Machine Image (AMI) after
 importing.
 
-B<Note:> You may only use BYOL if you have existing licenses with
-rights to use these licenses in a third party cloud like AWS. For more
+By default, we detect the source-system operating system (OS) and apply
+the appropriate license. Specify C<AWS> to replace the source-system
+license with an AWS license, if appropriate. Specify C<BYOL> to retain
+the source-system license, if appropriate.
+
+To use C<BYOL>, you must have existing licenses with rights to use
+these licenses in a third party cloud, such as AWS. For more
 information, see Prerequisites
 (https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image)
 in the VM Import/Export User Guide.
-
-Valid values: C<AWS> | C<BYOL>
 
 
 

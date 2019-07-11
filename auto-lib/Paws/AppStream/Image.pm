@@ -7,6 +7,7 @@ package Paws::AppStream::Image;
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has ImageBuilderName => (is => 'ro', isa => 'Str');
   has ImageBuilderSupported => (is => 'ro', isa => 'Bool');
   has ImagePermissions => (is => 'ro', isa => 'Paws::AppStream::ImagePermissions');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -84,6 +85,12 @@ launched from this image.
 =head2 DisplayName => Str
 
   The image name to display.
+
+
+=head2 ImageBuilderName => Str
+
+  The name of the image builder that was used to create the private
+image. If the image is shared, this value is null.
 
 
 =head2 ImageBuilderSupported => Bool

@@ -38,7 +38,7 @@ sending events to Amazon CloudWatch.
 
 For information about publishing email sending events to Amazon
 CloudWatch, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
 =head1 ATTRIBUTES
 

@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RemediationEnabled        => 1,
         ResourceType              => 'MyResourceType',    # min: 1, max: 128
         SecurityServicePolicyData => {
-          Type => 'WAF',                                  # values: WAF
+          Type => 'WAF',    # values: WAF, SHIELD_ADVANCED
           ManagedServiceData =>
             'MyManagedServiceData',    # min: 1, max: 1024; OPTIONAL
         },
@@ -58,6 +58,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                            # max: 8; OPTIONAL
+        ResourceTypeList => [
+          'MyResourceType', ...       # min: 1, max: 128
+        ],                            # OPTIONAL
       },
 
     );

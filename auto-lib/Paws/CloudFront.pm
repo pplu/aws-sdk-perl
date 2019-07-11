@@ -3,7 +3,7 @@ package Paws::CloudFront;
   use Moose;
   sub service { 'cloudfront' }
   sub signing_name { 'cloudfront' }
-  sub version { '2018-11-05' }
+  sub version { '2019-03-26' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -393,7 +393,7 @@ developers who need detailed information about CloudFront API actions,
 data types, and errors. For detailed information about CloudFront
 features, see the I<Amazon CloudFront Developer Guide>.
 
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2018-11-05>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudfront-2019-03-26>
 
 
 =head1 METHODS
@@ -416,7 +416,7 @@ your origin, you can use an origin access identity to require users to
 access your content using a CloudFront URL instead of the Amazon S3
 URL. For more information about how to use origin access identities,
 see Serving Private Content through CloudFront
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 
@@ -441,17 +441,14 @@ version>/distribution>/C<distribution ID> resource.
 
 When you update a distribution, there are more required fields than
 when you create a distribution. When you update your distribution by
-using UpdateDistribution, follow the steps included in the
-documentation to get the current configuration and then make your
-updates. This helps to make sure that you include all of the required
-fields. To view a summary, see Required Fields for Create Distribution
-and Update Distribution
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
+using UpdateDistribution
+(https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html),
+follow the steps included in the documentation to get the current
+configuration and then make your updates. This helps to make sure that
+you include all of the required fields. To view a summary, see Required
+Fields for Create Distribution and Update Distribution
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
 in the I<Amazon CloudFront Developer Guide>.
-
-If you are using Adobe Flash Media Server's RTMP protocol, you set up a
-different kind of CloudFront distribution. For more information, see
-CreateStreamingDistribution.
 
 
 =head2 CreateDistributionWithTags
@@ -551,12 +548,12 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDist
 
 Returns: a L<Paws::CloudFront::CreateStreamingDistributionResult> instance
 
-Creates a new RMTP distribution. An RTMP distribution is similar to a
+Creates a new RTMP distribution. An RTMP distribution is similar to a
 web distribution, but an RTMP distribution streams media files using
 the Adobe Real-Time Messaging Protocol (RTMP) instead of serving files
 using HTTP.
 
-To create a new web distribution, submit a C<POST> request to the
+To create a new distribution, submit a C<POST> request to the
 I<CloudFront API version>/distribution resource. The request body must
 include a document with a I<StreamingDistributionConfig> element. The
 response echoes the C<StreamingDistributionConfig> element and returns
@@ -569,7 +566,7 @@ usually deploys in less than 15 minutes.
 
 For more information about web distributions, see Working with RTMP
 Distributions
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 Beginning with the 2012-05-05 version of the CloudFront API, we made
@@ -764,7 +761,7 @@ confirm that the distribution was successfully deleted.
 
 For information about deleting a distribution using the CloudFront
 console, see Deleting a Distribution
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 
@@ -1012,7 +1009,7 @@ Each argument is described in detail in: L<Paws::CloudFront::ListDistributions>
 
 Returns: a L<Paws::CloudFront::ListDistributionsResult> instance
 
-List distributions.
+List CloudFront distributions.
 
 
 =head2 ListDistributionsByWebACLId
@@ -1228,7 +1225,7 @@ using this API action, follow the steps here to get the current
 configuration and then make your updates, to make sure that you include
 all of the required fields. To view a summary, see Required Fields for
 Create Distribution and Update Distribution
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 The update process includes getting the current distribution
@@ -1238,7 +1235,7 @@ the updates.
 
 For information about updating a distribution using the CloudFront
 console instead, see Creating a Distribution
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 B<To update a web distribution using the CloudFront API>
@@ -1247,8 +1244,10 @@ B<To update a web distribution using the CloudFront API>
 
 =item 1.
 
-Submit a GetDistributionConfig request to get the current configuration
-and an C<Etag> header for the distribution.
+Submit a GetDistributionConfig
+(https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistributionConfig.html)
+request to get the current configuration and an C<Etag> header for the
+distribution.
 
 If you update the distribution again, you must get a new C<Etag>
 header.
@@ -1318,9 +1317,10 @@ that the configuration was successfully updated.
 
 =item 5.
 
-Optional: Submit a GetDistribution request to confirm that your changes
-have propagated. When propagation is complete, the value of C<Status>
-is C<Deployed>.
+Optional: Submit a GetDistribution
+(https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html)
+request to confirm that your changes have propagated. When propagation
+is complete, the value of C<Status> is C<Deployed>.
 
 =back
 

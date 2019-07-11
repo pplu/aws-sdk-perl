@@ -51,12 +51,12 @@ Stacks operating system.
 =head2 Id => Str
 
   The ID of a supported operating system, such as C<Amazon Linux
-2017.09>.
+2018.03>.
 
 
 =head2 Name => Str
 
-  The name of the operating system, such as C<Amazon Linux 2017.09>.
+  The name of the operating system, such as C<Amazon Linux 2018.03>.
 
 
 =head2 ReportedName => Str

@@ -18,7 +18,7 @@ Paws::SSM::GetParametersResult
 =head2 InvalidParameters => ArrayRef[Str|Undef]
 
 A list of parameters that are not formatted correctly or do not run
-when executed.
+during an execution.
 
 
 =head2 Parameters => ArrayRef[L<Paws::SSM::Parameter>]

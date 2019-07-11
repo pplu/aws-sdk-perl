@@ -8,6 +8,7 @@ package Paws::MediaConvert::CreateJob;
   has Queue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queue');
   has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role', required => 1);
   has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobSettings', traits => ['NameInRequest'], request_name => 'settings', required => 1);
+  has StatusUpdateInterval => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusUpdateInterval');
   has UserMetadata => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'userMetadata');
 
   use MooseX::ClassAttribute;
@@ -43,12 +44,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AvailBlankingImage =>
             'My__stringMin14PatternS3BmpBMPPngPNG',    # min: 14; OPTIONAL
         },    # OPTIONAL
+        Esam => {
+          ManifestConfirmConditionNotification => {
+            MccXml =>
+              'My__stringPatternSNManifestConfirmConditionNotificationNS'
+            ,    # OPTIONAL
+          },    # OPTIONAL
+          ResponseSignalPreroll        => 1,    # max: 30000; OPTIONAL
+          SignalProcessingNotification => {
+            SccXml =>
+              'My__stringPatternSNSignalProcessingNotificationNS',    # OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
         Inputs => [
           {
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1
+                  'My__stringMin1', ...    # min: 1; OPTIONAL
                 ],                         # OPTIONAL
               },
             },    # OPTIONAL
@@ -203,6 +216,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               Pid           => 1,  # min: 1, max: 2147483647; OPTIONAL
               ProgramNumber => 1,  # min: -2147483648, max: 2147483647; OPTIONAL
+              Rotate => 'DEGREE_0'
+              , # values: DEGREE_0, DEGREES_90, DEGREES_180, DEGREES_270, AUTO; OPTIONAL
             },    # OPTIONAL
           },
           ...
@@ -237,8 +252,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_6381',    # values: RFC_6381, RFC_4281; OPTIONAL
-                Destination => 'My__stringPatternS3',    # OPTIONAL
-                Encryption  => {
+                Destination         => 'My__stringPatternS3',    # OPTIONAL
+                DestinationSettings => {
+                  S3Settings => {
+                    Encryption => {
+                      EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
+                      , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
+                      KmsKeyArn =>
+'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+                      ,    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                Encryption => {
                   ConstantInitializationVector =>
                     'My__stringMin32Max32Pattern09aFAF32'
                   ,    # min: 32, max: 32; OPTIONAL
@@ -272,9 +298,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'DISABLED',          # values: DISABLED, ENABLED; OPTIONAL
               },    # OPTIONAL
               DashIsoGroupSettings => {
-                BaseUrl     => 'My__string',
-                Destination => 'My__stringPatternS3',    # OPTIONAL
-                Encryption  => {
+                BaseUrl             => 'My__string',
+                Destination         => 'My__stringPatternS3',    # OPTIONAL
+                DestinationSettings => {
+                  S3Settings => {
+                    Encryption => {
+                      EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
+                      , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
+                      KmsKeyArn =>
+'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+                      ,    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                Encryption => {
+                  PlaybackDeviceCompatibility =>
+                    'CENC_V1',    # values: CENC_V1, UNENCRYPTED_SEI; OPTIONAL
                   SpekeKeyProvider => {
                     CertificateArn =>
                       'My__stringPatternArnAwsUsGovAcm',    # OPTIONAL
@@ -297,7 +336,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'ENABLED',           # values: ENABLED, DISABLED; OPTIONAL
               },    # OPTIONAL
               FileGroupSettings => {
-                Destination => 'My__stringPatternS3',    # OPTIONAL
+                Destination         => 'My__stringPatternS3',    # OPTIONAL
+                DestinationSettings => {
+                  S3Settings => {
+                    Encryption => {
+                      EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
+                      , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
+                      KmsKeyArn =>
+'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+                      ,    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
               },    # OPTIONAL
               HlsGroupSettings => {
                 AdMarkers => [
@@ -321,7 +371,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_6381',    # values: RFC_6381, RFC_4281; OPTIONAL
-                Destination        => 'My__stringPatternS3',    # OPTIONAL
+                Destination         => 'My__stringPatternS3',    # OPTIONAL
+                DestinationSettings => {
+                  S3Settings => {
+                    Encryption => {
+                      EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
+                      , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
+                      KmsKeyArn =>
+'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+                      ,    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
                 DirectoryStructure => 'SINGLE_DIRECTORY'
                 ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
                 Encryption => {
@@ -332,6 +393,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     'AES128',    # values: AES128, SAMPLE_AES; OPTIONAL
                   InitializationVectorInManifest =>
                     'INCLUDE',    # values: INCLUDE, EXCLUDE; OPTIONAL
+                  OfflineEncrypted =>
+                    'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
                   SpekeKeyProvider => {
                     CertificateArn =>
                       'My__stringPatternArnAwsUsGovAcm',    # OPTIONAL
@@ -378,8 +441,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MsSmoothGroupSettings => {
                 AudioDeduplication => 'COMBINE_DUPLICATE_STREAMS'
                 ,    # values: COMBINE_DUPLICATE_STREAMS, NONE; OPTIONAL
-                Destination => 'My__stringPatternS3',    # OPTIONAL
-                Encryption  => {
+                Destination         => 'My__stringPatternS3',    # OPTIONAL
+                DestinationSettings => {
+                  S3Settings => {
+                    Encryption => {
+                      EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
+                      , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
+                      KmsKeyArn =>
+'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+                      ,    # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                Encryption => {
                   SpekeKeyProvider => {
                     CertificateArn =>
                       'My__stringPatternArnAwsUsGovAcm',    # OPTIONAL
@@ -530,7 +604,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',    # min: 1
+                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
                     CustomLanguageCode => 'My__stringMin3Max3PatternAZaZ3'
                     ,    # min: 3, max: 3; OPTIONAL
                     DestinationSettings => {
@@ -675,7 +749,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     PrivateMetadataPid => 1,      # min: 32, max: 8182; OPTIONAL
                     ProgramNumber      => 1,      # max: 65535; OPTIONAL
                     RateMode           => 'VBR',  # values: VBR, CBR; OPTIONAL
-                    Scte35Pid          => 1,      # min: 32, max: 8182; OPTIONAL
+                    Scte35Esam         => {
+                      Scte35EsamPid => 1,         # min: 32, max: 8182; OPTIONAL
+                    },    # OPTIONAL
+                    Scte35Pid => 1,    # min: 32, max: 8182; OPTIONAL
                     Scte35Source =>
                       'PASSTHROUGH',    # values: PASSTHROUGH, NONE; OPTIONAL
                     SegmentationMarkers => 'NONE'
@@ -729,7 +806,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1
+                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId       => 'My__string',
@@ -1090,11 +1167,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Mode => 'DISABLED',    # values: DISABLED, ENABLED
 
       },    # OPTIONAL
-      BillingTagsSource  => 'QUEUE',                              # OPTIONAL
-      ClientRequestToken => 'My__string',                         # OPTIONAL
-      JobTemplate        => 'My__string',                         # OPTIONAL
-      Queue              => 'My__string',                         # OPTIONAL
-      UserMetadata       => { 'My__string' => 'My__string', },    # OPTIONAL
+      BillingTagsSource    => 'QUEUE',                              # OPTIONAL
+      ClientRequestToken   => 'My__string',                         # OPTIONAL
+      JobTemplate          => 'My__string',                         # OPTIONAL
+      Queue                => 'My__string',                         # OPTIONAL
+      StatusUpdateInterval => 'SECONDS_10',                         # OPTIONAL
+      UserMetadata         => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -1110,14 +1188,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
 
-This is a beta feature. If you are interested in using this feature,
-please contact AWS customer support.
+Accelerated transcoding can significantly speed up jobs with long,
+visually complex content. Outputs that use this feature incur pro-tier
+pricing. For information about feature limitations, see the AWS
+Elemental MediaConvert User Guide.
 
 
 
 =head2 BillingTagsSource => Str
 
-
+Optional. Choose a tag type that AWS Billing and Cost Management will
+use to sort your AWS Elemental MediaConvert costs on any billing report
+that you set up. Any transcoding outputs that don't have an associated
+tag will appear in your billing report unsorted. If you don't choose a
+valid value for this field, your job outputs will appear on the billing
+report unsorted.
 
 Valid values are: C<"QUEUE">, C<"PRESET">, C<"JOB_TEMPLATE">
 
@@ -1153,9 +1238,19 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
 
 =head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobSettings>
 
+JobSettings contains all the transcode settings for a job.
 
 
 
+=head2 StatusUpdateInterval => Str
+
+Specify how often MediaConvert sends STATUS_UPDATE events to Amazon
+CloudWatch Events. Set the interval, in seconds, between status
+updates. MediaConvert sends an update at this interval from the time
+the service begins processing your job to the time it completes the
+transcode or encounters an error.
+
+Valid values are: C<"SECONDS_10">, C<"SECONDS_12">, C<"SECONDS_15">, C<"SECONDS_20">, C<"SECONDS_30">, C<"SECONDS_60">, C<"SECONDS_120">, C<"SECONDS_180">, C<"SECONDS_240">, C<"SECONDS_300">, C<"SECONDS_360">, C<"SECONDS_420">, C<"SECONDS_480">, C<"SECONDS_540">, C<"SECONDS_600">
 
 =head2 UserMetadata => L<Paws::MediaConvert::__mapOf__string>
 

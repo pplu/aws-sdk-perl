@@ -52,15 +52,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 The maximum number of results to return in a single call. To retrieve
 the remaining results, make another call with the returned nextToken
-value. The available pipeline execution history is limited to the most
-recent 12 months, based on pipeline execution start times. Default
-value is 100.
+value. Pipeline history is limited to the most recent 12 months, based
+on pipeline execution start times. Default value is 100.
 
 
 
 =head2 NextToken => Str
 
-The token that was returned from the previous ListPipelineExecutions
+The token that was returned from the previous C<ListPipelineExecutions>
 call, which can be used to return the next set of pipeline executions
 in the list.
 

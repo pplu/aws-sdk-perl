@@ -31,15 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-The remediation options for a finding.
+Details about the remediation steps for a finding.
 
 =head1 ATTRIBUTES
 
 
 =head2 Recommendation => L<Paws::SecurityHub::Recommendation>
 
-  Provides a recommendation on how to remediate the issue identified
-within a finding.
+  A recommendation on the steps to take to remediate the issue identified
+by a finding.
 
 
 

@@ -55,9 +55,9 @@ front. For example: C<elasticbeanstalk.amazonaws.com>.
 Service principals are unique and case-sensitive. To find the exact
 service principal for your service-linked role, see AWS Services That
 Work with IAM
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html)
-in the I<IAM User Guide> and look for the services that have B<Yes >in
-the B<Service-Linked Role> column. Choose the B<Yes> link to view the
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html)
+in the I<IAM User Guide>. Look for the services that have B<Yes >in the
+B<Service-Linked Role> column. Choose the B<Yes> link to view the
 service-linked role documentation for that service.
 
 

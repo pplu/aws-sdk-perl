@@ -66,7 +66,7 @@ in the response to a DescribeCertificate request.
 
   The Amazon Resource Name (ARN) of the certificate. For more information
 about ARNs, see Amazon Resource Names (ARNs) and AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 
@@ -110,7 +110,7 @@ used and consists of a name and an object identifier (OID).
   The reason the certificate request failed. This value exists only when
 the certificate status is C<FAILED>. For more information, see
 Certificate Request Failed
-(http://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed)
+(https://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed)
 in the I<AWS Certificate Manager User Guide>.
 
 
@@ -172,13 +172,15 @@ error message. The logs are cryptographically secure.
 
 =head2 RenewalEligibility => Str
 
-  Specifies whether the certificate is eligible for renewal.
+  Specifies whether the certificate is eligible for renewal. At this
+time, only exported private certificates can be renewed with the
+RenewCertificate command.
 
 
 =head2 RenewalSummary => L<Paws::ACM::RenewalSummary>
 
   Contains information about the status of ACM's managed renewal
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
+(https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
 the certificate. This field exists only when the certificate type is
 C<AMAZON_ISSUED>.
 
@@ -232,11 +234,11 @@ the website.
 value is C<AMAZON_ISSUED>. For certificates that you imported with
 ImportCertificate, this value is C<IMPORTED>. ACM does not provide
 managed renewal
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
+(https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
 imported certificates. For more information about the differences
 between certificates that you import and those that ACM provides, see
 Importing Certificates
-(http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
+(https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
 in the I<AWS Certificate Manager User Guide>.
 
 

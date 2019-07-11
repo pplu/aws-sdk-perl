@@ -56,7 +56,7 @@ request, the MFA device successfully associates with the user but the
 MFA device becomes out of sync. This happens because time-based
 one-time passwords (TOTP) expire after a short period of time. If this
 happens, you can resync the device
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html).
 
 
 
@@ -72,7 +72,7 @@ request, the MFA device successfully associates with the user but the
 MFA device becomes out of sync. This happens because time-based
 one-time passwords (TOTP) expire after a short period of time. If this
 happens, you can resync the device
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html).
 
 
 

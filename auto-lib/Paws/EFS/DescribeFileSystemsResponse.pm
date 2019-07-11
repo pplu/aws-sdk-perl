@@ -19,7 +19,7 @@ Paws::EFS::DescribeFileSystemsResponse
 
 =head2 FileSystems => ArrayRef[L<Paws::EFS::FileSystemDescription>]
 
-Array of file system descriptions.
+An array of file system descriptions.
 
 
 =head2 Marker => Str

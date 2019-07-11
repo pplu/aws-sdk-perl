@@ -4,6 +4,7 @@ package Paws::EC2::CreateNetworkInterface;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
+  has InterfaceType => (is => 'ro', isa => 'Str');
   has Ipv6AddressCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'ipv6AddressCount' );
   has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6Address]', traits => ['NameInRequest'], request_name => 'ipv6Addresses' );
   has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'privateIpAddress' );
@@ -75,6 +76,15 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 The IDs of one or more security groups.
 
 
+
+=head2 InterfaceType => Str
+
+Indicates the type of network interface. To create an Elastic Fabric
+Adapter (EFA), specify C<efa>. For more information, see Elastic Fabric
+Adapter (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+Valid values are: C<"efa">
 
 =head2 Ipv6AddressCount => Int
 

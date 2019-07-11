@@ -33,28 +33,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Event dimensions.
+Specifies the dimensions for an event filter that determines when a
+campaign is sent.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attributes => L<Paws::Pinpoint::MapOfAttributeDimension>
 
-  Custom attributes that your app reports to Amazon Pinpoint. You can use
-these attributes as selection criteria when you create an event filter.
+  One or more custom attributes that your app reports to Amazon Pinpoint.
+You can use these attributes as selection criteria when you create an
+event filter.
 
 
 =head2 EventType => L<Paws::Pinpoint::SetDimension>
 
   The name of the event that causes the campaign to be sent. This can be
-a standard event type that Amazon Pinpoint generates, such as
+a standard type of event that Amazon Pinpoint generates, such as
 _session.start, or a custom event that's specific to your app.
 
 
 =head2 Metrics => L<Paws::Pinpoint::MapOfMetricDimension>
 
-  Custom metrics that your app reports to Amazon Pinpoint. You can use
-these attributes as selection criteria when you create an event filter.
+  One or more custom metrics that your app reports to Amazon Pinpoint.
+You can use these metrics as selection criteria when you create an
+event filter.
 
 
 

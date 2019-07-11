@@ -71,7 +71,7 @@ One or more filters. The possible values are:
 
 =item *
 
-C<attachment.transit-gateway-attachment-id>- The id of the transit
+C<attachment.transit-gateway-attachment-id> - The id of the transit
 gateway attachment.
 
 =item *
@@ -112,7 +112,7 @@ C<transit-gateway-route-destination-cidr-block> - The CIDR range.
 
 =item *
 
-C<type> - The type of roue (C<active> | C<blackhole>).
+C<type> - The type of route (C<active> | C<blackhole>).
 
 =back
 

@@ -21,12 +21,12 @@ Paws::EC2::Reservation
 
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
-[EC2-Classic only] One or more security groups.
+[EC2-Classic only] The security groups.
 
 
 =head2 Instances => ArrayRef[L<Paws::EC2::Instance>]
 
-One or more instances.
+The instances.
 
 
 =head2 OwnerId => Str

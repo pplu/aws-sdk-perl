@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ops
 
 The user's IAM ARN. This can also be a federated user's ARN. For more
 information about IAM ARNs, see Using Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 
 
 

@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::GetCo
 
 =head1 DESCRIPTION
 
-Filters the connection definitions returned by the C<GetConnections>
-API.
+Filters the connection definitions that are returned by the
+C<GetConnections> API operation.
 
 =head1 ATTRIBUTES
 

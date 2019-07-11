@@ -227,6 +227,16 @@ package Paws::DocDB;
     my $call_object = $self->new_with_coercions('Paws::DocDB::RestoreDBClusterToPointInTime', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DocDB::StartDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DocDB::StopDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub DescribeAllDBClusters {
     my $self = shift;
@@ -368,7 +378,7 @@ package Paws::DocDB;
   }
 
 
-  sub operations { qw/AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBSubnetGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBSubnetGroup DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBSubnetGroup RebootDBInstance RemoveTagsFromResource ResetDBClusterParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime / }
+  sub operations { qw/AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBSubnetGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBSubnetGroup DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBSubnetGroup RebootDBInstance RemoveTagsFromResource ResetDBClusterParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime StartDBCluster StopDBCluster / }
 
 1;
 
@@ -509,6 +519,10 @@ while that DB cluster snapshot is in the I<copying> status.
 
 =item Engine => Str
 
+=item MasterUsername => Str
+
+=item MasterUserPassword => Str
+
 =item [AvailabilityZones => ArrayRef[Str|Undef]]
 
 =item [BackupRetentionPeriod => Int]
@@ -517,15 +531,13 @@ while that DB cluster snapshot is in the I<copying> status.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EngineVersion => Str]
 
 =item [KmsKeyId => Str]
-
-=item [MasterUsername => Str]
-
-=item [MasterUserPassword => Str]
 
 =item [Port => Int]
 
@@ -1160,6 +1172,8 @@ Lists all tags on an Amazon DocumentDB resource.
 
 =item [DBClusterParameterGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EngineVersion => Str]
 
 =item [MasterUserPassword => Str]
@@ -1392,6 +1406,8 @@ effect on the next DB instance reboot.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EngineVersion => Str]
@@ -1433,6 +1449,8 @@ created with the default security group.
 
 =item [DBSubnetGroupName => Str]
 
+=item [DeletionProtection => Bool]
+
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [KmsKeyId => Str]
@@ -1460,6 +1478,44 @@ C<BackupRetentionPeriod> days. The target DB cluster is created from
 the source DB cluster with the same configuration as the original DB
 cluster, except that the new DB cluster is created with the default DB
 security group.
+
+
+=head2 StartDBCluster
+
+=over
+
+=item DBClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DocDB::StartDBCluster>
+
+Returns: a L<Paws::DocDB::StartDBClusterResult> instance
+
+Restarts the stopped cluster that is specified by
+C<DBClusterIdentifier>. For more information, see Stopping and Starting
+an Amazon DocumentDB Cluster
+(https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html).
+
+
+=head2 StopDBCluster
+
+=over
+
+=item DBClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DocDB::StopDBCluster>
+
+Returns: a L<Paws::DocDB::StopDBClusterResult> instance
+
+Stops the running cluster that is specified by C<DBClusterIdentifier>.
+The cluster must be in the I<available> state. For more information,
+see Stopping and Starting an Amazon DocumentDB Cluster
+(https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html).
 
 
 

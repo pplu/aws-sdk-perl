@@ -1,6 +1,8 @@
 package Paws::EC2::VpcEndpointConnection;
   use Moose;
   has CreationTimestamp => (is => 'ro', isa => 'Str', request_name => 'creationTimestamp', traits => ['NameInRequest']);
+  has DnsEntries => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DnsEntry]', request_name => 'dnsEntrySet', traits => ['NameInRequest']);
+  has NetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkLoadBalancerArnSet', traits => ['NameInRequest']);
   has ServiceId => (is => 'ro', isa => 'Str', request_name => 'serviceId', traits => ['NameInRequest']);
   has VpcEndpointId => (is => 'ro', isa => 'Str', request_name => 'vpcEndpointId', traits => ['NameInRequest']);
   has VpcEndpointOwner => (is => 'ro', isa => 'Str', request_name => 'vpcEndpointOwner', traits => ['NameInRequest']);
@@ -43,6 +45,17 @@ This class has no description
 =head2 CreationTimestamp => Str
 
   The date and time the VPC endpoint was created.
+
+
+=head2 DnsEntries => ArrayRef[L<Paws::EC2::DnsEntry>]
+
+  The DNS entries for the VPC endpoint.
+
+
+=head2 NetworkLoadBalancerArns => ArrayRef[Str|Undef]
+
+  The Amazon Resource Names (ARNs) of the network load balancers for the
+service.
 
 
 =head2 ServiceId => Str

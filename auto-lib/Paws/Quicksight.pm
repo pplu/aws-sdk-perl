@@ -39,6 +39,11 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteUserByPrincipalId {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteUserByPrincipalId', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeGroup', @_);
@@ -92,7 +97,7 @@ package Paws::Quicksight;
   
 
 
-  sub operations { qw/CreateGroup CreateGroupMembership DeleteGroup DeleteGroupMembership DeleteUser DescribeGroup DescribeUser GetDashboardEmbedUrl ListGroupMemberships ListGroups ListUserGroups ListUsers RegisterUser UpdateGroup UpdateUser / }
+  sub operations { qw/CreateGroup CreateGroupMembership DeleteGroup DeleteGroupMembership DeleteUser DeleteUserByPrincipalId DescribeGroup DescribeUser GetDashboardEmbedUrl ListGroupMemberships ListGroups ListUserGroups ListUsers RegisterUser UpdateGroup UpdateUser / }
 
 1;
 
@@ -301,6 +306,36 @@ C<aws quicksight delete-user --aws-account-id=111122223333
 --namespace=default --user-name=Pat>
 
 
+=head2 DeleteUserByPrincipalId
+
+=over
+
+=item AwsAccountId => Str
+
+=item Namespace => Str
+
+=item PrincipalId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DeleteUserByPrincipalId>
+
+Returns: a L<Paws::Quicksight::DeleteUserByPrincipalIdResponse> instance
+
+Deletes a user identified by its principal ID.
+
+The permission resource is
+C<arn:aws:quicksight:us-east-1:I<E<lt>aws-account-idE<gt>>:user/default/I<E<lt>user-nameE<gt>
+> >.
+
+B<CLI Sample:>
+
+C<aws quicksight delete-user-by-principal-id
+--aws-account-id=111122223333 --namespace=default
+--principal-id=ABCDEFJA26JLI7EUUOEHS>
+
+
 =head2 DescribeGroup
 
 =over
@@ -381,6 +416,8 @@ C<aws quicksight describe-user --aws-account-id=111122223333
 =item [SessionLifetimeInMinutes => Int]
 
 =item [UndoRedoDisabled => Bool]
+
+=item [UserArn => Str]
 
 
 =back

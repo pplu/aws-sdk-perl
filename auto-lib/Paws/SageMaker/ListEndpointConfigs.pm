@@ -57,8 +57,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 CreationTimeAfter => Str
 
-A filter that returns only endpoint configurations created after the
-specified time (timestamp).
+A filter that returns only endpoint configurations with a creation time
+greater than or equal to the specified time (timestamp).
 
 
 
@@ -98,7 +98,7 @@ Valid values are: C<"Name">, C<"CreationTime">
 
 =head2 SortOrder => Str
 
-The sort order for results. The default is C<Ascending>.
+The sort order for results. The default is C<Descending>.
 
 Valid values are: C<"Ascending">, C<"Descending">
 

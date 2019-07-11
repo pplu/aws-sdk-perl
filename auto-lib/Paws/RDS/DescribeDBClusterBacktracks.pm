@@ -145,8 +145,7 @@ C<pending>
 =back
 
 The results list includes information about only the backtracks
-identified by these values. For more information about backtrack status
-values, see DBClusterBacktrack.
+identified by these values.
 
 =back
 
@@ -156,7 +155,7 @@ values, see DBClusterBacktrack.
 =head2 Marker => Str
 
 An optional pagination token provided by a previous
-DescribeDBClusterBacktracks request. If this parameter is specified,
+C<DescribeDBClusterBacktracks> request. If this parameter is specified,
 the response includes only records beyond the marker, up to the value
 specified by C<MaxRecords>.
 

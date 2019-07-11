@@ -6,6 +6,7 @@ package Paws::MediaStoreData::PutObject;
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
   has Path => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Path', required => 1);
   has StorageClass => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-storage-class');
+  has UploadAvailability => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-upload-availability');
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
@@ -33,11 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $data.mediastore = Paws->service('MediaStoreData');
     my $PutObjectResponse = $data . mediastore->PutObject(
-      Body         => 'BlobPayloadBlob',
-      Path         => 'MyPathNaming',
-      CacheControl => 'MyStringPrimitive',    # OPTIONAL
-      ContentType  => 'MyContentType',        # OPTIONAL
-      StorageClass => 'TEMPORAL',             # OPTIONAL
+      Body               => 'BlobPayloadBlob',
+      Path               => 'MyPathNaming',
+      CacheControl       => 'MyStringPrimitive',    # OPTIONAL
+      ContentType        => 'MyContentType',        # OPTIONAL
+      StorageClass       => 'TEMPORAL',             # OPTIONAL
+      UploadAvailability => 'STANDARD',             # OPTIONAL
     );
 
     # Results:
@@ -116,6 +118,20 @@ high-performance temporal storage class, and objects are persisted into
 durable storage shortly after being received.
 
 Valid values are: C<"TEMPORAL">
+
+=head2 UploadAvailability => Str
+
+Indicates the availability of an object while it is still uploading. If
+the value is set to C<streaming>, the object is available for
+downloading after some initial buffering but before the object is
+uploaded completely. If the value is set to C<standard>, the object is
+available for downloading only when it is uploaded completely. The
+default value for this header is C<standard>.
+
+To use this header, you must also set the HTTP C<Transfer-Encoding>
+header to C<chunked>.
+
+Valid values are: C<"STANDARD">, C<"STREAMING">
 
 
 =head1 SEE ALSO

@@ -1,5 +1,7 @@
 package Paws::DLM::PolicyDetails;
   use Moose;
+  has Parameters => (is => 'ro', isa => 'Paws::DLM::Parameters');
+  has PolicyType => (is => 'ro', isa => 'Str');
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Schedules => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Schedule]');
   has TargetTags => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
@@ -22,20 +24,32 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DLM::PolicyDetails object:
 
-  $service_obj->Method(Att1 => { ResourceTypes => $value, ..., TargetTags => $value  });
+  $service_obj->Method(Att1 => { Parameters => $value, ..., TargetTags => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DLM::PolicyDetails object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ResourceTypes
+  $result->Att1->Parameters
 
 =head1 DESCRIPTION
 
 Specifies the configuration of a lifecycle policy.
 
 =head1 ATTRIBUTES
+
+
+=head2 Parameters => L<Paws::DLM::Parameters>
+
+  A set of optional parameters that can be provided by the policy.
+
+
+=head2 PolicyType => Str
+
+  This field determines the valid target resource types and actions a
+policy can manage. This field defaults to EBS_SNAPSHOT_MANAGEMENT if
+not present.
 
 
 =head2 ResourceTypes => ArrayRef[Str|Undef]

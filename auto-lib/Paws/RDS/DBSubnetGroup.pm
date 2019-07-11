@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSubn
 Contains the details of an Amazon RDS DB subnet group.
 
 This data type is used as a response element in the
-DescribeDBSubnetGroups action.
+C<DescribeDBSubnetGroups> action.
 
 =head1 ATTRIBUTES
 
@@ -66,7 +66,7 @@ DescribeDBSubnetGroups action.
 
 =head2 Subnets => ArrayRef[L<Paws::RDS::Subnet>]
 
-  Contains a list of Subnet elements.
+  Contains a list of C<Subnet> elements.
 
 
 =head2 VpcId => Str

@@ -162,11 +162,11 @@ UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
 
 =item *
 
-XCTEST_TEST_PACKAGE: An XCode test package upload.
+XCTEST_TEST_PACKAGE: An Xcode test package upload.
 
 =item *
 
-XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.
+XCTEST_UI_TEST_PACKAGE: An Xcode UI test package upload.
 
 =item *
 
@@ -219,7 +219,7 @@ INSTRUMENTATION_TEST_SPEC: An instrumentation test spec upload.
 
 =item *
 
-XCTEST_UI_TEST_SPEC: An XCode UI test spec upload.
+XCTEST_UI_TEST_SPEC: An Xcode UI test spec upload.
 
 =back
 

@@ -70,7 +70,10 @@ An object representing an AWS Batch job definition.
   Default parameters or parameter substitution placeholders that are set
 in the job definition. Parameters are specified as a key-value pair
 mapping. Parameters in a C<SubmitJob> request override any
-corresponding parameter defaults from the job definition.
+corresponding parameter defaults from the job definition. For more
+information about specifying parameters, see Job Definition Parameters
+(https://docs.aws.amazon.com/batch/latest/userguide/job_definition_parameters.html)
+in the I<AWS Batch User Guide>.
 
 
 =head2 RetryStrategy => L<Paws::Batch::RetryStrategy>

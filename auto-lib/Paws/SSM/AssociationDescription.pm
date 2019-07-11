@@ -119,11 +119,11 @@ same time. You can specify a number, for example 10, or a percentage of
 the target set, for example 10%. The default value is 100%, which means
 all targets run the association at the same time.
 
-If a new instance starts and attempts to execute an association while
-Systems Manager is executing MaxConcurrency associations, the
-association is allowed to run. During the next association interval,
-the new instance will process its association within the limit
-specified for MaxConcurrency.
+If a new instance starts and attempts to run an association while
+Systems Manager is running MaxConcurrency associations, the association
+is allowed to run. During the next association interval, the new
+instance will process its association within the limit specified for
+MaxConcurrency.
 
 
 =head2 MaxErrors => Str

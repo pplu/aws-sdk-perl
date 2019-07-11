@@ -1,6 +1,7 @@
 
 package Paws::Glue::CreateDevEndpoint;
   use Moose;
+  has Arguments => (is => 'ro', isa => 'Paws::Glue::MapValue');
   has EndpointName => (is => 'ro', isa => 'Str', required => 1);
   has ExtraJarsS3Path => (is => 'ro', isa => 'Str');
   has ExtraPythonLibsS3Path => (is => 'ro', isa => 'Str');
@@ -11,6 +12,7 @@ package Paws::Glue::CreateDevEndpoint;
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetId => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
 
   use MooseX::ClassAttribute;
 
@@ -37,19 +39,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $glue = Paws->service('Glue');
     my $CreateDevEndpointResponse = $glue->CreateDevEndpoint(
-      EndpointName          => 'MyGenericString',
-      RoleArn               => 'MyRoleArn',
-      ExtraJarsS3Path       => 'MyGenericString',             # OPTIONAL
-      ExtraPythonLibsS3Path => 'MyGenericString',             # OPTIONAL
-      NumberOfNodes         => 1,                             # OPTIONAL
-      PublicKey             => 'MyGenericString',             # OPTIONAL
-      PublicKeys            => [ 'MyGenericString', ... ],    # OPTIONAL
-      SecurityConfiguration => 'MyNameString',                # OPTIONAL
-      SecurityGroupIds      => [ 'MyGenericString', ... ],    # OPTIONAL
-      SubnetId              => 'MyGenericString',             # OPTIONAL
+      EndpointName    => 'MyGenericString',
+      RoleArn         => 'MyRoleArn',
+      Arguments       => { 'MyGenericString' => 'MyGenericString', }, # OPTIONAL
+      ExtraJarsS3Path => 'MyGenericString',                           # OPTIONAL
+      ExtraPythonLibsS3Path => 'MyGenericString',                     # OPTIONAL
+      NumberOfNodes         => 1,                                     # OPTIONAL
+      PublicKey             => 'MyGenericString',                     # OPTIONAL
+      PublicKeys            => [ 'MyGenericString', ... ],            # OPTIONAL
+      SecurityConfiguration => 'MyNameString',                        # OPTIONAL
+      SecurityGroupIds      => [ 'MyGenericString', ... ],            # OPTIONAL
+      SubnetId              => 'MyGenericString',                     # OPTIONAL
+      Tags                  => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
+    my $Arguments        = $CreateDevEndpointResponse->Arguments;
     my $AvailabilityZone = $CreateDevEndpointResponse->AvailabilityZone;
     my $CreatedTimestamp = $CreateDevEndpointResponse->CreatedTimestamp;
     my $EndpointName     = $CreateDevEndpointResponse->EndpointName;
@@ -75,6 +82,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/CreateDevEndpoint>
 
 =head1 ATTRIBUTES
+
+
+=head2 Arguments => L<Paws::Glue::MapValue>
+
+A map of arguments used to configure the DevEndpoint.
+
 
 
 =head2 B<REQUIRED> EndpointName => Str
@@ -156,6 +169,16 @@ DevEndpoint.
 =head2 SubnetId => Str
 
 The subnet ID for the new DevEndpoint to use.
+
+
+
+=head2 Tags => L<Paws::Glue::TagsMap>
+
+The tags to use with this DevEndpoint. You may use tags to limit access
+to the DevEndpoint. For more information about tags in AWS Glue, see
+AWS Tags in AWS Glue
+(http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in the
+developer guide.
 
 
 

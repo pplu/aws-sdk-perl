@@ -82,7 +82,7 @@ C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
 Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. For more information about
 templates, see Template Anatomy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
@@ -95,7 +95,7 @@ C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
 Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
 bucket. For more information about templates, see Template Anatomy
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:

@@ -23,10 +23,11 @@ Detailed information about the status of the schema creation operation.
 
 =head2 Status => Str
 
-The current state of the schema (PROCESSING, ACTIVE, or DELETING). Once
-the schema is in the ACTIVE state, you can add data.
+The current state of the schema (PROCESSING, FAILED, SUCCESS, or
+NOT_APPLICABLE). When the schema is in the ACTIVE state, you can add
+data.
 
-Valid values are: C<"PROCESSING">, C<"ACTIVE">, C<"DELETING">
+Valid values are: C<"PROCESSING">, C<"ACTIVE">, C<"DELETING">, C<"FAILED">, C<"SUCCESS">, C<"NOT_APPLICABLE">
 =head2 _request_id => Str
 
 

@@ -2,6 +2,7 @@
 package Paws::IoTAnalytics::CreateDatastore;
   use Moose;
   has DatastoreName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datastoreName', required => 1);
+  has DatastoreStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastoreStorage', traits => ['NameInRequest'], request_name => 'datastoreStorage');
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
@@ -31,7 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iotanalytics = Paws->service('IoTAnalytics');
     my $CreateDatastoreResponse = $iotanalytics->CreateDatastore(
-      DatastoreName   => 'MyDatastoreName',
+      DatastoreName    => 'MyDatastoreName',
+      DatastoreStorage => {
+        CustomerManagedS3 => {
+          Bucket    => 'MyBucketName',     # min: 3, max: 255
+          RoleArn   => 'MyRoleArn',        # min: 20, max: 2048
+          KeyPrefix => 'MyS3KeyPrefix',    # min: 1, max: 255; OPTIONAL
+        },    # OPTIONAL
+        ServiceManagedS3 => {
+
+        },    # OPTIONAL
+      },    # OPTIONAL
       RetentionPeriod => {
         NumberOfDays => 1,    # min: 1; OPTIONAL
         Unlimited    => 1,    # OPTIONAL
@@ -62,6 +73,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 B<REQUIRED> DatastoreName => Str
 
 The name of the data store.
+
+
+
+=head2 DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>
+
+Where data store data is stored.
 
 
 

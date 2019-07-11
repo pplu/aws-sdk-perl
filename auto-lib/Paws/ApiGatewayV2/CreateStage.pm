@@ -10,6 +10,7 @@ package Paws::ApiGatewayV2::CreateStage;
   has RouteSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteSettingsMap', traits => ['NameInRequest'], request_name => 'routeSettings');
   has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName', required => 1);
   has StageVariables => (is => 'ro', isa => 'Paws::ApiGatewayV2::StageVariablesMap', traits => ['NameInRequest'], request_name => 'stageVariables');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -64,6 +65,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       StageVariables =>
         { 'My__string' => 'MyStringWithLengthBetween0And2048', },    # OPTIONAL
+      Tags => { 'My__string' => 'MyStringWithLengthBetween1And1600', }
+      ,                                                              # OPTIONAL
     );
 
     # Results:
@@ -77,6 +80,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RouteSettings        = $CreateStageResponse->RouteSettings;
     my $StageName            = $CreateStageResponse->StageName;
     my $StageVariables       = $CreateStageResponse->StageVariables;
+    my $Tags                 = $CreateStageResponse->Tags;
 
     # Returns a L<Paws::ApiGatewayV2::CreateStageResponse> object.
 
@@ -139,6 +143,14 @@ The name of the stage.
 A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
 [A-Za-z0-9-._~:/?#&=,]+.
+
+
+
+=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with aws:. The tag value can be up to 256 characters..
 
 
 

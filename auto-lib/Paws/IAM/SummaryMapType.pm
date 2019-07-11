@@ -13,6 +13,7 @@ package Paws::IAM::SummaryMapType;
   has AttachedPoliciesPerGroupQuota => (is => 'ro', isa => 'Int');
   has AttachedPoliciesPerRoleQuota => (is => 'ro', isa => 'Int');
   has AttachedPoliciesPerUserQuota => (is => 'ro', isa => 'Int');
+  has GlobalEndpointTokenVersion => (is => 'ro', isa => 'Int');
   has GroupPolicySizeQuota => (is => 'ro', isa => 'Int');
   has Groups => (is => 'ro', isa => 'Int');
   has GroupsPerUserQuota => (is => 'ro', isa => 'Int');
@@ -85,6 +86,9 @@ This class has no description
 
 
 =head2 AttachedPoliciesPerUserQuota => Int
+
+
+=head2 GlobalEndpointTokenVersion => Int
 
 
 =head2 GroupPolicySizeQuota => Int

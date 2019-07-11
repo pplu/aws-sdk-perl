@@ -4,6 +4,7 @@ package Paws::SageMaker::LabelingJobForWorkteamSummary;
   has JobReferenceCode => (is => 'ro', isa => 'Str', required => 1);
   has LabelCounters => (is => 'ro', isa => 'Paws::SageMaker::LabelCountersForWorkteam');
   has LabelingJobName => (is => 'ro', isa => 'Str');
+  has NumberOfHumanWorkersPerDataObject => (is => 'ro', isa => 'Int');
   has WorkRequesterAccountId => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -59,6 +60,11 @@ specific labeling job.
 =head2 LabelingJobName => Str
 
   The name of the labeling job that the work team is assigned to.
+
+
+=head2 NumberOfHumanWorkersPerDataObject => Int
+
+  The configured number of workers per data object.
 
 
 =head2 B<REQUIRED> WorkRequesterAccountId => Str

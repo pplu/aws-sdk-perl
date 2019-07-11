@@ -71,7 +71,7 @@ The EC2 Subnet IDs for the DB subnet group.
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
+Tags to assign to the DB subnet group.
 
 
 

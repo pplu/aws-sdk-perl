@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 BundleIds => ArrayRef[Str|Undef]
 
-One or more bundle task IDs.
+The bundle task IDs.
 
 Default: Describes all your bundle tasks.
 
@@ -71,7 +71,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 

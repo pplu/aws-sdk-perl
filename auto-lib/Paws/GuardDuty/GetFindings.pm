@@ -31,11 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $GetFindingsResponse = $guardduty->GetFindings(
-      DetectorId   => 'My__string',
-      FindingIds   => [ 'MyFindingId', ... ],
+      DetectorId => 'MyDetectorId',
+      FindingIds => [
+        'MyFindingId', ...    # min: 1, max: 300
+      ],
       SortCriteria => {
-        AttributeName => 'My__string',
-        OrderBy       => 'ASC',          # values: ASC, DESC; OPTIONAL
+        AttributeName => 'MyString',    # OPTIONAL
+        OrderBy       => 'ASC',         # values: ASC, DESC; OPTIONAL
       },    # OPTIONAL
     );
 

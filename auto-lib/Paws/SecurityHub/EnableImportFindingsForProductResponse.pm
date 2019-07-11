@@ -17,8 +17,7 @@ Paws::SecurityHub::EnableImportFindingsForProductResponse
 
 =head2 ProductSubscriptionArn => Str
 
-The ARN of a resource that represents your subscription to the product
-that generates the findings that you want to import into Security Hub.
+The ARN of your subscription to the product to enable integrations for.
 
 
 =head2 _request_id => Str

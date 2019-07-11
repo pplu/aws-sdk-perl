@@ -75,14 +75,13 @@ The time at which the reported instance health state ended.
 
 =head2 B<REQUIRED> Instances => ArrayRef[Str|Undef]
 
-One or more instances.
+The instances.
 
 
 
 =head2 B<REQUIRED> ReasonCodes => ArrayRef[Str|Undef]
 
-One or more reason codes that describe the health state of your
-instance.
+The reason codes that describe the health state of your instance.
 
 =over
 

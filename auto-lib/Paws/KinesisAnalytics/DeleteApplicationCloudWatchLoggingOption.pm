@@ -53,7 +53,9 @@ The Kinesis Analytics application name.
 
 The C<CloudWatchLoggingOptionId> of the CloudWatch logging option to
 delete. You can get the C<CloudWatchLoggingOptionId> by using the
-DescribeApplication operation.
+DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+operation.
 
 
 

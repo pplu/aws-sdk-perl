@@ -55,7 +55,7 @@ Describes a WorkSpace.
 
   The running mode. For more information, see Manage the WorkSpace
 Running Mode
-(http://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html).
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html).
 
 
 =head2 RunningModeAutoStopTimeoutInMinutes => Int

@@ -3,6 +3,7 @@ package Paws::Robomaker::RobotApplicationSummary;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', request_name => 'robotSoftwareSuite', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 1;
 
@@ -53,6 +54,11 @@ was last updated.
 =head2 Name => Str
 
   The name of the robot application.
+
+
+=head2 RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+
+  Information about a robot software suite.
 
 
 =head2 Version => Str

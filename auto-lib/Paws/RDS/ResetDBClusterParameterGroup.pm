@@ -54,16 +54,16 @@ The name of the DB cluster parameter group to reset.
 
 A list of parameter names in the DB cluster parameter group to reset to
 the default values. You can't use this parameter if the
-C<ResetAllParameters> parameter is set to C<true>.
+C<ResetAllParameters> parameter is enabled.
 
 
 
 =head2 ResetAllParameters => Bool
 
-A value that is set to C<true> to reset all parameters in the DB
-cluster parameter group to their default values, and C<false>
-otherwise. You can't use this parameter if there is a list of parameter
-names specified for the C<Parameters> parameter.
+A value that indicates whether to reset all parameters in the DB
+cluster parameter group to their default values. You can't use this
+parameter if there is a list of parameter names specified for the
+C<Parameters> parameter.
 
 
 

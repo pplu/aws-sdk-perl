@@ -81,7 +81,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -91,10 +91,15 @@ C<description> - A description of the snapshot.
 
 =item *
 
+C<encrypted> - Indicates whether the snapshot is encrypted (C<true> |
+C<false>)
+
+=item *
+
 C<owner-alias> - Value from an Amazon-maintained list (C<amazon> |
-C<aws-marketplace> | C<microsoft>) of snapshot owners. Not to be
-confused with the user-configured AWS account alias, which is set from
-the IAM console.
+C<self> | C<all> | C<aws-marketplace> | C<microsoft>) of snapshot
+owners. Not to be confused with the user-configured AWS account alias,
+which is set from the IAM console.
 
 =item *
 
@@ -172,22 +177,22 @@ This value is C<null> when there are no more results to return.
 
 =head2 OwnerIds => ArrayRef[Str|Undef]
 
-Returns the snapshots owned by the specified owner. Multiple owners can
-be specified.
+Describes the snapshots owned by these owners.
 
 
 
 =head2 RestorableByUserIds => ArrayRef[Str|Undef]
 
-One or more AWS accounts IDs that can create volumes from the snapshot.
+The IDs of the AWS accounts that can create volumes from the snapshot.
 
 
 
 =head2 SnapshotIds => ArrayRef[Str|Undef]
 
-One or more snapshot IDs.
+The snapshot IDs.
 
-Default: Describes snapshots for which you have launch permissions.
+Default: Describes the snapshots for which you have create volume
+permissions.
 
 
 

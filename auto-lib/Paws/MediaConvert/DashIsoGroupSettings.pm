@@ -2,6 +2,7 @@ package Paws::MediaConvert::DashIsoGroupSettings;
   use Moose;
   has BaseUrl => (is => 'ro', isa => 'Str', request_name => 'baseUrl', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
+  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::DashIsoEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
   has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
   has HbbtvCompliance => (is => 'ro', isa => 'Str', request_name => 'hbbtvCompliance', traits => ['NameInRequest']);
@@ -61,6 +62,12 @@ filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
 
 
+=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+
+  Settings associated with the destination. Will vary based on the type
+of destination
+
+
 =head2 Encryption => L<Paws::MediaConvert::DashIsoEncryptionSettings>
 
   DRM settings.
@@ -78,7 +85,7 @@ the creation of many output files as in other output types.
 
 =head2 HbbtvCompliance => Str
 
-  
+  Supports HbbTV specification as indicated
 
 
 =head2 MinBufferTime => Int
@@ -89,7 +96,9 @@ smooth playout.
 
 =head2 SegmentControl => Str
 
-  
+  When set to SINGLE_FILE, a single output file is generated, which is
+internally segmented using the Fragment Length and Segment Length. When
+set to SEGMENTED_FILES, separate segment files will be created.
 
 
 =head2 SegmentLength => Int

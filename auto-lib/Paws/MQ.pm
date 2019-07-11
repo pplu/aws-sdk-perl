@@ -54,6 +54,16 @@ package Paws::MQ;
     my $call_object = $self->new_with_coercions('Paws::MQ::DescribeBroker', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeBrokerEngineTypes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MQ::DescribeBrokerEngineTypes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeBrokerInstanceOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MQ::DescribeBrokerInstanceOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MQ::DescribeConfiguration', @_);
@@ -140,7 +150,7 @@ package Paws::MQ;
   }
 
 
-  sub operations { qw/CreateBroker CreateConfiguration CreateTags CreateUser DeleteBroker DeleteTags DeleteUser DescribeBroker DescribeConfiguration DescribeConfigurationRevision DescribeUser ListBrokers ListConfigurationRevisions ListConfigurations ListTags ListUsers RebootBroker UpdateBroker UpdateConfiguration UpdateUser / }
+  sub operations { qw/CreateBroker CreateConfiguration CreateTags CreateUser DeleteBroker DeleteTags DeleteUser DescribeBroker DescribeBrokerEngineTypes DescribeBrokerInstanceOptions DescribeConfiguration DescribeConfigurationRevision DescribeUser ListBrokers ListConfigurationRevisions ListConfigurations ListTags ListUsers RebootBroker UpdateBroker UpdateConfiguration UpdateUser / }
 
 1;
 
@@ -319,7 +329,7 @@ Each argument is described in detail in: L<Paws::MQ::DeleteTags>
 
 Returns: nothing
 
-Remove a tag from a resource.
+Removes a tag from a resource.
 
 
 =head2 DeleteUser
@@ -354,6 +364,48 @@ Each argument is described in detail in: L<Paws::MQ::DescribeBroker>
 Returns: a L<Paws::MQ::DescribeBrokerResponse> instance
 
 Returns information about the specified broker.
+
+
+=head2 DescribeBrokerEngineTypes
+
+=over
+
+=item [EngineType => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MQ::DescribeBrokerEngineTypes>
+
+Returns: a L<Paws::MQ::DescribeBrokerEngineTypesResponse> instance
+
+Describe available engine types and versions.
+
+
+=head2 DescribeBrokerInstanceOptions
+
+=over
+
+=item [EngineType => Str]
+
+=item [HostInstanceType => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MQ::DescribeBrokerInstanceOptions>
+
+Returns: a L<Paws::MQ::DescribeBrokerInstanceOptionsResponse> instance
+
+Describe available broker instance options.
 
 
 =head2 DescribeConfiguration

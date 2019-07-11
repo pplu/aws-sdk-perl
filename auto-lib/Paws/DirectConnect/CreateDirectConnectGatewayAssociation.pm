@@ -1,8 +1,10 @@
 
 package Paws::DirectConnect::CreateDirectConnectGatewayAssociation;
   use Moose;
+  has AddAllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', traits => ['NameInRequest'], request_name => 'addAllowedPrefixesToDirectConnectGateway' );
   has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' , required => 1);
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' , required => 1);
+  has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
 
   use MooseX::ClassAttribute;
 
@@ -30,9 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $directconnect = Paws->service('DirectConnect');
     my $CreateDirectConnectGatewayAssociationResult =
       $directconnect->CreateDirectConnectGatewayAssociation(
-      DirectConnectGatewayId => 'MyDirectConnectGatewayId',
-      VirtualGatewayId       => 'MyVirtualGatewayId',
-
+      DirectConnectGatewayId                   => 'MyDirectConnectGatewayId',
+      AddAllowedPrefixesToDirectConnectGateway => [
+        {
+          Cidr => 'MyCIDR',    # OPTIONAL
+        },
+        ...
+      ],                       # OPTIONAL
+      GatewayId        => 'MyGatewayIdToAssociate',    # OPTIONAL
+      VirtualGatewayId => 'MyVirtualGatewayId',        # OPTIONAL
       );
 
     # Results:
@@ -48,13 +56,29 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 =head1 ATTRIBUTES
 
 
+=head2 AddAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
+
+The Amazon VPC prefixes to advertise to the Direct Connect gateway
+
+For information about how to set the prefixes, see Allowed Prefixes
+(https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes)
+in the I<AWS Direct Connect User Guide>.
+
+
+
 =head2 B<REQUIRED> DirectConnectGatewayId => Str
 
 The ID of the Direct Connect gateway.
 
 
 
-=head2 B<REQUIRED> VirtualGatewayId => Str
+=head2 GatewayId => Str
+
+The ID of the virtual private gateway or transit gateway.
+
+
+
+=head2 VirtualGatewayId => Str
 
 The ID of the virtual private gateway.
 

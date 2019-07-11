@@ -39,15 +39,15 @@ The connectivity status of the thing.
 
 =head2 Connected => Bool
 
-  True if the thing is connected to the AWS IoT service, false if it is
+  True if the thing is connected to the AWS IoT service; false if it is
 not connected.
 
 
 =head2 Timestamp => Int
 
   The epoch time (in milliseconds) when the thing last connected or
-disconnected. Note that if the thing has been disconnected for more
-than a few weeks, the time value can be missing.
+disconnected. If the thing has been disconnected for more than a few
+weeks, the time value might be missing.
 
 
 

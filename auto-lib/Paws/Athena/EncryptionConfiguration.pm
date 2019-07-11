@@ -46,6 +46,11 @@ S3-managed keys (C<SSE-S3>), server-side encryption with KMS-managed
 keys (C<SSE-KMS>), or client-side encryption with KMS-managed keys
 (CSE-KMS) is used.
 
+If a query runs in a workgroup and the workgroup overrides client-side
+settings, then the workgroup's setting for encryption is used. It
+specifies whether query results must be encrypted, for all queries that
+run in this workgroup.
+
 
 =head2 KmsKey => Str
 

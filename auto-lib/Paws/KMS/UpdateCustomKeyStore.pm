@@ -48,13 +48,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 Associates the custom key store with a related AWS CloudHSM cluster.
 
 Enter the cluster ID of the cluster that you used to create the custom
-key store or a cluster that shares a backup history with the original
-cluster. You cannot use this parameter to associate a custom key store
-with a different cluster.
-
-Clusters that share a backup history have the same cluster certificate.
-To view the cluster certificate of a cluster, use the DescribeClusters
-(http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html)
+key store or a cluster that shares a backup history and has the same
+cluster certificate as the original cluster. You cannot use this
+parameter to associate a custom key store with an unrelated cluster. In
+addition, the replacement cluster must fulfill the requirements
+(https://docs.aws.amazon.com/kms/latest/developerguide/create-keystore.html#before-keystore)
+for a cluster associated with a custom key store. To view the cluster
+certificate of a cluster, use the DescribeClusters
+(https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html)
 operation.
 
 

@@ -41,7 +41,7 @@ A list of policy versions.
 
 For more information about managed policy versions, see Versioning for
 Managed Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
 in the I<IAM User Guide>.
 
 

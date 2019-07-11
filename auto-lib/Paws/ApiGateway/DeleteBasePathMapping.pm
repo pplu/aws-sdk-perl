@@ -46,6 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 [Required] The base path name of the BasePathMapping resource to
 delete.
 
+To specify an empty base path, set this parameter to C<'(none)'>.
+
 
 
 =head2 B<REQUIRED> DomainName => Str

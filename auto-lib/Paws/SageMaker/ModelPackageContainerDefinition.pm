@@ -56,7 +56,7 @@ SageMaker requirements. Amazon SageMaker supports both
 C<registry/repository[:tag]> and C<registry/repository[@digest]> image
 path formats. For more information, see Using Your Own Algorithms with
 Amazon SageMaker
-(http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 
 
 =head2 ImageDigest => Str

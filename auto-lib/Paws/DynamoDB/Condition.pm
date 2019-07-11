@@ -254,7 +254,7 @@ C<{"N":"6"}> does not compare to C<{"NS":["6", "2", "1"]}>
 
 For usage examples of C<AttributeValueList> and C<ComparisonOperator>,
 see Legacy Conditional Parameters
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

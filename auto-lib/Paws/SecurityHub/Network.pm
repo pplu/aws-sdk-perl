@@ -70,7 +70,7 @@ finding.
 
 =head2 Direction => Str
 
-  Indicates the direction of network traffic associated with a finding.
+  The direction of network traffic associated with a finding.
 
 
 =head2 Protocol => Str

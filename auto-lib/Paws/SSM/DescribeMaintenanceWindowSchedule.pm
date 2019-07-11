@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceType => 'INSTANCE',                    # OPTIONAL
       Targets      => [
         {
-          Key    => 'MyTargetKey',               # min: 1, max: 128; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -72,7 +72,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head2 Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>]
 
 Filters used to limit the range of results. For example, you can limit
-Maintenance Window executions to only those scheduled before or after a
+maintenance window executions to only those scheduled before or after a
 certain date and time.
 
 
@@ -107,7 +107,7 @@ The instance ID or key/value pair to retrieve information about.
 
 =head2 WindowId => Str
 
-The ID of the Maintenance Window to retrieve information about.
+The ID of the maintenance window to retrieve information about.
 
 
 

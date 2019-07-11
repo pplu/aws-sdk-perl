@@ -18,7 +18,7 @@ Paws::RDS::DBInstanceMessage
 
 =head2 DBInstances => ArrayRef[L<Paws::RDS::DBInstance>]
 
-A list of DBInstance instances.
+A list of C<DBInstance> instances.
 
 
 =head2 Marker => Str

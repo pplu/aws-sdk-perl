@@ -1165,8 +1165,11 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::GetQueryResults
 Returns: a L<Paws::CloudWatchLogs::GetQueryResultsResponse> instance
 
 Returns the results from the specified query. If the query is in
-progress, partial results of that current execution are returned. Only
-the fields requested in the query are returned.
+progress, partial results of that current execution are returned.
+
+Only the fields requested in the query are returned, along with a
+C<@ptr> field which is the identifier for the log record. You can use
+the value of C<@ptr> in a operation to get the full log record.
 
 C<GetQueryResults> does not start a query execution. To run a query,
 use .
@@ -1237,7 +1240,7 @@ Returns: nothing
 
 Creates or updates an access policy associated with an existing
 destination. An access policy is an IAM policy document
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html)
 that is used to authorize claims to register a subscription filter
 against a given destination.
 
@@ -1287,8 +1290,8 @@ future.
 
 =item *
 
-None of the log events in the batch can be older than 14 days or the
-retention period of the log group.
+None of the log events in the batch can be older than 14 days or older
+than the retention period of the log group.
 
 =item *
 
@@ -1466,7 +1469,11 @@ specify the log group and time range to query, and the query string to
 use.
 
 For more information, see CloudWatch Logs Insights Query Syntax
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
+
+Queries time out after 15 minutes of execution. If your queries are
+timing out, reduce the time range being searched, or partition your
+query into a number of queries.
 
 
 =head2 StopQuery
@@ -1509,7 +1516,7 @@ use UntagLogGroup.
 
 For more information about tags, see Tag Log Groups in Amazon
 CloudWatch Logs
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html)
 in the I<Amazon CloudWatch Logs User Guide>.
 
 

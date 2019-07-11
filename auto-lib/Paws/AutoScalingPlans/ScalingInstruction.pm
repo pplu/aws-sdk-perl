@@ -66,8 +66,12 @@ generates forecasts with traffic predictions for the two days ahead and
 schedules scaling actions that proactively add and remove resource
 capacity to match the forecast.
 
-For more information, see the AWS Auto Scaling User Guide
-(http://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html).
+We recommend waiting a minimum of 24 hours after creating an Auto
+Scaling group to configure predictive scaling. At minimum, there must
+be 24 hours of historical data to generate a forecast.
+
+For more information, see Getting Started with AWS Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/plans/userguide/auto-scaling-getting-started.html).
 
 =head1 ATTRIBUTES
 
@@ -252,7 +256,8 @@ for a DynamoDB global secondary index.
 =item *
 
 C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
-Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+Aurora DB cluster. Available for Aurora MySQL-compatible edition and
+Aurora PostgreSQL-compatible edition.
 
 =back
 

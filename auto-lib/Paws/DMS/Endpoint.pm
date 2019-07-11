@@ -17,6 +17,7 @@ package Paws::DMS::Endpoint;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
   has Port => (is => 'ro', isa => 'Int');
+  has RedshiftSettings => (is => 'ro', isa => 'Paws::DMS::RedshiftSettings');
   has S3Settings => (is => 'ro', isa => 'Paws::DMS::S3Settings');
   has ServerName => (is => 'ro', isa => 'Str');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
@@ -188,6 +189,11 @@ the C<MongoDbSettings> structure.
 =head2 Port => Int
 
   The port value used to access the endpoint.
+
+
+=head2 RedshiftSettings => L<Paws::DMS::RedshiftSettings>
+
+  Settings for the Amazon Redshift endpoint
 
 
 =head2 S3Settings => L<Paws::DMS::S3Settings>

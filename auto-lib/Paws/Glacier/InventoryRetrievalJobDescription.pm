@@ -69,7 +69,7 @@ vault inventory retrieval results. You use the marker in a new
 B<InitiateJob> request to obtain additional inventory items. If there
 are no more inventory items, this value is C<null>. For more
 information, see Range Inventory Retrieval
-(http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering).
+(https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering).
 
 
 =head2 StartDate => Str

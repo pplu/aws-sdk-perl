@@ -44,7 +44,7 @@ This class has no description
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  One or more filter values. Filter values are case-sensitive.
+  The filter values. Filter values are case-sensitive.
 
 
 

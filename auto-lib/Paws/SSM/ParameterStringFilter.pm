@@ -36,8 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Parame
 One or more filters. Use a filter to return a more specific list of
 results.
 
-The C<Name> field can't be used with the GetParametersByPath API
-action.
+The C<Name> and C<Tier> filter keys can't be used with the
+GetParametersByPath API action. Also, the C<Label> filter key can't be
+used with the DescribeParameters API action.
 
 =head1 ATTRIBUTES
 

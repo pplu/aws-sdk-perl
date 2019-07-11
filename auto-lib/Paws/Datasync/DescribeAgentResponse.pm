@@ -3,8 +3,10 @@ package Paws::Datasync::DescribeAgentResponse;
   use Moose;
   has AgentArn => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
+  has EndpointOptions => (is => 'ro', isa => 'Paws::Datasync::EndpointOptions');
   has LastConnectionTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has PrivateLinkConfig => (is => 'ro', isa => 'Paws::Datasync::PrivateLinkConfig');
   has Status => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -29,14 +31,24 @@ The time that the agent was activated (that is, created in your
 account).
 
 
+=head2 EndpointOptions => L<Paws::Datasync::EndpointOptions>
+
+
+
+
 =head2 LastConnectionTime => Str
 
-The time that the agent was last connected.
+The time that the agent last connected to DataSyc.
 
 
 =head2 Name => Str
 
 The name of the agent.
+
+
+=head2 PrivateLinkConfig => L<Paws::Datasync::PrivateLinkConfig>
+
+
 
 
 =head2 Status => Str

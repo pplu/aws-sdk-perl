@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =head2 B<REQUIRED> VolumeARN => Str
 
-
+The volume which snapshot schedule to delete.
 
 
 

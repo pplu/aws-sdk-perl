@@ -58,7 +58,8 @@ https://semver.org/ (https://semver.org/)
 
 =head2 SourceCodeUrl => Str
 
-  A link to a public repository for the source code of your application.
+  A link to a public repository for the source code of your application,
+for example the URL of a specific GitHub commit.
 
 
 

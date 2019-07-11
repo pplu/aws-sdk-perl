@@ -50,11 +50,16 @@ The Amazon Resource Name (ARN) of the resource.
 
 =head2 B<REQUIRED> Tags => L<Paws::AppStream::Tags>
 
-The tags to associate. A tag is a key-value pair (the value is
-optional). For example, C<Environment=Test>, or, if you do not specify
-a value, C<Environment=>.
+The tags to associate. A tag is a key-value pair, and the value is
+optional. For example, Environment=Test. If you do not specify a value,
+Environment=.
 
-If you do not specify a value, we set the value to an empty string.
+If you do not specify a value, the value is set to an empty string.
+
+Generally allowed characters are: letters, numbers, and spaces
+representable in UTF-8, and the following special characters:
+
+_ . : / = + \ - @
 
 
 

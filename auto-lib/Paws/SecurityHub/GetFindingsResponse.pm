@@ -18,7 +18,7 @@ Paws::SecurityHub::GetFindingsResponse
 
 =head2 B<REQUIRED> Findings => ArrayRef[L<Paws::SecurityHub::AwsSecurityFinding>]
 
-Findings details returned by the operation.
+The findings that matched the filters specified in the request.
 
 
 =head2 NextToken => Str

@@ -5,6 +5,7 @@ package Paws::PinpointEmail::GetEmailIdentityResponse;
   has FeedbackForwardingStatus => (is => 'ro', isa => 'Bool');
   has IdentityType => (is => 'ro', isa => 'Str');
   has MailFromAttributes => (is => 'ro', isa => 'Paws::PinpointEmail::MailFromAttributes');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::Tag]');
   has VerifiedForSendingStatus => (is => 'ro', isa => 'Bool');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -56,13 +57,19 @@ An object that contains information about the Mail-From attributes for
 the email identity.
 
 
+=head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+
+An array of objects that define the tags (keys and values) that are
+associated with the email identity.
+
+
 =head2 VerifiedForSendingStatus => Bool
 
 Specifies whether or not the identity is verified. In Amazon Pinpoint,
 you can only send email from verified email addresses or domains. For
 more information about verifying identities, see the Amazon Pinpoint
 User Guide
-(http://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-manage-verify.html).
+(https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-manage-verify.html).
 
 
 =head2 _request_id => Str

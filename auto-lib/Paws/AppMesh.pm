@@ -2,7 +2,7 @@ package Paws::AppMesh;
   use Moose;
   sub service { 'appmesh' }
   sub signing_name { 'appmesh' }
-  sub version { '2018-10-01' }
+  sub version { '2019-01-25' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -34,6 +34,11 @@ package Paws::AppMesh;
     my $call_object = $self->new_with_coercions('Paws::AppMesh::CreateVirtualRouter', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateVirtualService {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppMesh::CreateVirtualService', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteMesh {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppMesh::DeleteMesh', @_);
@@ -52,6 +57,11 @@ package Paws::AppMesh;
   sub DeleteVirtualRouter {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppMesh::DeleteVirtualRouter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVirtualService {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppMesh::DeleteVirtualService', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMesh {
@@ -74,6 +84,11 @@ package Paws::AppMesh;
     my $call_object = $self->new_with_coercions('Paws::AppMesh::DescribeVirtualRouter', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeVirtualService {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppMesh::DescribeVirtualService', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListMeshes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppMesh::ListMeshes', @_);
@@ -84,6 +99,11 @@ package Paws::AppMesh;
     my $call_object = $self->new_with_coercions('Paws::AppMesh::ListRoutes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppMesh::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListVirtualNodes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppMesh::ListVirtualNodes', @_);
@@ -92,6 +112,26 @@ package Paws::AppMesh;
   sub ListVirtualRouters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppMesh::ListVirtualRouters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListVirtualServices {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppMesh::ListVirtualServices', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppMesh::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppMesh::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMesh {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppMesh::UpdateMesh', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateRoute {
@@ -107,6 +147,11 @@ package Paws::AppMesh;
   sub UpdateVirtualRouter {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppMesh::UpdateVirtualRouter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateVirtualService {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppMesh::UpdateVirtualService', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -152,6 +197,29 @@ package Paws::AppMesh;
         $result = $self->ListRoutes(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'routes') foreach (@{ $result->routes });
+    }
+
+    return undef
+  }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTagsForResource(@_, nextToken => $next_result->nextToken);
+        push @{ $result->tags }, @{ $next_result->tags };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'tags') foreach (@{ $result->tags });
+        $result = $self->ListTagsForResource(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'tags') foreach (@{ $result->tags });
     }
 
     return undef
@@ -202,9 +270,32 @@ package Paws::AppMesh;
 
     return undef
   }
+  sub ListAllVirtualServices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListVirtualServices(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListVirtualServices(@_, nextToken => $next_result->nextToken);
+        push @{ $result->virtualServices }, @{ $next_result->virtualServices };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'virtualServices') foreach (@{ $result->virtualServices });
+        $result = $self->ListVirtualServices(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'virtualServices') foreach (@{ $result->virtualServices });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateMesh CreateRoute CreateVirtualNode CreateVirtualRouter DeleteMesh DeleteRoute DeleteVirtualNode DeleteVirtualRouter DescribeMesh DescribeRoute DescribeVirtualNode DescribeVirtualRouter ListMeshes ListRoutes ListVirtualNodes ListVirtualRouters UpdateRoute UpdateVirtualNode UpdateVirtualRouter / }
+  sub operations { qw/CreateMesh CreateRoute CreateVirtualNode CreateVirtualRouter CreateVirtualService DeleteMesh DeleteRoute DeleteVirtualNode DeleteVirtualRouter DeleteVirtualService DescribeMesh DescribeRoute DescribeVirtualNode DescribeVirtualRouter DescribeVirtualService ListMeshes ListRoutes ListTagsForResource ListVirtualNodes ListVirtualRouters ListVirtualServices TagResource UntagResource UpdateMesh UpdateRoute UpdateVirtualNode UpdateVirtualRouter UpdateVirtualService / }
 
 1;
 
@@ -233,30 +324,25 @@ Paws::AppMesh - Perl Interface to AWS AWS App Mesh
 =head1 DESCRIPTION
 
 AWS App Mesh is a service mesh based on the Envoy proxy that makes it
-easy to monitor and control containerized microservices. App Mesh
-standardizes how your microservices communicate, giving you end-to-end
-visibility and helping to ensure high-availability for your
-applications.
+easy to monitor and control microservices. App Mesh standardizes how
+your microservices communicate, giving you end-to-end visibility and
+helping to ensure high availability for your applications.
 
 App Mesh gives you consistent visibility and network traffic controls
-for every microservice in an application. You can use App Mesh with
-Amazon ECS (using the Amazon EC2 launch type), Amazon EKS, and
-Kubernetes on AWS.
+for every microservice in an application. You can use App Mesh with AWS
+Fargate, Amazon ECS, Amazon EKS, Kubernetes on AWS, and Amazon EC2.
 
-App Mesh supports containerized microservice applications that use
-service discovery naming for their components. To use App Mesh, you
-must have a containerized application running on Amazon EC2 instances,
-hosted in either Amazon ECS, Amazon EKS, or Kubernetes on AWS. For more
-information about service discovery on Amazon ECS, see Service
-Discovery
+App Mesh supports microservice applications that use service discovery
+naming for their components. For more information about service
+discovery on Amazon ECS, see Service Discovery
 (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html)
 in the I<Amazon Elastic Container Service Developer Guide>. Kubernetes
-C<kube-dns> is supported. For more information, see DNS for Services
-and Pods
+C<kube-dns> and C<coredns> are supported. For more information, see DNS
+for Services and Pods
 (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
 in the Kubernetes documentation.
 
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appmesh-2018-10-01>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25>
 
 
 =head1 METHODS
@@ -269,6 +355,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 =item [ClientToken => Str]
 
+=item [Spec => L<Paws::AppMesh::MeshSpec>]
+
+=item [Tags => ArrayRef[L<Paws::AppMesh::TagRef>]]
+
 
 =back
 
@@ -276,12 +366,12 @@ Each argument is described in detail in: L<Paws::AppMesh::CreateMesh>
 
 Returns: a L<Paws::AppMesh::CreateMeshOutput> instance
 
-Creates a new service mesh. A service mesh is a logical boundary for
+Creates a service mesh. A service mesh is a logical boundary for
 network traffic between the services that reside within it.
 
-After you create your service mesh, you can create virtual nodes,
-virtual routers, and routes to distribute traffic between the
-applications in your mesh.
+After you create your service mesh, you can create virtual services,
+virtual nodes, virtual routers, and routes to distribute traffic
+between the applications in your mesh.
 
 
 =head2 CreateRoute
@@ -298,6 +388,8 @@ applications in your mesh.
 
 =item [ClientToken => Str]
 
+=item [Tags => ArrayRef[L<Paws::AppMesh::TagRef>]]
+
 
 =back
 
@@ -305,13 +397,12 @@ Each argument is described in detail in: L<Paws::AppMesh::CreateRoute>
 
 Returns: a L<Paws::AppMesh::CreateRouteOutput> instance
 
-Creates a new route that is associated with a virtual router.
+Creates a route that is associated with a virtual router.
 
 You can use the C<prefix> parameter in your route specification for
-path-based routing of requests. For example, if your virtual router
-service name is C<my-service.local>, and you want the route to match
-requests to C<my-service.local/metrics>, then your prefix should be
-C</metrics>.
+path-based routing of requests. For example, if your virtual service
+name is C<my-service.local> and you want the route to match requests to
+C<my-service.local/metrics>, your prefix should be C</metrics>.
 
 If your route matches a request, you can distribute traffic to one or
 more target virtual nodes with relative weighting.
@@ -329,6 +420,8 @@ more target virtual nodes with relative weighting.
 
 =item [ClientToken => Str]
 
+=item [Tags => ArrayRef[L<Paws::AppMesh::TagRef>]]
+
 
 =back
 
@@ -336,12 +429,12 @@ Each argument is described in detail in: L<Paws::AppMesh::CreateVirtualNode>
 
 Returns: a L<Paws::AppMesh::CreateVirtualNodeOutput> instance
 
-Creates a new virtual node within a service mesh.
+Creates a virtual node within a service mesh.
 
-A virtual node acts as logical pointer to a particular task group, such
-as an Amazon ECS service or a Kubernetes deployment. When you create a
-virtual node, you must specify the DNS service discovery name for your
-task group.
+A virtual node acts as a logical pointer to a particular task group,
+such as an Amazon ECS service or a Kubernetes deployment. When you
+create a virtual node, you can specify the service discovery
+information for your task group.
 
 Any inbound traffic that your virtual node expects should be specified
 as a C<listener>. Any outbound traffic that your virtual node expects
@@ -349,8 +442,8 @@ to reach should be specified as a C<backend>.
 
 The response metadata for your new virtual node contains the C<arn>
 that is associated with the virtual node. Set this value (either the
-full ARN or the truncated resource name, for example,
-C<mesh/default/virtualNode/simpleapp>, as the
+full ARN or the truncated resource name: for example,
+C<mesh/default/virtualNode/simpleapp>) as the
 C<APPMESH_VIRTUAL_NODE_NAME> environment variable for your task group's
 Envoy proxy container in your task definition or pod spec. This is then
 mapped to the C<node.id> and C<node.cluster> Envoy parameters.
@@ -373,6 +466,8 @@ environment variable.
 
 =item [ClientToken => Str]
 
+=item [Tags => ArrayRef[L<Paws::AppMesh::TagRef>]]
+
 
 =back
 
@@ -380,12 +475,46 @@ Each argument is described in detail in: L<Paws::AppMesh::CreateVirtualRouter>
 
 Returns: a L<Paws::AppMesh::CreateVirtualRouterOutput> instance
 
-Creates a new virtual router within a service mesh.
+Creates a virtual router within a service mesh.
 
-Virtual routers handle traffic for one or more service names within
+Any inbound traffic that your virtual router expects should be
+specified as a C<listener>.
+
+Virtual routers handle traffic for one or more virtual services within
 your mesh. After you create your virtual router, create and associate
 routes for your virtual router that direct incoming requests to
 different virtual nodes.
+
+
+=head2 CreateVirtualService
+
+=over
+
+=item MeshName => Str
+
+=item Spec => L<Paws::AppMesh::VirtualServiceSpec>
+
+=item VirtualServiceName => Str
+
+=item [ClientToken => Str]
+
+=item [Tags => ArrayRef[L<Paws::AppMesh::TagRef>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppMesh::CreateVirtualService>
+
+Returns: a L<Paws::AppMesh::CreateVirtualServiceOutput> instance
+
+Creates a virtual service within a service mesh.
+
+A virtual service is an abstraction of a real service that is provided
+by a virtual node directly or indirectly by means of a virtual router.
+Dependent services call your virtual service by its
+C<virtualServiceName>, and those requests are routed to the virtual
+node or virtual router that is specified as the provider for the
+virtual service.
 
 
 =head2 DeleteMesh
@@ -403,8 +532,9 @@ Returns: a L<Paws::AppMesh::DeleteMeshOutput> instance
 
 Deletes an existing service mesh.
 
-You must delete all resources (routes, virtual routers, virtual nodes)
-in the service mesh before you can delete the mesh itself.
+You must delete all resources (virtual services, routes, virtual
+routers, and virtual nodes) in the service mesh before you can delete
+the mesh itself.
 
 
 =head2 DeleteRoute
@@ -444,6 +574,9 @@ Returns: a L<Paws::AppMesh::DeleteVirtualNodeOutput> instance
 
 Deletes an existing virtual node.
 
+You must delete any virtual services that list a virtual node as a
+service provider before you can delete the virtual node itself.
+
 
 =head2 DeleteVirtualRouter
 
@@ -464,6 +597,24 @@ Deletes an existing virtual router.
 
 You must delete any routes associated with the virtual router before
 you can delete the router itself.
+
+
+=head2 DeleteVirtualService
+
+=over
+
+=item MeshName => Str
+
+=item VirtualServiceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppMesh::DeleteVirtualService>
+
+Returns: a L<Paws::AppMesh::DeleteVirtualServiceOutput> instance
+
+Deletes an existing virtual service.
 
 
 =head2 DescribeMesh
@@ -538,6 +689,24 @@ Returns: a L<Paws::AppMesh::DescribeVirtualRouterOutput> instance
 Describes an existing virtual router.
 
 
+=head2 DescribeVirtualService
+
+=over
+
+=item MeshName => Str
+
+=item VirtualServiceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppMesh::DescribeVirtualService>
+
+Returns: a L<Paws::AppMesh::DescribeVirtualServiceOutput> instance
+
+Describes an existing virtual service.
+
+
 =head2 ListMeshes
 
 =over
@@ -578,6 +747,26 @@ Returns: a L<Paws::AppMesh::ListRoutesOutput> instance
 Returns a list of existing routes in a service mesh.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppMesh::ListTagsForResource>
+
+Returns: a L<Paws::AppMesh::ListTagsForResourceOutput> instance
+
+List the tags for an App Mesh resource.
+
+
 =head2 ListVirtualNodes
 
 =over
@@ -616,6 +805,85 @@ Each argument is described in detail in: L<Paws::AppMesh::ListVirtualRouters>
 Returns: a L<Paws::AppMesh::ListVirtualRoutersOutput> instance
 
 Returns a list of existing virtual routers in a service mesh.
+
+
+=head2 ListVirtualServices
+
+=over
+
+=item MeshName => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppMesh::ListVirtualServices>
+
+Returns: a L<Paws::AppMesh::ListVirtualServicesOutput> instance
+
+Returns a list of existing virtual services in a service mesh.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::AppMesh::TagRef>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppMesh::TagResource>
+
+Returns: a L<Paws::AppMesh::TagResourceOutput> instance
+
+Associates the specified tags to a resource with the specified
+C<resourceArn>. If existing tags on a resource aren't specified in the
+request parameters, they aren't changed. When a resource is deleted,
+the tags associated with that resource are also deleted.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppMesh::UntagResource>
+
+Returns: a L<Paws::AppMesh::UntagResourceOutput> instance
+
+Deletes specified tags from a resource.
+
+
+=head2 UpdateMesh
+
+=over
+
+=item MeshName => Str
+
+=item [ClientToken => Str]
+
+=item [Spec => L<Paws::AppMesh::MeshSpec>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppMesh::UpdateMesh>
+
+Returns: a L<Paws::AppMesh::UpdateMeshOutput> instance
+
+Updates an existing service mesh.
 
 
 =head2 UpdateRoute
@@ -687,6 +955,28 @@ Returns: a L<Paws::AppMesh::UpdateVirtualRouterOutput> instance
 Updates an existing virtual router in a specified service mesh.
 
 
+=head2 UpdateVirtualService
+
+=over
+
+=item MeshName => Str
+
+=item Spec => L<Paws::AppMesh::VirtualServiceSpec>
+
+=item VirtualServiceName => Str
+
+=item [ClientToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppMesh::UpdateVirtualService>
+
+Returns: a L<Paws::AppMesh::UpdateVirtualServiceOutput> instance
+
+Updates an existing virtual service in a specified service mesh.
+
+
 
 
 =head1 PAGINATORS
@@ -717,6 +1007,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::AppMesh::ListRoutesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllTagsForResource(sub { },ResourceArn => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceArn => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - tags, passing the object as the first parameter, and the string 'tags' as the second parameter 
+
+If not, it will return a a L<Paws::AppMesh::ListTagsForResourceOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllVirtualNodes(sub { },MeshName => Str, [Limit => Int, NextToken => Str])
 
 =head2 ListAllVirtualNodes(MeshName => Str, [Limit => Int, NextToken => Str])
@@ -739,6 +1041,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - virtualRouters, passing the object as the first parameter, and the string 'virtualRouters' as the second parameter 
 
 If not, it will return a a L<Paws::AppMesh::ListVirtualRoutersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllVirtualServices(sub { },MeshName => Str, [Limit => Int, NextToken => Str])
+
+=head2 ListAllVirtualServices(MeshName => Str, [Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - virtualServices, passing the object as the first parameter, and the string 'virtualServices' as the second parameter 
+
+If not, it will return a a L<Paws::AppMesh::ListVirtualServicesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

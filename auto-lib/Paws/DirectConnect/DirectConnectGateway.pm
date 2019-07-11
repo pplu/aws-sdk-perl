@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 =head1 DESCRIPTION
 
 Information about a Direct Connect gateway, which enables you to
-connect virtual interfaces and virtual private gateways.
+connect virtual interfaces and virtual private gateway or transit
+gateways.
 
 =head1 ATTRIBUTES
 

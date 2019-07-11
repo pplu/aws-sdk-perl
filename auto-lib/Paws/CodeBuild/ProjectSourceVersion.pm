@@ -76,6 +76,9 @@ object that represents the build input ZIP file to use.
 
 =back
 
+For more information, see Source Version Sample with CodeBuild
+(https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
+in the I<AWS CodeBuild User Guide>.
 
 
 

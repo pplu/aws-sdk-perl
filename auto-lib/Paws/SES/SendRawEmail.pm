@@ -89,7 +89,7 @@ the value of the C<FromArn> parameter.
 
 For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 
 
 
@@ -117,7 +117,7 @@ Each part of a multipart MIME message must be formatted properly.
 
 Attachments must be of a content type that Amazon SES supports. For a
 list on unsupported content types, see Unsupported Attachment Types
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html)
 in the I<Amazon SES Developer Guide>.
 
 =item *
@@ -129,7 +129,7 @@ The entire message must be base64-encoded.
 If any of the MIME parts in your message contain content that is
 outside of the 7-bit ASCII character range, we highly recommend that
 you encode that content. For more information, see Sending Raw Email
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html)
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html)
 in the I<Amazon SES Developer Guide>.
 
 =item *
@@ -164,7 +164,7 @@ Amazon SES uses the value of the C<ReturnPathArn> parameter.
 
 For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 
 
 
@@ -216,7 +216,7 @@ uses the value of the C<SourceArn> parameter.
 
 For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 
 
 

@@ -47,7 +47,9 @@ created.
 =head2 B<REQUIRED> ReferenceId => Str
 
   ID of the reference data source being updated. You can use the
-DescribeApplication operation to get this value.
+DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+operation to get this value.
 
 
 =head2 ReferenceSchemaUpdate => L<Paws::KinesisAnalytics::SourceSchema>

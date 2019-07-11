@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisVide
 
 =head1 DESCRIPTION
 
-The start and end of the time stamp range for the requested media.
+The start and end of the timestamp range for the requested media.
 
 This value should not be present if C<PlaybackType> is C<LIVE>.
 
@@ -46,24 +46,26 @@ session.
 
 =head2 EndTimestamp => Str
 
-  The end of the time stamp range for the requested media. This value
-must be within 3 hours of the specified C<StartTimestamp>, and it must
-be later than the C<StartTimestamp> value.
+  The end of the timestamp range for the requested media. This value must
+be within 3 hours of the specified C<StartTimestamp>, and it must be
+later than the C<StartTimestamp> value.
 
 If C<FragmentSelectorType> for the request is C<SERVER_TIMESTAMP>, this
 value must be in the past.
 
-If the C<HLSTimestampRange> value is specified, the C<EndTimestamp>
-value is required.
+The C<EndTimestamp> value is required for C<ON_DEMAND> mode, but
+optional for C<LIVE_REPLAY> mode. If the C<EndTimestamp> is not set for
+C<LIVE_REPLAY> mode then the session will continue to include newly
+ingested fragments until the session expires.
 
 This value is inclusive. The C<EndTimestamp> is compared to the
-(starting) time stamp of the fragment. Fragments that start before the
+(starting) timestamp of the fragment. Fragments that start before the
 C<EndTimestamp> value and continue past it are included in the session.
 
 
 =head2 StartTimestamp => Str
 
-  The start of the time stamp range for the requested media.
+  The start of the timestamp range for the requested media.
 
 If the C<HLSTimestampRange> value is specified, the C<StartTimestamp>
 value is required.

@@ -4,6 +4,7 @@ package Paws::Greengrass::CreateGroup;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::GroupVersion');
   has Name => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ResourceDefinitionVersionArn     => 'My__string',
         SubscriptionDefinitionVersionArn => 'My__string',
       },                                  # OPTIONAL
-      Name => 'My__string',               # OPTIONAL
+      Name => 'My__string',                         # OPTIONAL
+      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -76,6 +78,12 @@ Information about the initial version of the group.
 =head2 Name => Str
 
 The name of the group.
+
+
+
+=head2 Tags => L<Paws::Greengrass::Tags>
+
+Tag(s) to add to the new resource
 
 
 

@@ -33,25 +33,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Schedu
 
 =head1 DESCRIPTION
 
-Information about a scheduled execution for a Maintenance Window.
+Information about a scheduled execution for a maintenance window.
 
 =head1 ATTRIBUTES
 
 
 =head2 ExecutionTime => Str
 
-  The time, in ISO-8601 Extended format, that the Maintenance Window is
+  The time, in ISO-8601 Extended format, that the maintenance window is
 scheduled to be run.
 
 
 =head2 Name => Str
 
-  The name of the Maintenance Window to be run.
+  The name of the maintenance window to be run.
 
 
 =head2 WindowId => Str
 
-  The ID of the Maintenance Window to be run.
+  The ID of the maintenance window to be run.
 
 
 

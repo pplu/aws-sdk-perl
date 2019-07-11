@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $GetMasterAccountResponse = $guardduty->GetMasterAccount(
-      DetectorId => 'My__string',
+      DetectorId => 'MyDetectorId',
 
     );
 

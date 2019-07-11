@@ -1,6 +1,7 @@
 package Paws::EC2::OnDemandOptions;
   use Moose;
   has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
+  has MaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'maxTotalPrice', traits => ['NameInRequest']);
   has MinTargetCapacity => (is => 'ro', isa => 'Int', request_name => 'minTargetCapacity', traits => ['NameInRequest']);
   has SingleAvailabilityZone => (is => 'ro', isa => 'Bool', request_name => 'singleAvailabilityZone', traits => ['NameInRequest']);
   has SingleInstanceType => (is => 'ro', isa => 'Bool', request_name => 'singleInstanceType', traits => ['NameInRequest']);
@@ -47,6 +48,12 @@ price to determine the order, launching the lowest price first. If you
 specify C<prioritized>, EC2 Fleet uses the priority that you assigned
 to each launch template override, launching the highest priority first.
 If you do not specify a value, EC2 Fleet defaults to C<lowest-price>.
+
+
+=head2 MaxTotalPrice => Str
+
+  The maximum amount per hour for On-Demand Instances that you're willing
+to pay.
 
 
 =head2 MinTargetCapacity => Int

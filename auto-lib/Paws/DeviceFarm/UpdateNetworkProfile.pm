@@ -73,7 +73,7 @@ update network profile settings.
 
 =head2 Description => Str
 
-The descriptoin of the network profile about which you are returning
+The description of the network profile about which you are returning
 information.
 
 

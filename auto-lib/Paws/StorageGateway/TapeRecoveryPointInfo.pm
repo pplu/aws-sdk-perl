@@ -60,7 +60,7 @@ ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.
 
 =head2 TapeStatus => Str
 
-  
+  The status of the virtual tapes.
 
 
 

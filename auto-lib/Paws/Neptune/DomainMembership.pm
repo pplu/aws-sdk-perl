@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Neptune::Do
 
 =head1 DESCRIPTION
 
-An Active Directory Domain membership record associated with the DB
+An Active Directory Domain membership record associated with a DB
 instance.
 
 =head1 ATTRIBUTES

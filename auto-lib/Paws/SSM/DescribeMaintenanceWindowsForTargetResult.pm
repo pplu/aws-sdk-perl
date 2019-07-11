@@ -23,7 +23,7 @@ the next call.)
 
 =head2 WindowIdentities => ArrayRef[L<Paws::SSM::MaintenanceWindowIdentityForTarget>]
 
-Information about the Maintenance Window targets and tasks an instance
+Information about the maintenance window targets and tasks an instance
 is associated with.
 
 

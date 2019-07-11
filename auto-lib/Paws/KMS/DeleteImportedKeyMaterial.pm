@@ -42,8 +42,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> KeyId => Str
 
-The identifier of the CMK whose key material to delete. The CMK's
-C<Origin> must be C<EXTERNAL>.
+Identifies the CMK from which you are deleting imported key material.
+The C<Origin> of the CMK must be C<EXTERNAL>.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 

@@ -71,8 +71,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =head2 InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>
 
-The InputProcessingConfiguration to use to preprocess the records
-before discovering the schema of the records.
+The InputProcessingConfiguration
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
+to use to preprocess the records before discovering the schema of the
+records.
 
 
 

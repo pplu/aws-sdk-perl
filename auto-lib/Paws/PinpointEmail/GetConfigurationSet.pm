@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeliveryOptions   = $GetConfigurationSetResponse->DeliveryOptions;
     my $ReputationOptions = $GetConfigurationSetResponse->ReputationOptions;
     my $SendingOptions    = $GetConfigurationSetResponse->SendingOptions;
+    my $Tags              = $GetConfigurationSetResponse->Tags;
     my $TrackingOptions   = $GetConfigurationSetResponse->TrackingOptions;
 
     # Returns a L<Paws::PinpointEmail::GetConfigurationSetResponse> object.

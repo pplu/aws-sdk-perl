@@ -62,7 +62,7 @@ The text of the policy in JSON format. The policy cannot exceed 4 KB.
 
 For information about the syntax of sending authorization policies, see
 the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
 
 
 

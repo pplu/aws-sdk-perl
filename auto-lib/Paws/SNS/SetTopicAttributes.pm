@@ -67,6 +67,22 @@ By default, only the topic owner can publish or subscribe to the topic.
 
 =back
 
+The following attribute applies only to server-side-encryption
+(https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
+
+=over
+
+=item *
+
+C<KmsMasterKeyId> - The ID of an AWS-managed customer master key (CMK)
+for Amazon SNS or a custom CMK. For more information, see Key Terms
+(https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
+For more examples, see KeyId
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+in the I<AWS Key Management Service API Reference>.
+
+=back
+
 
 
 

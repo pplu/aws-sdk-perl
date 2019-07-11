@@ -3,6 +3,7 @@ package Paws::SimpleWorkflow::RegisterDomain;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::ResourceTag]', traits => ['NameInRequest'], request_name => 'tags' );
   has WorkflowExecutionRetentionPeriodInDays => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workflowExecutionRetentionPeriodInDays' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,6 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name                                   => 'MyDomainName',
       WorkflowExecutionRetentionPeriodInDays => 'MyDurationInDays',
       Description                            => 'MyDescription',      # OPTIONAL
+      Tags                                   => [
+        {
+          Key   => 'MyResourceTagKey',      # min: 1, max: 128
+          Value => 'MyResourceTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                                    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -55,7 +63,16 @@ that the domain is registered in.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
-not contain the literal string C<arn>.
+not I<be> the literal string C<arn>.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SimpleWorkflow::ResourceTag>]
+
+Tags to be added when registering a domain.
+
+Tags may only contain unicode letters, digits, whitespace, or these
+symbols: C<_ . : / = + - @>.
 
 
 
@@ -73,7 +90,7 @@ completes, the execution record and its history are deleted.
 The maximum workflow execution retention period is 90 days. For more
 information about Amazon SWF service limits, see: Amazon SWF Service
 Limits
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html)
 in the I<Amazon SWF Developer Guide>.
 
 

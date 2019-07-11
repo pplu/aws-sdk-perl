@@ -77,9 +77,10 @@ executing.
 =item *
 
 C<SystemUpdating>: Endpoint is undergoing maintenance and cannot be
-updated or deleted or re-scaled until it has completed. This mainenance
-operation does not change any customer-specified values such as VPC
-config, KMS encryption, model, instance type, or instance count.
+updated or deleted or re-scaled until it has completed. This
+maintenance operation does not change any customer-specified values
+such as VPC config, KMS encryption, model, instance type, or instance
+count.
 
 =item *
 

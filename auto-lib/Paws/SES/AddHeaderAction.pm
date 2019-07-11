@@ -37,7 +37,7 @@ received email.
 
 For information about adding a header using a receipt rule, see the
 Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-add-header.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-add-header.html).
 
 =head1 ATTRIBUTES
 

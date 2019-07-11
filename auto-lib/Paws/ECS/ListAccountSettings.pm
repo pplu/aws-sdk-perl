@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 Specifies whether to return the effective settings. If C<true>, the
 account settings for the root user or the default setting for the
-C<principalArn>. If C<false>, the account settings for the
+C<principalArn> are returned. If C<false>, the account settings for the
 C<principalArn> are returned if they are set. Otherwise, no account
 settings are returned.
 
@@ -81,7 +81,7 @@ value if applicable.
 
 The resource name you want to list the account settings for.
 
-Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">
+Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">, C<"awsvpcTrunking">
 
 =head2 NextToken => Str
 

@@ -35,14 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
-      VolumeIds  => [ 'MyString', ... ],    # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
+      VolumeIds  => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
     );
 
     # Results:
@@ -69,10 +73,10 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters. Supported filters: C<volume-id>,
-C<modification-state>, C<target-size>, C<target-iops>,
-C<target-volume-type>, C<original-size>, C<original-iops>,
-C<original-volume-type>, C<start-time>.
+The filters. Supported filters: C<volume-id>, C<modification-state>,
+C<target-size>, C<target-iops>, C<target-volume-type>,
+C<original-size>, C<original-iops>, C<original-volume-type>,
+C<start-time>.
 
 
 
@@ -91,7 +95,7 @@ The C<nextToken> value returned by a previous paginated request.
 
 =head2 VolumeIds => ArrayRef[Str|Undef]
 
-One or more volume IDs for which in-progress modifications will be
+The IDs of the volumes for which in-progress modifications will be
 described.
 
 

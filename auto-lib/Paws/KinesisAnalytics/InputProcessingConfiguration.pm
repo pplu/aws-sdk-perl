@@ -34,15 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 Provides a description of a processor that is used to preprocess the
 records in the stream before being processed by your application code.
 Currently, the only input processor available is AWS Lambda
-(https://aws.amazon.com/documentation/lambda/).
+(https://docs.aws.amazon.com/lambda/).
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> InputLambdaProcessor => L<Paws::KinesisAnalytics::InputLambdaProcessor>
 
-  The InputLambdaProcessor that is used to preprocess the records in the
-stream before being processed by your application code.
+  The InputLambdaProcessor
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html)
+that is used to preprocess the records in the stream before being
+processed by your application code.
 
 
 

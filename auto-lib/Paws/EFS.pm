@@ -49,6 +49,11 @@ package Paws::EFS;
     my $call_object = $self->new_with_coercions('Paws::EFS::DescribeFileSystems', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeLifecycleConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::DescribeLifecycleConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeMountTargets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EFS::DescribeMountTargets', @_);
@@ -67,6 +72,11 @@ package Paws::EFS;
   sub ModifyMountTargetSecurityGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EFS::ModifyMountTargetSecurityGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutLifecycleConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::PutLifecycleConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateFileSystem {
@@ -146,7 +156,7 @@ package Paws::EFS;
   }
 
 
-  sub operations { qw/CreateFileSystem CreateMountTarget CreateTags DeleteFileSystem DeleteMountTarget DeleteTags DescribeFileSystems DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ModifyMountTargetSecurityGroups UpdateFileSystem / }
+  sub operations { qw/CreateFileSystem CreateMountTarget CreateTags DeleteFileSystem DeleteMountTarget DeleteTags DescribeFileSystems DescribeLifecycleConfiguration DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ModifyMountTargetSecurityGroups PutLifecycleConfiguration UpdateFileSystem / }
 
 1;
 
@@ -181,7 +191,7 @@ storage for use with Amazon EC2 instances in the AWS Cloud. With Amazon
 EFS, storage capacity is elastic, growing and shrinking automatically
 as you add and remove files, so your applications have the storage they
 need, when they need it. For more information, see the User Guide
-(http://docs.aws.amazon.com/efs/latest/ug/api-reference.html).
+(https://docs.aws.amazon.com/efs/latest/ug/api-reference.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01>
 
@@ -201,6 +211,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =item [PerformanceMode => Str]
 
 =item [ProvisionedThroughputInMibps => Num]
+
+=item [Tags => ArrayRef[L<Paws::EFS::Tag>]]
 
 =item [ThroughputMode => Str]
 
@@ -259,15 +271,15 @@ operations per second with a tradeoff of slightly higher latencies for
 most file operations. The performance mode can't be changed after the
 file system has been created. For more information, see Amazon EFS:
 Performance Modes
-(http://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html).
+(https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html).
 
 After the file system is fully created, Amazon EFS sets its lifecycle
 state to C<available>, at which point you can create one or more mount
 targets for the file system in your VPC. For more information, see
 CreateMountTarget. You mount your Amazon EFS file system on an EC2
-instances in your VPC via the mount target. For more information, see
-Amazon EFS: How it Works
-(http://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
+instances in your VPC by using the mount target. For more information,
+see Amazon EFS: How it Works
+(https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
 
 This operation requires permissions for the
 C<elasticfilesystem:CreateFileSystem> action.
@@ -293,7 +305,7 @@ Each argument is described in detail in: L<Paws::EFS::CreateMountTarget>
 Returns: a L<Paws::EFS::MountTargetDescription> instance
 
 Creates a mount target for a file system. You can then mount the file
-system on EC2 instances via the mount target.
+system on EC2 instances by using the mount target.
 
 You can create one mount target in each Availability Zone in your VPC.
 All EC2 instances in a VPC within a given Availability Zone share a
@@ -302,7 +314,7 @@ subnets in an Availability Zone, you create a mount target in one of
 the subnets. EC2 instances do not need to be in the same subnet as the
 mount target in order to access their file system. For more
 information, see Amazon EFS: How it Works
-(http://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
+(https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
 
 In the request, you also specify a file system ID for which you are
 creating the mount target and the file system's lifecycle state must be
@@ -332,10 +344,10 @@ After creating the mount target, Amazon EFS returns a response that
 includes, a C<MountTargetId> and an C<IpAddress>. You use this IP
 address when mounting the file system in an EC2 instance. You can also
 use the mount target's DNS name when mounting the file system. The EC2
-instance on which you mount the file system via the mount target can
-resolve the mount target's DNS name to its IP address. For more
+instance on which you mount the file system by using the mount target
+can resolve the mount target's DNS name to its IP address. For more
 information, see How it Works: Implementation Overview
-(http://docs.aws.amazon.com/efs/latest/ug/how-it-works.html#how-it-works-implementation).
+(https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html#how-it-works-implementation).
 
 Note that you can create mount targets for a file system in only one
 VPC, and there can be only one mount target per Availability Zone. That
@@ -414,15 +426,15 @@ can check the mount target creation status by calling the
 DescribeMountTargets operation, which among other things returns the
 mount target state.
 
-We recommend you create a mount target in each of the Availability
+We recommend that you create a mount target in each of the Availability
 Zones. There are cost considerations for using a file system in an
 Availability Zone through a mount target created in another
 Availability Zone. For more information, see Amazon EFS
 (http://aws.amazon.com/efs/). In addition, by always using a mount
 target local to the instance's Availability Zone, you eliminate a
 partial failure scenario. If the Availability Zone in which your mount
-target is created goes down, then you won't be able to access your file
-system through that mount target.
+target is created goes down, then you can't access your file system
+through that mount target.
 
 This operation requires permissions for the following action on the
 file system:
@@ -529,15 +541,15 @@ Returns: nothing
 
 Deletes the specified mount target.
 
-This operation forcibly breaks any mounts of the file system via the
-mount target that is being deleted, which might disrupt instances or
-applications using those mounts. To avoid applications getting cut off
-abruptly, you might consider unmounting any mounts of the mount target,
-if feasible. The operation also deletes the associated network
-interface. Uncommitted writes may be lost, but breaking a mount target
-using this operation does not corrupt the file system itself. The file
-system you created remains. You can mount an EC2 instance in your VPC
-via another mount target.
+This operation forcibly breaks any mounts of the file system by using
+the mount target that is being deleted, which might disrupt instances
+or applications using those mounts. To avoid applications getting cut
+off abruptly, you might consider unmounting any mounts of the mount
+target, if feasible. The operation also deletes the associated network
+interface. Uncommitted writes might be lost, but breaking a mount
+target using this operation does not corrupt the file system itself.
+The file system you created remains. You can mount an EC2 instance in
+your VPC by using another mount target.
 
 This operation requires permissions for the following action on the
 file system:
@@ -584,10 +596,10 @@ Each argument is described in detail in: L<Paws::EFS::DeleteTags>
 Returns: nothing
 
 Deletes the specified tags from a file system. If the C<DeleteTags>
-request includes a tag key that does not exist, Amazon EFS ignores it
+request includes a tag key that doesn't exist, Amazon EFS ignores it
 and doesn't cause an error. For more information about tags and related
 restrictions, see Tag Restrictions
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 in the I<AWS Billing and Cost Management User Guide>.
 
 This operation requires permissions for the
@@ -621,10 +633,11 @@ calling.
 
 When retrieving all file system descriptions, you can optionally
 specify the C<MaxItems> parameter to limit the number of descriptions
-in a response. If more file system descriptions remain, Amazon EFS
-returns a C<NextMarker>, an opaque token, in the response. In this
-case, you should send a subsequent request with the C<Marker> request
-parameter set to the value of C<NextMarker>.
+in a response. Currently, this number is automatically set to 10. If
+more file system descriptions remain, Amazon EFS returns a
+C<NextMarker>, an opaque token, in the response. In this case, you
+should send a subsequent request with the C<Marker> request parameter
+set to the value of C<NextMarker>.
 
 To retrieve a list of your file system descriptions, this operation is
 used in an iterative process, where C<DescribeFileSystems> is called
@@ -632,15 +645,36 @@ first without the C<Marker> and then the operation continues to call it
 with the C<Marker> parameter set to the value of the C<NextMarker> from
 the previous response until the response has no C<NextMarker>.
 
-The implementation may return fewer than C<MaxItems> file system
-descriptions while still including a C<NextMarker> value.
-
 The order of file systems returned in the response of one
 C<DescribeFileSystems> call and the order of file systems returned
 across the responses of a multi-call iteration is unspecified.
 
 This operation requires permissions for the
 C<elasticfilesystem:DescribeFileSystems> action.
+
+
+=head2 DescribeLifecycleConfiguration
+
+=over
+
+=item FileSystemId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::DescribeLifecycleConfiguration>
+
+Returns: a L<Paws::EFS::LifecycleConfigurationDescription> instance
+
+Returns the current C<LifecycleConfiguration> object for the specified
+Amazon EFS file system. EFS lifecycle management uses the
+C<LifecycleConfiguration> object to identify which files to move to the
+EFS Infrequent Access (IA) storage class. For a file system without a
+C<LifecycleConfiguration> object, the call returns an empty array in
+the response.
+
+This operation requires permissions for the
+C<elasticfilesystem:DescribeLifecycleConfiguration> operation.
 
 
 =head2 DescribeMountTargets
@@ -728,7 +762,7 @@ Returns: a L<Paws::EFS::DescribeTagsResponse> instance
 
 Returns the tags associated with a file system. The order of tags
 returned in the response of one C<DescribeTags> call and the order of
-tags returned across the responses of a multi-call iteration (when
+tags returned across the responses of a multiple-call iteration (when
 using pagination) is unspecified.
 
 This operation requires permissions for the
@@ -776,6 +810,61 @@ network interface.
 
 =back
 
+
+
+=head2 PutLifecycleConfiguration
+
+=over
+
+=item FileSystemId => Str
+
+=item LifecyclePolicies => ArrayRef[L<Paws::EFS::LifecyclePolicy>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::PutLifecycleConfiguration>
+
+Returns: a L<Paws::EFS::LifecycleConfigurationDescription> instance
+
+Enables lifecycle management by creating a new
+C<LifecycleConfiguration> object. A C<LifecycleConfiguration> object
+defines when files in an Amazon EFS file system are automatically
+transitioned to the lower-cost EFS Infrequent Access (IA) storage
+class. A C<LifecycleConfiguration> applies to all files in a file
+system.
+
+Each Amazon EFS file system supports one lifecycle configuration, which
+applies to all files in the file system. If a C<LifecycleConfiguration>
+object already exists for the specified file system, a
+C<PutLifecycleConfiguration> call modifies the existing configuration.
+A C<PutLifecycleConfiguration> call with an empty C<LifecyclePolicies>
+array in the request body deletes any existing
+C<LifecycleConfiguration> and disables lifecycle management.
+
+In the request, specify the following:
+
+=over
+
+=item *
+
+The ID for the file system for which you are enabling, disabling, or
+modifying lifecycle management.
+
+=item *
+
+A C<LifecyclePolicies> array of C<LifecyclePolicy> objects that define
+when files are moved to the IA storage class. The array can contain
+only one C<LifecyclePolicy> item.
+
+=back
+
+This operation requires permissions for the
+C<elasticfilesystem:PutLifecycleConfiguration> operation.
+
+To apply a C<LifecycleConfiguration> object to an encrypted file
+system, you need the same AWS Key Management Service (AWS KMS)
+permissions as when you created the encrypted file system.
 
 
 =head2 UpdateFileSystem

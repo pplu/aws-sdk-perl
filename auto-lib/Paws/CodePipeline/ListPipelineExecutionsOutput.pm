@@ -17,7 +17,7 @@ Paws::CodePipeline::ListPipelineExecutionsOutput
 
 =head2 NextToken => Str
 
-A token that can be used in the next ListPipelineExecutions call. To
+A token that can be used in the next C<ListPipelineExecutions> call. To
 view all items in the list, continue to call this operation with each
 subsequent token until no more nextToken values are returned.
 

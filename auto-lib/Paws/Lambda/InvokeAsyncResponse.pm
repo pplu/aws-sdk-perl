@@ -17,7 +17,7 @@ Paws::Lambda::InvokeAsyncResponse
 
 =head2 Status => Int
 
-It will be 202 upon success.
+The status code.
 
 
 =head2 _request_id => Str

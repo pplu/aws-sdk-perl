@@ -61,7 +61,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> Resources => ArrayRef[Str|Undef]
 
-The IDs of one or more resources, separated by spaces.
+The IDs of the resources, separated by spaces.
 
 Constraints: Up to 1000 resource IDs. We recommend breaking up this
 request into smaller batches.
@@ -70,9 +70,9 @@ request into smaller batches.
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-One or more tags. The C<value> parameter is required, but if you don't
-want the tag to have a value, specify the parameter with no value, and
-we set the value to an empty string.
+The tags. The C<value> parameter is required, but if you don't want the
+tag to have a value, specify the parameter with no value, and we set
+the value to an empty string.
 
 
 

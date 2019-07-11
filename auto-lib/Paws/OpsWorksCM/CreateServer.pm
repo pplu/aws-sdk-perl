@@ -112,7 +112,7 @@ C<false>. The default value is C<true>.
 =head2 Engine => Str
 
 The configuration management engine to use. Valid values include
-C<Chef> and C<Puppet>.
+C<ChefAutomate> and C<Puppet>.
 
 
 
@@ -126,20 +126,21 @@ B<Attributes accepted in a Chef createServer request:>
 
 =item *
 
-C<CHEF_PIVOTAL_KEY>: A base64-encoded RSA private key that is not
-stored by AWS OpsWorks for Chef Automate. This private key is required
-to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is
-generated and returned in the response.
+C<CHEF_AUTOMATE_PIVOTAL_KEY>: A base64-encoded RSA public key. The
+corresponding private key is required to access the Chef API. When no
+CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+returned in the response.
 
 =item *
 
-C<CHEF_DELIVERY_ADMIN_PASSWORD>: The password for the administrative
-user in the Chef Automate GUI. The password length is a minimum of
-eight characters, and a maximum of 32. The password can contain
-letters, numbers, and special characters (!/@#$%^&+=_). The password
-must contain at least one lower case letter, one upper case letter, one
-number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD
-is set, one is generated and returned in the response.
+C<CHEF_AUTOMATE_ADMIN_PASSWORD>: The password for the administrative
+user in the Chef Automate web-based dashboard. The password length is a
+minimum of eight characters, and a maximum of 32. The password can
+contain letters, numbers, and special characters (!/@#$%^&+=_). The
+password must contain at least one lower case letter, one upper case
+letter, one number, and one special character. When no
+CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned in
+the response.
 
 =back
 
@@ -151,6 +152,18 @@ B<Attributes accepted in a Puppet createServer request:>
 
 C<PUPPET_ADMIN_PASSWORD>: To work with the Puppet Enterprise console, a
 password must use ASCII characters.
+
+=item *
+
+C<PUPPET_R10K_REMOTE>: The r10k remote is the URL of your control
+repository (for example,
+ssh://git@your.git-repo.com:user/control-repo.git). Specifying an r10k
+remote opens TCP port 8170.
+
+=item *
+
+C<PUPPET_R10K_PRIVATE_KEY>: If you are using a private Git repository,
+add PUPPET_R10K_PRIVATE_KEY to specify a PEM-encoded private SSH key.
 
 =back
 
@@ -186,9 +199,7 @@ profile you need.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-The Amazon EC2 instance type to use. For example, C<m4.large>.
-Recommended instance types include C<t2.medium> and greater, C<m4.*>,
-or C<c4.xlarge> and greater.
+The Amazon EC2 instance type to use. For example, C<m5.large>.
 
 
 
@@ -291,7 +302,7 @@ selected by Amazon EC2. If you specify subnet IDs, the VPC must have
 
 For more information about supported Amazon EC2 platforms, see
 Supported Platforms
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 
 
 

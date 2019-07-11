@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::S3Tar
 
 =head1 DESCRIPTION
 
-Specifies a data store in Amazon S3.
+Specifies a data store in Amazon Simple Storage Service (Amazon S3).
 
 =head1 ATTRIBUTES
 

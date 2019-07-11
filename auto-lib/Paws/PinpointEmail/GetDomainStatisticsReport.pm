@@ -2,8 +2,8 @@
 package Paws::PinpointEmail::GetDomainStatisticsReport;
   use Moose;
   has Domain => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Domain', required => 1);
-  has EndDate => (is => 'ro', isa => 'Str', required => 1);
-  has StartDate => (is => 'ro', isa => 'Str', required => 1);
+  has EndDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'EndDate', required => 1);
+  has StartDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'StartDate', required => 1);
 
   use MooseX::ClassAttribute;
 

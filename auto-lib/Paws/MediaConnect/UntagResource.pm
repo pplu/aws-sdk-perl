@@ -43,8 +43,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) of the resource that you want to remove
-tags from.
+The Amazon Resource Name (ARN) that identifies the AWS Elemental
+MediaConnect resource from which to delete tags.
 
 
 

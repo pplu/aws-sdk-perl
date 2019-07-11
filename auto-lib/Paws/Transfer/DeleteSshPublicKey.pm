@@ -51,8 +51,7 @@ A system-assigned unique identifier for a Secure File Transfer Protocol
 
 =head2 B<REQUIRED> SshPublicKeyId => Str
 
-A unique identifier used to reference your userE<rsquo>s specific SSH
-key.
+A unique identifier used to reference your user's specific SSH key.
 
 
 

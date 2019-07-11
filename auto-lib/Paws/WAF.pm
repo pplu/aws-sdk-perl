@@ -323,6 +323,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListSubscribedRuleGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListWebACLs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListWebACLs', @_);
@@ -341,6 +346,16 @@ package Paws::WAF;
   sub PutPermissionPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::PutPermissionPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateByteMatchSet {
@@ -774,7 +789,7 @@ package Paws::WAF;
   }
 
 
-  sub operations { qw/CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateRuleGroup CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeleteLoggingConfiguration DeletePermissionPolicy DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteRuleGroup DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetLoggingConfiguration GetPermissionPolicy GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetRuleGroup GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListActivatedRulesInRuleGroup ListByteMatchSets ListGeoMatchSets ListIPSets ListLoggingConfigurations ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListRuleGroups ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListSubscribedRuleGroups ListWebACLs ListXssMatchSets PutLoggingConfiguration PutPermissionPolicy UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateRuleGroup UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
+  sub operations { qw/CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateRuleGroup CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeleteLoggingConfiguration DeletePermissionPolicy DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteRuleGroup DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetLoggingConfiguration GetPermissionPolicy GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetRuleGroup GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListActivatedRulesInRuleGroup ListByteMatchSets ListGeoMatchSets ListIPSets ListLoggingConfigurations ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListRuleGroups ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListSubscribedRuleGroups ListTagsForResource ListWebACLs ListXssMatchSets PutLoggingConfiguration PutPermissionPolicy TagResource UntagResource UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateRuleGroup UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
 
 1;
 
@@ -810,7 +825,7 @@ This guide is for developers who need detailed information about the
 AWS WAF API actions, data types, and errors. For detailed information
 about AWS WAF features and an overview of how to use the AWS WAF API,
 see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24>
 
@@ -867,7 +882,7 @@ and the value that you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateGeoMatchSet
@@ -919,7 +934,7 @@ you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateIPSet
@@ -972,7 +987,7 @@ want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRateBasedRule
@@ -988,6 +1003,8 @@ HTTP requests, see the AWS WAF Developer Guide
 =item RateKey => Str
 
 =item RateLimit => Int
+
+=item [Tags => ArrayRef[L<Paws::WAF::Tag>]]
 
 
 =back
@@ -1096,7 +1113,7 @@ more information, see CreateWebACL.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRegexMatchSet
@@ -1152,7 +1169,7 @@ WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRegexPatternSet
@@ -1203,7 +1220,7 @@ want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRule
@@ -1215,6 +1232,8 @@ HTTP requests, see the AWS WAF Developer Guide
 =item MetricName => Str
 
 =item Name => Str
+
+=item [Tags => ArrayRef[L<Paws::WAF::Tag>]]
 
 
 =back
@@ -1284,7 +1303,7 @@ information, see CreateWebACL.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRuleGroup
@@ -1296,6 +1315,8 @@ HTTP requests, see the AWS WAF Developer Guide
 =item MetricName => Str
 
 =item Name => Str
+
+=item [Tags => ArrayRef[L<Paws::WAF::Tag>]]
 
 
 =back
@@ -1329,7 +1350,7 @@ Ten rules per rule group.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateSizeConstraintSet
@@ -1383,7 +1404,7 @@ the URI) and the value that you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateSqlInjectionMatchSet
@@ -1435,7 +1456,7 @@ code.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateWebACL
@@ -1449,6 +1470,8 @@ HTTP requests, see the AWS WAF Developer Guide
 =item MetricName => Str
 
 =item Name => Str
+
+=item [Tags => ArrayRef[L<Paws::WAF::Tag>]]
 
 
 =back
@@ -1506,7 +1529,7 @@ associate the C<WebACL> with a CloudFront distribution.
 
 For more information about how to use the AWS WAF API, see the AWS WAF
 Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateXssMatchSet
@@ -1557,7 +1580,7 @@ scripting attacks.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 DeleteByteMatchSet
@@ -2174,7 +2197,7 @@ request to all AWS WAF servers.
 
 =item *
 
-C<IN_SYNC>: Propagation is complete.
+C<INSYNC>: Propagation is complete.
 
 =back
 
@@ -2685,6 +2708,26 @@ Returns: a L<Paws::WAF::ListSubscribedRuleGroupsResponse> instance
 Returns an array of RuleGroup objects that you are subscribed to.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+=item [Limit => Int]
+
+=item [NextMarker => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WAF::ListTagsForResource>
+
+Returns: a L<Paws::WAF::ListTagsForResourceResponse> instance
+
+
+
+
 =head2 ListWebACLs
 
 =over
@@ -2745,6 +2788,13 @@ using the following steps:
 
 Create an Amazon Kinesis Data Firehose .
 
+Create the data firehose with a PUT source and in the region that you
+are operating. However, if you are capturing logs for Amazon
+CloudFront, always create the firehose in US East (N. Virginia).
+
+Do not create the data firehose using a C<Kinesis stream> as your
+source.
+
 =item 2.
 
 Associate that firehose to your web ACL using a
@@ -2756,7 +2806,7 @@ When you successfully enable logging using a C<PutLoggingConfiguration>
 request, AWS WAF will create a service linked role with the necessary
 permissions to write logs to the Amazon Kinesis Data Firehose. For more
 information, see Logging Web ACL Traffic Information
-(http://docs.aws.amazon.com/waf/latest/developerguide/logging.html) in
+(https://docs.aws.amazon.com/waf/latest/developerguide/logging.html) in
 the I<AWS WAF Developer Guide>.
 
 
@@ -2826,6 +2876,42 @@ For more information, see IAM Policies
 
 An example of a valid policy parameter is shown in the Examples section
 below.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::WAF::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WAF::TagResource>
+
+Returns: a L<Paws::WAF::TagResourceResponse> instance
+
+
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WAF::UntagResource>
+
+Returns: a L<Paws::WAF::UntagResourceResponse> instance
+
+
 
 
 =head2 UpdateByteMatchSet
@@ -2906,7 +2992,7 @@ the URI) and the value that you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateGeoMatchSet
@@ -2975,7 +3061,7 @@ change a country, you delete the existing country and add the new one.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateIPSet
@@ -3019,8 +3105,8 @@ C<192.0.2.44/32> (for the individual IP address C<192.0.2.44>).
 =back
 
 AWS WAF supports IPv4 address ranges: /8 and any range between /16
-through /32. AWS WAF supports IPv6 address ranges: /16, /24, /32, /48,
-/56, /64, and /128. For more information about CIDR notation, see the
+through /32. AWS WAF supports IPv6 address ranges: /24, /32, /48, /56,
+/64, and /128. For more information about CIDR notation, see the
 Wikipedia entry Classless Inter-Domain Routing
 (https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
@@ -3082,7 +3168,7 @@ You can insert a maximum of 1000 addresses in a single request.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateRateBasedRule
@@ -3242,7 +3328,7 @@ regular expression patters you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateRegexPatternSet
@@ -3326,7 +3412,7 @@ expression pattern that you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateRule
@@ -3406,7 +3492,7 @@ you delete the existing one and add the new one.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateRuleGroup
@@ -3463,7 +3549,7 @@ existing one and add the new one.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateSizeConstraintSet
@@ -3554,7 +3640,7 @@ the URI) and the value that you want AWS WAF to watch for.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateSqlInjectionMatchSet
@@ -3632,7 +3718,7 @@ web requests that you want AWS WAF to inspect for snippets of SQL code.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateWebACL
@@ -3741,7 +3827,7 @@ default rule type) with the specified ID, which does not exist.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateXssMatchSet
@@ -3818,7 +3904,7 @@ attacks.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 

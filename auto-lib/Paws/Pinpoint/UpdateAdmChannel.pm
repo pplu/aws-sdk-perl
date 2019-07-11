@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $pinpoint = Paws->service('Pinpoint');
     my $UpdateAdmChannelResponse = $pinpoint->UpdateAdmChannel(
       ADMChannelRequest => {
-        ClientId     => 'My__string',    # OPTIONAL
-        ClientSecret => 'My__string',    # OPTIONAL
-        Enabled      => 1,               # OPTIONAL
+        ClientId     => 'My__string',
+        ClientSecret => 'My__string',
+        Enabled      => 1,              # OPTIONAL
       },
       ApplicationId => 'My__string',
 
@@ -58,7 +58,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 

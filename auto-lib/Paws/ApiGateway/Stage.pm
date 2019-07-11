@@ -97,7 +97,9 @@ or C</\*/\*> for overriding all methods in the stage.
 =head2 StageName => Str
 
 The name of the stage is the first path segment in the Uniform Resource
-Identifier (URI) of a call to API Gateway.
+Identifier (URI) of a call to API Gateway. Stage names can only contain
+alphanumeric characters, hyphens, and underscores. Maximum length is
+128 characters.
 
 
 =head2 Tags => L<Paws::ApiGateway::MapOfStringToString>

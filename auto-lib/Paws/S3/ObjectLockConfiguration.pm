@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ObjectL
 
 =head1 DESCRIPTION
 
-The container element for Object Lock configuration parameters.
+The container element for object lock configuration parameters.
 
 =head1 ATTRIBUTES
 
 
 =head2 ObjectLockEnabled => Str
 
-  Indicates whether this bucket has an Object Lock configuration enabled.
+  Indicates whether this bucket has an object lock configuration enabled.
 
 
 =head2 Rule => L<Paws::S3::ObjectLockRule>
 
-  The Object Lock rule in place for the specified object.
+  The object lock rule in place for the specified object.
 
 
 

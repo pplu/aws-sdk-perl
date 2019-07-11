@@ -98,8 +98,8 @@ fleet alias ARN. Destinations are listed in default preference order.
   Amazon Resource Name (ARN
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 that is assigned to a game session queue and uniquely identifies it.
-Format is
-C<arn:aws:gamelift:E<lt>regionE<gt>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912>.
+Format is C<arn:aws:gamelift:E<lt>regionE<gt>:E<lt>aws
+accountE<gt>:gamesessionqueue/E<lt>queue nameE<gt>>.
 
 
 =head2 Name => Str

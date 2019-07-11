@@ -39,7 +39,9 @@ distribution of your content.
 
 =head2 B<REQUIRED> GeoRestriction => L<Paws::CloudFront::GeoRestriction>
 
-  
+  A complex type that controls the countries in which your content is
+distributed. CloudFront determines the location of your users using
+C<MaxMind> GeoIP databases.
 
 
 

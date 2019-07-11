@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 Generates the random byte string in the AWS CloudHSM cluster that is
 associated with the specified custom key store
-(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html).
+(https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
 To find the ID of a custom key store, use the DescribeCustomKeyStores
 operation.
 

@@ -50,6 +50,8 @@ Valid values are: C<"API">, C<"SAML">, C<"USERPOOL">
 
 The email address of the user.
 
+Users' email addresses are case-sensitive.
+
 
 
 

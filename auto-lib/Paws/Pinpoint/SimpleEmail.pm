@@ -33,29 +33,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-An email composed of a subject, a text part and a html part.
+Specifies the content of an email message, composed of a subject, a
+text part, and an HTML part.
 
 =head1 ATTRIBUTES
 
 
 =head2 HtmlPart => L<Paws::Pinpoint::SimpleEmailPart>
 
-  The content of the message, in HTML format. Use this for email clients
-that can process HTML. You can include clickable links, formatted text,
-and much more in an HTML message.
+  The body of the email message, in HTML format. We recommend using an
+HTML part for email clients that support HTML. You can include links,
+formatted text, and more in an HTML message.
 
 
 =head2 Subject => L<Paws::Pinpoint::SimpleEmailPart>
 
-  The subject of the message: A short summary of the content, which will
-appear in the recipient's inbox.
+  The subject line, or title, of the email.
 
 
 =head2 TextPart => L<Paws::Pinpoint::SimpleEmailPart>
 
-  The content of the message, in text format. Use this for text-based
-email clients, or clients on high-latency networks (such as mobile
-devices).
+  The body of the email message, in text format. We recommend using a
+text part for email clients that don't support HTML and clients that
+are connected to high-latency networks, such as mobile devices.
 
 
 

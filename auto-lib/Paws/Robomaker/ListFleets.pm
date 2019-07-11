@@ -60,6 +60,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rob
 
 Optional filters to limit results.
 
+The filter name C<name> is supported. When filtering, you must use the
+complete value of the filtered item. You can use up to three filters.
+
 
 
 =head2 MaxResults => Int

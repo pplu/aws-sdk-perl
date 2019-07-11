@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-Threat intel details related to a finding.
+Details about the threat intel related to a finding.
 
 =head1 ATTRIBUTES
 
@@ -48,17 +48,19 @@ Threat intel details related to a finding.
 
 =head2 LastObservedAt => Str
 
-  The date/time of the last observation of a threat intel indicator.
+  The date and time when the most recent instance of a threat intel
+indicator was observed.
 
 
 =head2 Source => Str
 
-  The source of the threat intel.
+  The source of the threat intel indicator.
 
 
 =head2 SourceUrl => Str
 
-  The URL for more details from the source of the threat intel.
+  The URL to the page or site where you can get more information about
+the threat intel indicator.
 
 
 =head2 Type => Str

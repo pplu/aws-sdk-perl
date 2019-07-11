@@ -23,8 +23,8 @@ Information about the load balancers.
 
 =head2 NextMarker => Str
 
-The marker to use when requesting the next set of results. If there are
-no additional results, the string is empty.
+If there are additional results, this is the marker for the next set of
+results. Otherwise, this is null.
 
 
 =head2 _request_id => Str

@@ -139,6 +139,11 @@ package Paws::AppSync;
     my $call_object = $self->new_with_coercions('Paws::AppSync::ListResolversByFunction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTypes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::ListTypes', @_);
@@ -147,6 +152,16 @@ package Paws::AppSync;
   sub StartSchemaCreation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AppSync::StartSchemaCreation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AppSync::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateApiKey {
@@ -343,7 +358,7 @@ package Paws::AppSync;
   }
 
 
-  sub operations { qw/CreateApiKey CreateDataSource CreateFunction CreateGraphqlApi CreateResolver CreateType DeleteApiKey DeleteDataSource DeleteFunction DeleteGraphqlApi DeleteResolver DeleteType GetDataSource GetFunction GetGraphqlApi GetIntrospectionSchema GetResolver GetSchemaCreationStatus GetType ListApiKeys ListDataSources ListFunctions ListGraphqlApis ListResolvers ListResolversByFunction ListTypes StartSchemaCreation UpdateApiKey UpdateDataSource UpdateFunction UpdateGraphqlApi UpdateResolver UpdateType / }
+  sub operations { qw/CreateApiKey CreateDataSource CreateFunction CreateGraphqlApi CreateResolver CreateType DeleteApiKey DeleteDataSource DeleteFunction DeleteGraphqlApi DeleteResolver DeleteType GetDataSource GetFunction GetGraphqlApi GetIntrospectionSchema GetResolver GetSchemaCreationStatus GetType ListApiKeys ListDataSources ListFunctions ListGraphqlApis ListResolvers ListResolversByFunction ListTagsForResource ListTypes StartSchemaCreation TagResource UntagResource UpdateApiKey UpdateDataSource UpdateFunction UpdateGraphqlApi UpdateResolver UpdateType / }
 
 1;
 
@@ -473,9 +488,13 @@ compose the resolver logic.
 
 =item Name => Str
 
+=item [AdditionalAuthenticationProviders => ArrayRef[L<Paws::AppSync::AdditionalAuthenticationProvider>]]
+
 =item [LogConfig => L<Paws::AppSync::LogConfig>]
 
 =item [OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>]
+
+=item [Tags => L<Paws::AppSync::TagMap>]
 
 =item [UserPoolConfig => L<Paws::AppSync::UserPoolConfig>]
 
@@ -710,6 +729,8 @@ Retrieves a C<GraphqlApi> object.
 
 =item Format => Str
 
+=item [IncludeDirectives => Bool]
+
 
 =back
 
@@ -903,6 +924,22 @@ Returns: a L<Paws::AppSync::ListResolversByFunctionResponse> instance
 List the resolvers that are associated with a specific function.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::ListTagsForResource>
+
+Returns: a L<Paws::AppSync::ListTagsForResourceResponse> instance
+
+Lists the tags for a resource.
+
+
 =head2 ListTypes
 
 =over
@@ -943,6 +980,42 @@ Returns: a L<Paws::AppSync::StartSchemaCreationResponse> instance
 Adds a new schema to your GraphQL API.
 
 This operation is asynchronous. Use to determine when it has completed.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::AppSync::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::TagResource>
+
+Returns: a L<Paws::AppSync::TagResourceResponse> instance
+
+Tags a resource with user-supplied tags.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AppSync::UntagResource>
+
+Returns: a L<Paws::AppSync::UntagResourceResponse> instance
+
+Untags a resource.
 
 
 =head2 UpdateApiKey
@@ -1038,6 +1111,8 @@ Updates a C<Function> object.
 =item ApiId => Str
 
 =item Name => Str
+
+=item [AdditionalAuthenticationProviders => ArrayRef[L<Paws::AppSync::AdditionalAuthenticationProvider>]]
 
 =item [AuthenticationType => Str]
 

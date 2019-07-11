@@ -56,9 +56,9 @@ before declaring listener healthy.
 
 =head2 Path => Str
 
-  The destination path for the health check request. This is only
-required if the specified protocol is HTTP; if the protocol is TCP,
-then this parameter is ignored.
+  The destination path for the health check request. This is required
+only if the specified protocol is HTTP. If the protocol is TCP, this
+parameter is ignored.
 
 
 =head2 Port => Int

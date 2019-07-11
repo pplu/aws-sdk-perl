@@ -118,7 +118,7 @@ The name of the group to which the target environment belongs. Specify
 a group name only if the environment's name is specified in an
 environment manifest and not with the environment name parameter. See
 Environment Manifest (env.yaml)
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
 for details.
 
 
@@ -153,13 +153,13 @@ associated with the specified solution stack.
 
 For a list of current solution stacks, see Elastic Beanstalk Supported
 Platforms
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html).
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html).
 
 
 
 =head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
 
-This specifies the tags applied to resources in the environment.
+Specifies the tags applied to resources in the environment.
 
 
 

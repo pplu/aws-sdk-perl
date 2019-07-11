@@ -52,7 +52,7 @@ The name of the DB instance to associate the IAM role with.
 
 The name of the feature for the DB instance that the IAM role is to be
 associated with. For the list of supported feature names, see
-DBEngineVersion.
+C<DBEngineVersion>.
 
 
 

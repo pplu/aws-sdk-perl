@@ -40,11 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Neptune::Pa
 
 =head1 DESCRIPTION
 
-This data type is used as a request parameter in the
-ModifyDBParameterGroup and ResetDBParameterGroup actions.
-
-This data type is used as a response element in the
-DescribeEngineDefaultParameters and DescribeDBParameters actions.
+Specifies a parameter.
 
 =head1 ATTRIBUTES
 

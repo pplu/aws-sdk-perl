@@ -2,6 +2,7 @@ package Paws::Lightsail::InstanceAccessDetails;
   use Moose;
   has CertKey => (is => 'ro', isa => 'Str', request_name => 'certKey', traits => ['NameInRequest']);
   has ExpiresAt => (is => 'ro', isa => 'Str', request_name => 'expiresAt', traits => ['NameInRequest']);
+  has HostKeys => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::HostKeyAttributes]', request_name => 'hostKeys', traits => ['NameInRequest']);
   has InstanceName => (is => 'ro', isa => 'Str', request_name => 'instanceName', traits => ['NameInRequest']);
   has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
   has Password => (is => 'ro', isa => 'Str', request_name => 'password', traits => ['NameInRequest']);
@@ -55,6 +56,11 @@ C<tempkey-cert.pub>.
 =head2 ExpiresAt => Str
 
   For SSH access, the date on which the temporary keys expire.
+
+
+=head2 HostKeys => ArrayRef[L<Paws::Lightsail::HostKeyAttributes>]
+
+  Describes the public SSH host keys or the RDP certificate.
 
 
 =head2 InstanceName => Str

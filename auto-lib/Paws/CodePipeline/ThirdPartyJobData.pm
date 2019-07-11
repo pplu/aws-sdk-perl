@@ -95,6 +95,9 @@ defined by the user when the action is created.
 
   Represents information about a pipeline to a job worker.
 
+Does not include C<pipelineArn> and C<pipelineExecutionId> for
+ThirdParty jobs.
+
 
 
 =head1 SEE ALSO

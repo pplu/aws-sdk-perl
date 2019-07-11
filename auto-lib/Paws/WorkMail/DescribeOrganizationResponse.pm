@@ -28,7 +28,7 @@ The alias for an organization.
 
 =head2 CompletedDate => Str
 
-The date at which the organization became usable in the Amazon WorkMail
+The date at which the organization became usable in the WorkMail
 context, in UNIX epoch time format.
 
 
@@ -45,12 +45,12 @@ organization.
 
 =head2 DirectoryType => Str
 
-The type of directory associated with the Amazon WorkMail organization.
+The type of directory associated with the WorkMail organization.
 
 
 =head2 ErrorMessage => Str
 
-The (optional) error message indicating if unexpected behavior was
+(Optional) The error message indicating if unexpected behavior was
 encountered with regards to the organization.
 
 

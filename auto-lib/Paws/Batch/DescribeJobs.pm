@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bat
 
 =head2 B<REQUIRED> Jobs => ArrayRef[Str|Undef]
 
-A space-separated list of up to 100 job IDs.
+A list of up to 100 job IDs.
 
 
 

@@ -56,13 +56,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 The DB cluster capacity.
 
+When you change the capacity of a paused Aurora Serverless DB cluster,
+it automatically resumes.
+
 Constraints:
 
 =over
 
 =item *
 
-Value must be C<2>, C<4>, C<8>, C<16>, C<32>, C<64>, C<128>, or C<256>.
+Value must be C<1>, C<2>, C<4>, C<8>, C<16>, C<32>, C<64>, C<128>, or
+C<256>.
 
 =back
 

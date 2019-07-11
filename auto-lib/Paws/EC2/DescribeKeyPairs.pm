@@ -56,7 +56,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -75,7 +75,7 @@ C<key-name> - The name of the key pair.
 
 =head2 KeyNames => ArrayRef[Str|Undef]
 
-One or more key pair names.
+The key pair names.
 
 Default: Describes all your key pairs.
 

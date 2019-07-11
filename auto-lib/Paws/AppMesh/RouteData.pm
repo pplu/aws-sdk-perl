@@ -1,10 +1,10 @@
 package Paws::AppMesh::RouteData;
   use Moose;
   has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
-  has Metadata => (is => 'ro', isa => 'Paws::AppMesh::ResourceMetadata', request_name => 'metadata', traits => ['NameInRequest']);
+  has Metadata => (is => 'ro', isa => 'Paws::AppMesh::ResourceMetadata', request_name => 'metadata', traits => ['NameInRequest'], required => 1);
   has RouteName => (is => 'ro', isa => 'Str', request_name => 'routeName', traits => ['NameInRequest'], required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::RouteSpec', request_name => 'spec', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::AppMesh::RouteStatus', request_name => 'status', traits => ['NameInRequest']);
+  has Spec => (is => 'ro', isa => 'Paws::AppMesh::RouteSpec', request_name => 'spec', traits => ['NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Paws::AppMesh::RouteStatus', request_name => 'status', traits => ['NameInRequest'], required => 1);
   has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -43,10 +43,10 @@ An object representing a route returned by a describe operation.
 
 =head2 B<REQUIRED> MeshName => Str
 
-  The name of the service mesh in which the route resides.
+  The name of the service mesh that the route resides in.
 
 
-=head2 Metadata => L<Paws::AppMesh::ResourceMetadata>
+=head2 B<REQUIRED> Metadata => L<Paws::AppMesh::ResourceMetadata>
 
   The associated metadata for the route.
 
@@ -56,19 +56,19 @@ An object representing a route returned by a describe operation.
   The name of the route.
 
 
-=head2 Spec => L<Paws::AppMesh::RouteSpec>
+=head2 B<REQUIRED> Spec => L<Paws::AppMesh::RouteSpec>
 
   The specifications of the route.
 
 
-=head2 Status => L<Paws::AppMesh::RouteStatus>
+=head2 B<REQUIRED> Status => L<Paws::AppMesh::RouteStatus>
 
   The status of the route.
 
 
 =head2 B<REQUIRED> VirtualRouterName => Str
 
-  The virtual router with which the route is associated.
+  The virtual router that the route is associated with.
 
 
 

@@ -42,6 +42,7 @@ you want the application to start processing records.
 =head2 B<REQUIRED> Id => Str
 
   Input source ID. You can get this ID by calling the DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
 operation.
 
 

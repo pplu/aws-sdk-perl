@@ -60,6 +60,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rob
 
 Optional filters to limit results.
 
+The filter names C<status> and C<fleetName> are supported. When
+filtering, you must use the complete value of the filtered item. You
+can use up to three filters, but they must be for the same named item.
+For example, if you are looking for items with the status C<InProgress>
+or the status C<Pending>.
+
 
 
 =head2 MaxResults => Int

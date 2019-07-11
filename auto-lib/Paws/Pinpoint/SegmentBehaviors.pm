@@ -31,14 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Segment behavior dimensions
+Specifies dimension settings for including or excluding endpoints from
+a segment based on how recently an endpoint was active.
 
 =head1 ATTRIBUTES
 
 
 =head2 Recency => L<Paws::Pinpoint::RecencyDimension>
 
-  The recency of use.
+  The dimension settings that are based on how recently an endpoint was
+active.
 
 
 

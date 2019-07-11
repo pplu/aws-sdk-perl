@@ -3,6 +3,7 @@ package Paws::MediaLive::OutputGroupSettings;
   has ArchiveGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::ArchiveGroupSettings', request_name => 'archiveGroupSettings', traits => ['NameInRequest']);
   has FrameCaptureGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::FrameCaptureGroupSettings', request_name => 'frameCaptureGroupSettings', traits => ['NameInRequest']);
   has HlsGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsGroupSettings', request_name => 'hlsGroupSettings', traits => ['NameInRequest']);
+  has MediaPackageGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::MediaPackageGroupSettings', request_name => 'mediaPackageGroupSettings', traits => ['NameInRequest']);
   has MsSmoothGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::MsSmoothGroupSettings', request_name => 'msSmoothGroupSettings', traits => ['NameInRequest']);
   has RtmpGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpGroupSettings', request_name => 'rtmpGroupSettings', traits => ['NameInRequest']);
   has UdpGroupSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpGroupSettings', request_name => 'udpGroupSettings', traits => ['NameInRequest']);
@@ -36,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Placeholder documentation for OutputGroupSettings
+Output Group Settings
 
 =head1 ATTRIBUTES
 
@@ -52,6 +53,11 @@ Placeholder documentation for OutputGroupSettings
 
 
 =head2 HlsGroupSettings => L<Paws::MediaLive::HlsGroupSettings>
+
+  
+
+
+=head2 MediaPackageGroupSettings => L<Paws::MediaLive::MediaPackageGroupSettings>
 
   
 

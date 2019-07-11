@@ -33,12 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      GroupNames => [ 'MyString', ... ],    # OPTIONAL
+      ],                           # OPTIONAL
+      GroupNames => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
     );
 
     # Results:
@@ -63,7 +67,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -88,7 +92,7 @@ C<spread> | C<partition>).
 
 =head2 GroupNames => ArrayRef[Str|Undef]
 
-One or more placement group names.
+The names of the placement groups.
 
 Default: Describes all your placement groups, or only those otherwise
 specified.

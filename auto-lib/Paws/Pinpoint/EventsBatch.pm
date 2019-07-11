@@ -1,7 +1,7 @@
 package Paws::Pinpoint::EventsBatch;
   use Moose;
-  has Endpoint => (is => 'ro', isa => 'Paws::Pinpoint::PublicEndpoint');
-  has Events => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEvent');
+  has Endpoint => (is => 'ro', isa => 'Paws::Pinpoint::PublicEndpoint', required => 1);
+  has Events => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEvent', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -32,19 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-A batch of PublicEndpoints and Events to process.
+Specifies a batch of endpoints and events to process.
 
 =head1 ATTRIBUTES
 
 
-=head2 Endpoint => L<Paws::Pinpoint::PublicEndpoint>
+=head2 B<REQUIRED> Endpoint => L<Paws::Pinpoint::PublicEndpoint>
 
-  The PublicEndpoint attached to the EndpointId from the request.
+  A set of properties and attributes that are associated with the
+endpoint.
 
 
-=head2 Events => L<Paws::Pinpoint::MapOfEvent>
+=head2 B<REQUIRED> Events => L<Paws::Pinpoint::MapOfEvent>
 
-  An object that contains a set of events associated with the endpoint.
+  A set of properties that are associated with the event.
 
 
 

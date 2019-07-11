@@ -31,18 +31,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Custom messages associated with events.
+Provides information about endpoints and the events that they're
+associated with.
 
 =head1 ATTRIBUTES
 
 
 =head2 Results => L<Paws::Pinpoint::MapOfItemResponse>
 
-  A map that contains a multipart response for each endpoint. Each item
-in this object uses the endpoint ID as the key, and the item response
-as the value. If no item response exists, the value can also be one of
-the following: 202 (if the request was processed successfully) or 400
-(if the payload was invalid, or required fields were missing).
+  A map that contains a multipart response for each endpoint. For each
+item in this object, the endpoint ID is the key and the item response
+is the value. If no item response exists, the value can also be one of
+the following: 202, the request was processed successfully; or 400, the
+payload wasn't valid or required fields were missing.
 
 
 

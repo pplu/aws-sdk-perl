@@ -16,6 +16,7 @@ package Paws::CodeDeploy::CreateDeploymentGroup;
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
   has OnPremisesTagSet => (is => 'ro', isa => 'Paws::CodeDeploy::OnPremisesTagSet', traits => ['NameInRequest'], request_name => 'onPremisesTagSet' );
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', traits => ['NameInRequest'], request_name => 'triggerConfigurations' );
 
   use MooseX::ClassAttribute;
@@ -169,6 +170,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],                           # OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyKey',      # OPTIONAL
+          Value => 'MyValue',    # OPTIONAL
+        },
+        ...
+      ],                         # OPTIONAL
       TriggerConfigurations => [
         {
           TriggerEvents => [
@@ -239,7 +247,7 @@ deployment group.
 
 For more information about the predefined deployment configurations in
 AWS CodeDeploy, see Working with Deployment Groups in AWS CodeDeploy
-(http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html)
+(https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html)
 in the AWS CodeDeploy User Guide.
 
 
@@ -314,11 +322,19 @@ behalf when interacting with AWS services.
 
 
 
+=head2 Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+
+The metadata that you apply to CodeDeploy deployment groups to help you
+organize and categorize them. Each tag consists of a key and an
+optional value, both of which you define.
+
+
+
 =head2 TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]
 
 Information about triggers to create when the deployment group is
 created. For examples, see Create a Trigger for an AWS CodeDeploy Event
-(http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
+(https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
 in the AWS CodeDeploy User Guide.
 
 

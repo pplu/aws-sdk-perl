@@ -61,11 +61,11 @@ When using this parameter to export a snapshot, be sure Amazon
 ElastiCache has the needed permissions to this S3 bucket. For more
 information, see Step 2: Grant ElastiCache Access to Your Amazon S3
 Bucket
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
 in the I<Amazon ElastiCache User Guide>.
 
 For more information, see Exporting a Snapshot
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html)
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html)
 in the I<Amazon ElastiCache User Guide>.
 
 

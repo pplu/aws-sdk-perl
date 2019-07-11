@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::UpdateConstraint;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Parameters => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Id             => 'MyId',
       AcceptLanguage => 'MyAcceptLanguage',           # OPTIONAL
       Description    => 'MyConstraintDescription',    # OPTIONAL
+      Parameters     => 'MyConstraintParameters',     # OPTIONAL
     );
 
     # Results:
@@ -80,6 +82,66 @@ The updated description of the constraint.
 =head2 B<REQUIRED> Id => Str
 
 The identifier of the constraint.
+
+
+
+=head2 Parameters => Str
+
+The constraint parameters, in JSON format. The syntax depends on the
+constraint type as follows:
+
+=over
+
+=item LAUNCH
+
+Specify the C<RoleArn> property as follows:
+
+C<{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}>
+
+You cannot have both a C<LAUNCH> and a C<STACKSET> constraint.
+
+You also cannot have more than one C<LAUNCH> constraint on a product
+and portfolio.
+
+=item NOTIFICATION
+
+Specify the C<NotificationArns> property as follows:
+
+C<{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}>
+
+=item RESOURCE_UPDATE
+
+Specify the C<TagUpdatesOnProvisionedProduct> property as follows:
+
+C<{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}>
+
+The C<TagUpdatesOnProvisionedProduct> property accepts a string value
+of C<ALLOWED> or C<NOT_ALLOWED>.
+
+=item STACKSET
+
+Specify the C<Parameters> property as follows:
+
+C<{"Version": "String", "Properties": {"AccountList": [ "String" ],
+"RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole":
+"String"}}>
+
+You cannot have both a C<LAUNCH> and a C<STACKSET> constraint.
+
+You also cannot have more than one C<STACKSET> constraint on a product
+and portfolio.
+
+Products with a C<STACKSET> constraint will launch an AWS
+CloudFormation stack set.
+
+=item TEMPLATE
+
+Specify the C<Rules> property. For more information, see Template
+Constraint Rules
+(http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
+
+=back
+
 
 
 

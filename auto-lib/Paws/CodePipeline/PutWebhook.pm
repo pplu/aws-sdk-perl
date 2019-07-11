@@ -1,6 +1,7 @@
 
 package Paws::CodePipeline::PutWebhook;
   use Moose;
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has Webhook => (is => 'ro', isa => 'Paws::CodePipeline::WebhookDefinition', traits => ['NameInRequest'], request_name => 'webhook' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -49,7 +50,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         TargetPipeline => 'MyPipelineName',    # min: 1, max: 100
 
       },
+      Tags => [
+        {
+          Key   => 'MyTagKey',                 # min: 1, max: 128
+          Value => 'MyTagValue',               # max: 256
 
+        },
+        ...
+      ],                                       # OPTIONAL
     );
 
     # Results:
@@ -61,6 +69,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline/PutWebhook>
 
 =head1 ATTRIBUTES
+
+
+=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+
+The tags for the webhook.
+
 
 
 =head2 B<REQUIRED> Webhook => L<Paws::CodePipeline::WebhookDefinition>

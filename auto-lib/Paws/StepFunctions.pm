@@ -269,7 +269,7 @@ AWS, your own servers, or any system that has access to AWS. You can
 access and use Step Functions using the console, the AWS SDKs, or an
 HTTP API. For more information about Step Functions, see the I< AWS
 Step Functions Developer Guide
-(http://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) >.
+(https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) >.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/step-functions/>
 
@@ -281,6 +281,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/step-functions/
 =over
 
 =item Name => Str
+
+=item [Tags => ArrayRef[L<Paws::StepFunctions::Tag>]]
 
 
 =back
@@ -297,6 +299,9 @@ actions. This function lets Step Functions know the existence of your
 activity and returns an identifier for use in a state machine and when
 polling from the activity.
 
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
+
 
 =head2 CreateStateMachine
 
@@ -307,6 +312,8 @@ polling from the activity.
 =item Name => Str
 
 =item RoleArn => Str
+
+=item [Tags => ArrayRef[L<Paws::StepFunctions::Tag>]]
 
 
 =back
@@ -320,6 +327,9 @@ states that can do work (C<Task> states), determine to which states to
 transition next (C<Choice> states), stop an execution with an error
 (C<Fail> states), and so on. State machines are specified using a
 JSON-based, structured language.
+
+This operation is eventually consistent. The results are best effort
+and may not reflect very recent updates and changes.
 
 
 =head2 DeleteActivity
@@ -465,7 +475,7 @@ the poll request).
 
 Polling with C<GetActivityTask> can cause latency in some
 implementations. See Avoid Latency When Polling for Activity Tasks
-(http://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html)
+(https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html)
 in the Step Functions Developer Guide.
 
 

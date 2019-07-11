@@ -137,7 +137,7 @@ C<ReturnPath> to be C<feedback@example.com>.
 
 For more information about sending authorization, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
 
@@ -147,13 +147,13 @@ The email address that is sending the email. This email address must be
 either individually verified with Amazon SES, or from a domain that has
 been verified with Amazon SES. For information about verifying
 identities, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
 
 If you are sending on behalf of another user and have been permitted to
 do so by a sending authorization policy, then you must also specify the
 C<SourceArn> parameter. For more information about sending
 authorization, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 Amazon SES does not support the SMTPUTF8 extension, as described in
 RFC6531 (https://tools.ietf.org/html/rfc6531). For this reason, the
@@ -187,7 +187,7 @@ C<Source> to be C<user@example.com>.
 
 For more information about sending authorization, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
 

@@ -61,8 +61,8 @@ need to be unique.
 
 =head2 Version => Str
 
-Version that is associated with this build. Version strings do not need
-to be unique.
+Version that is associated with a build or script. Version strings do
+not need to be unique.
 
 
 

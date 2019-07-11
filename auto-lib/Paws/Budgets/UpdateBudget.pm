@@ -70,10 +70,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           UseAmortized             => 1,    # OPTIONAL
           UseBlended               => 1,    # OPTIONAL
         },    # OPTIONAL
-        LastUpdatedTime => '1970-01-01T01:00:00',    # OPTIONAL
-        TimePeriod      => {
-          End   => '1970-01-01T01:00:00',            # OPTIONAL
-          Start => '1970-01-01T01:00:00',            # OPTIONAL
+        LastUpdatedTime     => '1970-01-01T01:00:00',    # OPTIONAL
+        PlannedBudgetLimits => {
+          'MyGenericString' => {
+            Amount => 'MyNumericValue',    # min: 1, max: 2147483647
+            Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
+
+          },    # key: max: 2147483647, value: OPTIONAL
+        },    # OPTIONAL
+        TimePeriod => {
+          End   => '1970-01-01T01:00:00',    # OPTIONAL
+          Start => '1970-01-01T01:00:00',    # OPTIONAL
         },    # OPTIONAL
       },
 

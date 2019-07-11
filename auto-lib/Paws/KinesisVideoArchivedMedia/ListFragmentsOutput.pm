@@ -18,8 +18,8 @@ Paws::KinesisVideoArchivedMedia::ListFragmentsOutput
 
 =head2 Fragments => ArrayRef[L<Paws::KinesisVideoArchivedMedia::Fragment>]
 
-A list of fragment numbers that correspond to the time stamp range
-provided.
+A list of archived Fragment objects from the stream that meet the
+selector criteria. Results are in no specific order, even across pages.
 
 
 =head2 NextToken => Str

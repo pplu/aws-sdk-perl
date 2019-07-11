@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AlarmIdentifier => {
         Name   => 'MyAlarmName',    # min: 1, max: 256
         Region => 'us-east-1'
-        , # values: us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, eu-central-1, eu-west-1, eu-west-2, eu-west-3, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, eu-north-1, sa-east-1min: 1, max: 64
+        , # values: us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, eu-central-1, eu-west-1, eu-west-2, eu-west-3, ap-east-1, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, eu-north-1, sa-east-1, cn-northwest-1, cn-north-1min: 1, max: 64
 
       },    # OPTIONAL
       ChildHealthChecks => [
@@ -134,7 +134,8 @@ After you disable a health check, Route 53 considers the status of the
 health check to always be healthy. If you configured DNS failover,
 Route 53 continues to route traffic to the corresponding resources. If
 you want to stop routing traffic to a resource, change the value of
-UpdateHealthCheckRequest$Inverted.
+Inverted
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted).
 
 Charges for a health check still apply when the health check is
 disabled. For more information, see Amazon Route 53 Pricing
@@ -408,13 +409,13 @@ applicable documentation:
 =item *
 
 Linux: Elastic IP Addresses (EIP)
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 in the I<Amazon EC2 User Guide for Linux Instances>
 
 =item *
 
 Windows: Elastic IP Addresses (EIP)
-(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html)
 in the I<Amazon EC2 User Guide for Windows Instances>
 
 =back
@@ -423,8 +424,8 @@ If a health check already has a value for C<IPAddress>, you can change
 the value. However, you can't update an existing health check to add or
 remove the value of C<IPAddress>.
 
-For more information, see
-UpdateHealthCheckRequest$FullyQualifiedDomainName.
+For more information, see FullyQualifiedDomainName
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
 
 Constraints: Route 53 can't check the health of endpoints for which the
 IP address is in local, private, non-routable, or multicast ranges. For
@@ -478,23 +479,27 @@ for C<ResettableElementName> include the following:
 
 =item *
 
-C<ChildHealthChecks>: Amazon Route 53 resets
-HealthCheckConfig$ChildHealthChecks to null.
+C<ChildHealthChecks>: Amazon Route 53 resets ChildHealthChecks
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ChildHealthChecks)
+to null.
 
 =item *
 
-C<FullyQualifiedDomainName>: Route 53 resets
-HealthCheckConfig$FullyQualifiedDomainName to null.
+C<FullyQualifiedDomainName>: Route 53 resets FullyQualifiedDomainName
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
+to null.
 
 =item *
 
-C<Regions>: Route 53 resets the HealthCheckConfig$Regions list to the
-default set of regions.
+C<Regions>: Route 53 resets the Regions
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions)
+list to the default set of regions.
 
 =item *
 
-C<ResourcePath>: Route 53 resets HealthCheckConfig$ResourcePath to
-null.
+C<ResourcePath>: Route 53 resets ResourcePath
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath)
+to null.
 
 =back
 

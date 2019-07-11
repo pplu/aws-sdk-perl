@@ -159,7 +159,17 @@ Paws::Transfer - Perl Interface to AWS AWS Transfer for SFTP
 
 =head1 DESCRIPTION
 
-
+AWS Transfer for SFTP is a fully managed service that enables the
+transfer of files directly into and out of Amazon S3 using the Secure
+File Transfer Protocol (SFTP)E<mdash>also known as Secure Shell (SSH)
+File Transfer Protocol. AWS helps you seamlessly migrate your file
+transfer workflows to AWS Transfer for SFTPE<mdash>by integrating with
+existing authentication systems, and providing DNS routing with Amazon
+Route 53E<mdash>so nothing changes for your customers and partners, or
+their applications. With your data in S3, you can use it with AWS
+services for processing, analytics, machine learning, and archiving.
+Getting started with AWS Transfer for SFTP (AWS SFTP) is easy; there is
+no infrastructure to buy and setup.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/transfer-2018-11-05>
 
@@ -169,6 +179,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head2 CreateServer
 
 =over
+
+=item [EndpointDetails => L<Paws::Transfer::EndpointDetails>]
+
+=item [EndpointType => Str]
+
+=item [HostKey => Str]
 
 =item [IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>]
 
@@ -548,6 +564,12 @@ No response is returned from this call.
 =over
 
 =item ServerId => Str
+
+=item [EndpointDetails => L<Paws::Transfer::EndpointDetails>]
+
+=item [EndpointType => Str]
+
+=item [HostKey => Str]
 
 =item [IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>]
 

@@ -32,38 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::E
 
 =head1 DESCRIPTION
 
-The subnet and the security group that the target Amazon EFS file
-system uses. The subnet must have at least one mount target for that
-file system. The security group that you provide needs to be able to
-communicate with the security group on the mount target in the subnet
-specified.
-
-The exact relationship between security group M (of the mount target)
-and security group S (which you provide for DataSync to use at this
-stage) is as follows:
-
-=over
-
-=item *
-
-Security group M (which you associate with the mount target) must allow
-inbound access for the Transmission Control Protocol (TCP) on the NFS
-port (2049) from security group S. You can enable inbound connections
-either by IP address (CIDR range) or security group.
-
-=item *
-
-Security group S (provided to DataSync to access EFS) should have a
-rule that enables outbound connections to the NFS port on one of the
-file systemE<rsquo>s mount targets. You can enable outbound connections
-either by IP address (CIDR range) or security group. For information
-about security groups and mount targets, see Security Groups for Amazon
-EC2 Instances and Mount Targets
-(https://docs.aws.amazon.com/efs/latest/ug/security-considerations.html#network-access)
-in the I<Amazon EFS User Guide.>
-
-=back
-
+The subnet and the security group that DataSync uses to access target
+EFS file system. The subnet must have at least one mount target for
+that file system. The security group that you provide needs to be able
+to communicate with the security group on the mount target in the
+subnet specified.
 
 =head1 ATTRIBUTES
 
@@ -76,7 +49,8 @@ configured for the Amazon EC2 resource.
 
 =head2 B<REQUIRED> SubnetArn => Str
 
-  The ARN of the subnet that the Amazon EC2 resource belongs in.
+  The ARN of the subnet and the security group that DataSync uses to
+access the target EFS file system.
 
 
 

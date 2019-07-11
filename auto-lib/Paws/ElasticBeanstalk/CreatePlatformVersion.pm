@@ -6,6 +6,7 @@ package Paws::ElasticBeanstalk::CreatePlatformVersion;
   has PlatformDefinitionBundle => (is => 'ro', isa => 'Paws::ElasticBeanstalk::S3Location', required => 1);
   has PlatformName => (is => 'ro', isa => 'Str', required => 1);
   has PlatformVersion => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -45,6 +46,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           OptionName => 'MyConfigurationOptionName',    # OPTIONAL
           ResourceName => 'MyResourceName',    # min: 1, max: 256; OPTIONAL
           Value => 'MyConfigurationOptionValue',    # OPTIONAL
+        },
+        ...
+      ],                                            # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',                      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',                    # min: 1, max: 256; OPTIONAL
         },
         ...
       ],                                            # OPTIONAL
@@ -89,6 +97,16 @@ The name of your custom platform.
 =head2 B<REQUIRED> PlatformVersion => Str
 
 The number, such as 1.0.2, for the new platform version.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
+
+Specifies the tags applied to the new platform version.
+
+Elastic Beanstalk applies these tags only to the platform version.
+Environments that you create using the platform version don't inherit
+the tags.
 
 
 

@@ -60,13 +60,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AssociationIds => ArrayRef[Str|Undef]
 
-One or more IAM instance profile associations.
+The IAM instance profile associations.
 
 
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 

@@ -6,6 +6,7 @@ package Paws::Athena::CreateNamedQuery;
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has QueryString => (is => 'ro', isa => 'Str', required => 1);
+  has WorkGroup => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -37,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       QueryString        => 'MyQueryString',
       ClientRequestToken => 'MyIdempotencyToken',     # OPTIONAL
       Description        => 'MyDescriptionString',    # OPTIONAL
+      WorkGroup          => 'MyWorkGroupName',        # OPTIONAL
     );
 
     # Results:
@@ -73,19 +75,25 @@ The database to which the query belongs.
 
 =head2 Description => Str
 
-A brief explanation of the query.
+The query description.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The plain language name for the query.
+The query name.
 
 
 
 =head2 B<REQUIRED> QueryString => Str
 
-The text of the query itself. In other words, all query statements.
+The contents of the query with all query statements.
+
+
+
+=head2 WorkGroup => Str
+
+The name of the workgroup in which the named query is being created.
 
 
 

@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-ID of the file system for which to create the mount target.
+The ID of the file system for which to create the mount target.
 
 
 
@@ -76,7 +76,7 @@ must be for the same VPC as subnet specified.
 
 =head2 B<REQUIRED> SubnetId => Str
 
-ID of the subnet to add the mount target in.
+The ID of the subnet to add the mount target in.
 
 
 

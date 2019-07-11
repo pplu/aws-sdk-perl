@@ -55,7 +55,7 @@ settings in a single output.
 
 =head2 ContainerSettings => L<Paws::MediaConvert::ContainerSettings>
 
-  
+  Container specific settings.
 
 
 =head2 VideoDescription => L<Paws::MediaConvert::VideoDescription>

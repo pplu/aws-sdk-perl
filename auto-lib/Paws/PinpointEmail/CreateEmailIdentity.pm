@@ -2,6 +2,7 @@
 package Paws::PinpointEmail::CreateEmailIdentity;
   use Moose;
   has EmailIdentity => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -30,7 +31,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $email = Paws->service('PinpointEmail');
     my $CreateEmailIdentityResponse = $email->CreateEmailIdentity(
       EmailIdentity => 'MyIdentity',
+      Tags          => [
+        {
+          Key   => 'MyTagKey',
+          Value => 'MyTagValue',
 
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -50,6 +58,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 =head2 B<REQUIRED> EmailIdentity => Str
 
 The email address or domain that you want to verify.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+
+An array of objects that define the tags (keys and values) that you
+want to associate with the email identity.
 
 
 

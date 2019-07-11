@@ -16,7 +16,7 @@ Paws::FSX::CreateFileSystemResponse
 
 =head2 FileSystem => L<Paws::FSX::FileSystem>
 
-A description of the file system.
+The configuration of the file system that was created.
 
 
 =head2 _request_id => Str

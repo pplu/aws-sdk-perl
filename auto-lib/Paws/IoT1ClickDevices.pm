@@ -54,9 +54,24 @@ package Paws::IoT1ClickDevices;
     my $call_object = $self->new_with_coercions('Paws::IoT1ClickDevices::ListDevices', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickDevices::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickDevices::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UnclaimDevice {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT1ClickDevices::UnclaimDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickDevices::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDeviceState {
@@ -113,7 +128,7 @@ package Paws::IoT1ClickDevices;
   }
 
 
-  sub operations { qw/ClaimDevicesByClaimCode DescribeDevice FinalizeDeviceClaim GetDeviceMethods InitiateDeviceClaim InvokeDeviceMethod ListDeviceEvents ListDevices UnclaimDevice UpdateDeviceState / }
+  sub operations { qw/ClaimDevicesByClaimCode DescribeDevice FinalizeDeviceClaim GetDeviceMethods InitiateDeviceClaim InvokeDeviceMethod ListDeviceEvents ListDevices ListTagsForResource TagResource UnclaimDevice UntagResource UpdateDeviceState / }
 
 1;
 
@@ -141,7 +156,9 @@ Paws::IoT1ClickDevices - Perl Interface to AWS AWS IoT 1-Click Devices Service
 
 =head1 DESCRIPTION
 
-Stub description
+Describes all of the AWS IoT 1-Click device-related API operations for
+the service. Also provides sample requests, responses, and errors for
+the supported web services protocols.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devices.iot1click-2018-05-14>
 
@@ -187,6 +204,8 @@ the details of the device.
 =over
 
 =item DeviceId => Str
+
+=item [Tags => L<Paws::IoT1ClickDevices::__mapOf__string>]
 
 
 =back
@@ -306,6 +325,43 @@ Returns: a L<Paws::IoT1ClickDevices::ListDevicesResponse> instance
 Lists the 1-Click compatible devices associated with your AWS account.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickDevices::ListTagsForResource>
+
+Returns: a L<Paws::IoT1ClickDevices::ListTagsForResourceResponse> instance
+
+Lists the tags associated with the specified resource ARN.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::IoT1ClickDevices::__mapOf__string>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickDevices::TagResource>
+
+Returns: nothing
+
+Adds or updates the tags associated with the resource ARN. See AWS IoT
+1-Click Service Limits
+(https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits)
+for the maximum number of tags allowed per resource.
+
+
 =head2 UnclaimDevice
 
 =over
@@ -320,6 +376,25 @@ Each argument is described in detail in: L<Paws::IoT1ClickDevices::UnclaimDevice
 Returns: a L<Paws::IoT1ClickDevices::UnclaimDeviceResponse> instance
 
 Disassociates a device from your AWS account using its device ID.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickDevices::UntagResource>
+
+Returns: nothing
+
+Using tag keys, deletes the tags (key/value pairs) associated with the
+specified resource ARN.
 
 
 =head2 UpdateDeviceState

@@ -35,6 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AvgResizeRateInMegaBytesPerSecond =
       $ResizeProgressMessage->AvgResizeRateInMegaBytesPerSecond;
+    my $DataTransferProgressPercent =
+      $ResizeProgressMessage->DataTransferProgressPercent;
     my $ElapsedTimeInSeconds = $ResizeProgressMessage->ElapsedTimeInSeconds;
     my $EstimatedTimeToCompletionInSeconds =
       $ResizeProgressMessage->EstimatedTimeToCompletionInSeconds;

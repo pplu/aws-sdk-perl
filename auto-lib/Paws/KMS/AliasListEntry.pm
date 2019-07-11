@@ -45,7 +45,7 @@ Contains information about an alias.
 
 =head2 AliasName => Str
 
-  String that contains the alias.
+  String that contains the alias. This value begins with C<alias/>.
 
 
 =head2 TargetKeyId => Str

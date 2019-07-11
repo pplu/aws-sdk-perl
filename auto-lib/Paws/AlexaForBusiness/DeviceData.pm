@@ -7,6 +7,8 @@ package Paws::AlexaForBusiness::DeviceData;
   has DeviceStatusInfo => (is => 'ro', isa => 'Paws::AlexaForBusiness::DeviceStatusInfo');
   has DeviceType => (is => 'ro', isa => 'Str');
   has MacAddress => (is => 'ro', isa => 'Str');
+  has NetworkProfileArn => (is => 'ro', isa => 'Str');
+  has NetworkProfileName => (is => 'ro', isa => 'Str');
   has RoomArn => (is => 'ro', isa => 'Str');
   has RoomName => (is => 'ro', isa => 'Str');
   has SoftwareVersion => (is => 'ro', isa => 'Str');
@@ -78,6 +80,16 @@ Device attributes.
 =head2 MacAddress => Str
 
   The MAC address of a device.
+
+
+=head2 NetworkProfileArn => Str
+
+  The ARN of the network profile associated with a device.
+
+
+=head2 NetworkProfileName => Str
+
+  The name of the network profile associated with a device.
 
 
 =head2 RoomArn => Str

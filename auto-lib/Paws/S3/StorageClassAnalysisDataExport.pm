@@ -45,7 +45,7 @@ This class has no description
 =head2 B<REQUIRED> OutputSchemaVersion => Str
 
   The version of the output schema to use when exporting data. Must be
-V_1.
+C<V_1>.
 
 
 

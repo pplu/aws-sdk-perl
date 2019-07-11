@@ -42,7 +42,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> OrganizationId => Str
 
-The identifier associated with the organization for which the resource
+The identifier associated with the organization from which the resource
 is deleted.
 
 

@@ -65,7 +65,7 @@ This parameter maps to C<Driver> in the Create a volume
 (https://docs.docker.com/engine/api/v1.35/#operation/VolumeCreate)
 section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<xxdriver> option
-to C<docker volume create>
+to docker volume create
 (https://docs.docker.com/engine/reference/commandline/volume_create/).
 
 
@@ -76,7 +76,7 @@ maps to C<DriverOpts> in the Create a volume
 (https://docs.docker.com/engine/api/v1.35/#operation/VolumeCreate)
 section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<xxopt> option to
-C<docker volume create>
+docker volume create
 (https://docs.docker.com/engine/reference/commandline/volume_create/).
 
 
@@ -87,7 +87,7 @@ C<Labels> in the Create a volume
 (https://docs.docker.com/engine/api/v1.35/#operation/VolumeCreate)
 section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<xxlabel> option
-to C<docker volume create>
+to docker volume create
 (https://docs.docker.com/engine/reference/commandline/volume_create/).
 
 

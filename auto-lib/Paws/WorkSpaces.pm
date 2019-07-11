@@ -25,6 +25,11 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::AuthorizeIpRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CopyWorkspaceImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::CopyWorkspaceImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateIpGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::CreateIpGroup', @_);
@@ -362,7 +367,7 @@ package Paws::WorkSpaces;
   }
 
 
-  sub operations { qw/AssociateIpGroups AuthorizeIpRules CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DeleteWorkspaceImage DescribeAccount DescribeAccountModifications DescribeClientProperties DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaceImages DescribeWorkspaces DescribeWorkspacesConnectionStatus DisassociateIpGroups ImportWorkspaceImage ListAvailableManagementCidrRanges ModifyAccount ModifyClientProperties ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
+  sub operations { qw/AssociateIpGroups AuthorizeIpRules CopyWorkspaceImage CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DeleteWorkspaceImage DescribeAccount DescribeAccountModifications DescribeClientProperties DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaceImages DescribeWorkspaces DescribeWorkspacesConnectionStatus DisassociateIpGroups ImportWorkspaceImage ListAvailableManagementCidrRanges ModifyAccount ModifyClientProperties ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
 
 1;
 
@@ -440,6 +445,31 @@ This action gives users permission to access their WorkSpaces from the
 CIDR address ranges specified in the rules.
 
 
+=head2 CopyWorkspaceImage
+
+=over
+
+=item Name => Str
+
+=item SourceImageId => Str
+
+=item SourceRegion => Str
+
+=item [Description => Str]
+
+=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::CopyWorkspaceImage>
+
+Returns: a L<Paws::WorkSpaces::CopyWorkspaceImageResult> instance
+
+Copies the specified image from the specified Region to the current
+Region.
+
+
 =head2 CreateIpGroup
 
 =over
@@ -447,6 +477,8 @@ CIDR address ranges specified in the rules.
 =item GroupName => Str
 
 =item [GroupDesc => Str]
+
+=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
 
 =item [UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]]
 
@@ -488,7 +520,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::CreateTags>
 
 Returns: a L<Paws::WorkSpaces::CreateTagsResult> instance
 
-Creates the specified tags for the specified WorkSpace.
+Creates the specified tags for the specified WorkSpaces resource.
 
 
 =head2 CreateWorkspaces
@@ -544,7 +576,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DeleteTags>
 
 Returns: a L<Paws::WorkSpaces::DeleteTagsResult> instance
 
-Deletes the specified tags from the specified WorkSpace.
+Deletes the specified tags from the specified WorkSpaces resource.
 
 
 =head2 DeleteWorkspaceImage
@@ -561,7 +593,8 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DeleteWorkspaceImag
 Returns: a L<Paws::WorkSpaces::DeleteWorkspaceImageResult> instance
 
 Deletes the specified image from your account. To delete an image, you
-must first delete any bundles that are associated with the image.
+must first delete any bundles that are associated with the image and
+un-share the image if it is shared with other accounts.
 
 
 =head2 DescribeAccount
@@ -646,7 +679,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeTags>
 
 Returns: a L<Paws::WorkSpaces::DescribeTagsResult> instance
 
-Describes the specified tags for the specified WorkSpace.
+Describes the specified tags for the specified WorkSpaces resource.
 
 
 =head2 DescribeWorkspaceBundles
@@ -791,6 +824,8 @@ directory.
 
 =item IngestionProcess => Str
 
+=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
+
 
 =back
 
@@ -865,7 +900,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::ModifyClientPropert
 
 Returns: a L<Paws::WorkSpaces::ModifyClientPropertiesResult> instance
 
-Modifies the properties of the specified Amazon WorkSpaces client.
+Modifies the properties of the specified Amazon WorkSpaces clients.
 
 
 =head2 ModifyWorkspaceProperties
@@ -905,9 +940,9 @@ Sets the state of the specified WorkSpace.
 
 To maintain a WorkSpace without being interrupted, set the WorkSpace
 state to C<ADMIN_MAINTENANCE>. WorkSpaces in this state do not respond
-to requests to reboot, stop, start, or rebuild. An AutoStop WorkSpace
-in this state is not stopped. Users can log into a WorkSpace in the
-C<ADMIN_MAINTENANCE> state.
+to requests to reboot, stop, start, rebuild, or restore. An AutoStop
+WorkSpace in this state is not stopped. Users cannot log into a
+WorkSpace in the C<ADMIN_MAINTENANCE> state.
 
 
 =head2 RebootWorkspaces
@@ -953,7 +988,7 @@ C<ERROR>, or C<UNHEALTHY>.
 Rebuilding a WorkSpace is a potentially destructive action that can
 result in the loss of data. For more information, see Rebuild a
 WorkSpace
-(http://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html).
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html).
 
 This operation is asynchronous and returns before the WorkSpaces have
 been completely rebuilt.

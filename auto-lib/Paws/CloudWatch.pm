@@ -19,6 +19,11 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DeleteAlarms', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAnomalyDetector {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DeleteAnomalyDetector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDashboards {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DeleteDashboards', @_);
@@ -37,6 +42,11 @@ package Paws::CloudWatch;
   sub DescribeAlarmsForMetric {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::DescribeAlarmsForMetric', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAnomalyDetectors {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::DescribeAnomalyDetectors', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisableAlarmActions {
@@ -79,6 +89,16 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::ListMetrics', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAnomalyDetector {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::PutAnomalyDetector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutDashboard {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::PutDashboard', @_);
@@ -97,6 +117,16 @@ package Paws::CloudWatch;
   sub SetAlarmState {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::SetAlarmState', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatch::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -157,14 +187,17 @@ package Paws::CloudWatch;
       while ($next_result->NextToken) {
         $next_result = $self->GetMetricData(@_, NextToken => $next_result->NextToken);
         push @{ $result->MetricDataResults }, @{ $next_result->MetricDataResults };
+        push @{ $result->Messages }, @{ $next_result->Messages };
       }
       return $result;
     } else {
       while ($result->NextToken) {
         $callback->($_ => 'MetricDataResults') foreach (@{ $result->MetricDataResults });
+        $callback->($_ => 'Messages') foreach (@{ $result->Messages });
         $result = $self->GetMetricData(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'MetricDataResults') foreach (@{ $result->MetricDataResults });
+      $callback->($_ => 'Messages') foreach (@{ $result->Messages });
     }
 
     return undef
@@ -217,7 +250,7 @@ package Paws::CloudWatch;
   }
 
 
-  sub operations { qw/DeleteAlarms DeleteDashboards DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DisableAlarmActions EnableAlarmActions GetDashboard GetMetricData GetMetricStatistics GetMetricWidgetImage ListDashboards ListMetrics PutDashboard PutMetricAlarm PutMetricData SetAlarmState / }
+  sub operations { qw/DeleteAlarms DeleteAnomalyDetector DeleteDashboards DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DescribeAnomalyDetectors DisableAlarmActions EnableAlarmActions GetDashboard GetMetricData GetMetricStatistics GetMetricWidgetImage ListDashboards ListMetrics ListTagsForResource PutAnomalyDetector PutDashboard PutMetricAlarm PutMetricData SetAlarmState TagResource UntagResource / }
 
 1;
 
@@ -282,6 +315,28 @@ Returns: nothing
 
 Deletes the specified alarms. In the event of an error, no alarms are
 deleted.
+
+
+=head2 DeleteAnomalyDetector
+
+=over
+
+=item MetricName => Str
+
+=item Namespace => Str
+
+=item Stat => Str
+
+=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::DeleteAnomalyDetector>
+
+Returns: a L<Paws::CloudWatch::DeleteAnomalyDetectorOutput> instance
+
+Deletes the specified anomaly detection model from your account.
 
 
 =head2 DeleteDashboards
@@ -390,6 +445,33 @@ Retrieves the alarms for the specified metric. To filter the results,
 specify a statistic, period, or unit.
 
 
+=head2 DescribeAnomalyDetectors
+
+=over
+
+=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+
+=item [MaxResults => Int]
+
+=item [MetricName => Str]
+
+=item [Namespace => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::DescribeAnomalyDetectors>
+
+Returns: a L<Paws::CloudWatch::DescribeAnomalyDetectorsOutput> instance
+
+Lists the anomaly detection models that you have created in your
+account. You can list all models in your account or filter the results
+to only the models that are related to a certain namespace, metric
+name, or metric dimension.
+
+
 =head2 DisableAlarmActions
 
 =over
@@ -475,7 +557,7 @@ represent new insights into your data. For example, using Lambda
 metrics, you could divide the Errors metric by the Invocations metric
 to get an error rate time series. For more information about metric
 math expressions, see Metric Math Syntax and Functions
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
 in the I<Amazon CloudWatch User Guide>.
 
 Calls to the C<GetMetricData> API have a different pricing structure
@@ -626,7 +708,7 @@ CloudWatch started retaining 5-minute and 1-hour metric data as of July
 
 For information about metrics and dimensions supported by AWS services,
 see the Amazon CloudWatch Metrics and Dimensions Reference
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html)
 in the I<Amazon CloudWatch User Guide>.
 
 
@@ -729,6 +811,52 @@ metric appears. Statistics about the metric, however, are available
 sooner using GetMetricData or GetMetricStatistics.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::ListTagsForResource>
+
+Returns: a L<Paws::CloudWatch::ListTagsForResourceOutput> instance
+
+Displays the tags associated with a CloudWatch resource. Alarms support
+tagging.
+
+
+=head2 PutAnomalyDetector
+
+=over
+
+=item MetricName => Str
+
+=item Namespace => Str
+
+=item Stat => Str
+
+=item [Configuration => L<Paws::CloudWatch::AnomalyDetectorConfiguration>]
+
+=item [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::PutAnomalyDetector>
+
+Returns: a L<Paws::CloudWatch::PutAnomalyDetectorOutput> instance
+
+Creates an anomaly detection model for a CloudWatch metric. You can use
+the model to display a band of expected normal values when the metric
+is graphed.
+
+For more information, see CloudWatch Anomaly Detection
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html).
+
+
 =head2 PutDashboard
 
 =over
@@ -748,8 +876,7 @@ Creates a dashboard if it does not already exist, or updates an
 existing dashboard. If you update a dashboard, the entire contents are
 replaced with what you specify here.
 
-There is no limit to the number of dashboards in your account. All
-dashboards in your account are global, not region-specific.
+All dashboards in your account are global, not region-specific.
 
 A simple way to create a dashboard using C<PutDashboard> is to copy an
 existing dashboard. To copy an existing dashboard using the console,
@@ -776,8 +903,6 @@ create the dashboard.
 =item ComparisonOperator => Str
 
 =item EvaluationPeriods => Int
-
-=item Threshold => Num
 
 =item [ActionsEnabled => Bool]
 
@@ -807,6 +932,12 @@ create the dashboard.
 
 =item [Statistic => Str]
 
+=item [Tags => ArrayRef[L<Paws::CloudWatch::Tag>]]
+
+=item [Threshold => Num]
+
+=item [ThresholdMetricId => Str]
+
 =item [TreatMissingData => Str]
 
 =item [Unit => Str]
@@ -818,8 +949,11 @@ Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 
 Returns: nothing
 
-Creates or updates an alarm and associates it with the specified metric
-or metric math expression.
+Creates or updates an alarm and associates it with the specified
+metric, metric math expression, or anomaly detection model.
+
+Alarms based on anomaly detection models cannot have Auto Scaling
+actions.
 
 When this operation creates an alarm, the alarm state is immediately
 set to C<INSUFFICIENT_DATA>. The alarm is then evaluated and its state
@@ -853,8 +987,7 @@ C<ec2:TerminateInstances> for alarms with terminate actions
 
 =item *
 
-C<ec2:DescribeInstanceRecoveryAttribute> and C<ec2:RecoverInstances>
-for alarms with recover actions
+No specific permissions are needed for alarms with recover actions
 
 =back
 
@@ -877,7 +1010,7 @@ CLI, or by using the PutMetricAlarm API, CloudWatch creates the
 necessary service-linked role for you. The service-linked role is
 called C<AWSServiceRoleForCloudWatchEvents>. For more information, see
 AWS service-linked role
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
 
 
 =head2 PutMetricData
@@ -920,9 +1053,10 @@ or 2e-360 to 2e360 (Base 2). In addition, special values (for example,
 NaN, +Infinity, -Infinity) are not supported.
 
 You can use up to 10 dimensions per metric to further clarify what data
-the metric collects. For more information about specifying dimensions,
-see Publishing Metrics
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
+the metric collects. Each dimension consists of a Name and Value pair.
+For more information about specifying dimensions, see Publishing
+Metrics
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
 in the I<Amazon CloudWatch User Guide>.
 
 Data points with time stamps from 24 hours ago or longer can take at
@@ -980,6 +1114,57 @@ the alarm's B<History> tab in the Amazon CloudWatch console or through
 DescribeAlarmHistory.
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::CloudWatch::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::TagResource>
+
+Returns: a L<Paws::CloudWatch::TagResourceOutput> instance
+
+Assigns one or more tags (key-value pairs) to the specified CloudWatch
+resource. Tags can help you organize and categorize your resources. You
+can also use them to scope user permissions, by granting a user
+permission to access or change only resources with certain tag values.
+In CloudWatch, alarms can be tagged.
+
+Tags don't have any semantic meaning to AWS and are interpreted
+strictly as strings of characters.
+
+You can use the C<TagResource> action with a resource that already has
+tags. If you specify a new tag key for the resource, this tag is
+appended to the list of tags associated with the resource. If you
+specify a tag key that is already associated with the resource, the new
+tag value that you specify replaces the previous value for that tag.
+
+You can associate as many as 50 tags with a resource.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatch::UntagResource>
+
+Returns: a L<Paws::CloudWatch::UntagResourceOutput> instance
+
+Removes one or more tags from the specified resource.
+
+
 
 
 =head1 PAGINATORS
@@ -1019,7 +1204,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 
  - MetricDataResults, passing the object as the first parameter, and the string 'MetricDataResults' as the second parameter 
 
-If not, it will return a a L<Paws::CloudWatch::GetMetricDataOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+ - Messages, passing the object as the first parameter, and the string 'Messages' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatch::GetMetricDataOutput> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllDashboards(sub { },[DashboardNamePrefix => Str, NextToken => Str])

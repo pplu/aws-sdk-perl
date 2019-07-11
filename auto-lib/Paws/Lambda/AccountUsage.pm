@@ -44,8 +44,8 @@ The number of functions and amount of storage in use.
 
 =head2 TotalCodeSize => Int
 
-  The amount of storage space, in bytes, in use by deployment packages
-and layer archives.
+  The amount of storage space, in bytes, that's being used by deployment
+packages and layer archives.
 
 
 

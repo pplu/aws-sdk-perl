@@ -20,6 +20,7 @@ package Paws::RDS::OrderableDBInstanceOption;
   has SupportsIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has SupportsIops => (is => 'ro', isa => 'Bool');
   has SupportsPerformanceInsights => (is => 'ro', isa => 'Bool');
+  has SupportsStorageAutoscaling => (is => 'ro', isa => 'Bool');
   has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
   has Vpc => (is => 'ro', isa => 'Bool');
 1;
@@ -55,7 +56,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Ordera
 Contains a list of available options for a DB instance.
 
 This data type is used as a response element in the
-DescribeOrderableDBInstanceOptions action.
+C<DescribeOrderableDBInstanceOptions> action.
 
 =head1 ATTRIBUTES
 
@@ -160,6 +161,12 @@ intervals from 1 to 60 seconds.
 =head2 SupportsPerformanceInsights => Bool
 
   True if a DB instance supports Performance Insights, otherwise false.
+
+
+=head2 SupportsStorageAutoscaling => Bool
+
+  Whether or not Amazon RDS can automatically scale storage for DB
+instances that use the specified instance class.
 
 
 =head2 SupportsStorageEncryption => Bool

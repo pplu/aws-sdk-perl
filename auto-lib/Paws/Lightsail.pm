@@ -160,6 +160,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteKeyPair', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteKnownHostKeys {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteKnownHostKeys', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteLoadBalancer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteLoadBalancer', @_);
@@ -978,7 +983,7 @@ package Paws::Lightsail;
   }
 
 
-  sub operations { qw/AllocateStaticIp AttachDisk AttachInstancesToLoadBalancer AttachLoadBalancerTlsCertificate AttachStaticIp CloseInstancePublicPorts CopySnapshot CreateCloudFormationStack CreateDisk CreateDiskFromSnapshot CreateDiskSnapshot CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair CreateLoadBalancer CreateLoadBalancerTlsCertificate CreateRelationalDatabase CreateRelationalDatabaseFromSnapshot CreateRelationalDatabaseSnapshot DeleteDisk DeleteDiskSnapshot DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DeleteLoadBalancer DeleteLoadBalancerTlsCertificate DeleteRelationalDatabase DeleteRelationalDatabaseSnapshot DetachDisk DetachInstancesFromLoadBalancer DetachStaticIp DownloadDefaultKeyPair ExportSnapshot GetActiveNames GetBlueprints GetBundles GetCloudFormationStackRecords GetDisk GetDisks GetDiskSnapshot GetDiskSnapshots GetDomain GetDomains GetExportSnapshotRecords GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetLoadBalancer GetLoadBalancerMetricData GetLoadBalancers GetLoadBalancerTlsCertificates GetOperation GetOperations GetOperationsForResource GetRegions GetRelationalDatabase GetRelationalDatabaseBlueprints GetRelationalDatabaseBundles GetRelationalDatabaseEvents GetRelationalDatabaseLogEvents GetRelationalDatabaseLogStreams GetRelationalDatabaseMasterUserPassword GetRelationalDatabaseMetricData GetRelationalDatabaseParameters GetRelationalDatabases GetRelationalDatabaseSnapshot GetRelationalDatabaseSnapshots GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance RebootRelationalDatabase ReleaseStaticIp StartInstance StartRelationalDatabase StopInstance StopRelationalDatabase TagResource UnpeerVpc UntagResource UpdateDomainEntry UpdateLoadBalancerAttribute UpdateRelationalDatabase UpdateRelationalDatabaseParameters / }
+  sub operations { qw/AllocateStaticIp AttachDisk AttachInstancesToLoadBalancer AttachLoadBalancerTlsCertificate AttachStaticIp CloseInstancePublicPorts CopySnapshot CreateCloudFormationStack CreateDisk CreateDiskFromSnapshot CreateDiskSnapshot CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair CreateLoadBalancer CreateLoadBalancerTlsCertificate CreateRelationalDatabase CreateRelationalDatabaseFromSnapshot CreateRelationalDatabaseSnapshot DeleteDisk DeleteDiskSnapshot DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DeleteKnownHostKeys DeleteLoadBalancer DeleteLoadBalancerTlsCertificate DeleteRelationalDatabase DeleteRelationalDatabaseSnapshot DetachDisk DetachInstancesFromLoadBalancer DetachStaticIp DownloadDefaultKeyPair ExportSnapshot GetActiveNames GetBlueprints GetBundles GetCloudFormationStackRecords GetDisk GetDisks GetDiskSnapshot GetDiskSnapshots GetDomain GetDomains GetExportSnapshotRecords GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetLoadBalancer GetLoadBalancerMetricData GetLoadBalancers GetLoadBalancerTlsCertificates GetOperation GetOperations GetOperationsForResource GetRegions GetRelationalDatabase GetRelationalDatabaseBlueprints GetRelationalDatabaseBundles GetRelationalDatabaseEvents GetRelationalDatabaseLogEvents GetRelationalDatabaseLogStreams GetRelationalDatabaseMasterUserPassword GetRelationalDatabaseMetricData GetRelationalDatabaseParameters GetRelationalDatabases GetRelationalDatabaseSnapshot GetRelationalDatabaseSnapshots GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance RebootRelationalDatabase ReleaseStaticIp StartInstance StartRelationalDatabase StopInstance StopRelationalDatabase TagResource UnpeerVpc UntagResource UpdateDomainEntry UpdateLoadBalancerAttribute UpdateRelationalDatabase UpdateRelationalDatabaseParameters / }
 
 1;
 
@@ -1009,10 +1014,10 @@ Paws::Lightsail - Perl Interface to AWS Amazon Lightsail
 Amazon Lightsail is the easiest way to get started with AWS for
 developers who just need virtual private servers. Lightsail includes
 everything you need to launch your project quickly - a virtual machine,
-SSD-based storage, data transfer, DNS management, and a static IP - for
-a low, predictable price. You manage those Lightsail servers through
-the Lightsail console or by using the API or command-line interface
-(CLI).
+a managed database, SSD-based storage, data transfer, DNS management,
+and a static IP - for a low, predictable price. You manage those
+Lightsail servers through the Lightsail console or by using the API or
+command-line interface (CLI).
 
 For more information about Lightsail concepts and tasks, see the
 Lightsail Dev Guide (https://lightsail.aws.amazon.com/ls/docs/all).
@@ -1366,7 +1371,8 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateDomainEntry>
 Returns: a L<Paws::Lightsail::CreateDomainEntryResult> instance
 
 Creates one of the following entry records associated with the domain:
-A record, CNAME record, TXT record, or MX record.
+Address (A), canonical name (CNAME), mail exchanger (MX), name server
+(NS), start of authority (SOA), service locator (SRV), or text (TXT).
 
 The C<create domain entry> operation supports tag-based access control
 via resource tags applied to the resource identified by domainName. For
@@ -1844,6 +1850,32 @@ The C<delete key pair> operation supports tag-based access control via
 resource tags applied to the resource identified by keyPairName. For
 more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+
+
+=head2 DeleteKnownHostKeys
+
+=over
+
+=item InstanceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteKnownHostKeys>
+
+Returns: a L<Paws::Lightsail::DeleteKnownHostKeysResult> instance
+
+Deletes the known host key or certificate used by the Amazon Lightsail
+browser-based SSH or RDP clients to authenticate an instance. This
+operation enables the Lightsail browser-based SSH or RDP clients to
+connect to the instance after a host key mismatch.
+
+Perform this operation only if you were expecting the host key or
+certificate mismatch or if you are familiar with the new host key or
+certificate on the instance. For more information, see Troubleshooting
+connection issues when using the Amazon Lightsail browser-based SSH or
+RDP client
+(https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection).
 
 
 =head2 DeleteLoadBalancer

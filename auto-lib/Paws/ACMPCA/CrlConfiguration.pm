@@ -43,7 +43,7 @@ parameter. You can hide the name of your bucket by specifying a value
 for the B<CustomCname> parameter. Your private CA copies the CNAME or
 the S3 bucket name to the B<CRL Distribution Points> extension of each
 certificate it issues. Your S3 bucket policy must give write permission
-to ACM PCA.
+to ACM Private CA.
 
 Your private CA uses the value in the B<ExpirationInDays> parameter to
 calculate the B<nextUpdate> field in the CRL. The CRL is refreshed at
@@ -136,8 +136,8 @@ B<Signature Value>: Signature computed over the CRL.
 
 =back
 
-Certificate revocation lists created by ACM PCA are DER-encoded. You
-can use the following OpenSSL command to list a CRL.
+Certificate revocation lists created by ACM Private CA are DER-encoded.
+You can use the following OpenSSL command to list a CRL.
 
 C<openssl crl -inform DER -text -in I<crl_path> -noout>
 
@@ -156,8 +156,8 @@ this value if you don't want the name of your S3 bucket to be public.
   Boolean value that specifies whether certificate revocation lists
 (CRLs) are enabled. You can use this value to enable certificate
 revocation for a new CA when you call the CreateCertificateAuthority
-operation or for an existing CA when you call the
-UpdateCertificateAuthority operation.
+action or for an existing CA when you call the
+UpdateCertificateAuthority action.
 
 
 =head2 ExpirationInDays => Int
@@ -171,8 +171,8 @@ UpdateCertificateAuthority operation.
 value for the B<CustomCname> argument, the name of your S3 bucket is
 placed into the B<CRL Distribution Points> extension of the issued
 certificate. You can change the name of your bucket by calling the
-UpdateCertificateAuthority operation. You must specify a bucket policy
-that allows ACM PCA to write the CRL to your bucket.
+UpdateCertificateAuthority action. You must specify a bucket policy
+that allows ACM Private CA to write the CRL to your bucket.
 
 
 

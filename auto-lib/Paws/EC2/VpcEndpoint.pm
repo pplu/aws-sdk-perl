@@ -4,12 +4,15 @@ package Paws::EC2::VpcEndpoint;
   has DnsEntries => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DnsEntry]', request_name => 'dnsEntrySet', traits => ['NameInRequest']);
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest']);
   has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkInterfaceIdSet', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has PolicyDocument => (is => 'ro', isa => 'Str', request_name => 'policyDocument', traits => ['NameInRequest']);
   has PrivateDnsEnabled => (is => 'ro', isa => 'Bool', request_name => 'privateDnsEnabled', traits => ['NameInRequest']);
+  has RequesterManaged => (is => 'ro', isa => 'Bool', request_name => 'requesterManaged', traits => ['NameInRequest']);
   has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'routeTableIdSet', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIdSet', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has VpcEndpointId => (is => 'ro', isa => 'Str', request_name => 'vpcEndpointId', traits => ['NameInRequest']);
   has VpcEndpointType => (is => 'ro', isa => 'Str', request_name => 'vpcEndpointType', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
@@ -69,6 +72,11 @@ with the network interface.
   (Interface endpoint) One or more network interfaces for the endpoint.
 
 
+=head2 OwnerId => Str
+
+  The ID of the AWS account that owns the VPC endpoint.
+
+
 =head2 PolicyDocument => Str
 
   The policy document associated with the endpoint, if applicable.
@@ -78,6 +86,11 @@ with the network interface.
 
   (Interface endpoint) Indicates whether the VPC is associated with a
 private hosted zone.
+
+
+=head2 RequesterManaged => Bool
+
+  Indicates whether the VPC endpoint is being managed by its service.
 
 
 =head2 RouteTableIds => ArrayRef[Str|Undef]
@@ -100,6 +113,11 @@ endpoint.
 
   (Interface endpoint) One or more subnets in which the endpoint is
 located.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  Any tags assigned to the VPC endpoint.
 
 
 =head2 VpcEndpointId => Str

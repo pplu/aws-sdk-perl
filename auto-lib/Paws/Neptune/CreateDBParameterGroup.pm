@@ -97,7 +97,7 @@ The description for the DB parameter group.
 
 =head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
 
-
+The tags to be assigned to the new DB parameter group.
 
 
 

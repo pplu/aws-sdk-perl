@@ -78,7 +78,7 @@ characters.
 =head2 Prefix => Str
 
   Prefix identifying one or more objects to which the rule applies. This
-is deprecated; use Filter instead.
+is No longer used; use Filter instead.
 
 
 =head2 B<REQUIRED> Status => Str

@@ -596,7 +596,7 @@ my $mq = $aws->service('MQ');
 
 $request = $mq->ListBrokers;
 
-is($request->content, undef, 'There is no body for a method that doesn\'t have parameters');
+is($request->content, '', 'There is no body for a method that doesn\'t have parameters');
 
 my $r53 = $aws->service('Route53');
 

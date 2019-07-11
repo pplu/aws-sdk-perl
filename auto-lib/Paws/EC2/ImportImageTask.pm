@@ -52,7 +52,7 @@ This class has no description
 
   The architecture of the virtual machine.
 
-Valid values: C<i386> | C<x86_64>
+Valid values: C<i386> | C<x86_64> | C<arm64>
 
 
 =head2 Description => Str

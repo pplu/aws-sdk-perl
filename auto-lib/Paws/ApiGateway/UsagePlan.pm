@@ -7,6 +7,7 @@ package Paws::ApiGateway::UsagePlan;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has ProductCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'productCode');
   has Quota => (is => 'ro', isa => 'Paws::ApiGateway::QuotaSettings', traits => ['NameInRequest'], request_name => 'quota');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
   has Throttle => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings', traits => ['NameInRequest'], request_name => 'throttle');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -51,6 +52,12 @@ as a SaaS product on AWS Marketplace.
 
 The maximum number of permitted requests per a given unit time
 interval.
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The collection of tags. Each tag element is associated with a given
+resource.
 
 
 =head2 Throttle => L<Paws::ApiGateway::ThrottleSettings>

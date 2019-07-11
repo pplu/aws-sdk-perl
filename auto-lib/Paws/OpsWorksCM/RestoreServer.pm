@@ -52,8 +52,8 @@ The ID of the backup that you want to use to restore a server.
 =head2 InstanceType => Str
 
 The type of the instance to create. Valid values must be specified in
-the following format: C<^([cm][34]|t2).*> For example, C<m4.large>.
-Valid values are C<t2.medium>, C<m4.large>, and C<m4.2xlarge>. If you
+the following format: C<^([cm][34]|t2).*> For example, C<m5.large>.
+Valid values are C<m5.large>, C<r5.xlarge>, and C<r5.2xlarge>. If you
 do not specify this parameter, RestoreServer uses the instance type
 from the specified backup.
 

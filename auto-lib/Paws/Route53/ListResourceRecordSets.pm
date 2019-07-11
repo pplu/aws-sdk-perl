@@ -113,6 +113,10 @@ Values for alias resource record sets:
 
 =item *
 
+B<API Gateway custom regional API or edge-optimized API>: A
+
+=item *
+
 B<CloudFront distribution>: A or AAAA
 
 =item *
@@ -121,11 +125,15 @@ B<Elastic Beanstalk environment that has a regionalized subdomain>: A
 
 =item *
 
-B<ELB load balancer>: A | AAAA
+B<Elastic Load Balancing load balancer>: A | AAAA
 
 =item *
 
 B<Amazon S3 bucket>: A
+
+=item *
+
+B<Amazon VPC interface VPC endpoint>: A
 
 =item *
 

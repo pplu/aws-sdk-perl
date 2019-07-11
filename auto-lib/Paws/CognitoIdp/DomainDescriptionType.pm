@@ -55,7 +55,8 @@ A container for information about a domain.
 
 =head2 CustomDomainConfig => L<Paws::CognitoIdp::CustomDomainConfigType>
 
-  
+  The configuration for a custom domain that hosts the sign-up and
+sign-in webpages for your application.
 
 
 =head2 Domain => Str

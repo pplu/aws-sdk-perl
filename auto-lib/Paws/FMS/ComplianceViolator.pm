@@ -48,7 +48,7 @@ Details of the resource that is not protected by the policy.
   The resource type. This is in the format shown in AWS Resource Types
 Reference
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-Valid values are C<AWS::ElasticLoadBalancingV2::LoadBalancer> or
+For example: C<AWS::ElasticLoadBalancingV2::LoadBalancer> or
 C<AWS::CloudFront::Distribution>.
 
 

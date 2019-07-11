@@ -1,7 +1,7 @@
 
 package Paws::GuardDuty::UpdateFilterResponse;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -15,7 +15,7 @@ Paws::GuardDuty::UpdateFilterResponse
 =head1 ATTRIBUTES
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
 The name of the filter.
 

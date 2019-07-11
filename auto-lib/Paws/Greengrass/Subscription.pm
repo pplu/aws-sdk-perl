@@ -55,7 +55,7 @@ ARN, a connector ARN, 'cloud' (which represents the AWS IoT cloud), or
 
 =head2 Subject => Str
 
-  The subject of the message.
+  The MQTT topic used to route the message.
 
 
 =head2 Target => Str

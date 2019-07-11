@@ -1,12 +1,15 @@
 
 package Paws::RDS::ModifyDBCluster;
   use Moose;
+  has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::RDS::CloudwatchLogsExportConfiguration');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
+  has DBInstanceParameterGroupName => (is => 'ro', isa => 'Str');
   has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableHttpEndpoint => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
@@ -62,24 +65,34 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head1 ATTRIBUTES
 
 
+=head2 AllowMajorVersionUpgrade => Bool
+
+A value that indicates whether major version upgrades are allowed.
+
+Constraints: You must allow major version upgrades when specifying a
+value for the C<EngineVersion> parameter that is a different major
+version than the DB cluster's current version.
+
+
+
 =head2 ApplyImmediately => Bool
 
-A value that specifies whether the modifications in this request and
+A value that indicates whether the modifications in this request and
 any pending modifications are asynchronously applied as soon as
 possible, regardless of the C<PreferredMaintenanceWindow> setting for
-the DB cluster. If this parameter is set to C<false>, changes to the DB
+the DB cluster. If this parameter is disabled, changes to the DB
 cluster are applied during the next maintenance window.
 
 The C<ApplyImmediately> parameter only affects the
 C<EnableIAMDatabaseAuthentication>, C<MasterUserPassword>, and
-C<NewDBClusterIdentifier> values. If you set the C<ApplyImmediately>
-parameter value to false, then changes to the
-C<EnableIAMDatabaseAuthentication>, C<MasterUserPassword>, and
-C<NewDBClusterIdentifier> values are applied during the next
-maintenance window. All other changes are applied immediately,
-regardless of the value of the C<ApplyImmediately> parameter.
+C<NewDBClusterIdentifier> values. If the C<ApplyImmediately> parameter
+is disabled, then changes to the C<EnableIAMDatabaseAuthentication>,
+C<MasterUserPassword>, and C<NewDBClusterIdentifier> values are applied
+during the next maintenance window. All other changes are applied
+immediately, regardless of the value of the C<ApplyImmediately>
+parameter.
 
-Default: C<false>
+By default, this parameter is disabled.
 
 
 
@@ -131,21 +144,20 @@ CloudWatch Logs for a specific DB cluster.
 
 
 
+=head2 CopyTagsToSnapshot => Bool
+
+A value that indicates whether to copy all tags from the DB cluster to
+snapshots of the DB cluster. The default is not to copy them.
+
+
+
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
 The DB cluster identifier for the cluster being modified. This
 parameter is not case-sensitive.
 
-Constraints:
-
-=over
-
-=item *
-
-Must match the identifier of an existing DBCluster.
-
-=back
-
+Constraints: This identifier must match the identifier of an existing
+DB cluster.
 
 
 
@@ -155,17 +167,46 @@ The name of the DB cluster parameter group to use for the DB cluster.
 
 
 
+=head2 DBInstanceParameterGroupName => Str
+
+The name of the DB parameter group to apply to all instances of the DB
+cluster.
+
+When you apply a parameter group using the
+C<DBInstanceParameterGroupName> parameter, the DB cluster isn't
+rebooted automatically. Also, parameter changes aren't applied during
+the next maintenance window but instead are applied immediately.
+
+Default: The existing name setting
+
+Constraints:
+
+=over
+
+=item *
+
+The DB parameter group must be in the same DB parameter group family as
+this DB cluster.
+
+=item *
+
+The C<DBInstanceParameterGroupName> parameter is only valid in
+combination with the C<AllowMajorVersionUpgrade> parameter.
+
+=back
+
+
+
+
 =head2 DeletionProtection => Bool
 
-Indicates if the DB cluster has deletion protection enabled. The
-database can't be deleted when this value is set to true.
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.
 
 
 
 =head2 EnableHttpEndpoint => Bool
-
-HTTP endpoint functionality is in beta for Aurora Serverless and is
-subject to change.
 
 A value that indicates whether to enable the HTTP endpoint for an
 Aurora Serverless DB cluster. By default, the HTTP endpoint is
@@ -176,19 +217,17 @@ API for running SQL queries on the Aurora Serverless DB cluster. You
 can also query your database from inside the RDS console with the query
 editor.
 
-For more information about Aurora Serverless, see Using Amazon Aurora
-Serverless
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+For more information, see Using the Data API for Aurora Serverless
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 in the I<Amazon Aurora User Guide>.
 
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: C<false>
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 
 
@@ -196,11 +235,10 @@ Default: C<false>
 
 The version number of the database engine to which you want to upgrade.
 Changing this parameter results in an outage. The change is applied
-during the next maintenance window unless the ApplyImmediately
-parameter is set to true.
+during the next maintenance window unless C<ApplyImmediately> is
+enabled.
 
-For a list of valid engine versions, see CreateDBCluster, or call
-DescribeDBEngineVersions.
+For a list of valid engine versions, use DescribeDBEngineVersions.
 
 
 
@@ -245,11 +283,11 @@ Example: C<my-cluster2>
 A value that indicates that the DB cluster should be associated with
 the specified option group. Changing this parameter doesn't result in
 an outage except in the following case, and the change is applied
-during the next maintenance window unless the C<ApplyImmediately>
-parameter is set to C<true> for this request. If the parameter change
-results in an option group that enables OEM, this change can cause a
-brief (sub-second) period during which new connections are rejected but
-existing connections are not interrupted.
+during the next maintenance window unless the C<ApplyImmediately> is
+enabled for this request. If the parameter change results in an option
+group that enables OEM, this change can cause a brief (sub-second)
+period during which new connections are rejected but existing
+connections are not interrupted.
 
 Permanent options can't be removed from an option group. The option
 group can't be removed from a DB cluster once it is associated with a
@@ -276,7 +314,7 @@ parameter.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
 see Adjusting the Preferred DB Cluster Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
 in the I<Amazon Aurora User Guide.>
 
 Constraints:
@@ -315,7 +353,7 @@ The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
 week. To see the time blocks available, see Adjusting the Preferred DB
 Cluster Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
 in the I<Amazon Aurora User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.

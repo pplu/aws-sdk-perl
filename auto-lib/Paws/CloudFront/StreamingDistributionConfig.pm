@@ -100,7 +100,7 @@ to create signed URLs for private content. If you want the distribution
 to use signed URLs, include this element; if you want the distribution
 to use public URLs, remove this element. For more information, see
 Serving Private Content through CloudFront
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 

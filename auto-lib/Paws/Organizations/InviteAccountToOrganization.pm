@@ -69,9 +69,9 @@ to the following example:
 
 C<--target Id=123456789012,Type=ACCOUNT>
 
-If you specify C<"Type": "ACCOUNT">, then you must provide the AWS
-account ID number as the C<Id>. If you specify C<"Type": "EMAIL">, then
-you must specify the email address that is associated with the account.
+If you specify C<"Type": "ACCOUNT">, you must provide the AWS account
+ID number as the C<Id>. If you specify C<"Type": "EMAIL">, you must
+specify the email address that is associated with the account.
 
 C<--target Id=diego@example.com,Type=EMAIL>
 

@@ -5,7 +5,7 @@ package Paws::ApiGatewayV2::CreateModel;
   has ContentType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentType');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema');
+  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateModelResponse = $apigateway->CreateModel(
       ApiId       => 'My__string',
       Name        => 'MyStringWithLengthBetween1And128',
+      Schema      => 'MyStringWithLengthBetween0And32K',
       ContentType => 'MyStringWithLengthBetween1And256',     # OPTIONAL
       Description => 'MyStringWithLengthBetween0And1024',    # OPTIONAL
-      Schema      => 'MyStringWithLengthBetween0And32K',     # OPTIONAL
     );
 
     # Results:
@@ -79,7 +79,7 @@ The name of the model. Must be alphanumeric.
 
 
 
-=head2 Schema => Str
+=head2 B<REQUIRED> Schema => Str
 
 The schema for the model. For application/json models, this should be
 JSON schema draft 4 model.

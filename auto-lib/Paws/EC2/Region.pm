@@ -39,12 +39,12 @@ This class has no description
 
 =head2 Endpoint => Str
 
-  The region service endpoint.
+  The Region service endpoint.
 
 
 =head2 RegionName => Str
 
-  The name of the region.
+  The name of the Region.
 
 
 

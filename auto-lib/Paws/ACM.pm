@@ -60,6 +60,11 @@ package Paws::ACM;
     my $call_object = $self->new_with_coercions('Paws::ACM::RemoveTagsFromCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RenewCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACM::RenewCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RequestCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ACM::RequestCertificate', @_);
@@ -101,7 +106,7 @@ package Paws::ACM;
   }
 
 
-  sub operations { qw/AddTagsToCertificate DeleteCertificate DescribeCertificate ExportCertificate GetCertificate ImportCertificate ListCertificates ListTagsForCertificate RemoveTagsFromCertificate RequestCertificate ResendValidationEmail UpdateCertificateOptions / }
+  sub operations { qw/AddTagsToCertificate DeleteCertificate DescribeCertificate ExportCertificate GetCertificate ImportCertificate ListCertificates ListTagsForCertificate RemoveTagsFromCertificate RenewCertificate RequestCertificate ResendValidationEmail UpdateCertificateOptions / }
 
 1;
 
@@ -136,7 +141,7 @@ Welcome to the AWS Certificate Manager (ACM) API documentation.
 You can use ACM to manage SSL/TLS certificates for your AWS-based
 websites and applications. For general information about using ACM, see
 the I<AWS Certificate Manager User Guide>
-(http://docs.aws.amazon.com/acm/latest/userguide/).
+(https://docs.aws.amazon.com/acm/latest/userguide/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08>
 
@@ -173,7 +178,7 @@ among those resources. For example, you can add the same tag to an ACM
 certificate and an Elastic Load Balancing load balancer to indicate
 that they are both used by the same website. For more information, see
 Tagging ACM certificates
-(http://docs.aws.amazon.com/acm/latest/userguide/tags.html).
+(https://docs.aws.amazon.com/acm/latest/userguide/tags.html).
 
 To remove one or more tags, use the RemoveTagsFromCertificate action.
 To view all of the tags that have been applied to the certificate, use
@@ -289,18 +294,18 @@ Returns: a L<Paws::ACM::ImportCertificateResponse> instance
 
 Imports a certificate into AWS Certificate Manager (ACM) to use with
 services that are integrated with ACM. Note that integrated services
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html)
+(https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html)
 allow only certificate types and keys they support to be associated
 with their resources. Further, their support differs depending on
 whether the certificate is imported into IAM or into ACM. For more
 information, see the documentation for each service. For more
 information about importing certificates into ACM, see Importing
 Certificates
-(http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
+(https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
 in the I<AWS Certificate Manager User Guide>.
 
 ACM does not provide managed renewal
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
+(https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
 certificates that you import.
 
 Note the following guidelines when importing third party certificates:
@@ -369,7 +374,7 @@ manner required by the programming language you're using.
 =back
 
 This operation returns the Amazon Resource Name (ARN)
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 of the imported certificate.
 
 
@@ -442,6 +447,29 @@ view all of the tags that have been applied to a specific ACM
 certificate, use the ListTagsForCertificate action.
 
 
+=head2 RenewCertificate
+
+=over
+
+=item CertificateArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ACM::RenewCertificate>
+
+Returns: nothing
+
+Renews an eligable ACM certificate. At this time, only exported private
+certificates can be renewed with this operation. In order to renew your
+ACM PCA certificates with ACM, you must first grant the ACM service
+principal permission to do so
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaPermissions.html).
+For more information, see Testing Managed Renewal
+(https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html)
+in the ACM User Guide.
+
+
 =head2 RequestCertificate
 
 =over
@@ -476,9 +504,9 @@ If you are requesting a private certificate, domain validation is not
 required. If you are requesting a public certificate, each domain name
 that you specify must be validated to verify that you own or control
 the domain. You can use DNS validation
-(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
+(https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html)
 or email validation
-(http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
+(https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-email.html).
 We recommend that you use DNS validation. ACM issues public
 certificates after receiving approval from the domain owner.
 
@@ -512,7 +540,7 @@ since your original request or since your last attempt to resend
 validation mail, you must request a new certificate. For more
 information about setting up your contact email addresses, see
 Configure Email for your Domain
-(http://docs.aws.amazon.com/acm/latest/userguide/setup-email.html).
+(https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html).
 
 
 =head2 UpdateCertificateOptions
@@ -534,7 +562,7 @@ Updates a certificate. Currently, you can use this function to specify
 whether to opt in to or out of recording your certificate in a
 certificate transparency log. For more information, see Opting Out of
 Certificate Transparency Logging
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
+(https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency).
 
 
 

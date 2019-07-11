@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Deploy
 
 The deployment controller to use for the service. For more information,
 see Amazon ECS Deployment Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head1 ATTRIBUTES
@@ -43,7 +43,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
   The deployment controller type to use.
 
-There are two deployment controller types available:
+There are three deployment controller types available:
 
 =over
 
@@ -61,9 +61,12 @@ specified in the DeploymentConfiguration.
 The blue/green (C<CODE_DEPLOY>) deployment type uses the blue/green
 deployment model powered by AWS CodeDeploy, which allows you to verify
 a new deployment of a service before sending production traffic to it.
-For more information, see Amazon ECS Deployment Types
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
-in the I<Amazon Elastic Container Service Developer Guide>.
+
+=item EXTERNAL
+
+The external (C<EXTERNAL>) deployment type enables you to use any
+third-party deployment controller for full control over the deployment
+process for an Amazon ECS service.
 
 =back
 

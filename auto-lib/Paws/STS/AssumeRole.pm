@@ -4,6 +4,7 @@ package Paws::STS::AssumeRole;
   has DurationSeconds => (is => 'ro', isa => 'Int');
   has ExternalId => (is => 'ro', isa => 'Str');
   has Policy => (is => 'ro', isa => 'Str');
+  has PolicyArns => (is => 'ro', isa => 'ArrayRef[Paws::STS::PolicyDescriptorType]');
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has RoleSessionName => (is => 'ro', isa => 'Str', required => 1);
   has SerialNumber => (is => 'ro', isa => 'Str');
@@ -66,10 +67,10 @@ example, if you specify a session duration of 12 hours, but your
 administrator set the maximum session duration to 6 hours, your
 operation fails. To learn how to view the maximum value for your role,
 see View the Maximum Session Duration Setting for a Role
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 in the I<IAM User Guide>.
 
-By default, the value is set to 3600 seconds.
+By default, the value is set to C<3600> seconds.
 
 The C<DurationSeconds> parameter is separate from the duration of a
 console session that you might request using the returned credentials.
@@ -77,26 +78,28 @@ The request to the federation endpoint for a console sign-in token
 takes a C<SessionDuration> parameter that specifies the maximum length
 of the console session. For more information, see Creating a URL that
 Enables Federated Users to Access the AWS Management Console
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
 in the I<IAM User Guide>.
 
 
 
 =head2 ExternalId => Str
 
-A unique identifier that is used by third parties when assuming roles
-in their customers' accounts. For each role that the third party can
-assume, they should instruct their customers to ensure the role's trust
-policy checks for the external ID that the third party generated. Each
-time the third party assumes the role, they should pass the customer's
-external ID. The external ID is useful in order to help third parties
-bind a role to the customer who created it. For more information about
+A unique identifier that might be required when you assume a role in
+another account. If the administrator of the account to which the role
+belongs provided you with an external ID, then provide that value in
+the C<ExternalId> parameter. This value can be any string, such as a
+passphrase or account number. A cross-account role is usually set up to
+trust everyone in an account. Therefore, the administrator of the
+trusting account might send an external ID to the administrator of the
+trusted account. That way, only someone with the ID can assume the
+role, rather than everyone in the account. For more information about
 the external ID, see How to Use an External ID When Granting Access to
 Your AWS Resources to a Third Party
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html)
 in the I<IAM User Guide>.
 
-The regex used to validated this parameter is a string of characters
+The regex used to validate this parameter is a string of characters
 consisting of upper- and lower-case alphanumeric characters with no
 spaces. You can also include underscores or any of the following
 characters: =,.@:/-
@@ -105,32 +108,65 @@ characters: =,.@:/-
 
 =head2 Policy => Str
 
-An IAM policy in JSON format.
+An IAM policy in JSON format that you want to use as an inline session
+policy.
 
-This parameter is optional. If you pass a policy, the temporary
-security credentials that are returned by the operation have the
-permissions that are allowed by both (the intersection of) the access
-policy of the role that is being assumed, I<and> the policy that you
-pass. This gives you a way to further restrict the permissions for the
-resulting temporary security credentials. You cannot use the passed
-policy to grant permissions that are in excess of those allowed by the
-access policy of the role that is being assumed. For more information,
-see Permissions for AssumeRole, AssumeRoleWithSAML, and
-AssumeRoleWithWebIdentity
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html)
+This parameter is optional. Passing policies to this operation returns
+new temporary credentials. The resulting session's permissions are the
+intersection of the role's identity-based policy and the session
+policies. You can use the role's temporary credentials in subsequent
+AWS API calls to access resources in the account that owns the role.
+You cannot use session policies to grant more permissions than those
+allowed by the identity-based policy of the role that is being assumed.
+For more information, see Session Policies
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 in the I<IAM User Guide>.
 
-The format for this parameter, as described by its regex pattern, is a
-string of characters up to 2048 characters in length. The characters
+The plain text that you use for both inline and managed session
+policies shouldn't exceed 2048 characters. The JSON policy characters
 can be any ASCII character from the space character to the end of the
-valid character list (\u0020-\u00FF). It can also include the tab
-(\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
+valid character list (\u0020 through \u00FF). It can also include the
+tab (\u0009), linefeed (\u000A), and carriage return (\u000D)
+characters.
 
-The policy plain text must be 2048 bytes or shorter. However, an
-internal conversion compresses it into a packed binary format with a
-separate limit. The PackedPolicySize response element indicates by
-percentage how close to the upper size limit the policy is, with 100%
-equaling the maximum allowed size.
+The characters in this parameter count towards the 2048 character
+session policy guideline. However, an AWS conversion compresses the
+session policies into a packed binary format that has a separate limit.
+This is the enforced limit. The C<PackedPolicySize> response element
+indicates by percentage how close the policy is to the upper size
+limit.
+
+
+
+=head2 PolicyArns => ArrayRef[L<Paws::STS::PolicyDescriptorType>]
+
+The Amazon Resource Names (ARNs) of the IAM managed policies that you
+want to use as managed session policies. The policies must exist in the
+same account as the role.
+
+This parameter is optional. You can provide up to 10 managed policy
+ARNs. However, the plain text that you use for both inline and managed
+session policies shouldn't exceed 2048 characters. For more information
+about ARNs, see Amazon Resource Names (ARNs) and AWS Service Namespaces
+in the AWS General Reference.
+
+The characters in this parameter count towards the 2048 character
+session policy guideline. However, an AWS conversion compresses the
+session policies into a packed binary format that has a separate limit.
+This is the enforced limit. The C<PackedPolicySize> response element
+indicates by percentage how close the policy is to the upper size
+limit.
+
+Passing policies to this operation returns new temporary credentials.
+The resulting session's permissions are the intersection of the role's
+identity-based policy and the session policies. You can use the role's
+temporary credentials in subsequent AWS API calls to access resources
+in the account that owns the role. You cannot use session policies to
+grant more permissions than those allowed by the identity-based policy
+of the role that is being assumed. For more information, see Session
+Policies
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
+in the I<IAM User Guide>.
 
 
 
@@ -149,9 +185,9 @@ role is assumed by different principals or for different reasons. In
 cross-account scenarios, the role session name is visible to, and can
 be logged by the account that owns the role. The role session name is
 also used in the ARN of the assumed role principal. This means that
-subsequent cross-account API requests using the temporary security
+subsequent cross-account API requests that use the temporary security
 credentials will expose the role session name to the external account
-in their CloudTrail logs.
+in their AWS CloudTrail logs.
 
 The regex used to validate this parameter is a string of characters
 consisting of upper- and lower-case alphanumeric characters with no

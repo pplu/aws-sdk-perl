@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 The name of an endpoint configuration. For more information, see
 CreateEndpointConfig
-(http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html).
 
 
 
@@ -72,7 +72,7 @@ in your AWS account.
 
 An array of key-value pairs. For more information, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in
 the I<AWS Billing and Cost Management User Guide>.
 
 

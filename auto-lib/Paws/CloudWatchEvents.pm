@@ -50,6 +50,11 @@ package Paws::CloudWatchEvents;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::ListRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTargetsByRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::ListTargetsByRule', @_);
@@ -85,9 +90,19 @@ package Paws::CloudWatchEvents;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::RemoveTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TestEventPattern {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::TestEventPattern', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -162,7 +177,7 @@ package Paws::CloudWatchEvents;
   }
 
 
-  sub operations { qw/DeleteRule DescribeEventBus DescribeRule DisableRule EnableRule ListRuleNamesByTarget ListRules ListTargetsByRule PutEvents PutPermission PutRule PutTargets RemovePermission RemoveTargets TestEventPattern / }
+  sub operations { qw/DeleteRule DescribeEventBus DescribeRule DisableRule EnableRule ListRuleNamesByTarget ListRules ListTagsForResource ListTargetsByRule PutEvents PutPermission PutRule PutTargets RemovePermission RemoveTargets TagResource TestEventPattern UntagResource / }
 
 1;
 
@@ -220,7 +235,7 @@ EBS volume.
 
 For more information about the features of Amazon CloudWatch Events,
 see the Amazon CloudWatch Events User Guide
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events).
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/cloudwatch/>
 
@@ -380,6 +395,23 @@ ListRules does not list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::ListTagsForResource>
+
+Returns: a L<Paws::CloudWatchEvents::ListTagsForResourceResponse> instance
+
+Displays the tags associated with a CloudWatch Events resource. In
+CloudWatch Events, rules can be tagged.
+
+
 =head2 ListTargetsByRule
 
 =over
@@ -456,7 +488,7 @@ If you grant permissions using an organization, then accounts in that
 organization must specify a C<RoleArn> with proper permissions when
 they use C<PutTarget> to add your account's event bus as a target. For
 more information, see Sending and Receiving Events Between AWS Accounts
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
 in the I<Amazon CloudWatch Events User Guide>.
 
 The permission policy on the default event bus cannot exceed 10 KB in
@@ -478,6 +510,8 @@ size.
 =item [ScheduleExpression => Str]
 
 =item [State => Str]
+
+=item [Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]]
 
 
 =back
@@ -505,6 +539,17 @@ given schedule. A rule can have both an EventPattern and a
 ScheduleExpression, in which case the rule triggers on matching events
 as well as on a schedule.
 
+When you initially create a rule, you can optionally assign one or more
+tags to the rule. Tags can help you organize and categorize your
+resources. You can also use them to scope user permissions, by granting
+a user permission to access or change only rules with certain tag
+values. To use the C<PutRule> operation and assign tags, you must have
+both the C<events:PutRule> and C<events:TagResource> permissions.
+
+If you are updating an existing rule, any tags you specify in the
+C<PutRule> operation are ignored. To update the tags of an existing
+rule, use TagResource and UntagResource.
+
 Most services in AWS treat : or / as the same character in Amazon
 Resource Names (ARNs). However, CloudWatch Events uses an exact match
 in event patterns and rules. Be sure to use the correct ARN characters
@@ -526,7 +571,7 @@ An infinite loop can quickly cause higher than expected charges. We
 recommend that you use budgeting, which alerts you when charges exceed
 your specified limit. For more information, see Managing Your Costs
 with Budgets
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html).
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html).
 
 
 =head2 PutTargets
@@ -633,7 +678,7 @@ policies. For EC2 instances, Kinesis data streams, and AWS Step
 Functions state machines, CloudWatch Events relies on IAM roles that
 you specify in the C<RoleARN> argument in C<PutTargets>. For more
 information, see Authentication and Access Control
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/auth-and-access-control-cwe.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/auth-and-access-control-cwe.html)
 in the I<Amazon CloudWatch Events User Guide>.
 
 If another AWS account is in the same region and has granted you
@@ -652,7 +697,7 @@ that account granted permission to your account through an organization
 instead of directly by the account ID, then you must specify a
 C<RoleArn> with proper permissions in the C<Target> structure. For more
 information, see Sending and Receiving Events Between AWS Accounts
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
 in the I<Amazon CloudWatch Events User Guide>.
 
 For more information about enabling cross-account events, see
@@ -754,6 +799,39 @@ response and each entry in C<FailedEntries> provides the ID of the
 failed target and the error code.
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::TagResource>
+
+Returns: a L<Paws::CloudWatchEvents::TagResourceResponse> instance
+
+Assigns one or more tags (key-value pairs) to the specified CloudWatch
+Events resource. Tags can help you organize and categorize your
+resources. You can also use them to scope user permissions by granting
+a user permission to access or change only resources with certain tag
+values. In CloudWatch Events, rules can be tagged.
+
+Tags don't have any semantic meaning to AWS and are interpreted
+strictly as strings of characters.
+
+You can use the C<TagResource> action with a rule that already has
+tags. If you specify a new tag key for the rule, this tag is appended
+to the list of tags associated with the rule. If you specify a tag key
+that is already associated with the rule, the new tag value that you
+specify replaces the previous value for that tag.
+
+You can associate as many as 50 tags with a resource.
+
+
 =head2 TestEventPattern
 
 =over
@@ -776,6 +854,25 @@ Resource Names (ARNs). However, CloudWatch Events uses an exact match
 in event patterns and rules. Be sure to use the correct ARN characters
 when creating event patterns so that they match the ARN syntax in the
 event you want to match.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::UntagResource>
+
+Returns: a L<Paws::CloudWatchEvents::UntagResourceResponse> instance
+
+Removes one or more tags from the specified CloudWatch Events resource.
+In CloudWatch Events, rules can be tagged.
 
 
 

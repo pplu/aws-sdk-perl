@@ -42,8 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-The information about the EC2 instance associated with the activity
-that prompted GuardDuty to generate a finding.
+This class has no description
 
 =head1 ATTRIBUTES
 
@@ -55,7 +54,7 @@ that prompted GuardDuty to generate a finding.
 
 =head2 IamInstanceProfile => L<Paws::GuardDuty::IamInstanceProfile>
 
-  
+  The profile information of the EC2 instance.
 
 
 =head2 ImageDescription => Str

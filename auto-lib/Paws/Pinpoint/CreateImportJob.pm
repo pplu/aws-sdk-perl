@@ -32,12 +32,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateImportJobResponse = $pinpoint->CreateImportJob(
       ApplicationId    => 'My__string',
       ImportJobRequest => {
-        DefineSegment     => 1,              # OPTIONAL
-        ExternalId        => 'My__string',
-        Format            => 'CSV',          # values: CSV, JSON; OPTIONAL
-        RegisterEndpoints => 1,              # OPTIONAL
+        Format            => 'CSV',          # values: CSV, JSON
         RoleArn           => 'My__string',
         S3Url             => 'My__string',
+        DefineSegment     => 1,              # OPTIONAL
+        ExternalId        => 'My__string',
+        RegisterEndpoints => 1,              # OPTIONAL
         SegmentId         => 'My__string',
         SegmentName       => 'My__string',
       },
@@ -57,7 +57,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-The unique ID of your Amazon Pinpoint application.
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 

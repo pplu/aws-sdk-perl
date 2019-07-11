@@ -62,6 +62,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 The name of an AWS CodeDeploy application associated with the IAM user
 or AWS account.
 
+If C<applicationName> is specified, then C<deploymentGroupName> must be
+specified. If it is not specified, then C<deploymentGroupName> must not
+be specified.
+
 
 
 =head2 CreateTimeRange => L<Paws::CodeDeploy::TimeRange>
@@ -74,6 +78,10 @@ deployments.
 =head2 DeploymentGroupName => Str
 
 The name of a deployment group for the specified application.
+
+If C<deploymentGroupName> is specified, then C<applicationName> must be
+specified. If it is not specified, then C<applicationName> must not be
+specified.
 
 
 

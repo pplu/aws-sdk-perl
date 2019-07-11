@@ -2,6 +2,7 @@
 package Paws::CodeBuild::UpdateWebhook;
   use Moose;
   has BranchFilter => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchFilter' );
+  has FilterGroups => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeBuild::WebhookFilter]]', traits => ['NameInRequest'], request_name => 'filterGroups' );
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
   has RotateSecret => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'rotateSecret' );
 
@@ -32,7 +33,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateWebhookOutput = $codebuild->UpdateWebhook(
       ProjectName  => 'MyProjectName',
       BranchFilter => 'MyString',        # OPTIONAL
-      RotateSecret => 1,                 # OPTIONAL
+      FilterGroups => [
+        [
+          {
+            Pattern => 'MyString',
+            Type    => 'EVENT'
+            ,   # values: EVENT, BASE_REF, HEAD_REF, ACTOR_ACCOUNT_ID, FILE_PATH
+            ExcludeMatchedPattern => 1,    # OPTIONAL
+          },
+          ...
+        ],
+        ...
+      ],                                   # OPTIONAL
+      RotateSecret => 1,                   # OPTIONAL
     );
 
     # Results:
@@ -52,6 +65,17 @@ A regular expression used to determine which repository branches are
 built when a webhook is triggered. If the name of a branch matches the
 regular expression, then it is built. If C<branchFilter> is empty, then
 all branches are built.
+
+It is recommended that you use C<filterGroups> instead of
+C<branchFilter>.
+
+
+
+=head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]
+
+An array of arrays of C<WebhookFilter> objects used to determine if a
+webhook event can trigger a build. A filter group must pcontain at
+least one C<EVENT> C<WebhookFilter>.
 
 
 

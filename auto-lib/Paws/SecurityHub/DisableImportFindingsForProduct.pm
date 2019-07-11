@@ -42,8 +42,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 B<REQUIRED> ProductSubscriptionArn => Str
 
-The ARN of a resource that represents your subscription to a supported
-product.
+The ARN of the integrated product to disable the integration for.
 
 
 

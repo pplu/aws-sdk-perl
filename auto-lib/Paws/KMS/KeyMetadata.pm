@@ -57,7 +57,7 @@ DescribeKey operations.
 
   The Amazon Resource Name (ARN) of the CMK. For examples, see AWS Key
 Management Service (AWS KMS)
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms)
 in the Example ARNs section of the I<AWS General Reference>.
 
 
@@ -70,7 +70,7 @@ in the Example ARNs section of the I<AWS General Reference>.
 
   The cluster ID of the AWS CloudHSM cluster that contains the key
 material for the CMK. When you create a CMK in a custom key store
-(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html),
+(https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html),
 AWS KMS creates the key material for the CMK in the associated AWS
 CloudHSM cluster. This value is present only when the CMK is created in
 a custom key store.
@@ -84,7 +84,7 @@ a custom key store.
 =head2 CustomKeyStoreId => Str
 
   A unique identifier for the custom key store
-(http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html)
+(https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
 that contains the CMK. This value is present only when the CMK is
 created in a custom key store.
 
@@ -119,9 +119,10 @@ only when C<Origin> is C<EXTERNAL>, otherwise this value is omitted.
 
 =head2 KeyManager => Str
 
-  The CMK's manager. CMKs are either customer-managed or AWS-managed. For
-more information about the difference, see Customer Master Keys
-(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys)
+  The manager of the CMK. CMKs in your AWS account are either customer
+managed or AWS managed. For more information about the difference, see
+Customer Master Keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys)
 in the I<AWS Key Management Service Developer Guide>.
 
 
@@ -131,15 +132,15 @@ in the I<AWS Key Management Service Developer Guide>.
 
 For more information about how key state affects the use of a CMK, see
 How Key State Affects the Use of a Customer Master Key
-(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 KeyUsage => Str
 
-  The cryptographic operations for which you can use the CMK. Currently
-the only allowed value is C<ENCRYPT_DECRYPT>, which means you can use
-the CMK for the Encrypt and Decrypt operations.
+  The cryptographic operations for which you can use the CMK. The only
+valid value is C<ENCRYPT_DECRYPT>, which means you can use the CMK to
+encrypt and decrypt data.
 
 
 =head2 Origin => Str

@@ -41,11 +41,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 M    => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',
-                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
+                NULL => 1,                         # OPTIONAL
+                S    => 'MyStringAttributeValue',  # OPTIONAL
+                SS   => [
+                  'MyStringAttributeValue', ...    # OPTIONAL
+                ],                                 # OPTIONAL
               },    # key: max: 65535
             },
             TableName                => 'MyTableName',    # min: 3, max: 255
@@ -84,7 +88,7 @@ Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
 =head2 B<REQUIRED> TransactItems => ArrayRef[L<Paws::DynamoDB::TransactGetItem>]
 
-An ordered array of up to 10 C<TransactGetItem> objects, each of which
+An ordered array of up to 25 C<TransactGetItem> objects, each of which
 contains a C<Get> structure.
 
 

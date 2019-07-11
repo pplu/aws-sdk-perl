@@ -4,6 +4,7 @@ package Paws::StorageGateway::UpdateSnapshotSchedule;
   has Description => (is => 'ro', isa => 'Str');
   has RecurrenceInHours => (is => 'ro', isa => 'Int', required => 1);
   has StartAt => (is => 'ro', isa => 'Int', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has VolumeARN => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -69,6 +70,18 @@ Frequency of snapshots. Specify the number of hours between snapshots.
 The hour of the day at which the snapshot schedule begins represented
 as I<hh>, where I<hh> is the hour (0 to 23). The hour of the day is in
 the time zone of the gateway.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+
+A list of up to 50 tags that can be assigned to a snapshot. Each tag is
+a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: +
+- = . _ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.
 
 
 

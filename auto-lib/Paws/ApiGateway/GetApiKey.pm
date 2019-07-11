@@ -43,6 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LastUpdatedDate = $ApiKey->LastUpdatedDate;
     my $Name            = $ApiKey->Name;
     my $StageKeys       = $ApiKey->StageKeys;
+    my $Tags            = $ApiKey->Tags;
     my $Value           = $ApiKey->Value;
 
     # Returns a L<Paws::ApiGateway::ApiKey> object.

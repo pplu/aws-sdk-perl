@@ -40,7 +40,7 @@ variables.
 
 =head2 Error => L<Paws::Lambda::EnvironmentError>
 
-  Error messages for environment variables that could not be applied.
+  Error messages for environment variables that couldn't be applied.
 
 
 =head2 Variables => L<Paws::Lambda::EnvironmentVariables>
