@@ -4,6 +4,7 @@ package Paws::Lightsail::CreateDisk;
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
   has DiskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'diskName' , required => 1);
   has SizeInGb => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'sizeInGb' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AvailabilityZone => 'MyNonEmptyString',
       DiskName         => 'MyResourceName',
       SizeInGb         => 1,
-
+      Tags             => [
+        {
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -67,6 +74,15 @@ The unique Lightsail disk name (e.g., C<my-disk>).
 =head2 B<REQUIRED> SizeInGb => Int
 
 The size of the disk in GB (e.g., C<32>).
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the C<tag resource>
+operation.
 
 
 

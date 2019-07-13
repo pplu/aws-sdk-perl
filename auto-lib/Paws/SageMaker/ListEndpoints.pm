@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
-    my $ListEndpointsOutput = $sagemaker->ListEndpoints(
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $ListEndpointsOutput = $api . sagemaker->ListEndpoints(
       CreationTimeAfter      => '1970-01-01T01:00:00',       # OPTIONAL
       CreationTimeBefore     => '1970-01-01T01:00:00',       # OPTIONAL
       LastModifiedTimeAfter  => '1970-01-01T01:00:00',       # OPTIONAL
@@ -56,15 +56,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::SageMaker::ListEndpointsOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/ListEndpoints>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/ListEndpoints>
 
 =head1 ATTRIBUTES
 
 
 =head2 CreationTimeAfter => Str
 
-A filter that returns only endpoints that were created after the
-specified time (timestamp).
+A filter that returns only endpoints with a creation time greater than
+or equal to the specified time (timestamp).
 
 
 
@@ -118,7 +118,7 @@ Valid values are: C<"Name">, C<"CreationTime">, C<"Status">
 
 =head2 SortOrder => Str
 
-The sort order for results. The default is C<Ascending>.
+The sort order for results. The default is C<Descending>.
 
 Valid values are: C<"Ascending">, C<"Descending">
 
@@ -126,7 +126,7 @@ Valid values are: C<"Ascending">, C<"Descending">
 
 A filter that returns only endpoints with the specified status.
 
-Valid values are: C<"OutOfService">, C<"Creating">, C<"Updating">, C<"RollingBack">, C<"InService">, C<"Deleting">, C<"Failed">
+Valid values are: C<"OutOfService">, C<"Creating">, C<"Updating">, C<"SystemUpdating">, C<"RollingBack">, C<"InService">, C<"Deleting">, C<"Failed">
 
 
 =head1 SEE ALSO

@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DescribeConversionTasksResult = $ec2->DescribeConversionTasks(
       ConversionTaskIds => [ 'MyString', ... ],    # OPTIONAL
-      DryRun => 1,                                 # OPTIONAL
+      DryRun            => 1,                      # OPTIONAL
     );
 
     # Results:
@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 ConversionTaskIds => ArrayRef[Str|Undef]
 
-One or more conversion task IDs.
+The conversion task IDs.
 
 
 

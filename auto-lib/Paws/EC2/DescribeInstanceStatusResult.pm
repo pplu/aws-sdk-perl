@@ -18,7 +18,7 @@ Paws::EC2::DescribeInstanceStatusResult
 
 =head2 InstanceStatuses => ArrayRef[L<Paws::EC2::InstanceStatus>]
 
-One or more instance status descriptions.
+Information about the status of the instances.
 
 
 =head2 NextToken => Str

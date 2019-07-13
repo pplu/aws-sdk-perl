@@ -5,7 +5,7 @@ package Paws::MediaConvert::OutputGroupSettings;
   has FileGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::FileGroupSettings', request_name => 'fileGroupSettings', traits => ['NameInRequest']);
   has HlsGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::HlsGroupSettings', request_name => 'hlsGroupSettings', traits => ['NameInRequest']);
   has MsSmoothGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::MsSmoothGroupSettings', request_name => 'msSmoothGroupSettings', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -43,32 +43,40 @@ Output Group settings, including type
 
 =head2 CmafGroupSettings => L<Paws::MediaConvert::CmafGroupSettings>
 
-  
+  Required when you set (Type) under
+(OutputGroups)E<gt>(OutputGroupSettings) to CMAF_GROUP_SETTINGS. Each
+output in a CMAF Output Group may only contain a single video, audio,
+or caption output.
 
 
 =head2 DashIsoGroupSettings => L<Paws::MediaConvert::DashIsoGroupSettings>
 
-  
+  Required when you set (Type) under
+(OutputGroups)E<gt>(OutputGroupSettings) to DASH_ISO_GROUP_SETTINGS.
 
 
 =head2 FileGroupSettings => L<Paws::MediaConvert::FileGroupSettings>
 
-  
+  Required when you set (Type) under
+(OutputGroups)E<gt>(OutputGroupSettings) to FILE_GROUP_SETTINGS.
 
 
 =head2 HlsGroupSettings => L<Paws::MediaConvert::HlsGroupSettings>
 
-  
+  Required when you set (Type) under
+(OutputGroups)E<gt>(OutputGroupSettings) to HLS_GROUP_SETTINGS.
 
 
 =head2 MsSmoothGroupSettings => L<Paws::MediaConvert::MsSmoothGroupSettings>
 
-  
+  Required when you set (Type) under
+(OutputGroups)E<gt>(OutputGroupSettings) to MS_SMOOTH_GROUP_SETTINGS.
 
 
-=head2 B<REQUIRED> Type => Str
+=head2 Type => Str
 
-  
+  Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth
+Streaming, CMAF)
 
 
 

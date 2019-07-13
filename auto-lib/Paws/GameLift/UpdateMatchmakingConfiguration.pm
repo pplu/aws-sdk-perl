@@ -4,6 +4,7 @@ package Paws::GameLift::UpdateMatchmakingConfiguration;
   has AcceptanceRequired => (is => 'ro', isa => 'Bool');
   has AcceptanceTimeoutSeconds => (is => 'ro', isa => 'Int');
   has AdditionalPlayerCount => (is => 'ro', isa => 'Int');
+  has BackfillMode => (is => 'ro', isa => 'Str');
   has CustomEventData => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
@@ -44,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AcceptanceRequired       => 1,                              # OPTIONAL
       AcceptanceTimeoutSeconds => 1,                              # OPTIONAL
       AdditionalPlayerCount    => 1,                              # OPTIONAL
+      BackfillMode             => 'AUTOMATIC',                    # OPTIONAL
       CustomEventData          => 'MyCustomEventData',            # OPTIONAL
       Description              => 'MyNonZeroAndMaxString',        # OPTIONAL
       GameProperties           => [
@@ -76,7 +78,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 AcceptanceRequired => Bool
 
-Flag that determines whether or not a match that was created with this
+Flag that determines whether a match that was created with this
 configuration must be accepted by the matched players. To require
 acceptance, set to TRUE.
 
@@ -99,9 +101,21 @@ players are selected for the match.
 
 
 
+=head2 BackfillMode => Str
+
+Method used to backfill game sessions created with this matchmaking
+configuration. Specify MANUAL when your game manages backfill requests
+manually or does not use the match backfill feature. Specify AUTOMATIC
+to have GameLift create a StartMatchBackfill request whenever a game
+session has one or more open slots. Learn more about manual and
+automatic backfill in Backfill Existing Games with FlexMatch
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
+
+Valid values are: C<"AUTOMATIC">, C<"MANUAL">
+
 =head2 CustomEventData => Str
 
-Information to attached to all events related to the matchmaking
+Information to add to all events related to the matchmaking
 configuration.
 
 
@@ -118,7 +132,7 @@ Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 Start a Game Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 This information is added to the new GameSession object that is created
 for a successful match.
 
@@ -130,7 +144,7 @@ Set of custom game session properties, formatted as a single string
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see Start a Game
 Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 This information is added to the new GameSession object that is created
 for a successful match.
 
@@ -139,13 +153,12 @@ for a successful match.
 =head2 GameSessionQueueArns => ArrayRef[Str|Undef]
 
 Amazon Resource Name (ARN
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 that is assigned to a game session queue and uniquely identifies it.
-Format is
-C<arn:aws:gamelift:E<lt>regionE<gt>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912>.
-These queues are used when placing game sessions for matches that are
-created with this matchmaking configuration. Queues can be located in
-any region.
+Format is C<arn:aws:gamelift:E<lt>regionE<gt>:E<lt>aws
+accountE<gt>:gamesessionqueue/E<lt>queue nameE<gt>>. These queues are
+used when placing game sessions for matches that are created with this
+matchmaking configuration. Queues can be located in any region.
 
 
 
@@ -159,7 +172,7 @@ Unique identifier for a matchmaking configuration to update.
 
 SNS topic ARN that is set up to receive matchmaking notifications. See
 Setting up Notifications for Matchmaking
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
 for more information.
 
 
@@ -167,8 +180,8 @@ for more information.
 =head2 RequestTimeoutSeconds => Int
 
 Maximum duration, in seconds, that a matchmaking ticket can remain in
-process before timing out. Requests that time out can be resubmitted as
-needed.
+process before timing out. Requests that fail due to timing out can be
+resubmitted as needed.
 
 
 

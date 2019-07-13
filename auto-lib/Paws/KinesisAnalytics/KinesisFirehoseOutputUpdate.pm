@@ -33,6 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 When updating an output configuration using the UpdateApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_UpdateApplication.html)
 operation, provides information about an Amazon Kinesis Firehose
 delivery stream configured as the destination.
 
@@ -48,8 +49,8 @@ stream to write to.
 =head2 RoleARNUpdate => Str
 
   ARN of the IAM role that Amazon Kinesis Analytics can assume to access
-the stream on your behalf. You need to grant necessary permissions to
-this role.
+the stream on your behalf. You need to grant the necessary permissions
+to this role.
 
 
 

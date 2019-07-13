@@ -3,6 +3,9 @@ package Paws::MediaConvert::CreateQueue;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
+  has PricingPlan => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pricingPlan');
+  has ReservationPlanSettings => (is => 'ro', isa => 'Paws::MediaConvert::ReservationPlanSettings', traits => ['NameInRequest'], request_name => 'reservationPlanSettings');
+  has Tags => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -30,8 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mediaconvert = Paws->service('MediaConvert');
     my $CreateQueueResponse = $mediaconvert->CreateQueue(
-      Name        => 'My__string',
-      Description => 'My__string',    # OPTIONAL
+      Name                    => 'My__string',
+      Description             => 'My__string',    # OPTIONAL
+      PricingPlan             => 'ON_DEMAND',     # OPTIONAL
+      ReservationPlanSettings => {
+        Commitment    => 'ONE_YEAR',              # values: ONE_YEAR
+        RenewalType   => 'AUTO_RENEW',            # values: AUTO_RENEW, EXPIRE
+        ReservedSlots => 1,
+
+      },    # OPTIONAL
+      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -47,13 +58,38 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =head2 Description => Str
 
-Optional. A description of the queue you are creating.
+Optional. A description of the queue that you are creating.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the queue you are creating.
+The name of the queue that you are creating.
+
+
+
+=head2 PricingPlan => Str
+
+Specifies whether the pricing plan for the queue is on-demand or
+reserved. For on-demand, you pay per minute, billed in increments of
+.01 minute. For reserved, you pay for the transcoding capacity of the
+entire queue, regardless of how much or how little you use it. Reserved
+pricing requires a 12-month commitment. When you use the API to create
+a queue, the default is on-demand.
+
+Valid values are: C<"ON_DEMAND">, C<"RESERVED">
+
+=head2 ReservationPlanSettings => L<Paws::MediaConvert::ReservationPlanSettings>
+
+Details about the pricing plan for your reserved queue. Required for
+reserved queues and not applicable to on-demand queues.
+
+
+
+=head2 Tags => L<Paws::MediaConvert::__mapOf__string>
+
+The tags that you want to add to the resource. You can tag resources
+with a key-value pair or with only a key.
 
 
 

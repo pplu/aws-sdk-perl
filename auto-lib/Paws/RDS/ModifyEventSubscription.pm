@@ -35,12 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example changes the specified setting for the specified event
     # notification subscription.
     my $ModifyEventSubscriptionResult = $rds->ModifyEventSubscription(
-      {
-        'Enabled'          => true,
-        'EventCategories'  => [ 'deletion', 'low storage' ],
-        'SourceType'       => 'db-instance',
-        'SubscriptionName' => 'mymysqleventsubscription'
-      }
+      'Enabled'          => 1,
+      'EventCategories'  => [ 'deletion', 'low storage' ],
+      'SourceType'       => 'db-instance',
+      'SubscriptionName' => 'mymysqleventsubscription'
     );
 
 
@@ -52,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 Enabled => Bool
 
-A Boolean value; set to B<true> to activate the subscription.
+A value that indicates whether to activate the subscription.
 
 
 
@@ -61,8 +59,8 @@ A Boolean value; set to B<true> to activate the subscription.
 A list of event categories for a SourceType that you want to subscribe
 to. You can see a list of the categories for a given SourceType in the
 Events
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-topic in the Amazon RDS User Guide or by using the
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
+topic in the I<Amazon RDS User Guide> or by using the
 B<DescribeEventCategories> action.
 
 

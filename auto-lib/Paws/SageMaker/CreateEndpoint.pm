@@ -28,8 +28,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
-    my $CreateEndpointOutput = $sagemaker->CreateEndpoint(
+    my $api.sagemaker = Paws->service('SageMaker');
+    my $CreateEndpointOutput = $api . sagemaker->CreateEndpoint(
       EndpointConfigName => 'MyEndpointConfigName',
       EndpointName       => 'MyEndpointName',
       Tags               => [
@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::SageMaker::CreateEndpointOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/CreateEndpoint>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/CreateEndpoint>
 
 =head1 ATTRIBUTES
 
@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sag
 
 The name of an endpoint configuration. For more information, see
 CreateEndpointConfig
-(http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html).
 
 
 
@@ -72,7 +72,7 @@ in your AWS account.
 
 An array of key-value pairs. For more information, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in
 the I<AWS Billing and Cost Management User Guide>.
 
 

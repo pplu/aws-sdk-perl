@@ -10,6 +10,7 @@ package Paws::SageMaker::HyperParameterTrainingJobSummary;
   has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
   has TrainingStartTime => (is => 'ro', isa => 'Str');
   has TunedHyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters', required => 1);
+  has TuningJobName => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::HyperParameterTrainingJobSummary object:
 
-  $service_obj->Method(Att1 => { CreationTime => $value, ..., TunedHyperParameters => $value  });
+  $service_obj->Method(Att1 => { CreationTime => $value, ..., TuningJobName => $value  });
 
 =head3 Results returned from an API call
 
@@ -52,13 +53,14 @@ Specifies summary information about a training job.
 
 =head2 FailureReason => Str
 
-  The reason that the
+  The reason that the training job failed.
 
 
 =head2 FinalHyperParameterTuningJobObjectiveMetric => L<Paws::SageMaker::FinalHyperParameterTuningJobObjectiveMetric>
 
-  The object that specifies the value of the objective metric of the
-tuning job that launched this training job.
+  The FinalHyperParameterTuningJobObjectiveMetric object that specifies
+the value of the objective metric of the tuning job that launched this
+training job.
 
 
 =head2 ObjectiveStatus => Str
@@ -99,7 +101,11 @@ objective metric.
 
 =head2 TrainingEndTime => Str
 
-  The date and time that the training job ended.
+  Specifies the time when the training job ends on training instances.
+You are billed for the time interval between the value of
+C<TrainingStartTime> and this time. For successful jobs and stopped
+jobs, this is the time after model artifacts are uploaded. For failed
+jobs, this is the time when Amazon SageMaker detects a job failure.
 
 
 =head2 B<REQUIRED> TrainingJobArn => Str
@@ -125,6 +131,11 @@ objective metric.
 =head2 B<REQUIRED> TunedHyperParameters => L<Paws::SageMaker::HyperParameters>
 
   A list of the hyperparameters for which you specified ranges to search.
+
+
+=head2 TuningJobName => Str
+
+  The HyperParameter tuning job that launched the training job.
 
 
 

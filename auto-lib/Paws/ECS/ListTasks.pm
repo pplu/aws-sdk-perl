@@ -37,11 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ecs = Paws->service('ECS');
     # To list the tasks in a cluster
     # This example lists all of the tasks in a cluster.
-    my $ListTasksResponse = $ecs->ListTasks(
-      {
-        'Cluster' => 'default'
-      }
-    );
+    my $ListTasksResponse = $ecs->ListTasks( 'Cluster' => 'default' );
 
     # Results:
     my $taskArns = $ListTasksResponse->taskArns;
@@ -52,10 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # a ``containerInstance`` value limits	the  results  to  tasks  that belong
     # to that container instance.
     my $ListTasksResponse = $ecs->ListTasks(
-      {
-        'Cluster'           => 'default',
-        'ContainerInstance' => 'f6bbb147-5370-4ace-8c73-c7181ded911f'
-      }
+      'Cluster'           => 'default',
+      'ContainerInstance' => 'f6bbb147-5370-4ace-8c73-c7181ded911f'
     );
 
     # Results:
@@ -90,15 +84,15 @@ container instance.
 
 The task desired status with which to filter the C<ListTasks> results.
 Specifying a C<desiredStatus> of C<STOPPED> limits the results to tasks
-that Amazon ECS has set the desired status to C<STOPPED>, which can be
+that Amazon ECS has set the desired status to C<STOPPED>. This can be
 useful for debugging tasks that are not starting properly or have died
 or finished. The default status filter is C<RUNNING>, which shows tasks
 that Amazon ECS has set the desired status to C<RUNNING>.
 
 Although you can filter results based on a desired status of
-C<PENDING>, this does not return any results because Amazon ECS never
-sets the desired status of a task to that value (only a task's
-C<lastStatus> may have a value of C<PENDING>).
+C<PENDING>, this does not return any results. Amazon ECS never sets the
+desired status of a task to that value (only a task's C<lastStatus> may
+have a value of C<PENDING>).
 
 Valid values are: C<"RUNNING">, C<"PENDING">, C<"STOPPED">
 
@@ -112,7 +106,7 @@ family.
 
 =head2 LaunchType => Str
 
-The launch type for services you want to list.
+The launch type for services to list.
 
 Valid values are: C<"EC2">, C<"FARGATE">
 

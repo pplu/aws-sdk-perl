@@ -29,12 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $inspector = Paws->service('Inspector');
     # List tags for resource
     # Lists all tags associated with an assessment template.
-    my $ListTagsForResourceResponse = $inspector->ListTagsForResource(
-      {
-        'ResourceArn' =>
+    my $ListTagsForResourceResponse =
+      $inspector->ListTagsForResource( 'ResourceArn' =>
 'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-gcwFliYu'
-      }
-    );
+      );
 
     # Results:
     my $tags = $ListTagsForResourceResponse->tags;

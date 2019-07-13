@@ -41,13 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # availability zone settings.
     my $ReservedDBInstancesOfferingMessage =
       $rds->DescribeReservedDBInstancesOfferings(
-      {
-        'DBInstanceClass'    => 'db.t2.micro',
-        'Duration'           => '1y',
-        'MultiAZ'            => 0,
-        'OfferingType'       => 'No Upfront',
-        'ProductDescription' => 'mysql'
-      }
+      'DBInstanceClass'    => 'db.t2.micro',
+      'Duration'           => '1y',
+      'MultiAZ'            => 0,
+      'OfferingType'       => 'No Upfront',
+      'ProductDescription' => 'mysql'
       );
 
 
@@ -102,8 +100,8 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 MultiAZ => Bool
 
-The Multi-AZ filter value. Specify this parameter to show only the
-available offerings matching the specified Multi-AZ parameter.
+A value that indicates whether to show only those reservations that
+support Multi-AZ.
 
 
 

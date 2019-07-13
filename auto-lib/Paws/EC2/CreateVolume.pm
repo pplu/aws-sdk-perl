@@ -39,11 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates an 80 GiB General Purpose (SSD) volume in the
     # Availability Zone ``us-east-1a``.
     my $Volume = $ec2->CreateVolume(
-      {
-        'AvailabilityZone' => 'us-east-1a',
-        'Size'             => 80,
-        'VolumeType'       => 'gp2'
-      }
+      'AvailabilityZone' => 'us-east-1a',
+      'Size'             => 80,
+      'VolumeType'       => 'gp2'
     );
 
     # Results:
@@ -62,12 +60,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a new Provisioned IOPS (SSD) volume with 1000
     # provisioned IOPS from a snapshot in the Availability Zone ``us-east-1a``.
     my $Volume = $ec2->CreateVolume(
-      {
-        'AvailabilityZone' => 'us-east-1a',
-        'Iops'             => 1000,
-        'SnapshotId'       => 'snap-066877671789bd71b',
-        'VolumeType'       => 'io1'
-      }
+      'AvailabilityZone' => 'us-east-1a',
+      'Iops'             => 1000,
+      'SnapshotId'       => 'snap-066877671789bd71b',
+      'VolumeType'       => 'io1'
     );
 
     # Results:
@@ -92,9 +88,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-The Availability Zone in which to create the volume. Use
-DescribeAvailabilityZones to list the Availability Zones that are
-currently available to you.
+The Availability Zone in which to create the volume.
 
 
 
@@ -109,25 +103,32 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Encrypted => Bool
 
-Specifies whether the volume should be encrypted. Encrypted Amazon EBS
-volumes may only be attached to instances that support Amazon EBS
-encryption. Volumes that are created from encrypted snapshots are
-automatically encrypted. There is no way to create an encrypted volume
-from an unencrypted snapshot or vice versa. If your AMI uses encrypted
-volumes, you can only launch it on supported instance types. For more
-information, see Amazon EBS Encryption
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+Specifies whether the volume should be encrypted. The effect of setting
+the encryption state to C<true> depends on the volume origin (new or
+from a snapshot), starting encryption state, ownership, and whether
+encryption by default is enabled. For more information, see Encryption
+by Default
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+Encrypted Amazon EBS volumes must be attached to instances that support
+Amazon EBS encryption. For more information, see Supported Instance
+Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances).
 
 
 
 =head2 Iops => Int
 
 The number of I/O operations per second (IOPS) to provision for the
-volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 32000 IOPS
-for volumes in most regions. For exceptions, see Amazon EBS Volume
-Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 64,000
+IOPS for volumes in most Regions. Maximum IOPS of 64,000 is guaranteed
+only on Nitro-based instances
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances).
+Other instance families guarantee performance up to 32,000 IOPS. For
+more information, see Amazon EBS Volume Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 This parameter is valid only for Provisioned IOPS SSD (io1) volumes.
 
@@ -135,43 +136,38 @@ This parameter is valid only for Provisioned IOPS SSD (io1) volumes.
 
 =head2 KmsKeyId => Str
 
-An identifier for the AWS Key Management Service (AWS KMS) customer
-master key (CMK) to use when creating the encrypted volume. This
-parameter is only required if you want to use a non-default CMK; if
-this parameter is not specified, the default CMK for EBS is used. If a
-C<KmsKeyId> is specified, the C<Encrypted> flag must also be set.
+The identifier of the AWS Key Management Service (AWS KMS) customer
+master key (CMK) to use for Amazon EBS encryption. If this parameter is
+not specified, your AWS managed CMK for EBS is used. If C<KmsKeyId> is
+specified, the encrypted state must be C<true>.
 
-The CMK identifier may be provided in any of the following formats:
+You can specify the CMK using any of the following:
 
 =over
 
 =item *
 
-Key ID
+Key ID. For example, key/1234abcd-12ab-34cd-56ef-1234567890ab.
 
 =item *
 
-Key alias
+Key alias. For example, alias/ExampleAlias.
 
 =item *
 
-ARN using key ID. The ID ARN contains the C<arn:aws:kms> namespace,
-followed by the region of the CMK, the AWS account ID of the CMK owner,
-the C<key> namespace, and then the CMK ID. For example,
+Key ARN. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
 
 =item *
 
-ARN using key alias. The alias ARN contains the C<arn:aws:kms>
-namespace, followed by the region of the CMK, the AWS account ID of the
-CMK owner, the C<alias> namespace, and then the CMK alias. For example,
+Alias ARN. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
 
 =back
 
-AWS parses C<KmsKeyId> asynchronously, meaning that the action you call
-may appear to complete even though you provided an invalid identifier.
-The action will eventually fail.
+AWS authenticates the CMK asynchronously. Therefore, if you specify an
+ID, alias, or ARN that is not valid, the action can appear to complete,
+but eventually fails.
 
 
 
@@ -179,19 +175,23 @@ The action will eventually fail.
 
 The size of the volume, in GiBs.
 
-Constraints: 1-16384 for C<gp2>, 4-16384 for C<io1>, 500-16384 for
-C<st1>, 500-16384 for C<sc1>, and 1-1024 for C<standard>. If you
+Constraints: 1-16,384 for C<gp2>, 4-16,384 for C<io1>, 500-16,384 for
+C<st1>, 500-16,384 for C<sc1>, and 1-1,024 for C<standard>. If you
 specify a snapshot, the volume size must be equal to or larger than the
 snapshot size.
 
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
 
+At least one of Size or SnapshotId is required.
+
 
 
 =head2 SnapshotId => Str
 
 The snapshot from which to create the volume.
+
+At least one of Size or SnapshotId are required.
 
 
 
@@ -210,7 +210,7 @@ Cold HDD, or C<standard> for Magnetic volumes.
 Defaults: If no volume type is specified, the default is C<standard> in
 us-east-1, eu-west-1, eu-central-1, us-west-2, us-west-1, sa-east-1,
 ap-northeast-1, ap-northeast-2, ap-southeast-1, ap-southeast-2,
-ap-south-1, us-gov-west-1, and cn-north-1. In all other regions, EBS
+ap-south-1, us-gov-west-1, and cn-north-1. In all other Regions, EBS
 defaults to C<gp2>.
 
 Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">

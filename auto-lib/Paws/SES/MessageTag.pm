@@ -38,7 +38,7 @@ C<SendEmail> or C<SendRawEmail> to apply to an email.
 Message tags, which you use with configuration sets, enable you to
 publish email sending events. For information about using configuration
 sets, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
 
 =head1 ATTRIBUTES
 

@@ -40,6 +40,29 @@ package Paws::MediaStoreData;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllItems {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListItems(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListItems(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Items }, @{ $next_result->Items };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Items') foreach (@{ $result->Items });
+        $result = $self->ListItems(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Items') foreach (@{ $result->Items });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteObject DescribeObject GetObject ListItems PutObject / }
@@ -74,7 +97,7 @@ An AWS Elemental MediaStore asset is an object, similar to an object in
 the Amazon S3 service. Objects are the fundamental entities that are
 stored in AWS Elemental MediaStore.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/mediastore/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/mediastore/>
 
 
 =head1 METHODS
@@ -126,7 +149,9 @@ Each argument is described in detail in: L<Paws::MediaStoreData::GetObject>
 
 Returns: a L<Paws::MediaStoreData::GetObjectResponse> instance
 
-Downloads the object at the specified path.
+Downloads the object at the specified path. If the objectE<rsquo>s
+upload availability is set to C<streaming>, AWS Elemental MediaStore
+downloads the object even if itE<rsquo>s still uploading the object.
 
 
 =head2 ListItems
@@ -164,6 +189,8 @@ specified folder.
 
 =item [StorageClass => Str]
 
+=item [UploadAvailability => Str]
+
 
 =back
 
@@ -171,8 +198,9 @@ Each argument is described in detail in: L<Paws::MediaStoreData::PutObject>
 
 Returns: a L<Paws::MediaStoreData::PutObjectResponse> instance
 
-Uploads an object to the specified path. Object sizes are limited to 10
-MB.
+Uploads an object to the specified path. Object sizes are limited to 25
+MB for standard upload availability and 10 MB for streaming upload
+availability.
 
 
 
@@ -180,6 +208,18 @@ MB.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllItems(sub { },[MaxResults => Int, NextToken => Str, Path => Str])
+
+=head2 ListAllItems([MaxResults => Int, NextToken => Str, Path => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Items, passing the object as the first parameter, and the string 'Items' as the second parameter 
+
+If not, it will return a a L<Paws::MediaStoreData::ListItemsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

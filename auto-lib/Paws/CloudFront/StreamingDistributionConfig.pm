@@ -51,18 +51,16 @@ names), if any, for this streaming distribution.
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  A unique number that ensures that the request can't be replayed. If the
-C<CallerReference> is new (no matter the content of the
-C<StreamingDistributionConfig> object), a new streaming distribution is
-created. If the C<CallerReference> is a value that you already sent in
-a previous request to create a streaming distribution, and the content
-of the C<StreamingDistributionConfig> is identical to the original
-request (ignoring white space), the response includes the same
-information returned to the original request. If the C<CallerReference>
-is a value that you already sent in a previous request to create a
-streaming distribution but the content of the
-C<StreamingDistributionConfig> is different from the original request,
-CloudFront returns a C<DistributionAlreadyExists> error.
+  A unique value (for example, a date-time stamp) that ensures that the
+request can't be replayed.
+
+If the value of C<CallerReference> is new (regardless of the content of
+the C<StreamingDistributionConfig> object), CloudFront creates a new
+distribution.
+
+If C<CallerReference> is a value that you already sent in a previous
+request to create a distribution, CloudFront returns a
+C<DistributionAlreadyExists> error.
 
 
 =head2 B<REQUIRED> Comment => Str
@@ -102,7 +100,7 @@ to create signed URLs for private content. If you want the distribution
 to use signed URLs, include this element; if you want the distribution
 to use public URLs, remove this element. For more information, see
 Serving Private Content through CloudFront
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 

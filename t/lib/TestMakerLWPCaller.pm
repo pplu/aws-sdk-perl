@@ -5,7 +5,7 @@ package TestMakerLWPCaller;
   use Carp;
   use File::Slurper 'write_text';
   use YAML qw/DumpFile/;
-  use Hash::Flatten qw//;
+  use DataStruct::Flat;
 
   override do_call => sub {
     my ($self, $service, $call_object) = @_;
@@ -44,7 +44,7 @@ package TestMakerLWPCaller;
     my $result = $service->response_to_object($unserialized_struct, $call_object);
     #TODO: build tests
     my $h = $service->to_hash($result);
-    $h = Hash::Flatten::flatten($h, { HashDelimiter => '.', ArrayDelimiter => '.' });
+    $h = DataStruct::Flat->new->flatten($h);
     $test->{ tests } = [ map { { expected => $h->{ $_ }, op => 'eq', path => $_ } } keys %$h ];
     DumpFile("${test_file_name}.test.yml", $test);
     print "Written test case to ${test_file_name}.test.yml\n";

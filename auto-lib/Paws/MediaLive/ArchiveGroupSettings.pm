@@ -32,16 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Placeholder documentation for ArchiveGroupSettings
+Archive Group Settings
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
 
-  A directory and base filename where archive files should be written. If
-the base filename portion of the URI is left blank, the base filename
-of the first input will be automatically inserted.
+  A directory and base filename where archive files should be written.
 
 
 =head2 RolloverInterval => Int

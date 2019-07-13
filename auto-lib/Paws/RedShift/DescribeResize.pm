@@ -35,15 +35,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AvgResizeRateInMegaBytesPerSecond =
       $ResizeProgressMessage->AvgResizeRateInMegaBytesPerSecond;
+    my $DataTransferProgressPercent =
+      $ResizeProgressMessage->DataTransferProgressPercent;
     my $ElapsedTimeInSeconds = $ResizeProgressMessage->ElapsedTimeInSeconds;
     my $EstimatedTimeToCompletionInSeconds =
       $ResizeProgressMessage->EstimatedTimeToCompletionInSeconds;
     my $ImportTablesCompleted  = $ResizeProgressMessage->ImportTablesCompleted;
     my $ImportTablesInProgress = $ResizeProgressMessage->ImportTablesInProgress;
     my $ImportTablesNotStarted = $ResizeProgressMessage->ImportTablesNotStarted;
+    my $Message                = $ResizeProgressMessage->Message;
     my $ProgressInMegaBytes    = $ResizeProgressMessage->ProgressInMegaBytes;
+    my $ResizeType             = $ResizeProgressMessage->ResizeType;
     my $Status                 = $ResizeProgressMessage->Status;
     my $TargetClusterType      = $ResizeProgressMessage->TargetClusterType;
+    my $TargetEncryptionType   = $ResizeProgressMessage->TargetEncryptionType;
     my $TargetNodeType         = $ResizeProgressMessage->TargetNodeType;
     my $TargetNumberOfNodes    = $ResizeProgressMessage->TargetNumberOfNodes;
     my $TotalResizeDataInMegaBytes =

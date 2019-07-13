@@ -3,6 +3,7 @@ package Paws::DeviceFarm::ScheduleRunTest;
   has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest']);
   has Parameters => (is => 'ro', isa => 'Paws::DeviceFarm::TestParameters', request_name => 'parameters', traits => ['NameInRequest']);
   has TestPackageArn => (is => 'ro', isa => 'Str', request_name => 'testPackageArn', traits => ['NameInRequest']);
+  has TestSpecArn => (is => 'ro', isa => 'Str', request_name => 'testSpecArn', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -34,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head1 DESCRIPTION
 
-Represents additional test settings.
+Represents test settings. This data structure is passed in as the
+"test" parameter to ScheduleRun. For an example of the JSON request
+syntax, see ScheduleRun.
 
 =head1 ATTRIBUTES
 
@@ -46,8 +49,19 @@ Represents additional test settings.
 
 =head2 Parameters => L<Paws::DeviceFarm::TestParameters>
 
-  The test's parameters, such as the following test framework parameters
-and fixture settings:
+  The test's parameters, such as test framework parameters and fixture
+settings. Parameters are represented by name-value pairs of strings.
+
+For all tests:
+
+=over
+
+=item *
+
+app_performance_monitoring: Performance monitoring is enabled by
+default. Set this parameter to "false" to disable it.
+
+=back
 
 For Calabash tests:
 
@@ -71,20 +85,20 @@ For Appium tests (all types):
 =item *
 
 appium_version: The Appium version. Currently supported values are
-"1.4.16", "1.6.3", "latest", and "default".
+"1.6.5" (and higher), "latest", and "default".
 
 =over
 
 =item *
 
 E<ldquo>latestE<rdquo> will run the latest Appium version supported by
-Device Farm (1.6.3).
+Device Farm (1.9.1).
 
 =item *
 
 For E<ldquo>defaultE<rdquo>, Device Farm will choose a compatible
-version of Appium for the device. The current behavior is to run 1.4.16
-on Android devices and iOS 9 and earlier, 1.6.3 for iOS 10 and later.
+version of Appium for the device. The current behavior is to run 1.7.2
+on Android devices and iOS 9 and earlier, 1.7.2 for iOS 10 and later.
 
 =item *
 
@@ -220,6 +234,11 @@ Running multiple tests: "com.android.abc.Test1,com.android.abc.Test2"
   The ARN of the uploaded test that will be run.
 
 
+=head2 TestSpecArn => Str
+
+  The ARN of the YAML-formatted test specification.
+
+
 =head2 B<REQUIRED> Type => Str
 
   The test's type.
@@ -252,15 +271,31 @@ APPIUM_PYTHON: The Appium Python type.
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.
+APPIUM_NODE: The Appium Node.js type.
 
 =item *
 
-APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.
+APPIUM_RUBY: The Appium Ruby type.
 
 =item *
 
-APPIUM_WEB_PYTHON: The Appium Python type for Web apps.
+APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for web apps.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for web apps.
+
+=item *
+
+APPIUM_WEB_PYTHON: The Appium Python type for web apps.
+
+=item *
+
+APPIUM_WEB_NODE: The Appium Node.js type for web apps.
+
+=item *
+
+APPIUM_WEB_RUBY: The Appium Ruby type for web apps.
 
 =item *
 
@@ -280,11 +315,11 @@ UIAUTOMATOR: The uiautomator type.
 
 =item *
 
-XCTEST: The XCode test type.
+XCTEST: The Xcode test type.
 
 =item *
 
-XCTEST_UI: The XCode UI test type.
+XCTEST_UI: The Xcode UI test type.
 
 =back
 

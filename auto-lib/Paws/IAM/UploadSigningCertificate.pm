@@ -32,11 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command uploads a signing certificate for the IAM user named
     # Bob.
     my $UploadSigningCertificateResponse = $iam->UploadSigningCertificate(
-      {
-        'CertificateBody' =>
+      'CertificateBody' =>
 '-----BEGIN CERTIFICATE-----<certificate-body>-----END CERTIFICATE-----',
-        'UserName' => 'Bob'
-      }
+      'UserName' => 'Bob'
     );
 
     # Results:
@@ -83,7 +81,7 @@ return (\u000D)
 
 The name of the user the signing certificate is for.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

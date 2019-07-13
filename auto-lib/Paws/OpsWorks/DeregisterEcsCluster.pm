@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ops
 
 =head2 B<REQUIRED> EcsClusterArn => Str
 
-The cluster's ARN.
+The cluster's Amazon Resource Number (ARN).
 
 
 

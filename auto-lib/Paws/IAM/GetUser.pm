@@ -29,11 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iam = Paws->service('IAM');
     # To get information about an IAM user
     # The following command gets information about the IAM user named Bob.
-    my $GetUserResponse = $iam->GetUser(
-      {
-        'UserName' => 'Bob'
-      }
-    );
+    my $GetUserResponse = $iam->GetUser( 'UserName' => 'Bob' );
 
     # Results:
     my $User = $GetUserResponse->User;
@@ -51,10 +47,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 The name of the user to get information about.
 
 This parameter is optional. If it is not included, it defaults to the
-user making the request. This parameter allows (per its regex pattern
-(http://wikipedia.org/wiki/regex)) a string of characters consisting of
-upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: _+=,.@-
+user making the request. This parameter allows (through its regex
+pattern (http://wikipedia.org/wiki/regex)) a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: _+=,.@-
 
 
 

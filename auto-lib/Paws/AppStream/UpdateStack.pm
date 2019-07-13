@@ -1,6 +1,7 @@
 
 package Paws::AppStream::UpdateStack;
   use Moose;
+  has ApplicationSettings => (is => 'ro', isa => 'Paws::AppStream::ApplicationSettings');
   has AttributesToDelete => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DeleteStorageConnectors => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
@@ -36,10 +37,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appstream2 = Paws->service('AppStream');
     my $UpdateStackResult = $appstream2->UpdateStack(
-      Name               => 'MyString',
+      Name                => 'MyString',
+      ApplicationSettings => {
+        Enabled       => 1,
+        SettingsGroup => 'MySettingsGroup',    # max: 100; OPTIONAL
+      },    # OPTIONAL
       AttributesToDelete => [
         'STORAGE_CONNECTORS',
-        ... # values: STORAGE_CONNECTORS, STORAGE_CONNECTOR_HOMEFOLDERS, STORAGE_CONNECTOR_GOOGLE_DRIVE, REDIRECT_URL, FEEDBACK_URL, THEME_NAME, USER_SETTINGS
+        ... # values: STORAGE_CONNECTORS, STORAGE_CONNECTOR_HOMEFOLDERS, STORAGE_CONNECTOR_GOOGLE_DRIVE, STORAGE_CONNECTOR_ONE_DRIVE, REDIRECT_URL, FEEDBACK_URL, THEME_NAME, USER_SETTINGS
       ],    # OPTIONAL
       DeleteStorageConnectors => 1,                  # OPTIONAL
       Description             => 'MyDescription',    # OPTIONAL
@@ -48,11 +53,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RedirectURL             => 'MyRedirectURL',    # OPTIONAL
       StorageConnectors       => [
         {
-          ConnectorType => 'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE
-          Domains       => [
-            'MyDomain', ...                  # max: 64
-          ],                                 # max: 10; OPTIONAL
-          ResourceIdentifier => 'MyResourceIdentifier',    # min: 1, ; OPTIONAL
+          ConnectorType =>
+            'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE, ONE_DRIVE
+          Domains => [
+            'MyDomain', ...    # max: 64
+          ],                   # max: 10; OPTIONAL
+          ResourceIdentifier => 'MyResourceIdentifier',    # min: 1; OPTIONAL
         },
         ...
       ],                                                   # OPTIONAL
@@ -73,9 +79,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AppStream::UpdateStackResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appstream2/UpdateStack>
 
 =head1 ATTRIBUTES
+
+
+=head2 ApplicationSettings => L<Paws::AppStream::ApplicationSettings>
+
+The persistent application settings for users of a stack. When these
+settings are enabled, changes that users make to applications and
+Windows settings are automatically saved after each session and applied
+to the next session.
+
 
 
 =head2 AttributesToDelete => ArrayRef[Str|Undef]
@@ -92,20 +107,21 @@ Deletes the storage connectors currently enabled for the stack.
 
 =head2 Description => Str
 
-The description for display.
+The description to display.
 
 
 
 =head2 DisplayName => Str
 
-The stack name for display.
+The stack name to display.
 
 
 
 =head2 FeedbackURL => Str
 
-The URL that users are redirected to after they click the Send Feedback
-link. If no URL is specified, no Send Feedback link is displayed.
+The URL that users are redirected to after they choose the Send
+Feedback link. If no URL is specified, no Send Feedback link is
+displayed.
 
 
 

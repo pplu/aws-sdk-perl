@@ -3,6 +3,7 @@ package Paws::Cloud9::Environment;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has Lifecycle => (is => 'ro', isa => 'Paws::Cloud9::EnvironmentLifecycle', request_name => 'lifecycle', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has OwnerArn => (is => 'ro', isa => 'Str', request_name => 'ownerArn', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
@@ -54,6 +55,11 @@ Information about an AWS Cloud9 development environment.
 =head2 Id => Str
 
   The ID of the environment.
+
+
+=head2 Lifecycle => L<Paws::Cloud9::EnvironmentLifecycle>
+
+  The state of the environment in its creation or deletion lifecycle.
 
 
 =head2 Name => Str

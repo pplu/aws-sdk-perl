@@ -42,8 +42,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Type => 'BLOCK',             # values: BLOCK, ALLOW, COUNT
 
             },    # OPTIONAL
+            ExcludedRules => [
+              {
+                RuleId => 'MyResourceId',    # min: 1, max: 128
+
+              },
+              ...
+            ],                               # OPTIONAL
             OverrideAction => {
-              Type => 'NONE',    # values: NONE, COUNT
+              Type => 'NONE',                # values: NONE, COUNT
 
             },    # OPTIONAL
             Type => 'REGULAR',    # values: REGULAR, RATE_BASED, GROUP; OPTIONAL

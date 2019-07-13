@@ -2,6 +2,7 @@
 package Paws::ECS::DescribeTasks;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Include => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'include' );
   has Tasks => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tasks' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -32,10 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example provides a description of the specified task, using the task
     # UUID as an identifier.
     my $DescribeTasksResponse = $ecs->DescribeTasks(
-      {
-        'Tasks' => ['c5cba4eb-5dad-405e-96db-71ef8eefe6a8']
-      }
-    );
+      'Tasks' => ['c5cba4eb-5dad-405e-96db-71ef8eefe6a8'] );
 
     # Results:
     my $failures = $DescribeTasksResponse->failures;
@@ -52,8 +50,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 =head2 Cluster => Str
 
 The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the task to describe. If you do not specify a cluster, the
-default cluster is assumed.
+hosts the task or tasks to describe. If you do not specify a cluster,
+the default cluster is assumed. This parameter is required if the task
+or tasks you are describing were launched in any cluster other than the
+default cluster.
+
+
+
+=head2 Include => ArrayRef[Str|Undef]
+
+Specifies whether you want to see the resource tags for the task. If
+C<TAGS> is specified, the tags are included in the response. If this
+field is omitted, tags are not included in the response.
 
 
 

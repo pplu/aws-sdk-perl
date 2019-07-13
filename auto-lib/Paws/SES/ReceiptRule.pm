@@ -47,7 +47,7 @@ receipt rule's actions on the message.
 
 For information about setting up receipt rules, see the Amazon SES
 Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
 
 =head1 ATTRIBUTES
 

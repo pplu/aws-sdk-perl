@@ -2,6 +2,7 @@ package Paws::SSM::AutomationExecutionMetadata;
   use Moose;
   has AutomationExecutionId => (is => 'ro', isa => 'Str');
   has AutomationExecutionStatus => (is => 'ro', isa => 'Str');
+  has AutomationType => (is => 'ro', isa => 'Str');
   has CurrentAction => (is => 'ro', isa => 'Str');
   has CurrentStepName => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str');
@@ -18,6 +19,7 @@ package Paws::SSM::AutomationExecutionMetadata;
   has ParentAutomationExecutionId => (is => 'ro', isa => 'Str');
   has ResolvedTargets => (is => 'ro', isa => 'Paws::SSM::ResolvedTargets');
   has Target => (is => 'ro', isa => 'Str');
+  has TargetMaps => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetMap]');
   has TargetParameterName => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 1;
@@ -66,14 +68,24 @@ Details about a specific Automation execution.
 Failed, Timed out, or Cancelled.
 
 
+=head2 AutomationType => Str
+
+  Use this filter with DescribeAutomationExecutions. Specify either Local
+or CrossAccount. CrossAccount is an Automation that runs in multiple
+AWS Regions and accounts. For more information, see Executing
+Automations in Multiple AWS Regions and Accounts
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)
+in the I<AWS Systems Manager User Guide>.
+
+
 =head2 CurrentAction => Str
 
-  The action of the currently executing step.
+  The action of the step that is currently running.
 
 
 =head2 CurrentStepName => Str
 
-  The name of the currently executing step.
+  The name of the step that is currently running.
 
 
 =head2 DocumentName => Str
@@ -88,7 +100,7 @@ Failed, Timed out, or Cancelled.
 
 =head2 ExecutedBy => Str
 
-  The IAM role ARN of the user who executed the Automation.
+  The IAM role ARN of the user who ran the Automation.
 
 
 =head2 ExecutionEndTime => Str
@@ -146,6 +158,12 @@ Automation.
 =head2 Target => Str
 
   The list of execution outputs as defined in the Automation document.
+
+
+=head2 TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]
+
+  The specified key-value mapping of document parameters to target
+resources.
 
 
 =head2 TargetParameterName => Str

@@ -17,6 +17,7 @@ package Paws::Lightsail::Instance;
   has SshKeyName => (is => 'ro', isa => 'Str', request_name => 'sshKeyName', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Paws::Lightsail::InstanceState', request_name => 'state', traits => ['NameInRequest']);
   has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
 1;
 
@@ -97,7 +98,7 @@ assigned to it.
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>
 
-  The region name and availability zone where the instance is located.
+  The region name and Availability Zone where the instance is located.
 
 
 =head2 Name => Str
@@ -143,6 +144,13 @@ C<LightsailDefaultKeyPair>).
 have questions about an instance or another resource in Lightsail. This
 code enables our support team to look up your Lightsail information
 more easily.
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+  The tag keys and optional values for the resource. For more information
+about tags in Lightsail, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags).
 
 
 =head2 Username => Str

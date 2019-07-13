@@ -45,16 +45,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExpressionType     => 'SQL',
       InputSerialization => {
         CSV => {
-          Comments       => 'MyComments',          # OPTIONAL
-          FieldDelimiter => 'MyFieldDelimiter',    # OPTIONAL
+          AllowQuotedRecordDelimiter => 1,                     # OPTIONAL
+          Comments                   => 'MyComments',          # OPTIONAL
+          FieldDelimiter             => 'MyFieldDelimiter',    # OPTIONAL
           FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
           QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
           QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
           RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
         },    # OPTIONAL
-        CompressionType => 'NONE',    # values: NONE, GZIP; OPTIONAL
+        CompressionType => 'NONE',    # values: NONE, GZIP, BZIP2; OPTIONAL
         JSON            => {
           Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
+        },    # OPTIONAL
+        Parquet => {
+
         },    # OPTIONAL
       },
       Key                 => 'MyObjectKey',
@@ -91,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The S3 Bucket.
+The S3 bucket.
 
 
 
@@ -103,7 +107,7 @@ The expression that is used to query the object.
 
 =head2 B<REQUIRED> ExpressionType => Str
 
-The type of the provided expression (e.g., SQL).
+The type of the provided expression (for example., SQL).
 
 Valid values are: C<"SQL">
 
@@ -115,7 +119,7 @@ Describes the format of the data in the object that is being queried.
 
 =head2 B<REQUIRED> Key => Str
 
-The Object Key.
+The object key.
 
 
 
@@ -134,23 +138,23 @@ Specifies if periodic request progress information should be enabled.
 
 =head2 SSECustomerAlgorithm => Str
 
-The SSE Algorithm used to encrypt the object. For more information, go
-to Server-Side Encryption (Using Customer-Provided Encryption Keys
+The SSE Algorithm used to encrypt the object. For more information, see
+Server-Side Encryption (Using Customer-Provided Encryption Keys
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 
 
 
 =head2 SSECustomerKey => Str
 
-The SSE Customer Key. For more information, go to Server-Side
-Encryption (Using Customer-Provided Encryption Keys
+The SSE Customer Key. For more information, see Server-Side Encryption
+(Using Customer-Provided Encryption Keys
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 
 
 
 =head2 SSECustomerKeyMD5 => Str
 
-The SSE Customer Key MD5. For more information, go to Server-Side
+The SSE Customer Key MD5. For more information, see Server-Side
 Encryption (Using Customer-Provided Encryption Keys
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html).
 

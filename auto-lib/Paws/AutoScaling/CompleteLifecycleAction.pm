@@ -35,12 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example notifies Auto Scaling that the specified lifecycle action is
     # complete so that it can finish launching or terminating the instance.
     my $CompleteLifecycleActionAnswer = $autoscaling->CompleteLifecycleAction(
-      {
-        'AutoScalingGroupName'  => 'my-auto-scaling-group',
-        'LifecycleActionResult' => 'CONTINUE',
-        'LifecycleActionToken'  => 'bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635',
-        'LifecycleHookName'     => 'my-lifecycle-hook'
-      }
+      'AutoScalingGroupName'  => 'my-auto-scaling-group',
+      'LifecycleActionResult' => 'CONTINUE',
+      'LifecycleActionToken'  => 'bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635',
+      'LifecycleHookName'     => 'my-lifecycle-hook'
     );
 
 
@@ -72,9 +70,9 @@ C<CONTINUE> or C<ABANDON>.
 =head2 LifecycleActionToken => Str
 
 A universally unique identifier (UUID) that identifies a specific
-lifecycle action associated with an instance. Auto Scaling sends this
-token to the notification target you specified when you created the
-lifecycle hook.
+lifecycle action associated with an instance. Amazon EC2 Auto Scaling
+sends this token to the notification target you specified when you
+created the lifecycle hook.
 
 
 

@@ -3,6 +3,7 @@ package Paws::RDS::DBSnapshot;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has DbiResourceId => (is => 'ro', isa => 'Str');
   has DBSnapshotArn => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
@@ -59,8 +60,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSnap
 
 Contains the details of an Amazon RDS DB snapshot.
 
-This data type is used as a response element in the DescribeDBSnapshots
-action.
+This data type is used as a response element in the
+C<DescribeDBSnapshots> action.
 
 =head1 ATTRIBUTES
 
@@ -80,6 +81,12 @@ in at the time of the DB snapshot.
 
   Specifies the DB instance identifier of the DB instance this DB
 snapshot was created from.
+
+
+=head2 DbiResourceId => Str
+
+  The identifier for the source DB instance, which can't be changed and
+which is unique to an AWS Region.
 
 
 =head2 DBSnapshotArn => Str

@@ -40,8 +40,8 @@ A tag and its associated resource.
 
 =head2 ResourceName => Str
 
-  The Amazon Resource Name (ARN) with which the tag is associated. For
-example, C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
+  The Amazon Resource Name (ARN) with which the tag is associated, for
+example: C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
 
 
 =head2 ResourceType => Str
@@ -92,7 +92,7 @@ Parameter group
 For more information about Amazon Redshift resource types and
 constructing ARNs, go to Constructing an Amazon Redshift Amazon
 Resource Name (ARN)
-(http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions)
 in the Amazon Redshift Cluster Management Guide.
 
 

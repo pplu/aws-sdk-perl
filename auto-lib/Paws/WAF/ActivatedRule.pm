@@ -1,6 +1,7 @@
 package Paws::WAF::ActivatedRule;
   use Moose;
   has Action => (is => 'ro', isa => 'Paws::WAF::WafAction');
+  has ExcludedRules => (is => 'ro', isa => 'ArrayRef[Paws::WAF::ExcludedRule]');
   has OverrideAction => (is => 'ro', isa => 'Paws::WAF::WafOverrideAction');
   has Priority => (is => 'ro', isa => 'Int', required => 1);
   has RuleId => (is => 'ro', isa => 'Str', required => 1);
@@ -71,10 +72,67 @@ based on the remaining rules in the web ACL.
 =back
 
 C<ActivatedRule|OverrideAction> applies only when updating or adding a
-C<RuleGroup> to a C<WebACL>. In this case you do not use
+C<RuleGroup> to a C<WebACL>. In this case, you do not use
 C<ActivatedRule|Action>. For all other update requests,
 C<ActivatedRule|Action> is used instead of
 C<ActivatedRule|OverrideAction>.
+
+
+=head2 ExcludedRules => ArrayRef[L<Paws::WAF::ExcludedRule>]
+
+  An array of rules to exclude from a rule group. This is applicable only
+when the C<ActivatedRule> refers to a C<RuleGroup>.
+
+Sometimes it is necessary to troubleshoot rule groups that are blocking
+traffic unexpectedly (false positives). One troubleshooting technique
+is to identify the specific rule within the rule group that is blocking
+the legitimate traffic and then disable (exclude) that particular rule.
+You can exclude rules from both your own rule groups and AWS
+Marketplace rule groups that have been associated with a web ACL.
+
+Specifying C<ExcludedRules> does not remove those rules from the rule
+group. Rather, it changes the action for the rules to C<COUNT>.
+Therefore, requests that match an C<ExcludedRule> are counted but not
+blocked. The C<RuleGroup> owner will receive COUNT metrics for each
+C<ExcludedRule>.
+
+If you want to exclude rules from a rule group that is already
+associated with a web ACL, perform the following steps:
+
+=over
+
+=item 1.
+
+Use the AWS WAF logs to identify the IDs of the rules that you want to
+exclude. For more information about the logs, see Logging Web ACL
+Traffic Information
+(https://docs.aws.amazon.com/waf/latest/developerguide/logging.html).
+
+=item 2.
+
+Submit an UpdateWebACL request that has two actions:
+
+=over
+
+=item *
+
+The first action deletes the existing rule group from the web ACL. That
+is, in the UpdateWebACL request, the first C<Updates:Action> should be
+C<DELETE> and C<Updates:ActivatedRule:RuleId> should be the rule group
+that contains the rules that you want to exclude.
+
+=item *
+
+The second action inserts the same rule group back in, but specifying
+the rules to exclude. That is, the second C<Updates:Action> should be
+C<INSERT>, C<Updates:ActivatedRule:RuleId> should be the rule group
+that you just removed, and C<ExcludedRules> should contain the rules
+that you want to exclude.
+
+=back
+
+=back
+
 
 
 =head2 OverrideAction => L<Paws::WAF::WafOverrideAction>

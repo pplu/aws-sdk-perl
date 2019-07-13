@@ -35,11 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specified settings.
     my $PurchaseReservedDBInstancesOfferingResult =
       $rds->PurchaseReservedDBInstancesOffering(
-      {
-        'ReservedDBInstanceId' => 'myreservationid',
-        'ReservedDBInstancesOfferingId' =>
-          'fb29428a-646d-4390-850e-5fe89926e727'
-      }
+      'ReservedDBInstanceId'          => 'myreservationid',
+      'ReservedDBInstancesOfferingId' => 'fb29428a-646d-4390-850e-5fe89926e727'
       );
 
 

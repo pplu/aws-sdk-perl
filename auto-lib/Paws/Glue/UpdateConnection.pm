@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConnectionInput => {
         ConnectionProperties => {
           'HOST' => 'MyValueString'
-          , # key: values: HOST, PORT, USERNAME, PASSWORD, JDBC_DRIVER_JAR_URI, JDBC_DRIVER_CLASS_NAME, JDBC_ENGINE, JDBC_ENGINE_VERSION, CONFIG_FILES, INSTANCE_ID, JDBC_CONNECTION_URL, value: max: 1024
+          , # key: values: HOST, PORT, USERNAME, PASSWORD, ENCRYPTED_PASSWORD, JDBC_DRIVER_JAR_URI, JDBC_DRIVER_CLASS_NAME, JDBC_ENGINE, JDBC_ENGINE_VERSION, CONFIG_FILES, INSTANCE_ID, JDBC_CONNECTION_URL, JDBC_ENFORCE_SSL, value: max: 1024
         },    # max: 100
         ConnectionType => 'JDBC',                   # values: JDBC, SFTP
         Name           => 'MyNameString',           # min: 1, max: 255
@@ -62,7 +62,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog in which the connection resides. If none is
-supplied, the AWS account ID is used by default.
+provided, the AWS account ID is used by default.
 
 
 

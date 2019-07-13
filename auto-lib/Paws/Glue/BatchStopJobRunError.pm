@@ -46,12 +46,12 @@ run.
 
 =head2 JobName => Str
 
-  The name of the job definition used in the job run in question.
+  The name of the job definition that is used in the job run in question.
 
 
 =head2 JobRunId => Str
 
-  The JobRunId of the job run in question.
+  The C<JobRunId> of the job run in question.
 
 
 

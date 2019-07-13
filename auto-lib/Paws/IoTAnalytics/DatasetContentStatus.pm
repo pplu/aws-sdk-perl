@@ -32,20 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-The state of the data set and the reason it is in this state.
+The state of the data set contents and the reason they are in this
+state.
 
 =head1 ATTRIBUTES
 
 
 =head2 Reason => Str
 
-  The reason the data set is in this state.
+  The reason the data set contents are in this state.
 
 
 =head2 State => Str
 
-  The state of the data set. Can be one of "CREATING", "SUCCEEDED" or
-"FAILED".
+  The state of the data set contents. Can be one of "READY", "CREATING",
+"SUCCEEDED" or "FAILED".
 
 
 

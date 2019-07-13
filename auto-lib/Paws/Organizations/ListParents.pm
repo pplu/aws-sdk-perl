@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 =head2 B<REQUIRED> ChildId => Str
 
 The unique identifier (ID) of the OU or account whose parent containers
-you want to list. Do not specify a root.
+you want to list. Don't specify a root.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a child ID
 string requires one of the following:
@@ -75,13 +75,13 @@ additional lower-case letters or digits.
 
 =head2 MaxResults => Int
 
-(Optional) Use this to limit the number of results you want included in
-the response. If you do not include this parameter, it defaults to a
-value that is specific to the operation. If additional items exist
-beyond the maximum you specify, the C<NextToken> response element is
-present and has a value (is not null). Include that value as the
-C<NextToken> request parameter in the next call to the operation to get
-the next part of the results. Note that Organizations might return
+(Optional) Use this to limit the number of results you want included
+per page in the response. If you do not include this parameter, it
+defaults to a value that is specific to the operation. If additional
+items exist beyond the maximum you specify, the C<NextToken> response
+element is present and has a value (is not null). Include that value as
+the C<NextToken> request parameter in the next call to the operation to
+get the next part of the results. Note that Organizations might return
 fewer results than the maximum even when there are more results
 available. You should check C<NextToken> after every operation to
 ensure that you receive all of the results.

@@ -41,7 +41,7 @@ Describes the input media file in a transcription request.
   The S3 location of the input media file. The URI must be in the same
 region as the API endpoint that you are calling. The general form is:
 
-C<https://E<lt>aws-regionE<gt>.amazonaws.com/E<lt>bucket-nameE<gt>/E<lt>keyprefixE<gt>/E<lt>objectkeyE<gt>>
+C<https://s3-E<lt>aws-regionE<gt>.amazonaws.com/E<lt>bucket-nameE<gt>/E<lt>keyprefixE<gt>/E<lt>objectkeyE<gt>>
 
 For example:
 

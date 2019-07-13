@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceName => 'MyResourceName',
       PortInfos    => [
         {
-          fromPort => 1,        # max: 65535; OPTIONAL
-          protocol => 'tcp',    # values: tcp, all, udp; OPTIONAL
-          toPort   => 1,        # max: 65535; OPTIONAL
+          FromPort => 1,        # max: 65535; OPTIONAL
+          Protocol => 'tcp',    # values: tcp, all, udp; OPTIONAL
+          ToPort   => 1,        # max: 65535; OPTIONAL
         },
         ...
       ],

@@ -125,7 +125,7 @@ value of C<INSTANCE_FLEET> indicates an instance fleets configuration.
   Attributes for Kerberos configuration when Kerberos authentication is
 enabled using a security configuration. For more information see Use
 Kerberos Authentication
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
 in the I<EMR Management Guide>.
 
 
@@ -159,7 +159,15 @@ only an approximation and does not reflect the actual billing rate.
 
 =head2 ReleaseLabel => Str
 
-  The release label for the Amazon EMR release.
+  The Amazon EMR release label, which determines the version of
+open-source application packages installed on the cluster. Release
+labels are in the form C<emr-x.x.x>, where x.x.x is an Amazon EMR
+release version, for example, C<emr-5.14.0>. For more information about
+Amazon EMR release versions and included application versions and
+features, see https://docs.aws.amazon.com/emr/latest/ReleaseGuide/
+(https://docs.aws.amazon.com/emr/latest/ReleaseGuide/). The release
+label applies only to Amazon EMR releases versions 4.x and later.
+Earlier versions use C<AmiVersion>.
 
 
 =head2 RepoUpgradeOnBoot => Str

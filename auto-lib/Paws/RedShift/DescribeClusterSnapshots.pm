@@ -9,6 +9,7 @@ package Paws::RedShift::DescribeClusterSnapshots;
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
+  has SortingEntities => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotSortingEntity]');
   has StartTime => (is => 'ro', isa => 'Str');
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -46,9 +47,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OwnerAccount       => 'MyString',               # OPTIONAL
       SnapshotIdentifier => 'MyString',               # OPTIONAL
       SnapshotType       => 'MyString',               # OPTIONAL
-      StartTime          => '1970-01-01T01:00:00',    # OPTIONAL
-      TagKeys            => [ 'MyString', ... ],      # OPTIONAL
-      TagValues          => [ 'MyString', ... ],      # OPTIONAL
+      SortingEntities    => [
+        {
+          Attribute =>
+            'SOURCE_TYPE',    # values: SOURCE_TYPE, TOTAL_SIZE, CREATE_TIME
+          SortOrder => 'ASC', # values: ASC, DESC; OPTIONAL
+        },
+        ...
+      ],                      # OPTIONAL
+      StartTime => '1970-01-01T01:00:00',    # OPTIONAL
+      TagKeys   => [ 'MyString', ... ],      # OPTIONAL
+      TagValues => [ 'MyString', ... ],      # OPTIONAL
     );
 
     # Results:
@@ -66,16 +75,42 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 =head2 ClusterExists => Bool
 
 A value that indicates whether to return snapshots only for an existing
-cluster. Table-level restore can be performed only using a snapshot of
-an existing cluster, that is, a cluster that has not been deleted. If
-C<ClusterExists> is set to C<true>, C<ClusterIdentifier> is required.
+cluster. You can perform table-level restore only by using a snapshot
+of an existing cluster, that is, a cluster that has not been deleted.
+Values for this parameter work as follows:
+
+=over
+
+=item *
+
+If C<ClusterExists> is set to C<true>, C<ClusterIdentifier> is
+required.
+
+=item *
+
+If C<ClusterExists> is set to C<false> and C<ClusterIdentifier> isn't
+specified, all snapshots associated with deleted clusters (orphaned
+snapshots) are returned.
+
+=item *
+
+If C<ClusterExists> is set to C<false> and C<ClusterIdentifier> is
+specified for a deleted cluster, snapshots associated with that cluster
+are returned.
+
+=item *
+
+If C<ClusterExists> is set to C<false> and C<ClusterIdentifier> is
+specified for an existing cluster, no snapshots are returned.
+
+=back
+
 
 
 
 =head2 ClusterIdentifier => Str
 
-The identifier of the cluster for which information about snapshots is
-requested.
+The identifier of the cluster which generated the requested snapshots.
 
 
 
@@ -137,6 +172,12 @@ The type of snapshots for which you are requesting information. By
 default, snapshots of all types are returned.
 
 Valid Values: C<automated> | C<manual>
+
+
+
+=head2 SortingEntities => ArrayRef[L<Paws::RedShift::SnapshotSortingEntity>]
+
+
 
 
 

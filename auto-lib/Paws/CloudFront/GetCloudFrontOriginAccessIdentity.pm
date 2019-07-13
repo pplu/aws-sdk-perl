@@ -6,7 +6,7 @@ package Paws::CloudFront::GetCloudFrontOriginAccessIdentity;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCloudFrontOriginAccessIdentity');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-30/origin-access-identity/cloudfront/{Id}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/origin-access-identity/cloudfront/{Id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::GetCloudFrontOriginAccessIdentityResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -21,11 +21,11 @@ Paws::CloudFront::GetCloudFrontOriginAccessIdentity - Arguments for method GetCl
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetCloudFrontOriginAccessIdentity2017_10_30 on the
+This class represents the parameters used for calling the method GetCloudFrontOriginAccessIdentity2019_03_26 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method GetCloudFrontOriginAccessIdentity2017_10_30.
+as arguments to method GetCloudFrontOriginAccessIdentity2019_03_26.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCloudFrontOriginAccessIdentity2017_10_30.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCloudFrontOriginAccessIdentity2019_03_26.
 
 =head1 SYNOPSIS
 
@@ -58,7 +58,7 @@ The identity's ID.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method GetCloudFrontOriginAccessIdentity2017_10_30 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method GetCloudFrontOriginAccessIdentity2019_03_26 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

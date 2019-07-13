@@ -46,6 +46,16 @@ lifecycle settings for application versions.
   The ARN of an IAM service role that Elastic Beanstalk has permission to
 assume.
 
+The C<ServiceRole> property is required the first time that you provide
+a C<VersionLifecycleConfig> for the application in one of the
+supporting calls (C<CreateApplication> or
+C<UpdateApplicationResourceLifecycle>). After you provide it once, in
+either one of the calls, Elastic Beanstalk persists the Service Role
+with the application, and you don't need to specify it again in
+subsequent C<UpdateApplicationResourceLifecycle> calls. You can,
+however, specify it in subsequent calls to change the Service Role to
+another value.
+
 
 =head2 VersionLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationVersionLifecycleConfig>
 

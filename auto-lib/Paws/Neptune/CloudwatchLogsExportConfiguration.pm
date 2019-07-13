@@ -35,6 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Neptune::Cl
 The configuration setting for the log types to be enabled for export to
 CloudWatch Logs for a specific DB instance or DB cluster.
 
+The C<EnableLogTypes> and C<DisableLogTypes> arrays determine which
+logs will be exported (or not exported) to CloudWatch Logs.
+
 =head1 ATTRIBUTES
 
 

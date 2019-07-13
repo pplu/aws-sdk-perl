@@ -70,6 +70,11 @@ package Paws::OpsWorksCM;
     my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::DisassociateNode', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ExportServerEngineAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::ExportServerEngineAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreServer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorksCM::RestoreServer', @_);
@@ -91,9 +96,78 @@ package Paws::OpsWorksCM;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllBackups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeBackups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeBackups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Backups }, @{ $next_result->Backups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Backups') foreach (@{ $result->Backups });
+        $result = $self->DescribeBackups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Backups') foreach (@{ $result->Backups });
+    }
+
+    return undef
+  }
+  sub DescribeAllEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ServerEvents }, @{ $next_result->ServerEvents };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ServerEvents') foreach (@{ $result->ServerEvents });
+        $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ServerEvents') foreach (@{ $result->ServerEvents });
+    }
+
+    return undef
+  }
+  sub DescribeAllServers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeServers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeServers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Servers }, @{ $next_result->Servers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Servers') foreach (@{ $result->Servers });
+        $result = $self->DescribeServers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Servers') foreach (@{ $result->Servers });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AssociateNode CreateBackup CreateServer DeleteBackup DeleteServer DescribeAccountAttributes DescribeBackups DescribeEvents DescribeNodeAssociationStatus DescribeServers DisassociateNode RestoreServer StartMaintenance UpdateServer UpdateServerEngineAttributes / }
+  sub operations { qw/AssociateNode CreateBackup CreateServer DeleteBackup DeleteServer DescribeAccountAttributes DescribeBackups DescribeEvents DescribeNodeAssociationStatus DescribeServers DisassociateNode ExportServerEngineAttribute RestoreServer StartMaintenance UpdateServer UpdateServerEngineAttributes / }
 
 1;
 
@@ -124,7 +198,10 @@ Paws::OpsWorksCM - Perl Interface to AWS AWS OpsWorks for Chef Automate
 AWS OpsWorks CM
 
 AWS OpsWorks for configuration management (CM) is a service that runs
-and manages configuration management servers.
+and manages configuration management servers. You can use AWS OpsWorks
+CM to create and manage AWS OpsWorks for Chef Automate and AWS OpsWorks
+for Puppet Enterprise servers, and add or remove nodes for the servers
+to manage.
 
 B<Glossary of terms>
 
@@ -144,7 +221,7 @@ servers, they continue to run until they are deleted.
 =item *
 
 B<Engine>: The engine is the specific configuration manager that you
-want to use. Valid values in this release include C<Chef> and
+want to use. Valid values in this release include C<ChefAutomate> and
 C<Puppet>.
 
 =item *
@@ -185,7 +262,31 @@ opsworks-cm.us-east-1.amazonaws.com
 
 =item *
 
+opsworks-cm.us-east-2.amazonaws.com
+
+=item *
+
+opsworks-cm.us-west-1.amazonaws.com
+
+=item *
+
 opsworks-cm.us-west-2.amazonaws.com
+
+=item *
+
+opsworks-cm.ap-northeast-1.amazonaws.com
+
+=item *
+
+opsworks-cm.ap-southeast-1.amazonaws.com
+
+=item *
+
+opsworks-cm.ap-southeast-2.amazonaws.com
+
+=item *
+
+opsworks-cm.eu-central-1.amazonaws.com
 
 =item *
 
@@ -198,7 +299,7 @@ B<Throttling limits>
 All API operations allow for five requests per second with a burst of
 10 requests per second.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/opsworks/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/opsworks/>
 
 
 =head1 METHODS
@@ -417,8 +518,7 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeAccountAttr
 
 Returns: a L<Paws::OpsWorksCM::DescribeAccountAttributesResponse> instance
 
-Describes your account attributes, and creates requests to increase
-limits before they are reached or exceeded.
+Describes your OpsWorks-CM account attributes.
 
 This operation is synchronous.
 
@@ -562,6 +662,36 @@ A C<ValidationException> is raised when parameters of the request are
 not valid.
 
 
+=head2 ExportServerEngineAttribute
+
+=over
+
+=item ExportAttributeName => Str
+
+=item ServerName => Str
+
+=item [InputAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::OpsWorksCM::ExportServerEngineAttribute>
+
+Returns: a L<Paws::OpsWorksCM::ExportServerEngineAttributeResponse> instance
+
+Exports a specified server engine attribute as a base64-encoded string.
+For example, you can export user data that you can use in EC2 to
+associate nodes with a server.
+
+This operation is synchronous.
+
+A C<ValidationException> is raised when parameters of the request are
+not valid. A C<ResourceNotFoundException> is thrown when the server
+does not exist. An C<InvalidStateException> is thrown when the server
+is in any of the following states: CREATING, TERMINATED, FAILED or
+DELETING.
+
+
 =head2 RestoreServer
 
 =over
@@ -669,9 +799,8 @@ Returns: a L<Paws::OpsWorksCM::UpdateServerEngineAttributesResponse> instance
 Updates engine-specific attributes on a specified server. The server
 enters the C<MODIFYING> state when this operation is in progress. Only
 one update can occur at a time. You can use this command to reset a
-Chef server's private key (C<CHEF_PIVOTAL_KEY>), a Chef server's admin
-password (C<CHEF_DELIVERY_ADMIN_PASSWORD>), or a Puppet server's admin
-password (C<PUPPET_ADMIN_PASSWORD>).
+Chef server's public key (C<CHEF_PIVOTAL_KEY>) or a Puppet server's
+admin password (C<PUPPET_ADMIN_PASSWORD>).
 
 This operation is asynchronous.
 
@@ -687,6 +816,42 @@ request are not valid.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllBackups(sub { },[BackupId => Str, MaxResults => Int, NextToken => Str, ServerName => Str])
+
+=head2 DescribeAllBackups([BackupId => Str, MaxResults => Int, NextToken => Str, ServerName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Backups, passing the object as the first parameter, and the string 'Backups' as the second parameter 
+
+If not, it will return a a L<Paws::OpsWorksCM::DescribeBackupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEvents(sub { },ServerName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllEvents(ServerName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ServerEvents, passing the object as the first parameter, and the string 'ServerEvents' as the second parameter 
+
+If not, it will return a a L<Paws::OpsWorksCM::DescribeEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllServers(sub { },[MaxResults => Int, NextToken => Str, ServerName => Str])
+
+=head2 DescribeAllServers([MaxResults => Int, NextToken => Str, ServerName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Servers, passing the object as the first parameter, and the string 'Servers' as the second parameter 
+
+If not, it will return a a L<Paws::OpsWorksCM::DescribeServersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

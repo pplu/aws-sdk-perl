@@ -23,7 +23,7 @@ The name of the application that corresponds to the revisions.
 
 =head2 ErrorMessage => Str
 
-Information about errors that may have occurred during the API call.
+Information about errors that might have occurred during the API call.
 
 
 =head2 Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionInfo>]

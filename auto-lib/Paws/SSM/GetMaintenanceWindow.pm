@@ -35,15 +35,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AllowUnassociatedTargets =
       $GetMaintenanceWindowResult->AllowUnassociatedTargets;
-    my $CreatedDate  = $GetMaintenanceWindowResult->CreatedDate;
-    my $Cutoff       = $GetMaintenanceWindowResult->Cutoff;
-    my $Description  = $GetMaintenanceWindowResult->Description;
-    my $Duration     = $GetMaintenanceWindowResult->Duration;
-    my $Enabled      = $GetMaintenanceWindowResult->Enabled;
-    my $ModifiedDate = $GetMaintenanceWindowResult->ModifiedDate;
-    my $Name         = $GetMaintenanceWindowResult->Name;
-    my $Schedule     = $GetMaintenanceWindowResult->Schedule;
-    my $WindowId     = $GetMaintenanceWindowResult->WindowId;
+    my $CreatedDate       = $GetMaintenanceWindowResult->CreatedDate;
+    my $Cutoff            = $GetMaintenanceWindowResult->Cutoff;
+    my $Description       = $GetMaintenanceWindowResult->Description;
+    my $Duration          = $GetMaintenanceWindowResult->Duration;
+    my $Enabled           = $GetMaintenanceWindowResult->Enabled;
+    my $EndDate           = $GetMaintenanceWindowResult->EndDate;
+    my $ModifiedDate      = $GetMaintenanceWindowResult->ModifiedDate;
+    my $Name              = $GetMaintenanceWindowResult->Name;
+    my $NextExecutionTime = $GetMaintenanceWindowResult->NextExecutionTime;
+    my $Schedule          = $GetMaintenanceWindowResult->Schedule;
+    my $ScheduleTimezone  = $GetMaintenanceWindowResult->ScheduleTimezone;
+    my $StartDate         = $GetMaintenanceWindowResult->StartDate;
+    my $WindowId          = $GetMaintenanceWindowResult->WindowId;
 
     # Returns a L<Paws::SSM::GetMaintenanceWindowResult> object.
 
@@ -55,7 +59,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> WindowId => Str
 
-The ID of the desired Maintenance Window.
+The ID of the maintenance window for which you want to retrieve
+information.
 
 
 

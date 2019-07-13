@@ -33,22 +33,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Information about a WorkSpace that could not be rebooted
-(RebootWorkspaces), rebuilt (RebuildWorkspaces), terminated
-(TerminateWorkspaces), started (StartWorkspaces), or stopped
-(StopWorkspaces).
+Describes a WorkSpace that could not be rebooted. (RebootWorkspaces),
+rebuilt (RebuildWorkspaces), terminated (TerminateWorkspaces), started
+(StartWorkspaces), or stopped (StopWorkspaces).
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorCode => Str
 
-  The error code.
+  The error code that is returned if the WorkSpace cannot be rebooted.
 
 
 =head2 ErrorMessage => Str
 
-  The textual error message.
+  The text of the error message that is returned if the WorkSpace cannot
+be rebooted.
 
 
 =head2 WorkspaceId => Str

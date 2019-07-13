@@ -64,7 +64,7 @@ configuration and specify the new origin access identity.
 
 For more information about the origin access identity, see Serving
 Private Content through CloudFront
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 

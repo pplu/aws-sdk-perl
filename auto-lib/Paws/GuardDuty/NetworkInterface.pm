@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-The network interface information of the EC2 instance.
+This class has no description
 
 =head1 ATTRIBUTES
 

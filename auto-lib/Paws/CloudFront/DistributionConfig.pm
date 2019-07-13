@@ -11,6 +11,7 @@ package Paws::CloudFront::DistributionConfig;
   has HttpVersion => (is => 'ro', isa => 'Str');
   has IsIPV6Enabled => (is => 'ro', isa => 'Bool');
   has Logging => (is => 'ro', isa => 'Paws::CloudFront::LoggingConfig');
+  has OriginGroups => (is => 'ro', isa => 'Paws::CloudFront::OriginGroups');
   has Origins => (is => 'ro', isa => 'Paws::CloudFront::Origins', required => 1);
   has PriceClass => (is => 'ro', isa => 'Str');
   has Restrictions => (is => 'ro', isa => 'Paws::CloudFront::Restrictions');
@@ -71,15 +72,8 @@ If the value of C<CallerReference> is new (regardless of the content of
 the C<DistributionConfig> object), CloudFront creates a new
 distribution.
 
-If C<CallerReference> is a value you already sent in a previous request
-to create a distribution, and if the content of the
-C<DistributionConfig> is identical to the original request (ignoring
-white space), CloudFront returns the same the response that it returned
-to the original request.
-
-If C<CallerReference> is a value you already sent in a previous request
-to create a distribution but the content of the C<DistributionConfig>
-is different from the original request, CloudFront returns a
+If C<CallerReference> is a value that you already sent in a previous
+request to create a distribution, CloudFront returns a
 C<DistributionAlreadyExists> error.
 
 
@@ -116,7 +110,7 @@ How long CloudFront caches HTTP status codes in the 4xx and 5xx range.
 
 For more information about custom error pages, see Customizing Error
 Responses
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 
@@ -152,16 +146,13 @@ configuration and specify the new object.
 
 For more information about the default root object, see Creating a
 Default Root Object
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> Enabled => Bool
 
   From this field, you can enable or disable the selected distribution.
-
-If you specify C<false> for C<Enabled> but you specify values for
-C<Bucket> and C<Prefix>, the values are automatically deleted.
 
 
 =head2 HttpVersion => Str
@@ -197,7 +188,7 @@ IPv6. If you want to restrict access to some content by IP address and
 not restrict access to other content (or restrict access but not by IP
 address), you can create two distributions. For more information, see
 Creating a Signed URL Using a Custom Policy
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-creating-signed-url-custom-policy.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-creating-signed-url-custom-policy.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 If you're using an Amazon Route 53 alias resource record set to route
@@ -218,7 +209,7 @@ You're using alternate domain names in the URLs for your objects
 
 For more information, see Routing Traffic to an Amazon CloudFront Web
 Distribution by Using Your Domain Name
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 If you created a CNAME resource record set, either with Amazon Route 53
@@ -233,8 +224,14 @@ IP address format of the viewer request.
 distribution.
 
 For more information about logging, see Access Logs
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)
 in the I<Amazon CloudFront Developer Guide>.
+
+
+=head2 OriginGroups => L<Paws::CloudFront::OriginGroups>
+
+  A complex type that contains information about origin groups for this
+distribution.
 
 
 =head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>
@@ -258,21 +255,26 @@ class may encounter slower performance.
 
 For more information about price classes, see Choosing the Price Class
 for a CloudFront Distribution
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PriceClass.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PriceClass.html)
 in the I<Amazon CloudFront Developer Guide>. For information about
-CloudFront pricing, including how price classes map to CloudFront
-regions, see Amazon CloudFront Pricing
-(https://aws.amazon.com/cloudfront/pricing/).
+CloudFront pricing, including how price classes (such as Price Class
+100) map to CloudFront regions, see Amazon CloudFront Pricing
+(http://aws.amazon.com/cloudfront/pricing/). For price class
+information, scroll down to see the table at the bottom of the page.
 
 
 =head2 Restrictions => L<Paws::CloudFront::Restrictions>
 
-  
+  A complex type that identifies ways in which you want to restrict
+distribution of your content.
 
 
 =head2 ViewerCertificate => L<Paws::CloudFront::ViewerCertificate>
 
-  
+  A complex type that specifies whether you want viewers to use HTTP or
+HTTPS to request your objects, whether you're using an alternate domain
+name with HTTPS, and if so, if you're using AWS Certificate Manager
+(ACM) or a third-party certificate authority.
 
 
 =head2 WebACLId => Str

@@ -2,6 +2,7 @@
 package Paws::Lightsail::CreateKeyPair;
   use Moose;
   has KeyPairName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPairName' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $lightsail = Paws->service('Lightsail');
     my $CreateKeyPairResult = $lightsail->CreateKeyPair(
       KeyPairName => 'MyResourceName',
-
+      Tags        => [
+        {
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -49,6 +56,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 =head2 B<REQUIRED> KeyPairName => Str
 
 The name for your new key pair.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the C<tag resource>
+operation.
 
 
 

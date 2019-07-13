@@ -36,10 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example lists information for all option groups for the specified DB
     # engine.
     my $OptionGroups = $rds->DescribeOptionGroups(
-      {
-        'EngineName'         => 'mysql',
-        'MajorEngineVersion' => 5.6
-      }
+      'EngineName'         => 'mysql',
+      'MajorEngineVersion' => 5.6
     );
 
 
@@ -94,7 +92,7 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 OptionGroupName => Str
 
-The name of the option group to describe. Cannot be supplied together
+The name of the option group to describe. Can't be supplied together
 with EngineName or MajorEngineVersion.
 
 

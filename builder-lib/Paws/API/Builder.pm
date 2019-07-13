@@ -45,41 +45,41 @@ package Paws::API::Builder {
   has template_path => (is => 'ro', required => 1);
 
   has service_url_overrides => (is => 'ro', isa => 'HashRef', default => sub { {
-    mq => 'https://aws.amazon.com/documentation/amazon-mq/',
-    email => 'https://aws.amazon.com/documentation/ses/',
-    es => 'https://aws.amazon.com/documentation/elasticsearch-service/',
-    support => 'https://aws.amazon.com/documentation/aws-support/',
-    sts => 'https://aws.amazon.com/documentation/iam/',
-    states => 'https://aws.amazon.com/documentation/step-functions/',
-   'opsworks-cm' => 'https://aws.amazon.com/documentation/opsworks/',
-    monitoring => 'https://aws.amazon.com/documentation/cloudwatch/',
-    events => 'https://aws.amazon.com/documentation/cloudwatch/',
-    logs => 'https://aws.amazon.com/documentation/cloudwatch/',
-   'cognito-identity' => 'https://aws.amazon.com/documentation/cognito/',
-   'cognito-idp' => 'https://aws.amazon.com/documentation/cognito/',
-   'cognito-sync' => 'https://aws.amazon.com/documentation/cognito/',
-   'api.pricing' => 'https://aws.amazon.com/documentation/account-billing/',
-    ce => 'https://aws.amazon.com/documentation/account-billing/',
-    budgets => 'https://aws.amazon.com/documentation/account-billing/',
-    greengrass => 'https://aws.amazon.com/documentation/greengrass/',
-    glacier => 'https://aws.amazon.com/documentation/glacier/',
-    apigateway => 'https://aws.amazon.com/documentation/apigateway/',
-   'streams.dynamodb' => 'https://aws.amazon.com/documentation/dynamodb/',
-    lex => 'https://aws.amazon.com/documentation/lex/',
-   'models.lex' => 'https://aws.amazon.com/documentation/lex/',
+    mq => 'https://docs.aws.amazon.com/amazon-mq/',
+    email => 'https://docs.aws.amazon.com/ses/',
+    es => 'https://docs.aws.amazon.com/elasticsearch-service/',
+    support => 'https://docs.aws.amazon.com/aws-support/',
+    sts => 'https://docs.aws.amazon.com/iam/',
+    states => 'https://docs.aws.amazon.com/step-functions/',
+   'opsworks-cm' => 'https://docs.aws.amazon.com/opsworks/',
+    monitoring => 'https://docs.aws.amazon.com/cloudwatch/',
+    events => 'https://docs.aws.amazon.com/cloudwatch/',
+    logs => 'https://docs.aws.amazon.com/cloudwatch/',
+   'cognito-identity' => 'https://docs.aws.amazon.com/cognito/',
+   'cognito-idp' => 'https://docs.aws.amazon.com/cognito/',
+   'cognito-sync' => 'https://docs.aws.amazon.com/cognito/',
+   'api.pricing' => 'https://docs.aws.amazon.com/account-billing/',
+    ce => 'https://docs.aws.amazon.com/account-billing/',
+    budgets => 'https://docs.aws.amazon.com/account-billing/',
+    greengrass => 'https://docs.aws.amazon.com/greengrass/',
+    glacier => 'https://docs.aws.amazon.com/glacier/',
+    apigateway => 'https://docs.aws.amazon.com/apigateway/',
+   'streams.dynamodb' => 'https://docs.aws.amazon.com/dynamodb/',
+    lex => 'https://docs.aws.amazon.com/lex/',
+   'models.lex' => 'https://docs.aws.amazon.com/lex/',
    'entitlement.marketplace' => 'https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/Welcome.html',
     marketplacecommerceanalytics => 'https://docs.aws.amazon.com/marketplace/latest/userguide/commerce-analytics-service.html',
-   'data.mediastore' => 'https://aws.amazon.com/documentation/mediastore/',
+   'data.mediastore' => 'https://docs.aws.amazon.com/mediastore/',
    'metering.marketplace' => 'https://docs.aws.amazon.com/marketplacemetering/latest/APIReference/Welcome.html',
-    mgh => 'https://aws.amazon.com/documentation/migrationhub/',
-    mobile => 'https://aws.amazon.com/documentation/mobile-hub/',
-   'mturk-requester' => 'https://aws.amazon.com/documentation/mturk/',
+    mgh => 'https://docs.aws.amazon.com/migrationhub/',
+    mobile => 'https://docs.aws.amazon.com/mobile-hub/',
+   'mturk-requester' => 'https://docs.aws.amazon.com/mturk/',
     tagging => 'https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html',
-    sdb => 'https://aws.amazon.com/documentation/simpledb/',
-    clouddirectory => 'https://aws.amazon.com/documentation/directory-service/',
-    cloudsearchdomain => 'https://aws.amazon.com/documentation/cloudsearch/',
-    'data.iot' => 'https://aws.amazon.com/documentation/iot/',
-    'data.jobs.iot' => 'https://aws.amazon.com/documentation/iot/',
+    sdb => 'https://docs.aws.amazon.com/simpledb/',
+    clouddirectory => 'https://docs.aws.amazon.com/directory-service/',
+    cloudsearchdomain => 'https://docs.aws.amazon.com/cloudsearch/',
+    'data.iot' => 'https://docs.aws.amazon.com/iot/',
+    'data.jobs.iot' => 'https://docs.aws.amazon.com/iot/',
     cur => 'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html',
   } });
 
@@ -102,7 +102,7 @@ package Paws::API::Builder {
     my ($self, $url) = @_;
     my $ua = Mojo::UserAgent->new;
     my $res = $ua->max_redirects(5)->head($url)->req->url->to_string;
-    if ($res ne 'https://aws.amazon.com/documentation/') {
+    if ($res ne 'https://aws.amazon.com/documentation/' or $res ne 'https://docs.aws.amazon.com/index.html') {
       return 1;
     } else {
       return 0;
@@ -244,6 +244,10 @@ package Paws::API::Builder {
     return 'SimulateAllPrincipalPolicies' if ($name eq 'SimulatePrincipalPolicy');
     return 'PollForAllDecisionTasks' if ($name eq 'PollForDecisionTask');
     return 'PreviewAllAgents' if ($name eq 'PreviewAgents');
+    return 'AdminListAllGroupsForUser' if ($name eq 'AdminListGroupsForUser');
+    return 'AdminListAllUserAuthEvents' if ($name eq 'AdminListUserAuthEvents');
+    return 'ViewAllBilling' if ($name eq 'ViewBilling');
+    return 'ScanAllProvisionedProducts' if ($name eq 'ScanProvisionedProducts');
 
     die "Please help me generate a good name for the paginator $name";
   }
@@ -369,15 +373,7 @@ package Paws::API::Builder {
     is => 'ro',
     isa => 'HashRef',
     lazy => 1,
-    default => sub {
-      my $self = shift;
-      my $ret = {};
-      foreach my $shape_name ($self->shapes) {
-        my $shape = $self->shape($shape_name);
-        $ret->{ $shape_name } = $shape if (defined $shape->{ exception });
-      }
-      return $ret;
-    },
+    builder => 'build_exception_shapes',
     traits => [ 'Hash' ],
     handles => {
       exception_shape => 'get',
@@ -385,6 +381,16 @@ package Paws::API::Builder {
       is_exception_shape => 'exists',
     }
   );
+
+  sub build_exception_shapes {
+    my $self = shift;
+    my $ret = {};
+    foreach my $shape_name ($self->shapes) {
+      my $shape = $self->shape($shape_name);
+      $ret->{ $shape_name } = $shape if (defined $shape->{ exception });
+    }
+    return $ret;
+  }
 
   sub capitalize {
     my ($self, $shape) = @_;
@@ -724,7 +730,10 @@ package Paws::API::Builder {
 
     if (exists $shape->{ max } || exists $shape->{ min } ) {
       if( $shape->{ min } ) {
-        $comment_str .= 'min: '. $shape->{ min } . ', ';
+        $comment_str .= 'min: '. $shape->{ min };
+      }
+      if ($shape->{ min } and $shape->{ max }) {
+        $comment_str .= ', ';
       }
       if( $shape->{ max } ) {
         $comment_str .= 'max: '. $shape->{ max };
@@ -811,13 +820,13 @@ package Paws::API::Builder {
         . join(",\n", (map { $self->dump_perl($_, $depth+1, %args) } (@$val) ))
         . "\n]";
     } elsif( ref $val eq 'HASH' ) {
-      return "\n{\n"
+      return
+        (($depth == 1) ? "\n" : "\n{\n")
         . join(",\n", (map { $self->dump_perl($_, $depth+1, %args, is_key => 1)
                              . ' => '
                              . $self->dump_perl($val->{$_}, $depth+1, %args, no_quote => 1) }
                                  (sort keys %$val) ))
-        . "\n}";
-
+        . (($depth == 1) ? "" : "\n}");
     } else {
       die "Tried to dump something strange when creating an example: $val ", ref $val;
     }
@@ -869,7 +878,7 @@ package Paws::API::Builder {
       if ($self->is_url_working($override)) {
         return $override;
       } else {
-        die "Looks like documentation for " . $self->service . " has disappeared";
+        die "Looks like documentation for " . $self->service . " has disappeared: $override";
       }
     }
 
@@ -925,6 +934,13 @@ package Paws::API::Builder {
     my $output = '';
     my ($calls, $results);
     $self->validate_shapes;
+
+    # These methods mutate things in the "operations" attribute (they capitalize shapes)
+    # Right now, documentation generation is reading from ->operations. We want these
+    # to do their stuff before documentation generation kicks in.
+    $self->_input_shapes;
+    $self->_output_shapes;
+    $self->_inner_shapes;
 
     foreach my $shape_name ($self->shapes) {
       $self->shape($shape_name)->{ perl_type } = $self->get_caller_class_type($shape_name);

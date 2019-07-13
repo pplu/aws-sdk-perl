@@ -3,6 +3,7 @@ package Paws::RedShift::Cluster;
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has ClusterAvailabilityStatus => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ClusterNodes => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterNode]');
@@ -14,22 +15,31 @@ package Paws::RedShift::Cluster;
   has ClusterStatus => (is => 'ro', isa => 'Str');
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
+  has DataTransferProgress => (is => 'ro', isa => 'Paws::RedShift::DataTransferProgress');
   has DBName => (is => 'ro', isa => 'Str');
+  has DeferredMaintenanceWindows => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::DeferredMaintenanceWindow]', request_name => 'DeferredMaintenanceWindow', traits => ['NameInRequest']);
   has ElasticIpStatus => (is => 'ro', isa => 'Paws::RedShift::ElasticIpStatus');
+  has ElasticResizeNumberOfNodeOptions => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Endpoint => (is => 'ro', isa => 'Paws::RedShift::Endpoint');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmStatus => (is => 'ro', isa => 'Paws::RedShift::HsmStatus');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterIamRole]', request_name => 'ClusterIamRole', traits => ['NameInRequest']);
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has ModifyStatus => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
+  has PendingActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RedShift::PendingModifiedValues');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+  has ResizeInfo => (is => 'ro', isa => 'Paws::RedShift::ResizeInfo');
   has RestoreStatus => (is => 'ro', isa => 'Paws::RedShift::RestoreStatus');
+  has SnapshotScheduleIdentifier => (is => 'ro', isa => 'Str');
+  has SnapshotScheduleState => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroup', traits => ['NameInRequest']);
@@ -70,7 +80,7 @@ Describes a cluster.
 
 =head2 AllowVersionUpgrade => Bool
 
-  A Boolean value that, if C<true>, indicates that major version upgrades
+  A boolean value that, if C<true>, indicates that major version upgrades
 will be applied automatically to the cluster during the maintenance
 window.
 
@@ -83,6 +93,39 @@ window.
 =head2 AvailabilityZone => Str
 
   The name of the Availability Zone in which the cluster is located.
+
+
+=head2 ClusterAvailabilityStatus => Str
+
+  The availability status of the cluster for queries. Possible values are
+the following:
+
+=over
+
+=item *
+
+Available - The cluster is available for queries.
+
+=item *
+
+Unavailable - The cluster is not available for queries.
+
+=item *
+
+Maintenance - The cluster is intermittently available for queries due
+to maintenance activities.
+
+=item *
+
+Modifying - The cluster is intermittently available for queries due to
+changes that modify the cluster.
+
+=item *
+
+Failed - The cluster failed and is not available for queries.
+
+=back
+
 
 
 =head2 ClusterCreateTime => Str
@@ -144,6 +187,18 @@ are configured for cross-region snapshot copy.
 =item *
 
 C<available>
+
+=item *
+
+C<available, prep-for-resize>
+
+=item *
+
+C<available, resize-cleanup>
+
+=item *
+
+C<cancelling-resize>
 
 =item *
 
@@ -221,6 +276,11 @@ parameter is valid only when the cluster is in a VPC.
 cluster.
 
 
+=head2 DataTransferProgress => L<Paws::RedShift::DataTransferProgress>
+
+  
+
+
 =head2 DBName => Str
 
   The name of the initial database that was created when the cluster was
@@ -229,14 +289,25 @@ initial database was not specified, a database named C<dev>dev was
 created by default.
 
 
+=head2 DeferredMaintenanceWindows => ArrayRef[L<Paws::RedShift::DeferredMaintenanceWindow>]
+
+  Describes a group of C<DeferredMaintenanceWindow> objects.
+
+
 =head2 ElasticIpStatus => L<Paws::RedShift::ElasticIpStatus>
 
   The status of the elastic IP (EIP) address.
 
 
+=head2 ElasticResizeNumberOfNodeOptions => Str
+
+  The number of nodes that you can resize the cluster to with the elastic
+resize method.
+
+
 =head2 Encrypted => Bool
 
-  A Boolean value that, if C<true>, indicates that data in the cluster is
+  A boolean value that, if C<true>, indicates that data in the cluster is
 encrypted at rest.
 
 
@@ -251,7 +322,7 @@ encrypted at rest.
 VPC routing enabled. To create a cluster that uses enhanced VPC
 routing, the cluster must be in a VPC. For more information, see
 Enhanced VPC Routing
-(http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
 in the Amazon Redshift Cluster Management Guide.
 
 If this option is C<true>, enhanced VPC routing is enabled.
@@ -280,6 +351,20 @@ used by the cluster to access other AWS services.
 used to encrypt data in the cluster.
 
 
+=head2 MaintenanceTrackName => Str
+
+  The name of the maintenance track for the cluster.
+
+
+=head2 ManualSnapshotRetentionPeriod => Int
+
+  The default number of days to retain a manual snapshot. If the value is
+-1, the snapshot is retained indefinitely. This setting doesn't change
+the retention period of existing snapshots.
+
+The value must be either -1 or an integer between 1 and 3,653.
+
+
 =head2 MasterUsername => Str
 
   The master user name for the cluster. This name is used to connect to
@@ -301,6 +386,11 @@ the database that is specified in the B<DBName> parameter.
   The number of compute nodes in the cluster.
 
 
+=head2 PendingActions => ArrayRef[Str|Undef]
+
+  Cluster operations that are waiting to be started.
+
+
 =head2 PendingModifiedValues => L<Paws::RedShift::PendingModifiedValues>
 
   A value that, if present, indicates that changes to the cluster are
@@ -315,8 +405,27 @@ which system maintenance can occur.
 
 =head2 PubliclyAccessible => Bool
 
-  A Boolean value that, if C<true>, indicates that the cluster can be
+  A boolean value that, if C<true>, indicates that the cluster can be
 accessed from a public network.
+
+
+=head2 ResizeInfo => L<Paws::RedShift::ResizeInfo>
+
+  Returns the following:
+
+=over
+
+=item *
+
+AllowCancelResize: a boolean value indicating if the resize operation
+can be cancelled.
+
+=item *
+
+ResizeType: Returns ClassicResize
+
+=back
+
 
 
 =head2 RestoreStatus => L<Paws::RedShift::RestoreStatus>
@@ -324,6 +433,16 @@ accessed from a public network.
   A value that describes the status of a cluster restore action. This
 parameter returns null if the cluster was not created by restoring a
 snapshot.
+
+
+=head2 SnapshotScheduleIdentifier => Str
+
+  A unique identifier for the cluster snapshot schedule.
+
+
+=head2 SnapshotScheduleState => Str
+
+  The current state of the cluster snapshot schedule.
 
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]

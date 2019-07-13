@@ -44,7 +44,7 @@ Describes the status of a parameter group.
 
 For more information about parameters and parameter groups, go to
 Amazon Redshift Parameter Groups
-(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 

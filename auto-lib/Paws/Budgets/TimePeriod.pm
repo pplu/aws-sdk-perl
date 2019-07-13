@@ -32,9 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Ti
 
 =head1 DESCRIPTION
 
-The period of time covered by a budget. Has a start date and an end
-date. The start date must come before the end date. There are no
-restrictions on the end date.
+The period of time that is covered by a budget. The period has a start
+date and an end date. The start date must come before the end date.
+There are no restrictions on the end date.
 
 =head1 ATTRIBUTES
 
@@ -54,12 +54,12 @@ C<UpdateBudget> operation.
 
   The start date for a budget. If you created your budget and didn't
 specify a start date, AWS defaults to the start of your chosen time
-period (i.e. DAILY, MONTHLY, QUARTERLY, ANNUALLY). For example, if you
-created your budget on January 24th 2018, chose C<DAILY>, and didn't
-set a start date, AWS set your start date to C<01/24/18 00:00 UTC>. If
-you chose C<MONTHLY>, AWS set your start date to C<01/01/18 00:00 UTC>.
-The defaults are the same for the AWS Billing and Cost Management
-console and the API.
+period (DAILY, MONTHLY, QUARTERLY, or ANNUALLY). For example, if you
+created your budget on January 24, 2018, chose C<DAILY>, and didn't set
+a start date, AWS set your start date to C<01/24/18 00:00 UTC>. If you
+chose C<MONTHLY>, AWS set your start date to C<01/01/18 00:00 UTC>. The
+defaults are the same for the AWS Billing and Cost Management console
+and the API.
 
 You can change your start date with the C<UpdateBudget> operation.
 

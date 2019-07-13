@@ -56,7 +56,7 @@ Represents a node in a directed acyclic graph (DAG)
 
 =head2 B<REQUIRED> NodeType => Str
 
-  The type of node this is.
+  The type of node that this is.
 
 
 

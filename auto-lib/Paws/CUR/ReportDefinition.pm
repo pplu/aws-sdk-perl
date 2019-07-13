@@ -4,7 +4,9 @@ package Paws::CUR::ReportDefinition;
   has AdditionalSchemaElements => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Compression => (is => 'ro', isa => 'Str', required => 1);
   has Format => (is => 'ro', isa => 'Str', required => 1);
+  has RefreshClosedReports => (is => 'ro', isa => 'Bool');
   has ReportName => (is => 'ro', isa => 'Str', required => 1);
+  has ReportVersioning => (is => 'ro', isa => 'Str');
   has S3Bucket => (is => 'ro', isa => 'Str', required => 1);
   has S3Prefix => (is => 'ro', isa => 'Str', required => 1);
   has S3Region => (is => 'ro', isa => 'Str', required => 1);
@@ -39,21 +41,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CUR::Report
 
 =head1 DESCRIPTION
 
-The definition of AWS Cost and Usage Report. Customer can specify the
-report name, time unit, report format, compression format, S3 bucket
-and additional artifacts and schema elements in the definition.
+The definition of AWS Cost and Usage Report. You can specify the report
+name, time unit, report format, compression format, S3 bucket,
+additional artifacts, and schema elements in the definition.
 
 =head1 ATTRIBUTES
 
 
 =head2 AdditionalArtifacts => ArrayRef[Str|Undef]
 
-  
+  A list of manifests that you want Amazon Web Services to create for
+this report.
 
 
 =head2 B<REQUIRED> AdditionalSchemaElements => ArrayRef[Str|Undef]
 
-  
+  A list of strings that indicate additional content that Amazon Web
+Services includes in the report, such as individual resource IDs.
 
 
 =head2 B<REQUIRED> Compression => Str
@@ -66,9 +70,24 @@ and additional artifacts and schema elements in the definition.
   
 
 
+=head2 RefreshClosedReports => Bool
+
+  Whether you want Amazon Web Services to update your reports after they
+have been finalized if Amazon Web Services detects charges related to
+previous months. These charges can include refunds, credits, or support
+fees.
+
+
 =head2 B<REQUIRED> ReportName => Str
 
   
+
+
+=head2 ReportVersioning => Str
+
+  Whether you want Amazon Web Services to overwrite the previous version
+of each report or to deliver the report in addition to the previous
+versions.
 
 
 =head2 B<REQUIRED> S3Bucket => Str

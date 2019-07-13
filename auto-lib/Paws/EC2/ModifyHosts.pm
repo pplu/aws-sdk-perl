@@ -1,8 +1,9 @@
 
 package Paws::EC2::ModifyHosts;
   use Moose;
-  has AutoPlacement => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'autoPlacement' , required => 1);
+  has AutoPlacement => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'autoPlacement' );
   has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'hostId' , required => 1);
+  has HostRecovery => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyHostsResult = $ec2->ModifyHosts(
-      AutoPlacement => 'on',
       HostIds       => [ 'MyString', ... ],
-
+      AutoPlacement => 'on',                  # OPTIONAL
+      HostRecovery  => 'on',                  # OPTIONAL
     );
 
     # Results:
@@ -46,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AutoPlacement => Str
+=head2 AutoPlacement => Str
 
 Specify whether to enable or disable auto-placement.
 
@@ -54,9 +55,18 @@ Valid values are: C<"on">, C<"off">
 
 =head2 B<REQUIRED> HostIds => ArrayRef[Str|Undef]
 
-The host IDs of the Dedicated Hosts you want to modify.
+The IDs of the Dedicated Hosts to modify.
 
 
+
+=head2 HostRecovery => Str
+
+Indicates whether to enable or disable host recovery for the Dedicated
+Host. For more information, see Host Recovery
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+Valid values are: C<"on">, C<"off">
 
 
 =head1 SEE ALSO

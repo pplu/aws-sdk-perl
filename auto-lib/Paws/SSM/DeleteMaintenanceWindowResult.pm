@@ -16,7 +16,7 @@ Paws::SSM::DeleteMaintenanceWindowResult
 
 =head2 WindowId => Str
 
-The ID of the deleted Maintenance Window.
+The ID of the deleted maintenance window.
 
 
 =head2 _request_id => Str

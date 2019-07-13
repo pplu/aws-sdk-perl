@@ -5,6 +5,7 @@ package Paws::MediaPackage::CreateChannelResponse;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has HlsIngest => (is => 'ro', isa => 'Paws::MediaPackage::HlsIngest', traits => ['NameInRequest'], request_name => 'hlsIngest');
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -36,6 +37,11 @@ A short text description of the Channel.
 =head2 Id => Str
 
 The ID of the Channel.
+
+
+=head2 Tags => L<Paws::MediaPackage::Tags>
+
+
 
 
 =head2 _request_id => Str

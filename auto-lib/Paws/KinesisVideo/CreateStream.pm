@@ -6,6 +6,7 @@ package Paws::KinesisVideo::CreateStream;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MediaType => (is => 'ro', isa => 'Str');
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::KinesisVideo::ResourceTags');
 
   use MooseX::ClassAttribute;
 
@@ -38,6 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DeviceName           => 'MyDeviceName',    # OPTIONAL
       KmsKeyId             => 'MyKmsKeyId',      # OPTIONAL
       MediaType            => 'MyMediaType',     # OPTIONAL
+      Tags                 => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -60,6 +64,11 @@ associated with the stream.
 The default value is 0, indicating that the stream does not persist
 data.
 
+When the C<DataRetentionInHours> value is 0, consumers can still
+consume the fragments that remain in the service host buffer, which has
+a retention time limit of 5 minutes and a retention memory limit of 200
+MB. Fragments are removed from the buffer when either limit is reached.
+
 
 
 =head2 DeviceName => Str
@@ -80,7 +89,7 @@ If no key ID is specified, the default, Kinesis Video-managed key
 (C<aws/kinesisvideo>) is used.
 
 For more information, see DescribeKey
-(http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters).
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters).
 
 
 
@@ -93,9 +102,6 @@ media types, see Media Types
 choose to specify the C<MediaType>, see Naming Requirements
 (https://tools.ietf.org/html/rfc6838#section-4.2) for guidelines.
 
-To play video on the console, the media must be H.264 encoded, and you
-need to specify this video type in this parameter as C<video/h264>.
-
 This parameter is optional; the default value is C<null> (or empty in
 JSON).
 
@@ -107,6 +113,13 @@ A name for the stream that you are creating.
 
 The stream name is an identifier for the stream, and must be unique for
 each account and region.
+
+
+
+=head2 Tags => L<Paws::KinesisVideo::ResourceTags>
+
+A list of tags to associate with the specified stream. Each tag is a
+key-value pair (the value is optional).
 
 
 

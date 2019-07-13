@@ -50,6 +50,11 @@ package Paws::Budgets;
     my $call_object = $self->new_with_coercions('Paws::Budgets::DescribeBudget', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeBudgetPerformanceHistory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Budgets::DescribeBudgetPerformanceHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeBudgets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Budgets::DescribeBudgets', @_);
@@ -81,9 +86,78 @@ package Paws::Budgets;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllBudgets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeBudgets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeBudgets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Budgets }, @{ $next_result->Budgets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Budgets') foreach (@{ $result->Budgets });
+        $result = $self->DescribeBudgets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Budgets') foreach (@{ $result->Budgets });
+    }
+
+    return undef
+  }
+  sub DescribeAllNotificationsForBudget {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeNotificationsForBudget(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeNotificationsForBudget(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Notifications }, @{ $next_result->Notifications };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Notifications') foreach (@{ $result->Notifications });
+        $result = $self->DescribeNotificationsForBudget(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Notifications') foreach (@{ $result->Notifications });
+    }
+
+    return undef
+  }
+  sub DescribeAllSubscribersForNotification {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSubscribersForNotification(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeSubscribersForNotification(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Subscribers }, @{ $next_result->Subscribers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Subscribers') foreach (@{ $result->Subscribers });
+        $result = $self->DescribeSubscribersForNotification(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Subscribers') foreach (@{ $result->Subscribers });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateBudget CreateNotification CreateSubscriber DeleteBudget DeleteNotification DeleteSubscriber DescribeBudget DescribeBudgets DescribeNotificationsForBudget DescribeSubscribersForNotification UpdateBudget UpdateNotification UpdateSubscriber / }
+  sub operations { qw/CreateBudget CreateNotification CreateSubscriber DeleteBudget DeleteNotification DeleteSubscriber DescribeBudget DescribeBudgetPerformanceHistory DescribeBudgets DescribeNotificationsForBudget DescribeSubscribersForNotification UpdateBudget UpdateNotification UpdateSubscriber / }
 
 1;
 
@@ -111,45 +185,64 @@ Paws::Budgets - Perl Interface to AWS AWS Budgets
 
 =head1 DESCRIPTION
 
-Budgets enable you to plan your service usage, service costs, and your
-RI utilization. You can also track how close your plan is to your
-budgeted amount or to the free tier limits. Budgets provide you with a
-quick way to see your usage-to-date and current estimated charges from
-AWS and to see how much your predicted usage accrues in charges by the
-end of the month. Budgets also compare current estimates and charges to
-the amount that you indicated you want to use or spend and lets you see
-how much of your budget has been used. AWS updates your budget status
-several times a day. Budgets track your unblended costs, subscriptions,
-and refunds. You can create the following types of budgets:
+The AWS Budgets API enables you to use AWS Budgets to plan your service
+usage, service costs, and instance reservations. The API reference
+provides descriptions, syntax, and usage examples for each of the
+actions and data types for AWS Budgets.
+
+Budgets provide you with a way to see the following information:
 
 =over
 
 =item *
 
-Cost budgets allow you to say how much you want to spend on a service.
+How close your plan is to your budgeted amount or to the free tier
+limits
 
 =item *
 
-Usage budgets allow you to say how many hours you want to use for one
-or more services.
+Your usage-to-date, including how much you've used of your Reserved
+Instances (RIs)
 
 =item *
 
-RI utilization budgets allow you to define a utilization threshold and
-receive alerts when RIs are tracking below that threshold.
+Your current estimated charges from AWS, and how much your predicted
+usage will accrue in charges by the end of the month
+
+=item *
+
+How much of your budget has been used
 
 =back
 
-You can create up to 20,000 budgets per AWS master account. Your first
-two budgets are free of charge. Each additional budget costs $0.02 per
-day. You can set up optional notifications that warn you if you exceed,
-or are forecasted to exceed, your budgeted amount. You can have
-notifications sent to an Amazon SNS topic, to an email address, or to
-both. For more information, see Creating an Amazon SNS Topic for Budget
-Notifications
-(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-sns-policy.html).
-AWS Free Tier usage alerts via AWS Budgets are provided for you, and do
-not count toward your budget limits.
+AWS updates your budget status several times a day. Budgets track your
+unblended costs, subscriptions, refunds, and RIs. You can create the
+following types of budgets:
+
+=over
+
+=item *
+
+B<Cost budgets> - Plan how much you want to spend on a service.
+
+=item *
+
+B<Usage budgets> - Plan how much you want to use one or more services.
+
+=item *
+
+B<RI utilization budgets> - Define a utilization threshold, and receive
+alerts when your RI usage falls below that threshold. This lets you see
+if your RIs are unused or under-utilized.
+
+=item *
+
+B<RI coverage budgets> - Define a coverage threshold, and receive
+alerts when the number of your instance hours that are covered by RIs
+fall below that threshold. This lets you see how much of your instance
+usage is covered by a reservation.
+
+=back
 
 Service Endpoint
 
@@ -163,11 +256,11 @@ https://budgets.amazonaws.com
 
 =back
 
-For information about costs associated with the AWS Budgets API, see
-AWS Cost Management Pricing
+For information about costs that are associated with the AWS Budgets
+API, see AWS Cost Management Pricing
 (https://aws.amazon.com/aws-cost-management/pricing/).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/account-billing/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/account-billing/>
 
 
 =head1 METHODS
@@ -190,6 +283,13 @@ Each argument is described in detail in: L<Paws::Budgets::CreateBudget>
 Returns: a L<Paws::Budgets::CreateBudgetResponse> instance
 
 Creates a budget and, if included, notifications and subscribers.
+
+Only one of C<BudgetLimit> or C<PlannedBudgetLimits> can be present in
+the syntax at one time. Use the syntax that matches your case. The
+Request Syntax section shows the C<BudgetLimit> syntax. For
+C<PlannedBudgetLimits>, see the Examples
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples)
+section.
 
 
 =head2 CreateNotification
@@ -255,8 +355,8 @@ Returns: a L<Paws::Budgets::DeleteBudgetResponse> instance
 
 Deletes a budget. You can delete your budget at any time.
 
-B<Deleting a budget also deletes the notifications and subscribers
-associated with that budget.>
+Deleting a budget also deletes the notifications and subscribers that
+are associated with that budget.
 
 
 =head2 DeleteNotification
@@ -278,8 +378,8 @@ Returns: a L<Paws::Budgets::DeleteNotificationResponse> instance
 
 Deletes a notification.
 
-B<Deleting a notification also deletes the subscribers associated with
-the notification.>
+Deleting a notification also deletes the subscribers that are
+associated with the notification.
 
 
 =head2 DeleteSubscriber
@@ -303,8 +403,8 @@ Returns: a L<Paws::Budgets::DeleteSubscriberResponse> instance
 
 Deletes a subscriber.
 
-B<Deleting the last subscriber to a notification also deletes the
-notification.>
+Deleting the last subscriber to a notification also deletes the
+notification.
 
 
 =head2 DescribeBudget
@@ -324,6 +424,36 @@ Returns: a L<Paws::Budgets::DescribeBudgetResponse> instance
 
 Describes a budget.
 
+The Request Syntax section shows the C<BudgetLimit> syntax. For
+C<PlannedBudgetLimits>, see the Examples
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.html#API_DescribeBudget_Examples)
+section.
+
+
+=head2 DescribeBudgetPerformanceHistory
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TimePeriod => L<Paws::Budgets::TimePeriod>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Budgets::DescribeBudgetPerformanceHistory>
+
+Returns: a L<Paws::Budgets::DescribeBudgetPerformanceHistoryResponse> instance
+
+Describes the history for C<DAILY>, C<MONTHLY>, and C<QUARTERLY>
+budgets. Budget history isn't available for C<ANNUAL> budgets.
+
 
 =head2 DescribeBudgets
 
@@ -342,7 +472,12 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeBudgets>
 
 Returns: a L<Paws::Budgets::DescribeBudgetsResponse> instance
 
-Lists the budgets associated with an account.
+Lists the budgets that are associated with an account.
+
+The Request Syntax section shows the C<BudgetLimit> syntax. For
+C<PlannedBudgetLimits>, see the Examples
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples)
+section.
 
 
 =head2 DescribeNotificationsForBudget
@@ -364,7 +499,7 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeNotificationsF
 
 Returns: a L<Paws::Budgets::DescribeNotificationsForBudgetResponse> instance
 
-Lists the notifications associated with a budget.
+Lists the notifications that are associated with a budget.
 
 
 =head2 DescribeSubscribersForNotification
@@ -388,7 +523,7 @@ Each argument is described in detail in: L<Paws::Budgets::DescribeSubscribersFor
 
 Returns: a L<Paws::Budgets::DescribeSubscribersForNotificationResponse> instance
 
-Lists the subscribers associated with a notification.
+Lists the subscribers that are associated with a notification.
 
 
 =head2 UpdateBudget
@@ -407,9 +542,16 @@ Each argument is described in detail in: L<Paws::Budgets::UpdateBudget>
 Returns: a L<Paws::Budgets::UpdateBudgetResponse> instance
 
 Updates a budget. You can change every part of a budget except for the
-C<budgetName> and the C<calculatedSpend>. When a budget is modified,
-the C<calculatedSpend> drops to zero until AWS has new usage data to
-use for forecasting.
+C<budgetName> and the C<calculatedSpend>. When you modify a budget, the
+C<calculatedSpend> drops to zero until AWS has new usage data to use
+for forecasting.
+
+Only one of C<BudgetLimit> or C<PlannedBudgetLimits> can be present in
+the syntax at one time. Use the syntax that matches your case. The
+Request Syntax section shows the C<BudgetLimit> syntax. For
+C<PlannedBudgetLimits>, see the Examples
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples)
+section.
 
 
 =head2 UpdateNotification
@@ -463,6 +605,42 @@ Updates a subscriber.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllBudgets(sub { },AccountId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllBudgets(AccountId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Budgets, passing the object as the first parameter, and the string 'Budgets' as the second parameter 
+
+If not, it will return a a L<Paws::Budgets::DescribeBudgetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllNotificationsForBudget(sub { },AccountId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllNotificationsForBudget(AccountId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Notifications, passing the object as the first parameter, and the string 'Notifications' as the second parameter 
+
+If not, it will return a a L<Paws::Budgets::DescribeNotificationsForBudgetResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSubscribersForNotification(sub { },AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllSubscribersForNotification(AccountId => Str, BudgetName => Str, Notification => L<Paws::Budgets::Notification>, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Subscribers, passing the object as the first parameter, and the string 'Subscribers' as the second parameter 
+
+If not, it will return a a L<Paws::Budgets::DescribeSubscribersForNotificationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

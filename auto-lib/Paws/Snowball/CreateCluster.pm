@@ -41,33 +41,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # CreateJob action separately to create the jobs for each of these nodes. The
    # cluster does not ship until these five node jobs have been created.
     my $CreateClusterResult = $snowball->CreateCluster(
-      {
-        'AddressId'   => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
-        'Description' => 'MyCluster',
-        'JobType'     => 'LOCAL_USE',
-        'KmsKeyARN' =>
+      'AddressId'   => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+      'Description' => 'MyCluster',
+      'JobType'     => 'LOCAL_USE',
+      'KmsKeyARN' =>
 'arn:aws:kms:us-east-1:123456789012:key/abcd1234-12ab-34cd-56ef-123456123456',
-        'Notification' => {
-          'JobStatesToNotify' => [
+      'Notification' => {
+        'JobStatesToNotify' => [
 
-          ],
-          'NotifyAll' => 0
-        },
-        'Resources' => {
-          'S3Resources' => [
+        ],
+        'NotifyAll' => 0
+      },
+      'Resources' => {
+        'S3Resources' => [
 
-            {
-              'BucketArn' => 'arn:aws:s3:::MyBucket',
-              'KeyRange'  => {
+          {
+            'BucketArn' => 'arn:aws:s3:::MyBucket',
+            'KeyRange'  => {
 
-              }
             }
-          ]
-        },
-        'RoleARN' => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
-        'ShippingOption' => 'SECOND_DAY',
-        'SnowballType'   => 'EDGE'
-      }
+          }
+        ]
+      },
+      'RoleARN' => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
+      'ShippingOption' => 'SECOND_DAY',
+      'SnowballType'   => 'EDGE'
     );
 
     # Results:
@@ -144,16 +142,16 @@ API action in AWS Identity and Access Management (IAM).
 =head2 B<REQUIRED> ShippingOption => Str
 
 The shipping speed for each node in this cluster. This speed doesn't
-dictate how soon you'll get each Snowball Edge appliance, rather it
-represents how quickly each appliance moves to its destination while in
+dictate how soon you'll get each Snowball Edge device, rather it
+represents how quickly each device moves to its destination while in
 transit. Regional shipping speeds are as follows:
 
 =over
 
 =item *
 
-In Australia, you have access to express shipping. Typically,
-appliances shipped express are delivered in about a day.
+In Australia, you have access to express shipping. Typically, devices
+shipped express are delivered in about a day.
 
 =item *
 
@@ -164,7 +162,7 @@ which typically takes less than a week, one way.
 
 =item *
 
-In India, Snowball Edges are delivered in one to seven days.
+In India, devices are delivered in one to seven days.
 
 =item *
 
@@ -177,10 +175,11 @@ Valid values are: C<"SECOND_DAY">, C<"NEXT_DAY">, C<"EXPRESS">, C<"STANDARD">
 
 =head2 SnowballType => Str
 
-The type of AWS Snowball appliance to use for this cluster. Currently,
-the only supported appliance type for cluster jobs is C<EDGE>.
+The type of AWS Snowball device to use for this cluster. The only
+supported device types for cluster jobs are C<EDGE>, C<EDGE_C>, and
+C<EDGE_CG>.
 
-Valid values are: C<"STANDARD">, C<"EDGE">
+Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">
 
 
 =head1 SEE ALSO

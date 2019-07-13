@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 
 =head1 DESCRIPTION
 
-Contains details about an activity which successfully terminated during
+Contains details about an activity that successfully terminated during
 an execution.
 
 =head1 ATTRIBUTES

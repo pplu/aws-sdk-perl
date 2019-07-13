@@ -55,18 +55,18 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
 =item *
 
-C<endpoint> - The endpoint of the region (for example,
+C<endpoint> - The endpoint of the Region (for example,
 C<ec2.us-east-1.amazonaws.com>).
 
 =item *
 
-C<region-name> - The name of the region (for example, C<us-east-1>).
+C<region-name> - The name of the Region (for example, C<us-east-1>).
 
 =back
 
@@ -75,7 +75,7 @@ C<region-name> - The name of the region (for example, C<us-east-1>).
 
 =head2 RegionNames => ArrayRef[Str|Undef]
 
-The names of one or more regions.
+The names of the Regions.
 
 
 

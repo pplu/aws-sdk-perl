@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a Lambda function alias
     # This operation retrieves a Lambda function alias
     my $AliasConfiguration = $lambda->GetAlias(
-      {
-        'FunctionName' => 'myFunction',
-        'Name'         => 'myFunctionAlias'
-      }
+      'FunctionName' => 'myFunction',
+      'Name'         => 'myFunctionAlias'
     );
 
     # Results:
@@ -54,17 +52,35 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> FunctionName => Str
 
-Function name for which the alias is created. An alias is a subresource
-that exists only in the context of an existing Lambda function so you
-must specify the function name. Note that the length constraint applies
-only to the ARN. If you specify only the function name, it is limited
-to 64 characters in length.
+The name of the Lambda function.
+
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the alias for which you want to retrieve information.
+The name of the alias.
 
 
 

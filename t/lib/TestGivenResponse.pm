@@ -16,11 +16,10 @@ package TestGivenResponse;
       status  => $call_object->status,
       content => ($call_object->response eq '[UNDEF]' ? undef : $call_object->response),
       headers => {
-        'x-amzn-requestid' => 'fake-uuid',
-        'x-amz-request-id' => 'fake-uuid',
+        'x-amzn-requestid' => ($call_object->dup_requestid ? [ 'fake-uuid', 'fake-uuid' ] : 'fake-uuid' ),
+        'x-amz-request-id' => ($call_object->dup_requestid ? [ 'fake-uuid', 'fake-uuid' ] : 'fake-uuid' ),
       }
     );
-
 
     return $self->caller_to_response($service, $call_object, $response);
   }

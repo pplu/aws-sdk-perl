@@ -2,8 +2,9 @@
 package Paws::EC2::CreatePlacementGroup;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has GroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'groupName' , required => 1);
-  has Strategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'strategy' , required => 1);
+  has GroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'groupName' );
+  has PartitionCount => (is => 'ro', isa => 'Int');
+  has Strategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'strategy' );
 
   use MooseX::ClassAttribute;
 
@@ -32,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a placement group
     # This example creates a placement group with the specified name.
     $ec2->CreatePlacementGroup(
-      {
-        'GroupName' => 'my-cluster',
-        'Strategy'  => 'cluster'
-      }
+      'GroupName' => 'my-cluster',
+      'Strategy'  => 'cluster'
     );
 
 
@@ -54,20 +53,27 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> GroupName => Str
+=head2 GroupName => Str
 
 A name for the placement group. Must be unique within the scope of your
-account for the region.
+account for the Region.
 
 Constraints: Up to 255 ASCII characters
 
 
 
-=head2 B<REQUIRED> Strategy => Str
+=head2 PartitionCount => Int
+
+The number of partitions. Valid only when B<Strategy> is set to
+C<partition>.
+
+
+
+=head2 Strategy => Str
 
 The placement strategy.
 
-Valid values are: C<"cluster">, C<"spread">
+Valid values are: C<"cluster">, C<"spread">, C<"partition">
 
 
 =head1 SEE ALSO

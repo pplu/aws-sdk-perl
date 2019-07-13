@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example sets the desired capacity for the specified Auto Scaling
     # group.
     $autoscaling->SetDesiredCapacity(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'DesiredCapacity'      => 2,
-        'HonorCooldown'        => true
-      }
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'DesiredCapacity'      => 2,
+      'HonorCooldown'        => 1
     );
 
 
@@ -62,10 +60,10 @@ group.
 
 =head2 HonorCooldown => Bool
 
-Indicates whether Auto Scaling waits for the cooldown period to
-complete before initiating a scaling activity to set your Auto Scaling
-group to its new capacity. By default, Auto Scaling does not honor the
-cooldown period during manual scaling activities.
+Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period
+to complete before initiating a scaling activity to set your Auto
+Scaling group to its new capacity. By default, Amazon EC2 Auto Scaling
+does not honor the cooldown period during manual scaling activities.
 
 
 

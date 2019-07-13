@@ -17,7 +17,8 @@ Paws::Route53::UpdateHealthCheckResponse
 
 =head2 B<REQUIRED> HealthCheck => L<Paws::Route53::HealthCheck>
 
-
+A complex type that contains the response to an C<UpdateHealthCheck>
+request.
 
 
 

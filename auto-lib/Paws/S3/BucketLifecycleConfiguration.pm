@@ -31,14 +31,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::BucketL
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies the lifecycle configuration for objects in an Amazon S3
+bucket. For more information, see Object Lifecycle Management
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::LifecycleRule>]
 
-  
+  A lifecycle rule for individual objects in an Amazon S3 bucket.
 
 
 

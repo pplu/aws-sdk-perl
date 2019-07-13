@@ -5,6 +5,7 @@ package Paws::Transcribe::StartTranscriptionJob;
   has Media => (is => 'ro', isa => 'Paws::Transcribe::Media', required => 1);
   has MediaFormat => (is => 'ro', isa => 'Str', required => 1);
   has MediaSampleRateHertz => (is => 'ro', isa => 'Int');
+  has OutputBucketName => (is => 'ro', isa => 'Str');
   has Settings => (is => 'ro', isa => 'Paws::Transcribe::Settings');
   has TranscriptionJobName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -40,10 +41,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MediaFormat          => 'mp3',
       TranscriptionJobName => 'MyTranscriptionJobName',
       MediaSampleRateHertz => 1,                          # OPTIONAL
+      OutputBucketName     => 'MyOutputBucketName',       # OPTIONAL
       Settings             => {
-        MaxSpeakerLabels  => 1,                     # min: 2, max: 10; OPTIONAL
-        ShowSpeakerLabels => 1,                     # OPTIONAL
-        VocabularyName    => 'MyVocabularyName',    # min: 1, max: 200; OPTIONAL
+        ChannelIdentification => 1,    # OPTIONAL
+        MaxSpeakerLabels      => 1,    # min: 2, max: 10; OPTIONAL
+        ShowSpeakerLabels     => 1,    # OPTIONAL
+        VocabularyName => 'MyVocabularyName',    # min: 1, max: 200; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -62,7 +65,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 The language code for the language used in the input media file.
 
-Valid values are: C<"en-US">, C<"es-US">
+Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">, C<"it-IT">, C<"ko-KR">, C<"es-ES">, C<"en-IN">, C<"hi-IN">, C<"ar-SA">
 
 =head2 B<REQUIRED> Media => L<Paws::Transcribe::Media>
 
@@ -82,6 +85,29 @@ The sample rate, in Hertz, of the audio track in the input media file.
 
 
 
+=head2 OutputBucketName => Str
+
+The location where the transcription is stored.
+
+If you set the C<OutputBucketName>, Amazon Transcribe puts the
+transcription in the specified S3 bucket. When you call the
+GetTranscriptionJob operation, the operation returns this location in
+the C<TranscriptFileUri> field. The S3 bucket must have permissions
+that allow Amazon Transcribe to put files in the bucket. For more
+information, see Permissions Required for IAM User Roles
+(https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user).
+
+Amazon Transcribe uses the default Amazon S3 key for server-side
+encryption of transcripts that are placed in your S3 bucket. You can't
+specify your own encryption key.
+
+If you don't set the C<OutputBucketName>, Amazon Transcribe generates a
+pre-signed URL, a shareable URL that provides secure access to your
+transcription, and returns it in the C<TranscriptFileUri> field. Use
+this URL to download the transcription.
+
+
+
 =head2 Settings => L<Paws::Transcribe::Settings>
 
 A C<Settings> object that provides optional settings for a
@@ -91,7 +117,9 @@ transcription job.
 
 =head2 B<REQUIRED> TranscriptionJobName => Str
 
-The name of the job. The name must be unique within an AWS account.
+The name of the job. Note that you can't use the strings "." or ".." by
+themselves as the job name. The name must also be unique within an AWS
+account.
 
 
 

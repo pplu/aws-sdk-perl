@@ -2,6 +2,7 @@
 package Paws::S3::PutBucketLifecycle;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has LifecycleConfiguration => (is => 'ro', isa => 'Paws::S3::LifecycleConfiguration');
 
@@ -34,24 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $s3 = Paws->service('S3');
     $s3->PutBucketLifecycle(
       Bucket                 => 'MyBucketName',
+      ContentLength          => 1,                 # OPTIONAL
       ContentMD5             => 'MyContentMD5',    # OPTIONAL
       LifecycleConfiguration => {
         Rules => [
           {
-            Filter => {
-              And => {
-                Prefix => 'MyRuleFilterAnd',       # OPTIONAL
-                Tag    => {
-                  Key   => 'MyObjectKey',          # min: 1,
-                  Value => 'MyValue',
-
-                },    # OPTIONAL
-              },    # OPTIONAL
-              Prefix => 'MyRuleFilterPrefix',    # OPTIONAL
-            },
-            Status => 'Enabled',                 # values: Enabled, Disabled
+            Prefix => 'MyPrefix',
+            Status => 'Enabled',                   # values: Enabled, Disabled
             AbortIncompleteMultipartUpload => {
-              DaysAfterInitiation => 1,          # OPTIONAL
+              DaysAfterInitiation => 1,            # OPTIONAL
             },    # OPTIONAL
             Expiration => {
               Date                      => '1970-01-01T01:00:00',    # OPTIONAL
@@ -63,15 +55,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               NoncurrentDays => 1,                    # OPTIONAL
             },    # OPTIONAL
             NoncurrentVersionTransition => {
-              NoncurrentDays => 1,    # OPTIONAL
-              StorageClass =>
-                'GLACIER',  # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
+              NoncurrentDays => 1,          # OPTIONAL
+              StorageClass   => 'GLACIER'
+              , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, DEEP_ARCHIVE; OPTIONAL
             },    # OPTIONAL
             Transition => {
-              Date => '1970-01-01T01:00:00',    # OPTIONAL
-              Days => 1,                        # OPTIONAL
-              StorageClass =>
-                'GLACIER',  # values: GLACIER, STANDARD_IA, ONEZONE_IA; OPTIONAL
+              Date         => '1970-01-01T01:00:00',    # OPTIONAL
+              Days         => 1,                        # OPTIONAL
+              StorageClass => 'GLACIER'
+              , # values: GLACIER, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, DEEP_ARCHIVE; OPTIONAL
             },    # OPTIONAL
           },
           ...
@@ -89,6 +81,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 B<REQUIRED> Bucket => Str
 
 
+
+
+
+=head2 ContentLength => Int
+
+Size of the body in bytes.
 
 
 

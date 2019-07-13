@@ -11,6 +11,7 @@ package Paws::AppStream::ImageBuilder;
   has ImageBuilderErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::ResourceError]');
   has InstanceType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has NetworkAccessConfiguration => (is => 'ro', isa => 'Paws::AppStream::NetworkAccessConfiguration');
   has Platform => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Paws::AppStream::ImageBuilderStateChangeReason');
@@ -45,8 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Describes a streaming instance used for editing an image. New images
-are created from a snapshot through an image builder.
+Describes a virtual machine that is used to create an image.
 
 =head1 ATTRIBUTES
 
@@ -54,7 +54,7 @@ are created from a snapshot through an image builder.
 =head2 AppstreamAgentVersion => Str
 
   The version of the AppStream 2.0 agent that is currently being used by
-this image builder.
+the image builder.
 
 
 =head2 Arn => Str
@@ -69,17 +69,18 @@ this image builder.
 
 =head2 Description => Str
 
-  The description for display.
+  The description to display.
 
 
 =head2 DisplayName => Str
 
-  The image builder name for display.
+  The image builder name to display.
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-  The information needed to join a Microsoft Active Directory domain.
+  The name of the directory and organizational unit (OU) to use to join
+the image builder to a Microsoft Active Directory domain.
 
 
 =head2 EnableDefaultInternetAccess => Bool
@@ -105,6 +106,11 @@ this image builder.
 =head2 B<REQUIRED> Name => Str
 
   The name of the image builder.
+
+
+=head2 NetworkAccessConfiguration => L<Paws::AppStream::NetworkAccessConfiguration>
+
+  
 
 
 =head2 Platform => Str

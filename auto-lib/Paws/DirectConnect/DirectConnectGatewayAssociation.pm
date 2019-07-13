@@ -1,7 +1,11 @@
 package Paws::DirectConnect::DirectConnectGatewayAssociation;
   use Moose;
+  has AllowedPrefixesToDirectConnectGateway => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', request_name => 'allowedPrefixesToDirectConnectGateway', traits => ['NameInRequest']);
+  has AssociatedGateway => (is => 'ro', isa => 'Paws::DirectConnect::AssociatedGateway', request_name => 'associatedGateway', traits => ['NameInRequest']);
+  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
   has AssociationState => (is => 'ro', isa => 'Str', request_name => 'associationState', traits => ['NameInRequest']);
   has DirectConnectGatewayId => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayId', traits => ['NameInRequest']);
+  has DirectConnectGatewayOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayOwnerAccount', traits => ['NameInRequest']);
   has StateChangeError => (is => 'ro', isa => 'Str', request_name => 'stateChangeError', traits => ['NameInRequest']);
   has VirtualGatewayId => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayId', traits => ['NameInRequest']);
   has VirtualGatewayOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayOwnerAccount', traits => ['NameInRequest']);
@@ -25,51 +29,100 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DirectConnect::DirectConnectGatewayAssociation object:
 
-  $service_obj->Method(Att1 => { AssociationState => $value, ..., VirtualGatewayRegion => $value  });
+  $service_obj->Method(Att1 => { AllowedPrefixesToDirectConnectGateway => $value, ..., VirtualGatewayRegion => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConnect::DirectConnectGatewayAssociation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AssociationState
+  $result->Att1->AllowedPrefixesToDirectConnectGateway
 
 =head1 DESCRIPTION
 
-The association between a direct connect gateway and virtual private
-gateway.
+Information about an association between a Direct Connect gateway and a
+virtual private gateway or transit gateway.
 
 =head1 ATTRIBUTES
 
 
+=head2 AllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
+
+  The Amazon VPC prefixes to advertise to the Direct Connect gateway.
+
+
+=head2 AssociatedGateway => L<Paws::DirectConnect::AssociatedGateway>
+
+  Information about the associated gateway.
+
+
+=head2 AssociationId => Str
+
+  The ID of the Direct Connect gateway association.
+
+
 =head2 AssociationState => Str
 
-  
+  The state of the association. The following are the possible values:
+
+=over
+
+=item *
+
+C<associating>: The initial state after calling
+CreateDirectConnectGatewayAssociation.
+
+=item *
+
+C<associated>: The Direct Connect gateway and virtual private gateway
+or transit gateway are successfully associated and ready to pass
+traffic.
+
+=item *
+
+C<disassociating>: The initial state after calling
+DeleteDirectConnectGatewayAssociation.
+
+=item *
+
+C<disassociated>: The virtual private gateway or transit gateway is
+disassociated from the Direct Connect gateway. Traffic flow between the
+Direct Connect gateway and virtual private gateway or transit gateway
+is stopped.
+
+=back
+
 
 
 =head2 DirectConnectGatewayId => Str
 
-  
+  The ID of the Direct Connect gateway.
+
+
+=head2 DirectConnectGatewayOwnerAccount => Str
+
+  The ID of the AWS account that owns the associated gateway.
 
 
 =head2 StateChangeError => Str
 
-  
+  The error message if the state of an object failed to advance.
 
 
 =head2 VirtualGatewayId => Str
 
-  
+  The ID of the virtual private gateway. Applies only to private virtual
+interfaces.
 
 
 =head2 VirtualGatewayOwnerAccount => Str
 
-  The AWS account ID of the owner of the virtual private gateway.
+  The ID of the AWS account that owns the virtual private gateway.
 
 
 =head2 VirtualGatewayRegion => Str
 
-  
+  The AWS Region where the virtual private gateway is located.
 
 
 

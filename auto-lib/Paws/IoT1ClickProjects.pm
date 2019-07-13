@@ -69,6 +69,21 @@ package Paws::IoT1ClickProjects;
     my $call_object = $self->new_with_coercions('Paws::IoT1ClickProjects::ListProjects', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickProjects::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickProjects::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickProjects::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdatePlacement {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT1ClickProjects::UpdatePlacement', @_);
@@ -80,9 +95,55 @@ package Paws::IoT1ClickProjects;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllPlacements {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPlacements(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPlacements(@_, nextToken => $next_result->nextToken);
+        push @{ $result->placements }, @{ $next_result->placements };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'placements') foreach (@{ $result->placements });
+        $result = $self->ListPlacements(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'placements') foreach (@{ $result->placements });
+    }
+
+    return undef
+  }
+  sub ListAllProjects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProjects(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListProjects(@_, nextToken => $next_result->nextToken);
+        push @{ $result->projects }, @{ $next_result->projects };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'projects') foreach (@{ $result->projects });
+        $result = $self->ListProjects(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'projects') foreach (@{ $result->projects });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AssociateDeviceWithPlacement CreatePlacement CreateProject DeletePlacement DeleteProject DescribePlacement DescribeProject DisassociateDeviceFromPlacement GetDevicesInPlacement ListPlacements ListProjects UpdatePlacement UpdateProject / }
+  sub operations { qw/AssociateDeviceWithPlacement CreatePlacement CreateProject DeletePlacement DeleteProject DescribePlacement DescribeProject DisassociateDeviceFromPlacement GetDevicesInPlacement ListPlacements ListProjects ListTagsForResource TagResource UntagResource UpdatePlacement UpdateProject / }
 
 1;
 
@@ -110,9 +171,9 @@ Paws::IoT1ClickProjects - Perl Interface to AWS AWS IoT 1-Click Projects Service
 
 =head1 DESCRIPTION
 
-The AWS IoT 1-Click Project API Reference
+The AWS IoT 1-Click Projects API Reference
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/projects.iot1click-2018-05-14>
 
 
 =head1 METHODS
@@ -168,6 +229,8 @@ Creates an empty placement.
 =item [Description => Str]
 
 =item [PlacementTemplate => L<Paws::IoT1ClickProjects::PlacementTemplate>]
+
+=item [Tags => L<Paws::IoT1ClickProjects::TagMap>]
 
 
 =back
@@ -332,6 +395,62 @@ Lists the AWS IoT 1-Click project(s) associated with your AWS account
 and region.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickProjects::ListTagsForResource>
+
+Returns: a L<Paws::IoT1ClickProjects::ListTagsForResourceResponse> instance
+
+Lists the tags (metadata key/value pairs) which you have assigned to
+the resource.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::IoT1ClickProjects::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickProjects::TagResource>
+
+Returns: a L<Paws::IoT1ClickProjects::TagResourceResponse> instance
+
+Creates or modifies tags for a resource. Tags are key/value pairs
+(metadata) that can be used to manage a resource. For more information,
+see AWS Tagging Strategies
+(https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickProjects::UntagResource>
+
+Returns: a L<Paws::IoT1ClickProjects::UntagResourceResponse> instance
+
+Removes one or more tags (metadata key/value pairs) from a resource.
+
+
 =head2 UpdatePlacement
 
 =over
@@ -382,6 +501,30 @@ values that are provided. To clear a value, pass the empty string
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllPlacements(sub { },ProjectName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPlacements(ProjectName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - placements, passing the object as the first parameter, and the string 'placements' as the second parameter 
+
+If not, it will return a a L<Paws::IoT1ClickProjects::ListPlacementsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProjects(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllProjects([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - projects, passing the object as the first parameter, and the string 'projects' as the second parameter 
+
+If not, it will return a a L<Paws::IoT1ClickProjects::ListProjectsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

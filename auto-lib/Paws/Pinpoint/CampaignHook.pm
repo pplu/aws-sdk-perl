@@ -33,25 +33,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies the AWS Lambda function to use as a code hook for a campaign.
 
 =head1 ATTRIBUTES
 
 
 =head2 LambdaFunctionName => Str
 
-  Lambda function name or arn to be called for delivery
+  The name or Amazon Resource Name (ARN) of the AWS Lambda function that
+Amazon Pinpoint invokes to send messages for a campaign.
 
 
 =head2 Mode => Str
 
-  What mode Lambda should be invoked in.
+  Specifies which Lambda mode to use when invoking the AWS Lambda
+function.
 
 
 =head2 WebUrl => Str
 
-  Web URL to call for hook. If the URL has authentication specified it
-will be added as authentication to the request
+  The web URL that Amazon Pinpoint calls to invoke the AWS Lambda
+function over HTTPS.
 
 
 

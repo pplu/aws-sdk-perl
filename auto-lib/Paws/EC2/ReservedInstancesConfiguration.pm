@@ -49,6 +49,8 @@ This class has no description
 
   The number of modified Reserved Instances.
 
+This is a required field for a request.
+
 
 =head2 InstanceType => Str
 
@@ -63,7 +65,7 @@ either EC2-Classic or EC2-VPC.
 
 =head2 Scope => Str
 
-  Whether the Reserved Instance is applied to instances in a region or
+  Whether the Reserved Instance is applied to instances in a Region or
 instances in a specific Availability Zone.
 
 

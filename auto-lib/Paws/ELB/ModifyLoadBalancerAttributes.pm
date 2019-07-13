@@ -33,14 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # balancer.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
-      {
-        'LoadBalancerAttributes' => {
-          'CrossZoneLoadBalancing' => {
-            'Enabled' => true
-          }
-        },
-        'LoadBalancerName' => 'my-load-balancer'
-      }
+      'LoadBalancerAttributes' => {
+        'CrossZoneLoadBalancing' => {
+          'Enabled' => 1
+        }
+      },
+      'LoadBalancerName' => 'my-load-balancer'
       );
 
     # Results:
@@ -54,15 +52,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example enables connection draining for the specified load balancer.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
-      {
-        'LoadBalancerAttributes' => {
-          'ConnectionDraining' => {
-            'Enabled' => true,
-            'Timeout' => 300
-          }
-        },
-        'LoadBalancerName' => 'my-load-balancer'
-      }
+      'LoadBalancerAttributes' => {
+        'ConnectionDraining' => {
+          'Enabled' => 1,
+          'Timeout' => 300
+        }
+      },
+      'LoadBalancerName' => 'my-load-balancer'
       );
 
     # Results:

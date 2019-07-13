@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyDurationInSecondsOptional',        # OPTIONAL
       DefaultLambdaRole => 'MyArn',           # OPTIONAL
       DefaultTaskList   => {
-        name => 'MyName',                     # min: 1, max: 256
+        Name => 'MyName',                     # min: 1, max: 256
 
       },    # OPTIONAL
       DefaultTaskPriority => 'MyTaskPriority',    # OPTIONAL
@@ -118,8 +118,8 @@ Executions of this workflow type need IAM roles to invoke Lambda
 functions. If you don't specify an IAM role when you start this
 workflow type, the default Lambda role is attached to the execution.
 For more information, see
-http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html)
+https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -143,7 +143,7 @@ Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 
 For more information about setting task priority, see Setting Task
 Priority
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -179,7 +179,7 @@ The name of the workflow type.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
-not contain the literal string C<arn>.
+not I<be> the literal string C<arn>.
 
 
 
@@ -194,7 +194,7 @@ registered workflow types, use the ListWorkflowTypes action.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
-not contain the literal string C<arn>.
+not I<be> the literal string C<arn>.
 
 
 

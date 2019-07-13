@@ -2,7 +2,6 @@ package Paws::IoT::CodeSigningCertificateChain;
   use Moose;
   has CertificateName => (is => 'ro', isa => 'Str', request_name => 'certificateName', traits => ['NameInRequest']);
   has InlineDocument => (is => 'ro', isa => 'Str', request_name => 'inlineDocument', traits => ['NameInRequest']);
-  has Stream => (is => 'ro', isa => 'Paws::IoT::Stream', request_name => 'stream', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::CodeSigningCertificateChain object:
 
-  $service_obj->Method(Att1 => { CertificateName => $value, ..., Stream => $value  });
+  $service_obj->Method(Att1 => { CertificateName => $value, ..., InlineDocument => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,11 +46,6 @@ Describes the certificate chain being used when code signing a file.
 
   A base64 encoded binary representation of the code signing certificate
 chain.
-
-
-=head2 Stream => L<Paws::IoT::Stream>
-
-  A stream of the certificate chain files.
 
 
 

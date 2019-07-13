@@ -18,12 +18,12 @@ Paws::Lambda::GetAccountSettingsResponse
 
 =head2 AccountLimit => L<Paws::Lambda::AccountLimit>
 
-
+Limits that are related to concurrency and code storage.
 
 
 =head2 AccountUsage => L<Paws::Lambda::AccountUsage>
 
-
+The number of functions and amount of storage in use.
 
 
 =head2 _request_id => Str

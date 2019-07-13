@@ -67,7 +67,7 @@ Route 53 to include in the response body for this request. If the
 specified traffic policy has more than C<MaxItems> versions, the value
 of C<IsTruncated> in the response is C<true>, and the value of the
 C<TrafficPolicyVersionMarker> element is the ID of the first version
-that Amazon Route 53 will return if you submit another request.
+that Route 53 will return if you submit another request.
 
 
 

@@ -31,10 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # DescribeReceiptRule
     # The following example returns the details of a receipt rule:
     my $DescribeReceiptRuleResponse = $email->DescribeReceiptRule(
-      {
-        'RuleName'    => 'MyRule',
-        'RuleSetName' => 'MyRuleSet'
-      }
+      'RuleName'    => 'MyRule',
+      'RuleSetName' => 'MyRuleSet'
     );
 
     # Results:

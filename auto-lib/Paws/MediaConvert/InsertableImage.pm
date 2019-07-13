@@ -4,11 +4,11 @@ package Paws::MediaConvert::InsertableImage;
   has FadeIn => (is => 'ro', isa => 'Int', request_name => 'fadeIn', traits => ['NameInRequest']);
   has FadeOut => (is => 'ro', isa => 'Int', request_name => 'fadeOut', traits => ['NameInRequest']);
   has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
-  has ImageInserterInput => (is => 'ro', isa => 'Str', request_name => 'imageInserterInput', traits => ['NameInRequest'], required => 1);
-  has ImageX => (is => 'ro', isa => 'Int', request_name => 'imageX', traits => ['NameInRequest'], required => 1);
-  has ImageY => (is => 'ro', isa => 'Int', request_name => 'imageY', traits => ['NameInRequest'], required => 1);
-  has Layer => (is => 'ro', isa => 'Int', request_name => 'layer', traits => ['NameInRequest'], required => 1);
-  has Opacity => (is => 'ro', isa => 'Int', request_name => 'opacity', traits => ['NameInRequest'], required => 1);
+  has ImageInserterInput => (is => 'ro', isa => 'Str', request_name => 'imageInserterInput', traits => ['NameInRequest']);
+  has ImageX => (is => 'ro', isa => 'Int', request_name => 'imageX', traits => ['NameInRequest']);
+  has ImageY => (is => 'ro', isa => 'Int', request_name => 'imageY', traits => ['NameInRequest']);
+  has Layer => (is => 'ro', isa => 'Int', request_name => 'layer', traits => ['NameInRequest']);
+  has Opacity => (is => 'ro', isa => 'Int', request_name => 'opacity', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
 1;
@@ -41,68 +41,71 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Settings for Insertable Image
+Settings that specify how your still graphic overlay appears.
 
 =head1 ATTRIBUTES
 
 
 =head2 Duration => Int
 
-  Use Duration (Duration) to set the time, in milliseconds, for the image
-to remain on the output video.
+  Specify the time, in milliseconds, for the image to remain on the
+output video. This duration includes fade-in time but not fade-out
+time.
 
 
 =head2 FadeIn => Int
 
-  Use Fade in (FadeIut) to set the length, in milliseconds, of the
-inserted image fade in. If you don't specify a value for Fade in, the
-image will appear abruptly at the Start time.
+  Specify the length of time, in milliseconds, between the Start time
+that you specify for the image insertion and the time that the image
+appears at full opacity. Full opacity is the level that you specify for
+the opacity setting. If you don't specify a value for Fade-in, the
+image will appear abruptly at the overlay start time.
 
 
 =head2 FadeOut => Int
 
-  Use Fade out (FadeOut) to set the length, in milliseconds, of the
-inserted image fade out. If you don't specify a value for Fade out, the
-image will disappear abruptly at the end of the inserted image
-duration.
+  Specify the length of time, in milliseconds, between the end of the
+time that you have specified for the image overlay Duration and when
+the overlaid image has faded to total transparency. If you don't
+specify a value for Fade-out, the image will disappear abruptly at the
+end of the inserted image duration.
 
 
 =head2 Height => Int
 
-  Specify the Height (Height) of the inserted image. Use a value that is
-less than or equal to the video resolution height. Leave this setting
-blank to use the native height of the image.
+  Specify the height of the inserted image in pixels. If you specify a
+value that's larger than the video resolution height, the service will
+crop your overlaid image to fit. To use the native height of the image,
+keep this setting blank.
 
 
-=head2 B<REQUIRED> ImageInserterInput => Str
+=head2 ImageInserterInput => Str
 
-  Use Image location (imageInserterInput) to specify the Amazon S3
-location of the image to be inserted into the output. Use a 32 bit BMP,
-PNG, or TGA file that fits inside the video frame.
-
-
-=head2 B<REQUIRED> ImageX => Int
-
-  Use Left (ImageX) to set the distance, in pixels, between the inserted
-image and the left edge of the frame. Required for BMP, PNG and TGA
-input.
+  Specify the Amazon S3 location of the image that you want to overlay on
+the video. Use a PNG or TGA file.
 
 
-=head2 B<REQUIRED> ImageY => Int
+=head2 ImageX => Int
 
-  Use Top (ImageY) to set the distance, in pixels, between the inserted
-image and the top edge of the video frame. Required for BMP, PNG and
-TGA input.
-
-
-=head2 B<REQUIRED> Layer => Int
-
-  Use Layer (Layer) to specify how overlapping inserted images appear.
-Images with higher values of layer appear on top of images with lower
-values of layer.
+  Specify the distance, in pixels, between the inserted image and the
+left edge of the video frame. Required for any image overlay that you
+specify.
 
 
-=head2 B<REQUIRED> Opacity => Int
+=head2 ImageY => Int
+
+  Specify the distance, in pixels, between the overlaid image and the top
+edge of the video frame. Required for any image overlay that you
+specify.
+
+
+=head2 Layer => Int
+
+  Specify how overlapping inserted images appear. Images with higher
+values for Layer appear on top of images with lower values for Layer.
+
+
+=head2 Opacity => Int
 
   Use Opacity (Opacity) to specify how much of the underlying video shows
 through the inserted image. 0 is transparent and 100 is fully opaque.
@@ -111,16 +114,17 @@ Default is 50.
 
 =head2 StartTime => Str
 
-  Use Start time (StartTime) to specify the video timecode when the image
-is inserted in the output. This must be in timecode (HH:MM:SS:FF or
-HH:MM:SS;FF) format.
+  Specify the timecode of the frame that you want the overlay to first
+appear on. This must be in timecode (HH:MM:SS:FF or HH:MM:SS;FF)
+format. Remember to take into account your timecode source settings.
 
 
 =head2 Width => Int
 
-  Specify the Width (Width) of the inserted image. Use a value that is
-less than or equal to the video resolution width. Leave this setting
-blank to use the native width of the image.
+  Specify the width of the inserted image in pixels. If you specify a
+value that's larger than the video resolution width, the service will
+crop your overlaid image to fit. To use the native width of the image,
+keep this setting blank.
 
 
 

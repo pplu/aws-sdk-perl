@@ -6,6 +6,8 @@ package Paws::ECS::RegisterContainerInstance;
   has ContainerInstanceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerInstanceArn' );
   has InstanceIdentityDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceIdentityDocument' );
   has InstanceIdentityDocumentSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceIdentityDocumentSignature' );
+  has PlatformDevices => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlatformDevice]', traits => ['NameInRequest'], request_name => 'platformDevices' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has TotalResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', traits => ['NameInRequest'], request_name => 'totalResources' );
   has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', traits => ['NameInRequest'], request_name => 'versionInfo' );
 
@@ -36,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RegisterContainerInstanceResponse = $ecs->RegisterContainerInstance(
       Attributes => [
         {
-          name     => 'MyString',
-          targetId => 'MyString',
-          targetType =>
+          Name     => 'MyString',
+          TargetId => 'MyString',
+          TargetType =>
             'container-instance',    # values: container-instance; OPTIONAL
-          value => 'MyString',
+          Value => 'MyString',
         },
         ...
       ],                             # OPTIONAL
@@ -48,22 +50,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContainerInstanceArn              => 'MyString',    # OPTIONAL
       InstanceIdentityDocument          => 'MyString',    # OPTIONAL
       InstanceIdentityDocumentSignature => 'MyString',    # OPTIONAL
-      TotalResources                    => [
+      PlatformDevices                   => [
         {
-          doubleValue    => 1,                            # OPTIONAL
-          integerValue   => 1,                            # OPTIONAL
-          longValue      => 1,                            # OPTIONAL
-          name           => 'MyString',
-          stringSetValue => [ 'MyString', ... ],          # OPTIONAL
-          type           => 'MyString',
+          Id   => 'MyString',
+          Type => 'GPU',                                  # values: GPU
+
         },
         ...
       ],                                                  # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
+      TotalResources => [
+        {
+          DoubleValue    => 1,                      # OPTIONAL
+          IntegerValue   => 1,                      # OPTIONAL
+          LongValue      => 1,                      # OPTIONAL
+          Name           => 'MyString',
+          StringSetValue => [ 'MyString', ... ],    # OPTIONAL
+          Type           => 'MyString',
+        },
+        ...
+      ],                                            # OPTIONAL
       VersionInfo => {
-        agentHash     => 'MyString',
-        agentVersion  => 'MyString',
-        dockerVersion => 'MyString',
-      },                                                  # OPTIONAL
+        AgentHash     => 'MyString',
+        AgentVersion  => 'MyString',
+        DockerVersion => 'MyString',
+      },                                            # OPTIONAL
     );
 
     # Results:
@@ -114,6 +131,23 @@ The instance identity document signature for the EC2 instance to
 register. This signature can be found by running the following command
 from the instance: C<curl
 http://169.254.169.254/latest/dynamic/instance-identity/signature/>
+
+
+
+=head2 PlatformDevices => ArrayRef[L<Paws::ECS::PlatformDevice>]
+
+The devices that are available on the container instance. The only
+supported device type is a GPU.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+
+The metadata that you apply to the container instance to help you
+categorize and organize them. Each tag consists of a key and an
+optional value, both of which you define. Tag keys can have a maximum
+character length of 128 characters, and tag values can have a maximum
+length of 256 characters.
 
 
 

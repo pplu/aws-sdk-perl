@@ -35,20 +35,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CORSRul
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies a cross-origin access rule for an Amazon S3 bucket.
 
 =head1 ATTRIBUTES
 
 
 =head2 AllowedHeaders => ArrayRef[Str|Undef]
 
-  Specifies which headers are allowed in a pre-flight OPTIONS request.
+  Headers that are specified in the C<Access-Control-Request-Headers>
+header. These headers are allowed in a preflight OPTIONS request. In
+response to any preflight OPTIONS request, Amazon S3 returns any
+requested headers that are allowed.
 
 
 =head2 B<REQUIRED> AllowedMethods => ArrayRef[Str|Undef]
 
-  Identifies HTTP methods that the domain/origin specified in the rule is
-allowed to execute.
+  An HTTP method that you allow the origin to execute. Valid values are
+C<GET>, C<PUT>, C<HEAD>, C<POST>, and C<DELETE>.
 
 
 =head2 B<REQUIRED> AllowedOrigins => ArrayRef[Str|Undef]
@@ -61,7 +64,7 @@ from.
 
   One or more headers in the response that you want customers to be able
 to access from their applications (for example, from a JavaScript
-XMLHttpRequest object).
+C<XMLHttpRequest> object).
 
 
 =head2 MaxAgeSeconds => Int

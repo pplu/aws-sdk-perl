@@ -42,20 +42,20 @@ A classifier for C<JSON> content.
 
 =head2 CreationTime => Str
 
-  The time this classifier was registered.
+  The time that this classifier was registered.
 
 
 =head2 B<REQUIRED> JsonPath => Str
 
   A C<JsonPath> string defining the JSON data for the classifier to
-classify. AWS Glue supports a subset of JsonPath, as described in
+classify. AWS Glue supports a subset of C<JsonPath>, as described in
 Writing JsonPath Custom Classifiers
 (https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json).
 
 
 =head2 LastUpdated => Str
 
-  The time this classifier was last updated.
+  The time that this classifier was last updated.
 
 
 =head2 B<REQUIRED> Name => Str

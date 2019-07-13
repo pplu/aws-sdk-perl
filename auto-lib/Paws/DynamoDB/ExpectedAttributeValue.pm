@@ -86,7 +86,7 @@ For Binary, DynamoDB treats each byte of the binary data as unsigned
 when it compares binary values.
 
 For information on specifying data types in JSON, see JSON Data Format
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -279,7 +279,7 @@ operation:
 If C<Exists> is C<true>, DynamoDB will check to see if that attribute
 value already exists in the table. If it is found, then the operation
 succeeds. If it is not found, the operation fails with a
-C<ConditionalCheckFailedException>.
+C<ConditionCheckFailedException>.
 
 =item *
 
@@ -287,7 +287,7 @@ If C<Exists> is C<false>, DynamoDB assumes that the attribute value
 does not exist in the table. If in fact the value does not exist, then
 the assumption is valid and the operation succeeds. If the value is
 found, despite the assumption that it does not exist, the operation
-fails with a C<ConditionalCheckFailedException>.
+fails with a C<ConditionCheckFailedException>.
 
 =back
 
@@ -322,7 +322,7 @@ Each attribute value is described as a name-value pair. The name is the
 data type, and the value is the data itself.
 
 For more information, see Data Types
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

@@ -245,8 +245,8 @@ enabled, and otherwise false.
 
 =head2 KmsKeyId => Str
 
-  If C<StorageEncrypted> is true, the AWS KMS key identifier for the
-encrypted DB instance.
+  Not supported: The encryption for DB instances is managed by the DB
+cluster.
 
 
 =head2 LatestRestorableTime => Str
@@ -328,33 +328,7 @@ the primary instance after a failure of the existing primary instance.
 
 =head2 PubliclyAccessible => Bool
 
-  Specifies the accessibility options for the DB instance. A value of
-true specifies an Internet-facing instance with a publicly resolvable
-DNS name, which resolves to a public IP address. A value of false
-specifies an internal instance with a DNS name that resolves to a
-private IP address.
-
-Default: The default behavior varies depending on whether a VPC has
-been requested or not. The following list shows the default behavior in
-each case.
-
-=over
-
-=item *
-
-B<Default VPC:>true
-
-=item *
-
-B<VPC:>false
-
-=back
-
-If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance is publicly
-accessible. If a specific DB subnet group has been specified as part of
-the request and the PubliclyAccessible value has not been set, the DB
-instance is private.
+  This flag should no longer be used.
 
 
 =head2 ReadReplicaDBClusterIdentifiers => ArrayRef[Str|Undef]
@@ -389,7 +363,8 @@ this is blank.
 
 =head2 StorageEncrypted => Bool
 
-  Specifies whether the DB instance is encrypted.
+  Not supported: The encryption for DB instances is managed by the DB
+cluster.
 
 
 =head2 StorageType => Str

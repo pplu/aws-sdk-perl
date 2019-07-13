@@ -1,8 +1,8 @@
 package Paws::EC2::HistoryRecord;
   use Moose;
-  has EventInformation => (is => 'ro', isa => 'Paws::EC2::EventInformation', request_name => 'eventInformation', traits => ['NameInRequest'], required => 1);
-  has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest'], required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest'], required => 1);
+  has EventInformation => (is => 'ro', isa => 'Paws::EC2::EventInformation', request_name => 'eventInformation', traits => ['NameInRequest']);
+  has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest']);
+  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +38,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EventInformation => L<Paws::EC2::EventInformation>
+=head2 EventInformation => L<Paws::EC2::EventInformation>
 
   Information about the event.
 
 
-=head2 B<REQUIRED> EventType => Str
+=head2 EventType => Str
 
   The event type.
 
@@ -70,7 +70,7 @@ C<Information> - An informational event.
 
 
 
-=head2 B<REQUIRED> Timestamp => Str
+=head2 Timestamp => Str
 
   The date and time of the event, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).

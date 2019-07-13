@@ -40,6 +40,16 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::AddWorkingStorage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssignTapePool {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::AssignTapePool', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AttachVolume {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::AttachVolume', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelArchival {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::CancelArchival', @_);
@@ -58,6 +68,11 @@ package Paws::StorageGateway;
   sub CreateNFSFileShare {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateNFSFileShare', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateSMBFileShare {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateSMBFileShare', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateSnapshot {
@@ -160,6 +175,16 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeNFSFileShares', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeSMBFileShares {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeSMBFileShares', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeSMBSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeSMBSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSnapshotSchedule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeSnapshotSchedule', @_);
@@ -200,9 +225,19 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeWorkingStorage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DetachVolume {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DetachVolume', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DisableGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub JoinDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::JoinDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListFileShares {
@@ -280,6 +315,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::SetLocalConsolePassword', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SetSMBGuestPassword {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::SetSMBGuestPassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ShutdownGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::ShutdownGateway', @_);
@@ -318,6 +358,16 @@ package Paws::StorageGateway;
   sub UpdateNFSFileShare {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateNFSFileShare', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateSMBFileShare {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateSMBFileShare', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateSMBSecurityStrategy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateSMBSecurityStrategy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateSnapshotSchedule {
@@ -423,6 +473,29 @@ package Paws::StorageGateway;
 
     return undef
   }
+  sub ListAllFileShares {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFileShares(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListFileShares(@_, Marker => $next_result->NextMarker);
+        push @{ $result->FileShareInfoList }, @{ $next_result->FileShareInfoList };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'FileShareInfoList') foreach (@{ $result->FileShareInfoList });
+        $result = $self->ListFileShares(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'FileShareInfoList') foreach (@{ $result->FileShareInfoList });
+    }
+
+    return undef
+  }
   sub ListAllGateways {
     my $self = shift;
 
@@ -442,6 +515,52 @@ package Paws::StorageGateway;
         $result = $self->ListGateways(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'Gateways') foreach (@{ $result->Gateways });
+    }
+
+    return undef
+  }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->ListTagsForResource(@_, Marker => $next_result->Marker);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsForResource(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
+  sub ListAllTapes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTapes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->ListTapes(@_, Marker => $next_result->Marker);
+        push @{ $result->TapeInfos }, @{ $next_result->TapeInfos };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'TapeInfos') foreach (@{ $result->TapeInfos });
+        $result = $self->ListTapes(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'TapeInfos') foreach (@{ $result->TapeInfos });
     }
 
     return undef
@@ -471,7 +590,7 @@ package Paws::StorageGateway;
   }
 
 
-  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes NotifyWhenUploaded RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSnapshotSchedule UpdateVTLDeviceType / }
+  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage AssignTapePool AttachVolume CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSMBFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSMBFileShares DescribeSMBSettings DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DetachVolume DisableGateway JoinDomain ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes NotifyWhenUploaded RefreshCache RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword SetSMBGuestPassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSMBFileShare UpdateSMBSecurityStrategy UpdateSnapshotSchedule UpdateVTLDeviceType / }
 
 1;
 
@@ -504,7 +623,7 @@ AWS Storage Gateway Service
 AWS Storage Gateway is the service that connects an on-premises
 software appliance with cloud-based storage to provide seamless and
 secure integration between an organization's on-premises IT environment
-and AWS's storage infrastructure. The service enables you to securely
+and the AWS storage infrastructure. The service enables you to securely
 upload data to the AWS cloud for cost effective backup and rapid
 disaster recovery.
 
@@ -516,27 +635,27 @@ Service API Reference>:
 =item *
 
 AWS Storage Gateway Required Request Headers
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders):
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders):
 Describes the required headers that you must send with every POST
 request to AWS Storage Gateway.
 
 =item *
 
 Signing Requests
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests):
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests):
 AWS Storage Gateway requires that you authenticate every request you
 send; this topic describes how sign such a request.
 
 =item *
 
 Error Responses
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses):
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses):
 Provides reference information about AWS Storage Gateway errors.
 
 =item *
 
 Operations in AWS Storage Gateway
-(http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html):
+(https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html):
 Contains detailed descriptions of all AWS Storage Gateway operations,
 their request parameters, response elements, possible errors, and
 examples of requests and responses.
@@ -545,8 +664,8 @@ examples of requests and responses.
 
 AWS Storage Gateway Regions and Endpoints:
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region)
-Provides a list of each region and endpoints available for use with AWS
-Storage Gateway.
+Provides a list of each AWS region and endpoints available for use with
+AWS Storage Gateway.
 
 =back
 
@@ -599,6 +718,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =item [MediumChangerType => Str]
 
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+
 =item [TapeDriveType => Str]
 
 
@@ -637,7 +758,7 @@ Returns: a L<Paws::StorageGateway::AddCacheOutput> instance
 Configures one or more gateway local disks as cache for a gateway. This
 operation is only supported in the cached volume, tape and file gateway
 type (see Storage Gateway Concepts
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html)).
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html)).
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add cache, and one or more disk IDs that you want to
@@ -672,25 +793,21 @@ resources:
 
 Storage gateways of all types
 
-=back
+=item *
 
-=over
+Storage volumes
 
 =item *
 
-Storage Volumes
-
-=back
-
-=over
+Virtual tapes
 
 =item *
 
-Virtual Tapes
+NFS and SMB file shares
 
 =back
 
-You can create a maximum of 10 tags for each resource. Virtual tapes
+You can create a maximum of 50 tags for each resource. Virtual tapes
 and storage volumes that are recovered to a new gateway maintain their
 tags.
 
@@ -746,6 +863,58 @@ gateway.
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add working storage, and one or more disk IDs that
 you want to configure as working storage.
+
+
+=head2 AssignTapePool
+
+=over
+
+=item PoolId => Str
+
+=item TapeARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::AssignTapePool>
+
+Returns: a L<Paws::StorageGateway::AssignTapePoolOutput> instance
+
+Assigns a tape to a tape pool for archiving. The tape assigned to a
+pool is archived in the S3 storage class that is associated with the
+pool. When you use your backup application to eject the tape, the tape
+is archived directly into the S3 storage class (Glacier or Deep
+Archive) that corresponds to the pool.
+
+Valid values: "GLACIER", "DEEP_ARCHIVE"
+
+
+=head2 AttachVolume
+
+=over
+
+=item GatewayARN => Str
+
+=item NetworkInterfaceId => Str
+
+=item VolumeARN => Str
+
+=item [DiskId => Str]
+
+=item [TargetName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::AttachVolume>
+
+Returns: a L<Paws::StorageGateway::AttachVolumeOutput> instance
+
+Connects a volume to an iSCSI connection and then attaches the volume
+to the specified gateway. Detaching and attaching a volume enables you
+to recover your data from one gateway to a different gateway without
+creating a snapshot. It also makes it easier to move your volumes from
+an on-premises gateway to a gateway hosted on an Amazon EC2 instance.
 
 
 =head2 CancelArchival
@@ -811,6 +980,8 @@ gateway type.
 
 =item [SourceVolumeARN => Str]
 
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+
 
 =back
 
@@ -871,6 +1042,8 @@ the copied volume, in bytes.
 
 =item [Squash => Str]
 
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+
 
 =back
 
@@ -878,11 +1051,11 @@ Each argument is described in detail in: L<Paws::StorageGateway::CreateNFSFileSh
 
 Returns: a L<Paws::StorageGateway::CreateNFSFileShareOutput> instance
 
-Creates a file share on an existing file gateway. In Storage Gateway, a
-file share is a file system mount point backed by Amazon S3 cloud
-storage. Storage Gateway exposes file shares using a Network File
-System (NFS) interface. This operation is only supported in the file
-gateway type.
+Creates a Network File System (NFS) file share on an existing file
+gateway. In Storage Gateway, a file share is a file system mount point
+backed by Amazon S3 cloud storage. Storage Gateway exposes file shares
+using a NFS interface. This operation is only supported for file
+gateways.
 
 File gateway requires AWS Security Token Service (AWS STS) to be
 activated to enable you create a file share. Make sure AWS STS is
@@ -895,6 +1068,70 @@ File gateway does not support creating hard or symbolic links on a file
 share.
 
 
+=head2 CreateSMBFileShare
+
+=over
+
+=item ClientToken => Str
+
+=item GatewayARN => Str
+
+=item LocationARN => Str
+
+=item Role => Str
+
+=item [AdminUserList => ArrayRef[Str|Undef]]
+
+=item [Authentication => Str]
+
+=item [DefaultStorageClass => Str]
+
+=item [GuessMIMETypeEnabled => Bool]
+
+=item [InvalidUserList => ArrayRef[Str|Undef]]
+
+=item [KMSEncrypted => Bool]
+
+=item [KMSKey => Str]
+
+=item [ObjectACL => Str]
+
+=item [ReadOnly => Bool]
+
+=item [RequesterPays => Bool]
+
+=item [SMBACLEnabled => Bool]
+
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+
+=item [ValidUserList => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::CreateSMBFileShare>
+
+Returns: a L<Paws::StorageGateway::CreateSMBFileShareOutput> instance
+
+Creates a Server Message Block (SMB) file share on an existing file
+gateway. In Storage Gateway, a file share is a file system mount point
+backed by Amazon S3 cloud storage. Storage Gateway expose file shares
+using a SMB interface. This operation is only supported for file
+gateways.
+
+File gateways require AWS Security Token Service (AWS STS) to be
+activated to enable you to create a file share. Make sure that AWS STS
+is activated in the AWS Region you are creating your file gateway in.
+If AWS STS is not activated in this AWS Region, activate it. For
+information about how to activate AWS STS, see Activating and
+Deactivating AWS STS in an AWS Region
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+in the I<AWS Identity and Access Management User Guide.>
+
+File gateways don't support creating hard or symbolic links on a file
+share.
+
+
 =head2 CreateSnapshot
 
 =over
@@ -902,6 +1139,8 @@ share.
 =item SnapshotDescription => Str
 
 =item VolumeARN => Str
+
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
 
 
 =back
@@ -916,10 +1155,10 @@ AWS Storage Gateway provides the ability to back up point-in-time
 snapshots of your data to Amazon Simple Storage (S3) for durable
 off-site recovery, as well as import the data to an Amazon Elastic
 Block Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can
-take snapshots of your gateway volume on a scheduled or ad-hoc basis.
+take snapshots of your gateway volume on a scheduled or ad hoc basis.
 This API enables you to take ad-hoc snapshot. For more information, see
 Editing a Snapshot Schedule
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot).
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot).
 
 In the CreateSnapshot request you identify the volume by providing its
 Amazon Resource Name (ARN). You must also provide description for the
@@ -933,11 +1172,11 @@ is only supported in stored and cached volume gateway type.
 To list or delete a snapshot, you must use the Amazon EC2 API. For more
 information, see DescribeSnapshots or DeleteSnapshot in the EC2 API
 reference
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html).
 
 Volume and snapshot IDs are changing to a longer length ID format. For
 more information, see the important note on the Welcome
-(http://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html)
+(https://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html)
 page.
 
 
@@ -991,7 +1230,13 @@ information, in I<Amazon Elastic Compute Cloud API Reference>.
 
 =item TargetName => Str
 
+=item [KMSEncrypted => Bool]
+
+=item [KMSKey => Str]
+
 =item [SnapshotId => Str]
+
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
 
 
 =back
@@ -1033,6 +1278,10 @@ can use to connect to the volume target.
 
 =item [KMSKey => Str]
 
+=item [PoolId => Str]
+
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
+
 
 =back
 
@@ -1062,6 +1311,10 @@ gateway.
 =item [KMSEncrypted => Bool]
 
 =item [KMSKey => Str]
+
+=item [PoolId => Str]
+
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
 
 
 =back
@@ -1138,7 +1391,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::DeleteFileShare
 Returns: a L<Paws::StorageGateway::DeleteFileShareOutput> instance
 
 Deletes a file share from a file gateway. This operation is only
-supported in the file gateway type.
+supported for file gateways.
 
 
 =head2 DeleteGateway
@@ -1192,7 +1445,7 @@ Deletes a snapshot of a volume.
 You can take snapshots of your gateway volumes on a scheduled or ad hoc
 basis. This API action enables you to delete a snapshot schedule for a
 volume. For more information, see Working with Snapshots
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html).
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html).
 In the C<DeleteSnapshotSchedule> request, you identify the volume by
 providing its Amazon Resource Name (ARN). This operation is only
 supported in stored and cached volume gateway types.
@@ -1263,7 +1516,7 @@ snapshot in progress. You can use the Amazon Elastic Compute Cloud
 (Amazon EC2) API to query snapshots on the volume you are deleting and
 check the snapshot status. For more information, go to
 DescribeSnapshots
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
 in the I<Amazon Elastic Compute Cloud API Reference>.
 
 In the request, you must provide the Amazon Resource Name (ARN) of the
@@ -1403,8 +1656,45 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeNFSFile
 
 Returns: a L<Paws::StorageGateway::DescribeNFSFileSharesOutput> instance
 
-Gets a description for one or more file shares from a file gateway.
-This operation is only supported in the file gateway type.
+Gets a description for one or more Network File System (NFS) file
+shares from a file gateway. This operation is only supported for file
+gateways.
+
+
+=head2 DescribeSMBFileShares
+
+=over
+
+=item FileShareARNList => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeSMBFileShares>
+
+Returns: a L<Paws::StorageGateway::DescribeSMBFileSharesOutput> instance
+
+Gets a description for one or more Server Message Block (SMB) file
+shares from a file gateway. This operation is only supported for file
+gateways.
+
+
+=head2 DescribeSMBSettings
+
+=over
+
+=item GatewayARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeSMBSettings>
+
+Returns: a L<Paws::StorageGateway::DescribeSMBSettingsOutput> instance
+
+Gets a description of a Server Message Block (SMB) file share settings
+from a file gateway. This operation is only supported for file
+gateways.
 
 
 =head2 DescribeSnapshotSchedule
@@ -1596,6 +1886,29 @@ The response includes disk IDs that are configured as working storage,
 and it includes the amount of working storage allocated and used.
 
 
+=head2 DetachVolume
+
+=over
+
+=item VolumeARN => Str
+
+=item [ForceDetach => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::DetachVolume>
+
+Returns: a L<Paws::StorageGateway::DetachVolumeOutput> instance
+
+Disconnects a volume from an iSCSI connection and then detaches the
+volume from the specified gateway. Detaching and attaching a volume
+enables you to recover your data from one gateway to a different
+gateway without creating a snapshot. It also makes it easier to move
+your volumes from an on-premises gateway to a gateway hosted on an
+Amazon EC2 instance.
+
+
 =head2 DisableGateway
 
 =over
@@ -1619,6 +1932,33 @@ functioning. This operation is only supported in the tape gateway type.
 Once a gateway is disabled it cannot be enabled.
 
 
+=head2 JoinDomain
+
+=over
+
+=item DomainName => Str
+
+=item GatewayARN => Str
+
+=item Password => Str
+
+=item UserName => Str
+
+=item [DomainControllers => ArrayRef[Str|Undef]]
+
+=item [OrganizationalUnit => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::JoinDomain>
+
+Returns: a L<Paws::StorageGateway::JoinDomainOutput> instance
+
+Adds a file gateway to an Active Directory domain. This operation is
+only supported for file gateways that support the SMB file protocol.
+
+
 =head2 ListFileShares
 
 =over
@@ -1638,7 +1978,7 @@ Returns: a L<Paws::StorageGateway::ListFileSharesOutput> instance
 
 Gets a list of the file shares for a specific file gateway, or the list
 of file shares that belong to the calling user account. This operation
-is only supported in the file gateway type.
+is only supported for file gateways.
 
 
 =head2 ListGateways
@@ -1846,7 +2186,7 @@ notification. When the upload is done, Storage Gateway sends you
 notification through an Amazon CloudWatch Event. You can configure
 CloudWatch Events to send the notification through event targets such
 as Amazon SNS or AWS Lambda function. This operation is only supported
-in the file gateway type.
+for file gateways.
 
 For more information, see Getting File Upload Notification in the
 Storage Gateway User Guide
@@ -1859,6 +2199,10 @@ Storage Gateway User Guide
 
 =item FileShareARN => Str
 
+=item [FolderList => ArrayRef[Str|Undef]]
+
+=item [Recursive => Bool]
+
 
 =back
 
@@ -1869,7 +2213,19 @@ Returns: a L<Paws::StorageGateway::RefreshCacheOutput> instance
 Refreshes the cache for the specified file share. This operation finds
 objects in the Amazon S3 bucket that were added, removed or replaced
 since the gateway last listed the bucket's contents and cached the
-results. This operation is only supported in the file gateway type.
+results. This operation is only supported in the file gateway type. You
+can subscribe to be notified through an Amazon CloudWatch event when
+your RefreshCache operation completes. For more information, see
+Getting Notified About File Operations
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification).
+
+When this API is called, it only initiates the refresh operation. When
+the API call completes and returns a success code, it doesn't
+necessarily mean that the file refresh has completed. You should use
+the refresh-complete notification to determine that the operation has
+completed before you check for new files on the gateway file share. You
+can subscribe to be notified through an CloudWatch event when your
+C<RefreshCache> operation completes.
 
 
 =head2 RemoveTagsFromResource
@@ -1994,6 +2350,26 @@ Sets the password for your VM local console. When you log in to the
 local console for the first time, you log in to the VM with the default
 credentials. We recommend that you set a new password. You don't need
 to know the default password to set a new password.
+
+
+=head2 SetSMBGuestPassword
+
+=over
+
+=item GatewayARN => Str
+
+=item Password => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::SetSMBGuestPassword>
+
+Returns: a L<Paws::StorageGateway::SetSMBGuestPasswordOutput> instance
+
+Sets the password for the guest user C<smbguest>. The C<smbguest> user
+is the user when the authentication method for the file share is set to
+C<GuestAccess>.
 
 
 =head2 ShutdownGateway
@@ -2173,9 +2549,9 @@ minimize the chance of any disruption to your applications by
 increasing your iSCSI Initiators' timeouts. For more information about
 increasing iSCSI Initiator timeouts for Windows and Linux, see
 Customizing Your Windows iSCSI Settings
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings)
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings)
 and Customizing Your Linux iSCSI Settings
-(http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings),
+(https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings),
 respectively.
 
 
@@ -2183,13 +2559,15 @@ respectively.
 
 =over
 
-=item DayOfWeek => Int
-
 =item GatewayARN => Str
 
 =item HourOfDay => Int
 
 =item MinuteOfHour => Int
+
+=item [DayOfMonth => Int]
+
+=item [DayOfWeek => Int]
 
 
 =back
@@ -2236,8 +2614,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::UpdateNFSFileSh
 
 Returns: a L<Paws::StorageGateway::UpdateNFSFileShareOutput> instance
 
-Updates a file share. This operation is only supported in the file
-gateway type.
+Updates a Network File System (NFS) file share. This operation is only
+supported in the file gateway type.
 
 To leave a file share field unchanged, set the corresponding input
 field to null.
@@ -2272,6 +2650,78 @@ To leave a file share field unchanged, set the corresponding input
 field to null. This operation is only supported in file gateways.
 
 
+=head2 UpdateSMBFileShare
+
+=over
+
+=item FileShareARN => Str
+
+=item [AdminUserList => ArrayRef[Str|Undef]]
+
+=item [DefaultStorageClass => Str]
+
+=item [GuessMIMETypeEnabled => Bool]
+
+=item [InvalidUserList => ArrayRef[Str|Undef]]
+
+=item [KMSEncrypted => Bool]
+
+=item [KMSKey => Str]
+
+=item [ObjectACL => Str]
+
+=item [ReadOnly => Bool]
+
+=item [RequesterPays => Bool]
+
+=item [SMBACLEnabled => Bool]
+
+=item [ValidUserList => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateSMBFileShare>
+
+Returns: a L<Paws::StorageGateway::UpdateSMBFileShareOutput> instance
+
+Updates a Server Message Block (SMB) file share.
+
+To leave a file share field unchanged, set the corresponding input
+field to null. This operation is only supported for file gateways.
+
+File gateways require AWS Security Token Service (AWS STS) to be
+activated to enable you to create a file share. Make sure that AWS STS
+is activated in the AWS Region you are creating your file gateway in.
+If AWS STS is not activated in this AWS Region, activate it. For
+information about how to activate AWS STS, see Activating and
+Deactivating AWS STS in an AWS Region
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
+in the I<AWS Identity and Access Management User Guide.>
+
+File gateways don't support creating hard or symbolic links on a file
+share.
+
+
+=head2 UpdateSMBSecurityStrategy
+
+=over
+
+=item GatewayARN => Str
+
+=item SMBSecurityStrategy => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateSMBSecurityStrategy>
+
+Returns: a L<Paws::StorageGateway::UpdateSMBSecurityStrategyOutput> instance
+
+Updates the SMB security strategy on a file gateway. This action is
+only supported in file gateways.
+
+
 =head2 UpdateSnapshotSchedule
 
 =over
@@ -2283,6 +2733,8 @@ field to null. This operation is only supported in file gateways.
 =item VolumeARN => Str
 
 =item [Description => Str]
+
+=item [Tags => ArrayRef[L<Paws::StorageGateway::Tag>]]
 
 
 =back
@@ -2381,6 +2833,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::StorageGateway::DescribeVTLDevicesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllFileShares(sub { },[GatewayARN => Str, Limit => Int, Marker => Str])
+
+=head2 ListAllFileShares([GatewayARN => Str, Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FileShareInfoList, passing the object as the first parameter, and the string 'FileShareInfoList' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::ListFileSharesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllGateways(sub { },[Limit => Int, Marker => Str])
 
 =head2 ListAllGateways([Limit => Int, Marker => Str])
@@ -2391,6 +2855,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Gateways, passing the object as the first parameter, and the string 'Gateways' as the second parameter 
 
 If not, it will return a a L<Paws::StorageGateway::ListGatewaysOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceARN => Str, [Limit => Int, Marker => Str])
+
+=head2 ListAllTagsForResource(ResourceARN => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::ListTagsForResourceOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTapes(sub { },[Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
+
+=head2 ListAllTapes([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TapeInfos, passing the object as the first parameter, and the string 'TapeInfos' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::ListTapesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllVolumes(sub { },[GatewayARN => Str, Limit => Int, Marker => Str])

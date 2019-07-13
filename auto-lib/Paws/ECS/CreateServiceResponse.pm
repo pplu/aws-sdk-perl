@@ -18,6 +18,15 @@ Paws::ECS::CreateServiceResponse
 
 The full description of your service following the create call.
 
+If a service is using the C<ECS> deployment controller, the
+C<deploymentController> and C<taskSets> parameters will not be
+returned.
+
+If the service is using the C<CODE_DEPLOY> deployment controller, the
+C<deploymentController>, C<taskSets> and C<deployments> parameters will
+be returned, however the C<deployments> parameter will be an empty
+list.
+
 
 =head2 _request_id => Str
 

@@ -46,7 +46,7 @@ that account and region, and sets the stack set operation result status
 for that account and region to C<FAILED>.
 
 For more information, see Configuring a target account gate
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-account-gating.html).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-account-gating.html).
 
 =head1 ATTRIBUTES
 

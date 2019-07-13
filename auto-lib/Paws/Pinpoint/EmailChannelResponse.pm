@@ -1,6 +1,7 @@
 package Paws::Pinpoint::EmailChannelResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
+  has ConfigurationSet => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has FromAddress => (is => 'ro', isa => 'Str');
@@ -10,7 +11,8 @@ package Paws::Pinpoint::EmailChannelResponse;
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
+  has MessagesPerSecond => (is => 'ro', isa => 'Int');
+  has Platform => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
 1;
@@ -43,75 +45,97 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Email Channel Response.
+Provides information about the status and settings of the email channel
+for an application.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  The unique ID of the application to which the email channel belongs.
+  The unique identifier for the application that the email channel
+applies to.
+
+
+=head2 ConfigurationSet => Str
+
+  The configuration set that's applied to email that's sent through the
+channel by using the Amazon Pinpoint Email API.
 
 
 =head2 CreationDate => Str
 
-  The date that the settings were last updated in ISO 8601 format.
+  The date and time, in ISO 8601 format, when the email channel was
+enabled.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether the email channel is enabled for the application.
 
 
 =head2 FromAddress => Str
 
-  The email address used to send emails from.
+  The verified email address that you send email from when you send email
+through the channel.
 
 
 =head2 HasCredential => Bool
 
-  If the channel is registered with a credential for authentication.
+  (Not used) This property is retained only for backward compatibility.
 
 
 =head2 Id => Str
 
-  Channel ID. Not used, only for backwards compatibility.
+  (Deprecated) An identifier for the email channel. This property is
+retained only for backward compatibility.
 
 
 =head2 Identity => Str
 
-  The ARN of an identity verified with SES.
+  The Amazon Resource Name (ARN) of the identity, verified with Amazon
+Simple Email Service (Amazon SES), that you use when you send email
+through the channel.
 
 
 =head2 IsArchived => Bool
 
-  Is this channel archived
+  Specifies whether the email channel is archived.
 
 
 =head2 LastModifiedBy => Str
 
-  Who last updated this entry
+  The user who last modified the email channel.
 
 
 =head2 LastModifiedDate => Str
 
-  Last date this was updated
+  The date and time, in ISO 8601 format, when the email channel was last
+modified.
 
 
-=head2 Platform => Str
+=head2 MessagesPerSecond => Int
 
-  Platform type. Will be "EMAIL"
+  The maximum number of emails that you can send through the channel each
+second.
+
+
+=head2 B<REQUIRED> Platform => Str
+
+  The type of messaging or notification platform for the channel. For the
+email channel, this value is EMAIL.
 
 
 =head2 RoleArn => Str
 
-  The ARN of an IAM Role used to submit events to Mobile Analytics' event
-ingestion service
+  The ARN of the AWS Identity and Access Management (IAM) role that
+Amazon Pinpoint uses to submit email-related event data for the
+channel.
 
 
 =head2 Version => Int
 
-  Version of channel
+  The current version of the email channel.
 
 
 

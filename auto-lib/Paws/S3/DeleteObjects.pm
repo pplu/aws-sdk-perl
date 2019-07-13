@@ -2,6 +2,9 @@
 package Paws::S3::DeleteObjects;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has BypassGovernanceRetention => (is => 'ro', isa => 'Bool', header_name => 'x-amz-bypass-governance-retention', traits => ['ParamInHeader']);
+  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
+  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Delete => (is => 'ro', isa => 'Paws::S3::Delete', required => 1);
   has MFA => (is => 'ro', isa => 'Str', header_name => 'x-amz-mfa', traits => ['ParamInHeader']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
@@ -38,15 +41,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Delete => {
         Objects => [
           {
-            Key       => 'MyObjectKey',          # min: 1,
+            Key       => 'MyObjectKey',          # min: 1
             VersionId => 'MyObjectVersionId',    # OPTIONAL
           },
           ...
         ],
         Quiet => 1,                              # OPTIONAL
       },
-      MFA          => 'MyMFA',                   # OPTIONAL
-      RequestPayer => 'requester',               # OPTIONAL
+      BypassGovernanceRetention => 1,                 # OPTIONAL
+      ContentLength             => 1,                 # OPTIONAL
+      ContentMD5                => 'MyContentMD5',    # OPTIONAL
+      MFA                       => 'MyMFA',           # OPTIONAL
+      RequestPayer              => 'requester',       # OPTIONAL
     );
 
     # Results:
@@ -63,6 +69,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 
 =head2 B<REQUIRED> Bucket => Str
+
+
+
+
+
+=head2 BypassGovernanceRetention => Bool
+
+Specifies whether you want to delete this object even if it has a
+Governance-type object lock in place. You must have sufficient
+permissions to perform this operation.
+
+
+
+=head2 ContentLength => Int
+
+Size of the body in bytes.
+
+
+
+=head2 ContentMD5 => Str
 
 
 

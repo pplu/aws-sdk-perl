@@ -2,6 +2,7 @@
 package Paws::DirectConnect::DeleteBGPPeer;
   use Moose;
   has Asn => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'asn' );
+  has BgpPeerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bgpPeerId' );
   has CustomerAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerAddress' );
   has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' );
 
@@ -31,6 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $directconnect = Paws->service('DirectConnect');
     my $DeleteBGPPeerResponse = $directconnect->DeleteBGPPeer(
       Asn                => 1,                         # OPTIONAL
+      BgpPeerId          => 'MyBGPPeerId',             # OPTIONAL
       CustomerAddress    => 'MyCustomerAddress',       # OPTIONAL
       VirtualInterfaceId => 'MyVirtualInterfaceId',    # OPTIONAL
     );
@@ -48,24 +50,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 Asn => Int
 
+The autonomous system (AS) number for Border Gateway Protocol (BGP)
+configuration.
 
+
+
+=head2 BgpPeerId => Str
+
+The ID of the BGP peer.
 
 
 
 =head2 CustomerAddress => Str
 
-
+The IP address assigned to the customer interface.
 
 
 
 =head2 VirtualInterfaceId => Str
 
-The ID of the virtual interface from which the BGP peer will be
-deleted.
-
-Example: dxvif-456abc78
-
-Default: None
+The ID of the virtual interface.
 
 
 

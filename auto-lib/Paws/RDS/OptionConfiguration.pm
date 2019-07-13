@@ -43,7 +43,7 @@ A list of all available options
 
 =head2 DBSecurityGroupMemberships => ArrayRef[Str|Undef]
 
-  A list of DBSecurityGroupMemebrship name strings used for this option.
+  A list of DBSecurityGroupMembership name strings used for this option.
 
 
 =head2 B<REQUIRED> OptionName => Str
@@ -68,7 +68,7 @@ A list of all available options
 
 =head2 VpcSecurityGroupMemberships => ArrayRef[Str|Undef]
 
-  A list of VpcSecurityGroupMemebrship name strings used for this option.
+  A list of VpcSecurityGroupMembership name strings used for this option.
 
 
 

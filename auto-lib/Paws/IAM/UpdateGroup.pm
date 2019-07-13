@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To rename an IAM group
     # The following command changes the name of the IAM group Test to Test-1.
     $iam->UpdateGroup(
-      {
-        'GroupName'    => 'Test',
-        'NewGroupName' => 'Test-1'
-      }
+      'GroupName'    => 'Test',
+      'NewGroupName' => 'Test-1'
     );
 
 
@@ -50,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 Name of the IAM group to update. If you're changing the name of the
 group, this is the original name.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-
@@ -62,10 +60,9 @@ also include any of the following characters: _+=,.@-
 New name for the IAM group. Only include this if changing the group's
 name.
 
-This parameter allows (per its regex pattern
-(http://wikipedia.org/wiki/regex)) a string of characters consisting of
-upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: _+=,.@-
+IAM user, group, role, and policy names must be unique within the
+account. Names are not distinguished by case. For example, you cannot
+create resources named both "MyResource" and "myresource".
 
 
 
@@ -74,7 +71,7 @@ also include any of the following characters: _+=,.@-
 New path for the IAM group. Only include this if changing the group's
 path.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 either a forward slash (/) by itself or a string that must begin and
 end with forward slashes. In addition, it can contain any ASCII

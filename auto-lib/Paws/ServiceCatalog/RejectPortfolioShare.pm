@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::RejectPortfolioShare;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
   has PortfolioId => (is => 'ro', isa => 'Str', required => 1);
+  has PortfolioShareType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,8 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $servicecatalog = Paws->service('ServiceCatalog');
     my $RejectPortfolioShareOutput = $servicecatalog->RejectPortfolioShare(
-      PortfolioId    => 'MyId',
-      AcceptLanguage => 'MyAcceptLanguage',    # OPTIONAL
+      PortfolioId        => 'MyId',
+      AcceptLanguage     => 'MyAcceptLanguage',    # OPTIONAL
+      PortfolioShareType => 'IMPORTED',            # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -67,6 +69,34 @@ C<zh> - Chinese
 The portfolio identifier.
 
 
+
+=head2 PortfolioShareType => Str
+
+The type of shared portfolios to reject. The default is to reject
+imported portfolios.
+
+=over
+
+=item *
+
+C<AWS_ORGANIZATIONS> - Reject portfolios shared by the master account
+of your organization.
+
+=item *
+
+C<IMPORTED> - Reject imported portfolios.
+
+=item *
+
+C<AWS_SERVICECATALOG> - Not supported. (Throws
+ResourceNotFoundException.)
+
+=back
+
+For example, C<aws servicecatalog reject-portfolio-share --portfolio-id
+"port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS>
+
+Valid values are: C<"IMPORTED">, C<"AWS_SERVICECATALOG">, C<"AWS_ORGANIZATIONS">
 
 
 =head1 SEE ALSO

@@ -16,7 +16,8 @@ Paws::OpsWorks::DescribeOperatingSystemsResponse
 
 =head2 OperatingSystems => ArrayRef[L<Paws::OpsWorks::OperatingSystem>]
 
-
+Contains information in response to a C<DescribeOperatingSystems>
+request.
 
 
 =head2 _request_id => Str

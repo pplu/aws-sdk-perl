@@ -1,8 +1,9 @@
 package Paws::Pinpoint::EndpointMessageResult;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
-  has DeliveryStatus => (is => 'ro', isa => 'Str');
-  has StatusCode => (is => 'ro', isa => 'Int');
+  has DeliveryStatus => (is => 'ro', isa => 'Str', required => 1);
+  has MessageId => (is => 'ro', isa => 'Str');
+  has StatusCode => (is => 'ro', isa => 'Int', required => 1);
   has StatusMessage => (is => 'ro', isa => 'Str');
   has UpdatedToken => (is => 'ro', isa => 'Str');
 1;
@@ -35,34 +36,84 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-The result from sending a message to an endpoint.
+Provides information about the delivery status and results of sending a
+message directly to an endpoint.
 
 =head1 ATTRIBUTES
 
 
 =head2 Address => Str
 
-  Address that endpoint message was delivered to.
+  The endpoint address that the message was delivered to.
 
 
-=head2 DeliveryStatus => Str
+=head2 B<REQUIRED> DeliveryStatus => Str
 
-  Delivery status of message.
+  The delivery status of the message. Possible values are:
+
+=over
+
+=item *
+
+DUPLICATE - The endpoint address is a duplicate of another endpoint
+address. Amazon Pinpoint won't attempt to send the message again.
+
+=item *
+
+OPT_OUT - The user who's associated with the endpoint has opted out of
+receiving messages from you. Amazon Pinpoint won't attempt to send the
+message again.
+
+=item *
+
+PERMANENT_FAILURE - An error occurred when delivering the message to
+the endpoint. Amazon Pinpoint won't attempt to send the message again.
+
+=item *
+
+SUCCESSFUL - The message was successfully delivered to the endpoint.
+
+=item *
+
+TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will
+attempt to deliver the message again later.
+
+=item *
+
+THROTTLED - Amazon Pinpoint throttled the operation to send the message
+to the endpoint.
+
+=item *
+
+TIMEOUT - The message couldn't be sent within the timeout period.
+
+=item *
+
+UNKNOWN_FAILURE - An unknown error occurred.
+
+=back
 
 
-=head2 StatusCode => Int
 
-  Downstream service status code.
+=head2 MessageId => Str
+
+  The unique identifier for the message that was sent.
+
+
+=head2 B<REQUIRED> StatusCode => Int
+
+  The downstream service status code for delivering the message.
 
 
 =head2 StatusMessage => Str
 
-  Status message for message delivery.
+  The status message for delivering the message.
 
 
 =head2 UpdatedToken => Str
 
-  If token was updated as part of delivery. (This is GCM Specific)
+  For push notifications that are sent through the GCM channel, specifies
+whether the token was updated as part of delivering the message.
 
 
 

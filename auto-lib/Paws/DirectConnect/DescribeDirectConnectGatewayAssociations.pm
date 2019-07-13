@@ -1,6 +1,8 @@
 
 package Paws::DirectConnect::DescribeDirectConnectGatewayAssociations;
   use Moose;
+  has AssociatedGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associatedGatewayId' );
+  has AssociationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associationId' );
   has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
@@ -32,10 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $directconnect = Paws->service('DirectConnect');
     my $DescribeDirectConnectGatewayAssociationsResult =
       $directconnect->DescribeDirectConnectGatewayAssociations(
-      DirectConnectGatewayId => 'MyDirectConnectGatewayId',    # OPTIONAL
-      MaxResults             => 1,                             # OPTIONAL
-      NextToken              => 'MyPaginationToken',           # OPTIONAL
-      VirtualGatewayId       => 'MyVirtualGatewayId',          # OPTIONAL
+      AssociatedGatewayId => 'MyAssociatedGatewayId',                 # OPTIONAL
+      AssociationId       => 'MyDirectConnectGatewayAssociationId',   # OPTIONAL
+      DirectConnectGatewayId => 'MyDirectConnectGatewayId',           # OPTIONAL
+      MaxResults             => 1,                                    # OPTIONAL
+      NextToken              => 'MyPaginationToken',                  # OPTIONAL
+      VirtualGatewayId       => 'MyVirtualGatewayId',                 # OPTIONAL
       );
 
     # Results:
@@ -52,43 +56,44 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 =head1 ATTRIBUTES
 
 
+=head2 AssociatedGatewayId => Str
+
+The ID of the associated gateway.
+
+
+
+=head2 AssociationId => Str
+
+The ID of the Direct Connect gateway association.
+
+
+
 =head2 DirectConnectGatewayId => Str
 
-The ID of the direct connect gateway.
-
-Example: "abcd1234-dcba-5678-be23-cdef9876ab45"
-
-Default: None
+The ID of the Direct Connect gateway.
 
 
 
 =head2 MaxResults => Int
 
-The maximum number of direct connect gateway associations to return per
-page.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
-Example: 15
-
-Default: None
+If C<MaxResults> is given a value larger than 100, only 100 results are
+returned.
 
 
 
 =head2 NextToken => Str
 
-The token provided in the previous describe result to retrieve the next
-page of the result.
-
-Default: None
+The token provided in the previous call to retrieve the next page.
 
 
 
 =head2 VirtualGatewayId => Str
 
 The ID of the virtual private gateway.
-
-Example: "vgw-abc123ef"
-
-Default: None
 
 
 

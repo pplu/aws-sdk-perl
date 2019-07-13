@@ -30,27 +30,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $DeleteIPSetResponse = $guardduty->DeleteIPSet(
-      DetectorId => 'My__string',
-      IpSetId    => 'My__string',
+      DetectorId => 'MyDetectorId',
+      IpSetId    => 'MyString',
 
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/DeleteIPSet>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The detectorID that specifies the GuardDuty service whose IPSet you
-want to delete.
+The unique ID of the detector the ipSet is associated with.
 
 
 
 =head2 B<REQUIRED> IpSetId => Str
 
-The unique ID that specifies the IPSet that you want to delete.
+The unique ID of the ipSet you want to delete.
 
 
 

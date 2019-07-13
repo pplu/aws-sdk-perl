@@ -40,7 +40,7 @@ Attributes that define a local volume resource.
 
 =head2 DestinationPath => Str
 
-  The absolute local path of the resource inside the lambda environment.
+  The absolute local path of the resource inside the Lambda environment.
 
 
 =head2 GroupOwnerSetting => L<Paws::Greengrass::GroupOwnerSetting>
@@ -52,8 +52,7 @@ process. This field is optional.
 =head2 SourcePath => Str
 
   The local absolute path of the volume resource on the host. The source
-path for a volume resource type cannot start with ''/proc'' or
-''/sys''.
+path for a volume resource type cannot start with ''/sys''.
 
 
 

@@ -32,16 +32,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $resource-groups = Paws->service('ResourceGroups');
     my $SearchResourcesOutput = $resource -groups->SearchResources(
       ResourceQuery => {
-        Query => 'MyQuery',            # max: 2048
-        Type  => 'TAG_FILTERS_1_0',    # values: TAG_FILTERS_1_0
+        Query => 'MyQuery',          # max: 4096
+        Type  => 'TAG_FILTERS_1_0'
+        ,    # values: TAG_FILTERS_1_0, CLOUDFORMATION_STACK_1_0min: 1, max: 128
 
       },
-      MaxResults => 1,                 # OPTIONAL
-      NextToken  => 'MyNextToken',     # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:
     my $NextToken           = $SearchResourcesOutput->NextToken;
+    my $QueryErrors         = $SearchResourcesOutput->QueryErrors;
     my $ResourceIdentifiers = $SearchResourcesOutput->ResourceIdentifiers;
 
     # Returns a L<Paws::ResourceGroups::SearchResourcesOutput> object.

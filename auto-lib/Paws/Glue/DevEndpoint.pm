@@ -1,5 +1,6 @@
 package Paws::Glue::DevEndpoint;
   use Moose;
+  has Arguments => (is => 'ro', isa => 'Paws::Glue::MapValue');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has EndpointName => (is => 'ro', isa => 'Str');
@@ -12,7 +13,9 @@ package Paws::Glue::DevEndpoint;
   has PrivateAddress => (is => 'ro', isa => 'Str');
   has PublicAddress => (is => 'ro', isa => 'Str');
   has PublicKey => (is => 'ro', isa => 'Str');
+  has PublicKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleArn => (is => 'ro', isa => 'Str');
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Status => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
@@ -38,14 +41,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::DevEndpoint object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., ZeppelinRemoteSparkInterpreterPort => $value  });
+  $service_obj->Method(Att1 => { Arguments => $value, ..., ZeppelinRemoteSparkInterpreterPort => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::DevEndpoint object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AvailabilityZone
+  $result->Att1->Arguments
 
 =head1 DESCRIPTION
 
@@ -53,6 +56,14 @@ A development endpoint where a developer can remotely debug ETL
 scripts.
 
 =head1 ATTRIBUTES
+
+
+=head2 Arguments => L<Paws::Glue::MapValue>
+
+  A map of arguments used to configure the DevEndpoint.
+
+Note that currently, we only support "--enable-glue-datacatalog": "" as
+a valid argument.
 
 
 =head2 AvailabilityZone => Str
@@ -114,22 +125,49 @@ DevEndpoint.
 
 =head2 PrivateAddress => Str
 
-  The private address used by this DevEndpoint.
+  A private IP address to access the DevEndpoint within a VPC, if the
+DevEndpoint is created within one. The PrivateAddress field is present
+only when you create the DevEndpoint within your virtual private cloud
+(VPC).
 
 
 =head2 PublicAddress => Str
 
-  The public VPC address used by this DevEndpoint.
+  The public IP address used by this DevEndpoint. The PublicAddress field
+is present only when you create a non-VPC (virtual private cloud)
+DevEndpoint.
 
 
 =head2 PublicKey => Str
 
-  The public key to be used by this DevEndpoint for authentication.
+  The public key to be used by this DevEndpoint for authentication. This
+attribute is provided for backward compatibility, as the recommended
+attribute to use is public keys.
+
+
+=head2 PublicKeys => ArrayRef[Str|Undef]
+
+  A list of public keys to be used by the DevEndpoints for
+authentication. The use of this attribute is preferred over a single
+public key because the public keys allow you to have a different
+private key per client.
+
+If you previously created an endpoint with a public key, you must
+remove that key to be able to set a list of public keys: call the
+C<UpdateDevEndpoint> API with the public key content in the
+C<deletePublicKeys> attribute, and the list of new keys in the
+C<addPublicKeys> attribute.
 
 
 =head2 RoleArn => Str
 
   The AWS ARN of the IAM role used in this DevEndpoint.
+
+
+=head2 SecurityConfiguration => Str
+
+  The name of the SecurityConfiguration structure to be used with this
+DevEndpoint.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]

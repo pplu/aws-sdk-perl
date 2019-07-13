@@ -2,10 +2,12 @@
 package Paws::IoT::CreateOTAUpdate;
   use Moose;
   has AdditionalParameters => (is => 'ro', isa => 'Paws::IoT::AdditionalParameterMap', traits => ['NameInRequest'], request_name => 'additionalParameters');
+  has AwsJobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::AwsJobExecutionsRolloutConfig', traits => ['NameInRequest'], request_name => 'awsJobExecutionsRolloutConfig');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Files => (is => 'ro', isa => 'ArrayRef[Paws::IoT::OTAUpdateFile]', traits => ['NameInRequest'], request_name => 'files', required => 1);
   has OtaUpdateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'otaUpdateId', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targets', required => 1);
   has TargetSelection => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetSelection');
 
@@ -37,44 +39,68 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateOTAUpdateResponse = $iot->CreateOTAUpdate(
       Files => [
         {
-          attributes => { 'MyKey' => 'MyValue', },    # OPTIONAL
-          codeSigning => {
-            awsSignerJobId    => 'MySigningJobId',    # OPTIONAL
-            customCodeSigning => {
-              certificateChain => {
-                certificateName => 'MyCertificateName',    # OPTIONAL
-                inlineDocument  => 'MyInlineDocument',     # OPTIONAL
-                stream          => {
-                  fileId   => 1,               # max: 255; OPTIONAL
-                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+          Attributes => { 'MyAttributeKey' => 'MyValue', },    # OPTIONAL
+          CodeSigning => {
+            AwsSignerJobId    => 'MySigningJobId',             # OPTIONAL
+            CustomCodeSigning => {
+              CertificateChain => {
+                CertificateName => 'MyCertificateName',        # OPTIONAL
+                InlineDocument  => 'MyInlineDocument',         # OPTIONAL
+              },    # OPTIONAL
+              HashAlgorithm => 'MyHashAlgorithm',    # OPTIONAL
+              Signature     => {
+                InlineDocument => 'BlobSignature',    # OPTIONAL
+              },    # OPTIONAL
+              SignatureAlgorithm => 'MySignatureAlgorithm',    # OPTIONAL
+            },    # OPTIONAL
+            StartSigningJobParameter => {
+              Destination => {
+                S3Destination => {
+                  Bucket => 'MyS3Bucket',    # min: 1; OPTIONAL
+                  Prefix => 'MyPrefix',      # OPTIONAL
                 },    # OPTIONAL
               },    # OPTIONAL
-              hashAlgorithm => 'MyHashAlgorithm',    # OPTIONAL
-              signature     => {
-                inlineDocument => 'BlobSignature',    # OPTIONAL
-                stream         => {
-                  fileId   => 1,               # max: 255; OPTIONAL
-                  streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
-                },    # OPTIONAL
+              SigningProfileName      => 'MySigningProfileName',    # OPTIONAL
+              SigningProfileParameter => {
+                CertificateArn => 'MyCertificateArn',               # OPTIONAL
+                CertificatePathOnDevice =>
+                  'MyCertificatePathOnDevice',                      # OPTIONAL
+                Platform => 'MyPlatform',                           # OPTIONAL
               },    # OPTIONAL
-              signatureAlgorithm => 'MySignatureAlgorithm',    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
-          fileName   => 'MyFileName',    # OPTIONAL
-          fileSource => {
-            fileId   => 1,               # max: 255; OPTIONAL
-            streamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+          FileLocation => {
+            S3Location => {
+              Bucket  => 'MyS3Bucket',     # min: 1; OPTIONAL
+              Key     => 'MyS3Key',        # min: 1; OPTIONAL
+              Version => 'MyS3Version',    # OPTIONAL
+            },    # OPTIONAL
+            Stream => {
+              FileId   => 1,               # max: 255; OPTIONAL
+              StreamId => 'MyStreamId',    # min: 1, max: 128; OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
-          fileVersion => 'MyOTAUpdateFileVersion',    # OPTIONAL
+          FileName    => 'MyFileName',                # OPTIONAL
+          FileVersion => 'MyOTAUpdateFileVersion',    # OPTIONAL
         },
         ...
       ],
       OtaUpdateId          => 'MyOTAUpdateId',
       RoleArn              => 'MyRoleArn',
       Targets              => [ 'MyTarget', ... ],
-      AdditionalParameters => { 'MyKey' => 'MyValue', },    # OPTIONAL
-      Description          => 'MyOTAUpdateDescription',     # OPTIONAL
-      TargetSelection      => 'CONTINUOUS',                 # OPTIONAL
+      AdditionalParameters => { 'MyAttributeKey' => 'MyValue', },    # OPTIONAL
+      AwsJobExecutionsRolloutConfig => {
+        MaximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
+      },    # OPTIONAL
+      Description => 'MyOTAUpdateDescription',    # OPTIONAL
+      Tags        => [
+        {
+          Key   => 'MyTagKey',                    # OPTIONAL
+          Value => 'MyTagValue',                  # OPTIONAL
+        },
+        ...
+      ],                                          # OPTIONAL
+      TargetSelection => 'CONTINUOUS',            # OPTIONAL
     );
 
     # Results:
@@ -95,6 +121,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 AdditionalParameters => L<Paws::IoT::AdditionalParameterMap>
 
 A list of additional OTA update parameters which are name-value pairs.
+
+
+
+=head2 AwsJobExecutionsRolloutConfig => L<Paws::IoT::AwsJobExecutionsRolloutConfig>
+
+Configuration for the rollout of OTA updates.
 
 
 
@@ -119,6 +151,12 @@ The ID of the OTA update to be created.
 =head2 B<REQUIRED> RoleArn => Str
 
 The IAM role that allows access to the AWS IoT Jobs service.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+Metadata which can be used to manage updates.
 
 
 

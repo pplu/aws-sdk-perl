@@ -54,9 +54,29 @@ package Paws::MediaPackage;
     my $call_object = $self->new_with_coercions('Paws::MediaPackage::ListOriginEndpoints', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackage::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RotateChannelCredentials {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaPackage::RotateChannelCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RotateIngestEndpointCredentials {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackage::RotateIngestEndpointCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackage::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackage::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateChannel {
@@ -118,7 +138,7 @@ package Paws::MediaPackage;
   }
 
 
-  sub operations { qw/CreateChannel CreateOriginEndpoint DeleteChannel DeleteOriginEndpoint DescribeChannel DescribeOriginEndpoint ListChannels ListOriginEndpoints RotateChannelCredentials UpdateChannel UpdateOriginEndpoint / }
+  sub operations { qw/CreateChannel CreateOriginEndpoint DeleteChannel DeleteOriginEndpoint DescribeChannel DescribeOriginEndpoint ListChannels ListOriginEndpoints ListTagsForResource RotateChannelCredentials RotateIngestEndpointCredentials TagResource UntagResource UpdateChannel UpdateOriginEndpoint / }
 
 1;
 
@@ -161,6 +181,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =item [Description => Str]
 
+=item [Tags => L<Paws::MediaPackage::Tags>]
+
 
 =back
 
@@ -192,6 +214,8 @@ Creates a new Channel.
 =item [MssPackage => L<Paws::MediaPackage::MssPackage>]
 
 =item [StartoverWindowSeconds => Int]
+
+=item [Tags => L<Paws::MediaPackage::Tags>]
 
 =item [TimeDelaySeconds => Int]
 
@@ -309,6 +333,22 @@ Returns: a L<Paws::MediaPackage::ListOriginEndpointsResponse> instance
 Returns a collection of OriginEndpoint records.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackage::ListTagsForResource>
+
+Returns: a L<Paws::MediaPackage::ListTagsForResourceResponse> instance
+
+
+
+
 =head2 RotateChannelCredentials
 
 =over
@@ -322,7 +362,64 @@ Each argument is described in detail in: L<Paws::MediaPackage::RotateChannelCred
 
 Returns: a L<Paws::MediaPackage::RotateChannelCredentialsResponse> instance
 
-Changes the Channel ingest username and password.
+Changes the Channel's first IngestEndpoint's username and password.
+WARNING - This API is deprecated. Please use
+RotateIngestEndpointCredentials instead
+
+
+=head2 RotateIngestEndpointCredentials
+
+=over
+
+=item Id => Str
+
+=item IngestEndpointId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackage::RotateIngestEndpointCredentials>
+
+Returns: a L<Paws::MediaPackage::RotateIngestEndpointCredentialsResponse> instance
+
+Rotate the IngestEndpoint's username and password, as specified by the
+IngestEndpoint's id.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::MediaPackage::__mapOf__string>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackage::TagResource>
+
+Returns: nothing
+
+
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackage::UntagResource>
+
+Returns: nothing
+
+
 
 
 =head2 UpdateChannel

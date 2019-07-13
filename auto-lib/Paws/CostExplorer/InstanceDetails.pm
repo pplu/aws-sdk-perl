@@ -1,7 +1,10 @@
 package Paws::CostExplorer::InstanceDetails;
   use Moose;
   has EC2InstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::EC2InstanceDetails');
+  has ElastiCacheInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::ElastiCacheInstanceDetails');
+  has ESInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::ESInstanceDetails');
   has RDSInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::RDSInstanceDetails');
+  has RedshiftInstanceDetails => (is => 'ro', isa => 'Paws::CostExplorer::RedshiftInstanceDetails');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CostExplorer::InstanceDetails object:
 
-  $service_obj->Method(Att1 => { EC2InstanceDetails => $value, ..., RDSInstanceDetails => $value  });
+  $service_obj->Method(Att1 => { EC2InstanceDetails => $value, ..., RedshiftInstanceDetails => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,12 +42,27 @@ Details about the instances that AWS recommends that you purchase.
 
 =head2 EC2InstanceDetails => L<Paws::CostExplorer::EC2InstanceDetails>
 
-  The EC2 instances that AWS recommends that you purchase.
+  The Amazon EC2 instances that AWS recommends that you purchase.
+
+
+=head2 ElastiCacheInstanceDetails => L<Paws::CostExplorer::ElastiCacheInstanceDetails>
+
+  The ElastiCache instances that AWS recommends that you purchase.
+
+
+=head2 ESInstanceDetails => L<Paws::CostExplorer::ESInstanceDetails>
+
+  The Amazon ES instances that AWS recommends that you purchase.
 
 
 =head2 RDSInstanceDetails => L<Paws::CostExplorer::RDSInstanceDetails>
 
-  The RDS instances that AWS recommends that you purchase.
+  The Amazon RDS instances that AWS recommends that you purchase.
+
+
+=head2 RedshiftInstanceDetails => L<Paws::CostExplorer::RedshiftInstanceDetails>
+
+  The Amazon Redshift instances that AWS recommends that you purchase.
 
 
 

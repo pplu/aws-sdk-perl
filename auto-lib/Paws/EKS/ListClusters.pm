@@ -21,7 +21,7 @@ Paws::EKS::ListClusters - Arguments for method ListClusters on L<Paws::EKS>
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListClusters on the
-L<Amazon Elastic Container Service for Kubernetes|Paws::EKS> service. Use the attributes of this class
+L<Amazon Elastic Kubernetes Service|Paws::EKS> service. Use the attributes of this class
 as arguments to method ListClusters.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListClusters.
@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $clusters  = $ListClustersResponse->clusters;
-    my $nextToken = $ListClustersResponse->nextToken;
+    my $Clusters  = $ListClustersResponse->Clusters;
+    my $NextToken = $ListClustersResponse->NextToken;
 
     # Returns a L<Paws::EKS::ListClustersResponse> object.
 
@@ -49,13 +49,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 =head2 MaxResults => Int
 
 The maximum number of cluster results returned by C<ListClusters> in
-paginated output. When this parameter is used, C<ListClusters> only
-returns C<maxResults> results in a single page along with a
-C<nextToken> response element. The remaining results of the initial
-request can be seen by sending another C<ListClusters> request with the
-returned C<nextToken> value. This value can be between 1 and 100. If
-this parameter is not used, then C<ListClusters> returns up to 100
-results and a C<nextToken> value if applicable.
+paginated output. When you use this parameter, C<ListClusters> returns
+only C<maxResults> results in a single page along with a C<nextToken>
+response element. You can see the remaining results of the initial
+request by sending another C<ListClusters> request with the returned
+C<nextToken> value. This value can be between 1 and 100. If you don't
+use this parameter, C<ListClusters> returns up to 100 results and a
+C<nextToken> value if applicable.
 
 
 
@@ -66,7 +66,7 @@ C<ListClusters> request where C<maxResults> was used and the results
 exceeded the value of that parameter. Pagination continues from the end
 of the previous results that returned the C<nextToken> value.
 
-This token should be treated as an opaque identifier that is only used
+This token should be treated as an opaque identifier that is used only
 to retrieve the next items in a list and not for other programmatic
 purposes.
 

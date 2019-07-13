@@ -7,6 +7,7 @@ package Paws::MediaConvert::InputTemplate;
   has DenoiseFilter => (is => 'ro', isa => 'Str', request_name => 'denoiseFilter', traits => ['NameInRequest']);
   has FilterEnable => (is => 'ro', isa => 'Str', request_name => 'filterEnable', traits => ['NameInRequest']);
   has FilterStrength => (is => 'ro', isa => 'Int', request_name => 'filterStrength', traits => ['NameInRequest']);
+  has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
   has InputClippings => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputClipping]', request_name => 'inputClippings', traits => ['NameInRequest']);
   has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
   has PsiControl => (is => 'ro', isa => 'Str', request_name => 'psiControl', traits => ['NameInRequest']);
@@ -70,17 +71,28 @@ captions selectors per input.
 
 =head2 DeblockFilter => Str
 
-  
+  Enable Deblock (InputDeblockFilter) to produce smoother motion in the
+output. Default is disabled. Only manaully controllable for MPEG2 and
+uncompressed video inputs.
 
 
 =head2 DenoiseFilter => Str
 
-  
+  Enable Denoise (InputDenoiseFilter) to filter noise from the input.
+Default is disabled. Only applicable to MPEG2, H.264, H.265, and
+uncompressed video inputs.
 
 
 =head2 FilterEnable => Str
 
-  
+  Use Filter enable (InputFilterEnable) to specify how the transcoding
+service applies the denoise and deblock filters. You must also enable
+the filters separately, with Denoise (InputDenoiseFilter) and Deblock
+(InputDeblockFilter). * Auto - The transcoding service determines
+whether to apply filtering, depending on input type and quality. *
+Disable - The input is not filtered. This is true even if you use the
+API to enable them in (InputDeblockFilter) and (InputDeblockFilter). *
+Force - The in put is filtered regardless of input type.
 
 
 =head2 FilterStrength => Int
@@ -88,6 +100,13 @@ captions selectors per input.
   Use Filter strength (FilterStrength) to adjust the magnitude the input
 filter settings (Deblock and Denoise). The range is -5 to 5. Default is
 0.
+
+
+=head2 ImageInserter => L<Paws::MediaConvert::ImageInserter>
+
+  Enable the image inserter feature to include a graphic overlay on your
+video. Enable or disable this feature for each input individually. This
+setting is disabled by default.
 
 
 =head2 InputClippings => ArrayRef[L<Paws::MediaConvert::InputClipping>]
@@ -112,17 +131,26 @@ this default.
 
 =head2 PsiControl => Str
 
-  
+  Set PSI control (InputPsiControl) for transport stream inputs to
+specify which data the demux process to scans. * Ignore PSI - Scan all
+PIDs for audio and video. * Use PSI - Scan only PSI data.
 
 
 =head2 TimecodeSource => Str
 
-  
+  Timecode source under input settings (InputTimecodeSource) only affects
+the behavior of features that apply to a single input at a time, such
+as input clipping and synchronizing some captions formats. Use this
+setting to specify whether the service counts frames by timecodes
+embedded in the video (EMBEDDED) or by starting the first frame at zero
+(ZEROBASED). In both cases, the timecode format is HH:MM:SS:FF or
+HH:MM:SS;FF, where FF is the frame number. Only set this to EMBEDDED if
+your source video has embedded timecodes.
 
 
 =head2 VideoSelector => L<Paws::MediaConvert::VideoSelector>
 
-  
+  Selector for video.
 
 
 

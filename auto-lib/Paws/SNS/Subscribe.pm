@@ -52,9 +52,33 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 
 =head2 Attributes => L<Paws::SNS::SubscriptionAttributesMap>
 
-Assigns attributes to the subscription as a map of key-value pairs. You
-can assign any attribute that is supported by the
-C<SetSubscriptionAttributes> action.
+A map of attributes with their corresponding values.
+
+The following lists the names, descriptions, and values of the special
+request parameters that the C<SetTopicAttributes> action uses:
+
+=over
+
+=item *
+
+C<DeliveryPolicy> E<ndash> The policy that defines how Amazon SNS
+retries failed deliveries to HTTP/S endpoints.
+
+=item *
+
+C<FilterPolicy> E<ndash> The simple JSON object that lets your
+subscriber receive only a subset of messages, rather than receiving
+every message published to the topic.
+
+=item *
+
+C<RawMessageDelivery> E<ndash> When set to C<true>, enables raw message
+delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
+for the endpoints to process JSON formatting, which is otherwise
+created for Amazon SNS metadata.
+
+=back
+
 
 
 
@@ -68,7 +92,7 @@ protocol:
 =item *
 
 For the C<http> protocol, the endpoint is an URL beginning with
-"http://"
+"https://"
 
 =item *
 
@@ -115,36 +139,36 @@ The protocol you want to use. Supported protocols include:
 
 =item *
 
-C<http> -- delivery of JSON-encoded message via HTTP POST
+C<http> E<ndash> delivery of JSON-encoded message via HTTP POST
 
 =item *
 
-C<https> -- delivery of JSON-encoded message via HTTPS POST
+C<https> E<ndash> delivery of JSON-encoded message via HTTPS POST
 
 =item *
 
-C<email> -- delivery of message via SMTP
+C<email> E<ndash> delivery of message via SMTP
 
 =item *
 
-C<email-json> -- delivery of JSON-encoded message via SMTP
+C<email-json> E<ndash> delivery of JSON-encoded message via SMTP
 
 =item *
 
-C<sms> -- delivery of message via SMS
+C<sms> E<ndash> delivery of message via SMS
 
 =item *
 
-C<sqs> -- delivery of JSON-encoded message to an Amazon SQS queue
+C<sqs> E<ndash> delivery of JSON-encoded message to an Amazon SQS queue
 
 =item *
 
-C<application> -- delivery of JSON-encoded message to an EndpointArn
-for a mobile app and device.
+C<application> E<ndash> delivery of JSON-encoded message to an
+EndpointArn for a mobile app and device.
 
 =item *
 
-C<lambda> -- delivery of JSON-encoded message to an AWS Lambda
+C<lambda> E<ndash> delivery of JSON-encoded message to an AWS Lambda
 function.
 
 =back

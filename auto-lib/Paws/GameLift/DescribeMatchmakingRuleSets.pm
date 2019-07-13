@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $gamelift->DescribeMatchmakingRuleSets(
       Limit => 1,    # OPTIONAL
       Names => [
-        'MyMatchmakingIdStringModel', ...    # min: 1, max: 128
+        'MyMatchmakingIdStringModel', ...    # max: 128
       ],                                     # OPTIONAL
       NextToken => 'MyNonZeroAndMaxString',  # OPTIONAL
       );
@@ -59,8 +59,9 @@ C<NextToken> to get results as a set of sequential pages.
 
 =head2 Names => ArrayRef[Str|Undef]
 
-Unique identifier for a matchmaking rule set. This name is used to
-identify the rule set associated with a matchmaking configuration.
+List of one or more matchmaking rule set names to retrieve details for.
+(Note: The rule set name is different from the optional "name" field in
+the rule set body.)
 
 
 

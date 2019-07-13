@@ -32,40 +32,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example reads multiple items from the Music table using a batch of
     # three GetItem requests.  Only the AlbumTitle attribute is returned.
     my $BatchGetItemOutput = $dynamodb->BatchGetItem(
-      {
-        'RequestItems' => {
-          'Music' => {
-            'Keys' => [
+      'RequestItems' => {
+        'Music' => {
+          'Keys' => [
 
-              {
-                'Artist' => {
-                  'S' => 'No One You Know'
-                },
-                'SongTitle' => {
-                  'S' => 'Call Me Today'
-                }
+            {
+              'Artist' => {
+                'S' => 'No One You Know'
               },
-
-              {
-                'Artist' => {
-                  'S' => 'Acme Band'
-                },
-                'SongTitle' => {
-                  'S' => 'Happy Day'
-                }
-              },
-
-              {
-                'Artist' => {
-                  'S' => 'No One You Know'
-                },
-                'SongTitle' => {
-                  'S' => 'Scared of My Shadow'
-                }
+              'SongTitle' => {
+                'S' => 'Call Me Today'
               }
-            ],
-            'ProjectionExpression' => 'AlbumTitle'
-          }
+            },
+
+            {
+              'Artist' => {
+                'S' => 'Acme Band'
+              },
+              'SongTitle' => {
+                'S' => 'Happy Day'
+              }
+            },
+
+            {
+              'Artist' => {
+                'S' => 'No One You Know'
+              },
+              'SongTitle' => {
+                'S' => 'Scared of My Shadow'
+              }
+            }
+          ],
+          'ProjectionExpression' => 'AlbumTitle'
         }
       }
     );
@@ -135,7 +133,7 @@ C<Percentile>
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
 words, see Reserved Words
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 in the I<Amazon DynamoDB Developer Guide>). To work around this, you
 could specify the following for C<ExpressionAttributeNames>:
 
@@ -161,9 +159,9 @@ C<#P = :val>
 Tokens that begin with the B<:> character are I<expression attribute
 values>, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see Accessing Item
-Attributes
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+For more information about expression attribute names, see Accessing
+Item Attributes
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 =item *
@@ -181,12 +179,12 @@ attributes to retrieve from the table. These attributes can include
 scalars, sets, or elements of a JSON document. The attributes in the
 expression must be separated by commas.
 
-If no attribute names are specified, then all attributes will be
-returned. If any of the requested attributes are not found, they will
-not appear in the result.
+If no attribute names are specified, then all attributes are returned.
+If any of the requested attributes are not found, they do not appear in
+the result.
 
 For more information, see Accessing Item Attributes
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 =item *
@@ -194,7 +192,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 C<AttributesToGet> - This is a legacy parameter. Use
 C<ProjectionExpression> instead. For more information, see
 AttributesToGet
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 =back

@@ -38,8 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyProvisioningArtifactInfoKey' => 'MyProvisioningArtifactInfoValue',
         },    # min: 1, max: 100
         Description => 'MyProvisioningArtifactDescription',    # OPTIONAL
-        Name        => 'MyProvisioningArtifactName',           # OPTIONAL
-        Type        => 'CLOUD_FORMATION_TEMPLATE'
+        DisableTemplateValidation => 1,                               # OPTIONAL
+        Name                      => 'MyProvisioningArtifactName',    # OPTIONAL
+        Type                      => 'CLOUD_FORMATION_TEMPLATE'
         , # values: CLOUD_FORMATION_TEMPLATE, MARKETPLACE_AMI, MARKETPLACE_CAR; OPTIONAL
       },
       ProductId      => 'MyId',

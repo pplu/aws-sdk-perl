@@ -2,6 +2,7 @@ package Paws::DynamoDB::ReplicaSettingsUpdate;
   use Moose;
   has RegionName => (is => 'ro', isa => 'Str', required => 1);
   has ReplicaGlobalSecondaryIndexSettingsUpdate => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate]');
+  has ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
   has ReplicaProvisionedReadCapacityUnits => (is => 'ro', isa => 'Int');
 1;
 
@@ -50,12 +51,18 @@ modified.
 that will be modified.
 
 
+=head2 ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
+
+  Autoscaling settings for managing a global table replica's read
+capacity units.
+
+
 =head2 ReplicaProvisionedReadCapacityUnits => Int
 
   The maximum number of strongly consistent reads consumed per second
 before DynamoDB returns a C<ThrottlingException>. For more information,
 see Specifying Read and Write Requirements
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

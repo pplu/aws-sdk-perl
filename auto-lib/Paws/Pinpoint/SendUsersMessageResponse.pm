@@ -1,6 +1,6 @@
 package Paws::Pinpoint::SendUsersMessageResponse;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str');
+  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
   has RequestId => (is => 'ro', isa => 'Str');
   has Result => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMapOfEndpointMessageResult');
 1;
@@ -33,25 +33,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-User send message response.
+Provides information about which users and endpoints a message was sent
+to.
 
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationId => Str
+=head2 B<REQUIRED> ApplicationId => Str
 
-  Application id of the message.
+  The unique identifier for the application that was used to send the
+message.
 
 
 =head2 RequestId => Str
 
-  Original request Id for which this message was delivered.
+  The unique identifier that was assigned to the message request.
 
 
 =head2 Result => L<Paws::Pinpoint::MapOfMapOfEndpointMessageResult>
 
-  A map containing of UserId to Map of EndpointId to Endpoint Message
-Result.
+  An object that indicates which endpoints the message was sent to, for
+each user. The object lists user IDs and, for each user ID, provides
+the endpoint IDs that the message was sent to. For each endpoint ID, it
+provides an EndpointMessageResult object.
 
 
 

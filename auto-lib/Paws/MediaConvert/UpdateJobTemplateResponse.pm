@@ -17,7 +17,8 @@ Paws::MediaConvert::UpdateJobTemplateResponse
 
 =head2 JobTemplate => L<Paws::MediaConvert::JobTemplate>
 
-
+A job template is a pre-made set of encoding instructions that you can
+use to quickly create a job.
 
 
 =head2 _request_id => Str

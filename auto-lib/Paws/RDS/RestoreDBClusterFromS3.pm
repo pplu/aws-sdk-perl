@@ -5,10 +5,12 @@ package Paws::RDS::RestoreDBClusterFromS3;
   has BacktrackWindow => (is => 'ro', isa => 'Int');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -66,9 +68,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BacktrackWindow                 => 1,                      # OPTIONAL
       BackupRetentionPeriod           => 1,                      # OPTIONAL
       CharacterSetName                => 'MyString',             # OPTIONAL
+      CopyTagsToSnapshot              => 1,                      # OPTIONAL
       DBClusterParameterGroupName     => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
       DatabaseName                    => 'MyString',             # OPTIONAL
+      DeletionProtection              => 1,                      # OPTIONAL
       EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
       EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
       EngineVersion                   => 'MyString',             # OPTIONAL
@@ -102,8 +106,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-A list of EC2 Availability Zones that instances in the restored DB
-cluster can be created in.
+A list of Availability Zones (AZs) where instances in the restored DB
+cluster can be created.
 
 
 
@@ -155,6 +159,14 @@ associated with the specified CharacterSet.
 
 
 
+=head2 CopyTagsToSnapshot => Bool
+
+A value that indicates whether to copy all tags from the restored DB
+cluster to snapshots of the restored DB cluster. The default is not to
+copy them.
+
+
+
 =head2 DatabaseName => Str
 
 The database name for the restored DB cluster.
@@ -180,7 +192,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -219,19 +231,30 @@ Example: C<mySubnetgroup>
 
 
 
+=head2 DeletionProtection => Bool
+
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the restored DB cluster is to export to
-CloudWatch Logs.
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon Aurora User Guide>.
 
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: C<false>
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 
 
@@ -267,7 +290,7 @@ account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KM encryption key.
 
-If the C<StorageEncrypted> parameter is true, and you do not specify a
+If the StorageEncrypted parameter is enabled, and you do not specify a
 value for the C<KmsKeyId> parameter, then Amazon RDS will use your
 default encryption key. AWS KMS creates the default encryption key for
 your AWS account. Your AWS account has a different default encryption
@@ -293,7 +316,7 @@ First character must be a letter.
 
 =item *
 
-Cannot be a reserved word for the chosen database engine.
+Can't be a reserved word for the chosen database engine.
 
 =back
 
@@ -338,8 +361,8 @@ parameter.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available,
 see Adjusting the Preferred Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
-in the I<Amazon RDS User Guide.>
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+in the I<Amazon Aurora User Guide.>
 
 Constraints:
 
@@ -377,8 +400,8 @@ The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
 week. To see the time blocks available, see Adjusting the Preferred
 Maintenance Window
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
-in the I<Amazon RDS User Guide.>
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+in the I<Amazon Aurora User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
@@ -431,7 +454,7 @@ Example: C<5.6.22>
 
 =head2 StorageEncrypted => Bool
 
-Specifies whether the restored DB cluster is encrypted.
+A value that indicates whether the restored DB cluster is encrypted.
 
 
 

@@ -40,14 +40,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AmazonSideAsn          = $VirtualInterface->AmazonSideAsn;
     my $Asn                    = $VirtualInterface->Asn;
     my $AuthKey                = $VirtualInterface->AuthKey;
+    my $AwsDeviceV2            = $VirtualInterface->AwsDeviceV2;
     my $BgpPeers               = $VirtualInterface->BgpPeers;
     my $ConnectionId           = $VirtualInterface->ConnectionId;
     my $CustomerAddress        = $VirtualInterface->CustomerAddress;
     my $CustomerRouterConfig   = $VirtualInterface->CustomerRouterConfig;
     my $DirectConnectGatewayId = $VirtualInterface->DirectConnectGatewayId;
+    my $JumboFrameCapable      = $VirtualInterface->JumboFrameCapable;
     my $Location               = $VirtualInterface->Location;
+    my $Mtu                    = $VirtualInterface->Mtu;
     my $OwnerAccount           = $VirtualInterface->OwnerAccount;
+    my $Region                 = $VirtualInterface->Region;
     my $RouteFilterPrefixes    = $VirtualInterface->RouteFilterPrefixes;
+    my $Tags                   = $VirtualInterface->Tags;
     my $VirtualGatewayId       = $VirtualInterface->VirtualGatewayId;
     my $VirtualInterfaceId     = $VirtualInterface->VirtualInterfaceId;
     my $VirtualInterfaceName   = $VirtualInterface->VirtualInterfaceName;
@@ -65,22 +70,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-The ID of the LAG or connection with which to associate the virtual
-interface.
-
-Example: dxlag-abc123 or dxcon-abc123
-
-Default: None
+The ID of the LAG or connection.
 
 
 
 =head2 B<REQUIRED> VirtualInterfaceId => Str
 
 The ID of the virtual interface.
-
-Example: dxvif-123dfg56
-
-Default: None
 
 
 

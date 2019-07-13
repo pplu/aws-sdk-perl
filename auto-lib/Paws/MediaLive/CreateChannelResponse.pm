@@ -1,6 +1,7 @@
 
 package Paws::MediaLive::CreateChannelResponse;
   use Moose;
+  has ChannelClass => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelClass');
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
@@ -10,6 +11,7 @@ package Paws::MediaLive::CreateChannelResponse;
   has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
   has Reserved => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reserved');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -23,6 +25,12 @@ Paws::MediaLive::CreateChannelResponse
 =head1 ATTRIBUTES
 
 
+=head2 ChannelClass => Str
+
+The class for this channel. STANDARD for a channel with two pipelines
+or SINGLE_PIPELINE for a channel with one pipeline.
+
+Valid values are: C<"STANDARD">, C<"SINGLE_PIPELINE">
 =head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
 
 
@@ -69,6 +77,11 @@ Deprecated field that's only usable by whitelisted customers.
 
 An optional Amazon Resource Name (ARN) of the role to assume when
 running the Channel.
+
+
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs.
 
 
 =head2 _request_id => Str

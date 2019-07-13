@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head2 Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>]
 
 Optional filters used to narrow down the scope of the returned
-Maintenance Windows. Supported filter keys are Name and Enabled.
+maintenance windows. Supported filter keys are B<Name> and B<Enabled>.
 
 
 

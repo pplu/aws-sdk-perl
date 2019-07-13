@@ -34,15 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a description of virtual tape library (VTL) devices for the
     # specified gateway.
     my $DescribeVTLDevicesOutput = $storagegateway->DescribeVTLDevices(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
-        'Limit'         => 123,
-        'Marker'        => 1,
-        'VTLDeviceARNs' => [
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',
+      'Limit'         => 123,
+      'Marker'        => 1,
+      'VTLDeviceARNs' => [
 
-        ]
-      }
+      ]
     );
 
     # Results:

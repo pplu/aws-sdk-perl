@@ -32,15 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe tags
     # This example describes the tags for the specified Auto Scaling group.
     my $TagsType = $autoscaling->DescribeTags(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'auto-scaling-group',
-            'Values' => ['my-auto-scaling-group']
-          }
-        ]
-      }
+        {
+          'Name'   => 'auto-scaling-group',
+          'Values' => ['my-auto-scaling-group']
+        }
+      ]
     );
 
     # Results:
@@ -56,14 +54,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 Filters => ArrayRef[L<Paws::AutoScaling::Filter>]
 
-A filter used to scope the tags to return.
+One or more filters to scope the tags to return. The maximum number of
+filters per filter type (for example, C<auto-scaling-group>) is 1000.
 
 
 
 =head2 MaxRecords => Int
 
 The maximum number of items to return with this call. The default value
-is 50 and the maximum value is 100.
+is C<50> and the maximum value is C<100>.
 
 
 

@@ -2,7 +2,9 @@ package Paws::Batch::ContainerOverrides;
   use Moose;
   has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
+  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
   has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest']);
 1;
 
@@ -57,10 +59,23 @@ convention is reserved for variables that are set by the AWS Batch
 service.
 
 
+=head2 InstanceType => Str
+
+  The instance type to use for a multi-node parallel job. This parameter
+is not valid for single-node container jobs.
+
+
 =head2 Memory => Int
 
   The number of MiB of memory reserved for the job. This value overrides
 the value set in the job definition.
+
+
+=head2 ResourceRequirements => ArrayRef[L<Paws::Batch::ResourceRequirement>]
+
+  The type and amount of a resource to assign to a container. This value
+overrides the value set in the job definition. Currently, the only
+supported resource is C<GPU>.
 
 
 =head2 Vcpus => Int

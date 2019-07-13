@@ -67,11 +67,12 @@ AWS account.
 (Optional) The maximum number of query logging configurations that you
 want Amazon Route 53 to return in response to the current request. If
 the current AWS account has more than C<MaxResults> configurations, use
-the value of ListQueryLoggingConfigsResponse$NextToken in the response
-to get the next page of results.
+the value of NextToken
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListQueryLoggingConfigs.html#API_ListQueryLoggingConfigs_RequestSyntax)
+in the response to get the next page of results.
 
-If you don't specify a value for C<MaxResults>, Amazon Route 53 returns
-up to 100 configurations.
+If you don't specify a value for C<MaxResults>, Route 53 returns up to
+100 configurations.
 
 
 

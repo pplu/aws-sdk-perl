@@ -1,7 +1,9 @@
 package Paws::IoT1ClickProjects::ProjectSummary;
   use Moose;
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest'], required => 1);
   has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest'], required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::IoT1ClickProjects::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has UpdatedDate => (is => 'ro', isa => 'Str', request_name => 'updatedDate', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -22,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT1ClickProjects::ProjectSummary object:
 
-  $service_obj->Method(Att1 => { CreatedDate => $value, ..., UpdatedDate => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., UpdatedDate => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT1ClickProjects::ProjectSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreatedDate
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
@@ -37,6 +39,11 @@ An object providing summary information for a particular project for an
 associated AWS account and region.
 
 =head1 ATTRIBUTES
+
+
+=head2 Arn => Str
+
+  The ARN of the project.
 
 
 =head2 B<REQUIRED> CreatedDate => Str
@@ -48,6 +55,11 @@ format.
 =head2 B<REQUIRED> ProjectName => Str
 
   The name of the project being summarized.
+
+
+=head2 Tags => L<Paws::IoT1ClickProjects::TagMap>
+
+  The tags (metadata key/value pairs) associated with the project.
 
 
 =head2 B<REQUIRED> UpdatedDate => Str

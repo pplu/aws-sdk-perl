@@ -3,6 +3,7 @@ package Paws::EC2::AvailabilityZone;
   has Messages => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AvailabilityZoneMessage]', request_name => 'messageSet', traits => ['NameInRequest']);
   has RegionName => (is => 'ro', isa => 'Str', request_name => 'regionName', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'zoneState', traits => ['NameInRequest']);
+  has ZoneId => (is => 'ro', isa => 'Str', request_name => 'zoneId', traits => ['NameInRequest']);
   has ZoneName => (is => 'ro', isa => 'Str', request_name => 'zoneName', traits => ['NameInRequest']);
 1;
 
@@ -46,12 +47,17 @@ This class has no description
 
 =head2 RegionName => Str
 
-  The name of the region.
+  The name of the Region.
 
 
 =head2 State => Str
 
   The state of the Availability Zone.
+
+
+=head2 ZoneId => Str
+
+  The ID of the Availability Zone.
 
 
 =head2 ZoneName => Str

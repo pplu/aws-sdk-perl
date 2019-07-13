@@ -32,15 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To purchase a Scheduled Instance
     # This example purchases a Scheduled Instance.
     my $PurchaseScheduledInstancesResult = $ec2->PurchaseScheduledInstances(
-      {
-        'PurchaseRequests' => [
+      'PurchaseRequests' => [
 
-          {
-            'InstanceCount' => 1,
-            'PurchaseToken' => 'eyJ2IjoiMSIsInMiOjEsImMiOi...'
-          }
-        ]
-      }
+        {
+          'InstanceCount' => 1,
+          'PurchaseToken' => 'eyJ2IjoiMSIsInMiOjEsImMiOi...'
+        }
+      ]
     );
 
     # Results:
@@ -59,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 Unique, case-sensitive identifier that ensures the idempotency of the
 request. For more information, see Ensuring Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 
@@ -74,7 +72,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> PurchaseRequests => ArrayRef[L<Paws::EC2::PurchaseRequest>]
 
-One or more purchase requests.
+The purchase requests.
 
 
 

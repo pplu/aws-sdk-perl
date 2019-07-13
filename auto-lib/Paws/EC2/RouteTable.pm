@@ -1,6 +1,7 @@
 package Paws::EC2::RouteTable;
   use Moose;
   has Associations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RouteTableAssociation]', request_name => 'associationSet', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has PropagatingVgws => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PropagatingVgw]', request_name => 'propagatingVgwSet', traits => ['NameInRequest']);
   has Routes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Route]', request_name => 'routeSet', traits => ['NameInRequest']);
   has RouteTableId => (is => 'ro', isa => 'Str', request_name => 'routeTableId', traits => ['NameInRequest']);
@@ -44,6 +45,11 @@ This class has no description
 =head2 Associations => ArrayRef[L<Paws::EC2::RouteTableAssociation>]
 
   The associations between the route table and one or more subnets.
+
+
+=head2 OwnerId => Str
+
+  The ID of the AWS account that owns the route table.
 
 
 =head2 PropagatingVgws => ArrayRef[L<Paws::EC2::PropagatingVgw>]

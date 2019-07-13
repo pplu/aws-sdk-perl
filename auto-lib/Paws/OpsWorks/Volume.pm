@@ -52,7 +52,7 @@ Describes an instance's Amazon EBS volume.
 =head2 AvailabilityZone => Str
 
   The volume Availability Zone. For more information, see Regions and
-Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
+Endpoints (https://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 Device => Str
@@ -67,7 +67,9 @@ Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 =head2 Encrypted => Bool
 
-  
+  Specifies whether an Amazon EBS volume is encrypted. For more
+information, see Amazon EBS Encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html).
 
 
 =head2 InstanceId => Str
@@ -98,7 +100,7 @@ Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 =head2 Region => Str
 
   The AWS region. For more information about AWS regions, see Regions and
-Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
+Endpoints (https://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 Size => Int
@@ -109,7 +111,7 @@ Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 =head2 Status => Str
 
   The value returned by DescribeVolumes
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html).
 
 
 =head2 VolumeId => Str
@@ -119,7 +121,39 @@ Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 =head2 VolumeType => Str
 
-  The volume type, standard or PIOPS.
+  The volume type. For more information, see Amazon EBS Volume Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+
+=over
+
+=item *
+
+C<standard> - Magnetic. Magnetic volumes must have a minimum size of 1
+GiB and a maximum size of 1024 GiB.
+
+=item *
+
+C<io1> - Provisioned IOPS (SSD). PIOPS volumes must have a minimum size
+of 4 GiB and a maximum size of 16384 GiB.
+
+=item *
+
+C<gp2> - General Purpose (SSD). General purpose volumes must have a
+minimum size of 1 GiB and a maximum size of 16384 GiB.
+
+=item *
+
+C<st1> - Throughput Optimized hard disk drive (HDD). Throughput
+optimized HDD volumes must have a minimum size of 500 GiB and a maximum
+size of 16384 GiB.
+
+=item *
+
+C<sc1> - Cold HDD. Cold HDD volumes must have a minimum size of 500 GiB
+and a maximum size of 16384 GiB.
+
+=back
+
 
 
 

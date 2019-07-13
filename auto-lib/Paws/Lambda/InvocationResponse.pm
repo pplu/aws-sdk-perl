@@ -22,48 +22,47 @@ Paws::Lambda::InvocationResponse
 
 =head2 ExecutedVersion => Str
 
-The function version that has been executed. This value is returned
-only if the invocation type is C<RequestResponse>. For more
-information, see lambda-traffic-shifting-using-aliases.
+The version of the function that executed. When you invoke a function
+with an alias, this indicates which version the alias resolved to.
 
 
 =head2 FunctionError => Str
 
-Indicates whether an error occurred while executing the Lambda
-function. If an error occurred this field will have one of two values;
-C<Handled> or C<Unhandled>. C<Handled> errors are errors that are
-reported by the function while the C<Unhandled> errors are those
-detected and reported by AWS Lambda. Unhandled errors include out of
-memory errors and function timeouts. For information about how to
-report an C<Handled> error, see Programming Model
-(http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html).
+If present, indicates that an error occurred during function execution.
+Details about the error are included in the response payload.
+
+=over
+
+=item *
+
+C<Handled> - The runtime caught an error thrown by the function and
+formatted it into a JSON document.
+
+=item *
+
+C<Unhandled> - The runtime didn't handle the error. For example, the
+function ran out of memory or timed out.
+
+=back
+
 
 
 =head2 LogResult => Str
 
-It is the base64-encoded logs for the Lambda function invocation. This
-is present only if the invocation type is C<RequestResponse> and the
-logs were requested.
+The last 4 KB of the execution log, which is base64 encoded.
 
 
 =head2 Payload => Str
 
-It is the JSON representation of the object returned by the Lambda
-function. This is present only if the invocation type is
-C<RequestResponse>.
-
-In the event of a function error this field contains a message
-describing the error. For the C<Handled> errors the Lambda function
-will report this message. For C<Unhandled> errors AWS Lambda reports
-the message.
+The response from the function, or an error object.
 
 
 =head2 StatusCode => Int
 
-The HTTP status code will be in the 200 range for successful request.
-For the C<RequestResponse> invocation type this status code will be
-200. For the C<Event> invocation type this status code will be 202. For
-the C<DryRun> invocation type the status code will be 204.
+The HTTP status code is in the 200 range for a successful request. For
+the C<RequestResponse> invocation type, this status code is 200. For
+the C<Event> invocation type, this status code is 202. For the
+C<DryRun> invocation type, the status code is 204.
 
 
 =head2 _request_id => Str

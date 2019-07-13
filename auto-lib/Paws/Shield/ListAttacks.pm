@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults   => 1,            # OPTIONAL
       NextToken    => 'MyToken',    # OPTIONAL
       ResourceArns => [
-        'MyResourceArn', ...        # min: 1,
+        'MyResourceArn', ...        # min: 1, max: 2048
       ],                            # OPTIONAL
       StartTime => {
         FromInclusive => '1970-01-01T01:00:00',    # OPTIONAL
@@ -74,6 +74,13 @@ is allowed.
 
 The maximum number of AttackSummary objects to be returned. If this is
 left blank, the first 20 results will be returned.
+
+This is a maximum value; it is possible that AWS WAF will return the
+results in smaller batches. That is, the number of AttackSummary
+objects returned could be less than C<MaxResults>, even if there are
+still more AttackSummary objects yet to return. If there are more
+AttackSummary objects to return, AWS WAF will always also return a
+C<NextToken>.
 
 
 

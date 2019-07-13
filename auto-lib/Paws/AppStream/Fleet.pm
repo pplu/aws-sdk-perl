@@ -10,7 +10,9 @@ package Paws::AppStream::Fleet;
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has FleetErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::FleetError]');
   has FleetType => (is => 'ro', isa => 'Str');
-  has ImageName => (is => 'ro', isa => 'Str', required => 1);
+  has IdleDisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
+  has ImageArn => (is => 'ro', isa => 'Str');
+  has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -46,7 +48,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Contains the parameters for a fleet.
+Describes a fleet.
 
 =head1 ATTRIBUTES
 
@@ -68,25 +70,29 @@ Contains the parameters for a fleet.
 
 =head2 Description => Str
 
-  The description for display.
+  The description to display.
 
 
 =head2 DisconnectTimeoutInSeconds => Int
 
-  The time after disconnection when a session is considered to have
-ended, in seconds. If a user who was disconnected reconnects within
-this time interval, the user is connected to their previous session.
-Specify a value between 60 and 57600.
+  The amount of time that a streaming session remains active after users
+disconnect. If they try to reconnect to the streaming session after a
+disconnection or network interruption within this time interval, they
+are connected to their previous session. Otherwise, they are connected
+to a new session with a new streaming instance.
+
+Specify a value between 60 and 360000.
 
 
 =head2 DisplayName => Str
 
-  The fleet name for display.
+  The fleet name to display.
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-  The information needed to join a Microsoft Active Directory domain.
+  The name of the directory and organizational unit (OU) to use to join
+the fleet to a Microsoft Active Directory domain.
 
 
 =head2 EnableDefaultInternetAccess => Bool
@@ -122,7 +128,40 @@ streaming apps.
 
 
 
-=head2 B<REQUIRED> ImageName => Str
+=head2 IdleDisconnectTimeoutInSeconds => Int
+
+  The amount of time that users can be idle (inactive) before they are
+disconnected from their streaming session and the
+C<DisconnectTimeoutInSeconds> time interval begins. Users are notified
+before they are disconnected due to inactivity. If users try to
+reconnect to the streaming session before the time interval specified
+in C<DisconnectTimeoutInSeconds> elapses, they are connected to their
+previous session. Users are considered idle when they stop providing
+keyboard or mouse input during their streaming session. File uploads
+and downloads, audio in, audio out, and pixels changing do not qualify
+as user activity. If users continue to be idle after the time interval
+in C<IdleDisconnectTimeoutInSeconds> elapses, they are disconnected.
+
+To prevent users from being disconnected due to inactivity, specify a
+value of 0. Otherwise, specify a value between 60 and 3600. The default
+value is 0.
+
+If you enable this feature, we recommend that you specify a value that
+corresponds exactly to a whole number of minutes (for example, 60, 120,
+and 180). If you don't do this, the value is rounded to the nearest
+minute. For example, if you specify a value of 70, users are
+disconnected after 1 minute of inactivity. If you specify a value that
+is at the midpoint between two different minutes, the value is rounded
+up. For example, if you specify a value of 90, users are disconnected
+after 2 minutes of inactivity.
+
+
+=head2 ImageArn => Str
+
+  The ARN for the public, private, or shared image.
+
+
+=head2 ImageName => Str
 
   The name of the image used to create the fleet.
 
@@ -134,8 +173,13 @@ streaming apps.
 
 =head2 MaxUserDurationInSeconds => Int
 
-  The maximum time that a streaming session can run, in seconds. Specify
-a value between 600 and 57600.
+  The maximum amount of time that a streaming session can remain active,
+in seconds. If users are still connected to a streaming instance five
+minutes before this limit is reached, they are prompted to save any
+open documents before being disconnected. After this time elapses, the
+instance is terminated and replaced by a new instance.
+
+Specify a value between 600 and 360000.
 
 
 =head2 B<REQUIRED> Name => Str

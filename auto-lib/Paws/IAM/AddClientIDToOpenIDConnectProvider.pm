@@ -32,11 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following add-client-id-to-open-id-connect-provider command adds the
     # client ID my-application-ID to the OIDC provider named server.example.com:
     $iam->AddClientIDToOpenIDConnectProvider(
-      {
-        'ClientID' => 'my-application-ID',
-        'OpenIDConnectProviderArn' =>
-          'arn:aws:iam::123456789012:oidc-provider/server.example.com'
-      }
+      'ClientID' => 'my-application-ID',
+      'OpenIDConnectProviderArn' =>
+        'arn:aws:iam::123456789012:oidc-provider/server.example.com'
     );
 
 

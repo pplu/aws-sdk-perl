@@ -4,6 +4,7 @@ package Paws::EC2::Placement;
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
   has HostId => (is => 'ro', isa => 'Str', request_name => 'hostId', traits => ['NameInRequest']);
+  has PartitionNumber => (is => 'ro', isa => 'Int', request_name => 'partitionNumber', traits => ['NameInRequest']);
   has SpreadDomain => (is => 'ro', isa => 'Str', request_name => 'spreadDomain', traits => ['NameInRequest']);
   has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
 1;
@@ -51,17 +52,25 @@ parameter is not supported for the ImportInstance command.
 
   The Availability Zone of the instance.
 
+If not specified, an Availability Zone will be automatically chosen for
+you based on the load balancing criteria for the Region.
+
 
 =head2 GroupName => Str
 
-  The name of the placement group the instance is in (for cluster compute
-instances).
+  The name of the placement group the instance is in.
 
 
 =head2 HostId => Str
 
   The ID of the Dedicated Host on which the instance resides. This
 parameter is not supported for the ImportInstance command.
+
+
+=head2 PartitionNumber => Int
+
+  The number of the partition the instance is in. Valid only if the
+placement group strategy is set to C<partition>.
 
 
 =head2 SpreadDomain => Str

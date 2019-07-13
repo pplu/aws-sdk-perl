@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Information about a word or line of text detected by .
+Information about a word or line of text detected by DetectText.
 
 The C<DetectedText> field contains the text that Amazon Rekognition
 detected in the image.
@@ -46,7 +46,8 @@ line and has a parent identifier (C<ParentId>) that identifies the line
 of text in which the word appears. The word C<Id> is also an index for
 the word within a line of words.
 
-For more information, see text-detection.
+For more information, see Detecting Text in the Amazon Rekognition
+Developer Guide.
 
 =head1 ATTRIBUTES
 

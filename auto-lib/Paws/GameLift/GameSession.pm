@@ -55,8 +55,6 @@ Once the session ends, the game session object is retained for 30 days.
 This means you can reuse idempotency token values after this time. Game
 session logs are retained for 14 days.
 
-Game-session-related operations include:
-
 =over
 
 =item *
@@ -139,7 +137,7 @@ sessions a player can create.
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 Start a Game Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 You can search for active game sessions based on this custom data with
 SearchGameSessions.
 
@@ -150,7 +148,7 @@ SearchGameSessions.
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see Start a Game
 Session
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 
 
 =head2 GameSessionId => Str
@@ -174,7 +172,7 @@ game session. It is in JSON syntax, formatted as a string. In addition
 the matchmaking configuration used, it contains data on all players
 assigned to the match, including player attributes and team
 assignments. For more details on matchmaker data, see Match Data
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
 Matchmaker data is useful when requesting match backfills, and is
 updated whenever new players are added during a successful backfill
 (see StartMatchBackfill).

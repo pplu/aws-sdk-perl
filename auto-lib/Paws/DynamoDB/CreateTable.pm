@@ -2,13 +2,15 @@
 package Paws::DynamoDB::CreateTable;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]', required => 1);
+  has BillingMode => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndex]');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]', required => 1);
   has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndex]');
-  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput', required => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
   has SSESpecification => (is => 'ro', isa => 'Paws::DynamoDB::SSESpecification');
   has StreamSpecification => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -37,37 +39,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a table
     # This example creates a table named Music.
     my $CreateTableOutput = $dynamodb->CreateTable(
-      {
-        'AttributeDefinitions' => [
+      'AttributeDefinitions' => [
 
-          {
-            'AttributeName' => 'Artist',
-            'AttributeType' => 'S'
-          },
-
-          {
-            'AttributeName' => 'SongTitle',
-            'AttributeType' => 'S'
-          }
-        ],
-        'KeySchema' => [
-
-          {
-            'AttributeName' => 'Artist',
-            'KeyType'       => 'HASH'
-          },
-
-          {
-            'AttributeName' => 'SongTitle',
-            'KeyType'       => 'RANGE'
-          }
-        ],
-        'ProvisionedThroughput' => {
-          'ReadCapacityUnits'  => 5,
-          'WriteCapacityUnits' => 5
+        {
+          'AttributeName' => 'Artist',
+          'AttributeType' => 'S'
         },
-        'TableName' => 'Music'
-      }
+
+        {
+          'AttributeName' => 'SongTitle',
+          'AttributeType' => 'S'
+        }
+      ],
+      'KeySchema' => [
+
+        {
+          'AttributeName' => 'Artist',
+          'KeyType'       => 'HASH'
+        },
+
+        {
+          'AttributeName' => 'SongTitle',
+          'KeyType'       => 'RANGE'
+        }
+      ],
+      'ProvisionedThroughput' => {
+        'ReadCapacityUnits'  => 5,
+        'WriteCapacityUnits' => 5
+      },
+      'TableName' => 'Music'
     );
 
     # Results:
@@ -88,11 +88,33 @@ indexes.
 
 
 
+=head2 BillingMode => Str
+
+Controls how you are charged for read and write throughput and how you
+manage capacity. This setting can be changed later.
+
+=over
+
+=item *
+
+C<PROVISIONED> - Sets the billing mode to C<PROVISIONED>. We recommend
+using C<PROVISIONED> for predictable workloads.
+
+=item *
+
+C<PAY_PER_REQUEST> - Sets the billing mode to C<PAY_PER_REQUEST>. We
+recommend using C<PAY_PER_REQUEST> for unpredictable workloads.
+
+=back
+
+
+Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
+
 =head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]
 
-One or more global secondary indexes (the maximum is five) to be
-created on the table. Each global secondary index in the array includes
-the following:
+One or more global secondary indexes (the maximum is 20) to be created
+on the table. Each global secondary index in the array includes the
+following:
 
 =over
 
@@ -128,7 +150,7 @@ index.
 =item *
 
 C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes are in C<NonKeyAttributes>.
+index. The list of projected attributes is in C<NonKeyAttributes>.
 
 =item *
 
@@ -141,7 +163,7 @@ C<ALL> - All of the table attributes are projected into the index.
 C<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
 attributes provided in C<NonKeyAttributes>, summed across all of the
-secondary indexes, must not exceed 20. If you project the same
+secondary indexes, must not exceed 100. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
 
@@ -162,7 +184,7 @@ global secondary index, consisting of read and write capacity units.
 Specifies the attributes that make up the primary key for a table or an
 index. The attributes in C<KeySchema> must also be defined in the
 C<AttributeDefinitions> array. For more information, see Data Model
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 Each C<KeySchemaElement> in the array is composed of:
@@ -192,9 +214,9 @@ C<RANGE> - sort key
 =back
 
 The partition key of an item is also known as its I<hash attribute>.
-The term "hash attribute" derives from DynamoDB' usage of an internal
-hash function to evenly distribute data items across partitions, based
-on their partition key values.
+The term "hash attribute" derives from the DynamoDB usage of an
+internal hash function to evenly distribute data items across
+partitions, based on their partition key values.
 
 The sort key of an item is also known as its I<range attribute>. The
 term "range attribute" derives from the way DynamoDB stores items with
@@ -209,18 +231,18 @@ provide exactly two elements, in this order: The first element must
 have a C<KeyType> of C<HASH>, and the second element must have a
 C<KeyType> of C<RANGE>.
 
-For more information, see Specifying the Primary Key
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
+For more information, see Working with Tables
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
 
 =head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]
 
-One or more local secondary indexes (the maximum is five) to be created
-on the table. Each index is scoped to a given partition key value.
-There is a 10 GB size limit per partition key value; otherwise, the
-size of a local secondary index is unconstrained.
+One or more local secondary indexes (the maximum is 5) to be created on
+the table. Each index is scoped to a given partition key value. There
+is a 10 GB size limit per partition key value; otherwise, the size of a
+local secondary index is unconstrained.
 
 Each local secondary index in the array includes the following:
 
@@ -259,7 +281,7 @@ index.
 =item *
 
 C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes are in C<NonKeyAttributes>.
+index. The list of projected attributes is in C<NonKeyAttributes>.
 
 =item *
 
@@ -272,7 +294,7 @@ C<ALL> - All of the table attributes are projected into the index.
 C<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
 attributes provided in C<NonKeyAttributes>, summed across all of the
-secondary indexes, must not exceed 20. If you project the same
+secondary indexes, must not exceed 100. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
 
@@ -283,14 +305,18 @@ attributes when determining the total.
 
 
 
-=head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
+=head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
 Represents the provisioned throughput settings for a specified table or
 index. The settings can be modified using the C<UpdateTable> operation.
 
+If you set BillingMode as C<PROVISIONED>, you must specify this
+property. If you set BillingMode as C<PAY_PER_REQUEST>, you cannot
+specify this property.
+
 For current minimum and maximum provisioned throughput values, see
 Limits
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 
@@ -310,8 +336,8 @@ of:
 
 =item *
 
-C<StreamEnabled> - Indicates whether Streams is to be enabled (true) or
-disabled (false).
+C<StreamEnabled> - Indicates whether DynamoDB Streams is to be enabled
+(true) or disabled (false).
 
 =item *
 
@@ -351,6 +377,14 @@ item are written to the stream.
 =head2 B<REQUIRED> TableName => Str
 
 The name of the table to create.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::DynamoDB::Tag>]
+
+A list of key-value pairs to label the table. For more information, see
+Tagging for DynamoDB
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html).
 
 
 

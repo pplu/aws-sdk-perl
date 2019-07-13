@@ -2,6 +2,7 @@
 package Paws::MediaLive::DescribeChannelResponse;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
+  has ChannelClass => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelClass');
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
   has EgressEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ChannelEgressEndpoint]', traits => ['NameInRequest'], request_name => 'egressEndpoints');
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
@@ -13,6 +14,7 @@ package Paws::MediaLive::DescribeChannelResponse;
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'pipelinesRunningCount');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
   has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
+  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -31,6 +33,12 @@ Paws::MediaLive::DescribeChannelResponse
 The unique arn of the channel.
 
 
+=head2 ChannelClass => Str
+
+The class for this channel. STANDARD for a channel with two pipelines
+or SINGLE_PIPELINE for a channel with one pipeline.
+
+Valid values are: C<"STANDARD">, C<"SINGLE_PIPELINE">
 =head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
 
 A list of destinations of the channel. For UDP outputs, there is one
@@ -88,7 +96,12 @@ Channel.
 
 
 
-Valid values are: C<"CREATING">, C<"CREATE_FAILED">, C<"IDLE">, C<"STARTING">, C<"RUNNING">, C<"RECOVERING">, C<"STOPPING">, C<"DELETING">, C<"DELETED">
+Valid values are: C<"CREATING">, C<"CREATE_FAILED">, C<"IDLE">, C<"STARTING">, C<"RUNNING">, C<"RECOVERING">, C<"STOPPING">, C<"DELETING">, C<"DELETED">, C<"UPDATING">, C<"UPDATE_FAILED">
+=head2 Tags => L<Paws::MediaLive::Tags>
+
+A collection of key-value pairs.
+
+
 =head2 _request_id => Str
 
 

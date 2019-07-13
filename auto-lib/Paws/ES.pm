@@ -19,6 +19,11 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::AddTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelElasticsearchServiceSoftwareUpdate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::CancelElasticsearchServiceSoftwareUpdate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateElasticsearchDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::CreateElasticsearchDomain', @_);
@@ -64,6 +69,21 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::DescribeReservedElasticsearchInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCompatibleElasticsearchVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::GetCompatibleElasticsearchVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetUpgradeHistory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::GetUpgradeHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetUpgradeStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::GetUpgradeStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDomainNames {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::ListDomainNames', @_);
@@ -94,12 +114,91 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::RemoveTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartElasticsearchServiceSoftwareUpdate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::StartElasticsearchServiceSoftwareUpdate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateElasticsearchDomainConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::UpdateElasticsearchDomainConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpgradeElasticsearchDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::UpgradeElasticsearchDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
+  sub DescribeAllReservedElasticsearchInstanceOfferings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReservedElasticsearchInstanceOfferings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeReservedElasticsearchInstanceOfferings(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ReservedElasticsearchInstanceOfferings }, @{ $next_result->ReservedElasticsearchInstanceOfferings };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ReservedElasticsearchInstanceOfferings') foreach (@{ $result->ReservedElasticsearchInstanceOfferings });
+        $result = $self->DescribeReservedElasticsearchInstanceOfferings(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ReservedElasticsearchInstanceOfferings') foreach (@{ $result->ReservedElasticsearchInstanceOfferings });
+    }
+
+    return undef
+  }
+  sub DescribeAllReservedElasticsearchInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReservedElasticsearchInstances(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeReservedElasticsearchInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ReservedElasticsearchInstances }, @{ $next_result->ReservedElasticsearchInstances };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ReservedElasticsearchInstances') foreach (@{ $result->ReservedElasticsearchInstances });
+        $result = $self->DescribeReservedElasticsearchInstances(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ReservedElasticsearchInstances') foreach (@{ $result->ReservedElasticsearchInstances });
+    }
+
+    return undef
+  }
+  sub GetAllUpgradeHistory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetUpgradeHistory(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetUpgradeHistory(@_, NextToken => $next_result->NextToken);
+        push @{ $result->UpgradeHistories }, @{ $next_result->UpgradeHistories };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'UpgradeHistories') foreach (@{ $result->UpgradeHistories });
+        $result = $self->GetUpgradeHistory(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'UpgradeHistories') foreach (@{ $result->UpgradeHistories });
+    }
+
+    return undef
+  }
   sub ListAllElasticsearchInstanceTypes {
     my $self = shift;
 
@@ -148,7 +247,7 @@ package Paws::ES;
   }
 
 
-  sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DeleteElasticsearchServiceRole DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits DescribeReservedElasticsearchInstanceOfferings DescribeReservedElasticsearchInstances ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags PurchaseReservedElasticsearchInstanceOffering RemoveTags UpdateElasticsearchDomainConfig / }
+  sub operations { qw/AddTags CancelElasticsearchServiceSoftwareUpdate CreateElasticsearchDomain DeleteElasticsearchDomain DeleteElasticsearchServiceRole DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits DescribeReservedElasticsearchInstanceOfferings DescribeReservedElasticsearchInstances GetCompatibleElasticsearchVersions GetUpgradeHistory GetUpgradeStatus ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags PurchaseReservedElasticsearchInstanceOffering RemoveTags StartElasticsearchServiceSoftwareUpdate UpdateElasticsearchDomainConfig UpgradeElasticsearchDomain / }
 
 1;
 
@@ -187,7 +286,7 @@ For a current list of supported regions and endpoints, see Regions and
 Endpoints
 (http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/elasticsearch-service/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/elasticsearch-service/>
 
 
 =head1 METHODS
@@ -214,6 +313,24 @@ information.
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging)
 
 
+=head2 CancelElasticsearchServiceSoftwareUpdate
+
+=over
+
+=item DomainName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::CancelElasticsearchServiceSoftwareUpdate>
+
+Returns: a L<Paws::ES::CancelElasticsearchServiceSoftwareUpdateResponse> instance
+
+Cancels a scheduled service software update for an Amazon ES domain.
+You can only perform this operation before the C<AutomatedUpdateDate>
+and when the C<UpdateStatus> is in the C<PENDING_UPDATE> state.
+
+
 =head2 CreateElasticsearchDomain
 
 =over
@@ -235,6 +352,8 @@ information.
 =item [EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptions>]
 
 =item [LogPublishingOptions => L<Paws::ES::LogPublishingOptions>]
+
+=item [NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptions>]
 
 =item [SnapshotOptions => L<Paws::ES::SnapshotOptions>]
 
@@ -409,6 +528,62 @@ Returns information about reserved Elasticsearch instances for this
 account.
 
 
+=head2 GetCompatibleElasticsearchVersions
+
+=over
+
+=item [DomainName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::GetCompatibleElasticsearchVersions>
+
+Returns: a L<Paws::ES::GetCompatibleElasticsearchVersionsResponse> instance
+
+Returns a list of upgrade compatible Elastisearch versions. You can
+optionally pass a C< DomainName > to get all upgrade compatible
+Elasticsearch versions for that specific domain.
+
+
+=head2 GetUpgradeHistory
+
+=over
+
+=item DomainName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::GetUpgradeHistory>
+
+Returns: a L<Paws::ES::GetUpgradeHistoryResponse> instance
+
+Retrieves the complete history of the last 10 upgrades that were
+performed on the domain.
+
+
+=head2 GetUpgradeStatus
+
+=over
+
+=item DomainName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::GetUpgradeStatus>
+
+Returns: a L<Paws::ES::GetUpgradeStatusResponse> instance
+
+Retrieves the latest status of the last upgrade or upgrade eligibility
+check that was performed on the domain.
+
+
 =head2 ListDomainNames
 
 =over
@@ -522,6 +697,22 @@ Removes the specified set of tags from the specified Elasticsearch
 domain.
 
 
+=head2 StartElasticsearchServiceSoftwareUpdate
+
+=over
+
+=item DomainName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::StartElasticsearchServiceSoftwareUpdate>
+
+Returns: a L<Paws::ES::StartElasticsearchServiceSoftwareUpdateResponse> instance
+
+Schedules a service software update for an Amazon ES domain.
+
+
 =head2 UpdateElasticsearchDomainConfig
 
 =over
@@ -556,11 +747,68 @@ domain, setting as setting the instance type and the number of
 instances.
 
 
+=head2 UpgradeElasticsearchDomain
+
+=over
+
+=item DomainName => Str
+
+=item TargetVersion => Str
+
+=item [PerformCheckOnly => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ES::UpgradeElasticsearchDomain>
+
+Returns: a L<Paws::ES::UpgradeElasticsearchDomainResponse> instance
+
+Allows you to either upgrade your domain or perform an Upgrade
+eligibility check to a compatible Elasticsearch version.
+
+
 
 
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllReservedElasticsearchInstanceOfferings(sub { },[MaxResults => Int, NextToken => Str, ReservedElasticsearchInstanceOfferingId => Str])
+
+=head2 DescribeAllReservedElasticsearchInstanceOfferings([MaxResults => Int, NextToken => Str, ReservedElasticsearchInstanceOfferingId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedElasticsearchInstanceOfferings, passing the object as the first parameter, and the string 'ReservedElasticsearchInstanceOfferings' as the second parameter 
+
+If not, it will return a a L<Paws::ES::DescribeReservedElasticsearchInstanceOfferingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedElasticsearchInstances(sub { },[MaxResults => Int, NextToken => Str, ReservedElasticsearchInstanceId => Str])
+
+=head2 DescribeAllReservedElasticsearchInstances([MaxResults => Int, NextToken => Str, ReservedElasticsearchInstanceId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedElasticsearchInstances, passing the object as the first parameter, and the string 'ReservedElasticsearchInstances' as the second parameter 
+
+If not, it will return a a L<Paws::ES::DescribeReservedElasticsearchInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllUpgradeHistory(sub { },DomainName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllUpgradeHistory(DomainName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UpgradeHistories, passing the object as the first parameter, and the string 'UpgradeHistories' as the second parameter 
+
+If not, it will return a a L<Paws::ES::GetUpgradeHistoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllElasticsearchInstanceTypes(sub { },ElasticsearchVersion => Str, [DomainName => Str, MaxResults => Int, NextToken => Str])
 

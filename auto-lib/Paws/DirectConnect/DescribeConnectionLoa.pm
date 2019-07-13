@@ -48,24 +48,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-
+The ID of the connection.
 
 
 
 =head2 LoaContentType => Str
 
-
+The standard media type for the LOA-CFA document. The only supported
+value is application/pdf.
 
 Valid values are: C<"application/pdf">
 
 =head2 ProviderName => Str
 
 The name of the APN partner or service provider who establishes
-connectivity on your behalf. If you supply this parameter, the LOA-CFA
+connectivity on your behalf. If you specify this parameter, the LOA-CFA
 lists the provider name alongside your company name as the requester of
 the cross connect.
-
-Default: None
 
 
 

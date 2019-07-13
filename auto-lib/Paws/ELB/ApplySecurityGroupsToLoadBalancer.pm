@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # in a VPC.
     my $ApplySecurityGroupsToLoadBalancerOutput =
       $elasticloadbalancing->ApplySecurityGroupsToLoadBalancer(
-      {
-        'LoadBalancerName' => 'my-load-balancer',
-        'SecurityGroups'   => ['sg-fc448899']
-      }
+      'LoadBalancerName' => 'my-load-balancer',
+      'SecurityGroups'   => ['sg-fc448899']
       );
 
     # Results:

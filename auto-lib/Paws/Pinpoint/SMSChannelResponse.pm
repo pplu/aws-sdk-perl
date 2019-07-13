@@ -8,9 +8,11 @@ package Paws::Pinpoint::SMSChannelResponse;
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
+  has Platform => (is => 'ro', isa => 'Str', required => 1);
+  has PromotionalMessagesPerSecond => (is => 'ro', isa => 'Int');
   has SenderId => (is => 'ro', isa => 'Str');
   has ShortCode => (is => 'ro', isa => 'Str');
+  has TransactionalMessagesPerSecond => (is => 'ro', isa => 'Int');
   has Version => (is => 'ro', isa => 'Int');
 1;
 
@@ -42,69 +44,89 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-SMS Channel Response.
+Provides information about the status and settings of the SMS channel
+for an application.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  The unique ID of the application to which the SMS channel belongs.
+  The unique identifier for the application that the SMS channel applies
+to.
 
 
 =head2 CreationDate => Str
 
-  The date that the settings were last updated in ISO 8601 format.
+  The date and time, in ISO 8601 format, when the SMS channel was
+enabled.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether the SMS channel is enabled for the application.
 
 
 =head2 HasCredential => Bool
 
-  If the channel is registered with a credential for authentication.
+  (Not used) This property is retained only for backward compatibility.
 
 
 =head2 Id => Str
 
-  Channel ID. Not used, only for backwards compatibility.
+  (Deprecated) An identifier for the SMS channel. This property is
+retained only for backward compatibility.
 
 
 =head2 IsArchived => Bool
 
-  Is this channel archived
+  Specifies whether the SMS channel is archived.
 
 
 =head2 LastModifiedBy => Str
 
-  Who last updated this entry
+  The user who last modified the SMS channel.
 
 
 =head2 LastModifiedDate => Str
 
-  Last date this was updated
+  The date and time, in ISO 8601 format, when the SMS channel was last
+modified.
 
 
-=head2 Platform => Str
+=head2 B<REQUIRED> Platform => Str
 
-  Platform type. Will be "SMS"
+  The type of messaging or notification platform for the channel. For the
+SMS channel, this value is SMS.
+
+
+=head2 PromotionalMessagesPerSecond => Int
+
+  The maximum number of promotional messages that you can send through
+the SMS channel each second.
 
 
 =head2 SenderId => Str
 
-  Sender identifier of your messages.
+  The identity that displays on recipients' devices when they receive
+messages from the SMS channel.
 
 
 =head2 ShortCode => Str
 
-  The short code registered with the phone provider.
+  The registered short code to use when you send messages through the SMS
+channel.
+
+
+=head2 TransactionalMessagesPerSecond => Int
+
+  The maximum number of transactional messages that you can send through
+the SMS channel each second.
 
 
 =head2 Version => Int
 
-  Version of channel
+  The current version of the SMS channel.
 
 
 

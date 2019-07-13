@@ -111,7 +111,7 @@ Redis versions earlier than 2.8.6.
 
 =item *
 
-Redis (cluster mode disabled): T1 and T2 cache node types.
+Redis (cluster mode disabled): T1 node types.
 
 =item *
 
@@ -166,7 +166,7 @@ the replication group.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
 a Cache Engine and Version
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement)),
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
 but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing replication
 group and create it anew with the earlier engine version.
@@ -175,7 +175,7 @@ group and create it anew with the earlier engine version.
 
 =head2 NodeGroupId => Str
 
-The name of the Node Group (called shard in the console).
+Deprecated. This parameter is not used.
 
 
 

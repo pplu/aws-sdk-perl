@@ -30,18 +30,22 @@ Paws::ApiGateway::Integration
 
 =head2 CacheKeyParameters => ArrayRef[Str|Undef]
 
-Specifies the integration's cache key parameters.
+A list of request parameters whose values API Gateway caches. To be
+valid values for C<cacheKeyParameters>, these parameters must also be
+specified for Method C<requestParameters>.
 
 
 =head2 CacheNamespace => Str
 
-Specifies the integration's cache namespace.
+An API-specific tag group of related cached parameters. To be valid
+values for C<cacheKeyParameters>, these parameters must also be
+specified for Method C<requestParameters>.
 
 
 =head2 ConnectionId => Str
 
 The (C<id>
-(http://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id))
+(https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id))
 of the VpcLink used for the integration when C<connectionType=VPC_LINK>
 and undefined, otherwise.
 
@@ -76,8 +80,8 @@ Base64-encoded string.
 
 If this property is not defined, the request payload will be passed
 through from the method request to integration request without
-modification, provided that the C<passthroughBehaviors> is configured
-to support payload pass-through.
+modification, provided that the C<passthroughBehavior> is configured to
+support payload pass-through.
 
 Valid values are: C<"CONVERT_TO_BINARY">, C<"CONVERT_TO_TEXT">
 =head2 Credentials => Str
@@ -110,10 +114,10 @@ Specifies the integration's responses.
 The successful response returns C<200 OK> status and a payload as
 follows:
 
- { "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }
+ { "_links": { "curies": { "href": "https://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }
 
 Creating an API
-(http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html)
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html)
 
 
 =head2 PassthroughBehavior => Str
@@ -247,7 +251,7 @@ AWS service path-based API. The ensuing C<service_api> refers to the
 path to an AWS service resource, including the region of the integrated
 AWS service, if applicable. For example, for integration with the S3
 API of C<GetObject
-(http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)>,
+(https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)>,
 the C<uri> can be either
 C<arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}>
 or C<arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}>

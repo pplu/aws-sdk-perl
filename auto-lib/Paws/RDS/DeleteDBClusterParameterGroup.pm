@@ -30,10 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a DB cluster parameter group.
     # This example deletes the specified DB cluster parameter group.
     $rds->DeleteDBClusterParameterGroup(
-      {
-        'DBClusterParameterGroupName' => 'mydbclusterparametergroup'
-      }
-    );
+      'DBClusterParameterGroupName' => 'mydbclusterparametergroup' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -60,7 +57,7 @@ You can't delete a default DB cluster parameter group.
 
 =item *
 
-Cannot be associated with any DB clusters.
+Can't be associated with any DB clusters.
 
 =back
 

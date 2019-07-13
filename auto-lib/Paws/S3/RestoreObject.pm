@@ -2,6 +2,7 @@
 package Paws::S3::RestoreObject;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has RestoreRequest => (is => 'ro', isa => 'Paws::S3::RestoreRequest');
@@ -37,7 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RestoreObjectOutput = $s3->RestoreObject(
       Bucket         => 'MyBucketName',
       Key            => 'MyObjectKey',
-      RequestPayer   => 'requester',      # OPTIONAL
+      ContentMD5     => 'MyContentMD5',    # OPTIONAL
+      RequestPayer   => 'requester',       # OPTIONAL
       RestoreRequest => {
         Days                 => 1,                  # OPTIONAL
         Description          => 'MyDescription',    # OPTIONAL
@@ -72,11 +74,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               KMSKeyId       => 'MySSEKMSKeyId',    # OPTIONAL
             },    # OPTIONAL
             StorageClass => 'STANDARD'
-            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
+            , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, GLACIER, DEEP_ARCHIVE; OPTIONAL
             Tagging => {
               TagSet => [
                 {
-                  Key   => 'MyObjectKey',    # min: 1,
+                  Key   => 'MyObjectKey',    # min: 1
                   Value => 'MyValue',
 
                 },
@@ -98,16 +100,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ExpressionType     => 'SQL',            # values: SQL
           InputSerialization => {
             CSV => {
-              Comments       => 'MyComments',          # OPTIONAL
-              FieldDelimiter => 'MyFieldDelimiter',    # OPTIONAL
+              AllowQuotedRecordDelimiter => 1,                     # OPTIONAL
+              Comments                   => 'MyComments',          # OPTIONAL
+              FieldDelimiter             => 'MyFieldDelimiter',    # OPTIONAL
               FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
               QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
               QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
               RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
             },    # OPTIONAL
-            CompressionType => 'NONE',    # values: NONE, GZIP; OPTIONAL
+            CompressionType => 'NONE',    # values: NONE, GZIP, BZIP2; OPTIONAL
             JSON            => {
               Type => 'DOCUMENT',         # values: DOCUMENT, LINES; OPTIONAL
+            },    # OPTIONAL
+            Parquet => {
+
             },    # OPTIONAL
           },
           OutputSerialization => {
@@ -143,6 +149,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 
 =head2 B<REQUIRED> Bucket => Str
+
+
+
+
+
+=head2 ContentMD5 => Str
 
 
 

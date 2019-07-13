@@ -1,6 +1,7 @@
 package Paws::EC2::PlacementGroup;
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
+  has PartitionCount => (is => 'ro', isa => 'Int', request_name => 'partitionCount', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Strategy => (is => 'ro', isa => 'Str', request_name => 'strategy', traits => ['NameInRequest']);
 1;
@@ -41,6 +42,12 @@ This class has no description
 =head2 GroupName => Str
 
   The name of the placement group.
+
+
+=head2 PartitionCount => Int
+
+  The number of partitions. Valid only if B<strategy> is set to
+C<partition>.
 
 
 =head2 State => Str

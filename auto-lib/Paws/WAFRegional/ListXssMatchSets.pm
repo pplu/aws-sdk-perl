@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $waf-regional = Paws->service('WAFRegional');
     # To list XSS match sets
     # The following example returns an array of up to 100 XSS match sets.
-    my $ListXssMatchSetsResponse = $waf -regional->ListXssMatchSets(
-      {
-        'Limit' => 100
-      }
-    );
+    my $ListXssMatchSetsResponse =
+      $waf -regional->ListXssMatchSets( 'Limit' => 100 );
 
     # Results:
     my $XssMatchSets = $ListXssMatchSetsResponse->XssMatchSets;

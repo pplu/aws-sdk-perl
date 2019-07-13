@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes an Auto Scaling process that has been suspended. For more
-information, see ProcessType.
+Describes an automatic scaling process that has been suspended. For
+more information, see ProcessType.
 
 =head1 ATTRIBUTES
 

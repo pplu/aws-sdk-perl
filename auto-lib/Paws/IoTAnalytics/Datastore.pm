@@ -6,6 +6,7 @@ package Paws::IoTAnalytics::Datastore;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Storage => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastoreStorage', request_name => 'storage', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoTAnalytics::Datastore object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Storage => $value  });
 
 =head3 Results returned from an API call
 
@@ -86,6 +87,11 @@ The data store is being deleted.
 
 =back
 
+
+
+=head2 Storage => L<Paws::IoTAnalytics::DatastoreStorage>
+
+  Where data store data is stored.
 
 
 

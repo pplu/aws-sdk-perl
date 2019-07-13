@@ -6,9 +6,11 @@ package Paws::Batch::ComputeResource;
   has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
   has InstanceRole => (is => 'ro', isa => 'Str', request_name => 'instanceRole', traits => ['NameInRequest'], required => 1);
   has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'instanceTypes', traits => ['NameInRequest'], required => 1);
+  has LaunchTemplate => (is => 'ro', isa => 'Paws::Batch::LaunchTemplateSpecification', request_name => 'launchTemplate', traits => ['NameInRequest']);
   has MaxvCpus => (is => 'ro', isa => 'Int', request_name => 'maxvCpus', traits => ['NameInRequest'], required => 1);
   has MinvCpus => (is => 'ro', isa => 'Int', request_name => 'minvCpus', traits => ['NameInRequest'], required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest'], required => 1);
+  has PlacementGroup => (is => 'ro', isa => 'Str', request_name => 'placementGroup', traits => ['NameInRequest']);
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
   has SpotIamFleetRole => (is => 'ro', isa => 'Str', request_name => 'spotIamFleetRole', traits => ['NameInRequest']);
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Batch::TagsMap', request_name => 'tags', traits => ['NameInRequest']);
@@ -50,11 +52,13 @@ An object representing an AWS Batch compute resource.
 
 =head2 BidPercentage => Int
 
-  The minimum percentage that a Spot Instance price must be when compared
+  The maximum percentage that a Spot Instance price can be when compared
 with the On-Demand price for that instance type before instances are
-launched. For example, if your bid percentage is 20%, then the Spot
+launched. For example, if your maximum percentage is 20%, then the Spot
 price must be below 20% of the current On-Demand price for that EC2
-instance.
+instance. You always pay the lowest (market) price and never more than
+your maximum percentage. If you leave this field empty, the default
+value is 100% of the On-Demand price.
 
 
 =head2 DesiredvCpus => Int
@@ -78,11 +82,11 @@ compute environment.
 
   The Amazon ECS instance profile applied to Amazon EC2 instances in a
 compute environment. You can specify the short name or full Amazon
-Resource Name (ARN) of an instance profile. For example,
-C<ecsInstanceRole> or
-C<arn:aws:iam::E<lt>aws_account_idE<gt>:instance-profile/ecsInstanceRole>.
-For more information, see Amazon ECS Instance Role
-(http://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html)
+Resource Name (ARN) of an instance profile. For example, C<
+I<ecsInstanceRole> > or
+C<arn:aws:iam::I<E<lt>aws_account_idE<gt>>:instance-profile/I<ecsInstanceRole>
+>. For more information, see Amazon ECS Instance Role
+(https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html)
 in the I<AWS Batch User Guide>.
 
 
@@ -92,8 +96,20 @@ in the I<AWS Batch User Guide>.
 families to launch any instance type within those families (for
 example, C<c4> or C<p3>), or you can specify specific sizes within a
 family (such as C<c4.8xlarge>). You can also choose C<optimal> to pick
-instance types (from the latest C, M, and R instance families) on the
-fly that match the demand of your job queues.
+instance types (from the C, M, and R instance families) on the fly that
+match the demand of your job queues.
+
+
+=head2 LaunchTemplate => L<Paws::Batch::LaunchTemplateSpecification>
+
+  The launch template to use for your compute resources. Any other
+compute resource parameters that you specify in a
+CreateComputeEnvironment API operation override the same parameters in
+the launch template. You must specify either the launch template ID or
+launch template name in the request, but not both. For more
+information, see Launch Template Support
+(https://docs.aws.amazon.com/batch/latest/userguide/launch-templates.html)
+in the I<AWS Batch User Guide>.
 
 
 =head2 B<REQUIRED> MaxvCpus => Int
@@ -103,10 +119,24 @@ fly that match the demand of your job queues.
 
 =head2 B<REQUIRED> MinvCpus => Int
 
-  The minimum number of EC2 vCPUs that an environment should maintain.
+  The minimum number of EC2 vCPUs that an environment should maintain
+(even if the compute environment is C<DISABLED>).
 
 
-=head2 B<REQUIRED> SecurityGroupIds => ArrayRef[Str|Undef]
+=head2 PlacementGroup => Str
+
+  The Amazon EC2 placement group to associate with your compute
+resources. If you intend to submit multi-node parallel jobs to your
+compute environment, you should consider creating a cluster placement
+group and associate it with your compute resources. This keeps your
+multi-node parallel job on a logical grouping of instances within a
+single Availability Zone with high network flow potential. For more
+information, see Placement Groups
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+in the I<Amazon EC2 User Guide for Linux Instances>.
+
+
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
   The EC2 security group that is associated with instances launched in
 the compute environment.
@@ -115,7 +145,10 @@ the compute environment.
 =head2 SpotIamFleetRole => Str
 
   The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role
-applied to a C<SPOT> compute environment.
+applied to a C<SPOT> compute environment. For more information, see
+Amazon EC2 Spot Fleet Role
+(https://docs.aws.amazon.com/batch/latest/userguide/spot_fleet_IAM_role.html)
+in the I<AWS Batch User Guide>.
 
 
 =head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
@@ -126,12 +159,15 @@ applied to a C<SPOT> compute environment.
 =head2 Tags => L<Paws::Batch::TagsMap>
 
   Key-value pair tags to be applied to resources that are launched in the
-compute environment.
+compute environment. For AWS Batch, these take the form of "String1":
+"String2", where String1 is the tag key and String2 is the tag
+valueE<mdash>for example, { "Name": "AWS Batch Instance - C4OnDemand"
+}.
 
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of compute environment.
+  The type of compute environment: EC2 or SPOT.
 
 
 

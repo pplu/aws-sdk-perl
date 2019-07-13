@@ -34,11 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # targets per AWS account. You can run up to 500 concurrent agents per AWS
    # account.
     my $CreateAssessmentTargetResponse = $inspector->CreateAssessmentTarget(
-      {
-        'AssessmentTargetName' => 'ExampleAssessmentTarget',
-        'ResourceGroupArn' =>
-          'arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-AB6DMKnv'
-      }
+      'AssessmentTargetName' => 'ExampleAssessmentTarget',
+      'ResourceGroupArn' =>
+        'arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-AB6DMKnv'
     );
 
     # Results:
@@ -63,6 +61,8 @@ want to create. The name must be unique within the AWS account.
 =head2 ResourceGroupArn => Str
 
 The ARN that specifies the resource group that is used to create the
+assessment target. If resourceGroupArn is not specified, all EC2
+instances in the current AWS account and region are included in the
 assessment target.
 
 

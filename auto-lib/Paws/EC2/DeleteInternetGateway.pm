@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To delete an Internet gateway
     # This example deletes the specified Internet gateway.
-    $ec2->DeleteInternetGateway(
-      {
-        'InternetGatewayId' => 'igw-c0a643a9'
-      }
-    );
+    $ec2->DeleteInternetGateway( 'InternetGatewayId' => 'igw-c0a643a9' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -54,7 +50,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> InternetGatewayId => Str
 
-The ID of the Internet gateway.
+The ID of the internet gateway.
 
 
 

@@ -68,6 +68,9 @@ You cannot modify the value of C<AtRestEncryptionEnabled> after the
 cluster is created. To enable at-rest encryption on a cluster you must
 set C<AtRestEncryptionEnabled> to C<true> when you create a cluster.
 
+B<Required:> Only available when creating a replication group in an
+Amazon VPC using redis version C<3.2.6> or C<4.x>.
+
 Default: C<false>
 
 
@@ -129,14 +132,15 @@ General purpose:
 
 Current generation:
 
-B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
-C<cache.t2.medium>
-
-B<M3 node types:> C<cache.m3.medium>, C<cache.m3.large>,
-C<cache.m3.xlarge>, C<cache.m3.2xlarge>
+B<M5 node types:> C<cache.m5.large>, C<cache.m5.xlarge>,
+C<cache.m5.2xlarge>, C<cache.m5.4xlarge>, C<cache.m5.12xlarge>,
+C<cache.m5.24xlarge>
 
 B<M4 node types:> C<cache.m4.large>, C<cache.m4.xlarge>,
 C<cache.m4.2xlarge>, C<cache.m4.4xlarge>, C<cache.m4.10xlarge>
+
+B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
+C<cache.t2.medium>
 
 =item *
 
@@ -146,6 +150,9 @@ B<T1 node types:> C<cache.t1.micro>
 
 B<M1 node types:> C<cache.m1.small>, C<cache.m1.medium>,
 C<cache.m1.large>, C<cache.m1.xlarge>
+
+B<M3 node types:> C<cache.m3.medium>, C<cache.m3.large>,
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>
 
 =back
 
@@ -173,8 +180,13 @@ Memory optimized:
 
 Current generation:
 
-B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
-C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
+B<R5 node types:> C<cache.r5.large>, C<cache.r5.xlarge>,
+C<cache.r5.2xlarge>, C<cache.r5.4xlarge>, C<cache.r5.12xlarge>,
+C<cache.r5.24xlarge>
+
+B<R4 node types:> C<cache.r4.large>, C<cache.r4.xlarge>,
+C<cache.r4.2xlarge>, C<cache.r4.4xlarge>, C<cache.r4.8xlarge>,
+C<cache.r4.16xlarge>
 
 =item *
 
@@ -183,43 +195,38 @@ Previous generation: (not recommended)
 B<M2 node types:> C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
 C<cache.m2.4xlarge>
 
-=back
+B<R3 node types:> C<cache.r3.large>, C<cache.r3.xlarge>,
+C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
 =back
 
-B<Notes:>
+=back
+
+B<Additional node type info>
 
 =over
 
 =item *
 
-All T2 instances are created in an Amazon Virtual Private Cloud (Amazon
-VPC).
+All current generation instance types are created in Amazon VPC by
+default.
 
 =item *
 
-Redis (cluster mode disabled): Redis backup/restore is not supported on
-T1 and T2 instances.
+Redis append-only files (AOF) are not supported for T1 or T2 instances.
 
 =item *
 
-Redis (cluster mode enabled): Backup/restore is not supported on T1
+Redis Multi-AZ with automatic failover is not supported on T1
 instances.
 
 =item *
 
-Redis Append-only files (AOF) functionality is not supported for T1 or
-T2 instances.
+Redis configuration variables C<appendonly> and C<appendfsync> are not
+supported on Redis version 2.8.22 and later.
 
 =back
 
-For a complete listing of node types and specifications, see Amazon
-ElastiCache Product Features and Details
-(http://aws.amazon.com/elasticache/details) and either Cache Node
-Type-Specific Parameters for Memcached
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
-or Cache Node Type-Specific Parameters for Redis
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific).
 
 
 =head2 CacheParameterGroup => L<Paws::ElastiCache::CacheParameterGroupStatus>
@@ -374,6 +381,9 @@ You cannot modify the value of C<TransitEncryptionEnabled> after the
 cluster is created. To enable in-transit encryption on a cluster you
 must set C<TransitEncryptionEnabled> to C<true> when you create a
 cluster.
+
+B<Required:> Only available when creating a replication group in an
+Amazon VPC using redis version C<3.2.6> or C<4.x>.
 
 Default: C<false>
 

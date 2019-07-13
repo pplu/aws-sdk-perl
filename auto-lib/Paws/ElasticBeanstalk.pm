@@ -235,6 +235,75 @@ package Paws::ElasticBeanstalk;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllApplicationVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeApplicationVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeApplicationVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ApplicationVersions }, @{ $next_result->ApplicationVersions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ApplicationVersions') foreach (@{ $result->ApplicationVersions });
+        $result = $self->DescribeApplicationVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ApplicationVersions') foreach (@{ $result->ApplicationVersions });
+    }
+
+    return undef
+  }
+  sub DescribeAllEnvironmentManagedActionHistory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEnvironmentManagedActionHistory(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeEnvironmentManagedActionHistory(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ManagedActionHistoryItems }, @{ $next_result->ManagedActionHistoryItems };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ManagedActionHistoryItems') foreach (@{ $result->ManagedActionHistoryItems });
+        $result = $self->DescribeEnvironmentManagedActionHistory(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ManagedActionHistoryItems') foreach (@{ $result->ManagedActionHistoryItems });
+    }
+
+    return undef
+  }
+  sub DescribeAllEnvironments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEnvironments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeEnvironments(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Environments }, @{ $next_result->Environments };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Environments') foreach (@{ $result->Environments });
+        $result = $self->DescribeEnvironments(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Environments') foreach (@{ $result->Environments });
+    }
+
+    return undef
+  }
   sub DescribeAllEvents {
     my $self = shift;
 
@@ -254,6 +323,29 @@ package Paws::ElasticBeanstalk;
         $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Events') foreach (@{ $result->Events });
+    }
+
+    return undef
+  }
+  sub ListAllPlatformVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPlatformVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPlatformVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PlatformSummaryList }, @{ $next_result->PlatformSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PlatformSummaryList') foreach (@{ $result->PlatformSummaryList });
+        $result = $self->ListPlatformVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PlatformSummaryList') foreach (@{ $result->PlatformSummaryList });
     }
 
     return undef
@@ -308,7 +400,7 @@ B<Endpoints>
 
 For a list of region-specific endpoints that AWS Elastic Beanstalk
 supports, go to Regions and Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
+(https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
 in the I<Amazon Web Services Glossary>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01>
@@ -396,7 +488,7 @@ specify application source bundles for each of the environments to
 create or update. The name of each environment and other required
 information must be included in the source bundles in an environment
 manifest named C<env.yaml>. See Compose Environments
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html)
 for details.
 
 
@@ -409,6 +501,8 @@ for details.
 =item [Description => Str]
 
 =item [ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>]
+
+=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
 
 
 =back
@@ -440,6 +534,8 @@ C<default> and no application versions.
 =item [SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>]
 
 =item [SourceBundle => L<Paws::ElasticBeanstalk::S3Location>]
+
+=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
 
 
 =back
@@ -490,6 +586,8 @@ attempt to launch an environment from the application version.
 
 =item [SourceConfiguration => L<Paws::ElasticBeanstalk::SourceConfiguration>]
 
+=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
+
 
 =back
 
@@ -500,6 +598,9 @@ Returns: a L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription> instance
 Creates a configuration template. Templates are associated with a
 specific application and are used to deploy different versions of the
 application with the same configuration settings.
+
+Templates aren't associated with any environment. The
+C<EnvironmentName> response element is always C<null>.
 
 Related Topics
 
@@ -575,6 +676,8 @@ specified configuration.
 =item [EnvironmentName => Str]
 
 =item [OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]]
+
+=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
 
 
 =back
@@ -1017,9 +1120,10 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeInsta
 
 Returns: a L<Paws::ElasticBeanstalk::DescribeInstancesHealthResult> instance
 
-Retrives detailed information about the health of instances in your AWS
-Elastic Beanstalk. This operation requires enhanced health reporting
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
+Retrieves detailed information about the health of instances in your
+AWS Elastic Beanstalk. This operation requires enhanced health
+reporting
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
 
 
 =head2 DescribePlatformVersion
@@ -1094,7 +1198,7 @@ response contains a list of tag key-value pairs.
 Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
 environments. For details about environment tagging, see Tagging
 Resources in Your Elastic Beanstalk Environment
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
 
 
 =head2 RebuildEnvironment
@@ -1431,7 +1535,7 @@ C<TagsToRemove>.
 Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
 environments. For details about environment tagging, see Tagging
 Resources in Your Elastic Beanstalk Environment
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
 
 If you create a custom IAM user policy to control permission to this
 operation, specify one of the following two virtual actions (or both)
@@ -1453,7 +1557,7 @@ tag keys to remove in the C<TagsToRemove> parameter.
 
 For details about creating a custom user policy, see Creating a Custom
 User Policy
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies).
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies).
 
 
 =head2 ValidateConfigurationSettings
@@ -1488,6 +1592,42 @@ warnings associated with the selection of option values.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllApplicationVersions(sub { },[ApplicationName => Str, MaxRecords => Int, NextToken => Str, VersionLabels => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllApplicationVersions([ApplicationName => Str, MaxRecords => Int, NextToken => Str, VersionLabels => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ApplicationVersions, passing the object as the first parameter, and the string 'ApplicationVersions' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEnvironmentManagedActionHistory(sub { },[EnvironmentId => Str, EnvironmentName => Str, MaxItems => Int, NextToken => Str])
+
+=head2 DescribeAllEnvironmentManagedActionHistory([EnvironmentId => Str, EnvironmentName => Str, MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ManagedActionHistoryItems, passing the object as the first parameter, and the string 'ManagedActionHistoryItems' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionHistoryResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEnvironments(sub { },[ApplicationName => Str, EnvironmentIds => ArrayRef[Str|Undef], EnvironmentNames => ArrayRef[Str|Undef], IncludedDeletedBackTo => Str, IncludeDeleted => Bool, MaxRecords => Int, NextToken => Str, VersionLabel => Str])
+
+=head2 DescribeAllEnvironments([ApplicationName => Str, EnvironmentIds => ArrayRef[Str|Undef], EnvironmentNames => ArrayRef[Str|Undef], IncludedDeletedBackTo => Str, IncludeDeleted => Bool, MaxRecords => Int, NextToken => Str, VersionLabel => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Environments, passing the object as the first parameter, and the string 'Environments' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllEvents(sub { },[ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, PlatformArn => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
 
 =head2 DescribeAllEvents([ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, PlatformArn => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
@@ -1498,6 +1638,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
 
 If not, it will return a a L<Paws::ElasticBeanstalk::EventDescriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPlatformVersions(sub { },[Filters => ArrayRef[L<Paws::ElasticBeanstalk::PlatformFilter>], MaxRecords => Int, NextToken => Str])
+
+=head2 ListAllPlatformVersions([Filters => ArrayRef[L<Paws::ElasticBeanstalk::PlatformFilter>], MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PlatformSummaryList, passing the object as the first parameter, and the string 'PlatformSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticBeanstalk::ListPlatformVersionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

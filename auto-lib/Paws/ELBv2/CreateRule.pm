@@ -34,26 +34,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a rule that forwards requests to the specified target
     # group if the URL contains the specified pattern (for example, /img/*).
     my $CreateRuleOutput = $elasticloadbalancing->CreateRule(
-      {
-        'Actions' => [
+      'Actions' => [
 
-          {
-            'TargetGroupArn' =>
+        {
+          'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067',
-            'Type' => 'forward'
-          }
-        ],
-        'Conditions' => [
+          'Type' => 'forward'
+        }
+      ],
+      'Conditions' => [
 
-          {
-            'Field'  => 'path-pattern',
-            'Values' => ['/img/*']
-          }
-        ],
-        'ListenerArn' =>
+        {
+          'Field'  => 'path-pattern',
+          'Values' => ['/img/*']
+        }
+      ],
+      'ListenerArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/f2f7dc8efc522ab2',
-        'Priority' => 10
-      }
+      'Priority' => 10
     );
 
     # Results:
@@ -69,79 +67,35 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> Actions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The actions. Each rule must include one forward action.
+The actions. Each rule must include exactly one of the following types
+of actions: C<forward>, C<fixed-response>, or C<redirect>.
 
-If the action type is C<forward>, you can specify a single target
-group.
+If the action type is C<forward>, you specify a target group. The
+protocol of the target group must be HTTP or HTTPS for an Application
+Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
+or TCP_UDP for a Network Load Balancer.
 
-If the action type is C<authenticate-oidc>, you can use an identity
-provider that is OpenID Connect (OIDC) compliant to authenticate users
-as they access your application.
+[HTTPS listeners] If the action type is C<authenticate-oidc>, you
+authenticate users through an identity provider that is OpenID Connect
+(OIDC) compliant.
 
-If the action type is C<authenticate-cognito>, you can use Amazon
-Cognito to authenticate users as they access your application.
+[HTTPS listeners] If the action type is C<authenticate-cognito>, you
+authenticate users through the user pools supported by Amazon Cognito.
+
+[Application Load Balancer] If the action type is C<redirect>, you
+redirect specified client requests from one URL to another.
+
+[Application Load Balancer] If the action type is C<fixed-response>,
+you drop specified client requests and return a custom HTTP response.
 
 
 
 =head2 B<REQUIRED> Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
 
-The conditions. Each condition specifies a field name and a single
-value.
-
-If the field name is C<host-header>, you can specify a single host name
-(for example, my.example.com). A host name is case insensitive, can be
-up to 128 characters in length, and can contain any of the following
-characters. Note that you can include up to three wildcard characters.
-
-=over
-
-=item *
-
-A-Z, a-z, 0-9
-
-=item *
-
-- .
-
-=item *
-
-* (matches 0 or more characters)
-
-=item *
-
-? (matches exactly 1 character)
-
-=back
-
-If the field name is C<path-pattern>, you can specify a single path
-pattern. A path pattern is case sensitive, can be up to 128 characters
-in length, and can contain any of the following characters. Note that
-you can include up to three wildcard characters.
-
-=over
-
-=item *
-
-A-Z, a-z, 0-9
-
-=item *
-
-_ - . $ / ~ " ' @ : +
-
-=item *
-
-& (using &)
-
-=item *
-
-* (matches 0 or more characters)
-
-=item *
-
-? (matches exactly 1 character)
-
-=back
-
+The conditions. Each rule can include zero or one of the following
+conditions: C<http-request-method>, C<host-header>, C<path-pattern>,
+and C<source-ip>, and zero or more of the following conditions:
+C<http-header> and C<query-string>.
 
 
 

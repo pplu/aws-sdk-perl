@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppSync::Dy
 
 =head1 DESCRIPTION
 
-Describes a DynamoDB data source configuration.
+Describes an Amazon DynamoDB data source configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AwsRegion => Str
 
-  The AWS region.
+  The AWS Region.
 
 
 =head2 B<REQUIRED> TableName => Str

@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns information about a specific cluster including shipping
     # information, cluster status, and other important metadata.
     my $DescribeClusterResult = $snowball->DescribeCluster(
-      {
-        'ClusterId' => 'CID123e4567-e89b-12d3-a456-426655440000'
-      }
-    );
+      'ClusterId' => 'CID123e4567-e89b-12d3-a456-426655440000' );
 
     # Results:
     my $ClusterMetadata = $DescribeClusterResult->ClusterMetadata;

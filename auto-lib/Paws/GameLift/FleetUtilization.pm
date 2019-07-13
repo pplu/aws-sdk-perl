@@ -38,8 +38,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::F
 Current status of fleet utilization, including the number of game and
 player sessions being hosted.
 
-Fleet-related operations include:
-
 =over
 
 =item *

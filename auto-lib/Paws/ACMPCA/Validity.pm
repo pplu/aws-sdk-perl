@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACMPCA::Val
 Length of time for which the certificate issued by your private
 certificate authority (CA), or by the private CA itself, is valid in
 days, months, or years. You can issue a certificate by calling the
-IssueCertificate function.
+IssueCertificate action.
 
 =head1 ATTRIBUTES
 

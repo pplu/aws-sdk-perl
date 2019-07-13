@@ -52,7 +52,8 @@ volume. The default value is C<false>.
 
 =head2 SourceVolume => Str
 
-  The name of the volume to mount.
+  The name of the volume to mount. Must be a volume name referenced in
+the C<name> parameter of task definition C<volume>.
 
 
 

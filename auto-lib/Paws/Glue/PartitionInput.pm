@@ -53,7 +53,7 @@ partition.
 
 =head2 Parameters => L<Paws::Glue::ParametersMap>
 
-  Partition parameters, in the form of a list of key-value pairs.
+  These key-value pairs define partition parameters.
 
 
 =head2 StorageDescriptor => L<Paws::Glue::StorageDescriptor>
@@ -64,7 +64,8 @@ stored.
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  The values of the partition.
+  The values of the partition. Although this parameter is not required by
+the SDK, you must specify this parameter for a valid input.
 
 
 

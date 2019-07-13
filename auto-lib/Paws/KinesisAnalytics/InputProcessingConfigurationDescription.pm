@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 Provides configuration information about an input processor. Currently,
 the only input processor available is AWS Lambda
-(https://aws.amazon.com/documentation/lambda/).
+(https://docs.aws.amazon.com/lambda/).
 
 =head1 ATTRIBUTES
 
@@ -41,7 +41,8 @@ the only input processor available is AWS Lambda
 =head2 InputLambdaProcessorDescription => L<Paws::KinesisAnalytics::InputLambdaProcessorDescription>
 
   Provides configuration information about the associated
-InputLambdaProcessorDescription.
+InputLambdaProcessorDescription
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html).
 
 
 

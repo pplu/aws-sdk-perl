@@ -49,13 +49,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> WindowId => Str
 
-The ID of the Maintenance Window the task should be removed from.
+The ID of the maintenance window the task should be removed from.
 
 
 
 =head2 B<REQUIRED> WindowTaskId => Str
 
-The ID of the task to remove from the Maintenance Window.
+The ID of the task to remove from the maintenance window.
 
 
 

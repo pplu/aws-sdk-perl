@@ -638,6 +638,29 @@ package Paws::ApiGateway;
 
     return undef
   }
+  sub GetAllAuthorizers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetAuthorizers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->position) {
+        $next_result = $self->GetAuthorizers(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetAuthorizers(@_, position => $result->position);
+      }
+      $callback->($_ => 'items') foreach (@{ $result->items });
+    }
+
+    return undef
+  }
   sub GetAllBasePathMappings {
     my $self = shift;
 
@@ -707,6 +730,52 @@ package Paws::ApiGateway;
 
     return undef
   }
+  sub GetAllDocumentationParts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetDocumentationParts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->position) {
+        $next_result = $self->GetDocumentationParts(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetDocumentationParts(@_, position => $result->position);
+      }
+      $callback->($_ => 'items') foreach (@{ $result->items });
+    }
+
+    return undef
+  }
+  sub GetAllDocumentationVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetDocumentationVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->position) {
+        $next_result = $self->GetDocumentationVersions(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetDocumentationVersions(@_, position => $result->position);
+      }
+      $callback->($_ => 'items') foreach (@{ $result->items });
+    }
+
+    return undef
+  }
   sub GetAllDomainNames {
     my $self = shift;
 
@@ -730,6 +799,29 @@ package Paws::ApiGateway;
 
     return undef
   }
+  sub GetAllGatewayResponses {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetGatewayResponses(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->position) {
+        $next_result = $self->GetGatewayResponses(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetGatewayResponses(@_, position => $result->position);
+      }
+      $callback->($_ => 'items') foreach (@{ $result->items });
+    }
+
+    return undef
+  }
   sub GetAllModels {
     my $self = shift;
 
@@ -747,6 +839,29 @@ package Paws::ApiGateway;
       while ($result->position) {
         $callback->($_ => 'items') foreach (@{ $result->items });
         $result = $self->GetModels(@_, position => $result->position);
+      }
+      $callback->($_ => 'items') foreach (@{ $result->items });
+    }
+
+    return undef
+  }
+  sub GetAllRequestValidators {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetRequestValidators(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->position) {
+        $next_result = $self->GetRequestValidators(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetRequestValidators(@_, position => $result->position);
       }
       $callback->($_ => 'items') foreach (@{ $result->items });
     }
@@ -793,6 +908,29 @@ package Paws::ApiGateway;
       while ($result->position) {
         $callback->($_ => 'items') foreach (@{ $result->items });
         $result = $self->GetRestApis(@_, position => $result->position);
+      }
+      $callback->($_ => 'items') foreach (@{ $result->items });
+    }
+
+    return undef
+  }
+  sub GetAllSdkTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetSdkTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->position) {
+        $next_result = $self->GetSdkTypes(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetSdkTypes(@_, position => $result->position);
       }
       $callback->($_ => 'items') foreach (@{ $result->items });
     }
@@ -929,7 +1067,7 @@ developers to securely connect mobile and web applications to APIs that
 run on AWS Lambda, Amazon EC2, or other publicly addressable web
 services that are hosted outside of AWS.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/apigateway/>
 
 
 =head1 METHODS
@@ -950,6 +1088,8 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigat
 
 =item [StageKeys => ArrayRef[L<Paws::ApiGateway::StageKey>]]
 
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
 =item [Value => Str]
 
 
@@ -962,7 +1102,7 @@ Returns: a L<Paws::ApiGateway::ApiKey> instance
 Create an ApiKey resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html)
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html)
 
 
 =head2 CreateAuthorizer
@@ -999,7 +1139,7 @@ Returns: a L<Paws::ApiGateway::Authorizer> instance
 Adds a new Authorizer resource to an existing RestApi resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html)
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html)
 
 
 =head2 CreateBasePathMapping
@@ -1041,6 +1181,8 @@ Creates a new BasePathMapping resource.
 =item [StageDescription => Str]
 
 =item [StageName => Str]
+
+=item [TracingEnabled => Bool]
 
 =item [Variables => L<Paws::ApiGateway::MapOfStringToString>]
 
@@ -1118,6 +1260,10 @@ Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
 =item [RegionalCertificateArn => Str]
 
 =item [RegionalCertificateName => Str]
+
+=item [SecurityPolicy => Str]
+
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
 
 
 =back
@@ -1215,6 +1361,8 @@ Creates a Resource resource.
 
 =item [Policy => Str]
 
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
 =item [Version => Str]
 
 
@@ -1249,6 +1397,8 @@ Creates a new RestApi resource.
 
 =item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
 
+=item [TracingEnabled => Bool]
+
 =item [Variables => L<Paws::ApiGateway::MapOfStringToString>]
 
 
@@ -1273,6 +1423,8 @@ for the API.
 =item [Description => Str]
 
 =item [Quota => L<Paws::ApiGateway::QuotaSettings>]
+
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
 
 =item [Throttle => L<Paws::ApiGateway::ThrottleSettings>]
 
@@ -1317,6 +1469,8 @@ plan.
 =item TargetArns => ArrayRef[Str|Undef]
 
 =item [Description => Str]
+
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
 
 
 =back
@@ -1365,7 +1519,7 @@ Returns: nothing
 Deletes an existing Authorizer resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html)
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html)
 
 
 =head2 DeleteBasePathMapping
@@ -1757,6 +1911,8 @@ Flushes a stage's cache.
 
 =item [Description => Str]
 
+=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+
 
 =back
 
@@ -1841,7 +1997,7 @@ Returns: a L<Paws::ApiGateway::Authorizer> instance
 Describe an existing Authorizer resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html)
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html)
 
 
 =head2 GetAuthorizers
@@ -1864,7 +2020,7 @@ Returns: a L<Paws::ApiGateway::Authorizers> instance
 Describe an existing Authorizers resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html)
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html)
 
 
 =head2 GetBasePathMapping
@@ -2954,7 +3110,9 @@ Adds or updates a tag on a given resource.
 
 =item [Body => Str]
 
-=item [Headers => L<Paws::ApiGateway::MapOfHeaderValues>]
+=item [Headers => L<Paws::ApiGateway::MapOfStringToString>]
+
+=item [MultiValueHeaders => L<Paws::ApiGateway::MapOfStringToList>]
 
 =item [PathWithQueryString => Str]
 
@@ -2970,8 +3128,10 @@ Returns: a L<Paws::ApiGateway::TestInvokeAuthorizerResponse> instance
 Simulate the execution of an Authorizer in your RestApi with headers,
 parameters, and an incoming request body.
 
-Enable custom authorizers
-(http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html)
+Use Lambda Function as Authorizer
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html)
+Use Cognito User Pool as Authorizer
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html)
 
 
 =head2 TestInvokeMethod
@@ -2988,7 +3148,9 @@ Enable custom authorizers
 
 =item [ClientCertificateId => Str]
 
-=item [Headers => L<Paws::ApiGateway::MapOfHeaderValues>]
+=item [Headers => L<Paws::ApiGateway::MapOfStringToString>]
+
+=item [MultiValueHeaders => L<Paws::ApiGateway::MapOfStringToList>]
 
 =item [PathWithQueryString => Str]
 
@@ -3077,7 +3239,7 @@ Returns: a L<Paws::ApiGateway::Authorizer> instance
 Updates an existing Authorizer resource.
 
 AWS CLI
-(http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html)
+(https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html)
 
 
 =head2 UpdateBasePathMapping
@@ -3482,6 +3644,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ApiGateway::ApiKeys> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 GetAllAuthorizers(sub { },RestApiId => Str, [Limit => Int, Position => Str])
+
+=head2 GetAllAuthorizers(RestApiId => Str, [Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::Authorizers> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 GetAllBasePathMappings(sub { },DomainName => Str, [Limit => Int, Position => Str])
 
 =head2 GetAllBasePathMappings(DomainName => Str, [Limit => Int, Position => Str])
@@ -3518,6 +3692,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ApiGateway::Deployments> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 GetAllDocumentationParts(sub { },RestApiId => Str, [Limit => Int, LocationStatus => Str, NameQuery => Str, Path => Str, Position => Str, Type => Str])
+
+=head2 GetAllDocumentationParts(RestApiId => Str, [Limit => Int, LocationStatus => Str, NameQuery => Str, Path => Str, Position => Str, Type => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::DocumentationParts> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllDocumentationVersions(sub { },RestApiId => Str, [Limit => Int, Position => Str])
+
+=head2 GetAllDocumentationVersions(RestApiId => Str, [Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::DocumentationVersions> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 GetAllDomainNames(sub { },[Limit => Int, Position => Str])
 
 =head2 GetAllDomainNames([Limit => Int, Position => Str])
@@ -3530,6 +3728,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ApiGateway::DomainNames> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 GetAllGatewayResponses(sub { },RestApiId => Str, [Limit => Int, Position => Str])
+
+=head2 GetAllGatewayResponses(RestApiId => Str, [Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::GatewayResponses> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 GetAllModels(sub { },RestApiId => Str, [Limit => Int, Position => Str])
 
 =head2 GetAllModels(RestApiId => Str, [Limit => Int, Position => Str])
@@ -3540,6 +3750,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - items, passing the object as the first parameter, and the string 'items' as the second parameter 
 
 If not, it will return a a L<Paws::ApiGateway::Models> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllRequestValidators(sub { },RestApiId => Str, [Limit => Int, Position => Str])
+
+=head2 GetAllRequestValidators(RestApiId => Str, [Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::RequestValidators> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllResources(sub { },RestApiId => Str, [Embed => ArrayRef[Str|Undef], Limit => Int, Position => Str])
@@ -3564,6 +3786,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - items, passing the object as the first parameter, and the string 'items' as the second parameter 
 
 If not, it will return a a L<Paws::ApiGateway::RestApis> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllSdkTypes(sub { },[Limit => Int, Position => Str])
+
+=head2 GetAllSdkTypes([Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::SdkTypes> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllUsage(sub { },EndDate => Str, StartDate => Str, UsagePlanId => Str, [KeyId => Str, Limit => Int, Position => Str])

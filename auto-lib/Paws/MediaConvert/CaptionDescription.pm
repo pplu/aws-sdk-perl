@@ -1,8 +1,8 @@
 package Paws::MediaConvert::CaptionDescription;
   use Moose;
-  has CaptionSelectorName => (is => 'ro', isa => 'Str', request_name => 'captionSelectorName', traits => ['NameInRequest'], required => 1);
+  has CaptionSelectorName => (is => 'ro', isa => 'Str', request_name => 'captionSelectorName', traits => ['NameInRequest']);
   has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
-  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionDestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest'], required => 1);
+  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionDestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
 1;
@@ -40,7 +40,7 @@ Description of Caption output
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CaptionSelectorName => Str
+=head2 CaptionSelectorName => Str
 
   Specifies which "Caption Selector":#inputs-caption_selector to use from
 each input when generating captions. The name should be of the format
@@ -51,17 +51,27 @@ be used from each input.
 =head2 CustomLanguageCode => Str
 
   Indicates the language of the caption output track, using the ISO 639-2
-or ISO 639-3 three-letter language code
+or ISO 639-3 three-letter language code. For most captions output
+formats, the encoder puts this language information in the output
+captions metadata. If your output captions format is DVB-Sub or Burn
+in, the encoder uses this language information to choose the font
+language for rendering the captions text.
 
 
-=head2 B<REQUIRED> DestinationSettings => L<Paws::MediaConvert::CaptionDestinationSettings>
+=head2 DestinationSettings => L<Paws::MediaConvert::CaptionDestinationSettings>
 
-  
+  Specific settings required by destination type. Note that
+burnin_destination_settings are not available if the source of the
+caption data is Embedded or Teletext.
 
 
 =head2 LanguageCode => Str
 
-  Indicates the language of the caption output track.
+  Specify the language of this captions output track. For most captions
+output formats, the encoder puts this language information in the
+output captions metadata. If your output captions format is DVB-Sub or
+Burn in, the encoder uses this language information to choose the font
+language for rendering the captions text.
 
 
 =head2 LanguageDescription => Str

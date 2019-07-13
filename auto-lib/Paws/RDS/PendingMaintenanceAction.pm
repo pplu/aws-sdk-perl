@@ -44,7 +44,8 @@ Provides information about a pending maintenance action for a resource.
 =head2 Action => Str
 
   The type of pending maintenance action that is available for the
-resource.
+resource. Valid actions are C<system-update>, C<db-upgrade>, and
+C<hardware-maintenance>.
 
 
 =head2 AutoAppliedAfterDate => Str
@@ -59,7 +60,7 @@ C<next-maintenance> opt-in requests are ignored.
 
   The effective date when the pending maintenance action is applied to
 the resource. This date takes into account opt-in requests received
-from the ApplyPendingMaintenanceAction API, the
+from the C<ApplyPendingMaintenanceAction> API, the
 C<AutoAppliedAfterDate>, and the C<ForcedApplyDate>. This value is
 blank if an opt-in request has not been received and nothing has been
 specified as C<AutoAppliedAfterDate> or C<ForcedApplyDate>.

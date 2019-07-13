@@ -34,6 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $IndexName          = $DescribeThingGroupResponse->IndexName;
+    my $QueryString        = $DescribeThingGroupResponse->QueryString;
+    my $QueryVersion       = $DescribeThingGroupResponse->QueryVersion;
+    my $Status             = $DescribeThingGroupResponse->Status;
     my $ThingGroupArn      = $DescribeThingGroupResponse->ThingGroupArn;
     my $ThingGroupId       = $DescribeThingGroupResponse->ThingGroupId;
     my $ThingGroupMetadata = $DescribeThingGroupResponse->ThingGroupMetadata;

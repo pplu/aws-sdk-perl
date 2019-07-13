@@ -10,6 +10,7 @@ package Paws::ServerlessRepo::CreateApplicationInput;
   has ReadmeBody => (is => 'ro', isa => 'Str', request_name => 'readmeBody', traits => ['NameInRequest']);
   has ReadmeUrl => (is => 'ro', isa => 'Str', request_name => 'readmeUrl', traits => ['NameInRequest']);
   has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest']);
+  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeArchiveUrl', traits => ['NameInRequest']);
   has SourceCodeUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeUrl', traits => ['NameInRequest']);
   has SpdxLicenseId => (is => 'ro', isa => 'Str', request_name => 'spdxLicenseId', traits => ['NameInRequest']);
   has TemplateBody => (is => 'ro', isa => 'Str', request_name => 'templateBody', traits => ['NameInRequest']);
@@ -44,7 +45,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServerlessR
 
 =head1 DESCRIPTION
 
-Create application request.
+Create an application request.
 
 =head1 ATTRIBUTES
 
@@ -53,7 +54,7 @@ Create application request.
 
   The name of the author publishing the app.
 
-Min Length=1. Max Length=127.
+Minimum length=1. Maximum length=127.
 
 Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
@@ -62,7 +63,7 @@ Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 
   The description of the application.
 
-Min Length=1. Max Length=256
+Minimum length=1. Maximum length=256
 
 
 =head2 HomePageUrl => Str
@@ -75,50 +76,64 @@ location of your GitHub repository for the application.
 
   Labels to improve discovery of apps in search results.
 
-Min Length=1. Max Length=127. Maximum number of labels: 10
+Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
 Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
 
 =head2 LicenseBody => Str
 
-  A raw text file that contains the license of the app that matches the
-spdxLicenseID of your application.
+  A local text file that contains the license of the app that matches the
+spdxLicenseID value of your application. The file has the format
+file://E<lt>pathE<gt>/E<lt>filenameE<gt>.
 
-Max size 5 MB
+Maximum size 5 MB
+
+You can specify only one of licenseBody and licenseUrl; otherwise, an
+error results.
 
 
 =head2 LicenseUrl => Str
 
-  A link to a license file of the app that matches the spdxLicenseID of
-your application.
+  A link to the S3 object that contains the license of the app that
+matches the spdxLicenseID value of your application.
 
-Max size 5 MB
+Maximum size 5 MB
+
+You can specify only one of licenseBody and licenseUrl; otherwise, an
+error results.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the application you want to publish.
+  The name of the application that you want to publish.
 
-Min Length=1. Max Length=140
+Minimum length=1. Maximum length=140
 
 Pattern: "[a-zA-Z0-9\\-]+";
 
 
 =head2 ReadmeBody => Str
 
-  A raw text Readme file that contains a more detailed description of the
-application and how it works in markdown language.
+  A local text readme file in Markdown language that contains a more
+detailed description of the application and how it works. The file has
+the format file://E<lt>pathE<gt>/E<lt>filenameE<gt>.
 
-Max size 5 MB
+Maximum size 5 MB
+
+You can specify only one of readmeBody and readmeUrl; otherwise, an
+error results.
 
 
 =head2 ReadmeUrl => Str
 
-  A link to the Readme file that contains a more detailed description of
-the application and how it works in markdown language.
+  A link to the S3 object in Markdown language that contains a more
+detailed description of the application and how it works.
 
-Max size 5 MB
+Maximum size 5 MB
+
+You can specify only one of readmeBody and readmeUrl; otherwise, an
+error results.
 
 
 =head2 SemanticVersion => Str
@@ -128,9 +143,18 @@ Max size 5 MB
 https://semver.org/ (https://semver.org/)
 
 
+=head2 SourceCodeArchiveUrl => Str
+
+  A link to the S3 object that contains the ZIP archive of the source
+code for this version of your application.
+
+Maximum size 50 MB
+
+
 =head2 SourceCodeUrl => Str
 
-  A link to a public repository for the source code of your application.
+  A link to a public repository for the source code of your application,
+for example the URL of a specific GitHub commit.
 
 
 =head2 SpdxLicenseId => Str
@@ -141,12 +165,20 @@ https://semver.org/ (https://semver.org/)
 
 =head2 TemplateBody => Str
 
-  The raw packaged AWS SAM template of your application.
+  The local raw packaged AWS SAM template file of your application. The
+file has the format file://E<lt>pathE<gt>/E<lt>filenameE<gt>.
+
+You can specify only one of templateBody and templateUrl; otherwise an
+error results.
 
 
 =head2 TemplateUrl => Str
 
-  A link to the packaged AWS SAM template of your application.
+  A link to the S3 object containing the packaged AWS SAM template of
+your application.
+
+You can specify only one of templateBody and templateUrl; otherwise an
+error results.
 
 
 

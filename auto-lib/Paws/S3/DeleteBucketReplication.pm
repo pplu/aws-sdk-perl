@@ -43,7 +43,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
+The bucket name.
 
+It can take a while to propagate the deletion of a replication
+configuration to all Amazon S3 systems.
 
 
 

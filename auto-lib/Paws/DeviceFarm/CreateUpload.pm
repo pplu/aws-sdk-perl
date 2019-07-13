@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example creates a new Appium Python test package upload
     # inside an existing project.
     my $CreateUploadResult = $devicefarm->CreateUpload(
-      {
-        'Name' => 'MyAppiumPythonUpload',
-        'ProjectArn' =>
+      'Name' => 'MyAppiumPythonUpload',
+      'ProjectArn' =>
 'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
-        'Type' => 'APPIUM_PYTHON_TEST_PACKAGE'
-      }
+      'Type' => 'APPIUM_PYTHON_TEST_PACKAGE'
     );
 
     # Results:
@@ -93,7 +91,7 @@ IOS_APP: An iOS upload.
 
 =item *
 
-WEB_APP: A web appliction upload.
+WEB_APP: A web application upload.
 
 =item *
 
@@ -115,17 +113,36 @@ APPIUM_PYTHON_TEST_PACKAGE: An Appium Python test package upload.
 
 =item *
 
+APPIUM_NODE_TEST_PACKAGE: An Appium Node.js test package upload.
+
+=item *
+
+APPIUM_RUBY_TEST_PACKAGE: An Appium Ruby test package upload.
+
+=item *
+
 APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package
-upload.
+upload for a web app.
 
 =item *
 
 APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package
-upload.
+upload for a web app.
 
 =item *
 
-APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload.
+APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload
+for a web app.
+
+=item *
+
+APPIUM_WEB_NODE_TEST_PACKAGE: An Appium Node.js test package upload for
+a web app.
+
+=item *
+
+APPIUM_WEB_RUBY_TEST_PACKAGE: An Appium Ruby test package upload for a
+web app.
 
 =item *
 
@@ -145,18 +162,71 @@ UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
 
 =item *
 
-XCTEST_TEST_PACKAGE: An XCode test package upload.
+XCTEST_TEST_PACKAGE: An Xcode test package upload.
 
 =item *
 
-XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.
+XCTEST_UI_TEST_PACKAGE: An Xcode UI test package upload.
+
+=item *
+
+APPIUM_JAVA_JUNIT_TEST_SPEC: An Appium Java JUnit test spec upload.
+
+=item *
+
+APPIUM_JAVA_TESTNG_TEST_SPEC: An Appium Java TestNG test spec upload.
+
+=item *
+
+APPIUM_PYTHON_TEST_SPEC: An Appium Python test spec upload.
+
+=item *
+
+APPIUM_NODE_TEST_SPEC: An Appium Node.js test spec upload.
+
+=item *
+
+APPIUM_RUBY_TEST_SPEC: An Appium Ruby test spec upload.
+
+=item *
+
+APPIUM_WEB_JAVA_JUNIT_TEST_SPEC: An Appium Java JUnit test spec upload
+for a web app.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG_TEST_SPEC: An Appium Java TestNG test spec
+upload for a web app.
+
+=item *
+
+APPIUM_WEB_PYTHON_TEST_SPEC: An Appium Python test spec upload for a
+web app.
+
+=item *
+
+APPIUM_WEB_NODE_TEST_SPEC: An Appium Node.js test spec upload for a web
+app.
+
+=item *
+
+APPIUM_WEB_RUBY_TEST_SPEC: An Appium Ruby test spec upload for a web
+app.
+
+=item *
+
+INSTRUMENTATION_TEST_SPEC: An instrumentation test spec upload.
+
+=item *
+
+XCTEST_UI_TEST_SPEC: An Xcode UI test spec upload.
 
 =back
 
 B<Note> If you call C<CreateUpload> with C<WEB_APP> specified, AWS
 Device Farm throws an C<ArgumentException> error.
 
-Valid values are: C<"ANDROID_APP">, C<"IOS_APP">, C<"WEB_APP">, C<"EXTERNAL_DATA">, C<"APPIUM_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_PYTHON_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_WEB_PYTHON_TEST_PACKAGE">, C<"CALABASH_TEST_PACKAGE">, C<"INSTRUMENTATION_TEST_PACKAGE">, C<"UIAUTOMATION_TEST_PACKAGE">, C<"UIAUTOMATOR_TEST_PACKAGE">, C<"XCTEST_TEST_PACKAGE">, C<"XCTEST_UI_TEST_PACKAGE">
+Valid values are: C<"ANDROID_APP">, C<"IOS_APP">, C<"WEB_APP">, C<"EXTERNAL_DATA">, C<"APPIUM_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_PYTHON_TEST_PACKAGE">, C<"APPIUM_NODE_TEST_PACKAGE">, C<"APPIUM_RUBY_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_WEB_PYTHON_TEST_PACKAGE">, C<"APPIUM_WEB_NODE_TEST_PACKAGE">, C<"APPIUM_WEB_RUBY_TEST_PACKAGE">, C<"CALABASH_TEST_PACKAGE">, C<"INSTRUMENTATION_TEST_PACKAGE">, C<"UIAUTOMATION_TEST_PACKAGE">, C<"UIAUTOMATOR_TEST_PACKAGE">, C<"XCTEST_TEST_PACKAGE">, C<"XCTEST_UI_TEST_PACKAGE">, C<"APPIUM_JAVA_JUNIT_TEST_SPEC">, C<"APPIUM_JAVA_TESTNG_TEST_SPEC">, C<"APPIUM_PYTHON_TEST_SPEC">, C<"APPIUM_NODE_TEST_SPEC">, C<"APPIUM_RUBY_TEST_SPEC">, C<"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC">, C<"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC">, C<"APPIUM_WEB_PYTHON_TEST_SPEC">, C<"APPIUM_WEB_NODE_TEST_SPEC">, C<"APPIUM_WEB_RUBY_TEST_SPEC">, C<"INSTRUMENTATION_TEST_SPEC">, C<"XCTEST_UI_TEST_SPEC">
 
 
 =head1 SEE ALSO

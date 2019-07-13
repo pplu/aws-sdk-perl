@@ -38,19 +38,19 @@ This data type is used as a response element in the following actions:
 
 =item *
 
-ModifyDBInstance
+C<ModifyDBInstance>
 
 =item *
 
-RebootDBInstance
+C<RebootDBInstance>
 
 =item *
 
-RestoreDBInstanceFromDBSnapshot
+C<RestoreDBInstanceFromDBSnapshot>
 
 =item *
 
-RestoreDBInstanceToPointInTime
+C<RestoreDBInstanceToPointInTime>
 
 =back
 

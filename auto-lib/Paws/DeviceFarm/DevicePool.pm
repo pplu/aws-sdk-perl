@@ -2,6 +2,7 @@ package Paws::DeviceFarm::DevicePool;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has MaxDevices => (is => 'ro', isa => 'Int', request_name => 'maxDevices', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]', request_name => 'rules', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
@@ -48,6 +49,18 @@ Represents a collection of device types.
 =head2 Description => Str
 
   The device pool's description.
+
+
+=head2 MaxDevices => Int
+
+  The number of devices that Device Farm can add to your device pool.
+Device Farm adds devices that are available and that meet the criteria
+that you assign for the C<rules> parameter. Depending on how many
+devices meet these constraints, your device pool might contain fewer
+devices than the value for this parameter.
+
+By specifying the maximum number of devices, you can control the costs
+that you incur by running tests.
 
 
 =head2 Name => Str

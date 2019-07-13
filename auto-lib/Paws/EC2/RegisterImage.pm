@@ -90,7 +90,7 @@ The architecture of the AMI.
 Default: For Amazon EBS-backed AMIs, C<i386>. For instance store-backed
 AMIs, the architecture specified in the manifest file.
 
-Valid values are: C<"i386">, C<"x86_64">
+Valid values are: C<"i386">, C<"x86_64">, C<"arm64">
 
 =head2 BillingProducts => ArrayRef[Str|Undef]
 
@@ -102,7 +102,7 @@ bill for the use of an AMI.
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-One or more block device mapping entries.
+The block device mapping entries.
 
 
 
@@ -133,7 +133,12 @@ a PV AMI can make instances launched from the AMI unreachable.
 
 =head2 ImageLocation => Str
 
-The full path to your AMI manifest in Amazon S3 storage.
+The full path to your AMI manifest in Amazon S3 storage. The specified
+bucket must have the C<aws-exec-read> canned access control list (ACL)
+to ensure that it can be accessed by Amazon EC2. For more information,
+see Canned ACLs
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl)
+in the I<Amazon S3 Service Developer Guide>.
 
 
 

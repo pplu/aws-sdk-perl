@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeleteTagsResult = $workspaces->DeleteTags(
       ResourceId => 'MyNonEmptyString',
       TagKeys    => [
-        'MyNonEmptyString', ...    # min: 1,
+        'MyNonEmptyString', ...    # min: 1
       ],
 
     );
@@ -44,7 +44,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the WorkSpace. To find this ID, use DescribeWorkspaces.
+The identifier of the WorkSpaces resource. The supported resource types
+are WorkSpaces, registered directories, images, custom bundles, and IP
+access control groups.
 
 
 

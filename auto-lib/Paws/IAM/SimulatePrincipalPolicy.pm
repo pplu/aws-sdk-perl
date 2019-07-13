@@ -107,7 +107,7 @@ use in evaluating the policy.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 
@@ -116,7 +116,7 @@ in the I<AWS General Reference>.
 
 A list of context keys and corresponding values for the simulation to
 use. Whenever a context key is evaluated in one of the simulated IAM
-permission policies, the corresponding value is supplied.
+permissions policies, the corresponding value is supplied.
 
 
 
@@ -131,16 +131,15 @@ indicate where the next call should start.
 
 =head2 MaxItems => Int
 
-(Optional) Use this only when paginating results to indicate the
-maximum number of items you want in the response. If additional items
-exist beyond the maximum you specify, the C<IsTruncated> response
-element is C<true>.
+Use this only when paginating results to indicate the maximum number of
+items you want in the response. If additional items exist beyond the
+maximum you specify, the C<IsTruncated> response element is C<true>.
 
-If you do not include this parameter, it defaults to 100. Note that IAM
-might return fewer results, even when there are more results available.
-In that case, the C<IsTruncated> response element returns C<true> and
-C<Marker> contains a value to include in the subsequent call that tells
-the service where to continue from.
+If you do not include this parameter, the number of items defaults to
+100. Note that IAM might return fewer results, even when there are more
+results available. In that case, the C<IsTruncated> response element
+returns C<true>, and C<Marker> contains a value to include in the
+subsequent call that tells the service where to continue from.
 
 
 
@@ -185,7 +184,7 @@ policies that are attached to any groups the user belongs to.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 
@@ -205,7 +204,7 @@ C<ResourcePolicy> parameter.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 
@@ -222,13 +221,13 @@ following list shows each of the supported scenario values and the
 resources that you must define to run the simulation.
 
 Each of the EC2 scenarios requires that you specify instance, image,
-and security-group resources. If your scenario includes an EBS volume,
+and security group resources. If your scenario includes an EBS volume,
 then you must specify that volume as a resource. If the EC2 scenario
-includes VPC, then you must supply the network-interface resource. If
+includes VPC, then you must supply the network interface resource. If
 it includes an IP subnet, then you must specify the subnet resource.
 For more information on the EC2 scenario options, see Supported
 Platforms
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
 in the I<Amazon EC2 User Guide>.
 
 =over
@@ -237,37 +236,37 @@ in the I<Amazon EC2 User Guide>.
 
 B<EC2-Classic-InstanceStore>
 
-instance, image, security-group
+instance, image, security group
 
 =item *
 
 B<EC2-Classic-EBS>
 
-instance, image, security-group, volume
+instance, image, security group, volume
 
 =item *
 
 B<EC2-VPC-InstanceStore>
 
-instance, image, security-group, network-interface
+instance, image, security group, network interface
 
 =item *
 
 B<EC2-VPC-InstanceStore-Subnet>
 
-instance, image, security-group, network-interface, subnet
+instance, image, security group, network interface, subnet
 
 =item *
 
 B<EC2-VPC-EBS>
 
-instance, image, security-group, network-interface, volume
+instance, image, security group, network interface, volume
 
 =item *
 
 B<EC2-VPC-EBS-Subnet>
 
-instance, image, security-group, network-interface, subnet, volume
+instance, image, security group, network interface, subnet, volume
 
 =back
 
@@ -277,15 +276,15 @@ instance, image, security-group, network-interface, subnet, volume
 =head2 ResourceOwner => Str
 
 An AWS account ID that specifies the owner of any simulated resource
-that does not identify its owner in the resource ARN, such as an S3
-bucket or object. If C<ResourceOwner> is specified, it is also used as
-the account owner of any C<ResourcePolicy> included in the simulation.
-If the C<ResourceOwner> parameter is not specified, then the owner of
-the resources and the resource policy defaults to the account of the
-identity provided in C<CallerArn>. This parameter is required only if
-you specify a resource-based policy and account that owns the resource
-is different from the account that owns the simulated calling user
-C<CallerArn>.
+that does not identify its owner in the resource ARN. Examples of
+resource ARNs include an S3 bucket or object. If C<ResourceOwner> is
+specified, it is also used as the account owner of any
+C<ResourcePolicy> included in the simulation. If the C<ResourceOwner>
+parameter is not specified, then the owner of the resources and the
+resource policy defaults to the account of the identity provided in
+C<CallerArn>. This parameter is required only if you specify a
+resource-based policy and account that owns the resource is different
+from the account that owns the simulated calling user C<CallerArn>.
 
 
 

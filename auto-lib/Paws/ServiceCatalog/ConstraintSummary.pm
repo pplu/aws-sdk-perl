@@ -58,6 +58,10 @@ C<NOTIFICATION>
 
 =item *
 
+STACKSET
+
+=item *
+
 C<TEMPLATE>
 
 =back

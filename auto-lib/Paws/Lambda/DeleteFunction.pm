@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a Lambda function
     # This operation deletes a Lambda function
     $lambda->DeleteFunction(
-      {
-        'FunctionName' => 'myFunction',
-        'Qualifier'    => 1
-      }
+      'FunctionName' => 'myFunction',
+      'Qualifier'    => 1
     );
 
 
@@ -47,36 +45,38 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The Lambda function to delete.
+The name of the Lambda function or version.
 
-You can specify the function name (for example, C<Thumbnail>) or you
-can specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). If you are
-using versioning, you can also provide a qualified function ARN (ARN
-that is qualified with function version or alias name as suffix). AWS
-Lambda also allows you to specify only the function name with the
-account ID qualifier (for example, C<account-id:Thumbnail>). Note that
-the length constraint applies only to the ARN. If you specify only the
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<my-function> (name-only), C<my-function:1> (with
+version).
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:my-function>.
+
+=back
+
+You can append a version number or alias to any of the formats. The
+length constraint applies only to the full ARN. If you specify only the
 function name, it is limited to 64 characters in length.
 
 
 
 =head2 Qualifier => Str
 
-Using this optional parameter you can specify a function version (but
-not the C<$LATEST> version) to direct AWS Lambda to delete a specific
-function version. If the function version has one or more aliases
-pointing to it, you will get an error because you cannot have aliases
-pointing to it. You can delete any function version but not the
-C<$LATEST>, that is, you cannot specify C<$LATEST> as the value of this
-parameter. The C<$LATEST> version can be deleted only when you want to
-delete all the function versions and aliases.
-
-You can only specify a function version, not an alias name, using this
-parameter. You cannot delete a function version using its alias.
-
-If you don't specify this parameter, AWS Lambda will delete the
-function, including all of its versions and aliases.
+Specify a version to delete. You can't delete a version that's
+referenced by an alias.
 
 
 

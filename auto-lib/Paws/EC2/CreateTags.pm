@@ -33,16 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example adds the tag Stack=production to the specified image, or
     # overwrites an existing tag for the AMI where the tag key is Stack.
     $ec2->CreateTags(
-      {
-        'Resources' => ['ami-78a54011'],
-        'Tags'      => [
+      'Resources' => ['ami-78a54011'],
+      'Tags'      => [
 
-          {
-            'Key'   => 'Stack',
-            'Value' => 'production'
-          }
-        ]
-      }
+        {
+          'Key'   => 'Stack',
+          'Value' => 'production'
+        }
+      ]
     );
 
 
@@ -63,15 +61,18 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> Resources => ArrayRef[Str|Undef]
 
-The IDs of one or more resources to tag. For example, ami-1a2b3c4d.
+The IDs of the resources, separated by spaces.
+
+Constraints: Up to 1000 resource IDs. We recommend breaking up this
+request into smaller batches.
 
 
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-One or more tags. The C<value> parameter is required, but if you don't
-want the tag to have a value, specify the parameter with no value, and
-we set the value to an empty string.
+The tags. The C<value> parameter is required, but if you don't want the
+tag to have a value, specify the parameter with no value, and we set
+the value to an empty string.
 
 
 

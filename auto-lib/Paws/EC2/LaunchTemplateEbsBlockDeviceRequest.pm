@@ -63,7 +63,9 @@ provisioned for the volume. For gp2, this represents the baseline
 performance of the volume and the rate at which the volume accumulates
 I/O credits for bursting. For more information about General Purpose
 SSD baseline performance, I/O credits, and bursting, see Amazon EBS
-Volume Types in the Amazon Elastic Compute Cloud User Guide.
+Volume Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Condition: This parameter is required for requests to create io1
 volumes; it is not used in requests to create gp2, st1, sc1, or

@@ -42,11 +42,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CmafPackage => {
         Encryption => {
           SpekeKeyProvider => {
-            ResourceId => 'My__string',
-            RoleArn    => 'My__string',
-            SystemIds  => [ 'My__string', ... ],
-            Url        => 'My__string',
-
+            ResourceId     => 'My__string',
+            RoleArn        => 'My__string',
+            SystemIds      => [ 'My__string', ... ],
+            Url            => 'My__string',
+            CertificateArn => 'My__string',
           },
           KeyRotationIntervalSeconds => 1,    # OPTIONAL
         },    # OPTIONAL
@@ -55,6 +55,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Id => 'My__string',
             AdMarkers =>
               'NONE',    # values: NONE, SCTE35_ENHANCED, PASSTHROUGH; OPTIONAL
+            AdTriggers => [
+              'SPLICE_INSERT',
+              ... # values: SPLICE_INSERT, BREAK, PROVIDER_ADVERTISEMENT, DISTRIBUTOR_ADVERTISEMENT, PROVIDER_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_PLACEMENT_OPPORTUNITY, PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY
+            ],    # OPTIONAL
+            AdsOnDeliveryRestrictions =>
+              'NONE',   # values: NONE, RESTRICTED, UNRESTRICTED, BOTH; OPTIONAL
             IncludeIframeOnlyStream => 1,              # OPTIONAL
             ManifestName            => 'My__string',
             PlaylistType => 'NONE',    # values: NONE, EVENT, VOD; OPTIONAL
@@ -73,22 +79,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
       },    # OPTIONAL
       DashPackage => {
+        AdTriggers => [
+          'SPLICE_INSERT',
+          ... # values: SPLICE_INSERT, BREAK, PROVIDER_ADVERTISEMENT, DISTRIBUTOR_ADVERTISEMENT, PROVIDER_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_PLACEMENT_OPPORTUNITY, PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY
+        ],    # OPTIONAL
+        AdsOnDeliveryRestrictions =>
+          'NONE',    # values: NONE, RESTRICTED, UNRESTRICTED, BOTH; OPTIONAL
         Encryption => {
           SpekeKeyProvider => {
-            ResourceId => 'My__string',
-            RoleArn    => 'My__string',
-            SystemIds  => [ 'My__string', ... ],
-            Url        => 'My__string',
-
+            ResourceId     => 'My__string',
+            RoleArn        => 'My__string',
+            SystemIds      => [ 'My__string', ... ],
+            Url            => 'My__string',
+            CertificateArn => 'My__string',
           },
           KeyRotationIntervalSeconds => 1,    # OPTIONAL
         },    # OPTIONAL
+        ManifestLayout         => 'FULL',    # values: FULL, COMPACT; OPTIONAL
         ManifestWindowSeconds  => 1,         # OPTIONAL
         MinBufferTimeSeconds   => 1,         # OPTIONAL
         MinUpdatePeriodSeconds => 1,         # OPTIONAL
+        PeriodTriggers         => [
+          'ADS', ...                         # values: ADS
+        ],                                   # OPTIONAL
         Profile                => 'NONE',    # values: NONE, HBBTV_1_5; OPTIONAL
         SegmentDurationSeconds => 1,         # OPTIONAL
-        StreamSelection        => {
+        SegmentTemplateFormat => 'NUMBER_WITH_TIMELINE'
+        , # values: NUMBER_WITH_TIMELINE, TIME_WITH_TIMELINE, NUMBER_WITH_DURATION; OPTIONAL
+        StreamSelection => {
           MaxVideoBitsPerSecond => 1,           # OPTIONAL
           MinVideoBitsPerSecond => 1,           # OPTIONAL
           StreamOrder           => 'ORIGINAL'
@@ -100,13 +118,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HlsPackage  => {
         AdMarkers =>
           'NONE',    # values: NONE, SCTE35_ENHANCED, PASSTHROUGH; OPTIONAL
+        AdTriggers => [
+          'SPLICE_INSERT',
+          ... # values: SPLICE_INSERT, BREAK, PROVIDER_ADVERTISEMENT, DISTRIBUTOR_ADVERTISEMENT, PROVIDER_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_PLACEMENT_OPPORTUNITY, PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY
+        ],    # OPTIONAL
+        AdsOnDeliveryRestrictions =>
+          'NONE',    # values: NONE, RESTRICTED, UNRESTRICTED, BOTH; OPTIONAL
         Encryption => {
           SpekeKeyProvider => {
-            ResourceId => 'My__string',
-            RoleArn    => 'My__string',
-            SystemIds  => [ 'My__string', ... ],
-            Url        => 'My__string',
-
+            ResourceId     => 'My__string',
+            RoleArn        => 'My__string',
+            SystemIds      => [ 'My__string', ... ],
+            Url            => 'My__string',
+            CertificateArn => 'My__string',
           },
           ConstantInitializationVector => 'My__string',
           EncryptionMethod => 'AES_128', # values: AES_128, SAMPLE_AES; OPTIONAL
@@ -130,11 +154,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MssPackage   => {
         Encryption => {
           SpekeKeyProvider => {
-            ResourceId => 'My__string',
-            RoleArn    => 'My__string',
-            SystemIds  => [ 'My__string', ... ],
-            Url        => 'My__string',
-
+            ResourceId     => 'My__string',
+            RoleArn        => 'My__string',
+            SystemIds      => [ 'My__string', ... ],
+            Url            => 'My__string',
+            CertificateArn => 'My__string',
           },
 
         },                             # OPTIONAL
@@ -164,6 +188,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MssPackage   = $UpdateOriginEndpointResponse->MssPackage;
     my $StartoverWindowSeconds =
       $UpdateOriginEndpointResponse->StartoverWindowSeconds;
+    my $Tags             = $UpdateOriginEndpointResponse->Tags;
     my $TimeDelaySeconds = $UpdateOriginEndpointResponse->TimeDelaySeconds;
     my $Url              = $UpdateOriginEndpointResponse->Url;
     my $Whitelist        = $UpdateOriginEndpointResponse->Whitelist;

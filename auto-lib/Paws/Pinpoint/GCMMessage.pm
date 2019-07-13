@@ -47,128 +47,173 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::G
 
 =head1 DESCRIPTION
 
-GCM Message.
+Specifies the settings for a one-time message that's sent directly to
+an endpoint through the GCM channel. The GCM channel enables Amazon
+Pinpoint to send messages to the Firebase Cloud Messaging (FCM),
+formerly Google Cloud Messaging (GCM), service.
 
 =head1 ATTRIBUTES
 
 
 =head2 Action => Str
 
-  The action that occurs if the user taps a push notification delivered
-by the campaign: OPEN_APP - Your app launches, or it becomes the
-foreground app if it has been sent to the background. This is the
-default action. DEEP_LINK - Uses deep linking features in iOS and
-Android to open your app and display a designated user interface within
-the app. URL - The default mobile browser on the user's device launches
-and opens a web page at the URL you specify. Possible values include:
-OPEN_APP | DEEP_LINK | URL
+  The action to occur if the recipient taps the push notification. Valid
+values are:
+
+=over
+
+=item *
+
+OPEN_APP - Your app opens or it becomes the foreground app if it was
+sent to the background. This is the default action.
+
+=item *
+
+DEEP_LINK - Your app opens and displays a designated user interface in
+the app. This action uses the deep-linking features of the Android
+platform.
+
+=item *
+
+URL - The default mobile browser on the recipient's device opens and
+loads the web page at a URL that you specify.
+
+=back
+
 
 
 =head2 Body => Str
 
-  The message body of the notification, the email body or the text
-message.
+  The body of the notification message.
 
 
 =head2 CollapseKey => Str
 
-  This parameter identifies a group of messages (e.g., with collapse_key:
-"Updates Available") that can be collapsed, so that only the last
-message gets sent when delivery can be resumed. This is intended to
-avoid sending too many of the same messages when the device comes back
-online or becomes active.
+  An arbitrary string that identifies a group of messages that can be
+collapsed to ensure that only the last message is sent when delivery
+can resume. This helps avoid sending too many instances of the same
+messages when the recipient's device comes online again or becomes
+active.
+
+Amazon Pinpoint specifies this value in the Firebase Cloud Messaging
+(FCM) collapse_key parameter when it sends the notification message to
+FCM.
 
 
 =head2 Data => L<Paws::Pinpoint::MapOf__string>
 
-  The data payload used for a silent push. This payload is added to the
-notifications' data.pinpoint.jsonBody' object
+  The JSON data payload to use for the push notification, if the
+notification is a silent push notification. This payload is added to
+the data.pinpoint.jsonBody object of the notification.
 
 
 =head2 IconReference => Str
 
-  The icon image name of the asset saved in your application.
+  The icon image name of the asset saved in your app.
 
 
 =head2 ImageIconUrl => Str
 
-  The URL that points to an image used as the large icon to the
-notification content view.
+  The URL of the large icon image to display in the content view of the
+push notification.
 
 
 =head2 ImageUrl => Str
 
-  The URL that points to an image used in the push notification.
+  The URL of an image to display in the push notification.
 
 
 =head2 Priority => Str
 
-  The message priority. Amazon Pinpoint uses this value to set the FCM or
-GCM priority parameter when it sends the message. Accepts the following
-values: "Normal" - Messages might be delayed. Delivery is optimized for
-battery usage on the receiving device. Use normal priority unless
-immediate delivery is required. "High" - Messages are sent immediately
-and might wake a sleeping device. The equivalent values for APNs
-messages are "5" and "10". Amazon Pinpoint accepts these values here
-and converts them. For more information, see About FCM Messages in the
-Firebase documentation.
+  paraE<gt>normal - The notification might be delayed. Delivery is
+optimized for battery usage on the recipient's device. Use this value
+unless immediate delivery is required.
+
+/listitemE<gt>
+
+=over
+
+=item *
+
+high - The notification is sent immediately and might wake a sleeping
+device.
+
+/paraE<gt>
+
+Amazon Pinpoint specifies this value in the FCM priority parameter when
+it sends the notification message to FCM.
+
+The equivalent values for Apple Push Notification service (APNs) are 5,
+for normal, and 10, for high. If you specify an APNs value for this
+property, Amazon Pinpoint accepts and converts the value to the
+corresponding FCM value.
+
+=back
+
 
 
 =head2 RawContent => Str
 
-  The Raw JSON formatted string to be used as the payload. This value
-overrides the message.
+  The raw, JSON-formatted string to use as the payload for the
+notification message. This value overrides the message.
 
 
 =head2 RestrictedPackageName => Str
 
-  This parameter specifies the package name of the application where the
-registration tokens must match in order to receive the message.
+  The package name of the application where registration tokens must
+match in order for the recipient to receive the message.
 
 
 =head2 SilentPush => Bool
 
-  Indicates if the message should display on the users device. Silent
-pushes can be used for Remote Configuration and Phone Home use cases.
+  Specifies whether the notification is a silent push notification, which
+is a push notification that doesn't display on a recipient's device.
+Silent push notifications can be used for cases such as updating an
+app's configuration or supporting phone home functionality.
 
 
 =head2 SmallImageIconUrl => Str
 
-  The URL that points to an image used as the small icon for the
-notification which will be used to represent the notification in the
-status bar and content view
+  The URL of the small icon image to display in the status bar and the
+content view of the push notification.
 
 
 =head2 Sound => Str
 
-  Indicates a sound to play when the device receives the notification.
-Supports default, or the filename of a sound resource bundled in the
-app. Android sound files must reside in /res/raw/
+  The sound to play when the recipient receives the push notification.
+You can use the default stream or specify the file name of a sound
+resource that's bundled in your app. On an Android platform, the sound
+file must reside in /res/raw/.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
 
-  Default message substitutions. Can be overridden by individual address
-substitutions.
+  The default message variables to use in the notification message. You
+can override the default variables with individual address variables.
 
 
 =head2 TimeToLive => Int
 
-  The length of time (in seconds) that FCM or GCM stores and attempts to
-deliver the message. If unspecified, the value defaults to the maximum,
-which is 2,419,200 seconds (28 days). Amazon Pinpoint uses this value
-to set the FCM or GCM time_to_live parameter.
+  The amount of time, in seconds, that FCM should store and attempt to
+deliver the push notification, if the service is unable to deliver the
+notification the first time. If you don't specify this value, FCM
+defaults to the maximum value, which is 2,419,200 seconds (28 days).
+
+Amazon Pinpoint specifies this value in the FCM time_to_live parameter
+when it sends the notification message to FCM.
 
 
 =head2 Title => Str
 
-  The message title that displays above the message on the user's device.
+  The title to display above the notification message on the recipient's
+device.
 
 
 =head2 Url => Str
 
-  The URL to open in the user's mobile browser. Used if the value for
-Action is URL.
+  The URL to open in the recipient's default mobile browser, if a
+recipient taps the push notification and the value of the Action
+property is URL.
 
 
 

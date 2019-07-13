@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeVolumeAttribute;
   use Moose;
-  has Attribute => (is => 'ro', isa => 'Str');
+  has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the ``autoEnableIo`` attribute of the volume with
     # the ID ``vol-049df61146c4d7901``.
     my $DescribeVolumeAttributeResult = $ec2->DescribeVolumeAttribute(
-      {
-        'Attribute' => 'autoEnableIO',
-        'VolumeId'  => 'vol-049df61146c4d7901'
-      }
+      'Attribute' => 'autoEnableIO',
+      'VolumeId'  => 'vol-049df61146c4d7901'
     );
 
     # Results:
@@ -51,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 Attribute => Str
+=head2 B<REQUIRED> Attribute => Str
 
 The attribute of the volume. This parameter is required.
 

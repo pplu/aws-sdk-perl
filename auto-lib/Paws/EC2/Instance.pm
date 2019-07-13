@@ -3,11 +3,15 @@ package Paws::EC2::Instance;
   has AmiLaunchIndex => (is => 'ro', isa => 'Int', request_name => 'amiLaunchIndex', traits => ['NameInRequest']);
   has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
+  has CapacityReservationId => (is => 'ro', isa => 'Str', request_name => 'capacityReservationId', traits => ['NameInRequest']);
+  has CapacityReservationSpecification => (is => 'ro', isa => 'Paws::EC2::CapacityReservationSpecificationResponse', request_name => 'capacityReservationSpecification', traits => ['NameInRequest']);
   has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
   has CpuOptions => (is => 'ro', isa => 'Paws::EC2::CpuOptions', request_name => 'cpuOptions', traits => ['NameInRequest']);
   has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
   has ElasticGpuAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuAssociation]', request_name => 'elasticGpuAssociationSet', traits => ['NameInRequest']);
+  has ElasticInferenceAcceleratorAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticInferenceAcceleratorAssociation]', request_name => 'elasticInferenceAcceleratorAssociationSet', traits => ['NameInRequest']);
   has EnaSupport => (is => 'ro', isa => 'Bool', request_name => 'enaSupport', traits => ['NameInRequest']);
+  has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::HibernationOptions', request_name => 'hibernationOptions', traits => ['NameInRequest']);
   has Hypervisor => (is => 'ro', isa => 'Str', request_name => 'hypervisor', traits => ['NameInRequest']);
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfile', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
   has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
@@ -17,6 +21,7 @@ package Paws::EC2::Instance;
   has KernelId => (is => 'ro', isa => 'Str', request_name => 'kernelId', traits => ['NameInRequest']);
   has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
   has LaunchTime => (is => 'ro', isa => 'Str', request_name => 'launchTime', traits => ['NameInRequest']);
+  has Licenses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LicenseConfiguration]', request_name => 'licenseSet', traits => ['NameInRequest']);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::Monitoring', request_name => 'monitoring', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceNetworkInterface]', request_name => 'networkInterfaceSet', traits => ['NameInRequest']);
   has Placement => (is => 'ro', isa => 'Paws::EC2::Placement', request_name => 'placement', traits => ['NameInRequest']);
@@ -91,6 +96,16 @@ launch group.
   Any block device mapping entries for the instance.
 
 
+=head2 CapacityReservationId => Str
+
+  The ID of the Capacity Reservation.
+
+
+=head2 CapacityReservationSpecification => L<Paws::EC2::CapacityReservationSpecificationResponse>
+
+  Information about the Capacity Reservation targeting option.
+
+
 =head2 ClientToken => Str
 
   The idempotency token you provided when you launched the instance, if
@@ -116,9 +131,19 @@ charges apply when using an EBS Optimized instance.
   The Elastic GPU associated with the instance.
 
 
+=head2 ElasticInferenceAcceleratorAssociations => ArrayRef[L<Paws::EC2::ElasticInferenceAcceleratorAssociation>]
+
+  The elastic inference accelerator associated with the instance.
+
+
 =head2 EnaSupport => Bool
 
   Specifies whether enhanced networking with ENA is enabled.
+
+
+=head2 HibernationOptions => L<Paws::EC2::HibernationOptions>
+
+  Indicates whether the instance is enabled for hibernation.
 
 
 =head2 Hypervisor => Str
@@ -167,6 +192,11 @@ associated key pair.
   The time the instance was launched.
 
 
+=head2 Licenses => ArrayRef[L<Paws::EC2::LicenseConfiguration>]
+
+  The license configurations.
+
+
 =head2 Monitoring => L<Paws::EC2::Monitoring>
 
   The monitoring for the instance.
@@ -174,7 +204,7 @@ associated key pair.
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterface>]
 
-  [EC2-VPC] One or more network interfaces for the instance.
+  [EC2-VPC] The network interfaces for the instance.
 
 
 =head2 Placement => L<Paws::EC2::Placement>
@@ -241,7 +271,7 @@ an instance store volume.
 
 =head2 SecurityGroups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
-  One or more security groups for the instance.
+  The security groups for the instance.
 
 
 =head2 SourceDestCheck => Bool
@@ -252,7 +282,7 @@ the instance. A value of C<true> means that checking is enabled, and
 C<false> means that checking is disabled. The value must be C<false>
 for the instance to perform NAT. For more information, see NAT
 Instances
-(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
+(https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 

@@ -74,8 +74,10 @@ Facebook: C<graph.facebook.com>
 
 =item *
 
-Amazon Cognito Identity Provider:
-C<cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789>
+Amazon Cognito user pool:
+C<cognito-idp.E<lt>regionE<gt>.amazonaws.com/E<lt>YOUR_USER_POOL_IDE<gt>>,
+for example,
+C<cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789>.
 
 =item *
 

@@ -41,22 +41,20 @@ table.
 
 =head2 KMSMasterKeyArn => Str
 
-  The KMS master key ARN used for the KMS encryption.
+  The KMS customer master key (CMK) ARN used for the KMS encryption.
 
 
 =head2 SSEType => Str
 
-  Server-side encryption type:
+  Server-side encryption type. The only supported value is:
 
 =over
 
 =item *
 
-C<AES256> - Server-side encryption which uses the AES256 algorithm.
-
-=item *
-
 C<KMS> - Server-side encryption which uses AWS Key Management Service.
+Key is stored in your account and is managed by AWS KMS (KMS charges
+apply).
 
 =back
 
@@ -64,13 +62,10 @@ C<KMS> - Server-side encryption which uses AWS Key Management Service.
 
 =head2 Status => Str
 
-  The current state of server-side encryption:
+  Represents the current state of server-side encryption. The only
+supported values are:
 
 =over
-
-=item *
-
-C<ENABLING> - Server-side encryption is being enabled.
 
 =item *
 
@@ -78,11 +73,7 @@ C<ENABLED> - Server-side encryption is enabled.
 
 =item *
 
-C<DISABLING> - Server-side encryption is being disabled.
-
-=item *
-
-C<DISABLED> - Server-side encryption is disabled.
+C<UPDATING> - Server-side encryption is being updated.
 
 =back
 

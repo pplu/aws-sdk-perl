@@ -34,10 +34,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 Provides options for how often AWS Config delivers configuration
 snapshots to the Amazon S3 bucket in your delivery channel.
 
-If you want to create a rule that triggers evaluations for your
-resources when AWS Config delivers the configuration snapshot, see the
-following:
-
 The frequency for a rule that triggers evaluations for your resources
 when AWS Config delivers the configuration snapshot is set by one of
 two values, depending on which is less frequent:

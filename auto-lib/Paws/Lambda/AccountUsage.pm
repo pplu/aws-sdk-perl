@@ -32,20 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Acc
 
 =head1 DESCRIPTION
 
-Provides code size usage and function count associated with the current
-account and region.
+The number of functions and amount of storage in use.
 
 =head1 ATTRIBUTES
 
 
 =head2 FunctionCount => Int
 
-  The number of your account's existing functions per region.
+  The number of Lambda functions.
 
 
 =head2 TotalCodeSize => Int
 
-  Total size, in bytes, of the account's deployment packages per region.
+  The amount of storage space, in bytes, that's being used by deployment
+packages and layer archives.
 
 
 

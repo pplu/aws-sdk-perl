@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # listener.
     my $SetLoadBalancerListenerSSLCertificateOutput =
       $elasticloadbalancing->SetLoadBalancerListenerSSLCertificate(
-      {
-        'LoadBalancerName' => 'my-load-balancer',
-        'LoadBalancerPort' => 443,
-        'SSLCertificateId' =>
-          'arn:aws:iam::123456789012:server-certificate/new-server-cert'
-      }
+      'LoadBalancerName' => 'my-load-balancer',
+      'LoadBalancerPort' => 443,
+      'SSLCertificateId' =>
+        'arn:aws:iam::123456789012:server-certificate/new-server-cert'
       );
 
 

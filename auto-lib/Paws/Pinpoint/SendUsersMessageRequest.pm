@@ -1,8 +1,9 @@
 package Paws::Pinpoint::SendUsersMessageRequest;
   use Moose;
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
-  has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration');
-  has Users => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
+  has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration', required => 1);
+  has TraceId => (is => 'ro', isa => 'Str');
+  has Users => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -33,27 +34,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Send message request.
+Specifies the configuration and other settings for a message to send to
+all the endpoints that are associated with a list of users.
 
 =head1 ATTRIBUTES
 
 
 =head2 Context => L<Paws::Pinpoint::MapOf__string>
 
-  A map of custom attributes to attributes to be attached to the message.
-This payload is added to the push notification's 'data.pinpoint' object
-or added to the email/sms delivery receipt event attributes.
+  A map of custom attribute-value pairs. For a push notification, Amazon
+Pinpoint adds these attributes to the data.pinpoint object in the body
+of the notification payload. Amazon Pinpoint also provides these
+attributes in the events that it generates for users-messages
+deliveries.
 
 
-=head2 MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
+=head2 B<REQUIRED> MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
 
-  Message configuration.
+  The message definitions for the default message and any default
+messages that you defined for specific channels.
 
 
-=head2 Users => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
+=head2 TraceId => Str
 
-  A map of destination endpoints, with the EndpointId as the key Endpoint
-Message Configuration as the value.
+  The unique identifier for tracing the message. This identifier is
+visible to message recipients.
+
+
+=head2 B<REQUIRED> Users => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
+
+  A map that associates user IDs with EndpointSendConfiguration objects.
+You can use an EndpointSendConfiguration object to tailor the message
+for a user by specifying settings such as content overrides and message
+variables.
 
 
 

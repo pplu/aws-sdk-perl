@@ -34,8 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::QueueCo
 
 =head1 DESCRIPTION
 
-Container for specifying an configuration when you want Amazon S3 to
-publish events to an Amazon Simple Queue Service (Amazon SQS) queue.
+Specifies the configuration for publishing messages to an Amazon Simple
+Queue Service (Amazon SQS) queue when Amazon S3 detects specified
+events.
 
 =head1 ATTRIBUTES
 
@@ -57,8 +58,8 @@ publish events to an Amazon Simple Queue Service (Amazon SQS) queue.
 
 =head2 B<REQUIRED> QueueArn => Str
 
-  Amazon SQS queue ARN to which Amazon S3 will publish a message when it
-detects events of specified type.
+  The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon
+S3 publishes a message when it detects events of the specified type.
 
 
 

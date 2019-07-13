@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Address    => 'My__string',
             Attributes => { 'My__string' => [ 'My__string', ... ], }, # OPTIONAL
             ChannelType => 'GCM'
-            , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, EMAIL, BAIDU, CUSTOM; OPTIONAL
+            , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM; OPTIONAL
             Demographic => {
               AppVersion      => 'My__string',
               Locale          => 'My__string',
@@ -54,24 +54,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Location       => {
               City       => 'My__string',
               Country    => 'My__string',
-              Latitude   => 1,              # OPTIONAL
-              Longitude  => 1,              # OPTIONAL
+              Latitude   => 1,
+              Longitude  => 1,
               PostalCode => 'My__string',
               Region     => 'My__string',
             },    # OPTIONAL
-            Metrics => {
-              'My__string' => 1,    # , value: OPTIONAL
-            },    # OPTIONAL
+            Metrics   => { 'My__string' => 1, },    # OPTIONAL
             OptOut    => 'My__string',
             RequestId => 'My__string',
             User      => {
               UserAttributes => { 'My__string' => [ 'My__string', ... ], }
-              ,    # OPTIONAL
+              ,                                     # OPTIONAL
               UserId => 'My__string',
             },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],
+
       },
 
     );
@@ -82,14 +81,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::Pinpoint::UpdateEndpointsBatchResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/UpdateEndpointsBatch>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 

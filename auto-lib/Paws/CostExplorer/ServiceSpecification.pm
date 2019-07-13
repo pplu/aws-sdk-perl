@@ -39,7 +39,7 @@ for.
 
 =head2 EC2Specification => L<Paws::CostExplorer::EC2Specification>
 
-  The EC2 hardware specifications that you want AWS to provide
+  The Amazon EC2 hardware specifications that you want AWS to provide
 recommendations for.
 
 

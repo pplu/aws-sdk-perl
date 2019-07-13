@@ -74,7 +74,7 @@ with Streams, see Capturing Table Activity with DynamoDB Streams
 (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html)
 in the Amazon DynamoDB Developer Guide.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/dynamodb/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/dynamodb/>
 
 
 =head1 METHODS

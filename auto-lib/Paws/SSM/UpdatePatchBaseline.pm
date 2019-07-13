@@ -10,6 +10,7 @@ package Paws::SSM::UpdatePatchBaseline;
   has GlobalFilters => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup');
   has Name => (is => 'ro', isa => 'Str');
   has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has RejectedPatchesAction => (is => 'ro', isa => 'Str');
   has Replace => (is => 'ro', isa => 'Bool');
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchSource]');
 
@@ -46,8 +47,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PatchFilterGroup => {
               PatchFilters => [
                 {
-                  Key => 'PRODUCT'
-                  , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
+                  Key => 'PATCH_SET'
+                  , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
                   Values => [
                     'MyPatchFilterValue', ...    # min: 1, max: 64
                   ],                             # min: 1, max: 20
@@ -74,8 +75,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GlobalFilters                    => {
         PatchFilters => [
           {
-            Key => 'PRODUCT'
-            , # values: PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
+            Key => 'PATCH_SET'
+            , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
             Values => [
               'MyPatchFilterValue', ...    # min: 1, max: 64
             ],                             # min: 1, max: 20
@@ -89,8 +90,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RejectedPatches => [
         'MyPatchId', ...                      # min: 1, max: 100
       ],                                      # OPTIONAL
-      Replace => 1,                           # OPTIONAL
-      Sources => [
+      RejectedPatchesAction => 'ALLOW_AS_DEPENDENCY',    # OPTIONAL
+      Replace               => 1,                        # OPTIONAL
+      Sources               => [
         {
           Configuration => 'MyPatchSourceConfiguration',    # min: 1, max: 512
           Name          => 'MyPatchSourceName',
@@ -118,7 +120,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Name            = $UpdatePatchBaselineResult->Name;
     my $OperatingSystem = $UpdatePatchBaselineResult->OperatingSystem;
     my $RejectedPatches = $UpdatePatchBaselineResult->RejectedPatches;
-    my $Sources         = $UpdatePatchBaselineResult->Sources;
+    my $RejectedPatchesAction =
+      $UpdatePatchBaselineResult->RejectedPatchesAction;
+    my $Sources = $UpdatePatchBaselineResult->Sources;
 
     # Returns a L<Paws::SSM::UpdatePatchBaselineResult> object.
 
@@ -141,7 +145,7 @@ A list of explicitly approved patches for the baseline.
 For information about accepted formats for lists of approved patches
 and rejected patches, see Package Name Formats for Approved and
 Rejected Patch Lists
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -174,7 +178,7 @@ A description of the patch baseline.
 
 =head2 GlobalFilters => L<Paws::SSM::PatchFilterGroup>
 
-A set of global filters used to exclude patches from the baseline.
+A set of global filters used to include patches in the baseline.
 
 
 
@@ -191,10 +195,38 @@ A list of explicitly rejected patches for the baseline.
 For information about accepted formats for lists of approved patches
 and rejected patches, see Package Name Formats for Approved and
 Rejected Patch Lists
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 in the I<AWS Systems Manager User Guide>.
 
 
+
+=head2 RejectedPatchesAction => Str
+
+The action for Patch Manager to take on patches included in the
+RejectedPackages list.
+
+=over
+
+=item *
+
+B<ALLOW_AS_DEPENDENCY>: A package in the Rejected patches list is
+installed only if it is a dependency of another package. It is
+considered compliant with the patch baseline, and its status is
+reported as I<InstalledOther>. This is the default action if no option
+is specified.
+
+=item *
+
+B<BLOCK>: Packages in the RejectedPatches list, and packages that
+include them as dependencies, are not installed under any
+circumstances. If a package was installed before it was added to the
+Rejected patches list, it is considered non-compliant with the patch
+baseline, and its status is reported as I<InstalledRejected>.
+
+=back
+
+
+Valid values are: C<"ALLOW_AS_DEPENDENCY">, C<"BLOCK">
 
 =head2 Replace => Bool
 

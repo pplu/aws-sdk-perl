@@ -58,12 +58,12 @@ This class has no description
 
 =head2 GroupIds => ArrayRef[Str|Undef]
 
-  One or more security group IDs.
+  The security group IDs.
 
 
 =head2 GroupNames => ArrayRef[Str|Undef]
 
-  One or more security group names.
+  The security group names.
 
 
 =head2 InstanceInitiatedShutdownBehavior => Str
@@ -77,7 +77,7 @@ system shutdown).
 
   The instance type. For more information about the instance types that
 you can import, see Instance Types
-(http://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html#vmimport-instance-types)
+(https://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html#vmimport-instance-types)
 in the VM Import/Export User Guide.
 
 

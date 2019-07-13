@@ -4,6 +4,7 @@ package Paws::Pinpoint::SegmentDimensions;
   has Behavior => (is => 'ro', isa => 'Paws::Pinpoint::SegmentBehaviors');
   has Demographic => (is => 'ro', isa => 'Paws::Pinpoint::SegmentDemographics');
   has Location => (is => 'ro', isa => 'Paws::Pinpoint::SegmentLocation');
+  has Metrics => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMetricDimension');
   has UserAttributes => (is => 'ro', isa => 'Paws::Pinpoint::MapOfAttributeDimension');
 1;
 
@@ -35,34 +36,42 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Segment dimensions
+Specifies the dimension settings for a segment.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attributes => L<Paws::Pinpoint::MapOfAttributeDimension>
 
-  Custom segment attributes.
+  One or more custom attributes to use as criteria for the segment.
 
 
 =head2 Behavior => L<Paws::Pinpoint::SegmentBehaviors>
 
-  The segment behaviors attributes.
+  The behavior-based criteria, such as how recently users have used your
+app, for the segment.
 
 
 =head2 Demographic => L<Paws::Pinpoint::SegmentDemographics>
 
-  The segment demographics attributes.
+  The demographic-based criteria, such as device platform, for the
+segment.
 
 
 =head2 Location => L<Paws::Pinpoint::SegmentLocation>
 
-  The segment location attributes.
+  The location-based criteria, such as region or GPS coordinates, for the
+segment.
+
+
+=head2 Metrics => L<Paws::Pinpoint::MapOfMetricDimension>
+
+  One or more custom metrics to use as criteria for the segment.
 
 
 =head2 UserAttributes => L<Paws::Pinpoint::MapOfAttributeDimension>
 
-  Custom segment user attributes.
+  One or more custom user attributes to use as criteria for the segment.
 
 
 

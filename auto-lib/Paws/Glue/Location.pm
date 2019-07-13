@@ -1,5 +1,6 @@
 package Paws::Glue::Location;
   use Moose;
+  has DynamoDB => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNodeArg]');
   has Jdbc => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNodeArg]');
   has S3 => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNodeArg]');
 1;
@@ -21,20 +22,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::Location object:
 
-  $service_obj->Method(Att1 => { Jdbc => $value, ..., S3 => $value  });
+  $service_obj->Method(Att1 => { DynamoDB => $value, ..., S3 => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Location object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Jdbc
+  $result->Att1->DynamoDB
 
 =head1 DESCRIPTION
 
 The location of resources.
 
 =head1 ATTRIBUTES
+
+
+=head2 DynamoDB => ArrayRef[L<Paws::Glue::CodeGenNodeArg>]
+
+  An Amazon DynamoDB table location.
 
 
 =head2 Jdbc => ArrayRef[L<Paws::Glue::CodeGenNodeArg>]
@@ -44,7 +50,7 @@ The location of resources.
 
 =head2 S3 => ArrayRef[L<Paws::Glue::CodeGenNodeArg>]
 
-  An Amazon S3 location.
+  An Amazon Simple Storage Service (Amazon S3) location.
 
 
 

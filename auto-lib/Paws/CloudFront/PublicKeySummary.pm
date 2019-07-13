@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-Public key information summary.
+A complex data type for public key information.
 
 =head1 ATTRIBUTES
 

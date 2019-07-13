@@ -1,6 +1,7 @@
 
 package Paws::CloudWatchEvents::RemoveTargets;
   use Moose;
+  has Force => (is => 'ro', isa => 'Bool');
   has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Rule => (is => 'ro', isa => 'Str', required => 1);
 
@@ -32,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Ids => [
         'MyTargetId', ...    # min: 1, max: 64
       ],
-      Rule => 'MyRuleName',
-
+      Rule  => 'MyRuleName',
+      Force => 1,              # OPTIONAL
     );
 
     # Results:
@@ -46,6 +47,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/events/RemoveTargets>
 
 =head1 ATTRIBUTES
+
+
+=head2 Force => Bool
+
+If this is a managed rule, created by an AWS service on your behalf,
+you must specify C<Force> as C<True> to remove targets. This parameter
+is ignored for rules that are not managed rules. You can check whether
+a rule is a managed rule by using C<DescribeRule> or C<ListRules> and
+checking the C<ManagedBy> field of the response.
+
 
 
 =head2 B<REQUIRED> Ids => ArrayRef[Str|Undef]

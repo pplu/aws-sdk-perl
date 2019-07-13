@@ -1,6 +1,7 @@
 
 package Paws::CodePipeline::PutWebhook;
   use Moose;
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has Webhook => (is => 'ro', isa => 'Paws::CodePipeline::WebhookDefinition', traits => ['NameInRequest'], request_name => 'webhook' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,27 +30,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     my $PutWebhookOutput = $codepipeline->PutWebhook(
       Webhook => {
-        authentication =>
+        Authentication =>
           'GITHUB_HMAC',    # values: GITHUB_HMAC, IP, UNAUTHENTICATED
-        authenticationConfiguration => {
+        AuthenticationConfiguration => {
           AllowedIPRange => 'MyWebhookAuthConfigurationAllowedIPRange'
           ,                 # min: 1, max: 100; OPTIONAL
           SecretToken => 'MyWebhookAuthConfigurationSecretToken'
           ,                 # min: 1, max: 100; OPTIONAL
         },
-        filters => [
+        Filters => [
           {
-            jsonPath    => 'MyJsonPath',       # min: 1, max: 150
-            matchEquals => 'MyMatchEquals',    # min: 1, max: 150; OPTIONAL
+            JsonPath    => 'MyJsonPath',       # min: 1, max: 150
+            MatchEquals => 'MyMatchEquals',    # min: 1, max: 150; OPTIONAL
           },
           ...
         ],                                     # max: 5
-        name           => 'MyWebhookName',     # min: 1, max: 100
-        targetAction   => 'MyActionName',      # min: 1, max: 100
-        targetPipeline => 'MyPipelineName',    # min: 1, max: 100
+        Name           => 'MyWebhookName',     # min: 1, max: 100
+        TargetAction   => 'MyActionName',      # min: 1, max: 100
+        TargetPipeline => 'MyPipelineName',    # min: 1, max: 100
 
       },
+      Tags => [
+        {
+          Key   => 'MyTagKey',                 # min: 1, max: 128
+          Value => 'MyTagValue',               # max: 256
 
+        },
+        ...
+      ],                                       # OPTIONAL
     );
 
     # Results:
@@ -61,6 +69,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codepipeline/PutWebhook>
 
 =head1 ATTRIBUTES
+
+
+=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+
+The tags for the webhook.
+
 
 
 =head2 B<REQUIRED> Webhook => L<Paws::CodePipeline::WebhookDefinition>

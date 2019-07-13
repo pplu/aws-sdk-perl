@@ -39,7 +39,7 @@ specify a game mode, level, or map. Game properties are passed to the
 game server process when initiating a new game session; the server
 process uses the properties as appropriate. For more information, see
 the Amazon GameLift Developer Guide
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-api.html#gamelift-sdk-client-api-create).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-api.html#gamelift-sdk-client-api-create).
 
 =head1 ATTRIBUTES
 

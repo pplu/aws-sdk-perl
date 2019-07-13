@@ -1,6 +1,7 @@
 package Paws::MediaConvert::DashIsoEncryptionSettings;
   use Moose;
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest'], required => 1);
+  has PlaybackDeviceCompatibility => (is => 'ro', isa => 'Str', request_name => 'playbackDeviceCompatibility', traits => ['NameInRequest']);
+  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::DashIsoEncryptionSettings object:
 
-  $service_obj->Method(Att1 => { SpekeKeyProvider => $value, ..., SpekeKeyProvider => $value  });
+  $service_obj->Method(Att1 => { PlaybackDeviceCompatibility => $value, ..., SpekeKeyProvider => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::DashIsoEncryptionSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->SpekeKeyProvider
+  $result->Att1->PlaybackDeviceCompatibility
 
 =head1 DESCRIPTION
 
@@ -36,9 +37,20 @@ Specifies DRM settings for DASH outputs.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProvider>
+=head2 PlaybackDeviceCompatibility => Str
 
-  
+  This setting can improve the compatibility of your output with video
+players on obsolete devices. It applies only to DASH H.264 outputs with
+DRM encryption. Choose Unencrypted SEI (UNENCRYPTED_SEI) only to
+correct problems with playback on older devices. Otherwise, keep the
+default setting CENC v1 (CENC_V1). If you choose Unencrypted SEI, for
+that output, the service will exclude the access unit delimiter and
+will leave the SEI NAL units unencrypted.
+
+
+=head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProvider>
+
+  Settings for use with a SPEKE key provider
 
 
 

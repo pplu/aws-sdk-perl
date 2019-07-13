@@ -59,8 +59,8 @@ notification subscription.
 
 =head2 Enabled => Bool
 
-  A Boolean value indicating whether the subscription is enabled. C<true>
-indicates the subscription is enabled.
+  A boolean value indicating whether the subscription is enabled; C<true>
+indicates that the subscription is enabled.
 
 
 =head2 EventCategoriesList => ArrayRef[Str|Undef]

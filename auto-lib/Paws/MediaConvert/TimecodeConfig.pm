@@ -46,7 +46,7 @@ job. These settings don't affect input clipping.
 Anchor Timecode (Anchor) to specify a timecode that will match the
 input video frame to the output video frame. Use 24-hour format with
 frame number, (HH:MM:SS:FF) or (HH:MM:SS;FF). This setting ignores
-framerate conversion. System behavior for Anchor Timecode varies
+frame rate conversion. System behavior for Anchor Timecode varies
 depending on your setting for Source (TimecodeSource). * If Source
 (TimecodeSource) is set to Specified Start (SPECIFIEDSTART), the first
 input frame is the specified value in Start Timecode (Start). Anchor
@@ -59,7 +59,17 @@ input frame of the input.
 
 =head2 Source => Str
 
-  
+  Use Source (TimecodeSource) to set how timecodes are handled within
+this job. To make sure that your video, audio, captions, and markers
+are synchronized and that time-based features, such as image inserter,
+work correctly, choose the Timecode source option that matches your
+assets. All timecodes are in a 24-hour format with frame number
+(HH:MM:SS:FF). * Embedded (EMBEDDED) - Use the timecode that is in the
+input video. If no embedded timecode is in the source, the service will
+use Start at 0 (ZEROBASED) instead. * Start at 0 (ZEROBASED) - Set the
+timecode of the initial frame to 00:00:00:00. * Specified Start
+(SPECIFIEDSTART) - Set the timecode of the initial frame to a value
+other than zero. You use Start timecode (Start) to provide this value.
 
 
 =head2 Start => Str

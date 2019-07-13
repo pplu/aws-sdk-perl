@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The name of the provider to create.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-
@@ -66,7 +66,7 @@ You must generate the metadata document using the identity management
 software that is used as your organization's IdP.
 
 For more information, see About SAML 2.0-based Federation
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)
 in the I<IAM User Guide>
 
 

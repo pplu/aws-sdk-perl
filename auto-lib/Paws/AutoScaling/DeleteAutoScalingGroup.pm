@@ -31,19 +31,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete an Auto Scaling group
     # This example deletes the specified Auto Scaling group.
     $autoscaling->DeleteAutoScalingGroup(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
-      }
-    );
+      'AutoScalingGroupName' => 'my-auto-scaling-group' );
 
     # To delete an Auto Scaling group and all its instances
     # This example deletes the specified Auto Scaling group and all its
     # instances.
     $autoscaling->DeleteAutoScalingGroup(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'ForceDelete'          => true
-      }
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'ForceDelete'          => 1
     );
 
 
@@ -61,7 +56,7 @@ The name of the Auto Scaling group.
 
 =head2 ForceDelete => Bool
 
-Specifies that the group will be deleted along with all instances
+Specifies that the group is to be deleted along with all instances
 associated with the group, without waiting for all instances to be
 terminated. This parameter also deletes any lifecycle actions
 associated with the group.

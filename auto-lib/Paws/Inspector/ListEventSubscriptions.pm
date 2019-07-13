@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Lists all the event subscriptions for the assessment template that is
     # specified by the ARN of the assessment template.
     my $ListEventSubscriptionsResponse = $inspector->ListEventSubscriptions(
-      {
-        'MaxResults' => 123,
-        'ResourceArn' =>
+      'MaxResults' => 123,
+      'ResourceArn' =>
 'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2Kz0'
-      }
     );
 
     # Results:

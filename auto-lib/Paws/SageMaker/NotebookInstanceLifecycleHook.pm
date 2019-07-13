@@ -47,7 +47,8 @@ If a script runs for longer than 5 minutes, it fails and the notebook
 instance is not created or started.
 
 For information about notebook instance lifestyle configurations, see
-notebook-lifecycle-config.
+Step 2.1: (Optional) Customize a Notebook Instance
+(https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 
 =head1 ATTRIBUTES
 

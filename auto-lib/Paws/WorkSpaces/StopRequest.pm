@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Information used to stop a WorkSpace.
+Describes the information used to stop a WorkSpace.
 
 =head1 ATTRIBUTES
 
 
 =head2 WorkspaceId => Str
 
-  The ID of the WorkSpace.
+  The identifier of the WorkSpace.
 
 
 

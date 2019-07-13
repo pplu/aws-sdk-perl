@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Delete assessment template
     # Deletes the assessment template that is specified by the ARN of the
     # assessment template.
-    $inspector->DeleteAssessmentTemplate(
-      {
-        'AssessmentTemplateArn' =>
+    $inspector->DeleteAssessmentTemplate( 'AssessmentTemplateArn' =>
 'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-it5r2S4T'
-      }
     );
 
 

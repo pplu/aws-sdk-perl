@@ -50,7 +50,8 @@ This class has no description
 
 =head2 Version => Str
 
-  The version number of the launch template.
+  The version number of the launch template. Note: This is a required
+parameter and will be updated soon.
 
 
 

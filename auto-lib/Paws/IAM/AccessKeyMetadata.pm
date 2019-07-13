@@ -54,8 +54,8 @@ operation.
 
 =head2 Status => Str
 
-  The status of the access key. C<Active> means the key is valid for API
-calls; C<Inactive> means it is not.
+  The status of the access key. C<Active> means that the key is valid for
+API calls; C<Inactive> means it is not.
 
 
 =head2 UserName => Str

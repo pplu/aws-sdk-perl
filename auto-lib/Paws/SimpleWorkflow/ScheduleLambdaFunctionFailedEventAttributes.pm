@@ -48,7 +48,7 @@ to trace back the chain of events leading up to this event.
 If C<cause> is set to C<OPERATION_NOT_PERMITTED>, the decision failed
 because it lacked sufficient permissions. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 in the I<Amazon SWF Developer Guide>.
 
 

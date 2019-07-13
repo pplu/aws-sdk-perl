@@ -62,8 +62,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms
 
 =head2 Enabled => Bool
 
-A Boolean value; set to B<true> to activate the subscription, or set to
-B<false> to create the subscription but not activate it.
+A Boolean value; set to C<true> to activate the subscription, or set to
+C<false> to create the subscription but not activate it.
 
 
 
@@ -71,10 +71,10 @@ B<false> to create the subscription but not activate it.
 
 A list of event categories for a source type that you want to subscribe
 to. You can see a list of the categories for a given source type by
-calling the B<DescribeEventCategories> action or in the topic Working
+calling the C<DescribeEventCategories> action or in the topic Working
 with Events and Notifications
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
-the AWS Database Migration Service User Guide.
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
+the I<AWS Database Migration Service User Guide.>
 
 
 

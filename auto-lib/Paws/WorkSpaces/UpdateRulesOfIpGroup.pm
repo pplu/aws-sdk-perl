@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GroupId   => 'MyIpGroupId',
       UserRules => [
         {
-          ipRule   => 'MyIpRule',        # OPTIONAL
-          ruleDesc => 'MyIpRuleDesc',    # OPTIONAL
+          IpRule   => 'MyIpRule',        # OPTIONAL
+          RuleDesc => 'MyIpRuleDesc',    # OPTIONAL
         },
         ...
       ],
@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> GroupId => Str
 
-The ID of the group.
+The identifier of the group.
 
 
 

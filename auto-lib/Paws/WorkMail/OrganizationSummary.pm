@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkMail::O
 
 =head1 DESCRIPTION
 
-The brief overview associated with an organization.
+The representation of an organization.
 
 =head1 ATTRIBUTES
 

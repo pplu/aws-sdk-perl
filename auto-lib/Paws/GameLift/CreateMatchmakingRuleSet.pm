@@ -47,16 +47,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> Name => Str
 
-Unique identifier for a matchmaking rule set. This name is used to
-identify the rule set associated with a matchmaking configuration.
+Unique identifier for a matchmaking rule set. A matchmaking
+configuration identifies the rule set it uses by this name value.
+(Note: The rule set name is different from the optional "name" field in
+the rule set body.)
 
 
 
 =head2 B<REQUIRED> RuleSetBody => Str
 
-Collection of matchmaking rules, formatted as a JSON string. (Note that
-comments are not allowed in JSON, but most elements support a
-description field.)
+Collection of matchmaking rules, formatted as a JSON string. Comments
+are not allowed in JSON, but most elements support a description field.
 
 
 

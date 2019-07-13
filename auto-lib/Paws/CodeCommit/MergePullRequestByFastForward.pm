@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $codecommit->MergePullRequestByFastForward(
       PullRequestId  => 'MyPullRequestId',
       RepositoryName => 'MyRepositoryName',
-      SourceCommitId => 'MyCommitId',         # OPTIONAL
+      SourceCommitId => 'MyObjectId',         # OPTIONAL
       );
 
     # Results:
-    my $pullRequest = $MergePullRequestByFastForwardOutput->pullRequest;
+    my $PullRequest = $MergePullRequestByFastForwardOutput->PullRequest;
 
     # Returns a L<Paws::CodeCommit::MergePullRequestByFastForwardOutput> object.
 

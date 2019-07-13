@@ -45,13 +45,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The ARN of the resource whose tags will be removed.
+The ARN of the resource whose tags you want to remove.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The keys of those tags which will be removed.
+The keys of those tags which you want to remove.
 
 
 

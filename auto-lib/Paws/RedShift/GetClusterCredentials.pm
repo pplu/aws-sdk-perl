@@ -160,7 +160,7 @@ C<False>, then the command succeeds but the connection attempt will
 fail because the user doesn't exist in the database.
 
 For more information, see CREATE USER
-(http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html) in
+(https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html) in
 the Amazon Redshift Database Developer Guide.
 
 Constraints:

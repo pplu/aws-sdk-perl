@@ -48,14 +48,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/com
 
 =head2 B<REQUIRED> LanguageCode => Str
 
-The RFC 5646 language code for the input text. If you don't specify a
-language code, Amazon Comprehend detects the dominant language. If you
-specify the code for a language that Amazon Comprehend does not
-support, it returns and C<UnsupportedLanguageException>. For more
-information about RFC 5646, see Tags for Identifying Languages
-(https://tools.ietf.org/html/rfc5646) on the I<IETF Tools> web site.
+The language of the input documents. You can specify English ("en") or
+Spanish ("es"). All documents must be in the same language.
 
-Valid values are: C<"en">, C<"es">
+Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">
 
 =head2 B<REQUIRED> Text => Str
 

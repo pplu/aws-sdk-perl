@@ -2,6 +2,7 @@
 package Paws::CodeBuild::CreateWebhook;
   use Moose;
   has BranchFilter => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchFilter' );
+  has FilterGroups => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeBuild::WebhookFilter]]', traits => ['NameInRequest'], request_name => 'filterGroups' );
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,6 +32,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateWebhookOutput = $codebuild->CreateWebhook(
       ProjectName  => 'MyProjectName',
       BranchFilter => 'MyString',        # OPTIONAL
+      FilterGroups => [
+        [
+          {
+            Pattern => 'MyString',
+            Type    => 'EVENT'
+            ,   # values: EVENT, BASE_REF, HEAD_REF, ACTOR_ACCOUNT_ID, FILE_PATH
+            ExcludeMatchedPattern => 1,    # OPTIONAL
+          },
+          ...
+        ],
+        ...
+      ],                                   # OPTIONAL
     );
 
     # Results:
@@ -46,10 +59,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 BranchFilter => Str
 
-A regular expression used to determine which branches in a repository
-are built when a webhook is triggered. If the name of a branch matches
-the regular expression, then it is built. If it doesn't match, then it
-is not. If branchFilter is empty, then all branches are built.
+A regular expression used to determine which repository branches are
+built when a webhook is triggered. If the name of a branch matches the
+regular expression, then it is built. If C<branchFilter> is empty, then
+all branches are built.
+
+It is recommended that you use C<filterGroups> instead of
+C<branchFilter>.
+
+
+
+=head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]
+
+An array of arrays of C<WebhookFilter> objects used to determine which
+webhooks are triggered. At least one C<WebhookFilter> in the array must
+specify C<EVENT> as its C<type>.
+
+For a build to be triggered, at least one filter group in the
+C<filterGroups> array must pass. For a filter group to pass, each of
+its filters must pass.
 
 
 

@@ -64,7 +64,7 @@ parameter.
 requires a reboot for the change to be applied. You can force a reboot
 or wait until the next maintenance window's reboot. For more
 information, see Rebooting a Cluster
-(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Rebooting.html).
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html).
 
 
 =head2 DataType => Str

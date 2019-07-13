@@ -5,6 +5,7 @@ package Paws::IAM::ListPolicies;
   has MaxItems => (is => 'ro', isa => 'Int');
   has OnlyAttached => (is => 'ro', isa => 'Bool');
   has PathPrefix => (is => 'ro', isa => 'Str');
+  has PolicyUsageFilter => (is => 'ro', isa => 'Str');
   has Scope => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -32,11 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iam = Paws->service('IAM');
     my $ListPoliciesResponse = $iam->ListPolicies(
-      Marker       => 'MymarkerType',        # OPTIONAL
-      MaxItems     => 1,                     # OPTIONAL
-      OnlyAttached => 1,                     # OPTIONAL
-      PathPrefix   => 'MypolicyPathType',    # OPTIONAL
-      Scope        => 'All',                 # OPTIONAL
+      Marker            => 'MymarkerType',         # OPTIONAL
+      MaxItems          => 1,                      # OPTIONAL
+      OnlyAttached      => 1,                      # OPTIONAL
+      PathPrefix        => 'MypolicyPathType',     # OPTIONAL
+      PolicyUsageFilter => 'PermissionsPolicy',    # OPTIONAL
+      Scope             => 'All',                  # OPTIONAL
     );
 
     # Results:
@@ -63,16 +65,15 @@ indicate where the next call should start.
 
 =head2 MaxItems => Int
 
-(Optional) Use this only when paginating results to indicate the
-maximum number of items you want in the response. If additional items
-exist beyond the maximum you specify, the C<IsTruncated> response
-element is C<true>.
+Use this only when paginating results to indicate the maximum number of
+items you want in the response. If additional items exist beyond the
+maximum you specify, the C<IsTruncated> response element is C<true>.
 
-If you do not include this parameter, it defaults to 100. Note that IAM
-might return fewer results, even when there are more results available.
-In that case, the C<IsTruncated> response element returns C<true> and
-C<Marker> contains a value to include in the subsequent call that tells
-the service where to continue from.
+If you do not include this parameter, the number of items defaults to
+100. Note that IAM might return fewer results, even when there are more
+results available. In that case, the C<IsTruncated> response element
+returns C<true>, and C<Marker> contains a value to include in the
+subsequent call that tells the service where to continue from.
 
 
 
@@ -91,7 +92,7 @@ policies are returned.
 
 The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all
-policies. This parameter allows (per its regex pattern
+policies. This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 either a forward slash (/) by itself or a string that must begin and
 end with forward slashes. In addition, it can contain any ASCII
@@ -100,6 +101,19 @@ including most punctuation characters, digits, and upper and lowercased
 letters.
 
 
+
+=head2 PolicyUsageFilter => Str
+
+The policy usage method to use for filtering the results.
+
+To list only permissions policies, set C<PolicyUsageFilter> to
+C<PermissionsPolicy>. To list only the policies used to set permissions
+boundaries, set the value to C<PermissionsBoundary>.
+
+This parameter is optional. If it is not included, all policies are
+returned.
+
+Valid values are: C<"PermissionsPolicy">, C<"PermissionsBoundary">
 
 =head2 Scope => Str
 

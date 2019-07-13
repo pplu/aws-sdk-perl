@@ -76,8 +76,8 @@ status published to the Amazon Simple Notification Service topic.
 
 =head2 NotificationChannel => L<Paws::Rekognition::NotificationChannel>
 
-The Amazon SNS topic ARN you want Rekognition Video to publish the
-completion status of the people detection operation to.
+The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
+the completion status of the people detection operation to.
 
 
 

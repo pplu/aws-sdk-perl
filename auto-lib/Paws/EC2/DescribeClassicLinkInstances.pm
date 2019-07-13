@@ -35,14 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],                       # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      InstanceIds => [ 'MyString', ... ],   # OPTIONAL
-      MaxResults  => 1,                     # OPTIONAL
-      NextToken   => 'MyString',            # OPTIONAL
+      ],                           # OPTIONAL
+      InstanceIds => [
+        'MyString', ...            # OPTIONAL
+      ],                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -83,25 +87,21 @@ C<instance-id> - The ID of the instance.
 
 =item *
 
-C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. This filter is
-independent of the C<tag-value> filter. For example, if you use both
-the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
-resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of what the tag's key
-is). If you want to list only resources where Purpose is X, see the
-C<tag>:I<key>=I<value> filter.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =item *
 
-C<tag-value> - The value of a tag assigned to the resource. This filter
-is independent of the C<tag-key> filter.
-
-=item *
+C<vpc-id> - The ID of the VPC to which the instance is linked.
 
 C<vpc-id> - The ID of the VPC that the instance is linked to.
 
@@ -119,12 +119,9 @@ ClassicLink.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return for the request in a single
-page. The remaining results of the initial request can be seen by
-sending another request with the returned C<NextToken> value. This
-value can be between 5 and 1000; if C<MaxResults> is given a value
-larger than 1000, only 1000 results are returned. You cannot specify
-this parameter and the instance IDs parameter in the same request.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
 Constraint: If the value is greater than 1000, we return only 1000
 items.
@@ -133,7 +130,7 @@ items.
 
 =head2 NextToken => Str
 
-The token to retrieve the next page of results.
+The token for the next page of results.
 
 
 

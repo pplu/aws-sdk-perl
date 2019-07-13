@@ -3,6 +3,7 @@ package Paws::MediaLive::GlobalConfiguration;
   has InitialAudioGain => (is => 'ro', isa => 'Int', request_name => 'initialAudioGain', traits => ['NameInRequest']);
   has InputEndAction => (is => 'ro', isa => 'Str', request_name => 'inputEndAction', traits => ['NameInRequest']);
   has InputLossBehavior => (is => 'ro', isa => 'Paws::MediaLive::InputLossBehavior', request_name => 'inputLossBehavior', traits => ['NameInRequest']);
+  has OutputLockingMode => (is => 'ro', isa => 'Str', request_name => 'outputLockingMode', traits => ['NameInRequest']);
   has OutputTimingSource => (is => 'ro', isa => 'Str', request_name => 'outputTimingSource', traits => ['NameInRequest']);
   has SupportLowFramerateInputs => (is => 'ro', isa => 'Str', request_name => 'supportLowFramerateInputs', traits => ['NameInRequest']);
 1;
@@ -35,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Placeholder documentation for GlobalConfiguration
+Global Configuration
 
 =head1 ATTRIBUTES
 
@@ -47,19 +48,26 @@ Placeholder documentation for GlobalConfiguration
 
 =head2 InputEndAction => Str
 
-  Indicates the action to take when an input completes (e.g.
-end-of-file.) Options include immediately switching to the next
-sequential input (via "switchInput"), switching to the next input and
-looping back to the first input when last input ends (via
-"switchAndLoopInputs") or not switching inputs and instead transcoding
-black / color / slate images per the "Input Loss Behavior"
-configuration until an activateInput REST command is received (via
-"none").
+  Indicates the action to take when the current input completes (e.g.
+end-of-file). When switchAndLoopInputs is configured the encoder will
+restart at the beginning of the first input. When "none" is configured
+the encoder will transcode either black, a solid color, or a user
+specified slate images per the "Input Loss Behavior" configuration
+until the next input switch occurs (which is controlled through the
+Channel Schedule API).
 
 
 =head2 InputLossBehavior => L<Paws::MediaLive::InputLossBehavior>
 
   Settings for system actions when input is lost.
+
+
+=head2 OutputLockingMode => Str
+
+  Indicates how MediaLive pipelines are synchronized. PIPELINELOCKING -
+MediaLive will attempt to synchronize the output of each pipeline to
+the other. EPOCHLOCKING - MediaLive will attempt to synchronize the
+output of each pipeline to the Unix epoch.
 
 
 =head2 OutputTimingSource => Str

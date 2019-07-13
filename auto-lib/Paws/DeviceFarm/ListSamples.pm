@@ -32,12 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example returns information about samples, given a specific
     # Device Farm project.
     my $ListSamplesResult = $devicefarm->ListSamples(
-      {
-        'Arn' =>
+      'Arn' =>
 'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
-        'NextToken' =>
-          'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE'
-      }
+      'NextToken' => 'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE'
     );
 
     # Results:
@@ -53,8 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 
 =head2 B<REQUIRED> Arn => Str
 
-The Amazon Resource Name (ARN) of the project for which you want to
-list samples.
+The Amazon Resource Name (ARN) of the job used to list samples.
 
 
 

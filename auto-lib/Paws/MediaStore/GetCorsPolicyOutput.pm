@@ -16,7 +16,7 @@ Paws::MediaStore::GetCorsPolicyOutput
 
 =head2 B<REQUIRED> CorsPolicy => ArrayRef[L<Paws::MediaStore::CorsRule>]
 
-
+The CORS policy assigned to the container.
 
 
 =head2 _request_id => Str

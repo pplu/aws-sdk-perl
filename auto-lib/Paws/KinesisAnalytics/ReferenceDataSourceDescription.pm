@@ -43,7 +43,9 @@ Describes the reference data source configured for an application.
 
   ID of the reference data source. This is the ID that Amazon Kinesis
 Analytics assigns when you add the reference data source to your
-application using the AddApplicationReferenceDataSource operation.
+application using the AddApplicationReferenceDataSource
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html)
+operation.
 
 
 =head2 ReferenceSchema => L<Paws::KinesisAnalytics::SourceSchema>

@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an instance profile
     # The following command creates an instance profile named Webserver that is
     # ready to have a role attached and then be associated with an EC2 instance.
-    my $CreateInstanceProfileResponse = $iam->CreateInstanceProfile(
-      {
-        'InstanceProfileName' => 'Webserver'
-      }
-    );
+    my $CreateInstanceProfileResponse =
+      $iam->CreateInstanceProfile( 'InstanceProfileName' => 'Webserver' );
 
     # Results:
     my $InstanceProfile = $CreateInstanceProfileResponse->InstanceProfile;
@@ -52,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The name of the instance profile to create.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-
@@ -63,13 +60,13 @@ also include any of the following characters: _+=,.@-
 
 The path to the instance profile. For more information about paths, see
 IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 either a forward slash (/) by itself or a string that must begin and
 end with forward slashes. In addition, it can contain any ASCII

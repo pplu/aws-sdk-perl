@@ -3,6 +3,7 @@ package Paws::GuardDuty::UpdateDetector;
   use Moose;
   has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
   has Enable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enable');
+  has FindingPublishingFrequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingPublishingFrequency');
 
   use MooseX::ClassAttribute;
 
@@ -30,12 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $UpdateDetectorResponse = $guardduty->UpdateDetector(
-      DetectorId => 'My__string',
-      Enable     => 1,              # OPTIONAL
+      DetectorId                 => 'MyDetectorId',
+      Enable                     => 1,                    # OPTIONAL
+      FindingPublishingFrequency => 'FIFTEEN_MINUTES',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/UpdateDetector>
 
 =head1 ATTRIBUTES
 
@@ -52,6 +54,13 @@ Updated boolean value for the detector that specifies whether the
 detector is enabled.
 
 
+
+=head2 FindingPublishingFrequency => Str
+
+A enum value that specifies how frequently customer got Finding updates
+published.
+
+Valid values are: C<"FIFTEEN_MINUTES">, C<"ONE_HOUR">, C<"SIX_HOURS">
 
 
 =head1 SEE ALSO

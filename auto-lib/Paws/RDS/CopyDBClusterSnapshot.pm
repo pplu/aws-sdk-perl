@@ -36,11 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following example copies an automated snapshot of a DB cluster to a new
    # DB cluster snapshot.
     my $CopyDBClusterSnapshotResult = $rds->CopyDBClusterSnapshot(
-      {
-        'SourceDBClusterSnapshotIdentifier' =>
-          'rds:sample-cluster-2016-09-14-10-38',
-        'TargetDBClusterSnapshotIdentifier' => 'cluster-snapshot-copy-1'
-      }
+      'SourceDBClusterSnapshotIdentifier' =>
+        'rds:sample-cluster-2016-09-14-10-38',
+      'TargetDBClusterSnapshotIdentifier' => 'cluster-snapshot-copy-1'
     );
 
 
@@ -52,8 +50,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 CopyTags => Bool
 
-True to copy all tags from the source DB cluster snapshot to the target
-DB cluster snapshot, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the source DB
+cluster snapshot to the target DB cluster snapshot. By default, tags
+are not copied.
 
 
 
@@ -128,9 +127,9 @@ C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-2
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
 4)
-(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 and Signature Version 4 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 
@@ -159,8 +158,9 @@ valid DB snapshot identifier.
 
 If the source snapshot is in a different AWS Region than the copy,
 specify a valid DB cluster snapshot ARN. For more information, go to
-Copying a DB Snapshot or DB Cluster Snapshot
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html).
+Copying Snapshots Across AWS Regions
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html#USER_CopySnapshot.AcrossRegions)
+in the I<Amazon Aurora User Guide.>
 
 =back
 
@@ -193,7 +193,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 

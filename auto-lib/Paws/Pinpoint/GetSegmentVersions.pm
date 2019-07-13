@@ -44,33 +44,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::Pinpoint::GetSegmentVersionsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/GetSegmentVersions>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
 =head2 PageSize => Str
 
-The number of entries you want on each page in the response.
+The maximum number of items to include on each page in a paginated
+response.
 
 
 
 =head2 B<REQUIRED> SegmentId => Str
 
-
+The unique identifier for the segment.
 
 
 
 =head2 Token => Str
 
-The NextToken string returned on a previous page that you use to get
-the next page of results in a paginated response.
+The NextToken string that specifies which page of results to return in
+a paginated response.
 
 
 

@@ -86,8 +86,8 @@ Valid values are: C<"Registered">, C<"Deregistered">
 
 =head2 TagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
-The on-premises instance tags that will be used to restrict the
-corresponding on-premises instance names returned.
+The on-premises instance tags that are used to restrict the on-premises
+instance names returned.
 
 
 

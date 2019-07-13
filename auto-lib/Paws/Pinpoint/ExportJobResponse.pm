@@ -1,18 +1,18 @@
 package Paws::Pinpoint::ExportJobResponse;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str');
+  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
   has CompletedPieces => (is => 'ro', isa => 'Int');
   has CompletionDate => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Definition => (is => 'ro', isa => 'Paws::Pinpoint::ExportJobResource');
+  has CreationDate => (is => 'ro', isa => 'Str', required => 1);
+  has Definition => (is => 'ro', isa => 'Paws::Pinpoint::ExportJobResource', required => 1);
   has FailedPieces => (is => 'ro', isa => 'Int');
   has Failures => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Id => (is => 'ro', isa => 'Str');
-  has JobStatus => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has JobStatus => (is => 'ro', isa => 'Str', required => 1);
   has TotalFailures => (is => 'ro', isa => 'Int');
   has TotalPieces => (is => 'ro', isa => 'Int');
   has TotalProcessed => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -43,81 +43,88 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-This class has no description
+Provides information about the status and settings of a job that
+exports endpoint definitions to a file. The file can be added directly
+to an Amazon Simple Storage Service (Amazon S3) bucket by using the
+Amazon Pinpoint API or downloaded directly to a computer by using the
+Amazon Pinpoint console.
 
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationId => Str
+=head2 B<REQUIRED> ApplicationId => Str
 
-  The unique ID of the application to which the job applies.
+  The unique identifier for the application that's associated with the
+export job.
 
 
 =head2 CompletedPieces => Int
 
-  The number of pieces that have successfully completed as of the time of
-the request.
+  The number of pieces that were processed successfully (completed) by
+the export job, as of the time of the request.
 
 
 =head2 CompletionDate => Str
 
-  The date the job completed in ISO 8601 format.
+  The date, in ISO 8601 format, when the export job was completed.
 
 
-=head2 CreationDate => Str
+=head2 B<REQUIRED> CreationDate => Str
 
-  The date the job was created in ISO 8601 format.
+  The date, in ISO 8601 format, when the export job was created.
 
 
-=head2 Definition => L<Paws::Pinpoint::ExportJobResource>
+=head2 B<REQUIRED> Definition => L<Paws::Pinpoint::ExportJobResource>
 
-  The export job settings.
+  The resource settings that apply to the export job.
 
 
 =head2 FailedPieces => Int
 
-  The number of pieces that failed to be processed as of the time of the
-request.
+  The number of pieces that weren't processed successfully (failed) by
+the export job, as of the time of the request.
 
 
 =head2 Failures => ArrayRef[Str|Undef]
 
-  Provides up to 100 of the first failed entries for the job, if any
-exist.
+  An array of entries, one for each of the first 100 entries that weren't
+processed successfully (failed) by the export job, if any.
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
-  The unique ID of the job.
+  The unique identifier for the export job.
 
 
-=head2 JobStatus => Str
+=head2 B<REQUIRED> JobStatus => Str
 
-  The status of the job. Valid values: CREATED, INITIALIZING, PROCESSING,
-COMPLETING, COMPLETED, FAILING, FAILED The job status is FAILED if one
-or more pieces failed.
+  The status of the export job. The job status is FAILED if Amazon
+Pinpoint wasn't able to process one or more pieces in the job.
 
 
 =head2 TotalFailures => Int
 
-  The number of endpoints that were not processed; for example, because
-of syntax errors.
+  The total number of endpoint definitions that weren't processed
+successfully (failed) by the export job, typically because an error,
+such as a syntax error, occurred.
 
 
 =head2 TotalPieces => Int
 
-  The total number of pieces that must be processed to finish the job.
-Each piece is an approximately equal portion of the endpoints.
+  The total number of pieces that must be processed to complete the
+export job. Each piece consists of an approximately equal portion of
+the endpoint definitions that are part of the export job.
 
 
 =head2 TotalProcessed => Int
 
-  The number of endpoints that were processed by the job.
+  The total number of endpoint definitions that were processed by the
+export job.
 
 
-=head2 Type => Str
+=head2 B<REQUIRED> Type => Str
 
-  The job type. Will be 'EXPORT'.
+  The job type. This value is EXPORT for export jobs.
 
 
 

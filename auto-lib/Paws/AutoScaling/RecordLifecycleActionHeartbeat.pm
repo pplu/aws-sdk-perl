@@ -35,11 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # pending state.
     my $RecordLifecycleActionHeartbeatAnswer =
       $autoscaling->RecordLifecycleActionHeartbeat(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'LifecycleActionToken' => 'bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635',
-        'LifecycleHookName'    => 'my-lifecycle-hook'
-      }
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'LifecycleActionToken' => 'bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635',
+      'LifecycleHookName'    => 'my-lifecycle-hook'
       );
 
 
@@ -64,8 +62,9 @@ The ID of the instance.
 =head2 LifecycleActionToken => Str
 
 A token that uniquely identifies a specific lifecycle action associated
-with an instance. Auto Scaling sends this token to the notification
-target you specified when you created the lifecycle hook.
+with an instance. Amazon EC2 Auto Scaling sends this token to the
+notification target that you specified when you created the lifecycle
+hook.
 
 
 

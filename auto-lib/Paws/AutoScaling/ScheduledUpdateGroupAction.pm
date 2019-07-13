@@ -40,7 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes a scheduled update to an Auto Scaling group.
+Describes a scheduled scaling action. Used in response to
+DescribeScheduledActions.
 
 =head1 ATTRIBUTES
 
@@ -57,8 +58,7 @@ Describes a scheduled update to an Auto Scaling group.
 
 =head2 EndTime => Str
 
-  The date and time that the action is scheduled to end. This date and
-time can be up to one month in the future.
+  The date and time that the action is scheduled to end.
 
 
 =head2 MaxSize => Int
@@ -88,11 +88,10 @@ time can be up to one month in the future.
 
 =head2 StartTime => Str
 
-  The date and time that the action is scheduled to begin. This date and
-time can be up to one month in the future.
+  The date and time that the action is scheduled to begin.
 
 When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
-form the boundaries of when the recurring action will start and stop.
+form the boundaries of when the recurring action starts and stops.
 
 
 =head2 Time => Str

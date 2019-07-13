@@ -2,6 +2,7 @@
 package Paws::CodeBuild::UpdateWebhook;
   use Moose;
   has BranchFilter => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchFilter' );
+  has FilterGroups => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeBuild::WebhookFilter]]', traits => ['NameInRequest'], request_name => 'filterGroups' );
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
   has RotateSecret => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'rotateSecret' );
 
@@ -32,11 +33,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateWebhookOutput = $codebuild->UpdateWebhook(
       ProjectName  => 'MyProjectName',
       BranchFilter => 'MyString',        # OPTIONAL
-      RotateSecret => 1,                 # OPTIONAL
+      FilterGroups => [
+        [
+          {
+            Pattern => 'MyString',
+            Type    => 'EVENT'
+            ,   # values: EVENT, BASE_REF, HEAD_REF, ACTOR_ACCOUNT_ID, FILE_PATH
+            ExcludeMatchedPattern => 1,    # OPTIONAL
+          },
+          ...
+        ],
+        ...
+      ],                                   # OPTIONAL
+      RotateSecret => 1,                   # OPTIONAL
     );
 
     # Results:
-    my $webhook = $UpdateWebhookOutput->webhook;
+    my $Webhook = $UpdateWebhookOutput->Webhook;
 
     # Returns a L<Paws::CodeBuild::UpdateWebhookOutput> object.
 
@@ -48,10 +61,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 BranchFilter => Str
 
-A regular expression used to determine which branches in a repository
-are built when a webhook is triggered. If the name of a branch matches
-the regular expression, then it is built. If it doesn't match, then it
-is not. If branchFilter is empty, then all branches are built.
+A regular expression used to determine which repository branches are
+built when a webhook is triggered. If the name of a branch matches the
+regular expression, then it is built. If C<branchFilter> is empty, then
+all branches are built.
+
+It is recommended that you use C<filterGroups> instead of
+C<branchFilter>.
+
+
+
+=head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]
+
+An array of arrays of C<WebhookFilter> objects used to determine if a
+webhook event can trigger a build. A filter group must pcontain at
+least one C<EVENT> C<WebhookFilter>.
 
 
 
@@ -63,8 +87,9 @@ The name of the AWS CodeBuild project.
 
 =head2 RotateSecret => Bool
 
-A boolean value that specifies whether the associated repository's
-secret token should be updated.
+A boolean value that specifies whether the associated GitHub
+repository's secret token should be updated. If you use Bitbucket for
+your repository, C<rotateSecret> is ignored.
 
 
 

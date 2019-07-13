@@ -3,12 +3,15 @@ package Paws::EC2::FleetData;
   has ActivityStatus => (is => 'ro', isa => 'Str', request_name => 'activityStatus', traits => ['NameInRequest']);
   has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
+  has Errors => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DescribeFleetError]', request_name => 'errorSet', traits => ['NameInRequest']);
   has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', request_name => 'excessCapacityTerminationPolicy', traits => ['NameInRequest']);
   has FleetId => (is => 'ro', isa => 'Str', request_name => 'fleetId', traits => ['NameInRequest']);
   has FleetState => (is => 'ro', isa => 'Str', request_name => 'fleetState', traits => ['NameInRequest']);
   has FulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'fulfilledCapacity', traits => ['NameInRequest']);
   has FulfilledOnDemandCapacity => (is => 'ro', isa => 'Num', request_name => 'fulfilledOnDemandCapacity', traits => ['NameInRequest']);
+  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DescribeFleetsInstances]', request_name => 'fleetInstanceSet', traits => ['NameInRequest']);
   has LaunchTemplateConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::FleetLaunchTemplateConfig]', request_name => 'launchTemplateConfigs', traits => ['NameInRequest']);
+  has OnDemandOptions => (is => 'ro', isa => 'Paws::EC2::OnDemandOptions', request_name => 'onDemandOptions', traits => ['NameInRequest']);
   has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', request_name => 'replaceUnhealthyInstances', traits => ['NameInRequest']);
   has SpotOptions => (is => 'ro', isa => 'Paws::EC2::SpotOptions', request_name => 'spotOptions', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
@@ -66,7 +69,7 @@ C<pending_termination> while instances are terminating.
 
   Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. For more information, see Ensuring Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 Constraints: Maximum 64 ASCII characters
 
@@ -74,6 +77,12 @@ Constraints: Maximum 64 ASCII characters
 =head2 CreateTime => Str
 
   The creation date and time of the EC2 Fleet.
+
+
+=head2 Errors => ArrayRef[L<Paws::EC2::DescribeFleetError>]
+
+  Information about the instances that could not be launched by the
+fleet. Valid only when B<Type> is set to C<instant>.
 
 
 =head2 ExcessCapacityTerminationPolicy => Str
@@ -105,9 +114,20 @@ target capacity.
 target On-Demand capacity.
 
 
+=head2 Instances => ArrayRef[L<Paws::EC2::DescribeFleetsInstances>]
+
+  Information about the instances that were launched by the fleet. Valid
+only when B<Type> is set to C<instant>.
+
+
 =head2 LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::FleetLaunchTemplateConfig>]
 
   The launch template and overrides.
+
+
+=head2 OnDemandOptions => L<Paws::EC2::OnDemandOptions>
+
+  The allocation strategy of On-Demand Instances in an EC2 Fleet.
 
 
 =head2 ReplaceUnhealthyInstances => Bool

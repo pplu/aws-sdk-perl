@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 A specification identifying an individual configuration option along
 with its current value. For a list of possible option values, go to
 Option Values
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html)
 in the I<AWS Elastic Beanstalk Developer Guide>.
 
 =head1 ATTRIBUTES

@@ -71,8 +71,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =head2 InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>
 
-The InputProcessingConfiguration to use to preprocess the records
-before discovering the schema of the records.
+The InputProcessingConfiguration
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
+to use to preprocess the records before discovering the schema of the
+records.
 
 
 
@@ -98,7 +100,8 @@ the stream on your behalf.
 
 =head2 S3Configuration => L<Paws::KinesisAnalytics::S3Configuration>
 
-Specify this parameter to discover a schema from data in an S3 object.
+Specify this parameter to discover a schema from data in an Amazon S3
+object.
 
 
 

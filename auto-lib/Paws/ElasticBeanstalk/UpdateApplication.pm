@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following operation updates the description of an application named
     # my-app:
     my $ApplicationDescriptionMessage = $elasticbeanstalk->UpdateApplication(
-      {
-        'ApplicationName' => 'my-app',
-        'Description'     => 'my Elastic Beanstalk application'
-      }
+      'ApplicationName' => 'my-app',
+      'Description'     => 'my Elastic Beanstalk application'
     );
 
     # Results:

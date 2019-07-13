@@ -2,6 +2,7 @@ package Paws::FMS::PolicyComplianceDetail;
   use Moose;
   has EvaluationLimitExceeded => (is => 'ro', isa => 'Bool');
   has ExpiredAt => (is => 'ro', isa => 'Str');
+  has IssueInfoMap => (is => 'ro', isa => 'Paws::FMS::IssueInfoMap');
   has MemberAccount => (is => 'ro', isa => 'Str');
   has PolicyId => (is => 'ro', isa => 'Str');
   has PolicyOwner => (is => 'ro', isa => 'Str');
@@ -54,6 +55,14 @@ Manager policy.
 
   A time stamp that indicates when the returned information should be
 considered out-of-date.
+
+
+=head2 IssueInfoMap => L<Paws::FMS::IssueInfoMap>
+
+  Details about problems with dependent services, such as AWS WAF or AWS
+Config, that are causing a resource to be non-compliant. The details
+include the name of the dependent service and the error message
+received that indicates the problem with the service.
 
 
 =head2 MemberAccount => Str

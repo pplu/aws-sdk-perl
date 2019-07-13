@@ -88,7 +88,7 @@ that will be associated with the stack if you execute the change set.
 A list of C<Parameter> structures that describes the input parameters
 and their values used to create the change set. For more information,
 see the Parameter
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
 data type.
 
 

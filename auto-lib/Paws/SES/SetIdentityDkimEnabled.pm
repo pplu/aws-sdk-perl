@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example configures Amazon SES to Easy DKIM-sign the email
     # sent from an identity:
     my $SetIdentityDkimEnabledResponse = $email->SetIdentityDkimEnabled(
-      {
-        'DkimEnabled' => true,
-        'Identity'    => 'user@example.com'
-      }
+      'DkimEnabled' => 1,
+      'Identity'    => 'user@example.com'
     );
 
 

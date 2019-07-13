@@ -93,8 +93,8 @@ status published to the Amazon Simple Notification Service topic.
 
 =head2 NotificationChannel => L<Paws::Rekognition::NotificationChannel>
 
-The ARN of the Amazon SNS topic to which you want Rekognition Video to
-publish the completion status of the search.
+The ARN of the Amazon SNS topic to which you want Amazon Rekognition
+Video to publish the completion status of the search.
 
 
 

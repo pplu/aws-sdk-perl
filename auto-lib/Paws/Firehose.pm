@@ -50,6 +50,16 @@ package Paws::Firehose;
     my $call_object = $self->new_with_coercions('Paws::Firehose::PutRecordBatch', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartDeliveryStreamEncryption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Firehose::StartDeliveryStreamEncryption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopDeliveryStreamEncryption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Firehose::StopDeliveryStreamEncryption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagDeliveryStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Firehose::TagDeliveryStream', @_);
@@ -68,7 +78,7 @@ package Paws::Firehose;
   
 
 
-  sub operations { qw/CreateDeliveryStream DeleteDeliveryStream DescribeDeliveryStream ListDeliveryStreams ListTagsForDeliveryStream PutRecord PutRecordBatch TagDeliveryStream UntagDeliveryStream UpdateDestination / }
+  sub operations { qw/CreateDeliveryStream DeleteDeliveryStream DescribeDeliveryStream ListDeliveryStreams ListTagsForDeliveryStream PutRecord PutRecordBatch StartDeliveryStreamEncryption StopDeliveryStreamEncryption TagDeliveryStream UntagDeliveryStream UpdateDestination / }
 
 1;
 
@@ -128,6 +138,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fir
 
 =item [SplunkDestinationConfiguration => L<Paws::Firehose::SplunkDestinationConfiguration>]
 
+=item [Tags => ArrayRef[L<Paws::Firehose::Tag>]]
+
 
 =back
 
@@ -157,17 +169,17 @@ the C<KinesisStreamSourceConfiguration> parameter.
 A delivery stream is configured with a single destination: Amazon S3,
 Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the
 following destination configuration parameters:
-B<ExtendedS3DestinationConfiguration>, B<S3DestinationConfiguration>,
-B<ElasticsearchDestinationConfiguration>,
-B<RedshiftDestinationConfiguration>, or
-B<SplunkDestinationConfiguration>.
+C<ExtendedS3DestinationConfiguration>, C<S3DestinationConfiguration>,
+C<ElasticsearchDestinationConfiguration>,
+C<RedshiftDestinationConfiguration>, or
+C<SplunkDestinationConfiguration>.
 
-When you specify B<S3DestinationConfiguration>, you can also provide
-the following optional values: B<BufferingHints>,
-B<EncryptionConfiguration>, and B<CompressionFormat>. By default, if no
-B<BufferingHints> value is provided, Kinesis Data Firehose buffers data
+When you specify C<S3DestinationConfiguration>, you can also provide
+the following optional values: BufferingHints,
+C<EncryptionConfiguration>, and C<CompressionFormat>. By default, if no
+C<BufferingHints> value is provided, Kinesis Data Firehose buffers data
 up to 5 MB or for 5 minutes, whichever condition is satisfied first.
-B<BufferingHints> is a hint, so there are some cases where the service
+C<BufferingHints> is a hint, so there are some cases where the service
 cannot adhere to these conditions strictly. For example, record
 boundaries might be such that the size is a little over or under the
 configured buffering size. By default, no encryption is performed. We
@@ -184,7 +196,7 @@ An Amazon Redshift destination requires an S3 bucket as intermediate
 location. Kinesis Data Firehose first delivers data to Amazon S3 and
 then uses C<COPY> syntax to load data into an Amazon Redshift table.
 This is specified in the
-B<RedshiftDestinationConfiguration.S3Configuration> parameter.
+C<RedshiftDestinationConfiguration.S3Configuration> parameter.
 
 =item *
 
@@ -279,16 +291,16 @@ Each argument is described in detail in: L<Paws::Firehose::ListDeliveryStreams>
 
 Returns: a L<Paws::Firehose::ListDeliveryStreamsOutput> instance
 
-Lists your delivery streams.
+Lists your delivery streams in alphabetical order of their names.
 
 The number of delivery streams might be too large to return using a
 single call to C<ListDeliveryStreams>. You can limit the number of
-delivery streams returned, using the B<Limit> parameter. To determine
+delivery streams returned, using the C<Limit> parameter. To determine
 whether there are more delivery streams to list, check the value of
 C<HasMoreDeliveryStreams> in the output. If there are more delivery
-streams to list, you can request them by specifying the name of the
-last delivery stream returned in the call in the
-C<ExclusiveStartDeliveryStreamName> parameter of a subsequent call.
+streams to list, you can request them by calling this operation again
+and setting the C<ExclusiveStartDeliveryStreamName> parameter to the
+name of the last delivery stream returned in the last call.
 
 
 =head2 ListTagsForDeliveryStream
@@ -365,6 +377,10 @@ the time they are added to a delivery stream as it tries to send the
 records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
 
+Don't concatenate two or more base64 strings to form the data fields of
+your records. Instead, concatenate the raw data, then perform base64
+encoding.
+
 
 =head2 PutRecordBatch
 
@@ -412,31 +428,34 @@ consumer application to parse individual data items when reading the
 data from the destination.
 
 The PutRecordBatch response includes a count of failed records,
-B<FailedPutCount>, and an array of responses, B<RequestResponses>. Each
-entry in the B<RequestResponses> array provides additional information
-about the processed record. It directly correlates with a record in the
-request array using the same ordering, from the top to the bottom. The
-response array always includes the same number of records as the
-request array. B<RequestResponses> includes both successfully and
-unsuccessfully processed records. Kinesis Data Firehose tries to
-process all records in each PutRecordBatch request. A single record
-failure does not stop the processing of subsequent records.
+C<FailedPutCount>, and an array of responses, C<RequestResponses>. Even
+if the PutRecordBatch call succeeds, the value of C<FailedPutCount> may
+be greater than 0, indicating that there are records for which the
+operation didn't succeed. Each entry in the C<RequestResponses> array
+provides additional information about the processed record. It directly
+correlates with a record in the request array using the same ordering,
+from the top to the bottom. The response array always includes the same
+number of records as the request array. C<RequestResponses> includes
+both successfully and unsuccessfully processed records. Kinesis Data
+Firehose tries to process all records in each PutRecordBatch request. A
+single record failure does not stop the processing of subsequent
+records.
 
-A successfully processed record includes a B<RecordId> value, which is
+A successfully processed record includes a C<RecordId> value, which is
 unique for the record. An unsuccessfully processed record includes
-B<ErrorCode> and B<ErrorMessage> values. B<ErrorCode> reflects the type
-of error, and is one of the following values: C<ServiceUnavailable> or
-C<InternalFailure>. B<ErrorMessage> provides more detailed information
-about the error.
+C<ErrorCode> and C<ErrorMessage> values. C<ErrorCode> reflects the type
+of error, and is one of the following values:
+C<ServiceUnavailableException> or C<InternalFailure>. C<ErrorMessage>
+provides more detailed information about the error.
 
 If there is an internal server error or a timeout, the write might have
-completed or it might have failed. If B<FailedPutCount> is greater than
+completed or it might have failed. If C<FailedPutCount> is greater than
 0, retry the request, resending only those records that might have
 failed processing. This minimizes the possible duplicate records and
 also reduces the total bytes sent (and corresponding charges). We
 recommend that you handle any duplicates at the destination.
 
-If PutRecordBatch throws B<ServiceUnavailableException>, back off and
+If PutRecordBatch throws C<ServiceUnavailableException>, back off and
 retry. If the exception persists, it is possible that the throughput
 limits have been exceeded for the delivery stream.
 
@@ -444,6 +463,85 @@ Data records sent to Kinesis Data Firehose are stored for 24 hours from
 the time they are added to a delivery stream as it attempts to send the
 records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
+
+Don't concatenate two or more base64 strings to form the data fields of
+your records. Instead, concatenate the raw data, then perform base64
+encoding.
+
+
+=head2 StartDeliveryStreamEncryption
+
+=over
+
+=item DeliveryStreamName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Firehose::StartDeliveryStreamEncryption>
+
+Returns: a L<Paws::Firehose::StartDeliveryStreamEncryptionOutput> instance
+
+Enables server-side encryption (SSE) for the delivery stream.
+
+This operation is asynchronous. It returns immediately. When you invoke
+it, Kinesis Data Firehose first sets the status of the stream to
+C<ENABLING>, and then to C<ENABLED>. You can continue to read and write
+data to your stream while its status is C<ENABLING>, but the data is
+not encrypted. It can take up to 5 seconds after the encryption status
+changes to C<ENABLED> before all records written to the delivery stream
+are encrypted. To find out whether a record or a batch of records was
+encrypted, check the response elements PutRecordOutput$Encrypted and
+PutRecordBatchOutput$Encrypted, respectively.
+
+To check the encryption state of a delivery stream, use
+DescribeDeliveryStream.
+
+You can only enable SSE for a delivery stream that uses C<DirectPut> as
+its source.
+
+The C<StartDeliveryStreamEncryption> and
+C<StopDeliveryStreamEncryption> operations have a combined limit of 25
+calls per delivery stream per 24 hours. For example, you reach the
+limit if you call C<StartDeliveryStreamEncryption> 13 times and
+C<StopDeliveryStreamEncryption> 12 times for the same delivery stream
+in a 24-hour period.
+
+
+=head2 StopDeliveryStreamEncryption
+
+=over
+
+=item DeliveryStreamName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Firehose::StopDeliveryStreamEncryption>
+
+Returns: a L<Paws::Firehose::StopDeliveryStreamEncryptionOutput> instance
+
+Disables server-side encryption (SSE) for the delivery stream.
+
+This operation is asynchronous. It returns immediately. When you invoke
+it, Kinesis Data Firehose first sets the status of the stream to
+C<DISABLING>, and then to C<DISABLED>. You can continue to read and
+write data to your stream while its status is C<DISABLING>. It can take
+up to 5 seconds after the encryption status changes to C<DISABLED>
+before all records written to the delivery stream are no longer subject
+to encryption. To find out whether a record or a batch of records was
+encrypted, check the response elements PutRecordOutput$Encrypted and
+PutRecordBatchOutput$Encrypted, respectively.
+
+To check the encryption state of a delivery stream, use
+DescribeDeliveryStream.
+
+The C<StartDeliveryStreamEncryption> and
+C<StopDeliveryStreamEncryption> operations have a combined limit of 25
+calls per delivery stream per 24 hours. For example, you reach the
+limit if you call C<StartDeliveryStreamEncryption> 13 times and
+C<StopDeliveryStreamEncryption> 12 times for the same delivery stream
+in a 24-hour period.
 
 
 =head2 TagDeliveryStream
@@ -462,13 +560,12 @@ Each argument is described in detail in: L<Paws::Firehose::TagDeliveryStream>
 Returns: a L<Paws::Firehose::TagDeliveryStreamOutput> instance
 
 Adds or updates tags for the specified delivery stream. A tag is a
-key-value pair (the value is optional) that you can define and assign
-to AWS resources. If you specify a tag that already exists, the tag
-value is replaced with the value that you specify in the request. Tags
-are metadata. For example, you can add friendly names and descriptions
-or other types of information that can help you distinguish the
-delivery stream. For more information about tags, see Using Cost
-Allocation Tags
+key-value pair that you can define and assign to AWS resources. If you
+specify a tag that already exists, the tag value is replaced with the
+value that you specify in the request. Tags are metadata. For example,
+you can add friendly names and descriptions or other types of
+information that can help you distinguish the delivery stream. For more
+information about tags, see Using Cost Allocation Tags
 (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 in the I<AWS Billing and Cost Management User Guide>.
 
@@ -556,13 +653,13 @@ destination from Amazon S3 to Amazon Redshift, Kinesis Data Firehose
 does not merge any parameters. In this case, all parameters must be
 specified.
 
-Kinesis Data Firehose uses B<CurrentDeliveryStreamVersionId> to avoid
+Kinesis Data Firehose uses C<CurrentDeliveryStreamVersionId> to avoid
 race conditions and conflicting merges. This is a required field, and
 the service updates the configuration only if the existing
 configuration has a version ID that matches. After the update is
 applied successfully, the version ID is updated, and can be retrieved
 using DescribeDeliveryStream. Use the new version ID to set
-B<CurrentDeliveryStreamVersionId> in the next call.
+C<CurrentDeliveryStreamVersionId> in the next call.
 
 
 

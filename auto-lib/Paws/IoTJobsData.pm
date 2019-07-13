@@ -84,7 +84,7 @@ its progress to AWS IoT. The Jobs service provides commands to track
 the progress of a job on a specific target and for all the targets of
 the job
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/iot/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/iot/>
 
 
 =head1 METHODS
@@ -136,6 +136,8 @@ status.
 
 =item [StatusDetails => L<Paws::IoTJobsData::DetailsMap>]
 
+=item [StepTimeoutInMinutes => Int]
+
 
 =back
 
@@ -166,6 +168,8 @@ execution for a thing.
 =item [IncludeJobExecutionState => Bool]
 
 =item [StatusDetails => L<Paws::IoTJobsData::DetailsMap>]
+
+=item [StepTimeoutInMinutes => Int]
 
 
 =back

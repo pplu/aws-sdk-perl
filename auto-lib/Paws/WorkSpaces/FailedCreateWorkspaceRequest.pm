@@ -33,19 +33,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Information about a WorkSpace that could not be created.
+Describes a WorkSpace that cannot be created.
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorCode => Str
 
-  The error code.
+  The error code that is returned if the WorkSpace cannot be created.
 
 
 =head2 ErrorMessage => Str
 
-  The textual error message.
+  The text of the error message that is returned if the WorkSpace cannot
+be created.
 
 
 =head2 WorkspaceRequest => L<Paws::WorkSpaces::WorkspaceRequest>

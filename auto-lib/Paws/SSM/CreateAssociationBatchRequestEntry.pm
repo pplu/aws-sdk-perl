@@ -1,8 +1,12 @@
 package Paws::SSM::CreateAssociationBatchRequestEntry;
   use Moose;
   has AssociationName => (is => 'ro', isa => 'Str');
+  has AutomationTargetParameterName => (is => 'ro', isa => 'Str');
+  has ComplianceSeverity => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
+  has MaxConcurrency => (is => 'ro', isa => 'Str');
+  has MaxErrors => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
@@ -38,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Create
 
 =head1 DESCRIPTION
 
-Describes the association of a Systems Manager document and an
+Describes the association of a Systems Manager SSM document and an
 instance.
 
 =head1 ATTRIBUTES
@@ -47,6 +51,18 @@ instance.
 =head2 AssociationName => Str
 
   Specify a descriptive name for the association.
+
+
+=head2 AutomationTargetParameterName => Str
+
+  Specify the target for the association. This target is required for
+associations that use an Automation document and target resources by
+using rate controls.
+
+
+=head2 ComplianceSeverity => Str
+
+  The severity level to assign to the association.
 
 
 =head2 DocumentVersion => Str
@@ -59,9 +75,60 @@ instance.
   The ID of the instance.
 
 
+=head2 MaxConcurrency => Str
+
+  The maximum number of targets allowed to run the association at the
+same time. You can specify a number, for example 10, or a percentage of
+the target set, for example 10%. The default value is 100%, which means
+all targets run the association at the same time.
+
+If a new instance starts and attempts to run an association while
+Systems Manager is running MaxConcurrency associations, the association
+is allowed to run. During the next association interval, the new
+instance will process its association within the limit specified for
+MaxConcurrency.
+
+
+=head2 MaxErrors => Str
+
+  The number of errors that are allowed before the system stops sending
+requests to run the association on additional targets. You can specify
+either an absolute number of errors, for example 10, or a percentage of
+the target set, for example 10%. If you specify 3, for example, the
+system stops sending requests when the fourth error is received. If you
+specify 0, then the system stops sending requests after the first error
+is returned. If you run an association on 50 instances and set MaxError
+to 10%, then the system stops sending the request when the sixth error
+is received.
+
+Executions that are already running an association when MaxErrors is
+reached are allowed to complete, but some of these executions may fail
+as well. If you need to ensure that there won't be more than max-errors
+failed executions, set MaxConcurrency to 1 so that executions proceed
+one at a time.
+
+
 =head2 B<REQUIRED> Name => Str
 
-  The name of the configuration document.
+  The name of the SSM document that contains the configuration
+information for the instance. You can specify Command or Automation
+documents.
+
+You can specify AWS-predefined documents, documents you created, or a
+document that is shared with you from another account.
+
+For SSM documents that are shared with you from other AWS accounts, you
+must specify the complete SSM document ARN, in the following format:
+
+C<arn:aws:ssm:I<region>:I<account-id>:document/I<document-name>>
+
+For example:
+
+C<arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document>
+
+For AWS-predefined documents and SSM documents you created in your
+account, you only need to specify the document name. For example,
+C<AWS-ApplyPatchBaseline> or C<My-Document>.
 
 
 =head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>

@@ -36,14 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To invoke a Lambda function
     # This operation invokes a Lambda function
     my $InvocationResponse = $lambda->Invoke(
-      {
-        'ClientContext'  => 'MyApp',
-        'FunctionName'   => 'MyFunction',
-        'InvocationType' => 'Event',
-        'LogType'        => 'Tail',
-        'Payload'        => 'fileb://file-path/input.json',
-        'Qualifier'      => 1
-      }
+      'ClientContext'  => 'MyApp',
+      'FunctionName'   => 'MyFunction',
+      'InvocationType' => 'Event',
+      'LogType'        => 'Tail',
+      'Payload'        => 'fileb://file-path/input.json',
+      'Qualifier'      => 1
     );
 
     # Results:
@@ -62,72 +60,85 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 ClientContext => Str
 
-Using the C<ClientContext> you can pass client-specific information to
-the Lambda function you are invoking. You can then process the client
-information in your Lambda function as you choose through the context
-variable. For an example of a C<ClientContext> JSON, see PutEvents
-(http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html)
-in the I<Amazon Mobile Analytics API Reference and User Guide>.
-
-The ClientContext JSON must be base64-encoded and has a maximum size of
-3583 bytes.
+Up to 3583 bytes of base64-encoded data about the invoking client to
+pass to the function in the context object.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The Lambda function name.
+The name of the Lambda function, version, or alias.
 
-You can specify a function name (for example, C<Thumbnail>) or you can
-specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
-also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-characters in length.
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<my-function> (name-only), C<my-function:v1> (with
+alias).
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:my-function>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:my-function>.
+
+=back
+
+You can append a version number or alias to any of the formats. The
+length constraint applies only to the full ARN. If you specify only the
+function name, it is limited to 64 characters in length.
 
 
 
 =head2 InvocationType => Str
 
-By default, the C<Invoke> API assumes C<RequestResponse> invocation
-type. You can optionally request asynchronous execution by specifying
-C<Event> as the C<InvocationType>. You can also use this parameter to
-request AWS Lambda to not execute the function but do some
-verification, such as if the caller is authorized to invoke the
-function and if the inputs are valid. You request this by specifying
-C<DryRun> as the C<InvocationType>. This is useful in a cross-account
-scenario when you want to verify access to a function without running
-it.
+Choose from the following options.
+
+=over
+
+=item *
+
+C<RequestResponse> (default) - Invoke the function synchronously. Keep
+the connection open until the function returns a response or times out.
+The API response includes the function response and additional data.
+
+=item *
+
+C<Event> - Invoke the function asynchronously. Send events that fail
+multiple times to the function's dead-letter queue (if it's
+configured). The API response only includes a status code.
+
+=item *
+
+C<DryRun> - Validate parameter values and verify that the user or role
+has permission to invoke the function.
+
+=back
+
 
 Valid values are: C<"Event">, C<"RequestResponse">, C<"DryRun">
 
 =head2 LogType => Str
 
-You can set this optional parameter to C<Tail> in the request only if
-you specify the C<InvocationType> parameter with value
-C<RequestResponse>. In this case, AWS Lambda returns the base64-encoded
-last 4 KB of log data produced by your Lambda function in the
-C<x-amz-log-result> header.
+Set to C<Tail> to include the execution log in the response.
 
 Valid values are: C<"None">, C<"Tail">
 
 =head2 Payload => Str
 
-JSON that you want to provide to your Lambda function as input.
+The JSON that you want to provide to your Lambda function as input.
 
 
 
 =head2 Qualifier => Str
 
-You can use this optional parameter to specify a Lambda function
-version or alias name. If you specify a function version, the API uses
-the qualified function ARN to invoke a specific Lambda function. If you
-specify an alias name, the API uses the alias ARN to invoke the Lambda
-function version to which the alias points.
-
-If you don't provide this parameter, then the API uses unqualified
-function ARN which results in invocation of the C<$LATEST> version.
+Specify a version or alias to invoke a published version of the
+function.
 
 
 

@@ -2,6 +2,11 @@ package Paws::EC2::SpotOptionsRequest;
   use Moose;
   has AllocationStrategy => (is => 'ro', isa => 'Str');
   has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str');
+  has InstancePoolsToUseCount => (is => 'ro', isa => 'Int');
+  has MaxTotalPrice => (is => 'ro', isa => 'Str');
+  has MinTargetCapacity => (is => 'ro', isa => 'Int');
+  has SingleAvailabilityZone => (is => 'ro', isa => 'Bool');
+  has SingleInstanceType => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::SpotOptionsRequest object:
 
-  $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., InstanceInterruptionBehavior => $value  });
+  $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., SingleInstanceType => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,6 +52,40 @@ specified by the Spot Fleet request. The default is C<lowestPrice>.
 
   The behavior when a Spot Instance is interrupted. The default is
 C<terminate>.
+
+
+=head2 InstancePoolsToUseCount => Int
+
+  The number of Spot pools across which to allocate your target Spot
+capacity. Valid only when Spot B<AllocationStrategy> is set to
+C<lowest-price>. EC2 Fleet selects the cheapest Spot pools and evenly
+allocates your target Spot capacity across the number of Spot pools
+that you specify.
+
+
+=head2 MaxTotalPrice => Str
+
+  The maximum amount per hour for Spot Instances that you're willing to
+pay.
+
+
+=head2 MinTargetCapacity => Int
+
+  The minimum target capacity for Spot Instances in the fleet. If the
+minimum target capacity is not reached, the fleet launches no
+instances.
+
+
+=head2 SingleAvailabilityZone => Bool
+
+  Indicates that the fleet launches all Spot Instances into a single
+Availability Zone.
+
+
+=head2 SingleInstanceType => Bool
+
+  Indicates that the fleet uses a single instance type to launch all Spot
+Instances in the fleet.
 
 
 

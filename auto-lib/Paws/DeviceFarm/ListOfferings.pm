@@ -29,12 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $devicefarm = Paws->service('DeviceFarm');
    # To get information about device offerings
    # The following example returns information about available device offerings.
-    my $ListOfferingsResult = $devicefarm->ListOfferings(
-      {
-        'NextToken' =>
-          'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE='
-      }
-    );
+    my $ListOfferingsResult = $devicefarm->ListOfferings( 'NextToken' =>
+        'RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE=' );
 
     # Results:
     my $offerings = $ListOfferingsResult->offerings;

@@ -30,12 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To reset cache disks in error status
     # Resets all cache disks that have encountered a error and makes the disks
     # available for reconfiguration as cache storage.
-    my $ResetCacheOutput = $storagegateway->ResetCache(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-13B4567C'
-      }
-    );
+    my $ResetCacheOutput = $storagegateway->ResetCache( 'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-13B4567C' );
 
     # Results:
     my $GatewayARN = $ResetCacheOutput->GatewayARN;

@@ -2,6 +2,7 @@ package Paws::Firehose::DeliveryStreamDescription;
   use Moose;
   has CreateTimestamp => (is => 'ro', isa => 'Str');
   has DeliveryStreamARN => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryStreamEncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::DeliveryStreamEncryptionConfiguration');
   has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryStreamStatus => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryStreamType => (is => 'ro', isa => 'Str', required => 1);
@@ -56,6 +57,12 @@ Contains information about a delivery stream.
 information, see Amazon Resource Names (ARNs) and AWS Service
 Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+
+
+=head2 DeliveryStreamEncryptionConfiguration => L<Paws::Firehose::DeliveryStreamEncryptionConfiguration>
+
+  Indicates the server-side encryption (SSE) status for the delivery
+stream.
 
 
 =head2 B<REQUIRED> DeliveryStreamName => Str

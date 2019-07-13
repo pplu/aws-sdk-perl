@@ -42,21 +42,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $BrokerName       = $DescribeBrokerResponse->BrokerName;
     my $BrokerState      = $DescribeBrokerResponse->BrokerState;
     my $Configurations   = $DescribeBrokerResponse->Configurations;
+    my $Created          = $DescribeBrokerResponse->Created;
     my $DeploymentMode   = $DescribeBrokerResponse->DeploymentMode;
     my $EngineType       = $DescribeBrokerResponse->EngineType;
     my $EngineVersion    = $DescribeBrokerResponse->EngineVersion;
     my $HostInstanceType = $DescribeBrokerResponse->HostInstanceType;
+    my $Logs             = $DescribeBrokerResponse->Logs;
     my $MaintenanceWindowStartTime =
       $DescribeBrokerResponse->MaintenanceWindowStartTime;
-    my $PubliclyAccessible = $DescribeBrokerResponse->PubliclyAccessible;
-    my $SecurityGroups     = $DescribeBrokerResponse->SecurityGroups;
-    my $SubnetIds          = $DescribeBrokerResponse->SubnetIds;
-    my $Users              = $DescribeBrokerResponse->Users;
+    my $PendingEngineVersion = $DescribeBrokerResponse->PendingEngineVersion;
+    my $PubliclyAccessible   = $DescribeBrokerResponse->PubliclyAccessible;
+    my $SecurityGroups       = $DescribeBrokerResponse->SecurityGroups;
+    my $SubnetIds            = $DescribeBrokerResponse->SubnetIds;
+    my $Tags                 = $DescribeBrokerResponse->Tags;
+    my $Users                = $DescribeBrokerResponse->Users;
 
     # Returns a L<Paws::MQ::DescribeBrokerResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/amazon-mq/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/DescribeBroker>
 
 =head1 ATTRIBUTES
 

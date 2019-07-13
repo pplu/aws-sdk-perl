@@ -42,6 +42,9 @@ tag.
   Specifies the tag that must be associated with the execution for it to
 meet the filter criteria.
 
+Tags may only contain unicode letters, digits, whitespace, or these
+symbols: C<_ . : / = + - @>.
+
 
 
 =head1 SEE ALSO

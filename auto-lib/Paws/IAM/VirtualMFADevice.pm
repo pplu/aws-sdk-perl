@@ -42,9 +42,9 @@ Contains information about a virtual MFA device.
 
 =head2 Base32StringSeed => Str
 
-  The Base32 seed defined as specified in RFC3548
+  The base32 seed defined as specified in RFC3548
 (https://tools.ietf.org/html/rfc3548.txt). The C<Base32StringSeed> is
-Base64-encoded.
+base64-encoded.
 
 
 =head2 EnableDate => Str
@@ -56,10 +56,10 @@ Base64-encoded.
 
   A QR code PNG image that encodes
 C<otpauth://totp/$virtualMFADeviceName@$AccountName?secret=$Base32String>
-where C<$virtualMFADeviceName> is one of the create call arguments,
+where C<$virtualMFADeviceName> is one of the create call arguments.
 C<AccountName> is the user name if set (otherwise, the account ID
-otherwise), and C<Base32String> is the seed in Base32 format. The
-C<Base32String> value is Base64-encoded.
+otherwise), and C<Base32String> is the seed in base32 format. The
+C<Base32String> value is base64-encoded.
 
 
 =head2 B<REQUIRED> SerialNumber => Str

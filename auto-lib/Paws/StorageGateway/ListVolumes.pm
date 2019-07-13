@@ -33,12 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Lists the iSCSI stored volumes of a gateway. Results are sorted by volume
     # ARN up to a maximum of 100 volumes.
     my $ListVolumesOutput = $storagegateway->ListVolumes(
-      {
-        'GatewayARN' =>
-          'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
-        'Limit'  => 2,
-        'Marker' => 1
-      }
+      'GatewayARN' =>
+        'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',
+      'Limit'  => 2,
+      'Marker' => 1
     );
 
     # Results:

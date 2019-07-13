@@ -64,18 +64,18 @@ resources.
 
 =head2 ResourceType => Str
 
-  The type of resource to protect with the policy, either an Application
-Load Balancer or a CloudFront distribution. This is in the format shown
-in AWS Resource Types Reference
+  The type of resource to protect with the policy. This is in the format
+shown in AWS Resource Types Reference
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-Valid values are C<AWS::ElasticLoadBalancingV2::LoadBalancer> or
+For example: C<AWS::ElasticLoadBalancingV2::LoadBalancer> or
 C<AWS::CloudFront::Distribution>.
 
 
 =head2 SecurityServiceType => Str
 
   The service that the policy is using to protect the resources. This
-value is C<WAF>.
+specifies the type of policy that is created, either a WAF policy or
+Shield Advanced policy.
 
 
 

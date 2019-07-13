@@ -3,11 +3,14 @@ package Paws::EMR::InstanceGroup;
   has AutoScalingPolicy => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicyDescription');
   has BidPrice => (is => 'ro', isa => 'Str');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
+  has ConfigurationsVersion => (is => 'ro', isa => 'Int');
   has EbsBlockDevices => (is => 'ro', isa => 'ArrayRef[Paws::EMR::EbsBlockDevice]');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has InstanceGroupType => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
+  has LastSuccessfullyAppliedConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
+  has LastSuccessfullyAppliedConfigurationsVersion => (is => 'ro', isa => 'Int');
   has Market => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has RequestedInstanceCount => (is => 'ro', isa => 'Int');
@@ -61,8 +64,12 @@ response to the value of a CloudWatch metric. See PutAutoScalingPolicy.
 
 =head2 BidPrice => Str
 
-  The bid price for each EC2 instance in the instance group when
-launching nodes as Spot Instances, expressed in USD.
+  The maximum Spot price your are willing to pay for EC2 instances.
+
+An optional, nullable field that applies if the C<MarketType> for the
+instance group is specified as C<SPOT>. Specify the maximum spot price
+in USD. If the value is NULL and C<SPOT> is specified, the maximum Spot
+price is set equal to the On-Demand price.
 
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
@@ -72,6 +79,12 @@ launching nodes as Spot Instances, expressed in USD.
 The list of configurations supplied for an EMR cluster instance group.
 You can specify a separate configuration for each instance group
 (master, core, and task).
+
+
+=head2 ConfigurationsVersion => Int
+
+  The version number of the requested configuration specification for
+this instance group.
 
 
 =head2 EbsBlockDevices => ArrayRef[L<Paws::EMR::EbsBlockDevice>]
@@ -99,6 +112,18 @@ dedicated capacity for Amazon EBS I/O.
 =head2 InstanceType => Str
 
   The EC2 instance type for all instances in the instance group.
+
+
+=head2 LastSuccessfullyAppliedConfigurations => ArrayRef[L<Paws::EMR::Configuration>]
+
+  A list of configurations that were successfully applied for an instance
+group last time.
+
+
+=head2 LastSuccessfullyAppliedConfigurationsVersion => Int
+
+  The version number of a configuration specification that was
+successfully applied for an instance group last time.
 
 
 =head2 Market => Str

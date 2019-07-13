@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ops
 
 =head2 B<REQUIRED> StackId => Str
 
-The stack ID
+The stack ID.
 
 
 

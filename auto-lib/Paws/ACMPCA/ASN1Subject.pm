@@ -51,9 +51,9 @@ identifies the entity that owns or controls the public key in the
 certificate. The entity can be a user, computer, device, or service.
 The B<Subject> must contain an X.500 distinguished name (DN). A DN is a
 sequence of relative distinguished names (RDNs). The RDNs are separated
-by commas in the certificate. The DN must be unique for each for each
-entity, but your private CA can issue more than one certificate with
-the same DN to the same entity.
+by commas in the certificate. The DN must be unique for each entity,
+but your private CA can issue more than one certificate with the same
+DN to the same entity.
 
 =head1 ATTRIBUTES
 
@@ -66,7 +66,7 @@ subject.
 
 =head2 Country => Str
 
-  Two digit code that specifies the country in which the certificate
+  Two-digit code that specifies the country in which the certificate
 subject located.
 
 
@@ -130,14 +130,14 @@ Beth, Liz, or Eliza.
 
 =head2 Surname => Str
 
-  Family name. In the US and the UK for example, the surname of an
+  Family name. In the US and the UK, for example, the surname of an
 individual is ordered last. In Asian cultures the surname is typically
 ordered first.
 
 
 =head2 Title => Str
 
-  A title such as Mr. or Ms. which is pre-pended to the name to refer
+  A title such as Mr. or Ms., which is pre-pended to the name to refer
 formally to the certificate subject.
 
 

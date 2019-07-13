@@ -33,7 +33,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Analyti
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies the configuration and any analyses for the analytics filter
+of an Amazon S3 bucket.
+
+For more information, see GET Bucket analytics
+(https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETAnalyticsConfig.html)
+in the I<Amazon Simple Storage Service API Reference>.
 
 =head1 ATTRIBUTES
 
@@ -48,14 +53,13 @@ considered in any analysis.
 
 =head2 B<REQUIRED> Id => Str
 
-  The identifier used to represent an analytics configuration.
+  The ID that identifies the analytics configuration.
 
 
 =head2 B<REQUIRED> StorageClassAnalysis => L<Paws::S3::StorageClassAnalysis>
 
-  If present, it indicates that data related to access patterns will be
-collected and made available to analyze the tradeoffs between different
-storage classes.
+  Contains data related to access patterns to be collected and made
+available to analyze the tradeoffs between different storage classes.
 
 
 

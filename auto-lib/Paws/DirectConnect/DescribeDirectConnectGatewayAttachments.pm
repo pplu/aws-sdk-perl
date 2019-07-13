@@ -54,41 +54,30 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 DirectConnectGatewayId => Str
 
-The ID of the direct connect gateway.
-
-Example: "abcd1234-dcba-5678-be23-cdef9876ab45"
-
-Default: None
+The ID of the Direct Connect gateway.
 
 
 
 =head2 MaxResults => Int
 
-The maximum number of direct connect gateway attachments to return per
-page.
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
 
-Example: 15
-
-Default: None
+If C<MaxResults> is given a value larger than 100, only 100 results are
+returned.
 
 
 
 =head2 NextToken => Str
 
-The token provided in the previous describe result to retrieve the next
-page of the result.
-
-Default: None
+The token provided in the previous call to retrieve the next page.
 
 
 
 =head2 VirtualInterfaceId => Str
 
 The ID of the virtual interface.
-
-Example: "dxvif-abc123ef"
-
-Default: None
 
 
 

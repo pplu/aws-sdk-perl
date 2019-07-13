@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following command deletes the specified signing certificate for the IAM
    # user named Anika.
     $iam->DeleteSigningCertificate(
-      {
-        'CertificateId' => 'TA7SMP42TDN5Z26OBPJE7EXAMPLE',
-        'UserName'      => 'Anika'
-      }
+      'CertificateId' => 'TA7SMP42TDN5Z26OBPJE7EXAMPLE',
+      'UserName'      => 'Anika'
     );
 
 
@@ -59,7 +57,7 @@ that can be upper- or lower-cased letters or digits.
 
 The name of the user the signing certificate belongs to.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

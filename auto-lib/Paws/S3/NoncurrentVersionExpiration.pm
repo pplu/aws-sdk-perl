@@ -46,7 +46,7 @@ object versions at a specific period in the object's lifetime.
 can perform the associated action. For information about the noncurrent
 days calculations, see How Amazon S3 Calculates When an Object Became
 Noncurrent
-(http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations)
 in the Amazon Simple Storage Service Developer Guide.
 
 

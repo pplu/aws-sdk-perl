@@ -36,15 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       JobId             => 'MyThirdPartyJobId',
       ContinuationToken => 'MyContinuationToken',    # OPTIONAL
       CurrentRevision   => {
-        changeIdentifier => 'MyRevisionChangeIdentifier',    # min: 1, max: 100
-        revision         => 'MyRevision',                    # min: 1, max: 1500
-        created          => '1970-01-01T01:00:00',           # OPTIONAL
-        revisionSummary => 'MyRevisionSummary',    # min: 1, max: 2048; OPTIONAL
+        ChangeIdentifier => 'MyRevisionChangeIdentifier',    # min: 1, max: 100
+        Revision         => 'MyRevision',                    # min: 1, max: 1500
+        Created          => '1970-01-01T01:00:00',           # OPTIONAL
+        RevisionSummary => 'MyRevisionSummary',    # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
       ExecutionDetails => {
-        externalExecutionId => 'MyExecutionId',    # min: 1, max: 1500; OPTIONAL
-        percentComplete     => 1,                  # max: 100; OPTIONAL
-        summary => 'MyExecutionSummary',           # min: 1, max: 2048; OPTIONAL
+        ExternalExecutionId => 'MyExecutionId',    # min: 1, max: 1500; OPTIONAL
+        PercentComplete     => 1,                  # max: 100; OPTIONAL
+        Summary => 'MyExecutionSummary',           # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -89,7 +89,7 @@ it passes through stages in the pipeline.
 =head2 B<REQUIRED> JobId => Str
 
 The ID of the job that successfully completed. This is the same ID
-returned from PollForThirdPartyJobs.
+returned from C<PollForThirdPartyJobs>.
 
 
 

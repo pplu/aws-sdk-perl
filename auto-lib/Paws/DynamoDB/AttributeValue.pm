@@ -46,7 +46,7 @@ Each attribute value is described as a name-value pair. The name is the
 data type, and the value is the data itself.
 
 For more information, see Data Types
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
 in the I<Amazon DynamoDB Developer Guide>.
 
 =head1 ATTRIBUTES
@@ -77,7 +77,7 @@ C<"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]>
 
   An attribute of type List. For example:
 
-C<"L": ["Cookies", "Coffee", 3.14159]>
+C<"L": [ {"S": "Cookies"} , {"S": "Coffee"}, {"N", "3.14159"}]>
 
 
 =head2 M => L<Paws::DynamoDB::MapAttributeValue>

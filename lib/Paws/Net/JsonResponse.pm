@@ -224,6 +224,8 @@ package Paws::Net::JsonResponse;
 
     my $headers = $response->headers;
     my $request_id = $headers->{'x-amz-request-id'} || $headers->{'x-amzn-requestid'};
+    # AWS has sent duplicate headers x-amx-request-id headers on some services. See issue 324 for more info
+    $request_id = (ref($request_id) eq 'ARRAY') ? $request_id->[0] : $request_id;
  
     return Paws::API::Response->new(_request_id => $request_id) if (not $returns);
 

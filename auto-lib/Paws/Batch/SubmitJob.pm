@@ -7,6 +7,7 @@ package Paws::Batch::SubmitJob;
   has JobDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinition', required => 1);
   has JobName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobName', required => 1);
   has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
+  has NodeOverrides => (is => 'ro', isa => 'Paws::Batch::NodeOverrides', traits => ['NameInRequest'], request_name => 'nodeOverrides');
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
   has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', traits => ['NameInRequest'], request_name => 'timeout');
@@ -40,11 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example submits a simple container job called example to the
     # HighPriority job queue.
     my $SubmitJobResponse = $batch->SubmitJob(
-      {
-        'JobDefinition' => 'sleep60',
-        'JobName'       => 'example',
-        'JobQueue'      => 'HighPriority'
-      }
+      'JobDefinition' => 'sleep60',
+      'JobName'       => 'example',
+      'JobQueue'      => 'HighPriority'
     );
 
     # Results:
@@ -65,7 +64,7 @@ The array properties for the submitted job, such as the size of the
 array. The array size can be between 2 and 10,000. If you specify array
 properties for a job, it becomes an array job. For more information,
 see Array Jobs
-(http://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html) in
+(https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html) in
 the I<AWS Batch User Guide>.
 
 
@@ -88,9 +87,9 @@ A list of dependencies for the job. A job can depend upon a maximum of
 20 jobs. You can specify a C<SEQUENTIAL> type dependency without
 specifying a job ID for array jobs so that each child array job
 completes sequentially, starting at index 0. You can also specify an
-C<N_TO_N> type dependency with a job ID for array jobs so that each
-index child of this job must wait for the corresponding index child of
-each dependency to complete before it can begin.
+C<N_TO_N> type dependency with a job ID for array jobs. In that case,
+each index child of this job must wait for the corresponding index
+child of each dependency to complete before it can begin.
 
 
 
@@ -114,6 +113,13 @@ underscores are allowed.
 
 The job queue into which the job is submitted. You can specify either
 the name or the Amazon Resource Name (ARN) of the queue.
+
+
+
+=head2 NodeOverrides => L<Paws::Batch::NodeOverrides>
+
+A list of node overrides in JSON format that specify the node range to
+target and the container overrides for that node range.
 
 
 
@@ -144,7 +150,7 @@ retried. The minimum value for the timeout is 60 seconds. This
 configuration overrides any timeout configuration specified in the job
 definition. For array jobs, child jobs have the same timeout
 configuration as the parent job. For more information, see Job Timeouts
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 

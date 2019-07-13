@@ -1,6 +1,7 @@
 package Paws::CloudFormation::StackResource;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has DriftInformation => (is => 'ro', isa => 'Paws::CloudFormation::StackResourceDriftInformation');
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
@@ -49,6 +50,16 @@ The StackResource data type.
   User defined description associated with the resource.
 
 
+=head2 DriftInformation => L<Paws::CloudFormation::StackResourceDriftInformation>
+
+  Information about whether the resource's actual configuration differs,
+or has I<drifted>, from its expected configuration, as defined in the
+stack template and any values specified as template parameters. For
+more information, see Detecting Unregulated Configuration Changes to
+Stacks and Resources
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+
+
 =head2 B<REQUIRED> LogicalResourceId => Str
 
   The logical name of the resource specified in the template.
@@ -74,7 +85,7 @@ ID of a resource supported by AWS CloudFormation.
 
   Type of resource. (For more information, go to AWS Resource Types
 Reference
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 in the AWS CloudFormation User Guide.)
 
 

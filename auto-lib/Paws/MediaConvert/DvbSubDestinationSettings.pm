@@ -1,14 +1,15 @@
 package Paws::MediaConvert::DvbSubDestinationSettings;
   use Moose;
-  has Alignment => (is => 'ro', isa => 'Str', request_name => 'alignment', traits => ['NameInRequest'], required => 1);
+  has Alignment => (is => 'ro', isa => 'Str', request_name => 'alignment', traits => ['NameInRequest']);
   has BackgroundColor => (is => 'ro', isa => 'Str', request_name => 'backgroundColor', traits => ['NameInRequest']);
   has BackgroundOpacity => (is => 'ro', isa => 'Int', request_name => 'backgroundOpacity', traits => ['NameInRequest']);
   has FontColor => (is => 'ro', isa => 'Str', request_name => 'fontColor', traits => ['NameInRequest']);
-  has FontOpacity => (is => 'ro', isa => 'Int', request_name => 'fontOpacity', traits => ['NameInRequest'], required => 1);
+  has FontOpacity => (is => 'ro', isa => 'Int', request_name => 'fontOpacity', traits => ['NameInRequest']);
   has FontResolution => (is => 'ro', isa => 'Int', request_name => 'fontResolution', traits => ['NameInRequest']);
+  has FontScript => (is => 'ro', isa => 'Str', request_name => 'fontScript', traits => ['NameInRequest']);
   has FontSize => (is => 'ro', isa => 'Int', request_name => 'fontSize', traits => ['NameInRequest']);
-  has OutlineColor => (is => 'ro', isa => 'Str', request_name => 'outlineColor', traits => ['NameInRequest'], required => 1);
-  has OutlineSize => (is => 'ro', isa => 'Int', request_name => 'outlineSize', traits => ['NameInRequest'], required => 1);
+  has OutlineColor => (is => 'ro', isa => 'Str', request_name => 'outlineColor', traits => ['NameInRequest']);
+  has OutlineSize => (is => 'ro', isa => 'Int', request_name => 'outlineSize', traits => ['NameInRequest']);
   has ShadowColor => (is => 'ro', isa => 'Str', request_name => 'shadowColor', traits => ['NameInRequest']);
   has ShadowOpacity => (is => 'ro', isa => 'Int', request_name => 'shadowOpacity', traits => ['NameInRequest']);
   has ShadowXOffset => (is => 'ro', isa => 'Int', request_name => 'shadowXOffset', traits => ['NameInRequest']);
@@ -51,14 +52,23 @@ DVB-Sub Destination Settings
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Alignment => Str
+=head2 Alignment => Str
 
-  
+  If no explicit x_position or y_position is provided, setting alignment
+to centered will place the captions at the bottom center of the output.
+Similarly, setting a left alignment will align captions to the bottom
+left of the output. If x and y positions are given in conjunction with
+the alignment parameter, the font will be justified (either left or
+centered) relative to those coordinates. This option is not valid for
+source captions that are STL, 608/embedded or teletext. These source
+settings are already pre-defined by the caption stream. All burn-in and
+DVB-Sub font settings must match.
 
 
 =head2 BackgroundColor => Str
 
-  
+  Specifies the color of the rectangle behind the captions. All burn-in
+and DVB-Sub font settings must match.
 
 
 =head2 BackgroundOpacity => Int
@@ -70,10 +80,13 @@ to 0 (transparent). All burn-in and DVB-Sub font settings must match.
 
 =head2 FontColor => Str
 
-  
+  Specifies the color of the burned-in captions. This option is not valid
+for source captions that are STL, 608/embedded or teletext. These
+source settings are already pre-defined by the caption stream. All
+burn-in and DVB-Sub font settings must match.
 
 
-=head2 B<REQUIRED> FontOpacity => Int
+=head2 FontOpacity => Int
 
   Specifies the opacity of the burned-in captions. 255 is opaque; 0 is
 transparent. All burn-in and DVB-Sub font settings must match.
@@ -85,6 +98,15 @@ transparent. All burn-in and DVB-Sub font settings must match.
 and DVB-Sub font settings must match.
 
 
+=head2 FontScript => Str
+
+  Provide the font script, using an ISO 15924 script code, if the
+LanguageCode is not sufficient for determining the script type. Where
+LanguageCode or CustomLanguageCode is sufficient, use "AUTOMATIC" or
+leave unset. This is used to help determine the appropriate font for
+rendering DVB-Sub captions.
+
+
 =head2 FontSize => Int
 
   A positive integer indicates the exact font size in points. Set to 0
@@ -92,12 +114,15 @@ for automatic font size selection. All burn-in and DVB-Sub font
 settings must match.
 
 
-=head2 B<REQUIRED> OutlineColor => Str
+=head2 OutlineColor => Str
 
-  
+  Specifies font outline color. This option is not valid for source
+captions that are either 608/embedded or teletext. These source
+settings are already pre-defined by the caption stream. All burn-in and
+DVB-Sub font settings must match.
 
 
-=head2 B<REQUIRED> OutlineSize => Int
+=head2 OutlineSize => Int
 
   Specifies font outline size in pixels. This option is not valid for
 source captions that are either 608/embedded or teletext. These source
@@ -107,7 +132,8 @@ DVB-Sub font settings must match.
 
 =head2 ShadowColor => Str
 
-  
+  Specifies the color of the shadow cast by the captions. All burn-in and
+DVB-Sub font settings must match.
 
 
 =head2 ShadowOpacity => Int
@@ -133,7 +159,12 @@ the text. All burn-in and DVB-Sub font settings must match.
 
 =head2 TeletextSpacing => Str
 
-  
+  Only applies to jobs with input captions in Teletext or STL formats.
+Specify whether the spacing between letters in your captions is set by
+the captions grid or varies depending on letter width. Choose fixed
+grid to conform to the spacing specified in the captions file more
+accurately. Choose proportional to make the text easier to read if the
+captions are closed caption.
 
 
 =head2 XPosition => Int

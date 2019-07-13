@@ -71,13 +71,17 @@ C<arn:aws:elasticloadbalancing:I<region>:I<account-id>:loadbalancer/I<load-balan
 
 =item *
 
-For AWS CloudFront distribution:
+For an AWS CloudFront distribution:
 C<arn:aws:cloudfront::I<account-id>:distribution/I<distribution-id>>
 
 =item *
 
-For Amazon Route 53:
-C<arn:aws:route53::I<account-id>:hostedzone/I<hosted-zone-id>>
+For an AWS Global Accelerator accelerator:
+C<arn:aws:globalaccelerator::I<account-id>:accelerator/I<accelerator-id>>
+
+=item *
+
+For Amazon Route 53: C<arn:aws:route53:::hostedzone/I<hosted-zone-id>>
 
 =item *
 

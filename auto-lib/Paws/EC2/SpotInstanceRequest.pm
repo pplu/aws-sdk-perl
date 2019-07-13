@@ -132,7 +132,7 @@ Instance.
   The state of the Spot Instance request. Spot status information helps
 track your Spot Instance requests. For more information, see Spot
 Status
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
 

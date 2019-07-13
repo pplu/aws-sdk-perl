@@ -123,23 +123,23 @@ Valid values are: C<"add">, C<"remove">
 
 =head2 ProductCodes => ArrayRef[Str|Undef]
 
-One or more product codes. After you add a product code to an AFI, it
-can't be removed. This parameter is valid only when modifying the
+The product codes. After you add a product code to an AFI, it can't be
+removed. This parameter is valid only when modifying the
 C<productCodes> attribute.
 
 
 
 =head2 UserGroups => ArrayRef[Str|Undef]
 
-One or more user groups. This parameter is valid only when modifying
-the C<loadPermission> attribute.
+The user groups. This parameter is valid only when modifying the
+C<loadPermission> attribute.
 
 
 
 =head2 UserIds => ArrayRef[Str|Undef]
 
-One or more AWS account IDs. This parameter is valid only when
-modifying the C<loadPermission> attribute.
+The AWS account IDs. This parameter is valid only when modifying the
+C<loadPermission> attribute.
 
 
 

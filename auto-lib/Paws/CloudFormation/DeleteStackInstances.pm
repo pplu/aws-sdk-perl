@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OperationPreferences => {
         FailureToleranceCount      => 1,    # OPTIONAL
         FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
-        MaxConcurrentCount         => 1,    # min: 1, ; OPTIONAL
+        MaxConcurrentCount         => 1,    # min: 1; OPTIONAL
         MaxConcurrentPercentage    => 1,    # min: 1, max: 100; OPTIONAL
         RegionOrder => [ 'MyRegion', ... ],
       },    # OPTIONAL
@@ -102,7 +102,7 @@ delete the stacks. You can't reassociate a retained stack or add an
 existing, saved stack to a new stack set.
 
 For more information, see Stack set operation options
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 
 
 

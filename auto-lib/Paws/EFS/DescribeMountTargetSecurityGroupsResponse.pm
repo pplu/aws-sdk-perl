@@ -17,7 +17,7 @@ Paws::EFS::DescribeMountTargetSecurityGroupsResponse
 
 =head2 B<REQUIRED> SecurityGroups => ArrayRef[Str|Undef]
 
-Array of security groups.
+An array of security groups.
 
 
 =head2 _request_id => Str

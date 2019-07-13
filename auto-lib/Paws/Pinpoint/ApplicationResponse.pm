@@ -1,7 +1,12 @@
+
 package Paws::Pinpoint::ApplicationResponse;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -10,53 +15,35 @@ package Paws::Pinpoint::ApplicationResponse;
 
 Paws::Pinpoint::ApplicationResponse
 
-=head1 USAGE
-
-This class represents one of two things:
-
-=head3 Arguments in a call to a service
-
-Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
-Each attribute should be used as a named argument in the calls that expect this type of object.
-
-As an example, if Att1 is expected to be a Paws::Pinpoint::ApplicationResponse object:
-
-  $service_obj->Method(Att1 => { Id => $value, ..., Name => $value  });
-
-=head3 Results returned from an API call
-
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::ApplicationResponse object:
-
-  $result = $service_obj->Method(...);
-  $result->Att1->Id
-
-=head1 DESCRIPTION
-
-Application Response.
-
 =head1 ATTRIBUTES
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Arn => Str
 
-  The unique application ID.
-
-
-=head2 Name => Str
-
-  The display name of the application.
+The Amazon Resource Name (ARN) of the application.
 
 
+=head2 B<REQUIRED> Id => Str
 
-=head1 SEE ALSO
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
-This class forms part of L<Paws>, describing an object used in L<Paws::Pinpoint>
 
-=head1 BUGS and CONTRIBUTIONS
+=head2 B<REQUIRED> Name => Str
 
-The source code is located here: L<https://github.com/pplu/aws-sdk-perl>
+The display name of the application. This name is displayed as the
+B<Project name> on the Amazon Pinpoint console.
 
-Please report bugs to: L<https://github.com/pplu/aws-sdk-perl/issues>
+
+=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+
+A string-to-string map of key-value pairs that identifies the tags that
+are associated with the application. Each tag consists of a required
+tag key and an associated tag value.
+
+
+=head2 _request_id => Str
+
 
 =cut
 

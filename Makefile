@@ -1,5 +1,10 @@
+dist:
+	cpanm -n -l dzil-local Dist::Zilla
+	PATH=$(PATH):dzil-local/bin PERL5LIB=dzil-local/lib/perl5 dzil authordeps --missing | cpanm -n -l dzil-local/
+	PATH=$(PATH):dzil-local/bin PERL5LIB=dzil-local/lib/perl5 dzil build
+
 test:
-	carton exec -- prove -v -I lib -I auto-lib t/
+	carton exec -- prove t/
 
 pod-test:
 	for i in `find auto-lib/Paws/ -name \*.pm`; do podchecker $$i; done;
@@ -12,8 +17,10 @@ cover:
 pull-other-sdks:
 	git submodule init
 	git submodule update
-	cd botocore && git checkout develop
-	cd botocore && git remote add boto https://github.com/boto/botocore.git
+	cd botocore && \
+	  git checkout develop
+	cd botocore && \
+	  if [ -z "`git remote -v | grep ^boto`" ]; then git remote add boto https://github.com/boto/botocore.git; fi
 
 pull-boto-develop:
 	cd botocore && git pull boto develop
@@ -22,18 +29,14 @@ gen-paws:
 	carton exec ./builder-bin/gen_classes.pl --paws_pm
 
 gen-classes:
-	mkdir auto-lib/Paws/DeleteMe
+	carton exec ./builder-bin/gen_classes.pl --class_mapping
+	mkdir -p auto-lib/Paws/DeleteMe
 	rm -r auto-lib/Paws/*
-	./builder-bin/gen_classes.pl --paws_pm --classes
+	carton exec ./builder-bin/gen_classes.pl --paws_pm --classes
 
 docu-links:
-	./builder-bin/gen_classes.pl --docu_links
-
-copy-tests:
-	cp botocore/tests/unit/response_parsing/xml/responses/* t/10_responses/
-	rm t/10_responses/cloudfront-*
-	rm t/10_responses/*.json
-	./bin/xml2yaml.sh
+	carton exec ./builder-bin/gen_classes.pl --class_mapping
+	carton exec ./builder-bin/gen_classes.pl --docu_links
 
 numbers:
 	echo "Number of services" ; ls auto-lib/Paws/*.pm | wc -l

@@ -46,7 +46,72 @@ Defines a connection to a data source.
 
 =head2 ConnectionProperties => L<Paws::Glue::ConnectionProperties>
 
-  A list of key-value pairs used as parameters for this connection.
+  These key-value pairs define parameters for the connection:
+
+=over
+
+=item *
+
+C<HOST> - The host URI: either the fully qualified domain name (FQDN)
+or the IPv4 address of the database host.
+
+=item *
+
+C<PORT> - The port number, between 1024 and 65535, of the port on which
+the database host is listening for database connections.
+
+=item *
+
+C<USER_NAME> - The name under which to log in to the database. The
+value string for C<USER_NAME> is "C<USERNAME>".
+
+=item *
+
+C<PASSWORD> - A password, if one is used, for the user name.
+
+=item *
+
+C<ENCRYPTED_PASSWORD> - When you enable connection password protection
+by setting C<ConnectionPasswordEncryption> in the Data Catalog
+encryption settings, this field stores the encrypted password.
+
+=item *
+
+C<JDBC_DRIVER_JAR_URI> - The Amazon S3 path of the JAR file that
+contains the JDBC driver to use.
+
+=item *
+
+C<JDBC_DRIVER_CLASS_NAME> - The class name of the JDBC driver to use.
+
+=item *
+
+C<JDBC_ENGINE> - The name of the JDBC engine to use.
+
+=item *
+
+C<JDBC_ENGINE_VERSION> - The version of the JDBC engine to use.
+
+=item *
+
+C<CONFIG_FILES> - (Reserved for future use).
+
+=item *
+
+C<INSTANCE_ID> - The instance ID to use.
+
+=item *
+
+C<JDBC_CONNECTION_URL> - The URL for the JDBC connection.
+
+=item *
+
+C<JDBC_ENFORCE_SSL> - A Boolean string (true, false) specifying whether
+Secure Sockets Layer (SSL) with hostname matching will be enforced for
+the JDBC connection on the client. The default is false.
+
+=back
+
 
 
 =head2 ConnectionType => Str
@@ -57,22 +122,22 @@ not supported.
 
 =head2 CreationTime => Str
 
-  The time this connection definition was created.
+  The time that this connection definition was created.
 
 
 =head2 Description => Str
 
-  Description of the connection.
+  The description of the connection.
 
 
 =head2 LastUpdatedBy => Str
 
-  The user, group or role that last updated this connection definition.
+  The user, group, or role that last updated this connection definition.
 
 
 =head2 LastUpdatedTime => Str
 
-  The last time this connection definition was updated.
+  The last time that this connection definition was updated.
 
 
 =head2 MatchCriteria => ArrayRef[Str|Undef]
@@ -87,8 +152,9 @@ not supported.
 
 =head2 PhysicalConnectionRequirements => L<Paws::Glue::PhysicalConnectionRequirements>
 
-  A map of physical connection requirements, such as VPC and
-SecurityGroup, needed for making this connection successfully.
+  A map of physical connection requirements, such as virtual private
+cloud (VPC) and C<SecurityGroup>, that are needed to make this
+connection successfully.
 
 
 

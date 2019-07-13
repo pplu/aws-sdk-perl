@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       WorkerGroup      => 'Mystring',
       Hostname         => 'Myid',       # OPTIONAL
       InstanceIdentity => {
-        document  => 'Mystring',        # max: 1024
-        signature => 'Mystring',        # max: 1024
+        Document  => 'Mystring',        # max: 1024
+        Signature => 'Mystring',        # max: 1024
       },    # OPTIONAL
     );
 

@@ -7,6 +7,7 @@ package Paws::CloudWatchEvents::PutRule;
   has RoleArn => (is => 'ro', isa => 'Str');
   has ScheduleExpression => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -39,6 +40,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RoleArn            => 'MyRoleArn',               # OPTIONAL
       ScheduleExpression => 'MyScheduleExpression',    # OPTIONAL
       State              => 'ENABLED',                 # OPTIONAL
+      Tags               => [
+        {
+          Key   => 'MyTagKey',                         # min: 1, max: 128
+          Value => 'MyTagValue',                       # max: 256
+
+        },
+        ...
+      ],                                               # OPTIONAL
     );
 
     # Results:
@@ -61,7 +70,7 @@ A description of the rule.
 =head2 EventPattern => Str
 
 The event pattern. For more information, see Events and Event Patterns
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
 in the I<Amazon CloudWatch Events User Guide>.
 
 
@@ -91,6 +100,12 @@ minutes)".
 Indicates whether the rule is enabled or disabled.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
+
+=head2 Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]
+
+The list of key-value pairs to associate with the rule.
+
+
 
 
 =head1 SEE ALSO

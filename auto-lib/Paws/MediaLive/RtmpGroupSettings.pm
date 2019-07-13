@@ -4,6 +4,7 @@ package Paws::MediaLive::RtmpGroupSettings;
   has CacheFullBehavior => (is => 'ro', isa => 'Str', request_name => 'cacheFullBehavior', traits => ['NameInRequest']);
   has CacheLength => (is => 'ro', isa => 'Int', request_name => 'cacheLength', traits => ['NameInRequest']);
   has CaptionData => (is => 'ro', isa => 'Str', request_name => 'captionData', traits => ['NameInRequest']);
+  has InputLossAction => (is => 'ro', isa => 'Str', request_name => 'inputLossAction', traits => ['NameInRequest']);
   has RestartDelay => (is => 'ro', isa => 'Int', request_name => 'restartDelay', traits => ['NameInRequest']);
 1;
 
@@ -35,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Placeholder documentation for RtmpGroupSettings
+Rtmp Group Settings
 
 =head1 ATTRIBUTES
 
@@ -69,6 +70,14 @@ to 'all' then 608 and 708 carried DTVCC data will be passed. If set to
 'field1AndField2608' then DTVCC data will be stripped out, but 608 data
 from both fields will be passed. If set to 'field1608' then only the
 data carried in 608 from field 1 video will be passed.
+
+
+=head2 InputLossAction => Str
+
+  Controls the behavior of this RTMP group if input becomes unavailable.
+- emitOutput: Emit a slate until input returns. - pauseOutput: Stop
+transmitting data until input returns. This does not close the
+underlying RTMP connection.
 
 
 =head2 RestartDelay => Int

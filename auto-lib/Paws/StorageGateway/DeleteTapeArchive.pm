@@ -29,12 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $storagegateway = Paws->service('StorageGateway');
     # To delete a virtual tape from the shelf (VTS)
     # Deletes the specified virtual tape from the virtual tape shelf (VTS).
-    my $DeleteTapeArchiveOutput = $storagegateway->DeleteTapeArchive(
-      {
-        'TapeARN' =>
-          'arn:aws:storagegateway:us-east-1:204469490176:tape/TEST05A2A0'
-      }
-    );
+    my $DeleteTapeArchiveOutput =
+      $storagegateway->DeleteTapeArchive( 'TapeARN' =>
+        'arn:aws:storagegateway:us-east-1:204469490176:tape/TEST05A2A0' );
 
     # Results:
     my $TapeARN = $DeleteTapeArchiveOutput->TapeARN;

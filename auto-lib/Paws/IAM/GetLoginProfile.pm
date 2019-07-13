@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To get password information for an IAM user
     # The following command gets information about the password for the IAM user
     # named Anika.
-    my $GetLoginProfileResponse = $iam->GetLoginProfile(
-      {
-        'UserName' => 'Anika'
-      }
-    );
+    my $GetLoginProfileResponse =
+      $iam->GetLoginProfile( 'UserName' => 'Anika' );
 
     # Results:
     my $LoginProfile = $GetLoginProfileResponse->LoginProfile;
@@ -51,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The name of the user whose login profile you want to retrieve.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

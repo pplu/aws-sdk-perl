@@ -76,14 +76,15 @@ C<StreamProcessorInput>.
 
 An identifier you assign to the stream processor. You can use C<Name>
 to manage the stream processor. For example, you can get the current
-status of the stream processor by calling . C<Name> is idempotent.
+status of the stream processor by calling DescribeStreamProcessor.
+C<Name> is idempotent.
 
 
 
 =head2 B<REQUIRED> Output => L<Paws::Rekognition::StreamProcessorOutput>
 
-Kinesis data stream stream to which Rekognition Video puts the analysis
-results. If you are using the AWS CLI, the parameter name is
+Kinesis data stream stream to which Amazon Rekognition Video puts the
+analysis results. If you are using the AWS CLI, the parameter name is
 C<StreamProcessorOutput>.
 
 

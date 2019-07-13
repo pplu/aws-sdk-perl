@@ -41,12 +41,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To add a scaling policy to an Auto Scaling group
    # This example adds the specified policy to the specified Auto Scaling group.
     my $PolicyARNType = $autoscaling->PutScalingPolicy(
-      {
-        'AdjustmentType'       => 'ChangeInCapacity',
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'PolicyName'           => 'ScaleIn',
-        'ScalingAdjustment'    => -1
-      }
+      'AdjustmentType'       => 'ChangeInCapacity',
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'PolicyName'           => 'ScaleIn',
+      'ScalingAdjustment'    => -1
     );
 
     # Results:
@@ -69,8 +67,8 @@ This parameter is supported if the policy type is C<SimpleScaling> or
 C<StepScaling>.
 
 For more information, see Dynamic Scaling
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html)
-in the I<Auto Scaling User Guide>.
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -88,9 +86,9 @@ specified, the default cooldown period for the group applies.
 
 This parameter is supported if the policy type is C<SimpleScaling>.
 
-For more information, see Auto Scaling Cooldowns
-(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
-in the I<Auto Scaling User Guide>.
+For more information, see Scaling Cooldowns
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
@@ -154,8 +152,8 @@ The amount by which to scale, based on the specified adjustment type. A
 positive value adds to the current capacity while a negative number
 removes from the current capacity.
 
-This parameter is required if the policy type is C<SimpleScaling> and
-not supported otherwise.
+Conditional: This parameter is required if the policy type is
+C<SimpleScaling> and not supported otherwise.
 
 
 
@@ -164,16 +162,17 @@ not supported otherwise.
 A set of adjustments that enable you to scale based on the size of the
 alarm breach.
 
-This parameter is required if the policy type is C<StepScaling> and not
-supported otherwise.
+Conditional: This parameter is required if the policy type is
+C<StepScaling> and not supported otherwise.
 
 
 
 =head2 TargetTrackingConfiguration => L<Paws::AutoScaling::TargetTrackingConfiguration>
 
-A target tracking policy.
+A target tracking scaling policy. Includes support for predefined or
+customized metrics.
 
-This parameter is required if the policy type is
+Conditional: This parameter is required if the policy type is
 C<TargetTrackingScaling> and not supported otherwise.
 
 

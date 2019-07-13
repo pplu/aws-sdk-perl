@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Placeholder documentation for AudioDescription
+Audio Description
 
 =head1 ATTRIBUTES
 

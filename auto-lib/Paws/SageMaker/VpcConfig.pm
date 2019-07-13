@@ -34,7 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 Specifies a VPC that your training jobs and hosted models have access
 to. Control access to and from your training and model containers by
-configuring the VPC. For more information, see host-vpc and train-vpc.
+configuring the VPC. For more information, see Protect Endpoints by
+Using an Amazon Virtual Private Cloud
+(https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html) and
+Protect Training Jobs by Using an Amazon Virtual Private Cloud
+(https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 
 =head1 ATTRIBUTES
 
@@ -49,6 +53,11 @@ security groups for the VPC that is specified in the C<Subnets> field.
 
   The ID of the subnets in the VPC to which you want to connect your
 training job or model.
+
+Amazon EC2 P3 accelerated computing instances are not available in the
+c/d/e availability zones of region us-east-1. If you want to create
+endpoints with P3 instances in VPC mode in region us-east-1, create
+subnets in a/b/f availability zones instead.
 
 
 

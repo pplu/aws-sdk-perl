@@ -6,6 +6,7 @@ package Paws::DirectConnect::NewPublicVirtualInterfaceAllocation;
   has AuthKey => (is => 'ro', isa => 'Str', request_name => 'authKey', traits => ['NameInRequest']);
   has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest']);
   has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', request_name => 'routeFilterPrefixes', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has VirtualInterfaceName => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceName', traits => ['NameInRequest'], required => 1);
   has Vlan => (is => 'ro', isa => 'Int', request_name => 'vlan', traits => ['NameInRequest'], required => 1);
 1;
@@ -38,50 +39,59 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-A structure containing information about a public virtual interface
-that will be provisioned on a connection.
+Information about a public virtual interface to be provisioned on a
+connection.
 
 =head1 ATTRIBUTES
 
 
 =head2 AddressFamily => Str
 
-  
+  The address family for the BGP peer.
 
 
 =head2 AmazonAddress => Str
 
-  
+  The IP address assigned to the Amazon interface.
 
 
 =head2 B<REQUIRED> Asn => Int
 
-  
+  The autonomous system (AS) number for Border Gateway Protocol (BGP)
+configuration.
 
 
 =head2 AuthKey => Str
 
-  
+  The authentication key for BGP configuration. This string has a minimum
+length of 6 characters and and a maximun lenth of 80 characters.
 
 
 =head2 CustomerAddress => Str
 
-  
+  The IP address assigned to the customer interface.
 
 
 =head2 RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
 
-  
+  The routes to be advertised to the AWS network in this Region. Applies
+to public virtual interfaces.
+
+
+=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+
+  Any tags assigned to the public virtual interface to be provisioned on
+a connection.
 
 
 =head2 B<REQUIRED> VirtualInterfaceName => Str
 
-  
+  The name of the virtual interface assigned by the customer network.
 
 
 =head2 B<REQUIRED> Vlan => Int
 
-  
+  The ID of the VLAN.
 
 
 

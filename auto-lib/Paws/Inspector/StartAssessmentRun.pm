@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # For this API to function properly, you must not exceed the limit of running
    # up to 500 concurrent agents per AWS account.
     my $StartAssessmentRunResponse = $inspector->StartAssessmentRun(
-      {
-        'AssessmentRunName' => 'examplerun',
-        'AssessmentTemplateArn' =>
+      'AssessmentRunName' => 'examplerun',
+      'AssessmentTemplateArn' =>
 'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-it5r2S4T'
-      }
     );
 
     # Results:

@@ -53,8 +53,8 @@ digits.
 
 =head2 B<REQUIRED> TargetId => Str
 
-The unique identifier (ID) of the root, OU, or account from which you
-want to detach the policy. You can get the ID from the ListRoots,
+The unique identifier (ID) of the root, OU, or account that you want to
+detach the policy from. You can get the ID from the ListRoots,
 ListOrganizationalUnitsForParent, or ListAccounts operations.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a target ID

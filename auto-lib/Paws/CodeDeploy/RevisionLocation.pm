@@ -1,5 +1,6 @@
 package Paws::CodeDeploy::RevisionLocation;
   use Moose;
+  has AppSpecContent => (is => 'ro', isa => 'Paws::CodeDeploy::AppSpecContent', request_name => 'appSpecContent', traits => ['NameInRequest']);
   has GitHubLocation => (is => 'ro', isa => 'Paws::CodeDeploy::GitHubLocation', request_name => 'gitHubLocation', traits => ['NameInRequest']);
   has RevisionType => (is => 'ro', isa => 'Str', request_name => 'revisionType', traits => ['NameInRequest']);
   has S3Location => (is => 'ro', isa => 'Paws::CodeDeploy::S3Location', request_name => 's3Location', traits => ['NameInRequest']);
@@ -23,20 +24,27 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::RevisionLocation object:
 
-  $service_obj->Method(Att1 => { GitHubLocation => $value, ..., String => $value  });
+  $service_obj->Method(Att1 => { AppSpecContent => $value, ..., String => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::RevisionLocation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->GitHubLocation
+  $result->Att1->AppSpecContent
 
 =head1 DESCRIPTION
 
 Information about the location of an application revision.
 
 =head1 ATTRIBUTES
+
+
+=head2 AppSpecContent => L<Paws::CodeDeploy::AppSpecContent>
+
+  The content of an AppSpec file for an AWS Lambda or Amazon ECS
+deployment. The content is formatted as JSON or YAML and stored as a
+RawString.
 
 
 =head2 GitHubLocation => L<Paws::CodeDeploy::GitHubLocation>
@@ -58,12 +66,12 @@ S3: An application revision stored in Amazon S3.
 =item *
 
 GitHub: An application revision stored in GitHub (EC2/On-premises
-deployments only)
+deployments only).
 
 =item *
 
 String: A YAML-formatted or JSON-formatted string (AWS Lambda
-deployments only)
+deployments only).
 
 =back
 

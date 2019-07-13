@@ -2,6 +2,7 @@
 package Paws::IoTAnalytics::CreateChannel;
   use Moose;
   has ChannelName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelName', required => 1);
+  has ChannelStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::ChannelStorage', traits => ['NameInRequest'], request_name => 'channelStorage');
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
@@ -31,15 +32,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iotanalytics = Paws->service('IoTAnalytics');
     my $CreateChannelResponse = $iotanalytics->CreateChannel(
-      ChannelName     => 'MyChannelName',
+      ChannelName    => 'MyChannelName',
+      ChannelStorage => {
+        CustomerManagedS3 => {
+          Bucket    => 'MyBucketName',     # min: 3, max: 255
+          RoleArn   => 'MyRoleArn',        # min: 20, max: 2048
+          KeyPrefix => 'MyS3KeyPrefix',    # min: 1, max: 255; OPTIONAL
+        },    # OPTIONAL
+        ServiceManagedS3 => {
+
+        },    # OPTIONAL
+      },    # OPTIONAL
       RetentionPeriod => {
-        numberOfDays => 1,    # min: 1, ; OPTIONAL
-        unlimited    => 1,    # OPTIONAL
+        NumberOfDays => 1,    # min: 1; OPTIONAL
+        Unlimited    => 1,    # OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
-          key   => 'MyTagKey',      # min: 1, max: 256
-          value => 'MyTagValue',    # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 256
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...
@@ -62,6 +73,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 B<REQUIRED> ChannelName => Str
 
 The name of the channel.
+
+
+
+=head2 ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>
+
+Where channel data is stored.
 
 
 

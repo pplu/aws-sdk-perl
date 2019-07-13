@@ -59,6 +59,9 @@ You cannot modify the value of C<AtRestEncryptionEnabled> after the
 cluster is created. To enable encryption at-rest on a cluster you must
 set C<AtRestEncryptionEnabled> to C<true> when you create a cluster.
 
+B<Required:> Only available when creating a replication group in an
+Amazon VPC using redis version C<3.2.6> or C<4.x>.
+
 Default: C<false>
 
 
@@ -86,7 +89,7 @@ Redis versions earlier than 2.8.6.
 
 =item *
 
-Redis (cluster mode disabled): T1 and T2 cache node types.
+Redis (cluster mode disabled): T1 node types.
 
 =item *
 
@@ -124,7 +127,7 @@ configuration endpoint to connect to this replication group.
 
 =head2 MemberClusters => ArrayRef[Str|Undef]
 
-  The identifiers of all the nodes that are part of this replication
+  The names of all the cache clusters that are part of this replication
 group.
 
 
@@ -192,6 +195,9 @@ You cannot modify the value of C<TransitEncryptionEnabled> after the
 cluster is created. To enable in-transit encryption on a cluster you
 must set C<TransitEncryptionEnabled> to C<true> when you create a
 cluster.
+
+B<Required:> Only available when creating a replication group in an
+Amazon VPC using redis version C<3.2.6> or C<4.x>.
 
 Default: C<false>
 

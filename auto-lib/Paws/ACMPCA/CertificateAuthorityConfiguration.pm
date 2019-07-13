@@ -36,9 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACMPCA::Cer
 Contains configuration information for your private certificate
 authority (CA). This includes information about the class of public key
 algorithm and the key pair that your private CA creates when it issues
-a certificate, the signature algorithm it uses used when issuing
-certificates, and its X.500 distinguished name. You must specify this
-information when you call the CreateCertificateAuthority function.
+a certificate. It also includes the signature algorithm that it uses
+when issuing certificates, and its X.500 distinguished name. You must
+specify this information when you call the CreateCertificateAuthority
+action.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +47,9 @@ information when you call the CreateCertificateAuthority function.
 =head2 B<REQUIRED> KeyAlgorithm => Str
 
   Type of the public key algorithm and size, in bits, of the key pair
-that your key pair creates when it issues a certificate.
+that your CA creates when it issues a certificate. When you create a
+subordinate CA, you must use a key algorithm supported by the parent
+CA.
 
 
 =head2 B<REQUIRED> SigningAlgorithm => Str

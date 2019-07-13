@@ -31,12 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Describes the assessment targets that are specified by the ARNs of the
     # assessment targets.
     my $DescribeAssessmentTargetsResponse =
-      $inspector->DescribeAssessmentTargets(
-      {
-        'AssessmentTargetArns' =>
-          ['arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq']
-      }
-      );
+      $inspector->DescribeAssessmentTargets( 'AssessmentTargetArns' =>
+        ['arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq'] );
 
     # Results:
     my $assessmentTargets =

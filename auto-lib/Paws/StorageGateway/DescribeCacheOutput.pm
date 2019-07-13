@@ -22,32 +22,42 @@ Paws::StorageGateway::DescribeCacheOutput
 
 =head2 CacheAllocatedInBytes => Int
 
-
+The amount of cache in bytes allocated to the a gateway.
 
 
 =head2 CacheDirtyPercentage => Num
 
-
+The file share's contribution to the overall percentage of the
+gateway's cache that has not been persisted to AWS. The sample is taken
+at the end of the reporting period.
 
 
 =head2 CacheHitPercentage => Num
 
-
+Percent of application read operations from the file shares that are
+served from cache. The sample is taken at the end of the reporting
+period.
 
 
 =head2 CacheMissPercentage => Num
 
-
+Percent of application read operations from the file shares that are
+not served from cache. The sample is taken at the end of the reporting
+period.
 
 
 =head2 CacheUsedPercentage => Num
 
-
+Percent use of the gateway's cache storage. This metric applies only to
+the gateway-cached volume setup. The sample is taken at the end of the
+reporting period.
 
 
 =head2 DiskIds => ArrayRef[Str|Undef]
 
-
+An array of strings that identify disks that are to be configured as
+working storage. Each string have a minimum length of 1 and maximum
+length of 300. You can get the disk IDs from the ListLocalDisks API.
 
 
 =head2 GatewayARN => Str

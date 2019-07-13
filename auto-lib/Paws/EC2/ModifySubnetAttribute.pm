@@ -33,12 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example modifies the specified subnet so that all instances launched
     # into this subnet are assigned a public IP address.
     $ec2->ModifySubnetAttribute(
-      {
-        'MapPublicIpOnLaunch' => {
-          'Value' => true
-        },
-        'SubnetId' => 'subnet-1a2b3c4d'
-      }
+      'MapPublicIpOnLaunch' => {
+        'Value' => 1
+      },
+      'SubnetId' => 'subnet-1a2b3c4d'
     );
 
 
@@ -63,11 +61,8 @@ using version C<2016-11-15> or later of the Amazon EC2 API.
 
 =head2 MapPublicIpOnLaunch => L<Paws::EC2::AttributeBooleanValue>
 
-Specify C<true> to indicate that network interfaces created in the
-specified subnet should be assigned a public IPv4 address. This
-includes a network interface that's created when launching an instance
-into the subnet (the instance therefore receives a public IPv4
-address).
+Specify C<true> to indicate that ENIs attached to instances created in
+the specified subnet should be assigned a public IPv4 address.
 
 
 

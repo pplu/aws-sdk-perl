@@ -8,7 +8,7 @@ package Paws::CloudFront::UpdatePublicKey;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePublicKey');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-10-30/public-key/{Id}/config');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/public-key/{Id}/config');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdatePublicKeyResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -23,11 +23,11 @@ Paws::CloudFront::UpdatePublicKey - Arguments for method UpdatePublicKey on L<Pa
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdatePublicKey2017_10_30 on the
+This class represents the parameters used for calling the method UpdatePublicKey2019_03_26 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method UpdatePublicKey2017_10_30.
+as arguments to method UpdatePublicKey2019_03_26.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePublicKey2017_10_30.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePublicKey2019_03_26.
 
 =head1 SYNOPSIS
 
@@ -77,7 +77,7 @@ Request to update public key information.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method UpdatePublicKey2017_10_30 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method UpdatePublicKey2019_03_26 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

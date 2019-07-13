@@ -146,7 +146,7 @@ Constraints: The name must be less than 255 characters.
 
 =head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
 
-
+The tags to be applied to the new event subscription.
 
 
 

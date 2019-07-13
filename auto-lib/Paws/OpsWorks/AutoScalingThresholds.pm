@@ -55,7 +55,7 @@ C<cloudwatch:DescribeAlarms>. You can either have AWS OpsWorks Stacks
 update the role for you when you first use this feature or you can edit
 the role manually. For more information, see Allowing AWS OpsWorks
 Stacks to Act on Your Behalf
-(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-servicerole.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-servicerole.html).
 
 
 =head2 CpuThreshold => Num

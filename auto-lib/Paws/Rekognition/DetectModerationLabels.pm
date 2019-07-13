@@ -42,6 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $ModerationLabels = $DetectModerationLabelsResponse->ModerationLabels;
+    my $ModerationModelVersion =
+      $DetectModerationLabelsResponse->ModerationModelVersion;
 
     # Returns a L<Paws::Rekognition::DetectModerationLabelsResponse> object.
 
@@ -56,6 +58,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 image bytes is not supported.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
 
 
 

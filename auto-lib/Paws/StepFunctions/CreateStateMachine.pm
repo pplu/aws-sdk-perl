@@ -4,6 +4,7 @@ package Paws::StepFunctions::CreateStateMachine;
   has Definition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'definition' , required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Definition => 'MyDefinition',
       Name       => 'MyName',
       RoleArn    => 'MyArn',
-
+      Tags       => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -50,17 +57,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sta
 
 =head2 B<REQUIRED> Definition => Str
 
-The Amazon States Language definition of the state machine.
+The Amazon States Language definition of the state machine. See Amazon
+States Language
+(https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the state machine. This name must be unique for your AWS
-account and region for 90 days. For more information, see Limits
-Related to State Machine Executions
-(http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions)
-in the I<AWS Step Functions Developer Guide>.
+The name of the state machine.
 
 A name must I<not> contain:
 
@@ -95,6 +100,12 @@ control characters (C<U+0000-001F>, C<U+007F-009F>)
 
 The Amazon Resource Name (ARN) of the IAM role to use for this state
 machine.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::StepFunctions::Tag>]
+
+Tags to be added when creating a state machine.
 
 
 

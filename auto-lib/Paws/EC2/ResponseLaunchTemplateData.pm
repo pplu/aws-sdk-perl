@@ -1,10 +1,14 @@
 package Paws::EC2::ResponseLaunchTemplateData;
   use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateBlockDeviceMapping]', request_name => 'blockDeviceMappingSet', traits => ['NameInRequest']);
+  has CapacityReservationSpecification => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateCapacityReservationSpecificationResponse', request_name => 'capacityReservationSpecification', traits => ['NameInRequest']);
+  has CpuOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateCpuOptions', request_name => 'cpuOptions', traits => ['NameInRequest']);
   has CreditSpecification => (is => 'ro', isa => 'Paws::EC2::CreditSpecification', request_name => 'creditSpecification', traits => ['NameInRequest']);
   has DisableApiTermination => (is => 'ro', isa => 'Bool', request_name => 'disableApiTermination', traits => ['NameInRequest']);
   has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
   has ElasticGpuSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuSpecificationResponse]', request_name => 'elasticGpuSpecificationSet', traits => ['NameInRequest']);
+  has ElasticInferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateElasticInferenceAcceleratorResponse]', request_name => 'elasticInferenceAcceleratorSet', traits => ['NameInRequest']);
+  has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateHibernationOptions', request_name => 'hibernationOptions', traits => ['NameInRequest']);
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateIamInstanceProfileSpecification', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
   has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInitiatedShutdownBehavior', traits => ['NameInRequest']);
@@ -12,6 +16,7 @@ package Paws::EC2::ResponseLaunchTemplateData;
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has KernelId => (is => 'ro', isa => 'Str', request_name => 'kernelId', traits => ['NameInRequest']);
   has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
+  has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateLicenseConfiguration]', request_name => 'licenseSet', traits => ['NameInRequest']);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatesMonitoring', request_name => 'monitoring', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecification]', request_name => 'networkInterfaceSet', traits => ['NameInRequest']);
   has Placement => (is => 'ro', isa => 'Paws::EC2::LaunchTemplatePlacement', request_name => 'placement', traits => ['NameInRequest']);
@@ -60,6 +65,19 @@ This class has no description
   The block device mappings.
 
 
+=head2 CapacityReservationSpecification => L<Paws::EC2::LaunchTemplateCapacityReservationSpecificationResponse>
+
+  Information about the Capacity Reservation targeting option.
+
+
+=head2 CpuOptions => L<Paws::EC2::LaunchTemplateCpuOptions>
+
+  The CPU options for the instance. For more information, see Optimizing
+CPU Options
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 CreditSpecification => L<Paws::EC2::CreditSpecification>
 
   The credit option for CPU usage of the instance.
@@ -79,6 +97,19 @@ using the Amazon EC2 console, command line tool, or API.
 =head2 ElasticGpuSpecifications => ArrayRef[L<Paws::EC2::ElasticGpuSpecificationResponse>]
 
   The elastic GPU specification.
+
+
+=head2 ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::LaunchTemplateElasticInferenceAcceleratorResponse>]
+
+  The elastic inference accelerator for the instance.
+
+
+=head2 HibernationOptions => L<Paws::EC2::LaunchTemplateHibernationOptions>
+
+  Indicates whether an instance is configured for hibernation. For more
+information, see Hibernate Your Instance
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 IamInstanceProfile => L<Paws::EC2::LaunchTemplateIamInstanceProfileSpecification>
@@ -116,6 +147,11 @@ system shutdown).
 =head2 KeyName => Str
 
   The name of the key pair.
+
+
+=head2 LicenseSpecifications => ArrayRef[L<Paws::EC2::LaunchTemplateLicenseConfiguration>]
+
+  The license configurations.
 
 
 =head2 Monitoring => L<Paws::EC2::LaunchTemplatesMonitoring>

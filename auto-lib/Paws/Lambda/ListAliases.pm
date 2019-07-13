@@ -34,12 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To retrieve a Lambda function aliases
     # This operation retrieves a Lambda function's aliases
     my $ListAliasesResponse = $lambda->ListAliases(
-      {
-        'FunctionName'    => 'myFunction',
-        'FunctionVersion' => 1,
-        'Marker'          => '',
-        'MaxItems'        => 123
-      }
+      'FunctionName'    => 'myFunction',
+      'FunctionVersion' => 1,
+      'Marker'          => '',
+      'MaxItems'        => 123
     );
 
     # Results:
@@ -56,33 +54,49 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 B<REQUIRED> FunctionName => Str
 
-Lambda function name for which the alias is created. Note that the
-length constraint applies only to the ARN. If you specify only the
-function name, it is limited to 64 characters in length.
+The name of the Lambda function.
+
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 
 =head2 FunctionVersion => Str
 
-If you specify this optional parameter, the API returns only the
-aliases that are pointing to the specific Lambda function version,
-otherwise the API returns all of the aliases created for the Lambda
-function.
+Specify a function version to only list aliases that invoke that
+version.
 
 
 
 =head2 Marker => Str
 
-Optional string. An opaque pagination token returned from a previous
-C<ListAliases> operation. If present, indicates where to continue the
-listing.
+Specify the pagination token that's returned by a previous request to
+retrieve the next page of results.
 
 
 
 =head2 MaxItems => Int
 
-Optional integer. Specifies the maximum number of aliases to return in
-response. This parameter value must be greater than 0.
+Limit the number of aliases returned.
 
 
 

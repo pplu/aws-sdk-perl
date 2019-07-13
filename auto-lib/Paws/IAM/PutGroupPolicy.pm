@@ -33,12 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command adds a policy named AllPerms to the IAM group named
     # Admins.
     $iam->PutGroupPolicy(
-      {
-        'GroupName' => 'Admins',
-        'PolicyDocument' =>
+      'GroupName' => 'Admins',
+      'PolicyDocument' =>
 '{"Version":"2012-10-17","Statement":{"Effect":"Allow","Action":"*","Resource":"*"}}',
-        'PolicyName' => 'AllPerms'
-      }
+      'PolicyName' => 'AllPerms'
     );
 
 
@@ -52,16 +50,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The name of the group to associate the policy with.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
-also include any of the following characters: _+=,.@-
+also include any of the following characters: _+=,.@-.
 
 
 
 =head2 B<REQUIRED> PolicyDocument => Str
 
 The policy document.
+
+You must provide policies in JSON format in IAM. However, for AWS
+CloudFormation templates formatted in YAML, you can provide the policy
+in JSON or YAML format. AWS CloudFormation always converts a YAML
+policy to JSON format before submitting it to IAM.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
 this parameter is a string of characters consisting of the following:
@@ -92,7 +95,7 @@ return (\u000D)
 
 The name of the policy document.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

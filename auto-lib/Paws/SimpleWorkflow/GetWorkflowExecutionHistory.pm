@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $History = $swf->GetWorkflowExecutionHistory(
       Domain    => 'MyDomainName',
       Execution => {
-        runId      => 'MyWorkflowRunId',    # min: 1, max: 64
-        workflowId => 'MyWorkflowId',       # min: 1, max: 256
+        RunId      => 'MyWorkflowRunId',    # min: 1, max: 64
+        WorkflowId => 'MyWorkflowId',       # min: 1, max: 256
 
       },
       MaximumPageSize => 1,                 # OPTIONAL
@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $events        = $History->events;
-    my $nextPageToken = $History->nextPageToken;
+    my $Events        = $History->Events;
+    my $NextPageToken = $History->NextPageToken;
 
     # Returns a L<Paws::SimpleWorkflow::History> object.
 
@@ -69,22 +69,19 @@ Specifies the workflow execution for which to return the history.
 
 =head2 MaximumPageSize => Int
 
-The maximum number of results that are returned per call.
-C<nextPageToken> can be used to obtain futher pages of results. The
-default is 1000, which is the maximum allowed page size. You can,
-however, specify a page size I<smaller> than the maximum.
-
-This is an upper limit only; the actual number of results returned per
-call may be fewer than the specified maximum.
+The maximum number of results that are returned per call. Use
+C<nextPageToken> to obtain further pages of results.
 
 
 
 =head2 NextPageToken => Str
 
-If a C<NextPageToken> was returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextPageToken>. Keep all other
-arguments unchanged.
+If C<NextPageToken> is returned there are more results available. The
+value of C<NextPageToken> is a unique pagination token for each page.
+Make the call again using the returned token to retrieve the next page.
+Keep all other arguments unchanged. Each pagination token expires after
+60 seconds. Using an expired pagination token will return a C<400>
+error: "C<Specified token has exceeded its maximum lifetime>".
 
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.

@@ -71,14 +71,14 @@ C</{method_setting_key}/caching/enabled>, and the value is a Boolean.
 =head2 DataTraceEnabled => Bool
 
   Specifies whether data trace logging is enabled for this method, which
-effects the log entries pushed to Amazon CloudWatch Logs. The PATCH
+affects the log entries pushed to Amazon CloudWatch Logs. The PATCH
 path for this setting is C</{method_setting_key}/logging/dataTrace>,
 and the value is a Boolean.
 
 
 =head2 LoggingLevel => Str
 
-  Specifies the logging level for this method, which effects the log
+  Specifies the logging level for this method, which affects the log
 entries pushed to Amazon CloudWatch Logs. The PATCH path for this
 setting is C</{method_setting_key}/logging/loglevel>, and the available
 levels are C<OFF>, C<ERROR>, and C<INFO>.

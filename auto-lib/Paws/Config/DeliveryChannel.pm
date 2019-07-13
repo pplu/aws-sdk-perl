@@ -65,7 +65,7 @@ configuration snapshots and configuration history files.
 If you specify a bucket that belongs to another AWS account, that
 bucket must have policies that grant access permissions to AWS Config.
 For more information, see Permissions for the Amazon S3 Bucket
-(http://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html)
+(https://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html)
 in the AWS Config Developer Guide.
 
 
@@ -82,7 +82,7 @@ Config sends notifications about configuration changes.
 If you choose a topic from another account, the topic must have
 policies that grant access permissions to AWS Config. For more
 information, see Permissions for the Amazon SNS Topic
-(http://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html)
+(https://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html)
 in the AWS Config Developer Guide.
 
 

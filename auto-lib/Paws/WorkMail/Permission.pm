@@ -33,22 +33,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkMail::P
 
 =head1 DESCRIPTION
 
-Permission granted to an entity (user, group) to access a certain
-aspect of another entity's mailbox.
+Permission granted to a user, group, or resource to access a certain
+aspect of another user, group, or resource mailbox.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> GranteeId => Str
 
-  The identifier of the entity (user or group) to which the permissions
+  The identifier of the user, group, or resource to which the permissions
 are granted.
 
 
 =head2 B<REQUIRED> GranteeType => Str
 
-  The type of entity (user, group) of the entity referred to in
-GranteeId.
+  The type of user, group, or resource referred to in GranteeId.
 
 
 =head2 B<REQUIRED> PermissionValues => ArrayRef[Str|Undef]

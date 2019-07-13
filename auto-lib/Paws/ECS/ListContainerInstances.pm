@@ -34,11 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To list your available container instances in a cluster
     # This example lists all of your available container instances in the
     # specified cluster in your default region.
-    my $ListContainerInstancesResponse = $ecs->ListContainerInstances(
-      {
-        'Cluster' => 'default'
-      }
-    );
+    my $ListContainerInstancesResponse =
+      $ecs->ListContainerInstances( 'Cluster' => 'default' );
 
     # Results:
     my $containerInstanceArns =
@@ -65,7 +62,7 @@ the default cluster is assumed.
 You can filter the results of a C<ListContainerInstances> operation
 with cluster query language statements. For more information, see
 Cluster Query Language
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
@@ -103,9 +100,9 @@ Filters the container instances by status. For example, if you specify
 the C<DRAINING> status, the results include only container instances
 that have been set to C<DRAINING> using UpdateContainerInstancesState.
 If you do not specify this parameter, the default is to include
-container instances set to C<ACTIVE> and C<DRAINING>.
+container instances set to all states other than C<INACTIVE>.
 
-Valid values are: C<"ACTIVE">, C<"DRAINING">
+Valid values are: C<"ACTIVE">, C<"DRAINING">, C<"REGISTERING">, C<"DEREGISTERING">, C<"REGISTRATION_FAILED">
 
 
 =head1 SEE ALSO

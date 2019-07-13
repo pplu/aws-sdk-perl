@@ -160,6 +160,29 @@ package Paws::ELB;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAccountLimits {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAccountLimits(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeAccountLimits(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Limits }, @{ $next_result->Limits };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+        $result = $self->DescribeAccountLimits(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'Limits') foreach (@{ $result->Limits });
+    }
+
+    return undef
+  }
   sub DescribeAllLoadBalancers {
     my $self = shift;
 
@@ -272,7 +295,7 @@ updates its value.
 
 For more information, see Tag Your Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 ApplySecurityGroupsToLoadBalancer
@@ -296,7 +319,7 @@ previously associated security groups.
 
 For more information, see Security Groups for Load Balancers in a VPC
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 AttachLoadBalancerToSubnets
@@ -321,7 +344,7 @@ The load balancer evenly distributes requests across all registered
 subnets. For more information, see Add or Remove Subnets for Your Load
 Balancer in a VPC
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 ConfigureHealthCheck
@@ -345,7 +368,7 @@ state of your EC2 instances.
 For more information, see Configure Health Checks for Your Load
 Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 CreateAppCookieStickinessPolicy
@@ -381,7 +404,7 @@ stops being sticky until a new application cookie is issued.
 
 For more information, see Application-Controlled Session Stickiness
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 CreateLBCookieStickinessPolicy
@@ -420,7 +443,7 @@ configuration.
 
 For more information, see Duration-Based Session Stickiness
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 CreateLoadBalancer
@@ -463,7 +486,7 @@ You can create up to 20 load balancers per region per account. You can
 request an increase for the number of load balancers for your account.
 For more information, see Limits for Your Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 CreateLoadBalancerListeners
@@ -488,7 +511,7 @@ of the existing listener.
 
 For more information, see Listeners for Your Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 CreateLoadBalancerPolicy
@@ -604,7 +627,7 @@ deregistered from the load balancer.
 
 For more information, see Register or De-Register EC2 Instances
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 DescribeAccountLimits
@@ -627,7 +650,7 @@ AWS account.
 
 For more information, see Limits for Your Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 DescribeInstanceHealth
@@ -799,7 +822,10 @@ Each argument is described in detail in: L<Paws::ELB::DisableAvailabilityZonesFo
 Returns: a L<Paws::ELB::RemoveAvailabilityZonesOutput> instance
 
 Removes the specified Availability Zones from the set of Availability
-Zones for the specified load balancer.
+Zones for the specified load balancer in EC2-Classic or a default VPC.
+
+For load balancers in a non-default VPC, use
+DetachLoadBalancerFromSubnets.
 
 There must be at least one Availability Zone registered with a load
 balancer at all times. After an Availability Zone is removed, all
@@ -810,7 +836,7 @@ Availability Zones.
 
 For more information, see Add or Remove Availability Zones
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 EnableAvailabilityZonesForLoadBalancer
@@ -829,14 +855,16 @@ Each argument is described in detail in: L<Paws::ELB::EnableAvailabilityZonesFor
 Returns: a L<Paws::ELB::AddAvailabilityZonesOutput> instance
 
 Adds the specified Availability Zones to the set of Availability Zones
-for the specified load balancer.
+for the specified load balancer in EC2-Classic or a default VPC.
+
+For load balancers in a non-default VPC, use
+AttachLoadBalancerToSubnets.
 
 The load balancer evenly distributes requests across all its registered
-Availability Zones that contain instances.
-
-For more information, see Add or Remove Availability Zones
+Availability Zones that contain instances. For more information, see
+Add or Remove Availability Zones
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 ModifyLoadBalancerAttributes
@@ -862,7 +890,7 @@ or disabling them. Or, you can modify the load balancer attribute
 C<ConnectionSettings> by specifying an idle connection timeout value
 for your load balancer.
 
-For more information, see the following in the I<Classic Load Balancer
+For more information, see the following in the I<Classic Load Balancers
 Guide>:
 
 =over
@@ -931,7 +959,7 @@ DeregisterInstancesFromLoadBalancer.
 
 For more information, see Register or De-Register EC2 Instances
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 RemoveTags
@@ -976,7 +1004,7 @@ that was used on the same load balancer and port.
 For more information about updating your SSL certificate, see Replace
 the SSL Certificate for Your Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 SetLoadBalancerPoliciesForBackendServer
@@ -1012,10 +1040,10 @@ verify that the policy is associated with the EC2 instance.
 For more information about enabling back-end instance authentication,
 see Configure Back-end Instance Authentication
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt)
-in the I<Classic Load Balancer Guide>. For more information about Proxy
-Protocol, see Configure Proxy Protocol Support
+in the I<Classic Load Balancers Guide>. For more information about
+Proxy Protocol, see Configure Proxy Protocol Support
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 SetLoadBalancerPoliciesOfListener
@@ -1048,7 +1076,7 @@ Duration-Based Session Stickiness
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration),
 and Application-Controlled Session Stickiness
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 
@@ -1056,6 +1084,18 @@ in the I<Classic Load Balancer Guide>.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAccountLimits(sub { },[Marker => Str, PageSize => Int])
+
+=head2 DescribeAllAccountLimits([Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Limits, passing the object as the first parameter, and the string 'Limits' as the second parameter 
+
+If not, it will return a a L<Paws::ELB::DescribeAccountLimitsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllLoadBalancers(sub { },[LoadBalancerNames => ArrayRef[Str|Undef], Marker => Str, PageSize => Int])
 

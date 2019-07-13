@@ -33,7 +33,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 # serviceable area of your region. If the address is invalid or unsupported,
 # then an exception is thrown.
 my $CreateAddressResult = $snowball->CreateAddress(
-{
 'Address' => 
 {
 'City' => 'Seattle',
@@ -44,7 +43,6 @@ my $CreateAddressResult = $snowball->CreateAddress(
 'PostalCode' => 98101,
 'StateOrProvince' => 'WA',
 'Street1' => '123 Main Street'
-}
 }
 );
 

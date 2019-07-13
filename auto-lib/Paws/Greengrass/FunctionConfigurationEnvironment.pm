@@ -1,6 +1,7 @@
 package Paws::Greengrass::FunctionConfigurationEnvironment;
   use Moose;
   has AccessSysfs => (is => 'ro', isa => 'Bool');
+  has Execution => (is => 'ro', isa => 'Paws::Greengrass::FunctionExecutionConfig');
   has ResourceAccessPolicies => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ResourceAccessPolicy]');
   has Variables => (is => 'ro', isa => 'Paws::Greengrass::__mapOf__string');
 1;
@@ -42,14 +43,21 @@ The environment configuration of the function.
 
   If true, the Lambda function is allowed to access the host's /sys
 folder. Use this when the Lambda function needs to read device
-information from /sys.
+information from /sys. This setting applies only when you run the
+Lambda function in a Greengrass container.
+
+
+=head2 Execution => L<Paws::Greengrass::FunctionExecutionConfig>
+
+  Configuration related to executing the Lambda function
 
 
 =head2 ResourceAccessPolicies => ArrayRef[L<Paws::Greengrass::ResourceAccessPolicy>]
 
   A list of the resources, with their permissions, to which the Lambda
 function will be granted access. A Lambda function can have at most 10
-resources.
+resources. ResourceAccessPolicies apply only when you run the Lambda
+function in a Greengrass container.
 
 
 =head2 Variables => L<Paws::Greengrass::__mapOf__string>

@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Configuration information for the directory used to join domains.
+Describes the configuration information required to join fleets and
+image builders to Microsoft Active Directory domains.
 
 =head1 ATTRIBUTES
 
@@ -58,8 +59,8 @@ accounts.
 
 =head2 ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>
 
-  The credentials for the service account used by the streaming instance
-to connect to the directory.
+  The credentials for the service account used by the fleet or image
+builder to connect to the directory.
 
 
 

@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyOrganizationalUnitDistinguishedName', ...    # max: 2000
       ],
       ServiceAccountCredentials => {
-        AccountName     => 'MyAccountName',             # min: 1,
+        AccountName     => 'MyAccountName',             # min: 1
         AccountPassword => 'MyAccountPassword',         # min: 1, max: 127
 
       },
@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AppStream::CreateDirectoryConfigResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appstream2/CreateDirectoryConfig>
 
 =head1 ATTRIBUTES
 
@@ -69,8 +69,8 @@ accounts.
 
 =head2 B<REQUIRED> ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>
 
-The credentials for the service account used by the streaming instance
-to connect to the directory.
+The credentials for the service account used by the fleet or image
+builder to connect to the directory.
 
 
 

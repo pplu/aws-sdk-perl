@@ -135,6 +135,29 @@ package Paws::ApplicationAutoScaling;
 
     return undef
   }
+  sub DescribeAllScheduledActions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScheduledActions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeScheduledActions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScheduledActions }, @{ $next_result->ScheduledActions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ScheduledActions') foreach (@{ $result->ScheduledActions });
+        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ScheduledActions') foreach (@{ $result->ScheduledActions });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteScalingPolicy DeleteScheduledAction DeregisterScalableTarget DescribeScalableTargets DescribeScalingActivities DescribeScalingPolicies DescribeScheduledActions PutScalingPolicy PutScheduledAction RegisterScalableTarget / }
@@ -166,14 +189,15 @@ Paws::ApplicationAutoScaling - Perl Interface to AWS Application Auto Scaling
 =head1 DESCRIPTION
 
 With Application Auto Scaling, you can configure automatic scaling for
-your scalable AWS resources. You can use Application Auto Scaling to
+your scalable resources. You can use Application Auto Scaling to
 accomplish the following tasks:
 
 =over
 
 =item *
 
-Define scaling policies to automatically scale your AWS resources
+Define scaling policies to automatically scale your AWS or custom
+resources
 
 =item *
 
@@ -189,35 +213,35 @@ View the history of your scaling events
 
 =back
 
-Application Auto Scaling can scale the following AWS resources:
+Application Auto Scaling can scale the following resources:
 
 =over
 
 =item *
 
 Amazon ECS services. For more information, see Service Auto Scaling
-(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item *
 
 Amazon EC2 Spot fleets. For more information, see Automatic Scaling for
 Spot Fleet
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-auto-scaling.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-auto-scaling.html)
 in the I<Amazon EC2 User Guide>.
 
 =item *
 
 Amazon EMR clusters. For more information, see Using Automatic Scaling
 in Amazon EMR
-(http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-automatic-scaling.html)
+(https://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-automatic-scaling.html)
 in the I<Amazon EMR Management Guide>.
 
 =item *
 
 AppStream 2.0 fleets. For more information, see Fleet Auto Scaling for
 Amazon AppStream 2.0
-(http://docs.aws.amazon.com/appstream2/latest/developerguide/autoscaling.html)
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/autoscaling.html)
 in the I<Amazon AppStream 2.0 Developer Guide>.
 
 =item *
@@ -225,34 +249,35 @@ in the I<Amazon AppStream 2.0 Developer Guide>.
 Provisioned read and write capacity for Amazon DynamoDB tables and
 global secondary indexes. For more information, see Managing Throughput
 Capacity Automatically with DynamoDB Auto Scaling
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html)
 in the I<Amazon DynamoDB Developer Guide>.
 
 =item *
 
 Amazon Aurora Replicas. For more information, see Using Amazon Aurora
 Auto Scaling with Aurora Replicas
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Integrating.AutoScaling.html).
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html).
 
 =item *
 
-Amazon SageMaker endpoints. For more information, see Automatically
-Scaling Amazon SageMaker Models
-(http://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html).
+Amazon SageMaker endpoint variants. For more information, see
+Automatically Scaling Amazon SageMaker Models
+(https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html).
+
+=item *
+
+Custom resources provided by your own applications or services. More
+information is available in our GitHub repository
+(https://github.com/aws/aws-auto-scaling-custom-resource).
 
 =back
 
-To configure automatic scaling for multiple resources across multiple
-services, use AWS Auto Scaling to create a scaling plan for your
-application. For more information, see AWS Auto Scaling
-(http://aws.amazon.com/autoscaling).
+To learn more about Application Auto Scaling, including information
+about granting IAM users required permissions for Application Auto
+Scaling actions, see the Application Auto Scaling User Guide
+(https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
 
-For a list of supported regions, see AWS Regions and Endpoints:
-Application Auto Scaling
-(http://docs.aws.amazon.com/general/latest/gr/rande.html#as-app_region)
-in the I<AWS General Reference>.
-
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2016-02-06>
 
 
 =head1 METHODS
@@ -292,11 +317,11 @@ PutScalingPolicy.
 
 =item ResourceId => Str
 
+=item ScalableDimension => Str
+
 =item ScheduledActionName => Str
 
 =item ServiceNamespace => Str
-
-=item [ScalableDimension => Str]
 
 
 =back
@@ -495,8 +520,8 @@ target.
 Each scalable target is identified by a service namespace, resource ID,
 and scalable dimension. A scaling policy applies to the scalable target
 identified by those three attributes. You cannot create a scaling
-policy until you register the scalable target using
-RegisterScalableTarget.
+policy until you have registered the resource as a scalable target
+using RegisterScalableTarget.
 
 To update a policy, specify its policy name and the parameters that you
 want to change. Any parameters that you don't specify are not changed
@@ -506,6 +531,22 @@ You can view the scaling policies for a service namespace using
 DescribeScalingPolicies. If you are no longer using a scaling policy,
 you can delete it using DeleteScalingPolicy.
 
+Multiple scaling policies can be in force at the same time for the same
+scalable target. You can have one or more target tracking scaling
+policies, one or more step scaling policies, or both. However, there is
+a chance that multiple policies could conflict, instructing the
+scalable target to scale out or in at the same time. Application Auto
+Scaling gives precedence to the policy that provides the largest
+capacity for both scale in and scale out. For example, if one policy
+increases capacity by 3, another policy increases capacity by 200
+percent, and the current capacity is 10, Application Auto Scaling uses
+the policy with the highest calculated capacity (200% of 10 = 20) and
+scales out to 30.
+
+Learn more about how to work with scaling policies in the Application
+Auto Scaling User Guide
+(https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
+
 
 =head2 PutScheduledAction
 
@@ -513,13 +554,13 @@ you can delete it using DeleteScalingPolicy.
 
 =item ResourceId => Str
 
+=item ScalableDimension => Str
+
 =item ScheduledActionName => Str
 
 =item ServiceNamespace => Str
 
 =item [EndTime => Str]
-
-=item [ScalableDimension => Str]
 
 =item [ScalableTargetAction => L<Paws::ApplicationAutoScaling::ScalableTargetAction>]
 
@@ -540,8 +581,8 @@ scalable target.
 Each scalable target is identified by a service namespace, resource ID,
 and scalable dimension. A scheduled action applies to the scalable
 target identified by those three attributes. You cannot create a
-scheduled action until you register the scalable target using
-RegisterScalableTarget.
+scheduled action until you have registered the resource as a scalable
+target using RegisterScalableTarget.
 
 To update an action, specify its name and the parameters that you want
 to change. If you don't specify start and end times, the old values are
@@ -551,6 +592,10 @@ this update request.
 You can view the scheduled actions using DescribeScheduledActions. If
 you are no longer using a scheduled action, you can delete it using
 DeleteScheduledAction.
+
+Learn more about how to work with scheduled actions in the Application
+Auto Scaling User Guide
+(https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
 
 
 =head2 RegisterScalableTarget
@@ -577,14 +622,17 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Registe
 Returns: a L<Paws::ApplicationAutoScaling::RegisterScalableTargetResponse> instance
 
 Registers or updates a scalable target. A scalable target is a resource
-that Application Auto Scaling can scale out or scale in. After you have
-registered a scalable target, you can use this operation to update the
-minimum and maximum values for its scalable dimension.
+that Application Auto Scaling can scale out and scale in. Each scalable
+target has a resource ID, scalable dimension, and namespace, as well as
+values for minimum and maximum capacity.
 
-After you register a scalable target, you can create and apply scaling
-policies using PutScalingPolicy. You can view the scaling policies for
-a service namespace using DescribeScalableTargets. If you no longer
-need a scalable target, you can deregister it using
+After you register a scalable target, you do not need to register it
+again to use other Application Auto Scaling operations. To see which
+resources have been registered, use DescribeScalableTargets. You can
+also view the scaling policies for a service namespace using
+DescribeScalableTargets.
+
+If you no longer need a scalable target, you can deregister it using
 DeregisterScalableTarget.
 
 
@@ -628,6 +676,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ScalingPolicies, passing the object as the first parameter, and the string 'ScalingPolicies' as the second parameter 
 
 If not, it will return a a L<Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScheduledActions(sub { },ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceId => Str, ScalableDimension => Str, ScheduledActionNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllScheduledActions(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceId => Str, ScalableDimension => Str, ScheduledActionNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScheduledActions, passing the object as the first parameter, and the string 'ScheduledActions' as the second parameter 
+
+If not, it will return a a L<Paws::ApplicationAutoScaling::DescribeScheduledActionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

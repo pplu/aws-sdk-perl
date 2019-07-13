@@ -76,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Value => 1,                                                   # OPTIONAL
       },    # OPTIONAL
       SriovNetSupport => { Value => 'MyString', },    # OPTIONAL
-      UserData => {
+      UserData        => {
         Value => 'BlobBlob',                          # OPTIONAL
       },    # OPTIONAL
       Value => 'MyString',    # OPTIONAL
@@ -104,7 +104,7 @@ volume is deleted when the instance is terminated.
 To add instance store volumes to an Amazon EBS-backed instance, you
 must add them when you launch the instance. For more information, see
 Updating the Block Device Mapping when Launching an Instance
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -172,7 +172,7 @@ system shutdown).
 
 Changes the instance type to the specified value. For more information,
 see Instance Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 If the instance type is not valid, the error returned is
 C<InvalidInstanceAttributeValue>.
 
@@ -183,7 +183,7 @@ C<InvalidInstanceAttributeValue>.
 Changes the instance's kernel to the specified value. We recommend that
 you use PV-GRUB instead of kernels and RAM disks. For more information,
 see PV-GRUB
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
 
 
 
@@ -192,7 +192,7 @@ see PV-GRUB
 Changes the instance's RAM disk to the specified value. We recommend
 that you use PV-GRUB instead of kernels and RAM disks. For more
 information, see PV-GRUB
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
 
 
 

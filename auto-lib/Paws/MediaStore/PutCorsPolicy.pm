@@ -34,15 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           AllowedHeaders => [
             'MyHeader', ...    # min: 1, max: 8192
-          ],                   # max: 100; OPTIONAL
+          ],                   # max: 100
+          AllowedOrigins => [
+            'MyOrigin', ...    # min: 1, max: 2048
+          ],                   # min: 1, max: 100
           AllowedMethods => [
             'PUT', ...         # values: PUT, GET, DELETE, HEAD
-          ],                   # OPTIONAL
-          AllowedOrigins => [ 'MyOrigin', ... ],    # OPTIONAL
+          ],                   # min: 1, max: 4; OPTIONAL
           ExposeHeaders => [
-            'MyHeader', ...                         # min: 1, max: 8192
-          ],                                        # max: 100; OPTIONAL
-          MaxAgeSeconds => 1,                       # max: 2147483647; OPTIONAL
+            'MyHeader', ...    # min: 1, max: 8192
+          ],                   # max: 100; OPTIONAL
+          MaxAgeSeconds => 1,  # max: 2147483647; OPTIONAL
         },
         ...
       ],

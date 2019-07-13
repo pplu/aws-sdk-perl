@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Org
 
 =head1 DESCRIPTION
 
-This object contains regions to setup the aggregator and an IAM role to
-retrieve organization details.
+This object contains regions to set up the aggregator and an IAM role
+to retrieve organization details.
 
 =head1 ATTRIBUTES
 
@@ -51,7 +51,7 @@ retrieve organization details.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  ARN of the IAM role used to retreive AWS Organization details
+  ARN of the IAM role used to retrieve AWS Organization details
 associated with the aggregator account.
 
 

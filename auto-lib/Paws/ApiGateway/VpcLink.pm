@@ -6,6 +6,7 @@ package Paws::ApiGateway::VpcLink;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
   has StatusMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusMessage');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
   has TargetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targetArns');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -46,6 +47,12 @@ Valid values are: C<"AVAILABLE">, C<"PENDING">, C<"DELETING">, C<"FAILED">
 =head2 StatusMessage => Str
 
 A description about the VPC link status.
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The collection of tags. Each tag element is associated with a given
+resource.
 
 
 =head2 TargetArns => ArrayRef[Str|Undef]

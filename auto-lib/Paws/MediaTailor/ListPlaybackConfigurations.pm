@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::MediaTailor::ListPlaybackConfigurationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.mediatailor/ListPlaybackConfigurations>
 
 =head1 ATTRIBUTES
 
@@ -55,8 +55,8 @@ Maximum number of records to return.
 
 =head2 NextToken => Str
 
-Pagination token returned by the GET list request when results overrun
-the meximum allowed. Use the token to fetch the next page of results.
+Pagination token returned by the GET list request when results exceed
+the maximum allowed. Use the token to fetch the next page of results.
 
 
 

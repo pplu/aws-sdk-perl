@@ -4,6 +4,7 @@ package Paws::Organizations::CreateAccountStatus;
   has AccountName => (is => 'ro', isa => 'Str');
   has CompletedTimestamp => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
+  has GovCloudAccountId => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has RequestedTimestamp => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
@@ -37,8 +38,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Organizatio
 
 =head1 DESCRIPTION
 
-Contains the status about a CreateAccount request to create an AWS
-account in an organization.
+Contains the status about a CreateAccount or CreateGovCloudAccount
+request to create an AWS account or an AWS GovCloud (US) account in an
+organization.
 
 =head1 ATTRIBUTES
 
@@ -97,6 +99,12 @@ Customer Support.
 
 =back
 
+
+
+=head2 GovCloudAccountId => Str
+
+  If the account was created successfully, the unique identifier (ID) of
+the new account in the AWS GovCloud (US) Region.
 
 
 =head2 Id => Str

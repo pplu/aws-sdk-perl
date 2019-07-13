@@ -52,24 +52,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 
 =head2 B<REQUIRED> AuditReportResponseFormat => Str
 
-Format in which to create the report. This can be either B<JSON> or
+The format in which to create the report. This can be either B<JSON> or
 B<CSV>.
 
 Valid values are: C<"JSON">, C<"CSV">
 
 =head2 B<REQUIRED> CertificateAuthorityArn => Str
 
-Amazon Resource Name (ARN) of the CA to be audited. This is of the
+The Amazon Resource Name (ARN) of the CA to be audited. This is of the
 form:
 
-C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>
+C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>
 >.
 
 
 
 =head2 B<REQUIRED> S3BucketName => Str
 
-Name of the S3 bucket that will contain the audit report.
+The name of the S3 bucket that will contain the audit report.
 
 
 

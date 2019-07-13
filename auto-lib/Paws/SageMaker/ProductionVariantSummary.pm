@@ -2,6 +2,7 @@ package Paws::SageMaker::ProductionVariantSummary;
   use Moose;
   has CurrentInstanceCount => (is => 'ro', isa => 'Int');
   has CurrentWeight => (is => 'ro', isa => 'Num');
+  has DeployedImages => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::DeployedImage]');
   has DesiredInstanceCount => (is => 'ro', isa => 'Int');
   has DesiredWeight => (is => 'ro', isa => 'Num');
   has VariantName => (is => 'ro', isa => 'Str', required => 1);
@@ -51,6 +52,13 @@ C<Updating>, you get different desired and current values.
 =head2 CurrentWeight => Num
 
   The weight associated with the variant.
+
+
+=head2 DeployedImages => ArrayRef[L<Paws::SageMaker::DeployedImage>]
+
+  An array of C<DeployedImage> objects that specify the Amazon EC2
+Container Registry paths of the inference images deployed on instances
+of this C<ProductionVariant>.
 
 
 =head2 DesiredInstanceCount => Int

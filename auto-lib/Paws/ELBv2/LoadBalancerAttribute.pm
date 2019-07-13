@@ -48,6 +48,24 @@ Balancers and Network Load Balancers:
 
 =item *
 
+C<access_logs.s3.enabled> - Indicates whether access logs are enabled.
+The value is C<true> or C<false>. The default is C<false>.
+
+=item *
+
+C<access_logs.s3.bucket> - The name of the S3 bucket for the access
+logs. This attribute is required if access logs are enabled. The bucket
+must exist in the same region as the load balancer and have a bucket
+policy that grants Elastic Load Balancing permissions to write to the
+bucket.
+
+=item *
+
+C<access_logs.s3.prefix> - The prefix for the location in the S3 bucket
+for the access logs.
+
+=item *
+
 C<deletion_protection.enabled> - Indicates whether deletion protection
 is enabled. The value is C<true> or C<false>. The default is C<false>.
 
@@ -57,24 +75,6 @@ The following attributes are supported by only Application Load
 Balancers:
 
 =over
-
-=item *
-
-C<access_logs.s3.enabled> - Indicates whether access logs are enabled.
-The value is C<true> or C<false>. The default is C<false>.
-
-=item *
-
-C<access_logs.s3.bucket> - The name of the S3 bucket for the access
-logs. This attribute is required if access logs are enabled. The bucket
-must exist in the same region as the load balancer and have a bucket
-policy that grants Elastic Load Balancing permission to write to the
-bucket.
-
-=item *
-
-C<access_logs.s3.prefix> - The prefix for the location in the S3 bucket
-for the access logs.
 
 =item *
 

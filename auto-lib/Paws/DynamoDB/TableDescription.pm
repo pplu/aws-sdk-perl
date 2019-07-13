@@ -1,6 +1,7 @@
 package Paws::DynamoDB::TableDescription;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
+  has BillingModeSummary => (is => 'ro', isa => 'Paws::DynamoDB::BillingModeSummary');
   has CreationDateTime => (is => 'ro', isa => 'Str');
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexDescription]');
   has ItemCount => (is => 'ro', isa => 'Int');
@@ -71,6 +72,11 @@ C<AttributeType> - The data type for the attribute.
 
 =back
 
+
+
+=head2 BillingModeSummary => L<Paws::DynamoDB::BillingModeSummary>
+
+  Contains the details for the read/write capacity mode.
 
 
 =head2 CreationDateTime => Str
@@ -231,7 +237,7 @@ C<RANGE> - sort key
 =back
 
 The partition key of an item is also known as its I<hash attribute>.
-The term "hash attribute" derives from DynamoDB' usage of an internal
+The term "hash attribute" derives from DynamoDB's usage of an internal
 hash function to evenly distribute data items across partitions, based
 on their partition key values.
 
@@ -243,7 +249,7 @@ the sort key value.
 =back
 
 For more information about primary keys, see Primary Key
-(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
 in the I<Amazon DynamoDB Developer Guide>.
 
 

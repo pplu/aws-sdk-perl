@@ -23,7 +23,7 @@ additional items to return, the string is empty.
 
 =head2 WindowExecutions => ArrayRef[L<Paws::SSM::MaintenanceWindowExecution>]
 
-Information about the Maintenance Windows execution.
+Information about the maintenance window executions.
 
 
 =head2 _request_id => Str

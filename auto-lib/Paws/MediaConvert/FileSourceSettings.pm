@@ -1,7 +1,7 @@
 package Paws::MediaConvert::FileSourceSettings;
   use Moose;
   has Convert608To708 => (is => 'ro', isa => 'Str', request_name => 'convert608To708', traits => ['NameInRequest']);
-  has SourceFile => (is => 'ro', isa => 'Str', request_name => 'sourceFile', traits => ['NameInRequest'], required => 1);
+  has SourceFile => (is => 'ro', isa => 'Str', request_name => 'sourceFile', traits => ['NameInRequest']);
   has TimeDelta => (is => 'ro', isa => 'Int', request_name => 'timeDelta', traits => ['NameInRequest']);
 1;
 
@@ -40,10 +40,13 @@ Settings for File-based Captions in Source
 
 =head2 Convert608To708 => Str
 
-  
+  If set to UPCONVERT, 608 caption data is both passed through via the
+"608 compatibility bytes" fields of the 708 wrapper as well as
+translated into 708. 708 data present in the source content will be
+discarded.
 
 
-=head2 B<REQUIRED> SourceFile => Str
+=head2 SourceFile => Str
 
   External caption file used for loading captions. Accepted file
 extensions are 'scc', 'ttml', 'dfxp', 'stl', 'srt', and 'smi'.

@@ -24,7 +24,7 @@ C<null> when there are no more results to return.
 
 =head2 SecurityGroups => ArrayRef[L<Paws::EC2::SecurityGroup>]
 
-Information about one or more security groups.
+Information about the security groups.
 
 
 =head2 _request_id => Str

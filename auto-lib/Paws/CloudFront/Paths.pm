@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 A complex type that contains information about the objects that you
 want to invalidate. For more information, see Specifying the Objects to
 Invalidate
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#invalidation-specifying-objects)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#invalidation-specifying-objects)
 in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
@@ -49,7 +49,8 @@ invalidate.
 
 =head2 B<REQUIRED> Quantity => Int
 
-  The number of objects that you want to invalidate.
+  The number of invalidation paths specified for the objects that you
+want to invalidate.
 
 
 

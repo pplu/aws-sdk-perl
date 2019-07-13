@@ -1,5 +1,6 @@
 package Paws::ElastiCache::NodeGroupConfiguration;
   use Moose;
+  has NodeGroupId => (is => 'ro', isa => 'Str');
   has PrimaryAvailabilityZone => (is => 'ro', isa => 'Str');
   has ReplicaAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
   has ReplicaCount => (is => 'ro', isa => 'Int');
@@ -23,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::NodeGroupConfiguration object:
 
-  $service_obj->Method(Att1 => { PrimaryAvailabilityZone => $value, ..., Slots => $value  });
+  $service_obj->Method(Att1 => { NodeGroupId => $value, ..., Slots => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache::NodeGroupConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->PrimaryAvailabilityZone
+  $result->Att1->NodeGroupId
 
 =head1 DESCRIPTION
 
@@ -39,6 +40,12 @@ configuration has the following: C<Slots>, C<PrimaryAvailabilityZone>,
 C<ReplicaAvailabilityZones>, C<ReplicaCount>.
 
 =head1 ATTRIBUTES
+
+
+=head2 NodeGroupId => Str
+
+  Either the ElastiCache for Redis supplied 4-digit id or a user supplied
+id for the node group these configuration values apply to.
 
 
 =head2 PrimaryAvailabilityZone => Str

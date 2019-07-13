@@ -141,7 +141,7 @@ capabilities required to configure AWS resources and bootstrap their
 developer desktop projects with the necessary SDKs, constants, tools
 and samples to make use of those resources.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/mobile-hub/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/mobile-hub/>
 
 
 =head1 METHODS

@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Filter => {
         JobName   => 'MyJobName',    # min: 1, max: 256; OPTIONAL
         JobStatus => 'SUBMITTED'
-        ,    # values: SUBMITTED, IN_PROGRESS, COMPLETED, FAILED; OPTIONAL
+        , # values: SUBMITTED, IN_PROGRESS, COMPLETED, FAILED, STOP_REQUESTED, STOPPED; OPTIONAL
         SubmitTimeAfter  => '1970-01-01T01:00:00',    # OPTIONAL
         SubmitTimeBefore => '1970-01-01T01:00:00',    # OPTIONAL
       },    # OPTIONAL
@@ -64,7 +64,8 @@ one filter at a time.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return in each page.
+The maximum number of results to return in each page. The default is
+100.
 
 
 

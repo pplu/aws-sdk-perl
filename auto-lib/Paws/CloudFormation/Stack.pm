@@ -6,6 +6,7 @@ package Paws::CloudFormation::Stack;
   has DeletionTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DisableRollback => (is => 'ro', isa => 'Bool');
+  has DriftInformation => (is => 'ro', isa => 'Paws::CloudFormation::StackDriftInformation');
   has EnableTerminationProtection => (is => 'ro', isa => 'Bool');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -97,6 +98,16 @@ C<false>: enable rollback
 
 =back
 
+
+
+=head2 DriftInformation => L<Paws::CloudFormation::StackDriftInformation>
+
+  Information on whether a stack's actual configuration differs, or has
+I<drifted>, from it's expected configuration, as defined in the stack
+template and any values specified as template parameters. For more
+information, see Detecting Unregulated Configuration Changes to Stacks
+and Resources
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 
 
 =head2 EnableTerminationProtection => Bool

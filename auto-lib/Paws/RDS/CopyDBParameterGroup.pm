@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To copy a DB parameter group
     # This example copies a DB parameter group.
     my $CopyDBParameterGroupResult = $rds->CopyDBParameterGroup(
-      {
-        'SourceDBParameterGroupIdentifier'  => 'mymysqlparametergroup',
-        'TargetDBParameterGroupDescription' => 'My MySQL parameter group copy',
-        'TargetDBParameterGroupIdentifier'  => 'mymysqlparametergroup-copy'
-      }
+      'SourceDBParameterGroupIdentifier'  => 'mymysqlparametergroup',
+      'TargetDBParameterGroupDescription' => 'My MySQL parameter group copy',
+      'TargetDBParameterGroupIdentifier'  => 'mymysqlparametergroup-copy'
     );
 
 
@@ -50,9 +48,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head2 B<REQUIRED> SourceDBParameterGroupIdentifier => Str
 
 The identifier or ARN for the source DB parameter group. For
-information about creating an ARN, see Constructing an RDS Amazon
-Resource Name (ARN)
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+information about creating an ARN, see Constructing an ARN for Amazon
+RDS
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
+in the I<Amazon RDS User Guide>.
 
 Constraints:
 
@@ -94,7 +93,7 @@ Constraints:
 
 =item *
 
-Cannot be null, empty, or blank
+Can't be null, empty, or blank
 
 =item *
 
@@ -106,7 +105,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 

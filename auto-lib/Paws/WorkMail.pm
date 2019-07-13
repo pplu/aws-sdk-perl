@@ -105,6 +105,11 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::DisassociateMemberFromGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetMailboxDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::GetMailboxDetails', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAliases {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ListAliases', @_);
@@ -158,6 +163,11 @@ package Paws::WorkMail;
   sub ResetPassword {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ResetPassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMailboxQuota {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::UpdateMailboxQuota', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePrimaryEmailAddress {
@@ -240,6 +250,29 @@ package Paws::WorkMail;
 
     return undef
   }
+  sub ListAllMailboxPermissions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMailboxPermissions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListMailboxPermissions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Permissions }, @{ $next_result->Permissions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Permissions') foreach (@{ $result->Permissions });
+        $result = $self->ListMailboxPermissions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Permissions') foreach (@{ $result->Permissions });
+    }
+
+    return undef
+  }
   sub ListAllOrganizations {
     my $self = shift;
 
@@ -259,6 +292,29 @@ package Paws::WorkMail;
         $result = $self->ListOrganizations(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'OrganizationSummaries') foreach (@{ $result->OrganizationSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllResourceDelegates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResourceDelegates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListResourceDelegates(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Delegates }, @{ $next_result->Delegates };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Delegates') foreach (@{ $result->Delegates });
+        $result = $self->ListResourceDelegates(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Delegates') foreach (@{ $result->Delegates });
     }
 
     return undef
@@ -311,7 +367,7 @@ package Paws::WorkMail;
   }
 
 
-  sub operations { qw/AssociateDelegateToResource AssociateMemberToGroup CreateAlias CreateGroup CreateResource CreateUser DeleteAlias DeleteGroup DeleteMailboxPermissions DeleteResource DeleteUser DeregisterFromWorkMail DescribeGroup DescribeOrganization DescribeResource DescribeUser DisassociateDelegateFromResource DisassociateMemberFromGroup ListAliases ListGroupMembers ListGroups ListMailboxPermissions ListOrganizations ListResourceDelegates ListResources ListUsers PutMailboxPermissions RegisterToWorkMail ResetPassword UpdatePrimaryEmailAddress UpdateResource / }
+  sub operations { qw/AssociateDelegateToResource AssociateMemberToGroup CreateAlias CreateGroup CreateResource CreateUser DeleteAlias DeleteGroup DeleteMailboxPermissions DeleteResource DeleteUser DeregisterFromWorkMail DescribeGroup DescribeOrganization DescribeResource DescribeUser DisassociateDelegateFromResource DisassociateMemberFromGroup GetMailboxDetails ListAliases ListGroupMembers ListGroups ListMailboxPermissions ListOrganizations ListResourceDelegates ListResources ListUsers PutMailboxPermissions RegisterToWorkMail ResetPassword UpdateMailboxQuota UpdatePrimaryEmailAddress UpdateResource / }
 
 1;
 
@@ -342,12 +398,12 @@ Paws::WorkMail - Perl Interface to AWS Amazon WorkMail
 Amazon WorkMail is a secure, managed business email and calendaring
 service with support for existing desktop and mobile email clients. You
 can access your email, contacts, and calendars using Microsoft Outlook,
-your browser, or their native iOS and Android email applications. You
-can integrate Amazon WorkMail with your existing corporate directory
-and control both the keys that encrypt your data and the location in
-which your data is stored.
+your browser, or other native iOS and Android email applications. You
+can integrate WorkMail with your existing corporate directory and
+control both the keys that encrypt your data and the location in which
+your data is stored.
 
-The Amazon WorkMail API is designed for the following scenarios:
+The WorkMail API is designed for the following scenarios:
 
 =over
 
@@ -381,17 +437,17 @@ Managing resources
 
 =back
 
-All Amazon WorkMail API actions are Amazon-authenticated and
+All WorkMail API operations are Amazon-authenticated and
 certificate-signed. They not only require the use of the AWS SDK, but
-also allow for the exclusive use of IAM users and roles to help
-facilitate access, trust, and permission policies. By creating a role
-and allowing an IAM user to access the Amazon WorkMail site, the IAM
-user gains full administrative visibility into the entire Amazon
-WorkMail organization (or as set in the IAM policy). This includes, but
-is not limited to, the ability to create, update, and delete users,
-groups, and resources. This allows developers to perform the scenarios
-listed above, as well as give users the ability to grant access on a
-selective basis using the IAM model.
+also allow for the exclusive use of AWS Identity and Access Management
+users and roles to help facilitate access, trust, and permission
+policies. By creating a role and allowing an IAM user to access the
+WorkMail site, the IAM user gains full administrative visibility into
+the entire WorkMail organization (or as set in the IAM policy). This
+includes, but is not limited to, the ability to create, update, and
+delete users, groups, and resources. This allows developers to perform
+the scenarios listed above, as well as give users the ability to grant
+access on a selective basis using the IAM model.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01>
 
@@ -415,7 +471,7 @@ Each argument is described in detail in: L<Paws::WorkMail::AssociateDelegateToRe
 
 Returns: a L<Paws::WorkMail::AssociateDelegateToResourceResponse> instance
 
-Adds a member to the resource's set of delegates.
+Adds a member (user or group) to the resource's set of delegates.
 
 
 =head2 AssociateMemberToGroup
@@ -435,7 +491,7 @@ Each argument is described in detail in: L<Paws::WorkMail::AssociateMemberToGrou
 
 Returns: a L<Paws::WorkMail::AssociateMemberToGroupResponse> instance
 
-Adds a member to the group's set.
+Adds a member (user or group) to the group's set.
 
 
 =head2 CreateAlias
@@ -455,7 +511,8 @@ Each argument is described in detail in: L<Paws::WorkMail::CreateAlias>
 
 Returns: a L<Paws::WorkMail::CreateAliasResponse> instance
 
-Adds an alias to the set of a given member of Amazon WorkMail.
+Adds an alias to the set of a given member (user or group) of Amazon
+WorkMail.
 
 
 =head2 CreateGroup
@@ -494,8 +551,7 @@ Each argument is described in detail in: L<Paws::WorkMail::CreateResource>
 
 Returns: a L<Paws::WorkMail::CreateResourceResponse> instance
 
-Creates a new Amazon WorkMail resource. The available types are
-equipment and room.
+Creates a new Amazon WorkMail resource.
 
 
 =head2 CreateUser
@@ -538,7 +594,8 @@ Each argument is described in detail in: L<Paws::WorkMail::DeleteAlias>
 
 Returns: a L<Paws::WorkMail::DeleteAliasResponse> instance
 
-Remove the alias from a set of aliases for a given user.
+Remove one or more specified aliases from a set of aliases for a given
+user.
 
 
 =head2 DeleteGroup
@@ -576,7 +633,7 @@ Each argument is described in detail in: L<Paws::WorkMail::DeleteMailboxPermissi
 
 Returns: a L<Paws::WorkMail::DeleteMailboxPermissionsResponse> instance
 
-Deletes permissions granted to a user or group.
+Deletes permissions granted to a member (user or group).
 
 
 =head2 DeleteResource
@@ -612,9 +669,12 @@ Each argument is described in detail in: L<Paws::WorkMail::DeleteUser>
 
 Returns: a L<Paws::WorkMail::DeleteUserResponse> instance
 
-Deletes a user from Amazon WorkMail and all subsequent systems. The
-action can't be undone. The mailbox is kept as-is for a minimum of 30
-days, without any means to restore it.
+Deletes a user from Amazon WorkMail and all subsequent systems. Before
+you can delete a user, the user state must be C<DISABLED>. Use the
+DescribeUser action to confirm the user state.
+
+Deleting a user is permanent and cannot be undone. WorkMail archives
+user mailboxes for 30 days before they are permanently removed.
 
 
 =head2 DeregisterFromWorkMail
@@ -634,7 +694,7 @@ Returns: a L<Paws::WorkMail::DeregisterFromWorkMailResponse> instance
 
 Mark a user, group, or resource as no longer used in Amazon WorkMail.
 This action disassociates the mailbox and schedules it for clean-up.
-Amazon WorkMail keeps mailboxes for 30 days before they are permanently
+WorkMail keeps mailboxes for 30 days before they are permanently
 removed. The functionality in the console is I<Disable>.
 
 
@@ -749,6 +809,25 @@ Returns: a L<Paws::WorkMail::DisassociateMemberFromGroupResponse> instance
 Removes a member from a group.
 
 
+=head2 GetMailboxDetails
+
+=over
+
+=item OrganizationId => Str
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::GetMailboxDetails>
+
+Returns: a L<Paws::WorkMail::GetMailboxDetailsResponse> instance
+
+Requests a user's mailbox details for a specified organization and
+user.
+
+
 =head2 ListAliases
 
 =over
@@ -791,7 +870,8 @@ Each argument is described in detail in: L<Paws::WorkMail::ListGroupMembers>
 
 Returns: a L<Paws::WorkMail::ListGroupMembersResponse> instance
 
-Returns an overview of the members of a group.
+Returns an overview of the members of a group. Users and groups can be
+members of a group.
 
 
 =head2 ListGroups
@@ -833,7 +913,8 @@ Each argument is described in detail in: L<Paws::WorkMail::ListMailboxPermission
 
 Returns: a L<Paws::WorkMail::ListMailboxPermissionsResponse> instance
 
-Lists the mailbox permissions associated with a mailbox.
+Lists the mailbox permissions associated with a user, group, or
+resource mailbox.
 
 
 =head2 ListOrganizations
@@ -936,8 +1017,8 @@ Each argument is described in detail in: L<Paws::WorkMail::PutMailboxPermissions
 
 Returns: a L<Paws::WorkMail::PutMailboxPermissionsResponse> instance
 
-Sets permissions for a user or group. This replaces any pre-existing
-permissions set for the entity.
+Sets permissions for a user, group, or resource. This replaces any
+pre-existing permissions.
 
 
 =head2 RegisterToWorkMail
@@ -957,15 +1038,17 @@ Each argument is described in detail in: L<Paws::WorkMail::RegisterToWorkMail>
 
 Returns: a L<Paws::WorkMail::RegisterToWorkMailResponse> instance
 
-Registers an existing and disabled user, group, or resource/entity for
-Amazon WorkMail use by associating a mailbox and calendaring
-capabilities. It performs no change if the entity is enabled and fails
-if the entity is deleted. This operation results in the accumulation of
-costs. For more information, see Pricing
-(http://aws.amazon.com/workmail/pricing). The equivalent console
-functionality for this operation is I<Enable>. Users can either be
-created by calling the CreateUser API or they can be synchronized from
-your directory. For more information, see DeregisterFromWorkMail.
+Registers an existing and disabled user, group, or resource for Amazon
+WorkMail use by associating a mailbox and calendaring capabilities. It
+performs no change if the user, group, or resource is enabled and fails
+if the user, group, or resource is deleted. This operation results in
+the accumulation of costs. For more information, see Pricing
+(https://aws.amazon.com//workmail/pricing). The equivalent console
+functionality for this operation is I<Enable>.
+
+Users can either be created by calling the CreateUser API operation or
+they can be synchronized from your directory. For more information, see
+DeregisterFromWorkMail.
 
 
 =head2 ResetPassword
@@ -988,6 +1071,27 @@ Returns: a L<Paws::WorkMail::ResetPasswordResponse> instance
 Allows the administrator to reset the password for a user.
 
 
+=head2 UpdateMailboxQuota
+
+=over
+
+=item MailboxQuota => Int
+
+=item OrganizationId => Str
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::UpdateMailboxQuota>
+
+Returns: a L<Paws::WorkMail::UpdateMailboxQuotaResponse> instance
+
+Updates a user's current mailbox quota for a specified organization and
+user.
+
+
 =head2 UpdatePrimaryEmailAddress
 
 =over
@@ -1005,10 +1109,10 @@ Each argument is described in detail in: L<Paws::WorkMail::UpdatePrimaryEmailAdd
 
 Returns: a L<Paws::WorkMail::UpdatePrimaryEmailAddressResponse> instance
 
-Updates the primary email for an entity. The current email is moved
-into the list of aliases (or swapped between an existing alias and the
-current primary email) and the email provided in the input is promoted
-as the primary.
+Updates the primary email for a user, group, or resource. The current
+email is moved into the list of aliases (or swapped between an existing
+alias and the current primary email), and the email provided in the
+input is promoted as the primary.
 
 
 =head2 UpdateResource
@@ -1030,9 +1134,10 @@ Each argument is described in detail in: L<Paws::WorkMail::UpdateResource>
 
 Returns: a L<Paws::WorkMail::UpdateResourceResponse> instance
 
-Updates data for the resource. It must be preceded by a describe call
-in order to have the latest information. The dataset in the request
-should be the one expected when performing another describe call.
+Updates data for the resource. To have the latest information, it must
+be preceded by a DescribeResource call. The dataset in the request
+should be the one expected when performing another C<DescribeResource>
+call.
 
 
 
@@ -1077,6 +1182,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::WorkMail::ListGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllMailboxPermissions(sub { },EntityId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllMailboxPermissions(EntityId => Str, OrganizationId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Permissions, passing the object as the first parameter, and the string 'Permissions' as the second parameter 
+
+If not, it will return a a L<Paws::WorkMail::ListMailboxPermissionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllOrganizations(sub { },[MaxResults => Int, NextToken => Str])
 
 =head2 ListAllOrganizations([MaxResults => Int, NextToken => Str])
@@ -1087,6 +1204,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - OrganizationSummaries, passing the object as the first parameter, and the string 'OrganizationSummaries' as the second parameter 
 
 If not, it will return a a L<Paws::WorkMail::ListOrganizationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResourceDelegates(sub { },OrganizationId => Str, ResourceId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllResourceDelegates(OrganizationId => Str, ResourceId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Delegates, passing the object as the first parameter, and the string 'Delegates' as the second parameter 
+
+If not, it will return a a L<Paws::WorkMail::ListResourceDelegatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllResources(sub { },OrganizationId => Str, [MaxResults => Int, NextToken => Str])

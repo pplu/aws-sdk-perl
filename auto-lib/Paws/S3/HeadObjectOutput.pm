@@ -15,6 +15,9 @@ package Paws::S3::HeadObjectOutput;
   has LastModified => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Last-Modified');
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', traits => ['ParamInHeaders'], header_prefix => 'x-amz-meta-');
   has MissingMeta => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-missing-meta');
+  has ObjectLockLegalHoldStatus => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-legal-hold');
+  has ObjectLockMode => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-mode');
+  has ObjectLockRetainUntilDate => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-retain-until-date');
   has PartsCount => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-mp-parts-count');
   has ReplicationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-replication-status');
   has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
@@ -135,6 +138,24 @@ HTTP headers.
 
 
 
+=head2 ObjectLockLegalHoldStatus => Str
+
+The Legal Hold status for the specified object.
+
+Valid values are: C<"ON">, C<"OFF">
+
+=head2 ObjectLockMode => Str
+
+The object lock mode currently in place for this object.
+
+Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
+
+=head2 ObjectLockRetainUntilDate => Str
+
+The date and time when this object's object lock expires.
+
+
+
 =head2 PartsCount => Int
 
 The count of parts this object has.
@@ -194,7 +215,7 @@ master encryption key that was used for the object.
 
 
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
 
 =head2 VersionId => Str
 

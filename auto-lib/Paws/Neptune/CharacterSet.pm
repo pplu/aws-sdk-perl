@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Neptune::Ch
 
 =head1 DESCRIPTION
 
-This data type is used as a response element in the action
-DescribeDBEngineVersions.
+Specifies a character set.
 
 =head1 ATTRIBUTES
 

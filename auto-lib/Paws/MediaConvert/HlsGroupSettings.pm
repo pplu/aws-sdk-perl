@@ -7,16 +7,18 @@ package Paws::MediaConvert::HlsGroupSettings;
   has ClientCache => (is => 'ro', isa => 'Str', request_name => 'clientCache', traits => ['NameInRequest']);
   has CodecSpecification => (is => 'ro', isa => 'Str', request_name => 'codecSpecification', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
+  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
   has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::HlsEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
   has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
   has ManifestDurationFormat => (is => 'ro', isa => 'Str', request_name => 'manifestDurationFormat', traits => ['NameInRequest']);
-  has MinSegmentLength => (is => 'ro', isa => 'Int', request_name => 'minSegmentLength', traits => ['NameInRequest'], required => 1);
+  has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
+  has MinSegmentLength => (is => 'ro', isa => 'Int', request_name => 'minSegmentLength', traits => ['NameInRequest']);
   has OutputSelection => (is => 'ro', isa => 'Str', request_name => 'outputSelection', traits => ['NameInRequest']);
   has ProgramDateTime => (is => 'ro', isa => 'Str', request_name => 'programDateTime', traits => ['NameInRequest']);
   has ProgramDateTimePeriod => (is => 'ro', isa => 'Int', request_name => 'programDateTimePeriod', traits => ['NameInRequest']);
   has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
-  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest'], required => 1);
+  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has SegmentsPerSubdirectory => (is => 'ro', isa => 'Int', request_name => 'segmentsPerSubdirectory', traits => ['NameInRequest']);
   has StreamInfResolution => (is => 'ro', isa => 'Str', request_name => 'streamInfResolution', traits => ['NameInRequest']);
   has TimedMetadataId3Frame => (is => 'ro', isa => 'Str', request_name => 'timedMetadataId3Frame', traits => ['NameInRequest']);
@@ -78,17 +80,28 @@ URL than the main .m3u8 file.
 
 =head2 CaptionLanguageSetting => Str
 
-  
+  Applies only to 608 Embedded output captions. Insert: Include
+CLOSED-CAPTIONS lines in the manifest. Specify at least one language in
+the CC1 Language Code field. One CLOSED-CAPTION line is added for each
+Language Code you specify. Make sure to specify the languages in the
+order in which they appear in the original source (if the source is
+embedded format) or the order of the caption selectors (if the source
+is other than embedded). Otherwise, languages in the manifest will not
+match up properly with the output captions. None: Include
+CLOSED-CAPTIONS=NONE line in the manifest. Omit: Omit any
+CLOSED-CAPTIONS line from the manifest.
 
 
 =head2 ClientCache => Str
 
-  
+  When set to ENABLED, sets #EXT-X-ALLOW-CACHE:no tag, which prevents
+client from saving media segments for later replay.
 
 
 =head2 CodecSpecification => Str
 
-  
+  Specification to use (RFC-6381 or the default RFC-4281) during m3u8
+playlist generation.
 
 
 =head2 Destination => Str
@@ -100,9 +113,15 @@ filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
 
 
+=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+
+  Settings associated with the destination. Will vary based on the type
+of destination
+
+
 =head2 DirectoryStructure => Str
 
-  
+  Indicates whether segments should be placed in subdirectories.
 
 
 =head2 Encryption => L<Paws::MediaConvert::HlsEncryptionSettings>
@@ -112,15 +131,32 @@ service uses the filename of the first input file.
 
 =head2 ManifestCompression => Str
 
-  
+  When set to GZIP, compresses HLS playlist.
 
 
 =head2 ManifestDurationFormat => Str
 
-  
+  Indicates whether the output manifest should use floating point values
+for segment duration.
 
 
-=head2 B<REQUIRED> MinSegmentLength => Int
+=head2 MinFinalSegmentLength => Num
+
+  Keep this setting at the default value of 0, unless you are
+troubleshooting a problem with how devices play back the end of your
+video asset. If you know that player devices are hanging on the final
+segment of your video because the length of your final segment is too
+short, use this setting to specify a minimum final segment length, in
+seconds. Choose a value that is greater than or equal to 1 and less
+than your segment length. When you specify a value for this setting,
+the encoder will combine any final segment that is shorter than the
+length that you specify with the previous segment. For example, your
+segment length is 3 seconds and your final segment is .5 seconds
+without a minimum final segment length; when you set the minimum final
+segment length to 1, your final segment is 3.5 seconds.
+
+
+=head2 MinSegmentLength => Int
 
   When set, Minimum Segment Size is enforced by looking ahead and back
 within the specified range for a nearby avail and extending the segment
@@ -129,12 +165,17 @@ size if needed.
 
 =head2 OutputSelection => Str
 
-  
+  Indicates whether the .m3u8 manifest file should be generated for this
+HLS output group.
 
 
 =head2 ProgramDateTime => Str
 
-  
+  Includes or excludes EXT-X-PROGRAM-DATE-TIME tag in .m3u8 manifest
+files. The value is calculated as follows: either the program date and
+time are initialized using the input timecode source, or the time is
+initialized using the input timecode source and the date is initialized
+using the timestamp_offset.
 
 
 =head2 ProgramDateTimePeriod => Int
@@ -144,10 +185,11 @@ size if needed.
 
 =head2 SegmentControl => Str
 
-  
+  When set to SINGLE_FILE, emits program as a single media resource (.ts)
+file, uses #EXT-X-BYTERANGE tags to index segment for playback.
 
 
-=head2 B<REQUIRED> SegmentLength => Int
+=head2 SegmentLength => Int
 
   Length of MPEG-2 Transport Stream segments to create (in seconds). Note
 that segments will end on the next keyframe after this number of
@@ -163,12 +205,13 @@ have an effect.
 
 =head2 StreamInfResolution => Str
 
-  
+  Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF
+tag of variant manifest.
 
 
 =head2 TimedMetadataId3Frame => Str
 
-  
+  Indicates ID3 frame that has the timecode.
 
 
 =head2 TimedMetadataId3Period => Int

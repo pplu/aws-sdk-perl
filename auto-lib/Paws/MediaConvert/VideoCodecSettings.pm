@@ -1,6 +1,6 @@
 package Paws::MediaConvert::VideoCodecSettings;
   use Moose;
-  has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest'], required => 1);
+  has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest']);
   has FrameCaptureSettings => (is => 'ro', isa => 'Paws::MediaConvert::FrameCaptureSettings', request_name => 'frameCaptureSettings', traits => ['NameInRequest']);
   has H264Settings => (is => 'ro', isa => 'Paws::MediaConvert::H264Settings', request_name => 'h264Settings', traits => ['NameInRequest']);
   has H265Settings => (is => 'ro', isa => 'Paws::MediaConvert::H265Settings', request_name => 'h265Settings', traits => ['NameInRequest']);
@@ -48,34 +48,39 @@ FrameCaptureSettings
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Codec => Str
+=head2 Codec => Str
 
-  
+  Specifies the video codec. This must be equal to one of the enum values
+defined by the object VideoCodec.
 
 
 =head2 FrameCaptureSettings => L<Paws::MediaConvert::FrameCaptureSettings>
 
-  
+  Required when you set (Codec) under
+(VideoDescription)E<gt>(CodecSettings) to the value FRAME_CAPTURE.
 
 
 =head2 H264Settings => L<Paws::MediaConvert::H264Settings>
 
-  
+  Required when you set (Codec) under
+(VideoDescription)E<gt>(CodecSettings) to the value H_264.
 
 
 =head2 H265Settings => L<Paws::MediaConvert::H265Settings>
 
-  
+  Settings for H265 codec
 
 
 =head2 Mpeg2Settings => L<Paws::MediaConvert::Mpeg2Settings>
 
-  
+  Required when you set (Codec) under
+(VideoDescription)E<gt>(CodecSettings) to the value MPEG2.
 
 
 =head2 ProresSettings => L<Paws::MediaConvert::ProresSettings>
 
-  
+  Required when you set (Codec) under
+(VideoDescription)E<gt>(CodecSettings) to the value PRORES.
 
 
 

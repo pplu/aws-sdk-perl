@@ -33,11 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To terminate an environment
     # The following operation terminates an Elastic Beanstalk environment named
     # my-env:
-    my $EnvironmentDescription = $elasticbeanstalk->TerminateEnvironment(
-      {
-        'EnvironmentName' => 'my-env'
-      }
-    );
+    my $EnvironmentDescription =
+      $elasticbeanstalk->TerminateEnvironment( 'EnvironmentName' => 'my-env' );
 
     # Results:
     my $AbortableOperationInProgress =
@@ -109,7 +106,7 @@ environment, but the AWS resources continue to operate.
 =back
 
 For more information, see the AWS Elastic Beanstalk User Guide.
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/ug/)
 
 Default: C<true>
 

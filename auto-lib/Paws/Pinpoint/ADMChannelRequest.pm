@@ -1,7 +1,7 @@
 package Paws::Pinpoint::ADMChannelRequest;
   use Moose;
-  has ClientId => (is => 'ro', isa => 'Str');
-  has ClientSecret => (is => 'ro', isa => 'Str');
+  has ClientId => (is => 'ro', isa => 'Str', required => 1);
+  has ClientSecret => (is => 'ro', isa => 'Str', required => 1);
   has Enabled => (is => 'ro', isa => 'Bool');
 1;
 
@@ -33,24 +33,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-Amazon Device Messaging channel definition.
+Specifies the status and settings of the ADM (Amazon Device Messaging)
+channel for an application.
 
 =head1 ATTRIBUTES
 
 
-=head2 ClientId => Str
+=head2 B<REQUIRED> ClientId => Str
 
-  Client ID as gotten from Amazon
+  The Client ID that you received from Amazon to send messages by using
+ADM.
 
 
-=head2 ClientSecret => Str
+=head2 B<REQUIRED> ClientSecret => Str
 
-  Client secret as gotten from Amazon
+  The Client Secret that you received from Amazon to send messages by
+using ADM.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether to enable the ADM channel for the application.
 
 
 

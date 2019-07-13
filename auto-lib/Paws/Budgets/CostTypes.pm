@@ -41,7 +41,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Co
 
 =head1 DESCRIPTION
 
-The types of cost included in a budget, such as tax and subscriptions.
+The types of cost that are included in a C<COST> budget, such as tax
+and subscriptions.
+
+C<USAGE>, C<RI_UTILIZATION>, and C<RI_COVERAGE> budgets do not have
+C<CostTypes>.
 
 =head1 ATTRIBUTES
 
@@ -119,7 +123,7 @@ The default value is C<false>.
 
 =head2 UseBlended => Bool
 
-  Specifies whether a budget uses blended rate.
+  Specifies whether a budget uses a blended rate.
 
 The default value is C<false>.
 

@@ -7,6 +7,7 @@ package Paws::ApiGateway::CreateApiKey;
   has GenerateDistinctId => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'generateDistinctId');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has StageKeys => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::StageKey]', traits => ['NameInRequest'], request_name => 'stageKeys');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
   has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
 
   use MooseX::ClassAttribute;
@@ -42,12 +43,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name               => 'MyString',    # OPTIONAL
       StageKeys          => [
         {
-          restApiId => 'MyString',
-          stageName => 'MyString',
+          RestApiId => 'MyString',
+          StageName => 'MyString',
         },
         ...
       ],                                   # OPTIONAL
-      Value => 'MyString',                 # OPTIONAL
+      Tags => { 'MyString' => 'MyString', },    # OPTIONAL
+      Value => 'MyString',                      # OPTIONAL
     );
 
     # Results:
@@ -59,12 +61,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LastUpdatedDate = $ApiKey->LastUpdatedDate;
     my $Name            = $ApiKey->Name;
     my $StageKeys       = $ApiKey->StageKeys;
+    my $Tags            = $ApiKey->Tags;
     my $Value           = $ApiKey->Value;
 
     # Returns a L<Paws::ApiGateway::ApiKey> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/apigateway/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/apigateway/CreateApiKey>
 
 =head1 ATTRIBUTES
 
@@ -105,6 +108,14 @@ The name of the ApiKey.
 
 DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
 key.
+
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The key-value map of strings. The valid character set is
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
+start with C<aws:>. The tag value can be up to 256 characters.
 
 
 

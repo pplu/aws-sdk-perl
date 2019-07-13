@@ -78,6 +78,11 @@ C<IN_PROGRESS>: The build phase is still in progress.
 
 =item *
 
+C<QUEUED>: The build has been submitted and is queued behind other
+submitted builds.
+
+=item *
+
 C<STOPPED>: The build phase stopped.
 
 =item *
@@ -132,6 +137,11 @@ C<PRE_BUILD>: Pre-build activities typically occur in this build phase.
 =item *
 
 C<PROVISIONING>: The build environment is being set up.
+
+=item *
+
+C<QUEUED>: The build has been submitted and is queued behind other
+submitted builds.
 
 =item *
 

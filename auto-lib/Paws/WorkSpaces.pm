@@ -25,6 +25,11 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::AuthorizeIpRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CopyWorkspaceImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::CopyWorkspaceImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateIpGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::CreateIpGroup', @_);
@@ -50,6 +55,26 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DeleteTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteWorkspaceImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DeleteWorkspaceImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAccount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeAccount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAccountModifications {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeAccountModifications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeClientProperties {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeClientProperties', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeIpGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeIpGroups', @_);
@@ -70,6 +95,11 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaceDirectories', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeWorkspaceImages {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaceImages', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeWorkspaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaces', @_);
@@ -83,6 +113,26 @@ package Paws::WorkSpaces;
   sub DisassociateIpGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DisassociateIpGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ImportWorkspaceImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ImportWorkspaceImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAvailableManagementCidrRanges {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ListAvailableManagementCidrRanges', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyAccount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ModifyAccount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyClientProperties {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ModifyClientProperties', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyWorkspaceProperties {
@@ -131,6 +181,52 @@ package Paws::WorkSpaces;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAccountModifications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAccountModifications(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAccountModifications(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AccountModifications }, @{ $next_result->AccountModifications };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AccountModifications') foreach (@{ $result->AccountModifications });
+        $result = $self->DescribeAccountModifications(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AccountModifications') foreach (@{ $result->AccountModifications });
+    }
+
+    return undef
+  }
+  sub DescribeAllIpGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeIpGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeIpGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Result }, @{ $next_result->Result };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Result') foreach (@{ $result->Result });
+        $result = $self->DescribeIpGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Result') foreach (@{ $result->Result });
+    }
+
+    return undef
+  }
   sub DescribeAllWorkspaceBundles {
     my $self = shift;
 
@@ -177,6 +273,29 @@ package Paws::WorkSpaces;
 
     return undef
   }
+  sub DescribeAllWorkspaceImages {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeWorkspaceImages(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeWorkspaceImages(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Images }, @{ $next_result->Images };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Images') foreach (@{ $result->Images });
+        $result = $self->DescribeWorkspaceImages(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Images') foreach (@{ $result->Images });
+    }
+
+    return undef
+  }
   sub DescribeAllWorkspaces {
     my $self = shift;
 
@@ -200,9 +319,55 @@ package Paws::WorkSpaces;
 
     return undef
   }
+  sub DescribeAllWorkspacesConnectionStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeWorkspacesConnectionStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeWorkspacesConnectionStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->WorkspacesConnectionStatus }, @{ $next_result->WorkspacesConnectionStatus };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'WorkspacesConnectionStatus') foreach (@{ $result->WorkspacesConnectionStatus });
+        $result = $self->DescribeWorkspacesConnectionStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'WorkspacesConnectionStatus') foreach (@{ $result->WorkspacesConnectionStatus });
+    }
+
+    return undef
+  }
+  sub ListAllAvailableManagementCidrRanges {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAvailableManagementCidrRanges(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAvailableManagementCidrRanges(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ManagementCidrRanges }, @{ $next_result->ManagementCidrRanges };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ManagementCidrRanges') foreach (@{ $result->ManagementCidrRanges });
+        $result = $self->ListAvailableManagementCidrRanges(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ManagementCidrRanges') foreach (@{ $result->ManagementCidrRanges });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AssociateIpGroups AuthorizeIpRules CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaces DescribeWorkspacesConnectionStatus DisassociateIpGroups ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
+  sub operations { qw/AssociateIpGroups AuthorizeIpRules CopyWorkspaceImage CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DeleteWorkspaceImage DescribeAccount DescribeAccountModifications DescribeClientProperties DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaceImages DescribeWorkspaces DescribeWorkspacesConnectionStatus DisassociateIpGroups ImportWorkspaceImage ListAvailableManagementCidrRanges ModifyAccount ModifyClientProperties ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
 
 1;
 
@@ -233,7 +398,7 @@ Paws::WorkSpaces - Perl Interface to AWS Amazon WorkSpaces
 Amazon WorkSpaces Service
 
 Amazon WorkSpaces enables you to provision virtual, cloud-based
-Microsoft Windows desktops for your users.
+Microsoft Windows and Amazon Linux desktops for your users.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08>
 
@@ -280,6 +445,31 @@ This action gives users permission to access their WorkSpaces from the
 CIDR address ranges specified in the rules.
 
 
+=head2 CopyWorkspaceImage
+
+=over
+
+=item Name => Str
+
+=item SourceImageId => Str
+
+=item SourceRegion => Str
+
+=item [Description => Str]
+
+=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::CopyWorkspaceImage>
+
+Returns: a L<Paws::WorkSpaces::CopyWorkspaceImageResult> instance
+
+Copies the specified image from the specified Region to the current
+Region.
+
+
 =head2 CreateIpGroup
 
 =over
@@ -287,6 +477,8 @@ CIDR address ranges specified in the rules.
 =item GroupName => Str
 
 =item [GroupDesc => Str]
+
+=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
 
 =item [UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]]
 
@@ -328,7 +520,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::CreateTags>
 
 Returns: a L<Paws::WorkSpaces::CreateTagsResult> instance
 
-Creates the specified tags for the specified WorkSpace.
+Creates the specified tags for the specified WorkSpaces resource.
 
 
 =head2 CreateWorkspaces
@@ -384,7 +576,74 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DeleteTags>
 
 Returns: a L<Paws::WorkSpaces::DeleteTagsResult> instance
 
-Deletes the specified tags from the specified WorkSpace.
+Deletes the specified tags from the specified WorkSpaces resource.
+
+
+=head2 DeleteWorkspaceImage
+
+=over
+
+=item ImageId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DeleteWorkspaceImage>
+
+Returns: a L<Paws::WorkSpaces::DeleteWorkspaceImageResult> instance
+
+Deletes the specified image from your account. To delete an image, you
+must first delete any bundles that are associated with the image and
+un-share the image if it is shared with other accounts.
+
+
+=head2 DescribeAccount
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeAccount>
+
+Returns: a L<Paws::WorkSpaces::DescribeAccountResult> instance
+
+Retrieves a list that describes the configuration of bring your own
+license (BYOL) for the specified account.
+
+
+=head2 DescribeAccountModifications
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeAccountModifications>
+
+Returns: a L<Paws::WorkSpaces::DescribeAccountModificationsResult> instance
+
+Retrieves a list that describes modifications to the configuration of
+bring your own license (BYOL) for the specified account.
+
+
+=head2 DescribeClientProperties
+
+=over
+
+=item ResourceIds => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeClientProperties>
+
+Returns: a L<Paws::WorkSpaces::DescribeClientPropertiesResult> instance
+
+Retrieves a list that describes one or more specified Amazon WorkSpaces
+clients.
 
 
 =head2 DescribeIpGroups
@@ -420,7 +679,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeTags>
 
 Returns: a L<Paws::WorkSpaces::DescribeTagsResult> instance
 
-Describes the specified tags for the specified WorkSpace.
+Describes the specified tags for the specified WorkSpaces resource.
 
 
 =head2 DescribeWorkspaceBundles
@@ -440,7 +699,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceBu
 
 Returns: a L<Paws::WorkSpaces::DescribeWorkspaceBundlesResult> instance
 
-Describes the available WorkSpace bundles.
+Retrieves a list that describes the available WorkSpace bundles.
 
 You can filter the results using either bundle ID or owner, but not
 both.
@@ -463,6 +722,28 @@ Returns: a L<Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult> instance
 
 Describes the available AWS Directory Service directories that are
 registered with Amazon WorkSpaces.
+
+
+=head2 DescribeWorkspaceImages
+
+=over
+
+=item [ImageIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceImages>
+
+Returns: a L<Paws::WorkSpaces::DescribeWorkspaceImagesResult> instance
+
+Retrieves a list that describes one or more specified images, if the
+image identifiers are provided. Otherwise, all images in the account
+are described.
 
 
 =head2 DescribeWorkspaces
@@ -490,8 +771,8 @@ Returns: a L<Paws::WorkSpaces::DescribeWorkspacesResult> instance
 
 Describes the specified WorkSpaces.
 
-You can filter the results using bundle ID, directory ID, or owner, but
-you can specify only one filter at a time.
+You can filter the results by using the bundle identifier, directory
+identifier, or owner, but you can specify only one filter at a time.
 
 
 =head2 DescribeWorkspacesConnectionStatus
@@ -531,6 +812,97 @@ Disassociates the specified IP access control group from the specified
 directory.
 
 
+=head2 ImportWorkspaceImage
+
+=over
+
+=item Ec2ImageId => Str
+
+=item ImageDescription => Str
+
+=item ImageName => Str
+
+=item IngestionProcess => Str
+
+=item [Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ImportWorkspaceImage>
+
+Returns: a L<Paws::WorkSpaces::ImportWorkspaceImageResult> instance
+
+Imports the specified Windows 7 or Windows 10 bring your own license
+(BYOL) image into Amazon WorkSpaces. The image must be an already
+licensed EC2 image that is in your AWS account, and you must own the
+image.
+
+
+=head2 ListAvailableManagementCidrRanges
+
+=over
+
+=item ManagementCidrRangeConstraint => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ListAvailableManagementCidrRanges>
+
+Returns: a L<Paws::WorkSpaces::ListAvailableManagementCidrRangesResult> instance
+
+Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
+that you can use for the network management interface when you enable
+bring your own license (BYOL).
+
+The management network interface is connected to a secure Amazon
+WorkSpaces management network. It is used for interactive streaming of
+the WorkSpace desktop to Amazon WorkSpaces clients, and to allow Amazon
+WorkSpaces to manage the WorkSpace.
+
+
+=head2 ModifyAccount
+
+=over
+
+=item [DedicatedTenancyManagementCidrRange => Str]
+
+=item [DedicatedTenancySupport => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ModifyAccount>
+
+Returns: a L<Paws::WorkSpaces::ModifyAccountResult> instance
+
+Modifies the configuration of bring your own license (BYOL) for the
+specified account.
+
+
+=head2 ModifyClientProperties
+
+=over
+
+=item ClientProperties => L<Paws::WorkSpaces::ClientProperties>
+
+=item ResourceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ModifyClientProperties>
+
+Returns: a L<Paws::WorkSpaces::ModifyClientPropertiesResult> instance
+
+Modifies the properties of the specified Amazon WorkSpaces clients.
+
+
 =head2 ModifyWorkspaceProperties
 
 =over
@@ -568,9 +940,9 @@ Sets the state of the specified WorkSpace.
 
 To maintain a WorkSpace without being interrupted, set the WorkSpace
 state to C<ADMIN_MAINTENANCE>. WorkSpaces in this state do not respond
-to requests to reboot, stop, start, or rebuild. An AutoStop WorkSpace
-in this state is not stopped. Users can log into a WorkSpace in the
-C<ADMIN_MAINTENANCE> state.
+to requests to reboot, stop, start, rebuild, or restore. An AutoStop
+WorkSpace in this state is not stopped. Users cannot log into a
+WorkSpace in the C<ADMIN_MAINTENANCE> state.
 
 
 =head2 RebootWorkspaces
@@ -616,7 +988,7 @@ C<ERROR>, or C<UNHEALTHY>.
 Rebuilding a WorkSpace is a potentially destructive action that can
 result in the loss of data. For more information, see Rebuild a
 WorkSpace
-(http://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html).
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html).
 
 This operation is asynchronous and returns before the WorkSpaces have
 been completely rebuilt.
@@ -728,6 +1100,30 @@ with the specified rules.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 DescribeAllAccountModifications(sub { },[NextToken => Str])
+
+=head2 DescribeAllAccountModifications([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AccountModifications, passing the object as the first parameter, and the string 'AccountModifications' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::DescribeAccountModificationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllIpGroups(sub { },[GroupIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllIpGroups([GroupIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Result, passing the object as the first parameter, and the string 'Result' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::DescribeIpGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllWorkspaceBundles(sub { },[BundleIds => ArrayRef[Str|Undef], NextToken => Str, Owner => Str])
 
 =head2 DescribeAllWorkspaceBundles([BundleIds => ArrayRef[Str|Undef], NextToken => Str, Owner => Str])
@@ -752,6 +1148,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllWorkspaceImages(sub { },[ImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllWorkspaceImages([ImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Images, passing the object as the first parameter, and the string 'Images' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspaceImagesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllWorkspaces(sub { },[BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str|Undef]])
 
 =head2 DescribeAllWorkspaces([BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str|Undef]])
@@ -762,6 +1170,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Workspaces, passing the object as the first parameter, and the string 'Workspaces' as the second parameter 
 
 If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspacesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllWorkspacesConnectionStatus(sub { },[NextToken => Str, WorkspaceIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllWorkspacesConnectionStatus([NextToken => Str, WorkspaceIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - WorkspacesConnectionStatus, passing the object as the first parameter, and the string 'WorkspacesConnectionStatus' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAvailableManagementCidrRanges(sub { },ManagementCidrRangeConstraint => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAvailableManagementCidrRanges(ManagementCidrRangeConstraint => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ManagementCidrRanges, passing the object as the first parameter, and the string 'ManagementCidrRanges' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::ListAvailableManagementCidrRangesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

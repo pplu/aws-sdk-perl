@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example lists up to 20 certificates for the specified certificate
     # identifier.
     my $CertificateMessage = $rds->DescribeCertificates(
-      {
-        'CertificateIdentifier' => 'rds-ca-2015',
-        'MaxRecords'            => 20
-      }
+      'CertificateIdentifier' => 'rds-ca-2015',
+      'MaxRecords'            => 20
     );
 
 
@@ -75,7 +73,7 @@ This parameter is not currently supported.
 =head2 Marker => Str
 
 An optional pagination token provided by a previous
-DescribeCertificates request. If this parameter is specified, the
+C<DescribeCertificates> request. If this parameter is specified, the
 response includes only records beyond the marker, up to the value
 specified by C<MaxRecords>.
 

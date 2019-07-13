@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-City information of the remote IP address.
+This class has no description
 
 =head1 ATTRIBUTES
 

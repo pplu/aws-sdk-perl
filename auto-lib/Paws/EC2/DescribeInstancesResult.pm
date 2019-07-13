@@ -24,7 +24,7 @@ C<null> when there are no more results to return.
 
 =head2 Reservations => ArrayRef[L<Paws::EC2::Reservation>]
 
-Zero or more reservations.
+Information about the reservations.
 
 
 =head2 _request_id => Str

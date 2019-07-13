@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 =head2 B<REQUIRED> Endpoint => Str
 
 The endpoint to receive the notifications. If the protocol is HTTPS,
-the endpoint is a URL that begins with "https://".
+the endpoint is a URL that begins with C<https>.
 
 
 

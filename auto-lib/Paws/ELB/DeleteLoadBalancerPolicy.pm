@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The policy must not be enabled on any listener.
     my $DeleteLoadBalancerPolicyOutput =
       $elasticloadbalancing->DeleteLoadBalancerPolicy(
-      {
-        'LoadBalancerName' => 'my-load-balancer',
-        'PolicyName'       => 'my-duration-cookie-policy'
-      }
+      'LoadBalancerName' => 'my-load-balancer',
+      'PolicyName'       => 'my-duration-cookie-policy'
       );
 
 

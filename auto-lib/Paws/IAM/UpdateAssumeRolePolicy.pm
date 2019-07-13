@@ -32,11 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command updates the role trust policy for the role named
     # Test-Role:
     $iam->UpdateAssumeRolePolicy(
-      {
-        'PolicyDocument' =>
+      'PolicyDocument' =>
 '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":["ec2.amazonaws.com"]},"Action":["sts:AssumeRole"]}]}',
-        'RoleName' => 'S3AccessForEC2Instances'
-      }
+      'RoleName' => 'S3AccessForEC2Instances'
     );
 
 
@@ -49,6 +47,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 =head2 B<REQUIRED> PolicyDocument => Str
 
 The policy that grants an entity permission to assume the role.
+
+You must provide policies in JSON format in IAM. However, for AWS
+CloudFormation templates formatted in YAML, you can provide the policy
+in JSON or YAML format. AWS CloudFormation always converts a YAML
+policy to JSON format before submitting it to IAM.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
 this parameter is a string of characters consisting of the following:
@@ -79,7 +82,7 @@ return (\u000D)
 
 The name of the role to update with the new policy.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

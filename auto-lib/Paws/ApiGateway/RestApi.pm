@@ -10,6 +10,7 @@ package Paws::ApiGateway::RestApi;
   has MinimumCompressionSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumCompressionSize');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has Policy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policy');
+  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'warnings');
 
@@ -89,6 +90,12 @@ The API's name.
 
 A stringified JSON policy document that applies to this RestApi
 regardless of the caller and Method configuration.
+
+
+=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+
+The collection of tags. Each tag element is associated with a given
+resource.
 
 
 =head2 Version => Str

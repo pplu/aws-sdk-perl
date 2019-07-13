@@ -36,8 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-A direct connect gateway is an intermediate object that enables you to
-connect virtual interfaces and virtual private gateways.
+Information about a Direct Connect gateway, which enables you to
+connect virtual interfaces and virtual private gateway or transit
+gateways.
 
 =head1 ATTRIBUTES
 
@@ -50,27 +51,51 @@ connection.
 
 =head2 DirectConnectGatewayId => Str
 
-  
+  The ID of the Direct Connect gateway.
 
 
 =head2 DirectConnectGatewayName => Str
 
-  
+  The name of the Direct Connect gateway.
 
 
 =head2 DirectConnectGatewayState => Str
 
-  
+  The state of the Direct Connect gateway. The following are the possible
+values:
+
+=over
+
+=item *
+
+C<pending>: The initial state after calling CreateDirectConnectGateway.
+
+=item *
+
+C<available>: The Direct Connect gateway is ready for use.
+
+=item *
+
+C<deleting>: The initial state after calling
+DeleteDirectConnectGateway.
+
+=item *
+
+C<deleted>: The Direct Connect gateway is deleted and cannot pass
+traffic.
+
+=back
+
 
 
 =head2 OwnerAccount => Str
 
-  The AWS account ID of the owner of the direct connect gateway.
+  The ID of the AWS account that owns the Direct Connect gateway.
 
 
 =head2 StateChangeError => Str
 
-  
+  The error message if the state of an object failed to advance.
 
 
 

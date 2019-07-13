@@ -3,6 +3,7 @@ package Paws::WorkSpaces::CreateIpGroup;
   use Moose;
   has GroupDesc => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Tag]');
   has UserRules => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::IpRuleItem]');
 
   use MooseX::ClassAttribute;
@@ -32,10 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateIpGroupResult = $workspaces->CreateIpGroup(
       GroupName => 'MyIpGroupName',
       GroupDesc => 'MyIpGroupDesc',    # OPTIONAL
+      Tags      => [
+        {
+          Key   => 'MyTagKey',         # min: 1, max: 127
+          Value => 'MyTagValue',       # max: 255; OPTIONAL
+        },
+        ...
+      ],                               # OPTIONAL
       UserRules => [
         {
-          ipRule   => 'MyIpRule',        # OPTIONAL
-          ruleDesc => 'MyIpRuleDesc',    # OPTIONAL
+          IpRule   => 'MyIpRule',        # OPTIONAL
+          RuleDesc => 'MyIpRuleDesc',    # OPTIONAL
         },
         ...
       ],                                 # OPTIONAL
@@ -61,6 +69,12 @@ The description of the group.
 =head2 B<REQUIRED> GroupName => Str
 
 The name of the group.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
+
+The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 
 
 

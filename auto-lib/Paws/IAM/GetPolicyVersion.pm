@@ -52,7 +52,7 @@ information about.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 
@@ -61,7 +61,7 @@ in the I<AWS General Reference>.
 
 Identifies the policy version to retrieve.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters that consists
 of the lowercase letter 'v' followed by one or two digits, and
 optionally followed by a period '.' and a string of letters and digits.

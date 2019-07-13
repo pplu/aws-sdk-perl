@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command creates or changes the password for the IAM user
     # named Bob.
     $iam->UpdateLoginProfile(
-      {
-        'Password' => 'SomeKindOfPassword123!@#',
-        'UserName' => 'Bob'
-      }
+      'Password' => 'SomeKindOfPassword123!@#',
+      'UserName' => 'Bob'
     );
 
 
@@ -89,7 +87,7 @@ specified IAM user to set a new password on next sign-in.
 
 The name of the user whose password you want to update.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

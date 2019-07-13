@@ -18,17 +18,18 @@ Paws::SMS::GetReplicationRunsResponse
 
 =head2 NextToken => Str
 
-
+The token required to retrieve the next set of results. This value is
+null when there are no more results to return.
 
 
 =head2 ReplicationJob => L<Paws::SMS::ReplicationJob>
 
-
+Information about the replication job.
 
 
 =head2 ReplicationRunList => ArrayRef[L<Paws::SMS::ReplicationRun>]
 
-
+Information about the replication runs.
 
 
 =head2 _request_id => Str

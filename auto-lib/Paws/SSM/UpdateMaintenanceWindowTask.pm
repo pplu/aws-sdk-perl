@@ -69,7 +69,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Parameters      => {
             'MyAutomationParameterKey' => [
               'MyAutomationParameterValue', ...    # min: 1, max: 512
-            ],    # key: min: 1, max: 30, value: max: 10
+            ],    # key: min: 1, max: 50, value: max: 10
           },    # min: 1, max: 200; OPTIONAL
         },    # OPTIONAL
         Lambda => {
@@ -153,7 +153,7 @@ C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
 logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>
 options in the C<TaskInvocationParameters> structure. For information
 about how Systems Manager handles these options for the supported
-Maintenance Window task types, see
+maintenance window task types, see
 MaintenanceWindowTaskInvocationParameters.
 
 
@@ -196,8 +196,30 @@ request. Optional fields that are not specified are set to null.
 
 =head2 ServiceRoleArn => Str
 
-The IAM service role ARN to modify. The system assumes this role during
-task execution.
+The ARN of the IAM service role for Systems Manager to assume when
+running a maintenance window task. If you do not specify a service role
+ARN, Systems Manager uses your account's service-linked role. If no
+service-linked role for Systems Manager exists in your account, it is
+created when you run C<RegisterTaskWithMaintenanceWindow>.
+
+For more information, see the following topics in the in the I<AWS
+Systems Manager User Guide>:
+
+=over
+
+=item *
+
+Service-Linked Role Permissions for Systems Manager
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
+
+=item *
+
+Should I Use a Service-Linked Role or a Custom Service Role to Run
+Maintenance Window Tasks?
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
+
+=back
+
 
 
 
@@ -229,8 +251,8 @@ The parameters to modify.
 C<TaskParameters> has been deprecated. To specify parameters to pass to
 a task when it runs, instead use the C<Parameters> option in the
 C<TaskInvocationParameters> structure. For information about how
-Systems Manager handles these options for the supported Maintenance
-Window task types, see MaintenanceWindowTaskInvocationParameters.
+Systems Manager handles these options for the supported maintenance
+window task types, see MaintenanceWindowTaskInvocationParameters.
 
 The map has the following format:
 
@@ -242,7 +264,7 @@ Value: an array of strings, each string is between 1 and 255 characters
 
 =head2 B<REQUIRED> WindowId => Str
 
-The Maintenance Window ID that contains the task to modify.
+The maintenance window ID that contains the task to modify.
 
 
 

@@ -32,12 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for
     # a specified iSCSI target and initiator pair.
     my $DeleteChapCredentialsOutput = $storagegateway->DeleteChapCredentials(
-      {
-        'InitiatorName' =>
-          'iqn.1991-05.com.microsoft:computername.domain.example.com',
-        'TargetARN' =>
+      'InitiatorName' =>
+        'iqn.1991-05.com.microsoft:computername.domain.example.com',
+      'TargetARN' =>
 'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume'
-      }
     );
 
     # Results:

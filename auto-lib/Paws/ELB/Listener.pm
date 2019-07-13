@@ -40,7 +40,7 @@ Information about a listener.
 For information about the protocols and the ports supported by Elastic
 Load Balancing, see Listeners for Your Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 =head1 ATTRIBUTES
 

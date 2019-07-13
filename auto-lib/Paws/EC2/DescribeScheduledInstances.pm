@@ -35,10 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe your Scheduled Instances
     # This example describes the specified Scheduled Instance.
     my $DescribeScheduledInstancesResult = $ec2->DescribeScheduledInstances(
-      {
-        'ScheduledInstanceIds' => ['sci-1234-1234-1234-1234-123456789012']
-      }
-    );
+      'ScheduledInstanceIds' => ['sci-1234-1234-1234-1234-123456789012'] );
 
     # Results:
     my $ScheduledInstanceSet =
@@ -63,7 +60,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -107,7 +104,7 @@ The token for the next set of results.
 
 =head2 ScheduledInstanceIds => ArrayRef[Str|Undef]
 
-One or more Scheduled Instance IDs.
+The Scheduled Instance IDs.
 
 
 

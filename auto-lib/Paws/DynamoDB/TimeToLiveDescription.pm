@@ -40,12 +40,12 @@ table.
 
 =head2 AttributeName => Str
 
-  The name of the Time to Live attribute for items in the table.
+  The name of the TTL attribute for items in the table.
 
 
 =head2 TimeToLiveStatus => Str
 
-  The Time to Live status for the table.
+  The TTL status for the table.
 
 
 

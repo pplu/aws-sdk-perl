@@ -43,7 +43,7 @@ The time stamp when volume creation was initiated.
 
 =head2 Encrypted => Bool
 
-Indicates whether the volume will be encrypted.
+Indicates whether the volume is encrypted.
 
 
 =head2 Iops => Int
@@ -53,13 +53,15 @@ supports. For Provisioned IOPS SSD volumes, this represents the number
 of IOPS that are provisioned for the volume. For General Purpose SSD
 volumes, this represents the baseline performance of the volume and the
 rate at which the volume accumulates I/O credits for bursting. For more
-information on General Purpose SSD baseline performance, I/O credits,
-and bursting, see Amazon EBS Volume Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+information, see Amazon EBS Volume Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-Constraint: Range is 100-32000 IOPS for io1 volumes and 100-10000 IOPS
-for C<gp2> volumes.
+Constraints: Range is 100-16,000 IOPS for C<gp2> volumes and 100 to
+64,000IOPS for C<io1> volumes, in most Regions. The maximum IOPS for
+C<io1> of 64,000 is guaranteed only on Nitro-based instances
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances).
+Other instance families guarantee performance up to 32,000 IOPS.
 
 Condition: This parameter is required for requests to create C<io1>
 volumes; it is not used in requests to create C<gp2>, C<st1>, C<sc1>,
@@ -68,9 +70,9 @@ or C<standard> volumes.
 
 =head2 KmsKeyId => Str
 
-The full ARN of the AWS Key Management Service (AWS KMS) customer
-master key (CMK) that was used to protect the volume encryption key for
-the volume.
+The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS
+KMS) customer master key (CMK) that was used to protect the volume
+encryption key for the volume.
 
 
 =head2 Size => Int

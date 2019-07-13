@@ -1,6 +1,7 @@
 
 package Paws::Glue::CreateDevEndpointResponse;
   use Moose;
+  has Arguments => (is => 'ro', isa => 'Paws::Glue::MapValue');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has EndpointName => (is => 'ro', isa => 'Str');
@@ -9,6 +10,7 @@ package Paws::Glue::CreateDevEndpointResponse;
   has FailureReason => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has RoleArn => (is => 'ro', isa => 'Str');
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Status => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
@@ -25,6 +27,11 @@ package Paws::Glue::CreateDevEndpointResponse;
 Paws::Glue::CreateDevEndpointResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 Arguments => L<Paws::Glue::MapValue>
+
+The map of arguments used to configure this DevEndpoint.
 
 
 =head2 AvailabilityZone => Str
@@ -68,6 +75,12 @@ DevEndpoint.
 =head2 RoleArn => Str
 
 The AWS ARN of the role assigned to the new DevEndpoint.
+
+
+=head2 SecurityConfiguration => Str
+
+The name of the SecurityConfiguration structure being used with this
+DevEndpoint.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]

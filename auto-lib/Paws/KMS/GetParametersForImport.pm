@@ -33,11 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # The following example retrieves the public key and import token for the
    # specified CMK.
     my $GetParametersForImportResponse = $kms->GetParametersForImport(
-      {
-        'KeyId'             => '1234abcd-12ab-34cd-56ef-1234567890ab',
-        'WrappingAlgorithm' => 'RSAES_OAEP_SHA_1',
-        'WrappingKeySpec'   => 'RSA_2048'
-      }
+      'KeyId'             => '1234abcd-12ab-34cd-56ef-1234567890ab',
+      'WrappingAlgorithm' => 'RSAES_OAEP_SHA_1',
+      'WrappingKeySpec'   => 'RSA_2048'
     );
 
     # Results:
@@ -85,7 +83,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 The algorithm you will use to encrypt the key material before importing
 it with ImportKeyMaterial. For more information, see Encrypt the Key
 Material
-(http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html)
+(https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 Valid values are: C<"RSAES_PKCS1_V1_5">, C<"RSAES_OAEP_SHA_1">, C<"RSAES_OAEP_SHA_256">

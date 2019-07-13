@@ -32,21 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::D
 
 =head1 DESCRIPTION
 
-Default Message across push notification, email, and sms.
+Specifies the default message to use for all channels.
 
 =head1 ATTRIBUTES
 
 
 =head2 Body => Str
 
-  The message body of the notification, the email body or the text
+  The default message body of the push notification, email, or SMS
 message.
 
 
 =head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
 
-  Default message substitutions. Can be overridden by individual address
-substitutions.
+  The default message variables to use in the push notification, email,
+or SMS message. You can override these default variables with
+individual address variables.
 
 
 

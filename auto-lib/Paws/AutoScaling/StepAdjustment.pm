@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 Describes an adjustment based on the difference between the value of
 the aggregated CloudWatch metric and the breach threshold that you've
-defined for the alarm.
+defined for the alarm. Used in combination with PutScalingPolicy.
 
 For the following examples, suppose that you have an alarm with a
 breach threshold of 50:
@@ -44,15 +44,15 @@ breach threshold of 50:
 
 =item *
 
-If you want the adjustment to be triggered when the metric is greater
-than or equal to 50 and less than 60, specify a lower bound of 0 and an
-upper bound of 10.
+To trigger the adjustment when the metric is greater than or equal to
+50 and less than 60, specify a lower bound of 0 and an upper bound of
+10.
 
 =item *
 
-If you want the adjustment to be triggered when the metric is greater
-than 40 and less than or equal to 50, specify a lower bound of -10 and
-an upper bound of 0.
+To trigger the adjustment when the metric is greater than 40 and less
+than or equal to 50, specify a lower bound of -10 and an upper bound of
+0.
 
 =back
 
@@ -66,13 +66,13 @@ The ranges of your step adjustments can't overlap or have a gap.
 
 =item *
 
-At most one step adjustment can have a null lower bound. If one step
+At most, one step adjustment can have a null lower bound. If one step
 adjustment has a negative lower bound, then there must be a step
 adjustment with a null lower bound.
 
 =item *
 
-At most one step adjustment can have a null upper bound. If one step
+At most, one step adjustment can have a null upper bound. If one step
 adjustment has a positive upper bound, then there must be a step
 adjustment with a null upper bound.
 

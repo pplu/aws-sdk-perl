@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $waf = Paws->service('WAF');
     # To list IP sets
     # The following example returns an array of up to 100 IP match sets.
-    my $ListIPSetsResponse = $waf->ListIPSets(
-      {
-        'Limit' => 100
-      }
-    );
+    my $ListIPSetsResponse = $waf->ListIPSets( 'Limit' => 100 );
 
     # Results:
     my $IPSets = $ListIPSetsResponse->IPSets;

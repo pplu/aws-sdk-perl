@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DescribeStaleSecurityGroupsResult = $ec2->DescribeStaleSecurityGroups(
       VpcId      => 'MyString',
-      DryRun     => 1,                # OPTIONAL
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      DryRun     => 1,                                           # OPTIONAL
+      MaxResults => 1,                                           # OPTIONAL
+      NextToken  => 'MyDescribeStaleSecurityGroupsNextToken',    # OPTIONAL
     );
 
     # Results:
@@ -52,10 +52,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 DryRun => Bool
 
-Checks whether you have the required permissions for the operation,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
-DryRunOperation. Otherwise, it is UnauthorizedOperation.
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 

@@ -45,29 +45,29 @@ instance when you call one of the following actions:
 
 =item *
 
-CreateDBInstance
+C<CreateDBInstance>
 
 =item *
 
-ModifyDBInstance
+C<ModifyDBInstance>
 
 =item *
 
-RestoreDBInstanceFromDBSnapshot
+C<RestoreDBInstanceFromDBSnapshot>
 
 =item *
 
-RestoreDBInstanceFromS3
+C<RestoreDBInstanceFromS3>
 
 =item *
 
-RestoreDBInstanceToPointInTime
+C<RestoreDBInstanceToPointInTime>
 
 =back
 
 You can view the valid processor values for a particular instance class
-by calling the DescribeOrderableDBInstanceOptions action and specifying
-the instance class for the C<DBInstanceClass> parameter.
+by calling the C<DescribeOrderableDBInstanceOptions> action and
+specifying the instance class for the C<DBInstanceClass> parameter.
 
 In addition, you can use the following actions for DB instance class
 processor information:
@@ -76,21 +76,21 @@ processor information:
 
 =item *
 
-DescribeDBInstances
+C<DescribeDBInstances>
 
 =item *
 
-DescribeDBSnapshots
+C<DescribeDBSnapshots>
 
 =item *
 
-DescribeValidDBInstanceModifications
+C<DescribeValidDBInstanceModifications>
 
 =back
 
 For more information, see Configuring the Processor of the DB Instance
 Class
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html#USER_ConfigureProcessor)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html#USER_ConfigureProcessor)
 in the I<Amazon RDS User Guide.>
 
 =head1 ATTRIBUTES

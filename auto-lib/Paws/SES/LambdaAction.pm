@@ -41,11 +41,11 @@ To enable Amazon SES to call your AWS Lambda function or to publish to
 an Amazon SNS topic of another account, Amazon SES must have permission
 to access those resources. For information about giving permissions,
 see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html).
 
 For information about using AWS Lambda actions in receipt rules, see
 the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html).
 
 =head1 ATTRIBUTES
 
@@ -56,7 +56,7 @@ the Amazon SES Developer Guide
 of an AWS Lambda function ARN is
 C<arn:aws:lambda:us-west-2:account-id:function:MyFunction>. For more
 information about AWS Lambda, see the AWS Lambda Developer Guide
-(http://docs.aws.amazon.com/lambda/latest/dg/welcome.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/welcome.html).
 
 
 =head2 InvocationType => Str
@@ -67,7 +67,7 @@ immediately result in a response, and a value of C<Event> means that
 the function will be invoked asynchronously. The default value is
 C<Event>. For information about AWS Lambda invocation types, see the
 AWS Lambda Developer Guide
-(http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html).
+(https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html).
 
 There is a 30-second timeout on C<RequestResponse> invocations. You
 should use C<Event> invocation in most cases. Use C<RequestResponse>
@@ -81,7 +81,7 @@ stop the receipt rule or the receipt rule set.
 the Lambda action is taken. An example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
 about Amazon SNS topics, see the Amazon SNS Developer Guide
-(http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
+(https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
 
 
 

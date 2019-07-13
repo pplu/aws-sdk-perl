@@ -3,6 +3,7 @@ package Paws::EC2::DescribeAvailabilityZones;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has ZoneIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ZoneId' );
   has ZoneNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ZoneName' );
 
   use MooseX::ClassAttribute;
@@ -56,7 +57,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
@@ -66,13 +67,18 @@ C<message> - Information about the Availability Zone.
 
 =item *
 
-C<region-name> - The name of the region for the Availability Zone (for
+C<region-name> - The name of the Region for the Availability Zone (for
 example, C<us-east-1>).
 
 =item *
 
 C<state> - The state of the Availability Zone (C<available> |
 C<information> | C<impaired> | C<unavailable>).
+
+=item *
+
+C<zone-id> - The ID of the Availability Zone (for example,
+C<use1-az1>).
 
 =item *
 
@@ -84,9 +90,15 @@ C<us-east-1a>).
 
 
 
+=head2 ZoneIds => ArrayRef[Str|Undef]
+
+The IDs of the Availability Zones.
+
+
+
 =head2 ZoneNames => ArrayRef[Str|Undef]
 
-The names of one or more Availability Zones.
+The names of the Availability Zones.
 
 
 

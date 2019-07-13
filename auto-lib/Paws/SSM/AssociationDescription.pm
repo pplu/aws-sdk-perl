@@ -3,12 +3,16 @@ package Paws::SSM::AssociationDescription;
   has AssociationId => (is => 'ro', isa => 'Str');
   has AssociationName => (is => 'ro', isa => 'Str');
   has AssociationVersion => (is => 'ro', isa => 'Str');
+  has AutomationTargetParameterName => (is => 'ro', isa => 'Str');
+  has ComplianceSeverity => (is => 'ro', isa => 'Str');
   has Date => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has LastExecutionDate => (is => 'ro', isa => 'Str');
   has LastSuccessfulExecutionDate => (is => 'ro', isa => 'Str');
   has LastUpdateAssociationDate => (is => 'ro', isa => 'Str');
+  has MaxConcurrency => (is => 'ro', isa => 'Str');
+  has MaxErrors => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
   has Overview => (is => 'ro', isa => 'Paws::SSM::AssociationOverview');
@@ -66,6 +70,18 @@ Describes the parameters for a document.
   The association version.
 
 
+=head2 AutomationTargetParameterName => Str
+
+  Specify the target for the association. This target is required for
+associations that use an Automation document and target resources by
+using rate controls.
+
+
+=head2 ComplianceSeverity => Str
+
+  The severity level that is assigned to the association.
+
+
 =head2 Date => Str
 
   The date when the association was made.
@@ -94,6 +110,39 @@ Describes the parameters for a document.
 =head2 LastUpdateAssociationDate => Str
 
   The date when the association was last updated.
+
+
+=head2 MaxConcurrency => Str
+
+  The maximum number of targets allowed to run the association at the
+same time. You can specify a number, for example 10, or a percentage of
+the target set, for example 10%. The default value is 100%, which means
+all targets run the association at the same time.
+
+If a new instance starts and attempts to run an association while
+Systems Manager is running MaxConcurrency associations, the association
+is allowed to run. During the next association interval, the new
+instance will process its association within the limit specified for
+MaxConcurrency.
+
+
+=head2 MaxErrors => Str
+
+  The number of errors that are allowed before the system stops sending
+requests to run the association on additional targets. You can specify
+either an absolute number of errors, for example 10, or a percentage of
+the target set, for example 10%. If you specify 3, for example, the
+system stops sending requests when the fourth error is received. If you
+specify 0, then the system stops sending requests after the first error
+is returned. If you run an association on 50 instances and set MaxError
+to 10%, then the system stops sending the request when the sixth error
+is received.
+
+Executions that are already running an association when MaxErrors is
+reached are allowed to complete, but some of these executions may fail
+as well. If you need to ensure that there won't be more than max-errors
+failed executions, set MaxConcurrency to 1 so that executions proceed
+one at a time.
 
 
 =head2 Name => Str

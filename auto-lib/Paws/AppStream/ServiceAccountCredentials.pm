@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Describes the credentials for the service account used by the streaming
-instance to connect to the directory.
+Describes the credentials for the service account used by the fleet or
+image builder to connect to the directory.
 
 =head1 ATTRIBUTES
 

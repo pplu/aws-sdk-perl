@@ -52,7 +52,7 @@ This class has no description
 
 =head2 LoadPermissions => ArrayRef[L<Paws::EC2::LoadPermission>]
 
-  One or more load permissions.
+  The load permissions.
 
 
 =head2 Name => Str
@@ -62,7 +62,7 @@ This class has no description
 
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
-  One or more product codes.
+  The product codes.
 
 
 

@@ -29,15 +29,53 @@ package Paws::MediaTailor;
     my $call_object = $self->new_with_coercions('Paws::MediaTailor::ListPlaybackConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaTailor::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutPlaybackConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaTailor::PutPlaybackConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaTailor::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaTailor::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
+  sub ListAllPlaybackConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPlaybackConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPlaybackConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Items }, @{ $next_result->Items };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Items') foreach (@{ $result->Items });
+        $result = $self->ListPlaybackConfigurations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Items') foreach (@{ $result->Items });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/DeletePlaybackConfiguration GetPlaybackConfiguration ListPlaybackConfigurations PutPlaybackConfiguration / }
+  sub operations { qw/DeletePlaybackConfiguration GetPlaybackConfiguration ListPlaybackConfigurations ListTagsForResource PutPlaybackConfiguration TagResource UntagResource / }
 
 1;
 
@@ -78,7 +116,7 @@ the same as you do through the console. For example, you specify ad
 insertion behavior and mapping information for the origin server and
 the ad decision server (ADS).
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.mediatailor-2018-04-23>
 
 
 =head1 METHODS
@@ -96,7 +134,7 @@ Each argument is described in detail in: L<Paws::MediaTailor::DeletePlaybackConf
 
 Returns: a L<Paws::MediaTailor::DeletePlaybackConfigurationResponse> instance
 
-Deletes the configuration for the specified name.
+Deletes the playback configuration for the specified name.
 
 
 =head2 GetPlaybackConfiguration
@@ -112,7 +150,7 @@ Each argument is described in detail in: L<Paws::MediaTailor::GetPlaybackConfigu
 
 Returns: a L<Paws::MediaTailor::GetPlaybackConfigurationResponse> instance
 
-Returns the configuration for the specified name.
+Returns the playback configuration for the specified name.
 
 
 =head2 ListPlaybackConfigurations
@@ -130,12 +168,29 @@ Each argument is described in detail in: L<Paws::MediaTailor::ListPlaybackConfig
 
 Returns: a L<Paws::MediaTailor::ListPlaybackConfigurationsResponse> instance
 
-Returns a list of the configurations defined in AWS Elemental
-MediaTailor. You can specify a max number of configurations to return
-at a time. The default max is 50. Results are returned in pagefuls. If
-AWS Elemental MediaTailor has more configurations than the specified
-max, it provides parameters in the response that you can use to
+Returns a list of the playback configurations defined in AWS Elemental
+MediaTailor. You can specify a maximum number of configurations to
+return at a time. The default maximum is 50. Results are returned in
+pagefuls. If MediaTailor has more configurations than the specified
+maximum, it provides parameters in the response that you can use to
 retrieve the next pageful.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaTailor::ListTagsForResource>
+
+Returns: a L<Paws::MediaTailor::ListTagsForResourceResponse> instance
+
+Returns a list of the tags assigned to the specified playback
+configuration resource.
 
 
 =head2 PutPlaybackConfiguration
@@ -146,9 +201,15 @@ retrieve the next pageful.
 
 =item [CdnConfiguration => L<Paws::MediaTailor::CdnConfiguration>]
 
+=item [DashConfiguration => L<Paws::MediaTailor::DashConfigurationForPut>]
+
 =item [Name => Str]
 
 =item [SlateAdUrl => Str]
+
+=item [Tags => L<Paws::MediaTailor::__mapOf__string>]
+
+=item [TranscodeProfileName => Str]
 
 =item [VideoContentSourceUrl => Str]
 
@@ -159,7 +220,45 @@ Each argument is described in detail in: L<Paws::MediaTailor::PutPlaybackConfigu
 
 Returns: a L<Paws::MediaTailor::PutPlaybackConfigurationResponse> instance
 
-Adds a new configuration to AWS Elemental MediaTailor.
+Adds a new playback configuration to AWS Elemental MediaTailor.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::MediaTailor::__mapOf__string>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaTailor::TagResource>
+
+Returns: nothing
+
+Adds tags to the specified playback configuration resource. You can
+specify one or more tags to add.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaTailor::UntagResource>
+
+Returns: nothing
+
+Removes tags from the specified playback configuration resource. You
+can specify one or more tags to remove.
 
 
 
@@ -167,6 +266,18 @@ Adds a new configuration to AWS Elemental MediaTailor.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllPlaybackConfigurations(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPlaybackConfigurations([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Items, passing the object as the first parameter, and the string 'Items' as the second parameter 
+
+If not, it will return a a L<Paws::MediaTailor::ListPlaybackConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

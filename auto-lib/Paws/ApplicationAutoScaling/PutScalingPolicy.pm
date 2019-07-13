@@ -38,23 +38,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # web-app in the default cluster. The policy increases the desired count of
     # the service by 200%, with a cool down period of 60 seconds.
     my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
-      {
-        'PolicyName'                     => 'web-app-cpu-gt-75',
-        'PolicyType'                     => 'StepScaling',
-        'ResourceId'                     => 'service/default/web-app',
-        'ScalableDimension'              => 'ecs:service:DesiredCount',
-        'ServiceNamespace'               => 'ecs',
-        'StepScalingPolicyConfiguration' => {
-          'AdjustmentType'  => 'PercentChangeInCapacity',
-          'Cooldown'        => 60,
-          'StepAdjustments' => [
+      'PolicyName'                     => 'web-app-cpu-gt-75',
+      'PolicyType'                     => 'StepScaling',
+      'ResourceId'                     => 'service/default/web-app',
+      'ScalableDimension'              => 'ecs:service:DesiredCount',
+      'ServiceNamespace'               => 'ecs',
+      'StepScalingPolicyConfiguration' => {
+        'AdjustmentType'  => 'PercentChangeInCapacity',
+        'Cooldown'        => 60,
+        'StepAdjustments' => [
 
-            {
-              'MetricIntervalLowerBound' => 0,
-              'ScalingAdjustment'        => 200
-            }
-          ]
-        }
+          {
+            'MetricIntervalLowerBound' => 0,
+            'ScalingAdjustment'        => 200
+          }
+        ]
       }
     );
 
@@ -68,24 +66,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # down period of 180 seconds.",
 
     my $PutScalingPolicyResponse = $autoscaling->PutScalingPolicy(
-      {
-        'PolicyName' => 'fleet-cpu-gt-75',
-        'PolicyType' => 'StepScaling',
-        'ResourceId' =>
-          'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
-        'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
-        'ServiceNamespace'  => 'ec2',
-        'StepScalingPolicyConfiguration' => {
-          'AdjustmentType'  => 'PercentChangeInCapacity',
-          'Cooldown'        => 180,
-          'StepAdjustments' => [
+      'PolicyName' => 'fleet-cpu-gt-75',
+      'PolicyType' => 'StepScaling',
+      'ResourceId' =>
+        'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
+      'ScalableDimension' => 'ec2:spot-fleet-request:TargetCapacity',
+      'ServiceNamespace'  => 'ec2',
+      'StepScalingPolicyConfiguration' => {
+        'AdjustmentType'  => 'PercentChangeInCapacity',
+        'Cooldown'        => 180,
+        'StepAdjustments' => [
 
-            {
-              'MetricIntervalLowerBound' => 0,
-              'ScalingAdjustment'        => 200
-            }
-          ]
-        }
+          {
+            'MetricIntervalLowerBound' => 0,
+            'ScalingAdjustment'        => 200
+          }
+        ]
       }
     );
 
@@ -109,12 +105,15 @@ The name of the scaling policy.
 =head2 PolicyType => Str
 
 The policy type. This parameter is required if you are creating a
-policy.
+scaling policy.
 
-For DynamoDB, only C<TargetTrackingScaling> is supported. For Amazon
-ECS, Spot Fleet, and Amazon RDS, both C<StepScaling> and
-C<TargetTrackingScaling> are supported. For any other service, only
-C<StepScaling> is supported.
+For information on which services do not support C<StepScaling> or
+C<TargetTrackingScaling>, see the information about B<Limits> in Step
+Scaling Policies
+(https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
+and Target Tracking Scaling Policies
+(https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
+in the I<Application Auto Scaling User Guide>.
 
 Valid values are: C<"StepScaling">, C<"TargetTrackingScaling">
 
@@ -170,6 +169,14 @@ Amazon SageMaker endpoint variants - The resource type is C<variant>
 and the unique identifier is the resource ID. Example:
 C<endpoint/my-end-point/variant/KMeansClustering>.
 
+=item *
+
+Custom resources are not supported with a resource type. This parameter
+must specify the C<OutputValue> from the CloudFormation template stack
+used to access the resources. The unique identifier is defined by the
+service provider. More information is available in our GitHub
+repository (https://github.com/aws/aws-auto-scaling-custom-resource).
+
 =back
 
 
@@ -224,26 +231,33 @@ for a DynamoDB global secondary index.
 =item *
 
 C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
-Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+Aurora DB cluster. Available for Aurora MySQL-compatible edition and
+Aurora PostgreSQL-compatible edition.
 
 =item *
 
 C<sagemaker:variant:DesiredInstanceCount> - The number of EC2 instances
 for an Amazon SageMaker model endpoint variant.
 
+=item *
+
+C<custom-resource:ResourceType:Property> - The scalable dimension for a
+custom resource provided by your own application or service.
+
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">, C<"custom-resource:ResourceType:Property">
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
-The namespace of the AWS service. For more information, see AWS Service
-Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+The namespace of the AWS service that provides the resource or
+C<custom-resource> for a resource provided by your own application or
+service. For more information, see AWS Service Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">
 
 =head2 StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>
 
@@ -256,7 +270,8 @@ type is C<StepScaling>.
 
 =head2 TargetTrackingScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration>
 
-A target tracking policy.
+A target tracking scaling policy. Includes support for predefined or
+customized metrics.
 
 This parameter is required if you are creating a policy and the policy
 type is C<TargetTrackingScaling>.

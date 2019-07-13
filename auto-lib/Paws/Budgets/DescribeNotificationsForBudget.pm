@@ -65,15 +65,15 @@ The name of the budget whose notifications you want descriptions of.
 
 =head2 MaxResults => Int
 
-Optional integer. Specifies the maximum number of results to return in
-response.
+An optional integer that represents how many entries a paginated
+response contains. The maximum is 100.
 
 
 
 =head2 NextToken => Str
 
-The pagination token that indicates the next set of results to
-retrieve.
+The pagination token that you include in your request to indicate the
+next set of results that you want to retrieve.
 
 
 

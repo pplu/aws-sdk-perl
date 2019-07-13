@@ -1,5 +1,6 @@
 package Paws::IoTAnalytics::DatasetTrigger;
   use Moose;
+  has Dataset => (is => 'ro', isa => 'Paws::IoTAnalytics::TriggeringDataset', request_name => 'dataset', traits => ['NameInRequest']);
   has Schedule => (is => 'ro', isa => 'Paws::IoTAnalytics::Schedule', request_name => 'schedule', traits => ['NameInRequest']);
 1;
 
@@ -20,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoTAnalytics::DatasetTrigger object:
 
-  $service_obj->Method(Att1 => { Schedule => $value, ..., Schedule => $value  });
+  $service_obj->Method(Att1 => { Dataset => $value, ..., Schedule => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytics::DatasetTrigger object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Schedule
+  $result->Att1->Dataset
 
 =head1 DESCRIPTION
 
@@ -35,6 +36,12 @@ The "DatasetTrigger" that specifies when the data set is automatically
 updated.
 
 =head1 ATTRIBUTES
+
+
+=head2 Dataset => L<Paws::IoTAnalytics::TriggeringDataset>
+
+  The data set whose content creation triggers the creation of this data
+set's contents.
 
 
 =head2 Schedule => L<Paws::IoTAnalytics::Schedule>

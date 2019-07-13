@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $elasticfilesystem = Paws->service('EFS');
     # To describe the tags for a file system
     # This operation describes all of a file system's tags.
-    my $DescribeTagsResponse = $elasticfilesystem->DescribeTags(
-      {
-        'FileSystemId' => 'fs-01234567'
-      }
-    );
+    my $DescribeTagsResponse =
+      $elasticfilesystem->DescribeTags( 'FileSystemId' => 'fs-01234567' );
 
     # Results:
     my $Tags = $DescribeTagsResponse->Tags;
@@ -51,13 +48,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-ID of the file system whose tag set you want to retrieve.
+The ID of the file system whose tag set you want to retrieve.
 
 
 
 =head2 Marker => Str
 
-(Optional) Opaque pagination token returned from a previous
+(Optional) An opaque pagination token returned from a previous
 C<DescribeTags> operation (String). If present, it specifies to
 continue the list from where the previous call left off.
 
@@ -65,8 +62,10 @@ continue the list from where the previous call left off.
 
 =head2 MaxItems => Int
 
-(Optional) Maximum number of file system tags to return in the
-response. It must be an integer with a value greater than zero.
+(Optional) The maximum number of file system tags to return in the
+response. Currently, this number is automatically set to 10, and other
+values are ignored. The response is paginated at 10 per page if you
+have more than 10 tags.
 
 
 

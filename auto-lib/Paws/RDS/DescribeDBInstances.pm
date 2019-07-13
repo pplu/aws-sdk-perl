@@ -32,11 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $rds = Paws->service('RDS');
     # To list DB instance settings
     # This example lists settings for the specified DB instance.
-    my $DBInstanceMessage = $rds->DescribeDBInstances(
-      {
-        'DBInstanceIdentifier' => 'mymysqlinstance'
-      }
-    );
+    my $DBInstanceMessage =
+      $rds->DescribeDBInstances( 'DBInstanceIdentifier' => 'mymysqlinstance' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

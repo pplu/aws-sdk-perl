@@ -10,7 +10,7 @@ package Paws::Pinpoint::UpdateEndpoint;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEndpoint');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/endpoints/{endpoint-id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateEndpointResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::MessageBody');
 1;
 
 ### main pod documentation begin ###
@@ -30,14 +30,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $pinpoint = Paws->service('Pinpoint');
-    my $UpdateEndpointResponse = $pinpoint->UpdateEndpoint(
+    my $MessageBody = $pinpoint->UpdateEndpoint(
       ApplicationId   => 'My__string',
       EndpointId      => 'My__string',
       EndpointRequest => {
         Address     => 'My__string',
         Attributes  => { 'My__string' => [ 'My__string', ... ], },    # OPTIONAL
         ChannelType => 'GCM'
-        , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, EMAIL, BAIDU, CUSTOM; OPTIONAL
+        , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM; OPTIONAL
         Demographic => {
           AppVersion      => 'My__string',
           Locale          => 'My__string',
@@ -73,25 +73,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $MessageBody = $UpdateEndpointResponse->MessageBody;
+    my $Message   = $MessageBody->Message;
+    my $RequestID = $MessageBody->RequestID;
 
-    # Returns a L<Paws::Pinpoint::UpdateEndpointResponse> object.
+    # Returns a L<Paws::Pinpoint::MessageBody> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pinpoint/UpdateEndpoint>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ApplicationId => Str
 
-
+The unique identifier for the application. This identifier is displayed
+as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
 =head2 B<REQUIRED> EndpointId => Str
 
-
+The unique identifier for the endpoint.
 
 
 

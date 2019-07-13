@@ -3,6 +3,7 @@ package Paws::EC2::StopInstances;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Force => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'force' );
+  has Hibernate => (is => 'ro', isa => 'Bool');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceIds => [ 'MyString', ... ],
       DryRun      => 1,                     # OPTIONAL
       Force       => 1,                     # OPTIONAL
+      Hibernate   => 1,                     # OPTIONAL
     );
 
     # Results:
@@ -66,9 +68,21 @@ Default: C<false>
 
 
 
+=head2 Hibernate => Bool
+
+Hibernates the instance if the instance was enabled for hibernation at
+launch. If the instance cannot hibernate successfully, a normal
+shutdown occurs. For more information, see Hibernate Your Instance
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
+
+Default: C<false>
+
+
+
 =head2 B<REQUIRED> InstanceIds => ArrayRef[Str|Undef]
 
-One or more instance IDs.
+The IDs of the instances.
 
 
 

@@ -32,20 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-Get Applications Result.
+Provides information about all of your applications.
 
 =head1 ATTRIBUTES
 
 
 =head2 Item => ArrayRef[L<Paws::Pinpoint::ApplicationResponse>]
 
-  List of applications returned in this page.
+  An array of responses, one for each application that was returned.
 
 
 =head2 NextToken => Str
 
-  The string that you use in a subsequent request to get the next page of
-results in a paginated response.
+  The string to use in a subsequent request to get the next page of
+results in a paginated response. This value is null if there are no
+additional pages.
 
 
 

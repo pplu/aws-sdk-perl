@@ -43,8 +43,8 @@ Information about a deployment configuration.
 
 =head2 ComputePlatform => Str
 
-  The destination platform type for the deployment (C<Lambda> or
-C<Server>).
+  The destination platform type for the deployment (C<Lambda>, C<Server>,
+or C<ECS>).
 
 
 =head2 CreateTime => Str
@@ -69,7 +69,7 @@ C<Server>).
 
 =head2 TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>
 
-  The configuration specifying how the deployment traffic will be routed.
+  The configuration that specifies how the deployment traffic is routed.
 Only deployments with a Lambda compute platform can specify this.
 
 

@@ -1,6 +1,7 @@
 package Paws::CodeBuild::Webhook;
   use Moose;
   has BranchFilter => (is => 'ro', isa => 'Str', request_name => 'branchFilter', traits => ['NameInRequest']);
+  has FilterGroups => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeBuild::WebhookFilter]]', request_name => 'filterGroups', traits => ['NameInRequest']);
   has LastModifiedSecret => (is => 'ro', isa => 'Str', request_name => 'lastModifiedSecret', traits => ['NameInRequest']);
   has PayloadUrl => (is => 'ro', isa => 'Str', request_name => 'payloadUrl', traits => ['NameInRequest']);
   has Secret => (is => 'ro', isa => 'Str', request_name => 'secret', traits => ['NameInRequest']);
@@ -35,34 +36,50 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about a webhook in GitHub that connects repository events
-to a build project in AWS CodeBuild.
+Information about a webhook that connects repository events to a build
+project in AWS CodeBuild.
 
 =head1 ATTRIBUTES
 
 
 =head2 BranchFilter => Str
 
-  A regular expression used to determine which branches in a repository
-are built when a webhook is triggered. If the name of a branch matches
-the regular expression, then it is built. If it doesn't match, then it
-is not. If branchFilter is empty, then all branches are built.
+  A regular expression used to determine which repository branches are
+built when a webhook is triggered. If the name of a branch matches the
+regular expression, then it is built. If C<branchFilter> is empty, then
+all branches are built.
+
+It is recommended that you use C<filterGroups> instead of
+C<branchFilter>.
+
+
+=head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]
+
+  An array of arrays of C<WebhookFilter> objects used to determine which
+webhooks are triggered. At least one C<WebhookFilter> in the array must
+specify C<EVENT> as its C<type>.
+
+For a build to be triggered, at least one filter group in the
+C<filterGroups> array must pass. For a filter group to pass, each of
+its filters must pass.
 
 
 =head2 LastModifiedSecret => Str
 
-  A timestamp indicating the last time a repository's secret token was
-modified.
+  A timestamp that indicates the last time a repository's secret token
+was modified.
 
 
 =head2 PayloadUrl => Str
 
-  The CodeBuild endpoint where webhook events are sent.
+  The AWS CodeBuild endpoint where webhook events are sent.
 
 
 =head2 Secret => Str
 
   The secret token of the associated repository.
+
+A Bitbucket webhook does not support C<secret>.
 
 
 =head2 Url => Str

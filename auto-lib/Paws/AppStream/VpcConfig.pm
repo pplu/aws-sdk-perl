@@ -32,20 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Describes VPC configuration information.
+Describes VPC configuration information for fleets and image builders.
 
 =head1 ATTRIBUTES
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-  The security groups for the fleet.
+  The identifiers of the security groups for the fleet or image builder.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-  The subnets to which a network interface is established from the fleet
-instance.
+  The identifiers of the subnets to which a network interface is attached
+from the fleet instance or image builder instance. Fleet instances use
+one or more subnets. Image builder instances use one subnet.
 
 
 

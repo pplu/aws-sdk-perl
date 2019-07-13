@@ -63,11 +63,11 @@ after Jan 1, 1970 00:00:00 UTC.
 
 =head2 LastEventTimestamp => Int
 
-  the time of the most recent log event in the log stream in CloudWatch
+  The time of the most recent log event in the log stream in CloudWatch
 Logs. This number is expressed as the number of milliseconds after Jan
-1, 1970 00:00:00 UTC. lastEventTime updates on an eventual consistency
-basis. It typically updates in less than an hour from ingestion, but
-may take longer in some rare situations.
+1, 1970 00:00:00 UTC. The C<lastEventTime> value updates on an eventual
+consistency basis. It typically updates in less than an hour from
+ingestion, but may take longer in some rare situations.
 
 
 =head2 LastIngestionTime => Int
@@ -84,6 +84,11 @@ may take longer in some rare situations.
 =head2 StoredBytes => Int
 
   The number of bytes stored.
+
+B<IMPORTANT:> Starting on June 17, 2019, this parameter will be
+deprecated for log streams, and will be reported as zero. This change
+applies only to log streams. The C<storedBytes> parameter for log
+groups is not affected.
 
 
 =head2 UploadSequenceToken => Str

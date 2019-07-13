@@ -5,6 +5,7 @@ package Paws::Firehose::S3DestinationUpdate;
   has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
   has CompressionFormat => (is => 'ro', isa => 'Str');
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::EncryptionConfiguration');
+  has ErrorOutputPrefix => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
   has RoleARN => (is => 'ro', isa => 'Str');
 1;
@@ -74,6 +75,13 @@ Amazon Redshift C<COPY> operation that reads from the S3 bucket.
 
   The encryption configuration. If no value is specified, the default is
 no encryption.
+
+
+=head2 ErrorOutputPrefix => Str
+
+  A prefix that Kinesis Data Firehose evaluates and adds to failed
+records before writing them to S3. This prefix appears immediately
+following the bucket name.
 
 
 =head2 Prefix => Str

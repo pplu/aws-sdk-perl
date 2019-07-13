@@ -7,6 +7,7 @@ package Paws::IAM::Policy;
   has Description => (is => 'ro', isa => 'Str');
   has IsAttachable => (is => 'ro', isa => 'Bool');
   has Path => (is => 'ro', isa => 'Str');
+  has PermissionsBoundaryUsageCount => (is => 'ro', isa => 'Int');
   has PolicyId => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str');
   has UpdateDate => (is => 'ro', isa => 'Str');
@@ -47,7 +48,7 @@ GetPolicy, and ListPolicies operations.
 
 For more information about managed policies, refer to Managed Policies
 and Inline Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
 in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
@@ -95,8 +96,19 @@ role.
   The path to the policy.
 
 For more information about paths, see IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
+
+
+=head2 PermissionsBoundaryUsageCount => Int
+
+  The number of entities (users and roles) for which the policy is used
+to set the permissions boundary.
+
+For more information about permissions boundaries, see Permissions
+Boundaries for IAM Identities
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+in the I<IAM User Guide>.
 
 
 =head2 PolicyId => Str
@@ -104,7 +116,7 @@ in the I<Using IAM> guide.
   The stable and unique string identifying the policy.
 
 For more information about IDs, see IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<Using IAM> guide.
 
 

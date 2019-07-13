@@ -41,7 +41,7 @@ A complex data type of profiles for the field-level encryption.
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  A unique number that ensures the request can't be replayed.
+  A unique number that ensures that the request can't be replayed.
 
 
 =head2 Comment => Str

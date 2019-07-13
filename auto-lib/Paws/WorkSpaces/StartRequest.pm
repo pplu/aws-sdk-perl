@@ -38,7 +38,7 @@ Information used to start a WorkSpace.
 
 =head2 WorkspaceId => Str
 
-  The ID of the WorkSpace.
+  The identifier of the WorkSpace.
 
 
 

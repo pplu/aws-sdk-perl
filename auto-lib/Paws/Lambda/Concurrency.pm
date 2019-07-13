@@ -17,8 +17,9 @@ Paws::Lambda::Concurrency
 
 =head2 ReservedConcurrentExecutions => Int
 
-The number of concurrent executions reserved for this function. For
-more information, see concurrent-executions.
+The number of concurrent executions that are reserved for this
+function. For more information, see Managing Concurrency
+(https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
 
 
 =head2 _request_id => Str

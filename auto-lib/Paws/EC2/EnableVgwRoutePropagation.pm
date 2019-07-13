@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example enables the specified virtual private gateway to propagate
     # static routes to the specified route table.
     $ec2->EnableVgwRoutePropagation(
-      {
-        'GatewayId'    => 'vgw-9a4cacf3',
-        'RouteTableId' => 'rtb-22574640'
-      }
+      'GatewayId'    => 'vgw-9a4cacf3',
+      'RouteTableId' => 'rtb-22574640'
     );
 
 
@@ -47,13 +45,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> GatewayId => Str
 
-The ID of the virtual private gateway.
+The ID of the virtual private gateway that is attached to a VPC. The
+virtual private gateway must be attached to the same VPC that the
+routing tables are associated with.
 
 
 
 =head2 B<REQUIRED> RouteTableId => Str
 
-The ID of the route table.
+The ID of the route table. The routing table must be associated with
+the same VPC that the virtual private gateway is attached to.
 
 
 

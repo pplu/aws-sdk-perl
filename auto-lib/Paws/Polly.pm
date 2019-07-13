@@ -29,14 +29,29 @@ package Paws::Polly;
     my $call_object = $self->new_with_coercions('Paws::Polly::GetLexicon', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSpeechSynthesisTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Polly::GetSpeechSynthesisTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListLexicons {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Polly::ListLexicons', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListSpeechSynthesisTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Polly::ListSpeechSynthesisTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutLexicon {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Polly::PutLexicon', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartSpeechSynthesisTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Polly::StartSpeechSynthesisTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SynthesizeSpeech {
@@ -68,9 +83,55 @@ package Paws::Polly;
 
     return undef
   }
+  sub ListAllLexicons {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListLexicons(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListLexicons(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Lexicons }, @{ $next_result->Lexicons };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Lexicons') foreach (@{ $result->Lexicons });
+        $result = $self->ListLexicons(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Lexicons') foreach (@{ $result->Lexicons });
+    }
+
+    return undef
+  }
+  sub ListAllSpeechSynthesisTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSpeechSynthesisTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSpeechSynthesisTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SynthesisTasks }, @{ $next_result->SynthesisTasks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SynthesisTasks') foreach (@{ $result->SynthesisTasks });
+        $result = $self->ListSpeechSynthesisTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SynthesisTasks') foreach (@{ $result->SynthesisTasks });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/DeleteLexicon DescribeVoices GetLexicon ListLexicons PutLexicon SynthesizeSpeech / }
+  sub operations { qw/DeleteLexicon DescribeVoices GetLexicon GetSpeechSynthesisTask ListLexicons ListSpeechSynthesisTasks PutLexicon StartSpeechSynthesisTask SynthesizeSpeech / }
 
 1;
 
@@ -137,6 +198,8 @@ For more information, see Managing Lexicons
 
 =over
 
+=item [IncludeAdditionalLanguageCodes => Bool]
+
 =item [LanguageCode => Str]
 
 =item [NextToken => Str]
@@ -188,6 +251,25 @@ AWS Region. For more information, see Managing Lexicons
 (http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
+=head2 GetSpeechSynthesisTask
+
+=over
+
+=item TaskId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Polly::GetSpeechSynthesisTask>
+
+Returns: a L<Paws::Polly::GetSpeechSynthesisTaskOutput> instance
+
+Retrieves a specific SpeechSynthesisTask object based on its TaskID.
+This object contains information about the given speech synthesis task,
+including the status of the task, and a link to the S3 bucket
+containing the output of the task.
+
+
 =head2 ListLexicons
 
 =over
@@ -204,6 +286,28 @@ Returns: a L<Paws::Polly::ListLexiconsOutput> instance
 Returns a list of pronunciation lexicons stored in an AWS Region. For
 more information, see Managing Lexicons
 (http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
+
+
+=head2 ListSpeechSynthesisTasks
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Polly::ListSpeechSynthesisTasks>
+
+Returns: a L<Paws::Polly::ListSpeechSynthesisTasksOutput> instance
+
+Returns a list of SpeechSynthesisTask objects ordered by their creation
+date. This operation can filter the tasks by their status, for example,
+allowing users to list only tasks that are completed.
 
 
 =head2 PutLexicon
@@ -231,6 +335,49 @@ For more information, see Managing Lexicons
 (http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
+=head2 StartSpeechSynthesisTask
+
+=over
+
+=item OutputFormat => Str
+
+=item OutputS3BucketName => Str
+
+=item Text => Str
+
+=item VoiceId => Str
+
+=item [LanguageCode => Str]
+
+=item [LexiconNames => ArrayRef[Str|Undef]]
+
+=item [OutputS3KeyPrefix => Str]
+
+=item [SampleRate => Str]
+
+=item [SnsTopicArn => Str]
+
+=item [SpeechMarkTypes => ArrayRef[Str|Undef]]
+
+=item [TextType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Polly::StartSpeechSynthesisTask>
+
+Returns: a L<Paws::Polly::StartSpeechSynthesisTaskOutput> instance
+
+Allows the creation of an asynchronous synthesis task, by starting a
+new C<SpeechSynthesisTask>. This operation requires all the standard
+information needed for speech synthesis, plus the name of an Amazon S3
+bucket for the service to store the output of the synthesis task and
+two optional parameters (OutputS3KeyPrefix and SnsTopicArn). Once the
+synthesis task is created, this operation will return a
+SpeechSynthesisTask object, which will include an identifier of this
+task as well as the current status.
+
+
 =head2 SynthesizeSpeech
 
 =over
@@ -240,6 +387,8 @@ For more information, see Managing Lexicons
 =item Text => Str
 
 =item VoiceId => Str
+
+=item [LanguageCode => Str]
 
 =item [LexiconNames => ArrayRef[Str|Undef]]
 
@@ -270,9 +419,9 @@ information, see How it Works
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllVoices(sub { },[LanguageCode => Str, NextToken => Str])
+=head2 DescribeAllVoices(sub { },[IncludeAdditionalLanguageCodes => Bool, LanguageCode => Str, NextToken => Str])
 
-=head2 DescribeAllVoices([LanguageCode => Str, NextToken => Str])
+=head2 DescribeAllVoices([IncludeAdditionalLanguageCodes => Bool, LanguageCode => Str, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -280,6 +429,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Voices, passing the object as the first parameter, and the string 'Voices' as the second parameter 
 
 If not, it will return a a L<Paws::Polly::DescribeVoicesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllLexicons(sub { },[NextToken => Str])
+
+=head2 ListAllLexicons([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Lexicons, passing the object as the first parameter, and the string 'Lexicons' as the second parameter 
+
+If not, it will return a a L<Paws::Polly::ListLexiconsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSpeechSynthesisTasks(sub { },[MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllSpeechSynthesisTasks([MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SynthesisTasks, passing the object as the first parameter, and the string 'SynthesisTasks' as the second parameter 
+
+If not, it will return a a L<Paws::Polly::ListSpeechSynthesisTasksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

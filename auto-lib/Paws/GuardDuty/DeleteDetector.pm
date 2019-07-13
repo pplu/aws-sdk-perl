@@ -29,19 +29,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $DeleteDetectorResponse = $guardduty->DeleteDetector(
-      DetectorId => 'My__string',
+      DetectorId => 'MyDetectorId',
 
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/DeleteDetector>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID that specifies the detector that you want to delete.
+The unique ID of the detector that you want to delete.
 
 
 

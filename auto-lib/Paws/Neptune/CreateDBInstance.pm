@@ -153,7 +153,7 @@ Default: C<true>
 
 =head2 AvailabilityZone => Str
 
-The EC2 Availability Zone that the DB instance is created in.
+The EC2 Availability Zone that the DB instance is created in
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -256,9 +256,7 @@ Example: C<mydbinstance>
 
 =head2 DBName => Str
 
-The database name.
-
-Type: String
+Not supported.
 
 
 
@@ -510,33 +508,7 @@ Valid Values: 0 - 15
 
 =head2 PubliclyAccessible => Bool
 
-Specifies the accessibility options for the DB instance. A value of
-true specifies an Internet-facing instance with a publicly resolvable
-DNS name, which resolves to a public IP address. A value of false
-specifies an internal instance with a DNS name that resolves to a
-private IP address.
-
-Default: The default behavior varies depending on whether a VPC has
-been requested or not. The following list shows the default behavior in
-each case.
-
-=over
-
-=item *
-
-B<Default VPC:> true
-
-=item *
-
-B<VPC:> false
-
-=back
-
-If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance is publicly
-accessible. If a specific DB subnet group has been specified as part of
-the request and the PubliclyAccessible value has not been set, the DB
-instance is private.
+This flag should no longer be used.
 
 
 
@@ -561,7 +533,7 @@ Not applicable. Storage is managed by the DB Cluster.
 
 =head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
 
-
+The tags to assign to the new instance.
 
 
 

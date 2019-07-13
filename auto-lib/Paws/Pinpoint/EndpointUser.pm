@@ -32,26 +32,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Endpoint user specific custom userAttributes
+Specifies data for one or more attributes that describe the user who's
+associated with an endpoint.
 
 =head1 ATTRIBUTES
 
 
 =head2 UserAttributes => L<Paws::Pinpoint::MapOfListOf__string>
 
-  Custom attributes that describe an end user by associating a name with
-an array of values. For example, an attribute named "interests" might
-have the values ["science", "politics", "travel"]. You can use these
-attributes as selection criteria when you create a segment of users to
-engage with a messaging campaign. The following characters are not
-recommended in attribute names: # : ? \ /. The Amazon Pinpoint console
-does not display attributes that include these characters in the name.
-This limitation does not apply to attribute values.
+  One or more custom attributes that describe the user by associating a
+name with an array of values. For example, the value of an attribute
+named Interests might be: ["science", "music", "travel"]. You can use
+these attributes as filter criteria when you create segments.
+
+When you define the name of a custom attribute, avoid using the
+following characters: number sign (#), colon (:), question mark (?),
+backslash (\), and slash (/). The Amazon Pinpoint console can't display
+attribute names that contain these characters. This limitation doesn't
+apply to attribute values.
 
 
 =head2 UserId => Str
 
-  The unique ID of the user.
+  The unique identifier for the user.
 
 
 

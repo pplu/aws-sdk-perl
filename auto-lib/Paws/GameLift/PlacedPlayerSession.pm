@@ -37,8 +37,6 @@ StartGameSessionPlacement request. This object contains only the player
 ID and player session ID. To retrieve full details on a player session,
 call DescribePlayerSessions with the player session ID.
 
-Player-session-related operations include:
-
 =over
 
 =item *

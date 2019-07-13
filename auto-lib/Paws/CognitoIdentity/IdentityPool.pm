@@ -6,6 +6,7 @@ package Paws::CognitoIdentity::IdentityPool;
   has DeveloperProviderName => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
   has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
+  has IdentityPoolTags => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityPoolTagsType');
   has OpenIdConnectProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SamlProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedLoginProviders => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityProviders');
@@ -28,8 +29,7 @@ TRUE if the identity pool supports unauthenticated logins.
 
 =head2 CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]
 
-A list representing an Amazon Cognito Identity User Pool and its client
-ID.
+A list representing an Amazon Cognito user pool and its client ID.
 
 
 =head2 DeveloperProviderName => Str
@@ -45,6 +45,14 @@ An identity pool ID in the format REGION:GUID.
 =head2 B<REQUIRED> IdentityPoolName => Str
 
 A string that you provide.
+
+
+=head2 IdentityPoolTags => L<Paws::CognitoIdentity::IdentityPoolTagsType>
+
+The tags that are assigned to the identity pool. A tag is a label that
+you can apply to identity pools to categorize and manage them in
+different ways, such as by purpose, owner, environment, or other
+criteria.
 
 
 =head2 OpenIdConnectProviderARNs => ArrayRef[Str|Undef]

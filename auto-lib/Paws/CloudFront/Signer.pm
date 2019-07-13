@@ -42,7 +42,7 @@ pair IDs, if any.
 =head2 AwsAccountNumber => Str
 
   An AWS account that is included in the C<TrustedSigners> complex type
-for this RTMP distribution. Valid values include:
+for this distribution. Valid values include:
 
 =over
 

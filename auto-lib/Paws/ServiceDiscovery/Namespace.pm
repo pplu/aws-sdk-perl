@@ -46,8 +46,8 @@ A complex type that contains information about a specified namespace.
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) that Route 53 assigns to the namespace
-when you create it.
+  The Amazon Resource Name (ARN) that AWS Cloud Map assigns to the
+namespace when you create it.
 
 
 =head2 CreateDate => Str

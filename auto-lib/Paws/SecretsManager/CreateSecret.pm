@@ -105,7 +105,7 @@ existing version. Instead, use PutSecretValue to create a new version.
 
 =back
 
-This value becomes the C<SecretVersionId> of the new version.
+This value becomes the C<VersionId> of the new version.
 
 
 
@@ -143,7 +143,12 @@ create a custom CMK and specify the ARN in this field.
 Specifies the friendly name of the new secret.
 
 The secret name must be ASCII letters, digits, or the following
-characters : /_+=,.@-
+characters : /_+=.@-
+
+Don't end your secret name with a hyphen followed by six characters. If
+you do so, you risk confusion and unexpected results when searching for
+a secret by partial ARN. This is because Secrets Manager automatically
+adds a hyphen and six random characters at the end of the ARN.
 
 
 
@@ -181,7 +186,7 @@ For storing multiple values, we recommend that you use a JSON text
 string argument and specify key/value pairs. For information on how to
 format a JSON parameter for the various command line tool environments,
 see Using JSON for Parameters
-(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+(https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 in the I<AWS CLI User Guide>. For example:
 
 C<[{"username":"bob"},{"password":"abc123xyz456"}]>
@@ -219,7 +224,7 @@ operation is blocked and returns an C<Access Denied> error.
 This parameter requires a JSON text string argument. For information on
 how to format a JSON parameter for the various command line tool
 environments, see Using JSON for Parameters
-(http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+(https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 in the I<AWS CLI User Guide>. For example:
 
 C<[{"Key":"CostCenter","Value":"12345"},{"Key":"environment","Value":"production"}]>

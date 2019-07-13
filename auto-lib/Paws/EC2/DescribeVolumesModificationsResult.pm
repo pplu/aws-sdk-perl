@@ -23,7 +23,7 @@ Token for pagination, null if there are no more results
 
 =head2 VolumesModifications => ArrayRef[L<Paws::EC2::VolumeModification>]
 
-A list of returned VolumeModification objects.
+Information about the volume modifications.
 
 
 =head2 _request_id => Str

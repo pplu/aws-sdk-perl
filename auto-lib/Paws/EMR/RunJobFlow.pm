@@ -65,14 +65,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         EmrManagedMasterSecurityGroup => 'MyXmlStringMaxLen256',    # max: 256
         EmrManagedSlaveSecurityGroup  => 'MyXmlStringMaxLen256',    # max: 256
         HadoopVersion                 => 'MyXmlStringMaxLen256',    # max: 256
-        InstanceCount                 => 1,
+        InstanceCount                 => 1,                         # OPTIONAL
         InstanceFleets                => [
           {
             InstanceFleetType   => 'MASTER',    # values: MASTER, CORE, TASK
             InstanceTypeConfigs => [
               {
-                InstanceType => 'MyInstanceType',          # min: 1, max: 256
-                BidPrice     => 'MyXmlStringMaxLen256',    # max: 256
+                InstanceType => 'MyInstanceType',   # min: 1, max: 256; OPTIONAL
+                BidPrice => 'MyXmlStringMaxLen256', # max: 256
                 BidPriceAsPercentageOfOnDemandPrice => 1,
                 Configurations                      => [
                   {
@@ -86,11 +86,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   EbsBlockDeviceConfigs => [
                     {
                       VolumeSpecification => {
-                        SizeInGB   => 1,
+                        SizeInGB   => 1,                              # OPTIONAL
                         VolumeType => 'MyString',
-                        Iops       => 1,
+                        Iops       => 1,                              # OPTIONAL
                       },
-                      VolumesPerInstance => 1,
+                      VolumesPerInstance => 1,                        # OPTIONAL
                     },
                     ...
                   ],                                                  # OPTIONAL
@@ -117,23 +117,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                                                       # OPTIONAL
         InstanceGroups => [
           {
-            InstanceCount     => 1,
+            InstanceCount     => 1,                 # OPTIONAL
             InstanceRole      => 'MASTER',          # values: MASTER, CORE, TASK
-            InstanceType      => 'MyInstanceType',  # min: 1, max: 256
+            InstanceType      => 'MyInstanceType',  # min: 1, max: 256; OPTIONAL
             AutoScalingPolicy => {
               Constraints => {
-                MaxCapacity => 1,
-                MinCapacity => 1,
+                MaxCapacity => 1,                   # OPTIONAL
+                MinCapacity => 1,                   # OPTIONAL
 
               },
               Rules => [
                 {
                   Action => {
                     SimpleScalingPolicyConfiguration => {
-                      ScalingAdjustment => 1,
+                      ScalingAdjustment => 1,                     # OPTIONAL
                       AdjustmentType    => 'CHANGE_IN_CAPACITY'
                       , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
-                      CoolDown => 1,
+                      CoolDown => 1,    # OPTIONAL
                     },
                     Market => 'ON_DEMAND',   # values: ON_DEMAND, SPOT; OPTIONAL
                   },
@@ -143,7 +143,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
                       , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
                       MetricName => 'MyString',
-                      Period     => 1,
+                      Period     => 1,            # OPTIONAL
                       Threshold  => 1,
                       Dimensions => [
                         {
@@ -151,8 +151,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           Value => 'MyString',
                         },
                         ...
-                      ],    # OPTIONAL
-                      EvaluationPeriods => 1,
+                      ],                          # OPTIONAL
+                      EvaluationPeriods => 1,               # OPTIONAL
                       Namespace         => 'MyString',
                       Statistic         => 'SAMPLE_COUNT'
                       , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
@@ -180,11 +180,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               EbsBlockDeviceConfigs => [
                 {
                   VolumeSpecification => {
-                    SizeInGB   => 1,
+                    SizeInGB   => 1,                                # OPTIONAL
                     VolumeType => 'MyString',
-                    Iops       => 1,
+                    Iops       => 1,                                # OPTIONAL
                   },
-                  VolumesPerInstance => 1,
+                  VolumesPerInstance => 1,                          # OPTIONAL
                 },
                 ...
               ],                                                    # OPTIONAL
@@ -195,21 +195,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                     # OPTIONAL
-        KeepJobFlowAliveWhenNoSteps => 1,                   # OPTIONAL
-        MasterInstanceType          => 'MyInstanceType',    # min: 1, max: 256
-        Placement                   => {
-          AvailabilityZone  => 'MyXmlString',    # max: 10280; OPTIONAL
+        KeepJobFlowAliveWhenNoSteps => 1,      # OPTIONAL
+        MasterInstanceType => 'MyInstanceType',    # min: 1, max: 256; OPTIONAL
+        Placement          => {
+          AvailabilityZone  => 'MyXmlString',      # max: 10280; OPTIONAL
           AvailabilityZones => [
-            'MyXmlStringMaxLen256', ...          # max: 256
-          ],                                     # OPTIONAL
+            'MyXmlStringMaxLen256', ...            # max: 256
+          ],                                       # OPTIONAL
         },    # OPTIONAL
-        ServiceAccessSecurityGroup => 'MyXmlStringMaxLen256', # max: 256
-        SlaveInstanceType          => 'MyInstanceType',       # min: 1, max: 256
-        TerminationProtected       => 1,                      # OPTIONAL
+        ServiceAccessSecurityGroup => 'MyXmlStringMaxLen256',    # max: 256
+        SlaveInstanceType    => 'MyInstanceType',   # min: 1, max: 256; OPTIONAL
+        TerminationProtected => 1,                  # OPTIONAL
       },
       Name           => 'MyXmlStringMaxLen256',
-      AdditionalInfo => 'MyXmlString',                        # OPTIONAL
-      AmiVersion     => 'MyXmlStringMaxLen256',               # OPTIONAL
+      AdditionalInfo => 'MyXmlString',              # OPTIONAL
+      AmiVersion     => 'MyXmlStringMaxLen256',     # OPTIONAL
       Applications   => [
         {
           AdditionalInfo => { 'MyString' => 'MyString', },    # OPTIONAL
@@ -320,31 +320,19 @@ A JSON string for selecting additional features.
 
 =head2 AmiVersion => Str
 
-For Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR releases 4.0
-and later, the Linux AMI is determined by the C<ReleaseLabel> specified
-or by C<CustomAmiID>. The version of the Amazon Machine Image (AMI) to
-use when launching Amazon EC2 instances in the job flow. For details
-about the AMI versions currently supported in EMR version 3.x and 2.x,
-see AMI Versions Supported in EMR in the I<Amazon EMR Developer Guide>.
-
-If the AMI supports multiple versions of Hadoop (for example, AMI 1.0
-supports both Hadoop 0.18 and 0.20), you can use the
-JobFlowInstancesConfig C<HadoopVersion> parameter to modify the version
-of Hadoop from the defaults shown above.
-
-Previously, the EMR AMI version API parameter options allowed you to
-use latest for the latest AMI version rather than specify a numerical
-value. Some regions no longer support this deprecated option as they
-only have a newer release label version of EMR, which requires you to
-specify an EMR release label release (EMR 4.x or later).
+Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR
+releases 4.0 and later, C<ReleaseLabel> is used. To specify a custom
+AMI, use C<CustomAmiID>.
 
 
 
 =head2 Applications => ArrayRef[L<Paws::EMR::Application>]
 
-For Amazon EMR releases 4.0 and later. A list of applications for the
-cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and
-"Spark." They are case insensitive.
+Applies to Amazon EMR releases 4.0 and later. A case-insensitive list
+of applications for Amazon EMR to install and configure when launching
+the cluster. For a list of applications available for each Amazon EMR
+release version, see the Amazon EMR Release Guide
+(https://docs.aws.amazon.com/emr/latest/ReleaseGuide/).
 
 
 
@@ -377,17 +365,17 @@ Available only in Amazon EMR version 5.7.0 and later. The ID of a
 custom Amazon EBS-backed Linux AMI. If specified, Amazon EMR uses this
 AMI when it launches cluster EC2 instances. For more information about
 custom AMIs in Amazon EMR, see Using a Custom AMI
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html)
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html)
 in the I<Amazon EMR Management Guide>. If omitted, the cluster uses the
 base Linux AMI for the C<ReleaseLabel> specified. For Amazon EMR
 versions 2.x and 3.x, use C<AmiVersion> instead.
 
 For information about creating a custom AMI, see Creating an Amazon
 EBS-Backed Linux AMI
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
 in the I<Amazon Elastic Compute Cloud User Guide for Linux Instances>.
 For information about finding an AMI ID, see Finding a Linux AMI
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
 
 
 
@@ -419,7 +407,7 @@ must have already created it using the CLI or console.
 Attributes for Kerberos configuration when Kerberos authentication is
 enabled using a security configuration. For more information see Use
 Kerberos Authentication
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
 in the I<EMR Management Guide>.
 
 
@@ -447,7 +435,7 @@ job flow that accepts a user argument list. EMR accepts and forwards
 the argument list to the corresponding installation script as bootstrap
 action arguments. For more information, see "Launch a Job Flow on the
 MapR Distribution for Hadoop" in the Amazon EMR Developer Guide
-(http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
+(https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 Supported values are:
 
 =over
@@ -494,8 +482,15 @@ installed.
 
 =head2 ReleaseLabel => Str
 
-The release label for the Amazon EMR release. For Amazon EMR 3.x and
-2.x AMIs, use C<AmiVersion> instead.
+The Amazon EMR release label, which determines the version of
+open-source application packages installed on the cluster. Release
+labels are in the form C<emr-x.x.x>, where x.x.x is an Amazon EMR
+release version, for example, C<emr-5.14.0>. For more information about
+Amazon EMR release versions and included application versions and
+features, see https://docs.aws.amazon.com/emr/latest/ReleaseGuide/
+(https://docs.aws.amazon.com/emr/latest/ReleaseGuide/). The release
+label applies only to Amazon EMR releases versions 4.x and later.
+Earlier versions use C<AmiVersion>.
 
 
 
@@ -555,7 +550,7 @@ later, use Applications.
 
 A list of strings that indicates third-party software to use. For more
 information, see the Amazon EMR Developer Guide
-(http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
+(https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 Currently supported values are:
 
 =over

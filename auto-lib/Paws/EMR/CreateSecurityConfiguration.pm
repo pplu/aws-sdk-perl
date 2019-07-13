@@ -58,7 +58,7 @@ The name of the security configuration.
 The security configuration details in JSON format. For JSON parameters
 and examples, see Use Security Configurations to Set Up Cluster
 Security
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html)
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html)
 in the I<Amazon EMR Management Guide>.
 
 

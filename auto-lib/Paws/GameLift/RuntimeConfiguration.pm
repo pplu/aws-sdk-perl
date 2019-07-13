@@ -34,30 +34,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::R
 =head1 DESCRIPTION
 
 A collection of server process configurations that describe what
-processes to run on each instance in a fleet. All fleets must have a
-run-time configuration. Each instance in the fleet launches the server
-processes specified in the run-time configuration and launches new ones
-as existing processes end. Each instance regularly checks for an
-updated run-time configuration and follows the new instructions.
+processes to run on each instance in a fleet. Server processes run
+either a custom game build executable or a Realtime Servers script.
+Each instance in the fleet starts the specified server processes and
+continues to start new processes as existing processes end. An instance
+regularly checks for an updated run-time configuration.
 
 The run-time configuration enables the instances in a fleet to run
-multiple processes simultaneously. Potential scenarios are as follows:
-(1) Run multiple processes of a single game server executable to
-maximize usage of your hosting resources. (2) Run one or more processes
-of different build executables, such as your game server executable and
-a related program, or two or more different versions of a game server.
-(3) Run multiple processes of a single game server but with different
-launch parameters, for example to run one process on each instance in
-debug mode.
+multiple processes simultaneously. Learn more about Running Multiple
+Processes on a Fleet
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-multiprocess.html).
 
 A Amazon GameLift instance is limited to 50 processes running
-simultaneously. A run-time configuration must specify fewer than this
-limit. To calculate the total number of processes specified in a
+simultaneously. To calculate the total number of processes in a
 run-time configuration, add the values of the C<ConcurrentExecutions>
-parameter for each C< ServerProcess > object in the run-time
-configuration.
-
-Fleet-related operations include:
+parameter for each ServerProcess object.
 
 =over
 

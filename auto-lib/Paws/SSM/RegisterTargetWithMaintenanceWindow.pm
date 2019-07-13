@@ -83,36 +83,48 @@ An optional name for the target.
 =head2 OwnerInformation => Str
 
 User-provided value that will be included in any CloudWatch events
-raised while running tasks for these targets in this Maintenance
-Window.
+raised while running tasks for these targets in this maintenance
+window.
 
 
 
 =head2 B<REQUIRED> ResourceType => Str
 
-The type of target being registered with the Maintenance Window.
+The type of target being registered with the maintenance window.
 
 Valid values are: C<"INSTANCE">
 
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::SSM::Target>]
 
-The targets (either instances or tags).
+The targets to register with the maintenance window. In other words,
+the instances to run commands on when the maintenance window runs.
 
-Specify instances using the following format:
+You can specify targets using either instance IDs or tags that have
+been applied to instances.
 
-C<Key=InstanceIds,Values=E<lt>instance-id-1E<gt>,E<lt>instance-id-2E<gt>>
+B<Example 1>: Specify instance IDs
 
-Specify tags using either of the following formats:
+C<Key=InstanceIds,Values=I<instance-id-1>,I<instance-id-2>,I<instance-id-3>>
 
-C<Key=tag:E<lt>tag-keyE<gt>,Values=E<lt>tag-value-1E<gt>,E<lt>tag-value-2E<gt>>
+B<Example 2>: Use tag key-pairs applied to instances
 
-C<Key=tag-key,Values=E<lt>tag-key-1E<gt>,E<lt>tag-key-2E<gt>>
+C<Key=tag:I<my-tag-key>,Values=I<my-tag-value-1>,I<my-tag-value-2>>
+
+B<Example 3>: Use tag-keys applied to instances
+
+C<Key=tag-key,Values=I<my-tag-key-1>,I<my-tag-key-2>>
+
+For more information about these examples formats, including the best
+use case for each one, see Examples: Register Targets with a
+Maintenance Window
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 
 =head2 B<REQUIRED> WindowId => Str
 
-The ID of the Maintenance Window the target should be registered with.
+The ID of the maintenance window the target should be registered with.
 
 
 

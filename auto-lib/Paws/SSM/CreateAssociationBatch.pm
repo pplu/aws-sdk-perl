@@ -30,10 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateAssociationBatchResult = $ssm->CreateAssociationBatch(
       Entries => [
         {
-          Name            => 'MyDocumentName',
+          Name            => 'MyDocumentARN',
           AssociationName => 'MyAssociationName',    # OPTIONAL
+          AutomationTargetParameterName =>
+            'MyAutomationTargetParameterName',       # min: 1, max: 50; OPTIONAL
+          ComplianceSeverity => 'CRITICAL'
+          ,    # values: CRITICAL, HIGH, MEDIUM, LOW, UNSPECIFIED; OPTIONAL
           DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
           InstanceId      => 'MyInstanceId',         # OPTIONAL
+          MaxConcurrency  => 'MyMaxConcurrency',     # min: 1, max: 7; OPTIONAL
+          MaxErrors       => 'MyMaxErrors',          # min: 1, max: 7; OPTIONAL
           OutputLocation  => {
             S3Location => {
               OutputS3BucketName =>

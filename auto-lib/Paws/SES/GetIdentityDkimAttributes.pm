@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example retrieves the Amazon SES Easy DKIM attributes for a
     # list of identities:
     my $GetIdentityDkimAttributesResponse = $email->GetIdentityDkimAttributes(
-      {
-        'Identities' => [ 'example.com', 'user@example.com' ]
-      }
-    );
+      'Identities' => [ 'example.com', 'user@example.com' ] );
 
     # Results:
     my $DkimAttributes = $GetIdentityDkimAttributesResponse->DkimAttributes;

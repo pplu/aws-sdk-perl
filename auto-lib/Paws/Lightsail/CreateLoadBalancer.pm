@@ -7,6 +7,7 @@ package Paws::Lightsail::CreateLoadBalancer;
   has HealthCheckPath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'healthCheckPath' );
   has InstancePort => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'instancePort' , required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loadBalancerName' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -39,6 +40,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CertificateDomainName       => 'MyDomainName',             # OPTIONAL
       CertificateName             => 'MyResourceName',           # OPTIONAL
       HealthCheckPath             => 'Mystring',                 # OPTIONAL
+      Tags                        => [
+        {
+          Key   => 'MyTagKey',                                   # OPTIONAL
+          Value => 'MyTagValue',                                 # OPTIONAL
+        },
+        ...
+      ],                                                         # OPTIONAL
     );
 
     # Results:
@@ -100,6 +108,15 @@ The instance port where you're creating your load balancer.
 =head2 B<REQUIRED> LoadBalancerName => Str
 
 The name of your load balancer.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+The tag keys and optional values to add to the resource during create.
+
+To tag a resource after it has been created, see the C<tag resource>
+operation.
 
 
 

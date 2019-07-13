@@ -3,7 +3,8 @@ package Paws::DeviceFarm::ScheduleRun;
   use Moose;
   has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' );
   has Configuration => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunConfiguration', traits => ['NameInRequest'], request_name => 'configuration' );
-  has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' , required => 1);
+  has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' );
+  has DeviceSelectionConfiguration => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceSelectionConfiguration', traits => ['NameInRequest'], request_name => 'deviceSelectionConfiguration' );
   has ExecutionConfiguration => (is => 'ro', isa => 'Paws::DeviceFarm::ExecutionConfiguration', traits => ['NameInRequest'], request_name => 'executionConfiguration' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
   has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
@@ -36,17 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To schedule a test run
     # The following example schedules a test run named MyRun.
     my $ScheduleRunResult = $devicefarm->ScheduleRun(
-      {
-        'DevicePoolArn' =>
-          'arn:aws:devicefarm:us-west-2:123456789101:pool:EXAMPLE-GUID-123-456',
-        'Name' => 'MyRun',
-        'ProjectArn' =>
+      'DevicePoolArn' =>
+        'arn:aws:devicefarm:us-west-2:123456789101:pool:EXAMPLE-GUID-123-456',
+      'Name' => 'MyRun',
+      'ProjectArn' =>
 'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',
-        'Test' => {
-          'TestPackageArn' =>
-'arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456',
-          'Type' => 'APPIUM_JAVA_JUNIT'
-        }
+      'Test' => {
+        'TestPackageArn' =>
+          'arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456',
+        'Type' => 'APPIUM_JAVA_JUNIT'
       }
     );
 
@@ -73,9 +72,20 @@ Information about the settings for the run to be scheduled.
 
 
 
-=head2 B<REQUIRED> DevicePoolArn => Str
+=head2 DevicePoolArn => Str
 
 The ARN of the device pool for the run to be scheduled.
+
+
+
+=head2 DeviceSelectionConfiguration => L<Paws::DeviceFarm::DeviceSelectionConfiguration>
+
+The filter criteria used to dynamically select a set of devices for a
+test run, as well as the maximum number of devices to be included in
+the run.
+
+Either B< C<devicePoolArn> > or B< C<deviceSelectionConfiguration> > is
+required in a request.
 
 
 

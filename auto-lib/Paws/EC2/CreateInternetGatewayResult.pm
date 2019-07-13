@@ -17,7 +17,7 @@ Paws::EC2::CreateInternetGatewayResult
 
 =head2 InternetGateway => L<Paws::EC2::InternetGateway>
 
-Information about the Internet gateway.
+Information about the internet gateway.
 
 
 =head2 _request_id => Str

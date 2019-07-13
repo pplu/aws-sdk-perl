@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudtrail = Paws->service('CloudTrail');
     my $DescribeTrailsResponse = $cloudtrail->DescribeTrails(
-      IncludeShadowTrails => 1,                # OPTIONAL
-      TrailNameList => [ 'MyString', ... ],    # OPTIONAL
+      IncludeShadowTrails => 1,                      # OPTIONAL
+      TrailNameList       => [ 'MyString', ... ],    # OPTIONAL
     );
 
     # Results:
@@ -48,7 +48,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 Specifies whether to include shadow trails in the response. A shadow
 trail is the replication in a region of a trail that was created in a
-different region. The default is true.
+different region, or in the case of an organization trail, the
+replication of an organization trail in member accounts. If you do not
+include shadow trails, organization trails in a member account and
+region replication trails will not be returned. The default is true.
 
 
 
@@ -57,7 +60,7 @@ different region. The default is true.
 Specifies a list of trail names, trail ARNs, or both, of the trails to
 describe. The format of a trail ARN is:
 
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 If an empty list is specified, information for the trail in the current
 region is returned.

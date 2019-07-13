@@ -4,6 +4,8 @@ package Paws::EC2::DescribeInternetGateways;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has InternetGatewayIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'internetGatewayId' );
+  has MaxResults => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -32,15 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe the Internet gateway for a VPC
     # This example describes the Internet gateway for the specified VPC.
     my $DescribeInternetGatewaysResult = $ec2->DescribeInternetGateways(
-      {
-        'Filters' => [
+      'Filters' => [
 
-          {
-            'Name'   => 'attachment.vpc-id',
-            'Values' => ['vpc-a01106c2']
-          }
-        ]
-      }
+        {
+          'Name'   => 'attachment.vpc-id',
+          'Values' => ['vpc-a01106c2']
+        }
+      ]
     );
 
     # Results:
@@ -84,26 +84,21 @@ C<internet-gateway-id> - The ID of the Internet gateway.
 
 =item *
 
-C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource. Specify the key of the tag in the filter name and the
-value of the tag in the filter value. For example, for the tag
-Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
-filter value.
+C<owner-id> - The ID of the AWS account that owns the internet gateway.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. This filter is
-independent of the C<tag-value> filter. For example, if you use both
-the filter "tag-key=Purpose" and the filter "tag-value=X", you get any
-resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of what the tag's key
-is). If you want to list only resources where Purpose is X, see the
-C<tag>:I<key>=I<value> filter.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
-C<tag-value> - The value of a tag assigned to the resource. This filter
-is independent of the C<tag-key> filter.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =back
 
@@ -112,9 +107,23 @@ is independent of the C<tag-key> filter.
 
 =head2 InternetGatewayIds => ArrayRef[Str|Undef]
 
-One or more Internet gateway IDs.
+One or more internet gateway IDs.
 
-Default: Describes all your Internet gateways.
+Default: Describes all your internet gateways.
+
+
+
+=head2 MaxResults => Int
+
+The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned C<nextToken>
+value.
+
+
+
+=head2 NextToken => Str
+
+The token for the next page of results.
 
 
 

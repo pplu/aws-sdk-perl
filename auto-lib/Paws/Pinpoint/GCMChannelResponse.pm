@@ -2,14 +2,14 @@ package Paws::Pinpoint::GCMChannelResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
-  has Credential => (is => 'ro', isa => 'Str');
+  has Credential => (is => 'ro', isa => 'Str', required => 1);
   has Enabled => (is => 'ro', isa => 'Bool');
   has HasCredential => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
+  has Platform => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Int');
 1;
 
@@ -41,67 +41,71 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::G
 
 =head1 DESCRIPTION
 
-Google Cloud Messaging channel definition
+Provides information about the status and settings of the GCM channel
+for an application. The GCM channel enables Amazon Pinpoint to send
+push notifications through the Firebase Cloud Messaging (FCM), formerly
+Google Cloud Messaging (GCM), service.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  The ID of the application to which the channel applies.
+  The unique identifier for the application that the GCM channel applies
+to.
 
 
 =head2 CreationDate => Str
 
-  When was this segment created
+  The date and time when the GCM channel was enabled.
 
 
-=head2 Credential => Str
+=head2 B<REQUIRED> Credential => Str
 
-  The GCM API key from Google.
+  The API key, also referred to as a I<server key>, that you received
+from Google to communicate with Google services.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether the GCM channel is enabled for the application.
 
 
 =head2 HasCredential => Bool
 
-  Indicates whether the channel is configured with FCM or GCM
-credentials. Amazon Pinpoint uses your credentials to authenticate push
-notifications with FCM or GCM. Provide your credentials by setting the
-ApiKey attribute.
+  (Not used) This property is retained only for backward compatibility.
 
 
 =head2 Id => Str
 
-  Channel ID. Not used. Present only for backwards compatibility.
+  (Deprecated) An identifier for the GCM channel. This property is
+retained only for backward compatibility.
 
 
 =head2 IsArchived => Bool
 
-  Is this channel archived
+  Specifies whether the GCM channel is archived.
 
 
 =head2 LastModifiedBy => Str
 
-  Who last updated this entry
+  The user who last modified the GCM channel.
 
 
 =head2 LastModifiedDate => Str
 
-  Last date this was updated
+  The date and time when the GCM channel was last modified.
 
 
-=head2 Platform => Str
+=head2 B<REQUIRED> Platform => Str
 
-  The platform type. Will be GCM
+  The type of messaging or notification platform for the channel. For the
+GCM channel, this value is GCM.
 
 
 =head2 Version => Int
 
-  Version of channel
+  The current version of the GCM channel.
 
 
 

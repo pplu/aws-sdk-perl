@@ -80,7 +80,7 @@ The EC2 Subnet IDs for the DB subnet group.
 
 =head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
 
-
+The tags to be assigned to the new DB subnet group.
 
 
 

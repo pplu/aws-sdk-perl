@@ -2,14 +2,14 @@ package Paws::Pinpoint::BaiduChannelResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
-  has Credential => (is => 'ro', isa => 'Str');
+  has Credential => (is => 'ro', isa => 'Str', required => 1);
   has Enabled => (is => 'ro', isa => 'Bool');
   has HasCredential => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str');
+  has Platform => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Int');
 1;
 
@@ -41,67 +41,69 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::B
 
 =head1 DESCRIPTION
 
-Baidu Cloud Messaging channel definition
+Provides information about the status and settings of the Baidu (Baidu
+Cloud Push) channel for an application.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  Application id
+  The unique identifier for the application that the Baidu channel
+applies to.
 
 
 =head2 CreationDate => Str
 
-  When was this segment created
+  The date and time when the Baidu channel was enabled.
 
 
-=head2 Credential => Str
+=head2 B<REQUIRED> Credential => Str
 
-  The Baidu API key from Baidu.
+  The API key that you received from the Baidu Cloud Push service to
+communicate with the service.
 
 
 =head2 Enabled => Bool
 
-  If the channel is enabled for sending messages.
+  Specifies whether the Baidu channel is enabled for the application.
 
 
 =head2 HasCredential => Bool
 
-  Indicates whether the channel is configured with Baidu Cloud Push
-credentials. Amazon Pinpoint uses your credentials to authenticate push
-notifications with Baidu Cloud Push. Provide your credentials by
-setting the ApiKey and SecretKey attributes.
+  (Not used) This property is retained only for backward compatibility.
 
 
 =head2 Id => Str
 
-  Channel ID. Not used, only for backwards compatibility.
+  (Deprecated) An identifier for the Baidu channel. This property is
+retained only for backward compatibility.
 
 
 =head2 IsArchived => Bool
 
-  Is this channel archived
+  Specifies whether the Baidu channel is archived.
 
 
 =head2 LastModifiedBy => Str
 
-  Who made the last change
+  The user who last modified the Baidu channel.
 
 
 =head2 LastModifiedDate => Str
 
-  Last date this was updated
+  The date and time when the Baidu channel was last modified.
 
 
-=head2 Platform => Str
+=head2 B<REQUIRED> Platform => Str
 
-  The platform type. Will be BAIDU
+  The type of messaging or notification platform for the channel. For the
+Baidu channel, this value is BAIDU.
 
 
 =head2 Version => Int
 
-  Version of channel
+  The current version of the Baidu channel.
 
 
 

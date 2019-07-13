@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Description = $RotateChannelCredentialsResponse->Description;
     my $HlsIngest   = $RotateChannelCredentialsResponse->HlsIngest;
     my $Id          = $RotateChannelCredentialsResponse->Id;
+    my $Tags        = $RotateChannelCredentialsResponse->Tags;
 
     # Returns a L<Paws::MediaPackage::RotateChannelCredentialsResponse> object.
 

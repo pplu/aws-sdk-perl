@@ -41,18 +41,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AwsDevice       = $Connection->AwsDevice;
-    my $Bandwidth       = $Connection->Bandwidth;
-    my $ConnectionId    = $Connection->ConnectionId;
-    my $ConnectionName  = $Connection->ConnectionName;
-    my $ConnectionState = $Connection->ConnectionState;
-    my $LagId           = $Connection->LagId;
-    my $LoaIssueTime    = $Connection->LoaIssueTime;
-    my $Location        = $Connection->Location;
-    my $OwnerAccount    = $Connection->OwnerAccount;
-    my $PartnerName     = $Connection->PartnerName;
-    my $Region          = $Connection->Region;
-    my $Vlan            = $Connection->Vlan;
+    my $AwsDevice            = $Connection->AwsDevice;
+    my $AwsDeviceV2          = $Connection->AwsDeviceV2;
+    my $Bandwidth            = $Connection->Bandwidth;
+    my $ConnectionId         = $Connection->ConnectionId;
+    my $ConnectionName       = $Connection->ConnectionName;
+    my $ConnectionState      = $Connection->ConnectionState;
+    my $HasLogicalRedundancy = $Connection->HasLogicalRedundancy;
+    my $JumboFrameCapable    = $Connection->JumboFrameCapable;
+    my $LagId                = $Connection->LagId;
+    my $LoaIssueTime         = $Connection->LoaIssueTime;
+    my $Location             = $Connection->Location;
+    my $OwnerAccount         = $Connection->OwnerAccount;
+    my $PartnerName          = $Connection->PartnerName;
+    my $Region               = $Connection->Region;
+    my $Tags                 = $Connection->Tags;
+    my $Vlan                 = $Connection->Vlan;
 
     # Returns a L<Paws::DirectConnect::Connection> object.
 
@@ -64,54 +68,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> Bandwidth => Str
 
-Bandwidth of the connection.
-
-Example: "I<500Mbps>"
-
-Default: None
-
-Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps
+The bandwidth of the connection. The possible values are 50Mbps,
+100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
+10Gbps. Note that only those AWS Direct Connect Partners who have met
+specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
+10Gbps hosted connection.
 
 
 
 =head2 B<REQUIRED> ConnectionName => Str
 
-Name of the provisioned connection.
-
-Example: "I<500M Connection to AWS>"
-
-Default: None
+The name of the provisioned connection.
 
 
 
 =head2 B<REQUIRED> InterconnectId => Str
 
-ID of the interconnect on which the connection will be provisioned.
-
-Example: dxcon-456abc78
-
-Default: None
+The ID of the interconnect on which the connection will be provisioned.
 
 
 
 =head2 B<REQUIRED> OwnerAccount => Str
 
-Numeric account Id of the customer for whom the connection will be
-provisioned.
-
-Example: 123443215678
-
-Default: None
+The ID of the AWS account of the customer for whom the connection will
+be provisioned.
 
 
 
 =head2 B<REQUIRED> Vlan => Int
 
 The dedicated VLAN provisioned to the connection.
-
-Example: 101
-
-Default: None
 
 
 

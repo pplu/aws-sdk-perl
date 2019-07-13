@@ -6,7 +6,7 @@ package Paws::CostExplorer::GetCostAndUsage;
   has GroupBy => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::GroupDefinition]');
   has Metrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextPageToken => (is => 'ro', isa => 'Str');
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval');
+  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ce = Paws->service('CostExplorer');
     my $GetCostAndUsageResponse = $ce->GetCostAndUsage(
+      TimePeriod => {
+        End   => 'MyYearMonthDay',
+        Start => 'MyYearMonthDay',
+
+      },
       Filter => {
         And => [ <Expression>, ... ],    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
-          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY; OPTIONAL
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID; OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
         Not  => <Expression>,
@@ -55,13 +60,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                     # OPTIONAL
-      Metrics       => [ 'MyMetricName', ... ],    # OPTIONAL
-      NextPageToken => 'MyNextPageToken',          # OPTIONAL
-      TimePeriod    => {
-        End   => 'MyYearMonthDay',
-        Start => 'MyYearMonthDay',
-
-      },                                           # OPTIONAL
+      Metrics => [ 'MyMetricName', ... ],    # OPTIONAL
+      NextPageToken => 'MyNextPageToken',    # OPTIONAL
     );
 
     # Results:
@@ -94,7 +94,10 @@ Sets the AWS cost granularity to C<MONTHLY> or C<DAILY>. If
 C<Granularity> isn't set, the response object doesn't include the
 C<Granularity>, either C<MONTHLY> or C<DAILY>.
 
-Valid values are: C<"DAILY">, C<"MONTHLY">
+The C<GetCostAndUsageRequest> operation supports only C<DAILY> and
+C<MONTHLY> granularities.
+
+Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
 
@@ -117,15 +120,17 @@ blended and unblended rates, see Why does the "blended" annotation
 appear on some line items in my bill?
 (https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
 
-Valid values are C<BlendedCost>, C<UnblendedCost>, and
+Valid values are C<AmortizedCost>, C<BlendedCost>, C<NetAmortizedCost>,
+C<NetUnblendedCost>, C<NormalizedUsageAmount>, C<UnblendedCost>, and
 C<UsageQuantity>.
 
 If you return the C<UsageQuantity> metric, the service aggregates all
 usage numbers without taking into account the units. For example, if
-you aggregate C<usageQuantity> across all of EC2, the results aren't
-meaningful because EC2 compute hours and data transfer are measured in
-different units (for example, hours vs. GB). To get more meaningful
-C<UsageQuantity> metrics, filter by C<UsageType> or C<UsageTypeGroups>.
+you aggregate C<usageQuantity> across all of Amazon EC2, the results
+aren't meaningful because Amazon EC2 compute hours and data transfer
+are measured in different units (for example, hours vs. GB). To get
+more meaningful C<UsageQuantity> metrics, filter by C<UsageType> or
+C<UsageTypeGroups>.
 
 C<Metrics> is required for C<GetCostAndUsage> requests.
 
@@ -139,7 +144,7 @@ maximum page size.
 
 
 
-=head2 TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
 
 Sets the start and end dates for retrieving AWS costs. The start date
 is inclusive, but the end date is exclusive. For example, if C<start>

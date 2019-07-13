@@ -43,7 +43,7 @@ operation returns.
   The ARN of the temporary security credentials that are returned from
 the AssumeRole action. For more information about ARNs and how to use
 them in policies, see IAM Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 in I<Using IAM>.
 
 

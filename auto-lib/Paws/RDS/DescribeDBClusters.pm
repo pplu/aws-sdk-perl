@@ -3,6 +3,7 @@ package Paws::RDS::DescribeDBClusters;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
+  has IncludeShared => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -32,11 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $rds = Paws->service('RDS');
     # To list DB clusters
     # This example lists settings for the specified DB cluster.
-    my $DBClusterMessage = $rds->DescribeDBClusters(
-      {
-        'DBClusterIdentifier' => 'mynewdbcluster'
-      }
-    );
+    my $DBClusterMessage =
+      $rds->DescribeDBClusters( 'DBClusterIdentifier' => 'mynewdbcluster' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -83,11 +81,19 @@ about the DB clusters identified by these ARNs.
 
 
 
+=head2 IncludeShared => Bool
+
+Optional Boolean parameter that specifies whether the output includes
+information about clusters shared from other AWS accounts.
+
+
+
 =head2 Marker => Str
 
-An optional pagination token provided by a previous DescribeDBClusters
-request. If this parameter is specified, the response includes only
-records beyond the marker, up to the value specified by C<MaxRecords>.
+An optional pagination token provided by a previous
+C<DescribeDBClusters> request. If this parameter is specified, the
+response includes only records beyond the marker, up to the value
+specified by C<MaxRecords>.
 
 
 

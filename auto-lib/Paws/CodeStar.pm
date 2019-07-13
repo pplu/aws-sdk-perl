@@ -106,6 +106,98 @@ package Paws::CodeStar;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllProjects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProjects(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListProjects(@_, nextToken => $next_result->nextToken);
+        push @{ $result->projects }, @{ $next_result->projects };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'projects') foreach (@{ $result->projects });
+        $result = $self->ListProjects(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'projects') foreach (@{ $result->projects });
+    }
+
+    return undef
+  }
+  sub ListAllResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListResources(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resources }, @{ $next_result->resources };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'resources') foreach (@{ $result->resources });
+        $result = $self->ListResources(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'resources') foreach (@{ $result->resources });
+    }
+
+    return undef
+  }
+  sub ListAllTeamMembers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTeamMembers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTeamMembers(@_, nextToken => $next_result->nextToken);
+        push @{ $result->teamMembers }, @{ $next_result->teamMembers };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'teamMembers') foreach (@{ $result->teamMembers });
+        $result = $self->ListTeamMembers(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'teamMembers') foreach (@{ $result->teamMembers });
+    }
+
+    return undef
+  }
+  sub ListAllUserProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUserProfiles(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListUserProfiles(@_, nextToken => $next_result->nextToken);
+        push @{ $result->userProfiles }, @{ $next_result->userProfiles };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'userProfiles') foreach (@{ $result->userProfiles });
+        $result = $self->ListUserProfiles(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'userProfiles') foreach (@{ $result->userProfiles });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateTeamMember CreateProject CreateUserProfile DeleteProject DeleteUserProfile DescribeProject DescribeUserProfile DisassociateTeamMember ListProjects ListResources ListTagsForProject ListTeamMembers ListUserProfiles TagProject UntagProject UpdateProject UpdateTeamMember UpdateUserProfile / }
@@ -279,6 +371,12 @@ Adds an IAM user to the team for an AWS CodeStar project.
 
 =item [Description => Str]
 
+=item [SourceCode => ArrayRef[L<Paws::CodeStar::Code>]]
+
+=item [Tags => L<Paws::CodeStar::Tags>]
+
+=item [Toolchain => L<Paws::CodeStar::Toolchain>]
+
 
 =back
 
@@ -286,8 +384,10 @@ Each argument is described in detail in: L<Paws::CodeStar::CreateProject>
 
 Returns: a L<Paws::CodeStar::CreateProjectResult> instance
 
-Reserved for future use. To create a project, use the AWS CodeStar
-console.
+Creates a project, including project resources. This action creates a
+project based on a submitted project request. A set of source code
+files and a toolchain template file can be included with the project
+request. If these are not provided, an empty project is created.
 
 
 =head2 CreateUserProfile
@@ -618,6 +718,54 @@ the user's information appears to other users in AWS CodeStar.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllProjects(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllProjects([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - projects, passing the object as the first parameter, and the string 'projects' as the second parameter 
+
+If not, it will return a a L<Paws::CodeStar::ListProjectsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResources(sub { },ProjectId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllResources(ProjectId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resources, passing the object as the first parameter, and the string 'resources' as the second parameter 
+
+If not, it will return a a L<Paws::CodeStar::ListResourcesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTeamMembers(sub { },ProjectId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTeamMembers(ProjectId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - teamMembers, passing the object as the first parameter, and the string 'teamMembers' as the second parameter 
+
+If not, it will return a a L<Paws::CodeStar::ListTeamMembersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUserProfiles(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllUserProfiles([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - userProfiles, passing the object as the first parameter, and the string 'userProfiles' as the second parameter 
+
+If not, it will return a a L<Paws::CodeStar::ListUserProfilesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

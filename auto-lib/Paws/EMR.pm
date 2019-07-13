@@ -314,6 +314,29 @@ package Paws::EMR;
 
     return undef
   }
+  sub ListAllSecurityConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSecurityConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->ListSecurityConfigurations(@_, Marker => $next_result->Marker);
+        push @{ $result->SecurityConfigurations }, @{ $next_result->SecurityConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'SecurityConfigurations') foreach (@{ $result->SecurityConfigurations });
+        $result = $self->ListSecurityConfigurations(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'SecurityConfigurations') foreach (@{ $result->SecurityConfigurations });
+    }
+
+    return undef
+  }
   sub ListAllSteps {
     my $self = shift;
 
@@ -441,7 +464,7 @@ can bypass the 256-step limitation in various ways, including using SSH
 to connect to the master node and submitting queries directly to the
 software running on the master node, such as Hive and Hadoop. For more
 information on how to do this, see Add More than 256 Steps to a Cluster
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
 in the I<Amazon EMR Management Guide>.
 
 A step specifies the location of a JAR file stored either on the master
@@ -478,7 +501,7 @@ Adds tags to an Amazon EMR resource. Tags make it easier to associate
 clusters in various ways, such as grouping clusters to track your
 Amazon EMR resource allocation costs. For more information, see Tag
 Clusters
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 
 =head2 CancelSteps
@@ -553,8 +576,7 @@ Each argument is described in detail in: L<Paws::EMR::DescribeCluster>
 Returns: a L<Paws::EMR::DescribeClusterOutput> instance
 
 Provides cluster-level details including status, hardware and software
-configuration, VPC settings, and so on. For information about the
-cluster steps, see ListSteps.
+configuration, VPC settings, and so on.
 
 
 =head2 DescribeJobFlows
@@ -907,7 +929,7 @@ Removes tags from an Amazon EMR resource. Tags make it easier to
 associate clusters in various ways, such as grouping clusters to track
 your Amazon EMR resource allocation costs. For more information, see
 Tag Clusters
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 
 The following example removes the stack tag with value Prod from a
 cluster:
@@ -992,7 +1014,7 @@ SSH shell to connect to the master node and submitting queries directly
 to the software running on the master node, such as Hive and Hadoop.
 For more information on how to do this, see Add More than 256 Steps to
 a Cluster
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
 in the I<Amazon EMR Management Guide>.
 
 For long running clusters, we recommend that you periodically store
@@ -1038,7 +1060,7 @@ flow by a subsequent call to C<SetTerminationProtection> in which you
 set the value to C<false>.
 
 For more information, seeManaging Cluster Termination
-(http://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html)
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html)
 in the I<Amazon EMR Management Guide>.
 
 
@@ -1156,6 +1178,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Instances, passing the object as the first parameter, and the string 'Instances' as the second parameter 
 
 If not, it will return a a L<Paws::EMR::ListInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSecurityConfigurations(sub { },[Marker => Str])
+
+=head2 ListAllSecurityConfigurations([Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SecurityConfigurations, passing the object as the first parameter, and the string 'SecurityConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListSecurityConfigurationsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllSteps(sub { },ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str|Undef], StepStates => ArrayRef[Str|Undef]])

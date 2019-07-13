@@ -40,22 +40,14 @@ Policy statement applied to the application.
 
 =head2 B<REQUIRED> Actions => ArrayRef[Str|Undef]
 
-  A list of supported actions:
-
-GetApplication
-
-CreateCloudFormationChangeSet
-
-ListApplicationVersions
-
-SearchApplications
-
-Deploy (Note: This action enables all other actions above.)
+  For the list of actions supported for this operation, see Application
+Permissions
+(https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions).
 
 
 =head2 B<REQUIRED> Principals => ArrayRef[Str|Undef]
 
-  An AWS account ID, or * to make the application public.
+  An array of AWS account IDs, or * to make the application public.
 
 
 =head2 StatementId => Str

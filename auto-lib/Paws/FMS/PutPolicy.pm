@@ -34,20 +34,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RemediationEnabled        => 1,
         ResourceType              => 'MyResourceType',    # min: 1, max: 128
         SecurityServicePolicyData => {
-          Type => 'WAF',                                  # values: WAF
+          Type => 'WAF',    # values: WAF, SHIELD_ADVANCED
           ManagedServiceData =>
             'MyManagedServiceData',    # min: 1, max: 1024; OPTIONAL
         },
-        PolicyId => 'MyPolicyId',      # min: 36, max: 36; OPTIONAL
+        ExcludeMap => {
+          'ACCOUNT' => [
+            'MyCustomerPolicyScopeId', ...    # min: 1, max: 1024
+          ],                                  # key: values: ACCOUNT
+        },    # OPTIONAL
+        IncludeMap => {
+          'ACCOUNT' => [
+            'MyCustomerPolicyScopeId', ...    # min: 1, max: 1024
+          ],                                  # key: values: ACCOUNT
+        },    # OPTIONAL
+        PolicyId => 'MyPolicyId',    # min: 36, max: 36; OPTIONAL
         PolicyUpdateToken =>
-          'MyPolicyUpdateToken',       # min: 1, max: 1024; OPTIONAL
+          'MyPolicyUpdateToken',     # min: 1, max: 1024; OPTIONAL
         ResourceTags => [
           {
-            Key   => 'MyTagKey',       # min: 1, max: 128
-            Value => 'MyTagValue',     # max: 256; OPTIONAL
+            Key   => 'MyTagKey',      # min: 1, max: 128
+            Value => 'MyTagValue',    # max: 256; OPTIONAL
           },
           ...
-        ],                             # max: 8; OPTIONAL
+        ],                            # max: 8; OPTIONAL
+        ResourceTypeList => [
+          'MyResourceType', ...       # min: 1, max: 128
+        ],                            # OPTIONAL
       },
 
     );

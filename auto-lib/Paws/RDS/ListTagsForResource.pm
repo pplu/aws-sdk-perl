@@ -31,12 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To list information about tags associated with a resource
    # This example lists information about all tags associated with the specified
    # DB option group.
-    my $TagListMessage = $rds->ListTagsForResource(
-      {
-        'ResourceName' =>
-          'arn:aws:rds:us-east-1:992648334831:og:mymysqloptiongroup'
-      }
-    );
+    my $TagListMessage = $rds->ListTagsForResource( 'ResourceName' =>
+        'arn:aws:rds:us-east-1:992648334831:og:mymysqloptiongroup' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -55,8 +51,9 @@ This parameter is not currently supported.
 
 The Amazon RDS resource with tags to be listed. This value is an Amazon
 Resource Name (ARN). For information about creating an ARN, see
-Constructing an RDS Amazon Resource Name (ARN)
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+Constructing an ARN for Amazon RDS
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
+in the I<Amazon RDS User Guide>.
 
 
 

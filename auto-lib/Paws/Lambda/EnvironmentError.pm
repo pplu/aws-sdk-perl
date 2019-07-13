@@ -32,20 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Env
 
 =head1 DESCRIPTION
 
-The parent object that contains error information associated with your
-configuration settings.
+Error messages for environment variables that couldn't be applied.
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorCode => Str
 
-  The error code returned by the environment error object.
+  The error code.
 
 
 =head2 Message => Str
 
-  The message returned by the environment error object.
+  The error message.
 
 
 

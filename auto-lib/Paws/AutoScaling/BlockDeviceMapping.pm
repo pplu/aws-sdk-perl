@@ -42,7 +42,9 @@ Describes a block device mapping.
 =head2 B<REQUIRED> DeviceName => Str
 
   The device name exposed to the EC2 instance (for example, C</dev/sdh>
-or C<xvdh>).
+or C<xvdh>). For more information, see Device Naming on Linux Instances
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 =head2 Ebs => L<Paws::AutoScaling::Ebs>
@@ -55,8 +57,8 @@ or C<xvdh>).
   Suppresses a device mapping.
 
 If this parameter is true for the root device, the instance might fail
-the EC2 health check. Auto Scaling launches a replacement instance if
-the instance fails the health check.
+the EC2 health check. In that case, Amazon EC2 Auto Scaling launches a
+replacement instance.
 
 
 =head2 VirtualName => Str

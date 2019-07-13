@@ -17,7 +17,9 @@ Paws::MediaConvert::UpdatePresetResponse
 
 =head2 Preset => L<Paws::MediaConvert::Preset>
 
-
+A preset is a collection of preconfigured media conversion settings
+that you want MediaConvert to apply to the output during the conversion
+process.
 
 
 =head2 _request_id => Str

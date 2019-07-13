@@ -37,7 +37,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A streaming distribution.
+A streaming distribution tells CloudFront where you want RTMP content
+to be delivered from, and the details about how to track and manage
+content delivery.
 
 =head1 ATTRIBUTES
 
@@ -57,13 +59,15 @@ account. If no C<KeyPairId> element appears for a C<Signer>, that
 signer can't create signed URLs.
 
 For more information, see Serving Private Content through CloudFront
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> ARN => Str
 
-  
+  The ARN (Amazon Resource Name) for the distribution. For example:
+C<arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5>, where
+C<123456789012> is your AWS account ID.
 
 
 =head2 B<REQUIRED> DomainName => Str

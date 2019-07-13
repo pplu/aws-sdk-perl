@@ -34,10 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the scaling activities for the specified Auto
     # Scaling group.
     my $ActivitiesType = $autoscaling->DescribeScalingActivities(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
-      }
-    );
+      'AutoScalingGroupName' => 'my-auto-scaling-group' );
 
     # Results:
     my $Activities = $ActivitiesType->Activities;
@@ -52,11 +49,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 ActivityIds => ArrayRef[Str|Undef]
 
-The activity IDs of the desired scaling activities. If you omit this
-parameter, all activities for the past six weeks are described. If you
-specify an Auto Scaling group, the results are limited to that group.
-The list of requested activities cannot contain more than 50 items. If
-unknown activities are requested, they are ignored with no error.
+The activity IDs of the desired scaling activities. You can specify up
+to 50 IDs. If you omit this parameter, all activities for the past six
+weeks are described. If unknown activities are requested, they are
+ignored with no error. If you specify an Auto Scaling group, the
+results are limited to that group.
 
 
 
@@ -69,7 +66,7 @@ The name of the Auto Scaling group.
 =head2 MaxRecords => Int
 
 The maximum number of items to return with this call. The default value
-is 100 and the maximum value is 100.
+is C<100> and the maximum value is C<100>.
 
 
 

@@ -46,19 +46,23 @@ The following actions can be filtered:
 
 =item *
 
-DescribeDBClusterBacktracks
+C<DescribeDBClusterBacktracks>
 
 =item *
 
-DescribeDBClusters
+C<DescribeDBClusterEndpoints>
 
 =item *
 
-DescribeDBInstances
+C<DescribeDBClusters>
 
 =item *
 
-DescribePendingMaintenanceActions
+C<DescribeDBInstances>
+
+=item *
+
+C<DescribePendingMaintenanceActions>
 
 =back
 

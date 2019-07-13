@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # This example deletes the specified scheduled action from the specified Auto
    # Scaling group.
     $autoscaling->DeleteScheduledAction(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group',
-        'ScheduledActionName'  => 'my-scheduled-action'
-      }
+      'AutoScalingGroupName' => 'my-auto-scaling-group',
+      'ScheduledActionName'  => 'my-scheduled-action'
     );
 
 

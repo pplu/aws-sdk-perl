@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Information about a rule for an IP access control group.
+Describes a rule for an IP access control group.
 
 =head1 ATTRIBUTES
 

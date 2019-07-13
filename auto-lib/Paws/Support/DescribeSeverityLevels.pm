@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $severityLevels = $DescribeSeverityLevelsResponse->severityLevels;
+    my $SeverityLevels = $DescribeSeverityLevelsResponse->SeverityLevels;
 
     # Returns a L<Paws::Support::DescribeSeverityLevelsResponse> object.
 

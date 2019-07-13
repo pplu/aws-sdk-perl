@@ -36,12 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # specific device pool, given its ARN.
     my $GetDevicePoolCompatibilityResult =
       $devicefarm->GetDevicePoolCompatibility(
-      {
-        'AppArn' => 'arn:aws:devicefarm:us-west-2::app:123-456-EXAMPLE-GUID',
-        'DevicePoolArn' =>
-          'arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID',
-        'TestType' => 'APPIUM_PYTHON'
-      }
+      'AppArn' => 'arn:aws:devicefarm:us-west-2::app:123-456-EXAMPLE-GUID',
+      'DevicePoolArn' =>
+        'arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID',
+      'TestType' => 'APPIUM_PYTHON'
       );
 
     # Results:
@@ -114,15 +112,31 @@ APPIUM_PYTHON: The Appium Python type.
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.
+APPIUM_NODE: The Appium Node.js type.
 
 =item *
 
-APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.
+APPIUM_RUBY: The Appium Ruby type.
 
 =item *
 
-APPIUM_WEB_PYTHON: The Appium Python type for Web apps.
+APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for web apps.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for web apps.
+
+=item *
+
+APPIUM_WEB_PYTHON: The Appium Python type for web apps.
+
+=item *
+
+APPIUM_WEB_NODE: The Appium Node.js type for web apps.
+
+=item *
+
+APPIUM_WEB_RUBY: The Appium Ruby type for web apps.
 
 =item *
 
@@ -142,16 +156,16 @@ UIAUTOMATOR: The uiautomator type.
 
 =item *
 
-XCTEST: The XCode test type.
+XCTEST: The Xcode test type.
 
 =item *
 
-XCTEST_UI: The XCode UI test type.
+XCTEST_UI: The Xcode UI test type.
 
 =back
 
 
-Valid values are: C<"BUILTIN_FUZZ">, C<"BUILTIN_EXPLORER">, C<"WEB_PERFORMANCE_PROFILE">, C<"APPIUM_JAVA_JUNIT">, C<"APPIUM_JAVA_TESTNG">, C<"APPIUM_PYTHON">, C<"APPIUM_WEB_JAVA_JUNIT">, C<"APPIUM_WEB_JAVA_TESTNG">, C<"APPIUM_WEB_PYTHON">, C<"CALABASH">, C<"INSTRUMENTATION">, C<"UIAUTOMATION">, C<"UIAUTOMATOR">, C<"XCTEST">, C<"XCTEST_UI">, C<"REMOTE_ACCESS_RECORD">, C<"REMOTE_ACCESS_REPLAY">
+Valid values are: C<"BUILTIN_FUZZ">, C<"BUILTIN_EXPLORER">, C<"WEB_PERFORMANCE_PROFILE">, C<"APPIUM_JAVA_JUNIT">, C<"APPIUM_JAVA_TESTNG">, C<"APPIUM_PYTHON">, C<"APPIUM_NODE">, C<"APPIUM_RUBY">, C<"APPIUM_WEB_JAVA_JUNIT">, C<"APPIUM_WEB_JAVA_TESTNG">, C<"APPIUM_WEB_PYTHON">, C<"APPIUM_WEB_NODE">, C<"APPIUM_WEB_RUBY">, C<"CALABASH">, C<"INSTRUMENTATION">, C<"UIAUTOMATION">, C<"UIAUTOMATOR">, C<"XCTEST">, C<"XCTEST_UI">, C<"REMOTE_ACCESS_RECORD">, C<"REMOTE_ACCESS_REPLAY">
 
 
 =head1 SEE ALSO

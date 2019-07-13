@@ -2,6 +2,7 @@
 package Paws::IoT::DescribeThingResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', traits => ['NameInRequest'], request_name => 'attributes');
+  has BillingGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'billingGroupName');
   has DefaultClientId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultClientId');
   has ThingArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingArn');
   has ThingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingId');
@@ -24,6 +25,11 @@ Paws::IoT::DescribeThingResponse
 =head2 Attributes => L<Paws::IoT::Attributes>
 
 The thing attributes.
+
+
+=head2 BillingGroupName => Str
+
+The name of the billing group the thing belongs to.
 
 
 =head2 DefaultClientId => Str

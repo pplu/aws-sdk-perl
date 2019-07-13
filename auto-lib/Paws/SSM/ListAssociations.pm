@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListAssociationsResult = $ssm->ListAssociations(
       AssociationFilterList => [
         {
-          key => 'InstanceId'
+          Key => 'InstanceId'
           , # values: InstanceId, Name, AssociationId, AssociationStatusName, LastExecutedBefore, LastExecutedAfter, AssociationName
-          value => 'MyAssociationFilterValue',    # min: 1,
+          Value => 'MyAssociationFilterValue',    # min: 1
 
         },
         ...

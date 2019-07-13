@@ -1,6 +1,7 @@
 
 package Paws::ServiceCatalog::DescribeProductAsAdminOutput;
   use Moose;
+  has Budgets => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::BudgetDetail]');
   has ProductViewDetail => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewDetail');
   has ProvisioningArtifactSummaries => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningArtifactSummary]');
   has TagOptions => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::TagOptionDetail]');
@@ -15,6 +16,11 @@ package Paws::ServiceCatalog::DescribeProductAsAdminOutput;
 Paws::ServiceCatalog::DescribeProductAsAdminOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 Budgets => ArrayRef[L<Paws::ServiceCatalog::BudgetDetail>]
+
+Information about the associated budgets.
 
 
 =head2 ProductViewDetail => L<Paws::ServiceCatalog::ProductViewDetail>

@@ -5,6 +5,7 @@ package Paws::ACMPCA::IssueCertificate;
   has Csr => (is => 'ro', isa => 'Str', required => 1);
   has IdempotencyToken => (is => 'ro', isa => 'Str');
   has SigningAlgorithm => (is => 'ro', isa => 'Str', required => 1);
+  has TemplateArn => (is => 'ro', isa => 'Str');
   has Validity => (is => 'ro', isa => 'Paws::ACMPCA::Validity', required => 1);
 
   use MooseX::ClassAttribute;
@@ -37,10 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SigningAlgorithm        => 'SHA256WITHECDSA',
       Validity                => {
         Type  => 'END_DATE',   # values: END_DATE, ABSOLUTE, DAYS, MONTHS, YEARS
-        Value => 1,            # min: 1,
+        Value => 1,            # min: 1
 
       },
       IdempotencyToken => 'MyIdempotencyToken',    # OPTIONAL
+      TemplateArn      => 'MyArn',                 # OPTIONAL
     );
 
     # Results:
@@ -59,7 +61,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 The Amazon Resource Name (ARN) that was returned when you called
 CreateCertificateAuthority. This must be of the form:
 
-C<arn:aws:acm:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>>
+C<arn:aws:acm-pca:I<region>:I<account>:certificate-authority/I<12345678-1234-1234-1234-123456789012>>
 
 
 
@@ -85,10 +87,10 @@ csr/test_cert_.csr>
 =head2 IdempotencyToken => Str
 
 Custom string that can be used to distinguish between calls to the
-B<IssueCertificate> function. Idempotency tokens time out after one
-hour. Therefore, if you call B<IssueCertificate> multiple times with
-the same idempotency token within 5 minutes, ACM PCA recognizes that
-you are requesting only one certificate and will issue only one. If you
+B<IssueCertificate> action. Idempotency tokens time out after one hour.
+Therefore, if you call B<IssueCertificate> multiple times with the same
+idempotency token within 5 minutes, ACM Private CA recognizes that you
+are requesting only one certificate and will issue only one. If you
 change the idempotency token for each call, PCA recognizes that you are
 requesting multiple certificates.
 
@@ -100,6 +102,48 @@ The name of the algorithm that will be used to sign the certificate to
 be issued.
 
 Valid values are: C<"SHA256WITHECDSA">, C<"SHA384WITHECDSA">, C<"SHA512WITHECDSA">, C<"SHA256WITHRSA">, C<"SHA384WITHRSA">, C<"SHA512WITHRSA">
+
+=head2 TemplateArn => Str
+
+Specifies a custom configuration template to use when issuing a
+certificate. If this parameter is not provided, ACM Private CA defaults
+to the C<EndEntityCertificate/V1> template.
+
+The following service-owned C<TemplateArn> values are supported by ACM
+Private CA:
+
+=over
+
+=item *
+
+arn:aws:acm-pca:::template/EndEntityCertificate/V1
+
+=item *
+
+arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
+
+=item *
+
+arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
+
+=item *
+
+arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
+
+=item *
+
+arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
+
+=item *
+
+arn:aws:acm-pca:::template/RootCACertificate/V1
+
+=back
+
+For more information, see Using Templates
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html).
+
+
 
 =head2 B<REQUIRED> Validity => L<Paws::ACMPCA::Validity>
 

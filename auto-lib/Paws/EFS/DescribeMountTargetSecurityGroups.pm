@@ -33,10 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # mount target.
     my $DescribeMountTargetSecurityGroupsResponse =
       $elasticfilesystem->DescribeMountTargetSecurityGroups(
-      {
-        'MountTargetId' => 'fsmt-12340abc'
-      }
-      );
+      'MountTargetId' => 'fsmt-12340abc' );
 
     # Results:
     my $SecurityGroups =
@@ -52,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> MountTargetId => Str
 
-ID of the mount target whose security groups you want to retrieve.
+The ID of the mount target whose security groups you want to retrieve.
 
 
 

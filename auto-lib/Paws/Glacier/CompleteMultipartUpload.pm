@@ -35,15 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To complete a multipart upload
     # The example completes a multipart upload for a 3 MiB archive.
     my $ArchiveCreationOutput = $glacier->CompleteMultipartUpload(
-      {
-        'AccountId'   => '-',
-        'ArchiveSize' => 3145728,
-        'Checksum' =>
-          '9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67',
-        'UploadId' =>
+      'AccountId'   => '-',
+      'ArchiveSize' => 3145728,
+      'Checksum' =>
+        '9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67',
+      'UploadId' =>
 '19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',
-        'VaultName' => 'my-vault'
-      }
+      'VaultName' => 'my-vault'
     );
 
     # Results:
@@ -54,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::Glacier::ArchiveCreationOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacier/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glacier/CompleteMultipartUpload>
 
 =head1 ATTRIBUTES
 
@@ -63,7 +61,7 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/glacie
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon S3 Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens ('-') in the ID.
 
@@ -81,8 +79,8 @@ the sum of all the sizes of the individual parts that you uploaded.
 The SHA256 tree hash of the entire archive. It is the tree hash of
 SHA256 tree hash of the individual parts. If the value you specify in
 the request does not match the SHA256 tree hash of the final assembled
-archive as computed by Amazon Glacier, Amazon Glacier returns an error
-and the request fails.
+archive as computed by Amazon S3 Glacier (Glacier), Glacier returns an
+error and the request fails.
 
 
 

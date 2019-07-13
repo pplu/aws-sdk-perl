@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ChannelName => 'MyChannelName',
       Messages    => [
         {
-          messageId => 'MyMessageId',          # min: 1, max: 128
-          payload   => 'BlobMessagePayload',
+          MessageId => 'MyMessageId',          # min: 1, max: 128
+          Payload   => 'BlobMessagePayload',
 
         },
         ...
@@ -64,6 +64,44 @@ The name of the channel where the messages are sent.
 
 The list of messages to be sent. Each message has format: '{
 "messageId": "string", "payload": "string"}'.
+
+Note that the field names of message payloads (data) that you send to
+AWS IoT Analytics:
+
+=over
+
+=item *
+
+Must contain only alphanumeric characters and undescores (_); no other
+special characters are allowed.
+
+=item *
+
+Must begin with an alphabetic character or single underscore (_).
+
+=item *
+
+Cannot contain hyphens (-).
+
+=item *
+
+In regular expression terms:
+"^[A-Za-z_]([A-Za-z0-9]*|[A-Za-z0-9][A-Za-z0-9_]*)$".
+
+=item *
+
+Cannot be greater than 255 characters.
+
+=item *
+
+Are case-insensitive. (Fields named "foo" and "FOO" in the same payload
+are considered duplicates.)
+
+=back
+
+For example, {"temp_01": 29} or {"_temp_01": 29} are valid, but
+{"temp-01": 29}, {"01_temp": 29} or {"__temp_01": 29} are invalid in
+message payloads.
 
 
 

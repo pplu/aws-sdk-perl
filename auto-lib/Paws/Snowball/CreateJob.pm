@@ -45,34 +45,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # creating a job for a node in a cluster, you only need to provide the
     # clusterId value; the other job attributes are inherited from the cluster.
     my $CreateJobResult = $snowball->CreateJob(
-      {
-        'AddressId'   => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
-        'Description' => 'My Job',
-        'JobType'     => 'IMPORT',
-        'KmsKeyARN' =>
+      'AddressId'   => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+      'Description' => 'My Job',
+      'JobType'     => 'IMPORT',
+      'KmsKeyARN' =>
 'arn:aws:kms:us-east-1:123456789012:key/abcd1234-12ab-34cd-56ef-123456123456',
-        'Notification' => {
-          'JobStatesToNotify' => [
+      'Notification' => {
+        'JobStatesToNotify' => [
 
-          ],
-          'NotifyAll' => 0
-        },
-        'Resources' => {
-          'S3Resources' => [
+        ],
+        'NotifyAll' => 0
+      },
+      'Resources' => {
+        'S3Resources' => [
 
-            {
-              'BucketArn' => 'arn:aws:s3:::MyBucket',
-              'KeyRange'  => {
+          {
+            'BucketArn' => 'arn:aws:s3:::MyBucket',
+            'KeyRange'  => {
 
-              }
             }
-          ]
-        },
-        'RoleARN' => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
-        'ShippingOption'             => 'SECOND_DAY',
-        'SnowballCapacityPreference' => 'T80',
-        'SnowballType'               => 'STANDARD'
-      }
+          }
+        ]
+      },
+      'RoleARN' => 'arn:aws:iam::123456789012:role/snowball-import-S3-role',
+      'ShippingOption'             => 'SECOND_DAY',
+      'SnowballCapacityPreference' => 'T80',
+      'SnowballType'               => 'STANDARD'
     );
 
     # Results:
@@ -201,14 +199,14 @@ If your job is being created in one of the US regions, you have the
 option of specifying what size Snowball you'd like for this job. In all
 other regions, Snowballs come with 80 TB in storage capacity.
 
-Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"NoPreference">
+Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"T42">, C<"NoPreference">
 
 =head2 SnowballType => Str
 
-The type of AWS Snowball appliance to use for this job. Currently, the
-only supported appliance type for cluster jobs is C<EDGE>.
+The type of AWS Snowball device to use for this job. The only supported
+device types for cluster jobs are C<EDGE>, C<EDGE_C>, and C<EDGE_CG>.
 
-Valid values are: C<"STANDARD">, C<"EDGE">
+Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">
 
 
 =head1 SEE ALSO

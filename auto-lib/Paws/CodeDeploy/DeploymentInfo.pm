@@ -87,18 +87,18 @@ the deployment.
 
 =head2 CompleteTime => Str
 
-  A timestamp indicating when the deployment was complete.
+  A timestamp that indicates when the deployment was complete.
 
 
 =head2 ComputePlatform => Str
 
-  The destination platform type for the deployment (C<Lambda> or
-C<Server>).
+  The destination platform type for the deployment (C<Lambda>, C<Server>,
+or C<ECS>).
 
 
 =head2 CreateTime => Str
 
-  A timestamp indicating when the deployment was created.
+  A timestamp that indicates when the deployment was created.
 
 
 =head2 Creator => Str
@@ -113,7 +113,7 @@ user: A user created the deployment.
 
 =item *
 
-autoscaling: Auto Scaling created the deployment.
+autoscaling: Amazon EC2 Auto Scaling created the deployment.
 
 =item *
 
@@ -135,7 +135,7 @@ codeDeployRollback: A rollback process created the deployment.
 
 =head2 DeploymentId => Str
 
-  The deployment ID.
+  The unique ID of a deployment.
 
 
 =head2 DeploymentOverview => L<Paws::CodeDeploy::DeploymentOverview>
@@ -194,22 +194,39 @@ used as part of the new deployment.
 
 =head2 IgnoreApplicationStopFailures => Bool
 
-  If true, then if the deployment causes the ApplicationStop deployment
-lifecycle event to an instance to fail, the deployment to that instance
-will not be considered to have failed at that point and will continue
-on to the BeforeInstall deployment lifecycle event.
+  If true, then if an C<ApplicationStop>, C<BeforeBlockTraffic>, or
+C<AfterBlockTraffic> deployment lifecycle event to an instance fails,
+then the deployment continues to the next deployment lifecycle event.
+For example, if C<ApplicationStop> fails, the deployment continues with
+DownloadBundle. If C<BeforeBlockTraffic> fails, the deployment
+continues with C<BlockTraffic>. If C<AfterBlockTraffic> fails, the
+deployment continues with C<ApplicationStop>.
 
-If false or not specified, then if the deployment causes the
-ApplicationStop deployment lifecycle event to an instance to fail, the
-deployment to that instance will stop, and the deployment to that
-instance will be considered to have failed.
+If false or not specified, then if a lifecycle event fails during a
+deployment to an instance, that deployment fails. If deployment to that
+instance is part of an overall deployment and the number of healthy
+hosts is not less than the minimum number of healthy hosts, then a
+deployment to the next instance is attempted.
+
+During a deployment, the AWS CodeDeploy agent runs the scripts
+specified for C<ApplicationStop>, C<BeforeBlockTraffic>, and
+C<AfterBlockTraffic> in the AppSpec file from the previous successful
+deployment. (All other scripts are run from the AppSpec file in the
+current deployment.) If one of these scripts contains an error and does
+not run successfully, the deployment can fail.
+
+If the cause of the failure is a script from the last successful
+deployment that will never run successfully, create a new deployment
+and use C<ignoreApplicationStopFailures> to specify that the
+C<ApplicationStop>, C<BeforeBlockTraffic>, and C<AfterBlockTraffic>
+failures should be ignored.
 
 
 =head2 InstanceTerminationWaitTimeStarted => Bool
 
   Indicates whether the wait period set for the termination of instances
 in the original environment has started. Status is 'false' if the
-KEEP_ALIVE option is specified; otherwise, 'true' as soon as the
+KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the
 termination wait period starts.
 
 
@@ -237,12 +254,12 @@ service from which to retrieve them.
 
 =head2 StartTime => Str
 
-  A timestamp indicating when the deployment was deployed to the
+  A timestamp that indicates when the deployment was deployed to the
 deployment group.
 
-In some cases, the reported value of the start time may be later than
+In some cases, the reported value of the start time might be later than
 the complete time. This is due to differences in the clock settings of
-back-end servers that participate in the deployment process.
+backend servers that participate in the deployment process.
 
 
 =head2 Status => Str

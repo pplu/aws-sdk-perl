@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 =head1 DESCRIPTION
 
 The version for an option. Option group option versions are returned by
-the DescribeOptionGroupOptions action.
+the C<DescribeOptionGroupOptions> action.
 
 =head1 ATTRIBUTES
 

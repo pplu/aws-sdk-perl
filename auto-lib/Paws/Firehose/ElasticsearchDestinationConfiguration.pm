@@ -74,9 +74,9 @@ and AWS Service Namespaces
 
 =head2 IndexRotationPeriod => Str
 
-  The Elasticsearch index rotation period. Index rotation appends a time
-stamp to the C<IndexName> to facilitate the expiration of old data. For
-more information, see Index Rotation for the Amazon ES Destination
+  The Elasticsearch index rotation period. Index rotation appends a
+timestamp to the C<IndexName> to facilitate the expiration of old data.
+For more information, see Index Rotation for the Amazon ES Destination
 (http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation).
 The default value is C<OneDay>.
 

@@ -31,14 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::HostVo
 
 =head1 DESCRIPTION
 
-Details on a container instance host volume.
+Details on a container instance bind mount host volume.
 
 =head1 ATTRIBUTES
 
 
 =head2 SourcePath => Str
 
-  The path on the host container instance that is presented to the
+  When the C<host> parameter is used, specify a C<sourcePath> to declare
+the path on the host container instance that is presented to the
 container. If this parameter is empty, then the Docker daemon has
 assigned a host path for you. If the C<host> parameter contains a
 C<sourcePath> file location, then the data volume persists at the

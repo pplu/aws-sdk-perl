@@ -34,16 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::TopicCo
 
 =head1 DESCRIPTION
 
-Container for specifying the configuration when you want Amazon S3 to
-publish events to an Amazon Simple Notification Service (Amazon SNS)
-topic.
+A container for specifying the configuration for publication of
+messages to an Amazon Simple Notification Service (Amazon SNS) topic
+when Amazon S3 detects specified events.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Events => ArrayRef[Str|Undef]
 
-  
+  The Amazon S3 bucket event about which to send notifications. For more
+information, see Supported Event Types
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 =head2 Filter => L<Paws::S3::NotificationConfigurationFilter>
@@ -58,8 +61,8 @@ topic.
 
 =head2 B<REQUIRED> TopicArn => Str
 
-  Amazon SNS topic ARN to which Amazon S3 will publish a message when it
-detects events of specified type.
+  The Amazon Resource Name (ARN) of the Amazon SNS topic to which Amazon
+S3 publishes a message when it detects events of the specified type.
 
 
 

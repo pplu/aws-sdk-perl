@@ -45,7 +45,7 @@ CloudWatch logs in your account.
 
 =head2 B<REQUIRED> FieldLogLevel => Str
 
-  The field logging level. Values can be NONE, ERROR, ALL.
+  The field logging level. Values can be NONE, ERROR, or ALL.
 
 =over
 

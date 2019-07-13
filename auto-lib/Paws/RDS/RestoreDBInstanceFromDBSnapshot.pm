@@ -7,8 +7,10 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBName => (is => 'ro', isa => 'Str');
+  has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -26,6 +28,7 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
   has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -60,7 +63,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CopyTagsToSnapshot              => 1,                      # OPTIONAL
       DBInstanceClass                 => 'MyString',             # OPTIONAL
       DBName                          => 'MyString',             # OPTIONAL
+      DBParameterGroupName            => 'MyString',             # OPTIONAL
       DBSubnetGroupName               => 'MyString',             # OPTIONAL
+      DeletionProtection              => 1,                      # OPTIONAL
       Domain                          => 'MyString',             # OPTIONAL
       DomainIAMRoleName               => 'MyString',             # OPTIONAL
       EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
@@ -90,6 +95,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TdeCredentialArn            => 'MyString',                 # OPTIONAL
       TdeCredentialPassword       => 'MyString',                 # OPTIONAL
       UseDefaultProcessorFeatures => 1,                          # OPTIONAL
+      VpcSecurityGroupIds         => [ 'MyString', ... ],        # OPTIONAL
       );
 
     # Results:
@@ -105,19 +111,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor version upgrades are applied automatically to the
-DB instance during the maintenance window.
+A value that indicates whether minor version upgrades are applied
+automatically to the DB instance during the maintenance window.
 
 
 
 =head2 AvailabilityZone => Str
 
-The EC2 Availability Zone that the DB instance is created in.
+The Availability Zone (AZ) where the DB instance will be created.
 
 Default: A random, system-chosen Availability Zone.
 
-Constraint: You can't specify the AvailabilityZone parameter if the
-MultiAZ parameter is set to C<true>.
+Constraint: You can't specify the C<AvailabilityZone> parameter if the
+DB instance is a Multi-AZ deployment.
 
 Example: C<us-east-1a>
 
@@ -125,8 +131,9 @@ Example: C<us-east-1a>
 
 =head2 CopyTagsToSnapshot => Bool
 
-True to copy all tags from the restored DB instance to snapshots of the
-DB instance, and otherwise false. The default is false.
+A value that indicates whether to copy all tags from the restored DB
+instance to snapshots of the DB instance. By default, tags are not
+copied.
 
 
 
@@ -137,7 +144,7 @@ example, C<db.m4.large>. Not all DB instance classes are available in
 all AWS Regions, or for all database engines. For the full list of DB
 instance classes, and availability for your engine, see DB Instance
 Class
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the I<Amazon RDS User Guide.>
 
 Default: The same DBInstanceClass as the original DB instance.
@@ -163,7 +170,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -177,6 +184,37 @@ The database name for the restored DB instance.
 
 This parameter doesn't apply to the MySQL, PostgreSQL, or MariaDB
 engines.
+
+
+
+=head2 DBParameterGroupName => Str
+
+The name of the DB parameter group to associate with this DB instance.
+If this argument is omitted, the default DBParameterGroup for the
+specified engine is used.
+
+Constraints:
+
+=over
+
+=item *
+
+If supplied, must match the name of an existing DBParameterGroup.
+
+=item *
+
+Must be 1 to 255 letters, numbers, or hyphens.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Can't end with a hyphen or contain two consecutive hyphens.
+
+=back
+
 
 
 
@@ -213,6 +251,16 @@ Example: C<mySubnetgroup>
 
 
 
+=head2 DeletionProtection => Bool
+
+A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. For more
+information, see Deleting a DB Instance
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
+
+
+
 =head2 Domain => Str
 
 Specify the Active Directory Domain to restore the instance in.
@@ -229,14 +277,19 @@ the Directory Service.
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 The list of logs that the restored DB instance is to export to
-CloudWatch Logs.
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon Aurora User Guide>.
 
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 You can enable IAM database authentication for the following database
 engines
@@ -253,7 +306,6 @@ For MySQL 5.7, minor version 5.7.16 or higher
 
 =back
 
-Default: C<false>
 
 
 
@@ -332,7 +384,8 @@ before the conversion starts.
 The provisioned IOPS value must follow the requirements for your
 database engine. For more information, see Amazon RDS Provisioned IOPS
 Storage to Improve Performance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS).
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+in the I<Amazon RDS User Guide.>
 
 Constraints: Must be an integer greater than 1000.
 
@@ -351,10 +404,11 @@ C<general-public-license>
 
 =head2 MultiAZ => Bool
 
-Specifies if the DB instance is a Multi-AZ deployment.
+A value that indicates whether the DB instance is a Multi-AZ
+deployment.
 
-Constraint: You can't specify the AvailabilityZone parameter if the
-MultiAZ parameter is set to C<true>.
+Constraint: You can't specify the C<AvailabilityZone> parameter if the
+DB instance is a Multi-AZ deployment.
 
 
 
@@ -387,33 +441,12 @@ instance class of the DB instance.
 
 =head2 PubliclyAccessible => Bool
 
-Specifies the accessibility options for the DB instance. A value of
-true specifies an Internet-facing instance with a publicly resolvable
-DNS name, which resolves to a public IP address. A value of false
-specifies an internal instance with a DNS name that resolves to a
-private IP address.
-
-Default: The default behavior varies depending on whether a VPC has
-been requested or not. The following list shows the default behavior in
-each case.
-
-=over
-
-=item *
-
-B<Default VPC:> true
-
-=item *
-
-B<VPC:> false
-
-=back
-
-If no DB subnet group has been specified as part of the request and the
-PubliclyAccessible value has not been set, the DB instance is publicly
-accessible. If a specific DB subnet group has been specified as part of
-the request and the PubliclyAccessible value has not been set, the DB
-instance is private.
+A value that indicates whether the DB instance is publicly accessible.
+When the DB instance is publicly accessible, it is an Internet-facing
+instance with a publicly resolvable DNS name, which resolves to a
+public IP address. When the DB instance is not publicly accessible, it
+is an internal instance with a DNS name that resolves to a private IP
+address. For more information, see CreateDBInstance.
 
 
 
@@ -426,8 +459,7 @@ Valid values: C<standard | gp2 | io1>
 If you specify C<io1>, you must also include a value for the C<Iops>
 parameter.
 
-Default: C<io1> if the C<Iops> parameter is specified, otherwise
-C<standard>
+Default: C<io1> if the C<Iops> parameter is specified, otherwise C<gp2>
 
 
 
@@ -453,8 +485,17 @@ the device.
 
 =head2 UseDefaultProcessorFeatures => Bool
 
-A value that specifies that the DB instance class of the DB instance
+A value that indicates whether the DB instance class of the DB instance
 uses its default processor features.
+
+
+
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
+
+A list of EC2 VPC security groups to associate with this DB instance.
+
+Default: The default EC2 VPC security group for the DB subnet group's
+VPC.
 
 
 

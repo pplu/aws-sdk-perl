@@ -16,7 +16,7 @@ Paws::DirectConnect::CreateDirectConnectGatewayAssociationResult
 
 =head2 DirectConnectGatewayAssociation => L<Paws::DirectConnect::DirectConnectGatewayAssociation>
 
-The direct connect gateway association to be created.
+The association to be created.
 
 
 =head2 _request_id => Str

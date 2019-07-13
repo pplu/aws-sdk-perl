@@ -1,8 +1,11 @@
 package Paws::S3::ReplicationRule;
   use Moose;
+  has DeleteMarkerReplication => (is => 'ro', isa => 'Paws::S3::DeleteMarkerReplication');
   has Destination => (is => 'ro', isa => 'Paws::S3::Destination', required => 1);
+  has Filter => (is => 'ro', isa => 'Paws::S3::ReplicationRuleFilter');
   has ID => (is => 'ro', isa => 'Str');
-  has Prefix => (is => 'ro', isa => 'Str', required => 1);
+  has Prefix => (is => 'ro', isa => 'Str');
+  has Priority => (is => 'ro', isa => 'Int');
   has SourceSelectionCriteria => (is => 'ro', isa => 'Paws::S3::SourceSelectionCriteria');
   has Status => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -24,49 +27,89 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::S3::ReplicationRule object:
 
-  $service_obj->Method(Att1 => { Destination => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { DeleteMarkerReplication => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ReplicationRule object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Destination
+  $result->Att1->DeleteMarkerReplication
 
 =head1 DESCRIPTION
 
-Container for information about a particular replication rule.
+Specifies which Amazon S3 objects to replicate and where to store the
+replicas.
 
 =head1 ATTRIBUTES
 
 
+=head2 DeleteMarkerReplication => L<Paws::S3::DeleteMarkerReplication>
+
+  
+
+
 =head2 B<REQUIRED> Destination => L<Paws::S3::Destination>
 
-  Container for replication destination information.
+  A container for information about the replication destination.
+
+
+=head2 Filter => L<Paws::S3::ReplicationRuleFilter>
+
+  
 
 
 =head2 ID => Str
 
-  Unique identifier for the rule. The value cannot be longer than 255
-characters.
+  A unique identifier for the rule. The maximum value is 255 characters.
 
 
-=head2 B<REQUIRED> Prefix => Str
+=head2 Prefix => Str
 
-  Object keyname prefix identifying one or more objects to which the rule
-applies. Maximum prefix length can be up to 1,024 characters.
-Overlapping prefixes are not supported.
+  An object keyname prefix that identifies the object or objects to which
+the rule applies. The maximum prefix length is 1,024 characters. To
+include all objects in a bucket, specify an empty string.
+
+
+=head2 Priority => Int
+
+  The priority associated with the rule. If you specify multiple rules in
+a replication configuration, Amazon S3 prioritizes the rules to prevent
+conflicts when filtering. If two or more rules identify the same object
+based on a specified filter, the rule with higher priority takes
+precedence. For example:
+
+=over
+
+=item *
+
+Same object quality prefix based filter criteria If prefixes you
+specified in multiple rules overlap
+
+=item *
+
+Same object qualify tag based filter criteria specified in multiple
+rules
+
+=back
+
+For more information, see Cross-Region Replication (CRR)
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the
+I<Amazon S3 Developer Guide>.
 
 
 =head2 SourceSelectionCriteria => L<Paws::S3::SourceSelectionCriteria>
 
-  Container for filters that define which source objects should be
-replicated.
+  A container that describes additional filters for identifying the
+source objects that you want to replicate. You can choose to enable or
+disable the replication of these objects. Currently, Amazon S3 supports
+only the filter that you can specify for objects created with
+server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
 
 
 =head2 B<REQUIRED> Status => Str
 
-  The rule is ignored if status is not Enabled.
+  Specifies whether the rule is enabled.
 
 
 

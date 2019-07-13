@@ -66,7 +66,7 @@ Represents information about the remote access session.
   The billing method of the remote access session. Possible values
 include C<METERED> or C<UNMETERED>. For more information about metered
 devices, see AWS Device Farm terminology
-(http://docs.aws.amazon.com/devicefarm/latest/developerguide/welcome.html#welcome-terminology)."
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/welcome.html#welcome-terminology)."
 
 
 =head2 ClientId => Str
@@ -87,7 +87,7 @@ returned if remote debugging is enabled for the remote access session.
 
 =head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
 
-  The number of minutes a device is used in a remote access sesssion
+  The number of minutes a device is used in a remote access session
 (including setup and teardown minutes).
 
 

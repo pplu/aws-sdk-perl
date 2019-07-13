@@ -42,8 +42,10 @@ The summary of the cluster step.
 
 =head2 ActionOnFailure => Str
 
-  This specifies what action to take when the cluster step fails.
-Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.
+  The action to take when the cluster step fails. Possible values are
+TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE. TERMINATE_JOB_FLOW is
+available for backward compatibility. We recommend using
+TERMINATE_CLUSTER instead.
 
 
 =head2 Config => L<Paws::EMR::HadoopStepConfig>

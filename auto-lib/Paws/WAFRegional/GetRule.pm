@@ -30,11 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To get a rule
     # The following example returns the details of a rule with the ID
     # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-    my $GetRuleResponse = $waf -regional->GetRule(
-      {
-        'RuleId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5'
-      }
-    );
+    my $GetRuleResponse =
+      $waf -
+      regional->GetRule(
+      'RuleId' => 'example1ds3t-46da-4fdb-b8d5-abc321j569j5' );
 
     # Results:
     my $Rule = $GetRuleResponse->Rule;

@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Describes account specific API endpoint
+Describes an account-specific API endpoint.
 
 =head1 ATTRIBUTES
 

@@ -34,39 +34,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Fun
 
 =head1 DESCRIPTION
 
-The code for the Lambda function.
+The code for the Lambda function. You can specify either an object in
+Amazon S3, or upload a deployment package directly.
 
 =head1 ATTRIBUTES
 
 
 =head2 S3Bucket => Str
 
-  Amazon S3 bucket name where the .zip file containing your deployment
-package is stored. This bucket must reside in the same AWS region where
-you are creating the Lambda function.
+  An Amazon S3 bucket in the same AWS Region as your function. The bucket
+can be in a different AWS account.
 
 
 =head2 S3Key => Str
 
-  The Amazon S3 object (the deployment package) key name you want to
-upload.
+  The Amazon S3 key of the deployment package.
 
 
 =head2 S3ObjectVersion => Str
 
-  The Amazon S3 object (the deployment package) version you want to
-upload.
+  For versioned objects, the version of the deployment package object to
+use.
 
 
 =head2 ZipFile => Str
 
-  The contents of your zip file containing your deployment package. If
-you are using the web API directly, the contents of the zip file must
-be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the
-SDKs or CLI will do the encoding for you. For more information about
-creating a .zip file, see Execution Permissions
-(http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html)
-in the B<AWS Lambda Developer Guide>.
+  The base64-encoded contents of the deployment package. AWS SDK and AWS
+CLI clients handle the encoding for you.
 
 
 

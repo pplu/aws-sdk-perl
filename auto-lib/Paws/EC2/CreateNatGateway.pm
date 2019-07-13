@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # an Elastic IP address with the allocation ID eipalloc-37fc1a52 with the NAT
    # gateway.
     my $CreateNatGatewayResult = $ec2->CreateNatGateway(
-      {
-        'AllocationId' => 'eipalloc-37fc1a52',
-        'SubnetId'     => 'subnet-1a2b3c4d'
-      }
+      'AllocationId' => 'eipalloc-37fc1a52',
+      'SubnetId'     => 'subnet-1a2b3c4d'
     );
 
     # Results:
@@ -61,9 +59,10 @@ you must first disassociate it.
 
 =head2 ClientToken => Str
 
-Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see How to Ensure Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see How to Ensure
+Idempotency
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 Constraint: Maximum 64 ASCII characters.
 

@@ -104,13 +104,43 @@ constraint type as follows:
 
 Specify the C<RoleArn> property as follows:
 
-\"RoleArn\" : \"arn:aws:iam::123456789012:role/LaunchRole\"
+C<{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}>
+
+You cannot have both a C<LAUNCH> and a C<STACKSET> constraint.
+
+You also cannot have more than one C<LAUNCH> constraint on a product
+and portfolio.
 
 =item NOTIFICATION
 
 Specify the C<NotificationArns> property as follows:
 
-\"NotificationArns\" : [\"arn:aws:sns:us-east-1:123456789012:Topic\"]
+C<{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}>
+
+=item RESOURCE_UPDATE
+
+Specify the C<TagUpdatesOnProvisionedProduct> property as follows:
+
+C<{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}>
+
+The C<TagUpdatesOnProvisionedProduct> property accepts a string value
+of C<ALLOWED> or C<NOT_ALLOWED>.
+
+=item STACKSET
+
+Specify the C<Parameters> property as follows:
+
+C<{"Version": "String", "Properties": {"AccountList": [ "String" ],
+"RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole":
+"String"}}>
+
+You cannot have both a C<LAUNCH> and a C<STACKSET> constraint.
+
+You also cannot have more than one C<STACKSET> constraint on a product
+and portfolio.
+
+Products with a C<STACKSET> constraint will launch an AWS
+CloudFormation stack set.
 
 =item TEMPLATE
 
@@ -148,6 +178,14 @@ C<LAUNCH>
 =item *
 
 C<NOTIFICATION>
+
+=item *
+
+C<RESOURCE_UPDATE>
+
+=item *
+
+C<STACKSET>
 
 =item *
 

@@ -1,5 +1,6 @@
 package Paws::MediaConvert::JobTemplate;
   use Moose;
+  has AccelerationSettings => (is => 'ro', isa => 'Paws::MediaConvert::AccelerationSettings', request_name => 'accelerationSettings', traits => ['NameInRequest']);
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
@@ -8,6 +9,7 @@ package Paws::MediaConvert::JobTemplate;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Queue => (is => 'ro', isa => 'Str', request_name => 'queue', traits => ['NameInRequest']);
   has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
+  has StatusUpdateInterval => (is => 'ro', isa => 'Str', request_name => 'statusUpdateInterval', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
@@ -28,14 +30,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::JobTemplate object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { AccelerationSettings => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConvert::JobTemplate object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Arn
+  $result->Att1->AccelerationSettings
 
 =head1 DESCRIPTION
 
@@ -43,6 +45,12 @@ A job template is a pre-made set of encoding instructions that you can
 use to quickly create a job.
 
 =head1 ATTRIBUTES
+
+
+=head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
+
+  Accelerated transcoding is currently in private preview. Contact AWS
+for more information.
 
 
 =head2 Arn => Str
@@ -84,7 +92,17 @@ to. If you don't specify this, jobs will go to the default queue.
 
 =head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobTemplateSettings>
 
-  
+  JobTemplateSettings contains all the transcode settings saved in the
+template that will be applied to jobs created from it.
+
+
+=head2 StatusUpdateInterval => Str
+
+  Specify how often MediaConvert sends STATUS_UPDATE events to Amazon
+CloudWatch Events. Set the interval, in seconds, between status
+updates. MediaConvert sends an update at this interval from the time
+the service begins processing your job to the time it completes the
+transcode or encounters an error.
 
 
 =head2 Type => Str

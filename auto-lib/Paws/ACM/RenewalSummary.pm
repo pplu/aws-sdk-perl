@@ -2,6 +2,8 @@ package Paws::ACM::RenewalSummary;
   use Moose;
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]', required => 1);
   has RenewalStatus => (is => 'ro', isa => 'Str', required => 1);
+  has RenewalStatusReason => (is => 'ro', isa => 'Str');
+  has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ACM::RenewalSummary object:
 
-  $service_obj->Method(Att1 => { DomainValidationOptions => $value, ..., RenewalStatus => $value  });
+  $service_obj->Method(Att1 => { DomainValidationOptions => $value, ..., UpdatedAt => $value  });
 
 =head3 Results returned from an API call
 
@@ -33,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACM::Renewa
 =head1 DESCRIPTION
 
 Contains information about the status of ACM's managed renewal
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
+(https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
 the certificate. This structure exists only when the certificate type
 is C<AMAZON_ISSUED>.
 
@@ -44,7 +46,7 @@ is C<AMAZON_ISSUED>.
 
   Contains information about the validation of each domain name in the
 certificate, as it pertains to ACM's managed renewal
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html).
+(https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html).
 This is different from the initial validation that occurs as a result
 of the RequestCertificate request. This field exists only when the
 certificate type is C<AMAZON_ISSUED>.
@@ -53,8 +55,18 @@ certificate type is C<AMAZON_ISSUED>.
 =head2 B<REQUIRED> RenewalStatus => Str
 
   The status of ACM's managed renewal
-(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) of
+(https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) of
 the certificate.
+
+
+=head2 RenewalStatusReason => Str
+
+  The reason that a renewal request was unsuccessful.
+
+
+=head2 B<REQUIRED> UpdatedAt => Str
+
+  The time at which the renewal summary was last updated.
 
 
 

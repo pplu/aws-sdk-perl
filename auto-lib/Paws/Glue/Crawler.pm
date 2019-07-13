@@ -3,6 +3,7 @@ package Paws::Glue::Crawler;
   has Classifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Configuration => (is => 'ro', isa => 'Str');
   has CrawlElapsedTime => (is => 'ro', isa => 'Int');
+  has CrawlerSecurityConfiguration => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -56,22 +57,16 @@ Catalog.
 
 =head2 Classifiers => ArrayRef[Str|Undef]
 
-  A list of custom classifiers associated with the crawler.
+  A list of UTF-8 strings that specify the custom classifiers that are
+associated with the crawler.
 
 
 =head2 Configuration => Str
 
   Crawler configuration information. This versioned JSON string allows
-users to specify aspects of a Crawler's behavior.
-
-You can use this field to force partitions to inherit metadata such as
-classification, input format, output format, serde information, and
-schema from their parent table, rather than detect this information
-separately for each partition. Use the following JSON string to specify
-that behavior:
-
-Example: C<'{ "Version": 1.0, "CrawlerOutput": { "Partitions": {
-"AddOrUpdateBehavior": "InheritFromTable" } } }'>
+users to specify aspects of a crawler's behavior. For more information,
+see Configuring a Crawler
+(http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 
 
 =head2 CrawlElapsedTime => Int
@@ -80,14 +75,20 @@ Example: C<'{ "Version": 1.0, "CrawlerOutput": { "Partitions": {
 last crawl began.
 
 
+=head2 CrawlerSecurityConfiguration => Str
+
+  The name of the C<SecurityConfiguration> structure to be used by this
+crawler.
+
+
 =head2 CreationTime => Str
 
-  The time when the crawler was created.
+  The time that the crawler was created.
 
 
 =head2 DatabaseName => Str
 
-  The database where metadata is written by this crawler.
+  The name of the database in which the crawler's output is stored.
 
 
 =head2 Description => Str
@@ -103,18 +104,19 @@ error occurred.
 
 =head2 LastUpdated => Str
 
-  The time the crawler was last updated.
+  The time that the crawler was last updated.
 
 
 =head2 Name => Str
 
-  The crawler name.
+  The name of the crawler.
 
 
 =head2 Role => Str
 
-  The IAM role (or ARN of an IAM role) used to access customer resources,
-such as data in Amazon S3.
+  The Amazon Resource Name (ARN) of an IAM role that's used to access
+customer resources, such as Amazon Simple Storage Service (Amazon S3)
+data.
 
 
 =head2 Schedule => L<Paws::Glue::Schedule>
@@ -124,7 +126,7 @@ such as data in Amazon S3.
 
 =head2 SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>
 
-  Sets the behavior when the crawler finds a changed or deleted object.
+  The policy that specifies update and delete behaviors for the crawler.
 
 
 =head2 State => Str

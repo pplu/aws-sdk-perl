@@ -40,7 +40,7 @@ An activity that filters a message based on its attributes.
 
 =head2 B<REQUIRED> Filter => Str
 
-  An expression that looks like an SQL WHERE clause that must return a
+  An expression that looks like a SQL WHERE clause that must return a
 Boolean value.
 
 

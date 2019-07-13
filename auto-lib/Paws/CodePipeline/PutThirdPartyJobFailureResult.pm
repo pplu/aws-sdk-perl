@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $codepipeline->PutThirdPartyJobFailureResult(
       ClientToken    => 'MyClientToken',
       FailureDetails => {
-        message => 'MyMessage',    # min: 1, max: 5000
-        type    => 'JobFailed'
+        Message => 'MyMessage',    # min: 1, max: 5000
+        Type    => 'JobFailed'
         , # values: JobFailed, ConfigurationError, PermissionError, RevisionOutOfSync, RevisionUnavailable, SystemUnavailable
-        externalExecutionId => 'MyExecutionId',    # min: 1, max: 1500; OPTIONAL
+        ExternalExecutionId => 'MyExecutionId',    # min: 1, max: 1500; OPTIONAL
       },
       JobId => 'MyThirdPartyJobId',
 
@@ -64,7 +64,7 @@ Represents information about failure details.
 =head2 B<REQUIRED> JobId => Str
 
 The ID of the job that failed. This is the same ID returned from
-PollForThirdPartyJobs.
+C<PollForThirdPartyJobs>.
 
 
 

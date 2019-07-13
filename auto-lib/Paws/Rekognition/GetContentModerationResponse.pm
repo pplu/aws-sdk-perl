@@ -3,6 +3,7 @@ package Paws::Rekognition::GetContentModerationResponse;
   use Moose;
   has JobStatus => (is => 'ro', isa => 'Str');
   has ModerationLabels => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::ContentModerationDetection]');
+  has ModerationModelVersion => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
   has VideoMetadata => (is => 'ro', isa => 'Paws::Rekognition::VideoMetadata');
@@ -28,11 +29,17 @@ Valid values are: C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">
 The detected moderation labels and the time(s) they were detected.
 
 
+=head2 ModerationModelVersion => Str
+
+Version number of the moderation detection model that was used to
+detect unsafe content.
+
+
 =head2 NextToken => Str
 
-If the response is truncated, Rekognition Video returns this token that
-you can use in the subsequent request to retrieve the next set of
-moderation labels.
+If the response is truncated, Amazon Rekognition Video returns this
+token that you can use in the subsequent request to retrieve the next
+set of moderation labels.
 
 
 =head2 StatusMessage => Str

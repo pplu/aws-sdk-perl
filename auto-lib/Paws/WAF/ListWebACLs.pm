@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $waf = Paws->service('WAF');
     # To list Web ACLs
     # The following example returns an array of up to 100 web ACLs.
-    my $ListWebACLsResponse = $waf->ListWebACLs(
-      {
-        'Limit' => 100
-      }
-    );
+    my $ListWebACLsResponse = $waf->ListWebACLs( 'Limit' => 100 );
 
     # Results:
     my $WebACLs = $ListWebACLsResponse->WebACLs;

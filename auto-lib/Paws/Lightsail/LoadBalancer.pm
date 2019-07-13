@@ -14,6 +14,7 @@ package Paws::Lightsail::LoadBalancer;
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TlsCertificateSummaries => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::LoadBalancerTlsCertificateSummary]', request_name => 'tlsCertificateSummaries', traits => ['NameInRequest']);
 1;
 
@@ -132,6 +133,13 @@ port 80. For HTTPS, use port 443.
   The support code. Include this code in your email to support when you
 have questions about your Lightsail load balancer. This code enables
 our support team to look up your Lightsail information more easily.
+
+
+=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+
+  The tag keys and optional values for the resource. For more information
+about tags in Lightsail, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags).
 
 
 =head2 TlsCertificateSummaries => ArrayRef[L<Paws::Lightsail::LoadBalancerTlsCertificateSummary>]

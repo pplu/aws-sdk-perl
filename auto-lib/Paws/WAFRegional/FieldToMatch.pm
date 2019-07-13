@@ -41,9 +41,13 @@ Specifies where in a web request to look for C<TargetString>.
 
   When the value of C<Type> is C<HEADER>, enter the name of the header
 that you want AWS WAF to search, for example, C<User-Agent> or
-C<Referer>. If the value of C<Type> is any other value, omit C<Data>.
+C<Referer>. The name of the header is not case sensitive.
 
-The name of the header is not case sensitive.
+When the value of C<Type> is C<SINGLE_QUERY_ARG>, enter the name of the
+parameter that you want AWS WAF to search, for example, C<UserName> or
+C<SalesRegion>. The parameter name is not case sensitive.
+
+If the value of C<Type> is any other value, omit C<Data>.
 
 
 =head2 B<REQUIRED> Type => Str
@@ -86,6 +90,19 @@ headers. Note that only the first C<8192> bytes of the request body are
 forwarded to AWS WAF for inspection. To allow or block requests based
 on the length of the body, you can create a size constraint set. For
 more information, see CreateSizeConstraintSet.
+
+=item *
+
+C<SINGLE_QUERY_ARG>: The parameter in the query string that you will
+inspect, such as I<UserName> or I<SalesRegion>. The maximum length for
+C<SINGLE_QUERY_ARG> is 30 characters.
+
+=item *
+
+C<ALL_QUERY_ARGS>: Similar to C<SINGLE_QUERY_ARG>, but rather than
+inspecting a single parameter, AWS WAF will inspect all parameters
+within the query for the value or regex pattern that you specify in
+C<TargetString>.
 
 =back
 

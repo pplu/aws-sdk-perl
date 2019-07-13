@@ -5,9 +5,10 @@ package Paws::GuardDuty::CreateFilter;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has FindingCriteria => (is => 'ro', isa => 'Paws::GuardDuty::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has FindingCriteria => (is => 'ro', isa => 'Paws::GuardDuty::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria', required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Rank => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'rank');
+  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -35,24 +36,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $CreateFilterResponse = $guardduty->CreateFilter(
-      DetectorId      => 'My__string',
-      Action          => 'NOOP',                   # OPTIONAL
-      ClientToken     => 'My__stringMin0Max64',    # OPTIONAL
-      Description     => 'MyFilterDescription',    # OPTIONAL
+      DetectorId      => 'MyDetectorId',
       FindingCriteria => {
         Criterion => {
-          'My__string' => {
-            Eq  => [ 'My__string', ... ],          # OPTIONAL
-            Gt  => 1,                              # OPTIONAL
-            Gte => 1,                              # OPTIONAL
-            Lt  => 1,                              # OPTIONAL
-            Lte => 1,                              # OPTIONAL
-            Neq => [ 'My__string', ... ],          # OPTIONAL
+          'MyString' => {
+            Eq     => [ 'MyString', ... ],    # OPTIONAL
+            Equals => [ 'MyString', ... ],    # OPTIONAL
+            GreaterThan        => 1,                      # OPTIONAL
+            GreaterThanOrEqual => 1,                      # OPTIONAL
+            Gt                 => 1,                      # OPTIONAL
+            Gte                => 1,                      # OPTIONAL
+            LessThan           => 1,                      # OPTIONAL
+            LessThanOrEqual    => 1,                      # OPTIONAL
+            Lt                 => 1,                      # OPTIONAL
+            Lte                => 1,                      # OPTIONAL
+            Neq                => [ 'MyString', ... ],    # OPTIONAL
+            NotEquals          => [ 'MyString', ... ],    # OPTIONAL
           },
         },    # OPTIONAL
+      },
+      Name        => 'MyFilterName',
+      Action      => 'NOOP',                   # OPTIONAL
+      ClientToken => 'MyClientToken',          # OPTIONAL
+      Description => 'MyFilterDescription',    # OPTIONAL
+      Rank        => 1,                        # OPTIONAL
+      Tags        => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
-      Name => 'MyFilterName',    # OPTIONAL
-      Rank => 1,                 # OPTIONAL
     );
 
     # Results:
@@ -61,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GuardDuty::CreateFilterResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/CreateFilter>
 
 =head1 ATTRIBUTES
 
@@ -87,17 +97,18 @@ The description of the filter.
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector that you want to update.
+The unique ID of the detector of the GuardDuty account for which you
+want to create a filter.
 
 
 
-=head2 FindingCriteria => L<Paws::GuardDuty::FindingCriteria>
+=head2 B<REQUIRED> FindingCriteria => L<Paws::GuardDuty::FindingCriteria>
 
 Represents the criteria to be used in the filter for querying findings.
 
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
 The name of the filter.
 
@@ -108,6 +119,12 @@ The name of the filter.
 Specifies the position of the filter in the list of current filters.
 Also specifies the order in which this filter is applied to the
 findings.
+
+
+
+=head2 Tags => L<Paws::GuardDuty::TagMap>
+
+The tags to be added to a new filter resource.
 
 
 

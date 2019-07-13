@@ -1,6 +1,7 @@
 
 package Paws::EC2::DescribeRouteTablesResult;
   use Moose;
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
   has RouteTables => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RouteTable]', request_name => 'routeTableSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -13,6 +14,12 @@ package Paws::EC2::DescribeRouteTablesResult;
 Paws::EC2::DescribeRouteTablesResult
 
 =head1 ATTRIBUTES
+
+
+=head2 NextToken => Str
+
+The token to use to retrieve the next page of results. This value is
+C<null> when there are no more results to return.
 
 
 =head2 RouteTables => ArrayRef[L<Paws::EC2::RouteTable>]

@@ -33,11 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 =head1 DESCRIPTION
 
 Contains the results of a successful call to the
-DescribeDBClusterSnapshotAttributes API action.
+C<DescribeDBClusterSnapshotAttributes> API action.
 
 Manual DB cluster snapshot attributes are used to authorize other AWS
 accounts to copy or restore a manual DB cluster snapshot. For more
-information, see the ModifyDBClusterSnapshotAttribute API action.
+information, see the C<ModifyDBClusterSnapshotAttribute> API action.
 
 =head1 ATTRIBUTES
 

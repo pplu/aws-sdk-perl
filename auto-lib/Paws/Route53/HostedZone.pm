@@ -65,7 +65,7 @@ created it.
 
   If the hosted zone was created by another service, the service that
 created the hosted zone. When a hosted zone is created by another
-service, you can't edit or delete it using Amazon Route 53.
+service, you can't edit or delete it using Route 53.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -75,7 +75,8 @@ you have registered with your DNS registrar.
 
 For information about how to specify characters other than C<a-z>,
 C<0-9>, and C<-> (hyphen) and how to specify internationalized domain
-names, see CreateHostedZone.
+names, see CreateHostedZone
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateHostedZone.html).
 
 
 =head2 ResourceRecordSetCount => Int

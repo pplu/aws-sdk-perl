@@ -51,7 +51,7 @@ A container for account-level settings within AWS Device Farm.
 =head2 DefaultJobTimeoutMinutes => Int
 
   The default number of minutes (at the account level) a test run will
-execute before it times out. Default value is 60 minutes.
+execute before it times out. The default value is 150 minutes.
 
 
 =head2 MaxJobTimeoutMinutes => Int

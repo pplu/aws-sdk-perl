@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $GetThreatIntelSetResponse = $guardduty->GetThreatIntelSet(
-      DetectorId       => 'My__string',
-      ThreatIntelSetId => 'My__string',
+      DetectorId       => 'MyDetectorId',
+      ThreatIntelSetId => 'MyString',
 
     );
 
@@ -40,26 +40,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Location = $GetThreatIntelSetResponse->Location;
     my $Name     = $GetThreatIntelSetResponse->Name;
     my $Status   = $GetThreatIntelSetResponse->Status;
+    my $Tags     = $GetThreatIntelSetResponse->Tags;
 
     # Returns a L<Paws::GuardDuty::GetThreatIntelSetResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/GetThreatIntelSet>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The detectorID that specifies the GuardDuty service whose
-ThreatIntelSet you want to describe.
+The unique ID of the detector the threatIntelSet is associated with.
 
 
 
 =head2 B<REQUIRED> ThreatIntelSetId => Str
 
-The unique ID that specifies the ThreatIntelSet that you want to
-describe.
+The unique ID of the threatIntelSet you want to get.
 
 
 

@@ -1,6 +1,7 @@
 package Paws::CloudFront::DistributionSummary;
   use Moose;
   has Aliases => (is => 'ro', isa => 'Paws::CloudFront::Aliases', required => 1);
+  has AliasICPRecordals => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::AliasICPRecordal]', request_name => 'AliasICPRecordal', traits => ['NameInRequest']);
   has ARN => (is => 'ro', isa => 'Str', required => 1);
   has CacheBehaviors => (is => 'ro', isa => 'Paws::CloudFront::CacheBehaviors', required => 1);
   has Comment => (is => 'ro', isa => 'Str', required => 1);
@@ -12,6 +13,7 @@ package Paws::CloudFront::DistributionSummary;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has IsIPV6Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+  has OriginGroups => (is => 'ro', isa => 'Paws::CloudFront::OriginGroups');
   has Origins => (is => 'ro', isa => 'Paws::CloudFront::Origins', required => 1);
   has PriceClass => (is => 'ro', isa => 'Str', required => 1);
   has Restrictions => (is => 'ro', isa => 'Paws::CloudFront::Restrictions', required => 1);
@@ -57,6 +59,20 @@ A summary of the information about a CloudFront distribution.
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this distribution.
+
+
+=head2 AliasICPRecordals => ArrayRef[L<Paws::CloudFront::AliasICPRecordal>]
+
+  AWS services in China customers must file for an Internet Content
+Provider (ICP) recordal if they want to serve content publicly on an
+alternate domain name, also known as a CNAME, that they've added to
+CloudFront. AliasICPRecordal provides the ICP recordal status for
+CNAMEs associated with distributions.
+
+For more information about ICP recordals, see Signup, Accounts, and
+Credentials
+(https://docs.amazonaws.cn/en_us/aws/latest/userguide/accounts-and-credentials.html)
+in I<Getting Started with AWS services in China>.
 
 
 =head2 B<REQUIRED> ARN => Str
@@ -126,6 +142,12 @@ for your distribution.
   The date and time the distribution was last modified.
 
 
+=head2 OriginGroups => L<Paws::CloudFront::OriginGroups>
+
+  A complex type that contains information about origin groups for this
+distribution.
+
+
 =head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>
 
   A complex type that contains information about origins for this
@@ -134,12 +156,14 @@ distribution.
 
 =head2 B<REQUIRED> PriceClass => Str
 
-  
+  A complex type that contains information about price class for this
+streaming distribution.
 
 
 =head2 B<REQUIRED> Restrictions => L<Paws::CloudFront::Restrictions>
 
-  
+  A complex type that identifies ways in which you want to restrict
+distribution of your content.
 
 
 =head2 B<REQUIRED> Status => Str
@@ -151,7 +175,10 @@ locations.
 
 =head2 B<REQUIRED> ViewerCertificate => L<Paws::CloudFront::ViewerCertificate>
 
-  
+  A complex type that specifies whether you want viewers to use HTTP or
+HTTPS to request your objects, whether you're using an alternate domain
+name with HTTPS, and if so, if you're using AWS Certificate Manager
+(ACM) or a third-party certificate authority.
 
 
 =head2 B<REQUIRED> WebACLId => Str

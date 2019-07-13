@@ -31,14 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes updates to an InputProcessingConfiguration.
+Describes updates to an InputProcessingConfiguration
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html).
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> InputLambdaProcessorUpdate => L<Paws::KinesisAnalytics::InputLambdaProcessorUpdate>
 
-  Provides update information for an InputLambdaProcessor.
+  Provides update information for an InputLambdaProcessor
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html).
 
 
 

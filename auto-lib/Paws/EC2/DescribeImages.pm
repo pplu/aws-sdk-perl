@@ -75,13 +75,14 @@ AMIs).
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+The filters.
 
 =over
 
 =item *
 
-C<architecture> - The image architecture (C<i386> | C<x86_64>).
+C<architecture> - The image architecture (C<i386> | C<x86_64> |
+C<arm64>).
 
 =item *
 
@@ -108,6 +109,11 @@ volume, in GiB.
 
 C<block-device-mapping.volume-type> - The volume type of the EBS volume
 (C<gp2> | C<io1> | C<st1 >| C<sc1> | C<standard>).
+
+=item *
+
+C<block-device-mapping.encrypted> - A Boolean that indicates whether
+the EBS volume is encrypted.
 
 =item *
 
@@ -206,26 +212,17 @@ networking with the Intel 82599 VF interface is enabled.
 
 =item *
 
-C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource. Specify the key of the tag in the filter name and the
-value of the tag in the filter value. For example, for the tag
-Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
-filter value.
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =item *
 
-C<tag-key> - The key of a tag assigned to the resource. This filter is
-independent of the tag-value filter. For example, if you use both the
-filter "tag-key=Purpose" and the filter "tag-value=X", you get any
-resources assigned both the tag key Purpose (regardless of what the
-tag's value is), and the tag value X (regardless of what the tag's key
-is). If you want to list only resources where Purpose is X, see the
-C<tag>:I<key>=I<value> filter.
-
-=item *
-
-C<tag-value> - The value of a tag assigned to the resource. This filter
-is independent of the C<tag-key> filter.
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
 
 =item *
 
@@ -239,7 +236,7 @@ C<hvm>).
 
 =head2 ImageIds => ArrayRef[Str|Undef]
 
-One or more image IDs.
+The image IDs.
 
 Default: Describes all images available to you.
 

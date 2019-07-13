@@ -64,9 +64,8 @@ PatchBaseline: pb-012345abcde
 For the Document and Parameter values, use the name of the resource.
 
 The ManagedInstance type for this API action is only for on-premises
-managed instances. You must specify the the name of the managed
-instance in the following format: mi-ID_number. For example,
-mi-1a2b3c4d5e6f.
+managed instances. You must specify the name of the managed instance in
+the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 
 
 
@@ -75,10 +74,10 @@ mi-1a2b3c4d5e6f.
 Specifies the type of resource you are tagging.
 
 The ManagedInstance type for this API action is for on-premises managed
-instances. You must specify the the name of the managed instance in the
+instances. You must specify the name of the managed instance in the
 following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 
-Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">
+Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">, C<"OpsItem">
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::SSM::Tag>]
 

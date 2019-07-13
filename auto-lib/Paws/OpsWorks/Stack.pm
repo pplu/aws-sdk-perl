@@ -78,7 +78,7 @@ or a version number for a fixed agent version.
   A C<ChefConfiguration> object that specifies whether to enable
 Berkshelf and the Berkshelf version. For more information, see Create a
 New Stack
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 
 
 =head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
@@ -93,7 +93,11 @@ New Stack
 
 =head2 CustomCookbooksSource => L<Paws::OpsWorks::Source>
 
-  
+  Contains the information required to retrieve an app or cookbook from a
+repository. For more information, see Adding Apps
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html)
+or Cookbooks and Recipes
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html).
 
 
 =head2 CustomJson => Str
@@ -108,14 +112,14 @@ C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
 For more information on custom JSON, see Use Custom JSON to Modify the
 Stack Configuration Attributes
-(http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+(https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 
 
 =head2 DefaultAvailabilityZone => Str
 
   The stack's default Availability Zone. For more information, see
 Regions and Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html).
+(https://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 DefaultInstanceProfileArn => Str
@@ -123,7 +127,7 @@ Regions and Endpoints
   The ARN of an IAM profile that is the default profile for all of the
 stack's EC2 instances. For more information about IAM ARNs, see Using
 Identifiers
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 
 
 =head2 DefaultOs => Str
@@ -136,7 +140,7 @@ Identifiers
   The default root device type. This value is used by default for all
 instances in the stack, but you can override it when you create an
 instance. For more information, see Storage for the Root Device
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
 
 
 =head2 DefaultSshKeyName => Str
@@ -165,7 +169,7 @@ VPC.
 
   The stack AWS region, such as "ap-northeast-2". For more information
 about AWS regions, see Regions and Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html).
+(https://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 ServiceRoleArn => Str

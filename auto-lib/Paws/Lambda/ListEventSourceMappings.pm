@@ -53,8 +53,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 EventSourceArn => Str
 
-The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This
-parameter is optional.)
+The Amazon Resource Name (ARN) of the event source.
+
+=over
+
+=item *
+
+B<Amazon Kinesis> - The ARN of the data stream or a stream consumer.
+
+=item *
+
+B<Amazon DynamoDB Streams> - The ARN of the stream.
+
+=item *
+
+B<Amazon Simple Queue Service> - The ARN of the queue.
+
+=back
+
 
 
 
@@ -62,30 +78,44 @@ parameter is optional.)
 
 The name of the Lambda function.
 
-You can specify the function name (for example, C<Thumbnail>) or you
-can specify Amazon Resource Name (ARN) of the function (for example,
-C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). If you are
-using versioning, you can also provide a qualified function ARN (ARN
-that is qualified with function version or alias name as suffix). AWS
-Lambda also allows you to specify only the function name with the
-account ID qualifier (for example, C<account-id:Thumbnail>). Note that
-the length constraint applies only to the ARN. If you specify only the
-function name, it is limited to 64 characters in length.
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Version or Alias ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
+the function name, it's limited to 64 characters in length.
 
 
 
 =head2 Marker => Str
 
-Optional string. An opaque pagination token returned from a previous
-C<ListEventSourceMappings> operation. If present, specifies to continue
-the list from where the returning call left off.
+A pagination token returned by a previous call.
 
 
 
 =head2 MaxItems => Int
 
-Optional integer. Specifies the maximum number of event sources to
-return in response. This value must be greater than 0.
+The maximum number of event source mappings to return.
 
 
 

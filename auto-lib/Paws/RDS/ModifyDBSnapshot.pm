@@ -98,7 +98,8 @@ You can specify this parameter when you upgrade an Oracle DB snapshot.
 The same option group considerations apply when upgrading a DB snapshot
 as when upgrading a DB instance. For more information, see Option Group
 Considerations
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Oracle.html#USER_UpgradeDBInstance.Oracle.OGPG.OG).
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Oracle.html#USER_UpgradeDBInstance.Oracle.OGPG.OG)
+in the I<Amazon RDS User Guide.>
 
 
 

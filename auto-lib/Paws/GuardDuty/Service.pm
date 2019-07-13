@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Additional information assigned to the generated finding by GuardDuty.
+This class has no description
 
 =head1 ATTRIBUTES
 

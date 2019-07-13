@@ -47,7 +47,7 @@ Choose the latest (or oldest) chunk.
 =item *
 
 Identify a specific chunk. You can identify a specific chunk either by
-providing a fragment number or time stamp (server or producer).
+providing a fragment number or timestamp (server or producer).
 
 =item *
 
@@ -93,14 +93,14 @@ EARLIEST - Start with earliest available chunk on the stream.
 
 =item *
 
-FRAGMENT_NUMBER - Start with the chunk containing the specific
-fragment. You must also specify the C<StartFragmentNumber>.
+FRAGMENT_NUMBER - Start with the chunk after a specific fragment. You
+must also specify the C<AfterFragmentNumber> parameter.
 
 =item *
 
 PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with the chunk
-containing a fragment with the specified producer or server time stamp.
-You specify the time stamp by adding C<StartTimestamp>.
+containing a fragment with the specified producer or server timestamp.
+You specify the timestamp by adding C<StartTimestamp>.
 
 =item *
 
@@ -115,10 +115,10 @@ the C<startSelector>.
 
 =head2 StartTimestamp => Str
 
-  A time stamp value. This value is required if you choose the
+  A timestamp value. This value is required if you choose the
 PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the C<startSelectorType>.
 The C<GetMedia> API then starts with the chunk containing the fragment
-that has the specified time stamp.
+that has the specified timestamp.
 
 
 

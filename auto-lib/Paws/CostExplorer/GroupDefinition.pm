@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-Represents a group when you specify a group by criteria, or in the
+Represents a group when you specify a group by criteria or in the
 response to a query with a specific grouping.
 
 =head1 ATTRIBUTES

@@ -2,6 +2,7 @@
 package Paws::Lightsail::GetRegions;
   use Moose;
   has IncludeAvailabilityZones => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeAvailabilityZones' );
+  has IncludeRelationalDatabaseAvailabilityZones => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeRelationalDatabaseAvailabilityZones' );
 
   use MooseX::ClassAttribute;
 
@@ -28,7 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $lightsail = Paws->service('Lightsail');
     my $GetRegionsResult = $lightsail->GetRegions(
-      IncludeAvailabilityZones => 1,    # OPTIONAL
+      IncludeAvailabilityZones                   => 1,    # OPTIONAL
+      IncludeRelationalDatabaseAvailabilityZones => 1,    # OPTIONAL
     );
 
     # Results:
@@ -47,6 +49,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 A Boolean value indicating whether to also include Availability Zones
 in your get regions request. Availability Zones are indicated with a
 letter: e.g., C<us-east-2a>.
+
+
+
+=head2 IncludeRelationalDatabaseAvailabilityZones => Bool
+
+E<gt>A Boolean value indicating whether to also include Availability
+Zones for databases in your get regions request. Availability Zones are
+indicated with a letter (e.g., C<us-east-2a>).
 
 
 

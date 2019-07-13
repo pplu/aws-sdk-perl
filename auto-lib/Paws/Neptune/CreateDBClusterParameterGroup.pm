@@ -92,7 +92,7 @@ The description for the DB cluster parameter group.
 
 =head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
 
-
+The tags to be assigned to the new DB cluster parameter group.
 
 
 

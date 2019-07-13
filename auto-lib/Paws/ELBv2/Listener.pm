@@ -44,8 +44,7 @@ Information about a listener.
 
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
-  The SSL server certificate. You must provide a certificate if the
-protocol is HTTPS.
+  [HTTPS or TLS listener] The default certificate for the listener.
 
 
 =head2 DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
@@ -75,8 +74,9 @@ protocol is HTTPS.
 
 =head2 SslPolicy => Str
 
-  The security policy that defines which ciphers and protocols are
-supported. The default is the current predefined security policy.
+  [HTTPS or TLS listener] The security policy that defines which ciphers
+and protocols are supported. The default is the current predefined
+security policy.
 
 
 

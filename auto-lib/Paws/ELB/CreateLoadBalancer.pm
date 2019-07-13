@@ -36,20 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an HTTP load balancer in a VPC
     # This example creates a load balancer with an HTTP listener in a VPC.
     my $CreateAccessPointOutput = $elasticloadbalancing->CreateLoadBalancer(
-      {
-        'Listeners' => [
+      'Listeners' => [
 
-          {
-            'InstancePort'     => 80,
-            'InstanceProtocol' => 'HTTP',
-            'LoadBalancerPort' => 80,
-            'Protocol'         => 'HTTP'
-          }
-        ],
-        'LoadBalancerName' => 'my-load-balancer',
-        'SecurityGroups'   => ['sg-a61988c3'],
-        'Subnets'          => ['subnet-15aaab61']
-      }
+        {
+          'InstancePort'     => 80,
+          'InstanceProtocol' => 'HTTP',
+          'LoadBalancerPort' => 80,
+          'Protocol'         => 'HTTP'
+        }
+      ],
+      'LoadBalancerName' => 'my-load-balancer',
+      'SecurityGroups'   => ['sg-a61988c3'],
+      'Subnets'          => ['subnet-15aaab61']
     );
 
     # Results:
@@ -59,19 +57,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an HTTP load balancer in EC2-Classic
     # This example creates a load balancer with an HTTP listener in EC2-Classic.
     my $CreateAccessPointOutput = $elasticloadbalancing->CreateLoadBalancer(
-      {
-        'AvailabilityZones' => ['us-west-2a'],
-        'Listeners'         => [
+      'AvailabilityZones' => ['us-west-2a'],
+      'Listeners'         => [
 
-          {
-            'InstancePort'     => 80,
-            'InstanceProtocol' => 'HTTP',
-            'LoadBalancerPort' => 80,
-            'Protocol'         => 'HTTP'
-          }
-        ],
-        'LoadBalancerName' => 'my-load-balancer'
-      }
+        {
+          'InstancePort'     => 80,
+          'InstanceProtocol' => 'HTTP',
+          'LoadBalancerPort' => 80,
+          'Protocol'         => 'HTTP'
+        }
+      ],
+      'LoadBalancerName' => 'my-load-balancer'
     );
 
     # Results:
@@ -81,29 +77,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an HTTPS load balancer in a VPC
     # This example creates a load balancer with an HTTPS listener in a VPC.
     my $CreateAccessPointOutput = $elasticloadbalancing->CreateLoadBalancer(
-      {
-        'Listeners' => [
+      'Listeners' => [
 
-          {
-            'InstancePort'     => 80,
-            'InstanceProtocol' => 'HTTP',
-            'LoadBalancerPort' => 80,
-            'Protocol'         => 'HTTP'
-          },
+        {
+          'InstancePort'     => 80,
+          'InstanceProtocol' => 'HTTP',
+          'LoadBalancerPort' => 80,
+          'Protocol'         => 'HTTP'
+        },
 
-          {
-            'InstancePort'     => 80,
-            'InstanceProtocol' => 'HTTP',
-            'LoadBalancerPort' => 443,
-            'Protocol'         => 'HTTPS',
-            'SSLCertificateId' =>
-              'arn:aws:iam::123456789012:server-certificate/my-server-cert'
-          }
-        ],
-        'LoadBalancerName' => 'my-load-balancer',
-        'SecurityGroups'   => ['sg-a61988c3'],
-        'Subnets'          => ['subnet-15aaab61']
-      }
+        {
+          'InstancePort'     => 80,
+          'InstanceProtocol' => 'HTTP',
+          'LoadBalancerPort' => 443,
+          'Protocol'         => 'HTTPS',
+          'SSLCertificateId' =>
+            'arn:aws:iam::123456789012:server-certificate/my-server-cert'
+        }
+      ],
+      'LoadBalancerName' => 'my-load-balancer',
+      'SecurityGroups'   => ['sg-a61988c3'],
+      'Subnets'          => ['subnet-15aaab61']
     );
 
     # Results:
@@ -113,28 +107,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To create an HTTPS load balancer in EC2-Classic
    # This example creates a load balancer with an HTTPS listener in EC2-Classic.
     my $CreateAccessPointOutput = $elasticloadbalancing->CreateLoadBalancer(
-      {
-        'AvailabilityZones' => ['us-west-2a'],
-        'Listeners'         => [
+      'AvailabilityZones' => ['us-west-2a'],
+      'Listeners'         => [
 
-          {
-            'InstancePort'     => 80,
-            'InstanceProtocol' => 'HTTP',
-            'LoadBalancerPort' => 80,
-            'Protocol'         => 'HTTP'
-          },
+        {
+          'InstancePort'     => 80,
+          'InstanceProtocol' => 'HTTP',
+          'LoadBalancerPort' => 80,
+          'Protocol'         => 'HTTP'
+        },
 
-          {
-            'InstancePort'     => 80,
-            'InstanceProtocol' => 'HTTP',
-            'LoadBalancerPort' => 443,
-            'Protocol'         => 'HTTPS',
-            'SSLCertificateId' =>
-              'arn:aws:iam::123456789012:server-certificate/my-server-cert'
-          }
-        ],
-        'LoadBalancerName' => 'my-load-balancer'
-      }
+        {
+          'InstancePort'     => 80,
+          'InstanceProtocol' => 'HTTP',
+          'LoadBalancerPort' => 443,
+          'Protocol'         => 'HTTPS',
+          'SSLCertificateId' =>
+            'arn:aws:iam::123456789012:server-certificate/my-server-cert'
+        }
+      ],
+      'LoadBalancerName' => 'my-load-balancer'
     );
 
     # Results:
@@ -145,21 +137,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates an internal load balancer with an HTTP listener in a
     # VPC.
     my $CreateAccessPointOutput = $elasticloadbalancing->CreateLoadBalancer(
-      {
-        'Listeners' => [
+      'Listeners' => [
 
-          {
-            'InstancePort'     => 80,
-            'InstanceProtocol' => 'HTTP',
-            'LoadBalancerPort' => 80,
-            'Protocol'         => 'HTTP'
-          }
-        ],
-        'LoadBalancerName' => 'my-load-balancer',
-        'Scheme'           => 'internal',
-        'SecurityGroups'   => ['sg-a61988c3'],
-        'Subnets'          => ['subnet-15aaab61']
-      }
+        {
+          'InstancePort'     => 80,
+          'InstanceProtocol' => 'HTTP',
+          'LoadBalancerPort' => 80,
+          'Protocol'         => 'HTTP'
+        }
+      ],
+      'LoadBalancerName' => 'my-load-balancer',
+      'Scheme'           => 'internal',
+      'SecurityGroups'   => ['sg-a61988c3'],
+      'Subnets'          => ['subnet-15aaab61']
     );
 
     # Results:
@@ -191,7 +181,7 @@ The listeners.
 
 For more information, see Listeners for Your Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 
@@ -243,7 +233,7 @@ A list of tags to assign to the load balancer.
 For more information about tagging your load balancer, see Tag Your
 Classic Load Balancer
 (http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
-in the I<Classic Load Balancer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 

@@ -41,7 +41,7 @@ a notification to Amazon Simple Notification Service (Amazon SNS).
 
 For information about sending a bounce message in response to a
 received email, see the Amazon SES Developer Guide
-(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-bounce.html).
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-bounce.html).
 
 =head1 ATTRIBUTES
 
@@ -75,7 +75,7 @@ address from which the bounce message will be sent.
 the bounce action is taken. An example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
 about Amazon SNS topics, see the Amazon SNS Developer Guide
-(http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
+(https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).
 
 
 

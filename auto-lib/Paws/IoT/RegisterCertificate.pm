@@ -65,7 +65,7 @@ The certificate data, in PEM format.
 
 =head2 SetAsActive => Bool
 
-A boolean value that specifies if the CA certificate is set to active.
+A boolean value that specifies if the certificate is set to active.
 
 
 

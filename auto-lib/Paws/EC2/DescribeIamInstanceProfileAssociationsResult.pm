@@ -18,7 +18,7 @@ Paws::EC2::DescribeIamInstanceProfileAssociationsResult
 
 =head2 IamInstanceProfileAssociations => ArrayRef[L<Paws::EC2::IamInstanceProfileAssociation>]
 
-Information about one or more IAM instance profile associations.
+Information about the IAM instance profile associations.
 
 
 =head2 NextToken => Str

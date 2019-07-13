@@ -10,6 +10,7 @@ package Paws::RDS::Parameter;
   has ParameterName => (is => 'ro', isa => 'Str');
   has ParameterValue => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str');
+  has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::Parameter object:
 
-  $service_obj->Method(Att1 => { AllowedValues => $value, ..., Source => $value  });
+  $service_obj->Method(Att1 => { AllowedValues => $value, ..., SupportedEngineModes => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,10 +42,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Parame
 =head1 DESCRIPTION
 
 This data type is used as a request parameter in the
-ModifyDBParameterGroup and ResetDBParameterGroup actions.
+C<ModifyDBParameterGroup> and C<ResetDBParameterGroup> actions.
 
 This data type is used as a response element in the
-DescribeEngineDefaultParameters and DescribeDBParameters actions.
+C<DescribeEngineDefaultParameters> and C<DescribeDBParameters> actions.
 
 =head1 ATTRIBUTES
 
@@ -99,6 +100,11 @@ that prevent them from being changed.
 =head2 Source => Str
 
   Indicates the source of the parameter value.
+
+
+=head2 SupportedEngineModes => ArrayRef[Str|Undef]
+
+  The valid DB engine modes.
 
 
 

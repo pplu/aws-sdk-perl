@@ -50,6 +50,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/shi
 The maximum number of Protection objects to be returned. If this is
 left blank the first 20 results will be returned.
 
+This is a maximum value; it is possible that AWS WAF will return the
+results in smaller batches. That is, the number of Protection objects
+returned could be less than C<MaxResults>, even if there are still more
+Protection objects yet to return. If there are more Protection objects
+to return, AWS WAF will always also return a C<NextToken>.
+
 
 
 =head2 NextToken => Str

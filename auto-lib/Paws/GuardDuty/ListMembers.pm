@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $ListMembersResponse = $guardduty->ListMembers(
-      DetectorId     => 'My__string',
-      MaxResults     => 1,               # OPTIONAL
-      NextToken      => 'My__string',    # OPTIONAL
-      OnlyAssociated => 'My__string',    # OPTIONAL
+      DetectorId     => 'MyDetectorId',
+      MaxResults     => 1,                # OPTIONAL
+      NextToken      => 'MyString',       # OPTIONAL
+      OnlyAssociated => 'MyString',       # OPTIONAL
     );
 
     # Results:
@@ -45,42 +45,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GuardDuty::ListMembersResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/ListMembers>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector of the GuardDuty account whose members
-you want to list.
+The unique ID of the detector the member is associated with.
 
 
 
 =head2 MaxResults => Int
 
 You can use this parameter to indicate the maximum number of items you
-want in the response. The default value is 1. The maximum value is 50.
+want in the response. The default value is 50. The maximum value is 50.
 
 
 
 =head2 NextToken => Str
 
 You can use this parameter when paginating results. Set the value of
-this parameter to null on your first call to the ListMembers action.
-Subsequent calls to the action fill nextToken in the request with the
+this parameter to null on your first call to the list action. For
+subsequent calls to the action fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.
 
 
 
 =head2 OnlyAssociated => Str
 
-Specifies what member accounts the response is to include based on
-their relationship status with the master account. The default value is
-TRUE. If onlyAssociated is set to TRUE, the response will include
-member accounts whose relationship status with the master is set to
-Enabled, Disabled. If onlyAssociated is set to FALSE, the response will
-include all existing member accounts.
+Specifies whether to only return associated members or to return all
+members (including members which haven't been invited yet or have been
+disassociated).
 
 
 

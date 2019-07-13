@@ -18,7 +18,7 @@ Paws::ServerlessRepo::ListApplicationsResponse
 
 =head2 Applications => ArrayRef[L<Paws::ServerlessRepo::ApplicationSummary>]
 
-Array of application summaries.
+An array of application summaries.
 
 
 =head2 NextToken => Str

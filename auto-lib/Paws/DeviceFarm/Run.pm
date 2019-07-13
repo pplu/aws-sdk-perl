@@ -9,6 +9,7 @@ package Paws::DeviceFarm::Run;
   has CustomerArtifactPaths => (is => 'ro', isa => 'Paws::DeviceFarm::CustomerArtifactPaths', request_name => 'customerArtifactPaths', traits => ['NameInRequest']);
   has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', request_name => 'deviceMinutes', traits => ['NameInRequest']);
   has DevicePoolArn => (is => 'ro', isa => 'Str', request_name => 'devicePoolArn', traits => ['NameInRequest']);
+  has DeviceSelectionResult => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceSelectionResult', request_name => 'deviceSelectionResult', traits => ['NameInRequest']);
   has EventCount => (is => 'ro', isa => 'Int', request_name => 'eventCount', traits => ['NameInRequest']);
   has JobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'jobTimeoutMinutes', traits => ['NameInRequest']);
   has Locale => (is => 'ro', isa => 'Str', request_name => 'locale', traits => ['NameInRequest']);
@@ -26,6 +27,7 @@ package Paws::DeviceFarm::Run;
   has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
+  has TestSpecArn => (is => 'ro', isa => 'Str', request_name => 'testSpecArn', traits => ['NameInRequest']);
   has TotalJobs => (is => 'ro', isa => 'Int', request_name => 'totalJobs', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has WebUrl => (is => 'ro', isa => 'Str', request_name => 'webUrl', traits => ['NameInRequest']);
@@ -111,6 +113,12 @@ run.
 =head2 DevicePoolArn => Str
 
   The ARN of the device pool for the run.
+
+
+=head2 DeviceSelectionResult => L<Paws::DeviceFarm::DeviceSelectionResult>
+
+  The results of a device filter used to select the devices for a test
+run.
 
 
 =head2 EventCount => Int
@@ -305,6 +313,11 @@ STOPPING: A stopping status.
   The run's stop time.
 
 
+=head2 TestSpecArn => Str
+
+  The ARN of the YAML-formatted test specification for the run.
+
+
 =head2 TotalJobs => Int
 
   The total number of jobs for the run.
@@ -342,15 +355,31 @@ APPIUM_PYTHON: The Appium Python type.
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.
+APPIUM_NODE: The Appium Node.js type.
 
 =item *
 
-APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.
+APPIUM_RUBY: The Appium Ruby type.
 
 =item *
 
-APPIUM_WEB_PYTHON: The Appium Python type for Web apps.
+APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for web apps.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for web apps.
+
+=item *
+
+APPIUM_WEB_PYTHON: The Appium Python type for web apps.
+
+=item *
+
+APPIUM_WEB_NODE: The Appium Node.js type for web apps.
+
+=item *
+
+APPIUM_WEB_RUBY: The Appium Ruby type for web apps.
 
 =item *
 
@@ -370,11 +399,11 @@ UIAUTOMATOR: The uiautomator type.
 
 =item *
 
-XCTEST: The XCode test type.
+XCTEST: The Xcode test type.
 
 =item *
 
-XCTEST_UI: The XCode UI test type.
+XCTEST_UI: The Xcode UI test type.
 
 =back
 

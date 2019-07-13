@@ -21,7 +21,7 @@ Paws::ServiceDiscovery::ListOperations - Arguments for method ListOperations on 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListOperations on the
-L<Amazon Route 53 Auto Naming|Paws::ServiceDiscovery> service. Use the attributes of this class
+L<AWS Cloud Map|Paws::ServiceDiscovery> service. Use the attributes of this class
 as arguments to method ListOperations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListOperations.
@@ -70,9 +70,9 @@ filters to be returned by C<ListOperations>.
 
 =head2 MaxResults => Int
 
-The maximum number of items that you want Amazon Route 53 to return in
+The maximum number of items that you want AWS Cloud Map to return in
 the response to a C<ListOperations> request. If you don't specify a
-value for C<MaxResults>, Route 53 returns up to 100 operations.
+value for C<MaxResults>, AWS Cloud Map returns up to 100 operations.
 
 
 
@@ -84,9 +84,9 @@ If the response contains C<NextToken>, submit another C<ListOperations>
 request to get the next group of results. Specify the value of
 C<NextToken> from the previous response in the next request.
 
-Route 53 gets C<MaxResults> operations and then filters them based on
-the specified criteria. It's possible that no operations in the first
-C<MaxResults> operations matched the specified criteria but that
+AWS Cloud Map gets C<MaxResults> operations and then filters them based
+on the specified criteria. It's possible that no operations in the
+first C<MaxResults> operations matched the specified criteria but that
 subsequent groups of C<MaxResults> operations do contain operations
 that match the criteria.
 

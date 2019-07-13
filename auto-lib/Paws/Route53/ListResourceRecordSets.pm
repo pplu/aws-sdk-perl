@@ -103,13 +103,17 @@ Valid values for basic resource record sets: C<A> | C<AAAA> | C<CAA> |
 C<CNAME> | C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> | C<SRV>
 | C<TXT>
 
-Values for weighted, latency, geo, and failover resource record sets:
-C<A> | C<AAAA> | C<CAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> | C<SPF>
-| C<SRV> | C<TXT>
+Values for weighted, latency, geolocation, and failover resource record
+sets: C<A> | C<AAAA> | C<CAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> |
+C<SPF> | C<SRV> | C<TXT>
 
 Values for alias resource record sets:
 
 =over
+
+=item *
+
+B<API Gateway custom regional API or edge-optimized API>: A
 
 =item *
 
@@ -121,11 +125,15 @@ B<Elastic Beanstalk environment that has a regionalized subdomain>: A
 
 =item *
 
-B<ELB load balancer>: A | AAAA
+B<Elastic Load Balancing load balancer>: A | AAAA
 
 =item *
 
 B<Amazon S3 bucket>: A
+
+=item *
+
+B<Amazon VPC interface VPC endpoint>: A
 
 =item *
 

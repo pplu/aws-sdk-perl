@@ -17,12 +17,12 @@ Paws::AlexaForBusiness::ListDeviceEventsResponse
 
 =head2 DeviceEvents => ArrayRef[L<Paws::AlexaForBusiness::DeviceEvent>]
 
-
+The device events requested for the device ARN.
 
 
 =head2 NextToken => Str
 
-
+The token returned to indicate that there is more data available.
 
 
 =head2 _request_id => Str

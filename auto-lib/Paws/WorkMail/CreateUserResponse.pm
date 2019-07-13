@@ -16,7 +16,7 @@ Paws::WorkMail::CreateUserResponse
 
 =head2 UserId => Str
 
-The information regarding the newly created user.
+The identifier for the new user.
 
 
 =head2 _request_id => Str

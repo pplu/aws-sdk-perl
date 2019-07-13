@@ -1,6 +1,7 @@
 package Paws::CloudFormation::StackResourceDetail;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has DriftInformation => (is => 'ro', isa => 'Paws::CloudFormation::StackResourceDriftInformation');
   has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has Metadata => (is => 'ro', isa => 'Str');
@@ -50,6 +51,16 @@ Contains detailed information about the specified stack resource.
   User defined description associated with the resource.
 
 
+=head2 DriftInformation => L<Paws::CloudFormation::StackResourceDriftInformation>
+
+  Information about whether the resource's actual configuration differs,
+or has I<drifted>, from its expected configuration, as defined in the
+stack template and any values specified as template parameters. For
+more information, see Detecting Unregulated Configuration Changes to
+Stacks and Resources
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+
+
 =head2 B<REQUIRED> LastUpdatedTimestamp => Str
 
   Time the status was updated.
@@ -64,7 +75,7 @@ Contains detailed information about the specified stack resource.
 
   The content of the C<Metadata> attribute declared for the resource. For
 more information, see Metadata Attribute
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-metadata.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-metadata.html)
 in the AWS CloudFormation User Guide.
 
 
@@ -88,7 +99,7 @@ ID of a resource supported by AWS CloudFormation.
 
   Type of resource. ((For more information, go to AWS Resource Types
 Reference
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 in the AWS CloudFormation User Guide.)
 
 

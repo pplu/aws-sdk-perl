@@ -1,6 +1,6 @@
 package Paws::MediaConvert::NoiseReducer;
   use Moose;
-  has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest'], required => 1);
+  has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest']);
   has FilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerFilterSettings', request_name => 'filterSettings', traits => ['NameInRequest']);
   has SpatialFilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerSpatialFilterSettings', request_name => 'spatialFilterSettings', traits => ['NameInRequest']);
 1;
@@ -42,19 +42,25 @@ Noise reducer filter (NoiseReducerFilter).
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Filter => Str
+=head2 Filter => Str
 
-  
+  Use Noise reducer filter (NoiseReducerFilter) to select one of the
+following spatial image filtering functions. To use this setting, you
+must also enable Noise reducer (NoiseReducer). * Bilateral is an edge
+preserving noise reduction filter. * Mean (softest), Gaussian, Lanczos,
+and Sharpen (sharpest) are convolution filters. * Conserve is a min/max
+noise reduction filter. * Spatial is a frequency-domain filter based on
+JND principles.
 
 
 =head2 FilterSettings => L<Paws::MediaConvert::NoiseReducerFilterSettings>
 
-  
+  Settings for a noise reducer filter
 
 
 =head2 SpatialFilterSettings => L<Paws::MediaConvert::NoiseReducerSpatialFilterSettings>
 
-  
+  Noise reducer filter settings for spatial filter.
 
 
 

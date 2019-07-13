@@ -24,15 +24,14 @@ value to use for the C<Marker> parameter in a subsequent request.
 
 =head2 PolicyNames => ArrayRef[Str|Undef]
 
-A list of key policy names. Currently, there is only one key policy per
-CMK and it is always named C<default>.
+A list of key policy names. The only valid value is C<default>.
 
 
 =head2 Truncated => Bool
 
 A flag that indicates whether there are more items in the list. When
 this value is true, the list in this response is truncated. To get more
-items, pass the value of the C<NextMarker> element in this response to
+items, pass the value of the C<NextMarker> element in thisresponse to
 the C<Marker> parameter in a subsequent request.
 
 

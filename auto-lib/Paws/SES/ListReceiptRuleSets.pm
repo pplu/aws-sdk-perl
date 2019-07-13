@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # ListReceiptRuleSets
     # The following example lists the receipt rule sets that exist under an AWS
     # account:
-    my $ListReceiptRuleSetsResponse = $email->ListReceiptRuleSets(
-      {
-        'NextToken' => ''
-      }
-    );
+    my $ListReceiptRuleSetsResponse =
+      $email->ListReceiptRuleSets( 'NextToken' => '' );
 
     # Results:
     my $NextToken = $ListReceiptRuleSetsResponse->NextToken;

@@ -3,9 +3,12 @@ package Paws::SSM::ParameterHistory;
   has AllowedPattern => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
+  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has LastModifiedUser => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ParameterInlinePolicy]');
+  has Tier => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
@@ -61,6 +64,11 @@ a-zA-Z0-9_.-
   The ID of the query key used for this parameter.
 
 
+=head2 Labels => ArrayRef[Str|Undef]
+
+  Labels assigned to the parameter version.
+
+
 =head2 LastModifiedDate => Str
 
   Date the parameter was last changed or updated.
@@ -75,6 +83,20 @@ parameter.
 =head2 Name => Str
 
   The name of the parameter.
+
+
+=head2 Policies => ArrayRef[L<Paws::SSM::ParameterInlinePolicy>]
+
+  Information about the policies assigned to a parameter.
+
+Working with Parameter Policies
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html)
+in the I<AWS Systems Manager User Guide>.
+
+
+=head2 Tier => Str
+
+  The parameter tier.
 
 
 =head2 Type => Str

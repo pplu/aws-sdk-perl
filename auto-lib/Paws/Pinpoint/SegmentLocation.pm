@@ -1,6 +1,7 @@
 package Paws::Pinpoint::SegmentLocation;
   use Moose;
   has Country => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
+  has GPSPoint => (is => 'ro', isa => 'Paws::Pinpoint::GPSPointDimension');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::SegmentLocation object:
 
-  $service_obj->Method(Att1 => { Country => $value, ..., Country => $value  });
+  $service_obj->Method(Att1 => { Country => $value, ..., GPSPoint => $value  });
 
 =head3 Results returned from an API call
 
@@ -31,14 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-Segment location dimensions
+Specifies geographical dimension settings for a segment.
 
 =head1 ATTRIBUTES
 
 
 =head2 Country => L<Paws::Pinpoint::SetDimension>
 
-  The country filter according to ISO 3166-1 Alpha-2 codes.
+  The country or region code, in ISO 3166-1 alpha-2 format, for the
+segment.
+
+
+=head2 GPSPoint => L<Paws::Pinpoint::GPSPointDimension>
+
+  The GPS location and range for the segment.
 
 
 

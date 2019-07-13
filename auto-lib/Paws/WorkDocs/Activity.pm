@@ -2,6 +2,7 @@ package Paws::WorkDocs::Activity;
   use Moose;
   has CommentMetadata => (is => 'ro', isa => 'Paws::WorkDocs::CommentMetadata');
   has Initiator => (is => 'ro', isa => 'Paws::WorkDocs::UserMetadata');
+  has IsIndirectActivity => (is => 'ro', isa => 'Bool');
   has OrganizationId => (is => 'ro', isa => 'Str');
   has OriginalParent => (is => 'ro', isa => 'Paws::WorkDocs::ResourceMetadata');
   has Participants => (is => 'ro', isa => 'Paws::WorkDocs::Participants');
@@ -52,6 +53,15 @@ filled for commenting activities.
 =head2 Initiator => L<Paws::WorkDocs::UserMetadata>
 
   The user who performed the action.
+
+
+=head2 IsIndirectActivity => Bool
+
+  Indicates whether an activity is indirect or direct. An indirect
+activity results from a direct activity performed on a parent resource.
+For example, sharing a parent folder (the direct activity) shares all
+of the subfolders and documents within the parent folder (the indirect
+activity).
 
 
 =head2 OrganizationId => Str

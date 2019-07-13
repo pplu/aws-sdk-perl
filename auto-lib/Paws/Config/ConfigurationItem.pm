@@ -60,7 +60,7 @@ A list that contains detailed configurations of a specified resource.
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) of the resource.
+  accoun
 
 
 =head2 AvailabilityZone => Str
@@ -109,7 +109,7 @@ a resource.
 A populated field indicates that the current configuration was
 initiated by the events recorded in the CloudTrail log. For more
 information about CloudTrail, see What Is AWS CloudTrail
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
 An empty field indicates that the current configuration was not
 initiated by any event.

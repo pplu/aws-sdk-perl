@@ -31,23 +31,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $ecr = Paws->service('ECR');
-    my $GetLifecyclePolicyPreviewResponse = $ecr->GetLifecyclePolicyPreview(
+    my $api.ecr = Paws->service('ECR');
+    my $GetLifecyclePolicyPreviewResponse =
+      $api . ecr->GetLifecyclePolicyPreview(
       RepositoryName => 'MyRepositoryName',
       Filter         => {
-        tagStatus => 'TAGGED',    # values: TAGGED, UNTAGGED; OPTIONAL
+        TagStatus => 'TAGGED',    # values: TAGGED, UNTAGGED, ANY; OPTIONAL
       },    # OPTIONAL
       ImageIds => [
         {
-          imageDigest => 'MyImageDigest',    # OPTIONAL
-          imageTag    => 'MyImageTag',       # OPTIONAL
+          ImageDigest => 'MyImageDigest',    # OPTIONAL
+          ImageTag    => 'MyImageTag',       # OPTIONAL
         },
         ...
       ],                                     # OPTIONAL
       MaxResults => 1,                       # OPTIONAL
       NextToken  => 'MyNextToken',           # OPTIONAL
       RegistryId => 'MyRegistryId',          # OPTIONAL
-    );
+      );
 
     # Results:
     my $LifecyclePolicyText =
@@ -62,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::ECR::GetLifecyclePolicyPreviewResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecr/GetLifecyclePolicyPreview>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.ecr/GetLifecyclePolicyPreview>
 
 =head1 ATTRIBUTES
 
@@ -89,7 +90,7 @@ C<maxResults> results in a single page along with a C<nextToken>
 response element. The remaining results of the initial request can be
 seen by sending another C<GetLifecyclePolicyPreviewRequest> request
 with the returned C<nextToken> value. This value can be between 1 and
-100. If this parameter is not used, then
+1000. If this parameter is not used, then
 C<GetLifecyclePolicyPreviewRequest> returns up to 100 results and a
 C<nextToken> value, if applicable. This option cannot be used when you
 specify images with C<imageIds>.

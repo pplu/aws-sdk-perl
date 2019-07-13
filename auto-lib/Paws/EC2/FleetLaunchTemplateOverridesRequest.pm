@@ -3,6 +3,8 @@ package Paws::EC2::FleetLaunchTemplateOverridesRequest;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
   has MaxPrice => (is => 'ro', isa => 'Str');
+  has Placement => (is => 'ro', isa => 'Paws::EC2::Placement');
+  has Priority => (is => 'ro', isa => 'Num');
   has SubnetId => (is => 'ro', isa => 'Str');
   has WeightedCapacity => (is => 'ro', isa => 'Num');
 1;
@@ -54,6 +56,21 @@ This class has no description
 
   The maximum price per unit hour that you are willing to pay for a Spot
 Instance.
+
+
+=head2 Placement => L<Paws::EC2::Placement>
+
+  The location where the instance launched, if applicable.
+
+
+=head2 Priority => Num
+
+  The priority for the launch template override. If B<AllocationStrategy>
+is set to C<prioritized>, EC2 Fleet uses priority to determine which
+launch template override to use first in fulfilling On-Demand capacity.
+The highest priority is launched first. Valid values are whole numbers
+starting at C<0>. The lower the number, the higher the priority. If no
+number is set, the launch template override has the lowest priority.
 
 
 =head2 SubnetId => Str

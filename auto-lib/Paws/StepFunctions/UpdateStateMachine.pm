@@ -48,7 +48,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sta
 
 =head2 Definition => Str
 
-The Amazon States Language definition of the state machine.
+The Amazon States Language definition of the state machine. See Amazon
+States Language
+(https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 
 
 

@@ -55,16 +55,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 BundleId => Str
 
-The ID of the bundle. All WorkSpaces that are created from this bundle
-are retrieved. This parameter cannot be combined with any other filter.
+The identifier of the bundle. All WorkSpaces that are created from this
+bundle are retrieved. You cannot combine this parameter with any other
+filter.
 
 
 
 =head2 DirectoryId => Str
 
-The ID of the directory. In addition, you can optionally specify a
-specific directory user (see C<UserName>). This parameter cannot be
-combined with any other filter.
+The identifier of the directory. In addition, you can optionally
+specify a specific directory user (see C<UserName>). You cannot combine
+this parameter with any other filter.
 
 
 
@@ -76,8 +77,8 @@ The maximum number of items to return.
 
 =head2 NextToken => Str
 
-The token for the next set of results. (You received this token from a
-previous call.)
+If you received a C<NextToken> from a previous call that was paginated,
+provide this token to receive the next set of results.
 
 
 
@@ -90,8 +91,8 @@ C<DirectoryId>.
 
 =head2 WorkspaceIds => ArrayRef[Str|Undef]
 
-The IDs of the WorkSpaces. This parameter cannot be combined with any
-other filter.
+The identifiers of the WorkSpaces. You cannot combine this parameter
+with any other filter.
 
 Because the CreateWorkspaces operation is asynchronous, the identifier
 it returns is not immediately available. If you immediately call

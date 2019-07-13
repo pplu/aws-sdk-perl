@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Domain       => 'MyDomainName',
       WorkflowId   => 'MyWorkflowId',
       WorkflowType => {
-        name    => 'MyName',       # min: 1, max: 256
-        version => 'MyVersion',    # min: 1, max: 64
+        Name    => 'MyName',       # min: 1, max: 256
+        Version => 'MyVersion',    # min: 1, max: 64
 
       },
       ChildPolicy                  => 'TERMINATE',                    # OPTIONAL
@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyTag', ...                                                  # max: 256
       ],                                                              # OPTIONAL
       TaskList => {
-        name => 'MyName',    # min: 1, max: 256
+        Name => 'MyName',    # min: 1, max: 256
 
       },    # OPTIONAL
       TaskPriority            => 'MyTaskPriority',                 # OPTIONAL
@@ -150,8 +150,8 @@ Executions of this workflow type need IAM roles to invoke Lambda
 functions. If you don't attach an IAM role, any attempt to schedule a
 Lambda task fails. This results in a C<ScheduleLambdaFunctionFailed>
 history event. For more information, see
-http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html)
+https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -179,7 +179,7 @@ registration time then a fault is returned.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
-not contain the literal string C<arn>.
+not I<be> the literal string C<arn>.
 
 
 
@@ -194,7 +194,7 @@ C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 
 For more information about setting task priority, see Setting Task
 Priority
-(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+(https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -223,12 +223,13 @@ The user defined identifier associated with the workflow execution. You
 can use this to associate a custom identifier with the workflow
 execution. You may specify the same identifier if a workflow execution
 is logically a I<restart> of a previous execution. You cannot have two
-open workflow executions with the same C<workflowId> at the same time.
+open workflow executions with the same C<workflowId> at the same time
+within the same domain.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
-not contain the literal string C<arn>.
+not I<be> the literal string C<arn>.
 
 
 

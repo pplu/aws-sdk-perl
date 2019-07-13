@@ -1,5 +1,6 @@
 package Paws::Polly::Voice;
   use Moose;
+  has AdditionalLanguageCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Gender => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has LanguageCode => (is => 'ro', isa => 'Str');
@@ -24,20 +25,31 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Polly::Voice object:
 
-  $service_obj->Method(Att1 => { Gender => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { AdditionalLanguageCodes => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Polly::Voice object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Gender
+  $result->Att1->AdditionalLanguageCodes
 
 =head1 DESCRIPTION
 
 Description of the voice.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdditionalLanguageCodes => ArrayRef[Str|Undef]
+
+  Additional codes for languages available for the specified voice in
+addition to its default language.
+
+For example, the default language for Aditi is Indian English (en-IN)
+because it was first used for that language. Since Aditi is bilingual
+and fluent in both Indian English and Hindi, this parameter would show
+the code C<hi-IN>.
 
 
 =head2 Gender => Str

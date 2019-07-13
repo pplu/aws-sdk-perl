@@ -3,8 +3,11 @@ package Paws::MediaTailor::PutPlaybackConfiguration;
   use Moose;
   has AdDecisionServerUrl => (is => 'ro', isa => 'Str');
   has CdnConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::CdnConfiguration');
+  has DashConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::DashConfigurationForPut');
   has Name => (is => 'ro', isa => 'Str');
   has SlateAdUrl => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::MediaTailor::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  has TranscodeProfileName => (is => 'ro', isa => 'Str');
   has VideoContentSourceUrl => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -39,29 +42,43 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AdSegmentUrlPrefix      => 'My__string',
         ContentSegmentUrlPrefix => 'My__string',
       },                                      # OPTIONAL
-      Name                  => 'My__string',  # OPTIONAL
-      SlateAdUrl            => 'My__string',  # OPTIONAL
-      VideoContentSourceUrl => 'My__string',  # OPTIONAL
+      DashConfiguration => {
+        MpdLocation => 'My__string',
+        OriginManifestType =>
+          'SINGLE_PERIOD',    # values: SINGLE_PERIOD, MULTI_PERIOD; OPTIONAL
+      },    # OPTIONAL
+      Name                  => 'My__string',                         # OPTIONAL
+      SlateAdUrl            => 'My__string',                         # OPTIONAL
+      Tags                  => { 'My__string' => 'My__string', },    # OPTIONAL
+      TranscodeProfileName  => 'My__string',                         # OPTIONAL
+      VideoContentSourceUrl => 'My__string',                         # OPTIONAL
       );
 
     # Results:
     my $AdDecisionServerUrl =
       $PutPlaybackConfigurationResponse->AdDecisionServerUrl;
     my $CdnConfiguration = $PutPlaybackConfigurationResponse->CdnConfiguration;
+    my $DashConfiguration =
+      $PutPlaybackConfigurationResponse->DashConfiguration;
     my $HlsConfiguration = $PutPlaybackConfigurationResponse->HlsConfiguration;
     my $Name             = $PutPlaybackConfigurationResponse->Name;
+    my $PlaybackConfigurationArn =
+      $PutPlaybackConfigurationResponse->PlaybackConfigurationArn;
     my $PlaybackEndpointPrefix =
       $PutPlaybackConfigurationResponse->PlaybackEndpointPrefix;
     my $SessionInitializationEndpointPrefix =
       $PutPlaybackConfigurationResponse->SessionInitializationEndpointPrefix;
     my $SlateAdUrl = $PutPlaybackConfigurationResponse->SlateAdUrl;
+    my $Tags       = $PutPlaybackConfigurationResponse->Tags;
+    my $TranscodeProfileName =
+      $PutPlaybackConfigurationResponse->TranscodeProfileName;
     my $VideoContentSourceUrl =
       $PutPlaybackConfigurationResponse->VideoContentSourceUrl;
 
     # Returns a L<Paws::MediaTailor::PutPlaybackConfigurationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.mediatailor/PutPlaybackConfiguration>
 
 =head1 ATTRIBUTES
 
@@ -73,7 +90,7 @@ specification of static parameters and placeholders for dynamic
 parameters. AWS Elemental MediaTailor substitutes player-specific and
 session-specific parameters as needed when calling the ADS.
 Alternately, for testing you can provide a static VAST URL. The maximum
-length is 25000 characters.
+length is 25,000 characters.
 
 
 
@@ -84,9 +101,15 @@ Amazon CloudFront, for content and ad segment management.
 
 
 
+=head2 DashConfiguration => L<Paws::MediaTailor::DashConfigurationForPut>
+
+The configuration for DASH content.
+
+
+
 =head2 Name => Str
 
-The identifier for the configuration.
+The identifier for the playback configuration.
 
 
 
@@ -95,10 +118,25 @@ The identifier for the configuration.
 The URL for a high-quality video asset to transcode and use to fill in
 time that's not used by ads. AWS Elemental MediaTailor shows the slate
 to fill in gaps in media content. Configuring the slate is optional for
-non-VPAID configurations. For VPAID, the slate is required because AWS
-Elemental MediaTailor provides it in the slots that are designated for
-dynamic ad content. The slate must be a high-quality asset that
-contains both audio and video.
+non-VPAID configurations. For VPAID, the slate is required because
+MediaTailor provides it in the slots that are designated for dynamic ad
+content. The slate must be a high-quality asset that contains both
+audio and video.
+
+
+
+=head2 Tags => L<Paws::MediaTailor::__mapOf__string>
+
+The tags to assign to the playback configuration.
+
+
+
+=head2 TranscodeProfileName => Str
+
+The name that is used to associate this playback configuration with a
+custom transcode profile. This overrides the dynamic transcoding
+defaults of MediaTailor. Use this only if you have already set up
+custom profiles with the help of AWS Support.
 
 
 

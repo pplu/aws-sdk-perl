@@ -61,7 +61,7 @@ baseline performance of the volume and the rate at which the volume
 accumulates I/O credits for bursting. For more information about C<gp2>
 baseline performance, I/O credits, and bursting, see Amazon EBS Volume
 Types
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Constraint: Range is 100-20000 IOPS for C<io1> volumes and 100-10000

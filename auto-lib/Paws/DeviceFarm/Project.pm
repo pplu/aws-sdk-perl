@@ -53,7 +53,7 @@ managing tests.
 =head2 DefaultJobTimeoutMinutes => Int
 
   The default number of minutes (at the project level) a test run will
-execute before it times out. Default value is 60 minutes.
+execute before it times out. The default value is 150 minutes.
 
 
 =head2 Name => Str

@@ -58,11 +58,12 @@ gives the instance a two-minute warning before it terminates.
 =head2 B<REQUIRED> TimeoutAction => Str
 
   The action to take when C<TargetSpotCapacity> has not been fulfilled
-when the C<TimeoutDurationMinutes> has expired. Spot instances are not
-uprovisioned within the Spot provisioining timeout. Valid values are
-C<TERMINATE_CLUSTER> and C<SWITCH_TO_ON_DEMAND>. SWITCH_TO_ON_DEMAND
-specifies that if no Spot instances are available, On-Demand Instances
-should be provisioned to fulfill any remaining Spot capacity.
+when the C<TimeoutDurationMinutes> has expired; that is, when all Spot
+instances could not be provisioned within the Spot provisioning
+timeout. Valid values are C<TERMINATE_CLUSTER> and
+C<SWITCH_TO_ON_DEMAND>. SWITCH_TO_ON_DEMAND specifies that if no Spot
+instances are available, On-Demand Instances should be provisioned to
+fulfill any remaining Spot capacity.
 
 
 =head2 B<REQUIRED> TimeoutDurationMinutes => Int

@@ -1,6 +1,7 @@
 package Paws::SSM::DocumentDefaultVersionDescription;
   use Moose;
   has DefaultVersion => (is => 'ro', isa => 'Str');
+  has DefaultVersionName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 1;
 
@@ -40,6 +41,11 @@ A default version of a document.
 =head2 DefaultVersion => Str
 
   The default version of the document.
+
+
+=head2 DefaultVersionName => Str
+
+  The default version of the artifact associated with the document.
 
 
 =head2 Name => Str

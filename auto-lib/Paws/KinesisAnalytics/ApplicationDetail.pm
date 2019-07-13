@@ -42,6 +42,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
+This documentation is for version 1 of the Amazon Kinesis Data
+Analytics API, which only supports SQL applications. Version 2 of the
+API supports SQL and Java applications. For more information about
+version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
+
 Provides a description of the application, including the application
 Amazon Resource Name (ARN), status, latest version, and input and
 output configuration.
@@ -86,7 +91,7 @@ on any of the in-application streams in your application.
 application messages. For more information about using CloudWatch log
 streams with Amazon Kinesis Analytics applications, see Working with
 Amazon CloudWatch Logs
-(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
 
 
 =head2 CreateTimestamp => Str
@@ -98,7 +103,7 @@ Amazon CloudWatch Logs
 
   Describes the application input configuration. For more information,
 see Configuring Application Input
-(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 
 
 =head2 LastUpdateTimestamp => Str
@@ -110,14 +115,14 @@ see Configuring Application Input
 
   Describes the application output configuration. For more information,
 see Configuring Application Output
-(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
 
 =head2 ReferenceDataSourceDescriptions => ArrayRef[L<Paws::KinesisAnalytics::ReferenceDataSourceDescription>]
 
   Describes reference data sources configured for the application. For
 more information, see Configuring Application Input
-(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 
 
 

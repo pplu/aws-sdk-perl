@@ -44,7 +44,7 @@ to.
 =head2 AutoUpgrade => Bool
 
   A value that indicates whether the target version is applied to any
-source DB instances that have AutoMinorVersionUpgrade set to true.
+source DB instances that have C<AutoMinorVersionUpgrade> set to true.
 
 
 =head2 Description => Str

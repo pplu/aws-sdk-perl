@@ -33,24 +33,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Vpc
 
 =head1 DESCRIPTION
 
-VPC configuration associated with your Lambda function.
+The VPC security groups and subnets that are attached to a Lambda
+function.
 
 =head1 ATTRIBUTES
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-  A list of security group IDs associated with the Lambda function.
+  A list of VPC security groups IDs.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-  A list of subnet IDs associated with the Lambda function.
+  A list of VPC subnet IDs.
 
 
 =head2 VpcId => Str
 
-  The VPC ID associated with you Lambda function.
+  The ID of the VPC.
 
 
 

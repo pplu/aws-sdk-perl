@@ -30,11 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create an access key for an IAM user
     # The following command creates an access key (access key ID and secret
     # access key) for the IAM user named Bob.
-    my $CreateAccessKeyResponse = $iam->CreateAccessKey(
-      {
-        'UserName' => 'Bob'
-      }
-    );
+    my $CreateAccessKeyResponse = $iam->CreateAccessKey( 'UserName' => 'Bob' );
 
     # Results:
     my $AccessKey = $CreateAccessKeyResponse->AccessKey;
@@ -51,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 The name of the IAM user that the new key will belong to.
 
-This parameter allows (per its regex pattern
+This parameter allows (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters consisting of
 upper and lowercase alphanumeric characters with no spaces. You can
 also include any of the following characters: _+=,.@-

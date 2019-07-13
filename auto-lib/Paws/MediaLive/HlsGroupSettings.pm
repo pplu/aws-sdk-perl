@@ -12,6 +12,7 @@ package Paws::MediaLive::HlsGroupSettings;
   has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
   has EncryptionType => (is => 'ro', isa => 'Str', request_name => 'encryptionType', traits => ['NameInRequest']);
   has HlsCdnSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsCdnSettings', request_name => 'hlsCdnSettings', traits => ['NameInRequest']);
+  has IFrameOnlyPlaylists => (is => 'ro', isa => 'Str', request_name => 'iFrameOnlyPlaylists', traits => ['NameInRequest']);
   has IndexNSegments => (is => 'ro', isa => 'Int', request_name => 'indexNSegments', traits => ['NameInRequest']);
   has InputLossAction => (is => 'ro', isa => 'Str', request_name => 'inputLossAction', traits => ['NameInRequest']);
   has IvInManifest => (is => 'ro', isa => 'Str', request_name => 'ivInManifest', traits => ['NameInRequest']);
@@ -27,6 +28,7 @@ package Paws::MediaLive::HlsGroupSettings;
   has OutputSelection => (is => 'ro', isa => 'Str', request_name => 'outputSelection', traits => ['NameInRequest']);
   has ProgramDateTime => (is => 'ro', isa => 'Str', request_name => 'programDateTime', traits => ['NameInRequest']);
   has ProgramDateTimePeriod => (is => 'ro', isa => 'Int', request_name => 'programDateTimePeriod', traits => ['NameInRequest']);
+  has RedundantManifest => (is => 'ro', isa => 'Str', request_name => 'redundantManifest', traits => ['NameInRequest']);
   has SegmentationMode => (is => 'ro', isa => 'Str', request_name => 'segmentationMode', traits => ['NameInRequest']);
   has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has SegmentsPerSubdirectory => (is => 'ro', isa => 'Int', request_name => 'segmentsPerSubdirectory', traits => ['NameInRequest']);
@@ -65,7 +67,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Placeholder documentation for HlsGroupSettings
+Hls Group Settings
 
 =head1 ATTRIBUTES
 
@@ -153,11 +155,23 @@ parameter if no encryption is desired.
   Parameters that control interactions with the CDN.
 
 
+=head2 IFrameOnlyPlaylists => Str
+
+  DISABLED: Do not create an I-frame-only manifest, but do create the
+master and media manifests (according to the Output Selection field).
+STANDARD: Create an I-frame-only manifest for each output that contains
+video, as well as the other manifests (according to the Output
+Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY
+tag to indicate it is I-frame only, and one or more #EXT-X-BYTERANGE
+entries identifying the I-frame position. For example,
+
+
 =head2 IndexNSegments => Int
 
-  If mode is "live", the number of segments to retain in the manifest
-(.m3u8) file. This number must be less than or equal to keepSegments.
-If mode is "vod", this parameter has no effect.
+  Applies only if Mode field is LIVE. Specifies the maximum number of
+segments in the media manifest file. After this maximum, older segments
+are removed from the media manifest. This number must be less than or
+equal to the Keep Segments field.
 
 
 =head2 InputLossAction => Str
@@ -184,8 +198,8 @@ change every segment (to match the segment number). If this is set to
 
 =head2 KeepSegments => Int
 
-  If mode is "live", the number of TS segments to retain in the
-destination directory. If mode is "vod", this parameter has no effect.
+  Applies only if Mode field is LIVE. Specifies the number of media
+segments (.ts files) to retain in the destination directory.
 
 
 =head2 KeyFormat => Str
@@ -237,8 +251,9 @@ manifest on completion of the stream.
 
 =head2 OutputSelection => Str
 
-  Generates the .m3u8 playlist file for this HLS output group. The
-segmentsOnly option will output segments without the .m3u8 file.
+  MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if
+applicable, and media manifests) for this output group. SEGMENTSONLY:
+Does not generate any manifests for this output group.
 
 
 =head2 ProgramDateTime => Str
@@ -255,10 +270,26 @@ using the timestampOffset.
   Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
 
 
+=head2 RedundantManifest => Str
+
+  ENABLED: The master manifest (.m3u8 file) for each pipeline includes
+information about both pipelines: first its own media files, then the
+media files of the other pipeline. This feature allows playout device
+that support stale manifest detection to switch from one manifest to
+the other, when the current manifest seems to be stale. There are still
+two destinations and two master manifests, but both master manifests
+reference the media files from both pipelines. DISABLED: The master
+manifest (.m3u8 file) for each pipeline includes information about its
+own pipeline only. For an HLS output group with MediaPackage as the
+destination, the DISABLED behavior is always followed. MediaPackage
+regenerates the manifests it serves to players so a redundant manifest
+from MediaLive is irrelevant.
+
+
 =head2 SegmentationMode => Str
 
-  When set to useInputSegmentation, the output segment or fragment points
-are set by the RAI markers from the input streams.
+  useInputSegmentation has been deprecated. The configured segment size
+is always used.
 
 
 =head2 SegmentLength => Int
@@ -298,10 +329,13 @@ tag of variant manifest.
 
 =head2 TsFileMode => Str
 
-  When set to "singleFile", emits the program as a single media resource
-(.ts) file, and uses #EXT-X-BYTERANGE tags to index segment for
-playback. Playback of VOD mode content during event is not guaranteed
-due to HTTP server caching.
+  SEGMENTEDFILES: Emit the program as segments - multiple .ts media
+files. SINGLEFILE: Applies only if Mode field is VOD. Emit the program
+as a single .ts media file. The media manifest includes
+
+this value is when sending the output to AWS Elemental MediaConvert,
+which can accept only a single media file. Playback while the channel
+is running is not guaranteed due to HTTP server caching.
 
 
 

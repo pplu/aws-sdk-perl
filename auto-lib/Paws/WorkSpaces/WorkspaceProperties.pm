@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Information about a WorkSpace.
+Describes a WorkSpace.
 
 =head1 ATTRIBUTES
 
@@ -55,7 +55,7 @@ Information about a WorkSpace.
 
   The running mode. For more information, see Manage the WorkSpace
 Running Mode
-(http://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html).
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html).
 
 
 =head2 RunningModeAutoStopTimeoutInMinutes => Int

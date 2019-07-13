@@ -1,7 +1,9 @@
 
 package Paws::SNS::CreateTopic;
   use Moose;
+  has Attributes => (is => 'ro', isa => 'Paws::SNS::TopicAttributesMap');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SNS::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -28,8 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $sns = Paws->service('SNS');
     my $CreateTopicResponse = $sns->CreateTopic(
-      Name => 'MytopicName',
+      Name       => 'MytopicName',
+      Attributes => { 'MyattributeName' => 'MyattributeValue', },    # OPTIONAL
+      Tags       => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
     # Results:
@@ -43,6 +53,51 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 =head1 ATTRIBUTES
 
 
+=head2 Attributes => L<Paws::SNS::TopicAttributesMap>
+
+A map of attributes with their corresponding values.
+
+The following lists the names, descriptions, and values of the special
+request parameters that the C<CreateTopic> action uses:
+
+=over
+
+=item *
+
+C<DeliveryPolicy> E<ndash> The policy that defines how Amazon SNS
+retries failed deliveries to HTTP/S endpoints.
+
+=item *
+
+C<DisplayName> E<ndash> The display name to use for a topic with SMS
+subscriptions.
+
+=item *
+
+C<Policy> E<ndash> The policy that defines who can access your topic.
+By default, only the topic owner can publish or subscribe to the topic.
+
+=back
+
+The following attribute applies only to server-side-encryption
+(https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
+
+=over
+
+=item *
+
+C<KmsMasterKeyId> - The ID of an AWS-managed customer master key (CMK)
+for Amazon SNS or a custom CMK. For more information, see Key Terms
+(https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
+For more examples, see KeyId
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+in the I<AWS Key Management Service API Reference>.
+
+=back
+
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the topic you want to create.
@@ -50,6 +105,12 @@ The name of the topic you want to create.
 Constraints: Topic names must be made up of only uppercase and
 lowercase ASCII letters, numbers, underscores, and hyphens, and must be
 between 1 and 256 characters long.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SNS::Tag>]
+
+The list of tags to add to a new topic.
 
 
 

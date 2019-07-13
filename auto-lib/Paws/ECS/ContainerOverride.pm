@@ -6,6 +6,7 @@ package Paws::ECS::ContainerOverride;
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MemoryReservation => (is => 'ro', isa => 'Int', request_name => 'memoryReservation', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::ContainerOverride object:
 
-  $service_obj->Method(Att1 => { Command => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Command => $value, ..., ResourceRequirements => $value  });
 
 =head3 Results returned from an API call
 
@@ -36,7 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Contai
 
 =head1 DESCRIPTION
 
-The overrides that should be sent to a container.
+The overrides that should be sent to a container. An empty container
+override can be passed in. An example of an empty container override
+would be C<{"containerOverrides": [ ] }>. If a non-empty container
+override is specified, the C<name> parameter must be included.
 
 =head1 ATTRIBUTES
 
@@ -82,6 +86,13 @@ container name.
 
   The name of the container that receives the override. This parameter is
 required if any override is specified.
+
+
+=head2 ResourceRequirements => ArrayRef[L<Paws::ECS::ResourceRequirement>]
+
+  The type and amount of a resource to assign to a container, instead of
+the default value from the task definition. The only supported resource
+is a GPU.
 
 
 

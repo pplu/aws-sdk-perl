@@ -47,7 +47,8 @@ timecode. Valid values are 10, 16, 32, 48.
 
 =head2 Position => Str
 
-  
+  Use Position (Position) under under Timecode burn-in (TimecodeBurnIn)
+to specify the location the burned-in timecode on output video.
 
 
 =head2 Prefix => Str

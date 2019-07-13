@@ -109,6 +109,11 @@ package Paws::IoTAnalytics;
     my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::ListChannels', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDatasetContents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::ListDatasetContents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDatasets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTAnalytics::ListDatasets', @_);
@@ -180,9 +185,124 @@ package Paws::IoTAnalytics;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllChannels {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListChannels(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListChannels(@_, nextToken => $next_result->nextToken);
+        push @{ $result->channelSummaries }, @{ $next_result->channelSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'channelSummaries') foreach (@{ $result->channelSummaries });
+        $result = $self->ListChannels(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'channelSummaries') foreach (@{ $result->channelSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllDatasetContents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDatasetContents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDatasetContents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->datasetContentSummaries }, @{ $next_result->datasetContentSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'datasetContentSummaries') foreach (@{ $result->datasetContentSummaries });
+        $result = $self->ListDatasetContents(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'datasetContentSummaries') foreach (@{ $result->datasetContentSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllDatasets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDatasets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDatasets(@_, nextToken => $next_result->nextToken);
+        push @{ $result->datasetSummaries }, @{ $next_result->datasetSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'datasetSummaries') foreach (@{ $result->datasetSummaries });
+        $result = $self->ListDatasets(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'datasetSummaries') foreach (@{ $result->datasetSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllDatastores {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDatastores(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDatastores(@_, nextToken => $next_result->nextToken);
+        push @{ $result->datastoreSummaries }, @{ $next_result->datastoreSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'datastoreSummaries') foreach (@{ $result->datastoreSummaries });
+        $result = $self->ListDatastores(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'datastoreSummaries') foreach (@{ $result->datastoreSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllPipelines {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPipelines(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPipelines(@_, nextToken => $next_result->nextToken);
+        push @{ $result->pipelineSummaries }, @{ $next_result->pipelineSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'pipelineSummaries') foreach (@{ $result->pipelineSummaries });
+        $result = $self->ListPipelines(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'pipelineSummaries') foreach (@{ $result->pipelineSummaries });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/BatchPutMessage CancelPipelineReprocessing CreateChannel CreateDataset CreateDatasetContent CreateDatastore CreatePipeline DeleteChannel DeleteDataset DeleteDatasetContent DeleteDatastore DeletePipeline DescribeChannel DescribeDataset DescribeDatastore DescribeLoggingOptions DescribePipeline GetDatasetContent ListChannels ListDatasets ListDatastores ListPipelines ListTagsForResource PutLoggingOptions RunPipelineActivity SampleChannelData StartPipelineReprocessing TagResource UntagResource UpdateChannel UpdateDataset UpdateDatastore UpdatePipeline / }
+  sub operations { qw/BatchPutMessage CancelPipelineReprocessing CreateChannel CreateDataset CreateDatasetContent CreateDatastore CreatePipeline DeleteChannel DeleteDataset DeleteDatasetContent DeleteDatastore DeletePipeline DescribeChannel DescribeDataset DescribeDatastore DescribeLoggingOptions DescribePipeline GetDatasetContent ListChannels ListDatasetContents ListDatasets ListDatastores ListPipelines ListTagsForResource PutLoggingOptions RunPipelineActivity SampleChannelData StartPipelineReprocessing TagResource UntagResource UpdateChannel UpdateDataset UpdateDatastore UpdatePipeline / }
 
 1;
 
@@ -284,6 +404,8 @@ Cancels the reprocessing of data through the pipeline.
 
 =item ChannelName => Str
 
+=item [ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>]
+
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
 =item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
@@ -308,9 +430,15 @@ pipeline.
 
 =item DatasetName => Str
 
+=item [ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]]
+
+=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+
 =item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
 
 =item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
+
+=item [VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>]
 
 
 =back
@@ -320,10 +448,11 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::CreateDataset>
 Returns: a L<Paws::IoTAnalytics::CreateDatasetResponse> instance
 
 Creates a data set. A data set stores data retrieved from a data store
-by applying an SQL action.
-
-This operation creates the skeleton of a data set. To populate the data
-set, call "CreateDatasetContent".
+by applying a "queryAction" (a SQL query) or a "containerAction"
+(executing a containerized application). This operation creates the
+skeleton of a data set. The data set can be populated manually by
+calling "CreateDatasetContent" or automatically according to a
+"trigger" you specify.
 
 
 =head2 CreateDatasetContent
@@ -337,9 +466,10 @@ set, call "CreateDatasetContent".
 
 Each argument is described in detail in: L<Paws::IoTAnalytics::CreateDatasetContent>
 
-Returns: nothing
+Returns: a L<Paws::IoTAnalytics::CreateDatasetContentResponse> instance
 
-Creates the content of a data set by applying an SQL action.
+Creates the content of a data set by applying a "queryAction" (a SQL
+query) or a "containerAction" (executing a containerized application).
 
 
 =head2 CreateDatastore
@@ -347,6 +477,8 @@ Creates the content of a data set by applying an SQL action.
 =over
 
 =item DatastoreName => Str
+
+=item [DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>]
 
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
@@ -381,7 +513,9 @@ Returns: a L<Paws::IoTAnalytics::CreatePipelineResponse> instance
 
 Creates a pipeline. A pipeline consumes messages from one or more
 channels and allows you to process the messages before storing them in
-a data store.
+a data store. You must specify both a C<channel> and a C<datastore>
+activity and, optionally, as many as 23 additional activities in the
+C<pipelineActivities> array.
 
 
 =head2 DeleteChannel
@@ -475,6 +609,8 @@ Deletes the specified pipeline.
 
 =item ChannelName => Str
 
+=item [IncludeStatistics => Bool]
+
 
 =back
 
@@ -506,6 +642,8 @@ Retrieves information about a data set.
 =over
 
 =item DatastoreName => Str
+
+=item [IncludeStatistics => Bool]
 
 
 =back
@@ -582,6 +720,30 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::ListChannels>
 Returns: a L<Paws::IoTAnalytics::ListChannelsResponse> instance
 
 Retrieves a list of channels.
+
+
+=head2 ListDatasetContents
+
+=over
+
+=item DatasetName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ScheduledBefore => Str]
+
+=item [ScheduledOnOrAfter => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTAnalytics::ListDatasetContents>
+
+Returns: a L<Paws::IoTAnalytics::ListDatasetContentsResponse> instance
+
+Lists information about data set contents that have been created.
 
 
 =head2 ListDatasets
@@ -781,6 +943,8 @@ Removes the given tags (metadata) from the resource.
 
 =item ChannelName => Str
 
+=item [ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>]
+
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
 
@@ -801,7 +965,13 @@ Updates the settings of a channel.
 
 =item DatasetName => Str
 
+=item [ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]]
+
+=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+
 =item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
+
+=item [VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>]
 
 
 =back
@@ -818,6 +988,8 @@ Updates the settings of a data set.
 =over
 
 =item DatastoreName => Str
+
+=item [DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>]
 
 =item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
 
@@ -846,7 +1018,9 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::UpdatePipeline>
 
 Returns: nothing
 
-Updates the settings of a pipeline.
+Updates the settings of a pipeline. You must specify both a C<channel>
+and a C<datastore> activity and, optionally, as many as 23 additional
+activities in the C<pipelineActivities> array.
 
 
 
@@ -854,6 +1028,66 @@ Updates the settings of a pipeline.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllChannels(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllChannels([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - channelSummaries, passing the object as the first parameter, and the string 'channelSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoTAnalytics::ListChannelsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDatasetContents(sub { },DatasetName => Str, [MaxResults => Int, NextToken => Str, ScheduledBefore => Str, ScheduledOnOrAfter => Str])
+
+=head2 ListAllDatasetContents(DatasetName => Str, [MaxResults => Int, NextToken => Str, ScheduledBefore => Str, ScheduledOnOrAfter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - datasetContentSummaries, passing the object as the first parameter, and the string 'datasetContentSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoTAnalytics::ListDatasetContentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDatasets(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDatasets([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - datasetSummaries, passing the object as the first parameter, and the string 'datasetSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoTAnalytics::ListDatasetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDatastores(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDatastores([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - datastoreSummaries, passing the object as the first parameter, and the string 'datastoreSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoTAnalytics::ListDatastoresResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPipelines(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPipelines([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - pipelineSummaries, passing the object as the first parameter, and the string 'pipelineSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoTAnalytics::ListPipelinesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

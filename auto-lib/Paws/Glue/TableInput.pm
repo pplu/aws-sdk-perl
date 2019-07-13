@@ -75,13 +75,19 @@ when it is stored.
 
 =head2 Parameters => L<Paws::Glue::ParametersMap>
 
-  Properties associated with this table, as a list of key-value pairs.
+  These key-value pairs define properties associated with the table.
 
 
 =head2 PartitionKeys => ArrayRef[L<Paws::Glue::Column>]
 
   A list of columns by which the table is partitioned. Only primitive
 types are supported as partition keys.
+
+When creating a table used by Athena, and you do not specify any
+C<partitionKeys>, you must at least set the value of C<partitionKeys>
+to an empty list. For example:
+
+C<"PartitionKeys": []>
 
 
 =head2 Retention => Int

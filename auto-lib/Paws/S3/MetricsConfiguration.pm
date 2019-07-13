@@ -32,7 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Metrics
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies a metrics configuration for the CloudWatch request metrics
+(specified by the metrics configuration ID) from an Amazon S3 bucket.
+If you're updating an existing metrics configuration, note that this is
+a full replacement of the existing metrics configuration. If you don't
+include the elements you want to keep, they are erased. For more
+information, see PUT Bucket metrics
+(https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTMetricConfiguration.html)
+in the I<Amazon Simple Storage Service API Reference>.
 
 =head1 ATTRIBUTES
 

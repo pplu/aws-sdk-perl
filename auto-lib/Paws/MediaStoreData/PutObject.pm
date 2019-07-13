@@ -6,6 +6,7 @@ package Paws::MediaStoreData::PutObject;
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
   has Path => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Path', required => 1);
   has StorageClass => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-storage-class');
+  has UploadAvailability => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-upload-availability');
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
@@ -33,11 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $data.mediastore = Paws->service('MediaStoreData');
     my $PutObjectResponse = $data . mediastore->PutObject(
-      Body         => 'BlobPayloadBlob',
-      Path         => 'MyPathNaming',
-      CacheControl => 'MyStringPrimitive',    # OPTIONAL
-      ContentType  => 'MyContentType',        # OPTIONAL
-      StorageClass => 'TEMPORAL',             # OPTIONAL
+      Body               => 'BlobPayloadBlob',
+      Path               => 'MyPathNaming',
+      CacheControl       => 'MyStringPrimitive',    # OPTIONAL
+      ContentType        => 'MyContentType',        # OPTIONAL
+      StorageClass       => 'TEMPORAL',             # OPTIONAL
+      UploadAvailability => 'STANDARD',             # OPTIONAL
     );
 
     # Results:
@@ -48,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::MediaStoreData::PutObjectResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/mediastore/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/data.mediastore/PutObject>
 
 =head1 ATTRIBUTES
 
@@ -116,6 +118,20 @@ high-performance temporal storage class, and objects are persisted into
 durable storage shortly after being received.
 
 Valid values are: C<"TEMPORAL">
+
+=head2 UploadAvailability => Str
+
+Indicates the availability of an object while it is still uploading. If
+the value is set to C<streaming>, the object is available for
+downloading after some initial buffering but before the object is
+uploaded completely. If the value is set to C<standard>, the object is
+available for downloading only when it is uploaded completely. The
+default value for this header is C<standard>.
+
+To use this header, you must also set the HTTP C<Transfer-Encoding>
+header to C<chunked>.
+
+Valid values are: C<"STANDARD">, C<"STREAMING">
 
 
 =head1 SEE ALSO

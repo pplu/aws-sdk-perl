@@ -39,8 +39,8 @@ This class has no description
 
 =head2 Error => L<Paws::EC2::UnsuccessfulInstanceCreditSpecificationItemError>
 
-  The applicable error for the T2 instance whose credit option for CPU
-usage was not modified.
+  The applicable error for the T2 or T3 instance whose credit option for
+CPU usage was not modified.
 
 
 =head2 InstanceId => Str

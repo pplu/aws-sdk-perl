@@ -9,6 +9,7 @@ package Paws::SSM::DocumentIdentifier;
   has SchemaVersion => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
   has TargetType => (is => 'ro', isa => 'Str');
+  has VersionName => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::DocumentIdentifier object:
 
-  $service_obj->Method(Att1 => { DocumentFormat => $value, ..., TargetType => $value  });
+  $service_obj->Method(Att1 => { DocumentFormat => $value, ..., VersionName => $value  });
 
 =head3 Results returned from an API call
 
@@ -91,6 +92,13 @@ run on. For example, /AWS::EC2::Instance. For a list of valid resource
 types, see AWS Resource Types Reference
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 in the I<AWS CloudFormation User Guide>.
+
+
+=head2 VersionName => Str
+
+  An optional field specifying the version of the artifact associated
+with the document. For example, "Release 12, Update 6". This value is
+unique across all versions of a document, and cannot be changed.
 
 
 

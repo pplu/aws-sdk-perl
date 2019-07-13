@@ -17,7 +17,7 @@ Paws::EC2::DescribeBundleTasksResult
 
 =head2 BundleTasks => ArrayRef[L<Paws::EC2::BundleTask>]
 
-Information about one or more bundle tasks.
+Information about the bundle tasks.
 
 
 =head2 _request_id => Str

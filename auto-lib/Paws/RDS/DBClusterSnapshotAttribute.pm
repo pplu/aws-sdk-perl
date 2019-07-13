@@ -36,7 +36,7 @@ Contains the name and values of a manual DB cluster snapshot attribute.
 
 Manual DB cluster snapshot attributes are used to authorize other AWS
 accounts to restore a manual DB cluster snapshot. For more information,
-see the ModifyDBClusterSnapshotAttribute API action.
+see the C<ModifyDBClusterSnapshotAttribute> API action.
 
 =head1 ATTRIBUTES
 
@@ -47,7 +47,8 @@ see the ModifyDBClusterSnapshotAttribute API action.
 
 The attribute named C<restore> refers to the list of AWS accounts that
 have permission to copy or restore the manual DB cluster snapshot. For
-more information, see the ModifyDBClusterSnapshotAttribute API action.
+more information, see the C<ModifyDBClusterSnapshotAttribute> API
+action.
 
 
 =head2 AttributeValues => ArrayRef[Str|Undef]

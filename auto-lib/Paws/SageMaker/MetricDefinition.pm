@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 =head1 DESCRIPTION
 
 Specifies a metric that the training algorithm writes to C<stderr> or
-C<stdout>. Amazon SageMakerHyperparamter tuning captures all defined
+C<stdout>. Amazon SageMakerhyperparameter tuning captures all defined
 metrics. You specify one metric that a hyperparameter tuning job uses
 as its objective metric to choose the best training job.
 
@@ -49,7 +49,8 @@ as its objective metric to choose the best training job.
 
   A regular expression that searches the output of a training job and
 gets the value of the metric. For more information about using regular
-expressions to define metrics, see hpo-define-metrics.
+expressions to define metrics, see Defining Objective Metrics
+(https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics.html).
 
 
 

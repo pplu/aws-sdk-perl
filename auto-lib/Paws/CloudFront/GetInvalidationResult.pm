@@ -21,7 +21,7 @@ Paws::CloudFront::GetInvalidationResult
 
 The invalidation's information. For more information, see Invalidation
 Complex Type
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/InvalidationDatatype.html).
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/InvalidationDatatype.html).
 
 
 

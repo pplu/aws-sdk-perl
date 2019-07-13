@@ -31,16 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 
 =head1 DESCRIPTION
 
-A complex type that contains the ID for the hosted zone that Route 53
-creates when you create a namespace.
+A complex type that contains the ID for the Route 53 hosted zone that
+AWS Cloud Map creates when you create a namespace.
 
 =head1 ATTRIBUTES
 
 
 =head2 HostedZoneId => Str
 
-  The ID for the hosted zone that Route 53 creates when you create a
-namespace.
+  The ID for the Route 53 hosted zone that AWS Cloud Map creates when you
+create a namespace.
 
 
 

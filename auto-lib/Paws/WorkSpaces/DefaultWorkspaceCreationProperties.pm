@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Information about defaults used to create a WorkSpace.
+Describes the default values used to create a WorkSpace.
 
 =head1 ATTRIBUTES
 
@@ -60,12 +60,12 @@ rebuilt.
 
 =head2 EnableWorkDocs => Bool
 
-  Indicates whether the directory is enabled for Amazon WorkDocs.
+  Specifies whether the directory is enabled for Amazon WorkDocs.
 
 
 =head2 UserEnabledAsLocalAdministrator => Bool
 
-  Indicates whether the WorkSpace user is an administrator on the
+  Specifies whether the WorkSpace user is an administrator on the
 WorkSpace.
 
 

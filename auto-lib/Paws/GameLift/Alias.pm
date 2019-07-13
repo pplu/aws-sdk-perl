@@ -39,8 +39,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::A
 
 Properties describing a fleet alias.
 
-Alias-related operations include:
-
 =over
 
 =item *

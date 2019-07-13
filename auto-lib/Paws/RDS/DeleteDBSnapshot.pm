@@ -29,11 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $rds = Paws->service('RDS');
     # To delete a DB cluster snapshot.
     # This example deletes the specified DB snapshot.
-    my $DeleteDBSnapshotResult = $rds->DeleteDBSnapshot(
-      {
-        'DBSnapshotIdentifier' => 'mydbsnapshot'
-      }
-    );
+    my $DeleteDBSnapshotResult =
+      $rds->DeleteDBSnapshot( 'DBSnapshotIdentifier' => 'mydbsnapshot' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -44,7 +41,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> DBSnapshotIdentifier => Str
 
-The DBSnapshot identifier.
+The DB snapshot identifier.
 
 Constraints: Must be the name of an existing DB snapshot in the
 C<available> state.

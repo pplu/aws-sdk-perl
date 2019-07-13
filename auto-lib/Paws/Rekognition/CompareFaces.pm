@@ -33,19 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This operation compares the largest face detected in the source image with
     # each face detected in the target image.
     my $CompareFacesResponse = $rekognition->CompareFaces(
-      {
-        'SimilarityThreshold' => 90,
-        'SourceImage'         => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'mysourceimage'
-          }
-        },
-        'TargetImage' => {
-          'S3Object' => {
-            'Bucket' => 'mybucket',
-            'Name'   => 'mytargetimage'
-          }
+      'SimilarityThreshold' => 90,
+      'SourceImage'         => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'mysourceimage'
+        }
+      },
+      'TargetImage' => {
+        'S3Object' => {
+          'Bucket' => 'mybucket',
+          'Name'   => 'mytargetimage'
         }
       }
     );
@@ -75,6 +73,10 @@ The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
 image bytes is not supported.
 
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
+
 
 
 =head2 B<REQUIRED> TargetImage => L<Paws::Rekognition::Image>
@@ -82,6 +84,10 @@ image bytes is not supported.
 The target image as base64-encoded bytes or an S3 object. If you use
 the AWS CLI to call Amazon Rekognition operations, passing
 base64-encoded image bytes is not supported.
+
+If you are using an AWS SDK to call Amazon Rekognition, you might not
+need to base64-encode image bytes passed using the C<Bytes> field. For
+more information, see Images in the Amazon Rekognition developer guide.
 
 
 

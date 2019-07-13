@@ -60,7 +60,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 Filters the results by compliance.
 
-The allowed values are C<COMPLIANT> and C<NON_COMPLIANT>.
+The allowed values are C<COMPLIANT>, C<NON_COMPLIANT>, and
+C<INSUFFICIENT_DATA>.
 
 
 

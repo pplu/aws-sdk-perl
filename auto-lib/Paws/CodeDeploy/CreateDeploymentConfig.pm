@@ -34,19 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DeploymentConfigName => 'MyDeploymentConfigName',
       ComputePlatform      => 'Server',                   # OPTIONAL
       MinimumHealthyHosts  => {
-        type  => 'HOST_COUNT',    # values: HOST_COUNT, FLEET_PERCENT; OPTIONAL
-        value => 1,               # OPTIONAL
+        Type  => 'HOST_COUNT',    # values: HOST_COUNT, FLEET_PERCENT; OPTIONAL
+        Value => 1,               # OPTIONAL
       },    # OPTIONAL
       TrafficRoutingConfig => {
-        timeBasedCanary => {
-          canaryInterval   => 1,    # OPTIONAL
-          canaryPercentage => 1,    # OPTIONAL
+        TimeBasedCanary => {
+          CanaryInterval   => 1,    # OPTIONAL
+          CanaryPercentage => 1,    # OPTIONAL
         },    # OPTIONAL
-        timeBasedLinear => {
-          linearInterval   => 1,    # OPTIONAL
-          linearPercentage => 1,    # OPTIONAL
+        TimeBasedLinear => {
+          LinearInterval   => 1,    # OPTIONAL
+          LinearPercentage => 1,    # OPTIONAL
         },    # OPTIONAL
-        type => 'TimeBasedCanary'
+        Type => 'TimeBasedCanary'
         ,     # values: TimeBasedCanary, TimeBasedLinear, AllAtOnce; OPTIONAL
       },    # OPTIONAL
     );
@@ -64,10 +64,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 ComputePlatform => Str
 
-The destination platform type for the deployment (C<Lambda> or
-C<Server>E<gt>).
+The destination platform type for the deployment (C<Lambda>, C<Server>,
+or C<ECS>).
 
-Valid values are: C<"Server">, C<"Lambda">
+Valid values are: C<"Server">, C<"Lambda">, C<"ECS">
 
 =head2 B<REQUIRED> DeploymentConfigName => Str
 
@@ -109,8 +109,7 @@ of FLEET_PERCENT and a value of 95.
 
 =head2 TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>
 
-The configuration that specifies how the deployment traffic will be
-routed.
+The configuration that specifies how the deployment traffic is routed.
 
 
 

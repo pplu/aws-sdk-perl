@@ -22,7 +22,7 @@ Paws::ServiceDiscovery::RegisterInstance - Arguments for method RegisterInstance
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RegisterInstance on the
-L<Amazon Route 53 Auto Naming|Paws::ServiceDiscovery> service. Use the attributes of this class
+L<AWS Cloud Map|Paws::ServiceDiscovery> service. Use the attributes of this class
 as arguments to method RegisterInstance.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterInstance.
@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $servicediscovery = Paws->service('ServiceDiscovery');
     my $RegisterInstanceResponse = $servicediscovery->RegisterInstance(
       Attributes => {
-        'MyAttrKey' => 'MyAttrValue',    # key: max: 255, value: max: 255
+        'MyAttrKey' => 'MyAttrValue',    # key: max: 255, value: max: 1024
       },
       InstanceId       => 'MyResourceId',
       ServiceId        => 'MyResourceId',
@@ -74,11 +74,12 @@ B<AWS_ALIAS_DNS_NAME>
 
 B<>
 
-If you want Route 53 to create an alias record that routes traffic to
-an Elastic Load Balancing load balancer, specify the DNS name that is
-associated with the load balancer. For information about how to get the
-DNS name, see "DNSName" in the topic AliasTarget
-(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html).
+If you want AWS Cloud Map to create an Amazon Route 53 alias record
+that routes traffic to an Elastic Load Balancing load balancer, specify
+the DNS name that is associated with the load balancer. For information
+about how to get the DNS name, see "DNSName" in the topic AliasTarget
+(http://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html)
+in the I<Route 53 API Reference>.
 
 Note the following:
 
@@ -97,8 +98,9 @@ C<RoutingPolicy> must be C<WEIGHTED>.
 =item *
 
 If the service that is specified by C<ServiceId> includes
-C<HealthCheckConfig> settings, Route 53 will create the health check,
-but it won't associate the health check with the alias record.
+C<HealthCheckConfig> settings, AWS Cloud Map will create the Route 53
+health check, but it won't associate the health check with the alias
+record.
 
 =item *
 
@@ -111,6 +113,14 @@ If you specify a value for C<AWS_ALIAS_DNS_NAME>, don't specify values
 for any of the C<AWS_INSTANCE> attributes.
 
 =back
+
+B<AWS_INIT_HEALTH_STATUS>
+
+If the service configuration includes C<HealthCheckCustomConfig>, you
+can optionally use C<AWS_INIT_HEALTH_STATUS> to specify the initial
+status of the custom health check, C<HEALTHY> or C<UNHEALTHY>. If you
+don't specify a value for C<AWS_INIT_HEALTH_STATUS>, the initial status
+is C<HEALTHY>.
 
 B<AWS_INSTANCE_CNAME>
 
@@ -154,6 +164,12 @@ that you want Route 53 to send requests to.
 This value is required if you specified settings for an SRV record when
 you created the service.
 
+B<Custom attributes>
+
+You can add up to 30 custom attributes. For each key-value pair, the
+maximum length of the attribute name is 255 characters, and the maximum
+length of the attribute value is 1,024 characters.
+
 
 
 =head2 CreatorRequestId => Str
@@ -193,9 +209,10 @@ among instances that you register by using the same service.
 
 =item *
 
-If you specify an existing C<InstanceId> and C<ServiceId>, Route 53
-updates the existing records. If there's also an existing health check,
-Route 53 deletes the old health check and creates a new one.
+If you specify an existing C<InstanceId> and C<ServiceId>, AWS Cloud
+Map updates the existing DNS records, if any. If there's also an
+existing health check, AWS Cloud Map deletes the old health check and
+creates a new one.
 
 The health check isn't deleted immediately, so it will still appear for
 a while if you submit a C<ListHealthChecks> request, for example.
@@ -207,8 +224,8 @@ a while if you submit a C<ListHealthChecks> request, for example.
 
 =head2 B<REQUIRED> ServiceId => Str
 
-The ID of the service that you want to use for settings for the records
-and health check that Route 53 will create.
+The ID of the service that you want to use for settings for the
+instance.
 
 
 

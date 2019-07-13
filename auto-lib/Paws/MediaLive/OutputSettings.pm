@@ -1,7 +1,9 @@
 package Paws::MediaLive::OutputSettings;
   use Moose;
   has ArchiveOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::ArchiveOutputSettings', request_name => 'archiveOutputSettings', traits => ['NameInRequest']);
+  has FrameCaptureOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::FrameCaptureOutputSettings', request_name => 'frameCaptureOutputSettings', traits => ['NameInRequest']);
   has HlsOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsOutputSettings', request_name => 'hlsOutputSettings', traits => ['NameInRequest']);
+  has MediaPackageOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::MediaPackageOutputSettings', request_name => 'mediaPackageOutputSettings', traits => ['NameInRequest']);
   has MsSmoothOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::MsSmoothOutputSettings', request_name => 'msSmoothOutputSettings', traits => ['NameInRequest']);
   has RtmpOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::RtmpOutputSettings', request_name => 'rtmpOutputSettings', traits => ['NameInRequest']);
   has UdpOutputSettings => (is => 'ro', isa => 'Paws::MediaLive::UdpOutputSettings', request_name => 'udpOutputSettings', traits => ['NameInRequest']);
@@ -35,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Placeholder documentation for OutputSettings
+Output Settings
 
 =head1 ATTRIBUTES
 
@@ -45,7 +47,17 @@ Placeholder documentation for OutputSettings
   
 
 
+=head2 FrameCaptureOutputSettings => L<Paws::MediaLive::FrameCaptureOutputSettings>
+
+  
+
+
 =head2 HlsOutputSettings => L<Paws::MediaLive::HlsOutputSettings>
+
+  
+
+
+=head2 MediaPackageOutputSettings => L<Paws::MediaLive::MediaPackageOutputSettings>
 
   
 

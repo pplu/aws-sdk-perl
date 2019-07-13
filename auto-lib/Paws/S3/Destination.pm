@@ -35,37 +35,59 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Destina
 
 =head1 DESCRIPTION
 
-Container for replication destination information.
+Specifies information about where to publish analysis or configuration
+results for an Amazon S3 bucket.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccessControlTranslation => L<Paws::S3::AccessControlTranslation>
 
-  Container for information regarding the access control for replicas.
+  Specify this only in a cross-account scenario (where source and
+destination bucket owners are not the same), and you want to change
+replica ownership to the AWS account that owns the destination bucket.
+If this is not specified in the replication configuration, the replicas
+are owned by same AWS account that owns the source object.
 
 
 =head2 Account => Str
 
-  Account ID of the destination bucket. Currently this is only being
-verified if Access Control Translation is enabled
+  Destination bucket owner account ID. In a cross-account scenario, if
+you direct Amazon S3 to change replica ownership to the AWS account
+that owns the destination bucket by specifying the
+C<AccessControlTranslation> property, this is the account ID of the
+destination bucket owner. For more information, see Cross-Region
+Replication Additional Configuration: Change Replica Owner
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 =head2 B<REQUIRED> Bucket => Str
 
-  Amazon resource name (ARN) of the bucket where you want Amazon S3 to
-store replicas of the object identified by the rule.
+  The Amazon Resource Name (ARN) of the bucket where you want Amazon S3
+to store replicas of the object identified by the rule.
+
+A replication configuration can replicate objects to only one
+destination bucket. If there are multiple rules in your replication
+configuration, all rules must specify the same destination bucket.
 
 
 =head2 EncryptionConfiguration => L<Paws::S3::EncryptionConfiguration>
 
-  Container for information regarding encryption based configuration for
-replicas.
+  A container that provides information about encryption. If
+C<SourceSelectionCriteria> is specified, you must specify this element.
 
 
 =head2 StorageClass => Str
 
-  The class of storage used to store the object.
+  The storage class to use when replicating objects, such as standard or
+reduced redundancy. By default, Amazon S3 uses the storage class of the
+source object to create the object replica.
+
+For valid values, see the C<StorageClass> element of the PUT Bucket
+replication
+(https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html)
+action in the I<Amazon Simple Storage Service API Reference>.
 
 
 

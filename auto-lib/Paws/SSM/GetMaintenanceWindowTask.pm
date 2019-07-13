@@ -61,13 +61,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> WindowId => Str
 
-The Maintenance Window ID that includes the task to retrieve.
+The maintenance window ID that includes the task to retrieve.
 
 
 
 =head2 B<REQUIRED> WindowTaskId => Str
 
-The Maintenance Window task ID to retrieve.
+The maintenance window task ID to retrieve.
 
 
 

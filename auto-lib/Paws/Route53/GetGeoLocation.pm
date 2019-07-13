@@ -100,9 +100,9 @@ ISO standard 3166-1 alpha-2
 
 Amazon Route 53 uses the one- to three-letter subdivision codes that
 are specified in ISO standard 3166-1 alpha-2
-(https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Amazon Route 53
-doesn't support subdivision codes for all countries. If you specify
-C<SubdivisionCode>, you must also specify C<CountryCode>.
+(https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Route 53 doesn't
+support subdivision codes for all countries. If you specify
+C<subdivisioncode>, you must also specify C<countrycode>.
 
 
 

@@ -31,10 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example returns the notification attributes for an identity:
     my $GetIdentityNotificationAttributesResponse =
       $email->GetIdentityNotificationAttributes(
-      {
-        'Identities' => ['example.com']
-      }
-      );
+      'Identities' => ['example.com'] );
 
     # Results:
     my $NotificationAttributes =

@@ -4,6 +4,7 @@ package Paws::DMS::DescribeReplicationTasks;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
+  has WithoutSettings => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -38,8 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      Marker     => 'MyString',    # OPTIONAL
-      MaxRecords => 1,             # OPTIONAL
+      Marker          => 'MyString',    # OPTIONAL
+      MaxRecords      => 1,             # OPTIONAL
+      WithoutSettings => 1,             # OPTIONAL
     );
 
     # Results:
@@ -81,6 +83,14 @@ results can be retrieved.
 Default: 100
 
 Constraints: Minimum 20, maximum 100.
+
+
+
+=head2 WithoutSettings => Bool
+
+Set this flag to avoid returning setting information. Use this to
+reduce overhead when settings are too large. Choose TRUE to use this
+flag, otherwise choose FALSE (default).
 
 
 

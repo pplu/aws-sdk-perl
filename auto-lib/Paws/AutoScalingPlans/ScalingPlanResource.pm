@@ -64,8 +64,8 @@ C<service/default/sample-webapp>.
 
 =item *
 
-Spot fleet request - The resource type is C<spot-fleet-request> and the
-unique identifier is the Spot fleet request ID. Example:
+Spot Fleet request - The resource type is C<spot-fleet-request> and the
+unique identifier is the Spot Fleet request ID. Example:
 C<spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE>.
 
 =item *
@@ -106,7 +106,7 @@ C<ecs:service:DesiredCount> - The desired task count of an ECS service.
 =item *
 
 C<ec2:spot-fleet-request:TargetCapacity> - The target capacity of a
-Spot fleet request.
+Spot Fleet request.
 
 =item *
 
@@ -131,7 +131,8 @@ for a DynamoDB global secondary index.
 =item *
 
 C<rds:cluster:ReadReplicaCount> - The count of Aurora Replicas in an
-Aurora DB cluster. Available for Aurora MySQL-compatible edition.
+Aurora DB cluster. Available for Aurora MySQL-compatible edition and
+Aurora PostgreSQL-compatible edition.
 
 =back
 
@@ -144,7 +145,7 @@ Aurora DB cluster. Available for Aurora MySQL-compatible edition.
 
 =head2 B<REQUIRED> ScalingPlanVersion => Int
 
-  The version of the scaling plan.
+  The version number of the scaling plan.
 
 
 =head2 ScalingPolicies => ArrayRef[L<Paws::AutoScalingPlans::ScalingPolicy>]

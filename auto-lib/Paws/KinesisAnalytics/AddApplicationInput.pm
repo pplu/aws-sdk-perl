@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RecordColumns => [
             {
               Name    => 'MyRecordColumnName',
-              SqlType => 'MyRecordColumnSqlType',    # min: 1,
+              SqlType => 'MyRecordColumnSqlType',    # min: 1
               Mapping => 'MyRecordColumnMapping',    # OPTIONAL
             },
             ...
@@ -46,12 +46,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RecordFormatType  => 'JSON',             # values: JSON, CSV
             MappingParameters => {
               CSVMappingParameters => {
-                RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1,
-                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1,
+                RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1
+                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1
 
               },    # OPTIONAL
               JSONMappingParameters => {
-                RecordRowPath => 'MyRecordRowPath',    # min: 1,
+                RecordRowPath => 'MyRecordRowPath',    # min: 1
 
               },    # OPTIONAL
             },    # OPTIONAL
@@ -100,14 +100,17 @@ want to add the streaming source.
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
 Current version of your Amazon Kinesis Analytics application. You can
-use the DescribeApplication operation to find the current application
-version.
+use the DescribeApplication
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+operation to find the current application version.
 
 
 
 =head2 B<REQUIRED> Input => L<Paws::KinesisAnalytics::Input>
 
-The Input to add.
+The Input
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_Input.html)
+to add.
 
 
 

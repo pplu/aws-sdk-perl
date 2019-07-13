@@ -106,6 +106,29 @@ package Paws::Shield;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAttacks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAttacks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAttacks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AttackSummaries }, @{ $next_result->AttackSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AttackSummaries') foreach (@{ $result->AttackSummaries });
+        $result = $self->ListAttacks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AttackSummaries') foreach (@{ $result->AttackSummaries });
+    }
+
+    return undef
+  }
   sub ListAllProtections {
     my $self = shift;
 
@@ -167,7 +190,7 @@ API actions, data types, and errors. For detailed information about AWS
 WAF and AWS Shield Advanced features and an overview of how to use the
 AWS WAF and AWS Shield Advanced APIs, see the AWS WAF and AWS Shield
 Developer Guide
-(http://docs.aws.amazon.com/waf/latest/developerguide/).
+(https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/shield-2016-06-02>
 
@@ -265,7 +288,8 @@ Returns: a L<Paws::Shield::CreateProtectionResponse> instance
 
 Enables AWS Shield Advanced for a specific AWS resource. The resource
 can be an Amazon CloudFront distribution, Elastic Load Balancing load
-balancer, Elastic IP Address, or an Amazon Route 53 hosted zone.
+balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an
+Amazon Route 53 hosted zone.
 
 You can add protection to only a single resource with each
 CreateProtection request. If you want to add protection to multiple
@@ -385,7 +409,9 @@ suspected attack.
 
 =over
 
-=item ProtectionId => Str
+=item [ProtectionId => Str]
+
+=item [ResourceArn => Str]
 
 
 =back
@@ -557,6 +583,18 @@ parameters you want to change. Empty parameters are not updated.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAttacks(sub { },[EndTime => L<Paws::Shield::TimeRange>, MaxResults => Int, NextToken => Str, ResourceArns => ArrayRef[Str|Undef], StartTime => L<Paws::Shield::TimeRange>])
+
+=head2 ListAllAttacks([EndTime => L<Paws::Shield::TimeRange>, MaxResults => Int, NextToken => Str, ResourceArns => ArrayRef[Str|Undef], StartTime => L<Paws::Shield::TimeRange>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AttackSummaries, passing the object as the first parameter, and the string 'AttackSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::Shield::ListAttacksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllProtections(sub { },[MaxResults => Int, NextToken => Str])
 

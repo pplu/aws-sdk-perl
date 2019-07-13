@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
 =head1 SYNOPSIS
 
-    my $sagemaker = Paws->service('SageMaker');
+    my $api.sagemaker = Paws->service('SageMaker');
     my $CreateNotebookInstanceLifecycleConfigOutput =
-      $sagemaker->CreateNotebookInstanceLifecycleConfig(
+      $api . sagemaker->CreateNotebookInstanceLifecycleConfig(
       NotebookInstanceLifecycleConfigName =>
         'MyNotebookInstanceLifecycleConfigName',
       OnCreate => [
@@ -57,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 # Returns a L<Paws::SageMaker::CreateNotebookInstanceLifecycleConfigOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sagemaker/CreateNotebookInstanceLifecycleConfig>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.sagemaker/CreateNotebookInstanceLifecycleConfig>
 
 =head1 ATTRIBUTES
 
@@ -71,14 +71,15 @@ The name of the lifecycle configuration.
 =head2 OnCreate => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]
 
 A shell script that runs only once, when you create a notebook
-instance.
+instance. The shell script must be a base64-encoded string.
 
 
 
 =head2 OnStart => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]
 
 A shell script that runs every time you start a notebook instance,
-including when you create the notebook instance.
+including when you create the notebook instance. The shell script must
+be a base64-encoded string.
 
 
 

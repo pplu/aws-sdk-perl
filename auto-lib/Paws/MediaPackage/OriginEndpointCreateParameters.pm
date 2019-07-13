@@ -9,6 +9,7 @@ package Paws::MediaPackage::OriginEndpointCreateParameters;
   has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
   has MssPackage => (is => 'ro', isa => 'Paws::MediaPackage::MssPackage', request_name => 'mssPackage', traits => ['NameInRequest']);
   has StartoverWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'startoverWindowSeconds', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', request_name => 'tags', traits => ['NameInRequest']);
   has TimeDelaySeconds => (is => 'ro', isa => 'Int', request_name => 'timeDelaySeconds', traits => ['NameInRequest']);
   has Whitelist => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'whitelist', traits => ['NameInRequest']);
 1;
@@ -94,6 +95,11 @@ URL (defaults to "index").
   Maximum duration (seconds) of content to retain for startover playback.
 If not specified, startover playback will be disabled for the
 OriginEndpoint.
+
+
+=head2 Tags => L<Paws::MediaPackage::Tags>
+
+  
 
 
 =head2 TimeDelaySeconds => Int

@@ -23,8 +23,10 @@ The launch configurations.
 
 =head2 NextToken => Str
 
-The token to use when requesting the next set of items. If there are no
-additional items to return, the string is empty.
+A string that indicates that the response contains more items than can
+be returned in a single response. To receive additional items, specify
+this string for the C<NextToken> value when requesting the next set of
+items. This value is null when there are no more items to return.
 
 
 =head2 _request_id => Str

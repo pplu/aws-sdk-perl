@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete a DB cluster.
     # This example deletes the specified DB cluster.
     my $DeleteDBClusterResult = $rds->DeleteDBCluster(
-      {
-        'DBClusterIdentifier' => 'mydbcluster',
-        'SkipFinalSnapshot'   => true
-      }
+      'DBClusterIdentifier' => 'mydbcluster',
+      'SkipFinalSnapshot'   => 1
     );
 
 
@@ -66,10 +64,11 @@ Must match an existing DBClusterIdentifier.
 =head2 FinalDBSnapshotIdentifier => Str
 
 The DB cluster snapshot identifier of the new DB cluster snapshot
-created when C<SkipFinalSnapshot> is set to C<false>.
+created when C<SkipFinalSnapshot> is disabled.
 
-Specifying this parameter and also setting the C<SkipFinalShapshot>
-parameter to true results in an error.
+Specifying this parameter and also skipping the creation of a final DB
+cluster snapshot with the C<SkipFinalShapshot> parameter results in an
+error.
 
 Constraints:
 
@@ -85,7 +84,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -94,15 +93,15 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 =head2 SkipFinalSnapshot => Bool
 
-Determines whether a final DB cluster snapshot is created before the DB
-cluster is deleted. If C<true> is specified, no DB cluster snapshot is
-created. If C<false> is specified, a DB cluster snapshot is created
-before the DB cluster is deleted.
+A value that indicates whether to skip the creation of a final DB
+cluster snapshot before the DB cluster is deleted. If skip is
+specified, no DB cluster snapshot is created. If skip is not specified,
+a DB cluster snapshot is created before the DB cluster is deleted. By
+default, skip is not specified, and the DB cluster snapshot is created.
+By default, this parameter is disabled.
 
 You must specify a C<FinalDBSnapshotIdentifier> parameter if
-C<SkipFinalSnapshot> is C<false>.
-
-Default: C<false>
+C<SkipFinalSnapshot> is disabled.
 
 
 

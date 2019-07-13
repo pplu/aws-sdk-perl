@@ -57,7 +57,9 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.38';
+our $VERSION = '0.41';
+
+use Carp;
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -92,6 +94,89 @@ sub load_class {
     # immutability is a global setting that will affect all instances
     $class->meta->make_immutable if (Paws->default_config->immutable);
   }
+}
+
+# converts the params the user passed to the call into objects that represent the call
+sub new_with_coercions {
+  my (undef, $class, %params) = @_;
+
+  Paws->load_class($class);
+  my %p;
+
+  if ($class->does('Paws::API::StrToObjMapParser')) {
+    my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
+    if (my ($array_of) = ($subtype =~ m/^ArrayRef\[(.*?)\]$/)){
+      $p{ Map } = { map { $_ => [ map { Paws->new_with_coercions("$array_of", %$_) } @{ $params{ $_ } } ] } keys %params };
+    } else {
+      $p{ Map } = { map { $_ => Paws->new_with_coercions("$subtype", %{ $params{ $_ } }) } keys %params };
+    }
+  } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
+    $p{ Map } = { %params };
+  } else {
+    foreach my $att (keys %params){
+      my $att_meta = $class->meta->find_attribute_by_name($att);
+
+      croak "$class doesn't have an $att" if (not defined $att_meta);
+      my $type = $att_meta->type_constraint;
+
+      if ($type eq 'Bool') {
+        $p{ $att } = ($params{ $att } == 1)?1:0;
+      } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
+        $p{ $att } = $params{ $att };
+      } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
+        my $subtype = "$1";
+        if ($subtype eq 'Str' or $subtype eq 'Str|Undef' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
+          $p{ $att } = $params{ $att };
+        } else {
+          $p{ $att } = [ map { Paws->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ];
+        }
+      } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
+        $p{ $att } = $params{ $att };
+      } else {
+        $p{ $att } = Paws->new_with_coercions("$type", %{ $params{ $att } });
+      }
+    }
+  }
+  return $class->new(%p);
+}
+
+sub is_internal_type {
+  my (undef, $att_type) = @_;
+  return ($att_type eq 'Str' or $att_type eq 'Str|Undef' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
+}
+
+sub to_hash {
+  my (undef, $params) = @_;
+  my $refHash = {};
+
+  if      ($params->does('Paws::API::StrToNativeMapParser')) {
+    return $params->Map;
+  } elsif ($params->does('Paws::API::StrToObjMapParser')) {
+    return { map { ($_ => Paws->to_hash($params->Map->{$_})) } keys %{ $params->Map } };
+  }
+
+  foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+    my $key = $att;
+    if (defined $params->$att) {
+      my $att_type = $params->meta->get_attribute($att)->type_constraint;
+      if ($att_type eq 'Bool') {
+        $refHash->{ $key } = ($params->$att)?1:0;
+      } elsif (Paws->is_internal_type($att_type)) {
+        $refHash->{ $key } = $params->$att;
+      } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
+        if (Paws->is_internal_type("$1")){
+          $refHash->{ $key } = $params->$att;
+        } else {
+          $refHash->{ $key } = [ map { Paws->to_hash($_) } @{ $params->$att } ];
+        }
+      } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
+        $refHash->{ $key } = $params->$att;
+      } else {
+        $refHash->{ $key } = Paws->to_hash($params->$att);
+      }
+    }
+  }
+  return $refHash;
 }
 
 sub available_services {
@@ -240,9 +325,19 @@ L<Paws::ACMPCA>
 
 L<Paws::AlexaForBusiness>
 
+L<Paws::Amplify>
+
 L<Paws::ApiGateway>
 
+L<Paws::ApiGatewayManagement>
+
+L<Paws::ApiGatewayV2>
+
 L<Paws::ApplicationAutoScaling>
+
+L<Paws::ApplicationInsights>
+
+L<Paws::AppMesh>
 
 L<Paws::AppStream>
 
@@ -254,9 +349,13 @@ L<Paws::AutoScaling>
 
 L<Paws::AutoScalingPlans>
 
+L<Paws::Backup>
+
 L<Paws::Batch>
 
 L<Paws::Budgets>
+
+L<Paws::Chime>
 
 L<Paws::Cloud9>
 
@@ -302,6 +401,8 @@ L<Paws::CognitoSync>
 
 L<Paws::Comprehend>
 
+L<Paws::ComprehendMedical>
+
 L<Paws::Config>
 
 L<Paws::Connect>
@@ -312,6 +413,8 @@ L<Paws::CUR>
 
 L<Paws::DataPipeline>
 
+L<Paws::Datasync>
+
 L<Paws::DAX>
 
 L<Paws::DeviceFarm>
@@ -320,7 +423,11 @@ L<Paws::DirectConnect>
 
 L<Paws::Discovery>
 
+L<Paws::DLM>
+
 L<Paws::DMS>
+
+L<Paws::DocDB>
 
 L<Paws::DS>
 
@@ -329,6 +436,8 @@ L<Paws::DynamoDB>
 L<Paws::DynamoDBStreams>
 
 L<Paws::EC2>
+
+L<Paws::EC2InstanceConnect>
 
 L<Paws::ECR>
 
@@ -362,13 +471,19 @@ L<Paws::Firehose>
 
 L<Paws::FMS>
 
+L<Paws::FSX>
+
 L<Paws::GameLift>
 
 L<Paws::Glacier>
 
+L<Paws::GlobalAccelerator>
+
 L<Paws::Glue>
 
 L<Paws::Greengrass>
+
+L<Paws::GroundStation>
 
 L<Paws::GuardDuty>
 
@@ -390,11 +505,21 @@ L<Paws::IoTAnalytics>
 
 L<Paws::IoTData>
 
+L<Paws::IoTEvents>
+
+L<Paws::IoTEventsData>
+
 L<Paws::IoTJobsData>
+
+L<Paws::IoTThingsGraph>
+
+L<Paws::Kafka>
 
 L<Paws::Kinesis>
 
 L<Paws::KinesisAnalytics>
+
+L<Paws::KinesisAnalyticsV2>
 
 L<Paws::KinesisVideo>
 
@@ -410,9 +535,15 @@ L<Paws::LexModels>
 
 L<Paws::LexRuntime>
 
+L<Paws::LicenseManager>
+
 L<Paws::Lightsail>
 
 L<Paws::MachineLearning>
+
+L<Paws::Macie>
+
+L<Paws::ManagedBlockchain>
 
 L<Paws::MarketplaceCommerceAnalytics>
 
@@ -420,11 +551,15 @@ L<Paws::MarketplaceEntitlement>
 
 L<Paws::MarketplaceMetering>
 
+L<Paws::MediaConnect>
+
 L<Paws::MediaConvert>
 
 L<Paws::MediaLive>
 
 L<Paws::MediaPackage>
+
+L<Paws::MediaPackageVod>
 
 L<Paws::MediaStore>
 
@@ -450,13 +585,31 @@ L<Paws::Organizations>
 
 L<Paws::PerformanceInsights>
 
+L<Paws::Personalize>
+
+L<Paws::PersonalizeEvents>
+
+L<Paws::PersonalizeRuntime>
+
 L<Paws::Pinpoint>
+
+L<Paws::PinpointEmail>
+
+L<Paws::PinpointSMSVoice>
+
+L<Paws::PinpointSMSVoice>
 
 L<Paws::Polly>
 
 L<Paws::Pricing>
 
+L<Paws::Quicksight>
+
+L<Paws::RAM>
+
 L<Paws::RDS>
+
+L<Paws::RDSData>
 
 L<Paws::RedShift>
 
@@ -466,11 +619,17 @@ L<Paws::ResourceGroups>
 
 L<Paws::ResourceTagging>
 
+L<Paws::Robomaker>
+
 L<Paws::Route53>
 
 L<Paws::Route53Domains>
 
+L<Paws::Route53Resolver>
+
 L<Paws::S3>
+
+L<Paws::S3Control>
 
 L<Paws::SageMaker>
 
@@ -480,17 +639,23 @@ L<Paws::SDB>
 
 L<Paws::SecretsManager>
 
+L<Paws::SecurityHub>
+
 L<Paws::ServerlessRepo>
 
 L<Paws::ServiceCatalog>
 
 L<Paws::ServiceDiscovery>
 
+L<Paws::ServiceQuotas>
+
 L<Paws::SES>
 
 L<Paws::SES>
 
 L<Paws::Shield>
+
+L<Paws::Signer>
 
 L<Paws::Signin>
 
@@ -516,7 +681,11 @@ L<Paws::STS>
 
 L<Paws::Support>
 
+L<Paws::Textract>
+
 L<Paws::Transcribe>
+
+L<Paws::Transfer>
 
 L<Paws::Translate>
 
@@ -525,6 +694,8 @@ L<Paws::WAF>
 L<Paws::WAFRegional>
 
 L<Paws::WorkDocs>
+
+L<Paws::WorkLink>
 
 L<Paws::WorkMail>
 
@@ -687,6 +858,18 @@ Some services, like the MachineLearning predictor API want you to specify a cust
   my $predictor = Paws->service('ML', endpoint => $model->EndpointInfo->EndpointUrl, region => 'eu-west-1');
   $predictor->...
 
+=head3 max_attempts
+
+Sets the total number of request attempts to make per API call, by retrying after failures. For most services the value defaults to 5 - that is, after a failure, up to 4 retries will be made, making a total of up to 5 attempts.
+
+  my $sms = Paws->service('SMS', max_attempts => 10);
+
+=head2 Using VPC Endpoints
+
+If you are going to consume a service behind a VPC Endpoint, you can use the C<endpoint> and the C<region> attributes to configure Paws appropiately
+
+  my $svc = $paws->service('...', endpoint => 'https://endpointaddress', region => 'eu-west-1');
+
 =head1 Pluggability
 
 =head2 Credential Provider Pluggability
@@ -769,8 +952,11 @@ This code is distributed under the Apache 2 License. The full text of the licens
 =head1 CONTRIBUITIONS
 
 
-CAPSiDE (http://www.capside.com) for letting Paws be contributed in an open source model
-and giving me time to build and maintain it regularly
+CAPSiDE (https://www.capside.com) for letting Paws be contributed in an open source model
+and giving me time to build and maintain it regularly.
+
+ZipRecruiter (https://www.ziprecruiter.com/) for sponsoring development of Paws. Lots of work
+from ZipRecruiter has been done via Shadowcat Systems (https://shadow.cat/).
 
 Luis Alberto Gimenez (@agimenez) for
  - The git-fu cleaning up the "pull other sdks" code
@@ -806,7 +992,9 @@ ilmari for fixing issues with timestamps in Date and X-Amz-Date headers,
 test fixes and 5.10 support fixes, documentation issue fixes for S3,
 CloudFront and Route53, help with number stringification
 
-stevecaldwell77 for contributing support for temporary credentials in S3
+stevecaldwell77 for 
+ - contributing support for temporary credentials in S3
+ - Fixing test suite failure scenarios
 
 Ryan Olson (BeerBikesBBQ) for contributing documentation fixes
 
@@ -835,7 +1023,9 @@ rpcme for reporting various bugs in the SDK
 
 glenveegee for lots of work sorting out the S3 implementation
 
-Grinzz for many bugs, suggestions and fixes
+Grinzz
+ - many bugs, suggestions and fixes
+ - Installation speedup with Module::Builder::Tiny
 
 Dakkar for solving issues with parameter passing
 
@@ -843,7 +1033,9 @@ Arthur Axel fREW Schmidt for speeding up credential refreshing
 
 PopeFelix for solving issues around S3 and MojoAsyncCaller
 
-meis for contributing Paws::Credential::Explicit
+meis for (between others):
+ - contributing Paws::Credential::Explicit
+ - enabling unstable warnings to be silenced
 
 sven-schubert for contributing fixes to RestXML services,
 working on fixing S3 to work correctly.
@@ -862,6 +1054,22 @@ castaway for contributing to fixing documentation problems
 autarch for correcting signature generation for a bunch of services
 
 piratefinn for linking calls to documentation AWS URLs
+
+slobo for fixing S3 behaviour
+
+bork1n for fixes to MojoAsynCaller
+
+atoomic for:
+ - tweaking CPAN packaging
+ - improving paws CLI
+
+leonerd for (between others)
+ - documenting retry logic
+ - fixing retry sleep of MojoAsyncCaller
+
+campus-explorer for contributing to test suite
+
+byterock for testing and fixing PinPoint
 
 
 =cut

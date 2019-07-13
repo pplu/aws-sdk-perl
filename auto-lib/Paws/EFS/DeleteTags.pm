@@ -32,10 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To delete tags for an EFS file system
     # This operation deletes tags for an EFS file system.
     $elasticfilesystem->DeleteTags(
-      {
-        'FileSystemId' => 'fs-01234567',
-        'TagKeys'      => ['Name']
-      }
+      'FileSystemId' => 'fs-01234567',
+      'TagKeys'      => ['Name']
     );
 
 
@@ -47,13 +45,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-ID of the file system whose tags you want to delete (String).
+The ID of the file system whose tags you want to delete (String).
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-List of tag keys to delete.
+A list of tag keys to delete.
 
 
 

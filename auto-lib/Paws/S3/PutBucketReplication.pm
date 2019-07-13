@@ -2,8 +2,10 @@
 package Paws::S3::PutBucketReplication;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has ReplicationConfiguration => (is => 'ro', isa => 'Paws::S3::ReplicationConfiguration', required => 1);
+  has Token => (is => 'ro', isa => 'Str', header_name => 'x-amz-bucket-object-lock-token', traits => ['ParamInHeader']);
 
   use MooseX::ClassAttribute;
 
@@ -49,14 +51,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ReplicaKmsKeyID => 'MyReplicaKmsKeyID',    # OPTIONAL
               },    # OPTIONAL
               StorageClass => 'STANDARD'
-              , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA; OPTIONAL
+              , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, GLACIER, DEEP_ARCHIVE; OPTIONAL
             },
-            Prefix                  => 'MyPrefix',
             Status                  => 'Enabled',    # values: Enabled, Disabled
-            ID                      => 'MyID',       # OPTIONAL
+            DeleteMarkerReplication => {
+              Status => 'Enabled',    # values: Enabled, Disabled; OPTIONAL
+            },    # OPTIONAL
+            Filter => {
+              And => {
+                Prefix => 'MyPrefix',    # OPTIONAL
+                Tags   => [
+                  {
+                    Key   => 'MyObjectKey',    # min: 1
+                    Value => 'MyValue',
+
+                  },
+                  ...                          # OPTIONAL
+                ],                             # OPTIONAL
+              },    # OPTIONAL
+              Prefix => 'MyPrefix',    # OPTIONAL
+              Tag    => {
+                Key   => 'MyObjectKey',    # min: 1
+                Value => 'MyValue',
+
+              },    # OPTIONAL
+            },    # OPTIONAL
+            ID                      => 'MyID',        # OPTIONAL
+            Prefix                  => 'MyPrefix',    # OPTIONAL
+            Priority                => 1,             # OPTIONAL
             SourceSelectionCriteria => {
               SseKmsEncryptedObjects => {
-                Status => 'Enabled',                 # values: Enabled, Disabled
+                Status => 'Enabled',    # values: Enabled, Disabled
 
               },    # OPTIONAL
             },    # OPTIONAL
@@ -65,7 +90,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],
 
       },
-      ContentMD5 => 'MyContentMD5',    # OPTIONAL
+      ContentLength => 1,                      # OPTIONAL
+      ContentMD5    => 'MyContentMD5',         # OPTIONAL
+      Token         => 'MyObjectLockToken',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -80,15 +107,30 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 
 
+=head2 ContentLength => Int
+
+Size of the body in bytes.
+
+
+
 =head2 ContentMD5 => Str
 
-
+The base64-encoded 128-bit MD5 digest of the data. You must use this
+header as a message integrity check to verify that the request body was
+not corrupted in transit.
 
 
 
 =head2 B<REQUIRED> ReplicationConfiguration => L<Paws::S3::ReplicationConfiguration>
 
 
+
+
+
+=head2 Token => Str
+
+A token that allows Amazon S3 object lock to be enabled for an existing
+bucket.
 
 
 

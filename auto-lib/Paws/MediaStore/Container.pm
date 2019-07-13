@@ -1,5 +1,6 @@
 package Paws::MediaStore::Container;
   use Moose;
+  has AccessLoggingEnabled => (is => 'ro', isa => 'Bool');
   has ARN => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has Endpoint => (is => 'ro', isa => 'Str');
@@ -24,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaStore::Container object:
 
-  $service_obj->Method(Att1 => { ARN => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { AccessLoggingEnabled => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaStore::Container object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ARN
+  $result->Att1->AccessLoggingEnabled
 
 =head1 DESCRIPTION
 
@@ -39,6 +40,16 @@ This section describes operations that you can perform on an AWS
 Elemental MediaStore container.
 
 =head1 ATTRIBUTES
+
+
+=head2 AccessLoggingEnabled => Bool
+
+  The state of access logging on the container. This value is C<false> by
+default, indicating that AWS Elemental MediaStore does not send access
+logs to Amazon CloudWatch Logs. When you enable access logging on the
+container, MediaStore changes this value to C<true>, indicating that
+the service delivers access logs for objects stored in that container
+to CloudWatch Logs.
 
 
 =head2 ARN => Str

@@ -318,6 +318,98 @@ package Paws::Neptune;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllDBClusterParameterGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterParameterGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterParameterGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterParameterGroups }, @{ $next_result->DBClusterParameterGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusterParameterGroups') foreach (@{ $result->DBClusterParameterGroups });
+        $result = $self->DescribeDBClusterParameterGroups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusterParameterGroups') foreach (@{ $result->DBClusterParameterGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterParameters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterParameters(@_, Marker => $next_result->Marker);
+        push @{ $result->Parameters }, @{ $next_result->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+        $result = $self->DescribeDBClusterParameters(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusters(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusters }, @{ $next_result->DBClusters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusters') foreach (@{ $result->DBClusters });
+        $result = $self->DescribeDBClusters(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusters') foreach (@{ $result->DBClusters });
+    }
+
+    return undef
+  }
+  sub DescribeAllDBClusterSnapshots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterSnapshots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterSnapshots(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterSnapshots }, @{ $next_result->DBClusterSnapshots };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusterSnapshots') foreach (@{ $result->DBClusterSnapshots });
+        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusterSnapshots') foreach (@{ $result->DBClusterSnapshots });
+    }
+
+    return undef
+  }
   sub DescribeAllDBEngineVersions {
     my $self = shift;
 
@@ -525,6 +617,29 @@ package Paws::Neptune;
 
     return undef
   }
+  sub DescribeAllPendingMaintenanceActions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePendingMaintenanceActions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribePendingMaintenanceActions(@_, Marker => $next_result->Marker);
+        push @{ $result->PendingMaintenanceActions }, @{ $next_result->PendingMaintenanceActions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'PendingMaintenanceActions') foreach (@{ $result->PendingMaintenanceActions });
+        $result = $self->DescribePendingMaintenanceActions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'PendingMaintenanceActions') foreach (@{ $result->PendingMaintenanceActions });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBParameterGroup CreateDBSubnetGroup CreateEventSubscription DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSubnetGroup DeleteEventSubscription DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBParameterGroups DescribeDBParameters DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeValidDBInstanceModifications FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSubnetGroup ModifyEventSubscription PromoteReadReplicaDBCluster RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime / }
@@ -578,8 +693,6 @@ reference, the parameter descriptions indicate whether a command is
 applied immediately, on the next instance reboot, or during the
 maintenance window. The reference structure is as follows, and we list
 following some related topics from the user guide.
-
-B<Amazon Neptune API Reference>
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31>
 
@@ -717,84 +830,7 @@ To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
 C<SourceDBClusterSnapshotIdentifier> must be the Amazon Resource Name
 (ARN) of the shared DB cluster snapshot.
 
-You can copy an encrypted DB cluster snapshot from another AWS Region.
-In that case, the AWS Region where you call the
-C<CopyDBClusterSnapshot> action is the destination AWS Region for the
-encrypted DB cluster snapshot to be copied to. To copy an encrypted DB
-cluster snapshot from another AWS Region, you must provide the
-following values:
-
-=over
-
-=item *
-
-C<KmsKeyId> - The AWS Key Management System (AWS KMS) key identifier
-for the key to use to encrypt the copy of the DB cluster snapshot in
-the destination AWS Region.
-
-=item *
-
-C<PreSignedUrl> - A URL that contains a Signature Version 4 signed
-request for the C<CopyDBClusterSnapshot> action to be called in the
-source AWS Region where the DB cluster snapshot is copied from. The
-pre-signed URL must be a valid request for the C<CopyDBClusterSnapshot>
-API action that can be executed in the source AWS Region that contains
-the encrypted DB cluster snapshot to be copied.
-
-The pre-signed URL request must contain the following parameter values:
-
-=over
-
-=item *
-
-C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-copy of the DB cluster snapshot in the destination AWS Region. This is
-the same identifier for both the C<CopyDBClusterSnapshot> action that
-is called in the destination AWS Region, and the action contained in
-the pre-signed URL.
-
-=item *
-
-C<DestinationRegion> - The name of the AWS Region that the DB cluster
-snapshot will be created in.
-
-=item *
-
-C<SourceDBClusterSnapshotIdentifier> - The DB cluster snapshot
-identifier for the encrypted DB cluster snapshot to be copied. This
-identifier must be in the Amazon Resource Name (ARN) format for the
-source AWS Region. For example, if you are copying an encrypted DB
-cluster snapshot from the us-west-2 AWS Region, then your
-C<SourceDBClusterSnapshotIdentifier> looks like the following example:
-C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:neptune-cluster1-snapshot-20161115>.
-
-=back
-
-To learn how to generate a Signature Version 4 signed request, see
-Authenticating Requests: Using Query Parameters (AWS Signature Version
-4)
-(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
-and Signature Version 4 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
-
-=item *
-
-C<TargetDBClusterSnapshotIdentifier> - The identifier for the new copy
-of the DB cluster snapshot in the destination AWS Region.
-
-=item *
-
-C<SourceDBClusterSnapshotIdentifier> - The DB cluster snapshot
-identifier for the encrypted DB cluster snapshot to be copied. This
-identifier must be in the ARN format for the source AWS Region and is
-the same value as the C<SourceDBClusterSnapshotIdentifier> in the
-pre-signed URL.
-
-=back
-
-To cancel the copy operation once it is in progress, delete the target
-DB cluster snapshot identified by C<TargetDBClusterSnapshotIdentifier>
-while that DB cluster snapshot is in "copying" status.
+You can't copy from one AWS Region to another.
 
 
 =head2 CopyDBParameterGroup
@@ -839,6 +875,8 @@ Copies the specified DB parameter group.
 
 =item [DBSubnetGroupName => Str]
 
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
+
 =item [EnableIAMDatabaseAuthentication => Bool]
 
 =item [EngineVersion => Str]
@@ -878,9 +916,7 @@ Creates a new Amazon Neptune DB cluster.
 
 You can use the C<ReplicationSourceIdentifier> parameter to create the
 DB cluster as a Read Replica of another DB cluster or Amazon Neptune DB
-instance. For cross-region replication where the DB cluster identified
-by C<ReplicationSourceIdentifier> is encrypted, you must also specify
-the C<PreSignedUrl> parameter.
+instance.
 
 
 =head2 CreateDBClusterParameterGroup
@@ -1256,26 +1292,8 @@ C<failed>, C<incompatible-restore>, or C<incompatible-network>, you can
 only delete it when the C<SkipFinalSnapshot> parameter is set to
 C<true>.
 
-If the specified DB instance is part of a DB cluster, you can't delete
-the DB instance if both of the following conditions are true:
-
-=over
-
-=item *
-
-The DB cluster is a Read Replica of another DB cluster.
-
-=item *
-
-The DB instance is the only instance in the DB cluster.
-
-=back
-
-To delete a DB instance in this case, first call the
-PromoteReadReplicaDBCluster API action to promote the DB cluster so
-it's no longer a Read Replica. After the promotion completes, then call
-the C<DeleteDBInstance> API action to delete the final instance in the
-DB cluster.
+You can't delete a DB instance if it is the only instance in the DB
+cluster.
 
 
 =head2 DeleteDBParameterGroup
@@ -1850,6 +1868,8 @@ Lists all tags on an Amazon Neptune resource.
 
 =item [BackupRetentionPeriod => Int]
 
+=item [CloudwatchLogsExportConfiguration => L<Paws::Neptune::CloudwatchLogsExportConfiguration>]
+
 =item [DBClusterParameterGroupName => Str]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
@@ -2150,7 +2170,7 @@ Each argument is described in detail in: L<Paws::Neptune::PromoteReadReplicaDBCl
 
 Returns: a L<Paws::Neptune::PromoteReadReplicaDBClusterResult> instance
 
-Promotes a Read Replica DB cluster to a standalone DB cluster.
+Not supported.
 
 
 =head2 RebootDBInstance
@@ -2305,7 +2325,11 @@ or C<RebootDBInstance> request.
 
 =item [DatabaseName => Str]
 
+=item [DBClusterParameterGroupName => Str]
+
 =item [DBSubnetGroupName => Str]
+
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 
@@ -2348,7 +2372,11 @@ created with the default security group.
 
 =item SourceDBClusterIdentifier => Str
 
+=item [DBClusterParameterGroupName => Str]
+
 =item [DBSubnetGroupName => Str]
+
+=item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 
@@ -2395,6 +2423,54 @@ completed and the DB cluster is available.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllDBClusterParameterGroups(sub { },[DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusterParameterGroups([DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterParameterGroups, passing the object as the first parameter, and the string 'DBClusterParameterGroups' as the second parameter 
+
+If not, it will return a a L<Paws::Neptune::DBClusterParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterParameters(sub { },DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+
+=head2 DescribeAllDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::Neptune::DBClusterParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusters(sub { },[DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusters, passing the object as the first parameter, and the string 'DBClusters' as the second parameter 
+
+If not, it will return a a L<Paws::Neptune::DBClusterMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBClusterSnapshots(sub { },[DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+
+=head2 DescribeAllDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterSnapshots, passing the object as the first parameter, and the string 'DBClusterSnapshots' as the second parameter 
+
+If not, it will return a a L<Paws::Neptune::DBClusterSnapshotMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllDBEngineVersions(sub { },[DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
 
@@ -2502,6 +2578,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - OrderableDBInstanceOptions, passing the object as the first parameter, and the string 'OrderableDBInstanceOptions' as the second parameter 
 
 If not, it will return a a L<Paws::Neptune::OrderableDBInstanceOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPendingMaintenanceActions(sub { },[Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+
+=head2 DescribeAllPendingMaintenanceActions([Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PendingMaintenanceActions, passing the object as the first parameter, and the string 'PendingMaintenanceActions' as the second parameter 
+
+If not, it will return a a L<Paws::Neptune::PendingMaintenanceActionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

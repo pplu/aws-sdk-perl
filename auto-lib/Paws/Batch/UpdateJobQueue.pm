@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To update a job queue
     # This example disables a job queue so that it can be deleted.
     my $UpdateJobQueueResponse = $batch->UpdateJobQueue(
-      {
-        'JobQueue' => 'GPGPU',
-        'State'    => 'DISABLED'
-      }
+      'JobQueue' => 'GPGPU',
+      'State'    => 'DISABLED'
     );
 
     # Results:
@@ -71,10 +69,10 @@ The name or the Amazon Resource Name (ARN) of the job queue.
 
 The priority of the job queue. Job queues with a higher priority (or a
 higher integer value for the C<priority> parameter) are evaluated first
-when associated with same compute environment. Priority is determined
-in descending order, for example, a job queue with a priority value of
-C<10> is given scheduling preference over a job queue with a priority
-value of C<1>.
+when associated with the same compute environment. Priority is
+determined in descending order, for example, a job queue with a
+priority value of C<10> is given scheduling preference over a job queue
+with a priority value of C<1>.
 
 
 

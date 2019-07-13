@@ -43,12 +43,14 @@ Advanced audio normalization settings.
 
 =head2 Algorithm => Str
 
-  
+  Audio normalization algorithm to use. 1770-1 conforms to the CALM Act
+specification, 1770-2 conforms to the EBU R-128 specification.
 
 
 =head2 AlgorithmControl => Str
 
-  
+  When enabled the output audio is corrected using the chosen algorithm.
+If disabled, the audio will be measured but not adjusted.
 
 
 =head2 CorrectionGateLevel => Int
@@ -60,12 +62,13 @@ only applies when not using real_time_correction.
 
 =head2 LoudnessLogging => Str
 
-  
+  If set to LOG, log each output's audio track loudness to a CSV file.
 
 
 =head2 PeakCalculation => Str
 
-  
+  If set to TRUE_PEAK, calculate and log the TruePeak for each output's
+audio track loudness.
 
 
 =head2 TargetLkfs => Num

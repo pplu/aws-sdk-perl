@@ -49,9 +49,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 DependentJobName => Str
 
-The name of the job for which to retrieve triggers. The trigger that
-can start this job will be returned, and if there is no such trigger,
-all triggers will be returned.
+The name of the job to retrieve triggers for. The trigger that can
+start this job is returned, and if there is no such trigger, all
+triggers are returned.
 
 
 

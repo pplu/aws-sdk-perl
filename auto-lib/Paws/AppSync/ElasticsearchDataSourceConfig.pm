@@ -39,7 +39,7 @@ Describes an Elasticsearch data source configuration.
 
 =head2 B<REQUIRED> AwsRegion => Str
 
-  The AWS region.
+  The AWS Region.
 
 
 =head2 B<REQUIRED> Endpoint => Str

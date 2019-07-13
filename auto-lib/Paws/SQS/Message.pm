@@ -44,11 +44,44 @@ An Amazon SQS message.
 
 =head2 Attributes => L<Paws::SQS::MessageSystemAttributeMap>
 
-  C<SenderId>, C<SentTimestamp>, C<ApproximateReceiveCount>, and/or
-C<ApproximateFirstReceiveTimestamp>. C<SentTimestamp> and
-C<ApproximateFirstReceiveTimestamp> are each returned as an integer
-representing the epoch time (http://en.wikipedia.org/wiki/Unix_time) in
-milliseconds.
+  A map of the attributes requested in C< ReceiveMessage > to their
+respective values. Supported attributes:
+
+=over
+
+=item *
+
+C<ApproximateReceiveCount>
+
+=item *
+
+C<ApproximateFirstReceiveTimestamp>
+
+=item *
+
+C<MessageDeduplicationId>
+
+=item *
+
+C<MessageGroupId>
+
+=item *
+
+C<SenderId>
+
+=item *
+
+C<SentTimestamp>
+
+=item *
+
+C<SequenceNumber>
+
+=back
+
+C<ApproximateFirstReceiveTimestamp> and C<SentTimestamp> are each
+returned as an integer representing the epoch time
+(http://en.wikipedia.org/wiki/Unix_time) in milliseconds.
 
 
 =head2 Body => Str
@@ -73,8 +106,8 @@ digest. For information about MD5, see RFC1321
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
   Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
-For more information, see Message Attribute Items and Validation
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation)
+For more information, see Amazon SQS Message Attributes
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 

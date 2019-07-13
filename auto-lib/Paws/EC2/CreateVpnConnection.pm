@@ -4,8 +4,9 @@ package Paws::EC2::CreateVpnConnection;
   has CustomerGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Options => (is => 'ro', isa => 'Paws::EC2::VpnConnectionOptionsSpecification', traits => ['NameInRequest'], request_name => 'options' );
+  has TransitGatewayId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str', required => 1);
-  has VpnGatewayId => (is => 'ro', isa => 'Str', required => 1);
+  has VpnGatewayId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -34,7 +35,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateVpnConnectionResult = $ec2->CreateVpnConnection(
       CustomerGatewayId => 'MyString',
       Type              => 'MyString',
-      VpnGatewayId      => 'MyString',
       DryRun            => 1,            # OPTIONAL
       Options           => {
         StaticRoutesOnly => 1,
@@ -46,6 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],                               # OPTIONAL
       },    # OPTIONAL
+      TransitGatewayId => 'MyString',    # OPTIONAL
+      VpnGatewayId     => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -80,15 +82,23 @@ The options for the VPN connection.
 
 
 
+=head2 TransitGatewayId => Str
+
+The ID of the transit gateway. If you specify a transit gateway, you
+cannot specify a virtual private gateway.
+
+
+
 =head2 B<REQUIRED> Type => Str
 
 The type of VPN connection (C<ipsec.1>).
 
 
 
-=head2 B<REQUIRED> VpnGatewayId => Str
+=head2 VpnGatewayId => Str
 
-The ID of the virtual private gateway.
+The ID of the virtual private gateway. If you specify a virtual private
+gateway, you cannot specify a transit gateway.
 
 
 

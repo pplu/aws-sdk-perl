@@ -59,7 +59,7 @@ The friendly name of the member account.
 The email address of the owner to assign to the new member account.
 This email address must not already be associated with another AWS
 account. You must use a valid email address to complete account
-creation. You cannot access the root user of the account or remove an
+creation. You can't access the root user of the account or remove an
 account that was created with an invalid email address.
 
 
@@ -68,15 +68,15 @@ account that was created with an invalid email address.
 
 If set to C<ALLOW>, the new account enables IAM users to access account
 billing information I<if> they have the required permissions. If set to
-C<DENY>, then only the root user of the new account can access account
+C<DENY>, only the root user of the new account can access account
 billing information. For more information, see Activating Access to the
 Billing and Cost Management Console
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
 in the I<AWS Billing and Cost Management User Guide>.
 
-If you do not specify this parameter, the value defaults to ALLOW, and
-IAM users and roles with the required permissions can access billing
-information for the new account.
+If you don't specify this parameter, the value defaults to C<ALLOW>,
+and IAM users and roles with the required permissions can access
+billing information for the new account.
 
 Valid values are: C<"ALLOW">, C<"DENY">
 
@@ -84,23 +84,23 @@ Valid values are: C<"ALLOW">, C<"DENY">
 
 (Optional)
 
-The name of an IAM role that Organizations automatically preconfigures
-in the new member account. This role trusts the master account,
-allowing users in the master account to assume the role, as permitted
-by the master account administrator. The role has administrator
-permissions in the new member account.
+The name of an IAM role that AWS Organizations automatically
+preconfigures in the new member account. This role trusts the master
+account, allowing users in the master account to assume the role, as
+permitted by the master account administrator. The role has
+administrator permissions in the new member account.
 
-If you do not specify this parameter, the role name defaults to
+If you don't specify this parameter, the role name defaults to
 C<OrganizationAccountAccessRole>.
 
 For more information about how to use this role to access the member
 account, see Accessing and Administering the Member Accounts in Your
 Organization
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
 in the I<AWS Organizations User Guide>, and steps 2 and 3 in Tutorial:
 Delegate Access Across AWS Accounts Using IAM Roles
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
-in the I<IAM User Guide>.
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+in the I<IAM User Guide.>
 
 The regex pattern (http://wikipedia.org/wiki/regex) that is used to
 validate this parameter is a string of characters that can consist of

@@ -35,6 +35,11 @@ package Paws::MediaStore;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteCorsPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::DeleteLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeContainer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::DescribeContainer', @_);
@@ -50,9 +55,19 @@ package Paws::MediaStore;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::GetCorsPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::GetLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListContainers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::ListContainers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutContainerPolicy {
@@ -65,10 +80,58 @@ package Paws::MediaStore;
     my $call_object = $self->new_with_coercions('Paws::MediaStore::PutCorsPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutLifecyclePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::PutLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartAccessLogging {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::StartAccessLogging', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopAccessLogging {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::StopAccessLogging', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaStore::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
+  sub ListAllContainers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListContainers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListContainers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Containers }, @{ $next_result->Containers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Containers') foreach (@{ $result->Containers });
+        $result = $self->ListContainers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Containers') foreach (@{ $result->Containers });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DeleteCorsPolicy DescribeContainer GetContainerPolicy GetCorsPolicy ListContainers PutContainerPolicy PutCorsPolicy / }
+  sub operations { qw/CreateContainer DeleteContainer DeleteContainerPolicy DeleteCorsPolicy DeleteLifecyclePolicy DescribeContainer GetContainerPolicy GetCorsPolicy GetLifecyclePolicy ListContainers ListTagsForResource PutContainerPolicy PutCorsPolicy PutLifecyclePolicy StartAccessLogging StopAccessLogging TagResource UntagResource / }
 
 1;
 
@@ -110,6 +173,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =over
 
 =item ContainerName => Str
+
+=item [Tags => ArrayRef[L<Paws::MediaStore::Tag>]]
 
 
 =back
@@ -178,6 +243,23 @@ C<MediaStore:DeleteCorsPolicy> action. The container owner has this
 permission by default and can grant this permission to others.
 
 
+=head2 DeleteLifecyclePolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::DeleteLifecyclePolicy>
+
+Returns: a L<Paws::MediaStore::DeleteLifecyclePolicyOutput> instance
+
+Removes an object lifecycle policy from a container. It takes up to 20
+minutes for the change to take effect.
+
+
 =head2 DescribeContainer
 
 =over
@@ -240,6 +322,22 @@ C<MediaStore:GetCorsPolicy> action. By default, the container owner has
 this permission and can grant it to others.
 
 
+=head2 GetLifecyclePolicy
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::GetLifecyclePolicy>
+
+Returns: a L<Paws::MediaStore::GetLifecyclePolicyOutput> instance
+
+Retrieves the object lifecycle policy that is assigned to a container.
+
+
 =head2 ListContainers
 
 =over
@@ -266,6 +364,22 @@ value). The next set of responses appears, with a token if there are
 still more containers to receive.
 
 See also DescribeContainer, which gets the properties of one container.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item Resource => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::ListTagsForResource>
+
+Returns: a L<Paws::MediaStore::ListTagsForResourceOutput> instance
+
+Returns a list of the tags assigned to the specified container.
 
 
 =head2 PutContainerPolicy
@@ -322,12 +436,133 @@ The policy can contain up to 398,000 characters. You can add up to 100
 rules to a CORS policy. If more than one rule applies, the service uses
 the first applicable rule listed.
 
+To learn more about CORS, see Cross-Origin Resource Sharing (CORS) in
+AWS Elemental MediaStore
+(https://docs.aws.amazon.com/mediastore/latest/ug/cors-policy.html).
+
+
+=head2 PutLifecyclePolicy
+
+=over
+
+=item ContainerName => Str
+
+=item LifecyclePolicy => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::PutLifecyclePolicy>
+
+Returns: a L<Paws::MediaStore::PutLifecyclePolicyOutput> instance
+
+Writes an object lifecycle policy to a container. If the container
+already has an object lifecycle policy, the service replaces the
+existing policy with the new policy. It takes up to 20 minutes for the
+change to take effect.
+
+For information about how to construct an object lifecycle policy, see
+Components of an Object Lifecycle Policy
+(https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html).
+
+
+=head2 StartAccessLogging
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::StartAccessLogging>
+
+Returns: a L<Paws::MediaStore::StartAccessLoggingOutput> instance
+
+Starts access logging on the specified container. When you enable
+access logging on a container, MediaStore delivers access logs for
+objects stored in that container to Amazon CloudWatch Logs.
+
+
+=head2 StopAccessLogging
+
+=over
+
+=item ContainerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::StopAccessLogging>
+
+Returns: a L<Paws::MediaStore::StopAccessLoggingOutput> instance
+
+Stops access logging on the specified container. When you stop access
+logging on a container, MediaStore stops sending access logs to Amazon
+CloudWatch Logs. These access logs are not saved and are not
+retrievable.
+
+
+=head2 TagResource
+
+=over
+
+=item Resource => Str
+
+=item Tags => ArrayRef[L<Paws::MediaStore::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::TagResource>
+
+Returns: a L<Paws::MediaStore::TagResourceOutput> instance
+
+Adds tags to the specified AWS Elemental MediaStore container. Tags are
+key:value pairs that you can associate with AWS resources. For example,
+the tag key might be "customer" and the tag value might be "companyA."
+You can specify one or more tags to add to each container. You can add
+up to 50 tags to each container. For more information about tagging,
+including naming and usage conventions, see Tagging Resources in
+MediaStore (https://aws.amazon.com/documentation/mediastore/tagging).
+
+
+=head2 UntagResource
+
+=over
+
+=item Resource => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaStore::UntagResource>
+
+Returns: a L<Paws::MediaStore::UntagResourceOutput> instance
+
+Removes tags from the specified container. You can specify one or more
+tags to remove.
+
 
 
 
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllContainers(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllContainers([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Containers, passing the object as the first parameter, and the string 'Containers' as the second parameter 
+
+If not, it will return a a L<Paws::MediaStore::ListContainersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

@@ -1,9 +1,9 @@
 package Paws::Pinpoint::ActivityResponse;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str');
-  has CampaignId => (is => 'ro', isa => 'Str');
+  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
+  has CampaignId => (is => 'ro', isa => 'Str', required => 1);
   has End => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str', required => 1);
   has Result => (is => 'ro', isa => 'Str');
   has ScheduledStart => (is => 'ro', isa => 'Str');
   has Start => (is => 'ro', isa => 'Str');
@@ -43,78 +43,83 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-Activity definition
+Provides information about an activity that was performed by a
+campaign.
 
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationId => Str
+=head2 B<REQUIRED> ApplicationId => Str
 
-  The ID of the application to which the campaign applies.
+  The unique identifier for the application that the campaign applies to.
 
 
-=head2 CampaignId => Str
+=head2 B<REQUIRED> CampaignId => Str
 
-  The ID of the campaign to which the activity applies.
+  The unique identifier for the campaign that the activity applies to.
 
 
 =head2 End => Str
 
-  The actual time the activity was marked CANCELLED or COMPLETED.
-Provided in ISO 8601 format.
+  The actual time, in ISO 8601 format, when the activity was marked
+CANCELLED or COMPLETED.
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
-  The unique activity ID.
+  The unique identifier for the activity.
 
 
 =head2 Result => Str
 
-  Indicates whether the activity succeeded. Valid values: SUCCESS, FAIL
+  Specifies whether the activity succeeded. Possible values are SUCCESS
+and FAIL.
 
 
 =head2 ScheduledStart => Str
 
-  The scheduled start time for the activity in ISO 8601 format.
+  The scheduled start time, in ISO 8601 format, for the activity.
 
 
 =head2 Start => Str
 
-  The actual start time of the activity in ISO 8601 format.
+  The actual start time, in ISO 8601 format, of the activity.
 
 
 =head2 State => Str
 
-  The state of the activity. Valid values: PENDING, INITIALIZING,
-RUNNING, PAUSED, CANCELLED, COMPLETED
+  The state of the activity. Possible values are: PENDING, INITIALIZING,
+RUNNING, PAUSED, CANCELLED, and COMPLETED.
 
 
 =head2 SuccessfulEndpointCount => Int
 
-  The total number of endpoints to which the campaign successfully
-delivered messages.
+  The total number of endpoints that the campaign successfully delivered
+messages to.
 
 
 =head2 TimezonesCompletedCount => Int
 
-  The total number of timezones completed.
+  The total number of time zones that were completed.
 
 
 =head2 TimezonesTotalCount => Int
 
-  The total number of unique timezones present in the segment.
+  The total number of unique time zones that are in the segment for the
+campaign.
 
 
 =head2 TotalEndpointCount => Int
 
-  The total number of endpoints to which the campaign attempts to deliver
-messages.
+  The total number of endpoints that the campaign attempted to deliver
+messages to.
 
 
 =head2 TreatmentId => Str
 
-  The ID of a variation of the campaign used for A/B testing.
+  The unique identifier for the campaign treatment that the activity
+applies to. A treatment is a variation of a campaign that's used for
+A/B testing of a campaign.
 
 
 

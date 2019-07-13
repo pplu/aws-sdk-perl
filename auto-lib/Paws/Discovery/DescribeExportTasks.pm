@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExportIds => [ 'MyConfigurationsExportId', ... ],    # OPTIONAL
       Filters => [
         {
-          condition => 'MyCondition',
-          name      => 'MyFilterName',
-          values    => [ 'MyFilterValue', ... ],
+          Condition => 'MyCondition',
+          Name      => 'MyFilterName',
+          Values    => [ 'MyFilterValue', ... ],
 
         },
         ...

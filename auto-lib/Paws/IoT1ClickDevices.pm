@@ -54,9 +54,24 @@ package Paws::IoT1ClickDevices;
     my $call_object = $self->new_with_coercions('Paws::IoT1ClickDevices::ListDevices', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickDevices::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickDevices::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UnclaimDevice {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT1ClickDevices::UnclaimDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT1ClickDevices::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDeviceState {
@@ -65,9 +80,55 @@ package Paws::IoT1ClickDevices;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllDeviceEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeviceEvents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDeviceEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Events }, @{ $next_result->Events };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+        $result = $self->ListDeviceEvents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Events') foreach (@{ $result->Events });
+    }
+
+    return undef
+  }
+  sub ListAllDevices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDevices(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDevices(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Devices }, @{ $next_result->Devices };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Devices') foreach (@{ $result->Devices });
+        $result = $self->ListDevices(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Devices') foreach (@{ $result->Devices });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/ClaimDevicesByClaimCode DescribeDevice FinalizeDeviceClaim GetDeviceMethods InitiateDeviceClaim InvokeDeviceMethod ListDeviceEvents ListDevices UnclaimDevice UpdateDeviceState / }
+  sub operations { qw/ClaimDevicesByClaimCode DescribeDevice FinalizeDeviceClaim GetDeviceMethods InitiateDeviceClaim InvokeDeviceMethod ListDeviceEvents ListDevices ListTagsForResource TagResource UnclaimDevice UntagResource UpdateDeviceState / }
 
 1;
 
@@ -95,9 +156,11 @@ Paws::IoT1ClickDevices - Perl Interface to AWS AWS IoT 1-Click Devices Service
 
 =head1 DESCRIPTION
 
-Stub description
+Describes all of the AWS IoT 1-Click device-related API operations for
+the service. Also provides sample requests, responses, and errors for
+the supported web services protocols.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devices.iot1click-2018-05-14>
 
 
 =head1 METHODS
@@ -141,6 +204,8 @@ the details of the device.
 =over
 
 =item DeviceId => Str
+
+=item [Tags => L<Paws::IoT1ClickDevices::__mapOf__string>]
 
 
 =back
@@ -260,6 +325,43 @@ Returns: a L<Paws::IoT1ClickDevices::ListDevicesResponse> instance
 Lists the 1-Click compatible devices associated with your AWS account.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickDevices::ListTagsForResource>
+
+Returns: a L<Paws::IoT1ClickDevices::ListTagsForResourceResponse> instance
+
+Lists the tags associated with the specified resource ARN.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::IoT1ClickDevices::__mapOf__string>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickDevices::TagResource>
+
+Returns: nothing
+
+Adds or updates the tags associated with the resource ARN. See AWS IoT
+1-Click Service Limits
+(https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits)
+for the maximum number of tags allowed per resource.
+
+
 =head2 UnclaimDevice
 
 =over
@@ -274,6 +376,25 @@ Each argument is described in detail in: L<Paws::IoT1ClickDevices::UnclaimDevice
 Returns: a L<Paws::IoT1ClickDevices::UnclaimDeviceResponse> instance
 
 Disassociates a device from your AWS account using its device ID.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT1ClickDevices::UntagResource>
+
+Returns: nothing
+
+Using tag keys, deletes the tags (key/value pairs) associated with the
+specified resource ARN.
 
 
 =head2 UpdateDeviceState
@@ -300,6 +421,30 @@ disables the device given a device ID.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllDeviceEvents(sub { },DeviceId => Str, FromTimeStamp => Str, ToTimeStamp => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDeviceEvents(DeviceId => Str, FromTimeStamp => Str, ToTimeStamp => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::IoT1ClickDevices::ListDeviceEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDevices(sub { },[DeviceType => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDevices([DeviceType => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Devices, passing the object as the first parameter, and the string 'Devices' as the second parameter 
+
+If not, it will return a a L<Paws::IoT1ClickDevices::ListDevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

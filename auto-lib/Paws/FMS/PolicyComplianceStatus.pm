@@ -1,6 +1,7 @@
 package Paws::FMS::PolicyComplianceStatus;
   use Moose;
   has EvaluationResults => (is => 'ro', isa => 'ArrayRef[Paws::FMS::EvaluationResult]');
+  has IssueInfoMap => (is => 'ro', isa => 'Paws::FMS::IssueInfoMap');
   has LastUpdated => (is => 'ro', isa => 'Str');
   has MemberAccount => (is => 'ro', isa => 'Str');
   has PolicyId => (is => 'ro', isa => 'Str');
@@ -46,6 +47,14 @@ are not protected by the policy.
 =head2 EvaluationResults => ArrayRef[L<Paws::FMS::EvaluationResult>]
 
   An array of C<EvaluationResult> objects.
+
+
+=head2 IssueInfoMap => L<Paws::FMS::IssueInfoMap>
+
+  Details about problems with dependent services, such as AWS WAF or AWS
+Config, that are causing a resource to be non-compliant. The details
+include the name of the dependent service and the error message
+received that indicates the problem with the service.
 
 
 =head2 LastUpdated => Str

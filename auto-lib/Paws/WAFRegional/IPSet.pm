@@ -34,16 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFRegional
 =head1 DESCRIPTION
 
 Contains one or more IP addresses or blocks of IP addresses specified
-in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports /8,
-/16, /24, and /32 IP address ranges for IPv4, and /24, /32, /48, /56,
-/64 and /128 for IPv6.
+in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports
+IPv4 address ranges: /8 and any range between /16 through /32. AWS WAF
+supports IPv6 address ranges: /24, /32, /48, /56, /64, and /128.
 
 To specify an individual IP address, you specify the four-part IP
 address followed by a C</32>, for example, 192.0.2.0/31. To block a
-range of IP addresses, you can specify a C</128>, C</64>, C</56>,
-C</48>, C</32>, C</24>, C</16>, or C</8> CIDR. For more information
-about CIDR notation, see the Wikipedia entry Classless Inter-Domain
-Routing (https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+range of IP addresses, you can specify /8 or any range between /16
+through /32 (for IPv4) or /24, /32, /48, /56, /64, or /128 (for IPv6).
+For more information about CIDR notation, see the Wikipedia entry
+Classless Inter-Domain Routing
+(https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 =head1 ATTRIBUTES
 

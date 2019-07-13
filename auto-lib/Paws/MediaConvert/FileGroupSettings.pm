@@ -1,6 +1,7 @@
 package Paws::MediaConvert::FileGroupSettings;
   use Moose;
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
+  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::FileGroupSettings object:
 
-  $service_obj->Method(Att1 => { Destination => $value, ..., Destination => $value  });
+  $service_obj->Method(Att1 => { Destination => $value, ..., DestinationSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -44,6 +45,12 @@ output filename base. Destination accepts format identifiers. If you do
 not specify the base filename in the URI, the service will use the
 filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
+
+
+=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+
+  Settings associated with the destination. Will vary based on the type
+of destination
 
 
 

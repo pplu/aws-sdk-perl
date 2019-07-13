@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         And => [ <Expression>, ... ],    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
-          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY; OPTIONAL
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID; OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
         Not  => <Expression>,
@@ -133,11 +133,11 @@ TENANCY
 
 =back
 
-C<GetReservationUtilization> uses the same C< Expression
+C<GetReservationUtilization> uses the same Expression
 (http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
-> object as the other operations, but only C<AND> is supported among
-each dimension, and nesting is supported up to only one level deep. If
-there are multiple values for a dimension, they are OR'd together.
+object as the other operations, but only C<AND> is supported among each
+dimension, and nesting is supported up to only one level deep. If there
+are multiple values for a dimension, they are OR'd together.
 
 
 
@@ -148,7 +148,10 @@ isn't set, the response object doesn't include C<Granularity>, either
 C<MONTHLY> or C<DAILY>. If both C<GroupBy> and C<Granularity> aren't
 set, C<GetReservationUtilization> defaults to C<DAILY>.
 
-Valid values are: C<"DAILY">, C<"MONTHLY">
+The C<GetReservationUtilization> operation supports only C<DAILY> and
+C<MONTHLY> granularities.
+
+Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
 
@@ -166,12 +169,11 @@ maximum page size.
 
 =head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
 
-Sets the start and end dates for retrieving Reserved Instance (RI)
-utilization. The start date is inclusive, but the end date is
-exclusive. For example, if C<start> is C<2017-01-01> and C<end> is
-C<2017-05-01>, then the cost and usage data is retrieved from
-C<2017-01-01> up to and including C<2017-04-30> but not including
-C<2017-05-01>.
+Sets the start and end dates for retrieving RI utilization. The start
+date is inclusive, but the end date is exclusive. For example, if
+C<start> is C<2017-01-01> and C<end> is C<2017-05-01>, then the cost
+and usage data is retrieved from C<2017-01-01> up to and including
+C<2017-04-30> but not including C<2017-05-01>.
 
 
 

@@ -96,6 +96,98 @@ package Paws::MigrationHub;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllCreatedArtifacts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCreatedArtifacts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCreatedArtifacts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CreatedArtifactList }, @{ $next_result->CreatedArtifactList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CreatedArtifactList') foreach (@{ $result->CreatedArtifactList });
+        $result = $self->ListCreatedArtifacts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CreatedArtifactList') foreach (@{ $result->CreatedArtifactList });
+    }
+
+    return undef
+  }
+  sub ListAllDiscoveredResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDiscoveredResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDiscoveredResources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DiscoveredResourceList }, @{ $next_result->DiscoveredResourceList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DiscoveredResourceList') foreach (@{ $result->DiscoveredResourceList });
+        $result = $self->ListDiscoveredResources(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DiscoveredResourceList') foreach (@{ $result->DiscoveredResourceList });
+    }
+
+    return undef
+  }
+  sub ListAllMigrationTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMigrationTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListMigrationTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MigrationTaskSummaryList }, @{ $next_result->MigrationTaskSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MigrationTaskSummaryList') foreach (@{ $result->MigrationTaskSummaryList });
+        $result = $self->ListMigrationTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MigrationTaskSummaryList') foreach (@{ $result->MigrationTaskSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllProgressUpdateStreams {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProgressUpdateStreams(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListProgressUpdateStreams(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ProgressUpdateStreamSummaryList }, @{ $next_result->ProgressUpdateStreamSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ProgressUpdateStreamSummaryList') foreach (@{ $result->ProgressUpdateStreamSummaryList });
+        $result = $self->ListProgressUpdateStreams(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ProgressUpdateStreamSummaryList') foreach (@{ $result->ProgressUpdateStreamSummaryList });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssociateCreatedArtifact AssociateDiscoveredResource CreateProgressUpdateStream DeleteProgressUpdateStream DescribeApplicationState DescribeMigrationTask DisassociateCreatedArtifact DisassociateDiscoveredResource ImportMigrationTask ListCreatedArtifacts ListDiscoveredResources ListMigrationTasks ListProgressUpdateStreams NotifyApplicationState NotifyMigrationTaskState PutResourceAttributes / }
@@ -130,7 +222,7 @@ The AWS Migration Hub API methods help to obtain server and application
 migration status and integrate your resource-specific migration tool by
 providing a programmatic interface to Migration Hub.
 
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/migrationhub/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/migrationhub/>
 
 
 =head1 METHODS
@@ -654,6 +746,54 @@ found based on the provided details, call C<ListDiscoveredResources>.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllCreatedArtifacts(sub { },MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllCreatedArtifacts(MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CreatedArtifactList, passing the object as the first parameter, and the string 'CreatedArtifactList' as the second parameter 
+
+If not, it will return a a L<Paws::MigrationHub::ListCreatedArtifactsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDiscoveredResources(sub { },MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDiscoveredResources(MigrationTaskName => Str, ProgressUpdateStream => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DiscoveredResourceList, passing the object as the first parameter, and the string 'DiscoveredResourceList' as the second parameter 
+
+If not, it will return a a L<Paws::MigrationHub::ListDiscoveredResourcesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMigrationTasks(sub { },[MaxResults => Int, NextToken => Str, ResourceName => Str])
+
+=head2 ListAllMigrationTasks([MaxResults => Int, NextToken => Str, ResourceName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MigrationTaskSummaryList, passing the object as the first parameter, and the string 'MigrationTaskSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::MigrationHub::ListMigrationTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProgressUpdateStreams(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllProgressUpdateStreams([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ProgressUpdateStreamSummaryList, passing the object as the first parameter, and the string 'ProgressUpdateStreamSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::MigrationHub::ListProgressUpdateStreamsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

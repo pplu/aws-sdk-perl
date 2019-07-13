@@ -40,13 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # and VPC settings.
     my $OrderableDBInstanceOptionsMessage =
       $rds->DescribeOrderableDBInstanceOptions(
-      {
-        'DBInstanceClass' => 'db.t2.micro',
-        'Engine'          => 'mysql',
-        'EngineVersion'   => '5.6.27',
-        'LicenseModel'    => 'general-public-license',
-        'Vpc'             => true
-      }
+      'DBInstanceClass' => 'db.t2.micro',
+      'Engine'          => 'mysql',
+      'EngineVersion'   => '5.6.27',
+      'LicenseModel'    => 'general-public-license',
+      'Vpc'             => 1
       );
 
 
@@ -113,8 +111,7 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 Vpc => Bool
 
-The VPC filter value. Specify this parameter to show only the available
-VPC or non-VPC offerings.
+A value that indicates whether to show only VPC or non-VPC offerings.
 
 
 

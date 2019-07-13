@@ -80,7 +80,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 A list of names of API operations to evaluate in the simulation. Each
 operation is evaluated against each resource. Each operation must
-include the service identifier, such as C<iam:CreateUser>.
+include the service identifier, such as C<iam:CreateUser>. This
+operation does not support using wildcards (*) in an action name.
 
 
 
@@ -100,7 +101,7 @@ of an assumed role, federated user, or a service principal.
 
 A list of context keys and corresponding values for the simulation to
 use. Whenever a context key is evaluated in one of the simulated IAM
-permission policies, the corresponding value is supplied.
+permissions policies, the corresponding value is supplied.
 
 
 
@@ -115,16 +116,15 @@ indicate where the next call should start.
 
 =head2 MaxItems => Int
 
-(Optional) Use this only when paginating results to indicate the
-maximum number of items you want in the response. If additional items
-exist beyond the maximum you specify, the C<IsTruncated> response
-element is C<true>.
+Use this only when paginating results to indicate the maximum number of
+items you want in the response. If additional items exist beyond the
+maximum you specify, the C<IsTruncated> response element is C<true>.
 
-If you do not include this parameter, it defaults to 100. Note that IAM
-might return fewer results, even when there are more results available.
-In that case, the C<IsTruncated> response element returns C<true> and
-C<Marker> contains a value to include in the subsequent call that tells
-the service where to continue from.
+If you do not include this parameter, the number of items defaults to
+100. Note that IAM might return fewer results, even when there are more
+results available. In that case, the C<IsTruncated> response element
+returns C<true>, and C<Marker> contains a value to include in the
+subsequent call that tells the service where to continue from.
 
 
 
@@ -136,9 +136,9 @@ IAM policy. Do not include any resource-based policies in this
 parameter. Any resource-based policy must be submitted with the
 C<ResourcePolicy> parameter. The policies cannot be "scope-down"
 policies, such as you could include in a call to GetFederationToken
-(http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html)
+(https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html)
 or one of the AssumeRole
-(http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html)
+(https://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html)
 API operations. In other words, do not use policies designed to
 restrict what a user can do while using the temporary credentials.
 
@@ -170,7 +170,7 @@ return (\u000D)
 =head2 ResourceArns => ArrayRef[Str|Undef]
 
 A list of ARNs of AWS resources to include in the simulation. If this
-parameter is not provided then the value defaults to C<*> (all
+parameter is not provided, then the value defaults to C<*> (all
 resources). Each API in the C<ActionNames> parameter is evaluated for
 each resource in this list. The simulation determines the access result
 (allowed or denied) of each combination and reports it in the response.
@@ -186,7 +186,7 @@ input error.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
 
@@ -209,7 +209,7 @@ includes VPC, then you must supply the network-interface resource. If
 it includes an IP subnet, then you must specify the subnet resource.
 For more information on the EC2 scenario options, see Supported
 Platforms
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
 in the I<Amazon EC2 User Guide>.
 
 =over
@@ -257,16 +257,22 @@ instance, image, security-group, network-interface, subnet, volume
 
 =head2 ResourceOwner => Str
 
-An AWS account ID that specifies the owner of any simulated resource
-that does not identify its owner in the resource ARN, such as an S3
-bucket or object. If C<ResourceOwner> is specified, it is also used as
-the account owner of any C<ResourcePolicy> included in the simulation.
-If the C<ResourceOwner> parameter is not specified, then the owner of
-the resources and the resource policy defaults to the account of the
+An ARN representing the AWS account ID that specifies the owner of any
+simulated resource that does not identify its owner in the resource
+ARN. Examples of resource ARNs include an S3 bucket or object. If
+C<ResourceOwner> is specified, it is also used as the account owner of
+any C<ResourcePolicy> included in the simulation. If the
+C<ResourceOwner> parameter is not specified, then the owner of the
+resources and the resource policy defaults to the account of the
 identity provided in C<CallerArn>. This parameter is required only if
 you specify a resource-based policy and account that owns the resource
 is different from the account that owns the simulated calling user
 C<CallerArn>.
+
+The ARN for an account uses the following syntax:
+C<arn:aws:iam::I<AWS-account-ID>:root>. For example, to represent the
+account with the 112233445566 ID, use the following ARN:
+C<arn:aws:iam::112233445566-ID:root>.
 
 
 

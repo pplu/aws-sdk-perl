@@ -20,7 +20,7 @@ Paws::ServiceDiscovery::UpdateService - Arguments for method UpdateService on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UpdateService on the
-L<Amazon Route 53 Auto Naming|Paws::ServiceDiscovery> service. Use the attributes of this class
+L<AWS Cloud Map|Paws::ServiceDiscovery> service. Use the attributes of this class
 as arguments to method UpdateService.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateService.
@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         Description       => 'MyResourceDescription',    # max: 1024; OPTIONAL
         HealthCheckConfig => {
+          Type             => 'HTTP',              # values: HTTP, HTTPS, TCP
           FailureThreshold => 1,                   # min: 1, max: 10; OPTIONAL
           ResourcePath     => 'MyResourcePath',    # max: 255; OPTIONAL
-          Type => 'HTTP',    # values: HTTP, HTTPS, TCP; OPTIONAL
         },    # OPTIONAL
       },
 

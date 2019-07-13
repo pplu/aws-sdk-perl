@@ -2,6 +2,7 @@ package Paws::CognitoIdp::DomainDescriptionType;
   use Moose;
   has AWSAccountId => (is => 'ro', isa => 'Str');
   has CloudFrontDistribution => (is => 'ro', isa => 'Str');
+  has CustomDomainConfig => (is => 'ro', isa => 'Paws::CognitoIdp::CustomDomainConfigType');
   has Domain => (is => 'ro', isa => 'Str');
   has S3Bucket => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -50,6 +51,12 @@ A container for information about a domain.
 =head2 CloudFrontDistribution => Str
 
   The ARN of the CloudFront distribution.
+
+
+=head2 CustomDomainConfig => L<Paws::CognitoIdp::CustomDomainConfigType>
+
+  The configuration for a custom domain that hosts the sign-up and
+sign-in webpages for your application.
 
 
 =head2 Domain => Str

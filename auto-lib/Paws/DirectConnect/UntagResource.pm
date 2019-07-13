@@ -44,13 +44,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) of the Direct Connect resource.
+The Amazon Resource Name (ARN) of the resource.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The list of tag keys to remove.
+The tag keys of the tags to remove.
 
 
 

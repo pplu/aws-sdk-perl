@@ -47,12 +47,16 @@ C<On-Demand>.
 
 =head2 OnDemandTargetCapacity => Int
 
-  The number of On-Demand units to request.
+  The number of On-Demand units to request. If you specify a target
+capacity for Spot units, you cannot specify a target capacity for
+On-Demand units.
 
 
 =head2 SpotTargetCapacity => Int
 
-  The maximum number of Spot units to launch.
+  The maximum number of Spot units to launch. If you specify a target
+capacity for On-Demand units, you cannot specify a target capacity for
+Spot units.
 
 
 =head2 TotalTargetCapacity => Int

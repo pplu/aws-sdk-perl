@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $ListDetectorsResponse = $guardduty->ListDetectors(
-      MaxResults => 1,               # OPTIONAL
-      NextToken  => 'My__string',    # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -41,25 +41,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::GuardDuty::ListDetectorsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/ListDetectors>
 
 =head1 ATTRIBUTES
 
 
 =head2 MaxResults => Int
 
-You can use this parameter to indicate the maximum number of detectors
-that you want in the response.
+You can use this parameter to indicate the maximum number of items you
+want in the response. The default value is 50. The maximum value is 50.
 
 
 
 =head2 NextToken => Str
 
 You can use this parameter when paginating results. Set the value of
-this parameter to null on your first call to the ListDetectors action.
-For subsequent calls to the action fill nextToken in the request with
-the value of nextToken from the previous response to continue listing
-data.
+this parameter to null on your first call to the list action. For
+subsequent calls to the action fill nextToken in the request with the
+value of NextToken from the previous response to continue listing data.
 
 
 

@@ -32,22 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Env
 
 =head1 DESCRIPTION
 
-The parent object returned that contains your environment's
-configuration settings or any error information associated with your
-configuration settings.
+The results of a configuration update that applied environment
+variables.
 
 =head1 ATTRIBUTES
 
 
 =head2 Error => L<Paws::Lambda::EnvironmentError>
 
-  
+  Error messages for environment variables that couldn't be applied.
 
 
 =head2 Variables => L<Paws::Lambda::EnvironmentVariables>
 
-  The key-value pairs returned that represent your environment's
-configuration settings or error information.
+  Environment variable key-value pairs.
 
 
 

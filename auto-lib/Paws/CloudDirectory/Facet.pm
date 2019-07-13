@@ -1,5 +1,6 @@
 package Paws::CloudDirectory::Facet;
   use Moose;
+  has FacetStyle => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has ObjectType => (is => 'ro', isa => 'Str');
 1;
@@ -21,23 +22,31 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudDirectory::Facet object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., ObjectType => $value  });
+  $service_obj->Method(Att1 => { FacetStyle => $value, ..., ObjectType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirectory::Facet object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Name
+  $result->Att1->FacetStyle
 
 =head1 DESCRIPTION
 
 A structure that contains C<Name>, C<ARN>, C<Attributes>, C< Rules>,
 and C<ObjectTypes>. See Facets
-(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/whatarefacets.html)
+(https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_whatarefacets.html)
 for more information.
 
 =head1 ATTRIBUTES
+
+
+=head2 FacetStyle => Str
+
+  There are two different styles that you can define on any given facet,
+C<Static> and C<Dynamic>. For static facets, all attributes must be
+defined in the schema. For dynamic facets, attributes can be defined
+during data plane operations.
 
 
 =head2 Name => Str

@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example creates a Spot Instance data feed for your AWS account.
     my $CreateSpotDatafeedSubscriptionResult =
       $ec2->CreateSpotDatafeedSubscription(
-      {
-        'Bucket' => 'my-s3-bucket',
-        'Prefix' => 'spotdata'
-      }
+      'Bucket' => 'my-s3-bucket',
+      'Prefix' => 'spotdata'
       );
 
     # Results:

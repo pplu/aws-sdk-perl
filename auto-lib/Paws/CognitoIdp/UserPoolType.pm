@@ -5,6 +5,7 @@ package Paws::CognitoIdp::UserPoolType;
   has Arn => (is => 'ro', isa => 'Str');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has CustomDomain => (is => 'ro', isa => 'Str');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
   has Domain => (is => 'ro', isa => 'Str');
   has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
@@ -86,6 +87,17 @@ A container for information about the user pool.
 =head2 CreationDate => Str
 
   The date the user pool was created.
+
+
+=head2 CustomDomain => Str
+
+  A custom domain name that you provide to Amazon Cognito. This parameter
+applies only if you use a custom domain to host the sign-up and sign-in
+pages for your application. For example: C<auth.example.com>.
+
+For more information about adding a custom domain to your user pool,
+see Using Your Own Domain for the Hosted UI
+(https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html).
 
 
 =head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>
@@ -219,9 +231,9 @@ usernames when a user signs up.
 
 =head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>
 
-  The cost allocation tags for the user pool. For more information, see
-Adding Cost Allocation Tags to Your User Pool
-(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html)
+  The tags that are assigned to the user pool. A tag is a label that you
+can apply to user pools to categorize and manage them in different
+ways, such as by purpose, owner, environment, or other criteria.
 
 
 =head2 VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>

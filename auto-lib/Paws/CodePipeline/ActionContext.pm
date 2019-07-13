@@ -1,5 +1,6 @@
 package Paws::CodePipeline::ActionContext;
   use Moose;
+  has ActionExecutionId => (is => 'ro', isa => 'Str', request_name => 'actionExecutionId', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 1;
 
@@ -20,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ActionContext object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { ActionExecutionId => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ActionContext object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Name
+  $result->Att1->ActionExecutionId
 
 =head1 DESCRIPTION
 
@@ -35,6 +36,12 @@ Represents the context of an action within the stage of a pipeline to a
 job worker.
 
 =head1 ATTRIBUTES
+
+
+=head2 ActionExecutionId => Str
+
+  The system-generated unique ID that corresponds to an action's
+execution.
 
 
 =head2 Name => Str

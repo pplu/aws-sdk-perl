@@ -2,6 +2,7 @@
 package Paws::MediaConvert::DescribeEndpoints;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
+  has Mode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'mode');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   use MooseX::ClassAttribute;
@@ -31,6 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $mediaconvert = Paws->service('MediaConvert');
     my $DescribeEndpointsResponse = $mediaconvert->DescribeEndpoints(
       MaxResults => 1,               # OPTIONAL
+      Mode       => 'DEFAULT',       # OPTIONAL
       NextToken  => 'My__string',    # OPTIONAL
     );
 
@@ -52,6 +54,15 @@ Optional. Max number of endpoints, up to twenty, that will be returned
 at one time.
 
 
+
+=head2 Mode => Str
+
+Optional field, defaults to DEFAULT. Specify DEFAULT for this operation
+to return your endpoints if any exist, or to create an endpoint for you
+and return it if one doesn't already exist. Specify GET_ONLY to return
+your endpoints if any exist, or an empty list if none exist.
+
+Valid values are: C<"DEFAULT">, C<"GET_ONLY">
 
 =head2 NextToken => Str
 

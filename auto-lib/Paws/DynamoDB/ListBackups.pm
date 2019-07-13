@@ -1,6 +1,7 @@
 
 package Paws::DynamoDB::ListBackups;
   use Moose;
+  has BackupType => (is => 'ro', isa => 'Str');
   has ExclusiveStartBackupArn => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has TableName => (is => 'ro', isa => 'Str');
@@ -32,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $dynamodb = Paws->service('DynamoDB');
     my $ListBackupsOutput = $dynamodb->ListBackups(
+      BackupType              => 'USER',                   # OPTIONAL
       ExclusiveStartBackupArn => 'MyBackupArn',            # OPTIONAL
       Limit                   => 1,                        # OPTIONAL
       TableName               => 'MyTableName',            # OPTIONAL
@@ -51,13 +53,38 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 =head1 ATTRIBUTES
 
 
+=head2 BackupType => Str
+
+The backups from the table specified by C<BackupType> are listed.
+
+Where C<BackupType> can be:
+
+=over
+
+=item *
+
+C<USER> - On-demand backup created by you.
+
+=item *
+
+C<SYSTEM> - On-demand backup automatically created by DynamoDB.
+
+=item *
+
+C<ALL> - All types of on-demand backups (USER and SYSTEM).
+
+=back
+
+
+Valid values are: C<"USER">, C<"SYSTEM">, C<"AWS_BACKUP">, C<"ALL">
+
 =head2 ExclusiveStartBackupArn => Str
 
-C<LastEvaluatedBackupArn> is the ARN of the backup last evaluated when
-the current page of results was returned, inclusive of the current page
-of results. This value may be specified as the
-C<ExclusiveStartBackupArn> of a new C<ListBackups> operation in order
-to fetch the next page of results.
+C<LastEvaluatedBackupArn> is the Amazon Resource Name (ARN) of the
+backup last evaluated when the current page of results was returned,
+inclusive of the current page of results. This value may be specified
+as the C<ExclusiveStartBackupArn> of a new C<ListBackups> operation in
+order to fetch the next page of results.
 
 
 
@@ -69,7 +96,7 @@ Maximum number of backups to return at once.
 
 =head2 TableName => Str
 
-The backups from the table specified by TableName are listed.
+The backups from the table specified by C<TableName> are listed.
 
 
 

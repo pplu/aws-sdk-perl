@@ -4,6 +4,7 @@ package Paws::EC2::AllocateAddress;
   has Address => (is => 'ro', isa => 'Str');
   has Domain => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has PublicIpv4Pool => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -32,11 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To allocate an Elastic IP address for EC2-VPC
     # This example allocates an Elastic IP address to use with an instance in a
     # VPC.
-    my $AllocateAddressResult = $ec2->AllocateAddress(
-      {
-        'Domain' => 'vpc'
-      }
-    );
+    my $AllocateAddressResult = $ec2->AllocateAddress( 'Domain' => 'vpc' );
 
     # Results:
     my $AllocationId = $AllocateAddressResult->AllocationId;
@@ -63,7 +60,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 Address => Str
 
-[EC2-VPC] The Elastic IP address to recover.
+[EC2-VPC] The Elastic IP address to recover or an IPv4 address from an
+address pool.
 
 
 
@@ -81,6 +79,15 @@ Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+=head2 PublicIpv4Pool => Str
+
+The ID of an address pool that you own. Use this parameter to let
+Amazon EC2 select an address from the address pool. To specify a
+specific address from the address pool, use the C<Address> parameter
+instead.
 
 
 

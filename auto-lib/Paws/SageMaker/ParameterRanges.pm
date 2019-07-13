@@ -34,7 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 =head1 DESCRIPTION
 
 Specifies ranges of integer, continuous, and categorical
-hyperparameters that a hyperparameter tuning job searches.
+hyperparameters that a hyperparameter tuning job searches. The
+hyperparameter tuning job launches training jobs with hyperparameter
+values within these ranges to find the combination of values that
+result in the training job with the best performance as measured by the
+objective metric of the hyperparameter tuning job.
+
+You can specify a maximum of 20 hyperparameters that a hyperparameter
+tuning job can search over. Every possible value of a categorical
+parameter range counts against this limit.
 
 =head1 ATTRIBUTES
 

@@ -47,17 +47,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rek
 
 =head2 MaxResults => Int
 
-Maximum number of stream processors you want Rekognition Video to
-return in the response. The default is 1000.
+Maximum number of stream processors you want Amazon Rekognition Video
+to return in the response. The default is 1000.
 
 
 
 =head2 NextToken => Str
 
 If the previous response was incomplete (because there are more stream
-processors to retrieve), Rekognition Video returns a pagination token
-in the response. You can use this pagination token to retrieve the next
-set of stream processors.
+processors to retrieve), Amazon Rekognition Video returns a pagination
+token in the response. You can use this pagination token to retrieve
+the next set of stream processors.
 
 
 

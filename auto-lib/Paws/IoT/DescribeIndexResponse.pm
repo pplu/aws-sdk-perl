@@ -34,14 +34,24 @@ values are:
 
 =over
 
-=item 1.
+=item *
 
-REGISTRY E<ndash> Your thing index will contain only registry data.
+REGISTRY E<ndash> Your thing index contains only registry data.
 
-=item 2.
+=item *
 
-REGISTRY_AND_SHADOW - Your thing index will contain registry and shadow
-data.
+REGISTRY_AND_SHADOW - Your thing index contains registry data and
+shadow data.
+
+=item *
+
+REGISTRY_AND_CONNECTIVITY_STATUS - Your thing index contains registry
+data and thing connectivity status data.
+
+=item *
+
+REGISTRY_AND_SHADOW_AND_CONNECTIVITY_STATUS - Your thing index contains
+registry data, shadow data, and thing connectivity status data.
 
 =back
 

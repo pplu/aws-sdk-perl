@@ -8,7 +8,7 @@ package Paws::SSM::RegisterTaskWithMaintenanceWindow;
   has MaxErrors => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
   has Priority => (is => 'ro', isa => 'Int');
-  has ServiceRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has ServiceRoleArn => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]', required => 1);
   has TaskArn => (is => 'ro', isa => 'Str', required => 1);
   has TaskInvocationParameters => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowTaskInvocationParameters');
@@ -44,7 +44,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ssm->RegisterTaskWithMaintenanceWindow(
       MaxConcurrency => 'MyMaxConcurrency',
       MaxErrors      => 'MyMaxErrors',
-      ServiceRoleArn => 'MyServiceRole',
       Targets        => [
         {
           Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
@@ -64,13 +63,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Name                     => 'MyMaintenanceWindowName',    # OPTIONAL
       Priority                 => 1,                            # OPTIONAL
+      ServiceRoleArn           => 'MyServiceRole',              # OPTIONAL
       TaskInvocationParameters => {
         Automation => {
           DocumentVersion => 'MyDocumentVersion',               # OPTIONAL
           Parameters      => {
             'MyAutomationParameterKey' => [
               'MyAutomationParameterValue', ...    # min: 1, max: 512
-            ],    # key: min: 1, max: 30, value: max: 10
+            ],    # key: min: 1, max: 50, value: max: 10
           },    # min: 1, max: 200; OPTIONAL
         },    # OPTIONAL
         Lambda => {
@@ -148,7 +148,7 @@ C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
 logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>
 options in the C<TaskInvocationParameters> structure. For information
 about how Systems Manager handles these options for the supported
-Maintenance Window task types, see
+maintenance window task types, see
 MaintenanceWindowTaskInvocationParameters.
 
 
@@ -174,28 +174,51 @@ An optional name for the task.
 
 =head2 Priority => Int
 
-The priority of the task in the Maintenance Window, the lower the
-number the higher the priority. Tasks in a Maintenance Window are
+The priority of the task in the maintenance window, the lower the
+number the higher the priority. Tasks in a maintenance window are
 scheduled in priority order with tasks that have the same priority
 scheduled in parallel.
 
 
 
-=head2 B<REQUIRED> ServiceRoleArn => Str
+=head2 ServiceRoleArn => Str
 
-The role that should be assumed when executing the task.
+The ARN of the IAM service role for Systems Manager to assume when
+running a maintenance window task. If you do not specify a service role
+ARN, Systems Manager uses your account's service-linked role. If no
+service-linked role for Systems Manager exists in your account, it is
+created when you run C<RegisterTaskWithMaintenanceWindow>.
+
+For more information, see the following topics in the in the I<AWS
+Systems Manager User Guide>:
+
+=over
+
+=item *
+
+Service-Linked Role Permissions for Systems Manager
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
+
+=item *
+
+Should I Use a Service-Linked Role or a Custom Service Role to Run
+Maintenance Window Tasks?
+(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
+
+=back
+
 
 
 
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::SSM::Target>]
 
-The targets (either instances or Maintenance Window targets).
+The targets (either instances or maintenance window targets).
 
 Specify instances using the following format:
 
 C<Key=InstanceIds,Values=E<lt>instance-id-1E<gt>,E<lt>instance-id-2E<gt>>
 
-Specify Maintenance Window targets using the following format:
+Specify maintenance window targets using the following format:
 
 C<Key=E<lt>WindowTargetIdsE<gt>,Values=E<lt>window-target-id-1E<gt>,E<lt>window-target-id-2E<gt>>
 
@@ -203,7 +226,7 @@ C<Key=E<lt>WindowTargetIdsE<gt>,Values=E<lt>window-target-id-1E<gt>,E<lt>window-
 
 =head2 B<REQUIRED> TaskArn => Str
 
-The ARN of the task to execute
+The ARN of the task to run.
 
 
 
@@ -216,13 +239,13 @@ the fields that match the task type. All other fields should be empty.
 
 =head2 TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>
 
-The parameters that should be passed to the task when it is executed.
+The parameters that should be passed to the task when it is run.
 
 C<TaskParameters> has been deprecated. To specify parameters to pass to
 a task when it runs, instead use the C<Parameters> option in the
 C<TaskInvocationParameters> structure. For information about how
-Systems Manager handles these options for the supported Maintenance
-Window task types, see MaintenanceWindowTaskInvocationParameters.
+Systems Manager handles these options for the supported maintenance
+window task types, see MaintenanceWindowTaskInvocationParameters.
 
 
 
@@ -234,7 +257,7 @@ Valid values are: C<"RUN_COMMAND">, C<"AUTOMATION">, C<"STEP_FUNCTIONS">, C<"LAM
 
 =head2 B<REQUIRED> WindowId => Str
 
-The ID of the Maintenance Window the task should be added to.
+The ID of the maintenance window the task should be added to.
 
 
 

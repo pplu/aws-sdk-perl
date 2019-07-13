@@ -1,12 +1,15 @@
 package Paws::FMS::Policy;
   use Moose;
+  has ExcludeMap => (is => 'ro', isa => 'Paws::FMS::CustomerPolicyScopeMap');
   has ExcludeResourceTags => (is => 'ro', isa => 'Bool', required => 1);
+  has IncludeMap => (is => 'ro', isa => 'Paws::FMS::CustomerPolicyScopeMap');
   has PolicyId => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyUpdateToken => (is => 'ro', isa => 'Str');
   has RemediationEnabled => (is => 'ro', isa => 'Bool', required => 1);
   has ResourceTags => (is => 'ro', isa => 'ArrayRef[Paws::FMS::ResourceTag]');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceTypeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SecurityServicePolicyData => (is => 'ro', isa => 'Paws::FMS::SecurityServicePolicyData', required => 1);
 1;
 
@@ -27,14 +30,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::FMS::Policy object:
 
-  $service_obj->Method(Att1 => { ExcludeResourceTags => $value, ..., SecurityServicePolicyData => $value  });
+  $service_obj->Method(Att1 => { ExcludeMap => $value, ..., SecurityServicePolicyData => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::FMS::Policy object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ExcludeResourceTags
+  $result->Att1->ExcludeMap
 
 =head1 DESCRIPTION
 
@@ -43,12 +46,37 @@ An AWS Firewall Manager policy.
 =head1 ATTRIBUTES
 
 
+=head2 ExcludeMap => L<Paws::FMS::CustomerPolicyScopeMap>
+
+  Specifies the AWS account IDs to exclude from the policy. The
+C<IncludeMap> values are evaluated first, with all the appropriate
+account IDs added to the policy. Then the accounts listed in
+C<ExcludeMap> are removed, resulting in the final list of accounts to
+add to the policy.
+
+The key to the map is C<ACCOUNT>. For example, a valid C<ExcludeMap>
+would be C<{E<ldquo>ACCOUNTE<rdquo> : [E<ldquo>accountID1E<rdquo>,
+E<ldquo>accountID2E<rdquo>]}>.
+
+
 =head2 B<REQUIRED> ExcludeResourceTags => Bool
 
   If set to C<True>, resources with the tags that are specified in the
 C<ResourceTag> array are not protected by the policy. If set to
 C<False>, and the C<ResourceTag> array is not null, only resources with
 the specified tags are associated with the policy.
+
+
+=head2 IncludeMap => L<Paws::FMS::CustomerPolicyScopeMap>
+
+  Specifies the AWS account IDs to include in the policy. If
+C<IncludeMap> is null, all accounts in the organization in AWS
+Organizations are included in the policy. If C<IncludeMap> is not null,
+only values listed in C<IncludeMap> are included in the policy.
+
+The key to the map is C<ACCOUNT>. For example, a valid C<IncludeMap>
+would be C<{E<ldquo>ACCOUNTE<rdquo> : [E<ldquo>accountID1E<rdquo>,
+E<ldquo>accountID2E<rdquo>]}>.
 
 
 =head2 PolicyId => Str
@@ -83,12 +111,16 @@ resources.
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  The type of resource to protect with the policy, either an Application
-Load Balancer or a CloudFront distribution. This is in the format shown
-in AWS Resource Types Reference
+  The type of resource to protect with the policy. This is in the format
+shown in AWS Resource Types Reference
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-Valid values are C<AWS::ElasticLoadBalancingV2::LoadBalancer> or
+For example: C<AWS::ElasticLoadBalancingV2::LoadBalancer> or
 C<AWS::CloudFront::Distribution>.
+
+
+=head2 ResourceTypeList => ArrayRef[Str|Undef]
+
+  An array of C<ResourceType>.
 
 
 =head2 B<REQUIRED> SecurityServicePolicyData => L<Paws::FMS::SecurityServicePolicyData>

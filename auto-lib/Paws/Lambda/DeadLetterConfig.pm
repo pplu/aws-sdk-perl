@@ -31,9 +31,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Dea
 
 =head1 DESCRIPTION
 
-The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS
-topic you specify as your Dead Letter Queue (DLQ). For more
-information, see dlq.
+The dead letter queue
+(https://docs.aws.amazon.com/lambda/latest/dg/dlq.html) for failed
+asynchronous invocations.
 
 =head1 ATTRIBUTES
 
@@ -41,8 +41,7 @@ information, see dlq.
 =head2 TargetArn => Str
 
   The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS
-topic you specify as your Dead Letter Queue (DLQ). dlq. For more
-information, see dlq.
+topic.
 
 
 

@@ -3,16 +3,21 @@ package Paws::RDS::RestoreDBClusterFromSnapshot;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has BacktrackWindow => (is => 'ro', isa => 'Int');
+  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has DeletionProtection => (is => 'ro', isa => 'Bool');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
+  has EngineMode => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has ScalingConfiguration => (is => 'ro', isa => 'Paws::RDS::ScalingConfiguration');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -45,11 +50,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following example restores an Amazon Aurora DB cluster from a DB
     # cluster snapshot.
     my $RestoreDBClusterFromSnapshotResult = $rds->RestoreDBClusterFromSnapshot(
-      {
-        'DBClusterIdentifier' => 'restored-cluster1',
-        'Engine'              => 'aurora',
-        'SnapshotIdentifier'  => 'sample-cluster-snapshot1'
-      }
+      'DBClusterIdentifier' => 'restored-cluster1',
+      'Engine'              => 'aurora',
+      'SnapshotIdentifier'  => 'sample-cluster-snapshot1'
     );
 
 
@@ -61,8 +64,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-Provides the list of EC2 Availability Zones that instances in the
-restored DB cluster can be created in.
+Provides the list of Availability Zones (AZs) where instances in the
+restored DB cluster can be created.
 
 
 
@@ -84,6 +87,14 @@ hours).
 
 =back
 
+
+
+
+=head2 CopyTagsToSnapshot => Bool
+
+A value that indicates whether to copy all tags from the restored DB
+cluster to snapshots of the restored DB cluster. The default is not to
+copy them.
 
 
 
@@ -112,7 +123,7 @@ First character must be a letter
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens
+Can't end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -120,30 +131,73 @@ Example: C<my-snapshot-id>
 
 
 
+=head2 DBClusterParameterGroupName => Str
+
+The name of the DB cluster parameter group to associate with this DB
+cluster. If this argument is omitted, the default DB cluster parameter
+group for the specified engine is used.
+
+Constraints:
+
+=over
+
+=item *
+
+If supplied, must match the name of an existing default DB cluster
+parameter group.
+
+=item *
+
+Must be 1 to 255 letters, numbers, or hyphens.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Can't end with a hyphen or contain two consecutive hyphens.
+
+=back
+
+
+
+
 =head2 DBSubnetGroupName => Str
 
 The name of the DB subnet group to use for the new DB cluster.
 
-Constraints: If supplied, must match the name of an existing
-DBSubnetGroup.
+Constraints: If supplied, must match the name of an existing DB subnet
+group.
 
 Example: C<mySubnetgroup>
 
 
 
+=head2 DeletionProtection => Bool
+
+A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.
+
+
+
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
-The list of logs that the restored DB cluster is to export to
-CloudWatch Logs.
+The list of logs that the restored DB cluster is to export to Amazon
+CloudWatch Logs. The values in the list depend on the DB engine being
+used. For more information, see Publishing Database Logs to Amazon
+CloudWatch Logs
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon Aurora User Guide>.
 
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: C<false>
+A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 
 
@@ -154,6 +208,13 @@ The database engine to use for the new DB cluster.
 Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
+
+
+
+=head2 EngineMode => Str
+
+The DB engine mode of the DB cluster, either C<provisioned>,
+C<serverless>, or C<parallelquery>.
 
 
 
@@ -174,8 +235,8 @@ account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.
 
-If you do not specify a value for the C<KmsKeyId> parameter, then the
-following will occur:
+If you don't specify a value for the C<KmsKeyId> parameter, then the
+following occurs:
 
 =over
 
@@ -205,9 +266,16 @@ The name of the option group to use for the restored DB cluster.
 
 The port number on which the new DB cluster accepts connections.
 
-Constraints: Value must be C<1150-65535>
+Constraints: This value must be C<1150-65535>
 
 Default: The same port as the original DB cluster.
+
+
+
+=head2 ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>
+
+For DB clusters in C<serverless> DB engine mode, the scaling properties
+of the DB cluster.
 
 
 

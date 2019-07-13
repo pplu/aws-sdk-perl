@@ -31,19 +31,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Ali
 
 =head1 DESCRIPTION
 
-The parent object that implements what percentage of traffic will
-invoke each function version. For more information, see
-lambda-traffic-shifting-using-aliases.
+The traffic-shifting
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
+configuration of a Lambda function alias.
 
 =head1 ATTRIBUTES
 
 
 =head2 AdditionalVersionWeights => L<Paws::Lambda::AdditionalVersionWeights>
 
-  Set this value to dictate what percentage of traffic will invoke the
-updated function version. If set to an empty string, 100 percent of
-traffic will invoke C<function-version>. For more information, see
-lambda-traffic-shifting-using-aliases.
+  The name of the second alias, and the percentage of traffic that's
+routed to it.
 
 
 

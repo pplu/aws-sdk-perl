@@ -38,7 +38,7 @@ Policy statements applied to the application.
 
 =head2 B<REQUIRED> Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]
 
-  Array of policy statements applied to the application.
+  An array of policy statements applied to the application.
 
 
 

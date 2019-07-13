@@ -2,14 +2,18 @@
 package Paws::RedShift::ResizeProgressMessage;
   use Moose;
   has AvgResizeRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
+  has DataTransferProgressPercent => (is => 'ro', isa => 'Num');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
   has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Int');
   has ImportTablesCompleted => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ImportTablesInProgress => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ImportTablesNotStarted => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Message => (is => 'ro', isa => 'Str');
   has ProgressInMegaBytes => (is => 'ro', isa => 'Int');
+  has ResizeType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TargetClusterType => (is => 'ro', isa => 'Str');
+  has TargetEncryptionType => (is => 'ro', isa => 'Str');
   has TargetNodeType => (is => 'ro', isa => 'Str');
   has TargetNumberOfNodes => (is => 'ro', isa => 'Int');
   has TotalResizeDataInMegaBytes => (is => 'ro', isa => 'Int');
@@ -31,6 +35,11 @@ Paws::RedShift::ResizeProgressMessage
 The average rate of the resize operation over the last few minutes,
 measured in megabytes per second. After the resize operation completes,
 this value shows the average rate of the entire resize operation.
+
+
+=head2 DataTransferProgressPercent => Num
+
+The percent of data transferred from source cluster to target cluster.
 
 
 =head2 ElapsedTimeInSeconds => Int
@@ -69,6 +78,12 @@ The names of tables that have not been yet imported.
 Valid Values: List of table names
 
 
+=head2 Message => Str
+
+An optional string to provide additional details about the resize
+action.
+
+
 =head2 ProgressInMegaBytes => Int
 
 While the resize operation is in progress, this value shows the current
@@ -79,11 +94,18 @@ TotalResizeDataInMegaBytes (the estimated total amount of data before
 resize).
 
 
+=head2 ResizeType => Str
+
+An enum with possible values of C<ClassicResize> and C<ElasticResize>.
+These values describe the type of resize operation being performed.
+
+
 =head2 Status => Str
 
 The status of the resize operation.
 
-Valid Values: C<NONE> | C<IN_PROGRESS> | C<FAILED> | C<SUCCEEDED>
+Valid Values: C<NONE> | C<IN_PROGRESS> | C<FAILED> | C<SUCCEEDED> |
+C<CANCELLING>
 
 
 =head2 TargetClusterType => Str
@@ -91,6 +113,14 @@ Valid Values: C<NONE> | C<IN_PROGRESS> | C<FAILED> | C<SUCCEEDED>
 The cluster type after the resize operation is complete.
 
 Valid Values: C<multi-node> | C<single-node>
+
+
+=head2 TargetEncryptionType => Str
+
+The type of encryption for the cluster after the resize is complete.
+
+Possible values are C<KMS> and C<None>. In the China region possible
+values are: C<Legacy> and C<None>.
 
 
 =head2 TargetNodeType => Str

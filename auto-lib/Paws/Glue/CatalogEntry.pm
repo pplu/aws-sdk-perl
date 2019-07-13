@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Catal
 
 =head1 DESCRIPTION
 
-Specifies a table definition in the Data Catalog.
+Specifies a table definition in the AWS Glue Data Catalog.
 
 =head1 ATTRIBUTES
 

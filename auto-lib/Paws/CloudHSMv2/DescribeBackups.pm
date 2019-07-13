@@ -4,6 +4,7 @@ package Paws::CloudHSMv2::DescribeBackups;
   has Filters => (is => 'ro', isa => 'Paws::CloudHSMv2::Filters');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has SortAscending => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -30,9 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudhsmv2 = Paws->service('CloudHSMv2');
     my $DescribeBackupsResponse = $cloudhsmv2->DescribeBackups(
-      Filters    => { 'MyField' => [ 'MyString', ... ], },    # OPTIONAL
-      MaxResults => 1,                                        # OPTIONAL
-      NextToken  => 'MyNextToken',                            # OPTIONAL
+      Filters       => { 'MyField' => [ 'MyString', ... ], },    # OPTIONAL
+      MaxResults    => 1,                                        # OPTIONAL
+      NextToken     => 'MyNextToken',                            # OPTIONAL
+      SortAscending => 1,                                        # OPTIONAL
     );
 
     # Results:
@@ -54,6 +56,10 @@ One or more filters to limit the items returned in the response.
 Use the C<backupIds> filter to return only the specified backups.
 Specify backups by their backup identifier (ID).
 
+Use the C<sourceBackupIds> filter to return only the backups created
+from a source backup. The C<sourceBackupID> of a source backup is
+returned by the CopyBackupToRegion operation.
+
 Use the C<clusterIds> filter to return only the backups for the
 specified clusters. Specify clusters by their cluster identifier (ID).
 
@@ -74,6 +80,12 @@ C<NextToken> value.
 
 The C<NextToken> value that you received in the previous response. Use
 this value to get more backups.
+
+
+
+=head2 SortAscending => Bool
+
+
 
 
 

@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Provides information about a celebrity recognized by the operation.
+Provides information about a celebrity recognized by the
+RecognizeCelebrities operation.
 
 =head1 ATTRIBUTES
 
@@ -53,8 +54,8 @@ on the image.
 
 =head2 MatchConfidence => Num
 
-  The confidence, in percentage, that Rekognition has that the recognized
-face is the celebrity.
+  The confidence, in percentage, that Amazon Rekognition has that the
+recognized face is the celebrity.
 
 
 =head2 Name => Str

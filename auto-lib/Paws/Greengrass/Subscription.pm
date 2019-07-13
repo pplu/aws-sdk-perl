@@ -41,24 +41,28 @@ Information about a subscription.
 
 =head2 Id => Str
 
-  The id of the subscription.
+  A descriptive or arbitrary ID for the subscription. This value must be
+unique within the subscription definition version. Max length is 128
+characters with pattern ''[a-zA-Z0-9:_-]+''.
 
 
 =head2 Source => Str
 
   The source of the subscription. Can be a thing ARN, a Lambda function
-ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
+ARN, a connector ARN, 'cloud' (which represents the AWS IoT cloud), or
+'GGShadowService'.
 
 
 =head2 Subject => Str
 
-  The subject of the message.
+  The MQTT topic used to route the message.
 
 
 =head2 Target => Str
 
   Where the message is sent to. Can be a thing ARN, a Lambda function
-ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
+ARN, a connector ARN, 'cloud' (which represents the AWS IoT cloud), or
+'GGShadowService'.
 
 
 

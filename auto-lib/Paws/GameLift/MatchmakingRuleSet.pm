@@ -34,14 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::M
 =head1 DESCRIPTION
 
 Set of rule statements, used with FlexMatch, that determine how to
-build a certain kind of player match. Each rule set describes a type of
-group to be created and defines the parameters for acceptable player
-matches. Rule sets are used in MatchmakingConfiguration objects.
+build your player matches. Each rule set describes a type of group to
+be created and defines the parameters for acceptable player matches.
+Rule sets are used in MatchmakingConfiguration objects.
 
 A rule set may define the following elements for a match. For detailed
 information and examples showing how to construct a rule set, see Build
 a FlexMatch Rule Set
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html).
 
 =over
 
@@ -94,9 +94,8 @@ number expressed in Unix time as milliseconds (for example
 
 =head2 B<REQUIRED> RuleSetBody => Str
 
-  Collection of matchmaking rules, formatted as a JSON string. (Note that
-comments14 are not allowed in JSON, but most elements support a
-description field.)
+  Collection of matchmaking rules, formatted as a JSON string. Comments
+are not allowed in JSON, but most elements support a description field.
 
 
 =head2 RuleSetName => Str

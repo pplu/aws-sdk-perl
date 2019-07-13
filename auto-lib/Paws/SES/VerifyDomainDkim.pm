@@ -30,11 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # VerifyDomainDkim
     # The following example generates DKIM tokens for a domain that has been
     # verified with Amazon SES:
-    my $VerifyDomainDkimResponse = $email->VerifyDomainDkim(
-      {
-        'Domain' => 'example.com'
-      }
-    );
+    my $VerifyDomainDkimResponse =
+      $email->VerifyDomainDkim( 'Domain' => 'example.com' );
 
     # Results:
     my $DkimTokens = $VerifyDomainDkimResponse->DkimTokens;

@@ -33,17 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To modify an option group
     # The following example adds an option to an option group.
     my $ModifyOptionGroupResult = $rds->ModifyOptionGroup(
-      {
-        'ApplyImmediately' => true,
-        'OptionGroupName'  => 'myawsuser-og02',
-        'OptionsToInclude' => [
+      'ApplyImmediately' => 1,
+      'OptionGroupName'  => 'myawsuser-og02',
+      'OptionsToInclude' => [
 
-          {
-            'DBSecurityGroupMemberships' => ['default'],
-            'OptionName'                 => 'MEMCACHED'
-          }
-        ]
-      }
+        {
+          'DBSecurityGroupMemberships' => ['default'],
+          'OptionName'                 => 'MEMCACHED'
+        }
+      ]
     );
 
 
@@ -55,9 +53,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 ApplyImmediately => Bool
 
-Indicates whether the changes should be applied immediately, or during
-the next maintenance window for each instance associated with the
-option group.
+A value that indicates whether to apply the change immediately or
+during the next maintenance window for each instance associated with
+the option group.
 
 
 

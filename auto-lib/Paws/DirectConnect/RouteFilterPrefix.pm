@@ -31,20 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-A route filter prefix that the customer can advertise through Border
-Gateway Protocol (BGP) over a public virtual interface.
+Information about a route filter prefix that a customer can advertise
+through Border Gateway Protocol (BGP) over a public virtual interface.
 
 =head1 ATTRIBUTES
 
 
 =head2 Cidr => Str
 
-  CIDR notation for the advertised route. Multiple routes are separated
-by commas.
-
-IPv6 CIDRs must be at least a /64 or shorter
-
-Example: 10.10.10.0/24,10.10.11.0/24,2001:db8::/64
+  The CIDR block for the advertised route. Separate multiple routes using
+commas. An IPv6 CIDR must use /64 or shorter.
 
 
 

@@ -62,35 +62,55 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 =head2 Description => Str
 
-Description of the alias.
+A description of the alias.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-Name of the Lambda function for which you want to create an alias. Note
-that the length constraint applies only to the ARN. If you specify only
+The name of the Lambda function.
+
+B<Name formats>
+
+=over
+
+=item *
+
+B<Function name> - C<MyFunction>.
+
+=item *
+
+B<Function ARN> -
+C<arn:aws:lambda:us-west-2:123456789012:function:MyFunction>.
+
+=item *
+
+B<Partial ARN> - C<123456789012:function:MyFunction>.
+
+=back
+
+The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.
 
 
 
 =head2 B<REQUIRED> FunctionVersion => Str
 
-Lambda function version for which you are creating the alias.
+The function version that the alias invokes.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-Name for the alias you are creating.
+The name of the alias.
 
 
 
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
 
-Specifies an additional version your alias can point to, allowing you
-to dictate what percentage of traffic will invoke each version. For
-more information, see lambda-traffic-shifting-using-aliases.
+The routing configuration
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
+of the alias.
 
 
 

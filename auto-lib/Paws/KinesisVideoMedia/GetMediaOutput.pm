@@ -51,11 +51,11 @@ chunk.
 
 =item *
 
-AWS_KINESISVIDEO_SERVER_TIMESTAMP - Server time stamp of the fragment.
+AWS_KINESISVIDEO_SERVER_TIMESTAMP - Server timestamp of the fragment.
 
 =item *
 
-AWS_KINESISVIDEO_PRODUCER_TIMESTAMP - Producer time stamp of the
+AWS_KINESISVIDEO_PRODUCER_TIMESTAMP - Producer timestamp of the
 fragment.
 
 =back
@@ -97,7 +97,7 @@ The error codes are as follows:
 
 =item *
 
-4502 - Validation error on the Stream's KMS key
+4502 - Validation error on the stream's KMS key
 
 =item *
 

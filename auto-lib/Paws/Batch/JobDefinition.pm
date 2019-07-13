@@ -3,6 +3,7 @@ package Paws::Batch::JobDefinition;
   has ContainerProperties => (is => 'ro', isa => 'Paws::Batch::ContainerProperties', request_name => 'containerProperties', traits => ['NameInRequest']);
   has JobDefinitionArn => (is => 'ro', isa => 'Str', request_name => 'jobDefinitionArn', traits => ['NameInRequest'], required => 1);
   has JobDefinitionName => (is => 'ro', isa => 'Str', request_name => 'jobDefinitionName', traits => ['NameInRequest'], required => 1);
+  has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodeProperties', request_name => 'nodeProperties', traits => ['NameInRequest']);
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', request_name => 'parameters', traits => ['NameInRequest']);
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', request_name => 'retryStrategy', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest'], required => 1);
@@ -59,12 +60,20 @@ An object representing an AWS Batch job definition.
   The name of the job definition.
 
 
+=head2 NodeProperties => L<Paws::Batch::NodeProperties>
+
+  An object with various properties specific to multi-node parallel jobs.
+
+
 =head2 Parameters => L<Paws::Batch::ParametersMap>
 
   Default parameters or parameter substitution placeholders that are set
 in the job definition. Parameters are specified as a key-value pair
 mapping. Parameters in a C<SubmitJob> request override any
-corresponding parameter defaults from the job definition.
+corresponding parameter defaults from the job definition. For more
+information about specifying parameters, see Job Definition Parameters
+(https://docs.aws.amazon.com/batch/latest/userguide/job_definition_parameters.html)
+in the I<AWS Batch User Guide>.
 
 
 =head2 RetryStrategy => L<Paws::Batch::RetryStrategy>

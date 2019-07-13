@@ -46,7 +46,7 @@ distribution.
 
 =head2 B<REQUIRED> OriginAccessIdentity => Str
 
-  The CloudFront origin access identity to associate with the RTMP
+  The CloudFront origin access identity to associate with the
 distribution. Use an origin access identity to configure the
 distribution so that end users can only access objects in an Amazon S3
 bucket through CloudFront.
@@ -64,8 +64,8 @@ configuration and specify the new origin access identity.
 
 For more information, see Using an Origin Access Identity to Restrict
 Access to Your Amazon S3 Content
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html)
-in the I<Amazon Amazon CloudFront Developer Guide>.
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html)
+in the I< Amazon CloudFront Developer Guide>.
 
 
 

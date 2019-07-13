@@ -20,6 +20,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::AddTagsToResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ApplyPendingMaintenanceAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::ApplyPendingMaintenanceAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::CreateEndpoint', @_);
@@ -118,6 +123,11 @@ package Paws::DMS;
   sub DescribeOrderableReplicationInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeOrderableReplicationInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePendingMaintenanceActions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DescribePendingMaintenanceActions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRefreshSchemasStatus {
@@ -537,7 +547,7 @@ package Paws::DMS;
   }
 
 
-  sub operations { qw/AddTagsToResource CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationInstanceTaskLogs DescribeReplicationSubnetGroups DescribeReplicationTaskAssessmentResults DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RebootReplicationInstance RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StartReplicationTaskAssessment StopReplicationTask TestConnection / }
+  sub operations { qw/AddTagsToResource ApplyPendingMaintenanceAction CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribePendingMaintenanceActions DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationInstanceTaskLogs DescribeReplicationSubnetGroups DescribeReplicationTaskAssessmentResults DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RebootReplicationInstance RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StartReplicationTaskAssessment StopReplicationTask TestConnection / }
 
 1;
 
@@ -575,9 +585,10 @@ service supports homogeneous migrations such as Oracle to Oracle, as
 well as heterogeneous migrations between different database platforms,
 such as Oracle to MySQL or SQL Server to PostgreSQL.
 
-For more information about AWS DMS, see the AWS DMS user guide at What
-Is AWS Database Migration Service?
-(http://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+For more information about AWS DMS, see What Is AWS Database Migration
+Service?
+(https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html) in the
+I<AWS Database Migration User Guide.>
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01>
 
@@ -606,6 +617,27 @@ with DMS resources, or used in a Condition statement in an IAM policy
 for DMS.
 
 
+=head2 ApplyPendingMaintenanceAction
+
+=over
+
+=item ApplyAction => Str
+
+=item OptInType => Str
+
+=item ReplicationInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DMS::ApplyPendingMaintenanceAction>
+
+Returns: a L<Paws::DMS::ApplyPendingMaintenanceActionResponse> instance
+
+Applies a pending maintenance action to a resource (for example, to a
+replication instance).
+
+
 =head2 CreateEndpoint
 
 =over
@@ -620,11 +652,17 @@ for DMS.
 
 =item [DatabaseName => Str]
 
+=item [DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>]
+
 =item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
+
+=item [ElasticsearchSettings => L<Paws::DMS::ElasticsearchSettings>]
 
 =item [ExternalTableDefinition => Str]
 
 =item [ExtraConnectionAttributes => Str]
+
+=item [KinesisSettings => L<Paws::DMS::KinesisSettings>]
 
 =item [KmsKeyId => Str]
 
@@ -633,6 +671,8 @@ for DMS.
 =item [Password => Str]
 
 =item [Port => Int]
+
+=item [RedshiftSettings => L<Paws::DMS::RedshiftSettings>]
 
 =item [S3Settings => L<Paws::DMS::S3Settings>]
 
@@ -698,8 +738,8 @@ generated from all AWS DMS sources belonging to your customer account.
 
 For more information about AWS DMS events, see Working with Events and
 Notifications
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
-the AWS Database MIgration Service User Guide.
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
+the I<AWS Database Migration Service User Guide.>
 
 
 =head2 CreateReplicationInstance
@@ -715,6 +755,8 @@ the AWS Database MIgration Service User Guide.
 =item [AutoMinorVersionUpgrade => Bool]
 
 =item [AvailabilityZone => Str]
+
+=item [DnsNameServers => Str]
 
 =item [EngineVersion => Str]
 
@@ -1024,8 +1066,8 @@ Returns: a L<Paws::DMS::DescribeEventCategoriesResponse> instance
 Lists categories for all event source types, or, if specified, for a
 specified source type. You can see a list of the event categories and
 source types in Working with Events and Notifications
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
-the AWS Database Migration Service User Guide.
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
+the I<AWS Database Migration Service User Guide.>
 
 
 =head2 DescribeEvents
@@ -1060,7 +1102,8 @@ Returns: a L<Paws::DMS::DescribeEventsResponse> instance
 Lists events for a given source identifier and source type. You can
 also specify a start and end time. For more information on AWS DMS
 events, see Working with Events and Notifications
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html).
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in
+the I<AWS Database Migration User Guide.>
 
 
 =head2 DescribeEventSubscriptions
@@ -1108,6 +1151,28 @@ Returns: a L<Paws::DMS::DescribeOrderableReplicationInstancesResponse> instance
 
 Returns information about the replication instance types that can be
 created in the specified region.
+
+
+=head2 DescribePendingMaintenanceActions
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ReplicationInstanceArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DMS::DescribePendingMaintenanceActions>
+
+Returns: a L<Paws::DMS::DescribePendingMaintenanceActionsResponse> instance
+
+For internal use only
 
 
 =head2 DescribeRefreshSchemasStatus
@@ -1218,6 +1283,8 @@ returns the latest results.
 
 =item [MaxRecords => Int]
 
+=item [WithoutSettings => Bool]
+
 
 =back
 
@@ -1324,7 +1391,11 @@ Lists all tags for an AWS DMS resource.
 
 =item [DatabaseName => Str]
 
+=item [DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>]
+
 =item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
+
+=item [ElasticsearchSettings => L<Paws::DMS::ElasticsearchSettings>]
 
 =item [EndpointIdentifier => Str]
 
@@ -1336,11 +1407,15 @@ Lists all tags for an AWS DMS resource.
 
 =item [ExtraConnectionAttributes => Str]
 
+=item [KinesisSettings => L<Paws::DMS::KinesisSettings>]
+
 =item [MongoDbSettings => L<Paws::DMS::MongoDbSettings>]
 
 =item [Password => Str]
 
 =item [Port => Int]
+
+=item [RedshiftSettings => L<Paws::DMS::RedshiftSettings>]
 
 =item [S3Settings => L<Paws::DMS::S3Settings>]
 
@@ -1478,9 +1553,10 @@ Modifies the specified replication task.
 You can't modify the task endpoints. The task must be stopped before
 you can modify it.
 
-For more information about AWS DMS tasks, see the AWS DMS user guide at
-Working with Migration Tasks
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+For more information about AWS DMS tasks, see Working with Migration
+Tasks
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html) in
+the I<AWS Database Migration Service User Guide>.
 
 
 =head2 RebootReplicationInstance
@@ -1530,6 +1606,8 @@ operation.
 =item ReplicationTaskArn => Str
 
 =item TablesToReload => ArrayRef[L<Paws::DMS::TableToReload>]
+
+=item [ReloadOption => Str]
 
 
 =back
@@ -1582,9 +1660,10 @@ Returns: a L<Paws::DMS::StartReplicationTaskResponse> instance
 
 Starts the replication task.
 
-For more information about AWS DMS tasks, see the AWS DMS user guide at
-Working with Migration Tasks
-(http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html)
+For more information about AWS DMS tasks, see Working with Migration
+Tasks
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html) in
+the I<AWS Database Migration Service User Guide.>
 
 
 =head2 StartReplicationTaskAssessment
@@ -1764,9 +1843,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DMS::DescribeReplicationTaskAssessmentResultsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllReplicationTasks(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllReplicationTasks(sub { },[Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, WithoutSettings => Bool])
 
-=head2 DescribeAllReplicationTasks([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllReplicationTasks([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, WithoutSettings => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

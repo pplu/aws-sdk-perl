@@ -32,20 +32,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To release an Elastic IP address for EC2-VPC
     # This example releases an Elastic IP address for use with instances in a
     # VPC.
-    $ec2->ReleaseAddress(
-      {
-        'AllocationId' => 'eipalloc-64d5890a'
-      }
-    );
+    $ec2->ReleaseAddress( 'AllocationId' => 'eipalloc-64d5890a' );
 
     # To release an Elastic IP addresses for EC2-Classic
     # This example releases an Elastic IP address for use with instances in
     # EC2-Classic.
-    $ec2->ReleaseAddress(
-      {
-        'PublicIp' => '198.51.100.0'
-      }
-    );
+    $ec2->ReleaseAddress( 'PublicIp' => '198.51.100.0' );
 
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

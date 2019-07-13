@@ -46,7 +46,7 @@ This class has no description
 
 =head2 ResourceId => Str
 
-  The ID of the resource. For example, C<ami-1a2b3c4d>.
+  The ID of the resource.
 
 
 =head2 ResourceType => Str

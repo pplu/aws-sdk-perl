@@ -16,10 +16,13 @@ package Paws::SSM::AutomationExecution;
   has Outputs => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
   has ParentAutomationExecutionId => (is => 'ro', isa => 'Str');
+  has ProgressCounters => (is => 'ro', isa => 'Paws::SSM::ProgressCounters');
   has ResolvedTargets => (is => 'ro', isa => 'Paws::SSM::ResolvedTargets');
   has StepExecutions => (is => 'ro', isa => 'ArrayRef[Paws::SSM::StepExecution]');
   has StepExecutionsTruncated => (is => 'ro', isa => 'Bool');
   has Target => (is => 'ro', isa => 'Str');
+  has TargetLocations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetLocation]');
+  has TargetMaps => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetMap]');
   has TargetParameterName => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 1;
@@ -70,12 +73,12 @@ Automation execution.
 
 =head2 CurrentAction => Str
 
-  The action of the currently executing step.
+  The action of the step that is currently running.
 
 
 =head2 CurrentStepName => Str
 
-  The name of the currently executing step.
+  The name of the step that is currently running.
 
 
 =head2 DocumentName => Str
@@ -90,7 +93,7 @@ Automation execution.
 
 =head2 ExecutedBy => Str
 
-  The Amazon Resource Name (ARN) of the user who executed the automation.
+  The Amazon Resource Name (ARN) of the user who ran the automation.
 
 
 =head2 ExecutionEndTime => Str
@@ -141,6 +144,12 @@ calling StartAutomationExecution.
   The AutomationExecutionId of the parent automation.
 
 
+=head2 ProgressCounters => L<Paws::SSM::ProgressCounters>
+
+  An aggregate of step execution statuses displayed in the AWS Console
+for a multi-Region and multi-account Automation execution.
+
+
 =head2 ResolvedTargets => L<Paws::SSM::ResolvedTargets>
 
   A list of resolved targets in the rate control execution.
@@ -149,8 +158,8 @@ calling StartAutomationExecution.
 =head2 StepExecutions => ArrayRef[L<Paws::SSM::StepExecution>]
 
   A list of details about the current state of all steps that comprise an
-execution. An Automation document contains a list of steps that are
-executed in order.
+execution. An Automation document contains a list of steps that are run
+in order.
 
 
 =head2 StepExecutionsTruncated => Bool
@@ -164,6 +173,18 @@ step executions.
 =head2 Target => Str
 
   The target of the execution.
+
+
+=head2 TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]
+
+  The combination of AWS Regions and/or AWS accounts where you want to
+run the Automation.
+
+
+=head2 TargetMaps => ArrayRef[L<Paws::SSM::TargetMap>]
+
+  The specified key-value mapping of document parameters to target
+resources.
 
 
 =head2 TargetParameterName => Str

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Sp
 
 =head1 DESCRIPTION
 
-The amount of cost or usage being measured for a budget.
+The amount of cost or usage that is measured for a budget.
 
 For example, a C<Spend> for C<3 GB> of S3 usage would have the
 following parameters:
@@ -55,14 +55,14 @@ A C<unit> of C<GB>
 
 =head2 B<REQUIRED> Amount => Str
 
-  The cost or usage amount associated with a budget forecast, actual
-spend, or budget threshold.
+  The cost or usage amount that is associated with a budget forecast,
+actual spend, or budget threshold.
 
 
 =head2 B<REQUIRED> Unit => Str
 
-  The unit of measurement used for the budget forecast, actual spend, or
-budget threshold, such as dollars or GB.
+  The unit of measurement that is used for the budget forecast, actual
+spend, or budget threshold, such as dollars or GB.
 
 
 

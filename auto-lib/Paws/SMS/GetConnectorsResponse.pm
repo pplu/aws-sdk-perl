@@ -17,12 +17,13 @@ Paws::SMS::GetConnectorsResponse
 
 =head2 ConnectorList => ArrayRef[L<Paws::SMS::Connector>]
 
-
+Information about the registered connectors.
 
 
 =head2 NextToken => Str
 
-
+The token required to retrieve the next set of results. This value is
+null when there are no more results to return.
 
 
 =head2 _request_id => Str

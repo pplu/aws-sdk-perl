@@ -38,52 +38,53 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-Endpoint demographic data
+Specifies demographic information about an endpoint, such as the
+applicable time zone and platform.
 
 =head1 ATTRIBUTES
 
 
 =head2 AppVersion => Str
 
-  The version of the application associated with the endpoint.
+  The version of the app that's associated with the endpoint.
 
 
 =head2 Locale => Str
 
-  The endpoint locale in the following format: The ISO 639-1 alpha-2
-code, followed by an underscore, followed by an ISO 3166-1 alpha-2
-value.
+  The locale of the endpoint, in the following format: the ISO 639-1
+alpha-2 code, followed by an underscore (_), followed by an ISO 3166-1
+alpha-2 value.
 
 
 =head2 Make => Str
 
-  The endpoint make, such as such as Apple or Samsung.
+  The manufacturer of the endpoint device, such as Apple or Samsung.
 
 
 =head2 Model => Str
 
-  The endpoint model, such as iPhone.
+  The model name or number of the endpoint device, such as iPhone.
 
 
 =head2 ModelVersion => Str
 
-  The endpoint model version.
+  The model version of the endpoint device.
 
 
 =head2 Platform => Str
 
-  The endpoint platform, such as ios or android.
+  The platform of the endpoint device, such as iOS or Android.
 
 
 =head2 PlatformVersion => Str
 
-  The endpoint platform version.
+  The platform version of the endpoint device.
 
 
 =head2 Timezone => Str
 
-  The timezone of the endpoint. Specified as a tz database value, such as
-Americas/Los_Angeles.
+  The time zone of the endpoint, specified as a tz database name value,
+such as America/Los_Angeles.
 
 
 

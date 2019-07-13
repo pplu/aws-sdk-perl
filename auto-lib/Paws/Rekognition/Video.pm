@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 =head1 DESCRIPTION
 
 Video file stored in an Amazon S3 bucket. Amazon Rekognition video
-start operations such as use C<Video> to specify a video for analysis.
-The supported file formats are .mp4, .mov and .avi.
+start operations such as StartLabelDetection use C<Video> to specify a
+video for analysis. The supported file formats are .mp4, .mov and .avi.
 
 =head1 ATTRIBUTES
 

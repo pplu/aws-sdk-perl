@@ -31,11 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $kms = Paws->service('KMS');
     # To list grants for a customer master key (CMK)
     # The following example lists grants for the specified CMK.
-    my $ListGrantsResponse = $kms->ListGrants(
-      {
-        'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'
-      }
-    );
+    my $ListGrantsResponse =
+      $kms->ListGrants( 'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab' );
 
     # Results:
     my $Grants    = $ListGrantsResponse->Grants;

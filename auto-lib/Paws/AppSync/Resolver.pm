@@ -2,6 +2,8 @@ package Paws::AppSync::Resolver;
   use Moose;
   has DataSourceName => (is => 'ro', isa => 'Str', request_name => 'dataSourceName', traits => ['NameInRequest']);
   has FieldName => (is => 'ro', isa => 'Str', request_name => 'fieldName', traits => ['NameInRequest']);
+  has Kind => (is => 'ro', isa => 'Str', request_name => 'kind', traits => ['NameInRequest']);
+  has PipelineConfig => (is => 'ro', isa => 'Paws::AppSync::PipelineConfig', request_name => 'pipelineConfig', traits => ['NameInRequest']);
   has RequestMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'requestMappingTemplate', traits => ['NameInRequest']);
   has ResolverArn => (is => 'ro', isa => 'Str', request_name => 'resolverArn', traits => ['NameInRequest']);
   has ResponseMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'responseMappingTemplate', traits => ['NameInRequest']);
@@ -49,6 +51,34 @@ Describes a resolver.
 =head2 FieldName => Str
 
   The resolver field name.
+
+
+=head2 Kind => Str
+
+  The resolver type.
+
+=over
+
+=item *
+
+B<UNIT>: A UNIT resolver type. A UNIT resolver is the default resolver
+type. A UNIT resolver enables you to execute a GraphQL query against a
+single data source.
+
+=item *
+
+B<PIPELINE>: A PIPELINE resolver type. A PIPELINE resolver enables you
+to execute a series of C<Function> in a serial manner. You can use a
+pipeline resolver to execute a GraphQL query against multiple data
+sources.
+
+=back
+
+
+
+=head2 PipelineConfig => L<Paws::AppSync::PipelineConfig>
+
+  The C<PipelineConfig>.
 
 
 =head2 RequestMappingTemplate => Str

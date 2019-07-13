@@ -46,17 +46,19 @@ This class has no description
 
 =head2 ElasticGpuAssociationState => Str
 
-  The state of the association between the instance and the Elastic GPU.
+  The state of the association between the instance and the Elastic
+Graphics accelerator.
 
 
 =head2 ElasticGpuAssociationTime => Str
 
-  The time the Elastic GPU was associated with the instance.
+  The time the Elastic Graphics accelerator was associated with the
+instance.
 
 
 =head2 ElasticGpuId => Str
 
-  The ID of the Elastic GPU.
+  The ID of the Elastic Graphics accelerator.
 
 
 

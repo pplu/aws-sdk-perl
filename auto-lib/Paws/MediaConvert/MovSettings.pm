@@ -42,27 +42,35 @@ Settings for MOV Container.
 
 =head2 ClapAtom => Str
 
-  
+  When enabled, include 'clap' atom if appropriate for the video output
+settings.
 
 
 =head2 CslgAtom => Str
 
-  
+  When enabled, file composition times will start at zero, composition
+times in the 'ctts' (composition time to sample) box for B-frames will
+be negative, and a 'cslg' (composition shift least greatest) box will
+be included per 14496-1 amendment 1. This improves compatibility with
+Apple players and tools.
 
 
 =head2 Mpeg2FourCCControl => Str
 
-  
+  When set to XDCAM, writes MPEG2 video streams into the QuickTime file
+using XDCAM fourcc codes. This increases compatibility with Apple
+editors and players, but may decrease compatibility with other players.
+Only applicable when the video codec is MPEG2.
 
 
 =head2 PaddingControl => Str
 
-  
+  If set to OMNEON, inserts Omneon-compatible padding
 
 
 =head2 Reference => Str
 
-  
+  Always keep the default value (SELF_CONTAINED) for this setting.
 
 
 

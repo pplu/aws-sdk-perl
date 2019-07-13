@@ -60,7 +60,7 @@ Constraints: Must be the name of valid cluster.
 The unique identifier of the manual snapshot to be deleted.
 
 Constraints: Must be the name of an existing snapshot that is in the
-C<available> state.
+C<available>, C<failed>, or C<cancelled> state.
 
 
 

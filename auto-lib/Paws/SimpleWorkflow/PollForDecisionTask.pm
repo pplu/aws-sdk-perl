@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DecisionTask = $swf->PollForDecisionTask(
       Domain   => 'MyDomainName',
       TaskList => {
-        name => 'MyName',    # min: 1, max: 256
+        Name => 'MyName',    # min: 1, max: 256
 
       },
       Identity        => 'MyIdentity',     # OPTIONAL
@@ -78,10 +78,8 @@ user defined.
 
 =head2 MaximumPageSize => Int
 
-The maximum number of results that are returned per call.
-C<nextPageToken> can be used to obtain futher pages of results. The
-default is 1000, which is the maximum allowed page size. You can,
-however, specify a page size I<smaller> than the maximum.
+The maximum number of results that are returned per call. Use
+C<nextPageToken> to obtain further pages of results.
 
 This is an upper limit only; the actual number of results returned per
 call may be fewer than the specified maximum.
@@ -90,10 +88,12 @@ call may be fewer than the specified maximum.
 
 =head2 NextPageToken => Str
 
-If a C<NextPageToken> was returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in C<nextPageToken>. Keep all other
-arguments unchanged.
+If C<NextPageToken> is returned there are more results available. The
+value of C<NextPageToken> is a unique pagination token for each page.
+Make the call again using the returned token to retrieve the next page.
+Keep all other arguments unchanged. Each pagination token expires after
+60 seconds. Using an expired pagination token will return a C<400>
+error: "C<Specified token has exceeded its maximum lifetime>".
 
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
@@ -121,7 +121,7 @@ Specifies the task list to poll for decision tasks.
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
-not contain the literal string C<arn>.
+not I<be> the literal string C<arn>.
 
 
 

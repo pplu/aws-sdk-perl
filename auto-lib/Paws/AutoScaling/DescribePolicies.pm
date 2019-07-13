@@ -34,10 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To describe Auto Scaling policies
     # This example describes the policies for the specified Auto Scaling group.
     my $PoliciesType = $autoscaling->DescribePolicies(
-      {
-        'AutoScalingGroupName' => 'my-auto-scaling-group'
-      }
-    );
+      'AutoScalingGroupName' => 'my-auto-scaling-group' );
 
     # Results:
     my $ScalingPolicies = $PoliciesType->ScalingPolicies;
@@ -59,7 +56,7 @@ The name of the Auto Scaling group.
 =head2 MaxRecords => Int
 
 The maximum number of items to be returned with each call. The default
-value is 50 and the maximum value is 100.
+value is C<50> and the maximum value is C<100>.
 
 
 
@@ -73,7 +70,7 @@ from a previous call.)
 =head2 PolicyNames => ArrayRef[Str|Undef]
 
 The names of one or more policies. If you omit this parameter, all
-policies are described. If an group name is provided, the results are
+policies are described. If a group name is provided, the results are
 limited to that group. This list is limited to 50 items. If you specify
 an unknown policy name, it is ignored with no error.
 
@@ -81,8 +78,8 @@ an unknown policy name, it is ignored with no error.
 
 =head2 PolicyTypes => ArrayRef[Str|Undef]
 
-One or more policy types. Valid values are C<SimpleScaling> and
-C<StepScaling>.
+One or more policy types. The valid values are C<SimpleScaling>,
+C<StepScaling>, and C<TargetTrackingScaling>.
 
 
 

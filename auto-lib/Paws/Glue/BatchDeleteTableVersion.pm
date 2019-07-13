@@ -73,7 +73,8 @@ lowercase.
 
 =head2 B<REQUIRED> VersionIds => ArrayRef[Str|Undef]
 
-A list of the IDs of versions to be deleted.
+A list of the IDs of versions to be deleted. A C<VersionId> is a string
+representation of an integer. Each version is incremented by 1.
 
 
 

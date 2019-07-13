@@ -3,6 +3,7 @@ package Paws::StorageGateway::VolumeInfo;
   has GatewayARN => (is => 'ro', isa => 'Str');
   has GatewayId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
+  has VolumeAttachmentStatus => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
   has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
   has VolumeType => (is => 'ro', isa => 'Str');
@@ -67,6 +68,12 @@ Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and
 hyphens (-).
 
 
+=head2 VolumeAttachmentStatus => Str
+
+  One of the VolumeStatus values that indicates the state of the storage
+volume.
+
+
 =head2 VolumeId => Str
 
   The unique identifier assigned to the volume. This ID becomes part of
@@ -87,7 +94,8 @@ hyphens (-).
 
 =head2 VolumeType => Str
 
-  
+  One of the VolumeType enumeration values describing the type of the
+volume.
 
 
 

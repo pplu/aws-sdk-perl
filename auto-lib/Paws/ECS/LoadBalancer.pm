@@ -34,15 +34,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::LoadBa
 
 =head1 DESCRIPTION
 
-Details on a load balancer that is used with a service.
+Details on a load balancer to be used with a service or task set.
+
+If the service is using the C<ECS> deployment controller, you are
+limited to one load balancer or target group.
+
+If the service is using the C<CODE_DEPLOY> deployment controller, the
+service is required to use either an Application Load Balancer or
+Network Load Balancer. When you are creating an AWS CodeDeploy
+deployment group, you specify two target groups (referred to as a
+C<targetGroupPair>). Each target group binds to a separate task set in
+the deployment. The load balancer can also have up to two listeners, a
+required listener for production traffic and an optional listener that
+allows you to test new revisions of the service before routing
+production traffic to it.
 
 Services with tasks that use the C<awsvpc> network mode (for example,
 those with the Fargate launch type) only support Application Load
-Balancers and Network Load Balancers; Classic Load Balancers are not
+Balancers and Network Load Balancers. Classic Load Balancers are not
 supported. Also, when you create any target groups for these services,
-you must choose C<ip> as the target type, not C<instance>, because
-tasks that use the C<awsvpc> network mode are associated with an
-elastic network interface, not an Amazon EC2 instance.
+you must choose C<ip> as the target type, not C<instance>. Tasks that
+use the C<awsvpc> network mode are associated with an elastic network
+interface, not an Amazon EC2 instance.
 
 =head1 ATTRIBUTES
 
@@ -63,13 +76,27 @@ C<hostPort> of the port mapping.
 
 =head2 LoadBalancerName => Str
 
-  The name of a load balancer.
+  The name of the load balancer to associate with the Amazon ECS service
+or task set.
+
+A load balancer name is only specified when using a classic load
+balancer. If you are using an application load balancer or a network
+load balancer this should be omitted.
 
 
 =head2 TargetGroupArn => Str
 
   The full Amazon Resource Name (ARN) of the Elastic Load Balancing
-target group associated with a service.
+target group or groups associated with a service or task set.
+
+A target group ARN is only specified when using an application load
+balancer or a network load balancer. If you are using a classic load
+balancer this should be omitted.
+
+For services using the C<ECS> deployment controller, you are limited to
+one target group. For services using the C<CODE_DEPLOY> deployment
+controller, you are required to define two target groups for the load
+balancer.
 
 If your service's task definition uses the C<awsvpc> network mode
 (which is required for the Fargate launch type), you must choose C<ip>

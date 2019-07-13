@@ -2,6 +2,7 @@
 package Paws::Config::PutConfigRule;
   use Moose;
   has ConfigRule => (is => 'ro', isa => 'Paws::Config::ConfigRule', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Config::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -48,6 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ConfigRuleName => 'MyStringWithCharLimit64', # min: 1, max: 64; OPTIONAL
         ConfigRuleState => 'ACTIVE'
         ,    # values: ACTIVE, DELETING, DELETING_RESULTS, EVALUATING; OPTIONAL
+        CreatedBy   => 'MyStringWithCharLimit256',          # min: 1, max: 256
         Description => 'MyEmptiableStringWithCharLimit256', # max: 256; OPTIONAL
         InputParameters =>
           'MyStringWithCharLimit1024',    # min: 1, max: 1024; OPTIONAL
@@ -63,7 +65,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           TagValue => 'MyStringWithCharLimit256',   # min: 1, max: 256
         },    # OPTIONAL
       },
-
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],                            # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -75,6 +83,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head2 B<REQUIRED> ConfigRule => L<Paws::Config::ConfigRule>
 
 The rule that you want to add to your account.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Config::Tag>]
+
+
 
 
 

@@ -55,7 +55,7 @@ stream notification to the Amazon SNS topic.
   Status of the last attempted delivery.
 
 B<Note> Providing an SNS topic on a DeliveryChannel
-(http://docs.aws.amazon.com/config/latest/APIReference/API_DeliveryChannel.html)
+(https://docs.aws.amazon.com/config/latest/APIReference/API_DeliveryChannel.html)
 for AWS Config is optional. If the SNS delivery is turned off, the last
 status will be B<Not_Applicable>.
 

@@ -1,6 +1,7 @@
 
 package Paws::KMS::ListAliases;
   use Moose;
+  has KeyId => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has Marker => (is => 'ro', isa => 'Str');
 
@@ -42,6 +43,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/ListAliases>
 
 =head1 ATTRIBUTES
+
+
+=head2 KeyId => Str
+
+Lists only aliases that refer to the specified CMK. The value of this
+parameter can be the ID or Amazon Resource Name (ARN) of a CMK in the
+caller's account and region. You cannot use an alias name or alias ARN
+in this value.
+
+This parameter is optional. If you omit it, C<ListAliases> returns all
+aliases in the account and region.
+
 
 
 =head2 Limit => Int

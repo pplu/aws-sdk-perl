@@ -2,9 +2,11 @@ package Paws::MediaConvert::JobSettings;
   use Moose;
   has AdAvailOffset => (is => 'ro', isa => 'Int', request_name => 'adAvailOffset', traits => ['NameInRequest']);
   has AvailBlanking => (is => 'ro', isa => 'Paws::MediaConvert::AvailBlanking', request_name => 'availBlanking', traits => ['NameInRequest']);
-  has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Input]', request_name => 'inputs', traits => ['NameInRequest'], required => 1);
+  has Esam => (is => 'ro', isa => 'Paws::MediaConvert::EsamSettings', request_name => 'esam', traits => ['NameInRequest']);
+  has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Input]', request_name => 'inputs', traits => ['NameInRequest']);
+  has MotionImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::MotionImageInserter', request_name => 'motionImageInserter', traits => ['NameInRequest']);
   has NielsenConfiguration => (is => 'ro', isa => 'Paws::MediaConvert::NielsenConfiguration', request_name => 'nielsenConfiguration', traits => ['NameInRequest']);
-  has OutputGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputGroup]', request_name => 'outputGroups', traits => ['NameInRequest'], required => 1);
+  has OutputGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputGroup]', request_name => 'outputGroups', traits => ['NameInRequest']);
   has TimecodeConfig => (is => 'ro', isa => 'Paws::MediaConvert::TimecodeConfig', request_name => 'timecodeConfig', traits => ['NameInRequest']);
   has TimedMetadataInsertion => (is => 'ro', isa => 'Paws::MediaConvert::TimedMetadataInsertion', request_name => 'timedMetadataInsertion', traits => ['NameInRequest']);
 1;
@@ -54,19 +56,30 @@ Avail PTS time.
 an image, and audio muted during SCTE-35 triggered ad avails.
 
 
-=head2 B<REQUIRED> Inputs => ArrayRef[L<Paws::MediaConvert::Input>]
+=head2 Esam => L<Paws::MediaConvert::EsamSettings>
+
+  Settings for Event Signaling And Messaging (ESAM).
+
+
+=head2 Inputs => ArrayRef[L<Paws::MediaConvert::Input>]
 
   Use Inputs (inputs) to define source file used in the transcode job.
 There can be multiple inputs add in a job. These inputs will be
 concantenated together to create the output.
 
 
+=head2 MotionImageInserter => L<Paws::MediaConvert::MotionImageInserter>
+
+  Overlay motion graphics on top of your video. The motion graphics that
+you specify here appear on all outputs in all output groups.
+
+
 =head2 NielsenConfiguration => L<Paws::MediaConvert::NielsenConfiguration>
 
-  
+  Settings for Nielsen Configuration
 
 
-=head2 B<REQUIRED> OutputGroups => ArrayRef[L<Paws::MediaConvert::OutputGroup>]
+=head2 OutputGroups => ArrayRef[L<Paws::MediaConvert::OutputGroup>]
 
   (OutputGroups) contains one group of settings for each set of outputs
 that share a common package type. All unpackaged files (MPEG-4, MPEG-2
@@ -89,7 +102,10 @@ inputs.
 
 =head2 TimedMetadataInsertion => L<Paws::MediaConvert::TimedMetadataInsertion>
 
-  
+  Enable Timed metadata insertion (TimedMetadataInsertion) to include ID3
+tags in your job. To include timed metadata, you must enable it here,
+enable it in each output container, and specify tags and timecodes in
+ID3 insertion (Id3Insertion) objects.
 
 
 

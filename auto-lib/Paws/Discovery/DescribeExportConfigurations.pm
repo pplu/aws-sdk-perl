@@ -50,24 +50,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dis
 
 =head2 ExportIds => ArrayRef[Str|Undef]
 
-A unique identifier that you can use to query the export status.
+A list of continuous export ids to search for.
 
 
 
 =head2 MaxResults => Int
 
-The maximum number of results that you want to display as a part of the
-query.
+A number between 1 and 100 specifying the maximum number of continuous
+export descriptions returned.
 
 
 
 =head2 NextToken => Str
 
-A token to get the next set of results. For example, if you specify 100
-IDs for C<DescribeExportConfigurationsRequest$exportIds> but set
-C<DescribeExportConfigurationsRequest$maxResults> to 10, you get
-results in a set of 10. Use the token in the query to get the next set
-of 10.
+The token from the previous call to describe-export-tasks.
 
 
 

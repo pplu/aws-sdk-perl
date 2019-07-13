@@ -43,21 +43,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::MediaStoreData::ListItemsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/mediastore/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/data.mediastore/ListItems>
 
 =head1 ATTRIBUTES
 
 
 =head2 MaxResults => Int
 
-The maximum results to return. The service might return fewer results.
+The maximum number of results to return per API request. For example,
+you submit a C<ListItems> request with C<MaxResults> set at 500.
+Although 2,000 items match your request, the service returns no more
+than the first 500 items. (The service also returns a C<NextToken>
+value that you can use to fetch the next batch of results.) The service
+might return fewer results than the C<MaxResults> value.
+
+If C<MaxResults> is not included in the request, the service defaults
+to pagination with a maximum of 1,000 results per page.
 
 
 
 =head2 NextToken => Str
 
-The C<NextToken> received in the C<ListItemsResponse> for the same
-container and path. Tokens expire after 15 minutes.
+The token that identifies which batch of results that you want to see.
+For example, you submit a C<ListItems> request with C<MaxResults> set
+at 500. The service returns the first batch of results (up to 500) and
+a C<NextToken> value. To see the next batch of results, you can submit
+the C<ListItems> request a second time and specify the C<NextToken>
+value.
+
+Tokens expire after 15 minutes.
 
 
 

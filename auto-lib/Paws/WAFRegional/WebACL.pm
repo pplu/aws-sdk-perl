@@ -4,6 +4,7 @@ package Paws::WAFRegional::WebACL;
   has MetricName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::ActivatedRule]', required => 1);
+  has WebACLArn => (is => 'ro', isa => 'Str');
   has WebACLId => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -58,9 +59,11 @@ C<WebACL> match. The action is specified by the WafAction object.
 =head2 MetricName => Str
 
   A friendly name or description for the metrics for this C<WebACL>. The
-name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-can't contain whitespace. You can't change C<MetricName> after you
-create the C<WebACL>.
+name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
+maximum length 128 and minimum length one. It can't contain whitespace
+or metric names reserved for AWS WAF, including "All" and
+"Default_Action." You can't change C<MetricName> after you create the
+C<WebACL>.
 
 
 =head2 Name => Str
@@ -73,6 +76,11 @@ name of a C<WebACL> after you create it.
 
   An array that contains the action for each C<Rule> in a C<WebACL>, the
 priority of the C<Rule>, and the ID of the C<Rule>.
+
+
+=head2 WebACLArn => Str
+
+  Tha Amazon Resource Name (ARN) of the web ACL.
 
 
 =head2 B<REQUIRED> WebACLId => Str

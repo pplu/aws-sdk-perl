@@ -2,6 +2,7 @@
 package Paws::IoT1ClickDevices::FinalizeDeviceClaim;
   use Moose;
   has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'deviceId', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::IoT1ClickDevices::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -30,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $devices.iot1click = Paws->service('IoT1ClickDevices');
     my $FinalizeDeviceClaimResponse = $devices . iot1click->FinalizeDeviceClaim(
       DeviceId => 'My__string',
-
+      Tags     => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
@@ -39,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::IoT1ClickDevices::FinalizeDeviceClaimResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/devices.iot1click/FinalizeDeviceClaim>
 
 =head1 ATTRIBUTES
 
@@ -47,6 +48,15 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 =head2 B<REQUIRED> DeviceId => Str
 
 The unique identifier of the device.
+
+
+
+=head2 Tags => L<Paws::IoT1ClickDevices::__mapOf__string>
+
+A collection of key/value pairs defining the resource tags. For
+example, { "tags": {"key1": "value1", "key2": "value2"} }. For more
+information, see AWS Tagging Strategies
+(https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
 
 
 

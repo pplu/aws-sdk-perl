@@ -64,7 +64,7 @@ timeout must be changed.
 
 The URL of the Amazon SQS queue whose messages' visibility is changed.
 
-Queue URLs are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 

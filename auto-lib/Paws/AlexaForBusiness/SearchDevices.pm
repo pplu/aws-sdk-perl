@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Key    => 'MyFilterKey',    # min: 1, max: 500
           Values => [
             'MyFilterValue', ...      # min: 1, max: 500
-          ],                          # max: 5
+          ],                          # max: 50
 
         },
         ...
@@ -61,7 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::AlexaForBusiness::SearchDevicesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b/SearchDevices>
 
 =head1 ATTRIBUTES
 
@@ -70,8 +70,9 @@ For the AWS API documentation, see L<https://aws.amazon.com/documentation/>
 
 The filters to use to list a specified set of devices. Supported filter
 keys are DeviceName, DeviceStatus, DeviceStatusDetailCode, RoomName,
-DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus
-(ONLINE and OFFLINE).
+DeviceType, DeviceSerialNumber, UnassociatedOnly, ConnectionStatus
+(ONLINE and OFFLINE), NetworkProfileName, NetworkProfileArn, Feature,
+and FailureCode.
 
 
 
@@ -97,7 +98,8 @@ specified by C<MaxResults>.
 
 The sort order to use in listing the specified set of devices.
 Supported sort keys are DeviceName, DeviceStatus, RoomName, DeviceType,
-DeviceSerialNumber, and ConnectionStatus.
+DeviceSerialNumber, ConnectionStatus, NetworkProfileName,
+NetworkProfileArn, Feature, and FailureCode.
 
 
 

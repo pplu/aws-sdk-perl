@@ -36,7 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A customer origin.
+A custom origin or an Amazon S3 bucket configured as a website
+endpoint.
 
 =head1 ATTRIBUTES
 

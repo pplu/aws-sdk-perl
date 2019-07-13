@@ -40,12 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # specified DB instance for the past 7 days (7 days * 24 hours * 60 minutes =
    # 10,080 minutes).
     my $EventsMessage = $rds->DescribeEvents(
-      {
-        'Duration'         => 10080,
-        'EventCategories'  => ['backup'],
-        'SourceIdentifier' => 'mymysqlinstance',
-        'SourceType'       => 'db-instance'
-      }
+      'Duration'         => 10080,
+      'EventCategories'  => ['backup'],
+      'SourceIdentifier' => 'mymysqlinstance',
+      'SourceType'       => 'db-instance'
     );
 
 
@@ -142,7 +140,7 @@ supplied.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 

@@ -86,6 +86,52 @@ package Paws::CloudTrail;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllPublicKeys {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPublicKeys(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPublicKeys(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PublicKeyList }, @{ $next_result->PublicKeyList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PublicKeyList') foreach (@{ $result->PublicKeyList });
+        $result = $self->ListPublicKeys(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PublicKeyList') foreach (@{ $result->PublicKeyList });
+    }
+
+    return undef
+  }
+  sub ListAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTags(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTags(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ResourceTagList }, @{ $next_result->ResourceTagList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ResourceTagList') foreach (@{ $result->ResourceTagList });
+        $result = $self->ListTags(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ResourceTagList') foreach (@{ $result->ResourceTagList });
+    }
+
+    return undef
+  }
   sub LookupAllEvents {
     my $self = shift;
 
@@ -211,6 +257,8 @@ region in which the trail was created (that is, from its home region).
 
 =item [IsMultiRegionTrail => Bool]
 
+=item [IsOrganizationTrail => Bool]
+
 =item [KmsKeyId => Str]
 
 =item [S3KeyPrefix => Str]
@@ -288,7 +336,8 @@ the following:
 
 =item *
 
-The S3 objects that you are logging for data events.
+If your event selector includes read-only events, write-only events, or
+all events. This applies to both management events and data events.
 
 =item *
 
@@ -296,8 +345,8 @@ If your event selector includes management events.
 
 =item *
 
-If your event selector includes read-only events, write-only events, or
-all.
+If your event selector includes data events, the Amazon S3 objects or
+AWS Lambda functions that you are logging for data events.
 
 =back
 
@@ -393,13 +442,17 @@ Each argument is described in detail in: L<Paws::CloudTrail::LookupEvents>
 
 Returns: a L<Paws::CloudTrail::LookupEventsResponse> instance
 
-Looks up API activity events captured by CloudTrail that create,
-update, or delete resources in your account. Events for a region can be
-looked up for the times in which you had CloudTrail turned on in that
-region during the last seven days. Lookup supports the following
+Looks up management events
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events)
+captured by CloudTrail. Events for a region can be looked up in that
+region during the last 90 days. Lookup supports the following
 attributes:
 
 =over
+
+=item *
+
+AWS access key
 
 =item *
 
@@ -412,6 +465,10 @@ Event name
 =item *
 
 Event source
+
+=item *
+
+Read only
 
 =item *
 
@@ -428,7 +485,7 @@ User name
 =back
 
 All attributes are optional. The default number of results returned is
-10, with a maximum of 50 possible. The response includes a token that
+50, with a maximum of 50 possible. The response includes a token that
 you can use to get the next page of results.
 
 The rate of lookup requests is limited to one per second per account.
@@ -455,11 +512,15 @@ Each argument is described in detail in: L<Paws::CloudTrail::PutEventSelectors>
 Returns: a L<Paws::CloudTrail::PutEventSelectorsResponse> instance
 
 Configures an event selector for your trail. Use event selectors to
-specify whether you want your trail to log management and/or data
-events. When an event occurs in your account, CloudTrail evaluates the
-event selectors in all trails. For each trail, if the event matches any
-event selector, the trail processes and logs the event. If the event
-doesn't match any event selector, the trail doesn't log the event.
+further specify the management and data event settings for your trail.
+By default, trails created without specific event selectors will be
+configured to log all read and write management events, and no data
+events.
+
+When an event occurs in your account, CloudTrail evaluates the event
+selectors in all trails. For each trail, if the event matches any event
+selector, the trail processes and logs the event. If the event doesn't
+match any event selector, the trail doesn't log the event.
 
 Example
 
@@ -498,6 +559,8 @@ C<InvalidHomeRegionException> is thrown.
 You can configure up to five event selectors for each trail. For more
 information, see Logging Data and Management Events for Trails
 (http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
+and Limits in AWS CloudTrail
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)
 in the I<AWS CloudTrail User Guide>.
 
 
@@ -578,6 +641,8 @@ regions) of a trail enabled in all regions.
 
 =item [IsMultiRegionTrail => Bool]
 
+=item [IsOrganizationTrail => Bool]
+
 =item [KmsKeyId => Str]
 
 =item [S3BucketName => Str]
@@ -607,6 +672,30 @@ C<InvalidHomeRegionException> is thrown.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllPublicKeys(sub { },[EndTime => Str, NextToken => Str, StartTime => Str])
+
+=head2 ListAllPublicKeys([EndTime => Str, NextToken => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PublicKeyList, passing the object as the first parameter, and the string 'PublicKeyList' as the second parameter 
+
+If not, it will return a a L<Paws::CloudTrail::ListPublicKeysResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTags(sub { },ResourceIdList => ArrayRef[Str|Undef], [NextToken => Str])
+
+=head2 ListAllTags(ResourceIdList => ArrayRef[Str|Undef], [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceTagList, passing the object as the first parameter, and the string 'ResourceTagList' as the second parameter 
+
+If not, it will return a a L<Paws::CloudTrail::ListTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 LookupAllEvents(sub { },[EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
 

@@ -33,10 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To swap environment CNAMES
     # The following operation swaps the assigned subdomains of two environments:
     $elasticbeanstalk->SwapEnvironmentCNAMEs(
-      {
-        'DestinationEnvironmentName' => 'my-env-green',
-        'SourceEnvironmentName'      => 'my-env-blue'
-      }
+      'DestinationEnvironmentName' => 'my-env-green',
+      'SourceEnvironmentName'      => 'my-env-blue'
     );
 
 

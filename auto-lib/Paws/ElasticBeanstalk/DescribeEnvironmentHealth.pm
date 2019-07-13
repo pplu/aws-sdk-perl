@@ -34,10 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # environment named my-env:
     my $DescribeEnvironmentHealthResult =
       $elasticbeanstalk->DescribeEnvironmentHealth(
-      {
-        'AttributeNames'  => ['All'],
-        'EnvironmentName' => 'my-env'
-      }
+      'AttributeNames'  => ['All'],
+      'EnvironmentName' => 'my-env'
       );
 
     # Results:

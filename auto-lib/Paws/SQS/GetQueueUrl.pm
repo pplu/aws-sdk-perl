@@ -31,10 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Retrieve queue attributes from an SQS queue
     # The following example retrieves the queue ARN.
     my $GetQueueUrlResult = $sqs->GetQueueUrl(
-      {
-        'QueueName'              => 'MyQueue',
-        'QueueOwnerAWSAccountId' => 12345678910
-      }
+      'QueueName'              => 'MyQueue',
+      'QueueOwnerAWSAccountId' => 12345678910
     );
 
     # Results:
@@ -54,7 +52,7 @@ The name of the queue whose URL must be fetched. Maximum 80 characters.
 Valid values: alphanumeric characters, hyphens (C<->), and underscores
 (C<_>).
 
-Queue names are case-sensitive.
+Queue URLs and names are case-sensitive.
 
 
 

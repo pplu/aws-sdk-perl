@@ -31,16 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ServerS
 
 =head1 DESCRIPTION
 
-Container for information about a particular server-side encryption
-configuration rule.
+Specifies the default server-side encryption configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplyServerSideEncryptionByDefault => L<Paws::S3::ServerSideEncryptionByDefault>
 
-  Describes the default server-side encryption to apply to new objects in
-the bucket. If Put Object request does not specify any server-side
+  Specifies the default server-side encryption to apply to new objects in
+the bucket. If a PUT Object request doesn't specify any server-side
 encryption, this default encryption will be applied.
 
 

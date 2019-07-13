@@ -5,13 +5,16 @@ package Paws::Batch::ContainerDetail;
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
   has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has JobRoleArn => (is => 'ro', isa => 'Str', request_name => 'jobRoleArn', traits => ['NameInRequest']);
   has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::Batch::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
   has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
   has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
   has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
@@ -83,6 +86,12 @@ service.
   The image used to start the container.
 
 
+=head2 InstanceType => Str
+
+  The instance type of the underlying host infrastructure of a multi-node
+parallel job.
+
+
 =head2 JobRoleArn => Str
 
   The Amazon Resource Name (ARN) associated with the job upon execution.
@@ -106,6 +115,11 @@ C<RUNNING> status.
   The mount points for data volumes in your container.
 
 
+=head2 NetworkInterfaces => ArrayRef[L<Paws::Batch::NetworkInterface>]
+
+  The network interfaces associated with the job.
+
+
 =head2 Privileged => Bool
 
   When this parameter is true, the container is given elevated privileges
@@ -122,6 +136,12 @@ its root file system.
 
   A short (255 max characters) human-readable string to provide
 additional details about a running or stopped container.
+
+
+=head2 ResourceRequirements => ArrayRef[L<Paws::Batch::ResourceRequirement>]
+
+  The type and amount of a resource to assign to a container. Currently,
+the only supported resource is C<GPU>.
 
 
 =head2 TaskArn => Str

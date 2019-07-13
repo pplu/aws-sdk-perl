@@ -60,14 +60,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see How to Ensure Idempotency
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
 =head2 Description => Str
 
-A description for the new AMI in the destination region.
+A description for the new AMI in the destination Region.
 
 
 
@@ -83,10 +83,12 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 Encrypted => Bool
 
 Specifies whether the destination snapshots of the copied image should
-be encrypted. The default CMK for EBS is used unless a non-default AWS
-Key Management Service (AWS KMS) CMK is specified with C<KmsKeyId>. For
-more information, see Amazon EBS Encryption
-(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+be encrypted. You can encrypt a copy of an unencrypted snapshot, but
+you cannot create an unencrypted copy of an encrypted snapshot. The
+default CMK for EBS is used unless you specify a non-default AWS Key
+Management Service (AWS KMS) CMK using C<KmsKeyId>. For more
+information, see Amazon EBS Encryption
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -99,31 +101,28 @@ parameter is only required if you want to use a non-default CMK; if
 this parameter is not specified, the default CMK for EBS is used. If a
 C<KmsKeyId> is specified, the C<Encrypted> flag must also be set.
 
-The CMK identifier may be provided in any of the following formats:
+To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
+name, or alias ARN. When using an alias name, prefix it with "alias/".
+For example:
 
 =over
 
 =item *
 
-Key ID
+Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
-Key alias, in the form C<alias/I<ExampleAlias>>
+Key ARN:
+C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
-ARN using key ID. The ID ARN contains the C<arn:aws:kms> namespace,
-followed by the region of the CMK, the AWS account ID of the CMK owner,
-the C<key> namespace, and then the CMK ID. For example,
-arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
+Alias name: C<alias/ExampleAlias>
 
 =item *
 
-ARN using key alias. The alias ARN contains the C<arn:aws:kms>
-namespace, followed by the region of the CMK, the AWS account ID of the
-CMK owner, the C<alias> namespace, and then the CMK alias. For example,
-arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
+Alias ARN: C<arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias>
 
 =back
 
@@ -131,14 +130,14 @@ AWS parses C<KmsKeyId> asynchronously, meaning that the action you call
 may appear to complete even though you provided an invalid identifier.
 This action will eventually report failure.
 
-The specified CMK must exist in the region that the snapshot is being
+The specified CMK must exist in the Region that the snapshot is being
 copied to.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the new AMI in the destination region.
+The name of the new AMI in the destination Region.
 
 
 
@@ -150,7 +149,7 @@ The ID of the AMI to copy.
 
 =head2 B<REQUIRED> SourceRegion => Str
 
-The name of the region that contains the AMI to copy.
+The name of the Region that contains the AMI to copy.
 
 
 

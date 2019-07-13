@@ -44,20 +44,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 B<REQUIRED> Email => Str
 
-The email for the entity to be updated.
+The email for the user, group, or resource to be updated.
 
 
 
 =head2 B<REQUIRED> EntityId => Str
 
-The identifier for the entity to be updated.
+The identifier for the user, group, or resource to be updated.
 
 
 
 =head2 B<REQUIRED> OrganizationId => Str
 
-The identifier for the organization under which the Amazon WorkMail
-entity exists.
+The identifier for the organization under which the user, group, or
+resource exists.
 
 
 

@@ -32,10 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example describes the supported-platforms attribute for your AWS
     # account.
     my $DescribeAccountAttributesResult = $ec2->DescribeAccountAttributes(
-      {
-        'AttributeNames' => ['supported-platforms']
-      }
-    );
+      'AttributeNames' => ['supported-platforms'] );
 
     # Results:
     my $AccountAttributes = $DescribeAccountAttributesResult->AccountAttributes;
@@ -58,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AttributeNames => ArrayRef[Str|Undef]
 
-One or more account attribute names.
+The account attribute names.
 
 
 

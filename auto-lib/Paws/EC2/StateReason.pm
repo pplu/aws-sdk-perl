@@ -99,6 +99,11 @@ found.
 
 =item *
 
+C<Client.UserInitiatedHibernate>: Hibernation was initiated on the
+instance.
+
+=item *
+
 C<Client.UserInitiatedShutdown>: The instance was shut down using the
 Amazon EC2 API.
 

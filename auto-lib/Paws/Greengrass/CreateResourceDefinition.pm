@@ -4,6 +4,7 @@ package Paws::Greengrass::CreateResourceDefinition;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::ResourceDefinitionVersion');
   has Name => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -62,12 +63,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 DestinationPath => 'My__string',
                 SageMakerJobArn => 'My__string',
               },    # OPTIONAL
+              SecretsManagerSecretResourceData => {
+                ARN                               => 'My__string',
+                AdditionalStagingLabelsToDownload => [ 'My__string', ... ]
+                ,    # OPTIONAL
+              },    # OPTIONAL
             },    # OPTIONAL
           },
           ...
         ],        # OPTIONAL
       },    # OPTIONAL
-      Name => 'My__string',    # OPTIONAL
+      Name => 'My__string',                         # OPTIONAL
+      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
       );
 
     # Results:
@@ -84,7 +91,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Returns a L<Paws::Greengrass::CreateResourceDefinitionResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://aws.amazon.com/documentation/greengrass/>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/greengrass/CreateResourceDefinition>
 
 =head1 ATTRIBUTES
 
@@ -104,6 +111,12 @@ Information about the initial version of the resource definition.
 =head2 Name => Str
 
 The name of the resource definition.
+
+
+
+=head2 Tags => L<Paws::Greengrass::Tags>
+
+Tag(s) to add to the new resource
 
 
 

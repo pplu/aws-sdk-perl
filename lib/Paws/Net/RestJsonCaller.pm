@@ -1,9 +1,11 @@
 package Paws::Net::RestJsonCaller;
+  use Paws;
   use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
   use URI::Template;
   use JSON::MaybeXS;
+  use Scalar::Util;
 
   use Paws::Net::RestJsonResponse;
 
@@ -37,10 +39,10 @@ package Paws::Net::RestJsonCaller;
         } elsif ($att_type eq 'Str') {
           # concatenate an empty string so numbers get transmitted as strings
           $p{ $key } = "" . $params->$att;
-        } elsif ($self->_is_internal_type($att_type)) {
+        } elsif (Paws->is_internal_type($att_type)) {
           $p{ $key } = $params->$att;
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
-          if ($self->_is_internal_type("$1")){
+          if (Paws->is_internal_type("$1")){
             $p{ $key } = $params->$att;
           } else {
             $p{ $key } = [ map { $self->_to_jsoncaller_params($_) } @{ $params->$att } ];
@@ -115,12 +117,18 @@ package Paws::Net::RestJsonCaller;
     
     if ($call->can('_stream_param')) {
       my $param_name = $call->_stream_param;
-      $request->content($call->$param_name);
-      #$request->headers->header( 'content-length' => $request->content_length );
-      #$request->headers->header( 'content-type'   => $self->content_type );
+      if (Scalar::Util::blessed($call->$param_name)){
+          my $attribute = $call->$param_name;
+          my $content   = encode_json($self->_to_jsoncaller_params($attribute));
+          $request->content($content);
+          $request->headers->header('Content-Type'=>'application/json');
+          $request->headers->header('Content-Length'=>length($content));
+      } else {
+          $request->content($call->$param_name);
+      }
     } else {
       my $data = $self->_to_jsoncaller_params($call);
-      $request->content(encode_json($data));
+      $request->content(encode_json($data)) if (keys %$data);
     }
     
     $request->method($call->_api_method);

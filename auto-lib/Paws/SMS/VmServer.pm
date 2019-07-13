@@ -35,34 +35,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SMS::VmServ
 
 =head1 DESCRIPTION
 
-Object representing a VM server
+Represents a VM server.
 
 =head1 ATTRIBUTES
 
 
 =head2 VmManagerName => Str
 
-  
+  The name of the VM manager.
 
 
 =head2 VmManagerType => Str
 
-  
+  The type of VM management product.
 
 
 =head2 VmName => Str
 
-  
+  The name of the VM.
 
 
 =head2 VmPath => Str
 
-  
+  The VM folder path in the vCenter Server virtual machine inventory
+tree.
 
 
 =head2 VmServerAddress => L<Paws::SMS::VmServerAddress>
 
-  
+  Information about the VM server location.
 
 
 

@@ -49,8 +49,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 =head2 BundleIds => ArrayRef[Str|Undef]
 
-The IDs of the bundles. This parameter cannot be combined with any
-other filter.
+The identifiers of the bundles. You cannot combine this parameter with
+any other filter.
 
 
 
@@ -63,7 +63,7 @@ previous call.)
 
 =head2 Owner => Str
 
-The owner of the bundles. This parameter cannot be combined with any
+The owner of the bundles. You cannot combine this parameter with any
 other filter.
 
 Specify C<AMAZON> to describe the bundles provided by AWS or null to

@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSecu
 Contains the details for an Amazon RDS DB security group.
 
 This data type is used as a response element in the
-DescribeDBSecurityGroups action.
+C<DescribeDBSecurityGroups> action.
 
 =head1 ATTRIBUTES
 
@@ -62,12 +62,12 @@ DescribeDBSecurityGroups action.
 
 =head2 EC2SecurityGroups => ArrayRef[L<Paws::RDS::EC2SecurityGroup>]
 
-  Contains a list of EC2SecurityGroup elements.
+  Contains a list of C<EC2SecurityGroup> elements.
 
 
 =head2 IPRanges => ArrayRef[L<Paws::RDS::IPRange>]
 
-  Contains a list of IPRange elements.
+  Contains a list of C<IPRange> elements.
 
 
 =head2 OwnerId => Str

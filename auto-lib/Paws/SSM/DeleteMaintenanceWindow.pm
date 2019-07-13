@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> WindowId => Str
 
-The ID of the Maintenance Window to delete.
+The ID of the maintenance window to delete.
 
 
 

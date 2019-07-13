@@ -1,11 +1,12 @@
 
 package Paws::GameLift::CreateFleet;
   use Moose;
-  has BuildId => (is => 'ro', isa => 'Str', required => 1);
+  has BuildId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EC2InboundPermissions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::IpPermission]');
   has EC2InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has FleetType => (is => 'ro', isa => 'Str');
+  has InstanceRoleArn => (is => 'ro', isa => 'Str');
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MetricGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -14,6 +15,7 @@ package Paws::GameLift::CreateFleet;
   has PeerVpcId => (is => 'ro', isa => 'Str');
   has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
   has RuntimeConfiguration => (is => 'ro', isa => 'Paws::GameLift::RuntimeConfiguration');
+  has ScriptId => (is => 'ro', isa => 'Str');
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str');
 
@@ -42,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $CreateFleetOutput = $gamelift->CreateFleet(
-      BuildId               => 'MyBuildId',
       EC2InstanceType       => 't2.micro',
       Name                  => 'MyNonZeroAndMaxString',
+      BuildId               => 'MyBuildId',                # OPTIONAL
       Description           => 'MyNonZeroAndMaxString',    # OPTIONAL
       EC2InboundPermissions => [
         {
@@ -56,8 +58,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                                   # OPTIONAL
-      FleetType => 'ON_DEMAND',                            # OPTIONAL
-      LogPaths  => [
+      FleetType       => 'ON_DEMAND',                      # OPTIONAL
+      InstanceRoleArn => 'MyNonEmptyString',               # OPTIONAL
+      LogPaths        => [
         'MyNonZeroAndMaxString', ...                       # min: 1, max: 1024
       ],                                                   # OPTIONAL
       MetricGroups => [
@@ -76,13 +79,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           1,    # min: 1, max: 2147483647; OPTIONAL
         ServerProcesses => [
           {
-            ConcurrentExecutions => 1,                       # min: 1,
+            ConcurrentExecutions => 1,                       # min: 1
             LaunchPath           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
             Parameters           => 'MyNonZeroAndMaxString', # min: 1, max: 1024
           },
           ...
         ],    # min: 1, max: 50; OPTIONAL
       },    # OPTIONAL
+      ScriptId               => 'MyScriptId',               # OPTIONAL
       ServerLaunchParameters => 'MyNonZeroAndMaxString',    # OPTIONAL
       ServerLaunchPath       => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
@@ -98,12 +102,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BuildId => Str
+=head2 BuildId => Str
 
 Unique identifier for a build to be deployed on the new fleet. The
-build must have been successfully uploaded to Amazon GameLift and be in
-a C<READY> status. This fleet setting cannot be changed once the fleet
-is created.
+custom game server build must have been successfully uploaded to Amazon
+GameLift and be in a C<READY> status. This fleet setting cannot be
+changed once the fleet is created.
 
 
 
@@ -116,10 +120,12 @@ Human-readable description of a fleet.
 =head2 EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>]
 
 Range of IP addresses and port settings that permit inbound traffic to
-access server processes running on the fleet. If no inbound permissions
-are set, including both IP address range and port range, the server
-processes in the fleet cannot accept connections. You can specify one
-or more sets of permissions for a fleet.
+access game sessions that running on the fleet. For fleets using a
+custom game build, this parameter is required before game sessions
+running on the fleet can accept connections. For Realtime Servers
+fleets, Amazon GameLift automatically sets TCP and UDP ranges for use
+by the Realtime servers. You can specify multiple permission settings
+or add more by updating the fleet.
 
 
 
@@ -138,16 +144,26 @@ Valid values are: C<"t2.micro">, C<"t2.small">, C<"t2.medium">, C<"t2.large">, C
 
 Indicates whether to use on-demand instances or spot instances for this
 fleet. If empty, the default is ON_DEMAND. Both categories of instances
-use identical hardware and configurations, based on the instance type
-selected for this fleet. You can acquire on-demand instances at any
-time for a fixed price and keep them as long as you need them. Spot
-instances have lower prices, but spot pricing is variable, and while in
-use they can be interrupted (with a two-minute notification). Learn
-more about Amazon GameLift spot instances with at Choose Computing
-Resources
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-ec2-instances.html).
+use identical hardware and configurations based on the instance type
+selected for this fleet. Learn more about On-Demand versus Spot
+Instances
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-ec2-instances.html#gamelift-ec2-instances-spot).
 
 Valid values are: C<"ON_DEMAND">, C<"SPOT">
+
+=head2 InstanceRoleArn => Str
+
+Unique identifier for an AWS IAM role that manages access to your AWS
+services. With an instance role ARN set, any application that runs on
+an instance in this fleet can assume the role, including install
+scripts, server processes, daemons (background processes). Create a
+role or look up a role's ARN using the IAM dashboard
+(https://console.aws.amazon.com/iam/) in the AWS Management Console.
+Learn more about using on-box credentials for your game servers at
+Access external resources from a game server
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html).
+
+
 
 =head2 LogPaths => ArrayRef[Str|Undef]
 
@@ -156,17 +172,17 @@ GameLift should store log files once a server process shuts down, use
 the Amazon GameLift server API C<ProcessReady()> and specify one or
 more directory paths in C<logParameters>. See more information in the
 Server API Reference
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process).
 
 
 
 =head2 MetricGroups => ArrayRef[Str|Undef]
 
-Name of a metric group to add this fleet to. A metric group tracks
-metrics across all fleets in the group. Use an existing metric group
-name to add this fleet to the group, or use a new name to create a new
-metric group. A fleet can only be included in one metric group at a
-time.
+Name of an Amazon CloudWatch metric group to add this fleet to. A
+metric group aggregates the metrics for all fleets in the group.
+Specify an existing metric group name, or provide a new name to create
+a new metric group. A fleet can only be included in one metric group at
+a time.
 
 
 
@@ -215,9 +231,10 @@ the AWS Management Console under account settings.
 
 Unique identifier for a VPC with resources to be accessed by your
 Amazon GameLift fleet. The VPC must be in the same region where your
-fleet is deployed. To get VPC information, including IDs, use the
-Virtual Private Cloud service tools, including the VPC Dashboard in the
-AWS Management Console.
+fleet is deployed. Look up a VPC ID using the VPC Dashboard
+(https://console.aws.amazon.com/vpc/) in the AWS Management Console.
+Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 
 
@@ -231,17 +248,22 @@ create over a span of time for this fleet.
 =head2 RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
 
 Instructions for launching server processes on each instance in the
-fleet. The run-time configuration for a fleet has a collection of
-server process configurations, one for each type of server process to
-run on an instance. A server process configuration specifies the
-location of the server executable, launch parameters, and the number of
-concurrent processes with that configuration to maintain on each
-instance. A CreateFleet request must include a run-time configuration
-with at least one server process configuration; otherwise the request
-fails with an invalid request exception. (This parameter replaces the
-parameters C<ServerLaunchPath> and C<ServerLaunchParameters>; requests
-that contain values for these parameters instead of a run-time
-configuration will continue to work.)
+fleet. Server processes run either a custom game build executable or a
+Realtime Servers script. The run-time configuration lists the types of
+server processes to run on an instance and includes the following
+configuration settings: the server executable or launch script file,
+launch parameters, and the number of processes to run concurrently on
+each instance. A CreateFleet request must include a run-time
+configuration with at least one server process configuration.
+
+
+
+=head2 ScriptId => Str
+
+Unique identifier for a Realtime script to be deployed on the new
+fleet. The Realtime script must have been successfully uploaded to
+Amazon GameLift. This fleet setting cannot be changed once the fleet is
+created.
 
 
 

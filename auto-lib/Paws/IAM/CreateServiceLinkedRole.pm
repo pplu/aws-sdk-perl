@@ -48,19 +48,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 =head2 B<REQUIRED> AWSServiceName => Str
 
-The AWS service to which this role is attached. You use a string
-similar to a URL but without the http:// in front. For example:
-C<elasticbeanstalk.amazonaws.com>
+The service principal for the AWS service to which this role is
+attached. You use a string similar to a URL but without the http:// in
+front. For example: C<elasticbeanstalk.amazonaws.com>.
+
+Service principals are unique and case-sensitive. To find the exact
+service principal for your service-linked role, see AWS Services That
+Work with IAM
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html)
+in the I<IAM User Guide>. Look for the services that have B<Yes >in the
+B<Service-Linked Role> column. Choose the B<Yes> link to view the
+service-linked role documentation for that service.
 
 
 
 =head2 CustomSuffix => Str
 
-A string that you provide, which is combined with the service name to
-form the complete role name. If you make multiple requests for the same
-service, then you must supply a different C<CustomSuffix> for each
-request. Otherwise the request fails with a duplicate role name error.
-For example, you could add C<-1> or C<-debug> to the suffix.
+A string that you provide, which is combined with the service-provided
+prefix to form the complete role name. If you make multiple requests
+for the same service, then you must supply a different C<CustomSuffix>
+for each request. Otherwise the request fails with a duplicate role
+name error. For example, you could add C<-1> or C<-debug> to the
+suffix.
+
+Some services do not support the C<CustomSuffix> parameter. If you
+provide an optional suffix and the operation fails, try the operation
+again without the suffix.
 
 
 

@@ -6,6 +6,7 @@ package Paws::GameLift::FleetAttributes;
   has FleetArn => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has FleetType => (is => 'ro', isa => 'Str');
+  has InstanceRoleArn => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MetricGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -13,6 +14,7 @@ package Paws::GameLift::FleetAttributes;
   has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
   has OperatingSystem => (is => 'ro', isa => 'Str');
   has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
+  has ScriptId => (is => 'ro', isa => 'Str');
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -49,8 +51,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::F
 =head1 DESCRIPTION
 
 General properties describing a fleet.
-
-Fleet-related operations include:
 
 =over
 
@@ -181,6 +181,19 @@ number expressed in Unix time as milliseconds (for example
 instance in use may be interrupted with a two-minute notification.
 
 
+=head2 InstanceRoleArn => Str
+
+  Unique identifier for an AWS IAM role that manages access to your AWS
+services. With an instance role ARN set, any application that runs on
+an instance in this fleet can assume the role, including install
+scripts, server processes, daemons (background processes). Create a
+role or look up a role's ARN using the IAM dashboard
+(https://console.aws.amazon.com/iam/) in the AWS Management Console.
+Learn more about using on-box credentials for your game servers at
+Access external resources from a game server
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html).
+
+
 =head2 InstanceType => Str
 
   EC2 instance type indicating the computing resources of each instance
@@ -195,7 +208,7 @@ See Amazon EC2 Instance Types
 Amazon GameLift captures and stores any log files in this location.
 These logs are in addition to game session logs; see more on game
 session logs in the Amazon GameLift Developer Guide
-(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code).
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code).
 If no default log path for a fleet is specified, Amazon GameLift
 automatically uploads logs that are stored on each instance at
 C<C:\game\logs> (for Windows) or C</local/game/logs> (for Linux). Use
@@ -250,6 +263,11 @@ deployed on this fleet.
 can create over a span of time.
 
 
+=head2 ScriptId => Str
+
+  Unique identifier for a Realtime script.
+
+
 =head2 ServerLaunchParameters => Str
 
   Game server launch parameters specified for fleets created before
@@ -282,8 +300,8 @@ B<NEW> -- A new fleet has been defined and desired instances is set to
 =item *
 
 B<DOWNLOADING/VALIDATING/BUILDING/ACTIVATING> -- Amazon GameLift is
-setting up the new fleet, creating new instances with the game build
-and starting server processes.
+setting up the new fleet, creating new instances with the game build or
+Realtime script and starting server processes.
 
 =item *
 
