@@ -1,0 +1,335 @@
+---
+call: GetCampaignVersions 
+service: Pinpoint
+tests:
+  - expected: fc64a4994ccc4da6bcf0e7312d894a11 
+    op: eq
+    path: Item.0.Id
+  - expected: test campaign
+    op: eq
+    path: Item.0.Description 
+  - expected: c7988efcbed549ebb240e72b7294aae4 
+    op: eq
+    path: Item.0.SegmentId
+  - expected: 1
+    op: eq
+    path: Item.0.SegmentVersion
+  - expected: 8448ee20-a4a2-11e9-b35d-4fbdfe0fa038 
+    op: eq 
+    path: _request_id
+  - expected: 2019-07-12T12:42:31.635Z
+    op: eq
+    path: Item.0.CreationDate
+  - expected: d055d2968e934363b683d02366875914
+    op: eq
+    path: Item.0.ApplicationId
+  - expected: fc64a4994ccc4da6bcf0e7312d894a11 
+    op: eq
+    path: Item.0.Id
+  - expected: 1
+    op: eq
+    path: Item.0.Version
+  - expected: 2019-07-12T12:42:31.635Z
+    op: eq
+    path: Item.0.LastModifiedDate
+  - expected: ONCE
+    op: eq
+    path: Item.0.Schedule.Frequency
+  - expected: 2019-09-16T15:53:00
+    op: eq
+    path: Item.0.Schedule.StartTime
+  - expected: test@test.com
+    op: eq
+    path: Item.0.MessageConfiguration.EmailMessage.FromAddress
+  - expected: test email
+    op: eq
+    path: Item.0.MessageConfiguration.EmailMessage.Body
+  - expected: Test email
+    op: eq
+    path: Item.0.MessageConfiguration.EmailMessage.HtmlBody
+  - expected: Test email
+    op: eq
+    path: Item.0.MessageConfiguration.EmailMessage.Title
+  - expected: TRANSACTIONAL
+    op: eq
+    path: Item.0.MessageConfiguration.SMSMessage.MessageType
+  - expected: nobody
+    op: eq
+    path: Item.0.MessageConfiguration.SMSMessage.SenderId
+  - expected: nothing
+    op: eq
+    path: Item.0.MessageConfiguration.SMSMessage.Body
+  - expected: test101
+    op: eq
+    path: Item.0.Name
+  - expected: 0 
+    op: ==
+    path: Item.0.IsPaused
+  - expected: arn:aws:mobiletargeting:us-east-1:985173205561:apps/d055d2968e934363b683d02366875914/campaigns/fc64a4994ccc4da6bcf0e7312d894a11
+    op: eq
+    path: Item.0.Arn
+  - expected: value1
+    op: eq
+    path: Item.0.Tags.Map.key1
+  - expected: value2
+    op: eq
+    path: Item.0.Tags.Map.key2
+  - expected: Test2
+    op: eq
+    path: Item.0.AdditionalTreatments.0.TreatmentName
+  - expected: test Treatment
+    op: eq
+    path: Item.0.AdditionalTreatments.0.TreatmentDescription
+  - expected: string
+    op: eq
+    path: Item.0.AdditionalTreatments.0.Id
+  - expected: SCHEDULED
+    op: eq
+    path: Item.0.AdditionalTreatments.0.State.CampaignStatus
+  - expected: 1
+    op: ==
+    path: Item.0.AdditionalTreatments.0.Schedule.IsLocalTime
+  - expected: DAILY
+    op: eq
+    path: Item.0.AdditionalTreatments.0.Schedule.Frequency
+  - expected: string
+    op: eq
+    path: Item.0.AdditionalTreatments.0.Schedule.EventFilter.Dimensions.EventType.Values.0
+  - expected: INCLUSIVE
+    op: eq
+    path: Item.0.AdditionalTreatments.0.Schedule.EventFilter.Dimensions.EventType.DimensionType
+  - expected: technology
+    op: eq
+    path: Item.0.AdditionalTreatments.0.Schedule.EventFilter.Dimensions.Attributes.Map.interests.Values.0
+  - expected: music
+    op: eq
+    path: Item.0.AdditionalTreatments.0.Schedule.EventFilter.Dimensions.Attributes.Map.interests.Values.1
+  - expected: travel
+    op: eq
+    path: Item.0.AdditionalTreatments.0.Schedule.EventFilter.Dimensions.Attributes.Map.interests.Values.2
+  - expected: INCLUSIVE
+    op: eq
+    path: Item.0.AdditionalTreatments.0.Schedule.EventFilter.Dimensions.Attributes.Map.interests.AttributeType
+  - expected: 102
+    op: eq
+    path: Item.0.AdditionalTreatments.0.Schedule.EventFilter.Dimensions.Metrics.Map.interests.Value
+  - expected: GREATER_THAN_OR_EQUAL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.Schedule.EventFilter.Dimensions.Metrics.Map.interests.ComparisonOperator
+  - expected: string
+    op: eq
+    path: Item.0.AdditionalTreatments.0.Id
+  - expected: Test2
+    op: eq
+    path: Item.0.AdditionalTreatments.0.TreatmentName
+  - expected: SCHEDULED
+    op: eq
+    path: Item.0.AdditionalTreatments.0.State.CampaignStatus
+  - expected: test Treatment
+    op: eq
+    path: Item.0.AdditionalTreatments.0.TreatmentDescription
+  - expected: string
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.EmailMessage.Title
+  - expected: string
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.EmailMessage.Body
+  - expected: string
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.EmailMessage.FromAddress
+  - expected: string
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.EmailMessage.HtmlBody
+  - expected: string
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.SMSMessage.Body
+  - expected: TRANSACTIONAL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.SMSMessage.MessageType
+  - expected: string
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.SMSMessage.SenderId
+  - expected: 100
+    op: ==
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.TimeToLive
+  - expected: URL media
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.MediaUrl
+  - expected: '{}'
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.JsonBody
+  - expected: small icon
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.ImageSmallIconUrl
+  - expected: image URL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.ImageUrl
+  - expected: 1
+    op: ==
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.SilentPush
+  - expected: URL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.Action
+  - expected: GCM body
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.Body
+  - expected: GCM Msg
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.Title
+  - expected: This is me
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.RawContent
+  - expected: Icon
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.ImageIconUrl
+  - expected: YAURL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.GCMMessage.Url
+  - expected: 12
+    op: ==
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.TimeToLive
+  - expected: Midia URL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.MediaUrl
+  - expected: '{}'
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.JsonBody
+  - expected: Small Icon
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.ImageSmallIconUrl
+  - expected: Image URL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.ImageUrl
+  - expected: 0
+    op: ==
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.SilentPush
+  - expected: DEEP_LINK
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.Action
+  - expected: APNS Body
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.Body
+  - expected: APNS Msg
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.Title
+  - expected: I am Raw
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.RawContent
+  - expected: Icon URL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.ImageIconUrl
+  - expected: An URL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.APNSMessage.Url
+  - expected: 1
+    op: ==
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.TimeToLive
+  - expected: ADM URL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.MediaUrl
+  - expected: '{}'
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.JsonBody
+  - expected: ADM small
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.ImageSmallIconUrl
+  - expected: ADM image
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.ImageUrl
+  - expected: 1
+    op: ==
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.SilentPush
+  - expected: OPEN_APP
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.Action
+  - expected: ADM Body
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.Body
+  - expected: ADM msg
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.Title
+  - expected: Still nothing
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.RawContent
+  - expected: ADM Icon
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.ImageIconUrl
+  - expected: URL ADM
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.ADMMessage.Url
+  - expected: 122
+    op: ==
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.TimeToLive
+  - expected: Baidu medis
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.MediaUrl
+  - expected: '{}'
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.JsonBody
+  - expected: Baidu icon
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.ImageSmallIconUrl
+  - expected: Baidu
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.ImageUrl
+  - expected: 0
+    op: ==
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.SilentPush
+  - expected: URL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.Action
+  - expected: Baidu body
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.Body
+  - expected: Baidu msg
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.Title
+  - expected: not content
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.RawContent
+  - expected: Baidu Icon
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.ImageIconUrl
+  - expected: Baidu URL2
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.BaiduMessage.Url
+  - expected: 101
+    op: ==
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.TimeToLive
+  - expected: medial url
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.MediaUrl
+  - expected: '{Json:here}'
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.JsonBody
+  - expected: and icong
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.ImageSmallIconUrl
+  - expected: an url
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.ImageUrl
+  - expected: 1
+    op: ==
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.SilentPush
+  - expected: DEEP_LINK
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.Action
+  - expected: Default msg body
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.Body
+  - expected: Default msg
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.Title
+  - expected: This hurts
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.RawContent
+  - expected: and url1
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.ImageIconUrl
+  - expected: the URL
+    op: eq
+    path: Item.0.AdditionalTreatments.0.MessageConfiguration.DefaultMessage.Url
+  - expected: 23
+    op: ==
+    path: Item.0.AdditionalTreatments.0.SizePercent
+
