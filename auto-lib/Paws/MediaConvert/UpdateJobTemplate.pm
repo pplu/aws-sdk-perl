@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1
+                  'My__stringMin1', ...    # min: 1; OPTIONAL
                 ],                         # OPTIONAL
               },
             },    # OPTIONAL
@@ -148,6 +148,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },    # OPTIONAL
               },
             },    # OPTIONAL
+            Crop => {
+              Height => 1,    # min: 2, max: 2147483647; OPTIONAL
+              Width  => 1,    # min: 2, max: 2147483647; OPTIONAL
+              X      => 1,    # max: 2147483647; OPTIONAL
+              Y      => 1,    # max: 2147483647; OPTIONAL
+            },    # OPTIONAL
             DeblockFilter => 'ENABLED', # values: ENABLED, DISABLED; OPTIONAL
             DenoiseFilter => 'ENABLED', # values: ENABLED, DISABLED; OPTIONAL
             FilterEnable  => 'AUTO',    # values: AUTO, DISABLE, FORCE; OPTIONAL
@@ -180,6 +186,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],                                                        # OPTIONAL
+            Position => {
+              Height => 1,    # min: 2, max: 2147483647; OPTIONAL
+              Width  => 1,    # min: 2, max: 2147483647; OPTIONAL
+              X      => 1,    # max: 2147483647; OPTIONAL
+              Y      => 1,    # max: 2147483647; OPTIONAL
+            },    # OPTIONAL
             ProgramNumber => 1,    # min: 1, max: 2147483647; OPTIONAL
             PsiControl => 'IGNORE_PSI',  # values: IGNORE_PSI, USE_PSI; OPTIONAL
             TimecodeSource => 'EMBEDDED'
@@ -227,7 +239,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ,                      # min: 11, max: 11; OPTIONAL
         },    # OPTIONAL
         NielsenConfiguration => {
-          BreakoutCode  => 1,              # max: 9; OPTIONAL
+          BreakoutCode  => 1,              # OPTIONAL
           DistributorId => 'My__string',
         },    # OPTIONAL
         OutputGroups => [
@@ -247,7 +259,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
                       , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
                       KmsKeyArn =>
-'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+'My__stringPatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
                       ,    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
@@ -294,7 +306,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
                       , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
                       KmsKeyArn =>
-'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+'My__stringPatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
                       ,    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
@@ -331,7 +343,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
                       , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
                       KmsKeyArn =>
-'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+'My__stringPatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
                       ,    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
@@ -366,7 +378,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
                       , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
                       KmsKeyArn =>
-'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+'My__stringPatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
                       ,    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
@@ -436,7 +448,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       EncryptionType => 'SERVER_SIDE_ENCRYPTION_S3'
                       , # values: SERVER_SIDE_ENCRYPTION_S3, SERVER_SIDE_ENCRYPTION_KMS; OPTIONAL
                       KmsKeyArn =>
-'My__stringPatternArnAwsUsGovKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
+'My__stringPatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912'
                       ,    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
@@ -465,7 +477,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   {
                     AudioNormalizationSettings => {
                       Algorithm => 'ITU_BS_1770_1'
-                      ,    # values: ITU_BS_1770_1, ITU_BS_1770_2; OPTIONAL
+                      , # values: ITU_BS_1770_1, ITU_BS_1770_2, ITU_BS_1770_3, ITU_BS_1770_4; OPTIONAL
                       AlgorithmControl => 'CORRECT_AUDIO'
                       ,    # values: CORRECT_AUDIO, MEASURE_ONLY; OPTIONAL
                       CorrectionGateLevel => 1,    # min: -70; OPTIONAL
@@ -517,7 +529,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         SampleRate => 1,    # min: 8000, max: 192000; OPTIONAL
                       },    # OPTIONAL
                       Codec => 'AAC'
-                      , # values: AAC, MP2, WAV, AIFF, AC3, EAC3, PASSTHROUGH; OPTIONAL
+                      , # values: AAC, MP2, WAV, AIFF, AC3, EAC3, EAC3_ATMOS, PASSTHROUGH; OPTIONAL
+                      Eac3AtmosSettings => {
+                        Bitrate => 1,    # min: 384000, max: 768000; OPTIONAL
+                        BitstreamMode =>
+                          'COMPLETE_MAIN',    # values: COMPLETE_MAIN; OPTIONAL
+                        CodingMode => 'CODING_MODE_9_1_6'
+                        ,    # values: CODING_MODE_9_1_6; OPTIONAL
+                        DialogueIntelligence =>
+                          'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+                        DynamicRangeCompressionLine => 'NONE'
+                        , # values: NONE, FILM_STANDARD, FILM_LIGHT, MUSIC_STANDARD, MUSIC_LIGHT, SPEECH; OPTIONAL
+                        DynamicRangeCompressionRf => 'NONE'
+                        , # values: NONE, FILM_STANDARD, FILM_LIGHT, MUSIC_STANDARD, MUSIC_LIGHT, SPEECH; OPTIONAL
+                        LoRoCenterMixLevel   => 1,        # OPTIONAL
+                        LoRoSurroundMixLevel => 1,        # OPTIONAL
+                        LtRtCenterMixLevel   => 1,        # OPTIONAL
+                        LtRtSurroundMixLevel => 1,        # OPTIONAL
+                        MeteringMode         => 'LEQ_A'
+                        , # values: LEQ_A, ITU_BS_1770_1, ITU_BS_1770_2, ITU_BS_1770_3, ITU_BS_1770_4; OPTIONAL
+                        SampleRate      => 1, # min: 48000, max: 48000; OPTIONAL
+                        SpeechThreshold => 1, # min: 1, max: 100; OPTIONAL
+                        StereoDownmix => 'NOT_INDICATED'
+                        , # values: NOT_INDICATED, STEREO, SURROUND, DPL2; OPTIONAL
+                        SurroundExMode => 'NOT_INDICATED'
+                        ,   # values: NOT_INDICATED, ENABLED, DISABLED; OPTIONAL
+                      },    # OPTIONAL
                       Eac3Settings => {
                         AttenuationControl => 'ATTENUATE_3_DB'
                         ,    # values: ATTENUATE_3_DB, NONE; OPTIONAL
@@ -592,7 +629,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',    # min: 1
+                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
                     CustomLanguageCode => 'My__stringMin3Max3PatternAZaZ3'
                     ,    # min: 3, max: 3; OPTIONAL
                     DestinationSettings => {
@@ -657,6 +694,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       EmbeddedDestinationSettings => {
                         Destination608ChannelNumber =>
                           1,    # min: 1, max: 4; OPTIONAL
+                        Destination708ServiceNumber =>
+                          1,    # min: 1, max: 6; OPTIONAL
                       },    # OPTIONAL
                       SccDestinationSettings => {
                         Framerate => 'FRAMERATE_23_97'
@@ -794,10 +833,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1
+                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
                 OutputSettings => {
                   HlsSettings => {
-                    AudioGroupId       => 'My__string',
+                    AudioGroupId => 'My__string',
+                    AudioOnlyContainer =>
+                      'AUTOMATIC',    # values: AUTOMATIC, M2TS; OPTIONAL
                     AudioRenditionSets => 'My__string',
                     AudioTrackType     => 'ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT'
                     , # values: ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT, ALTERNATE_AUDIO_AUTO_SELECT, ALTERNATE_AUDIO_NOT_AUTO_SELECT, AUDIO_ONLY_VARIANT_STREAM; OPTIONAL

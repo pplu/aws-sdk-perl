@@ -1,6 +1,7 @@
 package Paws::MediaConvert::HlsSettings;
   use Moose;
   has AudioGroupId => (is => 'ro', isa => 'Str', request_name => 'audioGroupId', traits => ['NameInRequest']);
+  has AudioOnlyContainer => (is => 'ro', isa => 'Str', request_name => 'audioOnlyContainer', traits => ['NameInRequest']);
   has AudioRenditionSets => (is => 'ro', isa => 'Str', request_name => 'audioRenditionSets', traits => ['NameInRequest']);
   has AudioTrackType => (is => 'ro', isa => 'Str', request_name => 'audioTrackType', traits => ['NameInRequest']);
   has IFrameOnlyManifest => (is => 'ro', isa => 'Str', request_name => 'iFrameOnlyManifest', traits => ['NameInRequest']);
@@ -43,6 +44,16 @@ Settings for HLS output groups
 =head2 AudioGroupId => Str
 
   Specifies the group to which the audio Rendition belongs.
+
+
+=head2 AudioOnlyContainer => Str
+
+  Use this setting only in audio-only outputs. Choose MPEG-2 Transport
+Stream (M2TS) to create a file in an MPEG2-TS container. Keep the
+default value Automatic (AUTOMATIC) to create an audio-only file in a
+raw container. Regardless of the value that you specify here, if this
+output has video, the service will place the output into an MPEG2-TS
+container.
 
 
 =head2 AudioRenditionSets => Str

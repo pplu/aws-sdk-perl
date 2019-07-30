@@ -3,6 +3,7 @@ package Paws::MediaConvert::Input;
   has AudioSelectorGroups => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfAudioSelectorGroup', request_name => 'audioSelectorGroups', traits => ['NameInRequest']);
   has AudioSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfAudioSelector', request_name => 'audioSelectors', traits => ['NameInRequest']);
   has CaptionSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfCaptionSelector', request_name => 'captionSelectors', traits => ['NameInRequest']);
+  has Crop => (is => 'ro', isa => 'Paws::MediaConvert::Rectangle', request_name => 'crop', traits => ['NameInRequest']);
   has DeblockFilter => (is => 'ro', isa => 'Str', request_name => 'deblockFilter', traits => ['NameInRequest']);
   has DecryptionSettings => (is => 'ro', isa => 'Paws::MediaConvert::InputDecryptionSettings', request_name => 'decryptionSettings', traits => ['NameInRequest']);
   has DenoiseFilter => (is => 'ro', isa => 'Str', request_name => 'denoiseFilter', traits => ['NameInRequest']);
@@ -11,6 +12,7 @@ package Paws::MediaConvert::Input;
   has FilterStrength => (is => 'ro', isa => 'Int', request_name => 'filterStrength', traits => ['NameInRequest']);
   has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
   has InputClippings => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputClipping]', request_name => 'inputClippings', traits => ['NameInRequest']);
+  has Position => (is => 'ro', isa => 'Paws::MediaConvert::Rectangle', request_name => 'position', traits => ['NameInRequest']);
   has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
   has PsiControl => (is => 'ro', isa => 'Str', request_name => 'psiControl', traits => ['NameInRequest']);
   has SupplementalImps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supplementalImps', traits => ['NameInRequest']);
@@ -70,6 +72,14 @@ mutiple Audio selectors per input.
   Use Captions selectors (CaptionSelectors) to specify the captions data
 from the input that you will use in your outputs. You can use mutiple
 captions selectors per input.
+
+
+=head2 Crop => L<Paws::MediaConvert::Rectangle>
+
+  Use Cropping selection (crop) to specify the video area that the
+service will include in the output video frame. If you specify a value
+here, it will override any value that you specify in the output setting
+Cropping selection (crop).
 
 
 =head2 DeblockFilter => Str
@@ -141,6 +151,18 @@ point to the end. If you provide only an end time, it will be the
 entire input up to that point. When you specify more than one input
 clip, the transcoding service creates the job outputs by stringing the
 clips together in the order you specify them.
+
+
+=head2 Position => L<Paws::MediaConvert::Rectangle>
+
+  Use Selection placement (position) to define the video area in your
+output frame. The area outside of the rectangle that you specify here
+is black. If you specify a value here, it will override any value that
+you specify in the output setting Selection placement (position). If
+you specify a value here, this will override any AFD values in your
+input, even if you set Respond to AFD (RespondToAfd) to Respond
+(RESPOND). If you specify a value here, this will ignore anything that
+you specify for the setting Scaling Behavior (scalingBehavior).
 
 
 =head2 ProgramNumber => Int

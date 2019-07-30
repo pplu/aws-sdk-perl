@@ -47,7 +47,8 @@ Description of audio output
 
 =head2 AudioNormalizationSettings => L<Paws::MediaConvert::AudioNormalizationSettings>
 
-  Advanced audio normalization settings.
+  Advanced audio normalization settings. Ignore these settings unless you
+need to comply with a loudness standard.
 
 
 =head2 AudioSourceName => Str
@@ -87,11 +88,12 @@ audioDescriptionBroadcasterMix is set to BROADCASTER_MIXED_AD.
 
   Audio codec settings (CodecSettings) under (AudioDescriptions) contains
 the group of settings related to audio encoding. The settings in this
-group vary depending on the value you choose for Audio codec (Codec).
-For each codec enum you choose, define the corresponding settings
-object. The following lists the codec enum, settings object pairs. *
-AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF,
-AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings
+group vary depending on the value that you choose for Audio codec
+(Codec). For each codec enum that you choose, define the corresponding
+settings object. The following lists the codec enum, settings object
+pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF,
+AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS,
+Eac3AtmosSettings
 
 
 =head2 CustomLanguageCode => Str

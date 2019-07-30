@@ -1,6 +1,7 @@
 package Paws::MediaConvert::EmbeddedDestinationSettings;
   use Moose;
   has Destination608ChannelNumber => (is => 'ro', isa => 'Int', request_name => 'destination608ChannelNumber', traits => ['NameInRequest']);
+  has Destination708ServiceNumber => (is => 'ro', isa => 'Int', request_name => 'destination708ServiceNumber', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::EmbeddedDestinationSettings object:
 
-  $service_obj->Method(Att1 => { Destination608ChannelNumber => $value, ..., Destination608ChannelNumber => $value  });
+  $service_obj->Method(Att1 => { Destination608ChannelNumber => $value, ..., Destination708ServiceNumber => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,16 +40,27 @@ Settings specific to embedded/ancillary caption outputs, including
 
 =head2 Destination608ChannelNumber => Int
 
-  Ignore this setting unless your input captions are SCC format and your
-output container is MXF. With this combination of input captions format
-and output container, you can optionally use this setting to replace
-the input channel number with the track number that you specify.
-Specify a different number for each output captions track. If you don't
-specify an output track number, the system uses the input channel
-number for the output channel number. This setting applies to each
-output individually. You can optionally combine two captions channels
-in your output. The two output channel numbers can be one of the
-following pairs: 1,3; 2,4; 1,4; or 2,3.
+  Ignore this setting unless your input captions are SCC format. With SCC
+inputs, you can optionally use this setting to replace the input
+channel number with the channel number that you specify. Specify a
+different number for each output captions track for a particular
+output. If you don't specify an output channel number, the system uses
+the input channel number for the output channel number. You can
+optionally combine two captions channels in your output. The two output
+channel numbers can be one of the following pairs: 1,3; 2,4; 1,4; or
+2,3.
+
+
+=head2 Destination708ServiceNumber => Int
+
+  Ignore this setting unless your input captions are SCC format and you
+are performing SCC upconvert. With SCC inputs, you can optionally use
+this setting to specify the 708 service number that is in the output.
+Specify a different service number for each output captions track for a
+particular output. If you don't specify an output track number, the
+system uses the 608 channel number for the output 708 service number.
+You can combine two captions channels in your output. Service numbers
+must be distinct.
 
 
 

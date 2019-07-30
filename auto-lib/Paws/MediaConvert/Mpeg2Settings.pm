@@ -75,9 +75,9 @@ visual quality.
 
 =head2 Bitrate => Int
 
-  Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth
-outputs, bitrates must be unique when rounded down to the nearest
-multiple of 1000.
+  Specify the average bitrate in bits per second. Required for VBR and
+CBR. For MS Smooth outputs, bitrates must be unique when rounded down
+to the nearest multiple of 1000.
 
 
 =head2 CodecLevel => Str

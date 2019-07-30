@@ -38,11 +38,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 Video codec settings, (CodecSettings) under (VideoDescription),
 contains the group of settings related to video encoding. The settings
-in this group vary depending on the value you choose for Video codec
-(Codec). For each codec enum you choose, define the corresponding
-settings object. The following lists the codec enum, settings object
-pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2,
-Mpeg2Settings * PRORES, ProresSettings * FRAME_CAPTURE,
+in this group vary depending on the value that you choose for Video
+codec (Codec). For each codec enum that you choose, define the
+corresponding settings object. The following lists the codec enum,
+settings object pairs. * H_264, H264Settings * H_265, H265Settings *
+MPEG2, Mpeg2Settings * PRORES, ProresSettings * FRAME_CAPTURE,
 FrameCaptureSettings
 
 =head1 ATTRIBUTES

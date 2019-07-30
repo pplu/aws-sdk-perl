@@ -4,6 +4,7 @@ package Paws::MediaConvert::AudioCodecSettings;
   has Ac3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Ac3Settings', request_name => 'ac3Settings', traits => ['NameInRequest']);
   has AiffSettings => (is => 'ro', isa => 'Paws::MediaConvert::AiffSettings', request_name => 'aiffSettings', traits => ['NameInRequest']);
   has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest']);
+  has Eac3AtmosSettings => (is => 'ro', isa => 'Paws::MediaConvert::Eac3AtmosSettings', request_name => 'eac3AtmosSettings', traits => ['NameInRequest']);
   has Eac3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Eac3Settings', request_name => 'eac3Settings', traits => ['NameInRequest']);
   has Mp2Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp2Settings', request_name => 'mp2Settings', traits => ['NameInRequest']);
   has WavSettings => (is => 'ro', isa => 'Paws::MediaConvert::WavSettings', request_name => 'wavSettings', traits => ['NameInRequest']);
@@ -39,11 +40,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 Audio codec settings (CodecSettings) under (AudioDescriptions) contains
 the group of settings related to audio encoding. The settings in this
-group vary depending on the value you choose for Audio codec (Codec).
-For each codec enum you choose, define the corresponding settings
-object. The following lists the codec enum, settings object pairs. *
-AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF,
-AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings
+group vary depending on the value that you choose for Audio codec
+(Codec). For each codec enum that you choose, define the corresponding
+settings object. The following lists the codec enum, settings object
+pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF,
+AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS,
+Eac3AtmosSettings
 
 =head1 ATTRIBUTES
 
@@ -75,6 +77,12 @@ on the rate control mode.
 =head2 Codec => Str
 
   Type of Audio codec.
+
+
+=head2 Eac3AtmosSettings => L<Paws::MediaConvert::Eac3AtmosSettings>
+
+  Required when you set (Codec) under
+(AudioDescriptions)E<gt>(CodecSettings) to the value EAC3_ATMOS.
 
 
 =head2 Eac3Settings => L<Paws::MediaConvert::Eac3Settings>

@@ -79,7 +79,8 @@ within the asset.
 
 =head2 Mp4Settings => L<Paws::MediaConvert::Mp4Settings>
 
-  Settings for MP4 Container
+  Settings for MP4 container. You can create audio-only AAC outputs with
+this container.
 
 
 

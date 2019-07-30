@@ -41,7 +41,7 @@ Required when you set (Codec) under
 
 =head2 Bitrate => Int
 
-  Average bitrate in bits/second.
+  Specify the average bitrate in bits per second.
 
 
 =head2 Channels => Int
