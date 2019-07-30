@@ -8,6 +8,7 @@ package Paws::SecretsManager::SecretListEntry;
   has LastChangedDate => (is => 'ro', isa => 'Str');
   has LastRotatedDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has OwningService => (is => 'ro', isa => 'Str');
   has RotationEnabled => (is => 'ro', isa => 'Bool');
   has RotationLambdaARN => (is => 'ro', isa => 'Str');
   has RotationRules => (is => 'ro', isa => 'Paws::SecretsManager::RotationRulesType');
@@ -105,6 +106,11 @@ invoked.
 name to represent a path hierarchy. For example,
 C</prod/databases/dbserver1> could represent the secret for a server
 named C<dbserver1> in the folder C<databases> in the folder C<prod>.
+
+
+=head2 OwningService => Str
+
+  
 
 
 =head2 RotationEnabled => Bool
