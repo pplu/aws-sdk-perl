@@ -1,5 +1,7 @@
 package Paws::Comprehend::EntityRecognizerMetadataEntityTypesListItem;
   use Moose;
+  has EvaluationMetrics => (is => 'ro', isa => 'Paws::Comprehend::EntityTypesEvaluationMetrics');
+  has NumberOfTrainMentions => (is => 'ro', isa => 'Int');
   has Type => (is => 'ro', isa => 'Str');
 1;
 
@@ -20,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Comprehend::EntityRecognizerMetadataEntityTypesListItem object:
 
-  $service_obj->Method(Att1 => { Type => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { EvaluationMetrics => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Comprehend::EntityRecognizerMetadataEntityTypesListItem object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Type
+  $result->Att1->EvaluationMetrics
 
 =head1 DESCRIPTION
 
@@ -35,6 +37,18 @@ Individual item from the list of entity types in the metadata of an
 entity recognizer.
 
 =head1 ATTRIBUTES
+
+
+=head2 EvaluationMetrics => L<Paws::Comprehend::EntityTypesEvaluationMetrics>
+
+  Detailed information about the accuracy of the entity recognizer for a
+specific item on the list of entity types.
+
+
+=head2 NumberOfTrainMentions => Int
+
+  indicates the number of times the given entity name was seen in the
+training data.
 
 
 =head2 Type => Str
