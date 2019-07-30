@@ -113,7 +113,7 @@ C<attachment.attachment-id> - The ID of the interface attachment.
 
 =item *
 
-C<attachment.attach.time> - The time that the network interface was
+C<attachment.attach-time> - The time that the network interface was
 attached to an instance.
 
 =item *

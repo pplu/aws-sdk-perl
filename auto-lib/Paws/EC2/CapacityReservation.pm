@@ -1,7 +1,9 @@
 package Paws::EC2::CapacityReservation;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has AvailabilityZoneId => (is => 'ro', isa => 'Str', request_name => 'availabilityZoneId', traits => ['NameInRequest']);
   has AvailableInstanceCount => (is => 'ro', isa => 'Int', request_name => 'availableInstanceCount', traits => ['NameInRequest']);
+  has CapacityReservationArn => (is => 'ro', isa => 'Str', request_name => 'capacityReservationArn', traits => ['NameInRequest']);
   has CapacityReservationId => (is => 'ro', isa => 'Str', request_name => 'capacityReservationId', traits => ['NameInRequest']);
   has CreateDate => (is => 'ro', isa => 'Str', request_name => 'createDate', traits => ['NameInRequest']);
   has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
@@ -11,6 +13,7 @@ package Paws::EC2::CapacityReservation;
   has InstanceMatchCriteria => (is => 'ro', isa => 'Str', request_name => 'instanceMatchCriteria', traits => ['NameInRequest']);
   has InstancePlatform => (is => 'ro', isa => 'Str', request_name => 'instancePlatform', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
@@ -55,10 +58,20 @@ This class has no description
   The Availability Zone in which the capacity is reserved.
 
 
+=head2 AvailabilityZoneId => Str
+
+  
+
+
 =head2 AvailableInstanceCount => Int
 
   The remaining capacity. Indicates the number of instances that can be
 launched in the Capacity Reservation.
+
+
+=head2 CapacityReservationArn => Str
+
+  
 
 
 =head2 CapacityReservationId => Str
@@ -150,6 +163,11 @@ reserves capacity.
 
   The type of instance for which the Capacity Reservation reserves
 capacity.
+
+
+=head2 OwnerId => Str
+
+  
 
 
 =head2 State => Str

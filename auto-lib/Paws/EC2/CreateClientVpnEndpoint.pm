@@ -9,6 +9,7 @@ package Paws::EC2::CreateClientVpnEndpoint;
   has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DryRun => (is => 'ro', isa => 'Bool');
   has ServerCertificateArn => (is => 'ro', isa => 'Str', required => 1);
+  has SplitTunnel => (is => 'ro', isa => 'Bool');
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has TransportProtocol => (is => 'ro', isa => 'Str');
 
@@ -63,6 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyString', ...                       # OPTIONAL
       ],                                      # OPTIONAL
       DryRun            => 1,                 # OPTIONAL
+      SplitTunnel       => 1,                 # OPTIONAL
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
@@ -180,6 +182,20 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 The ARN of the server certificate. For more information, see the AWS
 Certificate Manager User Guide
 (https://docs.aws.amazon.com/acm/latest/userguide/).
+
+
+
+=head2 SplitTunnel => Bool
+
+Indicates whether split-tunnel is enabled on the AWS Client VPN
+endpoint endpoint.
+
+By default, split-tunnel on a VPN endpoint is disabled.
+
+For information about split-tunnel VPN endpoints, see Split-Tunnel AWS
+Client VPN Endpoint
+(https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html)
+in the I<AWS Client VPN Administrator Guide>.
 
 
 

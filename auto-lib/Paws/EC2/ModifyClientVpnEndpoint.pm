@@ -7,6 +7,7 @@ package Paws::EC2::ModifyClientVpnEndpoint;
   has DnsServers => (is => 'ro', isa => 'Paws::EC2::DnsServersOptionsModifyStructure');
   has DryRun => (is => 'ro', isa => 'Bool');
   has ServerCertificateArn => (is => 'ro', isa => 'Str');
+  has SplitTunnel => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -42,10 +43,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description => 'MyString',    # OPTIONAL
       DnsServers  => {
         CustomDnsServers => [ 'MyString', ... ],    # OPTIONAL
-        Enabled          => 1,                      # OPTIONAL
+        Enabled => 1,                               # OPTIONAL
       },    # OPTIONAL
       DryRun               => 1,             # OPTIONAL
       ServerCertificateArn => 'MyString',    # OPTIONAL
+      SplitTunnel          => 1,             # OPTIONAL
     );
 
     # Results:
@@ -122,6 +124,17 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The ARN of the server certificate to be used. The server certificate
 must be provisioned in AWS Certificate Manager (ACM).
+
+
+
+=head2 SplitTunnel => Bool
+
+Indicates whether the VPN is split-tunnel.
+
+For information about split-tunnel VPN endpoints, see Split-Tunnel AWS
+Client VPN Endpoint
+(https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html)
+in the I<AWS Client VPN Administrator Guide>.
 
 
 

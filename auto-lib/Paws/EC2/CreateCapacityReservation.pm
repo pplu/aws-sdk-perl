@@ -1,7 +1,8 @@
 
 package Paws::EC2::CreateCapacityReservation;
   use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
+  has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has AvailabilityZoneId => (is => 'ro', isa => 'Str');
   has ClientToken => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
@@ -40,10 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $CreateCapacityReservationResult = $ec2->CreateCapacityReservation(
-      AvailabilityZone      => 'MyString',
       InstanceCount         => 1,
       InstancePlatform      => 'Linux/UNIX',
       InstanceType          => 'MyString',
+      AvailabilityZone      => 'MyString',               # OPTIONAL
+      AvailabilityZoneId    => 'MyString',               # OPTIONAL
       ClientToken           => 'MyString',               # OPTIONAL
       DryRun                => 1,                        # OPTIONAL
       EbsOptimized          => 1,                        # OPTIONAL
@@ -80,9 +82,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AvailabilityZone => Str
+=head2 AvailabilityZone => Str
 
 The Availability Zone in which to create the Capacity Reservation.
+
+
+
+=head2 AvailabilityZoneId => Str
+
+
 
 
 

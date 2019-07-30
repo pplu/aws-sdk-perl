@@ -128,7 +128,8 @@ machine images.
 
 =head2 Platform => Str
 
-  This value is set for Windows AMIs; otherwise, it is blank.
+  This value is set to C<windows> for Windows AMIs; otherwise, it is
+blank.
 
 
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
