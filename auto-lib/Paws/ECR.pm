@@ -110,6 +110,11 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::PutImage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutImageTagMutability {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::PutImageTagMutability', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutLifecyclePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::PutLifecyclePolicy', @_);
@@ -212,7 +217,7 @@ package Paws::ECR;
   }
 
 
-  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages ListTagsForResource PutImage PutLifecyclePolicy SetRepositoryPolicy StartLifecyclePolicyPreview TagResource UntagResource UploadLayerPart / }
+  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages ListTagsForResource PutImage PutImageTagMutability PutLifecyclePolicy SetRepositoryPolicy StartLifecyclePolicyPreview TagResource UntagResource UploadLayerPart / }
 
 1;
 
@@ -239,6 +244,8 @@ Paws::ECR - Perl Interface to AWS Amazon EC2 Container Registry
   );
 
 =head1 DESCRIPTION
+
+Amazon Elastic Container Registry
 
 Amazon Elastic Container Registry (Amazon ECR) is a managed Docker
 registry service. Customers can use the familiar Docker CLI to push,
@@ -364,6 +371,8 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 =over
 
 =item RepositoryName => Str
+
+=item [ImageTagMutability => Str]
 
 =item [Tags => ArrayRef[L<Paws::ECR::Tag>]]
 
@@ -698,6 +707,26 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
+=head2 PutImageTagMutability
+
+=over
+
+=item ImageTagMutability => Str
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::PutImageTagMutability>
+
+Returns: a L<Paws::ECR::PutImageTagMutabilityResponse> instance
+
+Updates the image tag mutability settings for a repository.
+
+
 =head2 PutLifecyclePolicy
 
 =over
@@ -717,7 +746,7 @@ Returns: a L<Paws::ECR::PutLifecyclePolicyResponse> instance
 
 Creates or updates a lifecycle policy. For information about lifecycle
 policy syntax, see Lifecycle Policy Template
-(http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
 
 
 =head2 SetRepositoryPolicy
@@ -740,7 +769,9 @@ Each argument is described in detail in: L<Paws::ECR::SetRepositoryPolicy>
 Returns: a L<Paws::ECR::SetRepositoryPolicyResponse> instance
 
 Applies a repository policy on a specified repository to control access
-permissions.
+permissions. For more information, see Amazon ECR Repository Policies
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html)
+in the I<Amazon Elastic Container Registry User Guide>.
 
 
 =head2 StartLifecyclePolicyPreview
