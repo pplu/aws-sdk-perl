@@ -6,6 +6,7 @@ package Paws::ECS::Cluster;
   has PendingTasksCount => (is => 'ro', isa => 'Int', request_name => 'pendingTasksCount', traits => ['NameInRequest']);
   has RegisteredContainerInstancesCount => (is => 'ro', isa => 'Int', request_name => 'registeredContainerInstancesCount', traits => ['NameInRequest']);
   has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
+  has Settings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ClusterSetting]', request_name => 'settings', traits => ['NameInRequest']);
   has Statistics => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'statistics', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
@@ -82,6 +83,12 @@ includes container instances in both C<ACTIVE> and C<DRAINING> status.
 =head2 RunningTasksCount => Int
 
   The number of tasks in the cluster that are in the C<RUNNING> state.
+
+
+=head2 Settings => ArrayRef[L<Paws::ECS::ClusterSetting>]
+
+  The settings for the cluster. This parameter indicates whether
+CloudWatch Container Insights is enabled or disabled for a cluster.
 
 
 =head2 Statistics => ArrayRef[L<Paws::ECS::KeyValuePair>]

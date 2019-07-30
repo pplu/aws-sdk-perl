@@ -55,7 +55,7 @@ for your Amazon ECS container instances is affected. If
 C<awsvpcTrunking> is specified, the ENI limit for your Amazon ECS
 container instances is affected.
 
-Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">, C<"awsvpcTrunking">
+Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">, C<"awsvpcTrunking">, C<"containerInsights">
 
 =head2 PrincipalArn => Str
 

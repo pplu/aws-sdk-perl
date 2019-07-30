@@ -1,7 +1,6 @@
-package Paws::ECS::Setting;
+package Paws::ECS::ClusterSetting;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has PrincipalArn => (is => 'ro', isa => 'Str', request_name => 'principalArn', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
 1;
 
@@ -9,7 +8,7 @@ package Paws::ECS::Setting;
 
 =head1 NAME
 
-Paws::ECS::Setting
+Paws::ECS::ClusterSetting
 
 =head1 USAGE
 
@@ -20,39 +19,40 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ECS::Setting object:
+As an example, if Att1 is expected to be a Paws::ECS::ClusterSetting object:
 
   $service_obj->Method(Att1 => { Name => $value, ..., Value => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Setting object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::ClusterSetting object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Name
 
 =head1 DESCRIPTION
 
-The current account setting for a resource.
+The settings to use when creating a cluster. This parameter is used to
+enable CloudWatch Container Insights for a cluster.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-  The Amazon ECS resource name.
-
-
-=head2 PrincipalArn => Str
-
-  The ARN of the principal, which can be an IAM user, IAM role, or the
-root user. If this field is omitted, the authenticated user is assumed.
+  The name of the cluster setting. The only supported value is
+C<containerInsights>.
 
 
 =head2 Value => Str
 
-  Whether the account setting is enabled or disabled for the specified
-resource.
+  The value to set for the cluster setting. The supported values are
+C<enabled> and C<disabled>. If C<enabled> is specified, CloudWatch
+Container Insights will be enabled for the cluster, otherwise it will
+be disabled unless the C<containerInsights> account setting is enabled.
+If a cluster value is specified, it will override the
+C<containerInsights> value set with PutAccountSetting or
+PutAccountSettingDefault.
 
 
 

@@ -2,6 +2,7 @@
 package Paws::ECS::CreateCluster;
   use Moose;
   has ClusterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clusterName' );
+  has Settings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ClusterSetting]', traits => ['NameInRequest'], request_name => 'settings' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
@@ -49,6 +50,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 The name of your cluster. If you do not specify a name for your
 cluster, you create a cluster named C<default>. Up to 255 letters
 (uppercase and lowercase), numbers, and hyphens are allowed.
+
+
+
+=head2 Settings => ArrayRef[L<Paws::ECS::ClusterSetting>]
+
+The setting to use when creating a cluster. This parameter is used to
+enable CloudWatch Container Insights for a cluster. If this value is
+specified, it will override the C<containerInsights> value set with
+PutAccountSetting or PutAccountSettingDefault.
 
 
 
