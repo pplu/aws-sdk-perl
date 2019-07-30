@@ -7,6 +7,7 @@ package Paws::Batch::ContainerDetail;
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has JobRoleArn => (is => 'ro', isa => 'Str', request_name => 'jobRoleArn', traits => ['NameInRequest']);
+  has LinuxParameters => (is => 'ro', isa => 'Paws::Batch::LinuxParameters', request_name => 'linuxParameters', traits => ['NameInRequest']);
   has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
@@ -95,6 +96,12 @@ parallel job.
 =head2 JobRoleArn => Str
 
   The Amazon Resource Name (ARN) associated with the job upon execution.
+
+
+=head2 LinuxParameters => L<Paws::Batch::LinuxParameters>
+
+  Linux-specific modifications that are applied to the container, such as
+Linux kernel capabilities.
 
 
 =head2 LogStreamName => Str

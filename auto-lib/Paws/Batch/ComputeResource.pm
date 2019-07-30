@@ -153,7 +153,10 @@ in the I<AWS Batch User Guide>.
 
 =head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
 
-  The VPC subnets into which the compute resources are launched.
+  The VPC subnets into which the compute resources are launched. For more
+information, see VPCs and Subnets
+(https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) in
+the I<Amazon VPC User Guide>.
 
 
 =head2 Tags => L<Paws::Batch::TagsMap>

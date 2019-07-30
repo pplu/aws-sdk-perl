@@ -5,6 +5,7 @@ package Paws::Batch::ContainerProperties;
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has JobRoleArn => (is => 'ro', isa => 'Str', request_name => 'jobRoleArn', traits => ['NameInRequest']);
+  has LinuxParameters => (is => 'ro', isa => 'Paws::Batch::LinuxParameters', request_name => 'linuxParameters', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
@@ -131,6 +132,12 @@ type. This parameter is not valid for single-node container jobs.
 
   The Amazon Resource Name (ARN) of the IAM role that the container can
 assume for AWS permissions.
+
+
+=head2 LinuxParameters => L<Paws::Batch::LinuxParameters>
+
+  Linux-specific modifications that are applied to the container, such as
+Linux kernel capabilities.
 
 
 =head2 Memory => Int
