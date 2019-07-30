@@ -1,7 +1,13 @@
-dist:
+dist-prereqs:
 	cpanm -n -l dzil-local Dist::Zilla
+	cpanm -n -l dzil-local Template
+
+dist: dist-prereqs
 	PATH=$(PATH):dzil-local/bin PERL5LIB=dzil-local/lib/perl5 dzil authordeps --missing | cpanm -n -l dzil-local/
 	PATH=$(PATH):dzil-local/bin PERL5LIB=dzil-local/lib/perl5 dzil build
+
+dist-submodules: dist-prereqs
+	PATH=$(PATH):dzil-local/bin PERL5LIB=dzil-local/lib/perl5 ./build-bin/build-submodules.pl
 
 test:
 	carton exec -- prove t/
