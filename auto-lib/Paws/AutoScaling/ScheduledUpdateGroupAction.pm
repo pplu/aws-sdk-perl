@@ -58,22 +58,26 @@ DescribeScheduledActions.
 
 =head2 EndTime => Str
 
-  The date and time that the action is scheduled to end.
+  The date and time in UTC for the recurring schedule to end. For
+example, C<"2019-06-01T00:00:00Z">.
 
 
 =head2 MaxSize => Int
 
-  The maximum size of the group.
+  The maximum number of instances in the Auto Scaling group.
 
 
 =head2 MinSize => Int
 
-  The minimum size of the group.
+  The minimum number of instances in the Auto Scaling group.
 
 
 =head2 Recurrence => Str
 
-  The recurring schedule for the action.
+  The recurring schedule for the action, in Unix cron syntax format.
+
+When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
+form the boundaries of when the recurring action starts and stops.
 
 
 =head2 ScheduledActionARN => Str
@@ -88,10 +92,8 @@ DescribeScheduledActions.
 
 =head2 StartTime => Str
 
-  The date and time that the action is scheduled to begin.
-
-When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
-form the boundaries of when the recurring action starts and stops.
+  The date and time in UTC for this action to start. For example,
+C<"2019-06-01T00:00:00Z">.
 
 
 =head2 Time => Str

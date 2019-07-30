@@ -110,8 +110,8 @@ instead.
 
 =head2 PolicyType => Str
 
-  The policy type. The valid values are C<SimpleScaling> and
-C<StepScaling>.
+  The policy type. The valid values are C<SimpleScaling>, C<StepScaling>,
+and C<TargetTrackingScaling>.
 
 
 =head2 ScalingAdjustment => Int

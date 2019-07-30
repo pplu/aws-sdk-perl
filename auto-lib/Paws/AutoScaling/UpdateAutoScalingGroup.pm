@@ -90,8 +90,12 @@ One or more Availability Zones for the group.
 
 The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default value is C<300>.
+This cooldown period is not used when a scaling-specific cooldown is
+specified.
 
-For more information, see Scaling Cooldowns
+Cooldown periods are not supported for target tracking scaling
+policies, step scaling policies, or scheduled scaling. For more
+information, see Scaling Cooldowns
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -131,16 +135,23 @@ status checks or the load balancer health checks.
 
 =head2 LaunchConfigurationName => Str
 
-The name of the launch configuration. If you specify this parameter,
-you can't specify a launch template or a mixed instances policy.
+The name of the launch configuration. If you specify
+C<LaunchConfigurationName> in your update request, you can't specify
+C<LaunchTemplate> or C<MixedInstancesPolicy>.
+
+To update an Auto Scaling group with a launch configuration with
+C<InstanceMonitoring> set to C<false>, you must first disable the
+collection of group metrics. Otherwise, you get an error. If you have
+previously enabled the collection of group metrics, you can disable it
+using DisableMetricsCollection.
 
 
 
 =head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
 
 The launch template and version to use to specify the updates. If you
-specify this parameter, you can't specify a launch configuration or a
-mixed instances policy.
+specify C<LaunchTemplate> in your update request, you can't specify
+C<LaunchConfigurationName> or C<MixedInstancesPolicy>.
 
 
 
@@ -158,9 +169,11 @@ The minimum size of the Auto Scaling group.
 
 =head2 MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>
 
-The mixed instances policy to use to specify the updates. If you
-specify this parameter, you can't specify a launch configuration or a
-launch template.
+An embedded object that specifies a mixed instances policy.
+
+In your call to C<UpdateAutoScalingGroup>, you can make changes to the
+policy that is specified. All optional parameters are left unchanged if
+not specified.
 
 For more information, see Auto Scaling Groups with Multiple Instance
 Types and Purchase Options
@@ -217,7 +230,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head2 VPCZoneIdentifier => Str
 
-A comma-separated list of subnet IDs, if you are launching into a VPC.
+A comma-separated list of subnet IDs for virtual private cloud (VPC).
 
 If you specify C<VPCZoneIdentifier> with C<AvailabilityZones>, the
 subnets that you specify for this parameter must reside in those

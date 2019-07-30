@@ -41,7 +41,8 @@ MixedInstancesPolicy.
 
 The instances distribution specifies the distribution of On-Demand
 Instances and Spot Instances, the maximum price to pay for Spot
-Instances, and how the Auto Scaling group allocates instance types.
+Instances, and how the Auto Scaling group allocates instance types to
+fulfill On-Demand and Spot capacity.
 
 =head1 ATTRIBUTES
 
@@ -74,11 +75,12 @@ C<OnDemandPercentageAboveBaseCapacity> setting.
 =head2 OnDemandPercentageAboveBaseCapacity => Int
 
   Controls the percentages of On-Demand Instances and Spot Instances for
-your additional capacity beyond C<OnDemandBaseCapacity>.
+your additional capacity beyond C<OnDemandBaseCapacity>. The range is
+0E<ndash>100.
 
-The range is 0E<ndash>100. The default value is C<100>. If you leave
-this parameter set to C<100>, the percentages are 100% for On-Demand
-Instances and 0% for Spot Instances.
+The default value is C<100>. If you leave this parameter set to C<100>,
+the percentages are 100% for On-Demand Instances and 0% for Spot
+Instances.
 
 
 =head2 SpotAllocationStrategy => Str
@@ -95,9 +97,9 @@ that you specify.
 
   The number of Spot pools to use to allocate your Spot capacity. The
 Spot pools are determined from the different instance types in the
-Overrides array of LaunchTemplate.
+Overrides array of LaunchTemplate. The range is 1E<ndash>20.
 
-The range is 1E<ndash>20 and the default is 2.
+The default value is C<2>.
 
 
 =head2 SpotMaxPrice => Str

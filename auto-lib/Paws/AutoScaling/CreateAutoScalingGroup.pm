@@ -96,8 +96,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-The name of the Auto Scaling group. This name must be unique within the
-scope of your AWS account.
+The name of the Auto Scaling group. This name must be unique per Region
+per account.
 
 
 
@@ -124,11 +124,11 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head2 DesiredCapacity => Int
 
-The number of EC2 instances that should be running in the group. This
-number must be greater than or equal to the minimum size of the group
-and less than or equal to the maximum size of the group. If you do not
-specify a desired capacity, the default is the minimum size of the
-group.
+The number of Amazon EC2 instances that the Auto Scaling group attempts
+to maintain. This number must be greater than or equal to the minimum
+size of the group and less than or equal to the maximum size of the
+group. If you do not specify a desired capacity, the default is the
+minimum size of the group.
 
 
 
@@ -165,8 +165,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 =head2 InstanceId => Str
 
 The ID of the instance used to create a launch configuration for the
-group. This parameter, a launch configuration, a launch template, or a
-mixed instances policy must be specified.
+group.
 
 When you specify an ID of an instance, Amazon EC2 Auto Scaling creates
 a new launch configuration and associates it with the group. This
@@ -178,31 +177,39 @@ Instance
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
+You must specify one of the following parameters in your request:
+C<LaunchConfigurationName>, C<LaunchTemplate>, C<InstanceId>, or
+C<MixedInstancesPolicy>.
+
 
 
 =head2 LaunchConfigurationName => Str
 
-The name of the launch configuration. This parameter, a launch
-template, a mixed instances policy, or an EC2 instance must be
-specified.
+The name of the launch configuration.
 
 For more information, see Creating an Auto Scaling Group Using a Launch
 Configuration
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
+If you do not specify C<LaunchConfigurationName>, you must specify one
+of the following parameters: C<InstanceId>, C<LaunchTemplate>, or
+C<MixedInstancesPolicy>.
+
 
 
 =head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
 
-The launch template to use to launch instances. This parameter, a
-launch configuration, a mixed instances policy, or an EC2 instance must
-be specified.
+The launch template to use to launch instances.
 
 For more information, see Creating an Auto Scaling Group Using a Launch
 Template
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-launch-template.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+If you do not specify C<LaunchTemplate>, you must specify one of the
+following parameters: C<InstanceId>, C<LaunchConfigurationName>, or
+C<MixedInstancesPolicy>.
 
 
 
@@ -214,10 +221,12 @@ One or more lifecycle hooks.
 
 =head2 LoadBalancerNames => ArrayRef[Str|Undef]
 
-One or more Classic Load Balancers. To specify an Application Load
-Balancer or a Network Load Balancer, use C<TargetGroupARNs> instead.
+A list of Classic Load Balancers associated with this Auto Scaling
+group. For Application Load Balancers and Network Load Balancers,
+specify a list of target groups using the C<TargetGroupARNs> property
+instead.
 
-For more information, see Using a Load Balancer With an Auto Scaling
+For more information, see Using a Load Balancer with an Auto Scaling
 Group
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
@@ -238,14 +247,25 @@ The minimum size of the group.
 
 =head2 MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>
 
-The mixed instances policy to use to launch instances. This parameter,
-a launch template, a launch configuration, or an EC2 instance must be
-specified.
+An embedded object that specifies a mixed instances policy. The
+required parameters must be specified. If optional parameters are
+unspecified, their default values are used.
+
+The policy includes parameters that not only define the distribution of
+On-Demand Instances and Spot Instances, the maximum price to pay for
+Spot instances, and how the Auto Scaling group allocates instance types
+to fulfill On-Demand and Spot capacity, but also the parameters that
+specify the instance configuration informationE<mdash>the launch
+template and instance types.
 
 For more information, see Auto Scaling Groups with Multiple Instance
 Types and Purchase Options
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+You must specify one of the following parameters in your request:
+C<LaunchConfigurationName>, C<LaunchTemplate>, C<InstanceId>, or
+C<MixedInstancesPolicy>.
 
 
 
@@ -296,7 +316,14 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head2 TargetGroupARNs => ArrayRef[Str|Undef]
 
-The Amazon Resource Names (ARN) of the target groups.
+The Amazon Resource Names (ARN) of the target groups to associate with
+the Auto Scaling group. Instances are registered as targets in a target
+group, and traffic is routed to the target group.
+
+For more information, see Using a Load Balancer with an Auto Scaling
+Group
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
