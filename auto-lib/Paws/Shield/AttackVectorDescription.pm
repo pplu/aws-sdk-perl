@@ -102,6 +102,18 @@ ACK_FLOOD
 
 REQUEST_FLOOD
 
+=item *
+
+HTTP_REFLECTION
+
+=item *
+
+UDS_REFLECTION
+
+=item *
+
+MEMCACHED_REFLECTION
+
 =back
 
 
