@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 
 =head1 DESCRIPTION
 
-Specifies the C<actions> to be performed when the C<condition>
+Specifies the C<"actions"> to be performed when the C<"condition">
 evaluates to TRUE.
 
 =head1 ATTRIBUTES
@@ -46,10 +46,10 @@ evaluates to TRUE.
 
 =head2 Condition => Str
 
-  [Optional] The Boolean expression that when TRUE causes the C<actions>
-to be performed. If not present, the actions are performed (=TRUE); if
-the expression result is not a Boolean value the actions are NOT
-performed (=FALSE).
+  [Optional] The Boolean expression that when TRUE causes the
+C<"actions"> to be performed. If not present, the actions are performed
+(=TRUE); if the expression result is not a Boolean value, the actions
+are NOT performed (=FALSE).
 
 
 =head2 B<REQUIRED> EventName => Str

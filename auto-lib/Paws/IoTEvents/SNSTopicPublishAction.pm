@@ -38,7 +38,7 @@ Information required to publish the Amazon SNS message.
 
 =head2 B<REQUIRED> TargetArn => Str
 
-  The ARN of the Amazon SNS target to which the message is sent.
+  The ARN of the Amazon SNS target where the message is sent.
 
 
 

@@ -52,7 +52,7 @@ The values of the AWS IoT Events logging options.
 
 =head2 B<REQUIRED> Level => Str
 
-  The logging level. Currently, only "ERROR" is supported.
+  The logging level.
 
 
 =head2 B<REQUIRED> RoleArn => Str

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 
 =head1 DESCRIPTION
 
-Specifies the actions performed when the C<condition> evaluates to
+Specifies the actions performed when the C<"condition"> evaluates to
 TRUE.
 
 =head1 ATTRIBUTES
@@ -40,14 +40,14 @@ TRUE.
 
 =head2 Events => ArrayRef[L<Paws::IoTEvents::Event>]
 
-  Specifies the actions performed when the C<condition> evaluates to
+  Specifies the actions performed when the C<"condition"> evaluates to
 TRUE.
 
 
 =head2 TransitionEvents => ArrayRef[L<Paws::IoTEvents::TransitionEvent>]
 
-  Specifies the actions performed and the next state entered when a
-C<condition> evaluates to TRUE.
+  Specifies the actions performed, and the next state entered, when a
+C<"condition"> evaluates to TRUE.
 
 
 

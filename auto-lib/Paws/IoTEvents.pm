@@ -126,7 +126,9 @@ Paws::IoTEvents - Perl Interface to AWS AWS IoT Events
 =head1 DESCRIPTION
 
 AWS IoT Events monitors your equipment or device fleets for failures or
-changes in operation, and triggers actions when such events occur.
+changes in operation, and triggers actions when such events occur. AWS
+IoT Events API commands enable you to create, read, update and delete
+inputs and detector models, and to list their versions.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iotevents-2018-07-27>
 
@@ -229,7 +231,7 @@ Each argument is described in detail in: L<Paws::IoTEvents::DescribeDetectorMode
 
 Returns: a L<Paws::IoTEvents::DescribeDetectorModelResponse> instance
 
-Describes a detector model. If the C<version> parameter is not
+Describes a detector model. If the C<"version"> parameter is not
 specified, information about the latest version is returned.
 
 
@@ -352,11 +354,11 @@ Returns: nothing
 
 Sets or updates the AWS IoT Events logging options.
 
-Note that if you update the value of any C<loggingOptions> field, it
-takes up to one minute for the change to take effect. Also, if you
-change the policy attached to the role you specified in the roleArn
-field (for example, to correct an invalid policy) it takes up to five
-minutes for that change to take effect.
+If you update the value of any C<"loggingOptions"> field, it takes up
+to one minute for the change to take effect. Also, if you change the
+policy attached to the role you specified in the C<"roleArn"> field
+(for example, to correct an invalid policy) it takes up to five minutes
+for that change to take effect.
 
 
 =head2 TagResource
@@ -374,8 +376,8 @@ Each argument is described in detail in: L<Paws::IoTEvents::TagResource>
 
 Returns: a L<Paws::IoTEvents::TagResourceResponse> instance
 
-Add to or modifies the tags of the given resource. Tags are metadata
-which can be used to manage a resource.
+Adds to or modifies the tags of the given resource. Tags are metadata
+that can be used to manage a resource.
 
 
 =head2 UntagResource
@@ -416,7 +418,7 @@ Each argument is described in detail in: L<Paws::IoTEvents::UpdateDetectorModel>
 Returns: a L<Paws::IoTEvents::UpdateDetectorModelResponse> instance
 
 Updates a detector model. Detectors (instances) spawned by the previous
-version will be deleted and re-created as new inputs arrive.
+version are deleted and then re-created as new inputs arrive.
 
 
 =head2 UpdateInput

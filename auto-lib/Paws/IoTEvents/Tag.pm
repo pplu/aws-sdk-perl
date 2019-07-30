@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 
 =head1 DESCRIPTION
 
-Metadata which can be used to manage the resource.
+Metadata that can be used to manage the resource.
 
 =head1 ATTRIBUTES
 

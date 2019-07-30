@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 =head1 DESCRIPTION
 
 Information required to publish the MQTT message via the AWS IoT
-Message Broker.
+message broker.
 
 =head1 ATTRIBUTES
 

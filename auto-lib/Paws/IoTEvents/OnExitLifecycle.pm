@@ -31,16 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 
 =head1 DESCRIPTION
 
-When exiting this state, perform these C<actions> if the specified
-C<condition> is TRUE.
+When exiting this state, perform these C<"actions"> if the specified
+C<"condition"> is TRUE.
 
 =head1 ATTRIBUTES
 
 
 =head2 Events => ArrayRef[L<Paws::IoTEvents::Event>]
 
-  Specifies the actions that are performed when the state is exited and
-the C<condition> is TRUE.
+  Specifies the C<"actions"> that are performed when the state is exited
+and the C<"condition"> is TRUE.
 
 
 
