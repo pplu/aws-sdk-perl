@@ -43,7 +43,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               InputSwitchSettings => {
                 InputAttachmentNameReference => 'My__string',
-
+                InputClippingSettings        => {
+                  InputTimecodeSource =>
+                    'ZEROBASED',    # values: ZEROBASED, EMBEDDED
+                  StartTimecode => { Timecode => 'My__string', },    # OPTIONAL
+                  StopTimecode => {
+                    LastFrameClippingBehavior => 'EXCLUDE_LAST_FRAME'
+                    , # values: EXCLUDE_LAST_FRAME, INCLUDE_LAST_FRAME; OPTIONAL
+                    Timecode => 'My__string',
+                  },    # OPTIONAL
+                },    # OPTIONAL
+                UrlPath => [ 'My__string', ... ],    # OPTIONAL
               },    # OPTIONAL
               PauseStateSettings => {
                 Pipelines => [
@@ -131,6 +141,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ReferenceActionName => 'My__string',
 
               },    # OPTIONAL
+              ImmediateModeScheduleActionStartSettings => {
+
+              },    # OPTIONAL
             },
 
           },
@@ -139,7 +152,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },    # OPTIONAL
       Deletes => {
-        ActionNames => [ 'My__string', ... ],
+        ActionNames => [ 'My__string', ... ],    # OPTIONAL
 
       },    # OPTIONAL
     );

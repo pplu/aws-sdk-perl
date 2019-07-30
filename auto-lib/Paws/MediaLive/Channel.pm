@@ -10,6 +10,7 @@ package Paws::MediaLive::Channel;
   has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', request_name => 'inputSpecification', traits => ['NameInRequest']);
   has LogLevel => (is => 'ro', isa => 'Str', request_name => 'logLevel', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has PipelineDetails => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::PipelineDetail]', request_name => 'pipelineDetails', traits => ['NameInRequest']);
   has PipelinesRunningCount => (is => 'ro', isa => 'Int', request_name => 'pipelinesRunningCount', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
@@ -100,6 +101,11 @@ one destination per packager.
 =head2 Name => Str
 
   The name of the channel. (user-mutable)
+
+
+=head2 PipelineDetails => ArrayRef[L<Paws::MediaLive::PipelineDetail>]
+
+  Runtime details for the pipelines of a running channel.
 
 
 =head2 PipelinesRunningCount => Int

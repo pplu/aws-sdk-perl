@@ -1,6 +1,8 @@
 package Paws::MediaLive::InputSwitchScheduleActionSettings;
   use Moose;
   has InputAttachmentNameReference => (is => 'ro', isa => 'Str', request_name => 'inputAttachmentNameReference', traits => ['NameInRequest'], required => 1);
+  has InputClippingSettings => (is => 'ro', isa => 'Paws::MediaLive::InputClippingSettings', request_name => 'inputClippingSettings', traits => ['NameInRequest']);
+  has UrlPath => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'urlPath', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::InputSwitchScheduleActionSettings object:
 
-  $service_obj->Method(Att1 => { InputAttachmentNameReference => $value, ..., InputAttachmentNameReference => $value  });
+  $service_obj->Method(Att1 => { InputAttachmentNameReference => $value, ..., UrlPath => $value  });
 
 =head3 Results returned from an API call
 
@@ -31,15 +33,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Settings for the action to switch an input.
+Settings for the "switch input" action: to switch from ingesting one
+input to ingesting another input.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> InputAttachmentNameReference => Str
 
-  The name of the input attachment that should be switched to by this
-action.
+  The name of the input attachment (not the name of the input!) to switch
+to. The name is specified in the channel configuration.
+
+
+=head2 InputClippingSettings => L<Paws::MediaLive::InputClippingSettings>
+
+  Settings to let you create a clip of the file input, in order to set up
+the input to ingest only a portion of the file.
+
+
+=head2 UrlPath => ArrayRef[Str|Undef]
+
+  The value for the variable portion of the URL for the dynamic input,
+for this instance of the input. Each time you use the same dynamic
+input in an input switch action, you can provide a different value, in
+order to connect the input to a different content source.
 
 
 

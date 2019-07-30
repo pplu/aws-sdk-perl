@@ -44,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $InputSpecification    = $DescribeChannelResponse->InputSpecification;
     my $LogLevel              = $DescribeChannelResponse->LogLevel;
     my $Name                  = $DescribeChannelResponse->Name;
+    my $PipelineDetails       = $DescribeChannelResponse->PipelineDetails;
     my $PipelinesRunningCount = $DescribeChannelResponse->PipelinesRunningCount;
     my $RoleArn               = $DescribeChannelResponse->RoleArn;
     my $State                 = $DescribeChannelResponse->State;
