@@ -5,6 +5,7 @@ package Paws::MQ::CreateBrokerInput;
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', request_name => 'configuration', traits => ['NameInRequest']);
   has CreatorRequestId => (is => 'ro', isa => 'Str', request_name => 'creatorRequestId', traits => ['NameInRequest']);
   has DeploymentMode => (is => 'ro', isa => 'Str', request_name => 'deploymentMode', traits => ['NameInRequest']);
+  has EncryptionOptions => (is => 'ro', isa => 'Paws::MQ::EncryptionOptions', request_name => 'encryptionOptions', traits => ['NameInRequest']);
   has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
   has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
   has HostInstanceType => (is => 'ro', isa => 'Str', request_name => 'hostInstanceType', traits => ['NameInRequest']);
@@ -83,6 +84,11 @@ idempotency.
 =head2 DeploymentMode => Str
 
   Required. The deployment mode of the broker.
+
+
+=head2 EncryptionOptions => L<Paws::MQ::EncryptionOptions>
+
+  Encryption options for the broker.
 
 
 =head2 EngineType => Str

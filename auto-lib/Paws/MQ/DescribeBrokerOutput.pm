@@ -9,6 +9,7 @@ package Paws::MQ::DescribeBrokerOutput;
   has Configurations => (is => 'ro', isa => 'Paws::MQ::Configurations', request_name => 'configurations', traits => ['NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has DeploymentMode => (is => 'ro', isa => 'Str', request_name => 'deploymentMode', traits => ['NameInRequest']);
+  has EncryptionOptions => (is => 'ro', isa => 'Paws::MQ::EncryptionOptions', request_name => 'encryptionOptions', traits => ['NameInRequest']);
   has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
   has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
   has HostInstanceType => (is => 'ro', isa => 'Str', request_name => 'hostInstanceType', traits => ['NameInRequest']);
@@ -105,6 +106,11 @@ characters, or special characters.
 =head2 DeploymentMode => Str
 
   Required. The deployment mode of the broker.
+
+
+=head2 EncryptionOptions => L<Paws::MQ::EncryptionOptions>
+
+  Encryption options for the broker.
 
 
 =head2 EngineType => Str

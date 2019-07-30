@@ -36,18 +36,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AutoMinorVersionUpgrade =
       $DescribeBrokerResponse->AutoMinorVersionUpgrade;
-    my $BrokerArn        = $DescribeBrokerResponse->BrokerArn;
-    my $BrokerId         = $DescribeBrokerResponse->BrokerId;
-    my $BrokerInstances  = $DescribeBrokerResponse->BrokerInstances;
-    my $BrokerName       = $DescribeBrokerResponse->BrokerName;
-    my $BrokerState      = $DescribeBrokerResponse->BrokerState;
-    my $Configurations   = $DescribeBrokerResponse->Configurations;
-    my $Created          = $DescribeBrokerResponse->Created;
-    my $DeploymentMode   = $DescribeBrokerResponse->DeploymentMode;
-    my $EngineType       = $DescribeBrokerResponse->EngineType;
-    my $EngineVersion    = $DescribeBrokerResponse->EngineVersion;
-    my $HostInstanceType = $DescribeBrokerResponse->HostInstanceType;
-    my $Logs             = $DescribeBrokerResponse->Logs;
+    my $BrokerArn         = $DescribeBrokerResponse->BrokerArn;
+    my $BrokerId          = $DescribeBrokerResponse->BrokerId;
+    my $BrokerInstances   = $DescribeBrokerResponse->BrokerInstances;
+    my $BrokerName        = $DescribeBrokerResponse->BrokerName;
+    my $BrokerState       = $DescribeBrokerResponse->BrokerState;
+    my $Configurations    = $DescribeBrokerResponse->Configurations;
+    my $Created           = $DescribeBrokerResponse->Created;
+    my $DeploymentMode    = $DescribeBrokerResponse->DeploymentMode;
+    my $EncryptionOptions = $DescribeBrokerResponse->EncryptionOptions;
+    my $EngineType        = $DescribeBrokerResponse->EngineType;
+    my $EngineVersion     = $DescribeBrokerResponse->EngineVersion;
+    my $HostInstanceType  = $DescribeBrokerResponse->HostInstanceType;
+    my $Logs              = $DescribeBrokerResponse->Logs;
     my $MaintenanceWindowStartTime =
       $DescribeBrokerResponse->MaintenanceWindowStartTime;
     my $PendingEngineVersion = $DescribeBrokerResponse->PendingEngineVersion;

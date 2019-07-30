@@ -6,6 +6,7 @@ package Paws::MQ::CreateBroker;
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', traits => ['NameInRequest'], request_name => 'configuration');
   has CreatorRequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creatorRequestId');
   has DeploymentMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentMode');
+  has EncryptionOptions => (is => 'ro', isa => 'Paws::MQ::EncryptionOptions', traits => ['NameInRequest'], request_name => 'encryptionOptions');
   has EngineType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineType');
   has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
   has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostInstanceType');
@@ -49,15 +50,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Id       => 'My__string',
         Revision => 1,                            # OPTIONAL
       },    # OPTIONAL
-      CreatorRequestId => 'My__string',         # OPTIONAL
-      DeploymentMode   => 'SINGLE_INSTANCE',    # OPTIONAL
-      EngineType       => 'ACTIVEMQ',           # OPTIONAL
-      EngineVersion    => 'My__string',         # OPTIONAL
-      HostInstanceType => 'My__string',         # OPTIONAL
+      CreatorRequestId  => 'My__string',         # OPTIONAL
+      DeploymentMode    => 'SINGLE_INSTANCE',    # OPTIONAL
+      EncryptionOptions => {
+        UseAwsOwnedKey => 1,
+        KmsKeyId       => 'My__string',
+      },                                         # OPTIONAL
+      EngineType       => 'ACTIVEMQ',            # OPTIONAL
+      EngineVersion    => 'My__string',          # OPTIONAL
+      HostInstanceType => 'My__string',          # OPTIONAL
       Logs             => {
         Audit   => 1,
         General => 1,
-      },                                        # OPTIONAL
+      },                                         # OPTIONAL
       MaintenanceWindowStartTime => {
         DayOfWeek => 'MONDAY'
         , # values: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY; OPTIONAL
@@ -129,6 +134,12 @@ idempotency.
 Required. The deployment mode of the broker.
 
 Valid values are: C<"SINGLE_INSTANCE">, C<"ACTIVE_STANDBY_MULTI_AZ">
+
+=head2 EncryptionOptions => L<Paws::MQ::EncryptionOptions>
+
+Encryption options for the broker.
+
+
 
 =head2 EngineType => Str
 

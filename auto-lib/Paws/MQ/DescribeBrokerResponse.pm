@@ -10,6 +10,7 @@ package Paws::MQ::DescribeBrokerResponse;
   has Configurations => (is => 'ro', isa => 'Paws::MQ::Configurations', traits => ['NameInRequest'], request_name => 'configurations');
   has Created => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'created');
   has DeploymentMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentMode');
+  has EncryptionOptions => (is => 'ro', isa => 'Paws::MQ::EncryptionOptions', traits => ['NameInRequest'], request_name => 'encryptionOptions');
   has EngineType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineType');
   has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
   has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostInstanceType');
@@ -84,6 +85,11 @@ The time when the broker was created.
 Required. The deployment mode of the broker.
 
 Valid values are: C<"SINGLE_INSTANCE">, C<"ACTIVE_STANDBY_MULTI_AZ">
+=head2 EncryptionOptions => L<Paws::MQ::EncryptionOptions>
+
+Encryption options for the broker.
+
+
 =head2 EngineType => Str
 
 Required. The type of broker engine. Note: Currently, Amazon MQ
