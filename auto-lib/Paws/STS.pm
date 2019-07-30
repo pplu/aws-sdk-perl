@@ -80,6 +80,11 @@ package Paws::STS;
     my $call_object = $self->new_with_coercions('Paws::STS::DecodeAuthorizationMessage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAccessKeyInfo {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::STS::GetAccessKeyInfo', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCallerIdentity {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::STS::GetCallerIdentity', @_);
@@ -98,7 +103,7 @@ package Paws::STS;
   
 
 
-  sub operations { qw/AssumeRole AssumeRoleWithSAML AssumeRoleWithWebIdentity DecodeAuthorizationMessage GetCallerIdentity GetFederationToken GetSessionToken / }
+  sub operations { qw/AssumeRole AssumeRoleWithSAML AssumeRoleWithWebIdentity DecodeAuthorizationMessage GetAccessKeyInfo GetCallerIdentity GetFederationToken GetSessionToken / }
 
 1;
 
@@ -734,6 +739,48 @@ The values of condition keys in the context of the user's request.
 
 =back
 
+
+
+=head2 GetAccessKeyInfo
+
+=over
+
+=item AccessKeyId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::STS::GetAccessKeyInfo>
+
+Returns: a L<Paws::STS::GetAccessKeyInfoResponse> instance
+
+Returns the account identifier for the specified access key ID.
+
+Access keys consist of two parts: an access key ID (for example,
+C<AKIAIOSFODNN7EXAMPLE>) and a secret access key (for example,
+C<wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY>). For more information
+about access keys, see Managing Access Keys for IAM Users
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+in the I<IAM User Guide>.
+
+When you pass an access key ID to this operation, it returns the ID of
+the AWS account to which the keys belong. Access key IDs beginning with
+C<AKIA> are long-term credentials for an IAM user or the AWS account
+root user. Access key IDs beginning with C<ASIA> are temporary
+credentials that are created using STS operations. If the account in
+the response belongs to you, you can sign in as the root user and
+review your root user access keys. Then, you can pull a credentials
+report
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report)
+to learn which IAM user owns the keys. To learn who requested the
+temporary credentials for an C<ASIA> access key, view the STS events in
+your CloudTrail logs
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration).
+
+This operation does not indicate the state of the access key. The key
+might be active, inactive, or deleted. Active keys might not have
+permissions to perform an operation. Providing a deleted keys might
+return an error that the key doesn't exist.
 
 
 =head2 GetCallerIdentity

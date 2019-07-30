@@ -148,6 +148,7 @@ This parameter is optional. You can provide up to 10 managed policy
 ARNs. However, the plain text that you use for both inline and managed
 session policies shouldn't exceed 2048 characters. For more information
 about ARNs, see Amazon Resource Names (ARNs) and AWS Service Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the AWS General Reference.
 
 The characters in this parameter count towards the 2048 character
