@@ -46,11 +46,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExecutionProperty => {
           MaxConcurrentRuns => 1,                      # OPTIONAL
         },    # OPTIONAL
-        LogUri               => 'MyUriString',    # OPTIONAL
-        MaxCapacity          => 1,                # OPTIONAL
-        MaxRetries           => 1,                # OPTIONAL
+        GlueVersion => 'MyGlueVersionString',    # min: 1, max: 255; OPTIONAL
+        LogUri      => 'MyUriString',            # OPTIONAL
+        MaxCapacity => 1,                        # OPTIONAL
+        MaxRetries  => 1,                        # OPTIONAL
         NotificationProperty => {
-          NotifyDelayAfter => 1,                  # min: 1; OPTIONAL
+          NotifyDelayAfter => 1,                 # min: 1; OPTIONAL
         },    # OPTIONAL
         NumberOfWorkers       => 1,                 # OPTIONAL
         Role                  => 'MyRoleString',    # OPTIONAL

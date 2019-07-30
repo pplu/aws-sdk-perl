@@ -32,30 +32,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::DevEn
 
 =head1 DESCRIPTION
 
-Custom libraries to be loaded into a DevEndpoint.
+Custom libraries to be loaded into a development endpoint.
 
 =head1 ATTRIBUTES
 
 
 =head2 ExtraJarsS3Path => Str
 
-  Path to one or more Java Jars in an S3 bucket that should be loaded in
-your DevEndpoint.
+  The path to one or more Java C<.jar> files in an S3 bucket that should
+be loaded in your C<DevEndpoint>.
 
-Please note that only pure Java/Scala libraries can currently be used
-on a DevEndpoint.
+You can only use pure Java/Scala libraries with a C<DevEndpoint>.
 
 
 =head2 ExtraPythonLibsS3Path => Str
 
-  Path(s) to one or more Python libraries in an S3 bucket that should be
-loaded in your DevEndpoint. Multiple values must be complete paths
-separated by a comma.
+  The paths to one or more Python libraries in an Amazon Simple Storage
+Service (Amazon S3) bucket that should be loaded in your
+C<DevEndpoint>. Multiple values must be complete paths separated by a
+comma.
 
-Please note that only pure Python libraries can currently be used on a
-DevEndpoint. Libraries that rely on C extensions, such as the pandas
-(http://pandas.pydata.org/) Python data analysis library, are not yet
-supported.
+You can only use pure Python libraries with a C<DevEndpoint>. Libraries
+that rely on C extensions, such as the pandas
+(http://pandas.pydata.org/) Python data analysis library, are not
+currently supported.
 
 
 

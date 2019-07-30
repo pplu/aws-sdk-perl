@@ -32,19 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::S3Enc
 
 =head1 DESCRIPTION
 
-Specifies how S3 data should be encrypted.
+Specifies how Amazon Simple Storage Service (Amazon S3) data should be
+encrypted.
 
 =head1 ATTRIBUTES
 
 
 =head2 KmsKeyArn => Str
 
-  The AWS ARN of the KMS key to be used to encrypt the data.
+  The Amazon Resource Name (ARN) of the KMS key to be used to encrypt the
+data.
 
 
 =head2 S3EncryptionMode => Str
 
-  The encryption mode to use for S3 data.
+  The encryption mode to use for Amazon S3 data.
 
 
 

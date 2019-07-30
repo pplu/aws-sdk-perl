@@ -6,6 +6,7 @@ package Paws::Glue::JobRun;
   has CompletedOn => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has ExecutionTime => (is => 'ro', isa => 'Int');
+  has GlueVersion => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has JobName => (is => 'ro', isa => 'Str');
   has JobRunState => (is => 'ro', isa => 'Str');
@@ -104,6 +105,21 @@ topic in the developer guide.
 =head2 ExecutionTime => Int
 
   The amount of time (in seconds) that the job run consumed resources.
+
+
+=head2 GlueVersion => Str
+
+  Glue version determines the versions of Apache Spark and Python that
+AWS Glue supports. The Python version indicates the version supported
+for jobs of type Spark.
+
+For more information about the available AWS Glue versions and
+corresponding Spark and Python versions, see Glue version
+(https://docs.aws.amazon.com/glue/latest/dg/add-job.html) in the
+developer guide.
+
+Jobs that are created without specifying a Glue version default to Glue
+0.9.
 
 
 =head2 Id => Str

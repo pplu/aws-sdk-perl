@@ -40,17 +40,18 @@ Specifies an encryption configuration.
 
 =head2 CloudWatchEncryption => L<Paws::Glue::CloudWatchEncryption>
 
-  The encryption configuration for CloudWatch.
+  The encryption configuration for Amazon CloudWatch.
 
 
 =head2 JobBookmarksEncryption => L<Paws::Glue::JobBookmarksEncryption>
 
-  The encryption configuration for Job Bookmarks.
+  The encryption configuration for job bookmarks.
 
 
 =head2 S3Encryption => ArrayRef[L<Paws::Glue::S3Encryption>]
 
-  The encryption configuration for S3 data.
+  The encryption configuration for Amazon Simple Storage Service (Amazon
+S3) data.
 
 
 

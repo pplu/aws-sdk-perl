@@ -7,6 +7,7 @@ package Paws::Glue::Job;
   has DefaultArguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
   has Description => (is => 'ro', isa => 'Str');
   has ExecutionProperty => (is => 'ro', isa => 'Paws::Glue::ExecutionProperty');
+  has GlueVersion => (is => 'ro', isa => 'Str');
   has LastModifiedOn => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
   has MaxCapacity => (is => 'ro', isa => 'Num');
@@ -106,6 +107,21 @@ topic in the developer guide.
 
   An C<ExecutionProperty> specifying the maximum number of concurrent
 runs allowed for this job.
+
+
+=head2 GlueVersion => Str
+
+  Glue version determines the versions of Apache Spark and Python that
+AWS Glue supports. The Python version indicates the version supported
+for jobs of type Spark.
+
+For more information about the available AWS Glue versions and
+corresponding Spark and Python versions, see Glue version
+(https://docs.aws.amazon.com/glue/latest/dg/add-job.html) in the
+developer guide.
+
+Jobs that are created without specifying a Glue version default to Glue
+0.9.
 
 
 =head2 LastModifiedOn => Str

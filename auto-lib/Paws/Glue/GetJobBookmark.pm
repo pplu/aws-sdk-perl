@@ -1,13 +1,13 @@
 
-package Paws::Glue::ResetJobBookmark;
+package Paws::Glue::GetJobBookmark;
   use Moose;
   has JobName => (is => 'ro', isa => 'Str', required => 1);
   has RunId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetJobBookmark');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::ResetJobBookmarkResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetJobBookmark');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::GetJobBookmarkResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -15,31 +15,31 @@ package Paws::Glue::ResetJobBookmark;
 
 =head1 NAME
 
-Paws::Glue::ResetJobBookmark - Arguments for method ResetJobBookmark on L<Paws::Glue>
+Paws::Glue::GetJobBookmark - Arguments for method GetJobBookmark on L<Paws::Glue>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ResetJobBookmark on the
+This class represents the parameters used for calling the method GetJobBookmark on the
 L<AWS Glue|Paws::Glue> service. Use the attributes of this class
-as arguments to method ResetJobBookmark.
+as arguments to method GetJobBookmark.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ResetJobBookmark.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetJobBookmark.
 
 =head1 SYNOPSIS
 
     my $glue = Paws->service('Glue');
-    my $ResetJobBookmarkResponse = $glue->ResetJobBookmark(
+    my $GetJobBookmarkResponse = $glue->GetJobBookmark(
       JobName => 'MyJobName',
       RunId   => 'MyRunId',     # OPTIONAL
     );
 
     # Results:
-    my $JobBookmarkEntry = $ResetJobBookmarkResponse->JobBookmarkEntry;
+    my $JobBookmarkEntry = $GetJobBookmarkResponse->JobBookmarkEntry;
 
-    # Returns a L<Paws::Glue::ResetJobBookmarkResponse> object.
+    # Returns a L<Paws::Glue::GetJobBookmarkResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/ResetJobBookmark>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/GetJobBookmark>
 
 =head1 ATTRIBUTES
 
@@ -59,7 +59,7 @@ The unique run identifier associated with this job run.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ResetJobBookmark in L<Paws::Glue>
+This class forms part of L<Paws>, documenting arguments for method GetJobBookmark in L<Paws::Glue>
 
 =head1 BUGS and CONTRIBUTIONS
 

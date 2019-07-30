@@ -57,51 +57,51 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 AddArguments => L<Paws::Glue::MapValue>
 
 The map of arguments to add the map of arguments used to configure the
-DevEndpoint.
+C<DevEndpoint>.
 
 
 
 =head2 AddPublicKeys => ArrayRef[Str|Undef]
 
-The list of public keys for the DevEndpoint to use.
+The list of public keys for the C<DevEndpoint> to use.
 
 
 
 =head2 CustomLibraries => L<Paws::Glue::DevEndpointCustomLibraries>
 
-Custom Python or Java libraries to be loaded in the DevEndpoint.
+Custom Python or Java libraries to be loaded in the C<DevEndpoint>.
 
 
 
 =head2 DeleteArguments => ArrayRef[Str|Undef]
 
 The list of argument keys to be deleted from the map of arguments used
-to configure the DevEndpoint.
+to configure the C<DevEndpoint>.
 
 
 
 =head2 DeletePublicKeys => ArrayRef[Str|Undef]
 
-The list of public keys to be deleted from the DevEndpoint.
+The list of public keys to be deleted from the C<DevEndpoint>.
 
 
 
 =head2 B<REQUIRED> EndpointName => Str
 
-The name of the DevEndpoint to be updated.
+The name of the C<DevEndpoint> to be updated.
 
 
 
 =head2 PublicKey => Str
 
-The public key for the DevEndpoint to use.
+The public key for the C<DevEndpoint> to use.
 
 
 
 =head2 UpdateEtlLibraries => Bool
 
-True if the list of custom libraries to be loaded in the development
-endpoint needs to be updated, or False otherwise.
+C<True> if the list of custom libraries to be loaded in the development
+endpoint needs to be updated, or C<False> if otherwise.
 
 
 

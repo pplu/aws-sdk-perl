@@ -10,6 +10,7 @@ package Paws::Glue::DevEndpoint;
   has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
   has LastUpdateStatus => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
+  has NumberOfWorkers => (is => 'ro', isa => 'Int');
   has PrivateAddress => (is => 'ro', isa => 'Str');
   has PublicAddress => (is => 'ro', isa => 'Str');
   has PublicKey => (is => 'ro', isa => 'Str');
@@ -20,6 +21,7 @@ package Paws::Glue::DevEndpoint;
   has Status => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
+  has WorkerType => (is => 'ro', isa => 'Str');
   has YarnEndpointAddress => (is => 'ro', isa => 'Str');
   has ZeppelinRemoteSparkInterpreterPort => (is => 'ro', isa => 'Int');
 1;
@@ -52,23 +54,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::DevEn
 
 =head1 DESCRIPTION
 
-A development endpoint where a developer can remotely debug ETL
-scripts.
+A development endpoint where a developer can remotely debug extract,
+transform, and load (ETL) scripts.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arguments => L<Paws::Glue::MapValue>
 
-  A map of arguments used to configure the DevEndpoint.
+  A map of arguments used to configure the C<DevEndpoint>.
 
-Note that currently, we only support "--enable-glue-datacatalog": "" as
-a valid argument.
+Currently, only C<"--enable-glue-datacatalog": ""> is supported as a
+valid argument.
 
 
 =head2 AvailabilityZone => Str
 
-  The AWS availability zone where this DevEndpoint is located.
+  The AWS Availability Zone where this C<DevEndpoint> is located.
 
 
 =head2 CreatedTimestamp => Str
@@ -78,38 +80,37 @@ a valid argument.
 
 =head2 EndpointName => Str
 
-  The name of the DevEndpoint.
+  The name of the C<DevEndpoint>.
 
 
 =head2 ExtraJarsS3Path => Str
 
-  Path to one or more Java Jars in an S3 bucket that should be loaded in
-your DevEndpoint.
+  The path to one or more Java C<.jar> files in an S3 bucket that should
+be loaded in your C<DevEndpoint>.
 
-Please note that only pure Java/Scala libraries can currently be used
-on a DevEndpoint.
+You can only use pure Java/Scala libraries with a C<DevEndpoint>.
 
 
 =head2 ExtraPythonLibsS3Path => Str
 
-  Path(s) to one or more Python libraries in an S3 bucket that should be
-loaded in your DevEndpoint. Multiple values must be complete paths
-separated by a comma.
+  The paths to one or more Python libraries in an Amazon S3 bucket that
+should be loaded in your C<DevEndpoint>. Multiple values must be
+complete paths separated by a comma.
 
-Please note that only pure Python libraries can currently be used on a
-DevEndpoint. Libraries that rely on C extensions, such as the pandas
-(http://pandas.pydata.org/) Python data analysis library, are not yet
-supported.
+You can only use pure Python libraries with a C<DevEndpoint>. Libraries
+that rely on C extensions, such as the pandas
+(http://pandas.pydata.org/) Python data analysis library, are not
+currently supported.
 
 
 =head2 FailureReason => Str
 
-  The reason for a current failure in this DevEndpoint.
+  The reason for a current failure in this C<DevEndpoint>.
 
 
 =head2 LastModifiedTimestamp => Str
 
-  The point in time at which this DevEndpoint was last modified.
+  The point in time at which this C<DevEndpoint> was last modified.
 
 
 =head2 LastUpdateStatus => Str
@@ -120,79 +121,116 @@ supported.
 =head2 NumberOfNodes => Int
 
   The number of AWS Glue Data Processing Units (DPUs) allocated to this
-DevEndpoint.
+C<DevEndpoint>.
+
+
+=head2 NumberOfWorkers => Int
+
+  The number of workers of a defined C<workerType> that are allocated to
+the development endpoint.
+
+The maximum number of workers you can define are 299 for C<G.1X>, and
+149 for C<G.2X>.
 
 
 =head2 PrivateAddress => Str
 
-  A private IP address to access the DevEndpoint within a VPC, if the
-DevEndpoint is created within one. The PrivateAddress field is present
-only when you create the DevEndpoint within your virtual private cloud
-(VPC).
+  A private IP address to access the C<DevEndpoint> within a VPC if the
+C<DevEndpoint> is created within one. The C<PrivateAddress> field is
+present only when you create the C<DevEndpoint> within your VPC.
 
 
 =head2 PublicAddress => Str
 
-  The public IP address used by this DevEndpoint. The PublicAddress field
-is present only when you create a non-VPC (virtual private cloud)
-DevEndpoint.
+  The public IP address used by this C<DevEndpoint>. The C<PublicAddress>
+field is present only when you create a non-virtual private cloud (VPC)
+C<DevEndpoint>.
 
 
 =head2 PublicKey => Str
 
-  The public key to be used by this DevEndpoint for authentication. This
-attribute is provided for backward compatibility, as the recommended
-attribute to use is public keys.
+  The public key to be used by this C<DevEndpoint> for authentication.
+This attribute is provided for backward compatibility because the
+recommended attribute to use is public keys.
 
 
 =head2 PublicKeys => ArrayRef[Str|Undef]
 
-  A list of public keys to be used by the DevEndpoints for
-authentication. The use of this attribute is preferred over a single
-public key because the public keys allow you to have a different
-private key per client.
+  A list of public keys to be used by the C<DevEndpoints> for
+authentication. Using this attribute is preferred over a single public
+key because the public keys allow you to have a different private key
+per client.
 
 If you previously created an endpoint with a public key, you must
-remove that key to be able to set a list of public keys: call the
-C<UpdateDevEndpoint> API with the public key content in the
+remove that key to be able to set a list of public keys. Call the
+C<UpdateDevEndpoint> API operation with the public key content in the
 C<deletePublicKeys> attribute, and the list of new keys in the
 C<addPublicKeys> attribute.
 
 
 =head2 RoleArn => Str
 
-  The AWS ARN of the IAM role used in this DevEndpoint.
+  The Amazon Resource Name (ARN) of the IAM role used in this
+C<DevEndpoint>.
 
 
 =head2 SecurityConfiguration => Str
 
-  The name of the SecurityConfiguration structure to be used with this
-DevEndpoint.
+  The name of the C<SecurityConfiguration> structure to be used with this
+C<DevEndpoint>.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-  A list of security group identifiers used in this DevEndpoint.
+  A list of security group identifiers used in this C<DevEndpoint>.
 
 
 =head2 Status => Str
 
-  The current status of this DevEndpoint.
+  The current status of this C<DevEndpoint>.
 
 
 =head2 SubnetId => Str
 
-  The subnet ID for this DevEndpoint.
+  The subnet ID for this C<DevEndpoint>.
 
 
 =head2 VpcId => Str
 
-  The ID of the virtual private cloud (VPC) used by this DevEndpoint.
+  The ID of the virtual private cloud (VPC) used by this C<DevEndpoint>.
+
+
+=head2 WorkerType => Str
+
+  The type of predefined worker that is allocated to the development
+endpoint. Accepts a value of Standard, G.1X, or G.2X.
+
+=over
+
+=item *
+
+For the C<Standard> worker type, each worker provides 4 vCPU, 16 GB of
+memory and a 50GB disk, and 2 executors per worker.
+
+=item *
+
+For the C<G.1X> worker type, each worker maps to 1 DPU (4 vCPU, 16 GB
+of memory, 64 GB disk), and provides 1 executor per worker. We
+recommend this worker type for memory-intensive jobs.
+
+=item *
+
+For the C<G.2X> worker type, each worker maps to 2 DPU (8 vCPU, 32 GB
+of memory, 128 GB disk), and provides 1 executor per worker. We
+recommend this worker type for memory-intensive jobs.
+
+=back
+
 
 
 =head2 YarnEndpointAddress => Str
 
-  The YARN endpoint address used by this DevEndpoint.
+  The YARN endpoint address used by this C<DevEndpoint>.
 
 
 =head2 ZeppelinRemoteSparkInterpreterPort => Int
