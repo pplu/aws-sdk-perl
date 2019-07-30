@@ -1,6 +1,7 @@
 
 package Paws::CloudWatchEvents::DescribeEventBus;
   use Moose;
+  has Name => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -18,7 +19,7 @@ Paws::CloudWatchEvents::DescribeEventBus - Arguments for method DescribeEventBus
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeEventBus on the
-L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
+L<Amazon EventBridge|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method DescribeEventBus.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEventBus.
@@ -26,7 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $events = Paws->service('CloudWatchEvents');
-    my $DescribeEventBusResponse = $events->DescribeEventBus();
+    my $DescribeEventBusResponse = $events->DescribeEventBus(
+      Name => 'MyEventBusName',    # OPTIONAL
+    );
 
     # Results:
     my $Arn    = $DescribeEventBusResponse->Arn;
@@ -39,6 +42,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/events/DescribeEventBus>
 
 =head1 ATTRIBUTES
+
+
+=head2 Name => Str
+
+The name of the event bus to show details for. If you omit this, the
+default event bus is displayed.
+
 
 
 

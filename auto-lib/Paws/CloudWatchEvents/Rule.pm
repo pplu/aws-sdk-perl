@@ -2,6 +2,7 @@ package Paws::CloudWatchEvents::Rule;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has EventBusName => (is => 'ro', isa => 'Str');
   has EventPattern => (is => 'ro', isa => 'Str');
   has ManagedBy => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -38,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 
 =head1 DESCRIPTION
 
-Contains information about a rule in Amazon CloudWatch Events.
+Contains information about a rule in Amazon EventBridge.
 
 =head1 ATTRIBUTES
 
@@ -53,19 +54,22 @@ Contains information about a rule in Amazon CloudWatch Events.
   The description of the rule.
 
 
+=head2 EventBusName => Str
+
+  The event bus associated with the rule.
+
+
 =head2 EventPattern => Str
 
-  The event pattern of the rule. For more information, see Events and
-Event Patterns
-(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
-in the I<Amazon CloudWatch Events User Guide>.
+  The event pattern of the rule. For more information, see Event Patterns
+(https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
+in the I<Amazon EventBridge User Guide>.
 
 
 =head2 ManagedBy => Str
 
-  If the rule was created on behalf of your account by an AWS service,
-this field displays the principal name of the service that created the
-rule.
+  If an AWS service created the rule on behalf of your account, this
+field displays the principal name of the service that created the rule.
 
 
 =head2 Name => Str
@@ -81,8 +85,8 @@ invocation.
 
 =head2 ScheduleExpression => Str
 
-  The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5
-minutes)".
+  The scheduling expression: for example, C<"cron(0 20 * * ? *)"> or
+C<"rate(5 minutes)">.
 
 
 =head2 State => Str
