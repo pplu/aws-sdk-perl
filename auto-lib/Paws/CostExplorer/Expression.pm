@@ -44,11 +44,11 @@ patterns:
 
 Simple dimension values - You can set the dimension name and values for
 the filters that you plan to use. For example, you can filter for
-C<INSTANCE_TYPE==m4.xlarge OR INSTANCE_TYPE==c4.large>. The
-C<Expression> for that looks like this:
+C<REGION==us-east-1 OR REGION==us-west-1>. The C<Expression> for that
+looks like this:
 
-C<{ "Dimensions": { "Key": "INSTANCE_TYPE", "Values": [ "m4.xlarge",
-E<ldquo>c4.largeE<rdquo> ] } }>
+C<{ "Dimensions": { "Key": "REGION", "Values": [ "us-east-1",
+E<ldquo>us-west-1E<rdquo> ] } }>
 
 The list of dimension values are OR'd together to retrieve cost or
 usage data. You can create C<Expression> and C<DimensionValues> objects
@@ -60,14 +60,14 @@ Compound dimension values with logical operations - You can use
 multiple C<Expression> types and the logical operators C<AND/OR/NOT> to
 create a list of one or more C<Expression> objects. This allows you to
 filter on more advanced options. For example, you can filter on
-C<((INSTANCE_TYPE == m4.large OR INSTANCE_TYPE == m3.large) OR
-(TAG.Type == Type1)) AND (USAGE_TYPE != DataTransfer)>. The
-C<Expression> for that looks like this:
+C<((REGION == us-east-1 OR REGION == us-west-1) OR (TAG.Type == Type1))
+AND (USAGE_TYPE != DataTransfer)>. The C<Expression> for that looks
+like this:
 
-C<{ "And": [ {"Or": [ {"Dimensions": { "Key": "INSTANCE_TYPE",
-"Values": [ "m4.x.large", "c4.large" ] }}, {"Tags": { "Key": "TagName",
-"Values": ["Value1"] } } ]}, {"Not": {"Dimensions": { "Key":
-"USAGE_TYPE", "Values": ["DataTransfer"] }}} ] }>
+C<{ "And": [ {"Or": [ {"Dimensions": { "Key": "REGION", "Values": [
+"us-east-1", "us-west-1" ] }}, {"Tags": { "Key": "TagName", "Values":
+["Value1"] } } ]}, {"Not": {"Dimensions": { "Key": "USAGE_TYPE",
+"Values": ["DataTransfer"] }}} ] }>
 
 Because each C<Expression> can have only one operator, the service
 returns an error if more than one is specified. The following example
@@ -78,6 +78,10 @@ C<{ "And": [ ... ], "DimensionValues": { "Dimension": "USAGE_TYPE",
 
 =back
 
+For C<GetRightsizingRecommendation> action, a combination of OR and NOT
+is not supported. OR is not supported between different dimensions, or
+dimensions and tags. NOT operators aren't supported. Dimentions are
+also limited to C<LINKED_ACCOUNT>, C<REGION>, or C<RIGHTSIZING_TYPE>.
 
 =head1 ATTRIBUTES
 
