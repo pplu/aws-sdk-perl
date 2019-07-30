@@ -43,8 +43,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 DocumentVersion => Str
 
-(Optional) The version of the document that you want to delete. If not
-provided, all versions of the document are deleted.
+The version of the document that you want to delete. If not provided,
+all versions of the document are deleted.
 
 
 
@@ -56,8 +56,8 @@ The name of the document.
 
 =head2 VersionName => Str
 
-(Optional) The version name of the document that you want to delete. If
-not provided, all versions of the document are deleted.
+The version name of the document that you want to delete. If not
+provided, all versions of the document are deleted.
 
 
 

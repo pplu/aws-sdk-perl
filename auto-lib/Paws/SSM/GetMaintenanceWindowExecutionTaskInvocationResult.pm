@@ -75,7 +75,7 @@ The task execution ID.
 =head2 TaskType => Str
 
 Retrieves the task type for a maintenance window. Task types include
-the following: LAMBDA, STEP_FUNCTION, AUTOMATION, RUN_COMMAND.
+the following: LAMBDA, STEP_FUNCTIONS, AUTOMATION, RUN_COMMAND.
 
 Valid values are: C<"RUN_COMMAND">, C<"AUTOMATION">, C<"STEP_FUNCTIONS">, C<"LAMBDA">
 =head2 WindowExecutionId => Str

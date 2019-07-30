@@ -2104,8 +2104,7 @@ Each argument is described in detail in: L<Paws::SSM::DeleteParameters>
 
 Returns: a L<Paws::SSM::DeleteParametersResult> instance
 
-Delete a list of parameters. This API is used to delete parameters by
-using the Amazon EC2 console.
+Delete a list of parameters.
 
 
 =head2 DeletePatchBaseline
@@ -2235,10 +2234,10 @@ Each argument is described in detail in: L<Paws::SSM::DescribeActivations>
 
 Returns: a L<Paws::SSM::DescribeActivationsResult> instance
 
-Details about the activation, including: the date and time the
-activation was created, the expiration date, the IAM role assigned to
-the instances in the activation, and the number of instances activated
-by this registration.
+Describes details about the activation, such as the date and time the
+activation was created, its expiration date, the IAM role assigned to
+the instances in the activation, and the number of instances registered
+by using this activation.
 
 
 =head2 DescribeAssociation
@@ -2378,7 +2377,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeAvailablePatches>
 
 Returns: a L<Paws::SSM::DescribeAvailablePatchesResult> instance
 
-Lists all patches that could possibly be included in a patch baseline.
+Lists all patches eligible to be included in a patch baseline.
 
 
 =head2 DescribeDocument
@@ -3191,8 +3190,7 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionResult> instance
 
-Retrieves details about a specific task run as part of a maintenance
-window execution.
+Retrieves details about a specific a maintenance window execution.
 
 
 =head2 GetMaintenanceWindowExecutionTask
@@ -3231,9 +3229,8 @@ Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecut
 
 Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult> instance
 
-Retrieves a task invocation. A task invocation is a specific task
-running on a specific target. maintenance windows report status for all
-invocations.
+Retrieves information about a specific task running on a specific
+target.
 
 
 =head2 GetMaintenanceWindowTask
@@ -4020,7 +4017,13 @@ Each argument is described in detail in: L<Paws::SSM::RegisterDefaultPatchBaseli
 
 Returns: a L<Paws::SSM::RegisterDefaultPatchBaselineResult> instance
 
-Defines the default patch baseline.
+Defines the default patch baseline for the relevant operating system.
+
+To reset the AWS predefined patch baseline as the default, specify the
+full patch baseline ARN as the baseline ID value. For example, for
+CentOS, specify
+C<arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed>
+instead of C<pb-0574b43a65ea646ed>.
 
 
 =head2 RegisterPatchBaselineForPatchGroup
@@ -4128,7 +4131,7 @@ Each argument is described in detail in: L<Paws::SSM::RemoveTagsFromResource>
 
 Returns: a L<Paws::SSM::RemoveTagsFromResourceResult> instance
 
-Removes all tags from the specified resource.
+Removes tag keys from the specified resource.
 
 
 =head2 ResetServiceSetting
@@ -4463,7 +4466,7 @@ Each argument is described in detail in: L<Paws::SSM::UpdateDocument>
 
 Returns: a L<Paws::SSM::UpdateDocumentResult> instance
 
-The document you want to update.
+Updates one or more values for an SSM document.
 
 
 =head2 UpdateDocumentDefaultVersion
@@ -4548,21 +4551,38 @@ Each argument is described in detail in: L<Paws::SSM::UpdateMaintenanceWindowTar
 
 Returns: a L<Paws::SSM::UpdateMaintenanceWindowTargetResult> instance
 
-Modifies the target of an existing maintenance window. You can't change
-the target type, but you can change the following:
+Modifies the target of an existing maintenance window. You can change
+the following:
 
-The target from being an ID target to a Tag target, or a Tag target to
-an ID target.
+=over
 
-IDs for an ID target.
+=item *
 
-Tags for a Tag target.
+Name
 
-Owner.
+=item *
 
-Name.
+Description
 
-Description.
+=item *
+
+Owner
+
+=item *
+
+IDs for an ID target
+
+=item *
+
+Tags for a Tag target
+
+=item *
+
+From any supported tag type to another. The three supported tag types
+are ID target, Tag target, and resource group. For more information,
+see Target.
+
+=back
 
 If a parameter is null, then the corresponding field is not modified.
 
@@ -4660,7 +4680,7 @@ Each argument is described in detail in: L<Paws::SSM::UpdateManagedInstanceRole>
 Returns: a L<Paws::SSM::UpdateManagedInstanceRoleResult> instance
 
 Assigns or changes an Amazon Identity and Access Management (IAM) role
-to the managed instance.
+for the managed instance.
 
 
 =head2 UpdateOpsItem

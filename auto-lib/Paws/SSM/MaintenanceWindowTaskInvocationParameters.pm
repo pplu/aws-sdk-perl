@@ -56,7 +56,7 @@ The parameters for task execution.
 
 =head2 StepFunctions => L<Paws::SSM::MaintenanceWindowStepFunctionsParameters>
 
-  The parameters for a STEP_FUNCTION task type.
+  The parameters for a STEP_FUNCTIONS task type.
 
 
 

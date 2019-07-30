@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxErrors      => 'MyMaxErrors',
       Targets        => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -220,7 +220,7 @@ C<Key=InstanceIds,Values=E<lt>instance-id-1E<gt>,E<lt>instance-id-2E<gt>>
 
 Specify maintenance window targets using the following format:
 
-C<Key=E<lt>WindowTargetIdsE<gt>,Values=E<lt>window-target-id-1E<gt>,E<lt>window-target-id-2E<gt>>
+C<Key=WindowTargetIds;,Values=E<lt>window-target-id-1E<gt>,E<lt>window-target-id-2E<gt>>
 
 
 
