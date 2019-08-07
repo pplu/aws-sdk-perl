@@ -566,51 +566,65 @@ package Paws::API::Builder {
 
   use Carp;
 
-  sub get_caller_class_type {
+  sub set_caller_class_types {
     my ($self, $for_shape) = @_;
     my $param_props = $self->shape($for_shape);
 
+    return $param_props->{ perl_type } if $param_props->{ perl_type };
+
     my $type;
+    my $base_type;
+    my $shape_type;
+    my $class_type;
     if (not exists $param_props->{ type }) {
       confess "Shape $for_shape doesn't have a type entry in def " . Dumper($param_props);
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'list') {
       $self->flattened_arrays(1) if ($param_props->{ flattened });
       die "Invalid list type: " . Dumper($param_props) if (not defined $param_props->{member}->{shape});
-      my $inner_type = $self->get_caller_class_type($param_props->{member}->{shape});
-      $inner_type = 'Str|Undef' if ($inner_type eq 'Str');
-      $type = "ArrayRef[$inner_type]";
+      $shape_type = $self->set_caller_class_types($param_props->{member}->{shape});
+      $class_type = $self->namespace_shape($param_props->{member}->{shape});
+      $shape_type = 'Str|Undef' if ($shape_type eq 'Str');
+      $base_type = 'ArrayRef';
+      $type = "${base_type}[$shape_type]";
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'timestamp') {
       # TODO: Paws::API::TimeStamp
-      $type = 'Str';
+      $base_type = 'Str';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'long') {
       #TODO: Check
-      $type = 'Int';
+      $base_type = 'Int';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'double') {
       #TODO: Check
-      $type = 'Num';
+      $base_type = 'Num';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'float') {
       #TODO: Check
-      $type = 'Num';
+      $base_type = 'Num';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'boolean') {
       # TODO: Bool
-      $type = 'Bool';
+      $base_type = 'Bool';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'integer') {
-      $type = 'Int';
+      $base_type = 'Int';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'string') {
-      $type = 'Str';
+      $base_type = 'Str';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'blob') {
       # TODO: check
-      $type = 'Str';
+      $base_type = 'Str';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'map') {
-      $type = $self->namespace_shape($for_shape);
+      $shape_type = $self->shape_class_type($for_shape);
+      $class_type = $self->namespace_shape($for_shape);
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'structure') {
-      $type = $self->namespace_shape($for_shape);
+      $shape_type = $self->shape_class_type($for_shape);
+      $class_type = $self->namespace_shape($for_shape);
     }
-    if (not defined $type) {
+    if (not defined $type || $shape_type || $base_type) {
       p $param_props;
       die "Unknown type: $for_shape $param_props->{ type }";
     }
-    return $type;
+    $param_props->{ perl_type } = $type || $shape_type || $base_type;
+    $param_props->{ base_types }{$base_type} ||= 1 if $base_type;
+    if( $class_type ) {
+        $param_props->{ class_type_info }{ $shape_type } = $class_type;
+    }
+    return $param_props->{ perl_type };
   }
 
   sub generate_example_code {
@@ -848,9 +862,17 @@ package Paws::API::Builder {
     return $tidied_source;
   }
 
+  sub shape_class_type {
+    my ($self, $shape) = @_;
+    my $class = $self->namespace_shape($shape);
+    $class =~ s/:://;
+    return '$' . $shape;
+  }
+  
   sub namespace_shape {
     my ($self, $shape) = @_;
-    substr($shape,0,1) = uc(substr($shape,0,1));
+    $shape = ucfirst($shape);
+#    substr($shape,0,1) = uc(substr($shape,0,1));
     return $self->api . '::' . $shape;
   }
 
@@ -943,7 +965,8 @@ package Paws::API::Builder {
     $self->_inner_shapes;
 
     foreach my $shape_name ($self->shapes) {
-      $self->shape($shape_name)->{ perl_type } = $self->get_caller_class_type($shape_name);
+        $self->set_caller_class_types($shape_name);
+#        print STDERR Data::Dumper::Dumper($self->shape($shape_name)->{base_types});
       $self->shape($shape_name)->{ example_code } = ( $self->get_example_code($shape_name) )[0];
 
     }
@@ -1145,26 +1168,27 @@ package Paws::API::Builder {
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'double') {
         $self->process_template('map_str_to_native.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Num]' });
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'list') {
-        my $type = $self->get_caller_class_type($iclass->{value}->{shape});
-
+        my $type = $self->set_caller_class_types($iclass->{value}->{shape});
         #Sometimes it's a list of objects, and sometimes it's a list of native things
         my $inner_shape = $self->shape($values_shape->{member}->{shape});
 
         if ($inner_shape->{type} eq 'structure'){
-          $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+          $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" }, class_type_info => $values_shape->{class_type_info});
         } else {
           if ($type =~ /::/) {
-            $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+            $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $values_shape->{class_type_info} });
           } else {
-            $self->process_template('map_str_to_native.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+            $self->process_template('map_str_to_native.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $values_shape->{class_type_info} });
           }
         }
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'structure') {
-        my $type = $self->get_caller_class_type($iclass->{value}->{shape});
-        $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+        my $type = $self->set_caller_class_types($iclass->{value}->{shape});
+        #print STDERR "inner_class ", Data::Dumper::Dumper($values_shape);
+
+        $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $values_shape->{class_type_info} });
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'map') {
-        my $type = $self->get_caller_class_type($iclass->{value}->{shape});
-        $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+        my $type = $self->set_caller_class_types($iclass->{value}->{shape});
+        $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $iclass->{value}->{shape}{class_type_info} });
       } else {
         die "Unrecognized Map type in query API " . Dumper($iclass) . ' keys_shape ' . Dumper($keys_shape) . ' values_shape' . Dumper($values_shape);
       }

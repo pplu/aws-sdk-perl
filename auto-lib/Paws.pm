@@ -1,35 +1,33 @@
 package Paws::SDK::Config;
 
-use Moose;
-use Moose::Util::TypeConstraints;
+use Moo;
+use Types::Standard qw/Str Undef Bool Object ConsumerOf InstanceOf/;
 use Paws::Net::CallerRole;
 use Paws::Credential;
 
-coerce 'Paws::Net::CallerRole',
-  from 'Str',
-   via {
+my $CallerRole = Object
+  ->plus_coercions( Str, sub {
      my $class = $_; 
      Paws->load_class($class);
      return $class->new() 
-   };
+  });
 
-coerce 'Paws::Credential',
-  from 'Str',
-   via { 
-     my $class = $_;
-     Paws->load_class($class);
-     return $class->new();
-   };
+my $Credential = Object
+  ->plus_coercions( Str, sub {
+    my $class = $_;
+    Paws->load_class($class);
+    return $class->new();
+  });
 
 has region => (
   is => 'rw',
-  isa => 'Str|Undef',
+  isa => Str|Undef,
   default => sub { undef }
 );
 
 has caller => (
   is => 'rw',
-  does => 'Paws::Net::CallerRole', 
+  isa => $CallerRole,
   lazy => 1,
   default => sub { 
     Paws->load_class('Paws::Net::Caller');
@@ -39,7 +37,7 @@ has caller => (
 ); 
 has credentials => (
   is => 'rw',
-  does => 'Paws::Credential',
+  isa => $Credential,
   lazy => 1,
   default => sub {
     Paws->load_class('Paws::Credential::ProviderChain'); 
@@ -49,7 +47,7 @@ has credentials => (
 );
 has immutable => (
   is => 'rw',
-  isa => 'Bool',
+  isa => Bool,
   default => 0,
 );
 __PACKAGE__->meta->make_immutable;
@@ -61,31 +59,32 @@ our $VERSION = '0.42';
 
 use Carp;
 
-use Moose;
-use MooseX::ClassAttribute;
-use Moose::Util qw//;
+use Moo;
+use Types::Standard qw/Str HashRef Object InstanceOf/;
+use MooX::ClassAttribute;
+#use Moose::Util qw//;
 use Module::Runtime qw//;
 
 use Paws::API::JSONAttribute;
 use Paws::API::Base64Attribute;
 
-use Paws::API;
-use Moose::Util::TypeConstraints;
+# use Paws::API;
+# use Moose::Util::TypeConstraints;
 
-has _class_prefix => (isa => 'Str', is => 'ro', default => 'Paws::');
+has _class_prefix => (isa => Str, is => 'ro', default => 'Paws::');
 
-coerce 'Paws::SDK::Config',
-  from 'HashRef',
-   via {
-     Paws::SDK::Config->new($_);
-};
-has config => (isa => 'Paws::SDK::Config', is => 'rw', coerce => 1, default => sub { Paws->default_config });
+my $Config = Object
+  ->plus_coercions( HashRef, sub {
+    Paws::SDK::Config->new($_);
+  });
+
+has config => (isa => $Config, is => 'rw', coerce => 1, default => sub { Paws->default_config });
 
 # Holds a fully constructed Paws instance so continuous calls to get_self are all done over the
 # same (implicit) object. This happens when the user calls Paws->service, as opposed to $instance->service
-class_has _default_object => (is => 'rw', isa => 'Paws');
+class_has _default_object => (is => 'rw', isa => InstanceOf['Paws']);
 
-class_has default_config => (is => 'rw', isa => 'Paws::SDK::Config', default => sub { Paws::SDK::Config->new });
+class_has default_config => (is => 'rw', isa => InstanceOf['Paws::SDK::Config'], default => sub { Paws::SDK::Config->new });
 
 sub load_class {
   my (undef, @classes) = @_;
@@ -104,34 +103,41 @@ sub new_with_coercions {
   my %p;
 
   if ($class->does('Paws::API::StrToObjMapParser')) {
-    my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
-    if (my ($array_of) = ($subtype =~ m/^ArrayRef\[(.*?)\]$/)){
-      $p{ Map } = { map { $_ => [ map { Paws->new_with_coercions("$array_of", %$_) } @{ $params{ $_ } } ] } keys %params };
+    my $subclass = $class->params_map->{types}{'Map'}{class};
+    my ($subtype) = ($class->params_map->{types}{'Map'}{type} =~ m/^HashRef\[(.*?)\]$/);
+#    my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
+    if (my ($array_of) = ($subtype =~ m/^ArrayRef\[(.*?)\]$/)) {
+      $p{ Map } = { map { $_ => [ map { Paws->new_with_coercions($subclass, %$_) } @{ $params{ $_ } } ] } keys %params };
     } else {
-      $p{ Map } = { map { $_ => Paws->new_with_coercions("$subtype", %{ $params{ $_ } }) } keys %params };
+      $p{ Map } = { map { $_ => Paws->new_with_coercions($subclass, %{ $params{ $_ } }) } keys %params };
     }
   } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
-    $p{ Map } = { %params };
-  } else {
+   $p{ Map } = { %params };
+  }
+  else {
     foreach my $att (keys %params){
-      my $att_meta = $class->meta->find_attribute_by_name($att);
+      #my $att_meta = $class->meta->find_attribute_by_name($att);
 
-      croak "$class doesn't have an $att" if (not defined $att_meta);
-      my $type = $att_meta->type_constraint;
+      #croak "$class doesn't have an $att" if (not defined $att_meta);
+      #my $type = $att_meta->type_constraint;
+      my $type = $class->params_map->{types}{$att}{type};
+      my $typeclass = $class->params_map->{types}{$att}{class};
 
+      ## Types::Standard sorts Bool by default (it says) with !!$_
       if ($type eq 'Bool') {
         $p{ $att } = ($params{ $att } == 1)?1:0;
+      ## standard types should Just Work
       } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
         $p{ $att } = $params{ $att };
       } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
-        my $subtype = "$1";
-        if ($subtype eq 'Str' or $subtype eq 'Str|Undef' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
+#        my $subtype = "$1";
+        if ($typeclass eq 'Str' or $typeclass eq 'Str|Undef' or $typeclass eq 'Num' or $typeclass eq 'Int' or $typeclass eq 'Bool') {
           $p{ $att } = $params{ $att };
         } else {
-          $p{ $att } = [ map { Paws->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ];
+          $p{ $att } = [ map { Paws->new_with_coercions("$typeclass", %{ $_ }) } @{ $params{ $att } } ];
         }
-      } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
-        $p{ $att } = $params{ $att };
+#      } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
+#        $p{ $att } = $params{ $att };
       } else {
         $p{ $att } = Paws->new_with_coercions("$type", %{ $params{ $att } });
       }

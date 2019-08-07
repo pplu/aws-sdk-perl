@@ -1,6 +1,6 @@
 package Paws::Net::JsonCaller;
   use Paws;
-  use Moose::Role;
+  use Moo::Role;
   use JSON::MaybeXS;
   use POSIX qw(strftime);
   requires 'json_version';
@@ -14,14 +14,14 @@ package Paws::Net::JsonCaller;
     }
   );
 
-  # converts the objects that represent the call into parameters that the API can understand
+  # # converts the objects that represent the call into parameters that the API can understand
   sub _to_jsoncaller_params {
     my ($self, $params) = @_;
 
     if ($params->does('Paws::API::StrToNativeMapParser')){
       return { %{ $params->Map }  };
     } elsif ($params->does('Paws::API::StrToObjMapParser')){
-      my $type = $params->meta->get_attribute('Map')->type_constraint;
+      my $type = $params->params_map->{types}{Map}{type};
       if (my ($inner) = ("$type" =~ m/^HashRef\[ArrayRef\[(.*?)\]/)) {
         return { map { my $k = $_; ( $k => [ map { $self->_to_jsoncaller_params($_) } @{$params->Map->{$_} } ] ) } keys %{ $params->Map } };
       } else {
@@ -29,10 +29,15 @@ package Paws::Net::JsonCaller;
       }
     } else {
       my %p;
-      foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-        my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
+      foreach my $att (keys %{ $params->params_map->{types} }) {
+#      foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+
+        my $key = $params->params_map->{NameInRequest}{$att} || $att;
+#        my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
         if (defined $params->$att) {
-          my $att_type = $params->meta->get_attribute($att)->type_constraint;
+            print STDERR ref($params), "\n$att\n";
+          #my $att_type = $params->meta->get_attribute($att)->type_constraint;
+          my $att_type = $params->params_map->{types}{$key}{type};
           if ($att_type eq 'Bool') {
             $p{ $key } = ($params->$att)?\1:\0;
           } elsif ($att_type eq 'Int') {
@@ -48,8 +53,8 @@ package Paws::Net::JsonCaller;
             } else {
               $p{ $key } = [ map { $self->_to_jsoncaller_params($_) } @{ $params->$att } ];
             }
-          } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
-            $p{ $key } = $params->$att;
+#          } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
+#            $p{ $key } = $params->$att;
           } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){ 
             $p{ $key } = $self->_to_jsoncaller_params($params->$att);
           } elsif ($params->$att->does('Paws::API::StrToObjMapParser')){

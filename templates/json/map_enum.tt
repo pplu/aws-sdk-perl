@@ -1,9 +1,9 @@
 [%- -%]
 package [% inner_class %];
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => '[% iclass.key.locationName || 'key' %]');
   class_has xml_values =>(is => 'ro', default => '[% iclass.value.locationName || 'value' %]');
 

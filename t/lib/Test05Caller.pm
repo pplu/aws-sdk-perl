@@ -1,5 +1,5 @@
 package Test05Caller;
-  use Moose;
+  use Moo;
   with 'Paws::Net::CallerRole';
 
   sub caller_to_response {}

@@ -1,7 +1,8 @@
 
 package Paws::API::Response;
-  use Moose;
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  has _request_id => (is => 'ro', isa => Str);
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 package Paws::Net::V4Signature;
-  use Moose::Role;
+  use Moo::Role;
   use Net::Amazon::Signature::V4;
   #requires 'region';
   requires 'service';

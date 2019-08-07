@@ -1,7 +1,11 @@
 [%- -%]
 package [% inner_class %];
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToNativeMapParser';
+  use Types::Standard qw//;
+  use Type::Utils qw/class_type/;
+[%- SET k =  class_type_info.keys.first %]
+  my [% k %] = class_type '[% class_type_info.$k %]';
 
   has Map => (is => 'ro', isa => '[% map_class %]');
 1;
