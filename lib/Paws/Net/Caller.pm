@@ -1,5 +1,5 @@
 package Paws::Net::Caller;
-  use Moose;
+  use Moo;
   with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
   use Paws::Net::APIResponse;
 

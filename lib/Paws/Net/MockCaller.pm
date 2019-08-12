@@ -1,17 +1,18 @@
 package Paws::Net::MockCaller;
-  use Moose;
+  use Moo;
   with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
   use Paws::Net::APIResponse;
 
   use File::Slurper qw(read_text write_text);
   use JSON::MaybeXS;
-  use Moose::Util::TypeConstraints;
+  # use Moose::Util::TypeConstraints;
   use Path::Tiny;
   use Paws::Net::FileMockCaller;
+  use Types::Standard qw/ConsumerOf Enum Str Int CodeRef/;
 
   has real_caller => (
     is => 'ro', 
-    does => 'Paws::Net::CallerRole', 
+    isa => ConsumerOf['Paws::Net::CallerRole'],
     default => sub {
       require Paws::Net::Caller;
       Paws::Net::Caller->new;
@@ -20,29 +21,29 @@ package Paws::Net::MockCaller;
 
   has mock_mode => (
     is => 'ro',
-    isa => enum([ 'REPLAY', 'RECORD' ]),
+    isa => Enum[ 'REPLAY', 'RECORD' ],
     required => 1,
     default => sub { $ENV{PAWS_MOCK_MODE} }
   );
 
   has mock_dir => (
     is => 'ro',
-    isa => 'Str',
+    isa => Str,
     required => 1,
     default => sub { $ENV{PAWS_MOCK_DIR} }
   );
 
   has _request_num => (
-    is => 'ro',
-    isa => 'Int',
+    is => 'rwp',
+    isa => Int,
     default => 1,
-    traits => [ 'Counter' ],
-    handles => {
-      _next_request => 'inc'
-    }
+#    traits => [ 'Counter' ],
+#    handles => {
+#      _next_request => 'inc'
+#    }
   );
 
-  has _test_file => (is => 'rw', isa => 'Str');
+  has _test_file => (is => 'rw', isa => Str);
 
   has caller => (
     is => 'ro',
@@ -57,10 +58,12 @@ package Paws::Net::MockCaller;
 
   has result_hook => (
     is => 'ro',
-    isa => 'CodeRef',
+    isa => CodeRef,
   );
 
-  sub send_request {
+sub _next_request { $_[0]->_set__request_num($_[0]->_request_num+1) }
+
+sub send_request {
     my ($self, $service, $call_object) = @_;
 
     $self->_test_file(sprintf("%s/%04d.response", $self->mock_dir, $self->_request_num));

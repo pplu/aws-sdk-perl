@@ -1,5 +1,5 @@
 package Paws::Net::RetryCallerRole;
-  use Moose::Role;
+  use Moo::Role;
   use Time::HiRes 'sleep';
   use Paws::API::Retry;
 

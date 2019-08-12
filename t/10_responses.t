@@ -53,28 +53,29 @@ sub get_stub_call_args {
   Paws->load_class($call_class);
   my %args = ();
 
-  foreach my $attribute ($call_class->meta->get_all_attributes) {
-    next if (not $attribute->is_required);
+  foreach my $attribute (keys %{ $call_class->params_map->{types} }) {
+#    next if (not $attribute->is_required);
 
-    my $att_type = $attribute->type_constraint->name;
+    my $att_type = $call_class->params_map->{types}{$attribute}{type};
+    my $type_class = $call_class->params_map->{types}{$attribute}{class};
     if ($att_type =~ m/ArrayRef\[(.*)\]/){
       my $inner_class = $1;
       if (is_native($inner_class)){
-        $args{ $attribute->name } = [ get_value_for_type($inner_class) ];
+        $args{ $attribute } = [ get_value_for_type($inner_class) ];
       } else {
-        $args{ $attribute->name } = [ get_stub_call_args($inner_class) ];
+        $args{ $attribute } = [ get_stub_call_args($type_class) ];
       }          
     } elsif ($att_type =~ m/HashRef\[(.*)\]/){
       my $inner_class = $1;
       if (is_native($inner_class)){
-        $args{ $attribute->name } = { 'k1' => get_value_for_type($inner_class) };
+        $args{ $attribute } = { 'k1' => get_value_for_type($inner_class) };
       } else {
-        $args{ $attribute->name } = { 'k1' => get_stub_call_args($inner_class) };
+        $args{ $attribute } = { 'k1' => get_stub_call_args($type_class) };
       }          
     } elsif (is_native($att_type)){
-      $args{ $attribute->name } = get_value_for_type($att_type);
+      $args{ $attribute } = get_value_for_type($att_type);
     } else {
-      $args{ $attribute->name } = get_stub_call_args($att_type);
+      $args{ $attribute } = get_stub_call_args($type_class);
     }
   }
 
@@ -99,7 +100,7 @@ sub test_file {
     );
 
     my $call_method = $test->method;
-    my $call_class = $service->meta->name . '::' . $call_method;
+    my $call_class = ref($service) . '::' . $call_method;
     my $call_object = get_stub_call_args($call_class);
 
     my $res;

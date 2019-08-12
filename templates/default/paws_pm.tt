@@ -130,14 +130,16 @@ sub new_with_coercions {
       } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
         $p{ $att } = $params{ $att };
       } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
-#        my $subtype = "$1";
-        if ($typeclass eq 'Str' or $typeclass eq 'Str|Undef' or $typeclass eq 'Num' or $typeclass eq 'Int' or $typeclass eq 'Bool') {
+        my $subtype = "$1";
+        if ($subtype eq 'Str' or $subtype eq 'Str|Undef' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
           $p{ $att } = $params{ $att };
         } else {
           $p{ $att } = [ map { Paws->new_with_coercions("$typeclass", %{ $_ }) } @{ $params{ $att } } ];
         }
 #      } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
 #        $p{ $att } = $params{ $att };
+      } elsif($typeclass) {
+        $p{ $att } = Paws->new_with_coercions("$typeclass", %{ $params{ $att } });
       } else {
         $p{ $att } = Paws->new_with_coercions("$type", %{ $params{ $att } });
       }

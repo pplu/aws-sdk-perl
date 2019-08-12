@@ -2,12 +2,12 @@
 package [% inner_class %];
   use Moo;
   with 'Paws::API::StrToNativeMapParser';
-  use Types::Standard qw//;
+  use Types::Standard qw/[% base_types.unique.join(' ') %]/;
   use Type::Utils qw/class_type/;
 [%- SET k =  class_type_info.keys.first %]
-  my [% k %] = class_type '[% class_type_info.$k %]';
+[% IF k %]  my [% k %] = class_type '[% class_type_info.$k %]';[% END %]
 
-  has Map => (is => 'ro', isa => '[% map_class %]');
+  has Map => (is => 'ro', isa => [% map_class %]);
 1;
 
 [% INCLUDE 'map_str_to_whatever.tt' %]

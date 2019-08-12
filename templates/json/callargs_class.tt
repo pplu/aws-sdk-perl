@@ -2,7 +2,7 @@
 [%- shape = c.input_for_operation(op_name) %]
 package [% c.api %]::[% operation.name %];
   use Moo;
-[%- attr_str = []; attr_types = []; attr_ind = 0;  class_types = {}; params_hash = {}; -%]
+[%- attr_str = []; attr_types = ['Str']; attr_ind = 0;  class_types = {}; params_hash = {}; -%]
 [% FOREACH param_name IN shape.members.keys.sort;
   member = c.shape(shape.members.$param_name.shape);
   attr_str.$attr_ind = "has $param_name => (is => 'ro', isa => ${member.perl_type}";

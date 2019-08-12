@@ -4,7 +4,7 @@ package [% inner_class %];
 [%- attr_str = []; attr_types = []; attr_ind = 0; class_types = {}; params_hash = {}; -%]
 [% FOREACH param_name IN shape.members.keys.sort;
   member_shape_name = shape.members.$param_name.shape;
-   member = c.shape(member_shape_name);
+  member = c.shape(member_shape_name);
   attr_str.$attr_ind = "has $param_name => (is => 'ro', isa => ${member.perl_type}";
   IF (c.required_in_shape(shape,param_name)); attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1);"; ELSE; attr_str.$attr_ind = attr_str.$attr_ind _ ");"; END;
   CALL attr_types.import(member.base_types.keys);

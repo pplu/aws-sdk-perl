@@ -2,7 +2,7 @@
 package [% inner_class %];
   use Moo;
   with 'Paws::API::StrToObjMapParser';
-  use Types::Standard qw//;
+  use Types::Standard qw/[% base_types.unique.join(' ') %]/;
   use Type::Utils qw/class_type/;
 [%- SET k =  class_type_info.keys.first %]
   my [% k %] = class_type '[% class_type_info.$k %]';

@@ -1,6 +1,6 @@
 package Paws::Net::LWPCaller;
   # This caller uses LWP::UserAgent -- thus HTTPS proxies are supported.
-  use Moose;
+  use Moo;
   with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
   use Paws::Net::APIResponse;
 
