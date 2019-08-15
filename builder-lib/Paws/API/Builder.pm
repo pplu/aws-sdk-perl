@@ -1178,14 +1178,13 @@ package Paws::API::Builder {
         $self->process_template('map_str_to_native.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Num]', base_types => [qw/HashRef Num/] });
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'list') {
           #Sometimes it's a list of objects, and sometimes it's a list of native things
-          my $type = $values_shape->{perl_type};
+        my $type = $values_shape->{perl_type};
         my $inner_shape = $self->shape($values_shape->{member}->{shape});
 
-        print STDERR "Object: $inner_class ", Data::Dumper::Dumper($values_shape);
         if ($inner_shape->{type} eq 'structure'){
           $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $values_shape->{class_type_info}, base_types => [qw/HashRef/, keys(%{$values_shape->{base_types}}) ]});
         } else {
-          if ($type =~ /::/) {
+          if ($type =~ /^\$/ || $type =~ /\[\$\w+\]/) {
             $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $values_shape->{class_type_info}, base_types => [qw/HashRef/, keys(%{$values_shape->{base_types}}) ] });
           } else {
             $self->process_template('map_str_to_native.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $values_shape->{class_type_info}, base_types => [qw/HashRef/, keys(%{$values_shape->{base_types}}) ] });
