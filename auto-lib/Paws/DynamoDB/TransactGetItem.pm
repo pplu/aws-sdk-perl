@@ -1,6 +1,24 @@
 package Paws::DynamoDB::TransactGetItem;
-  use Moose;
-  has Get => (is => 'ro', isa => 'Paws::DynamoDB::Get', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Type::Utils qw/class_type/;
+    my $Get = class_type 'Paws::DynamoDB::Get';
+  
+  has Get => (is => 'ro', isa => $Get, required => 1);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Get' => {
+                                     'class' => 'Paws::DynamoDB::Get',
+                                     'type' => '$Get'
+                                   }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Specifies an item to be retrieved as part of the transaction.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Get => L<Paws::DynamoDB::Get>
+=head2 B<REQUIRED> Get => $Get
 
   Contains the primary key that identifies the item to get, together with
 the name of the table that contains the item, and optionally the

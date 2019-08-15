@@ -1,7 +1,30 @@
 package Paws::DynamoDB::ReplicaUpdate;
-  use Moose;
-  has Create => (is => 'ro', isa => 'Paws::DynamoDB::CreateReplicaAction');
-  has Delete => (is => 'ro', isa => 'Paws::DynamoDB::DeleteReplicaAction');
+  use Moo;
+  use Types::Standard qw//;
+  use Type::Utils qw/class_type/;
+    my $CreateReplicaAction = class_type 'Paws::DynamoDB::CreateReplicaAction';
+    my $DeleteReplicaAction = class_type 'Paws::DynamoDB::DeleteReplicaAction';
+  
+  has Create => (is => 'ro', isa => $CreateReplicaAction);
+  has Delete => (is => 'ro', isa => $DeleteReplicaAction);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Delete' => {
+                                        'class' => 'Paws::DynamoDB::DeleteReplicaAction',
+                                        'type' => '$DeleteReplicaAction'
+                                      },
+                          'Create' => {
+                                        'class' => 'Paws::DynamoDB::CreateReplicaAction',
+                                        'type' => '$CreateReplicaAction'
+                                      }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,13 +77,13 @@ An existing replica to be removed from an existing global table.
 =head1 ATTRIBUTES
 
 
-=head2 Create => L<Paws::DynamoDB::CreateReplicaAction>
+=head2 Create => $CreateReplicaAction
 
   The parameters required for creating a replica on an existing global
 table.
 
 
-=head2 Delete => L<Paws::DynamoDB::DeleteReplicaAction>
+=head2 Delete => $DeleteReplicaAction
 
   The name of the existing replica to be removed.
 

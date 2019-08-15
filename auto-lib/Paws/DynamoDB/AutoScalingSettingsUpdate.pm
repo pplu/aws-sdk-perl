@@ -1,10 +1,40 @@
 package Paws::DynamoDB::AutoScalingSettingsUpdate;
-  use Moose;
-  has AutoScalingDisabled => (is => 'ro', isa => 'Bool');
-  has AutoScalingRoleArn => (is => 'ro', isa => 'Str');
-  has MaximumUnits => (is => 'ro', isa => 'Int');
-  has MinimumUnits => (is => 'ro', isa => 'Int');
-  has ScalingPolicyUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingPolicyUpdate');
+  use Moo;
+  use Types::Standard qw/Bool Str Int/;
+  use Type::Utils qw/class_type/;
+    my $AutoScalingPolicyUpdate = class_type 'Paws::DynamoDB::AutoScalingPolicyUpdate';
+  
+  has AutoScalingDisabled => (is => 'ro', isa => Bool);
+  has AutoScalingRoleArn => (is => 'ro', isa => Str);
+  has MaximumUnits => (is => 'ro', isa => Int);
+  has MinimumUnits => (is => 'ro', isa => Int);
+  has ScalingPolicyUpdate => (is => 'ro', isa => $AutoScalingPolicyUpdate);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ScalingPolicyUpdate' => {
+                                                     'class' => 'Paws::DynamoDB::AutoScalingPolicyUpdate',
+                                                     'type' => '$AutoScalingPolicyUpdate'
+                                                   },
+                          'MaximumUnits' => {
+                                              'type' => 'Int'
+                                            },
+                          'AutoScalingDisabled' => {
+                                                     'type' => 'Bool'
+                                                   },
+                          'MinimumUnits' => {
+                                              'type' => 'Int'
+                                            },
+                          'AutoScalingRoleArn' => {
+                                                    'type' => 'Str'
+                                                  }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +93,7 @@ index should be scaled up to.
 index should be scaled down to.
 
 
-=head2 ScalingPolicyUpdate => L<Paws::DynamoDB::AutoScalingPolicyUpdate>
+=head2 ScalingPolicyUpdate => $AutoScalingPolicyUpdate
 
   The scaling policy to apply for scaling target global table or global
 secondary index capacity units.

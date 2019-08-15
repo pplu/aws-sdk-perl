@@ -1,10 +1,48 @@
 package Paws::DynamoDB::SourceTableFeatureDetails;
-  use Moose;
-  has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexInfo]');
-  has LocalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::LocalSecondaryIndexInfo]');
-  has SSEDescription => (is => 'ro', isa => 'Paws::DynamoDB::SSEDescription');
-  has StreamDescription => (is => 'ro', isa => 'Paws::DynamoDB::StreamSpecification');
-  has TimeToLiveDescription => (is => 'ro', isa => 'Paws::DynamoDB::TimeToLiveDescription');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Type::Utils qw/class_type/;
+    my $GlobalSecondaryIndexInfo = class_type 'Paws::DynamoDB::GlobalSecondaryIndexInfo';
+    my $TimeToLiveDescription = class_type 'Paws::DynamoDB::TimeToLiveDescription';
+    my $LocalSecondaryIndexInfo = class_type 'Paws::DynamoDB::LocalSecondaryIndexInfo';
+    my $StreamSpecification = class_type 'Paws::DynamoDB::StreamSpecification';
+    my $SSEDescription = class_type 'Paws::DynamoDB::SSEDescription';
+  
+  has GlobalSecondaryIndexes => (is => 'ro', isa => ArrayRef[$GlobalSecondaryIndexInfo]);
+  has LocalSecondaryIndexes => (is => 'ro', isa => ArrayRef[$LocalSecondaryIndexInfo]);
+  has SSEDescription => (is => 'ro', isa => $SSEDescription);
+  has StreamDescription => (is => 'ro', isa => $StreamSpecification);
+  has TimeToLiveDescription => (is => 'ro', isa => $TimeToLiveDescription);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'TimeToLiveDescription' => {
+                                                       'class' => 'Paws::DynamoDB::TimeToLiveDescription',
+                                                       'type' => '$TimeToLiveDescription'
+                                                     },
+                          'StreamDescription' => {
+                                                   'class' => 'Paws::DynamoDB::StreamSpecification',
+                                                   'type' => '$StreamSpecification'
+                                                 },
+                          'SSEDescription' => {
+                                                'class' => 'Paws::DynamoDB::SSEDescription',
+                                                'type' => '$SSEDescription'
+                                              },
+                          'GlobalSecondaryIndexes' => {
+                                                        'class' => 'Paws::DynamoDB::GlobalSecondaryIndexInfo',
+                                                        'type' => 'ArrayRef[$GlobalSecondaryIndexInfo]'
+                                                      },
+                          'LocalSecondaryIndexes' => {
+                                                       'class' => 'Paws::DynamoDB::LocalSecondaryIndexInfo',
+                                                       'type' => 'ArrayRef[$LocalSecondaryIndexInfo]'
+                                                     }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -41,32 +79,32 @@ backup was created. For example, LSIs, GSIs, streams, TTL.
 =head1 ATTRIBUTES
 
 
-=head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexInfo>]
+=head2 GlobalSecondaryIndexes => ArrayRef[$GlobalSecondaryIndexInfo]
 
   Represents the GSI properties for the table when the backup was
 created. It includes the IndexName, KeySchema, Projection and
 ProvisionedThroughput for the GSIs on the table at the time of backup.
 
 
-=head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndexInfo>]
+=head2 LocalSecondaryIndexes => ArrayRef[$LocalSecondaryIndexInfo]
 
   Represents the LSI properties for the table when the backup was
 created. It includes the IndexName, KeySchema and Projection for the
 LSIs on the table at the time of backup.
 
 
-=head2 SSEDescription => L<Paws::DynamoDB::SSEDescription>
+=head2 SSEDescription => $SSEDescription
 
   The description of the server-side encryption status on the table when
 the backup was created.
 
 
-=head2 StreamDescription => L<Paws::DynamoDB::StreamSpecification>
+=head2 StreamDescription => $StreamSpecification
 
   Stream settings on the table when the backup was created.
 
 
-=head2 TimeToLiveDescription => L<Paws::DynamoDB::TimeToLiveDescription>
+=head2 TimeToLiveDescription => $TimeToLiveDescription
 
   Time to Live settings on the table when the backup was created.
 

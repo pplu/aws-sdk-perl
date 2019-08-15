@@ -1,8 +1,34 @@
 package Paws::DynamoDB::LocalSecondaryIndexInfo;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str');
-  has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]');
-  has Projection => (is => 'ro', isa => 'Paws::DynamoDB::Projection');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Type::Utils qw/class_type/;
+    my $KeySchemaElement = class_type 'Paws::DynamoDB::KeySchemaElement';
+    my $Projection = class_type 'Paws::DynamoDB::Projection';
+  
+  has IndexName => (is => 'ro', isa => Str);
+  has KeySchema => (is => 'ro', isa => ArrayRef[$KeySchemaElement]);
+  has Projection => (is => 'ro', isa => $Projection);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'IndexName' => {
+                                           'type' => 'Str'
+                                         },
+                          'KeySchema' => {
+                                           'class' => 'Paws::DynamoDB::KeySchemaElement',
+                                           'type' => 'ArrayRef[$KeySchemaElement]'
+                                         },
+                          'Projection' => {
+                                            'class' => 'Paws::DynamoDB::Projection',
+                                            'type' => '$Projection'
+                                          }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +70,7 @@ the backup was created.
   Represents the name of the local secondary index.
 
 
-=head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
+=head2 KeySchema => ArrayRef[$KeySchemaElement]
 
   The complete key schema for a local secondary index, which consists of
 one or more pairs of attribute names and key types:
@@ -72,7 +98,7 @@ the same partition key physically close together, in sorted order by
 the sort key value.
 
 
-=head2 Projection => L<Paws::DynamoDB::Projection>
+=head2 Projection => $Projection
 
   Represents attributes that are copied (projected) from the table into
 the global secondary index. These are in addition to the primary key

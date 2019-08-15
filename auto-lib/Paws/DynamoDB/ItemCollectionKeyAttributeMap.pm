@@ -1,8 +1,24 @@
 package Paws::DynamoDB::ItemCollectionKeyAttributeMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Type::Utils qw/class_type/;
+  my $AttributeValue = class_type 'Paws::DynamoDB::AttributeValue';
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]');
+  has Map => (is => 'ro', isa => HashRef[$AttributeValue]);
+
+  sub params_map {
+    my $params1 = {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[$AttributeValue]',
+                                          class => 'Paws::DynamoDB::AttributeValue',
+                                        },
+                             },
+                  };
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +53,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::DynamoDB::AttributeValue>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

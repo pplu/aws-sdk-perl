@@ -1,14 +1,34 @@
 
 package Paws::DynamoDB::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Type::Utils qw/class_type/;
+    my $Tag = class_type 'Paws::DynamoDB::Tag';
+  
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[$Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ResourceArn' => {
+                                             'type' => 'Str'
+                                           },
+                          'Tags' => {
+                                      'class' => 'Paws::DynamoDB::Tag',
+                                      'type' => 'ArrayRef[$Tag]'
+                                    }
+                        }
+           };
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +74,7 @@ This value is an Amazon Resource Name (ARN).
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::DynamoDB::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[$Tag]
 
 The tags to be assigned to the Amazon DynamoDB resource.
 

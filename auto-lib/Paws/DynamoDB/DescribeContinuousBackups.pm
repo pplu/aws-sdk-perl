@@ -1,13 +1,28 @@
 
 package Paws::DynamoDB::DescribeContinuousBackups;
-  use Moose;
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+  
+  has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeContinuousBackups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::DescribeContinuousBackupsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeContinuousBackups');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::DescribeContinuousBackupsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'TableName' => {
+                                           'type' => 'Str'
+                                         }
+                        }
+           };
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###

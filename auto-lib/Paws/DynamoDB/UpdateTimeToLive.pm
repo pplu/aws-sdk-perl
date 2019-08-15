@@ -1,14 +1,34 @@
 
 package Paws::DynamoDB::UpdateTimeToLive;
-  use Moose;
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
-  has TimeToLiveSpecification => (is => 'ro', isa => 'Paws::DynamoDB::TimeToLiveSpecification', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+    my $TimeToLiveSpecification = class_type 'Paws::DynamoDB::TimeToLiveSpecification';
+  
+  has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TimeToLiveSpecification => (is => 'ro', isa => $TimeToLiveSpecification, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTimeToLive');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::UpdateTimeToLiveOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateTimeToLive');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::UpdateTimeToLiveOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'TimeToLiveSpecification' => {
+                                                         'class' => 'Paws::DynamoDB::TimeToLiveSpecification',
+                                                         'type' => '$TimeToLiveSpecification'
+                                                       },
+                          'TableName' => {
+                                           'type' => 'Str'
+                                         }
+                        }
+           };
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +76,7 @@ The name of the table to be configured.
 
 
 
-=head2 B<REQUIRED> TimeToLiveSpecification => L<Paws::DynamoDB::TimeToLiveSpecification>
+=head2 B<REQUIRED> TimeToLiveSpecification => $TimeToLiveSpecification
 
 Represents the settings used to enable or disable Time to Live for the
 specified table.

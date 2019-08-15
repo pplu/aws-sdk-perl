@@ -1,9 +1,25 @@
 
 package Paws::DynamoDB::DeleteTableOutput;
-  use Moose;
-  has TableDescription => (is => 'ro', isa => 'Paws::DynamoDB::TableDescription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+    my $TableDescription = class_type 'Paws::DynamoDB::TableDescription';
+  
+  has TableDescription => (is => 'ro', isa => $TableDescription);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'TableDescription' => {
+                                                  'class' => 'Paws::DynamoDB::TableDescription',
+                                                  'type' => '$TableDescription'
+                                                }
+                        }
+           };
+
+    return $params1;
+  }
 
 ### main pod documentation begin ###
 
@@ -14,7 +30,7 @@ Paws::DynamoDB::DeleteTableOutput
 =head1 ATTRIBUTES
 
 
-=head2 TableDescription => L<Paws::DynamoDB::TableDescription>
+=head2 TableDescription => $TableDescription
 
 Represents the properties of a table.
 

@@ -1,10 +1,29 @@
 
 package Paws::DynamoDB::UpdateGlobalTableSettingsOutput;
-  use Moose;
-  has GlobalTableName => (is => 'ro', isa => 'Str');
-  has ReplicaSettings => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaSettingsDescription]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Type::Utils qw/class_type/;
+    my $ReplicaSettingsDescription = class_type 'Paws::DynamoDB::ReplicaSettingsDescription';
+  
+  has GlobalTableName => (is => 'ro', isa => Str);
+  has ReplicaSettings => (is => 'ro', isa => ArrayRef[$ReplicaSettingsDescription]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ReplicaSettings' => {
+                                                 'class' => 'Paws::DynamoDB::ReplicaSettingsDescription',
+                                                 'type' => 'ArrayRef[$ReplicaSettingsDescription]'
+                                               },
+                          'GlobalTableName' => {
+                                                 'type' => 'Str'
+                                               }
+                        }
+           };
+
+    return $params1;
+  }
 
 ### main pod documentation begin ###
 
@@ -20,7 +39,7 @@ Paws::DynamoDB::UpdateGlobalTableSettingsOutput
 The name of the global table.
 
 
-=head2 ReplicaSettings => ArrayRef[L<Paws::DynamoDB::ReplicaSettingsDescription>]
+=head2 ReplicaSettings => ArrayRef[$ReplicaSettingsDescription]
 
 The Region-specific settings for the global table.
 

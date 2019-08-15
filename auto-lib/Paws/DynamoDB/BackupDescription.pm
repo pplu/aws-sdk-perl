@@ -1,8 +1,36 @@
 package Paws::DynamoDB::BackupDescription;
-  use Moose;
-  has BackupDetails => (is => 'ro', isa => 'Paws::DynamoDB::BackupDetails');
-  has SourceTableDetails => (is => 'ro', isa => 'Paws::DynamoDB::SourceTableDetails');
-  has SourceTableFeatureDetails => (is => 'ro', isa => 'Paws::DynamoDB::SourceTableFeatureDetails');
+  use Moo;
+  use Types::Standard qw//;
+  use Type::Utils qw/class_type/;
+    my $SourceTableDetails = class_type 'Paws::DynamoDB::SourceTableDetails';
+    my $SourceTableFeatureDetails = class_type 'Paws::DynamoDB::SourceTableFeatureDetails';
+    my $BackupDetails = class_type 'Paws::DynamoDB::BackupDetails';
+  
+  has BackupDetails => (is => 'ro', isa => $BackupDetails);
+  has SourceTableDetails => (is => 'ro', isa => $SourceTableDetails);
+  has SourceTableFeatureDetails => (is => 'ro', isa => $SourceTableFeatureDetails);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'SourceTableDetails' => {
+                                                    'class' => 'Paws::DynamoDB::SourceTableDetails',
+                                                    'type' => '$SourceTableDetails'
+                                                  },
+                          'SourceTableFeatureDetails' => {
+                                                           'class' => 'Paws::DynamoDB::SourceTableFeatureDetails',
+                                                           'type' => '$SourceTableFeatureDetails'
+                                                         },
+                          'BackupDetails' => {
+                                               'class' => 'Paws::DynamoDB::BackupDetails',
+                                               'type' => '$BackupDetails'
+                                             }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +66,17 @@ Contains the description of the backup created for the table.
 =head1 ATTRIBUTES
 
 
-=head2 BackupDetails => L<Paws::DynamoDB::BackupDetails>
+=head2 BackupDetails => $BackupDetails
 
   Contains the details of the backup created for the table.
 
 
-=head2 SourceTableDetails => L<Paws::DynamoDB::SourceTableDetails>
+=head2 SourceTableDetails => $SourceTableDetails
 
   Contains the details of the table when the backup was created.
 
 
-=head2 SourceTableFeatureDetails => L<Paws::DynamoDB::SourceTableFeatureDetails>
+=head2 SourceTableFeatureDetails => $SourceTableFeatureDetails
 
   Contains the details of the features enabled on the table when the
 backup was created. For example, LSIs, GSIs, streams, TTL.

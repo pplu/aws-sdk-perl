@@ -1,7 +1,26 @@
 package Paws::DynamoDB::TimeToLiveSpecification;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Type::Utils qw/class_type/;
+  
+  has AttributeName => (is => 'ro', isa => Str, required => 1);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Enabled' => {
+                                         'type' => 'Bool'
+                                       },
+                          'AttributeName' => {
+                                               'type' => 'Str'
+                                             }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###

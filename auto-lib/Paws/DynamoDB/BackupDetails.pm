@@ -1,12 +1,46 @@
 package Paws::DynamoDB::BackupDetails;
-  use Moose;
-  has BackupArn => (is => 'ro', isa => 'Str', required => 1);
-  has BackupCreationDateTime => (is => 'ro', isa => 'Str', required => 1);
-  has BackupExpiryDateTime => (is => 'ro', isa => 'Str');
-  has BackupName => (is => 'ro', isa => 'Str', required => 1);
-  has BackupSizeBytes => (is => 'ro', isa => 'Int');
-  has BackupStatus => (is => 'ro', isa => 'Str', required => 1);
-  has BackupType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Type::Utils qw/class_type/;
+  
+  has BackupArn => (is => 'ro', isa => Str, required => 1);
+  has BackupCreationDateTime => (is => 'ro', isa => Str, required => 1);
+  has BackupExpiryDateTime => (is => 'ro', isa => Str);
+  has BackupName => (is => 'ro', isa => Str, required => 1);
+  has BackupSizeBytes => (is => 'ro', isa => Int);
+  has BackupStatus => (is => 'ro', isa => Str, required => 1);
+  has BackupType => (is => 'ro', isa => Str, required => 1);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'BackupType' => {
+                                            'type' => 'Str'
+                                          },
+                          'BackupName' => {
+                                            'type' => 'Str'
+                                          },
+                          'BackupExpiryDateTime' => {
+                                                      'type' => 'Str'
+                                                    },
+                          'BackupArn' => {
+                                           'type' => 'Str'
+                                         },
+                          'BackupCreationDateTime' => {
+                                                        'type' => 'Str'
+                                                      },
+                          'BackupSizeBytes' => {
+                                                 'type' => 'Int'
+                                               },
+                          'BackupStatus' => {
+                                              'type' => 'Str'
+                                            }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###

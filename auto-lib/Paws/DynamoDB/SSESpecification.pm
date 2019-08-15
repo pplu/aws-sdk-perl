@@ -1,8 +1,30 @@
 package Paws::DynamoDB::SSESpecification;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has KMSMasterKeyId => (is => 'ro', isa => 'Str');
-  has SSEType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Type::Utils qw/class_type/;
+  
+  has Enabled => (is => 'ro', isa => Bool);
+  has KMSMasterKeyId => (is => 'ro', isa => Str);
+  has SSEType => (is => 'ro', isa => Str);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Enabled' => {
+                                         'type' => 'Bool'
+                                       },
+                          'SSEType' => {
+                                         'type' => 'Str'
+                                       },
+                          'KMSMasterKeyId' => {
+                                                'type' => 'Str'
+                                              }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###

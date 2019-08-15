@@ -1,10 +1,40 @@
 package Paws::DynamoDB::GlobalTableDescription;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str');
-  has GlobalTableArn => (is => 'ro', isa => 'Str');
-  has GlobalTableName => (is => 'ro', isa => 'Str');
-  has GlobalTableStatus => (is => 'ro', isa => 'Str');
-  has ReplicationGroup => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaDescription]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Type::Utils qw/class_type/;
+    my $ReplicaDescription = class_type 'Paws::DynamoDB::ReplicaDescription';
+  
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has GlobalTableArn => (is => 'ro', isa => Str);
+  has GlobalTableName => (is => 'ro', isa => Str);
+  has GlobalTableStatus => (is => 'ro', isa => Str);
+  has ReplicationGroup => (is => 'ro', isa => ArrayRef[$ReplicaDescription]);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ReplicationGroup' => {
+                                                  'class' => 'Paws::DynamoDB::ReplicaDescription',
+                                                  'type' => 'ArrayRef[$ReplicaDescription]'
+                                                },
+                          'GlobalTableStatus' => {
+                                                   'type' => 'Str'
+                                                 },
+                          'GlobalTableArn' => {
+                                                'type' => 'Str'
+                                              },
+                          'CreationDateTime' => {
+                                                  'type' => 'Str'
+                                                },
+                          'GlobalTableName' => {
+                                                 'type' => 'Str'
+                                               }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -81,7 +111,7 @@ C<ACTIVE> - The global table is ready for use.
 
 
 
-=head2 ReplicationGroup => ArrayRef[L<Paws::DynamoDB::ReplicaDescription>]
+=head2 ReplicationGroup => ArrayRef[$ReplicaDescription]
 
   The regions where the global table has replicas.
 

@@ -1,9 +1,25 @@
 
 package Paws::DynamoDB::DescribeTimeToLiveOutput;
-  use Moose;
-  has TimeToLiveDescription => (is => 'ro', isa => 'Paws::DynamoDB::TimeToLiveDescription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+    my $TimeToLiveDescription = class_type 'Paws::DynamoDB::TimeToLiveDescription';
+  
+  has TimeToLiveDescription => (is => 'ro', isa => $TimeToLiveDescription);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'TimeToLiveDescription' => {
+                                                       'class' => 'Paws::DynamoDB::TimeToLiveDescription',
+                                                       'type' => '$TimeToLiveDescription'
+                                                     }
+                        }
+           };
+
+    return $params1;
+  }
 
 ### main pod documentation begin ###
 
@@ -14,7 +30,7 @@ Paws::DynamoDB::DescribeTimeToLiveOutput
 =head1 ATTRIBUTES
 
 
-=head2 TimeToLiveDescription => L<Paws::DynamoDB::TimeToLiveDescription>
+=head2 TimeToLiveDescription => $TimeToLiveDescription
 
 
 

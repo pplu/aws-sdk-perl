@@ -1,10 +1,40 @@
 package Paws::DynamoDB::AutoScalingSettingsDescription;
-  use Moose;
-  has AutoScalingDisabled => (is => 'ro', isa => 'Bool');
-  has AutoScalingRoleArn => (is => 'ro', isa => 'Str');
-  has MaximumUnits => (is => 'ro', isa => 'Int');
-  has MinimumUnits => (is => 'ro', isa => 'Int');
-  has ScalingPolicies => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AutoScalingPolicyDescription]');
+  use Moo;
+  use Types::Standard qw/Bool Str Int ArrayRef/;
+  use Type::Utils qw/class_type/;
+    my $AutoScalingPolicyDescription = class_type 'Paws::DynamoDB::AutoScalingPolicyDescription';
+  
+  has AutoScalingDisabled => (is => 'ro', isa => Bool);
+  has AutoScalingRoleArn => (is => 'ro', isa => Str);
+  has MaximumUnits => (is => 'ro', isa => Int);
+  has MinimumUnits => (is => 'ro', isa => Int);
+  has ScalingPolicies => (is => 'ro', isa => ArrayRef[$AutoScalingPolicyDescription]);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'MaximumUnits' => {
+                                              'type' => 'Int'
+                                            },
+                          'AutoScalingDisabled' => {
+                                                     'type' => 'Bool'
+                                                   },
+                          'MinimumUnits' => {
+                                              'type' => 'Int'
+                                            },
+                          'AutoScalingRoleArn' => {
+                                                    'type' => 'Str'
+                                                  },
+                          'ScalingPolicies' => {
+                                                 'class' => 'Paws::DynamoDB::AutoScalingPolicyDescription',
+                                                 'type' => 'ArrayRef[$AutoScalingPolicyDescription]'
+                                               }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +93,7 @@ index should be scaled up to.
 index should be scaled down to.
 
 
-=head2 ScalingPolicies => ArrayRef[L<Paws::DynamoDB::AutoScalingPolicyDescription>]
+=head2 ScalingPolicies => ArrayRef[$AutoScalingPolicyDescription]
 
   Information about the scaling policies.
 

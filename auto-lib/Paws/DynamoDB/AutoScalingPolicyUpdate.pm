@@ -1,7 +1,28 @@
 package Paws::DynamoDB::AutoScalingPolicyUpdate;
-  use Moose;
-  has PolicyName => (is => 'ro', isa => 'Str');
-  has TargetTrackingScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingTargetTrackingScalingPolicyConfigurationUpdate', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+    my $AutoScalingTargetTrackingScalingPolicyConfigurationUpdate = class_type 'Paws::DynamoDB::AutoScalingTargetTrackingScalingPolicyConfigurationUpdate';
+  
+  has PolicyName => (is => 'ro', isa => Str);
+  has TargetTrackingScalingPolicyConfiguration => (is => 'ro', isa => $AutoScalingTargetTrackingScalingPolicyConfigurationUpdate, required => 1);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'TargetTrackingScalingPolicyConfiguration' => {
+                                                                          'class' => 'Paws::DynamoDB::AutoScalingTargetTrackingScalingPolicyConfigurationUpdate',
+                                                                          'type' => '$AutoScalingTargetTrackingScalingPolicyConfigurationUpdate'
+                                                                        },
+                          'PolicyName' => {
+                                            'type' => 'Str'
+                                          }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Represents the autoscaling policy to be modified.
   The name of the scaling policy.
 
 
-=head2 B<REQUIRED> TargetTrackingScalingPolicyConfiguration => L<Paws::DynamoDB::AutoScalingTargetTrackingScalingPolicyConfigurationUpdate>
+=head2 B<REQUIRED> TargetTrackingScalingPolicyConfiguration => $AutoScalingTargetTrackingScalingPolicyConfigurationUpdate
 
   Represents a target tracking scaling policy configuration.
 

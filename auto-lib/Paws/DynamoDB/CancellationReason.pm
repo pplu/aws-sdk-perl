@@ -1,8 +1,32 @@
 package Paws::DynamoDB::CancellationReason;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str');
-  has Item => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
-  has Message => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+    my $AttributeMap = class_type 'Paws::DynamoDB::AttributeMap';
+  
+  has Code => (is => 'ro', isa => Str);
+  has Item => (is => 'ro', isa => $AttributeMap);
+  has Message => (is => 'ro', isa => Str);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Code' => {
+                                      'type' => 'Str'
+                                    },
+                          'Item' => {
+                                      'class' => 'Paws::DynamoDB::AttributeMap',
+                                      'type' => '$AttributeMap'
+                                    },
+                          'Message' => {
+                                         'type' => 'Str'
+                                       }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +71,7 @@ Null code and Null message will be present.
   Status code for the result of the cancelled transaction.
 
 
-=head2 Item => L<Paws::DynamoDB::AttributeMap>
+=head2 Item => $AttributeMap
 
   Item in the request which caused the transaction to get cancelled.
 

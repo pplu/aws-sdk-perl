@@ -1,16 +1,42 @@
 
 package Paws::DynamoDB::TransactWriteItems;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
-  has ReturnItemCollectionMetrics => (is => 'ro', isa => 'Str');
-  has TransactItems => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::TransactWriteItem]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Type::Utils qw/class_type/;
+    my $TransactWriteItem = class_type 'Paws::DynamoDB::TransactWriteItem';
+  
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
+  has ReturnItemCollectionMetrics => (is => 'ro', isa => Str, predicate => 1);
+  has TransactItems => (is => 'ro', isa => ArrayRef[$TransactWriteItem], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TransactWriteItems');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::TransactWriteItemsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TransactWriteItems');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::TransactWriteItemsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ClientRequestToken' => {
+                                                    'type' => 'Str'
+                                                  },
+                          'TransactItems' => {
+                                               'class' => 'Paws::DynamoDB::TransactWriteItem',
+                                               'type' => 'ArrayRef[$TransactWriteItem]'
+                                             },
+                          'ReturnConsumedCapacity' => {
+                                                        'type' => 'Str'
+                                                      },
+                          'ReturnItemCollectionMetrics' => {
+                                                             'type' => 'Str'
+                                                           }
+                        }
+           };
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###
@@ -297,7 +323,7 @@ response. If set to C<NONE> (the default), no statistics are returned.
 
 Valid values are: C<"SIZE">, C<"NONE">
 
-=head2 B<REQUIRED> TransactItems => ArrayRef[L<Paws::DynamoDB::TransactWriteItem>]
+=head2 B<REQUIRED> TransactItems => ArrayRef[$TransactWriteItem]
 
 An ordered array of up to 25 C<TransactWriteItem> objects, each of
 which contains a C<ConditionCheck>, C<Put>, C<Update>, or C<Delete>

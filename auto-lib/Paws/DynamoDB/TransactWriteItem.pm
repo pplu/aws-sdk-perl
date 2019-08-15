@@ -1,9 +1,42 @@
 package Paws::DynamoDB::TransactWriteItem;
-  use Moose;
-  has ConditionCheck => (is => 'ro', isa => 'Paws::DynamoDB::ConditionCheck');
-  has Delete => (is => 'ro', isa => 'Paws::DynamoDB::Delete');
-  has Put => (is => 'ro', isa => 'Paws::DynamoDB::Put');
-  has Update => (is => 'ro', isa => 'Paws::DynamoDB::Update');
+  use Moo;
+  use Types::Standard qw//;
+  use Type::Utils qw/class_type/;
+    my $ConditionCheck = class_type 'Paws::DynamoDB::ConditionCheck';
+    my $Update = class_type 'Paws::DynamoDB::Update';
+    my $Put = class_type 'Paws::DynamoDB::Put';
+    my $Delete = class_type 'Paws::DynamoDB::Delete';
+  
+  has ConditionCheck => (is => 'ro', isa => $ConditionCheck);
+  has Delete => (is => 'ro', isa => $Delete);
+  has Put => (is => 'ro', isa => $Put);
+  has Update => (is => 'ro', isa => $Update);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Delete' => {
+                                        'class' => 'Paws::DynamoDB::Delete',
+                                        'type' => '$Delete'
+                                      },
+                          'Update' => {
+                                        'class' => 'Paws::DynamoDB::Update',
+                                        'type' => '$Update'
+                                      },
+                          'ConditionCheck' => {
+                                                'class' => 'Paws::DynamoDB::ConditionCheck',
+                                                'type' => '$ConditionCheck'
+                                              },
+                          'Put' => {
+                                     'class' => 'Paws::DynamoDB::Put',
+                                     'type' => '$Put'
+                                   }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -40,22 +73,22 @@ operations on multiple items in one or more tables atomically.
 =head1 ATTRIBUTES
 
 
-=head2 ConditionCheck => L<Paws::DynamoDB::ConditionCheck>
+=head2 ConditionCheck => $ConditionCheck
 
   A request to perform a check item operation.
 
 
-=head2 Delete => L<Paws::DynamoDB::Delete>
+=head2 Delete => $Delete
 
   A request to perform a C<DeleteItem> operation.
 
 
-=head2 Put => L<Paws::DynamoDB::Put>
+=head2 Put => $Put
 
   A request to perform a C<PutItem> operation.
 
 
-=head2 Update => L<Paws::DynamoDB::Update>
+=head2 Update => $Update
 
   A request to perform an C<UpdateItem> operation.
 

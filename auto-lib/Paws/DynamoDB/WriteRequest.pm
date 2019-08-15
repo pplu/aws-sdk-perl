@@ -1,7 +1,30 @@
 package Paws::DynamoDB::WriteRequest;
-  use Moose;
-  has DeleteRequest => (is => 'ro', isa => 'Paws::DynamoDB::DeleteRequest');
-  has PutRequest => (is => 'ro', isa => 'Paws::DynamoDB::PutRequest');
+  use Moo;
+  use Types::Standard qw//;
+  use Type::Utils qw/class_type/;
+    my $DeleteRequest = class_type 'Paws::DynamoDB::DeleteRequest';
+    my $PutRequest = class_type 'Paws::DynamoDB::PutRequest';
+  
+  has DeleteRequest => (is => 'ro', isa => $DeleteRequest);
+  has PutRequest => (is => 'ro', isa => $PutRequest);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'PutRequest' => {
+                                            'class' => 'Paws::DynamoDB::PutRequest',
+                                            'type' => '$PutRequest'
+                                          },
+                          'DeleteRequest' => {
+                                               'class' => 'Paws::DynamoDB::DeleteRequest',
+                                               'type' => '$DeleteRequest'
+                                             }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -41,12 +64,12 @@ objects.
 =head1 ATTRIBUTES
 
 
-=head2 DeleteRequest => L<Paws::DynamoDB::DeleteRequest>
+=head2 DeleteRequest => $DeleteRequest
 
   A request to perform a C<DeleteItem> operation.
 
 
-=head2 PutRequest => L<Paws::DynamoDB::PutRequest>
+=head2 PutRequest => $PutRequest
 
   A request to perform a C<PutItem> operation.
 

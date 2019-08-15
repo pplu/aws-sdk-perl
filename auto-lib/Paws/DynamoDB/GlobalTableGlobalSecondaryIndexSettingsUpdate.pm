@@ -1,8 +1,32 @@
 package Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => 'Paws::DynamoDB::AutoScalingSettingsUpdate');
-  has ProvisionedWriteCapacityUnits => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Type::Utils qw/class_type/;
+    my $AutoScalingSettingsUpdate = class_type 'Paws::DynamoDB::AutoScalingSettingsUpdate';
+  
+  has IndexName => (is => 'ro', isa => Str, required => 1);
+  has ProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => $AutoScalingSettingsUpdate);
+  has ProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'IndexName' => {
+                                           'type' => 'Str'
+                                         },
+                          'ProvisionedWriteCapacityUnits' => {
+                                                               'type' => 'Int'
+                                                             },
+                          'ProvisionedWriteCapacityAutoScalingSettingsUpdate' => {
+                                                                                   'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
+                                                                                   'type' => '$AutoScalingSettingsUpdate'
+                                                                                 }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +69,7 @@ that will be modified.
 all other indexes on this table.
 
 
-=head2 ProvisionedWriteCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
+=head2 ProvisionedWriteCapacityAutoScalingSettingsUpdate => $AutoScalingSettingsUpdate
 
   AutoScaling settings for managing a global secondary index's write
 capacity units.

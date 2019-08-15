@@ -1,12 +1,21 @@
 
 package Paws::DynamoDB::DescribeLimits;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+  
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLimits');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::DescribeLimitsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeLimits');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::DescribeLimitsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {};
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###

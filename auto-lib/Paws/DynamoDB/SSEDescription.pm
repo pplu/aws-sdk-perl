@@ -1,8 +1,30 @@
 package Paws::DynamoDB::SSEDescription;
-  use Moose;
-  has KMSMasterKeyArn => (is => 'ro', isa => 'Str');
-  has SSEType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+  
+  has KMSMasterKeyArn => (is => 'ro', isa => Str);
+  has SSEType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Status' => {
+                                        'type' => 'Str'
+                                      },
+                          'SSEType' => {
+                                         'type' => 'Str'
+                                       },
+                          'KMSMasterKeyArn' => {
+                                                 'type' => 'Str'
+                                               }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###

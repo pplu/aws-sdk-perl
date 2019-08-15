@@ -1,10 +1,31 @@
 
 package Paws::DynamoDB::GetItemOutput;
-  use Moose;
-  has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
-  has Item => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+    my $AttributeMap = class_type 'Paws::DynamoDB::AttributeMap';
+    my $ConsumedCapacity = class_type 'Paws::DynamoDB::ConsumedCapacity';
+  
+  has ConsumedCapacity => (is => 'ro', isa => $ConsumedCapacity);
+  has Item => (is => 'ro', isa => $AttributeMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Item' => {
+                                      'class' => 'Paws::DynamoDB::AttributeMap',
+                                      'type' => '$AttributeMap'
+                                    },
+                          'ConsumedCapacity' => {
+                                                  'class' => 'Paws::DynamoDB::ConsumedCapacity',
+                                                  'type' => '$ConsumedCapacity'
+                                                }
+                        }
+           };
+
+    return $params1;
+  }
 
 ### main pod documentation begin ###
 
@@ -15,7 +36,7 @@ Paws::DynamoDB::GetItemOutput
 =head1 ATTRIBUTES
 
 
-=head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
+=head2 ConsumedCapacity => $ConsumedCapacity
 
 The capacity units consumed by the C<GetItem> operation. The data
 returned includes the total provisioned throughput consumed, along with
@@ -27,7 +48,7 @@ Mode
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 Item => L<Paws::DynamoDB::AttributeMap>
+=head2 Item => $AttributeMap
 
 A map of attribute names to C<AttributeValue> objects, as specified by
 C<ProjectionExpression>.

@@ -1,7 +1,28 @@
 package Paws::DynamoDB::GlobalTable;
-  use Moose;
-  has GlobalTableName => (is => 'ro', isa => 'Str');
-  has ReplicationGroup => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::Replica]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Type::Utils qw/class_type/;
+    my $Replica = class_type 'Paws::DynamoDB::Replica';
+  
+  has GlobalTableName => (is => 'ro', isa => Str);
+  has ReplicationGroup => (is => 'ro', isa => ArrayRef[$Replica]);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ReplicationGroup' => {
+                                                  'class' => 'Paws::DynamoDB::Replica',
+                                                  'type' => 'ArrayRef[$Replica]'
+                                                },
+                          'GlobalTableName' => {
+                                                 'type' => 'Str'
+                                               }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Represents the properties of a global table.
   The global table name.
 
 
-=head2 ReplicationGroup => ArrayRef[L<Paws::DynamoDB::Replica>]
+=head2 ReplicationGroup => ArrayRef[$Replica]
 
   The regions where the global table has replicas.
 

@@ -1,7 +1,26 @@
 package Paws::DynamoDB::Endpoint;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str', required => 1);
-  has CachePeriodInMinutes => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Type::Utils qw/class_type/;
+  
+  has Address => (is => 'ro', isa => Str, required => 1);
+  has CachePeriodInMinutes => (is => 'ro', isa => Int, required => 1);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'CachePeriodInMinutes' => {
+                                                      'type' => 'Int'
+                                                    },
+                          'Address' => {
+                                         'type' => 'Str'
+                                       }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###

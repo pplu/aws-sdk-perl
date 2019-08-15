@@ -1,18 +1,48 @@
 
 package Paws::DynamoDB::ListBackups;
-  use Moose;
-  has BackupType => (is => 'ro', isa => 'Str');
-  has ExclusiveStartBackupArn => (is => 'ro', isa => 'Str');
-  has Limit => (is => 'ro', isa => 'Int');
-  has TableName => (is => 'ro', isa => 'Str');
-  has TimeRangeLowerBound => (is => 'ro', isa => 'Str');
-  has TimeRangeUpperBound => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Type::Utils qw/class_type/;
+  
+  has BackupType => (is => 'ro', isa => Str, predicate => 1);
+  has ExclusiveStartBackupArn => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has TableName => (is => 'ro', isa => Str, predicate => 1);
+  has TimeRangeLowerBound => (is => 'ro', isa => Str, predicate => 1);
+  has TimeRangeUpperBound => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListBackups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::ListBackupsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListBackups');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::ListBackupsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'BackupType' => {
+                                            'type' => 'Str'
+                                          },
+                          'TimeRangeLowerBound' => {
+                                                     'type' => 'Str'
+                                                   },
+                          'TableName' => {
+                                           'type' => 'Str'
+                                         },
+                          'Limit' => {
+                                       'type' => 'Int'
+                                     },
+                          'TimeRangeUpperBound' => {
+                                                     'type' => 'Str'
+                                                   },
+                          'ExclusiveStartBackupArn' => {
+                                                         'type' => 'Str'
+                                                       }
+                        }
+           };
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###

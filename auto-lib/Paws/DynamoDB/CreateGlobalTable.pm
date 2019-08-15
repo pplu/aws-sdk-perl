@@ -1,14 +1,34 @@
 
 package Paws::DynamoDB::CreateGlobalTable;
-  use Moose;
-  has GlobalTableName => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationGroup => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::Replica]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Type::Utils qw/class_type/;
+    my $Replica = class_type 'Paws::DynamoDB::Replica';
+  
+  has GlobalTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationGroup => (is => 'ro', isa => ArrayRef[$Replica], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGlobalTable');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::CreateGlobalTableOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateGlobalTable');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::CreateGlobalTableOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ReplicationGroup' => {
+                                                  'class' => 'Paws::DynamoDB::Replica',
+                                                  'type' => 'ArrayRef[$Replica]'
+                                                },
+                          'GlobalTableName' => {
+                                                 'type' => 'Str'
+                                               }
+                        }
+           };
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +77,7 @@ The global table name.
 
 
 
-=head2 B<REQUIRED> ReplicationGroup => ArrayRef[L<Paws::DynamoDB::Replica>]
+=head2 B<REQUIRED> ReplicationGroup => ArrayRef[$Replica]
 
 The Regions where the global table needs to be created.
 

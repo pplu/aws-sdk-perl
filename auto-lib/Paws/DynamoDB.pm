@@ -1,15 +1,16 @@
 package Paws::DynamoDB;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'dynamodb' }
   sub signing_name { 'dynamodb' }
   sub version { '2012-08-10' }
   sub target_prefix { 'DynamoDB_20120810' }
   sub json_version { "1.0" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 10);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 10);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => '0.05', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
        sub { $_[0]->code eq 'Crc32Error' },
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'TransactionInProgressException' },
   ] });
@@ -410,7 +411,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 =over
 
-=item RequestItems => L<Paws::DynamoDB::BatchGetRequestMap>
+=item RequestItems => $BatchGetRequestMap
 
 =item [ReturnConsumedCapacity => Str]
 
@@ -488,7 +489,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =over
 
-=item RequestItems => L<Paws::DynamoDB::BatchWriteItemRequestMap>
+=item RequestItems => $BatchWriteItemRequestMap
 
 =item [ReturnConsumedCapacity => Str]
 
@@ -669,7 +670,7 @@ Provisioned read and write capacity
 
 =item GlobalTableName => Str
 
-=item ReplicationGroup => ArrayRef[L<Paws::DynamoDB::Replica>]
+=item ReplicationGroup => ArrayRef[$Replica]
 
 
 =back
@@ -737,25 +738,25 @@ matching secondary indexes across your global table.
 
 =over
 
-=item AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
+=item AttributeDefinitions => ArrayRef[$AttributeDefinition]
 
-=item KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
+=item KeySchema => ArrayRef[$KeySchemaElement]
 
 =item TableName => Str
 
 =item [BillingMode => Str]
 
-=item [GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]]
+=item [GlobalSecondaryIndexes => ArrayRef[$GlobalSecondaryIndex]]
 
-=item [LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]]
+=item [LocalSecondaryIndexes => ArrayRef[$LocalSecondaryIndex]]
 
-=item [ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>]
+=item [ProvisionedThroughput => $ProvisionedThroughput]
 
-=item [SSESpecification => L<Paws::DynamoDB::SSESpecification>]
+=item [SSESpecification => $SSESpecification]
 
-=item [StreamSpecification => L<Paws::DynamoDB::StreamSpecification>]
+=item [StreamSpecification => $StreamSpecification]
 
-=item [Tags => ArrayRef[L<Paws::DynamoDB::Tag>]]
+=item [Tags => ArrayRef[$Tag]]
 
 
 =back
@@ -806,7 +807,7 @@ You can call C<DeleteBackup> at a maximum rate of 10 times per second.
 
 =over
 
-=item Key => L<Paws::DynamoDB::Key>
+=item Key => $Key
 
 =item TableName => Str
 
@@ -814,11 +815,11 @@ You can call C<DeleteBackup> at a maximum rate of 10 times per second.
 
 =item [ConditionExpression => Str]
 
-=item [Expected => L<Paws::DynamoDB::ExpectedAttributeMap>]
+=item [Expected => $ExpectedAttributeMap]
 
-=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+=item [ExpressionAttributeNames => $ExpressionAttributeNameMap]
 
-=item [ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>]
+=item [ExpressionAttributeValues => $ExpressionAttributeValueMap]
 
 =item [ReturnConsumedCapacity => Str]
 
@@ -1125,7 +1126,7 @@ table.
 
 =over
 
-=item Key => L<Paws::DynamoDB::Key>
+=item Key => $Key
 
 =item TableName => Str
 
@@ -1133,7 +1134,7 @@ table.
 
 =item [ConsistentRead => Bool]
 
-=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+=item [ExpressionAttributeNames => $ExpressionAttributeNameMap]
 
 =item [ProjectionExpression => Str]
 
@@ -1261,7 +1262,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =over
 
-=item Item => L<Paws::DynamoDB::PutItemInputAttributeMap>
+=item Item => $PutItemInputAttributeMap
 
 =item TableName => Str
 
@@ -1269,11 +1270,11 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =item [ConditionExpression => Str]
 
-=item [Expected => L<Paws::DynamoDB::ExpectedAttributeMap>]
+=item [Expected => $ExpectedAttributeMap]
 
-=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+=item [ExpressionAttributeNames => $ExpressionAttributeNameMap]
 
-=item [ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>]
+=item [ExpressionAttributeValues => $ExpressionAttributeValueMap]
 
 =item [ReturnConsumedCapacity => Str]
 
@@ -1380,11 +1381,11 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =item [ConsistentRead => Bool]
 
-=item [ExclusiveStartKey => L<Paws::DynamoDB::Key>]
+=item [ExclusiveStartKey => $Key]
 
-=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+=item [ExpressionAttributeNames => $ExpressionAttributeNameMap]
 
-=item [ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>]
+=item [ExpressionAttributeValues => $ExpressionAttributeValueMap]
 
 =item [FilterExpression => Str]
 
@@ -1392,13 +1393,13 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =item [KeyConditionExpression => Str]
 
-=item [KeyConditions => L<Paws::DynamoDB::KeyConditions>]
+=item [KeyConditions => $KeyConditions]
 
 =item [Limit => Int]
 
 =item [ProjectionExpression => Str]
 
-=item [QueryFilter => L<Paws::DynamoDB::FilterConditionMap>]
+=item [QueryFilter => $FilterConditionMap]
 
 =item [ReturnConsumedCapacity => Str]
 
@@ -1628,11 +1629,11 @@ Point in time recovery settings
 
 =item [ConsistentRead => Bool]
 
-=item [ExclusiveStartKey => L<Paws::DynamoDB::Key>]
+=item [ExclusiveStartKey => $Key]
 
-=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+=item [ExpressionAttributeNames => $ExpressionAttributeNameMap]
 
-=item [ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>]
+=item [ExpressionAttributeValues => $ExpressionAttributeValueMap]
 
 =item [FilterExpression => Str]
 
@@ -1644,7 +1645,7 @@ Point in time recovery settings
 
 =item [ReturnConsumedCapacity => Str]
 
-=item [ScanFilter => L<Paws::DynamoDB::FilterConditionMap>]
+=item [ScanFilter => $FilterConditionMap]
 
 =item [Segment => Int]
 
@@ -1697,7 +1698,7 @@ you can set the C<ConsistentRead> parameter to C<true>.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::DynamoDB::Tag>]
+=item Tags => ArrayRef[$Tag]
 
 
 =back
@@ -1720,7 +1721,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =over
 
-=item TransactItems => ArrayRef[L<Paws::DynamoDB::TransactGetItem>]
+=item TransactItems => ArrayRef[$TransactGetItem]
 
 =item [ReturnConsumedCapacity => Str]
 
@@ -1789,7 +1790,7 @@ The aggregate size of the items in the transaction cannot exceed 4 MB.
 
 =over
 
-=item TransactItems => ArrayRef[L<Paws::DynamoDB::TransactWriteItem>]
+=item TransactItems => ArrayRef[$TransactWriteItem]
 
 =item [ClientRequestToken => Str]
 
@@ -1937,7 +1938,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =over
 
-=item PointInTimeRecoverySpecification => L<Paws::DynamoDB::PointInTimeRecoverySpecification>
+=item PointInTimeRecoverySpecification => $PointInTimeRecoverySpecification
 
 =item TableName => Str
 
@@ -1970,7 +1971,7 @@ time. You can restore your table to any point in time during the last
 
 =item GlobalTableName => Str
 
-=item ReplicaUpdates => ArrayRef[L<Paws::DynamoDB::ReplicaUpdate>]
+=item ReplicaUpdates => ArrayRef[$ReplicaUpdate]
 
 
 =back
@@ -2020,13 +2021,13 @@ write capacity units.
 
 =item [GlobalTableBillingMode => Str]
 
-=item [GlobalTableGlobalSecondaryIndexSettingsUpdate => ArrayRef[L<Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate>]]
+=item [GlobalTableGlobalSecondaryIndexSettingsUpdate => ArrayRef[$GlobalTableGlobalSecondaryIndexSettingsUpdate]]
 
-=item [GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>]
+=item [GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => $AutoScalingSettingsUpdate]
 
 =item [GlobalTableProvisionedWriteCapacityUnits => Int]
 
-=item [ReplicaSettingsUpdate => ArrayRef[L<Paws::DynamoDB::ReplicaSettingsUpdate>]]
+=item [ReplicaSettingsUpdate => ArrayRef[$ReplicaSettingsUpdate]]
 
 
 =back
@@ -2042,21 +2043,21 @@ Updates settings for a global table.
 
 =over
 
-=item Key => L<Paws::DynamoDB::Key>
+=item Key => $Key
 
 =item TableName => Str
 
-=item [AttributeUpdates => L<Paws::DynamoDB::AttributeUpdates>]
+=item [AttributeUpdates => $AttributeUpdates]
 
 =item [ConditionalOperator => Str]
 
 =item [ConditionExpression => Str]
 
-=item [Expected => L<Paws::DynamoDB::ExpectedAttributeMap>]
+=item [Expected => $ExpectedAttributeMap]
 
-=item [ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>]
+=item [ExpressionAttributeNames => $ExpressionAttributeNameMap]
 
-=item [ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>]
+=item [ExpressionAttributeValues => $ExpressionAttributeValueMap]
 
 =item [ReturnConsumedCapacity => Str]
 
@@ -2090,17 +2091,17 @@ C<UpdateItem> operation using the C<ReturnValues> parameter.
 
 =item TableName => Str
 
-=item [AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]]
+=item [AttributeDefinitions => ArrayRef[$AttributeDefinition]]
 
 =item [BillingMode => Str]
 
-=item [GlobalSecondaryIndexUpdates => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexUpdate>]]
+=item [GlobalSecondaryIndexUpdates => ArrayRef[$GlobalSecondaryIndexUpdate]]
 
-=item [ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>]
+=item [ProvisionedThroughput => $ProvisionedThroughput]
 
-=item [SSESpecification => L<Paws::DynamoDB::SSESpecification>]
+=item [SSESpecification => $SSESpecification]
 
-=item [StreamSpecification => L<Paws::DynamoDB::StreamSpecification>]
+=item [StreamSpecification => $StreamSpecification]
 
 
 =back
@@ -2149,7 +2150,7 @@ complete.
 
 =item TableName => Str
 
-=item TimeToLiveSpecification => L<Paws::DynamoDB::TimeToLiveSpecification>
+=item TimeToLiveSpecification => $TimeToLiveSpecification
 
 
 =back
@@ -2232,9 +2233,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DynamoDB::ListTagsOfResourceOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 QueryAll(sub { },TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => L<Paws::DynamoDB::KeyConditions>, Limit => Int, ProjectionExpression => Str, QueryFilter => L<Paws::DynamoDB::FilterConditionMap>, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])
+=head2 QueryAll(sub { },TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => $Key, ExpressionAttributeNames => $ExpressionAttributeNameMap, ExpressionAttributeValues => $ExpressionAttributeValueMap, FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => $KeyConditions, Limit => Int, ProjectionExpression => Str, QueryFilter => $FilterConditionMap, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])
 
-=head2 QueryAll(TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => L<Paws::DynamoDB::KeyConditions>, Limit => Int, ProjectionExpression => Str, QueryFilter => L<Paws::DynamoDB::FilterConditionMap>, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])
+=head2 QueryAll(TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => $Key, ExpressionAttributeNames => $ExpressionAttributeNameMap, ExpressionAttributeValues => $ExpressionAttributeValueMap, FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => $KeyConditions, Limit => Int, ProjectionExpression => Str, QueryFilter => $FilterConditionMap, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2248,9 +2249,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::DynamoDB::QueryOutput> instance with all the C<param>s; andC<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ScanAll(sub { },TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, Limit => Int, ProjectionExpression => Str, ReturnConsumedCapacity => Str, ScanFilter => L<Paws::DynamoDB::FilterConditionMap>, Segment => Int, Select => Str, TotalSegments => Int])
+=head2 ScanAll(sub { },TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => $Key, ExpressionAttributeNames => $ExpressionAttributeNameMap, ExpressionAttributeValues => $ExpressionAttributeValueMap, FilterExpression => Str, IndexName => Str, Limit => Int, ProjectionExpression => Str, ReturnConsumedCapacity => Str, ScanFilter => $FilterConditionMap, Segment => Int, Select => Str, TotalSegments => Int])
 
-=head2 ScanAll(TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, Limit => Int, ProjectionExpression => Str, ReturnConsumedCapacity => Str, ScanFilter => L<Paws::DynamoDB::FilterConditionMap>, Segment => Int, Select => Str, TotalSegments => Int])
+=head2 ScanAll(TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => $Key, ExpressionAttributeNames => $ExpressionAttributeNameMap, ExpressionAttributeValues => $ExpressionAttributeValueMap, FilterExpression => Str, IndexName => Str, Limit => Int, ProjectionExpression => Str, ReturnConsumedCapacity => Str, ScanFilter => $FilterConditionMap, Segment => Int, Select => Str, TotalSegments => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

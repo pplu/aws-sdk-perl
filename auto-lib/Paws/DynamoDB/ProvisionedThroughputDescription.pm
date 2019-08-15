@@ -1,10 +1,38 @@
 package Paws::DynamoDB::ProvisionedThroughputDescription;
-  use Moose;
-  has LastDecreaseDateTime => (is => 'ro', isa => 'Str');
-  has LastIncreaseDateTime => (is => 'ro', isa => 'Str');
-  has NumberOfDecreasesToday => (is => 'ro', isa => 'Int');
-  has ReadCapacityUnits => (is => 'ro', isa => 'Int');
-  has WriteCapacityUnits => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Type::Utils qw/class_type/;
+  
+  has LastDecreaseDateTime => (is => 'ro', isa => Str);
+  has LastIncreaseDateTime => (is => 'ro', isa => Str);
+  has NumberOfDecreasesToday => (is => 'ro', isa => Int);
+  has ReadCapacityUnits => (is => 'ro', isa => Int);
+  has WriteCapacityUnits => (is => 'ro', isa => Int);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ReadCapacityUnits' => {
+                                                   'type' => 'Int'
+                                                 },
+                          'NumberOfDecreasesToday' => {
+                                                        'type' => 'Int'
+                                                      },
+                          'WriteCapacityUnits' => {
+                                                    'type' => 'Int'
+                                                  },
+                          'LastIncreaseDateTime' => {
+                                                      'type' => 'Str'
+                                                    },
+                          'LastDecreaseDateTime' => {
+                                                      'type' => 'Str'
+                                                    }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###

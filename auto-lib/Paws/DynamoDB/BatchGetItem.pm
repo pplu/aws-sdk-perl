@@ -1,14 +1,34 @@
 
 package Paws::DynamoDB::BatchGetItem;
-  use Moose;
-  has RequestItems => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetRequestMap', required => 1);
-  has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+    my $BatchGetRequestMap = class_type 'Paws::DynamoDB::BatchGetRequestMap';
+  
+  has RequestItems => (is => 'ro', isa => $BatchGetRequestMap, required => 1, predicate => 1);
+  has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchGetItem');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::BatchGetItemOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchGetItem');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::BatchGetItemOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ReturnConsumedCapacity' => {
+                                                        'type' => 'Str'
+                                                      },
+                          'RequestItems' => {
+                                              'class' => 'Paws::DynamoDB::BatchGetRequestMap',
+                                              'type' => '$BatchGetRequestMap'
+                                            }
+                        }
+           };
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +99,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> RequestItems => L<Paws::DynamoDB::BatchGetRequestMap>
+=head2 B<REQUIRED> RequestItems => $BatchGetRequestMap
 
 A map of one or more table names and, for each table, a map that
 describes one or more items to retrieve from that table. Each table

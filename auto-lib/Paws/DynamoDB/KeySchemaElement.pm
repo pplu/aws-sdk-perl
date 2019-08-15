@@ -1,7 +1,26 @@
 package Paws::DynamoDB::KeySchemaElement;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has KeyType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+  
+  has AttributeName => (is => 'ro', isa => Str, required => 1);
+  has KeyType => (is => 'ro', isa => Str, required => 1);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'KeyType' => {
+                                         'type' => 'Str'
+                                       },
+                          'AttributeName' => {
+                                               'type' => 'Str'
+                                             }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###

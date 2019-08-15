@@ -1,7 +1,28 @@
 package Paws::DynamoDB::UpdateGlobalSecondaryIndexAction;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+    my $ProvisionedThroughput = class_type 'Paws::DynamoDB::ProvisionedThroughput';
+  
+  has IndexName => (is => 'ro', isa => Str, required => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => $ProvisionedThroughput, required => 1);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'IndexName' => {
+                                           'type' => 'Str'
+                                         },
+                          'ProvisionedThroughput' => {
+                                                       'class' => 'Paws::DynamoDB::ProvisionedThroughput',
+                                                       'type' => '$ProvisionedThroughput'
+                                                     }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ global secondary index.
   The name of the global secondary index to be updated.
 
 
-=head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
+=head2 B<REQUIRED> ProvisionedThroughput => $ProvisionedThroughput
 
   Represents the provisioned throughput settings for the specified global
 secondary index.

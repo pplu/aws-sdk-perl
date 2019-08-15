@@ -1,8 +1,24 @@
 package Paws::DynamoDB::BatchWriteItemRequestMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef ArrayRef/;
+  use Type::Utils qw/class_type/;
+  my $WriteRequest = class_type 'Paws::DynamoDB::WriteRequest';
 
-  has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::DynamoDB::WriteRequest]]');
+  has Map => (is => 'ro', isa => HashRef[ArrayRef[$WriteRequest]]);
+
+  sub params_map {
+    my $params1 = {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[ArrayRef[$WriteRequest]]',
+                                          class => 'Paws::DynamoDB::WriteRequest',
+                                        },
+                             },
+                  };
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +53,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => ArrayRef[L<Paws::DynamoDB::WriteRequest>]
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

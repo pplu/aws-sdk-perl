@@ -1,7 +1,26 @@
 package Paws::DynamoDB::TimeToLiveDescription;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str');
-  has TimeToLiveStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+  
+  has AttributeName => (is => 'ro', isa => Str);
+  has TimeToLiveStatus => (is => 'ro', isa => Str);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'TimeToLiveStatus' => {
+                                                  'type' => 'Str'
+                                                },
+                          'AttributeName' => {
+                                               'type' => 'Str'
+                                             }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###

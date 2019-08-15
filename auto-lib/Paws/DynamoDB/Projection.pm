@@ -1,7 +1,26 @@
 package Paws::DynamoDB::Projection;
-  use Moose;
-  has NonKeyAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ProjectionType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Type::Utils qw/class_type/;
+  
+  has NonKeyAttributes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ProjectionType => (is => 'ro', isa => Str);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ProjectionType' => {
+                                                'type' => 'Str'
+                                              },
+                          'NonKeyAttributes' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###

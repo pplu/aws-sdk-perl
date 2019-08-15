@@ -1,7 +1,28 @@
 package Paws::DynamoDB::ItemCollectionMetrics;
-  use Moose;
-  has ItemCollectionKey => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionKeyAttributeMap');
-  has SizeEstimateRangeGB => (is => 'ro', isa => 'ArrayRef[Num]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Num/;
+  use Type::Utils qw/class_type/;
+    my $ItemCollectionKeyAttributeMap = class_type 'Paws::DynamoDB::ItemCollectionKeyAttributeMap';
+  
+  has ItemCollectionKey => (is => 'ro', isa => $ItemCollectionKeyAttributeMap);
+  has SizeEstimateRangeGB => (is => 'ro', isa => ArrayRef[Num]);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ItemCollectionKey' => {
+                                                   'class' => 'Paws::DynamoDB::ItemCollectionKeyAttributeMap',
+                                                   'type' => '$ItemCollectionKeyAttributeMap'
+                                                 },
+                          'SizeEstimateRangeGB' => {
+                                                     'type' => 'ArrayRef[Num]'
+                                                   }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +61,7 @@ this information is not returned in the response.
 =head1 ATTRIBUTES
 
 
-=head2 ItemCollectionKey => L<Paws::DynamoDB::ItemCollectionKeyAttributeMap>
+=head2 ItemCollectionKey => $ItemCollectionKeyAttributeMap
 
   The partition key value of the item collection. This value is the same
 as the partition key value of the item.

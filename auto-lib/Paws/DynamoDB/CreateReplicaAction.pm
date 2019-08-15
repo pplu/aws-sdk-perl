@@ -1,6 +1,22 @@
 package Paws::DynamoDB::CreateReplicaAction;
-  use Moose;
-  has RegionName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+  
+  has RegionName => (is => 'ro', isa => Str, required => 1);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'RegionName' => {
+                                            'type' => 'Str'
+                                          }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###

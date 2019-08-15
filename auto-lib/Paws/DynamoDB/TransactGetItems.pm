@@ -1,14 +1,34 @@
 
 package Paws::DynamoDB::TransactGetItems;
-  use Moose;
-  has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
-  has TransactItems => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::TransactGetItem]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Type::Utils qw/class_type/;
+    my $TransactGetItem = class_type 'Paws::DynamoDB::TransactGetItem';
+  
+  has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
+  has TransactItems => (is => 'ro', isa => ArrayRef[$TransactGetItem], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TransactGetItems');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::TransactGetItemsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TransactGetItems');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::TransactGetItemsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'TransactItems' => {
+                                               'class' => 'Paws::DynamoDB::TransactGetItem',
+                                               'type' => 'ArrayRef[$TransactGetItem]'
+                                             },
+                          'ReturnConsumedCapacity' => {
+                                                        'type' => 'Str'
+                                                      }
+                        }
+           };
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +106,7 @@ returned. No other value is valid.
 
 Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
-=head2 B<REQUIRED> TransactItems => ArrayRef[L<Paws::DynamoDB::TransactGetItem>]
+=head2 B<REQUIRED> TransactItems => ArrayRef[$TransactGetItem]
 
 An ordered array of up to 25 C<TransactGetItem> objects, each of which
 contains a C<Get> structure.

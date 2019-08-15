@@ -1,15 +1,58 @@
 package Paws::DynamoDB::BackupSummary;
-  use Moose;
-  has BackupArn => (is => 'ro', isa => 'Str');
-  has BackupCreationDateTime => (is => 'ro', isa => 'Str');
-  has BackupExpiryDateTime => (is => 'ro', isa => 'Str');
-  has BackupName => (is => 'ro', isa => 'Str');
-  has BackupSizeBytes => (is => 'ro', isa => 'Int');
-  has BackupStatus => (is => 'ro', isa => 'Str');
-  has BackupType => (is => 'ro', isa => 'Str');
-  has TableArn => (is => 'ro', isa => 'Str');
-  has TableId => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Type::Utils qw/class_type/;
+  
+  has BackupArn => (is => 'ro', isa => Str);
+  has BackupCreationDateTime => (is => 'ro', isa => Str);
+  has BackupExpiryDateTime => (is => 'ro', isa => Str);
+  has BackupName => (is => 'ro', isa => Str);
+  has BackupSizeBytes => (is => 'ro', isa => Int);
+  has BackupStatus => (is => 'ro', isa => Str);
+  has BackupType => (is => 'ro', isa => Str);
+  has TableArn => (is => 'ro', isa => Str);
+  has TableId => (is => 'ro', isa => Str);
+  has TableName => (is => 'ro', isa => Str);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'BackupType' => {
+                                            'type' => 'Str'
+                                          },
+                          'BackupName' => {
+                                            'type' => 'Str'
+                                          },
+                          'BackupExpiryDateTime' => {
+                                                      'type' => 'Str'
+                                                    },
+                          'BackupSizeBytes' => {
+                                                 'type' => 'Int'
+                                               },
+                          'BackupStatus' => {
+                                              'type' => 'Str'
+                                            },
+                          'TableArn' => {
+                                          'type' => 'Str'
+                                        },
+                          'TableId' => {
+                                         'type' => 'Str'
+                                       },
+                          'BackupArn' => {
+                                           'type' => 'Str'
+                                         },
+                          'BackupCreationDateTime' => {
+                                                        'type' => 'Str'
+                                                      },
+                          'TableName' => {
+                                           'type' => 'Str'
+                                         }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###

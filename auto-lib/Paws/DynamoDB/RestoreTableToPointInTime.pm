@@ -1,16 +1,40 @@
 
 package Paws::DynamoDB::RestoreTableToPointInTime;
-  use Moose;
-  has RestoreDateTime => (is => 'ro', isa => 'Str');
-  has SourceTableName => (is => 'ro', isa => 'Str', required => 1);
-  has TargetTableName => (is => 'ro', isa => 'Str', required => 1);
-  has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Type::Utils qw/class_type/;
+  
+  has RestoreDateTime => (is => 'ro', isa => Str, predicate => 1);
+  has SourceTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UseLatestRestorableTime => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreTableToPointInTime');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::RestoreTableToPointInTimeOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreTableToPointInTime');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::RestoreTableToPointInTimeOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'SourceTableName' => {
+                                                 'type' => 'Str'
+                                               },
+                          'UseLatestRestorableTime' => {
+                                                         'type' => 'Bool'
+                                                       },
+                          'RestoreDateTime' => {
+                                                 'type' => 'Str'
+                                               },
+                          'TargetTableName' => {
+                                                 'type' => 'Str'
+                                               }
+                        }
+           };
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###

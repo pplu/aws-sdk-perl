@@ -1,28 +1,96 @@
 
 package Paws::DynamoDB::Scan;
-  use Moose;
-  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ConditionalOperator => (is => 'ro', isa => 'Str');
-  has ConsistentRead => (is => 'ro', isa => 'Bool');
-  has ExclusiveStartKey => (is => 'ro', isa => 'Paws::DynamoDB::Key');
-  has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
-  has ExpressionAttributeValues => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeValueMap');
-  has FilterExpression => (is => 'ro', isa => 'Str');
-  has IndexName => (is => 'ro', isa => 'Str');
-  has Limit => (is => 'ro', isa => 'Int');
-  has ProjectionExpression => (is => 'ro', isa => 'Str');
-  has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
-  has ScanFilter => (is => 'ro', isa => 'Paws::DynamoDB::FilterConditionMap');
-  has Segment => (is => 'ro', isa => 'Int');
-  has Select => (is => 'ro', isa => 'Str');
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
-  has TotalSegments => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool Int/;
+  use Type::Utils qw/class_type/;
+    my $ExpressionAttributeValueMap = class_type 'Paws::DynamoDB::ExpressionAttributeValueMap';
+    my $ExpressionAttributeNameMap = class_type 'Paws::DynamoDB::ExpressionAttributeNameMap';
+    my $Key = class_type 'Paws::DynamoDB::Key';
+    my $FilterConditionMap = class_type 'Paws::DynamoDB::FilterConditionMap';
+  
+  has AttributesToGet => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ConditionalOperator => (is => 'ro', isa => Str, predicate => 1);
+  has ConsistentRead => (is => 'ro', isa => Bool, predicate => 1);
+  has ExclusiveStartKey => (is => 'ro', isa => $Key, predicate => 1);
+  has ExpressionAttributeNames => (is => 'ro', isa => $ExpressionAttributeNameMap, predicate => 1);
+  has ExpressionAttributeValues => (is => 'ro', isa => $ExpressionAttributeValueMap, predicate => 1);
+  has FilterExpression => (is => 'ro', isa => Str, predicate => 1);
+  has IndexName => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has ProjectionExpression => (is => 'ro', isa => Str, predicate => 1);
+  has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
+  has ScanFilter => (is => 'ro', isa => $FilterConditionMap, predicate => 1);
+  has Segment => (is => 'ro', isa => Int, predicate => 1);
+  has Select => (is => 'ro', isa => Str, predicate => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TotalSegments => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Scan');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::ScanOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Scan');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::ScanOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ExpressionAttributeValues' => {
+                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
+                                                           'type' => '$ExpressionAttributeValueMap'
+                                                         },
+                          'ConsistentRead' => {
+                                                'type' => 'Bool'
+                                              },
+                          'ExclusiveStartKey' => {
+                                                   'class' => 'Paws::DynamoDB::Key',
+                                                   'type' => '$Key'
+                                                 },
+                          'TotalSegments' => {
+                                               'type' => 'Int'
+                                             },
+                          'FilterExpression' => {
+                                                  'type' => 'Str'
+                                                },
+                          'AttributesToGet' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+                          'ExpressionAttributeNames' => {
+                                                          'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
+                                                          'type' => '$ExpressionAttributeNameMap'
+                                                        },
+                          'Select' => {
+                                        'type' => 'Str'
+                                      },
+                          'ScanFilter' => {
+                                            'class' => 'Paws::DynamoDB::FilterConditionMap',
+                                            'type' => '$FilterConditionMap'
+                                          },
+                          'Segment' => {
+                                         'type' => 'Int'
+                                       },
+                          'ReturnConsumedCapacity' => {
+                                                        'type' => 'Str'
+                                                      },
+                          'Limit' => {
+                                       'type' => 'Int'
+                                     },
+                          'ProjectionExpression' => {
+                                                      'type' => 'Str'
+                                                    },
+                          'IndexName' => {
+                                           'type' => 'Str'
+                                         },
+                          'TableName' => {
+                                           'type' => 'Str'
+                                         },
+                          'ConditionalOperator' => {
+                                                     'type' => 'Str'
+                                                   }
+                        }
+           };
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###
@@ -122,7 +190,7 @@ set to true, you will receive a C<ValidationException>.
 
 
 
-=head2 ExclusiveStartKey => L<Paws::DynamoDB::Key>
+=head2 ExclusiveStartKey => $Key
 
 The primary key of the first item that this operation will evaluate.
 Use the value that was returned for C<LastEvaluatedKey> in the previous
@@ -137,7 +205,7 @@ C<Scan> returned the corresponding value of C<LastEvaluatedKey>.
 
 
 
-=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
+=head2 ExpressionAttributeNames => $ExpressionAttributeNameMap
 
 One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using C<ExpressionAttributeNames>:
@@ -208,7 +276,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
+=head2 ExpressionAttributeValues => $ExpressionAttributeValueMap
 
 One or more values that can be substituted in an expression.
 
@@ -299,7 +367,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
-=head2 ScanFilter => L<Paws::DynamoDB::FilterConditionMap>
+=head2 ScanFilter => $FilterConditionMap
 
 This is a legacy parameter. Use C<FilterExpression> instead. For more
 information, see ScanFilter

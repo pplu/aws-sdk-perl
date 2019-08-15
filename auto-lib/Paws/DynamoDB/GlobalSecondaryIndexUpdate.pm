@@ -1,8 +1,36 @@
 package Paws::DynamoDB::GlobalSecondaryIndexUpdate;
-  use Moose;
-  has Create => (is => 'ro', isa => 'Paws::DynamoDB::CreateGlobalSecondaryIndexAction');
-  has Delete => (is => 'ro', isa => 'Paws::DynamoDB::DeleteGlobalSecondaryIndexAction');
-  has Update => (is => 'ro', isa => 'Paws::DynamoDB::UpdateGlobalSecondaryIndexAction');
+  use Moo;
+  use Types::Standard qw//;
+  use Type::Utils qw/class_type/;
+    my $DeleteGlobalSecondaryIndexAction = class_type 'Paws::DynamoDB::DeleteGlobalSecondaryIndexAction';
+    my $UpdateGlobalSecondaryIndexAction = class_type 'Paws::DynamoDB::UpdateGlobalSecondaryIndexAction';
+    my $CreateGlobalSecondaryIndexAction = class_type 'Paws::DynamoDB::CreateGlobalSecondaryIndexAction';
+  
+  has Create => (is => 'ro', isa => $CreateGlobalSecondaryIndexAction);
+  has Delete => (is => 'ro', isa => $DeleteGlobalSecondaryIndexAction);
+  has Update => (is => 'ro', isa => $UpdateGlobalSecondaryIndexAction);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Delete' => {
+                                        'class' => 'Paws::DynamoDB::DeleteGlobalSecondaryIndexAction',
+                                        'type' => '$DeleteGlobalSecondaryIndexAction'
+                                      },
+                          'Update' => {
+                                        'class' => 'Paws::DynamoDB::UpdateGlobalSecondaryIndexAction',
+                                        'type' => '$UpdateGlobalSecondaryIndexAction'
+                                      },
+                          'Create' => {
+                                        'class' => 'Paws::DynamoDB::CreateGlobalSecondaryIndexAction',
+                                        'type' => '$CreateGlobalSecondaryIndexAction'
+                                      }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +85,7 @@ table.
 =head1 ATTRIBUTES
 
 
-=head2 Create => L<Paws::DynamoDB::CreateGlobalSecondaryIndexAction>
+=head2 Create => $CreateGlobalSecondaryIndexAction
 
   The parameters required for creating a global secondary index on an
 existing table:
@@ -88,12 +116,12 @@ C<ProvisionedThroughput>
 
 
 
-=head2 Delete => L<Paws::DynamoDB::DeleteGlobalSecondaryIndexAction>
+=head2 Delete => $DeleteGlobalSecondaryIndexAction
 
   The name of an existing global secondary index to be removed.
 
 
-=head2 Update => L<Paws::DynamoDB::UpdateGlobalSecondaryIndexAction>
+=head2 Update => $UpdateGlobalSecondaryIndexAction
 
   The name of an existing global secondary index, along with new
 provisioned throughput settings to be applied to that index.

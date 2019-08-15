@@ -1,6 +1,24 @@
 package Paws::DynamoDB::ItemResponse;
-  use Moose;
-  has Item => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
+  use Moo;
+  use Types::Standard qw//;
+  use Type::Utils qw/class_type/;
+    my $AttributeMap = class_type 'Paws::DynamoDB::AttributeMap';
+  
+  has Item => (is => 'ro', isa => $AttributeMap);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Item' => {
+                                      'class' => 'Paws::DynamoDB::AttributeMap',
+                                      'type' => '$AttributeMap'
+                                    }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Details for the requested item.
 =head1 ATTRIBUTES
 
 
-=head2 Item => L<Paws::DynamoDB::AttributeMap>
+=head2 Item => $AttributeMap
 
   Map of attribute data consisting of the data type and attribute value.
 

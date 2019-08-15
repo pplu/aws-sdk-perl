@@ -1,7 +1,28 @@
 package Paws::DynamoDB::ContinuousBackupsDescription;
-  use Moose;
-  has ContinuousBackupsStatus => (is => 'ro', isa => 'Str', required => 1);
-  has PointInTimeRecoveryDescription => (is => 'ro', isa => 'Paws::DynamoDB::PointInTimeRecoveryDescription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+    my $PointInTimeRecoveryDescription = class_type 'Paws::DynamoDB::PointInTimeRecoveryDescription';
+  
+  has ContinuousBackupsStatus => (is => 'ro', isa => Str, required => 1);
+  has PointInTimeRecoveryDescription => (is => 'ro', isa => $PointInTimeRecoveryDescription);
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'ContinuousBackupsStatus' => {
+                                                         'type' => 'Str'
+                                                       },
+                          'PointInTimeRecoveryDescription' => {
+                                                                'class' => 'Paws::DynamoDB::PointInTimeRecoveryDescription',
+                                                                'type' => '$PointInTimeRecoveryDescription'
+                                                              }
+                        }
+           };
+
+    return $params1;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +65,7 @@ on the table.
 DISABLED
 
 
-=head2 PointInTimeRecoveryDescription => L<Paws::DynamoDB::PointInTimeRecoveryDescription>
+=head2 PointInTimeRecoveryDescription => $PointInTimeRecoveryDescription
 
   The description of the point in time recovery settings applied to the
 table.

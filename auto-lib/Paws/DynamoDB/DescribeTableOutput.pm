@@ -1,9 +1,25 @@
 
 package Paws::DynamoDB::DescribeTableOutput;
-  use Moose;
-  has Table => (is => 'ro', isa => 'Paws::DynamoDB::TableDescription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Type::Utils qw/class_type/;
+    my $TableDescription = class_type 'Paws::DynamoDB::TableDescription';
+  
+  has Table => (is => 'ro', isa => $TableDescription);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Table' => {
+                                       'class' => 'Paws::DynamoDB::TableDescription',
+                                       'type' => '$TableDescription'
+                                     }
+                        }
+           };
+
+    return $params1;
+  }
 
 ### main pod documentation begin ###
 
@@ -14,7 +30,7 @@ Paws::DynamoDB::DescribeTableOutput
 =head1 ATTRIBUTES
 
 
-=head2 Table => L<Paws::DynamoDB::TableDescription>
+=head2 Table => $TableDescription
 
 The properties of the table.
 

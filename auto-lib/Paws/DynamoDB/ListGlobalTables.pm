@@ -1,15 +1,36 @@
 
 package Paws::DynamoDB::ListGlobalTables;
-  use Moose;
-  has ExclusiveStartGlobalTableName => (is => 'ro', isa => 'Str');
-  has Limit => (is => 'ro', isa => 'Int');
-  has RegionName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Type::Utils qw/class_type/;
+  
+  has ExclusiveStartGlobalTableName => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has RegionName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListGlobalTables');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::ListGlobalTablesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListGlobalTables');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::ListGlobalTablesOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'Limit' => {
+                                       'type' => 'Int'
+                                     },
+                          'ExclusiveStartGlobalTableName' => {
+                                                               'type' => 'Str'
+                                                             },
+                          'RegionName' => {
+                                            'type' => 'Str'
+                                          }
+                        }
+           };
+
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###

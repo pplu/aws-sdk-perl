@@ -1,10 +1,29 @@
 
 package Paws::DynamoDB::ListTagsOfResourceOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Type::Utils qw/class_type/;
+    my $Tag = class_type 'Paws::DynamoDB::Tag';
+  
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[$Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+  sub params_map {
+    my $params1 = {
+             'types' => {
+                          'NextToken' => {
+                                           'type' => 'Str'
+                                         },
+                          'Tags' => {
+                                      'class' => 'Paws::DynamoDB::Tag',
+                                      'type' => 'ArrayRef[$Tag]'
+                                    }
+                        }
+           };
+
+    return $params1;
+  }
 
 ### main pod documentation begin ###
 
@@ -22,7 +41,7 @@ displayed. To retrieve them, call ListTagsOfResource again, with
 NextToken set to this value.
 
 
-=head2 Tags => ArrayRef[L<Paws::DynamoDB::Tag>]
+=head2 Tags => ArrayRef[$Tag]
 
 The tags currently associated with the Amazon DynamoDB resource.
 
