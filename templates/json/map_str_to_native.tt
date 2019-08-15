@@ -8,6 +8,18 @@ package [% inner_class %];
 [% IF k %]  my [% k %] = class_type '[% class_type_info.$k %]';[% END %]
 
   has Map => (is => 'ro', isa => [% map_class %]);
+
+sub params_map {
+    my $params1 = {
+                    types => {
+                               'Map' => {
+                                          type => '[% map_class %]',
+                                          class => '[% class_type_info.$k %]',
+                                        },
+                             },
+                  };
+    return $params1;
+  }
 1;
 
 [% INCLUDE 'map_str_to_whatever.tt' %]

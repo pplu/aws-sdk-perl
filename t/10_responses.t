@@ -49,9 +49,12 @@ sub get_value_for_type {
 # so that "FileCaller" is happy with the parameters passed in
 sub get_stub_call_args {
   my $call_class = shift;
+  my $call_args_depth = shift;
 
   Paws->load_class($call_class);
   my %args = ();
+
+  return {} if($call_args_depth++ > 10);
 
   foreach my $attribute (keys %{ $call_class->params_map->{types} }) {
 #    next if (not $attribute->is_required);
@@ -63,19 +66,23 @@ sub get_stub_call_args {
       if (is_native($inner_class)){
         $args{ $attribute } = [ get_value_for_type($inner_class) ];
       } else {
-        $args{ $attribute } = [ get_stub_call_args($type_class) ];
+        $args{ $attribute } = [ get_stub_call_args($type_class,$call_args_depth++) ];
       }          
     } elsif ($att_type =~ m/HashRef\[(.*)\]/){
-      my $inner_class = $1;
+        my $inner_class = $1;
       if (is_native($inner_class)){
         $args{ $attribute } = { 'k1' => get_value_for_type($inner_class) };
       } else {
-        $args{ $attribute } = { 'k1' => get_stub_call_args($type_class) };
+        $args{ $attribute } = { 'k1' => get_stub_call_args($type_class,$call_args_depth++) };
       }          
     } elsif (is_native($att_type)){
       $args{ $attribute } = get_value_for_type($att_type);
     } else {
-      $args{ $attribute } = get_stub_call_args($type_class);
+      $args{ $attribute } = get_stub_call_args($type_class,$call_args_depth++);
+    }
+    if($call_class->does('Paws::API::StrToObjMapParser') ||
+       $call_class->does('Paws::API::StrToNativeMapParser')) {
+        return $args{ $attribute };
     }
   }
 
@@ -101,7 +108,7 @@ sub test_file {
 
     my $call_method = $test->method;
     my $call_class = ref($service) . '::' . $call_method;
-    my $call_object = get_stub_call_args($call_class);
+    my $call_object = get_stub_call_args($call_class, 0);
 
     my $res;
     my $passed = lives_ok {
