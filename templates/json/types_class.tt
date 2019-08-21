@@ -1,0 +1,9 @@
+package [% c.typelibrary_name %];
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  [%- FOREACH key IN c.typelibrary_classes.keys.sort %]
+  class_type [% key %], { class => '[% c.typelibrary_classes.$key %]' };
+  [%- END %]
+
+1;
