@@ -1,8 +1,7 @@
 package Paws::DynamoDB::PointInTimeRecoverySpecification;
   use Moo;
   use Types::Standard qw/Bool/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has PointInTimeRecoveryEnabled => (is => 'ro', isa => Bool, required => 1);
 
   sub params_map {

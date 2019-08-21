@@ -2,12 +2,9 @@
 package Paws::DynamoDB::TransactWriteItemsOutput;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Type::Utils qw/class_type/;
-    my $ItemCollectionMetricsPerTable = class_type 'Paws::DynamoDB::ItemCollectionMetricsPerTable';
-    my $ConsumedCapacity = class_type 'Paws::DynamoDB::ConsumedCapacity';
-  
-  has ConsumedCapacity => (is => 'ro', isa => ArrayRef[$ConsumedCapacity]);
-  has ItemCollectionMetrics => (is => 'ro', isa => $ItemCollectionMetricsPerTable);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBConsumedCapacity PawsDynamoDBItemCollectionMetricsPerTable/;
+  has ConsumedCapacity => (is => 'ro', isa => ArrayRef[PawsDynamoDBConsumedCapacity]);
+  has ItemCollectionMetrics => (is => 'ro', isa => PawsDynamoDBItemCollectionMetricsPerTable);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -15,11 +12,11 @@ package Paws::DynamoDB::TransactWriteItemsOutput;
              'types' => {
                           'ConsumedCapacity' => {
                                                   'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => 'ArrayRef[$ConsumedCapacity]'
+                                                  'type' => 'ArrayRef[PawsDynamoDBConsumedCapacity]'
                                                 },
                           'ItemCollectionMetrics' => {
                                                        'class' => 'Paws::DynamoDB::ItemCollectionMetricsPerTable',
-                                                       'type' => '$ItemCollectionMetricsPerTable'
+                                                       'type' => 'PawsDynamoDBItemCollectionMetricsPerTable'
                                                      }
                         }
            };
@@ -36,14 +33,14 @@ Paws::DynamoDB::TransactWriteItemsOutput
 =head1 ATTRIBUTES
 
 
-=head2 ConsumedCapacity => ArrayRef[$ConsumedCapacity]
+=head2 ConsumedCapacity => ArrayRef[PawsDynamoDBConsumedCapacity]
 
 The capacity units consumed by the entire C<TransactWriteItems>
 operation. The values of the list are ordered according to the ordering
 of the C<TransactItems> request parameter.
 
 
-=head2 ItemCollectionMetrics => $ItemCollectionMetricsPerTable
+=head2 ItemCollectionMetrics => PawsDynamoDBItemCollectionMetricsPerTable
 
 A list of tables that were processed by C<TransactWriteItems> and, for
 each table, information about any item collections that were affected

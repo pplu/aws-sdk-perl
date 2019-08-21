@@ -1,8 +1,7 @@
 package Paws::DynamoDB::Projection;
   use Moo;
   use Types::Standard qw/ArrayRef Undef Str/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has NonKeyAttributes => (is => 'ro', isa => ArrayRef[Str|Undef]);
   has ProjectionType => (is => 'ro', isa => Str);
 

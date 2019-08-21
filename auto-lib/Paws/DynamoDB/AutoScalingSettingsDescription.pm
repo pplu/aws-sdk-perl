@@ -1,14 +1,12 @@
 package Paws::DynamoDB::AutoScalingSettingsDescription;
   use Moo;
   use Types::Standard qw/Bool Str Int ArrayRef/;
-  use Type::Utils qw/class_type/;
-    my $AutoScalingPolicyDescription = class_type 'Paws::DynamoDB::AutoScalingPolicyDescription';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAutoScalingPolicyDescription/;
   has AutoScalingDisabled => (is => 'ro', isa => Bool);
   has AutoScalingRoleArn => (is => 'ro', isa => Str);
   has MaximumUnits => (is => 'ro', isa => Int);
   has MinimumUnits => (is => 'ro', isa => Int);
-  has ScalingPolicies => (is => 'ro', isa => ArrayRef[$AutoScalingPolicyDescription]);
+  has ScalingPolicies => (is => 'ro', isa => ArrayRef[PawsDynamoDBAutoScalingPolicyDescription]);
 
   sub params_map {
     my $params1 = {
@@ -27,7 +25,7 @@ package Paws::DynamoDB::AutoScalingSettingsDescription;
                                                   },
                           'ScalingPolicies' => {
                                                  'class' => 'Paws::DynamoDB::AutoScalingPolicyDescription',
-                                                 'type' => 'ArrayRef[$AutoScalingPolicyDescription]'
+                                                 'type' => 'ArrayRef[PawsDynamoDBAutoScalingPolicyDescription]'
                                                }
                         }
            };
@@ -93,7 +91,7 @@ index should be scaled up to.
 index should be scaled down to.
 
 
-=head2 ScalingPolicies => ArrayRef[$AutoScalingPolicyDescription]
+=head2 ScalingPolicies => ArrayRef[PawsDynamoDBAutoScalingPolicyDescription]
 
   Information about the scaling policies.
 

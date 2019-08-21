@@ -1,8 +1,7 @@
 package Paws::DynamoDB::DeleteGlobalSecondaryIndexAction;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has IndexName => (is => 'ro', isa => Str, required => 1);
 
   sub params_map {

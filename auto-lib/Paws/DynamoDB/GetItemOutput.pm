@@ -2,12 +2,9 @@
 package Paws::DynamoDB::GetItemOutput;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-    my $AttributeMap = class_type 'Paws::DynamoDB::AttributeMap';
-    my $ConsumedCapacity = class_type 'Paws::DynamoDB::ConsumedCapacity';
-  
-  has ConsumedCapacity => (is => 'ro', isa => $ConsumedCapacity);
-  has Item => (is => 'ro', isa => $AttributeMap);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBConsumedCapacity PawsDynamoDBAttributeMap/;
+  has ConsumedCapacity => (is => 'ro', isa => PawsDynamoDBConsumedCapacity);
+  has Item => (is => 'ro', isa => PawsDynamoDBAttributeMap);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -15,11 +12,11 @@ package Paws::DynamoDB::GetItemOutput;
              'types' => {
                           'Item' => {
                                       'class' => 'Paws::DynamoDB::AttributeMap',
-                                      'type' => '$AttributeMap'
+                                      'type' => 'PawsDynamoDBAttributeMap'
                                     },
                           'ConsumedCapacity' => {
                                                   'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => '$ConsumedCapacity'
+                                                  'type' => 'PawsDynamoDBConsumedCapacity'
                                                 }
                         }
            };
@@ -36,7 +33,7 @@ Paws::DynamoDB::GetItemOutput
 =head1 ATTRIBUTES
 
 
-=head2 ConsumedCapacity => $ConsumedCapacity
+=head2 ConsumedCapacity => PawsDynamoDBConsumedCapacity
 
 The capacity units consumed by the C<GetItem> operation. The data
 returned includes the total provisioned throughput consumed, along with
@@ -48,7 +45,7 @@ Mode
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 Item => $AttributeMap
+=head2 Item => PawsDynamoDBAttributeMap
 
 A map of attribute names to C<AttributeValue> objects, as specified by
 C<ProjectionExpression>.

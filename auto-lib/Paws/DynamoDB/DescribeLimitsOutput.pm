@@ -2,8 +2,7 @@
 package Paws::DynamoDB::DescribeLimitsOutput;
   use Moo;
   use Types::Standard qw/Str Int/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has AccountMaxReadCapacityUnits => (is => 'ro', isa => Int);
   has AccountMaxWriteCapacityUnits => (is => 'ro', isa => Int);
   has TableMaxReadCapacityUnits => (is => 'ro', isa => Int);

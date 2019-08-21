@@ -1,8 +1,7 @@
 package Paws::DynamoDB::SSEDescription;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has KMSMasterKeyArn => (is => 'ro', isa => Str);
   has SSEType => (is => 'ro', isa => Str);
   has Status => (is => 'ro', isa => Str);

@@ -2,26 +2,20 @@
 package Paws::DynamoDB::Query;
   use Moo;
   use Types::Standard qw/Str ArrayRef Undef Bool Int/;
-  use Type::Utils qw/class_type/;
-    my $KeyConditions = class_type 'Paws::DynamoDB::KeyConditions';
-    my $ExpressionAttributeValueMap = class_type 'Paws::DynamoDB::ExpressionAttributeValueMap';
-    my $ExpressionAttributeNameMap = class_type 'Paws::DynamoDB::ExpressionAttributeNameMap';
-    my $Key = class_type 'Paws::DynamoDB::Key';
-    my $FilterConditionMap = class_type 'Paws::DynamoDB::FilterConditionMap';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBExpressionAttributeNameMap PawsDynamoDBKey PawsDynamoDBKeyConditions PawsDynamoDBFilterConditionMap PawsDynamoDBExpressionAttributeValueMap/;
   has AttributesToGet => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
   has ConditionalOperator => (is => 'ro', isa => Str, predicate => 1);
   has ConsistentRead => (is => 'ro', isa => Bool, predicate => 1);
-  has ExclusiveStartKey => (is => 'ro', isa => $Key, predicate => 1);
-  has ExpressionAttributeNames => (is => 'ro', isa => $ExpressionAttributeNameMap, predicate => 1);
-  has ExpressionAttributeValues => (is => 'ro', isa => $ExpressionAttributeValueMap, predicate => 1);
+  has ExclusiveStartKey => (is => 'ro', isa => PawsDynamoDBKey, predicate => 1);
+  has ExpressionAttributeNames => (is => 'ro', isa => PawsDynamoDBExpressionAttributeNameMap, predicate => 1);
+  has ExpressionAttributeValues => (is => 'ro', isa => PawsDynamoDBExpressionAttributeValueMap, predicate => 1);
   has FilterExpression => (is => 'ro', isa => Str, predicate => 1);
   has IndexName => (is => 'ro', isa => Str, predicate => 1);
   has KeyConditionExpression => (is => 'ro', isa => Str, predicate => 1);
-  has KeyConditions => (is => 'ro', isa => $KeyConditions, predicate => 1);
+  has KeyConditions => (is => 'ro', isa => PawsDynamoDBKeyConditions, predicate => 1);
   has Limit => (is => 'ro', isa => Int, predicate => 1);
   has ProjectionExpression => (is => 'ro', isa => Str, predicate => 1);
-  has QueryFilter => (is => 'ro', isa => $FilterConditionMap, predicate => 1);
+  has QueryFilter => (is => 'ro', isa => PawsDynamoDBFilterConditionMap, predicate => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
   has ScanIndexForward => (is => 'ro', isa => Bool, predicate => 1);
   has Select => (is => 'ro', isa => Str, predicate => 1);
@@ -38,7 +32,7 @@ package Paws::DynamoDB::Query;
              'types' => {
                           'ExpressionAttributeValues' => {
                                                            'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
-                                                           'type' => '$ExpressionAttributeValueMap'
+                                                           'type' => 'PawsDynamoDBExpressionAttributeValueMap'
                                                          },
                           'ConsistentRead' => {
                                                 'type' => 'Bool'
@@ -51,7 +45,7 @@ package Paws::DynamoDB::Query;
                                                 },
                           'ExclusiveStartKey' => {
                                                    'class' => 'Paws::DynamoDB::Key',
-                                                   'type' => '$Key'
+                                                   'type' => 'PawsDynamoDBKey'
                                                  },
                           'FilterExpression' => {
                                                   'type' => 'Str'
@@ -61,18 +55,18 @@ package Paws::DynamoDB::Query;
                                                },
                           'ExpressionAttributeNames' => {
                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => '$ExpressionAttributeNameMap'
+                                                          'type' => 'PawsDynamoDBExpressionAttributeNameMap'
                                                         },
                           'Select' => {
                                         'type' => 'Str'
                                       },
                           'KeyConditions' => {
                                                'class' => 'Paws::DynamoDB::KeyConditions',
-                                               'type' => '$KeyConditions'
+                                               'type' => 'PawsDynamoDBKeyConditions'
                                              },
                           'QueryFilter' => {
                                              'class' => 'Paws::DynamoDB::FilterConditionMap',
-                                             'type' => '$FilterConditionMap'
+                                             'type' => 'PawsDynamoDBFilterConditionMap'
                                            },
                           'ReturnConsumedCapacity' => {
                                                         'type' => 'Str'
@@ -176,7 +170,7 @@ set to C<true>, you will receive a C<ValidationException>.
 
 
 
-=head2 ExclusiveStartKey => $Key
+=head2 ExclusiveStartKey => PawsDynamoDBKey
 
 The primary key of the first item that this operation will evaluate.
 Use the value that was returned for C<LastEvaluatedKey> in the previous
@@ -187,7 +181,7 @@ Binary. No set data types are allowed.
 
 
 
-=head2 ExpressionAttributeNames => $ExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => PawsDynamoDBExpressionAttributeNameMap
 
 One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using C<ExpressionAttributeNames>:
@@ -258,7 +252,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 ExpressionAttributeValues => $ExpressionAttributeValueMap
+=head2 ExpressionAttributeValues => PawsDynamoDBExpressionAttributeValueMap
 
 One or more values that can be substituted in an expression.
 
@@ -423,7 +417,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 KeyConditions => $KeyConditions
+=head2 KeyConditions => PawsDynamoDBKeyConditions
 
 This is a legacy parameter. Use C<KeyConditionExpression> instead. For
 more information, see KeyConditions
@@ -466,7 +460,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 QueryFilter => $FilterConditionMap
+=head2 QueryFilter => PawsDynamoDBFilterConditionMap
 
 This is a legacy parameter. Use C<FilterExpression> instead. For more
 information, see QueryFilter

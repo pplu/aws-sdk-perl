@@ -2,16 +2,15 @@ package Paws::DynamoDB::KeyConditions;
   use Moo;
   with 'Paws::API::StrToObjMapParser';
   use Types::Standard qw/HashRef/;
-  use Type::Utils qw/class_type/;
-  my $Condition = class_type 'Paws::DynamoDB::Condition';
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBCondition/;
 
-  has Map => (is => 'ro', isa => HashRef[$Condition]);
+  has Map => (is => 'ro', isa => HashRef[PawsDynamoDBCondition]);
 
   sub params_map {
     my $params1 = {
                     types => {
                                'Map' => {
-                                          type => 'HashRef[$Condition]',
+                                          type => 'HashRef[PawsDynamoDBCondition]',
                                           class => 'Paws::DynamoDB::Condition',
                                         },
                              },

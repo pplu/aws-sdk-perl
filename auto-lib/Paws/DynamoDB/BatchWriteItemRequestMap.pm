@@ -2,16 +2,15 @@ package Paws::DynamoDB::BatchWriteItemRequestMap;
   use Moo;
   with 'Paws::API::StrToObjMapParser';
   use Types::Standard qw/HashRef ArrayRef/;
-  use Type::Utils qw/class_type/;
-  my $WriteRequest = class_type 'Paws::DynamoDB::WriteRequest';
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBWriteRequest/;
 
-  has Map => (is => 'ro', isa => HashRef[ArrayRef[$WriteRequest]]);
+  has Map => (is => 'ro', isa => HashRef[ArrayRef[PawsDynamoDBWriteRequest]]);
 
   sub params_map {
     my $params1 = {
                     types => {
                                'Map' => {
-                                          type => 'HashRef[ArrayRef[$WriteRequest]]',
+                                          type => 'HashRef[ArrayRef[PawsDynamoDBWriteRequest]]',
                                           class => 'Paws::DynamoDB::WriteRequest',
                                         },
                              },

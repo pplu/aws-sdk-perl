@@ -1,8 +1,7 @@
 package Paws::DynamoDB::Capacity;
   use Moo;
   use Types::Standard qw/Num/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has CapacityUnits => (is => 'ro', isa => Num);
   has ReadCapacityUnits => (is => 'ro', isa => Num);
   has WriteCapacityUnits => (is => 'ro', isa => Num);

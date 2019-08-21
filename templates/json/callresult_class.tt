@@ -18,10 +18,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
 END -%]
 
   use Types::Standard qw/[% attr_types.unique.join(" ") %]/;
-  [% IF class_types.keys;'use Type::Utils qw/class_type/;'; END;  %]
-  [% FOREACH cl = class_types.keys -%]
-  my [% cl %] = class_type '[% class_types.$cl %]';
-  [% END %]
+  use [% c.typelibrary_name %] qw/[% class_types.keys.join(" ") %]/;
 [% FOREACH attr IN attr_str -%]
   [% attr %]
 [% END -%]

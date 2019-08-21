@@ -2,8 +2,7 @@
 package Paws::DynamoDB::DeleteTable;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
   use MooX::ClassAttribute;

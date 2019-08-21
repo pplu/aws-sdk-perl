@@ -2,16 +2,15 @@ package Paws::DynamoDB::SecondaryIndexesCapacityMap;
   use Moo;
   with 'Paws::API::StrToObjMapParser';
   use Types::Standard qw/HashRef/;
-  use Type::Utils qw/class_type/;
-  my $Capacity = class_type 'Paws::DynamoDB::Capacity';
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBCapacity/;
 
-  has Map => (is => 'ro', isa => HashRef[$Capacity]);
+  has Map => (is => 'ro', isa => HashRef[PawsDynamoDBCapacity]);
 
   sub params_map {
     my $params1 = {
                     types => {
                                'Map' => {
-                                          type => 'HashRef[$Capacity]',
+                                          type => 'HashRef[PawsDynamoDBCapacity]',
                                           class => 'Paws::DynamoDB::Capacity',
                                         },
                              },

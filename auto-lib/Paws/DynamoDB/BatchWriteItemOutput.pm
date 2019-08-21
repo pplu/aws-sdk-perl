@@ -2,14 +2,10 @@
 package Paws::DynamoDB::BatchWriteItemOutput;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Type::Utils qw/class_type/;
-    my $ItemCollectionMetricsPerTable = class_type 'Paws::DynamoDB::ItemCollectionMetricsPerTable';
-    my $ConsumedCapacity = class_type 'Paws::DynamoDB::ConsumedCapacity';
-    my $BatchWriteItemRequestMap = class_type 'Paws::DynamoDB::BatchWriteItemRequestMap';
-  
-  has ConsumedCapacity => (is => 'ro', isa => ArrayRef[$ConsumedCapacity]);
-  has ItemCollectionMetrics => (is => 'ro', isa => $ItemCollectionMetricsPerTable);
-  has UnprocessedItems => (is => 'ro', isa => $BatchWriteItemRequestMap);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBConsumedCapacity PawsDynamoDBBatchWriteItemRequestMap PawsDynamoDBItemCollectionMetricsPerTable/;
+  has ConsumedCapacity => (is => 'ro', isa => ArrayRef[PawsDynamoDBConsumedCapacity]);
+  has ItemCollectionMetrics => (is => 'ro', isa => PawsDynamoDBItemCollectionMetricsPerTable);
+  has UnprocessedItems => (is => 'ro', isa => PawsDynamoDBBatchWriteItemRequestMap);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -17,15 +13,15 @@ package Paws::DynamoDB::BatchWriteItemOutput;
              'types' => {
                           'ConsumedCapacity' => {
                                                   'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => 'ArrayRef[$ConsumedCapacity]'
+                                                  'type' => 'ArrayRef[PawsDynamoDBConsumedCapacity]'
                                                 },
                           'UnprocessedItems' => {
                                                   'class' => 'Paws::DynamoDB::BatchWriteItemRequestMap',
-                                                  'type' => '$BatchWriteItemRequestMap'
+                                                  'type' => 'PawsDynamoDBBatchWriteItemRequestMap'
                                                 },
                           'ItemCollectionMetrics' => {
                                                        'class' => 'Paws::DynamoDB::ItemCollectionMetricsPerTable',
-                                                       'type' => '$ItemCollectionMetricsPerTable'
+                                                       'type' => 'PawsDynamoDBItemCollectionMetricsPerTable'
                                                      }
                         }
            };
@@ -42,7 +38,7 @@ Paws::DynamoDB::BatchWriteItemOutput
 =head1 ATTRIBUTES
 
 
-=head2 ConsumedCapacity => ArrayRef[$ConsumedCapacity]
+=head2 ConsumedCapacity => ArrayRef[PawsDynamoDBConsumedCapacity]
 
 The capacity units consumed by the entire C<BatchWriteItem> operation.
 
@@ -62,7 +58,7 @@ C<CapacityUnits> - The total number of capacity units consumed.
 
 
 
-=head2 ItemCollectionMetrics => $ItemCollectionMetricsPerTable
+=head2 ItemCollectionMetrics => PawsDynamoDBItemCollectionMetricsPerTable
 
 A list of tables that were processed by C<BatchWriteItem> and, for each
 table, information about any item collections that were affected by
@@ -93,7 +89,7 @@ the precision or accuracy of the estimate.
 
 
 
-=head2 UnprocessedItems => $BatchWriteItemRequestMap
+=head2 UnprocessedItems => PawsDynamoDBBatchWriteItemRequestMap
 
 A map of tables and requests against those tables that were not
 processed. The C<UnprocessedItems> value is in the same form as

@@ -2,10 +2,8 @@
 package Paws::DynamoDB::ListBackupsOutput;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Type::Utils qw/class_type/;
-    my $BackupSummary = class_type 'Paws::DynamoDB::BackupSummary';
-  
-  has BackupSummaries => (is => 'ro', isa => ArrayRef[$BackupSummary]);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBBackupSummary/;
+  has BackupSummaries => (is => 'ro', isa => ArrayRef[PawsDynamoDBBackupSummary]);
   has LastEvaluatedBackupArn => (is => 'ro', isa => Str);
 
   has _request_id => (is => 'ro', isa => Str);
@@ -14,7 +12,7 @@ package Paws::DynamoDB::ListBackupsOutput;
              'types' => {
                           'BackupSummaries' => {
                                                  'class' => 'Paws::DynamoDB::BackupSummary',
-                                                 'type' => 'ArrayRef[$BackupSummary]'
+                                                 'type' => 'ArrayRef[PawsDynamoDBBackupSummary]'
                                                },
                           'LastEvaluatedBackupArn' => {
                                                         'type' => 'Str'
@@ -34,7 +32,7 @@ Paws::DynamoDB::ListBackupsOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupSummaries => ArrayRef[$BackupSummary]
+=head2 BackupSummaries => ArrayRef[PawsDynamoDBBackupSummary]
 
 List of C<BackupSummary> objects.
 

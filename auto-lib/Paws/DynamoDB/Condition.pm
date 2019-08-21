@@ -1,10 +1,8 @@
 package Paws::DynamoDB::Condition;
   use Moo;
   use Types::Standard qw/ArrayRef Str/;
-  use Type::Utils qw/class_type/;
-    my $AttributeValue = class_type 'Paws::DynamoDB::AttributeValue';
-  
-  has AttributeValueList => (is => 'ro', isa => ArrayRef[$AttributeValue]);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAttributeValue/;
+  has AttributeValueList => (is => 'ro', isa => ArrayRef[PawsDynamoDBAttributeValue]);
   has ComparisonOperator => (is => 'ro', isa => Str, required => 1);
 
   sub params_map {
@@ -12,7 +10,7 @@ package Paws::DynamoDB::Condition;
              'types' => {
                           'AttributeValueList' => {
                                                     'class' => 'Paws::DynamoDB::AttributeValue',
-                                                    'type' => 'ArrayRef[$AttributeValue]'
+                                                    'type' => 'ArrayRef[PawsDynamoDBAttributeValue]'
                                                   },
                           'ComparisonOperator' => {
                                                     'type' => 'Str'
@@ -80,7 +78,7 @@ evaluates the scan results and returns only the desired values.
 =head1 ATTRIBUTES
 
 
-=head2 AttributeValueList => ArrayRef[$AttributeValue]
+=head2 AttributeValueList => ArrayRef[PawsDynamoDBAttributeValue]
 
   One or more values to evaluate against the supplied attribute. The
 number of values in the list depends on the C<ComparisonOperator> being

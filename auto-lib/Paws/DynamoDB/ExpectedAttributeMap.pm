@@ -2,16 +2,15 @@ package Paws::DynamoDB::ExpectedAttributeMap;
   use Moo;
   with 'Paws::API::StrToObjMapParser';
   use Types::Standard qw/HashRef/;
-  use Type::Utils qw/class_type/;
-  my $ExpectedAttributeValue = class_type 'Paws::DynamoDB::ExpectedAttributeValue';
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBExpectedAttributeValue/;
 
-  has Map => (is => 'ro', isa => HashRef[$ExpectedAttributeValue]);
+  has Map => (is => 'ro', isa => HashRef[PawsDynamoDBExpectedAttributeValue]);
 
   sub params_map {
     my $params1 = {
                     types => {
                                'Map' => {
-                                          type => 'HashRef[$ExpectedAttributeValue]',
+                                          type => 'HashRef[PawsDynamoDBExpectedAttributeValue]',
                                           class => 'Paws::DynamoDB::ExpectedAttributeValue',
                                         },
                              },

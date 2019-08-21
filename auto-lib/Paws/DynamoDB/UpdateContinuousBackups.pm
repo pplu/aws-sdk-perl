@@ -2,10 +2,8 @@
 package Paws::DynamoDB::UpdateContinuousBackups;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-    my $PointInTimeRecoverySpecification = class_type 'Paws::DynamoDB::PointInTimeRecoverySpecification';
-  
-  has PointInTimeRecoverySpecification => (is => 'ro', isa => $PointInTimeRecoverySpecification, required => 1, predicate => 1);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBPointInTimeRecoverySpecification/;
+  has PointInTimeRecoverySpecification => (is => 'ro', isa => PawsDynamoDBPointInTimeRecoverySpecification, required => 1, predicate => 1);
   has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
   use MooX::ClassAttribute;
@@ -22,7 +20,7 @@ package Paws::DynamoDB::UpdateContinuousBackups;
                                          },
                           'PointInTimeRecoverySpecification' => {
                                                                   'class' => 'Paws::DynamoDB::PointInTimeRecoverySpecification',
-                                                                  'type' => '$PointInTimeRecoverySpecification'
+                                                                  'type' => 'PawsDynamoDBPointInTimeRecoverySpecification'
                                                                 }
                         }
            };
@@ -69,7 +67,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> PointInTimeRecoverySpecification => $PointInTimeRecoverySpecification
+=head2 B<REQUIRED> PointInTimeRecoverySpecification => PawsDynamoDBPointInTimeRecoverySpecification
 
 Represents the settings used to enable point in time recovery.
 

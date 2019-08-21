@@ -1,13 +1,10 @@
 package Paws::DynamoDB::LocalSecondaryIndexInfo;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Type::Utils qw/class_type/;
-    my $KeySchemaElement = class_type 'Paws::DynamoDB::KeySchemaElement';
-    my $Projection = class_type 'Paws::DynamoDB::Projection';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBProjection PawsDynamoDBKeySchemaElement/;
   has IndexName => (is => 'ro', isa => Str);
-  has KeySchema => (is => 'ro', isa => ArrayRef[$KeySchemaElement]);
-  has Projection => (is => 'ro', isa => $Projection);
+  has KeySchema => (is => 'ro', isa => ArrayRef[PawsDynamoDBKeySchemaElement]);
+  has Projection => (is => 'ro', isa => PawsDynamoDBProjection);
 
   sub params_map {
     my $params1 = {
@@ -17,11 +14,11 @@ package Paws::DynamoDB::LocalSecondaryIndexInfo;
                                          },
                           'KeySchema' => {
                                            'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[$KeySchemaElement]'
+                                           'type' => 'ArrayRef[PawsDynamoDBKeySchemaElement]'
                                          },
                           'Projection' => {
                                             'class' => 'Paws::DynamoDB::Projection',
-                                            'type' => '$Projection'
+                                            'type' => 'PawsDynamoDBProjection'
                                           }
                         }
            };
@@ -70,7 +67,7 @@ the backup was created.
   Represents the name of the local secondary index.
 
 
-=head2 KeySchema => ArrayRef[$KeySchemaElement]
+=head2 KeySchema => ArrayRef[PawsDynamoDBKeySchemaElement]
 
   The complete key schema for a local secondary index, which consists of
 one or more pairs of attribute names and key types:
@@ -98,7 +95,7 @@ the same partition key physically close together, in sorted order by
 the sort key value.
 
 
-=head2 Projection => $Projection
+=head2 Projection => PawsDynamoDBProjection
 
   Represents attributes that are copied (projected) from the table into
 the global secondary index. These are in addition to the primary key

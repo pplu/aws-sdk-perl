@@ -2,10 +2,8 @@
 package Paws::DynamoDB::UpdateTimeToLiveOutput;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-    my $TimeToLiveSpecification = class_type 'Paws::DynamoDB::TimeToLiveSpecification';
-  
-  has TimeToLiveSpecification => (is => 'ro', isa => $TimeToLiveSpecification);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBTimeToLiveSpecification/;
+  has TimeToLiveSpecification => (is => 'ro', isa => PawsDynamoDBTimeToLiveSpecification);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -13,7 +11,7 @@ package Paws::DynamoDB::UpdateTimeToLiveOutput;
              'types' => {
                           'TimeToLiveSpecification' => {
                                                          'class' => 'Paws::DynamoDB::TimeToLiveSpecification',
-                                                         'type' => '$TimeToLiveSpecification'
+                                                         'type' => 'PawsDynamoDBTimeToLiveSpecification'
                                                        }
                         }
            };
@@ -30,7 +28,7 @@ Paws::DynamoDB::UpdateTimeToLiveOutput
 =head1 ATTRIBUTES
 
 
-=head2 TimeToLiveSpecification => $TimeToLiveSpecification
+=head2 TimeToLiveSpecification => PawsDynamoDBTimeToLiveSpecification
 
 Represents the output of an C<UpdateTimeToLive> operation.
 

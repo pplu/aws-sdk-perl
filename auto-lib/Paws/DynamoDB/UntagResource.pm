@@ -2,8 +2,7 @@
 package Paws::DynamoDB::UntagResource;
   use Moo;
   use Types::Standard qw/Str ArrayRef Undef/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
   has TagKeys => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 

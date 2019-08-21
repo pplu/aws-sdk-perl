@@ -1,8 +1,7 @@
 package Paws::DynamoDB::Endpoint;
   use Moo;
   use Types::Standard qw/Str Int/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has Address => (is => 'ro', isa => Str, required => 1);
   has CachePeriodInMinutes => (is => 'ro', isa => Int, required => 1);
 

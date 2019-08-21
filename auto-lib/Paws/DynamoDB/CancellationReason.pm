@@ -1,11 +1,9 @@
 package Paws::DynamoDB::CancellationReason;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-    my $AttributeMap = class_type 'Paws::DynamoDB::AttributeMap';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAttributeMap/;
   has Code => (is => 'ro', isa => Str);
-  has Item => (is => 'ro', isa => $AttributeMap);
+  has Item => (is => 'ro', isa => PawsDynamoDBAttributeMap);
   has Message => (is => 'ro', isa => Str);
 
   sub params_map {
@@ -16,7 +14,7 @@ package Paws::DynamoDB::CancellationReason;
                                     },
                           'Item' => {
                                       'class' => 'Paws::DynamoDB::AttributeMap',
-                                      'type' => '$AttributeMap'
+                                      'type' => 'PawsDynamoDBAttributeMap'
                                     },
                           'Message' => {
                                          'type' => 'Str'
@@ -71,7 +69,7 @@ Null code and Null message will be present.
   Status code for the result of the cancelled transaction.
 
 
-=head2 Item => $AttributeMap
+=head2 Item => PawsDynamoDBAttributeMap
 
   Item in the request which caused the transaction to get cancelled.
 

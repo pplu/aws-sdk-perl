@@ -1,17 +1,15 @@
 package Paws::DynamoDB::PutRequest;
   use Moo;
   use Types::Standard qw//;
-  use Type::Utils qw/class_type/;
-    my $PutItemInputAttributeMap = class_type 'Paws::DynamoDB::PutItemInputAttributeMap';
-  
-  has Item => (is => 'ro', isa => $PutItemInputAttributeMap, required => 1);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBPutItemInputAttributeMap/;
+  has Item => (is => 'ro', isa => PawsDynamoDBPutItemInputAttributeMap, required => 1);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'Item' => {
                                       'class' => 'Paws::DynamoDB::PutItemInputAttributeMap',
-                                      'type' => '$PutItemInputAttributeMap'
+                                      'type' => 'PawsDynamoDBPutItemInputAttributeMap'
                                     }
                         }
            };
@@ -54,7 +52,7 @@ Represents a request to perform a C<PutItem> operation on an item.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Item => $PutItemInputAttributeMap
+=head2 B<REQUIRED> Item => PawsDynamoDBPutItemInputAttributeMap
 
   A map of attribute name to attribute values, representing the primary
 key of an item to be processed by C<PutItem>. All of the table's

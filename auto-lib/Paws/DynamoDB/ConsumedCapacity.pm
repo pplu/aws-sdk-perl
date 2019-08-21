@@ -1,15 +1,12 @@
 package Paws::DynamoDB::ConsumedCapacity;
   use Moo;
   use Types::Standard qw/Num Str/;
-  use Type::Utils qw/class_type/;
-    my $Capacity = class_type 'Paws::DynamoDB::Capacity';
-    my $SecondaryIndexesCapacityMap = class_type 'Paws::DynamoDB::SecondaryIndexesCapacityMap';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBSecondaryIndexesCapacityMap PawsDynamoDBCapacity/;
   has CapacityUnits => (is => 'ro', isa => Num);
-  has GlobalSecondaryIndexes => (is => 'ro', isa => $SecondaryIndexesCapacityMap);
-  has LocalSecondaryIndexes => (is => 'ro', isa => $SecondaryIndexesCapacityMap);
+  has GlobalSecondaryIndexes => (is => 'ro', isa => PawsDynamoDBSecondaryIndexesCapacityMap);
+  has LocalSecondaryIndexes => (is => 'ro', isa => PawsDynamoDBSecondaryIndexesCapacityMap);
   has ReadCapacityUnits => (is => 'ro', isa => Num);
-  has Table => (is => 'ro', isa => $Capacity);
+  has Table => (is => 'ro', isa => PawsDynamoDBCapacity);
   has TableName => (is => 'ro', isa => Str);
   has WriteCapacityUnits => (is => 'ro', isa => Num);
 
@@ -18,7 +15,7 @@ package Paws::DynamoDB::ConsumedCapacity;
              'types' => {
                           'Table' => {
                                        'class' => 'Paws::DynamoDB::Capacity',
-                                       'type' => '$Capacity'
+                                       'type' => 'PawsDynamoDBCapacity'
                                      },
                           'ReadCapacityUnits' => {
                                                    'type' => 'Num'
@@ -28,11 +25,11 @@ package Paws::DynamoDB::ConsumedCapacity;
                                          },
                           'GlobalSecondaryIndexes' => {
                                                         'class' => 'Paws::DynamoDB::SecondaryIndexesCapacityMap',
-                                                        'type' => '$SecondaryIndexesCapacityMap'
+                                                        'type' => 'PawsDynamoDBSecondaryIndexesCapacityMap'
                                                       },
                           'LocalSecondaryIndexes' => {
                                                        'class' => 'Paws::DynamoDB::SecondaryIndexesCapacityMap',
-                                                       'type' => '$SecondaryIndexesCapacityMap'
+                                                       'type' => 'PawsDynamoDBSecondaryIndexesCapacityMap'
                                                      },
                           'WriteCapacityUnits' => {
                                                     'type' => 'Num'
@@ -92,13 +89,13 @@ in the I<Amazon DynamoDB Developer Guide>.
   The total number of capacity units consumed by the operation.
 
 
-=head2 GlobalSecondaryIndexes => $SecondaryIndexesCapacityMap
+=head2 GlobalSecondaryIndexes => PawsDynamoDBSecondaryIndexesCapacityMap
 
   The amount of throughput consumed on each global index affected by the
 operation.
 
 
-=head2 LocalSecondaryIndexes => $SecondaryIndexesCapacityMap
+=head2 LocalSecondaryIndexes => PawsDynamoDBSecondaryIndexesCapacityMap
 
   The amount of throughput consumed on each local index affected by the
 operation.
@@ -109,7 +106,7 @@ operation.
   The total number of read capacity units consumed by the operation.
 
 
-=head2 Table => $Capacity
+=head2 Table => PawsDynamoDBCapacity
 
   The amount of throughput consumed on the table affected by the
 operation.

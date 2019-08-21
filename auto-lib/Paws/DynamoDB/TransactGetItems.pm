@@ -2,11 +2,9 @@
 package Paws::DynamoDB::TransactGetItems;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Type::Utils qw/class_type/;
-    my $TransactGetItem = class_type 'Paws::DynamoDB::TransactGetItem';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBTransactGetItem/;
   has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
-  has TransactItems => (is => 'ro', isa => ArrayRef[$TransactGetItem], required => 1, predicate => 1);
+  has TransactItems => (is => 'ro', isa => ArrayRef[PawsDynamoDBTransactGetItem], required => 1, predicate => 1);
 
   use MooX::ClassAttribute;
 
@@ -19,7 +17,7 @@ package Paws::DynamoDB::TransactGetItems;
              'types' => {
                           'TransactItems' => {
                                                'class' => 'Paws::DynamoDB::TransactGetItem',
-                                               'type' => 'ArrayRef[$TransactGetItem]'
+                                               'type' => 'ArrayRef[PawsDynamoDBTransactGetItem]'
                                              },
                           'ReturnConsumedCapacity' => {
                                                         'type' => 'Str'
@@ -106,7 +104,7 @@ returned. No other value is valid.
 
 Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
-=head2 B<REQUIRED> TransactItems => ArrayRef[$TransactGetItem]
+=head2 B<REQUIRED> TransactItems => ArrayRef[PawsDynamoDBTransactGetItem]
 
 An ordered array of up to 25 C<TransactGetItem> objects, each of which
 contains a C<Get> structure.

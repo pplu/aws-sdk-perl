@@ -2,12 +2,9 @@
 package Paws::DynamoDB::TransactGetItemsOutput;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Type::Utils qw/class_type/;
-    my $ConsumedCapacity = class_type 'Paws::DynamoDB::ConsumedCapacity';
-    my $ItemResponse = class_type 'Paws::DynamoDB::ItemResponse';
-  
-  has ConsumedCapacity => (is => 'ro', isa => ArrayRef[$ConsumedCapacity]);
-  has Responses => (is => 'ro', isa => ArrayRef[$ItemResponse]);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBConsumedCapacity PawsDynamoDBItemResponse/;
+  has ConsumedCapacity => (is => 'ro', isa => ArrayRef[PawsDynamoDBConsumedCapacity]);
+  has Responses => (is => 'ro', isa => ArrayRef[PawsDynamoDBItemResponse]);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -15,11 +12,11 @@ package Paws::DynamoDB::TransactGetItemsOutput;
              'types' => {
                           'ConsumedCapacity' => {
                                                   'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => 'ArrayRef[$ConsumedCapacity]'
+                                                  'type' => 'ArrayRef[PawsDynamoDBConsumedCapacity]'
                                                 },
                           'Responses' => {
                                            'class' => 'Paws::DynamoDB::ItemResponse',
-                                           'type' => 'ArrayRef[$ItemResponse]'
+                                           'type' => 'ArrayRef[PawsDynamoDBItemResponse]'
                                          }
                         }
            };
@@ -36,7 +33,7 @@ Paws::DynamoDB::TransactGetItemsOutput
 =head1 ATTRIBUTES
 
 
-=head2 ConsumedCapacity => ArrayRef[$ConsumedCapacity]
+=head2 ConsumedCapacity => ArrayRef[PawsDynamoDBConsumedCapacity]
 
 If the I<ReturnConsumedCapacity> value was C<TOTAL>, this is an array
 of C<ConsumedCapacity> objects, one for each table addressed by
@@ -45,7 +42,7 @@ C<ConsumedCapacity> objects report the read-capacity units consumed by
 the C<TransactGetItems> call in that table.
 
 
-=head2 Responses => ArrayRef[$ItemResponse]
+=head2 Responses => ArrayRef[PawsDynamoDBItemResponse]
 
 An ordered array of up to 25 C<ItemResponse> objects, each of which
 corresponds to the C<TransactGetItem> object in the same position in

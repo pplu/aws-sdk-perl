@@ -1,15 +1,11 @@
 package Paws::DynamoDB::CreateGlobalSecondaryIndexAction;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Type::Utils qw/class_type/;
-    my $KeySchemaElement = class_type 'Paws::DynamoDB::KeySchemaElement';
-    my $ProvisionedThroughput = class_type 'Paws::DynamoDB::ProvisionedThroughput';
-    my $Projection = class_type 'Paws::DynamoDB::Projection';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBProjection PawsDynamoDBProvisionedThroughput PawsDynamoDBKeySchemaElement/;
   has IndexName => (is => 'ro', isa => Str, required => 1);
-  has KeySchema => (is => 'ro', isa => ArrayRef[$KeySchemaElement], required => 1);
-  has Projection => (is => 'ro', isa => $Projection, required => 1);
-  has ProvisionedThroughput => (is => 'ro', isa => $ProvisionedThroughput);
+  has KeySchema => (is => 'ro', isa => ArrayRef[PawsDynamoDBKeySchemaElement], required => 1);
+  has Projection => (is => 'ro', isa => PawsDynamoDBProjection, required => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => PawsDynamoDBProvisionedThroughput);
 
   sub params_map {
     my $params1 = {
@@ -19,15 +15,15 @@ package Paws::DynamoDB::CreateGlobalSecondaryIndexAction;
                                          },
                           'KeySchema' => {
                                            'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[$KeySchemaElement]'
+                                           'type' => 'ArrayRef[PawsDynamoDBKeySchemaElement]'
                                          },
                           'Projection' => {
                                             'class' => 'Paws::DynamoDB::Projection',
-                                            'type' => '$Projection'
+                                            'type' => 'PawsDynamoDBProjection'
                                           },
                           'ProvisionedThroughput' => {
                                                        'class' => 'Paws::DynamoDB::ProvisionedThroughput',
-                                                       'type' => '$ProvisionedThroughput'
+                                                       'type' => 'PawsDynamoDBProvisionedThroughput'
                                                      }
                         }
            };
@@ -76,19 +72,19 @@ table.
   The name of the global secondary index to be created.
 
 
-=head2 B<REQUIRED> KeySchema => ArrayRef[$KeySchemaElement]
+=head2 B<REQUIRED> KeySchema => ArrayRef[PawsDynamoDBKeySchemaElement]
 
   The key schema for the global secondary index.
 
 
-=head2 B<REQUIRED> Projection => $Projection
+=head2 B<REQUIRED> Projection => PawsDynamoDBProjection
 
   Represents attributes that are copied (projected) from the table into
 an index. These are in addition to the primary key attributes and index
 key attributes, which are automatically projected.
 
 
-=head2 ProvisionedThroughput => $ProvisionedThroughput
+=head2 ProvisionedThroughput => PawsDynamoDBProvisionedThroughput
 
   Represents the provisioned throughput settings for the specified global
 secondary index.

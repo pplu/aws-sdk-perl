@@ -2,15 +2,11 @@
 package Paws::DynamoDB::ScanOutput;
   use Moo;
   use Types::Standard qw/Str Int ArrayRef/;
-  use Type::Utils qw/class_type/;
-    my $AttributeMap = class_type 'Paws::DynamoDB::AttributeMap';
-    my $Key = class_type 'Paws::DynamoDB::Key';
-    my $ConsumedCapacity = class_type 'Paws::DynamoDB::ConsumedCapacity';
-  
-  has ConsumedCapacity => (is => 'ro', isa => $ConsumedCapacity);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBConsumedCapacity PawsDynamoDBKey PawsDynamoDBAttributeMap/;
+  has ConsumedCapacity => (is => 'ro', isa => PawsDynamoDBConsumedCapacity);
   has Count => (is => 'ro', isa => Int);
-  has Items => (is => 'ro', isa => ArrayRef[$AttributeMap]);
-  has LastEvaluatedKey => (is => 'ro', isa => $Key);
+  has Items => (is => 'ro', isa => ArrayRef[PawsDynamoDBAttributeMap]);
+  has LastEvaluatedKey => (is => 'ro', isa => PawsDynamoDBKey);
   has ScannedCount => (is => 'ro', isa => Int);
 
   has _request_id => (is => 'ro', isa => Str);
@@ -22,15 +18,15 @@ package Paws::DynamoDB::ScanOutput;
                                             },
                           'Items' => {
                                        'class' => 'Paws::DynamoDB::AttributeMap',
-                                       'type' => 'ArrayRef[$AttributeMap]'
+                                       'type' => 'ArrayRef[PawsDynamoDBAttributeMap]'
                                      },
                           'ConsumedCapacity' => {
                                                   'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => '$ConsumedCapacity'
+                                                  'type' => 'PawsDynamoDBConsumedCapacity'
                                                 },
                           'LastEvaluatedKey' => {
                                                   'class' => 'Paws::DynamoDB::Key',
-                                                  'type' => '$Key'
+                                                  'type' => 'PawsDynamoDBKey'
                                                 },
                           'Count' => {
                                        'type' => 'Int'
@@ -50,7 +46,7 @@ Paws::DynamoDB::ScanOutput
 =head1 ATTRIBUTES
 
 
-=head2 ConsumedCapacity => $ConsumedCapacity
+=head2 ConsumedCapacity => PawsDynamoDBConsumedCapacity
 
 The capacity units consumed by the C<Scan> operation. The data returned
 includes the total provisioned throughput consumed, along with
@@ -74,14 +70,14 @@ If you did not use a filter in the request, then C<Count> is the same
 as C<ScannedCount>.
 
 
-=head2 Items => ArrayRef[$AttributeMap]
+=head2 Items => ArrayRef[PawsDynamoDBAttributeMap]
 
 An array of item attributes that match the scan criteria. Each element
 in this array consists of an attribute name and the value for that
 attribute.
 
 
-=head2 LastEvaluatedKey => $Key
+=head2 LastEvaluatedKey => PawsDynamoDBKey
 
 The primary key of the item where the operation stopped, inclusive of
 the previous result set. Use this value to start a new operation,

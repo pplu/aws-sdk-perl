@@ -2,18 +2,13 @@
 package Paws::DynamoDB::PutItem;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-    my $ExpressionAttributeValueMap = class_type 'Paws::DynamoDB::ExpressionAttributeValueMap';
-    my $ExpressionAttributeNameMap = class_type 'Paws::DynamoDB::ExpressionAttributeNameMap';
-    my $PutItemInputAttributeMap = class_type 'Paws::DynamoDB::PutItemInputAttributeMap';
-    my $ExpectedAttributeMap = class_type 'Paws::DynamoDB::ExpectedAttributeMap';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBExpressionAttributeNameMap PawsDynamoDBPutItemInputAttributeMap PawsDynamoDBExpressionAttributeValueMap PawsDynamoDBExpectedAttributeMap/;
   has ConditionalOperator => (is => 'ro', isa => Str, predicate => 1);
   has ConditionExpression => (is => 'ro', isa => Str, predicate => 1);
-  has Expected => (is => 'ro', isa => $ExpectedAttributeMap, predicate => 1);
-  has ExpressionAttributeNames => (is => 'ro', isa => $ExpressionAttributeNameMap, predicate => 1);
-  has ExpressionAttributeValues => (is => 'ro', isa => $ExpressionAttributeValueMap, predicate => 1);
-  has Item => (is => 'ro', isa => $PutItemInputAttributeMap, required => 1, predicate => 1);
+  has Expected => (is => 'ro', isa => PawsDynamoDBExpectedAttributeMap, predicate => 1);
+  has ExpressionAttributeNames => (is => 'ro', isa => PawsDynamoDBExpressionAttributeNameMap, predicate => 1);
+  has ExpressionAttributeValues => (is => 'ro', isa => PawsDynamoDBExpressionAttributeValueMap, predicate => 1);
+  has Item => (is => 'ro', isa => PawsDynamoDBPutItemInputAttributeMap, required => 1, predicate => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
   has ReturnItemCollectionMetrics => (is => 'ro', isa => Str, predicate => 1);
   has ReturnValues => (is => 'ro', isa => Str, predicate => 1);
@@ -30,14 +25,14 @@ package Paws::DynamoDB::PutItem;
              'types' => {
                           'ExpressionAttributeValues' => {
                                                            'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
-                                                           'type' => '$ExpressionAttributeValueMap'
+                                                           'type' => 'PawsDynamoDBExpressionAttributeValueMap'
                                                          },
                           'ReturnValues' => {
                                               'type' => 'Str'
                                             },
                           'Item' => {
                                       'class' => 'Paws::DynamoDB::PutItemInputAttributeMap',
-                                      'type' => '$PutItemInputAttributeMap'
+                                      'type' => 'PawsDynamoDBPutItemInputAttributeMap'
                                     },
                           'ReturnConsumedCapacity' => {
                                                         'type' => 'Str'
@@ -53,14 +48,14 @@ package Paws::DynamoDB::PutItem;
                                                    },
                           'ExpressionAttributeNames' => {
                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => '$ExpressionAttributeNameMap'
+                                                          'type' => 'PawsDynamoDBExpressionAttributeNameMap'
                                                         },
                           'ConditionExpression' => {
                                                      'type' => 'Str'
                                                    },
                           'Expected' => {
                                           'class' => 'Paws::DynamoDB::ExpectedAttributeMap',
-                                          'type' => '$ExpectedAttributeMap'
+                                          'type' => 'PawsDynamoDBExpectedAttributeMap'
                                         }
                         }
            };
@@ -158,7 +153,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 Expected => $ExpectedAttributeMap
+=head2 Expected => PawsDynamoDBExpectedAttributeMap
 
 This is a legacy parameter. Use C<ConditionExpression> instead. For
 more information, see Expected
@@ -167,7 +162,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 ExpressionAttributeNames => $ExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => PawsDynamoDBExpressionAttributeNameMap
 
 One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using C<ExpressionAttributeNames>:
@@ -238,7 +233,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 ExpressionAttributeValues => $ExpressionAttributeValueMap
+=head2 ExpressionAttributeValues => PawsDynamoDBExpressionAttributeValueMap
 
 One or more values that can be substituted in an expression.
 
@@ -265,7 +260,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 B<REQUIRED> Item => $PutItemInputAttributeMap
+=head2 B<REQUIRED> Item => PawsDynamoDBPutItemInputAttributeMap
 
 A map of attribute name/value pairs, one for each attribute. Only the
 primary key attributes are required; you can optionally provide other

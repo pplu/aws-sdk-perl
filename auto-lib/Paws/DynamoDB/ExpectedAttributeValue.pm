@@ -1,24 +1,22 @@
 package Paws::DynamoDB::ExpectedAttributeValue;
   use Moo;
   use Types::Standard qw/ArrayRef Str Bool/;
-  use Type::Utils qw/class_type/;
-    my $AttributeValue = class_type 'Paws::DynamoDB::AttributeValue';
-  
-  has AttributeValueList => (is => 'ro', isa => ArrayRef[$AttributeValue]);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAttributeValue/;
+  has AttributeValueList => (is => 'ro', isa => ArrayRef[PawsDynamoDBAttributeValue]);
   has ComparisonOperator => (is => 'ro', isa => Str);
   has Exists => (is => 'ro', isa => Bool);
-  has Value => (is => 'ro', isa => $AttributeValue);
+  has Value => (is => 'ro', isa => PawsDynamoDBAttributeValue);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'AttributeValueList' => {
                                                     'class' => 'Paws::DynamoDB::AttributeValue',
-                                                    'type' => 'ArrayRef[$AttributeValue]'
+                                                    'type' => 'ArrayRef[PawsDynamoDBAttributeValue]'
                                                   },
                           'Value' => {
                                        'class' => 'Paws::DynamoDB::AttributeValue',
-                                       'type' => '$AttributeValue'
+                                       'type' => 'PawsDynamoDBAttributeValue'
                                      },
                           'Exists' => {
                                         'type' => 'Bool'
@@ -96,7 +94,7 @@ once, DynamoDB will return a C<ValidationException> exception.
 =head1 ATTRIBUTES
 
 
-=head2 AttributeValueList => ArrayRef[$AttributeValue]
+=head2 AttributeValueList => ArrayRef[PawsDynamoDBAttributeValue]
 
   One or more values to evaluate against the supplied attribute. The
 number of values in the list depends on the C<ComparisonOperator> being
@@ -342,7 +340,7 @@ exist.)
 
 
 
-=head2 Value => $AttributeValue
+=head2 Value => PawsDynamoDBAttributeValue
 
   Represents the data for the expected attribute.
 

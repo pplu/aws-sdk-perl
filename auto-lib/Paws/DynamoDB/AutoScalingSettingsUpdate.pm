@@ -1,21 +1,19 @@
 package Paws::DynamoDB::AutoScalingSettingsUpdate;
   use Moo;
   use Types::Standard qw/Bool Str Int/;
-  use Type::Utils qw/class_type/;
-    my $AutoScalingPolicyUpdate = class_type 'Paws::DynamoDB::AutoScalingPolicyUpdate';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAutoScalingPolicyUpdate/;
   has AutoScalingDisabled => (is => 'ro', isa => Bool);
   has AutoScalingRoleArn => (is => 'ro', isa => Str);
   has MaximumUnits => (is => 'ro', isa => Int);
   has MinimumUnits => (is => 'ro', isa => Int);
-  has ScalingPolicyUpdate => (is => 'ro', isa => $AutoScalingPolicyUpdate);
+  has ScalingPolicyUpdate => (is => 'ro', isa => PawsDynamoDBAutoScalingPolicyUpdate);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'ScalingPolicyUpdate' => {
                                                      'class' => 'Paws::DynamoDB::AutoScalingPolicyUpdate',
-                                                     'type' => '$AutoScalingPolicyUpdate'
+                                                     'type' => 'PawsDynamoDBAutoScalingPolicyUpdate'
                                                    },
                           'MaximumUnits' => {
                                               'type' => 'Int'
@@ -93,7 +91,7 @@ index should be scaled up to.
 index should be scaled down to.
 
 
-=head2 ScalingPolicyUpdate => $AutoScalingPolicyUpdate
+=head2 ScalingPolicyUpdate => PawsDynamoDBAutoScalingPolicyUpdate
 
   The scaling policy to apply for scaling target global table or global
 secondary index capacity units.

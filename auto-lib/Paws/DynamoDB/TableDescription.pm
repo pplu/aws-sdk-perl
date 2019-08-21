@@ -1,30 +1,20 @@
 package Paws::DynamoDB::TableDescription;
   use Moo;
   use Types::Standard qw/ArrayRef Str Int/;
-  use Type::Utils qw/class_type/;
-    my $RestoreSummary = class_type 'Paws::DynamoDB::RestoreSummary';
-    my $BillingModeSummary = class_type 'Paws::DynamoDB::BillingModeSummary';
-    my $ProvisionedThroughputDescription = class_type 'Paws::DynamoDB::ProvisionedThroughputDescription';
-    my $SSEDescription = class_type 'Paws::DynamoDB::SSEDescription';
-    my $LocalSecondaryIndexDescription = class_type 'Paws::DynamoDB::LocalSecondaryIndexDescription';
-    my $GlobalSecondaryIndexDescription = class_type 'Paws::DynamoDB::GlobalSecondaryIndexDescription';
-    my $KeySchemaElement = class_type 'Paws::DynamoDB::KeySchemaElement';
-    my $AttributeDefinition = class_type 'Paws::DynamoDB::AttributeDefinition';
-    my $StreamSpecification = class_type 'Paws::DynamoDB::StreamSpecification';
-  
-  has AttributeDefinitions => (is => 'ro', isa => ArrayRef[$AttributeDefinition]);
-  has BillingModeSummary => (is => 'ro', isa => $BillingModeSummary);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBGlobalSecondaryIndexDescription PawsDynamoDBBillingModeSummary PawsDynamoDBProvisionedThroughputDescription PawsDynamoDBStreamSpecification PawsDynamoDBSSEDescription PawsDynamoDBRestoreSummary PawsDynamoDBAttributeDefinition PawsDynamoDBLocalSecondaryIndexDescription PawsDynamoDBKeySchemaElement/;
+  has AttributeDefinitions => (is => 'ro', isa => ArrayRef[PawsDynamoDBAttributeDefinition]);
+  has BillingModeSummary => (is => 'ro', isa => PawsDynamoDBBillingModeSummary);
   has CreationDateTime => (is => 'ro', isa => Str);
-  has GlobalSecondaryIndexes => (is => 'ro', isa => ArrayRef[$GlobalSecondaryIndexDescription]);
+  has GlobalSecondaryIndexes => (is => 'ro', isa => ArrayRef[PawsDynamoDBGlobalSecondaryIndexDescription]);
   has ItemCount => (is => 'ro', isa => Int);
-  has KeySchema => (is => 'ro', isa => ArrayRef[$KeySchemaElement]);
+  has KeySchema => (is => 'ro', isa => ArrayRef[PawsDynamoDBKeySchemaElement]);
   has LatestStreamArn => (is => 'ro', isa => Str);
   has LatestStreamLabel => (is => 'ro', isa => Str);
-  has LocalSecondaryIndexes => (is => 'ro', isa => ArrayRef[$LocalSecondaryIndexDescription]);
-  has ProvisionedThroughput => (is => 'ro', isa => $ProvisionedThroughputDescription);
-  has RestoreSummary => (is => 'ro', isa => $RestoreSummary);
-  has SSEDescription => (is => 'ro', isa => $SSEDescription);
-  has StreamSpecification => (is => 'ro', isa => $StreamSpecification);
+  has LocalSecondaryIndexes => (is => 'ro', isa => ArrayRef[PawsDynamoDBLocalSecondaryIndexDescription]);
+  has ProvisionedThroughput => (is => 'ro', isa => PawsDynamoDBProvisionedThroughputDescription);
+  has RestoreSummary => (is => 'ro', isa => PawsDynamoDBRestoreSummary);
+  has SSEDescription => (is => 'ro', isa => PawsDynamoDBSSEDescription);
+  has StreamSpecification => (is => 'ro', isa => PawsDynamoDBStreamSpecification);
   has TableArn => (is => 'ro', isa => Str);
   has TableId => (is => 'ro', isa => Str);
   has TableName => (is => 'ro', isa => Str);
@@ -36,32 +26,32 @@ package Paws::DynamoDB::TableDescription;
              'types' => {
                           'BillingModeSummary' => {
                                                     'class' => 'Paws::DynamoDB::BillingModeSummary',
-                                                    'type' => '$BillingModeSummary'
+                                                    'type' => 'PawsDynamoDBBillingModeSummary'
                                                   },
                           'TableSizeBytes' => {
                                                 'type' => 'Int'
                                               },
                           'RestoreSummary' => {
                                                 'class' => 'Paws::DynamoDB::RestoreSummary',
-                                                'type' => '$RestoreSummary'
+                                                'type' => 'PawsDynamoDBRestoreSummary'
                                               },
                           'CreationDateTime' => {
                                                   'type' => 'Str'
                                                 },
                           'GlobalSecondaryIndexes' => {
                                                         'class' => 'Paws::DynamoDB::GlobalSecondaryIndexDescription',
-                                                        'type' => 'ArrayRef[$GlobalSecondaryIndexDescription]'
+                                                        'type' => 'ArrayRef[PawsDynamoDBGlobalSecondaryIndexDescription]'
                                                       },
                           'LocalSecondaryIndexes' => {
                                                        'class' => 'Paws::DynamoDB::LocalSecondaryIndexDescription',
-                                                       'type' => 'ArrayRef[$LocalSecondaryIndexDescription]'
+                                                       'type' => 'ArrayRef[PawsDynamoDBLocalSecondaryIndexDescription]'
                                                      },
                           'TableArn' => {
                                           'type' => 'Str'
                                         },
                           'StreamSpecification' => {
                                                      'class' => 'Paws::DynamoDB::StreamSpecification',
-                                                     'type' => '$StreamSpecification'
+                                                     'type' => 'PawsDynamoDBStreamSpecification'
                                                    },
                           'LatestStreamArn' => {
                                                  'type' => 'Str'
@@ -71,28 +61,28 @@ package Paws::DynamoDB::TableDescription;
                                          },
                           'SSEDescription' => {
                                                 'class' => 'Paws::DynamoDB::SSEDescription',
-                                                'type' => '$SSEDescription'
+                                                'type' => 'PawsDynamoDBSSEDescription'
                                               },
                           'LatestStreamLabel' => {
                                                    'type' => 'Str'
                                                  },
                           'AttributeDefinitions' => {
                                                       'class' => 'Paws::DynamoDB::AttributeDefinition',
-                                                      'type' => 'ArrayRef[$AttributeDefinition]'
+                                                      'type' => 'ArrayRef[PawsDynamoDBAttributeDefinition]'
                                                     },
                           'TableId' => {
                                          'type' => 'Str'
                                        },
                           'KeySchema' => {
                                            'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[$KeySchemaElement]'
+                                           'type' => 'ArrayRef[PawsDynamoDBKeySchemaElement]'
                                          },
                           'TableName' => {
                                            'type' => 'Str'
                                          },
                           'ProvisionedThroughput' => {
                                                        'class' => 'Paws::DynamoDB::ProvisionedThroughputDescription',
-                                                       'type' => '$ProvisionedThroughputDescription'
+                                                       'type' => 'PawsDynamoDBProvisionedThroughputDescription'
                                                      },
                           'TableStatus' => {
                                              'type' => 'Str'
@@ -138,7 +128,7 @@ Represents the properties of a table.
 =head1 ATTRIBUTES
 
 
-=head2 AttributeDefinitions => ArrayRef[$AttributeDefinition]
+=head2 AttributeDefinitions => ArrayRef[PawsDynamoDBAttributeDefinition]
 
   An array of C<AttributeDefinition> objects. Each of these objects
 describes one attribute in the table and index key schema.
@@ -159,7 +149,7 @@ C<AttributeType> - The data type for the attribute.
 
 
 
-=head2 BillingModeSummary => $BillingModeSummary
+=head2 BillingModeSummary => PawsDynamoDBBillingModeSummary
 
   Contains the details for the read/write capacity mode.
 
@@ -170,7 +160,7 @@ C<AttributeType> - The data type for the attribute.
 (http://www.epochconverter.com/) format.
 
 
-=head2 GlobalSecondaryIndexes => ArrayRef[$GlobalSecondaryIndexDescription]
+=head2 GlobalSecondaryIndexes => ArrayRef[PawsDynamoDBGlobalSecondaryIndexDescription]
 
   The global secondary indexes, if any, on the table. Each index is
 scoped to a given partition key value. Each element is composed of:
@@ -294,7 +284,7 @@ approximately every six hours. Recent changes might not be reflected in
 this value.
 
 
-=head2 KeySchema => ArrayRef[$KeySchemaElement]
+=head2 KeySchema => ArrayRef[PawsDynamoDBKeySchemaElement]
 
   The primary key structure for the table. Each C<KeySchemaElement>
 consists of:
@@ -371,7 +361,7 @@ the C<StreamLabel>.
 
 
 
-=head2 LocalSecondaryIndexes => ArrayRef[$LocalSecondaryIndexDescription]
+=head2 LocalSecondaryIndexes => ArrayRef[PawsDynamoDBLocalSecondaryIndexDescription]
 
   Represents one or more local secondary indexes on the table. Each index
 is scoped to a given partition key value. Tables with one or more local
@@ -452,25 +442,25 @@ If the table is in the C<DELETING> state, no information about indexes
 will be returned.
 
 
-=head2 ProvisionedThroughput => $ProvisionedThroughputDescription
+=head2 ProvisionedThroughput => PawsDynamoDBProvisionedThroughputDescription
 
   The provisioned throughput settings for the table, consisting of read
 and write capacity units, along with data about increases and
 decreases.
 
 
-=head2 RestoreSummary => $RestoreSummary
+=head2 RestoreSummary => PawsDynamoDBRestoreSummary
 
   Contains details for the restore.
 
 
-=head2 SSEDescription => $SSEDescription
+=head2 SSEDescription => PawsDynamoDBSSEDescription
 
   The description of the server-side encryption status on the specified
 table.
 
 
-=head2 StreamSpecification => $StreamSpecification
+=head2 StreamSpecification => PawsDynamoDBStreamSpecification
 
   The current DynamoDB Streams configuration for the table.
 

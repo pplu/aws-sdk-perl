@@ -1,15 +1,12 @@
 package Paws::DynamoDB::AttributeValue;
   use Moo;
   use Types::Standard qw/Str Bool ArrayRef Undef/;
-  use Type::Utils qw/class_type/;
-    my $AttributeValue = class_type 'Paws::DynamoDB::AttributeValue';
-    my $MapAttributeValue = class_type 'Paws::DynamoDB::MapAttributeValue';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAttributeValue PawsDynamoDBMapAttributeValue/;
   has B => (is => 'ro', isa => Str);
   has BOOL => (is => 'ro', isa => Bool);
   has BS => (is => 'ro', isa => ArrayRef[Str|Undef]);
-  has L => (is => 'ro', isa => ArrayRef[$AttributeValue]);
-  has M => (is => 'ro', isa => $MapAttributeValue);
+  has L => (is => 'ro', isa => ArrayRef[PawsDynamoDBAttributeValue]);
+  has M => (is => 'ro', isa => PawsDynamoDBMapAttributeValue);
   has N => (is => 'ro', isa => Str);
   has NS => (is => 'ro', isa => ArrayRef[Str|Undef]);
   has NULL => (is => 'ro', isa => Bool);
@@ -42,14 +39,14 @@ package Paws::DynamoDB::AttributeValue;
                                  },
                           'M' => {
                                    'class' => 'Paws::DynamoDB::MapAttributeValue',
-                                   'type' => '$MapAttributeValue'
+                                   'type' => 'PawsDynamoDBMapAttributeValue'
                                  },
                           'SS' => {
                                     'type' => 'ArrayRef[Str|Undef]'
                                   },
                           'L' => {
                                    'class' => 'Paws::DynamoDB::AttributeValue',
-                                   'type' => 'ArrayRef[$AttributeValue]'
+                                   'type' => 'ArrayRef[PawsDynamoDBAttributeValue]'
                                  }
                         }
            };
@@ -120,14 +117,14 @@ C<"BOOL": true>
 C<"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]>
 
 
-=head2 L => ArrayRef[$AttributeValue]
+=head2 L => ArrayRef[PawsDynamoDBAttributeValue]
 
   An attribute of type List. For example:
 
 C<"L": [ {"S": "Cookies"} , {"S": "Coffee"}, {"N", "3.14159"}]>
 
 
-=head2 M => $MapAttributeValue
+=head2 M => PawsDynamoDBMapAttributeValue
 
   An attribute of type Map. For example:
 

@@ -2,14 +2,10 @@
 package Paws::DynamoDB::UpdateItemOutput;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-    my $ItemCollectionMetrics = class_type 'Paws::DynamoDB::ItemCollectionMetrics';
-    my $AttributeMap = class_type 'Paws::DynamoDB::AttributeMap';
-    my $ConsumedCapacity = class_type 'Paws::DynamoDB::ConsumedCapacity';
-  
-  has Attributes => (is => 'ro', isa => $AttributeMap);
-  has ConsumedCapacity => (is => 'ro', isa => $ConsumedCapacity);
-  has ItemCollectionMetrics => (is => 'ro', isa => $ItemCollectionMetrics);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBConsumedCapacity PawsDynamoDBItemCollectionMetrics PawsDynamoDBAttributeMap/;
+  has Attributes => (is => 'ro', isa => PawsDynamoDBAttributeMap);
+  has ConsumedCapacity => (is => 'ro', isa => PawsDynamoDBConsumedCapacity);
+  has ItemCollectionMetrics => (is => 'ro', isa => PawsDynamoDBItemCollectionMetrics);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -17,15 +13,15 @@ package Paws::DynamoDB::UpdateItemOutput;
              'types' => {
                           'Attributes' => {
                                             'class' => 'Paws::DynamoDB::AttributeMap',
-                                            'type' => '$AttributeMap'
+                                            'type' => 'PawsDynamoDBAttributeMap'
                                           },
                           'ConsumedCapacity' => {
                                                   'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => '$ConsumedCapacity'
+                                                  'type' => 'PawsDynamoDBConsumedCapacity'
                                                 },
                           'ItemCollectionMetrics' => {
                                                        'class' => 'Paws::DynamoDB::ItemCollectionMetrics',
-                                                       'type' => '$ItemCollectionMetrics'
+                                                       'type' => 'PawsDynamoDBItemCollectionMetrics'
                                                      }
                         }
            };
@@ -42,7 +38,7 @@ Paws::DynamoDB::UpdateItemOutput
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => $AttributeMap
+=head2 Attributes => PawsDynamoDBAttributeMap
 
 A map of attribute values as they appear before or after the
 C<UpdateItem> operation, as determined by the C<ReturnValues>
@@ -53,7 +49,7 @@ as something other than C<NONE> in the request. Each element represents
 one attribute.
 
 
-=head2 ConsumedCapacity => $ConsumedCapacity
+=head2 ConsumedCapacity => PawsDynamoDBConsumedCapacity
 
 The capacity units consumed by the C<UpdateItem> operation. The data
 returned includes the total provisioned throughput consumed, along with
@@ -65,7 +61,7 @@ Throughput
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 ItemCollectionMetrics => $ItemCollectionMetrics
+=head2 ItemCollectionMetrics => PawsDynamoDBItemCollectionMetrics
 
 Information about item collections, if any, that were affected by the
 C<UpdateItem> operation. C<ItemCollectionMetrics> is only returned if

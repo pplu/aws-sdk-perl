@@ -2,10 +2,8 @@
 package Paws::DynamoDB::CreateGlobalTableOutput;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-    my $GlobalTableDescription = class_type 'Paws::DynamoDB::GlobalTableDescription';
-  
-  has GlobalTableDescription => (is => 'ro', isa => $GlobalTableDescription);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBGlobalTableDescription/;
+  has GlobalTableDescription => (is => 'ro', isa => PawsDynamoDBGlobalTableDescription);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -13,7 +11,7 @@ package Paws::DynamoDB::CreateGlobalTableOutput;
              'types' => {
                           'GlobalTableDescription' => {
                                                         'class' => 'Paws::DynamoDB::GlobalTableDescription',
-                                                        'type' => '$GlobalTableDescription'
+                                                        'type' => 'PawsDynamoDBGlobalTableDescription'
                                                       }
                         }
            };
@@ -30,7 +28,7 @@ Paws::DynamoDB::CreateGlobalTableOutput
 =head1 ATTRIBUTES
 
 
-=head2 GlobalTableDescription => $GlobalTableDescription
+=head2 GlobalTableDescription => PawsDynamoDBGlobalTableDescription
 
 Contains the details of the global table.
 

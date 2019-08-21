@@ -2,8 +2,7 @@ package Paws::DynamoDB::ExpressionAttributeNameMap;
   use Moo;
   with 'Paws::API::StrToNativeMapParser';
   use Types::Standard qw/HashRef Undef Str/;
-  use Type::Utils qw/class_type/;
-
+  use Paws::DynamoDB::TypeLibrary qw//;
 
   has Map => (is => 'ro', isa => HashRef[Str|Undef]);
 

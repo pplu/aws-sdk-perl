@@ -3,9 +3,8 @@ package [% inner_class %];
   use Moo;
   with 'Paws::API::StrToNativeMapParser';
   use Types::Standard qw/[% base_types.unique.join(' ') %]/;
-  use Type::Utils qw/class_type/;
 [%- SET k =  class_type_info.keys.first %]
-[% IF k %]  my [% k %] = class_type '[% class_type_info.$k %]';[% END %]
+  use [% c.typelibrary_name %] qw/[% k %]/;
 
   has Map => (is => 'ro', isa => [% map_class %]);
 

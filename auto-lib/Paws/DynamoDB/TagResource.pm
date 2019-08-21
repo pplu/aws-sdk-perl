@@ -2,11 +2,9 @@
 package Paws::DynamoDB::TagResource;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Type::Utils qw/class_type/;
-    my $Tag = class_type 'Paws::DynamoDB::Tag';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBTag/;
   has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has Tags => (is => 'ro', isa => ArrayRef[$Tag], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[PawsDynamoDBTag], required => 1, predicate => 1);
 
   use MooX::ClassAttribute;
 
@@ -22,7 +20,7 @@ package Paws::DynamoDB::TagResource;
                                            },
                           'Tags' => {
                                       'class' => 'Paws::DynamoDB::Tag',
-                                      'type' => 'ArrayRef[$Tag]'
+                                      'type' => 'ArrayRef[PawsDynamoDBTag]'
                                     }
                         }
            };
@@ -74,7 +72,7 @@ This value is an Amazon Resource Name (ARN).
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[$Tag]
+=head2 B<REQUIRED> Tags => ArrayRef[PawsDynamoDBTag]
 
 The tags to be assigned to the Amazon DynamoDB resource.
 

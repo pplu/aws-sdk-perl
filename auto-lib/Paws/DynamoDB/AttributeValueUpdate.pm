@@ -1,18 +1,16 @@
 package Paws::DynamoDB::AttributeValueUpdate;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-    my $AttributeValue = class_type 'Paws::DynamoDB::AttributeValue';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAttributeValue/;
   has Action => (is => 'ro', isa => Str);
-  has Value => (is => 'ro', isa => $AttributeValue);
+  has Value => (is => 'ro', isa => PawsDynamoDBAttributeValue);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'Value' => {
                                        'class' => 'Paws::DynamoDB::AttributeValue',
-                                       'type' => '$AttributeValue'
+                                       'type' => 'PawsDynamoDBAttributeValue'
                                      },
                           'Action' => {
                                         'type' => 'Str'
@@ -168,7 +166,7 @@ specified.
 
 
 
-=head2 Value => $AttributeValue
+=head2 Value => PawsDynamoDBAttributeValue
 
   Represents the data for an attribute.
 

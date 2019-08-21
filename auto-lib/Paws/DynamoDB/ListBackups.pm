@@ -2,8 +2,7 @@
 package Paws::DynamoDB::ListBackups;
   use Moo;
   use Types::Standard qw/Str Int/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has BackupType => (is => 'ro', isa => Str, predicate => 1);
   has ExclusiveStartBackupArn => (is => 'ro', isa => Str, predicate => 1);
   has Limit => (is => 'ro', isa => Int, predicate => 1);

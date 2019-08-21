@@ -1,8 +1,7 @@
 package Paws::DynamoDB::ProvisionedThroughput;
   use Moo;
   use Types::Standard qw/Int/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has ReadCapacityUnits => (is => 'ro', isa => Int, required => 1);
   has WriteCapacityUnits => (is => 'ro', isa => Int, required => 1);
 

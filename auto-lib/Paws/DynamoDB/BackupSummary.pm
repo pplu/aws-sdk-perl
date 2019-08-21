@@ -1,8 +1,7 @@
 package Paws::DynamoDB::BackupSummary;
   use Moo;
   use Types::Standard qw/Str Int/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has BackupArn => (is => 'ro', isa => Str);
   has BackupCreationDateTime => (is => 'ro', isa => Str);
   has BackupExpiryDateTime => (is => 'ro', isa => Str);

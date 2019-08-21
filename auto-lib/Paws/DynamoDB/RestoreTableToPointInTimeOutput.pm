@@ -2,10 +2,8 @@
 package Paws::DynamoDB::RestoreTableToPointInTimeOutput;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-    my $TableDescription = class_type 'Paws::DynamoDB::TableDescription';
-  
-  has TableDescription => (is => 'ro', isa => $TableDescription);
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBTableDescription/;
+  has TableDescription => (is => 'ro', isa => PawsDynamoDBTableDescription);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -13,7 +11,7 @@ package Paws::DynamoDB::RestoreTableToPointInTimeOutput;
              'types' => {
                           'TableDescription' => {
                                                   'class' => 'Paws::DynamoDB::TableDescription',
-                                                  'type' => '$TableDescription'
+                                                  'type' => 'PawsDynamoDBTableDescription'
                                                 }
                         }
            };
@@ -30,7 +28,7 @@ Paws::DynamoDB::RestoreTableToPointInTimeOutput
 =head1 ATTRIBUTES
 
 
-=head2 TableDescription => $TableDescription
+=head2 TableDescription => PawsDynamoDBTableDescription
 
 Represents the properties of a table.
 

@@ -1,13 +1,10 @@
 package Paws::DynamoDB::ReplicaSettingsUpdate;
   use Moo;
   use Types::Standard qw/Str ArrayRef Int/;
-  use Type::Utils qw/class_type/;
-    my $AutoScalingSettingsUpdate = class_type 'Paws::DynamoDB::AutoScalingSettingsUpdate';
-    my $ReplicaGlobalSecondaryIndexSettingsUpdate = class_type 'Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate';
-  
+  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAutoScalingSettingsUpdate PawsDynamoDBReplicaGlobalSecondaryIndexSettingsUpdate/;
   has RegionName => (is => 'ro', isa => Str, required => 1);
-  has ReplicaGlobalSecondaryIndexSettingsUpdate => (is => 'ro', isa => ArrayRef[$ReplicaGlobalSecondaryIndexSettingsUpdate]);
-  has ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => $AutoScalingSettingsUpdate);
+  has ReplicaGlobalSecondaryIndexSettingsUpdate => (is => 'ro', isa => ArrayRef[PawsDynamoDBReplicaGlobalSecondaryIndexSettingsUpdate]);
+  has ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => PawsDynamoDBAutoScalingSettingsUpdate);
   has ReplicaProvisionedReadCapacityUnits => (is => 'ro', isa => Int);
 
   sub params_map {
@@ -15,11 +12,11 @@ package Paws::DynamoDB::ReplicaSettingsUpdate;
              'types' => {
                           'ReplicaGlobalSecondaryIndexSettingsUpdate' => {
                                                                            'class' => 'Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate',
-                                                                           'type' => 'ArrayRef[$ReplicaGlobalSecondaryIndexSettingsUpdate]'
+                                                                           'type' => 'ArrayRef[PawsDynamoDBReplicaGlobalSecondaryIndexSettingsUpdate]'
                                                                          },
                           'ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate' => {
                                                                                          'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
-                                                                                         'type' => '$AutoScalingSettingsUpdate'
+                                                                                         'type' => 'PawsDynamoDBAutoScalingSettingsUpdate'
                                                                                        },
                           'ReplicaProvisionedReadCapacityUnits' => {
                                                                      'type' => 'Int'
@@ -74,13 +71,13 @@ modified.
   The region of the replica to be added.
 
 
-=head2 ReplicaGlobalSecondaryIndexSettingsUpdate => ArrayRef[$ReplicaGlobalSecondaryIndexSettingsUpdate]
+=head2 ReplicaGlobalSecondaryIndexSettingsUpdate => ArrayRef[PawsDynamoDBReplicaGlobalSecondaryIndexSettingsUpdate]
 
   Represents the settings of a global secondary index for a global table
 that will be modified.
 
 
-=head2 ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => $AutoScalingSettingsUpdate
+=head2 ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => PawsDynamoDBAutoScalingSettingsUpdate
 
   Autoscaling settings for managing a global table replica's read
 capacity units.

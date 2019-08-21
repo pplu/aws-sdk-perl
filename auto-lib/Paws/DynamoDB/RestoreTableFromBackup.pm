@@ -2,8 +2,7 @@
 package Paws::DynamoDB::RestoreTableFromBackup;
   use Moo;
   use Types::Standard qw/Str/;
-  use Type::Utils qw/class_type/;
-  
+  use Paws::DynamoDB::TypeLibrary qw//;
   has BackupArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
   has TargetTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
