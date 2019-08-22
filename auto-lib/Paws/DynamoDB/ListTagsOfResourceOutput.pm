@@ -2,9 +2,9 @@
 package Paws::DynamoDB::ListTagsOfResourceOutput;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBTag/;
+  use Paws::DynamoDB::Types qw/DynamoDB_Tag/;
   has NextToken => (is => 'ro', isa => Str);
-  has Tags => (is => 'ro', isa => ArrayRef[PawsDynamoDBTag]);
+  has Tags => (is => 'ro', isa => ArrayRef[DynamoDB_Tag]);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -15,7 +15,7 @@ package Paws::DynamoDB::ListTagsOfResourceOutput;
                                          },
                           'Tags' => {
                                       'class' => 'Paws::DynamoDB::Tag',
-                                      'type' => 'ArrayRef[PawsDynamoDBTag]'
+                                      'type' => 'ArrayRef[DynamoDB_Tag]'
                                     }
                         }
            };
@@ -39,7 +39,7 @@ displayed. To retrieve them, call ListTagsOfResource again, with
 NextToken set to this value.
 
 
-=head2 Tags => ArrayRef[PawsDynamoDBTag]
+=head2 Tags => ArrayRef[DynamoDB_Tag]
 
 The tags currently associated with the Amazon DynamoDB resource.
 

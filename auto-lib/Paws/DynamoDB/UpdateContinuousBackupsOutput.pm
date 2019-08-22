@@ -2,8 +2,8 @@
 package Paws::DynamoDB::UpdateContinuousBackupsOutput;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBContinuousBackupsDescription/;
-  has ContinuousBackupsDescription => (is => 'ro', isa => PawsDynamoDBContinuousBackupsDescription);
+  use Paws::DynamoDB::Types qw/DynamoDB_ContinuousBackupsDescription/;
+  has ContinuousBackupsDescription => (is => 'ro', isa => DynamoDB_ContinuousBackupsDescription);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -11,7 +11,7 @@ package Paws::DynamoDB::UpdateContinuousBackupsOutput;
              'types' => {
                           'ContinuousBackupsDescription' => {
                                                               'class' => 'Paws::DynamoDB::ContinuousBackupsDescription',
-                                                              'type' => 'PawsDynamoDBContinuousBackupsDescription'
+                                                              'type' => 'DynamoDB_ContinuousBackupsDescription'
                                                             }
                         }
            };
@@ -28,7 +28,7 @@ Paws::DynamoDB::UpdateContinuousBackupsOutput
 =head1 ATTRIBUTES
 
 
-=head2 ContinuousBackupsDescription => PawsDynamoDBContinuousBackupsDescription
+=head2 ContinuousBackupsDescription => DynamoDB_ContinuousBackupsDescription
 
 Represents the continuous backups and point in time recovery settings
 on the table.

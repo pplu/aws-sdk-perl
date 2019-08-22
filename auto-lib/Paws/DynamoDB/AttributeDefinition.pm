@@ -1,7 +1,7 @@
 package Paws::DynamoDB::AttributeDefinition;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has AttributeName => (is => 'ro', isa => Str, required => 1);
   has AttributeType => (is => 'ro', isa => Str, required => 1);
 

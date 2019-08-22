@@ -2,9 +2,9 @@
 package Paws::DynamoDB::UpdateGlobalTable;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBReplicaUpdate/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ReplicaUpdate/;
   has GlobalTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has ReplicaUpdates => (is => 'ro', isa => ArrayRef[PawsDynamoDBReplicaUpdate], required => 1, predicate => 1);
+  has ReplicaUpdates => (is => 'ro', isa => ArrayRef[DynamoDB_ReplicaUpdate], required => 1, predicate => 1);
 
   use MooX::ClassAttribute;
 
@@ -17,7 +17,7 @@ package Paws::DynamoDB::UpdateGlobalTable;
              'types' => {
                           'ReplicaUpdates' => {
                                                 'class' => 'Paws::DynamoDB::ReplicaUpdate',
-                                                'type' => 'ArrayRef[PawsDynamoDBReplicaUpdate]'
+                                                'type' => 'ArrayRef[DynamoDB_ReplicaUpdate]'
                                               },
                           'GlobalTableName' => {
                                                  'type' => 'Str'
@@ -82,7 +82,7 @@ The global table name.
 
 
 
-=head2 B<REQUIRED> ReplicaUpdates => ArrayRef[PawsDynamoDBReplicaUpdate]
+=head2 B<REQUIRED> ReplicaUpdates => ArrayRef[DynamoDB_ReplicaUpdate]
 
 A list of Regions that should be added or removed from the global
 table.

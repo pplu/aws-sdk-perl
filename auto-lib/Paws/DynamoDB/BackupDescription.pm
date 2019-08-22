@@ -1,25 +1,25 @@
 package Paws::DynamoDB::BackupDescription;
   use Moo;
   use Types::Standard qw//;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBSourceTableDetails PawsDynamoDBBackupDetails PawsDynamoDBSourceTableFeatureDetails/;
-  has BackupDetails => (is => 'ro', isa => PawsDynamoDBBackupDetails);
-  has SourceTableDetails => (is => 'ro', isa => PawsDynamoDBSourceTableDetails);
-  has SourceTableFeatureDetails => (is => 'ro', isa => PawsDynamoDBSourceTableFeatureDetails);
+  use Paws::DynamoDB::Types qw/DynamoDB_SourceTableDetails DynamoDB_SourceTableFeatureDetails DynamoDB_BackupDetails/;
+  has BackupDetails => (is => 'ro', isa => DynamoDB_BackupDetails);
+  has SourceTableDetails => (is => 'ro', isa => DynamoDB_SourceTableDetails);
+  has SourceTableFeatureDetails => (is => 'ro', isa => DynamoDB_SourceTableFeatureDetails);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'SourceTableDetails' => {
                                                     'class' => 'Paws::DynamoDB::SourceTableDetails',
-                                                    'type' => 'PawsDynamoDBSourceTableDetails'
+                                                    'type' => 'DynamoDB_SourceTableDetails'
                                                   },
                           'SourceTableFeatureDetails' => {
                                                            'class' => 'Paws::DynamoDB::SourceTableFeatureDetails',
-                                                           'type' => 'PawsDynamoDBSourceTableFeatureDetails'
+                                                           'type' => 'DynamoDB_SourceTableFeatureDetails'
                                                          },
                           'BackupDetails' => {
                                                'class' => 'Paws::DynamoDB::BackupDetails',
-                                               'type' => 'PawsDynamoDBBackupDetails'
+                                               'type' => 'DynamoDB_BackupDetails'
                                              }
                         }
            };
@@ -62,17 +62,17 @@ Contains the description of the backup created for the table.
 =head1 ATTRIBUTES
 
 
-=head2 BackupDetails => PawsDynamoDBBackupDetails
+=head2 BackupDetails => DynamoDB_BackupDetails
 
   Contains the details of the backup created for the table.
 
 
-=head2 SourceTableDetails => PawsDynamoDBSourceTableDetails
+=head2 SourceTableDetails => DynamoDB_SourceTableDetails
 
   Contains the details of the table when the backup was created.
 
 
-=head2 SourceTableFeatureDetails => PawsDynamoDBSourceTableFeatureDetails
+=head2 SourceTableFeatureDetails => DynamoDB_SourceTableFeatureDetails
 
   Contains the details of the features enabled on the table when the
 backup was created. For example, LSIs, GSIs, streams, TTL.

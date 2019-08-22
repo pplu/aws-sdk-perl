@@ -2,8 +2,8 @@
 package Paws::DynamoDB::BatchWriteItem;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBBatchWriteItemRequestMap/;
-  has RequestItems => (is => 'ro', isa => PawsDynamoDBBatchWriteItemRequestMap, required => 1, predicate => 1);
+  use Paws::DynamoDB::Types qw/DynamoDB_BatchWriteItemRequestMap/;
+  has RequestItems => (is => 'ro', isa => DynamoDB_BatchWriteItemRequestMap, required => 1, predicate => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
   has ReturnItemCollectionMetrics => (is => 'ro', isa => Str, predicate => 1);
 
@@ -24,7 +24,7 @@ package Paws::DynamoDB::BatchWriteItem;
                                                            },
                           'RequestItems' => {
                                               'class' => 'Paws::DynamoDB::BatchWriteItemRequestMap',
-                                              'type' => 'PawsDynamoDBBatchWriteItemRequestMap'
+                                              'type' => 'DynamoDB_BatchWriteItemRequestMap'
                                             }
                         }
            };
@@ -115,7 +115,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> RequestItems => PawsDynamoDBBatchWriteItemRequestMap
+=head2 B<REQUIRED> RequestItems => DynamoDB_BatchWriteItemRequestMap
 
 A map of one or more table names and, for each table, a list of
 operations to be performed (C<DeleteRequest> or C<PutRequest>). Each

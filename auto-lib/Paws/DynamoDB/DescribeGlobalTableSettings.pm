@@ -2,7 +2,7 @@
 package Paws::DynamoDB::DescribeGlobalTableSettings;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has GlobalTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
   use MooX::ClassAttribute;

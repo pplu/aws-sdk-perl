@@ -2,7 +2,7 @@
 package Paws::DynamoDB::DescribeEndpoints;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
 
   use MooX::ClassAttribute;
 

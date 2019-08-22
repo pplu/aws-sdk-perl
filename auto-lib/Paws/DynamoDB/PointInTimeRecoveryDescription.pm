@@ -1,7 +1,7 @@
 package Paws::DynamoDB::PointInTimeRecoveryDescription;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has EarliestRestorableDateTime => (is => 'ro', isa => Str);
   has LatestRestorableDateTime => (is => 'ro', isa => Str);
   has PointInTimeRecoveryStatus => (is => 'ro', isa => Str);

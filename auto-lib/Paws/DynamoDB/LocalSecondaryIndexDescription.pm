@@ -1,13 +1,13 @@
 package Paws::DynamoDB::LocalSecondaryIndexDescription;
   use Moo;
   use Types::Standard qw/Str Int ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBProjection PawsDynamoDBKeySchemaElement/;
+  use Paws::DynamoDB::Types qw/DynamoDB_KeySchemaElement DynamoDB_Projection/;
   has IndexArn => (is => 'ro', isa => Str);
   has IndexName => (is => 'ro', isa => Str);
   has IndexSizeBytes => (is => 'ro', isa => Int);
   has ItemCount => (is => 'ro', isa => Int);
-  has KeySchema => (is => 'ro', isa => ArrayRef[PawsDynamoDBKeySchemaElement]);
-  has Projection => (is => 'ro', isa => PawsDynamoDBProjection);
+  has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDB_KeySchemaElement]);
+  has Projection => (is => 'ro', isa => DynamoDB_Projection);
 
   sub params_map {
     my $params1 = {
@@ -17,7 +17,7 @@ package Paws::DynamoDB::LocalSecondaryIndexDescription;
                                          },
                           'KeySchema' => {
                                            'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[PawsDynamoDBKeySchemaElement]'
+                                           'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
                                          },
                           'ItemCount' => {
                                            'type' => 'Int'
@@ -30,7 +30,7 @@ package Paws::DynamoDB::LocalSecondaryIndexDescription;
                                         },
                           'Projection' => {
                                             'class' => 'Paws::DynamoDB::Projection',
-                                            'type' => 'PawsDynamoDBProjection'
+                                            'type' => 'DynamoDB_Projection'
                                           }
                         }
            };
@@ -97,7 +97,7 @@ approximately every six hours. Recent changes might not be reflected in
 this value.
 
 
-=head2 KeySchema => ArrayRef[PawsDynamoDBKeySchemaElement]
+=head2 KeySchema => ArrayRef[DynamoDB_KeySchemaElement]
 
   The complete key schema for the local secondary index, consisting of
 one or more pairs of attribute names and key types:
@@ -125,7 +125,7 @@ the same partition key physically close together, in sorted order by
 the sort key value.
 
 
-=head2 Projection => PawsDynamoDBProjection
+=head2 Projection => DynamoDB_Projection
 
   Represents attributes that are copied (projected) from the table into
 the global secondary index. These are in addition to the primary key

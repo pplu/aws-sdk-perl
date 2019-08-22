@@ -2,8 +2,8 @@
 package Paws::DynamoDB::BatchGetItem;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBBatchGetRequestMap/;
-  has RequestItems => (is => 'ro', isa => PawsDynamoDBBatchGetRequestMap, required => 1, predicate => 1);
+  use Paws::DynamoDB::Types qw/DynamoDB_BatchGetRequestMap/;
+  has RequestItems => (is => 'ro', isa => DynamoDB_BatchGetRequestMap, required => 1, predicate => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
 
   use MooX::ClassAttribute;
@@ -20,7 +20,7 @@ package Paws::DynamoDB::BatchGetItem;
                                                       },
                           'RequestItems' => {
                                               'class' => 'Paws::DynamoDB::BatchGetRequestMap',
-                                              'type' => 'PawsDynamoDBBatchGetRequestMap'
+                                              'type' => 'DynamoDB_BatchGetRequestMap'
                                             }
                         }
            };
@@ -97,7 +97,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> RequestItems => PawsDynamoDBBatchGetRequestMap
+=head2 B<REQUIRED> RequestItems => DynamoDB_BatchGetRequestMap
 
 A map of one or more table names and, for each table, a map that
 describes one or more items to retrieve from that table. Each table

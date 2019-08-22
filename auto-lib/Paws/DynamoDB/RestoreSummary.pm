@@ -1,7 +1,7 @@
 package Paws::DynamoDB::RestoreSummary;
   use Moo;
   use Types::Standard qw/Str Bool/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has RestoreDateTime => (is => 'ro', isa => Str, required => 1);
   has RestoreInProgress => (is => 'ro', isa => Bool, required => 1);
   has SourceBackupArn => (is => 'ro', isa => Str);

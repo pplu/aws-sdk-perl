@@ -1,30 +1,30 @@
 package Paws::DynamoDB::TransactWriteItem;
   use Moo;
   use Types::Standard qw//;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBDelete PawsDynamoDBPut PawsDynamoDBUpdate PawsDynamoDBConditionCheck/;
-  has ConditionCheck => (is => 'ro', isa => PawsDynamoDBConditionCheck);
-  has Delete => (is => 'ro', isa => PawsDynamoDBDelete);
-  has Put => (is => 'ro', isa => PawsDynamoDBPut);
-  has Update => (is => 'ro', isa => PawsDynamoDBUpdate);
+  use Paws::DynamoDB::Types qw/DynamoDB_ConditionCheck DynamoDB_Put DynamoDB_Update DynamoDB_Delete/;
+  has ConditionCheck => (is => 'ro', isa => DynamoDB_ConditionCheck);
+  has Delete => (is => 'ro', isa => DynamoDB_Delete);
+  has Put => (is => 'ro', isa => DynamoDB_Put);
+  has Update => (is => 'ro', isa => DynamoDB_Update);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'Delete' => {
                                         'class' => 'Paws::DynamoDB::Delete',
-                                        'type' => 'PawsDynamoDBDelete'
+                                        'type' => 'DynamoDB_Delete'
                                       },
                           'Update' => {
                                         'class' => 'Paws::DynamoDB::Update',
-                                        'type' => 'PawsDynamoDBUpdate'
+                                        'type' => 'DynamoDB_Update'
                                       },
                           'ConditionCheck' => {
                                                 'class' => 'Paws::DynamoDB::ConditionCheck',
-                                                'type' => 'PawsDynamoDBConditionCheck'
+                                                'type' => 'DynamoDB_ConditionCheck'
                                               },
                           'Put' => {
                                      'class' => 'Paws::DynamoDB::Put',
-                                     'type' => 'PawsDynamoDBPut'
+                                     'type' => 'DynamoDB_Put'
                                    }
                         }
            };
@@ -68,22 +68,22 @@ operations on multiple items in one or more tables atomically.
 =head1 ATTRIBUTES
 
 
-=head2 ConditionCheck => PawsDynamoDBConditionCheck
+=head2 ConditionCheck => DynamoDB_ConditionCheck
 
   A request to perform a check item operation.
 
 
-=head2 Delete => PawsDynamoDBDelete
+=head2 Delete => DynamoDB_Delete
 
   A request to perform a C<DeleteItem> operation.
 
 
-=head2 Put => PawsDynamoDBPut
+=head2 Put => DynamoDB_Put
 
   A request to perform a C<PutItem> operation.
 
 
-=head2 Update => PawsDynamoDBUpdate
+=head2 Update => DynamoDB_Update
 
   A request to perform an C<UpdateItem> operation.
 

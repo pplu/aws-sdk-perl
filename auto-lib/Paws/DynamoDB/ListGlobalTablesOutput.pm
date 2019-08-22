@@ -2,8 +2,8 @@
 package Paws::DynamoDB::ListGlobalTablesOutput;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBGlobalTable/;
-  has GlobalTables => (is => 'ro', isa => ArrayRef[PawsDynamoDBGlobalTable]);
+  use Paws::DynamoDB::Types qw/DynamoDB_GlobalTable/;
+  has GlobalTables => (is => 'ro', isa => ArrayRef[DynamoDB_GlobalTable]);
   has LastEvaluatedGlobalTableName => (is => 'ro', isa => Str);
 
   has _request_id => (is => 'ro', isa => Str);
@@ -15,7 +15,7 @@ package Paws::DynamoDB::ListGlobalTablesOutput;
                                                             },
                           'GlobalTables' => {
                                               'class' => 'Paws::DynamoDB::GlobalTable',
-                                              'type' => 'ArrayRef[PawsDynamoDBGlobalTable]'
+                                              'type' => 'ArrayRef[DynamoDB_GlobalTable]'
                                             }
                         }
            };
@@ -32,7 +32,7 @@ Paws::DynamoDB::ListGlobalTablesOutput
 =head1 ATTRIBUTES
 
 
-=head2 GlobalTables => ArrayRef[PawsDynamoDBGlobalTable]
+=head2 GlobalTables => ArrayRef[DynamoDB_GlobalTable]
 
 List of global table names.
 

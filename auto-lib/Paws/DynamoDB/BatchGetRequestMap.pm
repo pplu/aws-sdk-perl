@@ -2,15 +2,15 @@ package Paws::DynamoDB::BatchGetRequestMap;
   use Moo;
   with 'Paws::API::StrToObjMapParser';
   use Types::Standard qw/HashRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBKeysAndAttributes/;
+  use Paws::DynamoDB::Types qw/DynamoDB_KeysAndAttributes/;
 
-  has Map => (is => 'ro', isa => HashRef[PawsDynamoDBKeysAndAttributes]);
+  has Map => (is => 'ro', isa => HashRef[DynamoDB_KeysAndAttributes]);
 
   sub params_map {
     my $params1 = {
                     types => {
                                'Map' => {
-                                          type => 'HashRef[PawsDynamoDBKeysAndAttributes]',
+                                          type => 'HashRef[DynamoDB_KeysAndAttributes]',
                                           class => 'Paws::DynamoDB::KeysAndAttributes',
                                         },
                              },

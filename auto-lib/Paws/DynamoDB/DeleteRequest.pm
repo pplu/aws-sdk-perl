@@ -1,15 +1,15 @@
 package Paws::DynamoDB::DeleteRequest;
   use Moo;
   use Types::Standard qw//;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBKey/;
-  has Key => (is => 'ro', isa => PawsDynamoDBKey, required => 1);
+  use Paws::DynamoDB::Types qw/DynamoDB_Key/;
+  has Key => (is => 'ro', isa => DynamoDB_Key, required => 1);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'Key' => {
                                      'class' => 'Paws::DynamoDB::Key',
-                                     'type' => 'PawsDynamoDBKey'
+                                     'type' => 'DynamoDB_Key'
                                    }
                         }
            };
@@ -52,7 +52,7 @@ Represents a request to perform a C<DeleteItem> operation on an item.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Key => PawsDynamoDBKey
+=head2 B<REQUIRED> Key => DynamoDB_Key
 
   A map of attribute name to attribute values, representing the primary
 key of the item to delete. All of the table's primary key attributes

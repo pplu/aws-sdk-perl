@@ -2,9 +2,9 @@
 package Paws::DynamoDB::UpdateTimeToLive;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBTimeToLiveSpecification/;
+  use Paws::DynamoDB::Types qw/DynamoDB_TimeToLiveSpecification/;
   has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has TimeToLiveSpecification => (is => 'ro', isa => PawsDynamoDBTimeToLiveSpecification, required => 1, predicate => 1);
+  has TimeToLiveSpecification => (is => 'ro', isa => DynamoDB_TimeToLiveSpecification, required => 1, predicate => 1);
 
   use MooX::ClassAttribute;
 
@@ -17,7 +17,7 @@ package Paws::DynamoDB::UpdateTimeToLive;
              'types' => {
                           'TimeToLiveSpecification' => {
                                                          'class' => 'Paws::DynamoDB::TimeToLiveSpecification',
-                                                         'type' => 'PawsDynamoDBTimeToLiveSpecification'
+                                                         'type' => 'DynamoDB_TimeToLiveSpecification'
                                                        },
                           'TableName' => {
                                            'type' => 'Str'
@@ -74,7 +74,7 @@ The name of the table to be configured.
 
 
 
-=head2 B<REQUIRED> TimeToLiveSpecification => PawsDynamoDBTimeToLiveSpecification
+=head2 B<REQUIRED> TimeToLiveSpecification => DynamoDB_TimeToLiveSpecification
 
 Represents the settings used to enable or disable Time to Live for the
 specified table.

@@ -2,7 +2,7 @@
 package Paws::DynamoDB::ListGlobalTables;
   use Moo;
   use Types::Standard qw/Str Int/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has ExclusiveStartGlobalTableName => (is => 'ro', isa => Str, predicate => 1);
   has Limit => (is => 'ro', isa => Int, predicate => 1);
   has RegionName => (is => 'ro', isa => Str, predicate => 1);

@@ -2,13 +2,13 @@
 package Paws::DynamoDB::UpdateGlobalTableSettings;
   use Moo;
   use Types::Standard qw/Str ArrayRef Int/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBGlobalTableGlobalSecondaryIndexSettingsUpdate PawsDynamoDBReplicaSettingsUpdate PawsDynamoDBAutoScalingSettingsUpdate/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ReplicaSettingsUpdate DynamoDB_GlobalTableGlobalSecondaryIndexSettingsUpdate DynamoDB_AutoScalingSettingsUpdate/;
   has GlobalTableBillingMode => (is => 'ro', isa => Str, predicate => 1);
-  has GlobalTableGlobalSecondaryIndexSettingsUpdate => (is => 'ro', isa => ArrayRef[PawsDynamoDBGlobalTableGlobalSecondaryIndexSettingsUpdate], predicate => 1);
+  has GlobalTableGlobalSecondaryIndexSettingsUpdate => (is => 'ro', isa => ArrayRef[DynamoDB_GlobalTableGlobalSecondaryIndexSettingsUpdate], predicate => 1);
   has GlobalTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => PawsDynamoDBAutoScalingSettingsUpdate, predicate => 1);
+  has GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => DynamoDB_AutoScalingSettingsUpdate, predicate => 1);
   has GlobalTableProvisionedWriteCapacityUnits => (is => 'ro', isa => Int, predicate => 1);
-  has ReplicaSettingsUpdate => (is => 'ro', isa => ArrayRef[PawsDynamoDBReplicaSettingsUpdate], predicate => 1);
+  has ReplicaSettingsUpdate => (is => 'ro', isa => ArrayRef[DynamoDB_ReplicaSettingsUpdate], predicate => 1);
 
   use MooX::ClassAttribute;
 
@@ -24,7 +24,7 @@ package Paws::DynamoDB::UpdateGlobalTableSettings;
                                                                         },
                           'GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate' => {
                                                                                               'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
-                                                                                              'type' => 'PawsDynamoDBAutoScalingSettingsUpdate'
+                                                                                              'type' => 'DynamoDB_AutoScalingSettingsUpdate'
                                                                                             },
                           'GlobalTableBillingMode' => {
                                                         'type' => 'Str'
@@ -34,11 +34,11 @@ package Paws::DynamoDB::UpdateGlobalTableSettings;
                                                },
                           'ReplicaSettingsUpdate' => {
                                                        'class' => 'Paws::DynamoDB::ReplicaSettingsUpdate',
-                                                       'type' => 'ArrayRef[PawsDynamoDBReplicaSettingsUpdate]'
+                                                       'type' => 'ArrayRef[DynamoDB_ReplicaSettingsUpdate]'
                                                      },
                           'GlobalTableGlobalSecondaryIndexSettingsUpdate' => {
                                                                                'class' => 'Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate',
-                                                                               'type' => 'ArrayRef[PawsDynamoDBGlobalTableGlobalSecondaryIndexSettingsUpdate]'
+                                                                               'type' => 'ArrayRef[DynamoDB_GlobalTableGlobalSecondaryIndexSettingsUpdate]'
                                                                              }
                         }
            };
@@ -178,7 +178,7 @@ billing mode.
 
 Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
 
-=head2 GlobalTableGlobalSecondaryIndexSettingsUpdate => ArrayRef[PawsDynamoDBGlobalTableGlobalSecondaryIndexSettingsUpdate]
+=head2 GlobalTableGlobalSecondaryIndexSettingsUpdate => ArrayRef[DynamoDB_GlobalTableGlobalSecondaryIndexSettingsUpdate]
 
 Represents the settings of a global secondary index for a global table
 that will be modified.
@@ -191,7 +191,7 @@ The name of the global table
 
 
 
-=head2 GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => PawsDynamoDBAutoScalingSettingsUpdate
+=head2 GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => DynamoDB_AutoScalingSettingsUpdate
 
 Auto scaling settings for managing provisioned write capacity for the
 global table.
@@ -205,7 +205,7 @@ returns a C<ThrottlingException.>
 
 
 
-=head2 ReplicaSettingsUpdate => ArrayRef[PawsDynamoDBReplicaSettingsUpdate]
+=head2 ReplicaSettingsUpdate => ArrayRef[DynamoDB_ReplicaSettingsUpdate]
 
 Represents the settings for a global table in a Region that will be
 modified.

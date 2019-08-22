@@ -1,23 +1,22 @@
 package Paws::DynamoDB::BatchGetResponseMap;
   use Moo;
-  with 'Paws::API::StrToObjMapParser';
+  with 'Paws::API::StrToNativeMapParser';
   use Types::Standard qw/HashRef ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAttributeMap/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AttributeMap/;
 
-  has Map => (is => 'ro', isa => HashRef[ArrayRef[PawsDynamoDBAttributeMap]]);
+  has Map => (is => 'ro', isa => HashRef[ArrayRef[DynamoDB_AttributeMap]]);
 
-  sub params_map {
+sub params_map {
     my $params1 = {
                     types => {
                                'Map' => {
-                                          type => 'HashRef[ArrayRef[PawsDynamoDBAttributeMap]]',
+                                          type => 'HashRef[ArrayRef[DynamoDB_AttributeMap]]',
                                           class => 'Paws::DynamoDB::AttributeMap',
                                         },
                              },
                   };
     return $params1;
   }
-
 1;
 
 ### main pod documentation begin ###

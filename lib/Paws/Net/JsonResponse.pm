@@ -116,7 +116,7 @@ package Paws::Net::JsonResponse;
   sub new_from_result_struct {
     my ($self, $class, $result) = @_;
     my %args;
-    
+
     if ($class->does('Paws::API::StrToObjMapParser')) {
       return $self->handle_response_strtoobjmap($class, $result);
     } elsif ($class->does('Paws::API::StrToNativeMapParser')) {

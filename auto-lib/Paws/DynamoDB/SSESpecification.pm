@@ -1,7 +1,7 @@
 package Paws::DynamoDB::SSESpecification;
   use Moo;
   use Types::Standard qw/Bool Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has Enabled => (is => 'ro', isa => Bool);
   has KMSMasterKeyId => (is => 'ro', isa => Str);
   has SSEType => (is => 'ro', isa => Str);

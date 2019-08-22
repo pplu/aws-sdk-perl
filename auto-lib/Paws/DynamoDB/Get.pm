@@ -1,9 +1,9 @@
 package Paws::DynamoDB::Get;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBExpressionAttributeNameMap PawsDynamoDBKey/;
-  has ExpressionAttributeNames => (is => 'ro', isa => PawsDynamoDBExpressionAttributeNameMap);
-  has Key => (is => 'ro', isa => PawsDynamoDBKey, required => 1);
+  use Paws::DynamoDB::Types qw/DynamoDB_ExpressionAttributeNameMap DynamoDB_Key/;
+  has ExpressionAttributeNames => (is => 'ro', isa => DynamoDB_ExpressionAttributeNameMap);
+  has Key => (is => 'ro', isa => DynamoDB_Key, required => 1);
   has ProjectionExpression => (is => 'ro', isa => Str);
   has TableName => (is => 'ro', isa => Str, required => 1);
 
@@ -15,14 +15,14 @@ package Paws::DynamoDB::Get;
                                          },
                           'ExpressionAttributeNames' => {
                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => 'PawsDynamoDBExpressionAttributeNameMap'
+                                                          'type' => 'DynamoDB_ExpressionAttributeNameMap'
                                                         },
                           'ProjectionExpression' => {
                                                       'type' => 'Str'
                                                     },
                           'Key' => {
                                      'class' => 'Paws::DynamoDB::Key',
-                                     'type' => 'PawsDynamoDBKey'
+                                     'type' => 'DynamoDB_Key'
                                    }
                         }
            };
@@ -66,13 +66,13 @@ C<TransactGetItem> object.
 =head1 ATTRIBUTES
 
 
-=head2 ExpressionAttributeNames => PawsDynamoDBExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => DynamoDB_ExpressionAttributeNameMap
 
   One or more substitution tokens for attribute names in the
 ProjectionExpression parameter.
 
 
-=head2 B<REQUIRED> Key => PawsDynamoDBKey
+=head2 B<REQUIRED> Key => DynamoDB_Key
 
   A map of attribute names to C<AttributeValue> objects that specifies
 the primary key of the item to retrieve.

@@ -1,15 +1,15 @@
 package Paws::DynamoDB::ItemResponse;
   use Moo;
   use Types::Standard qw//;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAttributeMap/;
-  has Item => (is => 'ro', isa => PawsDynamoDBAttributeMap);
+  use Paws::DynamoDB::Types qw/DynamoDB_AttributeMap/;
+  has Item => (is => 'ro', isa => DynamoDB_AttributeMap);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'Item' => {
                                       'class' => 'Paws::DynamoDB::AttributeMap',
-                                      'type' => 'PawsDynamoDBAttributeMap'
+                                      'type' => 'DynamoDB_AttributeMap'
                                     }
                         }
            };
@@ -52,7 +52,7 @@ Details for the requested item.
 =head1 ATTRIBUTES
 
 
-=head2 Item => PawsDynamoDBAttributeMap
+=head2 Item => DynamoDB_AttributeMap
 
   Map of attribute data consisting of the data type and attribute value.
 

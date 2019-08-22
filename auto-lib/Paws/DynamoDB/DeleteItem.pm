@@ -2,13 +2,13 @@
 package Paws::DynamoDB::DeleteItem;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBExpressionAttributeNameMap PawsDynamoDBKey PawsDynamoDBExpressionAttributeValueMap PawsDynamoDBExpectedAttributeMap/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ExpressionAttributeNameMap DynamoDB_ExpectedAttributeMap DynamoDB_Key DynamoDB_ExpressionAttributeValueMap/;
   has ConditionalOperator => (is => 'ro', isa => Str, predicate => 1);
   has ConditionExpression => (is => 'ro', isa => Str, predicate => 1);
-  has Expected => (is => 'ro', isa => PawsDynamoDBExpectedAttributeMap, predicate => 1);
-  has ExpressionAttributeNames => (is => 'ro', isa => PawsDynamoDBExpressionAttributeNameMap, predicate => 1);
-  has ExpressionAttributeValues => (is => 'ro', isa => PawsDynamoDBExpressionAttributeValueMap, predicate => 1);
-  has Key => (is => 'ro', isa => PawsDynamoDBKey, required => 1, predicate => 1);
+  has Expected => (is => 'ro', isa => DynamoDB_ExpectedAttributeMap, predicate => 1);
+  has ExpressionAttributeNames => (is => 'ro', isa => DynamoDB_ExpressionAttributeNameMap, predicate => 1);
+  has ExpressionAttributeValues => (is => 'ro', isa => DynamoDB_ExpressionAttributeValueMap, predicate => 1);
+  has Key => (is => 'ro', isa => DynamoDB_Key, required => 1, predicate => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
   has ReturnItemCollectionMetrics => (is => 'ro', isa => Str, predicate => 1);
   has ReturnValues => (is => 'ro', isa => Str, predicate => 1);
@@ -25,7 +25,7 @@ package Paws::DynamoDB::DeleteItem;
              'types' => {
                           'ExpressionAttributeValues' => {
                                                            'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
-                                                           'type' => 'PawsDynamoDBExpressionAttributeValueMap'
+                                                           'type' => 'DynamoDB_ExpressionAttributeValueMap'
                                                          },
                           'ReturnValues' => {
                                               'type' => 'Str'
@@ -44,18 +44,18 @@ package Paws::DynamoDB::DeleteItem;
                                                    },
                           'ExpressionAttributeNames' => {
                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => 'PawsDynamoDBExpressionAttributeNameMap'
+                                                          'type' => 'DynamoDB_ExpressionAttributeNameMap'
                                                         },
                           'ConditionExpression' => {
                                                      'type' => 'Str'
                                                    },
                           'Expected' => {
                                           'class' => 'Paws::DynamoDB::ExpectedAttributeMap',
-                                          'type' => 'PawsDynamoDBExpectedAttributeMap'
+                                          'type' => 'DynamoDB_ExpectedAttributeMap'
                                         },
                           'Key' => {
                                      'class' => 'Paws::DynamoDB::Key',
-                                     'type' => 'PawsDynamoDBKey'
+                                     'type' => 'DynamoDB_Key'
                                    }
                         }
            };
@@ -149,7 +149,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 Expected => PawsDynamoDBExpectedAttributeMap
+=head2 Expected => DynamoDB_ExpectedAttributeMap
 
 This is a legacy parameter. Use C<ConditionExpression> instead. For
 more information, see Expected
@@ -158,7 +158,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 ExpressionAttributeNames => PawsDynamoDBExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => DynamoDB_ExpressionAttributeNameMap
 
 One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using C<ExpressionAttributeNames>:
@@ -229,7 +229,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 ExpressionAttributeValues => PawsDynamoDBExpressionAttributeValueMap
+=head2 ExpressionAttributeValues => DynamoDB_ExpressionAttributeValueMap
 
 One or more values that can be substituted in an expression.
 
@@ -256,7 +256,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 B<REQUIRED> Key => PawsDynamoDBKey
+=head2 B<REQUIRED> Key => DynamoDB_Key
 
 A map of attribute names to C<AttributeValue> objects, representing the
 primary key of the item to delete.

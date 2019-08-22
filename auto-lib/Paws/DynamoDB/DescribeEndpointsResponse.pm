@@ -2,8 +2,8 @@
 package Paws::DynamoDB::DescribeEndpointsResponse;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBEndpoint/;
-  has Endpoints => (is => 'ro', isa => ArrayRef[PawsDynamoDBEndpoint], required => 1);
+  use Paws::DynamoDB::Types qw/DynamoDB_Endpoint/;
+  has Endpoints => (is => 'ro', isa => ArrayRef[DynamoDB_Endpoint], required => 1);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -11,7 +11,7 @@ package Paws::DynamoDB::DescribeEndpointsResponse;
              'types' => {
                           'Endpoints' => {
                                            'class' => 'Paws::DynamoDB::Endpoint',
-                                           'type' => 'ArrayRef[PawsDynamoDBEndpoint]'
+                                           'type' => 'ArrayRef[DynamoDB_Endpoint]'
                                          }
                         }
            };
@@ -28,7 +28,7 @@ Paws::DynamoDB::DescribeEndpointsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Endpoints => ArrayRef[PawsDynamoDBEndpoint]
+=head2 B<REQUIRED> Endpoints => ArrayRef[DynamoDB_Endpoint]
 
 List of endpoints.
 

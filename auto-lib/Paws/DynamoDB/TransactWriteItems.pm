@@ -2,11 +2,11 @@
 package Paws::DynamoDB::TransactWriteItems;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBTransactWriteItem/;
+  use Paws::DynamoDB::Types qw/DynamoDB_TransactWriteItem/;
   has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
   has ReturnItemCollectionMetrics => (is => 'ro', isa => Str, predicate => 1);
-  has TransactItems => (is => 'ro', isa => ArrayRef[PawsDynamoDBTransactWriteItem], required => 1, predicate => 1);
+  has TransactItems => (is => 'ro', isa => ArrayRef[DynamoDB_TransactWriteItem], required => 1, predicate => 1);
 
   use MooX::ClassAttribute;
 
@@ -22,7 +22,7 @@ package Paws::DynamoDB::TransactWriteItems;
                                                   },
                           'TransactItems' => {
                                                'class' => 'Paws::DynamoDB::TransactWriteItem',
-                                               'type' => 'ArrayRef[PawsDynamoDBTransactWriteItem]'
+                                               'type' => 'ArrayRef[DynamoDB_TransactWriteItem]'
                                              },
                           'ReturnConsumedCapacity' => {
                                                         'type' => 'Str'
@@ -321,7 +321,7 @@ response. If set to C<NONE> (the default), no statistics are returned.
 
 Valid values are: C<"SIZE">, C<"NONE">
 
-=head2 B<REQUIRED> TransactItems => ArrayRef[PawsDynamoDBTransactWriteItem]
+=head2 B<REQUIRED> TransactItems => ArrayRef[DynamoDB_TransactWriteItem]
 
 An ordered array of up to 25 C<TransactWriteItem> objects, each of
 which contains a C<ConditionCheck>, C<Put>, C<Update>, or C<Delete>

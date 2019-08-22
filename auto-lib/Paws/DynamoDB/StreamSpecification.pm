@@ -1,7 +1,7 @@
 package Paws::DynamoDB::StreamSpecification;
   use Moo;
   use Types::Standard qw/Bool Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has StreamEnabled => (is => 'ro', isa => Bool);
   has StreamViewType => (is => 'ro', isa => Str);
 

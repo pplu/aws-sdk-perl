@@ -2,7 +2,7 @@
 package Paws::DynamoDB::CreateBackup;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has BackupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
   has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 

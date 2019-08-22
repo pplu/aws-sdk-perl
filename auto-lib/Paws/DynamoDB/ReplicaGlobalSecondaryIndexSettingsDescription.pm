@@ -1,12 +1,12 @@
 package Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription;
   use Moo;
   use Types::Standard qw/Str Int/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAutoScalingSettingsDescription/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AutoScalingSettingsDescription/;
   has IndexName => (is => 'ro', isa => Str, required => 1);
   has IndexStatus => (is => 'ro', isa => Str);
-  has ProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => PawsDynamoDBAutoScalingSettingsDescription);
+  has ProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => DynamoDB_AutoScalingSettingsDescription);
   has ProvisionedReadCapacityUnits => (is => 'ro', isa => Int);
-  has ProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => PawsDynamoDBAutoScalingSettingsDescription);
+  has ProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => DynamoDB_AutoScalingSettingsDescription);
   has ProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
 
   sub params_map {
@@ -23,11 +23,11 @@ package Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription;
                                                             },
                           'ProvisionedWriteCapacityAutoScalingSettings' => {
                                                                              'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
-                                                                             'type' => 'PawsDynamoDBAutoScalingSettingsDescription'
+                                                                             'type' => 'DynamoDB_AutoScalingSettingsDescription'
                                                                            },
                           'ProvisionedReadCapacityAutoScalingSettings' => {
                                                                             'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
-                                                                            'type' => 'PawsDynamoDBAutoScalingSettingsDescription'
+                                                                            'type' => 'DynamoDB_AutoScalingSettingsDescription'
                                                                           },
                           'IndexStatus' => {
                                              'type' => 'Str'
@@ -105,7 +105,7 @@ C<ACTIVE> - The global secondary index is ready for use.
 
 
 
-=head2 ProvisionedReadCapacityAutoScalingSettings => PawsDynamoDBAutoScalingSettingsDescription
+=head2 ProvisionedReadCapacityAutoScalingSettings => DynamoDB_AutoScalingSettingsDescription
 
   Autoscaling settings for a global secondary index replica's read
 capacity units.
@@ -117,7 +117,7 @@ capacity units.
 before DynamoDB returns a C<ThrottlingException>.
 
 
-=head2 ProvisionedWriteCapacityAutoScalingSettings => PawsDynamoDBAutoScalingSettingsDescription
+=head2 ProvisionedWriteCapacityAutoScalingSettings => DynamoDB_AutoScalingSettingsDescription
 
   AutoScaling settings for a global secondary index replica's write
 capacity units.

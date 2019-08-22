@@ -28,11 +28,12 @@ package Paws::API::Builder {
     return $svc;
   }
 
-  has typelibrary_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api . '::TypeLibrary' } );
+  has typelibrary_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api . '::Types' } );
 
   has typelibrary_classes => (is => 'rw', default => sub { {}; });
 
   has service_full_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ serviceFullName } });
+  has service_abbreviation => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ serviceAbbreviation } });
   has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ endpointPrefix } });
   has signing_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ signingName } // $_[0]->api_struct->{metadata}->{ endpointPrefix } });
   has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ apiVersion } });
@@ -888,9 +889,7 @@ package Paws::API::Builder {
 
   sub shape_class_type {
     my ($self, $shape) = @_;
-    my $class = $self->namespace_shape($shape);
-    $class =~ s/:://g;
-    return $class;
+    return sprintf("%s_%s", $self->service_abbreviation, $shape);
   }
   
   sub namespace_shape {

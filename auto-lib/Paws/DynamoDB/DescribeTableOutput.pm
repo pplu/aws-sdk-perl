@@ -2,8 +2,8 @@
 package Paws::DynamoDB::DescribeTableOutput;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBTableDescription/;
-  has Table => (is => 'ro', isa => PawsDynamoDBTableDescription);
+  use Paws::DynamoDB::Types qw/DynamoDB_TableDescription/;
+  has Table => (is => 'ro', isa => DynamoDB_TableDescription);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -11,7 +11,7 @@ package Paws::DynamoDB::DescribeTableOutput;
              'types' => {
                           'Table' => {
                                        'class' => 'Paws::DynamoDB::TableDescription',
-                                       'type' => 'PawsDynamoDBTableDescription'
+                                       'type' => 'DynamoDB_TableDescription'
                                      }
                         }
            };
@@ -28,7 +28,7 @@ Paws::DynamoDB::DescribeTableOutput
 =head1 ATTRIBUTES
 
 
-=head2 Table => PawsDynamoDBTableDescription
+=head2 Table => DynamoDB_TableDescription
 
 The properties of the table.
 

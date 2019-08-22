@@ -1,7 +1,7 @@
 package Paws::DynamoDB::BillingModeSummary;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has BillingMode => (is => 'ro', isa => Str);
   has LastUpdateToPayPerRequestDateTime => (is => 'ro', isa => Str);
 

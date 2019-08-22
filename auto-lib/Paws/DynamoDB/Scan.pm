@@ -2,19 +2,19 @@
 package Paws::DynamoDB::Scan;
   use Moo;
   use Types::Standard qw/Str ArrayRef Undef Bool Int/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBExpressionAttributeNameMap PawsDynamoDBKey PawsDynamoDBFilterConditionMap PawsDynamoDBExpressionAttributeValueMap/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ExpressionAttributeNameMap DynamoDB_Key DynamoDB_FilterConditionMap DynamoDB_ExpressionAttributeValueMap/;
   has AttributesToGet => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
   has ConditionalOperator => (is => 'ro', isa => Str, predicate => 1);
   has ConsistentRead => (is => 'ro', isa => Bool, predicate => 1);
-  has ExclusiveStartKey => (is => 'ro', isa => PawsDynamoDBKey, predicate => 1);
-  has ExpressionAttributeNames => (is => 'ro', isa => PawsDynamoDBExpressionAttributeNameMap, predicate => 1);
-  has ExpressionAttributeValues => (is => 'ro', isa => PawsDynamoDBExpressionAttributeValueMap, predicate => 1);
+  has ExclusiveStartKey => (is => 'ro', isa => DynamoDB_Key, predicate => 1);
+  has ExpressionAttributeNames => (is => 'ro', isa => DynamoDB_ExpressionAttributeNameMap, predicate => 1);
+  has ExpressionAttributeValues => (is => 'ro', isa => DynamoDB_ExpressionAttributeValueMap, predicate => 1);
   has FilterExpression => (is => 'ro', isa => Str, predicate => 1);
   has IndexName => (is => 'ro', isa => Str, predicate => 1);
   has Limit => (is => 'ro', isa => Int, predicate => 1);
   has ProjectionExpression => (is => 'ro', isa => Str, predicate => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => Str, predicate => 1);
-  has ScanFilter => (is => 'ro', isa => PawsDynamoDBFilterConditionMap, predicate => 1);
+  has ScanFilter => (is => 'ro', isa => DynamoDB_FilterConditionMap, predicate => 1);
   has Segment => (is => 'ro', isa => Int, predicate => 1);
   has Select => (is => 'ro', isa => Str, predicate => 1);
   has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
@@ -31,14 +31,14 @@ package Paws::DynamoDB::Scan;
              'types' => {
                           'ExpressionAttributeValues' => {
                                                            'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
-                                                           'type' => 'PawsDynamoDBExpressionAttributeValueMap'
+                                                           'type' => 'DynamoDB_ExpressionAttributeValueMap'
                                                          },
                           'ConsistentRead' => {
                                                 'type' => 'Bool'
                                               },
                           'ExclusiveStartKey' => {
                                                    'class' => 'Paws::DynamoDB::Key',
-                                                   'type' => 'PawsDynamoDBKey'
+                                                   'type' => 'DynamoDB_Key'
                                                  },
                           'TotalSegments' => {
                                                'type' => 'Int'
@@ -51,14 +51,14 @@ package Paws::DynamoDB::Scan;
                                                },
                           'ExpressionAttributeNames' => {
                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => 'PawsDynamoDBExpressionAttributeNameMap'
+                                                          'type' => 'DynamoDB_ExpressionAttributeNameMap'
                                                         },
                           'Select' => {
                                         'type' => 'Str'
                                       },
                           'ScanFilter' => {
                                             'class' => 'Paws::DynamoDB::FilterConditionMap',
-                                            'type' => 'PawsDynamoDBFilterConditionMap'
+                                            'type' => 'DynamoDB_FilterConditionMap'
                                           },
                           'Segment' => {
                                          'type' => 'Int'
@@ -185,7 +185,7 @@ set to true, you will receive a C<ValidationException>.
 
 
 
-=head2 ExclusiveStartKey => PawsDynamoDBKey
+=head2 ExclusiveStartKey => DynamoDB_Key
 
 The primary key of the first item that this operation will evaluate.
 Use the value that was returned for C<LastEvaluatedKey> in the previous
@@ -200,7 +200,7 @@ C<Scan> returned the corresponding value of C<LastEvaluatedKey>.
 
 
 
-=head2 ExpressionAttributeNames => PawsDynamoDBExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => DynamoDB_ExpressionAttributeNameMap
 
 One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using C<ExpressionAttributeNames>:
@@ -271,7 +271,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 ExpressionAttributeValues => PawsDynamoDBExpressionAttributeValueMap
+=head2 ExpressionAttributeValues => DynamoDB_ExpressionAttributeValueMap
 
 One or more values that can be substituted in an expression.
 
@@ -362,7 +362,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
-=head2 ScanFilter => PawsDynamoDBFilterConditionMap
+=head2 ScanFilter => DynamoDB_FilterConditionMap
 
 This is a legacy parameter. Use C<FilterExpression> instead. For more
 information, see ScanFilter

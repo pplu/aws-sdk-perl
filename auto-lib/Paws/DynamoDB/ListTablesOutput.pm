@@ -2,7 +2,7 @@
 package Paws::DynamoDB::ListTablesOutput;
   use Moo;
   use Types::Standard qw/Str ArrayRef Undef/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has LastEvaluatedTableName => (is => 'ro', isa => Str);
   has TableNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
 

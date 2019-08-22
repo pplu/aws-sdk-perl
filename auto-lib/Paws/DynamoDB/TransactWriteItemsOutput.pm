@@ -2,9 +2,9 @@
 package Paws::DynamoDB::TransactWriteItemsOutput;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBConsumedCapacity PawsDynamoDBItemCollectionMetricsPerTable/;
-  has ConsumedCapacity => (is => 'ro', isa => ArrayRef[PawsDynamoDBConsumedCapacity]);
-  has ItemCollectionMetrics => (is => 'ro', isa => PawsDynamoDBItemCollectionMetricsPerTable);
+  use Paws::DynamoDB::Types qw/DynamoDB_ItemCollectionMetricsPerTable DynamoDB_ConsumedCapacity/;
+  has ConsumedCapacity => (is => 'ro', isa => ArrayRef[DynamoDB_ConsumedCapacity]);
+  has ItemCollectionMetrics => (is => 'ro', isa => DynamoDB_ItemCollectionMetricsPerTable);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -12,11 +12,11 @@ package Paws::DynamoDB::TransactWriteItemsOutput;
              'types' => {
                           'ConsumedCapacity' => {
                                                   'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => 'ArrayRef[PawsDynamoDBConsumedCapacity]'
+                                                  'type' => 'ArrayRef[DynamoDB_ConsumedCapacity]'
                                                 },
                           'ItemCollectionMetrics' => {
                                                        'class' => 'Paws::DynamoDB::ItemCollectionMetricsPerTable',
-                                                       'type' => 'PawsDynamoDBItemCollectionMetricsPerTable'
+                                                       'type' => 'DynamoDB_ItemCollectionMetricsPerTable'
                                                      }
                         }
            };
@@ -33,14 +33,14 @@ Paws::DynamoDB::TransactWriteItemsOutput
 =head1 ATTRIBUTES
 
 
-=head2 ConsumedCapacity => ArrayRef[PawsDynamoDBConsumedCapacity]
+=head2 ConsumedCapacity => ArrayRef[DynamoDB_ConsumedCapacity]
 
 The capacity units consumed by the entire C<TransactWriteItems>
 operation. The values of the list are ordered according to the ordering
 of the C<TransactItems> request parameter.
 
 
-=head2 ItemCollectionMetrics => PawsDynamoDBItemCollectionMetricsPerTable
+=head2 ItemCollectionMetrics => DynamoDB_ItemCollectionMetricsPerTable
 
 A list of tables that were processed by C<TransactWriteItems> and, for
 each table, information about any item collections that were affected

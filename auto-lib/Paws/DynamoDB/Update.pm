@@ -1,11 +1,11 @@
 package Paws::DynamoDB::Update;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBExpressionAttributeNameMap PawsDynamoDBKey PawsDynamoDBExpressionAttributeValueMap/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ExpressionAttributeNameMap DynamoDB_Key DynamoDB_ExpressionAttributeValueMap/;
   has ConditionExpression => (is => 'ro', isa => Str);
-  has ExpressionAttributeNames => (is => 'ro', isa => PawsDynamoDBExpressionAttributeNameMap);
-  has ExpressionAttributeValues => (is => 'ro', isa => PawsDynamoDBExpressionAttributeValueMap);
-  has Key => (is => 'ro', isa => PawsDynamoDBKey, required => 1);
+  has ExpressionAttributeNames => (is => 'ro', isa => DynamoDB_ExpressionAttributeNameMap);
+  has ExpressionAttributeValues => (is => 'ro', isa => DynamoDB_ExpressionAttributeValueMap);
+  has Key => (is => 'ro', isa => DynamoDB_Key, required => 1);
   has ReturnValuesOnConditionCheckFailure => (is => 'ro', isa => Str);
   has TableName => (is => 'ro', isa => Str, required => 1);
   has UpdateExpression => (is => 'ro', isa => Str, required => 1);
@@ -18,18 +18,18 @@ package Paws::DynamoDB::Update;
                                                                    },
                           'ExpressionAttributeValues' => {
                                                            'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
-                                                           'type' => 'PawsDynamoDBExpressionAttributeValueMap'
+                                                           'type' => 'DynamoDB_ExpressionAttributeValueMap'
                                                          },
                           'TableName' => {
                                            'type' => 'Str'
                                          },
                           'ExpressionAttributeNames' => {
                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => 'PawsDynamoDBExpressionAttributeNameMap'
+                                                          'type' => 'DynamoDB_ExpressionAttributeNameMap'
                                                         },
                           'Key' => {
                                      'class' => 'Paws::DynamoDB::Key',
-                                     'type' => 'PawsDynamoDBKey'
+                                     'type' => 'DynamoDB_Key'
                                    },
                           'ConditionExpression' => {
                                                      'type' => 'Str'
@@ -84,17 +84,17 @@ Represents a request to perform an C<UpdateItem> operation.
 succeed.
 
 
-=head2 ExpressionAttributeNames => PawsDynamoDBExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => DynamoDB_ExpressionAttributeNameMap
 
   One or more substitution tokens for attribute names in an expression.
 
 
-=head2 ExpressionAttributeValues => PawsDynamoDBExpressionAttributeValueMap
+=head2 ExpressionAttributeValues => DynamoDB_ExpressionAttributeValueMap
 
   One or more values that can be substituted in an expression.
 
 
-=head2 B<REQUIRED> Key => PawsDynamoDBKey
+=head2 B<REQUIRED> Key => DynamoDB_Key
 
   The primary key of the item to be updated. Each element consists of an
 attribute name and a value for that attribute.

@@ -2,8 +2,8 @@
 package Paws::DynamoDB::CreateBackupOutput;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBBackupDetails/;
-  has BackupDetails => (is => 'ro', isa => PawsDynamoDBBackupDetails);
+  use Paws::DynamoDB::Types qw/DynamoDB_BackupDetails/;
+  has BackupDetails => (is => 'ro', isa => DynamoDB_BackupDetails);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -11,7 +11,7 @@ package Paws::DynamoDB::CreateBackupOutput;
              'types' => {
                           'BackupDetails' => {
                                                'class' => 'Paws::DynamoDB::BackupDetails',
-                                               'type' => 'PawsDynamoDBBackupDetails'
+                                               'type' => 'DynamoDB_BackupDetails'
                                              }
                         }
            };
@@ -28,7 +28,7 @@ Paws::DynamoDB::CreateBackupOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupDetails => PawsDynamoDBBackupDetails
+=head2 BackupDetails => DynamoDB_BackupDetails
 
 Contains the details of the backup created for the table.
 

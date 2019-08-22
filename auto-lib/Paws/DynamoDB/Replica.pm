@@ -1,7 +1,7 @@
 package Paws::DynamoDB::Replica;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has RegionName => (is => 'ro', isa => Str);
 
   sub params_map {

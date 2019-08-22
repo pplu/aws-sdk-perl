@@ -1,9 +1,9 @@
 package Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate;
   use Moo;
   use Types::Standard qw/Str Int/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAutoScalingSettingsUpdate/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AutoScalingSettingsUpdate/;
   has IndexName => (is => 'ro', isa => Str, required => 1);
-  has ProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => PawsDynamoDBAutoScalingSettingsUpdate);
+  has ProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => DynamoDB_AutoScalingSettingsUpdate);
   has ProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
 
   sub params_map {
@@ -17,7 +17,7 @@ package Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate;
                                                              },
                           'ProvisionedWriteCapacityAutoScalingSettingsUpdate' => {
                                                                                    'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
-                                                                                   'type' => 'PawsDynamoDBAutoScalingSettingsUpdate'
+                                                                                   'type' => 'DynamoDB_AutoScalingSettingsUpdate'
                                                                                  }
                         }
            };
@@ -67,7 +67,7 @@ that will be modified.
 all other indexes on this table.
 
 
-=head2 ProvisionedWriteCapacityAutoScalingSettingsUpdate => PawsDynamoDBAutoScalingSettingsUpdate
+=head2 ProvisionedWriteCapacityAutoScalingSettingsUpdate => DynamoDB_AutoScalingSettingsUpdate
 
   AutoScaling settings for managing a global secondary index's write
 capacity units.

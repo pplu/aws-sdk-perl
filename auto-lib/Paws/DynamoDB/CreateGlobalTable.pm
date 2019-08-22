@@ -2,9 +2,9 @@
 package Paws::DynamoDB::CreateGlobalTable;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBReplica/;
+  use Paws::DynamoDB::Types qw/DynamoDB_Replica/;
   has GlobalTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has ReplicationGroup => (is => 'ro', isa => ArrayRef[PawsDynamoDBReplica], required => 1, predicate => 1);
+  has ReplicationGroup => (is => 'ro', isa => ArrayRef[DynamoDB_Replica], required => 1, predicate => 1);
 
   use MooX::ClassAttribute;
 
@@ -17,7 +17,7 @@ package Paws::DynamoDB::CreateGlobalTable;
              'types' => {
                           'ReplicationGroup' => {
                                                   'class' => 'Paws::DynamoDB::Replica',
-                                                  'type' => 'ArrayRef[PawsDynamoDBReplica]'
+                                                  'type' => 'ArrayRef[DynamoDB_Replica]'
                                                 },
                           'GlobalTableName' => {
                                                  'type' => 'Str'
@@ -75,7 +75,7 @@ The global table name.
 
 
 
-=head2 B<REQUIRED> ReplicationGroup => ArrayRef[PawsDynamoDBReplica]
+=head2 B<REQUIRED> ReplicationGroup => ArrayRef[DynamoDB_Replica]
 
 The Regions where the global table needs to be created.
 

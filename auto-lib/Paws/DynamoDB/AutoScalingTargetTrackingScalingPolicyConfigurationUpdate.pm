@@ -1,7 +1,7 @@
 package Paws::DynamoDB::AutoScalingTargetTrackingScalingPolicyConfigurationUpdate;
   use Moo;
   use Types::Standard qw/Bool Int Num/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has DisableScaleIn => (is => 'ro', isa => Bool);
   has ScaleInCooldown => (is => 'ro', isa => Int);
   has ScaleOutCooldown => (is => 'ro', isa => Int);

@@ -1,7 +1,7 @@
 package Paws::DynamoDB::ProvisionedThroughputDescription;
   use Moo;
   use Types::Standard qw/Str Int/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has LastDecreaseDateTime => (is => 'ro', isa => Str);
   has LastIncreaseDateTime => (is => 'ro', isa => Str);
   has NumberOfDecreasesToday => (is => 'ro', isa => Int);

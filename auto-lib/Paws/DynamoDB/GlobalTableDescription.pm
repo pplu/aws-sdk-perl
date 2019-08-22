@@ -1,19 +1,19 @@
 package Paws::DynamoDB::GlobalTableDescription;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBReplicaDescription/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ReplicaDescription/;
   has CreationDateTime => (is => 'ro', isa => Str);
   has GlobalTableArn => (is => 'ro', isa => Str);
   has GlobalTableName => (is => 'ro', isa => Str);
   has GlobalTableStatus => (is => 'ro', isa => Str);
-  has ReplicationGroup => (is => 'ro', isa => ArrayRef[PawsDynamoDBReplicaDescription]);
+  has ReplicationGroup => (is => 'ro', isa => ArrayRef[DynamoDB_ReplicaDescription]);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'ReplicationGroup' => {
                                                   'class' => 'Paws::DynamoDB::ReplicaDescription',
-                                                  'type' => 'ArrayRef[PawsDynamoDBReplicaDescription]'
+                                                  'type' => 'ArrayRef[DynamoDB_ReplicaDescription]'
                                                 },
                           'GlobalTableStatus' => {
                                                    'type' => 'Str'
@@ -109,7 +109,7 @@ C<ACTIVE> - The global table is ready for use.
 
 
 
-=head2 ReplicationGroup => ArrayRef[PawsDynamoDBReplicaDescription]
+=head2 ReplicationGroup => ArrayRef[DynamoDB_ReplicaDescription]
 
   The regions where the global table has replicas.
 

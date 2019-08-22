@@ -1,15 +1,15 @@
 package Paws::DynamoDB::TransactGetItem;
   use Moo;
   use Types::Standard qw//;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBGet/;
-  has Get => (is => 'ro', isa => PawsDynamoDBGet, required => 1);
+  use Paws::DynamoDB::Types qw/DynamoDB_Get/;
+  has Get => (is => 'ro', isa => DynamoDB_Get, required => 1);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'Get' => {
                                      'class' => 'Paws::DynamoDB::Get',
-                                     'type' => 'PawsDynamoDBGet'
+                                     'type' => 'DynamoDB_Get'
                                    }
                         }
            };
@@ -52,7 +52,7 @@ Specifies an item to be retrieved as part of the transaction.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Get => PawsDynamoDBGet
+=head2 B<REQUIRED> Get => DynamoDB_Get
 
   Contains the primary key that identifies the item to get, together with
 the name of the table that contains the item, and optionally the

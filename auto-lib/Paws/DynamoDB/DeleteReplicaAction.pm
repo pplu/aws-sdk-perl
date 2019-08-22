@@ -1,7 +1,7 @@
 package Paws::DynamoDB::DeleteReplicaAction;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has RegionName => (is => 'ro', isa => Str, required => 1);
 
   sub params_map {

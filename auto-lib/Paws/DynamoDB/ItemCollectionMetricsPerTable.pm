@@ -2,15 +2,15 @@ package Paws::DynamoDB::ItemCollectionMetricsPerTable;
   use Moo;
   with 'Paws::API::StrToObjMapParser';
   use Types::Standard qw/HashRef ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBItemCollectionMetrics/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ItemCollectionMetrics/;
 
-  has Map => (is => 'ro', isa => HashRef[ArrayRef[PawsDynamoDBItemCollectionMetrics]]);
+  has Map => (is => 'ro', isa => HashRef[ArrayRef[DynamoDB_ItemCollectionMetrics]]);
 
   sub params_map {
     my $params1 = {
                     types => {
                                'Map' => {
-                                          type => 'HashRef[ArrayRef[PawsDynamoDBItemCollectionMetrics]]',
+                                          type => 'HashRef[ArrayRef[DynamoDB_ItemCollectionMetrics]]',
                                           class => 'Paws::DynamoDB::ItemCollectionMetrics',
                                         },
                              },

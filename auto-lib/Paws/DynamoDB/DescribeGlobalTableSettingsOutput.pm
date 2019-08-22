@@ -2,9 +2,9 @@
 package Paws::DynamoDB::DescribeGlobalTableSettingsOutput;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBReplicaSettingsDescription/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ReplicaSettingsDescription/;
   has GlobalTableName => (is => 'ro', isa => Str);
-  has ReplicaSettings => (is => 'ro', isa => ArrayRef[PawsDynamoDBReplicaSettingsDescription]);
+  has ReplicaSettings => (is => 'ro', isa => ArrayRef[DynamoDB_ReplicaSettingsDescription]);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -12,7 +12,7 @@ package Paws::DynamoDB::DescribeGlobalTableSettingsOutput;
              'types' => {
                           'ReplicaSettings' => {
                                                  'class' => 'Paws::DynamoDB::ReplicaSettingsDescription',
-                                                 'type' => 'ArrayRef[PawsDynamoDBReplicaSettingsDescription]'
+                                                 'type' => 'ArrayRef[DynamoDB_ReplicaSettingsDescription]'
                                                },
                           'GlobalTableName' => {
                                                  'type' => 'Str'
@@ -37,7 +37,7 @@ Paws::DynamoDB::DescribeGlobalTableSettingsOutput
 The name of the global table.
 
 
-=head2 ReplicaSettings => ArrayRef[PawsDynamoDBReplicaSettingsDescription]
+=head2 ReplicaSettings => ArrayRef[DynamoDB_ReplicaSettingsDescription]
 
 The Region-specific settings for the global table.
 

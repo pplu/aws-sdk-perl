@@ -2,8 +2,8 @@
 package Paws::DynamoDB::DescribeBackupOutput;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBBackupDescription/;
-  has BackupDescription => (is => 'ro', isa => PawsDynamoDBBackupDescription);
+  use Paws::DynamoDB::Types qw/DynamoDB_BackupDescription/;
+  has BackupDescription => (is => 'ro', isa => DynamoDB_BackupDescription);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -11,7 +11,7 @@ package Paws::DynamoDB::DescribeBackupOutput;
              'types' => {
                           'BackupDescription' => {
                                                    'class' => 'Paws::DynamoDB::BackupDescription',
-                                                   'type' => 'PawsDynamoDBBackupDescription'
+                                                   'type' => 'DynamoDB_BackupDescription'
                                                  }
                         }
            };
@@ -28,7 +28,7 @@ Paws::DynamoDB::DescribeBackupOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupDescription => PawsDynamoDBBackupDescription
+=head2 BackupDescription => DynamoDB_BackupDescription
 
 Contains the description of the backup created for the table.
 

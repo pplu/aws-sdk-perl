@@ -1,35 +1,35 @@
 package Paws::DynamoDB::SourceTableFeatureDetails;
   use Moo;
   use Types::Standard qw/ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBGlobalSecondaryIndexInfo PawsDynamoDBTimeToLiveDescription PawsDynamoDBLocalSecondaryIndexInfo PawsDynamoDBStreamSpecification PawsDynamoDBSSEDescription/;
-  has GlobalSecondaryIndexes => (is => 'ro', isa => ArrayRef[PawsDynamoDBGlobalSecondaryIndexInfo]);
-  has LocalSecondaryIndexes => (is => 'ro', isa => ArrayRef[PawsDynamoDBLocalSecondaryIndexInfo]);
-  has SSEDescription => (is => 'ro', isa => PawsDynamoDBSSEDescription);
-  has StreamDescription => (is => 'ro', isa => PawsDynamoDBStreamSpecification);
-  has TimeToLiveDescription => (is => 'ro', isa => PawsDynamoDBTimeToLiveDescription);
+  use Paws::DynamoDB::Types qw/DynamoDB_LocalSecondaryIndexInfo DynamoDB_SSEDescription DynamoDB_GlobalSecondaryIndexInfo DynamoDB_TimeToLiveDescription DynamoDB_StreamSpecification/;
+  has GlobalSecondaryIndexes => (is => 'ro', isa => ArrayRef[DynamoDB_GlobalSecondaryIndexInfo]);
+  has LocalSecondaryIndexes => (is => 'ro', isa => ArrayRef[DynamoDB_LocalSecondaryIndexInfo]);
+  has SSEDescription => (is => 'ro', isa => DynamoDB_SSEDescription);
+  has StreamDescription => (is => 'ro', isa => DynamoDB_StreamSpecification);
+  has TimeToLiveDescription => (is => 'ro', isa => DynamoDB_TimeToLiveDescription);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'TimeToLiveDescription' => {
                                                        'class' => 'Paws::DynamoDB::TimeToLiveDescription',
-                                                       'type' => 'PawsDynamoDBTimeToLiveDescription'
+                                                       'type' => 'DynamoDB_TimeToLiveDescription'
                                                      },
                           'StreamDescription' => {
                                                    'class' => 'Paws::DynamoDB::StreamSpecification',
-                                                   'type' => 'PawsDynamoDBStreamSpecification'
+                                                   'type' => 'DynamoDB_StreamSpecification'
                                                  },
                           'SSEDescription' => {
                                                 'class' => 'Paws::DynamoDB::SSEDescription',
-                                                'type' => 'PawsDynamoDBSSEDescription'
+                                                'type' => 'DynamoDB_SSEDescription'
                                               },
                           'GlobalSecondaryIndexes' => {
                                                         'class' => 'Paws::DynamoDB::GlobalSecondaryIndexInfo',
-                                                        'type' => 'ArrayRef[PawsDynamoDBGlobalSecondaryIndexInfo]'
+                                                        'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndexInfo]'
                                                       },
                           'LocalSecondaryIndexes' => {
                                                        'class' => 'Paws::DynamoDB::LocalSecondaryIndexInfo',
-                                                       'type' => 'ArrayRef[PawsDynamoDBLocalSecondaryIndexInfo]'
+                                                       'type' => 'ArrayRef[DynamoDB_LocalSecondaryIndexInfo]'
                                                      }
                         }
            };
@@ -73,32 +73,32 @@ backup was created. For example, LSIs, GSIs, streams, TTL.
 =head1 ATTRIBUTES
 
 
-=head2 GlobalSecondaryIndexes => ArrayRef[PawsDynamoDBGlobalSecondaryIndexInfo]
+=head2 GlobalSecondaryIndexes => ArrayRef[DynamoDB_GlobalSecondaryIndexInfo]
 
   Represents the GSI properties for the table when the backup was
 created. It includes the IndexName, KeySchema, Projection and
 ProvisionedThroughput for the GSIs on the table at the time of backup.
 
 
-=head2 LocalSecondaryIndexes => ArrayRef[PawsDynamoDBLocalSecondaryIndexInfo]
+=head2 LocalSecondaryIndexes => ArrayRef[DynamoDB_LocalSecondaryIndexInfo]
 
   Represents the LSI properties for the table when the backup was
 created. It includes the IndexName, KeySchema and Projection for the
 LSIs on the table at the time of backup.
 
 
-=head2 SSEDescription => PawsDynamoDBSSEDescription
+=head2 SSEDescription => DynamoDB_SSEDescription
 
   The description of the server-side encryption status on the table when
 the backup was created.
 
 
-=head2 StreamDescription => PawsDynamoDBStreamSpecification
+=head2 StreamDescription => DynamoDB_StreamSpecification
 
   Stream settings on the table when the backup was created.
 
 
-=head2 TimeToLiveDescription => PawsDynamoDBTimeToLiveDescription
+=head2 TimeToLiveDescription => DynamoDB_TimeToLiveDescription
 
   Time to Live settings on the table when the backup was created.
 

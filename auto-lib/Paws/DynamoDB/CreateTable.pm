@@ -2,17 +2,17 @@
 package Paws::DynamoDB::CreateTable;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBTag PawsDynamoDBSSESpecification PawsDynamoDBStreamSpecification PawsDynamoDBAttributeDefinition PawsDynamoDBGlobalSecondaryIndex PawsDynamoDBProvisionedThroughput PawsDynamoDBKeySchemaElement PawsDynamoDBLocalSecondaryIndex/;
-  has AttributeDefinitions => (is => 'ro', isa => ArrayRef[PawsDynamoDBAttributeDefinition], required => 1, predicate => 1);
+  use Paws::DynamoDB::Types qw/DynamoDB_StreamSpecification DynamoDB_AttributeDefinition DynamoDB_SSESpecification DynamoDB_LocalSecondaryIndex DynamoDB_KeySchemaElement DynamoDB_ProvisionedThroughput DynamoDB_GlobalSecondaryIndex DynamoDB_Tag/;
+  has AttributeDefinitions => (is => 'ro', isa => ArrayRef[DynamoDB_AttributeDefinition], required => 1, predicate => 1);
   has BillingMode => (is => 'ro', isa => Str, predicate => 1);
-  has GlobalSecondaryIndexes => (is => 'ro', isa => ArrayRef[PawsDynamoDBGlobalSecondaryIndex], predicate => 1);
-  has KeySchema => (is => 'ro', isa => ArrayRef[PawsDynamoDBKeySchemaElement], required => 1, predicate => 1);
-  has LocalSecondaryIndexes => (is => 'ro', isa => ArrayRef[PawsDynamoDBLocalSecondaryIndex], predicate => 1);
-  has ProvisionedThroughput => (is => 'ro', isa => PawsDynamoDBProvisionedThroughput, predicate => 1);
-  has SSESpecification => (is => 'ro', isa => PawsDynamoDBSSESpecification, predicate => 1);
-  has StreamSpecification => (is => 'ro', isa => PawsDynamoDBStreamSpecification, predicate => 1);
+  has GlobalSecondaryIndexes => (is => 'ro', isa => ArrayRef[DynamoDB_GlobalSecondaryIndex], predicate => 1);
+  has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDB_KeySchemaElement], required => 1, predicate => 1);
+  has LocalSecondaryIndexes => (is => 'ro', isa => ArrayRef[DynamoDB_LocalSecondaryIndex], predicate => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => DynamoDB_ProvisionedThroughput, predicate => 1);
+  has SSESpecification => (is => 'ro', isa => DynamoDB_SSESpecification, predicate => 1);
+  has StreamSpecification => (is => 'ro', isa => DynamoDB_StreamSpecification, predicate => 1);
   has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has Tags => (is => 'ro', isa => ArrayRef[PawsDynamoDBTag], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DynamoDB_Tag], predicate => 1);
 
   use MooX::ClassAttribute;
 
@@ -28,38 +28,38 @@ package Paws::DynamoDB::CreateTable;
                                            },
                           'GlobalSecondaryIndexes' => {
                                                         'class' => 'Paws::DynamoDB::GlobalSecondaryIndex',
-                                                        'type' => 'ArrayRef[PawsDynamoDBGlobalSecondaryIndex]'
+                                                        'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndex]'
                                                       },
                           'LocalSecondaryIndexes' => {
                                                        'class' => 'Paws::DynamoDB::LocalSecondaryIndex',
-                                                       'type' => 'ArrayRef[PawsDynamoDBLocalSecondaryIndex]'
+                                                       'type' => 'ArrayRef[DynamoDB_LocalSecondaryIndex]'
                                                      },
                           'AttributeDefinitions' => {
                                                       'class' => 'Paws::DynamoDB::AttributeDefinition',
-                                                      'type' => 'ArrayRef[PawsDynamoDBAttributeDefinition]'
+                                                      'type' => 'ArrayRef[DynamoDB_AttributeDefinition]'
                                                     },
                           'KeySchema' => {
                                            'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[PawsDynamoDBKeySchemaElement]'
+                                           'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
                                          },
                           'TableName' => {
                                            'type' => 'Str'
                                          },
                           'StreamSpecification' => {
                                                      'class' => 'Paws::DynamoDB::StreamSpecification',
-                                                     'type' => 'PawsDynamoDBStreamSpecification'
+                                                     'type' => 'DynamoDB_StreamSpecification'
                                                    },
                           'Tags' => {
                                       'class' => 'Paws::DynamoDB::Tag',
-                                      'type' => 'ArrayRef[PawsDynamoDBTag]'
+                                      'type' => 'ArrayRef[DynamoDB_Tag]'
                                     },
                           'SSESpecification' => {
                                                   'class' => 'Paws::DynamoDB::SSESpecification',
-                                                  'type' => 'PawsDynamoDBSSESpecification'
+                                                  'type' => 'DynamoDB_SSESpecification'
                                                 },
                           'ProvisionedThroughput' => {
                                                        'class' => 'Paws::DynamoDB::ProvisionedThroughput',
-                                                       'type' => 'PawsDynamoDBProvisionedThroughput'
+                                                       'type' => 'DynamoDB_ProvisionedThroughput'
                                                      }
                         }
            };
@@ -130,7 +130,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AttributeDefinitions => ArrayRef[PawsDynamoDBAttributeDefinition]
+=head2 B<REQUIRED> AttributeDefinitions => ArrayRef[DynamoDB_AttributeDefinition]
 
 An array of attributes that describe the key schema for the table and
 indexes.
@@ -159,7 +159,7 @@ recommend using C<PAY_PER_REQUEST> for unpredictable workloads.
 
 Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
 
-=head2 GlobalSecondaryIndexes => ArrayRef[PawsDynamoDBGlobalSecondaryIndex]
+=head2 GlobalSecondaryIndexes => ArrayRef[DynamoDB_GlobalSecondaryIndex]
 
 One or more global secondary indexes (the maximum is 20) to be created
 on the table. Each global secondary index in the array includes the
@@ -228,7 +228,7 @@ global secondary index, consisting of read and write capacity units.
 
 
 
-=head2 B<REQUIRED> KeySchema => ArrayRef[PawsDynamoDBKeySchemaElement]
+=head2 B<REQUIRED> KeySchema => ArrayRef[DynamoDB_KeySchemaElement]
 
 Specifies the attributes that make up the primary key for a table or an
 index. The attributes in C<KeySchema> must also be defined in the
@@ -286,7 +286,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 LocalSecondaryIndexes => ArrayRef[PawsDynamoDBLocalSecondaryIndex]
+=head2 LocalSecondaryIndexes => ArrayRef[DynamoDB_LocalSecondaryIndex]
 
 One or more local secondary indexes (the maximum is 5) to be created on
 the table. Each index is scoped to a given partition key value. There
@@ -354,7 +354,7 @@ attributes when determining the total.
 
 
 
-=head2 ProvisionedThroughput => PawsDynamoDBProvisionedThroughput
+=head2 ProvisionedThroughput => DynamoDB_ProvisionedThroughput
 
 Represents the provisioned throughput settings for a specified table or
 index. The settings can be modified using the C<UpdateTable> operation.
@@ -370,13 +370,13 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 SSESpecification => PawsDynamoDBSSESpecification
+=head2 SSESpecification => DynamoDB_SSESpecification
 
 Represents the settings used to enable server-side encryption.
 
 
 
-=head2 StreamSpecification => PawsDynamoDBStreamSpecification
+=head2 StreamSpecification => DynamoDB_StreamSpecification
 
 The settings for DynamoDB Streams on the table. These settings consist
 of:
@@ -429,7 +429,7 @@ The name of the table to create.
 
 
 
-=head2 Tags => ArrayRef[PawsDynamoDBTag]
+=head2 Tags => ArrayRef[DynamoDB_Tag]
 
 A list of key-value pairs to label the table. For more information, see
 Tagging for DynamoDB

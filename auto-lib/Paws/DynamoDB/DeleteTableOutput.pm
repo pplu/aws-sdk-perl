@@ -2,8 +2,8 @@
 package Paws::DynamoDB::DeleteTableOutput;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBTableDescription/;
-  has TableDescription => (is => 'ro', isa => PawsDynamoDBTableDescription);
+  use Paws::DynamoDB::Types qw/DynamoDB_TableDescription/;
+  has TableDescription => (is => 'ro', isa => DynamoDB_TableDescription);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -11,7 +11,7 @@ package Paws::DynamoDB::DeleteTableOutput;
              'types' => {
                           'TableDescription' => {
                                                   'class' => 'Paws::DynamoDB::TableDescription',
-                                                  'type' => 'PawsDynamoDBTableDescription'
+                                                  'type' => 'DynamoDB_TableDescription'
                                                 }
                         }
            };
@@ -28,7 +28,7 @@ Paws::DynamoDB::DeleteTableOutput
 =head1 ATTRIBUTES
 
 
-=head2 TableDescription => PawsDynamoDBTableDescription
+=head2 TableDescription => DynamoDB_TableDescription
 
 Represents the properties of a table.
 

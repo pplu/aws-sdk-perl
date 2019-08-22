@@ -2,7 +2,7 @@
 package Paws::DynamoDB::RestoreTableToPointInTime;
   use Moo;
   use Types::Standard qw/Str Bool/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has RestoreDateTime => (is => 'ro', isa => Str, predicate => 1);
   has SourceTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
   has TargetTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);

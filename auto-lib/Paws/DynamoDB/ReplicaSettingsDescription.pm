@@ -1,13 +1,13 @@
 package Paws::DynamoDB::ReplicaSettingsDescription;
   use Moo;
   use Types::Standard qw/Str ArrayRef Int/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBBillingModeSummary PawsDynamoDBReplicaGlobalSecondaryIndexSettingsDescription PawsDynamoDBAutoScalingSettingsDescription/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ReplicaGlobalSecondaryIndexSettingsDescription DynamoDB_BillingModeSummary DynamoDB_AutoScalingSettingsDescription/;
   has RegionName => (is => 'ro', isa => Str, required => 1);
-  has ReplicaBillingModeSummary => (is => 'ro', isa => PawsDynamoDBBillingModeSummary);
-  has ReplicaGlobalSecondaryIndexSettings => (is => 'ro', isa => ArrayRef[PawsDynamoDBReplicaGlobalSecondaryIndexSettingsDescription]);
-  has ReplicaProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => PawsDynamoDBAutoScalingSettingsDescription);
+  has ReplicaBillingModeSummary => (is => 'ro', isa => DynamoDB_BillingModeSummary);
+  has ReplicaGlobalSecondaryIndexSettings => (is => 'ro', isa => ArrayRef[DynamoDB_ReplicaGlobalSecondaryIndexSettingsDescription]);
+  has ReplicaProvisionedReadCapacityAutoScalingSettings => (is => 'ro', isa => DynamoDB_AutoScalingSettingsDescription);
   has ReplicaProvisionedReadCapacityUnits => (is => 'ro', isa => Int);
-  has ReplicaProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => PawsDynamoDBAutoScalingSettingsDescription);
+  has ReplicaProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => DynamoDB_AutoScalingSettingsDescription);
   has ReplicaProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
   has ReplicaStatus => (is => 'ro', isa => Str);
 
@@ -25,22 +25,22 @@ package Paws::DynamoDB::ReplicaSettingsDescription;
                                           },
                           'ReplicaProvisionedReadCapacityAutoScalingSettings' => {
                                                                                    'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
-                                                                                   'type' => 'PawsDynamoDBAutoScalingSettingsDescription'
+                                                                                   'type' => 'DynamoDB_AutoScalingSettingsDescription'
                                                                                  },
                           'ReplicaGlobalSecondaryIndexSettings' => {
                                                                      'class' => 'Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription',
-                                                                     'type' => 'ArrayRef[PawsDynamoDBReplicaGlobalSecondaryIndexSettingsDescription]'
+                                                                     'type' => 'ArrayRef[DynamoDB_ReplicaGlobalSecondaryIndexSettingsDescription]'
                                                                    },
                           'ReplicaStatus' => {
                                                'type' => 'Str'
                                              },
                           'ReplicaProvisionedWriteCapacityAutoScalingSettings' => {
                                                                                     'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
-                                                                                    'type' => 'PawsDynamoDBAutoScalingSettingsDescription'
+                                                                                    'type' => 'DynamoDB_AutoScalingSettingsDescription'
                                                                                   },
                           'ReplicaBillingModeSummary' => {
                                                            'class' => 'Paws::DynamoDB::BillingModeSummary',
-                                                           'type' => 'PawsDynamoDBBillingModeSummary'
+                                                           'type' => 'DynamoDB_BillingModeSummary'
                                                          }
                         }
            };
@@ -88,17 +88,17 @@ Represents the properties of a replica.
   The region name of the replica.
 
 
-=head2 ReplicaBillingModeSummary => PawsDynamoDBBillingModeSummary
+=head2 ReplicaBillingModeSummary => DynamoDB_BillingModeSummary
 
   The read/write capacity mode of the replica.
 
 
-=head2 ReplicaGlobalSecondaryIndexSettings => ArrayRef[PawsDynamoDBReplicaGlobalSecondaryIndexSettingsDescription]
+=head2 ReplicaGlobalSecondaryIndexSettings => ArrayRef[DynamoDB_ReplicaGlobalSecondaryIndexSettingsDescription]
 
   Replica global secondary index settings for the global table.
 
 
-=head2 ReplicaProvisionedReadCapacityAutoScalingSettings => PawsDynamoDBAutoScalingSettingsDescription
+=head2 ReplicaProvisionedReadCapacityAutoScalingSettings => DynamoDB_AutoScalingSettingsDescription
 
   Autoscaling settings for a global table replica's read capacity units.
 
@@ -112,7 +112,7 @@ see Specifying Read and Write Requirements
 in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 ReplicaProvisionedWriteCapacityAutoScalingSettings => PawsDynamoDBAutoScalingSettingsDescription
+=head2 ReplicaProvisionedWriteCapacityAutoScalingSettings => DynamoDB_AutoScalingSettingsDescription
 
   AutoScaling settings for a global table replica's write capacity units.
 

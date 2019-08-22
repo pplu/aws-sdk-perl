@@ -1,7 +1,7 @@
 package Paws::DynamoDB::Tag;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has Key => (is => 'ro', isa => Str, required => 1);
   has Value => (is => 'ro', isa => Str, required => 1);
 

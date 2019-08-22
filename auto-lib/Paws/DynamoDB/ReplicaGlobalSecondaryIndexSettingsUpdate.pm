@@ -1,9 +1,9 @@
 package Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate;
   use Moo;
   use Types::Standard qw/Str Int/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBAutoScalingSettingsUpdate/;
+  use Paws::DynamoDB::Types qw/DynamoDB_AutoScalingSettingsUpdate/;
   has IndexName => (is => 'ro', isa => Str, required => 1);
-  has ProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => PawsDynamoDBAutoScalingSettingsUpdate);
+  has ProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => DynamoDB_AutoScalingSettingsUpdate);
   has ProvisionedReadCapacityUnits => (is => 'ro', isa => Int);
 
   sub params_map {
@@ -17,7 +17,7 @@ package Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate;
                                                             },
                           'ProvisionedReadCapacityAutoScalingSettingsUpdate' => {
                                                                                   'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
-                                                                                  'type' => 'PawsDynamoDBAutoScalingSettingsUpdate'
+                                                                                  'type' => 'DynamoDB_AutoScalingSettingsUpdate'
                                                                                 }
                         }
            };
@@ -67,7 +67,7 @@ that will be modified.
 all other indexes on this table.
 
 
-=head2 ProvisionedReadCapacityAutoScalingSettingsUpdate => PawsDynamoDBAutoScalingSettingsUpdate
+=head2 ProvisionedReadCapacityAutoScalingSettingsUpdate => DynamoDB_AutoScalingSettingsUpdate
 
   Autoscaling settings for managing a global secondary index replica's
 read capacity units.

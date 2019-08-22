@@ -2,8 +2,8 @@
 package Paws::DynamoDB::UpdateGlobalTableOutput;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBGlobalTableDescription/;
-  has GlobalTableDescription => (is => 'ro', isa => PawsDynamoDBGlobalTableDescription);
+  use Paws::DynamoDB::Types qw/DynamoDB_GlobalTableDescription/;
+  has GlobalTableDescription => (is => 'ro', isa => DynamoDB_GlobalTableDescription);
 
   has _request_id => (is => 'ro', isa => Str);
   sub params_map {
@@ -11,7 +11,7 @@ package Paws::DynamoDB::UpdateGlobalTableOutput;
              'types' => {
                           'GlobalTableDescription' => {
                                                         'class' => 'Paws::DynamoDB::GlobalTableDescription',
-                                                        'type' => 'PawsDynamoDBGlobalTableDescription'
+                                                        'type' => 'DynamoDB_GlobalTableDescription'
                                                       }
                         }
            };
@@ -28,7 +28,7 @@ Paws::DynamoDB::UpdateGlobalTableOutput
 =head1 ATTRIBUTES
 
 
-=head2 GlobalTableDescription => PawsDynamoDBGlobalTableDescription
+=head2 GlobalTableDescription => DynamoDB_GlobalTableDescription
 
 Contains the details of the global table.
 

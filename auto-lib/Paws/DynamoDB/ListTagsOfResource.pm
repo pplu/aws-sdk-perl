@@ -2,7 +2,7 @@
 package Paws::DynamoDB::ListTagsOfResource;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has NextToken => (is => 'ro', isa => Str, predicate => 1);
   has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 

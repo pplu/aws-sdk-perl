@@ -1,16 +1,16 @@
 package Paws::DynamoDB::GlobalTable;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBReplica/;
+  use Paws::DynamoDB::Types qw/DynamoDB_Replica/;
   has GlobalTableName => (is => 'ro', isa => Str);
-  has ReplicationGroup => (is => 'ro', isa => ArrayRef[PawsDynamoDBReplica]);
+  has ReplicationGroup => (is => 'ro', isa => ArrayRef[DynamoDB_Replica]);
 
   sub params_map {
     my $params1 = {
              'types' => {
                           'ReplicationGroup' => {
                                                   'class' => 'Paws::DynamoDB::Replica',
-                                                  'type' => 'ArrayRef[PawsDynamoDBReplica]'
+                                                  'type' => 'ArrayRef[DynamoDB_Replica]'
                                                 },
                           'GlobalTableName' => {
                                                  'type' => 'Str'
@@ -61,7 +61,7 @@ Represents the properties of a global table.
   The global table name.
 
 
-=head2 ReplicationGroup => ArrayRef[PawsDynamoDBReplica]
+=head2 ReplicationGroup => ArrayRef[DynamoDB_Replica]
 
   The regions where the global table has replicas.
 

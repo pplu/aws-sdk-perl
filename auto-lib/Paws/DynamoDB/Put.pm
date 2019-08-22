@@ -1,11 +1,11 @@
 package Paws::DynamoDB::Put;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBExpressionAttributeNameMap PawsDynamoDBPutItemInputAttributeMap PawsDynamoDBExpressionAttributeValueMap/;
+  use Paws::DynamoDB::Types qw/DynamoDB_ExpressionAttributeNameMap DynamoDB_ExpressionAttributeValueMap DynamoDB_PutItemInputAttributeMap/;
   has ConditionExpression => (is => 'ro', isa => Str);
-  has ExpressionAttributeNames => (is => 'ro', isa => PawsDynamoDBExpressionAttributeNameMap);
-  has ExpressionAttributeValues => (is => 'ro', isa => PawsDynamoDBExpressionAttributeValueMap);
-  has Item => (is => 'ro', isa => PawsDynamoDBPutItemInputAttributeMap, required => 1);
+  has ExpressionAttributeNames => (is => 'ro', isa => DynamoDB_ExpressionAttributeNameMap);
+  has ExpressionAttributeValues => (is => 'ro', isa => DynamoDB_ExpressionAttributeValueMap);
+  has Item => (is => 'ro', isa => DynamoDB_PutItemInputAttributeMap, required => 1);
   has ReturnValuesOnConditionCheckFailure => (is => 'ro', isa => Str);
   has TableName => (is => 'ro', isa => Str, required => 1);
 
@@ -17,18 +17,18 @@ package Paws::DynamoDB::Put;
                                                                    },
                           'ExpressionAttributeValues' => {
                                                            'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
-                                                           'type' => 'PawsDynamoDBExpressionAttributeValueMap'
+                                                           'type' => 'DynamoDB_ExpressionAttributeValueMap'
                                                          },
                           'Item' => {
                                       'class' => 'Paws::DynamoDB::PutItemInputAttributeMap',
-                                      'type' => 'PawsDynamoDBPutItemInputAttributeMap'
+                                      'type' => 'DynamoDB_PutItemInputAttributeMap'
                                     },
                           'TableName' => {
                                            'type' => 'Str'
                                          },
                           'ExpressionAttributeNames' => {
                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => 'PawsDynamoDBExpressionAttributeNameMap'
+                                                          'type' => 'DynamoDB_ExpressionAttributeNameMap'
                                                         },
                           'ConditionExpression' => {
                                                      'type' => 'Str'
@@ -80,17 +80,17 @@ Represents a request to perform a C<PutItem> operation.
 succeed.
 
 
-=head2 ExpressionAttributeNames => PawsDynamoDBExpressionAttributeNameMap
+=head2 ExpressionAttributeNames => DynamoDB_ExpressionAttributeNameMap
 
   One or more substitution tokens for attribute names in an expression.
 
 
-=head2 ExpressionAttributeValues => PawsDynamoDBExpressionAttributeValueMap
+=head2 ExpressionAttributeValues => DynamoDB_ExpressionAttributeValueMap
 
   One or more values that can be substituted in an expression.
 
 
-=head2 B<REQUIRED> Item => PawsDynamoDBPutItemInputAttributeMap
+=head2 B<REQUIRED> Item => DynamoDB_PutItemInputAttributeMap
 
   A map of attribute name to attribute values, representing the primary
 key of the item to be written by C<PutItem>. All of the table's primary

@@ -2,13 +2,13 @@
 package Paws::DynamoDB::UpdateTable;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBProvisionedThroughput PawsDynamoDBGlobalSecondaryIndexUpdate PawsDynamoDBSSESpecification PawsDynamoDBStreamSpecification PawsDynamoDBAttributeDefinition/;
-  has AttributeDefinitions => (is => 'ro', isa => ArrayRef[PawsDynamoDBAttributeDefinition], predicate => 1);
+  use Paws::DynamoDB::Types qw/DynamoDB_GlobalSecondaryIndexUpdate DynamoDB_StreamSpecification DynamoDB_ProvisionedThroughput DynamoDB_AttributeDefinition DynamoDB_SSESpecification/;
+  has AttributeDefinitions => (is => 'ro', isa => ArrayRef[DynamoDB_AttributeDefinition], predicate => 1);
   has BillingMode => (is => 'ro', isa => Str, predicate => 1);
-  has GlobalSecondaryIndexUpdates => (is => 'ro', isa => ArrayRef[PawsDynamoDBGlobalSecondaryIndexUpdate], predicate => 1);
-  has ProvisionedThroughput => (is => 'ro', isa => PawsDynamoDBProvisionedThroughput, predicate => 1);
-  has SSESpecification => (is => 'ro', isa => PawsDynamoDBSSESpecification, predicate => 1);
-  has StreamSpecification => (is => 'ro', isa => PawsDynamoDBStreamSpecification, predicate => 1);
+  has GlobalSecondaryIndexUpdates => (is => 'ro', isa => ArrayRef[DynamoDB_GlobalSecondaryIndexUpdate], predicate => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => DynamoDB_ProvisionedThroughput, predicate => 1);
+  has SSESpecification => (is => 'ro', isa => DynamoDB_SSESpecification, predicate => 1);
+  has StreamSpecification => (is => 'ro', isa => DynamoDB_StreamSpecification, predicate => 1);
   has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
   use MooX::ClassAttribute;
@@ -25,26 +25,26 @@ package Paws::DynamoDB::UpdateTable;
                                            },
                           'AttributeDefinitions' => {
                                                       'class' => 'Paws::DynamoDB::AttributeDefinition',
-                                                      'type' => 'ArrayRef[PawsDynamoDBAttributeDefinition]'
+                                                      'type' => 'ArrayRef[DynamoDB_AttributeDefinition]'
                                                     },
                           'GlobalSecondaryIndexUpdates' => {
                                                              'class' => 'Paws::DynamoDB::GlobalSecondaryIndexUpdate',
-                                                             'type' => 'ArrayRef[PawsDynamoDBGlobalSecondaryIndexUpdate]'
+                                                             'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndexUpdate]'
                                                            },
                           'TableName' => {
                                            'type' => 'Str'
                                          },
                           'StreamSpecification' => {
                                                      'class' => 'Paws::DynamoDB::StreamSpecification',
-                                                     'type' => 'PawsDynamoDBStreamSpecification'
+                                                     'type' => 'DynamoDB_StreamSpecification'
                                                    },
                           'SSESpecification' => {
                                                   'class' => 'Paws::DynamoDB::SSESpecification',
-                                                  'type' => 'PawsDynamoDBSSESpecification'
+                                                  'type' => 'DynamoDB_SSESpecification'
                                                 },
                           'ProvisionedThroughput' => {
                                                        'class' => 'Paws::DynamoDB::ProvisionedThroughput',
-                                                       'type' => 'PawsDynamoDBProvisionedThroughput'
+                                                       'type' => 'DynamoDB_ProvisionedThroughput'
                                                      }
                         }
            };
@@ -92,7 +92,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 =head1 ATTRIBUTES
 
 
-=head2 AttributeDefinitions => ArrayRef[PawsDynamoDBAttributeDefinition]
+=head2 AttributeDefinitions => ArrayRef[DynamoDB_AttributeDefinition]
 
 An array of attributes that describe the key schema for the table and
 indexes. If you are adding a new global secondary index to the table,
@@ -127,7 +127,7 @@ recommend using C<PAY_PER_REQUEST> for unpredictable workloads.
 
 Valid values are: C<"PROVISIONED">, C<"PAY_PER_REQUEST">
 
-=head2 GlobalSecondaryIndexUpdates => ArrayRef[PawsDynamoDBGlobalSecondaryIndexUpdate]
+=head2 GlobalSecondaryIndexUpdates => ArrayRef[DynamoDB_GlobalSecondaryIndexUpdate]
 
 An array of one or more global secondary indexes for the table. For
 each index in the array, you can request one action:
@@ -155,20 +155,20 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 
 
-=head2 ProvisionedThroughput => PawsDynamoDBProvisionedThroughput
+=head2 ProvisionedThroughput => DynamoDB_ProvisionedThroughput
 
 The new provisioned throughput settings for the specified table or
 index.
 
 
 
-=head2 SSESpecification => PawsDynamoDBSSESpecification
+=head2 SSESpecification => DynamoDB_SSESpecification
 
 The new server-side encryption settings for the specified table.
 
 
 
-=head2 StreamSpecification => PawsDynamoDBStreamSpecification
+=head2 StreamSpecification => DynamoDB_StreamSpecification
 
 Represents the DynamoDB Streams configuration for the table.
 

@@ -1,7 +1,7 @@
 package Paws::DynamoDB::TimeToLiveDescription;
   use Moo;
   use Types::Standard qw/Str/;
-  use Paws::DynamoDB::TypeLibrary qw//;
+  use Paws::DynamoDB::Types qw//;
   has AttributeName => (is => 'ro', isa => Str);
   has TimeToLiveStatus => (is => 'ro', isa => Str);
 

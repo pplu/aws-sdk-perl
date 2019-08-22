@@ -1,11 +1,11 @@
 package Paws::DynamoDB::SourceTableDetails;
   use Moo;
   use Types::Standard qw/Str Int ArrayRef/;
-  use Paws::DynamoDB::TypeLibrary qw/PawsDynamoDBProvisionedThroughput PawsDynamoDBKeySchemaElement/;
+  use Paws::DynamoDB::Types qw/DynamoDB_KeySchemaElement DynamoDB_ProvisionedThroughput/;
   has BillingMode => (is => 'ro', isa => Str);
   has ItemCount => (is => 'ro', isa => Int);
-  has KeySchema => (is => 'ro', isa => ArrayRef[PawsDynamoDBKeySchemaElement], required => 1);
-  has ProvisionedThroughput => (is => 'ro', isa => PawsDynamoDBProvisionedThroughput, required => 1);
+  has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDB_KeySchemaElement], required => 1);
+  has ProvisionedThroughput => (is => 'ro', isa => DynamoDB_ProvisionedThroughput, required => 1);
   has TableArn => (is => 'ro', isa => Str);
   has TableCreationDateTime => (is => 'ro', isa => Str, required => 1);
   has TableId => (is => 'ro', isa => Str, required => 1);
@@ -35,14 +35,14 @@ package Paws::DynamoDB::SourceTableDetails;
                                        },
                           'KeySchema' => {
                                            'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[PawsDynamoDBKeySchemaElement]'
+                                           'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
                                          },
                           'TableName' => {
                                            'type' => 'Str'
                                          },
                           'ProvisionedThroughput' => {
                                                        'class' => 'Paws::DynamoDB::ProvisionedThroughput',
-                                                       'type' => 'PawsDynamoDBProvisionedThroughput'
+                                                       'type' => 'DynamoDB_ProvisionedThroughput'
                                                      }
                         }
            };
@@ -112,12 +112,12 @@ unpredictable workloads.
   Number of items in the table. Please note this is an approximate value.
 
 
-=head2 B<REQUIRED> KeySchema => ArrayRef[PawsDynamoDBKeySchemaElement]
+=head2 B<REQUIRED> KeySchema => ArrayRef[DynamoDB_KeySchemaElement]
 
   Schema of the table.
 
 
-=head2 B<REQUIRED> ProvisionedThroughput => PawsDynamoDBProvisionedThroughput
+=head2 B<REQUIRED> ProvisionedThroughput => DynamoDB_ProvisionedThroughput
 
   Read IOPs and Write IOPS on the table when the backup was created.
 
