@@ -1,0 +1,22 @@
+---
+call: GetObjectTagging 
+service: S3
+tests:
+  - path: TagSet.0.Key
+    op: eq
+    expected: move_to_glacier3
+  - path: TagSet.0.Value
+    op: eq
+    expected: 3
+  - path: TagSet.1.Key
+    op: eq
+    expected: move_to_glacier4
+  - path: TagSet.1.Value
+    op: eq
+    expected: 4
+  - path: _request_id
+    op: eq
+    expected: EB2083CE119102A4
+  - path: VersionId
+    op: eq
+    expected: 
