@@ -1,9 +1,10 @@
 package Paws::API::Base64Attribute;
-  use Moose::Role;
-  Moose::Util::meta_attribute_alias('Base64Attribute');
+  use Moo::Role;
+#  Moose::Util::meta_attribute_alias('Base64Attribute');
+  use Types::Standard qw/Str/;
 
-  has method    => (is => 'rw', isa => 'Str', required => 1);
-  has decode_as => (is => 'rw', isa => 'Str', required => 1);
+  has method    => (is => 'rw', isa => Str, required => 1);
+  has decode_as => (is => 'rw', isa => Str, required => 1);
 
   after 'install_accessors' => sub {
     my $self = shift;

@@ -1,12 +1,13 @@
 package Paws::API::JSONAttribute;
-  use Moose::Role;
-  Moose::Util::meta_attribute_alias('JSONAttribute');
+  use Moo::Role;
+#  Moose::Util::meta_attribute_alias('JSONAttribute');
 
   use JSON::MaybeXS;
   use URL::Encode;
+  use Types::Standard qw/Str/;
 
-  has method    => (is => 'rw', isa => 'Str', required => 1);
-  has decode_as => (is => 'rw', isa => 'Str', required => 1);
+  has method    => (is => 'rw', isa => Str, required => 1);
+  has decode_as => (is => 'rw', isa => Str, required => 1);
 
   after 'install_accessors' => sub {
     my $self = shift;
