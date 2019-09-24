@@ -14,27 +14,28 @@ package Paws::DynamoDB::TransactWriteItems;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::TransactWriteItemsOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ClientRequestToken' => {
-                                                    'type' => 'Str'
-                                                  },
-                          'TransactItems' => {
-                                               'class' => 'Paws::DynamoDB::TransactWriteItem',
-                                               'type' => 'ArrayRef[DynamoDB_TransactWriteItem]'
-                                             },
-                          'ReturnConsumedCapacity' => {
-                                                        'type' => 'Str'
-                                                      },
-                          'ReturnItemCollectionMetrics' => {
-                                                             'type' => 'Str'
-                                                           }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'TransactItems' => {
+                                    'class' => 'Paws::DynamoDB::TransactWriteItem',
+                                    'type' => 'ArrayRef[DynamoDB_TransactWriteItem]'
+                                  },
+               'ReturnConsumedCapacity' => {
+                                             'type' => 'Str'
+                                           },
+               'ReturnItemCollectionMetrics' => {
+                                                  'type' => 'Str'
+                                                }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

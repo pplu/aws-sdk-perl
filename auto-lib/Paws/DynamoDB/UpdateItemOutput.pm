@@ -8,26 +8,27 @@ package Paws::DynamoDB::UpdateItemOutput;
   has ItemCollectionMetrics => (is => 'ro', isa => DynamoDB_ItemCollectionMetrics);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Attributes' => {
-                                            'class' => 'Paws::DynamoDB::AttributeMap',
-                                            'type' => 'DynamoDB_AttributeMap'
-                                          },
-                          'ConsumedCapacity' => {
-                                                  'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => 'DynamoDB_ConsumedCapacity'
-                                                },
-                          'ItemCollectionMetrics' => {
-                                                       'class' => 'Paws::DynamoDB::ItemCollectionMetrics',
-                                                       'type' => 'DynamoDB_ItemCollectionMetrics'
-                                                     }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::DynamoDB::AttributeMap',
+                                 'type' => 'DynamoDB_AttributeMap'
+                               },
+               'ConsumedCapacity' => {
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity',
+                                       'type' => 'DynamoDB_ConsumedCapacity'
+                                     },
+               'ItemCollectionMetrics' => {
+                                            'class' => 'Paws::DynamoDB::ItemCollectionMetrics',
+                                            'type' => 'DynamoDB_ItemCollectionMetrics'
+                                          }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

@@ -6,18 +6,19 @@ package Paws::DynamoDB::UpdateContinuousBackupsOutput;
   has ContinuousBackupsDescription => (is => 'ro', isa => DynamoDB_ContinuousBackupsDescription);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ContinuousBackupsDescription' => {
-                                                              'class' => 'Paws::DynamoDB::ContinuousBackupsDescription',
-                                                              'type' => 'DynamoDB_ContinuousBackupsDescription'
-                                                            }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContinuousBackupsDescription' => {
+                                                   'class' => 'Paws::DynamoDB::ContinuousBackupsDescription',
+                                                   'type' => 'DynamoDB_ContinuousBackupsDescription'
+                                                 }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

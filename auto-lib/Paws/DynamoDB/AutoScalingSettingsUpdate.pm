@@ -8,30 +8,31 @@ package Paws::DynamoDB::AutoScalingSettingsUpdate;
   has MinimumUnits => (is => 'ro', isa => Int);
   has ScalingPolicyUpdate => (is => 'ro', isa => DynamoDB_AutoScalingPolicyUpdate);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ScalingPolicyUpdate' => {
-                                                     'class' => 'Paws::DynamoDB::AutoScalingPolicyUpdate',
-                                                     'type' => 'DynamoDB_AutoScalingPolicyUpdate'
-                                                   },
-                          'MaximumUnits' => {
-                                              'type' => 'Int'
-                                            },
-                          'AutoScalingDisabled' => {
-                                                     'type' => 'Bool'
-                                                   },
-                          'MinimumUnits' => {
-                                              'type' => 'Int'
-                                            },
-                          'AutoScalingRoleArn' => {
-                                                    'type' => 'Str'
-                                                  }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScalingPolicyUpdate' => {
+                                          'class' => 'Paws::DynamoDB::AutoScalingPolicyUpdate',
+                                          'type' => 'DynamoDB_AutoScalingPolicyUpdate'
+                                        },
+               'MaximumUnits' => {
+                                   'type' => 'Int'
+                                 },
+               'AutoScalingDisabled' => {
+                                          'type' => 'Bool'
+                                        },
+               'MinimumUnits' => {
+                                   'type' => 'Int'
+                                 },
+               'AutoScalingRoleArn' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

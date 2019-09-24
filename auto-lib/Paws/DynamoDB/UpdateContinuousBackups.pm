@@ -12,21 +12,22 @@ package Paws::DynamoDB::UpdateContinuousBackups;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::UpdateContinuousBackupsOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         },
-                          'PointInTimeRecoverySpecification' => {
-                                                                  'class' => 'Paws::DynamoDB::PointInTimeRecoverySpecification',
-                                                                  'type' => 'DynamoDB_PointInTimeRecoverySpecification'
-                                                                }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'PointInTimeRecoverySpecification' => {
+                                                       'class' => 'Paws::DynamoDB::PointInTimeRecoverySpecification',
+                                                       'type' => 'DynamoDB_PointInTimeRecoverySpecification'
+                                                     }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

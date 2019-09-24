@@ -7,21 +7,22 @@ package Paws::DynamoDB::ListGlobalTablesOutput;
   has LastEvaluatedGlobalTableName => (is => 'ro', isa => Str);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'LastEvaluatedGlobalTableName' => {
-                                                              'type' => 'Str'
-                                                            },
-                          'GlobalTables' => {
-                                              'class' => 'Paws::DynamoDB::GlobalTable',
-                                              'type' => 'ArrayRef[DynamoDB_GlobalTable]'
-                                            }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastEvaluatedGlobalTableName' => {
+                                                   'type' => 'Str'
+                                                 },
+               'GlobalTables' => {
+                                   'class' => 'Paws::DynamoDB::GlobalTable',
+                                   'type' => 'ArrayRef[DynamoDB_GlobalTable]'
+                                 }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

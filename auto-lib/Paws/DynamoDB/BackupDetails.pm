@@ -10,35 +10,36 @@ package Paws::DynamoDB::BackupDetails;
   has BackupStatus => (is => 'ro', isa => Str, required => 1);
   has BackupType => (is => 'ro', isa => Str, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BackupType' => {
-                                            'type' => 'Str'
-                                          },
-                          'BackupName' => {
-                                            'type' => 'Str'
-                                          },
-                          'BackupExpiryDateTime' => {
-                                                      'type' => 'Str'
-                                                    },
-                          'BackupArn' => {
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupType' => {
+                                 'type' => 'Str'
+                               },
+               'BackupName' => {
+                                 'type' => 'Str'
+                               },
+               'BackupExpiryDateTime' => {
                                            'type' => 'Str'
                                          },
-                          'BackupCreationDateTime' => {
-                                                        'type' => 'Str'
-                                                      },
-                          'BackupSizeBytes' => {
-                                                 'type' => 'Int'
-                                               },
-                          'BackupStatus' => {
-                                              'type' => 'Str'
-                                            }
-                        }
-           };
+               'BackupArn' => {
+                                'type' => 'Str'
+                              },
+               'BackupCreationDateTime' => {
+                                             'type' => 'Str'
+                                           },
+               'BackupSizeBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'BackupStatus' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -13,46 +13,47 @@ package Paws::DynamoDB::AttributeValue;
   has S => (is => 'ro', isa => Str);
   has SS => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'S' => {
-                                   'type' => 'Str'
-                                 },
-                          'BOOL' => {
-                                      'type' => 'Bool'
-                                    },
-                          'NULL' => {
-                                      'type' => 'Bool'
-                                    },
-                          'N' => {
-                                   'type' => 'Str'
-                                 },
-                          'NS' => {
-                                    'type' => 'ArrayRef[Str|Undef]'
-                                  },
-                          'BS' => {
-                                    'type' => 'ArrayRef[Str|Undef]'
-                                  },
-                          'B' => {
-                                   'type' => 'Str'
-                                 },
-                          'M' => {
-                                   'class' => 'Paws::DynamoDB::MapAttributeValue',
-                                   'type' => 'DynamoDB_MapAttributeValue'
-                                 },
-                          'SS' => {
-                                    'type' => 'ArrayRef[Str|Undef]'
-                                  },
-                          'L' => {
-                                   'class' => 'Paws::DynamoDB::AttributeValue',
-                                   'type' => 'ArrayRef[DynamoDB_AttributeValue]'
-                                 }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S' => {
+                        'type' => 'Str'
+                      },
+               'BOOL' => {
+                           'type' => 'Bool'
+                         },
+               'NULL' => {
+                           'type' => 'Bool'
+                         },
+               'N' => {
+                        'type' => 'Str'
+                      },
+               'NS' => {
+                         'type' => 'ArrayRef[Str|Undef]'
+                       },
+               'BS' => {
+                         'type' => 'ArrayRef[Str|Undef]'
+                       },
+               'B' => {
+                        'type' => 'Str'
+                      },
+               'M' => {
+                        'class' => 'Paws::DynamoDB::MapAttributeValue',
+                        'type' => 'DynamoDB_MapAttributeValue'
+                      },
+               'SS' => {
+                         'type' => 'ArrayRef[Str|Undef]'
+                       },
+               'L' => {
+                        'class' => 'Paws::DynamoDB::AttributeValue',
+                        'type' => 'ArrayRef[DynamoDB_AttributeValue]'
+                      }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

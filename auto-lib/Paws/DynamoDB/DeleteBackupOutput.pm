@@ -6,18 +6,19 @@ package Paws::DynamoDB::DeleteBackupOutput;
   has BackupDescription => (is => 'ro', isa => DynamoDB_BackupDescription);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BackupDescription' => {
-                                                   'class' => 'Paws::DynamoDB::BackupDescription',
-                                                   'type' => 'DynamoDB_BackupDescription'
-                                                 }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupDescription' => {
+                                        'class' => 'Paws::DynamoDB::BackupDescription',
+                                        'type' => 'DynamoDB_BackupDescription'
+                                      }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

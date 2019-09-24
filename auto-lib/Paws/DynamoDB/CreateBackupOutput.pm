@@ -6,18 +6,19 @@ package Paws::DynamoDB::CreateBackupOutput;
   has BackupDetails => (is => 'ro', isa => DynamoDB_BackupDetails);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BackupDetails' => {
-                                               'class' => 'Paws::DynamoDB::BackupDetails',
-                                               'type' => 'DynamoDB_BackupDetails'
-                                             }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupDetails' => {
+                                    'class' => 'Paws::DynamoDB::BackupDetails',
+                                    'type' => 'DynamoDB_BackupDetails'
+                                  }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

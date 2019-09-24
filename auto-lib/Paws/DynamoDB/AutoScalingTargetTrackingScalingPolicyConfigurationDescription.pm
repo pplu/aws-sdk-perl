@@ -7,26 +7,27 @@ package Paws::DynamoDB::AutoScalingTargetTrackingScalingPolicyConfigurationDescr
   has ScaleOutCooldown => (is => 'ro', isa => Int);
   has TargetValue => (is => 'ro', isa => Num, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'TargetValue' => {
-                                             'type' => 'Num'
-                                           },
-                          'ScaleOutCooldown' => {
-                                                  'type' => 'Int'
-                                                },
-                          'ScaleInCooldown' => {
-                                                 'type' => 'Int'
-                                               },
-                          'DisableScaleIn' => {
-                                                'type' => 'Bool'
-                                              }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetValue' => {
+                                  'type' => 'Num'
+                                },
+               'ScaleOutCooldown' => {
+                                       'type' => 'Int'
+                                     },
+               'ScaleInCooldown' => {
+                                      'type' => 'Int'
+                                    },
+               'DisableScaleIn' => {
+                                     'type' => 'Bool'
+                                   }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

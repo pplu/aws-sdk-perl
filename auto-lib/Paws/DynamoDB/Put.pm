@@ -9,35 +9,36 @@ package Paws::DynamoDB::Put;
   has ReturnValuesOnConditionCheckFailure => (is => 'ro', isa => Str);
   has TableName => (is => 'ro', isa => Str, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ReturnValuesOnConditionCheckFailure' => {
-                                                                     'type' => 'Str'
-                                                                   },
-                          'ExpressionAttributeValues' => {
-                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
-                                                           'type' => 'DynamoDB_ExpressionAttributeValueMap'
-                                                         },
-                          'Item' => {
-                                      'class' => 'Paws::DynamoDB::PutItemInputAttributeMap',
-                                      'type' => 'DynamoDB_PutItemInputAttributeMap'
-                                    },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         },
-                          'ExpressionAttributeNames' => {
-                                                          'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => 'DynamoDB_ExpressionAttributeNameMap'
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReturnValuesOnConditionCheckFailure' => {
+                                                          'type' => 'Str'
                                                         },
-                          'ConditionExpression' => {
-                                                     'type' => 'Str'
-                                                   }
-                        }
-           };
+               'ExpressionAttributeValues' => {
+                                                'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
+                                                'type' => 'DynamoDB_ExpressionAttributeValueMap'
+                                              },
+               'Item' => {
+                           'class' => 'Paws::DynamoDB::PutItemInputAttributeMap',
+                           'type' => 'DynamoDB_PutItemInputAttributeMap'
+                         },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ExpressionAttributeNames' => {
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap'
+                                             },
+               'ConditionExpression' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

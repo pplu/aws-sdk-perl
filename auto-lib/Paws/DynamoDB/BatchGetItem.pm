@@ -12,21 +12,22 @@ package Paws::DynamoDB::BatchGetItem;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::BatchGetItemOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ReturnConsumedCapacity' => {
-                                                        'type' => 'Str'
-                                                      },
-                          'RequestItems' => {
-                                              'class' => 'Paws::DynamoDB::BatchGetRequestMap',
-                                              'type' => 'DynamoDB_BatchGetRequestMap'
-                                            }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReturnConsumedCapacity' => {
+                                             'type' => 'Str'
+                                           },
+               'RequestItems' => {
+                                   'class' => 'Paws::DynamoDB::BatchGetRequestMap',
+                                   'type' => 'DynamoDB_BatchGetRequestMap'
+                                 }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

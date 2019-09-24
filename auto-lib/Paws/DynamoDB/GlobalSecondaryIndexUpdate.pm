@@ -6,26 +6,27 @@ package Paws::DynamoDB::GlobalSecondaryIndexUpdate;
   has Delete => (is => 'ro', isa => DynamoDB_DeleteGlobalSecondaryIndexAction);
   has Update => (is => 'ro', isa => DynamoDB_UpdateGlobalSecondaryIndexAction);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Delete' => {
-                                        'class' => 'Paws::DynamoDB::DeleteGlobalSecondaryIndexAction',
-                                        'type' => 'DynamoDB_DeleteGlobalSecondaryIndexAction'
-                                      },
-                          'Update' => {
-                                        'class' => 'Paws::DynamoDB::UpdateGlobalSecondaryIndexAction',
-                                        'type' => 'DynamoDB_UpdateGlobalSecondaryIndexAction'
-                                      },
-                          'Create' => {
-                                        'class' => 'Paws::DynamoDB::CreateGlobalSecondaryIndexAction',
-                                        'type' => 'DynamoDB_CreateGlobalSecondaryIndexAction'
-                                      }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Delete' => {
+                             'class' => 'Paws::DynamoDB::DeleteGlobalSecondaryIndexAction',
+                             'type' => 'DynamoDB_DeleteGlobalSecondaryIndexAction'
+                           },
+               'Update' => {
+                             'class' => 'Paws::DynamoDB::UpdateGlobalSecondaryIndexAction',
+                             'type' => 'DynamoDB_UpdateGlobalSecondaryIndexAction'
+                           },
+               'Create' => {
+                             'class' => 'Paws::DynamoDB::CreateGlobalSecondaryIndexAction',
+                             'type' => 'DynamoDB_CreateGlobalSecondaryIndexAction'
+                           }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -10,32 +10,33 @@ package Paws::DynamoDB::QueryOutput;
   has ScannedCount => (is => 'ro', isa => Int);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ScannedCount' => {
-                                              'type' => 'Int'
-                                            },
-                          'Items' => {
-                                       'class' => 'Paws::DynamoDB::AttributeMap',
-                                       'type' => 'ArrayRef[DynamoDB_AttributeMap]'
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScannedCount' => {
+                                   'type' => 'Int'
+                                 },
+               'Items' => {
+                            'class' => 'Paws::DynamoDB::AttributeMap',
+                            'type' => 'ArrayRef[DynamoDB_AttributeMap]'
+                          },
+               'ConsumedCapacity' => {
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity',
+                                       'type' => 'DynamoDB_ConsumedCapacity'
                                      },
-                          'ConsumedCapacity' => {
-                                                  'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => 'DynamoDB_ConsumedCapacity'
-                                                },
-                          'LastEvaluatedKey' => {
-                                                  'class' => 'Paws::DynamoDB::Key',
-                                                  'type' => 'DynamoDB_Key'
-                                                },
-                          'Count' => {
-                                       'type' => 'Int'
-                                     }
-                        }
-           };
+               'LastEvaluatedKey' => {
+                                       'class' => 'Paws::DynamoDB::Key',
+                                       'type' => 'DynamoDB_Key'
+                                     },
+               'Count' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

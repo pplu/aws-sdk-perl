@@ -29,6 +29,7 @@ package Paws::Net::JsonResponse;
 
     return {} if (not defined $response->content or $response->content eq '');
 
+    # print STDERR "Response: ", $response->content, "\n";
     my $struct = eval { decode_json( $response->content ) };
     if ($@) {
       return Paws::Exception->throw(
@@ -83,9 +84,10 @@ package Paws::Net::JsonResponse;
   sub handle_response_strtoobjmap {
     my ($self, $att_class, $value) = @_;
 
+    my $params_map = $att_class->params_map;
     my $is_array = 0;
-    my $type = $att_class->params_map->{types}{'Map'}{type};
-    my $inner_class = $att_class->params_map->{types}{'Map'}{class};
+    my $type = $params_map->{types}{'Map'}{type};
+    my $inner_class = $params_map->{types}{'Map'}{class};
 
     if ($type =~ m/^HashRef\[ArrayRef\[(.*)\]\]$/){
       $is_array = 1;
@@ -117,18 +119,19 @@ package Paws::Net::JsonResponse;
     my ($self, $class, $result) = @_;
     my %args;
 
+    my $params_map = $class->params_map;
     if ($class->does('Paws::API::StrToObjMapParser')) {
       return $self->handle_response_strtoobjmap($class, $result);
     } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
       return $self->handle_response_strtonativemap($class, $result);
     } else {
-    foreach my $att (keys %{$class->params_map->{types}}) {
+    foreach my $att (keys %{$params_map->{types}}) {
       # next if (not my $meta = $class->meta->get_attribute($att));
 
-      my $key = $class->params_map->{NameInRequest} ||
-                $class->params_map->{ParamInHeader} || $att;
+      my $key = $params_map->{NameInRequest} ||
+                $params_map->{ParamInHeader} || $att;
 
-      my $att_type = $class->params_map->{types}{$att}{type};
+      my $att_type = $params_map->{types}{$att}{type};
     #  use Data::Dumper;
     #  print STDERR "USING KEY:  $key\n";
     #  print STDERR "$att IS A '$att_type' TYPE\n";
@@ -137,7 +140,7 @@ package Paws::Net::JsonResponse;
     #  print STDERR "RESULT >>> $extracted_val\n";
 
       # We'll consider that an attribute without brackets [] isn't an array type
-      my $inner_class = $class->params_map->{types}{$att}{class};
+      my $inner_class = $params_map->{types}{$att}{class};
       if ($att_type !~ m/\[.*\]$/) {
         my $value = $result->{ $key };
         my $value_ref = ref($value);

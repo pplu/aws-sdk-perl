@@ -20,48 +20,49 @@ package Paws::DynamoDB::DeleteItem;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::DeleteItemOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ExpressionAttributeValues' => {
-                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
-                                                           'type' => 'DynamoDB_ExpressionAttributeValueMap'
-                                                         },
-                          'ReturnValues' => {
-                                              'type' => 'Str'
-                                            },
-                          'ReturnConsumedCapacity' => {
-                                                        'type' => 'Str'
-                                                      },
-                          'ReturnItemCollectionMetrics' => {
-                                                             'type' => 'Str'
-                                                           },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         },
-                          'ConditionalOperator' => {
-                                                     'type' => 'Str'
-                                                   },
-                          'ExpressionAttributeNames' => {
-                                                          'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => 'DynamoDB_ExpressionAttributeNameMap'
-                                                        },
-                          'ConditionExpression' => {
-                                                     'type' => 'Str'
-                                                   },
-                          'Expected' => {
-                                          'class' => 'Paws::DynamoDB::ExpectedAttributeMap',
-                                          'type' => 'DynamoDB_ExpectedAttributeMap'
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpressionAttributeValues' => {
+                                                'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
+                                                'type' => 'DynamoDB_ExpressionAttributeValueMap'
+                                              },
+               'ReturnValues' => {
+                                   'type' => 'Str'
+                                 },
+               'ReturnConsumedCapacity' => {
+                                             'type' => 'Str'
+                                           },
+               'ReturnItemCollectionMetrics' => {
+                                                  'type' => 'Str'
+                                                },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ConditionalOperator' => {
+                                          'type' => 'Str'
                                         },
-                          'Key' => {
-                                     'class' => 'Paws::DynamoDB::Key',
-                                     'type' => 'DynamoDB_Key'
-                                   }
+               'ExpressionAttributeNames' => {
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap'
+                                             },
+               'ConditionExpression' => {
+                                          'type' => 'Str'
+                                        },
+               'Expected' => {
+                               'class' => 'Paws::DynamoDB::ExpectedAttributeMap',
+                               'type' => 'DynamoDB_ExpectedAttributeMap'
+                             },
+               'Key' => {
+                          'class' => 'Paws::DynamoDB::Key',
+                          'type' => 'DynamoDB_Key'
                         }
-           };
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

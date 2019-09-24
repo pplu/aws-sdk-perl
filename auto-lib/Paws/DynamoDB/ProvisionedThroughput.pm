@@ -5,20 +5,21 @@ package Paws::DynamoDB::ProvisionedThroughput;
   has ReadCapacityUnits => (is => 'ro', isa => Int, required => 1);
   has WriteCapacityUnits => (is => 'ro', isa => Int, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ReadCapacityUnits' => {
-                                                   'type' => 'Int'
-                                                 },
-                          'WriteCapacityUnits' => {
-                                                    'type' => 'Int'
-                                                  }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReadCapacityUnits' => {
+                                        'type' => 'Int'
+                                      },
+               'WriteCapacityUnits' => {
+                                         'type' => 'Int'
+                                       }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

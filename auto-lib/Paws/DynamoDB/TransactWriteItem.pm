@@ -7,30 +7,31 @@ package Paws::DynamoDB::TransactWriteItem;
   has Put => (is => 'ro', isa => DynamoDB_Put);
   has Update => (is => 'ro', isa => DynamoDB_Update);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Delete' => {
-                                        'class' => 'Paws::DynamoDB::Delete',
-                                        'type' => 'DynamoDB_Delete'
-                                      },
-                          'Update' => {
-                                        'class' => 'Paws::DynamoDB::Update',
-                                        'type' => 'DynamoDB_Update'
-                                      },
-                          'ConditionCheck' => {
-                                                'class' => 'Paws::DynamoDB::ConditionCheck',
-                                                'type' => 'DynamoDB_ConditionCheck'
-                                              },
-                          'Put' => {
-                                     'class' => 'Paws::DynamoDB::Put',
-                                     'type' => 'DynamoDB_Put'
-                                   }
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Delete' => {
+                             'class' => 'Paws::DynamoDB::Delete',
+                             'type' => 'DynamoDB_Delete'
+                           },
+               'Update' => {
+                             'class' => 'Paws::DynamoDB::Update',
+                             'type' => 'DynamoDB_Update'
+                           },
+               'ConditionCheck' => {
+                                     'class' => 'Paws::DynamoDB::ConditionCheck',
+                                     'type' => 'DynamoDB_ConditionCheck'
+                                   },
+               'Put' => {
+                          'class' => 'Paws::DynamoDB::Put',
+                          'type' => 'DynamoDB_Put'
                         }
-           };
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -7,21 +7,22 @@ package Paws::DynamoDB::ListTagsOfResourceOutput;
   has Tags => (is => 'ro', isa => ArrayRef[DynamoDB_Tag]);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'NextToken' => {
-                                           'type' => 'Str'
-                                         },
-                          'Tags' => {
-                                      'class' => 'Paws::DynamoDB::Tag',
-                                      'type' => 'ArrayRef[DynamoDB_Tag]'
-                                    }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::DynamoDB::Tag',
+                           'type' => 'ArrayRef[DynamoDB_Tag]'
+                         }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

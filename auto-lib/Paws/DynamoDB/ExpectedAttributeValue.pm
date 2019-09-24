@@ -7,28 +7,29 @@ package Paws::DynamoDB::ExpectedAttributeValue;
   has Exists => (is => 'ro', isa => Bool);
   has Value => (is => 'ro', isa => DynamoDB_AttributeValue);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'AttributeValueList' => {
-                                                    'class' => 'Paws::DynamoDB::AttributeValue',
-                                                    'type' => 'ArrayRef[DynamoDB_AttributeValue]'
-                                                  },
-                          'Value' => {
-                                       'class' => 'Paws::DynamoDB::AttributeValue',
-                                       'type' => 'DynamoDB_AttributeValue'
-                                     },
-                          'Exists' => {
-                                        'type' => 'Bool'
-                                      },
-                          'ComparisonOperator' => {
-                                                    'type' => 'Str'
-                                                  }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeValueList' => {
+                                         'class' => 'Paws::DynamoDB::AttributeValue',
+                                         'type' => 'ArrayRef[DynamoDB_AttributeValue]'
+                                       },
+               'Value' => {
+                            'class' => 'Paws::DynamoDB::AttributeValue',
+                            'type' => 'DynamoDB_AttributeValue'
+                          },
+               'Exists' => {
+                             'type' => 'Bool'
+                           },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -5,20 +5,21 @@ package Paws::DynamoDB::AttributeDefinition;
   has AttributeName => (is => 'ro', isa => Str, required => 1);
   has AttributeType => (is => 'ro', isa => Str, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'AttributeType' => {
-                                               'type' => 'Str'
-                                             },
-                          'AttributeName' => {
-                                               'type' => 'Str'
-                                             }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeType' => {
+                                    'type' => 'Str'
+                                  },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

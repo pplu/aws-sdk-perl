@@ -5,21 +5,22 @@ package Paws::DynamoDB::Condition;
   has AttributeValueList => (is => 'ro', isa => ArrayRef[DynamoDB_AttributeValue]);
   has ComparisonOperator => (is => 'ro', isa => Str, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'AttributeValueList' => {
-                                                    'class' => 'Paws::DynamoDB::AttributeValue',
-                                                    'type' => 'ArrayRef[DynamoDB_AttributeValue]'
-                                                  },
-                          'ComparisonOperator' => {
-                                                    'type' => 'Str'
-                                                  }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeValueList' => {
+                                         'class' => 'Paws::DynamoDB::AttributeValue',
+                                         'type' => 'ArrayRef[DynamoDB_AttributeValue]'
+                                       },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

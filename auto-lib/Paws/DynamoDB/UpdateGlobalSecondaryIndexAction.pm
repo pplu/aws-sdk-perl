@@ -5,21 +5,22 @@ package Paws::DynamoDB::UpdateGlobalSecondaryIndexAction;
   has IndexName => (is => 'ro', isa => Str, required => 1);
   has ProvisionedThroughput => (is => 'ro', isa => DynamoDB_ProvisionedThroughput, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'IndexName' => {
-                                           'type' => 'Str'
-                                         },
-                          'ProvisionedThroughput' => {
-                                                       'class' => 'Paws::DynamoDB::ProvisionedThroughput',
-                                                       'type' => 'DynamoDB_ProvisionedThroughput'
-                                                     }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'ProvisionedThroughput' => {
+                                            'class' => 'Paws::DynamoDB::ProvisionedThroughput',
+                                            'type' => 'DynamoDB_ProvisionedThroughput'
+                                          }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

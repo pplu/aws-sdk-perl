@@ -5,21 +5,22 @@ package Paws::DynamoDB::ItemCollectionMetrics;
   has ItemCollectionKey => (is => 'ro', isa => DynamoDB_ItemCollectionKeyAttributeMap);
   has SizeEstimateRangeGB => (is => 'ro', isa => ArrayRef[Num]);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ItemCollectionKey' => {
-                                                   'class' => 'Paws::DynamoDB::ItemCollectionKeyAttributeMap',
-                                                   'type' => 'DynamoDB_ItemCollectionKeyAttributeMap'
-                                                 },
-                          'SizeEstimateRangeGB' => {
-                                                     'type' => 'ArrayRef[Num]'
-                                                   }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ItemCollectionKey' => {
+                                        'class' => 'Paws::DynamoDB::ItemCollectionKeyAttributeMap',
+                                        'type' => 'DynamoDB_ItemCollectionKeyAttributeMap'
+                                      },
+               'SizeEstimateRangeGB' => {
+                                          'type' => 'ArrayRef[Num]'
+                                        }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

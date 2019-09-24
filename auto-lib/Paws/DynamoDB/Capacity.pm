@@ -6,23 +6,24 @@ package Paws::DynamoDB::Capacity;
   has ReadCapacityUnits => (is => 'ro', isa => Num);
   has WriteCapacityUnits => (is => 'ro', isa => Num);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ReadCapacityUnits' => {
-                                                   'type' => 'Num'
-                                                 },
-                          'WriteCapacityUnits' => {
-                                                    'type' => 'Num'
-                                                  },
-                          'CapacityUnits' => {
-                                               'type' => 'Num'
-                                             }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReadCapacityUnits' => {
+                                        'type' => 'Num'
+                                      },
+               'WriteCapacityUnits' => {
+                                         'type' => 'Num'
+                                       },
+               'CapacityUnits' => {
+                                    'type' => 'Num'
+                                  }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

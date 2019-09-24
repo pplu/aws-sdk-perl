@@ -8,31 +8,32 @@ package Paws::DynamoDB::KeysAndAttributes;
   has Keys => (is => 'ro', isa => ArrayRef[DynamoDB_Key], required => 1);
   has ProjectionExpression => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Keys' => {
-                                      'class' => 'Paws::DynamoDB::Key',
-                                      'type' => 'ArrayRef[DynamoDB_Key]'
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Keys' => {
+                           'class' => 'Paws::DynamoDB::Key',
+                           'type' => 'ArrayRef[DynamoDB_Key]'
+                         },
+               'AttributesToGet' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
                                     },
-                          'AttributesToGet' => {
-                                                 'type' => 'ArrayRef[Str|Undef]'
-                                               },
-                          'ExpressionAttributeNames' => {
-                                                          'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => 'DynamoDB_ExpressionAttributeNameMap'
-                                                        },
-                          'ConsistentRead' => {
-                                                'type' => 'Bool'
-                                              },
-                          'ProjectionExpression' => {
-                                                      'type' => 'Str'
-                                                    }
-                        }
-           };
+               'ExpressionAttributeNames' => {
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap'
+                                             },
+               'ConsistentRead' => {
+                                     'type' => 'Bool'
+                                   },
+               'ProjectionExpression' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -9,34 +9,35 @@ package Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription;
   has ProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => DynamoDB_AutoScalingSettingsDescription);
   has ProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'IndexName' => {
-                                           'type' => 'Str'
-                                         },
-                          'ProvisionedWriteCapacityUnits' => {
-                                                               'type' => 'Int'
-                                                             },
-                          'ProvisionedReadCapacityUnits' => {
-                                                              'type' => 'Int'
-                                                            },
-                          'ProvisionedWriteCapacityAutoScalingSettings' => {
-                                                                             'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
-                                                                             'type' => 'DynamoDB_AutoScalingSettingsDescription'
-                                                                           },
-                          'ProvisionedReadCapacityAutoScalingSettings' => {
-                                                                            'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
-                                                                            'type' => 'DynamoDB_AutoScalingSettingsDescription'
-                                                                          },
-                          'IndexStatus' => {
-                                             'type' => 'Str'
-                                           }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'ProvisionedWriteCapacityUnits' => {
+                                                    'type' => 'Int'
+                                                  },
+               'ProvisionedReadCapacityUnits' => {
+                                                   'type' => 'Int'
+                                                 },
+               'ProvisionedWriteCapacityAutoScalingSettings' => {
+                                                                  'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
+                                                                  'type' => 'DynamoDB_AutoScalingSettingsDescription'
+                                                                },
+               'ProvisionedReadCapacityAutoScalingSettings' => {
+                                                                 'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
+                                                                 'type' => 'DynamoDB_AutoScalingSettingsDescription'
+                                                               },
+               'IndexStatus' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

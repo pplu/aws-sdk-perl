@@ -16,35 +16,36 @@ package Paws::DynamoDB::UpdateGlobalTableSettings;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::UpdateGlobalTableSettingsOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'GlobalTableProvisionedWriteCapacityUnits' => {
-                                                                          'type' => 'Int'
-                                                                        },
-                          'GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate' => {
-                                                                                              'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
-                                                                                              'type' => 'DynamoDB_AutoScalingSettingsUpdate'
-                                                                                            },
-                          'GlobalTableBillingMode' => {
-                                                        'type' => 'Str'
-                                                      },
-                          'GlobalTableName' => {
-                                                 'type' => 'Str'
-                                               },
-                          'ReplicaSettingsUpdate' => {
-                                                       'class' => 'Paws::DynamoDB::ReplicaSettingsUpdate',
-                                                       'type' => 'ArrayRef[DynamoDB_ReplicaSettingsUpdate]'
-                                                     },
-                          'GlobalTableGlobalSecondaryIndexSettingsUpdate' => {
-                                                                               'class' => 'Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate',
-                                                                               'type' => 'ArrayRef[DynamoDB_GlobalTableGlobalSecondaryIndexSettingsUpdate]'
-                                                                             }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GlobalTableProvisionedWriteCapacityUnits' => {
+                                                               'type' => 'Int'
+                                                             },
+               'GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate' => {
+                                                                                   'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
+                                                                                   'type' => 'DynamoDB_AutoScalingSettingsUpdate'
+                                                                                 },
+               'GlobalTableBillingMode' => {
+                                             'type' => 'Str'
+                                           },
+               'GlobalTableName' => {
+                                      'type' => 'Str'
+                                    },
+               'ReplicaSettingsUpdate' => {
+                                            'class' => 'Paws::DynamoDB::ReplicaSettingsUpdate',
+                                            'type' => 'ArrayRef[DynamoDB_ReplicaSettingsUpdate]'
+                                          },
+               'GlobalTableGlobalSecondaryIndexSettingsUpdate' => {
+                                                                    'class' => 'Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate',
+                                                                    'type' => 'ArrayRef[DynamoDB_GlobalTableGlobalSecondaryIndexSettingsUpdate]'
+                                                                  }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

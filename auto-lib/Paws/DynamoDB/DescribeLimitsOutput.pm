@@ -9,26 +9,27 @@ package Paws::DynamoDB::DescribeLimitsOutput;
   has TableMaxWriteCapacityUnits => (is => 'ro', isa => Int);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'TableMaxWriteCapacityUnits' => {
-                                                            'type' => 'Int'
-                                                          },
-                          'AccountMaxReadCapacityUnits' => {
-                                                             'type' => 'Int'
-                                                           },
-                          'TableMaxReadCapacityUnits' => {
-                                                           'type' => 'Int'
-                                                         },
-                          'AccountMaxWriteCapacityUnits' => {
-                                                              'type' => 'Int'
-                                                            }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TableMaxWriteCapacityUnits' => {
+                                                 'type' => 'Int'
+                                               },
+               'AccountMaxReadCapacityUnits' => {
+                                                  'type' => 'Int'
+                                                },
+               'TableMaxReadCapacityUnits' => {
+                                                'type' => 'Int'
+                                              },
+               'AccountMaxWriteCapacityUnits' => {
+                                                   'type' => 'Int'
+                                                 }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

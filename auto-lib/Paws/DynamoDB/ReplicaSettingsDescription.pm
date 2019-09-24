@@ -11,42 +11,43 @@ package Paws::DynamoDB::ReplicaSettingsDescription;
   has ReplicaProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
   has ReplicaStatus => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ReplicaProvisionedWriteCapacityUnits' => {
-                                                                      'type' => 'Int'
-                                                                    },
-                          'ReplicaProvisionedReadCapacityUnits' => {
-                                                                     'type' => 'Int'
-                                                                   },
-                          'RegionName' => {
-                                            'type' => 'Str'
-                                          },
-                          'ReplicaProvisionedReadCapacityAutoScalingSettings' => {
-                                                                                   'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
-                                                                                   'type' => 'DynamoDB_AutoScalingSettingsDescription'
-                                                                                 },
-                          'ReplicaGlobalSecondaryIndexSettings' => {
-                                                                     'class' => 'Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription',
-                                                                     'type' => 'ArrayRef[DynamoDB_ReplicaGlobalSecondaryIndexSettingsDescription]'
-                                                                   },
-                          'ReplicaStatus' => {
-                                               'type' => 'Str'
-                                             },
-                          'ReplicaProvisionedWriteCapacityAutoScalingSettings' => {
-                                                                                    'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
-                                                                                    'type' => 'DynamoDB_AutoScalingSettingsDescription'
-                                                                                  },
-                          'ReplicaBillingModeSummary' => {
-                                                           'class' => 'Paws::DynamoDB::BillingModeSummary',
-                                                           'type' => 'DynamoDB_BillingModeSummary'
-                                                         }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicaProvisionedWriteCapacityUnits' => {
+                                                           'type' => 'Int'
+                                                         },
+               'ReplicaProvisionedReadCapacityUnits' => {
+                                                          'type' => 'Int'
+                                                        },
+               'RegionName' => {
+                                 'type' => 'Str'
+                               },
+               'ReplicaProvisionedReadCapacityAutoScalingSettings' => {
+                                                                        'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
+                                                                        'type' => 'DynamoDB_AutoScalingSettingsDescription'
+                                                                      },
+               'ReplicaGlobalSecondaryIndexSettings' => {
+                                                          'class' => 'Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription',
+                                                          'type' => 'ArrayRef[DynamoDB_ReplicaGlobalSecondaryIndexSettingsDescription]'
+                                                        },
+               'ReplicaStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'ReplicaProvisionedWriteCapacityAutoScalingSettings' => {
+                                                                         'class' => 'Paws::DynamoDB::AutoScalingSettingsDescription',
+                                                                         'type' => 'DynamoDB_AutoScalingSettingsDescription'
+                                                                       },
+               'ReplicaBillingModeSummary' => {
+                                                'class' => 'Paws::DynamoDB::BillingModeSummary',
+                                                'type' => 'DynamoDB_BillingModeSummary'
+                                              }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -6,23 +6,24 @@ package Paws::DynamoDB::SSESpecification;
   has KMSMasterKeyId => (is => 'ro', isa => Str);
   has SSEType => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Enabled' => {
-                                         'type' => 'Bool'
-                                       },
-                          'SSEType' => {
-                                         'type' => 'Str'
-                                       },
-                          'KMSMasterKeyId' => {
-                                                'type' => 'Str'
-                                              }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'SSEType' => {
+                              'type' => 'Str'
+                            },
+               'KMSMasterKeyId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

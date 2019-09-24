@@ -12,21 +12,22 @@ package Paws::DynamoDB::CreateGlobalTable;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::CreateGlobalTableOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ReplicationGroup' => {
-                                                  'class' => 'Paws::DynamoDB::Replica',
-                                                  'type' => 'ArrayRef[DynamoDB_Replica]'
-                                                },
-                          'GlobalTableName' => {
-                                                 'type' => 'Str'
-                                               }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationGroup' => {
+                                       'class' => 'Paws::DynamoDB::Replica',
+                                       'type' => 'ArrayRef[DynamoDB_Replica]'
+                                     },
+               'GlobalTableName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

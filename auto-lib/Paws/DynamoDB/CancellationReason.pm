@@ -6,24 +6,25 @@ package Paws::DynamoDB::CancellationReason;
   has Item => (is => 'ro', isa => DynamoDB_AttributeMap);
   has Message => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Code' => {
-                                      'type' => 'Str'
-                                    },
-                          'Item' => {
-                                      'class' => 'Paws::DynamoDB::AttributeMap',
-                                      'type' => 'DynamoDB_AttributeMap'
-                                    },
-                          'Message' => {
-                                         'type' => 'Str'
-                                       }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Code' => {
+                           'type' => 'Str'
+                         },
+               'Item' => {
+                           'class' => 'Paws::DynamoDB::AttributeMap',
+                           'type' => 'DynamoDB_AttributeMap'
+                         },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

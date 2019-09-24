@@ -20,52 +20,53 @@ package Paws::DynamoDB::CreateTable;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::CreateTableOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BillingMode' => {
-                                             'type' => 'Str'
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BillingMode' => {
+                                  'type' => 'Str'
+                                },
+               'GlobalSecondaryIndexes' => {
+                                             'class' => 'Paws::DynamoDB::GlobalSecondaryIndex',
+                                             'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndex]'
                                            },
-                          'GlobalSecondaryIndexes' => {
-                                                        'class' => 'Paws::DynamoDB::GlobalSecondaryIndex',
-                                                        'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndex]'
-                                                      },
-                          'LocalSecondaryIndexes' => {
-                                                       'class' => 'Paws::DynamoDB::LocalSecondaryIndex',
-                                                       'type' => 'ArrayRef[DynamoDB_LocalSecondaryIndex]'
-                                                     },
-                          'AttributeDefinitions' => {
-                                                      'class' => 'Paws::DynamoDB::AttributeDefinition',
-                                                      'type' => 'ArrayRef[DynamoDB_AttributeDefinition]'
-                                                    },
-                          'KeySchema' => {
-                                           'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
+               'LocalSecondaryIndexes' => {
+                                            'class' => 'Paws::DynamoDB::LocalSecondaryIndex',
+                                            'type' => 'ArrayRef[DynamoDB_LocalSecondaryIndex]'
+                                          },
+               'AttributeDefinitions' => {
+                                           'class' => 'Paws::DynamoDB::AttributeDefinition',
+                                           'type' => 'ArrayRef[DynamoDB_AttributeDefinition]'
                                          },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         },
-                          'StreamSpecification' => {
-                                                     'class' => 'Paws::DynamoDB::StreamSpecification',
-                                                     'type' => 'DynamoDB_StreamSpecification'
-                                                   },
-                          'Tags' => {
-                                      'class' => 'Paws::DynamoDB::Tag',
-                                      'type' => 'ArrayRef[DynamoDB_Tag]'
-                                    },
-                          'SSESpecification' => {
-                                                  'class' => 'Paws::DynamoDB::SSESpecification',
-                                                  'type' => 'DynamoDB_SSESpecification'
-                                                },
-                          'ProvisionedThroughput' => {
-                                                       'class' => 'Paws::DynamoDB::ProvisionedThroughput',
-                                                       'type' => 'DynamoDB_ProvisionedThroughput'
-                                                     }
-                        }
-           };
+               'KeySchema' => {
+                                'class' => 'Paws::DynamoDB::KeySchemaElement',
+                                'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
+                              },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'StreamSpecification' => {
+                                          'class' => 'Paws::DynamoDB::StreamSpecification',
+                                          'type' => 'DynamoDB_StreamSpecification'
+                                        },
+               'Tags' => {
+                           'class' => 'Paws::DynamoDB::Tag',
+                           'type' => 'ArrayRef[DynamoDB_Tag]'
+                         },
+               'SSESpecification' => {
+                                       'class' => 'Paws::DynamoDB::SSESpecification',
+                                       'type' => 'DynamoDB_SSESpecification'
+                                     },
+               'ProvisionedThroughput' => {
+                                            'class' => 'Paws::DynamoDB::ProvisionedThroughput',
+                                            'type' => 'DynamoDB_ProvisionedThroughput'
+                                          }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

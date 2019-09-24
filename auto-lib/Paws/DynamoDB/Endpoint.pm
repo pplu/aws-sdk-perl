@@ -5,20 +5,21 @@ package Paws::DynamoDB::Endpoint;
   has Address => (is => 'ro', isa => Str, required => 1);
   has CachePeriodInMinutes => (is => 'ro', isa => Int, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'CachePeriodInMinutes' => {
-                                                      'type' => 'Int'
-                                                    },
-                          'Address' => {
-                                         'type' => 'Str'
-                                       }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CachePeriodInMinutes' => {
+                                           'type' => 'Int'
+                                         },
+               'Address' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -8,30 +8,31 @@ package Paws::DynamoDB::AutoScalingSettingsDescription;
   has MinimumUnits => (is => 'ro', isa => Int);
   has ScalingPolicies => (is => 'ro', isa => ArrayRef[DynamoDB_AutoScalingPolicyDescription]);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'MaximumUnits' => {
-                                              'type' => 'Int'
-                                            },
-                          'AutoScalingDisabled' => {
-                                                     'type' => 'Bool'
-                                                   },
-                          'MinimumUnits' => {
-                                              'type' => 'Int'
-                                            },
-                          'AutoScalingRoleArn' => {
-                                                    'type' => 'Str'
-                                                  },
-                          'ScalingPolicies' => {
-                                                 'class' => 'Paws::DynamoDB::AutoScalingPolicyDescription',
-                                                 'type' => 'ArrayRef[DynamoDB_AutoScalingPolicyDescription]'
-                                               }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaximumUnits' => {
+                                   'type' => 'Int'
+                                 },
+               'AutoScalingDisabled' => {
+                                          'type' => 'Bool'
+                                        },
+               'MinimumUnits' => {
+                                   'type' => 'Int'
+                                 },
+               'AutoScalingRoleArn' => {
+                                         'type' => 'Str'
+                                       },
+               'ScalingPolicies' => {
+                                      'class' => 'Paws::DynamoDB::AutoScalingPolicyDescription',
+                                      'type' => 'ArrayRef[DynamoDB_AutoScalingPolicyDescription]'
+                                    }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

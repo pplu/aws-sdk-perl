@@ -7,26 +7,27 @@ package Paws::DynamoDB::RestoreSummary;
   has SourceBackupArn => (is => 'ro', isa => Str);
   has SourceTableArn => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'SourceTableArn' => {
-                                                'type' => 'Str'
-                                              },
-                          'RestoreInProgress' => {
-                                                   'type' => 'Bool'
-                                                 },
-                          'SourceBackupArn' => {
-                                                 'type' => 'Str'
-                                               },
-                          'RestoreDateTime' => {
-                                                 'type' => 'Str'
-                                               }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceTableArn' => {
+                                     'type' => 'Str'
+                                   },
+               'RestoreInProgress' => {
+                                        'type' => 'Bool'
+                                      },
+               'SourceBackupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'RestoreDateTime' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -5,20 +5,21 @@ package Paws::DynamoDB::StreamSpecification;
   has StreamEnabled => (is => 'ro', isa => Bool);
   has StreamViewType => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'StreamViewType' => {
-                                                'type' => 'Str'
-                                              },
-                          'StreamEnabled' => {
-                                               'type' => 'Bool'
-                                             }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamViewType' => {
+                                     'type' => 'Str'
+                                   },
+               'StreamEnabled' => {
+                                    'type' => 'Bool'
+                                  }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

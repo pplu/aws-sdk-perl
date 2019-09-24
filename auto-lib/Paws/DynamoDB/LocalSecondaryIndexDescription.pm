@@ -9,34 +9,35 @@ package Paws::DynamoDB::LocalSecondaryIndexDescription;
   has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDB_KeySchemaElement]);
   has Projection => (is => 'ro', isa => DynamoDB_Projection);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'IndexName' => {
-                                           'type' => 'Str'
-                                         },
-                          'KeySchema' => {
-                                           'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
-                                         },
-                          'ItemCount' => {
-                                           'type' => 'Int'
-                                         },
-                          'IndexSizeBytes' => {
-                                                'type' => 'Int'
-                                              },
-                          'IndexArn' => {
-                                          'type' => 'Str'
-                                        },
-                          'Projection' => {
-                                            'class' => 'Paws::DynamoDB::Projection',
-                                            'type' => 'DynamoDB_Projection'
-                                          }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'KeySchema' => {
+                                'class' => 'Paws::DynamoDB::KeySchemaElement',
+                                'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
+                              },
+               'ItemCount' => {
+                                'type' => 'Int'
+                              },
+               'IndexSizeBytes' => {
+                                     'type' => 'Int'
+                                   },
+               'IndexArn' => {
+                               'type' => 'Str'
+                             },
+               'Projection' => {
+                                 'class' => 'Paws::DynamoDB::Projection',
+                                 'type' => 'DynamoDB_Projection'
+                               }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -5,22 +5,23 @@ package Paws::DynamoDB::ReplicaUpdate;
   has Create => (is => 'ro', isa => DynamoDB_CreateReplicaAction);
   has Delete => (is => 'ro', isa => DynamoDB_DeleteReplicaAction);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Delete' => {
-                                        'class' => 'Paws::DynamoDB::DeleteReplicaAction',
-                                        'type' => 'DynamoDB_DeleteReplicaAction'
-                                      },
-                          'Create' => {
-                                        'class' => 'Paws::DynamoDB::CreateReplicaAction',
-                                        'type' => 'DynamoDB_CreateReplicaAction'
-                                      }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Delete' => {
+                             'class' => 'Paws::DynamoDB::DeleteReplicaAction',
+                             'type' => 'DynamoDB_DeleteReplicaAction'
+                           },
+               'Create' => {
+                             'class' => 'Paws::DynamoDB::CreateReplicaAction',
+                             'type' => 'DynamoDB_CreateReplicaAction'
+                           }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

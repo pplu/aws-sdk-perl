@@ -7,7 +7,7 @@ package Paws::DynamoDB::SecondaryIndexesCapacityMap;
   has Map => (is => 'ro', isa => HashRef[DynamoDB_Capacity]);
 
   sub params_map {
-    my $params1 = {
+    our $Params_map ||= {
                     types => {
                                'Map' => {
                                           type => 'HashRef[DynamoDB_Capacity]',
@@ -15,7 +15,7 @@ package Paws::DynamoDB::SecondaryIndexesCapacityMap;
                                         },
                              },
                   };
-    return $params1;
+    return $Params_map;
   }
 
 1;

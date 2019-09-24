@@ -7,7 +7,7 @@ package Paws::DynamoDB::BatchWriteItemRequestMap;
   has Map => (is => 'ro', isa => HashRef[ArrayRef[DynamoDB_WriteRequest]]);
 
   sub params_map {
-    my $params1 = {
+    our $Params_map ||= {
                     types => {
                                'Map' => {
                                           type => 'HashRef[ArrayRef[DynamoDB_WriteRequest]]',
@@ -15,7 +15,7 @@ package Paws::DynamoDB::BatchWriteItemRequestMap;
                                         },
                              },
                   };
-    return $params1;
+    return $Params_map;
   }
 
 1;

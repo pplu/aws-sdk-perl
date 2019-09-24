@@ -12,21 +12,22 @@ package Paws::DynamoDB::TagResource;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ResourceArn' => {
-                                             'type' => 'Str'
-                                           },
-                          'Tags' => {
-                                      'class' => 'Paws::DynamoDB::Tag',
-                                      'type' => 'ArrayRef[DynamoDB_Tag]'
-                                    }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::DynamoDB::Tag',
+                           'type' => 'ArrayRef[DynamoDB_Tag]'
+                         }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

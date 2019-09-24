@@ -5,20 +5,21 @@ package Paws::DynamoDB::TimeToLiveSpecification;
   has AttributeName => (is => 'ro', isa => Str, required => 1);
   has Enabled => (is => 'ro', isa => Bool, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Enabled' => {
-                                         'type' => 'Bool'
-                                       },
-                          'AttributeName' => {
-                                               'type' => 'Str'
-                                             }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

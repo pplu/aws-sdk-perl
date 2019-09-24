@@ -7,7 +7,7 @@ package Paws::DynamoDB::AttributeUpdates;
   has Map => (is => 'ro', isa => HashRef[DynamoDB_AttributeValueUpdate]);
 
   sub params_map {
-    my $params1 = {
+    our $Params_map ||= {
                     types => {
                                'Map' => {
                                           type => 'HashRef[DynamoDB_AttributeValueUpdate]',
@@ -15,7 +15,7 @@ package Paws::DynamoDB::AttributeUpdates;
                                         },
                              },
                   };
-    return $params1;
+    return $Params_map;
   }
 
 1;

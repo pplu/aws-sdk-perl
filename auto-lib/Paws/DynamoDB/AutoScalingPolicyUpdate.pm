@@ -5,21 +5,22 @@ package Paws::DynamoDB::AutoScalingPolicyUpdate;
   has PolicyName => (is => 'ro', isa => Str);
   has TargetTrackingScalingPolicyConfiguration => (is => 'ro', isa => DynamoDB_AutoScalingTargetTrackingScalingPolicyConfigurationUpdate, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'TargetTrackingScalingPolicyConfiguration' => {
-                                                                          'class' => 'Paws::DynamoDB::AutoScalingTargetTrackingScalingPolicyConfigurationUpdate',
-                                                                          'type' => 'DynamoDB_AutoScalingTargetTrackingScalingPolicyConfigurationUpdate'
-                                                                        },
-                          'PolicyName' => {
-                                            'type' => 'Str'
-                                          }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetTrackingScalingPolicyConfiguration' => {
+                                                               'class' => 'Paws::DynamoDB::AutoScalingTargetTrackingScalingPolicyConfigurationUpdate',
+                                                               'type' => 'DynamoDB_AutoScalingTargetTrackingScalingPolicyConfigurationUpdate'
+                                                             },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

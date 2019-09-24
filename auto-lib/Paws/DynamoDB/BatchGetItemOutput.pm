@@ -8,26 +8,27 @@ package Paws::DynamoDB::BatchGetItemOutput;
   has UnprocessedKeys => (is => 'ro', isa => DynamoDB_BatchGetRequestMap);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'UnprocessedKeys' => {
-                                                 'class' => 'Paws::DynamoDB::BatchGetRequestMap',
-                                                 'type' => 'DynamoDB_BatchGetRequestMap'
-                                               },
-                          'ConsumedCapacity' => {
-                                                  'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => 'ArrayRef[DynamoDB_ConsumedCapacity]'
-                                                },
-                          'Responses' => {
-                                           'class' => 'Paws::DynamoDB::BatchGetResponseMap',
-                                           'type' => 'DynamoDB_BatchGetResponseMap'
-                                         }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UnprocessedKeys' => {
+                                      'class' => 'Paws::DynamoDB::BatchGetRequestMap',
+                                      'type' => 'DynamoDB_BatchGetRequestMap'
+                                    },
+               'ConsumedCapacity' => {
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity',
+                                       'type' => 'ArrayRef[DynamoDB_ConsumedCapacity]'
+                                     },
+               'Responses' => {
+                                'class' => 'Paws::DynamoDB::BatchGetResponseMap',
+                                'type' => 'DynamoDB_BatchGetResponseMap'
+                              }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

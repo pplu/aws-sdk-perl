@@ -6,18 +6,19 @@ package Paws::DynamoDB::DescribeGlobalTableOutput;
   has GlobalTableDescription => (is => 'ro', isa => DynamoDB_GlobalTableDescription);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'GlobalTableDescription' => {
-                                                        'class' => 'Paws::DynamoDB::GlobalTableDescription',
-                                                        'type' => 'DynamoDB_GlobalTableDescription'
-                                                      }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GlobalTableDescription' => {
+                                             'class' => 'Paws::DynamoDB::GlobalTableDescription',
+                                             'type' => 'DynamoDB_GlobalTableDescription'
+                                           }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

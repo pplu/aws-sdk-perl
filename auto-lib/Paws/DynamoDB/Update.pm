@@ -10,38 +10,39 @@ package Paws::DynamoDB::Update;
   has TableName => (is => 'ro', isa => Str, required => 1);
   has UpdateExpression => (is => 'ro', isa => Str, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ReturnValuesOnConditionCheckFailure' => {
-                                                                     'type' => 'Str'
-                                                                   },
-                          'ExpressionAttributeValues' => {
-                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
-                                                           'type' => 'DynamoDB_ExpressionAttributeValueMap'
-                                                         },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         },
-                          'ExpressionAttributeNames' => {
-                                                          'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => 'DynamoDB_ExpressionAttributeNameMap'
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReturnValuesOnConditionCheckFailure' => {
+                                                          'type' => 'Str'
                                                         },
-                          'Key' => {
-                                     'class' => 'Paws::DynamoDB::Key',
-                                     'type' => 'DynamoDB_Key'
-                                   },
-                          'ConditionExpression' => {
-                                                     'type' => 'Str'
-                                                   },
-                          'UpdateExpression' => {
-                                                  'type' => 'Str'
-                                                }
-                        }
-           };
+               'ExpressionAttributeValues' => {
+                                                'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
+                                                'type' => 'DynamoDB_ExpressionAttributeValueMap'
+                                              },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ExpressionAttributeNames' => {
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap'
+                                             },
+               'Key' => {
+                          'class' => 'Paws::DynamoDB::Key',
+                          'type' => 'DynamoDB_Key'
+                        },
+               'ConditionExpression' => {
+                                          'type' => 'Str'
+                                        },
+               'UpdateExpression' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

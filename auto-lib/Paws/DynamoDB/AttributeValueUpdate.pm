@@ -5,21 +5,22 @@ package Paws::DynamoDB::AttributeValueUpdate;
   has Action => (is => 'ro', isa => Str);
   has Value => (is => 'ro', isa => DynamoDB_AttributeValue);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Value' => {
-                                       'class' => 'Paws::DynamoDB::AttributeValue',
-                                       'type' => 'DynamoDB_AttributeValue'
-                                     },
-                          'Action' => {
-                                        'type' => 'Str'
-                                      }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'class' => 'Paws::DynamoDB::AttributeValue',
+                            'type' => 'DynamoDB_AttributeValue'
+                          },
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

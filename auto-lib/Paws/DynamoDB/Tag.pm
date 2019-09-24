@@ -5,20 +5,21 @@ package Paws::DynamoDB::Tag;
   has Key => (is => 'ro', isa => Str, required => 1);
   has Value => (is => 'ro', isa => Str, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Value' => {
-                                       'type' => 'Str'
-                                     },
-                          'Key' => {
-                                     'type' => 'Str'
-                                   }
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Key' => {
+                          'type' => 'Str'
                         }
-           };
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

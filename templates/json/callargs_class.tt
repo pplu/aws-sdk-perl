@@ -30,10 +30,7 @@ END; %]
     [%- ELSE -%]Paws::API::Response[% END -%]');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my [% USE Dumper(Varname='params',Indent=2); Dumper.dump(params_hash); %]
-    return $params1;
-  }
+  [% PROCESS params_map.tt %]
 1;
 
 [% INCLUDE 'callclass_documentation.tt' %]

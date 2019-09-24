@@ -5,20 +5,21 @@ package Paws::DynamoDB::KeySchemaElement;
   has AttributeName => (is => 'ro', isa => Str, required => 1);
   has KeyType => (is => 'ro', isa => Str, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'KeyType' => {
-                                         'type' => 'Str'
-                                       },
-                          'AttributeName' => {
-                                               'type' => 'Str'
-                                             }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyType' => {
+                              'type' => 'Str'
+                            },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

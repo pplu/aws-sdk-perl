@@ -4,18 +4,19 @@ package Paws::DynamoDB::PutRequest;
   use Paws::DynamoDB::Types qw/DynamoDB_PutItemInputAttributeMap/;
   has Item => (is => 'ro', isa => DynamoDB_PutItemInputAttributeMap, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Item' => {
-                                      'class' => 'Paws::DynamoDB::PutItemInputAttributeMap',
-                                      'type' => 'DynamoDB_PutItemInputAttributeMap'
-                                    }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Item' => {
+                           'class' => 'Paws::DynamoDB::PutItemInputAttributeMap',
+                           'type' => 'DynamoDB_PutItemInputAttributeMap'
+                         }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

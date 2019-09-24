@@ -8,29 +8,30 @@ package Paws::DynamoDB::ProvisionedThroughputDescription;
   has ReadCapacityUnits => (is => 'ro', isa => Int);
   has WriteCapacityUnits => (is => 'ro', isa => Int);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ReadCapacityUnits' => {
-                                                   'type' => 'Int'
-                                                 },
-                          'NumberOfDecreasesToday' => {
-                                                        'type' => 'Int'
-                                                      },
-                          'WriteCapacityUnits' => {
-                                                    'type' => 'Int'
-                                                  },
-                          'LastIncreaseDateTime' => {
-                                                      'type' => 'Str'
-                                                    },
-                          'LastDecreaseDateTime' => {
-                                                      'type' => 'Str'
-                                                    }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReadCapacityUnits' => {
+                                        'type' => 'Int'
+                                      },
+               'NumberOfDecreasesToday' => {
+                                             'type' => 'Int'
+                                           },
+               'WriteCapacityUnits' => {
+                                         'type' => 'Int'
+                                       },
+               'LastIncreaseDateTime' => {
+                                           'type' => 'Str'
+                                         },
+               'LastDecreaseDateTime' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

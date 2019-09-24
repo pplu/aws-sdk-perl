@@ -12,43 +12,44 @@ package Paws::DynamoDB::SourceTableDetails;
   has TableName => (is => 'ro', isa => Str, required => 1);
   has TableSizeBytes => (is => 'ro', isa => Int);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BillingMode' => {
-                                             'type' => 'Str'
-                                           },
-                          'TableSizeBytes' => {
-                                                'type' => 'Int'
-                                              },
-                          'ItemCount' => {
-                                           'type' => 'Int'
-                                         },
-                          'TableCreationDateTime' => {
-                                                       'type' => 'Str'
-                                                     },
-                          'TableArn' => {
-                                          'type' => 'Str'
-                                        },
-                          'TableId' => {
-                                         'type' => 'Str'
-                                       },
-                          'KeySchema' => {
-                                           'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
-                                         },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         },
-                          'ProvisionedThroughput' => {
-                                                       'class' => 'Paws::DynamoDB::ProvisionedThroughput',
-                                                       'type' => 'DynamoDB_ProvisionedThroughput'
-                                                     }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BillingMode' => {
+                                  'type' => 'Str'
+                                },
+               'TableSizeBytes' => {
+                                     'type' => 'Int'
+                                   },
+               'ItemCount' => {
+                                'type' => 'Int'
+                              },
+               'TableCreationDateTime' => {
+                                            'type' => 'Str'
+                                          },
+               'TableArn' => {
+                               'type' => 'Str'
+                             },
+               'TableId' => {
+                              'type' => 'Str'
+                            },
+               'KeySchema' => {
+                                'class' => 'Paws::DynamoDB::KeySchemaElement',
+                                'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
+                              },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ProvisionedThroughput' => {
+                                            'class' => 'Paws::DynamoDB::ProvisionedThroughput',
+                                            'type' => 'DynamoDB_ProvisionedThroughput'
+                                          }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

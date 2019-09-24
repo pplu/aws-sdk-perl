@@ -4,18 +4,19 @@ package Paws::DynamoDB::TransactGetItem;
   use Paws::DynamoDB::Types qw/DynamoDB_Get/;
   has Get => (is => 'ro', isa => DynamoDB_Get, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Get' => {
-                                     'class' => 'Paws::DynamoDB::Get',
-                                     'type' => 'DynamoDB_Get'
-                                   }
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Get' => {
+                          'class' => 'Paws::DynamoDB::Get',
+                          'type' => 'DynamoDB_Get'
                         }
-           };
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

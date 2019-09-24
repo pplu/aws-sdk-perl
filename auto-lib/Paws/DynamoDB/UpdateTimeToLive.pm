@@ -12,21 +12,22 @@ package Paws::DynamoDB::UpdateTimeToLive;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::UpdateTimeToLiveOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'TimeToLiveSpecification' => {
-                                                         'class' => 'Paws::DynamoDB::TimeToLiveSpecification',
-                                                         'type' => 'DynamoDB_TimeToLiveSpecification'
-                                                       },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeToLiveSpecification' => {
+                                              'class' => 'Paws::DynamoDB::TimeToLiveSpecification',
+                                              'type' => 'DynamoDB_TimeToLiveSpecification'
+                                            },
+               'TableName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

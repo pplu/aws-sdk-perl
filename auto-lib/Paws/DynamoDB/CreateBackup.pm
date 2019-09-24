@@ -12,20 +12,21 @@ package Paws::DynamoDB::CreateBackup;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::CreateBackupOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BackupName' => {
-                                            'type' => 'Str'
-                                          },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupName' => {
+                                 'type' => 'Str'
+                               },
+               'TableName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

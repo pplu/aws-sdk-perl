@@ -6,24 +6,25 @@ package Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate;
   has ProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => DynamoDB_AutoScalingSettingsUpdate);
   has ProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'IndexName' => {
-                                           'type' => 'Str'
-                                         },
-                          'ProvisionedWriteCapacityUnits' => {
-                                                               'type' => 'Int'
-                                                             },
-                          'ProvisionedWriteCapacityAutoScalingSettingsUpdate' => {
-                                                                                   'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
-                                                                                   'type' => 'DynamoDB_AutoScalingSettingsUpdate'
-                                                                                 }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'ProvisionedWriteCapacityUnits' => {
+                                                    'type' => 'Int'
+                                                  },
+               'ProvisionedWriteCapacityAutoScalingSettingsUpdate' => {
+                                                                        'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
+                                                                        'type' => 'DynamoDB_AutoScalingSettingsUpdate'
+                                                                      }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

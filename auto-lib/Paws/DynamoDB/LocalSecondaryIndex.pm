@@ -6,25 +6,26 @@ package Paws::DynamoDB::LocalSecondaryIndex;
   has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDB_KeySchemaElement], required => 1);
   has Projection => (is => 'ro', isa => DynamoDB_Projection, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'IndexName' => {
-                                           'type' => 'Str'
-                                         },
-                          'KeySchema' => {
-                                           'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
-                                         },
-                          'Projection' => {
-                                            'class' => 'Paws::DynamoDB::Projection',
-                                            'type' => 'DynamoDB_Projection'
-                                          }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'KeySchema' => {
+                                'class' => 'Paws::DynamoDB::KeySchemaElement',
+                                'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
+                              },
+               'Projection' => {
+                                 'class' => 'Paws::DynamoDB::Projection',
+                                 'type' => 'DynamoDB_Projection'
+                               }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -5,20 +5,21 @@ package Paws::DynamoDB::BillingModeSummary;
   has BillingMode => (is => 'ro', isa => Str);
   has LastUpdateToPayPerRequestDateTime => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BillingMode' => {
-                                             'type' => 'Str'
-                                           },
-                          'LastUpdateToPayPerRequestDateTime' => {
-                                                                   'type' => 'Str'
-                                                                 }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BillingMode' => {
+                                  'type' => 'Str'
+                                },
+               'LastUpdateToPayPerRequestDateTime' => {
+                                                        'type' => 'Str'
+                                                      }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

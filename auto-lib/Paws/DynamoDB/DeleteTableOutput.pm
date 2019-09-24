@@ -6,18 +6,19 @@ package Paws::DynamoDB::DeleteTableOutput;
   has TableDescription => (is => 'ro', isa => DynamoDB_TableDescription);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'TableDescription' => {
-                                                  'class' => 'Paws::DynamoDB::TableDescription',
-                                                  'type' => 'DynamoDB_TableDescription'
-                                                }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TableDescription' => {
+                                       'class' => 'Paws::DynamoDB::TableDescription',
+                                       'type' => 'DynamoDB_TableDescription'
+                                     }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

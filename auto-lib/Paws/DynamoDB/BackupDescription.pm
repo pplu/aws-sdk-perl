@@ -6,26 +6,27 @@ package Paws::DynamoDB::BackupDescription;
   has SourceTableDetails => (is => 'ro', isa => DynamoDB_SourceTableDetails);
   has SourceTableFeatureDetails => (is => 'ro', isa => DynamoDB_SourceTableFeatureDetails);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'SourceTableDetails' => {
-                                                    'class' => 'Paws::DynamoDB::SourceTableDetails',
-                                                    'type' => 'DynamoDB_SourceTableDetails'
-                                                  },
-                          'SourceTableFeatureDetails' => {
-                                                           'class' => 'Paws::DynamoDB::SourceTableFeatureDetails',
-                                                           'type' => 'DynamoDB_SourceTableFeatureDetails'
-                                                         },
-                          'BackupDetails' => {
-                                               'class' => 'Paws::DynamoDB::BackupDetails',
-                                               'type' => 'DynamoDB_BackupDetails'
-                                             }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceTableDetails' => {
+                                         'class' => 'Paws::DynamoDB::SourceTableDetails',
+                                         'type' => 'DynamoDB_SourceTableDetails'
+                                       },
+               'SourceTableFeatureDetails' => {
+                                                'class' => 'Paws::DynamoDB::SourceTableFeatureDetails',
+                                                'type' => 'DynamoDB_SourceTableFeatureDetails'
+                                              },
+               'BackupDetails' => {
+                                    'class' => 'Paws::DynamoDB::BackupDetails',
+                                    'type' => 'DynamoDB_BackupDetails'
+                                  }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

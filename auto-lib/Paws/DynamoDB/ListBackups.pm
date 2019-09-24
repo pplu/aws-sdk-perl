@@ -16,32 +16,33 @@ package Paws::DynamoDB::ListBackups;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::ListBackupsOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BackupType' => {
-                                            'type' => 'Str'
-                                          },
-                          'TimeRangeLowerBound' => {
-                                                     'type' => 'Str'
-                                                   },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         },
-                          'Limit' => {
-                                       'type' => 'Int'
-                                     },
-                          'TimeRangeUpperBound' => {
-                                                     'type' => 'Str'
-                                                   },
-                          'ExclusiveStartBackupArn' => {
-                                                         'type' => 'Str'
-                                                       }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupType' => {
+                                 'type' => 'Str'
+                               },
+               'TimeRangeLowerBound' => {
+                                          'type' => 'Str'
+                                        },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'TimeRangeUpperBound' => {
+                                          'type' => 'Str'
+                                        },
+               'ExclusiveStartBackupArn' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

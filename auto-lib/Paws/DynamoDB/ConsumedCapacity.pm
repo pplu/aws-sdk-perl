@@ -10,38 +10,39 @@ package Paws::DynamoDB::ConsumedCapacity;
   has TableName => (is => 'ro', isa => Str);
   has WriteCapacityUnits => (is => 'ro', isa => Num);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Table' => {
-                                       'class' => 'Paws::DynamoDB::Capacity',
-                                       'type' => 'DynamoDB_Capacity'
-                                     },
-                          'ReadCapacityUnits' => {
-                                                   'type' => 'Num'
-                                                 },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         },
-                          'GlobalSecondaryIndexes' => {
-                                                        'class' => 'Paws::DynamoDB::SecondaryIndexesCapacityMap',
-                                                        'type' => 'DynamoDB_SecondaryIndexesCapacityMap'
-                                                      },
-                          'LocalSecondaryIndexes' => {
-                                                       'class' => 'Paws::DynamoDB::SecondaryIndexesCapacityMap',
-                                                       'type' => 'DynamoDB_SecondaryIndexesCapacityMap'
-                                                     },
-                          'WriteCapacityUnits' => {
-                                                    'type' => 'Num'
-                                                  },
-                          'CapacityUnits' => {
-                                               'type' => 'Num'
-                                             }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Table' => {
+                            'class' => 'Paws::DynamoDB::Capacity',
+                            'type' => 'DynamoDB_Capacity'
+                          },
+               'ReadCapacityUnits' => {
+                                        'type' => 'Num'
+                                      },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'GlobalSecondaryIndexes' => {
+                                             'class' => 'Paws::DynamoDB::SecondaryIndexesCapacityMap',
+                                             'type' => 'DynamoDB_SecondaryIndexesCapacityMap'
+                                           },
+               'LocalSecondaryIndexes' => {
+                                            'class' => 'Paws::DynamoDB::SecondaryIndexesCapacityMap',
+                                            'type' => 'DynamoDB_SecondaryIndexesCapacityMap'
+                                          },
+               'WriteCapacityUnits' => {
+                                         'type' => 'Num'
+                                       },
+               'CapacityUnits' => {
+                                    'type' => 'Num'
+                                  }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

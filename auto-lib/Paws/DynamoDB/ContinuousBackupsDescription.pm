@@ -5,21 +5,22 @@ package Paws::DynamoDB::ContinuousBackupsDescription;
   has ContinuousBackupsStatus => (is => 'ro', isa => Str, required => 1);
   has PointInTimeRecoveryDescription => (is => 'ro', isa => DynamoDB_PointInTimeRecoveryDescription);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ContinuousBackupsStatus' => {
-                                                         'type' => 'Str'
-                                                       },
-                          'PointInTimeRecoveryDescription' => {
-                                                                'class' => 'Paws::DynamoDB::PointInTimeRecoveryDescription',
-                                                                'type' => 'DynamoDB_PointInTimeRecoveryDescription'
-                                                              }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContinuousBackupsStatus' => {
+                                              'type' => 'Str'
+                                            },
+               'PointInTimeRecoveryDescription' => {
+                                                     'class' => 'Paws::DynamoDB::PointInTimeRecoveryDescription',
+                                                     'type' => 'DynamoDB_PointInTimeRecoveryDescription'
+                                                   }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

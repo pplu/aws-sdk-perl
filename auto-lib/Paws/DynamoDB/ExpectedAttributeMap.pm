@@ -7,7 +7,7 @@ package Paws::DynamoDB::ExpectedAttributeMap;
   has Map => (is => 'ro', isa => HashRef[DynamoDB_ExpectedAttributeValue]);
 
   sub params_map {
-    my $params1 = {
+    our $Params_map ||= {
                     types => {
                                'Map' => {
                                           type => 'HashRef[DynamoDB_ExpectedAttributeValue]',
@@ -15,7 +15,7 @@ package Paws::DynamoDB::ExpectedAttributeMap;
                                         },
                              },
                   };
-    return $params1;
+    return $Params_map;
   }
 
 1;

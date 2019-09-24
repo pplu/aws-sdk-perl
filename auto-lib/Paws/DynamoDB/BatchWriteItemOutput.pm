@@ -8,26 +8,27 @@ package Paws::DynamoDB::BatchWriteItemOutput;
   has UnprocessedItems => (is => 'ro', isa => DynamoDB_BatchWriteItemRequestMap);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ConsumedCapacity' => {
-                                                  'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => 'ArrayRef[DynamoDB_ConsumedCapacity]'
-                                                },
-                          'UnprocessedItems' => {
-                                                  'class' => 'Paws::DynamoDB::BatchWriteItemRequestMap',
-                                                  'type' => 'DynamoDB_BatchWriteItemRequestMap'
-                                                },
-                          'ItemCollectionMetrics' => {
-                                                       'class' => 'Paws::DynamoDB::ItemCollectionMetricsPerTable',
-                                                       'type' => 'DynamoDB_ItemCollectionMetricsPerTable'
-                                                     }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConsumedCapacity' => {
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity',
+                                       'type' => 'ArrayRef[DynamoDB_ConsumedCapacity]'
+                                     },
+               'UnprocessedItems' => {
+                                       'class' => 'Paws::DynamoDB::BatchWriteItemRequestMap',
+                                       'type' => 'DynamoDB_BatchWriteItemRequestMap'
+                                     },
+               'ItemCollectionMetrics' => {
+                                            'class' => 'Paws::DynamoDB::ItemCollectionMetricsPerTable',
+                                            'type' => 'DynamoDB_ItemCollectionMetricsPerTable'
+                                          }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

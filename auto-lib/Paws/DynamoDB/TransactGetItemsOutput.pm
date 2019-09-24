@@ -7,22 +7,23 @@ package Paws::DynamoDB::TransactGetItemsOutput;
   has Responses => (is => 'ro', isa => ArrayRef[DynamoDB_ItemResponse]);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ConsumedCapacity' => {
-                                                  'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => 'ArrayRef[DynamoDB_ConsumedCapacity]'
-                                                },
-                          'Responses' => {
-                                           'class' => 'Paws::DynamoDB::ItemResponse',
-                                           'type' => 'ArrayRef[DynamoDB_ItemResponse]'
-                                         }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConsumedCapacity' => {
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity',
+                                       'type' => 'ArrayRef[DynamoDB_ConsumedCapacity]'
+                                     },
+               'Responses' => {
+                                'class' => 'Paws::DynamoDB::ItemResponse',
+                                'type' => 'ArrayRef[DynamoDB_ItemResponse]'
+                              }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

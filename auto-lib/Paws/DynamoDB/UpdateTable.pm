@@ -17,40 +17,41 @@ package Paws::DynamoDB::UpdateTable;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::UpdateTableOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BillingMode' => {
-                                             'type' => 'Str'
-                                           },
-                          'AttributeDefinitions' => {
-                                                      'class' => 'Paws::DynamoDB::AttributeDefinition',
-                                                      'type' => 'ArrayRef[DynamoDB_AttributeDefinition]'
-                                                    },
-                          'GlobalSecondaryIndexUpdates' => {
-                                                             'class' => 'Paws::DynamoDB::GlobalSecondaryIndexUpdate',
-                                                             'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndexUpdate]'
-                                                           },
-                          'TableName' => {
-                                           'type' => 'Str'
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BillingMode' => {
+                                  'type' => 'Str'
+                                },
+               'AttributeDefinitions' => {
+                                           'class' => 'Paws::DynamoDB::AttributeDefinition',
+                                           'type' => 'ArrayRef[DynamoDB_AttributeDefinition]'
                                          },
-                          'StreamSpecification' => {
-                                                     'class' => 'Paws::DynamoDB::StreamSpecification',
-                                                     'type' => 'DynamoDB_StreamSpecification'
-                                                   },
-                          'SSESpecification' => {
-                                                  'class' => 'Paws::DynamoDB::SSESpecification',
-                                                  'type' => 'DynamoDB_SSESpecification'
+               'GlobalSecondaryIndexUpdates' => {
+                                                  'class' => 'Paws::DynamoDB::GlobalSecondaryIndexUpdate',
+                                                  'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndexUpdate]'
                                                 },
-                          'ProvisionedThroughput' => {
-                                                       'class' => 'Paws::DynamoDB::ProvisionedThroughput',
-                                                       'type' => 'DynamoDB_ProvisionedThroughput'
-                                                     }
-                        }
-           };
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'StreamSpecification' => {
+                                          'class' => 'Paws::DynamoDB::StreamSpecification',
+                                          'type' => 'DynamoDB_StreamSpecification'
+                                        },
+               'SSESpecification' => {
+                                       'class' => 'Paws::DynamoDB::SSESpecification',
+                                       'type' => 'DynamoDB_SSESpecification'
+                                     },
+               'ProvisionedThroughput' => {
+                                            'class' => 'Paws::DynamoDB::ProvisionedThroughput',
+                                            'type' => 'DynamoDB_ProvisionedThroughput'
+                                          }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

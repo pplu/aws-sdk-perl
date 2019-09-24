@@ -6,18 +6,19 @@ package Paws::DynamoDB::DescribeEndpointsResponse;
   has Endpoints => (is => 'ro', isa => ArrayRef[DynamoDB_Endpoint], required => 1);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Endpoints' => {
-                                           'class' => 'Paws::DynamoDB::Endpoint',
-                                           'type' => 'ArrayRef[DynamoDB_Endpoint]'
-                                         }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Endpoints' => {
+                                'class' => 'Paws::DynamoDB::Endpoint',
+                                'type' => 'ArrayRef[DynamoDB_Endpoint]'
+                              }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

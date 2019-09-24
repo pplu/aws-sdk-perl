@@ -7,20 +7,21 @@ package Paws::DynamoDB::ListTablesOutput;
   has TableNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'TableNames' => {
-                                            'type' => 'ArrayRef[Str|Undef]'
-                                          },
-                          'LastEvaluatedTableName' => {
-                                                        'type' => 'Str'
-                                                      }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TableNames' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'LastEvaluatedTableName' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

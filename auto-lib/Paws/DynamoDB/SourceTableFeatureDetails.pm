@@ -8,34 +8,35 @@ package Paws::DynamoDB::SourceTableFeatureDetails;
   has StreamDescription => (is => 'ro', isa => DynamoDB_StreamSpecification);
   has TimeToLiveDescription => (is => 'ro', isa => DynamoDB_TimeToLiveDescription);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'TimeToLiveDescription' => {
-                                                       'class' => 'Paws::DynamoDB::TimeToLiveDescription',
-                                                       'type' => 'DynamoDB_TimeToLiveDescription'
-                                                     },
-                          'StreamDescription' => {
-                                                   'class' => 'Paws::DynamoDB::StreamSpecification',
-                                                   'type' => 'DynamoDB_StreamSpecification'
-                                                 },
-                          'SSEDescription' => {
-                                                'class' => 'Paws::DynamoDB::SSEDescription',
-                                                'type' => 'DynamoDB_SSEDescription'
-                                              },
-                          'GlobalSecondaryIndexes' => {
-                                                        'class' => 'Paws::DynamoDB::GlobalSecondaryIndexInfo',
-                                                        'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndexInfo]'
-                                                      },
-                          'LocalSecondaryIndexes' => {
-                                                       'class' => 'Paws::DynamoDB::LocalSecondaryIndexInfo',
-                                                       'type' => 'ArrayRef[DynamoDB_LocalSecondaryIndexInfo]'
-                                                     }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeToLiveDescription' => {
+                                            'class' => 'Paws::DynamoDB::TimeToLiveDescription',
+                                            'type' => 'DynamoDB_TimeToLiveDescription'
+                                          },
+               'StreamDescription' => {
+                                        'class' => 'Paws::DynamoDB::StreamSpecification',
+                                        'type' => 'DynamoDB_StreamSpecification'
+                                      },
+               'SSEDescription' => {
+                                     'class' => 'Paws::DynamoDB::SSEDescription',
+                                     'type' => 'DynamoDB_SSEDescription'
+                                   },
+               'GlobalSecondaryIndexes' => {
+                                             'class' => 'Paws::DynamoDB::GlobalSecondaryIndexInfo',
+                                             'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndexInfo]'
+                                           },
+               'LocalSecondaryIndexes' => {
+                                            'class' => 'Paws::DynamoDB::LocalSecondaryIndexInfo',
+                                            'type' => 'ArrayRef[DynamoDB_LocalSecondaryIndexInfo]'
+                                          }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

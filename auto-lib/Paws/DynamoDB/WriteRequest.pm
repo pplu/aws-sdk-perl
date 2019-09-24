@@ -5,22 +5,23 @@ package Paws::DynamoDB::WriteRequest;
   has DeleteRequest => (is => 'ro', isa => DynamoDB_DeleteRequest);
   has PutRequest => (is => 'ro', isa => DynamoDB_PutRequest);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'PutRequest' => {
-                                            'class' => 'Paws::DynamoDB::PutRequest',
-                                            'type' => 'DynamoDB_PutRequest'
-                                          },
-                          'DeleteRequest' => {
-                                               'class' => 'Paws::DynamoDB::DeleteRequest',
-                                               'type' => 'DynamoDB_DeleteRequest'
-                                             }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PutRequest' => {
+                                 'class' => 'Paws::DynamoDB::PutRequest',
+                                 'type' => 'DynamoDB_PutRequest'
+                               },
+               'DeleteRequest' => {
+                                    'class' => 'Paws::DynamoDB::DeleteRequest',
+                                    'type' => 'DynamoDB_DeleteRequest'
+                                  }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

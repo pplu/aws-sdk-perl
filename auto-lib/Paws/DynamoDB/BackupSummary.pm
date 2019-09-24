@@ -13,44 +13,45 @@ package Paws::DynamoDB::BackupSummary;
   has TableId => (is => 'ro', isa => Str);
   has TableName => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BackupType' => {
-                                            'type' => 'Str'
-                                          },
-                          'BackupName' => {
-                                            'type' => 'Str'
-                                          },
-                          'BackupExpiryDateTime' => {
-                                                      'type' => 'Str'
-                                                    },
-                          'BackupSizeBytes' => {
-                                                 'type' => 'Int'
-                                               },
-                          'BackupStatus' => {
-                                              'type' => 'Str'
-                                            },
-                          'TableArn' => {
-                                          'type' => 'Str'
-                                        },
-                          'TableId' => {
-                                         'type' => 'Str'
-                                       },
-                          'BackupArn' => {
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupType' => {
+                                 'type' => 'Str'
+                               },
+               'BackupName' => {
+                                 'type' => 'Str'
+                               },
+               'BackupExpiryDateTime' => {
                                            'type' => 'Str'
                                          },
-                          'BackupCreationDateTime' => {
-                                                        'type' => 'Str'
-                                                      },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         }
-                        }
-           };
+               'BackupSizeBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'BackupStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'TableArn' => {
+                               'type' => 'Str'
+                             },
+               'TableId' => {
+                              'type' => 'Str'
+                            },
+               'BackupArn' => {
+                                'type' => 'Str'
+                              },
+               'BackupCreationDateTime' => {
+                                             'type' => 'Str'
+                                           },
+               'TableName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

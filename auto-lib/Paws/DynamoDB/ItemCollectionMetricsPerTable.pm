@@ -7,7 +7,7 @@ package Paws::DynamoDB::ItemCollectionMetricsPerTable;
   has Map => (is => 'ro', isa => HashRef[ArrayRef[DynamoDB_ItemCollectionMetrics]]);
 
   sub params_map {
-    my $params1 = {
+    our $Params_map ||= {
                     types => {
                                'Map' => {
                                           type => 'HashRef[ArrayRef[DynamoDB_ItemCollectionMetrics]]',
@@ -15,7 +15,7 @@ package Paws::DynamoDB::ItemCollectionMetricsPerTable;
                                         },
                              },
                   };
-    return $params1;
+    return $Params_map;
   }
 
 1;

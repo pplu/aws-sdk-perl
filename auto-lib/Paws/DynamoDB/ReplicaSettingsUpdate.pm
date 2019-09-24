@@ -7,28 +7,29 @@ package Paws::DynamoDB::ReplicaSettingsUpdate;
   has ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => DynamoDB_AutoScalingSettingsUpdate);
   has ReplicaProvisionedReadCapacityUnits => (is => 'ro', isa => Int);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ReplicaGlobalSecondaryIndexSettingsUpdate' => {
-                                                                           'class' => 'Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate',
-                                                                           'type' => 'ArrayRef[DynamoDB_ReplicaGlobalSecondaryIndexSettingsUpdate]'
-                                                                         },
-                          'ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate' => {
-                                                                                         'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
-                                                                                         'type' => 'DynamoDB_AutoScalingSettingsUpdate'
-                                                                                       },
-                          'ReplicaProvisionedReadCapacityUnits' => {
-                                                                     'type' => 'Int'
-                                                                   },
-                          'RegionName' => {
-                                            'type' => 'Str'
-                                          }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicaGlobalSecondaryIndexSettingsUpdate' => {
+                                                                'class' => 'Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate',
+                                                                'type' => 'ArrayRef[DynamoDB_ReplicaGlobalSecondaryIndexSettingsUpdate]'
+                                                              },
+               'ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate' => {
+                                                                              'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
+                                                                              'type' => 'DynamoDB_AutoScalingSettingsUpdate'
+                                                                            },
+               'ReplicaProvisionedReadCapacityUnits' => {
+                                                          'type' => 'Int'
+                                                        },
+               'RegionName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

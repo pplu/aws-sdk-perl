@@ -4,18 +4,19 @@ package Paws::DynamoDB::ItemResponse;
   use Paws::DynamoDB::Types qw/DynamoDB_AttributeMap/;
   has Item => (is => 'ro', isa => DynamoDB_AttributeMap);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Item' => {
-                                      'class' => 'Paws::DynamoDB::AttributeMap',
-                                      'type' => 'DynamoDB_AttributeMap'
-                                    }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Item' => {
+                           'class' => 'Paws::DynamoDB::AttributeMap',
+                           'type' => 'DynamoDB_AttributeMap'
+                         }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -7,28 +7,29 @@ package Paws::DynamoDB::Get;
   has ProjectionExpression => (is => 'ro', isa => Str);
   has TableName => (is => 'ro', isa => Str, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'TableName' => {
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ExpressionAttributeNames' => {
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap'
+                                             },
+               'ProjectionExpression' => {
                                            'type' => 'Str'
                                          },
-                          'ExpressionAttributeNames' => {
-                                                          'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => 'DynamoDB_ExpressionAttributeNameMap'
-                                                        },
-                          'ProjectionExpression' => {
-                                                      'type' => 'Str'
-                                                    },
-                          'Key' => {
-                                     'class' => 'Paws::DynamoDB::Key',
-                                     'type' => 'DynamoDB_Key'
-                                   }
+               'Key' => {
+                          'class' => 'Paws::DynamoDB::Key',
+                          'type' => 'DynamoDB_Key'
                         }
-           };
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

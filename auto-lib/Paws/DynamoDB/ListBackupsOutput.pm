@@ -7,21 +7,22 @@ package Paws::DynamoDB::ListBackupsOutput;
   has LastEvaluatedBackupArn => (is => 'ro', isa => Str);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BackupSummaries' => {
-                                                 'class' => 'Paws::DynamoDB::BackupSummary',
-                                                 'type' => 'ArrayRef[DynamoDB_BackupSummary]'
-                                               },
-                          'LastEvaluatedBackupArn' => {
-                                                        'type' => 'Str'
-                                                      }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupSummaries' => {
+                                      'class' => 'Paws::DynamoDB::BackupSummary',
+                                      'type' => 'ArrayRef[DynamoDB_BackupSummary]'
+                                    },
+               'LastEvaluatedBackupArn' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

@@ -7,22 +7,23 @@ package Paws::DynamoDB::GetItemOutput;
   has Item => (is => 'ro', isa => DynamoDB_AttributeMap);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Item' => {
-                                      'class' => 'Paws::DynamoDB::AttributeMap',
-                                      'type' => 'DynamoDB_AttributeMap'
-                                    },
-                          'ConsumedCapacity' => {
-                                                  'class' => 'Paws::DynamoDB::ConsumedCapacity',
-                                                  'type' => 'DynamoDB_ConsumedCapacity'
-                                                }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Item' => {
+                           'class' => 'Paws::DynamoDB::AttributeMap',
+                           'type' => 'DynamoDB_AttributeMap'
+                         },
+               'ConsumedCapacity' => {
+                                       'class' => 'Paws::DynamoDB::ConsumedCapacity',
+                                       'type' => 'DynamoDB_ConsumedCapacity'
+                                     }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

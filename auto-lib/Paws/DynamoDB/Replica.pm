@@ -4,17 +4,18 @@ package Paws::DynamoDB::Replica;
   use Paws::DynamoDB::Types qw//;
   has RegionName => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'RegionName' => {
-                                            'type' => 'Str'
-                                          }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegionName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

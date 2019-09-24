@@ -12,20 +12,21 @@ package Paws::DynamoDB::UntagResource;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'TagKeys' => {
-                                         'type' => 'ArrayRef[Str|Undef]'
-                                       },
-                          'ResourceArn' => {
-                                             'type' => 'Str'
-                                           }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagKeys' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

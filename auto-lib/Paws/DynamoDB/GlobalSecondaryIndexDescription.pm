@@ -12,44 +12,45 @@ package Paws::DynamoDB::GlobalSecondaryIndexDescription;
   has Projection => (is => 'ro', isa => DynamoDB_Projection);
   has ProvisionedThroughput => (is => 'ro', isa => DynamoDB_ProvisionedThroughputDescription);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ItemCount' => {
-                                           'type' => 'Int'
-                                         },
-                          'Projection' => {
-                                            'class' => 'Paws::DynamoDB::Projection',
-                                            'type' => 'DynamoDB_Projection'
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ItemCount' => {
+                                'type' => 'Int'
+                              },
+               'Projection' => {
+                                 'class' => 'Paws::DynamoDB::Projection',
+                                 'type' => 'DynamoDB_Projection'
+                               },
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'KeySchema' => {
+                                'class' => 'Paws::DynamoDB::KeySchemaElement',
+                                'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
+                              },
+               'IndexArn' => {
+                               'type' => 'Str'
+                             },
+               'IndexSizeBytes' => {
+                                     'type' => 'Int'
+                                   },
+               'ProvisionedThroughput' => {
+                                            'class' => 'Paws::DynamoDB::ProvisionedThroughputDescription',
+                                            'type' => 'DynamoDB_ProvisionedThroughputDescription'
                                           },
-                          'IndexName' => {
-                                           'type' => 'Str'
-                                         },
-                          'KeySchema' => {
-                                           'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
-                                         },
-                          'IndexArn' => {
-                                          'type' => 'Str'
-                                        },
-                          'IndexSizeBytes' => {
-                                                'type' => 'Int'
-                                              },
-                          'ProvisionedThroughput' => {
-                                                       'class' => 'Paws::DynamoDB::ProvisionedThroughputDescription',
-                                                       'type' => 'DynamoDB_ProvisionedThroughputDescription'
-                                                     },
-                          'Backfilling' => {
-                                             'type' => 'Bool'
-                                           },
-                          'IndexStatus' => {
-                                             'type' => 'Str'
-                                           }
-                        }
-           };
+               'Backfilling' => {
+                                  'type' => 'Bool'
+                                },
+               'IndexStatus' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

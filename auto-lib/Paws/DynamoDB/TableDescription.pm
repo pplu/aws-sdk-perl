@@ -21,77 +21,78 @@ package Paws::DynamoDB::TableDescription;
   has TableSizeBytes => (is => 'ro', isa => Int);
   has TableStatus => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'BillingModeSummary' => {
-                                                    'class' => 'Paws::DynamoDB::BillingModeSummary',
-                                                    'type' => 'DynamoDB_BillingModeSummary'
-                                                  },
-                          'TableSizeBytes' => {
-                                                'type' => 'Int'
-                                              },
-                          'RestoreSummary' => {
-                                                'class' => 'Paws::DynamoDB::RestoreSummary',
-                                                'type' => 'DynamoDB_RestoreSummary'
-                                              },
-                          'CreationDateTime' => {
-                                                  'type' => 'Str'
-                                                },
-                          'GlobalSecondaryIndexes' => {
-                                                        'class' => 'Paws::DynamoDB::GlobalSecondaryIndexDescription',
-                                                        'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndexDescription]'
-                                                      },
-                          'LocalSecondaryIndexes' => {
-                                                       'class' => 'Paws::DynamoDB::LocalSecondaryIndexDescription',
-                                                       'type' => 'ArrayRef[DynamoDB_LocalSecondaryIndexDescription]'
-                                                     },
-                          'TableArn' => {
-                                          'type' => 'Str'
-                                        },
-                          'StreamSpecification' => {
-                                                     'class' => 'Paws::DynamoDB::StreamSpecification',
-                                                     'type' => 'DynamoDB_StreamSpecification'
-                                                   },
-                          'LatestStreamArn' => {
-                                                 'type' => 'Str'
-                                               },
-                          'ItemCount' => {
-                                           'type' => 'Int'
-                                         },
-                          'SSEDescription' => {
-                                                'class' => 'Paws::DynamoDB::SSEDescription',
-                                                'type' => 'DynamoDB_SSEDescription'
-                                              },
-                          'LatestStreamLabel' => {
-                                                   'type' => 'Str'
-                                                 },
-                          'AttributeDefinitions' => {
-                                                      'class' => 'Paws::DynamoDB::AttributeDefinition',
-                                                      'type' => 'ArrayRef[DynamoDB_AttributeDefinition]'
-                                                    },
-                          'TableId' => {
-                                         'type' => 'Str'
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BillingModeSummary' => {
+                                         'class' => 'Paws::DynamoDB::BillingModeSummary',
+                                         'type' => 'DynamoDB_BillingModeSummary'
                                        },
-                          'KeySchema' => {
-                                           'class' => 'Paws::DynamoDB::KeySchemaElement',
-                                           'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
+               'TableSizeBytes' => {
+                                     'type' => 'Int'
+                                   },
+               'RestoreSummary' => {
+                                     'class' => 'Paws::DynamoDB::RestoreSummary',
+                                     'type' => 'DynamoDB_RestoreSummary'
+                                   },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'GlobalSecondaryIndexes' => {
+                                             'class' => 'Paws::DynamoDB::GlobalSecondaryIndexDescription',
+                                             'type' => 'ArrayRef[DynamoDB_GlobalSecondaryIndexDescription]'
+                                           },
+               'LocalSecondaryIndexes' => {
+                                            'class' => 'Paws::DynamoDB::LocalSecondaryIndexDescription',
+                                            'type' => 'ArrayRef[DynamoDB_LocalSecondaryIndexDescription]'
+                                          },
+               'TableArn' => {
+                               'type' => 'Str'
+                             },
+               'StreamSpecification' => {
+                                          'class' => 'Paws::DynamoDB::StreamSpecification',
+                                          'type' => 'DynamoDB_StreamSpecification'
+                                        },
+               'LatestStreamArn' => {
+                                      'type' => 'Str'
+                                    },
+               'ItemCount' => {
+                                'type' => 'Int'
+                              },
+               'SSEDescription' => {
+                                     'class' => 'Paws::DynamoDB::SSEDescription',
+                                     'type' => 'DynamoDB_SSEDescription'
+                                   },
+               'LatestStreamLabel' => {
+                                        'type' => 'Str'
+                                      },
+               'AttributeDefinitions' => {
+                                           'class' => 'Paws::DynamoDB::AttributeDefinition',
+                                           'type' => 'ArrayRef[DynamoDB_AttributeDefinition]'
                                          },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         },
-                          'ProvisionedThroughput' => {
-                                                       'class' => 'Paws::DynamoDB::ProvisionedThroughputDescription',
-                                                       'type' => 'DynamoDB_ProvisionedThroughputDescription'
-                                                     },
-                          'TableStatus' => {
-                                             'type' => 'Str'
-                                           }
-                        }
-           };
+               'TableId' => {
+                              'type' => 'Str'
+                            },
+               'KeySchema' => {
+                                'class' => 'Paws::DynamoDB::KeySchemaElement',
+                                'type' => 'ArrayRef[DynamoDB_KeySchemaElement]'
+                              },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ProvisionedThroughput' => {
+                                            'class' => 'Paws::DynamoDB::ProvisionedThroughputDescription',
+                                            'type' => 'DynamoDB_ProvisionedThroughputDescription'
+                                          },
+               'TableStatus' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

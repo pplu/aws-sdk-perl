@@ -8,30 +8,31 @@ package Paws::DynamoDB::GlobalTableDescription;
   has GlobalTableStatus => (is => 'ro', isa => Str);
   has ReplicationGroup => (is => 'ro', isa => ArrayRef[DynamoDB_ReplicaDescription]);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ReplicationGroup' => {
-                                                  'class' => 'Paws::DynamoDB::ReplicaDescription',
-                                                  'type' => 'ArrayRef[DynamoDB_ReplicaDescription]'
-                                                },
-                          'GlobalTableStatus' => {
-                                                   'type' => 'Str'
-                                                 },
-                          'GlobalTableArn' => {
-                                                'type' => 'Str'
-                                              },
-                          'CreationDateTime' => {
-                                                  'type' => 'Str'
-                                                },
-                          'GlobalTableName' => {
-                                                 'type' => 'Str'
-                                               }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationGroup' => {
+                                       'class' => 'Paws::DynamoDB::ReplicaDescription',
+                                       'type' => 'ArrayRef[DynamoDB_ReplicaDescription]'
+                                     },
+               'GlobalTableStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'GlobalTableArn' => {
+                                     'type' => 'Str'
+                                   },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'GlobalTableName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

@@ -6,23 +6,24 @@ package Paws::DynamoDB::SSEDescription;
   has SSEType => (is => 'ro', isa => Str);
   has Status => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Status' => {
-                                        'type' => 'Str'
-                                      },
-                          'SSEType' => {
-                                         'type' => 'Str'
-                                       },
-                          'KMSMasterKeyArn' => {
-                                                 'type' => 'Str'
-                                               }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SSEType' => {
+                              'type' => 'Str'
+                            },
+               'KMSMasterKeyArn' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

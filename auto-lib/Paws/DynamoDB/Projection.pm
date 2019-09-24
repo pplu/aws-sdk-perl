@@ -5,20 +5,21 @@ package Paws::DynamoDB::Projection;
   has NonKeyAttributes => (is => 'ro', isa => ArrayRef[Str|Undef]);
   has ProjectionType => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ProjectionType' => {
-                                                'type' => 'Str'
-                                              },
-                          'NonKeyAttributes' => {
-                                                  'type' => 'ArrayRef[Str|Undef]'
-                                                }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProjectionType' => {
+                                     'type' => 'Str'
+                                   },
+               'NonKeyAttributes' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

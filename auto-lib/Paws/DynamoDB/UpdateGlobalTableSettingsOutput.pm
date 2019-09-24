@@ -7,21 +7,22 @@ package Paws::DynamoDB::UpdateGlobalTableSettingsOutput;
   has ReplicaSettings => (is => 'ro', isa => ArrayRef[DynamoDB_ReplicaSettingsDescription]);
 
   has _request_id => (is => 'ro', isa => Str);
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ReplicaSettings' => {
-                                                 'class' => 'Paws::DynamoDB::ReplicaSettingsDescription',
-                                                 'type' => 'ArrayRef[DynamoDB_ReplicaSettingsDescription]'
-                                               },
-                          'GlobalTableName' => {
-                                                 'type' => 'Str'
-                                               }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicaSettings' => {
+                                      'class' => 'Paws::DynamoDB::ReplicaSettingsDescription',
+                                      'type' => 'ArrayRef[DynamoDB_ReplicaSettingsDescription]'
+                                    },
+               'GlobalTableName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 ### main pod documentation begin ###
 

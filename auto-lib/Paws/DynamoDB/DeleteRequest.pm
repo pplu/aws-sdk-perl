@@ -4,18 +4,19 @@ package Paws::DynamoDB::DeleteRequest;
   use Paws::DynamoDB::Types qw/DynamoDB_Key/;
   has Key => (is => 'ro', isa => DynamoDB_Key, required => 1);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'Key' => {
-                                     'class' => 'Paws::DynamoDB::Key',
-                                     'type' => 'DynamoDB_Key'
-                                   }
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Key' => {
+                          'class' => 'Paws::DynamoDB::Key',
+                          'type' => 'DynamoDB_Key'
                         }
-           };
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

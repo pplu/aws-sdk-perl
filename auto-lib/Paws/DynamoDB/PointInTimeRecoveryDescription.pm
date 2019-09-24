@@ -6,23 +6,24 @@ package Paws::DynamoDB::PointInTimeRecoveryDescription;
   has LatestRestorableDateTime => (is => 'ro', isa => Str);
   has PointInTimeRecoveryStatus => (is => 'ro', isa => Str);
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'EarliestRestorableDateTime' => {
-                                                            'type' => 'Str'
-                                                          },
-                          'LatestRestorableDateTime' => {
-                                                          'type' => 'Str'
-                                                        },
-                          'PointInTimeRecoveryStatus' => {
-                                                           'type' => 'Str'
-                                                         }
-                        }
-           };
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EarliestRestorableDateTime' => {
+                                                 'type' => 'Str'
+                                               },
+               'LatestRestorableDateTime' => {
+                                               'type' => 'Str'
+                                             },
+               'PointInTimeRecoveryStatus' => {
+                                                'type' => 'Str'
+                                              }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 
 1;
 

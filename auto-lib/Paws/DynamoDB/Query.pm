@@ -27,70 +27,71 @@ package Paws::DynamoDB::Query;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::QueryOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-  sub params_map {
-    my $params1 = {
-             'types' => {
-                          'ExpressionAttributeValues' => {
-                                                           'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
-                                                           'type' => 'DynamoDB_ExpressionAttributeValueMap'
-                                                         },
-                          'ConsistentRead' => {
-                                                'type' => 'Bool'
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpressionAttributeValues' => {
+                                                'class' => 'Paws::DynamoDB::ExpressionAttributeValueMap',
+                                                'type' => 'DynamoDB_ExpressionAttributeValueMap'
                                               },
-                          'KeyConditionExpression' => {
-                                                        'type' => 'Str'
-                                                      },
-                          'ScanIndexForward' => {
-                                                  'type' => 'Bool'
-                                                },
-                          'ExclusiveStartKey' => {
-                                                   'class' => 'Paws::DynamoDB::Key',
-                                                   'type' => 'DynamoDB_Key'
-                                                 },
-                          'FilterExpression' => {
-                                                  'type' => 'Str'
-                                                },
-                          'AttributesToGet' => {
-                                                 'type' => 'ArrayRef[Str|Undef]'
-                                               },
-                          'ExpressionAttributeNames' => {
-                                                          'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
-                                                          'type' => 'DynamoDB_ExpressionAttributeNameMap'
-                                                        },
-                          'Select' => {
-                                        'type' => 'Str'
-                                      },
-                          'KeyConditions' => {
-                                               'class' => 'Paws::DynamoDB::KeyConditions',
-                                               'type' => 'DynamoDB_KeyConditions'
-                                             },
-                          'QueryFilter' => {
-                                             'class' => 'Paws::DynamoDB::FilterConditionMap',
-                                             'type' => 'DynamoDB_FilterConditionMap'
+               'ConsistentRead' => {
+                                     'type' => 'Bool'
+                                   },
+               'KeyConditionExpression' => {
+                                             'type' => 'Str'
                                            },
-                          'ReturnConsumedCapacity' => {
-                                                        'type' => 'Str'
-                                                      },
-                          'Limit' => {
-                                       'type' => 'Int'
+               'ScanIndexForward' => {
+                                       'type' => 'Bool'
                                      },
-                          'ProjectionExpression' => {
-                                                      'type' => 'Str'
-                                                    },
-                          'IndexName' => {
+               'ExclusiveStartKey' => {
+                                        'class' => 'Paws::DynamoDB::Key',
+                                        'type' => 'DynamoDB_Key'
+                                      },
+               'FilterExpression' => {
+                                       'type' => 'Str'
+                                     },
+               'AttributesToGet' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'ExpressionAttributeNames' => {
+                                               'class' => 'Paws::DynamoDB::ExpressionAttributeNameMap',
+                                               'type' => 'DynamoDB_ExpressionAttributeNameMap'
+                                             },
+               'Select' => {
+                             'type' => 'Str'
+                           },
+               'KeyConditions' => {
+                                    'class' => 'Paws::DynamoDB::KeyConditions',
+                                    'type' => 'DynamoDB_KeyConditions'
+                                  },
+               'QueryFilter' => {
+                                  'class' => 'Paws::DynamoDB::FilterConditionMap',
+                                  'type' => 'DynamoDB_FilterConditionMap'
+                                },
+               'ReturnConsumedCapacity' => {
+                                             'type' => 'Str'
+                                           },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'ProjectionExpression' => {
                                            'type' => 'Str'
                                          },
-                          'TableName' => {
-                                           'type' => 'Str'
-                                         },
-                          'ConditionalOperator' => {
-                                                     'type' => 'Str'
-                                                   }
-                        }
-           };
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ConditionalOperator' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+      return $Params_map;
+    }
 
-    return $params1;
-  }
 1;
 
 ### main pod documentation begin ###

@@ -7,7 +7,7 @@ package Paws::DynamoDB::KeyConditions;
   has Map => (is => 'ro', isa => HashRef[DynamoDB_Condition]);
 
   sub params_map {
-    my $params1 = {
+    our $Params_map ||= {
                     types => {
                                'Map' => {
                                           type => 'HashRef[DynamoDB_Condition]',
@@ -15,7 +15,7 @@ package Paws::DynamoDB::KeyConditions;
                                         },
                              },
                   };
-    return $params1;
+    return $Params_map;
   }
 
 1;
