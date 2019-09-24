@@ -3,6 +3,7 @@ package Paws::Net::JsonResponse;
   use JSON::MaybeXS;
   use Carp qw(croak);
   use Paws::Exception;
+  use feature 'state';
 
   sub process {
     my ($self, $call_object, $response) = @_;
@@ -120,9 +121,9 @@ package Paws::Net::JsonResponse;
     my %args;
 
     my $params_map = $class->params_map;
-    if ($class->does('Paws::API::StrToObjMapParser')) {
+    if (do { state %d; $d{$class} //= $class->does('Paws::API::StrToObjMapParser')}) {
       return $self->handle_response_strtoobjmap($class, $result);
-    } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
+    } elsif (do { state %d; $d{$class} //= $class->does('Paws::API::StrToNativeMapParser')}) {
       return $self->handle_response_strtonativemap($class, $result);
     } else {
     foreach my $att (keys %{$params_map->{types}}) {
@@ -153,11 +154,11 @@ package Paws::Net::JsonResponse;
             } else {
               #my $att_class = $att_type->class;
 
-              if ($inner_class->does('Paws::API::StrToObjMapParser')) {
+              if (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::StrToObjMapParser')}) {
                 $args{ $att } = $self->handle_response_strtoobjmap($inner_class, $value);
-              } elsif ($inner_class->does('Paws::API::StrToNativeMapParser')) {
+              } elsif (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::StrToNativeMapParser')}) {
                 $args{ $att } = $self->handle_response_strtonativemap($inner_class, $value);
-              } elsif ($inner_class->does('Paws::API::MapParser')) {
+              } elsif (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::MapParser')}) {
                 my $xml_keys = $inner_class->xml_keys;
                 my $xml_values = $inner_class->xml_values;
 
@@ -192,11 +193,11 @@ package Paws::Net::JsonResponse;
         if ($inner_class) {
           Paws->load_class($inner_class);
 
-          if ($inner_class->does('Paws::API::StrToObjMapParser')) {
+          if (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::StrToObjMapParser')}) {
             $args{ $att } = [ map { $self->handle_response_strtoobjmap($inner_class, $_) } @$value ];
-          } elsif ($inner_class->does('Paws::API::StrToNativeMapParser')) {
+          } elsif (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::StrToNativeMapParser')}) {
             $args{ $att } = [ map { $self->handle_response_strtonativemap($inner_class, $_) } @$value ];
-          } elsif ($inner_class->does('Paws::API::MapParser')) {
+          } elsif (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::MapParser')}) {
             die "MapParser Type in an Array. Please implement me";
           } else {
             $args{ $att } = [ map { $self->new_from_result_struct($inner_class, $_) } @$value ];

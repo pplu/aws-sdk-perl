@@ -4,6 +4,7 @@ use Moo;
 use Types::Standard qw/Str Undef Bool Object ConsumerOf InstanceOf/;
 use Paws::Net::CallerRole;
 use Paws::Credential;
+use feature 'state';
 
 my $CallerRole = Object
   ->plus_coercions( Str, sub {
@@ -88,8 +89,10 @@ class_has default_config => (is => 'rw', isa => InstanceOf['Paws::SDK::Config'],
 
 sub load_class {
   my (undef, @classes) = @_;
-  foreach my $class (@classes) {
+  state %loaded;
+  foreach my $class (grep !$loaded{$_}, @classes) {
     Module::Runtime::require_module($class);
+    $loaded{$class} = 1;
     # immutability is a global setting that will affect all instances
     $class->meta->make_immutable if (Paws->default_config->immutable);
   }
@@ -102,16 +105,17 @@ sub new_with_coercions {
   Paws->load_class($class);
   my %p;
 
-  if ($class->does('Paws::API::StrToObjMapParser')) {
-    my $subclass = $class->params_map->{types}{'Map'}{class};
-    my ($subtype) = ($class->params_map->{types}{'Map'}{type} =~ m/^HashRef\[(.*?)\]$/);
+  my $params_map = $class->params_map;
+  if (do { state %d; $d{$class} //= $class->does('Paws::API::StrToObjMapParser') }) {
+    my $subclass = $params_map->{types}{'Map'}{class};
+    my ($subtype) = ($params_map->{types}{'Map'}{type} =~ m/^HashRef\[(.*?)\]$/);
 #    my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
     if (my ($array_of) = ($subtype =~ m/^ArrayRef\[(.*?)\]$/)) {
       $p{ Map } = { map { $_ => [ map { Paws->new_with_coercions($subclass, %$_) } @{ $params{ $_ } } ] } keys %params };
     } else {
       $p{ Map } = { map { $_ => Paws->new_with_coercions($subclass, %{ $params{ $_ } }) } keys %params };
     }
-  } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
+  } elsif (do { state %d; $d{$class} //= $class->does('Paws::API::StrToNativeMapParser') }) {
    $p{ Map } = { %params };
   }
   else {
@@ -120,8 +124,8 @@ sub new_with_coercions {
 
       #croak "$class doesn't have an $att" if (not defined $att_meta);
       #my $type = $att_meta->type_constraint;
-      my $type = $class->params_map->{types}{$att}{type};
-      my $typeclass = $class->params_map->{types}{$att}{class};
+      my $type = $params_map->{types}{$att}{type};
+      my $typeclass = $params_map->{types}{$att}{class};
 
       ## Types::Standard sorts Bool by default (it says) with !!$_
       if ($type eq 'Bool') {
