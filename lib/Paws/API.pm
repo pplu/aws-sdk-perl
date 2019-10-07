@@ -39,4 +39,12 @@ package Paws::API::Attribute::Trait::AutoInHeader;
   Moose::Util::meta_attribute_alias('AutoInHeader');
   has auto => (is => 'ro', isa => 'Str');
   has header_name => (is => 'ro', isa => 'Str');
+
+package Paws::API::Attribute::Trait::ParamInResponse;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('ParamInResponse');
+  has response_name => (is => 'ro', isa => 'Str');
+  #response_name  
+  
 1;

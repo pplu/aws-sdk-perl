@@ -7,7 +7,10 @@ tests:
     expected: EF9D1C89539E2208
   - path: message
     op: eq
-    expected: Conflict
+    expected: Your previous request to create the named bucket succeeded and you already own it.
   - path: code
+    op: eq
+    expected: BucketAlreadyOwnedByYou
+  - path: http_status
     op: eq
     expected: 409

@@ -4,7 +4,7 @@ package Paws::Net::RestXMLResponse;
   use Carp qw(croak);
   use HTTP::Status;
   use Paws::Exception;
-
+  use Data::Dumper;
   sub unserialize_response {
     my ($self, $data) = @_;
 
@@ -35,16 +35,15 @@ package Paws::Net::RestXMLResponse;
     if ($@){
       return Paws::Exception->new(
         message => $@,
-        code => 'InvalidContent',
+        code => exists($struct->{Code})?$struct->{Code}:'InvalidContent',
         request_id => '', #$request_id,
         http_status => $response->status,
       );
     }
 
     my ($message, $code, $request_id, $host_id);
-
-    $message = status_message($response->status);
-    $code = $response->status;
+	$message = exists($struct->{Message})? $struct->{Message}: status_message($response->status);
+	$code    = exists($struct->{Code})   ? $struct->{Code}   : $response->status;
 
     if (exists $struct->{RequestId}) {
       $request_id = $struct->{RequestId};
@@ -127,18 +126,21 @@ package Paws::Net::RestXMLResponse;
   sub new_from_result_struct {
     my ($self, $class, $result) = @_;
     my %args;
-    
+
+
+
     if ($class->does('Paws::API::StrToObjMapParser')) {
       return $self->handle_response_strtoobjmap($class, $result);
     } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
       return $self->handle_response_strtonativemap($class, $result);
     } else {
     foreach my $att ($class->meta->get_attribute_list) {
-      next if (not my $meta = $class->meta->get_attribute($att));
 
+      next if (not my $meta = $class->meta->get_attribute($att));
       my $key = $meta->does('NameInRequest') ? $meta->request_name :
                 $meta->does('ParamInHeader') ? lc($meta->header_name) : $att;
-
+				#  if ($meta->does('ParamInResponse')
+				#
       my $att_type = $meta->type_constraint;
       my $att_is_required = $meta->is_required;
 
@@ -150,7 +152,12 @@ package Paws::Net::RestXMLResponse;
     #  print STDERR "RESULT >>> $extracted_val\n";
 
       # Free-form paramaters passed in the HTTP headers
-      if ($meta->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
+	  #
+
+      if ( $meta->does('ParamInResponse')){
+		  $key = $meta->response_name;
+          $args{ $meta->name } = $result->{$key};
+	  } elsif ($meta->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
         Paws->load_class("$att_type");
         my $att_class        = $att_type->class;
         my $header_prefix    = $meta->header_prefix;
@@ -293,6 +300,7 @@ package Paws::Net::RestXMLResponse;
 
     my $returns = (defined $call_object->_returns) && ($call_object->_returns ne 'Paws::API::Response');
     my $ret_class = $returns ? $call_object->_returns : 'Paws::API::Response';
+
     Paws->load_class($ret_class);
  
     my $unserialized_struct;
@@ -327,6 +335,7 @@ package Paws::Net::RestXMLResponse;
     }
 
     $unserialized_struct->{ _request_id } = $request_id;
+	$unserialized_struct->{ status } = $http_status; 
       
     if ($returns){
       if ($ret_class->can('_stream_param')) {
