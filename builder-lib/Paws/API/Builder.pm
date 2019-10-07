@@ -889,7 +889,7 @@ package Paws::API::Builder {
 
   sub shape_class_type {
     my ($self, $shape) = @_;
-    return sprintf("%s_%s", $self->service_abbreviation, $shape);
+    return sprintf("%s_%s", $self->service_name, $shape);
   }
   
   sub namespace_shape {
