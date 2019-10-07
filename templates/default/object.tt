@@ -11,7 +11,7 @@ package [% inner_class %];
   params_hash.types.$param_name = { type => member.perl_type };
   FOREACH k IN member.class_type_info.keys; class_types.$k = member.class_type_info.$k; params_hash.types.$param_name.class = member.class_type_info.$k; END;
   IF (member.type == 'list' and member.member.locationName.defined); params_hash.NameInRequest = member.member.locationName; END;
-  IF (shape.members.${param_name}.locationName); params_hash.NameInRequest = shape.members.${param_name}.locationName; END;
+  IF (shape.members.${param_name}.locationName); params_hash.NameInRequest.$param_name = shape.members.${param_name}.locationName; END;
   IF (shape.members.$param_name.streaming == 1); params_map.ParamInBody.push(param_name); END;
   encoder = c.encoders_struct.$member_shape_name; IF (encoder); param_map.JSONAttribute.decode_as = encoder.encoding; param_map.JSONAttribute.method = encoder.alias; END;
   IF (member.members.xmlname and (member.members.xmlname != 'item')); params_hash.NameInRequest = member.members.xmlname; END;

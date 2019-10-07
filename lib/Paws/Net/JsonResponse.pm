@@ -129,8 +129,8 @@ package Paws::Net::JsonResponse;
     foreach my $att (keys %{$params_map->{types}}) {
       # next if (not my $meta = $class->meta->get_attribute($att));
 
-      my $key = $params_map->{NameInRequest} ||
-                $params_map->{ParamInHeader} || $att;
+      my $key = $params_map->{NameInRequest}{$att} ||
+                $params_map->{ParamInHeader}{$att} || $att;
 
       my $att_type = $params_map->{types}{$att}{type};
     #  use Data::Dumper;

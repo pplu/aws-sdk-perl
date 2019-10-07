@@ -9,7 +9,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   attr_str.$attr_ind = "has $param_name => (is => 'ro', isa => ${member.perl_type}";
   IF (c.required_in_shape(shape,param_name)); attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1);"; ELSE; attr_str.$attr_ind = attr_str.$attr_ind _ ");"; END;
 
-  IF (shape.members.${param_name}.locationName); params_hash.NameInRequest = shape.members.${param_name}.locationName; END;
+  IF (shape.members.${param_name}.locationName); params_hash.NameInRequest.$param_name = shape.members.${param_name}.locationName; END;
   IF (shape.members.$param_name.streaming == 1); params_hash.ParamInBody.push(param_name); END;
   CALL attr_types.import(member.base_types.keys);
   params_hash.types.$param_name = { type => member.perl_type };

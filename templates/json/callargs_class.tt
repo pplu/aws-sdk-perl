@@ -11,7 +11,7 @@ package [% c.api %]::[% operation.name %];
   CALL attr_types.import(member.base_types.keys);
   params_hash.types.$param_name = { type => member.perl_type };
   FOREACH k IN member.class_type_info.keys; class_types.$k = member.class_type_info.$k; params_hash.types.$param_name.class = member.class_type_info.$k; END;
-  IF (shape.members.${param_name}.locationName && shape.members.${param_name}.locationName != param_name); params_hash.NameInRequest = shape.members.${param_name}.locationName; END;
+  IF (shape.members.${param_name}.locationName && shape.members.${param_name}.locationName != param_name); params_hash.NameInRequest.$param_name = shape.members.${param_name}.locationName; END;
   IF (shape.members.$param_name.streaming == 1); params_hash.ParamsInBody.push(param_name); END;
   SET attr_ind = attr_ind + 1;
 END; %]
