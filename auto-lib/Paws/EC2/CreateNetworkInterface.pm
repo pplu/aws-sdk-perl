@@ -1,22 +1,77 @@
 
 package Paws::EC2::CreateNetworkInterface;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
-  has InterfaceType => (is => 'ro', isa => 'Str');
-  has Ipv6AddressCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'ipv6AddressCount' );
-  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6Address]', traits => ['NameInRequest'], request_name => 'ipv6Addresses' );
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'privateIpAddress' );
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrivateIpAddressSpecification]', traits => ['NameInRequest'], request_name => 'privateIpAddresses' );
-  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'secondaryPrivateIpAddressCount' );
-  has SubnetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subnetId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef Int/;
+  use Paws::EC2::Types qw/EC2_PrivateIpAddressSpecification EC2_InstanceIpv6Address/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Groups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has InterfaceType => (is => 'ro', isa => Str, predicate => 1);
+  has Ipv6AddressCount => (is => 'ro', isa => Int, predicate => 1);
+  has Ipv6Addresses => (is => 'ro', isa => ArrayRef[EC2_InstanceIpv6Address], predicate => 1);
+  has PrivateIpAddress => (is => 'ro', isa => Str, predicate => 1);
+  has PrivateIpAddresses => (is => 'ro', isa => ArrayRef[EC2_PrivateIpAddressSpecification], predicate => 1);
+  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => Int, predicate => 1);
+  has SubnetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetworkInterface');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateNetworkInterfaceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateNetworkInterface');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateNetworkInterfaceResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ipv6Addresses' => {
+                                    'class' => 'Paws::EC2::InstanceIpv6Address',
+                                    'type' => 'ArrayRef[EC2_InstanceIpv6Address]'
+                                  },
+               'Groups' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'SecondaryPrivateIpAddressCount' => {
+                                                     'type' => 'Int'
+                                                   },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'PrivateIpAddresses' => {
+                                         'class' => 'Paws::EC2::PrivateIpAddressSpecification',
+                                         'type' => 'ArrayRef[EC2_PrivateIpAddressSpecification]'
+                                       },
+               'InterfaceType' => {
+                                    'type' => 'Str'
+                                  },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Ipv6AddressCount' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Ipv6Addresses' => 'ipv6Addresses',
+                       'Groups' => 'SecurityGroupId',
+                       'DryRun' => 'dryRun',
+                       'SecondaryPrivateIpAddressCount' => 'secondaryPrivateIpAddressCount',
+                       'PrivateIpAddress' => 'privateIpAddress',
+                       'PrivateIpAddresses' => 'privateIpAddresses',
+                       'SubnetId' => 'subnetId',
+                       'Description' => 'description',
+                       'Ipv6AddressCount' => 'ipv6AddressCount'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +151,7 @@ you can specify C<0> to override this setting.
 
 
 
-=head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]
+=head2 Ipv6Addresses => ArrayRef[EC2_InstanceIpv6Address]
 
 One or more specific IPv6 addresses from the IPv6 CIDR block range of
 your subnet. You can't use this option if you're specifying a number of
@@ -114,7 +169,7 @@ indicate any IP addresses specified in C<privateIpAddresses> as primary
 
 
 
-=head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
+=head2 PrivateIpAddresses => ArrayRef[EC2_PrivateIpAddressSpecification]
 
 One or more private IPv4 addresses.
 

@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeReservedInstancesOfferingsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has ReservedInstancesOfferings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesOffering]', request_name => 'reservedInstancesOfferingsSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ReservedInstancesOffering/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ReservedInstancesOfferings => (is => 'ro', isa => ArrayRef[EC2_ReservedInstancesOffering]);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ReservedInstancesOfferings' => {
+                                                 'class' => 'Paws::EC2::ReservedInstancesOffering',
+                                                 'type' => 'ArrayRef[EC2_ReservedInstancesOffering]'
+                                               }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ReservedInstancesOfferings' => 'reservedInstancesOfferingsSet'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 ReservedInstancesOfferings => ArrayRef[L<Paws::EC2::ReservedInstancesOffering>]
+=head2 ReservedInstancesOfferings => ArrayRef[EC2_ReservedInstancesOffering]
 
 A list of Reserved Instances offerings.
 

@@ -1,7 +1,24 @@
 package Paws::EC2::PurchaseRequest;
-  use Moose;
-  has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
-  has PurchaseToken => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has InstanceCount => (is => 'ro', isa => Int, required => 1);
+  has PurchaseToken => (is => 'ro', isa => Str, required => 1);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PurchaseToken' => {
+                                    'type' => 'Str'
+                                  },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,28 @@
 package Paws::EC2::ConnectionLogResponseOptions;
-  use Moose;
-  has CloudwatchLogGroup => (is => 'ro', isa => 'Str');
-  has CloudwatchLogStream => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
+  use Moo;  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has CloudwatchLogGroup => (is => 'ro', isa => Str);
+  has CloudwatchLogStream => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CloudwatchLogGroup' => {
+                                         'type' => 'Str'
+                                       },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'CloudwatchLogStream' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

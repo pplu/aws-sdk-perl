@@ -1,7 +1,30 @@
 package Paws::EC2::LoadBalancersConfig;
-  use Moose;
-  has ClassicLoadBalancersConfig => (is => 'ro', isa => 'Paws::EC2::ClassicLoadBalancersConfig', request_name => 'classicLoadBalancersConfig', traits => ['NameInRequest']);
-  has TargetGroupsConfig => (is => 'ro', isa => 'Paws::EC2::TargetGroupsConfig', request_name => 'targetGroupsConfig', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw//;
+  use Paws::EC2::Types qw/EC2_ClassicLoadBalancersConfig EC2_TargetGroupsConfig/;
+  has ClassicLoadBalancersConfig => (is => 'ro', isa => EC2_ClassicLoadBalancersConfig);
+  has TargetGroupsConfig => (is => 'ro', isa => EC2_TargetGroupsConfig);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetGroupsConfig' => {
+                                         'class' => 'Paws::EC2::TargetGroupsConfig',
+                                         'type' => 'EC2_TargetGroupsConfig'
+                                       },
+               'ClassicLoadBalancersConfig' => {
+                                                 'class' => 'Paws::EC2::ClassicLoadBalancersConfig',
+                                                 'type' => 'EC2_ClassicLoadBalancersConfig'
+                                               }
+             },
+  'NameInRequest' => {
+                       'TargetGroupsConfig' => 'targetGroupsConfig',
+                       'ClassicLoadBalancersConfig' => 'classicLoadBalancersConfig'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +60,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ClassicLoadBalancersConfig => L<Paws::EC2::ClassicLoadBalancersConfig>
+=head2 ClassicLoadBalancersConfig => EC2_ClassicLoadBalancersConfig
 
   The Classic Load Balancers.
 
 
-=head2 TargetGroupsConfig => L<Paws::EC2::TargetGroupsConfig>
+=head2 TargetGroupsConfig => EC2_TargetGroupsConfig
 
   The target groups.
 

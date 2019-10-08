@@ -1,15 +1,41 @@
 
 package Paws::EC2::StartInstances;
-  use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'additionalInfo' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw//;
+  has AdditionalInfo => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::StartInstancesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::StartInstancesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'AdditionalInfo' => {
+                                     'type' => 'Str'
+                                   },
+               'InstanceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'AdditionalInfo' => 'additionalInfo',
+                       'InstanceIds' => 'InstanceId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

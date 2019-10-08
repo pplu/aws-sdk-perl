@@ -1,7 +1,28 @@
 package Paws::EC2::VpnConnectionOptionsSpecification;
-  use Moose;
-  has StaticRoutesOnly => (is => 'ro', isa => 'Bool', request_name => 'staticRoutesOnly', traits => ['NameInRequest']);
-  has TunnelOptions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnTunnelOptionsSpecification]');
+  use Moo;  use Types::Standard qw/Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_VpnTunnelOptionsSpecification/;
+  has StaticRoutesOnly => (is => 'ro', isa => Bool);
+  has TunnelOptions => (is => 'ro', isa => ArrayRef[EC2_VpnTunnelOptionsSpecification]);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TunnelOptions' => {
+                                    'class' => 'Paws::EC2::VpnTunnelOptionsSpecification',
+                                    'type' => 'ArrayRef[EC2_VpnTunnelOptionsSpecification]'
+                                  },
+               'StaticRoutesOnly' => {
+                                       'type' => 'Bool'
+                                     }
+             },
+  'NameInRequest' => {
+                       'StaticRoutesOnly' => 'staticRoutesOnly'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +68,7 @@ route.
 Default: C<false>
 
 
-=head2 TunnelOptions => ArrayRef[L<Paws::EC2::VpnTunnelOptionsSpecification>]
+=head2 TunnelOptions => ArrayRef[EC2_VpnTunnelOptionsSpecification]
 
   The tunnel options for the VPN connection.
 

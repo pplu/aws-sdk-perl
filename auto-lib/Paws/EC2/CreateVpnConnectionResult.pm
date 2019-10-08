@@ -1,9 +1,31 @@
 
 package Paws::EC2::CreateVpnConnectionResult;
-  use Moose;
-  has VpnConnection => (is => 'ro', isa => 'Paws::EC2::VpnConnection', request_name => 'vpnConnection', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_VpnConnection/;
+  has VpnConnection => (is => 'ro', isa => EC2_VpnConnection);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VpnConnection' => {
+                                    'class' => 'Paws::EC2::VpnConnection',
+                                    'type' => 'EC2_VpnConnection'
+                                  }
+             },
+  'NameInRequest' => {
+                       'VpnConnection' => 'vpnConnection'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::CreateVpnConnectionResult
 =head1 ATTRIBUTES
 
 
-=head2 VpnConnection => L<Paws::EC2::VpnConnection>
+=head2 VpnConnection => EC2_VpnConnection
 
 Information about the VPN connection.
 

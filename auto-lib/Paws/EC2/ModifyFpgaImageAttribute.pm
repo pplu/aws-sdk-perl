@@ -1,22 +1,70 @@
 
 package Paws::EC2::ModifyFpgaImageAttribute;
-  use Moose;
-  has Attribute => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has FpgaImageId => (is => 'ro', isa => 'Str', required => 1);
-  has LoadPermission => (is => 'ro', isa => 'Paws::EC2::LoadPermissionModifications');
-  has Name => (is => 'ro', isa => 'Str');
-  has OperationType => (is => 'ro', isa => 'Str');
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ProductCode' );
-  has UserGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'UserGroup' );
-  has UserIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'UserId' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_LoadPermissionModifications/;
+  has Attribute => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has FpgaImageId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LoadPermission => (is => 'ro', isa => EC2_LoadPermissionModifications, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has OperationType => (is => 'ro', isa => Str, predicate => 1);
+  has ProductCodes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has UserGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has UserIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyFpgaImageAttribute');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyFpgaImageAttributeResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyFpgaImageAttribute');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyFpgaImageAttributeResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OperationType' => {
+                                    'type' => 'Str'
+                                  },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ProductCodes' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'UserGroups' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'LoadPermission' => {
+                                     'class' => 'Paws::EC2::LoadPermissionModifications',
+                                     'type' => 'EC2_LoadPermissionModifications'
+                                   },
+               'UserIds' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'FpgaImageId' => {
+                                  'type' => 'Str'
+                                },
+               'Attribute' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'ProductCodes' => 'ProductCode',
+                       'UserGroups' => 'UserGroup',
+                       'UserIds' => 'UserId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -103,7 +151,7 @@ The ID of the AFI.
 
 
 
-=head2 LoadPermission => L<Paws::EC2::LoadPermissionModifications>
+=head2 LoadPermission => EC2_LoadPermissionModifications
 
 The load permission for the AFI.
 

@@ -1,6 +1,23 @@
 package Paws::EC2::VolumeDetail;
-  use Moose;
-  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest'], required => 1);
+  use Moo;  use Types::Standard qw/Int/;
+  use Paws::EC2::Types qw//;
+  has Size => (is => 'ro', isa => Int, required => 1);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Size' => {
+                           'type' => 'Int'
+                         }
+             },
+  'NameInRequest' => {
+                       'Size' => 'size'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

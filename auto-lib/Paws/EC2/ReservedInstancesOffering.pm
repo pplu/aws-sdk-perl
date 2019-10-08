@@ -1,20 +1,95 @@
 package Paws::EC2::ReservedInstancesOffering;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
-  has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
-  has FixedPrice => (is => 'ro', isa => 'Num', request_name => 'fixedPrice', traits => ['NameInRequest']);
-  has InstanceTenancy => (is => 'ro', isa => 'Str', request_name => 'instanceTenancy', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has Marketplace => (is => 'ro', isa => 'Bool', request_name => 'marketplace', traits => ['NameInRequest']);
-  has OfferingClass => (is => 'ro', isa => 'Str', request_name => 'offeringClass', traits => ['NameInRequest']);
-  has OfferingType => (is => 'ro', isa => 'Str', request_name => 'offeringType', traits => ['NameInRequest']);
-  has PricingDetails => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PricingDetail]', request_name => 'pricingDetailsSet', traits => ['NameInRequest']);
-  has ProductDescription => (is => 'ro', isa => 'Str', request_name => 'productDescription', traits => ['NameInRequest']);
-  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RecurringCharge]', request_name => 'recurringCharges', traits => ['NameInRequest']);
-  has ReservedInstancesOfferingId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesOfferingId', traits => ['NameInRequest']);
-  has Scope => (is => 'ro', isa => 'Str', request_name => 'scope', traits => ['NameInRequest']);
-  has UsagePrice => (is => 'ro', isa => 'Num', request_name => 'usagePrice', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int Num Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_PricingDetail EC2_RecurringCharge/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has FixedPrice => (is => 'ro', isa => Num);
+  has InstanceTenancy => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has Marketplace => (is => 'ro', isa => Bool);
+  has OfferingClass => (is => 'ro', isa => Str);
+  has OfferingType => (is => 'ro', isa => Str);
+  has PricingDetails => (is => 'ro', isa => ArrayRef[EC2_PricingDetail]);
+  has ProductDescription => (is => 'ro', isa => Str);
+  has RecurringCharges => (is => 'ro', isa => ArrayRef[EC2_RecurringCharge]);
+  has ReservedInstancesOfferingId => (is => 'ro', isa => Str);
+  has Scope => (is => 'ro', isa => Str);
+  has UsagePrice => (is => 'ro', isa => Num);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OfferingType' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'Scope' => {
+                            'type' => 'Str'
+                          },
+               'ReservedInstancesOfferingId' => {
+                                                  'type' => 'Str'
+                                                },
+               'PricingDetails' => {
+                                     'class' => 'Paws::EC2::PricingDetail',
+                                     'type' => 'ArrayRef[EC2_PricingDetail]'
+                                   },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'ProductDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'InstanceTenancy' => {
+                                      'type' => 'Str'
+                                    },
+               'FixedPrice' => {
+                                 'type' => 'Num'
+                               },
+               'Marketplace' => {
+                                  'type' => 'Bool'
+                                },
+               'OfferingClass' => {
+                                    'type' => 'Str'
+                                  },
+               'RecurringCharges' => {
+                                       'class' => 'Paws::EC2::RecurringCharge',
+                                       'type' => 'ArrayRef[EC2_RecurringCharge]'
+                                     },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'UsagePrice' => {
+                                 'type' => 'Num'
+                               }
+             },
+  'NameInRequest' => {
+                       'OfferingType' => 'offeringType',
+                       'InstanceType' => 'instanceType',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'Scope' => 'scope',
+                       'ReservedInstancesOfferingId' => 'reservedInstancesOfferingId',
+                       'PricingDetails' => 'pricingDetailsSet',
+                       'CurrencyCode' => 'currencyCode',
+                       'ProductDescription' => 'productDescription',
+                       'InstanceTenancy' => 'instanceTenancy',
+                       'FixedPrice' => 'fixedPrice',
+                       'Marketplace' => 'marketplace',
+                       'OfferingClass' => 'offeringClass',
+                       'RecurringCharges' => 'recurringCharges',
+                       'Duration' => 'duration',
+                       'UsagePrice' => 'usagePrice'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -101,7 +176,7 @@ C<standard>, it is not possible to perform an exchange.
   The Reserved Instance offering type.
 
 
-=head2 PricingDetails => ArrayRef[L<Paws::EC2::PricingDetail>]
+=head2 PricingDetails => ArrayRef[EC2_PricingDetail]
 
   The pricing details of the Reserved Instance offering.
 
@@ -111,7 +186,7 @@ C<standard>, it is not possible to perform an exchange.
   The Reserved Instance product platform description.
 
 
-=head2 RecurringCharges => ArrayRef[L<Paws::EC2::RecurringCharge>]
+=head2 RecurringCharges => ArrayRef[EC2_RecurringCharge]
 
   The recurring charge tag assigned to the resource.
 

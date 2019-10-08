@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeSnapshotsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Snapshot]', request_name => 'snapshotSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Snapshot/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Snapshots => (is => 'ro', isa => ArrayRef[EC2_Snapshot]);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Snapshots' => {
+                                'class' => 'Paws::EC2::Snapshot',
+                                'type' => 'ArrayRef[EC2_Snapshot]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Snapshots' => 'snapshotSet',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +51,7 @@ results. This value is C<null> when there are no more results to
 return.
 
 
-=head2 Snapshots => ArrayRef[L<Paws::EC2::Snapshot>]
+=head2 Snapshots => ArrayRef[EC2_Snapshot]
 
 Information about the snapshots.
 

@@ -1,8 +1,33 @@
 package Paws::EC2::DeleteFleetSuccessItem;
-  use Moose;
-  has CurrentFleetState => (is => 'ro', isa => 'Str', request_name => 'currentFleetState', traits => ['NameInRequest']);
-  has FleetId => (is => 'ro', isa => 'Str', request_name => 'fleetId', traits => ['NameInRequest']);
-  has PreviousFleetState => (is => 'ro', isa => 'Str', request_name => 'previousFleetState', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has CurrentFleetState => (is => 'ro', isa => Str);
+  has FleetId => (is => 'ro', isa => Str);
+  has PreviousFleetState => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'CurrentFleetState' => {
+                                        'type' => 'Str'
+                                      },
+               'PreviousFleetState' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'FleetId' => 'fleetId',
+                       'CurrentFleetState' => 'currentFleetState',
+                       'PreviousFleetState' => 'previousFleetState'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,43 @@
 package Paws::EC2::ReservedInstancesConfiguration;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has InstanceCount => (is => 'ro', isa => 'Int', request_name => 'instanceCount', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has Scope => (is => 'ro', isa => 'Str', request_name => 'scope', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has InstanceCount => (is => 'ro', isa => Int);
+  has InstanceType => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has Scope => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Scope' => {
+                            'type' => 'Str'
+                          },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Scope' => 'scope',
+                       'Platform' => 'platform',
+                       'InstanceType' => 'instanceType',
+                       'InstanceCount' => 'instanceCount',
+                       'AvailabilityZone' => 'availabilityZone'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

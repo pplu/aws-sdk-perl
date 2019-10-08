@@ -1,9 +1,31 @@
 
 package Paws::EC2::GetLaunchTemplateDataResult;
-  use Moose;
-  has LaunchTemplateData => (is => 'ro', isa => 'Paws::EC2::ResponseLaunchTemplateData', request_name => 'launchTemplateData', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ResponseLaunchTemplateData/;
+  has LaunchTemplateData => (is => 'ro', isa => EC2_ResponseLaunchTemplateData);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LaunchTemplateData' => {
+                                         'class' => 'Paws::EC2::ResponseLaunchTemplateData',
+                                         'type' => 'EC2_ResponseLaunchTemplateData'
+                                       }
+             },
+  'NameInRequest' => {
+                       'LaunchTemplateData' => 'launchTemplateData'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::GetLaunchTemplateDataResult
 =head1 ATTRIBUTES
 
 
-=head2 LaunchTemplateData => L<Paws::EC2::ResponseLaunchTemplateData>
+=head2 LaunchTemplateData => EC2_ResponseLaunchTemplateData
 
 The instance data.
 

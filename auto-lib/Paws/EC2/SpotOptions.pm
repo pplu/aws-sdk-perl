@@ -1,12 +1,53 @@
 package Paws::EC2::SpotOptions;
-  use Moose;
-  has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
-  has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInterruptionBehavior', traits => ['NameInRequest']);
-  has InstancePoolsToUseCount => (is => 'ro', isa => 'Int', request_name => 'instancePoolsToUseCount', traits => ['NameInRequest']);
-  has MaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'maxTotalPrice', traits => ['NameInRequest']);
-  has MinTargetCapacity => (is => 'ro', isa => 'Int', request_name => 'minTargetCapacity', traits => ['NameInRequest']);
-  has SingleAvailabilityZone => (is => 'ro', isa => 'Bool', request_name => 'singleAvailabilityZone', traits => ['NameInRequest']);
-  has SingleInstanceType => (is => 'ro', isa => 'Bool', request_name => 'singleInstanceType', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int Bool/;
+  use Paws::EC2::Types qw//;
+  has AllocationStrategy => (is => 'ro', isa => Str);
+  has InstanceInterruptionBehavior => (is => 'ro', isa => Str);
+  has InstancePoolsToUseCount => (is => 'ro', isa => Int);
+  has MaxTotalPrice => (is => 'ro', isa => Str);
+  has MinTargetCapacity => (is => 'ro', isa => Int);
+  has SingleAvailabilityZone => (is => 'ro', isa => Bool);
+  has SingleInstanceType => (is => 'ro', isa => Bool);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceInterruptionBehavior' => {
+                                                   'type' => 'Str'
+                                                 },
+               'MaxTotalPrice' => {
+                                    'type' => 'Str'
+                                  },
+               'SingleAvailabilityZone' => {
+                                             'type' => 'Bool'
+                                           },
+               'MinTargetCapacity' => {
+                                        'type' => 'Int'
+                                      },
+               'AllocationStrategy' => {
+                                         'type' => 'Str'
+                                       },
+               'SingleInstanceType' => {
+                                         'type' => 'Bool'
+                                       },
+               'InstancePoolsToUseCount' => {
+                                              'type' => 'Int'
+                                            }
+             },
+  'NameInRequest' => {
+                       'InstanceInterruptionBehavior' => 'instanceInterruptionBehavior',
+                       'MaxTotalPrice' => 'maxTotalPrice',
+                       'SingleAvailabilityZone' => 'singleAvailabilityZone',
+                       'MinTargetCapacity' => 'minTargetCapacity',
+                       'AllocationStrategy' => 'allocationStrategy',
+                       'SingleInstanceType' => 'singleInstanceType',
+                       'InstancePoolsToUseCount' => 'instancePoolsToUseCount'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

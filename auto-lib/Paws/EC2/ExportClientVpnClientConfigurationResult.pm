@@ -1,9 +1,30 @@
 
 package Paws::EC2::ExportClientVpnClientConfigurationResult;
-  use Moose;
-  has ClientConfiguration => (is => 'ro', isa => 'Str', request_name => 'clientConfiguration', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has ClientConfiguration => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientConfiguration' => {
+                                          'type' => 'Str'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ClientConfiguration' => 'clientConfiguration'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

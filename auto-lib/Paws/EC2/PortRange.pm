@@ -1,7 +1,28 @@
 package Paws::EC2::PortRange;
-  use Moose;
-  has From => (is => 'ro', isa => 'Int', request_name => 'from', traits => ['NameInRequest']);
-  has To => (is => 'ro', isa => 'Int', request_name => 'to', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int/;
+  use Paws::EC2::Types qw//;
+  has From => (is => 'ro', isa => Int);
+  has To => (is => 'ro', isa => Int);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'To' => {
+                         'type' => 'Int'
+                       },
+               'From' => {
+                           'type' => 'Int'
+                         }
+             },
+  'NameInRequest' => {
+                       'To' => 'to',
+                       'From' => 'from'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

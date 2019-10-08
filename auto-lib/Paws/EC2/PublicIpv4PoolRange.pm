@@ -1,9 +1,38 @@
 package Paws::EC2::PublicIpv4PoolRange;
-  use Moose;
-  has AddressCount => (is => 'ro', isa => 'Int', request_name => 'addressCount', traits => ['NameInRequest']);
-  has AvailableAddressCount => (is => 'ro', isa => 'Int', request_name => 'availableAddressCount', traits => ['NameInRequest']);
-  has FirstAddress => (is => 'ro', isa => 'Str', request_name => 'firstAddress', traits => ['NameInRequest']);
-  has LastAddress => (is => 'ro', isa => 'Str', request_name => 'lastAddress', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has AddressCount => (is => 'ro', isa => Int);
+  has AvailableAddressCount => (is => 'ro', isa => Int);
+  has FirstAddress => (is => 'ro', isa => Str);
+  has LastAddress => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailableAddressCount' => {
+                                            'type' => 'Int'
+                                          },
+               'FirstAddress' => {
+                                   'type' => 'Str'
+                                 },
+               'LastAddress' => {
+                                  'type' => 'Str'
+                                },
+               'AddressCount' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'NameInRequest' => {
+                       'AvailableAddressCount' => 'availableAddressCount',
+                       'FirstAddress' => 'firstAddress',
+                       'LastAddress' => 'lastAddress',
+                       'AddressCount' => 'addressCount'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

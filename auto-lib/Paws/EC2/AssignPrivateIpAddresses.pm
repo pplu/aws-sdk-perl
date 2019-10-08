@@ -1,16 +1,46 @@
 
 package Paws::EC2::AssignPrivateIpAddresses;
-  use Moose;
-  has AllowReassignment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'allowReassignment' );
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' , required => 1);
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'privateIpAddress' );
-  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'secondaryPrivateIpAddressCount' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef Int/;
+  use Paws::EC2::Types qw//;
+  has AllowReassignment => (is => 'ro', isa => Bool, predicate => 1);
+  has NetworkInterfaceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PrivateIpAddresses => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SecondaryPrivateIpAddressCount => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssignPrivateIpAddresses');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::AssignPrivateIpAddressesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssignPrivateIpAddresses');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::AssignPrivateIpAddressesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivateIpAddresses' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'AllowReassignment' => {
+                                        'type' => 'Bool'
+                                      },
+               'SecondaryPrivateIpAddressCount' => {
+                                                     'type' => 'Int'
+                                                   },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'PrivateIpAddresses' => 'privateIpAddress',
+                       'AllowReassignment' => 'allowReassignment',
+                       'SecondaryPrivateIpAddressCount' => 'secondaryPrivateIpAddressCount',
+                       'NetworkInterfaceId' => 'networkInterfaceId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

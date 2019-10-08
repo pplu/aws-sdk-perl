@@ -1,15 +1,41 @@
 
 package Paws::EC2::AcceptReservedInstancesExchangeQuote;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has ReservedInstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ReservedInstanceId' , required => 1);
-  has TargetConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TargetConfigurationRequest]', traits => ['NameInRequest'], request_name => 'TargetConfiguration' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_TargetConfigurationRequest/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ReservedInstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has TargetConfigurations => (is => 'ro', isa => ArrayRef[EC2_TargetConfigurationRequest], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AcceptReservedInstancesExchangeQuote');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::AcceptReservedInstancesExchangeQuoteResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AcceptReservedInstancesExchangeQuote');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::AcceptReservedInstancesExchangeQuoteResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetConfigurations' => {
+                                           'class' => 'Paws::EC2::TargetConfigurationRequest',
+                                           'type' => 'ArrayRef[EC2_TargetConfigurationRequest]'
+                                         },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ReservedInstanceIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        }
+             },
+  'NameInRequest' => {
+                       'TargetConfigurations' => 'TargetConfiguration',
+                       'ReservedInstanceIds' => 'ReservedInstanceId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +95,7 @@ Convertible Reserved Instance of the same or higher value.
 
 
 
-=head2 TargetConfigurations => ArrayRef[L<Paws::EC2::TargetConfigurationRequest>]
+=head2 TargetConfigurations => ArrayRef[EC2_TargetConfigurationRequest]
 
 The configuration of the target Convertible Reserved Instance to
 exchange for your current Convertible Reserved Instances.

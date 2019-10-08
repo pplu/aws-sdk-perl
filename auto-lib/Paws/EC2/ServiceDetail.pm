@@ -1,16 +1,75 @@
 package Paws::EC2::ServiceDetail;
-  use Moose;
-  has AcceptanceRequired => (is => 'ro', isa => 'Bool', request_name => 'acceptanceRequired', traits => ['NameInRequest']);
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availabilityZoneSet', traits => ['NameInRequest']);
-  has BaseEndpointDnsNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'baseEndpointDnsNameSet', traits => ['NameInRequest']);
-  has ManagesVpcEndpoints => (is => 'ro', isa => 'Bool', request_name => 'managesVpcEndpoints', traits => ['NameInRequest']);
-  has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
-  has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
-  has ServiceId => (is => 'ro', isa => 'Str', request_name => 'serviceId', traits => ['NameInRequest']);
-  has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
-  has ServiceType => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ServiceTypeDetail]', request_name => 'serviceType', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VpcEndpointPolicySupported => (is => 'ro', isa => 'Bool', request_name => 'vpcEndpointPolicySupported', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::EC2::Types qw/EC2_Tag EC2_ServiceTypeDetail/;
+  has AcceptanceRequired => (is => 'ro', isa => Bool);
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BaseEndpointDnsNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ManagesVpcEndpoints => (is => 'ro', isa => Bool);
+  has Owner => (is => 'ro', isa => Str);
+  has PrivateDnsName => (is => 'ro', isa => Str);
+  has ServiceId => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str);
+  has ServiceType => (is => 'ro', isa => ArrayRef[EC2_ServiceTypeDetail]);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VpcEndpointPolicySupported => (is => 'ro', isa => Bool);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BaseEndpointDnsNames' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'ServiceType' => {
+                                  'class' => 'Paws::EC2::ServiceTypeDetail',
+                                  'type' => 'ArrayRef[EC2_ServiceTypeDetail]'
+                                },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'ServiceId' => {
+                                'type' => 'Str'
+                              },
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'PrivateDnsName' => {
+                                     'type' => 'Str'
+                                   },
+               'AcceptanceRequired' => {
+                                         'type' => 'Bool'
+                                       },
+               'VpcEndpointPolicySupported' => {
+                                                 'type' => 'Bool'
+                                               },
+               'ManagesVpcEndpoints' => {
+                                          'type' => 'Bool'
+                                        }
+             },
+  'NameInRequest' => {
+                       'BaseEndpointDnsNames' => 'baseEndpointDnsNameSet',
+                       'ServiceType' => 'serviceType',
+                       'ServiceName' => 'serviceName',
+                       'AvailabilityZones' => 'availabilityZoneSet',
+                       'ServiceId' => 'serviceId',
+                       'Owner' => 'owner',
+                       'Tags' => 'tagSet',
+                       'PrivateDnsName' => 'privateDnsName',
+                       'AcceptanceRequired' => 'acceptanceRequired',
+                       'VpcEndpointPolicySupported' => 'vpcEndpointPolicySupported',
+                       'ManagesVpcEndpoints' => 'managesVpcEndpoints'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,12 +147,12 @@ the service VPC endpoints using the VPC endpoint API is restricted.
   The Amazon Resource Name (ARN) of the service.
 
 
-=head2 ServiceType => ArrayRef[L<Paws::EC2::ServiceTypeDetail>]
+=head2 ServiceType => ArrayRef[EC2_ServiceTypeDetail]
 
   The type of service.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the service.
 

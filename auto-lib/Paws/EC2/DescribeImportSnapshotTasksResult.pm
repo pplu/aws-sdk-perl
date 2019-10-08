@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeImportSnapshotTasksResult;
-  use Moose;
-  has ImportSnapshotTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportSnapshotTask]', request_name => 'importSnapshotTaskSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ImportSnapshotTask/;
+  has ImportSnapshotTasks => (is => 'ro', isa => ArrayRef[EC2_ImportSnapshotTask]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImportSnapshotTasks' => {
+                                          'class' => 'Paws::EC2::ImportSnapshotTask',
+                                          'type' => 'ArrayRef[EC2_ImportSnapshotTask]'
+                                        },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ImportSnapshotTasks' => 'importSnapshotTaskSet',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeImportSnapshotTasksResult
 =head1 ATTRIBUTES
 
 
-=head2 ImportSnapshotTasks => ArrayRef[L<Paws::EC2::ImportSnapshotTask>]
+=head2 ImportSnapshotTasks => ArrayRef[EC2_ImportSnapshotTask]
 
 A list of zero or more import snapshot tasks that are currently active
 or were completed or canceled in the previous 7 days.

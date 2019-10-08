@@ -1,21 +1,103 @@
 package Paws::EC2::InstanceNetworkInterface;
-  use Moose;
-  has Association => (is => 'ro', isa => 'Paws::EC2::InstanceNetworkInterfaceAssociation', request_name => 'association', traits => ['NameInRequest']);
-  has Attachment => (is => 'ro', isa => 'Paws::EC2::InstanceNetworkInterfaceAttachment', request_name => 'attachment', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest']);
-  has InterfaceType => (is => 'ro', isa => 'Str', request_name => 'interfaceType', traits => ['NameInRequest']);
-  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6Address]', request_name => 'ipv6AddressesSet', traits => ['NameInRequest']);
-  has MacAddress => (is => 'ro', isa => 'Str', request_name => 'macAddress', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstancePrivateIpAddress]', request_name => 'privateIpAddressesSet', traits => ['NameInRequest']);
-  has SourceDestCheck => (is => 'ro', isa => 'Bool', request_name => 'sourceDestCheck', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_GroupIdentifier EC2_InstanceNetworkInterfaceAttachment EC2_InstanceIpv6Address EC2_InstanceNetworkInterfaceAssociation EC2_InstancePrivateIpAddress/;
+  has Association => (is => 'ro', isa => EC2_InstanceNetworkInterfaceAssociation);
+  has Attachment => (is => 'ro', isa => EC2_InstanceNetworkInterfaceAttachment);
+  has Description => (is => 'ro', isa => Str);
+  has Groups => (is => 'ro', isa => ArrayRef[EC2_GroupIdentifier]);
+  has InterfaceType => (is => 'ro', isa => Str);
+  has Ipv6Addresses => (is => 'ro', isa => ArrayRef[EC2_InstanceIpv6Address]);
+  has MacAddress => (is => 'ro', isa => Str);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has OwnerId => (is => 'ro', isa => Str);
+  has PrivateDnsName => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+  has PrivateIpAddresses => (is => 'ro', isa => ArrayRef[EC2_InstancePrivateIpAddress]);
+  has SourceDestCheck => (is => 'ro', isa => Bool);
+  has Status => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ipv6Addresses' => {
+                                    'class' => 'Paws::EC2::InstanceIpv6Address',
+                                    'type' => 'ArrayRef[EC2_InstanceIpv6Address]'
+                                  },
+               'Groups' => {
+                             'class' => 'Paws::EC2::GroupIdentifier',
+                             'type' => 'ArrayRef[EC2_GroupIdentifier]'
+                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SourceDestCheck' => {
+                                      'type' => 'Bool'
+                                    },
+               'PrivateIpAddresses' => {
+                                         'class' => 'Paws::EC2::InstancePrivateIpAddress',
+                                         'type' => 'ArrayRef[EC2_InstancePrivateIpAddress]'
+                                       },
+               'InterfaceType' => {
+                                    'type' => 'Str'
+                                  },
+               'MacAddress' => {
+                                 'type' => 'Str'
+                               },
+               'PrivateDnsName' => {
+                                     'type' => 'Str'
+                                   },
+               'Attachment' => {
+                                 'class' => 'Paws::EC2::InstanceNetworkInterfaceAttachment',
+                                 'type' => 'EC2_InstanceNetworkInterfaceAttachment'
+                               },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'Association' => {
+                                  'class' => 'Paws::EC2::InstanceNetworkInterfaceAssociation',
+                                  'type' => 'EC2_InstanceNetworkInterfaceAssociation'
+                                },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Ipv6Addresses' => 'ipv6AddressesSet',
+                       'Groups' => 'groupSet',
+                       'Status' => 'status',
+                       'PrivateIpAddress' => 'privateIpAddress',
+                       'VpcId' => 'vpcId',
+                       'SourceDestCheck' => 'sourceDestCheck',
+                       'PrivateIpAddresses' => 'privateIpAddressesSet',
+                       'InterfaceType' => 'interfaceType',
+                       'MacAddress' => 'macAddress',
+                       'PrivateDnsName' => 'privateDnsName',
+                       'Attachment' => 'attachment',
+                       'OwnerId' => 'ownerId',
+                       'Association' => 'association',
+                       'SubnetId' => 'subnetId',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'Description' => 'description'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,13 +133,13 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Association => L<Paws::EC2::InstanceNetworkInterfaceAssociation>
+=head2 Association => EC2_InstanceNetworkInterfaceAssociation
 
   The association information for an Elastic IPv4 associated with the
 network interface.
 
 
-=head2 Attachment => L<Paws::EC2::InstanceNetworkInterfaceAttachment>
+=head2 Attachment => EC2_InstanceNetworkInterfaceAttachment
 
   The network interface attachment.
 
@@ -67,7 +149,7 @@ network interface.
   The description.
 
 
-=head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
+=head2 Groups => ArrayRef[EC2_GroupIdentifier]
 
   One or more security groups.
 
@@ -79,7 +161,7 @@ network interface.
 Valid values: C<interface> | C<efa>
 
 
-=head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]
+=head2 Ipv6Addresses => ArrayRef[EC2_InstanceIpv6Address]
 
   One or more IPv6 addresses associated with the network interface.
 
@@ -109,7 +191,7 @@ Valid values: C<interface> | C<efa>
   The IPv4 address of the network interface within the subnet.
 
 
-=head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::InstancePrivateIpAddress>]
+=head2 PrivateIpAddresses => ArrayRef[EC2_InstancePrivateIpAddress]
 
   One or more private IPv4 addresses associated with the network
 interface.

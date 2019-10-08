@@ -1,27 +1,131 @@
 package Paws::EC2::SpotFleetRequestConfigData;
-  use Moose;
-  has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
-  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
-  has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', request_name => 'excessCapacityTerminationPolicy', traits => ['NameInRequest']);
-  has FulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'fulfilledCapacity', traits => ['NameInRequest']);
-  has IamFleetRole => (is => 'ro', isa => 'Str', request_name => 'iamFleetRole', traits => ['NameInRequest'], required => 1);
-  has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInterruptionBehavior', traits => ['NameInRequest']);
-  has InstancePoolsToUseCount => (is => 'ro', isa => 'Int', request_name => 'instancePoolsToUseCount', traits => ['NameInRequest']);
-  has LaunchSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]', request_name => 'launchSpecifications', traits => ['NameInRequest']);
-  has LaunchTemplateConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateConfig]', request_name => 'launchTemplateConfigs', traits => ['NameInRequest']);
-  has LoadBalancersConfig => (is => 'ro', isa => 'Paws::EC2::LoadBalancersConfig', request_name => 'loadBalancersConfig', traits => ['NameInRequest']);
-  has OnDemandAllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'onDemandAllocationStrategy', traits => ['NameInRequest']);
-  has OnDemandFulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'onDemandFulfilledCapacity', traits => ['NameInRequest']);
-  has OnDemandMaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'onDemandMaxTotalPrice', traits => ['NameInRequest']);
-  has OnDemandTargetCapacity => (is => 'ro', isa => 'Int', request_name => 'onDemandTargetCapacity', traits => ['NameInRequest']);
-  has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', request_name => 'replaceUnhealthyInstances', traits => ['NameInRequest']);
-  has SpotMaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'spotMaxTotalPrice', traits => ['NameInRequest']);
-  has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
-  has TargetCapacity => (is => 'ro', isa => 'Int', request_name => 'targetCapacity', traits => ['NameInRequest'], required => 1);
-  has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool', request_name => 'terminateInstancesWithExpiration', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has ValidFrom => (is => 'ro', isa => 'Str', request_name => 'validFrom', traits => ['NameInRequest']);
-  has ValidUntil => (is => 'ro', isa => 'Str', request_name => 'validUntil', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Num Int ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_SpotFleetLaunchSpecification EC2_LoadBalancersConfig EC2_LaunchTemplateConfig/;
+  has AllocationStrategy => (is => 'ro', isa => Str);
+  has ClientToken => (is => 'ro', isa => Str);
+  has ExcessCapacityTerminationPolicy => (is => 'ro', isa => Str);
+  has FulfilledCapacity => (is => 'ro', isa => Num);
+  has IamFleetRole => (is => 'ro', isa => Str, required => 1);
+  has InstanceInterruptionBehavior => (is => 'ro', isa => Str);
+  has InstancePoolsToUseCount => (is => 'ro', isa => Int);
+  has LaunchSpecifications => (is => 'ro', isa => ArrayRef[EC2_SpotFleetLaunchSpecification]);
+  has LaunchTemplateConfigs => (is => 'ro', isa => ArrayRef[EC2_LaunchTemplateConfig]);
+  has LoadBalancersConfig => (is => 'ro', isa => EC2_LoadBalancersConfig);
+  has OnDemandAllocationStrategy => (is => 'ro', isa => Str);
+  has OnDemandFulfilledCapacity => (is => 'ro', isa => Num);
+  has OnDemandMaxTotalPrice => (is => 'ro', isa => Str);
+  has OnDemandTargetCapacity => (is => 'ro', isa => Int);
+  has ReplaceUnhealthyInstances => (is => 'ro', isa => Bool);
+  has SpotMaxTotalPrice => (is => 'ro', isa => Str);
+  has SpotPrice => (is => 'ro', isa => Str);
+  has TargetCapacity => (is => 'ro', isa => Int, required => 1);
+  has TerminateInstancesWithExpiration => (is => 'ro', isa => Bool);
+  has Type => (is => 'ro', isa => Str);
+  has ValidFrom => (is => 'ro', isa => Str);
+  has ValidUntil => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OnDemandMaxTotalPrice' => {
+                                            'type' => 'Str'
+                                          },
+               'OnDemandFulfilledCapacity' => {
+                                                'type' => 'Num'
+                                              },
+               'LoadBalancersConfig' => {
+                                          'class' => 'Paws::EC2::LoadBalancersConfig',
+                                          'type' => 'EC2_LoadBalancersConfig'
+                                        },
+               'LaunchSpecifications' => {
+                                           'class' => 'Paws::EC2::SpotFleetLaunchSpecification',
+                                           'type' => 'ArrayRef[EC2_SpotFleetLaunchSpecification]'
+                                         },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ReplaceUnhealthyInstances' => {
+                                                'type' => 'Bool'
+                                              },
+               'AllocationStrategy' => {
+                                         'type' => 'Str'
+                                       },
+               'ValidUntil' => {
+                                 'type' => 'Str'
+                               },
+               'LaunchTemplateConfigs' => {
+                                            'class' => 'Paws::EC2::LaunchTemplateConfig',
+                                            'type' => 'ArrayRef[EC2_LaunchTemplateConfig]'
+                                          },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'TerminateInstancesWithExpiration' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'SpotMaxTotalPrice' => {
+                                        'type' => 'Str'
+                                      },
+               'FulfilledCapacity' => {
+                                        'type' => 'Num'
+                                      },
+               'OnDemandTargetCapacity' => {
+                                             'type' => 'Int'
+                                           },
+               'ValidFrom' => {
+                                'type' => 'Str'
+                              },
+               'InstanceInterruptionBehavior' => {
+                                                   'type' => 'Str'
+                                                 },
+               'SpotPrice' => {
+                                'type' => 'Str'
+                              },
+               'TargetCapacity' => {
+                                     'type' => 'Int'
+                                   },
+               'ExcessCapacityTerminationPolicy' => {
+                                                      'type' => 'Str'
+                                                    },
+               'IamFleetRole' => {
+                                   'type' => 'Str'
+                                 },
+               'OnDemandAllocationStrategy' => {
+                                                 'type' => 'Str'
+                                               },
+               'InstancePoolsToUseCount' => {
+                                              'type' => 'Int'
+                                            }
+             },
+  'NameInRequest' => {
+                       'OnDemandMaxTotalPrice' => 'onDemandMaxTotalPrice',
+                       'OnDemandFulfilledCapacity' => 'onDemandFulfilledCapacity',
+                       'LoadBalancersConfig' => 'loadBalancersConfig',
+                       'LaunchSpecifications' => 'launchSpecifications',
+                       'Type' => 'type',
+                       'ReplaceUnhealthyInstances' => 'replaceUnhealthyInstances',
+                       'AllocationStrategy' => 'allocationStrategy',
+                       'ValidUntil' => 'validUntil',
+                       'LaunchTemplateConfigs' => 'launchTemplateConfigs',
+                       'ClientToken' => 'clientToken',
+                       'TerminateInstancesWithExpiration' => 'terminateInstancesWithExpiration',
+                       'SpotMaxTotalPrice' => 'spotMaxTotalPrice',
+                       'FulfilledCapacity' => 'fulfilledCapacity',
+                       'OnDemandTargetCapacity' => 'onDemandTargetCapacity',
+                       'ValidFrom' => 'validFrom',
+                       'InstanceInterruptionBehavior' => 'instanceInterruptionBehavior',
+                       'SpotPrice' => 'spotPrice',
+                       'TargetCapacity' => 'targetCapacity',
+                       'ExcessCapacityTerminationPolicy' => 'excessCapacityTerminationPolicy',
+                       'IamFleetRole' => 'iamFleetRole',
+                       'OnDemandAllocationStrategy' => 'onDemandAllocationStrategy',
+                       'InstancePoolsToUseCount' => 'instancePoolsToUseCount'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -112,7 +216,7 @@ allocates your target Spot capacity across the number of Spot pools
 that you specify.
 
 
-=head2 LaunchSpecifications => ArrayRef[L<Paws::EC2::SpotFleetLaunchSpecification>]
+=head2 LaunchSpecifications => ArrayRef[EC2_SpotFleetLaunchSpecification]
 
   The launch specifications for the Spot Fleet request. If you specify
 C<LaunchSpecifications>, you can't specify C<LaunchTemplateConfigs>. If
@@ -120,7 +224,7 @@ you include On-Demand capacity in your request, you must use
 C<LaunchTemplateConfigs>.
 
 
-=head2 LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::LaunchTemplateConfig>]
+=head2 LaunchTemplateConfigs => ArrayRef[EC2_LaunchTemplateConfig]
 
   The launch template and overrides. If you specify
 C<LaunchTemplateConfigs>, you can't specify C<LaunchSpecifications>. If
@@ -128,7 +232,7 @@ you include On-Demand capacity in your request, you must use
 C<LaunchTemplateConfigs>.
 
 
-=head2 LoadBalancersConfig => L<Paws::EC2::LoadBalancersConfig>
+=head2 LoadBalancersConfig => EC2_LoadBalancersConfig
 
   One or more Classic Load Balancers and target groups to attach to the
 Spot Fleet request. Spot Fleet registers the running Spot Instances

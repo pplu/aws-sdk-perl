@@ -1,6 +1,23 @@
 package Paws::EC2::UserData;
-  use Moose;
-  has Data => (is => 'ro', isa => 'Str', request_name => 'data', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Data => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Data' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Data' => 'data'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,69 @@
 package Paws::EC2::SnapshotInfo;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
-  has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest']);
-  has VolumeSize => (is => 'ro', isa => 'Int', request_name => 'volumeSize', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has Description => (is => 'ro', isa => Str);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has OwnerId => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Str);
+  has SnapshotId => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VolumeId => (is => 'ro', isa => Str);
+  has VolumeSize => (is => 'ro', isa => Int);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeSize' => {
+                                 'type' => 'Int'
+                               },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'Progress' => {
+                               'type' => 'Str'
+                             },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'VolumeSize' => 'volumeSize',
+                       'SnapshotId' => 'snapshotId',
+                       'VolumeId' => 'volumeId',
+                       'State' => 'state',
+                       'OwnerId' => 'ownerId',
+                       'Encrypted' => 'encrypted',
+                       'Progress' => 'progress',
+                       'StartTime' => 'startTime',
+                       'Tags' => 'tagSet',
+                       'Description' => 'description'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +136,7 @@ initiated by the same request.
   Current state of the snapshot.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Tags associated with this snapshot.
 

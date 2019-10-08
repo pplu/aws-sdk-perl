@@ -1,7 +1,24 @@
 package Paws::EC2::VpnTunnelOptionsSpecification;
-  use Moose;
-  has PreSharedKey => (is => 'ro', isa => 'Str');
-  has TunnelInsideCidr => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has PreSharedKey => (is => 'ro', isa => Str);
+  has TunnelInsideCidr => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TunnelInsideCidr' => {
+                                       'type' => 'Str'
+                                     },
+               'PreSharedKey' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

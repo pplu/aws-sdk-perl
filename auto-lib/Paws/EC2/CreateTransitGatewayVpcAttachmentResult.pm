@@ -1,9 +1,31 @@
 
 package Paws::EC2::CreateTransitGatewayVpcAttachmentResult;
-  use Moose;
-  has TransitGatewayVpcAttachment => (is => 'ro', isa => 'Paws::EC2::TransitGatewayVpcAttachment', request_name => 'transitGatewayVpcAttachment', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_TransitGatewayVpcAttachment/;
+  has TransitGatewayVpcAttachment => (is => 'ro', isa => EC2_TransitGatewayVpcAttachment);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TransitGatewayVpcAttachment' => {
+                                                  'class' => 'Paws::EC2::TransitGatewayVpcAttachment',
+                                                  'type' => 'EC2_TransitGatewayVpcAttachment'
+                                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'TransitGatewayVpcAttachment' => 'transitGatewayVpcAttachment'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::CreateTransitGatewayVpcAttachmentResult
 =head1 ATTRIBUTES
 
 
-=head2 TransitGatewayVpcAttachment => L<Paws::EC2::TransitGatewayVpcAttachment>
+=head2 TransitGatewayVpcAttachment => EC2_TransitGatewayVpcAttachment
 
 Information about the VPC attachment.
 

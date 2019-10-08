@@ -1,7 +1,28 @@
 package Paws::EC2::InstanceState;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Int', request_name => 'code', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has Code => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Code' => {
+                           'type' => 'Int'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Code' => 'code',
+                       'Name' => 'name'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

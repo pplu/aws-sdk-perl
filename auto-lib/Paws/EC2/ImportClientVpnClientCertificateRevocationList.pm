@@ -1,15 +1,36 @@
 
 package Paws::EC2::ImportClientVpnClientCertificateRevocationList;
-  use Moose;
-  has CertificateRevocationList => (is => 'ro', isa => 'Str', required => 1);
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has CertificateRevocationList => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientVpnEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportClientVpnClientCertificateRevocationList');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ImportClientVpnClientCertificateRevocationListResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportClientVpnClientCertificateRevocationList');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ImportClientVpnClientCertificateRevocationListResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        },
+               'CertificateRevocationList' => {
+                                                'type' => 'Str'
+                                              }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

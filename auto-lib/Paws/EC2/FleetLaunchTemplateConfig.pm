@@ -1,7 +1,30 @@
 package Paws::EC2::FleetLaunchTemplateConfig;
-  use Moose;
-  has LaunchTemplateSpecification => (is => 'ro', isa => 'Paws::EC2::FleetLaunchTemplateSpecification', request_name => 'launchTemplateSpecification', traits => ['NameInRequest']);
-  has Overrides => (is => 'ro', isa => 'ArrayRef[Paws::EC2::FleetLaunchTemplateOverrides]', request_name => 'overrides', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef/;
+  use Paws::EC2::Types qw/EC2_FleetLaunchTemplateOverrides EC2_FleetLaunchTemplateSpecification/;
+  has LaunchTemplateSpecification => (is => 'ro', isa => EC2_FleetLaunchTemplateSpecification);
+  has Overrides => (is => 'ro', isa => ArrayRef[EC2_FleetLaunchTemplateOverrides]);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Overrides' => {
+                                'class' => 'Paws::EC2::FleetLaunchTemplateOverrides',
+                                'type' => 'ArrayRef[EC2_FleetLaunchTemplateOverrides]'
+                              },
+               'LaunchTemplateSpecification' => {
+                                                  'class' => 'Paws::EC2::FleetLaunchTemplateSpecification',
+                                                  'type' => 'EC2_FleetLaunchTemplateSpecification'
+                                                }
+             },
+  'NameInRequest' => {
+                       'Overrides' => 'overrides',
+                       'LaunchTemplateSpecification' => 'launchTemplateSpecification'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +60,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 LaunchTemplateSpecification => L<Paws::EC2::FleetLaunchTemplateSpecification>
+=head2 LaunchTemplateSpecification => EC2_FleetLaunchTemplateSpecification
 
   The launch template.
 
 
-=head2 Overrides => ArrayRef[L<Paws::EC2::FleetLaunchTemplateOverrides>]
+=head2 Overrides => ArrayRef[EC2_FleetLaunchTemplateOverrides]
 
   Any parameters that you specify override the same parameters in the
 launch template.

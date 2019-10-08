@@ -1,7 +1,26 @@
 package Paws::EC2::LaunchPermissionModifications;
-  use Moose;
-  has Add => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchPermission]');
-  has Remove => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchPermission]');
+  use Moo;  use Types::Standard qw/ArrayRef/;
+  use Paws::EC2::Types qw/EC2_LaunchPermission/;
+  has Add => (is => 'ro', isa => ArrayRef[EC2_LaunchPermission]);
+  has Remove => (is => 'ro', isa => ArrayRef[EC2_LaunchPermission]);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Remove' => {
+                             'class' => 'Paws::EC2::LaunchPermission',
+                             'type' => 'ArrayRef[EC2_LaunchPermission]'
+                           },
+               'Add' => {
+                          'class' => 'Paws::EC2::LaunchPermission',
+                          'type' => 'ArrayRef[EC2_LaunchPermission]'
+                        }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +56,13 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Add => ArrayRef[L<Paws::EC2::LaunchPermission>]
+=head2 Add => ArrayRef[EC2_LaunchPermission]
 
   The AWS account ID to add to the list of launch permissions for the
 AMI.
 
 
-=head2 Remove => ArrayRef[L<Paws::EC2::LaunchPermission>]
+=head2 Remove => ArrayRef[EC2_LaunchPermission]
 
   The AWS account ID to remove from the list of launch permissions for
 the AMI.

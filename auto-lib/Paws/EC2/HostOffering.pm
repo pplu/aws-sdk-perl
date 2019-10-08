@@ -1,12 +1,53 @@
 package Paws::EC2::HostOffering;
-  use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
-  has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
-  has HourlyPrice => (is => 'ro', isa => 'Str', request_name => 'hourlyPrice', traits => ['NameInRequest']);
-  has InstanceFamily => (is => 'ro', isa => 'Str', request_name => 'instanceFamily', traits => ['NameInRequest']);
-  has OfferingId => (is => 'ro', isa => 'Str', request_name => 'offeringId', traits => ['NameInRequest']);
-  has PaymentOption => (is => 'ro', isa => 'Str', request_name => 'paymentOption', traits => ['NameInRequest']);
-  has UpfrontPrice => (is => 'ro', isa => 'Str', request_name => 'upfrontPrice', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw//;
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has HourlyPrice => (is => 'ro', isa => Str);
+  has InstanceFamily => (is => 'ro', isa => Str);
+  has OfferingId => (is => 'ro', isa => Str);
+  has PaymentOption => (is => 'ro', isa => Str);
+  has UpfrontPrice => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UpfrontPrice' => {
+                                   'type' => 'Str'
+                                 },
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceFamily' => {
+                                     'type' => 'Str'
+                                   },
+               'PaymentOption' => {
+                                    'type' => 'Str'
+                                  },
+               'HourlyPrice' => {
+                                  'type' => 'Str'
+                                },
+               'Duration' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'UpfrontPrice' => 'upfrontPrice',
+                       'OfferingId' => 'offeringId',
+                       'CurrencyCode' => 'currencyCode',
+                       'InstanceFamily' => 'instanceFamily',
+                       'PaymentOption' => 'paymentOption',
+                       'HourlyPrice' => 'hourlyPrice',
+                       'Duration' => 'duration'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

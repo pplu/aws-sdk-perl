@@ -1,18 +1,84 @@
 package Paws::EC2::ClientVpnConnection;
-  use Moose;
-  has ClientIp => (is => 'ro', isa => 'Str', request_name => 'clientIp', traits => ['NameInRequest']);
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', request_name => 'clientVpnEndpointId', traits => ['NameInRequest']);
-  has CommonName => (is => 'ro', isa => 'Str', request_name => 'commonName', traits => ['NameInRequest']);
-  has ConnectionEndTime => (is => 'ro', isa => 'Str', request_name => 'connectionEndTime', traits => ['NameInRequest']);
-  has ConnectionEstablishedTime => (is => 'ro', isa => 'Str', request_name => 'connectionEstablishedTime', traits => ['NameInRequest']);
-  has ConnectionId => (is => 'ro', isa => 'Str', request_name => 'connectionId', traits => ['NameInRequest']);
-  has EgressBytes => (is => 'ro', isa => 'Str', request_name => 'egressBytes', traits => ['NameInRequest']);
-  has EgressPackets => (is => 'ro', isa => 'Str', request_name => 'egressPackets', traits => ['NameInRequest']);
-  has IngressBytes => (is => 'ro', isa => 'Str', request_name => 'ingressBytes', traits => ['NameInRequest']);
-  has IngressPackets => (is => 'ro', isa => 'Str', request_name => 'ingressPackets', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::EC2::ClientVpnConnectionStatus', request_name => 'status', traits => ['NameInRequest']);
-  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest']);
-  has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ClientVpnConnectionStatus/;
+  has ClientIp => (is => 'ro', isa => Str);
+  has ClientVpnEndpointId => (is => 'ro', isa => Str);
+  has CommonName => (is => 'ro', isa => Str);
+  has ConnectionEndTime => (is => 'ro', isa => Str);
+  has ConnectionEstablishedTime => (is => 'ro', isa => Str);
+  has ConnectionId => (is => 'ro', isa => Str);
+  has EgressBytes => (is => 'ro', isa => Str);
+  has EgressPackets => (is => 'ro', isa => Str);
+  has IngressBytes => (is => 'ro', isa => Str);
+  has IngressPackets => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => EC2_ClientVpnConnectionStatus);
+  has Timestamp => (is => 'ro', isa => Str);
+  has Username => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConnectionEndTime' => {
+                                        'type' => 'Str'
+                                      },
+               'IngressPackets' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'class' => 'Paws::EC2::ClientVpnConnectionStatus',
+                             'type' => 'EC2_ClientVpnConnectionStatus'
+                           },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'ClientIp' => {
+                               'type' => 'Str'
+                             },
+               'ConnectionEstablishedTime' => {
+                                                'type' => 'Str'
+                                              },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'IngressBytes' => {
+                                   'type' => 'Str'
+                                 },
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        },
+               'CommonName' => {
+                                 'type' => 'Str'
+                               },
+               'EgressPackets' => {
+                                    'type' => 'Str'
+                                  },
+               'EgressBytes' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ConnectionEndTime' => 'connectionEndTime',
+                       'IngressPackets' => 'ingressPackets',
+                       'Status' => 'status',
+                       'ConnectionId' => 'connectionId',
+                       'ClientIp' => 'clientIp',
+                       'ConnectionEstablishedTime' => 'connectionEstablishedTime',
+                       'Timestamp' => 'timestamp',
+                       'Username' => 'username',
+                       'IngressBytes' => 'ingressBytes',
+                       'ClientVpnEndpointId' => 'clientVpnEndpointId',
+                       'CommonName' => 'commonName',
+                       'EgressPackets' => 'egressPackets',
+                       'EgressBytes' => 'egressBytes'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -99,7 +165,7 @@ the client certificate, or the Active Directory user name.
   The number of packets sent by the client.
 
 
-=head2 Status => L<Paws::EC2::ClientVpnConnectionStatus>
+=head2 Status => EC2_ClientVpnConnectionStatus
 
   The current state of the client connection.
 

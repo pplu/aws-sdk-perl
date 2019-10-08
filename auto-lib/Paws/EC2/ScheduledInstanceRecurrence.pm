@@ -1,10 +1,43 @@
 package Paws::EC2::ScheduledInstanceRecurrence;
-  use Moose;
-  has Frequency => (is => 'ro', isa => 'Str', request_name => 'frequency', traits => ['NameInRequest']);
-  has Interval => (is => 'ro', isa => 'Int', request_name => 'interval', traits => ['NameInRequest']);
-  has OccurrenceDaySet => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'occurrenceDaySet', traits => ['NameInRequest']);
-  has OccurrenceRelativeToEnd => (is => 'ro', isa => 'Bool', request_name => 'occurrenceRelativeToEnd', traits => ['NameInRequest']);
-  has OccurrenceUnit => (is => 'ro', isa => 'Str', request_name => 'occurrenceUnit', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int ArrayRef Bool/;
+  use Paws::EC2::Types qw//;
+  has Frequency => (is => 'ro', isa => Str);
+  has Interval => (is => 'ro', isa => Int);
+  has OccurrenceDaySet => (is => 'ro', isa => ArrayRef[Int]);
+  has OccurrenceRelativeToEnd => (is => 'ro', isa => Bool);
+  has OccurrenceUnit => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Frequency' => {
+                                'type' => 'Str'
+                              },
+               'Interval' => {
+                               'type' => 'Int'
+                             },
+               'OccurrenceRelativeToEnd' => {
+                                              'type' => 'Bool'
+                                            },
+               'OccurrenceUnit' => {
+                                     'type' => 'Str'
+                                   },
+               'OccurrenceDaySet' => {
+                                       'type' => 'ArrayRef[Int]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Frequency' => 'frequency',
+                       'Interval' => 'interval',
+                       'OccurrenceRelativeToEnd' => 'occurrenceRelativeToEnd',
+                       'OccurrenceUnit' => 'occurrenceUnit',
+                       'OccurrenceDaySet' => 'occurrenceDaySet'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

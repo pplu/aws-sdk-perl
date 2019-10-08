@@ -1,10 +1,42 @@
 package Paws::EC2::S3Storage;
-  use Moose;
-  has AWSAccessKeyId => (is => 'ro', isa => 'Str');
-  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
-  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
-  has UploadPolicy => (is => 'ro', isa => 'Str', request_name => 'uploadPolicy', traits => ['NameInRequest']);
-  has UploadPolicySignature => (is => 'ro', isa => 'Str', request_name => 'uploadPolicySignature', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has AWSAccessKeyId => (is => 'ro', isa => Str);
+  has Bucket => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+  has UploadPolicy => (is => 'ro', isa => Str);
+  has UploadPolicySignature => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UploadPolicy' => {
+                                   'type' => 'Str'
+                                 },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'AWSAccessKeyId' => {
+                                     'type' => 'Str'
+                                   },
+               'UploadPolicySignature' => {
+                                            'type' => 'Str'
+                                          },
+               'Bucket' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'UploadPolicy' => 'uploadPolicy',
+                       'Prefix' => 'prefix',
+                       'UploadPolicySignature' => 'uploadPolicySignature',
+                       'Bucket' => 'bucket'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

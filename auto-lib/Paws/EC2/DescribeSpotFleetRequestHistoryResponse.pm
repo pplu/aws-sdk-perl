@@ -1,13 +1,51 @@
 
 package Paws::EC2::DescribeSpotFleetRequestHistoryResponse;
-  use Moose;
-  has HistoryRecords => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HistoryRecord]', request_name => 'historyRecordSet', traits => ['NameInRequest',]);
-  has LastEvaluatedTime => (is => 'ro', isa => 'Str', request_name => 'lastEvaluatedTime', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest',]);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_HistoryRecord/;
+  has HistoryRecords => (is => 'ro', isa => ArrayRef[EC2_HistoryRecord]);
+  has LastEvaluatedTime => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has SpotFleetRequestId => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LastEvaluatedTime' => {
+                                        'type' => 'Str'
+                                      },
+               'HistoryRecords' => {
+                                     'class' => 'Paws::EC2::HistoryRecord',
+                                     'type' => 'ArrayRef[EC2_HistoryRecord]'
+                                   },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'SpotFleetRequestId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'LastEvaluatedTime' => 'lastEvaluatedTime',
+                       'HistoryRecords' => 'historyRecordSet',
+                       'StartTime' => 'startTime',
+                       'SpotFleetRequestId' => 'spotFleetRequestId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -19,7 +57,7 @@ Paws::EC2::DescribeSpotFleetRequestHistoryResponse
 =head1 ATTRIBUTES
 
 
-=head2 HistoryRecords => ArrayRef[L<Paws::EC2::HistoryRecord>]
+=head2 HistoryRecords => ArrayRef[EC2_HistoryRecord]
 
 Information about the events in the history of the Spot Fleet request.
 

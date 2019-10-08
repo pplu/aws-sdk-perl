@@ -1,7 +1,29 @@
 package Paws::EC2::AvailableCapacity;
-  use Moose;
-  has AvailableInstanceCapacity => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceCapacity]', request_name => 'availableInstanceCapacity', traits => ['NameInRequest']);
-  has AvailableVCpus => (is => 'ro', isa => 'Int', request_name => 'availableVCpus', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Int/;
+  use Paws::EC2::Types qw/EC2_InstanceCapacity/;
+  has AvailableInstanceCapacity => (is => 'ro', isa => ArrayRef[EC2_InstanceCapacity]);
+  has AvailableVCpus => (is => 'ro', isa => Int);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailableVCpus' => {
+                                     'type' => 'Int'
+                                   },
+               'AvailableInstanceCapacity' => {
+                                                'class' => 'Paws::EC2::InstanceCapacity',
+                                                'type' => 'ArrayRef[EC2_InstanceCapacity]'
+                                              }
+             },
+  'NameInRequest' => {
+                       'AvailableVCpus' => 'availableVCpus',
+                       'AvailableInstanceCapacity' => 'availableInstanceCapacity'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +59,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 AvailableInstanceCapacity => ArrayRef[L<Paws::EC2::InstanceCapacity>]
+=head2 AvailableInstanceCapacity => ArrayRef[EC2_InstanceCapacity]
 
   The total number of instances supported by the Dedicated Host.
 

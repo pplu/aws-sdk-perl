@@ -1,9 +1,30 @@
 
 package Paws::EC2::ModifyInstanceCapacityReservationAttributesResult;
-  use Moose;
-  has Return => (is => 'ro', isa => 'Bool', request_name => 'return', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has Return => (is => 'ro', isa => Bool);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Return' => {
+                             'type' => 'Bool'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Return' => 'return'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

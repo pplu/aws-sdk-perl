@@ -1,12 +1,46 @@
 
 package Paws::EC2::GetHostReservationPurchasePreviewResult;
-  use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest',]);
-  has Purchase => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Purchase]', request_name => 'purchase', traits => ['NameInRequest',]);
-  has TotalHourlyPrice => (is => 'ro', isa => 'Str', request_name => 'totalHourlyPrice', traits => ['NameInRequest',]);
-  has TotalUpfrontPrice => (is => 'ro', isa => 'Str', request_name => 'totalUpfrontPrice', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Purchase/;
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Purchase => (is => 'ro', isa => ArrayRef[EC2_Purchase]);
+  has TotalHourlyPrice => (is => 'ro', isa => Str);
+  has TotalUpfrontPrice => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TotalHourlyPrice' => {
+                                       'type' => 'Str'
+                                     },
+               'Purchase' => {
+                               'class' => 'Paws::EC2::Purchase',
+                               'type' => 'ArrayRef[EC2_Purchase]'
+                             },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TotalUpfrontPrice' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'TotalHourlyPrice' => 'totalHourlyPrice',
+                       'Purchase' => 'purchase',
+                       'CurrencyCode' => 'currencyCode',
+                       'TotalUpfrontPrice' => 'totalUpfrontPrice'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +59,7 @@ amounts are specified. At this time, the only supported currency is
 C<USD>.
 
 Valid values are: C<"USD">
-=head2 Purchase => ArrayRef[L<Paws::EC2::Purchase>]
+=head2 Purchase => ArrayRef[EC2_Purchase]
 
 The purchase information of the Dedicated Host reservation and the
 Dedicated Hosts associated with it.

@@ -1,18 +1,50 @@
 
 package Paws::EC2::CreateFpgaImage;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has InputStorageLocation => (is => 'ro', isa => 'Paws::EC2::StorageLocation', required => 1);
-  has LogsStorageLocation => (is => 'ro', isa => 'Paws::EC2::StorageLocation');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_StorageLocation/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has InputStorageLocation => (is => 'ro', isa => EC2_StorageLocation, required => 1, predicate => 1);
+  has LogsStorageLocation => (is => 'ro', isa => EC2_StorageLocation, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFpgaImage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateFpgaImageResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFpgaImage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateFpgaImageResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'LogsStorageLocation' => {
+                                          'class' => 'Paws::EC2::StorageLocation',
+                                          'type' => 'EC2_StorageLocation'
+                                        },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'InputStorageLocation' => {
+                                           'class' => 'Paws::EC2::StorageLocation',
+                                           'type' => 'EC2_StorageLocation'
+                                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -83,14 +115,14 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> InputStorageLocation => L<Paws::EC2::StorageLocation>
+=head2 B<REQUIRED> InputStorageLocation => EC2_StorageLocation
 
 The location of the encrypted design checkpoint in Amazon S3. The input
 must be a tarball.
 
 
 
-=head2 LogsStorageLocation => L<Paws::EC2::StorageLocation>
+=head2 LogsStorageLocation => EC2_StorageLocation
 
 The location in Amazon S3 for the output logs.
 

@@ -1,21 +1,72 @@
 
 package Paws::EC2::RevokeSecurityGroupEgress;
-  use Moose;
-  has CidrIp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cidrIp' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has FromPort => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'fromPort' );
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'groupId' , required => 1);
-  has IpPermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IpPermission]', traits => ['NameInRequest'], request_name => 'ipPermissions' );
-  has IpProtocol => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ipProtocol' );
-  has SourceSecurityGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceSecurityGroupName' );
-  has SourceSecurityGroupOwnerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceSecurityGroupOwnerId' );
-  has ToPort => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'toPort' );
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::EC2::Types qw/EC2_IpPermission/;
+  has CidrIp => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has FromPort => (is => 'ro', isa => Int, predicate => 1);
+  has GroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IpPermissions => (is => 'ro', isa => ArrayRef[EC2_IpPermission], predicate => 1);
+  has IpProtocol => (is => 'ro', isa => Str, predicate => 1);
+  has SourceSecurityGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has SourceSecurityGroupOwnerId => (is => 'ro', isa => Str, predicate => 1);
+  has ToPort => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupEgress');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RevokeSecurityGroupEgress');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'IpPermissions' => {
+                                    'class' => 'Paws::EC2::IpPermission',
+                                    'type' => 'ArrayRef[EC2_IpPermission]'
+                                  },
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'IpProtocol' => {
+                                 'type' => 'Str'
+                               },
+               'SourceSecurityGroupOwnerId' => {
+                                                 'type' => 'Str'
+                                               },
+               'ToPort' => {
+                             'type' => 'Int'
+                           },
+               'FromPort' => {
+                               'type' => 'Int'
+                             },
+               'SourceSecurityGroupName' => {
+                                              'type' => 'Str'
+                                            },
+               'CidrIp' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'IpPermissions' => 'ipPermissions',
+                       'GroupId' => 'groupId',
+                       'IpProtocol' => 'ipProtocol',
+                       'SourceSecurityGroupOwnerId' => 'sourceSecurityGroupOwnerId',
+                       'ToPort' => 'toPort',
+                       'FromPort' => 'fromPort',
+                       'SourceSecurityGroupName' => 'sourceSecurityGroupName',
+                       'CidrIp' => 'cidrIp'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -120,7 +171,7 @@ The ID of the security group.
 
 
 
-=head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
+=head2 IpPermissions => ArrayRef[EC2_IpPermission]
 
 The sets of IP permissions. You can't specify a destination security
 group and a CIDR IP address range in the same set of permissions.

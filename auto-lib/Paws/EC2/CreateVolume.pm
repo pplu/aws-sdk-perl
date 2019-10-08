@@ -1,21 +1,66 @@
 
 package Paws::EC2::CreateVolume;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
-  has Iops => (is => 'ro', isa => 'Int');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Int');
-  has SnapshotId => (is => 'ro', isa => 'Str');
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
-  has VolumeType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TagSpecification/;
+  has AvailabilityZone => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Encrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has Iops => (is => 'ro', isa => Int, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has Size => (is => 'ro', isa => Int, predicate => 1);
+  has SnapshotId => (is => 'ro', isa => Str, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
+  has VolumeType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVolume');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::Volume');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateVolume');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::Volume');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'TagSpecifications' => {
+                                        'class' => 'Paws::EC2::TagSpecification',
+                                        'type' => 'ArrayRef[EC2_TagSpecification]'
+                                      },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'TagSpecifications' => 'TagSpecification',
+                       'Encrypted' => 'encrypted'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -195,7 +240,7 @@ At least one of Size or SnapshotId are required.
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 The tags to apply to the volume during creation.
 

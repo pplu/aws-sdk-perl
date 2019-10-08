@@ -1,12 +1,57 @@
 package Paws::EC2::IpPermission;
-  use Moose;
-  has FromPort => (is => 'ro', isa => 'Int', request_name => 'fromPort', traits => ['NameInRequest']);
-  has IpProtocol => (is => 'ro', isa => 'Str', request_name => 'ipProtocol', traits => ['NameInRequest']);
-  has IpRanges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IpRange]', request_name => 'ipRanges', traits => ['NameInRequest']);
-  has Ipv6Ranges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Ipv6Range]', request_name => 'ipv6Ranges', traits => ['NameInRequest']);
-  has PrefixListIds => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrefixListId]', request_name => 'prefixListIds', traits => ['NameInRequest']);
-  has ToPort => (is => 'ro', isa => 'Int', request_name => 'toPort', traits => ['NameInRequest']);
-  has UserIdGroupPairs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UserIdGroupPair]', request_name => 'groups', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_UserIdGroupPair EC2_Ipv6Range EC2_PrefixListId EC2_IpRange/;
+  has FromPort => (is => 'ro', isa => Int);
+  has IpProtocol => (is => 'ro', isa => Str);
+  has IpRanges => (is => 'ro', isa => ArrayRef[EC2_IpRange]);
+  has Ipv6Ranges => (is => 'ro', isa => ArrayRef[EC2_Ipv6Range]);
+  has PrefixListIds => (is => 'ro', isa => ArrayRef[EC2_PrefixListId]);
+  has ToPort => (is => 'ro', isa => Int);
+  has UserIdGroupPairs => (is => 'ro', isa => ArrayRef[EC2_UserIdGroupPair]);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ToPort' => {
+                             'type' => 'Int'
+                           },
+               'PrefixListIds' => {
+                                    'class' => 'Paws::EC2::PrefixListId',
+                                    'type' => 'ArrayRef[EC2_PrefixListId]'
+                                  },
+               'IpRanges' => {
+                               'class' => 'Paws::EC2::IpRange',
+                               'type' => 'ArrayRef[EC2_IpRange]'
+                             },
+               'FromPort' => {
+                               'type' => 'Int'
+                             },
+               'Ipv6Ranges' => {
+                                 'class' => 'Paws::EC2::Ipv6Range',
+                                 'type' => 'ArrayRef[EC2_Ipv6Range]'
+                               },
+               'IpProtocol' => {
+                                 'type' => 'Str'
+                               },
+               'UserIdGroupPairs' => {
+                                       'class' => 'Paws::EC2::UserIdGroupPair',
+                                       'type' => 'ArrayRef[EC2_UserIdGroupPair]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ToPort' => 'toPort',
+                       'PrefixListIds' => 'prefixListIds',
+                       'IpRanges' => 'ipRanges',
+                       'FromPort' => 'fromPort',
+                       'Ipv6Ranges' => 'ipv6Ranges',
+                       'IpProtocol' => 'ipProtocol',
+                       'UserIdGroupPairs' => 'groups'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,17 +110,17 @@ is optional; if you omit the port range, traffic for all types and
 codes is allowed.
 
 
-=head2 IpRanges => ArrayRef[L<Paws::EC2::IpRange>]
+=head2 IpRanges => ArrayRef[EC2_IpRange]
 
   The IPv4 ranges.
 
 
-=head2 Ipv6Ranges => ArrayRef[L<Paws::EC2::Ipv6Range>]
+=head2 Ipv6Ranges => ArrayRef[EC2_Ipv6Range]
 
   [VPC only] The IPv6 ranges.
 
 
-=head2 PrefixListIds => ArrayRef[L<Paws::EC2::PrefixListId>]
+=head2 PrefixListIds => ArrayRef[EC2_PrefixListId]
 
   [VPC only] The prefix list IDs for an AWS service. With outbound rules,
 this is the AWS service to access through a VPC endpoint from instances
@@ -89,7 +134,7 @@ code. A value of C<-1> indicates all ICMP/ICMPv6 codes. If you specify
 all ICMP/ICMPv6 types, you must specify all codes.
 
 
-=head2 UserIdGroupPairs => ArrayRef[L<Paws::EC2::UserIdGroupPair>]
+=head2 UserIdGroupPairs => ArrayRef[EC2_UserIdGroupPair]
 
   The security group and AWS account ID pairs.
 

@@ -1,9 +1,31 @@
 
 package Paws::EC2::DescribeVpnGatewaysResult;
-  use Moose;
-  has VpnGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnGateway]', request_name => 'vpnGatewaySet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_VpnGateway/;
+  has VpnGateways => (is => 'ro', isa => ArrayRef[EC2_VpnGateway]);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VpnGateways' => {
+                                  'class' => 'Paws::EC2::VpnGateway',
+                                  'type' => 'ArrayRef[EC2_VpnGateway]'
+                                }
+             },
+  'NameInRequest' => {
+                       'VpnGateways' => 'vpnGatewaySet'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::DescribeVpnGatewaysResult
 =head1 ATTRIBUTES
 
 
-=head2 VpnGateways => ArrayRef[L<Paws::EC2::VpnGateway>]
+=head2 VpnGateways => ArrayRef[EC2_VpnGateway]
 
 Information about one or more virtual private gateways.
 

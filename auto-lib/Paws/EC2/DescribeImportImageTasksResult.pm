@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeImportImageTasksResult;
-  use Moose;
-  has ImportImageTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportImageTask]', request_name => 'importImageTaskSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ImportImageTask/;
+  has ImportImageTasks => (is => 'ro', isa => ArrayRef[EC2_ImportImageTask]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ImportImageTasks' => {
+                                       'class' => 'Paws::EC2::ImportImageTask',
+                                       'type' => 'ArrayRef[EC2_ImportImageTask]'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ImportImageTasks' => 'importImageTaskSet'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeImportImageTasksResult
 =head1 ATTRIBUTES
 
 
-=head2 ImportImageTasks => ArrayRef[L<Paws::EC2::ImportImageTask>]
+=head2 ImportImageTasks => ArrayRef[EC2_ImportImageTask]
 
 A list of zero or more import image tasks that are currently active or
 were completed or canceled in the previous 7 days.

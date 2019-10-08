@@ -1,10 +1,36 @@
 package Paws::EC2::OnDemandOptionsRequest;
-  use Moose;
-  has AllocationStrategy => (is => 'ro', isa => 'Str');
-  has MaxTotalPrice => (is => 'ro', isa => 'Str');
-  has MinTargetCapacity => (is => 'ro', isa => 'Int');
-  has SingleAvailabilityZone => (is => 'ro', isa => 'Bool');
-  has SingleInstanceType => (is => 'ro', isa => 'Bool');
+  use Moo;  use Types::Standard qw/Str Int Bool/;
+  use Paws::EC2::Types qw//;
+  has AllocationStrategy => (is => 'ro', isa => Str);
+  has MaxTotalPrice => (is => 'ro', isa => Str);
+  has MinTargetCapacity => (is => 'ro', isa => Int);
+  has SingleAvailabilityZone => (is => 'ro', isa => Bool);
+  has SingleInstanceType => (is => 'ro', isa => Bool);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxTotalPrice' => {
+                                    'type' => 'Str'
+                                  },
+               'SingleAvailabilityZone' => {
+                                             'type' => 'Bool'
+                                           },
+               'MinTargetCapacity' => {
+                                        'type' => 'Int'
+                                      },
+               'AllocationStrategy' => {
+                                         'type' => 'Str'
+                                       },
+               'SingleInstanceType' => {
+                                         'type' => 'Bool'
+                                       }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

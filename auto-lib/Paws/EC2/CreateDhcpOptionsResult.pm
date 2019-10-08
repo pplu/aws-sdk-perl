@@ -1,9 +1,31 @@
 
 package Paws::EC2::CreateDhcpOptionsResult;
-  use Moose;
-  has DhcpOptions => (is => 'ro', isa => 'Paws::EC2::DhcpOptions', request_name => 'dhcpOptions', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_DhcpOptions/;
+  has DhcpOptions => (is => 'ro', isa => EC2_DhcpOptions);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DhcpOptions' => {
+                                  'class' => 'Paws::EC2::DhcpOptions',
+                                  'type' => 'EC2_DhcpOptions'
+                                }
+             },
+  'NameInRequest' => {
+                       'DhcpOptions' => 'dhcpOptions'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::CreateDhcpOptionsResult
 =head1 ATTRIBUTES
 
 
-=head2 DhcpOptions => L<Paws::EC2::DhcpOptions>
+=head2 DhcpOptions => EC2_DhcpOptions
 
 A set of DHCP options.
 

@@ -1,10 +1,46 @@
 package Paws::EC2::VolumeStatusItem;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeStatusAction]', request_name => 'actionsSet', traits => ['NameInRequest']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeStatusEvent]', request_name => 'eventsSet', traits => ['NameInRequest']);
-  has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest']);
-  has VolumeStatus => (is => 'ro', isa => 'Paws::EC2::VolumeStatusInfo', request_name => 'volumeStatus', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Str/;
+  use Paws::EC2::Types qw/EC2_VolumeStatusInfo EC2_VolumeStatusAction EC2_VolumeStatusEvent/;
+  has Actions => (is => 'ro', isa => ArrayRef[EC2_VolumeStatusAction]);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has Events => (is => 'ro', isa => ArrayRef[EC2_VolumeStatusEvent]);
+  has VolumeId => (is => 'ro', isa => Str);
+  has VolumeStatus => (is => 'ro', isa => EC2_VolumeStatusInfo);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeStatus' => {
+                                   'class' => 'Paws::EC2::VolumeStatusInfo',
+                                   'type' => 'EC2_VolumeStatusInfo'
+                                 },
+               'Actions' => {
+                              'class' => 'Paws::EC2::VolumeStatusAction',
+                              'type' => 'ArrayRef[EC2_VolumeStatusAction]'
+                            },
+               'Events' => {
+                             'class' => 'Paws::EC2::VolumeStatusEvent',
+                             'type' => 'ArrayRef[EC2_VolumeStatusEvent]'
+                           },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'VolumeStatus' => 'volumeStatus',
+                       'Actions' => 'actionsSet',
+                       'Events' => 'eventsSet',
+                       'VolumeId' => 'volumeId',
+                       'AvailabilityZone' => 'availabilityZone'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +76,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Actions => ArrayRef[L<Paws::EC2::VolumeStatusAction>]
+=head2 Actions => ArrayRef[EC2_VolumeStatusAction]
 
   The details of the operation.
 
@@ -50,7 +86,7 @@ This class has no description
   The Availability Zone of the volume.
 
 
-=head2 Events => ArrayRef[L<Paws::EC2::VolumeStatusEvent>]
+=head2 Events => ArrayRef[EC2_VolumeStatusEvent]
 
   A list of events associated with the volume.
 
@@ -60,7 +96,7 @@ This class has no description
   The volume ID.
 
 
-=head2 VolumeStatus => L<Paws::EC2::VolumeStatusInfo>
+=head2 VolumeStatus => EC2_VolumeStatusInfo
 
   The volume status.
 

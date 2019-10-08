@@ -1,13 +1,60 @@
 package Paws::EC2::NetworkAclEntry;
-  use Moose;
-  has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
-  has Egress => (is => 'ro', isa => 'Bool', request_name => 'egress', traits => ['NameInRequest']);
-  has IcmpTypeCode => (is => 'ro', isa => 'Paws::EC2::IcmpTypeCode', request_name => 'icmpTypeCode', traits => ['NameInRequest']);
-  has Ipv6CidrBlock => (is => 'ro', isa => 'Str', request_name => 'ipv6CidrBlock', traits => ['NameInRequest']);
-  has PortRange => (is => 'ro', isa => 'Paws::EC2::PortRange', request_name => 'portRange', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
-  has RuleAction => (is => 'ro', isa => 'Str', request_name => 'ruleAction', traits => ['NameInRequest']);
-  has RuleNumber => (is => 'ro', isa => 'Int', request_name => 'ruleNumber', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Bool Int/;
+  use Paws::EC2::Types qw/EC2_PortRange EC2_IcmpTypeCode/;
+  has CidrBlock => (is => 'ro', isa => Str);
+  has Egress => (is => 'ro', isa => Bool);
+  has IcmpTypeCode => (is => 'ro', isa => EC2_IcmpTypeCode);
+  has Ipv6CidrBlock => (is => 'ro', isa => Str);
+  has PortRange => (is => 'ro', isa => EC2_PortRange);
+  has Protocol => (is => 'ro', isa => Str);
+  has RuleAction => (is => 'ro', isa => Str);
+  has RuleNumber => (is => 'ro', isa => Int);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RuleNumber' => {
+                                 'type' => 'Int'
+                               },
+               'Ipv6CidrBlock' => {
+                                    'type' => 'Str'
+                                  },
+               'IcmpTypeCode' => {
+                                   'class' => 'Paws::EC2::IcmpTypeCode',
+                                   'type' => 'EC2_IcmpTypeCode'
+                                 },
+               'CidrBlock' => {
+                                'type' => 'Str'
+                              },
+               'RuleAction' => {
+                                 'type' => 'Str'
+                               },
+               'PortRange' => {
+                                'class' => 'Paws::EC2::PortRange',
+                                'type' => 'EC2_PortRange'
+                              },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'Egress' => {
+                             'type' => 'Bool'
+                           }
+             },
+  'NameInRequest' => {
+                       'RuleNumber' => 'ruleNumber',
+                       'Ipv6CidrBlock' => 'ipv6CidrBlock',
+                       'IcmpTypeCode' => 'icmpTypeCode',
+                       'CidrBlock' => 'cidrBlock',
+                       'RuleAction' => 'ruleAction',
+                       'PortRange' => 'portRange',
+                       'Protocol' => 'protocol',
+                       'Egress' => 'egress'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +101,7 @@ This class has no description
 leaving the subnet).
 
 
-=head2 IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>
+=head2 IcmpTypeCode => EC2_IcmpTypeCode
 
   ICMP protocol: The ICMP type and code.
 
@@ -64,7 +111,7 @@ leaving the subnet).
   The IPv6 network range to allow or deny, in CIDR notation.
 
 
-=head2 PortRange => L<Paws::EC2::PortRange>
+=head2 PortRange => EC2_PortRange
 
   TCP or UDP protocols: The range of ports the rule applies to.
 

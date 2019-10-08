@@ -1,9 +1,40 @@
 package Paws::EC2::DhcpOptions;
-  use Moose;
-  has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DhcpConfiguration]', request_name => 'dhcpConfigurationSet', traits => ['NameInRequest']);
-  has DhcpOptionsId => (is => 'ro', isa => 'Str', request_name => 'dhcpOptionsId', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Str/;
+  use Paws::EC2::Types qw/EC2_Tag EC2_DhcpConfiguration/;
+  has DhcpConfigurations => (is => 'ro', isa => ArrayRef[EC2_DhcpConfiguration]);
+  has DhcpOptionsId => (is => 'ro', isa => Str);
+  has OwnerId => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DhcpConfigurations' => {
+                                         'class' => 'Paws::EC2::DhcpConfiguration',
+                                         'type' => 'ArrayRef[EC2_DhcpConfiguration]'
+                                       },
+               'DhcpOptionsId' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'DhcpConfigurations' => 'dhcpConfigurationSet',
+                       'DhcpOptionsId' => 'dhcpOptionsId',
+                       'Tags' => 'tagSet',
+                       'OwnerId' => 'ownerId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +70,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 DhcpConfigurations => ArrayRef[L<Paws::EC2::DhcpConfiguration>]
+=head2 DhcpConfigurations => ArrayRef[EC2_DhcpConfiguration]
 
   One or more DHCP options in the set.
 
@@ -54,7 +85,7 @@ This class has no description
   The ID of the AWS account that owns the DHCP options set.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the DHCP options set.
 

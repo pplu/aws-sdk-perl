@@ -1,10 +1,35 @@
 
 package Paws::EC2::GetConsoleScreenshotResult;
-  use Moose;
-  has ImageData => (is => 'ro', isa => 'Str', request_name => 'imageData', traits => ['NameInRequest',]);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has ImageData => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ImageData' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'InstanceId' => 'instanceId',
+                       'ImageData' => 'imageData'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

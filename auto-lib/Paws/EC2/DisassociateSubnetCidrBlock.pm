@@ -1,13 +1,31 @@
 
 package Paws::EC2::DisassociateSubnetCidrBlock;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associationId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has AssociationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateSubnetCidrBlock');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DisassociateSubnetCidrBlockResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisassociateSubnetCidrBlock');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DisassociateSubnetCidrBlockResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'AssociationId' => 'associationId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

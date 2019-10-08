@@ -1,20 +1,63 @@
 
 package Paws::EC2::CopySnapshot;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DestinationRegion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationRegion' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
-  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kmsKeyId' );
-  has PresignedUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'presignedUrl' );
-  has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
-  has SourceSnapshotId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationRegion => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Encrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has PresignedUrl => (is => 'ro', isa => Str, predicate => 1);
+  has SourceRegion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceSnapshotId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopySnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CopySnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopySnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CopySnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'PresignedUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'SourceSnapshotId' => {
+                                       'type' => 'Str'
+                                     },
+               'DestinationRegion' => {
+                                        'type' => 'Str'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'SourceRegion' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'PresignedUrl' => 'presignedUrl',
+                       'DestinationRegion' => 'destinationRegion',
+                       'KmsKeyId' => 'kmsKeyId',
+                       'Encrypted' => 'encrypted'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

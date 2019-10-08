@@ -1,13 +1,58 @@
 package Paws::EC2::TransitGatewayOptions;
-  use Moose;
-  has AmazonSideAsn => (is => 'ro', isa => 'Int', request_name => 'amazonSideAsn', traits => ['NameInRequest']);
-  has AssociationDefaultRouteTableId => (is => 'ro', isa => 'Str', request_name => 'associationDefaultRouteTableId', traits => ['NameInRequest']);
-  has AutoAcceptSharedAttachments => (is => 'ro', isa => 'Str', request_name => 'autoAcceptSharedAttachments', traits => ['NameInRequest']);
-  has DefaultRouteTableAssociation => (is => 'ro', isa => 'Str', request_name => 'defaultRouteTableAssociation', traits => ['NameInRequest']);
-  has DefaultRouteTablePropagation => (is => 'ro', isa => 'Str', request_name => 'defaultRouteTablePropagation', traits => ['NameInRequest']);
-  has DnsSupport => (is => 'ro', isa => 'Str', request_name => 'dnsSupport', traits => ['NameInRequest']);
-  has PropagationDefaultRouteTableId => (is => 'ro', isa => 'Str', request_name => 'propagationDefaultRouteTableId', traits => ['NameInRequest']);
-  has VpnEcmpSupport => (is => 'ro', isa => 'Str', request_name => 'vpnEcmpSupport', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has AmazonSideAsn => (is => 'ro', isa => Int);
+  has AssociationDefaultRouteTableId => (is => 'ro', isa => Str);
+  has AutoAcceptSharedAttachments => (is => 'ro', isa => Str);
+  has DefaultRouteTableAssociation => (is => 'ro', isa => Str);
+  has DefaultRouteTablePropagation => (is => 'ro', isa => Str);
+  has DnsSupport => (is => 'ro', isa => Str);
+  has PropagationDefaultRouteTableId => (is => 'ro', isa => Str);
+  has VpnEcmpSupport => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DnsSupport' => {
+                                 'type' => 'Str'
+                               },
+               'AmazonSideAsn' => {
+                                    'type' => 'Int'
+                                  },
+               'AutoAcceptSharedAttachments' => {
+                                                  'type' => 'Str'
+                                                },
+               'VpnEcmpSupport' => {
+                                     'type' => 'Str'
+                                   },
+               'PropagationDefaultRouteTableId' => {
+                                                     'type' => 'Str'
+                                                   },
+               'AssociationDefaultRouteTableId' => {
+                                                     'type' => 'Str'
+                                                   },
+               'DefaultRouteTableAssociation' => {
+                                                   'type' => 'Str'
+                                                 },
+               'DefaultRouteTablePropagation' => {
+                                                   'type' => 'Str'
+                                                 }
+             },
+  'NameInRequest' => {
+                       'DnsSupport' => 'dnsSupport',
+                       'AmazonSideAsn' => 'amazonSideAsn',
+                       'AutoAcceptSharedAttachments' => 'autoAcceptSharedAttachments',
+                       'VpnEcmpSupport' => 'vpnEcmpSupport',
+                       'PropagationDefaultRouteTableId' => 'propagationDefaultRouteTableId',
+                       'AssociationDefaultRouteTableId' => 'associationDefaultRouteTableId',
+                       'DefaultRouteTableAssociation' => 'defaultRouteTableAssociation',
+                       'DefaultRouteTablePropagation' => 'defaultRouteTablePropagation'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

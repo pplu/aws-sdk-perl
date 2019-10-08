@@ -1,10 +1,43 @@
 package Paws::EC2::VgwTelemetry;
-  use Moose;
-  has AcceptedRouteCount => (is => 'ro', isa => 'Int', request_name => 'acceptedRouteCount', traits => ['NameInRequest']);
-  has LastStatusChange => (is => 'ro', isa => 'Str', request_name => 'lastStatusChange', traits => ['NameInRequest']);
-  has OutsideIpAddress => (is => 'ro', isa => 'Str', request_name => 'outsideIpAddress', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has AcceptedRouteCount => (is => 'ro', isa => Int);
+  has LastStatusChange => (is => 'ro', isa => Str);
+  has OutsideIpAddress => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastStatusChange' => {
+                                       'type' => 'Str'
+                                     },
+               'OutsideIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'AcceptedRouteCount' => {
+                                         'type' => 'Int'
+                                       }
+             },
+  'NameInRequest' => {
+                       'LastStatusChange' => 'lastStatusChange',
+                       'OutsideIpAddress' => 'outsideIpAddress',
+                       'Status' => 'status',
+                       'StatusMessage' => 'statusMessage',
+                       'AcceptedRouteCount' => 'acceptedRouteCount'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

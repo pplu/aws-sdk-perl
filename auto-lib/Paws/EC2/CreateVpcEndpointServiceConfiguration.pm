@@ -1,16 +1,43 @@
 
 package Paws::EC2::CreateVpcEndpointServiceConfiguration;
-  use Moose;
-  has AcceptanceRequired => (is => 'ro', isa => 'Bool');
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has NetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'NetworkLoadBalancerArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw//;
+  has AcceptanceRequired => (is => 'ro', isa => Bool, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has NetworkLoadBalancerArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpcEndpointServiceConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateVpcEndpointServiceConfigurationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateVpcEndpointServiceConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateVpcEndpointServiceConfigurationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'NetworkLoadBalancerArns' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'AcceptanceRequired' => {
+                                         'type' => 'Bool'
+                                       }
+             },
+  'NameInRequest' => {
+                       'NetworkLoadBalancerArns' => 'NetworkLoadBalancerArn'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

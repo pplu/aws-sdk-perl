@@ -1,9 +1,33 @@
 package Paws::EC2::SnapshotDiskContainer;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has Format => (is => 'ro', isa => 'Str');
-  has Url => (is => 'ro', isa => 'Str');
-  has UserBucket => (is => 'ro', isa => 'Paws::EC2::UserBucket');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_UserBucket/;
+  has Description => (is => 'ro', isa => Str);
+  has Format => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+  has UserBucket => (is => 'ro', isa => EC2_UserBucket);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserBucket' => {
+                                 'class' => 'Paws::EC2::UserBucket',
+                                 'type' => 'EC2_UserBucket'
+                               },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Format' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +81,7 @@ Valid values: C<VHD> | C<VMDK>
 be a https URL (https://..) or an Amazon S3 URL (s3://..).
 
 
-=head2 UserBucket => L<Paws::EC2::UserBucket>
+=head2 UserBucket => EC2_UserBucket
 
   The S3 bucket for the disk image.
 

@@ -1,28 +1,116 @@
 
 package Paws::EC2::ModifyInstanceAttribute;
-  use Moose;
-  has Attribute => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attribute' );
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMappingSpecification]', traits => ['NameInRequest'], request_name => 'blockDeviceMapping' );
-  has DisableApiTermination => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', traits => ['NameInRequest'], request_name => 'disableApiTermination' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has EbsOptimized => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', traits => ['NameInRequest'], request_name => 'ebsOptimized' );
-  has EnaSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', traits => ['NameInRequest'], request_name => 'enaSupport' );
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'GroupId' );
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
-  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Paws::EC2::AttributeValue', traits => ['NameInRequest'], request_name => 'instanceInitiatedShutdownBehavior' );
-  has InstanceType => (is => 'ro', isa => 'Paws::EC2::AttributeValue', traits => ['NameInRequest'], request_name => 'instanceType' );
-  has Kernel => (is => 'ro', isa => 'Paws::EC2::AttributeValue', traits => ['NameInRequest'], request_name => 'kernel' );
-  has Ramdisk => (is => 'ro', isa => 'Paws::EC2::AttributeValue', traits => ['NameInRequest'], request_name => 'ramdisk' );
-  has SourceDestCheck => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue');
-  has SriovNetSupport => (is => 'ro', isa => 'Paws::EC2::AttributeValue', traits => ['NameInRequest'], request_name => 'sriovNetSupport' );
-  has UserData => (is => 'ro', isa => 'Paws::EC2::BlobAttributeValue', traits => ['NameInRequest'], request_name => 'userData' );
-  has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool Undef/;
+  use Paws::EC2::Types qw/EC2_BlobAttributeValue EC2_InstanceBlockDeviceMappingSpecification EC2_AttributeValue EC2_AttributeBooleanValue/;
+  has Attribute => (is => 'ro', isa => Str, predicate => 1);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[EC2_InstanceBlockDeviceMappingSpecification], predicate => 1);
+  has DisableApiTermination => (is => 'ro', isa => EC2_AttributeBooleanValue, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has EbsOptimized => (is => 'ro', isa => EC2_AttributeBooleanValue, predicate => 1);
+  has EnaSupport => (is => 'ro', isa => EC2_AttributeBooleanValue, predicate => 1);
+  has Groups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => EC2_AttributeValue, predicate => 1);
+  has InstanceType => (is => 'ro', isa => EC2_AttributeValue, predicate => 1);
+  has Kernel => (is => 'ro', isa => EC2_AttributeValue, predicate => 1);
+  has Ramdisk => (is => 'ro', isa => EC2_AttributeValue, predicate => 1);
+  has SourceDestCheck => (is => 'ro', isa => EC2_AttributeBooleanValue, predicate => 1);
+  has SriovNetSupport => (is => 'ro', isa => EC2_AttributeValue, predicate => 1);
+  has UserData => (is => 'ro', isa => EC2_BlobAttributeValue, predicate => 1);
+  has Value => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyInstanceAttribute');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyInstanceAttribute');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groups' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Kernel' => {
+                             'class' => 'Paws::EC2::AttributeValue',
+                             'type' => 'EC2_AttributeValue'
+                           },
+               'SourceDestCheck' => {
+                                      'class' => 'Paws::EC2::AttributeBooleanValue',
+                                      'type' => 'EC2_AttributeBooleanValue'
+                                    },
+               'DisableApiTermination' => {
+                                            'class' => 'Paws::EC2::AttributeBooleanValue',
+                                            'type' => 'EC2_AttributeBooleanValue'
+                                          },
+               'SriovNetSupport' => {
+                                      'class' => 'Paws::EC2::AttributeValue',
+                                      'type' => 'EC2_AttributeValue'
+                                    },
+               'EnaSupport' => {
+                                 'class' => 'Paws::EC2::AttributeBooleanValue',
+                                 'type' => 'EC2_AttributeBooleanValue'
+                               },
+               'InstanceInitiatedShutdownBehavior' => {
+                                                        'class' => 'Paws::EC2::AttributeValue',
+                                                        'type' => 'EC2_AttributeValue'
+                                                      },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'EbsOptimized' => {
+                                   'class' => 'Paws::EC2::AttributeBooleanValue',
+                                   'type' => 'EC2_AttributeBooleanValue'
+                                 },
+               'InstanceType' => {
+                                   'class' => 'Paws::EC2::AttributeValue',
+                                   'type' => 'EC2_AttributeValue'
+                                 },
+               'UserData' => {
+                               'class' => 'Paws::EC2::BlobAttributeValue',
+                               'type' => 'EC2_BlobAttributeValue'
+                             },
+               'Attribute' => {
+                                'type' => 'Str'
+                              },
+               'Ramdisk' => {
+                              'class' => 'Paws::EC2::AttributeValue',
+                              'type' => 'EC2_AttributeValue'
+                            },
+               'BlockDeviceMappings' => {
+                                          'class' => 'Paws::EC2::InstanceBlockDeviceMappingSpecification',
+                                          'type' => 'ArrayRef[EC2_InstanceBlockDeviceMappingSpecification]'
+                                        }
+             },
+  'NameInRequest' => {
+                       'Groups' => 'GroupId',
+                       'DryRun' => 'dryRun',
+                       'Value' => 'value',
+                       'InstanceId' => 'instanceId',
+                       'InstanceType' => 'instanceType',
+                       'EbsOptimized' => 'ebsOptimized',
+                       'Kernel' => 'kernel',
+                       'UserData' => 'userData',
+                       'DisableApiTermination' => 'disableApiTermination',
+                       'SriovNetSupport' => 'sriovNetSupport',
+                       'Ramdisk' => 'ramdisk',
+                       'Attribute' => 'attribute',
+                       'BlockDeviceMappings' => 'blockDeviceMapping',
+                       'EnaSupport' => 'enaSupport',
+                       'InstanceInitiatedShutdownBehavior' => 'instanceInitiatedShutdownBehavior'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +164,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Value => 1,                                                   # OPTIONAL
       },    # OPTIONAL
       SriovNetSupport => { Value => 'MyString', },    # OPTIONAL
-      UserData        => {
+      UserData => {
         Value => 'BlobBlob',                          # OPTIONAL
       },    # OPTIONAL
       Value => 'MyString',    # OPTIONAL
@@ -94,7 +182,7 @@ The name of the attribute.
 
 Valid values are: C<"instanceType">, C<"kernel">, C<"ramdisk">, C<"userData">, C<"disableApiTermination">, C<"instanceInitiatedShutdownBehavior">, C<"rootDeviceName">, C<"blockDeviceMapping">, C<"productCodes">, C<"sourceDestCheck">, C<"groupSet">, C<"ebsOptimized">, C<"sriovNetSupport">, C<"enaSupport">
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>]
+=head2 BlockDeviceMappings => ArrayRef[EC2_InstanceBlockDeviceMappingSpecification]
 
 Modifies the C<DeleteOnTermination> attribute for volumes that are
 currently attached. The volume must be owned by the caller. If no value
@@ -109,7 +197,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
-=head2 DisableApiTermination => L<Paws::EC2::AttributeBooleanValue>
+=head2 DisableApiTermination => EC2_AttributeBooleanValue
 
 If the value is C<true>, you can't terminate the instance using the
 Amazon EC2 console, CLI, or API; otherwise, you can. You cannot use
@@ -126,7 +214,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 EbsOptimized => L<Paws::EC2::AttributeBooleanValue>
+=head2 EbsOptimized => EC2_AttributeBooleanValue
 
 Specifies whether the instance is optimized for Amazon EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
@@ -136,7 +224,7 @@ usage charges apply when using an EBS Optimized instance.
 
 
 
-=head2 EnaSupport => L<Paws::EC2::AttributeBooleanValue>
+=head2 EnaSupport => EC2_AttributeBooleanValue
 
 Set to C<true> to enable enhanced networking with ENA for the instance.
 
@@ -160,7 +248,7 @@ The ID of the instance.
 
 
 
-=head2 InstanceInitiatedShutdownBehavior => L<Paws::EC2::AttributeValue>
+=head2 InstanceInitiatedShutdownBehavior => EC2_AttributeValue
 
 Specifies whether an instance stops or terminates when you initiate
 shutdown from the instance (using the operating system command for
@@ -168,7 +256,7 @@ system shutdown).
 
 
 
-=head2 InstanceType => L<Paws::EC2::AttributeValue>
+=head2 InstanceType => EC2_AttributeValue
 
 Changes the instance type to the specified value. For more information,
 see Instance Types
@@ -178,7 +266,7 @@ C<InvalidInstanceAttributeValue>.
 
 
 
-=head2 Kernel => L<Paws::EC2::AttributeValue>
+=head2 Kernel => EC2_AttributeValue
 
 Changes the instance's kernel to the specified value. We recommend that
 you use PV-GRUB instead of kernels and RAM disks. For more information,
@@ -187,7 +275,7 @@ see PV-GRUB
 
 
 
-=head2 Ramdisk => L<Paws::EC2::AttributeValue>
+=head2 Ramdisk => EC2_AttributeValue
 
 Changes the instance's RAM disk to the specified value. We recommend
 that you use PV-GRUB instead of kernels and RAM disks. For more
@@ -196,7 +284,7 @@ information, see PV-GRUB
 
 
 
-=head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
+=head2 SourceDestCheck => EC2_AttributeBooleanValue
 
 Specifies whether source/destination checking is enabled. A value of
 C<true> means that checking is enabled, and C<false> means that
@@ -205,7 +293,7 @@ perform NAT.
 
 
 
-=head2 SriovNetSupport => L<Paws::EC2::AttributeValue>
+=head2 SriovNetSupport => EC2_AttributeValue
 
 Set to C<simple> to enable enhanced networking with the Intel 82599
 Virtual Function interface for the instance.
@@ -218,7 +306,7 @@ with a PV instance can make it unreachable.
 
 
 
-=head2 UserData => L<Paws::EC2::BlobAttributeValue>
+=head2 UserData => EC2_BlobAttributeValue
 
 Changes the instance's user data to the specified value. If you are
 using an AWS SDK or command line tool, base64-encoding is performed for

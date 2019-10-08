@@ -1,16 +1,75 @@
 package Paws::EC2::ImportInstanceLaunchSpecification;
-  use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Str', request_name => 'additionalInfo', traits => ['NameInRequest']);
-  has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
-  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'GroupId', traits => ['NameInRequest']);
-  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'GroupName', traits => ['NameInRequest']);
-  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInitiatedShutdownBehavior', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has Monitoring => (is => 'ro', isa => 'Bool', request_name => 'monitoring', traits => ['NameInRequest']);
-  has Placement => (is => 'ro', isa => 'Paws::EC2::Placement', request_name => 'placement', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
-  has UserData => (is => 'ro', isa => 'Paws::EC2::UserData', request_name => 'userData', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::EC2::Types qw/EC2_Placement EC2_UserData/;
+  has AdditionalInfo => (is => 'ro', isa => Str);
+  has Architecture => (is => 'ro', isa => Str);
+  has GroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has GroupNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has Monitoring => (is => 'ro', isa => Bool);
+  has Placement => (is => 'ro', isa => EC2_Placement);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has UserData => (is => 'ro', isa => EC2_UserData);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'UserData' => {
+                               'class' => 'Paws::EC2::UserData',
+                               'type' => 'EC2_UserData'
+                             },
+               'GroupIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'GroupNames' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'AdditionalInfo' => {
+                                     'type' => 'Str'
+                                   },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'Placement' => {
+                                'class' => 'Paws::EC2::Placement',
+                                'type' => 'EC2_Placement'
+                              },
+               'InstanceInitiatedShutdownBehavior' => {
+                                                        'type' => 'Str'
+                                                      },
+               'Monitoring' => {
+                                 'type' => 'Bool'
+                               }
+             },
+  'NameInRequest' => {
+                       'InstanceType' => 'instanceType',
+                       'UserData' => 'userData',
+                       'GroupIds' => 'GroupId',
+                       'PrivateIpAddress' => 'privateIpAddress',
+                       'GroupNames' => 'GroupName',
+                       'SubnetId' => 'subnetId',
+                       'AdditionalInfo' => 'additionalInfo',
+                       'Architecture' => 'architecture',
+                       'Placement' => 'placement',
+                       'InstanceInitiatedShutdownBehavior' => 'instanceInitiatedShutdownBehavior',
+                       'Monitoring' => 'monitoring'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +145,7 @@ in the VM Import/Export User Guide.
   Indicates whether monitoring is enabled.
 
 
-=head2 Placement => L<Paws::EC2::Placement>
+=head2 Placement => EC2_Placement
 
   The placement information for the instance.
 
@@ -102,7 +161,7 @@ subnet.
   [EC2-VPC] The ID of the subnet in which to launch the instance.
 
 
-=head2 UserData => L<Paws::EC2::UserData>
+=head2 UserData => EC2_UserData
 
   The Base64-encoded user data to make available to the instance.
 

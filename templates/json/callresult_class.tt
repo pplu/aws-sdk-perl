@@ -3,7 +3,7 @@
 [%- IF (shape) %]
 package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   use Moo;
-[%- attr_str = []; attr_types = ['Str']; attr_ind = 0; class_types = {}; params_hash = {}; -%]
+[%- attr_str = []; attr_types = ['Str']; attr_ind = 0; class_types = {}; params_hash = { 'types' => { '_request_id' => { 'type' => 'Str' } } }; -%]
 [% FOREACH param_name IN shape.members.keys.sort;
   member = c.shape(shape.members.$param_name.shape);
   attr_str.$attr_ind = "has $param_name => (is => 'ro', isa => ${member.perl_type}";

@@ -1,12 +1,53 @@
 package Paws::EC2::LaunchTemplateEbsBlockDevice;
-  use Moose;
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool', request_name => 'deleteOnTermination', traits => ['NameInRequest']);
-  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest']);
-  has Iops => (is => 'ro', isa => 'Int', request_name => 'iops', traits => ['NameInRequest']);
-  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
-  has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest']);
-  has VolumeSize => (is => 'ro', isa => 'Int', request_name => 'volumeSize', traits => ['NameInRequest']);
-  has VolumeType => (is => 'ro', isa => 'Str', request_name => 'volumeType', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool Int Str/;
+  use Paws::EC2::Types qw//;
+  has DeleteOnTermination => (is => 'ro', isa => Bool);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Iops => (is => 'ro', isa => Int);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has SnapshotId => (is => 'ro', isa => Str);
+  has VolumeSize => (is => 'ro', isa => Int);
+  has VolumeType => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeSize' => {
+                                 'type' => 'Int'
+                               },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               'DeleteOnTermination' => {
+                                          'type' => 'Bool'
+                                        },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              }
+             },
+  'NameInRequest' => {
+                       'VolumeSize' => 'volumeSize',
+                       'SnapshotId' => 'snapshotId',
+                       'DeleteOnTermination' => 'deleteOnTermination',
+                       'Iops' => 'iops',
+                       'VolumeType' => 'volumeType',
+                       'KmsKeyId' => 'kmsKeyId',
+                       'Encrypted' => 'encrypted'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,38 @@
 package Paws::EC2::HostProperties;
-  use Moose;
-  has Cores => (is => 'ro', isa => 'Int', request_name => 'cores', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has Sockets => (is => 'ro', isa => 'Int', request_name => 'sockets', traits => ['NameInRequest']);
-  has TotalVCpus => (is => 'ro', isa => 'Int', request_name => 'totalVCpus', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has Cores => (is => 'ro', isa => Int);
+  has InstanceType => (is => 'ro', isa => Str);
+  has Sockets => (is => 'ro', isa => Int);
+  has TotalVCpus => (is => 'ro', isa => Int);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Sockets' => {
+                              'type' => 'Int'
+                            },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Cores' => {
+                            'type' => 'Int'
+                          },
+               'TotalVCpus' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'Sockets' => 'sockets',
+                       'InstanceType' => 'instanceType',
+                       'Cores' => 'cores',
+                       'TotalVCpus' => 'totalVCpus'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

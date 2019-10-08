@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeFpgaImagesResult;
-  use Moose;
-  has FpgaImages => (is => 'ro', isa => 'ArrayRef[Paws::EC2::FpgaImage]', request_name => 'fpgaImageSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_FpgaImage/;
+  has FpgaImages => (is => 'ro', isa => ArrayRef[EC2_FpgaImage]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FpgaImages' => {
+                                 'class' => 'Paws::EC2::FpgaImage',
+                                 'type' => 'ArrayRef[EC2_FpgaImage]'
+                               }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'FpgaImages' => 'fpgaImageSet'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeFpgaImagesResult
 =head1 ATTRIBUTES
 
 
-=head2 FpgaImages => ArrayRef[L<Paws::EC2::FpgaImage>]
+=head2 FpgaImages => ArrayRef[EC2_FpgaImage]
 
 Information about the FPGA images.
 

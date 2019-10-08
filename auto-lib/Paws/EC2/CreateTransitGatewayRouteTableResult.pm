@@ -1,9 +1,31 @@
 
 package Paws::EC2::CreateTransitGatewayRouteTableResult;
-  use Moose;
-  has TransitGatewayRouteTable => (is => 'ro', isa => 'Paws::EC2::TransitGatewayRouteTable', request_name => 'transitGatewayRouteTable', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_TransitGatewayRouteTable/;
+  has TransitGatewayRouteTable => (is => 'ro', isa => EC2_TransitGatewayRouteTable);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TransitGatewayRouteTable' => {
+                                               'class' => 'Paws::EC2::TransitGatewayRouteTable',
+                                               'type' => 'EC2_TransitGatewayRouteTable'
+                                             }
+             },
+  'NameInRequest' => {
+                       'TransitGatewayRouteTable' => 'transitGatewayRouteTable'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::CreateTransitGatewayRouteTableResult
 =head1 ATTRIBUTES
 
 
-=head2 TransitGatewayRouteTable => L<Paws::EC2::TransitGatewayRouteTable>
+=head2 TransitGatewayRouteTable => EC2_TransitGatewayRouteTable
 
 Information about the transit gateway route table.
 

@@ -1,9 +1,38 @@
 package Paws::EC2::NatGatewayAddress;
-  use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
-  has PrivateIp => (is => 'ro', isa => 'Str', request_name => 'privateIp', traits => ['NameInRequest']);
-  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has AllocationId => (is => 'ro', isa => Str);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has PrivateIp => (is => 'ro', isa => Str);
+  has PublicIp => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PublicIp' => {
+                               'type' => 'Str'
+                             },
+               'PrivateIp' => {
+                                'type' => 'Str'
+                              },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'AllocationId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'PublicIp' => 'publicIp',
+                       'PrivateIp' => 'privateIp',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'AllocationId' => 'allocationId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

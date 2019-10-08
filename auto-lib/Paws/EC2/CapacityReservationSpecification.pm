@@ -1,7 +1,25 @@
 package Paws::EC2::CapacityReservationSpecification;
-  use Moose;
-  has CapacityReservationPreference => (is => 'ro', isa => 'Str');
-  has CapacityReservationTarget => (is => 'ro', isa => 'Paws::EC2::CapacityReservationTarget');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_CapacityReservationTarget/;
+  has CapacityReservationPreference => (is => 'ro', isa => Str);
+  has CapacityReservationTarget => (is => 'ro', isa => EC2_CapacityReservationTarget);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CapacityReservationPreference' => {
+                                                    'type' => 'Str'
+                                                  },
+               'CapacityReservationTarget' => {
+                                                'class' => 'Paws::EC2::CapacityReservationTarget',
+                                                'type' => 'EC2_CapacityReservationTarget'
+                                              }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +76,7 @@ one is available. The instance runs as an On-Demand Instance.
 
 
 
-=head2 CapacityReservationTarget => L<Paws::EC2::CapacityReservationTarget>
+=head2 CapacityReservationTarget => EC2_CapacityReservationTarget
 
   Information about the target Capacity Reservation.
 

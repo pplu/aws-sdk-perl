@@ -1,7 +1,28 @@
 package Paws::EC2::PricingDetail;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
-  has Price => (is => 'ro', isa => 'Num', request_name => 'price', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Num/;
+  use Paws::EC2::Types qw//;
+  has Count => (is => 'ro', isa => Int);
+  has Price => (is => 'ro', isa => Num);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Price' => {
+                            'type' => 'Num'
+                          },
+               'Count' => {
+                            'type' => 'Int'
+                          }
+             },
+  'NameInRequest' => {
+                       'Price' => 'price',
+                       'Count' => 'count'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

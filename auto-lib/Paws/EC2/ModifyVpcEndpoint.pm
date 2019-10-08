@@ -1,23 +1,76 @@
 
 package Paws::EC2::ModifyVpcEndpoint;
-  use Moose;
-  has AddRouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddRouteTableId' );
-  has AddSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddSecurityGroupId' );
-  has AddSubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddSubnetId' );
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has PolicyDocument => (is => 'ro', isa => 'Str');
-  has PrivateDnsEnabled => (is => 'ro', isa => 'Bool');
-  has RemoveRouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveRouteTableId' );
-  has RemoveSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveSecurityGroupId' );
-  has RemoveSubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveSubnetId' );
-  has ResetPolicy => (is => 'ro', isa => 'Bool');
-  has VpcEndpointId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::EC2::Types qw//;
+  has AddRouteTableIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has AddSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has AddSubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has PolicyDocument => (is => 'ro', isa => Str, predicate => 1);
+  has PrivateDnsEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has RemoveRouteTableIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has RemoveSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has RemoveSubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResetPolicy => (is => 'ro', isa => Bool, predicate => 1);
+  has VpcEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVpcEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyVpcEndpointResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyVpcEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyVpcEndpointResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResetPolicy' => {
+                                  'type' => 'Bool'
+                                },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'RemoveSecurityGroupIds' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'AddSubnetIds' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'AddSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'PrivateDnsEnabled' => {
+                                        'type' => 'Bool'
+                                      },
+               'RemoveSubnetIds' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'RemoveRouteTableIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'AddRouteTableIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'VpcEndpointId' => {
+                                    'type' => 'Str'
+                                  },
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'AddSecurityGroupIds' => 'AddSecurityGroupId',
+                       'RemoveSubnetIds' => 'RemoveSubnetId',
+                       'RemoveRouteTableIds' => 'RemoveRouteTableId',
+                       'AddRouteTableIds' => 'AddRouteTableId',
+                       'RemoveSecurityGroupIds' => 'RemoveSecurityGroupId',
+                       'AddSubnetIds' => 'AddSubnetId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,53 @@
 
 package Paws::EC2::ImportVolume;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Image => (is => 'ro', isa => 'Paws::EC2::DiskImageDetail', traits => ['NameInRequest'], request_name => 'image' , required => 1);
-  has Volume => (is => 'ro', isa => 'Paws::EC2::VolumeDetail', traits => ['NameInRequest'], request_name => 'volume' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_DiskImageDetail EC2_VolumeDetail/;
+  has AvailabilityZone => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Image => (is => 'ro', isa => EC2_DiskImageDetail, required => 1, predicate => 1);
+  has Volume => (is => 'ro', isa => EC2_VolumeDetail, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportVolume');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ImportVolumeResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportVolume');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ImportVolumeResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Volume' => {
+                             'class' => 'Paws::EC2::VolumeDetail',
+                             'type' => 'EC2_VolumeDetail'
+                           },
+               'Image' => {
+                            'class' => 'Paws::EC2::DiskImageDetail',
+                            'type' => 'EC2_DiskImageDetail'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'Volume' => 'volume',
+                       'Image' => 'image',
+                       'Description' => 'description',
+                       'AvailabilityZone' => 'availabilityZone'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,13 +115,13 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> Image => L<Paws::EC2::DiskImageDetail>
+=head2 B<REQUIRED> Image => EC2_DiskImageDetail
 
 The disk image.
 
 
 
-=head2 B<REQUIRED> Volume => L<Paws::EC2::VolumeDetail>
+=head2 B<REQUIRED> Volume => EC2_VolumeDetail
 
 The volume size.
 

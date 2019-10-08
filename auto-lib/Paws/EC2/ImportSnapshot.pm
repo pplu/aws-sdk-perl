@@ -1,20 +1,58 @@
 
 package Paws::EC2::ImportSnapshot;
-  use Moose;
-  has ClientData => (is => 'ro', isa => 'Paws::EC2::ClientData');
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DiskContainer => (is => 'ro', isa => 'Paws::EC2::SnapshotDiskContainer');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has RoleName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_SnapshotDiskContainer EC2_ClientData/;
+  has ClientData => (is => 'ro', isa => EC2_ClientData, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DiskContainer => (is => 'ro', isa => EC2_SnapshotDiskContainer, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Encrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has RoleName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ImportSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ImportSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'DiskContainer' => {
+                                    'class' => 'Paws::EC2::SnapshotDiskContainer',
+                                    'type' => 'EC2_SnapshotDiskContainer'
+                                  },
+               'ClientData' => {
+                                 'class' => 'Paws::EC2::ClientData',
+                                 'type' => 'EC2_ClientData'
+                               },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +109,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 ClientData => L<Paws::EC2::ClientData>
+=head2 ClientData => EC2_ClientData
 
 The client-specific data.
 
@@ -89,7 +127,7 @@ The description string for the import snapshot task.
 
 
 
-=head2 DiskContainer => L<Paws::EC2::SnapshotDiskContainer>
+=head2 DiskContainer => EC2_SnapshotDiskContainer
 
 Information about the disk container.
 

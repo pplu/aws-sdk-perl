@@ -1,10 +1,45 @@
 package Paws::EC2::ImportVolumeTaskDetails;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has BytesConverted => (is => 'ro', isa => 'Int', request_name => 'bytesConverted', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Image => (is => 'ro', isa => 'Paws::EC2::DiskImageDescription', request_name => 'image', traits => ['NameInRequest']);
-  has Volume => (is => 'ro', isa => 'Paws::EC2::DiskImageVolumeDescription', request_name => 'volume', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw/EC2_DiskImageDescription EC2_DiskImageVolumeDescription/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has BytesConverted => (is => 'ro', isa => Int);
+  has Description => (is => 'ro', isa => Str);
+  has Image => (is => 'ro', isa => EC2_DiskImageDescription);
+  has Volume => (is => 'ro', isa => EC2_DiskImageVolumeDescription);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Volume' => {
+                             'class' => 'Paws::EC2::DiskImageVolumeDescription',
+                             'type' => 'EC2_DiskImageVolumeDescription'
+                           },
+               'BytesConverted' => {
+                                     'type' => 'Int'
+                                   },
+               'Image' => {
+                            'class' => 'Paws::EC2::DiskImageDescription',
+                            'type' => 'EC2_DiskImageDescription'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Volume' => 'volume',
+                       'BytesConverted' => 'bytesConverted',
+                       'Image' => 'image',
+                       'Description' => 'description',
+                       'AvailabilityZone' => 'availabilityZone'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,12 +90,12 @@ This class has no description
   The description you provided when starting the import volume task.
 
 
-=head2 Image => L<Paws::EC2::DiskImageDescription>
+=head2 Image => EC2_DiskImageDescription
 
   The image.
 
 
-=head2 Volume => L<Paws::EC2::DiskImageVolumeDescription>
+=head2 Volume => EC2_DiskImageVolumeDescription
 
   The volume.
 

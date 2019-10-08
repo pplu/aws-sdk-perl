@@ -1,12 +1,54 @@
 package Paws::EC2::ClientVpnRoute;
-  use Moose;
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', request_name => 'clientVpnEndpointId', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has DestinationCidr => (is => 'ro', isa => 'Str', request_name => 'destinationCidr', traits => ['NameInRequest']);
-  has Origin => (is => 'ro', isa => 'Str', request_name => 'origin', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::EC2::ClientVpnRouteStatus', request_name => 'status', traits => ['NameInRequest']);
-  has TargetSubnet => (is => 'ro', isa => 'Str', request_name => 'targetSubnet', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ClientVpnRouteStatus/;
+  has ClientVpnEndpointId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DestinationCidr => (is => 'ro', isa => Str);
+  has Origin => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => EC2_ClientVpnRouteStatus);
+  has TargetSubnet => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Status' => {
+                             'class' => 'Paws::EC2::ClientVpnRouteStatus',
+                             'type' => 'EC2_ClientVpnRouteStatus'
+                           },
+               'Origin' => {
+                             'type' => 'Str'
+                           },
+               'DestinationCidr' => {
+                                      'type' => 'Str'
+                                    },
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        },
+               'TargetSubnet' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Status' => 'status',
+                       'Origin' => 'origin',
+                       'DestinationCidr' => 'destinationCidr',
+                       'ClientVpnEndpointId' => 'clientVpnEndpointId',
+                       'TargetSubnet' => 'targetSubnet',
+                       'Description' => 'description'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +108,7 @@ C<add-route> indicates that the route was manually added using the
 B<CreateClientVpnRoute> action.
 
 
-=head2 Status => L<Paws::EC2::ClientVpnRouteStatus>
+=head2 Status => EC2_ClientVpnRouteStatus
 
   The current state of the route.
 

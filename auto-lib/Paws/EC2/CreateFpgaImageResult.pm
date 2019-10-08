@@ -1,10 +1,35 @@
 
 package Paws::EC2::CreateFpgaImageResult;
-  use Moose;
-  has FpgaImageGlobalId => (is => 'ro', isa => 'Str', request_name => 'fpgaImageGlobalId', traits => ['NameInRequest',]);
-  has FpgaImageId => (is => 'ro', isa => 'Str', request_name => 'fpgaImageId', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has FpgaImageGlobalId => (is => 'ro', isa => Str);
+  has FpgaImageId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FpgaImageGlobalId' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FpgaImageId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'FpgaImageGlobalId' => 'fpgaImageGlobalId',
+                       'FpgaImageId' => 'fpgaImageId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,24 +1,85 @@
 
 package Paws::EC2::RequestSpotInstances;
-  use Moose;
-  has AvailabilityZoneGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZoneGroup' );
-  has BlockDurationMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'blockDurationMinutes' );
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has InstanceCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'instanceCount' );
-  has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str');
-  has LaunchGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchGroup' );
-  has LaunchSpecification => (is => 'ro', isa => 'Paws::EC2::RequestSpotLaunchSpecification');
-  has SpotPrice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spotPrice' );
-  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' );
-  has ValidFrom => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'validFrom' );
-  has ValidUntil => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'validUntil' );
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::EC2::Types qw/EC2_RequestSpotLaunchSpecification/;
+  has AvailabilityZoneGroup => (is => 'ro', isa => Str, predicate => 1);
+  has BlockDurationMinutes => (is => 'ro', isa => Int, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceCount => (is => 'ro', isa => Int, predicate => 1);
+  has InstanceInterruptionBehavior => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchGroup => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchSpecification => (is => 'ro', isa => EC2_RequestSpotLaunchSpecification, predicate => 1);
+  has SpotPrice => (is => 'ro', isa => Str, predicate => 1);
+  has Type => (is => 'ro', isa => Str, predicate => 1);
+  has ValidFrom => (is => 'ro', isa => Str, predicate => 1);
+  has ValidUntil => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RequestSpotInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::RequestSpotInstancesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RequestSpotInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::RequestSpotInstancesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'LaunchGroup' => {
+                                  'type' => 'Str'
+                                },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'ValidFrom' => {
+                                'type' => 'Str'
+                              },
+               'InstanceInterruptionBehavior' => {
+                                                   'type' => 'Str'
+                                                 },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'SpotPrice' => {
+                                'type' => 'Str'
+                              },
+               'AvailabilityZoneGroup' => {
+                                            'type' => 'Str'
+                                          },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'BlockDurationMinutes' => {
+                                           'type' => 'Int'
+                                         },
+               'LaunchSpecification' => {
+                                          'class' => 'Paws::EC2::RequestSpotLaunchSpecification',
+                                          'type' => 'EC2_RequestSpotLaunchSpecification'
+                                        },
+               'ValidUntil' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'LaunchGroup' => 'launchGroup',
+                       'ClientToken' => 'clientToken',
+                       'ValidFrom' => 'validFrom',
+                       'Type' => 'type',
+                       'SpotPrice' => 'spotPrice',
+                       'AvailabilityZoneGroup' => 'availabilityZoneGroup',
+                       'InstanceCount' => 'instanceCount',
+                       'BlockDurationMinutes' => 'blockDurationMinutes',
+                       'ValidUntil' => 'validUntil'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -175,7 +236,7 @@ Default: Instances are launched and terminated individually
 
 
 
-=head2 LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>
+=head2 LaunchSpecification => EC2_RequestSpotLaunchSpecification
 
 The launch specification.
 

@@ -1,8 +1,28 @@
 package Paws::EC2::LaunchTemplateSpecification;
-  use Moose;
-  has LaunchTemplateId => (is => 'ro', isa => 'Str');
-  has LaunchTemplateName => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has LaunchTemplateId => (is => 'ro', isa => Str);
+  has LaunchTemplateName => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchTemplateId' => {
+                                       'type' => 'Str'
+                                     },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'LaunchTemplateName' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

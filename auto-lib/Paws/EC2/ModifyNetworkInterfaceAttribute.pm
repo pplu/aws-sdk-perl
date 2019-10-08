@@ -1,18 +1,59 @@
 
 package Paws::EC2::ModifyNetworkInterfaceAttribute;
-  use Moose;
-  has Attachment => (is => 'ro', isa => 'Paws::EC2::NetworkInterfaceAttachmentChanges', traits => ['NameInRequest'], request_name => 'attachment' );
-  has Description => (is => 'ro', isa => 'Paws::EC2::AttributeValue', traits => ['NameInRequest'], request_name => 'description' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' , required => 1);
-  has SourceDestCheck => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', traits => ['NameInRequest'], request_name => 'sourceDestCheck' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_NetworkInterfaceAttachmentChanges EC2_AttributeValue EC2_AttributeBooleanValue/;
+  has Attachment => (is => 'ro', isa => EC2_NetworkInterfaceAttachmentChanges, predicate => 1);
+  has Description => (is => 'ro', isa => EC2_AttributeValue, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Groups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NetworkInterfaceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceDestCheck => (is => 'ro', isa => EC2_AttributeBooleanValue, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyNetworkInterfaceAttribute');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyNetworkInterfaceAttribute');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceDestCheck' => {
+                                      'class' => 'Paws::EC2::AttributeBooleanValue',
+                                      'type' => 'EC2_AttributeBooleanValue'
+                                    },
+               'Groups' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'Attachment' => {
+                                 'class' => 'Paws::EC2::NetworkInterfaceAttachmentChanges',
+                                 'type' => 'EC2_NetworkInterfaceAttachmentChanges'
+                               },
+               'Description' => {
+                                  'class' => 'Paws::EC2::AttributeValue',
+                                  'type' => 'EC2_AttributeValue'
+                                }
+             },
+  'NameInRequest' => {
+                       'SourceDestCheck' => 'sourceDestCheck',
+                       'Groups' => 'SecurityGroupId',
+                       'DryRun' => 'dryRun',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'Attachment' => 'attachment',
+                       'Description' => 'description'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +119,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 Attachment => L<Paws::EC2::NetworkInterfaceAttachmentChanges>
+=head2 Attachment => EC2_NetworkInterfaceAttachmentChanges
 
 Information about the interface attachment. If modifying the 'delete on
 termination' attribute, you must specify the ID of the interface
@@ -86,7 +127,7 @@ attachment.
 
 
 
-=head2 Description => L<Paws::EC2::AttributeValue>
+=head2 Description => EC2_AttributeValue
 
 A description for the network interface.
 
@@ -116,7 +157,7 @@ The ID of the network interface.
 
 
 
-=head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
+=head2 SourceDestCheck => EC2_AttributeBooleanValue
 
 Indicates whether source/destination checking is enabled. A value of
 C<true> means checking is enabled, and C<false> means checking is

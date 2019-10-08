@@ -1,7 +1,28 @@
 package Paws::EC2::PrivateIpAddressSpecification;
-  use Moose;
-  has Primary => (is => 'ro', isa => 'Bool', request_name => 'primary', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool Str/;
+  use Paws::EC2::Types qw//;
+  has Primary => (is => 'ro', isa => Bool);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Primary' => {
+                              'type' => 'Bool'
+                            },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Primary' => 'primary',
+                       'PrivateIpAddress' => 'privateIpAddress'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

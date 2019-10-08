@@ -1,7 +1,28 @@
 package Paws::EC2::ClassicLinkDnsSupport;
-  use Moose;
-  has ClassicLinkDnsSupported => (is => 'ro', isa => 'Bool', request_name => 'classicLinkDnsSupported', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool Str/;
+  use Paws::EC2::Types qw//;
+  has ClassicLinkDnsSupported => (is => 'ro', isa => Bool);
+  has VpcId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'ClassicLinkDnsSupported' => {
+                                              'type' => 'Bool'
+                                            }
+             },
+  'NameInRequest' => {
+                       'VpcId' => 'vpcId',
+                       'ClassicLinkDnsSupported' => 'classicLinkDnsSupported'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

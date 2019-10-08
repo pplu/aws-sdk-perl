@@ -1,9 +1,31 @@
 
 package Paws::EC2::DisassociateTransitGatewayRouteTableResult;
-  use Moose;
-  has Association => (is => 'ro', isa => 'Paws::EC2::TransitGatewayAssociation', request_name => 'association', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_TransitGatewayAssociation/;
+  has Association => (is => 'ro', isa => EC2_TransitGatewayAssociation);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Association' => {
+                                  'class' => 'Paws::EC2::TransitGatewayAssociation',
+                                  'type' => 'EC2_TransitGatewayAssociation'
+                                }
+             },
+  'NameInRequest' => {
+                       'Association' => 'association'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::DisassociateTransitGatewayRouteTableResult
 =head1 ATTRIBUTES
 
 
-=head2 Association => L<Paws::EC2::TransitGatewayAssociation>
+=head2 Association => EC2_TransitGatewayAssociation
 
 Information about the association.
 

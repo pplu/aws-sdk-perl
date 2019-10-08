@@ -1,11 +1,50 @@
 package Paws::EC2::ExportTask;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has ExportTaskId => (is => 'ro', isa => 'Str', request_name => 'exportTaskId', traits => ['NameInRequest']);
-  has ExportToS3Task => (is => 'ro', isa => 'Paws::EC2::ExportToS3Task', request_name => 'exportToS3', traits => ['NameInRequest']);
-  has InstanceExportDetails => (is => 'ro', isa => 'Paws::EC2::InstanceExportDetails', request_name => 'instanceExport', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ExportToS3Task EC2_InstanceExportDetails/;
+  has Description => (is => 'ro', isa => Str);
+  has ExportTaskId => (is => 'ro', isa => Str);
+  has ExportToS3Task => (is => 'ro', isa => EC2_ExportToS3Task);
+  has InstanceExportDetails => (is => 'ro', isa => EC2_InstanceExportDetails);
+  has State => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExportToS3Task' => {
+                                     'class' => 'Paws::EC2::ExportToS3Task',
+                                     'type' => 'EC2_ExportToS3Task'
+                                   },
+               'ExportTaskId' => {
+                                   'type' => 'Str'
+                                 },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'InstanceExportDetails' => {
+                                            'class' => 'Paws::EC2::InstanceExportDetails',
+                                            'type' => 'EC2_InstanceExportDetails'
+                                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ExportToS3Task' => 'exportToS3',
+                       'ExportTaskId' => 'exportTaskId',
+                       'StatusMessage' => 'statusMessage',
+                       'State' => 'state',
+                       'InstanceExportDetails' => 'instanceExport',
+                       'Description' => 'description'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,12 +90,12 @@ This class has no description
   The ID of the export task.
 
 
-=head2 ExportToS3Task => L<Paws::EC2::ExportToS3Task>
+=head2 ExportToS3Task => EC2_ExportToS3Task
 
   Information about the export task.
 
 
-=head2 InstanceExportDetails => L<Paws::EC2::InstanceExportDetails>
+=head2 InstanceExportDetails => EC2_InstanceExportDetails
 
   Information about the instance to export.
 

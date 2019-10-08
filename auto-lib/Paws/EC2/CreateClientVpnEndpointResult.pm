@@ -1,11 +1,41 @@
 
 package Paws::EC2::CreateClientVpnEndpointResult;
-  use Moose;
-  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', request_name => 'clientVpnEndpointId', traits => ['NameInRequest',]);
-  has DnsName => (is => 'ro', isa => 'Str', request_name => 'dnsName', traits => ['NameInRequest',]);
-  has Status => (is => 'ro', isa => 'Paws::EC2::ClientVpnEndpointStatus', request_name => 'status', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ClientVpnEndpointStatus/;
+  has ClientVpnEndpointId => (is => 'ro', isa => Str);
+  has DnsName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => EC2_ClientVpnEndpointStatus);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DnsName' => {
+                              'type' => 'Str'
+                            },
+               'Status' => {
+                             'class' => 'Paws::EC2::ClientVpnEndpointStatus',
+                             'type' => 'EC2_ClientVpnEndpointStatus'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ClientVpnEndpointId' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'DnsName' => 'dnsName',
+                       'Status' => 'status',
+                       'ClientVpnEndpointId' => 'clientVpnEndpointId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +57,7 @@ The ID of the Client VPN endpoint.
 The DNS name to be used by clients when establishing their VPN session.
 
 
-=head2 Status => L<Paws::EC2::ClientVpnEndpointStatus>
+=head2 Status => EC2_ClientVpnEndpointStatus
 
 The current state of the Client VPN endpoint.
 

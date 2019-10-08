@@ -1,9 +1,32 @@
 package Paws::EC2::PciId;
-  use Moose;
-  has DeviceId => (is => 'ro', isa => 'Str');
-  has SubsystemId => (is => 'ro', isa => 'Str');
-  has SubsystemVendorId => (is => 'ro', isa => 'Str');
-  has VendorId => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has DeviceId => (is => 'ro', isa => Str);
+  has SubsystemId => (is => 'ro', isa => Str);
+  has SubsystemVendorId => (is => 'ro', isa => Str);
+  has VendorId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubsystemVendorId' => {
+                                        'type' => 'Str'
+                                      },
+               'DeviceId' => {
+                               'type' => 'Str'
+                             },
+               'VendorId' => {
+                               'type' => 'Str'
+                             },
+               'SubsystemId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

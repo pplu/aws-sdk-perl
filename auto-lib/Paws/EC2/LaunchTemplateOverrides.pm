@@ -1,11 +1,48 @@
 package Paws::EC2::LaunchTemplateOverrides;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has Priority => (is => 'ro', isa => 'Num', request_name => 'priority', traits => ['NameInRequest']);
-  has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
-  has WeightedCapacity => (is => 'ro', isa => 'Num', request_name => 'weightedCapacity', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Num/;
+  use Paws::EC2::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Num);
+  has SpotPrice => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has WeightedCapacity => (is => 'ro', isa => Num);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpotPrice' => {
+                                'type' => 'Str'
+                              },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'Priority' => {
+                               'type' => 'Num'
+                             },
+               'WeightedCapacity' => {
+                                       'type' => 'Num'
+                                     },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'SpotPrice' => 'spotPrice',
+                       'InstanceType' => 'instanceType',
+                       'SubnetId' => 'subnetId',
+                       'Priority' => 'priority',
+                       'WeightedCapacity' => 'weightedCapacity',
+                       'AvailabilityZone' => 'availabilityZone'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

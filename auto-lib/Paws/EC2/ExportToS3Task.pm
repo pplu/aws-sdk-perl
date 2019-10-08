@@ -1,9 +1,38 @@
 package Paws::EC2::ExportToS3Task;
-  use Moose;
-  has ContainerFormat => (is => 'ro', isa => 'Str', request_name => 'containerFormat', traits => ['NameInRequest']);
-  has DiskImageFormat => (is => 'ro', isa => 'Str', request_name => 'diskImageFormat', traits => ['NameInRequest']);
-  has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest']);
-  has S3Key => (is => 'ro', isa => 'Str', request_name => 's3Key', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has ContainerFormat => (is => 'ro', isa => Str);
+  has DiskImageFormat => (is => 'ro', isa => Str);
+  has S3Bucket => (is => 'ro', isa => Str);
+  has S3Key => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Key' => {
+                            'type' => 'Str'
+                          },
+               'ContainerFormat' => {
+                                      'type' => 'Str'
+                                    },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             },
+               'DiskImageFormat' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'S3Key' => 's3Key',
+                       'ContainerFormat' => 'containerFormat',
+                       'S3Bucket' => 's3Bucket',
+                       'DiskImageFormat' => 'diskImageFormat'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

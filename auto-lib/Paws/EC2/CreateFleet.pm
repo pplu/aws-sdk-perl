@@ -1,25 +1,84 @@
 
 package Paws::EC2::CreateFleet;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str');
-  has LaunchTemplateConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::FleetLaunchTemplateConfigRequest]', required => 1);
-  has OnDemandOptions => (is => 'ro', isa => 'Paws::EC2::OnDemandOptionsRequest');
-  has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool');
-  has SpotOptions => (is => 'ro', isa => 'Paws::EC2::SpotOptionsRequest');
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
-  has TargetCapacitySpecification => (is => 'ro', isa => 'Paws::EC2::TargetCapacitySpecificationRequest', required => 1);
-  has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool');
-  has Type => (is => 'ro', isa => 'Str');
-  has ValidFrom => (is => 'ro', isa => 'Str');
-  has ValidUntil => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_FleetLaunchTemplateConfigRequest EC2_OnDemandOptionsRequest EC2_TagSpecification EC2_TargetCapacitySpecificationRequest EC2_SpotOptionsRequest/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ExcessCapacityTerminationPolicy => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchTemplateConfigs => (is => 'ro', isa => ArrayRef[EC2_FleetLaunchTemplateConfigRequest], required => 1, predicate => 1);
+  has OnDemandOptions => (is => 'ro', isa => EC2_OnDemandOptionsRequest, predicate => 1);
+  has ReplaceUnhealthyInstances => (is => 'ro', isa => Bool, predicate => 1);
+  has SpotOptions => (is => 'ro', isa => EC2_SpotOptionsRequest, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
+  has TargetCapacitySpecification => (is => 'ro', isa => EC2_TargetCapacitySpecificationRequest, required => 1, predicate => 1);
+  has TerminateInstancesWithExpiration => (is => 'ro', isa => Bool, predicate => 1);
+  has Type => (is => 'ro', isa => Str, predicate => 1);
+  has ValidFrom => (is => 'ro', isa => Str, predicate => 1);
+  has ValidUntil => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFleet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateFleetResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFleet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateFleetResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'TerminateInstancesWithExpiration' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'TagSpecifications' => {
+                                        'class' => 'Paws::EC2::TagSpecification',
+                                        'type' => 'ArrayRef[EC2_TagSpecification]'
+                                      },
+               'SpotOptions' => {
+                                  'class' => 'Paws::EC2::SpotOptionsRequest',
+                                  'type' => 'EC2_SpotOptionsRequest'
+                                },
+               'TargetCapacitySpecification' => {
+                                                  'class' => 'Paws::EC2::TargetCapacitySpecificationRequest',
+                                                  'type' => 'EC2_TargetCapacitySpecificationRequest'
+                                                },
+               'ValidFrom' => {
+                                'type' => 'Str'
+                              },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ExcessCapacityTerminationPolicy' => {
+                                                      'type' => 'Str'
+                                                    },
+               'ReplaceUnhealthyInstances' => {
+                                                'type' => 'Bool'
+                                              },
+               'OnDemandOptions' => {
+                                      'class' => 'Paws::EC2::OnDemandOptionsRequest',
+                                      'type' => 'EC2_OnDemandOptionsRequest'
+                                    },
+               'ValidUntil' => {
+                                 'type' => 'Str'
+                               },
+               'LaunchTemplateConfigs' => {
+                                            'class' => 'Paws::EC2::FleetLaunchTemplateConfigRequest',
+                                            'type' => 'ArrayRef[EC2_FleetLaunchTemplateConfigRequest]'
+                                          }
+             },
+  'NameInRequest' => {
+                       'TagSpecifications' => 'TagSpecification'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -160,13 +219,13 @@ the EC2 Fleet.
 
 Valid values are: C<"no-termination">, C<"termination">
 
-=head2 B<REQUIRED> LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::FleetLaunchTemplateConfigRequest>]
+=head2 B<REQUIRED> LaunchTemplateConfigs => ArrayRef[EC2_FleetLaunchTemplateConfigRequest]
 
 The configuration for the EC2 Fleet.
 
 
 
-=head2 OnDemandOptions => L<Paws::EC2::OnDemandOptionsRequest>
+=head2 OnDemandOptions => EC2_OnDemandOptionsRequest
 
 Describes the configuration of On-Demand Instances in an EC2 Fleet.
 
@@ -178,13 +237,13 @@ Indicates whether EC2 Fleet should replace unhealthy instances.
 
 
 
-=head2 SpotOptions => L<Paws::EC2::SpotOptionsRequest>
+=head2 SpotOptions => EC2_SpotOptionsRequest
 
 Describes the configuration of Spot Instances in an EC2 Fleet.
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 The key-value pair for tagging the EC2 Fleet request on creation. The
 value for C<ResourceType> must be C<fleet>, otherwise the fleet request
@@ -196,7 +255,7 @@ For information about tagging after launch, see Tagging Your Resources
 
 
 
-=head2 B<REQUIRED> TargetCapacitySpecification => L<Paws::EC2::TargetCapacitySpecificationRequest>
+=head2 B<REQUIRED> TargetCapacitySpecification => EC2_TargetCapacitySpecificationRequest
 
 The number of units to request.
 

@@ -1,6 +1,21 @@
 package Paws::EC2::Storage;
-  use Moose;
-  has S3 => (is => 'ro', isa => 'Paws::EC2::S3Storage');
+  use Moo;  use Types::Standard qw//;
+  use Paws::EC2::Types qw/EC2_S3Storage/;
+  has S3 => (is => 'ro', isa => EC2_S3Storage);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3' => {
+                         'class' => 'Paws::EC2::S3Storage',
+                         'type' => 'EC2_S3Storage'
+                       }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +51,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 S3 => L<Paws::EC2::S3Storage>
+=head2 S3 => EC2_S3Storage
 
   An Amazon S3 storage location.
 

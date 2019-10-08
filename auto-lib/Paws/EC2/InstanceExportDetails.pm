@@ -1,7 +1,28 @@
 package Paws::EC2::InstanceExportDetails;
-  use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has TargetEnvironment => (is => 'ro', isa => 'Str', request_name => 'targetEnvironment', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has InstanceId => (is => 'ro', isa => Str);
+  has TargetEnvironment => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'TargetEnvironment' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'InstanceId' => 'instanceId',
+                       'TargetEnvironment' => 'targetEnvironment'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

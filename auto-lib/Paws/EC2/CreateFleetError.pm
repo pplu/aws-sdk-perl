@@ -1,9 +1,39 @@
 package Paws::EC2::CreateFleetError;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
-  has LaunchTemplateAndOverrides => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateAndOverridesResponse', request_name => 'launchTemplateAndOverrides', traits => ['NameInRequest']);
-  has Lifecycle => (is => 'ro', isa => 'Str', request_name => 'lifecycle', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_LaunchTemplateAndOverridesResponse/;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has LaunchTemplateAndOverrides => (is => 'ro', isa => EC2_LaunchTemplateAndOverridesResponse);
+  has Lifecycle => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'Lifecycle' => {
+                                'type' => 'Str'
+                              },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'LaunchTemplateAndOverrides' => {
+                                                 'class' => 'Paws::EC2::LaunchTemplateAndOverridesResponse',
+                                                 'type' => 'EC2_LaunchTemplateAndOverridesResponse'
+                                               }
+             },
+  'NameInRequest' => {
+                       'ErrorCode' => 'errorCode',
+                       'Lifecycle' => 'lifecycle',
+                       'ErrorMessage' => 'errorMessage',
+                       'LaunchTemplateAndOverrides' => 'launchTemplateAndOverrides'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +83,7 @@ launched. For more information about error messages, see ee Error Codes
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html.html).
 
 
-=head2 LaunchTemplateAndOverrides => L<Paws::EC2::LaunchTemplateAndOverridesResponse>
+=head2 LaunchTemplateAndOverrides => EC2_LaunchTemplateAndOverridesResponse
 
   The launch templates and overrides that were used for launching the
 instances. Any parameters that you specify in the Overrides override

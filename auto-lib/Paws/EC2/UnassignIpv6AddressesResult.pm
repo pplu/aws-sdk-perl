@@ -1,10 +1,35 @@
 
 package Paws::EC2::UnassignIpv6AddressesResult;
-  use Moose;
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest',]);
-  has UnassignedIpv6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'unassignedIpv6Addresses', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::EC2::Types qw//;
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has UnassignedIpv6Addresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UnassignedIpv6Addresses' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'UnassignedIpv6Addresses' => 'unassignedIpv6Addresses',
+                       'NetworkInterfaceId' => 'networkInterfaceId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

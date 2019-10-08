@@ -1,8 +1,34 @@
 package Paws::EC2::SubnetIpv6CidrBlockAssociation;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
-  has Ipv6CidrBlock => (is => 'ro', isa => 'Str', request_name => 'ipv6CidrBlock', traits => ['NameInRequest']);
-  has Ipv6CidrBlockState => (is => 'ro', isa => 'Paws::EC2::SubnetCidrBlockState', request_name => 'ipv6CidrBlockState', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_SubnetCidrBlockState/;
+  has AssociationId => (is => 'ro', isa => Str);
+  has Ipv6CidrBlock => (is => 'ro', isa => Str);
+  has Ipv6CidrBlockState => (is => 'ro', isa => EC2_SubnetCidrBlockState);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ipv6CidrBlockState' => {
+                                         'class' => 'Paws::EC2::SubnetCidrBlockState',
+                                         'type' => 'EC2_SubnetCidrBlockState'
+                                       },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Ipv6CidrBlock' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Ipv6CidrBlockState' => 'ipv6CidrBlockState',
+                       'AssociationId' => 'associationId',
+                       'Ipv6CidrBlock' => 'ipv6CidrBlock'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +74,7 @@ This class has no description
   The IPv6 CIDR block.
 
 
-=head2 Ipv6CidrBlockState => L<Paws::EC2::SubnetCidrBlockState>
+=head2 Ipv6CidrBlockState => EC2_SubnetCidrBlockState
 
   Information about the state of the CIDR block.
 

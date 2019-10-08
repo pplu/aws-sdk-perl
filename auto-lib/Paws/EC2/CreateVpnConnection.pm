@@ -1,18 +1,53 @@
 
 package Paws::EC2::CreateVpnConnection;
-  use Moose;
-  has CustomerGatewayId => (is => 'ro', isa => 'Str', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Options => (is => 'ro', isa => 'Paws::EC2::VpnConnectionOptionsSpecification', traits => ['NameInRequest'], request_name => 'options' );
-  has TransitGatewayId => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
-  has VpnGatewayId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_VpnConnectionOptionsSpecification/;
+  has CustomerGatewayId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Options => (is => 'ro', isa => EC2_VpnConnectionOptionsSpecification, predicate => 1);
+  has TransitGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VpnGatewayId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVpnConnection');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateVpnConnectionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateVpnConnection');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateVpnConnectionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TransitGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Options' => {
+                              'class' => 'Paws::EC2::VpnConnectionOptionsSpecification',
+                              'type' => 'EC2_VpnConnectionOptionsSpecification'
+                            },
+               'CustomerGatewayId' => {
+                                        'type' => 'Str'
+                                      },
+               'VpnGatewayId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'Options' => 'options'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +111,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Options => L<Paws::EC2::VpnConnectionOptionsSpecification>
+=head2 Options => EC2_VpnConnectionOptionsSpecification
 
 The options for the VPN connection.
 

@@ -1,8 +1,33 @@
 package Paws::EC2::SecurityGroupReference;
-  use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
-  has ReferencingVpcId => (is => 'ro', isa => 'Str', request_name => 'referencingVpcId', traits => ['NameInRequest']);
-  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', request_name => 'vpcPeeringConnectionId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has GroupId => (is => 'ro', isa => Str);
+  has ReferencingVpcId => (is => 'ro', isa => Str);
+  has VpcPeeringConnectionId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'VpcPeeringConnectionId' => {
+                                             'type' => 'Str'
+                                           },
+               'ReferencingVpcId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'GroupId' => 'groupId',
+                       'VpcPeeringConnectionId' => 'vpcPeeringConnectionId',
+                       'ReferencingVpcId' => 'referencingVpcId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

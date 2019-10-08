@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeReservedInstancesModificationsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has ReservedInstancesModifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesModification]', request_name => 'reservedInstancesModificationsSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ReservedInstancesModification/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ReservedInstancesModifications => (is => 'ro', isa => ArrayRef[EC2_ReservedInstancesModification]);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservedInstancesModifications' => {
+                                                     'class' => 'Paws::EC2::ReservedInstancesModification',
+                                                     'type' => 'ArrayRef[EC2_ReservedInstancesModification]'
+                                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ReservedInstancesModifications' => 'reservedInstancesModificationsSet',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 ReservedInstancesModifications => ArrayRef[L<Paws::EC2::ReservedInstancesModification>]
+=head2 ReservedInstancesModifications => ArrayRef[EC2_ReservedInstancesModification]
 
 The Reserved Instance modification information.
 

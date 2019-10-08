@@ -1,7 +1,28 @@
 package Paws::EC2::EbsInstanceBlockDeviceSpecification;
-  use Moose;
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool', request_name => 'deleteOnTermination', traits => ['NameInRequest']);
-  has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool Str/;
+  use Paws::EC2::Types qw//;
+  has DeleteOnTermination => (is => 'ro', isa => Bool);
+  has VolumeId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeleteOnTermination' => {
+                                          'type' => 'Bool'
+                                        },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'DeleteOnTermination' => 'deleteOnTermination',
+                       'VolumeId' => 'volumeId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,28 @@
 package Paws::EC2::IpRange;
-  use Moose;
-  has CidrIp => (is => 'ro', isa => 'Str', request_name => 'cidrIp', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has CidrIp => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CidrIp' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'CidrIp' => 'cidrIp'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

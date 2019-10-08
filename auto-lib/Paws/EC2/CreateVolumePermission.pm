@@ -1,7 +1,28 @@
 package Paws::EC2::CreateVolumePermission;
-  use Moose;
-  has Group => (is => 'ro', isa => 'Str', request_name => 'group', traits => ['NameInRequest']);
-  has UserId => (is => 'ro', isa => 'Str', request_name => 'userId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Group => (is => 'ro', isa => Str);
+  has UserId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'Group' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'UserId' => 'userId',
+                       'Group' => 'group'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

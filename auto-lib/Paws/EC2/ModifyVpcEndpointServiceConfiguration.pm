@@ -1,17 +1,48 @@
 
 package Paws::EC2::ModifyVpcEndpointServiceConfiguration;
-  use Moose;
-  has AcceptanceRequired => (is => 'ro', isa => 'Bool');
-  has AddNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddNetworkLoadBalancerArn' );
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has RemoveNetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveNetworkLoadBalancerArn' );
-  has ServiceId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw//;
+  has AcceptanceRequired => (is => 'ro', isa => Bool, predicate => 1);
+  has AddNetworkLoadBalancerArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has RemoveNetworkLoadBalancerArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ServiceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVpcEndpointServiceConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyVpcEndpointServiceConfigurationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyVpcEndpointServiceConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyVpcEndpointServiceConfigurationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'RemoveNetworkLoadBalancerArns' => {
+                                                    'type' => 'ArrayRef[Str|Undef]'
+                                                  },
+               'AcceptanceRequired' => {
+                                         'type' => 'Bool'
+                                       },
+               'ServiceId' => {
+                                'type' => 'Str'
+                              },
+               'AddNetworkLoadBalancerArns' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               }
+             },
+  'NameInRequest' => {
+                       'RemoveNetworkLoadBalancerArns' => 'RemoveNetworkLoadBalancerArn',
+                       'AddNetworkLoadBalancerArns' => 'AddNetworkLoadBalancerArn'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

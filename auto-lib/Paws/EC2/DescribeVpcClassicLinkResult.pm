@@ -1,9 +1,31 @@
 
 package Paws::EC2::DescribeVpcClassicLinkResult;
-  use Moose;
-  has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcClassicLink]', request_name => 'vpcSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_VpcClassicLink/;
+  has Vpcs => (is => 'ro', isa => ArrayRef[EC2_VpcClassicLink]);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Vpcs' => {
+                           'class' => 'Paws::EC2::VpcClassicLink',
+                           'type' => 'ArrayRef[EC2_VpcClassicLink]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Vpcs' => 'vpcSet'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::DescribeVpcClassicLinkResult
 =head1 ATTRIBUTES
 
 
-=head2 Vpcs => ArrayRef[L<Paws::EC2::VpcClassicLink>]
+=head2 Vpcs => ArrayRef[EC2_VpcClassicLink]
 
 The ClassicLink status of one or more VPCs.
 

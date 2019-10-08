@@ -1,7 +1,24 @@
 package Paws::EC2::SlotStartTimeRangeRequest;
-  use Moose;
-  has EarliestTime => (is => 'ro', isa => 'Str');
-  has LatestTime => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has EarliestTime => (is => 'ro', isa => Str);
+  has LatestTime => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LatestTime' => {
+                                 'type' => 'Str'
+                               },
+               'EarliestTime' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

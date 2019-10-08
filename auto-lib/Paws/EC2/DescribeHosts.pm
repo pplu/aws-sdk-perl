@@ -1,16 +1,47 @@
 
 package Paws::EC2::DescribeHosts;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'filter' );
-  has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'hostId' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::EC2::Types qw/EC2_Filter/;
+  has Filter => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has HostIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeHosts');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeHostsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeHosts');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeHostsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filter' => {
+                             'class' => 'Paws::EC2::Filter',
+                             'type' => 'ArrayRef[EC2_Filter]'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'HostIds' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'Filter' => 'filter',
+                       'NextToken' => 'nextToken',
+                       'HostIds' => 'hostId',
+                       'MaxResults' => 'maxResults'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -33,18 +64,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeHostsResult = $ec2->DescribeHosts(
       Filter => [
         {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],                       # OPTIONAL
+          Name   => 'MyString',
+          Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                           # OPTIONAL
-      HostIds => [
-        'MyString', ...            # OPTIONAL
-      ],                           # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      ],                                    # OPTIONAL
+      HostIds    => [ 'MyString', ... ],    # OPTIONAL
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyString',             # OPTIONAL
     );
 
     # Results:
@@ -59,7 +86,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 Filter => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filter => ArrayRef[EC2_Filter]
 
 The filters.
 

@@ -1,10 +1,44 @@
 package Paws::EC2::SpotDatafeedSubscription;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
-  has Fault => (is => 'ro', isa => 'Paws::EC2::SpotInstanceStateFault', request_name => 'fault', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_SpotInstanceStateFault/;
+  has Bucket => (is => 'ro', isa => Str);
+  has Fault => (is => 'ro', isa => EC2_SpotInstanceStateFault);
+  has OwnerId => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'Fault' => {
+                            'class' => 'Paws::EC2::SpotInstanceStateFault',
+                            'type' => 'EC2_SpotInstanceStateFault'
+                          }
+             },
+  'NameInRequest' => {
+                       'Prefix' => 'prefix',
+                       'Bucket' => 'bucket',
+                       'State' => 'state',
+                       'OwnerId' => 'ownerId',
+                       'Fault' => 'fault'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +79,7 @@ This class has no description
   The Amazon S3 bucket where the Spot Instance data feed is located.
 
 
-=head2 Fault => L<Paws::EC2::SpotInstanceStateFault>
+=head2 Fault => EC2_SpotInstanceStateFault
 
   The fault codes for the Spot Instance request, if any.
 

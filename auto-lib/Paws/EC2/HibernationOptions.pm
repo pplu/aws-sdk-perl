@@ -1,6 +1,23 @@
 package Paws::EC2::HibernationOptions;
-  use Moose;
-  has Configured => (is => 'ro', isa => 'Bool', request_name => 'configured', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool/;
+  use Paws::EC2::Types qw//;
+  has Configured => (is => 'ro', isa => Bool);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configured' => {
+                                 'type' => 'Bool'
+                               }
+             },
+  'NameInRequest' => {
+                       'Configured' => 'configured'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

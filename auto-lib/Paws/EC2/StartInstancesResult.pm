@@ -1,9 +1,31 @@
 
 package Paws::EC2::StartInstancesResult;
-  use Moose;
-  has StartingInstances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStateChange]', request_name => 'instancesSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_InstanceStateChange/;
+  has StartingInstances => (is => 'ro', isa => ArrayRef[EC2_InstanceStateChange]);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartingInstances' => {
+                                        'class' => 'Paws::EC2::InstanceStateChange',
+                                        'type' => 'ArrayRef[EC2_InstanceStateChange]'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'StartingInstances' => 'instancesSet'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::StartInstancesResult
 =head1 ATTRIBUTES
 
 
-=head2 StartingInstances => ArrayRef[L<Paws::EC2::InstanceStateChange>]
+=head2 StartingInstances => ArrayRef[EC2_InstanceStateChange]
 
 Information about the started instances.
 

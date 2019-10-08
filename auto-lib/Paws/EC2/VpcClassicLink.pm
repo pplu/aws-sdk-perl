@@ -1,8 +1,34 @@
 package Paws::EC2::VpcClassicLink;
-  use Moose;
-  has ClassicLinkEnabled => (is => 'ro', isa => 'Bool', request_name => 'classicLinkEnabled', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool ArrayRef Str/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has ClassicLinkEnabled => (is => 'ro', isa => Bool);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VpcId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'ClassicLinkEnabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'VpcId' => 'vpcId',
+                       'ClassicLinkEnabled' => 'classicLinkEnabled',
+                       'Tags' => 'tagSet'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +69,7 @@ This class has no description
   Indicates whether the VPC is enabled for ClassicLink.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the VPC.
 

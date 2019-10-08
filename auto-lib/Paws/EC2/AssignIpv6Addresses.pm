@@ -1,15 +1,41 @@
 
 package Paws::EC2::AssignIpv6Addresses;
-  use Moose;
-  has Ipv6AddressCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'ipv6AddressCount' );
-  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ipv6Addresses' );
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::EC2::Types qw//;
+  has Ipv6AddressCount => (is => 'ro', isa => Int, predicate => 1);
+  has Ipv6Addresses => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NetworkInterfaceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssignIpv6Addresses');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::AssignIpv6AddressesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssignIpv6Addresses');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::AssignIpv6AddressesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ipv6Addresses' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'Ipv6AddressCount' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Ipv6Addresses' => 'ipv6Addresses',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'Ipv6AddressCount' => 'ipv6AddressCount'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

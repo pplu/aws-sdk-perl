@@ -1,27 +1,94 @@
 
 package Paws::EC2::DescribeReservedInstancesOfferings;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has IncludeMarketplace => (is => 'ro', isa => 'Bool');
-  has InstanceTenancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceTenancy' );
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has MaxDuration => (is => 'ro', isa => 'Int');
-  has MaxInstanceCount => (is => 'ro', isa => 'Int');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has MinDuration => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has OfferingClass => (is => 'ro', isa => 'Str');
-  has OfferingType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringType' );
-  has ProductDescription => (is => 'ro', isa => 'Str');
-  has ReservedInstancesOfferingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ReservedInstancesOfferingId' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int Undef/;
+  use Paws::EC2::Types qw/EC2_Filter/;
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has IncludeMarketplace => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceTenancy => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, predicate => 1);
+  has MaxDuration => (is => 'ro', isa => Int, predicate => 1);
+  has MaxInstanceCount => (is => 'ro', isa => Int, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has MinDuration => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has OfferingClass => (is => 'ro', isa => Str, predicate => 1);
+  has OfferingType => (is => 'ro', isa => Str, predicate => 1);
+  has ProductDescription => (is => 'ro', isa => Str, predicate => 1);
+  has ReservedInstancesOfferingIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedInstancesOfferings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeReservedInstancesOfferingsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeReservedInstancesOfferings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeReservedInstancesOfferingsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'OfferingType' => {
+                                   'type' => 'Str'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'IncludeMarketplace' => {
+                                         'type' => 'Bool'
+                                       },
+               'ReservedInstancesOfferingIds' => {
+                                                   'type' => 'ArrayRef[Str|Undef]'
+                                                 },
+               'MaxInstanceCount' => {
+                                       'type' => 'Int'
+                                     },
+               'ProductDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'Filters' => {
+                              'class' => 'Paws::EC2::Filter',
+                              'type' => 'ArrayRef[EC2_Filter]'
+                            },
+               'InstanceTenancy' => {
+                                      'type' => 'Str'
+                                    },
+               'OfferingClass' => {
+                                    'type' => 'Str'
+                                  },
+               'MinDuration' => {
+                                  'type' => 'Int'
+                                },
+               'MaxDuration' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'ReservedInstancesOfferingIds' => 'ReservedInstancesOfferingId',
+                       'OfferingType' => 'offeringType',
+                       'NextToken' => 'nextToken',
+                       'InstanceTenancy' => 'instanceTenancy',
+                       'Filters' => 'Filter',
+                       'MaxResults' => 'maxResults'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +161,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filters => ArrayRef[EC2_Filter]
 
 One or more filters.
 

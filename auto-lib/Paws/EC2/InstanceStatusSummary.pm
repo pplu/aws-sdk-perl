@@ -1,7 +1,29 @@
 package Paws::EC2::InstanceStatusSummary;
-  use Moose;
-  has Details => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStatusDetails]', request_name => 'details', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Str/;
+  use Paws::EC2::Types qw/EC2_InstanceStatusDetails/;
+  has Details => (is => 'ro', isa => ArrayRef[EC2_InstanceStatusDetails]);
+  has Status => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Details' => {
+                              'class' => 'Paws::EC2::InstanceStatusDetails',
+                              'type' => 'ArrayRef[EC2_InstanceStatusDetails]'
+                            },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Details' => 'details',
+                       'Status' => 'status'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +59,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Details => ArrayRef[L<Paws::EC2::InstanceStatusDetails>]
+=head2 Details => ArrayRef[EC2_InstanceStatusDetails]
 
   The system instance health or application instance health.
 

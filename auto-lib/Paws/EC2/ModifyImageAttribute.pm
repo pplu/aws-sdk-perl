@@ -1,22 +1,72 @@
 
 package Paws::EC2::ModifyImageAttribute;
-  use Moose;
-  has Attribute => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Paws::EC2::AttributeValue');
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has ImageId => (is => 'ro', isa => 'Str', required => 1);
-  has LaunchPermission => (is => 'ro', isa => 'Paws::EC2::LaunchPermissionModifications');
-  has OperationType => (is => 'ro', isa => 'Str');
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ProductCode' );
-  has UserGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'UserGroup' );
-  has UserIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'UserId' );
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_LaunchPermissionModifications EC2_AttributeValue/;
+  has Attribute => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => EC2_AttributeValue, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ImageId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LaunchPermission => (is => 'ro', isa => EC2_LaunchPermissionModifications, predicate => 1);
+  has OperationType => (is => 'ro', isa => Str, predicate => 1);
+  has ProductCodes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has UserGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has UserIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Value => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyImageAttribute');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyImageAttribute');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OperationType' => {
+                                    'type' => 'Str'
+                                  },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'ProductCodes' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'LaunchPermission' => {
+                                       'class' => 'Paws::EC2::LaunchPermissionModifications',
+                                       'type' => 'EC2_LaunchPermissionModifications'
+                                     },
+               'UserGroups' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'UserIds' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Attribute' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'class' => 'Paws::EC2::AttributeValue',
+                                  'type' => 'EC2_AttributeValue'
+                                }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'ProductCodes' => 'ProductCode',
+                       'UserGroups' => 'UserGroup',
+                       'UserIds' => 'UserId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +127,7 @@ C<description>, C<launchPermission>, and C<productCodes>.
 
 
 
-=head2 Description => L<Paws::EC2::AttributeValue>
+=head2 Description => EC2_AttributeValue
 
 A new description for the AMI.
 
@@ -98,7 +148,7 @@ The ID of the AMI.
 
 
 
-=head2 LaunchPermission => L<Paws::EC2::LaunchPermissionModifications>
+=head2 LaunchPermission => EC2_LaunchPermissionModifications
 
 A new launch permission for the AMI.
 

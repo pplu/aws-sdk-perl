@@ -1,15 +1,40 @@
 
 package Paws::EC2::PurchaseScheduledInstances;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has PurchaseRequests => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PurchaseRequest]', traits => ['NameInRequest'], request_name => 'PurchaseRequest' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_PurchaseRequest/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has PurchaseRequests => (is => 'ro', isa => ArrayRef[EC2_PurchaseRequest], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseScheduledInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::PurchaseScheduledInstancesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PurchaseScheduledInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::PurchaseScheduledInstancesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'PurchaseRequests' => {
+                                       'class' => 'Paws::EC2::PurchaseRequest',
+                                       'type' => 'ArrayRef[EC2_PurchaseRequest]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'PurchaseRequests' => 'PurchaseRequest'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +95,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> PurchaseRequests => ArrayRef[L<Paws::EC2::PurchaseRequest>]
+=head2 B<REQUIRED> PurchaseRequests => ArrayRef[EC2_PurchaseRequest]
 
 The purchase requests.
 

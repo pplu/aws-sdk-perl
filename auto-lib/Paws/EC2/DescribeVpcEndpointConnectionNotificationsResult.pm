@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeVpcEndpointConnectionNotificationsResult;
-  use Moose;
-  has ConnectionNotificationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ConnectionNotification]', request_name => 'connectionNotificationSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ConnectionNotification/;
+  has ConnectionNotificationSet => (is => 'ro', isa => ArrayRef[EC2_ConnectionNotification]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ConnectionNotificationSet' => {
+                                                'class' => 'Paws::EC2::ConnectionNotification',
+                                                'type' => 'ArrayRef[EC2_ConnectionNotification]'
+                                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ConnectionNotificationSet' => 'connectionNotificationSet'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeVpcEndpointConnectionNotificationsResult
 =head1 ATTRIBUTES
 
 
-=head2 ConnectionNotificationSet => ArrayRef[L<Paws::EC2::ConnectionNotification>]
+=head2 ConnectionNotificationSet => ArrayRef[EC2_ConnectionNotification]
 
 One or more notifications.
 

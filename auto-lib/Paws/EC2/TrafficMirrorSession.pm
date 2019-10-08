@@ -1,15 +1,69 @@
 package Paws::EC2::TrafficMirrorSession;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has PacketLength => (is => 'ro', isa => 'Int', request_name => 'packetLength', traits => ['NameInRequest']);
-  has SessionNumber => (is => 'ro', isa => 'Int', request_name => 'sessionNumber', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has TrafficMirrorFilterId => (is => 'ro', isa => 'Str', request_name => 'trafficMirrorFilterId', traits => ['NameInRequest']);
-  has TrafficMirrorSessionId => (is => 'ro', isa => 'Str', request_name => 'trafficMirrorSessionId', traits => ['NameInRequest']);
-  has TrafficMirrorTargetId => (is => 'ro', isa => 'Str', request_name => 'trafficMirrorTargetId', traits => ['NameInRequest']);
-  has VirtualNetworkId => (is => 'ro', isa => 'Int', request_name => 'virtualNetworkId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has Description => (is => 'ro', isa => Str);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has OwnerId => (is => 'ro', isa => Str);
+  has PacketLength => (is => 'ro', isa => Int);
+  has SessionNumber => (is => 'ro', isa => Int);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has TrafficMirrorFilterId => (is => 'ro', isa => Str);
+  has TrafficMirrorSessionId => (is => 'ro', isa => Str);
+  has TrafficMirrorTargetId => (is => 'ro', isa => Str);
+  has VirtualNetworkId => (is => 'ro', isa => Int);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrafficMirrorFilterId' => {
+                                            'type' => 'Str'
+                                          },
+               'TrafficMirrorSessionId' => {
+                                             'type' => 'Str'
+                                           },
+               'SessionNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'TrafficMirrorTargetId' => {
+                                            'type' => 'Str'
+                                          },
+               'VirtualNetworkId' => {
+                                       'type' => 'Int'
+                                     },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'PacketLength' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'NameInRequest' => {
+                       'TrafficMirrorFilterId' => 'trafficMirrorFilterId',
+                       'TrafficMirrorSessionId' => 'trafficMirrorSessionId',
+                       'SessionNumber' => 'sessionNumber',
+                       'OwnerId' => 'ownerId',
+                       'TrafficMirrorTargetId' => 'trafficMirrorTargetId',
+                       'VirtualNetworkId' => 'virtualNetworkId',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'Tags' => 'tagSet',
+                       'Description' => 'description',
+                       'PacketLength' => 'packetLength'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +132,7 @@ a matching filter is the one that mirrors the packets.
 Valid values are 1-32766.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   The tags assigned to the Traffic Mirror session.
 

@@ -1,7 +1,28 @@
 package Paws::EC2::LaunchTemplateCpuOptions;
-  use Moose;
-  has CoreCount => (is => 'ro', isa => 'Int', request_name => 'coreCount', traits => ['NameInRequest']);
-  has ThreadsPerCore => (is => 'ro', isa => 'Int', request_name => 'threadsPerCore', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int/;
+  use Paws::EC2::Types qw//;
+  has CoreCount => (is => 'ro', isa => Int);
+  has ThreadsPerCore => (is => 'ro', isa => Int);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CoreCount' => {
+                                'type' => 'Int'
+                              },
+               'ThreadsPerCore' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'NameInRequest' => {
+                       'CoreCount' => 'coreCount',
+                       'ThreadsPerCore' => 'threadsPerCore'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

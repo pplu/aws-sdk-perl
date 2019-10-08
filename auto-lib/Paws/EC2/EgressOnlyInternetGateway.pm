@@ -1,7 +1,29 @@
 package Paws::EC2::EgressOnlyInternetGateway;
-  use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGatewayAttachment]', request_name => 'attachmentSet', traits => ['NameInRequest']);
-  has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', request_name => 'egressOnlyInternetGatewayId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Str/;
+  use Paws::EC2::Types qw/EC2_InternetGatewayAttachment/;
+  has Attachments => (is => 'ro', isa => ArrayRef[EC2_InternetGatewayAttachment]);
+  has EgressOnlyInternetGatewayId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attachments' => {
+                                  'class' => 'Paws::EC2::InternetGatewayAttachment',
+                                  'type' => 'ArrayRef[EC2_InternetGatewayAttachment]'
+                                },
+               'EgressOnlyInternetGatewayId' => {
+                                                  'type' => 'Str'
+                                                }
+             },
+  'NameInRequest' => {
+                       'Attachments' => 'attachmentSet',
+                       'EgressOnlyInternetGatewayId' => 'egressOnlyInternetGatewayId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +59,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Attachments => ArrayRef[L<Paws::EC2::InternetGatewayAttachment>]
+=head2 Attachments => ArrayRef[EC2_InternetGatewayAttachment]
 
   Information about the attachment of the egress-only internet gateway.
 

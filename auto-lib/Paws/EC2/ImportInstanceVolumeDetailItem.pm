@@ -1,12 +1,55 @@
 package Paws::EC2::ImportInstanceVolumeDetailItem;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has BytesConverted => (is => 'ro', isa => 'Int', request_name => 'bytesConverted', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Image => (is => 'ro', isa => 'Paws::EC2::DiskImageDescription', request_name => 'image', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has Volume => (is => 'ro', isa => 'Paws::EC2::DiskImageVolumeDescription', request_name => 'volume', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw/EC2_DiskImageDescription EC2_DiskImageVolumeDescription/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has BytesConverted => (is => 'ro', isa => Int);
+  has Description => (is => 'ro', isa => Str);
+  has Image => (is => 'ro', isa => EC2_DiskImageDescription);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Volume => (is => 'ro', isa => EC2_DiskImageVolumeDescription);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Volume' => {
+                             'class' => 'Paws::EC2::DiskImageVolumeDescription',
+                             'type' => 'EC2_DiskImageVolumeDescription'
+                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'BytesConverted' => {
+                                     'type' => 'Int'
+                                   },
+               'Image' => {
+                            'class' => 'Paws::EC2::DiskImageDescription',
+                            'type' => 'EC2_DiskImageDescription'
+                          },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Volume' => 'volume',
+                       'Status' => 'status',
+                       'BytesConverted' => 'bytesConverted',
+                       'Image' => 'image',
+                       'StatusMessage' => 'statusMessage',
+                       'Description' => 'description',
+                       'AvailabilityZone' => 'availabilityZone'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +100,7 @@ This class has no description
   A description of the task.
 
 
-=head2 Image => L<Paws::EC2::DiskImageDescription>
+=head2 Image => EC2_DiskImageDescription
 
   The image.
 
@@ -72,7 +115,7 @@ This class has no description
   The status information or errors related to the disk image.
 
 
-=head2 Volume => L<Paws::EC2::DiskImageVolumeDescription>
+=head2 Volume => EC2_DiskImageVolumeDescription
 
   The volume.
 

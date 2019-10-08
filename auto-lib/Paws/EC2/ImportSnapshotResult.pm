@@ -1,11 +1,41 @@
 
 package Paws::EC2::ImportSnapshotResult;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest',]);
-  has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest',]);
-  has SnapshotTaskDetail => (is => 'ro', isa => 'Paws::EC2::SnapshotTaskDetail', request_name => 'snapshotTaskDetail', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_SnapshotTaskDetail/;
+  has Description => (is => 'ro', isa => Str);
+  has ImportTaskId => (is => 'ro', isa => Str);
+  has SnapshotTaskDetail => (is => 'ro', isa => EC2_SnapshotTaskDetail);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImportTaskId' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SnapshotTaskDetail' => {
+                                         'class' => 'Paws::EC2::SnapshotTaskDetail',
+                                         'type' => 'EC2_SnapshotTaskDetail'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ImportTaskId' => 'importTaskId',
+                       'SnapshotTaskDetail' => 'snapshotTaskDetail',
+                       'Description' => 'description'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +57,7 @@ A description of the import snapshot task.
 The ID of the import snapshot task.
 
 
-=head2 SnapshotTaskDetail => L<Paws::EC2::SnapshotTaskDetail>
+=head2 SnapshotTaskDetail => EC2_SnapshotTaskDetail
 
 Information about the import snapshot task.
 

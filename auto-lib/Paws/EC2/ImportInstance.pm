@@ -1,17 +1,53 @@
 
 package Paws::EC2::ImportInstance;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has DiskImages => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DiskImage]', traits => ['NameInRequest'], request_name => 'diskImage' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has LaunchSpecification => (is => 'ro', isa => 'Paws::EC2::ImportInstanceLaunchSpecification', traits => ['NameInRequest'], request_name => 'launchSpecification' );
-  has Platform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platform' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::EC2::Types qw/EC2_DiskImage EC2_ImportInstanceLaunchSpecification/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DiskImages => (is => 'ro', isa => ArrayRef[EC2_DiskImage], predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has LaunchSpecification => (is => 'ro', isa => EC2_ImportInstanceLaunchSpecification, predicate => 1);
+  has Platform => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ImportInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ImportInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'LaunchSpecification' => {
+                                          'class' => 'Paws::EC2::ImportInstanceLaunchSpecification',
+                                          'type' => 'EC2_ImportInstanceLaunchSpecification'
+                                        },
+               'DiskImages' => {
+                                 'class' => 'Paws::EC2::DiskImage',
+                                 'type' => 'ArrayRef[EC2_DiskImage]'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'Platform' => 'platform',
+                       'LaunchSpecification' => 'launchSpecification',
+                       'DiskImages' => 'diskImage',
+                       'Description' => 'description'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +90,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LaunchSpecification => {
         AdditionalInfo => 'MyString',
         Architecture   => 'i386',       # values: i386, x86_64, arm64; OPTIONAL
-        GroupIds   => [ 'MyString', ... ],    # OPTIONAL
+        GroupIds => [ 'MyString', ... ],      # OPTIONAL
         GroupNames => [ 'MyString', ... ],    # OPTIONAL
         InstanceInitiatedShutdownBehavior =>
           'stop',    # values: stop, terminate; OPTIONAL
@@ -93,7 +129,7 @@ A description for the instance being imported.
 
 
 
-=head2 DiskImages => ArrayRef[L<Paws::EC2::DiskImage>]
+=head2 DiskImages => ArrayRef[EC2_DiskImage]
 
 The disk image.
 
@@ -108,7 +144,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 LaunchSpecification => L<Paws::EC2::ImportInstanceLaunchSpecification>
+=head2 LaunchSpecification => EC2_ImportInstanceLaunchSpecification
 
 The launch specification.
 

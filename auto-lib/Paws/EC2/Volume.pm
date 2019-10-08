@@ -1,20 +1,87 @@
 
 package Paws::EC2::Volume;
-  use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeAttachment]', request_name => 'attachmentSet', traits => ['NameInRequest',]);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest',]);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest',]);
-  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest',]);
-  has Iops => (is => 'ro', isa => 'Int', request_name => 'iops', traits => ['NameInRequest',]);
-  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest',]);
-  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest',]);
-  has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest',]);
-  has State => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest',]);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest',]);
-  has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest',]);
-  has VolumeType => (is => 'ro', isa => 'Str', request_name => 'volumeType', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool Int/;
+  use Paws::EC2::Types qw/EC2_Tag EC2_VolumeAttachment/;
+  has Attachments => (is => 'ro', isa => ArrayRef[EC2_VolumeAttachment]);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Iops => (is => 'ro', isa => Int);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has Size => (is => 'ro', isa => Int);
+  has SnapshotId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VolumeId => (is => 'ro', isa => Str);
+  has VolumeType => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attachments' => {
+                                  'class' => 'Paws::EC2::VolumeAttachment',
+                                  'type' => 'ArrayRef[EC2_VolumeAttachment]'
+                                },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Attachments' => 'attachmentSet',
+                       'SnapshotId' => 'snapshotId',
+                       'CreateTime' => 'createTime',
+                       'VolumeId' => 'volumeId',
+                       'State' => 'status',
+                       'KmsKeyId' => 'kmsKeyId',
+                       'Encrypted' => 'encrypted',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'Size' => 'size',
+                       'Tags' => 'tagSet',
+                       'Iops' => 'iops',
+                       'VolumeType' => 'volumeType'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +93,7 @@ Paws::EC2::Volume
 =head1 ATTRIBUTES
 
 
-=head2 Attachments => ArrayRef[L<Paws::EC2::VolumeAttachment>]
+=head2 Attachments => ArrayRef[EC2_VolumeAttachment]
 
 Information about the volume attachments.
 
@@ -90,7 +157,7 @@ The snapshot from which the volume was created, if applicable.
 The volume state.
 
 Valid values are: C<"creating">, C<"available">, C<"in-use">, C<"deleting">, C<"deleted">, C<"error">
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
 Any tags assigned to the volume.
 

@@ -1,9 +1,31 @@
 
 package Paws::EC2::CreateSpotDatafeedSubscriptionResult;
-  use Moose;
-  has SpotDatafeedSubscription => (is => 'ro', isa => 'Paws::EC2::SpotDatafeedSubscription', request_name => 'spotDatafeedSubscription', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_SpotDatafeedSubscription/;
+  has SpotDatafeedSubscription => (is => 'ro', isa => EC2_SpotDatafeedSubscription);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpotDatafeedSubscription' => {
+                                               'class' => 'Paws::EC2::SpotDatafeedSubscription',
+                                               'type' => 'EC2_SpotDatafeedSubscription'
+                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'SpotDatafeedSubscription' => 'spotDatafeedSubscription'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::CreateSpotDatafeedSubscriptionResult
 =head1 ATTRIBUTES
 
 
-=head2 SpotDatafeedSubscription => L<Paws::EC2::SpotDatafeedSubscription>
+=head2 SpotDatafeedSubscription => EC2_SpotDatafeedSubscription
 
 The Spot Instance data feed subscription.
 

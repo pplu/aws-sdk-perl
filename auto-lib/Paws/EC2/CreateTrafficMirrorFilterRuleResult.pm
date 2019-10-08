@@ -1,10 +1,36 @@
 
 package Paws::EC2::CreateTrafficMirrorFilterRuleResult;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest',]);
-  has TrafficMirrorFilterRule => (is => 'ro', isa => 'Paws::EC2::TrafficMirrorFilterRule', request_name => 'trafficMirrorFilterRule', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_TrafficMirrorFilterRule/;
+  has ClientToken => (is => 'ro', isa => Str);
+  has TrafficMirrorFilterRule => (is => 'ro', isa => EC2_TrafficMirrorFilterRule);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrafficMirrorFilterRule' => {
+                                              'class' => 'Paws::EC2::TrafficMirrorFilterRule',
+                                              'type' => 'EC2_TrafficMirrorFilterRule'
+                                            },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'TrafficMirrorFilterRule' => 'trafficMirrorFilterRule',
+                       'ClientToken' => 'clientToken'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +50,7 @@ Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
-=head2 TrafficMirrorFilterRule => L<Paws::EC2::TrafficMirrorFilterRule>
+=head2 TrafficMirrorFilterRule => EC2_TrafficMirrorFilterRule
 
 The Traffic Mirror rule.
 

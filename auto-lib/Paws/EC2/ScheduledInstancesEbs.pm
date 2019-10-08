@@ -1,11 +1,40 @@
 package Paws::EC2::ScheduledInstancesEbs;
-  use Moose;
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool');
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has Iops => (is => 'ro', isa => 'Int');
-  has SnapshotId => (is => 'ro', isa => 'Str');
-  has VolumeSize => (is => 'ro', isa => 'Int');
-  has VolumeType => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Bool Int Str/;
+  use Paws::EC2::Types qw//;
+  has DeleteOnTermination => (is => 'ro', isa => Bool);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Iops => (is => 'ro', isa => Int);
+  has SnapshotId => (is => 'ro', isa => Str);
+  has VolumeSize => (is => 'ro', isa => Int);
+  has VolumeType => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeSize' => {
+                                 'type' => 'Int'
+                               },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               'DeleteOnTermination' => {
+                                          'type' => 'Bool'
+                                        },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,24 @@
 package Paws::EC2::DnsServersOptionsModifyStructure;
-  use Moose;
-  has CustomDnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Enabled => (is => 'ro', isa => 'Bool');
+  use Moo;  use Types::Standard qw/ArrayRef Undef Str Bool/;
+  use Paws::EC2::Types qw//;
+  has CustomDnsServers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Enabled => (is => 'ro', isa => Bool);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomDnsServers' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,40 @@
 package Paws::EC2::LaunchTemplatePlacementRequest;
-  use Moose;
-  has Affinity => (is => 'ro', isa => 'Str');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str');
-  has HostId => (is => 'ro', isa => 'Str');
-  has SpreadDomain => (is => 'ro', isa => 'Str');
-  has Tenancy => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Affinity => (is => 'ro', isa => Str);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+  has HostId => (is => 'ro', isa => Str);
+  has SpreadDomain => (is => 'ro', isa => Str);
+  has Tenancy => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'Tenancy' => {
+                              'type' => 'Str'
+                            },
+               'HostId' => {
+                             'type' => 'Str'
+                           },
+               'SpreadDomain' => {
+                                   'type' => 'Str'
+                                 },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'Affinity' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

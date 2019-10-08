@@ -1,10 +1,36 @@
 
 package Paws::EC2::ModifyHostsResult;
-  use Moose;
-  has Successful => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'successful', traits => ['NameInRequest',]);
-  has Unsuccessful => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UnsuccessfulItem]', request_name => 'unsuccessful', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_UnsuccessfulItem/;
+  has Successful => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Unsuccessful => (is => 'ro', isa => ArrayRef[EC2_UnsuccessfulItem]);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Successful' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Unsuccessful' => {
+                                   'class' => 'Paws::EC2::UnsuccessfulItem',
+                                   'type' => 'ArrayRef[EC2_UnsuccessfulItem]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Successful' => 'successful',
+                       'Unsuccessful' => 'unsuccessful'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +47,7 @@ Paws::EC2::ModifyHostsResult
 The IDs of the Dedicated Hosts that were successfully modified.
 
 
-=head2 Unsuccessful => ArrayRef[L<Paws::EC2::UnsuccessfulItem>]
+=head2 Unsuccessful => ArrayRef[EC2_UnsuccessfulItem]
 
 The IDs of the Dedicated Hosts that could not be modified. Check
 whether the setting you requested can be used.

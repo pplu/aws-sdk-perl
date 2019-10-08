@@ -1,8 +1,34 @@
 package Paws::EC2::VpcCidrBlockAssociation;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
-  has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
-  has CidrBlockState => (is => 'ro', isa => 'Paws::EC2::VpcCidrBlockState', request_name => 'cidrBlockState', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_VpcCidrBlockState/;
+  has AssociationId => (is => 'ro', isa => Str);
+  has CidrBlock => (is => 'ro', isa => Str);
+  has CidrBlockState => (is => 'ro', isa => EC2_VpcCidrBlockState);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'CidrBlockState' => {
+                                     'class' => 'Paws::EC2::VpcCidrBlockState',
+                                     'type' => 'EC2_VpcCidrBlockState'
+                                   },
+               'CidrBlock' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'AssociationId' => 'associationId',
+                       'CidrBlockState' => 'cidrBlockState',
+                       'CidrBlock' => 'cidrBlock'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +74,7 @@ This class has no description
   The IPv4 CIDR block.
 
 
-=head2 CidrBlockState => L<Paws::EC2::VpcCidrBlockState>
+=head2 CidrBlockState => EC2_VpcCidrBlockState
 
   Information about the state of the CIDR block.
 

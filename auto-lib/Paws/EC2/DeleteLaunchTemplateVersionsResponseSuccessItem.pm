@@ -1,8 +1,33 @@
 package Paws::EC2::DeleteLaunchTemplateVersionsResponseSuccessItem;
-  use Moose;
-  has LaunchTemplateId => (is => 'ro', isa => 'Str', request_name => 'launchTemplateId', traits => ['NameInRequest']);
-  has LaunchTemplateName => (is => 'ro', isa => 'Str', request_name => 'launchTemplateName', traits => ['NameInRequest']);
-  has VersionNumber => (is => 'ro', isa => 'Int', request_name => 'versionNumber', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw//;
+  has LaunchTemplateId => (is => 'ro', isa => Str);
+  has LaunchTemplateName => (is => 'ro', isa => Str);
+  has VersionNumber => (is => 'ro', isa => Int);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchTemplateId' => {
+                                       'type' => 'Str'
+                                     },
+               'VersionNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'LaunchTemplateName' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'LaunchTemplateId' => 'launchTemplateId',
+                       'VersionNumber' => 'versionNumber',
+                       'LaunchTemplateName' => 'launchTemplateName'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

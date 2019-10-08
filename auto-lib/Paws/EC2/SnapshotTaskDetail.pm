@@ -1,16 +1,74 @@
 package Paws::EC2::SnapshotTaskDetail;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has DiskImageSize => (is => 'ro', isa => 'Num', request_name => 'diskImageSize', traits => ['NameInRequest']);
-  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest']);
-  has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
-  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
-  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
-  has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
-  has UserBucket => (is => 'ro', isa => 'Paws::EC2::UserBucketDetails', request_name => 'userBucket', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Num Bool/;
+  use Paws::EC2::Types qw/EC2_UserBucketDetails/;
+  has Description => (is => 'ro', isa => Str);
+  has DiskImageSize => (is => 'ro', isa => Num);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Format => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Str);
+  has SnapshotId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+  has UserBucket => (is => 'ro', isa => EC2_UserBucketDetails);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DiskImageSize' => {
+                                    'type' => 'Num'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'UserBucket' => {
+                                 'class' => 'Paws::EC2::UserBucketDetails',
+                                 'type' => 'EC2_UserBucketDetails'
+                               },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'Progress' => {
+                               'type' => 'Str'
+                             },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DiskImageSize' => 'diskImageSize',
+                       'Status' => 'status',
+                       'SnapshotId' => 'snapshotId',
+                       'KmsKeyId' => 'kmsKeyId',
+                       'Format' => 'format',
+                       'Encrypted' => 'encrypted',
+                       'UserBucket' => 'userBucket',
+                       'Url' => 'url',
+                       'Progress' => 'progress',
+                       'StatusMessage' => 'statusMessage',
+                       'Description' => 'description'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -97,7 +155,7 @@ master key (CMK) that was used to create the encrypted snapshot.
   The URL of the disk image from which the snapshot is created.
 
 
-=head2 UserBucket => L<Paws::EC2::UserBucketDetails>
+=head2 UserBucket => EC2_UserBucketDetails
 
   The S3 bucket for the disk image.
 

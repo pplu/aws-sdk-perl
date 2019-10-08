@@ -1,11 +1,42 @@
 
 package Paws::EC2::DescribeSnapshotAttributeResult;
-  use Moose;
-  has CreateVolumePermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CreateVolumePermission]', request_name => 'createVolumePermission', traits => ['NameInRequest',]);
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest',]);
-  has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_CreateVolumePermission EC2_ProductCode/;
+  has CreateVolumePermissions => (is => 'ro', isa => ArrayRef[EC2_CreateVolumePermission]);
+  has ProductCodes => (is => 'ro', isa => ArrayRef[EC2_ProductCode]);
+  has SnapshotId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProductCodes' => {
+                                   'class' => 'Paws::EC2::ProductCode',
+                                   'type' => 'ArrayRef[EC2_ProductCode]'
+                                 },
+               'CreateVolumePermissions' => {
+                                              'class' => 'Paws::EC2::CreateVolumePermission',
+                                              'type' => 'ArrayRef[EC2_CreateVolumePermission]'
+                                            },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ProductCodes' => 'productCodes',
+                       'CreateVolumePermissions' => 'createVolumePermission',
+                       'SnapshotId' => 'snapshotId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,13 +48,13 @@ Paws::EC2::DescribeSnapshotAttributeResult
 =head1 ATTRIBUTES
 
 
-=head2 CreateVolumePermissions => ArrayRef[L<Paws::EC2::CreateVolumePermission>]
+=head2 CreateVolumePermissions => ArrayRef[EC2_CreateVolumePermission]
 
 The users and groups that have the permissions for creating volumes
 from the snapshot.
 
 
-=head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
+=head2 ProductCodes => ArrayRef[EC2_ProductCode]
 
 The product codes.
 

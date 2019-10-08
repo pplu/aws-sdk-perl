@@ -1,24 +1,77 @@
 
 package Paws::EC2::ModifyTrafficMirrorFilterRule;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DestinationCidrBlock => (is => 'ro', isa => 'Str');
-  has DestinationPortRange => (is => 'ro', isa => 'Paws::EC2::TrafficMirrorPortRangeRequest');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Protocol => (is => 'ro', isa => 'Int');
-  has RemoveFields => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveField' );
-  has RuleAction => (is => 'ro', isa => 'Str');
-  has RuleNumber => (is => 'ro', isa => 'Int');
-  has SourceCidrBlock => (is => 'ro', isa => 'Str');
-  has SourcePortRange => (is => 'ro', isa => 'Paws::EC2::TrafficMirrorPortRangeRequest');
-  has TrafficDirection => (is => 'ro', isa => 'Str');
-  has TrafficMirrorFilterRuleId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_TrafficMirrorPortRangeRequest/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationCidrBlock => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationPortRange => (is => 'ro', isa => EC2_TrafficMirrorPortRangeRequest, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Protocol => (is => 'ro', isa => Int, predicate => 1);
+  has RemoveFields => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has RuleAction => (is => 'ro', isa => Str, predicate => 1);
+  has RuleNumber => (is => 'ro', isa => Int, predicate => 1);
+  has SourceCidrBlock => (is => 'ro', isa => Str, predicate => 1);
+  has SourcePortRange => (is => 'ro', isa => EC2_TrafficMirrorPortRangeRequest, predicate => 1);
+  has TrafficDirection => (is => 'ro', isa => Str, predicate => 1);
+  has TrafficMirrorFilterRuleId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyTrafficMirrorFilterRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyTrafficMirrorFilterRuleResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyTrafficMirrorFilterRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyTrafficMirrorFilterRuleResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'RuleNumber' => {
+                                 'type' => 'Int'
+                               },
+               'RemoveFields' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'DestinationPortRange' => {
+                                           'class' => 'Paws::EC2::TrafficMirrorPortRangeRequest',
+                                           'type' => 'EC2_TrafficMirrorPortRangeRequest'
+                                         },
+               'DestinationCidrBlock' => {
+                                           'type' => 'Str'
+                                         },
+               'TrafficMirrorFilterRuleId' => {
+                                                'type' => 'Str'
+                                              },
+               'RuleAction' => {
+                                 'type' => 'Str'
+                               },
+               'SourcePortRange' => {
+                                      'class' => 'Paws::EC2::TrafficMirrorPortRangeRequest',
+                                      'type' => 'EC2_TrafficMirrorPortRangeRequest'
+                                    },
+               'TrafficDirection' => {
+                                       'type' => 'Str'
+                                     },
+               'Protocol' => {
+                               'type' => 'Int'
+                             },
+               'SourceCidrBlock' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'RemoveFields' => 'RemoveField'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -87,7 +140,7 @@ The destination CIDR block to assign to the Traffic Mirror rule.
 
 
 
-=head2 DestinationPortRange => L<Paws::EC2::TrafficMirrorPortRangeRequest>
+=head2 DestinationPortRange => EC2_TrafficMirrorPortRangeRequest
 
 The destination ports that are associated with the Traffic Mirror rule.
 
@@ -138,7 +191,7 @@ The source CIDR block to assign to the Traffic Mirror rule.
 
 
 
-=head2 SourcePortRange => L<Paws::EC2::TrafficMirrorPortRangeRequest>
+=head2 SourcePortRange => EC2_TrafficMirrorPortRangeRequest
 
 The port range to assign to the Traffic Mirror rule.
 

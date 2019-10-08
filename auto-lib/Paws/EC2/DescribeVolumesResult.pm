@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeVolumesResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Volume]', request_name => 'volumeSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Volume/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Volumes => (is => 'ro', isa => ArrayRef[EC2_Volume]);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Volumes' => {
+                              'class' => 'Paws::EC2::Volume',
+                              'type' => 'ArrayRef[EC2_Volume]'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Volumes' => 'volumeSet',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +51,7 @@ results. This value is C<null> when there are no more results to
 return.
 
 
-=head2 Volumes => ArrayRef[L<Paws::EC2::Volume>]
+=head2 Volumes => ArrayRef[EC2_Volume]
 
 Information about the volumes.
 

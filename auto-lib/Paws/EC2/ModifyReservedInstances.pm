@@ -1,15 +1,42 @@
 
 package Paws::EC2::ModifyReservedInstances;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
-  has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' , required => 1);
-  has TargetConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesConfiguration]', traits => ['NameInRequest'], request_name => 'ReservedInstancesConfigurationSetItemType' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_ReservedInstancesConfiguration/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has ReservedInstancesIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has TargetConfigurations => (is => 'ro', isa => ArrayRef[EC2_ReservedInstancesConfiguration], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReservedInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyReservedInstancesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyReservedInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyReservedInstancesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetConfigurations' => {
+                                           'class' => 'Paws::EC2::ReservedInstancesConfiguration',
+                                           'type' => 'ArrayRef[EC2_ReservedInstancesConfiguration]'
+                                         },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'ReservedInstancesIds' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         }
+             },
+  'NameInRequest' => {
+                       'TargetConfigurations' => 'ReservedInstancesConfigurationSetItemType',
+                       'ClientToken' => 'clientToken',
+                       'ReservedInstancesIds' => 'ReservedInstancesId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +100,7 @@ The IDs of the Reserved Instances to modify.
 
 
 
-=head2 B<REQUIRED> TargetConfigurations => ArrayRef[L<Paws::EC2::ReservedInstancesConfiguration>]
+=head2 B<REQUIRED> TargetConfigurations => ArrayRef[EC2_ReservedInstancesConfiguration]
 
 The configuration settings for the Reserved Instances to modify.
 

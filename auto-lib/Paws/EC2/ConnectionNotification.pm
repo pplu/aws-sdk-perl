@@ -1,12 +1,53 @@
 package Paws::EC2::ConnectionNotification;
-  use Moose;
-  has ConnectionEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'connectionEvents', traits => ['NameInRequest']);
-  has ConnectionNotificationArn => (is => 'ro', isa => 'Str', request_name => 'connectionNotificationArn', traits => ['NameInRequest']);
-  has ConnectionNotificationId => (is => 'ro', isa => 'Str', request_name => 'connectionNotificationId', traits => ['NameInRequest']);
-  has ConnectionNotificationState => (is => 'ro', isa => 'Str', request_name => 'connectionNotificationState', traits => ['NameInRequest']);
-  has ConnectionNotificationType => (is => 'ro', isa => 'Str', request_name => 'connectionNotificationType', traits => ['NameInRequest']);
-  has ServiceId => (is => 'ro', isa => 'Str', request_name => 'serviceId', traits => ['NameInRequest']);
-  has VpcEndpointId => (is => 'ro', isa => 'Str', request_name => 'vpcEndpointId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::EC2::Types qw//;
+  has ConnectionEvents => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ConnectionNotificationArn => (is => 'ro', isa => Str);
+  has ConnectionNotificationId => (is => 'ro', isa => Str);
+  has ConnectionNotificationState => (is => 'ro', isa => Str);
+  has ConnectionNotificationType => (is => 'ro', isa => Str);
+  has ServiceId => (is => 'ro', isa => Str);
+  has VpcEndpointId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConnectionNotificationType' => {
+                                                 'type' => 'Str'
+                                               },
+               'ConnectionEvents' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ConnectionNotificationState' => {
+                                                  'type' => 'Str'
+                                                },
+               'ConnectionNotificationId' => {
+                                               'type' => 'Str'
+                                             },
+               'VpcEndpointId' => {
+                                    'type' => 'Str'
+                                  },
+               'ConnectionNotificationArn' => {
+                                                'type' => 'Str'
+                                              },
+               'ServiceId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'ConnectionNotificationType' => 'connectionNotificationType',
+                       'ConnectionEvents' => 'connectionEvents',
+                       'ConnectionNotificationState' => 'connectionNotificationState',
+                       'ConnectionNotificationId' => 'connectionNotificationId',
+                       'VpcEndpointId' => 'vpcEndpointId',
+                       'ConnectionNotificationArn' => 'connectionNotificationArn',
+                       'ServiceId' => 'serviceId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

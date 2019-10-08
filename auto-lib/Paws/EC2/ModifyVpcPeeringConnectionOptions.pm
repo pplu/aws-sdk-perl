@@ -1,16 +1,42 @@
 
 package Paws::EC2::ModifyVpcPeeringConnectionOptions;
-  use Moose;
-  has AccepterPeeringConnectionOptions => (is => 'ro', isa => 'Paws::EC2::PeeringConnectionOptionsRequest');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has RequesterPeeringConnectionOptions => (is => 'ro', isa => 'Paws::EC2::PeeringConnectionOptionsRequest');
-  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_PeeringConnectionOptionsRequest/;
+  has AccepterPeeringConnectionOptions => (is => 'ro', isa => EC2_PeeringConnectionOptionsRequest, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has RequesterPeeringConnectionOptions => (is => 'ro', isa => EC2_PeeringConnectionOptionsRequest, predicate => 1);
+  has VpcPeeringConnectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyVpcPeeringConnectionOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyVpcPeeringConnectionOptionsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyVpcPeeringConnectionOptions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyVpcPeeringConnectionOptionsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'AccepterPeeringConnectionOptions' => {
+                                                       'class' => 'Paws::EC2::PeeringConnectionOptionsRequest',
+                                                       'type' => 'EC2_PeeringConnectionOptionsRequest'
+                                                     },
+               'VpcPeeringConnectionId' => {
+                                             'type' => 'Str'
+                                           },
+               'RequesterPeeringConnectionOptions' => {
+                                                        'class' => 'Paws::EC2::PeeringConnectionOptionsRequest',
+                                                        'type' => 'EC2_PeeringConnectionOptionsRequest'
+                                                      }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +88,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 AccepterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>
+=head2 AccepterPeeringConnectionOptions => EC2_PeeringConnectionOptionsRequest
 
 The VPC peering connection options for the accepter VPC.
 
@@ -77,7 +103,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 RequesterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>
+=head2 RequesterPeeringConnectionOptions => EC2_PeeringConnectionOptionsRequest
 
 The VPC peering connection options for the requester VPC.
 

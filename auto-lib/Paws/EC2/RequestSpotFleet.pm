@@ -1,14 +1,37 @@
 
 package Paws::EC2::RequestSpotFleet;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has SpotFleetRequestConfig => (is => 'ro', isa => 'Paws::EC2::SpotFleetRequestConfigData', traits => ['NameInRequest'], request_name => 'spotFleetRequestConfig' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_SpotFleetRequestConfigData/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has SpotFleetRequestConfig => (is => 'ro', isa => EC2_SpotFleetRequestConfigData, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RequestSpotFleet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::RequestSpotFleetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RequestSpotFleet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::RequestSpotFleetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'SpotFleetRequestConfig' => {
+                                             'class' => 'Paws::EC2::SpotFleetRequestConfigData',
+                                             'type' => 'EC2_SpotFleetRequestConfigData'
+                                           }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'SpotFleetRequestConfig' => 'spotFleetRequestConfig'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -196,7 +219,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
+=head2 B<REQUIRED> SpotFleetRequestConfig => EC2_SpotFleetRequestConfigData
 
 The configuration for the Spot Fleet request.
 

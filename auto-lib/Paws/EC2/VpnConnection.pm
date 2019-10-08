@@ -1,17 +1,82 @@
 package Paws::EC2::VpnConnection;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
-  has CustomerGatewayConfiguration => (is => 'ro', isa => 'Str', request_name => 'customerGatewayConfiguration', traits => ['NameInRequest']);
-  has CustomerGatewayId => (is => 'ro', isa => 'Str', request_name => 'customerGatewayId', traits => ['NameInRequest']);
-  has Options => (is => 'ro', isa => 'Paws::EC2::VpnConnectionOptions', request_name => 'options', traits => ['NameInRequest']);
-  has Routes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnStaticRoute]', request_name => 'routes', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has TransitGatewayId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayId', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has VgwTelemetry => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VgwTelemetry]', request_name => 'vgwTelemetry', traits => ['NameInRequest']);
-  has VpnConnectionId => (is => 'ro', isa => 'Str', request_name => 'vpnConnectionId', traits => ['NameInRequest']);
-  has VpnGatewayId => (is => 'ro', isa => 'Str', request_name => 'vpnGatewayId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_VpnStaticRoute EC2_Tag EC2_VgwTelemetry EC2_VpnConnectionOptions/;
+  has Category => (is => 'ro', isa => Str);
+  has CustomerGatewayConfiguration => (is => 'ro', isa => Str);
+  has CustomerGatewayId => (is => 'ro', isa => Str);
+  has Options => (is => 'ro', isa => EC2_VpnConnectionOptions);
+  has Routes => (is => 'ro', isa => ArrayRef[EC2_VpnStaticRoute]);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has TransitGatewayId => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has VgwTelemetry => (is => 'ro', isa => ArrayRef[EC2_VgwTelemetry]);
+  has VpnConnectionId => (is => 'ro', isa => Str);
+  has VpnGatewayId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VgwTelemetry' => {
+                                   'class' => 'Paws::EC2::VgwTelemetry',
+                                   'type' => 'ArrayRef[EC2_VgwTelemetry]'
+                                 },
+               'Options' => {
+                              'class' => 'Paws::EC2::VpnConnectionOptions',
+                              'type' => 'EC2_VpnConnectionOptions'
+                            },
+               'CustomerGatewayId' => {
+                                        'type' => 'Str'
+                                      },
+               'VpnConnectionId' => {
+                                      'type' => 'Str'
+                                    },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'CustomerGatewayConfiguration' => {
+                                                   'type' => 'Str'
+                                                 },
+               'TransitGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'VpnGatewayId' => {
+                                   'type' => 'Str'
+                                 },
+               'Routes' => {
+                             'class' => 'Paws::EC2::VpnStaticRoute',
+                             'type' => 'ArrayRef[EC2_VpnStaticRoute]'
+                           },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'Category' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'VgwTelemetry' => 'vgwTelemetry',
+                       'Options' => 'options',
+                       'CustomerGatewayId' => 'customerGatewayId',
+                       'VpnConnectionId' => 'vpnConnectionId',
+                       'State' => 'state',
+                       'CustomerGatewayConfiguration' => 'customerGatewayConfiguration',
+                       'TransitGatewayId' => 'transitGatewayId',
+                       'Type' => 'type',
+                       'VpnGatewayId' => 'vpnGatewayId',
+                       'Routes' => 'routes',
+                       'Tags' => 'tagSet',
+                       'Category' => 'category'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,12 +133,12 @@ C<pending> or C<available> state.
   The ID of the customer gateway at your end of the VPN connection.
 
 
-=head2 Options => L<Paws::EC2::VpnConnectionOptions>
+=head2 Options => EC2_VpnConnectionOptions
 
   The VPN connection options.
 
 
-=head2 Routes => ArrayRef[L<Paws::EC2::VpnStaticRoute>]
+=head2 Routes => ArrayRef[EC2_VpnStaticRoute]
 
   The static routes associated with the VPN connection.
 
@@ -83,7 +148,7 @@ C<pending> or C<available> state.
   The current state of the VPN connection.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the VPN connection.
 
@@ -98,7 +163,7 @@ C<pending> or C<available> state.
   The type of VPN connection.
 
 
-=head2 VgwTelemetry => ArrayRef[L<Paws::EC2::VgwTelemetry>]
+=head2 VgwTelemetry => ArrayRef[EC2_VgwTelemetry]
 
   Information about the VPN tunnel.
 

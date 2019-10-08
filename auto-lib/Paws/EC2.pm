@@ -1,14 +1,15 @@
 package Paws::EC2;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'ec2' }
   sub signing_name { 'ec2' }
   sub version { '2016-11-15' }
   sub flattened_arrays { 1 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
        sub { defined $_[0]->http_status and $_[0]->http_status == 503 and $_[0]->code eq 'RequestLimitExceeded' },
   ] });
 
@@ -3443,7 +3444,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =item [DryRun => Bool]
 
-=item [TargetConfigurations => ArrayRef[L<Paws::EC2::TargetConfigurationRequest>]]
+=item [TargetConfigurations => ArrayRef[EC2_TargetConfigurationRequest]]
 
 
 =back
@@ -3621,7 +3622,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [HostRecovery => Str]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 
 =back
@@ -3847,7 +3848,7 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 
 =over
 
-=item IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>
+=item IamInstanceProfile => EC2_IamInstanceProfileSpecification
 
 =item InstanceId => Str
 
@@ -4168,7 +4169,7 @@ clients to access resources in AWS or on-premises networks.
 
 =item [FromPort => Int]
 
-=item [IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]]
+=item [IpPermissions => ArrayRef[EC2_IpPermission]]
 
 =item [IpProtocol => Str]
 
@@ -4220,7 +4221,7 @@ Limits
 
 =item [GroupName => Str]
 
-=item [IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]]
+=item [IpPermissions => ArrayRef[EC2_IpPermission]]
 
 =item [IpProtocol => Str]
 
@@ -4262,7 +4263,7 @@ Limits
 
 =item InstanceId => Str
 
-=item Storage => L<Paws::EC2::Storage>
+=item Storage => EC2_Storage
 
 =item [DryRun => Bool]
 
@@ -4631,7 +4632,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [InstanceMatchCriteria => Str]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 =item [Tenancy => Str]
 
@@ -4676,11 +4677,11 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item AuthenticationOptions => ArrayRef[L<Paws::EC2::ClientVpnAuthenticationRequest>]
+=item AuthenticationOptions => ArrayRef[EC2_ClientVpnAuthenticationRequest]
 
 =item ClientCidrBlock => Str
 
-=item ConnectionLogOptions => L<Paws::EC2::ConnectionLogOptions>
+=item ConnectionLogOptions => EC2_ConnectionLogOptions
 
 =item ServerCertificateArn => Str
 
@@ -4692,7 +4693,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 =item [TransportProtocol => Str]
 
@@ -4843,7 +4844,7 @@ Default VPCs FAQ (http://aws.amazon.com/vpc/faqs/#Default_VPCs).
 
 =over
 
-=item DhcpConfigurations => ArrayRef[L<Paws::EC2::NewDhcpConfiguration>]
+=item DhcpConfigurations => ArrayRef[EC2_NewDhcpConfiguration]
 
 =item [DryRun => Bool]
 
@@ -4944,9 +4945,9 @@ instance.
 
 =over
 
-=item LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::FleetLaunchTemplateConfigRequest>]
+=item LaunchTemplateConfigs => ArrayRef[EC2_FleetLaunchTemplateConfigRequest]
 
-=item TargetCapacitySpecification => L<Paws::EC2::TargetCapacitySpecificationRequest>
+=item TargetCapacitySpecification => EC2_TargetCapacitySpecificationRequest
 
 =item [ClientToken => Str]
 
@@ -4954,13 +4955,13 @@ instance.
 
 =item [ExcessCapacityTerminationPolicy => Str]
 
-=item [OnDemandOptions => L<Paws::EC2::OnDemandOptionsRequest>]
+=item [OnDemandOptions => EC2_OnDemandOptionsRequest]
 
 =item [ReplaceUnhealthyInstances => Bool]
 
-=item [SpotOptions => L<Paws::EC2::SpotOptionsRequest>]
+=item [SpotOptions => EC2_SpotOptionsRequest]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 =item [TerminateInstancesWithExpiration => Bool]
 
@@ -5041,7 +5042,7 @@ the I<Amazon Virtual Private Cloud User Guide>.
 
 =over
 
-=item InputStorageLocation => L<Paws::EC2::StorageLocation>
+=item InputStorageLocation => EC2_StorageLocation
 
 =item [ClientToken => Str]
 
@@ -5049,7 +5050,7 @@ the I<Amazon Virtual Private Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [LogsStorageLocation => L<Paws::EC2::StorageLocation>]
+=item [LogsStorageLocation => EC2_StorageLocation]
 
 =item [Name => Str]
 
@@ -5080,7 +5081,7 @@ Kit (https://github.com/aws/aws-fpga/).
 
 =item Name => Str
 
-=item [BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]]
+=item [BlockDeviceMappings => ArrayRef[EC2_BlockDeviceMapping]]
 
 =item [Description => Str]
 
@@ -5117,7 +5118,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [Description => Str]
 
-=item [ExportToS3Task => L<Paws::EC2::ExportToS3TaskSpecification>]
+=item [ExportToS3Task => EC2_ExportToS3TaskSpecification]
 
 =item [TargetEnvironment => Str]
 
@@ -5194,7 +5195,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item LaunchTemplateData => L<Paws::EC2::RequestLaunchTemplateData>
+=item LaunchTemplateData => EC2_RequestLaunchTemplateData
 
 =item LaunchTemplateName => Str
 
@@ -5221,7 +5222,7 @@ parameters in the request.
 
 =over
 
-=item LaunchTemplateData => L<Paws::EC2::RequestLaunchTemplateData>
+=item LaunchTemplateData => EC2_RequestLaunchTemplateData
 
 =item [ClientToken => Str]
 
@@ -5319,11 +5320,11 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>]
+=item [IcmpTypeCode => EC2_IcmpTypeCode]
 
 =item [Ipv6CidrBlock => Str]
 
-=item [PortRange => L<Paws::EC2::PortRange>]
+=item [PortRange => EC2_PortRange]
 
 
 =back
@@ -5369,11 +5370,11 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 =item [Ipv6AddressCount => Int]
 
-=item [Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]]
+=item [Ipv6Addresses => ArrayRef[EC2_InstanceIpv6Address]]
 
 =item [PrivateIpAddress => Str]
 
-=item [PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]]
+=item [PrivateIpAddresses => ArrayRef[EC2_PrivateIpAddressSpecification]]
 
 =item [SecondaryPrivateIpAddressCount => Int]
 
@@ -5463,7 +5464,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item InstanceCount => Int
 
-=item PriceSchedules => ArrayRef[L<Paws::EC2::PriceScheduleSpecification>]
+=item PriceSchedules => ArrayRef[EC2_PriceScheduleSpecification]
 
 =item ReservedInstancesId => Str
 
@@ -5654,7 +5655,7 @@ Limits
 
 =item [DryRun => Bool]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 
 =back
@@ -5705,7 +5706,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item InstanceSpecification => L<Paws::EC2::InstanceSpecification>
+=item InstanceSpecification => EC2_InstanceSpecification
 
 =item [CopyTagsFromSource => Str]
 
@@ -5713,7 +5714,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 
 =back
@@ -5814,7 +5815,7 @@ the I<Amazon Virtual Private Cloud User Guide>.
 
 =item Resources => ArrayRef[Str|Undef]
 
-=item Tags => ArrayRef[L<Paws::EC2::Tag>]
+=item Tags => ArrayRef[EC2_Tag]
 
 =item [DryRun => Bool]
 
@@ -5850,7 +5851,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 
 =back
@@ -5891,13 +5892,13 @@ network services.
 
 =item [Description => Str]
 
-=item [DestinationPortRange => L<Paws::EC2::TrafficMirrorPortRangeRequest>]
+=item [DestinationPortRange => EC2_TrafficMirrorPortRangeRequest]
 
 =item [DryRun => Bool]
 
 =item [Protocol => Int]
 
-=item [SourcePortRange => L<Paws::EC2::TrafficMirrorPortRangeRequest>]
+=item [SourcePortRange => EC2_TrafficMirrorPortRangeRequest]
 
 
 =back
@@ -5934,7 +5935,7 @@ You need the Traffic Mirror filter ID when you create the rule.
 
 =item [PacketLength => Int]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 =item [VirtualNetworkId => Int]
 
@@ -5974,7 +5975,7 @@ create filter rules that specify the traffic to mirror.
 
 =item [NetworkLoadBalancerArn => Str]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 
 =back
@@ -6005,9 +6006,9 @@ CreateTrafficMirrorSession.
 
 =item [DryRun => Bool]
 
-=item [Options => L<Paws::EC2::TransitGatewayRequestOptions>]
+=item [Options => EC2_TransitGatewayRequestOptions]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 
 =back
@@ -6073,7 +6074,7 @@ Creates a static route for the specified transit gateway route table.
 
 =item [DryRun => Bool]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 
 =back
@@ -6097,9 +6098,9 @@ Creates a route table for the specified transit gateway.
 
 =item [DryRun => Bool]
 
-=item [Options => L<Paws::EC2::CreateTransitGatewayVpcAttachmentRequestOptions>]
+=item [Options => EC2_CreateTransitGatewayVpcAttachmentRequestOptions]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 
 =back
@@ -6136,7 +6137,7 @@ VPC route table using CreateRoute.
 
 =item [SnapshotId => Str]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 =item [VolumeType => Str]
 
@@ -6383,7 +6384,7 @@ C<failed>.
 
 =item [DryRun => Bool]
 
-=item [Options => L<Paws::EC2::VpnConnectionOptionsSpecification>]
+=item [Options => EC2_VpnConnectionOptionsSpecification]
 
 =item [TransitGatewayId => Str]
 
@@ -6992,7 +6993,7 @@ in the subnet before you can delete the subnet.
 
 =item [DryRun => Bool]
 
-=item [Tags => ArrayRef[L<Paws::EC2::Tag>]]
+=item [Tags => ArrayRef[EC2_Tag]]
 
 
 =back
@@ -7477,7 +7478,7 @@ you can allocate for use with EC2-VPC.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [PublicIps => ArrayRef[Str|Undef]]
 
@@ -7537,7 +7538,7 @@ C<vpc-peering-connection> | C<vpn-connection> | C<vpn-gateway>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [ZoneIds => ArrayRef[Str|Undef]]
 
@@ -7568,7 +7569,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 
 =back
@@ -7617,7 +7618,7 @@ the address ranges, use DescribePublicIpv4Pools.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -7641,7 +7642,7 @@ currently using.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [InstanceIds => ArrayRef[Str|Undef]]
 
@@ -7670,7 +7671,7 @@ information about other instances.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -7694,7 +7695,7 @@ Describes the authorization rules for a specified Client VPN endpoint.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -7720,7 +7721,7 @@ endpoint.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -7744,7 +7745,7 @@ Describes one or more Client VPN endpoints in the account.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -7770,7 +7771,7 @@ Describes the routes for the specified Client VPN endpoint.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -7819,7 +7820,7 @@ action, see VM Import Manifest
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 
 =back
@@ -7843,7 +7844,7 @@ I<AWS Site-to-Site VPN User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -7893,7 +7894,7 @@ Describes one or more of your egress-only internet gateways.
 
 =item [ElasticGpuIds => ArrayRef[Str|Undef]]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -7963,7 +7964,7 @@ time.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -7985,7 +7986,7 @@ Describes the running instances for the specified EC2 Fleet.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [FleetIds => ArrayRef[Str|Undef]]
 
@@ -8009,7 +8010,7 @@ Describes the specified EC2 Fleets or all your EC2 Fleets.
 
 =item [DryRun => Bool]
 
-=item [Filter => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filter => ArrayRef[EC2_Filter]]
 
 =item [FlowLogIds => ArrayRef[Str|Undef]]
 
@@ -8056,7 +8057,7 @@ Describes the specified attribute of the specified Amazon FPGA Image
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [FpgaImageIds => ArrayRef[Str|Undef]]
 
@@ -8082,7 +8083,7 @@ accounts for which you have load permissions.
 
 =over
 
-=item [Filter => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filter => ArrayRef[EC2_Filter]]
 
 =item [MaxDuration => Int]
 
@@ -8118,7 +8119,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item [Filter => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filter => ArrayRef[EC2_Filter]]
 
 =item [HostReservationIdSet => ArrayRef[Str|Undef]]
 
@@ -8141,7 +8142,7 @@ account.
 
 =over
 
-=item [Filter => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filter => ArrayRef[EC2_Filter]]
 
 =item [HostIds => ArrayRef[Str|Undef]]
 
@@ -8170,7 +8171,7 @@ listed with the state C<released>.
 
 =item [AssociationIds => ArrayRef[Str|Undef]]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -8295,7 +8296,7 @@ only one attribute at a time.
 
 =item [ExecutableUsers => ArrayRef[Str|Undef]]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [ImageIds => ArrayRef[Str|Undef]]
 
@@ -8327,7 +8328,7 @@ image results in an error indicating that the AMI ID cannot be found.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [ImportTaskIds => ArrayRef[Str|Undef]]
 
@@ -8352,7 +8353,7 @@ tasks that are already created.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [ImportTaskIds => ArrayRef[Str|Undef]]
 
@@ -8401,7 +8402,7 @@ C<sourceDestCheck> | C<groupSet> | C<ebsOptimized> | C<sriovNetSupport>
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [InstanceIds => ArrayRef[Str|Undef]]
 
@@ -8450,7 +8451,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [InstanceIds => ArrayRef[Str|Undef]]
 
@@ -8490,7 +8491,7 @@ that are in an unaffected zone, the call works normally.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [IncludeAllInstances => Bool]
 
@@ -8552,7 +8553,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [InternetGatewayIds => ArrayRef[Str|Undef]]
 
@@ -8576,7 +8577,7 @@ Describes one or more of your internet gateways.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [KeyNames => ArrayRef[Str|Undef]]
 
@@ -8600,7 +8601,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [LaunchTemplateIds => ArrayRef[Str|Undef]]
 
@@ -8626,7 +8627,7 @@ Describes one or more launch templates.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [LaunchTemplateId => Str]
 
@@ -8659,7 +8660,7 @@ describe all versions, individual versions, or a range of versions.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -8684,7 +8685,7 @@ addresses in your account.
 
 =over
 
-=item [Filter => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filter => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -8708,7 +8709,7 @@ Describes one or more of your NAT gateways.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -8755,7 +8756,7 @@ attribute at a time.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -8779,7 +8780,7 @@ Describes the permissions for your network interfaces.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -8803,7 +8804,7 @@ Describes one or more of your network interfaces.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [GroupNames => ArrayRef[Str|Undef]]
 
@@ -8826,7 +8827,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -8916,7 +8917,7 @@ Describes the specified IPv4 address pools.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [RegionNames => ArrayRef[Str|Undef]]
 
@@ -8945,7 +8946,7 @@ Endpoints
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [OfferingClass => Str]
 
@@ -8971,7 +8972,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [ReservedInstancesId => Str]
 
@@ -9014,7 +9015,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [NextToken => Str]
 
@@ -9045,7 +9046,7 @@ in the Amazon Elastic Compute Cloud User Guide.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [IncludeMarketplace => Bool]
 
@@ -9099,7 +9100,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9130,13 +9131,13 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 
 =over
 
-=item FirstSlotStartTimeRange => L<Paws::EC2::SlotDateTimeRangeRequest>
+=item FirstSlotStartTimeRange => EC2_SlotDateTimeRangeRequest
 
-=item Recurrence => L<Paws::EC2::ScheduledInstanceRecurrenceRequest>
+=item Recurrence => EC2_ScheduledInstanceRecurrenceRequest
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9172,7 +9173,7 @@ schedule.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9180,7 +9181,7 @@ schedule.
 
 =item [ScheduledInstanceIds => ArrayRef[Str|Undef]]
 
-=item [SlotStartTimeRange => L<Paws::EC2::SlotStartTimeRangeRequest>]
+=item [SlotStartTimeRange => EC2_SlotStartTimeRangeRequest]
 
 
 =back
@@ -9219,7 +9220,7 @@ this request.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [GroupIds => ArrayRef[Str|Undef]]
 
@@ -9279,7 +9280,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9465,7 +9466,7 @@ their instances are terminated.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9511,7 +9512,7 @@ and their instances are terminated.
 
 =item [EndTime => Str]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [InstanceTypes => ArrayRef[Str|Undef]]
 
@@ -9573,7 +9574,7 @@ which the VPC peering connection has been deleted.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9601,7 +9602,7 @@ the I<Amazon Virtual Private Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9627,7 +9628,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9651,7 +9652,7 @@ Describes one or more Traffic Mirror filters.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9677,7 +9678,7 @@ results.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9701,7 +9702,7 @@ Information about one or more Traffic Mirror targets.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9728,7 +9729,7 @@ or resource owner.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9754,7 +9755,7 @@ filter the results.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9779,7 +9780,7 @@ gateways are described. Alternatively, you can filter the results.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9829,7 +9830,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9865,7 +9866,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9905,7 +9906,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -9991,7 +9992,7 @@ only one attribute at a time.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [VpcIds => ArrayRef[Str|Undef]]
 
@@ -10040,7 +10041,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -10063,7 +10064,7 @@ endpoint services.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -10086,7 +10087,7 @@ including any endpoints that are pending your acceptance.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -10110,7 +10111,7 @@ Describes one or more of your VPC endpoints.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -10137,7 +10138,7 @@ services).
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -10160,7 +10161,7 @@ discover your VPC endpoint service.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -10184,7 +10185,7 @@ Describes available services to which you can create a VPC endpoint.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -10208,7 +10209,7 @@ Describes one or more of your VPC peering connections.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -10232,7 +10233,7 @@ Describes one or more of your VPCs.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [VpnConnectionIds => ArrayRef[Str|Undef]]
 
@@ -10256,7 +10257,7 @@ I<AWS Site-to-Site VPN User Guide>.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [VpnGatewayIds => ArrayRef[Str|Undef]]
 
@@ -10883,7 +10884,7 @@ endpoint.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 
 =back
@@ -11093,7 +11094,7 @@ retrieve the generated password.
 
 =item [DryRun => Bool]
 
-=item [TargetConfigurations => ArrayRef[L<Paws::EC2::TargetConfigurationRequest>]]
+=item [TargetConfigurations => ArrayRef[EC2_TargetConfigurationRequest]]
 
 
 =back
@@ -11117,7 +11118,7 @@ the exchange.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -11142,7 +11143,7 @@ propagates routes.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -11167,7 +11168,7 @@ gateway route table.
 
 =item [DryRun => Bool]
 
-=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+=item [Filters => ArrayRef[EC2_Filter]]
 
 =item [MaxResults => Int]
 
@@ -11215,13 +11216,13 @@ connections.
 
 =item [Architecture => Str]
 
-=item [ClientData => L<Paws::EC2::ClientData>]
+=item [ClientData => EC2_ClientData]
 
 =item [ClientToken => Str]
 
 =item [Description => Str]
 
-=item [DiskContainers => ArrayRef[L<Paws::EC2::ImageDiskContainer>]]
+=item [DiskContainers => ArrayRef[EC2_ImageDiskContainer]]
 
 =item [DryRun => Bool]
 
@@ -11259,11 +11260,11 @@ in the I<VM Import/Export User Guide>.
 
 =item [Description => Str]
 
-=item [DiskImages => ArrayRef[L<Paws::EC2::DiskImage>]]
+=item [DiskImages => ArrayRef[EC2_DiskImage]]
 
 =item [DryRun => Bool]
 
-=item [LaunchSpecification => L<Paws::EC2::ImportInstanceLaunchSpecification>]
+=item [LaunchSpecification => EC2_ImportInstanceLaunchSpecification]
 
 
 =back
@@ -11315,13 +11316,13 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item [ClientData => L<Paws::EC2::ClientData>]
+=item [ClientData => EC2_ClientData]
 
 =item [ClientToken => Str]
 
 =item [Description => Str]
 
-=item [DiskContainer => L<Paws::EC2::SnapshotDiskContainer>]
+=item [DiskContainer => EC2_SnapshotDiskContainer]
 
 =item [DryRun => Bool]
 
@@ -11347,9 +11348,9 @@ Imports a disk into an EBS snapshot.
 
 =item AvailabilityZone => Str
 
-=item Image => L<Paws::EC2::DiskImageDetail>
+=item Image => EC2_DiskImageDetail
 
-=item Volume => L<Paws::EC2::VolumeDetail>
+=item Volume => EC2_VolumeDetail
 
 =item [Description => Str]
 
@@ -11406,11 +11407,11 @@ Reservation, and then create a new one with the required attributes.
 
 =item ClientVpnEndpointId => Str
 
-=item [ConnectionLogOptions => L<Paws::EC2::ConnectionLogOptions>]
+=item [ConnectionLogOptions => EC2_ConnectionLogOptions]
 
 =item [Description => Str]
 
-=item [DnsServers => L<Paws::EC2::DnsServersOptionsModifyStructure>]
+=item [DnsServers => EC2_DnsServersOptionsModifyStructure]
 
 =item [DryRun => Bool]
 
@@ -11467,7 +11468,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item FleetId => Str
 
-=item TargetCapacitySpecification => L<Paws::EC2::TargetCapacitySpecificationRequest>
+=item TargetCapacitySpecification => EC2_TargetCapacitySpecificationRequest
 
 =item [DryRun => Bool]
 
@@ -11497,7 +11498,7 @@ While the EC2 Fleet is being modified, it is in the C<modifying> state.
 
 =item [DryRun => Bool]
 
-=item [LoadPermission => L<Paws::EC2::LoadPermissionModifications>]
+=item [LoadPermission => EC2_LoadPermissionModifications]
 
 =item [Name => Str]
 
@@ -11649,11 +11650,11 @@ type.
 
 =item [Attribute => Str]
 
-=item [Description => L<Paws::EC2::AttributeValue>]
+=item [Description => EC2_AttributeValue]
 
 =item [DryRun => Bool]
 
-=item [LaunchPermission => L<Paws::EC2::LaunchPermissionModifications>]
+=item [LaunchPermission => EC2_LaunchPermissionModifications]
 
 =item [OperationType => Str]
 
@@ -11693,31 +11694,31 @@ instance.
 
 =item [Attribute => Str]
 
-=item [BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>]]
+=item [BlockDeviceMappings => ArrayRef[EC2_InstanceBlockDeviceMappingSpecification]]
 
-=item [DisableApiTermination => L<Paws::EC2::AttributeBooleanValue>]
+=item [DisableApiTermination => EC2_AttributeBooleanValue]
 
 =item [DryRun => Bool]
 
-=item [EbsOptimized => L<Paws::EC2::AttributeBooleanValue>]
+=item [EbsOptimized => EC2_AttributeBooleanValue]
 
-=item [EnaSupport => L<Paws::EC2::AttributeBooleanValue>]
+=item [EnaSupport => EC2_AttributeBooleanValue]
 
 =item [Groups => ArrayRef[Str|Undef]]
 
-=item [InstanceInitiatedShutdownBehavior => L<Paws::EC2::AttributeValue>]
+=item [InstanceInitiatedShutdownBehavior => EC2_AttributeValue]
 
-=item [InstanceType => L<Paws::EC2::AttributeValue>]
+=item [InstanceType => EC2_AttributeValue]
 
-=item [Kernel => L<Paws::EC2::AttributeValue>]
+=item [Kernel => EC2_AttributeValue]
 
-=item [Ramdisk => L<Paws::EC2::AttributeValue>]
+=item [Ramdisk => EC2_AttributeValue]
 
-=item [SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>]
+=item [SourceDestCheck => EC2_AttributeBooleanValue]
 
-=item [SriovNetSupport => L<Paws::EC2::AttributeValue>]
+=item [SriovNetSupport => EC2_AttributeValue]
 
-=item [UserData => L<Paws::EC2::BlobAttributeValue>]
+=item [UserData => EC2_BlobAttributeValue]
 
 =item [Value => Str]
 
@@ -11748,7 +11749,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item CapacityReservationSpecification => L<Paws::EC2::CapacityReservationSpecification>
+=item CapacityReservationSpecification => EC2_CapacityReservationSpecification
 
 =item InstanceId => Str
 
@@ -11771,7 +11772,7 @@ attributes, or run On-Demand Instance capacity.
 
 =over
 
-=item InstanceCreditSpecifications => ArrayRef[L<Paws::EC2::InstanceCreditSpecificationRequest>]
+=item InstanceCreditSpecifications => ArrayRef[EC2_InstanceCreditSpecificationRequest]
 
 =item [ClientToken => Str]
 
@@ -11908,15 +11909,15 @@ specified.
 
 =item NetworkInterfaceId => Str
 
-=item [Attachment => L<Paws::EC2::NetworkInterfaceAttachmentChanges>]
+=item [Attachment => EC2_NetworkInterfaceAttachmentChanges]
 
-=item [Description => L<Paws::EC2::AttributeValue>]
+=item [Description => EC2_AttributeValue]
 
 =item [DryRun => Bool]
 
 =item [Groups => ArrayRef[Str|Undef]]
 
-=item [SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>]
+=item [SourceDestCheck => EC2_AttributeBooleanValue]
 
 
 =back
@@ -11936,7 +11937,7 @@ detach security groups from an existing EC2 instance.
 
 =item ReservedInstancesIds => ArrayRef[Str|Undef]
 
-=item TargetConfigurations => ArrayRef[L<Paws::EC2::ReservedInstancesConfiguration>]
+=item TargetConfigurations => ArrayRef[EC2_ReservedInstancesConfiguration]
 
 =item [ClientToken => Str]
 
@@ -11965,7 +11966,7 @@ in the Amazon Elastic Compute Cloud User Guide.
 
 =item [Attribute => Str]
 
-=item [CreateVolumePermission => L<Paws::EC2::CreateVolumePermissionModifications>]
+=item [CreateVolumePermission => EC2_CreateVolumePermissionModifications]
 
 =item [DryRun => Bool]
 
@@ -12053,9 +12054,9 @@ later, you can set the target capacity to 0.
 
 =item SubnetId => Str
 
-=item [AssignIpv6AddressOnCreation => L<Paws::EC2::AttributeBooleanValue>]
+=item [AssignIpv6AddressOnCreation => EC2_AttributeBooleanValue]
 
-=item [MapPublicIpOnLaunch => L<Paws::EC2::AttributeBooleanValue>]
+=item [MapPublicIpOnLaunch => EC2_AttributeBooleanValue]
 
 
 =back
@@ -12112,7 +12113,7 @@ in the I<Traffic Mirroring User Guide >.
 
 =item [DestinationCidrBlock => Str]
 
-=item [DestinationPortRange => L<Paws::EC2::TrafficMirrorPortRangeRequest>]
+=item [DestinationPortRange => EC2_TrafficMirrorPortRangeRequest]
 
 =item [DryRun => Bool]
 
@@ -12126,7 +12127,7 @@ in the I<Traffic Mirroring User Guide >.
 
 =item [SourceCidrBlock => Str]
 
-=item [SourcePortRange => L<Paws::EC2::TrafficMirrorPortRangeRequest>]
+=item [SourcePortRange => EC2_TrafficMirrorPortRangeRequest]
 
 =item [TrafficDirection => Str]
 
@@ -12185,7 +12186,7 @@ Modifies a Traffic Mirror session.
 
 =item [DryRun => Bool]
 
-=item [Options => L<Paws::EC2::ModifyTransitGatewayVpcAttachmentRequestOptions>]
+=item [Options => EC2_ModifyTransitGatewayVpcAttachmentRequestOptions]
 
 =item [RemoveSubnetIds => ArrayRef[Str|Undef]]
 
@@ -12269,7 +12270,7 @@ modifications to the affected EBS volume.
 
 =item VolumeId => Str
 
-=item [AutoEnableIO => L<Paws::EC2::AttributeBooleanValue>]
+=item [AutoEnableIO => EC2_AttributeBooleanValue]
 
 =item [DryRun => Bool]
 
@@ -12299,9 +12300,9 @@ that are stateless or disposable.
 
 =item VpcId => Str
 
-=item [EnableDnsHostnames => L<Paws::EC2::AttributeBooleanValue>]
+=item [EnableDnsHostnames => EC2_AttributeBooleanValue]
 
-=item [EnableDnsSupport => L<Paws::EC2::AttributeBooleanValue>]
+=item [EnableDnsSupport => EC2_AttributeBooleanValue]
 
 
 =back
@@ -12440,11 +12441,11 @@ attachments are automatically approved.
 
 =item VpcPeeringConnectionId => Str
 
-=item [AccepterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>]
+=item [AccepterPeeringConnectionOptions => EC2_PeeringConnectionOptionsRequest]
 
 =item [DryRun => Bool]
 
-=item [RequesterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>]
+=item [RequesterPeeringConnectionOptions => EC2_PeeringConnectionOptionsRequest]
 
 
 =back
@@ -12653,7 +12654,7 @@ platform to the EC2-Classic platform.
 
 =item Cidr => Str
 
-=item [CidrAuthorizationContext => L<Paws::EC2::CidrAuthorizationContext>]
+=item [CidrAuthorizationContext => EC2_CidrAuthorizationContext]
 
 =item [Description => Str]
 
@@ -12725,7 +12726,7 @@ reservation being purchased and charged to your account.
 
 =item [DryRun => Bool]
 
-=item [LimitPrice => L<Paws::EC2::ReservedInstanceLimitPrice>]
+=item [LimitPrice => EC2_ReservedInstanceLimitPrice]
 
 
 =back
@@ -12754,7 +12755,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item PurchaseRequests => ArrayRef[L<Paws::EC2::PurchaseRequest>]
+=item PurchaseRequests => ArrayRef[EC2_PurchaseRequest]
 
 =item [ClientToken => Str]
 
@@ -12819,7 +12820,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [BillingProducts => ArrayRef[Str|Undef]]
 
-=item [BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]]
+=item [BlockDeviceMappings => ArrayRef[EC2_BlockDeviceMapping]]
 
 =item [Description => Str]
 
@@ -13024,7 +13025,7 @@ Released hosts still appear in a DescribeHosts response.
 
 =item AssociationId => Str
 
-=item IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>
+=item IamInstanceProfile => EC2_IamInstanceProfileSpecification
 
 
 =back
@@ -13085,11 +13086,11 @@ This is an idempotent operation.
 
 =item [DryRun => Bool]
 
-=item [IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>]
+=item [IcmpTypeCode => EC2_IcmpTypeCode]
 
 =item [Ipv6CidrBlock => Str]
 
-=item [PortRange => L<Paws::EC2::PortRange>]
+=item [PortRange => EC2_PortRange]
 
 
 =back
@@ -13242,7 +13243,7 @@ DescribeInstanceStatus.
 
 =over
 
-=item SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
+=item SpotFleetRequestConfig => EC2_SpotFleetRequestConfigData
 
 =item [DryRun => Bool]
 
@@ -13302,7 +13303,7 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =item [LaunchGroup => Str]
 
-=item [LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>]
+=item [LaunchSpecification => EC2_RequestSpotLaunchSpecification]
 
 =item [SpotPrice => Str]
 
@@ -13526,7 +13527,7 @@ Removes an ingress authorization rule from a Client VPN endpoint.
 
 =item [FromPort => Int]
 
-=item [IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]]
+=item [IpPermissions => ArrayRef[EC2_IpPermission]]
 
 =item [IpProtocol => Str]
 
@@ -13573,7 +13574,7 @@ quickly as possible. However, a small delay might occur.
 
 =item [GroupName => Str]
 
-=item [IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]]
+=item [IpPermissions => ArrayRef[EC2_IpPermission]]
 
 =item [IpProtocol => Str]
 
@@ -13619,15 +13620,15 @@ quickly as possible. However, a small delay might occur.
 
 =item [AdditionalInfo => Str]
 
-=item [BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]]
+=item [BlockDeviceMappings => ArrayRef[EC2_BlockDeviceMapping]]
 
-=item [CapacityReservationSpecification => L<Paws::EC2::CapacityReservationSpecification>]
+=item [CapacityReservationSpecification => EC2_CapacityReservationSpecification]
 
 =item [ClientToken => Str]
 
-=item [CpuOptions => L<Paws::EC2::CpuOptionsRequest>]
+=item [CpuOptions => EC2_CpuOptionsRequest]
 
-=item [CreditSpecification => L<Paws::EC2::CreditSpecificationRequest>]
+=item [CreditSpecification => EC2_CreditSpecificationRequest]
 
 =item [DisableApiTermination => Bool]
 
@@ -13635,39 +13636,39 @@ quickly as possible. However, a small delay might occur.
 
 =item [EbsOptimized => Bool]
 
-=item [ElasticGpuSpecification => ArrayRef[L<Paws::EC2::ElasticGpuSpecification>]]
+=item [ElasticGpuSpecification => ArrayRef[EC2_ElasticGpuSpecification]]
 
-=item [ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::ElasticInferenceAccelerator>]]
+=item [ElasticInferenceAccelerators => ArrayRef[EC2_ElasticInferenceAccelerator]]
 
-=item [HibernationOptions => L<Paws::EC2::HibernationOptionsRequest>]
+=item [HibernationOptions => EC2_HibernationOptionsRequest]
 
-=item [IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>]
+=item [IamInstanceProfile => EC2_IamInstanceProfileSpecification]
 
 =item [ImageId => Str]
 
 =item [InstanceInitiatedShutdownBehavior => Str]
 
-=item [InstanceMarketOptions => L<Paws::EC2::InstanceMarketOptionsRequest>]
+=item [InstanceMarketOptions => EC2_InstanceMarketOptionsRequest]
 
 =item [InstanceType => Str]
 
 =item [Ipv6AddressCount => Int]
 
-=item [Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]]
+=item [Ipv6Addresses => ArrayRef[EC2_InstanceIpv6Address]]
 
 =item [KernelId => Str]
 
 =item [KeyName => Str]
 
-=item [LaunchTemplate => L<Paws::EC2::LaunchTemplateSpecification>]
+=item [LaunchTemplate => EC2_LaunchTemplateSpecification]
 
-=item [LicenseSpecifications => ArrayRef[L<Paws::EC2::LicenseConfigurationRequest>]]
+=item [LicenseSpecifications => ArrayRef[EC2_LicenseConfigurationRequest]]
 
-=item [Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>]
+=item [Monitoring => EC2_RunInstancesMonitoringEnabled]
 
-=item [NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]]
+=item [NetworkInterfaces => ArrayRef[EC2_InstanceNetworkInterfaceSpecification]]
 
-=item [Placement => L<Paws::EC2::Placement>]
+=item [Placement => EC2_Placement]
 
 =item [PrivateIpAddress => Str]
 
@@ -13679,7 +13680,7 @@ quickly as possible. However, a small delay might occur.
 
 =item [SubnetId => Str]
 
-=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+=item [TagSpecifications => ArrayRef[EC2_TagSpecification]]
 
 =item [UserData => Str]
 
@@ -13777,7 +13778,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item LaunchSpecification => L<Paws::EC2::ScheduledInstancesLaunchSpecification>
+=item LaunchSpecification => EC2_ScheduledInstancesLaunchSpecification
 
 =item ScheduledInstanceId => Str
 
@@ -13812,7 +13813,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item Filters => ArrayRef[L<Paws::EC2::Filter>]
+=item Filters => ArrayRef[EC2_Filter]
 
 =item TransitGatewayRouteTableId => Str
 
@@ -14082,7 +14083,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
-=item IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
+=item IpPermissions => ArrayRef[EC2_IpPermission]
 
 =item [DryRun => Bool]
 
@@ -14110,7 +14111,7 @@ description parameter in the request.
 
 =over
 
-=item IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
+=item IpPermissions => ArrayRef[EC2_IpPermission]
 
 =item [DryRun => Bool]
 
@@ -14177,9 +14178,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeByoipCidrsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllCapacityReservations(sub { },[CapacityReservationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllCapacityReservations(sub { },[CapacityReservationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllCapacityReservations([CapacityReservationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllCapacityReservations([CapacityReservationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14189,9 +14190,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeCapacityReservationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllClassicLinkInstances(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClassicLinkInstances(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllClassicLinkInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClassicLinkInstances([DryRun => Bool, Filters => ArrayRef[EC2_Filter], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14201,9 +14202,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeClassicLinkInstancesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllClientVpnAuthorizationRules(sub { },ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClientVpnAuthorizationRules(sub { },ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllClientVpnAuthorizationRules(ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClientVpnAuthorizationRules(ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14213,9 +14214,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeClientVpnAuthorizationRulesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllClientVpnConnections(sub { },ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClientVpnConnections(sub { },ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllClientVpnConnections(ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClientVpnConnections(ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14225,9 +14226,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeClientVpnConnectionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllClientVpnEndpoints(sub { },[ClientVpnEndpointIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClientVpnEndpoints(sub { },[ClientVpnEndpointIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllClientVpnEndpoints([ClientVpnEndpointIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClientVpnEndpoints([ClientVpnEndpointIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14237,9 +14238,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeClientVpnEndpointsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllClientVpnRoutes(sub { },ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClientVpnRoutes(sub { },ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllClientVpnRoutes(ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClientVpnRoutes(ClientVpnEndpointId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14249,9 +14250,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeClientVpnRoutesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllClientVpnTargetNetworks(sub { },ClientVpnEndpointId => Str, [AssociationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClientVpnTargetNetworks(sub { },ClientVpnEndpointId => Str, [AssociationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllClientVpnTargetNetworks(ClientVpnEndpointId => Str, [AssociationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllClientVpnTargetNetworks(ClientVpnEndpointId => Str, [AssociationIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14261,9 +14262,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeClientVpnTargetNetworksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDhcpOptions(sub { },[DhcpOptionsIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllDhcpOptions(sub { },[DhcpOptionsIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllDhcpOptions([DhcpOptionsIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllDhcpOptions([DhcpOptionsIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14285,9 +14286,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeEgressOnlyInternetGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllFleets(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], FleetIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllFleets(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], FleetIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllFleets([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], FleetIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllFleets([DryRun => Bool, Filters => ArrayRef[EC2_Filter], FleetIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14297,9 +14298,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeFleetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllFlowLogs(sub { },[DryRun => Bool, Filter => ArrayRef[L<Paws::EC2::Filter>], FlowLogIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllFlowLogs(sub { },[DryRun => Bool, Filter => ArrayRef[EC2_Filter], FlowLogIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllFlowLogs([DryRun => Bool, Filter => ArrayRef[L<Paws::EC2::Filter>], FlowLogIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllFlowLogs([DryRun => Bool, Filter => ArrayRef[EC2_Filter], FlowLogIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14309,9 +14310,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeFlowLogsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllFpgaImages(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], FpgaImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Owners => ArrayRef[Str|Undef]])
+=head2 DescribeAllFpgaImages(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], FpgaImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Owners => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllFpgaImages([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], FpgaImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Owners => ArrayRef[Str|Undef]])
+=head2 DescribeAllFpgaImages([DryRun => Bool, Filters => ArrayRef[EC2_Filter], FpgaImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Owners => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14321,9 +14322,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeFpgaImagesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllHostReservationOfferings(sub { },[Filter => ArrayRef[L<Paws::EC2::Filter>], MaxDuration => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingId => Str])
+=head2 DescribeAllHostReservationOfferings(sub { },[Filter => ArrayRef[EC2_Filter], MaxDuration => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingId => Str])
 
-=head2 DescribeAllHostReservationOfferings([Filter => ArrayRef[L<Paws::EC2::Filter>], MaxDuration => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingId => Str])
+=head2 DescribeAllHostReservationOfferings([Filter => ArrayRef[EC2_Filter], MaxDuration => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14333,9 +14334,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeHostReservationOfferingsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllHostReservations(sub { },[Filter => ArrayRef[L<Paws::EC2::Filter>], HostReservationIdSet => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllHostReservations(sub { },[Filter => ArrayRef[EC2_Filter], HostReservationIdSet => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllHostReservations([Filter => ArrayRef[L<Paws::EC2::Filter>], HostReservationIdSet => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllHostReservations([Filter => ArrayRef[EC2_Filter], HostReservationIdSet => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14345,9 +14346,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeHostReservationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllHosts(sub { },[Filter => ArrayRef[L<Paws::EC2::Filter>], HostIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllHosts(sub { },[Filter => ArrayRef[EC2_Filter], HostIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllHosts([Filter => ArrayRef[L<Paws::EC2::Filter>], HostIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllHosts([Filter => ArrayRef[EC2_Filter], HostIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14357,9 +14358,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeHostsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllIamInstanceProfileAssociations(sub { },[AssociationIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllIamInstanceProfileAssociations(sub { },[AssociationIds => ArrayRef[Str|Undef], Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllIamInstanceProfileAssociations([AssociationIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllIamInstanceProfileAssociations([AssociationIds => ArrayRef[Str|Undef], Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14369,9 +14370,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeIamInstanceProfileAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllImportImageTasks(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllImportImageTasks(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllImportImageTasks([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllImportImageTasks([DryRun => Bool, Filters => ArrayRef[EC2_Filter], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14381,9 +14382,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeImportImageTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllImportSnapshotTasks(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllImportSnapshotTasks(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllImportSnapshotTasks([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllImportSnapshotTasks([DryRun => Bool, Filters => ArrayRef[EC2_Filter], ImportTaskIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14393,9 +14394,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeImportSnapshotTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllInstanceCreditSpecifications(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstanceCreditSpecifications(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllInstanceCreditSpecifications([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstanceCreditSpecifications([DryRun => Bool, Filters => ArrayRef[EC2_Filter], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14405,9 +14406,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeInstanceCreditSpecificationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllInstances(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstances(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstances([DryRun => Bool, Filters => ArrayRef[EC2_Filter], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14417,9 +14418,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeInstancesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllInstanceStatus(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeAllInstances => Bool, InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstanceStatus(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], IncludeAllInstances => Bool, InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllInstanceStatus([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeAllInstances => Bool, InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInstanceStatus([DryRun => Bool, Filters => ArrayRef[EC2_Filter], IncludeAllInstances => Bool, InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14429,9 +14430,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeInstanceStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllInternetGateways(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInternetGateways(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], InternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllInternetGateways([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllInternetGateways([DryRun => Bool, Filters => ArrayRef[EC2_Filter], InternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14441,9 +14442,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeInternetGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllLaunchTemplates(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LaunchTemplateIds => ArrayRef[Str|Undef], LaunchTemplateNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllLaunchTemplates(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], LaunchTemplateIds => ArrayRef[Str|Undef], LaunchTemplateNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllLaunchTemplates([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LaunchTemplateIds => ArrayRef[Str|Undef], LaunchTemplateNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllLaunchTemplates([DryRun => Bool, Filters => ArrayRef[EC2_Filter], LaunchTemplateIds => ArrayRef[Str|Undef], LaunchTemplateNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14453,9 +14454,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeLaunchTemplatesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllLaunchTemplateVersions(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LaunchTemplateId => Str, LaunchTemplateName => Str, MaxResults => Int, MaxVersion => Str, MinVersion => Str, NextToken => Str, Versions => ArrayRef[Str|Undef]])
+=head2 DescribeAllLaunchTemplateVersions(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], LaunchTemplateId => Str, LaunchTemplateName => Str, MaxResults => Int, MaxVersion => Str, MinVersion => Str, NextToken => Str, Versions => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllLaunchTemplateVersions([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LaunchTemplateId => Str, LaunchTemplateName => Str, MaxResults => Int, MaxVersion => Str, MinVersion => Str, NextToken => Str, Versions => ArrayRef[Str|Undef]])
+=head2 DescribeAllLaunchTemplateVersions([DryRun => Bool, Filters => ArrayRef[EC2_Filter], LaunchTemplateId => Str, LaunchTemplateName => Str, MaxResults => Int, MaxVersion => Str, MinVersion => Str, NextToken => Str, Versions => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14465,9 +14466,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeLaunchTemplateVersionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllMovingAddresses(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str|Undef]])
+=head2 DescribeAllMovingAddresses(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllMovingAddresses([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str|Undef]])
+=head2 DescribeAllMovingAddresses([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14477,9 +14478,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeMovingAddressesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllNatGateways(sub { },[Filter => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllNatGateways(sub { },[Filter => ArrayRef[EC2_Filter], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
 
-=head2 DescribeAllNatGateways([Filter => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllNatGateways([Filter => ArrayRef[EC2_Filter], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14489,9 +14490,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeNatGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllNetworkAcls(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkAclIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllNetworkAcls(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NetworkAclIds => ArrayRef[Str|Undef], NextToken => Str])
 
-=head2 DescribeAllNetworkAcls([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkAclIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllNetworkAcls([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NetworkAclIds => ArrayRef[Str|Undef], NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14501,9 +14502,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeNetworkAclsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllNetworkInterfacePermissions(sub { },[Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfacePermissionIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllNetworkInterfacePermissions(sub { },[Filters => ArrayRef[EC2_Filter], MaxResults => Int, NetworkInterfacePermissionIds => ArrayRef[Str|Undef], NextToken => Str])
 
-=head2 DescribeAllNetworkInterfacePermissions([Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfacePermissionIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllNetworkInterfacePermissions([Filters => ArrayRef[EC2_Filter], MaxResults => Int, NetworkInterfacePermissionIds => ArrayRef[Str|Undef], NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14513,9 +14514,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeNetworkInterfacePermissionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllNetworkInterfaces(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfaceIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllNetworkInterfaces(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NetworkInterfaceIds => ArrayRef[Str|Undef], NextToken => Str])
 
-=head2 DescribeAllNetworkInterfaces([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfaceIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllNetworkInterfaces([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NetworkInterfaceIds => ArrayRef[Str|Undef], NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14525,9 +14526,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeNetworkInterfacesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllPrefixLists(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllPrefixLists(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllPrefixLists([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllPrefixLists([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14561,9 +14562,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribePublicIpv4PoolsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllReservedInstancesModifications(sub { },[Filters => ArrayRef[L<Paws::EC2::Filter>], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllReservedInstancesModifications(sub { },[Filters => ArrayRef[EC2_Filter], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllReservedInstancesModifications([Filters => ArrayRef[L<Paws::EC2::Filter>], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllReservedInstancesModifications([Filters => ArrayRef[EC2_Filter], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14573,9 +14574,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeReservedInstancesModificationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllReservedInstancesOfferings(sub { },[AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingClass => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllReservedInstancesOfferings(sub { },[AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[EC2_Filter], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingClass => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingClass => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[EC2_Filter], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingClass => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14585,9 +14586,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeReservedInstancesOfferingsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllRouteTables(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, RouteTableIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllRouteTables(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, RouteTableIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllRouteTables([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, RouteTableIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllRouteTables([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, RouteTableIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14597,9 +14598,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeRouteTablesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllScheduledInstanceAvailability(sub { },FirstSlotStartTimeRange => L<Paws::EC2::SlotDateTimeRangeRequest>, Recurrence => L<Paws::EC2::ScheduledInstanceRecurrenceRequest>, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, MaxSlotDurationInHours => Int, MinSlotDurationInHours => Int, NextToken => Str])
+=head2 DescribeAllScheduledInstanceAvailability(sub { },FirstSlotStartTimeRange => EC2_SlotDateTimeRangeRequest, Recurrence => EC2_ScheduledInstanceRecurrenceRequest, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, MaxSlotDurationInHours => Int, MinSlotDurationInHours => Int, NextToken => Str])
 
-=head2 DescribeAllScheduledInstanceAvailability(FirstSlotStartTimeRange => L<Paws::EC2::SlotDateTimeRangeRequest>, Recurrence => L<Paws::EC2::ScheduledInstanceRecurrenceRequest>, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, MaxSlotDurationInHours => Int, MinSlotDurationInHours => Int, NextToken => Str])
+=head2 DescribeAllScheduledInstanceAvailability(FirstSlotStartTimeRange => EC2_SlotDateTimeRangeRequest, Recurrence => EC2_ScheduledInstanceRecurrenceRequest, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, MaxSlotDurationInHours => Int, MinSlotDurationInHours => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14609,9 +14610,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeScheduledInstanceAvailabilityResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllScheduledInstances(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ScheduledInstanceIds => ArrayRef[Str|Undef], SlotStartTimeRange => L<Paws::EC2::SlotStartTimeRangeRequest>])
+=head2 DescribeAllScheduledInstances(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, ScheduledInstanceIds => ArrayRef[Str|Undef], SlotStartTimeRange => EC2_SlotStartTimeRangeRequest])
 
-=head2 DescribeAllScheduledInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ScheduledInstanceIds => ArrayRef[Str|Undef], SlotStartTimeRange => L<Paws::EC2::SlotStartTimeRangeRequest>])
+=head2 DescribeAllScheduledInstances([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, ScheduledInstanceIds => ArrayRef[Str|Undef], SlotStartTimeRange => EC2_SlotStartTimeRangeRequest])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14621,9 +14622,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeScheduledInstancesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllSecurityGroups(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], GroupIds => ArrayRef[Str|Undef], GroupNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllSecurityGroups(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], GroupIds => ArrayRef[Str|Undef], GroupNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllSecurityGroups([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], GroupIds => ArrayRef[Str|Undef], GroupNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllSecurityGroups([DryRun => Bool, Filters => ArrayRef[EC2_Filter], GroupIds => ArrayRef[Str|Undef], GroupNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14633,9 +14634,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeSecurityGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllSnapshots(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, OwnerIds => ArrayRef[Str|Undef], RestorableByUserIds => ArrayRef[Str|Undef], SnapshotIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllSnapshots(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, OwnerIds => ArrayRef[Str|Undef], RestorableByUserIds => ArrayRef[Str|Undef], SnapshotIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllSnapshots([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, OwnerIds => ArrayRef[Str|Undef], RestorableByUserIds => ArrayRef[Str|Undef], SnapshotIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllSnapshots([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, OwnerIds => ArrayRef[Str|Undef], RestorableByUserIds => ArrayRef[Str|Undef], SnapshotIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14669,9 +14670,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeSpotFleetRequestsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllSpotInstanceRequests(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, SpotInstanceRequestIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllSpotInstanceRequests(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, SpotInstanceRequestIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllSpotInstanceRequests([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, SpotInstanceRequestIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllSpotInstanceRequests([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, SpotInstanceRequestIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14681,9 +14682,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeSpotInstanceRequestsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllSpotPriceHistory(sub { },[AvailabilityZone => Str, DryRun => Bool, EndTime => Str, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str|Undef], StartTime => Str])
+=head2 DescribeAllSpotPriceHistory(sub { },[AvailabilityZone => Str, DryRun => Bool, EndTime => Str, Filters => ArrayRef[EC2_Filter], InstanceTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str|Undef], StartTime => Str])
 
-=head2 DescribeAllSpotPriceHistory([AvailabilityZone => Str, DryRun => Bool, EndTime => Str, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str|Undef], StartTime => Str])
+=head2 DescribeAllSpotPriceHistory([AvailabilityZone => Str, DryRun => Bool, EndTime => Str, Filters => ArrayRef[EC2_Filter], InstanceTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str|Undef], StartTime => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14705,9 +14706,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeStaleSecurityGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllSubnets(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, SubnetIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllSubnets(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, SubnetIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllSubnets([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, SubnetIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllSubnets([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, SubnetIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14717,9 +14718,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeSubnetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTags(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllTags(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllTags([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllTags([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14729,9 +14730,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeTagsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTrafficMirrorFilters(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorFilterIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTrafficMirrorFilters(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TrafficMirrorFilterIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllTrafficMirrorFilters([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorFilterIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTrafficMirrorFilters([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TrafficMirrorFilterIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14741,9 +14742,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeTrafficMirrorFiltersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTrafficMirrorSessions(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorSessionIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTrafficMirrorSessions(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TrafficMirrorSessionIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllTrafficMirrorSessions([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorSessionIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTrafficMirrorSessions([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TrafficMirrorSessionIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14753,9 +14754,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeTrafficMirrorSessionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTrafficMirrorTargets(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorTargetIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTrafficMirrorTargets(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TrafficMirrorTargetIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllTrafficMirrorTargets([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TrafficMirrorTargetIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTrafficMirrorTargets([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TrafficMirrorTargetIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14765,9 +14766,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeTrafficMirrorTargetsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTransitGatewayAttachments(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTransitGatewayAttachments(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllTransitGatewayAttachments([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTransitGatewayAttachments([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14777,9 +14778,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeTransitGatewayAttachmentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTransitGatewayRouteTables(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayRouteTableIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTransitGatewayRouteTables(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TransitGatewayRouteTableIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllTransitGatewayRouteTables([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayRouteTableIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTransitGatewayRouteTables([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TransitGatewayRouteTableIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14789,9 +14790,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeTransitGatewayRouteTablesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTransitGateways(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTransitGateways(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TransitGatewayIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllTransitGateways([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTransitGateways([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TransitGatewayIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14801,9 +14802,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeTransitGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTransitGatewayVpcAttachments(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTransitGatewayVpcAttachments(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllTransitGatewayVpcAttachments([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllTransitGatewayVpcAttachments([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14813,9 +14814,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeTransitGatewayVpcAttachmentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVolumes(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVolumes(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllVolumes([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVolumes([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14825,9 +14826,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVolumesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVolumesModifications(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVolumesModifications(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllVolumesModifications([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVolumesModifications([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14837,9 +14838,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVolumesModificationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVolumeStatus(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVolumeStatus(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllVolumeStatus([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVolumeStatus([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14861,9 +14862,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVpcClassicLinkDnsSupportResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVpcEndpointConnectionNotifications(sub { },[ConnectionNotificationId => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllVpcEndpointConnectionNotifications(sub { },[ConnectionNotificationId => Str, DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllVpcEndpointConnectionNotifications([ConnectionNotificationId => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllVpcEndpointConnectionNotifications([ConnectionNotificationId => Str, DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14873,9 +14874,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVpcEndpointConnectionNotificationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVpcEndpointConnections(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllVpcEndpointConnections(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllVpcEndpointConnections([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllVpcEndpointConnections([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14885,9 +14886,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVpcEndpointConnectionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVpcEndpoints(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVpcEndpoints(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllVpcEndpoints([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVpcEndpoints([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14897,9 +14898,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVpcEndpointsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVpcEndpointServiceConfigurations(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ServiceIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVpcEndpointServiceConfigurations(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, ServiceIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllVpcEndpointServiceConfigurations([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ServiceIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVpcEndpointServiceConfigurations([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, ServiceIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14909,9 +14910,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVpcEndpointServiceConfigurationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVpcEndpointServicePermissions(sub { },ServiceId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllVpcEndpointServicePermissions(sub { },ServiceId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllVpcEndpointServicePermissions(ServiceId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllVpcEndpointServicePermissions(ServiceId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14921,9 +14922,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVpcEndpointServicePermissionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVpcEndpointServices(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ServiceNames => ArrayRef[Str|Undef]])
+=head2 DescribeAllVpcEndpointServices(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, ServiceNames => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllVpcEndpointServices([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ServiceNames => ArrayRef[Str|Undef]])
+=head2 DescribeAllVpcEndpointServices([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, ServiceNames => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14935,9 +14936,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVpcEndpointServicesResult> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVpcPeeringConnections(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcPeeringConnectionIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVpcPeeringConnections(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VpcPeeringConnectionIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllVpcPeeringConnections([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcPeeringConnectionIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVpcPeeringConnections([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VpcPeeringConnectionIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14947,9 +14948,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVpcPeeringConnectionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVpcs(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVpcs(sub { },[DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VpcIds => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllVpcs([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcIds => ArrayRef[Str|Undef]])
+=head2 DescribeAllVpcs([DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str, VpcIds => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14959,9 +14960,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeVpcsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllTransitGatewayAttachmentPropagations(sub { },TransitGatewayAttachmentId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 GetAllTransitGatewayAttachmentPropagations(sub { },TransitGatewayAttachmentId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 GetAllTransitGatewayAttachmentPropagations(TransitGatewayAttachmentId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 GetAllTransitGatewayAttachmentPropagations(TransitGatewayAttachmentId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14971,9 +14972,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::GetTransitGatewayAttachmentPropagationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllTransitGatewayRouteTableAssociations(sub { },TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 GetAllTransitGatewayRouteTableAssociations(sub { },TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 GetAllTransitGatewayRouteTableAssociations(TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 GetAllTransitGatewayRouteTableAssociations(TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -14983,9 +14984,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::GetTransitGatewayRouteTableAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllTransitGatewayRouteTablePropagations(sub { },TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 GetAllTransitGatewayRouteTablePropagations(sub { },TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 GetAllTransitGatewayRouteTablePropagations(TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+=head2 GetAllTransitGatewayRouteTablePropagations(TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[EC2_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

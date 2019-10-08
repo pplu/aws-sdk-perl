@@ -1,7 +1,27 @@
 package Paws::EC2::Filter;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Value', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::EC2::Types qw//;
+  has Name => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Values' => 'Value'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

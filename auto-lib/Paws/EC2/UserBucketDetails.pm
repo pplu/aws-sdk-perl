@@ -1,7 +1,28 @@
 package Paws::EC2::UserBucketDetails;
-  use Moose;
-  has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest']);
-  has S3Key => (is => 'ro', isa => 'Str', request_name => 's3Key', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has S3Bucket => (is => 'ro', isa => Str);
+  has S3Key => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Key' => {
+                            'type' => 'Str'
+                          },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'S3Key' => 's3Key',
+                       'S3Bucket' => 's3Bucket'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

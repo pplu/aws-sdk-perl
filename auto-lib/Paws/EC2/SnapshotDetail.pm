@@ -1,15 +1,69 @@
 package Paws::EC2::SnapshotDetail;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has DeviceName => (is => 'ro', isa => 'Str', request_name => 'deviceName', traits => ['NameInRequest']);
-  has DiskImageSize => (is => 'ro', isa => 'Num', request_name => 'diskImageSize', traits => ['NameInRequest']);
-  has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
-  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
-  has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
-  has UserBucket => (is => 'ro', isa => 'Paws::EC2::UserBucketDetails', request_name => 'userBucket', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Num/;
+  use Paws::EC2::Types qw/EC2_UserBucketDetails/;
+  has Description => (is => 'ro', isa => Str);
+  has DeviceName => (is => 'ro', isa => Str);
+  has DiskImageSize => (is => 'ro', isa => Num);
+  has Format => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Str);
+  has SnapshotId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+  has UserBucket => (is => 'ro', isa => EC2_UserBucketDetails);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DiskImageSize' => {
+                                    'type' => 'Num'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'UserBucket' => {
+                                 'class' => 'Paws::EC2::UserBucketDetails',
+                                 'type' => 'EC2_UserBucketDetails'
+                               },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'Progress' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'DiskImageSize' => 'diskImageSize',
+                       'Status' => 'status',
+                       'SnapshotId' => 'snapshotId',
+                       'Format' => 'format',
+                       'DeviceName' => 'deviceName',
+                       'UserBucket' => 'userBucket',
+                       'Url' => 'url',
+                       'Progress' => 'progress',
+                       'Description' => 'description',
+                       'StatusMessage' => 'statusMessage'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -90,7 +144,7 @@ This class has no description
   The URL used to access the disk image.
 
 
-=head2 UserBucket => L<Paws::EC2::UserBucketDetails>
+=head2 UserBucket => EC2_UserBucketDetails
 
   The S3 bucket for the disk image.
 

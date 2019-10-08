@@ -1,22 +1,68 @@
 
 package Paws::EC2::CreateTrafficMirrorSession;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
-  has PacketLength => (is => 'ro', isa => 'Int');
-  has SessionNumber => (is => 'ro', isa => 'Int', required => 1);
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
-  has TrafficMirrorFilterId => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficMirrorTargetId => (is => 'ro', isa => 'Str', required => 1);
-  has VirtualNetworkId => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TagSpecification/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has NetworkInterfaceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PacketLength => (is => 'ro', isa => Int, predicate => 1);
+  has SessionNumber => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
+  has TrafficMirrorFilterId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TrafficMirrorTargetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VirtualNetworkId => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTrafficMirrorSession');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateTrafficMirrorSessionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTrafficMirrorSession');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateTrafficMirrorSessionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'TrafficMirrorFilterId' => {
+                                            'type' => 'Str'
+                                          },
+               'TagSpecifications' => {
+                                        'class' => 'Paws::EC2::TagSpecification',
+                                        'type' => 'ArrayRef[EC2_TagSpecification]'
+                                      },
+               'SessionNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'TrafficMirrorTargetId' => {
+                                            'type' => 'Str'
+                                          },
+               'VirtualNetworkId' => {
+                                       'type' => 'Int'
+                                     },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'PacketLength' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'NameInRequest' => {
+                       'TagSpecifications' => 'TagSpecification'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -129,7 +175,7 @@ Valid values are 1-32766.
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 The tags to assign to a Traffic Mirror session.
 

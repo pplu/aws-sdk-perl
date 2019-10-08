@@ -1,8 +1,35 @@
 package Paws::EC2::TerminateConnectionStatus;
-  use Moose;
-  has ConnectionId => (is => 'ro', isa => 'Str', request_name => 'connectionId', traits => ['NameInRequest']);
-  has CurrentStatus => (is => 'ro', isa => 'Paws::EC2::ClientVpnConnectionStatus', request_name => 'currentStatus', traits => ['NameInRequest']);
-  has PreviousStatus => (is => 'ro', isa => 'Paws::EC2::ClientVpnConnectionStatus', request_name => 'previousStatus', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ClientVpnConnectionStatus/;
+  has ConnectionId => (is => 'ro', isa => Str);
+  has CurrentStatus => (is => 'ro', isa => EC2_ClientVpnConnectionStatus);
+  has PreviousStatus => (is => 'ro', isa => EC2_ClientVpnConnectionStatus);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PreviousStatus' => {
+                                     'class' => 'Paws::EC2::ClientVpnConnectionStatus',
+                                     'type' => 'EC2_ClientVpnConnectionStatus'
+                                   },
+               'CurrentStatus' => {
+                                    'class' => 'Paws::EC2::ClientVpnConnectionStatus',
+                                    'type' => 'EC2_ClientVpnConnectionStatus'
+                                  },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'PreviousStatus' => 'previousStatus',
+                       'CurrentStatus' => 'currentStatus',
+                       'ConnectionId' => 'connectionId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,12 +70,12 @@ This class has no description
   The ID of the client connection.
 
 
-=head2 CurrentStatus => L<Paws::EC2::ClientVpnConnectionStatus>
+=head2 CurrentStatus => EC2_ClientVpnConnectionStatus
 
   A message about the status of the client connection, if applicable.
 
 
-=head2 PreviousStatus => L<Paws::EC2::ClientVpnConnectionStatus>
+=head2 PreviousStatus => EC2_ClientVpnConnectionStatus
 
   The state of the client connection.
 

@@ -1,12 +1,56 @@
 package Paws::EC2::ConversionTask;
-  use Moose;
-  has ConversionTaskId => (is => 'ro', isa => 'Str', request_name => 'conversionTaskId', traits => ['NameInRequest']);
-  has ExpirationTime => (is => 'ro', isa => 'Str', request_name => 'expirationTime', traits => ['NameInRequest']);
-  has ImportInstance => (is => 'ro', isa => 'Paws::EC2::ImportInstanceTaskDetails', request_name => 'importInstance', traits => ['NameInRequest']);
-  has ImportVolume => (is => 'ro', isa => 'Paws::EC2::ImportVolumeTaskDetails', request_name => 'importVolume', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ImportVolumeTaskDetails EC2_Tag EC2_ImportInstanceTaskDetails/;
+  has ConversionTaskId => (is => 'ro', isa => Str);
+  has ExpirationTime => (is => 'ro', isa => Str);
+  has ImportInstance => (is => 'ro', isa => EC2_ImportInstanceTaskDetails);
+  has ImportVolume => (is => 'ro', isa => EC2_ImportVolumeTaskDetails);
+  has State => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpirationTime' => {
+                                     'type' => 'Str'
+                                   },
+               'ImportVolume' => {
+                                   'class' => 'Paws::EC2::ImportVolumeTaskDetails',
+                                   'type' => 'EC2_ImportVolumeTaskDetails'
+                                 },
+               'ConversionTaskId' => {
+                                       'type' => 'Str'
+                                     },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'ImportInstance' => {
+                                     'class' => 'Paws::EC2::ImportInstanceTaskDetails',
+                                     'type' => 'EC2_ImportInstanceTaskDetails'
+                                   },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'ExpirationTime' => 'expirationTime',
+                       'ImportVolume' => 'importVolume',
+                       'ConversionTaskId' => 'conversionTaskId',
+                       'Tags' => 'tagSet',
+                       'ImportInstance' => 'importInstance',
+                       'StatusMessage' => 'statusMessage',
+                       'State' => 'state'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,13 +97,13 @@ This class has no description
 expiration time, we automatically cancel the task.
 
 
-=head2 ImportInstance => L<Paws::EC2::ImportInstanceTaskDetails>
+=head2 ImportInstance => EC2_ImportInstanceTaskDetails
 
   If the task is for importing an instance, this contains information
 about the import instance task.
 
 
-=head2 ImportVolume => L<Paws::EC2::ImportVolumeTaskDetails>
+=head2 ImportVolume => EC2_ImportVolumeTaskDetails
 
   If the task is for importing a volume, this contains information about
 the import volume task.
@@ -75,7 +119,7 @@ the import volume task.
   The status message related to the conversion task.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the task.
 

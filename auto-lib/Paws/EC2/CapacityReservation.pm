@@ -1,20 +1,94 @@
 package Paws::EC2::CapacityReservation;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has AvailableInstanceCount => (is => 'ro', isa => 'Int', request_name => 'availableInstanceCount', traits => ['NameInRequest']);
-  has CapacityReservationId => (is => 'ro', isa => 'Str', request_name => 'capacityReservationId', traits => ['NameInRequest']);
-  has CreateDate => (is => 'ro', isa => 'Str', request_name => 'createDate', traits => ['NameInRequest']);
-  has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
-  has EndDate => (is => 'ro', isa => 'Str', request_name => 'endDate', traits => ['NameInRequest']);
-  has EndDateType => (is => 'ro', isa => 'Str', request_name => 'endDateType', traits => ['NameInRequest']);
-  has EphemeralStorage => (is => 'ro', isa => 'Bool', request_name => 'ephemeralStorage', traits => ['NameInRequest']);
-  has InstanceMatchCriteria => (is => 'ro', isa => 'Str', request_name => 'instanceMatchCriteria', traits => ['NameInRequest']);
-  has InstancePlatform => (is => 'ro', isa => 'Str', request_name => 'instancePlatform', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
-  has TotalInstanceCount => (is => 'ro', isa => 'Int', request_name => 'totalInstanceCount', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has AvailableInstanceCount => (is => 'ro', isa => Int);
+  has CapacityReservationId => (is => 'ro', isa => Str);
+  has CreateDate => (is => 'ro', isa => Str);
+  has EbsOptimized => (is => 'ro', isa => Bool);
+  has EndDate => (is => 'ro', isa => Str);
+  has EndDateType => (is => 'ro', isa => Str);
+  has EphemeralStorage => (is => 'ro', isa => Bool);
+  has InstanceMatchCriteria => (is => 'ro', isa => Str);
+  has InstancePlatform => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has Tenancy => (is => 'ro', isa => Str);
+  has TotalInstanceCount => (is => 'ro', isa => Int);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'EphemeralStorage' => {
+                                       'type' => 'Bool'
+                                     },
+               'InstancePlatform' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceMatchCriteria' => {
+                                            'type' => 'Str'
+                                          },
+               'EndDateType' => {
+                                  'type' => 'Str'
+                                },
+               'TotalInstanceCount' => {
+                                         'type' => 'Int'
+                                       },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'CapacityReservationId' => {
+                                            'type' => 'Str'
+                                          },
+               'Tenancy' => {
+                              'type' => 'Str'
+                            },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'AvailableInstanceCount' => {
+                                             'type' => 'Int'
+                                           }
+             },
+  'NameInRequest' => {
+                       'EndDate' => 'endDate',
+                       'CreateDate' => 'createDate',
+                       'InstanceType' => 'instanceType',
+                       'EbsOptimized' => 'ebsOptimized',
+                       'EphemeralStorage' => 'ephemeralStorage',
+                       'InstancePlatform' => 'instancePlatform',
+                       'InstanceMatchCriteria' => 'instanceMatchCriteria',
+                       'EndDateType' => 'endDateType',
+                       'TotalInstanceCount' => 'totalInstanceCount',
+                       'State' => 'state',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'CapacityReservationId' => 'capacityReservationId',
+                       'Tenancy' => 'tenancy',
+                       'Tags' => 'tagSet',
+                       'AvailableInstanceCount' => 'availableInstanceCount'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -191,7 +265,7 @@ minutes.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the Capacity Reservation.
 

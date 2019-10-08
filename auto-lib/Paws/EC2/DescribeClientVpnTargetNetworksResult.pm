@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeClientVpnTargetNetworksResult;
-  use Moose;
-  has ClientVpnTargetNetworks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TargetNetwork]', request_name => 'clientVpnTargetNetworks', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TargetNetwork/;
+  has ClientVpnTargetNetworks => (is => 'ro', isa => ArrayRef[EC2_TargetNetwork]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ClientVpnTargetNetworks' => {
+                                              'class' => 'Paws::EC2::TargetNetwork',
+                                              'type' => 'ArrayRef[EC2_TargetNetwork]'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ClientVpnTargetNetworks' => 'clientVpnTargetNetworks'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeClientVpnTargetNetworksResult
 =head1 ATTRIBUTES
 
 
-=head2 ClientVpnTargetNetworks => ArrayRef[L<Paws::EC2::TargetNetwork>]
+=head2 ClientVpnTargetNetworks => ArrayRef[EC2_TargetNetwork]
 
 Information about the associated target networks.
 

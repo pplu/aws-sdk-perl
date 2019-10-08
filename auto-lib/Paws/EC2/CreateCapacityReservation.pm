@@ -1,25 +1,77 @@
 
 package Paws::EC2::CreateCapacityReservation;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has EbsOptimized => (is => 'ro', isa => 'Bool');
-  has EndDate => (is => 'ro', isa => 'Str');
-  has EndDateType => (is => 'ro', isa => 'Str');
-  has EphemeralStorage => (is => 'ro', isa => 'Bool');
-  has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
-  has InstanceMatchCriteria => (is => 'ro', isa => 'Str');
-  has InstancePlatform => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]');
-  has Tenancy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TagSpecification/;
+  has AvailabilityZone => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has EbsOptimized => (is => 'ro', isa => Bool, predicate => 1);
+  has EndDate => (is => 'ro', isa => Str, predicate => 1);
+  has EndDateType => (is => 'ro', isa => Str, predicate => 1);
+  has EphemeralStorage => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceCount => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has InstanceMatchCriteria => (is => 'ro', isa => Str, predicate => 1);
+  has InstancePlatform => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
+  has Tenancy => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCapacityReservation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateCapacityReservationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCapacityReservation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateCapacityReservationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'TagSpecifications' => {
+                                        'class' => 'Paws::EC2::TagSpecification',
+                                        'type' => 'ArrayRef[EC2_TagSpecification]'
+                                      },
+               'EphemeralStorage' => {
+                                       'type' => 'Bool'
+                                     },
+               'InstancePlatform' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceMatchCriteria' => {
+                                            'type' => 'Str'
+                                          },
+               'EndDateType' => {
+                                  'type' => 'Str'
+                                },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'Tenancy' => {
+                              'type' => 'Str'
+                            },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -213,7 +265,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 The tags to apply to the Capacity Reservation during launch.
 

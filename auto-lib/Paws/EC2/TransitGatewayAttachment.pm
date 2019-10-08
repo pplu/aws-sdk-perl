@@ -1,15 +1,70 @@
 package Paws::EC2::TransitGatewayAttachment;
-  use Moose;
-  has Association => (is => 'ro', isa => 'Paws::EC2::TransitGatewayAttachmentAssociation', request_name => 'association', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has ResourceOwnerId => (is => 'ro', isa => 'Str', request_name => 'resourceOwnerId', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has TransitGatewayAttachmentId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayAttachmentId', traits => ['NameInRequest']);
-  has TransitGatewayId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayId', traits => ['NameInRequest']);
-  has TransitGatewayOwnerId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayOwnerId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TransitGatewayAttachmentAssociation EC2_Tag/;
+  has Association => (is => 'ro', isa => EC2_TransitGatewayAttachmentAssociation);
+  has CreationTime => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceOwnerId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has TransitGatewayAttachmentId => (is => 'ro', isa => Str);
+  has TransitGatewayId => (is => 'ro', isa => Str);
+  has TransitGatewayOwnerId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'TransitGatewayAttachmentId' => {
+                                                 'type' => 'Str'
+                                               },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Association' => {
+                                  'class' => 'Paws::EC2::TransitGatewayAttachmentAssociation',
+                                  'type' => 'EC2_TransitGatewayAttachmentAssociation'
+                                },
+               'TransitGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'TransitGatewayOwnerId' => {
+                                            'type' => 'Str'
+                                          },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'ResourceOwnerId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'ResourceId' => 'resourceId',
+                       'CreationTime' => 'creationTime',
+                       'TransitGatewayAttachmentId' => 'transitGatewayAttachmentId',
+                       'State' => 'state',
+                       'Association' => 'association',
+                       'TransitGatewayId' => 'transitGatewayId',
+                       'TransitGatewayOwnerId' => 'transitGatewayOwnerId',
+                       'ResourceType' => 'resourceType',
+                       'Tags' => 'tagSet',
+                       'ResourceOwnerId' => 'resourceOwnerId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +100,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Association => L<Paws::EC2::TransitGatewayAttachmentAssociation>
+=head2 Association => EC2_TransitGatewayAttachmentAssociation
 
   The association.
 
@@ -75,7 +130,7 @@ This class has no description
   The attachment state.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   The tags for the attachment.
 

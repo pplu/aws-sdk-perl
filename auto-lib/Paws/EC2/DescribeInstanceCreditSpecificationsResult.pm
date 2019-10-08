@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeInstanceCreditSpecificationsResult;
-  use Moose;
-  has InstanceCreditSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceCreditSpecification]', request_name => 'instanceCreditSpecificationSet', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_InstanceCreditSpecification/;
+  has InstanceCreditSpecifications => (is => 'ro', isa => ArrayRef[EC2_InstanceCreditSpecification]);
+  has NextToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InstanceCreditSpecifications' => {
+                                                   'class' => 'Paws::EC2::InstanceCreditSpecification',
+                                                   'type' => 'ArrayRef[EC2_InstanceCreditSpecification]'
+                                                 }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'InstanceCreditSpecifications' => 'instanceCreditSpecificationSet'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +42,7 @@ Paws::EC2::DescribeInstanceCreditSpecificationsResult
 =head1 ATTRIBUTES
 
 
-=head2 InstanceCreditSpecifications => ArrayRef[L<Paws::EC2::InstanceCreditSpecification>]
+=head2 InstanceCreditSpecifications => ArrayRef[EC2_InstanceCreditSpecification]
 
 Information about the credit option for CPU usage of an instance.
 

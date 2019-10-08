@@ -1,7 +1,28 @@
 package Paws::EC2::DnsEntry;
-  use Moose;
-  has DnsName => (is => 'ro', isa => 'Str', request_name => 'dnsName', traits => ['NameInRequest']);
-  has HostedZoneId => (is => 'ro', isa => 'Str', request_name => 'hostedZoneId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has DnsName => (is => 'ro', isa => Str);
+  has HostedZoneId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DnsName' => {
+                              'type' => 'Str'
+                            },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DnsName' => 'dnsName',
+                       'HostedZoneId' => 'hostedZoneId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

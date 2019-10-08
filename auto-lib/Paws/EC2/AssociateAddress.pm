@@ -1,19 +1,58 @@
 
 package Paws::EC2::AssociateAddress;
-  use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str');
-  has AllowReassociation => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'allowReassociation' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'privateIpAddress' );
-  has PublicIp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has AllocationId => (is => 'ro', isa => Str, predicate => 1);
+  has AllowReassociation => (is => 'ro', isa => Bool, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, predicate => 1);
+  has NetworkInterfaceId => (is => 'ro', isa => Str, predicate => 1);
+  has PrivateIpAddress => (is => 'ro', isa => Str, predicate => 1);
+  has PublicIp => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateAddress');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::AssociateAddressResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateAddress');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::AssociateAddressResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'PublicIp' => {
+                               'type' => 'Str'
+                             },
+               'AllowReassociation' => {
+                                         'type' => 'Bool'
+                                       },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'AllocationId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'AllowReassociation' => 'allowReassociation',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'PrivateIpAddress' => 'privateIpAddress'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

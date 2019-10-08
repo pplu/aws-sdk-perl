@@ -1,9 +1,38 @@
 package Paws::EC2::EbsInstanceBlockDevice;
-  use Moose;
-  has AttachTime => (is => 'ro', isa => 'Str', request_name => 'attachTime', traits => ['NameInRequest']);
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool', request_name => 'deleteOnTermination', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has AttachTime => (is => 'ro', isa => Str);
+  has DeleteOnTermination => (is => 'ro', isa => Bool);
+  has Status => (is => 'ro', isa => Str);
+  has VolumeId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DeleteOnTermination' => {
+                                          'type' => 'Bool'
+                                        },
+               'AttachTime' => {
+                                 'type' => 'Str'
+                               },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'DeleteOnTermination' => 'deleteOnTermination',
+                       'AttachTime' => 'attachTime',
+                       'VolumeId' => 'volumeId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,36 @@
 
 package Paws::EC2::DescribeVpcEndpointServiceConfigurationsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
-  has ServiceConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ServiceConfiguration]', request_name => 'serviceConfigurationSet', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ServiceConfiguration/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ServiceConfigurations => (is => 'ro', isa => ArrayRef[EC2_ServiceConfiguration]);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceConfigurations' => {
+                                            'class' => 'Paws::EC2::ServiceConfiguration',
+                                            'type' => 'ArrayRef[EC2_ServiceConfiguration]'
+                                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ServiceConfigurations' => 'serviceConfigurationSet',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +48,7 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 ServiceConfigurations => ArrayRef[L<Paws::EC2::ServiceConfiguration>]
+=head2 ServiceConfigurations => ArrayRef[EC2_ServiceConfiguration]
 
 Information about one or more services.
 

@@ -1,9 +1,39 @@
 package Paws::EC2::InstanceBlockDeviceMappingSpecification;
-  use Moose;
-  has DeviceName => (is => 'ro', isa => 'Str', request_name => 'deviceName', traits => ['NameInRequest']);
-  has Ebs => (is => 'ro', isa => 'Paws::EC2::EbsInstanceBlockDeviceSpecification', request_name => 'ebs', traits => ['NameInRequest']);
-  has NoDevice => (is => 'ro', isa => 'Str', request_name => 'noDevice', traits => ['NameInRequest']);
-  has VirtualName => (is => 'ro', isa => 'Str', request_name => 'virtualName', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_EbsInstanceBlockDeviceSpecification/;
+  has DeviceName => (is => 'ro', isa => Str);
+  has Ebs => (is => 'ro', isa => EC2_EbsInstanceBlockDeviceSpecification);
+  has NoDevice => (is => 'ro', isa => Str);
+  has VirtualName => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ebs' => {
+                          'class' => 'Paws::EC2::EbsInstanceBlockDeviceSpecification',
+                          'type' => 'EC2_EbsInstanceBlockDeviceSpecification'
+                        },
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'VirtualName' => {
+                                  'type' => 'Str'
+                                },
+               'NoDevice' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Ebs' => 'ebs',
+                       'DeviceName' => 'deviceName',
+                       'VirtualName' => 'virtualName',
+                       'NoDevice' => 'noDevice'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +74,7 @@ This class has no description
   The device name (for example, C</dev/sdh> or C<xvdh>).
 
 
-=head2 Ebs => L<Paws::EC2::EbsInstanceBlockDeviceSpecification>
+=head2 Ebs => EC2_EbsInstanceBlockDeviceSpecification
 
   Parameters used to automatically set up EBS volumes when the instance
 is launched.

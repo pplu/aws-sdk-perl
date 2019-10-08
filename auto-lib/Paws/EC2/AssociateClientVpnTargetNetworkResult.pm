@@ -1,10 +1,36 @@
 
 package Paws::EC2::AssociateClientVpnTargetNetworkResult;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest',]);
-  has Status => (is => 'ro', isa => 'Paws::EC2::AssociationStatus', request_name => 'status', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_AssociationStatus/;
+  has AssociationId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => EC2_AssociationStatus);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'class' => 'Paws::EC2::AssociationStatus',
+                             'type' => 'EC2_AssociationStatus'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'AssociationId' => 'associationId',
+                       'Status' => 'status'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +47,7 @@ Paws::EC2::AssociateClientVpnTargetNetworkResult
 The unique ID of the target network association.
 
 
-=head2 Status => L<Paws::EC2::AssociationStatus>
+=head2 Status => EC2_AssociationStatus
 
 The current state of the target network association.
 

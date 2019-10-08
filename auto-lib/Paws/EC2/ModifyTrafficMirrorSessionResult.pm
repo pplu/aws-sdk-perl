@@ -1,9 +1,31 @@
 
 package Paws::EC2::ModifyTrafficMirrorSessionResult;
-  use Moose;
-  has TrafficMirrorSession => (is => 'ro', isa => 'Paws::EC2::TrafficMirrorSession', request_name => 'trafficMirrorSession', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_TrafficMirrorSession/;
+  has TrafficMirrorSession => (is => 'ro', isa => EC2_TrafficMirrorSession);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TrafficMirrorSession' => {
+                                           'class' => 'Paws::EC2::TrafficMirrorSession',
+                                           'type' => 'EC2_TrafficMirrorSession'
+                                         }
+             },
+  'NameInRequest' => {
+                       'TrafficMirrorSession' => 'trafficMirrorSession'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::ModifyTrafficMirrorSessionResult
 =head1 ATTRIBUTES
 
 
-=head2 TrafficMirrorSession => L<Paws::EC2::TrafficMirrorSession>
+=head2 TrafficMirrorSession => EC2_TrafficMirrorSession
 
 Information about the Traffic Mirror session.
 

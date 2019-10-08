@@ -1,7 +1,28 @@
 package Paws::EC2::AllowedPrincipal;
-  use Moose;
-  has Principal => (is => 'ro', isa => 'Str', request_name => 'principal', traits => ['NameInRequest']);
-  has PrincipalType => (is => 'ro', isa => 'Str', request_name => 'principalType', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Principal => (is => 'ro', isa => Str);
+  has PrincipalType => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrincipalType' => {
+                                    'type' => 'Str'
+                                  },
+               'Principal' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'PrincipalType' => 'principalType',
+                       'Principal' => 'principal'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

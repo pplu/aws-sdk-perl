@@ -1,7 +1,28 @@
 package Paws::EC2::ProductCode;
-  use Moose;
-  has ProductCodeId => (is => 'ro', isa => 'Str', request_name => 'productCode', traits => ['NameInRequest']);
-  has ProductCodeType => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has ProductCodeId => (is => 'ro', isa => Str);
+  has ProductCodeType => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProductCodeId' => {
+                                    'type' => 'Str'
+                                  },
+               'ProductCodeType' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'ProductCodeId' => 'productCode',
+                       'ProductCodeType' => 'type'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

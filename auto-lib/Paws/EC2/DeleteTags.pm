@@ -1,15 +1,42 @@
 
 package Paws::EC2::DeleteTags;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceId' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'tag' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Resources => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Resources' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'Resources' => 'resourceId',
+                       'Tags' => 'tag'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +94,7 @@ request into smaller batches.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
 The tags to delete. Specify a tag key and an optional tag value to
 delete specific tags. If you specify a tag key without a tag value, we

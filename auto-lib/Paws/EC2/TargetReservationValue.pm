@@ -1,7 +1,30 @@
 package Paws::EC2::TargetReservationValue;
-  use Moose;
-  has ReservationValue => (is => 'ro', isa => 'Paws::EC2::ReservationValue', request_name => 'reservationValue', traits => ['NameInRequest']);
-  has TargetConfiguration => (is => 'ro', isa => 'Paws::EC2::TargetConfiguration', request_name => 'targetConfiguration', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw//;
+  use Paws::EC2::Types qw/EC2_TargetConfiguration EC2_ReservationValue/;
+  has ReservationValue => (is => 'ro', isa => EC2_ReservationValue);
+  has TargetConfiguration => (is => 'ro', isa => EC2_TargetConfiguration);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservationValue' => {
+                                       'class' => 'Paws::EC2::ReservationValue',
+                                       'type' => 'EC2_ReservationValue'
+                                     },
+               'TargetConfiguration' => {
+                                          'class' => 'Paws::EC2::TargetConfiguration',
+                                          'type' => 'EC2_TargetConfiguration'
+                                        }
+             },
+  'NameInRequest' => {
+                       'ReservationValue' => 'reservationValue',
+                       'TargetConfiguration' => 'targetConfiguration'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,14 +60,14 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ReservationValue => L<Paws::EC2::ReservationValue>
+=head2 ReservationValue => EC2_ReservationValue
 
   The total value of the Convertible Reserved Instances that make up the
 exchange. This is the sum of the list value, remaining upfront price,
 and additional upfront cost of the exchange.
 
 
-=head2 TargetConfiguration => L<Paws::EC2::TargetConfiguration>
+=head2 TargetConfiguration => EC2_TargetConfiguration
 
   The configuration of the Convertible Reserved Instances that make up
 the exchange.

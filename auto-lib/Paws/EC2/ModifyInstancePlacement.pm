@@ -1,18 +1,54 @@
 
 package Paws::EC2::ModifyInstancePlacement;
-  use Moose;
-  has Affinity => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'affinity' );
-  has GroupName => (is => 'ro', isa => 'Str');
-  has HostId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostId' );
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
-  has PartitionNumber => (is => 'ro', isa => 'Int');
-  has Tenancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tenancy' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw//;
+  has Affinity => (is => 'ro', isa => Str, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, predicate => 1);
+  has HostId => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PartitionNumber => (is => 'ro', isa => Int, predicate => 1);
+  has Tenancy => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyInstancePlacement');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyInstancePlacementResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyInstancePlacement');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyInstancePlacementResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'Tenancy' => {
+                              'type' => 'Str'
+                            },
+               'HostId' => {
+                             'type' => 'Str'
+                           },
+               'PartitionNumber' => {
+                                      'type' => 'Int'
+                                    },
+               'Affinity' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'InstanceId' => 'instanceId',
+                       'Tenancy' => 'tenancy',
+                       'HostId' => 'hostId',
+                       'Affinity' => 'affinity'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

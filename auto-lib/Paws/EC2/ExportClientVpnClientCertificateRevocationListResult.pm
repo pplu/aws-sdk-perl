@@ -1,10 +1,36 @@
 
 package Paws::EC2::ExportClientVpnClientCertificateRevocationListResult;
-  use Moose;
-  has CertificateRevocationList => (is => 'ro', isa => 'Str', request_name => 'certificateRevocationList', traits => ['NameInRequest',]);
-  has Status => (is => 'ro', isa => 'Paws::EC2::ClientCertificateRevocationListStatus', request_name => 'status', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ClientCertificateRevocationListStatus/;
+  has CertificateRevocationList => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => EC2_ClientCertificateRevocationListStatus);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'class' => 'Paws::EC2::ClientCertificateRevocationListStatus',
+                             'type' => 'EC2_ClientCertificateRevocationListStatus'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CertificateRevocationList' => {
+                                                'type' => 'Str'
+                                              }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'CertificateRevocationList' => 'certificateRevocationList'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +47,7 @@ Paws::EC2::ExportClientVpnClientCertificateRevocationListResult
 Information about the client certificate revocation list.
 
 
-=head2 Status => L<Paws::EC2::ClientCertificateRevocationListStatus>
+=head2 Status => EC2_ClientCertificateRevocationListStatus
 
 The current state of the client certificate revocation list.
 

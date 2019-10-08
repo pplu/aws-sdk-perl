@@ -1,6 +1,23 @@
 package Paws::EC2::AttributeBooleanValue;
-  use Moose;
-  has Value => (is => 'ro', isa => 'Bool', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool/;
+  use Paws::EC2::Types qw//;
+  has Value => (is => 'ro', isa => Bool);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Bool'
+                          }
+             },
+  'NameInRequest' => {
+                       'Value' => 'value'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,20 +1,97 @@
 package Paws::EC2::FpgaImage;
-  use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
-  has DataRetentionSupport => (is => 'ro', isa => 'Bool', request_name => 'dataRetentionSupport', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has FpgaImageGlobalId => (is => 'ro', isa => 'Str', request_name => 'fpgaImageGlobalId', traits => ['NameInRequest']);
-  has FpgaImageId => (is => 'ro', isa => 'Str', request_name => 'fpgaImageId', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has OwnerAlias => (is => 'ro', isa => 'Str', request_name => 'ownerAlias', traits => ['NameInRequest']);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
-  has PciId => (is => 'ro', isa => 'Paws::EC2::PciId', request_name => 'pciId', traits => ['NameInRequest']);
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest']);
-  has Public => (is => 'ro', isa => 'Bool', request_name => 'public', traits => ['NameInRequest']);
-  has ShellVersion => (is => 'ro', isa => 'Str', request_name => 'shellVersion', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Paws::EC2::FpgaImageState', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tags', traits => ['NameInRequest']);
-  has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ProductCode EC2_Tag EC2_PciId EC2_FpgaImageState/;
+  has CreateTime => (is => 'ro', isa => Str);
+  has DataRetentionSupport => (is => 'ro', isa => Bool);
+  has Description => (is => 'ro', isa => Str);
+  has FpgaImageGlobalId => (is => 'ro', isa => Str);
+  has FpgaImageId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OwnerAlias => (is => 'ro', isa => Str);
+  has OwnerId => (is => 'ro', isa => Str);
+  has PciId => (is => 'ro', isa => EC2_PciId);
+  has ProductCodes => (is => 'ro', isa => ArrayRef[EC2_ProductCode]);
+  has Public => (is => 'ro', isa => Bool);
+  has ShellVersion => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => EC2_FpgaImageState);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has UpdateTime => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FpgaImageGlobalId' => {
+                                        'type' => 'Str'
+                                      },
+               'Public' => {
+                             'type' => 'Bool'
+                           },
+               'ProductCodes' => {
+                                   'class' => 'Paws::EC2::ProductCode',
+                                   'type' => 'ArrayRef[EC2_ProductCode]'
+                                 },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'State' => {
+                            'class' => 'Paws::EC2::FpgaImageState',
+                            'type' => 'EC2_FpgaImageState'
+                          },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'FpgaImageId' => {
+                                  'type' => 'Str'
+                                },
+               'ShellVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'OwnerAlias' => {
+                                 'type' => 'Str'
+                               },
+               'PciId' => {
+                            'class' => 'Paws::EC2::PciId',
+                            'type' => 'EC2_PciId'
+                          },
+               'UpdateTime' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'DataRetentionSupport' => {
+                                           'type' => 'Bool'
+                                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'FpgaImageGlobalId' => 'fpgaImageGlobalId',
+                       'Public' => 'public',
+                       'ProductCodes' => 'productCodes',
+                       'CreateTime' => 'createTime',
+                       'State' => 'state',
+                       'OwnerId' => 'ownerId',
+                       'FpgaImageId' => 'fpgaImageId',
+                       'ShellVersion' => 'shellVersion',
+                       'OwnerAlias' => 'ownerAlias',
+                       'PciId' => 'pciId',
+                       'UpdateTime' => 'updateTime',
+                       'Tags' => 'tags',
+                       'DataRetentionSupport' => 'dataRetentionSupport',
+                       'Description' => 'description',
+                       'Name' => 'name'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -91,12 +168,12 @@ and C<aws-marketplace>.
   The AWS account ID of the AFI owner.
 
 
-=head2 PciId => L<Paws::EC2::PciId>
+=head2 PciId => EC2_PciId
 
   Information about the PCI bus.
 
 
-=head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
+=head2 ProductCodes => ArrayRef[EC2_ProductCode]
 
   The product codes for the AFI.
 
@@ -111,12 +188,12 @@ and C<aws-marketplace>.
   The version of the AWS Shell that was used to create the bitstream.
 
 
-=head2 State => L<Paws::EC2::FpgaImageState>
+=head2 State => EC2_FpgaImageState
 
   Information about the state of the AFI.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   Any tags assigned to the AFI.
 

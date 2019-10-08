@@ -1,20 +1,62 @@
 
 package Paws::EC2::DescribeScheduledInstanceAvailability;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has FirstSlotStartTimeRange => (is => 'ro', isa => 'Paws::EC2::SlotDateTimeRangeRequest', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has MaxSlotDurationInHours => (is => 'ro', isa => 'Int');
-  has MinSlotDurationInHours => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Recurrence => (is => 'ro', isa => 'Paws::EC2::ScheduledInstanceRecurrenceRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::EC2::Types qw/EC2_ScheduledInstanceRecurrenceRequest EC2_SlotDateTimeRangeRequest EC2_Filter/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
+  has FirstSlotStartTimeRange => (is => 'ro', isa => EC2_SlotDateTimeRangeRequest, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has MaxSlotDurationInHours => (is => 'ro', isa => Int, predicate => 1);
+  has MinSlotDurationInHours => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Recurrence => (is => 'ro', isa => EC2_ScheduledInstanceRecurrenceRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeScheduledInstanceAvailability');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeScheduledInstanceAvailabilityResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeScheduledInstanceAvailability');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeScheduledInstanceAvailabilityResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'FirstSlotStartTimeRange' => {
+                                              'class' => 'Paws::EC2::SlotDateTimeRangeRequest',
+                                              'type' => 'EC2_SlotDateTimeRangeRequest'
+                                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'class' => 'Paws::EC2::Filter',
+                              'type' => 'ArrayRef[EC2_Filter]'
+                            },
+               'MaxSlotDurationInHours' => {
+                                             'type' => 'Int'
+                                           },
+               'MinSlotDurationInHours' => {
+                                             'type' => 'Int'
+                                           },
+               'Recurrence' => {
+                                 'class' => 'Paws::EC2::ScheduledInstanceRecurrenceRequest',
+                                 'type' => 'EC2_ScheduledInstanceRecurrenceRequest'
+                               }
+             },
+  'NameInRequest' => {
+                       'Filters' => 'Filter'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +115,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
+=head2 Filters => ArrayRef[EC2_Filter]
 
 The filters.
 
@@ -102,7 +144,7 @@ C<platform> - The platform (C<Linux/UNIX> or C<Windows>).
 
 
 
-=head2 B<REQUIRED> FirstSlotStartTimeRange => L<Paws::EC2::SlotDateTimeRangeRequest>
+=head2 B<REQUIRED> FirstSlotStartTimeRange => EC2_SlotDateTimeRangeRequest
 
 The time period for the first schedule to start.
 
@@ -139,7 +181,7 @@ The token for the next set of results.
 
 
 
-=head2 B<REQUIRED> Recurrence => L<Paws::EC2::ScheduledInstanceRecurrenceRequest>
+=head2 B<REQUIRED> Recurrence => EC2_ScheduledInstanceRecurrenceRequest
 
 The schedule recurrence.
 

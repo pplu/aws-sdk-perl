@@ -1,7 +1,28 @@
 package Paws::EC2::TargetConfiguration;
-  use Moose;
-  has InstanceCount => (is => 'ro', isa => 'Int', request_name => 'instanceCount', traits => ['NameInRequest']);
-  has OfferingId => (is => 'ro', isa => 'Str', request_name => 'offeringId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Int Str/;
+  use Paws::EC2::Types qw//;
+  has InstanceCount => (is => 'ro', isa => Int);
+  has OfferingId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  }
+             },
+  'NameInRequest' => {
+                       'OfferingId' => 'offeringId',
+                       'InstanceCount' => 'instanceCount'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

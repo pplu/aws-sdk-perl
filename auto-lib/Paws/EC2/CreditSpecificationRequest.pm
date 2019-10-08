@@ -1,6 +1,20 @@
 package Paws::EC2::CreditSpecificationRequest;
-  use Moose;
-  has CpuCredits => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has CpuCredits => (is => 'ro', isa => Str, required => 1);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CpuCredits' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

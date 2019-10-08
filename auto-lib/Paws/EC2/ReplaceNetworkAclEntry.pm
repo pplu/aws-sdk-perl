@@ -1,22 +1,78 @@
 
 package Paws::EC2::ReplaceNetworkAclEntry;
-  use Moose;
-  has CidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cidrBlock' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Egress => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'egress' , required => 1);
-  has IcmpTypeCode => (is => 'ro', isa => 'Paws::EC2::IcmpTypeCode', traits => ['NameInRequest'], request_name => 'Icmp' );
-  has Ipv6CidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ipv6CidrBlock' );
-  has NetworkAclId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkAclId' , required => 1);
-  has PortRange => (is => 'ro', isa => 'Paws::EC2::PortRange', traits => ['NameInRequest'], request_name => 'portRange' );
-  has Protocol => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'protocol' , required => 1);
-  has RuleAction => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ruleAction' , required => 1);
-  has RuleNumber => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'ruleNumber' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::EC2::Types qw/EC2_PortRange EC2_IcmpTypeCode/;
+  has CidrBlock => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has Egress => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has IcmpTypeCode => (is => 'ro', isa => EC2_IcmpTypeCode, predicate => 1);
+  has Ipv6CidrBlock => (is => 'ro', isa => Str, predicate => 1);
+  has NetworkAclId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PortRange => (is => 'ro', isa => EC2_PortRange, predicate => 1);
+  has Protocol => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RuleAction => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RuleNumber => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceNetworkAclEntry');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ReplaceNetworkAclEntry');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'RuleNumber' => {
+                                 'type' => 'Int'
+                               },
+               'Ipv6CidrBlock' => {
+                                    'type' => 'Str'
+                                  },
+               'IcmpTypeCode' => {
+                                   'class' => 'Paws::EC2::IcmpTypeCode',
+                                   'type' => 'EC2_IcmpTypeCode'
+                                 },
+               'CidrBlock' => {
+                                'type' => 'Str'
+                              },
+               'NetworkAclId' => {
+                                   'type' => 'Str'
+                                 },
+               'RuleAction' => {
+                                 'type' => 'Str'
+                               },
+               'PortRange' => {
+                                'class' => 'Paws::EC2::PortRange',
+                                'type' => 'EC2_PortRange'
+                              },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'Egress' => {
+                             'type' => 'Bool'
+                           }
+             },
+  'NameInRequest' => {
+                       'DryRun' => 'dryRun',
+                       'RuleNumber' => 'ruleNumber',
+                       'Ipv6CidrBlock' => 'ipv6CidrBlock',
+                       'IcmpTypeCode' => 'Icmp',
+                       'CidrBlock' => 'cidrBlock',
+                       'NetworkAclId' => 'networkAclId',
+                       'RuleAction' => 'ruleAction',
+                       'PortRange' => 'portRange',
+                       'Protocol' => 'protocol',
+                       'Egress' => 'egress'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +140,7 @@ Default: If no value is specified, we replace the ingress rule.
 
 
 
-=head2 IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>
+=head2 IcmpTypeCode => EC2_IcmpTypeCode
 
 ICMP protocol: The ICMP or ICMPv6 type and code. Required if specifying
 protocol 1 (ICMP) or protocol 58 (ICMPv6) with an IPv6 CIDR block.
@@ -104,7 +160,7 @@ The ID of the ACL.
 
 
 
-=head2 PortRange => L<Paws::EC2::PortRange>
+=head2 PortRange => EC2_PortRange
 
 TCP or UDP protocols: The range of ports the rule applies to. Required
 if specifying protocol 6 (TCP) or 17 (UDP).

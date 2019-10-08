@@ -1,7 +1,28 @@
 package Paws::EC2::NetworkInterfaceAttachmentChanges;
-  use Moose;
-  has AttachmentId => (is => 'ro', isa => 'Str', request_name => 'attachmentId', traits => ['NameInRequest']);
-  has DeleteOnTermination => (is => 'ro', isa => 'Bool', request_name => 'deleteOnTermination', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has AttachmentId => (is => 'ro', isa => Str);
+  has DeleteOnTermination => (is => 'ro', isa => Bool);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeleteOnTermination' => {
+                                          'type' => 'Bool'
+                                        },
+               'AttachmentId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DeleteOnTermination' => 'deleteOnTermination',
+                       'AttachmentId' => 'attachmentId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

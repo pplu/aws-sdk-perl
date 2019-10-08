@@ -1,14 +1,65 @@
 package Paws::EC2::ReservedInstancesModification;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
-  has CreateDate => (is => 'ro', isa => 'Str', request_name => 'createDate', traits => ['NameInRequest']);
-  has EffectiveDate => (is => 'ro', isa => 'Str', request_name => 'effectiveDate', traits => ['NameInRequest']);
-  has ModificationResults => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesModificationResult]', request_name => 'modificationResultSet', traits => ['NameInRequest']);
-  has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesId]', request_name => 'reservedInstancesSet', traits => ['NameInRequest']);
-  has ReservedInstancesModificationId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesModificationId', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has UpdateDate => (is => 'ro', isa => 'Str', request_name => 'updateDate', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_ReservedInstancesId EC2_ReservedInstancesModificationResult/;
+  has ClientToken => (is => 'ro', isa => Str);
+  has CreateDate => (is => 'ro', isa => Str);
+  has EffectiveDate => (is => 'ro', isa => Str);
+  has ModificationResults => (is => 'ro', isa => ArrayRef[EC2_ReservedInstancesModificationResult]);
+  has ReservedInstancesIds => (is => 'ro', isa => ArrayRef[EC2_ReservedInstancesId]);
+  has ReservedInstancesModificationId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has UpdateDate => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservedInstancesModificationId' => {
+                                                      'type' => 'Str'
+                                                    },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'EffectiveDate' => {
+                                    'type' => 'Str'
+                                  },
+               'ReservedInstancesIds' => {
+                                           'class' => 'Paws::EC2::ReservedInstancesId',
+                                           'type' => 'ArrayRef[EC2_ReservedInstancesId]'
+                                         },
+               'ModificationResults' => {
+                                          'class' => 'Paws::EC2::ReservedInstancesModificationResult',
+                                          'type' => 'ArrayRef[EC2_ReservedInstancesModificationResult]'
+                                        },
+               'UpdateDate' => {
+                                 'type' => 'Str'
+                               },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'ReservedInstancesModificationId' => 'reservedInstancesModificationId',
+                       'CreateDate' => 'createDate',
+                       'ClientToken' => 'clientToken',
+                       'Status' => 'status',
+                       'EffectiveDate' => 'effectiveDate',
+                       'ReservedInstancesIds' => 'reservedInstancesSet',
+                       'ModificationResults' => 'modificationResultSet',
+                       'UpdateDate' => 'updateDate',
+                       'StatusMessage' => 'statusMessage'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,13 +112,13 @@ request is idempotent. For more information, see Ensuring Idempotency
   The time for the modification to become effective.
 
 
-=head2 ModificationResults => ArrayRef[L<Paws::EC2::ReservedInstancesModificationResult>]
+=head2 ModificationResults => ArrayRef[EC2_ReservedInstancesModificationResult]
 
   Contains target configurations along with their corresponding new
 Reserved Instance IDs.
 
 
-=head2 ReservedInstancesIds => ArrayRef[L<Paws::EC2::ReservedInstancesId>]
+=head2 ReservedInstancesIds => ArrayRef[EC2_ReservedInstancesId]
 
   The IDs of one or more Reserved Instances.
 

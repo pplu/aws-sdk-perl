@@ -1,22 +1,96 @@
 
 package Paws::EC2::Snapshot;
-  use Moose;
-  has DataEncryptionKeyId => (is => 'ro', isa => 'Str', request_name => 'dataEncryptionKeyId', traits => ['NameInRequest',]);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest',]);
-  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest',]);
-  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest',]);
-  has OwnerAlias => (is => 'ro', isa => 'Str', request_name => 'ownerAlias', traits => ['NameInRequest',]);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest',]);
-  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest',]);
-  has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest',]);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest',]);
-  has State => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest',]);
-  has StateMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest',]);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest',]);
-  has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest',]);
-  has VolumeSize => (is => 'ro', isa => 'Int', request_name => 'volumeSize', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has DataEncryptionKeyId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has OwnerAlias => (is => 'ro', isa => Str);
+  has OwnerId => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Str);
+  has SnapshotId => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has StateMessage => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has VolumeId => (is => 'ro', isa => Str);
+  has VolumeSize => (is => 'ro', isa => Int);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataEncryptionKeyId' => {
+                                          'type' => 'Str'
+                                        },
+               'VolumeSize' => {
+                                 'type' => 'Int'
+                               },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'StateMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'OwnerAlias' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'Progress' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DataEncryptionKeyId' => 'dataEncryptionKeyId',
+                       'VolumeSize' => 'volumeSize',
+                       'SnapshotId' => 'snapshotId',
+                       'VolumeId' => 'volumeId',
+                       'State' => 'status',
+                       'OwnerId' => 'ownerId',
+                       'StateMessage' => 'statusMessage',
+                       'KmsKeyId' => 'kmsKeyId',
+                       'Encrypted' => 'encrypted',
+                       'OwnerAlias' => 'ownerAlias',
+                       'Tags' => 'tagSet',
+                       'StartTime' => 'startTime',
+                       'Progress' => 'progress',
+                       'Description' => 'description'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -99,7 +173,7 @@ error state details to help you diagnose why the error occurred. This
 parameter is only returned by DescribeSnapshots.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
 Any tags assigned to the snapshot.
 

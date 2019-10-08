@@ -1,8 +1,33 @@
 package Paws::EC2::EventInformation;
-  use Moose;
-  has EventDescription => (is => 'ro', isa => 'Str', request_name => 'eventDescription', traits => ['NameInRequest']);
-  has EventSubType => (is => 'ro', isa => 'Str', request_name => 'eventSubType', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has EventDescription => (is => 'ro', isa => Str);
+  has EventSubType => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'EventDescription' => {
+                                       'type' => 'Str'
+                                     },
+               'EventSubType' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'InstanceId' => 'instanceId',
+                       'EventDescription' => 'eventDescription',
+                       'EventSubType' => 'eventSubType'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,29 @@
 package Paws::EC2::DhcpConfiguration;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
-  has Values => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AttributeValue]', request_name => 'valueSet', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_AttributeValue/;
+  has Key => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => ArrayRef[EC2_AttributeValue]);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Values' => {
+                             'class' => 'Paws::EC2::AttributeValue',
+                             'type' => 'ArrayRef[EC2_AttributeValue]'
+                           },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Values' => 'valueSet',
+                       'Key' => 'key'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +64,7 @@ This class has no description
   The name of a DHCP option.
 
 
-=head2 Values => ArrayRef[L<Paws::EC2::AttributeValue>]
+=head2 Values => ArrayRef[EC2_AttributeValue]
 
   One or more values for the DHCP option.
 

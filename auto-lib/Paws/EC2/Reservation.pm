@@ -1,13 +1,52 @@
 
 package Paws::EC2::Reservation;
-  use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest',]);
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Instance]', request_name => 'instancesSet', traits => ['NameInRequest',]);
-  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest',]);
-  has RequesterId => (is => 'ro', isa => 'Str', request_name => 'requesterId', traits => ['NameInRequest',]);
-  has ReservationId => (is => 'ro', isa => 'Str', request_name => 'reservationId', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Instance EC2_GroupIdentifier/;
+  has Groups => (is => 'ro', isa => ArrayRef[EC2_GroupIdentifier]);
+  has Instances => (is => 'ro', isa => ArrayRef[EC2_Instance]);
+  has OwnerId => (is => 'ro', isa => Str);
+  has RequesterId => (is => 'ro', isa => Str);
+  has ReservationId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groups' => {
+                             'class' => 'Paws::EC2::GroupIdentifier',
+                             'type' => 'ArrayRef[EC2_GroupIdentifier]'
+                           },
+               'RequesterId' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Instances' => {
+                                'class' => 'Paws::EC2::Instance',
+                                'type' => 'ArrayRef[EC2_Instance]'
+                              },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'ReservationId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Groups' => 'groupSet',
+                       'RequesterId' => 'requesterId',
+                       'Instances' => 'instancesSet',
+                       'OwnerId' => 'ownerId',
+                       'ReservationId' => 'reservationId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -19,12 +58,12 @@ Paws::EC2::Reservation
 =head1 ATTRIBUTES
 
 
-=head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
+=head2 Groups => ArrayRef[EC2_GroupIdentifier]
 
 [EC2-Classic only] The security groups.
 
 
-=head2 Instances => ArrayRef[L<Paws::EC2::Instance>]
+=head2 Instances => ArrayRef[EC2_Instance]
 
 The instances.
 

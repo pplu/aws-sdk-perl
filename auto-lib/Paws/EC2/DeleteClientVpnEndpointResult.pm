@@ -1,9 +1,31 @@
 
 package Paws::EC2::DeleteClientVpnEndpointResult;
-  use Moose;
-  has Status => (is => 'ro', isa => 'Paws::EC2::ClientVpnEndpointStatus', request_name => 'status', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ClientVpnEndpointStatus/;
+  has Status => (is => 'ro', isa => EC2_ClientVpnEndpointStatus);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'class' => 'Paws::EC2::ClientVpnEndpointStatus',
+                             'type' => 'EC2_ClientVpnEndpointStatus'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::DeleteClientVpnEndpointResult
 =head1 ATTRIBUTES
 
 
-=head2 Status => L<Paws::EC2::ClientVpnEndpointStatus>
+=head2 Status => EC2_ClientVpnEndpointStatus
 
 The current state of the Client VPN endpoint.
 

@@ -1,14 +1,65 @@
 package Paws::EC2::TransitGatewayVpcAttachment;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has Options => (is => 'ro', isa => 'Paws::EC2::TransitGatewayVpcAttachmentOptions', request_name => 'options', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
-  has TransitGatewayAttachmentId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayAttachmentId', traits => ['NameInRequest']);
-  has TransitGatewayId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayId', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
-  has VpcOwnerId => (is => 'ro', isa => 'Str', request_name => 'vpcOwnerId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::EC2::Types qw/EC2_TransitGatewayVpcAttachmentOptions EC2_Tag/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has Options => (is => 'ro', isa => EC2_TransitGatewayVpcAttachmentOptions);
+  has State => (is => 'ro', isa => Str);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+  has TransitGatewayAttachmentId => (is => 'ro', isa => Str);
+  has TransitGatewayId => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+  has VpcOwnerId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'TransitGatewayAttachmentId' => {
+                                                 'type' => 'Str'
+                                               },
+               'Options' => {
+                              'class' => 'Paws::EC2::TransitGatewayVpcAttachmentOptions',
+                              'type' => 'EC2_TransitGatewayVpcAttachmentOptions'
+                            },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'TransitGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'VpcOwnerId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'TransitGatewayAttachmentId' => 'transitGatewayAttachmentId',
+                       'Options' => 'options',
+                       'SubnetIds' => 'subnetIds',
+                       'State' => 'state',
+                       'TransitGatewayId' => 'transitGatewayId',
+                       'VpcId' => 'vpcId',
+                       'Tags' => 'tagSet',
+                       'VpcOwnerId' => 'vpcOwnerId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +100,7 @@ This class has no description
   The creation time.
 
 
-=head2 Options => L<Paws::EC2::TransitGatewayVpcAttachmentOptions>
+=head2 Options => EC2_TransitGatewayVpcAttachmentOptions
 
   The VPC attachment options.
 
@@ -64,7 +115,7 @@ This class has no description
   The IDs of the subnets.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   The tags for the VPC attachment.
 

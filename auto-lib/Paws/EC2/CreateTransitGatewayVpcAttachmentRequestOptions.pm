@@ -1,7 +1,24 @@
 package Paws::EC2::CreateTransitGatewayVpcAttachmentRequestOptions;
-  use Moose;
-  has DnsSupport => (is => 'ro', isa => 'Str');
-  has Ipv6Support => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has DnsSupport => (is => 'ro', isa => Str);
+  has Ipv6Support => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DnsSupport' => {
+                                 'type' => 'Str'
+                               },
+               'Ipv6Support' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

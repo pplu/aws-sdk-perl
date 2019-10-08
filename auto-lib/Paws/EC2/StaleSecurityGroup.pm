@@ -1,11 +1,50 @@
 package Paws::EC2::StaleSecurityGroup;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
-  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
-  has StaleIpPermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::StaleIpPermission]', request_name => 'staleIpPermissions', traits => ['NameInRequest']);
-  has StaleIpPermissionsEgress => (is => 'ro', isa => 'ArrayRef[Paws::EC2::StaleIpPermission]', request_name => 'staleIpPermissionsEgress', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EC2::Types qw/EC2_StaleIpPermission/;
+  has Description => (is => 'ro', isa => Str);
+  has GroupId => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+  has StaleIpPermissions => (is => 'ro', isa => ArrayRef[EC2_StaleIpPermission]);
+  has StaleIpPermissionsEgress => (is => 'ro', isa => ArrayRef[EC2_StaleIpPermission]);
+  has VpcId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'StaleIpPermissionsEgress' => {
+                                               'class' => 'Paws::EC2::StaleIpPermission',
+                                               'type' => 'ArrayRef[EC2_StaleIpPermission]'
+                                             },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'StaleIpPermissions' => {
+                                         'class' => 'Paws::EC2::StaleIpPermission',
+                                         'type' => 'ArrayRef[EC2_StaleIpPermission]'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'VpcId' => 'vpcId',
+                       'GroupId' => 'groupId',
+                       'StaleIpPermissionsEgress' => 'staleIpPermissionsEgress',
+                       'GroupName' => 'groupName',
+                       'StaleIpPermissions' => 'staleIpPermissions',
+                       'Description' => 'description'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,12 +95,12 @@ This class has no description
   The name of the security group.
 
 
-=head2 StaleIpPermissions => ArrayRef[L<Paws::EC2::StaleIpPermission>]
+=head2 StaleIpPermissions => ArrayRef[EC2_StaleIpPermission]
 
   Information about the stale inbound rules in the security group.
 
 
-=head2 StaleIpPermissionsEgress => ArrayRef[L<Paws::EC2::StaleIpPermission>]
+=head2 StaleIpPermissionsEgress => ArrayRef[EC2_StaleIpPermission]
 
   Information about the stale outbound rules in the security group.
 

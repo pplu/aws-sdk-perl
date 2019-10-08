@@ -1,7 +1,28 @@
 package Paws::EC2::TransitGatewayAttachmentPropagation;
-  use Moose;
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has TransitGatewayRouteTableId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayRouteTableId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has State => (is => 'ro', isa => Str);
+  has TransitGatewayRouteTableId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TransitGatewayRouteTableId' => {
+                                                 'type' => 'Str'
+                                               },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'TransitGatewayRouteTableId' => 'transitGatewayRouteTableId',
+                       'State' => 'state'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

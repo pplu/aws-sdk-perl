@@ -1,9 +1,31 @@
 
 package Paws::EC2::CreateCapacityReservationResult;
-  use Moose;
-  has CapacityReservation => (is => 'ro', isa => 'Paws::EC2::CapacityReservation', request_name => 'capacityReservation', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_CapacityReservation/;
+  has CapacityReservation => (is => 'ro', isa => EC2_CapacityReservation);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CapacityReservation' => {
+                                          'class' => 'Paws::EC2::CapacityReservation',
+                                          'type' => 'EC2_CapacityReservation'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'CapacityReservation' => 'capacityReservation'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::CreateCapacityReservationResult
 =head1 ATTRIBUTES
 
 
-=head2 CapacityReservation => L<Paws::EC2::CapacityReservation>
+=head2 CapacityReservation => EC2_CapacityReservation
 
 Information about the Capacity Reservation.
 

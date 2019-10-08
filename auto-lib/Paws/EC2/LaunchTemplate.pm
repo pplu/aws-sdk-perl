@@ -1,12 +1,54 @@
 package Paws::EC2::LaunchTemplate;
-  use Moose;
-  has CreatedBy => (is => 'ro', isa => 'Str', request_name => 'createdBy', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
-  has DefaultVersionNumber => (is => 'ro', isa => 'Int', request_name => 'defaultVersionNumber', traits => ['NameInRequest']);
-  has LatestVersionNumber => (is => 'ro', isa => 'Int', request_name => 'latestVersionNumber', traits => ['NameInRequest']);
-  has LaunchTemplateId => (is => 'ro', isa => 'Str', request_name => 'launchTemplateId', traits => ['NameInRequest']);
-  has LaunchTemplateName => (is => 'ro', isa => 'Str', request_name => 'launchTemplateName', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::EC2::Types qw/EC2_Tag/;
+  has CreatedBy => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str);
+  has DefaultVersionNumber => (is => 'ro', isa => Int);
+  has LatestVersionNumber => (is => 'ro', isa => Int);
+  has LaunchTemplateId => (is => 'ro', isa => Str);
+  has LaunchTemplateName => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchTemplateId' => {
+                                       'type' => 'Str'
+                                     },
+               'LatestVersionNumber' => {
+                                          'type' => 'Int'
+                                        },
+               'DefaultVersionNumber' => {
+                                           'type' => 'Int'
+                                         },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'CreatedBy' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::EC2::Tag',
+                           'type' => 'ArrayRef[EC2_Tag]'
+                         },
+               'LaunchTemplateName' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'LaunchTemplateId' => 'launchTemplateId',
+                       'LatestVersionNumber' => 'latestVersionNumber',
+                       'DefaultVersionNumber' => 'defaultVersionNumber',
+                       'CreateTime' => 'createTime',
+                       'CreatedBy' => 'createdBy',
+                       'Tags' => 'tagSet',
+                       'LaunchTemplateName' => 'launchTemplateName'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +114,7 @@ This class has no description
   The name of the launch template.
 
 
-=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+=head2 Tags => ArrayRef[EC2_Tag]
 
   The tags for the launch template.
 

@@ -1,9 +1,31 @@
 
 package Paws::EC2::ImportInstanceResult;
-  use Moose;
-  has ConversionTask => (is => 'ro', isa => 'Paws::EC2::ConversionTask', request_name => 'conversionTask', traits => ['NameInRequest',]);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw/EC2_ConversionTask/;
+  has ConversionTask => (is => 'ro', isa => EC2_ConversionTask);
+
+  has _request_id => (is => 'ro', isa => Str);
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ConversionTask' => {
+                                     'class' => 'Paws::EC2::ConversionTask',
+                                     'type' => 'EC2_ConversionTask'
+                                   }
+             },
+  'NameInRequest' => {
+                       'ConversionTask' => 'conversionTask'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::EC2::ImportInstanceResult
 =head1 ATTRIBUTES
 
 
-=head2 ConversionTask => L<Paws::EC2::ConversionTask>
+=head2 ConversionTask => EC2_ConversionTask
 
 Information about the conversion task.
 

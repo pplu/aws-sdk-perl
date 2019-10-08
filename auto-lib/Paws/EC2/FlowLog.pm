@@ -1,16 +1,73 @@
 package Paws::EC2::FlowLog;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has DeliverLogsErrorMessage => (is => 'ro', isa => 'Str', request_name => 'deliverLogsErrorMessage', traits => ['NameInRequest']);
-  has DeliverLogsPermissionArn => (is => 'ro', isa => 'Str', request_name => 'deliverLogsPermissionArn', traits => ['NameInRequest']);
-  has DeliverLogsStatus => (is => 'ro', isa => 'Str', request_name => 'deliverLogsStatus', traits => ['NameInRequest']);
-  has FlowLogId => (is => 'ro', isa => 'Str', request_name => 'flowLogId', traits => ['NameInRequest']);
-  has FlowLogStatus => (is => 'ro', isa => 'Str', request_name => 'flowLogStatus', traits => ['NameInRequest']);
-  has LogDestination => (is => 'ro', isa => 'Str', request_name => 'logDestination', traits => ['NameInRequest']);
-  has LogDestinationType => (is => 'ro', isa => 'Str', request_name => 'logDestinationType', traits => ['NameInRequest']);
-  has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has TrafficType => (is => 'ro', isa => 'Str', request_name => 'trafficType', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DeliverLogsErrorMessage => (is => 'ro', isa => Str);
+  has DeliverLogsPermissionArn => (is => 'ro', isa => Str);
+  has DeliverLogsStatus => (is => 'ro', isa => Str);
+  has FlowLogId => (is => 'ro', isa => Str);
+  has FlowLogStatus => (is => 'ro', isa => Str);
+  has LogDestination => (is => 'ro', isa => Str);
+  has LogDestinationType => (is => 'ro', isa => Str);
+  has LogGroupName => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has TrafficType => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'DeliverLogsErrorMessage' => {
+                                              'type' => 'Str'
+                                            },
+               'TrafficType' => {
+                                  'type' => 'Str'
+                                },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'FlowLogId' => {
+                                'type' => 'Str'
+                              },
+               'DeliverLogsStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'FlowLogStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'LogDestinationType' => {
+                                         'type' => 'Str'
+                                       },
+               'DeliverLogsPermissionArn' => {
+                                               'type' => 'Str'
+                                             },
+               'LogDestination' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'ResourceId' => 'resourceId',
+                       'CreationTime' => 'creationTime',
+                       'DeliverLogsErrorMessage' => 'deliverLogsErrorMessage',
+                       'TrafficType' => 'trafficType',
+                       'LogGroupName' => 'logGroupName',
+                       'FlowLogId' => 'flowLogId',
+                       'DeliverLogsStatus' => 'deliverLogsStatus',
+                       'FlowLogStatus' => 'flowLogStatus',
+                       'LogDestinationType' => 'logDestinationType',
+                       'DeliverLogsPermissionArn' => 'deliverLogsPermissionArn',
+                       'LogDestination' => 'logDestination'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

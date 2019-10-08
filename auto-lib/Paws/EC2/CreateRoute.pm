@@ -1,23 +1,80 @@
 
 package Paws::EC2::CreateRoute;
-  use Moose;
-  has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' );
-  has DestinationIpv6CidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationIpv6CidrBlock' );
-  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'egressOnlyInternetGatewayId' );
-  has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' );
-  has NatGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'natGatewayId' );
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
-  has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
-  has TransitGatewayId => (is => 'ro', isa => 'Str');
-  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcPeeringConnectionId' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw//;
+  has DestinationCidrBlock => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationIpv6CidrBlock => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has EgressOnlyInternetGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has GatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, predicate => 1);
+  has NatGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has NetworkInterfaceId => (is => 'ro', isa => Str, predicate => 1);
+  has RouteTableId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TransitGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has VpcPeeringConnectionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRoute');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateRouteResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRoute');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateRouteResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NatGatewayId' => {
+                                   'type' => 'Str'
+                                 },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'DestinationIpv6CidrBlock' => {
+                                               'type' => 'Str'
+                                             },
+               'DestinationCidrBlock' => {
+                                           'type' => 'Str'
+                                         },
+               'RouteTableId' => {
+                                   'type' => 'Str'
+                                 },
+               'EgressOnlyInternetGatewayId' => {
+                                                  'type' => 'Str'
+                                                },
+               'TransitGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'GatewayId' => {
+                                'type' => 'Str'
+                              },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'VpcPeeringConnectionId' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'NatGatewayId' => 'natGatewayId',
+                       'DryRun' => 'dryRun',
+                       'InstanceId' => 'instanceId',
+                       'DestinationIpv6CidrBlock' => 'destinationIpv6CidrBlock',
+                       'DestinationCidrBlock' => 'destinationCidrBlock',
+                       'RouteTableId' => 'routeTableId',
+                       'EgressOnlyInternetGatewayId' => 'egressOnlyInternetGatewayId',
+                       'GatewayId' => 'gatewayId',
+                       'NetworkInterfaceId' => 'networkInterfaceId',
+                       'VpcPeeringConnectionId' => 'vpcPeeringConnectionId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,41 @@
 
 package Paws::EC2::ModifyFleet;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str');
-  has FleetId => (is => 'ro', isa => 'Str', required => 1);
-  has TargetCapacitySpecification => (is => 'ro', isa => 'Paws::EC2::TargetCapacitySpecificationRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2::Types qw/EC2_TargetCapacitySpecificationRequest/;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ExcessCapacityTerminationPolicy => (is => 'ro', isa => Str, predicate => 1);
+  has FleetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetCapacitySpecification => (is => 'ro', isa => EC2_TargetCapacitySpecificationRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyFleet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyFleetResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyFleet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyFleetResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'ExcessCapacityTerminationPolicy' => {
+                                                      'type' => 'Str'
+                                                    },
+               'TargetCapacitySpecification' => {
+                                                  'class' => 'Paws::EC2::TargetCapacitySpecificationRequest',
+                                                  'type' => 'EC2_TargetCapacitySpecificationRequest'
+                                                }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +101,7 @@ The ID of the EC2 Fleet.
 
 
 
-=head2 B<REQUIRED> TargetCapacitySpecification => L<Paws::EC2::TargetCapacitySpecificationRequest>
+=head2 B<REQUIRED> TargetCapacitySpecification => EC2_TargetCapacitySpecificationRequest
 
 The size of the EC2 Fleet.
 

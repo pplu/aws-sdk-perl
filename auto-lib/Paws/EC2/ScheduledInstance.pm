@@ -1,20 +1,94 @@
 package Paws::EC2::ScheduledInstance;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has CreateDate => (is => 'ro', isa => 'Str', request_name => 'createDate', traits => ['NameInRequest']);
-  has HourlyPrice => (is => 'ro', isa => 'Str', request_name => 'hourlyPrice', traits => ['NameInRequest']);
-  has InstanceCount => (is => 'ro', isa => 'Int', request_name => 'instanceCount', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has NetworkPlatform => (is => 'ro', isa => 'Str', request_name => 'networkPlatform', traits => ['NameInRequest']);
-  has NextSlotStartTime => (is => 'ro', isa => 'Str', request_name => 'nextSlotStartTime', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has PreviousSlotEndTime => (is => 'ro', isa => 'Str', request_name => 'previousSlotEndTime', traits => ['NameInRequest']);
-  has Recurrence => (is => 'ro', isa => 'Paws::EC2::ScheduledInstanceRecurrence', request_name => 'recurrence', traits => ['NameInRequest']);
-  has ScheduledInstanceId => (is => 'ro', isa => 'Str', request_name => 'scheduledInstanceId', traits => ['NameInRequest']);
-  has SlotDurationInHours => (is => 'ro', isa => 'Int', request_name => 'slotDurationInHours', traits => ['NameInRequest']);
-  has TermEndDate => (is => 'ro', isa => 'Str', request_name => 'termEndDate', traits => ['NameInRequest']);
-  has TermStartDate => (is => 'ro', isa => 'Str', request_name => 'termStartDate', traits => ['NameInRequest']);
-  has TotalScheduledInstanceHours => (is => 'ro', isa => 'Int', request_name => 'totalScheduledInstanceHours', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str Int/;
+  use Paws::EC2::Types qw/EC2_ScheduledInstanceRecurrence/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has CreateDate => (is => 'ro', isa => Str);
+  has HourlyPrice => (is => 'ro', isa => Str);
+  has InstanceCount => (is => 'ro', isa => Int);
+  has InstanceType => (is => 'ro', isa => Str);
+  has NetworkPlatform => (is => 'ro', isa => Str);
+  has NextSlotStartTime => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has PreviousSlotEndTime => (is => 'ro', isa => Str);
+  has Recurrence => (is => 'ro', isa => EC2_ScheduledInstanceRecurrence);
+  has ScheduledInstanceId => (is => 'ro', isa => Str);
+  has SlotDurationInHours => (is => 'ro', isa => Int);
+  has TermEndDate => (is => 'ro', isa => Str);
+  has TermStartDate => (is => 'ro', isa => Str);
+  has TotalScheduledInstanceHours => (is => 'ro', isa => Int);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'ScheduledInstanceId' => {
+                                          'type' => 'Str'
+                                        },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'NetworkPlatform' => {
+                                      'type' => 'Str'
+                                    },
+               'TermEndDate' => {
+                                  'type' => 'Str'
+                                },
+               'TermStartDate' => {
+                                    'type' => 'Str'
+                                  },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'SlotDurationInHours' => {
+                                          'type' => 'Int'
+                                        },
+               'PreviousSlotEndTime' => {
+                                          'type' => 'Str'
+                                        },
+               'NextSlotStartTime' => {
+                                        'type' => 'Str'
+                                      },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'Recurrence' => {
+                                 'class' => 'Paws::EC2::ScheduledInstanceRecurrence',
+                                 'type' => 'EC2_ScheduledInstanceRecurrence'
+                               },
+               'HourlyPrice' => {
+                                  'type' => 'Str'
+                                },
+               'TotalScheduledInstanceHours' => {
+                                                  'type' => 'Int'
+                                                }
+             },
+  'NameInRequest' => {
+                       'CreateDate' => 'createDate',
+                       'ScheduledInstanceId' => 'scheduledInstanceId',
+                       'Platform' => 'platform',
+                       'InstanceType' => 'instanceType',
+                       'NetworkPlatform' => 'networkPlatform',
+                       'TermEndDate' => 'termEndDate',
+                       'TermStartDate' => 'termStartDate',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'SlotDurationInHours' => 'slotDurationInHours',
+                       'PreviousSlotEndTime' => 'previousSlotEndTime',
+                       'NextSlotStartTime' => 'nextSlotStartTime',
+                       'InstanceCount' => 'instanceCount',
+                       'Recurrence' => 'recurrence',
+                       'HourlyPrice' => 'hourlyPrice',
+                       'TotalScheduledInstanceHours' => 'totalScheduledInstanceHours'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +169,7 @@ This class has no description
   The time that the previous schedule ended or will end.
 
 
-=head2 Recurrence => L<Paws::EC2::ScheduledInstanceRecurrence>
+=head2 Recurrence => EC2_ScheduledInstanceRecurrence
 
   The schedule recurrence.
 

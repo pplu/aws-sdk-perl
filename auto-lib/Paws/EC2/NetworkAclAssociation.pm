@@ -1,8 +1,33 @@
 package Paws::EC2::NetworkAclAssociation;
-  use Moose;
-  has NetworkAclAssociationId => (is => 'ro', isa => 'Str', request_name => 'networkAclAssociationId', traits => ['NameInRequest']);
-  has NetworkAclId => (is => 'ro', isa => 'Str', request_name => 'networkAclId', traits => ['NameInRequest']);
-  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has NetworkAclAssociationId => (is => 'ro', isa => Str);
+  has NetworkAclId => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'NetworkAclAssociationId' => {
+                                              'type' => 'Str'
+                                            },
+               'NetworkAclId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'SubnetId' => 'subnetId',
+                       'NetworkAclAssociationId' => 'networkAclAssociationId',
+                       'NetworkAclId' => 'networkAclId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

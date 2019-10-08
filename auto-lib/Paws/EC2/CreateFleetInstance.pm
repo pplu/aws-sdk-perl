@@ -1,10 +1,44 @@
 package Paws::EC2::CreateFleetInstance;
-  use Moose;
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'instanceIds', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has LaunchTemplateAndOverrides => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateAndOverridesResponse', request_name => 'launchTemplateAndOverrides', traits => ['NameInRequest']);
-  has Lifecycle => (is => 'ro', isa => 'Str', request_name => 'lifecycle', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::EC2::Types qw/EC2_LaunchTemplateAndOverridesResponse/;
+  has InstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has InstanceType => (is => 'ro', isa => Str);
+  has LaunchTemplateAndOverrides => (is => 'ro', isa => EC2_LaunchTemplateAndOverridesResponse);
+  has Lifecycle => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Lifecycle' => {
+                                'type' => 'Str'
+                              },
+               'InstanceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'LaunchTemplateAndOverrides' => {
+                                                 'class' => 'Paws::EC2::LaunchTemplateAndOverridesResponse',
+                                                 'type' => 'EC2_LaunchTemplateAndOverridesResponse'
+                                               }
+             },
+  'NameInRequest' => {
+                       'Platform' => 'platform',
+                       'InstanceType' => 'instanceType',
+                       'Lifecycle' => 'lifecycle',
+                       'InstanceIds' => 'instanceIds',
+                       'LaunchTemplateAndOverrides' => 'launchTemplateAndOverrides'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +84,7 @@ This class has no description
   The instance type.
 
 
-=head2 LaunchTemplateAndOverrides => L<Paws::EC2::LaunchTemplateAndOverridesResponse>
+=head2 LaunchTemplateAndOverrides => EC2_LaunchTemplateAndOverridesResponse
 
   The launch templates and overrides that were used for launching the
 instances. Any parameters that you specify in the Overrides override

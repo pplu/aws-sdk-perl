@@ -1,7 +1,24 @@
 package Paws::EC2::StorageLocation;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
+  use Moo;  use Types::Standard qw/Str/;
+  use Paws::EC2::Types qw//;
+  has Bucket => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

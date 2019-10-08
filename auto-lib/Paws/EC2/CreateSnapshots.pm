@@ -1,17 +1,49 @@
 
 package Paws::EC2::CreateSnapshots;
-  use Moose;
-  has CopyTagsFromSource => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has InstanceSpecification => (is => 'ro', isa => 'Paws::EC2::InstanceSpecification', required => 1);
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::EC2::Types qw/EC2_InstanceSpecification EC2_TagSpecification/;
+  has CopyTagsFromSource => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceSpecification => (is => 'ro', isa => EC2_InstanceSpecification, required => 1, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshots');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateSnapshotsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSnapshots');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateSnapshotsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceSpecification' => {
+                                            'class' => 'Paws::EC2::InstanceSpecification',
+                                            'type' => 'EC2_InstanceSpecification'
+                                          },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'CopyTagsFromSource' => {
+                                         'type' => 'Str'
+                                       },
+               'TagSpecifications' => {
+                                        'class' => 'Paws::EC2::TagSpecification',
+                                        'type' => 'ArrayRef[EC2_TagSpecification]'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'TagSpecifications' => 'TagSpecification'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -87,14 +119,14 @@ Otherwise, it is UnauthorizedOperation.
 
 
 
-=head2 B<REQUIRED> InstanceSpecification => L<Paws::EC2::InstanceSpecification>
+=head2 B<REQUIRED> InstanceSpecification => EC2_InstanceSpecification
 
 The instance to specify which volumes should be included in the
 snapshots.
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 Tags to apply to every snapshot specified by the instance.
 

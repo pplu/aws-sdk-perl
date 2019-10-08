@@ -1,22 +1,71 @@
 
 package Paws::EC2::CreateClientVpnEndpoint;
-  use Moose;
-  has AuthenticationOptions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClientVpnAuthenticationRequest]', traits => ['NameInRequest'], request_name => 'Authentication' , required => 1);
-  has ClientCidrBlock => (is => 'ro', isa => 'Str', required => 1);
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has ConnectionLogOptions => (is => 'ro', isa => 'Paws::EC2::ConnectionLogOptions', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has ServerCertificateArn => (is => 'ro', isa => 'Str', required => 1);
-  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
-  has TransportProtocol => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::EC2::Types qw/EC2_ClientVpnAuthenticationRequest EC2_ConnectionLogOptions EC2_TagSpecification/;
+  has AuthenticationOptions => (is => 'ro', isa => ArrayRef[EC2_ClientVpnAuthenticationRequest], required => 1, predicate => 1);
+  has ClientCidrBlock => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has ConnectionLogOptions => (is => 'ro', isa => EC2_ConnectionLogOptions, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DnsServers => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ServerCertificateArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_TagSpecification], predicate => 1);
+  has TransportProtocol => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClientVpnEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateClientVpnEndpointResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateClientVpnEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateClientVpnEndpointResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'ClientCidrBlock' => {
+                                      'type' => 'Str'
+                                    },
+               'TransportProtocol' => {
+                                        'type' => 'Str'
+                                      },
+               'AuthenticationOptions' => {
+                                            'class' => 'Paws::EC2::ClientVpnAuthenticationRequest',
+                                            'type' => 'ArrayRef[EC2_ClientVpnAuthenticationRequest]'
+                                          },
+               'TagSpecifications' => {
+                                        'class' => 'Paws::EC2::TagSpecification',
+                                        'type' => 'ArrayRef[EC2_TagSpecification]'
+                                      },
+               'DnsServers' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'ServerCertificateArn' => {
+                                           'type' => 'Str'
+                                         },
+               'ConnectionLogOptions' => {
+                                           'class' => 'Paws::EC2::ConnectionLogOptions',
+                                           'type' => 'EC2_ConnectionLogOptions'
+                                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'AuthenticationOptions' => 'Authentication',
+                       'TagSpecifications' => 'TagSpecification'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +143,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AuthenticationOptions => ArrayRef[L<Paws::EC2::ClientVpnAuthenticationRequest>]
+=head2 B<REQUIRED> AuthenticationOptions => ArrayRef[EC2_ClientVpnAuthenticationRequest]
 
 Information about the authentication method to be used to authenticate
 clients.
@@ -120,7 +169,7 @@ Idempotency
 
 
 
-=head2 B<REQUIRED> ConnectionLogOptions => L<Paws::EC2::ConnectionLogOptions>
+=head2 B<REQUIRED> ConnectionLogOptions => EC2_ConnectionLogOptions
 
 Information about the client connection logging options.
 
@@ -183,7 +232,7 @@ Certificate Manager User Guide
 
 
 
-=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+=head2 TagSpecifications => ArrayRef[EC2_TagSpecification]
 
 The tags to apply to the Client VPN endpoint during creation.
 

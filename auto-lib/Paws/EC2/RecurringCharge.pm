@@ -1,7 +1,28 @@
 package Paws::EC2::RecurringCharge;
-  use Moose;
-  has Amount => (is => 'ro', isa => 'Num', request_name => 'amount', traits => ['NameInRequest']);
-  has Frequency => (is => 'ro', isa => 'Str', request_name => 'frequency', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Num Str/;
+  use Paws::EC2::Types qw//;
+  has Amount => (is => 'ro', isa => Num);
+  has Frequency => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Frequency' => {
+                                'type' => 'Str'
+                              },
+               'Amount' => {
+                             'type' => 'Num'
+                           }
+             },
+  'NameInRequest' => {
+                       'Frequency' => 'frequency',
+                       'Amount' => 'amount'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

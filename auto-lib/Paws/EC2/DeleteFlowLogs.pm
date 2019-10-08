@@ -1,14 +1,35 @@
 
 package Paws::EC2::DeleteFlowLogs;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has FlowLogIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'FlowLogId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::EC2::Types qw//;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has FlowLogIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteFlowLogs');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DeleteFlowLogsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteFlowLogs');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DeleteFlowLogsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'FlowLogIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'NameInRequest' => {
+                       'FlowLogIds' => 'FlowLogId'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,39 @@
 package Paws::EC2::NetworkInterfacePrivateIpAddress;
-  use Moose;
-  has Association => (is => 'ro', isa => 'Paws::EC2::NetworkInterfaceAssociation', request_name => 'association', traits => ['NameInRequest']);
-  has Primary => (is => 'ro', isa => 'Bool', request_name => 'primary', traits => ['NameInRequest']);
-  has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/Bool Str/;
+  use Paws::EC2::Types qw/EC2_NetworkInterfaceAssociation/;
+  has Association => (is => 'ro', isa => EC2_NetworkInterfaceAssociation);
+  has Primary => (is => 'ro', isa => Bool);
+  has PrivateDnsName => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Primary' => {
+                              'type' => 'Bool'
+                            },
+               'PrivateDnsName' => {
+                                     'type' => 'Str'
+                                   },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'Association' => {
+                                  'class' => 'Paws::EC2::NetworkInterfaceAssociation',
+                                  'type' => 'EC2_NetworkInterfaceAssociation'
+                                }
+             },
+  'NameInRequest' => {
+                       'Primary' => 'primary',
+                       'PrivateDnsName' => 'privateDnsName',
+                       'PrivateIpAddress' => 'privateIpAddress',
+                       'Association' => 'association'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +69,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Association => L<Paws::EC2::NetworkInterfaceAssociation>
+=head2 Association => EC2_NetworkInterfaceAssociation
 
   The association information for an Elastic IP address (IPv4) associated
 with the network interface.

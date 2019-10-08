@@ -1,6 +1,24 @@
 package Paws::EC2::TargetGroupsConfig;
-  use Moose;
-  has TargetGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TargetGroup]', request_name => 'targetGroups', traits => ['NameInRequest']);
+  use Moo;  use Types::Standard qw/ArrayRef/;
+  use Paws::EC2::Types qw/EC2_TargetGroup/;
+  has TargetGroups => (is => 'ro', isa => ArrayRef[EC2_TargetGroup]);
+
+      sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetGroups' => {
+                                   'class' => 'Paws::EC2::TargetGroup',
+                                   'type' => 'ArrayRef[EC2_TargetGroup]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'TargetGroups' => 'targetGroups'
+                     }
+}
+;
+      return $Params_map;
+    }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 TargetGroups => ArrayRef[L<Paws::EC2::TargetGroup>]
+=head2 TargetGroups => ArrayRef[EC2_TargetGroup]
 
   One or more target groups.
 
