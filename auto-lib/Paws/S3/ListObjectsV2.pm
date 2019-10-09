@@ -1,24 +1,77 @@
 
 package Paws::S3::ListObjectsV2;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContinuationToken => (is => 'ro', isa => 'Str', query_name => 'continuation-token', traits => ['ParamInQuery']);
-  has Delimiter => (is => 'ro', isa => 'Str', query_name => 'delimiter', traits => ['ParamInQuery']);
-  has EncodingType => (is => 'ro', isa => 'Str', query_name => 'encoding-type', traits => ['ParamInQuery']);
-  has FetchOwner => (is => 'ro', isa => 'Bool', query_name => 'fetch-owner', traits => ['ParamInQuery']);
-  has MaxKeys => (is => 'ro', isa => 'Int', query_name => 'max-keys', traits => ['ParamInQuery']);
-  has Prefix => (is => 'ro', isa => 'Str', query_name => 'prefix', traits => ['ParamInQuery']);
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has StartAfter => (is => 'ro', isa => 'Str', query_name => 'start-after', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::S3::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContinuationToken => (is => 'ro', isa => Str, predicate => 1);
+  has Delimiter => (is => 'ro', isa => Str, predicate => 1);
+  has EncodingType => (is => 'ro', isa => Str, predicate => 1);
+  has FetchOwner => (is => 'ro', isa => Bool, predicate => 1);
+  has MaxKeys => (is => 'ro', isa => Int, predicate => 1);
+  has Prefix => (is => 'ro', isa => Str, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has StartAfter => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListObjectsV2');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?list-type=2');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::ListObjectsV2Output');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListObjectsV2');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}?list-type=2');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::ListObjectsV2Output');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FetchOwner' => {
+                                 'type' => 'Bool'
+                               },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'StartAfter' => {
+                                 'type' => 'Str'
+                               },
+               'ContinuationToken' => {
+                                        'type' => 'Str'
+                                      },
+               'Delimiter' => {
+                                'type' => 'Str'
+                              },
+               'EncodingType' => {
+                                   'type' => 'Str'
+                                 },
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxKeys' => {
+                              'type' => 'Int'
+                            }
+             },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket'
+                  },
+  'ParamInHeader' => {
+                       'RequestPayer' => 'x-amz-request-payer'
+                     },
+  'ParamInQuery' => {
+                      'Prefix' => 'prefix',
+                      'StartAfter' => 'start-after',
+                      'FetchOwner' => 'fetch-owner',
+                      'ContinuationToken' => 'continuation-token',
+                      'EncodingType' => 'encoding-type',
+                      'Delimiter' => 'delimiter',
+                      'MaxKeys' => 'max-keys'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,22 @@
 package Paws::S3::AbortIncompleteMultipartUpload;
-  use Moose;
-  has DaysAfterInitiation => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::S3::Types qw//;
+  has DaysAfterInitiation => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DaysAfterInitiation' => {
+                                          'type' => 'Int'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

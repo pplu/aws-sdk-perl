@@ -1,7 +1,29 @@
 package Paws::S3::VersioningConfiguration;
-  use Moose;
-  has MFADelete => (is => 'ro', isa => 'Str', request_name => 'MfaDelete', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has MFADelete => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MFADelete' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'MFADelete' => 'MfaDelete'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

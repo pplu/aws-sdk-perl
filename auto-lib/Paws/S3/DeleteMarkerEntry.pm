@@ -1,10 +1,39 @@
 package Paws::S3::DeleteMarkerEntry;
-  use Moose;
-  has IsLatest => (is => 'ro', isa => 'Bool');
-  has Key => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
-  has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::S3::Types qw/S3_Owner/;
+  has IsLatest => (is => 'ro', isa => Bool);
+  has Key => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+  has Owner => (is => 'ro', isa => S3_Owner);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Owner' => {
+                            'class' => 'Paws::S3::Owner',
+                            'type' => 'S3_Owner'
+                          },
+               'IsLatest' => {
+                               'type' => 'Bool'
+                             },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +85,7 @@ version of an object.
   Date and time the object was last modified.
 
 
-=head2 Owner => L<Paws::S3::Owner>
+=head2 Owner => S3_Owner
 
   
 

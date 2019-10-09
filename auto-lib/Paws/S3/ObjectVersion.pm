@@ -1,13 +1,51 @@
 package Paws::S3::ObjectVersion;
-  use Moose;
-  has ETag => (is => 'ro', isa => 'Str');
-  has IsLatest => (is => 'ro', isa => 'Bool');
-  has Key => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
-  has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
-  has Size => (is => 'ro', isa => 'Int');
-  has StorageClass => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::S3::Types qw/S3_Owner/;
+  has ETag => (is => 'ro', isa => Str);
+  has IsLatest => (is => 'ro', isa => Bool);
+  has Key => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+  has Owner => (is => 'ro', isa => S3_Owner);
+  has Size => (is => 'ro', isa => Int);
+  has StorageClass => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Owner' => {
+                            'class' => 'Paws::S3::Owner',
+                            'type' => 'S3_Owner'
+                          },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               'IsLatest' => {
+                               'type' => 'Bool'
+                             },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +102,7 @@ version of an object.
   Date and time the object was last modified.
 
 
-=head2 Owner => L<Paws::S3::Owner>
+=head2 Owner => S3_Owner
 
   
 

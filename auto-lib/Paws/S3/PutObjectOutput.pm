@@ -1,17 +1,70 @@
 
 package Paws::S3::PutObjectOutput;
-  use Moose;
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has Expiration => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-expiration');
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
-  has SSEKMSEncryptionContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-context');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has ETag => (is => 'ro', isa => Str);
+  has Expiration => (is => 'ro', isa => Str);
+  has RequestCharged => (is => 'ro', isa => Str);
+  has ServerSideEncryption => (is => 'ro', isa => Str);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str);
+  has SSEKMSEncryptionContext => (is => 'ro', isa => Str);
+  has SSEKMSKeyId => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Expiration' => {
+                                 'type' => 'Str'
+                               },
+               'SSEKMSKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'RequestCharged' => {
+                                     'type' => 'Str'
+                                   },
+               'ServerSideEncryption' => {
+                                           'type' => 'Str'
+                                         },
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               'SSEKMSEncryptionContext' => {
+                                              'type' => 'Str'
+                                            },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInHeader' => {
+                       'Expiration' => 'x-amz-expiration',
+                       'SSEKMSKeyId' => 'x-amz-server-side-encryption-aws-kms-key-id',
+                       'RequestCharged' => 'x-amz-request-charged',
+                       'ServerSideEncryption' => 'x-amz-server-side-encryption',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
+                       'ETag' => 'ETag',
+                       'SSEKMSEncryptionContext' => 'x-amz-server-side-encryption-context',
+                       'VersionId' => 'x-amz-version-id'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

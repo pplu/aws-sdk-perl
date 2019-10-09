@@ -1,6 +1,26 @@
 package Paws::S3::BucketLifecycleConfiguration;
-  use Moose;
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::S3::LifecycleRule]', request_name => 'Rule', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::S3::Types qw/S3_LifecycleRule/;
+  has Rules => (is => 'ro', isa => ArrayRef[S3_LifecycleRule], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rules' => {
+                            'class' => 'Paws::S3::LifecycleRule',
+                            'type' => 'ArrayRef[S3_LifecycleRule]'
+                          }
+             },
+  'NameInRequest' => {
+                       'Rules' => 'Rule'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +59,7 @@ in the I<Amazon Simple Storage Service Developer Guide>.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::LifecycleRule>]
+=head2 B<REQUIRED> Rules => ArrayRef[S3_LifecycleRule]
 
   A lifecycle rule for individual objects in an Amazon S3 bucket.
 

@@ -1,4 +1,4 @@
-    sub params_map {
+  sub params_map {
     our $Params_map ||= [% USE Dumper(Terse=1, Indent=2); Dumper.dump(params_hash); -%];
-      return $Params_map;
-    }
+    return $Params_map;
+  }

@@ -1,10 +1,41 @@
 package Paws::S3::Grantee;
-  use Moose;
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has EmailAddress => (is => 'ro', isa => 'Str');
-  has ID => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', request_name => 'xsi:type', traits => ['NameInRequest'], required => 1);
-  has URI => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has DisplayName => (is => 'ro', isa => Str);
+  has EmailAddress => (is => 'ro', isa => Str);
+  has ID => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+  has URI => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ID' => {
+                         'type' => 'Str'
+                       },
+               'URI' => {
+                          'type' => 'Str'
+                        },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'EmailAddress' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Type' => 'xsi:type'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

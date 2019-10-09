@@ -1,8 +1,32 @@
 package Paws::S3::ReplicationRuleFilter;
-  use Moose;
-  has And => (is => 'ro', isa => 'Paws::S3::ReplicationRuleAndOperator');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has Tag => (is => 'ro', isa => 'Paws::S3::Tag');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_ReplicationRuleAndOperator S3_Tag/;
+  has And => (is => 'ro', isa => S3_ReplicationRuleAndOperator);
+  has Prefix => (is => 'ro', isa => Str);
+  has Tag => (is => 'ro', isa => S3_Tag);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'And' => {
+                          'class' => 'Paws::S3::ReplicationRuleAndOperator',
+                          'type' => 'S3_ReplicationRuleAndOperator'
+                        },
+               'Tag' => {
+                          'class' => 'Paws::S3::Tag',
+                          'type' => 'S3_Tag'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +64,7 @@ or an C<And> child element.
 =head1 ATTRIBUTES
 
 
-=head2 And => L<Paws::S3::ReplicationRuleAndOperator>
+=head2 And => S3_ReplicationRuleAndOperator
 
   A container for specifying rule filters. The filters determine the
 subset of objects to which the rule applies. This element is required
@@ -68,7 +92,7 @@ elements in an C<And> tag.
 the rule applies.
 
 
-=head2 Tag => L<Paws::S3::Tag>
+=head2 Tag => S3_Tag
 
   A container for specifying a tag key and value.
 

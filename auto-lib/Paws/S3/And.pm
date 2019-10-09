@@ -1,7 +1,27 @@
 package Paws::S3::And;
-  use Moose;
-  has Prefix => (is => 'ro', isa => 'Str');
-  has Tag => (is => 'ro', isa => 'Paws::S3::Tag');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_Tag/;
+  has Prefix => (is => 'ro', isa => Str);
+  has Tag => (is => 'ro', isa => S3_Tag);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Tag' => {
+                          'class' => 'Paws::S3::Tag',
+                          'type' => 'S3_Tag'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +62,7 @@ This class has no description
   
 
 
-=head2 Tag => L<Paws::S3::Tag>
+=head2 Tag => S3_Tag
 
   
 

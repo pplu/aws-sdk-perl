@@ -1,17 +1,66 @@
 
 package Paws::S3::CompleteMultipartUploadOutput;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str');
-  has ETag => (is => 'ro', isa => 'Str');
-  has Expiration => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-expiration');
-  has Key => (is => 'ro', isa => 'Str');
-  has Location => (is => 'ro', isa => 'Str');
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has Bucket => (is => 'ro', isa => Str);
+  has ETag => (is => 'ro', isa => Str);
+  has Expiration => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Str);
+  has RequestCharged => (is => 'ro', isa => Str);
+  has ServerSideEncryption => (is => 'ro', isa => Str);
+  has SSEKMSKeyId => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Expiration' => {
+                                 'type' => 'Str'
+                               },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'SSEKMSKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'RequestCharged' => {
+                                     'type' => 'Str'
+                                   },
+               'ServerSideEncryption' => {
+                                           'type' => 'Str'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInHeader' => {
+                       'ServerSideEncryption' => 'x-amz-server-side-encryption',
+                       'Expiration' => 'x-amz-expiration',
+                       'SSEKMSKeyId' => 'x-amz-server-side-encryption-aws-kms-key-id',
+                       'VersionId' => 'x-amz-version-id',
+                       'RequestCharged' => 'x-amz-request-charged'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

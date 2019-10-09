@@ -1,12 +1,43 @@
 
 package Paws::S3::ListBucketAnalyticsConfigurationsOutput;
-  use Moose;
-  has AnalyticsConfigurationList => (is => 'ro', isa => 'ArrayRef[Paws::S3::AnalyticsConfiguration]', traits => ['NameInRequest'], request_name => 'AnalyticsConfiguration');
-  has ContinuationToken => (is => 'ro', isa => 'Str');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has NextContinuationToken => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::S3::Types qw/S3_AnalyticsConfiguration/;
+  has AnalyticsConfigurationList => (is => 'ro', isa => ArrayRef[S3_AnalyticsConfiguration]);
+  has ContinuationToken => (is => 'ro', isa => Str);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has NextContinuationToken => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'NextContinuationToken' => {
+                                            'type' => 'Str'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ContinuationToken' => {
+                                        'type' => 'Str'
+                                      },
+               'AnalyticsConfigurationList' => {
+                                                 'class' => 'Paws::S3::AnalyticsConfiguration',
+                                                 'type' => 'ArrayRef[S3_AnalyticsConfiguration]'
+                                               }
+             },
+  'NameInRequest' => {
+                       'AnalyticsConfigurationList' => 'AnalyticsConfiguration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -18,7 +49,7 @@ Paws::S3::ListBucketAnalyticsConfigurationsOutput
 =head1 ATTRIBUTES
 
 
-=head2 AnalyticsConfigurationList => ArrayRef[L<Paws::S3::AnalyticsConfiguration>]
+=head2 AnalyticsConfigurationList => ArrayRef[S3_AnalyticsConfiguration]
 
 The list of analytics configurations for a bucket.
 

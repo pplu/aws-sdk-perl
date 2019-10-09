@@ -1,6 +1,26 @@
 package Paws::S3::Tagging;
-  use Moose;
-  has TagSet => (is => 'ro', isa => 'ArrayRef[Paws::S3::Tag]', request_name => 'Tag', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::S3::Types qw/S3_Tag/;
+  has TagSet => (is => 'ro', isa => ArrayRef[S3_Tag], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagSet' => {
+                             'class' => 'Paws::S3::Tag',
+                             'type' => 'ArrayRef[S3_Tag]'
+                           }
+             },
+  'NameInRequest' => {
+                       'TagSet' => 'Tag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +56,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> TagSet => ArrayRef[L<Paws::S3::Tag>]
+=head2 B<REQUIRED> TagSet => ArrayRef[S3_Tag]
 
   
 

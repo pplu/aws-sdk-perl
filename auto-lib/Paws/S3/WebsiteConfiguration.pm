@@ -1,9 +1,41 @@
 package Paws::S3::WebsiteConfiguration;
-  use Moose;
-  has ErrorDocument => (is => 'ro', isa => 'Paws::S3::ErrorDocument');
-  has IndexDocument => (is => 'ro', isa => 'Paws::S3::IndexDocument');
-  has RedirectAllRequestsTo => (is => 'ro', isa => 'Paws::S3::RedirectAllRequestsTo');
-  has RoutingRules => (is => 'ro', isa => 'ArrayRef[Paws::S3::RoutingRule]', request_name => 'RoutingRule', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::S3::Types qw/S3_ErrorDocument S3_RoutingRule S3_RedirectAllRequestsTo S3_IndexDocument/;
+  has ErrorDocument => (is => 'ro', isa => S3_ErrorDocument);
+  has IndexDocument => (is => 'ro', isa => S3_IndexDocument);
+  has RedirectAllRequestsTo => (is => 'ro', isa => S3_RedirectAllRequestsTo);
+  has RoutingRules => (is => 'ro', isa => ArrayRef[S3_RoutingRule]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RedirectAllRequestsTo' => {
+                                            'class' => 'Paws::S3::RedirectAllRequestsTo',
+                                            'type' => 'S3_RedirectAllRequestsTo'
+                                          },
+               'IndexDocument' => {
+                                    'class' => 'Paws::S3::IndexDocument',
+                                    'type' => 'S3_IndexDocument'
+                                  },
+               'ErrorDocument' => {
+                                    'class' => 'Paws::S3::ErrorDocument',
+                                    'type' => 'S3_ErrorDocument'
+                                  },
+               'RoutingRules' => {
+                                   'class' => 'Paws::S3::RoutingRule',
+                                   'type' => 'ArrayRef[S3_RoutingRule]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'RoutingRules' => 'RoutingRule'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,17 +71,17 @@ Specifies website configuration parameters for an Amazon S3 bucket.
 =head1 ATTRIBUTES
 
 
-=head2 ErrorDocument => L<Paws::S3::ErrorDocument>
+=head2 ErrorDocument => S3_ErrorDocument
 
   The name of the error document for the website.
 
 
-=head2 IndexDocument => L<Paws::S3::IndexDocument>
+=head2 IndexDocument => S3_IndexDocument
 
   The name of the index document for the website.
 
 
-=head2 RedirectAllRequestsTo => L<Paws::S3::RedirectAllRequestsTo>
+=head2 RedirectAllRequestsTo => S3_RedirectAllRequestsTo
 
   The redirect behavior for every request to this bucket's website
 endpoint.
@@ -57,7 +89,7 @@ endpoint.
 If you specify this property, you can't specify any other property.
 
 
-=head2 RoutingRules => ArrayRef[L<Paws::S3::RoutingRule>]
+=head2 RoutingRules => ArrayRef[S3_RoutingRule]
 
   Rules that define when a redirect is applied and the redirect behavior.
 

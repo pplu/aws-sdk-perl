@@ -1,11 +1,44 @@
 package Paws::S3::MultipartUpload;
-  use Moose;
-  has Initiated => (is => 'ro', isa => 'Str');
-  has Initiator => (is => 'ro', isa => 'Paws::S3::Initiator');
-  has Key => (is => 'ro', isa => 'Str');
-  has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
-  has StorageClass => (is => 'ro', isa => 'Str');
-  has UploadId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_Initiator S3_Owner/;
+  has Initiated => (is => 'ro', isa => Str);
+  has Initiator => (is => 'ro', isa => S3_Initiator);
+  has Key => (is => 'ro', isa => Str);
+  has Owner => (is => 'ro', isa => S3_Owner);
+  has StorageClass => (is => 'ro', isa => Str);
+  has UploadId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Owner' => {
+                            'class' => 'Paws::S3::Owner',
+                            'type' => 'S3_Owner'
+                          },
+               'Initiated' => {
+                                'type' => 'Str'
+                              },
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Initiator' => {
+                                'class' => 'Paws::S3::Initiator',
+                                'type' => 'S3_Initiator'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +79,7 @@ This class has no description
   Date and time at which the multipart upload was initiated.
 
 
-=head2 Initiator => L<Paws::S3::Initiator>
+=head2 Initiator => S3_Initiator
 
   Identifies who initiated the multipart upload.
 
@@ -56,7 +89,7 @@ This class has no description
   Key of the object for which the multipart upload was initiated.
 
 
-=head2 Owner => L<Paws::S3::Owner>
+=head2 Owner => S3_Owner
 
   
 

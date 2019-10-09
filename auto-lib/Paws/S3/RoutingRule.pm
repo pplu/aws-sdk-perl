@@ -1,7 +1,28 @@
 package Paws::S3::RoutingRule;
-  use Moose;
-  has Condition => (is => 'ro', isa => 'Paws::S3::Condition');
-  has Redirect => (is => 'ro', isa => 'Paws::S3::Redirect', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_Redirect S3_Condition/;
+  has Condition => (is => 'ro', isa => S3_Condition);
+  has Redirect => (is => 'ro', isa => S3_Redirect, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Redirect' => {
+                               'class' => 'Paws::S3::Redirect',
+                               'type' => 'S3_Redirect'
+                             },
+               'Condition' => {
+                                'class' => 'Paws::S3::Condition',
+                                'type' => 'S3_Condition'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Specifies the redirect behavior and when a redirect is applied.
 =head1 ATTRIBUTES
 
 
-=head2 Condition => L<Paws::S3::Condition>
+=head2 Condition => S3_Condition
 
   A container for describing a condition that must be met for the
 specified redirect to apply. For example, 1. If request is for pages in
@@ -46,7 +67,7 @@ request results in HTTP error 4xx, redirect request to another host
 where you might process the error.
 
 
-=head2 B<REQUIRED> Redirect => L<Paws::S3::Redirect>
+=head2 B<REQUIRED> Redirect => S3_Redirect
 
   Container for redirect information. You can redirect requests to
 another host, to another page, or with another protocol. In the event

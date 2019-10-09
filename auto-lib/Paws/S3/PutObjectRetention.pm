@@ -1,22 +1,72 @@
 
 package Paws::S3::PutObjectRetention;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has BypassGovernanceRetention => (is => 'ro', isa => 'Bool', header_name => 'x-amz-bypass-governance-retention', traits => ['ParamInHeader']);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has Retention => (is => 'ro', isa => 'Paws::S3::ObjectLockRetention');
-  has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::S3::Types qw/S3_ObjectLockRetention/;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BypassGovernanceRetention => (is => 'ro', isa => Bool, predicate => 1);
+  has ContentMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has Retention => (is => 'ro', isa => S3_ObjectLockRetention, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutObjectRetention');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}?retention');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectRetentionOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutObjectRetention');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}?retention');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::PutObjectRetentionOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Retention' => {
+                                'class' => 'Paws::S3::ObjectLockRetention',
+                                'type' => 'S3_ObjectLockRetention'
+                              },
+               'BypassGovernanceRetention' => {
+                                                'type' => 'Bool'
+                                              },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentMD5' => {
+                                 'type' => 'Str'
+                               },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'AutoInHeader' => {
+                      'ContentMD5' => {
+                                        'auto' => 'MD5',
+                                        'header_name' => 'Content-MD5'
+                                      }
+                    },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket',
+                    'Key' => 'Key'
+                  },
+  'ParamInQuery' => {
+                      'VersionId' => 'versionId'
+                    },
+  'ParamInHeader' => {
+                       'BypassGovernanceRetention' => 'x-amz-bypass-governance-retention',
+                       'RequestPayer' => 'x-amz-request-payer'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -93,7 +143,7 @@ Retention configuration to.
 
 Valid values are: C<"requester">
 
-=head2 Retention => L<Paws::S3::ObjectLockRetention>
+=head2 Retention => S3_ObjectLockRetention
 
 The container element for the Object Retention configuration.
 

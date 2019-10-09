@@ -1,6 +1,23 @@
 package Paws::S3::ServerSideEncryptionRule;
-  use Moose;
-  has ApplyServerSideEncryptionByDefault => (is => 'ro', isa => 'Paws::S3::ServerSideEncryptionByDefault');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_ServerSideEncryptionByDefault/;
+  has ApplyServerSideEncryptionByDefault => (is => 'ro', isa => S3_ServerSideEncryptionByDefault);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplyServerSideEncryptionByDefault' => {
+                                                         'class' => 'Paws::S3::ServerSideEncryptionByDefault',
+                                                         'type' => 'S3_ServerSideEncryptionByDefault'
+                                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +53,7 @@ Specifies the default server-side encryption configuration.
 =head1 ATTRIBUTES
 
 
-=head2 ApplyServerSideEncryptionByDefault => L<Paws::S3::ServerSideEncryptionByDefault>
+=head2 ApplyServerSideEncryptionByDefault => S3_ServerSideEncryptionByDefault
 
   Specifies the default server-side encryption to apply to new objects in
 the bucket. If a PUT Object request doesn't specify any server-side

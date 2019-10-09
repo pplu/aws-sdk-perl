@@ -1,13 +1,55 @@
 package Paws::S3::Rule;
-  use Moose;
-  has AbortIncompleteMultipartUpload => (is => 'ro', isa => 'Paws::S3::AbortIncompleteMultipartUpload');
-  has Expiration => (is => 'ro', isa => 'Paws::S3::LifecycleExpiration');
-  has ID => (is => 'ro', isa => 'Str');
-  has NoncurrentVersionExpiration => (is => 'ro', isa => 'Paws::S3::NoncurrentVersionExpiration');
-  has NoncurrentVersionTransition => (is => 'ro', isa => 'Paws::S3::NoncurrentVersionTransition');
-  has Prefix => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has Transition => (is => 'ro', isa => 'Paws::S3::Transition');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_AbortIncompleteMultipartUpload S3_Transition S3_LifecycleExpiration S3_NoncurrentVersionTransition S3_NoncurrentVersionExpiration/;
+  has AbortIncompleteMultipartUpload => (is => 'ro', isa => S3_AbortIncompleteMultipartUpload);
+  has Expiration => (is => 'ro', isa => S3_LifecycleExpiration);
+  has ID => (is => 'ro', isa => Str);
+  has NoncurrentVersionExpiration => (is => 'ro', isa => S3_NoncurrentVersionExpiration);
+  has NoncurrentVersionTransition => (is => 'ro', isa => S3_NoncurrentVersionTransition);
+  has Prefix => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has Transition => (is => 'ro', isa => S3_Transition);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ID' => {
+                         'type' => 'Str'
+                       },
+               'Expiration' => {
+                                 'class' => 'Paws::S3::LifecycleExpiration',
+                                 'type' => 'S3_LifecycleExpiration'
+                               },
+               'AbortIncompleteMultipartUpload' => {
+                                                     'class' => 'Paws::S3::AbortIncompleteMultipartUpload',
+                                                     'type' => 'S3_AbortIncompleteMultipartUpload'
+                                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'NoncurrentVersionTransition' => {
+                                                  'class' => 'Paws::S3::NoncurrentVersionTransition',
+                                                  'type' => 'S3_NoncurrentVersionTransition'
+                                                },
+               'NoncurrentVersionExpiration' => {
+                                                  'class' => 'Paws::S3::NoncurrentVersionExpiration',
+                                                  'type' => 'S3_NoncurrentVersionExpiration'
+                                                },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Transition' => {
+                                 'class' => 'Paws::S3::Transition',
+                                 'type' => 'S3_Transition'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,12 +88,12 @@ in the I<Amazon Simple Storage Service API Reference>.
 =head1 ATTRIBUTES
 
 
-=head2 AbortIncompleteMultipartUpload => L<Paws::S3::AbortIncompleteMultipartUpload>
+=head2 AbortIncompleteMultipartUpload => S3_AbortIncompleteMultipartUpload
 
   
 
 
-=head2 Expiration => L<Paws::S3::LifecycleExpiration>
+=head2 Expiration => S3_LifecycleExpiration
 
   
 
@@ -62,12 +104,12 @@ in the I<Amazon Simple Storage Service API Reference>.
 characters.
 
 
-=head2 NoncurrentVersionExpiration => L<Paws::S3::NoncurrentVersionExpiration>
+=head2 NoncurrentVersionExpiration => S3_NoncurrentVersionExpiration
 
   
 
 
-=head2 NoncurrentVersionTransition => L<Paws::S3::NoncurrentVersionTransition>
+=head2 NoncurrentVersionTransition => S3_NoncurrentVersionTransition
 
   
 
@@ -84,7 +126,7 @@ rule applies.
 rule is not currently being applied.
 
 
-=head2 Transition => L<Paws::S3::Transition>
+=head2 Transition => S3_Transition
 
   
 

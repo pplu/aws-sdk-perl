@@ -1,6 +1,23 @@
 package Paws::S3::AnalyticsExportDestination;
-  use Moose;
-  has S3BucketDestination => (is => 'ro', isa => 'Paws::S3::AnalyticsS3BucketDestination', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_AnalyticsS3BucketDestination/;
+  has S3BucketDestination => (is => 'ro', isa => S3_AnalyticsS3BucketDestination, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3BucketDestination' => {
+                                          'class' => 'Paws::S3::AnalyticsS3BucketDestination',
+                                          'type' => 'S3_AnalyticsS3BucketDestination'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +53,7 @@ Where to publish the analytics results.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3BucketDestination => L<Paws::S3::AnalyticsS3BucketDestination>
+=head2 B<REQUIRED> S3BucketDestination => S3_AnalyticsS3BucketDestination
 
   A destination signifying output to an S3 bucket.
 

@@ -1,6 +1,23 @@
 package Paws::S3::InventoryDestination;
-  use Moose;
-  has S3BucketDestination => (is => 'ro', isa => 'Paws::S3::InventoryS3BucketDestination', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_InventoryS3BucketDestination/;
+  has S3BucketDestination => (is => 'ro', isa => S3_InventoryS3BucketDestination, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3BucketDestination' => {
+                                          'class' => 'Paws::S3::InventoryS3BucketDestination',
+                                          'type' => 'S3_InventoryS3BucketDestination'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +53,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3BucketDestination => L<Paws::S3::InventoryS3BucketDestination>
+=head2 B<REQUIRED> S3BucketDestination => S3_InventoryS3BucketDestination
 
   Contains the bucket name, file format, bucket owner (optional), and
 prefix (optional) where inventory results are published.

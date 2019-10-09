@@ -1,8 +1,30 @@
 package Paws::S3::DefaultRetention;
-  use Moose;
-  has Days => (is => 'ro', isa => 'Int');
-  has Mode => (is => 'ro', isa => 'Str');
-  has Years => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::S3::Types qw//;
+  has Days => (is => 'ro', isa => Int);
+  has Mode => (is => 'ro', isa => Str);
+  has Years => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Years' => {
+                            'type' => 'Int'
+                          },
+               'Mode' => {
+                           'type' => 'Str'
+                         },
+               'Days' => {
+                           'type' => 'Int'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

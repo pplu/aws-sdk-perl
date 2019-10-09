@@ -1,8 +1,32 @@
 package Paws::S3::AnalyticsConfiguration;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::S3::AnalyticsFilter');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has StorageClassAnalysis => (is => 'ro', isa => 'Paws::S3::StorageClassAnalysis', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_AnalyticsFilter S3_StorageClassAnalysis/;
+  has Filter => (is => 'ro', isa => S3_AnalyticsFilter);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has StorageClassAnalysis => (is => 'ro', isa => S3_StorageClassAnalysis, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filter' => {
+                             'class' => 'Paws::S3::AnalyticsFilter',
+                             'type' => 'S3_AnalyticsFilter'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'StorageClassAnalysis' => {
+                                           'class' => 'Paws::S3::StorageClassAnalysis',
+                                           'type' => 'S3_StorageClassAnalysis'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +67,7 @@ in the I<Amazon Simple Storage Service API Reference>.
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::S3::AnalyticsFilter>
+=head2 Filter => S3_AnalyticsFilter
 
   The filter used to describe a set of objects for analyses. A filter
 must have exactly one prefix, one tag, or one conjunction
@@ -56,7 +80,7 @@ considered in any analysis.
   The ID that identifies the analytics configuration.
 
 
-=head2 B<REQUIRED> StorageClassAnalysis => L<Paws::S3::StorageClassAnalysis>
+=head2 B<REQUIRED> StorageClassAnalysis => S3_StorageClassAnalysis
 
   Contains data related to access patterns to be collected and made
 available to analyze the tradeoffs between different storage classes.

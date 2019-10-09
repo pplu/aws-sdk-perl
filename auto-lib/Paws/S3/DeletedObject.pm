@@ -1,9 +1,34 @@
 package Paws::S3::DeletedObject;
-  use Moose;
-  has DeleteMarker => (is => 'ro', isa => 'Bool');
-  has DeleteMarkerVersionId => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::S3::Types qw//;
+  has DeleteMarker => (is => 'ro', isa => Bool);
+  has DeleteMarkerVersionId => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'DeleteMarkerVersionId' => {
+                                            'type' => 'Str'
+                                          },
+               'DeleteMarker' => {
+                                   'type' => 'Bool'
+                                 },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,32 @@
 package Paws::S3::InventoryEncryption;
-  use Moose;
-  has SSEKMS => (is => 'ro', isa => 'Paws::S3::SSEKMS', request_name => 'SSE-KMS', traits => ['NameInRequest']);
-  has SSES3 => (is => 'ro', isa => 'Paws::S3::SSES3', request_name => 'SSE-S3', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_SSEKMS S3_SSES3/;
+  has SSEKMS => (is => 'ro', isa => S3_SSEKMS);
+  has SSES3 => (is => 'ro', isa => S3_SSES3);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SSEKMS' => {
+                             'class' => 'Paws::S3::SSEKMS',
+                             'type' => 'S3_SSEKMS'
+                           },
+               'SSES3' => {
+                            'class' => 'Paws::S3::SSES3',
+                            'type' => 'S3_SSES3'
+                          }
+             },
+  'NameInRequest' => {
+                       'SSEKMS' => 'SSE-KMS',
+                       'SSES3' => 'SSE-S3'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +63,12 @@ inventory results.
 =head1 ATTRIBUTES
 
 
-=head2 SSEKMS => L<Paws::S3::SSEKMS>
+=head2 SSEKMS => S3_SSEKMS
 
   Specifies the use of SSE-KMS to encrypt delivered Inventory reports.
 
 
-=head2 SSES3 => L<Paws::S3::SSES3>
+=head2 SSES3 => S3_SSES3
 
   Specifies the use of SSE-S3 to encrypt delivered Inventory reports.
 

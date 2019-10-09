@@ -1,19 +1,52 @@
 
 package Paws::S3::PutBucketInventoryConfiguration;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
-  has Id => (is => 'ro', isa => 'Str', query_name => 'id', traits => ['ParamInQuery'], required => 1);
-  has InventoryConfiguration => (is => 'ro', isa => 'Paws::S3::InventoryConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw/S3_InventoryConfiguration/;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentLength => (is => 'ro', isa => Int, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InventoryConfiguration => (is => 'ro', isa => S3_InventoryConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutBucketInventoryConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?inventory');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutBucketInventoryConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}?inventory');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InventoryConfiguration' => {
+                                             'class' => 'Paws::S3::InventoryConfiguration',
+                                             'type' => 'S3_InventoryConfiguration'
+                                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'Bucket' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket'
+                  },
+  'ParamInQuery' => {
+                      'Id' => 'id'
+                    },
+  'ParamInHeader' => {
+                       'ContentLength' => 'Content-Length'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -99,7 +132,7 @@ The ID used to identify the inventory configuration.
 
 
 
-=head2 B<REQUIRED> InventoryConfiguration => L<Paws::S3::InventoryConfiguration>
+=head2 B<REQUIRED> InventoryConfiguration => S3_InventoryConfiguration
 
 Specifies the inventory configuration.
 

@@ -1,8 +1,34 @@
 package Paws::S3::LoggingEnabled;
-  use Moose;
-  has TargetBucket => (is => 'ro', isa => 'Str', required => 1);
-  has TargetGrants => (is => 'ro', isa => 'ArrayRef[Paws::S3::TargetGrant]', request_name => 'Grant', traits => ['NameInRequest']);
-  has TargetPrefix => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::S3::Types qw/S3_TargetGrant/;
+  has TargetBucket => (is => 'ro', isa => Str, required => 1);
+  has TargetGrants => (is => 'ro', isa => ArrayRef[S3_TargetGrant]);
+  has TargetPrefix => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetBucket' => {
+                                   'type' => 'Str'
+                                 },
+               'TargetGrants' => {
+                                   'class' => 'Paws::S3::TargetGrant',
+                                   'type' => 'ArrayRef[S3_TargetGrant]'
+                                 },
+               'TargetPrefix' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'TargetGrants' => 'Grant'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +78,7 @@ this case you should choose a different TargetPrefix for each source
 bucket so that the delivered log files can be distinguished by key.
 
 
-=head2 TargetGrants => ArrayRef[L<Paws::S3::TargetGrant>]
+=head2 TargetGrants => ArrayRef[S3_TargetGrant]
 
   
 

@@ -1,7 +1,30 @@
 package Paws::S3::ReplicationConfiguration;
-  use Moose;
-  has Role => (is => 'ro', isa => 'Str', required => 1);
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::S3::ReplicationRule]', request_name => 'Rule', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::S3::Types qw/S3_ReplicationRule/;
+  has Role => (is => 'ro', isa => Str, required => 1);
+  has Rules => (is => 'ro', isa => ArrayRef[S3_ReplicationRule], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rules' => {
+                            'class' => 'Paws::S3::ReplicationRule',
+                            'type' => 'ArrayRef[S3_ReplicationRule]'
+                          },
+               'Role' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Rules' => 'Rule'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +70,7 @@ For more information, see How to Set Up Cross-Region Replication
 the I<Amazon Simple Storage Service Developer Guide>.
 
 
-=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::ReplicationRule>]
+=head2 B<REQUIRED> Rules => ArrayRef[S3_ReplicationRule]
 
   A container for one or more replication rules. A replication
 configuration must have at least one rule and can contain a maximum of

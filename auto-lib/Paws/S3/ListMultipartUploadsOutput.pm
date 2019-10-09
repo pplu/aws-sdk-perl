@@ -1,20 +1,76 @@
 
 package Paws::S3::ListMultipartUploadsOutput;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str');
-  has CommonPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::S3::CommonPrefix]');
-  has Delimiter => (is => 'ro', isa => 'Str');
-  has EncodingType => (is => 'ro', isa => 'Str');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has KeyMarker => (is => 'ro', isa => 'Str');
-  has MaxUploads => (is => 'ro', isa => 'Int');
-  has NextKeyMarker => (is => 'ro', isa => 'Str');
-  has NextUploadIdMarker => (is => 'ro', isa => 'Str');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has UploadIdMarker => (is => 'ro', isa => 'Str');
-  has Uploads => (is => 'ro', isa => 'ArrayRef[Paws::S3::MultipartUpload]', traits => ['NameInRequest'], request_name => 'Upload');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool Int/;
+  use Paws::S3::Types qw/S3_MultipartUpload S3_CommonPrefix/;
+  has Bucket => (is => 'ro', isa => Str);
+  has CommonPrefixes => (is => 'ro', isa => ArrayRef[S3_CommonPrefix]);
+  has Delimiter => (is => 'ro', isa => Str);
+  has EncodingType => (is => 'ro', isa => Str);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has KeyMarker => (is => 'ro', isa => Str);
+  has MaxUploads => (is => 'ro', isa => Int);
+  has NextKeyMarker => (is => 'ro', isa => Str);
+  has NextUploadIdMarker => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+  has UploadIdMarker => (is => 'ro', isa => Str);
+  has Uploads => (is => 'ro', isa => ArrayRef[S3_MultipartUpload]);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Uploads' => {
+                              'class' => 'Paws::S3::MultipartUpload',
+                              'type' => 'ArrayRef[S3_MultipartUpload]'
+                            },
+               'KeyMarker' => {
+                                'type' => 'Str'
+                              },
+               'NextKeyMarker' => {
+                                    'type' => 'Str'
+                                  },
+               'MaxUploads' => {
+                                 'type' => 'Int'
+                               },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'UploadIdMarker' => {
+                                     'type' => 'Str'
+                                   },
+               'NextUploadIdMarker' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Delimiter' => {
+                                'type' => 'Str'
+                              },
+               'EncodingType' => {
+                                   'type' => 'Str'
+                                 },
+               'CommonPrefixes' => {
+                                     'class' => 'Paws::S3::CommonPrefix',
+                                     'type' => 'ArrayRef[S3_CommonPrefix]'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Uploads' => 'Upload'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +88,7 @@ Name of the bucket to which the multipart upload was initiated.
 
 
 
-=head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
+=head2 CommonPrefixes => ArrayRef[S3_CommonPrefix]
 
 
 
@@ -101,7 +157,7 @@ Upload ID after which listing began.
 
 
 
-=head2 Uploads => ArrayRef[L<Paws::S3::MultipartUpload>]
+=head2 Uploads => ArrayRef[S3_MultipartUpload]
 
 
 

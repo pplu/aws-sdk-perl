@@ -1,6 +1,23 @@
 package Paws::S3::OutputLocation;
-  use Moose;
-  has S3 => (is => 'ro', isa => 'Paws::S3::S3Location');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_S3Location/;
+  has S3 => (is => 'ro', isa => S3_S3Location);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3' => {
+                         'class' => 'Paws::S3::S3Location',
+                         'type' => 'S3_S3Location'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +53,7 @@ Describes the location where the restore job's output is stored.
 =head1 ATTRIBUTES
 
 
-=head2 S3 => L<Paws::S3::S3Location>
+=head2 S3 => S3_S3Location
 
   Describes an S3 location that will receive the results of the restore
 request.

@@ -1,6 +1,26 @@
 package Paws::S3::CompletedMultipartUpload;
-  use Moose;
-  has Parts => (is => 'ro', isa => 'ArrayRef[Paws::S3::CompletedPart]', request_name => 'Part', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::S3::Types qw/S3_CompletedPart/;
+  has Parts => (is => 'ro', isa => ArrayRef[S3_CompletedPart]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parts' => {
+                            'class' => 'Paws::S3::CompletedPart',
+                            'type' => 'ArrayRef[S3_CompletedPart]'
+                          }
+             },
+  'NameInRequest' => {
+                       'Parts' => 'Part'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +56,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Parts => ArrayRef[L<Paws::S3::CompletedPart>]
+=head2 Parts => ArrayRef[S3_CompletedPart]
 
   
 

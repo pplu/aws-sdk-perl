@@ -1,7 +1,27 @@
 package Paws::S3::TargetGrant;
-  use Moose;
-  has Grantee => (is => 'ro', isa => 'Paws::S3::Grantee');
-  has Permission => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_Grantee/;
+  has Grantee => (is => 'ro', isa => S3_Grantee);
+  has Permission => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Permission' => {
+                                 'type' => 'Str'
+                               },
+               'Grantee' => {
+                              'class' => 'Paws::S3::Grantee',
+                              'type' => 'S3_Grantee'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Grantee => L<Paws::S3::Grantee>
+=head2 Grantee => S3_Grantee
 
   
 

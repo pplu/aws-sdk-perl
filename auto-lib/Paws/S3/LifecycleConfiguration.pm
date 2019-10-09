@@ -1,6 +1,26 @@
 package Paws::S3::LifecycleConfiguration;
-  use Moose;
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::S3::Rule]', request_name => 'Rule', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::S3::Types qw/S3_Rule/;
+  has Rules => (is => 'ro', isa => ArrayRef[S3_Rule], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rules' => {
+                            'class' => 'Paws::S3::Rule',
+                            'type' => 'ArrayRef[S3_Rule]'
+                          }
+             },
+  'NameInRequest' => {
+                       'Rules' => 'Rule'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +56,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::Rule>]
+=head2 B<REQUIRED> Rules => ArrayRef[S3_Rule]
 
   
 

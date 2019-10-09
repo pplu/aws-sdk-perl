@@ -1,21 +1,67 @@
 
 package Paws::S3::PutObjectLegalHold;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has LegalHold => (is => 'ro', isa => 'Paws::S3::ObjectLockLegalHold');
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_ObjectLockLegalHold/;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LegalHold => (is => 'ro', isa => S3_ObjectLockLegalHold, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutObjectLegalHold');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}?legal-hold');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectLegalHoldOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutObjectLegalHold');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}?legal-hold');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::PutObjectLegalHoldOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LegalHold' => {
+                                'class' => 'Paws::S3::ObjectLockLegalHold',
+                                'type' => 'S3_ObjectLockLegalHold'
+                              },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentMD5' => {
+                                 'type' => 'Str'
+                               },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'AutoInHeader' => {
+                      'ContentMD5' => {
+                                        'auto' => 'MD5',
+                                        'header_name' => 'Content-MD5'
+                                      }
+                    },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket',
+                    'Key' => 'Key'
+                  },
+  'ParamInQuery' => {
+                      'VersionId' => 'versionId'
+                    },
+  'ParamInHeader' => {
+                       'RequestPayer' => 'x-amz-request-payer'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +122,7 @@ The key name for the object that you want to place a Legal Hold on.
 
 
 
-=head2 LegalHold => L<Paws::S3::ObjectLockLegalHold>
+=head2 LegalHold => S3_ObjectLockLegalHold
 
 Container element for the Legal Hold configuration you want to apply to
 the specified object.

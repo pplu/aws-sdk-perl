@@ -1,18 +1,45 @@
 
 package Paws::S3::PutBucketAccelerateConfiguration;
-  use Moose;
-  has AccelerateConfiguration => (is => 'ro', isa => 'Paws::S3::AccelerateConfiguration', required => 1);
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw/S3_AccelerateConfiguration/;
+  has AccelerateConfiguration => (is => 'ro', isa => S3_AccelerateConfiguration, required => 1, predicate => 1);
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentLength => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutBucketAccelerateConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?accelerate');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutBucketAccelerateConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}?accelerate');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'AccelerateConfiguration' => {
+                                              'class' => 'Paws::S3::AccelerateConfiguration',
+                                              'type' => 'S3_AccelerateConfiguration'
+                                            }
+             },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket'
+                  },
+  'ParamInHeader' => {
+                       'ContentLength' => 'Content-Length'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +73,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AccelerateConfiguration => L<Paws::S3::AccelerateConfiguration>
+=head2 B<REQUIRED> AccelerateConfiguration => S3_AccelerateConfiguration
 
 Specifies the Accelerate Configuration you want to set for the bucket.
 

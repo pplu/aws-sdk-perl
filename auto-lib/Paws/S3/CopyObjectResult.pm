@@ -1,7 +1,26 @@
 package Paws::S3::CopyObjectResult;
-  use Moose;
-  has ETag => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has ETag => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

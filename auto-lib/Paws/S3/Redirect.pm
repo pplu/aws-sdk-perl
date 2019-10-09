@@ -1,10 +1,38 @@
 package Paws::S3::Redirect;
-  use Moose;
-  has HostName => (is => 'ro', isa => 'Str');
-  has HttpRedirectCode => (is => 'ro', isa => 'Str');
-  has Protocol => (is => 'ro', isa => 'Str');
-  has ReplaceKeyPrefixWith => (is => 'ro', isa => 'Str');
-  has ReplaceKeyWith => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has HostName => (is => 'ro', isa => Str);
+  has HttpRedirectCode => (is => 'ro', isa => Str);
+  has Protocol => (is => 'ro', isa => Str);
+  has ReplaceKeyPrefixWith => (is => 'ro', isa => Str);
+  has ReplaceKeyWith => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HttpRedirectCode' => {
+                                       'type' => 'Str'
+                                     },
+               'HostName' => {
+                               'type' => 'Str'
+                             },
+               'ReplaceKeyWith' => {
+                                     'type' => 'Str'
+                                   },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'ReplaceKeyPrefixWith' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

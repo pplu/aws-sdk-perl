@@ -1,10 +1,39 @@
 package Paws::S3::InventoryS3BucketDestination;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has Encryption => (is => 'ro', isa => 'Paws::S3::InventoryEncryption');
-  has Format => (is => 'ro', isa => 'Str', required => 1);
-  has Prefix => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_InventoryEncryption/;
+  has AccountId => (is => 'ro', isa => Str);
+  has Bucket => (is => 'ro', isa => Str, required => 1);
+  has Encryption => (is => 'ro', isa => S3_InventoryEncryption);
+  has Format => (is => 'ro', isa => Str, required => 1);
+  has Prefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Encryption' => {
+                                 'class' => 'Paws::S3::InventoryEncryption',
+                                 'type' => 'S3_InventoryEncryption'
+                               },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Format' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +80,7 @@ This class has no description
 will be published.
 
 
-=head2 Encryption => L<Paws::S3::InventoryEncryption>
+=head2 Encryption => S3_InventoryEncryption
 
   Contains the type of server-side encryption used to encrypt the
 inventory results.

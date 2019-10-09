@@ -1,10 +1,34 @@
 
 package Paws::S3::GetBucketVersioningOutput;
-  use Moose;
-  has MFADelete => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'MfaDelete');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has MFADelete => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MFADelete' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'MFADelete' => 'MfaDelete'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

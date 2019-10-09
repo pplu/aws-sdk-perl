@@ -1,13 +1,54 @@
 package Paws::S3::ReplicationRule;
-  use Moose;
-  has DeleteMarkerReplication => (is => 'ro', isa => 'Paws::S3::DeleteMarkerReplication');
-  has Destination => (is => 'ro', isa => 'Paws::S3::Destination', required => 1);
-  has Filter => (is => 'ro', isa => 'Paws::S3::ReplicationRuleFilter');
-  has ID => (is => 'ro', isa => 'Str');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
-  has SourceSelectionCriteria => (is => 'ro', isa => 'Paws::S3::SourceSelectionCriteria');
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw/S3_ReplicationRuleFilter S3_Destination S3_SourceSelectionCriteria S3_DeleteMarkerReplication/;
+  has DeleteMarkerReplication => (is => 'ro', isa => S3_DeleteMarkerReplication);
+  has Destination => (is => 'ro', isa => S3_Destination, required => 1);
+  has Filter => (is => 'ro', isa => S3_ReplicationRuleFilter);
+  has ID => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Int);
+  has SourceSelectionCriteria => (is => 'ro', isa => S3_SourceSelectionCriteria);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ID' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DeleteMarkerReplication' => {
+                                              'class' => 'Paws::S3::DeleteMarkerReplication',
+                                              'type' => 'S3_DeleteMarkerReplication'
+                                            },
+               'Destination' => {
+                                  'class' => 'Paws::S3::Destination',
+                                  'type' => 'S3_Destination'
+                                },
+               'SourceSelectionCriteria' => {
+                                              'class' => 'Paws::S3::SourceSelectionCriteria',
+                                              'type' => 'S3_SourceSelectionCriteria'
+                                            },
+               'Filter' => {
+                             'class' => 'Paws::S3::ReplicationRuleFilter',
+                             'type' => 'S3_ReplicationRuleFilter'
+                           },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Priority' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,17 +85,17 @@ replicas.
 =head1 ATTRIBUTES
 
 
-=head2 DeleteMarkerReplication => L<Paws::S3::DeleteMarkerReplication>
+=head2 DeleteMarkerReplication => S3_DeleteMarkerReplication
 
   
 
 
-=head2 B<REQUIRED> Destination => L<Paws::S3::Destination>
+=head2 B<REQUIRED> Destination => S3_Destination
 
   A container for information about the replication destination.
 
 
-=head2 Filter => L<Paws::S3::ReplicationRuleFilter>
+=head2 Filter => S3_ReplicationRuleFilter
 
   
 
@@ -98,7 +139,7 @@ For more information, see Cross-Region Replication (CRR)
 I<Amazon S3 Developer Guide>.
 
 
-=head2 SourceSelectionCriteria => L<Paws::S3::SourceSelectionCriteria>
+=head2 SourceSelectionCriteria => S3_SourceSelectionCriteria
 
   A container that describes additional filters for identifying the
 source objects that you want to replicate. You can choose to enable or

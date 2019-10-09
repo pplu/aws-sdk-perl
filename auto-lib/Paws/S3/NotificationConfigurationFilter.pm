@@ -1,6 +1,26 @@
 package Paws::S3::NotificationConfigurationFilter;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Paws::S3::S3KeyFilter', request_name => 'S3Key', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_S3KeyFilter/;
+  has Key => (is => 'ro', isa => S3_S3KeyFilter);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Key' => {
+                          'class' => 'Paws::S3::S3KeyFilter',
+                          'type' => 'S3_S3KeyFilter'
+                        }
+             },
+  'NameInRequest' => {
+                       'Key' => 'S3Key'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +59,7 @@ in the I<Amazon Simple Storage Service Developer Guide>.
 =head1 ATTRIBUTES
 
 
-=head2 Key => L<Paws::S3::S3KeyFilter>
+=head2 Key => S3_S3KeyFilter
 
   
 

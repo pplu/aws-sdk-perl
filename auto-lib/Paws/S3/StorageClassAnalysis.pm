@@ -1,6 +1,23 @@
 package Paws::S3::StorageClassAnalysis;
-  use Moose;
-  has DataExport => (is => 'ro', isa => 'Paws::S3::StorageClassAnalysisDataExport');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_StorageClassAnalysisDataExport/;
+  has DataExport => (is => 'ro', isa => S3_StorageClassAnalysisDataExport);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataExport' => {
+                                 'class' => 'Paws::S3::StorageClassAnalysisDataExport',
+                                 'type' => 'S3_StorageClassAnalysisDataExport'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +55,7 @@ for an Amazon S3 bucket.
 =head1 ATTRIBUTES
 
 
-=head2 DataExport => L<Paws::S3::StorageClassAnalysisDataExport>
+=head2 DataExport => S3_StorageClassAnalysisDataExport
 
   Specifies how data related to the storage class analysis for an Amazon
 S3 bucket should be exported.

@@ -1,28 +1,97 @@
 
 package Paws::S3::HeadObject;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
-  has IfModifiedSince => (is => 'ro', isa => 'Str', header_name => 'If-Modified-Since', traits => ['ParamInHeader']);
-  has IfNoneMatch => (is => 'ro', isa => 'Str', header_name => 'If-None-Match', traits => ['ParamInHeader']);
-  has IfUnmodifiedSince => (is => 'ro', isa => 'Str', header_name => 'If-Unmodified-Since', traits => ['ParamInHeader']);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has PartNumber => (is => 'ro', isa => 'Int', query_name => 'partNumber', traits => ['ParamInQuery']);
-  has Range => (is => 'ro', isa => 'Str', header_name => 'Range', traits => ['ParamInHeader']);
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
-  has SSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key', traits => ['ParamInHeader']);
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
-  has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IfMatch => (is => 'ro', isa => Str, predicate => 1);
+  has IfModifiedSince => (is => 'ro', isa => Str, predicate => 1);
+  has IfNoneMatch => (is => 'ro', isa => Str, predicate => 1);
+  has IfUnmodifiedSince => (is => 'ro', isa => Str, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PartNumber => (is => 'ro', isa => Int, predicate => 1);
+  has Range => (is => 'ro', isa => Str, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKey => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'HeadObject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'HEAD');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::HeadObjectOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'HeadObject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'HEAD');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::HeadObjectOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'SSECustomerKey' => {
+                                     'type' => 'Str'
+                                   },
+               'IfMatch' => {
+                              'type' => 'Str'
+                            },
+               'IfModifiedSince' => {
+                                      'type' => 'Str'
+                                    },
+               'IfNoneMatch' => {
+                                  'type' => 'Str'
+                                },
+               'PartNumber' => {
+                                 'type' => 'Int'
+                               },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      },
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'Range' => {
+                            'type' => 'Str'
+                          },
+               'IfUnmodifiedSince' => {
+                                        'type' => 'Str'
+                                      },
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket',
+                    'Key' => 'Key'
+                  },
+  'ParamInQuery' => {
+                      'PartNumber' => 'partNumber',
+                      'VersionId' => 'versionId'
+                    },
+  'ParamInHeader' => {
+                       'SSECustomerKey' => 'x-amz-server-side-encryption-customer-key',
+                       'IfMatch' => 'If-Match',
+                       'IfModifiedSince' => 'If-Modified-Since',
+                       'IfNoneMatch' => 'If-None-Match',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
+                       'Range' => 'Range',
+                       'IfUnmodifiedSince' => 'If-Unmodified-Since',
+                       'RequestPayer' => 'x-amz-request-payer'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

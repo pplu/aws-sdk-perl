@@ -1,7 +1,27 @@
 package Paws::S3::StorageClassAnalysisDataExport;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Paws::S3::AnalyticsExportDestination', required => 1);
-  has OutputSchemaVersion => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_AnalyticsExportDestination/;
+  has Destination => (is => 'ro', isa => S3_AnalyticsExportDestination, required => 1);
+  has OutputSchemaVersion => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Destination' => {
+                                  'class' => 'Paws::S3::AnalyticsExportDestination',
+                                  'type' => 'S3_AnalyticsExportDestination'
+                                },
+               'OutputSchemaVersion' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Destination => L<Paws::S3::AnalyticsExportDestination>
+=head2 B<REQUIRED> Destination => S3_AnalyticsExportDestination
 
   The place to store the data for an analysis.
 

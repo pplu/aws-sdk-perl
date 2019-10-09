@@ -1,6 +1,6 @@
 package Paws::Net::RestXmlCaller;
   use Paws;
-  use Moose::Role;
+  use Moo::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime);
   use URI::Template;
@@ -27,15 +27,15 @@ package Paws::Net::RestXmlCaller;
     my ($self, $params) = @_;
 
 
-    my %p;
-    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+    my $params_hash = $params->params_map;    my %p;
+    foreach my $att (keys %{ $params_hash->{types} }) {
       
       # e.g. S3 metadata objects, which are passed in the header
-      next if $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInHeaders');
+      next if exists $params_hash->{ParamInHeaders}{$att};
 
-      my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInQuery')?$params->meta->get_attribute($att)->query_name:$att;
+      my $key = $params_hash->{ParamInQuery}{$att} || $att;
       if (defined $params->$att) {
-        my $att_type = $params->meta->get_attribute($att)->type_constraint;
+        my $att_type = $params_hash->{types}{$att}{type};
 
         if (Paws->is_internal_type($att_type)) {
           $p{ $key } = $params->{$att};
@@ -65,7 +65,7 @@ package Paws::Net::RestXmlCaller;
 
   sub _call_uri {
     my ($self, $call) = @_;
-    my $uri_template = $call->meta->name->_api_uri; # in auto-lib/<service>/<method>.pm
+    my $uri_template = $call->_api_uri; # in auto-lib/<service>/<method>.pm
 
     my @uri_attribs = $uri_template =~ /{(.+?)}/g;
     my $vars = {};
@@ -76,15 +76,16 @@ package Paws::Net::RestXmlCaller;
       $uri_attrib_is_greedy{$att_name} = $greedy;
     }
 
-    foreach my $attribute ($call->meta->get_all_attributes)
+    my $params_hash = $call->params_map;
+    foreach my $attribute (keys %$params_hash)
     {
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
-        my $att_name = $attribute->name;
-        if ($uri_attrib_is_greedy{$att_name}) {
-            $vars->{ $attribute->uri_name } =  uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
-            $uri_template =~ s{$att_name\+}{\+$att_name}g;
+      if ($params_hash->{ParamInURL}{$attribute}) {
+#        my $att_name = $params_hash->{ParamInURL}{$attribute} || $attribute;
+        if ($uri_attrib_is_greedy{$attribute}) {
+            $vars->{ $attribute->uri_name } =  uri_escape_utf8($call->$attribute, q[^A-Za-z0-9\-\._~/]);
+            $uri_template =~ s{$attribute\+}{\+$attribute}g;
         } else {
-            $vars->{ $attribute->uri_name } = $call->$att_name;
+            $vars->{ $params_hash->{ParamInURL}{$attribute} } = $call->$attribute;
         }
       }
     }
@@ -96,9 +97,12 @@ package Paws::Net::RestXmlCaller;
 
   sub _to_header_params {
     my ($self, $request, $call) = @_;
-    foreach my $attribute ($call->meta->get_all_attributes) {
-      if ($attribute->does('Paws::API::Attribute::Trait::AutoInHeader')) {
-        if ( $attribute->auto eq 'MD5' ) {
+      
+    my $params_hash = $call->params_map;
+    foreach my $attribute (keys %$params_hash) {
+      if ($params_hash->{AutoInHeader}{$attribute}) {
+        if ( $params_hash->{AutoInHeader}{$attribute}{auto} eq 'MD5' ) {
+          $DB::single=1;
           require MIME::Base64;
           require Digest::MD5;
           my $value;

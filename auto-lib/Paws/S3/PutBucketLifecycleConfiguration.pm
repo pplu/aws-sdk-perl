@@ -1,17 +1,38 @@
 
 package Paws::S3::PutBucketLifecycleConfiguration;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has LifecycleConfiguration => (is => 'ro', isa => 'Paws::S3::BucketLifecycleConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_BucketLifecycleConfiguration/;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LifecycleConfiguration => (is => 'ro', isa => S3_BucketLifecycleConfiguration, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutBucketLifecycleConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?lifecycle');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutBucketLifecycleConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}?lifecycle');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LifecycleConfiguration' => {
+                                             'class' => 'Paws::S3::BucketLifecycleConfiguration',
+                                             'type' => 'S3_BucketLifecycleConfiguration'
+                                           },
+               'Bucket' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Value => 'MyValue',
 
                   },
-                  ...                          # OPTIONAL
+                  ...
                 ],                             # OPTIONAL
               },    # OPTIONAL
               Prefix => 'MyPrefix',    # OPTIONAL
@@ -62,7 +83,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Key   => 'MyObjectKey',    # min: 1
                 Value => 'MyValue',
 
-              },    # OPTIONAL
+              },
             },    # OPTIONAL
             ID                          => 'MyID',    # OPTIONAL
             NoncurrentVersionExpiration => {
@@ -105,7 +126,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 
 
-=head2 LifecycleConfiguration => L<Paws::S3::BucketLifecycleConfiguration>
+=head2 LifecycleConfiguration => S3_BucketLifecycleConfiguration
 
 
 

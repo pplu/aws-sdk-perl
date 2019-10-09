@@ -1,10 +1,43 @@
 package Paws::S3::SelectObjectContentEventStream;
-  use Moose;
-  has Cont => (is => 'ro', isa => 'Paws::S3::ContinuationEvent');
-  has End => (is => 'ro', isa => 'Paws::S3::EndEvent');
-  has Progress => (is => 'ro', isa => 'Paws::S3::ProgressEvent');
-  has Records => (is => 'ro', isa => 'Paws::S3::RecordsEvent');
-  has Stats => (is => 'ro', isa => 'Paws::S3::StatsEvent');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_RecordsEvent S3_ProgressEvent S3_ContinuationEvent S3_EndEvent S3_StatsEvent/;
+  has Cont => (is => 'ro', isa => S3_ContinuationEvent);
+  has End => (is => 'ro', isa => S3_EndEvent);
+  has Progress => (is => 'ro', isa => S3_ProgressEvent);
+  has Records => (is => 'ro', isa => S3_RecordsEvent);
+  has Stats => (is => 'ro', isa => S3_StatsEvent);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'End' => {
+                          'class' => 'Paws::S3::EndEvent',
+                          'type' => 'S3_EndEvent'
+                        },
+               'Progress' => {
+                               'class' => 'Paws::S3::ProgressEvent',
+                               'type' => 'S3_ProgressEvent'
+                             },
+               'Records' => {
+                              'class' => 'Paws::S3::RecordsEvent',
+                              'type' => 'S3_RecordsEvent'
+                            },
+               'Stats' => {
+                            'class' => 'Paws::S3::StatsEvent',
+                            'type' => 'S3_StatsEvent'
+                          },
+               'Cont' => {
+                           'class' => 'Paws::S3::ContinuationEvent',
+                           'type' => 'S3_ContinuationEvent'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,27 +73,27 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Cont => L<Paws::S3::ContinuationEvent>
+=head2 Cont => S3_ContinuationEvent
 
   The Continuation Event.
 
 
-=head2 End => L<Paws::S3::EndEvent>
+=head2 End => S3_EndEvent
 
   The End Event.
 
 
-=head2 Progress => L<Paws::S3::ProgressEvent>
+=head2 Progress => S3_ProgressEvent
 
   The Progress Event.
 
 
-=head2 Records => L<Paws::S3::RecordsEvent>
+=head2 Records => S3_RecordsEvent
 
   The Records Event.
 
 
-=head2 Stats => L<Paws::S3::StatsEvent>
+=head2 Stats => S3_StatsEvent
 
   The Stats Event.
 

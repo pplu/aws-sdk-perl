@@ -1,6 +1,23 @@
 package Paws::S3::SourceSelectionCriteria;
-  use Moose;
-  has SseKmsEncryptedObjects => (is => 'ro', isa => 'Paws::S3::SseKmsEncryptedObjects');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_SseKmsEncryptedObjects/;
+  has SseKmsEncryptedObjects => (is => 'ro', isa => S3_SseKmsEncryptedObjects);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SseKmsEncryptedObjects' => {
+                                             'class' => 'Paws::S3::SseKmsEncryptedObjects',
+                                             'type' => 'S3_SseKmsEncryptedObjects'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +57,7 @@ server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
 =head1 ATTRIBUTES
 
 
-=head2 SseKmsEncryptedObjects => L<Paws::S3::SseKmsEncryptedObjects>
+=head2 SseKmsEncryptedObjects => S3_SseKmsEncryptedObjects
 
   A container for filter information for the selection of Amazon S3
 objects encrypted with AWS KMS. If you include

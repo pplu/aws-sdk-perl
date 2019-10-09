@@ -1,6 +1,23 @@
 package Paws::S3::BucketLoggingStatus;
-  use Moose;
-  has LoggingEnabled => (is => 'ro', isa => 'Paws::S3::LoggingEnabled');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3::Types qw/S3_LoggingEnabled/;
+  has LoggingEnabled => (is => 'ro', isa => S3_LoggingEnabled);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoggingEnabled' => {
+                                     'class' => 'Paws::S3::LoggingEnabled',
+                                     'type' => 'S3_LoggingEnabled'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +53,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 LoggingEnabled => L<Paws::S3::LoggingEnabled>
+=head2 LoggingEnabled => S3_LoggingEnabled
 
   
 

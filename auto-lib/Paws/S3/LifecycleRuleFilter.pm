@@ -1,8 +1,32 @@
 package Paws::S3::LifecycleRuleFilter;
-  use Moose;
-  has And => (is => 'ro', isa => 'Paws::S3::LifecycleRuleAndOperator');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has Tag => (is => 'ro', isa => 'Paws::S3::Tag');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_LifecycleRuleAndOperator S3_Tag/;
+  has And => (is => 'ro', isa => S3_LifecycleRuleAndOperator);
+  has Prefix => (is => 'ro', isa => Str);
+  has Tag => (is => 'ro', isa => S3_Tag);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'And' => {
+                          'class' => 'Paws::S3::LifecycleRuleAndOperator',
+                          'type' => 'S3_LifecycleRuleAndOperator'
+                        },
+               'Tag' => {
+                          'class' => 'Paws::S3::Tag',
+                          'type' => 'S3_Tag'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ to. A Filter must have exactly one of Prefix, Tag, or And specified.
 =head1 ATTRIBUTES
 
 
-=head2 And => L<Paws::S3::LifecycleRuleAndOperator>
+=head2 And => S3_LifecycleRuleAndOperator
 
   
 
@@ -49,7 +73,7 @@ to. A Filter must have exactly one of Prefix, Tag, or And specified.
   Prefix identifying one or more objects to which the rule applies.
 
 
-=head2 Tag => L<Paws::S3::Tag>
+=head2 Tag => S3_Tag
 
   This tag must exist in the object's tag set in order for the rule to
 apply.

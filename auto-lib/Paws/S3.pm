@@ -1,15 +1,16 @@
 package Paws::S3;
   warn "Paws::S3 is not stable / supported / entirely developed" unless $ENV{'PAWS_SILENCE_UNSTABLE_WARNINGS'};
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 's3' }
   sub signing_name { 's3' }
   sub version { '2006-03-01' }
   sub flattened_arrays { 1 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'BadDigest' },
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'RequestTimeout' },
   ] });
@@ -744,7 +745,7 @@ ensure the parts list is empty.
 
 =item UploadId => Str
 
-=item [MultipartUpload => L<Paws::S3::CompletedMultipartUpload>]
+=item [MultipartUpload => S3_CompletedMultipartUpload]
 
 =item [RequestPayer => Str]
 
@@ -804,7 +805,7 @@ Completes a multipart upload by assembling previously uploaded parts.
 
 =item [GrantWriteACP => Str]
 
-=item [Metadata => L<Paws::S3::Metadata>]
+=item [Metadata => S3_Metadata]
 
 =item [MetadataDirective => Str]
 
@@ -856,7 +857,7 @@ Creates a copy of an object that is already stored in Amazon S3.
 
 =item [ContentLength => Int]
 
-=item [CreateBucketConfiguration => L<Paws::S3::CreateBucketConfiguration>]
+=item [CreateBucketConfiguration => S3_CreateBucketConfiguration]
 
 =item [GrantFullControl => Str]
 
@@ -910,7 +911,7 @@ Creates a new bucket.
 
 =item [GrantWriteACP => Str]
 
-=item [Metadata => L<Paws::S3::Metadata>]
+=item [Metadata => S3_Metadata]
 
 =item [ObjectLockLegalHoldStatus => Str]
 
@@ -1183,7 +1184,7 @@ isn't a null version, Amazon S3 does not remove any objects.
 
 =item Bucket => Str
 
-=item Delete => L<Paws::S3::Delete>
+=item Delete => S3_Delete
 
 =item [BypassGovernanceRetention => Bool]
 
@@ -2056,7 +2057,7 @@ upload.
 
 =over
 
-=item AccelerateConfiguration => L<Paws::S3::AccelerateConfiguration>
+=item AccelerateConfiguration => S3_AccelerateConfiguration
 
 =item Bucket => Str
 
@@ -2078,7 +2079,7 @@ Sets the accelerate configuration of an existing bucket.
 
 =item Bucket => Str
 
-=item [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>]
+=item [AccessControlPolicy => S3_AccessControlPolicy]
 
 =item [ACL => Str]
 
@@ -2110,7 +2111,7 @@ Sets the permissions on a bucket using access control lists (ACL).
 
 =over
 
-=item AnalyticsConfiguration => L<Paws::S3::AnalyticsConfiguration>
+=item AnalyticsConfiguration => S3_AnalyticsConfiguration
 
 =item Bucket => Str
 
@@ -2135,7 +2136,7 @@ analytics configuration ID).
 
 =item Bucket => Str
 
-=item CORSConfiguration => L<Paws::S3::CORSConfiguration>
+=item CORSConfiguration => S3_CORSConfiguration
 
 =item [ContentLength => Int]
 
@@ -2157,7 +2158,7 @@ Sets the CORS configuration for a bucket.
 
 =item Bucket => Str
 
-=item ServerSideEncryptionConfiguration => L<Paws::S3::ServerSideEncryptionConfiguration>
+=item ServerSideEncryptionConfiguration => S3_ServerSideEncryptionConfiguration
 
 =item [ContentLength => Int]
 
@@ -2182,7 +2183,7 @@ existing one, if present).
 
 =item Id => Str
 
-=item InventoryConfiguration => L<Paws::S3::InventoryConfiguration>
+=item InventoryConfiguration => S3_InventoryConfiguration
 
 =item [ContentLength => Int]
 
@@ -2207,7 +2208,7 @@ the bucket.
 
 =item [ContentMD5 => Str]
 
-=item [LifecycleConfiguration => L<Paws::S3::LifecycleConfiguration>]
+=item [LifecycleConfiguration => S3_LifecycleConfiguration]
 
 
 =back
@@ -2225,7 +2226,7 @@ No longer used, see the PutBucketLifecycleConfiguration operation.
 
 =item Bucket => Str
 
-=item [LifecycleConfiguration => L<Paws::S3::BucketLifecycleConfiguration>]
+=item [LifecycleConfiguration => S3_BucketLifecycleConfiguration]
 
 
 =back
@@ -2244,7 +2245,7 @@ configuration exists, it replaces it.
 
 =item Bucket => Str
 
-=item BucketLoggingStatus => L<Paws::S3::BucketLoggingStatus>
+=item BucketLoggingStatus => S3_BucketLoggingStatus
 
 =item [ContentLength => Int]
 
@@ -2270,7 +2271,7 @@ status of a bucket, you must be the bucket owner.
 
 =item Id => Str
 
-=item MetricsConfiguration => L<Paws::S3::MetricsConfiguration>
+=item MetricsConfiguration => S3_MetricsConfiguration
 
 =item [ContentLength => Int]
 
@@ -2291,7 +2292,7 @@ ID) for the bucket.
 
 =item Bucket => Str
 
-=item NotificationConfiguration => L<Paws::S3::NotificationConfigurationDeprecated>
+=item NotificationConfiguration => S3_NotificationConfigurationDeprecated
 
 =item [ContentLength => Int]
 
@@ -2313,7 +2314,7 @@ No longer used, see the PutBucketNotificationConfiguration operation.
 
 =item Bucket => Str
 
-=item NotificationConfiguration => L<Paws::S3::NotificationConfiguration>
+=item NotificationConfiguration => S3_NotificationConfiguration
 
 
 =back
@@ -2355,7 +2356,7 @@ Applies an Amazon S3 bucket policy to an Amazon S3 bucket.
 
 =item Bucket => Str
 
-=item ReplicationConfiguration => L<Paws::S3::ReplicationConfiguration>
+=item ReplicationConfiguration => S3_ReplicationConfiguration
 
 =item [ContentLength => Int]
 
@@ -2382,7 +2383,7 @@ I<Amazon S3 Developer Guide>.
 
 =item Bucket => Str
 
-=item RequestPaymentConfiguration => L<Paws::S3::RequestPaymentConfiguration>
+=item RequestPaymentConfiguration => S3_RequestPaymentConfiguration
 
 =item [ContentLength => Int]
 
@@ -2409,7 +2410,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html
 
 =item Bucket => Str
 
-=item Tagging => L<Paws::S3::Tagging>
+=item Tagging => S3_Tagging
 
 =item [ContentLength => Int]
 
@@ -2431,7 +2432,7 @@ Sets the tags for a bucket.
 
 =item Bucket => Str
 
-=item VersioningConfiguration => L<Paws::S3::VersioningConfiguration>
+=item VersioningConfiguration => S3_VersioningConfiguration
 
 =item [ContentLength => Int]
 
@@ -2456,7 +2457,7 @@ state, you must be the bucket owner.
 
 =item Bucket => Str
 
-=item WebsiteConfiguration => L<Paws::S3::WebsiteConfiguration>
+=item WebsiteConfiguration => S3_WebsiteConfiguration
 
 =item [ContentLength => Int]
 
@@ -2508,7 +2509,7 @@ Set the website configuration for a bucket.
 
 =item [GrantWriteACP => Str]
 
-=item [Metadata => L<Paws::S3::Metadata>]
+=item [Metadata => S3_Metadata]
 
 =item [ObjectLockLegalHoldStatus => Str]
 
@@ -2554,7 +2555,7 @@ Adds an object to a bucket.
 
 =item Key => Str
 
-=item [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>]
+=item [AccessControlPolicy => S3_AccessControlPolicy]
 
 =item [ACL => Str]
 
@@ -2597,7 +2598,7 @@ permissions for an object that already exists in a bucket
 
 =item [ContentMD5 => Str]
 
-=item [LegalHold => L<Paws::S3::ObjectLockLegalHold>]
+=item [LegalHold => S3_ObjectLockLegalHold]
 
 =item [RequestPayer => Str]
 
@@ -2621,7 +2622,7 @@ Applies a Legal Hold configuration to the specified object.
 
 =item [ContentMD5 => Str]
 
-=item [ObjectLockConfiguration => L<Paws::S3::ObjectLockConfiguration>]
+=item [ObjectLockConfiguration => S3_ObjectLockConfiguration]
 
 =item [RequestPayer => Str]
 
@@ -2653,7 +2654,7 @@ to every new object placed in the specified bucket.
 
 =item [RequestPayer => Str]
 
-=item [Retention => L<Paws::S3::ObjectLockRetention>]
+=item [Retention => S3_ObjectLockRetention]
 
 =item [VersionId => Str]
 
@@ -2675,7 +2676,7 @@ Places an Object Retention configuration on an object.
 
 =item Key => Str
 
-=item Tagging => L<Paws::S3::Tagging>
+=item Tagging => S3_Tagging
 
 =item [ContentLength => Int]
 
@@ -2699,7 +2700,7 @@ Sets the supplied tag-set to an object that already exists in a bucket
 
 =item Bucket => Str
 
-=item PublicAccessBlockConfiguration => L<Paws::S3::PublicAccessBlockConfiguration>
+=item PublicAccessBlockConfiguration => S3_PublicAccessBlockConfiguration
 
 =item [ContentMD5 => Str]
 
@@ -2726,7 +2727,7 @@ Amazon S3 bucket.
 
 =item [RequestPayer => Str]
 
-=item [RestoreRequest => L<Paws::S3::RestoreRequest>]
+=item [RestoreRequest => S3_RestoreRequest]
 
 =item [VersionId => Str]
 
@@ -2750,13 +2751,13 @@ Restores an archived copy of an object back into Amazon S3
 
 =item ExpressionType => Str
 
-=item InputSerialization => L<Paws::S3::InputSerialization>
+=item InputSerialization => S3_InputSerialization
 
 =item Key => Str
 
-=item OutputSerialization => L<Paws::S3::OutputSerialization>
+=item OutputSerialization => S3_OutputSerialization
 
-=item [RequestProgress => L<Paws::S3::RequestProgress>]
+=item [RequestProgress => S3_RequestProgress]
 
 =item [SSECustomerAlgorithm => Str]
 

@@ -1,36 +1,168 @@
 
 package Paws::S3::HeadObjectOutput;
-  use Moose;
-  has AcceptRanges => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'accept-ranges');
-  has CacheControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Cache-Control');
-  has ContentDisposition => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Disposition');
-  has ContentEncoding => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Encoding');
-  has ContentLanguage => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Language');
-  has ContentLength => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'Content-Length');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has DeleteMarker => (is => 'ro', isa => 'Bool', traits => ['ParamInHeader'], header_name => 'x-amz-delete-marker');
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has Expiration => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-expiration');
-  has Expires => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Expires');
-  has LastModified => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Last-Modified');
-  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', traits => ['ParamInHeaders'], header_prefix => 'x-amz-meta-');
-  has MissingMeta => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-missing-meta');
-  has ObjectLockLegalHoldStatus => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-legal-hold');
-  has ObjectLockMode => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-mode');
-  has ObjectLockRetainUntilDate => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-object-lock-retain-until-date');
-  has PartsCount => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-mp-parts-count');
-  has ReplicationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-replication-status');
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
-  has Restore => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-restore');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
-  has StorageClass => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-storage-class');
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
-  has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-website-redirect-location');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::S3::Types qw/S3_Metadata/;
+  has AcceptRanges => (is => 'ro', isa => Str);
+  has CacheControl => (is => 'ro', isa => Str);
+  has ContentDisposition => (is => 'ro', isa => Str);
+  has ContentEncoding => (is => 'ro', isa => Str);
+  has ContentLanguage => (is => 'ro', isa => Str);
+  has ContentLength => (is => 'ro', isa => Int);
+  has ContentType => (is => 'ro', isa => Str);
+  has DeleteMarker => (is => 'ro', isa => Bool);
+  has ETag => (is => 'ro', isa => Str);
+  has Expiration => (is => 'ro', isa => Str);
+  has Expires => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+  has Metadata => (is => 'ro', isa => S3_Metadata);
+  has MissingMeta => (is => 'ro', isa => Int);
+  has ObjectLockLegalHoldStatus => (is => 'ro', isa => Str);
+  has ObjectLockMode => (is => 'ro', isa => Str);
+  has ObjectLockRetainUntilDate => (is => 'ro', isa => Str);
+  has PartsCount => (is => 'ro', isa => Int);
+  has ReplicationStatus => (is => 'ro', isa => Str);
+  has RequestCharged => (is => 'ro', isa => Str);
+  has Restore => (is => 'ro', isa => Str);
+  has ServerSideEncryption => (is => 'ro', isa => Str);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str);
+  has SSEKMSKeyId => (is => 'ro', isa => Str);
+  has StorageClass => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+  has WebsiteRedirectLocation => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'SSEKMSKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'Metadata' => {
+                               'class' => 'Paws::S3::Metadata',
+                               'type' => 'S3_Metadata'
+                             },
+               'RequestCharged' => {
+                                     'type' => 'Str'
+                                   },
+               'WebsiteRedirectLocation' => {
+                                              'type' => 'Str'
+                                            },
+               'Restore' => {
+                              'type' => 'Str'
+                            },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               'ContentLanguage' => {
+                                      'type' => 'Str'
+                                    },
+               'ObjectLockLegalHoldStatus' => {
+                                                'type' => 'Str'
+                                              },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 },
+               'Expires' => {
+                              'type' => 'Str'
+                            },
+               'Expiration' => {
+                                 'type' => 'Str'
+                               },
+               'MissingMeta' => {
+                                  'type' => 'Int'
+                                },
+               'PartsCount' => {
+                                 'type' => 'Int'
+                               },
+               'ObjectLockRetainUntilDate' => {
+                                                'type' => 'Str'
+                                              },
+               'AcceptRanges' => {
+                                   'type' => 'Str'
+                                 },
+               'DeleteMarker' => {
+                                   'type' => 'Bool'
+                                 },
+               'ServerSideEncryption' => {
+                                           'type' => 'Str'
+                                         },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      },
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'ObjectLockMode' => {
+                                     'type' => 'Str'
+                                   },
+               'CacheControl' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ContentEncoding' => {
+                                      'type' => 'Str'
+                                    },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentDisposition' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'ParamInHeader' => {
+                       'ReplicationStatus' => 'x-amz-replication-status',
+                       'ContentLength' => 'Content-Length',
+                       'ContentType' => 'Content-Type',
+                       'SSEKMSKeyId' => 'x-amz-server-side-encryption-aws-kms-key-id',
+                       'RequestCharged' => 'x-amz-request-charged',
+                       'WebsiteRedirectLocation' => 'x-amz-website-redirect-location',
+                       'Restore' => 'x-amz-restore',
+                       'ETag' => 'ETag',
+                       'ContentLanguage' => 'Content-Language',
+                       'ObjectLockLegalHoldStatus' => 'x-amz-object-lock-legal-hold',
+                       'VersionId' => 'x-amz-version-id',
+                       'LastModified' => 'Last-Modified',
+                       'Expires' => 'Expires',
+                       'Expiration' => 'x-amz-expiration',
+                       'MissingMeta' => 'x-amz-missing-meta',
+                       'PartsCount' => 'x-amz-mp-parts-count',
+                       'ObjectLockRetainUntilDate' => 'x-amz-object-lock-retain-until-date',
+                       'AcceptRanges' => 'accept-ranges',
+                       'DeleteMarker' => 'x-amz-delete-marker',
+                       'ServerSideEncryption' => 'x-amz-server-side-encryption',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
+                       'CacheControl' => 'Cache-Control',
+                       'ObjectLockMode' => 'x-amz-object-lock-mode',
+                       'ContentEncoding' => 'Content-Encoding',
+                       'StorageClass' => 'x-amz-storage-class',
+                       'ContentDisposition' => 'Content-Disposition'
+                     },
+  'ParamInHeaders' => {
+                        'Metadata' => 'x-amz-meta-'
+                      }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -122,7 +254,7 @@ Last modified date of the object
 
 
 
-=head2 Metadata => L<Paws::S3::Metadata>
+=head2 Metadata => S3_Metadata
 
 A map of metadata to store with the object in S3.
 

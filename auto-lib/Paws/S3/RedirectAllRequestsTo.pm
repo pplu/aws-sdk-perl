@@ -1,7 +1,26 @@
 package Paws::S3::RedirectAllRequestsTo;
-  use Moose;
-  has HostName => (is => 'ro', isa => 'Str', required => 1);
-  has Protocol => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has HostName => (is => 'ro', isa => Str, required => 1);
+  has Protocol => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HostName' => {
+                               'type' => 'Str'
+                             },
+               'Protocol' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

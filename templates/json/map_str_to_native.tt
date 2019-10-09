@@ -8,7 +8,7 @@ package [% inner_class %];
 
   has Map => (is => 'ro', isa => [% map_class %]);
 
-sub params_map {
+  sub params_map {
     my $params1 = {
                     types => {
                                'Map' => {

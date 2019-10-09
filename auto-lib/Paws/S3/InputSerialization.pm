@@ -1,9 +1,37 @@
 package Paws::S3::InputSerialization;
-  use Moose;
-  has CompressionType => (is => 'ro', isa => 'Str');
-  has CSV => (is => 'ro', isa => 'Paws::S3::CSVInput');
-  has JSON => (is => 'ro', isa => 'Paws::S3::JSONInput');
-  has Parquet => (is => 'ro', isa => 'Paws::S3::ParquetInput');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw/S3_JSONInput S3_ParquetInput S3_CSVInput/;
+  has CompressionType => (is => 'ro', isa => Str);
+  has CSV => (is => 'ro', isa => S3_CSVInput);
+  has JSON => (is => 'ro', isa => S3_JSONInput);
+  has Parquet => (is => 'ro', isa => S3_ParquetInput);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CSV' => {
+                          'class' => 'Paws::S3::CSVInput',
+                          'type' => 'S3_CSVInput'
+                        },
+               'CompressionType' => {
+                                      'type' => 'Str'
+                                    },
+               'JSON' => {
+                           'class' => 'Paws::S3::JSONInput',
+                           'type' => 'S3_JSONInput'
+                         },
+               'Parquet' => {
+                              'class' => 'Paws::S3::ParquetInput',
+                              'type' => 'S3_ParquetInput'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,17 +73,17 @@ Describes the serialization format of the object.
 Default Value: NONE.
 
 
-=head2 CSV => L<Paws::S3::CSVInput>
+=head2 CSV => S3_CSVInput
 
   Describes the serialization of a CSV-encoded object.
 
 
-=head2 JSON => L<Paws::S3::JSONInput>
+=head2 JSON => S3_JSONInput
 
   Specifies JSON as object's input serialization format.
 
 
-=head2 Parquet => L<Paws::S3::ParquetInput>
+=head2 Parquet => S3_ParquetInput
 
   Specifies Parquet as object's input serialization format.
 

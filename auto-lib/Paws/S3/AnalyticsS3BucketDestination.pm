@@ -1,9 +1,34 @@
 package Paws::S3::AnalyticsS3BucketDestination;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has BucketAccountId => (is => 'ro', isa => 'Str');
-  has Format => (is => 'ro', isa => 'Str', required => 1);
-  has Prefix => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1);
+  has BucketAccountId => (is => 'ro', isa => Str);
+  has Format => (is => 'ro', isa => Str, required => 1);
+  has Prefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'BucketAccountId' => {
+                                      'type' => 'Str'
+                                    },
+               'Format' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

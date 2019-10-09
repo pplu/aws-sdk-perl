@@ -1,11 +1,40 @@
 
 package Paws::S3::DeleteObjectOutput;
-  use Moose;
-  has DeleteMarker => (is => 'ro', isa => 'Bool', traits => ['ParamInHeader'], header_name => 'x-amz-delete-marker');
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Bool/;
+  use Paws::S3::Types qw//;
+  has DeleteMarker => (is => 'ro', isa => Bool);
+  has RequestCharged => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DeleteMarker' => {
+                                   'type' => 'Bool'
+                                 },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'RequestCharged' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'ParamInHeader' => {
+                       'DeleteMarker' => 'x-amz-delete-marker',
+                       'VersionId' => 'x-amz-version-id',
+                       'RequestCharged' => 'x-amz-request-charged'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,37 @@
 package Paws::S3::TopicConfigurationDeprecated;
-  use Moose;
-  has Event => (is => 'ro', isa => 'Str');
-  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Event', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str');
-  has Topic => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::S3::Types qw//;
+  has Event => (is => 'ro', isa => Str);
+  has Events => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Id => (is => 'ro', isa => Str);
+  has Topic => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Event' => {
+                            'type' => 'Str'
+                          },
+               'Topic' => {
+                            'type' => 'Str'
+                          },
+               'Events' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             },
+  'NameInRequest' => {
+                       'Events' => 'Event'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

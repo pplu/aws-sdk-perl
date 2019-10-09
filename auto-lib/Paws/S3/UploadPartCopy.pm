@@ -1,32 +1,117 @@
 
 package Paws::S3::UploadPartCopy;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has CopySource => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source', traits => ['ParamInHeader'], required => 1);
-  has CopySourceIfMatch => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-if-match', traits => ['ParamInHeader']);
-  has CopySourceIfModifiedSince => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-if-modified-since', traits => ['ParamInHeader']);
-  has CopySourceIfNoneMatch => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-if-none-match', traits => ['ParamInHeader']);
-  has CopySourceIfUnmodifiedSince => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-if-unmodified-since', traits => ['ParamInHeader']);
-  has CopySourceRange => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-range', traits => ['ParamInHeader']);
-  has CopySourceSSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
-  has CopySourceSSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-key', traits => ['ParamInHeader']);
-  has CopySourceSSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
-  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
-  has PartNumber => (is => 'ro', isa => 'Int', query_name => 'partNumber', traits => ['ParamInQuery'], required => 1);
-  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
-  has SSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key', traits => ['ParamInHeader']);
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
-  has UploadId => (is => 'ro', isa => 'Str', query_name => 'uploadId', traits => ['ParamInQuery'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::S3::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CopySource => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CopySourceIfMatch => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceIfModifiedSince => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceIfNoneMatch => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceIfUnmodifiedSince => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceRange => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceSSECustomerAlgorithm => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceSSECustomerKey => (is => 'ro', isa => Str, predicate => 1);
+  has CopySourceSSECustomerKeyMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has Key => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PartNumber => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has RequestPayer => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerAlgorithm => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKey => (is => 'ro', isa => Str, predicate => 1);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => Str, predicate => 1);
+  has UploadId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadPartCopy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::UploadPartCopyOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UploadPartCopy');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{Bucket}/{Key+}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3::UploadPartCopyOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CopySourceIfNoneMatch' => {
+                                            'type' => 'Str'
+                                          },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'CopySourceIfMatch' => {
+                                        'type' => 'Str'
+                                      },
+               'PartNumber' => {
+                                 'type' => 'Int'
+                               },
+               'CopySourceIfUnmodifiedSince' => {
+                                                  'type' => 'Str'
+                                                },
+               'CopySourceSSECustomerAlgorithm' => {
+                                                     'type' => 'Str'
+                                                   },
+               'CopySourceSSECustomerKey' => {
+                                               'type' => 'Str'
+                                             },
+               'CopySourceRange' => {
+                                      'type' => 'Str'
+                                    },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'CopySource' => {
+                                 'type' => 'Str'
+                               },
+               'SSECustomerKey' => {
+                                     'type' => 'Str'
+                                   },
+               'SSECustomerAlgorithm' => {
+                                           'type' => 'Str'
+                                         },
+               'SSECustomerKeyMD5' => {
+                                        'type' => 'Str'
+                                      },
+               'CopySourceIfModifiedSince' => {
+                                                'type' => 'Str'
+                                              },
+               'RequestPayer' => {
+                                   'type' => 'Str'
+                                 },
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'CopySourceSSECustomerKeyMD5' => {
+                                                  'type' => 'Str'
+                                                }
+             },
+  'ParamInURI' => {
+                    'Bucket' => 'Bucket',
+                    'Key' => 'Key'
+                  },
+  'ParamInQuery' => {
+                      'PartNumber' => 'partNumber',
+                      'UploadId' => 'uploadId'
+                    },
+  'ParamInHeader' => {
+                       'CopySourceIfNoneMatch' => 'x-amz-copy-source-if-none-match',
+                       'SSECustomerKey' => 'x-amz-server-side-encryption-customer-key',
+                       'CopySourceIfMatch' => 'x-amz-copy-source-if-match',
+                       'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
+                       'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
+                       'CopySourceIfUnmodifiedSince' => 'x-amz-copy-source-if-unmodified-since',
+                       'CopySourceSSECustomerAlgorithm' => 'x-amz-copy-source-server-side-encryption-customer-algorithm',
+                       'CopySourceIfModifiedSince' => 'x-amz-copy-source-if-modified-since',
+                       'CopySourceSSECustomerKey' => 'x-amz-copy-source-server-side-encryption-customer-key',
+                       'RequestPayer' => 'x-amz-request-payer',
+                       'CopySourceRange' => 'x-amz-copy-source-range',
+                       'CopySourceSSECustomerKeyMD5' => 'x-amz-copy-source-server-side-encryption-customer-key-MD5',
+                       'CopySource' => 'x-amz-copy-source'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
