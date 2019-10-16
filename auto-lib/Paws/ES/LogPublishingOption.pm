@@ -1,7 +1,26 @@
 package Paws::ES::LogPublishingOption;
-  use Moose;
-  has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ES::Types qw//;
+  has CloudWatchLogsLogGroupArn => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'CloudWatchLogsLogGroupArn' => {
+                                                'type' => 'Str'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

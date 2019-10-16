@@ -1,12 +1,46 @@
 package Paws::ES::ServiceSoftwareOptions;
-  use Moose;
-  has AutomatedUpdateDate => (is => 'ro', isa => 'Str');
-  has Cancellable => (is => 'ro', isa => 'Bool');
-  has CurrentVersion => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has NewVersion => (is => 'ro', isa => 'Str');
-  has UpdateAvailable => (is => 'ro', isa => 'Bool');
-  has UpdateStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ES::Types qw//;
+  has AutomatedUpdateDate => (is => 'ro', isa => Str);
+  has Cancellable => (is => 'ro', isa => Bool);
+  has CurrentVersion => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has NewVersion => (is => 'ro', isa => Str);
+  has UpdateAvailable => (is => 'ro', isa => Bool);
+  has UpdateStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'UpdateAvailable' => {
+                                      'type' => 'Bool'
+                                    },
+               'NewVersion' => {
+                                 'type' => 'Str'
+                               },
+               'UpdateStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Cancellable' => {
+                                  'type' => 'Bool'
+                                },
+               'AutomatedUpdateDate' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

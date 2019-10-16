@@ -1,22 +1,71 @@
 
 package Paws::ES::UpdateElasticsearchDomainConfig;
-  use Moose;
-  has AccessPolicies => (is => 'ro', isa => 'Str');
-  has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
-  has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DomainName', required => 1);
-  has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
-  has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig');
-  has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
-  has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
-  has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCOptions');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ES::Types qw/ES_ElasticsearchClusterConfig ES_SnapshotOptions ES_EBSOptions ES_CognitoOptions ES_VPCOptions ES_AdvancedOptions ES_LogPublishingOptions/;
+  has AccessPolicies => (is => 'ro', isa => Str, predicate => 1);
+  has AdvancedOptions => (is => 'ro', isa => ES_AdvancedOptions, predicate => 1);
+  has CognitoOptions => (is => 'ro', isa => ES_CognitoOptions, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EBSOptions => (is => 'ro', isa => ES_EBSOptions, predicate => 1);
+  has ElasticsearchClusterConfig => (is => 'ro', isa => ES_ElasticsearchClusterConfig, predicate => 1);
+  has LogPublishingOptions => (is => 'ro', isa => ES_LogPublishingOptions, predicate => 1);
+  has SnapshotOptions => (is => 'ro', isa => ES_SnapshotOptions, predicate => 1);
+  has VPCOptions => (is => 'ro', isa => ES_VPCOptions, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateElasticsearchDomainConfig');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/es/domain/{DomainName}/config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ES::UpdateElasticsearchDomainConfigResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateElasticsearchDomainConfig');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-01-01/es/domain/{DomainName}/config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ES::UpdateElasticsearchDomainConfigResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ElasticsearchClusterConfig' => {
+                                                 'class' => 'Paws::ES::ElasticsearchClusterConfig',
+                                                 'type' => 'ES_ElasticsearchClusterConfig'
+                                               },
+               'AccessPolicies' => {
+                                     'type' => 'Str'
+                                   },
+               'LogPublishingOptions' => {
+                                           'class' => 'Paws::ES::LogPublishingOptions',
+                                           'type' => 'ES_LogPublishingOptions'
+                                         },
+               'VPCOptions' => {
+                                 'class' => 'Paws::ES::VPCOptions',
+                                 'type' => 'ES_VPCOptions'
+                               },
+               'SnapshotOptions' => {
+                                      'class' => 'Paws::ES::SnapshotOptions',
+                                      'type' => 'ES_SnapshotOptions'
+                                    },
+               'CognitoOptions' => {
+                                     'class' => 'Paws::ES::CognitoOptions',
+                                     'type' => 'ES_CognitoOptions'
+                                   },
+               'EBSOptions' => {
+                                 'class' => 'Paws::ES::EBSOptions',
+                                 'type' => 'ES_EBSOptions'
+                               },
+               'AdvancedOptions' => {
+                                      'class' => 'Paws::ES::AdvancedOptions',
+                                      'type' => 'ES_AdvancedOptions'
+                                    },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'DomainName' => 'DomainName'
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -98,7 +147,7 @@ IAM access policy as a JSON-formatted string.
 
 
 
-=head2 AdvancedOptions => L<Paws::ES::AdvancedOptions>
+=head2 AdvancedOptions => ES_AdvancedOptions
 
 Modifies the advanced option to allow references to indices in an HTTP
 request body. Must be C<false> when configuring access to individual
@@ -109,7 +158,7 @@ for more information.
 
 
 
-=head2 CognitoOptions => L<Paws::ES::CognitoOptions>
+=head2 CognitoOptions => ES_CognitoOptions
 
 Options to specify the Cognito user and identity pools for Kibana
 authentication. For more information, see Amazon Cognito Authentication
@@ -124,33 +173,33 @@ The name of the Elasticsearch domain that you are updating.
 
 
 
-=head2 EBSOptions => L<Paws::ES::EBSOptions>
+=head2 EBSOptions => ES_EBSOptions
 
 Specify the type and size of the EBS volume that you want to use.
 
 
 
-=head2 ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>
+=head2 ElasticsearchClusterConfig => ES_ElasticsearchClusterConfig
 
 The type and number of instances to instantiate for the domain cluster.
 
 
 
-=head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptions>
+=head2 LogPublishingOptions => ES_LogPublishingOptions
 
 Map of C<LogType> and C<LogPublishingOption>, each containing options
 to publish a given type of Elasticsearch log.
 
 
 
-=head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
+=head2 SnapshotOptions => ES_SnapshotOptions
 
 Option to set the time, in UTC format, for the daily automated
 snapshot. Default value is C<0> hours.
 
 
 
-=head2 VPCOptions => L<Paws::ES::VPCOptions>
+=head2 VPCOptions => ES_VPCOptions
 
 Options to specify the subnets and security groups for VPC endpoint.
 For more information, see Creating a VPC

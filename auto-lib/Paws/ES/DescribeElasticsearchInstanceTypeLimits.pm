@@ -1,16 +1,44 @@
 
 package Paws::ES::DescribeElasticsearchInstanceTypeLimits;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'domainName');
-  has ElasticsearchVersion => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ElasticsearchVersion', required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceType', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ES::Types qw//;
+  has DomainName => (is => 'ro', isa => Str, predicate => 1);
+  has ElasticsearchVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeElasticsearchInstanceTypeLimits');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/es/instanceTypeLimits/{ElasticsearchVersion}/{InstanceType}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ES::DescribeElasticsearchInstanceTypeLimitsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeElasticsearchInstanceTypeLimits');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-01-01/es/instanceTypeLimits/{ElasticsearchVersion}/{InstanceType}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ES::DescribeElasticsearchInstanceTypeLimitsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ElasticsearchVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'ElasticsearchVersion' => 'ElasticsearchVersion',
+                    'InstanceType' => 'InstanceType'
+                  },
+  'ParamInQuery' => {
+                      'DomainName' => 'domainName'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

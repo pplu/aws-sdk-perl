@@ -1,6 +1,22 @@
 package Paws::ES::NodeToNodeEncryptionOptions;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::ES::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,25 +1,82 @@
 
 package Paws::ES::CreateElasticsearchDomain;
-  use Moose;
-  has AccessPolicies => (is => 'ro', isa => 'Str');
-  has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
-  has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
-  has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig');
-  has ElasticsearchVersion => (is => 'ro', isa => 'Str');
-  has EncryptionAtRestOptions => (is => 'ro', isa => 'Paws::ES::EncryptionAtRestOptions');
-  has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
-  has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptions');
-  has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
-  has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCOptions');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ES::Types qw/ES_SnapshotOptions ES_EBSOptions ES_EncryptionAtRestOptions ES_ElasticsearchClusterConfig ES_CognitoOptions ES_VPCOptions ES_AdvancedOptions ES_NodeToNodeEncryptionOptions ES_LogPublishingOptions/;
+  has AccessPolicies => (is => 'ro', isa => Str, predicate => 1);
+  has AdvancedOptions => (is => 'ro', isa => ES_AdvancedOptions, predicate => 1);
+  has CognitoOptions => (is => 'ro', isa => ES_CognitoOptions, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EBSOptions => (is => 'ro', isa => ES_EBSOptions, predicate => 1);
+  has ElasticsearchClusterConfig => (is => 'ro', isa => ES_ElasticsearchClusterConfig, predicate => 1);
+  has ElasticsearchVersion => (is => 'ro', isa => Str, predicate => 1);
+  has EncryptionAtRestOptions => (is => 'ro', isa => ES_EncryptionAtRestOptions, predicate => 1);
+  has LogPublishingOptions => (is => 'ro', isa => ES_LogPublishingOptions, predicate => 1);
+  has NodeToNodeEncryptionOptions => (is => 'ro', isa => ES_NodeToNodeEncryptionOptions, predicate => 1);
+  has SnapshotOptions => (is => 'ro', isa => ES_SnapshotOptions, predicate => 1);
+  has VPCOptions => (is => 'ro', isa => ES_VPCOptions, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateElasticsearchDomain');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/es/domain');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ES::CreateElasticsearchDomainResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateElasticsearchDomain');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-01-01/es/domain');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ES::CreateElasticsearchDomainResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ElasticsearchClusterConfig' => {
+                                                 'class' => 'Paws::ES::ElasticsearchClusterConfig',
+                                                 'type' => 'ES_ElasticsearchClusterConfig'
+                                               },
+               'AccessPolicies' => {
+                                     'type' => 'Str'
+                                   },
+               'LogPublishingOptions' => {
+                                           'class' => 'Paws::ES::LogPublishingOptions',
+                                           'type' => 'ES_LogPublishingOptions'
+                                         },
+               'EncryptionAtRestOptions' => {
+                                              'class' => 'Paws::ES::EncryptionAtRestOptions',
+                                              'type' => 'ES_EncryptionAtRestOptions'
+                                            },
+               'VPCOptions' => {
+                                 'class' => 'Paws::ES::VPCOptions',
+                                 'type' => 'ES_VPCOptions'
+                               },
+               'ElasticsearchVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'SnapshotOptions' => {
+                                      'class' => 'Paws::ES::SnapshotOptions',
+                                      'type' => 'ES_SnapshotOptions'
+                                    },
+               'CognitoOptions' => {
+                                     'class' => 'Paws::ES::CognitoOptions',
+                                     'type' => 'ES_CognitoOptions'
+                                   },
+               'EBSOptions' => {
+                                 'class' => 'Paws::ES::EBSOptions',
+                                 'type' => 'ES_EBSOptions'
+                               },
+               'AdvancedOptions' => {
+                                      'class' => 'Paws::ES::AdvancedOptions',
+                                      'type' => 'ES_AdvancedOptions'
+                                    },
+               'NodeToNodeEncryptionOptions' => {
+                                                  'class' => 'Paws::ES::NodeToNodeEncryptionOptions',
+                                                  'type' => 'ES_NodeToNodeEncryptionOptions'
+                                                },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -108,7 +165,7 @@ IAM access policy as a JSON-formatted string.
 
 
 
-=head2 AdvancedOptions => L<Paws::ES::AdvancedOptions>
+=head2 AdvancedOptions => ES_AdvancedOptions
 
 Option to allow references to indices in an HTTP request body. Must be
 C<false> when configuring access to individual sub-resources. By
@@ -118,7 +175,7 @@ for more information.
 
 
 
-=head2 CognitoOptions => L<Paws::ES::CognitoOptions>
+=head2 CognitoOptions => ES_CognitoOptions
 
 Options to specify the Cognito user and identity pools for Kibana
 authentication. For more information, see Amazon Cognito Authentication
@@ -136,14 +193,14 @@ the following characters: a-z (lowercase), 0-9, and - (hyphen).
 
 
 
-=head2 EBSOptions => L<Paws::ES::EBSOptions>
+=head2 EBSOptions => ES_EBSOptions
 
 Options to enable, disable and specify the type and size of EBS storage
 volumes.
 
 
 
-=head2 ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>
+=head2 ElasticsearchClusterConfig => ES_ElasticsearchClusterConfig
 
 Configuration options for an Elasticsearch domain. Specifies the
 instance type and number of instances in the domain cluster.
@@ -160,33 +217,33 @@ in the I<Amazon Elasticsearch Service Developer Guide>.
 
 
 
-=head2 EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptions>
+=head2 EncryptionAtRestOptions => ES_EncryptionAtRestOptions
 
 Specifies the Encryption At Rest Options.
 
 
 
-=head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptions>
+=head2 LogPublishingOptions => ES_LogPublishingOptions
 
 Map of C<LogType> and C<LogPublishingOption>, each containing options
 to publish a given type of Elasticsearch log.
 
 
 
-=head2 NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptions>
+=head2 NodeToNodeEncryptionOptions => ES_NodeToNodeEncryptionOptions
 
 Specifies the NodeToNodeEncryptionOptions.
 
 
 
-=head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
+=head2 SnapshotOptions => ES_SnapshotOptions
 
 Option to set time, in UTC format, of the daily automated snapshot.
 Default value is 0 hours.
 
 
 
-=head2 VPCOptions => L<Paws::ES::VPCOptions>
+=head2 VPCOptions => ES_VPCOptions
 
 Options to specify the subnets and security groups for VPC endpoint.
 For more information, see Creating a VPC

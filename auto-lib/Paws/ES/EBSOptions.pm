@@ -1,9 +1,34 @@
 package Paws::ES::EBSOptions;
-  use Moose;
-  has EBSEnabled => (is => 'ro', isa => 'Bool');
-  has Iops => (is => 'ro', isa => 'Int');
-  has VolumeSize => (is => 'ro', isa => 'Int');
-  has VolumeType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::ES::Types qw//;
+  has EBSEnabled => (is => 'ro', isa => Bool);
+  has Iops => (is => 'ro', isa => Int);
+  has VolumeSize => (is => 'ro', isa => Int);
+  has VolumeType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EBSEnabled' => {
+                                 'type' => 'Bool'
+                               },
+               'VolumeSize' => {
+                                 'type' => 'Int'
+                               },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

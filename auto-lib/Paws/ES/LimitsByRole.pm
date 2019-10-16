@@ -1,8 +1,23 @@
 package Paws::ES::LimitsByRole;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::ES::Types qw/ES_Limits/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::ES::Limits]');
+  has Map => (is => 'ro', isa => HashRef[ES_Limits]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[ES_Limits]',
+                                          class => 'Paws::ES::Limits',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +63,7 @@ following:
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::ES::Limits>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

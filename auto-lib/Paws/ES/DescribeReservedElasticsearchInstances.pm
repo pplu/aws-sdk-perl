@@ -1,16 +1,42 @@
 
 package Paws::ES::DescribeReservedElasticsearchInstances;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has ReservedElasticsearchInstanceId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'reservationId');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ES::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ReservedElasticsearchInstanceId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeReservedElasticsearchInstances');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/es/reservedInstances');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ES::DescribeReservedElasticsearchInstancesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeReservedElasticsearchInstances');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-01-01/es/reservedInstances');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ES::DescribeReservedElasticsearchInstancesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservedElasticsearchInstanceId' => {
+                                                      'type' => 'Str'
+                                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'ReservedElasticsearchInstanceId' => 'reservationId',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

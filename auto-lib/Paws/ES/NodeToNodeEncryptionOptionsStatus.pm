@@ -1,7 +1,28 @@
 package Paws::ES::NodeToNodeEncryptionOptionsStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptions', required => 1);
-  has Status => (is => 'ro', isa => 'Paws::ES::OptionStatus', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ES::Types qw/ES_OptionStatus ES_NodeToNodeEncryptionOptions/;
+  has Options => (is => 'ro', isa => ES_NodeToNodeEncryptionOptions, required => 1);
+  has Status => (is => 'ro', isa => ES_OptionStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Options' => {
+                              'class' => 'Paws::ES::NodeToNodeEncryptionOptions',
+                              'type' => 'ES_NodeToNodeEncryptionOptions'
+                            },
+               'Status' => {
+                             'class' => 'Paws::ES::OptionStatus',
+                             'type' => 'ES_OptionStatus'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +59,13 @@ Elasticsearch domain.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Options => L<Paws::ES::NodeToNodeEncryptionOptions>
+=head2 B<REQUIRED> Options => ES_NodeToNodeEncryptionOptions
 
   Specifies the node-to-node encryption options for the specified
 Elasticsearch domain.
 
 
-=head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
+=head2 B<REQUIRED> Status => ES_OptionStatus
 
   Specifies the status of the node-to-node encryption options for the
 specified Elasticsearch domain.

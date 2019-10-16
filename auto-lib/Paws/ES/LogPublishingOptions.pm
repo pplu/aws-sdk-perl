@@ -1,14 +1,30 @@
 package Paws::ES::LogPublishingOptions;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw//;
+  use Paws::ES::Types qw/ES_LogPublishingOption/;
+  has ES_APPLICATION_LOGS => (is => 'ro', isa => ES_LogPublishingOption);
+  has INDEX_SLOW_LOGS => (is => 'ro', isa => ES_LogPublishingOption);
+  has SEARCH_SLOW_LOGS => (is => 'ro', isa => ES_LogPublishingOption);
 
-  has ES_APPLICATION_LOGS => (is => 'ro', isa => 'Paws::ES::LogPublishingOption');
-  has INDEX_SLOW_LOGS => (is => 'ro', isa => 'Paws::ES::LogPublishingOption');
-  has SEARCH_SLOW_LOGS => (is => 'ro', isa => 'Paws::ES::LogPublishingOption');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'ES_APPLICATION_LOGS' => {
+                                          type => 'ES_LogPublishingOption',                                          class => 'ES_LogPublishingOption',                                        },
+                               'INDEX_SLOW_LOGS' => {
+                                          type => 'ES_LogPublishingOption',                                          class => 'ES_LogPublishingOption',                                        },
+                               'SEARCH_SLOW_LOGS' => {
+                                          type => 'ES_LogPublishingOption',                                          class => 'ES_LogPublishingOption',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,13 +60,13 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ES_APPLICATION_LOGS => L<Paws::ES::LogPublishingOption>
+=head2 ES_APPLICATION_LOGS => 
 
 
-=head2 INDEX_SLOW_LOGS => L<Paws::ES::LogPublishingOption>
+=head2 INDEX_SLOW_LOGS => 
 
 
-=head2 SEARCH_SLOW_LOGS => L<Paws::ES::LogPublishingOption>
+=head2 SEARCH_SLOW_LOGS => 
 
 
 

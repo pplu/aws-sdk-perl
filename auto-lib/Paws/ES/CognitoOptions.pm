@@ -1,9 +1,34 @@
 package Paws::ES::CognitoOptions;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has IdentityPoolId => (is => 'ro', isa => 'Str');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has UserPoolId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::ES::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool);
+  has IdentityPoolId => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has UserPoolId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

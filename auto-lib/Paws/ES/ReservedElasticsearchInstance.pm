@@ -1,18 +1,71 @@
 package Paws::ES::ReservedElasticsearchInstance;
-  use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str');
-  has Duration => (is => 'ro', isa => 'Int');
-  has ElasticsearchInstanceCount => (is => 'ro', isa => 'Int');
-  has ElasticsearchInstanceType => (is => 'ro', isa => 'Str');
-  has FixedPrice => (is => 'ro', isa => 'Num');
-  has PaymentOption => (is => 'ro', isa => 'Str');
-  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::ES::RecurringCharge]');
-  has ReservationName => (is => 'ro', isa => 'Str');
-  has ReservedElasticsearchInstanceId => (is => 'ro', isa => 'Str');
-  has ReservedElasticsearchInstanceOfferingId => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has UsagePrice => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Int Num ArrayRef/;
+  use Paws::ES::Types qw/ES_RecurringCharge/;
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has ElasticsearchInstanceCount => (is => 'ro', isa => Int);
+  has ElasticsearchInstanceType => (is => 'ro', isa => Str);
+  has FixedPrice => (is => 'ro', isa => Num);
+  has PaymentOption => (is => 'ro', isa => Str);
+  has RecurringCharges => (is => 'ro', isa => ArrayRef[ES_RecurringCharge]);
+  has ReservationName => (is => 'ro', isa => Str);
+  has ReservedElasticsearchInstanceId => (is => 'ro', isa => Str);
+  has ReservedElasticsearchInstanceOfferingId => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has UsagePrice => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservationName' => {
+                                      'type' => 'Str'
+                                    },
+               'ElasticsearchInstanceCount' => {
+                                                 'type' => 'Int'
+                                               },
+               'ReservedElasticsearchInstanceOfferingId' => {
+                                                              'type' => 'Str'
+                                                            },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'PaymentOption' => {
+                                    'type' => 'Str'
+                                  },
+               'ReservedElasticsearchInstanceId' => {
+                                                      'type' => 'Str'
+                                                    },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'ElasticsearchInstanceType' => {
+                                                'type' => 'Str'
+                                              },
+               'FixedPrice' => {
+                                 'type' => 'Num'
+                               },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'RecurringCharges' => {
+                                       'class' => 'Paws::ES::RecurringCharge',
+                                       'type' => 'ArrayRef[ES_RecurringCharge]'
+                                     },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'UsagePrice' => {
+                                 'type' => 'Num'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +135,7 @@ reserved Elasticsearch instance offering.
 offering.
 
 
-=head2 RecurringCharges => ArrayRef[L<Paws::ES::RecurringCharge>]
+=head2 RecurringCharges => ArrayRef[ES_RecurringCharge]
 
   The charge to your account regardless of whether you are creating any
 domains using the instance offering.

@@ -1,12 +1,47 @@
 package Paws::ES::ElasticsearchClusterConfig;
-  use Moose;
-  has DedicatedMasterCount => (is => 'ro', isa => 'Int');
-  has DedicatedMasterEnabled => (is => 'ro', isa => 'Bool');
-  has DedicatedMasterType => (is => 'ro', isa => 'Str');
-  has InstanceCount => (is => 'ro', isa => 'Int');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has ZoneAwarenessConfig => (is => 'ro', isa => 'Paws::ES::ZoneAwarenessConfig');
-  has ZoneAwarenessEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Int Bool Str/;
+  use Paws::ES::Types qw/ES_ZoneAwarenessConfig/;
+  has DedicatedMasterCount => (is => 'ro', isa => Int);
+  has DedicatedMasterEnabled => (is => 'ro', isa => Bool);
+  has DedicatedMasterType => (is => 'ro', isa => Str);
+  has InstanceCount => (is => 'ro', isa => Int);
+  has InstanceType => (is => 'ro', isa => Str);
+  has ZoneAwarenessConfig => (is => 'ro', isa => ES_ZoneAwarenessConfig);
+  has ZoneAwarenessEnabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ZoneAwarenessConfig' => {
+                                          'class' => 'Paws::ES::ZoneAwarenessConfig',
+                                          'type' => 'ES_ZoneAwarenessConfig'
+                                        },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'DedicatedMasterType' => {
+                                          'type' => 'Str'
+                                        },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'DedicatedMasterEnabled' => {
+                                             'type' => 'Bool'
+                                           },
+               'DedicatedMasterCount' => {
+                                           'type' => 'Int'
+                                         },
+               'ZoneAwarenessEnabled' => {
+                                           'type' => 'Bool'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +107,7 @@ for more information.
   The instance type for an Elasticsearch cluster.
 
 
-=head2 ZoneAwarenessConfig => L<Paws::ES::ZoneAwarenessConfig>
+=head2 ZoneAwarenessConfig => ES_ZoneAwarenessConfig
 
   Specifies the zone awareness configuration for a domain when zone
 awareness is enabled.

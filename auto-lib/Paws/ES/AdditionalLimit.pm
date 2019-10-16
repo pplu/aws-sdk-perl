@@ -1,7 +1,26 @@
 package Paws::ES::AdditionalLimit;
-  use Moose;
-  has LimitName => (is => 'ro', isa => 'Str');
-  has LimitValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ES::Types qw//;
+  has LimitName => (is => 'ro', isa => Str);
+  has LimitValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LimitName' => {
+                                'type' => 'Str'
+                              },
+               'LimitValues' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

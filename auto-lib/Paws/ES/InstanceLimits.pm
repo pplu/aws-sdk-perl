@@ -1,6 +1,23 @@
 package Paws::ES::InstanceLimits;
-  use Moose;
-  has InstanceCountLimits => (is => 'ro', isa => 'Paws::ES::InstanceCountLimits');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ES::Types qw/ES_InstanceCountLimits/;
+  has InstanceCountLimits => (is => 'ro', isa => ES_InstanceCountLimits);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceCountLimits' => {
+                                          'class' => 'Paws::ES::InstanceCountLimits',
+                                          'type' => 'ES_InstanceCountLimits'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +54,7 @@ are available for given InstanceType.
 =head1 ATTRIBUTES
 
 
-=head2 InstanceCountLimits => L<Paws::ES::InstanceCountLimits>
+=head2 InstanceCountLimits => ES_InstanceCountLimits
 
   
 

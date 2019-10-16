@@ -1,6 +1,22 @@
 package Paws::ES::SnapshotOptions;
-  use Moose;
-  has AutomatedSnapshotStartHour => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::ES::Types qw//;
+  has AutomatedSnapshotStartHour => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutomatedSnapshotStartHour' => {
+                                                 'type' => 'Int'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

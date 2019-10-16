@@ -1,9 +1,34 @@
 package Paws::ES::UpgradeStepItem;
-  use Moose;
-  has Issues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ProgressPercent => (is => 'ro', isa => 'Num');
-  has UpgradeStep => (is => 'ro', isa => 'Str');
-  has UpgradeStepStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Num/;
+  use Paws::ES::Types qw//;
+  has Issues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ProgressPercent => (is => 'ro', isa => Num);
+  has UpgradeStep => (is => 'ro', isa => Str);
+  has UpgradeStepStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Issues' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'UpgradeStepStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'ProgressPercent' => {
+                                      'type' => 'Num'
+                                    },
+               'UpgradeStep' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

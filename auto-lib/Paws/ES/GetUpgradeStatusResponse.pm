@@ -1,11 +1,34 @@
 
 package Paws::ES::GetUpgradeStatusResponse;
-  use Moose;
-  has StepStatus => (is => 'ro', isa => 'Str');
-  has UpgradeName => (is => 'ro', isa => 'Str');
-  has UpgradeStep => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ES::Types qw//;
+  has StepStatus => (is => 'ro', isa => Str);
+  has UpgradeName => (is => 'ro', isa => Str);
+  has UpgradeStep => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StepStatus' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UpgradeStep' => {
+                                  'type' => 'Str'
+                                },
+               'UpgradeName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

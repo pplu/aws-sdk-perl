@@ -1,16 +1,37 @@
 
 package Paws::ES::PurchaseReservedElasticsearchInstanceOffering;
-  use Moose;
-  has InstanceCount => (is => 'ro', isa => 'Int');
-  has ReservationName => (is => 'ro', isa => 'Str', required => 1);
-  has ReservedElasticsearchInstanceOfferingId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ES::Types qw//;
+  has InstanceCount => (is => 'ro', isa => Int, predicate => 1);
+  has ReservationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReservedElasticsearchInstanceOfferingId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedElasticsearchInstanceOffering');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/es/purchaseReservedInstanceOffering');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ES::PurchaseReservedElasticsearchInstanceOfferingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PurchaseReservedElasticsearchInstanceOffering');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-01-01/es/purchaseReservedInstanceOffering');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ES::PurchaseReservedElasticsearchInstanceOfferingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservationName' => {
+                                      'type' => 'Str'
+                                    },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'ReservedElasticsearchInstanceOfferingId' => {
+                                                              'type' => 'Str'
+                                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
