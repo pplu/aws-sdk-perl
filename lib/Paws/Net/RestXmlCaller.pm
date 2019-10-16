@@ -77,7 +77,7 @@ package Paws::Net::RestXmlCaller;
     }
 
     my $params_hash = $call->params_map;
-    foreach my $attribute (keys %$params_hash)
+    foreach my $attribute (keys %{$params_hash->{types}})
     {
       if ($params_hash->{ParamInURL}{$attribute}) {
 #        my $att_name = $params_hash->{ParamInURL}{$attribute} || $attribute;
@@ -99,7 +99,7 @@ package Paws::Net::RestXmlCaller;
     my ($self, $request, $call) = @_;
       
     my $params_hash = $call->params_map;
-    foreach my $attribute (keys %$params_hash) {
+    foreach my $attribute (keys %{ $params_hash->{types} }) {
       if ($params_hash->{AutoInHeader}{$attribute}) {
         if ( $params_hash->{AutoInHeader}{$attribute}{auto} eq 'MD5' ) {
           $DB::single=1;
