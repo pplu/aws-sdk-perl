@@ -166,7 +166,7 @@ package Paws::Net::XMLResponse;
           lc($params_map->{ParamInHeader}{$att}) : $att);
 
       my $att_type = $params_map->{types}{$att}{type};
-#      my $att_is_required = $meta->is_required;
+      my $att_is_required = $params_map->{IsRequired}{$att};
 
     #  use Data::Dumper;
     #  print STDERR "USING KEY:  $key\n";
@@ -285,7 +285,7 @@ package Paws::Net::XMLResponse;
             }
           } else {
               ## FIXME, do we need this?
-#            $args{ $att } = [] if ($att_is_required);
+            $args{ $att } = [] if ($att_is_required);
           }
         }
       }
