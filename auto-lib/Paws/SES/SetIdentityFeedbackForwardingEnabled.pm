@@ -1,14 +1,32 @@
 
 package Paws::SES::SetIdentityFeedbackForwardingEnabled;
-  use Moose;
-  has ForwardingEnabled => (is => 'ro', isa => 'Bool', required => 1);
-  has Identity => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SES::Types qw//;
+  has ForwardingEnabled => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has Identity => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetIdentityFeedbackForwardingEnabled');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::SetIdentityFeedbackForwardingEnabledResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetIdentityFeedbackForwardingEnabledResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetIdentityFeedbackForwardingEnabled');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::SetIdentityFeedbackForwardingEnabledResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SetIdentityFeedbackForwardingEnabledResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ForwardingEnabled' => {
+                                        'type' => 'Bool'
+                                      },
+               'Identity' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,23 +1,70 @@
 
 package Paws::SES::SendTemplatedEmail;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str');
-  has Destination => (is => 'ro', isa => 'Paws::SES::Destination', required => 1);
-  has ReplyToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ReturnPath => (is => 'ro', isa => 'Str');
-  has ReturnPathArn => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str', required => 1);
-  has SourceArn => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SES::MessageTag]');
-  has Template => (is => 'ro', isa => 'Str', required => 1);
-  has TemplateArn => (is => 'ro', isa => 'Str');
-  has TemplateData => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SES::Types qw/SES_MessageTag SES_Destination/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, predicate => 1);
+  has Destination => (is => 'ro', isa => SES_Destination, required => 1, predicate => 1);
+  has ReplyToAddresses => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ReturnPath => (is => 'ro', isa => Str, predicate => 1);
+  has ReturnPathArn => (is => 'ro', isa => Str, predicate => 1);
+  has Source => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceArn => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SES_MessageTag], predicate => 1);
+  has Template => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TemplateArn => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateData => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendTemplatedEmail');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::SendTemplatedEmailResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendTemplatedEmailResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendTemplatedEmail');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::SendTemplatedEmailResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SendTemplatedEmailResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateData' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               'ReplyToAddresses' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'Template' => {
+                               'type' => 'Str'
+                             },
+               'Destination' => {
+                                  'class' => 'Paws::SES::Destination',
+                                  'type' => 'SES_Destination'
+                                },
+               'ReturnPathArn' => {
+                                    'type' => 'Str'
+                                  },
+               'TemplateArn' => {
+                                  'type' => 'Str'
+                                },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'Tags' => {
+                           'class' => 'Paws::SES::MessageTag',
+                           'type' => 'ArrayRef[SES_MessageTag]'
+                         },
+               'ReturnPath' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +127,7 @@ C<SendTemplatedEmail>.
 
 
 
-=head2 B<REQUIRED> Destination => L<Paws::SES::Destination>
+=head2 B<REQUIRED> Destination => SES_Destination
 
 The destination for this email, composed of To:, CC:, and BCC: fields.
 A Destination can include up to 50 recipients across these three
@@ -178,7 +225,7 @@ Developer Guide
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SES::MessageTag>]
+=head2 Tags => ArrayRef[SES_MessageTag]
 
 A list of tags, in the form of name/value pairs, to apply to an email
 that you send using C<SendTemplatedEmail>. Tags correspond to

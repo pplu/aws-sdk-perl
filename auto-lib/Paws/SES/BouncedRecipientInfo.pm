@@ -1,9 +1,35 @@
 package Paws::SES::BouncedRecipientInfo;
-  use Moose;
-  has BounceType => (is => 'ro', isa => 'Str');
-  has Recipient => (is => 'ro', isa => 'Str', required => 1);
-  has RecipientArn => (is => 'ro', isa => 'Str');
-  has RecipientDsnFields => (is => 'ro', isa => 'Paws::SES::RecipientDsnFields');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw/SES_RecipientDsnFields/;
+  has BounceType => (is => 'ro', isa => Str);
+  has Recipient => (is => 'ro', isa => Str, required => 1);
+  has RecipientArn => (is => 'ro', isa => Str);
+  has RecipientDsnFields => (is => 'ro', isa => SES_RecipientDsnFields);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Recipient' => {
+                                'type' => 'Str'
+                              },
+               'RecipientArn' => {
+                                   'type' => 'Str'
+                                 },
+               'BounceType' => {
+                                 'type' => 'Str'
+                               },
+               'RecipientDsnFields' => {
+                                         'class' => 'Paws::SES::RecipientDsnFields',
+                                         'type' => 'SES_RecipientDsnFields'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +92,7 @@ SES Developer Guide
 (https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 
 
-=head2 RecipientDsnFields => L<Paws::SES::RecipientDsnFields>
+=head2 RecipientDsnFields => SES_RecipientDsnFields
 
   Recipient-related DSN fields, most of which would normally be filled in
 automatically when provided with a C<BounceType>. You must provide

@@ -1,14 +1,15 @@
 package Paws::SNS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'sns' }
   sub signing_name { 'sns' }
   sub version { '2010-03-31' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -443,7 +444,7 @@ only when the C<AuthenticateOnUnsubscribe> flag is set to "true".
 
 =over
 
-=item Attributes => L<Paws::SNS::MapStringToString>
+=item Attributes => SNS_MapStringToString
 
 =item Name => Str
 
@@ -501,7 +502,7 @@ Getting Started with WNS
 
 =item Token => Str
 
-=item [Attributes => L<Paws::SNS::MapStringToString>]
+=item [Attributes => SNS_MapStringToString]
 
 =item [CustomUserData => Str]
 
@@ -538,9 +539,9 @@ for Baidu
 
 =item Name => Str
 
-=item [Attributes => L<Paws::SNS::TopicAttributesMap>]
+=item [Attributes => SNS_TopicAttributesMap]
 
-=item [Tags => ArrayRef[L<Paws::SNS::Tag>]]
+=item [Tags => ArrayRef[SNS_Tag]]
 
 
 =back
@@ -897,7 +898,7 @@ You can opt in a phone number only once every 30 days.
 
 =item Message => Str
 
-=item [MessageAttributes => L<Paws::SNS::MessageAttributeMap>]
+=item [MessageAttributes => SNS_MessageAttributeMap]
 
 =item [MessageStructure => Str]
 
@@ -959,7 +960,7 @@ Removes a statement from a topic's access control policy.
 
 =over
 
-=item Attributes => L<Paws::SNS::MapStringToString>
+=item Attributes => SNS_MapStringToString
 
 =item EndpointArn => Str
 
@@ -980,7 +981,7 @@ information, see Using Amazon SNS Mobile Push Notifications
 
 =over
 
-=item Attributes => L<Paws::SNS::MapStringToString>
+=item Attributes => SNS_MapStringToString
 
 =item PlatformApplicationArn => Str
 
@@ -1004,7 +1005,7 @@ Using Amazon SNS Application Attributes for Message Delivery Status
 
 =over
 
-=item Attributes => L<Paws::SNS::MapStringToString>
+=item Attributes => SNS_MapStringToString
 
 
 =back
@@ -1072,7 +1073,7 @@ Allows a topic owner to set an attribute of the topic to a new value.
 
 =item TopicArn => Str
 
-=item [Attributes => L<Paws::SNS::SubscriptionAttributesMap>]
+=item [Attributes => SNS_SubscriptionAttributesMap]
 
 =item [Endpoint => Str]
 
@@ -1099,7 +1100,7 @@ This action is throttled at 100 transactions per second (TPS).
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::SNS::Tag>]
+=item Tags => ArrayRef[SNS_Tag]
 
 
 =back

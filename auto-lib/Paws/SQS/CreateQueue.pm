@@ -1,14 +1,36 @@
 
 package Paws::SQS::CreateQueue;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SQS::QueueAttributeMap', traits => ['NameInRequest'], request_name => 'Attribute' );
-  has QueueName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SQS::Types qw/SQS_QueueAttributeMap/;
+  has Attributes => (is => 'ro', isa => SQS_QueueAttributeMap, predicate => 1);
+  has QueueName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateQueue');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SQS::CreateQueueResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateQueueResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateQueue');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SQS::CreateQueueResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateQueueResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QueueName' => {
+                                'type' => 'Str'
+                              },
+               'Attributes' => {
+                                 'class' => 'Paws::SQS::QueueAttributeMap',
+                                 'type' => 'SQS_QueueAttributeMap'
+                               }
+             },
+  'NameInRequest' => {
+                       'Attributes' => 'Attribute'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +65,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SQS::QueueAttributeMap>
+=head2 Attributes => SQS_QueueAttributeMap
 
 A map of attributes with their corresponding values.
 

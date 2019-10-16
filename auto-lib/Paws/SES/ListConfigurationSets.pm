@@ -1,14 +1,32 @@
 
 package Paws::SES::ListConfigurationSets;
-  use Moose;
-  has MaxItems => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SES::Types qw//;
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListConfigurationSets');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::ListConfigurationSetsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListConfigurationSetsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListConfigurationSets');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::ListConfigurationSetsResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListConfigurationSetsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

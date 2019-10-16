@@ -1,12 +1,27 @@
 package Paws::SES::VerificationAttributes;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::SES::Types qw/SES_IdentityVerificationAttributes/;
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::SES::IdentityVerificationAttributes]');
+  has Map => (is => 'ro', isa =>HashRef[SES_IdentityVerificationAttributes]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[SES_IdentityVerificationAttributes]',
+                                          class => 'Paws::SES::IdentityVerificationAttributes',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +56,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::SES::IdentityVerificationAttributes>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

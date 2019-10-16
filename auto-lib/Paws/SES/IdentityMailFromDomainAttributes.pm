@@ -1,8 +1,30 @@
 package Paws::SES::IdentityMailFromDomainAttributes;
-  use Moose;
-  has BehaviorOnMXFailure => (is => 'ro', isa => 'Str', required => 1);
-  has MailFromDomain => (is => 'ro', isa => 'Str', required => 1);
-  has MailFromDomainStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has BehaviorOnMXFailure => (is => 'ro', isa => Str, required => 1);
+  has MailFromDomain => (is => 'ro', isa => Str, required => 1);
+  has MailFromDomainStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BehaviorOnMXFailure' => {
+                                          'type' => 'Str'
+                                        },
+               'MailFromDomainStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'MailFromDomain' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

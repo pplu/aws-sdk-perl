@@ -1,10 +1,38 @@
 package Paws::SQS::SendMessageBatchResultEntry;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has MD5OfMessageAttributes => (is => 'ro', isa => 'Str');
-  has MD5OfMessageBody => (is => 'ro', isa => 'Str', required => 1);
-  has MessageId => (is => 'ro', isa => 'Str', required => 1);
-  has SequenceNumber => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SQS::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has MD5OfMessageAttributes => (is => 'ro', isa => Str);
+  has MD5OfMessageBody => (is => 'ro', isa => Str, required => 1);
+  has MessageId => (is => 'ro', isa => Str, required => 1);
+  has SequenceNumber => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MD5OfMessageAttributes' => {
+                                             'type' => 'Str'
+                                           },
+               'SequenceNumber' => {
+                                     'type' => 'Str'
+                                   },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'MD5OfMessageBody' => {
+                                       'type' => 'Str'
+                                     },
+               'MessageId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

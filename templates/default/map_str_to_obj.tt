@@ -1,13 +1,29 @@
 [%- -%]
 package [% inner_class %];
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/[% base_types.unique.join(' ') %]/;
+[%- SET k =  class_type_info.keys.first %]
+  use [% c.typelibrary_name %] qw/[% k %]/;
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => '[% iclass.key.locationName || 'key' %]');
   class_has xml_values =>(is => 'ro', default => '[% iclass.value.locationName || 'value' %]');
 
-  has Map => (is => 'ro', isa => '[% map_class %]');
+  has Map => (is => 'ro', isa =>[% map_class %]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => '[% map_class %]',
+                                          class => '[% class_type_info.$k %]',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 [% INCLUDE 'map_str_to_whatever.tt' %]

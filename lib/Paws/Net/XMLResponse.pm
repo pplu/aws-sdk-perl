@@ -135,8 +135,8 @@ package Paws::Net::XMLResponse;
       $value_ref = ref($value);
     }
         
-    my $inner_class = $att_class->meta->get_attribute('Map')->type_constraint->name;
-    ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
+    my $inner_class = $att_class->params_map->{types}{Map}{class};
+#    ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
     Paws->load_class("$inner_class");
 
     if ($value_ref eq 'ARRAY') {

@@ -1,7 +1,26 @@
 package Paws::SES::AddHeaderAction;
-  use Moose;
-  has HeaderName => (is => 'ro', isa => 'Str', required => 1);
-  has HeaderValue => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has HeaderName => (is => 'ro', isa => Str, required => 1);
+  has HeaderValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HeaderName' => {
+                                 'type' => 'Str'
+                               },
+               'HeaderValue' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

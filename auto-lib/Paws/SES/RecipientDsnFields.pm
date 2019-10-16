@@ -1,12 +1,47 @@
 package Paws::SES::RecipientDsnFields;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has DiagnosticCode => (is => 'ro', isa => 'Str');
-  has ExtensionFields => (is => 'ro', isa => 'ArrayRef[Paws::SES::ExtensionField]');
-  has FinalRecipient => (is => 'ro', isa => 'Str');
-  has LastAttemptDate => (is => 'ro', isa => 'Str');
-  has RemoteMta => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SES::Types qw/SES_ExtensionField/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has DiagnosticCode => (is => 'ro', isa => Str);
+  has ExtensionFields => (is => 'ro', isa => ArrayRef[SES_ExtensionField]);
+  has FinalRecipient => (is => 'ro', isa => Str);
+  has LastAttemptDate => (is => 'ro', isa => Str);
+  has RemoteMta => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExtensionFields' => {
+                                      'class' => 'Paws::SES::ExtensionField',
+                                      'type' => 'ArrayRef[SES_ExtensionField]'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'RemoteMta' => {
+                                'type' => 'Str'
+                              },
+               'DiagnosticCode' => {
+                                     'type' => 'Str'
+                                   },
+               'FinalRecipient' => {
+                                     'type' => 'Str'
+                                   },
+               'LastAttemptDate' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +97,7 @@ response. See RFC 3463 (https://tools.ietf.org/html/rfc3463) for the
 correct formatting of this parameter.
 
 
-=head2 ExtensionFields => ArrayRef[L<Paws::SES::ExtensionField>]
+=head2 ExtensionFields => ArrayRef[SES_ExtensionField]
 
   Additional X-headers to include in the DSN.
 

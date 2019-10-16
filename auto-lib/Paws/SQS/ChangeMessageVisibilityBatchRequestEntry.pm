@@ -1,8 +1,30 @@
 package Paws::SQS::ChangeMessageVisibilityBatchRequestEntry;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has ReceiptHandle => (is => 'ro', isa => 'Str', required => 1);
-  has VisibilityTimeout => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SQS::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has ReceiptHandle => (is => 'ro', isa => Str, required => 1);
+  has VisibilityTimeout => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VisibilityTimeout' => {
+                                        'type' => 'Int'
+                                      },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ReceiptHandle' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

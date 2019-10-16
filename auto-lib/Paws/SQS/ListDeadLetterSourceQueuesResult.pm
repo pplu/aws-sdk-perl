@@ -1,9 +1,29 @@
 
 package Paws::SQS::ListDeadLetterSourceQueuesResult;
-  use Moose;
-  has QueueUrls => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'QueueUrl', traits => ['NameInRequest',], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SQS::Types qw//;
+  has QueueUrls => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QueueUrls' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'QueueUrls' => 'QueueUrl'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

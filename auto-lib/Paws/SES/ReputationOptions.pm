@@ -1,8 +1,30 @@
 package Paws::SES::ReputationOptions;
-  use Moose;
-  has LastFreshStart => (is => 'ro', isa => 'Str');
-  has ReputationMetricsEnabled => (is => 'ro', isa => 'Bool');
-  has SendingEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SES::Types qw//;
+  has LastFreshStart => (is => 'ro', isa => Str);
+  has ReputationMetricsEnabled => (is => 'ro', isa => Bool);
+  has SendingEnabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastFreshStart' => {
+                                     'type' => 'Str'
+                                   },
+               'SendingEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'ReputationMetricsEnabled' => {
+                                               'type' => 'Bool'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

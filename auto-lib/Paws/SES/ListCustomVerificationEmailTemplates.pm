@@ -1,14 +1,32 @@
 
 package Paws::SES::ListCustomVerificationEmailTemplates;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SES::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListCustomVerificationEmailTemplates');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::ListCustomVerificationEmailTemplatesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListCustomVerificationEmailTemplatesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListCustomVerificationEmailTemplates');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::ListCustomVerificationEmailTemplatesResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListCustomVerificationEmailTemplatesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

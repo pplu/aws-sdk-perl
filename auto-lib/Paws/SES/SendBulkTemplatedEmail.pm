@@ -1,23 +1,70 @@
 
 package Paws::SES::SendBulkTemplatedEmail;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str');
-  has DefaultTags => (is => 'ro', isa => 'ArrayRef[Paws::SES::MessageTag]');
-  has DefaultTemplateData => (is => 'ro', isa => 'Str');
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::SES::BulkEmailDestination]', required => 1);
-  has ReplyToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ReturnPath => (is => 'ro', isa => 'Str');
-  has ReturnPathArn => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str', required => 1);
-  has SourceArn => (is => 'ro', isa => 'Str');
-  has Template => (is => 'ro', isa => 'Str', required => 1);
-  has TemplateArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SES::Types qw/SES_BulkEmailDestination SES_MessageTag/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultTags => (is => 'ro', isa => ArrayRef[SES_MessageTag], predicate => 1);
+  has DefaultTemplateData => (is => 'ro', isa => Str, predicate => 1);
+  has Destinations => (is => 'ro', isa => ArrayRef[SES_BulkEmailDestination], required => 1, predicate => 1);
+  has ReplyToAddresses => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ReturnPath => (is => 'ro', isa => Str, predicate => 1);
+  has ReturnPathArn => (is => 'ro', isa => Str, predicate => 1);
+  has Source => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceArn => (is => 'ro', isa => Str, predicate => 1);
+  has Template => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TemplateArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendBulkTemplatedEmail');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::SendBulkTemplatedEmailResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendBulkTemplatedEmailResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendBulkTemplatedEmail');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::SendBulkTemplatedEmailResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SendBulkTemplatedEmailResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               'ReplyToAddresses' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'Template' => {
+                               'type' => 'Str'
+                             },
+               'DefaultTemplateData' => {
+                                          'type' => 'Str'
+                                        },
+               'DefaultTags' => {
+                                  'class' => 'Paws::SES::MessageTag',
+                                  'type' => 'ArrayRef[SES_MessageTag]'
+                                },
+               'Destinations' => {
+                                   'class' => 'Paws::SES::BulkEmailDestination',
+                                   'type' => 'ArrayRef[SES_BulkEmailDestination]'
+                                 },
+               'ReturnPathArn' => {
+                                    'type' => 'Str'
+                                  },
+               'TemplateArn' => {
+                                  'type' => 'Str'
+                                },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'ReturnPath' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +141,7 @@ C<SendBulkTemplatedEmail>.
 
 
 
-=head2 DefaultTags => ArrayRef[L<Paws::SES::MessageTag>]
+=head2 DefaultTags => ArrayRef[SES_MessageTag]
 
 A list of tags, in the form of name/value pairs, to apply to an email
 that you send to a destination using C<SendBulkTemplatedEmail>.
@@ -113,7 +160,7 @@ template.
 
 
 
-=head2 B<REQUIRED> Destinations => ArrayRef[L<Paws::SES::BulkEmailDestination>]
+=head2 B<REQUIRED> Destinations => ArrayRef[SES_BulkEmailDestination]
 
 One or more C<Destination> objects. All of the recipients in a
 C<Destination> will receive the same version of the email. You can

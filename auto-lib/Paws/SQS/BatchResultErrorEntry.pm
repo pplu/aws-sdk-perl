@@ -1,9 +1,34 @@
 package Paws::SQS::BatchResultErrorEntry;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Message => (is => 'ro', isa => 'Str');
-  has SenderFault => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SQS::Types qw//;
+  has Code => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Message => (is => 'ro', isa => Str);
+  has SenderFault => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Code' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'SenderFault' => {
+                                  'type' => 'Bool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

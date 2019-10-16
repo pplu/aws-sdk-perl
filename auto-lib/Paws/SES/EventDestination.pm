@@ -1,11 +1,45 @@
 package Paws::SES::EventDestination;
-  use Moose;
-  has CloudWatchDestination => (is => 'ro', isa => 'Paws::SES::CloudWatchDestination');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has KinesisFirehoseDestination => (is => 'ro', isa => 'Paws::SES::KinesisFirehoseDestination');
-  has MatchingEventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has SNSDestination => (is => 'ro', isa => 'Paws::SES::SNSDestination');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::SES::Types qw/SES_CloudWatchDestination SES_SNSDestination SES_KinesisFirehoseDestination/;
+  has CloudWatchDestination => (is => 'ro', isa => SES_CloudWatchDestination);
+  has Enabled => (is => 'ro', isa => Bool);
+  has KinesisFirehoseDestination => (is => 'ro', isa => SES_KinesisFirehoseDestination);
+  has MatchingEventTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has SNSDestination => (is => 'ro', isa => SES_SNSDestination);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SNSDestination' => {
+                                     'class' => 'Paws::SES::SNSDestination',
+                                     'type' => 'SES_SNSDestination'
+                                   },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'CloudWatchDestination' => {
+                                            'class' => 'Paws::SES::CloudWatchDestination',
+                                            'type' => 'SES_CloudWatchDestination'
+                                          },
+               'MatchingEventTypes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'KinesisFirehoseDestination' => {
+                                                 'class' => 'Paws::SES::KinesisFirehoseDestination',
+                                                 'type' => 'SES_KinesisFirehoseDestination'
+                                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +88,7 @@ Developer Guide
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchDestination => L<Paws::SES::CloudWatchDestination>
+=head2 CloudWatchDestination => SES_CloudWatchDestination
 
   An object that contains the names, default values, and sources of the
 dimensions associated with an Amazon CloudWatch event destination.
@@ -68,7 +102,7 @@ enable publishing to this destination; set to C<false> to prevent
 publishing to this destination. The default value is C<false>.
 
 
-=head2 KinesisFirehoseDestination => L<Paws::SES::KinesisFirehoseDestination>
+=head2 KinesisFirehoseDestination => SES_KinesisFirehoseDestination
 
   An object that contains the delivery stream ARN and the IAM role ARN
 associated with an Amazon Kinesis Firehose event destination.
@@ -98,7 +132,7 @@ Contain less than 64 characters.
 
 
 
-=head2 SNSDestination => L<Paws::SES::SNSDestination>
+=head2 SNSDestination => SES_SNSDestination
 
   An object that contains the topic ARN associated with an Amazon Simple
 Notification Service (Amazon SNS) event destination.

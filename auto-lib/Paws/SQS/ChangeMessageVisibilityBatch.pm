@@ -1,14 +1,36 @@
 
 package Paws::SQS::ChangeMessageVisibilityBatch;
-  use Moose;
-  has Entries => (is => 'ro', isa => 'ArrayRef[Paws::SQS::ChangeMessageVisibilityBatchRequestEntry]', traits => ['NameInRequest'], request_name => 'ChangeMessageVisibilityBatchRequestEntry' , required => 1);
-  has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SQS::Types qw/SQS_ChangeMessageVisibilityBatchRequestEntry/;
+  has Entries => (is => 'ro', isa => ArrayRef[SQS_ChangeMessageVisibilityBatchRequestEntry], required => 1, predicate => 1);
+  has QueueUrl => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatch');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SQS::ChangeMessageVisibilityBatchResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibilityBatchResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ChangeMessageVisibilityBatch');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SQS::ChangeMessageVisibilityBatchResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ChangeMessageVisibilityBatchResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QueueUrl' => {
+                               'type' => 'Str'
+                             },
+               'Entries' => {
+                              'class' => 'Paws::SQS::ChangeMessageVisibilityBatchRequestEntry',
+                              'type' => 'ArrayRef[SQS_ChangeMessageVisibilityBatchRequestEntry]'
+                            }
+             },
+  'NameInRequest' => {
+                       'Entries' => 'ChangeMessageVisibilityBatchRequestEntry'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Entries => ArrayRef[L<Paws::SQS::ChangeMessageVisibilityBatchRequestEntry>]
+=head2 B<REQUIRED> Entries => ArrayRef[SQS_ChangeMessageVisibilityBatchRequestEntry]
 
 A list of receipt handles of the messages for which the visibility
 timeout must be changed.

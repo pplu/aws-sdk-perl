@@ -1,14 +1,33 @@
 
 package Paws::SES::UpdateConfigurationSetEventDestination;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', required => 1);
-  has EventDestination => (is => 'ro', isa => 'Paws::SES::EventDestination', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw/SES_EventDestination/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EventDestination => (is => 'ro', isa => SES_EventDestination, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationSetEventDestination');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::UpdateConfigurationSetEventDestinationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationSetEventDestinationResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateConfigurationSetEventDestination');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::UpdateConfigurationSetEventDestinationResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateConfigurationSetEventDestinationResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'EventDestination' => {
+                                       'class' => 'Paws::SES::EventDestination',
+                                       'type' => 'SES_EventDestination'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +96,7 @@ that you want to update.
 
 
 
-=head2 B<REQUIRED> EventDestination => L<Paws::SES::EventDestination>
+=head2 B<REQUIRED> EventDestination => SES_EventDestination
 
 The event destination object that you want to apply to the specified
 configuration set.

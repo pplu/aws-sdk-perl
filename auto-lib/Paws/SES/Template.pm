@@ -1,9 +1,34 @@
 package Paws::SES::Template;
-  use Moose;
-  has HtmlPart => (is => 'ro', isa => 'Str');
-  has SubjectPart => (is => 'ro', isa => 'Str');
-  has TemplateName => (is => 'ro', isa => 'Str', required => 1);
-  has TextPart => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has HtmlPart => (is => 'ro', isa => Str);
+  has SubjectPart => (is => 'ro', isa => Str);
+  has TemplateName => (is => 'ro', isa => Str, required => 1);
+  has TextPart => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'SubjectPart' => {
+                                  'type' => 'Str'
+                                },
+               'TextPart' => {
+                               'type' => 'Str'
+                             },
+               'HtmlPart' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

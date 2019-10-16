@@ -1,10 +1,38 @@
 package Paws::SES::CustomVerificationEmailTemplate;
-  use Moose;
-  has FailureRedirectionURL => (is => 'ro', isa => 'Str');
-  has FromEmailAddress => (is => 'ro', isa => 'Str');
-  has SuccessRedirectionURL => (is => 'ro', isa => 'Str');
-  has TemplateName => (is => 'ro', isa => 'Str');
-  has TemplateSubject => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has FailureRedirectionURL => (is => 'ro', isa => Str);
+  has FromEmailAddress => (is => 'ro', isa => Str);
+  has SuccessRedirectionURL => (is => 'ro', isa => Str);
+  has TemplateName => (is => 'ro', isa => Str);
+  has TemplateSubject => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'FailureRedirectionURL' => {
+                                            'type' => 'Str'
+                                          },
+               'FromEmailAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'SuccessRedirectionURL' => {
+                                            'type' => 'Str'
+                                          },
+               'TemplateSubject' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

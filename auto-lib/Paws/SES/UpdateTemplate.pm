@@ -1,13 +1,29 @@
 
 package Paws::SES::UpdateTemplate;
-  use Moose;
-  has Template => (is => 'ro', isa => 'Paws::SES::Template', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw/SES_Template/;
+  has Template => (is => 'ro', isa => SES_Template, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::UpdateTemplateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateTemplateResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateTemplate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::UpdateTemplateResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateTemplateResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Template' => {
+                               'class' => 'Paws::SES::Template',
+                               'type' => 'SES_Template'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Template => L<Paws::SES::Template>
+=head2 B<REQUIRED> Template => SES_Template
 
 
 

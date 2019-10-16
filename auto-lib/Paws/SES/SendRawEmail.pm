@@ -1,20 +1,58 @@
 
 package Paws::SES::SendRawEmail;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str');
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has FromArn => (is => 'ro', isa => 'Str');
-  has RawMessage => (is => 'ro', isa => 'Paws::SES::RawMessage', required => 1);
-  has ReturnPathArn => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str');
-  has SourceArn => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SES::MessageTag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SES::Types qw/SES_RawMessage SES_MessageTag/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, predicate => 1);
+  has Destinations => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has FromArn => (is => 'ro', isa => Str, predicate => 1);
+  has RawMessage => (is => 'ro', isa => SES_RawMessage, required => 1, predicate => 1);
+  has ReturnPathArn => (is => 'ro', isa => Str, predicate => 1);
+  has Source => (is => 'ro', isa => Str, predicate => 1);
+  has SourceArn => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SES_MessageTag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendRawEmail');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::SendRawEmailResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendRawEmailResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendRawEmail');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::SendRawEmailResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SendRawEmailResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               'FromArn' => {
+                              'type' => 'Str'
+                            },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'Destinations' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'ReturnPathArn' => {
+                                    'type' => 'Str'
+                                  },
+               'RawMessage' => {
+                                 'class' => 'Paws::SES::RawMessage',
+                                 'type' => 'SES_RawMessage'
+                               },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'Tags' => {
+                           'class' => 'Paws::SES::MessageTag',
+                           'type' => 'ArrayRef[SES_MessageTag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -93,7 +131,7 @@ of C<SendRawEmail> in this guide, or see the Amazon SES Developer Guide
 
 
 
-=head2 B<REQUIRED> RawMessage => L<Paws::SES::RawMessage>
+=head2 B<REQUIRED> RawMessage => SES_RawMessage
 
 The raw email message itself. The message has to meet the following
 criteria:
@@ -220,7 +258,7 @@ of C<SendRawEmail> in this guide, or see the Amazon SES Developer Guide
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SES::MessageTag>]
+=head2 Tags => ArrayRef[SES_MessageTag]
 
 A list of tags, in the form of name/value pairs, to apply to an email
 that you send using C<SendRawEmail>. Tags correspond to characteristics

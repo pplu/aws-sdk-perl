@@ -1,14 +1,15 @@
 package Paws::SES;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'email' }
   sub signing_name { 'ses' }
   sub version { '2010-12-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -564,7 +565,7 @@ You can execute this operation no more than once per second.
 
 =over
 
-=item ConfigurationSet => L<Paws::SES::ConfigurationSet>
+=item ConfigurationSet => SES_ConfigurationSet
 
 
 =back
@@ -589,7 +590,7 @@ You can execute this operation no more than once per second.
 
 =item ConfigurationSetName => Str
 
-=item EventDestination => L<Paws::SES::EventDestination>
+=item EventDestination => SES_EventDestination
 
 
 =back
@@ -619,7 +620,7 @@ You can execute this operation no more than once per second.
 
 =item ConfigurationSetName => Str
 
-=item TrackingOptions => L<Paws::SES::TrackingOptions>
+=item TrackingOptions => SES_TrackingOptions
 
 
 =back
@@ -675,7 +676,7 @@ You can execute this operation no more than once per second.
 
 =over
 
-=item Filter => L<Paws::SES::ReceiptFilter>
+=item Filter => SES_ReceiptFilter
 
 
 =back
@@ -697,7 +698,7 @@ You can execute this operation no more than once per second.
 
 =over
 
-=item Rule => L<Paws::SES::ReceiptRule>
+=item Rule => SES_ReceiptRule
 
 =item RuleSetName => Str
 
@@ -745,7 +746,7 @@ You can execute this operation no more than once per second.
 
 =over
 
-=item Template => L<Paws::SES::Template>
+=item Template => SES_Template
 
 
 =back
@@ -1562,7 +1563,7 @@ addresses and domains associated with your account.
 
 =item ConfigurationSetName => Str
 
-=item [DeliveryOptions => L<Paws::SES::DeliveryOptions>]
+=item [DeliveryOptions => SES_DeliveryOptions]
 
 
 =back
@@ -1637,7 +1638,7 @@ You can execute this operation no more than once per second.
 
 =over
 
-=item BouncedRecipientInfoList => ArrayRef[L<Paws::SES::BouncedRecipientInfo>]
+=item BouncedRecipientInfoList => ArrayRef[SES_BouncedRecipientInfo]
 
 =item BounceSender => Str
 
@@ -1647,7 +1648,7 @@ You can execute this operation no more than once per second.
 
 =item [Explanation => Str]
 
-=item [MessageDsn => L<Paws::SES::MessageDsn>]
+=item [MessageDsn => SES_MessageDsn]
 
 
 =back
@@ -1674,7 +1675,7 @@ You can execute this operation no more than once per second.
 
 =over
 
-=item Destinations => ArrayRef[L<Paws::SES::BulkEmailDestination>]
+=item Destinations => ArrayRef[SES_BulkEmailDestination]
 
 =item Source => Str
 
@@ -1682,7 +1683,7 @@ You can execute this operation no more than once per second.
 
 =item [ConfigurationSetName => Str]
 
-=item [DefaultTags => ArrayRef[L<Paws::SES::MessageTag>]]
+=item [DefaultTags => ArrayRef[SES_MessageTag]]
 
 =item [DefaultTemplateData => Str]
 
@@ -1795,9 +1796,9 @@ You can execute this operation no more than once per second.
 
 =over
 
-=item Destination => L<Paws::SES::Destination>
+=item Destination => SES_Destination
 
-=item Message => L<Paws::SES::Message>
+=item Message => SES_Message
 
 =item Source => Str
 
@@ -1811,7 +1812,7 @@ You can execute this operation no more than once per second.
 
 =item [SourceArn => Str]
 
-=item [Tags => ArrayRef[L<Paws::SES::MessageTag>]]
+=item [Tags => ArrayRef[SES_MessageTag]]
 
 
 =back
@@ -1877,7 +1878,7 @@ in the I<Amazon SES Developer Guide.>
 
 =over
 
-=item RawMessage => L<Paws::SES::RawMessage>
+=item RawMessage => SES_RawMessage
 
 =item [ConfigurationSetName => Str]
 
@@ -1891,7 +1892,7 @@ in the I<Amazon SES Developer Guide.>
 
 =item [SourceArn => Str]
 
-=item [Tags => ArrayRef[L<Paws::SES::MessageTag>]]
+=item [Tags => ArrayRef[SES_MessageTag]]
 
 
 =back
@@ -2035,7 +2036,7 @@ in the I<Amazon SES Developer Guide.>
 
 =over
 
-=item Destination => L<Paws::SES::Destination>
+=item Destination => SES_Destination
 
 =item Source => Str
 
@@ -2053,7 +2054,7 @@ in the I<Amazon SES Developer Guide.>
 
 =item [SourceArn => Str]
 
-=item [Tags => ArrayRef[L<Paws::SES::MessageTag>]]
+=item [Tags => ArrayRef[SES_MessageTag]]
 
 =item [TemplateArn => Str]
 
@@ -2392,7 +2393,7 @@ You can execute this operation no more than once per second.
 
 =item ConfigurationSetName => Str
 
-=item EventDestination => L<Paws::SES::EventDestination>
+=item EventDestination => SES_EventDestination
 
 
 =back
@@ -2473,7 +2474,7 @@ You can execute this operation no more than once per second.
 
 =item ConfigurationSetName => Str
 
-=item TrackingOptions => L<Paws::SES::TrackingOptions>
+=item TrackingOptions => SES_TrackingOptions
 
 
 =back
@@ -2529,7 +2530,7 @@ You can execute this operation no more than once per second.
 
 =over
 
-=item Rule => L<Paws::SES::ReceiptRule>
+=item Rule => SES_ReceiptRule
 
 =item RuleSetName => Str
 
@@ -2553,7 +2554,7 @@ You can execute this operation no more than once per second.
 
 =over
 
-=item Template => L<Paws::SES::Template>
+=item Template => SES_Template
 
 
 =back

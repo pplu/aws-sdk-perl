@@ -1,15 +1,36 @@
 
 package Paws::SES::ListIdentities;
-  use Moose;
-  has IdentityType => (is => 'ro', isa => 'Str');
-  has MaxItems => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SES::Types qw//;
+  has IdentityType => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListIdentities');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::ListIdentitiesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListIdentitiesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListIdentities');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::ListIdentitiesResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListIdentitiesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'IdentityType' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

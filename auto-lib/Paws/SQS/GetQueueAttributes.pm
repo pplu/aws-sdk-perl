@@ -1,14 +1,32 @@
 
 package Paws::SQS::GetQueueAttributes;
-  use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SQS::Types qw//;
+  has AttributeNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has QueueUrl => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetQueueAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SQS::GetQueueAttributesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetQueueAttributesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetQueueAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SQS::GetQueueAttributesResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetQueueAttributesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QueueUrl' => {
+                               'type' => 'Str'
+                             },
+               'AttributeNames' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

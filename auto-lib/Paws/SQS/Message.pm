@@ -1,12 +1,52 @@
 package Paws::SQS::Message;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SQS::MessageSystemAttributeMap', request_name => 'Attribute', traits => ['NameInRequest']);
-  has Body => (is => 'ro', isa => 'Str');
-  has MD5OfBody => (is => 'ro', isa => 'Str');
-  has MD5OfMessageAttributes => (is => 'ro', isa => 'Str');
-  has MessageAttributes => (is => 'ro', isa => 'Paws::SQS::MessageBodyAttributeMap', request_name => 'MessageAttribute', traits => ['NameInRequest']);
-  has MessageId => (is => 'ro', isa => 'Str');
-  has ReceiptHandle => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SQS::Types qw/SQS_MessageSystemAttributeMap SQS_MessageBodyAttributeMap/;
+  has Attributes => (is => 'ro', isa => SQS_MessageSystemAttributeMap);
+  has Body => (is => 'ro', isa => Str);
+  has MD5OfBody => (is => 'ro', isa => Str);
+  has MD5OfMessageAttributes => (is => 'ro', isa => Str);
+  has MessageAttributes => (is => 'ro', isa => SQS_MessageBodyAttributeMap);
+  has MessageId => (is => 'ro', isa => Str);
+  has ReceiptHandle => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MD5OfMessageAttributes' => {
+                                             'type' => 'Str'
+                                           },
+               'MessageAttributes' => {
+                                        'class' => 'Paws::SQS::MessageBodyAttributeMap',
+                                        'type' => 'SQS_MessageBodyAttributeMap'
+                                      },
+               'Attributes' => {
+                                 'class' => 'Paws::SQS::MessageSystemAttributeMap',
+                                 'type' => 'SQS_MessageSystemAttributeMap'
+                               },
+               'ReceiptHandle' => {
+                                    'type' => 'Str'
+                                  },
+               'MessageId' => {
+                                'type' => 'Str'
+                              },
+               'MD5OfBody' => {
+                                'type' => 'Str'
+                              },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'MessageAttributes' => 'MessageAttribute',
+                       'Attributes' => 'Attribute'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +82,7 @@ An Amazon SQS message.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SQS::MessageSystemAttributeMap>
+=head2 Attributes => SQS_MessageSystemAttributeMap
 
   A map of the attributes requested in C< ReceiveMessage > to their
 respective values. Supported attributes:
@@ -103,7 +143,7 @@ digest. For information about MD5, see RFC1321
 (https://www.ietf.org/rfc/rfc1321.txt).
 
 
-=head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
+=head2 MessageAttributes => SQS_MessageBodyAttributeMap
 
   Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
 For more information, see Amazon SQS Message Attributes

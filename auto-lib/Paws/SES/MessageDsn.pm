@@ -1,8 +1,31 @@
 package Paws::SES::MessageDsn;
-  use Moose;
-  has ArrivalDate => (is => 'ro', isa => 'Str');
-  has ExtensionFields => (is => 'ro', isa => 'ArrayRef[Paws::SES::ExtensionField]');
-  has ReportingMta => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SES::Types qw/SES_ExtensionField/;
+  has ArrivalDate => (is => 'ro', isa => Str);
+  has ExtensionFields => (is => 'ro', isa => ArrayRef[SES_ExtensionField]);
+  has ReportingMta => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ArrivalDate' => {
+                                  'type' => 'Str'
+                                },
+               'ReportingMta' => {
+                                   'type' => 'Str'
+                                 },
+               'ExtensionFields' => {
+                                      'class' => 'Paws::SES::ExtensionField',
+                                      'type' => 'ArrayRef[SES_ExtensionField]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +74,7 @@ Amazon SES Developer Guide
 format.
 
 
-=head2 ExtensionFields => ArrayRef[L<Paws::SES::ExtensionField>]
+=head2 ExtensionFields => ArrayRef[SES_ExtensionField]
 
   Additional X-headers to include in the DSN.
 

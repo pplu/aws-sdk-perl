@@ -1,9 +1,27 @@
 
 package Paws::SES::SendBulkTemplatedEmailResponse;
-  use Moose;
-  has Status => (is => 'ro', isa => 'ArrayRef[Paws::SES::BulkEmailDestinationStatus]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SES::Types qw/SES_BulkEmailDestinationStatus/;
+  has Status => (is => 'ro', isa => ArrayRef[SES_BulkEmailDestinationStatus], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'class' => 'Paws::SES::BulkEmailDestinationStatus',
+                             'type' => 'ArrayRef[SES_BulkEmailDestinationStatus]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::SES::SendBulkTemplatedEmailResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Status => ArrayRef[L<Paws::SES::BulkEmailDestinationStatus>]
+=head2 B<REQUIRED> Status => ArrayRef[SES_BulkEmailDestinationStatus]
 
 The unique message identifier returned from the
 C<SendBulkTemplatedEmail> action.

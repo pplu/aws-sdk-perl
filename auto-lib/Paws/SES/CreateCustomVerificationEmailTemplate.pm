@@ -1,18 +1,48 @@
 
 package Paws::SES::CreateCustomVerificationEmailTemplate;
-  use Moose;
-  has FailureRedirectionURL => (is => 'ro', isa => 'Str', required => 1);
-  has FromEmailAddress => (is => 'ro', isa => 'Str', required => 1);
-  has SuccessRedirectionURL => (is => 'ro', isa => 'Str', required => 1);
-  has TemplateContent => (is => 'ro', isa => 'Str', required => 1);
-  has TemplateName => (is => 'ro', isa => 'Str', required => 1);
-  has TemplateSubject => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw//;
+  has FailureRedirectionURL => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FromEmailAddress => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SuccessRedirectionURL => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TemplateContent => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TemplateName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TemplateSubject => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomVerificationEmailTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCustomVerificationEmailTemplate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'FailureRedirectionURL' => {
+                                            'type' => 'Str'
+                                          },
+               'FromEmailAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'SuccessRedirectionURL' => {
+                                            'type' => 'Str'
+                                          },
+               'TemplateContent' => {
+                                      'type' => 'Str'
+                                    },
+               'TemplateSubject' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

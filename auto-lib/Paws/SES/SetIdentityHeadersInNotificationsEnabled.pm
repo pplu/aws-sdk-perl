@@ -1,15 +1,36 @@
 
 package Paws::SES::SetIdentityHeadersInNotificationsEnabled;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has Identity => (is => 'ro', isa => 'Str', required => 1);
-  has NotificationType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SES::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has Identity => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NotificationType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetIdentityHeadersInNotificationsEnabled');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::SetIdentityHeadersInNotificationsEnabledResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetIdentityHeadersInNotificationsEnabledResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetIdentityHeadersInNotificationsEnabled');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::SetIdentityHeadersInNotificationsEnabledResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SetIdentityHeadersInNotificationsEnabledResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotificationType' => {
+                                       'type' => 'Str'
+                                     },
+               'Identity' => {
+                               'type' => 'Str'
+                             },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

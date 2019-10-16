@@ -1,14 +1,33 @@
 
 package Paws::SES::UpdateReceiptRule;
-  use Moose;
-  has Rule => (is => 'ro', isa => 'Paws::SES::ReceiptRule', required => 1);
-  has RuleSetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SES::Types qw/SES_ReceiptRule/;
+  has Rule => (is => 'ro', isa => SES_ReceiptRule, required => 1, predicate => 1);
+  has RuleSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateReceiptRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::UpdateReceiptRuleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateReceiptRuleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateReceiptRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::UpdateReceiptRuleResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateReceiptRuleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RuleSetName' => {
+                                  'type' => 'Str'
+                                },
+               'Rule' => {
+                           'class' => 'Paws::SES::ReceiptRule',
+                           'type' => 'SES_ReceiptRule'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Rule => L<Paws::SES::ReceiptRule>
+=head2 B<REQUIRED> Rule => SES_ReceiptRule
 
 A data structure that contains the updated receipt rule information.
 

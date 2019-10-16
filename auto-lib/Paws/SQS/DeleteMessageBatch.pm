@@ -1,14 +1,36 @@
 
 package Paws::SQS::DeleteMessageBatch;
-  use Moose;
-  has Entries => (is => 'ro', isa => 'ArrayRef[Paws::SQS::DeleteMessageBatchRequestEntry]', traits => ['NameInRequest'], request_name => 'DeleteMessageBatchRequestEntry' , required => 1);
-  has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SQS::Types qw/SQS_DeleteMessageBatchRequestEntry/;
+  has Entries => (is => 'ro', isa => ArrayRef[SQS_DeleteMessageBatchRequestEntry], required => 1, predicate => 1);
+  has QueueUrl => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMessageBatch');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SQS::DeleteMessageBatchResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteMessageBatchResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteMessageBatch');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SQS::DeleteMessageBatchResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DeleteMessageBatchResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QueueUrl' => {
+                               'type' => 'Str'
+                             },
+               'Entries' => {
+                              'class' => 'Paws::SQS::DeleteMessageBatchRequestEntry',
+                              'type' => 'ArrayRef[SQS_DeleteMessageBatchRequestEntry]'
+                            }
+             },
+  'NameInRequest' => {
+                       'Entries' => 'DeleteMessageBatchRequestEntry'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Entries => ArrayRef[L<Paws::SQS::DeleteMessageBatchRequestEntry>]
+=head2 B<REQUIRED> Entries => ArrayRef[SQS_DeleteMessageBatchRequestEntry]
 
 A list of receipt handles for the messages to be deleted.
 

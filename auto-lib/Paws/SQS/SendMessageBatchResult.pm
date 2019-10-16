@@ -1,10 +1,36 @@
 
 package Paws::SQS::SendMessageBatchResult;
-  use Moose;
-  has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SQS::BatchResultErrorEntry]', request_name => 'BatchResultErrorEntry', traits => ['NameInRequest',], required => 1);
-  has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SQS::SendMessageBatchResultEntry]', request_name => 'SendMessageBatchResultEntry', traits => ['NameInRequest',], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SQS::Types qw/SQS_SendMessageBatchResultEntry SQS_BatchResultErrorEntry/;
+  has Failed => (is => 'ro', isa => ArrayRef[SQS_BatchResultErrorEntry], required => 1);
+  has Successful => (is => 'ro', isa => ArrayRef[SQS_SendMessageBatchResultEntry], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Successful' => {
+                                 'class' => 'Paws::SQS::SendMessageBatchResultEntry',
+                                 'type' => 'ArrayRef[SQS_SendMessageBatchResultEntry]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Failed' => {
+                             'class' => 'Paws::SQS::BatchResultErrorEntry',
+                             'type' => 'ArrayRef[SQS_BatchResultErrorEntry]'
+                           }
+             },
+  'NameInRequest' => {
+                       'Successful' => 'SendMessageBatchResultEntry',
+                       'Failed' => 'BatchResultErrorEntry'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,13 +42,13 @@ Paws::SQS::SendMessageBatchResult
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Failed => ArrayRef[L<Paws::SQS::BatchResultErrorEntry>]
+=head2 B<REQUIRED> Failed => ArrayRef[SQS_BatchResultErrorEntry]
 
 A list of C< BatchResultErrorEntry > items with error details about
 each message that can't be enqueued.
 
 
-=head2 B<REQUIRED> Successful => ArrayRef[L<Paws::SQS::SendMessageBatchResultEntry>]
+=head2 B<REQUIRED> Successful => ArrayRef[SQS_SendMessageBatchResultEntry]
 
 A list of C< SendMessageBatchResultEntry > items.
 

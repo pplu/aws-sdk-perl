@@ -1,21 +1,63 @@
 
 package Paws::SES::SendEmail;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str');
-  has Destination => (is => 'ro', isa => 'Paws::SES::Destination', required => 1);
-  has Message => (is => 'ro', isa => 'Paws::SES::Message', required => 1);
-  has ReplyToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ReturnPath => (is => 'ro', isa => 'Str');
-  has ReturnPathArn => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str', required => 1);
-  has SourceArn => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SES::MessageTag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SES::Types qw/SES_Message SES_MessageTag SES_Destination/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, predicate => 1);
+  has Destination => (is => 'ro', isa => SES_Destination, required => 1, predicate => 1);
+  has Message => (is => 'ro', isa => SES_Message, required => 1, predicate => 1);
+  has ReplyToAddresses => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ReturnPath => (is => 'ro', isa => Str, predicate => 1);
+  has ReturnPathArn => (is => 'ro', isa => Str, predicate => 1);
+  has Source => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceArn => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SES_MessageTag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendEmail');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::SendEmailResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendEmailResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendEmail');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SES::SendEmailResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SendEmailResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               'ReplyToAddresses' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'Destination' => {
+                                  'class' => 'Paws::SES::Destination',
+                                  'type' => 'SES_Destination'
+                                },
+               'Message' => {
+                              'class' => 'Paws::SES::Message',
+                              'type' => 'SES_Message'
+                            },
+               'ReturnPathArn' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::SES::MessageTag',
+                           'type' => 'ArrayRef[SES_MessageTag]'
+                         },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'ReturnPath' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -89,13 +131,13 @@ C<SendEmail>.
 
 
 
-=head2 B<REQUIRED> Destination => L<Paws::SES::Destination>
+=head2 B<REQUIRED> Destination => SES_Destination
 
 The destination for this email, composed of To:, CC:, and BCC: fields.
 
 
 
-=head2 B<REQUIRED> Message => L<Paws::SES::Message>
+=head2 B<REQUIRED> Message => SES_Message
 
 The message to be sent.
 
@@ -191,7 +233,7 @@ Developer Guide
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SES::MessageTag>]
+=head2 Tags => ArrayRef[SES_MessageTag]
 
 A list of tags, in the form of name/value pairs, to apply to an email
 that you send using C<SendEmail>. Tags correspond to characteristics of
