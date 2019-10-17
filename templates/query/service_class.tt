@@ -1,3 +1,5 @@
+# Generated from service_class.tt
+
 [%- IF (c.enums.size) %]
 #use Moose::Util::TypeConstraints;
 [%- FOR enum_name IN c.enums.keys.sort %]

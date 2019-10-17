@@ -1,0 +1,12 @@
+
+  use JSON::MaybeXS;
+  use URL::Encode;
+
+[%-
+    SET attr_ind = attr_ind + 1;
+    attr_str.$attr_ind = "has ${encoder.alias} => ( is => 'lazy', builder => sub { my \$self = shift; ";
+    IF encoder.encoding == 'JSON'; attr_str.$attr_ind = attr_str.$attr_ind _ " return decode_json(\$self->$param_name); });";
+    ELSIF encoder.encoding == 'URLJSON'; attr_str.$attr_ind = attr_str.$attr_ind _ " return decode_json(URL::Encode::url_decode(\$self->$param_name)); });";
+    ELSE; attr_str.$attr_ind = attr_str.$attr_ind _ " die('Unrecognized JSONAttribute decode_as attribute'); });";
+    END;
+-%]

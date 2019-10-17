@@ -6,7 +6,7 @@ package [% c.api %]::[% operation.name %];
 [% FOREACH param_name IN shape.members.keys.sort;
   member = c.shape(shape.members.$param_name.shape);
   attr_str.$attr_ind = "has $param_name => (is => 'ro', isa => ${member.perl_type}";
-  IF (c.required_in_shape(shape,param_name));attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1"; END;
+  IF (c.required_in_shape(shape,param_name));attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1"; params_hash.IsRequired.$param_name = 1; END;
   attr_str.$attr_ind = attr_str.$attr_ind _", predicate => 1);";
   IF (shape.members.$param_name.location == 'header'); params_hash.ParamInHeader.$param_name = shape.members.$param_name.locationName;
   ELSIF (shape.members.$param_name.location == 'querystring'); params_hash.ParamInQuery.$param_name = shape.members.$param_name.locationName;

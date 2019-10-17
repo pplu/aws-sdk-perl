@@ -6,7 +6,7 @@ package [% inner_class %];
   member_shape_name = shape.members.$param_name.shape;
   member = c.shape(member_shape_name);
   attr_str.$attr_ind = "has $param_name => (is => 'ro', isa => ${member.perl_type}";
-  IF (c.required_in_shape(shape,param_name)); attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1);"; ELSE; attr_str.$attr_ind = attr_str.$attr_ind _ ");"; END;
+  IF (c.required_in_shape(shape,param_name)); attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1);"; params_hash.IsRequired.$param_name = 1; ELSE; attr_str.$attr_ind = attr_str.$attr_ind _ ");"; END;
   IF (shape.members.${param_name}.locationName); params_hash.NameInRequest.$param_name = shape.members.${param_name}.locationName; END;
   IF (shape.members.$param_name.streaming == 1); params_hash.ParamInBody.push(param_name); END;
   encoder = c.encoders_struct.$member_shape_name; IF (encoder); params_hash.Base64Attribute.$param_name = { decode_as => encoder.encoding, method => encoder.alias }; END;

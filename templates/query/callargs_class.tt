@@ -1,3 +1,5 @@
+# Generated from callargs_class.tt
+
 [%- operation = c.operation(op_name) %]
 [%- shape = c.input_for_operation(op_name) %]
 package [% c.api %]::[% operation.name %];
@@ -6,7 +8,7 @@ package [% c.api %]::[% operation.name %];
 [% FOREACH param_name IN shape.members.keys.sort;
   member = c.shape(shape.members.$param_name.shape);
   attr_str.$attr_ind = "has $param_name => (is => 'ro', isa => ${member.perl_type}";
-  IF (c.required_in_shape(shape,param_name));attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1"; END;
+  IF (c.required_in_shape(shape,param_name));attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1"; params_hash.IsRequired.$param_name = 1; END;
   attr_str.$attr_ind = attr_str.$attr_ind _", predicate => 1);";
   CALL attr_types.import(member.base_types.keys);
   params_hash.types.$param_name = { type => member.perl_type };

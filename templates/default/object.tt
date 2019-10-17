@@ -1,3 +1,5 @@
+# Generated from object.tt
+
 [%- -%]
 package [% inner_class %];
   use Moo;
@@ -6,14 +8,16 @@ package [% inner_class %];
   member_shape_name = shape.members.$param_name.shape;
   member = c.shape(member_shape_name);
   attr_str.$attr_ind = "has $param_name => (is => 'ro', isa => ${member.perl_type}";
-  IF (c.required_in_shape(shape,param_name)); attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1);"; ELSE; attr_str.$attr_ind = attr_str.$attr_ind _ ");"; END;
+  IF (c.required_in_shape(shape,param_name)); attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1);"; params_hash.IsRequired.$param_name = 1;  ELSE; attr_str.$attr_ind = attr_str.$attr_ind _ ");"; END;
   CALL attr_types.import(member.base_types.keys);
   params_hash.types.$param_name = { type => member.perl_type };
   FOREACH k IN member.class_type_info.keys; class_types.$k = member.class_type_info.$k; params_hash.types.$param_name.class = member.class_type_info.$k; END;
   IF (member.type == 'list' and member.member.locationName.defined); params_hash.NameInRequest.$param_name = member.member.locationName; END;
   IF (shape.members.${param_name}.locationName); params_hash.NameInRequest.$param_name = shape.members.${param_name}.locationName; END;
-  IF (shape.members.$param_name.streaming == 1); params_map.ParamInBody.push(param_name); END;
-  encoder = c.encoders_struct.$member_shape_name; IF (encoder); param_map.JSONAttribute.decode_as = encoder.encoding; param_map.JSONAttribute.method = encoder.alias; END;
+  IF (shape.members.$param_name.streaming == 1); params_hash.ParamInBody.push(param_name); END;
+  encoder = c.encoders_struct.$member_shape_name; IF (encoder);
+    PROCESS encoder_json_attributes.tt;
+    END;
   IF (member.members.xmlname and (member.members.xmlname != 'item')); params_hash.NameInRequest.$param_name = member.members.xmlname; END;
   SET attr_ind = attr_ind + 1;
 END; %]
