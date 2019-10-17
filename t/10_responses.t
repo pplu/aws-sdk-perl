@@ -54,10 +54,10 @@ sub get_stub_call_args {
   Paws->load_class($call_class);
   my %args = ();
 
-  return {} if($call_args_depth++ > 10);
+#  return {} if($call_args_depth++ > 10);
 
   foreach my $attribute (keys %{ $call_class->params_map->{types} }) {
-#    next if (not $attribute->is_required);
+    next if (not $call_class->params_map->{IsRequired}{$attribute});
 
     my $att_type = $call_class->params_map->{types}{$attribute}{type};
     my $type_class = $call_class->params_map->{types}{$attribute}{class};
