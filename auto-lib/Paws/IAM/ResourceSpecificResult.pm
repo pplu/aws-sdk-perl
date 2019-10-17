@@ -1,10 +1,40 @@
 package Paws::IAM::ResourceSpecificResult;
-  use Moose;
-  has EvalDecisionDetails => (is => 'ro', isa => 'Paws::IAM::EvalDecisionDetailsType');
-  has EvalResourceDecision => (is => 'ro', isa => 'Str', required => 1);
-  has EvalResourceName => (is => 'ro', isa => 'Str', required => 1);
-  has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
-  has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IAM::Types qw/IAM_Statement IAM_EvalDecisionDetailsType/;
+  has EvalDecisionDetails => (is => 'ro', isa => IAM_EvalDecisionDetailsType);
+  has EvalResourceDecision => (is => 'ro', isa => Str, required => 1);
+  has EvalResourceName => (is => 'ro', isa => Str, required => 1);
+  has MatchedStatements => (is => 'ro', isa => ArrayRef[IAM_Statement]);
+  has MissingContextValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MissingContextValues' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'EvalResourceName' => {
+                                       'type' => 'Str'
+                                     },
+               'EvalResourceDecision' => {
+                                           'type' => 'Str'
+                                         },
+               'EvalDecisionDetails' => {
+                                          'class' => 'Paws::IAM::EvalDecisionDetailsType',
+                                          'type' => 'IAM_EvalDecisionDetailsType'
+                                        },
+               'MatchedStatements' => {
+                                        'class' => 'Paws::IAM::Statement',
+                                        'type' => 'ArrayRef[IAM_Statement]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +73,7 @@ This data type is used by a member of the EvaluationResult data type.
 =head1 ATTRIBUTES
 
 
-=head2 EvalDecisionDetails => L<Paws::IAM::EvalDecisionDetailsType>
+=head2 EvalDecisionDetails => IAM_EvalDecisionDetailsType
 
   Additional details about the results of the evaluation decision. When
 there are both IAM policies and resource policies, this parameter
@@ -64,7 +94,7 @@ resource specified in C<EvalResourceName>.
 format.
 
 
-=head2 MatchedStatements => ArrayRef[L<Paws::IAM::Statement>]
+=head2 MatchedStatements => ArrayRef[IAM_Statement]
 
   A list of the statements in the input policies that determine the
 result for this part of the simulation. Remember that even if multiple

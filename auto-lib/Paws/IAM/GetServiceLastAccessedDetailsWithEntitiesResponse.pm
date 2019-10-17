@@ -1,15 +1,60 @@
 
 package Paws::IAM::GetServiceLastAccessedDetailsWithEntitiesResponse;
-  use Moose;
-  has EntityDetailsList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::EntityDetails]', required => 1);
-  has Error => (is => 'ro', isa => 'Paws::IAM::ErrorDetails');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has JobCompletionDate => (is => 'ro', isa => 'Str', required => 1);
-  has JobCreationDate => (is => 'ro', isa => 'Str', required => 1);
-  has JobStatus => (is => 'ro', isa => 'Str', required => 1);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::IAM::Types qw/IAM_ErrorDetails IAM_EntityDetails/;
+  has EntityDetailsList => (is => 'ro', isa => ArrayRef[IAM_EntityDetails], required => 1);
+  has Error => (is => 'ro', isa => IAM_ErrorDetails);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has JobCompletionDate => (is => 'ro', isa => Str, required => 1);
+  has JobCreationDate => (is => 'ro', isa => Str, required => 1);
+  has JobStatus => (is => 'ro', isa => Str, required => 1);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'EntityDetailsList' => {
+                                        'class' => 'Paws::IAM::EntityDetails',
+                                        'type' => 'ArrayRef[IAM_EntityDetails]'
+                                      },
+               'Error' => {
+                            'class' => 'Paws::IAM::ErrorDetails',
+                            'type' => 'IAM_ErrorDetails'
+                          },
+               'JobCreationDate' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobCompletionDate' => {
+                                        'type' => 'Str'
+                                      },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'JobCreationDate' => 1,
+                    'JobStatus' => 1,
+                    'JobCompletionDate' => 1,
+                    'EntityDetailsList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +66,14 @@ Paws::IAM::GetServiceLastAccessedDetailsWithEntitiesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EntityDetailsList => ArrayRef[L<Paws::IAM::EntityDetails>]
+=head2 B<REQUIRED> EntityDetailsList => ArrayRef[IAM_EntityDetails]
 
 An C<EntityDetailsList> object that contains details about when an IAM
 entity (user or role) used group or policy permissions in an attempt to
 access the specified AWS service.
 
 
-=head2 Error => L<Paws::IAM::ErrorDetails>
+=head2 Error => IAM_ErrorDetails
 
 An object that contains details about the reason the operation failed.
 

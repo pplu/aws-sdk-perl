@@ -1,19 +1,53 @@
 
 package Paws::IAM::CreateRole;
-  use Moose;
-  has AssumeRolePolicyDocument => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has MaxSessionDuration => (is => 'ro', isa => 'Int');
-  has Path => (is => 'ro', isa => 'Str');
-  has PermissionsBoundary => (is => 'ro', isa => 'Str');
-  has RoleName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::IAM::Types qw/IAM_Tag/;
+  has AssumeRolePolicyDocument => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has MaxSessionDuration => (is => 'ro', isa => Int, predicate => 1);
+  has Path => (is => 'ro', isa => Str, predicate => 1);
+  has PermissionsBoundary => (is => 'ro', isa => Str, predicate => 1);
+  has RoleName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IAM_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRole');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreateRoleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateRoleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRole');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::CreateRoleResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateRoleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssumeRolePolicyDocument' => {
+                                               'type' => 'Str'
+                                             },
+               'PermissionsBoundary' => {
+                                          'type' => 'Str'
+                                        },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Tags' => {
+                           'class' => 'Paws::IAM::Tag',
+                           'type' => 'ArrayRef[IAM_Tag]'
+                         },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'MaxSessionDuration' => {
+                                         'type' => 'Int'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -156,7 +190,7 @@ create resources named both "MyResource" and "myresource".
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+=head2 Tags => ArrayRef[IAM_Tag]
 
 A list of tags that you want to attach to the newly created role. Each
 tag consists of a key name and an associated value. For more

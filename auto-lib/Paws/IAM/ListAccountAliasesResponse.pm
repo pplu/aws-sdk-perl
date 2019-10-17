@@ -1,11 +1,39 @@
 
 package Paws::IAM::ListAccountAliasesResponse;
-  use Moose;
-  has AccountAliases => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::IAM::Types qw//;
+  has AccountAliases => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'AccountAliases' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'IsRequired' => {
+                    'AccountAliases' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,29 @@
 
 package Paws::IAM::ListSAMLProvidersResponse;
-  use Moose;
-  has SAMLProviderList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::SAMLProviderListEntry]');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IAM::Types qw/IAM_SAMLProviderListEntry/;
+  has SAMLProviderList => (is => 'ro', isa => ArrayRef[IAM_SAMLProviderListEntry]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SAMLProviderList' => {
+                                       'class' => 'Paws::IAM::SAMLProviderListEntry',
+                                       'type' => 'ArrayRef[IAM_SAMLProviderListEntry]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +35,7 @@ Paws::IAM::ListSAMLProvidersResponse
 =head1 ATTRIBUTES
 
 
-=head2 SAMLProviderList => ArrayRef[L<Paws::IAM::SAMLProviderListEntry>]
+=head2 SAMLProviderList => ArrayRef[IAM_SAMLProviderListEntry]
 
 The list of SAML provider resource objects defined in IAM for this AWS
 account.

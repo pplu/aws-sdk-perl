@@ -1,9 +1,29 @@
 
 package Paws::IAM::UploadServerCertificateResponse;
-  use Moose;
-  has ServerCertificateMetadata => (is => 'ro', isa => 'Paws::IAM::ServerCertificateMetadata');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_ServerCertificateMetadata/;
+  has ServerCertificateMetadata => (is => 'ro', isa => IAM_ServerCertificateMetadata);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ServerCertificateMetadata' => {
+                                                'class' => 'Paws::IAM::ServerCertificateMetadata',
+                                                'type' => 'IAM_ServerCertificateMetadata'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +35,7 @@ Paws::IAM::UploadServerCertificateResponse
 =head1 ATTRIBUTES
 
 
-=head2 ServerCertificateMetadata => L<Paws::IAM::ServerCertificateMetadata>
+=head2 ServerCertificateMetadata => IAM_ServerCertificateMetadata
 
 The meta information of the uploaded server certificate without its
 certificate body, certificate chain, and private key.

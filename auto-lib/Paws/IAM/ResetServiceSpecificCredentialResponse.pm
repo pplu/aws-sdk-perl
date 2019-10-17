@@ -1,9 +1,29 @@
 
 package Paws::IAM::ResetServiceSpecificCredentialResponse;
-  use Moose;
-  has ServiceSpecificCredential => (is => 'ro', isa => 'Paws::IAM::ServiceSpecificCredential');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_ServiceSpecificCredential/;
+  has ServiceSpecificCredential => (is => 'ro', isa => IAM_ServiceSpecificCredential);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ServiceSpecificCredential' => {
+                                                'class' => 'Paws::IAM::ServiceSpecificCredential',
+                                                'type' => 'IAM_ServiceSpecificCredential'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +35,7 @@ Paws::IAM::ResetServiceSpecificCredentialResponse
 =head1 ATTRIBUTES
 
 
-=head2 ServiceSpecificCredential => L<Paws::IAM::ServiceSpecificCredential>
+=head2 ServiceSpecificCredential => IAM_ServiceSpecificCredential
 
 A structure with details about the updated service-specific credential,
 including the new password.

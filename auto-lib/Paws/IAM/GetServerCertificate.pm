@@ -1,13 +1,28 @@
 
 package Paws::IAM::GetServerCertificate;
-  use Moose;
-  has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has ServerCertificateName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetServerCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetServerCertificateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetServerCertificateResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetServerCertificate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::GetServerCertificateResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetServerCertificateResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerCertificateName' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

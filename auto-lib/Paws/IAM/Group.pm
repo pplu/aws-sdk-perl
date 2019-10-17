@@ -1,10 +1,38 @@
 package Paws::IAM::Group;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
-  has GroupId => (is => 'ro', isa => 'Str', required => 1);
-  has GroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Path => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has CreateDate => (is => 'ro', isa => Str, required => 1);
+  has GroupId => (is => 'ro', isa => Str, required => 1);
+  has GroupName => (is => 'ro', isa => Str, required => 1);
+  has Path => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

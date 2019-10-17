@@ -1,9 +1,34 @@
 package Paws::IAM::PolicyVersion;
-  use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has Document => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute']);
-  has IsDefaultVersion => (is => 'ro', isa => 'Bool');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IAM::Types qw//;
+  has CreateDate => (is => 'ro', isa => Str);
+  has Document => (is => 'ro', isa => Str);
+  has IsDefaultVersion => (is => 'ro', isa => Bool);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'Document' => {
+                               'type' => 'Str'
+                             },
+               'IsDefaultVersion' => {
+                                       'type' => 'Bool'
+                                     },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

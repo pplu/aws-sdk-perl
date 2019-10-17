@@ -1,11 +1,40 @@
 
 package Paws::IAM::ListInstanceProfilesResponse;
-  use Moose;
-  has InstanceProfiles => (is => 'ro', isa => 'ArrayRef[Paws::IAM::InstanceProfile]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::IAM::Types qw/IAM_InstanceProfile/;
+  has InstanceProfiles => (is => 'ro', isa => ArrayRef[IAM_InstanceProfile], required => 1);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'InstanceProfiles' => {
+                                       'class' => 'Paws::IAM::InstanceProfile',
+                                       'type' => 'ArrayRef[IAM_InstanceProfile]'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'InstanceProfiles' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +46,7 @@ Paws::IAM::ListInstanceProfilesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InstanceProfiles => ArrayRef[L<Paws::IAM::InstanceProfile>]
+=head2 B<REQUIRED> InstanceProfiles => ArrayRef[IAM_InstanceProfile]
 
 A list of instance profiles.
 

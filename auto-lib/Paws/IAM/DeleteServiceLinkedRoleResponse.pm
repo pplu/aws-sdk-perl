@@ -1,9 +1,31 @@
 
 package Paws::IAM::DeleteServiceLinkedRoleResponse;
-  use Moose;
-  has DeletionTaskId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has DeletionTaskId => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DeletionTaskId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'DeletionTaskId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

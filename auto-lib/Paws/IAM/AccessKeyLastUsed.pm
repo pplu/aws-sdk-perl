@@ -1,8 +1,30 @@
 package Paws::IAM::AccessKeyLastUsed;
-  use Moose;
-  has LastUsedDate => (is => 'ro', isa => 'Str', required => 1);
-  has Region => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has LastUsedDate => (is => 'ro', isa => Str, required => 1);
+  has Region => (is => 'ro', isa => Str, required => 1);
+  has ServiceName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'LastUsedDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

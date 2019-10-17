@@ -1,9 +1,29 @@
 
 package Paws::IAM::CreateServiceLinkedRoleResponse;
-  use Moose;
-  has Role => (is => 'ro', isa => 'Paws::IAM::Role');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_Role/;
+  has Role => (is => 'ro', isa => IAM_Role);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Role' => {
+                           'class' => 'Paws::IAM::Role',
+                           'type' => 'IAM_Role'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +35,7 @@ Paws::IAM::CreateServiceLinkedRoleResponse
 =head1 ATTRIBUTES
 
 
-=head2 Role => L<Paws::IAM::Role>
+=head2 Role => IAM_Role
 
 A Role object that contains details about the newly created role.
 

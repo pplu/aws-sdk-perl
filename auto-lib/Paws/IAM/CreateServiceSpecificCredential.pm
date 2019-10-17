@@ -1,14 +1,32 @@
 
 package Paws::IAM::CreateServiceSpecificCredential;
-  use Moose;
-  has ServiceName => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has ServiceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateServiceSpecificCredential');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreateServiceSpecificCredentialResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateServiceSpecificCredentialResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateServiceSpecificCredential');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::CreateServiceSpecificCredentialResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateServiceSpecificCredentialResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

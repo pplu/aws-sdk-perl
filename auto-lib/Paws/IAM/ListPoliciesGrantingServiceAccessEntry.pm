@@ -1,7 +1,27 @@
 package Paws::IAM::ListPoliciesGrantingServiceAccessEntry;
-  use Moose;
-  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyGrantingServiceAccess]');
-  has ServiceNamespace => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::IAM::Types qw/IAM_PolicyGrantingServiceAccess/;
+  has Policies => (is => 'ro', isa => ArrayRef[IAM_PolicyGrantingServiceAccess]);
+  has ServiceNamespace => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'Policies' => {
+                               'class' => 'Paws::IAM::PolicyGrantingServiceAccess',
+                               'type' => 'ArrayRef[IAM_PolicyGrantingServiceAccess]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +61,7 @@ ListPoliciesGrantingServiceAccess operation.
 =head1 ATTRIBUTES
 
 
-=head2 Policies => ArrayRef[L<Paws::IAM::PolicyGrantingServiceAccess>]
+=head2 Policies => ArrayRef[IAM_PolicyGrantingServiceAccess]
 
   The C<PoliciesGrantingServiceAccess> object that contains details about
 the policy.

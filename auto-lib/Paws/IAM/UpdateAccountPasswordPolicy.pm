@@ -1,21 +1,60 @@
 
 package Paws::IAM::UpdateAccountPasswordPolicy;
-  use Moose;
-  has AllowUsersToChangePassword => (is => 'ro', isa => 'Bool');
-  has HardExpiry => (is => 'ro', isa => 'Bool');
-  has MaxPasswordAge => (is => 'ro', isa => 'Int');
-  has MinimumPasswordLength => (is => 'ro', isa => 'Int');
-  has PasswordReusePrevention => (is => 'ro', isa => 'Int');
-  has RequireLowercaseCharacters => (is => 'ro', isa => 'Bool');
-  has RequireNumbers => (is => 'ro', isa => 'Bool');
-  has RequireSymbols => (is => 'ro', isa => 'Bool');
-  has RequireUppercaseCharacters => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::IAM::Types qw//;
+  has AllowUsersToChangePassword => (is => 'ro', isa => Bool, predicate => 1);
+  has HardExpiry => (is => 'ro', isa => Bool, predicate => 1);
+  has MaxPasswordAge => (is => 'ro', isa => Int, predicate => 1);
+  has MinimumPasswordLength => (is => 'ro', isa => Int, predicate => 1);
+  has PasswordReusePrevention => (is => 'ro', isa => Int, predicate => 1);
+  has RequireLowercaseCharacters => (is => 'ro', isa => Bool, predicate => 1);
+  has RequireNumbers => (is => 'ro', isa => Bool, predicate => 1);
+  has RequireSymbols => (is => 'ro', isa => Bool, predicate => 1);
+  has RequireUppercaseCharacters => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAccountPasswordPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateAccountPasswordPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequireNumbers' => {
+                                     'type' => 'Bool'
+                                   },
+               'RequireSymbols' => {
+                                     'type' => 'Bool'
+                                   },
+               'MaxPasswordAge' => {
+                                     'type' => 'Int'
+                                   },
+               'HardExpiry' => {
+                                 'type' => 'Bool'
+                               },
+               'AllowUsersToChangePassword' => {
+                                                 'type' => 'Bool'
+                                               },
+               'RequireUppercaseCharacters' => {
+                                                 'type' => 'Bool'
+                                               },
+               'MinimumPasswordLength' => {
+                                            'type' => 'Int'
+                                          },
+               'PasswordReusePrevention' => {
+                                              'type' => 'Int'
+                                            },
+               'RequireLowercaseCharacters' => {
+                                                 'type' => 'Bool'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

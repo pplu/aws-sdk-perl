@@ -1,11 +1,42 @@
 package Paws::IAM::ServiceSpecificCredentialMetadata;
-  use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceName => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceSpecificCredentialId => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceUserName => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has CreateDate => (is => 'ro', isa => Str, required => 1);
+  has ServiceName => (is => 'ro', isa => Str, required => 1);
+  has ServiceSpecificCredentialId => (is => 'ro', isa => Str, required => 1);
+  has ServiceUserName => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'ServiceUserName' => {
+                                      'type' => 'Str'
+                                    },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ServiceSpecificCredentialId' => {
+                                                  'type' => 'Str'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,36 @@
 package Paws::IAM::Statement;
-  use Moose;
-  has EndPosition => (is => 'ro', isa => 'Paws::IAM::Position');
-  has SourcePolicyId => (is => 'ro', isa => 'Str');
-  has SourcePolicyType => (is => 'ro', isa => 'Str');
-  has StartPosition => (is => 'ro', isa => 'Paws::IAM::Position');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw/IAM_Position/;
+  has EndPosition => (is => 'ro', isa => IAM_Position);
+  has SourcePolicyId => (is => 'ro', isa => Str);
+  has SourcePolicyType => (is => 'ro', isa => Str);
+  has StartPosition => (is => 'ro', isa => IAM_Position);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndPosition' => {
+                                  'class' => 'Paws::IAM::Position',
+                                  'type' => 'IAM_Position'
+                                },
+               'SourcePolicyId' => {
+                                     'type' => 'Str'
+                                   },
+               'StartPosition' => {
+                                    'class' => 'Paws::IAM::Position',
+                                    'type' => 'IAM_Position'
+                                  },
+               'SourcePolicyType' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +70,7 @@ EvaluationResult > type.
 =head1 ATTRIBUTES
 
 
-=head2 EndPosition => L<Paws::IAM::Position>
+=head2 EndPosition => IAM_Position
 
   The row and column of the end of a C<Statement> in an IAM policy.
 
@@ -58,7 +85,7 @@ EvaluationResult > type.
   The type of the policy.
 
 
-=head2 StartPosition => L<Paws::IAM::Position>
+=head2 StartPosition => IAM_Position
 
   The row and column of the beginning of the C<Statement> in an IAM
 policy.

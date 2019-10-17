@@ -1,11 +1,43 @@
 
 package Paws::IAM::GetUserPolicyResponse;
-  use Moose;
-  has PolicyDocument => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute',], required => 1);
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has PolicyDocument => (is => 'ro', isa => Str, required => 1);
+  has Policy_decode_as => ( is => 'ro', isa => Str, default => sub { return 'URLJSON' });
+  has Policy => ( is => 'lazy', builder => sub { my $self = shift; if($self->Policy_decode_as eq 'JSON') { return decode_json($self->PolicyDocument); } else { return decode_json(URL::Encode::url_decode($self->PolicyDocument)) } });
+  has PolicyName => (is => 'ro', isa => Str, required => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'PolicyDocument' => 1,
+                    'PolicyName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

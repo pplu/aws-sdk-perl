@@ -1,9 +1,29 @@
 
 package Paws::IAM::ListServiceSpecificCredentialsResponse;
-  use Moose;
-  has ServiceSpecificCredentials => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ServiceSpecificCredentialMetadata]');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IAM::Types qw/IAM_ServiceSpecificCredentialMetadata/;
+  has ServiceSpecificCredentials => (is => 'ro', isa => ArrayRef[IAM_ServiceSpecificCredentialMetadata]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceSpecificCredentials' => {
+                                                 'class' => 'Paws::IAM::ServiceSpecificCredentialMetadata',
+                                                 'type' => 'ArrayRef[IAM_ServiceSpecificCredentialMetadata]'
+                                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +35,7 @@ Paws::IAM::ListServiceSpecificCredentialsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ServiceSpecificCredentials => ArrayRef[L<Paws::IAM::ServiceSpecificCredentialMetadata>]
+=head2 ServiceSpecificCredentials => ArrayRef[IAM_ServiceSpecificCredentialMetadata]
 
 A list of structures that each contain details about a service-specific
 credential.

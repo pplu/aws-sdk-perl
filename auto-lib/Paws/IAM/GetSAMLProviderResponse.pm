@@ -1,11 +1,36 @@
 
 package Paws::IAM::GetSAMLProviderResponse;
-  use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has SAMLMetadataDocument => (is => 'ro', isa => 'Str');
-  has ValidUntil => (is => 'ro', isa => 'Str');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has CreateDate => (is => 'ro', isa => Str);
+  has SAMLMetadataDocument => (is => 'ro', isa => Str);
+  has ValidUntil => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SAMLMetadataDocument' => {
+                                           'type' => 'Str'
+                                         },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ValidUntil' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

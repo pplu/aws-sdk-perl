@@ -3,7 +3,9 @@
 [%- IF (shape) %]
 package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   use Moo;
-[%- attr_str = []; attr_types = ['Str']; attr_ind = 0; class_types = {}; params_hash = { 'types' => { '_request_id' => { 'type' => 'Str' } } }; -%]
+  use JSON::MaybeXS;
+  use URL::Encode;
+[%- attr_str = []; attr_types = ['Str' ]; attr_ind = 0; class_types = {}; params_hash = { 'types' => { '_request_id' => { 'type' => 'Str' } } }; -%]
 [% FOREACH param_name IN shape.members.keys.sort;
   member_shape_name = shape.members.$param_name.shape;
   member = c.shape(member_shape_name);
@@ -16,7 +18,12 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   params_hash.types.$param_name = { type => member.perl_type };
   FOREACH k IN member.class_type_info.keys; class_types.$k = member.class_type_info.$k; params_hash.types.$param_name.class = member.class_type_info.$k; END;
   IF (member.type == 'list' and member.member.locationName); params_hash.NameInRequest.$param_name = member.member.locationName; END;
-  encoder = c.encoders_struct.$member_shape_name; IF (encoder); params_hash.JSONAttribute.$param_name = { decode_as => encoder.encoding, method => encoder.alias };END;
+  encoder = c.encoders_struct.$member_shape_name; IF (encoder);
+    SET attr_ind = attr_ind + 1;
+    attr_str.$attr_ind = "has ${encoder.alias}_decode_as => ( is => 'ro', isa => Str, default => sub { return '${encoder.encoding}' });";
+    SET attr_ind = attr_ind + 1;
+    attr_str.$attr_ind = "has ${encoder.alias} => ( is => 'lazy', builder => sub { my \$self = shift; if(\$self->${encoder.alias}_decode_as eq 'JSON') { return decode_json(\$self->$param_name); } else { return decode_json(URL::Encode::url_decode(\$self->$param_name)); } });";
+    END;
   SET attr_ind = attr_ind + 1;
 END -%]
 

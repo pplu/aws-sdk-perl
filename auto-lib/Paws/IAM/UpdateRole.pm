@@ -1,15 +1,36 @@
 
 package Paws::IAM::UpdateRole;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has MaxSessionDuration => (is => 'ro', isa => 'Int');
-  has RoleName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IAM::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has MaxSessionDuration => (is => 'ro', isa => Int, predicate => 1);
+  has RoleName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRole');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::UpdateRoleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateRoleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRole');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::UpdateRoleResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateRoleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'MaxSessionDuration' => {
+                                         'type' => 'Int'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

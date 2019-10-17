@@ -1,16 +1,62 @@
 package Paws::IAM::Policy;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has AttachmentCount => (is => 'ro', isa => 'Int');
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has DefaultVersionId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IsAttachable => (is => 'ro', isa => 'Bool');
-  has Path => (is => 'ro', isa => 'Str');
-  has PermissionsBoundaryUsageCount => (is => 'ro', isa => 'Int');
-  has PolicyId => (is => 'ro', isa => 'Str');
-  has PolicyName => (is => 'ro', isa => 'Str');
-  has UpdateDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::IAM::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has AttachmentCount => (is => 'ro', isa => Int);
+  has CreateDate => (is => 'ro', isa => Str);
+  has DefaultVersionId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IsAttachable => (is => 'ro', isa => Bool);
+  has Path => (is => 'ro', isa => Str);
+  has PermissionsBoundaryUsageCount => (is => 'ro', isa => Int);
+  has PolicyId => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str);
+  has UpdateDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'IsAttachable' => {
+                                   'type' => 'Bool'
+                                 },
+               'PermissionsBoundaryUsageCount' => {
+                                                    'type' => 'Int'
+                                                  },
+               'DefaultVersionId' => {
+                                       'type' => 'Str'
+                                     },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'PolicyId' => {
+                               'type' => 'Str'
+                             },
+               'AttachmentCount' => {
+                                      'type' => 'Int'
+                                    },
+               'UpdateDate' => {
+                                 'type' => 'Str'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

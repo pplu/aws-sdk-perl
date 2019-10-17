@@ -1,11 +1,40 @@
 
 package Paws::IAM::ListGroupsResponse;
-  use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Group]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::IAM::Types qw/IAM_Group/;
+  has Groups => (is => 'ro', isa => ArrayRef[IAM_Group], required => 1);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'Groups' => {
+                             'class' => 'Paws::IAM::Group',
+                             'type' => 'ArrayRef[IAM_Group]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Groups' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +46,7 @@ Paws::IAM::ListGroupsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Groups => ArrayRef[L<Paws::IAM::Group>]
+=head2 B<REQUIRED> Groups => ArrayRef[IAM_Group]
 
 A list of groups.
 

@@ -1,13 +1,54 @@
 package Paws::IAM::EvaluationResult;
-  use Moose;
-  has EvalActionName => (is => 'ro', isa => 'Str', required => 1);
-  has EvalDecision => (is => 'ro', isa => 'Str', required => 1);
-  has EvalDecisionDetails => (is => 'ro', isa => 'Paws::IAM::EvalDecisionDetailsType');
-  has EvalResourceName => (is => 'ro', isa => 'Str');
-  has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
-  has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has OrganizationsDecisionDetail => (is => 'ro', isa => 'Paws::IAM::OrganizationsDecisionDetail');
-  has ResourceSpecificResults => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ResourceSpecificResult]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IAM::Types qw/IAM_Statement IAM_ResourceSpecificResult IAM_EvalDecisionDetailsType IAM_OrganizationsDecisionDetail/;
+  has EvalActionName => (is => 'ro', isa => Str, required => 1);
+  has EvalDecision => (is => 'ro', isa => Str, required => 1);
+  has EvalDecisionDetails => (is => 'ro', isa => IAM_EvalDecisionDetailsType);
+  has EvalResourceName => (is => 'ro', isa => Str);
+  has MatchedStatements => (is => 'ro', isa => ArrayRef[IAM_Statement]);
+  has MissingContextValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has OrganizationsDecisionDetail => (is => 'ro', isa => IAM_OrganizationsDecisionDetail);
+  has ResourceSpecificResults => (is => 'ro', isa => ArrayRef[IAM_ResourceSpecificResult]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationsDecisionDetail' => {
+                                                  'class' => 'Paws::IAM::OrganizationsDecisionDetail',
+                                                  'type' => 'IAM_OrganizationsDecisionDetail'
+                                                },
+               'EvalResourceName' => {
+                                       'type' => 'Str'
+                                     },
+               'EvalDecision' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceSpecificResults' => {
+                                              'class' => 'Paws::IAM::ResourceSpecificResult',
+                                              'type' => 'ArrayRef[IAM_ResourceSpecificResult]'
+                                            },
+               'EvalActionName' => {
+                                     'type' => 'Str'
+                                   },
+               'MissingContextValues' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'EvalDecisionDetails' => {
+                                          'class' => 'Paws::IAM::EvalDecisionDetailsType',
+                                          'type' => 'IAM_EvalDecisionDetailsType'
+                                        },
+               'MatchedStatements' => {
+                                        'class' => 'Paws::IAM::Statement',
+                                        'type' => 'ArrayRef[IAM_Statement]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +97,7 @@ SimulateCustomPolicy > and C< SimulatePrincipalPolicy >.
   The result of the simulation.
 
 
-=head2 EvalDecisionDetails => L<Paws::IAM::EvalDecisionDetailsType>
+=head2 EvalDecisionDetails => IAM_EvalDecisionDetailsType
 
   Additional details about the results of the evaluation decision. When
 there are both IAM policies and resource policies, this parameter
@@ -72,7 +113,7 @@ See How IAM Roles Differ from Resource-based Policies
   The ARN of the resource that the indicated API operation was tested on.
 
 
-=head2 MatchedStatements => ArrayRef[L<Paws::IAM::Statement>]
+=head2 MatchedStatements => ArrayRef[IAM_Statement]
 
   A list of the statements in the input policies that determine the
 result for this scenario. Remember that even if multiple statements
@@ -93,14 +134,14 @@ used by a set of policies, you can call GetContextKeysForCustomPolicy
 or GetContextKeysForPrincipalPolicy.
 
 
-=head2 OrganizationsDecisionDetail => L<Paws::IAM::OrganizationsDecisionDetail>
+=head2 OrganizationsDecisionDetail => IAM_OrganizationsDecisionDetail
 
   A structure that details how Organizations and its service control
 policies affect the results of the simulation. Only applies if the
 simulated user's account is part of an organization.
 
 
-=head2 ResourceSpecificResults => ArrayRef[L<Paws::IAM::ResourceSpecificResult>]
+=head2 ResourceSpecificResults => ArrayRef[IAM_ResourceSpecificResult]
 
   The individual results of the simulation of the API operation specified
 in EvalActionName on each resource.

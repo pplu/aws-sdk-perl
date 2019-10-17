@@ -1,13 +1,52 @@
 package Paws::IAM::User;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
-  has PasswordLastUsed => (is => 'ro', isa => 'Str');
-  has Path => (is => 'ro', isa => 'Str', required => 1);
-  has PermissionsBoundary => (is => 'ro', isa => 'Paws::IAM::AttachedPermissionsBoundary');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
-  has UserId => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IAM::Types qw/IAM_Tag IAM_AttachedPermissionsBoundary/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has CreateDate => (is => 'ro', isa => Str, required => 1);
+  has PasswordLastUsed => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str, required => 1);
+  has PermissionsBoundary => (is => 'ro', isa => IAM_AttachedPermissionsBoundary);
+  has Tags => (is => 'ro', isa => ArrayRef[IAM_Tag]);
+  has UserId => (is => 'ro', isa => Str, required => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'PermissionsBoundary' => {
+                                          'class' => 'Paws::IAM::AttachedPermissionsBoundary',
+                                          'type' => 'IAM_AttachedPermissionsBoundary'
+                                        },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Tags' => {
+                           'class' => 'Paws::IAM::Tag',
+                           'type' => 'ArrayRef[IAM_Tag]'
+                         },
+               'PasswordLastUsed' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -119,7 +158,7 @@ Identifiers
 in the I<Using IAM> guide.
 
 
-=head2 PermissionsBoundary => L<Paws::IAM::AttachedPermissionsBoundary>
+=head2 PermissionsBoundary => IAM_AttachedPermissionsBoundary
 
   The ARN of the policy used to set the permissions boundary for the
 user.
@@ -130,7 +169,7 @@ Boundaries for IAM Identities
 in the I<IAM User Guide>.
 
 
-=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+=head2 Tags => ArrayRef[IAM_Tag]
 
   A list of tags that are associated with the specified user. For more
 information about tagging, see Tagging IAM Identities

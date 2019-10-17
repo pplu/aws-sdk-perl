@@ -1,13 +1,28 @@
 
 package Paws::IAM::GetSAMLProvider;
-  use Moose;
-  has SAMLProviderArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IAM::Types qw//;
+  has SAMLProviderArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSAMLProvider');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetSAMLProviderResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSAMLProviderResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSAMLProvider');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::GetSAMLProviderResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetSAMLProviderResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SAMLProviderArn' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

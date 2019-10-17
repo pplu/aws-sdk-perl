@@ -1,17 +1,66 @@
 
 package Paws::IAM::GetOrganizationsAccessReportResponse;
-  use Moose;
-  has AccessDetails => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AccessDetail]');
-  has ErrorDetails => (is => 'ro', isa => 'Paws::IAM::ErrorDetails');
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has JobCompletionDate => (is => 'ro', isa => 'Str');
-  has JobCreationDate => (is => 'ro', isa => 'Str', required => 1);
-  has JobStatus => (is => 'ro', isa => 'Str', required => 1);
-  has Marker => (is => 'ro', isa => 'Str');
-  has NumberOfServicesAccessible => (is => 'ro', isa => 'Int');
-  has NumberOfServicesNotAccessed => (is => 'ro', isa => 'Int');
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+  use Types::Standard qw/Str ArrayRef Bool Int/;
+  use Paws::IAM::Types qw/IAM_ErrorDetails IAM_AccessDetail/;
+  has AccessDetails => (is => 'ro', isa => ArrayRef[IAM_AccessDetail]);
+  has ErrorDetails => (is => 'ro', isa => IAM_ErrorDetails);
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has JobCompletionDate => (is => 'ro', isa => Str);
+  has JobCreationDate => (is => 'ro', isa => Str, required => 1);
+  has JobStatus => (is => 'ro', isa => Str, required => 1);
+  has Marker => (is => 'ro', isa => Str);
+  has NumberOfServicesAccessible => (is => 'ro', isa => Int);
+  has NumberOfServicesNotAccessed => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'NumberOfServicesNotAccessed' => {
+                                                  'type' => 'Int'
+                                                },
+               'ErrorDetails' => {
+                                   'class' => 'Paws::IAM::ErrorDetails',
+                                   'type' => 'IAM_ErrorDetails'
+                                 },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'NumberOfServicesAccessible' => {
+                                                 'type' => 'Int'
+                                               },
+               'JobCreationDate' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AccessDetails' => {
+                                    'class' => 'Paws::IAM::AccessDetail',
+                                    'type' => 'ArrayRef[IAM_AccessDetail]'
+                                  },
+               'JobCompletionDate' => {
+                                        'type' => 'Str'
+                                      },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'JobCreationDate' => 1,
+                    'JobStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -23,13 +72,13 @@ Paws::IAM::GetOrganizationsAccessReportResponse
 =head1 ATTRIBUTES
 
 
-=head2 AccessDetails => ArrayRef[L<Paws::IAM::AccessDetail>]
+=head2 AccessDetails => ArrayRef[IAM_AccessDetail]
 
 An object that contains details about the most recent attempt to access
 the service.
 
 
-=head2 ErrorDetails => L<Paws::IAM::ErrorDetails>
+=head2 ErrorDetails => IAM_ErrorDetails
 
 
 

@@ -1,11 +1,43 @@
 package Paws::IAM::InstanceProfile;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceProfileId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
-  has Path => (is => 'ro', isa => 'Str', required => 1);
-  has Roles => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Role]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IAM::Types qw/IAM_Role/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has CreateDate => (is => 'ro', isa => Str, required => 1);
+  has InstanceProfileId => (is => 'ro', isa => Str, required => 1);
+  has InstanceProfileName => (is => 'ro', isa => Str, required => 1);
+  has Path => (is => 'ro', isa => Str, required => 1);
+  has Roles => (is => 'ro', isa => ArrayRef[IAM_Role], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceProfileName' => {
+                                          'type' => 'Str'
+                                        },
+               'Roles' => {
+                            'class' => 'Paws::IAM::Role',
+                            'type' => 'ArrayRef[IAM_Role]'
+                          },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'InstanceProfileId' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +132,7 @@ IAM Identifiers
 in the I<Using IAM> guide.
 
 
-=head2 B<REQUIRED> Roles => ArrayRef[L<Paws::IAM::Role>]
+=head2 B<REQUIRED> Roles => ArrayRef[IAM_Role]
 
   The role associated with the instance profile.
 

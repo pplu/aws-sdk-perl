@@ -1,8 +1,30 @@
 package Paws::IAM::ContextEntry;
-  use Moose;
-  has ContextKeyName => (is => 'ro', isa => 'Str');
-  has ContextKeyType => (is => 'ro', isa => 'Str');
-  has ContextKeyValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IAM::Types qw//;
+  has ContextKeyName => (is => 'ro', isa => Str);
+  has ContextKeyType => (is => 'ro', isa => Str);
+  has ContextKeyValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContextKeyType' => {
+                                     'type' => 'Str'
+                                   },
+               'ContextKeyValues' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ContextKeyName' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

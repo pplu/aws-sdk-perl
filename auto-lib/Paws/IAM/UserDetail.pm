@@ -1,15 +1,62 @@
 package Paws::IAM::UserDetail;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has AttachedManagedPolicies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AttachedPolicy]');
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has GroupList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Path => (is => 'ro', isa => 'Str');
-  has PermissionsBoundary => (is => 'ro', isa => 'Paws::IAM::AttachedPermissionsBoundary');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
-  has UserId => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str');
-  has UserPolicyList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyDetail]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IAM::Types qw/IAM_AttachedPolicy IAM_Tag IAM_PolicyDetail IAM_AttachedPermissionsBoundary/;
+  has Arn => (is => 'ro', isa => Str);
+  has AttachedManagedPolicies => (is => 'ro', isa => ArrayRef[IAM_AttachedPolicy]);
+  has CreateDate => (is => 'ro', isa => Str);
+  has GroupList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Path => (is => 'ro', isa => Str);
+  has PermissionsBoundary => (is => 'ro', isa => IAM_AttachedPermissionsBoundary);
+  has Tags => (is => 'ro', isa => ArrayRef[IAM_Tag]);
+  has UserId => (is => 'ro', isa => Str);
+  has UserName => (is => 'ro', isa => Str);
+  has UserPolicyList => (is => 'ro', isa => ArrayRef[IAM_PolicyDetail]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPolicyList' => {
+                                     'class' => 'Paws::IAM::PolicyDetail',
+                                     'type' => 'ArrayRef[IAM_PolicyDetail]'
+                                   },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'PermissionsBoundary' => {
+                                          'class' => 'Paws::IAM::AttachedPermissionsBoundary',
+                                          'type' => 'IAM_AttachedPermissionsBoundary'
+                                        },
+               'AttachedManagedPolicies' => {
+                                              'class' => 'Paws::IAM::AttachedPolicy',
+                                              'type' => 'ArrayRef[IAM_AttachedPolicy]'
+                                            },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'GroupList' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::IAM::Tag',
+                           'type' => 'ArrayRef[IAM_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +101,7 @@ GetAccountAuthorizationDetails operation.
   
 
 
-=head2 AttachedManagedPolicies => ArrayRef[L<Paws::IAM::AttachedPolicy>]
+=head2 AttachedManagedPolicies => ArrayRef[IAM_AttachedPolicy]
 
   A list of the managed policies attached to the user.
 
@@ -78,7 +125,7 @@ Identifiers
 in the I<Using IAM> guide.
 
 
-=head2 PermissionsBoundary => L<Paws::IAM::AttachedPermissionsBoundary>
+=head2 PermissionsBoundary => IAM_AttachedPermissionsBoundary
 
   The ARN of the policy used to set the permissions boundary for the
 user.
@@ -89,7 +136,7 @@ Boundaries for IAM Identities
 in the I<IAM User Guide>.
 
 
-=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+=head2 Tags => ArrayRef[IAM_Tag]
 
   A list of tags that are associated with the specified user. For more
 information about tagging, see Tagging IAM Identities
@@ -110,7 +157,7 @@ in the I<Using IAM> guide.
   The friendly name identifying the user.
 
 
-=head2 UserPolicyList => ArrayRef[L<Paws::IAM::PolicyDetail>]
+=head2 UserPolicyList => ArrayRef[IAM_PolicyDetail]
 
   A list of the inline policies embedded in the user.
 

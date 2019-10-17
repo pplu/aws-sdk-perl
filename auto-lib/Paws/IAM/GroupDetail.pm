@@ -1,12 +1,48 @@
 package Paws::IAM::GroupDetail;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has AttachedManagedPolicies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AttachedPolicy]');
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has GroupId => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str');
-  has GroupPolicyList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyDetail]');
-  has Path => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IAM::Types qw/IAM_AttachedPolicy IAM_PolicyDetail/;
+  has Arn => (is => 'ro', isa => Str);
+  has AttachedManagedPolicies => (is => 'ro', isa => ArrayRef[IAM_AttachedPolicy]);
+  has CreateDate => (is => 'ro', isa => Str);
+  has GroupId => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+  has GroupPolicyList => (is => 'ro', isa => ArrayRef[IAM_PolicyDetail]);
+  has Path => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupPolicyList' => {
+                                      'class' => 'Paws::IAM::PolicyDetail',
+                                      'type' => 'ArrayRef[IAM_PolicyDetail]'
+                                    },
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'AttachedManagedPolicies' => {
+                                              'class' => 'Paws::IAM::AttachedPolicy',
+                                              'type' => 'ArrayRef[IAM_AttachedPolicy]'
+                                            },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +87,7 @@ GetAccountAuthorizationDetails operation.
   
 
 
-=head2 AttachedManagedPolicies => ArrayRef[L<Paws::IAM::AttachedPolicy>]
+=head2 AttachedManagedPolicies => ArrayRef[IAM_AttachedPolicy]
 
   A list of the managed policies attached to the group.
 
@@ -75,7 +111,7 @@ in the I<Using IAM> guide.
   The friendly name that identifies the group.
 
 
-=head2 GroupPolicyList => ArrayRef[L<Paws::IAM::PolicyDetail>]
+=head2 GroupPolicyList => ArrayRef[IAM_PolicyDetail]
 
   A list of the inline policies embedded in the group.
 

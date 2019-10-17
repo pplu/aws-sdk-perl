@@ -1,22 +1,65 @@
 
 package Paws::IAM::SimulateCustomPolicy;
-  use Moose;
-  has ActionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has CallerArn => (is => 'ro', isa => 'Str');
-  has ContextEntries => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ContextEntry]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxItems => (is => 'ro', isa => 'Int');
-  has PolicyInputList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ResourceHandlingOption => (is => 'ro', isa => 'Str');
-  has ResourceOwner => (is => 'ro', isa => 'Str');
-  has ResourcePolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::IAM::Types qw/IAM_ContextEntry/;
+  has ActionNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has CallerArn => (is => 'ro', isa => Str, predicate => 1);
+  has ContextEntries => (is => 'ro', isa => ArrayRef[IAM_ContextEntry], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
+  has PolicyInputList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has ResourceArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceHandlingOption => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceOwner => (is => 'ro', isa => Str, predicate => 1);
+  has ResourcePolicy => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SimulateCustomPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::SimulatePolicyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SimulateCustomPolicyResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SimulateCustomPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::SimulatePolicyResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SimulateCustomPolicyResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourcePolicy' => {
+                                     'type' => 'Str'
+                                   },
+               'ResourceArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'ResourceOwner' => {
+                                    'type' => 'Str'
+                                  },
+               'ResourceHandlingOption' => {
+                                             'type' => 'Str'
+                                           },
+               'PolicyInputList' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'ContextEntries' => {
+                                     'class' => 'Paws::IAM::ContextEntry',
+                                     'type' => 'ArrayRef[IAM_ContextEntry]'
+                                   },
+               'ActionNames' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'CallerArn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -97,7 +140,7 @@ of an assumed role, federated user, or a service principal.
 
 
 
-=head2 ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]
+=head2 ContextEntries => ArrayRef[IAM_ContextEntry]
 
 A list of context keys and corresponding values for the simulation to
 use. Whenever a context key is evaluated in one of the simulated IAM

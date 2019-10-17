@@ -1,15 +1,36 @@
 
 package Paws::IAM::CreatePolicyVersion;
-  use Moose;
-  has PolicyArn => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
-  has SetAsDefault => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IAM::Types qw//;
+  has PolicyArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PolicyDocument => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SetAsDefault => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePolicyVersion');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreatePolicyVersionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePolicyVersionResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePolicyVersion');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IAM::CreatePolicyVersionResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreatePolicyVersionResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SetAsDefault' => {
+                                   'type' => 'Bool'
+                                 },
+               'PolicyArn' => {
+                                'type' => 'Str'
+                              },
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
