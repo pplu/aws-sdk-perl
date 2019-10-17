@@ -1215,7 +1215,8 @@ package Paws::API::Builder {
         $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $values_shape->{class_type_info}, base_types => [qw/HashRef/] });
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'map') {
         my $type = $self->set_caller_class_types($iclass->{value}->{shape});
-        $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $iclass->{value}->{shape}{class_type_info}, base_types => [qw/HashRef/] });
+        my $ishape = $self->shape($iclass->{value}->{shape});
+        $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $ishape->{class_type_info}, base_types => [qw/HashRef/] });
       } else {
         die "Unrecognized Map type in query API " . Dumper($iclass) . ' keys_shape ' . Dumper($keys_shape) . ' values_shape' . Dumper($values_shape);
       }
