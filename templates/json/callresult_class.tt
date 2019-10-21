@@ -1,3 +1,5 @@
+# Generated from json/callresult_class.tt
+
 [%- operation = c.result_for_operation(op_name) %]
 [%- shape = c.result_for_operation(op_name) %]
 [%- IF (shape) %]

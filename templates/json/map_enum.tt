@@ -1,3 +1,5 @@
+# Generated from json/map_enum.tt
+
 [%- -%]
 package [% inner_class %];
   use Moo;
@@ -7,9 +9,29 @@ package [% inner_class %];
   class_has xml_keys =>(is => 'ro', default => '[% iclass.key.locationName || 'key' %]');
   class_has xml_values =>(is => 'ro', default => '[% iclass.value.locationName || 'value' %]');
 
+[%- member = c.shape(iclass.value.shape); class_types = {};
+  FOREACH k IN member.class_type_info.keys; class_types.$k = member.class_type_info.$k; params_hash.types.$param_name.class = member.class_type_info.$k; END; -%]
+  use Types::Standard qw/[% member.base_types.keys.join(" ") %]/;
+  use [% c.typelibrary_name %] qw/[% class_types.keys.join(" ") %]/;
 [% FOREACH param_name=keys_shape.enum.sort -%]
-  has [% param_name %] => (is => 'ro', isa => '[% c.get_caller_class_type(iclass.value.shape) %]');
+  has [% param_name %] => (is => 'ro', isa => [% member.perl_type %]);
 [% END -%]
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+[% FOREACH param_name=keys_shape.enum.sort -%]
+                               '[% param_name %]' => {
+                                          type => '[% member.perl_type %]',
+                                          [%- IF class_types.keys.size -%]
+                                          class => '[% class_types.keys.0 %]',
+                                          [%- END -%]
+                                        },
+[% END -%]
+                             },
+                  };
+    return $Params_map;
+  }
 1;
 
 [% INCLUDE 'map_enum_documentation.tt' %]

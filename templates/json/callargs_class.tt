@@ -1,3 +1,5 @@
+# Generated from json/callargs_class.tt
+
 [%- operation = c.operation(op_name) %]
 [%- shape = c.input_for_operation(op_name) %]
 package [% c.api %]::[% operation.name %];
