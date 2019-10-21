@@ -1198,12 +1198,13 @@ package Paws::API::Builder {
           #Sometimes it's a list of objects, and sometimes it's a list of native things
         my $type = $values_shape->{perl_type};
         my $inner_shape = $self->shape($values_shape->{member}->{shape});
+        my $type_class = $inner_shape->{ class_type_info }{ $inner_shape->{perl_type} };
 
         if ($inner_shape->{type} eq 'structure'){
           $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $values_shape->{class_type_info}, base_types => [qw/HashRef/, keys(%{$values_shape->{base_types}}) ]});
         } else {
           # All the generated class types start Paws<ServiceName>
-          if ($type =~ /^Paws/ || $type =~ /\[Paws\w+\]/) {
+          if ($type_class && ( $type_class  =~ /^Paws/ || $type_class =~ /\[Paws\w+\]/) ) {
             $self->process_template('map_str_to_obj.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $values_shape->{class_type_info}, base_types => [qw/HashRef/, keys(%{$values_shape->{base_types}}) ] });
           } else {
             $self->process_template('map_str_to_native.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]", class_type_info => $values_shape->{class_type_info}, base_types => [qw/HashRef/, keys(%{$values_shape->{base_types}}) ] });
