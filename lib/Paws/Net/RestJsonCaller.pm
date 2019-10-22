@@ -20,18 +20,18 @@ package Paws::Net::RestJsonCaller;
   sub _to_jsoncaller_params {
     my ($self, $params) = @_;
     my %p;
-    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-      my $attribute = $params->meta->get_attribute($att);
+    my $params_hash = $params->params_map;
+    foreach my $att (keys %{$params_hash->{types}}) {
+#      my $attribute = $params->meta->get_attribute($att);
 
-      next if ($attribute->does('ParamInHeader') or
-               $attribute->does('ParamInQuery') or
-               $attribute->does('ParamInURI') or
-               $attribute->does('ParamInBody')
-      );
+      next if ($params_hash->{ParamInHeader}{$att} or
+               $params_hash->{ParamInQuery}{$att}  or
+               $params_hash->{ParamInURI}{$att}    or
+               $params_hash->{ParamInBody}{$att});
 
-      my $key = $attribute->does('Paws::API::Attribute::Trait::NameInRequest')?$attribute->request_name:$att;
+      my $key = $params_hash->{NameInRequest}{$att} || $att;
       if (defined $params->$att) {
-        my $att_type = $attribute->type_constraint;
+        my $att_type = $params_hash->{types}{$att}{type};
         if ($att_type eq 'Bool') {
           $p{ $key } = ($params->$att)?\1:\0;
         } elsif ($att_type eq 'Int') {
@@ -47,12 +47,12 @@ package Paws::Net::RestJsonCaller;
           } else {
             $p{ $key } = [ map { $self->_to_jsoncaller_params($_) } @{ $params->$att } ];
           }
-        } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
-          $p{ $key } = $params->$att;
+#        } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
+#          $p{ $key } = $params->$att;
         } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){ 
           $p{ $key } = { %{ $params->$att->Map }  };
         } elsif ($params->$att->does('Paws::API::StrToObjMapParser')){
-          my $type = $params->$att->meta->get_attribute('Map')->type_constraint;
+          my $type = $params->$att->params_map->{types}{Map}{type};
           if (my ($inner) = ("$type" =~ m/^HashRef\[ArrayRef\[(.*?)\]/)) {
             $p{ $key } = { map { my $k = $_; ( $k => [ map { $self->_to_jsoncaller_params($_) } @{$params->$att->Map->{$_} } ] ) } keys %{ $params->$att->Map } };
           } else {
@@ -68,15 +68,15 @@ package Paws::Net::RestJsonCaller;
 
   sub _call_uri {
     my ($self, $call) = @_;
-    my $uri_template = $call->meta->name->_api_uri;
+    my $uri_template = $call->_api_uri;
     my $t = URI::Template->new( $uri_template );
 
     my $vars = {};
 
-    foreach my $attribute ($call->meta->get_all_attributes) {
-      my $att_name = $attribute->name;
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
-        $vars->{ $attribute->uri_name } = $call->$att_name
+    foreach my $attribute (keys %{$call->params_map->{types} }) {
+#      my $att_name = $attribute->name;
+      if ($call->params_map->{ParamInURI}{$attribute}) {
+        $vars->{ $call->params_map->{ParamInURI}{$attribute} } = $call->$attribute
       }
     }
 
@@ -86,9 +86,10 @@ package Paws::Net::RestJsonCaller;
 
   sub _to_header_params {
     my ($self, $request, $call) = @_;
-    foreach my $attribute ($call->meta->get_all_attributes) {
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and $attribute->has_value($call)) {
-        $request->headers->header( $attribute->header_name => $attribute->get_value($call) );
+    foreach my $attribute (%{ $call->params_map->{types} }) {
+        if ($call->params_map->{ParamInHeader}{$attribute} and
+          $call->$attribute) {
+        $request->headers->header( $call->params_map->{ParamInHeader}{$attribute} => $call->$attribute );
       }
     }
   }
@@ -101,10 +102,11 @@ package Paws::Net::RestJsonCaller;
     my $uri = $self->_call_uri($call);
 
     my $qparams = { $uri->query_form };
-    foreach my $attribute ($call->meta->get_all_attributes) {
-      my $att_name = $attribute->name;
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
-        $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
+    my $params_hash = $call->params_map;
+    foreach my $attribute (keys %{$params_hash->{types} }) {
+#      my $att_name = $attribute->name;
+      if ($params_hash->{ParamInQuery}{$attribute}) {
+        $qparams->{ $params_hash->{ParamInQuery}{$attribute} } = $call->$attribute if (defined $call->$attribute);
       }
     }
     $uri->query_form(%$qparams);

@@ -1,6 +1,15 @@
 package Paws::Signin::GetSigninTokenResponse;
-  use Moose;
-  has SigninToken => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  has SigninToken => (is => 'ro', isa => Str, required => 1);
+
+sub params_map {
+  our $Params_map ||= {
+    types => {
+      'SigninToken' => { type => 'Str' },
+    }
+  };
+}
 1;
 
 ### main pod documentation begin ###

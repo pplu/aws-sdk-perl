@@ -3,12 +3,10 @@ package Paws::Net::APIRequest;
   use HTTP::Headers;
   use URI;
 
-  use Types::Standard qw/HashRef Str/;
-  use Type::Utils qw/class_type/;
+  use Types::Standard qw/HashRef Str InstanceOf/;
 
-  my $HTTPHeaders = class_type 'HTTP::Headers';
   has parameters => (is => 'rw', isa => HashRef, default => sub { {} });
-  has headers    => (is => 'rw', isa => $HTTPHeaders, default => sub { HTTP::Headers->new });
+  has headers    => (is => 'lazy', isa => InstanceOf['HTTP::Headers'], default => sub { HTTP::Headers->new });
   has content    => (is => 'rw', isa => Str, default => '');
   has method     => (is => 'rw', isa => Str);
   has uri        => (is => 'rw', isa => Str);

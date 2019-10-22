@@ -1,5 +1,5 @@
 package Paws::Net::NoSignature;
-  use Moose::Role;
+  use Moo::Role;
 
   sub sign {
   }
