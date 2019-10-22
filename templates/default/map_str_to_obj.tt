@@ -1,3 +1,5 @@
+# Generated from default/map_str_to_obj.tt
+
 [%- -%]
 package [% inner_class %];
   use Moo;

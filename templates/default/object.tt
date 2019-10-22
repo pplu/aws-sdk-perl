@@ -1,4 +1,4 @@
-# Generated from object.tt
+# Generated from default/object.tt
 
 [%- -%]
 package [% inner_class %];
