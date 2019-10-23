@@ -1,5 +1,5 @@
 package Paws::Credential::Environment;
-  use Moose;
+  use Moo;
 
   has access_key => (is => 'ro', default => sub { $ENV{AWS_ACCESS_KEY} || $ENV{AWS_ACCESS_KEY_ID} });
   has secret_key => (is => 'ro', default => sub { $ENV{AWS_SECRET_KEY} || $ENV{AWS_SECRET_ACCESS_KEY} });
@@ -7,7 +7,7 @@ package Paws::Credential::Environment;
 
   with 'Paws::Credential';
 
-  no Moose;
+  no Moo;
 1;
 ### main pod documentation begin ###
 

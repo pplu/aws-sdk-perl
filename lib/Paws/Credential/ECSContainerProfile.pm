@@ -1,13 +1,14 @@
 package Paws::Credential::ECSContainerProfile;
   use JSON::MaybeXS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Str Undef Int/;
   use DateTime::Format::ISO8601;
   use URI;
   with 'Paws::Credential';
 
   has container_local_uri => (
     is => 'ro',
-    isa => 'Str|Undef',
+    isa => Str|Undef,
     default => sub {
       $ENV{ AWS_CONTAINER_CREDENTIALS_RELATIVE_URI }
     }
@@ -15,7 +16,7 @@ package Paws::Credential::ECSContainerProfile;
 
   has metadata_url => (
     is => 'ro',
-    isa => 'Str|Undef',
+    isa => Str|Undef,
     lazy => 1,
     default => sub {
       my $self = shift;
@@ -26,7 +27,7 @@ package Paws::Credential::ECSContainerProfile;
     }
   );
 
-  has timeout => (is => 'ro', isa => 'Int', default => 1);
+  has timeout => (is => 'ro', isa => Int, default => 1);
 
   has ua => (
     is => 'ro',
@@ -43,7 +44,7 @@ package Paws::Credential::ECSContainerProfile;
 
   has expiration => (
     is => 'rw',
-    isa => 'Int',
+    isa => Int,
     default => sub { 0 }
   );
 
@@ -93,7 +94,7 @@ package Paws::Credential::ECSContainerProfile;
     $self->expiration(DateTime::Format::ISO8601->parse_datetime($json->{Expiration})->epoch);
   }
 
-  no Moose;
+  no Moo;
 1;
 ### main pod documentation begin ###
 

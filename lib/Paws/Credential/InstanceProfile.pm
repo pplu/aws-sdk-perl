@@ -1,16 +1,17 @@
 package Paws::Credential::InstanceProfile;
   use JSON::MaybeXS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Str Int/;
   use DateTime::Format::ISO8601;
   with 'Paws::Credential';
 
   has metadata_url => (
     is => 'ro',
-    isa => 'Str',
+    isa => Str,
     default => 'http://169.254.169.254/latest/meta-data/iam/security-credentials/'
   );
 
-  has timeout => (is => 'ro', isa => 'Int', default => 1);
+  has timeout => (is => 'ro', isa => Int, default => 1);
 
   has ua => (
     is => 'ro',
@@ -27,7 +28,7 @@ package Paws::Credential::InstanceProfile;
 
   has expiration => (
     is => 'rw',
-    isa => 'Int',
+    isa => Int,
     default => sub { 0 }
   );
 
@@ -72,7 +73,7 @@ package Paws::Credential::InstanceProfile;
     $self->expiration(DateTime::Format::ISO8601->parse_datetime($json->{Expiration})->epoch);
   }
 
-  no Moose;
+  no Moo;
 1;
 ### main pod documentation begin ###
 

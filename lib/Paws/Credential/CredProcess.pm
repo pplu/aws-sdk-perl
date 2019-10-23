@@ -1,21 +1,22 @@
 package Paws::Credential::CredProcess;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Str Int Undef HashRef/;
   use JSON::MaybeXS qw/decode_json/;
   use Paws::Exception;
   use DateTime::Format::ISO8601;
 
-  has credential_process => (is => 'ro', isa => 'Str', required => 1);
+  has credential_process => (is => 'ro', isa => Str, required => 1);
 
   has expiration => (
     is => 'rw',
-    isa => 'Int|Undef',
+    isa => Int|Undef,
     lazy => 1,
     default => sub { 0 }
   );
 
   has actual_creds => (
     is => 'ro',
-    isa => 'HashRef',
+    isa => HashRef,
     builder => '_build_actual_creds',
     clearer => '_clear_actual_creds',
     lazy => 1
@@ -75,7 +76,7 @@ package Paws::Credential::CredProcess;
 
   with 'Paws::Credential';
 
-  no Moose;
+  no Moo;
 1;
 ### main pod documentation begin ###
 

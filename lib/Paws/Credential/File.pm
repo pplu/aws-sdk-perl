@@ -1,5 +1,6 @@
 package Paws::Credential::File;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/HashRef/;
   use Config::INI::Reader;
   use File::HomeDir;
   use JSON::MaybeXS qw/decode_json/;
@@ -22,7 +23,7 @@ package Paws::Credential::File;
     return (File::HomeDir->my_home || '') . '/.aws/';
   });
 
-  has _ini_contents => (is => 'ro', isa => 'HashRef', lazy => 1, default => sub {
+  has _ini_contents => (is => 'ro', isa => HashRef, lazy => 1, default => sub {
     my $self = shift;
     my $ini_file = $self->credentials_file;
     return {} if (not -e $ini_file);
@@ -30,7 +31,7 @@ package Paws::Credential::File;
     return $ini;
   });
 
-  has _profile => (is => 'ro', isa => 'HashRef', lazy => 1, default => sub {
+  has _profile => (is => 'ro', isa => HashRef, lazy => 1, default => sub {
     my $self = shift;
     my $profile = $self->profile;
     return $self->_ini_contents->{ $profile } || {};
@@ -67,7 +68,7 @@ package Paws::Credential::File;
 
   with 'Paws::Credential';
 
-  no Moose;
+  no Moo;
 1;
 ### main pod documentation begin ###
 
