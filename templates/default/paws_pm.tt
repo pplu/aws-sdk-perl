@@ -63,14 +63,7 @@ use Carp;
 use Moo;
 use Types::Standard qw/Str HashRef Object InstanceOf/;
 use MooX::ClassAttribute;
-#use Moose::Util qw//;
 use Module::Runtime qw//;
-
-use Paws::API::JSONAttribute;
-use Paws::API::Base64Attribute;
-
-# use Paws::API;
-# use Moose::Util::TypeConstraints;
 
 has _class_prefix => (isa => Str, is => 'ro', default => 'Paws::');
 

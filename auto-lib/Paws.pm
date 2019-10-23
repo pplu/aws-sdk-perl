@@ -63,14 +63,7 @@ use Carp;
 use Moo;
 use Types::Standard qw/Str HashRef Object InstanceOf/;
 use MooX::ClassAttribute;
-#use Moose::Util qw//;
 use Module::Runtime qw//;
-
-use Paws::API::JSONAttribute;
-use Paws::API::Base64Attribute;
-
-# use Paws::API;
-# use Moose::Util::TypeConstraints;
 
 has _class_prefix => (isa => Str, is => 'ro', default => 'Paws::');
 
@@ -94,7 +87,7 @@ sub load_class {
     Module::Runtime::require_module($class);
     $loaded{$class} = 1;
     # immutability is a global setting that will affect all instances
-    $class->meta->make_immutable if (Paws->default_config->immutable);
+#    $class->meta->make_immutable if (Paws->default_config->immutable);
   }
 }
 
@@ -109,7 +102,6 @@ sub new_with_coercions {
   if (do { state %d; $d{$class} //= $class->does('Paws::API::StrToObjMapParser') }) {
     my $subclass = $params_map->{types}{'Map'}{class};
     my ($subtype) = ($params_map->{types}{'Map'}{type} =~ m/^HashRef\[(.*?)\]$/);
-#    my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
     if (my ($array_of) = ($subtype =~ m/^ArrayRef\[(.*?)\]$/)) {
       $p{ Map } = { map { $_ => [ map { Paws->new_with_coercions($subclass, %$_) } @{ $params{ $_ } } ] } keys %params };
     } else {
@@ -120,10 +112,6 @@ sub new_with_coercions {
   }
   else {
     foreach my $att (keys %params){
-      #my $att_meta = $class->meta->find_attribute_by_name($att);
-
-      #croak "$class doesn't have an $att" if (not defined $att_meta);
-      #my $type = $att_meta->type_constraint;
       my $type = $params_map->{types}{$att}{type};
       my $typeclass = $params_map->{types}{$att}{class};
 
@@ -161,16 +149,17 @@ sub to_hash {
   my (undef, $params) = @_;
   my $refHash = {};
 
+  my $params_hash = $params->params_map;
   if      ($params->does('Paws::API::StrToNativeMapParser')) {
     return $params->Map;
   } elsif ($params->does('Paws::API::StrToObjMapParser')) {
     return { map { ($_ => Paws->to_hash($params->Map->{$_})) } keys %{ $params->Map } };
   }
 
-  foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+  foreach my $att (keys %{$params_hash->{types}}) {
     my $key = $att;
     if (defined $params->$att) {
-      my $att_type = $params->meta->get_attribute($att)->type_constraint;
+      my $att_type = $params_hash->{types}{$att}{type};
       if ($att_type eq 'Bool') {
         $refHash->{ $key } = ($params->$att)?1:0;
       } elsif (Paws->is_internal_type($att_type)) {
@@ -181,8 +170,8 @@ sub to_hash {
         } else {
           $refHash->{ $key } = [ map { Paws->to_hash($_) } @{ $params->$att } ];
         }
-      } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
-        $refHash->{ $key } = $params->$att;
+#      } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
+#        $refHash->{ $key } = $params->$att;
       } else {
         $refHash->{ $key } = Paws->to_hash($params->$att);
       }
@@ -282,21 +271,16 @@ sub _preload_scanclass {
 
   # If the class is already loaded, we really don't want to be rescanning it
   # this avoid infinite recursion on DynamoDB, for example
-  return if (Moose::Util::find_meta($class));
+  return if ($INC{Module::Runtime::module_notional_filename($class)});
 
   Paws->load_class($class);
 
-  foreach my $att ($class->meta->get_all_attributes){
-    my $tconst = $att->type_constraint;
+  foreach my $att (keys %{$class->params_map->{types} }){
+    my $tclass = $class->params_map->{types}{$att}{class};
 
-    if ($tconst->isa('Moose::Meta::TypeConstraint::Class')) {
+    if ($tclass) {
       # Any attribute that isa class will need to be inspected
-      _preload_scanclass($tconst->class);
-    } elsif ($tconst->isa('Moose::Meta::TypeConstraint::Parameterized') and
-             $tconst->type_parameter->isa('Moose::Meta::TypeConstraint::Class')) {
-      # those attributes can also be found in parametrized 
-      # type constraints (ArrayRef[...], Hashref[...])
-      _preload_scanclass($tconst->type_parameter->class);
+      _preload_scanclass($tclass);
     }
   }
 }
